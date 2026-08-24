@@ -1,0 +1,265 @@
+# Stakpak CLI
+
+## Unified Configuration (Profiles + Autopilot)
+
+This guide explains the current configuration model.
+
+### TL;DR
+
+- `~/.stakpak/config.toml` is the **source of truth** for behavior profiles.
+- `~/.stakpak/autopilot.toml` is for **runtime wiring** (schedules/channels/notification routes/service settings).
+- Schedules/channels should reference profiles using `profile = "name"`.
+- Profiles control agent behavior, not delivery.
+  - Schedule profile: behavior for runs started by a schedule.
+  - Channel profile: behavior for sessions started from inbound Slack/Telegram/Discord messages.
+  - Notification route: where schedule notifications are sent.
+- Notification routes are always `channel` + `target`.
+  - `channel` is the transport: `slack`, `telegram`, or `discord`.
+  - `target` is the destination inside that transport: for example Slack `#ops` or `C1234567890`.
+  - Schedule-specific overrides are named `notify_channel` and `notify_target`.
+- Runtime fields transported per-run are:
+  - `model`
+  - `auto_approve`
+  - `system_prompt`
+  - `max_turns`
+- Inline channel `model` / `auto_approve` still work for compatibility, but are deprecated.
+
+---
+
+## Autopilot deployment readiness
+
+Autopilot now has a shared readiness/probe system used by both:
+
+- `stakpak up` — fail-fast startup checks
+- `stakpak autopilot doctor` — fuller deployment-readiness report
+
+### What `stakpak up` checks before startup
+
+Blocking failures:
+
+- credentials configured
+- Docker installed
+- Docker accessible to the current user
+- clearly unsafe memory conditions
+
+Warnings:
+
+- bind-port conflicts
+- disabled systemd linger
+- low memory headroom
+
+### What `stakpak autopilot doctor` checks
+
+In addition to the startup probes, doctor also reports:
+
+- disk space headroom
+- critical sandbox mount readability hints
+- channel config validity
+- schedule config validity
+- service installation status
+- server health reachability
+- tool approval posture
+
+### Important behavior notes
+
+- `stakpak up` now runs preflight checks before image pull/service start
+- sandbox permission issues are addressed by mapping the host UID/GID into the container runtime when possible
+- secret/config files should **not** be made world-readable as a workaround
+
+### Sandbox mode
+
+Autopilot spawns a Docker-based sandbox container to isolate subagent tool calls. The `sandbox_mode` field in `[server]` controls the container lifecycle:
+
+```toml
+[server]
+listen = "127.0.0.1:4096"
+sandbox_mode = "ephemeral"  # or "persistent" (default)
+```
+
+| Mode | Behavior | Startup requirement |
+|------|----------|---------------------|
+| `persistent` (default) | Single container spawned at startup, reused for all sessions. If the container fails to start, autopilot refuses to start. | Docker + working image for host arch |
+| `ephemeral` | Container spawned per-session only when `sandbox: true` is requested. The sandbox image is still pulled/validated at startup so Docker progress is visible. | Docker + working image for host arch |
+
+### Common probe meanings
+
+| Probe | Meaning | Typical fix |
+|------|---------|-------------|
+| `docker_installed` | Docker binary missing | Install Docker |
+| `docker_accessible` | User cannot talk to daemon | Add user to docker group / start daemon |
+| `memory` | Host is too small or borderline | Use 2GB+ RAM or add swap |
+| `disk_space` | Low free space for image pulls/logs | Free space or expand volume |
+| `bind_port` | Listen address unavailable | `stakpak down` or change bind |
+| `systemd_linger` | User service may stop after logout | `sudo loginctl enable-linger $USER` |
+| `sandbox_mount_inputs` | Critical mounted inputs may be unreadable | Fix invoking-user readability; do not loosen secret perms globally |
+
+Use `stakpak autopilot doctor` as the canonical deployment-readiness and remediation entrypoint.
+
+---
+
+## File ownership
+
+### 1) `~/.stakpak/config.toml` (behavior profiles)
+
+Use this for profile behavior and credentials.
+
+```toml
+[profiles.default]
+api_key = "sk-..."
+model = "anthropic/claude-sonnet-4-5"
+allowed_tools = ["view", "search_docs", "run_command"]
+auto_approve = ["view", "search_docs"]
+system_prompt = "You are the production reliability assistant."
+max_turns = 64
+
+[profiles.monitoring]
+model = "anthropic/claude-haiku-4-5"
+allowed_tools = ["view", "search_docs"]
+auto_approve = ["view", "search_docs"]
+system_prompt = "Monitor and report only. Never make changes."
+max_turns = 16
+
+[profiles.ops]
+model = "anthropic/claude-sonnet-4-5"
+allowed_tools = ["view", "search_docs", "run_command", "create", "str_replace"]
+auto_approve = ["view", "search_docs", "run_command"]
+max_turns = 64
+```
+
+### 2) `~/.stakpak/autopilot.toml` (runtime wiring)
+
+Use this for schedules/channels and runtime config.
+
+```toml
+[server]
+listen = "127.0.0.1:4096"
+
+[notifications]
+channel = "slack"
+target = "#ops"
+
+[[schedules]]
+name = "health-check"
+cron = "*/5 * * * *"
+prompt = "Check production health"
+profile = "monitoring"
+
+[channels.slack]
+bot_token = "xoxb-..."
+app_token = "xapp-..."
+profile = "ops"
+```
+
+The default notification route is `slack:#ops`. Any schedule without `notify_target` inherits that route. The `health-check` schedule runs with the `monitoring` profile. Inbound Slack sessions run with the `ops` profile.
+
+---
+
+## CLI workflow
+
+### Add a default notification route
+
+```bash
+stakpak autopilot channel add slack \
+  --bot-token "$SLACK_BOT_TOKEN" \
+  --app-token "$SLACK_APP_TOKEN" \
+  --profile ops \
+  --target "#ops"
+```
+
+This writes Slack credentials under `[channels.slack]` and the default notification route under `[notifications]`. The `--profile ops` part applies to inbound Slack sessions. The `--target "#ops"` part sets where scheduled notifications go by default.
+
+### Add schedules with profile
+
+```bash
+stakpak autopilot schedule add health-check \
+  --cron '*/5 * * * *' \
+  --prompt 'Check production health and report anomalies' \
+  --profile monitoring
+```
+
+This schedule inherits the default `slack:#ops` route. To send one schedule somewhere else, use schedule-specific notification flags:
+
+```bash
+stakpak autopilot schedule add deploy-watch \
+  --cron '*/15 * * * *' \
+  --prompt 'Watch deploys and report risky changes' \
+  --profile monitoring \
+  --notify-channel slack \
+  --notify-target "#deploys"
+```
+
+The `deploy-watch` schedule still uses the `monitoring` profile. `--notify-target "#deploys"` changes only the notification destination.
+
+`check` script paths support `~`, which resolves against the HOME of the user running autopilot.
+For systemd/launchd/container deployments, prefer absolute paths (for example, `/home/ec2-user/.stakpak/checks/endpoints.sh`).
+
+### Route resolution rules
+
+1. `notify_channel` overrides `[notifications].channel` when set.
+2. `notify_target` overrides `[notifications].target` when set.
+3. If only `notify_target` is set, the schedule inherits the default channel.
+4. If a schedule is disabled, it will not run or send notifications.
+
+### Profile resolution rules
+
+1. A schedule run uses the schedule's `profile` when set.
+2. If a schedule omits `profile`, it falls back to `[defaults].profile`, then the default profile.
+3. A channel session uses the channel's `profile` when set.
+4. Notification targets do not affect profile selection.
+
+Slack public channel names such as `#ops` are accepted where Slack supports them. Channel IDs are most reliable for private channels, DMs, and scripts.
+
+Both commands validate that profile names exist in `config.toml`.
+
+### Example: nightly retrospect
+
+`stakpak ak skill retrospect` prints a prompt that walks the agent through turning past `stakpak sessions` into durable entries in the `ak` store. Schedule it nightly so knowledge accumulates without manual effort:
+
+```bash
+stakpak autopilot schedule add retrospect --cron "0 3 * * *" --prompt "$(stakpak ak skill retrospect)"
+```
+
+Each retrospect run processes candidate sessions newest-first and cites its sources in frontmatter. Idempotency falls out of those citations: sessions already cited are skipped on subsequent runs, so the schedule is safe to re-trigger and scale-insensitive to how many sessions have accumulated. See `stakpak ak skill retrospect` for the full workflow.
+
+`ak search`, `ak read`, `ak write`, `ak remove`, and `ak skill` are auto-approved by default for agent workflows.
+
+---
+
+## Runtime resolution path
+
+1. Caller selects a profile (schedule/channel/API caller).
+2. Profile is resolved from `config.toml`.
+3. Runtime fields are converted to `RunOverrides`.
+4. Server merges `RunOverrides` with `AppState` defaults to build per-run `RunConfig`.
+
+This keeps server runtime stateless while allowing per-run behavior.
+
+---
+
+## Backward compatibility
+
+- Channel inline overrides are still supported:
+  - `channels.<type>.model`
+  - `channels.<type>.auto_approve`
+- If both `profile` and inline values are set, profile-based run overrides take precedence.
+- Gateway emits deprecation warnings to help migration.
+
+---
+
+## Validation limits
+
+Profile validation enforces:
+
+- `max_turns` in `1..=256`
+- `system_prompt` up to `32KB` (characters)
+
+Invalid profile values fail at profile resolution time.
+
+---
+
+## Recommended migration
+
+1. Move channel inline `model` and `auto_approve` into named profiles in `config.toml`.
+2. Set `profile = "..."` on channels and schedules.
+3. Use `stakpak autopilot doctor` to detect deprecated inline channel fields.
+4. Keep `autopilot.toml` focused on runtime wiring only.

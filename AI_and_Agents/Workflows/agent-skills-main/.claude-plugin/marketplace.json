@@ -1,0 +1,36 @@
+{
+  "name": "hashicorp",
+  "owner": {
+    "name": "HashiCorp"
+  },
+  "metadata": {
+    "description": "Official HashiCorp product plugins and Agent Skills for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "terraform",
+      "source": "./plugins/terraform",
+      "description": "Terraform skills for configuration, modules, providers, tests, imports, stacks, and policy.",
+      "version": "1.0.0",
+      "author": {
+        "name": "HashiCorp"
+      },
+      "category": "integration",
+      "license": "MPL-2.0",
+      "strict": false
+    },
+    {
+      "name": "packer",
+      "source": "./plugins/packer",
+      "description": "Packer skills for image building and HCP Packer registry workflows.",
+      "version": "1.0.0",
+      "author": {
+        "name": "HashiCorp"
+      },
+      "category": "integration",
+      "license": "MPL-2.0",
+      "strict": false
+    }
+  ]
+}
