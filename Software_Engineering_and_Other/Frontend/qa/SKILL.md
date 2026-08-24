@@ -401,14 +401,14 @@ A retail company implemented consumer-driven contract testing (Pact) for microse
 
 ## References
 
-- references/defect-severity-matrix.md — Defect Severity & Priority Matrix
-- references/qa-advanced.md — QA Advanced Topics
-- references/qa-fundamentals.md — QA Fundamentals
-- references/test-case-examples.md — Test Case Examples
-- references/test-design-techniques.md — Test Design Techniques
-- references/test-plan-template.md — Test Plan Template
-- references/qa-strategy-planning.md — QA Strategy and Planning Guide
-- references/qa-test-automation-framework.md — Test Automation Framework Reference
+- ../../../Global_References/defect-severity-matrix.md — Defect Severity & Priority Matrix
+- ../../../Global_References/qa-advanced.md — QA Advanced Topics
+- ../../../Global_References/qa-fundamentals.md — QA Fundamentals
+- ../../../Global_References/test-case-examples.md — Test Case Examples
+- ../../../Global_References/test-design-techniques.md — Test Design Techniques
+- ../../../Global_References/test-plan-template.md — Test Plan Template
+- ../../../Global_References/qa-strategy-planning.md — QA Strategy and Planning Guide
+- ../../../Global_References/qa-test-automation-framework.md — Test Automation Framework Reference
 
 ## Handoff
 After completing this skill:
@@ -522,3 +522,4 @@ After completing this skill:
 - **Security test cases**: Include auth bypass, injection, and XSS test cases. Add security scenarios to regression suite.
 - **Dependency scanning**: Scan test dependencies for known vulnerabilities. Keep test tooling up to date.
 - **Access control testing**: Verify role-based access in test suites. Include negative tests for unauthorized access.
+

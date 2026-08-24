@@ -740,12 +740,12 @@ func testAccessibilityLabels() {
 ```
 
 ## References
-- `references/integration-testing.md` — Mobile Integration Testing
-- `references/manual-testing.md` — Manual Testing — Mobile
-- `references/mobile-testing-strategies.md` — Mobile Testing Strategies
-- `references/test-automation-frameworks.md` — Test Automation Frameworks
-- `references/ui-testing.md` — Mobile UI Testing
-- `references/unit-testing.md` — Mobile Unit Testing
+- `../../../Global_References/testing_integration-testing.md` — Mobile Integration Testing
+- `../../../Global_References/manual-testing.md` — Manual Testing — Mobile
+- `../../../Global_References/mobile-testing-strategies.md` — Mobile Testing Strategies
+- `../../../Global_References/test-automation-frameworks.md` — Test Automation Frameworks
+- `../../../Global_References/ui-testing.md` — Mobile UI Testing
+- `../../../Global_References/testing_unit-testing.md` — Mobile Unit Testing
 
 ## Handoff
 After testing setup, hand off to:
@@ -757,3 +757,4 @@ After testing setup, hand off to:
 - `mobile/ios` — XCUITest, XCTest, snapshot testing
 - `mobile/flutter` — flutter_test, integration_test
 - `mobile/react-native` — Jest, Detox, React Native Testing Library
+

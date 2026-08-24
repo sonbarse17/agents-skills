@@ -310,8 +310,8 @@ Hotfix tag: v2.0.1
 ```
 
 ## References
-  - references/pr-writer-advanced.md — PR Writer Advanced Topics
-  - references/pr-writer-fundamentals.md — PR Writer Fundamentals
+  - ../../../Global_References/pr-writer-advanced.md — PR Writer Advanced Topics
+  - ../../../Global_References/pr-writer-fundamentals.md — PR Writer Fundamentals
   - references/pr-writer-templates.md — PR Templates Reference
   - references/pr-writer-workflow.md — PR Workflow Reference
 ## Handoff
@@ -510,3 +510,4 @@ What's the risk level?
 - **PR metadata exposure**: Strip sensitive CI variables from PR description and comments. Avoid pasting raw stack traces with internal paths.
 - **External contributor safety**: Use separate CI pipeline with restricted permissions for fork PRs. Mask secrets in public fork runs.
 - **Signed commits**: Enforce commit signing (GPG/SSH) in PR requirements. Automatically label unsigned commits as unverified.
+

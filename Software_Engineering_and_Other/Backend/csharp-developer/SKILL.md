@@ -42,11 +42,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern C# | `references/modern-csharp.md` | Records, pattern matching, nullable types |
-| ASP.NET Core | `references/aspnet-core.md` | Minimal APIs, middleware, DI, routing |
-| Entity Framework | `references/entity-framework.md` | EF Core, migrations, query optimization |
-| Blazor | `references/blazor.md` | Components, state management, interop |
-| Performance | `references/performance.md` | Span<T>, async, memory optimization, AOT |
+| Modern C# | `../../../Global_References/modern-csharp.md` | Records, pattern matching, nullable types |
+| ASP.NET Core | `../../../Global_References/aspnet-core.md` | Minimal APIs, middleware, DI, routing |
+| Entity Framework | `../../../Global_References/csharp-developer_entity-framework.md` | EF Core, migrations, query optimization |
+| Blazor | `../../../Global_References/blazor.md` | Components, state management, interop |
+| Performance | `../../../Global_References/csharp-developer_performance.md` | Span<T>, async, memory optimization, AOT |
 
 ## Constraints
 
@@ -125,3 +125,4 @@ app.Run();
 C# 12, .NET 8, ASP.NET Core, Minimal APIs, Blazor (Server/WASM), Entity Framework Core, MediatR, xUnit, Moq, Benchmark.NET, SignalR, gRPC, Azure SDK, Polly, FluentValidation, Serilog
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/csharp-developer/)
+

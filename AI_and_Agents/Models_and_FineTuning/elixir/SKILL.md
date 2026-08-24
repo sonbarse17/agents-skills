@@ -485,11 +485,11 @@ end
 ```
 
 ## References
-- `references/otp-supervision.md` — Supervision trees, GenServer, Task, Agent
-- `references/phoenix-live-view.md` — Phoenix LiveView, Channels, PubSub
-- `references/elixir-fundamentals.md` — Elixir Fundamentals
-- `references/elixir-advanced.md` — Advanced Elixir Patterns
-- `references/elixir-deployment.md` — Elixir Deployment Guide
+- `../../../Global_References/otp-supervision.md` — Supervision trees, GenServer, Task, Agent
+- `../../../Global_References/phoenix-live-view.md` — Phoenix LiveView, Channels, PubSub
+- `../../../Global_References/elixir-fundamentals.md` — Elixir Fundamentals
+- `../../../Global_References/elixir-advanced.md` — Advanced Elixir Patterns
+- `../../../Global_References/elixir-deployment.md` — Elixir Deployment Guide
 
 ## Implementation Patterns
 
@@ -590,3 +590,4 @@ end
 - Rate limiting: `ExRated` with GenServer-backed bucket. Apply to auth, signup, password-reset endpoints.
 - Dependency audit: `mix hex.audit` in CI. Fail on known vulnerabilities.
 - Secrets: `config/runtime.exs` reads from environment. Never `config/prod.exs` with hardcoded values.
+

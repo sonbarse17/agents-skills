@@ -417,13 +417,13 @@ Single-stage: simpler Dockerfile, larger image, includes build tools. Multi-stag
 alpine: smallest with apk, musl libc compatibility issues possible. slim: debian-based, glibc compatible, medium size. distroless: minimal, no shell or package manager, hardest to debug. Choose based on security requirements and dependency compatibility.
 
 ## References
-- references/container-security.md -- Container Security
-- references/docker-compose-production.md -- Docker Compose in Production
-- references/docker-networking.md -- Docker Networking
-- references/docker-patterns-advanced.md -- Docker Patterns Advanced Topics
-- references/docker-patterns-fundamentals.md -- Docker Patterns Fundamentals
-- references/dockerfile-guide.md -- Dockerfile Best Practices
-- references/image-optimization.md -- Image Optimization
+- ../../../Global_References/docker-patterns_container-security.md -- Container Security
+- ../../../Global_References/docker-compose-production.md -- Docker Compose in Production
+- ../../../Global_References/docker-networking.md -- Docker Networking
+- ../../../Global_References/docker-patterns-advanced.md -- Docker Patterns Advanced Topics
+- ../../../Global_References/docker-patterns-fundamentals.md -- Docker Patterns Fundamentals
+- ../../../Global_References/dockerfile-guide.md -- Dockerfile Best Practices
+- ../../../Global_References/image-optimization.md -- Image Optimization
 
 ## Handoff
 After completing this skill:
@@ -564,3 +564,4 @@ volumes:
 - Enable **user namespace remapping** (`userns-remap`) on Docker daemon for extra isolation
 - Never mount **Docker socket** (`/var/run/docker.sock`) in containers — use remote API with TLS
 - Set **seccomp** and **AppArmor** profiles to restrict container syscall access
+

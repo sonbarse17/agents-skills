@@ -20,7 +20,7 @@ Comprehensive guidance for configuring and using ShellCheck to improve shell scr
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/shellcheck-configuration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -32,3 +32,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 6. **Update regularly** - Keep ShellCheck current for new checks
 7. **Use pre-commit hooks** - Catch issues locally before pushing
 8. **Integrate with editors** - Get real-time feedback during development
+

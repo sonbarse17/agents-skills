@@ -422,14 +422,14 @@ What task?
 - Mixed precision (AMP) gives ~2x speedup.
 
 ## References
-  - references/computer-vision-advanced.md — Computer Vision Advanced Topics
-  - references/computer-vision-fundamentals.md — Computer Vision Fundamentals
-  - references/cv-deployment.md — CV Model Deployment
-  - references/cv-pipeline.md — Computer Vision Pipeline
-  - references/detection-segmentation.md — Detection & Segmentation
-  - references/image-preprocessing.md — Image Preprocessing & Augmentation
-  - references/image-segmentation.md — Image Segmentation
-  - references/video-analysis.md — Video Analysis
+  - ../../../Global_References/computer-vision-advanced.md — Computer Vision Advanced Topics
+  - ../../../Global_References/computer-vision-fundamentals.md — Computer Vision Fundamentals
+  - ../../../Global_References/cv-deployment.md — CV Model Deployment
+  - ../../../Global_References/cv-pipeline.md — Computer Vision Pipeline
+  - ../../../Global_References/detection-segmentation.md — Detection & Segmentation
+  - ../../../Global_References/image-preprocessing.md — Image Preprocessing & Augmentation
+  - ../../../Global_References/image-segmentation.md — Image Segmentation
+  - ../../../Global_References/video-analysis.md — Video Analysis
 ## Handoff
 Hand off to ml-experiment-tracking for training runs. For model deployment on edge devices, hand off to devops-ml-serving.
 
@@ -522,3 +522,4 @@ print(f'mAP50: {metrics.box.map50:.4f}, mAP50-95: {metrics.box.map:.4f}')
 - **Private data in training**: Ensure no PII in training images. Blur faces, license plates, and personal identifiers.
 - **Video surveillance compliance**: Comply with GDPR/CCPA for video data processing. Implement data retention policies.
 - **Model inversion**: Prevent image reconstruction from model gradients. Use differential privacy for sensitive image domains.
+

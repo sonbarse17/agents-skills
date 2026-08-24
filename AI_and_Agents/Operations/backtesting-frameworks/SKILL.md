@@ -64,7 +64,7 @@ Window 4:             [Train──────][Test]
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/backtesting-frameworks_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 
@@ -83,3 +83,4 @@ Detailed sections (starting with `## Implementation Patterns`) live in `referenc
 - **Don't use adjusted data carelessly** - Understand adjustments
 - **Don't optimize on full history** - Reserve test set
 - **Don't ignore capacity** - Market impact matters
+

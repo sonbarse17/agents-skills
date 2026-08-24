@@ -93,7 +93,7 @@ const tokens = {
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/design-system-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -113,3 +113,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Hardcoded Values**: Using raw values instead of tokens
 - **Circular References**: Tokens referencing each other in loops
 - **Platform Gaps**: Tokens missing for some platforms (web but not mobile)
+

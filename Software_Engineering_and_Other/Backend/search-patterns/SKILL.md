@@ -454,14 +454,14 @@ const suggestQuery = {
 - Use search-as-you-type or completion suggester for autocomplete, not wildcard prefix queries
 
 ## References
-  - references/indexing-strategies.md — Indexing Strategies and Relevance
-  - references/search-architecture.md — Search Architecture
-  - references/search-engines.md — Search Engines Reference
-  - references/search-faceted-navigation.md — Faceted Search Navigation
-  - references/search-implementation.md — Search Implementation Patterns
-  - references/search-optimization.md — Search Optimization and Performance
-  - references/search-performance.md — Search Performance
-  - references/search-synonyms.md — Search Synonyms
+  - ../../../Global_References/search-patterns_indexing-strategies.md — Indexing Strategies and Relevance
+  - ../../../Global_References/search-architecture.md — Search Architecture
+  - ../../../Global_References/search-engines.md — Search Engines Reference
+  - ../../../Global_References/search-faceted-navigation.md — Faceted Search Navigation
+  - ../../../Global_References/search-implementation.md — Search Implementation Patterns
+  - ../../../Global_References/search-optimization.md — Search Optimization and Performance
+  - ../../../Global_References/search-performance.md — Search Performance
+  - ../../../Global_References/search-synonyms.md — Search Synonyms
 ## Handoff
 `backend-database-patterns` for indexing source data schema design
 ## Implementation Patterns

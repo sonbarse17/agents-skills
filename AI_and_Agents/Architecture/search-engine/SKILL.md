@@ -402,14 +402,14 @@ Solr is older but excels at faceted search and has a mature ecosystem. Elasticse
 - Use search templates client-side, not stored scripts
 
 ## References
-  - references/elasticsearch-architecture.md — Elasticsearch Architecture
-  - references/modern-search-engines.md — Modern Search Engines — Meilisearch and Typesense
-  - references/search-aggregation.md — Search Queries and Aggregations
-  - references/search-engine-optimization.md — Search Engine Optimization Reference
-  - references/search-operations.md — Search Operations
-  - references/search-relevance-tuning.md — Search Relevance Tuning
-  - references/search-engine-ranking-relevance.md — Ranking, relevance tuning, and scoring strategies
-  - references/search-engine-distributed-architecture.md — Distributed architecture for search clusters
+  - ../../../Global_References/elasticsearch-architecture.md — Elasticsearch Architecture
+  - ../../../Global_References/modern-search-engines.md — Modern Search Engines — Meilisearch and Typesense
+  - ../../../Global_References/search-aggregation.md — Search Queries and Aggregations
+  - ../../../Global_References/search-engine-optimization.md — Search Engine Optimization Reference
+  - ../../../Global_References/search-operations.md — Search Operations
+  - ../../../Global_References/search-relevance-tuning.md — Search Relevance Tuning
+  - ../../../Global_References/search-engine-ranking-relevance.md — Ranking, relevance tuning, and scoring strategies
+  - ../../../Global_References/search-engine-distributed-architecture.md — Distributed architecture for search clusters
 ## Architecture Decision Trees
 
 ```
@@ -540,3 +540,4 @@ class HybridSearch:
 ## Handoff
 `data-relational-database` for source data
 `ml-feature-engineering` for text feature extraction from search data
+

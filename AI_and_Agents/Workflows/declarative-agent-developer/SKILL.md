@@ -38,12 +38,12 @@ Run this once at the start of the session. All subsequent `atk` commands in the 
 |-----------|------|--------|
 | Non-agent project files, no `appPackage/` | **Reject** | Text-only response. No files, no commands. |
 | No manifest, user wants to edit/deploy | **Reject** | Text-only response. Explain manifest is missing. |
-| No manifest, user wants new project | **Scaffold** | → [Scaffolding Workflow](references/scaffolding-workflow.md) |
+| No manifest, user wants new project | **Scaffold** | → [Scaffolding Workflow](../../../Global_References/scaffolding-workflow.md) |
 | Manifest exists with errors | **Fix** | Detect → Inform → Ask (see below). Do NOT deploy. |
-| Valid project, user reports behavior issues | **Review** | → [Instruction Review](references/instruction-review.md) — run the full 5-phase review workflow |
-| Valid agent project | **Edit** | → [Editing Workflow](references/editing-workflow.md) |
+| Valid project, user reports behavior issues | **Review** | → [Instruction Review](../../../Global_References/instruction-review.md) — run the full 5-phase review workflow |
+| Valid agent project | **Edit** | → [Editing Workflow](../../../Global_References/editing-workflow.md) |
 
-> **Detailed gate rules, examples, and anti-patterns:** [Workspace Gates](references/workspace-gates.md)
+> **Detailed gate rules, examples, and anti-patterns:** [Workspace Gates](../../../Global_References/workspace-gates.md)
 
 ### 🚫 HARD REJECTION RULES — No Exceptions
 
@@ -59,7 +59,7 @@ Run this once at the start of the session. All subsequent `atk` commands in the 
 
 When you encounter ANY problem (missing files, malformed JSON, validation errors, incompatible features), you MUST follow this sequence **in order**:
 
-1. **Detect** — Identify the specific problem. For JSON issues, attempt to parse the file and report syntax errors. For missing fields, check the manifest against the [Schema](references/schema.md).
+1. **Detect** — Identify the specific problem. For JSON issues, attempt to parse the file and report syntax errors. For missing fields, check the manifest against the [Schema](../../../Global_References/declarative-agent-developer_schema.md).
 2. **Inform** — Tell the user BEFORE taking any action. Describe exactly what is wrong ("declarativeAgent.json has malformed JSON: missing comma on line 12, unclosed array on line 18").
 3. **Ask** — Wait for the user's response before making changes. Do NOT silently fix, auto-correct, or work around the problem.
 
@@ -75,16 +75,16 @@ When you encounter ANY problem (missing files, malformed JSON, validation errors
 
 | Scenario | Workflow Reference |
 |----------|-------------------|
-| Creating a NEW project from scratch | [Scaffolding Workflow](references/scaffolding-workflow.md) |
-| Working with existing `.json` manifests | [Editing Workflow](references/editing-workflow.md) |
-| Adding an API plugin | [API Plugins](references/api-plugins.md) |
-| Adding an MCP server | [MCP Plugin](references/mcp-plugin.md) |
-| Adding OAuth to an MCP or API plugin | [Authentication](references/authentication.md) |
-| Reviewing or improving existing agent instructions | [Instruction Review](references/instruction-review.md) |
-| User reports agent gives generic/wrong answers | [Instruction Review](references/instruction-review.md) |
-| Localizing an agent into multiple languages | [Localization](references/localization.md) |
-| Adding a new language to an already-localized agent | [Localization](references/localization.md) |
-| Writing agent instructions | [Conversation Design](references/conversation-design.md) |
+| Creating a NEW project from scratch | [Scaffolding Workflow](../../../Global_References/scaffolding-workflow.md) |
+| Working with existing `.json` manifests | [Editing Workflow](../../../Global_References/editing-workflow.md) |
+| Adding an API plugin | [API Plugins](../../../Global_References/api-plugins.md) |
+| Adding an MCP server | [MCP Plugin](../../../Global_References/mcp-plugin.md) |
+| Adding OAuth to an MCP or API plugin | [Authentication](../../../Global_References/declarative-agent-developer_authentication.md) |
+| Reviewing or improving existing agent instructions | [Instruction Review](../../../Global_References/instruction-review.md) |
+| User reports agent gives generic/wrong answers | [Instruction Review](../../../Global_References/instruction-review.md) |
+| Localizing an agent into multiple languages | [Localization](../../../Global_References/localization.md) |
+| Adding a new language to an already-localized agent | [Localization](../../../Global_References/localization.md) |
+| Writing agent instructions | [Conversation Design](../../../Global_References/conversation-design.md) |
 
 ---
 
@@ -130,7 +130,7 @@ Then read `M365_TITLE_ID` from `env/.env.local` and **ALWAYS** present the revie
 
 ### 3. Schema Version Compatibility
 
-Before adding ANY feature, read the `version` field in `declarativeAgent.json` and check the [Schema](references/schema.md) feature matrix. If the feature isn't supported in that version, **refuse** and offer to upgrade.
+Before adding ANY feature, read the `version` field in `declarativeAgent.json` and check the [Schema](../../../Global_References/declarative-agent-developer_schema.md) feature matrix. If the feature isn't supported in that version, **refuse** and offer to upgrade.
 
 Key version gates:
 - `sensitivity_label`, `worker_agents`, `EmbeddedKnowledge` → **v1.6 only**
@@ -149,21 +149,21 @@ npx -y --package @microsoft/m365agentstoolkit-cli atk add action --api-plugin-ty
 
 Run a **single** `npx -y --package @microsoft/m365agentstoolkit-cli atk add action` call per OpenAPI spec, listing **all** operations as a comma-separated list in `--api-operation`. Never run separate `npx -y --package @microsoft/m365agentstoolkit-cli atk add action` calls for different operations from the same spec — this creates multiple plugins instead of one. If `npx -y --package @microsoft/m365agentstoolkit-cli atk add action` fails, report the error; do NOT fall back to manual creation.
 
-> **Exception:** MCP servers are not supported by `npx -y --package @microsoft/m365agentstoolkit-cli atk add action`. Use the [MCP Plugin workflow](references/mcp-plugin.md) instead.
+> **Exception:** MCP servers are not supported by `npx -y --package @microsoft/m365agentstoolkit-cli atk add action`. Use the [MCP Plugin workflow](../../../Global_References/mcp-plugin.md) instead.
 
 ### 5. MCP Server Integration
 
-When the user mentions an MCP server URL, follow the [MCP Plugin workflow](references/mcp-plugin.md). You MUST discover tools via the MCP protocol handshake (initialize → notifications/initialized → tools/list) — **NEVER fabricate tool names/descriptions**. For authenticated MCP servers, follow the [authentication guide](references/authentication.md) to configure OAuth.
+When the user mentions an MCP server URL, follow the [MCP Plugin workflow](../../../Global_References/mcp-plugin.md). You MUST discover tools via the MCP protocol handshake (initialize → notifications/initialized → tools/list) — **NEVER fabricate tool names/descriptions**. For authenticated MCP servers, follow the [authentication guide](../../../Global_References/declarative-agent-developer_authentication.md) to configure OAuth.
 
 ### 6. Always Update Instructions & Starters After Changes
 
 Adding a capability or plugin without updating instructions is incomplete. After ANY change:
-1. Update instructions to describe the new/changed functionality — every data source should have clear intent coverage (WHEN and WHY to use it) per the [Instruction Review](references/instruction-review.md) quality bar. Built-in capabilities don't need exact names; actions/plugins should be named.
+1. Update instructions to describe the new/changed functionality — every data source should have clear intent coverage (WHEN and WHY to use it) per the [Instruction Review](../../../Global_References/instruction-review.md) quality bar. Built-in capabilities don't need exact names; actions/plugins should be named.
 2. **Do NOT list tool names, descriptions, or parameters in instructions** — these are already in the plugin metadata (`ai-plugin.json`, MCP manifests, capability config). Instructions should contain decision logic only: WHEN to use each tool, chaining rules, and failure handling.
 3. **Stay within the 8,000-character instruction limit** — if close to the limit, cut tool descriptions first
 4. Add at least 1 conversation starter per added capability/plugin
 5. Remove starters that reference removed capabilities
-6. Run the [Diagnostic Checklist](references/instruction-review.md) against the updated instructions to verify quality
+6. Run the [Diagnostic Checklist](../../../Global_References/instruction-review.md) against the updated instructions to verify quality
 
 ### 7. App Name Requirement
 
@@ -174,20 +174,21 @@ Always update the app name and description to something meaningful. Never leave 
 ## References
 
 ### Shared
-- **[Authentication](references/authentication.md)** — OAuth discovery, credentials, oauth/register lifecycle, OAuthPluginVault
-- **[Best Practices](references/best-practices.md)** — Security, performance, testing, compliance
-- **[Conversation Design](references/conversation-design.md)** — Authoring instructions and conversation starters from scratch
-- **[Instruction Review](references/instruction-review.md)** — Auditing, diagnosing, and improving existing instructions; anti-pattern detection; before/after rewrites
-- **[Deployment](references/deployment.md)** — ATK CLI workflows, environments, CI/CD
-- **[Localization](references/localization.md)** — Multi-language support, tokenized manifests, language files
-- **[Workspace Gates](references/workspace-gates.md)** — Detailed gate rules, examples, anti-patterns
+- **[Authentication](../../../Global_References/declarative-agent-developer_authentication.md)** — OAuth discovery, credentials, oauth/register lifecycle, OAuthPluginVault
+- **[Best Practices](../../../Global_References/declarative-agent-developer_best-practices.md)** — Security, performance, testing, compliance
+- **[Conversation Design](../../../Global_References/conversation-design.md)** — Authoring instructions and conversation starters from scratch
+- **[Instruction Review](../../../Global_References/instruction-review.md)** — Auditing, diagnosing, and improving existing instructions; anti-pattern detection; before/after rewrites
+- **[Deployment](../../../Global_References/declarative-agent-developer_deployment.md)** — ATK CLI workflows, environments, CI/CD
+- **[Localization](../../../Global_References/localization.md)** — Multi-language support, tokenized manifests, language files
+- **[Workspace Gates](../../../Global_References/workspace-gates.md)** — Detailed gate rules, examples, anti-patterns
 
 ### Scaffolding
-- **[Scaffolding Workflow](references/scaffolding-workflow.md)** — Step-by-step scaffolding instructions, naming rules, error handling
+- **[Scaffolding Workflow](../../../Global_References/scaffolding-workflow.md)** — Step-by-step scaffolding instructions, naming rules, error handling
 
 ### JSON Development
-- **[Editing Workflow](references/editing-workflow.md)** — Step-by-step JSON development instructions
-- **[Schema](references/schema.md)** — Official JSON schema for agent manifests
-- **[API Plugins](references/api-plugins.md)** — OpenAPI integration for JSON agents
-- **[MCP Plugin](references/mcp-plugin.md)** — MCP server integration with RemoteMCPServer, OAuth, response semantics, logo handling
-- **[Examples](references/examples.md)** — JSON manifest examples
+- **[Editing Workflow](../../../Global_References/editing-workflow.md)** — Step-by-step JSON development instructions
+- **[Schema](../../../Global_References/declarative-agent-developer_schema.md)** — Official JSON schema for agent manifests
+- **[API Plugins](../../../Global_References/api-plugins.md)** — OpenAPI integration for JSON agents
+- **[MCP Plugin](../../../Global_References/mcp-plugin.md)** — MCP server integration with RemoteMCPServer, OAuth, response semantics, logo handling
+- **[Examples](../../../Global_References/declarative-agent-developer_examples.md)** — JSON manifest examples
+

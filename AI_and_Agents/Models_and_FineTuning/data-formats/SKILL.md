@@ -398,14 +398,14 @@ print(f"Result: {table.num_rows} rows, {table.num_columns} columns")
 - Use RLE encoding for boolean and low-cardinality enum columns
 
 ## References
-  - references/arrow-flight-protocol.md — Arrow Flight Protocol
-  - references/columnar-format-guide.md — Columnar Format Guide
-  - references/columnar-formats.md — Columnar Formats Deep Dive Reference
-  - references/compression-encoding.md — Compression and Encoding
-  - references/data-serialization-patterns.md — Data Serialization Patterns
-  - references/file-format-benchmarks.md — File Format Benchmarks
-  - references/format-migration-strategies.md — Format Migration Strategies
-  - references/schema-evolution.md — Schema Evolution Reference
+  - ../../../Global_References/arrow-flight-protocol.md — Arrow Flight Protocol
+  - ../../../Global_References/columnar-format-guide.md — Columnar Format Guide
+  - ../../../Global_References/columnar-formats.md — Columnar Formats Deep Dive Reference
+  - ../../../Global_References/compression-encoding.md — Compression and Encoding
+  - ../../../Global_References/data-serialization-patterns.md — Data Serialization Patterns
+  - ../../../Global_References/file-format-benchmarks.md — File Format Benchmarks
+  - ../../../Global_References/format-migration-strategies.md — Format Migration Strategies
+  - ../../../Global_References/data-formats_schema-evolution.md — Schema Evolution Reference
 ## Architecture Decision Trees
 
 ```
@@ -507,3 +507,4 @@ class DataFlightClient:
 `data-streaming` for Kafka/Avro schema management and stream processing
 `data-data-lake` for Parquet/ORC file organization in data lake storage
 `data-data-lakehouse` for table format (Iceberg, Delta Lake, Hudi) integration
+

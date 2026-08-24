@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Concurrency | `references/concurrency.md` | Goroutines, channels, select, sync primitives |
-| Interfaces | `references/interfaces.md` | Interface design, io.Reader/Writer, composition |
-| Generics | `references/generics.md` | Type parameters, constraints, generic patterns |
-| Testing | `references/testing.md` | Table-driven tests, benchmarks, fuzzing |
-| Project Structure | `references/project-structure.md` | Module layout, internal packages, go.mod |
+| Concurrency | `../../../Global_References/concurrency.md` | Goroutines, channels, select, sync primitives |
+| Interfaces | `../../../Global_References/interfaces.md` | Interface design, io.Reader/Writer, composition |
+| Generics | `../../../Global_References/generics.md` | Type parameters, constraints, generic patterns |
+| Testing | `../../../Global_References/golang-pro_testing.md` | Table-driven tests, benchmarks, fuzzing |
+| Project Structure | `../../../Global_References/project-structure.md` | Module layout, internal packages, go.mod |
 
 ## Core Pattern Example
 
@@ -122,3 +122,4 @@ When implementing Go features, provide:
 Go 1.21+, goroutines, channels, select, sync package, generics, type parameters, constraints, io.Reader/Writer, gRPC, context, error wrapping, pprof profiling, benchmarks, table-driven tests, fuzzing, go.mod, internal packages, functional options
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/golang-pro/)
+

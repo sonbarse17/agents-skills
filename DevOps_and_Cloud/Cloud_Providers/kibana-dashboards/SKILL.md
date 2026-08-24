@@ -254,7 +254,7 @@ Use `data_view_reference` with aggregation operations. Kibana performs the aggre
 
 **Available operations:** `count`, `average`, `sum`, `max`, `min`, `unique_count`, `median`, `standard_deviation`,
 `percentile`, `percentile_rank`, `last_value`, `date_histogram`, `terms`. See
-[Chart Types Reference](references/chart-types-reference.md) for details.
+[Chart Types Reference](../../../Global_References/chart-types-reference.md) for details.
 
 #### ES|QL Dataset
 
@@ -297,7 +297,7 @@ Use `index` for ad-hoc index patterns without a saved data view:
 
 ## Examples
 
-For detailed schemas and all chart type options, see [Chart Types Reference](references/chart-types-reference.md).
+For detailed schemas and all chart type options, see [Chart Types Reference](../../../Global_References/chart-types-reference.md).
 
 **Metric (Data View):**
 
@@ -366,9 +366,9 @@ For detailed schemas and all chart type options, see [Chart Types Reference](ref
 
 ## Full Documentation
 
-- [Dashboard API Reference](references/dashboard-api-reference.md) — Dashboard endpoints and schemas
-- [Visualizations API Reference](references/visualizations-api-reference.md) — Visualization endpoints
-- [Chart Types Reference](references/chart-types-reference.md) — Detailed schemas for each chart type
+- [Dashboard API Reference](../../../Global_References/dashboard-api-reference.md) — Dashboard endpoints and schemas
+- [Visualizations API Reference](../../../Global_References/visualizations-api-reference.md) — Visualization endpoints
+- [Chart Types Reference](../../../Global_References/chart-types-reference.md) — Detailed schemas for each chart type
 - [Example Definitions](assets/) — Ready-to-use definitions
 
 ### Key Example Files
@@ -410,7 +410,7 @@ See `assets/` for ready-to-use definitions: `demo-dashboard.json`, `dashboard-wi
    name using backticks (e.g., ``STATS `Total Requests` = COUNT()`` and `"column": "Total Requests"`).
 10. **Format numbers with units** — Use the `format` property on metrics and y-axis columns to display proper units
     instead of raw numbers. Types: `bytes`, `bits`, `number`, `percent`, `duration`, `custom`. Example:
-    `"format": { "type": "bytes", "decimals": 0 }`. See [Chart Types Reference](references/chart-types-reference.md) for
+    `"format": { "type": "bytes", "decimals": 0 }`. See [Chart Types Reference](../../../Global_References/chart-types-reference.md) for
     the full format table.
 
 ### Schema Differences: Data View vs ES|QL
@@ -492,3 +492,4 @@ The APIs follow these principles:
 4. **Semantic names** — Clear, readable property names
 5. **Git-friendly** — Easy to track changes in version control
 6. **LLM-optimized** — Compact format suitable for one-shot generation
+

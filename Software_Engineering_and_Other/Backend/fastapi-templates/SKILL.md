@@ -70,7 +70,7 @@ Proper async/await usage:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/fastapi-templates_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Testing
 
@@ -134,3 +134,4 @@ async def test_create_user(client):
     assert data["email"] == "test@example.com"
     assert "id" in data
 ```
+

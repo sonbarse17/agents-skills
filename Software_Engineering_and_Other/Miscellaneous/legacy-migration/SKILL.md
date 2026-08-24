@@ -502,14 +502,15 @@ Scheduling the cutover during end-of-quarter close, Black Friday, or product lau
 - Post-migration performance monitoring must continue for minimum 30 days.
 
 ## References
-  - references/legacy-migration-advanced.md -- Legacy Migration Advanced
-  - references/strangler-fig-implementation.md -- Strangler Fig Implementation Patterns Topics
-  - references/legacy-migration-fundamentals.md -- Legacy Migration Fundamentals
-  - references/legacy-migration-patterns.md -- Legacy Migration Patterns
-  - references/legacy-migration-strategies.md -- Legacy Migration Strategies Reference
-  - references/legacy-migration-risk-management.md -- Legacy Migration Risk Management
-  - references/migration-strategies.md -- Migration Strategies
-  - references/strangler-fig.md -- Strangler Fig Pattern
-  - references/testing-migration.md -- Testing Legacy Migrations
+  - ../../../Global_References/legacy-migration-advanced.md -- Legacy Migration Advanced
+  - ../../../Global_References/strangler-fig-implementation.md -- Strangler Fig Implementation Patterns Topics
+  - ../../../Global_References/legacy-migration-fundamentals.md -- Legacy Migration Fundamentals
+  - ../../../Global_References/legacy-migration-patterns.md -- Legacy Migration Patterns
+  - ../../../Global_References/legacy-migration-strategies.md -- Legacy Migration Strategies Reference
+  - ../../../Global_References/legacy-migration-risk-management.md -- Legacy Migration Risk Management
+  - ../../../Global_References/legacy-migration_migration-strategies.md -- Migration Strategies
+  - ../../../Global_References/strangler-fig.md -- Strangler Fig Pattern
+  - ../../../Global_References/testing-migration.md -- Testing Legacy Migrations
 ## Handoff
 For integration patterns during strangler fig, hand off to `enterprise-integration-patterns`. For data governance during migration, hand off to `enterprise-data-governance`.
+

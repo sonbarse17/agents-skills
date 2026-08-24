@@ -689,12 +689,13 @@ Without purple team validation, you don't know if intelligence has improved dete
 - Threat actor profiles must be updated within 30 days of significant TTP changes
 
 ## References
-  - references/cti-lifecycle.md — Threat Intelligence Lifecycle
-  - references/osint-collection.md — OSINT Collection
-  - references/threat-hunting.md — Threat Hunting
-  - references/threat-intelligence-advanced.md — Threat Intelligence Advanced Topics
-  - references/threat-intelligence-fundamentals.md — Threat Intelligence Fundamentals
-  - references/ti-platforms.md — Threat Intelligence Platforms
-  - references/ti-sharing.md — Threat Intelligence Sharing
+  - ../../../Global_References/cti-lifecycle.md — Threat Intelligence Lifecycle
+  - ../../../Global_References/osint-collection.md — OSINT Collection
+  - ../../../Global_References/threat-intelligence_threat-hunting.md — Threat Hunting
+  - ../../../Global_References/threat-intelligence-advanced.md — Threat Intelligence Advanced Topics
+  - ../../../Global_References/threat-intelligence-fundamentals.md — Threat Intelligence Fundamentals
+  - ../../../Global_References/ti-platforms.md — Threat Intelligence Platforms
+  - ../../../Global_References/ti-sharing.md — Threat Intelligence Sharing
 ## Handoff
 IoC feeds integrated with siem-engineering for detection rules. TTP mapping informs soc-operations for analyst workflows.
+

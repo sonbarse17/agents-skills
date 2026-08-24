@@ -507,15 +507,16 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - Registry access restricted to approved publishers only
 
 ## References
-- references/container-security-fundamentals.md -- Container Security Fundamentals
-- references/container-security-advanced.md -- Container Security Advanced Topics
-- references/container-vulnerability-scanning.md -- Container Vulnerability Scanning
-- references/image-security.md -- Image Security
-- references/runtime-security.md -- Runtime Security
-- references/admission-controller-policies.md -- Admission Controller Policies
-- references/container-image-security.md -- Container Image Security
-- references/container-runtime-security.md -- Container Runtime Security
+- ../../../Global_References/container-security-fundamentals.md -- Container Security Fundamentals
+- ../../../Global_References/container-security-advanced.md -- Container Security Advanced Topics
+- ../../../Global_References/container-vulnerability-scanning.md -- Container Vulnerability Scanning
+- ../../../Global_References/image-security.md -- Image Security
+- ../../../Global_References/runtime-security.md -- Runtime Security
+- ../../../Global_References/admission-controller-policies.md -- Admission Controller Policies
+- ../../../Global_References/container-image-security.md -- Container Image Security
+- ../../../Global_References/container-runtime-security.md -- Container Runtime Security
 
 ## Handoff
 security-secrets-management for credential injection
 security-api-security for gateway and service mesh policies
+

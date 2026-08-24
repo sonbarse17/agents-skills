@@ -41,5 +41,6 @@ Query historical costs, forecast future spending, optimize to reduce waste.
 
 ## References
 
-- [MCP Tools, Best Practices, Safety](references/tools-and-best-practices.md)
+- [MCP Tools, Best Practices, Safety](../../../../../Global_References/tools-and-best-practices.md)
 - [SDK: Redis .NET](cost-optimization/sdk/azure-resource-manager-redis-dotnet.md)
+

@@ -60,7 +60,7 @@ nobody revisits.
   [incident-response-and-on-call-management](../incident-response-and-on-call-management/SKILL.md)
   for how this is captured during the incident itself).
 - A shared, versioned template — see
-  [references/postmortem-template.md](references/postmortem-template.md)
+  [../../../Global_References/postmortem-template.md](../../../Global_References/postmortem-template.md)
   in this skill for a ready-to-use starting point.
 - An issue tracker (Jira, GitHub Issues, Linear, or equivalent) to hold
   action items as real, assignable, trackable tickets rather than bullet
@@ -79,7 +79,7 @@ nobody revisits.
    stopped so people can think clearly rather than react.
 
 2. **Fill out the template** (see
-   [references/postmortem-template.md](references/postmortem-template.md)):
+   [../../../Global_References/postmortem-template.md](../../../Global_References/postmortem-template.md)):
    Summary, Impact, Timeline (UTC timestamps), Root cause, Contributing
    factors, What went well, What went poorly, Where we got lucky, Action
    items (owner + ticket + due date), Lessons. Draft it from the scribe's
@@ -212,7 +212,7 @@ nobody revisits.
 
 ## Worked example
 
-Using [references/postmortem-template.md](references/postmortem-template.md)
+Using [../../../Global_References/postmortem-template.md](../../../Global_References/postmortem-template.md)
 for the `payments-api` checkout outage from the incident-response
 worked example:
 
@@ -250,3 +250,4 @@ worked example:
 - [slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md) — error-budget exhaustion should trigger a mandatory postmortem, and the finished document feeds the leadership sign-off to lift a launch freeze.
 - [toil-reduction-and-operational-automation](../toil-reduction-and-operational-automation/SKILL.md) — recurring manual-fix action items across postmortems are strong candidates for the toil-prioritization framework.
 - [chaos-engineering-and-resilience-testing](../chaos-engineering-and-resilience-testing/SKILL.md) — findings from a broken chaos experiment should be run through this same action-item process rather than logged and forgotten.
+

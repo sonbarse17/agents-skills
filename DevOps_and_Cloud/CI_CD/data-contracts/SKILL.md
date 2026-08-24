@@ -523,15 +523,16 @@ Does the change break existing consumers?
 - Document consumer acceptance criteria before breaking changes
 
 ## References
-  - references/contract-definition.md — Data Contract Definition
-  - references/contract-enforcement.md — Contract Enforcement
-  - references/contract-examples.md — Data Contract Examples
-  - references/contract-integration-patterns.md — Contract Integration Patterns
-  - references/contract-lifecycle-management.md — Contract Lifecycle Management
-  - references/contract-migration-strategies.md — Contract Migration Strategies
-  - references/contract-monitoring-enforcement.md — Contract Monitoring and Enforcement
-  - references/schema-evolution-policies.md — Schema Evolution Policies
-  - references/data-contracts-schema-evolution.md — Schema Evolution in Contracts
-  - references/data-contracts-governance.md — Contract Governance Reference
+  - ../../../Global_References/contract-definition.md — Data Contract Definition
+  - ../../../Global_References/contract-enforcement.md — Contract Enforcement
+  - ../../../Global_References/contract-examples.md — Data Contract Examples
+  - ../../../Global_References/contract-integration-patterns.md — Contract Integration Patterns
+  - ../../../Global_References/contract-lifecycle-management.md — Contract Lifecycle Management
+  - ../../../Global_References/contract-migration-strategies.md — Contract Migration Strategies
+  - ../../../Global_References/contract-monitoring-enforcement.md — Contract Monitoring and Enforcement
+  - ../../../Global_References/schema-evolution-policies.md — Schema Evolution Policies
+  - ../../../Global_References/data-contracts-schema-evolution.md — Schema Evolution in Contracts
+  - ../../../Global_References/data-contracts-governance.md — Contract Governance Reference
 ## Handoff
 `data-data-quality` for quality dimension enforcement in contracts. `data-data-catalog` for contract metadata. `data-data-observability` for SLA monitoring. `data-schema-registry` for schema registry integration.
+

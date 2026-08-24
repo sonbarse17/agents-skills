@@ -44,12 +44,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Review Checklist | `references/review-checklist.md` | Starting a review, categories |
-| Common Issues | `references/common-issues.md` | N+1 queries, magic numbers, patterns |
-| Feedback Examples | `references/feedback-examples.md` | Writing good feedback |
-| Report Template | `references/report-template.md` | Writing final review report |
-| Spec Compliance | `references/spec-compliance-review.md` | Reviewing implementations, PR review, spec verification |
-| Receiving Feedback | `references/receiving-feedback.md` | Responding to review comments, handling feedback |
+| Review Checklist | `../../../Global_References/code-reviewer_review-checklist.md` | Starting a review, categories |
+| Common Issues | `../../../Global_References/common-issues.md` | N+1 queries, magic numbers, patterns |
+| Feedback Examples | `../../../Global_References/feedback-examples.md` | Writing good feedback |
+| Report Template | `../../../Global_References/report-template.md` | Writing final review report |
+| Spec Compliance | `../../../Global_References/spec-compliance-review.md` | Reviewing implementations, PR review, spec verification |
+| Receiving Feedback | `../../../Global_References/receiving-feedback.md` | Responding to review comments, handling feedback |
 
 ## Review Patterns (Quick Reference)
 
@@ -119,3 +119,4 @@ Code review report must include:
 SOLID, DRY, KISS, YAGNI, design patterns, OWASP Top 10, language idioms, testing patterns
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-reviewer/)
+

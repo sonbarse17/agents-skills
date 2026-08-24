@@ -377,14 +377,14 @@ Arbitrary values should be reserved for truly one-off cases (e.g., a specific me
 
 ## References
 
-- `references/component-patterns.md` -- Component Patterns Reference
-- `references/configuration.md` -- Tailwind Configuration Reference
-- `references/design-tokens.md` -- Design Tokens Reference
-- `references/performance.md` -- Tailwind CSS Performance Reference
-- `references/responsive-patterns.md` -- Responsive Patterns Reference
-- `references/utility-first.md` -- Utility-First CSS Reference
+- `../../../Global_References/tailwind-css_component-patterns.md` -- Component Patterns Reference
+- `../../../Global_References/tailwind-css_configuration.md` -- Tailwind Configuration Reference
+- `../../../Global_References/tailwind-css_design-tokens.md` -- Design Tokens Reference
+- `../../../Global_References/tailwind-css_performance.md` -- Tailwind CSS Performance Reference
+- `../../../Global_References/responsive-patterns.md` -- Responsive Patterns Reference
+- `../../../Global_References/utility-first.md` -- Utility-First CSS Reference
 - `references/tailwind-design-system.md` -- Tailwind Design System Integration
-- `references/tailwind-performance-optimization.md` -- Tailwind Performance & Build Optimization
+- `../../../Global_References/tailwind-performance-optimization.md` -- Tailwind Performance & Build Optimization
 
 ## Handoff
 No artifact produced unless requested.
@@ -518,3 +518,4 @@ What project type?
 
 - **JIT compilation in production**: Tailwind v4 generates only used CSS. Average output 10-50KB gzipped. Enable `@source` for optimizing across multiple entry points.
 - **CSS logical properties for RTL**: Use `ps` (padding-inline-start) instead of `pl`. Tailwind v4 supports logical properties natively. Single CSS bundle for both LTR and RTL.
+

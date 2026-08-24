@@ -583,17 +583,18 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 - Monitor evictions: if keys are evicted before TTL, cache is too small.
 
 ## References
-  - references/cache-invalidation.md — Cache Invalidation
-  - references/cache-monitoring.md — Cache Monitoring
-  - references/cache-strategies.md — Cache Strategies
-  - references/cache-testing.md — Cache Testing
-  - references/cdn-caching.md — CDN Caching
-  - references/redis-patterns.md — Redis Patterns
-  - references/caching-fundamentals.md — Caching Fundamentals
-  - references/caching-advanced.md — Caching Advanced Patterns
-  - references/caching-stampede-prevention.md — Cache Stampede Prevention
+  - ../../../Global_References/cache-invalidation.md — Cache Invalidation
+  - ../../../Global_References/cache-monitoring.md — Cache Monitoring
+  - ../../../Global_References/cache-strategies.md — Cache Strategies
+  - ../../../Global_References/cache-testing.md — Cache Testing
+  - ../../../Global_References/cdn-caching.md — CDN Caching
+  - ../../../Global_References/redis-patterns.md — Redis Patterns
+  - ../../../Global_References/caching-fundamentals.md — Caching Fundamentals
+  - ../../../Global_References/caching-advanced.md — Caching Advanced Patterns
+  - ../../../Global_References/caching-stampede-prevention.md — Cache Stampede Prevention
 
 ## Handoff
 No artifact produced unless requested.
 Next skill: backend-rate-limiting — if the cache layer needs protection against traffic spikes.
 Carry forward: cache key conventions, strategy, TTL policies, invalidation plan.
+

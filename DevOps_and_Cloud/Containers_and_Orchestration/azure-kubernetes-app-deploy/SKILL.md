@@ -15,15 +15,15 @@ description: "Use when deploying an existing web application or API to an alread
 
 ## Workflow
 
-Requires: existing AKS cluster, `az login`, `kubectl` configured. Follow `phases/quick-deploy.md`. On failure: `references/rollback.md`.
+Requires: existing AKS cluster, `az login`, `kubectl` configured. Follow `phases/quick-deploy.md`. On failure: `../../../Global_References/rollback.md`.
 
 ## References
 
-- [detection.md](./references/detection.md) — framework/port/health detection
-- [safeguards.md](./references/safeguards.md) — DS001-DS013 checklist
-- [workload-identity.md](./references/workload-identity.md) — Workload Identity setup
-- [rollback.md](./references/rollback.md) — recovery procedures
-- [base-images.md](./references/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
+- [detection.md](./../../../Global_References/detection.md) — framework/port/health detection
+- [safeguards.md](./../../../Global_References/safeguards.md) — DS001-DS013 checklist
+- [workload-identity.md](./../../../Global_References/workload-identity.md) — Workload Identity setup
+- [rollback.md](./../../../Global_References/rollback.md) — recovery procedures
+- [base-images.md](./../../../Global_References/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
 
 ## Knowledge Packs
 
@@ -32,3 +32,4 @@ Load `knowledge-packs/frameworks/<framework>.md` per detected framework. Availab
 ## Templates
 
 `templates/` (dockerfiles/, k8s/, github-actions/, mermaid/).
+

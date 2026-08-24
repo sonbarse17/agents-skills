@@ -45,7 +45,7 @@ components:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/openapi-spec-generation_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -64,3 +64,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't forget nullable** - Be explicit about null
 - **Don't mix styles** - Consistent naming throughout
 - **Don't hardcode URLs** - Use server variables
+

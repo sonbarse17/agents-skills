@@ -183,14 +183,14 @@ After 4 weeks, final check-in. Buddy writes handoff note for manager: areas of s
 Each retro produces actionable items: doc updates (assigned to buddy as ticket), process changes (escalated to EM for next sprint), tool improvements (infrastructure backlog), team practice updates (next retro/team meeting). After 3 new hires, review all findings for systemic issues.
 
 ## References
-  - references/buddy-system-guide.md — Buddy System Guide
-  - references/dev-environment-automation.md — Dev Environment Automation
-  - references/onboarding-advanced.md — Onboarding Advanced Topics
-  - references/onboarding-flow.md — Onboarding Flow
-  - references/onboarding-fundamentals.md — Onboarding Fundamentals
-  - references/onboarding-templates.md — Onboarding Templates
-  - references/ramp-up-plan.md — Ramp-Up Plan
-  - references/setup-checklist.md — Setup Checklist
+  - ../../../Global_References/buddy-system-guide.md — Buddy System Guide
+  - ../../../Global_References/dev-environment-automation.md — Dev Environment Automation
+  - ../../../Global_References/onboarding-advanced.md — Onboarding Advanced Topics
+  - ../../../Global_References/onboarding-flow.md — Onboarding Flow
+  - ../../../Global_References/onboarding-fundamentals.md — Onboarding Fundamentals
+  - ../../../Global_References/onboarding-templates.md — Onboarding Templates
+  - ../../../Global_References/ramp-up-plan.md — Ramp-Up Plan
+  - ../../../Global_References/setup-checklist.md — Setup Checklist
 
 ## Remote & Distributed Onboarding Patterns
 
@@ -632,3 +632,4 @@ Onboarding documents should be updated after each new hire:
 
 ## Handoff
 core-context-compressor — summary of setup knowledge, architecture understanding, and config for continuing work
+

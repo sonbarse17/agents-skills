@@ -338,17 +338,17 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
 - Test masking/encryption with automated integration tests.
 
 ## References
-  - references/data-classification.md — Data Classification
-  - references/data-masking-audit.md — Data Masking Audit
-  - references/data-masking-advanced.md — Data Masking Advanced Patterns
-  - references/data-masking-compliance.md — Data Masking Compliance
-  - references/data-masking-fundamentals.md — Data Masking Fundamentals
-  - references/data-masking-performance.md — Data Masking Performance
-  - references/data-masking-techniques.md — Data Masking Techniques
-  - references/encryption-strategies.md — Encryption Strategies
-  - references/masking-patterns.md — Data Masking Patterns
+  - ../../../Global_References/data-classification.md — Data Classification
+  - ../../../Global_References/data-masking-audit.md — Data Masking Audit
+  - ../../../Global_References/data-masking-advanced.md — Data Masking Advanced Patterns
+  - ../../../Global_References/data-masking-compliance.md — Data Masking Compliance
+  - ../../../Global_References/data-masking-fundamentals.md — Data Masking Fundamentals
+  - ../../../Global_References/data-masking-performance.md — Data Masking Performance
+  - ../../../Global_References/data-masking-techniques.md — Data Masking Techniques
+  - ../../../Global_References/encryption-strategies.md — Encryption Strategies
+  - ../../../Global_References/masking-patterns.md — Data Masking Patterns
   - references/pii-classification-deep.md — PII Classification Deep Dive
-  - references/pii-detection.md — PII Detection
+  - ../../../Global_References/pii-detection.md — PII Detection
 ## Handoff
 No artifact produced unless requested.
 Next skill: audit-logging — log all access to sensitive data for compliance.
@@ -558,3 +558,4 @@ What type of sensitive data?
 - **Eager masking at query level**: Apply masking in SQL queries (PostgreSQL column-level encryption, views with masking). Avoids fetching and masking in application code.
 - **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token vault lookup latency by 90%.
 - **Async PII detection pipeline**: Run PII detection asynchronously for new data ingestion. Use a work queue for large batch processing. Stream results back for masking rule generation.
+

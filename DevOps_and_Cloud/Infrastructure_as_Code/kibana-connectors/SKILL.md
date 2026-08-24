@@ -267,7 +267,7 @@ Connectors serve as the integration layer across multiple Kibana workflows, not 
 | **AI workflows**          | OpenAI, Bedrock, Gemini, AI Connector | Powers Elastic AI Assistant and Attack Discovery; system-managed               |
 | **Custom integrations**   | Webhook                               | Generic HTTP outbound with Mustache-templated JSON body                        |
 
-For detailed patterns, examples, and decision guidance for each workflow, see [workflows.md](references/workflows.md).
+For detailed patterns, examples, and decision guidance for each workflow, see [workflows.md](../../../Global_References/kibana-connectors_workflows.md).
 
 ## Best Practices
 
@@ -413,3 +413,4 @@ rule.
 - [Alerting Settings (Action Config)](https://www.elastic.co/docs/reference/kibana/configuration-reference/alerting-settings#action-settings)
 - [Terraform: elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector)
 - [Terraform: Managing Kibana Rule and Connector Resources](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/guides/elasticstack-kibana-rule)
+

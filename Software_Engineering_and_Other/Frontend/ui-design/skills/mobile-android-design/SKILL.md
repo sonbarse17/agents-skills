@@ -20,7 +20,7 @@ Master Material Design 3 (Material You) and Jetpack Compose to build modern, ada
 
 ## Detailed section: Core Concepts
 
-Originally a 9201-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 9201-byte section in this SKILL.md. Moved to `../../../../../Global_References/mobile-android-design_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Quick Start Component
 
@@ -99,3 +99,4 @@ fun ItemListCard(
 - **Theme Leaks**: Ensure `MaterialTheme` wraps all composables
 - **Navigation Crashes**: Handle back press and deep links properly
 - **Memory Leaks**: Cancel coroutines in `DisposableEffect`
+

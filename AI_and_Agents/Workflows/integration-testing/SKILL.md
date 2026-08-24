@@ -394,16 +394,16 @@ Hardcoded ports, hosts, or credentials prevent parallel test execution. Use `wit
 18. WireMock stubs must be verified (at least one request matched) in afterEach
 
 ## References
-- references/api-testing.md — API Integration Testing Patterns
-- references/containerized-testing.md — Containerized Testing
-- references/contract-driven.md — Contract-Driven Integration Testing
-- references/database-testing.md — Database Integration Testing
-- references/integration-testing-advanced.md — Integration Testing Advanced Topics
-- references/integration-testing-architecture.md — Integration Testing Architecture and System Design
-- references/integration-testing-fundamentals.md — Integration Testing Fundamentals
-- references/integration-testing-strategy.md — Integration Testing Strategy and Workflow Patterns
-- references/messaging-testing.md — Message Queue Integration Testing
-- references/test-containers.md — TestContainers Patterns
+- ../../../Global_References/api-testing.md — API Integration Testing Patterns
+- ../../../Global_References/containerized-testing.md — Containerized Testing
+- ../../../Global_References/contract-driven.md — Contract-Driven Integration Testing
+- ../../../Global_References/database-testing.md — Database Integration Testing
+- ../../../Global_References/integration-testing-advanced.md — Integration Testing Advanced Topics
+- ../../../Global_References/integration-testing-architecture.md — Integration Testing Architecture and System Design
+- ../../../Global_References/integration-testing-fundamentals.md — Integration Testing Fundamentals
+- ../../../Global_References/integration-testing-strategy.md — Integration Testing Strategy and Workflow Patterns
+- ../../../Global_References/messaging-testing.md — Message Queue Integration Testing
+- ../../../Global_References/test-containers.md — TestContainers Patterns
 
 ## Handoff
 After integration testing, hand off to:

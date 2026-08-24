@@ -145,12 +145,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Pydantic V2 | `references/pydantic-v2.md` | Creating schemas, validation, model_config |
-| SQLAlchemy | `references/async-sqlalchemy.md` | Async database, models, CRUD operations |
-| Endpoints | `references/endpoints-routing.md` | APIRouter, dependencies, routing |
-| Authentication | `references/authentication.md` | JWT, OAuth2, get_current_user |
-| Testing | `references/testing-async.md` | pytest-asyncio, httpx, fixtures |
-| Django Migration | `references/migration-from-django.md` | Migrating from Django/DRF to FastAPI |
+| Pydantic V2 | `../../../Global_References/pydantic-v2.md` | Creating schemas, validation, model_config |
+| SQLAlchemy | `../../../Global_References/async-sqlalchemy.md` | Async database, models, CRUD operations |
+| Endpoints | `../../../Global_References/endpoints-routing.md` | APIRouter, dependencies, routing |
+| Authentication | `../../../Global_References/fastapi-expert_authentication.md` | JWT, OAuth2, get_current_user |
+| Testing | `../../../Global_References/testing-async.md` | pytest-asyncio, httpx, fixtures |
+| Django Migration | `../../../Global_References/migration-from-django.md` | Migrating from Django/DRF to FastAPI |
 
 ## Constraints
 
@@ -185,3 +185,4 @@ When implementing FastAPI features, provide:
 FastAPI, Pydantic V2, async SQLAlchemy, Alembic migrations, JWT/OAuth2, pytest-asyncio, httpx, BackgroundTasks, WebSockets, dependency injection, OpenAPI/Swagger
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/fastapi-expert/)
+

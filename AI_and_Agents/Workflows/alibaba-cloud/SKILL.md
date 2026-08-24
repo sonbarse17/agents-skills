@@ -416,12 +416,12 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 Terraform HCL (alicloud provider), Alibaba Cloud CLI commands, RAM policy JSON, or ROS templates.
 
 ## References
-  - references/alibaba-cloud-advanced.md
-  - references/alibaba-cloud-fundamentals.md
-  - references/aliyun-database.md
-  - references/aliyun-ecs-vpc.md
-  - references/aliyun-kubernetes.md
-  - references/aliyun-security.md
+  - ../../../Global_References/alibaba-cloud-advanced.md
+  - ../../../Global_References/alibaba-cloud-fundamentals.md
+  - ../../../Global_References/aliyun-database.md
+  - ../../../Global_References/aliyun-ecs-vpc.md
+  - ../../../Global_References/aliyun-kubernetes.md
+  - ../../../Global_References/aliyun-security.md
   - references/network-comparison.md
 
 ## Handoff
@@ -515,3 +515,4 @@ PolicyDocument:
 - Enable **ActionTrail** global trail with Log Service alerting for suspicious API activity
 - Restrict **Security Group** ingress to specific CIDR blocks; never use 0.0.0.0/0 for SSH/RDP
 - Implement **Resource Directory** with SCPs to enforce security baselines across accounts
+

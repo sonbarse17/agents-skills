@@ -409,12 +409,12 @@ Impact: DAU +45%, support tickets -30%
 - Offer participants the option to review their quotes in context before publication
 
 ## References
-  - references/research-methods.md — Research Methods Reference
-  - references/synthesis-frameworks.md — Synthesis Frameworks Reference
-  - references/synthesis.md — Synthesis
-  - references/usability-testing-guide.md — Usability Testing Guide
-  - references/ux-research-advanced.md — Ux Research Advanced Topics
-  - references/ux-research-fundamentals.md — Ux Research Fundamentals
+  - ../../../Global_References/research-methods.md — Research Methods Reference
+  - ../../../Global_References/synthesis-frameworks.md — Synthesis Frameworks Reference
+  - ../../../Global_References/synthesis.md — Synthesis
+  - ../../../Global_References/usability-testing-guide.md — Usability Testing Guide
+  - ../../../Global_References/ux-research-advanced.md — Ux Research Advanced Topics
+  - ../../../Global_References/ux-research-fundamentals.md — Ux Research Fundamentals
   - references/ux-research-methods.md — UX Research Methods
   - references/ux-research-data-analysis.md — UX Research Data Analysis
 ## Handoff
@@ -585,3 +585,4 @@ Who are the target users?
 - Consent form
 - Screen reader checklist
 `
+

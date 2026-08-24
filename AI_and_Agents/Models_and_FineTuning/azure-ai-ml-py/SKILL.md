@@ -304,5 +304,6 @@ print(f"Default: {default_ds.name}")
 
 | File | Contents |
 |------|----------|
-| [references/capabilities.md](references/capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [references/non-hero-scenarios.md](references/non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/azure-ai-ml-py_capabilities.md](../../../Global_References/azure-ai-ml-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/azure-ai-ml-py_non-hero-scenarios.md](../../../Global_References/azure-ai-ml-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+

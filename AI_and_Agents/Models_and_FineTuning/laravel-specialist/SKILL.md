@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Eloquent ORM | `references/eloquent.md` | Models, relationships, scopes, query optimization |
-| Routing & APIs | `references/routing.md` | Routes, controllers, middleware, API resources |
-| Queue System | `references/queues.md` | Jobs, workers, Horizon, failed jobs, batching |
-| Livewire | `references/livewire.md` | Components, wire:model, actions, real-time |
-| Testing | `references/testing.md` | Feature tests, factories, mocking, Pest PHP |
+| Eloquent ORM | `../../../Global_References/eloquent.md` | Models, relationships, scopes, query optimization |
+| Routing & APIs | `../../../Global_References/routing.md` | Routes, controllers, middleware, API resources |
+| Queue System | `../../../Global_References/queues.md` | Jobs, workers, Horizon, failed jobs, batching |
+| Livewire | `../../../Global_References/livewire.md` | Components, wire:model, actions, real-time |
+| Testing | `../../../Global_References/laravel-specialist_testing.md` | Feature tests, factories, mocking, Pest PHP |
 
 ## Constraints
 
@@ -262,3 +262,4 @@ Run these at each workflow stage to confirm correctness before proceeding:
 Laravel 10+, Eloquent ORM, PHP 8.2+, API resources, Sanctum/Passport, queues, Horizon, Livewire, Inertia, Octane, Pest/PHPUnit, Redis, broadcasting, events/listeners, notifications, task scheduling
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/laravel-specialist/)
+

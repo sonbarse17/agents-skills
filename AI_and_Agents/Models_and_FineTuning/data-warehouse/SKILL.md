@@ -437,14 +437,14 @@ Primary workload characteristics?
 - Choose warehouse based on workload, not just familiarity
 
 ## References
-  - references/clickhouse-analytics.md — ClickHouse for Real-Time Analytics
-  - references/modeling-optimization.md — Modeling and Optimization
-  - references/timescaledb-druid.md — TimescaleDB and Apache Druid
-  - references/warehouse-cost-optimization.md — Warehouse Cost Optimization
-  - references/warehouse-data-sharing.md — Warehouse Data Sharing
-  - references/warehouse-observability.md — Warehouse Observability
-  - references/warehouse-platforms.md — Warehouse Platforms
-  - references/warehouse-security.md — Warehouse Security
+  - ../../../Global_References/clickhouse-analytics.md — ClickHouse for Real-Time Analytics
+  - ../../../Global_References/modeling-optimization.md — Modeling and Optimization
+  - ../../../Global_References/timescaledb-druid.md — TimescaleDB and Apache Druid
+  - ../../../Global_References/warehouse-cost-optimization.md — Warehouse Cost Optimization
+  - ../../../Global_References/warehouse-data-sharing.md — Warehouse Data Sharing
+  - ../../../Global_References/warehouse-observability.md — Warehouse Observability
+  - ../../../Global_References/warehouse-platforms.md — Warehouse Platforms
+  - ../../../Global_References/warehouse-security.md — Warehouse Security
 ## Architecture Decision Trees
 
 ```
@@ -559,3 +559,4 @@ FROM {{ ref('stg_customers') }}
 ## Handoff
 `data-etl-pipeline` for loading data into the warehouse schema
 `data-bi-tools` for connecting dashboards to the data model
+

@@ -202,13 +202,13 @@ Agents authenticate at runtime using credentials configured on the **Blueprint**
 | **Client secret** | Local dev / testing | Password credential |
 | **Microsoft Entra SDK for AgentID** | Polyglot / 3P agents | Sidecar container acquires tokens over HTTP |
 
-For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and audit trail, see [references/runtime-token-exchange.md](references/runtime-token-exchange.md).
+For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and audit trail, see [../../../../../Global_References/runtime-token-exchange.md](../../../../../Global_References/runtime-token-exchange.md).
 
-For OBO (agent acting on behalf of a user), see [references/obo-blueprint-setup.md](references/obo-blueprint-setup.md).
+For OBO (agent acting on behalf of a user), see [../../../../../Global_References/obo-blueprint-setup.md](../../../../../Global_References/obo-blueprint-setup.md).
 
-For the containerized polyglot auth sidecar (Python, Node, Go, Java — no SDK embedding), see [references/sdk-sidecar.md](references/sdk-sidecar.md).
+For the containerized polyglot auth sidecar (Python, Node, Go, Java — no SDK embedding), see [../../../../../Global_References/entra-agent-id_sdk-sidecar.md](../../../../../Global_References/entra-agent-id_sdk-sidecar.md).
 
-For MI+WIF and client-secret setup details, see [references/oauth2-token-flow.md](references/oauth2-token-flow.md).
+For MI+WIF and client-secret setup details, see [../../../../../Global_References/entra-agent-id_oauth2-token-flow.md](../../../../../Global_References/entra-agent-id_oauth2-token-flow.md).
 
 ### .NET quick path
 
@@ -267,7 +267,7 @@ Blueprints can be multi-tenant (`signInAudience: AzureADMultipleOrgs`). When exc
 
 > **Step 1 of the parent token exchange MUST target the Agent Identity's home tenant**, not the Blueprint's. Wrong tenant → `AADSTS700211: No matching federated identity record found`.
 
-See [references/runtime-token-exchange.md](references/runtime-token-exchange.md) for full cross-tenant examples.
+See [../../../../../Global_References/runtime-token-exchange.md](../../../../../Global_References/runtime-token-exchange.md) for full cross-tenant examples.
 
 ## API Reference
 
@@ -339,12 +339,12 @@ After admin consent, tokens may not include new claims for 30–120 seconds — 
 
 | File | Contents |
 |------|----------|
-| [references/runtime-token-exchange.md](references/runtime-token-exchange.md) | Two-step `fmi_path` exchange: autonomous + OBO, cross-tenant |
-| [references/oauth2-token-flow.md](references/oauth2-token-flow.md) | MI + WIF (production) and client secret (local dev) |
-| [references/obo-blueprint-setup.md](references/obo-blueprint-setup.md) | Configuring the Blueprint as an OAuth2 API for OBO |
-| [references/sdk-sidecar.md](references/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — architecture, configuration, endpoints |
-| [references/sdk-sidecar-deployment.md](references/sdk-sidecar-deployment.md) | SDK code patterns (Python/TypeScript), Docker/Kubernetes manifests, security, troubleshooting |
-| [references/known-limitations.md](references/known-limitations.md) | Documented gaps organized by category |
+| [../../../../../Global_References/runtime-token-exchange.md](../../../../../Global_References/runtime-token-exchange.md) | Two-step `fmi_path` exchange: autonomous + OBO, cross-tenant |
+| [../../../../../Global_References/entra-agent-id_oauth2-token-flow.md](../../../../../Global_References/entra-agent-id_oauth2-token-flow.md) | MI + WIF (production) and client secret (local dev) |
+| [../../../../../Global_References/obo-blueprint-setup.md](../../../../../Global_References/obo-blueprint-setup.md) | Configuring the Blueprint as an OAuth2 API for OBO |
+| [../../../../../Global_References/entra-agent-id_sdk-sidecar.md](../../../../../Global_References/entra-agent-id_sdk-sidecar.md) | Microsoft Entra SDK for AgentID — architecture, configuration, endpoints |
+| [../../../../../Global_References/sdk-sidecar-deployment.md](../../../../../Global_References/sdk-sidecar-deployment.md) | SDK code patterns (Python/TypeScript), Docker/Kubernetes manifests, security, troubleshooting |
+| [../../../../../Global_References/entra-agent-id_known-limitations.md](../../../../../Global_References/entra-agent-id_known-limitations.md) | Documented gaps organized by category |
 
 ### External Links
 
@@ -354,3 +354,4 @@ After admin consent, tokens may not include new claims for 30–120 seconds — 
 | AI-Guided Setup | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-ai-guided-setup |
 | Microsoft Entra SDK for AgentID | https://learn.microsoft.com/en-us/entra/msidweb/agent-id-sdk/overview |
 | Microsoft.Identity.Web.AgentIdentities (.NET) | https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.AgentIdentities/README.AgentIdentities.md |
+

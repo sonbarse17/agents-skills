@@ -494,15 +494,16 @@ SCIM sync configured for user creation but not deactivation. When an employee le
 - Emergency break-glass access procedure documented and tested
 
 ## References
-- references/identity-provider-fundamentals.md -- Identity Provider Fundamentals
-- references/identity-provider-advanced.md -- Identity Provider Advanced Topics
-- references/federation-sso.md -- Federation and SSO Patterns
-- references/saml-oidc.md -- SAML vs OIDC
-- references/idp-setup.md -- Identity Provider Setup
-- references/idp-migration.md -- Identity Provider Migration
+- ../../../Global_References/identity-provider-fundamentals.md -- Identity Provider Fundamentals
+- ../../../Global_References/identity-provider-advanced.md -- Identity Provider Advanced Topics
+- ../../../Global_References/federation-sso.md -- Federation and SSO Patterns
+- ../../../Global_References/saml-oidc.md -- SAML vs OIDC
+- ../../../Global_References/idp-setup.md -- Identity Provider Setup
+- ../../../Global_References/idp-migration.md -- Identity Provider Migration
 - references/idp-federation-scenarios.md -- Federation Scenarios
   - references/idp-security-best-practices.md -- IdP Security Best Practices
-  - references/conditional-access-zero-trust.md -- Conditional Access and Zero-Trust Identity
+  - ../../../Global_References/conditional-access-zero-trust.md -- Conditional Access and Zero-Trust Identity
 
 ## Handoff
 For compliance requirements on identity governance, hand off to `enterprise-compliance-audit`. For cost tracking of IdP licensing, hand off to `enterprise-cost-governance`.
+

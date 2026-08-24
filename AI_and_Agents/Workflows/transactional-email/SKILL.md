@@ -514,15 +514,16 @@ async function testEmailDelivery() {
 - A/B test subject lines and sender names for open rate optimization
 
 ## Rules
-  - references/deliverability.md — Email Deliverability
-  - references/delivery-setup.md — Email Delivery Setup
-  - references/email-analytics.md — Email Analytics
-  - references/email-compliance.md — Email Compliance
-  - references/email-testing.md — Email Testing
-  - references/mjml-templates.md — MJML Email Templates
-  - references/transactional-email-advanced.md — Transactional Email Advanced Topics
-  - references/transactional-email-fundamentals.md — Transactional Email Fundamentals
+  - ../../../Global_References/deliverability.md — Email Deliverability
+  - ../../../Global_References/delivery-setup.md — Email Delivery Setup
+  - ../../../Global_References/email-analytics.md — Email Analytics
+  - ../../../Global_References/email-compliance.md — Email Compliance
+  - ../../../Global_References/email-testing.md — Email Testing
+  - ../../../Global_References/mjml-templates.md — MJML Email Templates
+  - ../../../Global_References/transactional-email-advanced.md — Transactional Email Advanced Topics
+  - ../../../Global_References/transactional-email-fundamentals.md — Transactional Email Fundamentals
 ## Handoff
 - `backend/sms-messaging` — Alternative messaging channel for 2FA and notifications
 - `data/analytics` — Email analytics and reporting integration
 - `security/compliance` — GDPR and data retention compliance patterns
+

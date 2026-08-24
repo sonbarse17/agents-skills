@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Spring Boot | `references/spring-boot-setup.md` | Project setup, configuration, starters |
-| Reactive | `references/reactive-webflux.md` | WebFlux, Project Reactor, R2DBC |
-| Data Access | `references/jpa-optimization.md` | JPA, Hibernate, query tuning |
-| Security | `references/spring-security.md` | OAuth2, JWT, method security |
-| Testing | `references/testing-patterns.md` | JUnit 5, TestContainers, Mockito |
+| Spring Boot | `../../../Global_References/spring-boot-setup.md` | Project setup, configuration, starters |
+| Reactive | `../../../Global_References/reactive-webflux.md` | WebFlux, Project Reactor, R2DBC |
+| Data Access | `../../../Global_References/jpa-optimization.md` | JPA, Hibernate, query tuning |
+| Security | `../../../Global_References/spring-security.md` | OAuth2, JWT, method security |
+| Testing | `../../../Global_References/java-architect_testing-patterns.md` | JUnit 5, TestContainers, Mockito |
 
 ## Constraints
 
@@ -132,3 +132,4 @@ public class SecurityConfig {
 Spring Boot 3.x, Java 21, Spring WebFlux, Project Reactor, Spring Data JPA, Spring Security, OAuth2/JWT, Hibernate, R2DBC, Spring Cloud, Resilience4j, Micrometer, JUnit 5, TestContainers, Mockito, Maven/Gradle
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/java-architect/)
+

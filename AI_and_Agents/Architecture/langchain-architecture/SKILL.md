@@ -184,7 +184,7 @@ result = await agent.ainvoke(
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/langchain-architecture_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing Strategies
 
@@ -271,3 +271,4 @@ index = pc.Index("my-index")
 # Create vector store with existing index
 vectorstore = PineconeVectorStore(index=index, embedding=embeddings)
 ```
+

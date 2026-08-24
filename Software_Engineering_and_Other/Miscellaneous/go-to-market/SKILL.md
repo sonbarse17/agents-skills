@@ -446,14 +446,14 @@ A cybersecurity startup launched a new compliance tool. Two-channel experiment: 
 Decision: maintained both channels but invested differently. Allocated 70% of GTM budget to sales-led (higher ROI despite higher CAC) and 30% to product-led (growth potential, lower touch). Lesson: channel selection depends on ICP ACV and conversion economics, not just reach.
 
 ## References
-  - references/channel-strategy.md — Channel Strategy
-  - references/go-to-market-advanced.md — Go To Market Advanced Topics
-  - references/go-to-market-fundamentals.md — Go To Market Fundamentals
-  - references/gtm-launch-execution.md — GTM Launch Execution Playbook
-  - references/gtm-strategy-playbook.md — GTM Strategy Playbook
-  - references/launch-checklist.md — Launch Checklist
-  - references/launch-tiers.md — Launch Tiers
-  - references/positioning-guide.md — Product Positioning Guide
+  - ../../../Global_References/channel-strategy.md — Channel Strategy
+  - ../../../Global_References/go-to-market-advanced.md — Go To Market Advanced Topics
+  - ../../../Global_References/go-to-market-fundamentals.md — Go To Market Fundamentals
+  - ../../../Global_References/gtm-launch-execution.md — GTM Launch Execution Playbook
+  - ../../../Global_References/gtm-strategy-playbook.md — GTM Strategy Playbook
+  - ../../../Global_References/launch-checklist.md — Launch Checklist
+  - ../../../Global_References/launch-tiers.md — Launch Tiers
+  - ../../../Global_References/positioning-guide.md — Product Positioning Guide
 
 ## Handoff
 For pricing strategy support, hand off to `product-pricing-strategy`. For growth experiments post-launch, hand off to `product-growth-engineering`. For customer journey analysis to inform GTM touchpoints, hand off to `product-customer-journey`. For experiment design on launch messaging, hand off to `product-ab-testing`.

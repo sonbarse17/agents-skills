@@ -29,11 +29,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Design Patterns | `references/design-patterns.md` | Subcommands, flags, config, architecture |
-| Node.js CLIs | `references/node-cli.md` | commander, yargs, inquirer, chalk |
-| Python CLIs | `references/python-cli.md` | click, typer, argparse, rich |
-| Go CLIs | `references/go-cli.md` | cobra, viper, bubbletea |
-| UX Patterns | `references/ux-patterns.md` | Progress bars, colors, help text |
+| Design Patterns | `../../../Global_References/cli-developer_design-patterns.md` | Subcommands, flags, config, architecture |
+| Node.js CLIs | `../../../Global_References/node-cli.md` | commander, yargs, inquirer, chalk |
+| Python CLIs | `../../../Global_References/python-cli.md` | click, typer, argparse, rich |
+| Go CLIs | `../../../Global_References/go-cli.md` | cobra, viper, bubbletea |
+| UX Patterns | `../../../Global_References/ux-patterns.md` | Progress bars, colors, help text |
 
 ## Quick-Start Example
 
@@ -61,7 +61,7 @@ program
 program.parse();
 ```
 
-For Python (click/typer) and Go (cobra) quick-start examples, see `references/python-cli.md` and `references/go-cli.md`.
+For Python (click/typer) and Go (cobra) quick-start examples, see `../../../Global_References/python-cli.md` and `../../../Global_References/go-cli.md`.
 
 ## Constraints
 
@@ -113,3 +113,4 @@ When implementing CLI features, provide:
 CLI frameworks (commander, yargs, oclif, click, typer, argparse, cobra, viper), terminal UI (chalk, inquirer, rich, bubbletea), testing (snapshot testing, E2E), distribution (npm, pip, homebrew, releases), performance optimization
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/devops/cli-developer/)
+

@@ -509,13 +509,14 @@ tokenizer.save("domain_tokenizer.json")
 - Save best checkpoint by validation metric.
 
 ## References
-  - references/huggingface-transformers.md — HuggingFace Transformers
-  - references/nlp-advanced.md — NLP Advanced Topics
-  - references/nlp-fundamentals.md — NLP Fundamentals
-  - references/nlp-model-training.md — NLP Model Training
-  - references/nlp-pipeline.md — NLP Pipeline
-  - references/nlp-production.md — NLP Production Deployment
-  - references/prompt-engineering.md — Prompt Engineering for NLP
-  - references/text-processing.md — NLP Text Processing
+  - ../../../Global_References/huggingface-transformers.md — HuggingFace Transformers
+  - ../../../Global_References/nlp-advanced.md — NLP Advanced Topics
+  - ../../../Global_References/nlp-fundamentals.md — NLP Fundamentals
+  - ../../../Global_References/nlp-model-training.md — NLP Model Training
+  - ../../../Global_References/nlp-pipeline.md — NLP Pipeline
+  - ../../../Global_References/nlp-production.md — NLP Production Deployment
+  - ../../../Global_References/prompt-engineering.md — Prompt Engineering for NLP
+  - ../../../Global_References/text-processing.md — NLP Text Processing
 ## Handoff
 Hand off to ml-experiment-tracking for training runs. For LLM-specific optimization (prompting, RAG), hand off to ai-prompt-engineering.
+

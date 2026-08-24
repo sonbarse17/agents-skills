@@ -394,14 +394,14 @@ Relational vs NoSQL: relational databases provide ACID transactions, strong cons
 - Use TIMESTAMPTZ, never TIMESTAMP without timezone
 
 ## References
-  - references/cockroachdb-yugabyte.md — CockroachDB and YugabyteDB Operational Guide
-  - references/database-indexing.md — Database Indexing Reference
-  - references/database-migration-strategies.md — Database Migration Strategies Reference
-  - references/distributed-sql-databases.md — Distributed SQL Databases
-  - references/postgres-advanced.md — PostgreSQL Advanced Internals
-  - references/query-optimization.md — Query Optimization
-  - references/relational-database-query-optimization.md — Query Optimization Deep Dive
-  - references/relational-database-high-availability.md — High Availability Reference
+  - ../../../Global_References/cockroachdb-yugabyte.md — CockroachDB and YugabyteDB Operational Guide
+  - ../../../Global_References/database-indexing.md — Database Indexing Reference
+  - ../../../Global_References/database-migration-strategies.md — Database Migration Strategies Reference
+  - ../../../Global_References/distributed-sql-databases.md — Distributed SQL Databases
+  - ../../../Global_References/postgres-advanced.md — PostgreSQL Advanced Internals
+  - ../../../Global_References/query-optimization.md — Query Optimization
+  - ../../../Global_References/relational-database-query-optimization.md — Query Optimization Deep Dive
+  - ../../../Global_References/relational-database-high-availability.md — High Availability Reference
 ## Architecture Decision Trees
 
 ```
@@ -508,3 +508,4 @@ class DatabasePool:
 ## Handoff
 `data-etl-pipeline` for loading data into relational schemas
 `data-data-warehouse` for dimensional modeling from relational sources
+

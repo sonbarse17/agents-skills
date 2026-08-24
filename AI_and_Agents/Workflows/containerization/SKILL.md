@@ -14,7 +14,7 @@ Aim for three properties: **small**, **reproducible**, and **least-privileged**.
 does not move one of those is not worth making.
 
 For language-specific multi-stage templates, distroless runtimes, and BuildKit cache and secret
-mounts, read `references/dockerfile-patterns.md`.
+mounts, read `../../../Global_References/dockerfile-patterns.md`.
 
 ## 1. Order layers by how often they change
 
@@ -105,3 +105,4 @@ State the final image size, the base image and how it is pinned, the user the pr
 and what the build stages separate. Name anything you could not strip from the runtime image and
 why — that leftover is the remaining attack surface, and naming it is more useful than claiming
 the image is minimal.
+

@@ -28,7 +28,7 @@ per-resource workflow, and the behavioral traps that turn a mechanical
 translation into a silent breaking change.
 
 **Reference** (load when needed):
-- `references/schema-mapping.md` — the full SDKv2 → Framework translation
+- `../../../Global_References/schema-mapping.md` — the full SDKv2 → Framework translation
   table with code pairs
 
 Official guide: [Framework migration](https://developer.hashicorp.com/terraform/plugin/framework/migrating).
@@ -145,7 +145,7 @@ tests that exist *before* the migration:
 ## Step 3: Port the Resource
 
 Translate schema and CRUD using the mapping table in
-`references/schema-mapping.md`. The rules that prevent breaking changes:
+`../../../Global_References/schema-mapping.md`. The rules that prevent breaking changes:
 
 - **Blocks stay blocks.** An SDKv2 `Elem: &schema.Resource{...}` written as
   `block { ... }` syntax in user configs must become a Framework **Block**
@@ -202,3 +202,4 @@ on duplicates.
 Use the `provider-resources` skill (if available) for Framework CRUD,
 finder, and waiter patterns in the ported code, and `provider-test-patterns`
 for the regression and version-upgrade test patterns.
+

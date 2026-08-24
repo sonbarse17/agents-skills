@@ -480,15 +480,15 @@ Cache-Control: no-store  (never cache auth responses)
 - Password reset tokens expire in 15 minutes and are single-use.
 
 ## References
-  - references/auth-oauth2.md — OAuth2 Flows
-  - references/auth-passwordless.md — Passwordless Authentication
-  - references/auth-testing.md — Authentication Testing
-  - references/jwt-oauth-guide.md — JWT and OAuth Guide
-  - references/oidc-flows.md — OIDC Flows
-  - references/rbac-abac.md — RBAC vs ABAC
-  - references/auth-patterns-fundamentals.md — Auth Patterns Fundamentals
-  - references/auth-patterns-advanced.md — Auth Patterns Advanced
-  - references/auth-patterns-provider-comparison.md — Auth Provider Comparison
+  - ../../../Global_References/auth-oauth2.md — OAuth2 Flows
+  - ../../../Global_References/auth-passwordless.md — Passwordless Authentication
+  - ../../../Global_References/auth-testing.md — Authentication Testing
+  - ../../../Global_References/jwt-oauth-guide.md — JWT and OAuth Guide
+  - ../../../Global_References/oidc-flows.md — OIDC Flows
+  - ../../../Global_References/rbac-abac.md — RBAC vs ABAC
+  - ../../../Global_References/auth-patterns-fundamentals.md — Auth Patterns Fundamentals
+  - ../../../Global_References/auth-patterns-advanced.md — Auth Patterns Advanced
+  - ../../../Global_References/auth-patterns-provider-comparison.md — Auth Provider Comparison
 
 ## Handoff
 No artifact produced.

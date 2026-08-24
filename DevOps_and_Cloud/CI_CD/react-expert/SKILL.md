@@ -42,13 +42,13 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Server Components | `references/server-components.md` | RSC patterns, Next.js App Router |
-| React 19 | `references/react-19-features.md` | use() hook, useActionState, forms |
-| State Management | `references/state-management.md` | Context, Zustand, Redux, TanStack |
-| Hooks | `references/hooks-patterns.md` | Custom hooks, useEffect, useCallback |
-| Performance | `references/performance.md` | memo, lazy, virtualization |
-| Testing | `references/testing-react.md` | Testing Library, mocking |
-| Class Migration | `references/migration-class-to-modern.md` | Converting class components to hooks/RSC |
+| Server Components | `../../../Global_References/react-expert_server-components.md` | RSC patterns, Next.js App Router |
+| React 19 | `../../../Global_References/react-19-features.md` | use() hook, useActionState, forms |
+| State Management | `../../../Global_References/react-expert_state-management.md` | Context, Zustand, Redux, TanStack |
+| Hooks | `../../../Global_References/hooks-patterns.md` | Custom hooks, useEffect, useCallback |
+| Performance | `../../../Global_References/react-expert_performance.md` | memo, lazy, virtualization |
+| Testing | `../../../Global_References/testing-react.md` | Testing Library, mocking |
+| Class Migration | `../../../Global_References/migration-class-to-modern.md` | Converting class components to hooks/RSC |
 
 ## Key Patterns
 
@@ -149,3 +149,4 @@ When implementing React features, provide:
 React 19, Server Components, use() hook, Suspense, TypeScript, TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/react-expert/)
+

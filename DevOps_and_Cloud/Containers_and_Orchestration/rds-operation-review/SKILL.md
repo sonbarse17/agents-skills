@@ -226,7 +226,7 @@ Ref: [High Availability for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/la
 ### 9.3 Performance
 Ref: [DB Instance Performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html)
 
-7-day metric thresholds (full table in `references/metrics-thresholds.md`):
+7-day metric thresholds (full table in `../../../Global_References/rds-operation-review_metrics-thresholds.md`):
 - `CPUUtilization` avg > 70% → MEDIUM, > 90% → HIGH.
 - `FreeStorageSpace` < 20% allocated → HIGH, < 10% → CRITICAL.
 - `FreeableMemory` < 10% instance class memory → HIGH; sustained `SwapUsage` > 0 → MEDIUM.
@@ -385,3 +385,4 @@ If a customer needs deeper SQL-level analysis (e.g. Performance Insights `db.loa
 breakdowns, top SQL by wait event), call `pi.GetResourceMetrics` and
 `pi.DescribeDimensionKeys` directly — both are in the same `rds` permission family
 when Performance Insights is enabled.
+

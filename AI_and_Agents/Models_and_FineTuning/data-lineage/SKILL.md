@@ -475,14 +475,14 @@ Data processing tool?
 - Re-scrape lineage after schema changes
 
 ## References
-  - references/column-lineage.md — Column-Level Lineage Reference
-  - references/lineage-automation.md — Lineage Automation
-  - references/lineage-governance.md — Lineage for Governance
-  - references/lineage-graph-model.md — Lineage Graph Model
-  - references/lineage-impact-analysis.md — Lineage Impact Analysis
-  - references/lineage-tools.md — Lineage Tools Integration Reference
-  - references/lineage-visualization.md — Lineage Visualization
-  - references/openlineage-integration.md — OpenLineage Integration
+  - ../../../Global_References/column-lineage.md — Column-Level Lineage Reference
+  - ../../../Global_References/lineage-automation.md — Lineage Automation
+  - ../../../Global_References/lineage-governance.md — Lineage for Governance
+  - ../../../Global_References/lineage-graph-model.md — Lineage Graph Model
+  - ../../../Global_References/lineage-impact-analysis.md — Lineage Impact Analysis
+  - ../../../Global_References/lineage-tools.md — Lineage Tools Integration Reference
+  - ../../../Global_References/lineage-visualization.md — Lineage Visualization
+  - ../../../Global_References/openlineage-integration.md — OpenLineage Integration
 ## Architecture Decision Trees
 
 ```
@@ -592,3 +592,4 @@ class SQLLineageExtractor:
 ## Handoff
 `data-data-catalog` for metadata enrichment and dataset discovery
 `data-data-observability` for freshness and quality integration with lineage
+

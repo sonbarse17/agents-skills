@@ -631,13 +631,14 @@ Threshold: >4.0 = Ready to launch, 3.0-4.0 = Revise, <3.0 = Redesign pricing
 | Discount policy change | Sales + Finance | 30 days | Sales team training |
 
 ## References
-  - references/packaging-tiers.md — Packaging and Tiers
-  - references/pricing-experimentation.md — Pricing Experimentation
-  - references/pricing-models.md — Pricing Models
-  - references/pricing-strategy-advanced.md — Pricing Strategy Advanced Topics
-  - references/pricing-strategy-fundamentals.md — Pricing Strategy Fundamentals
-  - references/willingness-to-pay.md — Willingness to Pay (WTP)
-  - references/pricing-models-tiering.md — Pricing Models and Tiering
-  - references/pricing-experimentation.md — Pricing Experimentation
+  - ../../../Global_References/packaging-tiers.md — Packaging and Tiers
+  - ../../../Global_References/pricing-experimentation.md — Pricing Experimentation
+  - ../../../Global_References/pricing-models.md — Pricing Models
+  - ../../../Global_References/pricing-strategy-advanced.md — Pricing Strategy Advanced Topics
+  - ../../../Global_References/pricing-strategy-fundamentals.md — Pricing Strategy Fundamentals
+  - ../../../Global_References/willingness-to-pay.md — Willingness to Pay (WTP)
+  - ../../../Global_References/pricing-models-tiering.md — Pricing Models and Tiering
+  - ../../../Global_References/pricing-experimentation.md — Pricing Experimentation
 ## Handoff
 For growth experiments on pricing, hand off to `product-growth-engineering`. For GTM strategy for new pricing, hand off to `product-go-to-market`.
+

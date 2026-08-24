@@ -423,15 +423,15 @@ Recommended hardware:
 15. Prover infrastructure cost is often the bottleneck for ZK rollup operations
 
 ## References
-  - references/blockchain-zk-advanced.md — Blockchain Zk Advanced Topics
-  - references/blockchain-zk-fundamentals.md — Blockchain Zk Fundamentals
-  - references/circuit-programming.md — Circuit Programming
-  - references/proof-systems.md — Proof Systems Comparison
-  - references/prover-infrastructure-operations.md — Prover Infrastructure & Operations
-  - references/recursive-proof-aggregation.md — Recursive Proof Aggregation
-  - references/zk-patterns.md — ZK Application Patterns
-  - references/zk-rollup-architecture.md — ZK Rollup Architecture
-  - references/zkevm-types.md — zkEVM Types
+  - ../../../Global_References/blockchain-zk-advanced.md — Blockchain Zk Advanced Topics
+  - ../../../Global_References/blockchain-zk-fundamentals.md — Blockchain Zk Fundamentals
+  - ../../../Global_References/circuit-programming.md — Circuit Programming
+  - ../../../Global_References/proof-systems.md — Proof Systems Comparison
+  - ../../../Global_References/prover-infrastructure-operations.md — Prover Infrastructure & Operations
+  - ../../../Global_References/recursive-proof-aggregation.md — Recursive Proof Aggregation
+  - ../../../Global_References/zk-patterns.md — ZK Application Patterns
+  - ../../../Global_References/zk-rollup-architecture.md — ZK Rollup Architecture
+  - ../../../Global_References/zkevm-types.md — zkEVM Types
   - references/trusted-setup-ceremonies.md — Trusted Setup Ceremonies
   - references/zk-deployment.md — ZK System Deployment
   - references/circom-circuit-optimization.md — Circom Circuit Optimization
@@ -551,3 +551,4 @@ contract Groth16Verifier {
 - **DDoS protection**: Rate limit proof submission; verify proof cost before state changes.
 
 ## Phase: blockchain → blockchain-zk
+

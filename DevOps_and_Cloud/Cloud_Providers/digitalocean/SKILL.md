@@ -517,15 +517,16 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - Use Floating IP for zero-downtime manual failover scenarios.
 
 ## References
-- references/app-platform.md -- App Platform
-- references/digitalocean-advanced.md -- Digitalocean Advanced Topics
-- references/digitalocean-fundamentals.md -- Digitalocean Fundamentals
-- references/droplets-networking.md -- Droplets and Networking
-- references/infrastructure-tools.md -- Infrastructure Tooling
-- references/kubernetes-doks.md -- DOKS (DigitalOcean Kubernetes)
-- references/managed-databases.md -- Managed Databases
+- ../../../Global_References/app-platform.md -- App Platform
+- ../../../Global_References/digitalocean-advanced.md -- Digitalocean Advanced Topics
+- ../../../Global_References/digitalocean-fundamentals.md -- Digitalocean Fundamentals
+- ../../../Global_References/droplets-networking.md -- Droplets and Networking
+- ../../../Global_References/infrastructure-tools.md -- Infrastructure Tooling
+- ../../../Global_References/kubernetes-doks.md -- DOKS (DigitalOcean Kubernetes)
+- ../../../Global_References/managed-databases.md -- Managed Databases
 
 ## Handoff
 After completing this skill:
 - Next skill: app-platform -- expand App Platform with functions and static sites
 - Pass context: VPC ID, DOKS kubeconfig, database connection string, Spaces keys
+

@@ -525,13 +525,14 @@ def custom_prune_callback(study, trial):
 - Store study database durably.
 
 ## References
-  - references/automl-tuning.md — AutoML Tuning
-  - references/hyperparameter-tuning-advanced.md — Hyperparameter Tuning Advanced Topics
-  - references/hyperparameter-tuning-fundamentals.md — Hyperparameter Tuning Fundamentals
-  - references/multi-fidelity.md — Multi-Fidelity Optimization
-  - references/optimization-methods.md — Hyperparameter Optimization
-  - references/search-strategies.md — Search Strategies
-  - references/tuning-at-scale.md — Distributed Tuning
-  - references/tuning-frameworks.md — Tuning Frameworks
+  - ../../../Global_References/automl-tuning.md — AutoML Tuning
+  - ../../../Global_References/hyperparameter-tuning-advanced.md — Hyperparameter Tuning Advanced Topics
+  - ../../../Global_References/hyperparameter-tuning-fundamentals.md — Hyperparameter Tuning Fundamentals
+  - ../../../Global_References/multi-fidelity.md — Multi-Fidelity Optimization
+  - ../../../Global_References/optimization-methods.md — Hyperparameter Optimization
+  - ../../../Global_References/search-strategies.md — Search Strategies
+  - ../../../Global_References/tuning-at-scale.md — Distributed Tuning
+  - ../../../Global_References/tuning-frameworks.md — Tuning Frameworks
 ## Handoff
 Pass tuned hyperparameters to ml-experiment-tracking for logging. Hand off to ml-model-evaluation for evaluating tuned model.
+

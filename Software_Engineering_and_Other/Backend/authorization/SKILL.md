@@ -686,23 +686,24 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 - Default allow lists for known-safe operations (public endpoints, health checks). All else default deny.
 
 ## References
-  - references/authorization-audit.md — Authorization Audit
-  - references/authorization-delegation.md — Authorization Delegation
-  - references/authorization-fundamentals.md — Authorization Fundamentals
-  - references/authorization-advanced.md — Authorization Advanced
-  - references/authorization-middleware.md — Authorization Middleware — Framework Integration
-  - references/authorization-models.md — Authorization Models Comparison
-  - references/authorization-policy-distribution.md — Policy Distribution and Synchronization
-  - references/authorization-testing.md — Authorization Testing
-  - references/data-level-authorization.md — Data-Level Authorization
-  - references/fine-grained-policies.md — Fine-Grained Access Policies (ABAC)
-  - references/permission-architecture.md — Permission Architecture
-  - references/policy-engines-comparison.md — Policy Engines Comparison
-  - references/rbac-hierarchy.md — RBAC Hierarchy & Admin Patterns
-  - references/temporary-delegated-access.md — Temporary & Delegated Access
+  - ../../../Global_References/authorization-audit.md — Authorization Audit
+  - ../../../Global_References/authorization-delegation.md — Authorization Delegation
+  - ../../../Global_References/authorization-fundamentals.md — Authorization Fundamentals
+  - ../../../Global_References/authorization-advanced.md — Authorization Advanced
+  - ../../../Global_References/authorization-middleware.md — Authorization Middleware — Framework Integration
+  - ../../../Global_References/authorization-models.md — Authorization Models Comparison
+  - ../../../Global_References/authorization-policy-distribution.md — Policy Distribution and Synchronization
+  - ../../../Global_References/authorization-testing.md — Authorization Testing
+  - ../../../Global_References/data-level-authorization.md — Data-Level Authorization
+  - ../../../Global_References/fine-grained-policies.md — Fine-Grained Access Policies (ABAC)
+  - ../../../Global_References/permission-architecture.md — Permission Architecture
+  - ../../../Global_References/policy-engines-comparison.md — Policy Engines Comparison
+  - ../../../Global_References/rbac-hierarchy.md — RBAC Hierarchy & Admin Patterns
+  - ../../../Global_References/temporary-delegated-access.md — Temporary & Delegated Access
 ## Handoff
 No artifact produced unless requested.
 Next skill: authentication (frontend) — implement login UI, route guards, token storage for the auth system.
 Next skill: multi-tenancy — combine authorization with tenant isolation for SaaS apps.
 Next skill: api-security — apply authorization to API endpoints with rate limiting and WAF.
 Carry forward: authorization model, role tree, permission matrix, policy engine choice.
+

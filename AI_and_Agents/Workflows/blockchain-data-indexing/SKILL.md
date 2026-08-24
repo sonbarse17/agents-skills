@@ -414,14 +414,14 @@ class Indexer:
 15. **Schema evolution** must handle backward-compatible changes (add nullable columns, not remove)
 
 ## References
-  - references/blockchain-data-indexing-advanced.md — Blockchain Data Indexing Advanced Topics
-  - references/blockchain-data-indexing-fundamentals.md — Blockchain Data Indexing Fundamentals
-  - references/blockchain-data-query.md — Blockchain Data Query Patterns
-  - references/dune-analytics.md — Dune Analytics Reference
-  - references/event-processing.md — Blockchain Event Processing
-  - references/goldsky-chainindex.md — Goldsky & ChainIndex Reference
-  - references/indexer-architecture.md — Indexer Architecture Patterns
-  - references/the-graph-subgraph.md — The Graph — Subgraph Reference
+  - ../../../Global_References/blockchain-data-indexing-advanced.md — Blockchain Data Indexing Advanced Topics
+  - ../../../Global_References/blockchain-data-indexing-fundamentals.md — Blockchain Data Indexing Fundamentals
+  - ../../../Global_References/blockchain-data-query.md — Blockchain Data Query Patterns
+  - ../../../Global_References/dune-analytics.md — Dune Analytics Reference
+  - ../../../Global_References/blockchain-data-indexing_event-processing.md — Blockchain Event Processing
+  - ../../../Global_References/goldsky-chainindex.md — Goldsky & ChainIndex Reference
+  - ../../../Global_References/indexer-architecture.md — Indexer Architecture Patterns
+  - ../../../Global_References/the-graph-subgraph.md — The Graph — Subgraph Reference
   - references/subgraph-performance-tuning.md — Subgraph Performance Tuning
   - references/multi-chain-indexing.md — Multi-Chain Indexing Strategies
   - references/custom-indexer-patterns.md — Custom Indexer Patterns
@@ -544,3 +544,4 @@ class EventIndexer:
 - **Backup**: Daily database backups; point-in-time recovery for 7-day window.
 
 ## Phase: blockchain → blockchain-data-indexing
+

@@ -25,9 +25,9 @@ Natural language selects the mode. Explicit options also work: `--mode rewrite|d
 
 ## The pass
 
-1. **Pick a context profile.** Ask, or infer it from the text: `linkedin`, `technical-blog`, `investor-email`, `docs`, `casual`, or the `blog` default, where every rule applies at full strength. Say which one you used. Detection cues and the per-rule tolerance matrix are in `references/profiles.md`.
-2. **Scan for the P0 and P1 patterns** in `references/pattern-catalog.md`; the severity tiers are defined at the top of the catalog. Quick passes cover P0 and P1, a full audit covers P2 as well; default to a full audit unless asked for a quick pass. Quote the offending text for each flag rather than describing it.
-3. **Check vocabulary** against the tiered tables in `references/word-tiers.md`. Tier 1 gets replaced by default, after the selected context profile's exceptions are applied. Tier 2 gets replaced when two or more land in one paragraph. Tier 3 gets replaced only when the text is saturated with it.
+1. **Pick a context profile.** Ask, or infer it from the text: `linkedin`, `technical-blog`, `investor-email`, `docs`, `casual`, or the `blog` default, where every rule applies at full strength. Say which one you used. Detection cues and the per-rule tolerance matrix are in `../../../Global_References/profiles.md`.
+2. **Scan for the P0 and P1 patterns** in `../../../Global_References/pattern-catalog.md`; the severity tiers are defined at the top of the catalog. Quick passes cover P0 and P1, a full audit covers P2 as well; default to a full audit unless asked for a quick pass. Quote the offending text for each flag rather than describing it.
+3. **Check vocabulary** against the tiered tables in `../../../Global_References/word-tiers.md`. Tier 1 gets replaced by default, after the selected context profile's exceptions are applied. Tier 2 gets replaced when two or more land in one paragraph. Tier 3 gets replaced only when the text is saturated with it.
 4. **Check rhythm last, and weight it highest.** Structural regularity survives a vocabulary swap, so uniform sentence length, uniform paragraph length, and symmetrical phrasing outrank any single flagged word. Fixing every Tier 1 word while leaving the metronome running does not help.
 5. **Rewrite, then re-read your own rewrite.** Recycled transitions, copula avoidance, and fresh inflation reliably survive the first pass.
 
@@ -62,3 +62,4 @@ When the text is *about* AI writing patterns, quoted examples are exempt. Text i
 **Edit mode:** a short report covering the spans you touched, plus any flagged protected spans left in place. List each edit with its location and the before and after, then confirm you re-read the file and note anything you deliberately left alone.
 
 If the writing is already strong, say so and make only the necessary cuts. The tables are defaults. A flagged word that is the right word in context stays.
+

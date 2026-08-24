@@ -20,7 +20,7 @@ Comprehensive guidance for writing comprehensive unit tests for shell scripts us
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/bats-testing-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing Error Conditions
 
@@ -227,3 +227,4 @@ coverage: test
 8. **Test across shell dialects** - Ensure portability
 9. **Keep tests fast** - Run in parallel when possible
 10. **Document complex test setup** - Explain unusual patterns
+

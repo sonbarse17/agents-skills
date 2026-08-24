@@ -42,11 +42,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| DataFrame Operations | `references/dataframe-operations.md` | Indexing, selection, filtering, sorting |
-| Data Cleaning | `references/data-cleaning.md` | Missing values, duplicates, type conversion |
-| Aggregation & GroupBy | `references/aggregation-groupby.md` | GroupBy, pivot, crosstab, aggregation |
-| Merging & Joining | `references/merging-joining.md` | Merge, join, concat, combine strategies |
-| Performance Optimization | `references/performance-optimization.md` | Memory usage, vectorization, chunking |
+| DataFrame Operations | `../../../Global_References/dataframe-operations.md` | Indexing, selection, filtering, sorting |
+| Data Cleaning | `../../../Global_References/data-cleaning.md` | Missing values, duplicates, type conversion |
+| Aggregation & GroupBy | `../../../Global_References/aggregation-groupby.md` | GroupBy, pivot, crosstab, aggregation |
+| Merging & Joining | `../../../Global_References/merging-joining.md` | Merge, join, concat, combine strategies |
+| Performance Optimization | `../../../Global_References/pandas-pro_performance-optimization.md` | Memory usage, vectorization, chunking |
 
 ## Code Patterns
 
@@ -178,3 +178,4 @@ When implementing pandas solutions, provide:
 4. Data validation checks (dtypes, nulls, shapes)
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/pandas-pro/)
+

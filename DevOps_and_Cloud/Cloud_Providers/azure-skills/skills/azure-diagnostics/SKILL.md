@@ -117,7 +117,7 @@ mcp_azure_mcp_monitor
     query: "<KQL-query>"
 ```
 
-See [kql-queries.md](references/kql-queries.md) for common diagnostic queries.
+See [kql-queries.md](../../../../../Global_References/kql-queries.md) for common diagnostic queries.
 
 ---
 
@@ -147,9 +147,10 @@ az monitor activity-log list -g RG --max-events 20
 
 ## References
 
-- [KQL Query Library](references/kql-queries.md)
-- [Azure Resource Graph Queries](references/azure-resource-graph.md)
+- [KQL Query Library](../../../../../Global_References/kql-queries.md)
+- [Azure Resource Graph Queries](../../../../../Global_References/azure-diagnostics_azure-resource-graph.md)
 - [App Service Troubleshooting](references/app-service/README.md)
 - [Function Apps Troubleshooting](references/functions/README.md)
 - [VM Connectivity Troubleshooting](troubleshooting/compute/vm-troubleshooting.md)
 - [Messaging Troubleshooting](troubleshooting/messaging/README.md)
+

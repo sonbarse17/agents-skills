@@ -20,7 +20,7 @@ Comprehensive guidance for writing production-ready Bash scripts using defensive
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/bash-defensive-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 
@@ -38,3 +38,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 12. **Test error paths** - Ensure error handling works correctly
 13. **Use `command -v`** - Safer than `which` for checking executables
 14. **Prefer printf over echo** - More predictable across systems
+

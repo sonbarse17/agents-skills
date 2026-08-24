@@ -36,7 +36,7 @@ Query → ┬─► Vector Search ──► Candidates ─┐
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/hybrid-search-implementation_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -54,3 +54,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't skip keyword search** - Handles exact matches better
 - **Don't over-fetch** - Balance recall vs latency
 - **Don't ignore edge cases** - Empty results, single word queries
+

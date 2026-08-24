@@ -220,7 +220,7 @@ asyncio.run(with_timeout())
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/async-python-patterns_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Common Pitfalls
 
@@ -293,3 +293,4 @@ async def test_with_timeout():
     with pytest.raises(asyncio.TimeoutError):
         await asyncio.wait_for(slow_operation(5), timeout=1.0)
 ```
+

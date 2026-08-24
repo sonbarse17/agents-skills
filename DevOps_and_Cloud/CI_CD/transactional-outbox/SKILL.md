@@ -548,15 +548,16 @@ async function handleOrderCreated(event: OutboxEvent): Promise<void> {
 | CDC (Debezium, optimized) | ~100K msg/s | 5ms | 50ms | High |
 
 ## References
-  - references/deduplication-idempotency.md — Deduplication & Idempotency
-  - references/message-relay-strategies.md — Message Relay Strategies
-  - references/outbox-advanced-scenarios.md — Advanced Outbox Scenarios
-  - references/outbox-alternatives.md — Outbox Pattern Alternatives
-  - references/outbox-deployment.md — Outbox Deployment
-  - references/outbox-implementation.md — Transactional Outbox Pattern
-  - references/outbox-implementations.md — Outbox Implementations
-  - references/outbox-monitoring.md — Outbox Monitoring and Recovery
+  - ../../../Global_References/deduplication-idempotency.md — Deduplication & Idempotency
+  - ../../../Global_References/message-relay-strategies.md — Message Relay Strategies
+  - ../../../Global_References/outbox-advanced-scenarios.md — Advanced Outbox Scenarios
+  - ../../../Global_References/outbox-alternatives.md — Outbox Pattern Alternatives
+  - ../../../Global_References/outbox-deployment.md — Outbox Deployment
+  - ../../../Global_References/outbox-implementation.md — Transactional Outbox Pattern
+  - ../../../Global_References/outbox-implementations.md — Outbox Implementations
+  - ../../../Global_References/outbox-monitoring.md — Outbox Monitoring and Recovery
 ## Handoff
 No artifact produced.
 Next skill: message-queue — for message broker configuration once outbox is in place.
 Carry forward: outbox table schema, relay strategy, consumer dedup approach.
+

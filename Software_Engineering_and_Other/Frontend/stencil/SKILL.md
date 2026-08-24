@@ -397,12 +397,12 @@ export const config: Config = {
 - Mark props as `mutable: true` only when the component itself mutates them.
 
 ## References
-  - references/stencil-advanced.md — Stencil Advanced Topics
-  - references/stencil-architecture.md — Stencil Architecture Patterns
-  - references/stencil-components.md — Stencil Components & Patterns
-  - references/stencil-deployment.md — Stencil Deployment
-  - references/stencil-fundamentals.md — Stencil Fundamentals
-  - references/stencil-setup.md — Stencil Setup Guide
+  - ../../../Global_References/stencil-advanced.md — Stencil Advanced Topics
+  - ../../../Global_References/stencil-architecture.md — Stencil Architecture Patterns
+  - ../../../Global_References/stencil-components.md — Stencil Components & Patterns
+  - ../../../Global_References/stencil-deployment.md — Stencil Deployment
+  - ../../../Global_References/stencil-fundamentals.md — Stencil Fundamentals
+  - ../../../Global_References/stencil-setup.md — Stencil Setup Guide
 
 ## Handoff
 No artifact produced.
@@ -502,3 +502,4 @@ Who will consume this component?
        ├── Yes → Generate framework wrappers via outputTargets.bindings
        └── No  → Raw custom elements, document usage
 ```
+

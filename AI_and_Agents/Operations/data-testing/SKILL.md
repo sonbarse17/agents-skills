@@ -442,14 +442,14 @@ What aspect of the data pipeline are we validating?
 - Match test type to data risk — schema failures block, quality failures alert
 
 ## References
-  - references/contract-driven-testing.md — Contract-Driven Testing
-  - references/data-comparison-tools.md — Data Comparison Tools
-  - references/data-quality-catalog.md — Data Quality Test Catalog Reference
-  - references/data-testing-performance.md — Data Testing Performance
-  - references/data-testing-pipeline.md — Data Testing Pipeline Integration
-  - references/dbt-testing-framework.md — dbt Testing Framework
-  - references/schema-testing.md — Schema Testing Reference
-  - references/testing-strategy-framework.md — Testing Strategy Framework
+  - ../../../Global_References/contract-driven-testing.md — Contract-Driven Testing
+  - ../../../Global_References/data-comparison-tools.md — Data Comparison Tools
+  - ../../../Global_References/data-quality-catalog.md — Data Quality Test Catalog Reference
+  - ../../../Global_References/data-testing-performance.md — Data Testing Performance
+  - ../../../Global_References/data-testing-pipeline.md — Data Testing Pipeline Integration
+  - ../../../Global_References/dbt-testing-framework.md — dbt Testing Framework
+  - ../../../Global_References/schema-testing.md — Schema Testing Reference
+  - ../../../Global_References/testing-strategy-framework.md — Testing Strategy Framework
 ## Architecture Decision Trees
 
 ```
@@ -547,3 +547,4 @@ WHERE total_amount < 0
 ## Handoff
 `data-data-quality` for broader quality framework and data contract enforcement
 `data-data-observability` for production monitoring and anomaly detection
+

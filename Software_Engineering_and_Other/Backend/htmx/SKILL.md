@@ -373,14 +373,14 @@ app.get('/contacts', (req, res) => {
 - Keep server endpoints idempotent when possible.
 
 ## References
-  - references/htmx-advanced.md — htmx Advanced Patterns
-  - references/htmx-deployment.md — htmx Deployment
-  - references/htmx-fundamentals.md — Htmx Fundamentals
-  - references/htmx-patterns.md — htmx Patterns & Best Practices
-  - references/htmx-setup.md — htmx Setup Guide
-  - references/htmx-testing.md — htmx Testing Reference
-  - references/htmx-advanced-patterns.md — Advanced htmx Patterns
-  - references/htmx-server-integration.md — htmx Server Integration Reference
+  - ../../../Global_References/htmx-advanced.md — htmx Advanced Patterns
+  - ../../../Global_References/htmx-deployment.md — htmx Deployment
+  - ../../../Global_References/htmx-fundamentals.md — Htmx Fundamentals
+  - ../../../Global_References/htmx-patterns.md — htmx Patterns & Best Practices
+  - ../../../Global_References/htmx-setup.md — htmx Setup Guide
+  - ../../../Global_References/htmx-testing.md — htmx Testing Reference
+  - ../../../Global_References/htmx-advanced-patterns.md — Advanced htmx Patterns
+  - ../../../Global_References/htmx-server-integration.md — htmx Server Integration Reference
 
 ## Handoff
 No artifact produced.
@@ -506,3 +506,4 @@ What's the interactivity requirement?
 - **Server-Sent Events for real-time updates**: Use HTMX with SSE (Server-Sent Events) for real-time push. SSE triggers HTMX requests to update specific elements. More efficient than polling.
 - **View caching on server**: Cache rendered HTML fragments on server. Use response cache headers for HTMX responses. Avoid re-rendering unchanged components.
 - **Morphdom swap for minimal DOM changes**: Use `hx-swap="morphdom"` for fine-grained DOM diffing. Only changes the parts of the element that actually changed. Reduces layout thrash.
+

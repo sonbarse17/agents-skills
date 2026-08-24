@@ -409,14 +409,14 @@ A well-designed design system component library should add:
 
 ## References
 
-- `references/component-api.md` -- Component API Design
-- `references/component-architecture.md` -- Component Architecture
-- `references/design-system-implementation.md` -- Design System Implementation
-- `references/design-system-testing.md` -- Design System Testing
-- `references/design-tokens.md` -- Design Tokens
-- `references/theme-implementation.md` -- Theme Implementation
-- `references/design-system-token-architecture.md` -- Design System Token Architecture
-- `references/design-system-component-library.md` -- Design System Component Library Architecture
+- `../../../Global_References/component-api.md` -- Component API Design
+- `../../../Global_References/design-system_component-architecture.md` -- Component Architecture
+- `../../../Global_References/design-system-implementation.md` -- Design System Implementation
+- `../../../Global_References/design-system-testing.md` -- Design System Testing
+- `../../../Global_References/design-system_design-tokens.md` -- Design Tokens
+- `../../../Global_References/theme-implementation.md` -- Theme Implementation
+- `../../../Global_References/design-system-token-architecture.md` -- Design System Token Architecture
+- `../../../Global_References/design-system-component-library.md` -- Design System Component Library Architecture
 
 ## Handoff
 No artifact produced.
@@ -560,3 +560,4 @@ Who defines the tokens?
        ├── CSS only → CSS custom properties in a single file
        └── Multi-format → Style Dictionary with transforms (CSS, JS, Swift, Kotlin)
 ```
+

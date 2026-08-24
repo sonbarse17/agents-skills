@@ -551,15 +551,16 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - All purge operations logged with immutable audit trail
 
 ## References
-- references/data-governance-fundamentals.md -- Data Governance Fundamentals
-- references/data-governance-advanced.md -- Data Governance Advanced Topics
-- references/data-classification.md -- Data Classification Framework
-- references/data-lineage.md -- Data Lineage Tracking
-- references/data-policies.md -- Data Policies Framework
+- ../../../Global_References/data-governance-fundamentals.md -- Data Governance Fundamentals
+- ../../../Global_References/data-governance-advanced.md -- Data Governance Advanced Topics
+- ../../../Global_References/data-governance_data-classification.md -- Data Classification Framework
+- ../../../Global_References/data-lineage.md -- Data Lineage Tracking
+- ../../../Global_References/data-policies.md -- Data Policies Framework
 - references/data-governance-framework.md -- Data Governance Framework
 - references/data-governance-framework-implementation.md -- Governance Framework Implementation
   - references/data-governance-tools.md -- Data Governance Tools
-  - references/data-contracts.md -- Data Contracts and Sharing Agreements
+  - ../../../Global_References/data-contracts.md -- Data Contracts and Sharing Agreements
 
 ## Handoff
 For compliance requirements on data handling, hand off to `enterprise-compliance-audit`. For multi-tenant data isolation, hand off to `enterprise-multi-tenant`.
+

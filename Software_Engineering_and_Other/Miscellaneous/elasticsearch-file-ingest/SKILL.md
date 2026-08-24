@@ -334,10 +334,11 @@ Consider alternatives for:
 
 ## Additional Resources
 
-- [Common Patterns](references/patterns.md) - Detailed examples for CSV loading, batch ingestion, enrichment, and more
-- [Troubleshooting](references/troubleshooting.md) - Solutions for common issues
+- [Common Patterns](../../../Global_References/elasticsearch-file-ingest_patterns.md) - Detailed examples for CSV loading, batch ingestion, enrichment, and more
+- [Troubleshooting](../../../Global_References/elasticsearch-file-ingest_troubleshooting.md) - Solutions for common issues
 
 ## References
 
 - [Elasticsearch Mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
 - [Elasticsearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
+

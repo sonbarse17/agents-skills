@@ -614,10 +614,11 @@ jobs:
   - references/helm-secrets.md — SOPS and SealedSecrets for Helm
   - references/helm-ci-cd.md — Helm CI/CD Pipeline Patterns
   - references/helm-testing.md — Helm Unit and Integration Testing
-  - references/helm-security.md — Chart Signing and Supply Chain Security
+  - ../../../Global_References/helm-security.md — Chart Signing and Supply Chain Security
 ## Handoff
 - `devops-kubernetes` for deploying Helm charts to Kubernetes clusters.
 - `devops-argo-cd` for GitOps deployment of Helm charts via ArgoCD.
 - `devops-gitops` for GitOps workflow integration.
 - `devops-security` for secrets management and chart signing.
 - `devops-cicd-pipeline` for CI/CD integration.
+

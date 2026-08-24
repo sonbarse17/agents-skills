@@ -315,9 +315,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [references/server-management.md](references/server-management.md) | Server CRUD, admin credentials, Azure AD auth, networking |
-| [references/database-operations.md](references/database-operations.md) | Database CRUD, scaling, backup, restore, copy |
-| [references/elastic-pools.md](references/elastic-pools.md) | Pool management, adding/removing databases, scaling |
+| [../../../../../Global_References/server-management.md](../../../../../Global_References/server-management.md) | Server CRUD, admin credentials, Azure AD auth, networking |
+| [../../../../../Global_References/database-operations.md](../../../../../Global_References/database-operations.md) | Database CRUD, scaling, backup, restore, copy |
+| [../../../../../Global_References/elastic-pools.md](../../../../../Global_References/elastic-pools.md) | Pool management, adding/removing databases, scaling |
 
 ## Related SDKs
 
@@ -326,3 +326,4 @@ catch (RequestFailedException ex)
 | `Microsoft.Data.SqlClient` | Data plane (execute queries, stored procedures) | `dotnet add package Microsoft.Data.SqlClient` |
 | `Azure.ResourceManager.Sql` | Management plane (this SDK) | `dotnet add package Azure.ResourceManager.Sql` |
 | `Microsoft.EntityFrameworkCore.SqlServer` | ORM for SQL Server | `dotnet add package Microsoft.EntityFrameworkCore.SqlServer` |
+

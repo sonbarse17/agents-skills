@@ -431,8 +431,8 @@ When can we stop the experiment?
 - Log experiment assignments and metrics to data warehouse for meta-analysis
 
 ## References
-  - references/experimentation-fundamentals.md — Experimentation Fundamentals
-  - references/experimentation-advanced.md — Experimentation Advanced Topics
+  - ../../../Global_References/experimentation-fundamentals.md — Experimentation Fundamentals
+  - ../../../Global_References/experimentation-advanced.md — Experimentation Advanced Topics
 
 ## Architecture Decision Trees
 
@@ -542,3 +542,4 @@ class BayesianABTest:
 ## Handoff
 `analytics-engineering` for downstream metric pipeline
 `ml-modeling` for model-based personalization experiments
+

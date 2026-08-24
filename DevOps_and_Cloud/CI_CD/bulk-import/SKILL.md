@@ -611,15 +611,16 @@ describe('Bulk Import', () => {
 ## Rules
 
 ## References
-  - references/bulk-export.md — Bulk Export
-  - references/bulk-import-advanced.md — Bulk Import Advanced Topics
-  - references/bulk-import-fundamentals.md — Bulk Import Fundamentals
-  - references/csv-parsing.md — CSV Parsing
-  - references/import-monitoring.md — Import Monitoring
-  - references/import-workflow.md — Import Workflow
-  - references/rollback-recovery.md — Rollback and Recovery
-  - references/validation-pipeline.md — Validation Pipeline
+  - ../../../Global_References/bulk-export.md — Bulk Export
+  - ../../../Global_References/bulk-import-advanced.md — Bulk Import Advanced Topics
+  - ../../../Global_References/bulk-import-fundamentals.md — Bulk Import Fundamentals
+  - ../../../Global_References/csv-parsing.md — CSV Parsing
+  - ../../../Global_References/import-monitoring.md — Import Monitoring
+  - ../../../Global_References/import-workflow.md — Import Workflow
+  - ../../../Global_References/rollback-recovery.md — Rollback and Recovery
+  - ../../../Global_References/validation-pipeline.md — Validation Pipeline
 ## Handoff
 - `backend/report-generation` — Export/import round-trip patterns
 - `data/etl` — ETL pipeline integration for bulk imports
 - `management/task-queues` — Queue management for import jobs
+

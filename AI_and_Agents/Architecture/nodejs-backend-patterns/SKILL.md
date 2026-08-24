@@ -20,7 +20,7 @@ Comprehensive guidance for building scalable, maintainable, and production-ready
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/nodejs-backend-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -43,3 +43,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 ## Testing Patterns
 
 See `javascript-testing-patterns` skill for comprehensive testing guidance.
+

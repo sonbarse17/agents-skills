@@ -456,14 +456,14 @@ Scalability: single GPU for models up to 7B params (quantized). 4-8 GPUs for 7B-
 - Use tensor shape comments: `# (batch, channels, height, width)`
 
 ## References
-  - references/architectures.md — Modern Deep Learning Architectures
-  - references/deep-learning-advanced.md — Deep Learning Advanced Topics
-  - references/deep-learning-fundamentals.md — Deep Learning Fundamentals
-  - references/generative-models.md — Generative Models
-  - references/pytorch-tensorflow.md — PyTorch and TensorFlow Reference
-  - references/training-optimization.md — Training Optimization Reference
-  - references/deep-learning-architecture-patterns.md — Deep Learning Architecture Patterns
-  - references/deep-learning-training-optimization.md — Training Optimization Deep Dive
+  - ../../../Global_References/architectures.md — Modern Deep Learning Architectures
+  - ../../../Global_References/deep-learning-advanced.md — Deep Learning Advanced Topics
+  - ../../../Global_References/deep-learning-fundamentals.md — Deep Learning Fundamentals
+  - ../../../Global_References/generative-models.md — Generative Models
+  - ../../../Global_References/pytorch-tensorflow.md — PyTorch and TensorFlow Reference
+  - ../../../Global_References/training-optimization.md — Training Optimization Reference
+  - ../../../Global_References/deep-learning-architecture-patterns.md — Deep Learning Architecture Patterns
+  - ../../../Global_References/deep-learning-training-optimization.md — Training Optimization Deep Dive
 ## Handoff
 `ml-experiment-tracking` for logging deep learning experiments
 `ml-feature-engineering` for deep learning feature extraction

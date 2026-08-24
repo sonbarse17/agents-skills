@@ -486,15 +486,16 @@ rollback:
 - Use `data-diff` in staging to detect unexpected data changes before prod promotion
 
 ## References
-  - references/cicd-for-data-pipelines.md — CI/CD for Data Pipelines
-  - references/data-diff-testing.md — Data Diff Testing Reference
-  - references/data-quality-ci.md — Data Quality in CI/CD Reference
-  - references/dbt-ci-cd-pipeline.md — dbt CI/CD Pipeline
-  - references/pipeline-cicd-environments.md — Pipeline CI/CD Environment Management
-  - references/pipeline-cicd-secrets.md — Pipeline CI/CD Secrets Management
-  - references/pipeline-test-automation.md — Pipeline Test Automation
-  - references/sql-linting-and-testing.md — SQL Linting and Testing
+  - ../../../Global_References/cicd-for-data-pipelines.md — CI/CD for Data Pipelines
+  - ../../../Global_References/data-diff-testing.md — Data Diff Testing Reference
+  - ../../../Global_References/data-quality-ci.md — Data Quality in CI/CD Reference
+  - ../../../Global_References/dbt-ci-cd-pipeline.md — dbt CI/CD Pipeline
+  - ../../../Global_References/pipeline-cicd-environments.md — Pipeline CI/CD Environment Management
+  - ../../../Global_References/pipeline-cicd-secrets.md — Pipeline CI/CD Secrets Management
+  - ../../../Global_References/pipeline-test-automation.md — Pipeline Test Automation
+  - ../../../Global_References/sql-linting-and-testing.md — SQL Linting and Testing
 ## Handoff
 `data-data-quality` for data quality monitoring and alerting in production
 `data-etl-pipeline` for pipeline orchestration and execution
 `data-workflow-orchestration` for scheduling and dependency management
+

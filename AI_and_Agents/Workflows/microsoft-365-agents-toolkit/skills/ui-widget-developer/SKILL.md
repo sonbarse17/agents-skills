@@ -87,8 +87,8 @@ This skill triggers when building MCP servers with OAI app or widget rendering f
 | **Prefer MCP Apps standard** | Cross-platform widget support (M365 Copilot, ChatGPT, VSCode, and more) | Install `modelcontextprotocol/ext-apps`, then use `create-mcp-app` or `add-app-to-server` — see [Path Selection](#-path-selection) above |
 | **From scratch** (no agent, no MCP server) | Full OAI app setup | Delegate agent scaffolding to `declarative-agent-developer` first, then return here for MCP server + widgets |
 | **Existing M365 agent, new MCP server** | MCP server + widgets + mcpPlugin.json | Start at [Implementation](#implementation) |
-| **Existing MCP server, add Copilot widgets** | Widget support added to existing server | Start at [Copilot Widget Protocol](references/copilot-widget-protocol.md#adaptation-checklist-existing-mcp-server) |
-| **Language choice** (non-TypeScript) | Protocol requirements | See [Copilot Widget Protocol](references/copilot-widget-protocol.md) for what to implement, [MCP Server Pattern (TypeScript)](references/mcp-server-pattern.md) as a reference |
+| **Existing MCP server, add Copilot widgets** | Widget support added to existing server | Start at [Copilot Widget Protocol](../../../../../Global_References/copilot-widget-protocol.md#adaptation-checklist-existing-mcp-server) |
+| **Language choice** (non-TypeScript) | Protocol requirements | See [Copilot Widget Protocol](../../../../../Global_References/copilot-widget-protocol.md) for what to implement, [MCP Server Pattern (TypeScript)](../../../../../Global_References/mcp-server-pattern.md) as a reference |
 
 ---
 
@@ -96,8 +96,8 @@ This skill triggers when building MCP servers with OAI app or widget rendering f
 
 
 **FLUENT UI ENFORCEMENT (REQUIRED):** Widget implementations MUST use React + Fluent UI components. Before writing any widget code, the agent MUST read and follow:
-- `references/widget-patterns.md`
-- `references/best-practices.md`
+- `../../../../../Global_References/widget-patterns.md`
+- `../../../../../Global_References/ui-widget-developer_best-practices.md`
 **FLUENT UI PACKAGE REQUIREMENT (REQUIRED):** The widget project MUST include Fluent UI dependencies before implementation. At minimum, install and keep these in the widget package dependencies:
 - `@fluentui/react-components`
 - `react`
@@ -224,7 +224,7 @@ Example shell for React build output:
   ```
   Use the `WIDGET_BASE_URL` or `MCP_SERVER_URL` environment variable for the asset URL base (see mcp-server-pattern.md "Configurable Widget Base URL" section).
 
-See [mcp-server-pattern.md](references/mcp-server-pattern.md) for the complete resource and asset serving patterns.
+See [mcp-server-pattern.md](../../../../../Global_References/mcp-server-pattern.md) for the complete resource and asset serving patterns.
 
 ---
 
@@ -300,15 +300,15 @@ Your MCP server must implement these protocol requirements to render widgets in 
 5. **Tool response format** — Return `content` (text) + `structuredContent` (widget data) + `_meta` with `openai/outputTemplate`
 6. **Widget serving** — HTTP route at `/widgets/*.html` for shell files and `/assets/*` for built bundles, both with origin-checking CORS
 
-For full protocol details, JSON shapes, and an adaptation checklist for existing MCP servers, see [references/copilot-widget-protocol.md](references/copilot-widget-protocol.md).
+For full protocol details, JSON shapes, and an adaptation checklist for existing MCP servers, see [../../../../../Global_References/copilot-widget-protocol.md](../../../../../Global_References/copilot-widget-protocol.md).
 
 ## Implementation
 
 ### MCP Server Pattern (TypeScript Reference)
 
-See [references/mcp-server-pattern.md](references/mcp-server-pattern.md) for complete implementation.
+See [../../../../../Global_References/mcp-server-pattern.md](../../../../../Global_References/mcp-server-pattern.md) for complete implementation.
 
-> For other languages, implement the requirements described in [Copilot Widget Protocol](references/copilot-widget-protocol.md) using your language's MCP SDK. See the [Language SDK References](references/copilot-widget-protocol.md#language-sdk-references) table for SDK packages.
+> For other languages, implement the requirements described in [Copilot Widget Protocol](../../../../../Global_References/copilot-widget-protocol.md) using your language's MCP SDK. See the [Language SDK References](../../../../../Global_References/copilot-widget-protocol.md#language-sdk-references) table for SDK packages.
 
 Core requirements:
 - Expose Streamable HTTP transport on `/mcp`
@@ -349,7 +349,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request: CallToolRequest)
 
 ### Widget Pattern
 
-See [references/widget-patterns.md](references/widget-patterns.md) for complete examples.
+See [../../../../../Global_References/widget-patterns.md](../../../../../Global_References/widget-patterns.md) for complete examples.
 
 Core requirements:
 - Use React + Fluent UI components (`@fluentui/react-components`)
@@ -361,7 +361,7 @@ Core requirements:
 
 ### Plugin Schema
 
-See [references/plugin-schema.md](references/plugin-schema.md) for mcpPlugin.json format.
+See [../../../../../Global_References/plugin-schema.md](../../../../../Global_References/plugin-schema.md) for mcpPlugin.json format.
 
 Core requirements:
 - Schema `v2.4` with `RemoteMCPServer` runtime
@@ -373,7 +373,7 @@ Core requirements:
 
 > **Local testing only.** DevTunnels are for development and testing on your machine. Before sharing the agent more broadly, deploy both the MCP server and widget assets to a hosted environment (e.g., Azure App Service, Azure Static Web Apps, or another hosting provider) and update the agent manifest URLs accordingly.
 
-DevTunnels expose your localhost MCP server to M365 Copilot using **named tunnels** for stable URLs. See [references/devtunnels.md](references/devtunnels.md) for setup scripts, command reference, and troubleshooting.
+DevTunnels expose your localhost MCP server to M365 Copilot using **named tunnels** for stable URLs. See [../../../../../Global_References/devtunnels.md](../../../../../Global_References/devtunnels.md) for setup scripts, command reference, and troubleshooting.
 
 The setup script (`npm run tunnel` / `npm run tunnel:win`):
 1. Creates a named tunnel on first run (or reuses the existing one)
@@ -415,7 +415,7 @@ On first run, provision the agent once the tunnel is up (see AGENT PROVISIONING 
 
 ## Best Practices
 
-See [references/best-practices.md](references/best-practices.md) for detailed guidance.
+See [../../../../../Global_References/ui-widget-developer_best-practices.md](../../../../../Global_References/ui-widget-developer_best-practices.md) for detailed guidance.
 
 Key points:
 1. **Rendering tools**: Accept data as input, don't fetch internally
@@ -425,3 +425,4 @@ Key points:
 5. **Partial data**: Handle missing fields with "Unknown" defaults
 6. **Action buttons**: Hide email/chat buttons when data is "Unknown"
 7. **Version bumping**: Bump manifest version when changes aren't reflected in Copilot
+

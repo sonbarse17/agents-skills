@@ -42,7 +42,7 @@ Comprehensive guide to building projections and read models for event-sourced sy
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/projection-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -60,3 +60,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't skip error handling** - Log and alert on failures
 - **Don't ignore ordering** - Events must be processed in order
 - **Don't over-normalize** - Denormalize for query patterns
+

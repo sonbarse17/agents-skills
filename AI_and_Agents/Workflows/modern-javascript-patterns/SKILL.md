@@ -20,7 +20,7 @@ Comprehensive guide for mastering modern JavaScript (ES6+) features, functional 
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/modern-javascript-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -40,4 +40,5 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 14. **Handle errors properly**: Use try/catch with async/await
 15. **Use strict mode**: `'use strict'` for better error catching
 
-For common pitfalls (this binding, promise anti-patterns, memory leaks), see [references/advanced-patterns.md](references/advanced-patterns.md).
+For common pitfalls (this binding, promise anti-patterns, memory leaks), see [../../../Global_References/modern-javascript-patterns_advanced-patterns.md](../../../Global_References/modern-javascript-patterns_advanced-patterns.md).
+

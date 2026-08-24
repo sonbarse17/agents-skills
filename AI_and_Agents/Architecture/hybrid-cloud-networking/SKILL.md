@@ -59,7 +59,7 @@ resource "aws_vpn_connection" "main" {
 - Lower latency, consistent bandwidth
 - More expensive, setup time required
 
-**Reference:** See `references/direct-connect.md`
+**Reference:** See `../../../Global_References/direct-connect.md`
 
 ### Azure Connectivity
 
@@ -254,3 +254,4 @@ oci network cpe list
 
 - `multi-cloud-architecture` - For architecture decisions
 - `terraform-module-library` - For IaC implementation
+

@@ -391,14 +391,14 @@ Graph vs document (MongoDB): document stores embed related data, limiting traver
 - Document every relationship type with direction semantics
 
 ## References
-  - references/graph-algorithms.md — Graph Algorithms
-  - references/graph-modeling.md — Graph Data Modeling
-  - references/graph-performance.md — Graph Database Performance
-  - references/graph-platforms.md — Graph Database Platforms
-  - references/graph-use-cases.md — Graph Database Use Cases Reference
-  - references/query-patterns.md — Graph Query Patterns Reference
-  - references/graph-data-modeling.md — Graph Data Modeling Deep Dive
-  - references/graph-query-performance.md — Query Performance Reference
+  - ../../../Global_References/graph-algorithms.md — Graph Algorithms
+  - ../../../Global_References/graph-modeling.md — Graph Data Modeling
+  - ../../../Global_References/graph-performance.md — Graph Database Performance
+  - ../../../Global_References/graph-platforms.md — Graph Database Platforms
+  - ../../../Global_References/graph-use-cases.md — Graph Database Use Cases Reference
+  - ../../../Global_References/query-patterns.md — Graph Query Patterns Reference
+  - ../../../Global_References/graph-data-modeling.md — Graph Data Modeling Deep Dive
+  - ../../../Global_References/graph-query-performance.md — Query Performance Reference
 ## Architecture Decision Trees
 
 ```
@@ -498,3 +498,4 @@ class GraphEmbedding:
 ## Handoff
 `data-nosql-database` for non-relational data stores
 `ml-feature-engineering` for graph feature extraction (PageRank, embeddings)
+

@@ -55,11 +55,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| AWS Services | `references/aws.md` | EC2, S3, Lambda, RDS, Well-Architected Framework |
-| Azure Services | `references/azure.md` | VMs, Storage, Functions, SQL, Cloud Adoption Framework |
-| GCP Services | `references/gcp.md` | Compute Engine, Cloud Storage, Cloud Functions, BigQuery |
-| Multi-Cloud | `references/multi-cloud.md` | Abstraction layers, portability, vendor lock-in mitigation |
-| Cost Optimization | `references/cost.md` | Reserved instances, spot, right-sizing, FinOps practices |
+| AWS Services | `../../../Global_References/aws.md` | EC2, S3, Lambda, RDS, Well-Architected Framework |
+| Azure Services | `../../../Global_References/azure.md` | VMs, Storage, Functions, SQL, Cloud Adoption Framework |
+| GCP Services | `../../../Global_References/gcp.md` | Compute Engine, Cloud Storage, Cloud Functions, BigQuery |
+| Multi-Cloud | `../../../Global_References/multi-cloud.md` | Abstraction layers, portability, vendor lock-in mitigation |
+| Cost Optimization | `../../../Global_References/cost.md` | Reserved instances, spot, right-sizing, FinOps practices |
 
 ## Constraints
 
@@ -216,3 +216,4 @@ When designing cloud architecture, provide:
 5. Deployment approach and rollback plan
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/cloud-architect/)
+

@@ -38,11 +38,11 @@ Patterns for managing distributed transactions and long-running business process
 
 ## Detailed section: Core Concepts
 
-Moved to `references/details.md`.
+Moved to `../../../Global_References/saga-orchestration_details.md`.
 
 ## Detailed section: Templates
 
-Moved to `references/details.md`.
+Moved to `../../../Global_References/saga-orchestration_details.md`.
 
 ## Best Practices
 
@@ -94,7 +94,7 @@ In a choreography-based saga, a downstream service may miss an event if it was o
 
 ### Timeout firing before a slow-but-valid step completes
 
-A step like `create_shipment` might take up to 15 minutes during peak load but your global timeout is 5 minutes, causing spurious compensation. Make step timeouts configurable per step type — see `references/advanced-patterns.md` for the `TimeoutSagaOrchestrator` implementation and the `STEP_TIMEOUTS` dict pattern.
+A step like `create_shipment` might take up to 15 minutes during peak load but your global timeout is 5 minutes, causing spurious compensation. Make step timeouts configurable per step type — see `../../../Global_References/saga-orchestration_advanced-patterns.md` for the `TimeoutSagaOrchestrator` implementation and the `STEP_TIMEOUTS` dict pattern.
 
 ### Compensation order not matching execution order
 
@@ -106,7 +106,7 @@ When two steps both complete before a failure is detected, compensation must run
 
 The `references/` directory contains production-grade implementations not needed for most sagas:
 
-- **`references/advanced-patterns.md`** — Full `SagaOrchestrator` abstract base class, `TimeoutSagaOrchestrator` with per-step deadlines, detailed bank transfer compensating transaction chain, Prometheus instrumentation, stuck saga PromQL alerts, and DLQ recovery worker.
+- **`../../../Global_References/saga-orchestration_advanced-patterns.md`** — Full `SagaOrchestrator` abstract base class, `TimeoutSagaOrchestrator` with per-step deadlines, detailed bank transfer compensating transaction chain, Prometheus instrumentation, stuck saga PromQL alerts, and DLQ recovery worker.
 
 ---
 
@@ -115,3 +115,4 @@ The `references/` directory contains production-grade implementations not needed
 - `cqrs-implementation` — Pair sagas with CQRS for read-model updates after each step completes
 - `event-store-design` — Store saga events in an event store for full audit trail and replay capability
 - `workflow-orchestration-patterns` — Higher-level workflow engines (Temporal, Conductor) that build on saga concepts
+

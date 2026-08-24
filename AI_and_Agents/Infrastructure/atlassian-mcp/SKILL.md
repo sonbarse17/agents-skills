@@ -41,11 +41,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Server Setup | `references/mcp-server-setup.md` | Installation, choosing servers, configuration |
-| Jira Operations | `references/jira-queries.md` | JQL syntax, issue CRUD, sprints, boards, issue linking |
-| Confluence Ops | `references/confluence-operations.md` | CQL search, page creation, spaces, comments |
-| Authentication | `references/authentication-patterns.md` | OAuth 2.0, API tokens, permission scopes |
-| Common Workflows | `references/common-workflows.md` | Issue triage, doc sync, sprint automation |
+| Server Setup | `../../../Global_References/mcp-server-setup.md` | Installation, choosing servers, configuration |
+| Jira Operations | `../../../Global_References/jira-queries.md` | JQL syntax, issue CRUD, sprints, boards, issue linking |
+| Confluence Ops | `../../../Global_References/confluence-operations.md` | CQL search, page creation, spaces, comments |
+| Authentication | `../../../Global_References/authentication-patterns.md` | OAuth 2.0, API tokens, permission scopes |
+| Common Workflows | `../../../Global_References/common-workflows.md` | Issue triage, doc sync, sprint automation |
 
 ## Quick-Start Examples
 
@@ -124,3 +124,4 @@ When implementing Atlassian MCP features, provide:
 5. Brief explanation of permission requirements
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/platform/atlassian-mcp/)
+

@@ -458,11 +458,11 @@ Deploying a Python web app?
 - **Rate limiting**: `slowapi` for FastAPI middleware rate limiting. Per-user/IP with Redis backend for distributed apps.
 
 ## References
-- `references/type-annotations.md` — Advanced type annotations, generics, protocols
-- `references/packaging-dependency.md` — Packaging, pyproject.toml, dependency management
-- `references/python-fundamentals.md` — Python Fundamentals
-- `references/python-advanced.md` — Advanced Python Patterns
-- `references/python-fastapi.md` — FastAPI Web Framework Guide
+- `../../../Global_References/type-annotations.md` — Advanced type annotations, generics, protocols
+- `../../../Global_References/packaging-dependency.md` — Packaging, pyproject.toml, dependency management
+- `../../../Global_References/python-fundamentals.md` — Python Fundamentals
+- `../../../Global_References/python-advanced.md` — Advanced Python Patterns
+- `../../../Global_References/python-fastapi.md` — FastAPI Web Framework Guide
 
 ## Implementation Patterns
 
@@ -571,3 +571,4 @@ def process_order(self, order_id: int):
 - HTTPS: enforce via middleware. Redirect HTTP to 301. HSTS header set.
 - CSRF: token-based for form submissions. FastAPI apps using JWT don't need CSRF for API routes.
 - Data retention: async cleanup job for expired sessions, OTP codes, temp files. GDPR compliance.
+

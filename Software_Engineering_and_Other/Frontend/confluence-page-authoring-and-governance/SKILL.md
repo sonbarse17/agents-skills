@@ -91,11 +91,11 @@ from any page this skill produces.
 
 3. **Use a purpose-built template outline, not a blank page:**
    - **Runbook** — see
-     [references/runbook-template.md](references/runbook-template.md):
+     [../../../Global_References/runbook-template.md](../../../Global_References/runbook-template.md):
      owner, architecture/dependencies, common operations, alerts and
      what they mean, troubleshooting by symptom, escalation path.
    - **Postmortem** — see
-     [references/postmortem-template.md](references/postmortem-template.md):
+     [../../../Global_References/confluence-page-authoring-and-governance_postmortem-template.md](../../../Global_References/confluence-page-authoring-and-governance_postmortem-template.md):
      summary, impact, timeline, root cause, detection, what went well/
      wrong, action items each linked to a real Jira ticket.
    - **Design doc** — outline: Problem statement → Goals/non-goals →
@@ -311,7 +311,7 @@ PUT /wiki/rest/api/content/789012
 
 **Step 3 — create the postmortem page as a child of the space's
 "Postmortems" index page (id `654321`), using the template outline from
-[references/postmortem-template.md](references/postmortem-template.md):**
+[../../../Global_References/confluence-page-authoring-and-governance_postmortem-template.md](../../../Global_References/confluence-page-authoring-and-governance_postmortem-template.md):**
 
 ```http
 POST /wiki/rest/api/content
@@ -356,3 +356,4 @@ only in one place.
 - [jira-comments-and-tracking-automation](../jira-comments-and-tracking-automation/SKILL.md) —
   posting a comment on the originating ticket that points back to the
   Confluence page produced here.
+

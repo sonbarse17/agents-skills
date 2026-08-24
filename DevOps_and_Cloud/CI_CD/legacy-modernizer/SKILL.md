@@ -20,7 +20,7 @@ metadata:
 1. **Assess system** — Analyze codebase, dependencies, risks, and business constraints. Produce a dependency map and risk register before proceeding.
    - *Validation checkpoint:* Confirm all external integrations and data contracts are documented before moving to step 2.
 
-2. **Plan migration** — Design an incremental roadmap with explicit rollback strategies per phase. Reference `references/system-assessment.md` for code analysis templates.
+2. **Plan migration** — Design an incremental roadmap with explicit rollback strategies per phase. Reference `../../../Global_References/system-assessment.md` for code analysis templates.
    - *Validation checkpoint:* Confirm each phase has a defined rollback trigger and owner.
 
 3. **Build safety net** — Create characterization tests and monitoring before touching production code. Target 80%+ coverage of existing behavior.
@@ -38,11 +38,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Strangler Fig | `references/strangler-fig-pattern.md` | Incremental replacement, facade layer, routing |
-| Refactoring | `references/refactoring-patterns.md` | Extract service, branch by abstraction, adapters |
-| Migration | `references/migration-strategies.md` | Database, UI, API, framework migrations |
-| Testing | `references/legacy-testing.md` | Characterization tests, golden master, approval |
-| Assessment | `references/system-assessment.md` | Code analysis, dependency mapping, risk evaluation |
+| Strangler Fig | `../../../Global_References/strangler-fig-pattern.md` | Incremental replacement, facade layer, routing |
+| Refactoring | `../../../Global_References/refactoring-patterns.md` | Extract service, branch by abstraction, adapters |
+| Migration | `../../../Global_References/legacy-modernizer_migration-strategies.md` | Database, UI, API, framework migrations |
+| Testing | `../../../Global_References/legacy-testing.md` | Characterization tests, golden master, approval |
+| Assessment | `../../../Global_References/system-assessment.md` | Code analysis, dependency mapping, risk evaluation |
 
 ## Code Examples
 
@@ -137,3 +137,4 @@ When implementing modernization, provide:
 Strangler fig pattern, branch by abstraction, characterization testing, incremental migration, feature flags, canary deployments, API versioning, database refactoring, microservices extraction, technical debt reduction, zero-downtime deployment
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/legacy-modernizer/)
+

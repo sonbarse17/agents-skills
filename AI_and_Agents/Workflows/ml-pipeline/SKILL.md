@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Feature Engineering | `references/feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
-| Training Pipelines | `references/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
-| Experiment Tracking | `references/experiment-tracking.md` | MLflow, Weights & Biases, experiment logging, model registry |
-| Pipeline Orchestration | `references/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
-| Model Validation | `references/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
+| Feature Engineering | `../../../Global_References/ml-pipeline_feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
+| Training Pipelines | `../../../Global_References/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
+| Experiment Tracking | `../../../Global_References/experiment-tracking.md` | MLflow, Weights & Biases, experiment logging, model registry |
+| Pipeline Orchestration | `../../../Global_References/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
+| Model Validation | `../../../Global_References/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
 
 ## Code Templates
 
@@ -158,3 +158,4 @@ When implementing a pipeline, provide:
 MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, Kubernetes, Docker, S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/ml-pipeline/)
+

@@ -21,7 +21,7 @@ covers all built-in realms, credential verification, and the full API key lifecy
 
 For roles, users, role assignment, and role mappings, see the **elasticsearch-authz** skill.
 
-For detailed API endpoints, see [references/api-reference.md](references/api-reference.md).
+For detailed API endpoints, see [../../../Global_References/elasticsearch-authn_api-reference.md](../../../Global_References/elasticsearch-authn_api-reference.md).
 
 > **Deployment note:** Not all realms are available on every deployment type. See
 > [Deployment Compatibility](#deployment-compatibility) for self-managed vs. ECH vs. Serverless details.
@@ -359,3 +359,4 @@ Not all authentication realms are available on every deployment type. **Self-man
 - API keys are the primary authentication method.
 - Native users do not exist — users are managed at the Elastic Cloud organization level.
 - SAML SSO is configured at the organization level, not per project.
+

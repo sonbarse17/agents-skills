@@ -269,5 +269,6 @@ Talisman(app, force_https=True)
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `references/details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../Global_References/pci-compliance_details.md`. Read that file for the full pattern library.
+
 

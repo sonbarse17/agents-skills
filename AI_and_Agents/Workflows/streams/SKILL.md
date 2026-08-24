@@ -16,7 +16,7 @@ disable, resync) via the Kibana Streams REST API. Streams are an experimental wa
 and behavior changes. This skill covers **read** operations and **lifecycle** only; create, update, delete, fork, and
 other mutating operations may be added in a later version.
 
-For detailed endpoints and parameters, see [references/streams-api-reference.md](references/streams-api-reference.md).
+For detailed endpoints and parameters, see [../../../Global_References/streams-api-reference.md](../../../Global_References/streams-api-reference.md).
 
 ## When to use
 
@@ -154,10 +154,11 @@ request/response bodies (e.g. request body for \_disable/\_enable/\_resync if re
   (`ingest.lifecycle` / `lifecycle.dsl.data_retention`). Do not change only the failure store retention unless they
   explicitly ask about the failure store or failed documents.
 - Other mutating operations (create, update, delete, fork, bulk query management, attachment management, and more) are
-  not supported by this skill. See [references/streams-api-reference.md](references/streams-api-reference.md) for the
+  not supported by this skill. See [../../../Global_References/streams-api-reference.md](../../../Global_References/streams-api-reference.md) for the
   full list of deferred operations.
 - **Disabling streams can lead to data loss for wired streams.** The disable API deletes wired stream data (classic
   stream data is preserved). Before calling disable, warn the user and confirm they understand the risk (and have backed
   up or no longer need the data).
 - Prefer read operations when the user only needs to inspect stream state; use lifecycle APIs when they need to enable,
   disable, or resync streams.
+

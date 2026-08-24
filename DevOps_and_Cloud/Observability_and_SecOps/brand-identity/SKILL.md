@@ -430,8 +430,8 @@ Brand colors must meet WCAG AA minimums:
 | Brand audit report | Slide deck/PDF | Leadership | Consistency scores, violations, remediation plan |
 
 ## References
-  - references/brand-identity-advanced.md — Brand Identity Advanced Topics
-  - references/brand-identity-fundamentals.md — Brand Identity Fundamentals
+  - ../../../Global_References/brand-identity-advanced.md — Brand Identity Advanced Topics
+  - ../../../Global_References/brand-identity-fundamentals.md — Brand Identity Fundamentals
   - references/brand-messaging.md — Brand Messaging and Voice Reference
   - references/brand-touchpoint-audit.md — Brand Touchpoint Audit Reference
   - references/logo-design.md — Logo Design Reference
@@ -543,3 +543,4 @@ What is the primary application context?
        ├── Yes → Logo animation, loading sequences, transition guidelines
        └── No  → Static identity only, no motion specifications
 `
+

@@ -75,5 +75,6 @@ billing.process_billing_cycle(subscription.id)
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/billing-automation_details.md`. Read that file when the navigation tier above is insufficient.
+
 

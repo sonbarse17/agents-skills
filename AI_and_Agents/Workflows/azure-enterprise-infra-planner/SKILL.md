@@ -25,12 +25,12 @@ Activate this skill when user wants to:
 |---|---|
 | MCP tools | `insights_get`, `get_azure_bestpractices_get`, `wellarchitectedframework_serviceguide_get`, `microsoft_docs_fetch`, `microsoft_docs_search`, `bicepschema_get` |
 | CLI commands | `az deployment group create`, `az bicep build`, `az resource list`, `terraform init`, `terraform plan`, `terraform validate`, `terraform apply` |
-| Output schema | [schema.md](references/schema.md) |
-| Key references | [workflow.md](references/workflow.md), [waf-checklist.md](references/waf-checklist.md), [resources/](references/resources/README.md), [constraints/](references/constraints/README.md) |
+| Output schema | [schema.md](../../../Global_References/schema.md) |
+| Key references | [workflow.md](../../../Global_References/azure-enterprise-infra-planner_workflow.md), [waf-checklist.md](../../../Global_References/azure-enterprise-infra-planner_waf-checklist.md), [resources/](references/resources/README.md), [constraints/](references/constraints/README.md) |
 
 ## Workflow (Start Here)
 
-Follow the step-by-step instructions in [workflow.md](references/workflow.md) to execute the 7 phases of infrastructure planning and provisioning.
+Follow the step-by-step instructions in [workflow.md](../../../Global_References/azure-enterprise-infra-planner_workflow.md) to execute the 7 phases of infrastructure planning and provisioning.
 
 ## MCP Tools
 
@@ -51,4 +51,5 @@ Follow the step-by-step instructions in [workflow.md](references/workflow.md) to
 | Plan approval missing | `meta.status` is not `approved` | Stop and prompt user for approval before IaC generation or deployment |
 | IaC validation failure | `az bicep build` or `terraform validate` returns errors | Fix the generated code and re-validate; notify user if unresolved |
 | Pairing constraint violation | Incompatible SKU or resource combination | Fix in plan before proceeding to IaC generation |
-| Infra plan or IaC files not found | Files written to wrong location or not created | Verify files exist at `<project-root>/.azure/` and `<project-root>/infra/`; if missing, re-create the files by following [workflow.md](references/workflow.md) exactly |
+| Infra plan or IaC files not found | Files written to wrong location or not created | Verify files exist at `<project-root>/.azure/` and `<project-root>/infra/`; if missing, re-create the files by following [workflow.md](../../../Global_References/azure-enterprise-infra-planner_workflow.md) exactly |
+

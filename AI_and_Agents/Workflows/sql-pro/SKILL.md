@@ -29,11 +29,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Query Patterns | `references/query-patterns.md` | JOINs, CTEs, subqueries, recursive queries |
-| Window Functions | `references/window-functions.md` | ROW_NUMBER, RANK, LAG/LEAD, analytics |
-| Optimization | `references/optimization.md` | EXPLAIN plans, indexes, statistics, tuning |
-| Database Design | `references/database-design.md` | Normalization, keys, constraints, schemas |
-| Dialect Differences | `references/dialect-differences.md` | PostgreSQL vs MySQL vs SQL Server specifics |
+| Query Patterns | `../../../Global_References/sql-pro_query-patterns.md` | JOINs, CTEs, subqueries, recursive queries |
+| Window Functions | `../../../Global_References/window-functions.md` | ROW_NUMBER, RANK, LAG/LEAD, analytics |
+| Optimization | `../../../Global_References/optimization.md` | EXPLAIN plans, indexes, statistics, tuning |
+| Database Design | `../../../Global_References/database-design.md` | Normalization, keys, constraints, schemas |
+| Dialect Differences | `../../../Global_References/dialect-differences.md` | PostgreSQL vs MySQL vs SQL Server specifics |
 
 ## Quick-Reference Examples
 
@@ -129,3 +129,4 @@ When implementing SQL solutions, provide:
 5. Platform-specific notes if applicable
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/sql-pro/)
+

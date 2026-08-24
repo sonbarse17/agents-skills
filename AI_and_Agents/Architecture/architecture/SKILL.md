@@ -495,13 +495,14 @@ export const useAuthStore = defineStore('auth', () => {
 - Components under 200 lines. Split early.
 
 ## References
-  - references/composition-api.md
-  - references/folder-structure.md
-  - references/vue-composition.md
-  - references/vue-error-handling.md
-  - references/vue-optimization.md
-  - references/vue-testing.md
+  - ../../../Global_References/composition-api.md
+  - ../../../Global_References/folder-structure.md
+  - ../../../Global_References/vue-composition.md
+  - ../../../Global_References/vue-error-handling.md
+  - ../../../Global_References/vue-optimization.md
+  - ../../../Global_References/vue-testing.md
 
 ## Handoff
 Next skill: vue-nuxt (if using Nuxt) or frontend-testing.
 Carry forward: component organization, composable patterns, Pinia store structure.
+

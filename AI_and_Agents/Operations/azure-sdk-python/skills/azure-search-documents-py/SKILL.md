@@ -334,8 +334,8 @@ with SearchIndexerClient(endpoint, DefaultAzureCredential()) as indexer_client:
 
 | File | Contents |
 |------|----------|
-| [references/vector-search.md](references/vector-search.md) | HNSW configuration, integrated vectorization, multi-vector queries |
-| [references/semantic-ranking.md](references/semantic-ranking.md) | Semantic configuration, captions, answers, hybrid patterns |
+| [../../../../../Global_References/azure-search-documents-py_vector-search.md](../../../../../Global_References/azure-search-documents-py_vector-search.md) | HNSW configuration, integrated vectorization, multi-vector queries |
+| [../../../../../Global_References/semantic-ranking.md](../../../../../Global_References/semantic-ranking.md) | Semantic configuration, captions, answers, hybrid patterns |
 | [scripts/setup_vector_index.py](scripts/setup_vector_index.py) | CLI script to create vector-enabled search index |
 
 
@@ -496,7 +496,7 @@ results = search_client.search(
 
 ## Agentic Retrieval (Knowledge Bases)
 
-For LLM-powered Q&A with answer synthesis, see [references/agentic-retrieval.md](references/agentic-retrieval.md).
+For LLM-powered Q&A with answer synthesis, see [../../../../../Global_References/agentic-retrieval.md](../../../../../Global_References/agentic-retrieval.md).
 
 Key concepts:
 - **Knowledge Source**: Points to a search index
@@ -552,3 +552,4 @@ except ResourceNotFoundError:
 except HttpResponseError as e:
     print(f"Search error: {e.message}")
 ```
+

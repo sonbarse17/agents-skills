@@ -483,16 +483,16 @@ class BiometricSessionCache {
 ```
 
 ## References
-  - references/auth-flow.md — Biometric Authentication Flow
-  - references/biometric-apis.md — Biometric APIs
-  - references/biometric-auth.md — Mobile Biometric Authentication
-  - references/biometric-security.md — Biometric Security — Liveness, Spoofing, and Template Protection
-  - references/biometric-types.md — Biometric Types
-  - references/multi-factor.md — Mobile Multi-Factor Authentication
-  - references/secure-storage.md — Secure Storage with Biometrics
-  - references/biometrics-fundamentals.md — Biometrics Fundamentals
-  - references/biometrics-advanced.md — Advanced Biometric Patterns
-  - references/biometrics-testing.md — Biometrics Testing Guide
+  - ../../../Global_References/auth-flow.md — Biometric Authentication Flow
+  - ../../../Global_References/biometric-apis.md — Biometric APIs
+  - ../../../Global_References/biometric-auth.md — Mobile Biometric Authentication
+  - ../../../Global_References/biometric-security.md — Biometric Security — Liveness, Spoofing, and Template Protection
+  - ../../../Global_References/biometric-types.md — Biometric Types
+  - ../../../Global_References/multi-factor.md — Mobile Multi-Factor Authentication
+  - ../../../Global_References/secure-storage.md — Secure Storage with Biometrics
+  - ../../../Global_References/biometrics-fundamentals.md — Biometrics Fundamentals
+  - ../../../Global_References/biometrics-advanced.md — Advanced Biometric Patterns
+  - ../../../Global_References/biometrics-testing.md — Biometrics Testing Guide
 
 ## Handoff
 Hand off to mobile-security skill for threat modeling and penetration testing of biometric auth paths.

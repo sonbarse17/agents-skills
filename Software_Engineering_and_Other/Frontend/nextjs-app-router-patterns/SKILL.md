@@ -93,7 +93,7 @@ export default async function HomePage() {
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/nextjs-app-router-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -112,3 +112,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't fetch in Client Components** - Use Server Components or React Query
 - **Don't over-nest layouts** - Each layout adds to the component tree
 - **Don't ignore loading states** - Always provide loading.tsx or Suspense
+

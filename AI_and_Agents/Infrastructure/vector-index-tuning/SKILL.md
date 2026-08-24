@@ -49,7 +49,7 @@ Binary:                dimensions/8 bytes
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/vector-index-tuning_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -67,3 +67,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't ignore build time** - Index updates have cost
 - **Don't forget reindexing** - Plan for maintenance
 - **Don't skip warming** - Cold indexes are slow
+

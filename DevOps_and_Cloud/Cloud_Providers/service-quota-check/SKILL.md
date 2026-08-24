@@ -346,7 +346,7 @@ at 70%+ utilization as part of a comprehensive capacity report.
 
 ## Common Quota Codes Reference
 
-See [references/common-quota-codes.md](references/common-quota-codes.md) for a table of
+See [../../../Global_References/common-quota-codes.md](../../../Global_References/common-quota-codes.md) for a table of
 frequently checked quota codes by service.
 
 ---
@@ -378,3 +378,4 @@ frequently checked quota codes by service.
   resource-level. Use `--context-id` with the resource ARN for these.
 - **Rate-based quotas**: Some quotas measure requests per second (e.g., API call rates).
   These require different monitoring approaches (CloudWatch metrics rather than resource counts).
+

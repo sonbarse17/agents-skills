@@ -390,12 +390,12 @@ Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for pa
 - All `timestamp` columns have `$onUpdate` for mutation tracking.
 
 ## References
-  - references/drizzle-advanced.md — Advanced Drizzle Patterns
-  - references/drizzle-edge-deployment.md — Edge and Serverless Deployment
-  - references/drizzle-relations.md — Relation Patterns
-  - references/migration-patterns.md — Migration Strategies
-  - references/query-optimization.md — Query Optimization
-  - references/schema-types.md — Schema Design and Types
+  - ../../../Global_References/drizzle-advanced.md — Advanced Drizzle Patterns
+  - ../../../Global_References/drizzle-edge-deployment.md — Edge and Serverless Deployment
+  - ../../../Global_References/drizzle-relations.md — Relation Patterns
+  - ../../../Global_References/migration-patterns.md — Migration Strategies
+  - ../../../Global_References/drizzle_query-optimization.md — Query Optimization
+  - ../../../Global_References/schema-types.md — Schema Design and Types
 ## Handoff
 Hand off to `backend/nodejs/prisma/SKILL.md` for Prisma ORM or `backend/nodejs/patterns/SKILL.md` for advanced Node patterns.
 ## Implementation Patterns

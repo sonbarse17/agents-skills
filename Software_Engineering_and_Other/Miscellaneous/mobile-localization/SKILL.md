@@ -537,14 +537,15 @@ jobs:
 20. Always validate all languages when adding new translatable strings.
 
 ## References
-  - references/android-localization.md — Android Localization
-  - references/ios-localization.md — iOS Localization
-  - references/l10n-workflow.md — Localization Workflow
-  - references/mobile-localization-advanced.md — Mobile Localization Advanced Topics
-  - references/mobile-localization-fundamentals.md — Mobile Localization Fundamentals
-  - references/rtl-support.md — Right-to-Left (RTL) Support
+  - ../../../Global_References/android-localization.md — Android Localization
+  - ../../../Global_References/ios-localization.md — iOS Localization
+  - ../../../Global_References/l10n-workflow.md — Localization Workflow
+  - ../../../Global_References/mobile-localization-advanced.md — Mobile Localization Advanced Topics
+  - ../../../Global_References/mobile-localization-fundamentals.md — Mobile Localization Fundamentals
+  - ../../../Global_References/mobile-localization_rtl-support.md — Right-to-Left (RTL) Support
 ## Handoff
 - `mobile/mobile-widgets` — Widget localization and RTL support
 - `backend/transactional-email` — Email template localization patterns
 - `backend/sms-messaging` — Localized SMS/WhatsApp message templates
 - `frontend/web-localization` — Shared locale strategy for web + mobile consistency
+

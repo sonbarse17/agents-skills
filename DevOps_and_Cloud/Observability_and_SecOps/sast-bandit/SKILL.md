@@ -125,7 +125,7 @@ Focus remediation efforts using this priority matrix:
 
 ### Step 5: Remediate Vulnerabilities
 
-For each finding, consult the bundled `references/remediation_guide.md` for secure coding patterns. Common remediation strategies:
+For each finding, consult the bundled `../../../Global_References/sast-bandit_remediation_guide.md` for secure coding patterns. Common remediation strategies:
 
 - **Hardcoded Secrets (B105, B106)**: Use environment variables or secret management services
 - **SQL Injection (B608)**: Use parameterized queries with SQLAlchemy or psycopg2
@@ -303,3 +303,4 @@ Install hooks: `pre-commit install`
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE Database](https://cwe.mitre.org/)
 - [Python Security Best Practices](https://python.readthedocs.io/en/stable/library/security_warnings.html)
+

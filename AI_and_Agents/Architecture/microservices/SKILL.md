@@ -497,12 +497,12 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 - Every service must have independent backup and restore tested quarterly.
 
 ## References
-  - references/communication-patterns.md — Communication Patterns
-  - references/data-patterns.md — Data Patterns
-  - references/decomposition-patterns.md — Decomposition Patterns
-  - references/microservices-communication.md — Microservices Communication
-  - references/microservices-observability.md — Microservices Observability
-  - references/microservices-testing.md — Microservices Testing
+  - ../../../Global_References/communication-patterns.md — Communication Patterns
+  - ../../../Global_References/data-patterns.md — Data Patterns
+  - ../../../Global_References/decomposition-patterns.md — Decomposition Patterns
+  - ../../../Global_References/microservices-communication.md — Microservices Communication
+  - ../../../Global_References/microservices-observability.md — Microservices Observability
+  - ../../../Global_References/microservices-testing.md — Microservices Testing
 ## Handoff
 Hand off to `devops/containerization/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
 ## Implementation Patterns

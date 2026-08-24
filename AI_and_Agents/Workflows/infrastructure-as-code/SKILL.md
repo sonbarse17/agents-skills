@@ -18,7 +18,7 @@ discipline applies equally to CloudFormation, Pulumi, or Bicep.
 as code — it's infrastructure with extra steps.**
 
 For Terraform specifics — plan symbols, state operations, backends, forced replacement, and drift
-detection — read `references/terraform.md`.
+detection — read `../../../Global_References/terraform.md`.
 
 ## 1. Read every plan before you apply it
 
@@ -120,3 +120,4 @@ State which environments have remote, locked, encrypted state, whether irreversi
 guarded, and the outcome of the most recent scheduled drift check. Name the honest gap — usually
 an environment still on local state, a lifecycle guard that was never added, or drift detection
 that isn't wired up yet — rather than implying the whole estate is fully reconciled.
+

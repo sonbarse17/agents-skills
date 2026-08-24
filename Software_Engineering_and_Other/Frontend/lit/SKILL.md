@@ -410,12 +410,12 @@ it('dispatches custom event on button click', async () => {
 - Use lit-html directives (`repeat`, `classMap`, `ifDefined`, `when`) over imperative DOM.
 
 ## References
-  - references/lit-advanced.md — Lit Advanced
-  - references/lit-architecture.md — Lit Architecture Patterns
-  - references/lit-deployment.md — Lit Deployment
-  - references/lit-essentials.md — Lit Essentials
-  - references/lit-fundamentals.md — Lit Fundamentals
-  - references/lit-testing.md — Lit Testing Reference
+  - ../../../Global_References/lit-advanced.md — Lit Advanced
+  - ../../../Global_References/lit-architecture.md — Lit Architecture Patterns
+  - ../../../Global_References/lit-deployment.md — Lit Deployment
+  - ../../../Global_References/lit-essentials.md — Lit Essentials
+  - ../../../Global_References/lit-fundamentals.md — Lit Fundamentals
+  - ../../../Global_References/lit-testing.md — Lit Testing Reference
 
 ## Handoff
 No artifact produced.
@@ -515,3 +515,4 @@ Does the component need to react to external state?
             ├── Yes → Use LitElement + rxjs with connect() pattern
             └── No  → Use @property decorators + willUpdate lifecycle
 ```
+

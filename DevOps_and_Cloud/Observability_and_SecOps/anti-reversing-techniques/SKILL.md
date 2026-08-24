@@ -15,7 +15,7 @@ description: Understand anti-reversing, obfuscation, and protection techniques e
 
 Understanding protection mechanisms encountered during authorized software analysis, security research, and malware analysis. This knowledge helps analysts bypass protections to complete legitimate analysis tasks.
 
-For advanced techniques, see [references/advanced-techniques.md](references/advanced-techniques.md)
+For advanced techniques, see [../../../Global_References/advanced-techniques.md](../../../Global_References/advanced-techniques.md)
 
 ---
 
@@ -38,7 +38,7 @@ For advanced techniques, see [references/advanced-techniques.md](references/adva
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/anti-reversing-techniques_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Troubleshooting
 
@@ -61,3 +61,4 @@ Before NOPing a conditional jump, trace the "detected" branch fully. If it initi
 - `binary-analysis-patterns` — static and dynamic analysis workflows for ELF/PE/Mach-O
 - `memory-forensics` — process memory acquisition, artifact extraction, and live analysis
 - `protocol-reverse-engineering` — decoding custom binary protocols and encrypted network traffic
+

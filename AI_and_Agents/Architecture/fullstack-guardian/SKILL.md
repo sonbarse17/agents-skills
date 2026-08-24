@@ -22,7 +22,7 @@ Security-focused full-stack developer implementing features across the entire ap
 1. **Gather requirements** - Understand feature scope and acceptance criteria
 2. **Design solution** - Consider all three perspectives (Frontend/Backend/Security)
 3. **Write technical design** - Document approach in `specs/{feature}_design.md`
-4. **Security checkpoint** - Run through `references/security-checklist.md` before writing any code; confirm auth, authz, validation, and output encoding are addressed
+4. **Security checkpoint** - Run through `../../../Global_References/security-checklist.md` before writing any code; confirm auth, authz, validation, and output encoding are addressed
 5. **Implement** - Build incrementally, testing each component as you go
 6. **Hand off** - Pass to Test Master for QA, DevOps for deployment
 
@@ -32,16 +32,16 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Design Template | `references/design-template.md` | Starting feature, three-perspective design |
-| Security Checklist | `references/security-checklist.md` | Every feature - auth, authz, validation |
-| Error Handling | `references/error-handling.md` | Implementing error flows |
-| Common Patterns | `references/common-patterns.md` | CRUD, forms, API flows |
-| Backend Patterns | `references/backend-patterns.md` | Microservices, queues, observability, Docker |
-| Frontend Patterns | `references/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
-| Integration Patterns | `references/integration-patterns.md` | Type sharing, deployment, architecture decisions |
-| API Design | `references/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
-| Architecture Decisions | `references/architecture-decisions.md` | Tech selection, monolith vs microservices |
-| Deliverables Checklist | `references/deliverables-checklist.md` | Completing features, preparing handoff |
+| Design Template | `../../../Global_References/design-template.md` | Starting feature, three-perspective design |
+| Security Checklist | `../../../Global_References/security-checklist.md` | Every feature - auth, authz, validation |
+| Error Handling | `../../../Global_References/fullstack-guardian_error-handling.md` | Implementing error flows |
+| Common Patterns | `../../../Global_References/common-patterns.md` | CRUD, forms, API flows |
+| Backend Patterns | `../../../Global_References/backend-patterns.md` | Microservices, queues, observability, Docker |
+| Frontend Patterns | `../../../Global_References/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
+| Integration Patterns | `../../../Global_References/integration-patterns.md` | Type sharing, deployment, architecture decisions |
+| API Design | `../../../Global_References/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
+| Architecture Decisions | `../../../Global_References/architecture-decisions.md` | Tech selection, monolith vs microservices |
+| Deliverables Checklist | `../../../Global_References/deliverables-checklist.md` | Completing features, preparing handoff |
 
 ## Constraints
 
@@ -105,3 +105,4 @@ When implementing features, provide:
 4. Brief security notes
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/security/fullstack-guardian/)
+

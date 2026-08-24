@@ -360,14 +360,14 @@ Each layer must timeout before the layer above it. Otherwise, useless waiting oc
 - Set per-retry timeout in addition to overall timeout.
 
 ## References
-  - references/bulkhead-patterns.md — Bulkhead Patterns
-  - references/circuit-breaker-patterns.md — Circuit Breaker Patterns
-  - references/fallback-strategies.md — Fallback Strategies
-  - references/resilience-cache.md — Caching as a Resilience Pattern
-  - references/resilience-testing.md — Resilience Testing
-  - references/resilience4j-guide.md — Resilience4j Implementation Guide
-  - references/retry-backoff-strategies.md — Retry and Backoff Strategies
-  - references/timeout-retry-patterns.md — Timeout and Retry Patterns
+  - ../../../Global_References/bulkhead-patterns.md — Bulkhead Patterns
+  - ../../../Global_References/circuit-breaker-patterns.md — Circuit Breaker Patterns
+  - ../../../Global_References/fallback-strategies.md — Fallback Strategies
+  - ../../../Global_References/resilience-cache.md — Caching as a Resilience Pattern
+  - ../../../Global_References/resilience-testing.md — Resilience Testing
+  - ../../../Global_References/resilience4j-guide.md — Resilience4j Implementation Guide
+  - ../../../Global_References/retry-backoff-strategies.md — Retry and Backoff Strategies
+  - ../../../Global_References/timeout-retry-patterns.md — Timeout and Retry Patterns
 ## Handoff
 No artifact produced unless requested.
 Next skill: openapi-documentation — document the resilient API endpoints.

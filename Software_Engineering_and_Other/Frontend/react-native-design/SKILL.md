@@ -20,7 +20,7 @@ Master React Native styling patterns, React Navigation, and Reanimated 3 to buil
 
 ## Detailed section: Core Concepts
 
-Originally a 6471-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 6471-byte section in this SKILL.md. Moved to `../../../Global_References/react-native-design_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Quick Start Component
 
@@ -127,3 +127,4 @@ const styles = StyleSheet.create({
 - **Memory Leaks**: Cancel animations and cleanup in useEffect
 - **Font Loading**: Use `expo-font` or `react-native-asset` for custom fonts
 - **Safe Area Issues**: Test on notched devices (iPhone, Android with cutouts)
+

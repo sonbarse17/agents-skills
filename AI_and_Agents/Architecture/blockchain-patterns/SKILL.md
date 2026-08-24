@@ -601,18 +601,19 @@ contract WalletFactory {
 - **EIP-2535 diamond storage**: No collision risk, but ~5000 gas per namespace registration
 
 ## References
-- references/advanced-token-standards.md — Advanced Token Standards
-- references/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
-- references/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
-- references/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
-- references/erc-4626-vault.md — ERC-4626 Yield-Bearing Vault Standard
-- references/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
-- references/mev-and-order-flow.md — MEV & Order Flow Patterns
-- references/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns
-- references/token-standards.md — Token Standards & Contracts
-- references/upgradeable-contracts.md — Upgradeable Contract Patterns
+- ../../../Global_References/advanced-token-standards.md — Advanced Token Standards
+- ../../../Global_References/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
+- ../../../Global_References/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
+- ../../../Global_References/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
+- ../../../Global_References/erc-4626-vault.md — ERC-4626 Yield-Bearing Vault Standard
+- ../../../Global_References/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
+- ../../../Global_References/mev-and-order-flow.md — MEV & Order Flow Patterns
+- ../../../Global_References/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns
+- ../../../Global_References/token-standards.md — Token Standards & Contracts
+- ../../../Global_References/upgradeable-contracts.md — Upgradeable Contract Patterns
 
 ## Handoff
 blockchain-patterns → blockchain-application (for pattern implementation in code)
 blockchain-patterns → blockchain-security (for pattern-specific security analysis)
 blockchain-patterns → blockchain-core (for scaling protocol integration)
+

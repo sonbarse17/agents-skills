@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Vector Databases | `references/vector-databases.md` | Comparing Pinecone, Weaviate, Chroma, pgvector, Qdrant |
-| Embedding Models | `references/embedding-models.md` | Selecting embeddings, fine-tuning, dimension trade-offs |
-| Chunking Strategies | `references/chunking-strategies.md` | Document splitting, overlap, semantic chunking |
-| Retrieval Optimization | `references/retrieval-optimization.md` | Hybrid search, reranking, query expansion, filtering |
-| RAG Evaluation | `references/rag-evaluation.md` | Metrics, evaluation frameworks, debugging retrieval |
+| Vector Databases | `../../../Global_References/vector-databases.md` | Comparing Pinecone, Weaviate, Chroma, pgvector, Qdrant |
+| Embedding Models | `../../../Global_References/embedding-models.md` | Selecting embeddings, fine-tuning, dimension trade-offs |
+| Chunking Strategies | `../../../Global_References/chunking-strategies.md` | Document splitting, overlap, semantic chunking |
+| Retrieval Optimization | `../../../Global_References/retrieval-optimization.md` | Hybrid search, reranking, query expansion, filtering |
+| RAG Evaluation | `../../../Global_References/rag-evaluation.md` | Metrics, evaluation frameworks, debugging retrieval |
 
 ## Implementation Examples
 
@@ -198,3 +198,4 @@ When designing RAG architecture, deliver:
 5. Evaluation plan with metrics, benchmarks, and pass/fail thresholds
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/rag-architect/)
+

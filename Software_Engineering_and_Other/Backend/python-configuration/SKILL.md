@@ -195,7 +195,7 @@ Makes `env | grep DB_` useful for debugging.
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-configuration_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -209,3 +209,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Document all variables** - README should list required env vars
 9. **Validate early** - Check config correctness at boot time
 10. **Use secrets_dir** - Support mounted secrets in containers
+

@@ -29,11 +29,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Minimal APIs | `references/minimal-apis.md` | Creating endpoints, routing, middleware |
-| Clean Architecture | `references/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
-| Entity Framework | `references/entity-framework.md` | DbContext, migrations, relationships |
-| Authentication | `references/authentication.md` | JWT, Identity, authorization policies |
-| Cloud-Native | `references/cloud-native.md` | Docker, health checks, configuration |
+| Minimal APIs | `../../../Global_References/minimal-apis.md` | Creating endpoints, routing, middleware |
+| Clean Architecture | `../../../Global_References/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
+| Entity Framework | `../../../Global_References/entity-framework.md` | DbContext, migrations, relationships |
+| Authentication | `../../../Global_References/authentication.md` | JWT, Identity, authorization policies |
+| Cloud-Native | `../../../Global_References/cloud-native.md` | Docker, health checks, configuration |
 
 ## Constraints
 
@@ -138,3 +138,4 @@ When implementing .NET features, provide:
 5. Brief explanation of architectural decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/dotnet-core-expert/)
+

@@ -382,7 +382,7 @@ tags = ["password", "database", "acme-internal"]
    [allowlist]
    commits = ["commit-sha-here"]
    ```
-4. Consult `references/false_positives.md` for common patterns
+4. Consult `../../../Global_References/false_positives.md` for common patterns
 
 ### Issue: Performance Issues on Large Repositories
 
@@ -417,7 +417,7 @@ tags = ["password", "database", "acme-internal"]
    - BFG Repo-Cleaner: `bfg --delete-files credentials.json`
 3. Force-push cleaned history: `git push --force`
 4. Notify all contributors to rebase/re-clone
-5. See `references/remediation_guide.md` for detailed procedures
+5. See `../../../Global_References/remediation_guide.md` for detailed procedures
 6. Document incident in security audit log
 
 ### Issue: Custom Secret Patterns Not Detected
@@ -500,3 +500,4 @@ regexes = ['''key\s*=\s*EXAMPLE''']
 - [CWE-321: Use of Hard-coded Cryptographic Key](https://cwe.mitre.org/data/definitions/321.html)
 - [PCI-DSS Requirements](https://www.pcisecuritystandards.org/)
 - [SOC2 Security Criteria](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html)
+

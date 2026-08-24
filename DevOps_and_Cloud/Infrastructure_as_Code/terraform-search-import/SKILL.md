@@ -40,7 +40,7 @@ Discover existing cloud resources using declarative queries and generate configu
 3. **Choose workflow**:
    - ** If supported**: Check for terraform version available.
    - ** If terraform version is above 1.14.0** Use Terraform Search workflow (below)
-   - ** If not supported or terraform version is below 1.14.0 **: Use Manual Discovery workflow (see [references/MANUAL-IMPORT.md](references/MANUAL-IMPORT.md))
+   - ** If not supported or terraform version is below 1.14.0 **: Use Manual Discovery workflow (see [../../../Global_References/MANUAL-IMPORT.md](../../../Global_References/MANUAL-IMPORT.md))
 
    **Note**: The list of supported resources is rapidly expanding. Always verify current support before using manual import.
 
@@ -393,3 +393,4 @@ terraform query -generate-config-out=generated.tf
 terraform plan
 terraform apply
 ```
+

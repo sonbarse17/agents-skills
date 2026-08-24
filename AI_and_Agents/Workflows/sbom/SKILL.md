@@ -466,14 +466,14 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 - Correlate vulnerabilities by reachability when possible
 
 ## References
-  - references/dependency-management.md — Dependency Management
-  - references/sbom-advanced.md — Sbom Advanced Topics
-  - references/sbom-attestation.md — SBOM Attestation
-  - references/sbom-formats.md — SBOM Formats
-  - references/sbom-fundamentals.md — Sbom Fundamentals
-  - references/sbom-generation-tools.md — SBOM Generation Tools Comparison
-  - references/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
-  - references/supply-chain-attacks.md — Supply Chain Attack Patterns
+  - ../../../Global_References/dependency-management.md — Dependency Management
+  - ../../../Global_References/sbom-advanced.md — Sbom Advanced Topics
+  - ../../../Global_References/sbom-attestation.md — SBOM Attestation
+  - ../../../Global_References/sbom-formats.md — SBOM Formats
+  - ../../../Global_References/sbom-fundamentals.md — Sbom Fundamentals
+  - ../../../Global_References/sbom-generation-tools.md — SBOM Generation Tools Comparison
+  - ../../../Global_References/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
+  - ../../../Global_References/supply-chain-attacks.md — Supply Chain Attack Patterns
 ## Handoff
 `security-container-security` for image scanning integration
 `devops-ci-cd` for pipeline configuration and artifact storage

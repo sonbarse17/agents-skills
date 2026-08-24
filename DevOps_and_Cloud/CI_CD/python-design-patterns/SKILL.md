@@ -47,7 +47,7 @@ def get_formatter(name: str) -> Formatter:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/python-design-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 
@@ -83,3 +83,4 @@ This is a layering violation. The service layer must not import from handlers. I
 
 - [python-testing-patterns](../python-testing-patterns/SKILL.md) — Test each layer in isolation using the dependency injection structure established here
 - [python-project-structure](../python-project-structure/SKILL.md) — Organize modules and directory layout so layer boundaries are explicit from the start
+

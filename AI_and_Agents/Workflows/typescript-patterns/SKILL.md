@@ -571,13 +571,14 @@ function getName(user: User | null): string {
 - Never use non-null assertions (`!`) without a preceding null check.
 
 ## References
-  - references/ts-generics-patterns.md — TypeScript Generics Patterns
-  - references/ts-react-patterns.md — TypeScript React Patterns
-  - references/ts-type-safety.md — TypeScript Type Safety Patterns
-  - references/ts-utility-types.md — TypeScript Utility Types
-  - references/typescript-advanced.md — Advanced TypeScript
-  - references/typescript-config.md — TypeScript Configuration
+  - ../../../Global_References/ts-generics-patterns.md — TypeScript Generics Patterns
+  - ../../../Global_References/ts-react-patterns.md — TypeScript React Patterns
+  - ../../../Global_References/ts-type-safety.md — TypeScript Type Safety Patterns
+  - ../../../Global_References/ts-utility-types.md — TypeScript Utility Types
+  - ../../../Global_References/typescript-advanced.md — Advanced TypeScript
+  - ../../../Global_References/typescript-config.md — TypeScript Configuration
 ## Handoff
 No artifact produced.
 Next skill: `error-handling` — wrap API responses with typed error boundaries.
 Carry forward: type patterns used, validation library (zod), discriminated union shape.
+

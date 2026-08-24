@@ -35,11 +35,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| LoRA/PEFT | `references/lora-peft.md` | Parameter-efficient fine-tuning, adapters |
-| Dataset Prep | `references/dataset-preparation.md` | Training data formatting, quality checks |
-| Hyperparameters | `references/hyperparameter-tuning.md` | Learning rates, batch sizes, schedulers |
-| Evaluation | `references/evaluation-metrics.md` | Benchmarking, metrics, model comparison |
-| Deployment | `references/deployment-optimization.md` | Model merging, quantization, serving |
+| LoRA/PEFT | `../../../Global_References/lora-peft.md` | Parameter-efficient fine-tuning, adapters |
+| Dataset Prep | `../../../Global_References/dataset-preparation.md` | Training data formatting, quality checks |
+| Hyperparameters | `../../../Global_References/hyperparameter-tuning.md` | Learning rates, batch sizes, schedulers |
+| Evaluation | `../../../Global_References/evaluation-metrics.md` | Benchmarking, metrics, model comparison |
+| Deployment | `../../../Global_References/deployment-optimization.md` | Model merging, quantization, serving |
 
 ## Minimal Working Example — LoRA Fine-Tuning with Hugging Face PEFT
 
@@ -162,3 +162,4 @@ When implementing fine-tuning, always provide:
 4. **Brief design rationale** — why this PEFT method, rank, and learning rate were chosen for this task
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/fine-tuning-expert/)
+

@@ -18,7 +18,7 @@ a step is a guess wearing a lab coat.
 **If you can't point to the metric that proves the change worked, you haven't tuned anything.**
 
 For the USE method applied resource-by-resource with the exact Linux commands, read
-`references/use-method.md`.
+`../../../Global_References/use-method.md`.
 
 ## 1. Establish a baseline before touching anything
 
@@ -124,3 +124,4 @@ made, and the measured before/after delta under load. Name honestly which resour
 checked or which change was applied without a controlled remeasurement — an unverified tuning
 change is a regression waiting for the next traffic increase, and saying so is worth more than a
 confident number nobody can reproduce.
+

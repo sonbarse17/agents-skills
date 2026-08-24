@@ -421,16 +421,16 @@ Combine re_data (baseline tracking) + dbt-audit-helper (migration validation) + 
 - Referential integrity verified across all related tables
 
 ## References
-  - references/data-quality-automation.md — Data Quality Automation
-  - references/data-quality-ecosystem.md — Data Quality Ecosystem Tools
-  - references/data-quality-incident-management.md — Data Quality Incident Management
-  - references/data-quality-management.md — Data Quality Management
-  - references/data-quality-metrics.md — Data Quality Metrics
-  - references/data-quality-monitoring.md — Data Quality Monitoring
-  - references/ge-advanced-patterns.md — Great Expectations Advanced Patterns
-  - references/quality-automation.md — Quality Automation
-  - references/quality-dimensions.md — Data Quality Dimensions
-  - references/soda-check-examples.md — Soda Check Examples
+  - ../../../Global_References/data-quality-automation.md — Data Quality Automation
+  - ../../../Global_References/data-quality-ecosystem.md — Data Quality Ecosystem Tools
+  - ../../../Global_References/data-quality-incident-management.md — Data Quality Incident Management
+  - ../../../Global_References/data-quality-management.md — Data Quality Management
+  - ../../../Global_References/data-quality-metrics.md — Data Quality Metrics
+  - ../../../Global_References/data-quality-monitoring.md — Data Quality Monitoring
+  - ../../../Global_References/ge-advanced-patterns.md — Great Expectations Advanced Patterns
+  - ../../../Global_References/quality-automation.md — Quality Automation
+  - ../../../Global_References/quality-dimensions.md — Data Quality Dimensions
+  - ../../../Global_References/soda-check-examples.md — Soda Check Examples
 ## Architecture Decision Trees
 
 ```
@@ -547,3 +547,4 @@ models:
 ## Handoff
 `data-etl-pipeline` for embedding quality checks into pipeline
 `data-bi-tools` for displaying quality metadata on dashboards
+

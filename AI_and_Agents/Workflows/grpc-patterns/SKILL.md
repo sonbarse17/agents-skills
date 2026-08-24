@@ -407,14 +407,14 @@ Client migration: run both versions simultaneously, migrate clients one by one
 - Use connection pooling for high-throughput scenarios.
 
 ## References
-  - references/grpc-error-handling.md — gRPC Error Handling
-  - references/grpc-interceptors.md — gRPC Interceptors
-  - references/grpc-performance.md — gRPC Performance
-  - references/grpc-security.md — gRPC Security
-  - references/grpc-streaming.md — gRPC Streaming Patterns
-  - references/grpc-testing.md — gRPC Testing
-  - references/grpc-vs-rest.md — gRPC vs REST
-  - references/protobuf-basics.md — Protocol Buffer Basics
+  - ../../../Global_References/grpc-error-handling.md — gRPC Error Handling
+  - ../../../Global_References/grpc-interceptors.md — gRPC Interceptors
+  - ../../../Global_References/grpc-performance.md — gRPC Performance
+  - ../../../Global_References/grpc-security.md — gRPC Security
+  - ../../../Global_References/grpc-streaming.md — gRPC Streaming Patterns
+  - ../../../Global_References/grpc-testing.md — gRPC Testing
+  - ../../../Global_References/grpc-vs-rest.md — gRPC vs REST
+  - ../../../Global_References/protobuf-basics.md — Protocol Buffer Basics
 ## Handoff
 No artifact produced unless requested.
 Next skill: backend-message-queue — if the service needs async communication or event-driven patterns.

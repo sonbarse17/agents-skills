@@ -37,11 +37,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Navigation | `references/expo-router.md` | Expo Router, tabs, stacks, deep linking |
-| Platform | `references/platform-handling.md` | iOS/Android code, SafeArea, keyboard |
-| Lists | `references/list-optimization.md` | FlatList, performance, memo |
-| Storage | `references/storage-hooks.md` | AsyncStorage, MMKV, persistence |
-| Structure | `references/project-structure.md` | Project setup, architecture |
+| Navigation | `../../../Global_References/expo-router.md` | Expo Router, tabs, stacks, deep linking |
+| Platform | `../../../Global_References/platform-handling.md` | iOS/Android code, SafeArea, keyboard |
+| Lists | `../../../Global_References/list-optimization.md` | FlatList, performance, memo |
+| Storage | `../../../Global_References/storage-hooks.md` | AsyncStorage, MMKV, persistence |
+| Structure | `../../../Global_References/react-native-expert_project-structure.md` | Project setup, architecture |
 
 ## Constraints
 
@@ -185,3 +185,4 @@ When implementing React Native features, deliver:
 React Native 0.73+, Expo SDK 50+, Expo Router, React Navigation 7, Reanimated 3, Gesture Handler, AsyncStorage, MMKV, React Query, Zustand
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/react-native-expert/)
+

@@ -20,7 +20,7 @@ Master accessibility implementation to create inclusive experiences that work fo
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../../Global_References/accessibility-compliance_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -49,3 +49,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Automated**: axe DevTools, WAVE, Lighthouse
 - **Manual**: VoiceOver (macOS/iOS), NVDA/JAWS (Windows), TalkBack (Android)
 - **Simulators**: NoCoffee (vision), Silktide (various disabilities)
+

@@ -398,14 +398,14 @@ GROUP BY requesting_party;
 - Support revocation of data contribution; party can withdraw data at any time
 
 ## References
-  - references/clean-room-architecture.md — Clean Room Architecture
-  - references/clean-room-data-types.md — Clean Room Supported Data Types
-  - references/clean-room-deployment.md — Clean Room Deployment
-  - references/clean-room-ops.md — Clean Room Operations Reference
-  - references/clean-room-performance.md — Clean Room Performance Optimization
-  - references/clean-room-use-cases.md — Clean Room Use Cases
-  - references/privacy-compute-patterns.md — Privacy Compute Patterns
-  - references/privacy-compute.md — Privacy Compute Patterns Reference
+  - ../../../Global_References/clean-room-architecture.md — Clean Room Architecture
+  - ../../../Global_References/clean-room-data-types.md — Clean Room Supported Data Types
+  - ../../../Global_References/clean-room-deployment.md — Clean Room Deployment
+  - ../../../Global_References/clean-room-ops.md — Clean Room Operations Reference
+  - ../../../Global_References/clean-room-performance.md — Clean Room Performance Optimization
+  - ../../../Global_References/clean-room-use-cases.md — Clean Room Use Cases
+  - ../../../Global_References/privacy-compute-patterns.md — Privacy Compute Patterns
+  - ../../../Global_References/privacy-compute.md — Privacy Compute Patterns Reference
 ## Architecture Decision Trees
 
 ```
@@ -512,3 +512,4 @@ class PSIProtocol:
 `data-data-security` for broader data security and encryption patterns
 `data-compliance-audit` for regulatory compliance requirements affecting clean rooms
 `data-data-sharing` for non-privacy-preserving data sharing patterns
+

@@ -592,18 +592,19 @@ interface BffLogContext {
 - Cache invalidation via event-driven mechanisms (pub/sub, webhook).
 
 ## References
-  - references/bff-fundamentals.md — BFF Fundamentals
-  - references/bff-advanced.md — BFF Advanced
-  - references/bff-architecture.md — BFF Architecture
-  - references/bff-auth-session.md — BFF Auth and Session Reference
-  - references/bff-orchestration.md — BFF Orchestration Reference
-  - references/bff-performance.md — BFF Performance
-  - references/bff-security.md — BFF Security
-  - references/bff-testing.md — BFF Testing
-  - references/bff-implementation-strategies.md — BFF Implementation Strategies
-  - references/bff-rate-limiting.md — BFF Rate Limiting and Load Shedding
+  - ../../../Global_References/bff-fundamentals.md — BFF Fundamentals
+  - ../../../Global_References/bff-advanced.md — BFF Advanced
+  - ../../../Global_References/bff-architecture.md — BFF Architecture
+  - ../../../Global_References/bff-auth-session.md — BFF Auth and Session Reference
+  - ../../../Global_References/bff-orchestration.md — BFF Orchestration Reference
+  - ../../../Global_References/bff-performance.md — BFF Performance
+  - ../../../Global_References/bff-security.md — BFF Security
+  - ../../../Global_References/bff-testing.md — BFF Testing
+  - ../../../Global_References/bff-implementation-strategies.md — BFF Implementation Strategies
+  - ../../../Global_References/bff-rate-limiting.md — BFF Rate Limiting and Load Shedding
 
 ## Handoff
 No artifact produced unless requested.
 Next skill: data-masking — protect sensitive data flowing through BFF responses.
 Carry forward: client types, BFF API contracts, security patterns.
+

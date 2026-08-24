@@ -81,7 +81,7 @@ export default function RootLayout() {
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/react-native-architecture_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -100,3 +100,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't ignore platform differences** - Test on both iOS and Android
 - **Don't store secrets in code** - Use environment variables
 - **Don't skip error boundaries** - Mobile crashes are unforgiving
+

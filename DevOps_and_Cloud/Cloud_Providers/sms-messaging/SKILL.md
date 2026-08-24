@@ -426,14 +426,14 @@ async function sendWhatsAppMessage(to: string, templateName: string, params: Rec
 20. Always implement rate limiting per provider to avoid carrier filtering.
 
 ## References
-  - references/2fa-sms.md — Two-Factor Authentication via SMS
-  - references/compliance-analytics.md — Compliance and Analytics
-  - references/sms-messaging-advanced.md — Sms Messaging Advanced Topics
-  - references/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
-  - references/sms-messaging-monitoring.md — SMS Messaging Monitoring
-  - references/sms-messaging-testing.md — SMS Messaging Testing
-  - references/sms-providers.md — SMS Providers
-  - references/whatsapp-api.md — WhatsApp API
+  - ../../../Global_References/2fa-sms.md — Two-Factor Authentication via SMS
+  - ../../../Global_References/compliance-analytics.md — Compliance and Analytics
+  - ../../../Global_References/sms-messaging-advanced.md — Sms Messaging Advanced Topics
+  - ../../../Global_References/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
+  - ../../../Global_References/sms-messaging-monitoring.md — SMS Messaging Monitoring
+  - ../../../Global_References/sms-messaging-testing.md — SMS Messaging Testing
+  - ../../../Global_References/sms-providers.md — SMS Providers
+  - ../../../Global_References/whatsapp-api.md — WhatsApp API
 ## Architecture Decision Trees
 
 ### Provider Selection
@@ -584,3 +584,4 @@ class DeliveryAggregator {
 - Webhook signatures: validate Twilio `X-Twilio-Signature` header. Reject unsigned webhooks.
 - Data retention: message logs retained per regulatory requirements. Purge after compliance window.
 - Consent records: immutable append-only log. Export for regulatory audit within 24 hours.
+

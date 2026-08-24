@@ -444,14 +444,14 @@ Key question: centralized vs decentralized?
 - Automate dashboard generation from semantic layer definitions
 
 ## References
-  - references/bi-security-governance.md — BI Security and Governance
-  - references/bi-tools-architecture.md — BI Tools Architecture
-  - references/bi-tools-performance.md — BI Tools Performance Optimization
+  - ../../../Global_References/bi-security-governance.md — BI Security and Governance
+  - ../../../Global_References/bi-tools-architecture.md — BI Tools Architecture
+  - ../../../Global_References/bi-tools-performance.md — BI Tools Performance Optimization
   - references/dashboard-design.md — Dashboard Design
-  - references/embedding-analytics.md — Embedded Analytics
-  - references/lookml-examples.md — LookML Examples
-  - references/semantic-layer-patterns.md — Semantic Layer Patterns
-  - references/tool-selection.md — BI Tool Selection
+  - ../../../Global_References/embedding-analytics.md — Embedded Analytics
+  - ../../../Global_References/lookml-examples.md — LookML Examples
+  - ../../../Global_References/semantic-layer-patterns.md — Semantic Layer Patterns
+  - ../../../Global_References/tool-selection.md — BI Tool Selection
 ## Architecture Decision Trees
 
 ```
@@ -554,3 +554,4 @@ dashboard:
 ## Handoff
 `data-data-warehouse` for optimizing warehouse for BI queries
 `data-data-quality` for validating dashboard data accuracy
+

@@ -142,7 +142,7 @@ git branch deleted-branch abc123
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/git-advanced-workflows_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -196,3 +196,4 @@ git reset --hard HEAD^
 git reflog
 git branch recovered-branch abc123
 ```
+

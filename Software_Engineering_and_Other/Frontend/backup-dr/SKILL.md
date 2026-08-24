@@ -692,17 +692,18 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 Backup automation scripts (Python/Bash), Terraform for backup infrastructure, runbook markdown, CI/CD validation pipeline.
 
 ## References
-  - references/backup-3-2-1.md
-  - references/backup-automation.md
-  - references/backup-disaster-recovery.md
-  - references/backup-dr-advanced.md
-  - references/backup-dr-fundamentals.md
-  - references/backup-strategies.md
-  - references/disaster-recovery.md
-  - references/dr-recovery.md
+  - ../../../Global_References/backup-3-2-1.md
+  - ../../../Global_References/backup-automation.md
+  - ../../../Global_References/backup-disaster-recovery.md
+  - ../../../Global_References/backup-dr-advanced.md
+  - ../../../Global_References/backup-dr-fundamentals.md
+  - ../../../Global_References/backup-strategies.md
+  - ../../../Global_References/disaster-recovery.md
+  - ../../../Global_References/dr-recovery.md
   - references/ransomware-protection-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **storage-infrastructure** — storage architecture for backup targets
 - Pass context: workload tiers, RPO/RTO, backup schedule, DR runbook location
+

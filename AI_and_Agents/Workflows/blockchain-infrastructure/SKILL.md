@@ -560,19 +560,20 @@ groups:
 ```
 
 ## References
-  - references/blockchain-infrastructure-advanced.md — Blockchain Infrastructure Advanced Topics
-  - references/blockchain-infrastructure-fundamentals.md — Blockchain Infrastructure Fundamentals
-  - references/ci-cd-smart-contracts.md — CI/CD for Smart Contracts
-  - references/disaster-recovery-backup.md — Disaster Recovery & Backup
-  - references/environment-mgmt.md — Environment Management
-  - references/kms-hsm.md — KMS & HSM for Blockchain
-  - references/mev-infrastructure.md — MEV Infrastructure
-  - references/monitoring-alerting.md — Monitoring and Alerting
-  - references/node-deployment.md — Node Deployment
-  - references/performance-benchmarking.md — Performance Benchmarking
-  - references/rpc-infrastructure.md — RPC Infrastructure
+  - ../../../Global_References/blockchain-infrastructure-advanced.md — Blockchain Infrastructure Advanced Topics
+  - ../../../Global_References/blockchain-infrastructure-fundamentals.md — Blockchain Infrastructure Fundamentals
+  - ../../../Global_References/ci-cd-smart-contracts.md — CI/CD for Smart Contracts
+  - ../../../Global_References/disaster-recovery-backup.md — Disaster Recovery & Backup
+  - ../../../Global_References/environment-mgmt.md — Environment Management
+  - ../../../Global_References/kms-hsm.md — KMS & HSM for Blockchain
+  - ../../../Global_References/mev-infrastructure.md — MEV Infrastructure
+  - ../../../Global_References/blockchain-infrastructure_monitoring-alerting.md — Monitoring and Alerting
+  - ../../../Global_References/node-deployment.md — Node Deployment
+  - ../../../Global_References/performance-benchmarking.md — Performance Benchmarking
+  - ../../../Global_References/rpc-infrastructure.md — RPC Infrastructure
   - references/validator-operations.md — Validator Operations Guide
   - references/blockchain-devops-tooling.md — Blockchain DevOps Tooling
 
 ## Phase
 blockchain → blockchain-infrastructure
+

@@ -478,14 +478,14 @@ WHERE o.total_amount > 1000;
 - Budget 20% overhead on worker memory for query peak usage
 
 ## References
-  - references/federation-deployment.md — Federation Deployment
-  - references/federation-optimization.md — Federation Query Optimization Reference
-  - references/trino-architecture.md — Trino Architecture
-  - references/virtualization-connectors.md — Virtualization Connectors
-  - references/virtualization-cost-analysis.md — Virtualization Cost Analysis
-  - references/virtualization-platforms.md — Data Virtualization Platforms
-  - references/virtualization-query-optimization.md — Virtualization Query Optimization
-  - references/virtualization-security.md — Virtualization Security Reference
+  - ../../../Global_References/federation-deployment.md — Federation Deployment
+  - ../../../Global_References/federation-optimization.md — Federation Query Optimization Reference
+  - ../../../Global_References/trino-architecture.md — Trino Architecture
+  - ../../../Global_References/virtualization-connectors.md — Virtualization Connectors
+  - ../../../Global_References/virtualization-cost-analysis.md — Virtualization Cost Analysis
+  - ../../../Global_References/virtualization-platforms.md — Data Virtualization Platforms
+  - ../../../Global_References/virtualization-query-optimization.md — Virtualization Query Optimization
+  - ../../../Global_References/virtualization-security.md — Virtualization Security Reference
 ## Architecture Decision Trees
 
 ```
@@ -582,3 +582,4 @@ virtual_dataset:
 
 ## Handoff
 `data-data-platform` for Trino cluster deployment on K8s. `data-data-catalog` for registering engine as data source. `data-data-observability` for query performance monitoring. `data-data-security` for RBAC and TLS setup.
+

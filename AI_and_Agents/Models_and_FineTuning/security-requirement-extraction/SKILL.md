@@ -46,7 +46,7 @@ Business Requirements → Security Requirements → Technical Controls
 
 ## Templates and detailed worked examples
 
-Full template library lives in `references/details.md`. Read that file when you need concrete templates for this skill.
+Full template library lives in `../../../Global_References/security-requirement-extraction_details.md`. Read that file when you need concrete templates for this skill.
 
 ## Best Practices
 
@@ -65,3 +65,4 @@ Full template library lives in `references/details.md`. Read that file when you 
 - **Don't ignore priorities** - Not all requirements are equal
 - **Don't forget testability** - If you can't test it, you can't verify it
 - **Don't work in isolation** - Involve stakeholders
+

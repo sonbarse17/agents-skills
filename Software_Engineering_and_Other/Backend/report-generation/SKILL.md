@@ -633,15 +633,16 @@ describe('Report Generation', () => {
 - Test file size limits: verify rejection of oversized requests
 
 ## Rules
-  - references/excel-csv-export.md — Excel and CSV Export
-  - references/pdf-generation.md — PDF Generation
-  - references/report-distribution.md — Report Distribution and Delivery
-  - references/report-generation-advanced.md — Report Generation Advanced Topics
-  - references/report-generation-fundamentals.md — Report Generation Fundamentals
-  - references/report-scheduling.md — Report Scheduling
-  - references/report-templates.md — Report Templates
-  - references/report-visualization.md — Report Visualization and Charts
+  - ../../../Global_References/excel-csv-export.md — Excel and CSV Export
+  - ../../../Global_References/pdf-generation.md — PDF Generation
+  - ../../../Global_References/report-distribution.md — Report Distribution and Delivery
+  - ../../../Global_References/report-generation-advanced.md — Report Generation Advanced Topics
+  - ../../../Global_References/report-generation-fundamentals.md — Report Generation Fundamentals
+  - ../../../Global_References/report-scheduling.md — Report Scheduling
+  - ../../../Global_References/report-templates.md — Report Templates
+  - ../../../Global_References/report-visualization.md — Report Visualization and Charts
 ## Handoff
 - `backend/bulk-import` — CSV/Excel parsing and validation patterns
 - `data/analytics` — Report data aggregation and query patterns
 - `management/task-queues` — Queue management and worker scaling
+

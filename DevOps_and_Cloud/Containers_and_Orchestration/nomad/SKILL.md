@@ -659,8 +659,8 @@ Key metrics to alert on:
 - No audit logging — compliance violations go undetected.
 
 ## References
-  - references/nomad-advanced.md — Nomad Advanced Topics
-  - references/nomad-fundamentals.md — Nomad Fundamentals
+  - ../../../Global_References/nomad-advanced.md — Nomad Advanced Topics
+  - ../../../Global_References/nomad-fundamentals.md — Nomad Fundamentals
   - references/nomad-cluster-setup.md — Nomad Cluster Configuration
   - references/nomad-job-spec.md — Nomad Job Specification Reference
   - references/nomad-consul-connect.md — Consul Connect with Nomad
@@ -673,3 +673,4 @@ Key metrics to alert on:
 - `devops-terraform` for Nomad cluster Terraform provisioning.
 - `devops-monitoring` for Prometheus/Grafana monitoring of Nomad.
 - `devops-kubernetes` for comparison when deciding between Nomad and K8s.
+

@@ -21,7 +21,7 @@ Configure Prometheus for comprehensive metric collection, alerting, and monitori
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/prometheus-configuration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -62,3 +62,4 @@ curl 'http://localhost:9090/api/v1/query?query=up'
 - `grafana-dashboards` - For visualization
 - `slo-implementation` - For SLO monitoring
 - `distributed-tracing` - For request tracing
+

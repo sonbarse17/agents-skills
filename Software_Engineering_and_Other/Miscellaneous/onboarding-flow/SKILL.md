@@ -391,12 +391,12 @@ Impact: Activation 12% to 34%, D30 retention improved 25%
 - Onboarding data must be reviewed weekly during the first month of a new flow.
 
 ## References
-  - references/activation-design.md — Activation Design
-  - references/activation-funnels.md — Activation Funnels
-  - references/onboarding-experiments.md — Onboarding Experiments
-  - references/onboarding-flow-advanced.md — Onboarding Flow Advanced Topics
-  - references/onboarding-flow-fundamentals.md — Onboarding Flow Fundamentals
-  - references/onboarding-patterns.md — Onboarding Patterns
+  - ../../../Global_References/activation-design.md — Activation Design
+  - ../../../Global_References/activation-funnels.md — Activation Funnels
+  - ../../../Global_References/onboarding-experiments.md — Onboarding Experiments
+  - ../../../Global_References/onboarding-flow-advanced.md — Onboarding Flow Advanced Topics
+  - ../../../Global_References/onboarding-flow-fundamentals.md — Onboarding Flow Fundamentals
+  - ../../../Global_References/onboarding-patterns.md — Onboarding Patterns
   - references/onboarding-flow-design-patterns.md — Onboarding Flow Design Patterns
   - references/onboarding-metrics-optimization.md — Onboarding Metrics and Optimization
 ## Handoff

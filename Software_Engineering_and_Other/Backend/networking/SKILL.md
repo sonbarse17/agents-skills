@@ -796,12 +796,12 @@ Future<void> downloadFile(String url, String savePath) async {
 - **One-size-fits-all base URL**: Dev/staging/prod configs leak to production. Use build configs
 
 ## References
-- `references/caching.md` — Mobile Caching
-- `references/graphql-mobile.md` — Mobile GraphQL Integration
-- `references/mobile-networking-patterns.md` — Mobile Networking Patterns
-- `references/network-layer-architecture.md` — Cross-Platform Network Layer Architecture
-- `references/offline-first.md` — Offline-First Architecture
-- `references/rest-client.md` — REST Client Setup
+- `../../../Global_References/caching.md` — Mobile Caching
+- `../../../Global_References/graphql-mobile.md` — Mobile GraphQL Integration
+- `../../../Global_References/mobile-networking-patterns.md` — Mobile Networking Patterns
+- `../../../Global_References/network-layer-architecture.md` — Cross-Platform Network Layer Architecture
+- `../../../Global_References/offline-first.md` — Offline-First Architecture
+- `../../../Global_References/rest-client.md` — REST Client Setup
 
 ## Handoff
 After networking setup, hand off to:
@@ -814,3 +814,4 @@ After networking setup, hand off to:
 - `mobile/ios` — URLSession, Alamofire specifics
 - `mobile/flutter` — Dio, connectivity
 - `mobile/react-native` — Axios, NetInfo
+

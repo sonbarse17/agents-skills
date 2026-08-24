@@ -18,7 +18,7 @@ failures, and license-expiry lockouts.
 For authentication methods and API key management, see the **elasticsearch-authn** skill. For roles, users, and role
 mappings, see the **elasticsearch-authz** skill. For license management, see the **elasticsearch-license** skill.
 
-For diagnostic API endpoints, see [references/api-reference.md](references/api-reference.md).
+For diagnostic API endpoints, see [../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md](../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md).
 
 > **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and Serverless. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -493,3 +493,4 @@ Diagnostic tool and API availability differs across deployment types.
 - Licensing APIs are not exposed. License-related lockouts do not occur.
 - Native users do not exist — authentication issues are handled at the organization level.
 - TLS is fully managed and transparent.
+

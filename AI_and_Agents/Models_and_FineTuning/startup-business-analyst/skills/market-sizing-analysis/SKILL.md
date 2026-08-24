@@ -62,5 +62,6 @@ Market sizing provides the foundation for startup strategy, fundraising, and bus
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../../Global_References/market-sizing-analysis_details.md`. Read that file when the navigation tier above is insufficient.
+
 

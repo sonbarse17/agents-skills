@@ -27,7 +27,7 @@ For project creation, see the **cloud-create-project** skill. For day-2 project 
 **cloud-manage-project**. For Elasticsearch-level role management (native users, role mappings, DLS/FLS), see the
 **elasticsearch-authz** skill.
 
-For detailed API endpoints and request schemas, see [references/api-reference.md](references/api-reference.md).
+For detailed API endpoints and request schemas, see [../../../Global_References/access-management_api-reference.md](../../../Global_References/access-management_api-reference.md).
 
 ## Jobs to Be Done
 
@@ -182,7 +182,7 @@ After execution, list members or keys again to confirm the change took effect.
 
 Project-level roles are assigned during invitation (`POST /organizations/{org_id}/invitations`) or using the role
 assignment update (`POST /users/{user_id}/role_assignments`). See
-[references/api-reference.md](references/api-reference.md) for the `role_assignments` JSON schema including the
+[../../../Global_References/access-management_api-reference.md](../../../Global_References/access-management_api-reference.md) for the `role_assignments` JSON schema including the
 `project` scope.
 
 ## Custom Roles (Serverless)
@@ -473,3 +473,4 @@ The output includes each member's user ID, email, and assigned roles.
   Cloud API assignment is required.
 - For network-level security (traffic filters, private links), see the **cloud-network-security** skill.
 - For ES-level role management beyond Cloud roles (native users, DLS/FLS), see **elasticsearch-authz**.
+

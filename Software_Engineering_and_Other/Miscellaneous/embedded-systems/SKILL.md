@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| RTOS Patterns | `references/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
-| Microcontroller | `references/microcontroller-programming.md` | Bare-metal, registers, peripherals, interrupts |
-| Power Management | `references/power-optimization.md` | Sleep modes, low-power design, battery life |
-| Communication | `references/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
-| Memory & Performance | `references/memory-optimization.md` | Code size, RAM usage, flash management |
+| RTOS Patterns | `../../../Global_References/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
+| Microcontroller | `../../../Global_References/microcontroller-programming.md` | Bare-metal, registers, peripherals, interrupts |
+| Power Management | `../../../Global_References/power-optimization.md` | Sleep modes, low-power design, battery life |
+| Communication | `../../../Global_References/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
+| Memory & Performance | `../../../Global_References/memory-optimization.md` | Code size, RAM usage, flash management |
 
 ## Constraints
 
@@ -167,3 +167,4 @@ When implementing embedded features, provide:
 5. Brief explanation of timing and optimization decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/embedded-systems/)
+

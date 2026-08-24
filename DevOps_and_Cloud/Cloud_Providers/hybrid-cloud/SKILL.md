@@ -429,10 +429,10 @@ Optimization strategies:
 - Tag resources consistently across cloud and on-prem (tag-on-prem-tools like rmm).
 
 ## References
-  - references/hybrid-cloud-advanced.md — Hybrid Cloud Advanced Topics
-  - references/hybrid-cloud-fundamentals.md — Hybrid Cloud Fundamentals
+  - ../../../Global_References/hybrid-cloud-advanced.md — Hybrid Cloud Advanced Topics
+  - ../../../Global_References/hybrid-cloud-fundamentals.md — Hybrid Cloud Fundamentals
   - references/vpn-direct-connect.md — VPN vs Direct Connect — Decision Guide
-  - references/identity-federation.md — Identity Federation Patterns
+  - ../../../Global_References/identity-federation.md — Identity Federation Patterns
   - references/hybrid-storage.md — Hybrid Storage Patterns
   - references/disaster-recovery-hybrid.md — Hybrid DR Strategies
   - references/repatriation.md — Cloud Repatriation Guide

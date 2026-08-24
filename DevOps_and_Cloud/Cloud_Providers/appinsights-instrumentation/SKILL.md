@@ -45,7 +45,7 @@ Find out the (programming language, application framework, hosting) tuple of the
 
 ### Prefer auto-instrument if possible
 
-If the app is a C# ASP.NET Core app hosted in Azure App Service, use [AUTO guide](references/auto.md) to help user auto-instrument the app.
+If the app is a C# ASP.NET Core app hosted in Azure App Service, use [AUTO guide](../../../Global_References/auto.md) to help user auto-instrument the app.
 
 ### Manually instrument
 
@@ -62,9 +62,9 @@ No matter which option you choose, recommend the user to create the App Insights
 
 #### Modify application code
 
-- If the app is an ASP.NET Core app, see [ASPNETCORE guide](references/aspnetcore.md) for how to modify the C# code.
-- If the app is a Node.js app, see [NODEJS guide](references/nodejs.md) for how to modify the JavaScript/TypeScript code.
-- If the app is a Python app, see [PYTHON guide](references/python.md) for how to modify the Python code.
+- If the app is an ASP.NET Core app, see [ASPNETCORE guide](../../../Global_References/aspnetcore.md) for how to modify the C# code.
+- If the app is a Node.js app, see [NODEJS guide](../../../Global_References/nodejs.md) for how to modify the JavaScript/TypeScript code.
+- If the app is a Python app, see [PYTHON guide](../../../Global_References/python.md) for how to modify the Python code.
 
 ## SDK Quick References
 
@@ -73,4 +73,5 @@ No matter which option you choose, recommend the user to create the App Insights
 
 ## Platform-Specific Guides
 
-- **Container Apps**: [Observability Guide](references/container-apps.md)
+- **Container Apps**: [Observability Guide](../../../Global_References/container-apps.md)
+

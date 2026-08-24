@@ -30,11 +30,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SLO/SLI | `references/slo-sli-management.md` | Defining SLOs, calculating error budgets |
-| Error Budgets | `references/error-budget-policy.md` | Managing budgets, burn rates, policies |
-| Monitoring | `references/monitoring-alerting.md` | Golden signals, alert design, dashboards |
-| Automation | `references/automation-toil.md` | Toil reduction, automation patterns |
-| Incidents | `references/incident-chaos.md` | Incident response, chaos engineering |
+| SLO/SLI | `../../../Global_References/slo-sli-management.md` | Defining SLOs, calculating error budgets |
+| Error Budgets | `../../../Global_References/error-budget-policy.md` | Managing budgets, burn rates, policies |
+| Monitoring | `../../../Global_References/monitoring-alerting.md` | Golden signals, alert design, dashboards |
+| Automation | `../../../Global_References/automation-toil.md` | Toil reduction, automation patterns |
+| Incidents | `../../../Global_References/incident-chaos.md` | Incident response, chaos engineering |
 
 ## Constraints
 
@@ -181,3 +181,4 @@ if __name__ == "__main__":
 ```
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/devops/sre-engineer/)
+

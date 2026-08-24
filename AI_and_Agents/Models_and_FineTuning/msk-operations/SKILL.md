@@ -136,12 +136,12 @@ full before answering — do not paraphrase from memory.
 
 | Customer Intent | Reference |
 |---|---|
-| High CPU, high produce/fetch latency, slow cluster, TrafficShaping | `references/troubleshoot-performance.md` |
-| Consumer lag increasing, rebalance storms, stuck consumer groups | `references/troubleshoot-consumer-lag.md` |
-| Disk filling up, retention planning, tiered storage, EBS scaling | `references/manage-storage.md` |
-| Setting up monitoring level, dashboards, recommended CloudWatch alarms | `references/monitor-and-alarm.md` |
-| Rolling restart impact, patching, Kafka version upgrades, maintenance resilience | `references/maintenance-operations.md` |
-| Producer / consumer configuration, IAM / SCRAM / TLS auth for clients | `references/configure-clients.md` |
+| High CPU, high produce/fetch latency, slow cluster, TrafficShaping | `../../../Global_References/troubleshoot-performance.md` |
+| Consumer lag increasing, rebalance storms, stuck consumer groups | `../../../Global_References/troubleshoot-consumer-lag.md` |
+| Disk filling up, retention planning, tiered storage, EBS scaling | `../../../Global_References/manage-storage.md` |
+| Setting up monitoring level, dashboards, recommended CloudWatch alarms | `../../../Global_References/monitor-and-alarm.md` |
+| Rolling restart impact, patching, Kafka version upgrades, maintenance resilience | `../../../Global_References/maintenance-operations.md` |
+| Producer / consumer configuration, IAM / SCRAM / TLS auth for clients | `../../../Global_References/configure-clients.md` |
 
 For sizing questions (broker count, instance type choice, monthly cost), refer
 the user to the [Amazon MSK best practices — right-size your cluster](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices.html#bestpractices-right-size-cluster)
@@ -286,7 +286,7 @@ Use one `cloudwatch.GetMetricData` batch per cluster where possible.
 | `LeaderCount` | Maximum | Compare across brokers |
 | `BytesInPerSec` / `BytesOutPerSec` | Average, Maximum | vs Express per-broker ingress/egress quotas |
 | `ProduceThrottleTime` / `FetchThrottleTime` | Maximum | Should be 0 |
-| `ClientConnectionCount` | Average, Maximum | vs listener quota (see `references/monitor-and-alarm.md`) |
+| `ClientConnectionCount` | Average, Maximum | vs listener quota (see `../../../Global_References/monitor-and-alarm.md`) |
 
 **Express brokers do NOT emit:** `UnderReplicatedPartitions`,
 `UnderMinIsrPartitionCount`, `HeapMemoryAfterGC`, `TrafficShaping`, `Volume*`
@@ -313,7 +313,7 @@ aws cloudwatch describe-alarms --namespace AWS/Kafka
 ```
 
 Compare against the 13-alarm recommended set (details in
-`references/monitor-and-alarm.md`) and produce a coverage table (present / missing / firing).
+`../../../Global_References/monitor-and-alarm.md`) and produce a coverage table (present / missing / firing).
 
 ### Step 7 — Analyze Against Best Practices
 
@@ -380,7 +380,7 @@ inline.
 - `BwInAllowanceExceeded` / `BwOutAllowanceExceeded` = 0 (PER_BROKER). Non-zero → HIGH.
 - Throughput variance across brokers < 20%. 20-50% → MEDIUM. > 50% → HIGH.
 - Total per-broker throughput < 60% of baseline bandwidth (see
-  `references/troubleshoot-performance.md` for baseline table). 60-70% →
+  `../../../Global_References/troubleshoot-performance.md` for baseline table). 60-70% →
   MEDIUM. > 70% → HIGH.
 - Express: `ProduceThrottleTime` / `FetchThrottleTime` > 0 → HIGH.
 
@@ -588,3 +588,4 @@ aws kafka create-configuration \
 - [Amazon MSK — CloudWatch metrics for Provisioned clusters](https://docs.aws.amazon.com/msk/latest/developerguide/metrics-details.html)
 - [Amazon MSK — Service quotas](https://docs.aws.amazon.com/msk/latest/developerguide/limits.html)
 - [Amazon MSK — Custom MSK configurations](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html)
+

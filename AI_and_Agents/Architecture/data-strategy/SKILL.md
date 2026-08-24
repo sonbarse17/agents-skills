@@ -484,12 +484,12 @@ Discoverability: registered in data catalog with searchable metadata and busines
 Plan: identify need, define scope, estimate value, get stakeholder buy-in. Build: develop pipeline, document, test quality, register in catalog. Publish: set access controls, define SLA, announce to consumers. Operate: monitor quality, freshness, usage; respond to issues. Retire: deprecate with notice period, migrate consumers, archive data.
 
 ## References
-  - references/data-culture.md — Data Culture Reference
-  - references/data-ethics-framework.md — Data Ethics Framework
-  - references/data-maturity.md — Data Maturity Reference
-  - references/data-operating-model.md — Data Operating Model Reference
-  - references/data-ownership.md — Data Ownership Reference
-  - references/data-strategy-metrics.md — Data Strategy Metrics
+  - ../../../Global_References/data-culture.md — Data Culture Reference
+  - ../../../Global_References/data-ethics-framework.md — Data Ethics Framework
+  - ../../../Global_References/data-maturity.md — Data Maturity Reference
+  - ../../../Global_References/data-operating-model.md — Data Operating Model Reference
+  - ../../../Global_References/data-ownership.md — Data Ownership Reference
+  - ../../../Global_References/data-strategy-metrics.md — Data Strategy Metrics
   - references/data-vision.md — Data Vision and Strategy Reference
 ## Data Strategy Checklist
 
@@ -511,3 +511,4 @@ Plan: identify need, define scope, estimate value, get stakeholder buy-in. Build
 `data-data-platform` for platform architecture aligned with strategy
 `data-data-governance` for governance policy execution
 `data-data-quality` for quality metrics and monitoring
+

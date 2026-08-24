@@ -173,12 +173,13 @@ Verification is separate from schema validation — a record can be schema-valid
 
 Load these when you need full schema details, edge cases, or examples for a specific lexicon:
 
-- `references/publication.md` — Full publication schema, blob handling, preferences, extensibility
-- `references/document.md` — Full document schema, contributor format, content union, links
-- `references/subscription.md` — Full subscription schema, AT-URI format
-- `references/recommend.md` — Full recommend schema, permissions
-- `references/theme.md` — Full theme schema, RGB/RGBA color types, contrast guidelines
+- `../../../Global_References/publication.md` — Full publication schema, blob handling, preferences, extensibility
+- `../../../Global_References/document.md` — Full document schema, contributor format, content union, links
+- `../../../Global_References/subscription.md` — Full subscription schema, AT-URI format
+- `../../../Global_References/recommend.md` — Full recommend schema, permissions
+- `../../../Global_References/theme.md` — Full theme schema, RGB/RGBA color types, contrast guidelines
 
 ## Available Scripts
 
 - **`scripts/validate.py`** — Validates standard.site records against lexicon schemas. Run with `uv run scripts/validate.py --input <file>` or `--stdin`.
+

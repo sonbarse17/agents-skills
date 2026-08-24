@@ -463,16 +463,16 @@ Use `httpx.AsyncClient` with ASGI transport for integration tests. Use `pytest-a
 - Type-annotate all function parameters and return types.
 
 ## References
-  - references/dependency-injection-patterns.md — FastAPI Dependency Injection Patterns
-  - references/fastapi-advanced.md — FastAPI Advanced Patterns
-  - references/fastapi-background.md — FastAPI Background Tasks
-  - references/fastapi-dependency-injection.md — FastAPI Dependency Injection
-  - references/fastapi-routing-patterns.md — FastAPI Routing Patterns
-  - references/fastapi-structure.md — FastAPI Project Structure
-  - references/fastapi-testing.md — FastAPI Testing
-  - references/fastapi-websocket.md — FastAPI WebSocket and Real-Time Patterns
-  - references/middleware-background.md — Middleware, Background Tasks, and WebSockets in FastAPI
-  - references/testing-debugging.md — Testing and Debugging FastAPI Applications
+  - ../../../Global_References/dependency-injection-patterns.md — FastAPI Dependency Injection Patterns
+  - ../../../Global_References/fastapi-advanced.md — FastAPI Advanced Patterns
+  - ../../../Global_References/fastapi-background.md — FastAPI Background Tasks
+  - ../../../Global_References/fastapi-dependency-injection.md — FastAPI Dependency Injection
+  - ../../../Global_References/fastapi-routing-patterns.md — FastAPI Routing Patterns
+  - ../../../Global_References/fastapi-structure.md — FastAPI Project Structure
+  - ../../../Global_References/fastapi-testing.md — FastAPI Testing
+  - ../../../Global_References/fastapi-websocket.md — FastAPI WebSocket and Real-Time Patterns
+  - ../../../Global_References/middleware-background.md — Middleware, Background Tasks, and WebSockets in FastAPI
+  - ../../../Global_References/testing-debugging.md — Testing and Debugging FastAPI Applications
 ## Handoff
 No artifact produced.
 Next skill: backend-testing — test FastAPI with pytest.

@@ -53,7 +53,7 @@ contrast — resolve and pin its digest before running it for
 anything reproducible; the bare tag is a discovery step only,
 not the default invocation. Full pull-inspect-pin sequence and
 flag rationale/volume mounts for `finetuning/` run dirs:
-`references/container-workflow.md`. Treat bare pip as the exception.
+`../../../Global_References/container-workflow.md`. Treat bare pip as the exception.
 
 The reason for the container-first stance is pinning, not
 convenience. Triton, xformers, and transformers versions
@@ -79,7 +79,7 @@ bundled `torchao` is too old for current `peft`'s LoRA-attach
 path (`ImportError: ... torchao ... only versions above 0.16.0
 are supported`) — a hard blocker, not a warning. Every `==` pin
 above is load-bearing, taken from the dated known-good version
-matrix in `references/stack-matrix.md` (its `Last verified` date
+matrix in `../../../Global_References/stack-matrix.md` (its `Last verified` date
 governs staleness) — an unpinned install resolves current PyPI
 versions well outside what this Unsloth release supports.
 
@@ -87,12 +87,12 @@ Pull a fresh tag when a new blessed release is announced.
 Rebuild locally from one of the two bases only when a project
 needs an extra system package layered in — not to "upgrade" a
 component the image already pins. Details on both paths:
-`references/container-workflow.md`.
+`../../../Global_References/container-workflow.md`.
 
 One more preflight: official DGX Spark playbooks have shipped
 broken before. Check recent issues on
 `github.com/NVIDIA/dgx-spark-playbooks` (and the other
-resources in `references/stack-matrix.md`) before trusting a
+resources in `../../../Global_References/stack-matrix.md`) before trusting a
 recipe verbatim for a long run.
 
 ## The ABI Rule
@@ -137,7 +137,7 @@ CUDA tag to the system, or use a container that already does.
 Condensed status for the components most likely to come up.
 Full table with wheel URLs, build flags, the sm_121 vs sm_121a
 distinction, and the dated known-good version matrix:
-`references/stack-matrix.md`.
+`../../../Global_References/stack-matrix.md`.
 
 | Component | Status |
 |---|---|
@@ -183,14 +183,14 @@ reinstall — ABI mismatch is one cause among several:
 
 Check `nvidia-smi` first — if it doesn't show the GPU, it's one
 of the first three, not ABI. Reinstall a wheel only once ABI is
-confirmed. Per-hypothesis detail: `references/stack-matrix.md`.
+confirmed. Per-hypothesis detail: `../../../Global_References/stack-matrix.md`.
 Run right after the container starts, before installing
 project-specific packages.
 
 One more check: if Triton kernel compilation fails once
 training starts, set
 `TRITON_PTXAS_PATH=/usr/local/cuda/bin/ptxas` and retry — see
-`references/stack-matrix.md` for the full workaround list.
+`../../../Global_References/stack-matrix.md` for the full workaround list.
 
 ## Next Steps
 
@@ -198,3 +198,4 @@ A verified environment is only the starting point. See also:
 `spark-training-gotchas` for failure preflights before a
 training run, and `spark-memory-thermal-ops` for unified-memory
 OOMs and thermal throttling during long ones.
+

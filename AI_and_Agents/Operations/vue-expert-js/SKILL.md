@@ -30,16 +30,16 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| JSDoc Typing | `references/jsdoc-typing.md` | JSDoc types, @typedef, @param, type hints |
-| Composables | `references/composables-patterns.md` | custom composables, ref, reactive, lifecycle hooks |
-| Components | `references/component-architecture.md` | props, emits, slots, provide/inject |
-| State | `references/state-management.md` | Pinia, stores, reactive state |
-| Testing | `references/testing-patterns.md` | Vitest, component testing, mocking |
+| JSDoc Typing | `../../../Global_References/jsdoc-typing.md` | JSDoc types, @typedef, @param, type hints |
+| Composables | `../../../Global_References/composables-patterns.md` | custom composables, ref, reactive, lifecycle hooks |
+| Components | `../../../Global_References/vue-expert-js_component-architecture.md` | props, emits, slots, provide/inject |
+| State | `../../../Global_References/vue-expert-js_state-management.md` | Pinia, stores, reactive state |
+| Testing | `../../../Global_References/vue-expert-js_testing-patterns.md` | Vitest, component testing, mocking |
 
 **For shared Vue concepts, defer to vue-expert:**
 - `../vue-expert/references/composition-api.md` - Core reactivity patterns
 - `../vue-expert/references/components.md` - Props, emits, slots
-- `../vue-expert/references/state-management.md` - Pinia stores
+- `../vue-expert/../../../Global_References/vue-expert-js_state-management.md` - Pinia stores
 
 ## Code Patterns
 
@@ -167,3 +167,4 @@ When implementing Vue features in JavaScript:
 Vue 3 Composition API, JSDoc, ESM modules, Pinia, Vue Router 4, Vite, VueUse, Vitest, Vue Test Utils, JavaScript ES2022+
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/vue-expert-js/)
+

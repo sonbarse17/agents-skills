@@ -432,14 +432,14 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
 - Never apply SMOTE before train/test split
 
 ## References
-  - references/classical-ml-advanced.md — Classical Ml Advanced Topics
-  - references/classical-ml-fundamentals.md — Classical Ml Fundamentals
-  - references/imbalanced-learn.md — Handling Imbalanced Data
-  - references/interpretable-ml.md — Interpretable Classical ML
-  - references/supervised-learning.md — Supervised Learning Reference
-  - references/unsupervised-pipeline.md — Unsupervised Learning and Pipelines
-  - references/classical-ml-feature-engineering.md — Feature Engineering Reference
-  - references/classical-ml-model-selection.md — Model Selection Reference
+  - ../../../Global_References/classical-ml-advanced.md — Classical Ml Advanced Topics
+  - ../../../Global_References/classical-ml-fundamentals.md — Classical Ml Fundamentals
+  - ../../../Global_References/imbalanced-learn.md — Handling Imbalanced Data
+  - ../../../Global_References/interpretable-ml.md — Interpretable Classical ML
+  - ../../../Global_References/supervised-learning.md — Supervised Learning Reference
+  - ../../../Global_References/unsupervised-pipeline.md — Unsupervised Learning and Pipelines
+  - ../../../Global_References/classical-ml-feature-engineering.md — Feature Engineering Reference
+  - ../../../Global_References/classical-ml-model-selection.md — Model Selection Reference
 ## Handoff
 `ml-deep-learning` for deep learning/neural network methods
 `ml-feature-engineering` for feature extraction and selection
@@ -568,3 +568,4 @@ search.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 - **PII in features**: Scrub PII from training data. Use data masking or tokenization for sensitive features.
 - **Model artifacts**: Encrypt serialized models containing sensitive patterns. Use access control on model registry.
 - **Audit trail**: Log all predictions with request ID and timestamp. Enable post-hoc investigation of model decisions.
+

@@ -299,8 +299,8 @@ techniques:
 ```
 
 ## References
-  - references/debugging-strategy-advanced.md — Debugging Strategy Advanced Topics
-  - references/debugging-strategy-fundamentals.md — Debugging Strategy Fundamentals
+  - ../../../Global_References/debugging-strategy-advanced.md — Debugging Strategy Advanced Topics
+  - ../../../Global_References/debugging-strategy-fundamentals.md — Debugging Strategy Fundamentals
   - references/debugging-tools.md — Debugging Tools Reference
   - references/root-cause-analysis.md — Root Cause Analysis Reference
 ## Handoff
@@ -539,3 +539,4 @@ Given multiple possible causes, which to test first?
 - **Binary search on code**: Use git bisect for regression bugs. Automates the most efficient search strategy — O(log N) commits checked instead of O(N).
 - **Focused test for reproduction**: Write a minimal test case that reproduces the bug. Avoids running full test suite during fix verification.
 - **Conditional breakpoints**: Use data-dependent breakpoints to stop only when relevant conditions are met. Avoids manual stepping through thousands of iterations.
+

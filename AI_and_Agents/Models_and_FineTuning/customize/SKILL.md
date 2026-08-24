@@ -83,7 +83,7 @@ If user accepts all defaults (latest version, GlobalStandard SKU, recommended ca
 
 ## Phase Summaries
 
-> ⚠️ **MUST READ:** Before executing any phase, load [references/customize-workflow.md](references/customize-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, capacity formulas, cross-region fallback logic).
+> ⚠️ **MUST READ:** Before executing any phase, load [../../../Global_References/customize-workflow.md](../../../Global_References/customize-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, capacity formulas, cross-region fallback logic).
 
 | Phase | Action | Key Details |
 |-------|--------|-------------|
@@ -140,7 +140,7 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 
 ## Selection Guides & Advanced Topics
 
-> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [references/customize-guides.md](references/customize-guides.md).
+> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../Global_References/customize-guides.md](../../../Global_References/customize-guides.md).
 
 **SKU selection:** GlobalStandard (production/HA) → Standard (dev/test) → ProvisionedManaged (high-volume/guaranteed throughput) → DataZoneStandard (data residency).
 

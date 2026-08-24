@@ -433,15 +433,15 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 - Rollback plan must exist before deployment.
 
 ## References
-  - references/caching-strategies.md
-  - references/cicd-pipeline-advanced.md
-  - references/cicd-pipeline-fundamentals.md
-  - references/deployment-strategies.md
-  - references/github-actions-guide.md
-  - references/matrix-strategies.md
-  - references/multi-environment.md
-  - references/pipeline-optimization.md
-  - references/pipeline-security.md
+  - ../../../Global_References/caching-strategies.md
+  - ../../../Global_References/cicd-pipeline-advanced.md
+  - ../../../Global_References/cicd-pipeline-fundamentals.md
+  - ../../../Global_References/deployment-strategies.md
+  - ../../../Global_References/github-actions-guide.md
+  - ../../../Global_References/matrix-strategies.md
+  - ../../../Global_References/multi-environment.md
+  - ../../../Global_References/pipeline-optimization.md
+  - ../../../Global_References/pipeline-security.md
   - references/canary-deployment-guide.md
 
 ## Handoff
@@ -565,3 +565,4 @@ promote_to_prod "$@"
 - Scan **infrastructure-as-code** (Terraform, Helm) for misconfigurations using Checkov
 - Restrict **pipeline trigger** permissions to trusted actors only
 - Audit **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
+

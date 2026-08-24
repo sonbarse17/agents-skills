@@ -425,17 +425,17 @@ func (mp *Mempool) Add(tx *Transaction) bool {
 ```
 
 ## References
-  - references/blockchain-core-advanced.md — Blockchain Core Advanced Topics
-  - references/blockchain-core-fundamentals.md — Blockchain Core Fundamentals
-  - references/blockchain-data-structures.md — Blockchain Data Structures
-  - references/consensus-deep-dive.md — Consensus Mechanisms Deep Dive
-  - references/cryptography-foundations.md — Cryptography Foundations for Blockchain
-  - references/dag-consensus.md — DAG-Based Consensus
-  - references/economic-security-mev.md — Economic Security & MEV
-  - references/gas-and-staking.md — Gas, Fees & Staking Mechanics
-  - references/node-implementation.md — Node Implementation Deep Dive
-  - references/p2p-networking.md — P2P Networking for Blockchain
-  - references/state-machines.md — Blockchain State Machine Design
+  - ../../../Global_References/blockchain-core-advanced.md — Blockchain Core Advanced Topics
+  - ../../../Global_References/blockchain-core-fundamentals.md — Blockchain Core Fundamentals
+  - ../../../Global_References/blockchain-data-structures.md — Blockchain Data Structures
+  - ../../../Global_References/consensus-deep-dive.md — Consensus Mechanisms Deep Dive
+  - ../../../Global_References/cryptography-foundations.md — Cryptography Foundations for Blockchain
+  - ../../../Global_References/dag-consensus.md — DAG-Based Consensus
+  - ../../../Global_References/economic-security-mev.md — Economic Security & MEV
+  - ../../../Global_References/gas-and-staking.md — Gas, Fees & Staking Mechanics
+  - ../../../Global_References/node-implementation.md — Node Implementation Deep Dive
+  - ../../../Global_References/p2p-networking.md — P2P Networking for Blockchain
+  - ../../../Global_References/state-machines.md — Blockchain State Machine Design
   - references/blockchain-fork-choice.md — Fork Choice Rules
   - references/light-client-protocols.md — Light Client Protocols
   - references/transaction-ordering-policies.md — Transaction Ordering Policies
@@ -545,3 +545,4 @@ impl DiscoveryService {
 
 ## Phase
 blockchain → blockchain-core
+

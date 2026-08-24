@@ -177,7 +177,7 @@ raise Exception("Invalid parameter")
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-error-handling_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -191,3 +191,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Document failure modes** - Docstrings should list possible exceptions
 9. **Log with context** - Include IDs, counts, and other debugging info
 10. **Test error paths** - Verify exceptions are raised correctly
+

@@ -535,13 +535,14 @@ What type of violation is most plausible?
 - Power analysis for observational studies is more complex than RCT power — account for clustering and design effect
 
 ## References
-  - references/causal-frameworks.md — Causal Inference Frameworks Reference
-  - references/causal-inference-advanced.md — Causal Inference Advanced Topics
-  - references/causal-inference-fundamentals.md — Causal Inference Fundamentals
-  - references/causal-inference-methods.md — Causal Inference Methods Reference
-  - references/causal-ml.md — Causal Machine Learning Reference
-  - references/quasi-experimental.md — Quasi-Experimental Methods Reference
+  - ../../../Global_References/causal-frameworks.md — Causal Inference Frameworks Reference
+  - ../../../Global_References/causal-inference-advanced.md — Causal Inference Advanced Topics
+  - ../../../Global_References/causal-inference-fundamentals.md — Causal Inference Fundamentals
+  - ../../../Global_References/causal-inference-methods.md — Causal Inference Methods Reference
+  - ../../../Global_References/causal-ml.md — Causal Machine Learning Reference
+  - ../../../Global_References/quasi-experimental.md — Quasi-Experimental Methods Reference
 ## Handoff
 `data-science-statistical-analysis` for foundational statistical methods
 `data-science-experimentation` for RCT design and A/B testing
 `data-science-analytics-engineering` for causal pipeline data infrastructure
+

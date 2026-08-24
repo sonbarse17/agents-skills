@@ -467,13 +467,13 @@ spec:
 - Karpenter not provisioning: `kubectl logs -n karpenter karpenter`, check EC2NodeClass subnet/security group selectors.
 
 ## References
-  - references/autoscaling-strategies.md — Combined Autoscaling Strategy
-  - references/cluster-autoscaler.md — Cluster Autoscaler
-  - references/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
-  - references/keda-scalers.md — Keda Scalers
-  - references/kubernetes-autoscaling-advanced.md — Kubernetes Autoscaling Advanced Topics
-  - references/kubernetes-autoscaling-fundamentals.md — Kubernetes Autoscaling Fundamentals
-  - references/vpa-config.md — Vertical Pod Autoscaler (VPA)
+  - ../../../Global_References/autoscaling-strategies.md — Combined Autoscaling Strategy
+  - ../../../Global_References/cluster-autoscaler.md — Cluster Autoscaler
+  - ../../../Global_References/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
+  - ../../../Global_References/keda-scalers.md — Keda Scalers
+  - ../../../Global_References/kubernetes-autoscaling-advanced.md — Kubernetes Autoscaling Advanced Topics
+  - ../../../Global_References/kubernetes-autoscaling-fundamentals.md — Kubernetes Autoscaling Fundamentals
+  - ../../../Global_References/vpa-config.md — Vertical Pod Autoscaler (VPA)
 ## Handoff
 After completing this skill:
 - Next skill: **devops-apm-observability** — Observability to monitor and inform autoscaling

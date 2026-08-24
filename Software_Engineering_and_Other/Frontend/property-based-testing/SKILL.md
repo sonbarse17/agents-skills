@@ -389,15 +389,15 @@ Stateful property tests that share mutable state between command sequences produ
 18. Generator complexity must be documented — understand what shapes your generators produce
 
 ## References
-- references/custom-generators.md — Custom Generators for Property-Based Testing
-- references/property-based-testing-advanced.md — Advanced Property-Based Testing
-- references/property-based-testing-fundamentals.md — Property Based Testing Fundamentals
-- references/property-patterns.md — External Service Mocking with WireMock
-- references/property-testing-architecture.md — PBT Architecture and System Design
-- references/property-testing-decision-framework.md — PBT Decision Framework and Workflow Patterns
-- references/shrinking-guide.md — Shrinking Strategy Guide
-- references/stateful-testing-deep.md — Stateful Testing (Deep)
-- references/stateful-testing.md — Stateful Property-Based Testing
+- ../../../Global_References/custom-generators.md — Custom Generators for Property-Based Testing
+- ../../../Global_References/property-based-testing-advanced.md — Advanced Property-Based Testing
+- ../../../Global_References/property-based-testing-fundamentals.md — Property Based Testing Fundamentals
+- ../../../Global_References/property-patterns.md — External Service Mocking with WireMock
+- ../../../Global_References/property-testing-architecture.md — PBT Architecture and System Design
+- ../../../Global_References/property-testing-decision-framework.md — PBT Decision Framework and Workflow Patterns
+- ../../../Global_References/shrinking-guide.md — Shrinking Strategy Guide
+- ../../../Global_References/stateful-testing-deep.md — Stateful Testing (Deep)
+- ../../../Global_References/stateful-testing.md — Stateful Property-Based Testing
 
 ## Handoff
 After property-based testing, hand off to:

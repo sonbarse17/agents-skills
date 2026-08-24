@@ -25,7 +25,7 @@ Guide for implementing and maintaining context as a managed artifact alongside c
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/context-driven-development_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -39,3 +39,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 8. **Preserve history**: Use git to track context evolution over time
 9. **Question staleness**: If context feels wrong, investigate and update
 10. **Keep it actionable**: Every context item should inform a decision or behavior
+

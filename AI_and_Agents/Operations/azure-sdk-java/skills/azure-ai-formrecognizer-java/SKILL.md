@@ -357,4 +357,5 @@ try {
 
 | File | Contents |
 |------|----------|
-| [references/examples.md](references/examples.md) | Complete code examples for all scenarios |
+| [../../../../../Global_References/azure-ai-formrecognizer-java_examples.md](../../../../../Global_References/azure-ai-formrecognizer-java_examples.md) | Complete code examples for all scenarios |
+

@@ -477,12 +477,12 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - Disaster recovery drill (rollback from backup).
 
 ## References
-- references/dataops-fundamentals.md -- Dataops Fundamentals
-- references/dataops-advanced.md -- Dataops Advanced Topics
-- references/data-cicd.md -- Data CI/CD
-- references/data-testing.md -- Data Testing
-- references/data-contracts-ops.md -- Data Contracts Operations
-- references/data-observability.md -- DataOps Observability
+- ../../../Global_References/dataops-fundamentals.md -- Dataops Fundamentals
+- ../../../Global_References/dataops-advanced.md -- Dataops Advanced Topics
+- ../../../Global_References/data-cicd.md -- Data CI/CD
+- ../../../Global_References/data-testing.md -- Data Testing
+- ../../../Global_References/data-contracts-ops.md -- Data Contracts Operations
+- ../../../Global_References/data-observability.md -- DataOps Observability
 - references/dataops-pipeline-orchestration.md -- Pipeline Orchestration
 - references/dataops-data-quality-monitoring.md -- Data Quality Monitoring
 
@@ -623,3 +623,4 @@ check_data_quality() {
 - Rotate **service account credentials** for data pipeline tools every 30 days
 - Use **private network endpoints** (VPC peering, PrivateLink) for data transfer
 - Enable **immutable audit logs** for all data mutations with retention of 7+ years
+

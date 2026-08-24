@@ -22,7 +22,7 @@ PROGRESSIVE DISCLOSURE GUIDELINES:
 - Only include core workflows and common patterns here
 - Move detailed content to references/ directory
 - Link clearly to when references should be consulted
-- See: references/WORKFLOW_CHECKLIST.md for workflow pattern examples
+- See: ../../../Global_References/WORKFLOW_CHECKLIST.md for workflow pattern examples
 - Challenge every sentence: "Does Claude really need this?"
 -->
 
@@ -65,7 +65,7 @@ Progress:
 
 Work through each step systematically. Check off completed items.
 
-**For more workflow patterns**, see [references/WORKFLOW_CHECKLIST.md](references/WORKFLOW_CHECKLIST.md)
+**For more workflow patterns**, see [../../../Global_References/WORKFLOW_CHECKLIST.md](../../../Global_References/WORKFLOW_CHECKLIST.md)
 
 ### Feedback Loop Pattern (for validation)
 
@@ -155,3 +155,4 @@ Additional patterns as needed.
 - [Tool Documentation](https://example.com)
 - [Security Framework](https://owasp.org)
 - [Compliance Standard](https://example.com)
+

@@ -441,8 +441,8 @@ jobs:
 ```
 
 ## References
-  - references/dev-container-advanced.md — Dev Container Advanced Topics
-  - references/dev-container-fundamentals.md — Dev Container Fundamentals
+  - ../../../Global_References/dev-container-advanced.md — Dev Container Advanced Topics
+  - ../../../Global_References/dev-container-fundamentals.md — Dev Container Fundamentals
   - references/dev-container-features.md — Dev Container Features Reference
   - references/dev-container-multi-service.md — Multi-Service Dev Container Reference
 ## Handoff
@@ -551,3 +551,4 @@ CMD ["node", "dist/server.js"]
 - **Never in image**: Use Docker secrets or .env files mounted at runtime. Never COPY secrets into image.
 - **Secret scanning**: Scan for hardcoded secrets in git pre-commit hooks. Use tools like git-secrets or truffleHog.
 - **Ephemeral credentials**: Use short-lived tokens with automatic rotation. Integrate with OIDC providers.
+

@@ -611,21 +611,22 @@ tier_design:
 - **Annual discounts**: 15-20% discount for annual commitments (improves retention, cash flow)
 
 ## References
-- [Product Management Fundamentals](references/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
-- [Product Management Advanced](references/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
-- [API Lifecycle Management](references/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
-- [API Strategy](references/api-strategy.md) — API business models, strategy canvas, governance
-- [Developer Experience](references/developer-experience.md) — DX principles, SDKs, documentation, error messages
-- [Developer Portal](references/developer-portal.md) — Developer portal design, self-service onboarding, analytics
-- [Monetization](references/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](references/product-metrics.md) — Adoption, DX, reliability, and business metrics with dashboards
-- [API Consumer Insights](references/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
-- [API Governance](references/api-governance.md) — Governance framework, API council, design standards
-- [API Stakeholder Management](references/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
-- [API Launch Playbook](references/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
+- [Product Management Fundamentals](../../../Global_References/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
+- [Product Management Advanced](../../../Global_References/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
+- [API Lifecycle Management](../../../Global_References/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
+- [API Strategy](../../../Global_References/api-strategy.md) — API business models, strategy canvas, governance
+- [Developer Experience](../../../Global_References/developer-experience.md) — DX principles, SDKs, documentation, error messages
+- [Developer Portal](../../../Global_References/developer-portal.md) — Developer portal design, self-service onboarding, analytics
+- [Monetization](../../../Global_References/monetization.md) — Pricing models, usage tracking, rate limiting tiers
+- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with dashboards
+- [API Consumer Insights](../../../Global_References/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
+- [API Governance](../../../Global_References/api-governance.md) — Governance framework, API council, design standards
+- [API Stakeholder Management](../../../Global_References/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
+- [API Launch Playbook](../../../Global_References/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
 
 <!-- COMPRESSION FOOTER -->
 <!--
 Compression Level: 5 (Comprehensive architectural references & code details preserved)
 Strict compliance with API product management, lifecycle standards, DX principles, and governance models.
 -->
+

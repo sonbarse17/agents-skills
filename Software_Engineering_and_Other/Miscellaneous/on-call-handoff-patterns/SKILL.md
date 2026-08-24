@@ -45,7 +45,7 @@ Incoming:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/on-call-handoff-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Troubleshooting
 
@@ -68,3 +68,4 @@ Add a standard step: outgoing engineer fires a test alert and confirms incoming 
 
 - [incident-classification](../../skills/incident-classification/SKILL.md) — Classify and prioritize incidents that need to be included in the handoff document
 - [postmortem-facilitation](../../skills/postmortem-facilitation/SKILL.md) — Turn resolved incidents from the shift into structured postmortems
+

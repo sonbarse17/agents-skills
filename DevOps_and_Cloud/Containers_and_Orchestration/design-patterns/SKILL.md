@@ -390,18 +390,18 @@ class Order {
 - Never apply a pattern just because it exists — always have a concrete problem.
 
 ## References
-  - references/anti-patterns.md — Anti-Patterns Reference
-  - references/concurrency-patterns.md — Concurrency Patterns
-  - references/design-patterns-fundamentals.md — Design Patterns Fundamentals
+  - ../../../Global_References/design-patterns_anti-patterns.md — Anti-Patterns Reference
+  - ../../../Global_References/concurrency-patterns.md — Concurrency Patterns
+  - ../../../Global_References/design-patterns-fundamentals.md — Design Patterns Fundamentals
   - references/design-patterns-advanced.md — Design Patterns Advanced
-  - references/domain-driven-design-patterns.md — Domain-Driven Design Patterns
-  - references/enterprise-patterns.md — Enterprise & Architectural Patterns
-  - references/gof-patterns.md — GoF Design Patterns Reference
-  - references/integration-patterns.md — Enterprise Integration Patterns Reference
+  - ../../../Global_References/domain-driven-design-patterns.md — Domain-Driven Design Patterns
+  - ../../../Global_References/enterprise-patterns.md — Enterprise & Architectural Patterns
+  - ../../../Global_References/gof-patterns.md — GoF Design Patterns Reference
+  - ../../../Global_References/design-patterns_integration-patterns.md — Enterprise Integration Patterns Reference
   - references/pattern-catalog.md — Pattern Catalog
-  - references/pattern-relationships.md — Pattern Relationships & Selection Reference
-  - references/selection-decision-tree.md — Pattern Selection Decision Tree
-  - references/testing-patterns.md — Testing Design Patterns
+  - ../../../Global_References/pattern-relationships.md — Pattern Relationships & Selection Reference
+  - ../../../Global_References/selection-decision-tree.md — Pattern Selection Decision Tree
+  - ../../../Global_References/design-patterns_testing-patterns.md — Testing Design Patterns
 ## Handoff
 Hand off to `backend/universal/microservices/SKILL.md` if distributed system patterns need implementation details. Hand off to `backend/universal/clean-architecture/SKILL.md` if structuring the entire application. Hand off to `backend/universal/event-driven/SKILL.md` if event-driven patterns need elaboration.
 ## Implementation Patterns

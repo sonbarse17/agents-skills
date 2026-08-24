@@ -19,9 +19,9 @@ base recipe misbehaves.
 plus a verifier (code executor, test suite,
 schema checker, or grader) for the target task.
 **Output format:** a validated GRPO config — the
-kwarg values in `references/grpo-memory.md` and
+kwarg values in `../../../Global_References/grpo-memory.md` and
 the reward functions in
-`references/reward-functions.md`, not free-form
+`../../../Global_References/reward-functions.md`, not free-form
 advice — that `llm-finetuning-training-engineer`
 consumes directly.
 
@@ -83,7 +83,7 @@ grpo_args = GRPOConfig(
 trainer = GRPOTrainer(
     model=SFT_CHECKPOINT,
     args=grpo_args,
-    reward_funcs=[format_reward, correctness_reward],   # references/reward-functions.md
+    reward_funcs=[format_reward, correctness_reward],   # ../../../Global_References/reward-functions.md
     train_dataset=prompts,       # prompt-only — GRPO generates its own completions
     processing_class=tokenizer,
 )
@@ -115,7 +115,7 @@ trainer.train()
   (below).
 
 Memory sizing for this recipe by target size
-class: `references/grpo-memory.md`.
+class: `../../../Global_References/grpo-memory.md`.
 
 ## The Inspection Rule
 
@@ -143,7 +143,7 @@ Complete reward function implementations to
 inspect against — exact-match, schema-validation,
 unit-test-execution, a length-penalty wrapper, and
 a rubric-as-reward judge pattern:
-`references/reward-functions.md`.
+`../../../Global_References/reward-functions.md`.
 
 ## Variant Selection
 
@@ -181,13 +181,13 @@ above.
 
 ## References
 
-- `references/reward-functions.md` — complete
+- `../../../Global_References/reward-functions.md` — complete
   Python reward functions (exact-match
   correctness, schema validation, unit-test
   execution, a length-penalty wrapper, and a
   rubric-as-reward judge pattern) to inspect under
   The Inspection Rule before any training run.
-- `references/grpo-memory.md` — memory sizing by
+- `../../../Global_References/grpo-memory.md` — memory sizing by
   target size class, vLLM sleep-mode and
   optimizer-state tactics, Unsloth's long-context
   RL chunking, and the DGX Spark bandwidth caveat
@@ -203,3 +203,4 @@ code-checkable. On DGX Spark, defer to the
 `dgx-spark-ops` plugin's skills, when installed,
 for the memory/thermal remediation ladder this
 skill's memory table doesn't cover.
+

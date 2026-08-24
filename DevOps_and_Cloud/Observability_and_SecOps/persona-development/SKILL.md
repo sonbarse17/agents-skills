@@ -596,12 +596,13 @@ persona_synthesis:
 - Validate personas against quantitative data — don't rely solely on interview insights.
 
 ## References
-  - references/empathy-mapping.md — Empathy Mapping
-  - references/persona-creation-guide.md — Persona Creation Guide
-  - references/persona-creation.md — Persona Creation
-  - references/persona-development-advanced.md — Persona Development Advanced Topics
-  - references/persona-development-fundamentals.md — Persona Development Fundamentals
-  - references/persona-to-feature.md — Persona-Driven Design
-  - references/persona-workshop-facilitation.md — Persona Workshop Facilitation
+  - ../../../Global_References/empathy-mapping.md — Empathy Mapping
+  - ../../../Global_References/persona-creation-guide.md — Persona Creation Guide
+  - ../../../Global_References/persona-creation.md — Persona Creation
+  - ../../../Global_References/persona-development-advanced.md — Persona Development Advanced Topics
+  - ../../../Global_References/persona-development-fundamentals.md — Persona Development Fundamentals
+  - ../../../Global_References/persona-to-feature.md — Persona-Driven Design
+  - ../../../Global_References/persona-workshop-facilitation.md — Persona Workshop Facilitation
 ## Handoff
 For journey mapping with persona context, hand off to `product-customer-journey`. For user research to validate personas, hand off to `product-user-research`. For feature prioritization using persona scores, hand off to `product-feature-prioritization`.
+

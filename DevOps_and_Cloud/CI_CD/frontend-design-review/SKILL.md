@@ -117,22 +117,23 @@ Match implementation complexity to vision. Maximalist = elaborate code. Minimali
 
 ## Review Output Format
 
-See [references/review-output-format.md](references/review-output-format.md) for the full review template.
+See [../../../Global_References/review-output-format.md](../../../Global_References/review-output-format.md) for the full review template.
 
 ## Review Type Modifiers
 
-See [references/review-type-modifiers.md](references/review-type-modifiers.md) for context-specific review focus areas (PR, Creative, Design, Accessibility).
+See [../../../Global_References/review-type-modifiers.md](../../../Global_References/review-type-modifiers.md) for context-specific review focus areas (PR, Creative, Design, Accessibility).
 
 ## Quick Checklist
 
-See [references/quick-checklist.md](references/quick-checklist.md) for the pre-approval checklist covering design system compliance, aesthetic quality, frictionless, quality craft, and trustworthy pillars.
+See [../../../Global_References/quick-checklist.md](../../../Global_References/quick-checklist.md) for the pre-approval checklist covering design system compliance, aesthetic quality, frictionless, quality craft, and trustworthy pillars.
 
 ## Pattern Examples
 
-See [references/pattern-examples.md](references/pattern-examples.md) for good/bad examples of creative frontend and design system review work.
+See [../../../Global_References/pattern-examples.md](../../../Global_References/pattern-examples.md) for good/bad examples of creative frontend and design system review work.
 
 ---
 
 ## Acknowledgments
 
 Creative frontend principles inspired by [Anthropic's frontend-design skill](https://github.com/anthropics/skills/tree/main/skills/frontend-design). Design review principles and quality pillar framework created by [@Quirinevwm](https://github.com/Quirinevwm) for systematic UI evaluation.
+

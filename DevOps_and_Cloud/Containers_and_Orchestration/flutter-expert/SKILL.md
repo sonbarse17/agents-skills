@@ -44,12 +44,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Riverpod | `references/riverpod-state.md` | State management, providers, notifiers |
-| Bloc | `references/bloc-state.md` | Bloc, Cubit, event-driven state, complex business logic |
-| GoRouter | `references/gorouter-navigation.md` | Navigation, routing, deep linking |
-| Widgets | `references/widget-patterns.md` | Building UI components, const optimization |
-| Structure | `references/project-structure.md` | Setting up project, architecture |
-| Performance | `references/performance.md` | Optimization, profiling, jank fixes |
+| Riverpod | `../../../Global_References/riverpod-state.md` | State management, providers, notifiers |
+| Bloc | `../../../Global_References/bloc-state.md` | Bloc, Cubit, event-driven state, complex business logic |
+| GoRouter | `../../../Global_References/gorouter-navigation.md` | Navigation, routing, deep linking |
+| Widgets | `../../../Global_References/flutter-expert_widget-patterns.md` | Building UI components, const optimization |
+| Structure | `../../../Global_References/flutter-expert_project-structure.md` | Setting up project, architecture |
+| Performance | `../../../Global_References/flutter-expert_performance.md` | Optimization, profiling, jank fixes |
 
 ## Code Examples
 
@@ -138,3 +138,4 @@ When implementing Flutter features, provide:
 4. Test file structure
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/flutter-expert/)
+

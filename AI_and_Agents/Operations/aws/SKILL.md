@@ -522,17 +522,18 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 Terraform HCL, CloudFormation YAML, AWS CLI commands, or IAM policy JSON.
 
 ## References
-  - references/aws-advanced.md
-  - references/aws-fundamentals.md
-  - references/core-services.md
-  - references/ecs-architecture.md
-  - references/iam-policies.md
-  - references/lambda-triggers.md
-  - references/networking.md
-  - references/well-architected.md
+  - ../../../Global_References/aws-advanced.md
+  - ../../../Global_References/aws-fundamentals.md
+  - ../../../Global_References/core-services.md
+  - ../../../Global_References/ecs-architecture.md
+  - ../../../Global_References/iam-policies.md
+  - ../../../Global_References/lambda-triggers.md
+  - ../../../Global_References/networking.md
+  - ../../../Global_References/well-architected.md
   - references/service-comparison-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **terraform** — Terraform AWS multi-account setup
 - Pass context: VPC ID, subnet IDs, security group IDs, IAM role ARN, account structure
+

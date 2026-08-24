@@ -33,11 +33,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Debugging Tools | `references/debugging-tools.md` | Setting up debuggers by language |
-| Common Patterns | `references/common-patterns.md` | Recognizing bug patterns |
-| Strategies | `references/strategies.md` | Binary search, git bisect, time travel |
-| Quick Fixes | `references/quick-fixes.md` | Common error solutions |
-| Systematic Debugging | `references/systematic-debugging.md` | Complex bugs, multiple failed fixes, root cause analysis |
+| Debugging Tools | `../../../Global_References/debugging-tools.md` | Setting up debuggers by language |
+| Common Patterns | `../../../Global_References/debugging-wizard_common-patterns.md` | Recognizing bug patterns |
+| Strategies | `../../../Global_References/strategies.md` | Binary search, git bisect, time travel |
+| Quick Fixes | `../../../Global_References/quick-fixes.md` | Common error solutions |
+| Systematic Debugging | `../../../Global_References/systematic-debugging.md` | Complex bugs, multiple failed fixes, root cause analysis |
 
 ## Constraints
 
@@ -105,3 +105,4 @@ When debugging, provide:
 4. **Prevention**: Test or safeguard to prevent recurrence
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/quality/debugging-wizard/)
+

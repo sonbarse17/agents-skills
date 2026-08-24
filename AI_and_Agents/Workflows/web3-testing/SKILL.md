@@ -307,5 +307,6 @@ it("Should impersonate whale account", async function () {
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `references/details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../Global_References/web3-testing_details.md`. Read that file for the full pattern library.
+
 

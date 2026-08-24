@@ -38,11 +38,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| OWASP | `references/owasp-prevention.md` | OWASP Top 10 patterns |
-| Authentication | `references/authentication.md` | Password hashing, JWT |
-| Input Validation | `references/input-validation.md` | Zod, SQL injection |
-| XSS/CSRF | `references/xss-csrf.md` | XSS prevention, CSRF |
-| Headers | `references/security-headers.md` | Helmet, rate limiting |
+| OWASP | `../../../Global_References/owasp-prevention.md` | OWASP Top 10 patterns |
+| Authentication | `../../../Global_References/secure-code-guardian_authentication.md` | Password hashing, JWT |
+| Input Validation | `../../../Global_References/input-validation.md` | Zod, SQL injection |
+| XSS/CSRF | `../../../Global_References/xss-csrf.md` | XSS prevention, CSRF |
+| Headers | `../../../Global_References/security-headers.md` | Helmet, rate limiting |
 
 ## Constraints
 
@@ -191,3 +191,4 @@ When implementing security features, provide:
 OWASP Top 10, bcrypt/argon2, JWT, OAuth 2.0, OIDC, CSP, CORS, rate limiting, input validation, output encoding, encryption (AES, RSA), TLS, security headers
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/security/secure-code-guardian/)
+

@@ -458,12 +458,12 @@ Quarterly activity:
 - Cognitive load reduction is a continuous practice, not a one-time fix
 
 ## References
-  - references/org-design.md — Organizational Design
-  - references/squad-health.md — Squad Health
-  - references/team-topology-advanced.md — Team Topology Advanced
-  - references/team-topology-fundamentals.md — Team Topology Fundamentals
-  - references/team-types.md — Team Types
-  - references/topology-patterns.md — Topology Patterns
+  - ../../../Global_References/org-design.md — Organizational Design
+  - ../../../Global_References/squad-health.md — Squad Health
+  - ../../../Global_References/team-topology-advanced.md — Team Topology Advanced
+  - ../../../Global_References/team-topology-fundamentals.md — Team Topology Fundamentals
+  - ../../../Global_References/team-types.md — Team Types
+  - ../../../Global_References/topology-patterns.md — Topology Patterns
 
 ## Handoff
 For OKR alignment with team topology, hand off to management-okr-kpi. For agile process design, hand off to management-agile-scrum-kanban. For hiring to fill team gaps, hand off to management-hiring.
@@ -572,3 +572,4 @@ For OKR alignment with team topology, hand off to management-okr-kpi. For agile 
 - **API security**: Teams secure their API endpoints independently. Central security team provides tooling and guidelines.
 - **Incident response**: Define team roles in incident response. Each team maintains its own runbook for domain-specific incidents.
 - **Secure collaboration**: Use encrypted channels for cross-team security discussions. Limit distribution of vulnerability details to relevant teams.
+

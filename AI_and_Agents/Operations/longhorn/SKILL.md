@@ -417,14 +417,14 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - RBAC enabled for Longhorn API
 
 ## References
-- references/longhorn-fundamentals.md -- Longhorn Fundamentals
-- references/longhorn-advanced.md -- Longhorn Advanced Topics
-- references/longhorn-config.md -- Longhorn Configuration Reference
-- references/longhorn-manager.md -- Longhorn Management
-- references/longhorn-perf.md -- Longhorn Performance
-- references/longhorn-backup.md -- Longhorn Backup & DR
-- references/longhorn-disaster-recovery.md -- Longhorn Disaster Recovery
-- references/longhorn-performance-tuning.md -- Longhorn Performance Tuning
+- ../../../Global_References/longhorn-fundamentals.md -- Longhorn Fundamentals
+- ../../../Global_References/longhorn-advanced.md -- Longhorn Advanced Topics
+- ../../../Global_References/longhorn-config.md -- Longhorn Configuration Reference
+- ../../../Global_References/longhorn-manager.md -- Longhorn Management
+- ../../../Global_References/longhorn-perf.md -- Longhorn Performance
+- ../../../Global_References/longhorn-backup.md -- Longhorn Backup & DR
+- ../../../Global_References/longhorn-disaster-recovery.md -- Longhorn Disaster Recovery
+- ../../../Global_References/longhorn-performance-tuning.md -- Longhorn Performance Tuning
 
 ## Handoff
 Hand off to `devops/monitoring/SKILL.md` for monitoring integration. Hand off to `devops/helm-patterns/SKILL.md` for Helm deployment best practices.

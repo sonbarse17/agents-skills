@@ -19,7 +19,7 @@ once a week.
 that order of what you sacrifice first.**
 
 For concrete GitHub Actions patterns — caching, matrix builds, SHA pinning, OIDC, reusable
-workflows — read `references/github-actions.md`.
+workflows — read `../../../Global_References/github-actions.md`.
 
 ## 1. Order stages cheapest-and-most-likely-to-fail first
 
@@ -128,3 +128,4 @@ image, toolchain version, action SHAs), how the cache is keyed, and the current 
 checks with owners. Call out any check that's flaky or any stage still rebuilding instead of
 promoting an artifact — those are the honest gaps, and naming them beats claiming a green
 pipeline means the system is fully trustworthy.
+

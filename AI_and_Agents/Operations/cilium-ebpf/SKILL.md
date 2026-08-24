@@ -560,14 +560,15 @@ Disabling Hubble thinking it adds overhead. Hubble's eBPF-based observability ha
 - Cilium agent log level: info in production, debug during troubleshooting only.
 
 ## References
-  - references/cilium-architecture.md
-  - references/cilium-ebpf-advanced.md
-  - references/cilium-ebpf-fundamentals.md
-  - references/cluster-mesh.md
-  - references/ebpf-deep-dive.md
-  - references/network-policies.md
-  - references/observability-hubble.md
+  - ../../../Global_References/cilium-architecture.md
+  - ../../../Global_References/cilium-ebpf-advanced.md
+  - ../../../Global_References/cilium-ebpf-fundamentals.md
+  - ../../../Global_References/cluster-mesh.md
+  - ../../../Global_References/ebpf-deep-dive.md
+  - ../../../Global_References/network-policies.md
+  - ../../../Global_References/observability-hubble.md
   - references/cilium-service-mesh-guide.md
 
 ## Handoff
 Next: **service-mesh** — Istio/Linkerd service mesh integration with Cilium.
+

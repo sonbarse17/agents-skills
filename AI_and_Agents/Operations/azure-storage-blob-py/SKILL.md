@@ -260,5 +260,6 @@ async def download_async():
 
 | File | Contents |
 |------|----------|
-| [references/capabilities.md](references/capabilities.md) | Capability index mapping hero flows and non-hero references. |
-| [references/non-hero-scenarios.md](references/non-hero-scenarios.md) | Dedicated non-hero examples (metadata/properties and async patterns). |
+| [../../../Global_References/azure-storage-blob-py_capabilities.md](../../../Global_References/azure-storage-blob-py_capabilities.md) | Capability index mapping hero flows and non-hero references. |
+| [../../../Global_References/azure-storage-blob-py_non-hero-scenarios.md](../../../Global_References/azure-storage-blob-py_non-hero-scenarios.md) | Dedicated non-hero examples (metadata/properties and async patterns). |
+

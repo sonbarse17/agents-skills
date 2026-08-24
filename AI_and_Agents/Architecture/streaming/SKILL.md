@@ -551,12 +551,13 @@ Both provide incremental materialized views on streaming data using PostgreSQL-c
 - Every topic must have documented owner and retention policy
 
 ## References
-  - references/flink-streaming.md — Flink Streaming
-  - references/kafka-architecture.md — Kafka Architecture
-  - references/pulsar-patterns.md — Apache Pulsar Patterns
-  - references/streaming-architecture.md — Streaming Architecture
-  - references/streaming-databases.md — Streaming Databases
-  - references/streaming-monitoring.md — Streaming Monitoring
+  - ../../../Global_References/flink-streaming.md — Flink Streaming
+  - ../../../Global_References/kafka-architecture.md — Kafka Architecture
+  - ../../../Global_References/pulsar-patterns.md — Apache Pulsar Patterns
+  - ../../../Global_References/streaming-architecture.md — Streaming Architecture
+  - ../../../Global_References/streaming-databases.md — Streaming Databases
+  - ../../../Global_References/streaming-monitoring.md — Streaming Monitoring
 ## Handoff
 `data-data-warehouse` for streaming data landing in the warehouse
 `data-etl-pipeline` for batch processing of streamed data
+

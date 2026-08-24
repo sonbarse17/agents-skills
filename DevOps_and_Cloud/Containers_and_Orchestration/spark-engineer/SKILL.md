@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Spark SQL & DataFrames | `references/spark-sql-dataframes.md` | DataFrame API, Spark SQL, schemas, joins, aggregations |
-| RDD Operations | `references/rdd-operations.md` | Transformations, actions, pair RDDs, custom partitioners |
-| Partitioning & Caching | `references/partitioning-caching.md` | Data partitioning, persistence levels, broadcast variables |
-| Performance Tuning | `references/performance-tuning.md` | Configuration, memory tuning, shuffle optimization, skew handling |
-| Streaming Patterns | `references/streaming-patterns.md` | Structured Streaming, watermarks, stateful operations, sinks |
+| Spark SQL & DataFrames | `../../../Global_References/spark-sql-dataframes.md` | DataFrame API, Spark SQL, schemas, joins, aggregations |
+| RDD Operations | `../../../Global_References/rdd-operations.md` | Transformations, actions, pair RDDs, custom partitioners |
+| Partitioning & Caching | `../../../Global_References/partitioning-caching.md` | Data partitioning, persistence levels, broadcast variables |
+| Performance Tuning | `../../../Global_References/performance-tuning.md` | Configuration, memory tuning, shuffle optimization, skew handling |
+| Streaming Patterns | `../../../Global_References/streaming-patterns.md` | Structured Streaming, watermarks, stateful operations, sinks |
 
 ## Code Examples
 
@@ -148,3 +148,4 @@ When implementing Spark solutions, provide:
 Spark DataFrame API, Spark SQL, RDD transformations/actions, catalyst optimizer, tungsten execution engine, partitioning strategies, broadcast variables, accumulators, structured streaming, watermarks, checkpointing, Spark UI analysis, memory management, shuffle optimization
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/spark-engineer/)
+

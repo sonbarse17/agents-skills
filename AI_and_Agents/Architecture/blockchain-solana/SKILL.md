@@ -490,18 +490,19 @@ pub struct Metadata {
 15. Account validation should happen before any state modification
 
 ## References
-  - references/blockchain-solana-advanced.md — Blockchain Solana Advanced Topics
-  - references/blockchain-solana-fundamentals.md — Blockchain Solana Fundamentals
-  - references/solana-architecture.md — Solana Architecture
-  - references/solana-ecosystem.md — Solana Ecosystem
-  - references/solana-pda-and-cpi-deep.md — Solana PDA and CPI Deep Dive
-  - references/solana-programming.md — Solana Programming
-  - references/solana-runtime.md — Solana Runtime
-  - references/solana-token-program.md — Solana Token Program
-  - references/solana-tools.md — Solana Tools & SDKs
+  - ../../../Global_References/blockchain-solana-advanced.md — Blockchain Solana Advanced Topics
+  - ../../../Global_References/blockchain-solana-fundamentals.md — Blockchain Solana Fundamentals
+  - ../../../Global_References/solana-architecture.md — Solana Architecture
+  - ../../../Global_References/solana-ecosystem.md — Solana Ecosystem
+  - ../../../Global_References/solana-pda-and-cpi-deep.md — Solana PDA and CPI Deep Dive
+  - ../../../Global_References/solana-programming.md — Solana Programming
+  - ../../../Global_References/solana-runtime.md — Solana Runtime
+  - ../../../Global_References/solana-token-program.md — Solana Token Program
+  - ../../../Global_References/solana-tools.md — Solana Tools & SDKs
   - references/solana-security.md — Solana Security Best Practices
   - references/solana-deployment.md — Solana Program Deployment
   - references/solana-poh-deep-dive.md — Solana Proof of History Deep Dive
 
 ## Phase
 blockchain → blockchain-solana
+

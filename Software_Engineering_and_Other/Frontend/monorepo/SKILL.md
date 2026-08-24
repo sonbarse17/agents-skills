@@ -541,13 +541,14 @@ jobs:
 - No `.nxignore` — caching node_modules or dist archives with secrets.
 
 ## References
-  - references/dependency-management.md — Dependency Management
-  - references/monorepo-advanced.md — Monorepo Advanced Topics
-  - references/monorepo-fundamentals.md — Monorepo Fundamentals
-  - references/monorepo-tools.md — Monorepo Tools
-  - references/nx-guide.md — Nx Guide
-  - references/turborepo-guide.md — Turborepo Guide
+  - ../../../Global_References/monorepo_dependency-management.md — Dependency Management
+  - ../../../Global_References/monorepo-advanced.md — Monorepo Advanced Topics
+  - ../../../Global_References/monorepo-fundamentals.md — Monorepo Fundamentals
+  - ../../../Global_References/monorepo-tools.md — Monorepo Tools
+  - ../../../Global_References/nx-guide.md — Nx Guide
+  - ../../../Global_References/turborepo-guide.md — Turborepo Guide
 ## Handoff
 After completing this skill:
 - Next skill: **dependency-management** — Dependabot, Renovate for mono-repo deps
 - Pass context: workspace structure, package manager, CI pipeline
+

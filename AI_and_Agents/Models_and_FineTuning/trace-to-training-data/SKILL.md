@@ -212,4 +212,5 @@ pair to DPO pair, correction to
 SFT row, the rejection-sampling
 loop, and the goldens-holdout
 check — live in
-`references/conversion-recipes.md`.
+`../../../Global_References/conversion-recipes.md`.
+

@@ -574,14 +574,15 @@ Use start message events and intermediate message events to model event-driven c
 Use data stores visible to multiple pools when participants share data. Define read/write permissions per pool. Use data associations to show which data is read or written by each activity. This pattern helps identify data ownership and access control requirements before implementation.
 
 ## References
-  - references/bpmn-elements.md — BPMN 2.0 Elements
-  - references/bpmn-patterns.md — BPMN Patterns
-  - references/process-automation.md — Process Automation
-  - references/process-modeling.md — Process Modeling
-  - references/bpmn-modeling-advanced.md — Bpmn Modeling Advanced Topics
-  - references/bpmn-modeling-fundamentals.md — Bpmn Modeling Fundamentals
+  - ../../../Global_References/bpmn-elements.md — BPMN 2.0 Elements
+  - ../../../Global_References/bpmn-patterns.md — BPMN Patterns
+  - ../../../Global_References/process-automation.md — Process Automation
+  - ../../../Global_References/process-modeling.md — Process Modeling
+  - ../../../Global_References/bpmn-modeling-advanced.md — Bpmn Modeling Advanced Topics
+  - ../../../Global_References/bpmn-modeling-fundamentals.md — Bpmn Modeling Fundamentals
   - references/dmn-decision-tables.md — DMN Decision Tables
   - references/process-discovery-guide.md — Process Discovery Guide
   - references/bpmn-automation-patterns.md — BPMN to Automation Patterns
 ## Handoff
 `create-tech-spec` for automation implementation specifications. `solution-architecture` for integration architecture design. `create-story` for breaking automation into user stories.
+

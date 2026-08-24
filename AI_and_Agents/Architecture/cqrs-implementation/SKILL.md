@@ -59,7 +59,7 @@ Comprehensive guide to implementing CQRS (Command Query Responsibility Segregati
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/cqrs-implementation_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -77,3 +77,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't couple read/write schemas** - Independent evolution
 - **Don't over-engineer** - Start simple
 - **Don't ignore consistency SLAs** - Define acceptable lag
+

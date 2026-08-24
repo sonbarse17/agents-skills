@@ -68,4 +68,5 @@ class MyInDB(MyResponse):
 
 | File | Contents |
 |------|----------|
-| [references/capabilities.md](references/capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/pydantic-models-py_capabilities.md](../../../../../Global_References/pydantic-models-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+

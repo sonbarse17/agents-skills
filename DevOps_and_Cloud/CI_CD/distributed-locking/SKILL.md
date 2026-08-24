@@ -380,15 +380,15 @@ Redlock assumes synchronized clocks. In practice:
 - Test lock scenarios: timeout, contention, crash during hold, network partition.
 
 ## References
-  - references/distributed-locking-fundamentals.md — Distributed Locking Fundamentals
-  - references/distributed-locking-advanced.md — Distributed Locking Advanced
-  - references/fencing-tokens-deep.md — Fencing Token Deep Dive
-  - references/lock-contention-analysis.md — Lock Contention Analysis
-  - references/lock-deep-dive.md — Distributed Locking Deep Dive
-  - references/lock-implementations.md — Distributed Lock Implementations
-  - references/lock-providers.md — Lock Provider Implementation Notes
-  - references/lock-strategies.md — Distributed Lock Strategies
-  - references/lock-testing.md — Lock Testing
+  - ../../../Global_References/distributed-locking-fundamentals.md — Distributed Locking Fundamentals
+  - ../../../Global_References/distributed-locking-advanced.md — Distributed Locking Advanced
+  - ../../../Global_References/fencing-tokens-deep.md — Fencing Token Deep Dive
+  - ../../../Global_References/lock-contention-analysis.md — Lock Contention Analysis
+  - ../../../Global_References/lock-deep-dive.md — Distributed Locking Deep Dive
+  - ../../../Global_References/lock-implementations.md — Distributed Lock Implementations
+  - ../../../Global_References/lock-providers.md — Lock Provider Implementation Notes
+  - ../../../Global_References/lock-strategies.md — Distributed Lock Strategies
+  - ../../../Global_References/lock-testing.md — Lock Testing
 ## Handoff
 No artifact produced unless requested.
 Next skill: webhooks — deliver events from the service to external subscribers.
@@ -505,3 +505,4 @@ What's the consistency requirement?
 
 - **Lock-free alternatives**: Use optimistic concurrency (version field, CAS) instead of locks where possible. Reduces latency from 5-50ms (lock round-trip) to <1ms (local CAS).
 - **Read-write locks for read-heavy**: Allow concurrent reads, exclusive writes. Use Redis redlock with shared/exclusive modes. Multiple readers don't block each other.
+

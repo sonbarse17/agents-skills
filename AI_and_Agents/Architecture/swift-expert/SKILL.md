@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SwiftUI | `references/swiftui-patterns.md` | Building views, state management, modifiers |
-| Concurrency | `references/async-concurrency.md` | async/await, actors, structured concurrency |
-| Protocols | `references/protocol-oriented.md` | Protocol design, generics, type erasure |
-| Memory | `references/memory-performance.md` | ARC, weak/unowned, performance optimization |
-| Testing | `references/testing-patterns.md` | XCTest, async tests, mocking strategies |
+| SwiftUI | `../../../Global_References/swift-expert_swiftui-patterns.md` | Building views, state management, modifiers |
+| Concurrency | `../../../Global_References/async-concurrency.md` | async/await, actors, structured concurrency |
+| Protocols | `../../../Global_References/protocol-oriented.md` | Protocol design, generics, type erasure |
+| Memory | `../../../Global_References/memory-performance.md` | ARC, weak/unowned, performance optimization |
+| Testing | `../../../Global_References/swift-expert_testing-patterns.md` | XCTest, async tests, mocking strategies |
 
 ## Code Patterns
 
@@ -163,3 +163,4 @@ When implementing Swift features, provide:
 5. Brief explanation of architectural decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/swift-expert/)
+

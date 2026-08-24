@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Protocol | `references/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
-| TypeScript SDK | `references/typescript-sdk.md` | Building servers/clients in Node.js |
-| Python SDK | `references/python-sdk.md` | Building servers/clients in Python |
-| Tools | `references/tools.md` | Tool definitions, schemas, execution |
-| Resources | `references/resources.md` | Resource providers, URIs, templates |
+| Protocol | `../../../Global_References/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
+| TypeScript SDK | `../../../Global_References/typescript-sdk.md` | Building servers/clients in Node.js |
+| Python SDK | `../../../Global_References/python-sdk.md` | Building servers/clients in Python |
+| Tools | `../../../Global_References/mcp-developer_tools.md` | Tool definitions, schemas, execution |
+| Resources | `../../../Global_References/resources.md` | Resource providers, URIs, templates |
 
 ## Minimal Working Example
 
@@ -143,3 +143,4 @@ When implementing MCP features, provide:
 4. Brief explanation of design decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/mcp-developer/)
+

@@ -427,12 +427,12 @@ When a provider verification fails, the affected consumer team must be notified 
 - Contract changes follow API versioning policy — no breaking changes without migration
 
 ## References
-  - references/contract-testing-advanced.md — Contract Testing Advanced Topics
-  - references/contract-testing-fundamentals.md — Contract Testing Fundamentals
-  - references/contract-testing-strategies.md — Contract Testing Strategies
-  - references/pact-patterns.md — Pact Patterns
-  - references/pact-setup.md — Pact Setup
-  - references/provider-verification.md — Provider Verification
+  - ../../../Global_References/contract-testing-advanced.md — Contract Testing Advanced Topics
+  - ../../../Global_References/contract-testing-fundamentals.md — Contract Testing Fundamentals
+  - ../../../Global_References/contract-testing-strategies.md — Contract Testing Strategies
+  - ../../../Global_References/pact-patterns.md — Pact Patterns
+  - ../../../Global_References/pact-setup.md — Pact Setup
+  - ../../../Global_References/provider-verification.md — Provider Verification
 ## Handoff
 `quality-e2e-testing` for E2E tests that complement contract tests.
 `devops-observability` for monitoring contract verification in CI/CD.

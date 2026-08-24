@@ -509,11 +509,12 @@ Use `testcontainers` for DB integration. Mock HTTP with `nock`. Use `jest` with 
 - Graceful shutdown on SIGTERM/SIGINT. Close server + DB connections.
 
 ## References
-  - references/app-structure.md — App Structure
-  - references/express-error-handling.md — Express Error Handling Reference
-  - references/express-security.md — Express Security Reference
-  - references/middleware-patterns.md — Middleware Patterns
+  - ../../../Global_References/app-structure.md — App Structure
+  - ../../../Global_References/express-error-handling.md — Express Error Handling Reference
+  - ../../../Global_References/express-security.md — Express Security Reference
+  - ../../../Global_References/middleware-patterns.md — Middleware Patterns
   - references/performance-optimization.md — Express Performance Optimization
   - references/testing-strategies.md — Express Testing Strategies
 ## Handoff
 Hand off to `backend/nodejs/prisma/SKILL.md` for database integration or `backend/nodejs/patterns/SKILL.md` for advanced Express patterns.
+

@@ -324,5 +324,6 @@ function ProfileTimeline() {
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `references/details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../Global_References/react-modernization_details.md`. Read that file for the full pattern library.
+
 

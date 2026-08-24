@@ -16,7 +16,7 @@ are not bureaucracy, they are the interface you use to talk to the control loop.
 what the control loop already told you, not by guessing.**
 
 For a command-by-command debugging playbook and a table of pod failure signatures, read
-`references/kubectl-debugging.md`.
+`../../../Global_References/kubectl-debugging.md`.
 
 ## 1. Set requests as a promise, limits as a leash
 
@@ -107,3 +107,4 @@ State the requests/limits you set (and what usage data backed them), which probe
 and why each threshold was chosen, the exact Event or log line that diagnosed any failure you fixed,
 and whether rollback was actually exercised. Call out any workload still missing a PDB or still
 running as root — naming that gap is more useful than claiming the cluster is fully hardened.
+

@@ -483,12 +483,12 @@ export const A11yViolations: Story = {
 - Run aXe on every story — fail CI on critical/serious violations
 
 ## References
-  - references/addons-testing.md — Addons & Testing Reference
-  - references/addons.md — Storybook Addons Reference
-  - references/story-writing.md — Story Writing Reference
-  - references/storybook-setup.md — Storybook Setup Reference
-  - references/visual-testing.md — Visual Testing Reference
-  - references/writing-stories.md — Writing Stories Reference
+  - ../../../Global_References/addons-testing.md — Addons & Testing Reference
+  - ../../../Global_References/addons.md — Storybook Addons Reference
+  - ../../../Global_References/story-writing.md — Story Writing Reference
+  - ../../../Global_References/storybook-setup.md — Storybook Setup Reference
+  - ../../../Global_References/visual-testing.md — Visual Testing Reference
+  - ../../../Global_References/writing-stories.md — Writing Stories Reference
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-pwa` (if the component needs offline support or a service worker)
@@ -631,3 +631,4 @@ What type of validation is needed?
        ├── Every PR → Automate visual + a11y tests in CI pipeline
        └── Infrequent → Manual review + scheduled snapshot updates
 `
+

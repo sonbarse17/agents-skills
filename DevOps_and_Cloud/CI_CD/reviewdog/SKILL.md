@@ -336,7 +336,7 @@ grep -nH -R "eval(" . --include="*.py" | \
 - Convert tool output to supported format (checkstyle, sarif, rdjson, rdjsonl)
 - Use `-f=rdjson` for custom JSON output following reviewdog diagnostic format
 - Create errorformat pattern for text-based outputs
-- See `references/reporter_formats.md` for format specifications
+- See `../../../Global_References/reporter_formats.md` for format specifications
 
 ## Advanced Configuration
 
@@ -383,3 +383,4 @@ reviewdog -f=semgrep -name="CWE Analysis" -reporter=github-pr-review
 - [GitHub Actions Integration](https://github.com/reviewdog/action-setup)
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
 - [CWE Top 25](https://cwe.mitre.org/top25/)
+

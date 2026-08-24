@@ -525,11 +525,12 @@ class PredictionCache:
 - Rollback validated with health checks.
 
 ## References
-  - references/k8s-serving.md — Kubernetes-Native Serving
-  - references/model-serving-advanced.md — Model Serving Advanced Topics
-  - references/model-serving-fundamentals.md — Model Serving Fundamentals
-  - references/model-versioning.md — Model Versioning & Deployment Strategies
-  - references/serverless-inference.md — Serverless Model Inference
-  - references/serving-frameworks.md — Serving Frameworks Comparison
+  - ../../../Global_References/k8s-serving.md — Kubernetes-Native Serving
+  - ../../../Global_References/model-serving-advanced.md — Model Serving Advanced Topics
+  - ../../../Global_References/model-serving-fundamentals.md — Model Serving Fundamentals
+  - ../../../Global_References/model-versioning.md — Model Versioning & Deployment Strategies
+  - ../../../Global_References/serverless-inference.md — Serverless Model Inference
+  - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
 For model building and packaging, hand off to `ml-ml-pipeline`. For monitoring inference metrics, hand off to `devops/monitoring`.
+

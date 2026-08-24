@@ -425,14 +425,14 @@ class ConnectionRateLimiter {
 - Use external pub/sub (Redis) for multi-node deployments — never rely on sticky sessions alone.
 
 ## References
-  - references/reconnection-strategy.md — Reconnection Strategy
-  - references/socket-io-patterns.md — Socket.IO Patterns
-  - references/websocket-auth.md — WebSocket Authentication
+  - ../../../Global_References/reconnection-strategy.md — Reconnection Strategy
+  - ../../../Global_References/socket-io-patterns.md — Socket.IO Patterns
+  - ../../../Global_References/websocket-auth.md — WebSocket Authentication
   - references/websocket-basics.md — WebSocket Basics
-  - references/websocket-implementation.md — WebSocket Implementation Patterns
-  - references/websocket-monitoring.md — WebSocket Monitoring
-  - references/websocket-patterns.md — WebSocket Message Protocol
-  - references/ws-vs-sse.md — WebSocket vs SSE (Server-Sent Events)
+  - ../../../Global_References/websocket-implementation.md — WebSocket Implementation Patterns
+  - ../../../Global_References/websocket-monitoring.md — WebSocket Monitoring
+  - ../../../Global_References/websocket-patterns.md — WebSocket Message Protocol
+  - ../../../Global_References/ws-vs-sse.md — WebSocket vs SSE (Server-Sent Events)
 ## Handoff
 No artifact produced unless requested.
 Next skill: backend-message-queue — if real-time events need to be persisted or fanned out to other services.

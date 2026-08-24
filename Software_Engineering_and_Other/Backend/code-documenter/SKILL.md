@@ -106,14 +106,14 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Python Docstrings | `references/python-docstrings.md` | Google, NumPy, Sphinx styles |
-| TypeScript JSDoc | `references/typescript-jsdoc.md` | JSDoc patterns, TypeScript |
-| FastAPI/Django API | `references/api-docs-fastapi-django.md` | Python API documentation |
-| NestJS/Express API | `references/api-docs-nestjs-express.md` | Node.js API documentation |
-| Coverage Reports | `references/coverage-reports.md` | Generating documentation reports |
-| Documentation Systems | `references/documentation-systems.md` | Doc sites, static generators, search, testing |
-| Interactive API Docs | `references/interactive-api-docs.md` | OpenAPI 3.1, portals, GraphQL, WebSocket, gRPC, SDKs |
-| User Guides & Tutorials | `references/user-guides-tutorials.md` | Getting started, tutorials, troubleshooting, FAQs |
+| Python Docstrings | `../../../Global_References/python-docstrings.md` | Google, NumPy, Sphinx styles |
+| TypeScript JSDoc | `../../../Global_References/typescript-jsdoc.md` | JSDoc patterns, TypeScript |
+| FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | Python API documentation |
+| NestJS/Express API | `../../../Global_References/api-docs-nestjs-express.md` | Node.js API documentation |
+| Coverage Reports | `../../../Global_References/coverage-reports.md` | Generating documentation reports |
+| Documentation Systems | `../../../Global_References/documentation-systems.md` | Doc sites, static generators, search, testing |
+| Interactive API Docs | `../../../Global_References/interactive-api-docs.md` | OpenAPI 3.1, portals, GraphQL, WebSocket, gRPC, SDKs |
+| User Guides & Tutorials | `../../../Global_References/user-guides-tutorials.md` | Getting started, tutorials, troubleshooting, FAQs |
 
 ## Constraints
 
@@ -147,3 +147,4 @@ Depending on the task, provide:
 Google/NumPy/Sphinx docstrings, JSDoc, OpenAPI 3.0/3.1, AsyncAPI, gRPC/protobuf, FastAPI, Django, NestJS, Express, GraphQL, Docusaurus, MkDocs, VitePress, Swagger UI, Redoc, Stoplight
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-documenter/)
+

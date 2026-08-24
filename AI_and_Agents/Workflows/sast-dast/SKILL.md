@@ -510,14 +510,15 @@ Default scan speeds can overwhelm staging environments. Configure delays: `-t` f
 - Container image scanning is handled by a separate skill
 
 ## References
-  - references/dast-automation.md — DAST Automation
-  - references/dast-tools.md — DAST Tools
-  - references/sast-dast-advanced.md — Sast Dast Advanced Topics
-  - references/sast-dast-fundamentals.md — Sast Dast Fundamentals
-  - references/sast-rules-customization.md — SAST Rule Customization
-  - references/sast-tools.md — SAST Tools
-  - references/sast-tool-selection-integration.md — SAST tool selection and CI integration guide
-  - references/dast-scoping-execution.md — DAST scoping, execution, and reporting patterns
+  - ../../../Global_References/dast-automation.md — DAST Automation
+  - ../../../Global_References/dast-tools.md — DAST Tools
+  - ../../../Global_References/sast-dast-advanced.md — Sast Dast Advanced Topics
+  - ../../../Global_References/sast-dast-fundamentals.md — Sast Dast Fundamentals
+  - ../../../Global_References/sast-rules-customization.md — SAST Rule Customization
+  - ../../../Global_References/sast-tools.md — SAST Tools
+  - ../../../Global_References/sast-tool-selection-integration.md — SAST tool selection and CI integration guide
+  - ../../../Global_References/dast-scoping-execution.md — DAST scoping, execution, and reporting patterns
 ## Handoff
 `security-api-security` for API-specific scanning and protection rules
 `devops-ci-cd` for pipeline integration and deployment gates
+

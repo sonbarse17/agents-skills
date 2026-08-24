@@ -29,11 +29,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Advanced Types | `references/advanced-types.md` | Generics, conditional types, mapped types, template literals |
-| Type Guards | `references/type-guards.md` | Type narrowing, discriminated unions, assertion functions |
-| Utility Types | `references/utility-types.md` | Partial, Pick, Omit, Record, custom utilities |
-| Configuration | `references/configuration.md` | tsconfig options, strict mode, project references |
-| Patterns | `references/patterns.md` | Builder pattern, factory pattern, type-safe APIs |
+| Advanced Types | `../../../Global_References/advanced-types.md` | Generics, conditional types, mapped types, template literals |
+| Type Guards | `../../../Global_References/type-guards.md` | Type narrowing, discriminated unions, assertion functions |
+| Utility Types | `../../../Global_References/utility-types.md` | Partial, Pick, Omit, Record, custom utilities |
+| Configuration | `../../../Global_References/typescript-pro_configuration.md` | tsconfig options, strict mode, project references |
+| Patterns | `../../../Global_References/typescript-pro_patterns.md` | Builder pattern, factory pattern, type-safe APIs |
 
 ## Code Examples
 
@@ -145,3 +145,4 @@ When implementing TypeScript features, provide:
 TypeScript 5.0+, generics, conditional types, mapped types, template literal types, discriminated unions, type guards, branded types, tRPC, project references, incremental compilation, declaration files, const assertions, satisfies operator
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/typescript-pro/)
+

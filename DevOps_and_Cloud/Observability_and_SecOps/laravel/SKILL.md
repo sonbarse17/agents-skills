@@ -578,11 +578,12 @@ Use `RefreshDatabase` or `DatabaseTransactions` trait for isolation. Use `Http` 
 - Migrations are always backward-compatible — never drop columns without deprecation.
 
 ## References
-  - references/artisan-commands.md — Artisan Commands
-  - references/eloquent-orm.md — Eloquent ORM Patterns
-  - references/laravel-middleware-validation.md — Middleware and Validation
-  - references/laravel-queues.md — Queue Configuration
-  - references/laravel-service-layer.md — Service Layer Pattern
-  - references/laravel-testing.md — Testing Laravel
+  - ../../../Global_References/artisan-commands.md — Artisan Commands
+  - ../../../Global_References/eloquent-orm.md — Eloquent ORM Patterns
+  - ../../../Global_References/laravel-middleware-validation.md — Middleware and Validation
+  - ../../../Global_References/laravel-queues.md — Queue Configuration
+  - ../../../Global_References/laravel-service-layer.md — Service Layer Pattern
+  - ../../../Global_References/laravel-testing.md — Testing Laravel
 ## Handoff
 Hand off to `backend/php/pure/SKILL.md` for non-Laravel PHP patterns or `backend/universal/api-response/SKILL.md` for API response formatting.
+

@@ -390,4 +390,5 @@ Use the Speech SDK or Batch Transcription API instead when you need:
 
 | File | Contents |
 |------|----------|
-| [references/pronunciation-assessment.md](references/pronunciation-assessment.md) | Pronunciation assessment parameters and scoring |
+| [../../../../../Global_References/pronunciation-assessment.md](../../../../../Global_References/pronunciation-assessment.md) | Pronunciation assessment parameters and scoring |
+

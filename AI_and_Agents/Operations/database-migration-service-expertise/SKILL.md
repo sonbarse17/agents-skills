@@ -146,9 +146,9 @@ Query DMS scheduled changes and deprecation notices:
 
 Evaluate ALL collected data against these categories. Assign severity to every finding: CRITICAL, HIGH, MEDIUM, LOW, or INFO.
 
-Reference: `references/dms-best-practices.md` for detailed best practices.
-Reference: `references/dms-validation-checklist.md` for validation criteria and thresholds.
-Reference: `references/dms-version-reference.md` for version lifecycle and known issues.
+Reference: `../../../Global_References/dms-best-practices.md` for detailed best practices.
+Reference: `../../../Global_References/dms-validation-checklist.md` for validation criteria and thresholds.
+Reference: `../../../Global_References/dms-version-reference.md` for version lifecycle and known issues.
 
 ### 4.1 Instance Health (25 points)
 
@@ -203,7 +203,7 @@ Reference: `references/dms-version-reference.md` for version lifecycle and known
 When the user reports an active issue, follow this structured approach:
 
 ### Phase 0: Version Check (Always First)
-Check DMS engine version and cross-reference with `references/dms-version-reference.md` for known bugs.
+Check DMS engine version and cross-reference with `../../../Global_References/dms-version-reference.md` for known bugs.
 
 ### Phase 1: Error Classification
 Route by error category:
@@ -354,3 +354,4 @@ Refer to the AWS DMS documentation for detailed guidance on best practices, moni
 | 60-74 | 🟠 Needs Attention | Plan remediation within 1-2 weeks |
 | 40-59 | 🔴 Poor | Immediate action required on critical items |
 | 0-39 | ⚫ Critical | Migration at risk — escalate immediately |
+

@@ -401,14 +401,14 @@ Candidate: __________  Reference: __________  Relationship: __________
 - Score first, discuss second in every debrief session.
 
 ## References
-  - references/evaluation-rubric.md -- Evaluation Rubric
-  - references/hiring-advanced.md -- Hiring Advanced Topics
-  - references/hiring-fundamentals.md -- Hiring Fundamentals
-  - references/interview-process.md -- Interview Process Design
-  - references/interview-questions.md -- Interview Questions
-  - references/interview-rubrics.md -- Interview Rubrics
-  - references/hiring-interview-frameworks.md -- Hiring Interview Frameworks
-  - references/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
+  - ../../../Global_References/evaluation-rubric.md -- Evaluation Rubric
+  - ../../../Global_References/hiring-advanced.md -- Hiring Advanced Topics
+  - ../../../Global_References/hiring-fundamentals.md -- Hiring Fundamentals
+  - ../../../Global_References/interview-process.md -- Interview Process Design
+  - ../../../Global_References/interview-questions.md -- Interview Questions
+  - ../../../Global_References/interview-rubrics.md -- Interview Rubrics
+  - ../../../Global_References/hiring-interview-frameworks.md -- Hiring Interview Frameworks
+  - ../../../Global_References/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
 
 ## Handoff
 `management/team-rules` for onboarding new hires
@@ -516,3 +516,4 @@ This offer expires {date}. Please sign and return by {deadline}.
 - **Identity verification**: Verify candidate identity during video interviews. Use background checks for final candidates.
 - **Credential verification**: Verify claimed degrees and certifications. Check work history references thoroughly.
 - **Offer security**: Send offers through secure portals, not unencrypted email. Require signed acceptance with ID verification.
+

@@ -361,12 +361,12 @@ test('signal computed values', () => {
 - Bundle target: keep preact-specific code under 3kB total.
 
 ## References
-  - references/preact-advanced.md — Preact Advanced Topics
-  - references/preact-architecture.md — Preact Architecture Patterns
-  - references/preact-deployment.md — Preact Deployment
-  - references/preact-fundamentals.md — Preact Fundamentals
-  - references/preact-setup.md — Preact Setup Guide
-  - references/preact-vs-react.md — Preact vs React: Differences & Migration
+  - ../../../Global_References/preact-advanced.md — Preact Advanced Topics
+  - ../../../Global_References/preact-architecture.md — Preact Architecture Patterns
+  - ../../../Global_References/preact-deployment.md — Preact Deployment
+  - ../../../Global_References/preact-fundamentals.md — Preact Fundamentals
+  - ../../../Global_References/preact-setup.md — Preact Setup Guide
+  - ../../../Global_References/preact-vs-react.md — Preact vs React: Differences & Migration
 
 ## Handoff
 No artifact produced.
@@ -494,3 +494,4 @@ function App() {
 - **Third-party script isolation**: Preact apps embedded in third-party sites must handle CSS/JS conflicts. Use shadow DOM for widget components via `preact-shadow-root` or custom elements. Isolate state from host page globals.
 - **Input validation**: Always validate and sanitize user inputs before rendering. Use Preact's built-in escaping through JSX expressions `{value}`. For rich text rendering, use a dedicated component with DOMPurify integration and never bypass JSX escaping with `innerHTML`.
 - **Dependency audit**: Preact's small API surface reduces attack surface but `preact/compat` pulls in more code. Audit compat dependencies for known vulnerabilities. Keep Preact and compat versions in sync to avoid security patch gaps.
+

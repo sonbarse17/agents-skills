@@ -528,14 +528,14 @@ docs/** @team/tech-writers
 
 ## References
 
-- `references/code-review-advanced.md` -- Code Review Advanced Topics
-- `references/code-review-fundamentals.md` -- Code Review Fundamentals
-- `references/review-checklist.md` -- Code Review Checklist
-- `references/review-workflow.md` -- Code Review Workflow
-- `references/security-review-checklist.md` -- Security Review Checklist
-- `references/security-review-guide.md` -- Security Review Guide
-- `references/code-review-checklist.md` -- Comprehensive Code Review Checklist
-- `references/code-review-workflow-automation.md` -- Code Review Workflow and Automation
+- `../../../Global_References/code-review-advanced.md` -- Code Review Advanced Topics
+- `../../../Global_References/code-review-fundamentals.md` -- Code Review Fundamentals
+- `../../../Global_References/code-review_review-checklist.md` -- Code Review Checklist
+- `../../../Global_References/review-workflow.md` -- Code Review Workflow
+- `../../../Global_References/security-review-checklist.md` -- Security Review Checklist
+- `../../../Global_References/security-review-guide.md` -- Security Review Guide
+- `../../../Global_References/code-review-checklist.md` -- Comprehensive Code Review Checklist
+- `../../../Global_References/code-review-workflow-automation.md` -- Code Review Workflow and Automation
 
 ## Handoff
 
@@ -544,3 +544,4 @@ After completing this skill:
 - Pass context: review findings, files reviewed, severity levels.
 
 Compression footer: code-review/v1.1 | sections: protocol, architecture, workflow, rules, pitfalls, comparisons, performance, ecosystem.
+

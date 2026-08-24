@@ -664,17 +664,18 @@ function logABACDecision(user, action, resource, env, result, matchedPolicies) {
 - Risk-based policies must have a floor: never allow if risk > 90 regardless of other attributes.
 
 ## References
-  - references/abac-advanced.md — Abac Advanced Topics
-  - references/abac-envoy-deployment.md — OPA + Envoy Deployment
-  - references/abac-fundamentals.md — Abac Fundamentals
-  - references/abac-policy-management.md — ABAC Policy Lifecycle Management
-  - references/abac-policy-structure.md — ABAC Policy Structure
-  - references/abac-testing.md — ABAC Testing
-  - references/hybrid-rbac-abac.md — Hybrid RBAC-ABAC Models
-  - references/opa-abac-implementation.md — OPA/Rego ABAC Implementation
+  - ../../../Global_References/abac-advanced.md — Abac Advanced Topics
+  - ../../../Global_References/abac-envoy-deployment.md — OPA + Envoy Deployment
+  - ../../../Global_References/abac-fundamentals.md — Abac Fundamentals
+  - ../../../Global_References/abac-policy-management.md — ABAC Policy Lifecycle Management
+  - ../../../Global_References/abac-policy-structure.md — ABAC Policy Structure
+  - ../../../Global_References/abac-testing.md — ABAC Testing
+  - ../../../Global_References/hybrid-rbac-abac.md — Hybrid RBAC-ABAC Models
+  - ../../../Global_References/opa-abac-implementation.md — OPA/Rego ABAC Implementation
 ## Handoff
 No artifact produced unless requested.
 Next skill: authorization (backend) — integrate ABAC into the overall authorization architecture.
 Next skill: enterprise-rbac — complement ABAC with RBAC for coarse-grained role structure.
 Next skill: api-security — apply ABAC to API endpoints with OPA sidecar.
 Carry forward: policy structure, attribute catalog, combining algorithm, engine choice.
+

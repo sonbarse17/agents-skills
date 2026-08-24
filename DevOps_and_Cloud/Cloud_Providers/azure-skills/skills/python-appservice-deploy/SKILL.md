@@ -15,14 +15,14 @@ Deploys Python (Flask, Django, FastAPI, generic) code to Azure App Service Linux
 
 ## Workflow
 
-1. **Resolve context — smart defaults, minimal prompts.** Only the app name is interactive; RG (`<app>-rg`), Plan (`<app>-plan`), region (current `az` default or `eastus2`), subscription are derived. [create-app.md](references/create-app.md) §1.
-2. **Detect framework** (advisory, never blocks). [detect.md](references/detect.md).
-3. **Choose path** — `azure.yaml` host: appservice → [deploy-azd.md](references/deploy-azd.md); else [deploy-azcli.md](references/deploy-azcli.md).
-4. **Ensure RG → Plan (`P0v3 --is-linux`) → Web App (`--runtime "PYTHON:3.14"`)** exist. On transient ARM errors, follow [transient-retry.md](references/transient-retry.md). [create-app.md](references/create-app.md).
-5. **Set startup** — Flask/Django: none (Oryx auto-detects). FastAPI: always `python -m uvicorn main:app --host 0.0.0.0`. Other: warn. [startup-commands.md](references/startup-commands.md).
+1. **Resolve context — smart defaults, minimal prompts.** Only the app name is interactive; RG (`<app>-rg`), Plan (`<app>-plan`), region (current `az` default or `eastus2`), subscription are derived. [create-app.md](../../../../../Global_References/create-app.md) §1.
+2. **Detect framework** (advisory, never blocks). [detect.md](../../../../../Global_References/detect.md).
+3. **Choose path** — `azure.yaml` host: appservice → [deploy-azd.md](../../../../../Global_References/deploy-azd.md); else [deploy-azcli.md](../../../../../Global_References/deploy-azcli.md).
+4. **Ensure RG → Plan (`P0v3 --is-linux`) → Web App (`--runtime "PYTHON:3.14"`)** exist. On transient ARM errors, follow [transient-retry.md](../../../../../Global_References/transient-retry.md). [create-app.md](../../../../../Global_References/create-app.md).
+5. **Set startup** — Flask/Django: none (Oryx auto-detects). FastAPI: always `python -m uvicorn main:app --host 0.0.0.0`. Other: warn. [startup-commands.md](../../../../../Global_References/startup-commands.md).
 6. **Set `SCM_DO_BUILD_DURING_DEPLOYMENT=true`**.
 7. **Deploy** — `azd deploy` or `az webapp deploy --type zip --track-status false`.
-8. **STOP. Print the post-deploy message** ([post-deploy-message.md](references/post-deploy-message.md)) and end the turn.
+8. **STOP. Print the post-deploy message** ([post-deploy-message.md](../../../../../Global_References/post-deploy-message.md)) and end the turn.
 
 ### Hard rules
 
@@ -33,4 +33,5 @@ Deploys Python (Flask, Django, FastAPI, generic) code to Azure App Service Linux
 
 ## Error Handling
 
-See [errors.md](references/errors.md) for the full symptom → cause → fix matrix. Quick triage: missing plan/app → re-run Step 4; container ping timeout on 8000 → fix startup (Step 5); `ModuleNotFoundError` after deploy → ensure Step 6 ran, redeploy.
+See [errors.md](../../../../../Global_References/errors.md) for the full symptom → cause → fix matrix. Quick triage: missing plan/app → re-run Step 4; container ping timeout on 8000 → fix startup (Step 5); `ModuleNotFoundError` after deploy → ensure Step 6 ran, redeploy.
+

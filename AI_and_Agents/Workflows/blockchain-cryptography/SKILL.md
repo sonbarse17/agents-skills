@@ -623,18 +623,19 @@ Key concern: Harvest now, decrypt later attacks
 ```
 
 ## References
-- references/blockchain-cryptography-advanced.md — Blockchain Cryptography Advanced Topics
-- references/blockchain-cryptography-fundamentals.md — Blockchain Cryptography Fundamentals
-- references/elliptic-curve-crypto.md — Elliptic Curve Cryptography for Blockchain
-- references/hash-functions.md — Hash Functions in Blockchain
-- references/key-derivation-management.md — Key Derivation and Management
-- references/merkle-trees.md — Merkle Trees in Blockchain
-- references/pairing-based-cryptography.md — Pairing-Based Cryptography
-- references/post-quantum-blockchain-crypto.md — Post-Quantum Blockchain Cryptography
-- references/signature-schemes.md — Signature Schemes in Blockchain
-- references/zero-knowledge-deep.md — Zero-Knowledge Proofs in Blockchain
+- ../../../Global_References/blockchain-cryptography-advanced.md — Blockchain Cryptography Advanced Topics
+- ../../../Global_References/blockchain-cryptography-fundamentals.md — Blockchain Cryptography Fundamentals
+- ../../../Global_References/elliptic-curve-crypto.md — Elliptic Curve Cryptography for Blockchain
+- ../../../Global_References/hash-functions.md — Hash Functions in Blockchain
+- ../../../Global_References/key-derivation-management.md — Key Derivation and Management
+- ../../../Global_References/merkle-trees.md — Merkle Trees in Blockchain
+- ../../../Global_References/pairing-based-cryptography.md — Pairing-Based Cryptography
+- ../../../Global_References/post-quantum-blockchain-crypto.md — Post-Quantum Blockchain Cryptography
+- ../../../Global_References/signature-schemes.md — Signature Schemes in Blockchain
+- ../../../Global_References/zero-knowledge-deep.md — Zero-Knowledge Proofs in Blockchain
 
 ## Handoff
 blockchain-cryptography → blockchain-core (for protocol-level crypto integration)
 blockchain-cryptography → blockchain-security (for cryptographic audit methodology)
 blockchain-cryptography → blockchain-application (for zk-proof integration in contracts)
+

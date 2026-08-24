@@ -509,11 +509,12 @@ function scanWithClamAV(buffer: Buffer): Promise<{ infected: boolean; virus?: st
 - Set lifecycle policies from day one — retroactive cleanup is expensive
 
 ## References
-  - references/cdn-origin.md — CDN and Origin Storage Reference
-  - references/file-processing.md — File Processing Patterns Reference
-  - references/file-storage-cost-optimization.md — File Storage Cost Optimization
-  - references/file-storage-security.md — File Storage Security
-  - references/storage-providers.md — Storage Providers
-  - references/upload-patterns.md — Upload Patterns and CDN Delivery
+  - ../../../Global_References/cdn-origin.md — CDN and Origin Storage Reference
+  - ../../../Global_References/file-processing.md — File Processing Patterns Reference
+  - ../../../Global_References/file-storage-cost-optimization.md — File Storage Cost Optimization
+  - ../../../Global_References/file-storage-security.md — File Storage Security
+  - ../../../Global_References/storage-providers.md — Storage Providers
+  - ../../../Global_References/upload-patterns.md — Upload Patterns and CDN Delivery
 ## Handoff
 `backend-caching` for CDN cache strategy and edge caching patterns
+

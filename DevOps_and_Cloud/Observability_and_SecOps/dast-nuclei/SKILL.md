@@ -208,7 +208,7 @@ python3 scripts/nuclei_auth_scan.py \
   --output auth-scan-results.jsonl
 ```
 
-For OAuth, SAML, and MFA scenarios, see `references/authentication_patterns.md`.
+For OAuth, SAML, and MFA scenarios, see `../../../Global_References/authentication_patterns.md`.
 
 ### Step 5: Results Analysis and Validation
 
@@ -232,8 +232,8 @@ nuclei -u https://target-app.com \
 **Validation Workflow:**
 1. Review critical findings first (immediate action required)
 2. Verify each finding manually (curl, browser inspection, PoC testing)
-3. Check for false positives using `references/false_positive_guide.md`
-4. Map confirmed vulnerabilities to OWASP Top 10 using `references/owasp_mapping.md`
+3. Check for false positives using `../../../Global_References/false_positive_guide.md`
+4. Map confirmed vulnerabilities to OWASP Top 10 using `../../../Global_References/owasp_mapping.md`
 5. Cross-reference with CWE classifications for remediation patterns
 
 **Feedback Loop Pattern:**
@@ -376,7 +376,7 @@ http:
 ```
 
 **Template Development Resources:**
-- `references/template_development.md` - Complete template authoring guide
+- `../../../Global_References/template_development.md` - Complete template authoring guide
 - `assets/template_examples/` - Sample templates for common patterns
 - [Nuclei Template Guide](https://docs.projectdiscovery.io/templates/introduction)
 
@@ -496,11 +496,11 @@ nuclei -u https://production-app.com \
 
 Common issues and solutions:
 
-- **Too Many False Positives**: Filter by severity (`-severity critical,high`), exclude tags (`-etags tech,info`). See `references/false_positive_guide.md`
+- **Too Many False Positives**: Filter by severity (`-severity critical,high`), exclude tags (`-etags tech,info`). See `../../../Global_References/false_positive_guide.md`
 - **Incomplete Coverage**: Verify templates loaded (`nuclei -tl | wc -l`), update templates (`nuclei -update-templates`)
 - **Rate Limiting/WAF**: Reduce aggressiveness (`-rate-limit 20 -concurrency 5 -timeout 15`)
 - **High Resource Usage**: Reduce parallelism (`-concurrency 5 -bulk-size 5`)
-- **Auth Headers Not Working**: Debug with `-debug`, verify token format, see `references/authentication_patterns.md`
+- **Auth Headers Not Working**: Debug with `-debug`, verify token format, see `../../../Global_References/authentication_patterns.md`
 
 ## References
 
@@ -508,3 +508,4 @@ Common issues and solutions:
 - [Nuclei Templates Repository](https://github.com/projectdiscovery/nuclei-templates)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE Database](https://cwe.mitre.org/)
+

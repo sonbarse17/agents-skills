@@ -406,14 +406,14 @@ maxmemory: 512mb                # Cap idempotency storage
 - Always include a timestamp in the idempotency record.
 
 ## References
-  - references/exactly-once-strategies.md — Exactly-Once Execution Strategies
-  - references/idempotency-distributed.md — Distributed Idempotency
-  - references/idempotency-failure-modes.md — Idempotency Failure Modes
-  - references/idempotency-keys.md — Idempotency Keys
-  - references/idempotency-middleware.md — Idempotency Middleware Patterns
-  - references/idempotency-patterns.md — Idempotency Key Implementation Patterns
-  - references/idempotency-storage.md — Idempotency Storage Backends
-  - references/idempotency-testing.md — Idempotency Testing
+  - ../../../Global_References/exactly-once-strategies.md — Exactly-Once Execution Strategies
+  - ../../../Global_References/idempotency-distributed.md — Distributed Idempotency
+  - ../../../Global_References/idempotency-failure-modes.md — Idempotency Failure Modes
+  - ../../../Global_References/idempotency-keys.md — Idempotency Keys
+  - ../../../Global_References/idempotency-middleware.md — Idempotency Middleware Patterns
+  - ../../../Global_References/idempotency-patterns.md — Idempotency Key Implementation Patterns
+  - ../../../Global_References/idempotency-storage.md — Idempotency Storage Backends
+  - ../../../Global_References/idempotency-testing.md — Idempotency Testing
 ## Handoff
 No artifact produced unless requested.
 Next skill: distributed-locking — coordinate access to shared resources across services.

@@ -17,7 +17,7 @@ Comprehensive patterns and techniques for analyzing compiled binaries, understan
 
 ## Detailed section: Disassembly Fundamentals
 
-Originally a 2047-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 2047-byte section in this SKILL.md. Moved to `../../../Global_References/binary-analysis-patterns_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Control Flow Patterns
 
@@ -349,3 +349,4 @@ def auto_rename():
 - **Tail call optimization**: `jmp` instead of `call` + `ret`
 - **Dead code**: Unreachable code from optimization
 - **Position-independent code**: RIP-relative addressing
+

@@ -16,7 +16,7 @@ having a reconciler at all.
 actually works — treat them as two separate questions.**
 
 For stuck-sync states, sync waves, and the `argocd app` command reference, read
-`references/argocd-troubleshooting.md`.
+`../../../Global_References/argocd-troubleshooting.md`.
 
 ## 1. Manage many Applications with app-of-apps or ApplicationSets
 
@@ -101,3 +101,4 @@ environments run automated sync with prune/self-heal versus manual, and how AppP
 access. Call out any Application still relying on a custom or missing health check, or still on
 manual sync out of caution rather than design — that's the honest gap in how much you can trust the
 green checkmark.
+

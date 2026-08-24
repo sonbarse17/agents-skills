@@ -538,12 +538,12 @@ fun threeWayMerge(base: Document, local: Document, remote: Document): Document {
 - Concurrent sync: same account on multiple devices, verify eventual consistency
 
 ## References
-- `references/conflict-resolution.md` — Conflict Resolution for Offline-First
-- `references/local-storage.md` — Local Storage
-- `references/mobile-database.md` — Mobile Local Database
-- `references/offline-first-architecture.md` — Offline-First Architecture
-- `references/offline-sync.md` — Offline Sync
-- `references/sync-strategies.md` — Sync Strategies
+- `../../../Global_References/conflict-resolution.md` — Conflict Resolution for Offline-First
+- `../../../Global_References/local-storage.md` — Local Storage
+- `../../../Global_References/mobile-database.md` — Mobile Local Database
+- `../../../Global_References/offline-first_offline-first-architecture.md` — Offline-First Architecture
+- `../../../Global_References/offline-sync.md` — Offline Sync
+- `../../../Global_References/sync-strategies.md` — Sync Strategies
 
 ## Handoff
 After offline-first setup, hand off to:
@@ -554,3 +554,4 @@ After offline-first setup, hand off to:
 - `mobile/universal/push-notifications` — Silent push as sync trigger
 - `mobile/android` — WorkManager, Room specifics
 - `mobile/ios` — CoreData, BGTaskScheduler specifics
+

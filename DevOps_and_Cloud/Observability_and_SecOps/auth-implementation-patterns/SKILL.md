@@ -57,7 +57,7 @@ Build secure, scalable authentication and authorization systems using industry-s
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/auth-implementation-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -81,3 +81,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Insecure Password Reset**: Use secure tokens with expiration
 - **No Rate Limiting**: Vulnerable to brute force
 - **Trusting Client Data**: Always validate on server
+

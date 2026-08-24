@@ -86,7 +86,7 @@ func worker(ctx context.Context, id int, results chan<- string, wg *sync.WaitGro
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/go-concurrency-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -105,3 +105,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't use shared memory** - Unless necessary
 - **Don't ignore context cancellation** - Check ctx.Done()
 - **Don't use time.Sleep for sync** - Use proper primitives
+

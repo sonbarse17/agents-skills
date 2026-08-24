@@ -335,9 +335,9 @@ priority_matrix:
 | Monitor for new CVEs | Subscribe to security advisories for dependencies |
 
 ## References
-  - references/security-auditor-advanced.md — Security Auditor Advanced Topics
+  - ../../../Global_References/security-auditor-advanced.md — Security Auditor Advanced Topics
   - references/security-auditor-api.md — API Security Testing Reference
-  - references/security-auditor-fundamentals.md — Security Auditor Fundamentals
+  - ../../../Global_References/security-auditor-fundamentals.md — Security Auditor Fundamentals
   - references/security-auditor-remediation.md — Security Remediation Reference
    - references/security-auditor-tools.md — Security Tools Reference
 
@@ -561,3 +561,4 @@ What do you need to test?
 
 ## Handoff
 Hand off to `dev-loop-code-review` for secure code review. Hand off to `dev-loop-tech-debt-tracker` for security debt tracking.
+

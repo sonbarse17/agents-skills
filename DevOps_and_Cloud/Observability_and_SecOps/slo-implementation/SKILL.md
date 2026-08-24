@@ -270,5 +270,6 @@ slo:http_availability:error_budget_remaining
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `references/details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../Global_References/slo-implementation_details.md`. Read that file for the full pattern library.
+
 

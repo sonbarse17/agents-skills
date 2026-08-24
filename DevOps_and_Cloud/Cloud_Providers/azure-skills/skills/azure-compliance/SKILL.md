@@ -47,9 +47,9 @@ Activate this skill when user wants to:
 
 | Assessment | Reference |
 |------------|-----------|
-| Comprehensive Compliance (azqr) | [references/azure-quick-review.md](references/azure-quick-review.md) |
-| Key Vault Expiration | [references/azure-keyvault-expiration-audit.md](references/azure-keyvault-expiration-audit.md) |
-| Resource Graph Queries | [references/azure-resource-graph.md](references/azure-resource-graph.md) |
+| Comprehensive Compliance (azqr) | [../../../../../Global_References/azure-quick-review.md](../../../../../Global_References/azure-quick-review.md) |
+| Key Vault Expiration | [../../../../../Global_References/azure-keyvault-expiration-audit.md](../../../../../Global_References/azure-keyvault-expiration-audit.md) |
+| Resource Graph Queries | [../../../../../Global_References/azure-compliance_azure-resource-graph.md](../../../../../Global_References/azure-compliance_azure-resource-graph.md) |
 
 ## MCP Tools
 
@@ -105,4 +105,5 @@ For programmatic Key Vault access, see the condensed SDK guides:
 - **Secrets**: [TypeScript](references/sdk/azure-keyvault-secrets-ts.md) | [Rust](references/sdk/azure-keyvault-secrets-rust.md) | [Java](references/sdk/azure-security-keyvault-secrets-java.md)
 - **Keys**: [.NET](references/sdk/azure-security-keyvault-keys-dotnet.md) | [Java](references/sdk/azure-security-keyvault-keys-java.md) | [TypeScript](references/sdk/azure-keyvault-keys-ts.md) | [Rust](references/sdk/azure-keyvault-keys-rust.md)
 - **Certificates**: [Rust](references/sdk/azure-keyvault-certificates-rust.md)
+
 

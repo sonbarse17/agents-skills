@@ -524,15 +524,16 @@ Serving uncompressed content increases egress costs and hurts performance. Enabl
 - Monitor cache hit ratio and alert below 80%.
 
 ## References
-  - references/cdn-edge-advanced.md
-  - references/cdn-edge-fundamentals.md
-  - references/cdn-providers.md
-  - references/ddos-mitigation.md
-  - references/edge-functions.md
-  - references/waf-rules.md
+  - ../../../Global_References/cdn-edge-advanced.md
+  - ../../../Global_References/cdn-edge-fundamentals.md
+  - ../../../Global_References/cdn-providers.md
+  - ../../../Global_References/ddos-mitigation.md
+  - ../../../Global_References/cdn-edge_edge-functions.md
+  - ../../../Global_References/waf-rules.md
   - references/signed-urls-guide.md
   - references/multi-cdn-strategy.md
   - references/cdn-monitoring.md
 
 ## Handoff
 Next: **waf-rules** — deeper WAF configuration. Pass: distribution ID, WAF ACL ARN, edge function names.
+

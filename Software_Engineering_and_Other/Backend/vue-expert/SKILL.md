@@ -32,13 +32,13 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Composition API | `references/composition-api.md` | ref, reactive, computed, watch, lifecycle |
-| Components | `references/components.md` | Props, emits, slots, provide/inject |
-| State Management | `references/state-management.md` | Pinia stores, actions, getters |
-| Nuxt 3 | `references/nuxt.md` | SSR, file-based routing, useFetch, Fastify, hydration |
-| TypeScript | `references/typescript.md` | Typing props, generic components, type safety |
-| Mobile & Hybrid | `references/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
-| Build Tooling | `references/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
+| Composition API | `../../../Global_References/vue-expert_composition-api.md` | ref, reactive, computed, watch, lifecycle |
+| Components | `../../../Global_References/vue-expert_components.md` | Props, emits, slots, provide/inject |
+| State Management | `../../../Global_References/vue-expert_state-management.md` | Pinia stores, actions, getters |
+| Nuxt 3 | `../../../Global_References/nuxt.md` | SSR, file-based routing, useFetch, Fastify, hydration |
+| TypeScript | `../../../Global_References/typescript.md` | Typing props, generic components, type safety |
+| Mobile & Hybrid | `../../../Global_References/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
+| Build Tooling | `../../../Global_References/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
 
 ## Quick Example
 
@@ -98,3 +98,4 @@ When implementing Vue features, provide:
 Vue 3 Composition API, Pinia, Nuxt 3, Vue Router 4, Vite, VueUse, TypeScript, Vitest, Vue Test Utils, SSR/SSG, reactive programming, performance optimization
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/vue-expert/)
+

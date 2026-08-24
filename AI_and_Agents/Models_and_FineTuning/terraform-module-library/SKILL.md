@@ -178,7 +178,7 @@ output "vpc_cidr_block" {
 9. **Test modules** with Terratest
 10. **Tag all resources** consistently
 
-**Reference:** See `references/aws-modules.md` and `references/oci-modules.md`
+**Reference:** See `../../../Global_References/aws-modules.md` and `../../../Global_References/oci-modules.md`
 
 ## Module Composition
 
@@ -249,3 +249,4 @@ func TestVPCModule(t *testing.T) {
 
 - `multi-cloud-architecture` - For architectural decisions
 - `cost-optimization` - For cost-effective designs
+

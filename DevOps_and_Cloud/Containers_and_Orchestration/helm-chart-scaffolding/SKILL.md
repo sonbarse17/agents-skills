@@ -24,7 +24,7 @@ Use this skill when you need to:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/helm-chart-scaffolding_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -66,3 +66,4 @@ kubectl get events --sort-by='.lastTimestamp'
 
 - `k8s-manifest-generator` - For creating base Kubernetes manifests
 - `gitops-workflow` - For automated Helm chart deployments
+

@@ -481,14 +481,14 @@ Use `navigator.storage.estimate()` to check available and used storage.
 
 ## References
 
-- `references/cache-strategies.md` -- Cache Strategies
-- `references/caching-headers.md` -- Caching Headers
-- `references/caching-strategies.md` -- Caching Strategies
-- `references/local-storage-strategies.md` -- Local Storage and Cache Strategies
-- `references/service-worker-caching.md` -- Service Worker Caching
-- `references/sw-caching.md` -- Service Worker Caching
-- `references/service-worker-caching.md` -- Service Worker Caching Patterns
-- `references/cache-invalidation-strategies.md` -- Cache Invalidation Strategies
+- `../../../Global_References/browser-caching_cache-strategies.md` -- Cache Strategies
+- `../../../Global_References/caching-headers.md` -- Caching Headers
+- `../../../Global_References/browser-caching_caching-strategies.md` -- Caching Strategies
+- `../../../Global_References/local-storage-strategies.md` -- Local Storage and Cache Strategies
+- `../../../Global_References/service-worker-caching.md` -- Service Worker Caching
+- `../../../Global_References/sw-caching.md` -- Service Worker Caching
+- `../../../Global_References/service-worker-caching.md` -- Service Worker Caching Patterns
+- `../../../Global_References/cache-invalidation-strategies.md` -- Cache Invalidation Strategies
 
 ## Handoff
 No artifact produced.
@@ -610,3 +610,4 @@ Can the resource change without a version bump?
             ├── Yes → SW message channel + cache busting
             └── No  → Time-based TTL strategy
 ```
+

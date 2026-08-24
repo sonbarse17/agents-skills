@@ -424,12 +424,12 @@ Automatic retry should use exponential backoff. Retrying every 1s for 30 retries
 10. Network errors show a distinct "You appear to be offline" message vs application errors.
 
 ## References
-  - references/error-boundaries.md — Error Boundaries
-  - references/error-boundary-patterns.md — Error Boundary Patterns
-  - references/error-logging-best-practices.md — Error Logging Best Practices
-  - references/error-monitoring.md — Error Monitoring
-  - references/error-reporting.md — Error Reporting
-  - references/error-ui-patterns.md — Error UI Patterns
+  - ../../../Global_References/error-boundaries.md — Error Boundaries
+  - ../../../Global_References/error-boundary-patterns.md — Error Boundary Patterns
+  - ../../../Global_References/error-logging-best-practices.md — Error Logging Best Practices
+  - ../../../Global_References/error-monitoring.md — Error Monitoring
+  - ../../../Global_References/error-reporting.md — Error Reporting
+  - ../../../Global_References/error-ui-patterns.md — Error UI Patterns
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-performance` — error boundaries affect perceived performance, coordinate loading/error states.
@@ -552,3 +552,4 @@ Is the error user-impacting?
             ├── Yes → Sanitize before reporting, show generic message
             └── No  → Report full error with context
 ```
+

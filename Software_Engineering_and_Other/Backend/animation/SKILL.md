@@ -494,15 +494,16 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 
 ## References
 
-- `references/animation-accessibility.md` -- Animation Accessibility
-- `references/animation-anatomy.md` -- Animation Anatomy
-- `references/animation-libraries.md` -- Animation Libraries
-- `references/animation-performance.md` -- Animation Performance
-- `references/animation-techniques.md` -- Animation Techniques
-- `references/animation-tools.md` -- Animation Tools Reference
-- `references/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
-- `references/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
+- `../../../Global_References/animation-accessibility.md` -- Animation Accessibility
+- `../../../Global_References/animation-anatomy.md` -- Animation Anatomy
+- `../../../Global_References/animation_animation-libraries.md` -- Animation Libraries
+- `../../../Global_References/animation-performance.md` -- Animation Performance
+- `../../../Global_References/animation-techniques.md` -- Animation Techniques
+- `../../../Global_References/animation-tools.md` -- Animation Tools Reference
+- `../../../Global_References/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
+- `../../../Global_References/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
 
 ## Handoff
 
 When complete, output the animation strategy with implementation snippets. If the request scope exceeds page transitions + micro-interactions (e.g., full motion design system), flag for a dedicated motion designer handoff. For GSAP ScrollTrigger-heavy work, flag for scroll experience specialist.
+

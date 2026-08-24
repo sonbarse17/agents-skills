@@ -409,11 +409,11 @@ edges
 
 ### Example: IRQL + make-graph integration
 
-See [references/EXAMPLES.md](references/EXAMPLES.md) for multi-source investigation graphs combining IRQL selectors with `make-graph`, and `Lift_To_Graph` visual graph examples.
+See [../../../Global_References/azure-kusto-graph_EXAMPLES.md](../../../Global_References/azure-kusto-graph_EXAMPLES.md) for multi-source investigation graphs combining IRQL selectors with `make-graph`, and `Lift_To_Graph` visual graph examples.
 
 ## Practical Usage Scenarios
 
-See [references/SCENARIOS.md](references/SCENARIOS.md) for full worked examples including:
+See [../../../Global_References/SCENARIOS.md](../../../Global_References/SCENARIOS.md) for full worked examples including:
 - Reachability analysis (shortest paths to critical assets)
 - Network segmentation validation (connected components)
 - Blast radius of compromised accounts (variable-length path matching)
@@ -459,7 +459,7 @@ This ensures the output works in both Kusto Explorer (graph visualization) and A
 
 ### Optional: Save and Launch
 
-If the user asks to save or open the query in Kusto Explorer, follow the procedure in [references/KUSTO_EXPLORER_LAUNCH.md](references/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open the query in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - **Always** use `ask_user` to confirm before writing files or launching executables
 - **Always** display the file contents in chat so the user can review before opening
@@ -468,3 +468,4 @@ If the user asks to save or open the query in Kusto Explorer, follow the procedu
 - On macOS/Linux, save the `.kql` file and suggest the VS Code Kusto extension or ADX Web Explorer
 
 For `make-graph` visualization (the graph window), the query must **end at `make-graph`** — do not pipe to `graph-match`. Kusto Explorer only opens the graph visualization window when the output is a graph object, not a table.
+

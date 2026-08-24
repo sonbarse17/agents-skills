@@ -653,14 +653,15 @@ On release candidate: all tags (comprehensive)
 ```
 
 ## References
-  - references/gherkin-deep-dive.md — Gherkin Deep Dive
-  - references/spec-example.md — Specification by Example
-  - references/bdd-tools.md — BDD Tools
-  - references/atdd-workflow.md — ATDD Workflow
-  - references/bdd-atdd-advanced.md — Bdd Atdd Advanced Topics
-  - references/bdd-atdd-fundamentals.md — Bdd Atdd Fundamentals
+  - ../../../Global_References/gherkin-deep-dive.md — Gherkin Deep Dive
+  - ../../../Global_References/spec-example.md — Specification by Example
+  - ../../../Global_References/bdd-tools.md — BDD Tools
+  - ../../../Global_References/atdd-workflow.md — ATDD Workflow
+  - ../../../Global_References/bdd-atdd-advanced.md — Bdd Atdd Advanced Topics
+  - ../../../Global_References/bdd-atdd-fundamentals.md — Bdd Atdd Fundamentals
   - references/gherkin-patterns-catalog.md — Gherkin Patterns Catalog
   - references/step-definition-guide.md — Step Definition Implementation Guide
   - references/bdd-ci-pipeline.md — BDD CI Pipeline Setup
 ## Handoff
 `create-story` for converting discovered stories into backlog items. `create-tech-spec` for implementation details from step definitions. `create-prd` for aligning feature files with product requirements.
+

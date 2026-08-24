@@ -401,10 +401,10 @@ ipcMain.handle('file:watch', async (_event, filePath) => {
 ```
 
 ## References
-  - references/electron-advanced.md — Electron Advanced Topics
-  - references/electron-fundamentals.md — Electron Fundamentals
+  - ../../../Global_References/electron-advanced.md — Electron Advanced Topics
+  - ../../../Global_References/electron-fundamentals.md — Electron Fundamentals
   - references/electron-ipc-patterns.md — Electron IPC Patterns Reference
-  - references/electron-security.md — Electron Security Reference
+  - ../../../Global_References/electron-security.md — Electron Security Reference
 ## Handoff
 Hand off to `dev-loop-code-review` for security audit of preload scripts. Hand off to `desktop-tauri` if native performance is critical.
 ## Implementation Patterns

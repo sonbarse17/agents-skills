@@ -548,15 +548,16 @@ Seamless camera switching (front/back/ultrawide/tele)?
 ```
 
 ## References
-  - references/camera-apis.md — Camera APIs
-  - references/camera-capture.md — Camera Capture
-  - references/camera-media-capture.md — Camera & Media Capture Patterns
-  - references/camera-permissions.md — Camera Permissions — iOS & Android
-  - references/media-processing.md — Media Processing
-  - references/video-recording.md — Video Recording — Mobile
-  - references/camera-media-fundamentals.md — Camera & Media Fundamentals
-  - references/camera-media-advanced.md — Advanced Camera & Media Patterns
-  - references/camera-document-scanning.md — Document Scanning Guide
+  - ../../../Global_References/camera-apis.md — Camera APIs
+  - ../../../Global_References/camera-capture.md — Camera Capture
+  - ../../../Global_References/camera-media-capture.md — Camera & Media Capture Patterns
+  - ../../../Global_References/camera-permissions.md — Camera Permissions — iOS & Android
+  - ../../../Global_References/media-processing.md — Media Processing
+  - ../../../Global_References/video-recording.md — Video Recording — Mobile
+  - ../../../Global_References/camera-media-fundamentals.md — Camera & Media Fundamentals
+  - ../../../Global_References/camera-media-advanced.md — Advanced Camera & Media Patterns
+  - ../../../Global_References/camera-document-scanning.md — Document Scanning Guide
 
 ## Handoff
 Hand off to mobile-networking skill for upload progress tracking and retry logic, or mobile-storage for local media cache management.
+

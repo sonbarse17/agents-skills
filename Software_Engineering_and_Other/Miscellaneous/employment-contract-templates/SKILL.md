@@ -43,7 +43,7 @@ Employment Relationship:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/employment-contract-templates_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -62,3 +62,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't discriminate** - In language or application
 - **Don't forget at-will language** - Where applicable
 - **Don't skip review** - Have legal counsel review all documents
+

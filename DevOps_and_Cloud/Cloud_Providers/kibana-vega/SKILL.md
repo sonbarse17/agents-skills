@@ -299,10 +299,10 @@ node scripts/kibana-vega.js visualizations delete <id>
 
 ## Full Documentation
 
-- [Dashboard Layout Reference](references/dashboard-layout-reference.md) — Grid system, layout patterns, design best
+- [Dashboard Layout Reference](../../../Global_References/dashboard-layout-reference.md) — Grid system, layout patterns, design best
   practices
-- [Vega-Lite Reference](references/vega-lite-reference.md) — Complete Vega-Lite grammar, chart patterns, best practices
-- [ES|QL in Vega Reference](references/vega-esql-reference.md) — ES|QL data source configuration, time filtering,
+- [Vega-Lite Reference](../../../Global_References/vega-lite-reference.md) — Complete Vega-Lite grammar, chart patterns, best practices
+- [ES|QL in Vega Reference](../../../Global_References/vega-esql-reference.md) — ES|QL data source configuration, time filtering,
   parameters
 - [Example Specs](examples/) — Ready-to-use chart templates
 
@@ -320,3 +320,4 @@ node scripts/kibana-vega.js visualizations delete <id>
 | "401 Unauthorized"                     | Check KIBANA_USERNAME/PASSWORD                                                                       |
 | "conflicting sort properties"          | Don't use `sort: "-x"` in layered specs; pre-sort in ES\|QL and use `sort: null`                     |
 | "404 Not Found"                        | Verify dashboard/visualization ID                                                                    |
+

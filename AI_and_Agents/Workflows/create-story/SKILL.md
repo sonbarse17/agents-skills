@@ -403,14 +403,14 @@ Starting a story without knowing what it depends on leads to blocked developers 
 - **Workflow**: Todo -> In Progress -> Review -> Done (or similar Kanban states).
 
 ## References
-  - references/create-story-fundamentals.md — Story Fundamentals
-  - references/create-story-advanced.md — Story Advanced Topics
-  - references/acceptance-criteria.md — Acceptance Criteria Guide
-  - references/story-examples.md — Story Examples
-  - references/story-refinement.md — Story Refinement
-  - references/story-template.md — Story Template
-  - references/user-story-splitting.md — User Story Splitting
-  - references/user-story-acceptance-criteria.md — User Story Acceptance Criteria
+  - ../../../Global_References/create-story-fundamentals.md — Story Fundamentals
+  - ../../../Global_References/create-story-advanced.md — Story Advanced Topics
+  - ../../../Global_References/acceptance-criteria.md — Acceptance Criteria Guide
+  - ../../../Global_References/story-examples.md — Story Examples
+  - ../../../Global_References/story-refinement.md — Story Refinement
+  - ../../../Global_References/story-template.md — Story Template
+  - ../../../Global_References/user-story-splitting.md — User Story Splitting
+  - ../../../Global_References/user-story-acceptance-criteria.md — User Story Acceptance Criteria
 
 ## Handoff
 Output: `docs/stories/STORY-{NNN}.md`

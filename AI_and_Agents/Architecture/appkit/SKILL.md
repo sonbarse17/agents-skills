@@ -422,8 +422,8 @@ popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
 ```
 
 ## References
-  - references/appkit-advanced.md — AppKit Advanced Topics
-  - references/appkit-fundamentals.md — AppKit Fundamentals
+  - ../../../Global_References/appkit-advanced.md — AppKit Advanced Topics
+  - ../../../Global_References/appkit-fundamentals.md — AppKit Fundamentals
   - references/appkit-patterns.md — AppKit Architecture Patterns
   - references/macos-deployment.md — macOS Deployment Reference
 ## Handoff

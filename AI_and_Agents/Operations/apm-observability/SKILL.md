@@ -625,16 +625,17 @@ Letting observability spend grow unchecked. Set budgets, monitor data ingestion,
 OpenTelemetry collector config, Prometheus rules, Grafana dashboard JSON, SLI/SLO definitions, instrumentation code snippets.
 
 ## References
-  - references/apm-instrumentation.md
-  - references/apm-observability-advanced.md
-  - references/apm-observability-fundamentals.md
-  - references/datadog-setup.md
-  - references/grafana-cloud.md
-  - references/new-relic-setup.md
-  - references/synthetic-monitoring.md
+  - ../../../Global_References/apm-instrumentation.md
+  - ../../../Global_References/apm-observability-advanced.md
+  - ../../../Global_References/apm-observability-fundamentals.md
+  - ../../../Global_References/datadog-setup.md
+  - ../../../Global_References/grafana-cloud.md
+  - ../../../Global_References/new-relic-setup.md
+  - ../../../Global_References/synthetic-monitoring.md
   - references/otel-sampling-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **monitoring** — infrastructure monitoring, Prometheus operator
 - Pass context: OTEL endpoint, Grafana dashboard UIDs, SLO definitions, alert routing
+

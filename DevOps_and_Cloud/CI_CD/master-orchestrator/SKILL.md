@@ -1543,14 +1543,15 @@ Read project files:
 - If the user asks a question outside routing (e.g., "how do I do X"), respond with: "That question should be handled by {skill-name}. Activate that skill with: {trigger phrase}"
 
 ## References
-  - references/master-orchestrator-advanced.md — Master Orchestrator Advanced Topics
-  - references/master-orchestrator-fundamentals.md — Master Orchestrator Fundamentals
-  - references/orchestration-engine.md — Master Orchestrator
-  - references/orchestrator-registration.md — Orchestrator Registration
-  - references/phase-workflow.md — Phase Workflow Reference
-  - references/routing-decision-tree.md — Routing Decision Tree
-  - references/skill-registry.md — Skill Registry
-  - references/skill-routing.md — Skill Routing Reference
+  - ../../../Global_References/master-orchestrator-advanced.md — Master Orchestrator Advanced Topics
+  - ../../../Global_References/master-orchestrator-fundamentals.md — Master Orchestrator Fundamentals
+  - ../../../Global_References/orchestration-engine.md — Master Orchestrator
+  - ../../../Global_References/orchestrator-registration.md — Orchestrator Registration
+  - ../../../Global_References/phase-workflow.md — Phase Workflow Reference
+  - ../../../Global_References/routing-decision-tree.md — Routing Decision Tree
+  - ../../../Global_References/skill-registry.md — Skill Registry
+  - ../../../Global_References/skill-routing.md — Skill Routing Reference
 ## Handoff
 This skill does not produce artifacts. It routes to the appropriate next skill.
 Carry forward: routing decision, detected stack, detected framework, existing artifacts found.
+

@@ -479,12 +479,12 @@ feature_engineering:
 - Log feature importance and distribution for every training run
 
 ## References
-  - references/automated-fe.md — Automated Feature Engineering
-  - references/feature-encoding.md — Feature Encoding Reference
-  - references/feature-engineering-advanced.md — Feature Engineering Advanced Topics
-  - references/feature-engineering-fundamentals.md — Feature Engineering Fundamentals
-  - references/text-features.md — Text Feature Engineering
-  - references/validation-leakage.md — Feature Engineering Validation
+  - ../../../Global_References/automated-fe.md — Automated Feature Engineering
+  - ../../../Global_References/feature-encoding.md — Feature Encoding Reference
+  - ../../../Global_References/feature-engineering-advanced.md — Feature Engineering Advanced Topics
+  - ../../../Global_References/feature-engineering-fundamentals.md — Feature Engineering Fundamentals
+  - ../../../Global_References/text-features.md — Text Feature Engineering
+  - ../../../Global_References/validation-leakage.md — Feature Engineering Validation
 ## Handoff
 `ml-classical-ml` for model training with engineered features
 `ml-deep-learning` for deep learning feature extraction (embeddings)

@@ -18,7 +18,7 @@ what changed. Fixing that costs nothing and saves the most time.
 **Mitigate first, understand second, and let one person own the decisions.**
 
 For role definitions, a severity matrix, and copy-paste status-update templates, read
-`references/incident-roles.md`.
+`../../../Global_References/incident-roles.md`.
 
 ## 1. Name an incident commander in the first five minutes
 
@@ -122,3 +122,4 @@ customers were affected. Name explicitly what is still not understood about root
 incident report that claims full understanding under time pressure is usually wrong, and
 saying "mitigated, cause not yet confirmed" is more honest and more useful than a guess
 dressed up as a conclusion.
+

@@ -21,7 +21,7 @@ optimization) plus preference pairs or unpaired
 feedback, usually from an SFT checkpoint.
 **Output format:** a validated method choice plus
 a config — the kwarg values in
-`references/method-configs.md`, not free-form
+`../../../Global_References/method-configs.md`, not free-form
 advice — that `llm-finetuning-training-engineer`
 consumes directly.
 
@@ -178,13 +178,13 @@ Complete TRL config blocks per method —
 `DPOConfig`, `ORPOConfig`, `KTOConfig`, and the
 SimPO sweep grid — plus Unsloth wrappers and a
 catastrophic-forgetting note live in
-`references/method-configs.md`. Those configs use
+`../../../Global_References/method-configs.md`. Those configs use
 the same current-TRL API conventions established
 in `lora-qlora-recipes`'s
 `references/unsloth-trl-mapping.md`
 (`processing_class`, not `tokenizer=`).
 
-`references/method-configs.md` also carries the
+`../../../Global_References/method-configs.md` also carries the
 catastrophic-forgetting note: a too-high learning
 rate is the usual cause when a preference-tuned
 checkpoint loses general capability, and the fix
@@ -200,3 +200,4 @@ fused path can skip it); `trace-to-training-data`
 converts passing/failing trajectories into the
 pairs this skill's Pair Construction section
 consumes.
+

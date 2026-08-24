@@ -52,7 +52,7 @@ Quarterly: Review patterns across incidents
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/postmortem-writing_details.md`. Read that file when you need the concrete templates.
 
 ## References
 - [Connection Pool Best Practices](internal-wiki/connection-pools)
@@ -231,3 +231,4 @@ Don't full-flush cache in production; use targeted invalidation.
 - **Don't make it a blame doc** - That kills learning
 - **Don't create busywork** - Actions should be meaningful
 - **Don't skip follow-up** - Verify actions completed
+

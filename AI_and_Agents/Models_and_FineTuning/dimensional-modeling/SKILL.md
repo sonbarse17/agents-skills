@@ -518,14 +518,15 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
 - Document every design decision in an ADR (Architecture Decision Record)
 
 ## References
-  - references/data-vault.md — Data Vault 2.0 Reference
-  - references/dimensional-modeling-etl.md — Dimensional Modeling ETL
-  - references/dimensional-modeling-performance.md — Dimensional Modeling Performance
-  - references/fact-table-design.md — Fact Table Design Reference
-  - references/kimball-methodology.md — Kimball Methodology Reference
-  - references/scd-types.md — Slowly Changing Dimensions Reference
-  - references/star-schema.md — Star Schema Design Reference
+  - ../../../Global_References/data-vault.md — Data Vault 2.0 Reference
+  - ../../../Global_References/dimensional-modeling-etl.md — Dimensional Modeling ETL
+  - ../../../Global_References/dimensional-modeling-performance.md — Dimensional Modeling Performance
+  - ../../../Global_References/fact-table-design.md — Fact Table Design Reference
+  - ../../../Global_References/kimball-methodology.md — Kimball Methodology Reference
+  - ../../../Global_References/scd-types.md — Slowly Changing Dimensions Reference
+  - ../../../Global_References/star-schema.md — Star Schema Design Reference
 ## Handoff
 `data-etl-pipeline` for ETL/ELT implementation of dimensional models
 `data-data-warehouse` for warehouse platform-specific optimizations
 `data-data-quality` for dimension and fact quality monitoring
+

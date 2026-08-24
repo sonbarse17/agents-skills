@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Ownership | `references/ownership.md` | Lifetimes, borrowing, smart pointers, Pin |
-| Traits | `references/traits.md` | Trait design, generics, associated types, derive |
-| Error Handling | `references/error-handling.md` | Result, Option, ?, custom errors, thiserror |
-| Async | `references/async.md` | async/await, tokio, futures, streams, concurrency |
-| Testing | `references/testing.md` | Unit/integration tests, proptest, benchmarks |
+| Ownership | `../../../Global_References/ownership.md` | Lifetimes, borrowing, smart pointers, Pin |
+| Traits | `../../../Global_References/traits.md` | Trait design, generics, associated types, derive |
+| Error Handling | `../../../Global_References/rust-engineer_error-handling.md` | Result, Option, ?, custom errors, thiserror |
+| Async | `../../../Global_References/async.md` | async/await, tokio, futures, streams, concurrency |
+| Testing | `../../../Global_References/rust-engineer_testing.md` | Unit/integration tests, proptest, benchmarks |
 
 ## Key Patterns with Examples
 
@@ -167,3 +167,4 @@ When implementing Rust features, provide:
 Rust 2021, Cargo, ownership/borrowing, lifetimes, traits, generics, async/await, tokio, Result/Option, thiserror/anyhow, serde, clippy, rustfmt, cargo-test, criterion benchmarks, MIRI, unsafe Rust
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/rust-engineer/)
+

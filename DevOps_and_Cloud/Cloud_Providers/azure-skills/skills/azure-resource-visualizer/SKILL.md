@@ -34,7 +34,7 @@ If a resource group is specified, validate it exists and proceed.
 
 ### Step 2: Resource Discovery & Analysis
 
-For bulk resource discovery across subscriptions, use Azure Resource Graph queries. See [Azure Resource Graph Queries](references/azure-resource-graph.md) for cross-subscription inventory and relationship discovery patterns.
+For bulk resource discovery across subscriptions, use Azure Resource Graph queries. See [Azure Resource Graph Queries](../../../../../Global_References/azure-resource-graph.md) for cross-subscription inventory and relationship discovery patterns.
 
 Once you have the resource group:
 
@@ -181,3 +181,4 @@ A successful analysis includes:
 - ✅ Professional, architect-level output
 
 Your goal is to provide clarity and insight into Azure architectures, making complex resource relationships easy to understand through excellent visualization.
+

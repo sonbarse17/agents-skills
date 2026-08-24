@@ -55,7 +55,7 @@ Time-bound: Defined period
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Common KPIs by Department`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Common KPIs by Department`) live in `../../../Global_References/kpi-dashboard-design_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 
@@ -145,3 +145,4 @@ def is_anomalous(current: float, history: list[float]) -> bool:
 ## Related Skills
 
 - `data-storytelling` - Turn dashboard findings into narratives that drive executive decisions
+

@@ -521,15 +521,16 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - Integration deprecation follows documented lifecycle with consumer notification
 
 ## References
-- references/integration-patterns-fundamentals.md -- Integration Patterns Fundamentals
-- references/integration-patterns-advanced.md -- Integration Patterns Advanced Topics
-- references/integration-styles.md -- Enterprise Integration Styles
-- references/message-routing.md -- Message Routing Patterns
-- references/integration-architectures.md -- Integration Architectures
-- references/etl-integration.md -- ETL Integration Patterns
-- references/enterprise-integration-architecture.md -- Enterprise Integration Architecture
-  - references/event-driven-integration.md -- Event-Driven Integration
-  - references/api-gateway-patterns.md -- API Gateway Patterns
+- ../../../Global_References/integration-patterns-fundamentals.md -- Integration Patterns Fundamentals
+- ../../../Global_References/integration-patterns-advanced.md -- Integration Patterns Advanced Topics
+- ../../../Global_References/integration-styles.md -- Enterprise Integration Styles
+- ../../../Global_References/message-routing.md -- Message Routing Patterns
+- ../../../Global_References/integration-architectures.md -- Integration Architectures
+- ../../../Global_References/etl-integration.md -- ETL Integration Patterns
+- ../../../Global_References/enterprise-integration-architecture.md -- Enterprise Integration Architecture
+  - ../../../Global_References/event-driven-integration.md -- Event-Driven Integration
+  - ../../../Global_References/api-gateway-patterns.md -- API Gateway Patterns
 
 ## Handoff
 For monitoring integration SLAs, hand off to `enterprise-sla-management`. For data governance across integrations, hand off to `enterprise-data-governance`.
+

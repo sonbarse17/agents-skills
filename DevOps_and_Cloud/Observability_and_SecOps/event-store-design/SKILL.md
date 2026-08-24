@@ -60,7 +60,7 @@ Comprehensive guide to designing event stores for event-sourced applications.
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/event-store-design_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -78,3 +78,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't store large payloads** - Keep events small
 - **Don't skip optimistic concurrency** - Prevents data corruption
 - **Don't ignore backpressure** - Handle slow consumers
+

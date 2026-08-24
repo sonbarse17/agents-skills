@@ -30,11 +30,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Protocol | `references/protocol.md` | WebSocket handshake, frames, ping/pong, close codes |
-| Scaling | `references/scaling.md` | Horizontal scaling, Redis pub/sub, sticky sessions |
-| Patterns | `references/patterns.md` | Rooms, namespaces, broadcasting, acknowledgments |
-| Security | `references/security.md` | Authentication, authorization, rate limiting, CORS |
-| Alternatives | `references/alternatives.md` | SSE, long polling, when to choose WebSockets |
+| Protocol | `../../../Global_References/websocket-engineer_protocol.md` | WebSocket handshake, frames, ping/pong, close codes |
+| Scaling | `../../../Global_References/scaling.md` | Horizontal scaling, Redis pub/sub, sticky sessions |
+| Patterns | `../../../Global_References/websocket-engineer_patterns.md` | Rooms, namespaces, broadcasting, acknowledgments |
+| Security | `../../../Global_References/websocket-engineer_security.md` | Authentication, authorization, rate limiting, CORS |
+| Alternatives | `../../../Global_References/alternatives.md` | SSE, long polling, when to choose WebSockets |
 
 ## Code Examples
 
@@ -168,3 +168,4 @@ When implementing WebSocket features, provide:
 Socket.IO, ws, uWebSockets.js, Redis adapter, sticky sessions, nginx WebSocket proxy, JWT over WebSocket, rooms/namespaces, acknowledgments, binary data, compression, heartbeat, backpressure, horizontal pod autoscaling
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/websocket-engineer/)
+

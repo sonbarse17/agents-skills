@@ -69,7 +69,7 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing — In-Memory Adapters
 
@@ -154,7 +154,7 @@ If the `Order` context is importing `User` entities from the `Identity` context,
 
 For detailed DDD bounded context mapping, full multi-service project trees, Anti-Corruption Layer implementations, and Onion Architecture comparisons, see:
 
-- [`references/advanced-patterns.md`](references/advanced-patterns.md)
+- [`../../../Global_References/advanced-patterns.md`](../../../Global_References/advanced-patterns.md)
 
 ## Related Skills
 
@@ -162,3 +162,4 @@ For detailed DDD bounded context mapping, full multi-service project trees, Anti
 - `cqrs-implementation` — Use Clean Architecture as the structural foundation for CQRS command/query separation
 - `saga-orchestration` — Sagas require well-defined aggregate boundaries, which DDD tactical patterns provide
 - `event-store-design` — Domain events produced by aggregates feed directly into an event store
+

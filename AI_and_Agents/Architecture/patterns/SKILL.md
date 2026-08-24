@@ -783,11 +783,11 @@ final class OrderViewModelTests: XCTestCase {
 
 ## References
 - `references/architecture-patterns.md` — Mobile Architecture Patterns
-- `references/clean-arch.md` — Clean Architecture for Mobile
-- `references/coordinator.md` — Coordinator / Navigator
-- `references/design-patterns.md` — Mobile Design Patterns
-- `references/mobile-architecture-patterns.md` — Mobile Architecture Patterns
-- `references/mvvm-mvi.md` — MVVM vs MVI
+- `../../../Global_References/clean-arch.md` — Clean Architecture for Mobile
+- `../../../Global_References/coordinator.md` — Coordinator / Navigator
+- `../../../Global_References/patterns_design-patterns.md` — Mobile Design Patterns
+- `../../../Global_References/mobile-architecture-patterns.md` — Mobile Architecture Patterns
+- `../../../Global_References/mvvm-mvi.md` — MVVM vs MVI
 
 ## Handoff
 After architecture selection, hand off to:
@@ -799,3 +799,4 @@ After architecture selection, hand off to:
 - `mobile/ios` — SwiftUI, Combine, Coordinator
 - `mobile/flutter` — Riverpod, GoRouter, BLoC
 - `mobile/react-native` — Zustand, React Navigation
+

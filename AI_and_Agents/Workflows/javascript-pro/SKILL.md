@@ -38,11 +38,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern Syntax | `references/modern-syntax.md` | ES2023+ features, optional chaining, private fields |
-| Async Patterns | `references/async-patterns.md` | Promises, async/await, error handling, event loop |
-| Modules | `references/modules.md` | ESM vs CJS, dynamic imports, package.json exports |
-| Browser APIs | `references/browser-apis.md` | Fetch, Web Workers, Storage, IntersectionObserver |
-| Node Essentials | `references/node-essentials.md` | fs/promises, streams, EventEmitter, worker threads |
+| Modern Syntax | `../../../Global_References/modern-syntax.md` | ES2023+ features, optional chaining, private fields |
+| Async Patterns | `../../../Global_References/javascript-pro_async-patterns.md` | Promises, async/await, error handling, event loop |
+| Modules | `../../../Global_References/modules.md` | ESM vs CJS, dynamic imports, package.json exports |
+| Browser APIs | `../../../Global_References/browser-apis.md` | Fetch, Web Workers, Storage, IntersectionObserver |
+| Node Essentials | `../../../Global_References/node-essentials.md` | fs/promises, streams, EventEmitter, worker threads |
 
 ## Constraints
 
@@ -132,3 +132,4 @@ When implementing JavaScript features, provide:
 4. Brief explanation of patterns used
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/javascript-pro/)
+

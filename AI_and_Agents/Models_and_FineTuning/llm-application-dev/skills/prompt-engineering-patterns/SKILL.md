@@ -109,7 +109,7 @@ print(result.explanation)
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../../Global_References/prompt-engineering-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -142,3 +142,4 @@ Track these KPIs for your prompts:
 - **Token Usage**: Average tokens per request
 - **Success Rate**: Percentage of valid, parseable outputs
 - **User Satisfaction**: Ratings and feedback
+

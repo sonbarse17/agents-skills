@@ -389,14 +389,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 - Always set cache headers for public data.
 
 ## References
-  - references/endpoints-loading.md
-  - references/stores-context.md
-  - references/sveltekit-auth.md
-  - references/sveltekit-data.md
-  - references/sveltekit-deployment.md
-  - references/sveltekit-routing.md
-  - references/sveltekit-form-actions.md
-  - references/sveltekit-deployment-adapters.md
+  - ../../../Global_References/endpoints-loading.md
+  - ../../../Global_References/stores-context.md
+  - ../../../Global_References/sveltekit-auth.md
+  - ../../../Global_References/sveltekit-data.md
+  - ../../../Global_References/sveltekit-deployment.md
+  - ../../../Global_References/sveltekit-routing.md
+  - ../../../Global_References/sveltekit-form-actions.md
+  - ../../../Global_References/sveltekit-deployment-adapters.md
 
 ## Handoff
 Hand off to `frontend/universal/state-management/SKILL.md` or `frontend/universal/performance/SKILL.md`.
@@ -496,3 +496,4 @@ Is the form complex (multi-step, file uploads)?
             ├── Yes → multipart/form-data + server action + file validation
             └── No  → JSON-based form data via FormData
 ```
+

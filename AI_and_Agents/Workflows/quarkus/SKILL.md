@@ -552,12 +552,13 @@ Container deployment with cold-start requirements?
 ## References
   - references/quarkus-reactive-programming.md — Quarkus Reactive Programming
   - references/quarkus-native-compilation.md — Quarkus Native Compilation
-  - references/quarkus-deployment.md — Quarkus Deployment
-  - references/quarkus-extension-guide.md — Quarkus Extension Guide
-  - references/quarkus-reactive.md — Quarkus Reactive
-  - references/quarkus-security.md — Quarkus Security Reference
-  - references/quarkus-setup.md — Quarkus Setup Guide
-  - references/quarkus-testing.md — Quarkus Testing Reference
+  - ../../../Global_References/quarkus-deployment.md — Quarkus Deployment
+  - ../../../Global_References/quarkus-extension-guide.md — Quarkus Extension Guide
+  - ../../../Global_References/quarkus-reactive.md — Quarkus Reactive
+  - ../../../Global_References/quarkus-security.md — Quarkus Security Reference
+  - ../../../Global_References/quarkus-setup.md — Quarkus Setup Guide
+  - ../../../Global_References/quarkus-testing.md — Quarkus Testing Reference
 
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formats.
+

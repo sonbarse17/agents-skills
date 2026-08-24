@@ -419,13 +419,13 @@ contract VaultHandler is Test {
     }
 }
 ```
-  - references/chaos-testing.md — Chaos Testing Reference
-  - references/differential-fuzz-regression.md — Differential Fuzz & Regression
-  - references/formal-verification.md — Formal Verification Reference
-  - references/foundry-testing.md — Foundry Testing Reference
-  - references/fuzz-property-testing.md — Fuzz, Property & Invariant Testing Reference
-  - references/hardhat-testing.md — Hardhat Testing Reference
-  - references/integration-e2e.md — Integration & E2E Testing Reference
+  - ../../../Global_References/chaos-testing.md — Chaos Testing Reference
+  - ../../../Global_References/differential-fuzz-regression.md — Differential Fuzz & Regression
+  - ../../../Global_References/formal-verification.md — Formal Verification Reference
+  - ../../../Global_References/foundry-testing.md — Foundry Testing Reference
+  - ../../../Global_References/fuzz-property-testing.md — Fuzz, Property & Invariant Testing Reference
+  - ../../../Global_References/hardhat-testing.md — Hardhat Testing Reference
+  - ../../../Global_References/integration-e2e.md — Integration & E2E Testing Reference
   - references/forge-cheatcodes.md — Foundry Cheatcode Reference
   - references/test-strategy-templates.md — Test Strategy Templates
   - references/foundry-fuzz-best-practices.md — Foundry Fuzz Best Practices
@@ -543,3 +543,4 @@ contract InvariantTest is Test {
 
 ## Phase
 blockchain → blockchain-testing
+

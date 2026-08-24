@@ -332,10 +332,10 @@ optimizations:
 | Check GC logs for memory issues | Allocation rate = GC frequency |
 
 ## References
-   - references/performance-profiler-advanced.md — Performance Profiler Advanced Topics
+   - ../../../Global_References/performance-profiler-advanced.md — Performance Profiler Advanced Topics
    - references/performance-profiler-database.md — Database Profiling Reference
    - references/performance-profiler-frontend.md — Frontend Profiling Reference
-   - references/performance-profiler-fundamentals.md — Performance Profiler Fundamentals
+   - ../../../Global_References/performance-profiler-fundamentals.md — Performance Profiler Fundamentals
 
 ## Implementation Patterns
 
@@ -591,3 +591,4 @@ What's the impact/effort ratio?
 
 ## Handoff
 Hand off to `dev-loop-debugging-strategy` if profiling reveals a bug. Hand off to `dev-loop-code-review` for code-level optimization review. Hand off to `dev-loop-refactor-guide` for performance-related refactoring.
+

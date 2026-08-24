@@ -44,7 +44,7 @@ Patterns for implementing efficient similarity search in production systems.
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../../../Global_References/similarity-search-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -62,3 +62,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't over-index** - Start with flat, scale up
 - **Don't ignore latency** - P99 matters for UX
 - **Don't forget costs** - Vector storage adds up
+

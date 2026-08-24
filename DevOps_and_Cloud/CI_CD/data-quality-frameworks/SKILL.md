@@ -80,7 +80,7 @@ results = context.run_checkpoint(checkpoint_name="daily_orders")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/data-quality-frameworks_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Summary: {total_passed}/{total_tables} tables passed")
         report.append("")
@@ -136,3 +136,4 @@ if not all(r.passed for r in results.values()):
 - **Don't skip freshness** - Stale data is bad data
 - **Don't hardcode thresholds** - Use dynamic baselines
 - **Don't test in isolation** - Test relationships too
+

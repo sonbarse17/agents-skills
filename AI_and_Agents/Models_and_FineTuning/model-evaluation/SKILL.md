@@ -481,14 +481,14 @@ def plot_learning_curve(model, X, y, train_sizes=np.linspace(0.1, 1.0, 10)):
 - Metric selection before seeing model results.
 
 ## References
-  - references/evaluation-metrics.md — Model Evaluation Metrics
-  - references/evaluation-strategies.md — Evaluation Strategies
-  - references/evaluation-techniques.md — Model Evaluation Techniques
-  - references/metrics-guide.md — Metrics Guide
-  - references/model-comparison.md — Model Comparison
-  - references/model-evaluation-advanced.md — Model Evaluation Advanced Topics
-  - references/model-evaluation-fundamentals.md — Model Evaluation Fundamentals
-  - references/ranking-metrics.md — Ranking & Recommendation Evaluation
+  - ../../../Global_References/model-evaluation_evaluation-metrics.md — Model Evaluation Metrics
+  - ../../../Global_References/evaluation-strategies.md — Evaluation Strategies
+  - ../../../Global_References/evaluation-techniques.md — Model Evaluation Techniques
+  - ../../../Global_References/metrics-guide.md — Metrics Guide
+  - ../../../Global_References/model-comparison.md — Model Comparison
+  - ../../../Global_References/model-evaluation-advanced.md — Model Evaluation Advanced Topics
+  - ../../../Global_References/model-evaluation-fundamentals.md — Model Evaluation Fundamentals
+  - ../../../Global_References/ranking-metrics.md — Ranking & Recommendation Evaluation
 ## Handoff
 Hand off to ml-experiment-tracking for logging evaluation results. Hand off to ml-hyperparameter-tuning if optimization needed.
 

@@ -192,7 +192,7 @@ Mark elements with `data-ai-*` attributes; clicks are emitted as Custom Events w
 ## SPA Route Tracking
 
 - **Built-in:** set `enableAutoRouteTracking: true`. Hooks `history.pushState/replaceState` and `popstate`.
-- **React Router:** use `@microsoft/applicationinsights-react-js` `withAITracking` HOC (see [references/framework-extensions.md](references/framework-extensions.md)).
+- **React Router:** use `@microsoft/applicationinsights-react-js` `withAITracking` HOC (see [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md)).
 - **Manual:** call `appInsights.trackPageView({ name, uri })` in your router's `useEffect` on route change. Disable `enableAutoRouteTracking` to avoid double counting.
 
 ## Distributed Tracing (correlate to backend)
@@ -305,7 +305,7 @@ try {
 
 The browser's `traceparent` is automatically attached to outbound `fetch` (when `distributedTracingMode: 2`), so downstream Azure OpenAI / agent backend spans hang under the same operation_Id in App Insights.
 
-For the full attribute reference, well-known values, and content-capture guidance, see [references/agent-traces.md](references/agent-traces.md).
+For the full attribute reference, well-known values, and content-capture guidance, see [../../../../../Global_References/agent-traces.md](../../../../../Global_References/agent-traces.md).
 
 ### KQL: query GenAI traces in App Insights
 
@@ -323,7 +323,7 @@ dependencies
 
 ## React (TypeScript)
 
-See [references/framework-extensions.md](references/framework-extensions.md) for full React, React Native, Angular, Next.js, and Vite recipes.
+See [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) for full React, React Native, Angular, Next.js, and Vite recipes.
 
 ```typescript
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
@@ -457,9 +457,10 @@ import {
 
 ## References
 
-- [references/agent-traces.md](references/agent-traces.md) — Full OTel GenAI semconv distilled (agent / model / tool spans, attributes, content capture).
-- [references/framework-extensions.md](references/framework-extensions.md) — React, React Native, Angular, Next.js, Vite recipes.
-- [references/configuration.md](references/configuration.md) — Full `IConfiguration` reference and tuning guide.
+- [../../../../../Global_References/agent-traces.md](../../../../../Global_References/agent-traces.md) — Full OTel GenAI semconv distilled (agent / model / tool spans, attributes, content capture).
+- [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) — React, React Native, Angular, Next.js, Vite recipes.
+- [../../../../../Global_References/configuration.md](../../../../../Global_References/configuration.md) — Full `IConfiguration` reference and tuning guide.
 - Microsoft Learn: <https://learn.microsoft.com/azure/azure-monitor/app/javascript-sdk>
 - ApplicationInsights-JS source: <https://github.com/microsoft/ApplicationInsights-JS>
 - OTel GenAI semantic conventions: <https://opentelemetry.io/docs/specs/semconv/gen-ai/>
+

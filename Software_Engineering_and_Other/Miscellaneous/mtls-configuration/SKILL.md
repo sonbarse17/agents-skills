@@ -53,7 +53,7 @@ Root CA (Self-signed, long-lived)
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/mtls-configuration_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -71,3 +71,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't ignore cert expiry** - Automate rotation
 - **Don't use self-signed certs** - Use proper CA hierarchy
 - **Don't skip verification** - Verify the full chain
+

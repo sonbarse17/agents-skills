@@ -39,9 +39,9 @@ zero values, so naive migrations change behavior for existing users (use the
 `provider-framework-migration` skill, if available).
 
 **References** (load when needed):
-- `references/design-principles.md` — what should (and should not) become a
+- `../../../../../../../Global_References/provider-resources_design-principles.md` — what should (and should not) become a
   resource; data source semantics; relationship and async-task modeling
-- `references/retries-and-waiters.md` — eventual consistency, retry
+- `../../../../../../../Global_References/retries-and-waiters.md` — eventual consistency, retry
   patterns, and status/wait function structure
 
 ## File Structure
@@ -174,7 +174,7 @@ func (r *widgetResource) Create(ctx context.Context, req resource.CreateRequest,
     data.ID = types.StringPointerValue(output.ID)
 
     // For eventually consistent APIs, wait for the resource to be usable
-    // before returning — see references/retries-and-waiters.md.
+    // before returning — see ../../../../../../../Global_References/retries-and-waiters.md.
 
     resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -290,7 +290,7 @@ comma-separated) and set each attribute explicitly.
 ## Resource Design Principles
 
 Before implementing, check the shape of the thing being modeled (full
-treatment in `references/design-principles.md`):
+treatment in `../../../../../../../Global_References/provider-resources_design-principles.md`):
 
 - A resource is the *smallest* useful building block; if the API offers
   CRUD for it, it likely deserves its own resource.
@@ -400,7 +400,7 @@ outputRaw, err := stateConf.WaitForStateContext(ctx)
 
 The full status/wait function pairs (create and delete waiters, failure-state
 handling, post-create not-found retries, eventual-consistency patterns) are
-in `references/retries-and-waiters.md` — read it whenever the API is
+in `../../../../../../../Global_References/retries-and-waiters.md` — read it whenever the API is
 asynchronous or eventually consistent.
 
 ## Testing
@@ -519,3 +519,4 @@ Registry publication rules.
 - [Resource Development](https://developer.hashicorp.com/terraform/plugin/framework/resources)
 - [Data Source Development](https://developer.hashicorp.com/terraform/plugin/framework/data-sources)
 - [HashiCorp Provider Design Principles](https://developer.hashicorp.com/terraform/plugin/best-practices/hashicorp-provider-design-principles)
+

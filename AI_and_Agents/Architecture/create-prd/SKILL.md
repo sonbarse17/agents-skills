@@ -437,14 +437,14 @@ Stories without connection to the brief or business goals. Every story should an
 - **Visual modeling**: Miro, FigJam, Lucidchart for epic dependency mapping.
 
 ## References
-  - references/create-prd-fundamentals.md — PRD Fundamentals
-  - references/create-prd-advanced.md — PRD Advanced Topics
-  - references/prd-collaboration.md — PRD Collaboration
-  - references/prd-examples.md — PRD Examples
-  - references/prd-review-checklist.md — PRD Review Checklist
-  - references/prd-template.md — Product Requirements Document Template
-  - references/prd-template-structure.md — PRD Template Structure
-  - references/prd-stakeholder-review.md — PRD Stakeholder Review
+  - ../../../Global_References/create-prd-fundamentals.md — PRD Fundamentals
+  - ../../../Global_References/create-prd-advanced.md — PRD Advanced Topics
+  - ../../../Global_References/prd-collaboration.md — PRD Collaboration
+  - ../../../Global_References/prd-examples.md — PRD Examples
+  - ../../../Global_References/prd-review-checklist.md — PRD Review Checklist
+  - ../../../Global_References/prd-template.md — Product Requirements Document Template
+  - ../../../Global_References/prd-template-structure.md — PRD Template Structure
+  - ../../../Global_References/prd-stakeholder-review.md — PRD Stakeholder Review
 
 ## Handoff
 Output: `docs/prd-{YYYY-MM-DD}.md`

@@ -74,7 +74,7 @@ result.write.mode("overwrite").parquet("s3://bucket/output/")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/spark-optimization_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -93,3 +93,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't over-cache** - Memory is limited
 - **Don't ignore data skew** - It dominates job time
 - **Don't use `.count()` for existence** - Use `.take(1)` or `.isEmpty()`
+

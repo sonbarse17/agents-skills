@@ -523,12 +523,13 @@ scores consistently above 4.0/5.
 - Remap stakeholders on any org change or major milestone
 
 ## References
-  - references/communication-plan.md — Communication Plan
-  - references/stakeholder-advanced.md — Stakeholder Advanced Topics
-  - references/stakeholder-fundamentals.md — Stakeholder Fundamentals
-  - references/stakeholder-management.md — Stakeholder Management
-  - references/stakeholder-mapping.md — Stakeholder Mapping
-  - references/status-report-template.md — Status Report Template
+  - ../../../Global_References/communication-plan.md — Communication Plan
+  - ../../../Global_References/stakeholder-advanced.md — Stakeholder Advanced Topics
+  - ../../../Global_References/stakeholder-fundamentals.md — Stakeholder Fundamentals
+  - ../../../Global_References/stakeholder-management.md — Stakeholder Management
+  - ../../../Global_References/stakeholder-mapping.md — Stakeholder Mapping
+  - ../../../Global_References/status-report-template.md — Status Report Template
 ## Handoff
 `management/risk-management` for stakeholder-related risks
 `planning/create-roadmap` for roadmap adjustments
+

@@ -420,12 +420,12 @@ invariant solvency()
     totalAssets() >= totalSupply()
     filtered on f { f.contract != currentContract }
 ```
-  - references/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
-  - references/economic-security.md — Economic Security in Blockchain Systems
-  - references/formal-verification-deep.md — Formal Verification for Smart Contracts
-  - references/incident-response.md — Blockchain Incident Response
-  - references/smart-contract-security.md — Smart Contract Security
-  - references/threat-modeling.md — Threat Modeling for Blockchain Systems
+  - ../../../Global_References/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
+  - ../../../Global_References/economic-security.md — Economic Security in Blockchain Systems
+  - ../../../Global_References/formal-verification-deep.md — Formal Verification for Smart Contracts
+  - ../../../Global_References/incident-response.md — Blockchain Incident Response
+  - ../../../Global_References/smart-contract-security.md — Smart Contract Security
+  - ../../../Global_References/threat-modeling.md — Threat Modeling for Blockchain Systems
   - references/blockchain-vulnerability-catalog.md — Common Blockchain Vulnerabilities Catalog
   - references/cross-chain-security.md — Cross-Chain Security Considerations
   - references/flash-loan-attack-patterns.md — Flash Loan Attack Patterns
@@ -542,3 +542,4 @@ contract TimelockController {
 
 ## Phase
 blockchain → blockchain-security
+

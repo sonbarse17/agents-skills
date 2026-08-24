@@ -682,9 +682,9 @@ spec:
 | Learning curve | High | Medium | Medium-High |
 
 ## References
-- references/ingress-controllers.md — Ingress Controller Selection and Config
-- references/namespace-management.md — Namespace Strategy and Resource Quotas
-- references/pod-lifecycle.md — Pod Lifecycle, Init Containers, and Ephemeral Containers
+- ../../../Global_References/ingress-controllers.md — Ingress Controller Selection and Config
+- ../../../Global_References/namespace-management.md — Namespace Strategy and Resource Quotas
+- ../../../Global_References/pod-lifecycle.md — Pod Lifecycle, Init Containers, and Ephemeral Containers
 - references/kubernetes-api-resources.md — API Resource Guide
 - references/kubernetes-security.md — Kubernetes Security Hardening
 - references/kubernetes-upgrades.md — Cluster Upgrade Procedures
@@ -694,3 +694,4 @@ spec:
 
 ## Handoff
 Cross-reference with `kubernetes-patterns` for application manifests. Use `helm-patterns` for chart design. Use `cilium-ebpf` for advanced networking. Use `service-mesh` for Istio/Linkerd. Use `monitoring` for Prometheus/Grafana. Use `backup-dr` for Velero. Hand off to `incident-response` for cluster incidents.
+

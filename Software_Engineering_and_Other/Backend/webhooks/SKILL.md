@@ -501,15 +501,16 @@ async function rotateSecret(subscriptionId: string): Promise<void> {
 - Auto-disable consumers with > 10 consecutive failures.
 
 ## References
-  - references/webhook-delivery.md — Webhook Delivery System
-  - references/webhook-monitoring.md — Webhook Monitoring and Reliability
-  - references/webhook-rate-limiting.md — Webhook Rate Limiting
-  - references/webhook-scaling.md — Webhook Scaling
-  - references/webhook-security.md — Webhook Security
-  - references/webhook-setup.md — Webhook Setup
-  - references/webhooks-architecture.md — Webhooks Architecture
-  - references/webhooks-delivery.md — Webhook Security
+  - ../../../Global_References/webhook-delivery.md — Webhook Delivery System
+  - ../../../Global_References/webhook-monitoring.md — Webhook Monitoring and Reliability
+  - ../../../Global_References/webhook-rate-limiting.md — Webhook Rate Limiting
+  - ../../../Global_References/webhook-scaling.md — Webhook Scaling
+  - ../../../Global_References/webhook-security.md — Webhook Security
+  - ../../../Global_References/webhook-setup.md — Webhook Setup
+  - ../../../Global_References/webhooks-architecture.md — Webhooks Architecture
+  - ../../../Global_References/webhooks-delivery.md — Webhook Security
 ## Handoff
 No artifact produced unless requested.
 Next skill: api-versioning — manage version transitions for the webhook API.
 Carry forward: event types, webhook URL structure, signature format.
+

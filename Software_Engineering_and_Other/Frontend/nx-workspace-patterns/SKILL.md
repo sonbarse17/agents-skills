@@ -49,7 +49,7 @@ workspace/
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/nx-workspace-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -67,3 +67,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't skip affected** - Test only what changed
 - **Don't ignore boundaries** - Tech debt accumulates
 - **Don't over-granularize** - Balance lib count
+

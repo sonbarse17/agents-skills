@@ -399,16 +399,16 @@ The platform tool stack must expose self-serve APIs. Domains should not need to 
 - Data products have a documented deprecation policy with consumer notification
 
 ## References
-  - references/data-product-template.md — Data Product Template
-  - references/domain-decomposition-patterns.md — Domain Decomposition Patterns
-  - references/mesh-data-product-implementation.md — Data Product Implementation
-  - references/mesh-data-product-lifecycle.md — Data Product Lifecycle
-  - references/mesh-federated-governance.md — Federated Governance Operating Model
-  - references/mesh-governance-operating-model.md — Mesh Governance Operating Model
-  - references/mesh-implementation.md — Data Mesh Implementation
-  - references/mesh-principles.md — Data Mesh Principles
-  - references/data-mesh-federated-governance.md — Data Mesh Federated Governance Deep Dive
-  - references/data-mesh-infrastructure-platform.md — Data Mesh Infrastructure Platform
+  - ../../../Global_References/data-product-template.md — Data Product Template
+  - ../../../Global_References/domain-decomposition-patterns.md — Domain Decomposition Patterns
+  - ../../../Global_References/mesh-data-product-implementation.md — Data Product Implementation
+  - ../../../Global_References/mesh-data-product-lifecycle.md — Data Product Lifecycle
+  - ../../../Global_References/mesh-federated-governance.md — Federated Governance Operating Model
+  - ../../../Global_References/mesh-governance-operating-model.md — Mesh Governance Operating Model
+  - ../../../Global_References/mesh-implementation.md — Data Mesh Implementation
+  - ../../../Global_References/mesh-principles.md — Data Mesh Principles
+  - ../../../Global_References/data-mesh-federated-governance.md — Data Mesh Federated Governance Deep Dive
+  - ../../../Global_References/data-mesh-infrastructure-platform.md — Data Mesh Infrastructure Platform
 ## Architecture Decision Trees
 
 ```
@@ -521,3 +521,4 @@ async def query_data_product(
 
 ## Handoff
 `data-data-platform` for platform infrastructure. `data-data-catalog` for discovery. `data-data-contracts` for data product contracts. `data-data-observability` for cross-domain monitoring. `data-data-quality` for quality standards.
+

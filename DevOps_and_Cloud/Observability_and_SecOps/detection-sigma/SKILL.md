@@ -110,7 +110,7 @@ For proactive threat hunting based on TTPs:
 1. **Select MITRE ATT&CK Technique**
    - Review threat intelligence for relevant TTPs
    - Identify technique ID (e.g., T1059.001 - PowerShell)
-   - See [references/mitre-attack-mapping.md](references/mitre-attack-mapping.md) for common techniques
+   - See [../../../Global_References/mitre-attack-mapping.md](../../../Global_References/mitre-attack-mapping.md) for common techniques
 
 2. **Identify Log Sources**
    - Determine which logs capture the technique
@@ -160,7 +160,7 @@ For implementing compliance monitoring (PCI-DSS, NIST, ISO 27001):
 1. **Map Requirements to Detections**
    - Identify compliance control requirements
    - Determine required log monitoring
-   - See [references/compliance-mappings.md](references/compliance-mappings.md)
+   - See [../../../Global_References/compliance-mappings.md](../../../Global_References/compliance-mappings.md)
 
 2. **Create Detection Rules**
    - Use compliance rule templates from `assets/compliance-rules/`
@@ -305,11 +305,11 @@ detection:
 
 ### References
 
-- `references/mitre-attack-mapping.md` - Common MITRE ATT&CK techniques and Sigma detection patterns
-- `references/log-source-guide.md` - Log source categories, products, and field mappings
-- `references/compliance-mappings.md` - Compliance framework to detection rule mappings
-- `references/backend-support.md` - Supported SIEM backends and conversion capabilities
-- `references/field-modifiers.md` - Comprehensive guide to Sigma field modifiers and regex patterns
+- `../../../Global_References/mitre-attack-mapping.md` - Common MITRE ATT&CK techniques and Sigma detection patterns
+- `../../../Global_References/log-source-guide.md` - Log source categories, products, and field mappings
+- `../../../Global_References/compliance-mappings.md` - Compliance framework to detection rule mappings
+- `../../../Global_References/backend-support.md` - Supported SIEM backends and conversion capabilities
+- `../../../Global_References/field-modifiers.md` - Comprehensive guide to Sigma field modifiers and regex patterns
 
 ### Assets
 
@@ -419,7 +419,7 @@ Automated rule deployment:
 - Microsoft Sentinel: Convert to KQL and deploy via Azure API
 - QRadar: Convert to AQL and deploy via QRadar API
 
-See [references/backend-support.md](references/backend-support.md) for deployment examples.
+See [../../../Global_References/backend-support.md](../../../Global_References/backend-support.md) for deployment examples.
 
 ### Threat Intelligence Integration
 
@@ -434,7 +434,7 @@ Enrich rules with threat intel:
 ### Issue: Conversion Fails for Specific Backend
 
 **Solution**: Check backend compatibility and field mappings. Some backends have limitations:
-- Review `references/backend-support.md` for known limitations
+- Review `../../../Global_References/backend-support.md` for known limitations
 - Use `sigma_convert.py --backend <backend> --debug` for detailed error output
 - Check if field names are supported in target backend
 - Consider custom pipeline transformations for unsupported fields
@@ -483,7 +483,7 @@ Common tactic tags:
 - `attack.command_and_control`
 - `attack.impact`
 
-For detailed technique mappings, see [references/mitre-attack-mapping.md](references/mitre-attack-mapping.md).
+For detailed technique mappings, see [../../../Global_References/mitre-attack-mapping.md](../../../Global_References/mitre-attack-mapping.md).
 
 ## Best Practices
 
@@ -503,3 +503,4 @@ For detailed technique mappings, see [references/mitre-attack-mapping.md](refere
 - [pySigma Documentation](https://github.com/SigmaHQ/pySigma)
 - [Sigma Converter Web Tool](https://sigconverter.io/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
+

@@ -176,7 +176,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-**Reference:** See `references/rbac-patterns.md`
+**Reference:** See `../../../Global_References/rbac-patterns.md`
 
 ## Pod Security Context
 
@@ -345,3 +345,4 @@ kubectl auth can-i '*' '*' --as system:serviceaccount:default:my-sa
 
 - `k8s-manifest-generator` - For creating secure manifests
 - `gitops-workflow` - For automated policy deployment
+

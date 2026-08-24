@@ -49,7 +49,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 | Aurora      | PostgreSQL/MySQL | Cloud Spanner | Autonomous Database | Distributed SQL |
 | ElastiCache | Cache for Redis  | Memorystore   | OCI Cache           | Caching         |
 
-**Reference:** See `references/service-comparison.md` for complete comparison
+**Reference:** See `../../../Global_References/service-comparison.md` for complete comparison
 
 ## Multi-Cloud Patterns
 
@@ -126,7 +126,7 @@ AWS / Azure / GCP / OCI
 7. Use cost allocation tags
 8. Monitor with cloud cost tools
 
-**Reference:** See `references/multi-cloud-patterns.md`
+**Reference:** See `../../../Global_References/multi-cloud-patterns.md`
 
 ## Migration Strategy
 
@@ -177,3 +177,4 @@ AWS / Azure / GCP / OCI
 - `terraform-module-library` - For IaC implementation
 - `cost-optimization` - For cost management
 - `hybrid-cloud-networking` - For connectivity
+

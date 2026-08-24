@@ -22,12 +22,12 @@ Do not recommend the old private `aka.ms` installer, global installs, bare `rune
 
 1. Identify the user goal: setup, dataset authoring, running evals, analyzing results, or updating an existing eval suite.
 2. Load only the reference needed for the current goal:
-   - `references/workflow.md` for the end-to-end operator workflow and CLI commands.
-   - `references/azure-setup.md` for prerequisites, env files, and secret handling.
-   - `references/eval-templates.md` when creating or editing eval datasets.
-   - `references/pra-framework.md` when deciding what scenarios to generate.
-   - `references/result-analysis.md` after JSON/CSV/HTML results exist.
-   - `references/guardrails.md` before writing files, handling secrets, clearing cache, signing out, or troubleshooting.
+   - `../../../../../Global_References/m365-agent-evaluator_workflow.md` for the end-to-end operator workflow and CLI commands.
+   - `../../../../../Global_References/azure-setup.md` for prerequisites, env files, and secret handling.
+   - `../../../../../Global_References/eval-templates.md` when creating or editing eval datasets.
+   - `../../../../../Global_References/pra-framework.md` when deciding what scenarios to generate.
+   - `../../../../../Global_References/result-analysis.md` after JSON/CSV/HTML results exist.
+   - `../../../../../Global_References/m365-agent-evaluator_guardrails.md` before writing files, handling secrets, clearing cache, signing out, or troubleshooting.
 3. Detect project shape:
    - ATK: `.env.local`, `.env.local.user`, `env\.env.local.user`, `m365agents.yml`, or `appPackage\declarativeAgent.json`.
    - Non-ATK: an eval dataset plus `M365_AGENT_ID`, `--m365-agent-id`, or a named environment file such as `env\.env.dev`.
@@ -156,3 +156,4 @@ Analyze only evaluator keys that are present. Missing score keys usually mean th
 Use current score keys when present: `relevance`, `coherence`, `groundedness`, `similarity`, `citations`, `exactMatch`, and `partialMatch`. Group failures into likely root causes: instruction issue, grounding issue, citation issue, expected-answer mismatch, capability gap, auth/environment issue, or eval-quality issue.
 
 Do not run real tenant-dependent evals unless the user has provided or approved the necessary tenant, agent, and Azure OpenAI configuration.
+

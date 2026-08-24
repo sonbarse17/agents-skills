@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Unity Development | `references/unity-patterns.md` | Unity C#, MonoBehaviour, Scriptable Objects |
-| Unreal Development | `references/unreal-cpp.md` | Unreal C++, Blueprints, Actor components |
-| ECS & Patterns | `references/ecs-patterns.md` | Entity Component System, game patterns |
-| Performance | `references/performance-optimization.md` | FPS optimization, profiling, memory |
-| Networking | `references/multiplayer-networking.md` | Multiplayer, client-server, lag compensation |
+| Unity Development | `../../../Global_References/unity-patterns.md` | Unity C#, MonoBehaviour, Scriptable Objects |
+| Unreal Development | `../../../Global_References/unreal-cpp.md` | Unreal C++, Blueprints, Actor components |
+| ECS & Patterns | `../../../Global_References/ecs-patterns.md` | Entity Component System, game patterns |
+| Performance | `../../../Global_References/game-developer_performance-optimization.md` | FPS optimization, profiling, memory |
+| Networking | `../../../Global_References/multiplayer-networking.md` | Multiplayer, client-server, lag compensation |
 
 ## Constraints
 
@@ -161,3 +161,4 @@ public class IdleState : State
 ```
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/game-developer/)
+

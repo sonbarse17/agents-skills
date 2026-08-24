@@ -44,7 +44,7 @@ Invoke this skill when:
 | **Primary Tool** | Azure CLI (`az quota`) - **USE THIS FIRST, ALWAYS** |
 | **Extension Required** | `az extension add --name quota` (MUST install first) |
 | **Key Commands** | `az quota list`, `az quota show`, `az quota usage list`, `az quota usage show` |
-| **Complete CLI Reference** | [commands.md](./references/commands.md) |
+| **Complete CLI Reference** | [commands.md](./../../../../../Global_References/commands.md) |
 | **Azure Portal** | [My quotas](https://portal.azure.com/#blade/Microsoft_Azure_Capacity/QuotaMenuBlade/myQuotas) - Use only as fallback |
 | **REST API** | Microsoft.Quota provider - **Unreliable, do NOT use first** |
 | **MCP Server** | `azure-quota` MCP server — **NEVER use this. It is unreliable. Always use `az quota` CLI instead.** |
@@ -54,7 +54,7 @@ Invoke this skill when:
 >
 > REST API and Portal can show misleading "No Limit" values — this does **not** mean unlimited capacity. It means the quota API doesn't support that resource type. Always start with `az quota` commands; fall back to [Azure service limits docs](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) if CLI returns `BadRequest`.
 >
-> For complete CLI reference, see [commands.md](./references/commands.md).
+> For complete CLI reference, see [commands.md](./../../../../../Global_References/commands.md).
 
 ## Quota Types
 
@@ -94,7 +94,7 @@ Invoke this skill when:
    az quota usage show --resource-name ManagedEnvironmentCount --scope ...
    ```
 
-> **📖 Detailed mapping examples and workflow:** See [commands.md - Resource Name Mapping](./references/commands.md#resource-name-mapping)
+> **📖 Detailed mapping examples and workflow:** See [commands.md - Resource Name Mapping](./../../../../../Global_References/commands.md#resource-name-mapping)
 
 ## Scripts
 
@@ -144,7 +144,7 @@ To check a single resource, add the resource name:
 | virtualMachines | eastus | 25000 | 5 | 24995 |
 | ... | ... | ... | ... | ... |
 
-> **📖 See also:** [az quota show](./references/commands.md#az-quota-show), [az quota usage show](./references/commands.md#az-quota-usage-show)
+> **📖 See also:** [az quota show](./../../../../../Global_References/commands.md#az-quota-show), [az quota usage show](./../../../../../Global_References/commands.md#az-quota-usage-show)
 
 ### Workflow 2: Compare Quotas Across Regions
 
@@ -179,7 +179,7 @@ for region in "${REGIONS[@]}"; do
 done
 ```
 
-> **📖 See also:** [commands.md](./references/commands.md#az-quota-show) for full scripted multi-region loop patterns
+> **📖 See also:** [commands.md](./../../../../../Global_References/commands.md#az-quota-show) for full scripted multi-region loop patterns
 
 ### Workflow 3: Request Quota Increase
 
@@ -203,7 +203,7 @@ az quota request status list \
 - Some requests require manual review (hours to days)
 - Non-adjustable quotas require Azure Support ticket
 
-> **📖 See also:** [az quota update](./references/commands.md#az-quota-update), [az quota request status](./references/advanced-commands.md#az-quota-request-status-list)
+> **📖 See also:** [az quota update](./../../../../../Global_References/commands.md#az-quota-update), [az quota request status](./../../../../../Global_References/advanced-commands.md#az-quota-request-status-list)
 
 ### Workflow 4: List All Quotas for Planning
 
@@ -226,7 +226,7 @@ az quota list \
   --output table
 ```
 
-> **📖 See also:** [az quota list](./references/commands.md#az-quota-list)
+> **📖 See also:** [az quota list](./../../../../../Global_References/commands.md#az-quota-list)
 
 ## Troubleshooting
 
@@ -254,13 +254,13 @@ az quota list \
 - ✅ Microsoft.Storage (storage accounts)
 - ✅ Microsoft.MachineLearningServices (ML compute)
 
-> **📖 See also:** [Troubleshooting Guide](./references/commands.md#troubleshooting)
+> **📖 See also:** [Troubleshooting Guide](./../../../../../Global_References/commands.md#troubleshooting)
 
 ## Additional Resources
 
 | Resource | Link |
 |----------|------|
-| **CLI Commands Reference** | [commands.md](./references/commands.md) - Complete syntax, parameters, examples |
+| **CLI Commands Reference** | [commands.md](./../../../../../Global_References/commands.md) - Complete syntax, parameters, examples |
 | **Azure Quotas Overview** | [Microsoft Learn](https://learn.microsoft.com/en-us/azure/quotas/quotas-overview) |
 | **Service Limits Documentation** | [Azure subscription limits](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) |
 | **Azure Portal - My Quotas** | [Portal Link](https://portal.azure.com/#blade/Microsoft_Azure_Capacity/QuotaMenuBlade/myQuotas) |
@@ -274,3 +274,4 @@ az quota list \
 4. ✅ **Account for growth** - Request 20% buffer above immediate needs
 5. ✅ **Use table output for overview** - `--output table` for quick scanning
 6. ✅ **Monitor usage trends** - Set up alerts at 80% threshold (via Portal)
+

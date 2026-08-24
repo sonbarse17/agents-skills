@@ -427,12 +427,12 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 - Test rollback of dependency update scenarios.
 
 ## References
-- references/dependabot-setup.md -- Dependabot Setup
-- references/dependency-management-advanced.md -- Dependency Management Advanced Topics
-- references/dependency-management-fundamentals.md -- Dependency Management Fundamentals
-- references/renovate-config.md -- Renovate Configuration
-- references/update-strategies.md -- Update Strategies
-- references/vulnerability-scanning.md -- Vulnerability Scanning
+- ../../../Global_References/dependabot-setup.md -- Dependabot Setup
+- ../../../Global_References/dependency-management-advanced.md -- Dependency Management Advanced Topics
+- ../../../Global_References/dependency-management-fundamentals.md -- Dependency Management Fundamentals
+- ../../../Global_References/renovate-config.md -- Renovate Configuration
+- ../../../Global_References/update-strategies.md -- Update Strategies
+- ../../../Global_References/vulnerability-scanning.md -- Vulnerability Scanning
 
 ## Handoff
 After completing this skill:
@@ -575,3 +575,4 @@ audit_dependencies() {
 - Implement **package signing** verification for internal packages with Sigstore
 - Monitor **supply chain attacks** by reviewing new dependency maintainers and recent commits
 - Block **known malicious packages** with blocklists in the internal registry proxy
+

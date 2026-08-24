@@ -616,16 +616,17 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 Argo CD Application/ApplicationSet YAML, Project YAML, RBAC config, notification templates.
 
 ## References
-  - references/argo-cd-advanced.md
-  - references/argo-cd-application-sets.md
-  - references/argo-cd-fundamentals.md
-  - references/argo-cd-sync-strategies.md
-  - references/argocd-operations.md
-  - references/argocd-patterns.md
-  - references/argocd-setup.md
+  - ../../../Global_References/argo-cd-advanced.md
+  - ../../../Global_References/argo-cd-application-sets.md
+  - ../../../Global_References/argo-cd-fundamentals.md
+  - ../../../Global_References/argo-cd-sync-strategies.md
+  - ../../../Global_References/argocd-operations.md
+  - ../../../Global_References/argo-cd_argocd-patterns.md
+  - ../../../Global_References/argocd-setup.md
   - references/argocd-rollouts-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **gitops** — GitOps principles, Flux comparison
 - Pass context: cluster list, Application names, sync strategy, notification config
+

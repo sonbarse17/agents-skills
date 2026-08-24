@@ -464,15 +464,15 @@ const linking: LinkingOptions<RootStackParamList> = {
 ```
 
 ## References
-  - references/deep-link-analytics.md — Deep Link Analytics & Attribution
-  - references/deep-link-implementation.md — Deep Linking Setup
-  - references/deep-link-routing.md — Deep Link Routing
-  - references/deep-link-setup.md — Deep Link Setup
-  - references/platform-differences.md — Platform Differences — Deep Linking
-  - references/universal-links.md — Universal Links Setup
-  - references/deep-linking-fundamentals.md — Deep Linking Fundamentals
-  - references/deep-linking-advanced.md — Advanced Deep Linking
-  - references/deep-linking-security.md — Deep Linking Security Guide
+  - ../../../Global_References/deep-link-analytics.md — Deep Link Analytics & Attribution
+  - ../../../Global_References/deep-link-implementation.md — Deep Linking Setup
+  - ../../../Global_References/deep-link-routing.md — Deep Link Routing
+  - ../../../Global_References/deep-link-setup.md — Deep Link Setup
+  - ../../../Global_References/deep-linking_platform-differences.md — Platform Differences — Deep Linking
+  - ../../../Global_References/universal-links.md — Universal Links Setup
+  - ../../../Global_References/deep-linking-fundamentals.md — Deep Linking Fundamentals
+  - ../../../Global_References/deep-linking-advanced.md — Advanced Deep Linking
+  - ../../../Global_References/deep-linking-security.md — Deep Linking Security Guide
 
 ## Handoff
 Hand off to mobile-analytics skill when deep link attribution and conversion tracking is needed.

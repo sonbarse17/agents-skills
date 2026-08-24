@@ -341,14 +341,14 @@ Agent Request: "Execute Python data analysis with network access to S3"
 
 ## Reference Guides
 
-- [Sandbox-as-a-Tool Pattern](references/sandbox-as-tool-pattern.md) — Architecture for exposing sandboxes as composable agent tools
-- [Durable Execution Frameworks](references/durable-execution-frameworks.md) — Temporal, Restate, and durable execution patterns
-- [MicroVM Isolation](references/microvm-isolation.md) — gVisor, Kata Containers, and Firecracker deep dive
-- [Workspace Isolation](references/workspace-isolation.md) — Isolated workspace provisioning and management
-- [State Persistence & Snapshots](references/state-persistence-snapshots.md) — Snapshotting, forking, and state restoration
-- [Filesystem Sandboxing](references/filesystem-sandboxing.md) — Filesystem isolation, overlay mounts, and access policies
-- [Network Isolation Policies](references/network-isolation-policies.md) — Network segmentation and egress control
-- [Resource Quota Enforcement](references/resource-quota-enforcement.md) — CPU, memory, disk, and PID quota enforcement
+- [Sandbox-as-a-Tool Pattern](../../../Global_References/sandbox-as-tool-pattern.md) — Architecture for exposing sandboxes as composable agent tools
+- [Durable Execution Frameworks](../../../Global_References/durable-execution-frameworks.md) — Temporal, Restate, and durable execution patterns
+- [MicroVM Isolation](../../../Global_References/microvm-isolation.md) — gVisor, Kata Containers, and Firecracker deep dive
+- [Workspace Isolation](../../../Global_References/workspace-isolation.md) — Isolated workspace provisioning and management
+- [State Persistence & Snapshots](../../../Global_References/state-persistence-snapshots.md) — Snapshotting, forking, and state restoration
+- [Filesystem Sandboxing](../../../Global_References/filesystem-sandboxing.md) — Filesystem isolation, overlay mounts, and access policies
+- [Network Isolation Policies](../../../Global_References/network-isolation-policies.md) — Network segmentation and egress control
+- [Resource Quota Enforcement](../../../Global_References/resource-quota-enforcement.md) — CPU, memory, disk, and PID quota enforcement
 
 ## Handoff
 
@@ -596,3 +596,4 @@ When to create snapshots?
 - **Sandbox pooling with warm starts**: Pre-create sandboxes with common dependencies pre-loaded. Reduces startup time from seconds to milliseconds. Refresh pool asynchronously when below threshold.
 - **Copy-on-write filesystem**: Use overlayfs or similar for sandbox filesystems. Multiple sandboxes share a base layer. Only modified files consume additional space.
 - **Snapshot-based fast restore**: Use MicroVM snapshots for near-instant sandbox restoration. Snapshot the base OS + runtime, restore in <100ms.
+

@@ -543,15 +543,15 @@ def estimate_fee(target_blocks, mempool_entries):
 20. Always validate locktime (nLockTime, nSequence) for time-sensitive transactions
 
 ## References
-  - references/bip-standards.md — BIP Standards Reference
-  - references/bitcoin-core-deep.md — Bitcoin Core Architecture
-  - references/bitcoin-l2s.md — Bitcoin Layer 2s
-  - references/bitcoin-script-and-taproot.md — Bitcoin Script & Taproot
-  - references/blockchain-bitcoin-advanced.md — Blockchain Bitcoin Advanced Topics
-  - references/blockchain-bitcoin-fundamentals.md — Blockchain Bitcoin Fundamentals
+  - ../../../Global_References/bip-standards.md — BIP Standards Reference
+  - ../../../Global_References/bitcoin-core-deep.md — Bitcoin Core Architecture
+  - ../../../Global_References/bitcoin-l2s.md — Bitcoin Layer 2s
+  - ../../../Global_References/bitcoin-script-and-taproot.md — Bitcoin Script & Taproot
+  - ../../../Global_References/blockchain-bitcoin-advanced.md — Blockchain Bitcoin Advanced Topics
+  - ../../../Global_References/blockchain-bitcoin-fundamentals.md — Blockchain Bitcoin Fundamentals
   - references/lightning-network.md — Lightning Network
-  - references/mining-pow.md — Mining & Proof of Work
-  - references/ordinals-runes.md — Ordinals, BRC-20 & Runes
+  - ../../../Global_References/mining-pow.md — Mining & Proof of Work
+  - ../../../Global_References/ordinals-runes.md — Ordinals, BRC-20 & Runes
   - references/bitcoin-security.md — Bitcoin Security Model
   - references/bitcoin-core-contributing.md — Contributing to Bitcoin Core
   - references/bitcoin-fee-estimation.md — Bitcoin Fee Estimation
@@ -559,3 +559,4 @@ def estimate_fee(target_blocks, mempool_entries):
 
 ## Phase
 blockchain → blockchain-bitcoin
+

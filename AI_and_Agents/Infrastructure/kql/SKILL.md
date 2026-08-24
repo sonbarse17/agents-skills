@@ -42,7 +42,7 @@ Management commands can be followed by query operators (the output is tabular), 
 StormEvents | take 5 | .show tables
 ```
 
-When in doubt: if the first token starts with `.`, it's a management command. For a full catalog of schema exploration commands, see `references/discovery-queries.md`.
+When in doubt: if the first token starts with `.`, it's a management command. For a full catalog of schema exploration commands, see `../../../Global_References/discovery-queries.md`.
 
 ## 2. Dynamic Type Discipline
 
@@ -278,7 +278,7 @@ StormEvents
 | extend anomalies = series_decompose_anomalies(count_)
 ```
 
-For detailed examples and patterns, consult `references/advanced-patterns.md`.
+For detailed examples and patterns, consult `../../../Global_References/kql_advanced-patterns.md`.
 
 ## 10. Self-Correction Lookup Table
 
@@ -440,3 +440,4 @@ Before running any KQL query, mentally check:
 7. **Datetime literals valid?** Using `datetime(2024-01-01)` not `datetime(2024)` or bare integers
 8. **Complex by-expressions?** Use `| extend` first, then `| summarize by` the computed column
 9. **Error recovery plan?** If a query fails, fix the specific error — don't change strategy
+

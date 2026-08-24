@@ -418,14 +418,14 @@ class RealTimeAnomalyDetector:
 - Document expected anomaly rate and threshold methodology.
 
 ## References
-  - references/anomaly-detection-advanced.md — Anomaly Detection Advanced Topics
-  - references/anomaly-detection-fundamentals.md — Anomaly Detection Fundamentals
-  - references/anomaly-evaluation.md — Anomaly Detection Evaluation
-  - references/classical-anomaly.md — Classical Anomaly Detection
-  - references/deep-learning-anomaly.md — Deep Learning Anomaly Detection
-  - references/ml-based-detection.md — ML-Based Anomaly Detection
-  - references/online-anomaly.md — Online Anomaly Detection
-  - references/statistical-methods.md — Statistical Anomaly Detection
+  - ../../../Global_References/anomaly-detection-advanced.md — Anomaly Detection Advanced Topics
+  - ../../../Global_References/anomaly-detection-fundamentals.md — Anomaly Detection Fundamentals
+  - ../../../Global_References/anomaly-evaluation.md — Anomaly Detection Evaluation
+  - ../../../Global_References/classical-anomaly.md — Classical Anomaly Detection
+  - ../../../Global_References/deep-learning-anomaly.md — Deep Learning Anomaly Detection
+  - ../../../Global_References/ml-based-detection.md — ML-Based Anomaly Detection
+  - ../../../Global_References/online-anomaly.md — Online Anomaly Detection
+  - ../../../Global_References/statistical-methods.md — Statistical Anomaly Detection
 ## Handoff
 Hand off to devops-observability for alerting and monitoring infrastructure. For time-series forecasting to model normal behavior first, hand off to ml-time-series.
 

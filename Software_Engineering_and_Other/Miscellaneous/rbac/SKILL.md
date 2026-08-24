@@ -109,15 +109,16 @@ Request -> Valid Token -> Role Admin -> Allow Action
 5. Regularly review role mappings
 
 ## Reference Guides
-1. [OIDC Auth Code Flow](references/oidc_flow_auth_code.md)
-2. [OIDC Implicit Flow](references/oidc_flow_implicit.md)
-3. [RBAC Core Logic](references/rbac_core_logic.md)
-4. [RBAC Decision Matrix](references/rbac_decision_matrix.md)
-5. [RBAC Policy Evaluation](references/rbac_policy_evaluation.md)
-6. [OIDC Token Validation](references/oidc_token_validation.md)
-7. [RBAC Audit Logging](references/rbac_audit_logging.md)
-8. [RBAC Integration Patterns](references/rbac_integration_patterns.md)
+1. [OIDC Auth Code Flow](../../../Global_References/oidc_flow_auth_code.md)
+2. [OIDC Implicit Flow](../../../Global_References/oidc_flow_implicit.md)
+3. [RBAC Core Logic](../../../Global_References/rbac_core_logic.md)
+4. [RBAC Decision Matrix](../../../Global_References/rbac_decision_matrix.md)
+5. [RBAC Policy Evaluation](../../../Global_References/rbac_policy_evaluation.md)
+6. [OIDC Token Validation](../../../Global_References/oidc_token_validation.md)
+7. [RBAC Audit Logging](../../../Global_References/rbac_audit_logging.md)
+8. [RBAC Integration Patterns](../../../Global_References/rbac_integration_patterns.md)
 
 ## Handoff
 Refer to auth skill.
 <!-- compression footer -->
+

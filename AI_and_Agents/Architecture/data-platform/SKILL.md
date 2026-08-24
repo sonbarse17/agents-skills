@@ -465,15 +465,15 @@ Metrics: Prometheus + Grafana dashboards. Logs: ELK/Loki + structured logging. T
 - Automate platform provisioning with Infrastructure as Code.
 
 ## References
-  - references/cross-cloud-setup.md — Cross-Cloud Data Platform Setup
-  - references/data-catalog-virtualization.md — Data Catalog & Virtualization
-  - references/data-platform-advanced.md — Data Platform Advanced Topics
-  - references/data-platform-architecture.md — Data Platform Architecture
-  - references/data-platform-fundamentals.md — Data Platform Fundamentals
-  - references/k8s-for-data.md — Kubernetes for Data Workloads
-  - references/platform-architecture.md — Data Platform Architecture
-  - references/platform-decision-tree.md — Platform Decision Tree
-  - references/platform-tools-comparison.md — Platform Tools Comparison
+  - ../../../Global_References/cross-cloud-setup.md — Cross-Cloud Data Platform Setup
+  - ../../../Global_References/data-catalog-virtualization.md — Data Catalog & Virtualization
+  - ../../../Global_References/data-platform-advanced.md — Data Platform Advanced Topics
+  - ../../../Global_References/data-platform-architecture.md — Data Platform Architecture
+  - ../../../Global_References/data-platform-fundamentals.md — Data Platform Fundamentals
+  - ../../../Global_References/k8s-for-data.md — Kubernetes for Data Workloads
+  - ../../../Global_References/platform-architecture.md — Data Platform Architecture
+  - ../../../Global_References/platform-decision-tree.md — Platform Decision Tree
+  - ../../../Global_References/platform-tools-comparison.md — Platform Tools Comparison
 ## Architecture Decision Trees
 
 ```
@@ -587,3 +587,4 @@ stack:
 
 ## Handoff
 For ETL pipeline implementation, hand off to `etl-pipeline`. For data warehouse modeling, hand off to `data-warehouse`. For streaming, hand off to `streaming`.
+

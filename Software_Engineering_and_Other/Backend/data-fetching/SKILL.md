@@ -426,14 +426,14 @@ Does the data need to update in real-time?
 10. Queries never write to server state directly — use mutation hooks.
 
 ## References
-  - references/data-fetching-caching.md — Data Fetching Caching
-  - references/data-fetching-patterns.md — Data Fetching Patterns
-  - references/fetching-patterns.md — Fetching Patterns
-  - references/react-query-patterns.md — React Query Patterns
-  - references/swr-patterns.md — SWR Patterns
-  - references/tanstack-query.md — TanStack Query
-  - references/data-fetching-caching-strategies.md — Caching Strategies Reference
-  - references/data-fetching-error-handling.md — Error Handling Reference
+  - ../../../Global_References/data-fetching-caching.md — Data Fetching Caching
+  - ../../../Global_References/data-fetching-patterns.md — Data Fetching Patterns
+  - ../../../Global_References/fetching-patterns.md — Fetching Patterns
+  - ../../../Global_References/react-query-patterns.md — React Query Patterns
+  - ../../../Global_References/swr-patterns.md — SWR Patterns
+  - ../../../Global_References/tanstack-query.md — TanStack Query
+  - ../../../Global_References/data-fetching-caching-strategies.md — Caching Strategies Reference
+  - ../../../Global_References/data-fetching-error-handling.md — Error Handling Reference
 
 ## Handoff
 If data fetching requires complex WebSocket sync, optimistic offline queue with conflict resolution, or server-side data hydration beyond basic SSR, flag for senior engineer review. Otherwise implement complete fetching layer.
@@ -576,3 +576,4 @@ Does the mutation need optimistic UI?
             ├── Yes → Invalidate all affected query keys after mutation
             └── No  → Invalidate single query key on success
 ```
+

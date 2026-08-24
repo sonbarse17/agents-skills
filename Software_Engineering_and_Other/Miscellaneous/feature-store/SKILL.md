@@ -462,12 +462,12 @@ feature_3          | 15.0%    | NA          | -0.1 | 0.8 | -3  | 4   | YES - KS=
 - Feature drift triggers validation alert.
 
 ## References
-  - references/feast-patterns.md — Feast Patterns
-  - references/feature-architecture.md — Feature Architecture & Tecton
-  - references/feature-computation.md — Feature Computation
-  - references/feature-serving.md — Feature Serving
-  - references/feature-store-advanced.md — Feature Store Advanced Topics
-  - references/feature-store-fundamentals.md — Feature Store Fundamentals
+  - ../../../Global_References/feast-patterns.md — Feast Patterns
+  - ../../../Global_References/feature-architecture.md — Feature Architecture & Tecton
+  - ../../../Global_References/feature-computation.md — Feature Computation
+  - ../../../Global_References/feature-serving.md — Feature Serving
+  - ../../../Global_References/feature-store-advanced.md — Feature Store Advanced Topics
+  - ../../../Global_References/feature-store-fundamentals.md — Feature Store Fundamentals
 ## Handoff
 For model training with feature store integration, hand off to `ml-ml-pipeline`. For serving infrastructure, hand off to `ml-model-serving`.
 

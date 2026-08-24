@@ -158,7 +158,7 @@ Tag searches are exact-match only. `find --tags "agent_id:abc123"` works, but pa
 ## Kibana Cases API reference
 
 For detailed API endpoints, request/response formats, and examples, see
-[references/kibana-cases-api.md](references/kibana-cases-api.md).
+[../../../Global_References/kibana-cases-api.md](../../../Global_References/kibana-cases-api.md).
 
 ## Examples
 
@@ -188,3 +188,4 @@ For detailed API endpoints, request/response formats, and examples, see
 | ---------------- | -------- | ---------------------------------------------------------------- |
 | `KIBANA_URL`     | Yes      | Kibana base URL (e.g., `https://my-kibana.kb.cloud.example.com`) |
 | `KIBANA_API_KEY` | Yes      | Kibana API key for authentication                                |
+

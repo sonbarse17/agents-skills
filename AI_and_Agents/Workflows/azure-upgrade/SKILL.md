@@ -30,7 +30,7 @@ metadata:
 2. Generate an assessment before any upgrade operations
 3. Load the scenario reference and follow its rules
 4. Use `mcp_azure_mcp_get_azure_bestpractices` and `mcp_azure_mcp_documentation` MCP tools
-5. Destructive actions require `ask_user` — [global-rules](references/global-rules.md)
+5. Destructive actions require `ask_user` — [global-rules](../../../Global_References/azure-upgrade_global-rules.md)
 6. Always confirm the target plan/SKU with the user before proceeding
 7. Never delete or stop the original app without explicit user confirmation
 8. All automation scripts must be idempotent and resumable
@@ -71,8 +71,8 @@ Track progress in `upgrade-status.md` inside the workspace root.
 
 ## References
 
-- [Global Rules](references/global-rules.md)
-- [Workflow Details](references/workflow-details.md)
+- [Global Rules](../../../Global_References/azure-upgrade_global-rules.md)
+- [Workflow Details](../../../Global_References/azure-upgrade_workflow-details.md)
 - **Functions**
   - [Consumption to Flex Consumption](references/services/functions/consumption-to-flex.md)
   - [Assessment](references/services/functions/assessment.md)
@@ -89,3 +89,4 @@ Track progress in `upgrade-status.md` inside the workspace root.
 After upgrade is validated, hand off to:
 - `azure-validate` — for thorough post-upgrade validation
 - `azure-deploy` — if the user wants to set up CI/CD for the new app
+

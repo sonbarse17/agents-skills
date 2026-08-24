@@ -415,12 +415,12 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 ```
 
 ## References
-  - references/dotnet-maui-advanced.md — Dotnet Maui Advanced Topics
-  - references/dotnet-maui-fundamentals.md — Dotnet Maui Fundamentals
-  - references/maui-architecture.md — MAUI Architecture
-  - references/maui-controls.md — MAUI Controls
-  - references/maui-mvvm.md — MAUI MVVM with CommunityToolkit
-  - references/maui-structure.md — MAUI Project Structure
+  - ../../../Global_References/dotnet-maui-advanced.md — Dotnet Maui Advanced Topics
+  - ../../../Global_References/dotnet-maui-fundamentals.md — Dotnet Maui Fundamentals
+  - ../../../Global_References/maui-architecture.md — MAUI Architecture
+  - ../../../Global_References/maui-controls.md — MAUI Controls
+  - ../../../Global_References/maui-mvvm.md — MAUI MVVM with CommunityToolkit
+  - ../../../Global_References/maui-structure.md — MAUI Project Structure
 ## Handoff
 Hand off to iOS/Android native skills when platform handler customization requires deep UIKit or Android Views API knowledge.
 ## Implementation Patterns

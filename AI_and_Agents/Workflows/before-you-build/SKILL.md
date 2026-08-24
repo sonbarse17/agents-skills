@@ -29,7 +29,7 @@ Review the idea across these risks:
 - **Distribution:** Is there a repeatable way to reach the target user?
 - **Feature adoption:** For feature work, will the feature change user behavior or just add surface area?
 
-If the verdict is not obvious, use `references/risk-checklist.md` for deeper questions.
+If the verdict is not obvious, use `../../../Global_References/risk-checklist.md` for deeper questions.
 
 ## Output Format
 
@@ -48,3 +48,4 @@ Keep the response short and decision-oriented:
 - Separate product risk from engineering difficulty.
 - If the idea is already validated, say what evidence makes it lower risk and suggest the smallest implementation slice.
 - If facts are missing, name the missing evidence instead of inventing market claims.
+

@@ -52,7 +52,7 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 - "Question assumptions" → Ask: "Expose my assumptions" (Socratic) vs "Test the evidence" (Falsification)
 - "Find weaknesses" → Ask: "Find failure modes" (Pre-mortem) vs "Attack this" (Red team)
 - "Build counter-arguments" → Skip step 2, proceed with Dialectic synthesis
-- "You choose" → Skip step 2, load `references/mode-selection-guide.md` and auto-recommend
+- "You choose" → Skip step 2, load `../../../Global_References/mode-selection-guide.md` and auto-recommend
 
 ## 5 Reasoning Modes
 
@@ -68,12 +68,12 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Socratic questioning | `references/socratic-questioning.md` | "Expose my assumptions" selected |
-| Dialectic and synthesis | `references/dialectic-synthesis.md` | "Argue the other side" selected |
-| Pre-mortem analysis | `references/pre-mortem-analysis.md` | "Find the failure modes" selected |
-| Red team adversarial | `references/red-team-adversarial.md` | "Attack this" selected |
-| Evidence audit | `references/evidence-audit.md` | "Test the evidence" selected |
-| Mode selection guide | `references/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
+| Socratic questioning | `../../../Global_References/socratic-questioning.md` | "Expose my assumptions" selected |
+| Dialectic and synthesis | `../../../Global_References/dialectic-synthesis.md` | "Argue the other side" selected |
+| Pre-mortem analysis | `../../../Global_References/pre-mortem-analysis.md` | "Find the failure modes" selected |
+| Red team adversarial | `../../../Global_References/red-team-adversarial.md` | "Attack this" selected |
+| Evidence audit | `../../../Global_References/evidence-audit.md` | "Test the evidence" selected |
+| Mode selection guide | `../../../Global_References/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
 
 ## Constraints
 
@@ -120,3 +120,4 @@ After any mode, the final output must include:
 Socratic method, Hegelian dialectic, steel manning, pre-mortem analysis, red teaming, falsificationism, abductive reasoning, second-order thinking, cognitive biases, inversion technique
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/the-fool/)
+

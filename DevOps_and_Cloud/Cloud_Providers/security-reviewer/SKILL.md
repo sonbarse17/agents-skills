@@ -46,12 +46,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SAST Tools | `references/sast-tools.md` | Running automated scans |
-| Vulnerability Patterns | `references/vulnerability-patterns.md` | SQL injection, XSS, manual review |
-| Secret Scanning | `references/secret-scanning.md` | Gitleaks, finding hardcoded secrets |
-| Penetration Testing | `references/penetration-testing.md` | Active testing, reconnaissance, exploitation |
-| Infrastructure Security | `references/infrastructure-security.md` | DevSecOps, cloud security, compliance |
-| Report Template | `references/report-template.md` | Writing security report |
+| SAST Tools | `../../../Global_References/security-reviewer_sast-tools.md` | Running automated scans |
+| Vulnerability Patterns | `../../../Global_References/vulnerability-patterns.md` | SQL injection, XSS, manual review |
+| Secret Scanning | `../../../Global_References/secret-scanning.md` | Gitleaks, finding hardcoded secrets |
+| Penetration Testing | `../../../Global_References/penetration-testing.md` | Active testing, reconnaissance, exploitation |
+| Infrastructure Security | `../../../Global_References/infrastructure-security.md` | DevSecOps, cloud security, compliance |
+| Report Template | `../../../Global_References/security-reviewer_report-template.md` | Writing security report |
 
 ## Constraints
 
@@ -103,3 +103,4 @@ References: CWE-89, OWASP A03:2021
 OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm audit, gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp Vault, AWS Security Hub, CIS benchmarks, SOC2, ISO27001
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/security/security-reviewer/)
+

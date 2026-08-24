@@ -225,7 +225,7 @@ class JobRepository:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-background-jobs_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -239,3 +239,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Retry appropriately** - Exponential backoff for transient errors
 9. **Don't retry permanent failures** - Validation errors, invalid credentials
 10. **Monitor queue depth** - Alert on backlog growth
+

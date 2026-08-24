@@ -380,8 +380,8 @@ MIT
 ```
 
 ## References
-  - references/readme-writer-advanced.md — README Writer Advanced Topics
-  - references/readme-writer-fundamentals.md — README Writer Fundamentals
+  - ../../../Global_References/readme-writer-advanced.md — README Writer Advanced Topics
+  - ../../../Global_References/readme-writer-fundamentals.md — README Writer Fundamentals
   - references/readme-writer-templates.md — README Templates Reference
   - references/readme-writer-style-guide.md — README Style Guide Reference
 ## Handoff
@@ -672,3 +672,4 @@ What format fits the content?
 - **Badge caching with shields.io**: Use shields.io's cache to serve badges. Static badges (license, version) rarely change. Dynamic badges (CI status, coverage) use short cache.
 - **README link checking**: Use `awesome_bot` or `markdown-link-check` for automated link validation. Run weekly, not on every commit, to avoid CI time waste.
 - **Render preview in PR**: Use tools like `grip` or `remark` to render README preview in CI PR comments. Catches formatting issues before merge.
+

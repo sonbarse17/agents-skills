@@ -370,14 +370,14 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Use idempotent producers for Kafka (exactly-once semantics to broker).
 
 ## References
-  - references/broker-comparison.md — Message Broker Comparison
-  - references/consumer-patterns.md — Consumer Patterns
-  - references/kafka-patterns.md — Kafka Patterns
-  - references/message-design.md — Message Schema Design
-  - references/message-queue-monitoring.md — Message Queue Monitoring
-  - references/message-queue-security.md — Message Queue Security
-  - references/producer-patterns.md — Producer Patterns
-  - references/rabbitmq-patterns.md — RabbitMQ Patterns
+  - ../../../Global_References/broker-comparison.md — Message Broker Comparison
+  - ../../../Global_References/consumer-patterns.md — Consumer Patterns
+  - ../../../Global_References/kafka-patterns.md — Kafka Patterns
+  - ../../../Global_References/message-design.md — Message Schema Design
+  - ../../../Global_References/message-queue-monitoring.md — Message Queue Monitoring
+  - ../../../Global_References/message-queue-security.md — Message Queue Security
+  - ../../../Global_References/producer-patterns.md — Producer Patterns
+  - ../../../Global_References/rabbitmq-patterns.md — RabbitMQ Patterns
 ## Handoff
 No artifact produced unless requested.
 Next skill: backend-caching — if the event-driven system needs to cache materialized views or read models.
@@ -511,3 +511,4 @@ What are the requirements?
 - **Batched production**: Use `produce()` with `flush()` at intervals or count. Reduces network round-trips by 10x compared to per-message flush.
 - **Compression**: Use Snappy or Zstd compression at the producer. Reduces storage and network by 60-70% for text-based messages.
 - **Partition-aware consumers**: Match consumer count to partition count. Avoid idle partitions and rebalance overhead. Use cooperative rebalancing for sticky partition assignment.
+

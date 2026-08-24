@@ -572,14 +572,15 @@ A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run)
 - Commitment purchases (RI/SP) require finance + engineering joint approval.
 
 ## References
-  - references/budget-anomaly.md -- Budget Management and Anomaly Detection
-  - references/budget-policies.md -- Budget Policies
-  - references/cost-allocation.md -- Cost Allocation Models
-  - references/cost-governance-advanced.md -- Cost Governance Advanced Topics
-  - references/cost-governance-framework.md -- Cost Governance Framework Reference
-  - references/cost-governance-cloud-finops.md -- Cloud FinOps and Cost Optimization
-  - references/cost-governance-fundamentals.md -- Cost Governance Fundamentals
-  - references/cost-governance-practices.md -- Cloud Cost Governance Practices
-  - references/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
+  - ../../../Global_References/budget-anomaly.md -- Budget Management and Anomaly Detection
+  - ../../../Global_References/budget-policies.md -- Budget Policies
+  - ../../../Global_References/cost-governance_cost-allocation.md -- Cost Allocation Models
+  - ../../../Global_References/cost-governance-advanced.md -- Cost Governance Advanced Topics
+  - ../../../Global_References/cost-governance-framework.md -- Cost Governance Framework Reference
+  - ../../../Global_References/cost-governance-cloud-finops.md -- Cloud FinOps and Cost Optimization
+  - ../../../Global_References/cost-governance-fundamentals.md -- Cost Governance Fundamentals
+  - ../../../Global_References/cost-governance-practices.md -- Cloud Cost Governance Practices
+  - ../../../Global_References/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
 ## Handoff
 For multi-tenant cost tracking, hand off to `enterprise-multi-tenant`. For compliance cost reporting, hand off to `enterprise-compliance-audit`.
+

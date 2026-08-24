@@ -492,10 +492,11 @@ public class Mediator
 ```
 
 ## References
-  - references/wpf-advanced.md — WPF Advanced Topics
-  - references/wpf-fundamentals.md — WPF Fundamentals
-  - references/wpf-mvvm-patterns.md — WPF MVVM Patterns Reference
-  - references/wpf-performance.md — WPF Performance Reference
+  - ../../../Global_References/wpf-advanced.md — WPF Advanced Topics
+  - ../../../Global_References/wpf-fundamentals.md — WPF Fundamentals
+  - ../../../Global_References/wpf-mvvm-patterns.md — WPF MVVM Patterns Reference
+  - ../../../Global_References/wpf-performance.md — WPF Performance Reference
   - references/wpf-styling.md — WPF Styling and Theming Reference
 ## Handoff
 Hand off to `desktop-winui3` for Windows App SDK migration. Hand off to `design-accessibility` for UIA accessibility testing.
+

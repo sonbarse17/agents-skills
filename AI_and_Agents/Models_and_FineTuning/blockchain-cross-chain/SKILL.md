@@ -383,17 +383,17 @@ Relayer sustainability:
 15. **Token pairs on bridges must be verified**: Only allow canonical + verified wrapped token lists
 
 ## References
-  - references/atomic-composability.md — Atomic Composability Across Chains
-  - references/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
-  - references/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
-  - references/bridge-incident-response.md — Bridge Incident Response
-  - references/bridge-monitoring-alerting.md — Bridge Monitoring and Alerting
-  - references/bridge-security.md — Bridge Security
-  - references/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
-  - references/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive
-  - references/layerzero-wormhole.md — LayerZero, Wormhole, Axelar
-  - references/message-replay-protection.md — Message Replay Protection
-  - references/shared-sequencer.md — Shared Sequencing
+  - ../../../Global_References/atomic-composability.md — Atomic Composability Across Chains
+  - ../../../Global_References/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
+  - ../../../Global_References/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
+  - ../../../Global_References/bridge-incident-response.md — Bridge Incident Response
+  - ../../../Global_References/bridge-monitoring-alerting.md — Bridge Monitoring and Alerting
+  - ../../../Global_References/bridge-security.md — Bridge Security
+  - ../../../Global_References/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
+  - ../../../Global_References/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive
+  - ../../../Global_References/layerzero-wormhole.md — LayerZero, Wormhole, Axelar
+  - ../../../Global_References/message-replay-protection.md — Message Replay Protection
+  - ../../../Global_References/shared-sequencer.md — Shared Sequencing
   - references/cross-chain-token-representation.md — Cross-Chain Token Standards & Representation
   - references/bridge-fee-models.md — Bridge Fee Models & Relayer Economics
 
@@ -510,3 +510,4 @@ class CrossChainRelayer:
 - **Audit requirements**: Bridge contracts require multiple audits; formal verification for critical paths.
 
 ## Phase: blockchain → blockchain-cross-chain
+

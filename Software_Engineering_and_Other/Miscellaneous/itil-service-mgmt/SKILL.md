@@ -533,14 +533,15 @@ problem_management:
 ```
 
 ## References
-  - references/change-release-mgmt.md -- Change and Release Management
-  - references/incident-problem-mgmt.md -- Incident and Problem Management
-  - references/itil-service-mgmt-advanced.md -- ITIL Service Management Advanced Topics
-  - references/itil-service-mgmt-fundamentals.md -- ITIL Service Management Fundamentals
+  - ../../../Global_References/change-release-mgmt.md -- Change and Release Management
+  - ../../../Global_References/incident-problem-mgmt.md -- Incident and Problem Management
+  - ../../../Global_References/itil-service-mgmt-advanced.md -- ITIL Service Management Advanced Topics
+  - ../../../Global_References/itil-service-mgmt-fundamentals.md -- ITIL Service Management Fundamentals
   - references/itil-service-transition.md -- ITIL Service Transition Reference
   - references/itil-service-operation.md -- ITIL Service Operation Reference
-  - references/service-level-mgmt.md -- Service Level Management
+  - ../../../Global_References/service-level-mgmt.md -- Service Level Management
   - references/service-lifecycle.md -- ITIL Service Lifecycle
-  - references/capacity-availability-management.md -- Capacity and Availability Management
+  - ../../../Global_References/capacity-availability-management.md -- Capacity and Availability Management
 ## Handoff
 For compliance alignment, hand off to `enterprise-compliance-audit` for regulatory control mapping. For architecture decisions, hand off to `enterprise-architecture-governance` for review board approvals.
+

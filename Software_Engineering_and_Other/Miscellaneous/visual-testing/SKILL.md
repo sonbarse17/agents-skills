@@ -478,12 +478,12 @@ baseline_workflow:
 ```
 
 ## References
-  - references/baseline-management.md -- Baseline Management
-  - references/screenshot-comparison.md -- Screenshot Comparison
-  - references/visual-regression-tools.md -- Visual Regression Tools
-  - references/visual-test-setup.md -- Visual Test Setup
-  - references/visual-testing-advanced.md -- Visual Testing Advanced Topics
-  - references/visual-testing-fundamentals.md -- Visual Testing Fundamentals
+  - ../../../Global_References/baseline-management.md -- Baseline Management
+  - ../../../Global_References/screenshot-comparison.md -- Screenshot Comparison
+  - ../../../Global_References/visual-regression-tools.md -- Visual Regression Tools
+  - ../../../Global_References/visual-test-setup.md -- Visual Test Setup
+  - ../../../Global_References/visual-testing-advanced.md -- Visual Testing Advanced Topics
+  - ../../../Global_References/visual-testing-fundamentals.md -- Visual Testing Fundamentals
   - references/visual-testing-tools-comparison.md -- Visual Testing Tools Comparison
   - references/visual-testing-ci-integration.md -- Visual Testing CI Integration
 

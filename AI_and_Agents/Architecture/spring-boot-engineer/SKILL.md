@@ -30,11 +30,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Web Layer | `references/web.md` | Controllers, REST APIs, validation, exception handling |
-| Data Access | `references/data.md` | Spring Data JPA, repositories, transactions, projections |
-| Security | `references/security.md` | Spring Security 6, OAuth2, JWT, method security |
-| Cloud Native | `references/cloud.md` | Spring Cloud, Config, Discovery, Gateway, resilience |
-| Testing | `references/testing.md` | @SpringBootTest, MockMvc, Testcontainers, test slices |
+| Web Layer | `../../../Global_References/web.md` | Controllers, REST APIs, validation, exception handling |
+| Data Access | `../../../Global_References/spring-boot-engineer_data.md` | Spring Data JPA, repositories, transactions, projections |
+| Security | `../../../Global_References/security.md` | Spring Security 6, OAuth2, JWT, method security |
+| Cloud Native | `../../../Global_References/cloud.md` | Spring Cloud, Config, Discovery, Gateway, resilience |
+| Testing | `../../../Global_References/spring-boot-engineer_testing.md` | @SpringBootTest, MockMvc, Testcontainers, test slices |
 
 ## Quick Start — Minimal Working Structure
 
@@ -195,3 +195,4 @@ class ProductControllerTest {
 - Use deprecated Spring Boot 2.x patterns (e.g., `WebSecurityConfigurerAdapter`)
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/spring-boot-engineer/)
+

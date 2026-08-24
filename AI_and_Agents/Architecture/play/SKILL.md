@@ -554,13 +554,14 @@ Use `ScalaTest + PlaySpec` for controller tests. Use `Mockito` or `ScalaMock` fo
 - Routes file is the API contract — one line per endpoint with type-safe parameters.
 
 ## References
-  - references/play-architecture.md — Play Architecture
-  - references/play-framework-rest-api.md — REST API with Play
-  - references/play-performance.md — Performance
-  - references/play-rest-api.md — Play REST API Patterns
-  - references/play-security.md — Play Security
-  - references/play-setup.md — Setup Guide
-  - references/play-testing.md — Testing Play
-  - references/scala-concurrent-streaming.md — Concurrency and Streaming
+  - ../../../Global_References/play-architecture.md — Play Architecture
+  - ../../../Global_References/play-framework-rest-api.md — REST API with Play
+  - ../../../Global_References/play-performance.md — Performance
+  - ../../../Global_References/play-rest-api.md — Play REST API Patterns
+  - ../../../Global_References/play-security.md — Play Security
+  - ../../../Global_References/play-setup.md — Setup Guide
+  - ../../../Global_References/play-testing.md — Testing Play
+  - ../../../Global_References/scala-concurrent-streaming.md — Concurrency and Streaming
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formatting or `backend/universal/backend-testing/SKILL.md` for test patterns.
+

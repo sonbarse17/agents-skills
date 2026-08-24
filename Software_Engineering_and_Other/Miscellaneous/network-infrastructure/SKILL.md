@@ -511,12 +511,12 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
 - NetFlow/sFlow export from every ToR for capacity planning + DDoS detection.
 
 ## References
-  - references/bgp-anycast.md — BGP + Anycast — Policy, RPKI, Multi-Homing
-  - references/leaf-spine.md — Leaf-Spine — Clos Fabric, ECMP, EVPN/VXLAN
-  - references/network-infrastructure-advanced.md — Network Infrastructure Advanced Topics
-  - references/network-infrastructure-fundamentals.md — Network Infrastructure Fundamentals
+  - ../../../Global_References/bgp-anycast.md — BGP + Anycast — Policy, RPKI, Multi-Homing
+  - ../../../Global_References/leaf-spine.md — Leaf-Spine — Clos Fabric, ECMP, EVPN/VXLAN
+  - ../../../Global_References/network-infrastructure-advanced.md — Network Infrastructure Advanced Topics
+  - ../../../Global_References/network-infrastructure-fundamentals.md — Network Infrastructure Fundamentals
   - references/sd-wan-mpls.md — SD-WAN vs MPLS — Branch + Hybrid Connectivity
-  - references/vrrp-hsrp.md — L2 Redundancy — VRRP / HSRP / CARP / MLAG
+  - ../../../Global_References/vrrp-hsrp.md — L2 Redundancy — VRRP / HSRP / CARP / MLAG
   - references/evpn-vxlan-deep-dive.md — EVPN/VXLAN Deep Dive
   - references/bgp-automation.md — BGP Automation with Ansible
 ## Handoff
@@ -524,3 +524,4 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
 - `devops-cdn-edge` for global anycast and DDoS scrubbing.
 - `devops-cloud-architecture` for cloud VPC and Transit Gateway alongside on-prem.
 - `enterprise-high-availability` for app-level LB and failover.
+

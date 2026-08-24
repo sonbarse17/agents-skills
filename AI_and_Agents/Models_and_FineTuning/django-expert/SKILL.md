@@ -41,11 +41,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Models | `references/models-orm.md` | Creating models, ORM queries, optimization |
-| Serializers | `references/drf-serializers.md` | DRF serializers, validation |
-| ViewSets | `references/viewsets-views.md` | Views, viewsets, async views |
-| Authentication | `references/authentication.md` | JWT, permissions, SimpleJWT |
-| Testing | `references/testing-django.md` | APITestCase, fixtures, factories |
+| Models | `../../../Global_References/models-orm.md` | Creating models, ORM queries, optimization |
+| Serializers | `../../../Global_References/drf-serializers.md` | DRF serializers, validation |
+| ViewSets | `../../../Global_References/viewsets-views.md` | Views, viewsets, async views |
+| Authentication | `../../../Global_References/django-expert_authentication.md` | JWT, permissions, SimpleJWT |
+| Testing | `../../../Global_References/testing-django.md` | APITestCase, fixtures, factories |
 
 ## Minimal Working Example
 
@@ -160,3 +160,4 @@ When implementing Django features, provide:
 Django 5.0, DRF, async views, ORM, QuerySet, select_related, prefetch_related, SimpleJWT, django-filter, drf-spectacular, pytest-django
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/django-expert/)
+

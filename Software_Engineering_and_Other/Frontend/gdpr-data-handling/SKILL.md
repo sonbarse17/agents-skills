@@ -52,7 +52,7 @@ Right to Object (Art. 21)       ─┘
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/gdpr-data-handling_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 
@@ -71,3 +71,4 @@ Detailed sections (starting with `## Implementation Patterns`) live in `referenc
 - **Don't retain indefinitely** - Define and enforce retention
 - **Don't ignore DSARs** - 30-day response required
 - **Don't transfer without safeguards** - SCCs or adequacy decisions
+

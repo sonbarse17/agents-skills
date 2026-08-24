@@ -400,12 +400,12 @@ Every keystroke in a controlled input re-renders the entire form. Use React Hook
 ---
 
 ## References
-  - references/form-accessibility.md — Form Accessibility
-  - references/form-libraries.md — Form Libraries
-  - references/form-security-patterns.md — Form Security Patterns
-  - references/form-state.md — Form State
-  - references/form-validation.md — Form Validation
-  - references/validation-patterns.md — Validation Patterns
+  - ../../../Global_References/form-accessibility.md — Form Accessibility
+  - ../../../Global_References/form-libraries.md — Form Libraries
+  - ../../../Global_References/form-security-patterns.md — Form Security Patterns
+  - ../../../Global_References/form-state.md — Form State
+  - ../../../Global_References/form-validation.md — Form Validation
+  - ../../../Global_References/validation-patterns.md — Validation Patterns
 ## Handoff
 
 If form requires multi-step wizard with persisted draft state or server-side draft saving, flag for backend handoff. Otherwise deliver complete form implementation with schema, fields, validation, and submission handler.
@@ -528,3 +528,4 @@ Can validation be done client-side only?
             ├── Yes → Schema refinement (zod.refine) or custom validator
             └── No  → Per-field validation rules
 ```
+

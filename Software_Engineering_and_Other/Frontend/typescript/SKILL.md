@@ -525,14 +525,15 @@ const orderRepo = new Repository(db, 'orders', OrderSchema);
 ```
 
 ## References
-- `references/module-resolution.md` — Module resolution strategies, ESM/CJS
-- `references/advanced-types-decorators.md` — Conditional types, template literals, mapped types, decorators
-- `references/typescript-fundamentals.md` — TypeScript Fundamentals
-- `references/typescript-advanced.md` — Advanced TypeScript Patterns
-- `references/typescript-zod.md` — Zod Runtime Validation Guide
+- `../../../Global_References/module-resolution.md` — Module resolution strategies, ESM/CJS
+- `../../../Global_References/advanced-types-decorators.md` — Conditional types, template literals, mapped types, decorators
+- `../../../Global_References/typescript-fundamentals.md` — TypeScript Fundamentals
+- `../../../Global_References/typescript_typescript-advanced.md` — Advanced TypeScript Patterns
+- `../../../Global_References/typescript-zod.md` — Zod Runtime Validation Guide
 
 ## Handoff
 - `mobile/react-native` — React Native TypeScript patterns
 - `mobile/universal/testing` — Vitest/Jest, type testing
 - `mobile/universal/networking` — Type-safe API clients
 - `mobile/universal/patterns` — TypeScript patterns in mobile apps
+

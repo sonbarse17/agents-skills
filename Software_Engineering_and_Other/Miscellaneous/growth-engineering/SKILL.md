@@ -613,14 +613,15 @@ Running growth experiments that improve one metric at the expense of another. In
 | Friday | Share learnings, plan next week | Weekly growth brief |
 
 ## References
-  - references/activation-metrics.md — Activation Metrics
-  - references/growth-engineering-advanced.md — Growth Engineering Advanced Topics
-  - references/growth-engineering-fundamentals.md — Growth Engineering Fundamentals
-  - references/growth-experiment-design.md — Growth Experiment Design
-  - references/growth-experiments.md — Growth Experiments
-  - references/growth-loops.md — Growth Loops
-  - references/growth-metrics-funnel.md — Growth Metrics and Funnel Analysis
-  - references/viral-mechanics.md — Viral Mechanics
+  - ../../../Global_References/activation-metrics.md — Activation Metrics
+  - ../../../Global_References/growth-engineering-advanced.md — Growth Engineering Advanced Topics
+  - ../../../Global_References/growth-engineering-fundamentals.md — Growth Engineering Fundamentals
+  - ../../../Global_References/growth-experiment-design.md — Growth Experiment Design
+  - ../../../Global_References/growth-experiments.md — Growth Experiments
+  - ../../../Global_References/growth-loops.md — Growth Loops
+  - ../../../Global_References/growth-metrics-funnel.md — Growth Metrics and Funnel Analysis
+  - ../../../Global_References/viral-mechanics.md — Viral Mechanics
 
 ## Handoff
 For analytics tracking of growth metrics, hand off to `product-analytics`. For pricing and conversion experiments, hand off to `product-pricing-strategy`. For customer journey activation touchpoints, hand off to `product-customer-journey`. For A/B test experiment design, hand off to `product-ab-testing`.
+

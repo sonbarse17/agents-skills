@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Theme Development | `references/theme-development.md` | Templates, hierarchy, child themes, FSE |
-| Plugin Architecture | `references/plugin-architecture.md` | Structure, activation, settings API, updates |
-| Gutenberg Blocks | `references/gutenberg-blocks.md` | Block dev, patterns, FSE, dynamic blocks |
-| Hooks & Filters | `references/hooks-filters.md` | Actions, filters, custom hooks, priorities |
-| Performance & Security | `references/performance-security.md` | Caching, optimization, hardening, backups |
+| Theme Development | `../../../Global_References/theme-development.md` | Templates, hierarchy, child themes, FSE |
+| Plugin Architecture | `../../../Global_References/plugin-architecture.md` | Structure, activation, settings API, updates |
+| Gutenberg Blocks | `../../../Global_References/gutenberg-blocks.md` | Block dev, patterns, FSE, dynamic blocks |
+| Hooks & Filters | `../../../Global_References/hooks-filters.md` | Actions, filters, custom hooks, priorities |
+| Performance & Security | `../../../Global_References/performance-security.md` | Caching, optimization, hardening, backups |
 
 ## Key Implementation Patterns
 
@@ -149,3 +149,4 @@ When implementing WordPress features, provide:
 WordPress 6.4+, PHP 8.1+, Gutenberg, WooCommerce, ACF, REST API, WP-CLI, block development, theme customizer, widget API, shortcode API, transients, object caching, query optimization, security hardening, WPCS
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/platform/wordpress-pro/)
+

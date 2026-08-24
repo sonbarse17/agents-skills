@@ -420,14 +420,14 @@ A company had 20+ internal tools for HR, IT, and Finance processes. BA analysis 
 
 ## References
 
-- references/ba-advanced.md — BA advanced topics and techniques
-- references/ba-fundamentals.md — BA fundamentals and core concepts
-- references/gherkin-patterns.md — Gherkin patterns for acceptance criteria
-- references/requirements-gathering.md — Requirements gathering techniques
-- references/story-splitting.md — Story splitting techniques and patterns
-- references/user-story-mapping.md — User story mapping methodology
-- references/ba-elicitation-techniques.md — Comprehensive elicitation techniques guide
-- references/ba-requirements-management.md — Requirements management lifecycle
+- ../../../Global_References/ba-advanced.md — BA advanced topics and techniques
+- ../../../Global_References/ba-fundamentals.md — BA fundamentals and core concepts
+- ../../../Global_References/gherkin-patterns.md — Gherkin patterns for acceptance criteria
+- ../../../Global_References/requirements-gathering.md — Requirements gathering techniques
+- ../../../Global_References/story-splitting.md — Story splitting techniques and patterns
+- ../../../Global_References/user-story-mapping.md — User story mapping methodology
+- ../../../Global_References/ba-elicitation-techniques.md — Comprehensive elicitation techniques guide
+- ../../../Global_References/ba-requirements-management.md — Requirements management lifecycle
 
 ## Handoff
 After completing this skill:
@@ -525,3 +525,4 @@ Feature: User Authentication
 - **Regulatory mapping**: Map requirements to regulatory controls (GDPR, SOC2, HIPAA). Maintain compliance traceability matrix.
 - **Approval trail**: Document who approved each requirement and when. Maintain immutable audit log of changes.
 - **Access control**: Restrict requirement document access on need-to-know basis. Review access quarterly.
+

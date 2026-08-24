@@ -227,7 +227,7 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 2. **Use User objects as sponsors** — ServicePrincipals and Groups are rejected
 3. **Handle permission propagation delays** — after admin consent, wait 30–120s; retry with backoff on 403
 4. **Include `OData-Version: 4.0` header** on every Graph request
-5. **Use Workload Identity Federation for production auth** — for local dev, use a client secret on the Blueprint (see [references/oauth2-token-flow.md](references/oauth2-token-flow.md))
+5. **Use Workload Identity Federation for production auth** — for local dev, use a client secret on the Blueprint (see [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md))
 6. **Set `identifierUris` on Blueprint** before using OAuth2 scoping (`api://{app-id}`)
 7. **Never use Azure CLI tokens** for API calls — they contain `Directory.AccessAsUser.All` which is hard-rejected
 8. **Check for existing resources** before creating — implement idempotent provisioning
@@ -236,9 +236,9 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 
 | File | Contents |
 |------|----------|
-| [references/oauth2-token-flow.md](references/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
-| [references/known-limitations.md](references/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
-| [references/sdk-sidecar.md](references/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, Docker/K8s deployment, security |
+| [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
+| [../../../Global_References/known-limitations.md](../../../Global_References/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
+| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, Docker/K8s deployment, security |
 
 ### External Links
 
@@ -248,3 +248,4 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 | AI-Guided Setup | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-ai-guided-setup |
 | Microsoft Entra SDK for AgentID — Overview | https://learn.microsoft.com/en-us/entra/msidweb/agent-id-sdk/overview |
 | Microsoft Entra SDK for AgentID — Endpoints | https://learn.microsoft.com/en-us/entra/msidweb/agent-id-sdk/endpoints |
+

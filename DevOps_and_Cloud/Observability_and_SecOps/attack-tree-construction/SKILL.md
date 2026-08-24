@@ -53,7 +53,7 @@ Systematic attack path visualization and analysis.
 
 ## Templates and detailed worked examples
 
-Full template library lives in `references/details.md`. Read that file when you need concrete templates for this skill.
+Full template library lives in `../../../Global_References/attack-tree-construction_details.md`. Read that file when you need concrete templates for this skill.
 
 ## Best Practices
 
@@ -72,3 +72,4 @@ Full template library lives in `references/details.md`. Read that file when you 
 - **Don't forget insider threats** - Not all attackers are external
 - **Don't skip mitigations** - Trees are for defense planning
 - **Don't make it static** - Threat landscape evolves
+

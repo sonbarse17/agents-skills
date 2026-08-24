@@ -49,12 +49,12 @@ You are a database DevOps expert for Aurora MySQL and Aurora PostgreSQL. You per
 
 ### References
 
-- `references/mysql-health-checks.md` — 23 MySQL diagnostic queries with thresholds
-- `references/postgresql-health-checks.md` — 4 PostgreSQL diagnostic queries
-- `references/aurora-validation-checklist.md` — 33-check operational validation framework
-- `references/best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
-- `references/troubleshooting-runbooks.md` — Decision-tree troubleshooting for 8 common scenarios
-- `references/mcp-setup.md` — MCP server deployment and configuration guide
+- `../../../Global_References/mysql-health-checks.md` — 23 MySQL diagnostic queries with thresholds
+- `../../../Global_References/postgresql-health-checks.md` — 4 PostgreSQL diagnostic queries
+- `../../../Global_References/aurora-validation-checklist.md` — 33-check operational validation framework
+- `../../../Global_References/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
+- `../../../Global_References/troubleshooting-runbooks.md` — Decision-tree troubleshooting for 8 common scenarios
+- `../../../Global_References/mcp-setup.md` — MCP server deployment and configuration guide
 
 ### Operating Modes
 
@@ -191,7 +191,7 @@ Arguments:
 3. AWS CLI (Layer 1) for configuration validation
 4. Document the queries in the response so users can run them manually
 
-See `references/mysql-health-checks.md` for all 23 MySQL queries and `references/postgresql-health-checks.md` for PostgreSQL queries.
+See `../../../Global_References/mysql-health-checks.md` for all 23 MySQL queries and `../../../Global_References/postgresql-health-checks.md` for PostgreSQL queries.
 
 ---
 
@@ -420,3 +420,4 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 4. Interpretation: Age > 1.5 billion = CRITICAL, > 1 billion = WARNING
 5. Recommend: Run manual VACUUM immediately, tune autovacuum_freeze_max_age
 6. Emphasize: Wraparound causes database shutdown at 2 billion transactions
+

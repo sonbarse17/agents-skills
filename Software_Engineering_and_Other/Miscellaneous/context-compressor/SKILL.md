@@ -239,14 +239,14 @@ Before delivering compressed summary, verify:
 - **Round-trip safe** — Summary + one new exchange must allow full continuation
 
 ## References
-  - references/compression-strategies.md — Compression Strategies
-  - references/context-compressor-advanced.md — Context Compressor Advanced Topics
-  - references/context-compressor-fundamentals.md — Context Compressor Fundamentals
-  - references/context-retrieval.md — Context Retrieval System
-  - references/context-window-management.md — Context Window Management
+  - ../../../Global_References/compression-strategies.md — Compression Strategies
+  - ../../../Global_References/context-compressor-advanced.md — Context Compressor Advanced Topics
+  - ../../../Global_References/context-compressor-fundamentals.md — Context Compressor Fundamentals
+  - ../../../Global_References/context-retrieval.md — Context Retrieval System
+  - ../../../Global_References/context-compressor_context-window-management.md — Context Window Management
   - references/state-management.md — State Management
-  - references/summary-templates.md — Summary Templates
-  - references/token-management.md — Token Management
+  - ../../../Global_References/summary-templates.md — Summary Templates
+  - ../../../Global_References/context-compressor_token-management.md — Token Management
 
 ## Summary Structure & Format
 
@@ -498,3 +498,4 @@ Context Compression Strategy
 
 ## Handoff
 master-orchestrator — the compressed summary is injected at the start of the next work session for the master orchestrator skill to continue the work from where it was interrupted.
+

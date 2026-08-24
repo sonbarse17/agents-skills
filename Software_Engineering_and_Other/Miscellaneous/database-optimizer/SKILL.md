@@ -42,11 +42,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Query Optimization | `references/query-optimization.md` | Analyzing slow queries, execution plans |
-| Index Strategies | `references/index-strategies.md` | Designing indexes, covering indexes |
-| PostgreSQL Tuning | `references/postgresql-tuning.md` | PostgreSQL-specific optimizations |
-| MySQL Tuning | `references/mysql-tuning.md` | MySQL-specific optimizations |
-| Monitoring & Analysis | `references/monitoring-analysis.md` | Performance metrics, diagnostics |
+| Query Optimization | `../../../Global_References/database-optimizer_query-optimization.md` | Analyzing slow queries, execution plans |
+| Index Strategies | `../../../Global_References/index-strategies.md` | Designing indexes, covering indexes |
+| PostgreSQL Tuning | `../../../Global_References/postgresql-tuning.md` | PostgreSQL-specific optimizations |
+| MySQL Tuning | `../../../Global_References/mysql-tuning.md` | MySQL-specific optimizations |
+| Monitoring & Analysis | `../../../Global_References/monitoring-analysis.md` | Performance metrics, diagnostics |
 
 ## Common Operations & Examples
 
@@ -147,3 +147,4 @@ When optimizing database performance, provide:
 6. Monitoring recommendations
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/database-optimizer/)
+

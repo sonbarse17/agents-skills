@@ -524,15 +524,16 @@ Check commit → lint SQL (sqlfluff) → run on ephemeral DB → verify schema �
 - Document all design decisions and trade-offs in ADRs.
 
 ## References
-  - references/data-vault-patterns.md — Data Vault Patterns
-  - references/dimensional-modeling.md — Dimensional Modeling
-  - references/domain-driven-data-modeling.md — Domain-Driven Data Modeling
-  - references/graph-modeling.md — Graph Modeling
-  - references/modeling-best-practices.md — Data Modeling Best Practices
-  - references/modeling-change-management.md — Model Change Management
-  - references/modeling-data-contracts.md — Data Contracts in Modeling
-  - references/relational-modeling.md — Relational Modeling
+  - ../../../Global_References/data-vault-patterns.md — Data Vault Patterns
+  - ../../../Global_References/dimensional-modeling.md — Dimensional Modeling
+  - ../../../Global_References/domain-driven-data-modeling.md — Domain-Driven Data Modeling
+  - ../../../Global_References/data-modeling_graph-modeling.md — Graph Modeling
+  - ../../../Global_References/modeling-best-practices.md — Data Modeling Best Practices
+  - ../../../Global_References/modeling-change-management.md — Model Change Management
+  - ../../../Global_References/modeling-data-contracts.md — Data Contracts in Modeling
+  - ../../../Global_References/relational-modeling.md — Relational Modeling
 ## Handoff
 `data-dimensional-modeling` for star schemas and dimensional models
 `backend-database-patterns` for query optimization and indexing
 `data-nosql-database` for document/column-family modeling
+

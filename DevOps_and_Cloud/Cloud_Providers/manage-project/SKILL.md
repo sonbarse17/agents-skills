@@ -226,7 +226,7 @@ curl -H "Authorization: ApiKey ${ELASTICSEARCH_API_KEY}" \
 
 ## Credential file format
 
-See [references/credential-file-format.md](references/credential-file-format.md) for the full format specification.
+See [../../../Global_References/credential-file-format.md](../../../Global_References/credential-file-format.md) for the full format specification.
 
 ## Workflow: Load project credentials
 
@@ -553,3 +553,4 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
   [Serverless Projects API](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless)
 - For official documentation on Search AI Lake settings, data retention, and project features, see
   [Project settings](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings)
+

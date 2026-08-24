@@ -78,7 +78,7 @@ mcp_azure_mcp_extension_cli_generate
   cli-type: "az"
 ```
 
-See [Azure Resource Graph Query Patterns](references/azure-resource-graph.md) for common KQL patterns.
+See [Azure Resource Graph Query Patterns](../../../Global_References/azure-resource-lookup_azure-resource-graph.md) for common KQL patterns.
 
 ### Step 3: Execute and Format Results
 
@@ -106,3 +106,4 @@ Use `--first N` to limit results. Use `--subscriptions` to scope.
 - ✅ **Prefer** dedicated MCP tools for single-resource-type queries
 - ❌ **Never** use ARG for real-time monitoring (data has slight delay)
 - ❌ **Never** attempt mutations through ARG (read-only)
+

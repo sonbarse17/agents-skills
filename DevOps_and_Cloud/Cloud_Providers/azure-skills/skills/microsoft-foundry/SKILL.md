@@ -124,11 +124,11 @@ Every agent source folder can keep Foundry-specific cache and overlay state unde
 - In azd projects, derive deployment context (project endpoint, agent name/version, ACR, App Insights) from `azure.yaml` plus `azd env get-values`; do not duplicate those values in metadata when azd already provides them.
 - `agent-metadata.yaml` is the preferred local/dev overlay for non-azd values, remote Foundry suite references, local cache paths, result summaries, and explicit overrides. Optional sidecar files such as `agent-metadata.prod.yaml` can hold a single prod or CI-targeted overlay without mixing multiple environments in one file.
 - `suites/`, `datasets/`, and `evaluators/` are local cache folders. Reuse them when they are current, and ask before refreshing or overwriting them.
-- See [Agent Metadata Contract](references/agent-metadata-contract.md) for the canonical schema and workflow rules.
+- See [Agent Metadata Contract](../../../../../Global_References/agent-metadata-contract.md) for the canonical schema and workflow rules.
 
 ## Agent: Setup References
 
-- [Standard Agent Setup](references/standard-agent-setup.md) — advanced setup for production workloads that need data-residency control (bring-your-own Cosmos DB / Storage / AI Search via a Foundry capability host). The default `azd ai agent` flow uses **Basic Agent Setup** and does **not** provision `capabilityHosts/agents` — do not flag its absence as a bug. For default post-provision state, see the "Expected env-var fingerprint" section in [foundry-agent/create/create-hosted.md](foundry-agent/create/create-hosted.md).
+- [Standard Agent Setup](../../../../../Global_References/standard-agent-setup.md) — advanced setup for production workloads that need data-residency control (bring-your-own Cosmos DB / Storage / AI Search via a Foundry capability host). The default `azd ai agent` flow uses **Basic Agent Setup** and does **not** provision `capabilityHosts/agents` — do not flag its absence as a bug. For default post-provision state, see the "Expected env-var fingerprint" section in [foundry-agent/create/create-hosted.md](foundry-agent/create/create-hosted.md).
 
 ## Agent: Common Project Context Resolution
 
@@ -262,7 +262,7 @@ Treat an `azure.yaml` service with `host: azure.ai.agent` as Hosted. Use `agent_
 
 ## Azure Authentication
 
-- [Azure Authentication Best Practices](references/auth-best-practices.md)
+- [Azure Authentication Best Practices](../../../../../Global_References/microsoft-foundry_auth-best-practices.md)
 
 ## Additional Resources
 
@@ -288,3 +288,4 @@ az cognitiveservices account show \
 If it's indeed a network isolation issue, supported connection options are documented in [Choose a secure connection method to Foundry](https://learn.microsoft.com/azure/foundry/how-to/configure-private-link#choose-a-secure-connection-method-to-foundry).
 
 > ℹ️ Foundry MCP tools cannot reach a VNet-isolated project even from inside the VNet.
+

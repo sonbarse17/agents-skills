@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern PHP | `references/modern-php-features.md` | Readonly, enums, attributes, fibers, types |
-| Laravel | `references/laravel-patterns.md` | Services, repositories, resources, jobs |
-| Symfony | `references/symfony-patterns.md` | DI, events, commands, voters |
-| Async PHP | `references/async-patterns.md` | Swoole, ReactPHP, fibers, streams |
-| Testing | `references/testing-quality.md` | PHPUnit, PHPStan, Pest, mocking |
+| Modern PHP | `../../../Global_References/modern-php-features.md` | Readonly, enums, attributes, fibers, types |
+| Laravel | `../../../Global_References/laravel-patterns.md` | Services, repositories, resources, jobs |
+| Symfony | `../../../Global_References/symfony-patterns.md` | DI, events, commands, voters |
+| Async PHP | `../../../Global_References/php-pro_async-patterns.md` | Swoole, ReactPHP, fibers, streams |
+| Testing | `../../../Global_References/testing-quality.md` | PHPUnit, PHPStan, Pest, mocking |
 
 ## Constraints
 
@@ -206,3 +206,4 @@ When implementing a feature, deliver in this order:
 PHP 8.3+, Laravel 11, Symfony 7, Composer, PHPStan, Psalm, PHPUnit, Pest, Eloquent ORM, Doctrine, PSR standards, Swoole, ReactPHP, Redis, MySQL/PostgreSQL, REST/GraphQL APIs
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/php-pro/)
+

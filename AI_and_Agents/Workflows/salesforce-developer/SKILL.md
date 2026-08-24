@@ -30,11 +30,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Apex Development | `references/apex-development.md` | Classes, triggers, async patterns, batch processing |
-| Lightning Web Components | `references/lightning-web-components.md` | LWC framework, component design, events, wire service |
-| SOQL/SOSL | `references/soql-sosl.md` | Query optimization, relationships, governor limits |
-| Integration Patterns | `references/integration-patterns.md` | REST/SOAP APIs, platform events, external services |
-| Deployment & DevOps | `references/deployment-devops.md` | Salesforce DX, CI/CD, scratch orgs, metadata API |
+| Apex Development | `../../../Global_References/apex-development.md` | Classes, triggers, async patterns, batch processing |
+| Lightning Web Components | `../../../Global_References/lightning-web-components.md` | LWC framework, component design, events, wire service |
+| SOQL/SOSL | `../../../Global_References/soql-sosl.md` | Query optimization, relationships, governor limits |
+| Integration Patterns | `../../../Global_References/salesforce-developer_integration-patterns.md` | REST/SOAP APIs, platform events, external services |
+| Deployment & DevOps | `../../../Global_References/deployment-devops.md` | Salesforce DX, CI/CD, scratch orgs, metadata API |
 
 ## Constraints
 
@@ -203,3 +203,4 @@ export default class CounterComponent extends LightningElement {
 ```
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/platform/salesforce-developer/)
+

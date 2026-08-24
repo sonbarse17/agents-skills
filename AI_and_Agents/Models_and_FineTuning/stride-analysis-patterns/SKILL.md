@@ -45,7 +45,7 @@ E - Elevation of   → Authorization threats
 
 ## Templates and detailed worked examples
 
-Full template library lives in `references/details.md`. Read that file when you need concrete templates for this skill.
+Full template library lives in `../../../Global_References/stride-analysis-patterns_details.md`. Read that file when you need concrete templates for this skill.
 
 ## Best Practices
 
@@ -64,3 +64,4 @@ Full template library lives in `references/details.md`. Read that file when you 
 - **Don't work in isolation** - Collaborative modeling is better
 - **Don't ignore low-probability** - High-impact threats matter
 - **Don't stop at identification** - Follow through with mitigations
+

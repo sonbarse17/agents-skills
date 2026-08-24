@@ -80,7 +80,7 @@ free -g | awk 'NR==2 {print "free:", $4, "GB"}'
 Rule of thumb: take that free figure, subtract a
 few GB for OS/driver overhead, and budget against
 the result — not the 128GB spec number.
-The worksheet in `references/uma-accounting.md`
+The worksheet in `../../../Global_References/uma-accounting.md`
 accepts parameter count, dtype, and method as
 input, and returns a memory estimate to compare
 against known anchors.
@@ -92,7 +92,7 @@ Before launch, work through these in order:
 1. Read `free -g`; subtract OS/driver overhead
    for the budget.
 2. Estimate weights + optimizer + gradients +
-   activations from `references/uma-accounting.md`.
+   activations from `../../../Global_References/uma-accounting.md`.
 3. Compare against the closest anchor (70B
    QLoRA, 27B LoRA, 9B full FT), not the
    estimate alone.
@@ -227,4 +227,5 @@ This procedure complements `spark-training-gotchas`
 failures; this one, the running job.
 
 Memory math worksheets:
-`references/uma-accounting.md`.
+`../../../Global_References/uma-accounting.md`.
+

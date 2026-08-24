@@ -528,17 +528,18 @@ interface ICacheService {
 - Every public method in Domain should be unit-testable with zero mocks.
 
 ## References
-  - references/clean-arch-fundamentals.md — Clean Architecture Fundamentals
-  - references/clean-arch-advanced.md — Clean Architecture Advanced Patterns
-  - references/clean-arch-errors.md — Clean Architecture Error Handling
-  - references/clean-arch-events.md — Clean Architecture Domain Events
-  - references/clean-arch-testing.md — Clean Architecture Testing
-  - references/dependency-injection.md — Dependency Injection
-  - references/dependency-rule-deep.md — Dependency Rule Deep Dive
-  - references/entity-boundaries.md — Entity Boundaries and Aggregate Design
-  - references/layer-structure.md — Layer Structure
-  - references/use-case-patterns.md — Use Case Patterns
+  - ../../../Global_References/clean-arch-fundamentals.md — Clean Architecture Fundamentals
+  - ../../../Global_References/clean-arch-advanced.md — Clean Architecture Advanced Patterns
+  - ../../../Global_References/clean-arch-errors.md — Clean Architecture Error Handling
+  - ../../../Global_References/clean-arch-events.md — Clean Architecture Domain Events
+  - ../../../Global_References/clean-arch-testing.md — Clean Architecture Testing
+  - ../../../Global_References/dependency-injection.md — Dependency Injection
+  - ../../../Global_References/dependency-rule-deep.md — Dependency Rule Deep Dive
+  - ../../../Global_References/entity-boundaries.md — Entity Boundaries and Aggregate Design
+  - ../../../Global_References/layer-structure.md — Layer Structure
+  - ../../../Global_References/use-case-patterns.md — Use Case Patterns
 ## Handoff
 No artifact produced.
 Next skill: backend-api-design — after layers are defined, design API contracts that respect layer boundaries.
 Carry forward: stack, layer decisions, interface definitions.
+

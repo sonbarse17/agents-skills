@@ -58,7 +58,7 @@ Automates intelligent Azure OpenAI model deployment by checking capacity across 
 | 6. Select Region + Project | User picks region; find or create project | `az cognitiveservices account list`, `az cognitiveservices account create` |
 | 7. Deploy | Generate unique name, calculate capacity (50% available, min 50 TPM), create deployment | `az cognitiveservices account deployment create` |
 
-For detailed step-by-step instructions, see [workflow reference](references/workflow.md).
+For detailed step-by-step instructions, see [workflow reference](../../../Global_References/workflow.md).
 
 ---
 
@@ -101,3 +101,4 @@ az cognitiveservices account deployment delete --name <acct> --resource-group <r
 - **azure-quick-review** - Review Azure resources for compliance
 - **azure-cost-estimation** - Estimate costs for Azure deployments
 - **azure-validate** - Validate Azure infrastructure before deployment
+

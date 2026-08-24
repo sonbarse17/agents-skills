@@ -179,7 +179,7 @@ def robust_http_call(
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-resilience_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -193,3 +193,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Set timeouts everywhere** - Every network call needs a timeout
 9. **Fail gracefully** - Return cached/default values for non-critical paths
 10. **Monitor retry rates** - High retry rates indicate underlying issues
+

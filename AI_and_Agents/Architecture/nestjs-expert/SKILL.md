@@ -32,12 +32,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Controllers | `references/controllers-routing.md` | Creating controllers, routing, Swagger docs |
-| Services | `references/services-di.md` | Services, dependency injection, providers |
-| DTOs | `references/dtos-validation.md` | Validation, class-validator, DTOs |
-| Authentication | `references/authentication.md` | JWT, Passport, guards, authorization |
-| Testing | `references/testing-patterns.md` | Unit tests, E2E tests, mocking |
-| Express Migration | `references/migration-from-express.md` | Migrating from Express.js to NestJS |
+| Controllers | `../../../Global_References/controllers-routing.md` | Creating controllers, routing, Swagger docs |
+| Services | `../../../Global_References/services-di.md` | Services, dependency injection, providers |
+| DTOs | `../../../Global_References/dtos-validation.md` | Validation, class-validator, DTOs |
+| Authentication | `../../../Global_References/nestjs-expert_authentication.md` | JWT, Passport, guards, authorization |
+| Testing | `../../../Global_References/testing-patterns.md` | Unit tests, E2E tests, mocking |
+| Express Migration | `../../../Global_References/migration-from-express.md` | Migrating from Express.js to NestJS |
 
 ## Code Examples
 
@@ -206,3 +206,4 @@ When implementing a NestJS feature, provide in this order:
 NestJS, TypeScript, TypeORM, Prisma, Passport, JWT, class-validator, class-transformer, Swagger/OpenAPI, Jest, Supertest, Guards, Interceptors, Pipes, Filters
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/nestjs-expert/)
+

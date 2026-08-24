@@ -389,14 +389,14 @@ A technology company used its architecture principles to make a difficult build-
 - Governance process reviewed annually for effectiveness and efficiency.
 
 ## References
-  - references/architecture-board.md -- Architecture Review Board (ARB)
-  - references/architecture-governance-advanced.md -- Architecture Governance Advanced Topics
+  - ../../../Global_References/architecture-board.md -- Architecture Review Board (ARB)
+  - ../../../Global_References/architecture-governance-advanced.md -- Architecture Governance Advanced Topics
   - references/architecture-governance-board.md -- Architecture Governance Board Reference
   - references/architecture-governance-review.md -- Architecture Governance Review Process
-  - references/architecture-governance-fundamentals.md -- Architecture Governance Fundamentals
-  - references/architecture-principles.md -- Architecture Principles
-  - references/architecture-reviews.md -- Architecture Review Process
-  - references/decision-rights.md -- Architecture Decision Rights
+  - ../../../Global_References/architecture-governance-fundamentals.md -- Architecture Governance Fundamentals
+  - ../../../Global_References/architecture-principles.md -- Architecture Principles
+  - ../../../Global_References/architecture-reviews.md -- Architecture Review Process
+  - ../../../Global_References/decision-rights.md -- Architecture Decision Rights
 ## Implementation Patterns
 
 ### Pattern: Automated Compliance Gate in CI/CD

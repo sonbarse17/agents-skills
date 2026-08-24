@@ -177,7 +177,7 @@ spec:
       privileged: true
 ```
 
-See `references/suppression_guide.md` for comprehensive suppression strategies.
+See `../../../Global_References/suppression_guide.md` for comprehensive suppression strategies.
 
 ### Step 5: Create Custom Policies
 
@@ -212,7 +212,7 @@ Run with custom policies:
 checkov -d ./terraform --external-checks-dir ./custom_checks
 ```
 
-See `references/custom_policies.md` for advanced policy development.
+See `../../../Global_References/custom_policies.md` for advanced policy development.
 
 ### Step 6: Generate Compliance Reports
 
@@ -240,7 +240,7 @@ checkov -d ./terraform -o sarif --output-file-path ./sarif-report.json
 - **SARIF**: GitHub/Azure DevOps Security tab
 - **CycloneDX**: Software Bill of Materials for IaC
 
-Map findings to compliance frameworks using `references/compliance_mapping.md`.
+Map findings to compliance frameworks using `../../../Global_References/iac-checkov_compliance_mapping.md`.
 
 ## CI/CD Integration
 
@@ -669,3 +669,4 @@ checkov -d .
 - [Terraform Security Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html)
 - [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - [AWS Security Best Practices](https://aws.amazon.com/security/security-resources/)
+

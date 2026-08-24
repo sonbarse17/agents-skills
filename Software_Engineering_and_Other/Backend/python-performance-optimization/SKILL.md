@@ -73,7 +73,7 @@ print(f"Average time: {execution_time/100:.6f} seconds")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/python-performance-optimization_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -98,3 +98,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - Ignoring algorithmic complexity
 - Over-optimizing rare code paths
 - Not considering memory usage
+

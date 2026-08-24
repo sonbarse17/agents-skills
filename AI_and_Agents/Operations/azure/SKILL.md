@@ -635,15 +635,16 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 Bicep/ARM templates, Azure DevOps YAML pipeline definitions, AKS config, Azure CLI commands.
 
 ## References
-  - references/azure-advanced.md
-  - references/azure-aks.md
-  - references/azure-compute.md
-  - references/azure-devops-pipelines.md
-  - references/azure-fundamentals.md
-  - references/azure-iac.md
-  - references/azure-networking.md
-  - references/azure-resource-management.md
+  - ../../../Global_References/azure-advanced.md
+  - ../../../Global_References/azure-aks.md
+  - ../../../Global_References/azure-compute.md
+  - ../../../Global_References/azure-devops-pipelines.md
+  - ../../../Global_References/azure-fundamentals.md
+  - ../../../Global_References/azure-iac.md
+  - ../../../Global_References/azure-networking.md
+  - ../../../Global_References/azure-resource-management.md
   - references/azure-policy-guide.md
 
 ## Handoff
 Hand off to Azure when provisioning Azure-specific infrastructure or pipelines. Hand off to terraform for multi-cloud IaC. Hand off to monitoring for Azure Monitor configuration.
+

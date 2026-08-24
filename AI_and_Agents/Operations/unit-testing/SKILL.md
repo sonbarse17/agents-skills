@@ -386,16 +386,16 @@ Testing only the happy path (correct input, expected behavior) misses null/undef
 18. Console.log assertions in tests must be removed before committing — use spy on console
 
 ## References
-- references/mocking-strategies.md — Mocking Strategies
-- references/tdd-guide.md — TDD Guide
-- references/test-doubles.md — Test Doubles Guide
-- references/test-organization.md — Test Organization
-- references/test-patterns.md — Unit Test Patterns
-- references/unit-testing-advanced.md — Unit Testing Advanced Topics
-- references/unit-testing-architecture.md — Unit Testing Architecture and System Design
-- references/unit-testing-fundamentals.md — Unit Testing Fundamentals
-- references/unit-testing-patterns.md — Unit Testing Patterns
-- references/unit-testing-workflow-strategies.md — Unit Testing Workflow Strategies and Decision Frameworks
+- ../../../Global_References/mocking-strategies.md — Mocking Strategies
+- ../../../Global_References/tdd-guide.md — TDD Guide
+- ../../../Global_References/test-doubles.md — Test Doubles Guide
+- ../../../Global_References/test-organization.md — Test Organization
+- ../../../Global_References/unit-testing_test-patterns.md — Unit Test Patterns
+- ../../../Global_References/unit-testing-advanced.md — Unit Testing Advanced Topics
+- ../../../Global_References/unit-testing-architecture.md — Unit Testing Architecture and System Design
+- ../../../Global_References/unit-testing-fundamentals.md — Unit Testing Fundamentals
+- ../../../Global_References/unit-testing-patterns.md — Unit Testing Patterns
+- ../../../Global_References/unit-testing-workflow-strategies.md — Unit Testing Workflow Strategies and Decision Frameworks
 
 ## Handoff
 After unit testing, hand off to:

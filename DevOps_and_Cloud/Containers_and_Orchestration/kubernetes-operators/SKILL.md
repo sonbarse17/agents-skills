@@ -855,16 +855,17 @@ func init() {
 | Performance | Best | Best | Moderate | Moderate |
 
 ## References
-- references/controller-runtime.md — Controller Runtime Deep Dive
-- references/finalizers-garbage.md — Finalizers, Garbage Collection, and Owner References
-- references/kubernetes-operators-advanced.md — Kubernetes Operators Advanced Topics
-- references/kubernetes-operators-fundamentals.md — Kubernetes Operators Fundamentals
-- references/operator-patterns.md — Kubernetes Operator Design Patterns
-- references/operator-sdk-guide.md — Operator SDK Guide
-- references/testing-operators.md — Operator Testing
+- ../../../Global_References/controller-runtime.md — Controller Runtime Deep Dive
+- ../../../Global_References/finalizers-garbage.md — Finalizers, Garbage Collection, and Owner References
+- ../../../Global_References/kubernetes-operators-advanced.md — Kubernetes Operators Advanced Topics
+- ../../../Global_References/kubernetes-operators-fundamentals.md — Kubernetes Operators Fundamentals
+- ../../../Global_References/operator-patterns.md — Kubernetes Operator Design Patterns
+- ../../../Global_References/operator-sdk-guide.md — Operator SDK Guide
+- ../../../Global_References/testing-operators.md — Operator Testing
 - references/conversion-webhooks.md — Multi-Version CRD with Conversion Webhooks
 - references/operator-metrics.md — Operator Metrics and Observability
 - references/olm-deployment.md — OLM Operator Deployment
 
 ## Handoff
 Related skills: kubernetes-patterns (K8s resource patterns), helm-patterns (Helm chart design), gitops-advanced (GitOps with custom operators), policy-as-code (admission webhooks integration), monitoring (operator metrics and dashboards).
+

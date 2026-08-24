@@ -601,15 +601,16 @@ Only monitoring at room level instead of at rack intake. Rack-level monitoring c
 - BMC ports restricted to management VLAN only.
 
 ## References
-  - references/cabling.md
-  - references/datacenter-advanced.md
-  - references/datacenter-capacity-planning.md
-  - references/datacenter-fundamentals.md
-  - references/datacenter-networking-storage.md
-  - references/dcim.md
-  - references/rack-power-cooling.md
-  - references/tier-classification.md
+  - ../../../Global_References/cabling.md
+  - ../../../Global_References/datacenter-advanced.md
+  - ../../../Global_References/datacenter-capacity-planning.md
+  - ../../../Global_References/datacenter-fundamentals.md
+  - ../../../Global_References/datacenter-networking-storage.md
+  - ../../../Global_References/dcim.md
+  - ../../../Global_References/rack-power-cooling.md
+  - ../../../Global_References/tier-classification.md
   - references/ashrae-guidelines.md
 
 ## Handoff
 Next: **network-infrastructure** — datacenter network architecture.
+

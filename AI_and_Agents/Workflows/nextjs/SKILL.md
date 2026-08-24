@@ -497,16 +497,17 @@ export const metadata: Metadata = { title: 'Page Title' }
 - Metadata on every page — use generateMetadata for dynamic routes.
 
 ## References
-  - references/app-router-architecture.md
-  - references/app-router.md
-  - references/middleware-edge.md
-  - references/nextjs-data-fetching.md
-  - references/nextjs-deployment.md
-  - references/server-components.md
-  - references/nextjs-app-router-patterns.md
-  - references/nextjs-data-fetching-caching.md
+  - ../../../Global_References/app-router-architecture.md
+  - ../../../Global_References/app-router.md
+  - ../../../Global_References/middleware-edge.md
+  - ../../../Global_References/nextjs-data-fetching.md
+  - ../../../Global_References/nextjs-deployment.md
+  - ../../../Global_References/server-components.md
+  - ../../../Global_References/nextjs-app-router-patterns.md
+  - ../../../Global_References/nextjs-data-fetching-caching.md
 
 ## Handoff
 No artifact produced.
 Next skill: frontend-testing.
 Carry forward: App Router structure, data fetching pattern, Server/Client boundary decisions.
+

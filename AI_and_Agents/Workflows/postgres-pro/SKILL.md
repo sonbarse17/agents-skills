@@ -69,11 +69,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Performance | `references/performance.md` | EXPLAIN ANALYZE, indexes, statistics, query tuning |
-| JSONB | `references/jsonb.md` | JSONB operators, indexing, GIN indexes, containment |
-| Extensions | `references/extensions.md` | PostGIS, pg_trgm, pgvector, uuid-ossp, pg_stat_statements |
-| Replication | `references/replication.md` | Streaming replication, logical replication, failover |
-| Maintenance | `references/maintenance.md` | VACUUM, ANALYZE, pg_stat views, monitoring, bloat |
+| Performance | `../../../Global_References/performance.md` | EXPLAIN ANALYZE, indexes, statistics, query tuning |
+| JSONB | `../../../Global_References/jsonb.md` | JSONB operators, indexing, GIN indexes, containment |
+| Extensions | `../../../Global_References/extensions.md` | PostGIS, pg_trgm, pgvector, uuid-ossp, pg_stat_statements |
+| Replication | `../../../Global_References/replication.md` | Streaming replication, logical replication, failover |
+| Maintenance | `../../../Global_References/maintenance.md` | VACUUM, ANALYZE, pg_stat views, monitoring, bloat |
 
 ## Common Patterns
 
@@ -152,3 +152,4 @@ When implementing PostgreSQL solutions, provide:
 PostgreSQL 12-16, EXPLAIN ANALYZE, B-tree/GIN/GiST/BRIN indexes, JSONB operators, streaming replication, logical replication, VACUUM/ANALYZE, pg_stat views, PostGIS, pgvector, pg_trgm, WAL archiving, PITR
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/postgres-pro/)
+

@@ -464,12 +464,12 @@ Use separate test database with test user. Use `prisma migrate deploy` in CI. Us
 - Index all foreign keys and frequently queried columns.
 
 ## References
-  - references/prisma-advanced.md — Prisma Advanced Patterns
-  - references/prisma-deployment.md — Deployment and Performance
-  - references/prisma-middleware.md — Middleware and Extensions
-  - references/prisma-relations.md — Relation Patterns
-  - references/query-optimization.md — Query Optimization
-  - references/schema-migrations.md — Schema and Migration Patterns
+  - ../../../Global_References/prisma-advanced.md — Prisma Advanced Patterns
+  - ../../../Global_References/prisma-deployment.md — Deployment and Performance
+  - ../../../Global_References/prisma-middleware.md — Middleware and Extensions
+  - ../../../Global_References/prisma-relations.md — Relation Patterns
+  - ../../../Global_References/prisma_query-optimization.md — Query Optimization
+  - ../../../Global_References/schema-migrations.md — Schema and Migration Patterns
 ## Handoff
 Hand off to `backend/nodejs/drizzle/SKILL.md` for Drizzle ORM patterns or `backend/nodejs/patterns/SKILL.md` for advanced Node patterns.
 ## Implementation Patterns

@@ -44,7 +44,7 @@ Complete guide to observability patterns for Istio, Linkerd, and service mesh de
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/service-mesh-observability_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -62,3 +62,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't ignore cardinality** - Limit label values
 - **Don't skip dashboards** - Visualize dependencies
 - **Don't forget costs** - Monitor observability costs
+

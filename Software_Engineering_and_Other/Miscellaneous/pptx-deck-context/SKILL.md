@@ -12,7 +12,7 @@ Prepare the deck before coordinates or PPTX objects are authored. This skill own
 1. Confirm audience, decision, slide count, language, sources, and brand requirements.
 2. Use the user-selected narrative framework. If none is specified, offer `mckinsey`, `scqa`, `pyramid`, `mece`, `action-title`, `assertion-evidence`, `exec-summary-first`, or `custom`; do not choose silently.
 3. Assign stable source IDs and plan a `source_ref` for every metric, quotation, chart value, and factual claim.
-4. Choose a documented design direction. Prefer a user brand guide, then read-only reference-deck evidence, then a reusable profile from `references/design-profiles.md`.
+4. Choose a documented design direction. Prefer a user brand guide, then read-only reference-deck evidence, then a reusable profile from `../../../Global_References/design-profiles.md`.
 5. Record the framework, assumptions, source manifest, palette, typography, spacing, and signature elements in `summary` before authoring slides.
 
 ## Rules
@@ -23,4 +23,5 @@ Prepare the deck before coordinates or PPTX objects are authored. This skill own
 - Translate design signals into explicit fills, typography, spacing, and bboxes; do not rely on an automatic layout engine.
 - Keep long source material concise. Ask for a summary or decision-relevant excerpt instead of turning a deck spec into a document dump.
 
-See `references/design-profiles.md` for reusable profile guidance.
+See `../../../Global_References/design-profiles.md` for reusable profile guidance.
+

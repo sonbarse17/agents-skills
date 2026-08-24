@@ -740,23 +740,24 @@ const resolvers = {
 ```
 
 ## References
-- [GraphQL Federation Fundamentals](references/graphql-federation-fundamentals.md) — Federation v2 core concepts, directives, entity types, subgraph design
-- [GraphQL Federation Advanced](references/graphql-federation-advanced.md) — Advanced topics: cost analysis, contract testing, migration strategies, multi-region
-- [Entity Resolution](references/entity-resolution.md) — Entity resolution patterns, __resolveReference, @requires, @provides flow
-- [Federation Architecture](references/federation-architecture.md) — Subgraph design principles, Fed 1 vs Fed 2 comparison
-- [Federation Deployment](references/federation-deployment.md) — Production deployment, CI/CD, rollback procedures
-- [Federation Performance](references/federation-performance.md) — Query planning, caching, DataLoader, performance budgets
-- [Federation Security](references/federation-security.md) — AuthN at router, authZ at subgraph, rate limiting, DoS protection
-- [Federation Testing](references/federation-testing.md) — Unit, integration, contract testing patterns
-- [Supergraph Composition](references/supergraph-composition.md) — Composition pipeline, directives, CI/CD
-- [Supergraph Config](references/supergraph-config.md) — Router configuration, traffic shaping, query plans
-- [Federation vs Mesh](references/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
-- [Federated Tracing](references/federated-tracing.md) — OpenTelemetry, Studio integration, distributed tracing
-- [Federation Migration Monolith](references/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
-- [Federation Cost Management](references/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
+- [GraphQL Federation Fundamentals](../../../Global_References/graphql-federation-fundamentals.md) — Federation v2 core concepts, directives, entity types, subgraph design
+- [GraphQL Federation Advanced](../../../Global_References/graphql-federation-advanced.md) — Advanced topics: cost analysis, contract testing, migration strategies, multi-region
+- [Entity Resolution](../../../Global_References/entity-resolution.md) — Entity resolution patterns, __resolveReference, @requires, @provides flow
+- [Federation Architecture](../../../Global_References/federation-architecture.md) — Subgraph design principles, Fed 1 vs Fed 2 comparison
+- [Federation Deployment](../../../Global_References/graphql-federation_federation-deployment.md) — Production deployment, CI/CD, rollback procedures
+- [Federation Performance](../../../Global_References/federation-performance.md) — Query planning, caching, DataLoader, performance budgets
+- [Federation Security](../../../Global_References/federation-security.md) — AuthN at router, authZ at subgraph, rate limiting, DoS protection
+- [Federation Testing](../../../Global_References/federation-testing.md) — Unit, integration, contract testing patterns
+- [Supergraph Composition](../../../Global_References/supergraph-composition.md) — Composition pipeline, directives, CI/CD
+- [Supergraph Config](../../../Global_References/supergraph-config.md) — Router configuration, traffic shaping, query plans
+- [Federation vs Mesh](../../../Global_References/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
+- [Federated Tracing](../../../Global_References/federated-tracing.md) — OpenTelemetry, Studio integration, distributed tracing
+- [Federation Migration Monolith](../../../Global_References/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
+- [Federation Cost Management](../../../Global_References/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
 
 <!-- COMPRESSION FOOTER -->
 <!--
 Compression Level: 5 (Comprehensive architectural references & code details preserved)
 Strict compliance with Apollo Federation v2 directives, supergraph schema compositions, query planning, and entity resolution patterns.
 -->
+

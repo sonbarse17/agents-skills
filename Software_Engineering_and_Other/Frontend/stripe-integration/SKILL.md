@@ -103,7 +103,7 @@ print(session.url)
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/stripe-integration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing
 
@@ -144,3 +144,4 @@ def test_payment_flow():
 
     assert confirmed.status == 'succeeded'
 ```
+

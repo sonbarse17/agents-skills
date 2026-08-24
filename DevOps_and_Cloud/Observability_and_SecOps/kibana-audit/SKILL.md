@@ -20,7 +20,7 @@ For Elasticsearch audit logging (authentication failures, access grants/denials,
 management, see **elasticsearch-authz**.
 
 For detailed event types, schema, and correlation queries, see
-[references/api-reference.md](references/api-reference.md).
+[../../../Global_References/kibana-audit_api-reference.md](../../../Global_References/kibana-audit_api-reference.md).
 
 > **Deployment note:** Kibana audit configuration differs across deployment types. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -99,7 +99,7 @@ Key event actions:
 | `space_delete`                     | A Kibana space was deleted                   | web            |
 | `space_get`                        | A Kibana space was retrieved                 | web            |
 
-See [references/api-reference.md](references/api-reference.md) for the complete event schema.
+See [../../../Global_References/kibana-audit_api-reference.md](../../../Global_References/kibana-audit_api-reference.md) for the complete event schema.
 
 ## Filter Policies
 
@@ -267,3 +267,4 @@ through the Cloud console deployment logs.
 - Kibana audit logging is not user-configurable on Serverless. Security events are managed by Elastic as part of the
   platform.
 - If a user asks about Kibana auditing on Serverless, direct them to the Elastic Cloud console or their account team.
+

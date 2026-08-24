@@ -134,7 +134,7 @@ Always pipe (`|`) between steps. Extractors and Enrichers use `| invoke Function
 
 ## Examples
 
-For additional prompts and worked examples, see [references/EXAMPLES.md](references/EXAMPLES.md).
+For additional prompts and worked examples, see [../../../../../Global_References/azure-kusto-irql_EXAMPLES.md](../../../../../Global_References/azure-kusto-irql_EXAMPLES.md).
 
 ### Brute-force detection
 ```kql
@@ -230,7 +230,7 @@ Always output the complete KQL query in the chat response with Step 1 (connect) 
 <KQL_QUERY>
 ```
 
-If the user asks to save or open in Kusto Explorer, follow the procedure in [references/KUSTO_EXPLORER_LAUNCH.md](references/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - Use `ask_user` to confirm before writing files or launching executables
 - Display file contents in chat so the user can review before opening
@@ -238,3 +238,4 @@ If the user asks to save or open in Kusto Explorer, follow the procedure in [ref
 - Never encode queries into browser URLs
 - On macOS/Linux, save the `.kql` file and suggest the VS Code Kusto extension or ADX Web Explorer
 - For graph visualization from IRQL data, see `azure-kusto-graph` and `azure-kusto-irql-graph`
+

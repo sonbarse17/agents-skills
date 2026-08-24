@@ -633,12 +633,13 @@ Need message persistence and guaranteed delivery?
 ## References
   - references/symfony-doctrine-orm.md — Symfony Doctrine ORM Reference
   - references/symfony-messenger-queue.md — Symfony Messenger Queue Reference
-  - references/symfony-architecture.md — Symfony Architecture
-  - references/symfony-deployment.md — Symfony Deployment
-  - references/symfony-doctrine.md — Symfony Doctrine Guide
-  - references/symfony-security.md — Symfony Security Reference
-  - references/symfony-setup.md — Symfony Setup Guide
-  - references/symfony-testing.md — Symfony Testing Reference
+  - ../../../Global_References/symfony-architecture.md — Symfony Architecture
+  - ../../../Global_References/symfony-deployment.md — Symfony Deployment
+  - ../../../Global_References/symfony-doctrine.md — Symfony Doctrine Guide
+  - ../../../Global_References/symfony-security.md — Symfony Security Reference
+  - ../../../Global_References/symfony-setup.md — Symfony Setup Guide
+  - ../../../Global_References/symfony-testing.md — Symfony Testing Reference
 
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response standards.
+

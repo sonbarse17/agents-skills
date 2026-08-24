@@ -625,12 +625,13 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% ca
 - Quarterly tabletop exercise with all tiers to validate processes
 
 ## References
-  - references/soc-metrics.md — SOC Metrics and Reporting
-  - references/soc-operations-advanced.md — Soc Operations Advanced Topics
-  - references/soc-operations-fundamentals.md — Soc Operations Fundamentals
-  - references/soc-runbooks.md — SOC Runbook Templates
-  - references/soc-structure.md — SOC Structure
-  - references/threat-hunting.md — Threat Hunting in SOC
-  - references/triage-procedures.md — Alert Triage Procedures
+  - ../../../Global_References/soc-metrics.md — SOC Metrics and Reporting
+  - ../../../Global_References/soc-operations-advanced.md — Soc Operations Advanced Topics
+  - ../../../Global_References/soc-operations-fundamentals.md — Soc Operations Fundamentals
+  - ../../../Global_References/soc-runbooks.md — SOC Runbook Templates
+  - ../../../Global_References/soc-structure.md — SOC Structure
+  - ../../../Global_References/threat-hunting.md — Threat Hunting in SOC
+  - ../../../Global_References/triage-procedures.md — Alert Triage Procedures
 ## Handoff
 Output artifacts can be handed to devops-monitoring for SIEM integration, or management for org planning.
+

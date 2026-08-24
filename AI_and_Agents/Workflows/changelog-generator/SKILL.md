@@ -368,8 +368,8 @@ conventionalChangelog(config)
 ```
 
 ## References
-  - references/changelog-generator-advanced.md — Changelog Generator Advanced Topics
-  - references/changelog-generator-fundamentals.md — Changelog Generator Fundamentals
+  - ../../../Global_References/changelog-generator-advanced.md — Changelog Generator Advanced Topics
+  - ../../../Global_References/changelog-generator-fundamentals.md — Changelog Generator Fundamentals
   - references/conventional-commits.md — Conventional Commits Reference
   - references/release-workflow.md — Release Workflow Reference
 ## Handoff
@@ -599,3 +599,4 @@ What type is the commit?
 - **Cache tag-to-commit mapping**: Cache the tag-to-commit hash mapping. Avoids repeated git operations when rendering multiple changelogs (e.g., per-package in monorepo).
 - **Incremental generation**: Only process commits since the last generated changelog entry. Append new entries at the top of the Unreleased section.
 - **Parallel monorepo generation**: Generate per-package changelogs in parallel. Use a thread pool for repos with 10+ packages. Recombine into a summary changelog.
+

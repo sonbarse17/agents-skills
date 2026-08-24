@@ -507,12 +507,13 @@ output.elasticsearch:
 - Alert delivery verified with synthetic tests — never trust alerting without validation.
 
 ## References
-  - references/elk-setup.md — ELK Stack Setup Reference
-  - references/grafana-dashboards.md — Grafana Dashboard Design
-  - references/loki-setup.md — Loki Setup Reference
-  - references/monitoring-advanced.md — Monitoring Advanced Topics
-  - references/monitoring-fundamentals.md — Monitoring Fundamentals
-  - references/prometheus-setup.md — Prometheus Setup Reference
+  - ../../../Global_References/elk-setup.md — ELK Stack Setup Reference
+  - ../../../Global_References/grafana-dashboards.md — Grafana Dashboard Design
+  - ../../../Global_References/loki-setup.md — Loki Setup Reference
+  - ../../../Global_References/monitoring-advanced.md — Monitoring Advanced Topics
+  - ../../../Global_References/monitoring-fundamentals.md — Monitoring Fundamentals
+  - ../../../Global_References/prometheus-setup.md — Prometheus Setup Reference
 ## Handoff
 
 Hand off to `management/alerting/SKILL.md` for alert rule configuration. Hand off to `devops/helm-patterns/SKILL.md` for deploying monitoring stack on Kubernetes. Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.
+

@@ -512,13 +512,14 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 - **Feature store**: Feast, Tecton, SageMaker Feature Store.
 
 ## References
-  - references/ml-cicd-pipeline.md — ML CI/CD Pipeline
-  - references/ml-deployment.md — ML Deployment & Monitoring
-  - references/ml-experiment-tracking.md — ML Experiment Tracking
-  - references/ml-retraining.md — ML Model Retraining
-  - references/mlops-advanced.md — Mlops Advanced Topics
-  - references/mlops-fundamentals.md — Mlops Fundamentals
-  - references/mlops-pipeline-automation.md — MLOps Pipeline Automation
-  - references/mlops-model-governance.md — MLOps Model Governance
+  - ../../../Global_References/ml-cicd-pipeline.md — ML CI/CD Pipeline
+  - ../../../Global_References/ml-deployment.md — ML Deployment & Monitoring
+  - ../../../Global_References/ml-experiment-tracking.md — ML Experiment Tracking
+  - ../../../Global_References/ml-retraining.md — ML Model Retraining
+  - ../../../Global_References/mlops-advanced.md — Mlops Advanced Topics
+  - ../../../Global_References/mlops-fundamentals.md — Mlops Fundamentals
+  - ../../../Global_References/mlops-pipeline-automation.md — MLOps Pipeline Automation
+  - ../../../Global_References/mlops-model-governance.md — MLOps Model Governance
 ## Handoff
 For data pipeline CI/CD: `devops-dataops`. For Kubernetes deployment: `devops-kubernetes-for-data`.
+

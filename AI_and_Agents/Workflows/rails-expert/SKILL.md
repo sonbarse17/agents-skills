@@ -33,11 +33,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Hotwire/Turbo | `references/hotwire-turbo.md` | Turbo Frames, Streams, Stimulus controllers |
-| Active Record | `references/active-record.md` | Models, associations, queries, performance |
-| Background Jobs | `references/background-jobs.md` | Sidekiq, job design, queues, error handling |
-| Testing | `references/rspec-testing.md` | Model/request/system specs, factories |
-| API Development | `references/api-development.md` | API-only mode, serialization, authentication |
+| Hotwire/Turbo | `../../../Global_References/hotwire-turbo.md` | Turbo Frames, Streams, Stimulus controllers |
+| Active Record | `../../../Global_References/active-record.md` | Models, associations, queries, performance |
+| Background Jobs | `../../../Global_References/background-jobs.md` | Sidekiq, job design, queues, error handling |
+| Testing | `../../../Global_References/rspec-testing.md` | Model/request/system specs, factories |
+| API Development | `../../../Global_References/api-development.md` | API-only mode, serialization, authentication |
 
 ## Common Patterns
 
@@ -154,3 +154,4 @@ When implementing Rails features, provide:
 6. Brief explanation of architectural decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/rails-expert/)
+

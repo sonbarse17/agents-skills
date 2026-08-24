@@ -481,16 +481,16 @@ Primary ecosystem?
 - Choose lakehouse platform based on ecosystem, ML needs, and open standards
 
 ## References
-  - references/lakehouse-architecture.md — Lakehouse Architecture Reference
-  - references/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
-  - references/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
-  - references/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
-  - references/lakehouse-monitoring.md — Lakehouse Monitoring
-  - references/lakehouse-platform.md — Lakehouse Platform Reference
-  - references/lakehouse-query-engines.md — Lakehouse Query Engines
-  - references/medallion-architecture.md — Medallion Architecture Reference
-  - references/lakehouse-architecture-patterns.md — Lakehouse Architecture Patterns
-  - references/lakehouse-performance-optimization.md — Performance Optimization Reference
+  - ../../../Global_References/lakehouse-architecture.md — Lakehouse Architecture Reference
+  - ../../../Global_References/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
+  - ../../../Global_References/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
+  - ../../../Global_References/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
+  - ../../../Global_References/lakehouse-monitoring.md — Lakehouse Monitoring
+  - ../../../Global_References/lakehouse-platform.md — Lakehouse Platform Reference
+  - ../../../Global_References/lakehouse-query-engines.md — Lakehouse Query Engines
+  - ../../../Global_References/medallion-architecture.md — Medallion Architecture Reference
+  - ../../../Global_References/lakehouse-architecture-patterns.md — Lakehouse Architecture Patterns
+  - ../../../Global_References/lakehouse-performance-optimization.md — Performance Optimization Reference
 ## Architecture Decision Trees
 
 ```
@@ -599,3 +599,4 @@ sync:
 `data-data-lake` for underlying table format operations (compaction, vacuum, Z-order)
 `data-distributed-storage` for S3-compatible storage backend configuration
 `data-data-quality` for validation rules and data contract enforcement
+

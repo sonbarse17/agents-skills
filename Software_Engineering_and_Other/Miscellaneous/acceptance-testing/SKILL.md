@@ -448,14 +448,14 @@ metrics:
 15. Each UAT session must have a trained facilitator who is not the developer
 
 ## References
-  - references/acceptance-criteria.md — Acceptance Criteria Deep Dive
-  - references/acceptance-testing-advanced.md — Acceptance Testing Advanced Topics
-  - references/acceptance-testing-fundamentals.md — Acceptance Testing Fundamentals
-  - references/alpha-beta.md — Alpha and Beta Testing
-  - references/beta-program-management.md — Beta Program Management
-  - references/business-scenarios.md — Business Scenario Testing
-  - references/gherkin-best-practices.md — Gherkin Best Practices
-  - references/uat-process.md — User Acceptance Testing (UAT) Process
+  - ../../../Global_References/acceptance-testing_acceptance-criteria.md — Acceptance Criteria Deep Dive
+  - ../../../Global_References/acceptance-testing-advanced.md — Acceptance Testing Advanced Topics
+  - ../../../Global_References/acceptance-testing-fundamentals.md — Acceptance Testing Fundamentals
+  - ../../../Global_References/alpha-beta.md — Alpha and Beta Testing
+  - ../../../Global_References/beta-program-management.md — Beta Program Management
+  - ../../../Global_References/business-scenarios.md — Business Scenario Testing
+  - ../../../Global_References/gherkin-best-practices.md — Gherkin Best Practices
+  - ../../../Global_References/uat-process.md — User Acceptance Testing (UAT) Process
 ## Handoff
 After acceptance testing completion, hand off to:
 - `quality-regression-testing` — for regression suite updates from accepted changes

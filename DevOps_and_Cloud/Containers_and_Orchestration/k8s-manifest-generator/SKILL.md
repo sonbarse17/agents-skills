@@ -25,7 +25,7 @@ Use this skill when you need to:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/k8s-manifest-generator_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 
@@ -75,3 +75,4 @@ After creating manifests:
 - `helm-chart-scaffolding` - For templating and packaging
 - `gitops-workflow` - For automated deployments
 - `k8s-security-policies` - For advanced security configurations
+

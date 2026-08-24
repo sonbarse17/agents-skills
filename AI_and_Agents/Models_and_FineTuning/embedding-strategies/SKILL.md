@@ -43,7 +43,7 @@ Document → Chunking → Preprocessing → Embedding Model → Vector
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/embedding-strategies_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -63,3 +63,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't skip preprocessing**: Garbage in, garbage out
 - **Don't over-chunk**: Lose important context
 - **Don't forget metadata**: Essential for filtering and debugging
+

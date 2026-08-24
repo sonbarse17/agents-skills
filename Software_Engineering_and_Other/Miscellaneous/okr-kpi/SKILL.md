@@ -509,14 +509,15 @@ Next week: {priorities}
 ```
 
 ## References
-  - references/kpi-dashboard.md — KPI Dashboard
-  - references/kpi-tracking-tools.md — KPI Tracking Tools
-  - references/okr-alignment.md — OKR Alignment
-  - references/okr-examples.md — OKR Examples
-  - references/okr-kpi-advanced.md — OKR KPI Advanced Topics
-  - references/okr-kpi-frameworks.md — OKR vs KPI Frameworks
-  - references/okr-kpi-fundamentals.md — OKR KPI Fundamentals
-  - references/okr-template.md — OKR Template
+  - ../../../Global_References/kpi-dashboard.md — KPI Dashboard
+  - ../../../Global_References/kpi-tracking-tools.md — KPI Tracking Tools
+  - ../../../Global_References/okr-alignment.md — OKR Alignment
+  - ../../../Global_References/okr-examples.md — OKR Examples
+  - ../../../Global_References/okr-kpi-advanced.md — OKR KPI Advanced Topics
+  - ../../../Global_References/okr-kpi-frameworks.md — OKR vs KPI Frameworks
+  - ../../../Global_References/okr-kpi-fundamentals.md — OKR KPI Fundamentals
+  - ../../../Global_References/okr-template.md — OKR Template
 
 ## Handoff
 sprint-retro (review OKR progress during the sprint retrospective), create-roadmap (align the product roadmap themes with OKR objectives and KRs).
+

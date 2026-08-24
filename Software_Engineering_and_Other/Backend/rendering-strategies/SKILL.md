@@ -495,13 +495,14 @@ export function middleware(request: NextRequest) {
 10. Server Components that use `cookies()` or `headers()` become dynamic — use them intentionally.
 
 ## References
-  - references/edge-rendering.md — Edge Rendering
-  - references/hydration-strategies.md — Hydration Strategies
-  - references/isomorphic-rendering.md — Isomorphic Rendering
-  - references/rendering-comparison.md — Rendering Strategy Comparison
-  - references/ssr-csr.md — SSR vs CSR
-  - references/streaming-ssr.md — Streaming SSR
+  - ../../../Global_References/edge-rendering.md — Edge Rendering
+  - ../../../Global_References/hydration-strategies.md — Hydration Strategies
+  - ../../../Global_References/isomorphic-rendering.md — Isomorphic Rendering
+  - ../../../Global_References/rendering-comparison.md — Rendering Strategy Comparison
+  - ../../../Global_References/ssr-csr.md — SSR vs CSR
+  - ../../../Global_References/streaming-ssr.md — Streaming SSR
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-performance` — measure rendering strategy impact via Core Web Vitals.
 Carry forward: per-route strategy map, hydration approach, streaming config, revalidation intervals.
+

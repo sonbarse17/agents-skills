@@ -583,11 +583,12 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Type `AppState` in Application constructor for type-safe context.
 
 ## References
-  - references/deno-advanced.md — Deno Advanced Topics
-  - references/deno-deployment.md — Deno Deployment
-  - references/deno-essentials.md — Deno Essentials
-  - references/deno-fundamentals.md — Deno Fundamentals
-  - references/deno-runtime.md — Deno Runtime Deep Dive
-  - references/fresh-framework.md — Fresh Framework
+  - ../../../Global_References/deno-advanced.md — Deno Advanced Topics
+  - ../../../Global_References/deno-deployment.md — Deno Deployment
+  - ../../../Global_References/deno-essentials.md — Deno Essentials
+  - ../../../Global_References/deno-fundamentals.md — Deno Fundamentals
+  - ../../../Global_References/deno-runtime.md — Deno Runtime Deep Dive
+  - ../../../Global_References/fresh-framework.md — Fresh Framework
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formatting or backend-testing skill for test patterns.
+

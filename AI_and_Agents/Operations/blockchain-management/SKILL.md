@@ -687,16 +687,17 @@ contract PaymentStream {
 - **Timelock gas**: A single timelock execute can cost 200k-500k gas depending on action count
 
 ## References
-- references/blockchain-management-advanced.md — Blockchain Management Advanced Topics
-- references/blockchain-management-fundamentals.md — Blockchain Management Fundamentals
-- references/dao-governance.md — DAO Governance
-- references/dao-operations-lifecycle.md — DAO Operations Lifecycle
-- references/multi-sig-operations.md — Multi-Sig Operations
-- references/project-methodology.md — Web3 Project Methodology
-- references/token-engineering-and-emissions.md — Token Engineering & Emissions
-- references/tokenomics-design.md — Tokenomics Design
-- references/treasury-management.md — Treasury Management
+- ../../../Global_References/blockchain-management-advanced.md — Blockchain Management Advanced Topics
+- ../../../Global_References/blockchain-management-fundamentals.md — Blockchain Management Fundamentals
+- ../../../Global_References/dao-governance.md — DAO Governance
+- ../../../Global_References/dao-operations-lifecycle.md — DAO Operations Lifecycle
+- ../../../Global_References/multi-sig-operations.md — Multi-Sig Operations
+- ../../../Global_References/project-methodology.md — Web3 Project Methodology
+- ../../../Global_References/token-engineering-and-emissions.md — Token Engineering & Emissions
+- ../../../Global_References/tokenomics-design.md — Tokenomics Design
+- ../../../Global_References/treasury-management.md — Treasury Management
 
 ## Handoff
 blockchain-management → blockchain-tokenomics (for deep token model implementation)
 blockchain-management → blockchain-security (for audit and governance security)
+

@@ -560,11 +560,12 @@ spec:
 - Strimzi cluster not stabilizing: check ZooKeeper quorum, verify storage class.
 
 ## References
-  - references/data-infrastructure-k8s.md — Data Infrastructure on Kubernetes
-  - references/data-processing-k8s.md — Data Processing on Kubernetes
-  - references/data-workloads-k8s.md — Data Workloads on Kubernetes
-  - references/gpu-storage-k8s.md — GPU & Storage for Kubernetes Data Workloads
-  - references/kubernetes-for-data-advanced.md — Kubernetes For Data Advanced Topics
-  - references/kubernetes-for-data-fundamentals.md — Kubernetes For Data Fundamentals
+  - ../../../Global_References/data-infrastructure-k8s.md — Data Infrastructure on Kubernetes
+  - ../../../Global_References/data-processing-k8s.md — Data Processing on Kubernetes
+  - ../../../Global_References/data-workloads-k8s.md — Data Workloads on Kubernetes
+  - ../../../Global_References/gpu-storage-k8s.md — GPU & Storage for Kubernetes Data Workloads
+  - ../../../Global_References/kubernetes-for-data-advanced.md — Kubernetes For Data Advanced Topics
+  - ../../../Global_References/kubernetes-for-data-fundamentals.md — Kubernetes For Data Fundamentals
 ## Handoff
 For data pipeline orchestration, hand off to `etl-pipeline`. For streaming infrastructure, hand off to `streaming`.
+

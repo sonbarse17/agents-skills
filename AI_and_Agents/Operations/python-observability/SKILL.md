@@ -213,7 +213,7 @@ async def call_downstream_service(endpoint: str, data: dict) -> dict:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-observability_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -227,3 +227,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Separate concerns** - Observability code shouldn't pollute business logic
 9. **Test your observability** - Verify logs and metrics in integration tests
 10. **Set up alerts** - Metrics are useless without alerting
+

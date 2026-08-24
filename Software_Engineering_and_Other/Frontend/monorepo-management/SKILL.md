@@ -166,7 +166,7 @@ cd my-monorepo
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/monorepo-management_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -215,3 +215,4 @@ pnpm changeset publish
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
+

@@ -59,7 +59,7 @@ Moderate:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/wcag-audit-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -78,3 +78,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't hide focus outlines** - Keyboard users need them
 - **Don't disable zoom** - Users need to resize
 - **Don't use color alone** - Multiple indicators needed
+

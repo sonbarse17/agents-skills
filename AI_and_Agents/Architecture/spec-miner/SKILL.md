@@ -66,7 +66,7 @@ EARS (Easy Approach to Requirements Syntax) structures observed behavior as:
 | State-driven | While `<state>`, the `<system>` shall `<action>`. | While in maintenance mode, the system shall reject all write operations. |
 | Optional | Where `<feature>` is supported, the `<system>` shall `<action>`. | Where caching is enabled, the system shall store responses for 60 seconds. |
 
-> See `references/ears-format.md` for the complete EARS reference.
+> See `../../../Global_References/ears-format.md` for the complete EARS reference.
 
 ## Reference Guide
 
@@ -74,10 +74,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Analysis Process | `references/analysis-process.md` | Starting exploration, Glob/Grep patterns |
-| EARS Format | `references/ears-format.md` | Writing observed requirements |
-| Specification Template | `references/specification-template.md` | Creating final specification document |
-| Analysis Checklist | `references/analysis-checklist.md` | Ensuring thorough analysis |
+| Analysis Process | `../../../Global_References/analysis-process.md` | Starting exploration, Glob/Grep patterns |
+| EARS Format | `../../../Global_References/ears-format.md` | Writing observed requirements |
+| Specification Template | `../../../Global_References/specification-template.md` | Creating final specification document |
+| Analysis Checklist | `../../../Global_References/analysis-checklist.md` | Ensuring thorough analysis |
 
 ## Constraints
 
@@ -108,3 +108,4 @@ Include:
 7. Recommendations
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/spec-miner/)
+

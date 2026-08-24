@@ -20,7 +20,7 @@ Master modern responsive design techniques to create interfaces that adapt seaml
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../../Global_References/responsive-design_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -42,3 +42,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Touch Targets**: Buttons too small to tap accurately
 - **Aspect Ratio**: Images squishing or stretching
 - **Z-Index Stacking**: Overlays breaking on different screens
+

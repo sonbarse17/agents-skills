@@ -19,7 +19,7 @@ For Kibana audit logging (saved object access, login/logout, space operations), 
 and API key management, see **elasticsearch-authn**. For roles and user management, see **elasticsearch-authz**. For
 diagnosing security errors, see **elasticsearch-security-troubleshooting**.
 
-For detailed API endpoints and event types, see [references/api-reference.md](references/api-reference.md).
+For detailed API endpoints and event types, see [../../../Global_References/elasticsearch-audit_api-reference.md](../../../Global_References/elasticsearch-audit_api-reference.md).
 
 > **Deployment note:** Audit logging configuration differs across deployment types. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -155,7 +155,7 @@ Excluding `access_granted` significantly reduces log volume on busy clusters —
 | `run_as_denied`           | A run-as impersonation was denied                          |
 | `security_config_change`  | A security setting was changed (role, user, API key, etc.) |
 
-See [references/api-reference.md](references/api-reference.md) for the complete event type list with field details.
+See [../../../Global_References/elasticsearch-audit_api-reference.md](../../../Global_References/elasticsearch-audit_api-reference.md) for the complete event type list with field details.
 
 ## Filter Policies
 
@@ -296,7 +296,7 @@ This captures role creation/deletion, user changes, API key operations, and role
 
 Use `terms` aggregations on `event.action` (with `size: 0`) to count events by type over a time window. To detect
 brute-force attempts, aggregate `authentication_failed` events by `source.ip` with `min_doc_count: 5`. See
-[references/api-reference.md](references/api-reference.md) for full aggregation query examples.
+[../../../Global_References/elasticsearch-audit_api-reference.md](../../../Global_References/elasticsearch-audit_api-reference.md) for full aggregation query examples.
 
 ## Correlate with Kibana Audit Logs
 
@@ -465,3 +465,4 @@ console deployment logs. Index output works the same as self-managed.
 
 - Audit logging is not user-configurable on Serverless. Security events are managed by Elastic as part of the platform.
 - If a user asks about auditing on Serverless, direct them to the Elastic Cloud console or their account team.
+

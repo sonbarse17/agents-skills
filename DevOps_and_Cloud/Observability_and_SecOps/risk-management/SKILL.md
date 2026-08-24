@@ -485,14 +485,14 @@ Decision log:
 ```
 
 ## References
-  - references/mitigation-strategies.md — Mitigation Strategies
-  - references/risk-assessment-matrix.md — Risk Assessment Matrix
-  - references/risk-management-advanced.md — Risk Management Advanced
-  - references/risk-management-framework.md — Risk Management Framework
-  - references/risk-management-fundamentals.md — Risk Management Fundamentals
-  - references/risk-monitoring.md — Risk Monitoring
-  - references/risk-register.md — Risk Register Template
-  - references/risk-reporting.md — Risk Reporting
+  - ../../../Global_References/mitigation-strategies.md — Mitigation Strategies
+  - ../../../Global_References/risk-assessment-matrix.md — Risk Assessment Matrix
+  - ../../../Global_References/risk-management-advanced.md — Risk Management Advanced
+  - ../../../Global_References/risk-management-framework.md — Risk Management Framework
+  - ../../../Global_References/risk-management-fundamentals.md — Risk Management Fundamentals
+  - ../../../Global_References/risk-monitoring.md — Risk Monitoring
+  - ../../../Global_References/risk-register.md — Risk Register Template
+  - ../../../Global_References/risk-reporting.md — Risk Reporting
 
 ## Handoff
 sprint-retro (the risk register is reviewed at every sprint retro), create-roadmap (risk scores inform timeline adjustments and buffer allocation on the roadmap).
@@ -599,3 +599,4 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 - **Regulatory risks**: Tag risks linked to regulatory requirements (SOX, GDPR, HIPAA). Report compliance risk exposure separately.
 - **Audit readiness**: Maintain risk register in audit-ready format. Support export to standard audit formats.
 - **Board reporting**: Sanitize risk reports for board distribution. Omit operationally sensitive details, keep strategic view.
+

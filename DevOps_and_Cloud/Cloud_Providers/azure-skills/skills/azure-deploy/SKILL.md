@@ -48,8 +48,8 @@ Activate this skill when user wants to:
 
 1. Run after azure-prepare and azure-validate
 2. `.azure/deployment-plan.md` must exist with status `Validated`
-3. **Pre-deploy checklist required** — [Pre-Deploy Checklist](references/pre-deploy-checklist.md)
-4. ⛔ **Destructive actions require `ask_user`** — [global-rules](references/global-rules.md)
+3. **Pre-deploy checklist required** — [Pre-Deploy Checklist](../../../../../Global_References/pre-deploy-checklist.md)
+4. ⛔ **Destructive actions require `ask_user`** — [global-rules](../../../../../Global_References/azure-deploy_global-rules.md)
 5. **Scope: deployment execution only** — This skill owns execution of `azd up`, `azd deploy`, `terraform apply`, and `az deployment` commands. These commands are run through this skill's error recovery and verification pipeline.
 
 ---
@@ -59,14 +59,14 @@ Activate this skill when user wants to:
 | # | Action | Reference |
 |---|--------|-----------|
 | 1 | **Check Plan** — Read `.azure/deployment-plan.md`, verify status = `Validated` AND **Validation Proof** section is populated | `.azure/deployment-plan.md` |
-| 2 | **Pre-Deploy Checklist** — MUST complete ALL steps | [Pre-Deploy Checklist](references/pre-deploy-checklist.md) |
+| 2 | **Pre-Deploy Checklist** — MUST complete ALL steps | [Pre-Deploy Checklist](../../../../../Global_References/pre-deploy-checklist.md) |
 | 3 | **Load Recipe** — Based on `recipe.type` in `.azure/deployment-plan.md` | [recipes/README.md](references/recipes/README.md) |
-| 4 | **RBAC Health Check** — For Container Apps + ACR with managed identity: run `azd provision --no-prompt`, then verify `AcrPull` role has propagated before proceeding (see checklist) | [Pre-Deploy Checklist — Container Apps RBAC](references/pre-deploy-checklist.md#container-apps--acr--pre-deploy-rbac-health-check) |
+| 4 | **RBAC Health Check** — For Container Apps + ACR with managed identity: run `azd provision --no-prompt`, then verify `AcrPull` role has propagated before proceeding (see checklist) | [Pre-Deploy Checklist — Container Apps RBAC](../../../../../Global_References/pre-deploy-checklist.md#container-apps--acr--pre-deploy-rbac-health-check) |
 | 5 | **Execute Deploy** — Follow recipe steps | Recipe README |
 | 6 | **Post-Deploy** — Configure SQL managed identity and apply EF migrations if applicable | [Post-Deployment](references/recipes/azd/post-deployment.md) |
 | 7 | **Handle Errors** — See recipe's `errors.md` | — |
 | 8 | **Verify Success** — Confirm deployment completed and endpoints are accessible | [Verification](references/recipes/azd/verify.md) |
-| 9 | **Live Role Verification** — Query Azure to confirm provisioned RBAC roles are correct and sufficient | [live-role-verification.md](references/live-role-verification.md) |
+| 9 | **Live Role Verification** — Query Azure to confirm provisioned RBAC roles are correct and sufficient | [live-role-verification.md](../../../../../Global_References/live-role-verification.md) |
 | 10 | **Report Results** — Present deployed endpoint URLs to the user as fully-qualified `https://` links | [Verification](references/recipes/azd/verify.md) |
 
 > **⛔ URL FORMAT RULE**
@@ -93,5 +93,6 @@ Activate this skill when user wants to:
 
 ## References
 
-- [Troubleshooting](references/troubleshooting.md) - Common issues and solutions
+- [Troubleshooting](../../../../../Global_References/azure-deploy_troubleshooting.md) - Common issues and solutions
 - [Post-Deployment Steps](references/recipes/azd/post-deployment.md) - SQL + EF Core setup
+

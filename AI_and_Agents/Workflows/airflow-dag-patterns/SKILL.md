@@ -94,7 +94,7 @@ with DAG(
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/airflow-dag-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -113,3 +113,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't use global state** - Tasks should be stateless
 - **Don't skip catchup blindly** - Understand implications
 - **Don't put heavy logic in DAG file** - Import from modules
+

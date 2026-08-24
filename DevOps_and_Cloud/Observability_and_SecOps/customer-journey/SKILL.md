@@ -556,14 +556,15 @@ A bank mapped the mortgage application journey across web, mobile, phone, and in
 Optimization: single customer profile across all channels with real-time sync. Implemented channel-aware design (save progress, resume on any channel). Added document upload via mobile during phone calls. Results: average completion time reduced to 8 days. Abandonment rate decreased from 45% to 22%. CSAT improved from 3.2 to 4.1.
 
 ## References
-  - references/customer-journey-advanced.md — Customer Journey Advanced Topics
-  - references/customer-journey-fundamentals.md — Customer Journey Fundamentals
-  - references/customer-journey-analytics.md — Customer Journey Analytics Deep Dive
-  - references/customer-journey-optimization.md — Customer Journey Optimization Playbook
-  - references/journey-analytics.md — Journey Analytics
-  - references/journey-mapping.md — Journey Mapping
-  - references/journey-optimization.md — Journey Optimization
-  - references/service-blueprint.md — Service Blueprinting
+  - ../../../Global_References/customer-journey-advanced.md — Customer Journey Advanced Topics
+  - ../../../Global_References/customer-journey-fundamentals.md — Customer Journey Fundamentals
+  - ../../../Global_References/customer-journey-analytics.md — Customer Journey Analytics Deep Dive
+  - ../../../Global_References/customer-journey-optimization.md — Customer Journey Optimization Playbook
+  - ../../../Global_References/journey-analytics.md — Journey Analytics
+  - ../../../Global_References/journey-mapping.md — Journey Mapping
+  - ../../../Global_References/journey-optimization.md — Journey Optimization
+  - ../../../Global_References/service-blueprint.md — Service Blueprinting
 
 ## Handoff
 For persona insights to inform journey stages, hand off to `product-persona-development`. For analytics event tracking, hand off to `product-analytics`. For user research validation, hand off to `product-user-research`. For experiment execution on journey touchpoints, hand off to `product-ab-testing`. For growth metric tracking across journey stages, hand off to `product-growth-engineering`.
+

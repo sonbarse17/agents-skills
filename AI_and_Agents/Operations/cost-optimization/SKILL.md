@@ -19,7 +19,7 @@ already stale by the next billing cycle.
 **Find the biggest lever with data, pull it, then come back for the next one.**
 
 For a ranked catalog of savings levers and how to find candidates, read
-`references/savings-levers.md`.
+`../../../Global_References/savings-levers.md`.
 
 ## 1. Rank levers by dollar impact before touching anything
 
@@ -105,3 +105,4 @@ State the top cost drivers found, the dollar amount of idle/orphaned waste remov
 commitment coverage achieved against the measured baseline. Name the honest gap — usually a
 category of spend (data transfer, third-party SaaS, an unrightsized fleet still under commitment)
 that wasn't fully addressed this pass — rather than claiming the bill is now optimal.
+

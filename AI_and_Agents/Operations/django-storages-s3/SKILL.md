@@ -41,10 +41,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Settings & STORAGES | `references/configuration.md` | Core settings, 4.2+ vs legacy, CloudFront |
-| Custom backends | `references/custom-backends.md` | Public vs. private buckets, per-field storage |
-| Presigned URLs | `references/presigned-urls.md` | Download links, direct browser uploads |
-| Testing & IAM | `references/testing-storages.md` | Mocking S3, IAM policy, common pitfalls |
+| Settings & STORAGES | `../../../Global_References/django-storages-s3_configuration.md` | Core settings, 4.2+ vs legacy, CloudFront |
+| Custom backends | `../../../Global_References/custom-backends.md` | Public vs. private buckets, per-field storage |
+| Presigned URLs | `../../../Global_References/presigned-urls.md` | Download links, direct browser uploads |
+| Testing & IAM | `../../../Global_References/testing-storages.md` | Mocking S3, IAM policy, common pitfalls |
 
 ## Minimal Working Example
 
@@ -133,3 +133,4 @@ django-storages, S3Boto3Storage, S3StaticStorage, boto3, STORAGES dict, presigne
 - `devops-engineer` — provisioning the S3 buckets, IAM roles, and CloudFront distributions this skill targets
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/django-storages-s3/)
+

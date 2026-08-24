@@ -9,7 +9,7 @@ This document is the authoritative reference for how PluginEval measures plugin 
 It covers the three evaluation layers, all ten scoring dimensions, the composite formula, badge
 thresholds, anti-pattern flags, Elo ranking, and actionable improvement tips.
 
-Related: [Full rubric anchors](references/rubrics.md)
+Related: [Full rubric anchors](../../../../../Global_References/rubrics.md)
 
 ---
 
@@ -52,7 +52,7 @@ Each additional detected anti-pattern reduces the score by 5%, flooring at 50%.
 **Speed:** 30–90 seconds. One or more LLM calls (Sonnet by default). Non-deterministic.
 
 The `eval-judge` agent reads the SKILL.md and any `references/` files, then scores four
-dimensions using anchored rubrics (see [references/rubrics.md](references/rubrics.md)):
+dimensions using anchored rubrics (see [../../../../../Global_References/rubrics.md](../../../../../Global_References/rubrics.md)):
 
 1. **Triggering accuracy** — F1 score derived from 10 mental test prompts
 2. **Orchestration fitness** — Worker purity assessment (0–1 rubric)
@@ -234,7 +234,7 @@ explaining badge thresholds to a team."
 wasting tokens on content only needed in edge cases.
 
 **Fix:** Create a `references/` directory and move supporting material there:
-- Detailed rubrics → `references/rubrics.md`
+- Detailed rubrics → `../../../../../Global_References/rubrics.md`
 - Extended examples → `references/examples.md`
 - Configuration reference → `references/config.md`
 
@@ -538,7 +538,7 @@ that includes the LLM judge's assessment of content quality.
 
 ## References
 
-- [Full Rubric Anchors — all 4 judge dimensions](references/rubrics.md)
+- [Full Rubric Anchors — all 4 judge dimensions](../../../../../Global_References/rubrics.md)
 
 ### Related Agents
 
@@ -548,3 +548,4 @@ that includes the LLM judge's assessment of content quality.
 - **eval-orchestrator** (`../../agents/eval-orchestrator.md`) — the top-level orchestrator that
   sequences all three layers, merges results, assigns badges, and writes the final report.
   Invoke when running a full certification pass or comparing two skills head-to-head.
+

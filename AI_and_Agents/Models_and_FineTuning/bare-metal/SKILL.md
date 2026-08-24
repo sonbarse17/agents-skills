@@ -922,15 +922,16 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 PXE/iPXE configuration, BMC automation scripts (Python/Bash), Ansible burn-in playbooks, MAAS API scripts, RAID configuration scripts.
 
 ## References
-  - references/bare-metal-advanced.md
-  - references/bare-metal-fundamentals.md
-  - references/burn-in.md
-  - references/firmware-lifecycle.md
-  - references/ipmi-bmc.md
-  - references/provisioning-pxe-maas.md
+  - ../../../Global_References/bare-metal-advanced.md
+  - ../../../Global_References/bare-metal-fundamentals.md
+  - ../../../Global_References/burn-in.md
+  - ../../../Global_References/firmware-lifecycle.md
+  - ../../../Global_References/ipmi-bmc.md
+  - ../../../Global_References/provisioning-pxe-maas.md
   - references/redfish-automation-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **datacenter** — rack layout, power, cooling for bare metal
 - Pass context: server inventory, BMC IPs network, firmware baseline, provisioning method
+

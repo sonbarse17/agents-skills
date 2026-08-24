@@ -19,7 +19,7 @@ each individually safe, each individually undoable.
 not actually a migration — it is a scheduled outage with a script attached.**
 
 For a worked SQL walkthrough of the expand, backfill, and contract phases, read
-`references/expand-contract.md`.
+`../../../Global_References/expand-contract.md`.
 
 ## 1. Split every migration into expand, migrate, contract
 
@@ -127,3 +127,4 @@ dual-writing is active and its planned end date, and the result of the last old/
 check. Name the honest gap — usually a dual-write phase running longer than planned, or an old
 code path that has not been fully confirmed unused — rather than declaring the migration
 complete before the contract phase has actually shipped.
+

@@ -39,17 +39,17 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Workloads | `references/workloads.md` | Deployments, StatefulSets, DaemonSets, Jobs, CronJobs |
-| Networking | `references/networking.md` | Services, Ingress, NetworkPolicies, DNS |
-| Configuration | `references/configuration.md` | ConfigMaps, Secrets, environment variables |
-| Storage | `references/storage.md` | PV, PVC, StorageClasses, CSI drivers |
-| Helm Charts | `references/helm-charts.md` | Chart structure, values, templates, hooks, testing, repositories |
-| Troubleshooting | `references/troubleshooting.md` | kubectl debug, logs, events, common issues |
-| Custom Operators | `references/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
-| Service Mesh | `references/service-mesh.md` | Istio, Linkerd, traffic management, mTLS, canary |
-| GitOps | `references/gitops.md` | ArgoCD, Flux, progressive delivery, sealed secrets |
-| Cost Optimization | `references/cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
-| Multi-Cluster | `references/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
+| Workloads | `../../../Global_References/workloads.md` | Deployments, StatefulSets, DaemonSets, Jobs, CronJobs |
+| Networking | `../../../Global_References/kubernetes-specialist_networking.md` | Services, Ingress, NetworkPolicies, DNS |
+| Configuration | `../../../Global_References/kubernetes-specialist_configuration.md` | ConfigMaps, Secrets, environment variables |
+| Storage | `../../../Global_References/storage.md` | PV, PVC, StorageClasses, CSI drivers |
+| Helm Charts | `../../../Global_References/helm-charts.md` | Chart structure, values, templates, hooks, testing, repositories |
+| Troubleshooting | `../../../Global_References/kubernetes-specialist_troubleshooting.md` | kubectl debug, logs, events, common issues |
+| Custom Operators | `../../../Global_References/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
+| Service Mesh | `../../../Global_References/service-mesh.md` | Istio, Linkerd, traffic management, mTLS, canary |
+| GitOps | `../../../Global_References/gitops.md` | ArgoCD, Flux, progressive delivery, sealed secrets |
+| Cost Optimization | `../../../Global_References/kubernetes-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
+| Multi-Cluster | `../../../Global_References/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
 
 ## Constraints
 
@@ -241,3 +241,4 @@ When implementing Kubernetes resources, provide:
 4. Brief explanation of design decisions and security considerations
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/kubernetes-specialist/)
+

@@ -624,17 +624,18 @@ reliability_maturity:
 | On-call | Devs share on-call | Devs own ops | Dedicated ops on-call |
 
 ## References
-- references/error-budget-policy.md — Error Budget Policy Design
-- references/incident-analysis.md — Incident Analysis Framework
-- references/incident-command.md — Incident Command Structure
-- references/sli-slo-guide.md — SLI/SLO Definition Guide
-- references/sre-practices-advanced.md — SRE Practices Advanced Topics
-- references/sre-practices-fundamentals.md — SRE Practices Fundamentals
-- references/sre-slos.md — SLO / SLI / SLA Definitions
-- references/toil-automation.md — Toil Reduction Guide
+- ../../../Global_References/sre-practices_error-budget-policy.md — Error Budget Policy Design
+- ../../../Global_References/incident-analysis.md — Incident Analysis Framework
+- ../../../Global_References/incident-command.md — Incident Command Structure
+- ../../../Global_References/sli-slo-guide.md — SLI/SLO Definition Guide
+- ../../../Global_References/sre-practices-advanced.md — SRE Practices Advanced Topics
+- ../../../Global_References/sre-practices-fundamentals.md — SRE Practices Fundamentals
+- ../../../Global_References/sre-slos.md — SLO / SLI / SLA Definitions
+- ../../../Global_References/toil-automation.md — Toil Reduction Guide
 - references/burn-rate-alerts.md — Multi-Window Burn Rate Alert Design
 - references/prr-checklist.md — Production Readiness Review Checklist
 - references/reliability-maturity.md — Reliability Maturity Model
 
 ## Handoff
 Related skills: platform-engineering (IDP for self-service toil reduction), incident-response (on-call and incident management), chaos-engineering (resilience testing), monitoring (observability stack for SLO data), progressive-delivery (deployment strategies for safe changes).
+

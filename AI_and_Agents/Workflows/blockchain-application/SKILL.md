@@ -361,16 +361,16 @@ pub struct User {
 20. Always include reentrancy guards on cross-chain message handlers
 
 ## References
-  - references/blockchain-application-advanced.md — Blockchain Application Advanced Topics
-  - references/blockchain-application-fundamentals.md — Blockchain Application Fundamentals
-  - references/cairo-language.md — Cairo Language (StarkNet)
-  - references/contract-security.md — Smart Contract Security
-  - references/haskell-plutus.md — Haskell & Plutus (Cardano)
-  - references/move-language.md — Move Language (Sui & Aptos)
-  - references/rust-smart-contracts.md — Rust Smart Contracts
-  - references/smart-contract-patterns.md — Smart Contract Design Patterns
-  - references/solidity-evm.md — Solidity & EVM Deep Dive
-  - references/vyper-language.md — Vyper Language
+  - ../../../Global_References/blockchain-application-advanced.md — Blockchain Application Advanced Topics
+  - ../../../Global_References/blockchain-application-fundamentals.md — Blockchain Application Fundamentals
+  - ../../../Global_References/cairo-language.md — Cairo Language (StarkNet)
+  - ../../../Global_References/contract-security.md — Smart Contract Security
+  - ../../../Global_References/haskell-plutus.md — Haskell & Plutus (Cardano)
+  - ../../../Global_References/move-language.md — Move Language (Sui & Aptos)
+  - ../../../Global_References/rust-smart-contracts.md — Rust Smart Contracts
+  - ../../../Global_References/smart-contract-patterns.md — Smart Contract Design Patterns
+  - ../../../Global_References/solidity-evm.md — Solidity & EVM Deep Dive
+  - ../../../Global_References/vyper-language.md — Vyper Language
   - references/cross-chain-deployment.md — Cross-Chain Deployment Strategy
   - references/gas-optimization-patterns.md — Gas Optimization Techniques
 
@@ -539,3 +539,4 @@ contract CloneFactory {
 ## Handoff
 blockchain-application → blockchain-testing (for test strategy implementation)
 blockchain-application → blockchain-security (for pre-audit review)
+

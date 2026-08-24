@@ -34,12 +34,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Schema Design | `references/schema-design.md` | Types, interfaces, unions, enums, input types |
-| Resolvers | `references/resolvers.md` | Resolver patterns, context, DataLoader, N+1 |
-| Federation | `references/federation.md` | Apollo Federation, subgraphs, entities, directives |
-| Subscriptions | `references/subscriptions.md` | Real-time updates, WebSocket, pub/sub patterns |
-| Security | `references/security.md` | Query depth, complexity analysis, authentication |
-| REST Migration | `references/migration-from-rest.md` | Migrating REST APIs to GraphQL |
+| Schema Design | `../../../Global_References/schema-design.md` | Types, interfaces, unions, enums, input types |
+| Resolvers | `../../../Global_References/resolvers.md` | Resolver patterns, context, DataLoader, N+1 |
+| Federation | `../../../Global_References/federation.md` | Apollo Federation, subgraphs, entities, directives |
+| Subscriptions | `../../../Global_References/subscriptions.md` | Real-time updates, WebSocket, pub/sub patterns |
+| Security | `../../../Global_References/graphql-architect_security.md` | Query depth, complexity analysis, authentication |
+| REST Migration | `../../../Global_References/migration-from-rest.md` | Migrating REST APIs to GraphQL |
 
 ## Constraints
 
@@ -146,3 +146,4 @@ When implementing GraphQL features, provide:
 Apollo Server, Apollo Federation 2.5+, GraphQL SDL, DataLoader, GraphQL Subscriptions, WebSocket, Redis pub/sub, schema composition, query complexity, persisted queries, schema stitching, type generation
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/graphql-architect/)
+

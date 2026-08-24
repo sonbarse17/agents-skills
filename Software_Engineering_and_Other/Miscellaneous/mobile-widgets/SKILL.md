@@ -454,12 +454,12 @@ struct TodoWidget_Previews: PreviewProvider {
 20. Always remove widget data when all widget instances are deleted.
 
 ## References
-  - references/android-app-widgets.md — Android App Widgets
-  - references/complications.md — Complications (Watch Widgets)
-  - references/ios-widgetkit.md — iOS WidgetKit
-  - references/mobile-widgets-advanced.md — Mobile Widgets Advanced Topics
-  - references/mobile-widgets-fundamentals.md — Mobile Widgets Fundamentals
-  - references/widget-refresh.md — Widget Refresh Strategy
+  - ../../../Global_References/android-app-widgets.md — Android App Widgets
+  - ../../../Global_References/complications.md — Complications (Watch Widgets)
+  - ../../../Global_References/ios-widgetkit.md — iOS WidgetKit
+  - ../../../Global_References/mobile-widgets-advanced.md — Mobile Widgets Advanced Topics
+  - ../../../Global_References/mobile-widgets-fundamentals.md — Mobile Widgets Fundamentals
+  - ../../../Global_References/widget-refresh.md — Widget Refresh Strategy
 ## Handoff
 - `mobile/mobile-localization` — Widget string localization and RTL support
 - `design/ui-kit` — Widget design guidelines and brand consistency

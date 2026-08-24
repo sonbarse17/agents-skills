@@ -150,14 +150,14 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Logging | `references/structured-logging.md` | Pino, JSON logging |
-| Metrics | `references/prometheus-metrics.md` | Counter, Histogram, Gauge |
-| Tracing | `references/opentelemetry.md` | OpenTelemetry, spans |
-| Alerting | `references/alerting-rules.md` | Prometheus alerts |
-| Dashboards | `references/dashboards.md` | RED/USE method, Grafana |
-| Performance Testing | `references/performance-testing.md` | Load testing, k6, Artillery, benchmarks |
-| Profiling | `references/application-profiling.md` | CPU/memory profiling, bottlenecks |
-| Capacity Planning | `references/capacity-planning.md` | Scaling, forecasting, budgets |
+| Logging | `../../../Global_References/structured-logging.md` | Pino, JSON logging |
+| Metrics | `../../../Global_References/prometheus-metrics.md` | Counter, Histogram, Gauge |
+| Tracing | `../../../Global_References/opentelemetry.md` | OpenTelemetry, spans |
+| Alerting | `../../../Global_References/alerting-rules.md` | Prometheus alerts |
+| Dashboards | `../../../Global_References/dashboards.md` | RED/USE method, Grafana |
+| Performance Testing | `../../../Global_References/monitoring-expert_performance-testing.md` | Load testing, k6, Artillery, benchmarks |
+| Profiling | `../../../Global_References/application-profiling.md` | CPU/memory profiling, bottlenecks |
+| Capacity Planning | `../../../Global_References/capacity-planning.md` | Scaling, forecasting, budgets |
 
 ## Constraints
 
@@ -176,3 +176,4 @@ Load detailed guidance based on context:
 - Skip correlation IDs in distributed systems
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/devops/monitoring-expert/)
+

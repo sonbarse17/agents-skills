@@ -447,14 +447,14 @@ If migrating a simple Vue app that doesn't need SPA features:
 - Keep x-data expressions simple; extract complex logic into methods.
 
 ## References
-  - references/alpine-patterns.md — Alpine.js Patterns & Best Practices
-  - references/alpine-setup.md — Alpine.js Setup Guide
-  - references/alpinejs-advanced.md — Alpine.js Advanced Patterns
-  - references/alpinejs-deployment.md — Alpine.js Deployment
-  - references/alpinejs-fundamentals.md — Alpinejs Fundamentals
-  - references/alpinejs-testing.md — Alpine.js Testing Reference
-  - references/alpinejs-component-patterns.md — Alpine.js Component Patterns
-  - references/alpinejs-state-management.md — Alpine.js State Management Reference
+  - ../../../Global_References/alpine-patterns.md — Alpine.js Patterns & Best Practices
+  - ../../../Global_References/alpine-setup.md — Alpine.js Setup Guide
+  - ../../../Global_References/alpinejs-advanced.md — Alpine.js Advanced Patterns
+  - ../../../Global_References/alpinejs-deployment.md — Alpine.js Deployment
+  - ../../../Global_References/alpinejs-fundamentals.md — Alpinejs Fundamentals
+  - ../../../Global_References/alpinejs-testing.md — Alpine.js Testing Reference
+  - ../../../Global_References/alpinejs-component-patterns.md — Alpine.js Component Patterns
+  - ../../../Global_References/alpinejs-state-management.md — Alpine.js State Management Reference
 
 ## Handoff
 No artifact produced.
@@ -529,3 +529,4 @@ class ConfigBuilder {
 - **Sanitize x-html input**: `x-html` inserts raw HTML. Never bind user-generated content to `x-html`. Use `x-text` for user content. If HTML rendering is required, sanitize through DOMPurify first.
 - **Avoid inline event handlers with user input**: `@click="handleUserInput(someUserValue)"` can be exploited if `someUserValue` contains expressions. Validate and escape user data before passing into Alpine expressions.
 - **Protect $store from mutation**: Use `Object.freeze()` or proxy patterns to prevent accidental store corruption from third-party scripts. Validate store mutations in production.
+

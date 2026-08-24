@@ -406,12 +406,12 @@ export default defineConfig({
 - E2E suite must complete in under 20 minutes — optimize or prune
 
 ## References
-  - references/cypress-guide.md — Cypress Guide
-  - references/e2e-testing-advanced.md — E2e Testing Advanced Topics
-  - references/e2e-testing-fundamentals.md — E2e Testing Fundamentals
-  - references/framework-selection.md — Framework Selection
-  - references/playwright-guide.md — Playwright Guide
-  - references/test-patterns.md — Test Patterns
+  - ../../../Global_References/cypress-guide.md — Cypress Guide
+  - ../../../Global_References/e2e-testing-advanced.md — E2e Testing Advanced Topics
+  - ../../../Global_References/e2e-testing-fundamentals.md — E2e Testing Fundamentals
+  - ../../../Global_References/framework-selection.md — Framework Selection
+  - ../../../Global_References/playwright-guide.md — Playwright Guide
+  - ../../../Global_References/test-patterns.md — Test Patterns
 ## Handoff
 `quality-visual-testing` for visual regression setup alongside E2E tests.
 `quality-contract-testing` for API contract verification.

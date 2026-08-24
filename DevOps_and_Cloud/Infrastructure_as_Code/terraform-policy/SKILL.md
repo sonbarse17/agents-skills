@@ -10,7 +10,7 @@ metadata:
 
 # terraform-policy
 
-**UTILITY SKILL** — INVOKES: [tfpolicy-author](references/tfpolicy-author.md) | [tfpolicy-test](references/tfpolicy-test.md)
+**UTILITY SKILL** — INVOKES: [tfpolicy-author](../../../Global_References/tfpolicy-author.md) | [tfpolicy-test](../../../Global_References/tfpolicy-test.md)
 
 ## USE FOR:
 
@@ -28,14 +28,14 @@ metadata:
 
 | Task | Sub-skill |
 |------|-----------|
-| Write or convert a `.policy.hcl` policy | [tfpolicy-author](references/tfpolicy-author.md) |
-| Write or debug a `.policytest.hcl` test | [tfpolicy-test](references/tfpolicy-test.md) |
+| Write or convert a `.policy.hcl` policy | [tfpolicy-author](../../../Global_References/tfpolicy-author.md) |
+| Write or debug a `.policytest.hcl` test | [tfpolicy-test](../../../Global_References/tfpolicy-test.md) |
 
 ## Examples
 
-- "Block EC2 instances without encryption" → [tfpolicy-author](references/tfpolicy-author.md)
-- "Convert this Sentinel policy to tfpolicy" → [tfpolicy-author](references/tfpolicy-author.md)
-- "Write a policytest for my EBS policy" → [tfpolicy-test](references/tfpolicy-test.md)
+- "Block EC2 instances without encryption" → [tfpolicy-author](../../../Global_References/tfpolicy-author.md)
+- "Convert this Sentinel policy to tfpolicy" → [tfpolicy-author](../../../Global_References/tfpolicy-author.md)
+- "Write a policytest for my EBS policy" → [tfpolicy-test](../../../Global_References/tfpolicy-test.md)
 
 ## Troubleshooting
 
@@ -45,3 +45,4 @@ metadata:
 npx skills add hashicorp/agent-skills/terraform/terraform-policy/skills/tfpolicy-author
 npx skills add hashicorp/agent-skills/terraform/terraform-policy/skills/tfpolicy-test
 ```
+

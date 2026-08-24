@@ -478,15 +478,15 @@ Thread.setDefaultUncaughtExceptionHandler(
 ```
 
 ## References
-  - references/breadcrumbs.md — Breadcrumbs
-  - references/crash-analysis-workflow.md — Crash Analysis Workflow
-  - references/crash-reporting-architecture.md — Crash Reporting Architecture
-  - references/crashlytics-setup.md — Crashlytics Setup
-  - references/sentry-setup.md — Sentry Setup
-  - references/symbolication.md — Symbolication
-  - references/crash-reporting-fundamentals.md — Crash Reporting Fundamentals
-  - references/crash-reporting-advanced.md — Advanced Crash Reporting
-  - references/crash-reporting-ci.md — Crash Reporting CI/CD Integration
+  - ../../../Global_References/breadcrumbs.md — Breadcrumbs
+  - ../../../Global_References/crash-analysis-workflow.md — Crash Analysis Workflow
+  - ../../../Global_References/crash-reporting-architecture.md — Crash Reporting Architecture
+  - ../../../Global_References/crashlytics-setup.md — Crashlytics Setup
+  - ../../../Global_References/sentry-setup.md — Sentry Setup
+  - ../../../Global_References/symbolication.md — Symbolication
+  - ../../../Global_References/crash-reporting-fundamentals.md — Crash Reporting Fundamentals
+  - ../../../Global_References/crash-reporting-advanced.md — Advanced Crash Reporting
+  - ../../../Global_References/crash-reporting-ci.md — Crash Reporting CI/CD Integration
 
 ## Handoff
 No further handoff. Crash reporting is self-contained after initial setup.

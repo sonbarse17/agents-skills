@@ -20,7 +20,7 @@ Guide for implementing tasks using Conductor's TDD workflow, managing phase chec
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/workflow-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -36,3 +36,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 10. **Clean state**: Each commit should leave code in working state
 11. **Fast feedback**: Run relevant tests frequently during development
 12. **Clear blockers**: Address blockers promptly, don't work around them
+

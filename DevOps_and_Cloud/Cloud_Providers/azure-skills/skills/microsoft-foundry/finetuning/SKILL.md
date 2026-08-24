@@ -40,18 +40,18 @@ Use this sub-skill when the user asks about:
 
 | Topic | File |
 |-------|------|
-| SFT vs DPO vs RFT | [references/training-types.md](references/training-types.md) |
-| Hyperparameters | [references/hyperparameters.md](references/hyperparameters.md) |
-| Data formats | [references/dataset-formats.md](references/dataset-formats.md) |
-| Grader design (RFT) | [references/grader-design.md](references/grader-design.md) |
-| Reward hacking | [references/reward-hacking.md](references/reward-hacking.md) |
-| Agentic RFT (tools) | [references/agentic-rft.md](references/agentic-rft.md) |
-| Deployment | [references/deployment.md](references/deployment.md) |
-| Training curves | [references/training-curves.md](references/training-curves.md) |
-| Evaluation | [references/evaluation.md](references/evaluation.md) |
-| Vision fine-tuning | [references/vision-fine-tuning.md](references/vision-fine-tuning.md) |
-| Large file uploads | [references/large-file-uploads.md](references/large-file-uploads.md) |
-| Platform gotchas | [references/platform-gotchas.md](references/platform-gotchas.md) |
+| SFT vs DPO vs RFT | [../../../../../../Global_References/training-types.md](../../../../../../Global_References/training-types.md) |
+| Hyperparameters | [../../../../../../Global_References/finetuning_hyperparameters.md](../../../../../../Global_References/finetuning_hyperparameters.md) |
+| Data formats | [../../../../../../Global_References/dataset-formats.md](../../../../../../Global_References/dataset-formats.md) |
+| Grader design (RFT) | [../../../../../../Global_References/grader-design.md](../../../../../../Global_References/grader-design.md) |
+| Reward hacking | [../../../../../../Global_References/reward-hacking.md](../../../../../../Global_References/reward-hacking.md) |
+| Agentic RFT (tools) | [../../../../../../Global_References/agentic-rft.md](../../../../../../Global_References/agentic-rft.md) |
+| Deployment | [../../../../../../Global_References/finetuning_deployment.md](../../../../../../Global_References/finetuning_deployment.md) |
+| Training curves | [../../../../../../Global_References/training-curves.md](../../../../../../Global_References/training-curves.md) |
+| Evaluation | [../../../../../../Global_References/finetuning_evaluation.md](../../../../../../Global_References/finetuning_evaluation.md) |
+| Vision fine-tuning | [../../../../../../Global_References/vision-fine-tuning.md](../../../../../../Global_References/vision-fine-tuning.md) |
+| Large file uploads | [../../../../../../Global_References/large-file-uploads.md](../../../../../../Global_References/large-file-uploads.md) |
+| Platform gotchas | [../../../../../../Global_References/platform-gotchas.md](../../../../../../Global_References/platform-gotchas.md) |
 
 ## Scripts
 
@@ -97,3 +97,4 @@ Use this sub-skill when the user asks about:
 | Job stuck in post-training eval | Under-provisioned tool endpoint (RFT) | Scale to S2+, enable Always On |
 | "DeploymentNotReady" after ARM succeeds | ARM/data-plane race condition | Delete and recreate deployment, wait 5 min |
 | Content safety block at deployment | PII-dense training data | Remove problematic document types |
+

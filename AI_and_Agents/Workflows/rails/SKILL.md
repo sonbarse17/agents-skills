@@ -470,14 +470,14 @@ Use `factory_bot_rails` for test data. Use `shoulda-matchers` for model specs. U
 - API mode Rails — no views, no cookies (token-based auth).
 
 ## References
-  - references/rails-active-record.md — ActiveRecord Best Practices
-  - references/rails-api-conventions.md — Rails API Conventions
-  - references/rails-api-design.md — Rails API Design
-  - references/rails-background-jobs.md — Background Jobs
-  - references/rails-performance-tuning.md — Performance Tuning
-  - references/rails-performance.md — Rails Performance
-  - references/rails-security.md — Rails Security
-  - references/rails-testing.md — Testing Rails Applications
+  - ../../../Global_References/rails-active-record.md — ActiveRecord Best Practices
+  - ../../../Global_References/rails-api-conventions.md — Rails API Conventions
+  - ../../../Global_References/rails-api-design.md — Rails API Design
+  - ../../../Global_References/rails-background-jobs.md — Background Jobs
+  - ../../../Global_References/rails-performance-tuning.md — Performance Tuning
+  - ../../../Global_References/rails-performance.md — Rails Performance
+  - ../../../Global_References/rails-security.md — Rails Security
+  - ../../../Global_References/rails-testing.md — Testing Rails Applications
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formatting or `backend/universal/backend-testing/SKILL.md` for test patterns.
 ## Implementation Patterns

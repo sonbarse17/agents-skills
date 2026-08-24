@@ -52,15 +52,15 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| GitHub Actions | `references/github-actions.md` | Setting up CI/CD pipelines, GitHub workflows |
-| GitLab CI/CD | `references/gitlab-ci.md` | Setting up GitLab pipelines, `.gitlab-ci.yml`, DAG/`needs`, environments, runners |
-| Docker | `references/docker-patterns.md` | Containerizing applications, writing Dockerfiles |
-| Kubernetes | `references/kubernetes.md` | K8s deployments, services, ingress, pods |
-| Terraform | `references/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
-| Deployment | `references/deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
-| Platform | `references/platform-engineering.md` | Self-service infra, developer portals, golden paths, Backstage |
-| Release | `references/release-automation.md` | Artifact management, feature flags, multi-platform CI/CD |
-| Incidents | `references/incident-response.md` | Production outages, on-call, MTTR, postmortems, runbooks |
+| GitHub Actions | `../../../Global_References/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, GitHub workflows |
+| GitLab CI/CD | `../../../Global_References/gitlab-ci.md` | Setting up GitLab pipelines, `.gitlab-ci.yml`, DAG/`needs`, environments, runners |
+| Docker | `../../../Global_References/docker-patterns.md` | Containerizing applications, writing Dockerfiles |
+| Kubernetes | `../../../Global_References/kubernetes.md` | K8s deployments, services, ingress, pods |
+| Terraform | `../../../Global_References/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
+| Deployment | `../../../Global_References/devops-engineer_deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
+| Platform | `../../../Global_References/platform-engineering.md` | Self-service infra, developer portals, golden paths, Backstage |
+| Release | `../../../Global_References/release-automation.md` | Artifact management, feature flags, multi-platform CI/CD |
+| Incidents | `../../../Global_References/devops-engineer_incident-response.md` | Production outages, on-call, MTTR, postmortems, runbooks |
 
 ## Constraints
 
@@ -146,3 +146,4 @@ Always document the rollback command and verification step in the PR or change t
 GitHub Actions, GitLab CI, Jenkins, CircleCI, Docker, Kubernetes, Helm, ArgoCD, Flux, Terraform, Pulumi, Crossplane, AWS/GCP/Azure, Prometheus, Grafana, PagerDuty, Backstage, LaunchDarkly, Flagger
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/devops/devops-engineer/)
+

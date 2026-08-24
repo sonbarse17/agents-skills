@@ -396,15 +396,15 @@ GRANT USAGE ON SEQUENCE orders_id_seq TO app_user;
 - Always use native DB enums instead of VARCHAR with app-level validation.
 
 ## References
-  - references/connection-pooling.md — Connection Pooling
-  - references/database-fundamentals.md — Database Patterns Fundamentals
-  - references/database-migration-patterns.md — Database Migration Patterns
-  - references/database-sharding.md — Database Sharding
-  - references/database-testing.md — Database Testing
-  - references/migration-guide.md — Database Migration Guide
-  - references/migration-strategies.md — Migration Strategies
-  - references/query-optimization.md — Database Query Optimization Guide
-  - references/table-design-rules.md — Table Design Rules
+  - ../../../Global_References/connection-pooling.md — Connection Pooling
+  - ../../../Global_References/database-fundamentals.md — Database Patterns Fundamentals
+  - ../../../Global_References/database-migration-patterns.md — Database Migration Patterns
+  - ../../../Global_References/database-sharding.md — Database Sharding
+  - ../../../Global_References/database-patterns_database-testing.md — Database Testing
+  - ../../../Global_References/migration-guide.md — Database Migration Guide
+  - ../../../Global_References/migration-strategies.md — Migration Strategies
+  - ../../../Global_References/database-patterns_query-optimization.md — Database Query Optimization Guide
+  - ../../../Global_References/table-design-rules.md — Table Design Rules
   - references/transaction-isolation.md — Transaction Isolation Levels
 ## Handoff
 No artifact produced.

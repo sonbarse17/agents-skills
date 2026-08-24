@@ -39,7 +39,7 @@ Annual:     Strategic allocation
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/risk-metrics-calculation_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -58,3 +58,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't ignore correlation** - Increases in stress
 - **Don't use short lookbacks** - Miss regime changes
 - **Don't forget transaction costs** - Affects realized risk
+

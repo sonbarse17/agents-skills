@@ -14,7 +14,7 @@ picked a tradeoff nobody signed off on, then rank what to fix.
 Treat the review as a prioritization exercise, not a grading exercise. **A review that doesn't end
 in an ordered, owned list of changes was not worth running.**
 
-For the full pillar-by-pillar question checklist, read `references/review-checklist.md`.
+For the full pillar-by-pillar question checklist, read `../../../Global_References/review-checklist.md`.
 
 ## 1. Scope the review to a system, not the whole estate
 
@@ -96,3 +96,4 @@ State the system reviewed, the pillar-by-pillar evidence-backed findings, and th
 action list with owners. Name any pillar that couldn't be assessed for lack of evidence (no
 load-test data, no DR drill history) — an unassessed pillar is not a passing grade, it's an
 unknown, and saying so is more honest than defaulting it to green.
+

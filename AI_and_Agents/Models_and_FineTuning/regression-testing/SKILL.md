@@ -379,16 +379,16 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 20. Flaky tests are quarantined within 24 hours, fixed within 5 days, or deleted
 
 ## References
-- references/automation-maintenance.md — Test Automation Maintenance
-- references/flaky-test-management.md — Flaky Test Management
-- references/regression-metrics.md — Regression Metrics
-- references/regression-suites.md — Regression Suite Design
-- references/regression-testing-advanced.md — Regression Testing Advanced Topics
-- references/regression-testing-architecture.md — Regression Testing Architecture and System Design
-- references/regression-testing-fundamentals.md — Regression Testing Fundamentals
-- references/regression-testing-strategy.md — Regression Testing Strategy and Decision Frameworks
-- references/risk-based-selection.md — Risk-Based Test Selection
-- references/test-selection.md — Regression Test Selection
+- ../../../Global_References/automation-maintenance.md — Test Automation Maintenance
+- ../../../Global_References/flaky-test-management.md — Flaky Test Management
+- ../../../Global_References/regression-metrics.md — Regression Metrics
+- ../../../Global_References/regression-suites.md — Regression Suite Design
+- ../../../Global_References/regression-testing-advanced.md — Regression Testing Advanced Topics
+- ../../../Global_References/regression-testing-architecture.md — Regression Testing Architecture and System Design
+- ../../../Global_References/regression-testing-fundamentals.md — Regression Testing Fundamentals
+- ../../../Global_References/regression-testing-strategy.md — Regression Testing Strategy and Decision Frameworks
+- ../../../Global_References/risk-based-selection.md — Risk-Based Test Selection
+- ../../../Global_References/test-selection.md — Regression Test Selection
 
 ## Handoff
 After regression testing, hand off to:
@@ -564,3 +564,4 @@ What changed?
 - **Impact analysis for test selection**: Use code coverage data to select tests for changed files. Only run tests that cover modified code. Reduces regression run time by 60-80%.
 - **Parallel test execution by tier**: Run Tier 1 tests sequentially for fast feedback. Run Tier 2+3 tests in parallel across multiple machines. Total regression time: Tier 1 in 5 min, all tiers in 30 min.
 - **Test impact analysis**: Use `git diff` to identify changed files. Map files to test suites. Only run affected suites. Cache unaffected suite results from previous CI run.
+

@@ -546,12 +546,13 @@ jest.mock('orders/OrderList', () => ({
 - Each MFE independence: builds, tests, and deploys independently — no coordination required for rollout
 
 ## References
-  - references/communication-strategies.md — Inter-MFE Communication Strategies
-  - references/microfrontend-architecture.md — Microfrontend Architecture
-  - references/microfrontend-deployment.md — Microfrontend Deployment Reference
-  - references/microfrontend-integration.md — Microfrontend Integration
-  - references/microfrontend-testing.md — Microfrontend Testing Reference
-  - references/module-federation.md — Module Federation Reference
+  - ../../../Global_References/communication-strategies.md — Inter-MFE Communication Strategies
+  - ../../../Global_References/microfrontend-architecture.md — Microfrontend Architecture
+  - ../../../Global_References/microfrontend-deployment.md — Microfrontend Deployment Reference
+  - ../../../Global_References/microfrontend-integration.md — Microfrontend Integration
+  - ../../../Global_References/microfrontend-testing.md — Microfrontend Testing Reference
+  - ../../../Global_References/microfrontend_module-federation.md — Module Federation Reference
 ## Handoff
 
 Hand off to `frontend/universal/patterns/SKILL.md` for component patterns used within each microfrontend. Hand off to `frontend/universal/design-system/SKILL.md` for shared design system.
+

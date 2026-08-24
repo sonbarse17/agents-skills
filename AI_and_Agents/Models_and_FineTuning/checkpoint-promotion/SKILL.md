@@ -68,7 +68,7 @@ where the real savings are.
    checkpoint vs. base model, same
    prompts — or the deterministic
    paired-comparison variant in
-   `references/gate-templates.md`
+   `../../../Global_References/gate-templates.md`
    when every grader in the
    harness is deterministic (no
    LLM-judge; position
@@ -119,7 +119,7 @@ and treat a margin smaller than
 it as `REJECT (uncertain)`, not
 PASS/HARD FAIL. Full math and a
 5-run cautionary example:
-`references/gate-templates.md`.
+`../../../Global_References/gate-templates.md`.
 
 **RERUN is not a verdict.** A
 2–5pt drift only ever produces a
@@ -158,7 +158,7 @@ If a checkpoint hits the >5pt
 hard fail in stage 2, work this
 escalation ladder in order — the
 one canonical order this skill
-and `references/gate-templates.md`
+and `../../../Global_References/gate-templates.md`
 both point to:
 
 1. **Adjust the replay-mix
@@ -194,7 +194,7 @@ for a human, not a reason to
 keep descending the ladder. Full
 reasoning and the 5-run
 trajectory behind both caveats:
-`references/gate-templates.md`.
+`../../../Global_References/gate-templates.md`.
 
 **Disclose drift-suite
 instruction reuse.** A replay row
@@ -217,7 +217,7 @@ verdict: `PROMOTE` or `REJECT`**,
 the evidence that produced it,
 and exactly one top remediation
 when the verdict is `REJECT`.
-Template: `references/gate-templates.md`.
+Template: `../../../Global_References/gate-templates.md`.
 The terminal contract other
 skills parse:
 
@@ -294,4 +294,5 @@ the paired-arena protocol (item
 count, position randomization,
 win-rate threshold), and a
 replay-mix configuration example:
-`references/gate-templates.md`.
+`../../../Global_References/gate-templates.md`.
+

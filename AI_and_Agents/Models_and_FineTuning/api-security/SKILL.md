@@ -420,14 +420,14 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - OWASP API Top 10 review on every new endpoint
 
 ## References
-  - references/api-auth-patterns.md — API Authentication Patterns
-  - references/api-protection.md — API Protection
-  - references/api-security-advanced.md — Api Security Advanced Topics
-  - references/api-security-fundamentals.md — Api Security Fundamentals
-  - references/api-security-testing.md — API Security Testing Patterns
-  - references/api-threats.md — API Threats
-  - references/graphql-security.md — GraphQL Security
-  - references/oauth2-deep-dive.md — OAuth2 Deep Dive
+  - ../../../Global_References/api-auth-patterns.md — API Authentication Patterns
+  - ../../../Global_References/api-protection.md — API Protection
+  - ../../../Global_References/api-security-advanced.md — Api Security Advanced Topics
+  - ../../../Global_References/api-security-fundamentals.md — Api Security Fundamentals
+  - ../../../Global_References/api-security-testing.md — API Security Testing Patterns
+  - ../../../Global_References/api-threats.md — API Threats
+  - ../../../Global_References/graphql-security.md — GraphQL Security
+  - ../../../Global_References/oauth2-deep-dive.md — OAuth2 Deep Dive
 ## Handoff
 `security-sast-dast` for API-specific DAST scanning
 `backend-api-design` for endpoint design and versioning

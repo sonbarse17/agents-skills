@@ -539,14 +539,15 @@ Dependency Health Check:
 ```
 
 ## References
-  - references/ceremony-guide.md — Agile Ceremony Guide
-  - references/estimation-guide.md — Estimation Guide
-  - references/estimation-techniques.md — Estimation Techniques
-  - references/pm-advanced.md — Pm Advanced Topics
-  - references/pm-fundamentals.md — Pm Fundamentals
-  - references/risk-register-template.md — Risk Register Template
+  - ../../../Global_References/ceremony-guide.md — Agile Ceremony Guide
+  - ../../../Global_References/estimation-guide.md — Estimation Guide
+  - ../../../Global_References/estimation-techniques.md — Estimation Techniques
+  - ../../../Global_References/pm-advanced.md — Pm Advanced Topics
+  - ../../../Global_References/pm-fundamentals.md — Pm Fundamentals
+  - ../../../Global_References/risk-register-template.md — Risk Register Template
 
 ## Handoff
 After completing this skill:
 - Next skill: **ba** — to elaborate requirements for planned stories
 - Pass context: sprint plan, estimated stories, risk register, team capacity
+

@@ -96,7 +96,7 @@ ransomware kill chain. Synthetic alert documents are indexed into `.alerts-secur
 mappings, severity levels, and risk scores.
 
 All events use RFC 5737 / RFC 2606 safe addresses. For full tables of packages, scenarios, and alerts see
-[references/sample-data-reference.md](references/sample-data-reference.md).
+[../../../Global_References/sample-data-reference.md](../../../Global_References/sample-data-reference.md).
 
 ## Continuous mode
 
@@ -208,3 +208,4 @@ node skills/security/generate-security-sample-data/scripts/sample-data.js --clea
 | `KIBANA_PASSWORD`        | No       | Kibana password (if using Kibana features) |
 
 \*Either API key or username/password is required for Elasticsearch.
+

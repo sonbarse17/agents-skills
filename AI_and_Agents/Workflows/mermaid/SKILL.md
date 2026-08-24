@@ -109,7 +109,7 @@ flowchart TD
 
 Directions: `TD`/`TB` (top-down), `BT`, `LR`, `RL`. Node shapes: `A[rect]`, `A(rounded)`, `A((circle))`, `A{diamond}`, `A>flag]`, `A[/parallelogram/]`, `A[\trapezoid\]`. Links: `-->`, `---`, `-.->`, `==>`, `-- text -->`. Subgraphs: `subgraph Name ... end`. Styling: `classDef name fill:#f9f,stroke:#333` then `class nodeId name`. Icons: `A@{ icon: fa:database }`. New shapes (v11.3.0+): `A@{ shape: rect }`.
 
-See `references/flowchart.md` for all 30+ shapes, link types, subgraph options, and styling.
+See `../../../Global_References/flowchart.md` for all 30+ shapes, link types, subgraph options, and styling.
 
 ### Sequence Diagram
 
@@ -123,7 +123,7 @@ sequenceDiagram
 
 Participants: `participant Name` or `actor Name`. Arrows: `->`, `-->`, `->>`, `-->>`, `-x`, `--x`, `-)`, `--)`. Half-arrows (v11.12.3+): `->>`, `-->>` with half-arrow variants. Loops: `loop Description ... end`. Conditionals: `alt Condition ... else ... end`, `opt Condition ... end`. Parallel: `par ... and ... end`. Critical: `critical ... option ... end`. Break: `break ... end`. Notes: `note left/right/over of Participant: text`. Activation: `activate/deactivate` or `+`/`-` shorthand. autonumber adds sequence numbers.
 
-See `references/sequence.md` for all arrow types, message grouping, notes, activations, and styling.
+See `../../../Global_References/sequence.md` for all arrow types, message grouping, notes, activations, and styling.
 
 ### Gantt Chart
 
@@ -141,7 +141,7 @@ gantt
 
 dateFormat: `YYYY-MM-DD` (default). Duration units: `ms`, `s`, `m`, `h`, `d`, `w`, `M`, `y`. Excludes: `excludes weekends`. Today marker: `todayMarker off` or `todayMarker stroke:#f00,stroke-width:2px`. Compact mode: `compact` keyword. axisFormat for date display formatting.
 
-See `references/gantt.md` for metadata syntax, section handling, dependencies, and styling.
+See `../../../Global_References/gantt.md` for metadata syntax, section handling, dependencies, and styling.
 
 ### Class Diagram
 
@@ -161,7 +161,7 @@ classDiagram
 
 Visibility: `+` public, `-` private, `#` protected, `~` package. Modifiers: `*` abstract, `$` static. Relationships: `--|>` inheritance, `*--` composition, `o--` aggregation, `-->` association, `..>` dependency, `..|>` realization. Cardinality: `Animal "1" --> "0..*" Dog`. Generics: `class List~T~`. Namespaces: `namespace Name { ... }`. Notes: `note for Class "text"`.
 
-See `references/class.md` for all relationship types, annotations, generics, and styling.
+See `../../../Global_References/class.md` for all relationship types, annotations, generics, and styling.
 
 ### State Diagram
 
@@ -175,7 +175,7 @@ stateDiagram-v2
 
 States: `stateId` or `state "Description" as id`. Transitions: `A --> B` or `A --> B : label`. Start/end: `[*]`. Composite states: `state Parent { ... }`. Choice: `state choiceState <<choice>>`. Fork: `state forkState <<fork>>`. Notes: `note left/right of StateId : text`. Concurrency: `--` separator inside composite states. Direction: `direction LR`.
 
-See `references/state.md` for composite states, choice, fork, concurrency, and styling.
+See `../../../Global_References/state.md` for composite states, choice, fork, concurrency, and styling.
 
 ### ER Diagram
 
@@ -195,7 +195,7 @@ erDiagram
 
 Cardinality (left/right): `|o`/`o|` zero-or-one, `||`/`||` exactly-one, `}o`/`o{` zero-or-more, `}|`/`|{` one-or-more. Identification: `--` identifying (solid), `..` non-identifying (dashed). Attributes: `type name` inside `{}`. Keys: `PK`, `FK`, `UK`. Comments: `"comment"` at end of attribute. Aliases: `one or more`, `zero or one`, etc. Direction: `direction LR`/`RL`/`TB`/`BT`.
 
-See `references/er.md` for cardinality, identification, attributes, keys, subgraphs, and styling.
+See `../../../Global_References/er.md` for cardinality, identification, attributes, keys, subgraphs, and styling.
 
 ### Git Graph
 
@@ -212,7 +212,7 @@ gitGraph
 
 Commands: `commit`, `branch name`, `checkout name` (or `switch`), `merge name`, `cherry-pick id: "id"`. Commit attributes: `id: "custom_id"`, `type: NORMAL|REVERSE|HIGHLIGHT`, `tag: "v1.0"`. Merge attributes: same as commit. Orientation: `gitGraph LR:` / `TB:` / `BT:`. Config: `showBranches`, `showCommitLabel`, `mainBranchName`, `parallelCommits`.
 
-See `references/gitgraph.md` for commit types, cherry-pick, branch ordering, orientation, and theming.
+See `../../../Global_References/gitgraph.md` for commit types, cherry-pick, branch ordering, orientation, and theming.
 
 ### User Journey
 
@@ -229,7 +229,7 @@ journey
 
 Tasks: `Task name: score: actor`. Score is 1–5 (higher = better sentiment). Sections group related tasks.
 
-See `references/journey.md` for full syntax.
+See `../../../Global_References/journey.md` for full syntax.
 
 ### Quadrant Chart
 
@@ -248,7 +248,7 @@ quadrantChart
 
 Points: `Name: [x, y]` where x and y are 0–1. Axes: `x-axis left --> right`, `y-axis bottom --> top`. Quadrants: `quadrant-1` through `quadrant-4`. Point styling: `Name: [x, y] radius: 12, color: #ff0000`. Classes: `classDef name color: #109060` then `Point:::className: [x, y]`.
 
-See `references/quadrant.md` for axis config, point styling, classes, and theme variables.
+See `../../../Global_References/quadrant.md` for axis config, point styling, classes, and theme variables.
 
 ### XY Chart
 
@@ -263,7 +263,7 @@ xychart-beta
 
 Orientation: `xychart-beta horizontal` or vertical (default). x-axis: categorical `[cat1, cat2]` or numeric `min --> max`. y-axis: numeric range. Plots: `line [values]` or `bar [values]`. Named plots: `line "Series" [values]` (adds to legend). Per-point labels (v11.16.0+): `line [2.3 "label1", 45 "label2"]`.
 
-See `references/xychart.md` for config options, axis config, theme variables, and data labels.
+See `../../../Global_References/xychart.md` for config options, axis config, theme variables, and data labels.
 
 ### Pie Chart
 
@@ -277,7 +277,7 @@ pie showData
 
 `showData` renders values after legend. Donut mode (v11.16.0+): set `donutHole` config (0 to 0.9). Legend position: `legendPosition` config (top/bottom/left/right/center). Highlight slice: `highlightSlice` config.
 
-See `references/pie.md` for config options.
+See `../../../Global_References/pie.md` for config options.
 
 ### Architecture Diagram
 
@@ -291,7 +291,7 @@ architecture-beta
 
 Groups: `group id(icon)[title] in parent`. Services: `service id(icon)[title] in parent`. Edges: `serviceId:side -- side:serviceId` where side is `T|B|L|R`. Arrows: `-->` for directional. Edges from groups: `serviceId{group}:B --> T:otherService{group}`. Junctions: `junction id`. Align: `align row idA idB` or `align column idA idB`. Icons: `cloud`, `database`, `disk`, `internet`, `server` or custom via iconify.design.
 
-See `references/architecture.md` for edges, groups, junctions, alignment, layout tuning, and icons.
+See `../../../Global_References/mermaid_architecture.md` for edges, groups, junctions, alignment, layout tuning, and icons.
 
 ### Block Diagram
 
@@ -306,7 +306,7 @@ block-beta
 
 Columns: `columns N`. Blocks: `id` or `id["label"]`. Shapes: `block:rounded`, `block:circle`, `block:hexagon`, etc. Width: `block:width N`. Composite: `block Parent { block Child }`. Edges: `-->`, `---`. Space: `space` or `space:N`. Styling: `classDef name fill:#f9f` then `class nodeId name`.
 
-See `references/block.md` for shapes, edges, composite blocks, styling, and layout.
+See `../../../Global_References/block.md` for shapes, edges, composite blocks, styling, and layout.
 
 ### Requirement Diagram
 
@@ -327,7 +327,7 @@ requirementDiagram
 
 Types: `requirement`, `functionalRequirement`, `interfaceRequirement`, `performanceRequirement`, `physicalRequirement`, `designConstraint`. Risk: `Low`/`Medium`/`High`. VerifyMethod: `Analysis`/`Inspection`/`Test`/`Demonstration`. Relationships: `contains`, `copies`, `derives`, `satisfies`, `verifies`, `refines`, `traces`. Direction: `direction LR`/`RL`/`TB`/`BT`.
 
-See `references/requirement.md` for types, relationships, styling, and direction.
+See `../../../Global_References/requirement.md` for types, relationships, styling, and direction.
 
 ### Treemap
 
@@ -343,7 +343,7 @@ treemap-beta
 
 Nodes: quoted text for sections, `"name": value` for leaves. Hierarchy via indentation. Styling: `classDef name fill:#f9f` then `"node":::className`. Value formatting: `valueFormat` config (`,`, `$`, `.1%`, etc.).
 
-See `references/treemap.md` for config options, value formatting, and styling.
+See `../../../Global_References/treemap.md` for config options, value formatting, and styling.
 
 ### Mindmap
 
@@ -358,7 +358,7 @@ mindmap
 
 Hierarchy via indentation. Shapes: `id[square]`, `id(rounded)`, `id((circle))`, `id)bang(`, `id)cloud(`, `id{{hexagon}}`. Icons: `id::icon(fa:database)`. Classes: `id:::className`. Markdown strings supported.
 
-See `references/mindmap.md` for shapes, icons, classes, and layouts.
+See `../../../Global_References/mindmap.md` for shapes, icons, classes, and layouts.
 
 ### Timeline
 
@@ -375,7 +375,7 @@ timeline
 
 Time periods: `period : event` or `period : event : event`. Sections: `section Name`. Direction: `timeline LR` (default) or `timeline TD`. Multi-color: default on, `disableMultiColor` to disable.
 
-See `references/timeline.md` for sections, direction, styling, and themes.
+See `../../../Global_References/timeline.md` for sections, direction, styling, and themes.
 
 ### Sankey
 
@@ -389,7 +389,7 @@ sankey-beta
 
 CSV format: 3 columns (source, target, value). Commas in values: wrap in double quotes. Double quotes in values: use `""`. Config: `linkColor` (source/target/gradient/hex), `nodeAlignment` (justify/center/left/right), `labelStyle` (legacy/outlined), `nodeWidth`, `nodePadding`, `nodeColors`.
 
-See `references/sankey.md` for CSV syntax, config, and node colors.
+See `../../../Global_References/sankey.md` for CSV syntax, config, and node colors.
 
 ## Common Gotchas
 
@@ -426,25 +426,26 @@ Output is structured JSON to stdout, diagnostics to stderr. Exit code 0 = valid,
 
 Load these when you need full syntax details, edge cases, or examples for a specific diagram type:
 
-- `references/flowchart.md` — All node shapes (30+), link types, subgraphs, styling, icons, markdown strings
-- `references/sequence.md` — Arrow types, loops, alt/par/critical/break, notes, activations, styling
-- `references/gantt.md` — Date format, axis format, duration units, excludes, milestones, compact mode, today marker
-- `references/class.md` — Visibility, generics, relationships, cardinality, namespaces, annotations, notes
-- `references/state.md` — Composite states, choice, fork, concurrency, notes, direction, classDefs
-- `references/er.md` — Cardinality, identification, attributes, keys, comments, aliases, subgraphs, direction
-- `references/gitgraph.md` — Commit types, tags, cherry-pick, branch ordering, orientation, config, themes
-- `references/journey.md` — Sections, tasks, scores, actors
-- `references/quadrant.md` — Axes, quadrants, points, styling, classes, config, theme variables
-- `references/xychart.md` — Orientation, axes, line/bar plots, legends, data labels, config, theme variables
-- `references/pie.md` — showData, donut mode, legend position, highlight slice, config
-- `references/architecture.md` — Groups, services, edges, junctions, alignment, layout tuning, icons
-- `references/block.md` — Columns, shapes, composite blocks, edges, space blocks, styling
-- `references/requirement.md` — Types, elements, relationships, direction, styling
-- `references/treemap.md` — Node hierarchy, styling, value formatting, config options
-- `references/mindmap.md` — Shapes, icons, classes, markdown strings, layouts
-- `references/timeline.md` — Time periods, events, sections, direction, styling, themes
-- `references/sankey.md` — CSV syntax, link colors, node alignment, label style, node colors
+- `../../../Global_References/flowchart.md` — All node shapes (30+), link types, subgraphs, styling, icons, markdown strings
+- `../../../Global_References/sequence.md` — Arrow types, loops, alt/par/critical/break, notes, activations, styling
+- `../../../Global_References/gantt.md` — Date format, axis format, duration units, excludes, milestones, compact mode, today marker
+- `../../../Global_References/class.md` — Visibility, generics, relationships, cardinality, namespaces, annotations, notes
+- `../../../Global_References/state.md` — Composite states, choice, fork, concurrency, notes, direction, classDefs
+- `../../../Global_References/er.md` — Cardinality, identification, attributes, keys, comments, aliases, subgraphs, direction
+- `../../../Global_References/gitgraph.md` — Commit types, tags, cherry-pick, branch ordering, orientation, config, themes
+- `../../../Global_References/journey.md` — Sections, tasks, scores, actors
+- `../../../Global_References/quadrant.md` — Axes, quadrants, points, styling, classes, config, theme variables
+- `../../../Global_References/xychart.md` — Orientation, axes, line/bar plots, legends, data labels, config, theme variables
+- `../../../Global_References/pie.md` — showData, donut mode, legend position, highlight slice, config
+- `../../../Global_References/mermaid_architecture.md` — Groups, services, edges, junctions, alignment, layout tuning, icons
+- `../../../Global_References/block.md` — Columns, shapes, composite blocks, edges, space blocks, styling
+- `../../../Global_References/requirement.md` — Types, elements, relationships, direction, styling
+- `../../../Global_References/treemap.md` — Node hierarchy, styling, value formatting, config options
+- `../../../Global_References/mindmap.md` — Shapes, icons, classes, markdown strings, layouts
+- `../../../Global_References/timeline.md` — Time periods, events, sections, direction, styling, themes
+- `../../../Global_References/sankey.md` — CSV syntax, link colors, node alignment, label style, node colors
 
 ## Available Scripts
 
 - **`scripts/validate.py`** — Validates Mermaid diagram syntax. Run with `uv run scripts/validate.py --input <file>` or `--stdin`.
+

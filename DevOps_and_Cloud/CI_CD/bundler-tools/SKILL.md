@@ -488,15 +488,16 @@ jobs:
 
 ## References
 
-- `references/bundle-optimization.md` -- Bundle Optimization
-- `references/bundler-comparison.md` -- Bundler Comparison
-- `references/bundler-configuration.md` -- Bundler Configuration
-- `references/bundler-optimization.md` -- Bundler Optimization
-- `references/module-federation.md` -- Module Federation
-- `references/vite-config.md` -- Vite Configuration
-- `references/bundler-performance-tuning.md` -- Bundler Performance Tuning
-- `references/module-federation-code-splitting.md` -- Module Federation & Code Splitting
+- `../../../Global_References/bundle-optimization.md` -- Bundle Optimization
+- `../../../Global_References/bundler-comparison.md` -- Bundler Comparison
+- `../../../Global_References/bundler-configuration.md` -- Bundler Configuration
+- `../../../Global_References/bundler-optimization.md` -- Bundler Optimization
+- `../../../Global_References/module-federation.md` -- Module Federation
+- `../../../Global_References/vite-config.md` -- Vite Configuration
+- `../../../Global_References/bundler-performance-tuning.md` -- Bundler Performance Tuning
+- `../../../Global_References/module-federation-code-splitting.md` -- Module Federation & Code Splitting
 
 ## Handoff
 
 If project requires custom Webpack plugin development, complex Module Federation setup, or migration from a legacy bundler (Grunt/Gulp/Browserify), flag for build engineer review. Otherwise implement complete bundler config.
+

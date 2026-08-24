@@ -422,14 +422,14 @@ interface CowOrder {
 14. Perpetual funding rates should be clamped to prevent excessive long/short imbalance
 
 ## References
-  - references/amm-mechanics.md — AMM Mechanics
-  - references/blockchain-defi-advanced.md — Blockchain Defi Advanced Topics
-  - references/blockchain-defi-fundamentals.md — Blockchain Defi Fundamentals
-  - references/defi-risk-management.md — DeFi Risk Management
-  - references/derivatives-perps.md — Derivatives & Perpetual Futures
-  - references/lending-borrowing.md — Lending & Borrowing Protocols
-  - references/lsd-lrt-restaking.md — Liquid Staking & Restaking
-  - references/yield-strategies.md — Yield Strategies
+  - ../../../Global_References/amm-mechanics.md — AMM Mechanics
+  - ../../../Global_References/blockchain-defi-advanced.md — Blockchain Defi Advanced Topics
+  - ../../../Global_References/blockchain-defi-fundamentals.md — Blockchain Defi Fundamentals
+  - ../../../Global_References/defi-risk-management.md — DeFi Risk Management
+  - ../../../Global_References/derivatives-perps.md — Derivatives & Perpetual Futures
+  - ../../../Global_References/lending-borrowing.md — Lending & Borrowing Protocols
+  - ../../../Global_References/lsd-lrt-restaking.md — Liquid Staking & Restaking
+  - ../../../Global_References/yield-strategies.md — Yield Strategies
   - references/defi-oracle-design.md — DeFi Oracle Design
   - references/defi-flash-loans.md — Flash Loan Attack Patterns
   - references/mev-in-defi.md — MEV in DeFi Protocols
@@ -549,3 +549,4 @@ contract LendingPool {
 
 ## Phase
 blockchain → blockchain-defi
+

@@ -38,11 +38,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Experiments | `references/experiment-design.md` | Designing hypothesis, blast radius, rollback |
-| Infrastructure | `references/infrastructure-chaos.md` | Server, network, zone, region failures |
-| Kubernetes | `references/kubernetes-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
-| Tools & Automation | `references/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
-| Game Days | `references/game-days.md` | Planning, executing, learning from game days |
+| Experiments | `../../../Global_References/chaos-engineer_experiment-design.md` | Designing hypothesis, blast radius, rollback |
+| Infrastructure | `../../../Global_References/infrastructure-chaos.md` | Server, network, zone, region failures |
+| Kubernetes | `../../../Global_References/kubernetes-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
+| Tools & Automation | `../../../Global_References/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
+| Game Days | `../../../Global_References/game-days.md` | Planning, executing, learning from game days |
 
 ## Safety Checklist
 
@@ -182,3 +182,4 @@ chaos-monkey --app my-service --account staging --dry-run false
 ```
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/devops/chaos-engineer/)
+

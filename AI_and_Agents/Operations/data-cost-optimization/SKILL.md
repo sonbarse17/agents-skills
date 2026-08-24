@@ -588,12 +588,13 @@ Query performance issue?
 - Profile queries for scan efficiency — high scan ratio = waste
 
 ## References
-  - references/data-cost-budgeting.md — Data Cost Budgeting
-  - references/data-cost-optimization-framework.md — Data Cost Optimization Framework
-  - references/data-finops.md — Data FinOps Reference
-  - references/query-cost-optimization.md — Query Cost Optimization Reference
-  - references/storage-tiering-strategies.md — Storage Tiering Strategies
-  - references/warehouse-cost-optimization.md — Warehouse Cost Optimization
+  - ../../../Global_References/data-cost-budgeting.md — Data Cost Budgeting
+  - ../../../Global_References/data-cost-optimization-framework.md — Data Cost Optimization Framework
+  - ../../../Global_References/data-finops.md — Data FinOps Reference
+  - ../../../Global_References/query-cost-optimization.md — Query Cost Optimization Reference
+  - ../../../Global_References/storage-tiering-strategies.md — Storage Tiering Strategies
+  - ../../../Global_References/data-cost-optimization_warehouse-cost-optimization.md — Warehouse Cost Optimization
 ## Handoff
 `data-etl-pipeline` for pipeline efficiency and incremental loading
 `data-data-warehouse` for schema design that minimizes compute
+

@@ -461,12 +461,12 @@ Version N+1 released with backward compatibility period. Deprecation notice via 
 - Health-check endpoint returns database status and latency
 
 ## References
-  - references/data-api-error-handling.md — Data API Error Handling
-  - references/data-api-patterns.md — Data API Patterns
-  - references/data-api-security.md — Data API Security Reference
-  - references/data-api-versioning.md — Data API Versioning
-  - references/graphql-for-data.md — GraphQL for Data Reference
-  - references/hasura-postgrest.md — Hasura & PostgREST
+  - ../../../Global_References/data-api-error-handling.md — Data API Error Handling
+  - ../../../Global_References/data-api-patterns.md — Data API Patterns
+  - ../../../Global_References/data-api-security.md — Data API Security Reference
+  - ../../../Global_References/data-api-versioning.md — Data API Versioning
+  - ../../../Global_References/graphql-for-data.md — GraphQL for Data Reference
+  - ../../../Global_References/hasura-postgrest.md — Hasura & PostgREST
 ## Architecture Decision Trees
 
 ```
@@ -569,3 +569,4 @@ type Order @key(fields: "id") {
 
 ## Handoff
 `data-data-platform` for deployment infrastructure. `data-data-catalog` for API endpoint documentation. `data-data-observability` for API monitoring. `data-data-contracts` for API schema contracts.
+

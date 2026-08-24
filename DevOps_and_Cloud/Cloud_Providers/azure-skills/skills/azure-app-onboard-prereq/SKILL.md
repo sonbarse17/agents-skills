@@ -13,7 +13,7 @@ Evaluate a user's repository for build health, app completeness, and Azure deplo
 
 > **Orchestrator relationship:** Called by `azure-app-onboard` at Step 3, or standalone for code readiness checks. When called by orchestrator, return control to `azure-app-onboard` after writing artifacts — do NOT invoke downstream phases directly.
 
-Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-id}/`. Reads `context.json`. Writes `components[]`, `repo{}`, `detectedInfra[]`. Produces `prereq-output.json`. Schema: [`prereq-schemas.ts`](references/prereq-schemas.ts) — `PrereqOutput`, `BuildRequirements`. Direct entry supported.
+Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-id}/`. Reads `context.json`. Writes `components[]`, `repo{}`, `detectedInfra[]`. Produces `prereq-output.json`. Schema: [`prereq-schemas.ts`](../../../../../Global_References/prereq-schemas.ts) — `PrereqOutput`, `BuildRequirements`. Direct entry supported.
 
 ## When NOT to Use
 
@@ -28,7 +28,7 @@ Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-
 
 > ⛔ **ABSOLUTE PROHIBITION — `npm install`, `npm test`, `npx jest`, `pytest`, and ALL install/build/test commands are NEVER allowed.**
 > Under NO circumstances may you run `npm install`, `npm test`, `npx jest`, `pip install`, `pytest`, `dotnet build`, `dotnet restore`, `dotnet test`, `go mod download`, `cargo build`, or ANY package-manager install, build, or test command during the prereq phase. Do NOT run test suites to verify code — check for test config files statically instead. The prereq phase is read-only evaluation + static-only verification.
-> **ONLY exception — two sanctioned contexts, both consent-gated:** (a) code the agent **modified** during migration/remediation (see [remediation-protocol.md](references/remediation-protocol.md) step 6), or (b) code the agent **wrote** from scratch on the zero-code path (see [zero-code-path.md](references/zero-code-path.md)). In either case, install/build/test runs ONLY via the user-confirmed build-validation gate ([build-check.md](references/build-check.md) Step 3), after the user answers that specific per-command consent prompt. General prior consent never counts.
+> **ONLY exception — two sanctioned contexts, both consent-gated:** (a) code the agent **modified** during migration/remediation (see [remediation-protocol.md](../../../../../Global_References/remediation-protocol.md) step 6), or (b) code the agent **wrote** from scratch on the zero-code path (see [zero-code-path.md](../../../../../Global_References/zero-code-path.md)). In either case, install/build/test runs ONLY via the user-confirmed build-validation gate ([build-check.md](../../../../../Global_References/build-check.md) Step 3), after the user answers that specific per-command consent prompt. General prior consent never counts.
 
 1. ⛔ **Full pipeline (Steps 1–8), no exceptions.** All prompts → Step 1 directly. Answer specific questions AS PART OF findings (Step 5), not before.
 2. ⛔ **No sub-agents for evaluation.** 3-axis evaluation is inline. **Exception**: zero-code-path scaffolding (Step 2).
@@ -48,41 +48,41 @@ Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-
 **Orchestrator entry:** Session exists — read `context.json`, proceed to Step 2.
 
 **Direct entry:** Check `.copilot-azure/sessions/active-session.json`:
-- **Exists** → ⛔ read [session-protocol.md](references/session-protocol.md) for resume/fresh gate. Do NOT proceed until user answers.
+- **Exists** → ⛔ read [session-protocol.md](../../../../../Global_References/azure-app-onboard-prereq_session-protocol.md) for resume/fresh gate. Do NOT proceed until user answers.
 - **Missing** → create session: generate UUID, `New-Item -ItemType Directory -Path ".copilot-azure/sessions/{uuid}" -Force`, write `context.json` + `active-session.json` via `create` tool.
 
 Then: `az account show` → merge `{id, name, tenantId}` into `context.json.azure`. ⛔ Session MUST exist on disk before any scanning.
 
 ### Step 2: Scan Workspace
 
-Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detectedServices[]`. Classify Terraform providers. Check CLI availability. Stack detection conflicts: user explicit statement wins (write to `context.json`, mark scan as override); scan-only → confirm with user; multiple stacks → show all and ask (see [component-mapping.md](references/component-mapping.md)); no code → [zero-code-path.md](references/zero-code-path.md).
+Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detectedServices[]`. Classify Terraform providers. Check CLI availability. Stack detection conflicts: user explicit statement wins (write to `context.json`, mark scan as override); scan-only → confirm with user; multiple stacks → show all and ask (see [component-mapping.md](../../../../../Global_References/component-mapping.md)); no code → [zero-code-path.md](../../../../../Global_References/zero-code-path.md).
 
-> If no project files, no Dockerfile, AND no index.html → ⛔ read [zero-code-path.md](references/zero-code-path.md).
+> If no project files, no Dockerfile, AND no index.html → ⛔ read [zero-code-path.md](../../../../../Global_References/zero-code-path.md).
 
-> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|firebase`. If functional deps found → read [cloud-sdk-migration.md](references/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "azure-cloud-migrate"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
+> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|firebase`. If functional deps found → read [cloud-sdk-migration.md](../../../../../Global_References/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "azure-cloud-migrate"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
 
 ### Step 3: Per-Component Evaluation
 
 | Sub-step | Action | Reference |
 |----------|--------|-----------|
-| 3.1 | **Build check** | ⛔ **You MUST read [build-check.md](references/build-check.md)** |
-| 3.2 | **Completeness check** | ⛔ **You MUST read [completeness-check.md](references/completeness-check.md)** |
-| 3.3 | **Deployability check** | ⛔ **You MUST read [deployability-check.md](references/deployability-check.md)** |
-| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](references/component-mapping.md) ONLY IF >1 project manifest found (monorepo) |
+| 3.1 | **Build check** | ⛔ **You MUST read [build-check.md](../../../../../Global_References/build-check.md)** |
+| 3.2 | **Completeness check** | ⛔ **You MUST read [completeness-check.md](../../../../../Global_References/completeness-check.md)** |
+| 3.3 | **Deployability check** | ⛔ **You MUST read [deployability-check.md](../../../../../Global_References/deployability-check.md)** |
+| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](../../../../../Global_References/component-mapping.md) ONLY IF >1 project manifest found (monorepo) |
 
-Populate `buildRequirements` per component after evaluation. Verdict propagation, tier rules, and f1Viable aggregation are in [readiness-gate.md](references/readiness-gate.md) and the individual check references.
+Populate `buildRequirements` per component after evaluation. Verdict propagation, tier rules, and f1Viable aggregation are in [readiness-gate.md](../../../../../Global_References/readiness-gate.md) and the individual check references.
 
 ### Step 4: Write Artifacts + Readiness Gate
 
-⛔ Verify `context.json` exists on disk. Read [readiness-gate.md](references/readiness-gate.md) (verdicts, tiers, batch-then-approve, fast-track) then [prereq-artifacts.md](references/prereq-artifacts.md) (write procedures, schemas).
+⛔ Verify `context.json` exists on disk. Read [readiness-gate.md](../../../../../Global_References/readiness-gate.md) (verdicts, tiers, batch-then-approve, fast-track) then [prereq-artifacts.md](../../../../../Global_References/prereq-artifacts.md) (write procedures, schemas).
 
 ### Step 5: Present Findings
 
-Per [readiness-gate.md § Present Findings](references/readiness-gate.md) — show verdicts grouped by severity before proceeding.
+Per [readiness-gate.md § Present Findings](../../../../../Global_References/readiness-gate.md) — show verdicts grouped by severity before proceeding.
 
 ### Step 6: Remediation (conditional)
 
-⛔ **You MUST read [remediation-protocol.md](references/remediation-protocol.md)** IF any ❌ FAIL verdict, 🔧 Recommended Fix, or ⚠️ WARN with `fixPhase: "prereq"` exists. Contains remediation loop, static verification, re-eval mandate, post-remediation artifact updates, and the build-validation consent gate. If all verdicts are ✅ PASS or ⚠️ WARN without `fixPhase: "prereq"`, skip to Step 7.
+⛔ **You MUST read [remediation-protocol.md](../../../../../Global_References/remediation-protocol.md)** IF any ❌ FAIL verdict, 🔧 Recommended Fix, or ⚠️ WARN with `fixPhase: "prereq"` exists. Contains remediation loop, static verification, re-eval mandate, post-remediation artifact updates, and the build-validation consent gate. If all verdicts are ✅ PASS or ⚠️ WARN without `fixPhase: "prereq"`, skip to Step 7.
 
 ### Step 7: Write Final State
 
@@ -109,7 +109,7 @@ Per [readiness-gate.md § Present Findings](references/readiness-gate.md) — sh
 | 5 | Direct + ready/readyWithCaveats + existing Azure infra | `ask_user`: "Start fresh" → invoke `azure-app-onboard` / "Use existing infra" → invoke `azure-prepare` / "Not now" |
 | 6 | Direct + blocked | Report blocker summary + "Fix and re-run." |
 
-Severity tiers (🛑🔶❌🔧⚠️✅) are defined in [readiness-gate.md](references/readiness-gate.md).
+Severity tiers (🛑🔶❌🔧⚠️✅) are defined in [readiness-gate.md](../../../../../Global_References/readiness-gate.md).
 
 ## Outputs
 

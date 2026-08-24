@@ -47,7 +47,7 @@ before a long run, not after hour six.
 - **CAUSE:** most PyPI wheels link `libcudart.so.12`; Spark
   ships CUDA 13. pip never checks CUDA ABI, so it surfaces
   only at import or first kernel launch.
-- **CHECK:** `references/gotcha-checks.md` G1 — the wheel's
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G1 — the wheel's
   CUDA build tag.
 - **FIX:** reinstall from `download.pytorch.org/whl/cu130` or
   use a matched container.
@@ -60,11 +60,11 @@ before a long run, not after hour six.
 - **CAUSE:** no aarch64/sm_121 wheel for bare pip — but NGC
   containers ship a working SM121 flash-attn, and Unsloth
   auto-prefers it, dropping `attn_implementation="sdpa"`.
-- **CHECK:** `references/gotcha-checks.md` G2 — is flash-attn
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G2 — is flash-attn
   already present and working.
 - **FIX:** bare pip — skip flash-attn, use SDPA (unchanged). On
   NGC — the only reliable override is the monkeypatch in
-  `references/gotcha-checks.md` G2.
+  `../../../Global_References/gotcha-checks.md` G2.
 
 ### G3: UMA OOM Below 128GB
 
@@ -74,7 +74,7 @@ before a long run, not after hour six.
 - **CAUSE:** mmap and the CUDA allocator double-count pages
   during safetensors load; QLoRA can OOM *earlier* than bf16
   since dequantization adds transient allocs.
-- **CHECK:** `references/gotcha-checks.md` G3 — read `free -g`
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G3 — read `free -g`
   and `/proc/meminfo`, not `nvidia-smi`.
 - **FIX:** drop the page cache with
   `sync; echo 3 > /proc/sys/vm/drop_caches` — needs root, a
@@ -87,7 +87,7 @@ before a long run, not after hour six.
 - **CAUSE:** sustained power draw caps around 100W versus the
   240W rated figure; long runs push into that ceiling and
   throttle or, sometimes, reboot.
-- **CHECK:** `references/gotcha-checks.md` G4 — sample
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G4 — sample
   `nvidia-smi --query-gpu=temperature.gpu,power.draw`.
 - **FIX:** if power plateaus under 240W while temperature
   climbs, treat throttling as the cause; improve cooling or
@@ -99,7 +99,7 @@ before a long run, not after hour six.
   especially, plateau well below expected throughput.
 - **CAUSE:** 273 GB/s is a spec ceiling, not sustained;
   measured bandwidth runs 180–192 GB/s.
-- **CHECK:** `references/gotcha-checks.md` G5 — observed step
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G5 — observed step
   time vs. the measured range, not spec.
 - **FIX:** budget throughput from 180–192 GB/s; revise a plan
   built on the 273 GB/s figure.
@@ -117,7 +117,7 @@ before a long run, not after hour six.
   <4GB LoRA coexists fine
   alongside vLLM capped at
   `gpu-memory-utilization<=0.5`.
-- **CHECK:** `references/gotcha-checks.md`
+- **CHECK:** `../../../Global_References/gotcha-checks.md`
   G6 — other GPU-resident
   processes and whether
   capped.
@@ -135,7 +135,7 @@ before a long run, not after hour six.
   NVFP4 on Spark makes it slower, not faster.
 - **CAUSE:** SM121 lacks `cvt.e2m1x2` unless kernels target
   `sm_121a`; NVFP4 runs ~32% slower without it.
-- **CHECK:** `references/gotcha-checks.md` G7 — capability
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G7 — capability
   reports `(12, 1)`; does the build target `sm_121a`?
 - **FIX:** stay on FP8 unless the build targets `sm_121a`.
 
@@ -145,7 +145,7 @@ before a long run, not after hour six.
   fails, with no local misconfiguration explaining it.
 - **CAUSE:** official playbooks have shipped broken before;
   the stack moves faster than the docs.
-- **CHECK:** `references/gotcha-checks.md` G8 — the playbook
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G8 — the playbook
   repo's recent issues.
 - **FIX:** check `github.com/NVIDIA/dgx-spark-playbooks` issues
   before trusting a recipe for an expensive run.
@@ -158,7 +158,7 @@ before a long run, not after hour six.
 - **CAUSE:** bare pip lets Triton, xformers, and transformers
   drift independently; nothing pins them to GB10's SM121
   target.
-- **CHECK:** `references/gotcha-checks.md`
+- **CHECK:** `../../../Global_References/gotcha-checks.md`
   G9 — container or bare pip?
 - **FIX:** prefer an NGC container (see `spark-environment-setup`
   for tag guidance) or Unsloth's container. If bare pip is
@@ -171,7 +171,7 @@ before a long run, not after hour six.
   hangs, runs far slower than single-Spark, or errors out.
 - **CAUSE:** ConnectX-7 is fast enough for gradient/parameter
   sync (DDP, FSDP) but too thin for TP's fine-grained traffic.
-- **CHECK:** `references/gotcha-checks.md` G10 — the
+- **CHECK:** `../../../Global_References/gotcha-checks.md` G10 — the
   configured parallelism strategy.
 - **FIX:** on a two-Spark setup, choose DDP or FSDP, never
   tensor parallelism — TP is single-node only here.
@@ -196,5 +196,6 @@ import torch; print(torch.cuda.get_device_capability())  # expect (12, 1) (G7)
 output line per gotcha in a fixed format: G-number first, then
 PASS/FAIL/WARN where automatable, SKIP when unavailable, or
 `INFO:` for a raw reading (G3, G4). Full commands:
-`references/gotcha-checks.md`. See also
+`../../../Global_References/gotcha-checks.md`. See also
 `spark-environment-setup` for the environment assumed working.
+

@@ -106,7 +106,7 @@ FROM .alerts-security.alerts-*
 | SORT alert_count DESC
 ```
 
-For full query templates, see [references/classification-guide.md](references/classification-guide.md).
+For full query templates, see [../../../Global_References/classification-guide.md](../../../Global_References/classification-guide.md).
 
 ### Step 1: Check existing cases
 
@@ -152,7 +152,7 @@ FROM logs-endpoint.events.process-*
 | Logs      | `logs-*`                         |
 
 For full query templates and classification criteria, see
-[references/classification-guide.md](references/classification-guide.md).
+[../../../Global_References/classification-guide.md](../../../Global_References/classification-guide.md).
 
 ### Step 3: Create or update case
 
@@ -282,3 +282,4 @@ Acknowledges alerts by updating `workflow_status` to `acknowledged`.
 | `ELASTICSEARCH_API_KEY` | Yes      | Elasticsearch API key                |
 | `KIBANA_URL`            | Yes      | Kibana URL (for case management)     |
 | `KIBANA_API_KEY`        | Yes      | Kibana API key (for case management) |
+

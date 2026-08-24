@@ -526,13 +526,14 @@ resource "vault_database_secret_backend_role" "app_role" {
 - Skipping replication setup in multi-region — high latency for secret reads.
 
 ## References
-  - references/secrets-engines.md — Secrets Engines
-  - references/vault-advanced.md — Vault Advanced Topics
-  - references/vault-basics.md — Vault Basics
-  - references/vault-fundamentals.md — Vault Fundamentals
-  - references/vault-integration.md — Vault Integration
-  - references/vault-policies.md — Vault Policies
+  - ../../../Global_References/vault_secrets-engines.md — Secrets Engines
+  - ../../../Global_References/vault-advanced.md — Vault Advanced Topics
+  - ../../../Global_References/vault-basics.md — Vault Basics
+  - ../../../Global_References/vault-fundamentals.md — Vault Fundamentals
+  - ../../../Global_References/vault-integration.md — Vault Integration
+  - ../../../Global_References/vault_vault-policies.md — Vault Policies
 ## Handoff
 After completing this skill:
 - Next skill: **aws** — IAM roles for Vault AWS engine, Vault on EKS
 - Pass context: Vault address, auth method, policy paths
+

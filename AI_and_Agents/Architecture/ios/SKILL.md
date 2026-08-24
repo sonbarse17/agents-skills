@@ -413,13 +413,13 @@ final class OrderViewModelTests: XCTestCase {
 - BackgroundTasks for deferrable work — not app delegate background fetch
 
 ## References
-  - references/ios-advanced.md — Ios Advanced Topics
-  - references/ios-architecture.md — iOS Architecture — MVVM, Coordinator, Combine, Swift Concurrency
-  - references/ios-fundamentals.md — Ios Fundamentals
-  - references/swiftui-patterns.md — SwiftUI Patterns
-  - references/swiftui-performance.md — SwiftUI Performance Optimization
-  - references/testing.md — iOS Testing (XCTest)
-  - references/uikit-interop.md — SwiftUI / UIKit Interop
+  - ../../../Global_References/ios-advanced.md — Ios Advanced Topics
+  - ../../../Global_References/ios-architecture.md — iOS Architecture — MVVM, Coordinator, Combine, Swift Concurrency
+  - ../../../Global_References/ios-fundamentals.md — Ios Fundamentals
+  - ../../../Global_References/swiftui-patterns.md — SwiftUI Patterns
+  - ../../../Global_References/swiftui-performance.md — SwiftUI Performance Optimization
+  - ../../../Global_References/ios_testing.md — iOS Testing (XCTest)
+  - ../../../Global_References/uikit-interop.md — SwiftUI / UIKit Interop
 ## Handoff
 
 Hand off to `mobile/universal/deployment/SKILL.md` for deployment.

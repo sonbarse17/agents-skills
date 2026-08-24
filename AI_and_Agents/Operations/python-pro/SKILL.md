@@ -43,11 +43,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Type System | `references/type-system.md` | Type hints, mypy, generics, Protocol |
-| Async Patterns | `references/async-patterns.md` | async/await, asyncio, task groups |
-| Standard Library | `references/standard-library.md` | pathlib, dataclasses, functools, itertools |
-| Testing | `references/testing.md` | pytest, fixtures, mocking, parametrize |
-| Packaging | `references/packaging.md` | poetry, pip, pyproject.toml, distribution |
+| Type System | `../../../Global_References/type-system.md` | Type hints, mypy, generics, Protocol |
+| Async Patterns | `../../../Global_References/python-pro_async-patterns.md` | async/await, asyncio, task groups |
+| Standard Library | `../../../Global_References/standard-library.md` | pathlib, dataclasses, functools, itertools |
+| Testing | `../../../Global_References/python-pro_testing.md` | pytest, fixtures, mocking, parametrize |
+| Packaging | `../../../Global_References/packaging.md` | poetry, pip, pyproject.toml, distribution |
 
 ## Constraints
 
@@ -177,3 +177,4 @@ When implementing Python features, provide:
 Python 3.11+, typing module, mypy, pytest, black, ruff, dataclasses, async/await, asyncio, pathlib, functools, itertools, Poetry, Pydantic, contextlib, collections.abc, Protocol
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/python-pro/)
+

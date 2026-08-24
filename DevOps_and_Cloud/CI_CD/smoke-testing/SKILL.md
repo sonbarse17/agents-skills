@@ -392,16 +392,16 @@ smoke_metrics:
 20. Smoke test results must feed into deployment health dashboards automatically
 
 ## References
-- references/bvt-strategy.md — Build Verification Testing (BVT)
-- references/canary-testing.md — Canary Testing
-- references/deployment-health.md — Deployment Health Checks
-- references/health-check-patterns.md — Health Check Patterns
-- references/smoke-automation.md — Smoke Test Automation
-- references/smoke-testing-advanced.md — Smoke Testing Advanced Topics
-- references/smoke-testing-architecture.md — Smoke Testing Architecture and System Design
-- references/smoke-testing-fundamentals.md — Smoke Testing Fundamentals
-- references/smoke-testing-strategies.md — Smoke Testing Strategies
-- references/smoke-testing-strategy.md — Smoke Testing Strategy and Decision Frameworks
+- ../../../Global_References/bvt-strategy.md — Build Verification Testing (BVT)
+- ../../../Global_References/canary-testing.md — Canary Testing
+- ../../../Global_References/deployment-health.md — Deployment Health Checks
+- ../../../Global_References/smoke-testing_health-check-patterns.md — Health Check Patterns
+- ../../../Global_References/smoke-automation.md — Smoke Test Automation
+- ../../../Global_References/smoke-testing-advanced.md — Smoke Testing Advanced Topics
+- ../../../Global_References/smoke-testing-architecture.md — Smoke Testing Architecture and System Design
+- ../../../Global_References/smoke-testing-fundamentals.md — Smoke Testing Fundamentals
+- ../../../Global_References/smoke-testing-strategies.md — Smoke Testing Strategies
+- ../../../Global_References/smoke-testing-strategy.md — Smoke Testing Strategy and Decision Frameworks
 
 ## Handoff
 After smoke testing, hand off to:

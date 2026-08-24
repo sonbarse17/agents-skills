@@ -480,12 +480,12 @@ CREATE TRIGGER order_created_trigger
 - Enable branching for development workflows (`supabase branches`).
 
 ## References
-  - references/edge-functions.md — Edge Functions
-  - references/postgres-rls.md — PostgreSQL & Row Level Security
-  - references/supabase-auth.md — Supabase Auth
-  - references/supabase-backup-migration.md — Supabase Backup and Migration
-  - references/supabase-realtime.md — Supabase Realtime
-  - references/supabase-storage.md — Supabase Storage
+  - ../../../Global_References/edge-functions.md — Edge Functions
+  - ../../../Global_References/postgres-rls.md — PostgreSQL & Row Level Security
+  - ../../../Global_References/supabase-auth.md — Supabase Auth
+  - ../../../Global_References/supabase-backup-migration.md — Supabase Backup and Migration
+  - ../../../Global_References/supabase-realtime.md — Supabase Realtime
+  - ../../../Global_References/supabase-storage.md — Supabase Storage
 ## Handoff
 Hand off to `ai/vector-databases/SKILL.md` for pgvector embedding workflows or `mobile/*/SKILL.md` for client SDK integration.
 ## Implementation Patterns

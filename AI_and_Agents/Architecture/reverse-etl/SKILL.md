@@ -430,11 +430,11 @@ Destination type?
 - Monitor destination API changes that may break field mappings
 
 ## References
-  - references/identity-resolution.md — Identity Resolution Reference
-  - references/identity-strategies.md — Identity Strategies for Reverse ETL
-  - references/reverse-etl-monitoring.md — Reverse ETL Monitoring
-  - references/reverse-etl-patterns.md — Reverse ETL Patterns
-  - references/sync-config-examples.md — Sync Configuration Examples
+  - ../../../Global_References/identity-resolution.md — Identity Resolution Reference
+  - ../../../Global_References/identity-strategies.md — Identity Strategies for Reverse ETL
+  - ../../../Global_References/reverse-etl-monitoring.md — Reverse ETL Monitoring
+  - ../../../Global_References/reverse-etl-patterns.md — Reverse ETL Patterns
+  - ../../../Global_References/sync-config-examples.md — Sync Configuration Examples
   - references/warehouse-activation.md — Warehouse Activation Reference
 ## Architecture Decision Trees
 
@@ -557,3 +557,4 @@ class ReverseETLSync:
 `data-data-warehouse` for warehouse data modeling and transformation needed before sync
 `data-etl-pipeline` for traditional batch ETL (warehouse as target, not source)
 `data-quality` for validating warehouse data before operational sync
+

@@ -558,13 +558,14 @@ Primary use case?
 - Validate schemas in CI/CD before merging PRs
 
 ## References
-  - references/registry-setup.md — Schema Registry Setup
-  - references/schema-evolution.md — Schema Evolution
-  - references/schema-governance.md — Schema Governance
-  - references/schema-migration-strategies.md — Schema Migration Strategies
-  - references/schema-registry-operations.md — Schema Registry Operations Reference
-  - references/schema-registry-tools.md — Schema Registry Ecosystem Tools
-  - references/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
-  - references/schema-registry-integration-patterns.md — Integration Patterns Reference
+  - ../../../Global_References/registry-setup.md — Schema Registry Setup
+  - ../../../Global_References/schema-evolution.md — Schema Evolution
+  - ../../../Global_References/schema-governance.md — Schema Governance
+  - ../../../Global_References/schema-migration-strategies.md — Schema Migration Strategies
+  - ../../../Global_References/schema-registry-operations.md — Schema Registry Operations Reference
+  - ../../../Global_References/schema-registry-tools.md — Schema Registry Ecosystem Tools
+  - ../../../Global_References/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
+  - ../../../Global_References/schema-registry-integration-patterns.md — Integration Patterns Reference
 ## Handoff
 `data-data-platform` for registry deployment. `data-data-catalog` for schema metadata. `data-data-contracts` for data contract schema integration. `data-data-observability` for schema drift monitoring.
+

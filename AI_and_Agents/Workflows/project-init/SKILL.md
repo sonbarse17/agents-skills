@@ -199,14 +199,14 @@ docs/
 - Add `Dockerfile` placeholder for containerized deployments
 
 ## References
-  - references/boilerplate-generation.md — Boilerplate Generation
-  - references/config-reference.md — Config File Reference
-  - references/config-templates.md — Config Templates Reference
-  - references/project-init-advanced.md — Project Init Advanced Topics
-  - references/project-init-checklist.md — Project Init Checklist
-  - references/project-init-fundamentals.md — Project Init Fundamentals
-  - references/project-scaffold.md — Project Scaffolding Reference
-  - references/stack-templates.md — Stack Templates
+  - ../../../Global_References/boilerplate-generation.md — Boilerplate Generation
+  - ../../../Global_References/config-reference.md — Config File Reference
+  - ../../../Global_References/config-templates.md — Config Templates Reference
+  - ../../../Global_References/project-init-advanced.md — Project Init Advanced Topics
+  - ../../../Global_References/project-init-checklist.md — Project Init Checklist
+  - ../../../Global_References/project-init-fundamentals.md — Project Init Fundamentals
+  - ../../../Global_References/project-scaffold.md — Project Scaffolding Reference
+  - ../../../Global_References/stack-templates.md — Stack Templates
 
 ## Project Kickoff Checklist
 
@@ -587,3 +587,4 @@ git add . && git commit -m "chore: initial scaffold"
 Output: Scaffolded project at {path}
 Next skill: create-brief - to define what gets built.
 Carry forward: project path, stack, framework.
+

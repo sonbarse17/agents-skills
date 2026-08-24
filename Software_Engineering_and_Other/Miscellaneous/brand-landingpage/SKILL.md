@@ -49,9 +49,9 @@ Read these files at the indicated moments. Do not re-read them on every iteratio
 
 | File | When to read | Contains |
 |------|-------------|----------|
-| `references/interview-framework.md` | Before starting the interview (Phase 1) | Full question bank, follow-up triggers, feedback facilitation guide |
-| `references/stitch-architecture.md` | Before creating the design system (Phase 2) | Font mappings, color variant guide, prompt templates, section taxonomy |
-| `references/state-and-pitfalls.md` | At project start and before delivery (Phase 4) | metadata.json schema, state rules, common pitfalls, DEPLOY.md template |
+| `../../../Global_References/interview-framework.md` | Before starting the interview (Phase 1) | Full question bank, follow-up triggers, feedback facilitation guide |
+| `../../../Global_References/stitch-architecture.md` | Before creating the design system (Phase 2) | Font mappings, color variant guide, prompt templates, section taxonomy |
+| `../../../Global_References/state-and-pitfalls.md` | At project start and before delivery (Phase 4) | metadata.json schema, state rules, common pitfalls, DEPLOY.md template |
 
 ---
 
@@ -66,13 +66,13 @@ Stitch SDK       (3 parts)        (translate &        (generate -> show ->      
                   C: Visual
 ```
 
-All project state persists in `.stitch/metadata.json` (see `references/state-and-pitfalls.md` for schema). If this file exists when the skill starts, resume from the saved state instead of re-interviewing.
+All project state persists in `.stitch/metadata.json` (see `../../../Global_References/state-and-pitfalls.md` for schema). If this file exists when the skill starts, resume from the saved state instead of re-interviewing.
 
 ---
 
 ## Phase 1: Brand Interview
 
-Read `references/interview-framework.md` before starting this phase.
+Read `../../../Global_References/interview-framework.md` before starting this phase.
 
 ### Opening
 
@@ -117,7 +117,7 @@ If the user asks why you can't embed their logo directly: "Stitch generates from
 
 ## Phase 2: Design System Creation
 
-Read `references/stitch-architecture.md` before starting this phase.
+Read `../../../Global_References/stitch-architecture.md` before starting this phase.
 
 ### Translation Table
 
@@ -125,10 +125,10 @@ Map interview answers to Stitch design system parameters:
 
 | Interview answer | Design system parameter | Reference |
 |-----------------|------------------------|-----------|
-| 3 brand adjectives | `colorVariant` enum | Color Variant Decision Tree in `references/stitch-architecture.md` |
+| 3 brand adjectives | `colorVariant` enum | Color Variant Decision Tree in `../../../Global_References/stitch-architecture.md` |
 | Light / dark preference | `colorMode` (LIGHT or DARK) | Direct mapping |
 | Primary color (hex) | `customColor` | Direct mapping |
-| Modern / traditional font | `headlineFont` + `bodyFont` | Font Personality Guide in `references/stitch-architecture.md` |
+| Modern / traditional font | `headlineFont` + `bodyFont` | Font Personality Guide in `../../../Global_References/stitch-architecture.md` |
 | Sharp / rounded shapes | `roundness` enum | ROUND_FOUR (sharp) through ROUND_FULL (rounded) |
 
 ### Steps
@@ -160,8 +160,8 @@ This is the core workflow. The loop runs until the user approves the design.
 
 ### First Generation
 
-1. Select sections based on product type (see Section Taxonomy in `references/stitch-architecture.md`).
-2. Craft the generation prompt using the template from `references/stitch-architecture.md`.
+1. Select sections based on product type (see Section Taxonomy in `../../../Global_References/stitch-architecture.md`).
+2. Craft the generation prompt using the template from `../../../Global_References/stitch-architecture.md`.
 3. Call `generate_screen_from_text` with `deviceType: DESKTOP`.
 4. Generation takes 1-3 minutes. Do NOT retry if it seems slow.
 5. Save the HTML output returned by your Stitch SDK call into `.stitch/designs/` using a versioned filename: `desktop-v1.html` for the first generation, `desktop-v2.html` for the next iteration, and so on. Use the same convention for mobile (`mobile-v1.html`, `mobile-v2.html`). Use the SDK's response-handling pattern to retrieve the output — don't perform arbitrary HTTP fetches.
@@ -174,12 +174,12 @@ After every generation, edit, or variant selection:
 
 1. Save the updated HTML from the Stitch SDK response and open the local file in the browser.
 2. Briefly orient the user: "I've opened the latest version in your browser. Hero section at top with the headline and CTA, then {describe sections}, footer at the bottom."
-3. Ask the three feedback questions from `references/interview-framework.md`:
+3. Ask the three feedback questions from `../../../Global_References/interview-framework.md`:
    - "What's your gut reaction in the first 5 seconds?"
    - "Does this feel like YOUR product?"
    - "Is there anything that feels wrong, missing, or not quite right?"
 
-Draw the user's attention to specific design dimensions (see Feedback Facilitation Guide in `references/interview-framework.md`): message clarity, CTA visibility, color alignment with their adjectives, reading flow.
+Draw the user's attention to specific design dimensions (see Feedback Facilitation Guide in `../../../Global_References/interview-framework.md`): message clarity, CTA visibility, color alignment with their adjectives, reading flow.
 
 ### Feedback Translation
 
@@ -215,7 +215,7 @@ After desktop approval, offer: "Want me to generate a mobile layout too?" If yes
 
 ## Phase 4: Delivery Bundle
 
-Read `references/state-and-pitfalls.md` for the DEPLOY.md template.
+Read `../../../Global_References/state-and-pitfalls.md` for the DEPLOY.md template.
 
 ### Bundle Structure
 
@@ -237,7 +237,7 @@ Read `references/state-and-pitfalls.md` for the DEPLOY.md template.
 2. Generate `color-tokens.json` with primary color, colorMode, colorVariant, fonts, roundness.
 3. Copy `.stitch/DESIGN.md`.
 4. Collect user assets from `.stitch/user-assets/` if any exist.
-5. Generate `DEPLOY.md` using the template in `references/state-and-pitfalls.md`.
+5. Generate `DEPLOY.md` using the template in `../../../Global_References/state-and-pitfalls.md`.
 6. Create the zip: `zip -r "{project-name}-landing-page.zip" "{project-name}-landing-page/"`
 7. Tell the user: "Bundle is ready at `{path}`. See `DEPLOY.md` for the deployment checklist."
 
@@ -256,3 +256,4 @@ Read `references/state-and-pitfalls.md` for the DEPLOY.md template.
 - **Generation fails:** Do NOT retry immediately. Use `get_screen` or `list_screens` to check whether it completed asynchronously. If genuinely failed, try once more with a simplified prompt.
 - **Rate limiting:** Inform the user: "Stitch rate-limited. Retrying in 30 seconds."
 - **Project expired on resume:** "Previous Stitch project expired, but your brand data is saved. Recreating now." Re-run Phase 2 from saved interview data.
+

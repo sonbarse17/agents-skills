@@ -41,7 +41,7 @@ Chunk: Memory block for same-archetype entities
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/unity-ecs-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -60,3 +60,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 - **Don't over-architect** - Start simple
 - **Don't ignore chunk utilization** - Group similar entities
 - **Don't forget disposal** - Native collections leak
+

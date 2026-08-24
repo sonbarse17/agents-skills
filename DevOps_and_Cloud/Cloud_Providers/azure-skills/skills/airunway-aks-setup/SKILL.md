@@ -70,4 +70,5 @@ This skill uses no MCP tools. All cluster operations are performed directly via 
 | ModelDeployment stuck in Pending | GPU scheduling failure or provider not ready | `kubectl describe modeldeployment <name> -n <namespace>` events |
 | `bfloat16` errors at inference | T4 or V100 lacks bfloat16 support | Add `--dtype float16` to serving args |
 
-For full error handling and rollback procedures, see [troubleshooting.md](references/troubleshooting.md).
+For full error handling and rollback procedures, see [troubleshooting.md](../../../../../Global_References/airunway-aks-setup_troubleshooting.md).
+

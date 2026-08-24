@@ -227,7 +227,7 @@ class FileProcessor:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-resource-management_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -241,3 +241,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Track metrics** - Time-to-first-byte matters for streaming
 9. **Document behavior** - Especially exception suppression
 10. **Test cleanup paths** - Verify resources are released on errors
+

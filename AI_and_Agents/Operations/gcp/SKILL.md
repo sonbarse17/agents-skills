@@ -536,14 +536,15 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Secret Manager for secrets.
 
 ## References
-- references/gcp-advanced.md -- Gcp Advanced Topics
-- references/gcp-compute.md -- GCP Compute
-- references/gcp-data-ai.md -- GCP Data and AI
-- references/gcp-devops.md -- Google Cloud DevOps
-- references/gcp-fundamentals.md -- Gcp Fundamentals
-- references/gcp-gke.md -- GCP GKE
-- references/gcp-infrastructure.md -- Google Cloud Infrastructure
-- references/gcp-serverless.md -- GCP Serverless
+- ../../../Global_References/gcp-advanced.md -- Gcp Advanced Topics
+- ../../../Global_References/gcp-compute.md -- GCP Compute
+- ../../../Global_References/gcp-data-ai.md -- GCP Data and AI
+- ../../../Global_References/gcp-devops.md -- Google Cloud DevOps
+- ../../../Global_References/gcp-fundamentals.md -- Gcp Fundamentals
+- ../../../Global_References/gcp-gke.md -- GCP GKE
+- ../../../Global_References/gcp-infrastructure.md -- Google Cloud Infrastructure
+- ../../../Global_References/gcp-serverless.md -- GCP Serverless
 
 ## Handoff
 Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for multi-cloud IaC. Hand off to kubernetes-patterns for workload manifests on GKE.
+

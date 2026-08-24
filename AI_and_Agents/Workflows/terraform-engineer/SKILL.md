@@ -44,11 +44,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modules | `references/module-patterns.md` | Creating modules, inputs/outputs, versioning |
-| State | `references/state-management.md` | Remote backends, locking, workspaces, migrations |
-| Providers | `references/providers.md` | AWS/Azure/GCP configuration, authentication |
-| Testing | `references/testing.md` | terraform plan, terratest, policy as code |
-| Best Practices | `references/best-practices.md` | DRY patterns, naming, security, cost tracking |
+| Modules | `../../../Global_References/module-patterns.md` | Creating modules, inputs/outputs, versioning |
+| State | `../../../Global_References/terraform-engineer_state-management.md` | Remote backends, locking, workspaces, migrations |
+| Providers | `../../../Global_References/providers.md` | AWS/Azure/GCP configuration, authentication |
+| Testing | `../../../Global_References/terraform-engineer_testing.md` | terraform plan, terratest, policy as code |
+| Best Practices | `../../../Global_References/terraform-engineer_best-practices.md` | DRY patterns, naming, security, cost tracking |
 
 ## Constraints
 
@@ -144,3 +144,4 @@ terraform {
 When implementing Terraform solutions, provide: module structure (`main.tf`, `variables.tf`, `outputs.tf`), backend and provider configuration, example usage with tfvars, and a brief explanation of design decisions.
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/terraform-engineer/)
+

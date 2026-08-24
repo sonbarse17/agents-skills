@@ -125,7 +125,7 @@ def capture_paypal_order(order_id):
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/paypal-integration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing
 
@@ -154,3 +154,4 @@ def test_payment_flow():
     # captured = client.capture_order(order['id'])
     # assert captured['status'] == 'COMPLETED'
 ```
+

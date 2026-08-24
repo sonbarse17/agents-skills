@@ -45,11 +45,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| EARS Syntax | `references/ears-syntax.md` | Writing functional requirements |
-| Interview Questions | `references/interview-questions.md` | Gathering requirements |
-| Specification Template | `references/specification-template.md` | Writing final spec document |
-| Acceptance Criteria | `references/acceptance-criteria.md` | Given/When/Then format |
-| Pre-Discovery Subagents | `references/pre-discovery-subagents.md` | Multi-domain features needing front-loaded context |
+| EARS Syntax | `../../../Global_References/ears-syntax.md` | Writing functional requirements |
+| Interview Questions | `../../../Global_References/feature-forge_interview-questions.md` | Gathering requirements |
+| Specification Template | `../../../Global_References/feature-forge_specification-template.md` | Writing final spec document |
+| Acceptance Criteria | `../../../Global_References/feature-forge_acceptance-criteria.md` | Given/When/Then format |
+| Pre-Discovery Subagents | `../../../Global_References/pre-discovery-subagents.md` | Multi-domain features needing front-loaded context |
 
 ## Constraints
 
@@ -81,14 +81,14 @@ The final specification must include:
 5. Error handling table
 6. Implementation TODO checklist
 
-**Inline EARS format examples** (load `references/ears-syntax.md` for full syntax):
+**Inline EARS format examples** (load `../../../Global_References/ears-syntax.md` for full syntax):
 ```
 When <trigger>, the <system> shall <response>.
 Where <feature> is active, the <system> shall <behaviour>.
 The <system> shall <action> within <measure>.
 ```
 
-**Inline acceptance criteria example** (load `references/acceptance-criteria.md` for full format):
+**Inline acceptance criteria example** (load `../../../Global_References/feature-forge_acceptance-criteria.md` for full format):
 ```
 Given a registered user is on the login page,
 When they submit valid credentials,
@@ -98,3 +98,4 @@ Then they are redirected to the dashboard within 2 seconds.
 Save as: `specs/{feature_name}.spec.md`
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/feature-forge/)
+

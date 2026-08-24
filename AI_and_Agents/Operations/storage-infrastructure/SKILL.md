@@ -528,12 +528,13 @@ alert_rules:
 
 ## References
   - references/nvme-of.md — NVMe-oF — TCP, RoCE, Fibre Channel
-  - references/ceph.md — Ceph — RBD, CephFS, Object Gateway, CRUSH, BlueStore
+  - ../../../Global_References/ceph.md — Ceph — RBD, CephFS, Object Gateway, CRUSH, BlueStore
   - references/minio.md — MinIO — Erasure Coding, Distributed Mode, S3 Gateway
-  - references/storage-infrastructure-advanced.md — Storage Infrastructure Advanced Topics
-  - references/storage-infrastructure-fundamentals.md — Storage Infrastructure Fundamentals
+  - ../../../Global_References/storage-infrastructure-advanced.md — Storage Infrastructure Advanced Topics
+  - ../../../Global_References/storage-infrastructure-fundamentals.md — Storage Infrastructure Fundamentals
 ## Handoff
 - `devops-backup-dr` for backup strategies tied to storage infrastructure.
 - `devops-datacenter` for physical cabling and power for storage arrays.
 - `devops-kubernetes` for CSI driver deployment and PVC lifecycle.
 - `devops-monitoring` for Prometheus-based storage monitoring.
+

@@ -841,13 +841,13 @@ Retry strategy:
 | SSO/OIDC | Dex/Built-in | OIDC/GitHub/GitLab |
 
 ## References
-- references/applicationset-generators.md — ArgoCD ApplicationSet Generators
-- references/argocd-image-updater.md — ArgoCD Image Updater
-- references/gitops-advanced-advanced.md — Gitops Advanced Advanced Topics
-- references/gitops-advanced-fundamentals.md — Gitops Advanced Fundamentals
-- references/gitops-secrets.md — Secrets in GitOps
-- references/multi-cluster-management.md — Multi-Cluster GitOps Management
-- references/sync-phases-hooks.md — Sync Phases, Waves, and Hooks
+- ../../../Global_References/applicationset-generators.md — ArgoCD ApplicationSet Generators
+- ../../../Global_References/argocd-image-updater.md — ArgoCD Image Updater
+- ../../../Global_References/gitops-advanced-advanced.md — Gitops Advanced Advanced Topics
+- ../../../Global_References/gitops-advanced-fundamentals.md — Gitops Advanced Fundamentals
+- ../../../Global_References/gitops-secrets.md — Secrets in GitOps
+- ../../../Global_References/multi-cluster-management.md — Multi-Cluster GitOps Management
+- ../../../Global_References/sync-phases-hooks.md — Sync Phases, Waves, and Hooks
 - references/argocd-ha.md — ArgoCD High Availability Configuration
 - references/argocd-projects-rbac.md — ArgoCD Projects and RBAC
 - references/cluster-bootstrapping.md — Cluster Bootstrapping with GitOps
@@ -856,3 +856,4 @@ Retry strategy:
 
 ## Handoff
 Related skills: progressive-delivery (Argo Rollouts with GitOps), argo-cd (basic ArgoCD setup), gitops (GitOps fundamentals), kubernetes-patterns (K8s resources), policy-as-code (policy enforcement), crossplane (infrastructure composition), cluster-api (cluster provisioning).
+

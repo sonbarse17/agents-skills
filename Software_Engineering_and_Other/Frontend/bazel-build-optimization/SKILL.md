@@ -49,7 +49,7 @@ workspace/
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `references/details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/bazel-build-optimization_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -67,3 +67,4 @@ Full template library and detailed worked examples live in `references/details.m
 - **Don't commit bazel-\* dirs** - Add to .gitignore
 - **Don't skip WORKSPACE setup** - Foundation of build
 - **Don't ignore build warnings** - Technical debt
+

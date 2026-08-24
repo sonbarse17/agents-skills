@@ -441,14 +441,14 @@ create-brief --> create-prd --> create-stories --> create-roadmap
 - **Value Proposition Canvas**: Maps user pains/gains to product features — useful for differentiating
 
 ## References
-- `references/create-brief-fundamentals.md` — Brief Fundamentals
-- `references/create-brief-advanced.md` — Brief Advanced Topics
-- `references/brief-examples.md` — Brief Examples
-- `references/brief-strategies.md` — Brief Writing Strategies
-- `references/brief-template.md` — Product Brief Template
-- `references/brief-templates.md` — Brief Templates
+- `../../../Global_References/create-brief-fundamentals.md` — Brief Fundamentals
+- `../../../Global_References/create-brief-advanced.md` — Brief Advanced Topics
+- `../../../Global_References/brief-examples.md` — Brief Examples
+- `../../../Global_References/brief-strategies.md` — Brief Writing Strategies
+- `../../../Global_References/brief-template.md` — Product Brief Template
+- `../../../Global_References/brief-templates.md` — Brief Templates
 - `references/brief-research-synthesis.md` — Research Synthesis for Briefs
-- `references/brief-stakeholder-alignment.md` — Stakeholder Alignment for Briefs
+- `../../../Global_References/brief-stakeholder-alignment.md` — Stakeholder Alignment for Briefs
 
 ## Handoff
 Output: `docs/brief-{YYYY-MM-DD}.md`

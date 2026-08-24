@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| App Router | `references/app-router.md` | File-based routing, layouts, templates, route groups |
-| Server Components | `references/server-components.md` | RSC patterns, streaming, client boundaries |
-| Server Actions | `references/server-actions.md` | Form handling, mutations, revalidation |
-| Data Fetching | `references/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
-| Deployment | `references/deployment.md` | Vercel, self-hosting, Docker, optimization |
+| App Router | `../../../Global_References/nextjs-developer_app-router.md` | File-based routing, layouts, templates, route groups |
+| Server Components | `../../../Global_References/nextjs-developer_server-components.md` | RSC patterns, streaming, client boundaries |
+| Server Actions | `../../../Global_References/server-actions.md` | Form handling, mutations, revalidation |
+| Data Fetching | `../../../Global_References/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
+| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, Docker, optimization |
 
 ## Constraints
 
@@ -143,3 +143,4 @@ When implementing Next.js features, provide:
 Next.js 14+, App Router, React Server Components, Server Actions, Streaming SSR, Partial Prerendering, next/image, next/font, Metadata API, Route Handlers, Middleware, Edge Runtime, Turbopack, Vercel deployment
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/nextjs-developer/)
+

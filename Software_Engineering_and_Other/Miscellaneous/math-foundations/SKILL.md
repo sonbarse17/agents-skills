@@ -501,16 +501,17 @@ Conjugate Gradient: H * p = -grad, solve iteratively
 ```
 
 ## References
-  - references/calculus.md — Calculus for Machine Learning
-  - references/deep-learning-math.md — Deep Learning Mathematics
-  - references/information-theory.md — Information Theory for Machine Learning
-  - references/linear-algebra.md — Linear Algebra for Machine Learning
-  - references/loss-functions.md — Loss Functions for Machine Learning
-  - references/math-foundations-advanced.md — Math Foundations Advanced Topics
-  - references/math-foundations-fundamentals.md — Math Foundations Fundamentals
-  - references/ml-algorithms.md — Machine Learning Algorithms — Mathematical Derivations
-  - references/notation-reference.md — Notation Reference for Machine Learning Mathematics
-  - references/optimization.md — Optimization for Machine Learning
-  - references/probability-statistics.md — Probability and Statistics for Machine Learning
+  - ../../../Global_References/calculus.md — Calculus for Machine Learning
+  - ../../../Global_References/deep-learning-math.md — Deep Learning Mathematics
+  - ../../../Global_References/information-theory.md — Information Theory for Machine Learning
+  - ../../../Global_References/linear-algebra.md — Linear Algebra for Machine Learning
+  - ../../../Global_References/loss-functions.md — Loss Functions for Machine Learning
+  - ../../../Global_References/math-foundations-advanced.md — Math Foundations Advanced Topics
+  - ../../../Global_References/math-foundations-fundamentals.md — Math Foundations Fundamentals
+  - ../../../Global_References/ml-algorithms.md — Machine Learning Algorithms — Mathematical Derivations
+  - ../../../Global_References/notation-reference.md — Notation Reference for Machine Learning Mathematics
+  - ../../../Global_References/math-foundations_optimization.md — Optimization for Machine Learning
+  - ../../../Global_References/probability-statistics.md — Probability and Statistics for Machine Learning
 ## Handoff
 Hand off to `ml/classical-ml/SKILL.md` if the user needs implementation rather than mathematical understanding. Hand off to `ml/deep-learning/SKILL.md` for DL-specific implementation patterns.
+

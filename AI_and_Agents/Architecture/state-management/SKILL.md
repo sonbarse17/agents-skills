@@ -341,12 +341,12 @@ Cached server state should be normalized by ID to avoid duplication. TanStack Qu
 - If two pieces of state change together, they belong together. If they change independently, split them.
 
 ## References
-  - references/client-state.md — Client State
-  - references/server-state.md — Server State
-  - references/state-architecture.md — State Architecture Patterns
-  - references/state-comparison.md — State Management Library Comparison
-  - references/state-patterns.md — State Management Patterns
-  - references/state-testing.md — State Testing Patterns
+  - ../../../Global_References/client-state.md — Client State
+  - ../../../Global_References/server-state.md — Server State
+  - ../../../Global_References/state-architecture.md — State Architecture Patterns
+  - ../../../Global_References/state-comparison.md — State Management Library Comparison
+  - ../../../Global_References/state-patterns.md — State Management Patterns
+  - ../../../Global_References/state-testing.md — State Testing Patterns
 ## Handoff
 No artifact produced.
 Next skill: frontend-performance — optimize rendering and bundle size.
@@ -532,3 +532,4 @@ What type of state?
 - **Jotai atom splitting**: Split large atoms into small focused atoms. Only re-render subscribers of the changed atom. 10 small atoms outperform 1 large store for independent values.
 - **TanStack Query stale time**: Set `staleTime` to avoid refetching data that doesn't change often. Use `cacheTime` to control GC of unused query results.
 - **Memoized selectors**: Use `createSelector` (Reselect) for derived data. Avoids recomputation unless input selectors change. Essential for expensive computations.
+

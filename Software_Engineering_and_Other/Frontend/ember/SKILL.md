@@ -444,12 +444,12 @@ module('Acceptance | posts', function (hooks) {
 - Follow the `app/` folder convention: routes/, components/, services/, models/, modifiers/.
 
 ## References
-  - references/ember-advanced.md — Ember Advanced Topics
-  - references/ember-architecture.md — Ember.js Architecture Patterns
-  - references/ember-deployment.md — Ember.js Deployment
-  - references/ember-fundamentals.md — Ember Fundamentals
-  - references/ember-patterns.md — Ember.js Patterns & Best Practices
-  - references/ember-setup.md — Ember.js Setup Guide
+  - ../../../Global_References/ember-advanced.md — Ember Advanced Topics
+  - ../../../Global_References/ember-architecture.md — Ember.js Architecture Patterns
+  - ../../../Global_References/ember-deployment.md — Ember.js Deployment
+  - ../../../Global_References/ember-fundamentals.md — Ember Fundamentals
+  - ../../../Global_References/ember-patterns.md — Ember.js Patterns & Best Practices
+  - ../../../Global_References/ember-setup.md — Ember.js Setup Guide
 
 ## Handoff
 No artifact produced.
@@ -533,3 +533,4 @@ Is the route data-driven (model-dependent)?
 - **CSRF protection**: Ember Data automatically reads CSRF token from meta tag. Ensure backend sets `<meta name="csrf-token" content="...">`. For non-ember-data requests, read the meta tag and include in headers.
 - **Content Security Policy**: Configure CSP in `config/content-security-policy.js`. Ember's `ember-cli-build` can inject meta CSP tags. Set `script-src 'self'` and use nonces for inline scripts in production.
 - **Dependency auditing**: Run `ember-cli-deprecation-workflow` to track deprecations. Use `npm audit` or `yarn audit` in CI. Pin major dependency versions. Avoid deprecated Ember addons without active maintenance.
+

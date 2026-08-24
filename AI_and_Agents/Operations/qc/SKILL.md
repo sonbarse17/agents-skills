@@ -422,14 +422,14 @@ An open-source project with 500+ contributors needed consistent quality across P
 
 ## References
 
-- references/inspection-process.md — Formal inspection process with roles and defect classification
-- references/qc-advanced.md — QC advanced topics including microservices, security, and DevOps
-- references/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
-- references/qc-fundamentals.md — Core QC concepts and terminology
-- references/quality-gates-matrix.md — Quality gate definitions per language (JS, Python, Go, Rust)
-- references/technical-debt-register.md — Technical debt register template with severity and effort
-- references/qc-process-framework.md — QC process framework and maturity model
-- references/qc-metrics-dashboard.md — Metrics-driven quality dashboards and KPIs
+- ../../../Global_References/inspection-process.md — Formal inspection process with roles and defect classification
+- ../../../Global_References/qc-advanced.md — QC advanced topics including microservices, security, and DevOps
+- ../../../Global_References/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
+- ../../../Global_References/qc-fundamentals.md — Core QC concepts and terminology
+- ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, Python, Go, Rust)
+- ../../../Global_References/technical-debt-register.md — Technical debt register template with severity and effort
+- ../../../Global_References/qc-process-framework.md — QC process framework and maturity model
+- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality dashboards and KPIs
 
 ## Handoff
 After completing this skill:
@@ -525,3 +525,4 @@ quality_gate:
 - **Dependency pinning**: Require lockfile (package-lock, poetry.lock) in every repo. Reject PRs modifying deps without lockfile.
 - **Vulnerability database**: Update vulnerability databases daily. Fail builds on CVE with known exploit.
 - **Software bill of materials**: Generate SBOM for every release. Submit to internal security review for critical services.
+

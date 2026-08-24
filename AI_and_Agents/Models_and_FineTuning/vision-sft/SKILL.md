@@ -133,7 +133,7 @@ check, not just a clean training log.
   1:1 placeholder-to-media mapping before training
   starts, on every example, not just a sample.
   Full validation-checklist detail:
-  `references/collators-and-pitfalls.md`.
+  `../../../Global_References/collators-and-pitfalls.md`.
 - **`min_pixels`/`max_pixels` resolution budget.**
   This pair is the single most consequential
   hyperparameter for quality and memory in VLM
@@ -151,7 +151,7 @@ check, not just a clean training log.
   Unsloth expects for VLM SFT — it handles the
   image-tag alignment and per-architecture
   processor contract described in
-  `references/collators-and-pitfalls.md`. Don't
+  `../../../Global_References/collators-and-pitfalls.md`. Don't
   substitute a text-only collator for VLM data.
 - **`finetune_vision_layers=False` is required
   when `fast_inference=True`.** vLLM cannot serve
@@ -190,12 +190,12 @@ killer, since the model trains on *something*
 either way — just not the aligned image-text
 signal when a killer is present. A flat eval score
 next to a normal loss curve means re-run the
-checklist in `references/collators-and-pitfalls.md`
+checklist in `../../../Global_References/collators-and-pitfalls.md`
 before touching any hyperparameter.
 
 ## References
 
-- `references/collators-and-pitfalls.md` — per-
+- `../../../Global_References/collators-and-pitfalls.md` — per-
   architecture collator table, dataset-format
   examples with image placeholders, a pre-
   training validation checklist, and the two-
@@ -208,3 +208,4 @@ text-only LoRA fundamentals this skill
 specializes; `grpo-rlvr-training` covers VLM-RL
 (reference-only); `dataset-curation` covers
 image+text dataset preparation this skill doesn't.
+

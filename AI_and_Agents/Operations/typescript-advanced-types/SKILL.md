@@ -263,7 +263,7 @@ type PageInfo = Record<"home" | "about", { title: string }>;
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/typescript-advanced-types_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 
@@ -316,3 +316,4 @@ type ShouldError = ExpectError<AssertEqual<string, number>>;
 - Cache complex type computations
 - Limit recursion depth in recursive types
 - Use build tools to skip type checking in production
+

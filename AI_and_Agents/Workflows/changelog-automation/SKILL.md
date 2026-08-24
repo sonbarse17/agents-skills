@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/changelog-automation_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Summary
 
@@ -117,3 +117,4 @@ Reviewed-by: @alice
 - **Don't manual edit** - Generated changelogs only
 - **Don't forget breaking changes** - Mark with `!` or footer
 - **Don't ignore CI** - Validate commits in pipeline
+

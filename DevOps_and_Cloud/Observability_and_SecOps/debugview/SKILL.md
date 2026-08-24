@@ -276,9 +276,9 @@ dbgviewcli --accepteula --no-banner --duration 30
 | Script | `scripts/detect-dbgview.ps1` | Locate dbgviewcli.exe on PATH or common directories |
 | Script | `scripts/capture-wrapper.ps1` | Safe bounded capture with parameter validation |
 | Script | `scripts/boot-logging-workflow.ps1` | End-to-end boot logging lifecycle management |
-| Reference | `references/driver-ioctls.md` | Kernel driver IOCTL codes and buffer structures |
-| Reference | `references/output-formats.md` | Text/CSV/XML output format specifications |
-| Reference | `references/remote-protocol.md` | TCP remote monitoring wire protocol |
+| Reference | `../../../Global_References/driver-ioctls.md` | Kernel driver IOCTL codes and buffer structures |
+| Reference | `../../../Global_References/output-formats.md` | Text/CSV/XML output format specifications |
+| Reference | `../../../Global_References/remote-protocol.md` | TCP remote monitoring wire protocol |
 
 ## Troubleshooting
 
@@ -289,3 +289,4 @@ dbgviewcli --accepteula --no-banner --duration 30
 | Another instance running | Use `--status` to check; use `--quit` to terminate existing GUI instance |
 | Boot logging not capturing | Ensure `--boot-enable` was run as admin; driver must be in System32\Drivers |
 | Remote connection fails | Verify target has DbgView running with remote enabled on ports 2020-2030 |
+

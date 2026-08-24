@@ -55,7 +55,7 @@ Build the right team at the right time with appropriate compensation and equity.
 
 ## Detailed section: Role-by-Role Planning
 
-Originally a 1720-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 1720-byte section in this SKILL.md. Moved to `../../../../../Global_References/team-composition-analysis_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Compensation Strategy
 
@@ -331,3 +331,4 @@ To plan team composition:
 6. **Calculate budget** - Fully-loaded cost × headcount
 7. **Design org chart** - Reporting structure and span of control
 8. **Allocate equity** - Fair allocation that preserves pool
+

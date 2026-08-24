@@ -34,11 +34,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Coroutines & Flow | `references/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
-| Multiplatform | `references/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
-| Android & Compose | `references/android-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
-| Ktor Server | `references/ktor-server.md` | Routing, plugins, authentication, serialization |
-| DSL & Idioms | `references/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
+| Coroutines & Flow | `../../../Global_References/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
+| Multiplatform | `../../../Global_References/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
+| Android & Compose | `../../../Global_References/android-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
+| Ktor Server | `../../../Global_References/ktor-server.md` | Routing, plugins, authentication, serialization |
+| DSL & Idioms | `../../../Global_References/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
 
 ## Key Patterns
 
@@ -147,3 +147,4 @@ When implementing Kotlin features, provide:
 Kotlin 1.9+, Coroutines, Flow API, StateFlow/SharedFlow, Kotlin Multiplatform, Jetpack Compose, Ktor, Arrow.kt, kotlinx.serialization, Detekt, ktlint, Gradle Kotlin DSL, JUnit 5, MockK, Turbine
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/language/kotlin-specialist/)
+

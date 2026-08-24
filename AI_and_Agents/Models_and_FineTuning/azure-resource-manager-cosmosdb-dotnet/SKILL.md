@@ -247,9 +247,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [references/account-management.md](references/account-management.md) | Account CRUD, failover, keys, connection strings, networking |
-| [references/sql-resources.md](references/sql-resources.md) | SQL databases, containers, stored procedures, triggers, UDFs |
-| [references/throughput.md](references/throughput.md) | Manual/autoscale throughput, migration between modes |
+| [../../../Global_References/account-management.md](../../../Global_References/account-management.md) | Account CRUD, failover, keys, connection strings, networking |
+| [../../../Global_References/sql-resources.md](../../../Global_References/sql-resources.md) | SQL databases, containers, stored procedures, triggers, UDFs |
+| [../../../Global_References/throughput.md](../../../Global_References/throughput.md) | Manual/autoscale throughput, migration between modes |
 
 ## Related SDKs
 
@@ -257,3 +257,4 @@ catch (RequestFailedException ex)
 |-----|---------|---------|
 | `Microsoft.Azure.Cosmos` | Data plane (document CRUD, queries) | `dotnet add package Microsoft.Azure.Cosmos` |
 | `Azure.ResourceManager.CosmosDB` | Management plane (this SDK) | `dotnet add package Azure.ResourceManager.CosmosDB` |
+

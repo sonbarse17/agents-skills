@@ -44,11 +44,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Architecture Patterns | `references/architecture-patterns.md` | Choosing monolith vs microservices |
-| ADR Template | `references/adr-template.md` | Documenting decisions |
-| System Design | `references/system-design.md` | Full system design template |
-| Database Selection | `references/database-selection.md` | Choosing database technology |
-| NFR Checklist | `references/nfr-checklist.md` | Gathering non-functional requirements |
+| Architecture Patterns | `../../../Global_References/architecture-patterns.md` | Choosing monolith vs microservices |
+| ADR Template | `../../../Global_References/adr-template.md` | Documenting decisions |
+| System Design | `../../../Global_References/system-design.md` | Full system design template |
+| Database Selection | `../../../Global_References/database-selection.md` | Choosing database technology |
+| NFR Checklist | `../../../Global_References/nfr-checklist.md` | Gathering non-functional requirements |
 
 ## Constraints
 
@@ -116,3 +116,4 @@ Consistency and query flexibility are prioritised over unlimited horizontal writ
 ```
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/architecture-designer/)
+

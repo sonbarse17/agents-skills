@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Components | `references/components.md` | Standalone components, signals, input/output |
-| RxJS | `references/rxjs.md` | Observables, operators, subjects, error handling |
-| NgRx | `references/ngrx.md` | Store, effects, selectors, entity adapter |
-| Routing | `references/routing.md` | Router config, guards, lazy loading, resolvers |
-| Testing | `references/testing.md` | TestBed, component tests, service tests |
+| Components | `../../../Global_References/angular-architect_components.md` | Standalone components, signals, input/output |
+| RxJS | `../../../Global_References/rxjs.md` | Observables, operators, subjects, error handling |
+| NgRx | `../../../Global_References/ngrx.md` | Store, effects, selectors, entity adapter |
+| Routing | `../../../Global_References/angular-architect_routing.md` | Router config, guards, lazy loading, resolvers |
+| Testing | `../../../Global_References/angular-architect_testing.md` | TestBed, component tests, service tests |
 
 ## Key Patterns
 
@@ -152,3 +152,4 @@ When implementing Angular features, provide:
 5. Brief explanation of architectural decisions
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/angular-architect/)
+

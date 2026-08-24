@@ -550,14 +550,15 @@ A fintech company failed their SOC2 Type II audit due to insufficient access con
 - Cloud provider certifications reviewed annually for continued applicability.
 
 ## References
-  - references/audit-automation.md -- Audit Automation
-  - references/audit-checklist.md -- Audit Checklist
-  - references/audit-evidence.md -- Audit Evidence Collection and Preservation
-  - references/compliance-audit-advanced.md -- Compliance Audit Advanced Topics
-  - references/compliance-audit-framework.md -- Compliance Audit Framework Reference
-  - references/compliance-automation-tools.md -- Compliance Automation Tools Reference
-  - references/compliance-audit-fundamentals.md -- Compliance Audit Fundamentals
-  - references/compliance-frameworks.md -- Compliance Frameworks Reference
-  - references/compliance-incident-response.md -- Compliance Incident Response and Breach Notification
+  - ../../../Global_References/audit-automation.md -- Audit Automation
+  - ../../../Global_References/compliance-audit_audit-checklist.md -- Audit Checklist
+  - ../../../Global_References/audit-evidence.md -- Audit Evidence Collection and Preservation
+  - ../../../Global_References/compliance-audit-advanced.md -- Compliance Audit Advanced Topics
+  - ../../../Global_References/compliance-audit-framework.md -- Compliance Audit Framework Reference
+  - ../../../Global_References/compliance-automation-tools.md -- Compliance Automation Tools Reference
+  - ../../../Global_References/compliance-audit-fundamentals.md -- Compliance Audit Fundamentals
+  - ../../../Global_References/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
+  - ../../../Global_References/compliance-incident-response.md -- Compliance Incident Response and Breach Notification
 ## Handoff
 For remediation implementation, hand off to `enterprise-sla-management` for tracking remediation SLAs, or `enterprise-cost-governance` for budgeting remediation costs.
+

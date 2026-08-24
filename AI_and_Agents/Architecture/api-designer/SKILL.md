@@ -32,11 +32,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| REST Patterns | `references/rest-patterns.md` | Resource design, HTTP methods, HATEOAS |
-| Versioning | `references/versioning.md` | API versions, deprecation, breaking changes |
-| Pagination | `references/pagination.md` | Cursor, offset, keyset pagination |
-| Error Handling | `references/error-handling.md` | Error responses, RFC 7807, status codes |
-| OpenAPI | `references/openapi.md` | OpenAPI 3.1, documentation, code generation |
+| REST Patterns | `../../../Global_References/rest-patterns.md` | Resource design, HTTP methods, HATEOAS |
+| Versioning | `../../../Global_References/versioning.md` | API versions, deprecation, breaking changes |
+| Pagination | `../../../Global_References/pagination.md` | Cursor, offset, keyset pagination |
+| Error Handling | `../../../Global_References/error-handling.md` | Error responses, RFC 7807, status codes |
+| OpenAPI | `../../../Global_References/openapi.md` | OpenAPI 3.1, documentation, code generation |
 
 ## Constraints
 
@@ -217,3 +217,4 @@ When delivering an API design, provide:
 REST architecture, OpenAPI 3.1, GraphQL, HTTP semantics, JSON:API, HATEOAS, OAuth 2.0, JWT, RFC 7807 Problem Details, API versioning patterns, pagination strategies, rate limiting, webhook design, SDK generation
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/api-designer/)
+

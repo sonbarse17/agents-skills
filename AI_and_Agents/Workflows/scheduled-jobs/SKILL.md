@@ -14,7 +14,7 @@ is also what makes it dangerous without deliberate guardrails.
 **Design a scheduled job assuming nobody is watching it run — because nobody is, until it breaks.**
 
 For cron syntax, DST pitfalls, locking, and Kubernetes CronJob settings, read
-`references/cron-patterns.md`.
+`../../../Global_References/cron-patterns.md`.
 
 ## 1. Make the job idempotent, not just retry-friendly
 
@@ -110,3 +110,4 @@ switch monitors for missed runs independent of the scheduler.
 
 Name the honest gap — usually a missed-run monitor that hasn't been added yet, or a schedule that's
 never been checked against a DST transition — rather than claiming the job is fully unattended-safe.
+

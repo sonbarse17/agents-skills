@@ -136,7 +136,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Gateway Routing** | Route requests to multiple backends using a single endpoint | OE |
 | **Geode** | Deploy backends to multiple regions for active-active serving | R, PE |
 
-See [Design Patterns Reference](./references/design-patterns.md) for detailed implementation guidance.
+See [Design Patterns Reference](./../../../Global_References/design-patterns.md) for detailed implementation guidance.
 
 ---
 
@@ -156,7 +156,7 @@ For each technology area, evaluate: **requirements → constraints → tradeoffs
 | **AI services** | Azure OpenAI, AI Search, AI Foundry, Document Intelligence | Model needs, data grounding, orchestration |
 | **Containers** | Container Apps, AKS, Container Instances | Operational control vs simplicity |
 
-See [Technology Choices Reference](./references/technology-choices.md) for detailed decision trees.
+See [Technology Choices Reference](./../../../Global_References/technology-choices.md) for detailed decision trees.
 
 ---
 
@@ -177,7 +177,7 @@ See [Technology Choices Reference](./references/technology-choices.md) for detai
 | **Monitoring & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, dashboards |
 | **Transient fault handling** | Retry with exponential backoff + jitter, circuit breaker, idempotency keys, timeout budgets |
 
-See [Best Practices Reference](./references/best-practices.md) for implementation details.
+See [Best Practices Reference](./../../../Global_References/best-practices.md) for implementation details.
 
 ---
 
@@ -215,7 +215,7 @@ For workloads targeting **99.99%+ SLO**, address these design areas:
 | **Security** | Zero-trust, managed identity everywhere, key rotation, WAF policies, threat modeling |
 | **Operational procedures** | Automated runbooks, incident response playbooks, game days, postmortems |
 
-See [Mission-Critical Reference](./references/mission-critical.md) for detailed guidance.
+See [Mission-Critical Reference](./../../../Global_References/mission-critical.md) for detailed guidance.
 
 ---
 
@@ -305,13 +305,14 @@ Use Architecture Decision Records (ADRs):
 
 ## References
 
-- [Design Patterns Reference](./references/design-patterns.md) — Detailed pattern implementations
-- [Technology Choices Reference](./references/technology-choices.md) — Decision trees for Azure services
-- [Best Practices Reference](./references/best-practices.md) — Implementation guidance
-- [Mission-Critical Reference](./references/mission-critical.md) — High-availability design
+- [Design Patterns Reference](./../../../Global_References/design-patterns.md) — Detailed pattern implementations
+- [Technology Choices Reference](./../../../Global_References/technology-choices.md) — Decision trees for Azure services
+- [Best Practices Reference](./../../../Global_References/best-practices.md) — Implementation guidance
+- [Mission-Critical Reference](./../../../Global_References/mission-critical.md) — High-availability design
 
 ---
 
 ## Source
 
 Content derived from the [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/) — Microsoft's official guidance for cloud solution architecture on Azure. Covers design principles, architecture styles, cloud design patterns, technology choices, best practices, performance antipatterns, mission-critical design, and the Well-Architected Framework.
+

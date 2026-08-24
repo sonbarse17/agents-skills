@@ -15,7 +15,7 @@ they don't have to. **A platform earns adoption by being the fastest path to don
 path allowed.**
 
 For standing up a portal — catalog, scaffolder templates, and adoption metrics — read
-`references/building-a-portal.md`.
+`../../../Global_References/building-a-portal.md`.
 
 ## 1. Treat the platform as a product with real users
 
@@ -99,3 +99,4 @@ State what the platform currently hosts, the paved roads it enforces versus mere
 escape hatch mechanism, and the adoption numbers you're tracking. Name honestly which teams are
 still working around the platform instead of through it, and why — that gap is the real roadmap,
 and naming it beats claiming full adoption.
+

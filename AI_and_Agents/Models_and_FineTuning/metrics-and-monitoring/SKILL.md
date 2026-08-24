@@ -12,7 +12,7 @@ Prometheus's pull-based model made this trade-off explicit for a generation of t
 
 **A metric earns its cost by staying cheap to query at 3am, six months from now, with a year of history behind it.**
 
-For PromQL patterns — rate, histogram quantiles, RED/USE queries, and recording rules — read `references/promql.md`.
+For PromQL patterns — rate, histogram quantiles, RED/USE queries, and recording rules — read `../../../Global_References/promql.md`.
 
 ## 1. Pick the metric type the query needs, not the one that's easiest to emit
 
@@ -89,3 +89,4 @@ A metrics pipeline that silently drops data during the exact outage you needed i
 ## Report
 
 State which services have RED/USE metrics live, the current worst-case cardinality contributors, which alerts run on recording rules versus raw queries, and the collection model (pull/push) per workload class. Name the honest gap — usually a handful of unbounded labels already in production, a service that still lacks basic Duration instrumentation, or a recording-rule migration that's only partly done — rather than reporting metrics coverage as complete when it's only true for the services you looked at most recently.
+

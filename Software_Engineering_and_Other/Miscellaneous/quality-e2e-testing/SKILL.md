@@ -117,14 +117,14 @@ Start -> Mock -> Test -> Success -> End
 5. Use page object model.
 
 ## Reference Guides
-- [Playwright Mocking](references/playwright-mocking.md)
-- [Chaos Engineering](references/chaos-engineering.md)
-- [Network Throttling](references/network-throttling.md)
-- [Flaky Test Mitigation](references/flaky-test-mitigation.md)
-- [Visual Regression](references/visual-regression.md)
-- [A11Y Testing](references/a11y-testing.md)
-- [Test Data](references/test-data-generation.md)
-- [CI CD](references/ci-cd-integration.md)
+- [Playwright Mocking](../../../Global_References/playwright-mocking.md)
+- [Chaos Engineering](../../../Global_References/chaos-engineering.md)
+- [Network Throttling](../../../Global_References/network-throttling.md)
+- [Flaky Test Mitigation](../../../Global_References/flaky-test-mitigation.md)
+- [Visual Regression](../../../Global_References/visual-regression.md)
+- [A11Y Testing](../../../Global_References/a11y-testing.md)
+- [Test Data](../../../Global_References/test-data-generation.md)
+- [CI CD](../../../Global_References/ci-cd-integration.md)
 
 ## Handoff
 See `ci-integration` for pipelines.

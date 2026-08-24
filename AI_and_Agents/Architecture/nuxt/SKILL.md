@@ -512,16 +512,17 @@ export default defineNuxtConfig({
 - Use $fetch for client-to-server calls, useFetch for SSR data loading.
 
 ## References
-  - references/composables-autoimport.md
-  - references/nuxt-auth.md
-  - references/nuxt-conventions.md
-  - references/nuxt-deployment.md
-  - references/nuxt-modules.md
-  - references/nuxt-performance.md
-  - references/nuxt-testing.md
-  - references/server-routes.md
+  - ../../../Global_References/composables-autoimport.md
+  - ../../../Global_References/nuxt-auth.md
+  - ../../../Global_References/nuxt-conventions.md
+  - ../../../Global_References/nuxt-deployment.md
+  - ../../../Global_References/nuxt-modules.md
+  - ../../../Global_References/nuxt-performance.md
+  - ../../../Global_References/nuxt-testing.md
+  - ../../../Global_References/server-routes.md
 
 ## Handoff
 No artifact produced.
 Next skill: frontend-testing.
 Carry forward: directory structure conventions, server route setup, data fetching approach.
+

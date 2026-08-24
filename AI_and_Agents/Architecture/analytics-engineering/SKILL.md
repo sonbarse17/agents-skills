@@ -457,12 +457,12 @@ Source data characteristics?
 - Generate documentation on every deployment
 
 ## References
-  - references/data-modeling.md — Data Modeling for Analytics Reference
-  - references/data-quality-testing.md — Data Quality Testing
-  - references/data-warehouse-architecture.md — Data Warehouse Architecture
-  - references/dbt-core.md — dbt Core Reference
-  - references/metrics-layer.md — Metrics Layer Reference
-  - references/sql-analytics.md — SQL for Analytics Reference
+  - ../../../Global_References/data-modeling.md — Data Modeling for Analytics Reference
+  - ../../../Global_References/data-quality-testing.md — Data Quality Testing
+  - ../../../Global_References/data-warehouse-architecture.md — Data Warehouse Architecture
+  - ../../../Global_References/dbt-core.md — dbt Core Reference
+  - ../../../Global_References/metrics-layer.md — Metrics Layer Reference
+  - ../../../Global_References/sql-analytics.md — SQL for Analytics Reference
 ## Architecture Decision Trees
 
 ```
@@ -563,3 +563,4 @@ FROM {{ ref('stg_customers') }}
 `data-science-statistical-analysis` for analytical statistical methods
 `data-science-experimentation` for experiment metric pipelines
 `data-quality` for data quality testing and monitoring
+

@@ -483,11 +483,11 @@ func TestParseDuration(t *testing.T) {
 ```
 
 ## References
-- `references/context-cancellation.md` — Context propagation, timeout, cancellation patterns
-- `references/testing-benchmarking.md` — Testing, benchmarking, fuzzing, coverage
-- `references/go-fundamentals.md` — Go Fundamentals
-- `references/go-advanced.md` — Advanced Go Patterns
-- `references/go-http-server.md` — Go HTTP Server Patterns
+- `../../../Global_References/context-cancellation.md` — Context propagation, timeout, cancellation patterns
+- `../../../Global_References/testing-benchmarking.md` — Testing, benchmarking, fuzzing, coverage
+- `../../../Global_References/go-fundamentals.md` — Go Fundamentals
+- `../../../Global_References/go-advanced.md` — Advanced Go Patterns
+- `../../../Global_References/go-http-server.md` — Go HTTP Server Patterns
 
 ## Implementation Patterns
 
@@ -631,3 +631,4 @@ func Logger(next http.Handler) http.Handler {
 - TLS: `http.Server{TLSConfig: &tls.Config{MinVersion: tls.VersionTLS12}}`.
 - Secrets: read from env vars at startup. Never in source code or binary.
 - Dependency scanning: `govulncheck ./...` in CI. Block on critical vulnerabilities.
+

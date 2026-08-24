@@ -583,14 +583,15 @@ Dark mode requires independent color tokens, not simple inversion:
 | Dark mode spec | Color overrides for dark theme | Figma, Token Studio |
 
 ## References
-  - references/color-theory.md — Color Theory Reference
-  - references/layout-principles.md — Layout Principles Guide
-  - references/spacing-grid.md — Spacing and Grid Systems Reference
-  - references/typography.md — Typography Reference
-  - references/visual-design-advanced.md — Visual Design Advanced Topics
-  - references/visual-design-fundamentals.md — Visual Design Fundamentals
-  - references/visual-hierarchy.md — Visual Hierarchy Reference
+  - ../../../Global_References/visual-design_color-theory.md — Color Theory Reference
+  - ../../../Global_References/layout-principles.md — Layout Principles Guide
+  - ../../../Global_References/spacing-grid.md — Spacing and Grid Systems Reference
+  - ../../../Global_References/typography.md — Typography Reference
+  - ../../../Global_References/visual-design-advanced.md — Visual Design Advanced Topics
+  - ../../../Global_References/visual-design-fundamentals.md — Visual Design Fundamentals
+  - ../../../Global_References/visual-hierarchy.md — Visual Hierarchy Reference
   - references/visual-design-color-system.md — Color System Reference
   - references/visual-design-dark-mode.md — Dark Mode Design Reference
 ## Handoff
 Hand off to `design-design-systems` for token implementation. Hand off to `design-brand-identity` for brand consistency. Hand off to `design-accessibility` for WCAG compliance audit.
+

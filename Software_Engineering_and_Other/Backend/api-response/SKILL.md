@@ -644,15 +644,16 @@ Retry-After: 30  (on 429 responses only)
 - Default deny: if an exception is unhandled, return 500, not a raw error.
 
 ## References
-  - references/api-response-formats.md — API Response Formats
-  - references/api-response-testing.md — API Response Testing
-  - references/api-response-validation.md — API Response Validation
-  - references/client-api-calls.md — Client API Call Patterns
-  - references/error-handling-patterns.md — Error Handling Patterns Reference
-  - references/response-envelope.md — Response Envelope Reference
-  - references/api-response-fundamentals.md — API Response Fundamentals
-  - references/api-response-advanced.md — API Response Advanced Patterns
+  - ../../../Global_References/api-response-formats.md — API Response Formats
+  - ../../../Global_References/api-response-testing.md — API Response Testing
+  - ../../../Global_References/api-response-validation.md — API Response Validation
+  - ../../../Global_References/client-api-calls.md — Client API Call Patterns
+  - ../../../Global_References/error-handling-patterns.md — Error Handling Patterns Reference
+  - ../../../Global_References/response-envelope.md — Response Envelope Reference
+  - ../../../Global_References/api-response-fundamentals.md — API Response Fundamentals
+  - ../../../Global_References/api-response-advanced.md — API Response Advanced Patterns
   - references/response-compression.md — Response Compression and Optimization
 
 ## Handoff
 Hand off to `backend/universal/api-design/SKILL.md` for endpoint routing and resource design. Hand off to `backend/universal/oop-principles/SKILL.md` for exception class hierarchy design.
+

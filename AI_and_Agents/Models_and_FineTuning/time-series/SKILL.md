@@ -399,14 +399,14 @@ def conformal_prediction(model, X_train, y_train, X_test, alpha=0.1):
 - Always plot residuals after fitting.
 
 ## References
-  - references/classical-forecasting.md — Classical Forecasting
-  - references/deep-learning-ts.md — Deep Learning for Time Series
-  - references/feature-engineering.md — Time Series Feature Engineering
-  - references/forecast-deep-learning.md — Deep Learning Forecasting
-  - references/forecasting-methods.md — Time Series Forecasting
-  - references/time-series-advanced.md — Time Series Advanced Topics
-  - references/time-series-feature-store.md — Time Series Feature Store
-  - references/time-series-fundamentals.md — Time Series Fundamentals
+  - ../../../Global_References/classical-forecasting.md — Classical Forecasting
+  - ../../../Global_References/deep-learning-ts.md — Deep Learning for Time Series
+  - ../../../Global_References/feature-engineering.md — Time Series Feature Engineering
+  - ../../../Global_References/forecast-deep-learning.md — Deep Learning Forecasting
+  - ../../../Global_References/forecasting-methods.md — Time Series Forecasting
+  - ../../../Global_References/time-series-advanced.md — Time Series Advanced Topics
+  - ../../../Global_References/time-series-feature-store.md — Time Series Feature Store
+  - ../../../Global_References/time-series-fundamentals.md — Time Series Fundamentals
 ## Handoff
 Hand off to ml-feature-engineering for advanced feature creation. For anomaly detection on residuals, hand off to ml-anomaly-detection.
 ## Architecture Decision Trees
@@ -517,3 +517,4 @@ def create_sequences(data, seq_length=30):
 - **Adversarial time series**: Crafted inputs can manipulate forecast output. Validate input range and detect adversarial patterns.
 - **Poisoning**: Anomalous historical data poisons forecast model. Use robust statistics for changepoint detection.
 - **Causality violation**: Ensure no future data leaks into training. Enforce strict temporal split in evaluation pipeline.
+

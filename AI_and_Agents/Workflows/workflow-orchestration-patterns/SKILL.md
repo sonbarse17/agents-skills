@@ -29,7 +29,7 @@ Master workflow orchestration architecture with Temporal, covering fundamental d
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/workflow-orchestration-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -96,3 +96,4 @@ Detailed pattern documentation lives in `references/details.md`. Read that file 
 3. Idempotency is critical for activities
 4. State preservation is automatic
 5. Design for failure and recovery
+

@@ -52,7 +52,7 @@ Build resilient applications with robust error handling strategies that graceful
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `references/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/error-handling-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -119,3 +119,4 @@ def process_order(order_id: str) -> Order:
 - **Poor Error Messages**: "Error occurred" is not helpful
 - **Returning Error Codes**: Use exceptions or Result types
 - **Ignoring Async Errors**: Unhandled promise rejections
+

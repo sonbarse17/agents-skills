@@ -31,11 +31,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Liquid Templating | `references/liquid-templating.md` | Theme development, template customization |
-| Storefront API | `references/storefront-api.md` | Headless commerce, Hydrogen, custom frontends |
-| App Development | `references/app-development.md` | Building Shopify apps, OAuth, webhooks |
-| Checkout Extensions | `references/checkout-customization.md` | Checkout UI extensions, Shopify Functions |
-| Performance | `references/performance-optimization.md` | Theme speed, asset optimization, caching |
+| Liquid Templating | `../../../Global_References/liquid-templating.md` | Theme development, template customization |
+| Storefront API | `../../../Global_References/storefront-api.md` | Headless commerce, Hydrogen, custom frontends |
+| App Development | `../../../Global_References/app-development.md` | Building Shopify apps, OAuth, webhooks |
+| Checkout Extensions | `../../../Global_References/checkout-customization.md` | Checkout UI extensions, Shopify Functions |
+| Performance | `../../../Global_References/shopify-expert_performance-optimization.md` | Theme speed, asset optimization, caching |
 
 ## Code Examples
 
@@ -184,3 +184,4 @@ When implementing Shopify solutions, provide:
 Shopify CLI 3.x, Liquid 2.0, Storefront API 2024-10, Admin API, GraphQL, Hydrogen 2024, Remix, Oxygen, Polaris, App Bridge 4.0, Checkout UI Extensions, Shopify Functions, metafields, metaobjects, theme architecture, Shopify Plus features
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/platform/shopify-expert/)
+

@@ -494,14 +494,15 @@ cassandra_modeling:
 - Model for access patterns before data shape — NoSQL is query-first design
 
 ## References
-  - references/document-db.md — Document Database Reference
-  - references/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
-  - references/mongodb-cassandra.md — MongoDB and Cassandra Reference
-  - references/nosql-cap-theorem.md — NoSQL CAP Theorem
-  - references/nosql-performance-tuning.md — NoSQL Performance Tuning
-  - references/wide-column.md — Wide-Column Database Reference
-  - references/nosql-data-modeling.md — Data modeling patterns for NoSQL databases
-  - references/nosql-query-optimization.md — Query optimization and indexing strategies
+  - ../../../Global_References/document-db.md — Document Database Reference
+  - ../../../Global_References/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
+  - ../../../Global_References/mongodb-cassandra.md — MongoDB and Cassandra Reference
+  - ../../../Global_References/nosql-cap-theorem.md — NoSQL CAP Theorem
+  - ../../../Global_References/nosql-performance-tuning.md — NoSQL Performance Tuning
+  - ../../../Global_References/wide-column.md — Wide-Column Database Reference
+  - ../../../Global_References/nosql-data-modeling.md — Data modeling patterns for NoSQL databases
+  - ../../../Global_References/nosql-query-optimization.md — Query optimization and indexing strategies
 ## Handoff
 `data-graph-database` for relationship-heavy queries
 `data-search-engine` for full-text search over NoSQL data
+

@@ -75,7 +75,7 @@ virsh dump <domain> memory.raw --memory-only
 
 ## Detailed section: Volatility 3 Framework
 
-Originally a 2680-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 2680-byte section in this SKILL.md. Moved to `../../../Global_References/memory-forensics_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Analysis Workflows
 
@@ -345,3 +345,4 @@ floss pid.1234.dmp
 - **Symbol issues**: Ensure correct symbol files for OS version
 - **Smear**: Memory may change during acquisition
 - **Encryption**: Some data may be encrypted in memory
+

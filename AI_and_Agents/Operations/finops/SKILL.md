@@ -387,12 +387,12 @@ Detection: weekly idle resource report. Investigation: identify owners via creat
 Detection: monthly RI report shows coverage dropped from 65% to 45%. Investigation: new workload without RI. Fix: purchase additional RI, adjust workload. Automation: alert when coverage under 50%.
 
 ## References
-- references/finops-fundamentals.md -- Finops Fundamentals
-- references/finops-advanced.md -- Finops Advanced Topics
-- references/finops-automation.md -- FinOps Automation
-- references/finops-governance.md -- FinOps Governance
-- references/finops-practices.md -- FinOps Practices
-- references/cost-optimization.md -- Cost Optimization
+- ../../../Global_References/finops-fundamentals.md -- Finops Fundamentals
+- ../../../Global_References/finops-advanced.md -- Finops Advanced Topics
+- ../../../Global_References/finops-automation.md -- FinOps Automation
+- ../../../Global_References/finops-governance.md -- FinOps Governance
+- ../../../Global_References/finops-practices.md -- FinOps Practices
+- ../../../Global_References/finops_cost-optimization.md -- Cost Optimization
 - references/finops-maturity-model.md -- FinOps Maturity Model
 - references/finops-cost-optimization-levers.md -- Cost Optimization Levers
 
@@ -516,3 +516,4 @@ check_tag_compliance() {
 - Use **IAM roles** for programmatic cost API access instead of long-lived access keys
 - Restrict **permissions** to modify budgets and alerts to a small admin group
 - Monitor **cost anomaly** with AWS Cost Anomaly Detection or third-party FinOps platforms
+

@@ -17,7 +17,7 @@ guessing session into a bounded diagnosis.
 next person's investigation.**
 
 For a symptom-driven command cookbook (dig, curl, traceroute, ss, tcpdump), read
-`references/diagnostic-commands.md`.
+`../../../Global_References/diagnostic-commands.md`.
 
 ## 1. Confirm DNS resolves to what you expect before touching anything else
 
@@ -124,3 +124,4 @@ State which layer the failure was isolated to (DNS, routing, port/TLS, local soc
 application), the exact command output that proved it, and what fixed it or who owns the fix.
 Name the honest gap — usually an intermittent symptom that was never reproduced during the capture
 window — rather than declaring the issue resolved when it was only reproduced and diagnosed once.
+

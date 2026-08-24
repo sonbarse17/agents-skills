@@ -28,4 +28,5 @@ Author final coordinates directly in `layout_tree`. No renderer may decide place
 
 A task-local builder starts from a blank slide layout and maps all bboxes with `Inches(...)`. Explicitly set wrapping, disabled auto-size, text insets, anchors, alignment, fonts, colors, line settings, image aspect ratio, and hidden-slide state. Reject zero or negative geometry before adding an object.
 
-See `references/layout-contract.md` for the compact schema and repair guidance.
+See `../../../Global_References/layout-contract.md` for the compact schema and repair guidance.
+

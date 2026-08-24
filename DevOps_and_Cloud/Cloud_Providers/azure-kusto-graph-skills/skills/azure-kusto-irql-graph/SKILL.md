@@ -64,8 +64,8 @@ Do not activate this skill solely for `graph-match`, graph paths/components, per
 - `Lift_To_Graph` and `Graph_Render_View` are required.
 - `Graph_Fold_By_Property` is required only when folding is requested.
 - Check any `Extract_Node_*`, `Enrich_Node_*`, or `Enrich_Graph_*` function before using it; omit optional enrichment when unavailable unless the user wants it deployed.
-- If a required function is missing and you have permission to alter the database, **ask the user for confirmation before deploying**. Then use the `.create-or-alter function` definitions in [references/DEPLOY_IRQL_FUNCTIONS.md](references/DEPLOY_IRQL_FUNCTIONS.md). Run the relevant `.create-or-alter` block, then rerun the preflight check to confirm.
-- If you do not have alter permissions, tell the user which functions are missing and point them to `references/DEPLOY_IRQL_FUNCTIONS.md` for manual deployment.
+- If a required function is missing and you have permission to alter the database, **ask the user for confirmation before deploying**. Then use the `.create-or-alter function` definitions in [../../../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md](../../../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md). Run the relevant `.create-or-alter` block, then rerun the preflight check to confirm.
+- If you do not have alter permissions, tell the user which functions are missing and point them to `../../../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md` for manual deployment.
 
 ## IRQL Graph Function Family
 
@@ -86,7 +86,7 @@ Collapses nodes of a given type sharing a property value into a single node. Rew
 
 ### Graph Extraction and Enrichment Functions
 
-These are additional stored functions that must already be deployed on the target database. They are **not** bundled in `references/DEPLOY_IRQL_FUNCTIONS.md`. Use `.show functions` to verify availability before including in a pipeline.
+These are additional stored functions that must already be deployed on the target database. They are **not** bundled in `../../../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md`. Use `.show functions` to verify availability before including in a pipeline.
 
 | Function | Operation | Key Property |
 |---|---|---|
@@ -195,7 +195,7 @@ Given the supplied query columns and the user's graph description, generate the 
 
 ## Examples
 
-For additional prompts and worked examples, see [references/EXAMPLES.md](references/EXAMPLES.md).
+For additional prompts and worked examples, see [../../../../../Global_References/azure-kusto-irql-graph_EXAMPLES.md](../../../../../Global_References/azure-kusto-irql-graph_EXAMPLES.md).
 
 ### Authentication graph: IP -> AuthEvent -> User -> Host
 
@@ -291,10 +291,11 @@ Always output the complete KQL query in the chat response with Step 1 (connect) 
 <KQL_QUERY>
 ```
 
-If the user asks to save or open in Kusto Explorer, follow the procedure in [references/KUSTO_EXPLORER_LAUNCH.md](references/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - Use `ask_user` to confirm before writing files or launching executables
 - Display file contents in chat so the user can review before opening
 - Never use shell interpolation or here-strings — write files via `Set-Content`/`Add-Content`
 - Never encode queries into browser URLs
 - On macOS/Linux, save the `.kql` file and suggest the VS Code Kusto extension or ADX Web Explorer
+

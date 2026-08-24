@@ -387,14 +387,14 @@ Common expressions:
 - Always specify explicit timezone for every job definition.
 
 ## References
-  - references/cron-expression-guide.md — Cron Expression Guide
-  - references/distributed-cron.md — Distributed Cron
-  - references/job-monitoring.md — Job Monitoring and Management
-  - references/scheduler-implementation.md — Scheduling and Cron Patterns
-  - references/scheduling-architecture.md — Scheduling Architecture
-  - references/scheduling-monitoring.md — Scheduling Monitoring
-  - references/scheduling-patterns.md — Scheduling Patterns
-  - references/scheduling-security.md — Scheduling Security
+  - ../../../Global_References/cron-expression-guide.md — Cron Expression Guide
+  - ../../../Global_References/distributed-cron.md — Distributed Cron
+  - ../../../Global_References/scheduling-cron_job-monitoring.md — Job Monitoring and Management
+  - ../../../Global_References/scheduler-implementation.md — Scheduling and Cron Patterns
+  - ../../../Global_References/scheduling-architecture.md — Scheduling Architecture
+  - ../../../Global_References/scheduling-monitoring.md — Scheduling Monitoring
+  - ../../../Global_References/scheduling-patterns.md — Scheduling Patterns
+  - ../../../Global_References/scheduling-security.md — Scheduling Security
 ## Handoff
 No artifact produced unless requested.
 Next skill: multi-tenancy — segregate data for different tenants using the scheduled jobs.

@@ -38,11 +38,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Service Boundaries | `references/decomposition.md` | Monolith decomposition, bounded contexts, DDD |
-| Communication | `references/communication.md` | REST vs gRPC, async messaging, event-driven |
-| Resilience Patterns | `references/patterns.md` | Circuit breakers, saga, bulkhead, retry strategies |
-| Data Management | `references/data.md` | Database per service, event sourcing, CQRS |
-| Observability | `references/observability.md` | Distributed tracing, correlation IDs, metrics |
+| Service Boundaries | `../../../Global_References/decomposition.md` | Monolith decomposition, bounded contexts, DDD |
+| Communication | `../../../Global_References/communication.md` | REST vs gRPC, async messaging, event-driven |
+| Resilience Patterns | `../../../Global_References/patterns.md` | Circuit breakers, saga, bulkhead, retry strategies |
+| Data Management | `../../../Global_References/data.md` | Database per service, event sourcing, CQRS |
+| Observability | `../../../Global_References/observability.md` | Distributed tracing, correlation IDs, metrics |
 
 ## Implementation Examples
 
@@ -164,3 +164,4 @@ When designing microservices architecture, provide:
 Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), Kubernetes, circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/microservices-architect/)
+

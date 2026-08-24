@@ -140,7 +140,7 @@ Track headcount by department and role.
 
 ## Detailed section: Step-by-Step Process
 
-Originally a 2763-byte section in this SKILL.md. Moved to `references/details.md` to fit Codex's 8 KB skill body cap.
+Originally a 2763-byte section in this SKILL.md. Moved to `../../../Global_References/startup-financial-modeling_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Business Model Templates
 
@@ -326,3 +326,4 @@ To create a startup financial model:
 7. **Create scenarios** - Conservative, base, optimistic
 8. **Validate assumptions** - Sanity check and benchmark
 9. **Integrate fundraising** - Model funding rounds and milestones
+

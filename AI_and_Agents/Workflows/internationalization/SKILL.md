@@ -379,12 +379,12 @@ CSS logical properties have negligible performance cost. Flipping layout on loca
 10. Translation interpolation escapes HTML by default to prevent XSS.
 
 ## References
-  - references/i18n-build-optimization.md — i18n Build Optimization
-  - references/i18n-implementation.md — i18n Implementation
-  - references/i18n-libraries.md — i18n Libraries
-  - references/i18n-testing.md — i18n Testing
-  - references/i18n-workflow.md — i18n Workflow
-  - references/rtl-support.md — RTL Support
+  - ../../../Global_References/i18n-build-optimization.md — i18n Build Optimization
+  - ../../../Global_References/i18n-implementation.md — i18n Implementation
+  - ../../../Global_References/i18n-libraries.md — i18n Libraries
+  - ../../../Global_References/i18n-testing.md — i18n Testing
+  - ../../../Global_References/i18n-workflow.md — i18n Workflow
+  - ../../../Global_References/rtl-support.md — RTL Support
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-accessibility` — RTL a11y overlaps with i18n, pass locale direction config.
@@ -520,3 +520,4 @@ What framework and requirements?
 | Queue depth | > 1000 over 1min | Warning | Scale consumers |
 | Disk usage | > 85% | Warning | Clean or expand |
 | Memory usage | > 90% heap | Critical | Restart or scale |
+

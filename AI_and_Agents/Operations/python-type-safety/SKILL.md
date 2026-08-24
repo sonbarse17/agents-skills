@@ -184,7 +184,7 @@ if result.is_success:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `references/details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-type-safety_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -198,3 +198,4 @@ Detailed sections (starting with `## Advanced Patterns`) live in `references/det
 8. **Create type aliases** - Meaningful names for complex types
 9. **Minimize `Any`** - Use specific types or generics. `Any` is acceptable for truly dynamic data or when interfacing with untyped third-party code
 10. **Document with types** - Types are enforceable documentation
+

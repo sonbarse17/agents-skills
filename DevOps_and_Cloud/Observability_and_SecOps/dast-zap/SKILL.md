@@ -69,7 +69,7 @@ Identify the target application URL and define scope:
 TARGET_URL="https://target-app.com"
 
 # For authenticated scans, prepare authentication context
-# See references/authentication_guide.md for detailed setup
+# See ../../../Global_References/authentication_guide.md for detailed setup
 ```
 
 **Scope Considerations:**
@@ -140,7 +140,7 @@ docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
   -r /zap/wrk/graphql-report.html
 ```
 
-Consult `references/api_testing_guide.md` for advanced API testing patterns including authentication and rate limiting.
+Consult `../../../Global_References/api_testing_guide.md` for advanced API testing patterns including authentication and rate limiting.
 
 ### Step 5: Handle Authentication
 
@@ -164,7 +164,7 @@ Authentication methods supported:
 - API key/token authentication
 - Script-based custom authentication
 
-See `references/authentication_guide.md` for detailed authentication configuration.
+See `../../../Global_References/authentication_guide.md` for detailed authentication configuration.
 
 ### Step 6: Analyze Results and Generate Reports
 
@@ -185,7 +185,7 @@ docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-full-scan.py \
 - **Low**: Security concerns with lower exploitability (information disclosure, minor misconfigurations)
 - **Informational**: Security best practices and observations
 
-Map findings to OWASP Top 10 using `references/owasp_mapping.md`.
+Map findings to OWASP Top 10 using `../../../Global_References/dast-zap_owasp_mapping.md`.
 
 ## Automation & CI/CD Integration
 
@@ -398,7 +398,7 @@ For JavaScript-heavy applications, use AJAX spider or Automation Framework.
 
 ```bash
 # Use bundled false positive handling guide
-# See references/false_positive_handling.md
+# See ../../../Global_References/false_positive_handling.md
 
 # Generate rules file to suppress false positives
 # Format: alert_id  URL_pattern  parameter  CWE_id  WARN|IGNORE|FAIL
@@ -442,3 +442,4 @@ docker run -t zaproxy/zap-stable zap-baseline.py \
 - [OWASP Top 10 2021](https://owasp.org/Top10/)
 - [ZAP Automation Framework](https://www.zaproxy.org/docs/automate/automation-framework/)
 - [GitHub Actions for ZAP](https://github.com/zaproxy/action-baseline)
+

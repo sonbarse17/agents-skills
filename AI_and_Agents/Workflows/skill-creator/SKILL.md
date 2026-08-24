@@ -469,7 +469,7 @@ Azure SDKs use consistent verbs across all languages:
 
 ### Language-Specific Patterns
 
-See `references/azure-sdk-patterns.md` for detailed patterns including:
+See `../../../Global_References/azure-sdk-patterns.md` for detailed patterns including:
 
 - **Python**: `ItemPaged`, `LROPoller`, context managers, Sphinx docstrings. When the SDK provides both sync and async clients, present both forms as first-class options; do not express a preference for either. When the SDK is sync-only or async-only, document the available mode only. Do not mix sync and async within a single code example. Always show `with` / `async with` context managers.
 - **.NET**: `Response<T>`, `Pageable<T>`, `Operation<T>`, mocking support
@@ -528,7 +528,7 @@ Add both items verbatim (adapted only for language/SDK specifics) as the **first
 
 6. **Always verify package versions using crates.io.** Before using a package, check its version on [crates.io](https://crates.io/) to ensure you are using a stable and supported release.
 
-7. **Future-proof `#[non_exhaustive]` model structs and enums.** Azure Rust SDK request/response models are frequently `#[non_exhaustive]`. For **externally constructible** structs that also derive `Default`, end the initializer with `..Default::default()` (even if every currently known field is set), suppressing the lint locally with `#[allow(clippy::needless_update)]` when needed. For **truly `#[non_exhaustive]`** structs (where Rust forbids external struct literals, producing E0639), use the provided constructor or builder, or construct a default value first and then mutate the fields you need. When matching an SDK enum, include a wildcard (`_`) arm so future service-added variants do not break the match. If a skill documents model construction, its code examples MUST demonstrate this pattern. See `references/azure-sdk-patterns.md` (Model Types) for the full example.
+7. **Future-proof `#[non_exhaustive]` model structs and enums.** Azure Rust SDK request/response models are frequently `#[non_exhaustive]`. For **externally constructible** structs that also derive `Default`, end the initializer with `..Default::default()` (even if every currently known field is set), suppressing the lint locally with `#[allow(clippy::needless_update)]` when needed. For **truly `#[non_exhaustive]`** structs (where Rust forbids external struct literals, producing E0639), use the provided constructor or builder, or construct a default value first and then mutate the fields you need. When matching an SDK enum, include a wildcard (`_`) arm so future service-added variants do not break the match. If a skill documents model construction, its code examples MUST demonstrate this pattern. See `../../../Global_References/azure-sdk-patterns.md` (Model Types) for the full example.
 
 ### Example Effective Skills (Benchmark Only Structure-Compliant Skills)
 
@@ -1240,9 +1240,9 @@ azure-ai-agents/
 
 | Reference                          | Contents                             |
 | ---------------------------------- | ------------------------------------ |
-| `references/workflows.md`          | Sequential and conditional workflows |
-| `references/output-patterns.md`    | Templates and examples               |
-| `references/azure-sdk-patterns.md` | Language-specific Azure SDK patterns |
+| `../../../Global_References/skill-creator_workflows.md`          | Sequential and conditional workflows |
+| `../../../Global_References/output-patterns.md`    | Templates and examples               |
+| `../../../Global_References/azure-sdk-patterns.md` | Language-specific Azure SDK patterns |
 
 ---
 
@@ -1311,3 +1311,4 @@ Before completing a skill:
 
 - [ ] README.md skill catalog updated
 - [ ] Instructs to search `microsoft-docs` MCP for current APIs
+

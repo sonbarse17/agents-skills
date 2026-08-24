@@ -458,12 +458,12 @@ Impact: File size 120KB to 18KB, frame rate 30fps to 58fps on mid-range devices
 - Metrics must be defined to measure animation effectiveness before implementation.
 
 ## References
-  - references/animation-principles.md — Animation Principles Reference
-  - references/lotti-rive.md — Lottie and Rive Animation Reference
-  - references/motion-accessibility.md — Motion Accessibility Reference
-  - references/motion-design-advanced.md — Motion Design Advanced Topics
-  - references/motion-design-fundamentals.md — Motion Design Fundamentals
-  - references/ui-animation-patterns.md — UI Animation Patterns Reference
+  - ../../../Global_References/animation-principles.md — Animation Principles Reference
+  - ../../../Global_References/lotti-rive.md — Lottie and Rive Animation Reference
+  - ../../../Global_References/motion-accessibility.md — Motion Accessibility Reference
+  - ../../../Global_References/motion-design-advanced.md — Motion Design Advanced Topics
+  - ../../../Global_References/motion-design-fundamentals.md — Motion Design Fundamentals
+  - ../../../Global_References/ui-animation-patterns.md — UI Animation Patterns Reference
   - references/motion-design-principles.md — Motion Design Principles
   - references/motion-design-implementation.md — Motion Design Implementation
 ## Implementation Patterns
@@ -607,3 +607,4 @@ Does the animation need interactivity?
             ├── Lottie → JSON file for Lottie-web, Lottie-iOS, Lottie-Android
             └── Rive → .riv file with runtimes for web, iOS, Android
 `
+

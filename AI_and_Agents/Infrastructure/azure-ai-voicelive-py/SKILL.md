@@ -334,6 +334,7 @@ except ConnectionError as e:
 
 ## References
 
-- **Detailed API Reference**: See [references/api-reference.md](references/api-reference.md)
-- **Complete Examples**: See [references/examples.md](references/examples.md)
-- **All Models & Types**: See [references/models.md](references/models.md)
+- **Detailed API Reference**: See [../../../Global_References/api-reference.md](../../../Global_References/api-reference.md)
+- **Complete Examples**: See [../../../Global_References/azure-ai-voicelive-py_examples.md](../../../Global_References/azure-ai-voicelive-py_examples.md)
+- **All Models & Types**: See [../../../Global_References/models.md](../../../Global_References/models.md)
+

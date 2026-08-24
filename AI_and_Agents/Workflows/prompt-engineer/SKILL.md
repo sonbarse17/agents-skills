@@ -43,12 +43,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Prompt Patterns | `references/prompt-patterns.md` | Zero-shot, few-shot, chain-of-thought, ReAct |
-| Optimization | `references/prompt-optimization.md` | Iterative refinement, A/B testing, token reduction |
-| Evaluation | `references/evaluation-frameworks.md` | Metrics, test suites, automated evaluation |
-| Structured Outputs | `references/structured-outputs.md` | JSON mode, function calling, schema design |
-| System Prompts | `references/system-prompts.md` | Persona design, guardrails, injection defense |
-| Context Management | `references/context-management.md` | Attention budget, degradation patterns, context optimization |
+| Prompt Patterns | `../../../Global_References/prompt-patterns.md` | Zero-shot, few-shot, chain-of-thought, ReAct |
+| Optimization | `../../../Global_References/prompt-engineer_prompt-optimization.md` | Iterative refinement, A/B testing, token reduction |
+| Evaluation | `../../../Global_References/evaluation-frameworks.md` | Metrics, test suites, automated evaluation |
+| Structured Outputs | `../../../Global_References/structured-outputs.md` | JSON mode, function calling, schema design |
+| System Prompts | `../../../Global_References/prompt-engineer_system-prompts.md` | Persona design, guardrails, injection defense |
+| Context Management | `../../../Global_References/context-management.md` | Attention budget, degradation patterns, context optimization |
 
 ## Prompt Examples
 
@@ -134,3 +134,4 @@ When delivering prompt work, provide:
 Reference files cover major prompting techniques (zero-shot, few-shot, CoT, ReAct, tree-of-thoughts), structured output patterns (JSON mode, function calling), context management (attention budgets, degradation mitigation, optimization), and model-specific guidance for GPT-4, Claude, and Gemini families. Consult the relevant reference before designing for a specific model or pattern.
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/prompt-engineer/)
+

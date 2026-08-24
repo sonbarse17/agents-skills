@@ -632,15 +632,16 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 - Always alert when DLQ receives a message
 
 ## References
-  - references/job-monitoring.md — Background Job Monitoring
-  - references/job-patterns.md — Background Job Patterns
-  - references/job-scheduling.md — Background Job Scheduling
-  - references/job-testing.md — Background Job Testing
-  - references/job-types.md — Job Types and Queue Patterns
-  - references/queue-setup.md — Queue Setup and Scheduled Tasks
-  - references/background-jobs-fundamentals.md — Background Jobs Fundamentals
-  - references/background-jobs-advanced.md — Background Jobs Advanced Patterns
-  - references/background-jobs-chaining.md — Job Chaining and Workflow Patterns
+  - ../../../Global_References/job-monitoring.md — Background Job Monitoring
+  - ../../../Global_References/job-patterns.md — Background Job Patterns
+  - ../../../Global_References/job-scheduling.md — Background Job Scheduling
+  - ../../../Global_References/job-testing.md — Background Job Testing
+  - ../../../Global_References/job-types.md — Job Types and Queue Patterns
+  - ../../../Global_References/queue-setup.md — Queue Setup and Scheduled Tasks
+  - ../../../Global_References/background-jobs-fundamentals.md — Background Jobs Fundamentals
+  - ../../../Global_References/background-jobs-advanced.md — Background Jobs Advanced Patterns
+  - ../../../Global_References/background-jobs-chaining.md — Job Chaining and Workflow Patterns
 
 ## Handoff
 `backend-event-driven` for job completion events and chained workflows
+

@@ -305,8 +305,8 @@ labels: ["tech-debt", "needs-triage"]
 | Distinguish intentional from accidental | Not all debt is bad — some is strategic |
 
 ## References
-  - references/tech-debt-tracker-advanced.md — Tech Debt Tracker Advanced Topics
-  - references/tech-debt-tracker-fundamentals.md — Tech Debt Tracker Fundamentals
+  - ../../../Global_References/tech-debt-tracker-advanced.md — Tech Debt Tracker Advanced Topics
+  - ../../../Global_References/tech-debt-tracker-fundamentals.md — Tech Debt Tracker Fundamentals
   - references/tech-debt-tracker-metrics.md — Tech Debt Metrics Reference
   - references/tech-debt-tracker-prioritization.md — Tech Debt Prioritization Reference
 ## Handoff
@@ -502,3 +502,4 @@ Impact × Frequency / Effort
 - **Debt interest computation**: Run automated interest calculation script at end of each sprint. Calculate total interest minutes across all open items.
 - **Git blame integration**: Link debt items to recent git history. Flag when a debt-laden file is being modified and suggest refactoring.
 - **CI pipeline debt gate**: Add debt ratio check to CI. If PR touches high-debt files and doesn't reduce debt, flag for review.
+

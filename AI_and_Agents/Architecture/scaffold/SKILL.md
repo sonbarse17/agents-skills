@@ -29,7 +29,7 @@ Invoked by the `azure-app-onboard` orchestrator at Phase 3 when `prepare-plan.js
 
 ## MCP Tools
 
-> See [shared tools](../references/mcp-tool-reference.md) for cross-phase tools and global parameters. See [scaffold tools](references/mcp-tools.md) for full parameter tables.
+> See [shared tools](../references/mcp-tool-reference.md) for cross-phase tools and global parameters. See [scaffold tools](../../../Global_References/scaffold_mcp-tools.md) for full parameter tables.
 
 | Tool | Sub-command | Purpose | Parameters |
 |------|-----------|---------|------------|
@@ -76,7 +76,7 @@ Invoked by the `azure-app-onboard` orchestrator at Phase 3 when `prepare-plan.js
 >
 > **Anti-pattern (causes regressions):** Writing your OWN prompt that lists workflow steps or describes what to generate. The template already contains the complete workflow — your job is to COPY it, not rewrite it.
 
-5. **IaC generation** — ⛔ **You MUST dispatch [`subagent-iac-gen.md`](references/subagent-iac-gen.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
+5. **IaC generation** — ⛔ **You MUST dispatch [`subagent-iac-gen.md`](../../../Global_References/subagent-iac-gen.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
    ```
    <<<TEMPLATE_START>>>
    {paste the ENTIRE content of subagent-iac-gen.md here — unmodified}
@@ -122,7 +122,7 @@ Invoked by the `azure-app-onboard` orchestrator at Phase 3 when `prepare-plan.js
    ```
    - **Expect:** `deploy-checklist.md` written to session folder. If this subagent fails, the validate subagent (Steps 10b–12.5) will catch the missing file.
 
-6–9. **Self-review** — ⛔ **You MUST dispatch [`subagent-review.md`](references/subagent-review.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
+6–9. **Self-review** — ⛔ **You MUST dispatch [`subagent-review.md`](../../../Global_References/subagent-review.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
    ```
    <<<TEMPLATE_START>>>
    {paste the ENTIRE content of subagent-review.md here — unmodified}
@@ -151,7 +151,7 @@ Invoked by the `azure-app-onboard` orchestrator at Phase 3 when `prepare-plan.js
    ⛔ **Prefer the `.ps1` when `pwsh` is available** — it runs every check unconditionally. The `.sh` twin skips the plan-dependent checks (`DB-VERSION-MATCH`, `SERVICES-COMPLETE`, `DB-NAME-PRESENT`, `WARN-FIXED`) when `jq` is absent.
    ⛔ Any BLOCK failure → fix the IaC, re-run (max 3); never present the deploy gate with an open BLOCK. Run it here in the main thread — do NOT delegate to the validate subagent or hand-judge the result when a shell exists. Pass the JSON to the validate subagent for `scaffold-manifest.json.conformance`.
 
-10b–12.5. **Validation + manifest** — ⛔ **You MUST dispatch [`subagent-validate.md`](references/subagent-validate.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
+10b–12.5. **Validation + manifest** — ⛔ **You MUST dispatch [`subagent-validate.md`](../../../Global_References/subagent-validate.md) as a `task`.** ⛔ agent_type: `"task"` — NEVER `"general-purpose"`.
    ```
    <<<TEMPLATE_START>>>
    {paste the ENTIRE content of subagent-validate.md here — unmodified}
@@ -180,11 +180,12 @@ Invoked by the `azure-app-onboard` orchestrator at Phase 3 when `prepare-plan.js
 
 ## Self-Healing Loop
 
-On validation failure → read [`scaffold-healing-rules.md`](references/scaffold-healing-rules.md) (healing cadence, PLAN_LEVEL_CHANGE, artifact consistency). Do NOT pre-read.
+On validation failure → read [`scaffold-healing-rules.md`](../../../Global_References/scaffold-healing-rules.md) (healing cadence, PLAN_LEVEL_CHANGE, artifact consistency). Do NOT pre-read.
 
 ## Error Handling
 
 - **Missing `prepare-plan.json`:** trigger backfill via orchestrator.
 - **Existing IaC:** handled in DETECT Step 3.
 - **MCP unavailable:** fall back to reference patterns, flag as "unverified."
-- FLAGGED findings and healing exhaustion: see [scaffold-healing-rules.md](references/scaffold-healing-rules.md).
+- FLAGGED findings and healing exhaustion: see [scaffold-healing-rules.md](../../../Global_References/scaffold-healing-rules.md).
+

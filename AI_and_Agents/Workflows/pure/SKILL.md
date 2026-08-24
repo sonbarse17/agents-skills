@@ -581,11 +581,12 @@ Use PHPUnit 10+ with Pest for BDD-style tests. Use `vfsStream` for filesystem mo
 - `readonly` properties on DTOs and value objects for immutability.
 
 ## References
-  - references/php-basics.md — PHP Basics Reference
-  - references/php-database.md — Database Access Patterns
-  - references/php-modern-practices.md — Modern PHP Practices
-  - references/php-routing.md — Routing Patterns
-  - references/php-security.md — PHP Security
-  - references/psr-standards.md — PSR Standards Reference
+  - ../../../Global_References/php-basics.md — PHP Basics Reference
+  - ../../../Global_References/php-database.md — Database Access Patterns
+  - ../../../Global_References/php-modern-practices.md — Modern PHP Practices
+  - ../../../Global_References/php-routing.md — Routing Patterns
+  - ../../../Global_References/php-security.md — PHP Security
+  - ../../../Global_References/psr-standards.md — PSR Standards Reference
 ## Handoff
 Hand off to `backend/php/laravel/SKILL.md` for Laravel-specific patterns or `backend/universal/api-response/SKILL.md` for API response formatting.
+
