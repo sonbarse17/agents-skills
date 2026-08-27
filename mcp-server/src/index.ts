@@ -4,6 +4,10 @@ import {
   CallToolRequestSchema,
   ErrorCode,
   ListToolsRequestSchema,
+  ListResourcesRequestSchema,
+  ReadResourceRequestSchema,
+  ListPromptsRequestSchema,
+  GetPromptRequestSchema,
   McpError,
 } from "@modelcontextprotocol/sdk/types.js";
 import fs from "fs";
@@ -43,12 +47,16 @@ class SkillRouterServer {
       {
         capabilities: {
           tools: {},
+          resources: {},
+          prompts: {},
         },
       }
     );
 
     this.buildIndexDynamically();
     this.setupToolHandlers();
+    this.setupResourceHandlers();
+    this.setupPromptHandlers();
     
     // Error handling
     this.server.onerror = (error) => console.error("[MCP Error]", error);
@@ -161,6 +169,7 @@ class SkillRouterServer {
   }
 
   private handleSearchSkills(args: unknown) {
+    console.error(`[Tool] search_skills: ${JSON.stringify(args)}`);
     const SearchSkillsSchema = z.object({
       query: z.string().min(2, "Query must be at least 2 characters"),
       limit: z.number().min(1).max(50).default(3)
@@ -192,6 +201,7 @@ class SkillRouterServer {
   }
 
   private handleGetSkillContent(args: unknown) {
+    console.error(`[Tool] get_skill_content: ${JSON.stringify(args)}`);
     const GetSkillContentSchema = z.object({
       skill_path: z.string().min(1, "Skill path is required")
     });
@@ -226,6 +236,7 @@ class SkillRouterServer {
   }
 
   private handleListCategories() {
+    console.error(`[Tool] list_categories`);
     let output = "Skill Categories:\n\n";
     for (const [cat, subcats] of Object.entries(this.categories)) {
       output += `- ${cat}\n`;
@@ -301,6 +312,81 @@ class SkillRouterServer {
         }
         throw new McpError(ErrorCode.InternalError, `Internal Server Error: ${(err as Error).message}`);
       }
+    });
+  }
+
+  private setupResourceHandlers() {
+    this.server.setRequestHandler(ListResourcesRequestSchema, async () => ({
+      resources: [
+        {
+          uri: "skill://readme",
+          name: "Repository README",
+          mimeType: "text/markdown",
+          description: "The primary README for the unified skills repository."
+        },
+        {
+          uri: "skill://categories",
+          name: "Categories List",
+          mimeType: "application/json",
+          description: "A JSON list of all available skill categories and their subcategories."
+        }
+      ]
+    }));
+
+    this.server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
+      console.error(`[Resource] Read request for: ${request.params.uri}`);
+      if (request.params.uri === "skill://readme") {
+        const readmePath = path.join(REPO_ROOT, "README.md");
+        const content = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, "utf-8") : "README not found.";
+        return {
+          contents: [{
+            uri: request.params.uri,
+            mimeType: "text/markdown",
+            text: content
+          }]
+        };
+      }
+      if (request.params.uri === "skill://categories") {
+        return {
+          contents: [{
+            uri: request.params.uri,
+            mimeType: "application/json",
+            text: JSON.stringify(this.categories, null, 2)
+          }]
+        };
+      }
+      throw new McpError(ErrorCode.InvalidRequest, `Unknown resource URI: ${request.params.uri}`);
+    });
+  }
+
+  private setupPromptHandlers() {
+    this.server.setRequestHandler(ListPromptsRequestSchema, async () => ({
+      prompts: [
+        {
+          name: "skill_consultant",
+          description: "A system prompt directing the agent to act as a Staff-Level AI consultant using the unified skills repository.",
+          arguments: []
+        }
+      ]
+    }));
+
+    this.server.setRequestHandler(GetPromptRequestSchema, async (request) => {
+      console.error(`[Prompt] Get request for: ${request.params.name}`);
+      if (request.params.name === "skill_consultant") {
+        return {
+          description: "Staff-Level AI consultant persona",
+          messages: [
+            {
+              role: "user",
+              content: {
+                type: "text",
+                text: "You are an expert Staff-Level AI coding assistant. You have access to a rich repository of skills and guidelines. Before acting on complex tasks, you MUST search for relevant skills using the `search_skills` tool and read them via `get_skill_content`. Apply the 'Staff-Level Engineering' constraints implicitly in all your work. Be highly autonomous, modular, and secure."
+              }
+            }
+          ]
+        };
+      }
+      throw new McpError(ErrorCode.InvalidRequest, `Unknown prompt: ${request.params.name}`);
     });
   }
 
