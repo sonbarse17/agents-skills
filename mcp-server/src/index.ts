@@ -15,7 +15,6 @@ const __dirname = path.dirname(__filename);
 
 // Paths
 const REPO_ROOT = path.resolve(__dirname, "../../");
-const MANIFEST_PATH = path.join(REPO_ROOT, "skills_manifest.json");
 
 interface Skill {
   name: string;
@@ -45,7 +44,7 @@ class SkillRouterServer {
       }
     );
 
-    this.loadManifest();
+    this.buildIndexDynamically();
     this.setupToolHandlers();
     
     // Error handling
@@ -56,21 +55,93 @@ class SkillRouterServer {
     });
   }
 
-  private loadManifest() {
-    try {
-      if (!fs.existsSync(MANIFEST_PATH)) {
-        console.error(`Manifest not found at ${MANIFEST_PATH}. Run the manifest builder script.`);
+  private buildIndexDynamically() {
+    console.error("Dynamically indexing skills repository...");
+    this.skills = [];
+    this.categories = {};
+
+    const walkDir = (dir: string) => {
+      let entries;
+      try {
+        entries = fs.readdirSync(dir, { withFileTypes: true });
+      } catch (err) {
         return;
       }
-      const rawData = fs.readFileSync(MANIFEST_PATH, "utf-8");
-      // Strip BOM if present (PowerShell sometimes adds it)
-      const cleanData = rawData.replace(/^\uFEFF/, '');
-      const data = JSON.parse(cleanData);
-      this.skills = data.skills || [];
-      this.categories = data.categories || {};
-      console.error(`Loaded ${this.skills.length} skills from manifest.`);
-    } catch (error) {
-      console.error("Failed to load manifest:", error);
+      
+      for (const entry of entries) {
+        // Skip hidden folders (like .git, .gemini) and specific ignored folders
+        if (entry.name.startsWith('.') || entry.name === 'node_modules' || entry.name === 'mcp-server') continue;
+        
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walkDir(fullPath);
+        } else if (entry.isFile() && entry.name === "SKILL.md") {
+          this.processSkillFile(fullPath);
+        }
+      }
+    };
+    
+    try {
+      walkDir(REPO_ROOT);
+      console.error(`Successfully indexed ${this.skills.length} skills.`);
+    } catch (err) {
+      console.error("Error building index:", err);
+    }
+  }
+
+  private processSkillFile(absolutePath: string) {
+    try {
+      const content = fs.readFileSync(absolutePath, "utf-8");
+      
+      // Match YAML frontmatter (ignoring BOM if present)
+      const cleanContent = content.replace(/^\uFEFF/, '');
+      const yamlMatch = cleanContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!yamlMatch) return;
+      
+      const frontmatter = yamlMatch[1];
+      
+      // Basic regex parsing for name and description
+      const nameMatch = frontmatter.match(/^name:\s*(.+)$/m);
+      // Match description, optionally handling block scalars (> or |)
+      const descMatch = frontmatter.match(/^description:\s*(?:>|\|)?\s*(.+?)(?=\n[a-z]+:|$)/ms);
+      
+      let name = nameMatch ? nameMatch[1].trim() : "Unknown";
+      let description = descMatch ? descMatch[1].trim() : "No description available";
+      
+      // Clean up quotes if present
+      name = name.replace(/^["']|["']$/g, '');
+      description = description.replace(/^["']|["']$/g, '');
+      
+      // Clean up description if it was a block scalar (remove newlines)
+      description = description.replace(/\r?\n\s+/g, ' ');
+      
+      const relativePath = path.relative(REPO_ROOT, path.dirname(absolutePath));
+      const parts = relativePath.split(path.sep);
+      
+      // Determine category and subcategory from path structure
+      const category = parts.length > 0 ? parts[0] : "Uncategorized";
+      const subcategory = parts.length > 1 ? parts[1] : "General";
+      
+      const skill: Skill = {
+        name,
+        folder: path.basename(path.dirname(absolutePath)),
+        description,
+        category,
+        subcategory,
+        path: relativePath.replace(/\\/g, '/'),
+        absolute_path: absolutePath
+      };
+      
+      this.skills.push(skill);
+      
+      // Update categories map
+      if (!this.categories[category]) {
+        this.categories[category] = {};
+      }
+      this.categories[category][subcategory] = (this.categories[category][subcategory] || 0) + 1;
+      
+    } catch (err) {
+      console.error(`Failed to parse ${absolutePath}`, err);
     }
   }
 
