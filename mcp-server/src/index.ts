@@ -62,7 +62,10 @@ class SkillRouterServer {
         console.error(`Manifest not found at ${MANIFEST_PATH}. Run the manifest builder script.`);
         return;
       }
-      const data = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
+      const rawData = fs.readFileSync(MANIFEST_PATH, "utf-8");
+      // Strip BOM if present (PowerShell sometimes adds it)
+      const cleanData = rawData.replace(/^\uFEFF/, '');
+      const data = JSON.parse(cleanData);
       this.skills = data.skills || [];
       this.categories = data.categories || {};
       console.error(`Loaded ${this.skills.length} skills from manifest.`);
