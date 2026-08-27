@@ -12,4 +12,9 @@ The following guardrails represent universal rules that apply to ANY skill execu
 3. **Secret Protection:** Never write hardcoded credentials, API keys, or database passwords into code. Always use environment variables or a Secret Manager.
 4. **Destructive Actions:** Never run destructive commands (e.g., `rm -rf`, `DROP TABLE`, `terraform destroy`) without first prompting the user for explicit approval.
 5. **Idempotency:** When writing deployment scripts, ensure they are idempotent (can be run multiple times safely without duplicate side effects).
-6. **Modern Code Practices:** When writing code, ALWAYS use the latest, most modern syntax, functions, and best practices available for the language or framework (e.g., modern ES6+ in JS/TS, latest language features, avoiding deprecated APIs). Ensure the solution is idiomatic and state-of-the-art.
+6. **State-of-the-Art Code Quality:** 
+   - **Modern Syntax:** ALWAYS use the latest stable syntax, functions, and paradigms for a language (e.g., ES2023+ in JS/TS, Python 3.12+ features).
+   - **Idiomatic Patterns:** Write code that feels native to the ecosystem. Do not write Java-style code in Python or C-style loops in Rust. 
+   - **Deprecations:** NEVER use deprecated APIs, libraries, or legacy patterns. Actively verify that the modules you suggest are currently maintained.
+   - **Robustness:** Include comprehensive error handling, strong typing (where applicable), and defensive programming techniques by default.
+   - **Performance:** Opt for optimized, algorithmically efficient methods without sacrificing readability.
