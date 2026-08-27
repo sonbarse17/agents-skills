@@ -69,7 +69,9 @@ Each folder within these categories represents a distinct "Skill" and typically 
 
 ## 🚀 Usage
 
-This repository includes a built-in **Skill Router MCP Server** that allows AI agents (like Antigravity, Claude Desktop, Cursor) to dynamically search and read the 1,640+ skills on-demand, without overloading their context windows.
+This repository includes a built-in **Skill Router MCP Server** that allows AI agents (like Antigravity, Claude Desktop, Cursor) to dynamically search and read the 1,640+ skills on-demand, without overloading their context windows. 
+
+*Note: The MCP server dynamically indexes all `SKILL.md` files recursively on startup, so you never need to manually build or update any JSON manifests!*
 
 ### Setting up the MCP Server
 
