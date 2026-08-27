@@ -10,6 +10,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import Fuse from "fuse.js";
+import { z } from "zod";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -159,6 +160,82 @@ class SkillRouterServer {
     }
   }
 
+  private handleSearchSkills(args: unknown) {
+    const SearchSkillsSchema = z.object({
+      query: z.string().min(2, "Query must be at least 2 characters"),
+      limit: z.number().min(1).max(50).default(3)
+    });
+
+    const parsed = SearchSkillsSchema.safeParse(args);
+    if (!parsed.success) {
+      throw new McpError(ErrorCode.InvalidParams, `Invalid arguments: ${parsed.error.message}`);
+    }
+
+    if (!this.fuse) {
+      return { content: [{ type: "text", text: "Index not ready." }] };
+    }
+
+    const { query, limit } = parsed.data;
+    const results = this.fuse.search(query, { limit });
+
+    if (results.length === 0) {
+      return { content: [{ type: "text", text: "No matching skills found." }] };
+    }
+
+    const formatted = results.map((r, i) => {
+      const s = r.item;
+      const scoreDisplay = r.score !== undefined ? (1 - r.score).toFixed(2) : "N/A";
+      return `Match #${i + 1} (Score: ${scoreDisplay})\nName: ${s.name}\nPath: ${s.path}\nCategory: ${s.category} / ${s.subcategory}\nDescription: ${s.description.substring(0, 200)}...`;
+    }).join("\n\n");
+
+    return { content: [{ type: "text", text: formatted }] };
+  }
+
+  private handleGetSkillContent(args: unknown) {
+    const GetSkillContentSchema = z.object({
+      skill_path: z.string().min(1, "Skill path is required")
+    });
+
+    const parsed = GetSkillContentSchema.safeParse(args);
+    if (!parsed.success) {
+      throw new McpError(ErrorCode.InvalidParams, `Invalid arguments: ${parsed.error.message}`);
+    }
+
+    const { skill_path } = parsed.data;
+
+    // Path Traversal Security Check
+    const absPath = path.resolve(REPO_ROOT, skill_path, "SKILL.md");
+    if (!absPath.startsWith(REPO_ROOT)) {
+      throw new McpError(ErrorCode.InvalidParams, "Security violation: Path traversal detected.");
+    }
+
+    if (!fs.existsSync(absPath)) {
+      throw new McpError(ErrorCode.InvalidParams, `Skill file not found at: ${absPath}`);
+    }
+
+    let content = fs.readFileSync(absPath, "utf-8");
+
+    // Phase 1: Silent Guardrail Injection
+    const guardrailsPath = path.join(REPO_ROOT, "Global_References", "core-security-guardrails.md");
+    if (fs.existsSync(guardrailsPath)) {
+      const guardrails = fs.readFileSync(guardrailsPath, "utf-8");
+      content += "\n\n" + guardrails;
+    }
+
+    return { content: [{ type: "text", text: content }] };
+  }
+
+  private handleListCategories() {
+    let output = "Skill Categories:\n\n";
+    for (const [cat, subcats] of Object.entries(this.categories)) {
+      output += `- ${cat}\n`;
+      for (const [sub, count] of Object.entries(subcats as Record<string, number>)) {
+        output += `  - ${sub}: ${count} skills\n`;
+      }
+    }
+    return { content: [{ type: "text", text: output }] };
+  }
+
   private setupToolHandlers() {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: [
@@ -207,67 +284,23 @@ class SkillRouterServer {
     }));
 
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-      if (request.params.name === "search_skills") {
-        const query = String(request.params.arguments?.query || "");
-        const limit = Number(request.params.arguments?.limit || 3);
-        
-        if (!query || query.length < 2) {
-          return { content: [{ type: "text", text: "Query too short." }] };
+      try {
+        switch (request.params.name) {
+          case "search_skills":
+            return this.handleSearchSkills(request.params.arguments);
+          case "get_skill_content":
+            return this.handleGetSkillContent(request.params.arguments);
+          case "list_categories":
+            return this.handleListCategories();
+          default:
+            throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${request.params.name}`);
         }
-        
-        if (!this.fuse) {
-          return { content: [{ type: "text", text: "Index not ready." }] };
+      } catch (err: unknown) {
+        if (err instanceof McpError) {
+          throw err;
         }
-        
-        const results = this.fuse.search(query, { limit });
-        
-        if (results.length === 0) {
-          return { content: [{ type: "text", text: "No matching skills found." }] };
-        }
-        
-        const formatted = results.map((r, i) => {
-          const s = r.item;
-          const scoreDisplay = r.score !== undefined ? (1 - r.score).toFixed(2) : "N/A";
-          return `Match #${i + 1} (Score: ${scoreDisplay})\nName: ${s.name}\nPath: ${s.path}\nCategory: ${s.category} / ${s.subcategory}\nDescription: ${s.description.substring(0, 200)}...`;
-        }).join("\n\n");
-        
-        return { content: [{ type: "text", text: formatted }] };
+        throw new McpError(ErrorCode.InternalError, `Internal Server Error: ${(err as Error).message}`);
       }
-
-      if (request.params.name === "get_skill_content") {
-        const skillPath = String(request.params.arguments?.skill_path || "");
-        
-        // Find the absolute path
-        const absPath = path.join(REPO_ROOT, skillPath, "SKILL.md");
-        
-        if (!fs.existsSync(absPath)) {
-          throw new McpError(ErrorCode.InvalidParams, `Skill file not found at: ${absPath}`);
-        }
-        
-        let content = fs.readFileSync(absPath, "utf-8");
-        
-        // Phase 1: Silent Guardrail Injection
-        const guardrailsPath = path.join(REPO_ROOT, "Global_References", "core-security-guardrails.md");
-        if (fs.existsSync(guardrailsPath)) {
-          const guardrails = fs.readFileSync(guardrailsPath, "utf-8");
-          content += "\n\n" + guardrails;
-        }
-        
-        return { content: [{ type: "text", text: content }] };
-      }
-
-      if (request.params.name === "list_categories") {
-        let output = "Skill Categories:\n\n";
-        for (const [cat, subcats] of Object.entries(this.categories)) {
-          output += `- ${cat}\n`;
-          for (const [sub, count] of Object.entries(subcats as Record<string, number>)) {
-            output += `  - ${sub}: ${count} skills\n`;
-          }
-        }
-        return { content: [{ type: "text", text: output }] };
-      }
-
-      throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${request.params.name}`);
     });
   }
 
