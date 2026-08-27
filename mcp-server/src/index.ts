@@ -30,6 +30,8 @@ interface Skill {
   subcategory: string;
   path: string;
   absolute_path: string;
+  tags?: string[];
+  depends_on?: string[];
 }
 
 class SkillRouterServer {
@@ -98,6 +100,7 @@ class SkillRouterServer {
       this.fuse = new Fuse(this.skills, {
         keys: [
           { name: 'name', weight: 0.5 },
+          { name: 'tags', weight: 0.3 },
           { name: 'folder', weight: 0.2 },
           { name: 'category', weight: 0.2 },
           { name: 'description', weight: 0.1 }
@@ -145,6 +148,12 @@ class SkillRouterServer {
       const category = parts.length > 0 ? parts[0] : "Uncategorized";
       const subcategory = parts.length > 1 ? parts[1] : "General";
       
+      const tagsMatch = frontmatter.match(/^tags:\s*\[(.*?)\]/m);
+      const dependsMatch = frontmatter.match(/^depends_on:\s*\[(.*?)\]/m);
+      
+      const tags = tagsMatch ? tagsMatch[1].split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean) : [];
+      const depends_on = dependsMatch ? dependsMatch[1].split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean) : [];
+
       const skill: Skill = {
         name,
         folder: path.basename(path.dirname(absolutePath)),
@@ -152,7 +161,9 @@ class SkillRouterServer {
         category,
         subcategory,
         path: relativePath.replace(/\\/g, '/'),
-        absolute_path: absolutePath
+        absolute_path: absolutePath,
+        tags,
+        depends_on
       };
       
       this.skills.push(skill);
@@ -200,6 +211,32 @@ class SkillRouterServer {
     return { content: [{ type: "text", text: formatted }] };
   }
 
+  private handleSearchByTag(args: unknown) {
+    console.error(`[Tool] search_by_tag: ${JSON.stringify(args)}`);
+    const SearchByTagSchema = z.object({
+      tag: z.string().min(1, "Tag is required"),
+      limit: z.number().min(1).max(50).default(10)
+    });
+
+    const parsed = SearchByTagSchema.safeParse(args);
+    if (!parsed.success) {
+      throw new McpError(ErrorCode.InvalidParams, `Invalid arguments: ${parsed.error.message}`);
+    }
+
+    const { tag, limit } = parsed.data;
+    const results = this.skills.filter(s => s.tags?.includes(tag)).slice(0, limit);
+
+    if (results.length === 0) {
+      return { content: [{ type: "text", text: `No skills found with tag: ${tag}` }] };
+    }
+
+    const formatted = results.map((s, i) => {
+      return `Match #${i + 1}\nName: ${s.name}\nPath: ${s.path}\nCategory: ${s.category} / ${s.subcategory}\nTags: ${s.tags?.join(", ")}\nDescription: ${s.description.substring(0, 200)}...`;
+    }).join("\n\n");
+
+    return { content: [{ type: "text", text: formatted }] };
+  }
+
   private handleGetSkillContent(args: unknown) {
     console.error(`[Tool] get_skill_content: ${JSON.stringify(args)}`);
     const GetSkillContentSchema = z.object({
@@ -230,6 +267,19 @@ class SkillRouterServer {
     if (fs.existsSync(guardrailsPath)) {
       const guardrails = fs.readFileSync(guardrailsPath, "utf-8");
       content += "\n\n" + guardrails;
+    }
+
+    // Resolve Dependencies
+    const skillObj = this.skills.find(s => s.absolute_path === absPath);
+    if (skillObj && skillObj.depends_on && skillObj.depends_on.length > 0) {
+      content += "\n\n### DEPENDENCIES (Automatically resolved context)\n";
+      for (const depName of skillObj.depends_on) {
+        const depSkill = this.skills.find(s => s.name === depName);
+        if (depSkill) {
+          content += `\n#### Dependency: ${depSkill.name}\n`;
+          content += fs.readFileSync(depSkill.absolute_path, "utf-8");
+        }
+      }
     }
 
     return { content: [{ type: "text", text: content }] };
@@ -270,6 +320,25 @@ class SkillRouterServer {
           },
         },
         {
+          name: "search_by_tag",
+          description: "Search for skills that contain a specific tag (e.g. 'security', 'kubernetes', 'aws'). Returns exact tag matches.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              tag: {
+                type: "string",
+                description: "The tag to search for",
+              },
+              limit: {
+                type: "number",
+                description: "Max number of results to return (default: 10)",
+                default: 10
+              }
+            },
+            required: ["tag"],
+          },
+        },
+        {
           name: "get_skill_content",
           description: "Read the full SKILL.md instruction file for a specific skill. Provide the relative path obtained from search_skills.",
           inputSchema: {
@@ -299,6 +368,8 @@ class SkillRouterServer {
         switch (request.params.name) {
           case "search_skills":
             return this.handleSearchSkills(request.params.arguments);
+          case "search_by_tag":
+            return this.handleSearchByTag(request.params.arguments);
           case "get_skill_content":
             return this.handleGetSkillContent(request.params.arguments);
           case "list_categories":
@@ -316,8 +387,8 @@ class SkillRouterServer {
   }
 
   private setupResourceHandlers() {
-    this.server.setRequestHandler(ListResourcesRequestSchema, async () => ({
-      resources: [
+    this.server.setRequestHandler(ListResourcesRequestSchema, async () => {
+      const resources: any[] = [
         {
           uri: "skill://readme",
           name: "Repository README",
@@ -330,11 +401,51 @@ class SkillRouterServer {
           mimeType: "application/json",
           description: "A JSON list of all available skill categories and their subcategories."
         }
-      ]
-    }));
+      ];
+
+      const playbooksDir = path.join(REPO_ROOT, "Playbooks");
+      if (fs.existsSync(playbooksDir)) {
+        const files = fs.readdirSync(playbooksDir);
+        for (const file of files) {
+          if (file.endsWith(".md")) {
+            resources.push({
+              uri: `playbook://${file.replace('.md', '')}`,
+              name: `Playbook: ${file.replace('.md', '')}`,
+              mimeType: "text/markdown",
+              description: `Operational playbook for ${file.replace('.md', '')}`
+            });
+          }
+        }
+      }
+
+      return { resources };
+    });
 
     this.server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
       console.error(`[Resource] Read request for: ${request.params.uri}`);
+      
+      if (request.params.uri.startsWith("playbook://")) {
+        const playbookName = request.params.uri.replace("playbook://", "");
+        const playbookPath = path.join(REPO_ROOT, "Playbooks", `${playbookName}.md`);
+        
+        // Path Traversal check
+        if (!playbookPath.startsWith(path.join(REPO_ROOT, "Playbooks"))) {
+          throw new McpError(ErrorCode.InvalidParams, "Security violation: Path traversal detected.");
+        }
+
+        if (fs.existsSync(playbookPath)) {
+          return {
+            contents: [{
+              uri: request.params.uri,
+              mimeType: "text/markdown",
+              text: fs.readFileSync(playbookPath, "utf-8")
+            }]
+          };
+        } else {
+          throw new McpError(ErrorCode.InvalidRequest, `Playbook not found: ${playbookName}`);
+        }
+      }
+
       if (request.params.uri === "skill://readme") {
         const readmePath = path.join(REPO_ROOT, "README.md");
         const content = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, "utf-8") : "README not found.";
