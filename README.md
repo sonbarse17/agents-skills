@@ -69,4 +69,38 @@ Each folder within these categories represents a distinct "Skill" and typically 
 
 ## 🚀 Usage
 
-To utilize these skills, point your AI agent's skills configuration or context loader to the appropriate sub-directory in this repository. Agents can dynamically read the `SKILL.md` files when their planning module determines a specific technology or runbook is required to solve a user's task.
+This repository includes a built-in **Skill Router MCP Server** that allows AI agents (like Antigravity, Claude Desktop, Cursor) to dynamically search and read the 1,640+ skills on-demand, without overloading their context windows.
+
+### Setting up the MCP Server
+
+1. Navigate to the `mcp-server` directory:
+   ```bash
+   cd mcp-server
+   npm install
+   npm run build
+   ```
+
+2. Register the MCP server with your AI client (e.g., in `~/.gemini/config/mcp_config.json`):
+   ```json
+   "skill-router": {
+     "command": "node",
+     "args": [
+       "C:\\absolute\\path\\to\\unified_skills\\mcp-server\\build\\index.js"
+     ]
+   }
+   ```
+
+3. Restart your AI client. The agent will now have access to `search_skills`, `get_skill_content`, and `list_categories` tools!
+
+### Manual Usage
+
+You can also explicitly map categories for Antigravity using a `skills.json` file placed in `~/.gemini/config/skills.json` or `.agents/skills.json` within your project workspace:
+
+```json
+{
+  "entries": [
+    { "path": "C:/path/to/unified_skills/DevOps_and_Cloud/Cloud_Providers" },
+    { "path": "C:/path/to/unified_skills/Software_Engineering_and_Other/Backend" }
+  ]
+}
+```
