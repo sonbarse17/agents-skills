@@ -15,7 +15,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llmops-fine-tuning-and-deployment
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - python
+  - apis
+  - incident
+  - deploy
 ---
 
 # LLMOps: Fine-Tuning And Deployment

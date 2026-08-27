@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - openclaw-security-hardening
-depends_on: []
+depends_on:
+  - zero-trust
+  - scan
+  - openclaw-local-mac-mini
+  - vault
+  - Rate Limiting
 ---
 
 # OpenClaw Security Hardening

@@ -13,7 +13,11 @@ metadata:
 tags:
   - containers_and_orchestration
   - azure-mgmt-mongodbatlas-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - mongodb
+  - go
+  - github
 ---
 
 # Azure.ResourceManager.MongoDBAtlas SDK

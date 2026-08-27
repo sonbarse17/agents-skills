@@ -19,7 +19,12 @@ metadata:
 tags:
   - cloud_providers
   - sonarqube-code-quality-and-security
-depends_on: []
+depends_on:
+  - scan
+  - sast-integration
+  - devsecops
+  - code-quality
+  - git
 ---
 
 # SonarQube Code Quality and Security

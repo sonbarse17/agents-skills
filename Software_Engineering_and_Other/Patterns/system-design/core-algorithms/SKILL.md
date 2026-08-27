@@ -5,7 +5,12 @@ description: Mathematical and architectural analysis of Consistent Hashing, Rate
 tags:
   - system-design
   - core-algorithms
-depends_on: []
+depends_on:
+  - mermaid
+  - Rate Limiting
+  - capacity
+  - deploy
+  - deploy-model
 ---
 
 # System Design Core Algorithms

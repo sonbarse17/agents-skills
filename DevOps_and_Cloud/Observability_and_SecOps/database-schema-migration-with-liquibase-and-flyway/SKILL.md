@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - database-schema-migration-with-liquibase-and-flyway
-depends_on: []
+depends_on:
+  - scan
+  - mongodb-operations-and-scaling
+  - postgresql
+  - mongodb
+  - mysql
 ---
 
 # Database Schema Migration with Liquibase and Flyway

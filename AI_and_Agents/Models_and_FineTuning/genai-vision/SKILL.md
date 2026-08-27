@@ -5,7 +5,10 @@ description: Integrating Stable Diffusion for vision generation and Whisper for
 tags:
   - models_and_finetuning
   - genai-vision
-depends_on: []
+depends_on:
+  - mermaid
+  - multimodal
+  - python
 ---
 
 # GenAI Vision & Multimodal

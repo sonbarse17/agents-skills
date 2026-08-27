@@ -23,7 +23,12 @@ tags:
   - universal
   - ar-vr
   - phase-10
-depends_on: []
+depends_on:
+  - interaction-design
+  - ios
+  - android
+  - unity
+  - vault
 ---
 
 # Mobile AR/VR Development

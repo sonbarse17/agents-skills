@@ -14,7 +14,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - gitops-workflow
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - git
+  - go
+  - environment-promotion-strategy
 ---
 
 # [GitOps](../gitops/SKILL.md) Workflow

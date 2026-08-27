@@ -17,7 +17,12 @@ metadata:
 tags:
   - infrastructure
   - vector-database-configuration-validation
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - database-operations
+  - go
+  - cost
 ---
 
 # Vector Database Configuration Validation

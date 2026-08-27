@@ -23,7 +23,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-ai-agent-stack-deployment-cloud-managed-from-scratch
-depends_on: []
+depends_on:
+  - database-operations
+  - apis
+  - go
+  - monitoring
+  - incident
 ---
 
 # Complete AI Agent Stack Deployment (Cloud-Managed) From Scratch

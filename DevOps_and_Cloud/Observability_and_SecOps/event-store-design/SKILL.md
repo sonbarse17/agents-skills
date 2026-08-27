@@ -6,7 +6,10 @@ description: Design and implement event stores for event-sourced systems. Use
 tags:
   - observability_and_secops
   - event-store-design
-depends_on: []
+depends_on:
+  - postgresql
+  - serverless
+  - aws
 ---
 
 # Event Store Design

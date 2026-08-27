@@ -11,7 +11,12 @@ metadata:
 tags:
   - ci_cd
   - gitlab-ci
-depends_on: []
+depends_on:
+  - kubernetes
+  - gitops
+  - docker
+  - argocd-gitops
+  - argocd
 ---
 
 # GitLab CI/CD

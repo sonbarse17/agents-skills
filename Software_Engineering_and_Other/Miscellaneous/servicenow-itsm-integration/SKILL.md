@@ -19,7 +19,12 @@ metadata:
 tags:
   - miscellaneous
   - servicenow-itsm-integration
-depends_on: []
+depends_on:
+  - change-management
+  - apis
+  - incident-response-and-on-call-management
+  - servicenow-itsm-configuration-validation
+  - runbook
 ---
 
 # ServiceNow ITSM Integration

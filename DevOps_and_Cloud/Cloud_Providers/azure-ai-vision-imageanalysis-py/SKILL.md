@@ -15,7 +15,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-vision-imageanalysis-py
-depends_on: []
+depends_on:
+  - python
+  - cost
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Vision Image Analysis SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

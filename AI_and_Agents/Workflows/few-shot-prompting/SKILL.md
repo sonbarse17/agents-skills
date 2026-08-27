@@ -4,7 +4,9 @@ description: Deep dive into in-context learning mechanics and KV Cache impact.
 tags:
   - workflows
   - few-shot-prompting
-depends_on: []
+depends_on:
+  - mermaid
+  - cost
 ---
 # Few-Shot Prompting Mechanics
 

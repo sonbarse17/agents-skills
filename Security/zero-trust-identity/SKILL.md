@@ -4,7 +4,9 @@ description: Advanced Zero Trust Identity, OIDC/SAML Mechanics, and JWT Validati
 tags:
   - security
   - zero-trust-identity
-depends_on: []
+depends_on:
+  - mermaid
+  - microservices
 ---
 
 # Zero Trust Identity Architecture and Authentication Flows

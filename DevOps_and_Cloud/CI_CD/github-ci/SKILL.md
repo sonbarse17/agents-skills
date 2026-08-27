@@ -11,7 +11,11 @@ metadata:
 tags:
   - ci_cd
   - github-ci
-depends_on: []
+depends_on:
+  - commands
+  - docker
+  - github
+  - deploy
 ---
 
 # [GitHub](../github/SKILL.md) CI

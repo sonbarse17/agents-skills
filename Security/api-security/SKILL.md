@@ -21,7 +21,12 @@ tags:
   - security
   - backend
   - phase-10
-depends_on: []
+depends_on:
+  - zero-trust
+  - security-sast-dast
+  - rbac
+  - policy-as-code
+  - vault
 ---
 
 # Security API Security

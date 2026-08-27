@@ -5,7 +5,9 @@ description: Use when authoring or repairing a coordinate-explicit JSON
 tags:
   - product_and_business
   - pptx-slide-specification
-depends_on: []
+depends_on:
+  - accessibility
+  - audit
 ---
 
 # PPTX Slide Specification

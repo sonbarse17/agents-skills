@@ -14,7 +14,10 @@ metadata:
 tags:
   - skills
   - azure-security-keyvault-keys-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - github
 ---
 
 # Azure.Security.KeyVault.Keys (.NET)

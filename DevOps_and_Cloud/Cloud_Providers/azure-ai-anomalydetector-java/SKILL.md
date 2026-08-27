@@ -11,7 +11,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-anomalydetector-java
-depends_on: []
+depends_on:
+  - azure-ai
+  - prepare
 ---
 
 # Azure AI Anomaly Detector SDK for Java

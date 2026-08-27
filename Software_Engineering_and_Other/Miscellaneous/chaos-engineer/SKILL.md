@@ -22,7 +22,12 @@ metadata:
 tags:
   - miscellaneous
   - chaos-engineer
-depends_on: []
+depends_on:
+  - monitoring
+  - kubernetes
+  - kubectl
+  - github
+  - deploy
 ---
 
 # Chaos Engineer

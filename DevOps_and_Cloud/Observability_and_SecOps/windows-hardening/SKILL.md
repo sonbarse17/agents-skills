@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - windows-hardening
-depends_on: []
+depends_on:
+  - scan
+  - windows-server
+  - qc
+  - commands
+  - linux-hardening
 ---
 
 # Windows Hardening

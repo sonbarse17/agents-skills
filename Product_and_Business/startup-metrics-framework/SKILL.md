@@ -10,7 +10,9 @@ version: 1.0.0
 tags:
   - product_and_business
   - startup-metrics-framework
-depends_on: []
+depends_on:
+  - dashboards
+  - cost
 ---
 
 # Startup Metrics Framework

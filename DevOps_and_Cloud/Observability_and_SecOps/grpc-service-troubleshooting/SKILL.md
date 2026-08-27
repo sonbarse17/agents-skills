@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - grpc-service-troubleshooting
-depends_on: []
+depends_on:
+  - load-balancing
+  - api-gateway
+  - service-mesh-istio
+  - ingress-nginx-configuration
+  - go
 ---
 
 # gRPC Service Troubleshooting

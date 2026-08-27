@@ -24,7 +24,12 @@ tags:
   - infrastructure
   - hardware
   - phase-5
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - capacity-planning
+  - capacity
+  - deploy
 ---
 
 # Datacenter Operations

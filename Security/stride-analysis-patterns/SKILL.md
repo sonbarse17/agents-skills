@@ -6,7 +6,9 @@ description: Apply STRIDE methodology to systematically identify threats. Use
 tags:
   - security
   - stride-analysis-patterns
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - audit
 ---
 
 # STRIDE Analysis Patterns

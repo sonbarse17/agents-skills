@@ -10,7 +10,12 @@ description: Scans the codebase to generate project-doc.md and AGENTS.md. Use
 tags:
   - security
   - scan
-depends_on: []
+depends_on:
+  - jest
+  - git
+  - python
+  - postgresql
+  - mongodb
 ---
 
 # Codebase Scanner

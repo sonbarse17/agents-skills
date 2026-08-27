@@ -16,7 +16,12 @@ metadata:
 tags:
   - ci_cd
   - github-actions-centralized-reusable-workflows
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - jenkins
+  - jenkins-centralized-shared-library
 ---
 
 # [GitHub](../github/SKILL.md) Actions Centralized Reusable Workflows

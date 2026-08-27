@@ -12,7 +12,11 @@ license: MIT
 tags:
   - security
   - compliance-as-code
-depends_on: []
+depends_on:
+  - go
+  - deploy
+  - audit
+  - prepare
 ---
 
 # Compliance as Code

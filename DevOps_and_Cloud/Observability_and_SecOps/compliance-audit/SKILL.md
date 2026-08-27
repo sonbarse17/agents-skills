@@ -17,7 +17,12 @@ tags:
   - enterprise
   - compliance
   - phase-8
-depends_on: []
+depends_on:
+  - scan
+  - devsecops
+  - compliance-as-code
+  - accessibility
+  - python
 ---
 
 # Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Agent

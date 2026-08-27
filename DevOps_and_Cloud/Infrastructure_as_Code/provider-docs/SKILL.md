@@ -11,7 +11,9 @@ metadata:
 tags:
   - infrastructure_as_code
   - provider-docs
-depends_on: []
+depends_on:
+  - go
+  - github
 ---
 
 # Terraform Provider Docs

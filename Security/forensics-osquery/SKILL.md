@@ -37,7 +37,12 @@ references:
   - https://github.com/osquery/osquery
   - https://osquery.io/
   - https://osquery.readthedocs.io/
-depends_on: []
+depends_on:
+  - pm
+  - git
+  - python
+  - commands
+  - monitoring
 ---
 
 # osquery Forensics & [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response

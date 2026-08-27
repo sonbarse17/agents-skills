@@ -31,7 +31,12 @@ references:
   - https://github.com/hadolint/hadolint
   - https://www.cisecurity.org/benchmark/docker
   - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - customize
+  - commands
+  - monitoring
 ---
 
 # Dockerfile Security Linting with Hadolint

@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - database-rds-devops
-depends_on: []
+depends_on:
+  - accessibility
+  - postgresql
+  - mysql
+  - autoscaling
+  - runbooks
 ---
 
 ## MCP Server Integration

@@ -13,7 +13,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - k8s-review
-depends_on: []
+depends_on:
+  - security-review
+  - rbac
+  - release-readiness
+  - terraform-review
+  - observability
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Review

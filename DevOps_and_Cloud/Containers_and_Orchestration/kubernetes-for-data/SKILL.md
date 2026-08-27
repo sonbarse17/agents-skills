@@ -21,7 +21,12 @@ tags:
   - kubernetes
   - data
   - phase-11
-depends_on: []
+depends_on:
+  - git
+  - python
+  - monitoring
+  - capacity
+  - openshift
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) for Data Agent

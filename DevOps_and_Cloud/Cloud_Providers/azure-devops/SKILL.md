@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-devops
-depends_on: []
+depends_on:
+  - go
+  - terraform-azure
+  - kubernetes
+  - docker
+  - azure-aks
 ---
 
 # Azure DevOps Pipelines

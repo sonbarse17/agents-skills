@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-obs
-depends_on: []
+depends_on:
+  - apis
+  - go
+  - commands
+  - opentelemetry
+  - observability
 ---
 
 # LLM and Agentic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

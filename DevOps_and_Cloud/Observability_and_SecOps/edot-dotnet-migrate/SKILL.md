@@ -10,7 +10,8 @@ metadata:
 tags:
   - observability_and_secops
   - edot-dotnet-migrate
-depends_on: []
+depends_on:
+  - opentelemetry
 ---
 
 # EDOT .NET Migration

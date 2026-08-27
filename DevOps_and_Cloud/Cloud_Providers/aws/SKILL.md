@@ -23,7 +23,12 @@ tags:
   - cloud
   - infrastructure
   - phase-5
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - typescript
+  - go
+  - commands
 ---
 
 # AWS

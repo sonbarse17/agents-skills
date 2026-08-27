@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - user-management
-depends_on: []
+depends_on:
+  - systemd-services
+  - ssh-configuration
+  - linux-administration
+  - postgresql
+  - performance-tuning
 ---
 
 # User Management

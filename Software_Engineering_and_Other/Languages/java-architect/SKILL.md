@@ -20,7 +20,11 @@ metadata:
 tags:
   - languages
   - java-architect
-depends_on: []
+depends_on:
+  - microservices
+  - apis
+  - observability
+  - github
 ---
 
 # Java Architect

@@ -7,7 +7,12 @@ description: Master systematic debugging techniques, profiling tools, and root
 tags:
   - observability_and_secops
   - debugging-strategies
-depends_on: []
+depends_on:
+  - jest
+  - vscode
+  - git
+  - python
+  - typescript
 ---
 
 # Debugging Strategies

@@ -6,7 +6,8 @@ description: Optimize Apache Spark jobs with partitioning, caching, shuffle
 tags:
   - data_engineering
   - spark-optimization
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Apache Spark Optimization

@@ -9,7 +9,12 @@ metadata:
 tags:
   - backend
   - postgresql
-depends_on: []
+depends_on:
+  - planetscale
+  - database-backups
+  - mysql
+  - commands
+  - monitoring
 ---
 
 # PostgreSQL

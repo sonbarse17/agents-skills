@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - investigation-cost-guardrail
-depends_on: []
+depends_on:
+  - scan
+  - commands
+  - incident
+  - datadog
+  - kubectl
 ---
 
 # Investigation Cost Guardrail Skill

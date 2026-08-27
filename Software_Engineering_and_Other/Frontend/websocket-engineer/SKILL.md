@@ -19,7 +19,10 @@ metadata:
 tags:
   - frontend
   - websocket-engineer
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - autoscaling
+  - github
 ---
 
 # WebSocket Engineer

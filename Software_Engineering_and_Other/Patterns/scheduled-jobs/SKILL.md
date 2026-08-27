@@ -12,7 +12,11 @@ license: MIT
 tags:
   - patterns
   - scheduled-jobs
-depends_on: []
+depends_on:
+  - scripting-automation
+  - monitoring
+  - alerting
+  - kubernetes
 ---
 
 # Scheduled Jobs

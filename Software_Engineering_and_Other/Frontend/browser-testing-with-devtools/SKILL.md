@@ -8,7 +8,10 @@ description: Tests in real browsers via Chrome DevTools MCP. Use when building
 tags:
   - frontend
   - browser-testing-with-devtools
-depends_on: []
+depends_on:
+  - accessibility
+  - profiling
+  - github
 ---
 
 # Browser Testing with DevTools

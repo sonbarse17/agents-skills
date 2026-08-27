@@ -16,7 +16,12 @@ tags:
   - management
   - team
   - phase-8
-depends_on: []
+depends_on:
+  - pm
+  - qc
+  - git
+  - eslint
+  - code-review
 ---
 
 # Team Rules

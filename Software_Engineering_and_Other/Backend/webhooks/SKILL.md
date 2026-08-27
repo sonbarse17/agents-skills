@@ -21,7 +21,10 @@ tags:
   - webhooks
   - events
   - integration
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - typescript
+  - monitoring
 ---
 
 # Backend Webhooks

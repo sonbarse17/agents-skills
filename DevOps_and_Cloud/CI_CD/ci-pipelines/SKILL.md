@@ -12,7 +12,12 @@ license: MIT
 tags:
   - ci_cd
   - ci-pipelines
-depends_on: []
+depends_on:
+  - go
+  - github
+  - github-actions
+  - deploy
+  - continuous-delivery
 ---
 
 # CI Pipelines

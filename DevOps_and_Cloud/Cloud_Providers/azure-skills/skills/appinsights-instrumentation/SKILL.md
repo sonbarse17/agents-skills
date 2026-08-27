@@ -12,7 +12,12 @@ metadata:
 tags:
   - skills
   - appinsights-instrumentation
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - opentelemetry
+  - observability
+  - azure-prepare
 ---
 
 # AppInsights Instrumentation Guide

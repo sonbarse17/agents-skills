@@ -18,7 +18,12 @@ tags:
   - enterprise
   - integration
   - phase-8
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - apis
+  - api-gateway
+  - go
 ---
 
 # Integration Patterns Agent

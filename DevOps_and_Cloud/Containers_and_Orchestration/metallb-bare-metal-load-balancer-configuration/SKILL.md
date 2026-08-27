@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - metallb-bare-metal-load-balancer-configuration
-depends_on: []
+depends_on:
+  - metallb-configuration-validation
+  - datacenter
+  - ingress-nginx-configuration
+  - kubernetes
+  - kubectl
 ---
 
 # MetalLB [Bare-Metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) Load Balancer Configuration

@@ -18,7 +18,12 @@ tags:
   - language
   - build
   - packaging
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - git
+  - postgresql
+  - apis
+  - monorepo
 ---
 
 # Python

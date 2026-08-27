@@ -23,7 +23,11 @@ metadata:
 tags:
   - game_development
   - game-developer
-depends_on: []
+depends_on:
+  - unreal
+  - unity
+  - profiling
+  - github
 ---
 
 # Game Developer

@@ -16,7 +16,9 @@ tags:
   - testing
   - playwright
   - e2e
-depends_on: []
+depends_on:
+  - apis
+  - chaos-engineering
 ---
 
 # Quality E2E Testing

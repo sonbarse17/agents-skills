@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - cloudflare-r2
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
+  - cdn
+  - multi-cloud
 ---
 
 # Cloudflare R2

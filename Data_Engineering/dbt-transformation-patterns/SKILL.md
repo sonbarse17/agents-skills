@@ -7,7 +7,8 @@ description: Master dbt (data build tool) for analytics engineering with model
 tags:
   - data_engineering
   - dbt-transformation-patterns
-depends_on: []
+depends_on:
+  - git
 ---
 
 # dbt Transformation Patterns

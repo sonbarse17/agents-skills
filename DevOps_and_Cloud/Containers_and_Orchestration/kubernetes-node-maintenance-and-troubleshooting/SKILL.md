@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-node-maintenance-and-troubleshooting
-depends_on: []
+depends_on:
+  - rbac
+  - chaos-engineering-and-resilience-testing
+  - incident
+  - chaos-engineering
+  - capacity
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Node Maintenance and Troubleshooting

@@ -7,7 +7,8 @@ description: Use when writing, reviewing, or refactoring code in any programming
 tags:
   - patterns
   - code-quality
-depends_on: []
+depends_on:
+  - cost
 ---
 
 # Code Quality

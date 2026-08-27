@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for rag-patterns. Use
 tags:
   - infrastructure
   - rag-patterns
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

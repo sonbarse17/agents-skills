@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - service-quota-check
-depends_on: []
+depends_on:
+  - autoscaling
+  - apis
+  - go
+  - cloudformation
+  - monitoring
 ---
 
 # Service Quota Check

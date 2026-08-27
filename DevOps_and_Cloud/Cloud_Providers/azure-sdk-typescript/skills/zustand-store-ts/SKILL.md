@@ -11,7 +11,8 @@ metadata:
 tags:
   - skills
   - zustand-store-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Zustand Store

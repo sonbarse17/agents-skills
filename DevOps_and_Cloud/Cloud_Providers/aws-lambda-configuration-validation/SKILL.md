@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-lambda-configuration-validation
-depends_on: []
+depends_on:
+  - microservices
+  - apis
+  - infrastructure-as-code
+  - cloudformation
+  - incident
 ---
 
 # AWS Lambda Configuration Validation

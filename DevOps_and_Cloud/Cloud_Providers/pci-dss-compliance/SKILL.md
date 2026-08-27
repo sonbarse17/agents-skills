@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - pci-dss-compliance
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - monitoring
+  - incident
+  - alerting
 ---
 
 # PCI DSS Compliance

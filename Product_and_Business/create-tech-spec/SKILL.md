@@ -21,7 +21,12 @@ tags:
   - phase-1
   - technical
   - specification
-depends_on: []
+depends_on:
+  - microservices
+  - vault
+  - Rate Limiting
+  - accessibility
+  - apis
 ---
 
 # Create Tech Spec

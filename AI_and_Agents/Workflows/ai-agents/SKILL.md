@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for ai-agents. Use this
 tags:
   - workflows
   - ai-agents
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - cloudflare-workers
-depends_on: []
+depends_on:
+  - zero-trust
+  - microservices
+  - Rate Limiting
+  - apis
+  - typescript
 ---
 
 # Cloudflare Workers

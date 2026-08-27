@@ -19,7 +19,12 @@ tags:
   - security
   - supply-chain
   - phase-10
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - vault
+  - Rate Limiting
+  - dependency-management
 ---
 
 # Security SBOM

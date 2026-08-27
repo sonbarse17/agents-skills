@@ -7,7 +7,10 @@ description: Test Temporal workflows with pytest, time-skipping, and mocking
 tags:
   - patterns
   - temporal-python-testing
-depends_on: []
+depends_on:
+  - python
+  - docker
+  - github
 ---
 
 # Temporal [Python](../../Languages/python/SKILL.md) Testing Strategies

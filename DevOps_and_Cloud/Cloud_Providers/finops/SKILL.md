@@ -18,7 +18,12 @@ tags:
   - finops
   - cost
   - phase-7
-depends_on: []
+depends_on:
+  - python
+  - capacity
+  - serverless
+  - kubernetes
+  - deploy
 ---
 
 # devops-finops

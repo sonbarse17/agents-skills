@@ -10,7 +10,9 @@ metadata:
 tags:
   - observability_and_secops
   - edot-python-migrate
-depends_on: []
+depends_on:
+  - python
+  - opentelemetry
 ---
 
 # EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Migration

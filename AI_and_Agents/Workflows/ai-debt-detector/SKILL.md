@@ -8,7 +8,10 @@ description: Use after generating code, after accepting AI suggestions, or when
 tags:
   - workflows
   - ai-debt-detector
-depends_on: []
+depends_on:
+  - scan
+  - apis
+  - audit
 ---
 
 # AI Debt Detector

@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - prometheus-and-grafana-monitoring-stack
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - git
+  - autoscaling
+  - runbooks
 ---
 
 # Prometheus and Grafana [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Stack

@@ -23,7 +23,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-kubernetes-deployment-on-oke-oci-from-scratch
-depends_on: []
+depends_on:
+  - rbac
+  - autoscaling
+  - ingress-nginx-configuration
+  - go
+  - runbook
 ---
 
 # Complete [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment on OKE (OCI) From Scratch

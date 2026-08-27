@@ -37,7 +37,12 @@ references:
   - https://docs.projectdiscovery.io/tools/nuclei/overview
   - https://github.com/projectdiscovery/nuclei
   - https://github.com/projectdiscovery/nuclei-templates
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - apis
+  - go
+  - monitoring
 ---
 
 # DAST with Nuclei

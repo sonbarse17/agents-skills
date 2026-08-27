@@ -15,7 +15,12 @@ metadata:
 tags:
   - deploy-model
   - capacity
-depends_on: []
+depends_on:
+  - customize
+  - commands
+  - deploy
+  - deploy-model
+  - preset
 ---
 
 # [Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) Discovery

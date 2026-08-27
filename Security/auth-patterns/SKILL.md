@@ -23,7 +23,12 @@ tags:
   - auth
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - python
+  - typescript
 ---
 
 # Backend Auth Patterns

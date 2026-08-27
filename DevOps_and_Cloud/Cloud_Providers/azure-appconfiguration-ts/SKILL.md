@@ -12,7 +12,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-appconfiguration-ts
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - typescript
 ---
 
 # Azure App Configuration SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

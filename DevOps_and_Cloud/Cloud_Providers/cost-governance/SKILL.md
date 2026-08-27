@@ -18,7 +18,12 @@ tags:
   - enterprise
   - cost
   - phase-8
-depends_on: []
+depends_on:
+  - policy-as-code
+  - enterprise-multi-tenant
+  - python
+  - apis
+  - observability
 ---
 
 # Cost Governance Agent

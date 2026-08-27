@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for model-training. Use
 tags:
   - models_and_finetuning
   - model-training
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

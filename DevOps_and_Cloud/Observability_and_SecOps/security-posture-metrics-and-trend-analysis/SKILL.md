@@ -19,7 +19,12 @@ metadata:
 tags:
   - observability_and_secops
   - security-posture-metrics-and-trend-analysis
-depends_on: []
+depends_on:
+  - security-finding-backlog-triage
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - critical-vulnerability-emergency-response
 ---
 
 # Security Posture Metrics and Trend Analysis

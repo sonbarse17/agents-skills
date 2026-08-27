@@ -20,7 +20,12 @@ metadata:
 tags:
   - ci_cd
   - complete-idp-deployment-on-k3s-from-scratch
-depends_on: []
+depends_on:
+  - service-scorecards-and-maturity-model-design
+  - platform-self-service-api-and-workflow-design
+  - platform-engineering-team-topology-and-operating-model
+  - golden-path-template-design-for-developer-platforms
+  - change-management
 ---
 
 # Complete IDP Deployment on K3s from Scratch

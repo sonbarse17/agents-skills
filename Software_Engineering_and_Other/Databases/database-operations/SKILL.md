@@ -12,7 +12,12 @@ license: MIT
 tags:
   - databases
   - database-operations
-depends_on: []
+depends_on:
+  - data-migration
+  - runbook
+  - incident
+  - capacity
+  - deploy
 ---
 
 # Database Operations

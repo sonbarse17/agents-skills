@@ -20,7 +20,12 @@ tags:
   - logging
   - phase-6
   - universal
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - python
+  - typescript
+  - profiling
 ---
 
 # Backend Structured Logging

@@ -11,7 +11,8 @@ metadata:
 tags:
   - backend
   - fastapi-router-py
-depends_on: []
+depends_on:
+  - python
 ---
 
 # FastAPI Router

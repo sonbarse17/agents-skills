@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - nats-and-pulsar-lightweight-messaging-configuration
-depends_on: []
+depends_on:
+  - rabbitmq-queue-and-dead-letter-troubleshooting
+  - rabbitmq-configuration-validation
+  - kafka-schema-registry-and-compatibility-management
+  - python
+  - rabbitmq-configuration
 ---
 
 # NATS and Pulsar Lightweight Messaging Configuration

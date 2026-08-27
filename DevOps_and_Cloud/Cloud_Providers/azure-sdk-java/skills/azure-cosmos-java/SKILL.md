@@ -14,7 +14,8 @@ metadata:
 tags:
   - skills
   - azure-cosmos-java
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Azure Cosmos DB SDK for Java

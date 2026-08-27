@@ -18,7 +18,12 @@ metadata:
 tags:
   - testing
   - testcontainers-integration-testing-configuration
-depends_on: []
+depends_on:
+  - developer-experience
+  - pact-contract-testing-configuration
+  - python
+  - postgresql
+  - makefile-authoring-and-validation
 ---
 
 # Testcontainers Integration Testing Configuration

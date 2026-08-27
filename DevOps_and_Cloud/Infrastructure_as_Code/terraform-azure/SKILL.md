@@ -9,7 +9,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-azure
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - kubectl
+  - azure-aks
 ---
 
 # Terraform Azure

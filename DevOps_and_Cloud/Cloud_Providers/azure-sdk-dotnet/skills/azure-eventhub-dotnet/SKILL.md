@@ -15,7 +15,9 @@ metadata:
 tags:
   - skills
   - azure-eventhub-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - go
 ---
 
 # Azure.Messaging.EventHubs (.NET)

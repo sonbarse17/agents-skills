@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for model-quantization.
 tags:
   - models_and_finetuning
   - model-quantization
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Model Quantization Mechanics: Precision Reduction and Weight Formatting
 

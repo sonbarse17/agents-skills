@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - ssh-configuration
-depends_on: []
+depends_on:
+  - user-management
+  - systemd-services
+  - linux-administration
+  - git
+  - postgresql
 ---
 
 # SSH Configuration

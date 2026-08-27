@@ -20,7 +20,10 @@ acknowledgments: >
 tags:
   - frontend
   - frontend-design-review
-depends_on: []
+depends_on:
+  - accessibility
+  - github
+  - commit
 ---
 
 # Frontend Design Review

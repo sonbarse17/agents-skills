@@ -18,7 +18,12 @@ metadata:
 tags:
   - frontend
   - chaos-engineering-and-resilience-testing
-depends_on: []
+depends_on:
+  - change-management
+  - slo-sli-and-error-budget-design
+  - incident-response-and-on-call-management
+  - environment-promotion-strategy
+  - blameless-postmortem-and-root-cause-analysis
 ---
 
 # Chaos Engineering and Resilience Testing

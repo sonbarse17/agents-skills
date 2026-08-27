@@ -13,7 +13,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-compute-batch-java
-depends_on: []
+depends_on:
+  - github
+  - cost
+  - azure-compute
 ---
 
 # Azure Batch SDK for Java

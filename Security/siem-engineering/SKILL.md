@@ -17,7 +17,12 @@ tags:
   - security
   - siem
   - phase-8
-depends_on: []
+depends_on:
+  - soc-operations
+  - scan
+  - git
+  - postgresql
+  - mysql
 ---
 
 # SIEM Engineering

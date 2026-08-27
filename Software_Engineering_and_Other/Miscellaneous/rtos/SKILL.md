@@ -4,7 +4,9 @@ description: RTOS Internals
 tags:
   - miscellaneous
   - rtos
-depends_on: []
+depends_on:
+  - mermaid
+  - internals
 ---
 # Real-Time Operating Systems (RTOS) Mechanics
 

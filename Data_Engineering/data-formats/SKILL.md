@@ -25,7 +25,12 @@ tags:
   - arrow
   - columnar
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-streaming
+  - data-data-lakehouse
+  - python
+  - data-data-lake
 ---
 
 # Data Formats

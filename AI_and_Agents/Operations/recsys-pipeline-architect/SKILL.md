@@ -9,7 +9,12 @@ description: Design composable recommendation, ranking, and feed pipelines using
 tags:
   - operations
   - recsys-pipeline-architect
-depends_on: []
+depends_on:
+  - Recommendation Systems
+  - python
+  - typescript
+  - go
+  - github
 ---
 
 # Recsys Pipeline Architect

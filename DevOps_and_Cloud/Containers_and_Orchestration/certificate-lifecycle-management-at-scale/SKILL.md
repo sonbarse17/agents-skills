@@ -21,7 +21,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - certificate-lifecycle-management-at-scale
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - change-management
+  - ansible
+  - pagerduty-and-opsgenie-oncall-configuration
 ---
 
 # Certificate Lifecycle Management at Scale

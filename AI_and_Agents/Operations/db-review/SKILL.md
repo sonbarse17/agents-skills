@@ -16,7 +16,12 @@ metadata:
 tags:
   - operations
   - db-review
-depends_on: []
+depends_on:
+  - security-review
+  - scan
+  - release-readiness
+  - postgresql
+  - mysql
 ---
 
 # Database Review

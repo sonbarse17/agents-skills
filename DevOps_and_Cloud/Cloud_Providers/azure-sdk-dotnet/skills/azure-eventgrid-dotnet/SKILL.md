@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-eventgrid-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - github
 ---
 
 # Azure.Messaging.EventGrid (.NET)

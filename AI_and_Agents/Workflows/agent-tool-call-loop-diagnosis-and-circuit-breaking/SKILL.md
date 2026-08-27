@@ -16,7 +16,12 @@ metadata:
 tags:
   - workflows
   - agent-tool-call-loop-diagnosis-and-circuit-breaking
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - incident
+  - alerting
+  - cost
 ---
 
 # Agent Tool Call Loop Diagnosis and Circuit Breaking

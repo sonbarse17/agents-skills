@@ -5,7 +5,8 @@ description: Use when preparing the narrative, sources, and design context for a
 tags:
   - skills
   - pptx-deck-context
-depends_on: []
+depends_on:
+  - prepare
 ---
 
 # PPTX Deck Context

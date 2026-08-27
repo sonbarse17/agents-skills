@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - semantic-versioning
-depends_on: []
+depends_on:
+  - git
+  - python
+  - github
+  - github-actions
+  - git-workflow
 ---
 
 # Semantic Versioning

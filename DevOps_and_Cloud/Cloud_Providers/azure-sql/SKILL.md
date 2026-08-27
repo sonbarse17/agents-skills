@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-sql
-depends_on: []
+depends_on:
+  - vault
+  - terraform-azure
+  - capacity
+  - serverless
+  - deploy
 ---
 
 # Azure SQL

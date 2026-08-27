@@ -13,7 +13,12 @@ license: MIT
 tags:
   - ci_cd
   - progressive-delivery
-depends_on: []
+depends_on:
+  - go
+  - slo-definition
+  - monitoring
+  - metrics-and-monitoring
+  - incident-response
 ---
 
 # Progressive Delivery

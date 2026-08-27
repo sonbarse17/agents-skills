@@ -18,7 +18,12 @@ tags:
   - enterprise
   - identity
   - phase-8
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - python
+  - firebase
+  - monitoring
 ---
 
 # Identity Provider Agent

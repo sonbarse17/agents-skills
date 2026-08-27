@@ -27,7 +27,12 @@ tags:
   - cloud-architecture
   - hcp
   - phase-4
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - microservices
+  - vault
+  - Rate Limiting
 ---
 
 # Hybrid Cloud

@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - vpn-setup
-depends_on: []
+depends_on:
+  - zero-trust
+  - ssl-tls-management
+  - commands
+  - monitoring
+  - firewall-config
 ---
 
 # VPN Setup

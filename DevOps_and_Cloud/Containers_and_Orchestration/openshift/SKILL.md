@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - openshift
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - postgresql
+  - monorepo
+  - commands
 ---
 
 # OpenShift

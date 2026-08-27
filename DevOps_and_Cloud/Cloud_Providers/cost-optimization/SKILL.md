@@ -13,7 +13,11 @@ license: MIT
 tags:
   - cloud_providers
   - cost-optimization
-depends_on: []
+depends_on:
+  - commit
+  - rightsizing
+  - resource-tagging
+  - cost
 ---
 
 # Cost Optimization

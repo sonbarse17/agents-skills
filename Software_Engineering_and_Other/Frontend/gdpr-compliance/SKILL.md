@@ -10,7 +10,12 @@ metadata:
 tags:
   - frontend
   - gdpr-compliance
-depends_on: []
+depends_on:
+  - python
+  - profiling
+  - monitoring
+  - incident
+  - capacity
 ---
 
 # GDPR Compliance

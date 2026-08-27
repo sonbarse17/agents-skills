@@ -11,7 +11,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - pulumi
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
+  - commands
+  - ansible
 ---
 
 # Pulumi

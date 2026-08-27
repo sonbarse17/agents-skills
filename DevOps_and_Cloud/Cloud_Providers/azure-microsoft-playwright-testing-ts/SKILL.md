@@ -12,7 +12,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-microsoft-playwright-testing-ts
-depends_on: []
+depends_on:
+  - typescript
+  - github
 ---
 
 # Azure Playwright Workspaces SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

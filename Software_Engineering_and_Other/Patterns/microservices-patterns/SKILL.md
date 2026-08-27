@@ -6,7 +6,9 @@ description: Design microservices architectures with service boundaries,
 tags:
   - patterns
   - microservices-patterns
-depends_on: []
+depends_on:
+  - microservices
+  - apis
 ---
 
 # [Microservices](../microservices/SKILL.md) Patterns

@@ -9,7 +9,12 @@ metadata:
 tags:
   - observability_and_secops
   - manage-slos
-depends_on: []
+depends_on:
+  - incident-management
+  - go
+  - observability
+  - incident
+  - kql
 ---
 
 # Service-Level Objectives (SLOs)

@@ -11,7 +11,12 @@ metadata:
 tags:
   - skills
   - wiki-architect
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - git
+  - python
+  - typescript
 ---
 
 # Wiki Architect

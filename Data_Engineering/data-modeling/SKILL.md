@@ -24,7 +24,12 @@ tags:
   - relational
   - graph
   - phase-7
-depends_on: []
+depends_on:
+  - data-dimensional-modeling
+  - vault
+  - change-management
+  - data-nosql-database
+  - backend-database-patterns
 ---
 
 # Data Modeling

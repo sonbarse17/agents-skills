@@ -22,7 +22,12 @@ tags:
   - database
   - graph
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - ml-feature-engineering
+  - data-modeling
+  - embeddings
 ---
 
 # Data Graph Database

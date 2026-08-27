@@ -17,7 +17,12 @@ metadata:
 tags:
   - frontend
   - makefile-authoring-and-validation
-depends_on: []
+depends_on:
+  - git
+  - shell-scripting-best-practices
+  - python
+  - go
+  - commands
 ---
 
 # Makefile Authoring and Validation

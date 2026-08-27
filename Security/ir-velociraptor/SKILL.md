@@ -31,7 +31,12 @@ references:
   - https://docs.velociraptor.app/
   - https://github.com/Velocidex/velociraptor
   - https://docs.velociraptor.app/artifact_references/
-depends_on: []
+depends_on:
+  - rbac
+  - monitoring
+  - incident
+  - github
+  - deploy
 ---
 
 # Velociraptor [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response

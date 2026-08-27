@@ -16,7 +16,12 @@ metadata:
 tags:
   - infrastructure
   - vector-database-operations-pinecone-weaviate-milvus
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - internals
+  - observability
+  - monitoring
 ---
 
 # Vector Database Operations (Pinecone, Weaviate, Milvus)

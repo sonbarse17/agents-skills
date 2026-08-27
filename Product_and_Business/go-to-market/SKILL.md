@@ -18,7 +18,12 @@ tags:
   - product
   - gtm
   - phase-8
-depends_on: []
+depends_on:
+  - product-pricing-strategy
+  - product-growth-engineering
+  - product-customer-journey
+  - vault
+  - seo
 ---
 
 # Go-to-Market Agent

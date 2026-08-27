@@ -10,7 +10,10 @@ metadata:
 tags:
   - skills
   - wiki-changelog
-depends_on: []
+depends_on:
+  - git
+  - github
+  - commit
 ---
 
 # Wiki Changelog

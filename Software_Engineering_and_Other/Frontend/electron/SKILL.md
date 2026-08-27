@@ -17,7 +17,12 @@ tags:
   - desktop
   - electron
   - cross-platform
-depends_on: []
+depends_on:
+  - vite
+  - vault
+  - Rate Limiting
+  - code-review
+  - apis
 ---
 
 # Electron

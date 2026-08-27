@@ -23,7 +23,12 @@ tags:
   - extensibility
   - modular
   - spi
-depends_on: []
+depends_on:
+  - system-design
+  - python
+  - internals
+  - apis
+  - typescript
 ---
 
 # Backend Plugin Architecture

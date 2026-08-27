@@ -5,7 +5,8 @@ description: Authoritative guide to writing custom OpenAI Triton kernels for GPU
 tags:
   - models_and_finetuning
   - triton-kernels
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Triton Kernel Optimization Mastery

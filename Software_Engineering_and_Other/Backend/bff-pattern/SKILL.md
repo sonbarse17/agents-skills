@@ -22,7 +22,12 @@ tags:
   - api-gateway
   - frontend
   - composition
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - microservices
+  - Rate Limiting
+  - apis
 ---
 
 # Backend BFF Pattern

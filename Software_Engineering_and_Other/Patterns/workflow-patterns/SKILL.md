@@ -7,7 +7,9 @@ version: 1.0.0
 tags:
   - patterns
   - workflow-patterns
-depends_on: []
+depends_on:
+  - git
+  - commit
 ---
 
 # Workflow Patterns

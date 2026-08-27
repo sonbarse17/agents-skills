@@ -20,7 +20,11 @@ tags:
   - dapp
   - wallet
   - phase-blockchain
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - typescript
+  - monitoring
+  - deploy
 ---
 
 # Blockchain Web3

@@ -20,7 +20,12 @@ metadata:
 tags:
   - ci_cd
   - operational-runbook-execution-and-escalation
-depends_on: []
+depends_on:
+  - independent-solution-design-and-technical-review
+  - incident-response-and-on-call-management
+  - blameless-postmortem-and-root-cause-analysis
+  - runbooks
+  - root-cause-analysis
 ---
 
 # Operational [Runbook](../../Observability_and_SecOps/runbook/SKILL.md) Execution and Escalation

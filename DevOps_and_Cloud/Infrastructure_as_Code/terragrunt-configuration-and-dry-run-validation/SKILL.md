@@ -18,7 +18,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - terragrunt-configuration-and-dry-run-validation
-depends_on: []
+depends_on:
+  - git
+  - autoscaling
+  - environment-promotion-strategy
+  - commands
+  - infrastructure-post-deployment-validation-and-smoke-testing
 ---
 
 # Terragrunt Configuration and Dry-Run Validation

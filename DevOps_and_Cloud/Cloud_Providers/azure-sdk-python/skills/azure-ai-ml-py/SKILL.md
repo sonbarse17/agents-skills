@@ -14,7 +14,11 @@ metadata:
 tags:
   - skills
   - azure-ai-ml-py
-depends_on: []
+depends_on:
+  - python
+  - cost
+  - azure-ai
+  - audit
 ---
 
 # Azure Machine Learning SDK v2 for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

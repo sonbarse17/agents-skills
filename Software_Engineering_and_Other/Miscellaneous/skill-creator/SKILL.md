@@ -6,7 +6,12 @@ description: Guide for creating effective skills for AI coding agents working
 tags:
   - miscellaneous
   - skill-creator
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - python
+  - pydantic-models-py
+  - fastapi-router-py
 ---
 
 # Skill Creator

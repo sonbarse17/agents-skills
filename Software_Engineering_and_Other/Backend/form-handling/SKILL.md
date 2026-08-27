@@ -20,7 +20,12 @@ tags:
 version: 2.0.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - jest
+  - vault
+  - Rate Limiting
+  - accessibility
+  - typescript
 ---
 
 # Frontend Form Handling

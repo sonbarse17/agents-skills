@@ -13,7 +13,12 @@ license: MIT
 tags:
   - observability_and_secops
   - runbooks
-depends_on: []
+depends_on:
+  - go
+  - commands
+  - runbook
+  - on-call-management
+  - incident
 ---
 
 # Runbooks

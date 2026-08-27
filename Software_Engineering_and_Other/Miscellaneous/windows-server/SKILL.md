@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - windows-server
-depends_on: []
+depends_on:
+  - user-management
+  - systemd-services
+  - ssh-configuration
+  - linux-administration
+  - performance-tuning
 ---
 
 # Windows Server Administration

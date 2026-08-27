@@ -20,7 +20,11 @@ metadata:
 tags:
   - frontend
   - react-native-expert
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - typescript
+  - github
 ---
 
 # React Native Expert

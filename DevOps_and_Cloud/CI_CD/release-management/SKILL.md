@@ -11,7 +11,12 @@ license: MIT
 tags:
   - ci_cd
   - release-management
-depends_on: []
+depends_on:
+  - git
+  - apis
+  - go
+  - incident
+  - deploy
 ---
 
 # Release Management

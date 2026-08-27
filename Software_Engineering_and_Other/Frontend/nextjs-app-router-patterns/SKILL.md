@@ -6,7 +6,9 @@ description: Master Next.js 14+ App Router with Server Components, streaming,
 tags:
   - frontend
   - nextjs-app-router-patterns
-depends_on: []
+depends_on:
+  - apis
+  - typescript
 ---
 
 # Next.js App Router Patterns

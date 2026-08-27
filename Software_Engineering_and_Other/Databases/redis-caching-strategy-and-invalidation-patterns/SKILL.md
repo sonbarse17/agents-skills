@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - redis-caching-strategy-and-invalidation-patterns
-depends_on: []
+depends_on:
+  - python
+  - redis-operations-and-cluster-management
+  - redis-configuration-validation
+  - postgresql
+  - mongodb
 ---
 
 # Redis Caching Strategy and Invalidation Patterns

@@ -14,7 +14,8 @@ metadata:
 tags:
   - product_and_business
   - social-publishing
-depends_on: []
+depends_on:
+  - seo
 ---
 
 # Social Publishing

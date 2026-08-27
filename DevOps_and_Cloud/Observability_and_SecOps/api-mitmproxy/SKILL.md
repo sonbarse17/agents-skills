@@ -33,7 +33,12 @@ dependencies:
 references:
   - https://mitmproxy.org/
   - https://docs.mitmproxy.org/
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - Rate Limiting
+  - python
+  - apis
 ---
 
 # mitmproxy API Security Testing

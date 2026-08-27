@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-cosmos-db-py
-depends_on: []
+depends_on:
+  - rbac
+  - python
+  - audit
 ---
 
 # Cosmos DB Service Implementation

@@ -6,7 +6,10 @@ description: Master REST and GraphQL API design principles to build intuitive,
 tags:
   - backend
   - api-design-principles
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - apis
+  - monitoring
 ---
 
 # API Design Principles

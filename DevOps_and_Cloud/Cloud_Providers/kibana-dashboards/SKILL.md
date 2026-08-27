@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - kibana-dashboards
-depends_on: []
+depends_on:
+  - git
+  - apis
+  - gitops
+  - github
+  - dashboards
 ---
 
 # Kibana [Dashboards](../dashboards/SKILL.md) and Visualizations

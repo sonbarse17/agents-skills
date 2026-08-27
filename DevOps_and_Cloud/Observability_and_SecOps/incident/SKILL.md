@@ -15,7 +15,12 @@ metadata:
 tags:
   - observability_and_secops
   - incident
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - terraform-review
+  - runbook
+  - observability
 ---
 
 # Incident

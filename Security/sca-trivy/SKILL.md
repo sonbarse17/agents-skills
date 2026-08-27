@@ -38,7 +38,12 @@ references:
   - https://owasp.org/www-project-dependency-check/
   - https://nvd.nist.gov/
   - https://www.cisa.gov/sbom
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - go
+  - incident
+  - datadog
 ---
 
 # Software Composition Analysis with Trivy

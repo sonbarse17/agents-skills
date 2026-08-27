@@ -5,7 +5,9 @@ description: First principles of tool/environment grounding, structured outputs,
 tags:
   - ai-agents
   - tool-calling-principles
-depends_on: []
+depends_on:
+  - mermaid
+  - commit
 ---
 
 # Tool/Environment Grounding: The Ontology of Action

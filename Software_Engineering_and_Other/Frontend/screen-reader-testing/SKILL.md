@@ -6,7 +6,12 @@ description: Test web applications with screen readers including VoiceOver,
 tags:
   - frontend
   - screen-reader-testing
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - accessibility
+  - go
+  - commands
 ---
 
 # Screen Reader Testing

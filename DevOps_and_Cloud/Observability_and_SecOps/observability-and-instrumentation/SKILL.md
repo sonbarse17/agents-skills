@@ -8,7 +8,12 @@ description: Instruments code so production behavior is visible and diagnosable.
 tags:
   - observability_and_secops
   - observability-and-instrumentation
-depends_on: []
+depends_on:
+  - security-and-hardening
+  - shipping-and-launch
+  - debugging-and-error-recovery
+  - performance-optimization
+  - typescript
 ---
 
 # [Observability](../observability/SKILL.md) and Instrumentation

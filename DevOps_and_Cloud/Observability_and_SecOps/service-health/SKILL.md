@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - service-health
-depends_on: []
+depends_on:
+  - apis
+  - api-gateway
+  - opentelemetry
+  - observability
+  - incident
 ---
 
 # APM Service Health

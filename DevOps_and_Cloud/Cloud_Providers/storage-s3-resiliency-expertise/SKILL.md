@@ -27,7 +27,10 @@ metadata:
 tags:
   - cloud_providers
   - storage-s3-resiliency-expertise
-depends_on: []
+depends_on:
+  - cost
+  - aws
+  - audit
 ---
 
 # S3 Resiliency Review

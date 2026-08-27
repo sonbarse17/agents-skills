@@ -16,7 +16,12 @@ tags:
   - desktop
   - swiftui
   - macos
-depends_on: []
+depends_on:
+  - ios
+  - desktop-appkit
+  - vault
+  - Rate Limiting
+  - accessibility
 ---
 
 # SwiftUI

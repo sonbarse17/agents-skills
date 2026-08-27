@@ -9,7 +9,9 @@ version: 1.0.0
 tags:
   - skills
   - team-composition-analysis
-depends_on: []
+depends_on:
+  - pm
+  - cost
 ---
 
 # Team Composition Analysis

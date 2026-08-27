@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-iam
-depends_on: []
+depends_on:
+  - access-review
+  - terraform-aws
+  - github
+  - deploy
+  - aws-lambda
 ---
 
 # AWS IAM

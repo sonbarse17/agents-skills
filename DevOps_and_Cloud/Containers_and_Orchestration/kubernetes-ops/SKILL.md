@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-ops
-depends_on: []
+depends_on:
+  - rbac
+  - postgresql
+  - autoscaling
+  - commands
+  - kubernetes-hardening
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operations

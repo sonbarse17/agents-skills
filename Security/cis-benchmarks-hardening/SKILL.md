@@ -20,7 +20,12 @@ metadata:
 tags:
   - security
   - cis-benchmarks-hardening
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code-guardrails
+  - policy-as-code
+  - devsecops
+  - security-compliance-mapping-soc2-iso-pci-nist
 ---
 
 # CIS Benchmarks Hardening

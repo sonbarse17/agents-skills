@@ -20,7 +20,12 @@ metadata:
 tags:
   - backend
   - spring-boot-engineer
-depends_on: []
+depends_on:
+  - microservices
+  - internals
+  - apis
+  - observability
+  - github
 ---
 
 # Spring Boot Engineer

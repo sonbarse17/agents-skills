@@ -21,7 +21,9 @@ tags:
   - math
   - foundations
   - phase-11
-depends_on: []
+depends_on:
+  - embeddings
+  - python
 ---
 
 # ML/DL Mathematical Foundations

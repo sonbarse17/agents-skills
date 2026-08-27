@@ -7,7 +7,12 @@ description: Convert evaluation traces and production logs into SFT examples and
 tags:
   - models_and_finetuning
   - trace-to-training-data
-depends_on: []
+depends_on:
+  - scan
+  - dataset-curation
+  - commit
+  - preference-optimization
+  - eval-harness-first
 ---
 
 # Trace To Training Data

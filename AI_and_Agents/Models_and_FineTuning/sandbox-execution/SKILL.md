@@ -27,7 +27,12 @@ tags:
   - security
   - containers
   - resource-management
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - sentry
+  - observability
+  - monitoring
 ---
 
 # Sandbox Execution

@@ -8,7 +8,12 @@ description: Implement comprehensive testing strategies using Jest, Vitest, and
 tags:
   - languages
   - javascript-testing-patterns
-depends_on: []
+depends_on:
+  - jest
+  - vite
+  - postgresql
+  - apis
+  - typescript
 ---
 
 # JavaScript Testing Patterns

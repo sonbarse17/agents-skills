@@ -11,7 +11,12 @@ metadata:
 tags:
   - ci_cd
   - git-workflow
-depends_on: []
+depends_on:
+  - prettier
+  - git
+  - eslint
+  - semantic-versioning
+  - github
 ---
 
 # Git Workflow

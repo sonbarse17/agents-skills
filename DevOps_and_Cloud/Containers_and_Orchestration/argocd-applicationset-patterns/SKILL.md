@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argocd-applicationset-patterns
-depends_on: []
+depends_on:
+  - git
+  - monorepo
+  - go
+  - environment-promotion-strategy
+  - kubernetes
 ---
 
 # Argo CD ApplicationSet Patterns

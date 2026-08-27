@@ -14,7 +14,12 @@ description: "Assess Kubernetes workloads and cluster configuration for AKS
 tags:
   - azure-kubernetes
   - azure-kubernetes-automatic-readiness
-depends_on: []
+depends_on:
+  - rbac
+  - apis
+  - go
+  - commands
+  - kustomize
 ---
 
 # AKS Automatic Readiness Assessment

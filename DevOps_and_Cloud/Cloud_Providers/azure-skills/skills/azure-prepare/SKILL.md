@@ -17,7 +17,12 @@ metadata:
 tags:
   - skills
   - azure-prepare
-depends_on: []
+depends_on:
+  - scan
+  - python-appservice-deploy
+  - python
+  - typescript
+  - go
 ---
 
 # Azure Prepare

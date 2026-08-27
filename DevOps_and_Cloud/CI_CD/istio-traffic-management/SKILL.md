@@ -6,7 +6,10 @@ description: Configure Istio traffic management including routing, load
 tags:
   - ci_cd
   - istio-traffic-management
-depends_on: []
+depends_on:
+  - load-balancing
+  - commands
+  - deploy
 ---
 
 # Istio Traffic Management

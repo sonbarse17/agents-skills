@@ -11,7 +11,8 @@ arguments:
 tags:
   - miscellaneous
   - fix-issue
-depends_on: []
+depends_on:
+  - commit
 ---
 
 ## Instructions

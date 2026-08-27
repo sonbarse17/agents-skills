@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - postgresql-configuration-validation
-depends_on: []
+depends_on:
+  - postgresql
+  - performance-tuning
+  - infrastructure-as-code
+  - ansible
+  - postgresql-operations-and-performance-tuning
 ---
 
 # [PostgreSQL](../../Backend/postgresql/SKILL.md) Configuration Validation

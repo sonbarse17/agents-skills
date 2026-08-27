@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - crossplane-kubernetes-native-provisioning
-depends_on: []
+depends_on:
+  - devsecops
+  - postgresql
+  - go
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
 ---
 
 # Crossplane: [Kubernetes](../kubernetes/SKILL.md)-Native Infrastructure Provisioning

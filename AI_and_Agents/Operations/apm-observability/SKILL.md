@@ -24,7 +24,12 @@ tags:
   - monitoring
   - apm
   - phase-5
-depends_on: []
+depends_on:
+  - rbac
+  - datacenter
+  - python
+  - go
+  - runbooks
 ---
 
 # APM and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

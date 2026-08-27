@@ -11,7 +11,12 @@ description: "Builds, tests, and deploys Microsoft 365 apps and agents for Teams
 tags:
   - skills
   - teams-app-developer
-depends_on: []
+depends_on:
+  - slack-to-teams
+  - python
+  - commands
+  - deploy
+  - scaffold
 ---
 
 # Microsoft 365 Agents Toolkit Skill

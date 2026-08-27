@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - database-connection-pooling-strategies
-depends_on: []
+depends_on:
+  - postgresql-configuration-validation
+  - mysql-mariadb-operations-and-performance-tuning
+  - mysql-mariadb-high-availability-and-replication
+  - mysql-mariadb-configuration-validation
+  - postgresql
 ---
 
 # Database Connection Pooling Strategies

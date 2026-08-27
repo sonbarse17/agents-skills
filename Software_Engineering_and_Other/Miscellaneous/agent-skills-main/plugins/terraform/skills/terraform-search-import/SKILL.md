@@ -12,7 +12,9 @@ metadata:
 tags:
   - skills
   - terraform-search-import
-depends_on: []
+depends_on:
+  - commands
+  - aws
 ---
 
 # Terraform Search and Bulk Import

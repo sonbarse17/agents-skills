@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - etcd-backup-restore-and-cluster-health
-depends_on: []
+depends_on:
+  - commands
+  - backup-and-restore
+  - observability
+  - monitoring
+  - incident
 ---
 
 # etcd Backup, Restore, and Cluster Health

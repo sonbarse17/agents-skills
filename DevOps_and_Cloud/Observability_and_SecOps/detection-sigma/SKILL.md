@@ -34,7 +34,12 @@ references:
   - https://github.com/SigmaHQ/sigma
   - https://github.com/SigmaHQ/pySigma
   - https://sigmahq.io/
-depends_on: []
+depends_on:
+  - git
+  - python
+  - commands
+  - monitoring
+  - github
 ---
 
 # Sigma Detection Engineering

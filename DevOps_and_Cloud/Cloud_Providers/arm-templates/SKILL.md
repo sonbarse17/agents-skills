@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - arm-templates
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - terraform-azure
+  - monitoring
 ---
 
 # ARM Templates & Bicep

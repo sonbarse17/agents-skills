@@ -11,7 +11,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - kubernetes-networking
-depends_on: []
+depends_on:
+  - api-gateway
+  - kubernetes-storage
+  - kubernetes-operations
+  - kubernetes
+  - kubectl
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Networking

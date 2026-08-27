@@ -14,7 +14,8 @@ metadata:
 tags:
   - skills
   - azure-servicebus-dotnet
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Azure.Messaging.ServiceBus (.NET)

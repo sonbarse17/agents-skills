@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-lambda-packaging-and-configuration
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - cloudformation
+  - incident
+  - capacity
 ---
 
 # AWS Lambda Packaging and Configuration

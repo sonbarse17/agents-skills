@@ -7,7 +7,12 @@ description: Create production-ready GitHub Actions workflows for automated
 tags:
   - ci_cd
   - github-actions-templates
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - commands
+  - kubernetes
+  - kubectl
 ---
 
 # [GitHub](../github/SKILL.md) Actions Templates

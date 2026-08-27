@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for internals. Use this
 tags:
   - backend
   - internals
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Next.js Internals: RSC, Client Boundaries, and Streaming SSR
 

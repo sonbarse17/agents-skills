@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - multi-cloud
-depends_on: []
+depends_on:
+  - terraform-modules
+  - infrastructure-as-code
+  - runbooks
+  - incident
+  - disaster-recovery
 ---
 
 # Multi-Cloud

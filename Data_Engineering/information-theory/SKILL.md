@@ -6,7 +6,8 @@ description: Deep mathematical meta-skill elucidating the theoretic
 tags:
   - data_engineering
   - information-theory
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Information Theory & Manifold Hypothesis: The Fabric of Latent Intelligence

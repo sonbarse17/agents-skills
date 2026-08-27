@@ -22,7 +22,12 @@ tags:
   - versioning
   - reproducibility
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - data-data-quality
+  - data-data-observability
+  - data-data-platform
+  - data-data-catalog
 ---
 
 # Data Data Versioning

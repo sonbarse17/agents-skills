@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-compute
-depends_on: []
+depends_on:
+  - autoscaling
+  - capacity
+  - serverless
+  - docker
+  - deploy
 ---
 
 # Azure Compute Skill

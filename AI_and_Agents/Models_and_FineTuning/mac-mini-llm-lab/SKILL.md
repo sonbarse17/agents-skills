@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - mac-mini-llm-lab
-depends_on: []
+depends_on:
+  - ssh-configuration
+  - git
+  - python
+  - monitoring
+  - docker
 ---
 
 # Mac mini LLM Lab

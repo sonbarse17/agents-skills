@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-access-request-and-iam-lifecycle-management
-depends_on: []
+depends_on:
+  - incident
+  - cost
+  - cloud-iam-hardening
+  - cloud-cost-anomaly-investigation
+  - aws-landing-zone-setup
 ---
 
 # Cloud Access Request and IAM Lifecycle Management

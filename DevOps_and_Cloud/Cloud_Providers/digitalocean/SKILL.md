@@ -21,7 +21,12 @@ tags:
   - digitalocean
   - infrastructure
   - phase-5
-depends_on: []
+depends_on:
+  - postgresql
+  - mongodb
+  - mysql
+  - commands
+  - monitoring
 ---
 
 # DigitalOcean

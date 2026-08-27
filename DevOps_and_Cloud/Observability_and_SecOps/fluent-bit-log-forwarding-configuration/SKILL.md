@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - fluent-bit-log-forwarding-configuration
-depends_on: []
+depends_on:
+  - rbac
+  - python
+  - go
+  - monitoring
+  - loki-log-aggregation-configuration
 ---
 
 # Fluent Bit Log Forwarding Configuration

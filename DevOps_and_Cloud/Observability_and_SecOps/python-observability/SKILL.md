@@ -6,7 +6,11 @@ description: Python observability patterns including structured logging,
 tags:
   - observability_and_secops
   - python-observability
-depends_on: []
+depends_on:
+  - python
+  - observability
+  - alerting
+  - dashboards
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) [Observability](../observability/SKILL.md)

@@ -15,7 +15,9 @@ metadata:
 tags:
   - cloud_providers
   - generate-security-sample-data
-depends_on: []
+depends_on:
+  - dashboards
+  - aws
 ---
 
 # Generate Security Sample Data

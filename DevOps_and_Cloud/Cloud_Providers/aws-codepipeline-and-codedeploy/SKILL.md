@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-codepipeline-and-codedeploy
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - infrastructure-as-code
+  - cloudformation
 ---
 
 # AWS CodePipeline and CodeDeploy

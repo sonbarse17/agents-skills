@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kustomize
-depends_on: []
+depends_on:
+  - git
+  - customize
+  - commands
+  - monitoring
+  - kubernetes-ops
 ---
 
 # Kustomize

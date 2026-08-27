@@ -22,7 +22,11 @@ metadata:
 tags:
   - backend
   - vue-expert
-depends_on: []
+depends_on:
+  - vite
+  - pwa
+  - typescript
+  - github
 ---
 
 # Vue Expert

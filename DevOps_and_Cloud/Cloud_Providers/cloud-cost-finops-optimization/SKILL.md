@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-cost-finops-optimization
-depends_on: []
+depends_on:
+  - go
+  - runbook
+  - monitoring
+  - incident
+  - disaster-recovery
 ---
 
 # Cloud Cost & FinOps Optimization

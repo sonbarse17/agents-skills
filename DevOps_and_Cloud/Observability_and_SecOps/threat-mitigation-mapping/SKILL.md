@@ -6,7 +6,10 @@ description: Map identified threats to appropriate security controls and
 tags:
   - observability_and_secops
   - threat-mitigation-mapping
-depends_on: []
+depends_on:
+  - monitoring
+  - incident
+  - cost
 ---
 
 # Threat Mitigation Mapping

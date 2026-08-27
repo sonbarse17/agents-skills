@@ -4,7 +4,12 @@ description: Implementation of Token Bucket and Leaky Bucket algorithms for load
 tags:
   - miscellaneous
   - rate-limiting
-depends_on: []
+depends_on:
+  - mermaid
+  - capacity
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Rate Limiting

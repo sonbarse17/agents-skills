@@ -18,7 +18,12 @@ tags:
   - backend
   - deno
   - phase-4
-depends_on: []
+depends_on:
+  - deno
+  - postgresql
+  - mongodb
+  - typescript
+  - monitoring
 ---
 
 # Oak Backend

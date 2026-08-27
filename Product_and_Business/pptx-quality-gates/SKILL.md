@@ -6,7 +6,10 @@ description: Use when validating or repairing an editable PPTX deck for
 tags:
   - product_and_business
   - pptx-quality-gates
-depends_on: []
+depends_on:
+  - accessibility
+  - pptx-reference-deck-analysis
+  - audit
 ---
 
 # PPTX Quality Gates

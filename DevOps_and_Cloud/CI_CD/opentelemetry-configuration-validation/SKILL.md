@@ -19,7 +19,12 @@ metadata:
 tags:
   - ci_cd
   - opentelemetry-configuration-validation
-depends_on: []
+depends_on:
+  - opentelemetry-instrumentation-and-collector-configuration
+  - opentelemetry
+  - loki-configuration-validation
+  - incident
+  - distributed-tracing
 ---
 
 # [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Configuration Validation

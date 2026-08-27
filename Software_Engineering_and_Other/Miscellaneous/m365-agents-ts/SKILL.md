@@ -16,7 +16,10 @@ metadata:
 tags:
   - miscellaneous
   - m365-agents-ts
-depends_on: []
+depends_on:
+  - typescript
+  - github
+  - microsoft-docs
 ---
 
 # Microsoft 365 Agents SDK ([TypeScript](../../Frontend/typescript/SKILL.md))

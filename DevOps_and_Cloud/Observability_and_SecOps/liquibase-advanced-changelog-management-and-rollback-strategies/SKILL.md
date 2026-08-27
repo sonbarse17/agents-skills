@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - liquibase-advanced-changelog-management-and-rollback-strategies
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - postgresql
+  - performance-tuning
+  - commands
 ---
 
 # Liquibase Advanced Changelog Management and Rollback Strategies

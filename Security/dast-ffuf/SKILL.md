@@ -29,7 +29,12 @@ dependencies:
     - ffuf
 references:
   - https://github.com/ffuf/ffuf
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - git
+  - go
+  - commands
+  - github
 ---
 
 # ffuf - Fast Web Fuzzer

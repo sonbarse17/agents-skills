@@ -18,7 +18,12 @@ tags:
   - changelog
   - release-notes
   - conventional-commits
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - code-review
+  - python
+  - typescript
 ---
 
 # Changelog Generator

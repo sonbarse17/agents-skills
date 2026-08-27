@@ -17,7 +17,12 @@ metadata:
 tags:
   - security
   - sast-integration
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - eslint
+  - python
+  - software-composition-analysis-sca
 ---
 
 # SAST Integration

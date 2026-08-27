@@ -10,7 +10,12 @@ description: Create structured incident response runbooks with step-by-step
 tags:
   - observability_and_secops
   - incident-runbook-templates
-depends_on: []
+depends_on:
+  - on-call-handoff-patterns
+  - commands
+  - runbooks
+  - runbook
+  - postmortem-writing
 ---
 
 # [Incident](../incident/SKILL.md) [Runbook](../runbook/SKILL.md) Templates

@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - vault-operations-and-pki-engine-configuration
-depends_on: []
+depends_on:
+  - vault-configuration-validation
+  - devsecops
+  - vault
+  - go
+  - runbook
 ---
 
 # [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Operations and PKI Engine Configuration

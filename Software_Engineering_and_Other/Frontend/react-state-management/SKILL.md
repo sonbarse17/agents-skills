@@ -6,7 +6,8 @@ description: Master modern React state management with Redux Toolkit, Zustand,
 tags:
   - frontend
   - react-state-management
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # React State Management

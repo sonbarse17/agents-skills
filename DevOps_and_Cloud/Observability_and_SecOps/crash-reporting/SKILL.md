@@ -18,7 +18,12 @@ tags:
   - mobile
   - crash-reporting
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - vault
+  - Rate Limiting
+  - firebase
 ---
 
 # Mobile Crash Reporting

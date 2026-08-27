@@ -18,7 +18,12 @@ tags:
   - storybook
   - phase-3
   - universal
-depends_on: []
+depends_on:
+  - scan
+  - pm
+  - vault
+  - Rate Limiting
+  - pwa
 ---
 
 # Frontend Storybook

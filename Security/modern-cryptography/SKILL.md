@@ -4,7 +4,10 @@ description: Modern Cryptography, ECC, ECDHE, and Post-Quantum Algorithms
 tags:
   - security
   - modern-cryptography
-depends_on: []
+depends_on:
+  - mermaid
+  - Shor's Algorithm
+  - qa
 ---
 
 # Modern Cryptography: ECC, Key Exchange, and Post-Quantum Security

@@ -21,7 +21,10 @@ metadata:
 tags:
   - languages
   - kotlin-specialist
-depends_on: []
+depends_on:
+  - android
+  - apis
+  - github
 ---
 
 # Kotlin Specialist

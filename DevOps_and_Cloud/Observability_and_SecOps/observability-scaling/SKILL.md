@@ -4,7 +4,10 @@ description: Prometheus TSDB compaction and OpenTelemetry trace context propagat
 tags:
   - observability_and_secops
   - observability-scaling
-depends_on: []
+depends_on:
+  - mermaid
+  - opentelemetry
+  - observability
 ---
 # [Observability](../observability/SKILL.md) & Scaling: Core Mechanics
 

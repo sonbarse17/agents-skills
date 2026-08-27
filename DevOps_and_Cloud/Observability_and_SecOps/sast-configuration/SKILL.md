@@ -7,7 +7,12 @@ description: Configure Static Application Security Testing (SAST) tools for
 tags:
   - observability_and_secops
   - sast-configuration
-depends_on: []
+depends_on:
+  - scan
+  - dependency-scanning
+  - python
+  - go
+  - docker
 ---
 
 # SAST Configuration

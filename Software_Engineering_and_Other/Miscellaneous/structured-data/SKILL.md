@@ -4,7 +4,8 @@ description: JSON-LD Schema markup for Products, Articles, and FAQs.
 tags:
   - miscellaneous
   - structured-data
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Structured Data

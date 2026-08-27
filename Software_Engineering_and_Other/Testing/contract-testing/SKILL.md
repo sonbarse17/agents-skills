@@ -19,7 +19,12 @@ tags:
   - quality
   - backend
   - phase-10
-depends_on: []
+depends_on:
+  - quality-e2e-testing
+  - jest
+  - microservices
+  - vault
+  - Rate Limiting
 ---
 
 # Quality Contract Testing

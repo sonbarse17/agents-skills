@@ -18,7 +18,12 @@ tags:
   - security
   - audit
   - phase-blockchain
-depends_on: []
+depends_on:
+  - vault
+  - typescript
+  - go
+  - github
+  - commit
 ---
 
 # Blockchain Testing

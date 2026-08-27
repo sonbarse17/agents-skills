@@ -5,7 +5,8 @@ description: Deep dive into NVIDIA binary machine code (SASS), analyzing clock
 tags:
   - miscellaneous
   - sass-machine-code
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # SASS Machine Code and SM Microarchitecture

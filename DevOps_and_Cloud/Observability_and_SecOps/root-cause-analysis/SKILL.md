@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - root-cause-analysis
-depends_on: []
+depends_on:
+  - git
+  - go
+  - runbook
+  - monitoring
+  - incident
 ---
 
 # Root Cause Analysis

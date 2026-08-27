@@ -7,7 +7,10 @@ description: Implement WCAG 2.2 compliant interfaces with mobile accessibility,
 tags:
   - observability_and_secops
   - accessibility-compliance
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - accessibility
 ---
 
 # Accessibility Compliance

@@ -19,7 +19,12 @@ tags:
   - nodejs
   - express
   - phase-10
-depends_on: []
+depends_on:
+  - jest
+  - Rate Limiting
+  - performance-optimization
+  - typescript
+  - observability
 ---
 
 # Node.js Express

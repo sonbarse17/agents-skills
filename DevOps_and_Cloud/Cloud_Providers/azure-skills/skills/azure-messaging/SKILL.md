@@ -20,7 +20,9 @@ metadata:
 tags:
   - skills
   - azure-messaging
-depends_on: []
+depends_on:
+  - azure-diagnostics
+  - kql
 ---
 
 # Azure Messaging SDK Troubleshooting

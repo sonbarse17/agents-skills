@@ -23,7 +23,12 @@ tags:
   - testing
   - quality
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-data-quality
+  - data-data-observability
+  - python
+  - postgresql
 ---
 
 # Data Testing

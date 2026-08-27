@@ -39,7 +39,12 @@ references:
   - https://defectdojo.github.io/django-DefectDojo/
   - https://github.com/DefectDojo/django-DefectDojo
   - https://owasp.org/www-project-defectdojo/
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - internals
+  - commands
+  - docker-compose
 ---
 
 # Vulnerability Management with DefectDojo

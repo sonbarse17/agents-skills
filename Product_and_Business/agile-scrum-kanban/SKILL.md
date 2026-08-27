@@ -15,7 +15,12 @@ tags:
   - agile
   - scrum
   - kanban
-depends_on: []
+depends_on:
+  - agile-scrum
+  - capacity
+  - deploy
+  - commit
+  - deploy-model
 ---
 # Agile Scrum Kanban Skill
 

@@ -15,7 +15,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-mgmt-apicenter-dotnet
-depends_on: []
+depends_on:
+  - apis
+  - github
+  - cost
 ---
 
 # Azure.ResourceManager.ApiCenter (.NET)

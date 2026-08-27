@@ -18,7 +18,12 @@ metadata:
 tags:
   - product_and_business
   - platform-self-service-api-and-workflow-design
-depends_on: []
+depends_on:
+  - rbac
+  - golden-path-template-design-for-developer-platforms
+  - humanitec-score-workload-specification
+  - backstage-plugin-development
+  - typescript
 ---
 
 # Platform Self-Service API and Workflow Design

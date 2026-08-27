@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - docker-compose
-depends_on: []
+depends_on:
+  - reverse-proxy
+  - postgresql
+  - commands
+  - monitoring
+  - kubernetes-ops
 ---
 
 # [Docker](../docker/SKILL.md) Compose

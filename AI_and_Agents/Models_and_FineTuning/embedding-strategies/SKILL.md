@@ -6,7 +6,9 @@ description: Select and optimize embedding models for semantic search and RAG
 tags:
   - models_and_finetuning
   - embedding-strategies
-depends_on: []
+depends_on:
+  - embeddings
+  - cost
 ---
 
 # Embedding Strategies

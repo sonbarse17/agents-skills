@@ -23,7 +23,12 @@ tags:
   - encryption
   - gdpr
   - compliance
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - postgresql
+  - typescript
+  - audit-logging
 ---
 
 # Backend Data Masking

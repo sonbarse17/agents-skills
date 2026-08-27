@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - multi-tenant-llm-hosting
-depends_on: []
+depends_on:
+  - zero-trust
+  - Rate Limiting
+  - python
+  - autoscaling
+  - runbook
 ---
 
 # Multi-Tenant LLM Hosting

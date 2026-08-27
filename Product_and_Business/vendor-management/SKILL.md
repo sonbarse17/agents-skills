@@ -9,7 +9,12 @@ metadata:
 tags:
   - product_and_business
   - vendor-management
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - incident
+  - datadog
+  - multi-tenancy
 ---
 
 # Vendor Management

@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - gpu-accelerator-infrastructure-for-ml-training
-depends_on: []
+depends_on:
+  - ray-distributed-ml-orchestration
+  - autoscaling
+  - observability
+  - monitoring
+  - capacity-planning
 ---
 
 # GPU Accelerator Infrastructure For ML Training

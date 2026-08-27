@@ -12,7 +12,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - typescript
+  - azure-search-documents-ts
+  - azure-search-documents-dotnet
 ---
 
 # Azure AI Services

@@ -6,7 +6,12 @@ description: Create production-ready FastAPI projects with async patterns,
 tags:
   - backend
   - fastapi-templates
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - postgresql
+  - mongodb
+  - apis
 ---
 
 # FastAPI Project Templates

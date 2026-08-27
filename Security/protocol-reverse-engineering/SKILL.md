@@ -7,7 +7,12 @@ description: Master network protocol reverse engineering including packet
 tags:
   - security
   - protocol-reverse-engineering
-depends_on: []
+depends_on:
+  - Structured Data
+  - python
+  - postgresql
+  - mongodb
+  - mysql
 ---
 
 # Protocol Reverse Engineering

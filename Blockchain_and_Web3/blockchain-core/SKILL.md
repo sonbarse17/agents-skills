@@ -22,7 +22,12 @@ tags:
   - protocol
   - state-machine
   - phase-blockchain
-depends_on: []
+depends_on:
+  - design-patterns
+  - accessibility
+  - typescript
+  - go
+  - monitoring
 ---
 
 # Blockchain Core

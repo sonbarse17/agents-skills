@@ -7,7 +7,11 @@ description: Guides stable API and interface design. Use when designing APIs,
 tags:
   - backend
   - api-and-interface-design
-depends_on: []
+depends_on:
+  - deprecation-and-migration
+  - apis
+  - typescript
+  - cost
 ---
 
 # API and Interface Design

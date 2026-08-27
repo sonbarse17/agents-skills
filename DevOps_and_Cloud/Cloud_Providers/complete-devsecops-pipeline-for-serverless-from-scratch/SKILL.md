@@ -19,7 +19,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-devsecops-pipeline-for-serverless-from-scratch
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - supply-chain-security-slsa-sbom
+  - scan
+  - sast-integration
+  - devsecops
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), From Scratch

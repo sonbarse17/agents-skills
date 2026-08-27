@@ -22,7 +22,12 @@ tags:
   - api-versioning
   - deprecation
   - breaking-changes
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - apis
+  - typescript
+  - observability
 ---
 
 # Backend API Versioning

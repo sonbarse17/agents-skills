@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for edge-ai. Use this
 tags:
   - models_and_finetuning
   - edge-ai
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Edge AI: TensorRT and ONNX
 

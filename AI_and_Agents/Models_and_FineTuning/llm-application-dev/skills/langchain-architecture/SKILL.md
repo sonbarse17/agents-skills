@@ -6,7 +6,12 @@ description: Design LLM applications using LangChain 1.x and LangGraph for
 tags:
   - skills
   - langchain-architecture
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - apis
+  - observability
+  - monitoring
 ---
 
 # LangChain & LangGraph Architecture

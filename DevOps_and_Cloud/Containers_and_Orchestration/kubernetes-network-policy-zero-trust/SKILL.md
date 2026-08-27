@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-network-policy-zero-trust
-depends_on: []
+depends_on:
+  - zero-trust
+  - backup-and-restore
+  - monitoring
+  - velero-backup-and-restore
+  - kubernetes
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) NetworkPolicy Zero Trust

@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - knative-configuration-validation
-depends_on: []
+depends_on:
+  - rbac
+  - autoscaling
+  - apis
+  - observability
+  - incident
 ---
 
 # Knative Configuration Validation

@@ -13,7 +13,12 @@ metadata:
 tags:
   - skills
   - azure-identity-rust
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - kubernetes
+  - github
 ---
 
 # Azure Identity library for Rust

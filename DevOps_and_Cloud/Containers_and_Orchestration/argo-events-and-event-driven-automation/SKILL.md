@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argo-events-and-event-driven-automation
-depends_on: []
+depends_on:
+  - rbac
+  - observability
+  - kubernetes
+  - kubectl
+  - gitops-workflow
 ---
 
 # Argo Events and Event-Driven Automation

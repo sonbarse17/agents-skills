@@ -5,7 +5,11 @@ description: Comprehensive guidelines and best practices for cap-theorem. Use
 tags:
   - miscellaneous
   - cap-theorem
-depends_on: []
+depends_on:
+  - mermaid
+  - Rate Limiting
+  - python
+  - commands
 ---
 # Skill
 

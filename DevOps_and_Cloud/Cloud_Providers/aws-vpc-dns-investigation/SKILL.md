@@ -22,7 +22,11 @@ metadata:
 tags:
   - cloud_providers
   - aws-vpc-dns-investigation
-depends_on: []
+depends_on:
+  - runbooks
+  - runbook
+  - aws-vpc
+  - aws
 ---
 
 # Investigate VPC DNS Resolution

@@ -20,7 +20,10 @@ metadata:
 tags:
   - backend
   - salesforce-developer
-depends_on: []
+depends_on:
+  - apis
+  - github
+  - deploy
 ---
 
 # Salesforce Developer

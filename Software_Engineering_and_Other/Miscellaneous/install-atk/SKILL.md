@@ -9,7 +9,9 @@ description: >
 tags:
   - miscellaneous
   - install-atk
-depends_on: []
+depends_on:
+  - vscode
+  - commands
 ---
 
 # Install ATK

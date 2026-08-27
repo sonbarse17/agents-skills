@@ -14,7 +14,12 @@ metadata:
 tags:
   - skills
   - azure-mgmt-apimanagement-py
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - monitoring
+  - capacity
+  - deploy
 ---
 
 # Azure API Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

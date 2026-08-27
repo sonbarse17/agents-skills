@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - cloudflare-pages
-depends_on: []
+depends_on:
+  - zero-trust
+  - vite
+  - git
+  - typescript
+  - sveltekit
 ---
 
 # Cloudflare Pages

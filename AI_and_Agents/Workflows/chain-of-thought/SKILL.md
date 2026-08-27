@@ -4,7 +4,9 @@ description: Academic breakdown of latent reasoning and token probability manipu
 tags:
   - workflows
   - chain-of-thought
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
 ---
 # Chain of Thought (CoT) Prompting Mechanics
 

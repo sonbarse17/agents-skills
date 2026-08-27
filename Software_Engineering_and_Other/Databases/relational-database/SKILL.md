@@ -23,7 +23,12 @@ tags:
   - database
   - relational
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-etl-pipeline
+  - data-data-warehouse
+  - vault
+  - python
 ---
 
 # Data Relational Database

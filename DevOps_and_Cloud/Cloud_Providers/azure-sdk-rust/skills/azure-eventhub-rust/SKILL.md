@@ -13,7 +13,10 @@ metadata:
 tags:
   - skills
   - azure-eventhub-rust
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - github
 ---
 
 # Azure Event Hubs library for Rust

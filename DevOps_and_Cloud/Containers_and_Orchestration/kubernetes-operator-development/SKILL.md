@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-operator-development
-depends_on: []
+depends_on:
+  - rbac
+  - Rate Limiting
+  - go
+  - runbook
+  - incident
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operator Development

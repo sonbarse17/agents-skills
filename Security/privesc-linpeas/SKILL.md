@@ -37,7 +37,12 @@ references:
   - https://book.hacktricks.xyz/linux-hardening/privilege-escalation
   - https://attack.mitre.org/tactics/TA0004/
   - https://attack.mitre.org/tactics/TA0007/
-depends_on: []
+depends_on:
+  - scan
+  - recon-nmap
+  - python
+  - commands
+  - monitoring
 ---
 
 # LinPEAS Linux Privilege Escalation

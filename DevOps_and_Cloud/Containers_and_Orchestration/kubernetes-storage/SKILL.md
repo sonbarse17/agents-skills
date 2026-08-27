@@ -11,7 +11,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - kubernetes-storage
-depends_on: []
+depends_on:
+  - backup-and-restore
+  - incident
+  - capacity
+  - kubernetes
+  - kubectl
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Storage

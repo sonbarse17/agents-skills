@@ -17,7 +17,12 @@ tags:
   - enterprise
   - sla
   - phase-8
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - go
+  - monitoring
+  - incident-response
 ---
 
 # SLA Management Agent

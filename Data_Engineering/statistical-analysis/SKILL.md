@@ -22,7 +22,9 @@ tags:
   - statistics
   - analysis
   - phase-7
-depends_on: []
+depends_on:
+  - pm
+  - python
 ---
 
 # Statistical Analysis

@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-secret-manager
-depends_on: []
+depends_on:
+  - hashicorp-vault
+  - vault
+  - python
+  - postgresql
+  - go
 ---
 
 # GCP Secret Manager

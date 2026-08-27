@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-gitops-argocd-deployment-on-eks-from-scratch
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - rbac
+  - devsecops
+  - git
+  - ingress-nginx-configuration
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on EKS, From Scratch

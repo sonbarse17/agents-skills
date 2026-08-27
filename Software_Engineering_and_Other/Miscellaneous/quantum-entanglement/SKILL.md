@@ -5,7 +5,8 @@ description: Advanced theoretical frameworks of quantum entanglement, Bell
 tags:
   - miscellaneous
   - quantum-entanglement
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Entanglement Protocols and Non-Locality

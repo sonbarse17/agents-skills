@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kong-configuration-validation
-depends_on: []
+depends_on:
+  - consul-configuration-validation
+  - api-gateway-rate-limiting-and-quota-management
+  - api-gateway
+  - commands
+  - incident
 ---
 
 # Kong Configuration Validation

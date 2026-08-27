@@ -5,7 +5,8 @@ description: Hardware meta-skill analyzing RDMA & RoCEv2 datapath for zero-copy
 tags:
   - miscellaneous
   - rdma-roce
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # RDMA & RoCEv2: Zero-Copy Silicon Datapaths

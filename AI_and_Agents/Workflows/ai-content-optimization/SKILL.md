@@ -5,7 +5,9 @@ description: Strategies to maintain high quality and avoid search engine
 tags:
   - workflows
   - ai-content-optimization
-depends_on: []
+depends_on:
+  - mermaid
+  - seo
 ---
 
 # AI Content Optimization

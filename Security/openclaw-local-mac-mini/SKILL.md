@@ -9,7 +9,12 @@ metadata:
 tags:
   - security
   - openclaw-local-mac-mini
-depends_on: []
+depends_on:
+  - startup-it-troubleshooting
+  - Rate Limiting
+  - git
+  - monitoring
+  - docker-compose
 ---
 
 # OpenClaw Local + Mac mini Setup

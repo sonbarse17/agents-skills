@@ -22,7 +22,12 @@ metadata:
 tags:
   - frontend
   - vue-expert-js
-depends_on: []
+depends_on:
+  - vite
+  - eslint
+  - vue-expert
+  - apis
+  - typescript
 ---
 
 # Vue Expert (JavaScript)

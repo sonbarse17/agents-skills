@@ -18,7 +18,12 @@ tags:
   - rollup
   - proof
   - phase-blockchain
-depends_on: []
+depends_on:
+  - typescript
+  - commit
+  - cost
+  - aws
+  - audit
 ---
 
 # Blockchain ZK

@@ -16,7 +16,12 @@ metadata:
 tags:
   - models_and_finetuning
   - applicationinsights-web-ts
-depends_on: []
+depends_on:
+  - vite
+  - apis
+  - typescript
+  - opentelemetry
+  - monitoring
 ---
 
 # Application Insights JavaScript SDK (Web) for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

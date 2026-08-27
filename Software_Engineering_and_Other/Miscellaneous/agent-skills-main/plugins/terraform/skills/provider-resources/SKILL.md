@@ -16,7 +16,12 @@ metadata:
 tags:
   - skills
   - provider-resources
-depends_on: []
+depends_on:
+  - run-acceptance-tests
+  - apis
+  - go
+  - provider-test-patterns
+  - provider-framework-migration
 ---
 
 # Terraform Provider Resources Implementation Guide

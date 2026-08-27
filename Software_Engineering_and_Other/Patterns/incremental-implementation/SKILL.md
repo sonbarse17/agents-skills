@@ -7,7 +7,12 @@ description: Delivers changes incrementally. Use when implementing any feature
 tags:
   - patterns
   - incremental-implementation
-depends_on: []
+depends_on:
+  - git
+  - typescript
+  - commands
+  - test-driven-development
+  - git-workflow-and-versioning
 ---
 
 # Incremental Implementation

@@ -20,7 +20,12 @@ metadata:
 tags:
   - infrastructure
   - mcp-developer
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - typescript
+  - github
+  - deploy
 ---
 
 # MCP Developer

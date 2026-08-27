@@ -7,7 +7,9 @@ description: Define and implement Service Level Indicators (SLIs) and Service
 tags:
   - observability_and_secops
   - slo-implementation
-depends_on: []
+depends_on:
+  - alerting
+  - cost
 ---
 
 # SLO Implementation

@@ -6,7 +6,12 @@ description: Automates CI/CD pipeline setup. Use when setting up or modifying
 tags:
   - ci_cd
   - ci-cd-and-automation
-depends_on: []
+depends_on:
+  - jest
+  - debugging-and-error-recovery
+  - vault
+  - prettier
+  - eslint
 ---
 
 # CI/CD and Automation

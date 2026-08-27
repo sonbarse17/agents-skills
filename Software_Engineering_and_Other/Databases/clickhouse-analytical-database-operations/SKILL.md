@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - clickhouse-analytical-database-operations
-depends_on: []
+depends_on:
+  - scan
+  - cloud-data-warehouse-operations-snowflake-bigquery-redshift
+  - timescaledb-time-series-operations-and-configuration
+  - postgresql
+  - elasticsearch-opensearch-cluster-operations
 ---
 
 # ClickHouse Analytical Database Operations

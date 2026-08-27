@@ -6,7 +6,9 @@ description: Master iOS Human Interface Guidelines and SwiftUI patterns for
 tags:
   - skills
   - mobile-ios-design
-depends_on: []
+depends_on:
+  - ios
+  - accessibility
 ---
 
 # iOS Mobile Design

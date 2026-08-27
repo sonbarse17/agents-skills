@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-manager-redis-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - capacity
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Azure.ResourceManager.Redis (.NET)

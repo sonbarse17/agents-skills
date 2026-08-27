@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for vscode. Use this
 tags:
   - miscellaneous
   - vscode
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - eslint
+  - github
+  - deploy
 ---
 # Skill
 

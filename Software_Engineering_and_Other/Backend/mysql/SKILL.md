@@ -9,7 +9,12 @@ metadata:
 tags:
   - backend
   - mysql
-depends_on: []
+depends_on:
+  - planetscale
+  - database-backups
+  - postgresql
+  - monitoring
+  - docker-compose
 ---
 
 # MySQL / MariaDB

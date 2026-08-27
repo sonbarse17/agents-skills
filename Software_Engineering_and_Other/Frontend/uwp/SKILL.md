@@ -16,7 +16,12 @@ tags:
   - desktop
   - uwp
   - windows
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - apis
+  - profiling
 ---
 
 # UWP

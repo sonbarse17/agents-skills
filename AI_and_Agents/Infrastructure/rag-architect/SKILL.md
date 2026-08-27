@@ -21,7 +21,12 @@ metadata:
 tags:
   - infrastructure
   - rag-architect
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - github
+  - deploy
+  - commit
 ---
 
 # RAG Architect

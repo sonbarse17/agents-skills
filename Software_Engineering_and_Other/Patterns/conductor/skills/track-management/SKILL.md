@@ -7,7 +7,8 @@ version: 1.0.0
 tags:
   - skills
   - track-management
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # Track Management

@@ -17,7 +17,12 @@ tags:
   - design
   - motion-design
   - phase-3
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - vault
+  - Rate Limiting
+  - accessibility
 ---
 
 # Motion Design

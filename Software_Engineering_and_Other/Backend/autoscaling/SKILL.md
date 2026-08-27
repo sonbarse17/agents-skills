@@ -11,7 +11,12 @@ license: MIT
 tags:
   - backend
   - autoscaling
-depends_on: []
+depends_on:
+  - capacity
+  - kubernetes
+  - deploy
+  - rightsizing
+  - cost
 ---
 
 # Autoscaling

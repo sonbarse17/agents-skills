@@ -6,7 +6,8 @@ description: Implement DeFi protocols with production-ready templates for
 tags:
   - frontend
   - defi-protocol-templates
-depends_on: []
+depends_on:
+  - DeFi Protocols
 ---
 
 # DeFi Protocol Templates

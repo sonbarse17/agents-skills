@@ -19,7 +19,12 @@ tags:
   - market
   - analysis
   - phase-7
-depends_on: []
+depends_on:
+  - scan
+  - go
+  - cost
+  - audit
+  - prepare
 ---
 
 # Market Analysis

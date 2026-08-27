@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - rabbitmq-queue-and-dead-letter-troubleshooting
-depends_on: []
+depends_on:
+  - rabbitmq-configuration-validation
+  - nats-and-pulsar-lightweight-messaging-configuration
+  - kafka-schema-registry-and-compatibility-management
+  - python
+  - rabbitmq-configuration
 ---
 
 # RabbitMQ Queue and Dead-Letter Troubleshooting

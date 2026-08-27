@@ -20,7 +20,9 @@ metadata:
 tags:
   - frontend
   - playwright-expert
-depends_on: []
+depends_on:
+  - typescript
+  - github
 ---
 
 # Playwright Expert

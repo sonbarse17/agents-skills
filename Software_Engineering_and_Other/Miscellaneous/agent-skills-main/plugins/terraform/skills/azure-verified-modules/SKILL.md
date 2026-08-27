@@ -8,7 +8,10 @@ metadata:
 tags:
   - skills
   - azure-verified-modules
-depends_on: []
+depends_on:
+  - git
+  - go
+  - github
 ---
 
 # Azure Verified Modules (AVM) Requirements

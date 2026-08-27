@@ -22,7 +22,12 @@ metadata:
 tags:
   - observability_and_secops
   - security-compliance-mapping-soc2-iso-pci-nist
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - supply-chain-security-slsa-sbom
+  - scan
+  - sast-integration
+  - policy-as-code-guardrails
 ---
 
 # Security Compliance Mapping: SOC 2 / ISO 27001 / PCI-DSS / NIST CSF

@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-devsecops-pipeline-for-kubernetes-from-scratch
-depends_on: []
+depends_on:
+  - security-scanning
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - policy-as-code-guardrails
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), From Scratch

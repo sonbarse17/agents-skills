@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage-queue-ts
-depends_on: []
+depends_on:
+  - Structured Data
+  - customize
+  - typescript
+  - deploy
+  - deploy-model
 ---
 
 # @azure/storage-queue ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)

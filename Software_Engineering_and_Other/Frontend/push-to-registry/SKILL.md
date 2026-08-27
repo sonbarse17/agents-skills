@@ -8,7 +8,11 @@ metadata:
 tags:
   - frontend
   - push-to-registry
-depends_on: []
+depends_on:
+  - git
+  - github
+  - commit
+  - aws
 ---
 
 # Push to HCP Packer Registry

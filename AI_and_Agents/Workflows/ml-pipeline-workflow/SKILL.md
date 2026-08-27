@@ -7,7 +7,12 @@ description: Build end-to-end MLOps pipelines from data preparation through
 tags:
   - workflows
   - ml-pipeline-workflow
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - python
+  - observability
+  - monitoring
+  - alerting
 ---
 
 # ML Pipeline Workflow

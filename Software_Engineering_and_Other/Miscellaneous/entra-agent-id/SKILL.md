@@ -18,7 +18,11 @@ description: >
 tags:
   - miscellaneous
   - entra-agent-id
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - docker
+  - microsoft-docs
 ---
 
 # Microsoft Entra Agent ID

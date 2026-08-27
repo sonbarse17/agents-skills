@@ -23,7 +23,10 @@ metadata:
 tags:
   - languages
   - rust-engineer
-depends_on: []
+depends_on:
+  - commands
+  - github
+  - cost
 ---
 
 # Rust Engineer

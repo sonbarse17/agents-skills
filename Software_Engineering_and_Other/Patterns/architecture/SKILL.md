@@ -21,7 +21,11 @@ tags:
   - frontend
   - vue
   - phase-3
-depends_on: []
+depends_on:
+  - vite
+  - apis
+  - typescript
+  - vue-nuxt
 ---
 
 # Vue Architecture

@@ -5,7 +5,9 @@ description: Comprehensive guidelines and best practices for embeddings. Use
 tags:
   - miscellaneous
   - embeddings
-depends_on: []
+depends_on:
+  - mermaid
+  - python
 ---
 # Skill
 

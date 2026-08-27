@@ -12,7 +12,11 @@ license: MIT
 tags:
   - infrastructure_as_code
   - terraform-modules
-depends_on: []
+depends_on:
+  - git
+  - internals
+  - infrastructure-testing
+  - immutable-infrastructure
 ---
 
 # Terraform Modules

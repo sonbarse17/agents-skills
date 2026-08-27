@@ -4,7 +4,10 @@ description: Shopify Storefront API and Hydrogen best practices.
 tags:
   - backend
   - headless
-depends_on: []
+depends_on:
+  - mermaid
+  - typescript
+  - deploy
 ---
 
 # Headless E-commerce (Shopify Hydrogen)

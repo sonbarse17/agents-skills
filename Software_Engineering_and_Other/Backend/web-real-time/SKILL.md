@@ -17,7 +17,12 @@ tags:
   - backend
   - web-real-time
   - phase-3
-depends_on: []
+depends_on:
+  - data-streaming
+  - typescript
+  - monitoring
+  - load-testing
+  - capacity
 ---
 
 # Web Real-Time Communication

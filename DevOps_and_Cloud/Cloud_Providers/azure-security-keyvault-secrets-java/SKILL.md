@@ -11,7 +11,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-security-keyvault-secrets-java
-depends_on: []
+depends_on:
+  - vault
 ---
 
 # Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets (Java)

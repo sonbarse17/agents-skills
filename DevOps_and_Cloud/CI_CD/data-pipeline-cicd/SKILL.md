@@ -25,7 +25,12 @@ tags:
   - dbt
   - sqlfluff
   - phase-11
-depends_on: []
+depends_on:
+  - data-etl-pipeline
+  - data-data-quality
+  - git
+  - python
+  - monitoring
 ---
 
 # Data Pipeline CI/CD

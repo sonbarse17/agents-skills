@@ -15,7 +15,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - cni-networking-calico-flannel
-depends_on: []
+depends_on:
+  - service-mesh-istio
+  - service-mesh
+  - kubernetes
+  - kubectl
+  - helm
 ---
 
 # CNI Networking: Calico vs. Flannel

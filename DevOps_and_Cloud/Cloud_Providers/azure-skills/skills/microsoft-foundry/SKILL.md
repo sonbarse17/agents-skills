@@ -21,7 +21,12 @@ metadata:
 tags:
   - skills
   - microsoft-foundry
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - customize
+  - python
+  - monitoring
 ---
 
 # Microsoft Foundry Skill

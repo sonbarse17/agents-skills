@@ -17,7 +17,12 @@ tags:
   - backend
   - messaging
   - phase-10
-depends_on: []
+depends_on:
+  - pm
+  - vault
+  - Rate Limiting
+  - python
+  - apis
 ---
 
 # SMS Messaging Skill

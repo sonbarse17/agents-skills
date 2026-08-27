@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - serverless
-depends_on: []
+depends_on:
+  - incident
+  - capacity
+  - deploy
+  - cost
+  - cost-optimization
 ---
 
 # Serverless

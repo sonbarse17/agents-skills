@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - blue-green-canary-deployments
-depends_on: []
+depends_on:
+  - environment-promotion-strategy
+  - monitoring
+  - incident
+  - capacity
+  - alerting
 ---
 
 # Blue-Green and Canary Deployments

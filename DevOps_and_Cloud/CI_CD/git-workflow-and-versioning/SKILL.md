@@ -7,7 +7,12 @@ description: Structures git workflow practices. Use when making any code change.
 tags:
   - ci_cd
   - git-workflow-and-versioning
-depends_on: []
+depends_on:
+  - shipping-and-launch
+  - deprecation-and-migration
+  - code-review-and-quality
+  - vscode
+  - prettier
 ---
 
 # Git Workflow and Versioning

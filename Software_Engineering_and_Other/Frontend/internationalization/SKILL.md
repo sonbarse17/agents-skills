@@ -22,7 +22,12 @@ tags:
   - i18n
   - internationalization
   - universal
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - accessibility
+  - typescript
+  - sveltekit
+  - monorepo
 ---
 
 # Frontend Internationalization (i18n)

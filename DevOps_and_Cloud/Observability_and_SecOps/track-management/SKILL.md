@@ -7,7 +7,8 @@ version: 1.0.0
 tags:
   - observability_and_secops
   - track-management
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # Track Management

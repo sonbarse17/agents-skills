@@ -14,7 +14,12 @@ metadata:
 tags:
   - ci_cd
   - pipeline-review
-depends_on: []
+depends_on:
+  - security-review
+  - release-readiness
+  - observability
+  - docker-review
+  - docker
 ---
 
 # Pipeline Review

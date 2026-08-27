@@ -15,7 +15,12 @@ metadata:
 tags:
   - skills
   - azure-resource-manager-durabletask-dotnet
-depends_on: []
+depends_on:
+  - capacity
+  - serverless
+  - github
+  - deploy
+  - deploy-model
 ---
 
 # Azure.ResourceManager.DurableTask (.NET)

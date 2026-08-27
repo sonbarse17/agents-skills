@@ -26,7 +26,11 @@ metadata:
 tags:
   - testing
   - test-master
-depends_on: []
+depends_on:
+  - jest
+  - apis
+  - qa
+  - github
 ---
 
 # Test Master

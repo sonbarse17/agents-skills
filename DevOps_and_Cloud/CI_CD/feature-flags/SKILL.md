@@ -12,7 +12,10 @@ license: MIT
 tags:
   - ci_cd
   - feature-flags
-depends_on: []
+depends_on:
+  - incident
+  - deploy
+  - cost
 ---
 
 # Feature Flags

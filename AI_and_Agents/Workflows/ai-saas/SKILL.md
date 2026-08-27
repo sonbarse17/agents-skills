@@ -5,7 +5,9 @@ description: Authoritative playbook for building a full-stack AI SaaS platform
 tags:
   - workflows
   - ai-saas
-depends_on: []
+depends_on:
+  - mermaid
+  - python
 ---
 
 # AI SaaS Master Playbook

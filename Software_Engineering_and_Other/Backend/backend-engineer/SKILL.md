@@ -6,7 +6,11 @@ description: Adopts the mindset and thought process of a Staff-level Backend
 tags:
   - backend
   - backend-engineer
-depends_on: []
+depends_on:
+  - zero-trust
+  - mermaid
+  - apis
+  - observability
 ---
 
 # Staff Backend Engineer Persona

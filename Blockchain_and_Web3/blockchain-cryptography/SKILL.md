@@ -25,7 +25,12 @@ tags:
   - cryptography
   - security
   - phase-blockchain
-depends_on: []
+depends_on:
+  - scan
+  - Zero-Knowledge Proofs
+  - blockchain-security
+  - blockchain-core
+  - blockchain-application
 ---
 
 # Blockchain Cryptography

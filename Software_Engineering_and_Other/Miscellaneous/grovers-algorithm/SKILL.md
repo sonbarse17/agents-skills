@@ -4,7 +4,9 @@ description: Amplitude amplification and unstructured database search in O(sqrt(
 tags:
   - miscellaneous
   - grovers-algorithm
-depends_on: []
+depends_on:
+  - mermaid
+  - prepare
 ---
 
 # Grover's Algorithm

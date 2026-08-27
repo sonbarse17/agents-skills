@@ -18,7 +18,11 @@ tags:
   - nodejs
   - fastify
   - phase-10
-depends_on: []
+depends_on:
+  - typescript
+  - monitoring
+  - alerting
+  - cdn
 ---
 
 # Node.js Fastify

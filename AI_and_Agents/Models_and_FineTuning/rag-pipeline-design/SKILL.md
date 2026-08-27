@@ -16,7 +16,12 @@ metadata:
 tags:
   - models_and_finetuning
   - rag-pipeline-design
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - cost
+  - prompt-and-context-engineering
+  - context-engineering
 ---
 
 # RAG Pipeline Design

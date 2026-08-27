@@ -19,7 +19,12 @@ tags:
 version: 2.0.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - eslint
+  - caching-strategies
+  - typescript
 ---
 
 # Frontend Data Fetching

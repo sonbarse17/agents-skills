@@ -17,7 +17,11 @@ tags:
   - networking
   - phase-4
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - apis
+  - typescript
 ---
 
 # Mobile Networking

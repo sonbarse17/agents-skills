@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - openshift-and-rosa-platform
-depends_on: []
+depends_on:
+  - rbac
+  - ingress-nginx-configuration
+  - go
+  - monitoring
+  - incident
 ---
 
 # [OpenShift](../openshift/SKILL.md) and ROSA Platform

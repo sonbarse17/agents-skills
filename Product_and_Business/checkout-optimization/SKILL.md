@@ -4,7 +4,8 @@ description: Strategies for 1-click checkout, performance, and reducing cart aba
 tags:
   - product_and_business
   - checkout-optimization
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Checkout Optimization

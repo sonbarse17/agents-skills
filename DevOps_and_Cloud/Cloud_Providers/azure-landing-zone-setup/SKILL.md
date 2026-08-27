@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-landing-zone-setup
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - cost
+  - cloud-networking
+  - cloud-cost-finops-optimization
 ---
 
 # Azure Landing Zone Setup

@@ -18,7 +18,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-gateway-and-multi-provider-routing
-depends_on: []
+depends_on:
+  - devsecops
+  - git
+  - load-balancing
+  - observability
+  - monitoring
 ---
 
 # LLM Gateway and Multi-Provider Routing

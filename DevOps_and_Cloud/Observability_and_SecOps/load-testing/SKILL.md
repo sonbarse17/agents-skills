@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - load-testing
-depends_on: []
+depends_on:
+  - apis
+  - performance-tuning
+  - incident
+  - capacity
+  - deploy
 ---
 
 # Load Testing

@@ -15,7 +15,12 @@ metadata:
 tags:
   - deploy-model
   - customize
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - capacity
+  - deploy
+  - cost
 ---
 
 # [Customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) Model Deployment

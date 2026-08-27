@@ -20,7 +20,12 @@ tags:
   - response
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - error-handling-patterns
+  - typescript
+  - go
 ---
 
 # API Response Design

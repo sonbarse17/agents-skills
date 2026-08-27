@@ -5,7 +5,9 @@ description: Adopts the persona of a Principal Red Team Operator for conceptual
 tags:
   - observability_and_secops
   - red-team-operator
-depends_on: []
+depends_on:
+  - mermaid
+  - profiling
 ---
 
 # Principal Red Team Operator Persona

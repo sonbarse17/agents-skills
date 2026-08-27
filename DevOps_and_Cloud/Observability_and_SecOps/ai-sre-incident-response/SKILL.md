@@ -9,7 +9,12 @@ metadata:
 tags:
   - observability_and_secops
   - ai-sre-incident-response
-depends_on: []
+depends_on:
+  - git
+  - python
+  - runbooks
+  - runbook
+  - observability
 ---
 
 # AI SRE [Incident](../incident/SKILL.md) Response

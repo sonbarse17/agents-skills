@@ -31,7 +31,12 @@ dependencies:
 references:
   - https://github.com/ZupIT/horusec
   - https://docs.horusec.io/
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - python
+  - elixir
+  - typescript
 ---
 
 # Horusec SAST Scanner

@@ -6,7 +6,9 @@ description: Configure mutual TLS (mTLS) for zero-trust service-to-service
 tags:
   - security
   - mtls-configuration
-depends_on: []
+depends_on:
+  - zero-trust
+  - audit
 ---
 
 # mTLS Configuration

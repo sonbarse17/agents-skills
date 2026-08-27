@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - kibana-audit
-depends_on: []
+depends_on:
+  - rbac
+  - elasticsearch-authn
+  - elasticsearch-authz
+  - elasticsearch-audit
+  - serverless
 ---
 
 # Kibana [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - opentelemetry
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - observability
+  - monitoring
+  - datadog
 ---
 
 # OpenTelemetry

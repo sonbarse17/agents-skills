@@ -22,7 +22,12 @@ tags:
   - caching
   - performance
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - vite
+  - Rate Limiting
+  - pwa
+  - typescript
 ---
 
 # Browser Caching

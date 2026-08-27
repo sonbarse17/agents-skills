@@ -14,7 +14,10 @@ description: "KQL language expertise for writing correct, efficient Kusto Query
 tags:
   - infrastructure
   - kql
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - commands
 ---
 
 # KQL Mastery

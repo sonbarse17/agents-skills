@@ -17,7 +17,11 @@ metadata:
 tags:
   - skills
   - azure-kusto-irql-graph
-depends_on: []
+depends_on:
+  - azure-kusto
+  - azure-kusto-irql
+  - azure-kusto-graph
+  - kql
 ---
 
 # IRQL Graph Functions -- Query Results to Visualization

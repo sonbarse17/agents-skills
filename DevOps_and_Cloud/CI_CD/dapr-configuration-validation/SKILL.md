@@ -16,7 +16,12 @@ metadata:
 tags:
   - ci_cd
   - dapr-configuration-validation
-depends_on: []
+depends_on:
+  - vault
+  - git
+  - go
+  - dapr-distributed-runtime-configuration
+  - incident
 ---
 
 # Dapr Configuration Validation

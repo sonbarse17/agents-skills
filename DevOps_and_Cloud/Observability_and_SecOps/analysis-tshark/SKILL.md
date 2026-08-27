@@ -33,7 +33,12 @@ references:
   - https://www.wireshark.org/docs/man-pages/tshark.html
   - https://wiki.wireshark.org/DisplayFilters
   - https://attack.mitre.org/techniques/T1040/
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - monitoring
+  - incident
+  - deploy
 ---
 
 # TShark Network Protocol Analyzer

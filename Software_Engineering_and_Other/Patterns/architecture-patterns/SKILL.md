@@ -9,7 +9,12 @@ description: Implement proven backend architecture patterns including Clean
 tags:
   - patterns
   - architecture-patterns
-depends_on: []
+depends_on:
+  - saga-orchestration
+  - microservices-patterns
+  - microservices
+  - cqrs-implementation
+  - python
 ---
 
 # Architecture Patterns

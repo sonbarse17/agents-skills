@@ -14,7 +14,9 @@ metadata:
 tags:
   - frontend
   - astryx
-depends_on: []
+depends_on:
+  - commands
+  - scaffold
 ---
 
 # Astryx

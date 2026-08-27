@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for vector-databases.
 tags:
   - infrastructure
   - vector-databases
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

@@ -13,7 +13,12 @@ license: MIT
 tags:
   - observability_and_secops
   - argocd-operations
-depends_on: []
+depends_on:
+  - git
+  - go
+  - operators-and-crds
+  - multi-tenancy
+  - kubernetes-operations
 ---
 
 # Argo CD Operations

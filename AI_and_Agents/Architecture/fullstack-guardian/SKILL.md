@@ -30,7 +30,12 @@ metadata:
 tags:
   - architecture
   - fullstack-guardian
-depends_on: []
+depends_on:
+  - microservices
+  - accessibility
+  - python
+  - apis
+  - typescript
 ---
 
 # Fullstack Guardian

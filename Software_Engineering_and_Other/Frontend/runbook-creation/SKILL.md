@@ -10,7 +10,12 @@ metadata:
 tags:
   - frontend
   - runbook-creation
-depends_on: []
+depends_on:
+  - git
+  - postgresql
+  - commands
+  - runbooks
+  - runbook
 ---
 
 # [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Creation

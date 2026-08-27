@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for multimodal. Use
 tags:
   - miscellaneous
   - multimodal
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

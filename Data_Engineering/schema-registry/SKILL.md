@@ -22,7 +22,12 @@ tags:
   - schema
   - streaming
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - data-data-observability
+  - data-data-platform
+  - data-data-catalog
+  - data-data-contracts
 ---
 
 # Data Schema Registry

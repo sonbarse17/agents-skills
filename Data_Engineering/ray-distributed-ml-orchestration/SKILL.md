@@ -16,7 +16,12 @@ metadata:
 tags:
   - data_engineering
   - ray-distributed-ml-orchestration
-depends_on: []
+depends_on:
+  - python
+  - autoscaling
+  - observability
+  - capacity
+  - kubernetes
 ---
 
 # Ray Distributed ML Orchestration

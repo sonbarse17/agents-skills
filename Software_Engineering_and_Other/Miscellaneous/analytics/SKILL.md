@@ -5,7 +5,8 @@ description: Expertise in product analytics tools (Mixpanel/Amplitude) and User
 tags:
   - miscellaneous
   - analytics
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Product Analytics

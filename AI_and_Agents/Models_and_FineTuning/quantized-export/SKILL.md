@@ -7,7 +7,12 @@ description: Export a promoted fine-tuned model in the right deployment format â
 tags:
   - models_and_finetuning
   - quantized-export
-depends_on: []
+depends_on:
+  - datacenter
+  - python
+  - commands
+  - cost
+  - finetuning-method-selection
 ---
 
 # Quantized Export

@@ -20,7 +20,12 @@ tags:
   - storage
   - distributed
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - observability
+  - monitoring
+  - capacity
+  - alerting
 ---
 
 # Distributed Storage

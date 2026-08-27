@@ -17,7 +17,12 @@ tags:
   - design
   - information-architecture
   - phase-3
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - Rate Limiting
+  - accessibility
+  - profiling
 ---
 
 # Information Architecture

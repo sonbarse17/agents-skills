@@ -23,7 +23,12 @@ tags:
   - cloud
   - infrastructure
   - phase-5
-depends_on: []
+depends_on:
+  - microservices
+  - postgresql
+  - mongodb
+  - mysql
+  - autoscaling
 ---
 
 # Alibaba Cloud (Aliyun)

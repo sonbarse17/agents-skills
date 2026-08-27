@@ -23,7 +23,12 @@ tags:
   - css
   - styling
   - universal
-depends_on: []
+depends_on:
+  - vite
+  - vault
+  - Rate Limiting
+  - typescript
+  - frontend-tailwind-css
 ---
 
 # Frontend CSS Strategy

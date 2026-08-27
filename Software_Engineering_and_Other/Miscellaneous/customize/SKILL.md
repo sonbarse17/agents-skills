@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - customize
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - capacity
+  - deploy
+  - cost
 ---
 
 # [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/customize/SKILL.md)/SKILL.md) Model Deployment

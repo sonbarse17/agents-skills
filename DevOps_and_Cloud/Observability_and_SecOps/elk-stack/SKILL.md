@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - elk-stack
-depends_on: []
+depends_on:
+  - api-gateway
+  - go
+  - monitoring
+  - loki-logging
+  - audit-logging
 ---
 
 # ELK Stack

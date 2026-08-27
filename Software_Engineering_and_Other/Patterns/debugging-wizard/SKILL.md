@@ -20,7 +20,12 @@ metadata:
 tags:
   - patterns
   - debugging-wizard
-depends_on: []
+depends_on:
+  - git
+  - python
+  - go
+  - commands
+  - github
 ---
 
 # Debugging Wizard

@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - kibana-vega
-depends_on: []
+depends_on:
+  - commands
+  - serverless
+  - podman
+  - docker
+  - github
 ---
 
 # Kibana Vega

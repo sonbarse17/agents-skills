@@ -12,7 +12,11 @@ license: MIT
 tags:
   - observability_and_secops
   - slo-definition
-depends_on: []
+depends_on:
+  - error-budgets
+  - observability
+  - deploy
+  - dashboards
 ---
 
 # SLO Definition

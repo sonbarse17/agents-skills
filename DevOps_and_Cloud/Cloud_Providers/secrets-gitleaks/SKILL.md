@@ -35,7 +35,12 @@ references:
   - https://github.com/gitleaks/gitleaks
   - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/
   - https://cwe.mitre.org/data/definitions/798.html
-depends_on: []
+depends_on:
+  - scan
+  - devsecops
+  - vault
+  - git
+  - infrastructure-as-code
 ---
 
 # Secrets Detection with Gitleaks

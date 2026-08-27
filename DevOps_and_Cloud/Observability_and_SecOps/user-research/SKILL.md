@@ -18,7 +18,12 @@ tags:
   - product
   - user-research
   - phase-8
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - product-analytics
+  - product-ab-testing
+  - profiling
 ---
 
 # User Research Agent

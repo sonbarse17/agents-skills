@@ -18,7 +18,12 @@ metadata:
 tags:
   - workflows
   - promql-query-authoring
-depends_on: []
+depends_on:
+  - monitoring
+  - logql-query-authoring
+  - incident-investigation-using-metrics-logs-traces
+  - incident
+  - capacity
 ---
 
 # PromQL Query Authoring

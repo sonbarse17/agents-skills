@@ -17,7 +17,12 @@ metadata:
 tags:
   - product_and_business
   - platform-engineering-team-topology-and-operating-model
-depends_on: []
+depends_on:
+  - platform-self-service-api-and-workflow-design
+  - golden-path-template-design-for-developer-platforms
+  - developer-experience
+  - developer-experience-measurement-and-platform-adoption
+  - change-management
 ---
 
 # Platform Engineering Team Topology and Operating Model

@@ -9,7 +9,12 @@ metadata:
 tags:
   - security
   - llm-app-security
-depends_on: []
+depends_on:
+  - scan
+  - sast-scanning
+  - ai-agent-security
+  - Rate Limiting
+  - embeddings
 ---
 
 # LLM Application Security

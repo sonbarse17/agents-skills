@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for jest. Use this
 tags:
   - testing
   - jest
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - eslint
+  - github
+  - deploy
 ---
 # Skill
 

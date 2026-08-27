@@ -17,7 +17,12 @@ compatibility:
 tags:
   - enterprise
   - phase-9
-depends_on: []
+depends_on:
+  - mermaid
+  - microservices
+  - vault
+  - Rate Limiting
+  - python
 ---
 
 # Architecture Governance Agent

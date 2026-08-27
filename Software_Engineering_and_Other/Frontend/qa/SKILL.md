@@ -20,7 +20,12 @@ tags:
   - management
   - qa
   - testing
-depends_on: []
+depends_on:
+  - scan
+  - jest
+  - microservices
+  - qc
+  - python
 ---
 
 # Quality Assurance

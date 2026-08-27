@@ -17,7 +17,12 @@ tags:
   - deployment
   - phase-4
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - git
+  - monitoring
+  - github
 ---
 
 # Mobile Deployment

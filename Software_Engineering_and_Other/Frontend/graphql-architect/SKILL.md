@@ -17,7 +17,11 @@ metadata:
 tags:
   - frontend
   - graphql-architect
-depends_on: []
+depends_on:
+  - apis
+  - monitoring
+  - github
+  - cost
 ---
 
 # GraphQL Architect

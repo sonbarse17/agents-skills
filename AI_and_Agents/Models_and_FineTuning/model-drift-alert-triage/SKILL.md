@@ -17,7 +17,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-drift-alert-triage
-depends_on: []
+depends_on:
+  - feature-pipeline-failure-investigation
+  - data-and-model-lineage
+  - python
+  - incident-response-and-on-call-management
+  - runbook
 ---
 
 # Model Drift Alert Triage

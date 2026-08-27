@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argocd-gitops
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - commands
+  - kustomize
+  - kubernetes-ops
 ---
 
 # [ArgoCD](../argocd/SKILL.md) [GitOps](../gitops/SKILL.md)

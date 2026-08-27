@@ -16,7 +16,12 @@ metadata:
 tags:
   - skills
   - azure-kusto-graph
-depends_on: []
+depends_on:
+  - commands
+  - azure-kusto
+  - dashboards
+  - azure-kusto-irql-graph
+  - azure-kusto-irql
 ---
 
 # Kusto Graph Semantics

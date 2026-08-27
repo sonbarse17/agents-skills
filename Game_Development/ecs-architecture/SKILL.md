@@ -4,7 +4,9 @@ description: Entity Component System architecture patterns for game engines.
 tags:
   - game_development
   - ecs-architecture
-depends_on: []
+depends_on:
+  - mermaid
+  - unity
 ---
 
 # ECS Architecture (Entity Component System)

@@ -21,7 +21,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-kubernetes-deployment-on-gke-from-scratch
-depends_on: []
+depends_on:
+  - ingress-nginx-configuration
+  - runbook
+  - kubernetes-node-maintenance-and-troubleshooting
+  - kubernetes-cluster-post-provision-conformance-validation
+  - kubernetes
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on GKE From Scratch

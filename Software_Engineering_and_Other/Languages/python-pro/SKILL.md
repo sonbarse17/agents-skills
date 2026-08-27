@@ -20,7 +20,11 @@ metadata:
 tags:
   - languages
   - python-pro
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - profiling
+  - github
 ---
 
 # [Python](../python/SKILL.md) Pro

@@ -9,7 +9,8 @@ description: Generate AI-powered podcast-style audio narratives using Azure
 tags:
   - miscellaneous
   - podcast-generation
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Podcast Generation with GPT Realtime Mini

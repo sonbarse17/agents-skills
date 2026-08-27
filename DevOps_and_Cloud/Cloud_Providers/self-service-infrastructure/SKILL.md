@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - self-service-infrastructure
-depends_on: []
+depends_on:
+  - policy-as-code
+  - go
+  - terraform-modules
+  - cost
+  - cloud-budgeting
 ---
 
 # Self-Service Infrastructure

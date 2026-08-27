@@ -6,7 +6,10 @@ description: Python code style, linting, formatting, naming conventions, and
 tags:
   - languages
   - python-code-style
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - commit
 ---
 
 # [Python](../python/SKILL.md) Code Style & Documentation

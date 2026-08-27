@@ -18,7 +18,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - crossplane-configuration-validation
-depends_on: []
+depends_on:
+  - opa-gatekeeper-policy-authoring
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
+  - incident-response
+  - incident
 ---
 
 # Crossplane Configuration Validation

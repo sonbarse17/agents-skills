@@ -17,7 +17,12 @@ metadata:
 tags:
   - backend
   - kong-api-gateway-configuration
-depends_on: []
+depends_on:
+  - git
+  - apigee-api-management-and-governance
+  - api-gateway-rate-limiting-and-quota-management
+  - api-gateway
+  - service-mesh-istio
 ---
 
 # Kong API Gateway Configuration

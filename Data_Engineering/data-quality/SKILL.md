@@ -22,7 +22,12 @@ tags:
   - data
   - quality
   - phase-10
-depends_on: []
+depends_on:
+  - scan
+  - data-etl-pipeline
+  - incident-management
+  - python
+  - postgresql
 ---
 
 # Data Data Quality

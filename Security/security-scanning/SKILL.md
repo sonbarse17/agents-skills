@@ -12,7 +12,10 @@ license: MIT
 tags:
   - security
   - security-scanning
-depends_on: []
+depends_on:
+  - scan
+  - deploy
+  - commit
 ---
 
 # Security Scanning

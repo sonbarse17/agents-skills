@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - metallb-configuration-validation
-depends_on: []
+depends_on:
+  - chaos-engineering-and-resilience-testing
+  - runbook
+  - rook-ceph-configuration-validation
+  - observability
+  - monitoring
 ---
 
 # MetalLB Configuration Validation

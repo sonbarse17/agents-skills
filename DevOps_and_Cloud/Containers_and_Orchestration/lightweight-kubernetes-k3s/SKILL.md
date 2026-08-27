@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - lightweight-kubernetes-k3s
-depends_on: []
+depends_on:
+  - rbac
+  - postgresql
+  - mysql
+  - ingress-nginx-configuration
+  - runbook
 ---
 
 # Lightweight [Kubernetes](../kubernetes/SKILL.md) (K3s)

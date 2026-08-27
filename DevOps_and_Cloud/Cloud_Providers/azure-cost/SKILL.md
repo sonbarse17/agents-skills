@@ -13,7 +13,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-cost
-depends_on: []
+depends_on:
+  - monitoring
+  - cost
+  - cost-optimization
+  - azure-storage
+  - azure-resource-manager-redis-dotnet
 ---
 
 # Azure Cost Management Skill

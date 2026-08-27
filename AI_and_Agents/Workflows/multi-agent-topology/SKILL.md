@@ -5,7 +5,9 @@ description: First principles of AI societal structures and multi-agent
 tags:
   - workflows
   - multi-agent-topology
-depends_on: []
+depends_on:
+  - mermaid
+  - Structured Data
 ---
 
 # Multi-Agent Topology: The Societal Structures of AI

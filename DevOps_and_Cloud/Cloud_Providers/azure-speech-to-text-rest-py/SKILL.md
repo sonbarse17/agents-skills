@@ -17,7 +17,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-speech-to-text-rest-py
-depends_on: []
+depends_on:
+  - python
+  - go
 ---
 
 # Azure Speech to Text REST API for Short Audio

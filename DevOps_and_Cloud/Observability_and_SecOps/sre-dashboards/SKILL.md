@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - sre-dashboards
-depends_on: []
+depends_on:
+  - runbook
+  - opentelemetry
+  - observability
+  - incident
+  - alerting-oncall
 ---
 
 # SRE [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)

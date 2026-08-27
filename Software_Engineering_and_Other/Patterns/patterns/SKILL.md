@@ -17,7 +17,11 @@ tags:
   - patterns
   - phase-4
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - architecture-patterns
+  - typescript
 ---
 
 # Mobile Architecture Patterns

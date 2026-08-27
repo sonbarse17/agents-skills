@@ -12,7 +12,12 @@ license: MIT
 tags:
   - security
   - image-scanning
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - scan
+  - containerization
+  - container-registry
+  - deploy
 ---
 
 # Image Scanning

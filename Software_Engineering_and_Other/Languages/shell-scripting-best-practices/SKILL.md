@@ -16,7 +16,12 @@ metadata:
 tags:
   - languages
   - shell-scripting-best-practices
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - cloudformation
+  - ansible
+  - ansible-playbook-and-role-design
 ---
 
 # Shell Scripting Best Practices

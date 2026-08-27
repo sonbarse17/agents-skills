@@ -8,7 +8,12 @@ description: Understand anti-reversing, obfuscation, and protection techniques
 tags:
   - observability_and_secops
   - anti-reversing-techniques
-depends_on: []
+depends_on:
+  - reverse-engineering
+  - protocol-reverse-engineering
+  - memory-forensics
+  - binary-analysis-patterns
+  - python
 ---
 
 > **AUTHORIZED USE ONLY**: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis:

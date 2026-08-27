@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - disaster-recovery
-depends_on: []
+depends_on:
+  - runbooks
+  - runbook
+  - multi-cloud
+  - cost
+  - cloud-networking
 ---
 
 # Disaster Recovery

@@ -17,7 +17,12 @@ metadata:
 tags:
   - workflows
   - code-knowledge-graph-tools-for-ai-agents
-depends_on: []
+depends_on:
+  - devsecops
+  - python
+  - database-operations
+  - typescript
+  - software-composition-analysis-sca
 ---
 
 # Code Knowledge Graph Tools for AI Agents

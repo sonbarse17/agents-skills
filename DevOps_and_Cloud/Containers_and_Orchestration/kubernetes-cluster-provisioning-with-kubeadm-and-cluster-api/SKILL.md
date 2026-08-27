@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api
-depends_on: []
+depends_on:
+  - go
+  - runbook
+  - kubernetes-node-maintenance-and-troubleshooting
+  - kubernetes-cluster-post-provision-conformance-validation
+  - kubernetes
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Cluster Provisioning with kubeadm and Cluster API

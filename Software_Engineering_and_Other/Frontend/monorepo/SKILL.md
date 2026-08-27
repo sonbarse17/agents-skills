@@ -24,7 +24,12 @@ tags:
   - turborepo
   - build-tools
   - phase-5
-depends_on: []
+depends_on:
+  - git
+  - eslint
+  - dependency-management
+  - apis
+  - typescript
 ---
 
 # Monorepo

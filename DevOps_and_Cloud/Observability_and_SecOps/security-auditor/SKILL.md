@@ -19,7 +19,12 @@ tags:
   - security
   - auditing
   - vulnerabilities
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - vault
+  - Rate Limiting
+  - eslint
 ---
 
 # Security Auditor

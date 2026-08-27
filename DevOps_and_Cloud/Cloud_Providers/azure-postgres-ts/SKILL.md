@@ -15,7 +15,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-postgres-ts
-depends_on: []
+depends_on:
+  - postgresql
+  - typescript
+  - github
+  - commit
 ---
 
 # Azure [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (node-postgres)

@@ -20,7 +20,12 @@ metadata:
 tags:
   - observability_and_secops
   - distributed-tracing-with-tempo-and-jaeger
-depends_on: []
+depends_on:
+  - microservices
+  - postgresql
+  - load-balancing
+  - opentelemetry-instrumentation-and-collector-configuration
+  - go
 ---
 
 # Distributed Tracing with Tempo and Jaeger

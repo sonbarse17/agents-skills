@@ -18,7 +18,12 @@ tags:
   - build
   - beam
   - phoenix
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - git
+  - postgresql
+  - profiling
 ---
 
 # Elixir

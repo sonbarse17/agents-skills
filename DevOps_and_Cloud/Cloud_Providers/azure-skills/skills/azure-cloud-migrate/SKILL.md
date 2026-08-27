@@ -14,7 +14,12 @@ metadata:
 tags:
   - skills
   - azure-cloud-migrate
-depends_on: []
+depends_on:
+  - scan
+  - kubernetes
+  - deploy
+  - azure-prepare
+  - aws
 ---
 
 # Azure Cloud Migrate

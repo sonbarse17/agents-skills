@@ -18,7 +18,12 @@ tags:
   - quality
   - acceptance-testing
   - phase-6
-depends_on: []
+depends_on:
+  - quality-smoke-testing
+  - quality-regression-testing
+  - quality-e2e-testing
+  - vault
+  - Rate Limiting
 ---
 
 # Acceptance Testing

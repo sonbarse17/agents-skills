@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - dashboards
-depends_on: []
+depends_on:
+  - incident
+  - capacity
+  - alerting
+  - deploy
+  - deploy-model
 ---
 
 # Dashboards

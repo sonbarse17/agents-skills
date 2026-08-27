@@ -23,7 +23,10 @@ metadata:
 tags:
   - workflows
   - prompt-engineer
-depends_on: []
+depends_on:
+  - monitoring
+  - github
+  - deploy
 ---
 
 # Prompt Engineer

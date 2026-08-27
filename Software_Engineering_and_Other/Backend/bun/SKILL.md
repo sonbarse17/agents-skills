@@ -18,7 +18,12 @@ tags:
   - backend
   - bun
   - phase-10
-depends_on: []
+depends_on:
+  - jest
+  - microservices
+  - prettier
+  - git
+  - deno
 ---
 
 # Bun

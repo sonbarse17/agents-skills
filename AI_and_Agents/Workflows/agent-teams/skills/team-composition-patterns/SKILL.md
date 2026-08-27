@@ -12,7 +12,12 @@ version: 1.0.2
 tags:
   - skills
   - team-composition-patterns
-depends_on: []
+depends_on:
+  - team-communication-protocols
+  - monitoring
+  - deploy
+  - audit
+  - parallel-feature-development
 ---
 
 # Team Composition Patterns

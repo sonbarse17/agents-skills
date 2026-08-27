@@ -9,7 +9,12 @@ metadata:
 tags:
   - security
   - asset-inventory
-depends_on: []
+depends_on:
+  - policy-as-code
+  - vault
+  - python
+  - apis
+  - incident
 ---
 
 # Asset Inventory

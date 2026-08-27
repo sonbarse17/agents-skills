@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - operators-and-crds
-depends_on: []
+depends_on:
+  - rbac
+  - workflow-automation
+  - scheduled-jobs
+  - Rate Limiting
+  - go
 ---
 
 # Operators and CRDs

@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - soc2-compliance
-depends_on: []
+depends_on:
+  - scan
+  - access-review
+  - monitoring
+  - incident
+  - datadog
 ---
 
 # SOC 2 Compliance

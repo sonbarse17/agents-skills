@@ -14,7 +14,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kafka-cluster-configuration
-depends_on: []
+depends_on:
+  - kafka-configuration-validation
+  - kafka-schema-registry-and-compatibility-management
+  - kafka-consumer-lag-and-partition-troubleshooting
+  - cost
+  - aws
 ---
 
 # Kafka Cluster Configuration

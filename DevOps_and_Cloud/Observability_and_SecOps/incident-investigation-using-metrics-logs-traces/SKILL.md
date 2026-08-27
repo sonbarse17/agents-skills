@@ -18,7 +18,12 @@ metadata:
 tags:
   - observability_and_secops
   - incident-investigation-using-metrics-logs-traces
-depends_on: []
+depends_on:
+  - scan
+  - incident-response-and-on-call-management
+  - go
+  - blameless-postmortem-and-root-cause-analysis
+  - root-cause-analysis
 ---
 
 # [Incident](../incident/SKILL.md) Investigation Using Metrics, Logs, and Traces

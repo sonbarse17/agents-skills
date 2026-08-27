@@ -16,7 +16,12 @@ metadata:
 tags:
   - ci_cd
   - bamboo-pipeline-yaml-and-java-specs
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - go
+  - jenkins
 ---
 
 # Bamboo Pipeline YAML and Java Specs

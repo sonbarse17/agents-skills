@@ -14,7 +14,12 @@ metadata:
 tags:
   - models_and_finetuning
   - agent-tool-use-patterns
-depends_on: []
+depends_on:
+  - python
+  - cost
+  - mcp-server-development
+  - agent-evaluation-and-guardrails
+  - agent-architecture-design
 ---
 
 # Agent Tool Use Patterns

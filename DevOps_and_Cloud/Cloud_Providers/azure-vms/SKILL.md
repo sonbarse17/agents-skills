@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-vms
-depends_on: []
+depends_on:
+  - vault
+  - autoscaling
+  - terraform-azure
+  - capacity
+  - docker
 ---
 
 # Azure Virtual Machines

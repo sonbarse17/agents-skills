@@ -23,7 +23,12 @@ tags:
   - react
   - nextjs
   - phase-3
-depends_on: []
+depends_on:
+  - seo
+  - eslint
+  - apis
+  - typescript
+  - nextjs-app-router-patterns
 ---
 
 # Next.js

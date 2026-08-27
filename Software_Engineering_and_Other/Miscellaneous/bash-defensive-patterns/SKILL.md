@@ -6,7 +6,8 @@ description: Master defensive Bash programming techniques for production-grade
 tags:
   - miscellaneous
   - bash-defensive-patterns
-depends_on: []
+depends_on:
+  - monitoring
 ---
 
 # Bash Defensive Patterns

@@ -10,7 +10,10 @@ metadata:
 tags:
   - cloud_providers
   - setup
-depends_on: []
+depends_on:
+  - vault
+  - serverless
+  - aws
 ---
 
 # Cloud Environment Setup

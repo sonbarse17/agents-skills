@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for deploy. Use this
 tags:
   - ci_cd
   - deploy
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - azure-deploy
+  - cost
 ---
 # Deploy — IaC Execution & Health Verification
 

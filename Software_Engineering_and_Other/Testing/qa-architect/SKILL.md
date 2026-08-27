@@ -5,7 +5,9 @@ description: Adopts the persona of a Staff-level QA Architect. Focuses on Zero
 tags:
   - testing
   - qa-architect
-depends_on: []
+depends_on:
+  - mermaid
+  - qa
 ---
 
 # Staff QA Architect Persona

@@ -13,7 +13,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-kusto-irql
-depends_on: []
+depends_on:
+  - incident
+  - azure-kusto
+  - deploy
+  - azure-kusto-irql-graph
+  - azure-kusto-graph
 ---
 
 # IRQL -- [Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Query Language

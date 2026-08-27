@@ -14,7 +14,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-messaging-webpubsubservice-py
-depends_on: []
+depends_on:
+  - Structured Data
+  - python
+  - azure-messaging
+  - audit
 ---
 
 # Azure Web PubSub Service SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

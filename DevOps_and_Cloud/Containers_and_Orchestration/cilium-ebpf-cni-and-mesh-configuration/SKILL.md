@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - cilium-ebpf-cni-and-mesh-configuration
-depends_on: []
+depends_on:
+  - load-balancing
+  - apis
+  - service-mesh-istio
+  - commands
+  - service-mesh
 ---
 
 # Cilium eBPF CNI and Mesh Configuration

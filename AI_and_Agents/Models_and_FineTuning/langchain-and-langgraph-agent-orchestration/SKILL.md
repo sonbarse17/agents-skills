@@ -17,7 +17,12 @@ metadata:
 tags:
   - models_and_finetuning
   - langchain-and-langgraph-agent-orchestration
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - observability
+  - multi-agent-orchestration
+  - crewai-and-autogen-multi-agent-frameworks
 ---
 
 # LangChain and LangGraph Agent Orchestration

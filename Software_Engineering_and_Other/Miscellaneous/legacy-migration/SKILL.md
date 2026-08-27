@@ -18,7 +18,12 @@ tags:
   - enterprise
   - migration
   - phase-8
-depends_on: []
+depends_on:
+  - scan
+  - ETL Pipelines
+  - microservices
+  - python
+  - postgresql
 ---
 
 # Legacy Migration Agent

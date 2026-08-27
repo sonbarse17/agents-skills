@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - sops-encryption
-depends_on: []
+depends_on:
+  - hashicorp-vault
+  - vault
+  - git
+  - kubernetes
+  - gitops
 ---
 
 # SOPS Encryption

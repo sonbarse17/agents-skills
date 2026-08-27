@@ -18,7 +18,12 @@ metadata:
 tags:
   - backend
   - apigee-api-management-and-governance
-depends_on: []
+depends_on:
+  - apis
+  - api-gateway-rate-limiting-and-quota-management
+  - api-gateway
+  - service-mesh-istio
+  - go
 ---
 
 # Apigee API Management and Governance

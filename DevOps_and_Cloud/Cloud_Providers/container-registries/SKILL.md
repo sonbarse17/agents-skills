@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - container-registries
-depends_on: []
+depends_on:
+  - scan
+  - image-scanning
+  - Rate Limiting
+  - go
+  - podman
 ---
 
 # Container Registries

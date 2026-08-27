@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-secrets-manager
-depends_on: []
+depends_on:
+  - hashicorp-vault
+  - vault
+  - python
+  - postgresql
+  - multi-cloud
 ---
 
 # AWS Secrets Manager

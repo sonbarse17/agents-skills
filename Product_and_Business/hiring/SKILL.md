@@ -25,7 +25,12 @@ tags:
   - management
   - hiring
   - phase-10
-depends_on: []
+depends_on:
+  - team-rules
+  - monitoring
+  - incident
+  - capacity
+  - deploy
 ---
 
 # Hiring and Interviewing

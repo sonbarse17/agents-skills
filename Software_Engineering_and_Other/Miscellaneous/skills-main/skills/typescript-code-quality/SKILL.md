@@ -9,7 +9,9 @@ description: Use when writing or refactoring TypeScript for maintainability,
 tags:
   - skills
   - typescript-code-quality
-depends_on: []
+depends_on:
+  - apis
+  - typescript
 ---
 
 # [TypeScript](../../../../Frontend/typescript/SKILL.md) Code Quality

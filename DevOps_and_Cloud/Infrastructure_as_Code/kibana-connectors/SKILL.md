@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - kibana-connectors
-depends_on: []
+depends_on:
+  - customize
+  - observability
+  - monitoring
+  - incident
+  - alerting
 ---
 
 # Kibana Connectors

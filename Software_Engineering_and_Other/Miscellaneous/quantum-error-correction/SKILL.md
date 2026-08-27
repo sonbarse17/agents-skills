@@ -4,7 +4,8 @@ description: Surface codes, syndrome measurement, and topological qubits mechani
 tags:
   - miscellaneous
   - quantum-error-correction
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Quantum Error Correction (QEC)
 

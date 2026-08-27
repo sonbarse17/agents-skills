@@ -6,7 +6,9 @@ description: Automate changelog generation from commits, PRs, and releases
 tags:
   - product_and_business
   - changelog-automation
-depends_on: []
+depends_on:
+  - github
+  - commit
 ---
 
 # Changelog Automation

@@ -18,7 +18,12 @@ metadata:
 tags:
   - skills
   - azure-storage
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
+  - commands
+  - cost
 ---
 
 # Azure Storage Services

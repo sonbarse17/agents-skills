@@ -15,7 +15,11 @@ metadata:
 tags:
   - observability_and_secops
   - detection-rule-management
-depends_on: []
+depends_on:
+  - commands
+  - github
+  - aws
+  - kql
 ---
 
 # Detection Rule Management

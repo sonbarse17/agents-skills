@@ -8,7 +8,8 @@ description: Use when making UI/frontend changes guided by visual context, when
 tags:
   - frontend
   - visual-edit-precision
-depends_on: []
+depends_on:
+  - accessibility
 ---
 
 # Visual Edit Precision

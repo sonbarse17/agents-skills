@@ -16,7 +16,12 @@ metadata:
 tags:
   - security
   - secure-cicd-gates
-depends_on: []
+depends_on:
+  - scan
+  - sast-integration
+  - policy-as-code-guardrails
+  - policy-as-code
+  - devsecops
 ---
 
 # Secure CI/CD Gates

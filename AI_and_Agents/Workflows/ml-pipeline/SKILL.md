@@ -25,7 +25,12 @@ metadata:
 tags:
   - workflows
   - ml-pipeline
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - git
+  - python
+  - alerting
+  - kubernetes
 ---
 
 # ML Pipeline Expert

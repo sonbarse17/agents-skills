@@ -22,7 +22,12 @@ tags:
   - caching
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - scan
+  - typescript
+  - commands
+  - monitoring
+  - cdn
 ---
 
 # Backend Caching

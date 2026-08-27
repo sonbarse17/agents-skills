@@ -6,7 +6,8 @@ description: Apply typography, color theory, spacing systems, and iconography
 tags:
   - skills
   - visual-design-foundations
-depends_on: []
+depends_on:
+  - accessibility
 ---
 
 # Visual Design Foundations

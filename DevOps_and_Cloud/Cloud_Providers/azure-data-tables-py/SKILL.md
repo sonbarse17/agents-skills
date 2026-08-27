@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-data-tables-py
-depends_on: []
+depends_on:
+  - Structured Data
+  - python
+  - audit
 ---
 
 # Azure Tables SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

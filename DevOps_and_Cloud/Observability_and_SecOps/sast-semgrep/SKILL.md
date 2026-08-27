@@ -34,7 +34,12 @@ references:
   - https://semgrep.dev/docs/
   - https://owasp.org/Top10/
   - https://cwe.mitre.org/
-depends_on: []
+depends_on:
+  - scan
+  - android
+  - python
+  - typescript
+  - go
 ---
 
 # SAST with Semgrep

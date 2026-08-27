@@ -18,7 +18,12 @@ tags:
 version: 1.0.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - create-tech-spec
+  - create-story
+  - create-brief
+  - create-prd
+  - accessibility
 ---
 
 # Create Pitch Deck

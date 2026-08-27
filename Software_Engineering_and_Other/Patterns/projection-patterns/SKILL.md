@@ -6,7 +6,8 @@ description: Build read models and projections from event streams. Use when
 tags:
   - patterns
   - projection-patterns
-depends_on: []
+depends_on:
+  - dashboards
 ---
 
 # Projection Patterns

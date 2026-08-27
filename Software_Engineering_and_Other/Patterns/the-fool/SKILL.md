@@ -17,7 +17,9 @@ metadata:
 tags:
   - patterns
   - the-fool
-depends_on: []
+depends_on:
+  - github
+  - audit
 ---
 
 # The Fool

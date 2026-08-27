@@ -18,7 +18,12 @@ metadata:
 tags:
   - security
   - vault-configuration-validation
-depends_on: []
+depends_on:
+  - opa-gatekeeper-policy-authoring
+  - devsecops
+  - vault
+  - code-review
+  - critical-vulnerability-emergency-response
 ---
 
 # [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Configuration Validation

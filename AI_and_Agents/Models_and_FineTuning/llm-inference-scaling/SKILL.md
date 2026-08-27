@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-inference-scaling
-depends_on: []
+depends_on:
+  - rbac
+  - autoscaling
+  - monitoring
+  - kubernetes-ops
+  - kubernetes
 ---
 
 # LLM Inference Scaling

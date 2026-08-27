@@ -6,7 +6,12 @@ description: Adopts the persona of a Principal Quantum Physicist, shifting
 tags:
   - miscellaneous
   - quantum-scientist
-depends_on: []
+depends_on:
+  - mermaid
+  - capacity
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Mindset: The Quantum Paradigm

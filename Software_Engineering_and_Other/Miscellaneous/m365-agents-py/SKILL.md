@@ -16,7 +16,10 @@ metadata:
 tags:
   - miscellaneous
   - m365-agents-py
-depends_on: []
+depends_on:
+  - python
+  - github
+  - microsoft-docs
 ---
 
 # Microsoft 365 Agents SDK ([Python](../../Languages/python/SKILL.md))

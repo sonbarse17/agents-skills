@@ -17,7 +17,12 @@ metadata:
 tags:
   - ci_cd
   - golden-path-template-validation-and-testing
-depends_on: []
+depends_on:
+  - golden-path-template-design-for-developer-platforms
+  - git
+  - change-management
+  - go
+  - monitoring
 ---
 
 # Golden Path Template Validation and Testing

@@ -19,7 +19,12 @@ tags:
 version: 1.0.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - sprint-retro
+  - go
+  - monitoring
+  - incident
+  - capacity
 ---
 
 # Management OKR & KPI

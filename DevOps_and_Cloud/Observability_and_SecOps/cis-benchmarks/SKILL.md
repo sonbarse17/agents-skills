@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - cis-benchmarks
-depends_on: []
+depends_on:
+  - scan
+  - vulnerability-scanning
+  - linux-hardening
+  - kubernetes
+  - docker
 ---
 
 # CIS Benchmarks

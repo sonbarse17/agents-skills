@@ -9,7 +9,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-registry-governance
-depends_on: []
+depends_on:
+  - scan
+  - sbom-supply-chain
+  - policy-as-code
+  - git
+  - python
 ---
 
 # Model Registry Governance

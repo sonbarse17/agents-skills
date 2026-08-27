@@ -23,7 +23,12 @@ tags:
   - authentication
   - security
   - universal
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - firebase
+  - supabase
+  - typescript
+  - cost
 ---
 
 # Frontend Authentication

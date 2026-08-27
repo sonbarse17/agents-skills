@@ -22,7 +22,9 @@ metadata:
 tags:
   - data_engineering
   - pandas-pro
-depends_on: []
+depends_on:
+  - python
+  - github
 ---
 
 # Pandas Pro

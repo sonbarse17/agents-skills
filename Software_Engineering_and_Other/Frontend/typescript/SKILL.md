@@ -18,7 +18,12 @@ tags:
   - language
   - build
   - type-system
-depends_on: []
+depends_on:
+  - jest
+  - vite
+  - Rate Limiting
+  - deno
+  - bun
 ---
 
 # TypeScript

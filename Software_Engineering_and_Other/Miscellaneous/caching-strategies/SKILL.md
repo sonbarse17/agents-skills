@@ -12,7 +12,10 @@ license: MIT
 tags:
   - miscellaneous
   - caching-strategies
-depends_on: []
+depends_on:
+  - go
+  - commit
+  - cost
 ---
 
 # Caching Strategies

@@ -8,7 +8,12 @@ description: Design multi-stage CI/CD pipelines with approval gates, security
 tags:
   - ci_cd
   - deployment-pipeline-design
-depends_on: []
+depends_on:
+  - microservices
+  - runbook
+  - monitoring
+  - datadog
+  - serverless
 ---
 
 # Deployment Pipeline Design

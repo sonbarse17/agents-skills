@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - azure-aks
-depends_on: []
+depends_on:
+  - rbac
+  - microservices
+  - vault
+  - terraform-azure
+  - monitoring
 ---
 
 # Azure [Kubernetes](../kubernetes/SKILL.md) Service

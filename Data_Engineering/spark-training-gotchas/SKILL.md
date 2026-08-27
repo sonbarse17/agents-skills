@@ -7,7 +7,12 @@ description: Preflight and diagnose the ten known failure modes for ML training
 tags:
   - data_engineering
   - spark-training-gotchas
-depends_on: []
+depends_on:
+  - spark-environment-setup
+  - python
+  - commands
+  - capacity
+  - docker
 ---
 
 # Spark Training Gotchas

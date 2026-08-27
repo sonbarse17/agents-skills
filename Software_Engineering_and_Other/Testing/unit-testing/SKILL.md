@@ -18,7 +18,12 @@ tags:
   - quality
   - unit-testing
   - phase-3
-depends_on: []
+depends_on:
+  - quality-smoke-testing
+  - quality-regression-testing
+  - quality-integration-testing
+  - jest
+  - vault
 ---
 
 # Unit Testing

@@ -17,7 +17,12 @@ tags:
   - mobile
   - widgets
   - phase-10
-depends_on: []
+depends_on:
+  - mobile-localization
+  - ios
+  - android
+  - vault
+  - Rate Limiting
 ---
 
 # Mobile Widgets Skill

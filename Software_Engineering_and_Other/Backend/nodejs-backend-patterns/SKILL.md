@@ -8,7 +8,12 @@ description: Build production-ready Node.js backend services with
 tags:
   - backend
   - nodejs-backend-patterns
-depends_on: []
+depends_on:
+  - microservices
+  - Rate Limiting
+  - javascript-testing-patterns
+  - apis
+  - typescript
 ---
 
 # Node.js Backend Patterns

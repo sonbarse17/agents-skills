@@ -14,7 +14,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-cosmos-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # @azure/cosmos ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)

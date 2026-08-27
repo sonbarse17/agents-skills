@@ -7,7 +7,11 @@ description: Implement comprehensive observability for service meshes including
 tags:
   - observability_and_secops
   - service-mesh-observability
-depends_on: []
+depends_on:
+  - service-mesh
+  - observability
+  - dashboards
+  - audit
 ---
 
 # Service Mesh [Observability](../observability/SKILL.md)

@@ -22,7 +22,12 @@ metadata:
 tags:
   - patterns
   - microservices-architect
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - typescript
+  - observability
+  - kubernetes
 ---
 
 # [Microservices](../microservices/SKILL.md) Architect

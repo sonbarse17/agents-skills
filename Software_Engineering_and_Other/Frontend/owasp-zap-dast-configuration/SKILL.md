@@ -19,7 +19,12 @@ metadata:
 tags:
   - frontend
   - owasp-zap-dast-configuration
-depends_on: []
+depends_on:
+  - trivy-vulnerability-scanning
+  - scan
+  - devsecops
+  - code-quality
+  - python
 ---
 
 # OWASP ZAP DAST Configuration

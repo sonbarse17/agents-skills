@@ -7,7 +7,8 @@ description: Python error handling patterns including input validation,
 tags:
   - languages
   - python-error-handling
-depends_on: []
+depends_on:
+  - python
 ---
 
 # [Python](../python/SKILL.md) Error Handling

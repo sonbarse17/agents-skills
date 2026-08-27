@@ -7,7 +7,12 @@ description: Fine-tune vision-language models (VLMs) with supervised learning on
 tags:
   - models_and_finetuning
   - vision-sft
-depends_on: []
+depends_on:
+  - dataset-curation
+  - python
+  - cost
+  - lora-qlora-recipes
+  - llm-finetuning
 ---
 
 # Vision-Language SFT

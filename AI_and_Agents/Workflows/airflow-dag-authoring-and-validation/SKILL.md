@@ -15,7 +15,12 @@ metadata:
 tags:
   - workflows
   - airflow-dag-authoring-and-validation
-depends_on: []
+depends_on:
+  - dagster-and-prefect-pipeline-authoring
+  - kafka-configuration-validation
+  - python
+  - go
+  - capacity
 ---
 
 # Airflow DAG Authoring and Validation

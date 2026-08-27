@@ -4,7 +4,8 @@ description: Deep architecture of TCP state machines and modern congestion contr
 tags:
   - observability_and_secops
   - network-protocols
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Network Protocols Mechanics
 

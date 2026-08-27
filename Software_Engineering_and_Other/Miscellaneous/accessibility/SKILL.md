@@ -5,7 +5,9 @@ description: Comprehensive guidelines and best practices for accessibility. Use
 tags:
   - miscellaneous
   - accessibility
-depends_on: []
+depends_on:
+  - mermaid
+  - pwa
 ---
 # Skill
 

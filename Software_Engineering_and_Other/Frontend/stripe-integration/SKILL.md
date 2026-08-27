@@ -7,7 +7,8 @@ description: Implement Stripe payment processing for robust, PCI-compliant
 tags:
   - frontend
   - stripe-integration
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Stripe Integration

@@ -11,7 +11,12 @@ description: >
 tags:
   - miscellaneous
   - brand-landingpage
-depends_on: []
+depends_on:
+  - Structured Data
+  - Rate Limiting
+  - apis
+  - deploy
+  - dashboards
 ---
 
 # Brand Landing Page Designer

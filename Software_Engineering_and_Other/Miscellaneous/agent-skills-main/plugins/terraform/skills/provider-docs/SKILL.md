@@ -11,7 +11,9 @@ metadata:
 tags:
   - skills
   - provider-docs
-depends_on: []
+depends_on:
+  - go
+  - github
 ---
 
 # Terraform Provider Docs

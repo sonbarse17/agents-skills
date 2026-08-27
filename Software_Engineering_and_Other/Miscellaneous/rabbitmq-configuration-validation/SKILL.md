@@ -14,7 +14,12 @@ metadata:
 tags:
   - miscellaneous
   - rabbitmq-configuration-validation
-depends_on: []
+depends_on:
+  - rabbitmq-queue-and-dead-letter-troubleshooting
+  - nats-and-pulsar-lightweight-messaging-configuration
+  - rabbitmq-configuration
+  - go
+  - incident
 ---
 
 # RabbitMQ Configuration Validation

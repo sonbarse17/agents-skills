@@ -18,7 +18,12 @@ metadata:
 tags:
   - workflows
   - chef-puppet-saltstack-legacy-config-management
-depends_on: []
+depends_on:
+  - python
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
+  - ansible
+  - ansible-playbook-and-role-design
 ---
 
 # Chef, Puppet, and SaltStack Configuration Management for Legacy Enterprise

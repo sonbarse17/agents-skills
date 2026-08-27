@@ -10,7 +10,12 @@ metadata:
 tags:
   - workflows
   - ai-pipeline-orchestration
-depends_on: []
+depends_on:
+  - ETL Pipelines
+  - embeddings
+  - python
+  - observability
+  - monitoring
 ---
 
 # AI Pipeline Orchestration

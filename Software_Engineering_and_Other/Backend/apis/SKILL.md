@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for apis. Use this
 tags:
   - backend
   - apis
-depends_on: []
+depends_on:
+  - mermaid
+  - pwa
+  - accessibility
 ---
 # Skill
 

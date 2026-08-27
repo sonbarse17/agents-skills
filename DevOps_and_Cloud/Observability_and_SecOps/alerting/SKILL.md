@@ -13,7 +13,12 @@ license: MIT
 tags:
   - observability_and_secops
   - alerting
-depends_on: []
+depends_on:
+  - slo-definition
+  - runbooks
+  - runbook
+  - capacity
+  - deploy
 ---
 
 # Alerting

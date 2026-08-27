@@ -27,7 +27,12 @@ description: >
 tags:
   - skills
   - ui-widget-developer
-depends_on: []
+depends_on:
+  - vscode
+  - declarative-agent-developer
+  - python
+  - typescript
+  - commands
 ---
 
 # Copilot MCP Server Development

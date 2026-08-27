@@ -22,7 +22,12 @@ tags:
   - swagger
   - documentation
   - api-spec
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - typescript
+  - profiling
+  - opentelemetry
 ---
 
 # Backend OpenAPI Documentation

@@ -23,7 +23,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-idp-deployment-with-docker-from-scratch
-depends_on: []
+depends_on:
+  - rbac
+  - service-scorecards-and-maturity-model-design
+  - platform-self-service-api-and-workflow-design
+  - golden-path-template-design-for-developer-platforms
+  - multi-tenancy-and-team-workspace-design-for-idp
 ---
 
 # Complete IDP Deployment with [Docker](../docker/SKILL.md) from Scratch

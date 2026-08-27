@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - hashicorp-vault
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - postgresql
+  - sops-encryption
+  - kubernetes-hardening
 ---
 
 # HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)

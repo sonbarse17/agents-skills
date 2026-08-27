@@ -7,7 +7,12 @@ description: Guides systematic root-cause debugging. Use when tests fail, builds
 tags:
   - patterns
   - debugging-and-error-recovery
-depends_on: []
+depends_on:
+  - git
+  - apis
+  - typescript
+  - commands
+  - test-driven-development
 ---
 
 # Debugging and Error Recovery

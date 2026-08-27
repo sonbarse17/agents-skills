@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-service-connectivity-troubleshooting
-depends_on: []
+depends_on:
+  - service-mesh-istio
+  - ingress-nginx-configuration
+  - service-mesh
+  - pod-crashloop-and-oom-troubleshooting
+  - kubernetes-cluster-post-provision-conformance-validation
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Service Connectivity Troubleshooting

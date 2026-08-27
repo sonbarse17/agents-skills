@@ -21,7 +21,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-kubernetes-deployment-with-k3s-from-scratch
-depends_on: []
+depends_on:
+  - vault
+  - ingress-nginx-configuration
+  - monitoring
+  - incident
+  - capacity
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment with K3s From Scratch

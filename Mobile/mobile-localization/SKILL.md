@@ -17,7 +17,12 @@ tags:
   - mobile
   - localization
   - phase-10
-depends_on: []
+depends_on:
+  - mobile-widgets
+  - ios
+  - android
+  - accessibility
+  - python
 ---
 
 # Mobile Localization Skill

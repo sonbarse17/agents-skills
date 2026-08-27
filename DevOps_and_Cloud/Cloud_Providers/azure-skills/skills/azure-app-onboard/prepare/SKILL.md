@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for prepare. Use this
 tags:
   - azure-app-onboard
   - prepare
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - capacity
+  - serverless
+  - deploy
 ---
 # Prepare — Architecture Planning & Cost Estimation
 

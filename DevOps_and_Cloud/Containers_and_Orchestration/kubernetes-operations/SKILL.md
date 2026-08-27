@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - kubernetes-operations
-depends_on: []
+depends_on:
+  - incident
+  - capacity
+  - kubernetes-storage
+  - kubernetes-security
+  - kubernetes
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operations

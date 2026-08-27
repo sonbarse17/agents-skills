@@ -14,7 +14,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-keyvault-py
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - python
+  - go
+  - azure-keyvault
 ---
 
 # Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

@@ -23,7 +23,12 @@ tags:
   - platform
   - architecture
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - git
+  - python
+  - postgresql
 ---
 
 # Data Platform Agent

@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - ebpf-observability
-depends_on: []
+depends_on:
+  - git
+  - profiling
+  - commands
+  - observability
+  - monitoring
 ---
 
 # eBPF [Observability](../observability/SKILL.md)

@@ -22,7 +22,12 @@ tags:
   - strategy
   - governance
   - phase-7
-depends_on: []
+depends_on:
+  - scan
+  - data-data-quality
+  - data-data-platform
+  - accessibility
+  - apis
 ---
 
 # Data Strategy

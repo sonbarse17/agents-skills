@@ -18,7 +18,12 @@ metadata:
 tags:
   - frontend
   - slo-sli-and-error-budget-design
-depends_on: []
+depends_on:
+  - incident-response-and-on-call-management
+  - environment-promotion-strategy
+  - blameless-postmortem-and-root-cause-analysis
+  - root-cause-analysis
+  - on-call-management
 ---
 
 # SLO/SLI and Error Budget Design

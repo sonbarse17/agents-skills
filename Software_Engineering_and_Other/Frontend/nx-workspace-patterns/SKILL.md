@@ -6,7 +6,9 @@ description: Configure and optimize Nx monorepo workspaces. Use when setting up
 tags:
   - frontend
   - nx-workspace-patterns
-depends_on: []
+depends_on:
+  - monorepo
+  - commands
 ---
 
 # Nx Workspace Patterns

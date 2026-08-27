@@ -20,7 +20,11 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-engineer
-depends_on: []
+depends_on:
+  - github
+  - commit
+  - cost
+  - aws
 ---
 
 # Terraform Engineer

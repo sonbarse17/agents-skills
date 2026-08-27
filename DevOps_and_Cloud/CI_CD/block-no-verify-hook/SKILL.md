@@ -6,7 +6,10 @@ description: Configure a PreToolUse hook to prevent AI agents from skipping git
 tags:
   - ci_cd
   - block-no-verify-hook
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - commit
 ---
 
 # Block No-Verify Hook

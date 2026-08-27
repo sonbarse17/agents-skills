@@ -20,7 +20,12 @@ metadata:
 tags:
   - observability_and_secops
   - sre-engineer
-depends_on: []
+depends_on:
+  - python
+  - go
+  - runbooks
+  - runbook
+  - monitoring
 ---
 
 # SRE Engineer

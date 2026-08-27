@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-compute
-depends_on: []
+depends_on:
+  - microservices
+  - autoscaling
+  - terraform-gcp
+  - monitoring
+  - gcp-gke
 ---
 
 # GCP Compute Engine

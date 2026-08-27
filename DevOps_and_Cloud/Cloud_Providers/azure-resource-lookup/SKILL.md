@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-lookup
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - monitoring
+  - kubernetes
 ---
 
 # Azure Resource Lookup

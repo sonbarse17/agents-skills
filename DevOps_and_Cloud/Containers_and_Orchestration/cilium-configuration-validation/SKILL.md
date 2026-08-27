@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - cilium-configuration-validation
-depends_on: []
+depends_on:
+  - linkerd-configuration-validation
+  - consul-configuration-validation
+  - go
+  - commands
+  - incident
 ---
 
 # Cilium Configuration Validation

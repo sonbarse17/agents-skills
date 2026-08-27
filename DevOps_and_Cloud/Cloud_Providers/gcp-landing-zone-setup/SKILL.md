@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-landing-zone-setup
-depends_on: []
+depends_on:
+  - git
+  - apis
+  - cost
+  - cloud-networking
+  - cloud-cost-finops-optimization
 ---
 
 # GCP Landing Zone Setup

@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - sbom-supply-chain
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - scan
+  - policy-as-code
+  - model-supply-chain-security
+  - dependency-scanning
 ---
 
 # SBOM & Supply Chain Security

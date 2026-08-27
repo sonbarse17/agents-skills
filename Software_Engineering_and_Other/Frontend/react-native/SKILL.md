@@ -5,7 +5,8 @@ description: Expert knowledge in React Native, focusing on FlatList optimization
 tags:
   - frontend
   - react-native
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # React Native Expertise
 

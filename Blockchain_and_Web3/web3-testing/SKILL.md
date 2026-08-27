@@ -6,7 +6,8 @@ description: Test smart contracts comprehensively using Hardhat and Foundry with
 tags:
   - blockchain_and_web3
   - web3-testing
-depends_on: []
+depends_on:
+  - deploy
 ---
 
 # Web3 Smart Contract Testing

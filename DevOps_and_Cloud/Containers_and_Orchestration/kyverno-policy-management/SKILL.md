@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kyverno-policy-management
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - policy-as-code-guardrails
+  - policy-as-code
+  - opa-gatekeeper-policy-authoring
+  - devsecops
 ---
 
 # Kyverno Policy Management

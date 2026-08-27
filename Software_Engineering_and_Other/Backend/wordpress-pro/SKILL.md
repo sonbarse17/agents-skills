@@ -23,7 +23,11 @@ metadata:
 tags:
   - backend
   - wordpress-pro
-depends_on: []
+depends_on:
+  - apis
+  - github
+  - audit
+  - prepare
 ---
 
 # WordPress Pro

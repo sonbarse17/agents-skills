@@ -5,7 +5,8 @@ description: Fundamental principles of AI Agent cognitive loops, contrasting
 tags:
   - ai-agents
   - core-architectures
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Core Architectures: The Autonomous Cognitive Loop

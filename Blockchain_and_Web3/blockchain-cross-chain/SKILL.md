@@ -17,7 +17,12 @@ tags:
   - bridge
   - interoperability
   - phase-blockchain
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - typescript
+  - go
+  - monitoring
 ---
 
 # Blockchain Cross-Chain

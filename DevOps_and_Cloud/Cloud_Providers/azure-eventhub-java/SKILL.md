@@ -11,7 +11,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-eventhub-java
-depends_on: []
+depends_on:
+  - azure-messaging
 ---
 
 # Azure Event Hubs SDK for Java

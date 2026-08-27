@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - consul-service-mesh-and-discovery-configuration
-depends_on: []
+depends_on:
+  - datacenter
+  - consul-configuration-validation
+  - service-mesh-istio
+  - service-mesh
+  - kubernetes
 ---
 
 # Consul Service Mesh and Discovery Configuration

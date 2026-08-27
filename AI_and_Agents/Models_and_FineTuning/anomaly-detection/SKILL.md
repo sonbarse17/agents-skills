@@ -25,7 +25,12 @@ tags:
   - anomaly
   - detection
   - phase-11
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - runbooks
+  - observability
+  - monitoring
 ---
 
 # ML Anomaly Detection

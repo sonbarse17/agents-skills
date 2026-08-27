@@ -6,7 +6,8 @@ description: Master Go concurrency with goroutines, channels, sync primitives,
 tags:
   - frontend
   - go-concurrency-patterns
-depends_on: []
+depends_on:
+  - go
 ---
 
 # Go Concurrency Patterns

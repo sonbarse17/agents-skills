@@ -19,7 +19,12 @@ tags:
   - product
   - onboarding
   - phase-8
-depends_on: []
+depends_on:
+  - design-patterns
+  - vault
+  - Rate Limiting
+  - product-analytics
+  - product-ab-testing
 ---
 
 # Onboarding Flow Agent

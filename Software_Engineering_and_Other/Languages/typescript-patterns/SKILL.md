@@ -24,7 +24,10 @@ tags:
   - patterns
   - types
   - universal
-depends_on: []
+depends_on:
+  - accessibility
+  - typescript
+  - cost
 ---
 
 # [TypeScript](../../Frontend/typescript/SKILL.md) Patterns for Frontend

@@ -7,7 +7,9 @@ description: Convert raw notes, error logs, voice dictation, or screenshots into
 tags:
   - ci_cd
   - github-issue-creator
-depends_on: []
+depends_on:
+  - github
+  - deploy
 ---
 
 # [GitHub](../github/SKILL.md) Issue Creator

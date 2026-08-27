@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - logs-search
-depends_on: []
+depends_on:
+  - api-gateway
+  - opentelemetry
+  - observability
+  - incident
+  - kubernetes
 ---
 
 # Logs Search

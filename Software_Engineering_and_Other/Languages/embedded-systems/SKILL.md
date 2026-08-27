@@ -19,7 +19,10 @@ metadata:
 tags:
   - languages
   - embedded-systems
-depends_on: []
+depends_on:
+  - rtos
+  - github
+  - bare-metal
 ---
 
 # Embedded Systems Engineer

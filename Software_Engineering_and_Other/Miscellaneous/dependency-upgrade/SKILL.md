@@ -7,7 +7,12 @@ description: Manage major dependency version upgrades with compatibility
 tags:
   - miscellaneous
   - dependency-upgrade
-depends_on: []
+depends_on:
+  - git
+  - typescript
+  - github
+  - commit
+  - audit
 ---
 
 # Dependency Upgrade

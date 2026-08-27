@@ -24,7 +24,12 @@ tags:
   - provisioning
   - hardware
   - phase-5
-depends_on: []
+depends_on:
+  - vault
+  - datacenter
+  - python
+  - infrastructure-as-code
+  - ansible
 ---
 
 # Bare Metal Infrastructure

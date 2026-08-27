@@ -19,7 +19,12 @@ metadata:
 tags:
   - skills
   - provider-configuration
-depends_on: []
+depends_on:
+  - go
+  - provider-resources
+  - new-terraform-provider
+  - github
+  - aws
 ---
 
 # Terraform Provider Configuration and Authentication

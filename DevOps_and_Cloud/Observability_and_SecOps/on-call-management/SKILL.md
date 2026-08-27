@@ -12,7 +12,11 @@ license: MIT
 tags:
   - observability_and_secops
   - on-call-management
-depends_on: []
+depends_on:
+  - incident-response
+  - incident
+  - alerting
+  - cost
 ---
 
 # On-Call Management

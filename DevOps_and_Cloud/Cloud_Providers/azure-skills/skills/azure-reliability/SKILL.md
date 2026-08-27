@@ -15,7 +15,12 @@ metadata:
 tags:
   - skills
   - azure-reliability
-depends_on: []
+depends_on:
+  - python
+  - go
+  - commands
+  - azure-deploy
+  - monitoring
 ---
 
 # Azure Reliability Assessment & Configuration

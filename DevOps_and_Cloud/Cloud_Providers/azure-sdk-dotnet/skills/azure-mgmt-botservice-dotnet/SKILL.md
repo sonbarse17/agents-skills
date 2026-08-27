@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-mgmt-botservice-dotnet
-depends_on: []
+depends_on:
+  - vault
+  - github
 ---
 
 # Azure.ResourceManager.BotService (.NET)

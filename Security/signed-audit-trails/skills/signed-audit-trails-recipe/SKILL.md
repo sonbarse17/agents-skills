@@ -8,7 +8,12 @@ description: Step-by-step cookbook for setting up cryptographically signed audit
 tags:
   - skills
   - signed-audit-trails-recipe
-depends_on: []
+depends_on:
+  - git
+  - python
+  - typescript
+  - commands
+  - github
 ---
 
 # Signed [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Trails for Claude Code Tool Calls

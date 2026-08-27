@@ -24,7 +24,12 @@ tags:
   - cqrs
   - patterns
   - architecture
-depends_on: []
+depends_on:
+  - jest
+  - event-sourcing
+  - python
+  - typescript
+  - commands
 ---
 
 # Backend CQRS Patterns

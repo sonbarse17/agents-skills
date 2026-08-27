@@ -20,7 +20,12 @@ tags:
   - svelte
   - sveltekit
   - phase-3
-depends_on: []
+depends_on:
+  - vault
+  - seo
+  - Rate Limiting
+  - typescript
+  - commands
 ---
 
 # SvelteKit

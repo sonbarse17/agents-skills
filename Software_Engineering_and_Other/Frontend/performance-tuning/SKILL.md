@@ -12,7 +12,12 @@ license: MIT
 tags:
   - frontend
   - performance-tuning
-depends_on: []
+depends_on:
+  - scalability-design
+  - profiling
+  - commands
+  - load-testing
+  - capacity-planning
 ---
 
 # Performance Tuning

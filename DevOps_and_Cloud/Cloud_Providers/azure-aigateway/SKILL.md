@@ -14,7 +14,12 @@ compatibility: Requires Azure CLI (az) for configuration and testing
 tags:
   - cloud_providers
   - azure-aigateway
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - observability
+  - github
+  - deploy
 ---
 
 # Azure AI Gateway

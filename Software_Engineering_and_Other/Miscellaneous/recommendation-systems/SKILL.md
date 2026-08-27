@@ -4,7 +4,9 @@ description: Implementation of Collaborative Filtering for recommendation system
 tags:
   - miscellaneous
   - recommendation-systems
-depends_on: []
+depends_on:
+  - mermaid
+  - python
 ---
 
 # Recommendation Systems (Collaborative Filtering)

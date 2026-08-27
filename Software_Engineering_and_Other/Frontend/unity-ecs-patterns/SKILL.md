@@ -6,7 +6,8 @@ description: Master Unity ECS (Entity Component System) with DOTS, Jobs, and
 tags:
   - frontend
   - unity-ecs-patterns
-depends_on: []
+depends_on:
+  - unity
 ---
 
 # [Unity](../../../Game_Development/unity/SKILL.md) ECS Patterns

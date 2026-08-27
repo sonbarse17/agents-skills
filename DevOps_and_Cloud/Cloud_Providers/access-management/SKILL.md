@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - access-management
-depends_on: []
+depends_on:
+  - cloud-manage-project
+  - cloud-create-project
+  - apis
+  - commands
+  - observability
 ---
 
 # Cloud Access Management

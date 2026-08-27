@@ -14,7 +14,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-ingestion-java
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Azure Monitor Ingestion SDK for Java

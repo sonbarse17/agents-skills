@@ -25,7 +25,12 @@ tags:
   - disaster-recovery
   - business-continuity
   - phase-5
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - postgresql
+  - autoscaling
+  - runbooks
 ---
 
 # Backup and Disaster Recovery

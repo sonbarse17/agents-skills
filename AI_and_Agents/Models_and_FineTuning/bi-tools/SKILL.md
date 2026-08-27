@@ -22,7 +22,12 @@ tags:
   - data
   - analytics
   - phase-10
-depends_on: []
+depends_on:
+  - data-data-warehouse
+  - data-data-quality
+  - git
+  - python
+  - monitoring
 ---
 
 # Data BI Tools

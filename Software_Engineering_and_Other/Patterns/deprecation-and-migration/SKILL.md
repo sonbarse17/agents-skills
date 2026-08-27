@@ -6,7 +6,12 @@ description: Manages deprecation and migration. Use when removing old systems,
 tags:
   - patterns
   - deprecation-and-migration
-depends_on: []
+depends_on:
+  - incremental-implementation
+  - typescript
+  - go
+  - observability
+  - deploy
 ---
 
 # Deprecation and Migration

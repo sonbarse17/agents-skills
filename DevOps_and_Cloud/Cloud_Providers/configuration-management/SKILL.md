@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - configuration-management
-depends_on: []
+depends_on:
+  - commands
+  - terraform-modules
+  - infrastructure-testing
+  - immutable-infrastructure
+  - ansible
 ---
 
 # Configuration Management

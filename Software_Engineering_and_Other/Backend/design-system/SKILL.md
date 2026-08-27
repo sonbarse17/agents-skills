@@ -22,7 +22,12 @@ tags:
   - design-system
   - phase-3
   - universal
-depends_on: []
+depends_on:
+  - jest
+  - vault
+  - Rate Limiting
+  - accessibility
+  - apis
 ---
 
 # Frontend Design System

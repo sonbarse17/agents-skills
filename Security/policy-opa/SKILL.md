@@ -42,7 +42,12 @@ references:
   - https://www.openpolicyagent.org/docs/latest/
   - https://www.openpolicyagent.org/docs/latest/policy-language/
   - https://www.conftest.dev/
-depends_on: []
+depends_on:
+  - soc2-compliance
+  - rbac
+  - policy-as-code
+  - gdpr-compliance
+  - infrastructure-as-code
 ---
 
 # [Policy-as-Code](../policy-as-code/SKILL.md) with Open Policy Agent

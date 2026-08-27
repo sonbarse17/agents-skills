@@ -19,7 +19,11 @@ metadata:
 tags:
   - workflows
   - cli-developer
-depends_on: []
+depends_on:
+  - python
+  - go
+  - commands
+  - github
 ---
 
 # CLI Developer

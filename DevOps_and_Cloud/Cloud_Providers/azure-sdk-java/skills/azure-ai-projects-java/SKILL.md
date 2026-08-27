@@ -14,7 +14,10 @@ metadata:
 tags:
   - skills
   - azure-ai-projects-java
-depends_on: []
+depends_on:
+  - apis
+  - github
+  - azure-ai
 ---
 
 # Azure AI Projects SDK for Java

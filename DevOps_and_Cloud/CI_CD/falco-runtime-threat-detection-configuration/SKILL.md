@@ -20,7 +20,12 @@ metadata:
 tags:
   - ci_cd
   - falco-runtime-threat-detection-configuration
-depends_on: []
+depends_on:
+  - falco-configuration-validation
+  - incident-response-and-on-call-management
+  - on-call-management
+  - incident-response
+  - incident
 ---
 
 # Falco Runtime Threat Detection Configuration

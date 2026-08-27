@@ -9,7 +9,12 @@ version: 1.0.0
 tags:
   - product_and_business
   - startup-financial-modeling
-depends_on: []
+depends_on:
+  - capacity
+  - deploy
+  - cost
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Startup Financial Modeling

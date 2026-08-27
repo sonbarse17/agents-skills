@@ -28,7 +28,12 @@ tags:
   - rbac
   - abac
   - phase-5
-depends_on: []
+depends_on:
+  - rbac
+  - Rate Limiting
+  - python
+  - postgresql
+  - go
 ---
 
 # Backend Authorization

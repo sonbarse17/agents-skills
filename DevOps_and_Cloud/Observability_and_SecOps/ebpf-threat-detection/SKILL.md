@@ -4,7 +4,12 @@ description: eBPF Threat Detection, Tetragon, Falco, and Kernel Syscall Intercep
 tags:
   - observability_and_secops
   - ebpf-threat-detection
-depends_on: []
+depends_on:
+  - mermaid
+  - observability
+  - monitoring
+  - alerting
+  - kubernetes
 ---
 
 # eBPF-Based Threat Detection and Kernel Instrumentation

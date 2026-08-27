@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - jenkins-declarative-pipeline-per-repo
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - git
+  - docker
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Declarative Pipeline Per Repo

@@ -15,7 +15,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-document-intelligence-dotnet
-depends_on: []
+depends_on:
+  - Structured Data
+  - github
 ---
 
 # Azure.AI.DocumentIntelligence (.NET)

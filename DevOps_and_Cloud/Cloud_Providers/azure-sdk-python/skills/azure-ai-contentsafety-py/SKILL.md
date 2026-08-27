@@ -14,7 +14,10 @@ metadata:
 tags:
   - skills
   - azure-ai-contentsafety-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Content Safety SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

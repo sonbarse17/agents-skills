@@ -9,7 +9,12 @@ description: Build applications powered by GitHub Copilot using the Copilot SDK.
 tags:
   - cloud_providers
   - copilot-sdk
-depends_on: []
+depends_on:
+  - vault
+  - git
+  - customize
+  - code-review
+  - python
 ---
 
 # [GitHub](../../CI_CD/github/SKILL.md) Copilot SDK

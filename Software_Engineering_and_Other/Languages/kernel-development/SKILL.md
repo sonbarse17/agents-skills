@@ -4,7 +4,8 @@ description: Academic reference on PCB, Page Tables, and Interrupt Handlers.
 tags:
   - languages
   - kernel-development
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Kernel Development Mechanics
 

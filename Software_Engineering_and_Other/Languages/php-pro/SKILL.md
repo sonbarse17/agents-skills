@@ -20,7 +20,12 @@ metadata:
 tags:
   - languages
   - php-pro
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - apis
+  - commands
+  - github
 ---
 
 # PHP Pro

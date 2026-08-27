@@ -4,7 +4,10 @@ description: Best practices for Kafka/RabbitMQ message brokering and event sourc
 tags:
   - patterns
   - event-driven-architecture
-depends_on: []
+depends_on:
+  - mermaid
+  - go
+  - github
 ---
 
 # Event Driven Architecture

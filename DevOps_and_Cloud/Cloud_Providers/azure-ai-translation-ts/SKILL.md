@@ -12,7 +12,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-translation-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Azure Translation SDKs for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

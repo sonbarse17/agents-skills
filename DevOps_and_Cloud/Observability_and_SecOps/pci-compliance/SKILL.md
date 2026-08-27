@@ -6,7 +6,9 @@ description: Implement PCI DSS compliance requirements for secure handling of
 tags:
   - observability_and_secops
   - pci-compliance
-depends_on: []
+depends_on:
+  - vault
+  - python
 ---
 
 # PCI Compliance

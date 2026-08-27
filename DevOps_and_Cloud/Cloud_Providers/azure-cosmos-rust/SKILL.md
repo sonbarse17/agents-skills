@@ -13,7 +13,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-cosmos-rust
-depends_on: []
+depends_on:
+  - rbac
+  - internals
+  - apis
+  - commands
+  - github
 ---
 
 # Azure Cosmos DB library for Rust

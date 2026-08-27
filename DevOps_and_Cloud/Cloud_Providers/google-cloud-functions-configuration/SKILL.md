@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - google-cloud-functions-configuration
-depends_on: []
+depends_on:
+  - apis
+  - capacity
+  - serverless
+  - kubernetes
+  - deploy
 ---
 
 # Google Cloud Functions Configuration

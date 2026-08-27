@@ -16,7 +16,12 @@ metadata:
 tags:
   - workflows
   - crewai-and-autogen-multi-agent-frameworks
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - incident
+  - docker
+  - cost
 ---
 
 # CrewAI and AutoGen Multi-Agent Frameworks

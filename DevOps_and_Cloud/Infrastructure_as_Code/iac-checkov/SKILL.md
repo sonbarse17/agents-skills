@@ -35,7 +35,12 @@ references:
   - https://www.checkov.io/
   - https://github.com/bridgecrewio/checkov
   - https://docs.paloaltonetworks.com/prisma/prisma-cloud
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - python
+  - pulumi
+  - cloudformation
 ---
 
 # Infrastructure as Code Security with Checkov

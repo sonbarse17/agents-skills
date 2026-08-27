@@ -17,7 +17,12 @@ tags:
   - security
   - threat-intel
   - phase-8
-depends_on: []
+depends_on:
+  - soc-operations
+  - siem-engineering
+  - python
+  - monitoring
+  - incident
 ---
 
 # Threat Intelligence

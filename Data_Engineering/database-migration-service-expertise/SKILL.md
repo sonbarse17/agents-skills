@@ -16,7 +16,12 @@ metadata:
 tags:
   - data_engineering
   - database-migration-service-expertise
-depends_on: []
+depends_on:
+  - accessibility
+  - postgresql
+  - mysql
+  - apis
+  - commands
 ---
 
 # AWS DMS Operational Review & Troubleshooting

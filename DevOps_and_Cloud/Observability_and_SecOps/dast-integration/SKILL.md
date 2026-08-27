@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - dast-integration
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - Rate Limiting
+  - apis
 ---
 
 # DAST Integration

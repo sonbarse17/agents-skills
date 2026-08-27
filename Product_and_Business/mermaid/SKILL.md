@@ -14,7 +14,10 @@ metadata:
 tags:
   - product_and_business
   - mermaid
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - commit
 ---
 
 # Mermaid.js

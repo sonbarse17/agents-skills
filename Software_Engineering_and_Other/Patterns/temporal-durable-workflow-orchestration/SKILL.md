@@ -19,7 +19,12 @@ metadata:
 tags:
   - patterns
   - temporal-durable-workflow-orchestration
-depends_on: []
+depends_on:
+  - dagster-and-prefect-pipeline-authoring
+  - temporal-configuration-validation
+  - python
+  - rabbitmq-configuration
+  - postgresql
 ---
 
 # Temporal Durable Workflow Orchestration

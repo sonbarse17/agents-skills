@@ -11,7 +11,10 @@ license: MIT
 tags:
   - ci_cd
   - build-optimization
-depends_on: []
+depends_on:
+  - go
+  - docker
+  - commit
 ---
 
 # Build Optimization

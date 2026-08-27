@@ -18,7 +18,12 @@ tags:
   - product
   - persona
   - phase-8
-depends_on: []
+depends_on:
+  - product-customer-journey
+  - create-story
+  - product-ab-testing
+  - product-user-research
+  - capacity
 ---
 
 # Persona Development Agent

@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - arangodb-multi-model-database-operations
-depends_on: []
+depends_on:
+  - neo4j-graph-database-operations
+  - mongodb-operations-and-scaling
+  - database-operations
+  - cassandra-wide-column-database-operations
+  - mongodb
 ---
 
 # ArangoDB Multi-Model Database Operations

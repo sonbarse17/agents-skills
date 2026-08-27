@@ -15,7 +15,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-manager-postgresql-dotnet
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - github
 ---
 
 # Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (.NET)

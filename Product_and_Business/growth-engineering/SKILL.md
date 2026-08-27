@@ -18,7 +18,12 @@ tags:
   - product
   - growth
   - phase-8
-depends_on: []
+depends_on:
+  - product-pricing-strategy
+  - product-customer-journey
+  - seo
+  - product-analytics
+  - product-ab-testing
 ---
 
 # Growth Engineering Agent

@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for eslint. Use this
 tags:
   - miscellaneous
   - eslint
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - github
+  - deploy
+  - commit
 ---
 # Skill
 

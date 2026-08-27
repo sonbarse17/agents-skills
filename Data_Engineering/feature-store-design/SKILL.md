@@ -15,7 +15,12 @@ metadata:
 tags:
   - data_engineering
   - feature-store-design
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - data-and-model-lineage
+  - python
+  - monitoring
+  - alerting
 ---
 
 # Feature Store Design

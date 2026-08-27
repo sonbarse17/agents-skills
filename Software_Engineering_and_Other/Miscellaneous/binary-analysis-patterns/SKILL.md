@@ -7,7 +7,10 @@ description: Master binary analysis patterns including disassembly,
 tags:
   - miscellaneous
   - binary-analysis-patterns
-depends_on: []
+depends_on:
+  - scan
+  - reverse-engineering
+  - python
 ---
 
 # Binary Analysis Patterns

@@ -16,7 +16,10 @@ metadata:
 tags:
   - mobile
   - flutter-expert
-depends_on: []
+depends_on:
+  - profiling
+  - github
+  - scaffold
 ---
 
 # Flutter Expert

@@ -16,7 +16,12 @@ metadata:
 tags:
   - frontend
   - kustomize-overlay-management
-depends_on: []
+depends_on:
+  - ingress-nginx-configuration
+  - kustomize
+  - kubernetes
+  - kubectl
+  - helm-chart-authoring
 ---
 
 # [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) Overlay Management

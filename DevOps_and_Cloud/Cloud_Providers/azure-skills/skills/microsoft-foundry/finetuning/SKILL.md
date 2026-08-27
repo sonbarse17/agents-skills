@@ -15,7 +15,12 @@ metadata:
 tags:
   - microsoft-foundry
   - finetuning
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - deploy
+  - cost
+  - deploy-model
 ---
 
 # Fine-Tuning on Microsoft Foundry

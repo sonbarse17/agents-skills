@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - pact-contract-testing-configuration
-depends_on: []
+depends_on:
+  - git
+  - python
+  - postgresql
+  - apis
+  - environment-promotion-strategy
 ---
 
 # Pact Contract Testing Configuration

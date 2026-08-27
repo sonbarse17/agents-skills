@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - ollama-stack
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - apis
+  - commands
+  - monitoring
 ---
 
 # Ollama Stack

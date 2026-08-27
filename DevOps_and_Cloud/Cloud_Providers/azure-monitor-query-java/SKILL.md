@@ -17,7 +17,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-query-java
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Azure Monitor Query SDK for Java

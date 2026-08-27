@@ -16,7 +16,12 @@ metadata:
 tags:
   - models_and_finetuning
   - training-pipeline-orchestration
-depends_on: []
+depends_on:
+  - feature-store-design
+  - experiment-tracking
+  - data-and-model-lineage
+  - git
+  - python
 ---
 
 # Training Pipeline Orchestration

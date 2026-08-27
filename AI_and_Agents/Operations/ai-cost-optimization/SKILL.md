@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for
 tags:
   - operations
   - ai-cost-optimization
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

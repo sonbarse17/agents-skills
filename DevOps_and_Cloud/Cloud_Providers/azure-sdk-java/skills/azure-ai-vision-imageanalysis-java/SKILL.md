@@ -11,7 +11,8 @@ metadata:
 tags:
   - skills
   - azure-ai-vision-imageanalysis-java
-depends_on: []
+depends_on:
+  - azure-ai
 ---
 
 # Azure AI Vision Image Analysis SDK for Java

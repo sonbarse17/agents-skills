@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - environment-management
-depends_on: []
+depends_on:
+  - autoscaling
+  - go
+  - terraform-modules
+  - infrastructure-as-code
+  - incident
 ---
 
 # Environment Management

@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - gitops
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - git
+  - go
+  - runbook
 ---
 
 # GitOps

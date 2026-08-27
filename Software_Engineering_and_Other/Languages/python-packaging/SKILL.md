@@ -6,7 +6,9 @@ description: Create distributable Python packages with proper project structure,
 tags:
   - languages
   - python-packaging
-depends_on: []
+depends_on:
+  - python
+  - aws
 ---
 
 # [Python](../python/SKILL.md) Packaging

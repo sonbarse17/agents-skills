@@ -21,7 +21,12 @@ tags:
   - lakehouse
   - architecture
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - unity
+  - ETL Pipelines
+  - data-data-quality
+  - architecture-patterns
 ---
 
 # Data Data Lakehouse

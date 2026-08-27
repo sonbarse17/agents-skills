@@ -15,7 +15,12 @@ metadata:
 tags:
   - architecture
   - agent-architecture-design
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - observability
+  - incident
+  - cost
 ---
 
 # Agent Architecture Design

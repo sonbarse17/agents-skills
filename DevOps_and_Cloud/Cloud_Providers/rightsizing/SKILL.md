@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - rightsizing
-depends_on: []
+depends_on:
+  - autoscaling
+  - go
+  - incident
+  - capacity
+  - deploy
 ---
 
 # Rightsizing

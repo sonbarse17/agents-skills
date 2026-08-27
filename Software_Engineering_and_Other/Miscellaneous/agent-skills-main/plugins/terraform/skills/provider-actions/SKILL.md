@@ -10,7 +10,12 @@ metadata:
 tags:
   - skills
   - provider-actions
-depends_on: []
+depends_on:
+  - run-acceptance-tests
+  - vault
+  - go
+  - provider-test-patterns
+  - provider-docs
 ---
 
 # Terraform Provider Actions Implementation Guide

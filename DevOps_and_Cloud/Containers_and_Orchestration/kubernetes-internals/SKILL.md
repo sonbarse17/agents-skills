@@ -5,7 +5,12 @@ description: The Kubernetes Control Plane under the hood, etcd consensus (Raft),
 tags:
   - containers_and_orchestration
   - kubernetes-internals
-depends_on: []
+depends_on:
+  - rbac
+  - mermaid
+  - internals
+  - go
+  - kubernetes
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Control Plane Internals

@@ -23,7 +23,12 @@ tags:
   - deep-learning
   - neural
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - ml-feature-engineering
+  - experiment-tracking
+  - architecture-patterns
+  - python
 ---
 
 # ML Deep Learning

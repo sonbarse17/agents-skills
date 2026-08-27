@@ -8,7 +8,8 @@ version: 1.0.2
 tags:
   - skills
   - parallel-debugging
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # Parallel Debugging

@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-architect
-depends_on: []
+depends_on:
+  - zero-trust
+  - cloudformation
+  - monitoring
+  - capacity
+  - github
 ---
 
 # Cloud Architect

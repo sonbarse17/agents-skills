@@ -12,7 +12,12 @@ license: MIT
 tags:
   - backend
   - load-balancing
-depends_on: []
+depends_on:
+  - caching-strategies
+  - monitoring
+  - metrics-and-monitoring
+  - capacity
+  - deploy
 ---
 
 # Load Balancing

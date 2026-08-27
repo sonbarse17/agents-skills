@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for prompt-engineering.
 tags:
   - workflows
   - prompt-engineering
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

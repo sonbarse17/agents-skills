@@ -7,7 +7,9 @@ description: Master error handling patterns across languages including
 tags:
   - backend
   - error-handling-patterns
-depends_on: []
+depends_on:
+  - python
+  - apis
 ---
 
 # Error Handling Patterns

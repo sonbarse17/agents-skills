@@ -22,7 +22,12 @@ tags:
   - vue
   - nuxt
   - phase-3
-depends_on: []
+depends_on:
+  - seo
+  - typescript
+  - sveltekit
+  - deploy
+  - cloudflare-pages
 ---
 
 # Nuxt

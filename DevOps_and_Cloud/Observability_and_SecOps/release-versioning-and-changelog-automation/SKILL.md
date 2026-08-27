@@ -15,7 +15,12 @@ metadata:
 tags:
   - observability_and_secops
   - release-versioning-and-changelog-automation
-depends_on: []
+depends_on:
+  - git
+  - dependency-management
+  - apis
+  - monorepo
+  - go
 ---
 
 # Release Versioning and Changelog Automation

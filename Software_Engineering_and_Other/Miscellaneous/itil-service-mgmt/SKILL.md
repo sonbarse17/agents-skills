@@ -17,7 +17,12 @@ compatibility:
 tags:
   - enterprise
   - phase-9
-depends_on: []
+depends_on:
+  - enterprise-architecture-governance
+  - python
+  - monitoring
+  - incident
+  - enterprise-compliance-audit
 ---
 
 # ITIL Service Management Agent

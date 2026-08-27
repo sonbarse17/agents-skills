@@ -23,7 +23,12 @@ tags:
   - cloud
   - azure
   - phase-7
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - postgresql
+  - mysql
+  - commands
 ---
 
 # Azure

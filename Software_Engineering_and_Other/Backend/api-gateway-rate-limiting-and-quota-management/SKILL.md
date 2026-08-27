@@ -18,7 +18,12 @@ metadata:
 tags:
   - backend
   - api-gateway-rate-limiting-and-quota-management
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - apis
+  - apigee-api-management-and-governance
+  - api-gateway
+  - service-mesh-istio
 ---
 
 # API Gateway Rate-Limiting and Quota Management

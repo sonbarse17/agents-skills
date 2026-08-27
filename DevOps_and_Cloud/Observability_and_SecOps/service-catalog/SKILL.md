@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - service-catalog
-depends_on: []
+depends_on:
+  - golden-paths
+  - go
+  - runbooks
+  - runbook
+  - on-call-management
 ---
 
 # Service Catalog

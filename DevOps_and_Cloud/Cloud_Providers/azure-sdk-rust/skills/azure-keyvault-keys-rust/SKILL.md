@@ -13,7 +13,11 @@ metadata:
 tags:
   - skills
   - azure-keyvault-keys-rust
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - github
 ---
 
 # Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys library for Rust

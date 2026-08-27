@@ -19,7 +19,12 @@ tags:
   - docker
   - vscode
   - codespaces
-depends_on: []
+depends_on:
+  - scan
+  - microservices
+  - vscode
+  - prettier
+  - git
 ---
 
 # Dev Container

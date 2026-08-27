@@ -17,7 +17,12 @@ tags:
   - testing
   - phase-4
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - jest
+  - eslint
+  - accessibility
 ---
 
 # Mobile Testing

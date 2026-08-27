@@ -11,7 +11,11 @@ metadata:
 tags:
   - observability_and_secops
   - linux-hardening
-depends_on: []
+depends_on:
+  - cis-benchmarks
+  - deploy
+  - firewall-config
+  - audit
 ---
 
 # Linux Hardening

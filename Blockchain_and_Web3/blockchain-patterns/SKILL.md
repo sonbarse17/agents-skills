@@ -25,7 +25,12 @@ tags:
   - tokens
   - standards
   - phase-blockchain
-depends_on: []
+depends_on:
+  - blockchain-security
+  - blockchain-core
+  - blockchain-application
+  - vault
+  - Rate Limiting
 ---
 
 # Blockchain Patterns

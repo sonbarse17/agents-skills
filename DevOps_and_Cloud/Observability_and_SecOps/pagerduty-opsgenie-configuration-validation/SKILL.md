@@ -18,7 +18,12 @@ metadata:
 tags:
   - observability_and_secops
   - pagerduty-opsgenie-configuration-validation
-depends_on: []
+depends_on:
+  - servicenow-itsm-integration
+  - python
+  - incident-response-and-on-call-management
+  - servicenow-itsm-configuration-validation
+  - runbook
 ---
 
 # PagerDuty/Opsgenie Configuration Validation

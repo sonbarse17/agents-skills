@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-mlops-platform-deployment-on-azure-from-scratch
-depends_on: []
+depends_on:
+  - rbac
+  - feature-store-design
+  - experiment-tracking
+  - vault
+  - python
 ---
 
 # Complete MLOps Platform Deployment On Azure From Scratch

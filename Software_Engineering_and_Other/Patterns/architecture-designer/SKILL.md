@@ -23,7 +23,12 @@ metadata:
 tags:
   - patterns
   - architecture-designer
-depends_on: []
+depends_on:
+  - mermaid
+  - system-design
+  - microservices
+  - architecture-patterns
+  - postgresql
 ---
 
 # Architecture Designer

@@ -11,7 +11,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-serving-kubernetes
-depends_on: []
+depends_on:
+  - autoscaling
+  - commands
+  - monitoring
+  - kubernetes-ops
+  - kubernetes
 ---
 
 # Model Serving on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)

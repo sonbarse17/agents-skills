@@ -11,7 +11,10 @@ metadata:
 tags:
   - product_and_business
   - wiki-vitepress
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - typescript
 ---
 
 # Wiki VitePress Packager

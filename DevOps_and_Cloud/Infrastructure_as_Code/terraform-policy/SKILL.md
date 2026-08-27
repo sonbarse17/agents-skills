@@ -11,7 +11,9 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-policy
-depends_on: []
+depends_on:
+  - terraform-test
+  - terraform-style-guide
 ---
 
 # [terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)

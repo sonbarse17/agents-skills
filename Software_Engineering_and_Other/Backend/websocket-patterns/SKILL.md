@@ -22,7 +22,12 @@ tags:
   - websocket
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - backend-message-queue
+  - vault
+  - Rate Limiting
+  - typescript
+  - profiling
 ---
 
 # Backend WebSocket Patterns

@@ -14,7 +14,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - container-build-and-release
-depends_on: []
+depends_on:
+  - scan
+  - changelog-automation
+  - git
+  - dependency-management
+  - go
 ---
 
 # Container Build and Release

@@ -15,7 +15,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-translation-text-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Text Translation SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

@@ -7,7 +7,12 @@ description: Configure Cedar policy enforcement and Ed25519 signed receipts for
 tags:
   - security
   - protect-mcp-setup
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - github
+  - aws
+  - audit
 ---
 
 # protect-mcp — Policy Enforcement + Signed Receipts

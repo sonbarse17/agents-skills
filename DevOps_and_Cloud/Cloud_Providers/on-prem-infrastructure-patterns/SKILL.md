@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - on-prem-infrastructure-patterns
-depends_on: []
+depends_on:
+  - autoscaling
+  - infrastructure-as-code
+  - ansible
+  - monitoring
+  - incident
 ---
 
 # On-Prem Infrastructure Patterns

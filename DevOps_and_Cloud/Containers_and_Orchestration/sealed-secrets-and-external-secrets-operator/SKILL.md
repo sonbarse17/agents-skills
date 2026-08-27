@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - sealed-secrets-and-external-secrets-operator
-depends_on: []
+depends_on:
+  - trivy-vulnerability-scanning
+  - devsecops
+  - vault
+  - git
+  - vulnerability-scanning
 ---
 
 # Sealed Secrets and External Secrets Operator

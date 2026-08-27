@@ -25,7 +25,11 @@ tags:
   - psi
   - collaboration
   - phase-11
-depends_on: []
+depends_on:
+  - python
+  - deploy
+  - aws
+  - audit
 ---
 
 # Data Clean Room

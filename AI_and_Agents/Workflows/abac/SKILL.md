@@ -29,7 +29,10 @@ tags:
   - policy-engine
   - fine-grained
   - phase-7
-depends_on: []
+depends_on:
+  - rbac
+  - pm
+  - audit
 ---
 
 # Attribute-Based Access Control (ABAC)

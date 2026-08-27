@@ -19,7 +19,10 @@ metadata:
 tags:
   - languages
   - typescript-pro
-depends_on: []
+depends_on:
+  - apis
+  - typescript
+  - github
 ---
 
 # [TypeScript](../../Frontend/typescript/SKILL.md) Pro

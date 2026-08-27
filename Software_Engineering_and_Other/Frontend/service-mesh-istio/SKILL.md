@@ -16,7 +16,12 @@ metadata:
 tags:
   - frontend
   - service-mesh-istio
-depends_on: []
+depends_on:
+  - ingress-nginx-configuration
+  - observability
+  - monitoring
+  - capacity
+  - openshift
 ---
 
 # Service Mesh (Istio)

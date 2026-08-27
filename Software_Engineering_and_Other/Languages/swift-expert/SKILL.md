@@ -21,7 +21,9 @@ metadata:
 tags:
   - languages
   - swift-expert
-depends_on: []
+depends_on:
+  - apis
+  - github
 ---
 
 # Swift Expert

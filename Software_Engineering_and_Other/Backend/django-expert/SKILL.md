@@ -21,7 +21,10 @@ metadata:
 tags:
   - backend
   - django-expert
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - github
 ---
 
 # Django Expert

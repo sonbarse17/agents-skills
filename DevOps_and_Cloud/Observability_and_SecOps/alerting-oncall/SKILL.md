@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - alerting-oncall
-depends_on: []
+depends_on:
+  - runbook-creation
+  - go
+  - runbooks
+  - runbook
+  - monitoring
 ---
 
 # [Alerting](../alerting/SKILL.md) & On-Call

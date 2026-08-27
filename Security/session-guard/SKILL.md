@@ -8,7 +8,11 @@ description: Use when working on complex multi-step tasks, when a session is
 tags:
   - security
   - session-guard
-depends_on: []
+depends_on:
+  - git
+  - monitoring
+  - github
+  - prepare
 ---
 
 # Session Guard

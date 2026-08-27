@@ -15,7 +15,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-monitoring-and-drift-detection
-depends_on: []
+depends_on:
+  - feature-store-design
+  - data-and-model-lineage
+  - python
+  - monitoring
+  - incident
 ---
 
 # Model [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) And Drift Detection

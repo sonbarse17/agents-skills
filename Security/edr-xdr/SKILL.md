@@ -16,7 +16,12 @@ tags:
   - security
   - edr
   - phase-8
-depends_on: []
+depends_on:
+  - threat-intelligence
+  - siem-engineering
+  - scan
+  - vault
+  - Rate Limiting
 ---
 
 # EDR/XDR

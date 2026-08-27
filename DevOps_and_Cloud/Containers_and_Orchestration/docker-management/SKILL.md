@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - docker-management
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - postgresql
+  - commands
+  - monitoring
 ---
 
 # [Docker](../docker/SKILL.md) Management

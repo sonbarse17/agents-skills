@@ -22,7 +22,12 @@ tags:
   - database
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - scan
+  - backend-auth-patterns
+  - vault
+  - Rate Limiting
+  - python
 ---
 
 # Backend Database Patterns

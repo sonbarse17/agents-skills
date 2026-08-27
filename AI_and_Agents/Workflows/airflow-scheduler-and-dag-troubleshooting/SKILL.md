@@ -15,7 +15,12 @@ metadata:
 tags:
   - workflows
   - airflow-scheduler-and-dag-troubleshooting
-depends_on: []
+depends_on:
+  - dagster-and-prefect-pipeline-authoring
+  - python
+  - incident
+  - capacity
+  - kubernetes
 ---
 
 # Airflow Scheduler and DAG Troubleshooting

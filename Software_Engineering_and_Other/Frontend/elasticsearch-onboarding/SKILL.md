@@ -14,7 +14,10 @@ metadata:
 tags:
   - frontend
   - elasticsearch-onboarding
-depends_on: []
+depends_on:
+  - embeddings
+  - apis
+  - go
 ---
 
 # Elastic Developer Guide

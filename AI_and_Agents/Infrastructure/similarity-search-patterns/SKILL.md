@@ -6,7 +6,8 @@ description: Implement efficient similarity search with vector databases. Use
 tags:
   - infrastructure
   - similarity-search-patterns
-depends_on: []
+depends_on:
+  - embeddings
 ---
 
 # Similarity Search Patterns

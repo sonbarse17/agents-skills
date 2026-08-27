@@ -5,7 +5,11 @@ description: Comprehensive guidelines and best practices for event-sourcing. Use
 tags:
   - system-design
   - event-sourcing
-depends_on: []
+depends_on:
+  - mermaid
+  - Rate Limiting
+  - postgresql
+  - commands
 ---
 # Skill
 

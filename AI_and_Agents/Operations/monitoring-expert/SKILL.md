@@ -23,7 +23,12 @@ metadata:
 tags:
   - operations
   - monitoring-expert
-depends_on: []
+depends_on:
+  - profiling
+  - opentelemetry
+  - observability
+  - monitoring
+  - capacity-planning
 ---
 
 # [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Expert

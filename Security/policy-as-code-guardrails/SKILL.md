@@ -18,7 +18,12 @@ metadata:
 tags:
   - security
   - policy-as-code-guardrails
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - sast-integration
+  - policy-as-code
+  - software-composition-analysis-sca
+  - go
 ---
 
 # Policy as Code & Guardrails

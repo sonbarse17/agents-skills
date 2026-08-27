@@ -10,7 +10,12 @@ description: Extracts what the user actually wants instead of what they think
 tags:
   - frontend
   - interview-me
-depends_on: []
+depends_on:
+  - idea-refine
+  - spec-driven-development
+  - source-driven-development
+  - planning-and-task-breakdown
+  - go
 ---
 
 # Interview Me

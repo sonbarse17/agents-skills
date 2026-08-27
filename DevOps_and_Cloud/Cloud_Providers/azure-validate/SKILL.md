@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-validate
-depends_on: []
+depends_on:
+  - commands
+  - azure-deploy
+  - deploy
+  - azure-prepare
+  - prepare
 ---
 
 # Azure Validate

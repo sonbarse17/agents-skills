@@ -18,7 +18,12 @@ tags:
   - backend
   - python
   - phase-4
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - commands
+  - serverless
+  - docker
 ---
 
 # Flask Backend

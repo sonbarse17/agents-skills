@@ -17,7 +17,10 @@ metadata:
 tags:
   - backend
   - dotnet-core-expert
-depends_on: []
+depends_on:
+  - apis
+  - docker
+  - github
 ---
 
 # .NET Core Expert

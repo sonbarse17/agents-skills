@@ -14,7 +14,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage-file-share-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # @azure/storage-file-share ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)

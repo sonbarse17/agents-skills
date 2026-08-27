@@ -18,7 +18,10 @@ metadata:
 tags:
   - architecture
   - api-designer
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - apis
+  - github
 ---
 
 # API Designer

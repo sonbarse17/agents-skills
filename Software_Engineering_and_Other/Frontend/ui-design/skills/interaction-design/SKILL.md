@@ -6,7 +6,9 @@ description: Design and implement microinteractions, motion design, transitions,
 tags:
   - skills
   - interaction-design
-depends_on: []
+depends_on:
+  - accessibility
+  - go
 ---
 
 # Interaction Design

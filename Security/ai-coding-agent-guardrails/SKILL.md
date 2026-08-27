@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - ai-coding-agent-guardrails
-depends_on: []
+depends_on:
+  - security-review
+  - scan
+  - git
+  - eslint
+  - python
 ---
 
 # AI Coding Agent Guardrails

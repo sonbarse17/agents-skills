@@ -21,7 +21,12 @@ metadata:
 tags:
   - product_and_business
   - legacy-modernizer
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - apis
+  - monitoring
+  - github
 ---
 
 # Legacy Modernizer

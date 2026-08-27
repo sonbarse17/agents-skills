@@ -18,7 +18,12 @@ metadata:
 tags:
   - product_and_business
   - manage-project
-depends_on: []
+depends_on:
+  - cloud-create-project
+  - elasticsearch-authn
+  - commands
+  - observability
+  - serverless
 ---
 
 # Manage [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project

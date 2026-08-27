@@ -12,7 +12,11 @@ metadata:
 tags:
   - skills
   - azure-identity-ts
-depends_on: []
+depends_on:
+  - vscode
+  - apis
+  - typescript
+  - kubernetes
 ---
 
 # Azure Identity library for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

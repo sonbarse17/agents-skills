@@ -16,7 +16,11 @@ metadata:
 tags:
   - skills
   - azure-ai-voicelive-py
-depends_on: []
+depends_on:
+  - python
+  - commit
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Voice Live SDK

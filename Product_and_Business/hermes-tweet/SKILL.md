@@ -16,7 +16,12 @@ metadata:
 tags:
   - product_and_business
   - hermes-tweet
-depends_on: []
+depends_on:
+  - social-publishing
+  - monitoring
+  - github
+  - audit
+  - prepare
 ---
 
 # Hermes Tweet

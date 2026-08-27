@@ -4,7 +4,9 @@ description: AMM math (x*y=k) and Lending pool architectures.
 tags:
   - blockchain_and_web3
   - defi-protocols
-depends_on: []
+depends_on:
+  - mermaid
+  - vault
 ---
 
 # DeFi Protocols

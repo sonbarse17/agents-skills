@@ -17,7 +17,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-mgmt-arizeaiobservabilityeval-dotnet
-depends_on: []
+depends_on:
+  - observability
+  - github
 ---
 
 # Azure.ResourceManager.ArizeAIObservabilityEval

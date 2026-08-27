@@ -17,7 +17,12 @@ tags:
   - design
   - visual-design
   - phase-3
-depends_on: []
+depends_on:
+  - scan
+  - design-brand-identity
+  - accessibility
+  - typescript
+  - design-systems
 ---
 
 # Visual Design

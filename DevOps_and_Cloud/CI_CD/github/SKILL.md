@@ -11,7 +11,10 @@ metadata:
 tags:
   - ci_cd
   - github
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - commit
 ---
 
 # GitHub Skill

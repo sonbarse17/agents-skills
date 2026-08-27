@@ -4,7 +4,10 @@ description: Automated auditing, reentrancy guards, and flashloan attack prevent
 tags:
   - blockchain_and_web3
   - smart-contract-security
-depends_on: []
+depends_on:
+  - mermaid
+  - vault
+  - audit
 ---
 
 # Smart Contract Security

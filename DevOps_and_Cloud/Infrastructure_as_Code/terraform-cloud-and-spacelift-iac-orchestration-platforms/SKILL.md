@@ -17,7 +17,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-cloud-and-spacelift-iac-orchestration-platforms
-depends_on: []
+depends_on:
+  - security-scanning
+  - scan
+  - policy-as-code
+  - devsecops
+  - git
 ---
 
 # Terraform Cloud and Spacelift: IaC Orchestration Platforms

@@ -24,7 +24,12 @@ metadata:
 tags:
   - backend
   - shopify-expert
-depends_on: []
+depends_on:
+  - typescript
+  - commands
+  - github
+  - deploy
+  - cdn
 ---
 
 # Shopify Expert

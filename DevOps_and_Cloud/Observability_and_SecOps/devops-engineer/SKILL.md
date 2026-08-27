@@ -24,7 +24,12 @@ metadata:
 tags:
   - observability_and_secops
   - devops-engineer
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - platform-engineering
+  - commands
+  - pulumi
 ---
 
 # DevOps Engineer

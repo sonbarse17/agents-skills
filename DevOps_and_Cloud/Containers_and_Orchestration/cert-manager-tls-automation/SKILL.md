@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - cert-manager-tls-automation
-depends_on: []
+depends_on:
+  - service-mesh-istio
+  - ingress-nginx-configuration
+  - service-mesh
+  - monitoring
+  - kubernetes-operator-development
 ---
 
 # cert-manager TLS Automation

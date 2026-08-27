@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - release-readiness
-depends_on: []
+depends_on:
+  - security-review
+  - autoscaling
+  - go
+  - terraform-review
+  - runbooks
 ---
 
 # Release Readiness

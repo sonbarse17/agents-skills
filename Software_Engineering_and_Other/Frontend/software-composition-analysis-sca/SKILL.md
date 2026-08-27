@@ -18,7 +18,12 @@ metadata:
 tags:
   - frontend
   - software-composition-analysis-sca
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - supply-chain-security-slsa-sbom
+  - secure-cicd-gates
+  - scan
+  - sast-integration
 ---
 
 # Software Composition Analysis (SCA)

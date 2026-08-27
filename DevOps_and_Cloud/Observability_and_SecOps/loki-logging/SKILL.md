@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - loki-logging
-depends_on: []
+depends_on:
+  - monitoring
+  - elk-stack
+  - alerting-oncall
+  - alerting
+  - kubernetes
 ---
 
 # Grafana Loki

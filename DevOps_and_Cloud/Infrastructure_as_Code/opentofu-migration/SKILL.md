@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - opentofu-migration
-depends_on: []
+depends_on:
+  - policy-as-code
+  - commands
+  - terraform-gcp
+  - terraform-azure
+  - terraform-aws
 ---
 
 # OpenTofu Migration

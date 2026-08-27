@@ -12,7 +12,10 @@ license: MIT
 tags:
   - cloud_providers
   - cloud-networking
-depends_on: []
+depends_on:
+  - go
+  - incident
+  - cost
 ---
 
 # Cloud Networking

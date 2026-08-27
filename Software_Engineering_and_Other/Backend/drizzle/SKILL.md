@@ -20,7 +20,12 @@ tags:
   - nodejs
   - drizzle
   - phase-10
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - planetscale
+  - postgresql
+  - mysql
 ---
 
 # Drizzle ORM

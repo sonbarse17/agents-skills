@@ -11,7 +11,8 @@ metadata:
 tags:
   - databases
   - elasticsearch-file-ingest
-depends_on: []
+depends_on:
+  - commands
 ---
 
 # Elasticsearch File Ingest

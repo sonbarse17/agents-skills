@@ -13,7 +13,12 @@ license: MIT
 tags:
   - observability_and_secops
   - metrics-and-monitoring
-depends_on: []
+depends_on:
+  - scheduled-jobs
+  - monitoring
+  - incident
+  - serverless
+  - cost
 ---
 
 # Metrics and [Monitoring](../monitoring/SKILL.md)

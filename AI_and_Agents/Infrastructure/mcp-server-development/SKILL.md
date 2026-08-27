@@ -15,7 +15,12 @@ metadata:
 tags:
   - infrastructure
   - mcp-server-development
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - incident-management
+  - python
+  - typescript
+  - runbook
 ---
 
 # MCP Server Development

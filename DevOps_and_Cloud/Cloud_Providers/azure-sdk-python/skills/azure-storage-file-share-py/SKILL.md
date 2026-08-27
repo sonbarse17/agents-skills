@@ -13,7 +13,11 @@ metadata:
 tags:
   - skills
   - azure-storage-file-share-py
-depends_on: []
+depends_on:
+  - rbac
+  - python
+  - azure-storage
+  - audit
 ---
 
 # Azure Storage File Share SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

@@ -12,7 +12,12 @@ license: MIT
 tags:
   - product_and_business
   - golden-paths
-depends_on: []
+depends_on:
+  - autoscaling
+  - service-catalog
+  - observability
+  - incident
+  - kubernetes-security
 ---
 
 # Golden Paths

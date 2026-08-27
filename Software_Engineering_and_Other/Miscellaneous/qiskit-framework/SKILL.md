@@ -5,7 +5,9 @@ description: Conceptual quantum circuit construction, qubit initialization, gate
 tags:
   - miscellaneous
   - qiskit-framework
-depends_on: []
+depends_on:
+  - mermaid
+  - qc
 ---
 
 # Qiskit Framework

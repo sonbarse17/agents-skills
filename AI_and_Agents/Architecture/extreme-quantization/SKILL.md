@@ -5,7 +5,8 @@ description: Advanced sub-8-bit quantization methodologies, including AWQ, GPTQ,
 tags:
   - architecture
   - extreme-quantization
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Hardware Acceleration: Extreme Quantization

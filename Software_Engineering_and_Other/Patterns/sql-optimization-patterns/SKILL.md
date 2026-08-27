@@ -7,7 +7,11 @@ description: Master SQL query optimization, indexing strategies, and EXPLAIN
 tags:
   - patterns
   - sql-optimization-patterns
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - monitoring
+  - cost
 ---
 
 # SQL Optimization Patterns

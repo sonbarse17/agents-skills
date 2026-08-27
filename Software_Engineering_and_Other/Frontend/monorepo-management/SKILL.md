@@ -7,7 +7,12 @@ description: Master monorepo management with Turborepo, Nx, and pnpm workspaces
 tags:
   - frontend
   - monorepo-management
-depends_on: []
+depends_on:
+  - prettier
+  - git
+  - eslint
+  - typescript
+  - monorepo
 ---
 
 # [Monorepo](../monorepo/SKILL.md) Management

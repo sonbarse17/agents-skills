@@ -9,7 +9,12 @@ metadata:
 tags:
   - workflows
   - ai-inference-service-mesh
-depends_on: []
+depends_on:
+  - microservices
+  - embeddings
+  - api-gateway
+  - service-mesh
+  - opentelemetry
 ---
 
 # AI Inference Service Mesh

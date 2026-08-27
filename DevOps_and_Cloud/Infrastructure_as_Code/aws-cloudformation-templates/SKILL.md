@@ -17,7 +17,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - aws-cloudformation-templates
-depends_on: []
+depends_on:
+  - python
+  - go
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
+  - cloudformation
 ---
 
 # AWS [CloudFormation](../cloudformation/SKILL.md) Templates

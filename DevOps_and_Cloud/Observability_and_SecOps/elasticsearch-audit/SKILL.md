@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - elasticsearch-audit
-depends_on: []
+depends_on:
+  - elasticsearch-security-troubleshooting
+  - elasticsearch-authn
+  - monitoring
+  - kibana-audit
+  - incident
 ---
 
 # Elasticsearch [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

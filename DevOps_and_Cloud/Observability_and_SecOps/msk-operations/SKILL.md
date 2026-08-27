@@ -22,7 +22,12 @@ metadata:
 tags:
   - observability_and_secops
   - msk-operations
-depends_on: []
+depends_on:
+  - go
+  - monitoring
+  - incident
+  - serverless
+  - dashboards
 ---
 
 # Amazon MSK Operations

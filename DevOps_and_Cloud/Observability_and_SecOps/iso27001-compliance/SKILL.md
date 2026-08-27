@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - iso27001-compliance
-depends_on: []
+depends_on:
+  - rbac
+  - runbooks
+  - monitoring
+  - incident
+  - alerting
 ---
 
 # ISO 27001 Compliance

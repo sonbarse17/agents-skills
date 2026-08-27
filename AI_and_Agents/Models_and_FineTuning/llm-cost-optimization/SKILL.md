@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-cost-optimization
-depends_on: []
+depends_on:
+  - python
+  - observability
+  - cost
+  - aws
+  - audit
 ---
 
 # LLM Cost Optimization

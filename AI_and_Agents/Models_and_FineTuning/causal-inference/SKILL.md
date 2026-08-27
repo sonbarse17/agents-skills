@@ -25,7 +25,11 @@ tags:
   - data-science
   - causal-inference
   - phase-7
-depends_on: []
+depends_on:
+  - data-science-statistical-analysis
+  - data-science-analytics-engineering
+  - python
+  - data-science-experimentation
 ---
 
 # Causal Inference

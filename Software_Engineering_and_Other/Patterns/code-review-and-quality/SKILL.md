@@ -7,7 +7,12 @@ description: Conducts multi-axis code review. Use before merging any change. Use
 tags:
   - patterns
   - code-review-and-quality
-depends_on: []
+depends_on:
+  - security-and-hardening
+  - performance-optimization
+  - apis
+  - profiling
+  - deploy
 ---
 
 # Code Review and Quality

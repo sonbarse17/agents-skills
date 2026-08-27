@@ -7,7 +7,12 @@ description: Implement Kubernetes security policies including NetworkPolicy,
 tags:
   - containers_and_orchestration
   - k8s-security-policies
-depends_on: []
+depends_on:
+  - rbac
+  - monitoring
+  - kubernetes
+  - kubectl
+  - k8s-manifest-generator
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Security Policies

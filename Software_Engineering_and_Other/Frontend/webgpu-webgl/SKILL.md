@@ -5,7 +5,11 @@ description: Comprehensive guidelines and best practices for webgpu-webgl. Use
 tags:
   - frontend
   - webgpu-webgl
-depends_on: []
+depends_on:
+  - mermaid
+  - apis
+  - stencil
+  - commands
 ---
 # WebGPU & WebGL: Rendering Pipelines and GPU Memory Optimization
 

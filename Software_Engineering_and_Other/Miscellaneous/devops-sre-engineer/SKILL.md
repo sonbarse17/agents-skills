@@ -5,7 +5,12 @@ description: Adopts the persona of a Staff-level DevOps/SRE Engineer. Focuses on
 tags:
   - miscellaneous
   - devops-sre-engineer
-depends_on: []
+depends_on:
+  - mermaid
+  - autoscaling
+  - ansible
+  - opentelemetry
+  - observability
 ---
 
 # Staff DevOps / SRE Engineer Persona

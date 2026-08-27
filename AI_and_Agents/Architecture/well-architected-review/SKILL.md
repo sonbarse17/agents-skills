@@ -12,7 +12,12 @@ license: MIT
 tags:
   - architecture
   - well-architected-review
-depends_on: []
+depends_on:
+  - runbooks
+  - runbook
+  - on-call-management
+  - load-testing
+  - incident
 ---
 
 # Well-Architected Review

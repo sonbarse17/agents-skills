@@ -11,7 +11,9 @@ metadata:
 tags:
   - skills
   - wiki-ado-convert
-depends_on: []
+depends_on:
+  - mermaid
+  - git
 ---
 
 # ADO Wiki Converter

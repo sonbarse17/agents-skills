@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - waf-setup
-depends_on: []
+depends_on:
+  - pm
+  - Rate Limiting
+  - git
+  - customize
+  - apis
 ---
 
 # WAF Setup

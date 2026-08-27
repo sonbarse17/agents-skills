@@ -10,7 +10,10 @@ version: 1.0.0
 tags:
   - skills
   - competitive-landscape
-depends_on: []
+depends_on:
+  - go
+  - monitoring
+  - cost
 ---
 
 # Competitive Landscape Analysis

@@ -11,7 +11,8 @@ metadata:
 tags:
   - observability_and_secops
   - skip-scheduled-maintenance
-depends_on: []
+depends_on:
+  - incident
 ---
 
 # Skip Scheduled Maintenance

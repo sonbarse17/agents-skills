@@ -7,7 +7,11 @@ description: Master smart contract security best practices to prevent common
 tags:
   - blockchain_and_web3
   - solidity-security
-depends_on: []
+depends_on:
+  - Smart Contract Security
+  - DeFi Protocols
+  - deploy
+  - audit
 ---
 
 # Solidity Security

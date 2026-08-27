@@ -4,7 +4,9 @@ description: CUDA Under The Hood
 tags:
   - game_development
   - cuda-programming
-depends_on: []
+depends_on:
+  - mermaid
+  - PTX Assembly
 ---
 # CUDA GPU Architecture Mechanics
 

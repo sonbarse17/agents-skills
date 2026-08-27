@@ -22,7 +22,12 @@ tags:
   - lit
   - web-components
   - phase-10
-depends_on: []
+depends_on:
+  - vite
+  - vault
+  - Rate Limiting
+  - customize
+  - typescript
 ---
 
 # Lit

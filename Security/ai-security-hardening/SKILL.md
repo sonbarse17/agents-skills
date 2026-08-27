@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - ai-security-hardening
-depends_on: []
+depends_on:
+  - scan
+  - hashicorp-vault
+  - vault
+  - Rate Limiting
+  - python
 ---
 
 # AI Security Hardening

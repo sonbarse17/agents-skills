@@ -22,7 +22,12 @@ tags:
   - observability
   - quality
   - phase-10
-depends_on: []
+depends_on:
+  - python
+  - profiling
+  - runbooks
+  - runbook
+  - observability
 ---
 
 # Data [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

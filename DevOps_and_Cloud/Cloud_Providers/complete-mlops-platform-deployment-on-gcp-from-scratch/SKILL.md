@@ -23,7 +23,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-mlops-platform-deployment-on-gcp-from-scratch
-depends_on: []
+depends_on:
+  - feature-store-design
+  - experiment-tracking
+  - python
+  - monitoring
+  - incident
 ---
 
 # Complete MLOps Platform Deployment On GCP From Scratch

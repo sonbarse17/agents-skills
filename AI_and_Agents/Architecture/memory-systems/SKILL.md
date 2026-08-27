@@ -5,7 +5,12 @@ description: Theoretical foundations of Working, Semantic, and Episodic memory
 tags:
   - architecture
   - memory-systems
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - capacity
+  - deploy
+  - deploy-model
 ---
 
 # Memory Paradigms: The Architecture of Continuity

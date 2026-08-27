@@ -6,7 +6,9 @@ description: Python configuration management via environment variables and typed
 tags:
   - languages
   - python-configuration
-depends_on: []
+depends_on:
+  - python
+  - commit
 ---
 
 # [Python](../python/SKILL.md) Configuration Management

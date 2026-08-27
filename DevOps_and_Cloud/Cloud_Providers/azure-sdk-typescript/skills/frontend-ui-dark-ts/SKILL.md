@@ -11,7 +11,12 @@ metadata:
 tags:
   - skills
   - frontend-ui-dark-ts
-depends_on: []
+depends_on:
+  - ios
+  - vite
+  - pwa
+  - typescript
+  - dashboards
 ---
 
 # Frontend UI Dark Theme ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))

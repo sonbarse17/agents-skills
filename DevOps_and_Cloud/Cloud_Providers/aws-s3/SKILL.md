@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-s3
-depends_on: []
+depends_on:
+  - terraform-aws
+  - cloudformation
+  - cost
+  - cost-optimization
+  - aws-vpc
 ---
 
 # AWS S3

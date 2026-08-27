@@ -20,7 +20,11 @@ metadata:
 tags:
   - frontend
   - react-expert
-depends_on: []
+depends_on:
+  - jest
+  - accessibility
+  - typescript
+  - github
 ---
 
 # React Expert

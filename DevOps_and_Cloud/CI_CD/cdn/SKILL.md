@@ -12,7 +12,10 @@ license: MIT
 tags:
   - ci_cd
   - cdn
-depends_on: []
+depends_on:
+  - incident
+  - deploy
+  - cost
 ---
 
 # CDN

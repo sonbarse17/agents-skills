@@ -18,7 +18,12 @@ tags:
   - quality
   - regression-testing
   - phase-6
-depends_on: []
+depends_on:
+  - quality-smoke-testing
+  - quality-e2e-testing
+  - quality-integration-testing
+  - git
+  - quality-acceptance-testing
 ---
 
 # Regression Testing

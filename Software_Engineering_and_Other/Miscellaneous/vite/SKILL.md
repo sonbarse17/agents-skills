@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for vite. Use this
 tags:
   - miscellaneous
   - vite
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - eslint
+  - github
+  - deploy
 ---
 # Skill
 

@@ -9,7 +9,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-gcp
-depends_on: []
+depends_on:
+  - autoscaling
+  - apis
+  - monitoring
+  - serverless
+  - gcp-gke
 ---
 
 # Terraform GCP

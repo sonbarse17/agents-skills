@@ -18,7 +18,10 @@ metadata:
 tags:
   - skills
   - azure-diagnostics
-depends_on: []
+depends_on:
+  - commands
+  - kubernetes
+  - kql
 ---
 
 # Azure Diagnostics

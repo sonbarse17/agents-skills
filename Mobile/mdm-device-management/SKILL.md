@@ -11,7 +11,12 @@ metadata:
 tags:
   - mobile
   - mdm-device-management
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - git
+  - python
+  - mysql
 ---
 
 # Mobile Device Management (MDM) for Startups & Small Teams

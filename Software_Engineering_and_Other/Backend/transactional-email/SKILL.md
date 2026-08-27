@@ -17,7 +17,12 @@ tags:
   - backend
   - email
   - phase-10
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - git
+  - accessibility
+  - python
 ---
 
 # Transactional Email Skill

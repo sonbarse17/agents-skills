@@ -17,7 +17,12 @@ tags:
   - quality
   - property-based-testing
   - phase-3
-depends_on: []
+depends_on:
+  - quality-unit-testing
+  - quality-regression-testing
+  - quality-integration-testing
+  - vault
+  - Structured Data
 ---
 
 # Property-Based Testing

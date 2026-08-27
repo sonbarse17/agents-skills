@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-cost-optimization
-depends_on: []
+depends_on:
+  - commands
+  - terraform-aws
+  - rightsizing
+  - dashboards
+  - cost
 ---
 
 # AWS Cost Optimization

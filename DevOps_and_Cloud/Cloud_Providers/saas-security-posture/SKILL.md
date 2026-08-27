@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - saas-security-posture
-depends_on: []
+depends_on:
+  - scan
+  - incident
+  - alerting
+  - github
+  - deploy
 ---
 
 # SaaS Security Posture Management for Startups

@@ -6,7 +6,8 @@ description: Generate and maintain OpenAPI 3.1 specifications from code,
 tags:
   - backend
   - openapi-spec-generation
-depends_on: []
+depends_on:
+  - apis
 ---
 
 # OpenAPI Spec Generation

@@ -6,7 +6,9 @@ description: Python type safety with type hints, generics, protocols, and strict
 tags:
   - languages
   - python-type-safety
-depends_on: []
+depends_on:
+  - python
+  - apis
 ---
 
 # [Python](../python/SKILL.md) Type Safety

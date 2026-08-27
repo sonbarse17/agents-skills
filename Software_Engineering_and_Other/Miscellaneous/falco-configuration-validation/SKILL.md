@@ -20,7 +20,12 @@ metadata:
 tags:
   - miscellaneous
   - falco-configuration-validation
-depends_on: []
+depends_on:
+  - vault-configuration-validation
+  - vault
+  - python
+  - incident-response-and-on-call-management
+  - on-call-management
 ---
 
 # Falco Configuration Validation

@@ -23,7 +23,12 @@ tags:
   - events
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - typescript
+  - profiling
+  - go
 ---
 
 # Backend Event-Driven

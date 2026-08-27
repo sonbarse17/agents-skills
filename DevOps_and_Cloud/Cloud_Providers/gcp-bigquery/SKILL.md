@@ -5,7 +5,9 @@ description: Comprehensive guidelines and best practices for gcp-bigquery. Use
 tags:
   - cloud_providers
   - gcp-bigquery
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
 ---
 # GCP BigQuery: Dremel and Capacitor
 

@@ -4,7 +4,12 @@ description: Comprehensive analysis of B-Trees, LSM-Trees, WAL, and Transaction 
 tags:
   - databases
   - database-internals
-depends_on: []
+depends_on:
+  - mermaid
+  - postgresql
+  - internals
+  - capacity
+  - deploy
 ---
 
 # Database Internals: Storage Engines and Concurrency Control

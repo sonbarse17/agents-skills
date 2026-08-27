@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - postgres-pro
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - monitoring
+  - github
+  - deploy
 ---
 
 # [PostgreSQL](../../Backend/postgresql/SKILL.md) Pro

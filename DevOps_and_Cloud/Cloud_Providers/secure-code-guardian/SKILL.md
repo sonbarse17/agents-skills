@@ -23,7 +23,10 @@ metadata:
 tags:
   - cloud_providers
   - secure-code-guardian
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - typescript
+  - github
 ---
 
 # Secure Code Guardian

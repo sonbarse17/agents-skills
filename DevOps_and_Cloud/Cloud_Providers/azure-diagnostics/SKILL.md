@@ -18,7 +18,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-diagnostics
-depends_on: []
+depends_on:
+  - commands
+  - kubernetes
+  - kql
 ---
 
 # Azure Diagnostics

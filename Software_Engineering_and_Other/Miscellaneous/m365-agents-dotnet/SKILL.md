@@ -15,7 +15,11 @@ metadata:
 tags:
   - miscellaneous
   - m365-agents-dotnet
-depends_on: []
+depends_on:
+  - vault
+  - apis
+  - github
+  - microsoft-docs
 ---
 
 # Microsoft 365 Agents SDK (.NET)

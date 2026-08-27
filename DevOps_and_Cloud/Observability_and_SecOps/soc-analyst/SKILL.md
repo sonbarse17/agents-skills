@@ -5,7 +5,10 @@ description: Adopts the persona of a Principal SOC Analyst for defensive
 tags:
   - observability_and_secops
   - soc-analyst
-depends_on: []
+depends_on:
+  - mermaid
+  - incident
+  - alerting
 ---
 
 # Principal SOC Analyst Persona

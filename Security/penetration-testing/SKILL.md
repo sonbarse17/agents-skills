@@ -10,7 +10,10 @@ metadata:
 tags:
   - security
   - penetration-testing
-depends_on: []
+depends_on:
+  - scan
+  - vulnerability-scanning
+  - dast-scanning
 ---
 
 # Penetration Testing

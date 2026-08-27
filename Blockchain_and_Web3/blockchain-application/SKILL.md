@@ -25,7 +25,12 @@ tags:
   - move
   - application
   - phase-blockchain
-depends_on: []
+depends_on:
+  - Smart Contract Security
+  - blockchain-testing
+  - blockchain-security
+  - monitoring
+  - deploy
 ---
 
 # Blockchain Application

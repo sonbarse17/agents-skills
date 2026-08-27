@@ -16,7 +16,12 @@ tags:
   - desktop
   - qt
   - cross-platform
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - vault
+  - Rate Limiting
+  - accessibility
 ---
 
 # Qt

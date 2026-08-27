@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - startup-it-troubleshooting
-depends_on: []
+depends_on:
+  - incident-management
+  - git
+  - python
+  - runbook-creation
+  - commands
 ---
 
 # Startup IT Troubleshooting

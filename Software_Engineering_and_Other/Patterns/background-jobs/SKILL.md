@@ -19,7 +19,12 @@ tags:
   - jobs
   - phase-6
   - universal
-depends_on: []
+depends_on:
+  - backend-event-driven
+  - python
+  - typescript
+  - go
+  - monitoring
 ---
 
 # Backend Background Jobs

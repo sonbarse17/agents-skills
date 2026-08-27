@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - container-image-hardening
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - supply-chain-security-slsa-sbom
+  - scan
+  - policy-as-code-guardrails
+  - policy-as-code
 ---
 
 # Container Image Hardening

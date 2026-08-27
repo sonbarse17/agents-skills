@@ -7,7 +7,10 @@ description: Master memory forensics techniques including memory acquisition,
 tags:
   - security
   - memory-forensics
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - incident
 ---
 
 # Memory Forensics

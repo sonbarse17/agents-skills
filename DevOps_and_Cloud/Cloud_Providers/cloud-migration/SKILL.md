@@ -12,7 +12,12 @@ license: MIT
 tags:
   - cloud_providers
   - cloud-migration
-depends_on: []
+depends_on:
+  - data-migration
+  - go
+  - backup-and-restore
+  - deployment-strategies
+  - progressive-delivery
 ---
 
 # Cloud Migration

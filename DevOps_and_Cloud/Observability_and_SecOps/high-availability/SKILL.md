@@ -30,7 +30,12 @@ tags:
   - version-sync
   - ha
   - phase-8
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - postgresql
+  - mongodb
+  - mysql
 ---
 
 # Enterprise High Availability

@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-vpc
-depends_on: []
+depends_on:
+  - terraform-aws
+  - deploy
+  - firewall-config
+  - cost
+  - aws-rds
 ---
 
 # AWS VPC

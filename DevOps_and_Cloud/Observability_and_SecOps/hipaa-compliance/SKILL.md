@@ -9,7 +9,12 @@ metadata:
 tags:
   - observability_and_secops
   - hipaa-compliance
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - monitoring
+  - incident
+  - alerting
 ---
 
 # HIPAA Compliance

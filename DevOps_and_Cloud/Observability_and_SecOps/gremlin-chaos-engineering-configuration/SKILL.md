@@ -19,7 +19,12 @@ metadata:
 tags:
   - observability_and_secops
   - gremlin-chaos-engineering-configuration
-depends_on: []
+depends_on:
+  - chaos-engineering-and-resilience-testing
+  - infrastructure-post-deployment-validation-and-smoke-testing
+  - infrastructure-as-code
+  - ansible
+  - ansible-playbook-and-role-design
 ---
 
 # Gremlin Chaos Engineering Configuration

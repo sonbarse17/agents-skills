@@ -20,7 +20,11 @@ tags:
   - php
   - laravel
   - phase-4
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - postgresql
+  - mysql
+  - commands
 ---
 
 # Laravel

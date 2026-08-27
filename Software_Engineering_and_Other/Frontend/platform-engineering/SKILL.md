@@ -10,7 +10,12 @@ metadata:
 tags:
   - frontend
   - platform-engineering
-depends_on: []
+depends_on:
+  - mermaid
+  - event-sourcing
+  - python
+  - mysql
+  - apis
 ---
 
 # Platform Engineering

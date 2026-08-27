@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-well-architected-framework-review
-depends_on: []
+depends_on:
+  - scan
+  - devsecops
+  - cis-benchmarks-hardening
+  - vault
+  - autoscaling
 ---
 
 # Cloud Well-Architected Framework Review

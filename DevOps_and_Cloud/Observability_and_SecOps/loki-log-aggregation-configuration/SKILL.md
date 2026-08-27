@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - loki-log-aggregation-configuration
-depends_on: []
+depends_on:
+  - microservices
+  - monitoring
+  - loki-configuration-validation
+  - logql-query-authoring
+  - incident
 ---
 
 # Loki Log Aggregation Configuration

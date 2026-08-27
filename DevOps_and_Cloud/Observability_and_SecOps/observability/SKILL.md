@@ -14,7 +14,12 @@ metadata:
 tags:
   - observability_and_secops
   - observability
-depends_on: []
+depends_on:
+  - release-readiness
+  - prettier
+  - runbook
+  - monitoring
+  - incident
 ---
 
 # Observability Review

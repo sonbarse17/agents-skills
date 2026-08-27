@@ -19,7 +19,12 @@ metadata:
 tags:
   - patterns
   - independent-solution-design-and-technical-review
-depends_on: []
+depends_on:
+  - technical-roadmap-ownership-and-cross-team-coordination
+  - system-design
+  - go
+  - blameless-postmortem-and-root-cause-analysis
+  - runbooks
 ---
 
 # Independent Solution Design and Technical Review

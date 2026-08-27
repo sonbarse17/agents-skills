@@ -22,7 +22,12 @@ tags:
   - pow
   - mining
   - phase-blockchain
-depends_on: []
+depends_on:
+  - zero-trust
+  - python
+  - monitoring
+  - deploy
+  - cost
 ---
 
 # Blockchain Bitcoin

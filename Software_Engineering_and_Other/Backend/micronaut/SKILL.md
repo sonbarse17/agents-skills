@@ -20,7 +20,12 @@ tags:
   - java
   - micronaut
   - phase-7
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - postgresql
+  - mongodb
+  - observability
+  - monitoring
 ---
 
 # Micronaut

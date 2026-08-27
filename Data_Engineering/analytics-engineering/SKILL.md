@@ -28,7 +28,12 @@ tags:
   - dbt
   - sql
   - phase-7
-depends_on: []
+depends_on:
+  - rbac
+  - data-science-statistical-analysis
+  - data-modeling
+  - vault
+  - python
 ---
 
 # Analytics Engineering

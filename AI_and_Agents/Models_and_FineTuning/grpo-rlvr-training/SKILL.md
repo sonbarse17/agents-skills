@@ -7,7 +7,12 @@ description: Train reasoning and verifiable-task behavior with GRPO and
 tags:
   - models_and_finetuning
   - grpo-rlvr-training
-depends_on: []
+depends_on:
+  - python
+  - preference-optimization
+  - lora-qlora-recipes
+  - llm-finetuning
+  - finetuning-method-selection
 ---
 
 # GRPO & RLVR Training

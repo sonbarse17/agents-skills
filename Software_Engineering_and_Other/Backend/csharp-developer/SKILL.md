@@ -21,7 +21,9 @@ metadata:
 tags:
   - backend
   - csharp-developer
-depends_on: []
+depends_on:
+  - apis
+  - github
 ---
 
 # C# Developer

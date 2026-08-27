@@ -18,7 +18,12 @@ metadata:
 tags:
   - miscellaneous
   - feature-flag-configuration-launchdarkly-and-unleash
-depends_on: []
+depends_on:
+  - git
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
+  - incident
+  - chaos-engineering
 ---
 
 # Feature Flag Configuration (LaunchDarkly and Unleash)

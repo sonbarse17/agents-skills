@@ -30,7 +30,12 @@ references:
   - https://sqlmap.org/
   - https://owasp.org/www-community/attacks/SQL_Injection
   - https://cwe.mitre.org/data/definitions/89.html
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - mysql
+  - commands
+  - monitoring
+  - github
 ---
 
 # SQLMap - Automated SQL Injection Tool

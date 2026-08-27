@@ -22,7 +22,12 @@ tags:
   - python
   - fastapi
   - phase-2
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - postgresql
+  - monitoring
+  - alerting
 ---
 
 # [Python](../../Languages/python/SKILL.md) FastAPI Architecture

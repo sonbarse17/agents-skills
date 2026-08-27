@@ -16,7 +16,12 @@ metadata:
 tags:
   - ci_cd
   - jenkins-groovy-scripting-best-practices
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - devsecops
+  - internals
+  - apis
+  - go
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Groovy Scripting Best Practices

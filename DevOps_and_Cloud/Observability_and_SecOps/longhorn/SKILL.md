@@ -20,7 +20,12 @@ tags:
   - devops
   - longhorn
   - phase-5
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - profiling
+  - performance-tuning
 ---
 
 # Longhorn Storage

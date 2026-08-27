@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - devops-delivery-metrics-and-dora-analysis
-depends_on: []
+depends_on:
+  - microservices
+  - incident-management
+  - incident-response-and-on-call-management
+  - blameless-postmortem-and-root-cause-analysis
+  - root-cause-analysis
 ---
 
 # DevOps Delivery Metrics and DORA Analysis

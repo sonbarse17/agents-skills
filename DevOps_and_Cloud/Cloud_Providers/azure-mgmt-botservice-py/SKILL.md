@@ -13,7 +13,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-mgmt-botservice-py
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - audit
 ---
 
 # Azure Bot Service Management SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

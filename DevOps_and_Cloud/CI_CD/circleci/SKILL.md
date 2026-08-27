@@ -11,7 +11,12 @@ metadata:
 tags:
   - ci_cd
   - circleci
-depends_on: []
+depends_on:
+  - kubernetes
+  - kubectl
+  - docker-management
+  - docker
+  - github
 ---
 
 # CircleCI

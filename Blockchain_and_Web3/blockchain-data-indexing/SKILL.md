@@ -17,7 +17,12 @@ tags:
   - subgraph
   - dune
   - phase-blockchain
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - python
+  - postgresql
+  - typescript
 ---
 
 # Blockchain Data Indexing

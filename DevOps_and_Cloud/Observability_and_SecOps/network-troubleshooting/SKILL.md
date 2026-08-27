@@ -12,7 +12,10 @@ license: MIT
 tags:
   - observability_and_secops
   - network-troubleshooting
-depends_on: []
+depends_on:
+  - commands
+  - root-cause-analysis
+  - dns-management
 ---
 
 # Network Troubleshooting

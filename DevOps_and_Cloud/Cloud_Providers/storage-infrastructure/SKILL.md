@@ -32,7 +32,12 @@ tags:
   - san
   - nas
   - phase-3
-depends_on: []
+depends_on:
+  - datacenter
+  - backup-dr
+  - monitoring
+  - longhorn
+  - capacity
 ---
 
 # Storage Infrastructure

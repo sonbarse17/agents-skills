@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - rook-ceph-configuration-validation
-depends_on: []
+depends_on:
+  - postgresql
+  - commands
+  - runbook
+  - rook-ceph-storage-operations
+  - observability
 ---
 
 # Rook-Ceph Configuration Validation

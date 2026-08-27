@@ -16,7 +16,12 @@ metadata:
 tags:
   - frontend
   - ingress-nginx-configuration
-depends_on: []
+depends_on:
+  - rbac
+  - Rate Limiting
+  - service-mesh-istio
+  - kustomize-overlay-management
+  - service-mesh
 ---
 
 # NGINX Ingress Controller Configuration

@@ -14,7 +14,10 @@ metadata:
 tags:
   - skills
   - azure-mgmt-apicenter-py
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - audit
 ---
 
 # Azure API Center Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

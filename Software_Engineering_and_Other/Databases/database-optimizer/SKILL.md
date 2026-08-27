@@ -20,7 +20,12 @@ metadata:
 tags:
   - databases
   - database-optimizer
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - mysql
+  - monitoring
+  - github
 ---
 
 # Database Optimizer

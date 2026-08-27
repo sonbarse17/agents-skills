@@ -6,7 +6,8 @@ description: Build scalable design systems with Tailwind CSS v4, design tokens,
 tags:
   - frontend
   - tailwind-design-system
-depends_on: []
+depends_on:
+  - accessibility
 ---
 
 # Tailwind Design System (v4)

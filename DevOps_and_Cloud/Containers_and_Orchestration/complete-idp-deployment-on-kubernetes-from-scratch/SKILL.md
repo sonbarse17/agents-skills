@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-idp-deployment-on-kubernetes-from-scratch
-depends_on: []
+depends_on:
+  - rbac
+  - service-scorecards-and-maturity-model-design
+  - platform-self-service-api-and-workflow-design
+  - platform-engineering-team-topology-and-operating-model
+  - golden-path-template-design-for-developer-platforms
 ---
 
 # Complete IDP Deployment on [Kubernetes](../kubernetes/SKILL.md) from Scratch

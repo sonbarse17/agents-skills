@@ -19,7 +19,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - testkube-kubernetes-native-test-execution
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - rbac
+  - devsecops
+  - microservices
 ---
 
 # Testkube [Kubernetes](../kubernetes/SKILL.md)-Native Test Execution

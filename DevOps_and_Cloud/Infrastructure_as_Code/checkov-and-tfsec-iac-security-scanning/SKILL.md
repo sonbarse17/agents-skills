@@ -16,7 +16,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - checkov-and-tfsec-iac-security-scanning
-depends_on: []
+depends_on:
+  - snyk-vulnerability-and-license-scanning
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - code-quality
 ---
 
 # Checkov and tfsec IaC Security Scanning

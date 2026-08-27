@@ -20,7 +20,12 @@ metadata:
 tags:
   - architecture
   - system-design-technology-selection-and-decision-records
-depends_on: []
+depends_on:
+  - technical-roadmap-ownership-and-cross-team-coordination
+  - platform-engineering-team-topology-and-operating-model
+  - internal-developer-platform
+  - microservices
+  - independent-solution-design-and-technical-review
 ---
 
 # System Design, Technology Selection, and Decision Records

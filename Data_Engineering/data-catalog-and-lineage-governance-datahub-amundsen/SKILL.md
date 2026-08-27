@@ -17,7 +17,12 @@ metadata:
 tags:
   - data_engineering
   - data-catalog-and-lineage-governance-datahub-amundsen
-depends_on: []
+depends_on:
+  - feature-store-design
+  - data-and-model-lineage
+  - python
+  - mysql
+  - go
 ---
 
 # Data Catalog And Lineage Governance (DataHub / Amundsen)

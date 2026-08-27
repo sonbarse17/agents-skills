@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argocd-application-configuration
-depends_on: []
+depends_on:
+  - git
+  - kustomize
+  - kubernetes
+  - kubectl
+  - helm
 ---
 
 # Argo CD Application Configuration

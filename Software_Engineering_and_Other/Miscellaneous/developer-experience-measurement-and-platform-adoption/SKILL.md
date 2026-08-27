@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - developer-experience-measurement-and-platform-adoption
-depends_on: []
+depends_on:
+  - platform-engineering-team-topology-and-operating-model
+  - developer-experience
+  - change-management
+  - apis
+  - platform-engineering
 ---
 
 # Developer Experience Measurement and Platform Adoption

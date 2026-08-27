@@ -21,7 +21,12 @@ metadata:
 tags:
   - data_engineering
   - spark-engineer
-depends_on: []
+depends_on:
+  - ETL Pipelines
+  - Structured Data
+  - python
+  - performance-tuning
+  - monitoring
 ---
 
 # Spark Engineer

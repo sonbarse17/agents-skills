@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for ai-safety. Use this
 tags:
   - operations
   - ai-safety
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

@@ -20,7 +20,10 @@ metadata:
 tags:
   - backend
   - code-documenter
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - github
 ---
 
 # Code Documenter

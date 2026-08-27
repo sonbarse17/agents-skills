@@ -13,7 +13,10 @@ metadata:
 tags:
   - skills
   - azure-storage-queue-rust
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - github
 ---
 
 # Azure Queue Storage library for Rust

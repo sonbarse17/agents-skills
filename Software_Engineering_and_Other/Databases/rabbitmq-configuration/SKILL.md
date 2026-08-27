@@ -14,7 +14,11 @@ metadata:
 tags:
   - databases
   - rabbitmq-configuration
-depends_on: []
+depends_on:
+  - rabbitmq-queue-and-dead-letter-troubleshooting
+  - rabbitmq-configuration-validation
+  - nats-and-pulsar-lightweight-messaging-configuration
+  - python
 ---
 
 # RabbitMQ Configuration

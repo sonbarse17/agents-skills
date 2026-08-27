@@ -27,7 +27,12 @@ tags:
   - ibm-cloud
   - cloud-provider
   - phase-4
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - postgresql
+  - autoscaling
 ---
 
 # IBM Cloud

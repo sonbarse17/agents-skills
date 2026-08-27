@@ -5,7 +5,8 @@ description: Hardware meta-skill detailing Google's TPU architecture,
 tags:
   - game_development
   - tpu-systolic-arrays
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # TPU Systolic Arrays: Algorithmic Silicon Design

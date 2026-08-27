@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-networking
-depends_on: []
+depends_on:
+  - vault
+  - commands
+  - terraform-azure
+  - capacity
+  - network-security
 ---
 
 # Azure Networking

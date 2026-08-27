@@ -5,7 +5,10 @@ description: Theoretical mechanics of critical web vulnerabilities, static
 tags:
   - security
   - owasp-web-security
-depends_on: []
+depends_on:
+  - mermaid
+  - deploy
+  - aws
 ---
 
 # OWASP Web Security & Vulnerability Mechanics

@@ -13,7 +13,12 @@ metadata:
 tags:
   - skills
   - terraform-stacks
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - terraform-aws
+  - monitoring
+  - github
 ---
 
 # Terraform Stacks

@@ -30,7 +30,12 @@ references:
   - https://github.com/PyCQA/bandit
   - https://bandit.readthedocs.io/
   - https://owasp.org/www-project-top-ten/
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - customize
+  - python
+  - jenkins
 ---
 
 # Bandit [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SAST

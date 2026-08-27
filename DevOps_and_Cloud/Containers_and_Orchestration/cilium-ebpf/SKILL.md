@@ -25,7 +25,12 @@ tags:
   - kubernetes
   - networking
   - phase-5
-depends_on: []
+depends_on:
+  - api-gateway
+  - commands
+  - service-mesh
+  - observability
+  - monitoring
 ---
 
 # Cilium and eBPF

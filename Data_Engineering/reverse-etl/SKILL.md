@@ -22,7 +22,12 @@ tags:
   - reverse-etl
   - operational-analytics
   - phase-11
-depends_on: []
+depends_on:
+  - data-etl-pipeline
+  - data-data-warehouse
+  - vault
+  - Rate Limiting
+  - python
 ---
 
 # Reverse ETL

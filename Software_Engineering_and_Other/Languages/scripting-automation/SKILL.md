@@ -12,7 +12,10 @@ license: MIT
 tags:
   - languages
   - scripting-automation
-depends_on: []
+depends_on:
+  - workflow-automation
+  - go
+  - monitoring
 ---
 
 # Scripting Automation

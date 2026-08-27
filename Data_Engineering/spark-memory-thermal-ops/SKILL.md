@@ -7,7 +7,12 @@ description: Manage unified memory and thermals during long-running ML jobs on
 tags:
   - data_engineering
   - spark-memory-thermal-ops
-depends_on: []
+depends_on:
+  - spark-training-gotchas
+  - python
+  - monitoring
+  - capacity
+  - deploy
 ---
 
 # Spark Memory & Thermal Ops

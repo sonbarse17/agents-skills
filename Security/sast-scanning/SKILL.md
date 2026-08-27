@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - sast-scanning
-depends_on: []
+depends_on:
+  - scan
+  - dependency-scanning
+  - eslint
+  - python
+  - postgresql
 ---
 
 # SAST Scanning

@@ -22,7 +22,12 @@ tags:
   - architecture
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - python
+  - internals
+  - backend-api-design
+  - typescript
+  - go
 ---
 
 # Backend Clean Architecture

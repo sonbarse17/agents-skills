@@ -18,7 +18,12 @@ metadata:
 tags:
   - frontend
   - incident-response-and-on-call-management
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - devsecops
+  - toil-reduction-and-operational-automation
+  - slo-sli-and-error-budget-design
+  - blameless-postmortem-and-root-cause-analysis
 ---
 
 # [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response and On-Call Management

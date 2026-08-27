@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-containerregistry-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure Container Registry SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

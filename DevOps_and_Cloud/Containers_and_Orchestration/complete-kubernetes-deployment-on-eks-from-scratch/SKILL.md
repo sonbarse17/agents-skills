@@ -21,7 +21,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-kubernetes-deployment-on-eks-from-scratch
-depends_on: []
+depends_on:
+  - ingress-nginx-configuration
+  - commands
+  - runbook
+  - observability
+  - longhorn
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on EKS From Scratch

@@ -14,7 +14,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kafka-consumer-lag-and-partition-troubleshooting
-depends_on: []
+depends_on:
+  - kafka-configuration-validation
+  - kafka-schema-registry-and-compatibility-management
+  - autoscaling
+  - go
+  - incident
 ---
 
 # Kafka Consumer Lag and Partition Troubleshooting

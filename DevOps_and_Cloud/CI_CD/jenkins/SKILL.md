@@ -10,7 +10,12 @@ metadata:
 tags:
   - ci_cd
   - jenkins
-depends_on: []
+depends_on:
+  - git
+  - kubernetes-ops
+  - kubernetes
+  - docker-management
+  - docker
 ---
 
 # Jenkins

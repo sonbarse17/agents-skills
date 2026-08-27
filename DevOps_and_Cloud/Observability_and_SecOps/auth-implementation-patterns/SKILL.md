@@ -7,7 +7,12 @@ description: Master authentication and authorization patterns including JWT,
 tags:
   - observability_and_secops
   - auth-implementation-patterns
-depends_on: []
+depends_on:
+  - rbac
+  - Rate Limiting
+  - apis
+  - multi-tenancy
+  - github
 ---
 
 # Authentication & Authorization Implementation Patterns

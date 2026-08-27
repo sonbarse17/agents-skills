@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - fluent-bit-configuration-validation
-depends_on: []
+depends_on:
+  - go
+  - monitoring
+  - loki-configuration-validation
+  - logql-query-authoring
+  - incident-investigation-using-metrics-logs-traces
 ---
 
 # Fluent Bit Configuration Validation

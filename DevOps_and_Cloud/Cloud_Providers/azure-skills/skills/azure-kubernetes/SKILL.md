@@ -16,7 +16,12 @@ description: "Plan, create, and configure production-ready Azure Kubernetes
 tags:
   - skills
   - azure-kubernetes
-depends_on: []
+depends_on:
+  - vault
+  - autoscaling
+  - commands
+  - observability
+  - monitoring
 ---
 
 # Azure [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) Service

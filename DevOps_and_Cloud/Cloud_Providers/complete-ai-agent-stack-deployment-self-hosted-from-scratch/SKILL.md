@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-ai-agent-stack-deployment-self-hosted-from-scratch
-depends_on: []
+depends_on:
+  - python
+  - database-operations
+  - apis
+  - go
+  - monitoring
 ---
 
 # Complete AI Agent Stack Deployment (Self-Hosted) From Scratch

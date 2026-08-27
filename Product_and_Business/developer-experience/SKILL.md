@@ -12,7 +12,12 @@ license: MIT
 tags:
   - product_and_business
   - developer-experience
-depends_on: []
+depends_on:
+  - internals
+  - toil-reduction
+  - deploy
+  - commit
+  - ci-pipelines
 ---
 
 # Developer Experience

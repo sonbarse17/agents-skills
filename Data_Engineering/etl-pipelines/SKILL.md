@@ -4,7 +4,9 @@ description: Best practices for ETL pipelines using Apache Airflow and dbt.
 tags:
   - data_engineering
   - etl-pipelines
-depends_on: []
+depends_on:
+  - mermaid
+  - python
 ---
 
 # ETL Pipelines (Airflow & dbt)

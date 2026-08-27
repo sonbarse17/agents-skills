@@ -6,7 +6,8 @@ description: Upgrade React applications to latest versions, migrate from class
 tags:
   - frontend
   - react-modernization
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # React Modernization

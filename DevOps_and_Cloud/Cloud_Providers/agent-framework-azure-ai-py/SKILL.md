@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - agent-framework-azure-ai-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Agent Framework Azure Hosted Agents

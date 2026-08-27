@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - block-storage
-depends_on: []
+depends_on:
+  - scan
+  - linux-administration
+  - performance-tuning
+  - object-storage
+  - nfs-storage
 ---
 
 # Block Storage

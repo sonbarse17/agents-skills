@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - container-hardening
-depends_on: []
+depends_on:
+  - scan
+  - kubernetes-hardening
+  - kubernetes
+  - docker
+  - container-scanning
 ---
 
 # Container Hardening

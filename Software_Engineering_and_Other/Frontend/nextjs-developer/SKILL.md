@@ -21,7 +21,12 @@ metadata:
 tags:
   - frontend
   - nextjs-developer
-depends_on: []
+depends_on:
+  - seo
+  - typescript
+  - monitoring
+  - docker
+  - github
 ---
 
 # Next.js Developer

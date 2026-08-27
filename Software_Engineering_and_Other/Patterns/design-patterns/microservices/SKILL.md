@@ -5,7 +5,12 @@ description: Hardcore microservice patterns including SAGA, CQRS, and Event
 tags:
   - design-patterns
   - microservices
-depends_on: []
+depends_on:
+  - mermaid
+  - microservices
+  - commands
+  - observability
+  - commit
 ---
 
 # Advanced Microservice Architecture Patterns

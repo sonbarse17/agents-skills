@@ -10,7 +10,12 @@ metadata:
 tags:
   - miscellaneous
   - incident-management
-depends_on: []
+depends_on:
+  - runbook
+  - monitoring
+  - incident
+  - alerting
+  - github
 ---
 
 # [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management

@@ -7,7 +7,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-image-builder
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - github
+  - azure-compute
 ---
 
 # Azure Image Builder

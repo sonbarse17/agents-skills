@@ -7,7 +7,11 @@ description: Master end-to-end testing with Playwright and Cypress to build
 tags:
   - testing
   - e2e-testing-patterns
-depends_on: []
+depends_on:
+  - accessibility
+  - internals
+  - apis
+  - typescript
 ---
 
 # E2E Testing Patterns

@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-gitops-argocd-deployment-on-gke-from-scratch
-depends_on: []
+depends_on:
+  - git
+  - apis
+  - ingress-nginx-configuration
+  - go
+  - runbook
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on GKE, From Scratch

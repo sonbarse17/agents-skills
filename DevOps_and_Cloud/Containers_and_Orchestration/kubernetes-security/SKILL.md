@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - kubernetes-security
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - rbac
+  - policy-as-code
+  - image-scanning
+  - vault
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Security

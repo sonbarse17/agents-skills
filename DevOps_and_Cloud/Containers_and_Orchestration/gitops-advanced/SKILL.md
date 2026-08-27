@@ -25,7 +25,12 @@ tags:
   - applicationset
   - multi-cluster
   - phase-3
-depends_on: []
+depends_on:
+  - rbac
+  - policy-as-code
+  - vault
+  - git
+  - commands
 ---
 
 # [GitOps](../gitops/SKILL.md) Advanced

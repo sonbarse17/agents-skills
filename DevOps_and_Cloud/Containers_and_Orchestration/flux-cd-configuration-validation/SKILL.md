@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - flux-cd-configuration-validation
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - kustomize-overlay-management
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
 ---
 
 # Flux CD Configuration Validation

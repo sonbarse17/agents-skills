@@ -19,7 +19,12 @@ metadata:
 tags:
   - observability_and_secops
   - security-gate-exception-management
-depends_on: []
+depends_on:
+  - security-finding-backlog-triage
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - opa-gatekeeper-policy-authoring
 ---
 
 # Security Gate Exception Management

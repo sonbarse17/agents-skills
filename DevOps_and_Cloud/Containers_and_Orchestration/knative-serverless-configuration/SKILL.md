@@ -15,7 +15,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - knative-serverless-configuration
-depends_on: []
+depends_on:
+  - autoscaling
+  - monitoring
+  - capacity
+  - serverless
+  - kubernetes
 ---
 
 # Knative [Serverless](../serverless/SKILL.md) Configuration

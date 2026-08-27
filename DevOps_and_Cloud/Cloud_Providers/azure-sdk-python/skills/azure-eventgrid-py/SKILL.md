@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-eventgrid-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure Event Grid SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

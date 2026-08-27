@@ -5,7 +5,8 @@ description: Low-level binary analysis, decompilation theory, memory corruption
 tags:
   - security
   - reverse-engineering
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Reverse Engineering & Low-Level Binary Analysis

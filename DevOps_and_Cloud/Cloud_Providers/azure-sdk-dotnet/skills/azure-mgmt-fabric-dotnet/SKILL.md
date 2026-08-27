@@ -15,7 +15,12 @@ metadata:
 tags:
   - skills
   - azure-mgmt-fabric-dotnet
-depends_on: []
+depends_on:
+  - capacity
+  - github
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Azure.ResourceManager.Fabric (.NET)

@@ -19,7 +19,12 @@ tags:
   - data
   - governance
   - phase-8
-depends_on: []
+depends_on:
+  - scan
+  - data-lineage
+  - enterprise-multi-tenant
+  - python
+  - monitoring
 ---
 
 # Data Governance Agent

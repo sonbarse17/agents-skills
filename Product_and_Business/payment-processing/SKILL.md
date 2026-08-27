@@ -18,7 +18,12 @@ tags:
   - ecommerce
   - payment-processing
   - phase-3
-depends_on: []
+depends_on:
+  - scan
+  - typescript
+  - runbooks
+  - monitoring
+  - incident
 ---
 
 # Payment Processing

@@ -18,7 +18,12 @@ metadata:
 tags:
   - workflows
   - agent-bad-response-triage-and-root-cause-classification
-depends_on: []
+depends_on:
+  - python
+  - runbook
+  - monitoring
+  - incident-response
+  - incident
 ---
 
 # Agent Bad Response Triage and Root Cause Classification

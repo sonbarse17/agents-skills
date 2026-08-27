@@ -6,7 +6,9 @@ description: Implement comprehensive testing strategies with pytest, fixtures,
 tags:
   - languages
   - python-testing-patterns
-depends_on: []
+depends_on:
+  - python
+  - apis
 ---
 
 # [Python](../python/SKILL.md) Testing Patterns

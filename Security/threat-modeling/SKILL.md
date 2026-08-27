@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - threat-modeling
-depends_on: []
+depends_on:
+  - sast-scanning
+  - rbac
+  - penetration-testing
+  - microservices
+  - Rate Limiting
 ---
 
 # Threat Modeling

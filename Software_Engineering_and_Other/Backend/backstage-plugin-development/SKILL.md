@@ -17,7 +17,12 @@ metadata:
 tags:
   - backend
   - backstage-plugin-development
-depends_on: []
+depends_on:
+  - platform-self-service-api-and-workflow-design
+  - platform-engineering-team-topology-and-operating-model
+  - apis
+  - typescript
+  - platform-engineering
 ---
 
 # Backstage Plugin Development

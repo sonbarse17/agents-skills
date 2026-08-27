@@ -12,7 +12,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - stateful-workloads
-depends_on: []
+depends_on:
+  - autoscaling
+  - backup-and-restore
+  - capacity-planning
+  - capacity
+  - operators-and-crds
 ---
 
 # Stateful Workloads

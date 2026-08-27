@@ -6,7 +6,12 @@ description: Optimizes agent context setup. Use when starting a new session,
 tags:
   - workflows
   - context-engineering
-depends_on: []
+depends_on:
+  - vite
+  - postgresql
+  - apis
+  - typescript
+  - commands
 ---
 
 # Context Engineering

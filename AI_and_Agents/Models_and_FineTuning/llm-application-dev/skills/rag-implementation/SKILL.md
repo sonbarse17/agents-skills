@@ -7,7 +7,12 @@ description: Build Retrieval-Augmented Generation (RAG) systems for LLM
 tags:
   - skills
   - rag-implementation
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - postgresql
+  - serverless
+  - cost
 ---
 
 # RAG Implementation

@@ -19,7 +19,12 @@ metadata:
 tags:
   - product_and_business
   - technical-roadmap-ownership-and-cross-team-coordination
-depends_on: []
+depends_on:
+  - platform-engineering-team-topology-and-operating-model
+  - internal-developer-platform
+  - system-design
+  - independent-solution-design-and-technical-review
+  - platform-engineering
 ---
 
 # Technical Roadmap Ownership and Cross-Team Coordination

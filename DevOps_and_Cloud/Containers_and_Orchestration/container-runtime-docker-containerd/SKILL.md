@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - container-runtime-docker-containerd
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - openshift-and-rosa-platform
+  - openshift
+  - multi-tenancy
 ---
 
 # Container Runtime: [Docker](../docker/SKILL.md) Engine, containerd, CRI-O

@@ -22,7 +22,12 @@ tags:
   - design-patterns
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - microservices
+  - vault
+  - Rate Limiting
+  - python
+  - internals
 ---
 
 # Design Patterns

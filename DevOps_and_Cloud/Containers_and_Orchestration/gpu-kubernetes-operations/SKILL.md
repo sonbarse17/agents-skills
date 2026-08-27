@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - gpu-kubernetes-operations
-depends_on: []
+depends_on:
+  - microservices
+  - autoscaling
+  - monitoring
+  - kubernetes
+  - kubectl
 ---
 
 # GPU [Kubernetes](../kubernetes/SKILL.md) Operations

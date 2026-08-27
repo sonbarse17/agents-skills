@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-functions-configuration
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - dapr-distributed-runtime-configuration
+  - capacity
+  - deploy
 ---
 
 # Azure Functions Configuration

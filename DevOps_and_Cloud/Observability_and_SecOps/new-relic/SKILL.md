@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - new-relic
-depends_on: []
+depends_on:
+  - python
+  - go
+  - observability
+  - monitoring
+  - datadog
 ---
 
 # New Relic

@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for git. Use this skill
 tags:
   - miscellaneous
   - git
-depends_on: []
+depends_on:
+  - mermaid
+  - eslint
+  - github
+  - deploy
+  - commit
 ---
 # Skill
 

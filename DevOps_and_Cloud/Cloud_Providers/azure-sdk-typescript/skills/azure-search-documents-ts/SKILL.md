@@ -12,7 +12,8 @@ metadata:
 tags:
   - skills
   - azure-search-documents-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Azure AI Search SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

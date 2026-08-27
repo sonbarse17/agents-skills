@@ -7,7 +7,12 @@ description: Simplifies code for clarity. Use when refactoring code for clarity
 tags:
   - patterns
   - code-simplification
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - python
+  - typescript
+  - github
 ---
 
 # Code Simplification

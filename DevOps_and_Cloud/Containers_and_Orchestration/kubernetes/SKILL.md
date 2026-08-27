@@ -23,7 +23,12 @@ tags:
   - kubernetes
   - cluster-admin
   - phase-5
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - autoscaling
+  - commands
+  - backup-dr
 ---
 
 # Kubernetes Cluster Administration

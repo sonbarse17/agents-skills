@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - keda-configuration-validation
-depends_on: []
+depends_on:
+  - rbac
+  - devsecops
+  - metallb-configuration-validation
+  - kafka-configuration-validation
+  - autoscaling
 ---
 
 # KEDA Configuration Validation

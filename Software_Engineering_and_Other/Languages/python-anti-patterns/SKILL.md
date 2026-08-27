@@ -7,7 +7,11 @@ description: Use this skill when reviewing Python code for common anti-patterns
 tags:
   - languages
   - python-anti-patterns
-depends_on: []
+depends_on:
+  - python-design-patterns
+  - design-patterns
+  - python
+  - apis
 ---
 
 # [Python](../python/SKILL.md) Anti-Patterns Checklist

@@ -21,7 +21,12 @@ tags:
   - management
   - qc
   - quality
-depends_on: []
+depends_on:
+  - scan
+  - jest
+  - microservices
+  - prettier
+  - eslint
 ---
 
 # Quality Control

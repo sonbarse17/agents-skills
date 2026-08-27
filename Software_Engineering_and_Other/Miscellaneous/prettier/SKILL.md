@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for prettier. Use this
 tags:
   - miscellaneous
   - prettier
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - eslint
+  - github
+  - deploy
 ---
 # Skill
 

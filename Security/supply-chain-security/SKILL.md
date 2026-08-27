@@ -12,7 +12,12 @@ license: MIT
 tags:
   - security
   - supply-chain-security
-depends_on: []
+depends_on:
+  - incident
+  - deploy
+  - commit
+  - secrets-management
+  - audit
 ---
 
 # Supply Chain Security

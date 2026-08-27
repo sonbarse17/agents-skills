@@ -24,7 +24,12 @@ tags:
   - renovate
   - security
   - phase-5
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - python
+  - typescript
+  - monorepo
 ---
 
 # Dependency Management

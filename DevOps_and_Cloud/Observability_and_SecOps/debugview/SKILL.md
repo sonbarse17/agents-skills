@@ -19,7 +19,8 @@ description: >
 tags:
   - observability_and_secops
   - debugview
-depends_on: []
+depends_on:
+  - monitoring
 ---
 
 # Sysinternals DebugView CLI (DbgViewCli)

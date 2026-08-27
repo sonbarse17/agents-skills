@@ -15,7 +15,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-manager-cosmosdb-dotnet
-depends_on: []
+depends_on:
+  - rbac
 ---
 
 # Azure.ResourceManager.CosmosDB (.NET)

@@ -7,7 +7,10 @@ description: Master advanced Git workflows including rebasing, cherry-picking,
 tags:
   - ci_cd
   - git-advanced-workflows
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - commit
 ---
 
 # Git Advanced Workflows

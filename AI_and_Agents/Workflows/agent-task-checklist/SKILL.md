@@ -5,7 +5,8 @@ description: Rules for breaking down complex projects into granular checklists
 tags:
   - workflows
   - agent-task-checklist
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Agent Task Checklist Management

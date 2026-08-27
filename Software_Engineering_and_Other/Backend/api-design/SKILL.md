@@ -22,7 +22,12 @@ tags:
   - api
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - rbac
+  - seo
+  - Rate Limiting
+  - backend-database-patterns
+  - apis
 ---
 
 # Backend API Design

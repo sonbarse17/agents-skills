@@ -14,7 +14,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-maps-search-dotnet
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Azure Maps (.NET)

@@ -16,7 +16,9 @@ metadata:
 tags:
   - security
   - enrich-with-aws-security-agent
-depends_on: []
+depends_on:
+  - incident
+  - aws
 ---
 
 # Enriching Investigations with AWS Security Agent Findings

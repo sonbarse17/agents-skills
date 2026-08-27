@@ -23,7 +23,12 @@ tags:
   - search
   - engine
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - ml-feature-engineering
+  - python
+  - data-relational-database
+  - monitoring
 ---
 
 # Data Search Engine

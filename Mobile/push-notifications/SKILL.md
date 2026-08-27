@@ -18,7 +18,11 @@ tags:
   - mobile
   - push-notifications
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - firebase
+  - typescript
 ---
 
 # Mobile Push Notifications

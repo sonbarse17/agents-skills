@@ -32,7 +32,12 @@ references:
   - https://github.com/anchore/grype
   - https://www.cve.org/
   - https://nvd.nist.gov/
-depends_on: []
+depends_on:
+  - scan
+  - sbom-syft
+  - python
+  - go
+  - monitoring
 ---
 
 # Container Vulnerability Scanning with Grype

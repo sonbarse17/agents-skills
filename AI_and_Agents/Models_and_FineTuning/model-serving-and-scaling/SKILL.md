@@ -15,7 +15,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-serving-and-scaling
-depends_on: []
+depends_on:
+  - autoscaling
+  - monitoring
+  - capacity
+  - kubernetes
+  - deploy
 ---
 
 # Model Serving And Scaling

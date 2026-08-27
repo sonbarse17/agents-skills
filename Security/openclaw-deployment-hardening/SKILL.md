@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - openclaw-deployment-hardening
-depends_on: []
+depends_on:
+  - scan
+  - sbom-supply-chain
+  - incident
+  - kubernetes-hardening
+  - kubernetes
 ---
 
 # OpenClaw Deployment Hardening

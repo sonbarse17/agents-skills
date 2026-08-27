@@ -21,7 +21,10 @@ metadata:
 tags:
   - backend
   - nestjs-expert
-depends_on: []
+depends_on:
+  - jest
+  - typescript
+  - github
 ---
 
 # NestJS Expert

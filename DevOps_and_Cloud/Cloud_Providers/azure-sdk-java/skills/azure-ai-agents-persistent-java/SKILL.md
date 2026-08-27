@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-ai-agents-persistent-java
-depends_on: []
+depends_on:
+  - github
+  - azure-ai
 ---
 
 # Azure AI Agents Persistent SDK for Java

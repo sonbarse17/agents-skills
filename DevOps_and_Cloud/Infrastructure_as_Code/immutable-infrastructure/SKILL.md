@@ -12,7 +12,12 @@ license: MIT
 tags:
   - infrastructure_as_code
   - immutable-infrastructure
-depends_on: []
+depends_on:
+  - scan
+  - image-scanning
+  - autoscaling
+  - vulnerability-scanning
+  - incident
 ---
 
 # Immutable Infrastructure

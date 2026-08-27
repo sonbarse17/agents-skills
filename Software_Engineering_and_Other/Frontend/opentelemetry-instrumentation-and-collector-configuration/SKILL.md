@@ -19,7 +19,12 @@ metadata:
 tags:
   - frontend
   - opentelemetry-instrumentation-and-collector-configuration
-depends_on: []
+depends_on:
+  - python
+  - go
+  - opentelemetry
+  - observability
+  - monitoring
 ---
 
 # [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Instrumentation and Collector Configuration

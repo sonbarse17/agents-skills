@@ -24,7 +24,12 @@ tags:
   - process-modeling
   - automation
   - phase-10
-depends_on: []
+depends_on:
+  - create-tech-spec
+  - create-story
+  - python
+  - go
+  - monitoring
 ---
 
 # BPMN Modeling

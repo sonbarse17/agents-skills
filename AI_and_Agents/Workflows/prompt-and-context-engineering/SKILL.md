@@ -15,7 +15,12 @@ metadata:
 tags:
   - workflows
   - prompt-and-context-engineering
-depends_on: []
+depends_on:
+  - code-review
+  - python
+  - go
+  - cost
+  - audit
 ---
 
 # Prompt and Context Engineering

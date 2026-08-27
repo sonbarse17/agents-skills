@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-audit
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - alerting
+  - dashboards
+  - cost
 ---
 
 # Azure Monitor [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)

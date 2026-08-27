@@ -13,7 +13,12 @@ metadata:
 tags:
   - cloud_providers
   - entra-app-registration
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - apis
+  - typescript
+  - commands
 ---
 
 ## Overview

@@ -16,7 +16,12 @@ metadata:
 tags:
   - data_engineering
   - data-and-model-lineage
-depends_on: []
+depends_on:
+  - unity
+  - feature-store-design
+  - experiment-tracking
+  - monitoring
+  - incident
 ---
 
 # Data And Model Lineage

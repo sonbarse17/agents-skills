@@ -21,7 +21,12 @@ metadata:
 tags:
   - frontend
   - fortify-static-analysis
-depends_on: []
+depends_on:
+  - trivy-vulnerability-scanning
+  - scan
+  - sast-integration
+  - devsecops
+  - code-quality
 ---
 
 # Fortify Static Analysis

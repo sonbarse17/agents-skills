@@ -18,7 +18,12 @@ tags:
   - management
   - team-topology
   - phase-10
-depends_on: []
+depends_on:
+  - management-okr-kpi
+  - management-hiring
+  - agile-scrum-kanban
+  - agile-scrum
+  - microservices
 ---
 
 # Team Topology Agent

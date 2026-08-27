@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - fedramp-compliance
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - pm
+  - monitoring
+  - incident
 ---
 
 # FedRAMP Compliance

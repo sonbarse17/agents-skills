@@ -20,7 +20,9 @@ metadata:
 tags:
   - frontend
   - cpp-pro
-depends_on: []
+depends_on:
+  - github
+  - cost
 ---
 
 # C++ Pro

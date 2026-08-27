@@ -4,7 +4,10 @@ description: Guidelines for building multi-agent systems and RAG pipelines.
 tags:
   - workflows
   - agentic-workflows
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 
 # Agentic Workflows & RAG

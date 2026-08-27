@@ -15,7 +15,12 @@ metadata:
 tags:
   - operations
   - audit
-depends_on: []
+depends_on:
+  - security-review
+  - autoscaling
+  - commands
+  - terraform-review
+  - pulumi
 ---
 
 # Audit

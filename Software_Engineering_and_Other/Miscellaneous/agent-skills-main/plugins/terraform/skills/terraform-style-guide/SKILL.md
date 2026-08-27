@@ -8,7 +8,9 @@ metadata:
 tags:
   - skills
   - terraform-style-guide
-depends_on: []
+depends_on:
+  - commit
+  - aws
 ---
 
 # Terraform Style Guide

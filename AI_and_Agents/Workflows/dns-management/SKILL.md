@@ -13,7 +13,12 @@ license: MIT
 tags:
   - workflows
   - dns-management
-depends_on: []
+depends_on:
+  - datacenter
+  - runbook
+  - observability
+  - monitoring
+  - disaster-recovery
 ---
 
 # DNS Management

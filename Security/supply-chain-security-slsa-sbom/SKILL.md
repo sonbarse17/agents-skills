@@ -17,7 +17,12 @@ metadata:
 tags:
   - security
   - supply-chain-security-slsa-sbom
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code-guardrails
+  - policy-as-code
+  - software-composition-analysis-sca
+  - vulnerability-scanning
 ---
 
 # Supply Chain Security: SLSA & SBOM

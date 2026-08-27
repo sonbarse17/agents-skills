@@ -12,7 +12,10 @@ metadata:
 tags:
   - containers_and_orchestration
   - docker
-depends_on: []
+depends_on:
+  - python
+  - go
+  - commands
 ---
 
 # Docker

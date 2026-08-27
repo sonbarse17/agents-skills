@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubeflow-ml-pipeline-orchestration
-depends_on: []
+depends_on:
+  - rbac
+  - ray-distributed-ml-orchestration
+  - experiment-tracking
+  - data-and-model-lineage
+  - python
 ---
 
 # Kubeflow ML Pipeline Orchestration

@@ -12,7 +12,12 @@ license: MIT
 tags:
   - patterns
   - workflow-automation
-depends_on: []
+depends_on:
+  - commands
+  - runbooks
+  - incident-response
+  - incident
+  - kubernetes
 ---
 
 # Workflow Automation

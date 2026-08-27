@@ -12,7 +12,11 @@ license: MIT
 tags:
   - cloud_providers
   - iam-access-management
-depends_on: []
+depends_on:
+  - vault
+  - incident
+  - secrets-management
+  - audit
 ---
 
 # IAM & Access Management

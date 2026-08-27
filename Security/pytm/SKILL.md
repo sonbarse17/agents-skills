@@ -36,7 +36,12 @@ references:
   - https://owasp.org/www-community/Threat_Modeling
   - https://www.microsoft.com/en-us/security/blog/2007/09/11/stride-chart/
   - https://attack.mitre.org/
-depends_on: []
+depends_on:
+  - microservices
+  - Rate Limiting
+  - customize
+  - python
+  - apis
 ---
 
 # Threat Modeling with pytm

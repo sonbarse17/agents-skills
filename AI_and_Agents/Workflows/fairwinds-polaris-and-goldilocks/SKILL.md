@@ -17,7 +17,12 @@ metadata:
 tags:
   - workflows
   - fairwinds-polaris-and-goldilocks
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - policy-as-code-guardrails
+  - policy-as-code
+  - opa-gatekeeper-policy-authoring
 ---
 
 # Fairwinds Polaris and Goldilocks

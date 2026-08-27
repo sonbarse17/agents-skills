@@ -19,7 +19,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-app-onboard
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - commands
+  - azure-deploy
+  - kubernetes
 ---
 
 # Azure App Onboard

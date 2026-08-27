@@ -30,7 +30,10 @@ references:
   - https://hashcat.net/wiki/
   - https://hashcat.net/hashcat/
   - https://attack.mitre.org/techniques/T1110/
-depends_on: []
+depends_on:
+  - cost
+  - audit
+  - prepare
 ---
 
 # Hashcat Password Recovery

@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - multi-tenancy-and-team-workspace-design-for-idp
-depends_on: []
+depends_on:
+  - rbac
+  - platform-engineering-team-topology-and-operating-model
+  - golden-path-template-design-for-developer-platforms
+  - vault
+  - humanitec-score-workload-specification
 ---
 
 # [Multi-Tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) and Team Workspace Design for IDP

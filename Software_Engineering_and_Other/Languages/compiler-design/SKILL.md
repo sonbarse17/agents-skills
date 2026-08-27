@@ -5,7 +5,8 @@ description: Advanced mechanics of compiler design including LLVM IR passes,
 tags:
   - languages
   - compiler-design
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Compiler Design Mechanics
 

@@ -11,7 +11,11 @@ metadata:
 tags:
   - skills
   - wiki-page-writer
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - apis
+  - github
 ---
 
 # Wiki Page Writer

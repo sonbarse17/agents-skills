@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - redis-configuration-validation
-depends_on: []
+depends_on:
+  - scan
+  - redis-operations-and-cluster-management
+  - redis-caching-strategy-and-invalidation-patterns
+  - mongodb-configuration-validation
+  - mongodb
 ---
 
 # Redis Configuration Validation

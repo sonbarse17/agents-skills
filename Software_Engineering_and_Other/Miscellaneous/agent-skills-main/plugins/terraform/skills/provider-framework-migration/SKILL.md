@@ -17,7 +17,12 @@ metadata:
 tags:
   - skills
   - provider-framework-migration
-depends_on: []
+depends_on:
+  - go
+  - provider-test-patterns
+  - provider-resources
+  - github
+  - commit
 ---
 
 # Migrating from Plugin SDKv2 to the Plugin Framework

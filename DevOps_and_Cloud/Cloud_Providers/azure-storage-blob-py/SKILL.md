@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage-blob-py
-depends_on: []
+depends_on:
+  - python
+  - azure-storage
+  - audit
 ---
 
 # Azure Blob Storage SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

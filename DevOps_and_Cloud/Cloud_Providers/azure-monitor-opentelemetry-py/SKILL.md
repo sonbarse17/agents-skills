@@ -14,7 +14,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-opentelemetry-py
-depends_on: []
+depends_on:
+  - python
+  - opentelemetry
 ---
 
 # Azure Monitor [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Distro for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

@@ -7,7 +7,12 @@ description: Configure human-in-the-loop gating for AI agent review actions in
 tags:
   - skills
   - review-agent-setup
-depends_on: []
+depends_on:
+  - go
+  - gitlab-ci
+  - github
+  - commit
+  - aws
 ---
 
 # review-agent-governance — Setup

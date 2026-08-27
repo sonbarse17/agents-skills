@@ -11,7 +11,12 @@ metadata:
 tags:
   - languages
   - python-appservice-deploy
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - commands
+  - deploy
+  - azure-prepare
 ---
 
 # [Python](../python/SKILL.md) on Azure App Service — Code Deploy

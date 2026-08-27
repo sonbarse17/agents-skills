@@ -21,7 +21,11 @@ metadata:
 tags:
   - languages
   - golang-pro
-depends_on: []
+depends_on:
+  - microservices
+  - profiling
+  - go
+  - github
 ---
 
 # Golang Pro

@@ -5,7 +5,10 @@ description: Instructions for creating stunning walkthrough reports using
 tags:
   - workflows
   - agent-walkthrough-report
-depends_on: []
+depends_on:
+  - mermaid
+  - github
+  - deploy
 ---
 
 # Agent Walkthrough Report Generation

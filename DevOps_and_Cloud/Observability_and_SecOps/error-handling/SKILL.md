@@ -24,7 +24,12 @@ tags:
   - error-handling
   - resilience
   - universal
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - accessibility
+  - typescript
+  - profiling
+  - go
 ---
 
 # Frontend Error Handling

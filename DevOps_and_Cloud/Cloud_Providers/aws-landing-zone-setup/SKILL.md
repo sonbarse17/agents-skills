@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-landing-zone-setup
-depends_on: []
+depends_on:
+  - git
+  - go
+  - infrastructure-as-code
+  - cost
+  - cloud-networking
 ---
 
 # AWS Landing Zone Setup

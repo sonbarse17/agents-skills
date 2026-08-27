@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure
   - rag-observability-evals
-depends_on: []
+depends_on:
+  - python
+  - qa
+  - opentelemetry
+  - observability
+  - monitoring
 ---
 
 # RAG [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and Evaluations

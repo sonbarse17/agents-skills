@@ -12,7 +12,8 @@ license: MIT
 tags:
   - containers_and_orchestration
   - network-security
-depends_on: []
+depends_on:
+  - audit
 ---
 
 # Network Security

@@ -16,7 +16,12 @@ metadata:
 tags:
   - models_and_finetuning
   - model-packaging-and-versioning
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - data-and-model-lineage
+  - git
+  - python
+  - monitoring
 ---
 
 # Model Packaging And Versioning

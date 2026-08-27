@@ -14,7 +14,12 @@ argument-hint: "[skip-to-step N]"
 tags:
   - skills
   - airunway-aks-setup
-depends_on: []
+depends_on:
+  - rbac
+  - kubernetes
+  - kubectl
+  - azure-kubernetes
+  - deploy
 ---
 
 # AI Runway AKS Setup

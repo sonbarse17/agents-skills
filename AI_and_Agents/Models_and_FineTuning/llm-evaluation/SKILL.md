@@ -7,7 +7,8 @@ description: Implement comprehensive evaluation strategies for LLM applications
 tags:
   - models_and_finetuning
   - llm-evaluation
-depends_on: []
+depends_on:
+  - python
 ---
 
 # LLM Evaluation

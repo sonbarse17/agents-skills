@@ -23,7 +23,12 @@ tags:
   - database
   - nosql
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - data-modeling
+  - datacenter
+  - cap-theorem
 ---
 
 # Data NoSQL Database

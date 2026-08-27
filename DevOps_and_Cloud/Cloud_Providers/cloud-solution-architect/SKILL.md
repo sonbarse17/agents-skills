@@ -8,7 +8,12 @@ description: Transform the agent into a Cloud Solution Architect following Azure
 tags:
   - cloud_providers
   - cloud-solution-architect
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - microservices
+  - design-patterns
+  - vault
 ---
 
 # Cloud Solution Architect

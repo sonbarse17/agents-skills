@@ -20,7 +20,12 @@ tags:
   - orchestration
   - phase-0
   - entry-point
-depends_on: []
+depends_on:
+  - zero-trust
+  - threat-intelligence
+  - soc-operations
+  - siem-engineering
+  - mobile-security
 ---
 
 # Master Orchestrator

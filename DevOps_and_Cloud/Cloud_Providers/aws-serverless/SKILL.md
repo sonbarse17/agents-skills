@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for aws-serverless. Use
 tags:
   - cloud_providers
   - aws-serverless
-depends_on: []
+depends_on:
+  - mermaid
+  - serverless
+  - aws
 ---
 # AWS Serverless: Deep Dive into Lambda and Firecracker
 

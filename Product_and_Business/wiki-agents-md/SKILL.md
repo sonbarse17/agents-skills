@@ -10,7 +10,12 @@ metadata:
 tags:
   - product_and_business
   - wiki-agents-md
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - vite
+  - git
+  - eslint
 ---
 
 # AGENTS.md Generator

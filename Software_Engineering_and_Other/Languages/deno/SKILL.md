@@ -18,7 +18,12 @@ tags:
   - backend
   - deno
   - phase-10
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - postgresql
+  - apis
+  - typescript
+  - preact
 ---
 
 # Deno

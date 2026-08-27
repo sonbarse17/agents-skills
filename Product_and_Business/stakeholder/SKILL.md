@@ -26,7 +26,12 @@ tags:
   - management
   - communication
   - phase-10
-depends_on: []
+depends_on:
+  - pm
+  - go
+  - incident
+  - commit
+  - dashboards
 ---
 
 # Stakeholder Management

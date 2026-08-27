@@ -13,7 +13,8 @@ compatibility: Primarily uses the Microsoft Learn MCP Server
 tags:
   - cloud_providers
   - microsoft-docs
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Microsoft Docs

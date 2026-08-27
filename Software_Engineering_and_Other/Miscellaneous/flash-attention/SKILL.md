@@ -5,7 +5,8 @@ description: Understand FlashAttention algorithm, addressing memory-bound
 tags:
   - miscellaneous
   - flash-attention
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # FlashAttention: Hardware-Aware Exact Attention

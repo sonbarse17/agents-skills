@@ -20,7 +20,12 @@ tags:
   - management
   - pm
   - process
-depends_on: []
+depends_on:
+  - qa
+  - go
+  - ba
+  - capacity
+  - deploy
 ---
 
 # Project Management

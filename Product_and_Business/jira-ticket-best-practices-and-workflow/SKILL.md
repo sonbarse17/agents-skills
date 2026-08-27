@@ -18,7 +18,12 @@ metadata:
 tags:
   - product_and_business
   - jira-ticket-best-practices-and-workflow
-depends_on: []
+depends_on:
+  - jira-comments-and-tracking-automation
+  - confluence-page-authoring-and-governance
+  - runbook
+  - commit
+  - dashboards
 ---
 
 # Jira Ticket Best Practices and Workflow

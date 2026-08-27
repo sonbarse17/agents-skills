@@ -19,7 +19,12 @@ tags:
   - graphql
   - phase-6
   - universal
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - apis
+  - typescript
 ---
 
 # Backend GraphQL Patterns

@@ -11,7 +11,12 @@ metadata:
 tags:
   - miscellaneous
   - devcontainers-nix
-depends_on: []
+depends_on:
+  - vscode
+  - prettier
+  - linux-administration
+  - git
+  - eslint
 ---
 
 # Dev Containers & Nix Environments

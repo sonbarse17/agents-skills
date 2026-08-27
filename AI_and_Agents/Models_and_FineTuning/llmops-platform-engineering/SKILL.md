@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llmops-platform-engineering
-depends_on: []
+depends_on:
+  - python
+  - autoscaling
+  - opentelemetry
+  - observability
+  - incident-response
 ---
 
 # LLMOps Platform Engineering

@@ -4,7 +4,9 @@ description: Comprehensive analysis of Cilium architecture and Kernel Space XDP 
 tags:
   - containers_and_orchestration
   - ebpf-networking
-depends_on: []
+depends_on:
+  - mermaid
+  - kubernetes
 ---
 
 # Cilium & eBPF Networking: Kernel Space Packet Processing

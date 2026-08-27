@@ -17,7 +17,12 @@ metadata:
 tags:
   - frontend
   - linkerd-service-mesh-configuration
-depends_on: []
+depends_on:
+  - linkerd-configuration-validation
+  - service-mesh-istio
+  - service-mesh
+  - grpc-service-troubleshooting
+  - kubernetes
 ---
 
 # Linkerd Service Mesh Configuration

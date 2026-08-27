@@ -6,7 +6,9 @@ description: Write effective blameless postmortems with root cause analysis,
 tags:
   - observability_and_secops
   - postmortem-writing
-depends_on: []
+depends_on:
+  - runbook
+  - incident
 ---
 
 # Postmortem Writing

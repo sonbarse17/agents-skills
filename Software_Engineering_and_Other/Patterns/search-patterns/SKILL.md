@@ -20,7 +20,12 @@ tags:
   - search
   - phase-6
   - universal
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - backend-database-patterns
+  - typescript
 ---
 
 # Backend Search Patterns

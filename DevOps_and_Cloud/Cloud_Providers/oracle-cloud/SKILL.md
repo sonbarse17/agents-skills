@@ -26,7 +26,12 @@ tags:
   - oci
   - cloud-provider
   - phase-4
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - autoscaling
+  - profiling
+  - commands
 ---
 
 # Oracle Cloud Infrastructure (OCI)

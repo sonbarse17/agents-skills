@@ -12,7 +12,11 @@ metadata:
 tags:
   - skills
   - terraform-test
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - github
+  - aws
 ---
 
 # Terraform Test

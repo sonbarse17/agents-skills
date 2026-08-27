@@ -14,7 +14,12 @@ metadata:
 tags:
   - skills
   - azure-storage-queue-py
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - cost
+  - azure-storage
+  - audit
 ---
 
 # Azure Queue Storage SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

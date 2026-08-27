@@ -14,7 +14,10 @@ metadata:
 tags:
   - skills
   - azure-servicebus-py
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - audit
 ---
 
 # Azure Service Bus SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

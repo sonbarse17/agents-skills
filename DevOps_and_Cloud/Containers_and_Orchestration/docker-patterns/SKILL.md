@@ -21,7 +21,12 @@ tags:
   - devops
   - docker
   - phase-5
-depends_on: []
+depends_on:
+  - scan
+  - vscode
+  - git
+  - python
+  - postgresql
 ---
 
 # [Docker](../docker/SKILL.md) Patterns

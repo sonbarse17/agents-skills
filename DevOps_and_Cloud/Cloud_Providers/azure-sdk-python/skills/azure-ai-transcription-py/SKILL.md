@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-ai-transcription-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
 ---
 
 # Azure AI Transcription SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

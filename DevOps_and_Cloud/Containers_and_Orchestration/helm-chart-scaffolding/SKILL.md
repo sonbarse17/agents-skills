@@ -7,7 +7,12 @@ description: Design, organize, and manage Helm charts for templating and
 tags:
   - containers_and_orchestration
   - helm-chart-scaffolding
-depends_on: []
+depends_on:
+  - kubernetes
+  - kubectl
+  - k8s-manifest-generator
+  - helm
+  - gitops-workflow
 ---
 
 # Helm Chart Scaffolding

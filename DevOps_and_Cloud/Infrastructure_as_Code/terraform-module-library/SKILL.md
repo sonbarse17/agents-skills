@@ -7,7 +7,12 @@ description: Build reusable Terraform modules for AWS, Azure, GCP, and OCI
 tags:
   - infrastructure_as_code
   - terraform-module-library
-depends_on: []
+depends_on:
+  - go
+  - terraform-modules
+  - github
+  - object-storage
+  - multi-cloud-architecture
 ---
 
 # Terraform Module Library

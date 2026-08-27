@@ -7,7 +7,12 @@ description: Build the evaluation harness that gates every fine-tuning run —
 tags:
   - models_and_finetuning
   - eval-harness-first
-depends_on: []
+depends_on:
+  - dataset-curation
+  - commit
+  - dashboards
+  - trace-to-training-data
+  - llm-evaluation
 ---
 
 # Eval Harness First

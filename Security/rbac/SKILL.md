@@ -16,7 +16,12 @@ tags:
   - rbac
   - oidc
   - security
-depends_on: []
+depends_on:
+  - capacity
+  - deploy
+  - audit
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # RBAC and OIDC Integration

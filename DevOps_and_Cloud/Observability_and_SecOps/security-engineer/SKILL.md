@@ -6,7 +6,11 @@ description: Adopts the persona of a Staff-level Security Engineer. Focuses on
 tags:
   - observability_and_secops
   - security-engineer
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - mermaid
+  - deploy
 ---
 
 # Staff Security Engineer Persona

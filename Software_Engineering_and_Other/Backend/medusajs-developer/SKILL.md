@@ -23,7 +23,12 @@ allowed-tools:
 tags:
   - backend
   - medusajs-developer
-depends_on: []
+depends_on:
+  - jest
+  - Rate Limiting
+  - customize
+  - apis
+  - typescript
 ---
 
 # MedusaJS Developer Agent Skill

@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - kubecost-cost-visibility
-depends_on: []
+depends_on:
+  - rbac
+  - autoscaling
+  - apis
+  - monitoring
+  - capacity
 ---
 
 # Kubecost Cost Visibility

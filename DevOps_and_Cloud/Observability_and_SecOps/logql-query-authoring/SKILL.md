@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - logql-query-authoring
-depends_on: []
+depends_on:
+  - scan
+  - loki-log-aggregation-configuration
+  - loki-configuration-validation
+  - incident-investigation-using-metrics-logs-traces
+  - incident
 ---
 
 # LogQL Query Authoring

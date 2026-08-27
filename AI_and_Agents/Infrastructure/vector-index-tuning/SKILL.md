@@ -6,7 +6,8 @@ description: Optimize vector index performance for latency, recall, and memory.
 tags:
   - infrastructure
   - vector-index-tuning
-depends_on: []
+depends_on:
+  - cost
 ---
 
 # Vector Index Tuning

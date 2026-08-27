@@ -11,7 +11,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - container-registry
-depends_on: []
+depends_on:
+  - image-scanning
+  - git
+  - incident
+  - helm
+  - deploy
 ---
 
 # Container Registry

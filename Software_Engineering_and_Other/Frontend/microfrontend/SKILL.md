@@ -17,7 +17,12 @@ tags:
   - microfrontend
   - phase-3
   - universal
-depends_on: []
+depends_on:
+  - jest
+  - vite
+  - seo
+  - accessibility
+  - typescript
 ---
 
 # Microfrontend Architecture

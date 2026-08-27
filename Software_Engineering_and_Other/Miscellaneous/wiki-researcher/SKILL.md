@@ -12,7 +12,10 @@ metadata:
 tags:
   - miscellaneous
   - wiki-researcher
-depends_on: []
+depends_on:
+  - mermaid
+  - git
+  - github
 ---
 
 # Wiki Researcher

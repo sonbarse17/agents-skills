@@ -18,7 +18,12 @@ metadata:
 tags:
   - models_and_finetuning
   - mlflow-experiment-tracking-and-model-registry
-depends_on: []
+depends_on:
+  - unity
+  - experiment-tracking
+  - git
+  - python
+  - postgresql
 ---
 
 # MLflow Experiment Tracking and Model Registry

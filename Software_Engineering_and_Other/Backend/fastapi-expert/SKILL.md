@@ -21,7 +21,12 @@ metadata:
 tags:
   - backend
   - fastapi-expert
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - apis
+  - github
+  - commit
 ---
 
 # FastAPI Expert

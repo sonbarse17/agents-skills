@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - identity-access-management
-depends_on: []
+depends_on:
+  - rbac
+  - access-review
+  - apis
+  - incident
+  - github
 ---
 
 # Identity & Access Management for Startups

@@ -7,7 +7,11 @@ description: Build scalable design systems with design tokens, theming
 tags:
   - skills
   - design-system-patterns
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - apis
+  - typescript
 ---
 
 # Design System Patterns

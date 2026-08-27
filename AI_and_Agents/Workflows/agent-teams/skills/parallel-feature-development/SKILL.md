@@ -13,7 +13,11 @@ version: 1.0.2
 tags:
   - skills
   - parallel-feature-development
-depends_on: []
+depends_on:
+  - team-composition-patterns
+  - team-communication-protocols
+  - typescript
+  - cost
 ---
 
 # Parallel Feature Development

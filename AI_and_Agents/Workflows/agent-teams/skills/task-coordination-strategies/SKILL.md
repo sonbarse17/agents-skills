@@ -8,7 +8,10 @@ version: 1.0.2
 tags:
   - skills
   - task-coordination-strategies
-depends_on: []
+depends_on:
+  - microservices
+  - Rate Limiting
+  - monitoring
 ---
 
 # Task Coordination Strategies

@@ -15,7 +15,12 @@ metadata:
 tags:
   - models_and_finetuning
   - preset
-depends_on: []
+depends_on:
+  - commands
+  - capacity
+  - deploy
+  - cost
+  - azure-validate
 ---
 
 # Deploy Model to Optimal Region

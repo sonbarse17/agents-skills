@@ -17,7 +17,12 @@ tags:
   - enterprise
   - multi-tenant
   - phase-8
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - python
+  - postgresql
+  - mysql
 ---
 
 # Multi-Tenant Architecture Agent

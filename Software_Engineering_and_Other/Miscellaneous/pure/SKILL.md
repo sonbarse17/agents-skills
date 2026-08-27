@@ -19,7 +19,10 @@ tags:
   - php
   - pure
   - phase-4
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - firebase
+  - prepare
 ---
 
 # PHP (Pure/Standard)

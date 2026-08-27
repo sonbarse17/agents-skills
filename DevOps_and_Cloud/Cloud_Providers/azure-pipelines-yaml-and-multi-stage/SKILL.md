@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-pipelines-yaml-and-multi-stage
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - go
+  - kubernetes
 ---
 
 # Azure Pipelines YAML and Multi-Stage Design

@@ -21,7 +21,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-kubernetes-deployment-on-aks-from-scratch
-depends_on: []
+depends_on:
+  - rbac
+  - ingress-nginx-configuration
+  - runbook
+  - kubernetes-node-maintenance-and-troubleshooting
+  - kubernetes-cluster-post-provision-conformance-validation
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on AKS From Scratch

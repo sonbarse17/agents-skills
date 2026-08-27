@@ -4,7 +4,12 @@ description: Playbook for building a High-Scale E-Commerce platform.
 tags:
   - frontend
   - high-scale-ecommerce
-depends_on: []
+depends_on:
+  - mermaid
+  - seo
+  - Programmatic SEO
+  - kubernetes
+  - cdn
 ---
 
 # High-Scale E-Commerce Playbook

@@ -18,7 +18,12 @@ tags:
   - rust
   - anchor
   - phase-blockchain
-depends_on: []
+depends_on:
+  - apis
+  - typescript
+  - deploy
+  - cost
+  - audit
 ---
 
 # Blockchain Solana

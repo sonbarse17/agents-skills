@@ -8,7 +8,9 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-style-guide
-depends_on: []
+depends_on:
+  - commit
+  - aws
 ---
 
 # Terraform Style Guide

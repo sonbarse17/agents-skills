@@ -18,7 +18,12 @@ tags:
   - quality
   - integration-testing
   - phase-3
-depends_on: []
+depends_on:
+  - quality-smoke-testing
+  - quality-regression-testing
+  - quality-e2e-testing
+  - quality-contract-testing
+  - vault
 ---
 
 # Integration Testing

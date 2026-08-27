@@ -19,7 +19,12 @@ tags:
   - dataops
   - data
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - data-testing
+  - git
+  - python
+  - profiling
 ---
 
 # DataOps Agent

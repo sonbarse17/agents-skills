@@ -17,7 +17,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - ansible-playbook-and-role-design
-depends_on: []
+depends_on:
+  - vault
+  - shell-scripting-best-practices
+  - python
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
 ---
 
 # [Ansible](../ansible/SKILL.md) Playbook and Role Design

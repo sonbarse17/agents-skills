@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - ansible
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - commands
+  - pulumi
+  - commit
 ---
 
 # Ansible

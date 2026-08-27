@@ -10,7 +10,11 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-aws
-depends_on: []
+depends_on:
+  - commands
+  - aws-vpc
+  - aws-iam
+  - aws
 ---
 
 # Terraform AWS

@@ -8,7 +8,8 @@ version: 1.0.2
 tags:
   - patterns
   - parallel-debugging
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # Parallel Debugging

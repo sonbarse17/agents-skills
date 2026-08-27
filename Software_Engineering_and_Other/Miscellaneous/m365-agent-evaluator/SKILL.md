@@ -10,7 +10,9 @@ description: >
 tags:
   - miscellaneous
   - m365-agent-evaluator
-depends_on: []
+depends_on:
+  - commands
+  - commit
 ---
 
 # M365 Agent Evaluator

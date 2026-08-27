@@ -13,7 +13,11 @@ license: MIT
 tags:
   - frontend
   - profiling
-depends_on: []
+depends_on:
+  - scan
+  - performance-tuning
+  - load-testing
+  - cost
 ---
 
 # Profiling

@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - linux-administration
-depends_on: []
+depends_on:
+  - user-management
+  - systemd-services
+  - ssh-configuration
+  - performance-tuning
+  - docker
 ---
 
 # Linux Administration

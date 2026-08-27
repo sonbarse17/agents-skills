@@ -19,7 +19,12 @@ tags:
   - security
   - testing
   - phase-10
-depends_on: []
+depends_on:
+  - scan
+  - security-api-security
+  - Rate Limiting
+  - python
+  - mongodb
 ---
 
 # Security SAST/DAST

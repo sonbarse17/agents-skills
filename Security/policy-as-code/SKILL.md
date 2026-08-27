@@ -12,7 +12,11 @@ license: MIT
 tags:
   - security
   - policy-as-code
-depends_on: []
+depends_on:
+  - scan
+  - terraform-modules
+  - kubernetes
+  - audit
 ---
 
 # Policy as Code

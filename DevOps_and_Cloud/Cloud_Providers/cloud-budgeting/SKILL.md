@@ -13,7 +13,8 @@ license: MIT
 tags:
   - cloud_providers
   - cloud-budgeting
-depends_on: []
+depends_on:
+  - cost
 ---
 
 # Cloud Budgeting

@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - multi-cloud-networking-patterns
-depends_on: []
+depends_on:
+  - autoscaling
+  - apis
+  - incident
+  - multi-cloud
+  - gcp-landing-zone-setup
 ---
 
 # [Multi-Cloud](../multi-cloud/SKILL.md) Networking Patterns

@@ -17,7 +17,12 @@ metadata:
 tags:
   - skills
   - azure-monitor-opentelemetry-exporter-java
-depends_on: []
+depends_on:
+  - customize
+  - opentelemetry
+  - github
+  - deploy
+  - deploy-model
 ---
 
 # Azure Monitor [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) Exporter for Java

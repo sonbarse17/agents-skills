@@ -14,7 +14,12 @@ metadata:
 tags:
   - skills
   - azure-upgrade
-depends_on: []
+depends_on:
+  - azure-deploy
+  - monitoring
+  - github
+  - deploy
+  - azure-validate
 ---
 
 # Azure Upgrade

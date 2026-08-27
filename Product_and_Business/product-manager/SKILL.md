@@ -5,7 +5,8 @@ description: ACT and THINK like a highly effective Product Manager focusing on
 tags:
   - product_and_business
   - product-manager
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Product Manager Persona

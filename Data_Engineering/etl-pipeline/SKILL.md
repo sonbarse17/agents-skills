@@ -20,7 +20,12 @@ tags:
   - data
   - engineering
   - phase-10
-depends_on: []
+depends_on:
+  - data-data-warehouse
+  - data-data-quality
+  - Structured Data
+  - python
+  - postgresql
 ---
 
 # Data ETL Pipeline

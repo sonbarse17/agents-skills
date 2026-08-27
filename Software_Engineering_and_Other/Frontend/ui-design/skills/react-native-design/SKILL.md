@@ -6,7 +6,10 @@ description: Master React Native styling, navigation, and Reanimated animations
 tags:
   - skills
   - react-native-design
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - typescript
 ---
 
 # React Native Design

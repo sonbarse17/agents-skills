@@ -17,7 +17,12 @@ compatibility:
 tags:
   - enterprise
   - phase-9
-depends_on: []
+depends_on:
+  - vendor-management
+  - microservices
+  - enterprise-architecture-governance
+  - runbooks
+  - monitoring
 ---
 
 # TOGAF and Zachman Framework Agent

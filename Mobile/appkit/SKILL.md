@@ -17,7 +17,12 @@ tags:
   - desktop
   - appkit
   - macos
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - desktop-swiftui
+  - profiling
 ---
 
 # AppKit

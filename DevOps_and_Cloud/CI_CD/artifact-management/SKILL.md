@@ -11,7 +11,12 @@ license: MIT
 tags:
   - ci_cd
   - artifact-management
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - git
+  - incident
+  - pipeline-security
+  - deploy
 ---
 
 # Artifact Management

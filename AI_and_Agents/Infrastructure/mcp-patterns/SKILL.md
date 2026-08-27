@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for mcp-patterns. Use
 tags:
   - infrastructure
   - mcp-patterns
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

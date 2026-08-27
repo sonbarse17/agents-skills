@@ -22,7 +22,12 @@ tags:
   - cron
   - jobs
   - distributed-cron
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - postgresql
+  - typescript
+  - profiling
 ---
 
 # Backend Scheduling and Cron

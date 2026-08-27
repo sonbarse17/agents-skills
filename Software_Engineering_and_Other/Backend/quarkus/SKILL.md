@@ -19,7 +19,12 @@ tags:
   - java
   - jvm
   - phase-4
-depends_on: []
+depends_on:
+  - postgresql
+  - mongodb
+  - micronaut
+  - docker-compose
+  - docker
 ---
 
 # Quarkus Backend

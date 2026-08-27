@@ -13,7 +13,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - docker-review
-depends_on: []
+depends_on:
+  - security-review
+  - scan
+  - git
+  - k8s-review
+  - docker
 ---
 
 # [Docker](../docker/SKILL.md) Review

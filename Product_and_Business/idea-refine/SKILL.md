@@ -8,7 +8,9 @@ description: Refines raw ideas into sharp, actionable concepts through
 tags:
   - product_and_business
   - idea-refine
-depends_on: []
+depends_on:
+  - scan
+  - cost
 ---
 
 # Idea Refine

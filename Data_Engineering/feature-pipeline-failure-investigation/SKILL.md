@@ -16,7 +16,12 @@ metadata:
 tags:
   - data_engineering
   - feature-pipeline-failure-investigation
-depends_on: []
+depends_on:
+  - feature-store-design
+  - data-and-model-lineage
+  - python
+  - incident-response-and-on-call-management
+  - on-call-management
 ---
 
 # Feature Pipeline Failure Investigation

@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-rds
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - terraform-aws
+  - monitoring
+  - deploy
 ---
 
 # AWS RDS

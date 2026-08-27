@@ -12,7 +12,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-language-conversations-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Language Conversations for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - pod-crashloop-and-oom-troubleshooting
-depends_on: []
+depends_on:
+  - chaos-engineering-and-resilience-testing
+  - service-connectivity
+  - load-testing
+  - chaos-engineering
+  - capacity-planning-and-load-testing
 ---
 
 # Pod CrashLoopBackOff and OOMKilled Troubleshooting

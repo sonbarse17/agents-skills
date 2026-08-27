@@ -21,7 +21,10 @@ metadata:
 tags:
   - backend
   - rails-expert
-depends_on: []
+depends_on:
+  - github
+  - audit
+  - scaffold
 ---
 
 # Rails Expert

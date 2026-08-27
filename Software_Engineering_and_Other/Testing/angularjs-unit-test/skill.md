@@ -4,7 +4,12 @@ description: Use this skill for AngularJS unit testing, maintenance, and migrati
 tags:
   - testing
   - angularjs-unit-test
-depends_on: []
+depends_on:
+  - jest
+  - apis
+  - jenkins
+  - github
+  - audit
 ---
 
 # AngularJS Unit Testing Skill

@@ -21,7 +21,12 @@ metadata:
 tags:
   - cloud_providers
   - django-storages-s3
-depends_on: []
+depends_on:
+  - python
+  - django-expert
+  - go
+  - devops-engineer
+  - github
 ---
 
 # Django Storages S3

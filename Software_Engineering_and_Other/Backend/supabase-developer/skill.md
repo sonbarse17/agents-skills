@@ -5,7 +5,12 @@ description: Expert Supabase development with PostgreSQL, authentication, Row
 tags:
   - backend
   - supabase-developer
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - deno
+  - firebase
+  - supabase
 ---
 
 # Supabase Developer Skill

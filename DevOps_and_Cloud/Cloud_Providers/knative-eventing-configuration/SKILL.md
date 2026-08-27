@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - knative-eventing-configuration
-depends_on: []
+depends_on:
+  - dapr-distributed-runtime-configuration
+  - incident
+  - capacity
+  - serverless
+  - kubernetes
 ---
 
 # Knative Eventing Configuration

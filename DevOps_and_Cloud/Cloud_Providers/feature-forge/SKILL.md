@@ -19,7 +19,9 @@ metadata:
 tags:
   - cloud_providers
   - feature-forge
-depends_on: []
+depends_on:
+  - pm
+  - github
 ---
 
 # Feature Forge

@@ -13,7 +13,12 @@ metadata:
 tags:
   - skills
   - entra-app-registration
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - apis
+  - typescript
+  - commands
 ---
 
 ## Overview

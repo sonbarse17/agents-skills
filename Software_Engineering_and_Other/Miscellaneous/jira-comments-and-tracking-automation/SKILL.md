@@ -18,7 +18,12 @@ metadata:
 tags:
   - miscellaneous
   - jira-comments-and-tracking-automation
-depends_on: []
+depends_on:
+  - jira-ticket-best-practices-and-workflow
+  - confluence-page-authoring-and-governance
+  - incident
+  - github
+  - deploy
 ---
 
 # Jira Comments and Tracking Automation

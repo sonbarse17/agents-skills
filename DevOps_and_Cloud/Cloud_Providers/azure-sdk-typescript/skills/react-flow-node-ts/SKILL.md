@@ -10,7 +10,8 @@ metadata:
 tags:
   - skills
   - react-flow-node-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # React Flow Node

@@ -6,7 +6,9 @@ description: The thermodynamic and statistical mechanical basis of generative
 tags:
   - data_engineering
   - statistical-mechanics
-depends_on: []
+depends_on:
+  - mermaid
+  - Structured Data
 ---
 
 # Statistical Mechanics & Diffusion: Thermodynamics of Generative Synthesis

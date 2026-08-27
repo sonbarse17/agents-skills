@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-cloud-sql
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - terraform-gcp
+  - kubernetes
+  - gcp-gke
 ---
 
 # GCP Cloud SQL

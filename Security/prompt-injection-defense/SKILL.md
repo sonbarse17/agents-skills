@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - prompt-injection-defense
-depends_on: []
+depends_on:
+  - security-automation
+  - scan
+  - llm-app-security
+  - ai-agent-security
+  - python
 ---
 
 # Prompt Injection Defense

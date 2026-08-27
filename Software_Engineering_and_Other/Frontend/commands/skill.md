@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for commands. Use this
 tags:
   - frontend
   - commands
-depends_on: []
+depends_on:
+  - ios
 ---
 # /skill — Load a skill by name
 

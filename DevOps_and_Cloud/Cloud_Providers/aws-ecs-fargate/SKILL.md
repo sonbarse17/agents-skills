@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-ecs-fargate
-depends_on: []
+depends_on:
+  - image-scanning
+  - microservices
+  - autoscaling
+  - terraform-aws
+  - capacity
 ---
 
 # AWS ECS & Fargate

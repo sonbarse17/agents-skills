@@ -14,7 +14,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-ingestion-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure Monitor Ingestion SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

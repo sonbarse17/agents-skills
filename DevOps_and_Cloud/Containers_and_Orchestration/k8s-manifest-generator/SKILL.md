@@ -7,7 +7,12 @@ description: Create production-ready Kubernetes manifests for Deployments,
 tags:
   - containers_and_orchestration
   - k8s-manifest-generator
-depends_on: []
+depends_on:
+  - git
+  - observability
+  - monitoring
+  - kustomize
+  - kubernetes
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Manifest Generator

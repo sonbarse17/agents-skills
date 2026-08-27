@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - rds-operation-review
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - mysql
+  - autoscaling
+  - apis
 ---
 
 # RDS / Aurora Operational Review

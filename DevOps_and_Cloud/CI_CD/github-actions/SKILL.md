@@ -11,7 +11,12 @@ metadata:
 tags:
   - ci_cd
   - github-actions
-depends_on: []
+depends_on:
+  - semantic-versioning
+  - docker-management
+  - docker
+  - gitlab-ci
+  - github
 ---
 
 # [GitHub](../github/SKILL.md) Actions

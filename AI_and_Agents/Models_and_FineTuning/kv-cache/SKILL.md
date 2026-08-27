@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for kv-cache. Use this
 tags:
   - models_and_finetuning
   - kv-cache
-depends_on: []
+depends_on:
+  - mermaid
+  - capacity
+  - Few-Shot Prompting
 ---
 # KV Cache and Attention Mechanisms: PagedAttention and vLLM
 

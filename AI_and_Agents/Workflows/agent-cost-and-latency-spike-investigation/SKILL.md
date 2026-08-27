@@ -16,7 +16,12 @@ metadata:
 tags:
   - workflows
   - agent-cost-and-latency-spike-investigation
-depends_on: []
+depends_on:
+  - database-operations
+  - monitoring
+  - incident
+  - capacity
+  - deploy
 ---
 
 # Agent Cost and Latency Spike Investigation

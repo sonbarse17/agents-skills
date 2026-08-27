@@ -18,7 +18,12 @@ description: "Use when deploying an existing web application or API to an
 tags:
   - containers_and_orchestration
   - azure-kubernetes-app-deploy
-depends_on: []
+depends_on:
+  - mermaid
+  - go
+  - kubernetes
+  - kubectl
+  - azure-kubernetes
 ---
 
 # Deploy to AKS

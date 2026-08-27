@@ -19,7 +19,12 @@ tags:
   - finance
   - protocol
   - phase-blockchain
-depends_on: []
+depends_on:
+  - DeFi Protocols
+  - vault
+  - python
+  - typescript
+  - monitoring
 ---
 
 # Blockchain DeFi

@@ -7,7 +7,10 @@ metadata:
 tags:
   - cloud_providers
   - aws-ami-builder
-depends_on: []
+depends_on:
+  - commands
+  - github
+  - aws
 ---
 
 # AWS AMI Builder

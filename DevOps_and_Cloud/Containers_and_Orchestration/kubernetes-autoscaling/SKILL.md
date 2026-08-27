@@ -23,7 +23,12 @@ tags:
   - vpa
   - keda
   - phase-5
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - Rate Limiting
+  - autoscaling
+  - apis
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)

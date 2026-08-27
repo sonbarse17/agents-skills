@@ -26,7 +26,12 @@ tags:
   - isr
   - rsc
   - universal
-depends_on: []
+depends_on:
+  - seo
+  - Rate Limiting
+  - accessibility
+  - apis
+  - typescript
 ---
 
 # Frontend Rendering Strategies

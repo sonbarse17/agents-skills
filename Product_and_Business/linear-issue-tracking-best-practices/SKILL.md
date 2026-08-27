@@ -19,7 +19,12 @@ metadata:
 tags:
   - product_and_business
   - linear-issue-tracking-best-practices
-depends_on: []
+depends_on:
+  - jira-ticket-best-practices-and-workflow
+  - servicenow-itsm-integration
+  - typescript
+  - sentry
+  - runbook
 ---
 
 # Linear Issue Tracking Best Practices

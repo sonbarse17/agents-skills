@@ -8,7 +8,12 @@ description: Hardens code against vulnerabilities. Use when handling user input,
 tags:
   - security
   - security-and-hardening
-depends_on: []
+depends_on:
+  - debugging-and-error-recovery
+  - Rate Limiting
+  - git
+  - embeddings
+  - internals
 ---
 
 # Security and Hardening

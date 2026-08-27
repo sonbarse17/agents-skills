@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argo-rollouts-progressive-delivery
-depends_on: []
+depends_on:
+  - observability
+  - monitoring
+  - incident-response
+  - incident
+  - datadog
 ---
 
 # Argo Rollouts Progressive Delivery

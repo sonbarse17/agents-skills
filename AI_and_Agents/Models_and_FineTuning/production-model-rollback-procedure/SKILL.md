@@ -17,7 +17,12 @@ metadata:
 tags:
   - models_and_finetuning
   - production-model-rollback-procedure
-depends_on: []
+depends_on:
+  - feature-pipeline-failure-investigation
+  - data-and-model-lineage
+  - python
+  - incident-response-and-on-call-management
+  - runbook
 ---
 
 # Production Model Rollback Procedure

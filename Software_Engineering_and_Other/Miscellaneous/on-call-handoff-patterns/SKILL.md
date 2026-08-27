@@ -12,7 +12,9 @@ description: Master on-call shift handoffs with context transfer, escalation
 tags:
   - miscellaneous
   - on-call-handoff-patterns
-depends_on: []
+depends_on:
+  - incident
+  - alerting
 ---
 
 # On-Call Handoff Patterns

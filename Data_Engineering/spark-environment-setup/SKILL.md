@@ -7,7 +7,12 @@ description: Set up a working ML training/inference environment on NVIDIA DGX
 tags:
   - data_engineering
   - spark-environment-setup
-depends_on: []
+depends_on:
+  - spark-training-gotchas
+  - spark-memory-thermal-ops
+  - python
+  - commands
+  - docker
 ---
 
 # Spark Environment Setup

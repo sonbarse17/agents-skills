@@ -7,7 +7,12 @@ description: Design multi-cloud architectures using a decision framework to
 tags:
   - cloud_providers
   - multi-cloud-architecture
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - apis
+  - go
+  - terraform-module-library
 ---
 
 # [Multi-Cloud](../multi-cloud/SKILL.md) Architecture

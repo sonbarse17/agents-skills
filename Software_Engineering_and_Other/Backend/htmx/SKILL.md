@@ -21,7 +21,12 @@ tags:
   - frontend
   - htmx
   - phase-1
-depends_on: []
+depends_on:
+  - vite
+  - seo
+  - python
+  - alpinejs
+  - go
 ---
 
 # htmx

@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-cicd-pipeline-deployment-for-serverless-from-scratch
-depends_on: []
+depends_on:
+  - scan
+  - sast-integration
+  - devsecops
+  - git
+  - python
 ---
 
 # Complete CI/CD Pipeline Deployment for [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), From Scratch

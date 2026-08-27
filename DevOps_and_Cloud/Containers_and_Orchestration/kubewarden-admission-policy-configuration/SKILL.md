@@ -19,7 +19,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubewarden-admission-policy-configuration
-depends_on: []
+depends_on:
+  - opa-gatekeeper-policy-authoring
+  - falco-configuration-validation
+  - go
+  - observability
+  - incident
 ---
 
 # Kubewarden Admission Policy Configuration

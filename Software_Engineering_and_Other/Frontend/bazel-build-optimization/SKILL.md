@@ -6,7 +6,8 @@ description: Optimize Bazel builds for large-scale monorepos. Use when
 tags:
   - frontend
   - bazel-build-optimization
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # Bazel Build Optimization

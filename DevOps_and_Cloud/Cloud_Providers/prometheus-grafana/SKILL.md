@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - prometheus-grafana
-depends_on: []
+depends_on:
+  - go
+  - monitoring
+  - loki-logging
+  - capacity
+  - alerting-oncall
 ---
 
 # Prometheus & Grafana

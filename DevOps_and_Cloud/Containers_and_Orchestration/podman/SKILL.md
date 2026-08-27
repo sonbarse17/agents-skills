@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - podman
-depends_on: []
+depends_on:
+  - commands
+  - kubernetes-ops
+  - kubernetes
+  - docker-management
+  - docker-compose
 ---
 
 # Podman

@@ -10,7 +10,12 @@ metadata:
 tags:
   - frontend
   - ssl-tls-management
-depends_on: []
+depends_on:
+  - zero-trust
+  - waf-setup
+  - hashicorp-vault
+  - vault
+  - commands
 ---
 
 # SSL/TLS Management

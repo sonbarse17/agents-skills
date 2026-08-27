@@ -4,7 +4,12 @@ description: Advanced K8s Operators and Helm Charts development.
 tags:
   - containers_and_orchestration
   - kubernetes-mastery
-depends_on: []
+depends_on:
+  - mermaid
+  - go
+  - kubernetes
+  - helm
+  - github
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Mastery

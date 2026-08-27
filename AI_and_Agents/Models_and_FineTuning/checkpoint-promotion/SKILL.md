@@ -7,7 +7,12 @@ description: Gate fine-tuned checkpoints with drift budgets, paired comparison,
 tags:
   - models_and_finetuning
   - checkpoint-promotion
-depends_on: []
+depends_on:
+  - scan
+  - dataset-curation
+  - trace-to-training-data
+  - quantized-export
+  - preference-optimization
 ---
 
 # Checkpoint Promotion

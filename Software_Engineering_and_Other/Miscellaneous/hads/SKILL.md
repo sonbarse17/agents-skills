@@ -7,7 +7,8 @@ description: Use when writing technical documentation that needs to be readable
 tags:
   - miscellaneous
   - hads
-depends_on: []
+depends_on:
+  - scan
 ---
 
 # HADS Claude Skill

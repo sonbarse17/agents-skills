@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for seo. Use this skill
 tags:
   - miscellaneous
   - seo
-depends_on: []
+depends_on:
+  - Structured Data
+  - accessibility
+  - python
+  - monitoring
+  - cdn
 ---
 # SEO Skill
 

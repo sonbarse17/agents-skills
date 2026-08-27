@@ -19,7 +19,12 @@ metadata:
 tags:
   - observability_and_secops
   - cloud-resource-post-provisioning-validation-and-drift-detection
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - infrastructure-as-code
+  - incident
+  - disaster-recovery
 ---
 
 # Cloud Resource Post-Provisioning Validation and Drift Detection

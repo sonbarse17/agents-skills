@@ -12,7 +12,9 @@ license: MIT
 tags:
   - security
   - zero-trust
-depends_on: []
+depends_on:
+  - autoscaling
+  - network-security
 ---
 
 # Zero Trust

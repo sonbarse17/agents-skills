@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - disaster-recovery-and-backup-strategy
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - infrastructure-as-code
+  - runbook
+  - incident
 ---
 
 # Disaster Recovery and Backup Strategy

@@ -27,7 +27,12 @@ tags:
   - orchestrator
   - scheduler
   - phase-4
-depends_on: []
+depends_on:
+  - vault
+  - postgresql
+  - autoscaling
+  - go
+  - observability
 ---
 
 # Nomad

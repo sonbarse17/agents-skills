@@ -23,7 +23,12 @@ tags:
   - outbox
   - messaging
   - reliability
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - typescript
+  - monitoring
+  - alerting
 ---
 
 # Backend Transactional Outbox

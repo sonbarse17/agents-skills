@@ -31,7 +31,12 @@ dependencies:
 references:
   - https://github.com/anchore/syft
   - https://anchore.com/sbom/
-depends_on: []
+depends_on:
+  - supply-chain-security
+  - scan
+  - git
+  - python
+  - go
 ---
 
 # Syft SBOM Generator

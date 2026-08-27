@@ -9,7 +9,12 @@ metadata:
 tags:
   - operations
   - agent-observability
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - sre-dashboards
+  - opentelemetry
+  - observability
 ---
 
 # Agent [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

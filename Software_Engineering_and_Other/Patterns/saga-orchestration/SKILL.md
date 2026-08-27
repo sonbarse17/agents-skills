@@ -11,7 +11,12 @@ description: Implement saga patterns for distributed transactions and
 tags:
   - patterns
   - saga-orchestration
-depends_on: []
+depends_on:
+  - workflow-orchestration-patterns
+  - cqrs-implementation
+  - python
+  - commands
+  - monitoring
 ---
 
 # Saga Orchestration

@@ -9,7 +9,10 @@ description: PluginEval quality methodology — dimensions, rubrics, statistical
 tags:
   - skills
   - evaluation-methodology
-depends_on: []
+depends_on:
+  - python
+  - commit
+  - audit
 ---
 
 # Evaluation Methodology

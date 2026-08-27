@@ -12,7 +12,12 @@ metadata:
 tags:
   - miscellaneous
   - crm-production-investigation-guidelines
-depends_on: []
+depends_on:
+  - python
+  - postgresql
+  - monitoring
+  - incident
+  - datadog
 ---
 
 You are investigating a real production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) in the CRM application. This is a live production environment serving active sales teams.

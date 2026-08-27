@@ -21,7 +21,12 @@ tags:
   - phase-1
   - documentation
   - product-brief
-depends_on: []
+depends_on:
+  - master-orchestrator
+  - create-prd
+  - ios
+  - vault
+  - Rate Limiting
 ---
 
 # Create Brief

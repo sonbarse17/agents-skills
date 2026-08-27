@@ -9,7 +9,9 @@ description: Audit and rewrite prose so it stops reading as machine-generated.
 tags:
   - workflows
   - avoid-ai-writing
-depends_on: []
+depends_on:
+  - scan
+  - audit
 ---
 
 # Avoid AI Writing

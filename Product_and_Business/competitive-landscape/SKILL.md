@@ -10,7 +10,10 @@ version: 1.0.0
 tags:
   - product_and_business
   - competitive-landscape
-depends_on: []
+depends_on:
+  - go
+  - monitoring
+  - cost
 ---
 
 # Competitive Landscape Analysis

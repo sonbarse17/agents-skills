@@ -10,7 +10,12 @@ metadata:
 tags:
   - skills
   - wiki-onboarding
-depends_on: []
+depends_on:
+  - scan
+  - pm
+  - mermaid
+  - git
+  - python
 ---
 
 # Wiki Onboarding Guide Generator

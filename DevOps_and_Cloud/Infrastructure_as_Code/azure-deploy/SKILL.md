@@ -19,7 +19,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - azure-deploy
-depends_on: []
+depends_on:
+  - rbac
+  - python
+  - typescript
+  - commands
+  - deploy
 ---
 
 # Azure Deploy

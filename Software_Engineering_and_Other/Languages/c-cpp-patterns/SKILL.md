@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for c-cpp-patterns. Use
 tags:
   - languages
   - c-cpp-patterns
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # C/C++ Embedded Patterns: Memory and RAII
 

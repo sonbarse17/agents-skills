@@ -5,7 +5,9 @@ description: Advanced design of Retrieval-Augmented Generation, focusing on
 tags:
   - infrastructure
   - rag-design
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
 ---
 # RAG Design Mechanics
 

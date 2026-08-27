@@ -13,7 +13,12 @@ license: MIT
 tags:
   - backend
   - api-gateway
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - go
+  - service-mesh
+  - load-testing
+  - capacity
 ---
 
 # API Gateway

@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - helm-chart-authoring
-depends_on: []
+depends_on:
+  - git
+  - internals
+  - monorepo
+  - kustomize-overlay-management
+  - kustomize
 ---
 
 # Helm Chart Authoring

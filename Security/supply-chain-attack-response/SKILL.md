@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - supply-chain-attack-response
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - python
+  - go
+  - monitoring
 ---
 
 # Supply Chain Attack Response

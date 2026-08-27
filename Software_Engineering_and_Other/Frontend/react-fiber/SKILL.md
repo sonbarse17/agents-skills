@@ -5,7 +5,9 @@ description: Deep dive into React Fiber Architecture, reconciliation algorithm,
 tags:
   - frontend
   - react-fiber
-depends_on: []
+depends_on:
+  - mermaid
+  - commit
 ---
 
 # React Fiber Architecture: Core Mechanics & Reconciliation

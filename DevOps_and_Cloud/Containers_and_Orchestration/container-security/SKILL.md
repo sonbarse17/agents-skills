@@ -22,7 +22,12 @@ tags:
   - devops
   - containers
   - phase-10
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - security-api-security
+  - git
+  - go
 ---
 
 # Security Container Security

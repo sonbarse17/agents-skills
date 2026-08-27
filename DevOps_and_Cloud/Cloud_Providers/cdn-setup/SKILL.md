@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - cdn-setup
-depends_on: []
+depends_on:
+  - reverse-proxy
+  - load-balancing
+  - infrastructure-as-code
+  - monitoring
+  - deploy
 ---
 
 # CDN Setup

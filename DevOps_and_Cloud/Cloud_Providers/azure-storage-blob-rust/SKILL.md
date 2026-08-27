@@ -13,7 +13,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage-blob-rust
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - github
 ---
 
 # Azure Blob Storage library for Rust

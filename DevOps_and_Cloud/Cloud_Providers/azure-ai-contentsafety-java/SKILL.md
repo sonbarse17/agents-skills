@@ -11,7 +11,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-contentsafety-java
-depends_on: []
+depends_on:
+  - azure-ai
 ---
 
 # Azure AI Content Safety SDK for Java

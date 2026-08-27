@@ -6,7 +6,9 @@ description: Implement data quality validation with Great Expectations, dbt
 tags:
   - data_engineering
   - data-quality-frameworks
-depends_on: []
+depends_on:
+  - python
+  - monitoring
 ---
 
 # Data Quality Frameworks

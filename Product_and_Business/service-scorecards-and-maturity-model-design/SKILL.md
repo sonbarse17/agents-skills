@@ -17,7 +17,12 @@ metadata:
 tags:
   - product_and_business
   - service-scorecards-and-maturity-model-design
-depends_on: []
+depends_on:
+  - scan
+  - platform-engineering-team-topology-and-operating-model
+  - developer-experience
+  - developer-experience-measurement-and-platform-adoption
+  - change-management
 ---
 
 # Service Scorecards and Maturity Model Design

@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - runbook
-depends_on: []
+depends_on:
+  - commands
+  - runbooks
+  - observability
+  - incident
+  - dr-review
 ---
 
 # Runbook

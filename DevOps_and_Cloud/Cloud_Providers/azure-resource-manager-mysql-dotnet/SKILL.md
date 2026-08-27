@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-manager-mysql-dotnet
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - github
 ---
 
 # Azure.ResourceManager.[MySql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) (.NET)

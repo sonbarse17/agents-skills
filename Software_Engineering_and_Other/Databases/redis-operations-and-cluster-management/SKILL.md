@@ -16,7 +16,12 @@ metadata:
 tags:
   - databases
   - redis-operations-and-cluster-management
-depends_on: []
+depends_on:
+  - redis-configuration-validation
+  - redis-caching-strategy-and-invalidation-patterns
+  - mongodb-operations-and-scaling
+  - mongodb
+  - commands
 ---
 
 # Redis Operations and Cluster Management

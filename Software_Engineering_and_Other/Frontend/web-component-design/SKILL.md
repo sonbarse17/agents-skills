@@ -7,7 +7,9 @@ description: Master React, Vue, and Svelte component patterns including
 tags:
   - frontend
   - web-component-design
-depends_on: []
+depends_on:
+  - accessibility
+  - apis
 ---
 
 # Web Component Design

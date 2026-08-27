@@ -23,7 +23,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-specialist
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - service-mesh
+  - kubernetes
+  - kubectl
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Specialist

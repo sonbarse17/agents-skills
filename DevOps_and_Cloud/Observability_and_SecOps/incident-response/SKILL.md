@@ -13,7 +13,11 @@ license: MIT
 tags:
   - observability_and_secops
   - incident-response
-depends_on: []
+depends_on:
+  - root-cause-analysis
+  - incident
+  - deploy
+  - cost
 ---
 
 # [Incident](../incident/SKILL.md) Response

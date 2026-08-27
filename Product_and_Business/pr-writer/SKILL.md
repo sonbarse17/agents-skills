@@ -18,7 +18,12 @@ tags:
   - pr-writer
   - pull-request
   - code-review
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - dev-loop-changelog-generator
+  - git
+  - code-review
 ---
 
 # PR Writer

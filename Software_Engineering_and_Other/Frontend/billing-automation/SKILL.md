@@ -7,7 +7,8 @@ description: Build automated billing systems for recurring payments, invoicing,
 tags:
   - frontend
   - billing-automation
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Billing Automation

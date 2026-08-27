@@ -16,7 +16,11 @@ metadata:
 tags:
   - databases
   - elasticsearch-authn
-depends_on: []
+depends_on:
+  - apis
+  - commands
+  - elasticsearch-authz
+  - serverless
 ---
 
 # Elasticsearch Authentication

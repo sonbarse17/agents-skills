@@ -7,7 +7,12 @@ description: Build robust backtesting systems for trading strategies with proper
 tags:
   - miscellaneous
   - backtesting-frameworks
-depends_on: []
+depends_on:
+  - capacity
+  - deploy
+  - cost
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Backtesting Frameworks

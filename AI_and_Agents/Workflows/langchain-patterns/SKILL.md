@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for langchain-patterns.
 tags:
   - workflows
   - langchain-patterns
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

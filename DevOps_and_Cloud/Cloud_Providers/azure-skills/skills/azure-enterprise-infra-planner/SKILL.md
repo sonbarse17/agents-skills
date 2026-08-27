@@ -15,7 +15,9 @@ metadata:
 tags:
   - skills
   - azure-enterprise-infra-planner
-depends_on: []
+depends_on:
+  - rbac
+  - commands
 ---
 
 # Azure Enterprise Infra Planner

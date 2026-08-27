@@ -8,7 +8,9 @@ description: This skill should be used when the user asks to "optimize a
 tags:
   - skills
   - prompt-engineering-patterns
-depends_on: []
+depends_on:
+  - python
+  - prompt-engineering
 ---
 
 # Prompt Engineering Patterns

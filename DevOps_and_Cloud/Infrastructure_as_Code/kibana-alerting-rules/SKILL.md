@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - kibana-alerting-rules
-depends_on: []
+depends_on:
+  - apis
+  - kibana-connectors
+  - observability
+  - monitoring
+  - alerting
 ---
 
 # Kibana [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Rules

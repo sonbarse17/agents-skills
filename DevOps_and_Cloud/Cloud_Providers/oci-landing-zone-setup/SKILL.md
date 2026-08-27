@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - oci-landing-zone-setup
-depends_on: []
+depends_on:
+  - vault
+  - git
+  - go
+  - deploy
+  - gcp-landing-zone-setup
 ---
 
 # OCI Landing Zone Setup

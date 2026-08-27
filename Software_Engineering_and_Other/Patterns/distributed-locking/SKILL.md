@@ -22,7 +22,12 @@ tags:
   - distributed-locking
   - concurrency
   - coordination
-depends_on: []
+depends_on:
+  - python
+  - postgresql
+  - typescript
+  - go
+  - monitoring
 ---
 
 # Backend Distributed Locking

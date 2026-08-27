@@ -20,7 +20,9 @@ tags:
   - scala
   - play
   - phase-7
-depends_on: []
+depends_on:
+  - postgresql
+  - github
 ---
 
 # Scala Play Framework

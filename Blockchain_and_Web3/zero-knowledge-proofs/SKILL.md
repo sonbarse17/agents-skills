@@ -4,7 +4,8 @@ description: ZK circuits, zk-SNARKs, and privacy-preserving transactions.
 tags:
   - blockchain_and_web3
   - zero-knowledge-proofs
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Zero-Knowledge Proofs

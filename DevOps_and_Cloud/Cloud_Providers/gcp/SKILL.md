@@ -18,7 +18,12 @@ tags:
   - cloud
   - gcp
   - phase-7
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - autoscaling
+  - apis
+  - profiling
 ---
 
 # devops-gcp

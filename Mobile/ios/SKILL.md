@@ -16,7 +16,12 @@ tags:
   - mobile
   - ios
   - phase-4
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - firebase
+  - apis
 ---
 
 # iOS Native

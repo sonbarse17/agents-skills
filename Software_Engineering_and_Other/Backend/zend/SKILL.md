@@ -24,7 +24,10 @@ tags:
   - zend
   - laminas
   - phase-7
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - php-laravel
 ---
 
 # Zend / Laminas

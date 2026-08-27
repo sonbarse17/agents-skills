@@ -8,7 +8,12 @@ description: Subjects every non-trivial decision to a fresh-context adversarial
 tags:
   - observability_and_secops
   - doubt-driven-development
-depends_on: []
+depends_on:
+  - debugging-and-error-recovery
+  - code-review-and-quality
+  - code-reviewer
+  - code-review
+  - source-driven-development
 ---
 
 # Doubt-Driven Development

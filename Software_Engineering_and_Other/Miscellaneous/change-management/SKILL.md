@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - change-management
-depends_on: []
+depends_on:
+  - scan
+  - pm
+  - monitoring
+  - incident
+  - github
 ---
 
 # Change Management

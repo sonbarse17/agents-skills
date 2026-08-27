@@ -8,7 +8,8 @@ version: 1.0.2
 tags:
   - skills
   - multi-reviewer-patterns
-depends_on: []
+depends_on:
+  - accessibility
 ---
 
 # Multi-Reviewer Patterns

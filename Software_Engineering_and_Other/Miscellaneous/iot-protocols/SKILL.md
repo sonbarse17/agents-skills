@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for iot-protocols. Use
 tags:
   - miscellaneous
   - iot-protocols
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # IoT Protocols: MQTT and CoAP
 

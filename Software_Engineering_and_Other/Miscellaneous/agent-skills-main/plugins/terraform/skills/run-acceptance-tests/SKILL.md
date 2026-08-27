@@ -12,7 +12,11 @@ metadata:
 tags:
   - skills
   - run-acceptance-tests
-depends_on: []
+depends_on:
+  - go
+  - provider-test-patterns
+  - provider-configuration
+  - cost
 ---
 
 An acceptance test is a Go test function with the prefix `TestAcc`.

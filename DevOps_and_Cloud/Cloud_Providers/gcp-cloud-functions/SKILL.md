@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-cloud-functions
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - apis
+  - terraform-gcp
+  - serverless
 ---
 
 # GCP Cloud Functions

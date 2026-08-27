@@ -18,7 +18,12 @@ metadata:
 tags:
   - ci_cd
   - openfeature-vendor-neutral-feature-flag-standard
-depends_on: []
+depends_on:
+  - pact-contract-testing-configuration
+  - feature-flag-configuration-launchdarkly-and-unleash
+  - python
+  - go
+  - infrastructure-post-deployment-validation-and-smoke-testing
 ---
 
 # OpenFeature: Vendor-Neutral Feature Flag Standard

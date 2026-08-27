@@ -22,7 +22,12 @@ tags:
   - frontend
   - stencil
   - phase-2
-depends_on: []
+depends_on:
+  - jest
+  - vault
+  - Rate Limiting
+  - typescript
+  - monitoring
 ---
 
 # Stencil

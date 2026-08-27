@@ -11,7 +11,8 @@ metadata:
 tags:
   - skills
   - azure-storage-blob-java
-depends_on: []
+depends_on:
+  - azure-storage
 ---
 
 # Azure Storage Blob SDK for Java

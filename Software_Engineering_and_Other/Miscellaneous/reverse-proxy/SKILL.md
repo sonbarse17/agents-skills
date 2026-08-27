@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - reverse-proxy
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - load-balancing
+  - service-mesh
+  - kubernetes
+  - docker-compose
 ---
 
 # Reverse Proxy

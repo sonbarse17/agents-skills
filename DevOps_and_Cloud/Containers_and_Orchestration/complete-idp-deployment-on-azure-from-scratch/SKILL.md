@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-idp-deployment-on-azure-from-scratch
-depends_on: []
+depends_on:
+  - service-scorecards-and-maturity-model-design
+  - platform-self-service-api-and-workflow-design
+  - platform-engineering-team-topology-and-operating-model
+  - golden-path-template-design-for-developer-platforms
+  - developer-experience
 ---
 
 # Complete IDP Deployment on Azure from Scratch

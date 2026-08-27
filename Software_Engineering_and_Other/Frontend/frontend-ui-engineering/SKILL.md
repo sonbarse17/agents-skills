@@ -8,7 +8,8 @@ description: Builds production-quality, accessible, responsive user-facing UIs.
 tags:
   - frontend
   - frontend-ui-engineering
-depends_on: []
+depends_on:
+  - accessibility
 ---
 
 # Frontend UI Engineering

@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argocd
-depends_on: []
+depends_on:
+  - rbac
+  - commands
+  - multi-tenancy
+  - kubernetes
+  - kubectl
 ---
 
 # Argo CD

@@ -23,7 +23,10 @@ tags:
   - state
   - phase-3
   - universal
-depends_on: []
+depends_on:
+  - accessibility
+  - typescript
+  - cost
 ---
 
 # Frontend State Management

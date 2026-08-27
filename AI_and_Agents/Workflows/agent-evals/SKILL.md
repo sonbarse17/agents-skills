@@ -10,7 +10,12 @@ metadata:
 tags:
   - workflows
   - agent-evals
-depends_on: []
+depends_on:
+  - ai-agent-security
+  - python
+  - observability
+  - monitoring
+  - github
 ---
 
 # Agent Evals

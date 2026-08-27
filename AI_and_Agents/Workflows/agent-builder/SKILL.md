@@ -13,7 +13,11 @@ argument-hint: "[agent-name]"
 tags:
   - workflows
   - agent-builder
-depends_on: []
+depends_on:
+  - apis
+  - commands
+  - elasticsearch-esql
+  - aws
 ---
 
 # Manage Agent Builder Agents and Tools in Kibana

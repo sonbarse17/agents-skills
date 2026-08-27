@@ -16,7 +16,12 @@ metadata:
 tags:
   - databases
   - cassandra-wide-column-database-operations
-depends_on: []
+depends_on:
+  - datacenter
+  - mongodb-operations-and-scaling
+  - mongodb
+  - go
+  - backup-and-restore
 ---
 
 # Cassandra Wide-Column Database Operations

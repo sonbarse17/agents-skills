@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - mcp-server-security
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - postgresql
+  - apis
+  - typescript
 ---
 
 # MCP Server Security

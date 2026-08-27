@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for ai-evals. Use this
 tags:
   - operations
   - ai-evals
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

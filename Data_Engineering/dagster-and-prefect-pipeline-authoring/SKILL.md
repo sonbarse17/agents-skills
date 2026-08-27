@@ -15,7 +15,12 @@ metadata:
 tags:
   - data_engineering
   - dagster-and-prefect-pipeline-authoring
-depends_on: []
+depends_on:
+  - data-lineage
+  - kafka-schema-registry-and-compatibility-management
+  - python
+  - internals
+  - deploy
 ---
 
 # Dagster and Prefect Pipeline Authoring

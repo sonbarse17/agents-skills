@@ -18,7 +18,12 @@ tags:
 version: 1.1.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - scan
+  - pm
+  - mermaid
+  - core-context-compressor
+  - vault
 ---
 
 # Core Onboarding

@@ -20,7 +20,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-gitops-argocd-deployment-on-prem-from-scratch
-depends_on: []
+depends_on:
+  - security-scanning
+  - rbac
+  - devsecops
+  - vault
+  - git
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment On-Prem, From Scratch

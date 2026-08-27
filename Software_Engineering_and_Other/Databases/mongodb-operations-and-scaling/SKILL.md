@@ -15,7 +15,12 @@ metadata:
 tags:
   - databases
   - mongodb-operations-and-scaling
-depends_on: []
+depends_on:
+  - scan
+  - redis-operations-and-cluster-management
+  - mongodb-configuration-validation
+  - postgresql
+  - mongodb
 ---
 
 # [MongoDB](../../Backend/mongodb/SKILL.md) Operations and Scaling

@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - managed-kubernetes-eks-aks-gke
-depends_on: []
+depends_on:
+  - autoscaling
+  - ingress-nginx-configuration
+  - capacity
+  - serverless
+  - kubernetes
 ---
 
 # Managed [Kubernetes](../kubernetes/SKILL.md): EKS, AKS, GKE

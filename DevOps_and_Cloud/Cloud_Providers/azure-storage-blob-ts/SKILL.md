@@ -15,7 +15,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage-blob-ts
-depends_on: []
+depends_on:
+  - typescript
+  - audit
 ---
 
 # @azure/storage-blob ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)

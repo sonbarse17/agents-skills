@@ -6,7 +6,9 @@ description: Master Material Design 3 and Jetpack Compose patterns for building
 tags:
   - skills
   - mobile-android-design
-depends_on: []
+depends_on:
+  - android
+  - accessibility
 ---
 
 # [Android](../../../../../Mobile/android/SKILL.md) Mobile Design

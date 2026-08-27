@@ -30,7 +30,12 @@ references:
   - https://cirt.net/Nikto2
   - https://github.com/sullo/nikto
   - https://owasp.org/www-project-web-security-testing-guide/
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - customize
+  - monitoring
+  - cis-benchmarks
 ---
 
 # Nikto Web Server Scanner

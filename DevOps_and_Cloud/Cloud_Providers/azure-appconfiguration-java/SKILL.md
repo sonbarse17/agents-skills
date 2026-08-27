@@ -14,7 +14,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-appconfiguration-java
-depends_on: []
+depends_on:
+  - vault
+  - github
 ---
 
 # Azure App Configuration SDK for Java

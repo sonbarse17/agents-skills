@@ -22,7 +22,12 @@ tags:
   - secrets
   - security
   - phase-5
-depends_on: []
+depends_on:
+  - postgresql
+  - mysql
+  - commands
+  - kubernetes
+  - deploy
 ---
 
 # Vault

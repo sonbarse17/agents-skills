@@ -11,7 +11,8 @@ metadata:
 tags:
   - skills
   - azure-communication-callingserver-java
-depends_on: []
+depends_on:
+  - azure-communication-callautomation-java
 ---
 
 # Azure Communication CallingServer (Java) - DEPRECATED

@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for llm-ops. Use this
 tags:
   - models_and_finetuning
   - llm-ops
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

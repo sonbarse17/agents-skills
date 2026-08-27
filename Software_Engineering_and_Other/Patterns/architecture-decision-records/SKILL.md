@@ -7,7 +7,12 @@ description: Write and maintain Architecture Decision Records (ADRs) following
 tags:
   - patterns
   - architecture-decision-records
-depends_on: []
+depends_on:
+  - microservices
+  - Rate Limiting
+  - postgresql
+  - mongodb
+  - mysql
 ---
 
 # Architecture Decision Records

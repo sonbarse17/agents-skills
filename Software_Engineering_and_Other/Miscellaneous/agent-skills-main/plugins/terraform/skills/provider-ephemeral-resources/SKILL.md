@@ -16,7 +16,11 @@ metadata:
 tags:
   - skills
   - provider-ephemeral-resources
-depends_on: []
+depends_on:
+  - go
+  - provider-test-patterns
+  - provider-resources
+  - provider-docs
 ---
 
 # Terraform Provider Ephemeral Resources

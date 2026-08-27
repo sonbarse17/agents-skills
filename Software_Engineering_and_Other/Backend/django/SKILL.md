@@ -22,7 +22,12 @@ tags:
   - python
   - django
   - phase-2
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - python
+  - profiling
+  - sentry
 ---
 
 # [Python](../../Languages/python/SKILL.md) Django Architecture

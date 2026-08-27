@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - gpu-accelerator-configuration-validation
-depends_on: []
+depends_on:
+  - opa-gatekeeper-policy-authoring
+  - ray-distributed-ml-orchestration
+  - python
+  - monitoring
+  - capacity
 ---
 
 # GPU Accelerator Configuration Validation

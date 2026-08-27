@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-cicd-pipeline-deployment-for-kubernetes-from-scratch
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - devsecops
+  - git
 ---
 
 # Complete CI/CD Pipeline Deployment for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), From Scratch

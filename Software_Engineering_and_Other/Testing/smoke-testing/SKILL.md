@@ -18,7 +18,12 @@ tags:
   - quality
   - smoke-testing
   - phase-6
-depends_on: []
+depends_on:
+  - quality-regression-testing
+  - quality-e2e-testing
+  - vault
+  - Rate Limiting
+  - quality-acceptance-testing
 ---
 
 # Smoke Testing

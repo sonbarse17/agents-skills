@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - dependency-scanning
-depends_on: []
+depends_on:
+  - scan
+  - sast-scanning
+  - python
+  - go
+  - docker
 ---
 
 # Dependency Scanning

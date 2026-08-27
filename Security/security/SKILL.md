@@ -17,7 +17,12 @@ tags:
   - security
   - phase-4
   - universal
-depends_on: []
+depends_on:
+  - penetration-testing
+  - ios
+  - android
+  - apis
+  - typescript
 ---
 
 # Mobile Security

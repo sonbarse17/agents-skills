@@ -13,7 +13,12 @@ license: MIT
 tags:
   - frontend
   - error-budgets
-depends_on: []
+depends_on:
+  - slo-definition
+  - root-cause-analysis
+  - incident
+  - alerting
+  - dashboards
 ---
 
 # Error Budgets

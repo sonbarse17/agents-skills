@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - velero-backup-and-restore
-depends_on: []
+depends_on:
+  - zero-trust
+  - rbac
+  - postgresql
+  - go
+  - runbook
 ---
 
 # Velero Backup and Restore

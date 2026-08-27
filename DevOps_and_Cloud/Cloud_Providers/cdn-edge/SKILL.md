@@ -24,7 +24,12 @@ tags:
   - performance
   - security
   - phase-5
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - apis
+  - monitoring
+  - alerting
 ---
 
 # CDN and Edge Computing

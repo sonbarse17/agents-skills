@@ -18,7 +18,12 @@ tags:
   - backend
   - php
   - phase-4
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - mongodb
+  - commands
+  - docker
+  - containerization
 ---
 
 # Symfony Backend

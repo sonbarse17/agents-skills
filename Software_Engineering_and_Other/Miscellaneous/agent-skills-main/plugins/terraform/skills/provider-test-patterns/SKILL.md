@@ -17,7 +17,10 @@ metadata:
 tags:
   - skills
   - provider-test-patterns
-depends_on: []
+depends_on:
+  - go
+  - github
+  - commit
 ---
 
 # Provider Acceptance Test Patterns

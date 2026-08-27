@@ -18,7 +18,12 @@ tags:
 version: 1.2.0
 author: j4flmao
 license: MIT
-depends_on: []
+depends_on:
+  - create-tech-spec
+  - create-story
+  - create-prd
+  - vault
+  - Rate Limiting
 ---
 
 # Create Roadmap

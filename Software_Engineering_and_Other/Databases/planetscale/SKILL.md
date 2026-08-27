@@ -9,7 +9,12 @@ metadata:
 tags:
   - databases
   - planetscale
-depends_on: []
+depends_on:
+  - git
+  - database-backups
+  - postgresql
+  - mysql
+  - serverless
 ---
 
 # PlanetScale

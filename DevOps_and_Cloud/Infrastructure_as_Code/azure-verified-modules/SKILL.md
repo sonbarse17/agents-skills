@@ -8,7 +8,10 @@ metadata:
 tags:
   - infrastructure_as_code
   - azure-verified-modules
-depends_on: []
+depends_on:
+  - git
+  - go
+  - github
 ---
 
 # Azure Verified Modules (AVM) Requirements

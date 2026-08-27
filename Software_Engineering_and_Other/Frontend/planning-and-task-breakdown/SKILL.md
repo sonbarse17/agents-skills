@@ -7,7 +7,9 @@ description: Breaks work into ordered tasks. Use when you have a spec or clear
 tags:
   - frontend
   - planning-and-task-breakdown
-depends_on: []
+depends_on:
+  - go
+  - github
 ---
 
 # Planning and Task Breakdown

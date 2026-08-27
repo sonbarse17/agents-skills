@@ -16,7 +16,12 @@ metadata:
 tags:
   - models
   - deploy-model
-depends_on: []
+depends_on:
+  - customize
+  - monitoring
+  - capacity
+  - deploy
+  - preset
 ---
 
 # Deploy Model

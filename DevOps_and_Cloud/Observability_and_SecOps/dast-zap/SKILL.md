@@ -33,7 +33,12 @@ references:
   - https://www.zaproxy.org/docs/
   - https://www.zaproxy.org/docs/docker/
   - https://www.zaproxy.org/docs/desktop/start/features/
-depends_on: []
+depends_on:
+  - scan
+  - microservices
+  - Rate Limiting
+  - apis
+  - monitoring
 ---
 
 # DAST with OWASP ZAP

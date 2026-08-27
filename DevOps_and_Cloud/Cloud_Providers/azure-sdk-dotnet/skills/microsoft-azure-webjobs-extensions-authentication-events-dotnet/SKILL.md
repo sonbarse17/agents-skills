@@ -14,7 +14,12 @@ metadata:
 tags:
   - skills
   - microsoft-azure-webjobs-extensions-authentication-events-dotnet
-depends_on: []
+depends_on:
+  - customize
+  - apis
+  - github
+  - deploy
+  - deploy-model
 ---
 
 # Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents (.NET)

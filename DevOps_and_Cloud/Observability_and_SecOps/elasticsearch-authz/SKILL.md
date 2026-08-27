@@ -14,7 +14,12 @@ metadata:
 tags:
   - observability_and_secops
   - elasticsearch-authz
-depends_on: []
+depends_on:
+  - rbac
+  - elasticsearch-authn
+  - serverless
+  - deploy
+  - dashboards
 ---
 
 # Elasticsearch Authorization

@@ -24,7 +24,12 @@ tags:
   - cloud-provider
   - cost-optimization
   - phase-4
-depends_on: []
+depends_on:
+  - datacenter
+  - autoscaling
+  - go
+  - commands
+  - backup-dr
 ---
 
 # Hetzner Cloud & Dedicated

@@ -23,7 +23,10 @@ metadata:
 tags:
   - product_and_business
   - spec-miner
-depends_on: []
+depends_on:
+  - reverse-engineering
+  - qa
+  - github
 ---
 
 # Spec Miner

@@ -20,7 +20,12 @@ tags:
   - planning
   - phase-1
   - documentation
-depends_on: []
+depends_on:
+  - create-brief
+  - vault
+  - Rate Limiting
+  - git
+  - accessibility
 ---
 
 # Create PRD

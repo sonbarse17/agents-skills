@@ -19,7 +19,12 @@ tags:
   - orchestration
   - phase-0
   - scaffolding
-depends_on: []
+depends_on:
+  - create-brief
+  - ios
+  - android
+  - microservices
+  - vscode
 ---
 
 # Project Init

@@ -4,7 +4,10 @@ description: Cocos2d Architectural Patterns
 tags:
   - game_development
   - cocos2d-patterns
-depends_on: []
+depends_on:
+  - mermaid
+  - cocos2d
+  - commands
 ---
 # [Cocos2d](../cocos2d/SKILL.md)-x Architectural Patterns
 

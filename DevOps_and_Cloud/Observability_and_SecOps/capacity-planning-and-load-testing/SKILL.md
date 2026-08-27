@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - capacity-planning-and-load-testing
-depends_on: []
+depends_on:
+  - python
+  - autoscaling
+  - toil-reduction-and-operational-automation
+  - slo-sli-and-error-budget-design
+  - environment-promotion-strategy
 ---
 
 # [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning and Load Testing

@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - sonatype-nexus-repository-configuration
-depends_on: []
+depends_on:
+  - security-scanning
+  - jfrog-artifactory-configuration
+  - dependency-management
+  - artifact-and-dependency-management
+  - monitoring
 ---
 
 # Sonatype Nexus Repository Configuration

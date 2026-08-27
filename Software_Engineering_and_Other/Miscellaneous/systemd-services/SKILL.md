@@ -9,7 +9,12 @@ metadata:
 tags:
   - miscellaneous
   - systemd-services
-depends_on: []
+depends_on:
+  - user-management
+  - linux-administration
+  - postgresql
+  - performance-tuning
+  - commands
 ---
 
 # Systemd Services

@@ -18,7 +18,12 @@ metadata:
 tags:
   - observability_and_secops
   - loki-configuration-validation
-depends_on: []
+depends_on:
+  - git
+  - loki-log-aggregation-configuration
+  - logql-query-authoring
+  - incident
+  - fluent-bit-configuration-validation
 ---
 
 # Loki Configuration Validation

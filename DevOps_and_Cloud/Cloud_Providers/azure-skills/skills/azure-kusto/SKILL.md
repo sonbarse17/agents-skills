@@ -11,7 +11,11 @@ metadata:
 tags:
   - skills
   - azure-kusto
-depends_on: []
+depends_on:
+  - commands
+  - monitoring
+  - audit
+  - kql
 ---
 
 # Azure Data Explorer (Kusto) Query & Analytics

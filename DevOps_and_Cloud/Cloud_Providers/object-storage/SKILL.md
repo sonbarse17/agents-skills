@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - object-storage
-depends_on: []
+depends_on:
+  - linux-administration
+  - git
+  - commands
+  - docker-compose
+  - docker
 ---
 
 # Object Storage

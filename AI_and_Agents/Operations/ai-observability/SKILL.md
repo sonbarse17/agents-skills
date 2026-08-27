@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for ai-observability.
 tags:
   - operations
   - ai-observability
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

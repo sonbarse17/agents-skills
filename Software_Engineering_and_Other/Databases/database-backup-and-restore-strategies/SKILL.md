@@ -17,7 +17,12 @@ metadata:
 tags:
   - databases
   - database-backup-and-restore-strategies
-depends_on: []
+depends_on:
+  - timescaledb-time-series-operations-and-configuration
+  - mysql-mariadb-operations-and-performance-tuning
+  - mongodb-operations-and-scaling
+  - postgresql
+  - mongodb
 ---
 
 # Database Backup and Restore Strategies

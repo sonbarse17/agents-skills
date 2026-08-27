@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-fine-tuning
-depends_on: []
+depends_on:
+  - python
+  - kubernetes
+  - deploy
+  - ai-pipeline-orchestration
+  - vllm-server
 ---
 
 # LLM Fine-Tuning Infrastructure

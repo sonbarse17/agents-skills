@@ -9,7 +9,12 @@ metadata:
 tags:
   - backend
   - mongodb
-depends_on: []
+depends_on:
+  - database-backups
+  - postgresql
+  - commands
+  - monitoring
+  - docker-compose
 ---
 
 # MongoDB

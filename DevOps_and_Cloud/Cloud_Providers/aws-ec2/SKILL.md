@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-ec2
-depends_on: []
+depends_on:
+  - autoscaling
+  - terraform-aws
+  - cloudformation
+  - monitoring
+  - capacity
 ---
 
 # AWS EC2

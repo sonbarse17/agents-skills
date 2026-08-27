@@ -5,7 +5,8 @@ description: Comprehensive guidelines and best practices for rag-architecture.
 tags:
   - architecture
   - rag-architecture
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Advanced RAG Architecture: Algorithmic Foundations and Compilational Paradigms
 

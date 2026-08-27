@@ -11,7 +11,11 @@ license: MIT
 tags:
   - containers_and_orchestration
   - helm-charts
-depends_on: []
+depends_on:
+  - go
+  - kustomize
+  - helm
+  - commit
 ---
 
 # Helm Charts

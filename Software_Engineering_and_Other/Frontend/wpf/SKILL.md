@@ -18,7 +18,10 @@ tags:
   - wpf
   - dotnet
   - xaml
-depends_on: []
+depends_on:
+  - accessibility
+  - profiling
+  - commands
 ---
 
 # WPF

@@ -10,7 +10,11 @@ metadata:
 tags:
   - patterns
   - streams
-depends_on: []
+depends_on:
+  - elasticsearch-authn
+  - apis
+  - observability
+  - dashboards
 ---
 
 # Kibana Streams

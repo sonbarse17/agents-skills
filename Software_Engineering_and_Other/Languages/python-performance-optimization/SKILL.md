@@ -6,7 +6,9 @@ description: Profile and optimize Python code using cProfile, memory profilers,
 tags:
   - languages
   - python-performance-optimization
-depends_on: []
+depends_on:
+  - python
+  - profiling
 ---
 
 # [Python](../python/SKILL.md) Performance Optimization

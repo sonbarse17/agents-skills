@@ -16,7 +16,12 @@ metadata:
 tags:
   - databases
   - mysql-mariadb-configuration-validation
-depends_on: []
+depends_on:
+  - postgresql-configuration-validation
+  - mysql-mariadb-operations-and-performance-tuning
+  - mysql-mariadb-high-availability-and-replication
+  - postgresql
+  - mysql
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Configuration Validation

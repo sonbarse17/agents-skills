@@ -18,7 +18,12 @@ tags:
   - mobile
   - in-app-purchase
   - universal
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - Rate Limiting
+  - apis
+  - go
 ---
 
 # Mobile In-App Purchase

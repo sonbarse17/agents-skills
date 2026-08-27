@@ -23,7 +23,12 @@ tags:
   - messaging
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - vault
+  - python
+  - typescript
+  - observability
+  - monitoring
 ---
 
 # Backend Message Queue

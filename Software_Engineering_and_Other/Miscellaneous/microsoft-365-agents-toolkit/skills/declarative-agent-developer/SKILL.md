@@ -15,7 +15,10 @@ description: >
 tags:
   - skills
   - declarative-agent-developer
-depends_on: []
+depends_on:
+  - commands
+  - deploy
+  - scaffold
 ---
 
 # M365 Agent Developer

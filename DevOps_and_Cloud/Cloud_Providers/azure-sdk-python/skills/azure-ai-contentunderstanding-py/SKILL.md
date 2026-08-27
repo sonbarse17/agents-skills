@@ -15,7 +15,11 @@ metadata:
 tags:
   - skills
   - azure-ai-contentunderstanding-py
-depends_on: []
+depends_on:
+  - multimodal
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Content Understanding SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

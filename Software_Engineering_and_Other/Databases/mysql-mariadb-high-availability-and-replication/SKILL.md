@@ -16,7 +16,12 @@ metadata:
 tags:
   - databases
   - mysql-mariadb-high-availability-and-replication
-depends_on: []
+depends_on:
+  - datacenter
+  - mysql-mariadb-operations-and-performance-tuning
+  - mysql-mariadb-configuration-validation
+  - database-connection-pooling-strategies
+  - postgresql
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB High Availability and Replication

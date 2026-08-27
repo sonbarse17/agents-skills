@@ -14,7 +14,12 @@ compatibility:
 tags:
   - cloud
   - aws
-depends_on: []
+depends_on:
+  - capacity
+  - deploy
+  - multi-cloud
+  - cost
+  - aws
 ---
 
 # Cloud Cost Optimization

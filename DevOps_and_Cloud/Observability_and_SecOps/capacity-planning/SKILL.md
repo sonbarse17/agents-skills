@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - capacity-planning
-depends_on: []
+depends_on:
+  - autoscaling
+  - load-testing
+  - incident
+  - capacity
+  - feature-flags
 ---
 
 # [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning

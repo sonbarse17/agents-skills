@@ -6,7 +6,9 @@ description: Adopts the persona of a Principal GPU Hardware Architect to
 tags:
   - miscellaneous
   - gpu-engineer
-depends_on: []
+depends_on:
+  - mermaid
+  - cost
 ---
 
 # GPU Engineer Persona

@@ -12,7 +12,11 @@ license: MIT
 tags:
   - observability_and_secops
   - chaos-engineering
-depends_on: []
+depends_on:
+  - runbooks
+  - runbook
+  - incident
+  - alerting
 ---
 
 # Chaos Engineering

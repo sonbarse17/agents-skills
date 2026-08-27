@@ -21,7 +21,12 @@ tags:
   - mlops
   - ml
   - phase-11
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - devops-dataops
+  - python
+  - monitoring
+  - kubernetes
 ---
 
 # MLOps Agent

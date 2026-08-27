@@ -22,7 +22,12 @@ tags:
   - evm
   - consensus
   - phase-blockchain
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
+  - monitoring
+  - alerting
 ---
 
 # Blockchain Ethereum

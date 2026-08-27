@@ -11,7 +11,9 @@ metadata:
 tags:
   - skills
   - azure-keyvault-keys-ts
-depends_on: []
+depends_on:
+  - vault
+  - typescript
 ---
 
 # Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

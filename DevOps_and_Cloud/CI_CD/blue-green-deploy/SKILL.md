@@ -11,7 +11,12 @@ metadata:
 tags:
   - ci_cd
   - blue-green-deploy
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - monitoring
+  - incident
+  - kubernetes-ops
 ---
 
 # Blue-Green & Deployment Strategies

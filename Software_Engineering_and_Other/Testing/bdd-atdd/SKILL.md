@@ -24,7 +24,12 @@ tags:
   - atdd
   - testing
   - phase-10
-depends_on: []
+depends_on:
+  - create-tech-spec
+  - create-story
+  - create-prd
+  - ios
+  - Structured Data
 ---
 
 # BDD and ATDD

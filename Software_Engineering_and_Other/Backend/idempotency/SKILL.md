@@ -23,7 +23,12 @@ tags:
   - exactly-once
   - retry-safety
   - deduplication
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - postgresql
+  - typescript
+  - profiling
 ---
 
 # Backend Idempotency

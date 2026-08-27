@@ -42,7 +42,12 @@ references:
   - https://www.cisa.gov/news-events/cybersecurity-advisories
   - https://attack.mitre.org/techniques/T1046/
   - https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - commands
+  - monitoring
+  - alerting
 ---
 
 # OT Security Assessment

@@ -13,7 +13,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-resource-visualizer
-depends_on: []
+depends_on:
+  - rbac
+  - mermaid
+  - vault
+  - python
+  - monitoring
 ---
 
 # Azure Resource Visualizer - Architecture Diagram Generator

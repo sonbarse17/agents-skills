@@ -23,7 +23,11 @@ metadata:
 tags:
   - workflows
   - sql-pro
-depends_on: []
+depends_on:
+  - scan
+  - postgresql
+  - mysql
+  - github
 ---
 
 # SQL Pro

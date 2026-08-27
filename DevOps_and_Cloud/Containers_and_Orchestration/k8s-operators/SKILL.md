@@ -5,7 +5,9 @@ description: Comprehensive guidelines and best practices for k8s-operators. Use
 tags:
   - containers_and_orchestration
   - k8s-operators
-depends_on: []
+depends_on:
+  - mermaid
+  - kubernetes
 ---
 # Kubernetes Operators and CRDs
 

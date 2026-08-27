@@ -19,7 +19,12 @@ tags:
   - nodejs
   - prisma
   - phase-10
-depends_on: []
+depends_on:
+  - postgresql
+  - mongodb
+  - mysql
+  - typescript
+  - monorepo
 ---
 
 # Prisma ORM

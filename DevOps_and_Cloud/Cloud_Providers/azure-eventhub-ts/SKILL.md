@@ -12,7 +12,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-eventhub-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Azure Event Hubs SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

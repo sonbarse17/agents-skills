@@ -20,7 +20,12 @@ metadata:
 tags:
   - cloud_providers
   - enterprise-sso-and-idp-federation-configuration
-depends_on: []
+depends_on:
+  - devsecops
+  - vault
+  - apis
+  - alerting
+  - vault-operations-and-pki-engine-configuration
 ---
 
 # Enterprise SSO and IdP Federation Configuration

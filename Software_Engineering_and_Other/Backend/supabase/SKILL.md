@@ -22,7 +22,12 @@ tags:
   - supabase
   - baas
   - phase-4
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - Rate Limiting
+  - embeddings
+  - deno
 ---
 
 # Supabase

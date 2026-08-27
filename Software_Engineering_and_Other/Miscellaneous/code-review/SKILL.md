@@ -21,7 +21,12 @@ tags:
   - review
   - phase-4
   - quality
-depends_on: []
+depends_on:
+  - security-review
+  - scan
+  - workflow-automation
+  - reviewdog
+  - Rate Limiting
 ---
 
 # Code Review

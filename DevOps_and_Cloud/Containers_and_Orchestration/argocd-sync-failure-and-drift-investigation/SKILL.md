@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argocd-sync-failure-and-drift-investigation
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - incident-response-and-on-call-management
+  - runbook
+  - on-call-management
 ---
 
 # Argo CD Sync Failure and Drift Investigation

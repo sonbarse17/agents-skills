@@ -4,7 +4,8 @@ description: Deep dive into eBPF JIT compilation and verifier constraints.
 tags:
   - workflows
   - ebpf-engineering
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # eBPF Engineering Mechanics
 

@@ -5,7 +5,11 @@ description: Persona definition for Staff-level System Architect. Instills
 tags:
   - patterns
   - system-architect
-depends_on: []
+depends_on:
+  - mermaid
+  - microservices
+  - datacenter
+  - observability
 ---
 
 # 🏗️ Persona: System Architect

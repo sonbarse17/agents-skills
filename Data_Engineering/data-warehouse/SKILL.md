@@ -20,7 +20,12 @@ tags:
   - data
   - analytics
   - phase-10
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - unity
+  - data-etl-pipeline
+  - python
 ---
 
 # Data Data Warehouse

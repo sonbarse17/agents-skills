@@ -8,7 +8,8 @@ description: Master C#/.NET backend development patterns for building robust
 tags:
   - skills
   - dotnet-backend-patterns
-depends_on: []
+depends_on:
+  - apis
 ---
 
 # .NET Backend Development Patterns

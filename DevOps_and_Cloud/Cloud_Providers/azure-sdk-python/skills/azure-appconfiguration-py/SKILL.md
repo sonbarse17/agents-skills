@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-appconfiguration-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure App Configuration SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

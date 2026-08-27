@@ -38,7 +38,12 @@ dependencies:
 references:
   - https://github.com/reviewdog/reviewdog
   - https://reviewdog.github.io/
-depends_on: []
+depends_on:
+  - scan
+  - eslint
+  - customize
+  - python
+  - go
 ---
 
 # Reviewdog - Automated Security Code Review

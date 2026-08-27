@@ -7,7 +7,10 @@ description: Design durable workflows with Temporal for distributed systems.
 tags:
   - patterns
   - workflow-orchestration-patterns
-depends_on: []
+depends_on:
+  - design-patterns
+  - apis
+  - monitoring
 ---
 
 # Workflow Orchestration Patterns

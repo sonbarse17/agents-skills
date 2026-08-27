@@ -11,7 +11,9 @@ metadata:
 tags:
   - product_and_business
   - wiki-ado-convert
-depends_on: []
+depends_on:
+  - mermaid
+  - git
 ---
 
 # ADO Wiki Converter

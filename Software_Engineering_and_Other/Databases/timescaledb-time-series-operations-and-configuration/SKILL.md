@@ -15,7 +15,12 @@ metadata:
 tags:
   - databases
   - timescaledb-time-series-operations-and-configuration
-depends_on: []
+depends_on:
+  - scan
+  - postgresql-configuration-validation
+  - mongodb-operations-and-scaling
+  - database-operations
+  - clickhouse-analytical-database-operations
 ---
 
 # TimescaleDB Time-Series Operations and Configuration

@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - gitlab-cicd-pipeline-design
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - eslint
+  - monorepo
 ---
 
 # GitLab CI/CD Pipeline Design

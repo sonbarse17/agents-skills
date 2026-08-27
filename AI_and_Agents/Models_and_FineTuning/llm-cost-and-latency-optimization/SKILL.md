@@ -15,7 +15,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-cost-and-latency-optimization
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - cost
+  - audit
+  - multi-agent-orchestration
 ---
 
 # LLM Cost and Latency Optimization

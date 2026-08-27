@@ -18,7 +18,12 @@ tags:
   - backend
   - swift
   - phase-4
-depends_on: []
+depends_on:
+  - postgresql
+  - mongodb
+  - mysql
+  - internals
+  - apis
 ---
 
 # Vapor Backend

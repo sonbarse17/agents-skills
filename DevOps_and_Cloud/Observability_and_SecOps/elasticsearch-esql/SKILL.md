@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - elasticsearch-esql
-depends_on: []
+depends_on:
+  - python
+  - commands
+  - serverless
+  - cost
+  - kql
 ---
 
 # Elasticsearch ES|QL

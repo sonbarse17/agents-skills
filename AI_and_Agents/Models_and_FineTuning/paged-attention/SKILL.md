@@ -5,7 +5,12 @@ description: Master the PagedAttention algorithm and virtual memory management
 tags:
   - models_and_finetuning
   - paged-attention
-depends_on: []
+depends_on:
+  - mermaid
+  - capacity
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # PagedAttention: OS Paging for LLM Inference

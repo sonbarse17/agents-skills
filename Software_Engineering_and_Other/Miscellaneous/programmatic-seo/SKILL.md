@@ -4,7 +4,10 @@ description: Automated generation of high-quality landing pages at scale.
 tags:
   - miscellaneous
   - programmatic-seo
-depends_on: []
+depends_on:
+  - mermaid
+  - Structured Data
+  - seo
 ---
 
 # Programmatic SEO

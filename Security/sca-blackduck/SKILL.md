@@ -41,7 +41,12 @@ references:
   - https://owasp.org/www-project-dependency-check/
   - https://nvd.nist.gov/
   - https://www.cisa.gov/sbom
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - vault
+  - python
+  - go
 ---
 
 # Software Composition Analysis with Black Duck

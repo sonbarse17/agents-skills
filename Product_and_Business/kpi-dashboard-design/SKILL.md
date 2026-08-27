@@ -10,7 +10,11 @@ description: Design effective KPI dashboards with metrics selection,
 tags:
   - product_and_business
   - kpi-dashboard-design
-depends_on: []
+depends_on:
+  - python
+  - data-storytelling
+  - monitoring
+  - dashboards
 ---
 
 # KPI Dashboard Design

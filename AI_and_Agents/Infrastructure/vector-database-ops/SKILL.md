@@ -11,7 +11,12 @@ metadata:
 tags:
   - infrastructure
   - vector-database-ops
-depends_on: []
+depends_on:
+  - Recommendation Systems
+  - embeddings
+  - python
+  - postgresql
+  - serverless
 ---
 
 # Vector Database Operations

@@ -12,7 +12,12 @@ license: MIT
 tags:
   - ci_cd
   - continuous-delivery
-depends_on: []
+depends_on:
+  - go
+  - incident
+  - kubectl
+  - feature-flags
+  - deploy
 ---
 
 # Continuous Delivery

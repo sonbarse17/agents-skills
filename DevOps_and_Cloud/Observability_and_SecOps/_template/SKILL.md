@@ -19,7 +19,11 @@ tags:
   - tags
 frameworks:
   - OWASP|CWE|MITRE-ATT&CK|NIST|SOC2
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - monitoring
+  - audit
 ---
 
 <!--

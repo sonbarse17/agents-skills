@@ -20,7 +20,12 @@ metadata:
 tags:
   - security
   - security-finding-backlog-triage
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - sast-integration
+  - software-composition-analysis-sca
+  - go
 ---
 
 # Security Finding Backlog Triage

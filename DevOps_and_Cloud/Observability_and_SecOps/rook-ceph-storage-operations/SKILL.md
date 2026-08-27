@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - rook-ceph-storage-operations
-depends_on: []
+depends_on:
+  - postgresql
+  - go
+  - backup-and-restore
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
 ---
 
 # Rook-Ceph Storage Operations

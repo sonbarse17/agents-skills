@@ -10,7 +10,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - cloudformation
-depends_on: []
+depends_on:
+  - autoscaling
+  - terraform-aws
+  - deploy
+  - aws-vpc
+  - aws-s3
 ---
 
 # CloudFormation

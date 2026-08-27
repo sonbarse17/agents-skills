@@ -6,7 +6,8 @@ description: Implement Command Query Responsibility Segregation for scalable
 tags:
   - patterns
   - cqrs-implementation
-depends_on: []
+depends_on:
+  - commands
 ---
 
 # CQRS Implementation

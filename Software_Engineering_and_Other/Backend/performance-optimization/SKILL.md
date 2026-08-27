@@ -8,7 +8,12 @@ description: Optimizes application performance across frontend, backend,
 tags:
   - backend
   - performance-optimization
-depends_on: []
+depends_on:
+  - vite
+  - git
+  - typescript
+  - profiling
+  - commands
 ---
 
 # Performance Optimization

@@ -18,7 +18,12 @@ tags:
   - product
   - ab-testing
   - phase-8
-depends_on: []
+depends_on:
+  - product-growth-engineering
+  - product-customer-journey
+  - vault
+  - Rate Limiting
+  - product-analytics
 ---
 
 # A/B Testing Agent

@@ -15,7 +15,12 @@ metadata:
 tags:
   - data_engineering
   - experiment-tracking
-depends_on: []
+depends_on:
+  - data-and-model-lineage
+  - git
+  - python
+  - cost
+  - audit
 ---
 
 # Experiment Tracking

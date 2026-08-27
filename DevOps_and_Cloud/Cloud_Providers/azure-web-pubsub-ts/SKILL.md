@@ -12,7 +12,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-web-pubsub-ts
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Azure Web PubSub SDKs for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

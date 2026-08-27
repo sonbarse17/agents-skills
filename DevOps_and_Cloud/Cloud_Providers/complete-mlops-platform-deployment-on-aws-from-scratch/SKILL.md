@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - complete-mlops-platform-deployment-on-aws-from-scratch
-depends_on: []
+depends_on:
+  - feature-store-design
+  - experiment-tracking
+  - python
+  - internals
+  - monitoring
 ---
 
 # Complete MLOps Platform Deployment On AWS From Scratch

@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - hashicorp-nomad-scheduling-and-configuration
-depends_on: []
+depends_on:
+  - vault
+  - apis
+  - dapr-distributed-runtime-configuration
+  - monitoring
+  - serverless
 ---
 
 # HashiCorp [Nomad](../nomad/SKILL.md) Scheduling and Configuration

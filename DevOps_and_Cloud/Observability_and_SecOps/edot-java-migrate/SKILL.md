@@ -10,7 +10,8 @@ metadata:
 tags:
   - observability_and_secops
   - edot-java-migrate
-depends_on: []
+depends_on:
+  - opentelemetry
 ---
 
 # EDOT Java Migration

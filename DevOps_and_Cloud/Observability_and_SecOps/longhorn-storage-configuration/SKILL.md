@@ -17,7 +17,12 @@ metadata:
 tags:
   - observability_and_secops
   - longhorn-storage-configuration
-depends_on: []
+depends_on:
+  - devsecops
+  - backup-and-restore
+  - rook-ceph-storage-operations
+  - rook-ceph-configuration-validation
+  - observability
 ---
 
 # [Longhorn](../longhorn/SKILL.md) Storage Configuration

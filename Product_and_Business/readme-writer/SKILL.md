@@ -17,7 +17,12 @@ tags:
   - dev-loop
   - readme
   - documentation
-depends_on: []
+depends_on:
+  - dev-loop-pr-writer
+  - dev-loop-changelog-generator
+  - prettier
+  - git
+  - python
 ---
 
 # README Writer

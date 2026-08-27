@@ -7,7 +7,12 @@ description: Configure LoRA and QLoRA supervised fine-tuning with current
 tags:
   - models_and_finetuning
   - lora-qlora-recipes
-depends_on: []
+depends_on:
+  - spark-memory-thermal-ops
+  - dataset-curation
+  - python
+  - capacity
+  - deploy
 ---
 
 # LoRA & QLoRA Recipes

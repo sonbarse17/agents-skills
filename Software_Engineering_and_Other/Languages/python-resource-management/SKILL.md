@@ -6,7 +6,9 @@ description: Python resource management with context managers, cleanup patterns,
 tags:
   - languages
   - python-resource-management
-depends_on: []
+depends_on:
+  - python
+  - commit
 ---
 
 # [Python](../python/SKILL.md) Resource Management

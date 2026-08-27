@@ -4,7 +4,11 @@ description: Godot Engine Architecture
 tags:
   - game_development
   - godot-gdscript
-depends_on: []
+depends_on:
+  - mermaid
+  - godot
+  - internals
+  - commands
 ---
 # [Godot](../godot/SKILL.md) Engine internal Architecture
 

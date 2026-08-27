@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - no-code-idp-service-catalog-tools-port-cortex-opslevel
-depends_on: []
+depends_on:
+  - service-scorecards-and-maturity-model-design
+  - golden-path-template-design-for-developer-platforms
+  - microservices
+  - git
+  - change-management
 ---
 
 # No-Code IDP Service Catalog Tools: Port, Cortex, OpsLevel

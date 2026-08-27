@@ -4,7 +4,8 @@ description: Best practices for SSR, Streaming, and hydration optimization in Ne
 tags:
   - frontend
   - nextjs-server-components
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Next.js Server Components

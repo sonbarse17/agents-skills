@@ -25,7 +25,12 @@ tags:
   - features
   - engineering
   - phase-11
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - monitoring
+  - ml-classical-ml
+  - ml-deep-learning
 ---
 
 # ML Feature Engineering

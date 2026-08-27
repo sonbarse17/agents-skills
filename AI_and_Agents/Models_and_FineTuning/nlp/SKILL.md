@@ -23,7 +23,12 @@ tags:
   - nlp
   - text
   - phase-11
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - embeddings
+  - python
+  - qa
+  - monitoring
 ---
 
 # ML NLP

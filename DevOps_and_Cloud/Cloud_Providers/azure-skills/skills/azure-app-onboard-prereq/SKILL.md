@@ -20,7 +20,12 @@ metadata:
 tags:
   - skills
   - azure-app-onboard-prereq
-depends_on: []
+depends_on:
+  - scan
+  - jest
+  - git
+  - firebase
+  - monorepo
 ---
 
 # Azure App Onboard Prereq — Repository Evaluation

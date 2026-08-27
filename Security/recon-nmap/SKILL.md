@@ -32,7 +32,12 @@ references:
   - https://nmap.org/book/
   - https://nmap.org/nsedoc/
   - https://attack.mitre.org/techniques/T1046/
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - python
+  - postgresql
+  - mongodb
 ---
 
 # Nmap Network Reconnaissance

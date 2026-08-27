@@ -9,7 +9,11 @@ metadata:
 tags:
   - cloud_providers
   - gcp-audit-logs
-depends_on: []
+depends_on:
+  - monitoring
+  - alerting
+  - cost
+  - audit
 ---
 
 # GCP [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs

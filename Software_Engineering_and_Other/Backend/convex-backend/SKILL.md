@@ -10,7 +10,12 @@ metadata:
 tags:
   - backend
   - convex-backend
-depends_on: []
+depends_on:
+  - firebase
+  - apis
+  - typescript
+  - observability
+  - deploy
 ---
 
 # Convex Backend

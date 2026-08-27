@@ -22,7 +22,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-health-events
-depends_on: []
+depends_on:
+  - incident
+  - capacity
+  - deploy
+  - support-cases
+  - aws
 ---
 
 # AWS Health Event Review

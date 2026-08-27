@@ -12,7 +12,12 @@ license: MIT
 tags:
   - ci_cd
   - pipeline-security
-depends_on: []
+depends_on:
+  - image-scanning
+  - github
+  - deploy
+  - commit
+  - artifact-management
 ---
 
 # Pipeline Security

@@ -12,7 +12,8 @@ metadata:
 tags:
   - observability_and_secops
   - sentry
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Sentry Skill

@@ -19,7 +19,12 @@ tags:
   - nodejs
   - hono
   - phase-10
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - deno
+  - bun
+  - typescript
 ---
 
 # Node.js Hono

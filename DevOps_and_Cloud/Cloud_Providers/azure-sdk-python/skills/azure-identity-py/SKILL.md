@@ -15,7 +15,12 @@ metadata:
 tags:
   - skills
   - azure-identity-py
-depends_on: []
+depends_on:
+  - python
+  - postgresql
+  - apis
+  - go
+  - kubernetes
 ---
 
 # Azure Identity library for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

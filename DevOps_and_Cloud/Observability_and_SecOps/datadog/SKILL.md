@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - datadog
-depends_on: []
+depends_on:
+  - python
+  - postgresql
+  - mysql
+  - go
+  - observability
 ---
 
 # Datadog

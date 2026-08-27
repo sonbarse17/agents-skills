@@ -21,7 +21,12 @@ tags:
   - serving
   - inference
   - phase-11
-depends_on: []
+depends_on:
+  - python
+  - autoscaling
+  - monitoring
+  - serverless
+  - kubernetes
 ---
 
 # Model Serving Agent

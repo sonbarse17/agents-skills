@@ -6,7 +6,9 @@ description: Python project organization, module architecture, and public API
 tags:
   - architecture
   - python-project-structure
-depends_on: []
+depends_on:
+  - python
+  - apis
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Project Structure & Module Architecture

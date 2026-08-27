@@ -19,7 +19,12 @@ metadata:
 tags:
   - observability_and_secops
   - servicenow-itsm-configuration-validation
-depends_on: []
+depends_on:
+  - servicenow-itsm-integration
+  - incident-response-and-on-call-management
+  - runbook
+  - pagerduty-opsgenie-configuration-validation
+  - on-call-management
 ---
 
 # ServiceNow ITSM Configuration Validation

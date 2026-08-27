@@ -12,7 +12,9 @@ version: 1.0.0
 tags:
   - skills
   - context-driven-development
-depends_on: []
+depends_on:
+  - git
+  - commit
 ---
 
 # Context-Driven Development

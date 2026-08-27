@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-hardening
-depends_on: []
+depends_on:
+  - rbac
+  - kubernetes-ops
+  - kubernetes
+  - container-hardening
+  - audit
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Hardening

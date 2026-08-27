@@ -4,7 +4,8 @@ description: Distributed Training Optimization
 tags:
   - data_engineering
   - distributed-training
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Distributed Deep Learning Mechanics
 

@@ -18,7 +18,12 @@ metadata:
 tags:
   - frontend
   - confluence-page-authoring-and-governance
-depends_on: []
+depends_on:
+  - jira-ticket-best-practices-and-workflow
+  - jira-comments-and-tracking-automation
+  - go
+  - runbooks
+  - runbook
 ---
 
 # Confluence Page Authoring and Governance

@@ -17,7 +17,12 @@ tags:
   - dev-loop
   - debugging
   - root-cause-analysis
-depends_on: []
+depends_on:
+  - jest
+  - dev-loop-performance-profiler
+  - git
+  - code-review
+  - python
 ---
 
 # Debugging Strategy

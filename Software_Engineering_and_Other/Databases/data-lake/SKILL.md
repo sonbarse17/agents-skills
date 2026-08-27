@@ -21,7 +21,12 @@ tags:
   - lake
   - storage
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-data-warehouse
+  - data-data-platform
+  - git
+  - python
 ---
 
 # Data Lake

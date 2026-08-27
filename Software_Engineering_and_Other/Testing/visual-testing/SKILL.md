@@ -19,7 +19,12 @@ tags:
   - quality
   - testing
   - phase-10
-depends_on: []
+depends_on:
+  - quality-e2e-testing
+  - vault
+  - Rate Limiting
+  - git
+  - accessibility
 ---
 
 # Quality Visual Testing

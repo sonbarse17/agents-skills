@@ -13,7 +13,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-review
-depends_on: []
+depends_on:
+  - security-review
+  - git
+  - autoscaling
+  - dr-review
+  - k8s-review
 ---
 
 # Terraform Review

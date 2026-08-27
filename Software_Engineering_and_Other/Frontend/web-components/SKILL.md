@@ -23,7 +23,12 @@ tags:
   - universal
   - web-components
   - phase-10
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - accessibility
+  - internals
+  - apis
+  - stencil
 ---
 
 # Web Components

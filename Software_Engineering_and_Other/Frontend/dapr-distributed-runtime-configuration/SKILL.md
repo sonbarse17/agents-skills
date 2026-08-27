@@ -16,7 +16,12 @@ metadata:
 tags:
   - frontend
   - dapr-distributed-runtime-configuration
-depends_on: []
+depends_on:
+  - vault
+  - git
+  - python
+  - apis
+  - go
 ---
 
 # Dapr Distributed Runtime Configuration

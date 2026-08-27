@@ -16,7 +16,12 @@ metadata:
 tags:
   - ci_cd
   - github-actions-single-repo-workflows
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - python
+  - monorepo
 ---
 
 # [GitHub](../github/SKILL.md) Actions Single-Repo Workflows

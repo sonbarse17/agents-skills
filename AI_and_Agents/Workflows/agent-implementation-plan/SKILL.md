@@ -5,7 +5,9 @@ description: Forces the agent to research and write a structured implementation
 tags:
   - workflows
   - agent-implementation-plan
-depends_on: []
+depends_on:
+  - mermaid
+  - github
 ---
 
 # ⚠️ MANDATORY DIRECTIVE: PLAN BEFORE EXECUTION

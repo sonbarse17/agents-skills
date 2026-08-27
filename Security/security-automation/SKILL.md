@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - security-automation
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - python
+  - github
+  - github-actions
 ---
 
 # Security Automation

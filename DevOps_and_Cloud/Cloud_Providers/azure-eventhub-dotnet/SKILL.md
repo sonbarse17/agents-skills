@@ -15,7 +15,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-eventhub-dotnet
-depends_on: []
+depends_on:
+  - rbac
+  - go
 ---
 
 # Azure.Messaging.EventHubs (.NET)

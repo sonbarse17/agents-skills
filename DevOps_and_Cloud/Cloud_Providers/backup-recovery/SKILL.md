@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - backup-recovery
-depends_on: []
+depends_on:
+  - systemd-services
+  - linux-administration
+  - datacenter
+  - postgresql
+  - mysql
 ---
 
 # Backup and Recovery

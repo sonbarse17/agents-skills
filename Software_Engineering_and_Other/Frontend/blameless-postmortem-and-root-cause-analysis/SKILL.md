@@ -17,7 +17,12 @@ metadata:
 tags:
   - frontend
   - blameless-postmortem-and-root-cause-analysis
-depends_on: []
+depends_on:
+  - toil-reduction-and-operational-automation
+  - slo-sli-and-error-budget-design
+  - incident-response-and-on-call-management
+  - chaos-engineering-and-resilience-testing
+  - toil-reduction
 ---
 
 # Blameless Postmortem and Root Cause Analysis

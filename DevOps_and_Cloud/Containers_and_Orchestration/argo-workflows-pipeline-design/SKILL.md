@@ -17,7 +17,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - argo-workflows-pipeline-design
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - kubernetes
+  - container-build-and-release
+  - argocd-application-configuration
 ---
 
 # Argo Workflows Pipeline Design

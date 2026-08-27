@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for sprint-retro. Use
 tags:
   - product_and_business
   - sprint-retro
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
 ---
 # Sprint Retrospective Skill
 

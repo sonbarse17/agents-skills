@@ -15,7 +15,10 @@ metadata:
 tags:
   - skills
   - azure-ai-projects-dotnet
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - github
 ---
 
 # Azure.AI.Projects (.NET)

@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-functions
-depends_on: []
+depends_on:
+  - microservices
+  - git
+  - python
+  - apis
+  - terraform-azure
 ---
 
 # Azure Functions

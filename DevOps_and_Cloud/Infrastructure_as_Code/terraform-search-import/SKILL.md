@@ -12,7 +12,9 @@ metadata:
 tags:
   - infrastructure_as_code
   - terraform-search-import
-depends_on: []
+depends_on:
+  - commands
+  - aws
 ---
 
 # Terraform Search and Bulk Import

@@ -18,7 +18,12 @@ tags:
   - product
   - pricing
   - phase-8
-depends_on: []
+depends_on:
+  - product-growth-engineering
+  - product-go-to-market
+  - go
+  - capacity
+  - deploy
 ---
 
 # Pricing Strategy Agent

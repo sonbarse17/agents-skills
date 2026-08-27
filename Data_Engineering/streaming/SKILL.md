@@ -20,7 +20,12 @@ tags:
   - data
   - streaming
   - phase-10
-depends_on: []
+depends_on:
+  - rbac
+  - data-etl-pipeline
+  - data-data-warehouse
+  - microservices
+  - postgresql
 ---
 
 # Data Streaming

@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - eks-operation-review
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - autoscaling
+  - apis
+  - observability
 ---
 
 # EKS Operational Review

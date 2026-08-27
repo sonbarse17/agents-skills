@@ -19,7 +19,12 @@ tags:
   - design
   - research
   - phase-10
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - profiling
+  - opentelemetry
+  - monitoring
 ---
 
 # Design UX Research

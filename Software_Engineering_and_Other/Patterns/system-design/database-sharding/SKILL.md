@@ -5,7 +5,9 @@ description: Best practices for sharding algorithms (Consistent Hashing) and
 tags:
   - system-design
   - database-sharding
-depends_on: []
+depends_on:
+  - mermaid
+  - python
 ---
 
 # Database Sharding

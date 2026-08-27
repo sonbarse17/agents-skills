@@ -7,7 +7,12 @@ description: Set up Prometheus for comprehensive metric collection, storage, and
 tags:
   - observability_and_secops
   - prometheus-configuration
-depends_on: []
+depends_on:
+  - slo-implementation
+  - monitoring
+  - grafana-dashboards
+  - distributed-tracing
+  - capacity
 ---
 
 # Prometheus Configuration

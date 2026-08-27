@@ -22,7 +22,12 @@ tags:
   - firebase
   - baas
   - phase-4
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - vault
+  - Structured Data
+  - Rate Limiting
 ---
 
 # Firebase

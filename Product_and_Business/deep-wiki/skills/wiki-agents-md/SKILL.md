@@ -10,7 +10,12 @@ metadata:
 tags:
   - skills
   - wiki-agents-md
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - vite
+  - git
+  - eslint
 ---
 
 # AGENTS.md Generator

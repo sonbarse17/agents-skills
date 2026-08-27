@@ -15,7 +15,12 @@ metadata:
 tags:
   - databases
   - mongodb-configuration-validation
-depends_on: []
+depends_on:
+  - postgresql-configuration-validation
+  - redis-configuration-validation
+  - mongodb-operations-and-scaling
+  - postgresql
+  - mongodb
 ---
 
 # [MongoDB](../../Backend/mongodb/SKILL.md) Configuration Validation

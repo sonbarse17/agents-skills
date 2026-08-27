@@ -12,7 +12,10 @@ description: Python design patterns including KISS, Separation of Concerns,
 tags:
   - patterns
   - python-design-patterns
-depends_on: []
+depends_on:
+  - python-testing-patterns
+  - python
+  - python-project-structure
 ---
 
 # [Python](../../Languages/python/SKILL.md) Design Patterns

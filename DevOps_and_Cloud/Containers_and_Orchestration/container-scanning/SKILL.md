@@ -11,7 +11,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - container-scanning
-depends_on: []
+depends_on:
+  - scan
+  - image-scanning
+  - python
+  - vulnerability-scanning
+  - podman
 ---
 
 # Container Scanning

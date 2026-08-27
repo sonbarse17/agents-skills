@@ -6,7 +6,8 @@ description: Build production Apache Airflow DAGs with best practices for
 tags:
   - workflows
   - airflow-dag-patterns
-depends_on: []
+depends_on:
+  - python
 ---
 
 # Apache Airflow DAG Patterns

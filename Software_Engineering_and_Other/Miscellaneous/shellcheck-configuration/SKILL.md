@@ -6,7 +6,8 @@ description: Master ShellCheck static analysis configuration and usage for shell
 tags:
   - miscellaneous
   - shellcheck-configuration
-depends_on: []
+depends_on:
+  - commit
 ---
 
 # ShellCheck Configuration and Static Analysis

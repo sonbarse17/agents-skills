@@ -5,7 +5,9 @@ description: Staff Management expertise in Agile workflows, Sprint planning, and
 tags:
   - product_and_business
   - agile-scrum
-depends_on: []
+depends_on:
+  - pm
+  - mermaid
 ---
 
 # Agile Scrum Management

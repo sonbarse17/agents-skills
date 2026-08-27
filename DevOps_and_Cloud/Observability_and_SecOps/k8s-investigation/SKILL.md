@@ -13,7 +13,12 @@ metadata:
 tags:
   - observability_and_secops
   - k8s-investigation
-depends_on: []
+depends_on:
+  - autoscaling
+  - go
+  - opentelemetry
+  - incident
+  - capacity
 ---
 
 # [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Investigation

@@ -10,7 +10,12 @@ metadata:
 tags:
   - skills
   - refactor-module
-depends_on: []
+depends_on:
+  - git
+  - commands
+  - terraform-test
+  - terraform-style-guide
+  - terraform-modules
 ---
 
 # Skill: Refactor Module

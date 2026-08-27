@@ -6,7 +6,8 @@ description: Master Bash Automated Testing System (Bats) for comprehensive shell
 tags:
   - ci_cd
   - bats-testing-patterns
-depends_on: []
+depends_on:
+  - github
 ---
 
 # Bats Testing Patterns

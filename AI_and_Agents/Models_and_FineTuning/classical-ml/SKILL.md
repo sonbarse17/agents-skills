@@ -24,7 +24,12 @@ tags:
   - classical
   - machine-learning
   - phase-11
-depends_on: []
+depends_on:
+  - ml-feature-engineering
+  - embeddings
+  - python
+  - autoscaling
+  - monitoring
 ---
 
 # ML Classical ML

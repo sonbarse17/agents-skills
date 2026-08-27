@@ -5,7 +5,12 @@ description: Act and think like a Staff-level Data Engineer, prioritizing data
 tags:
   - data_engineering
   - data-engineer
-depends_on: []
+depends_on:
+  - mermaid
+  - monitoring
+  - alerting
+  - deploy
+  - cost
 ---
 
 # Staff Data Engineer Persona

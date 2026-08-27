@@ -21,7 +21,12 @@ tags:
   - frontend
   - ember
   - phase-2
-depends_on: []
+depends_on:
+  - vite
+  - typescript
+  - commands
+  - monitoring
+  - alerting
 ---
 
 # Ember.js

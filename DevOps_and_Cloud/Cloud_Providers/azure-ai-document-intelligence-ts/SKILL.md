@@ -11,7 +11,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-document-intelligence-ts
-depends_on: []
+depends_on:
+  - Structured Data
+  - typescript
 ---
 
 # Azure Document Intelligence REST SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

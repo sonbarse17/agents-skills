@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-voicelive-ts
-depends_on: []
+depends_on:
+  - vite
+  - multimodal
+  - typescript
+  - github
+  - cost
 ---
 
 # @azure/ai-voicelive (JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))

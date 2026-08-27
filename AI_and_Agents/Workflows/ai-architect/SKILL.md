@@ -5,7 +5,10 @@ description: Act and think like a Staff-level AI Solutions Architect, focusing
 tags:
   - workflows
   - ai-architect
-depends_on: []
+depends_on:
+  - mermaid
+  - deploy
+  - cost
 ---
 
 # Staff AI Solutions Architect Persona

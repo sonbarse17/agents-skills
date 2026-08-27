@@ -17,7 +17,12 @@ tags:
   - design
   - brand-identity
   - phase-3
-depends_on: []
+depends_on:
+  - design-ux-research
+  - ios
+  - android
+  - vault
+  - Rate Limiting
 ---
 
 # Brand Identity

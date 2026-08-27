@@ -12,7 +12,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-projects-ts
-depends_on: []
+depends_on:
+  - typescript
+  - opentelemetry
 ---
 
 # Azure AI Projects SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

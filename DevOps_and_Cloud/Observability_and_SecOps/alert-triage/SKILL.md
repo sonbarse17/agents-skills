@@ -14,7 +14,11 @@ metadata:
 tags:
   - observability_and_secops
   - alert-triage
-depends_on: []
+depends_on:
+  - commands
+  - incident
+  - serverless
+  - kql
 ---
 
 # Alert Triage

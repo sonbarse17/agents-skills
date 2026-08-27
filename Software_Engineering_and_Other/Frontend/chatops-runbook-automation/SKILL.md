@@ -19,7 +19,12 @@ metadata:
 tags:
   - frontend
   - chatops-runbook-automation
-depends_on: []
+depends_on:
+  - security-scanning
+  - rbac
+  - devsecops
+  - servicenow-itsm-integration
+  - python
 ---
 
 # ChatOps [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Automation

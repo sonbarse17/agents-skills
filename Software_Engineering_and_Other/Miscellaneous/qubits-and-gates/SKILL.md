@@ -5,7 +5,9 @@ description: Fundamental operations of quantum computing, including the Bloch
 tags:
   - miscellaneous
   - qubits-and-gates
-depends_on: []
+depends_on:
+  - pm
+  - mermaid
 ---
 
 # Qubit Architecture and Unitary Operations

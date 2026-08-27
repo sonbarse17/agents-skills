@@ -22,7 +22,12 @@ tags:
   - modeling
   - warehouse
   - phase-7
-depends_on: []
+depends_on:
+  - data-etl-pipeline
+  - data-data-warehouse
+  - data-data-quality
+  - vault
+  - postgresql
 ---
 
 # Dimensional Modeling

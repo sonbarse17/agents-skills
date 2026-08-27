@@ -13,7 +13,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-keyvault-certificates-rust
-depends_on: []
+depends_on:
+  - rbac
+  - vault
+  - commands
+  - github
 ---
 
 # Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates library for Rust

@@ -11,7 +11,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-communication-sms-java
-depends_on: []
+depends_on:
+  - Rate Limiting
 ---
 
 # Azure Communication SMS (Java)

@@ -17,7 +17,12 @@ tags:
   - api-client
   - code-generation
   - openapi
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - git
+  - python
+  - apis
 ---
 
 # API Client Generator

@@ -11,7 +11,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-gateway
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - postgresql
+  - opentelemetry
+  - monitoring
+  - docker
 ---
 
 # LLM Gateway

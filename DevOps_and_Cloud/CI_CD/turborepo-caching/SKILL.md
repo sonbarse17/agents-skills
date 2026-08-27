@@ -6,7 +6,12 @@ description: Configure Turborepo for efficient monorepo builds with local and
 tags:
   - ci_cd
   - turborepo-caching
-depends_on: []
+depends_on:
+  - jest
+  - prettier
+  - typescript
+  - monorepo
+  - github
 ---
 
 # Turborepo Caching

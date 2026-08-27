@@ -6,7 +6,10 @@ description: Adopts the mindset and thought process of a Staff-level Frontend
 tags:
   - frontend
   - frontend-engineer
-depends_on: []
+depends_on:
+  - mermaid
+  - accessibility
+  - Micro-Frontends
 ---
 
 # Staff Frontend Engineer Persona

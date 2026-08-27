@@ -17,7 +17,12 @@ tags:
   - backend
   - reporting
   - phase-10
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - accessibility
+  - typescript
+  - serverless
+  - deploy
 ---
 
 # Report Generation Skill

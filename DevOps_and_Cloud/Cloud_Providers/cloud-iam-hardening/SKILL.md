@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-iam-hardening
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - vault
+  - apis
+  - incident
 ---
 
 # Cloud IAM Hardening

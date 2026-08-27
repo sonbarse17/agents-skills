@@ -6,7 +6,8 @@ description: Use when analyzing a reference PPTX for read-only structure, theme,
 tags:
   - skills
   - pptx-reference-deck-analysis
-depends_on: []
+depends_on:
+  - python
 ---
 
 # PPTX Reference Deck Analysis

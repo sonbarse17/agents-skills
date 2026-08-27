@@ -9,7 +9,12 @@ metadata:
 tags:
   - security
   - model-supply-chain-security
-depends_on: []
+depends_on:
+  - scan
+  - sbom-supply-chain
+  - git
+  - python
+  - kubernetes
 ---
 
 # Model Supply Chain Security

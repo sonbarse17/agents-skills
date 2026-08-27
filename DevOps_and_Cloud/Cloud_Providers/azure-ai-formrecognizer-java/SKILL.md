@@ -15,7 +15,10 @@ description: >
 tags:
   - cloud_providers
   - azure-ai-formrecognizer-java
-depends_on: []
+depends_on:
+  - github
+  - microsoft-docs
+  - azure-ai
 ---
 
 # Azure AI Document Intelligence SDK for Java

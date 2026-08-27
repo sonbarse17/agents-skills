@@ -12,7 +12,10 @@ license: MIT
 tags:
   - observability_and_secops
   - distributed-tracing
-depends_on: []
+depends_on:
+  - go
+  - log-management
+  - cost
 ---
 
 # Distributed Tracing

@@ -14,7 +14,9 @@ metadata:
 tags:
   - skills
   - azure-ai-voicelive-java
-depends_on: []
+depends_on:
+  - github
+  - azure-ai
 ---
 
 # Azure AI VoiceLive SDK for Java

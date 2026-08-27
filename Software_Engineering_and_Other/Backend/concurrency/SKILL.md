@@ -5,7 +5,9 @@ description: Deep dive into the mechanics of Threading, Goroutines, Event Loops,
 tags:
   - backend
   - concurrency
-depends_on: []
+depends_on:
+  - mermaid
+  - go
 ---
 
 # Concurrency Mechanics: Deep Architecture & Under-the-Hood Operations

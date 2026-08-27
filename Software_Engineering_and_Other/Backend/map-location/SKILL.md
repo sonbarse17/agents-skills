@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for map-location. Use
 tags:
   - backend
   - map-location
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - vault
+  - Rate Limiting
+  - git
 ---
 # Map and Location Skill
 

@@ -16,7 +16,12 @@ metadata:
 tags:
   - cloud_providers
   - secrets-management
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - reverse-engineering
+  - rbac
+  - policy-as-code-guardrails
 ---
 
 # Secrets Management

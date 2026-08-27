@@ -15,7 +15,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - infrastructure-as-code-terraform
-depends_on: []
+depends_on:
+  - go
+  - environment-promotion-strategy
+  - runbook
+  - kubernetes
+  - gitops-workflow
 ---
 
 # Infrastructure as Code (Terraform)

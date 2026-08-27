@@ -17,7 +17,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-native-storage-strategy
-depends_on: []
+depends_on:
+  - vault
+  - apis
+  - incident
+  - disaster-recovery
+  - cdn
 ---
 
 # Cloud-Native Storage Strategy

@@ -28,7 +28,12 @@ dependencies:
 references:
   - https://nmap.org/ncat/guide/index.html
   - https://attack.mitre.org/techniques/T1059/
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - postgresql
+  - mysql
+  - commands
 ---
 
 # Netcat Network Utility

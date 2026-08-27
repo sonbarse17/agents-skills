@@ -11,7 +11,12 @@ license: MIT
 tags:
   - observability_and_secops
   - service-mesh
-depends_on: []
+depends_on:
+  - observability
+  - monitoring
+  - metrics-and-monitoring
+  - incident
+  - distributed-tracing
 ---
 
 # Service Mesh

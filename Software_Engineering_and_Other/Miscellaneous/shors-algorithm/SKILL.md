@@ -4,7 +4,9 @@ description: Quantum period finding, Quantum Fourier Transform (QFT), and RSA vu
 tags:
   - miscellaneous
   - shors-algorithm
-depends_on: []
+depends_on:
+  - pm
+  - mermaid
 ---
 
 # Shor's Algorithm

@@ -10,7 +10,10 @@ metadata:
 tags:
   - observability_and_secops
   - edot-java-instrument
-depends_on: []
+depends_on:
+  - opentelemetry
+  - docker-compose
+  - docker
 ---
 
 # EDOT Java Instrumentation

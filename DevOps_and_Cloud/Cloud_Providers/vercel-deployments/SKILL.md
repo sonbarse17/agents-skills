@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - vercel-deployments
-depends_on: []
+depends_on:
+  - git
+  - postgresql
+  - apis
+  - typescript
+  - sveltekit
 ---
 
 # Vercel Deployments

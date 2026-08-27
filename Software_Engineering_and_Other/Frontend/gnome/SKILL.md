@@ -18,7 +18,12 @@ tags:
   - gnome
   - linux
   - gtk
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - python
+  - apis
 ---
 
 # GNOME

@@ -11,7 +11,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-monitor-opentelemetry-ts
-depends_on: []
+depends_on:
+  - postgresql
+  - mongodb
+  - mysql
+  - typescript
+  - opentelemetry
 ---
 
 # Azure Monitor [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

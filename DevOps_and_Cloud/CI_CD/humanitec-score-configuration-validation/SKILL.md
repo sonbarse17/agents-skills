@@ -17,7 +17,12 @@ metadata:
 tags:
   - ci_cd
   - humanitec-score-configuration-validation
-depends_on: []
+depends_on:
+  - opa-gatekeeper-policy-authoring
+  - humanitec-score-workload-specification
+  - infrastructure-as-code
+  - kubernetes
+  - jenkins
 ---
 
 # Humanitec Score Configuration Validation

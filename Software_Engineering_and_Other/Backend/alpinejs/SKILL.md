@@ -20,7 +20,12 @@ tags:
   - frontend
   - alpinejs
   - phase-1
-depends_on: []
+depends_on:
+  - vite
+  - htmx
+  - monitoring
+  - alerting
+  - cdn
 ---
 
 # Alpine.js

@@ -7,7 +7,12 @@ description: Prepare, format, and validate datasets for supervised fine-tuning
 tags:
   - data_engineering
   - dataset-curation
-depends_on: []
+depends_on:
+  - python
+  - vision-sft
+  - trace-to-training-data
+  - preference-optimization
+  - lora-qlora-recipes
 ---
 
 # Dataset Curation

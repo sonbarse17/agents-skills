@@ -18,7 +18,12 @@ tags:
   - performance
   - profiling
   - optimization
-depends_on: []
+depends_on:
+  - scan
+  - microservices
+  - code-review
+  - python
+  - postgresql
 ---
 
 # Performance Profiler

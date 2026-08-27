@@ -14,7 +14,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-eventhub-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure Event Hubs SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

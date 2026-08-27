@@ -12,7 +12,12 @@ version: 1.0.2
 tags:
   - product_and_business
   - team-communication-protocols
-depends_on: []
+depends_on:
+  - team-composition-patterns
+  - Structured Data
+  - capacity
+  - deploy
+  - security-reviewer
 ---
 
 # Team Communication Protocols

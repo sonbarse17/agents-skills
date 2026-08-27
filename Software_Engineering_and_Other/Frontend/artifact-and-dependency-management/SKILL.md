@@ -15,7 +15,12 @@ metadata:
 tags:
   - frontend
   - artifact-and-dependency-management
-depends_on: []
+depends_on:
+  - scan
+  - changelog-automation
+  - go
+  - release-versioning-and-changelog-automation
+  - incident
 ---
 
 # Artifact and Dependency Management

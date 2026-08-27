@@ -14,7 +14,11 @@ metadata:
 tags:
   - skills
   - azure-mgmt-weightsandbiases-dotnet
-depends_on: []
+depends_on:
+  - python
+  - go
+  - github
+  - cost
 ---
 
 # Azure.ResourceManager.WeightsAndBiases (.NET)

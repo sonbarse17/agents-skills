@@ -20,7 +20,12 @@ tags:
   - storage
   - phase-6
   - universal
-depends_on: []
+depends_on:
+  - scan
+  - typescript
+  - go
+  - backend-caching
+  - cdn
 ---
 
 # Backend File Storage

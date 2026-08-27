@@ -22,7 +22,12 @@ tags:
   - evaluation
   - metrics
   - phase-11
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - python
+  - monitoring
+  - capacity
+  - deploy
 ---
 
 # ML Model Evaluation

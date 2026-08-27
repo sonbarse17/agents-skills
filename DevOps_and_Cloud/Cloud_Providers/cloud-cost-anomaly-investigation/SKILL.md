@@ -19,7 +19,12 @@ metadata:
 tags:
   - cloud_providers
   - cloud-cost-anomaly-investigation
-depends_on: []
+depends_on:
+  - autoscaling
+  - commands
+  - monitoring
+  - incident
+  - disaster-recovery
 ---
 
 # Cloud Cost Anomaly Investigation

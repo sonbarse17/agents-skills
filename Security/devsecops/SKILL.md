@@ -5,7 +5,11 @@ description: Apply DevSecOps practices, focusing on automated SAST/DAST scanning
 tags:
   - security
   - devsecops
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - github
+  - deploy
 ---
 # DevSecOps: Automated Security Scanning
 

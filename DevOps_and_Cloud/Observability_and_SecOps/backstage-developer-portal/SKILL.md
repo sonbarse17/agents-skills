@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - backstage-developer-portal
-depends_on: []
+depends_on:
+  - typescript
+  - runbooks
+  - runbook
+  - monitoring
+  - incident-response
 ---
 
 # Backstage Developer Portal

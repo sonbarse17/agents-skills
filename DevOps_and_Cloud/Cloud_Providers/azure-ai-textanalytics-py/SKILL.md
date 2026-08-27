@@ -15,7 +15,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-textanalytics-py
-depends_on: []
+depends_on:
+  - python
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Text Analytics SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

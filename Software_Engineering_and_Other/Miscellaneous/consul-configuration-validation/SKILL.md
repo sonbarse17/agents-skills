@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - consul-configuration-validation
-depends_on: []
+depends_on:
+  - linkerd-configuration-validation
+  - datacenter
+  - commands
+  - service-mesh
+  - incident
 ---
 
 # Consul Configuration Validation

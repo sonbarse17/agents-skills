@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - nfs-storage
-depends_on: []
+depends_on:
+  - linux-administration
+  - performance-tuning
+  - capacity
+  - kubernetes
+  - helm
 ---
 
 # NFS Storage

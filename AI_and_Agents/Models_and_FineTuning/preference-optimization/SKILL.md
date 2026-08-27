@@ -7,7 +7,12 @@ description: Align a fine-tuned model with preference data using DPO, ORPO, KTO,
 tags:
   - models_and_finetuning
   - preference-optimization
-depends_on: []
+depends_on:
+  - cost
+  - trace-to-training-data
+  - lora-qlora-recipes
+  - llm-finetuning
+  - grpo-rlvr-training
 ---
 
 # Preference Optimization

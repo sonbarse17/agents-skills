@@ -16,7 +16,12 @@ metadata:
 tags:
   - models_and_finetuning
   - weights-and-biases-experiment-tracking
-depends_on: []
+depends_on:
+  - experiment-tracking
+  - python
+  - apis
+  - incident
+  - capacity
 ---
 
 # Weights & Biases Experiment Tracking

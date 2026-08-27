@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-keyvault
-depends_on: []
+depends_on:
+  - rbac
+  - hashicorp-vault
+  - vault
+  - python
+  - kubernetes
 ---
 
 # Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)

@@ -9,7 +9,8 @@ shell: powershell
 tags:
   - ci_cd
   - commit
-depends_on: []
+depends_on:
+  - git
 ---
 
 ## Instructions

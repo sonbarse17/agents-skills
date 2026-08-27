@@ -17,7 +17,12 @@ metadata:
 tags:
   - ci_cd
   - pipeline-failure-triage-and-recovery
-depends_on: []
+depends_on:
+  - dependency-management
+  - artifact-and-dependency-management
+  - devops-delivery-metrics-and-dora-analysis
+  - capacity
+  - docker
 ---
 
 # Pipeline Failure Triage and Recovery

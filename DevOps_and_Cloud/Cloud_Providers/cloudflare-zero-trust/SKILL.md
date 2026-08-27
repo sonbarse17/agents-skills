@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - cloudflare-zero-trust
-depends_on: []
+depends_on:
+  - reverse-proxy
+  - go
+  - service-mesh
+  - docker-compose
+  - docker
 ---
 
 # Cloudflare Zero Trust

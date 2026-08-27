@@ -9,7 +9,9 @@ description: >
 tags:
   - skills
   - install-atk
-depends_on: []
+depends_on:
+  - vscode
+  - commands
 ---
 
 # Install ATK

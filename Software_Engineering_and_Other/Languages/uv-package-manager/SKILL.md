@@ -7,7 +7,12 @@ description: Master the uv package manager for fast Python dependency
 tags:
   - languages
   - uv-package-manager
-depends_on: []
+depends_on:
+  - git
+  - python
+  - monorepo
+  - docker
+  - github
 ---
 
 # UV Package Manager

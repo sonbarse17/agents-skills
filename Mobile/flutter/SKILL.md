@@ -5,7 +5,8 @@ description: Expert knowledge in Flutter, focusing on State Management and
 tags:
   - mobile
   - flutter
-depends_on: []
+depends_on:
+  - mermaid
 ---
 # Flutter Expertise
 

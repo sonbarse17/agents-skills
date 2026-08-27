@@ -19,7 +19,12 @@ metadata:
 tags:
   - skills
   - azure-deploy
-depends_on: []
+depends_on:
+  - rbac
+  - python
+  - typescript
+  - commands
+  - deploy
 ---
 
 # Azure Deploy

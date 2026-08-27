@@ -7,7 +7,9 @@ description: Conduct WCAG 2.2 accessibility audits with automated testing,
 tags:
   - frontend
   - wcag-audit-patterns
-depends_on: []
+depends_on:
+  - accessibility
+  - audit
 ---
 
 # WCAG [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Patterns

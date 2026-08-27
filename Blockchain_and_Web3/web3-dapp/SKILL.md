@@ -5,7 +5,12 @@ description: Playbook for building full-stack Web3 applications (Next.js,
 tags:
   - blockchain_and_web3
   - web3-dapp
-depends_on: []
+depends_on:
+  - mermaid
+  - kubernetes
+  - kubectl
+  - helm
+  - deploy
 ---
 
 # Web3 DApp Playbook

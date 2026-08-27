@@ -6,7 +6,12 @@ description: Discovers and invokes agent skills. Use when starting a session or
 tags:
   - miscellaneous
   - using-agent-skills
-depends_on: []
+depends_on:
+  - security-and-hardening
+  - shipping-and-launch
+  - idea-refine
+  - documentation-and-adrs
+  - incremental-implementation
 ---
 
 # Using Agent Skills

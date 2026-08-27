@@ -21,7 +21,12 @@ tags:
   - cicd
   - pipeline
   - phase-5
-depends_on: []
+depends_on:
+  - scan
+  - caching-strategies
+  - monorepo
+  - go
+  - commands
 ---
 
 # CI/CD Pipeline

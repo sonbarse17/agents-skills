@@ -17,7 +17,12 @@ metadata:
 tags:
   - data_engineering
   - cloud-data-warehouse-operations-snowflake-bigquery-redshift
-depends_on: []
+depends_on:
+  - database-operations
+  - clickhouse-analytical-database-operations
+  - postgresql
+  - performance-tuning
+  - backup-and-restore
 ---
 
 # Cloud Data Warehouse Operations: Snowflake, BigQuery, and Redshift

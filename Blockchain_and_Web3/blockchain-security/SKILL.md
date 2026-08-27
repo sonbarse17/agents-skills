@@ -24,7 +24,12 @@ tags:
   - audit
   - formal-verification
   - phase-blockchain
-depends_on: []
+depends_on:
+  - threat-modeling
+  - Smart Contract Security
+  - vault
+  - Rate Limiting
+  - monitoring
 ---
 
 # Blockchain Security

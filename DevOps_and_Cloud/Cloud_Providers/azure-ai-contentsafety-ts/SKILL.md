@@ -12,7 +12,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-contentsafety-ts
-depends_on: []
+depends_on:
+  - typescript
+  - audit
 ---
 
 # Azure AI Content Safety REST SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

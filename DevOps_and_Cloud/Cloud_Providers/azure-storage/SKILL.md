@@ -18,7 +18,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-storage
-depends_on: []
+depends_on:
+  - python
+  - typescript
+  - go
+  - commands
+  - cost
 ---
 
 # Azure Storage Services

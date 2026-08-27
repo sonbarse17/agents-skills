@@ -6,7 +6,8 @@ description: Master the physical hardware limits beyond classical silicon with
 tags:
   - miscellaneous
   - neuromorphic-computing
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # Neuromorphic Computing: The Asynchronous Frontier

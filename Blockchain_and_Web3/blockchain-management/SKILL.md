@@ -30,7 +30,12 @@ tags:
   - governance
   - dao
   - phase-blockchain
-depends_on: []
+depends_on:
+  - pm
+  - blockchain-security
+  - monitoring
+  - incident
+  - deploy
 ---
 
 # Blockchain Management

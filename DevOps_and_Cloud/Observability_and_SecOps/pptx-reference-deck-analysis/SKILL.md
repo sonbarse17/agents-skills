@@ -6,7 +6,8 @@ description: Use when analyzing a reference PPTX for read-only structure, theme,
 tags:
   - observability_and_secops
   - pptx-reference-deck-analysis
-depends_on: []
+depends_on:
+  - python
 ---
 
 # PPTX Reference Deck Analysis

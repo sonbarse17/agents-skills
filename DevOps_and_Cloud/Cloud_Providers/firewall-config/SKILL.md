@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - firewall-config
-depends_on: []
+depends_on:
+  - zero-trust
+  - Rate Limiting
+  - postgresql
+  - mysql
+  - commands
 ---
 
 # Firewall Configuration

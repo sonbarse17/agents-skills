@@ -7,7 +7,10 @@ description: Master Python asyncio, concurrent programming, and async/await
 tags:
   - languages
   - async-python-patterns
-depends_on: []
+depends_on:
+  - microservices
+  - python
+  - apis
 ---
 
 # Async [Python](../python/SKILL.md) Patterns

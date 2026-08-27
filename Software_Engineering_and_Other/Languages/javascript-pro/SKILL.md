@@ -20,7 +20,11 @@ metadata:
 tags:
   - languages
   - javascript-pro
-depends_on: []
+depends_on:
+  - jest
+  - eslint
+  - apis
+  - github
 ---
 
 # JavaScript Pro

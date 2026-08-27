@@ -15,7 +15,12 @@ metadata:
 tags:
   - workflows
   - multi-agent-orchestration
-depends_on: []
+depends_on:
+  - code-review
+  - python
+  - incident
+  - cost
+  - llm-cost-and-latency-optimization
 ---
 
 # Multi-Agent Orchestration

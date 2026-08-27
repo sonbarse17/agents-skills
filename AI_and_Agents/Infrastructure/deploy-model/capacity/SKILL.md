@@ -15,7 +15,12 @@ metadata:
 tags:
   - deploy-model
   - capacity
-depends_on: []
+depends_on:
+  - customize
+  - commands
+  - deploy
+  - deploy-model
+  - preset
 ---
 
 # [Capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) Discovery

@@ -15,7 +15,10 @@ metadata:
 tags:
   - skills
   - azure-identity-dotnet
-depends_on: []
+depends_on:
+  - vault
+  - kubernetes
+  - github
 ---
 
 # Azure Identity library for .NET

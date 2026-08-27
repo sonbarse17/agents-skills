@@ -10,7 +10,12 @@ metadata:
 tags:
   - frontend
   - business-continuity
-depends_on: []
+depends_on:
+  - runbook
+  - incident
+  - capacity
+  - deploy
+  - dashboards
 ---
 
 # Business Continuity Planning

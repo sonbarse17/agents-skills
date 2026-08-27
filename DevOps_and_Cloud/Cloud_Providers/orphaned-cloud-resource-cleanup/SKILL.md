@@ -19,7 +19,12 @@ metadata:
 tags:
   - cloud_providers
   - orphaned-cloud-resource-cleanup
-depends_on: []
+depends_on:
+  - vault
+  - infrastructure-as-code
+  - runbook
+  - disaster-recovery
+  - deploy
 ---
 
 # Orphaned Cloud Resource Cleanup

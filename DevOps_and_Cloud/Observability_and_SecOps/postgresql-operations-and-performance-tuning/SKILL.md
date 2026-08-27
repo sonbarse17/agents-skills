@@ -16,7 +16,12 @@ metadata:
 tags:
   - observability_and_secops
   - postgresql-operations-and-performance-tuning
-depends_on: []
+depends_on:
+  - scan
+  - postgresql-configuration-validation
+  - postgresql
+  - go
+  - database-schema-migration-with-liquibase-and-flyway
 ---
 
 # [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Operations and Performance Tuning

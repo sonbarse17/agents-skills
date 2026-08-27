@@ -7,7 +7,8 @@ description: Migrate from AngularJS to Angular using hybrid mode, incremental
 tags:
   - frontend
   - angular-migration
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # Angular Migration

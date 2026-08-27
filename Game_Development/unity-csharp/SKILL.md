@@ -4,7 +4,9 @@ description: Unity DOTS & ECS Mechanics
 tags:
   - game_development
   - unity-csharp
-depends_on: []
+depends_on:
+  - mermaid
+  - unity
 ---
 # [Unity](../unity/SKILL.md) Data-Oriented Technology Stack (DOTS)
 

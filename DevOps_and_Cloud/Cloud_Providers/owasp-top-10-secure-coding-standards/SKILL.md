@@ -21,7 +21,12 @@ metadata:
 tags:
   - cloud_providers
   - owasp-top-10-secure-coding-standards
-depends_on: []
+depends_on:
+  - threat-modeling
+  - supply-chain-security
+  - supply-chain-security-slsa-sbom
+  - scan
+  - sast-integration
 ---
 
 # OWASP Top 10 Secure Coding Standards

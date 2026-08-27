@@ -21,7 +21,12 @@ tags:
   - phase-1
   - agile
   - stories
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - qa
+  - profiling
 ---
 
 # Create Story

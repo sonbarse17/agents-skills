@@ -22,7 +22,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-mlops-platform-deployment-self-hosted-k8s-from-scratch
-depends_on: []
+depends_on:
+  - ray-distributed-ml-orchestration
+  - feature-store-design
+  - experiment-tracking
+  - git
+  - python
 ---
 
 # Complete MLOps Platform Deployment Self-Hosted On [Kubernetes](../kubernetes/SKILL.md) (K8s) From Scratch

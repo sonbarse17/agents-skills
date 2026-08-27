@@ -13,7 +13,12 @@ license: MIT
 tags:
   - observability_and_secops
   - service-connectivity
-depends_on: []
+depends_on:
+  - zero-trust
+  - datacenter
+  - observability
+  - monitoring
+  - kubernetes-networking
 ---
 
 # Service Connectivity

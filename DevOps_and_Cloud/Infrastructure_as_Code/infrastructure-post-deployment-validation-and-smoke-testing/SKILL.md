@@ -18,7 +18,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - infrastructure-post-deployment-validation-and-smoke-testing
-depends_on: []
+depends_on:
+  - terragrunt-configuration-and-dry-run-validation
+  - infrastructure-as-code-terraform
+  - infrastructure-as-code
+  - cloudformation
+  - ansible
 ---
 
 # Infrastructure Post-Deployment Validation and Smoke Testing

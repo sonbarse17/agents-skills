@@ -23,7 +23,12 @@ tags:
   - kubebuilder
   - controller-runtime
   - phase-3
-depends_on: []
+depends_on:
+  - rbac
+  - policy-as-code
+  - Rate Limiting
+  - python
+  - mysql
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operators

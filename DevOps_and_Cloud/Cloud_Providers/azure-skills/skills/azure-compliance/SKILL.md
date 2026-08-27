@@ -13,7 +13,12 @@ metadata:
 tags:
   - skills
   - azure-compliance
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - python
+  - typescript
+  - monitoring
 ---
 
 # Azure Compliance & Security Auditing

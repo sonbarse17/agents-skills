@@ -11,7 +11,12 @@ metadata:
 tags:
   - skills
   - wiki-llms-txt
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - git
+  - docker
+  - github
 ---
 
 # llms.txt Generator

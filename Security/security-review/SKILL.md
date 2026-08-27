@@ -15,7 +15,12 @@ metadata:
 tags:
   - security
   - security-review
-depends_on: []
+depends_on:
+  - scan
+  - devsecops
+  - git
+  - terraform-review
+  - dr-review
 ---
 
 # Security Review

@@ -19,7 +19,12 @@ tags:
   - product
   - customer-journey
   - phase-8
-depends_on: []
+depends_on:
+  - scan
+  - pm
+  - product-persona-development
+  - product-growth-engineering
+  - ios
 ---
 
 # Customer Journey Agent

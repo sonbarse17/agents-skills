@@ -24,7 +24,9 @@ metadata:
 tags:
   - miscellaneous
   - code-reviewer
-depends_on: []
+depends_on:
+  - python
+  - github
 ---
 
 # Code Reviewer

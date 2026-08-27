@@ -36,7 +36,12 @@ references:
   - https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
   - https://github.com/stoplightio/spectral
   - https://owasp.org/API-Security/editions/2023/en/0x11-t10/
-depends_on: []
+depends_on:
+  - scan
+  - Rate Limiting
+  - git
+  - apis
+  - typescript
 ---
 
 # API Security with Spectral

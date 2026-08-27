@@ -25,7 +25,12 @@ tags:
   - finops
   - optimization
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-etl-pipeline
+  - data-data-warehouse
+  - python
+  - profiling
 ---
 
 # Data Cost Optimization

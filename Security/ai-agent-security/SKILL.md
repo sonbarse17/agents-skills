@@ -11,7 +11,12 @@ metadata:
 tags:
   - security
   - ai-agent-security
-depends_on: []
+depends_on:
+  - threat-modeling
+  - scan
+  - rbac
+  - policy-as-code
+  - llm-app-security
 ---
 
 # AI Agent Security

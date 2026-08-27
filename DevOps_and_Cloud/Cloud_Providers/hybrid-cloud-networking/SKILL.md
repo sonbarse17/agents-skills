@@ -7,7 +7,12 @@ description: Configure secure, high-performance connectivity between on-premises
 tags:
   - cloud_providers
   - hybrid-cloud-networking
-depends_on: []
+depends_on:
+  - datacenter
+  - terraform-module-library
+  - monitoring
+  - multi-cloud-architecture
+  - multi-cloud
 ---
 
 # Hybrid Cloud Networking

@@ -8,7 +8,12 @@ description: Guide for creating high-quality MCP (Model Context Protocol)
 tags:
   - infrastructure
   - mcp-builder
-depends_on: []
+depends_on:
+  - Structured Data
+  - python
+  - apis
+  - typescript
+  - docker
 ---
 
 # MCP Server Development Guide

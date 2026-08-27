@@ -22,7 +22,12 @@ tags:
   - resilience
   - fault-tolerance
   - circuit-breaker
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - datacenter
+  - python
+  - typescript
 ---
 
 # Backend Resilience Patterns

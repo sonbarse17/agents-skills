@@ -4,7 +4,9 @@ description: Stripe subscription lifecycle and webhook handling.
 tags:
   - product_and_business
   - payments
-depends_on: []
+depends_on:
+  - mermaid
+  - typescript
 ---
 
 # Stripe Payments & Subscriptions

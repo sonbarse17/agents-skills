@@ -23,7 +23,12 @@ tags:
   - governance
   - lineage
   - phase-11
-depends_on: []
+depends_on:
+  - data-data-observability
+  - data-data-catalog
+  - git
+  - python
+  - postgresql
 ---
 
 # Data Lineage

@@ -15,7 +15,12 @@ metadata:
 tags:
   - observability_and_secops
   - dr-review
-depends_on: []
+depends_on:
+  - security-review
+  - vault
+  - terraform-review
+  - runbooks
+  - runbook
 ---
 
 # Disaster Recovery Review

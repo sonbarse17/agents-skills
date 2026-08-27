@@ -7,7 +7,12 @@ description: Drives development with tests. Use when implementing any logic,
 tags:
   - observability_and_secops
   - test-driven-development
-depends_on: []
+depends_on:
+  - jest
+  - accessibility
+  - apis
+  - typescript
+  - go
 ---
 
 # Test-Driven Development

@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - gitops-multi-cluster-management
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - monitoring
+  - incident
+  - capacity
 ---
 
 # [GitOps](../gitops/SKILL.md) Multi-Cluster Management

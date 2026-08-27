@@ -11,7 +11,12 @@ metadata:
 tags:
   - observability_and_secops
   - dast-scanning
-depends_on: []
+depends_on:
+  - waf-setup
+  - scan
+  - sast-scanning
+  - penetration-testing
+  - python
 ---
 
 # DAST Scanning

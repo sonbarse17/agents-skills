@@ -4,7 +4,8 @@ description: Techniques to solve the N+1 problem using Dataloader.
 tags:
   - miscellaneous
   - graphql-optimization
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # GraphQL Optimization: Solving N+1

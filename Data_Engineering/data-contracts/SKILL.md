@@ -22,7 +22,12 @@ tags:
   - contracts
   - governance
   - phase-11
-depends_on: []
+depends_on:
+  - data-schema-registry
+  - data-data-quality
+  - data-data-observability
+  - data-data-catalog
+  - python
 ---
 
 # Data Data Contracts

@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - jenkins-centralized-shared-library
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - scan
+  - devsecops
+  - git
+  - docker
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Centralized Shared Library

@@ -11,7 +11,8 @@ metadata:
 tags:
   - cloud_providers
   - azure-eventgrid-java
-depends_on: []
+depends_on:
+  - azure-messaging
 ---
 
 # Azure Event Grid SDK for Java

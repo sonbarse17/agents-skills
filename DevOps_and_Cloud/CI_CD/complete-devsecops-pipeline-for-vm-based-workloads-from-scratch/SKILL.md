@@ -19,7 +19,12 @@ metadata:
 tags:
   - ci_cd
   - complete-devsecops-pipeline-for-vm-based-workloads-from-scratch
-depends_on: []
+depends_on:
+  - scan
+  - sast-integration
+  - devsecops
+  - cis-benchmarks-hardening
+  - vault
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for VM-Based Workloads, From Scratch

@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - gitea-actions-and-ci
-depends_on: []
+depends_on:
+  - apis
+  - go
+  - docker
+  - jenkins
+  - github-actions-centralized-reusable-workflows
 ---
 
 # Gitea Actions and CI

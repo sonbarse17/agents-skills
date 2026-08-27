@@ -12,7 +12,11 @@ license: MIT
 tags:
   - cloud_providers
   - resource-tagging
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - cost
+  - audit
 ---
 
 # Resource Tagging

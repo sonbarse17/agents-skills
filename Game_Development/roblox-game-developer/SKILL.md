@@ -4,7 +4,12 @@ description: Use this skill for any Roblox related tasks
 tags:
   - game_development
   - roblox-game-developer
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - accessibility
+  - apis
+  - qa
+  - profiling
 ---
 
 # Roblox Game Development Skill

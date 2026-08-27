@@ -22,7 +22,12 @@ metadata:
 tags:
   - security
   - spiffe-spire-workload-identity-configuration
-depends_on: []
+depends_on:
+  - zero-trust
+  - vault
+  - postgresql
+  - mysql
+  - go
 ---
 
 # SPIFFE/SPIRE Workload Identity Configuration

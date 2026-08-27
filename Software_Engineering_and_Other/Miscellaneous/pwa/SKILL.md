@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for pwa. Use this skill
 tags:
   - miscellaneous
   - pwa
-depends_on: []
+depends_on:
+  - vite
+  - cdn
+  - audit
 ---
 # Progressive Web App Skill
 

@@ -15,7 +15,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-voicelive-dotnet
-depends_on: []
+depends_on:
+  - multimodal
+  - github
+  - cost
 ---
 
 # Azure.AI.VoiceLive (.NET)

@@ -17,7 +17,12 @@ metadata:
 tags:
   - frontend
   - toil-reduction-and-operational-automation
-depends_on: []
+depends_on:
+  - incident-response-and-on-call-management
+  - blameless-postmortem-and-root-cause-analysis
+  - runbooks
+  - root-cause-analysis
+  - runbook
 ---
 
 # Toil Reduction and Operational Automation

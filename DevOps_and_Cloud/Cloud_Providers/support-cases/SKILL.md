@@ -20,7 +20,10 @@ metadata:
 tags:
   - cloud_providers
   - support-cases
-depends_on: []
+depends_on:
+  - scan
+  - incident
+  - aws
 ---
 
 # Support Case Review

@@ -13,7 +13,12 @@ metadata:
 tags:
   - infrastructure_as_code
   - new-terraform-provider
-depends_on: []
+depends_on:
+  - go
+  - provider-resources
+  - provider-configuration
+  - github
+  - scaffold
 ---
 
 To scaffold a new Terraform provider with Plugin Framework:

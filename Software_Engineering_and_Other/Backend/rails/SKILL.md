@@ -20,7 +20,12 @@ tags:
   - ruby
   - rails
   - phase-4
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - postgresql
+  - mysql
+  - performance-tuning
+  - monitoring
 ---
 
 # Ruby on Rails

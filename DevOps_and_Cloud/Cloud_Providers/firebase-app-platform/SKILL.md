@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - firebase-app-platform
-depends_on: []
+depends_on:
+  - firebase
+  - convex-backend
+  - apis
+  - typescript
+  - monitoring
 ---
 
 # [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) App Platform

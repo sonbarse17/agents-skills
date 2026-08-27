@@ -16,7 +16,12 @@ tags:
   - security
   - soc
   - phase-8
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - runbooks
+  - runbook
+  - monitoring
 ---
 
 # SOC Operations

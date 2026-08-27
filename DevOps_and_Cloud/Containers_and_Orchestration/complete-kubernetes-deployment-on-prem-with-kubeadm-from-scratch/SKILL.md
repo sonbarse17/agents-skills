@@ -23,7 +23,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - complete-kubernetes-deployment-on-prem-with-kubeadm-from-scratch
-depends_on: []
+depends_on:
+  - ingress-nginx-configuration
+  - go
+  - runbook
+  - monitoring
+  - incident
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment On-Prem With kubeadm From Scratch

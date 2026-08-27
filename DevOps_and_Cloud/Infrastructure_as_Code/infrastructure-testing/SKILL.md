@@ -12,7 +12,12 @@ license: MIT
 tags:
   - infrastructure_as_code
   - infrastructure-testing
-depends_on: []
+depends_on:
+  - policy-as-code
+  - terraform-modules
+  - incident
+  - kubernetes
+  - kubectl
 ---
 
 # Infrastructure Testing

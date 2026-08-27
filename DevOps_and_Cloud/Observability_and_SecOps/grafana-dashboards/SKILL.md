@@ -7,7 +7,12 @@ description: Create and manage production Grafana dashboards for real-time
 tags:
   - observability_and_secops
   - grafana-dashboards
-depends_on: []
+depends_on:
+  - ansible
+  - slo-implementation
+  - prometheus-configuration
+  - observability
+  - monitoring
 ---
 
 # Grafana [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)

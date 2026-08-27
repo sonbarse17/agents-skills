@@ -16,7 +16,12 @@ metadata:
 tags:
   - skills
   - entra-agent-id
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - typescript
+  - go
+  - kubernetes
 ---
 
 # Microsoft Entra Agent ID

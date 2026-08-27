@@ -11,7 +11,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-identity-java
-depends_on: []
+depends_on:
+  - vault
+  - kubernetes
 ---
 
 # Azure Identity library for Java

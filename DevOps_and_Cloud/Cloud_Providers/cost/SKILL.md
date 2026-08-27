@@ -14,7 +14,12 @@ metadata:
 tags:
   - cloud_providers
   - cost
-depends_on: []
+depends_on:
+  - autoscaling
+  - apis
+  - terraform-review
+  - observability
+  - dr-review
 ---
 
 # Cost Review

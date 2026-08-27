@@ -7,7 +7,10 @@ description: Python resilience patterns including automatic retries, exponential
 tags:
   - languages
   - python-resilience
-depends_on: []
+depends_on:
+  - microservices
+  - Rate Limiting
+  - python
 ---
 
 # [Python](../python/SKILL.md) Resilience Patterns

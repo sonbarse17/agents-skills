@@ -10,7 +10,11 @@ metadata:
 tags:
   - skills
   - wiki-qa
-depends_on: []
+depends_on:
+  - mermaid
+  - Structured Data
+  - git
+  - github
 ---
 
 # Wiki Q&A

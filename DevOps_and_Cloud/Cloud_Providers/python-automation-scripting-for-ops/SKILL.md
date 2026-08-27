@@ -15,7 +15,12 @@ metadata:
 tags:
   - cloud_providers
   - python-automation-scripting-for-ops
-depends_on: []
+depends_on:
+  - shell-scripting-best-practices
+  - python
+  - cloudformation
+  - ansible
+  - ansible-playbook-and-role-design
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Automation Scripting for Ops

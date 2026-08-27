@@ -15,7 +15,12 @@ metadata:
 tags:
   - skills
   - azure-mgmt-apimanagement-dotnet
-depends_on: []
+depends_on:
+  - apis
+  - capacity
+  - serverless
+  - deploy
+  - deploy-model
 ---
 
 # Azure.ResourceManager.ApiManagement (.NET)

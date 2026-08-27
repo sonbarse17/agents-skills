@@ -15,7 +15,12 @@ metadata:
 tags:
   - databases
   - neo4j-graph-database-operations
-depends_on: []
+depends_on:
+  - scan
+  - data-modeling
+  - database-operations
+  - arangodb-multi-model-database-operations
+  - postgresql
 ---
 
 # Neo4j Graph Database Operations

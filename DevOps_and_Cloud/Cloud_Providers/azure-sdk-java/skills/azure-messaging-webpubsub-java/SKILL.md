@@ -11,7 +11,8 @@ metadata:
 tags:
   - skills
   - azure-messaging-webpubsub-java
-depends_on: []
+depends_on:
+  - azure-messaging
 ---
 
 # Azure Web PubSub SDK for Java

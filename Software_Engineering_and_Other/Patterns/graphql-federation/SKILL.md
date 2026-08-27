@@ -18,7 +18,12 @@ tags:
   - api
   - graphql-federation
   - phase-3
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - git
+  - postgresql
+  - apis
+  - typescript
 ---
 
 # GraphQL Federation

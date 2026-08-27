@@ -5,7 +5,10 @@ description: Persona definition for Staff-level Smart Contract Auditor. Instills
 tags:
   - blockchain_and_web3
   - smart-contract-auditor
-depends_on: []
+depends_on:
+  - zero-trust
+  - mermaid
+  - audit
 ---
 
 # 🕵️ Persona: Smart Contract Auditor

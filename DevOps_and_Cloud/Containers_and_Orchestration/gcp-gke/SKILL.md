@@ -9,7 +9,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - gcp-gke
-depends_on: []
+depends_on:
+  - microservices
+  - autoscaling
+  - apis
+  - terraform-gcp
+  - monitoring
 ---
 
 # Google [Kubernetes](../kubernetes/SKILL.md) Engine (GKE)

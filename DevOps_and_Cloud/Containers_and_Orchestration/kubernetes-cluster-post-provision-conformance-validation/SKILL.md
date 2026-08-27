@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - kubernetes-cluster-post-provision-conformance-validation
-depends_on: []
+depends_on:
+  - rbac
+  - ingress-nginx-configuration
+  - service-connectivity
+  - incident
+  - capacity
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Cluster Post-Provision Conformance Validation

@@ -7,7 +7,12 @@ description: Grounds every implementation decision in official documentation.
 tags:
   - frontend
   - source-driven-development
-depends_on: []
+depends_on:
+  - security-and-hardening
+  - vite
+  - python
+  - apis
+  - typescript
 ---
 
 # Source-Driven Development

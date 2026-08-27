@@ -20,7 +20,10 @@ metadata:
 tags:
   - frontend
   - angular-architect
-depends_on: []
+depends_on:
+  - accessibility
+  - typescript
+  - github
 ---
 
 # Angular Architect

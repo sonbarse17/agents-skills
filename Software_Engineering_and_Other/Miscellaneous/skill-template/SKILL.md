@@ -11,7 +11,8 @@ metadata:
 tags:
   - miscellaneous
   - skill-template
-depends_on: []
+depends_on:
+  - skill-name
 ---
 
 # Skill Name In Title Case

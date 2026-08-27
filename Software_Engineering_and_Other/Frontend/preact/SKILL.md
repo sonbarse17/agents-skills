@@ -20,7 +20,12 @@ tags:
   - frontend
   - preact
   - phase-1
-depends_on: []
+depends_on:
+  - vite
+  - apis
+  - typescript
+  - monitoring
+  - alerting
 ---
 
 # Preact

@@ -6,7 +6,11 @@ description: Build production React Native apps with Expo, navigation, native
 tags:
   - mobile
   - react-native-architecture
-depends_on: []
+depends_on:
+  - ios
+  - android
+  - apis
+  - typescript
 ---
 
 # React Native Architecture

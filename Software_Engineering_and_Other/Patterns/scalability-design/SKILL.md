@@ -12,7 +12,12 @@ license: MIT
 tags:
   - patterns
   - scalability-design
-depends_on: []
+depends_on:
+  - caching-strategies
+  - profiling
+  - load-testing
+  - capacity
+  - stateful-workloads
 ---
 
 # Scalability Design

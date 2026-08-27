@@ -26,7 +26,12 @@ tags:
   - error-budget
   - reliability
   - phase-3
-depends_on: []
+depends_on:
+  - scan
+  - vault
+  - platform-engineering
+  - runbooks
+  - runbook
 ---
 
 # SRE Practices

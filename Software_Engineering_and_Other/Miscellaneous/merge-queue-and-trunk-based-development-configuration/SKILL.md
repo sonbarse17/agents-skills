@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - merge-queue-and-trunk-based-development-configuration
-depends_on: []
+depends_on:
+  - git
+  - python
+  - devops-delivery-metrics-and-dora-analysis
+  - capacity
+  - gitops-workflow
 ---
 
 # Merge Queue and Trunk-Based Development Configuration

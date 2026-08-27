@@ -11,7 +11,10 @@ metadata:
 tags:
   - skills
   - wiki-vitepress
-depends_on: []
+depends_on:
+  - scan
+  - mermaid
+  - typescript
 ---
 
 # Wiki VitePress Packager

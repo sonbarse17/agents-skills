@@ -13,7 +13,12 @@ metadata:
 tags:
   - observability_and_secops
   - case-management
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - commands
+  - observability
+  - incident
+  - serverless
 ---
 
 # Case Management

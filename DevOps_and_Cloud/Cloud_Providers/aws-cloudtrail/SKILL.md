@@ -9,7 +9,10 @@ metadata:
 tags:
   - cloud_providers
   - aws-cloudtrail
-depends_on: []
+depends_on:
+  - alerting
+  - aws
+  - audit
 ---
 
 # AWS CloudTrail

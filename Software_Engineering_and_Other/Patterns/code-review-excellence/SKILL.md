@@ -7,7 +7,12 @@ description: Master effective code review practices to provide constructive
 tags:
   - patterns
   - code-review-excellence
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - prettier
+  - python
+  - typescript
+  - go
 ---
 
 # Code Review Excellence

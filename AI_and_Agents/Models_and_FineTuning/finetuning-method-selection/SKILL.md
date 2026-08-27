@@ -8,7 +8,12 @@ description: Decide whether to fine-tune at all, and route to the right method
 tags:
   - models_and_finetuning
   - finetuning-method-selection
-depends_on: []
+depends_on:
+  - spark-memory-thermal-ops
+  - go
+  - deploy
+  - prompt-engineering
+  - preference-optimization
 ---
 
 # Fine-Tuning Method Selection

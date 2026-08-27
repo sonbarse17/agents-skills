@@ -12,7 +12,12 @@ license: MIT
 tags:
   - product_and_business
   - internal-developer-platform
-depends_on: []
+depends_on:
+  - policy-as-code
+  - golden-paths
+  - developer-experience
+  - kubernetes
+  - kubectl
 ---
 
 # Internal Developer Platform

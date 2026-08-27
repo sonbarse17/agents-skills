@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - kafka-configuration-validation
-depends_on: []
+depends_on:
+  - kafka-schema-registry-and-compatibility-management
+  - go
+  - commands
+  - kafka-consumer-lag-and-partition-troubleshooting
+  - kafka-cluster-configuration
 ---
 
 # Kafka Configuration Validation

@@ -24,7 +24,12 @@ metadata:
 tags:
   - cloud_providers
   - security-reviewer
-depends_on: []
+depends_on:
+  - scan
+  - penetration-testing
+  - devsecops
+  - vault
+  - eslint
 ---
 
 # Security Reviewer

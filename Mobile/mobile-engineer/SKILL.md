@@ -5,7 +5,10 @@ description: ACT and THINK like a Staff Mobile Engineer focusing on performance,
 tags:
   - mobile
   - mobile-engineer
-depends_on: []
+depends_on:
+  - mermaid
+  - ios
+  - android
 ---
 
 # Staff Mobile Engineer Persona

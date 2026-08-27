@@ -18,7 +18,12 @@ tags:
   - gtk
   - linux
   - cross-platform
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - python
+  - apis
 ---
 
 # GTK

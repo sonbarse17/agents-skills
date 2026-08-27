@@ -14,7 +14,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-search-documents-py
-depends_on: []
+depends_on:
+  - rbac
+  - embeddings
+  - python
+  - audit
 ---
 
 # Azure AI Search SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

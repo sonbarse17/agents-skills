@@ -22,7 +22,12 @@ tags:
   - grpc
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - backend-message-queue
+  - vault
+  - Rate Limiting
+  - apis
+  - typescript
 ---
 
 # Backend gRPC Patterns

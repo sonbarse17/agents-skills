@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - flux-cd-configuration-and-reconciliation
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - kustomize-overlay-management
+  - incident
+  - kustomize
 ---
 
 # Flux CD Configuration and Reconciliation

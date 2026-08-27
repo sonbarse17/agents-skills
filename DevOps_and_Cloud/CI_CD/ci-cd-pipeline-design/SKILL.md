@@ -15,7 +15,12 @@ metadata:
 tags:
   - ci_cd
   - ci-cd-pipeline-design
-depends_on: []
+depends_on:
+  - changelog-automation
+  - git
+  - monorepo
+  - environment-promotion-strategy
+  - commands
 ---
 
 # CI/CD Pipeline Design

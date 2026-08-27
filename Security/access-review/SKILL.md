@@ -10,7 +10,12 @@ metadata:
 tags:
   - security
   - access-review
-depends_on: []
+depends_on:
+  - python
+  - github
+  - deploy
+  - aws-iam
+  - aws
 ---
 
 # Access Review

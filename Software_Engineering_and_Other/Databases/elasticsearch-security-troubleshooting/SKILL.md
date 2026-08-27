@@ -10,7 +10,11 @@ metadata:
 tags:
   - databases
   - elasticsearch-security-troubleshooting
-depends_on: []
+depends_on:
+  - elasticsearch-authn
+  - apis
+  - elasticsearch-authz
+  - serverless
 ---
 
 # Elasticsearch Security Troubleshooting

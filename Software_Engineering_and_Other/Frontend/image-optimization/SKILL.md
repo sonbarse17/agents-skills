@@ -12,7 +12,12 @@ license: MIT
 tags:
   - frontend
   - image-optimization
-depends_on: []
+depends_on:
+  - git
+  - go
+  - commands
+  - incident
+  - docker
 ---
 
 # Image Optimization

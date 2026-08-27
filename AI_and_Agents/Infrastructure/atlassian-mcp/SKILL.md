@@ -20,7 +20,12 @@ metadata:
 tags:
   - infrastructure
   - atlassian-mcp
-depends_on: []
+depends_on:
+  - apis
+  - runbook
+  - github
+  - deploy
+  - audit
 ---
 
 # Atlassian MCP Expert

@@ -11,7 +11,12 @@ metadata:
 tags:
   - models_and_finetuning
   - llm-caching
-depends_on: []
+depends_on:
+  - python
+  - observability
+  - dashboards
+  - cost
+  - cost-optimization
 ---
 
 # LLM Caching

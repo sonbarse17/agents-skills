@@ -7,7 +7,8 @@ description: Integrate PayPal payment processing with support for express
 tags:
   - backend
   - paypal-integration
-depends_on: []
+depends_on:
+  - python
 ---
 
 # PayPal Integration

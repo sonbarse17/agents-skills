@@ -6,7 +6,8 @@ description: Authoritative guide to inference optimization using TensorRT,
 tags:
   - models_and_finetuning
   - tensorrt-optimization
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # TensorRT Inference Architecture

@@ -11,7 +11,12 @@ metadata:
 tags:
   - infrastructure
   - rag-infrastructure
-depends_on: []
+depends_on:
+  - embeddings
+  - python
+  - docker
+  - cost
+  - ai-pipeline-orchestration
 ---
 
 # RAG Infrastructure

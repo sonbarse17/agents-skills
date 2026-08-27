@@ -18,7 +18,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - keda-event-driven-autoscaling-configuration
-depends_on: []
+depends_on:
+  - rbac
+  - keda-configuration-validation
+  - autoscaling
+  - observability
+  - monitoring
 ---
 
 # KEDA Event-Driven [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration

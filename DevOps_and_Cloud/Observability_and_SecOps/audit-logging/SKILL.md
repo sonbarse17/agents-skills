@@ -10,7 +10,12 @@ metadata:
 tags:
   - observability_and_secops
   - audit-logging
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - capacity
+  - alerting
+  - kubernetes
 ---
 
 # [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

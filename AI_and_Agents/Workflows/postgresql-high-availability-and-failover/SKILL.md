@@ -16,7 +16,12 @@ metadata:
 tags:
   - workflows
   - postgresql-high-availability-and-failover
-depends_on: []
+depends_on:
+  - postgresql-configuration-validation
+  - postgresql
+  - performance-tuning
+  - postgresql-operations-and-performance-tuning
+  - monitoring
 ---
 
 # [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) High Availability and Failover

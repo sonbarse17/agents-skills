@@ -10,7 +10,12 @@ metadata:
 tags:
   - cloud_providers
   - aws-lambda
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - python
+  - apis
+  - commands
+  - terraform-aws
 ---
 
 # AWS Lambda

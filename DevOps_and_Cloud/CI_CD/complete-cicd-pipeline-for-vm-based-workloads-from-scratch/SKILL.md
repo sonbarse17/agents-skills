@@ -18,7 +18,12 @@ metadata:
 tags:
   - ci_cd
   - complete-cicd-pipeline-for-vm-based-workloads-from-scratch
-depends_on: []
+depends_on:
+  - scan
+  - sast-integration
+  - devsecops
+  - git
+  - autoscaling
 ---
 
 # Complete CI/CD Pipeline Deployment for VM-Based Workloads, From Scratch

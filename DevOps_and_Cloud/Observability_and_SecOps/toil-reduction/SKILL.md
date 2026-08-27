@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - toil-reduction
-depends_on: []
+depends_on:
+  - internal-developer-platform
+  - golden-paths
+  - capacity
+  - deploy
+  - deploy-model
 ---
 
 # Toil Reduction

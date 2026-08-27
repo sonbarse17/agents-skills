@@ -5,7 +5,10 @@ description: Academic reference for Shor's algorithm period finding and Grover's
 tags:
   - miscellaneous
   - quantum-algorithms
-depends_on: []
+depends_on:
+  - mermaid
+  - Shor's Algorithm
+  - Grover's Algorithm
 ---
 # Quantum Algorithms: Core Mechanics
 

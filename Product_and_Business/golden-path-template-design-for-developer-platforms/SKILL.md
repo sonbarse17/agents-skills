@@ -16,7 +16,12 @@ metadata:
 tags:
   - product_and_business
   - golden-path-template-design-for-developer-platforms
-depends_on: []
+depends_on:
+  - scan
+  - platform-engineering-team-topology-and-operating-model
+  - humanitec-score-workload-specification
+  - git
+  - change-management
 ---
 
 # Golden Path Template Design for Developer Platforms

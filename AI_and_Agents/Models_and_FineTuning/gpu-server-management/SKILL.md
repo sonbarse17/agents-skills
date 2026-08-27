@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - gpu-server-management
-depends_on: []
+depends_on:
+  - pm
+  - datacenter
+  - observability
+  - monitoring
+  - linux-hardening
 ---
 
 # GPU Server Management

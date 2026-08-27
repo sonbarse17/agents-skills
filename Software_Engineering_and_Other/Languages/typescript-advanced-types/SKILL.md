@@ -8,7 +8,8 @@ description: Master TypeScript's advanced type system including generics,
 tags:
   - languages
   - typescript-advanced-types
-depends_on: []
+depends_on:
+  - typescript
 ---
 
 # [TypeScript](../../Frontend/typescript/SKILL.md) Advanced Types

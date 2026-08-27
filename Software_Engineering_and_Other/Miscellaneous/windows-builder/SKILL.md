@@ -8,7 +8,11 @@ metadata:
 tags:
   - miscellaneous
   - windows-builder
-depends_on: []
+depends_on:
+  - windows-server
+  - datacenter
+  - commands
+  - aws
 ---
 
 # Windows Builder

@@ -22,7 +22,12 @@ tags:
   - data
   - privacy
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - policy-as-code
+  - vault
+  - Rate Limiting
+  - python
 ---
 
 # Data Security Agent

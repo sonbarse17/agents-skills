@@ -8,7 +8,12 @@ description: Creates specs before coding. Use when starting a new project,
 tags:
   - frontend
   - spec-driven-development
-depends_on: []
+depends_on:
+  - incremental-implementation
+  - postgresql
+  - api-and-interface-design
+  - planning-and-task-breakdown
+  - go
 ---
 
 # Spec-Driven Development

@@ -21,7 +21,12 @@ tags:
   - batch
   - processing
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - data-distributed-compute
+  - data-data-warehouse
+  - data-data-catalog
+  - python
 ---
 
 # Data Batch Processing

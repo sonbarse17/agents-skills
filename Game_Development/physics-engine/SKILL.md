@@ -4,7 +4,10 @@ description: Physics Engine Mechanics
 tags:
   - game_development
   - physics-engine
-depends_on: []
+depends_on:
+  - mermaid
+  - internals
+  - cost
 ---
 # Physics Engine Internals
 

@@ -11,7 +11,9 @@ metadata:
 tags:
   - skills
   - pydantic-models-py
-depends_on: []
+depends_on:
+  - python
+  - typescript
 ---
 
 # Pydantic Models

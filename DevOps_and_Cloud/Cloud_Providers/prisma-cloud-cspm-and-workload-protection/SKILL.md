@@ -20,7 +20,12 @@ metadata:
 tags:
   - cloud_providers
   - prisma-cloud-cspm-and-workload-protection
-depends_on: []
+depends_on:
+  - trivy-vulnerability-scanning
+  - scan
+  - devsecops
+  - cloudformation
+  - vulnerability-scanning
 ---
 
 # Prisma Cloud CSPM and Workload Protection

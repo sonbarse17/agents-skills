@@ -22,7 +22,12 @@ tags:
   - virtualization
   - query
   - phase-11
-depends_on: []
+depends_on:
+  - scan
+  - rbac
+  - data-data-observability
+  - data-data-platform
+  - data-data-catalog
 ---
 
 # Data Data Virtualization

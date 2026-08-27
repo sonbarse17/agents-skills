@@ -18,7 +18,12 @@ metadata:
 tags:
   - databases
   - elasticsearch-opensearch-configuration-validation
-depends_on: []
+depends_on:
+  - postgresql-configuration-validation
+  - redis-configuration-validation
+  - postgresql
+  - go
+  - infrastructure-as-code
 ---
 
 # Elasticsearch/OpenSearch Configuration Validation

@@ -6,7 +6,8 @@ description: Build comprehensive attack trees to visualize threat paths. Use
 tags:
   - observability_and_secops
   - attack-tree-construction
-depends_on: []
+depends_on:
+  - cost
 ---
 
 # Attack Tree Construction

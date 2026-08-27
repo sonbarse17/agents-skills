@@ -14,7 +14,9 @@ metadata:
 tags:
   - cloud_providers
   - azure-cosmos-py
-depends_on: []
+depends_on:
+  - python
+  - audit
 ---
 
 # Azure Cosmos DB SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

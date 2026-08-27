@@ -16,7 +16,12 @@ compatibility: Kibana 8.x–9.x with Agent Builder and Workflows; Elasticsearch
 tags:
   - observability_and_secops
   - kibana-anomaly-detection
-depends_on: []
+depends_on:
+  - observability
+  - incident
+  - capacity
+  - deploy
+  - kibana-agent-builder
 ---
 
 # Elastic ML Anomaly Detection

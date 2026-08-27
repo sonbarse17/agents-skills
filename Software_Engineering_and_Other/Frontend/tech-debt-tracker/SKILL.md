@@ -17,7 +17,12 @@ tags:
   - dev-loop
   - tech-debt
   - code-quality
-depends_on: []
+depends_on:
+  - scan
+  - git
+  - eslint
+  - python
+  - dev-loop-refactor-guide
 ---
 
 # Technical Debt Tracker

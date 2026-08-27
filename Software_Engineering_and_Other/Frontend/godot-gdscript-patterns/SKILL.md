@@ -6,7 +6,9 @@ description: Master Godot 4 GDScript patterns including signals, scenes, state
 tags:
   - frontend
   - godot-gdscript-patterns
-depends_on: []
+depends_on:
+  - godot-gdscript
+  - godot
 ---
 
 # [Godot](../../../Game_Development/godot/SKILL.md) GDScript Patterns

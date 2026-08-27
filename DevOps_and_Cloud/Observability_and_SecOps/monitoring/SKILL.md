@@ -19,7 +19,12 @@ tags:
   - devops
   - monitoring
   - phase-5
-depends_on: []
+depends_on:
+  - runbook
+  - grafana-dashboards
+  - datadog
+  - alerting
+  - kubernetes
 ---
 
 # Monitoring Stack

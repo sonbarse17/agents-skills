@@ -7,7 +7,10 @@ description: Execute database migrations across ORMs and platforms with
 tags:
   - databases
   - database-migration
-depends_on: []
+depends_on:
+  - typescript
+  - deploy
+  - commit
 ---
 
 # Database Migration

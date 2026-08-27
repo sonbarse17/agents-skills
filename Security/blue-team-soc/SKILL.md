@@ -5,7 +5,11 @@ description: Master methodologies for SIEM architecture, incident response, and
 tags:
   - security
   - blue-team-soc
-depends_on: []
+depends_on:
+  - mermaid
+  - Structured Data
+  - incident
+  - alerting
 ---
 
 # Blue Team & SOC Operations Methodology

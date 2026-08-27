@@ -6,7 +6,12 @@ description: Records decisions and documentation. Use when making architectural
 tags:
   - product_and_business
   - documentation-and-adrs
-depends_on: []
+depends_on:
+  - git
+  - supabase
+  - postgresql
+  - mongodb
+  - mysql
 ---
 
 # Documentation and ADRs

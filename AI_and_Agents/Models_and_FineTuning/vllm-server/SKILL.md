@@ -10,7 +10,12 @@ metadata:
 tags:
   - models_and_finetuning
   - vllm-server
-depends_on: []
+depends_on:
+  - python
+  - monitoring
+  - kubernetes
+  - docker
+  - deploy
 ---
 
 # vLLM Server Management

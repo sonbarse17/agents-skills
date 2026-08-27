@@ -4,7 +4,9 @@ description: Implementing Module Federation for scaling frontend teams.
 tags:
   - frontend
   - micro-frontends
-depends_on: []
+depends_on:
+  - mermaid
+  - vite
 ---
 
 # Micro-Frontends

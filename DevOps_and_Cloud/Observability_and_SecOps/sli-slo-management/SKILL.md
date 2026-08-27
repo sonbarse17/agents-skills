@@ -4,7 +4,9 @@ description: Error budget policies and mathematical modeling of SLIs.
 tags:
   - observability_and_secops
   - sli-slo-management
-depends_on: []
+depends_on:
+  - mermaid
+  - alerting
 ---
 # SLI/SLO Management: Under the Hood
 

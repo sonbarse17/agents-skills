@@ -17,7 +17,12 @@ metadata:
 tags:
   - infrastructure
   - vector-database-ingestion-pipeline-for-rag
-depends_on: []
+depends_on:
+  - scan
+  - embeddings
+  - python
+  - database-operations
+  - cost
 ---
 
 # Vector Database Ingestion Pipeline for RAG

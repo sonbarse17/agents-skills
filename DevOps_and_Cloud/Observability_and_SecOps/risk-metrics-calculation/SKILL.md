@@ -6,7 +6,8 @@ description: Calculate portfolio risk metrics including VaR, CVaR, Sharpe,
 tags:
   - observability_and_secops
   - risk-metrics-calculation
-depends_on: []
+depends_on:
+  - dashboards
 ---
 
 # Risk Metrics Calculation

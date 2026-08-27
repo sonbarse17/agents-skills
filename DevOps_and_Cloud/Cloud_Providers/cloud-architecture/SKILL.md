@@ -13,7 +13,12 @@ license: MIT
 tags:
   - cloud_providers
   - cloud-architecture
-depends_on: []
+depends_on:
+  - caching-strategies
+  - autoscaling
+  - runbook
+  - incident
+  - stateful-workloads
 ---
 
 # Cloud Architecture

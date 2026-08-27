@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - jfrog-artifactory-configuration
-depends_on: []
+depends_on:
+  - snyk-vulnerability-and-license-scanning
+  - devsecops
+  - dependency-scanning
+  - sonatype-nexus-repository-configuration
+  - dependency-management
 ---
 
 # JFrog Artifactory Configuration

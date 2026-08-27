@@ -23,7 +23,12 @@ tags:
   - argocd
   - kubernetes
   - phase-5
-depends_on: []
+depends_on:
+  - rbac
+  - git
+  - autoscaling
+  - commands
+  - runbook
 ---
 
 # Argo CD

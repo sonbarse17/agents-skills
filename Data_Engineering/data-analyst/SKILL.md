@@ -5,7 +5,9 @@ description: Act and think like a Staff-level Data Analyst, focusing on business
 tags:
   - data_engineering
   - data-analyst
-depends_on: []
+depends_on:
+  - mermaid
+  - dashboards
 ---
 
 # Staff Data Analyst Persona

@@ -13,7 +13,12 @@ metadata:
 tags:
   - skills
   - azure-mgmt-fabric-py
-depends_on: []
+depends_on:
+  - python
+  - capacity
+  - deploy
+  - cost
+  - audit
 ---
 
 # Azure Fabric Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

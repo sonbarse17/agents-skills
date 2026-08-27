@@ -14,7 +14,10 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-openai-dotnet
-depends_on: []
+depends_on:
+  - embeddings
+  - github
+  - cost
 ---
 
 # Azure.AI.OpenAI (.NET)

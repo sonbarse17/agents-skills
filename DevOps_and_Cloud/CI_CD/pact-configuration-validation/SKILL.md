@@ -18,7 +18,12 @@ metadata:
 tags:
   - ci_cd
   - pact-configuration-validation
-depends_on: []
+depends_on:
+  - pact-contract-testing-configuration
+  - git
+  - go
+  - environment-promotion-strategy
+  - incident
 ---
 
 # Pact Configuration Validation

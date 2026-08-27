@@ -23,7 +23,12 @@ metadata:
 tags:
   - models_and_finetuning
   - fine-tuning-expert
-depends_on: []
+depends_on:
+  - python
+  - capacity
+  - github
+  - deploy
+  - deploy-model
 ---
 
 # Fine-Tuning Expert

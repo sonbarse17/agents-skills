@@ -10,7 +10,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - helm
-depends_on: []
+depends_on:
+  - commands
+  - kubernetes
+  - kubectl
+  - docker
+  - release-management
 ---
 
 # helm

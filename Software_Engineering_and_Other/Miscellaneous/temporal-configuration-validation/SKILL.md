@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - temporal-configuration-validation
-depends_on: []
+depends_on:
+  - temporal-durable-workflow-orchestration
+  - kafka-configuration-validation
+  - go
+  - incident
+  - capacity
 ---
 
 # Temporal Configuration Validation

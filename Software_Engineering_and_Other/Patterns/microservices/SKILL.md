@@ -20,7 +20,12 @@ tags:
   - microservices
   - phase-2
   - universal
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - postgresql
+  - apis
+  - typescript
 ---
 
 # Microservices Architecture

@@ -12,7 +12,12 @@ metadata:
 tags:
   - skills
   - azure-quotas
-depends_on: []
+depends_on:
+  - commands
+  - capacity
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 

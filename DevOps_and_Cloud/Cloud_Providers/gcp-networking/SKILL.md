@@ -9,7 +9,12 @@ metadata:
 tags:
   - cloud_providers
   - gcp-networking
-depends_on: []
+depends_on:
+  - load-balancing
+  - apis
+  - terraform-gcp
+  - gcp-gke
+  - cdn
 ---
 
 # GCP Networking

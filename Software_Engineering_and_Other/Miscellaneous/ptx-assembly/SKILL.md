@@ -6,7 +6,8 @@ description: Master the NVIDIA virtual instruction set (PTX), focusing on
 tags:
   - miscellaneous
   - ptx-assembly
-depends_on: []
+depends_on:
+  - mermaid
 ---
 
 # PTX Assembly and Execution Model

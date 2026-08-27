@@ -16,7 +16,12 @@ metadata:
 tags:
   - skills
   - azure-resource-manager-sql-dotnet
-depends_on: []
+depends_on:
+  - database-operations
+  - capacity
+  - deploy
+  - cost
+  - deploy-model
 ---
 
 # Azure.ResourceManager.Sql (.NET)

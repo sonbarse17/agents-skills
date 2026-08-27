@@ -7,7 +7,12 @@ description: Implement Linkerd service mesh patterns for lightweight,
 tags:
   - ci_cd
   - linkerd-patterns
-depends_on: []
+depends_on:
+  - commands
+  - monitoring
+  - kubernetes
+  - kubectl
+  - deploy
 ---
 
 # Linkerd Patterns

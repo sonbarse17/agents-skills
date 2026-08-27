@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - idp-adoption-rollout-and-change-management-strategy
-depends_on: []
+depends_on:
+  - platform-engineering-team-topology-and-operating-model
+  - golden-path-template-design-for-developer-platforms
+  - developer-experience
+  - developer-experience-measurement-and-platform-adoption
+  - change-management
 ---
 
 # IDP Adoption Rollout and Change Management Strategy

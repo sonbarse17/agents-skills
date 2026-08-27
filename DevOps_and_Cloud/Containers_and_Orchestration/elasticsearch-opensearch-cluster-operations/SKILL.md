@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - elasticsearch-opensearch-cluster-operations
-depends_on: []
+depends_on:
+  - redis-operations-and-cluster-management
+  - mongodb-operations-and-scaling
+  - elasticsearch-opensearch-configuration-validation
+  - mongodb
+  - apis
 ---
 
 # Elasticsearch/OpenSearch Cluster Operations

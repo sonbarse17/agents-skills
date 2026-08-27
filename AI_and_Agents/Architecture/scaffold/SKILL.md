@@ -5,7 +5,12 @@ description: Comprehensive guidelines and best practices for scaffold. Use this
 tags:
   - architecture
   - scaffold
-depends_on: []
+depends_on:
+  - postgresql
+  - commands
+  - azure-deploy
+  - deploy
+  - azure-prepare
 ---
 # Azure App Onboard Scaffold — IaC Generation + Self-Review
 

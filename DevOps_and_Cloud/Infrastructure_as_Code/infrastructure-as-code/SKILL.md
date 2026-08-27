@@ -13,7 +13,12 @@ license: MIT
 tags:
   - infrastructure_as_code
   - infrastructure-as-code
-depends_on: []
+depends_on:
+  - policy-as-code
+  - terraform-modules
+  - pulumi
+  - cloudformation
+  - incident
 ---
 
 # Infrastructure as Code

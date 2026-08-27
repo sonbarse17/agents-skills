@@ -16,7 +16,12 @@ metadata:
 tags:
   - frontend
   - environment-promotion-strategy
-depends_on: []
+depends_on:
+  - qa
+  - runbook
+  - incident
+  - kubectl
+  - gitops-workflow
 ---
 
 # Environment Promotion Strategy

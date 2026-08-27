@@ -4,7 +4,10 @@ description: Best practices for building desktop apps with Tauri and secure Nati
 tags:
   - frontend
   - tauri
-depends_on: []
+depends_on:
+  - mermaid
+  - apis
+  - commands
 ---
 
 # Tauri Desktop Development

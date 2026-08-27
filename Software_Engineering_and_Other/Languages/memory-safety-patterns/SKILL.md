@@ -6,7 +6,8 @@ description: Implement memory-safe programming with RAII, ownership, smart
 tags:
   - languages
   - memory-safety-patterns
-depends_on: []
+depends_on:
+  - go
 ---
 
 # Memory Safety Patterns

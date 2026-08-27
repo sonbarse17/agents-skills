@@ -9,7 +9,12 @@ metadata:
 tags:
   - security
   - ai-red-teaming
-depends_on: []
+depends_on:
+  - prompt-injection-defense
+  - penetration-testing
+  - Rate Limiting
+  - python
+  - incident
 ---
 
 # AI Red Teaming

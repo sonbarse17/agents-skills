@@ -12,7 +12,12 @@ license: MIT
 tags:
   - observability_and_secops
   - log-management
-depends_on: []
+depends_on:
+  - distributed-tracing
+  - alerting
+  - secrets-management
+  - dashboards
+  - cost
 ---
 
 # Log Management

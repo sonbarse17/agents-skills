@@ -11,7 +11,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - containerization
-depends_on: []
+depends_on:
+  - git
+  - autoscaling
+  - image-optimization
+  - kubernetes-operations
+  - kubernetes
 ---
 
 # Containerization

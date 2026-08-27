@@ -17,7 +17,12 @@ metadata:
 tags:
   - miscellaneous
   - ci-access-and-credential-lifecycle-management
-depends_on: []
+depends_on:
+  - scan
+  - devsecops
+  - vault
+  - qa
+  - load-testing
 ---
 
 # CI Access and Credential Lifecycle Management

@@ -7,7 +7,12 @@ description: Build GitLab CI/CD pipelines with multi-stage workflows, caching,
 tags:
   - ci_cd
   - gitlab-ci-patterns
-depends_on: []
+depends_on:
+  - scan
+  - dependency-scanning
+  - python
+  - kubernetes
+  - kubectl
 ---
 
 # GitLab CI Patterns

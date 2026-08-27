@@ -16,7 +16,12 @@ metadata:
 tags:
   - miscellaneous
   - kafka-schema-registry-and-compatibility-management
-depends_on: []
+depends_on:
+  - kafka-configuration-validation
+  - kafka-consumer-lag-and-partition-troubleshooting
+  - kafka-cluster-configuration
+  - deploy
+  - aws
 ---
 
 # Kafka Schema Registry and Compatibility Management

@@ -5,7 +5,10 @@ description: Comprehensive guidelines and best practices for ai-testing. Use
 tags:
   - workflows
   - ai-testing
-depends_on: []
+depends_on:
+  - mermaid
+  - embeddings
+  - python
 ---
 # Skill
 

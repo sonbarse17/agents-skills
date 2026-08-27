@@ -16,7 +16,12 @@ metadata:
 tags:
   - containers_and_orchestration
   - karpenter-cluster-autoscaling
-depends_on: []
+depends_on:
+  - autoscaling
+  - apis
+  - monitoring
+  - capacity
+  - kubernetes
 ---
 
 # Karpenter Cluster [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)

@@ -18,7 +18,12 @@ tags:
   - winforms
   - windows
   - dotnet
-depends_on: []
+depends_on:
+  - vault
+  - Rate Limiting
+  - accessibility
+  - desktop-wpf
+  - profiling
 ---
 
 # Windows Forms (WinForms)

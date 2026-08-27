@@ -18,7 +18,12 @@ tags:
   - ecommerce
   - checkout-cart
   - phase-3
-depends_on: []
+depends_on:
+  - Rate Limiting
+  - typescript
+  - go
+  - cost
+  - audit
 ---
 
 # Checkout & Cart

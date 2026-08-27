@@ -11,7 +11,11 @@ metadata:
 tags:
   - architecture
   - agent-development
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - typescript
+  - cost
 ---
 
 # Agent Development

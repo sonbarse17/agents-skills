@@ -11,7 +11,12 @@ license: MIT
 tags:
   - containers_and_orchestration
   - multi-tenancy
-depends_on: []
+depends_on:
+  - rbac
+  - observability
+  - incident
+  - capacity
+  - operators-and-crds
 ---
 
 # Multi-Tenancy

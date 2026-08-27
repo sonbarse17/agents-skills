@@ -17,7 +17,12 @@ tags:
   - dev-loop
   - refactoring
   - code-quality
-depends_on: []
+depends_on:
+  - scan
+  - code-review
+  - python
+  - internals
+  - typescript
 ---
 
 # Refactoring Guide

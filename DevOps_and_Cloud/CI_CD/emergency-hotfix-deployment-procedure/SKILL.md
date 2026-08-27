@@ -17,7 +17,12 @@ metadata:
 tags:
   - ci_cd
   - emergency-hotfix-deployment-procedure
-depends_on: []
+depends_on:
+  - scan
+  - changelog-automation
+  - git
+  - qa
+  - incident-response-and-on-call-management
 ---
 
 # Emergency Hotfix Deployment Procedure

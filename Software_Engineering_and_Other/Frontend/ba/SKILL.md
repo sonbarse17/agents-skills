@@ -20,7 +20,12 @@ tags:
   - management
   - ba
   - requirements
-depends_on: []
+depends_on:
+  - mermaid
+  - apis
+  - qa
+  - go
+  - cost
 ---
 
 # Business Analysis

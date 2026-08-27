@@ -14,7 +14,12 @@ metadata:
 tags:
   - cloud_providers
   - azure-mgmt-applicationinsights-dotnet
-depends_on: []
+depends_on:
+  - ios
+  - vault
+  - opentelemetry
+  - monitoring
+  - github
 ---
 
 # Azure.ResourceManager.ApplicationInsights (.NET)

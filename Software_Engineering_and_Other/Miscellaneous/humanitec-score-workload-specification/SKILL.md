@@ -15,7 +15,12 @@ metadata:
 tags:
   - miscellaneous
   - humanitec-score-workload-specification
-depends_on: []
+depends_on:
+  - platform-self-service-api-and-workflow-design
+  - golden-path-template-design-for-developer-platforms
+  - git
+  - go
+  - infrastructure-as-code
 ---
 
 # Humanitec Score Workload Specification

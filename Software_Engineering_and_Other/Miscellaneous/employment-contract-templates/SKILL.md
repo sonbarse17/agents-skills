@@ -6,7 +6,11 @@ description: Create employment contracts, offer letters, and HR policy documents
 tags:
   - miscellaneous
   - employment-contract-templates
-depends_on: []
+depends_on:
+  - customize
+  - deploy
+  - deploy-model
+  - microsoft-foundry
 ---
 
 # Employment Contract Templates

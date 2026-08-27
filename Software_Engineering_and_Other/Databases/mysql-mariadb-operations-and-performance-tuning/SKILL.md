@@ -16,7 +16,12 @@ metadata:
 tags:
   - databases
   - mysql-mariadb-operations-and-performance-tuning
-depends_on: []
+depends_on:
+  - scan
+  - mysql-mariadb-high-availability-and-replication
+  - mysql-mariadb-configuration-validation
+  - mongodb-operations-and-scaling
+  - database-connection-pooling-strategies
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Operations and Performance Tuning

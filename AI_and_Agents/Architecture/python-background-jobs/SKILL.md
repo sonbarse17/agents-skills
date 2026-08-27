@@ -7,7 +7,9 @@ description: Python background job patterns including task queues, workers, and
 tags:
   - architecture
   - python-background-jobs
-depends_on: []
+depends_on:
+  - python
+  - aws
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Background Jobs & Task Queues

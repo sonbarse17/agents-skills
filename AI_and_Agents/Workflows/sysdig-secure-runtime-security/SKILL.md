@@ -19,7 +19,12 @@ metadata:
 tags:
   - workflows
   - sysdig-secure-runtime-security
-depends_on: []
+depends_on:
+  - trivy-vulnerability-scanning
+  - scan
+  - image-scanning
+  - devsecops
+  - vulnerability-scanning
 ---
 
 # Sysdig Secure Runtime Security

@@ -14,7 +14,11 @@ metadata:
 tags:
   - cloud_providers
   - azure-ai-projects-py
-depends_on: []
+depends_on:
+  - python
+  - apis
+  - azure-ai
+  - audit
 ---
 
 # Azure AI Projects [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK (Foundry SDK)

@@ -17,7 +17,12 @@ metadata:
 tags:
   - security
   - opa-gatekeeper-policy-authoring
-depends_on: []
+depends_on:
+  - secure-cicd-gates
+  - policy-as-code-guardrails
+  - policy-as-code
+  - devsecops
+  - incident
 ---
 
 # OPA Gatekeeper Policy Authoring

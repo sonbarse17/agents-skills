@@ -20,7 +20,12 @@ tags:
   - compute
   - distributed
   - phase-11
-depends_on: []
+depends_on:
+  - rbac
+  - data-data-platform
+  - data-data-lakehouse
+  - python
+  - autoscaling
 ---
 
 # Data Distributed Compute

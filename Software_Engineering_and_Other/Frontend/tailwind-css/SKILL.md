@@ -18,7 +18,12 @@ tags:
   - tailwind-css
   - phase-3
   - universal
-depends_on: []
+depends_on:
+  - scan
+  - vite
+  - prettier
+  - performance-optimization
+  - typescript
 ---
 
 # Frontend Tailwind CSS

@@ -11,7 +11,12 @@ description: "Sub-skill of microsoft-365-agents-toolkit. Routed expert system
 tags:
   - miscellaneous
   - slack-to-teams
-depends_on: []
+depends_on:
+  - scan
+  - python
+  - typescript
+  - go
+  - commands
 ---
 
 # Slack to Teams Expert System
