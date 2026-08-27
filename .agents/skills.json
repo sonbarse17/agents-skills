@@ -1,0 +1,30 @@
+{
+  "entries": [
+    { "path": "AI_and_Agents/Architecture" },
+    { "path": "AI_and_Agents/Workflows" },
+    { "path": "AI_and_Agents/Infrastructure" },
+    { "path": "AI_and_Agents/Models_and_FineTuning" },
+    { "path": "AI_and_Agents/Operations" },
+
+    { "path": "DevOps_and_Cloud/CI_CD" },
+    { "path": "DevOps_and_Cloud/Cloud_Providers" },
+    { "path": "DevOps_and_Cloud/Containers_and_Orchestration" },
+    { "path": "DevOps_and_Cloud/Infrastructure_as_Code" },
+    { "path": "DevOps_and_Cloud/Observability_and_SecOps" },
+
+    { "path": "Software_Engineering_and_Other/Backend" },
+    { "path": "Software_Engineering_and_Other/Frontend" },
+    { "path": "Software_Engineering_and_Other/Languages" },
+    { "path": "Software_Engineering_and_Other/Databases" },
+    { "path": "Software_Engineering_and_Other/Testing" },
+    { "path": "Software_Engineering_and_Other/Patterns" },
+    { "path": "Software_Engineering_and_Other/Miscellaneous" },
+
+    { "path": "Blockchain_and_Web3" },
+    { "path": "Data_Engineering" },
+    { "path": "Security" },
+    { "path": "Mobile" },
+    { "path": "Game_Development" },
+    { "path": "Product_and_Business" }
+  ]
+}
