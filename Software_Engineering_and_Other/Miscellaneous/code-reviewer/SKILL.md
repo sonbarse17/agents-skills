@@ -54,7 +54,7 @@ Load detailed guidance based on context:
 ## Review Patterns (Quick Reference)
 
 ### N+1 Query — Bad vs Good
-```python
+```[python](../../Languages/python/SKILL.md)
 # BAD: query inside loop
 for user in users:
     orders = Order.objects.filter(user=user)  # N+1
@@ -64,7 +64,7 @@ users = User.objects.prefetch_related('orders').all()
 ```
 
 ### Magic Number — Bad vs Good
-```python
+```[python](../../Languages/python/SKILL.md)
 # BAD
 if status == 3:
     ...
@@ -76,7 +76,7 @@ if status == ORDER_STATUS_SHIPPED:
 ```
 
 ### Security: SQL Injection — Bad vs Good
-```python
+```[python](../../Languages/python/SKILL.md)
 # BAD: string interpolation in query
 cursor.execute(f"SELECT * FROM users WHERE id = {user_id}")
 
@@ -118,5 +118,5 @@ Code review report must include:
 
 SOLID, DRY, KISS, YAGNI, design patterns, OWASP Top 10, language idioms, testing patterns
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-reviewer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/quality/code-reviewer/)
 

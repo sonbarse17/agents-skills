@@ -20,22 +20,22 @@ metadata:
   maturity: stable
 ---
 
-# Complete IDP Deployment on Kubernetes from Scratch
+# Complete IDP Deployment on [Kubernetes](../kubernetes/SKILL.md) from Scratch
 
 ## Purpose
 
 The four cloud-specific IDP deployment skills in this repo
-([AWS](../complete-idp-deployment-on-aws-from-scratch/SKILL.md),
-[Azure](../complete-idp-deployment-on-azure-from-scratch/SKILL.md),
-[GCP](../complete-idp-deployment-on-gcp-from-scratch/SKILL.md),
-[OCI](../complete-idp-deployment-on-oci-from-scratch/SKILL.md)) each wire
+([AWS](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md),
+[Azure](../[complete-idp-deployment-on-azure-from-scratch](../complete-idp-deployment-on-azure-from-scratch/SKILL.md)/SKILL.md),
+[GCP](../[complete-idp-deployment-on-gcp-from-scratch](../complete-idp-deployment-on-gcp-from-scratch/SKILL.md)/SKILL.md),
+[OCI](../[complete-idp-deployment-on-oci-from-scratch](../../Cloud_Providers/complete-idp-deployment-on-oci-from-scratch/SKILL.md)/SKILL.md)) each wire
 self-service provisioning directly to one cloud's IAM and managed-database
 APIs. This skill is the deliberately different baseline: a platform team
 that runs on multiple clouds, wants portability, or simply doesn't want
 its self-service layer's core logic to assume a specific cloud provider
-needs a version where the cluster is "any CNCF-conformant Kubernetes"
+needs a version where the cluster is "any CNCF-conformant [Kubernetes](../kubernetes/SKILL.md)"
 (managed, self-managed, or on the way to being either) and every
-provisioning action targets the Kubernetes API itself — Namespaces,
+provisioning action targets the [Kubernetes](../kubernetes/SKILL.md) API itself — Namespaces,
 ResourceQuotas, and Crossplane Claims — rather than a cloud SDK call. This
 is not a lowest-common-denominator compromise dressed up as "portable";
 it's a real architectural choice with a real cost (no cloud-native
@@ -46,13 +46,13 @@ states plainly rather than glossing over.
 
 - A platform team explicitly wants the self-service provisioning layer
   decoupled from any single cloud's IAM/database APIs, whether for
-  multi-cloud portability or to avoid cloud-specific lock-in in the
+  [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) portability or to avoid cloud-specific lock-in in the
   platform's own core logic.
 - Standing up an IDP on a cluster whose underlying infrastructure isn't
   fixed yet, or that will run identically across more than one
   environment (e.g., the same platform stack on a customer's cluster and
   on the vendor's own cluster).
-- A team already running Crossplane or another Kubernetes-native
+- A team already running Crossplane or another [Kubernetes](../kubernetes/SKILL.md)-native
   provisioning control plane that wants the IDP's self-service layer to
   target that abstraction instead of calling a cloud SDK directly.
 - Migrating away from a cloud-specific self-service implementation (one
@@ -62,20 +62,20 @@ states plainly rather than glossing over.
 
 ## Prerequisites & environment
 
-- A CNCF-conformant Kubernetes cluster already exists, or is being
+- A CNCF-conformant [Kubernetes](../kubernetes/SKILL.md) cluster already exists, or is being
   provisioned — either a managed offering (used here purely as compute,
   ignoring its cloud-specific IAM integration; see
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md))
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md))
   or self-managed via kubeadm/Cluster API (see
-  [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../kubernetes-platform/skills/kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)).
-- `kubectl`, `helm` ≥ 3.8, and Sonobuoy for the Phase 1 conformance check.
-- A Node.js/Yarn toolchain to build and customize the Backstage app.
+  [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md)).
+- `[kubectl](../kubectl/SKILL.md)`, `helm` ≥ 3.8, and Sonobuoy for the Phase 1 conformance check.
+- A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A CSI-capable default `StorageClass` already available on the cluster
-  (block storage of some kind — Longhorn, Rook-Ceph, or the cluster's own
+  (block storage of some kind — [Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md), Rook-Ceph, or the cluster's own
   CSI driver if managed) before Phase 3, since the catalog database here
   is an in-cluster StatefulSet, not a cloud-managed instance.
 - A decision, before Phase 6, on whether the generic self-service layer
-  provisions via raw Kubernetes objects (Namespaces, Roles) only, or also
+  provisions via raw [Kubernetes](../kubernetes/SKILL.md) objects (Namespaces, Roles) only, or also
   via Crossplane Claims for anything resembling "infrastructure" — this
   materially changes what Phase 6 can actually provision.
 - A named approver for the Phase 6 self-service gate, in place before that
@@ -85,14 +85,14 @@ states plainly rather than glossing over.
 
 **Phase 1 — Get a conformant cluster and prove it.** Whichever path
 produced the cluster — a managed offering per
-[managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 or a self-managed one per
-[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../kubernetes-platform/skills/kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)
+[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md)
 — run Sonobuoy conformance (quick mode, then
 `certified-conformance`) plus the targeted smoke tests (Service DNS,
 cross-node connectivity, PVC provisioning) before treating the cluster as
 a platform-hosting target, per
-[kubernetes-cluster-post-provision-conformance-validation](../../../kubernetes-platform/skills/kubernetes-cluster-post-provision-conformance-validation/SKILL.md).
+[kubernetes-cluster-post-provision-conformance-validation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md).
 This phase is unique to the portable variant — the cloud-specific skills
 inherit a managed control plane's own conformance guarantee, but a design
 goal here is "any conformant cluster," so verify that guarantee explicitly
@@ -101,24 +101,24 @@ rather than assuming it.
 **Phase 2 — Cluster add-ons: ingress, TLS, storage.** Install
 ingress-nginx for host/path routing to Backstage (and to every service the
 golden path later scaffolds), per
-[ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md);
+[ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md);
 install cert-manager for automated TLS issuance (ACME DNS-01 if there's no
 single cloud LB to terminate at, or a private CA for internal-only
 platforms), per
-[cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md);
-and confirm a `StorageClass` backed by either Longhorn (simpler, block-only)
+[cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md);
+and confirm a `StorageClass` backed by either [Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md) (simpler, block-only)
 or Rook-Ceph (block + object + shared filesystem) is available for Phase
 3's catalog database PVC, per
-[longhorn-storage-configuration](../../../kubernetes-platform/skills/longhorn-storage-configuration/SKILL.md)
+[longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
 or
-[rook-ceph-storage-operations](../../../kubernetes-platform/skills/rook-ceph-storage-operations/SKILL.md).
+[rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md).
 None of this is needed in the cloud-specific variants, which lean on the
 cloud's own load balancer, ACM/managed-cert service, and managed database
 — this phase exists specifically because this variant deliberately avoids
 those.
 
-**Phase 3 — Backstage on the cluster, backed by in-cluster PostgreSQL.**
-Package Backstage as a Helm chart and deploy it against a PostgreSQL
+**Phase 3 — Backstage on the cluster, backed by in-cluster [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
+Package Backstage as a Helm chart and deploy it against a [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 instance running as a StatefulSet inside the same cluster (or a
 CloudNativePG-style operator-managed instance, still in-cluster) rather
 than any cloud-managed database service — this is the phase where the
@@ -126,10 +126,10 @@ than any cloud-managed database service — this is the phase where the
 availability model is now the platform team's own responsibility (backup
 schedule, failover), not inherited from a managed service's SLA. Chart
 packaging follows
-[helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
-[backstage-plugin-development](../backstage-plugin-development/SKILL.md).
-Credentials come from a Kubernetes Secret populated by whatever
+[backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
+Credentials come from a [Kubernetes](../kubernetes/SKILL.md) Secret populated by whatever
 generic secrets tooling the org already runs (External Secrets Operator
 against any backend, or a sealed-secrets pattern) — not a cloud-specific
 credential-fetch call, since that would reintroduce the cloud coupling
@@ -141,19 +141,19 @@ build/push flow (any OCI-compliant registry, not a specific cloud's
 container registry), and catalog registration — deliberately no
 cloud-specific identity annotation on the scaffolded `ServiceAccount`,
 since one doesn't exist in this model. Tier by complexity. See
-[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md).
+[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 **Phase 5 — Validate the golden path end-to-end.** Run the Phase 4
 template through a pipeline that scaffolds a real instance, builds,
 deploys to an ephemeral namespace on the same conformant cluster, smoke-
 tests, and tears everything down on both success and failure, before
 publishing it as the org default. See
-[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md).
+[golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md).
 
-**Phase 6 — Self-service scaffolder actions calling generic Kubernetes
+**Phase 6 — Self-service scaffolder actions calling generic [Kubernetes](../kubernetes/SKILL.md)
 APIs.** This is the phase that most distinguishes this variant from the
 four cloud-specific ones. Build Scaffolder custom actions that provision
-by calling the Kubernetes API server directly — creating a Namespace with
+by calling the [Kubernetes](../kubernetes/SKILL.md) API server directly — creating a Namespace with
 a bound `ResourceQuota` and `NetworkPolicy` for a new service, or, for
 anything resembling infrastructure (a database, a message queue), creating
 a Crossplane `Claim` against a `CompositeResourceDefinition` the platform
@@ -168,33 +168,33 @@ state machine as the cloud-specific variants
 (`requested → policy_checked → pending_approval → approved →
 provisioning → completed`), keep policy/budget rules external, and gate
 anything provisioning real infrastructure behind approval. See
-[platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md)
+[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
 for the state-machine and policy-gate pattern, and
-[crossplane-kubernetes-native-provisioning](../../../kubernetes-platform/skills/crossplane-kubernetes-native-provisioning/SKILL.md)
+[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md)
 for the Claim/Composition/XRD mechanics this phase relies on.
 
-**Phase 7 — Multi-tenancy.** Namespace-per-team is the default and
+**Phase 7 — [Multi-tenancy](../multi-tenancy/SKILL.md).** Namespace-per-team is the default and
 usually the only real option in this variant (there's no cloud-specific
 "dedicated account/subscription/project per team" escape hatch to lean on
 instead), so get RBAC, quotas, and NetworkPolicy-based isolation right
 before onboarding a second team. See
-[multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md).
+[multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md).
 
 **Phase 8 — Scorecards.** Define checks that stay cloud-agnostic by
 construction: does the service have a NetworkPolicy, a PodDisruptionBudget,
 resource requests/limits set, and (if it uses Phase 6's Crossplane path)
 a Claim rather than an inline cloud SDK call embedded in application code.
 See
-[service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md).
+[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 **Phase 9 — Rollout, operating model, and measurement.** Sequence
 adoption starting from a pilot team with genuine current pain, run the
 platform team per the "thinnest viable platform" discipline, and measure
 with SPACE/DX Core 4 metrics. See
-[idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md),
-[platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
-[developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md).
+[developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -209,7 +209,7 @@ and
   test a restore before Phase 4 goes live, since nothing does this for you
   here.
 - Re-run Phase 1's conformance validation after any CNI, storage driver,
-  or Kubernetes upgrade — a cluster that was conformant at launch can
+  or [Kubernetes](../kubernetes/SKILL.md) upgrade — a cluster that was conformant at launch can
   silently regress after infrastructure changes, and this variant has no
   managed-control-plane vendor re-certifying it for you.
 - Keep Phase 6's Crossplane Compositions in their own version-controlled
@@ -218,7 +218,7 @@ and
   cloud-specific variants, even though it doesn't look like one.
 - Don't let "cloud-agnostic" quietly become "no governance" — the
   approval-gate and policy-check pattern from
-  [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md)
+  [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
   applies here exactly as it does in the cloud-specific variants.
 
 ## Common pitfalls
@@ -228,7 +228,7 @@ and
   **Fix:** This is usually a missing or misconfigured Provider credential
   behind the Composition, not a problem with the Claim itself — check the
   Provider's own status/events, per
-  [crossplane-kubernetes-native-provisioning](../../../kubernetes-platform/skills/crossplane-kubernetes-native-provisioning/SKILL.md),
+  [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md),
   before assuming the Scaffolder action's request shape is wrong.
 
 - **Symptom:** The platform "works" in every test but the first real
@@ -239,7 +239,7 @@ and
   on — Phase 7's namespace ResourceQuotas and NetworkPolicies are load-
   bearing, not optional hardening. Confirm they're actually enforced (not
   just defined) before onboarding a second team, not after the first
-  incident.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 - **Symptom:** After a cluster upgrade, several previously-working
   Scaffolder-provisioned Namespaces lose their NetworkPolicy enforcement,
@@ -252,20 +252,20 @@ and
 
 - **Symptom:** The in-cluster Postgres catalog database (Phase 3) runs out
   of disk and Backstage goes fully read-only with no warning beforehand.
-  **Fix:** There's no cloud-managed storage-autoscaling safety net in this
-  variant; set up a PVC usage alert well below capacity and a documented
-  volume-expansion runbook (`kubectl edit pvc` with a CSI driver that
-  supports online expansion) before this becomes a production incident,
+  **Fix:** There's no cloud-managed storage-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) safety net in this
+  variant; set up a PVC usage alert well below [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and a documented
+  volume-expansion [runbook](../../Observability_and_SecOps/runbook/SKILL.md) (`[kubectl](../kubectl/SKILL.md) edit pvc` with a CSI driver that
+  supports online expansion) before this becomes a production [incident](../../Observability_and_SecOps/incident/SKILL.md),
   not after.
 
-- **Symptom:** Someone runs `kubectl delete namespace <team-namespace>`
+- **Symptom:** Someone runs `[kubectl](../kubectl/SKILL.md) delete namespace <team-namespace>`
   to "reset" a team's environment, and it silently deletes every
   Crossplane Claim in that namespace along with the real infrastructure
   those Claims provisioned.
   **Fix:** This is destructive and, depending on the Composition's
   reclaim policy, can delete real cloud resources behind the Claims, not
-  just Kubernetes objects. Never delete a tenant namespace as a routine
-  reset; first list every Claim in it (`kubectl get claims -n
+  just [Kubernetes](../kubernetes/SKILL.md) objects. Never delete a tenant namespace as a routine
+  reset; first list every Claim in it (`[kubectl](../kubectl/SKILL.md) get claims -n
   <namespace>`) and confirm each Composition's `spec.compositeDeletePolicy`
   and reclaim behavior, or explicitly orphan the underlying resources
   first if they must be preserved.
@@ -306,14 +306,14 @@ cloud infrastructure.
 
 ## Cross-references
 
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md), [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../kubernetes-platform/skills/kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md) — cluster-acquisition options ahead of Phase 1.
-- [kubernetes-cluster-post-provision-conformance-validation](../../../kubernetes-platform/skills/kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — Phase 1.
-- [ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md), [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md), [longhorn-storage-configuration](../../../kubernetes-platform/skills/longhorn-storage-configuration/SKILL.md), [rook-ceph-storage-operations](../../../kubernetes-platform/skills/rook-ceph-storage-operations/SKILL.md) — Phase 2.
-- [helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md), [backstage-plugin-development](../backstage-plugin-development/SKILL.md) — Phase 3.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — Phase 4.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md), [crossplane-kubernetes-native-provisioning](../../../kubernetes-platform/skills/crossplane-kubernetes-native-provisioning/SKILL.md) — Phase 6.
-- [multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md) — Phase 7.
-- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md), [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md), [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md) — Phase 9.
-- [complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md) — the cloud-committed alternative, worth reading to understand exactly what this variant trades away.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md), [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — cluster-acquisition options ahead of Phase 1.
+- [kubernetes-cluster-post-provision-conformance-validation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — Phase 1.
+- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md) — Phase 2.
+- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md), [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — Phase 6.
+- [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 7.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 8.
+- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the cloud-committed alternative, worth reading to understand exactly what this variant trades away.

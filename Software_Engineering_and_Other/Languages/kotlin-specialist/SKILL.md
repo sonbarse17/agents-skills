@@ -36,7 +36,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Coroutines & Flow | `../../../Global_References/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
 | Multiplatform | `../../../Global_References/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
-| Android & Compose | `../../../Global_References/android-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
+| [Android](../../../Mobile/android/SKILL.md) & Compose | `../../../Global_References/[android](../../../Mobile/android/SKILL.md)-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
 | Ktor Server | `../../../Global_References/ktor-server.md` | Routing, plugins, authentication, serialization |
 | DSL & Idioms | `../../../Global_References/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
 
@@ -146,5 +146,5 @@ When implementing Kotlin features, provide:
 
 Kotlin 1.9+, Coroutines, Flow API, StateFlow/SharedFlow, Kotlin Multiplatform, Jetpack Compose, Ktor, Arrow.kt, kotlinx.serialization, Detekt, ktlint, Gradle Kotlin DSL, JUnit 5, MockK, Turbine
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/kotlin-specialist/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/kotlin-specialist/)
 

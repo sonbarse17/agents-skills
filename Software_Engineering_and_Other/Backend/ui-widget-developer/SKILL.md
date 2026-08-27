@@ -78,17 +78,17 @@ After installing, invoke the relevant skill to continue.
 
 ## 📛 PROJECT DETECTION 📛
 
-This skill triggers when building MCP servers with OAI app or widget rendering for Microsoft 365 Copilot Chat. The MCP server can be written in any language that supports the MCP protocol (TypeScript, Python, C#, etc.). The agent project and MCP server may live in the same repo, separate folders, or entirely different projects.
+This skill triggers when building MCP servers with OAI app or widget rendering for Microsoft 365 Copilot Chat. The MCP server can be written in any language that supports the MCP protocol ([TypeScript](../../Frontend/typescript/SKILL.md), [Python](../../Languages/python/SKILL.md), C#, etc.). The agent project and MCP server may live in the same repo, separate folders, or entirely different projects.
 
 ## Scenario Routing
 
 | Starting Point | What You Need | Path |
 |---------------|---------------|------|
 | **Prefer MCP Apps standard** | Cross-platform widget support (M365 Copilot, ChatGPT, VSCode, and more) | Install `modelcontextprotocol/ext-apps`, then use `create-mcp-app` or `add-app-to-server` — see [Path Selection](#-path-selection) above |
-| **From scratch** (no agent, no MCP server) | Full OAI app setup | Delegate agent scaffolding to `declarative-agent-developer` first, then return here for MCP server + widgets |
+| **From scratch** (no agent, no MCP server) | Full OAI app setup | Delegate agent scaffolding to `[declarative-agent-developer](../../Miscellaneous/[declarative-agent-developer](../../Miscellaneous/microsoft-365-agents-toolkit/skills/declarative-agent-developer/SKILL.md)/SKILL.md)` first, then return here for MCP server + widgets |
 | **Existing M365 agent, new MCP server** | MCP server + widgets + mcpPlugin.json | Start at [Implementation](#implementation) |
 | **Existing MCP server, add Copilot widgets** | Widget support added to existing server | Start at [Copilot Widget Protocol](../../../Global_References/copilot-widget-protocol.md#adaptation-checklist-existing-mcp-server) |
-| **Language choice** (non-TypeScript) | Protocol requirements | See [Copilot Widget Protocol](../../../Global_References/copilot-widget-protocol.md) for what to implement, [MCP Server Pattern (TypeScript)](../../../Global_References/mcp-server-pattern.md) as a reference |
+| **Language choice** (non-[TypeScript](../../Frontend/typescript/SKILL.md)) | Protocol requirements | See [Copilot Widget Protocol](../../../Global_References/copilot-widget-protocol.md) for what to implement, [MCP Server Pattern ([TypeScript](../../Frontend/typescript/SKILL.md))](../../../Global_References/mcp-server-pattern.md) as a reference |
 
 ---
 
@@ -194,7 +194,7 @@ Local:      https://m365.cloud.microsoft/chat/?titleId={M365_TITLE_ID from env/.
 Other envs: {SHARE_LINK from env/.env.{environment}}
 ```
 
-**AGENT PROJECT DELEGATION:** This skill builds MCP servers and widgets, NOT declarative agent projects. If the user's request involves creating or configuring the declarative agent itself (scaffolding, `m365agents.yml`, `m365agents.local.yml`, `declarativeAgent.json`, manifest lifecycle), delegate to the `declarative-agent-developer` skill.
+**AGENT PROJECT DELEGATION:** This skill builds MCP servers and widgets, NOT declarative agent projects. If the user's request involves creating or configuring the declarative agent itself (scaffolding, `m365agents.yml`, `m365agents.local.yml`, `declarativeAgent.json`, manifest lifecycle), delegate to the `[declarative-agent-developer](../../Miscellaneous/[declarative-agent-developer](../../Miscellaneous/microsoft-365-agents-toolkit/skills/declarative-agent-developer/SKILL.md)/SKILL.md)` skill.
 
 **MCP RESOURCE REGISTRATION:** Every widget MUST have a matching MCP resource. Without resources, Copilot cannot fetch widget shells through the MCP protocol and widgets will not render.
 
@@ -287,7 +287,7 @@ project/
 └── env/.env.local              # MCP_SERVER_URL, MCP_SERVER_DOMAIN
 ```
 
-**Language note**: This shows a TypeScript project layout. For Python, replace `mcp-server/src/index.ts` with your Python entry point (e.g., `server.py`). For C#, use a standard .NET project structure. The `appPackage/`, `widgets/`, `scripts/`, and `env/` directories are language-agnostic.
+**Language note**: This shows a [TypeScript](../../Frontend/typescript/SKILL.md) project layout. For [Python](../../Languages/python/SKILL.md), replace `mcp-server/src/index.ts` with your [Python](../../Languages/python/SKILL.md) entry point (e.g., `server.py`). For C#, use a standard .NET project structure. The `appPackage/`, `widgets/`, `scripts/`, and `env/` directories are language-agnostic.
 
 ## Copilot Widget Protocol
 
@@ -304,7 +304,7 @@ For full protocol details, JSON shapes, and an adaptation checklist for existing
 
 ## Implementation
 
-### MCP Server Pattern (TypeScript Reference)
+### MCP Server Pattern ([TypeScript](../../Frontend/typescript/SKILL.md) Reference)
 
 See [../../../Global_References/mcp-server-pattern.md](../../../Global_References/mcp-server-pattern.md) for complete implementation.
 
@@ -318,7 +318,7 @@ Core requirements:
 - Handle partial data gracefully (fill in "Unknown" for missing fields)
 
 Tool response format:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 return {
   content: [{ type: "text", text: "Summary" }],
   structuredContent: { /* widget data */ },
@@ -330,7 +330,7 @@ return {
 
 Always normalize input data to handle missing fields:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 server.setRequestHandler(CallToolRequestSchema, async (request: CallToolRequest) => {
   const args = request.params.arguments as { title?: string; items?: Partial<Item>[] };
 
@@ -402,8 +402,8 @@ On first run, provision the agent once the tunnel is up (see AGENT PROVISIONING 
 ## Development Workflow
 
 1. **Start the MCP server** (dev mode with hot reload):
-   - TypeScript: `cd mcp-server && npm install && npm run dev`
-   - Python: `cd mcp-server && pip install -r requirements.txt && python server.py`
+   - [TypeScript](../../Frontend/typescript/SKILL.md): `cd mcp-server && npm install && npm run dev`
+   - [Python](../../Languages/python/SKILL.md): `cd mcp-server && pip install -r requirements.txt && [python](../../Languages/python/SKILL.md) server.py`
    - C#: `cd mcp-server && dotnet run`
 
 2. **Start the devtunnel** (creates named tunnel on first run, reuses on subsequent runs):

@@ -26,14 +26,14 @@ Configure mobile app deployment pipelines including Fastlane automation, code si
 User request includes: `mobile deploy`, `app store`, `play store`, `testflight`, `fastlane`, `code signing`, `mobile ci/cd`, `app release`, `beta testing`.
 
 ### Input Context
-- Platform target (iOS, Android, or both)
-- CI/CD provider (GitHub Actions, GitLab CI, Bitrise)
+- Platform target (iOS, [Android](../../../Mobile/android/SKILL.md), or both)
+- CI/CD provider ([GitHub](../github/SKILL.md) Actions, GitLab CI, Bitrise)
 - Signing strategy (automatic, manual, match)
 - Distribution type (TestFlight, Play Internal, Production)
 
 ### Output Artifact
 A markdown document containing:
-- Fastlane setup for iOS and Android
+- Fastlane setup for iOS and [Android](../../../Mobile/android/SKILL.md)
 - Code signing configuration
 - CI/CD pipeline yaml
 - App Store Connect / Play Console release flow
@@ -54,16 +54,16 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 Which distribution channel?
 ├── Internal team testing (<100 users)
 │   ├── iOS → TestFlight Internal (no review, 100 testers via App Store Connect)
-│   └── Android → Play Internal Testing (no review, 100 testers)
+│   └── [Android](../../../Mobile/android/SKILL.md) → Play Internal Testing (no review, 100 testers)
 ├── External beta (>100 users)
 │   ├── iOS → TestFlight External (up to 10k testers, Beta App Review required)
-│   └── Android → Open Beta (unlimited, no review)
+│   └── [Android](../../../Mobile/android/SKILL.md) → Open Beta (unlimited, no review)
 ├── Production release
 │   ├── iOS → App Store via App Store Connect (App Review, 24-48h typical)
-│   └── Android → Play Console Production track (review hours-days)
+│   └── [Android](../../../Mobile/android/SKILL.md) → Play Console Production track (review hours-days)
 └── Enterprise/internal (org-owned devices only)
     ├── iOS → Apple Developer Enterprise Program + MDM
-    └── Android → Managed Google Play + EMM / sideload APK
+    └── [Android](../../../Mobile/android/SKILL.md) → Managed Google Play + EMM / sideload APK
 ```
 
 ### Code Signing Strategy
@@ -86,11 +86,11 @@ Which code signing approach?
 
 ```
 Which CI/CD provider?
-├── GitHub project → GitHub Actions (macOS-14 for iOS, ubuntu-latest for Android)
+├── [GitHub](../github/SKILL.md) project → [GitHub](../github/SKILL.md) Actions (macOS-14 for iOS, ubuntu-latest for [Android](../../../Mobile/android/SKILL.md))
 ├── Self-hosted / on-prem → GitLab CI (bring your own macOS runner)
 ├── Mobile-focused → Bitrise (optimized macOS VMs, built-in code signing)
-├── Cross-platform desktop → CircleCI (macOS M1 runner, Android Linux)
-└── Fast feedback only → local Fastlane with pre-commit hooks
+├── Cross-platform desktop → [CircleCI](../circleci/SKILL.md) (macOS M1 runner, [Android](../../../Mobile/android/SKILL.md) Linux)
+└── Fast feedback only → local Fastlane with pre-[commit](../commit/SKILL.md) hooks
 ```
 
 ## Workflow
@@ -104,31 +104,31 @@ fastlane match init  # creates encrypted cert repo
 ```
 
 ### Step 1: Set Up Fastlane
-Configure Fastfile with beta and release lanes for both iOS and Android with proper build and upload steps. Include Matchfile for code signing, Appfile for metadata, and Deliverfile/Supplyfile for store metadata.
+Configure Fastfile with beta and release lanes for both iOS and [Android](../../../Mobile/android/SKILL.md) with proper build and upload steps. Include Matchfile for code signing, Appfile for metadata, and Deliverfile/Supplyfile for store metadata.
 
 ### Step 2: Configure Code Signing
-Set up Fastlane Match for iOS code signing with encrypted certificates or manual signing for specific targets. Configure Android keystore with env vars.
+Set up Fastlane Match for iOS code signing with encrypted certificates or manual signing for specific targets. Configure [Android](../../../Mobile/android/SKILL.md) keystore with env vars.
 
 ### Step 3: Set CI/CD Pipeline
-Create GitHub Actions workflows for iOS (macOS runner) and Android (Ubuntu runner) with secrets management. Add GitLab CI, Bitrise, or CircleCI as needed.
+Create [GitHub](../github/SKILL.md) Actions workflows for iOS (macOS runner) and [Android](../../../Mobile/android/SKILL.md) (Ubuntu runner) with secrets management. Add GitLab CI, Bitrise, or [CircleCI](../circleci/SKILL.md) as needed.
 
 ### Step 4: Configure Distribution Tracks
-Set up TestFlight Internal/External for iOS and Internal Testing/Closed Alpha/Open Beta for Android. Configure phased releases and in-app updates.
+Set up TestFlight Internal/External for iOS and Internal Testing/Closed Alpha/Open Beta for [Android](../../../Mobile/android/SKILL.md). Configure phased releases and in-app updates.
 
 ### Step 5: Manage Store Metadata
-Automate app metadata, screenshots, and pricing with Deliver (iOS) and Supply (Android) to eliminate manual store work.
+Automate app metadata, screenshots, and pricing with Deliver (iOS) and Supply ([Android](../../../Mobile/android/SKILL.md)) to eliminate manual store work.
 
 ## Rules
 
-- Never commit code signing certificates or provisioning profiles to source
+- Never [commit](../commit/SKILL.md) code signing certificates or provisioning profiles to source
 - Fastlane Match with encrypted git repo for iOS certificate management
 - CI/CD must run on macOS for iOS builds — no exceptions
-- Android keystore must be base64-encoded in CI secrets, not in repo
+- [Android](../../../Mobile/android/SKILL.md) keystore must be base64-encoded in CI secrets, not in repo
 - TestFlight Internal (100 testers, no review) for rapid iteration
 - Phased releases always start at 1% and ramp based on crash metrics
-- Build number must be derived from commit count for traceability
+- Build number must be derived from [commit](../commit/SKILL.md) count for traceability
 - Store metadata (description, keywords, screenshots) version-controlled in Fastlane
-- In-app updates (Android) must support both flexible and immediate flows
+- In-app updates ([Android](../../../Mobile/android/SKILL.md)) must support both flexible and immediate flows
 - iOS app thinning asset packs must be tested on real devices before release
 - Enterprise certs revoked = all apps stop working — guard with restricted access
 - Never use distribution certificates for development builds
@@ -145,7 +145,7 @@ itc_team_id("123456789")                 # App Store Connect Team ID
 
 ### Matchfile
 ```ruby
-git_url("https://github.com/org/certs.git")
+git_url("https://[github](../github/SKILL.md).com/org/certs.git")
 storage_mode("git")
 type("appstore")                          # or "development"
 app_identifier(["com.example.app", "com.example.app.widget"])
@@ -196,12 +196,12 @@ platform :ios do
 end
 ```
 
-### Android Fastfile
+### [Android](../../../Mobile/android/SKILL.md) Fastfile
 
 ```ruby
-default_platform(:android)
+default_platform(:[android](../../../Mobile/android/SKILL.md))
 
-platform :android do
+platform :[android](../../../Mobile/android/SKILL.md) do
   desc "Build and upload to Play Internal Testing"
   lane :beta do
     gradle(task: "assembleRelease")
@@ -256,14 +256,14 @@ price_tier(0)                    # Free
 automatic_release(false)         # Manual release after review
 ```
 
-### Supplyfile (Android Metadata)
+### Supplyfile ([Android](../../../Mobile/android/SKILL.md) Metadata)
 ```ruby
 package_name("com.example.app")
 
 track("production")
 release_status("completed")
 
-metadata_path("metadata/android")
+metadata_path("metadata/[android](../../../Mobile/android/SKILL.md)")
 
 # Listing details
 name("App Name")
@@ -308,7 +308,7 @@ fastlane match nuke distribution
 fastlane match nuke development
 
 # Use in Matchfile
-git_url("https://github.com/org/certs.git")
+git_url("https://[github](../github/SKILL.md).com/org/certs.git")
 type("appstore")
 app_identifier(["com.example.app"])
 ```
@@ -335,7 +335,7 @@ SPACESHIP_2FA_ENABLED=true           # 2FA support
 SPACESHIP_SKIP_2FA_UPGRADE=true
 ```
 
-### Android Code Signing
+### [Android](../../../Mobile/android/SKILL.md) Code Signing
 ```bash
 # Generate keystore
 keytool -genkey -v -keystore release.keystore \
@@ -350,7 +350,7 @@ openssl base64 -in release.keystore > release.keystore.base64
 
 ```gradle
 // app/build.gradle.kts
-android {
+[android](../../../Mobile/android/SKILL.md) {
   signingConfigs {
     create("release") {
       storeFile = file(System.getenv("ANDROID_KEYSTORE_PATH") ?: "release.keystore")
@@ -369,7 +369,7 @@ android {
 
 ## CI/CD Pipeline
 
-### GitHub Actions — iOS
+### [GitHub](../github/SKILL.md) Actions — iOS
 ```yaml
 name: iOS Beta
 on:
@@ -391,9 +391,9 @@ jobs:
           path: "*.ipa"
 ```
 
-### GitHub Actions — Android
+### [GitHub](../github/SKILL.md) Actions — [Android](../../../Mobile/android/SKILL.md)
 ```yaml
-name: Android Beta
+name: [Android](../../../Mobile/android/SKILL.md) Beta
 on:
   push:
     branches: [main]
@@ -415,7 +415,7 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
       - uses: actions/upload-artifact@v4
         with:
-          name: android-apk-aab
+          name: [android](../../../Mobile/android/SKILL.md)-apk-aab
           path: "app/build/outputs/**/*.aab"
 ```
 
@@ -438,7 +438,7 @@ ios-beta:
     MATCH_PASSWORD: $MATCH_PASSWORD
     FASTLANE_SESSION: $FASTLANE_SESSION
 
-android-beta:
+[android](../../../Mobile/android/SKILL.md)-beta:
   stage: deploy
   tags:
     - linux
@@ -457,7 +457,7 @@ android-beta:
 ### Bitrise Configuration
 Bitrise provides built-in code signing via codesigndoc and Secrets:
 - iOS: Use `certificate-and-profile-installer` step
-- Android: Use `sign-APK` or `sign-aab` step
+- [Android](../../../Mobile/android/SKILL.md): Use `sign-APK` or `sign-aab` step
 - Workflow triggers: push to main, pull request, scheduled nightly
 
 ```
@@ -466,7 +466,7 @@ Workflow: Deploy
 2. certificate-and-profile-installer (iOS)
 3. fastlane beta
 4. deploy-to-bitrise-io
-5. google-play-deploy (Android)
+5. google-play-deploy ([Android](../../../Mobile/android/SKILL.md))
 6. testflight-deploy (iOS)
 ```
 
@@ -482,20 +482,20 @@ Version: 3.2.1 (semantic)
 Build number: auto-increment from git
   iOS  CFBundleVersion = number_of_commits
   iOS  CFBundleShortVersionString = manual bump
-  Android versionCode = number_of_commits
-  Android versionName = manual bump
+  [Android](../../../Mobile/android/SKILL.md) versionCode = number_of_commits
+  [Android](../../../Mobile/android/SKILL.md) versionName = manual bump
 ```
 
 ### Fastlane Automatic Build Numbers
 ```ruby
-# iOS: derive from git commit count
+# iOS: derive from git [commit](../commit/SKILL.md) count
 lane :bump do
   increment_build_number(
     build_number: number_of_commits
   )
 end
 
-# Android: derive from git commit count  
+# [Android](../../../Mobile/android/SKILL.md): derive from git [commit](../commit/SKILL.md) count  
 lane :bump do
   increment_version_code(
     version_code: number_of_commits
@@ -548,7 +548,7 @@ Phased release ramp schedule (automatic):
 - Day 6: 50%
 - Day 7: 100%
 
-### Android — Play Console Staged Rollout
+### [Android](../../../Mobile/android/SKILL.md) — Play Console Staged Rollout
 ```kotlin
 // In-app updates — Play Core API
 val appUpdateManager = AppUpdateManagerFactory.create(context)
@@ -597,7 +597,7 @@ Play Console staged rollout schedule:
 ```
 - Risk: one cert revocation kills all enterprise apps — restrict access tightly
 
-### Android Enterprise (Managed Google Play)
+### [Android](../../../Mobile/android/SKILL.md) Enterprise (Managed Google Play)
 - Organization must join Managed Google Play
 - Apps distributed via Play Console as private apps
 - Managed configurations supported via JSON:
@@ -648,12 +648,12 @@ Three thinning mechanisms:
 2. **On-Demand Resources** — download assets when needed
 3. **Bitcode** — App Store re-optimization (deprecated in Xcode 14, removed in 16)
 
-## Android App Bundle (AAB)
+## [Android](../../../Mobile/android/SKILL.md) App Bundle (AAB)
 Always upload AAB (not APK) to Play Console — Google handles app slicing:
 
 ```groovy
 // build.gradle.kts
-android {
+[android](../../../Mobile/android/SKILL.md) {
   bundle {
     language {
       enableSplit = true    // Language-specific APKs
@@ -705,14 +705,14 @@ lane :screenshots do
 }
 ```
 
-### Fastlane Screengrab (Android)
+### Fastlane Screengrab ([Android](../../../Mobile/android/SKILL.md))
 ```ruby
 lane :screenshots do
   screengrab(
     app_apk_path: "app/build/outputs/apk/debug/app-debug.apk",
     tests_apk_path: "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
     locales: ["en-US", "de", "ja"],
-    output_directory: "screenshots/android"
+    output_directory: "screenshots/[android](../../../Mobile/android/SKILL.md)"
   )
   supply(
     skip_upload_apk: true,
@@ -743,8 +743,8 @@ BUNDLE_ID_SUFFIX =
 ```
 
 ```kotlin
-// Android — Build Config Fields in build.gradle.kts
-android {
+// [Android](../../../Mobile/android/SKILL.md) — Build Config Fields in build.gradle.kts
+[android](../../../Mobile/android/SKILL.md) {
   buildTypes {
     debug {
       buildConfigField("String", "API_BASE_URL", "\"https://dev-api.example.com\"")
@@ -763,7 +763,7 @@ android {
 - **Checking certs into repo**: Exposes signing identities. Use Match with encrypted git repo
 - **Manual provisioning profile management**: Time-consuming and error-prone. Always automate with Match
 - **One cert for CI and local**: CI server generates new certs independently via Match
-- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry monitoring to CI
+- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) to CI
 - **Using distribution cert for dev**: Blocks debugging on device — use development certs
 - **Revokable enterprise cert shared widely**: One leak = all apps dead. Restrict cert access to 1-2 people
 
@@ -780,17 +780,17 @@ android {
 - **Phased release at 100% immediately**: No gradual ramp. Always start at 1%
 - **No rollback plan**: App Store rejects can't revert. Maintain last-known-good binary
 - **Skipping beta testing**: Production bugs caught too late. Always TestFlight/Internal first
-- **Manual version bumps**: Inconsistent and error-prone. Automate via git tags or commit count
-- **No crash monitoring during phased release**: Can't detect regressions. Monitor crash rate vs baseline
+- **Manual version bumps**: Inconsistent and error-prone. Automate via git tags or [commit](../commit/SKILL.md) count
+- **No crash [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) during phased release**: Can't detect regressions. Monitor crash rate vs baseline
 - **In-app update not tested for seamless install**: Users lose state. Test flexible/immediate flows
 
 ## Handoff
 
 After deployment, hand off to:
-- `mobile/universal/crash-reporting` — Crash monitoring post-release
+- `mobile/universal/crash-reporting` — Crash [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) post-release
 - `mobile/universal/security` — Code signing security, cert rotation
 - `mobile/universal/testing` — Pre-release testing strategy
 - `mobile/universal/push-notifications` — Push notification certs
 - `mobile/universal/in-app-purchase` — IAP products and receipt validation
-- `mobile/android` — Android-specific build variants
+- `mobile/[android](../../../Mobile/android/SKILL.md)` — [Android](../../../Mobile/android/SKILL.md)-specific build variants
 - `mobile/ios` — iOS-specific Xcode project config

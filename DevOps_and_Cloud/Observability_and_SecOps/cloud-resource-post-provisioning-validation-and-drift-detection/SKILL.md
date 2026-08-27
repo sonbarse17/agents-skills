@@ -23,9 +23,9 @@ metadata:
 
 ## Purpose
 
-Infrastructure-as-code declares intent, but the running cloud account is
+[Infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) declares intent, but the running cloud account is
 the only source of truth for what's actually there — and the two diverge
-constantly: a console click-fix during an incident that never made it
+constantly: a console click-fix during an [incident](../incident/SKILL.md) that never made it
 back into Terraform, a policy exemption granted temporarily and
 forgotten, a resource created by an entirely separate pipeline or a
 different team that the "official" IaC state doesn't know about. Left
@@ -44,12 +44,12 @@ landing-zone skills).
 ## When to use
 
 - Confirming that infrastructure provisioned by a recent change (a
-  Terraform apply, a manual console change, an incident hotfix) matches
+  Terraform apply, a manual console change, an [incident](../incident/SKILL.md) hotfix) matches
   what was actually intended/declared.
 - Running a scheduled or ad hoc drift check to catch out-of-band console
   changes before they cause a surprising `terraform apply` diff later.
 - Auditing tag/label compliance against the organization's tagging
-  policy (see [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md))
+  policy (see [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md))
   or Azure Policy/AWS Config/GCP Organization Policy compliance.
 - Investigating "why does the console show a resource/setting Terraform
   doesn't know about" or "why did `terraform plan` show unexpected
@@ -73,7 +73,7 @@ landing-zone skills).
   encryption requirements, public-access blocks).
 - Azure Policy assigned at the Management Group/subscription scope with
   the relevant built-in or custom policy definitions (tagging, allowed
-  locations, required diagnostic settings) in an audit or deny effect.
+  locations, required diagnostic settings) in an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or deny effect.
 - GCP equivalent: Organization Policy constraints plus Security Command
   Center's Security Health Analytics / Policy Controller (if using
   Anthos Config Management/GKE), or a scheduled `gcloud asset
@@ -82,7 +82,7 @@ landing-zone skills).
   primary source for IaC-managed resources, plus an explicit,
   version-controlled tag/policy taxonomy (not tribal knowledge) for
   compliance checks — see
-  [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)
+  [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
   and the landing-zone skills for where that taxonomy is typically
   defined.
 - Read-only credentials are sufficient for detection; do not grant
@@ -113,7 +113,7 @@ landing-zone skills).
      ignore_changes }` if it recurs.
    - **Out-of-band manual change**: someone changed a setting via
      console/CLI directly (e.g. widened a security group rule during an
-     incident, changed an instance type by hand). Decide explicitly:
+     [incident](../incident/SKILL.md), changed an instance type by hand). Decide explicitly:
      revert to match IaC (if the manual change wasn't supposed to be
      permanent) or import the new reality into Terraform config (if it
      should be the new intent) — never leave it drifted indefinitely,
@@ -185,7 +185,7 @@ landing-zone skills).
    az resource list --query "[?tags.\"cost-center\" == null].{Name:name, Type:type, ResourceGroup:resourceGroup}"
    ```
    Feed missing-tag findings back into
-   [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)'s
+   [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md)'s
    tag-backfill process rather than treating tag drift as a one-off
    cleanup.
 
@@ -205,8 +205,8 @@ landing-zone skills).
    > auto-remediation action) can be as disruptive as an unreviewed
    > manual change if the drifted state was actually a deliberate,
    > undocumented fix (e.g. a security-group rule widened during an
-   > active incident, a manually scaled-up instance count keeping a
-   > degraded service afloat). Default to alerting a human with the diff
+   > active [incident](../incident/SKILL.md), a manually scaled-up instance count keeping a
+   > degraded service afloat). Default to [alerting](../alerting/SKILL.md) a human with the diff
    > and requiring explicit confirmation before applying any
    > corrective change to production resources; reserve auto-
    > remediation for narrowly scoped, well-understood, low-risk drift
@@ -223,7 +223,7 @@ landing-zone skills).
 
 - **Grant drift-detection tooling read-only access by default** —
   detection and remediation are different risk levels; a scan that can
-  only observe cannot itself cause an incident, and remediation should be
+  only observe cannot itself cause an [incident](../incident/SKILL.md), and remediation should be
   a deliberate, separately authorized action per step 7.
 - **Use `terraform plan -refresh-only` for drift specifically**, not a
   regular `plan`, when the goal is "did reality diverge from last-known
@@ -237,12 +237,12 @@ landing-zone skills).
 - **Scope Config rules/Policy assignments to the guardrails that
   actually matter for the workload's risk tier**, mirroring the tiering
   approach in
-  [disaster-recovery-and-backup-strategy](../disaster-recovery-and-backup-strategy/SKILL.md) —
+  [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) —
   not every account needs every possible conformance pack rule active at
   the strictest setting.
 - **Feed tag-compliance findings into the FinOps tagging backfill
   process** rather than treating them as a separate, one-off cleanup —
-  see [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md).
+  see [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md).
 - **Prefer importing a deliberate manual change into IaC over reverting
   it blind**, when the manual change turns out to have been the right
   call — drift detection's job is to surface the divergence and force a
@@ -260,14 +260,14 @@ landing-zone skills).
   console edit, a separate automation, an AWS-side attribute
   auto-updating). Run `terraform plan -refresh-only` first to isolate
   drift from pending config changes, and check CloudTrail/Activity
-  Log/Cloud Audit Logs for the resource ID over the relevant window to
+  Log/Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs for the resource ID over the relevant window to
   identify who or what made the out-of-band change before assuming
   tooling is at fault.
 
 - **Symptom:** A drift-detection job auto-applies `terraform apply` to
   "fix" drift on a production resource, and it turns out the drift was a
   deliberate manual mitigation an on-call engineer made during an active
-  incident, which the auto-apply just reverted mid-incident.
+  [incident](../incident/SKILL.md), which the auto-apply just reverted mid-[incident](../incident/SKILL.md).
   **Fix:** **Never auto-remediate drift on production resources without
   a human-reviewed confirmation step** — this can undo a legitimate,
   time-sensitive fix. Default drift detection to alert-and-propose, and
@@ -295,7 +295,7 @@ landing-zone skills).
   ad hoc when someone happens to notice, and require every unmanaged
   resource to be explicitly classified (import into IaC, confirmed
   legitimate one-off, or a candidate for
-  [orphaned-cloud-resource-cleanup](../orphaned-cloud-resource-cleanup/SKILL.md)
+  [orphaned-cloud-resource-cleanup](../[orphaned-cloud-resource-cleanup](../../Cloud_Providers/orphaned-cloud-resource-cleanup/SKILL.md)/SKILL.md)
   if it also looks unused).
 
 - **Symptom:** Tag-compliance scans keep flagging the same handful of
@@ -310,7 +310,7 @@ landing-zone skills).
 
 ## Worked example
 
-**Scenario:** A quarterly infrastructure audit is scheduled for the
+**Scenario:** A quarterly infrastructure [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is scheduled for the
 `payments-prod` AWS account ahead of a compliance review, to confirm
 provisioned resources match Terraform-declared intent and required
 guardrails (encryption, tagging, no public S3 buckets) are actually
@@ -321,10 +321,10 @@ enforced.
    a security group's ingress rule now allows `0.0.0.0/0` on port 22,
    where the declared config specifies a restricted CIDR.
 2. Classify the drift (step 2): CloudTrail shows the rule was widened
-   manually three weeks ago by an on-call engineer during an incident
+   manually three weeks ago by an on-call engineer during an [incident](../incident/SKILL.md)
    requiring emergency SSH access, and never reverted afterward.
    Decision: revert to the declared restricted CIDR via the normal
-   Terraform pipeline (not a manual console fix), since the incident
+   Terraform pipeline (not a manual console fix), since the [incident](../incident/SKILL.md)
    that justified the temporary widening closed two weeks ago.
 3. Run the AWS Config conformance pack for encryption and public-access
    guardrails (step 3):
@@ -348,29 +348,29 @@ enforced.
    AWS EBS volume, so the fix is a snapshot-and-recreate scheduled during
    a maintenance window); the unmanaged POC instance confirmed with its
    creator as safe to decommission and handed to
-   [orphaned-cloud-resource-cleanup](../orphaned-cloud-resource-cleanup/SKILL.md);
+   [orphaned-cloud-resource-cleanup](../[orphaned-cloud-resource-cleanup](../../Cloud_Providers/orphaned-cloud-resource-cleanup/SKILL.md)/SKILL.md);
    the 8 untagged resources backfilled per
-   [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md).
+   [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md).
 7. Because this account has now had two consecutive quarters of manual
-   security-group drift from incident response, recommend adding a
+   security-group drift from [incident](../incident/SKILL.md) response, recommend adding a
    scheduled, change-triggered Config rule evaluation plus a follow-up
-   process requiring incident-related manual changes to be tracked in a
+   process requiring [incident](../incident/SKILL.md)-related manual changes to be tracked in a
    ticket with an explicit revert date, rather than relying on the next
-   quarterly audit to catch it.
+   quarterly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) to catch it.
 
 ## Cross-references
 
-- [aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md) — the
+- [aws-landing-zone-setup](../[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md) — the
   OU-level SCPs and Config/CloudTrail baseline this skill's compliance
   scans check against.
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md) — scope
+- [cloud-iam-hardening](../[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — scope
   drift-detection tooling to read-only access; treat any finding of
   broader-than-expected IAM permissions surfaced during a scan per that
   skill's guidance.
-- [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md) —
+- [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../../Cloud_Providers/cloud-cost-finops-optimization/SKILL.md)/SKILL.md) —
   where tag-compliance findings from this skill's step 5 get backfilled
   and where the tagging taxonomy itself is defined.
-- [orphaned-cloud-resource-cleanup](../orphaned-cloud-resource-cleanup/SKILL.md) —
+- [orphaned-cloud-resource-cleanup](../[orphaned-cloud-resource-cleanup](../../Cloud_Providers/orphaned-cloud-resource-cleanup/SKILL.md)/SKILL.md) —
   hand off an unmanaged resource discovered during inventory
   reconciliation here if it also looks unused, rather than deleting it
   as part of a drift-remediation pass.

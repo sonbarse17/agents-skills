@@ -68,7 +68,7 @@ the first `terraform apply`.
   sign-up and never changeable — while additional regions are opt-in via
   `oci iam region-subscription create`. Decide the home region and the
   initial subscribed-region set before building anything region-specific
-  (Vault keys, Identity Domains, and some other resources have region
+  ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys, Identity Domains, and some other resources have region
   affinity).
 - OCI CLI ≥ 3.40 and Terraform ≥ 1.5 with the `oci` provider ≥ 5.x if
   using infrastructure as code — pin the provider version, since
@@ -96,7 +96,7 @@ the first `terraform apply`.
    ```
    Tenancy (root compartment)
    ├── Security
-   │   ├── (Cloud Guard, Vault, centralized Object Storage log archive)
+   │   ├── (Cloud Guard, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), centralized Object Storage log archive)
    ├── Network
    │   ├── (DRG hub, hub VCN, FastConnect/Site-to-Site VPN)
    ├── Workloads
@@ -198,7 +198,7 @@ the first `terraform apply`.
    This gives compute instances short-lived instance-principal
    authentication instead of long-lived API signing keys — apply the same
    "eliminate long-lived credentials" discipline covered in
-   `cloud-iam-hardening`.
+   `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)`.
 
 5. **Deploy the CIS OCI Landing Zone Terraform reference** (or the
    hand-rolled equivalent above at smaller scale) to get the compartment
@@ -227,16 +227,16 @@ the first `terraform apply`.
    Site-to-Site VPN as failover — never a VPN-only path for
    production-critical hybrid traffic.
 
-7. **Centralize audit and flow logs** by routing them through a Service
+7. **Centralize [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and flow logs** by routing them through a Service
    Connector Hub into an Object Storage bucket in the `Security`
    compartment, with a retention rule so logs can't be shortened or
    deleted even by a compromised workload-compartment credential:
    ```bash
    oci sch service-connector create \
      --compartment-id <SECURITY_COMPARTMENT_OCID> \
-     --display-name "audit-log-archive" \
+     --display-name "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-archive" \
      --source '{"kind":"logging","logSources":[{"compartmentId":"<TENANCY_OCID>","logGroupId":"_Audit_Include_Subcompartment"}]}' \
-     --target '{"kind":"objectStorage","namespace":"<OBJECT_STORAGE_NAMESPACE>","bucketName":"security-audit-logs"}'
+     --target '{"kind":"objectStorage","namespace":"<OBJECT_STORAGE_NAMESPACE>","bucketName":"security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs"}'
    ```
 
 8. **Enable Cloud Guard tenancy-wide and layer Security Zones on
@@ -287,7 +287,7 @@ the first `terraform apply`.
 - Prefer **Dynamic Groups + instance/resource principal authentication**
   over embedding API signing keys in workload configuration — this is
   OCI's version of eliminating long-lived credentials (see
-  `cloud-iam-hardening`).
+  `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)`).
 - Keep the **default Identity Domain for internal workforce identities**
   and create additional Identity Domains only for genuinely isolated
   populations (external partners, a B2C customer-facing app) — extra
@@ -334,14 +334,14 @@ the first `terraform apply`.
   the hierarchy (unlike an AWS OU or GCP folder), nothing stops an
   engineer from creating a resource one level too high. Enforce leaf-only
   resource placement with a Security Zone recipe requiring resources to
-  live in a tagged "leaf" compartment, and periodically audit with
+  live in a tagged "leaf" compartment, and periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with
   `oci search resource structured-search` for resources sitting in
   non-leaf compartments.
 
-- **Symptom:** A Terraform apply that provisions Vault keys or an
+- **Symptom:** A Terraform apply that provisions [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys or an
   Identity Domain in a newly subscribed region fails or behaves
   inconsistently with the home region's equivalent resource.
-  **Fix:** Some resources (Vault master encryption keys, Identity
+  **Fix:** Some resources ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) master encryption keys, Identity
   Domains) have region affinity and don't automatically replicate to
   newly subscribed regions the way compartments and policies (which are
   tenancy-wide) do. Explicitly provision the region-scoped resource in
@@ -363,7 +363,7 @@ the first `terraform apply`.
 **Scenario:** A company with one flat OCI tenancy (all resources sitting
 in the root compartment, one shared Administrators-group login for
 everyone) needs a real landing zone before launching a second product
-line and before OCI resources fail their first security audit.
+line and before OCI resources fail their first security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 1. Create the compartment hierarchy: `Security`, `Network`, `Workloads`
    (with `Production`/`NonProduction`), and `Sandbox`, all under the
@@ -382,9 +382,9 @@ line and before OCI resources fail their first security audit.
    `Workloads:NonProduction:checkout-staging` for the new product line,
    each with a DRG attachment to the hub, a delegated-admin policy scoped
    to `CheckoutTeam`, and a Dynamic Group granting the compartment's
-   compute instances read access to Vault secrets in `Security` — no
+   compute instances read access to [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets in `Security` — no
    embedded API keys anywhere in the deployment.
-6. Route Audit and VCN Flow Logs through a Service Connector Hub into an
+6. Route [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and VCN Flow Logs through a Service Connector Hub into an
    Object Storage bucket in `Security` with a retention rule, and set a
    compartment-scoped budget on `Sandbox`.
 7. Result: two product lines, a compliant compartment hierarchy, Security
@@ -393,7 +393,7 @@ line and before OCI resources fail their first security audit.
 
 ## Cross-references
 
-- [aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)
-- [azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)
-- [gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
+- [aws-landing-zone-setup](../[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md)
+- [azure-landing-zone-setup](../[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md)
+- [gcp-landing-zone-setup](../[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)

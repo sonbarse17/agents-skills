@@ -80,7 +80,7 @@ misconfigured route, a compromised host, or a malicious insider on the same segm
 
 Rules that were correct at launch drift as services are added, decommissioned, or reconfigured
 — an old rule for a service that was retired last year is still an open door with nothing
-behind it that matters, and a new one that's wider than intended. Periodically audit actual
+behind it that matters, and a new one that's wider than intended. Periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) actual
 traffic flows against configured rules and remove what's unused; a rule nobody remembers the
 reason for is a rule that's probably too wide.
 

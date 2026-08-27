@@ -3,7 +3,7 @@ name: python-configuration
 description: Python configuration management via environment variables and typed settings. Use when externalizing config, setting up pydantic-settings, managing secrets, or implementing environment-specific behavior.
 ---
 
-# Python Configuration Management
+# [Python](../python/SKILL.md) Configuration Management
 
 Externalize configuration from code using environment variables and typed settings. Well-managed configuration enables the same code to run in any environment without modification.
 
@@ -36,7 +36,7 @@ Provide reasonable defaults for local development while requiring explicit value
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 from pydantic_settings import BaseSettings
 from pydantic import Field
 
@@ -54,7 +54,7 @@ settings = Settings()  # Loads from environment
 
 Create a central settings class that loads and validates all configuration.
 
-```python
+```[python](../python/SKILL.md)
 from pydantic_settings import BaseSettings
 from pydantic import Field, PostgresDsn, ValidationError
 import sys
@@ -93,7 +93,7 @@ except ValidationError as e:
 
 Import `settings` throughout your application:
 
-```python
+```[python](../python/SKILL.md)
 from myapp.config import settings
 
 def get_database_connection():
@@ -108,7 +108,7 @@ def get_database_connection():
 
 Required settings should crash the application immediately with a clear error.
 
-```python
+```[python](../python/SKILL.md)
 from pydantic_settings import BaseSettings
 from pydantic import Field, ValidationError
 import sys
@@ -140,7 +140,7 @@ A clear error at startup is better than a cryptic `None` failure mid-request.
 
 Provide sensible defaults for local development while requiring explicit values for secrets.
 
-```python
+```[python](../python/SKILL.md)
 class Settings(BaseSettings):
     # Has local default, but prod will override
     db_host: str = Field(default="localhost", alias="DB_HOST")
@@ -156,7 +156,7 @@ class Settings(BaseSettings):
     model_config = {"env_file": ".env"}
 ```
 
-Create a `.env` file for local development (never commit this):
+Create a `.env` file for local development (never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) this):
 
 ```bash
 # .env (add to .gitignore)
@@ -195,7 +195,7 @@ Makes `env | grep DB_` useful for debugging.
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-configuration_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../python/SKILL.md)-configuration_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 
@@ -203,7 +203,7 @@ Detailed sections (starting with `## Advanced Patterns`) live in `../../../Globa
 2. **Use typed settings** - Pydantic-settings with validation
 3. **Fail fast** - Crash on missing required config at startup
 4. **Provide dev defaults** - Make local development easy
-5. **Never commit secrets** - Use `.env` files (gitignored) or secret managers
+5. **Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets** - Use `.env` files (gitignored) or secret managers
 6. **Namespace variables** - `DB_HOST`, `REDIS_URL` for clarity
 7. **Import settings singleton** - Don't call `os.getenv()` throughout code
 8. **Document all variables** - README should list required env vars

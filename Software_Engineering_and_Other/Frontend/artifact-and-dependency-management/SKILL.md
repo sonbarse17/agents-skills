@@ -33,7 +33,7 @@ trustworthy.
 ## When to use
 
 - Standing up a private package registry or pull-through proxy/mirror
-  (Artifactory, Nexus, GitHub Packages, Verdaccio, a cloud-native
+  (Artifactory, Nexus, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Packages, Verdaccio, a cloud-native
   registry) in front of public registries like npm/PyPI/Maven Central.
 - Introducing or auditing lockfiles (`package-lock.json`,
   `poetry.lock`/`requirements.txt` with pinned hashes, `go.sum`) to make
@@ -49,7 +49,7 @@ trustworthy.
 
 ## Prerequisites & environment
 
-- A chosen artifact/package registry solution: a managed offering (GitHub
+- A chosen artifact/package registry solution: a managed offering ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
   Packages, GitLab Package Registry, cloud provider artifact registries)
   or self-hosted (Artifactory, Sonatype Nexus, Harbor for containers,
   Verdaccio for npm).
@@ -81,7 +81,7 @@ trustworthy.
    copies survive), a single point to apply security scanning, and
    traceability of exactly which package versions were ever pulled.
 
-2. **Commit lockfiles and enforce them in CI** so builds are reproducible
+2. **[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lockfiles and enforce them in CI** so builds are reproducible
    byte-for-byte on dependency resolution, not just "same version range":
    ```bash
    npm ci                 # fails if package-lock.json is out of sync, unlike npm install
@@ -124,14 +124,14 @@ trustworthy.
    the proxy's cached copy if your registry tool supports it, and re-run
    `npm ci`/equivalent to confirm the resolved tree no longer includes it.
    Because builds go through your proxy's cache, you are not silently
-   exposed to a package being deleted out from under you mid-incident —
+   exposed to a package being deleted out from under you mid-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) —
    but you must still act if the version you already have cached is the
    bad one.
 
 6. **Define and enforce artifact retention** so storage doesn't grow
    unbounded and old, unreferenced artifacts don't accumulate risk
    (stale, unpatched images sitting in a registry indefinitely). Example
-   GitHub Container Registry cleanup via a scheduled workflow using
+   [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Container Registry cleanup via a scheduled workflow using
    `actions/delete-package-versions`:
    ```yaml
    on:
@@ -152,7 +152,7 @@ trustworthy.
    deletion, and prefer `delete-only-untagged-versions`/dry-run modes
    before enabling deletion of tagged versions.
 
-7. **Audit what's actually in use vs. what's stored.** Periodically cross
+7. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) what's actually in use vs. what's stored.** Periodically cross
    reference deployed image digests/package versions against what's in
    the registry so retention policy decisions are based on real usage,
    not guesses.
@@ -173,14 +173,14 @@ trustworthy.
   incidents.
 - Treat major dependency upgrades as their own reviewed change with a
   changelog read-through, not a rubber-stamped automerge — pair with
-  [release-versioning-and-changelog-automation](../release-versioning-and-changelog-automation/SKILL.md)
+  [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../../DevOps_and_Cloud/Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
   when the upgrade affects your own published artifact's versioning
   contract.
-- Record artifact provenance (which commit/pipeline run produced a given
+- Record artifact provenance (which [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/pipeline run produced a given
   artifact) as metadata/labels on the artifact itself, so retention
-  cleanup and incident response can trace an artifact back to its build —
+  cleanup and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response can trace an artifact back to its build —
   this dovetails with build metadata practices in
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 - Scan both first-party artifacts and third-party dependencies for known
   vulnerabilities as part of the same pipeline, not as separate,
   disconnected processes.
@@ -190,7 +190,7 @@ trustworthy.
 - **Symptom:** A build that passed last week fails today with no code
   changes, due to a transitive dependency resolving to a new (breaking)
   version.
-  **Fix:** This indicates missing or unenforced lockfiles — commit the
+  **Fix:** This indicates missing or unenforced lockfiles — [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the
   lockfile, and run the package manager's strict/CI install mode
   (`npm ci`, `pip install --require-hashes`) so resolution can't silently
   drift between runs.
@@ -235,7 +235,7 @@ and the team's CI starts failing `npm ci` with a 404.
 2. For any environment that hadn't cached it yet, pin an explicit
    replacement in `package.json` (`"left-pad-style-lib": "3.2.0"`, the
    last known-good published version) and run `npm install` once to
-   regenerate `package-lock.json`, then commit the lockfile update.
+   regenerate `package-lock.json`, then [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the lockfile update.
 3. Open a PR titled "pin left-pad-style-lib to 3.2.0 (3.2.1 unpublished
    upstream)" so the pin is visible and reviewable, and file a follow-up
    ticket to revisit once the ecosystem stabilizes (e.g., a maintained
@@ -247,5 +247,5 @@ and the team's CI starts failing `npm ci` with a 404.
 
 ## Cross-references
 
-- [container-build-and-release](../container-build-and-release/SKILL.md)
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)
+- [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)

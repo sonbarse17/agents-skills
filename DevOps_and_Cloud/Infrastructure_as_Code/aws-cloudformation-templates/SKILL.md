@@ -16,23 +16,23 @@ metadata:
   maturity: stable
 ---
 
-# AWS CloudFormation Templates
+# AWS [CloudFormation](../cloudformation/SKILL.md) Templates
 
 ## Purpose
 
-CloudFormation is AWS's native infrastructure-as-code service: it declares
+[CloudFormation](../cloudformation/SKILL.md) is AWS's native [infrastructure-as-code](../infrastructure-as-code/SKILL.md) service: it declares
 AWS resources in a YAML/JSON template, and AWS itself manages the create/
 update/delete lifecycle as a stack, tracking resource state server-side
 (no separate state file to store or lock). That server-side state is also
 the main operational tradeoff versus a tool like Terraform — see
-[infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)
+[infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 for the general "why IaC" case and Terraform's plan/state/module model.
-CloudFormation trades Terraform's multi-cloud portability and local plan
+[CloudFormation](../cloudformation/SKILL.md) trades Terraform's [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) portability and local plan
 files for deep native integration: no state backend to configure, native
 rollback on failed updates, IAM-scoped stack permissions, and StackSets for
-governed multi-account/multi-region rollout. Choose CloudFormation when the
+governed multi-account/multi-region rollout. Choose [CloudFormation](../cloudformation/SKILL.md) when the
 workload is AWS-only and you want AWS to own the state and rollback
-semantics; choose Terraform when you need multi-cloud consistency, a richer
+semantics; choose Terraform when you need [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) consistency, a richer
 module ecosystem, or a plan file reviewable outside the AWS console/CLI.
 
 ## When to use
@@ -48,14 +48,14 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   production stack.
 - Detecting and reconciling drift after someone made a manual console
   change to a stack-managed resource.
-- Deciding between CloudFormation and Terraform for a new AWS workload.
+- Deciding between [CloudFormation](../cloudformation/SKILL.md) and Terraform for a new AWS workload.
 
 ## Prerequisites & environment
 
-- AWS CLI v2 and an IAM principal with the specific `cloudformation:*`
+- AWS CLI v2 and an IAM principal with the specific `[cloudformation](../cloudformation/SKILL.md):*`
   actions needed (`CreateStack`, `CreateChangeSet`, `ExecuteChangeSet`,
   `DescribeStacks`, `DetectStackDrift`, etc.) plus permissions for every
-  resource type the template provisions — CloudFormation executes as the
+  resource type the template provisions — [CloudFormation](../cloudformation/SKILL.md) executes as the
   calling principal by default, or as a dedicated **service role** if one
   is attached to the stack (recommended for least-privilege separation
   between "who can request a change" and "what the change is allowed to
@@ -114,7 +114,7 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
 2. **Validate statically before touching AWS**:
    ```bash
    cfn-lint templates/logging-bucket.yaml
-   aws cloudformation validate-template \
+   aws [cloudformation](../cloudformation/SKILL.md) validate-template \
      --template-body file://templates/logging-bucket.yaml
    ```
 
@@ -124,14 +124,14 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
    # root.yaml — nested stack (tight coupling, single deploy unit)
    Resources:
      NetworkStack:
-       Type: AWS::CloudFormation::Stack
+       Type: AWS::[CloudFormation](../cloudformation/SKILL.md)::Stack
        Properties:
          TemplateURL: https://s3.amazonaws.com/<bucket>/network.yaml
          Parameters:
            EnvironmentName: !Ref EnvironmentName
 
      AppStack:
-       Type: AWS::CloudFormation::Stack
+       Type: AWS::[CloudFormation](../cloudformation/SKILL.md)::Stack
        Properties:
          TemplateURL: https://s3.amazonaws.com/<bucket>/app.yaml
          Parameters:
@@ -142,20 +142,20 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
    (`Fn::ImportValue`) instead when layers are owned/updated by different
    teams on different cadences — an exported output can't be deleted or
    changed incompatibly while another stack still imports it, which
-   CloudFormation enforces automatically and surfaces as a delete/update
+   [CloudFormation](../cloudformation/SKILL.md) enforces automatically and surfaces as a delete/update
    block, protecting the consumer.
 
 4. **Never update a shared/production stack without reviewing a change
    set first**:
    ```bash
-   aws cloudformation create-change-set \
+   aws [cloudformation](../cloudformation/SKILL.md) create-change-set \
      --stack-name app-logs-staging \
      --change-set-name update-retention-$(date +%Y%m%d%H%M) \
      --template-body file://templates/logging-bucket.yaml \
      --parameters ParameterKey=EnvironmentName,ParameterValue=staging \
                   ParameterKey=RetentionInDays,ParameterValue=30
 
-   aws cloudformation describe-change-set \
+   aws [cloudformation](../cloudformation/SKILL.md) describe-change-set \
      --stack-name app-logs-staging \
      --change-set-name update-retention-<timestamp>
    ```
@@ -165,7 +165,7 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
    recreated (new physical ID), which matters a great deal for anything
    stateful (databases, buckets with data). Only after review:
    ```bash
-   aws cloudformation execute-change-set \
+   aws [cloudformation](../cloudformation/SKILL.md) execute-change-set \
      --stack-name app-logs-staging \
      --change-set-name update-retention-<timestamp>
    ```
@@ -173,14 +173,14 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
 5. **Roll the same template to many accounts/regions with a StackSet**
    instead of scripting per-account `create-stack` calls:
    ```bash
-   aws cloudformation create-stack-set \
+   aws [cloudformation](../cloudformation/SKILL.md) create-stack-set \
      --stack-set-name baseline-logging \
      --template-body file://templates/logging-bucket.yaml \
      --permission-model SERVICE_MANAGED \
      --auto-deployment Enabled=true,RetainStacksOnAccountRemoval=false \
      --capabilities CAPABILITY_NAMED_IAM
 
-   aws cloudformation create-stack-instances \
+   aws [cloudformation](../cloudformation/SKILL.md) create-stack-instances \
      --stack-set-name baseline-logging \
      --deployment-targets OrganizationalUnitIds=<ou-id> \
      --regions us-east-1 eu-west-1 \
@@ -195,20 +195,20 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
 
 6. **Detect and reconcile drift** after any suspected manual change:
    ```bash
-   aws cloudformation detect-stack-drift --stack-name app-logs-staging
-   aws cloudformation describe-stack-resource-drifts \
+   aws [cloudformation](../cloudformation/SKILL.md) detect-stack-drift --stack-name app-logs-staging
+   aws [cloudformation](../cloudformation/SKILL.md) describe-stack-resource-drifts \
      --stack-name app-logs-staging \
      --stack-resource-drift-status-filters MODIFIED DELETED
    ```
    For each `MODIFIED`/`DELETED` resource, decide: update the template to
    match reality (if the manual change should stick) or run an update to
    force the resource back to the template's declared state (if the
-   manual change was unauthorized). CloudFormation does not auto-correct
+   manual change was unauthorized). [CloudFormation](../cloudformation/SKILL.md) does not auto-correct
    drift — detection is read-only and requires an explicit follow-up
    update.
 
 7. **Treat stack deletion as destructive by default.**
-   > **Warning:** `aws cloudformation delete-stack` deletes every resource
+   > **Warning:** `aws [cloudformation](../cloudformation/SKILL.md) delete-stack` deletes every resource
    > in the stack unless that resource's `DeletionPolicy` is set to
    > `Retain` or `Snapshot` — for a stateful resource (RDS instance, EBS
    > volume, S3 bucket with data) the default is to delete the underlying
@@ -232,7 +232,7 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   delete-old/create-new, not a rename, even if the underlying properties
   are identical.
 - Use `Fn::Sub` and `Fn::GetAtt` over string concatenation for
-  cross-resource references so CloudFormation can infer the dependency
+  cross-resource references so [CloudFormation](../cloudformation/SKILL.md) can infer the dependency
   graph automatically; only fall back to explicit `DependsOn` when no
   attribute reference exists to express the ordering.
 - Keep IAM policies embedded in the template scoped to specific resource
@@ -241,20 +241,20 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   or a policy gate whenever a template creates or modifies IAM.
 - Store templates and parameter files in version control, and drive
   `create-change-set`/`execute-change-set` from CI so every stack update
-  has a reviewable diff and an audit trail, mirroring the plan-review gate
+  has a reviewable diff and an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, mirroring the plan-review gate
   described in
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md).
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md).
 - Prefer many small, single-purpose stacks (network, data, app) over one
   monolithic template — smaller blast radius per update, faster change
   sets, and independent update cadences.
-- Tag every stack (`aws cloudformation create-stack --tags Key=...`) so
-  cost allocation and ownership are traceable; CloudFormation propagates
+- Tag every stack (`aws [cloudformation](../cloudformation/SKILL.md) create-stack --tags Key=...`) so
+  cost allocation and ownership are traceable; [CloudFormation](../cloudformation/SKILL.md) propagates
   stack-level tags to every resource that supports tagging.
 - For anything needing OS-level configuration on top of provisioned
   compute (installing packages, managing config files, running services),
-  don't fight CloudFormation's `UserData`/`cfn-init` for that — hand off
-  to [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md)
-  once the instance/AMI exists, and let CloudFormation own provisioning
+  don't fight [CloudFormation](../cloudformation/SKILL.md)'s `UserData`/`cfn-init` for that — hand off
+  to [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../[ansible](../ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
+  once the instance/AMI exists, and let [CloudFormation](../cloudformation/SKILL.md) own provisioning
   only.
 
 ## Common pitfalls
@@ -263,16 +263,16 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   should just update in place.
   **Fix:** Some properties are immutable and force replacement (e.g.
   changing an RDS engine version incompatibly, or an S3 bucket's `Name`).
-  Check the resource type's CloudFormation docs for which properties
+  Check the resource type's [CloudFormation](../cloudformation/SKILL.md) docs for which properties
   require replacement, and if replacement is unavoidable for a stateful
   resource, plan the swap explicitly (snapshot/restore, blue-green cutover)
   rather than letting the change set execute unreviewed.
 
-- **Symptom:** `aws cloudformation update-stack` fails with `Export
+- **Symptom:** `aws [cloudformation](../cloudformation/SKILL.md) update-stack` fails with `Export
   ... cannot be deleted as it is in use by <other-stack>`.
-  **Fix:** This is CloudFormation protecting a cross-stack reference —
+  **Fix:** This is [CloudFormation](../cloudformation/SKILL.md) protecting a cross-stack reference —
   find every consumer with
-  `aws cloudformation list-imports --export-name <name>` and update or
+  `aws [cloudformation](../cloudformation/SKILL.md) list-imports --export-name <name>` and update or
   remove those consumers' imports first before the exporting stack can
   change or remove that output.
 
@@ -280,8 +280,8 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   updates are accepted.
   **Fix:** A resource failed to roll back automatically (often a
   permissions issue during rollback, or a resource modified outside
-  CloudFormation mid-update). Use
-  `aws cloudformation continue-update-rollback`, optionally with
+  [CloudFormation](../cloudformation/SKILL.md) mid-update). Use
+  `aws [cloudformation](../cloudformation/SKILL.md) continue-update-rollback`, optionally with
   `--resources-to-skip` for the specific logical IDs that can't roll back
   cleanly, then reconcile those resources' actual state against the
   template afterward.
@@ -289,10 +289,10 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
 - **Symptom:** `detect-stack-drift` reports resources as `MODIFIED` even
   though nobody touched the console.
   **Fix:** Some AWS-managed background processes (e.g. automatic minor
-  version patching on managed services) change attributes CloudFormation
+  version patching on managed services) change attributes [CloudFormation](../cloudformation/SKILL.md)
   considers drift. Confirm whether the drifted property is one your
   template intentionally leaves unmanaged; if so, exclude it from drift
-  concern in the runbook rather than chasing false positives every cycle.
+  concern in the [runbook](../../Observability_and_SecOps/runbook/SKILL.md) rather than chasing false positives every cycle.
 
 - **Symptom:** A StackSet operation stops partway through with some
   account/region instances `FAILED` and others `SUCCEEDED`.
@@ -322,25 +322,25 @@ Stage 1 — single-account review and apply:
 ```bash
 cfn-lint templates/logging-bucket.yaml
 
-aws cloudformation create-change-set \
+aws [cloudformation](../cloudformation/SKILL.md) create-change-set \
   --stack-name app-logs-staging \
   --change-set-name initial-deploy \
   --template-body file://templates/logging-bucket.yaml \
   --parameters file://params/staging.json
 
-aws cloudformation describe-change-set \
+aws [cloudformation](../cloudformation/SKILL.md) describe-change-set \
   --stack-name app-logs-staging --change-set-name initial-deploy
 # Reviewer confirms: 1 resource to Add (LogsBucket), no Modify/Remove.
 
-aws cloudformation execute-change-set \
+aws [cloudformation](../cloudformation/SKILL.md) execute-change-set \
   --stack-name app-logs-staging --change-set-name initial-deploy
 
-aws cloudformation wait stack-update-complete --stack-name app-logs-staging
+aws [cloudformation](../cloudformation/SKILL.md) wait stack-update-complete --stack-name app-logs-staging
 ```
 
 Stage 2 — org-wide rollout once staging is validated:
 ```bash
-aws cloudformation create-stack-set \
+aws [cloudformation](../cloudformation/SKILL.md) create-stack-set \
   --stack-set-name baseline-logging \
   --template-body file://templates/logging-bucket.yaml \
   --permission-model SERVICE_MANAGED \
@@ -348,18 +348,18 @@ aws cloudformation create-stack-set \
   --parameters ParameterKey=EnvironmentName,ParameterValue=prod \
                ParameterKey=RetentionInDays,ParameterValue=90
 
-aws cloudformation create-stack-instances \
+aws [cloudformation](../cloudformation/SKILL.md) create-stack-instances \
   --stack-set-name baseline-logging \
   --deployment-targets OrganizationalUnitIds=ou-example-12345678 \
   --regions us-east-1 eu-west-1 \
   --operation-preferences FailureTolerancePercentage=10,MaxConcurrentPercentage=25
 
-aws cloudformation list-stack-instances --stack-set-name baseline-logging
+aws [cloudformation](../cloudformation/SKILL.md) list-stack-instances --stack-set-name baseline-logging
 ```
 Six months later, a drift check confirms nothing was hand-edited:
 ```bash
-aws cloudformation detect-stack-drift --stack-name app-logs-staging
-aws cloudformation describe-stack-resource-drifts \
+aws [cloudformation](../cloudformation/SKILL.md) detect-stack-drift --stack-name app-logs-staging
+aws [cloudformation](../cloudformation/SKILL.md) describe-stack-resource-drifts \
   --stack-name app-logs-staging \
   --stack-resource-drift-status-filters MODIFIED DELETED
 # Empty result: no drift.
@@ -367,6 +367,6 @@ aws cloudformation describe-stack-resource-drifts \
 
 ## Cross-references
 
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)
-- [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md)
-- [python-automation-scripting-for-ops](../python-automation-scripting-for-ops/SKILL.md)
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../[ansible](../ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)

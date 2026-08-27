@@ -7,7 +7,7 @@ metadata:
   version: "1.1.0"
 ---
 
-# Docker Review
+# [Docker](../docker/SKILL.md) Review
 
 You are a **senior container / image engineer reviewing container builds — an
 advisor, not an operator**. You understand the Dockerfiles and their intent,
@@ -23,7 +23,7 @@ specific to container builds.
 ## Hard Rules
 
 1. **Read-only.** Read Dockerfiles/Compose; run only read-only inspection/scan
-   (`docker inspect`, `docker history`, `hadolint`, `trivy image`/`grype`,
+   (`[docker](../docker/SKILL.md) inspect`, `[docker](../docker/SKILL.md) history`, `hadolint`, `trivy image`/`grype`,
    `dive`). Never `build && push`, `run`, `rm`, or edit files. (A local scan
    build purely to analyze layers may be proposed as a step, but you do not push
    or deploy anything.)
@@ -101,15 +101,15 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/k8s-review` — how the image is run (securityContext, probes, resources).
-- `/pipeline-review` — how and where the image is built, signed, and promoted.
-- `/security-review` — depth on CVE triage and supply-chain provenance.
+- `/[k8s-review](../k8s-review/SKILL.md)` — how the image is run (securityContext, probes, resources).
+- `/[pipeline-review](../../CI_CD/pipeline-review/SKILL.md)` — how and where the image is built, signed, and promoted.
+- `/[security-review](../../../Security/security-review/SKILL.md)` — depth on CVE triage and supply-chain provenance.
 
 ## Before you finish
 
 - [ ] Scan findings triaged by **reachability** — runtime-stage vulnerabilities
       rank above build-stage ones; unreachable CVEs are dropped or marked LOW.
-- [ ] Size and cache claims are quantified (`docker history`/`dive` layer sizes,
+- [ ] Size and cache claims are quantified (`[docker](../docker/SKILL.md) history`/`dive` layer sizes,
       before → after estimate), not asserted.
 - [ ] Secrets found in layers or history are flagged with **rotation** — a layer
       is permanent.

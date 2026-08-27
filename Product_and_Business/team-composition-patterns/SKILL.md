@@ -11,7 +11,7 @@ Best practices for composing multi-agent teams, selecting team sizes, choosing a
 ## When to Use This Skill
 
 - Deciding how many teammates to spawn for a task
-- Choosing between preset team configurations
+- Choosing between [preset](../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../AI_and_Agents/Models_and_FineTuning/[preset](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) team configurations
 - Selecting the right agent type (subagent_type) for each role
 - Configuring teammate display modes (tmux, iTerm2, in-process)
 - Building custom team compositions for non-standard workflows
@@ -27,7 +27,7 @@ Best practices for composing multi-agent teams, selecting team sizes, choosing a
 
 **Rule of thumb**: Start with the smallest team that covers all required dimensions. Adding teammates increases coordination overhead.
 
-## Preset Team Compositions
+## [Preset](../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../AI_and_Agents/Models_and_FineTuning/[preset](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) Team Compositions
 
 ### Review Team
 
@@ -68,7 +68,7 @@ Best practices for composing multi-agent teams, selecting team sizes, choosing a
 - **Size**: 4 reviewers
 - **Agents**: 4x `team-reviewer`
 - **Default dimensions**: OWASP/vulnerabilities, auth/access control, dependencies/supply chain, secrets/configuration
-- **Use when**: Comprehensive security audit covering multiple attack surfaces
+- **Use when**: Comprehensive security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) covering multiple attack surfaces
 
 ### Migration Team
 
@@ -104,7 +104,7 @@ Configure in `~/.claude/settings.json`:
 
 | Mode           | Behavior                       | Best For                                          |
 | -------------- | ------------------------------ | ------------------------------------------------- |
-| `"tmux"`       | Each teammate in a tmux pane   | Development workflows, monitoring multiple agents |
+| `"tmux"`       | Each teammate in a tmux pane   | Development workflows, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) multiple agents |
 | `"iterm2"`     | Each teammate in an iTerm2 tab | macOS users who prefer iTerm2                     |
 | `"in-process"` | All teammates in same process  | Simple tasks, CI/CD environments                  |
 
@@ -137,5 +137,5 @@ Verify that the lead is using the `Agent` tool to spawn teammates and passing co
 
 ## Related Skills
 
-- [parallel-feature-development](../parallel-feature-development/SKILL.md) — Decompose work streams and assign file ownership once the team is composed
-- [team-communication-protocols](../team-communication-protocols/SKILL.md) — Establish messaging norms and shutdown procedures for the assembled team
+- [parallel-feature-development](../[parallel-feature-development](../../AI_and_Agents/Workflows/agent-teams/skills/[parallel-feature-development](../../AI_and_Agents/Workflows/parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Decompose work streams and assign file ownership once the team is composed
+- [team-communication-protocols](../[team-communication-protocols](../../AI_and_Agents/Workflows/agent-teams/skills/[team-communication-protocols](../team-communication-protocols/SKILL.md)/SKILL.md)/SKILL.md) — Establish messaging norms and shutdown procedures for the assembled team

@@ -306,8 +306,8 @@ versioning_decision_tree:
 ## REST API Implementation Patterns
 
 ### Pattern: Consistent Error Responses
-```typescript
-// TypeScript error handler middleware
+```[typescript](../../Frontend/typescript/SKILL.md)
+// [TypeScript](../../Frontend/typescript/SKILL.md) error handler middleware
 import { Request, Response, NextFunction } from 'express';
 
 interface ApiError {
@@ -355,7 +355,7 @@ function errorHandler(err: Error, req: Request, res: Response, _next: NextFuncti
 ```
 
 ### Pattern: Idempotent POST
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Idempotency-Key support for mutation endpoints
 import { Request, Response, NextFunction } from 'express';
 
@@ -409,7 +409,7 @@ class IdempotencyMiddleware {
 ```
 
 ### Pattern: Sparse Fieldsets
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // GraphQL-style field selection for REST endpoints
 function parseFields(fields: string | undefined): Set<string> | null {
   if (!fields) return null;
@@ -436,7 +436,7 @@ app.get('/users/:id', (req, res) => {
 ```
 
 ### Pattern: ETag-based Caching
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // ETag support for conditional requests
 import { createHash } from 'crypto';
 
@@ -467,7 +467,7 @@ app.get('/users/:id', async (req, res) => {
 ## GraphQL Implementation Patterns
 
 ### Pattern: DataLoader for N+1 Prevention
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import DataLoader from 'dataloader';
 
 // Batch function — one DB query for many keys
@@ -519,7 +519,7 @@ type PageInfo {
 }
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function resolveUsers(_: unknown, args: { first?: number; after?: string }): Promise<UserConnection> {
   const limit = Math.min(args.first || 20, 100);
   const cursor = args.after ? Buffer.from(args.after, 'base64').toString() : null;
@@ -555,7 +555,7 @@ async function resolveUsers(_: unknown, args: { first?: number; after?: string }
 ```
 
 ### Pattern: Field-Level Authorization
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { GraphQLFieldResolver } from 'graphql';
 
 function authorizedField<T>(resolver: GraphQLFieldResolver<T, unknown>, requiredPermission: string): GraphQLFieldResolver<T, unknown> {
@@ -597,7 +597,7 @@ class AuthDirective {
 ## Production Considerations
 
 ### Rate Limiting at API Level
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Token bucket rate limiter
 class TokenBucketRateLimiter {
   private buckets = new Map<string, { tokens: number; lastRefill: number }>();
@@ -649,7 +649,7 @@ function setRateLimitHeaders(res: Response, tier: keyof typeof RATE_LIMIT_TIERS,
 ```
 
 ### Request Validation Pipeline
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { z } from 'zod';
 
 // Schema-first validation using Zod
@@ -686,7 +686,7 @@ app.post('/v1/users', (req, res) => {
 ```
 
 ### API Documentation Generation
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // OpenAPI 3.1 spec generation from Zod schemas (using @anatine/zod-openapi)
 import { generateSchema } from '@anatine/zod-openapi';
 import { OpenAPIRegistry, OpenApiGeneratorV3 } from '@asteasolutions/zod-to-openapi';
@@ -794,7 +794,7 @@ Cache-Control: no-store  (for authenticated responses)
 ## Performance Considerations
 
 ### Response Compression
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Express compression middleware
 import compression from 'compression';
 app.use(compression({
@@ -808,7 +808,7 @@ app.use(compression({
 ```
 
 ### Connection Pooling
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // HTTP keep-alive for downstream calls
 import http from 'http';
 import https from 'https';
@@ -856,7 +856,7 @@ async function fetchFromService(url: string): Promise<unknown> {
 | File upload | Multipart/form-data | Requires custom scalar or separate upload API |
 | Learning curve | Low | Moderate |
 | Performance | Predictable per-endpoint | Varies by query complexity |
-| Monitoring | Per-endpoint metrics | Per-resolver deep tracing |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Per-endpoint metrics | Per-resolver deep tracing |
 
 ### URI vs Header Versioning
 | Aspect | URI Versioning | Header Versioning |
@@ -904,6 +904,6 @@ async function fetchFromService(url: string): Promise<unknown> {
 
 ## Handoff
 No artifact produced unless requested.
-Next skill: backend-database-patterns — design the data layer for these APIs.
+Next skill: [backend-database-patterns](../../Databases/database-patterns/SKILL.md) — design the data layer for these APIs.
 Carry forward: API contracts, resource definitions, auth requirements, pagination strategy.
 

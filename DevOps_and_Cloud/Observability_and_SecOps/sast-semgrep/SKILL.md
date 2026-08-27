@@ -76,7 +76,7 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 1. Add Semgrep to CI/CD pipeline using `assets/ci_config_examples/`
 2. Configure baseline scanning for pull requests
 3. Set severity thresholds (fail on CRITICAL/HIGH)
-4. Generate SARIF output for security dashboards
+4. Generate SARIF output for security [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 5. Track metrics: vulnerabilities found, fix rate, false positives
 
 ## Security Considerations
@@ -87,20 +87,20 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 - **Access Control**: Semgrep scans require read access to source code. Restrict scan
   result access to authorized security and development teams.
 
-- **Audit Logging**: Log all scan executions with timestamps, user, commit hash, and
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, [commit](../../CI_CD/commit/SKILL.md) hash, and
   findings count for compliance auditing.
 
 - **Compliance**: SAST scanning supports SOC2, PCI-DSS, and GDPR compliance requirements.
   Maintain scan history and remediation tracking.
 
 - **Safe Defaults**: Use `--config=auto` for balanced detection. For security-critical
-  applications, use `--config="p/security-audit"` for comprehensive coverage.
+  applications, use `--config="p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"` for comprehensive coverage.
 
 ## Language Support
 
 Semgrep supports 30+ languages including:
-- **Web**: JavaScript, TypeScript, Python, Ruby, PHP, Java, C#, Go
-- **Mobile**: Swift, Kotlin, Java (Android)
+- **Web**: JavaScript, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, PHP, Java, C#, Go
+- **Mobile**: Swift, Kotlin, Java ([Android](../../../Mobile/android/SKILL.md))
 - **Infrastructure**: Terraform, Dockerfile, YAML, JSON
 - **Other**: C, C++, Rust, Scala, Solidity
 
@@ -121,7 +121,7 @@ Semgrep supports 30+ languages including:
 ### Assets
 
 - `assets/rule_template.yaml` - Template for creating custom Semgrep rules
-- `assets/ci_config_examples/` - CI/CD integration examples (GitHub Actions, GitLab CI)
+- `assets/ci_config_examples/` - CI/CD integration examples ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI)
 - `assets/semgrep_config.yaml` - Recommended Semgrep configuration
 
 ## Common Patterns
@@ -130,7 +130,7 @@ Semgrep supports 30+ languages including:
 
 ```bash
 # Run comprehensive scan and generate report
-scripts/semgrep_scan.py --config security-audit \
+scripts/semgrep_scan.py --config security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) \
   --output results.json \
   --format json \
   --severity HIGH CRITICAL
@@ -149,7 +149,7 @@ scripts/diff_scan.sh --fail-on high \
 
 ```bash
 # Search for specific vulnerability patterns
-semgrep --config "r/javascript.lang.security.audit.xss" \
+semgrep --config "r/javascript.lang.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).xss" \
   --json /path/to/code | jq '.results'
 ```
 
@@ -165,10 +165,10 @@ semgrep --config assets/custom_rules.yaml \
 
 ### CI/CD Integration
 
-- **GitHub Actions**: Use `semgrep/semgrep-action@v1` with SARIF upload
+- **[GitHub](../../CI_CD/github/SKILL.md) Actions**: Use `semgrep/semgrep-action@v1` with SARIF upload
 - **GitLab CI**: Run as security scanning job with artifact reports
-- **Jenkins**: Execute as build step with quality gate integration
-- **pre-commit hooks**: Run lightweight scans on staged files
+- **[Jenkins](../../CI_CD/jenkins/SKILL.md)**: Execute as build step with quality gate integration
+- **pre-[commit](../../CI_CD/commit/SKILL.md) hooks**: Run lightweight scans on staged files
 
 See `assets/ci_config_examples/` for ready-to-use configurations.
 
@@ -233,7 +233,7 @@ semgrep --config "p/owasp-top-ten" --exclude-rule "generic.*"
 ### Issue: Missing Vulnerabilities
 
 **Solution**:
-- Use comprehensive rulesets: `p/security-audit` or `p/owasp-top-ten`
+- Use comprehensive rulesets: `p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or `p/owasp-top-ten`
 - Consult `../../../Global_References/rule_library.md` for specialized rules
 - Create custom rules for organization-specific patterns
 - Combine with dynamic analysis (DAST) and dependency scanning

@@ -352,7 +352,7 @@ Key decision: Three-tier good-better-best with strategic feature gating
 Impact: ARPU increased 79%, paying users increased 125%
 
 ### Case Study 2: Usage-Based Pricing at an API Company
-An API company launched with flat-rate pricing at $99/mo. Usage analysis showed 80% of customers used less than 10% of the included API calls, while 5% of customers used 60% of capacity. Switching to usage-based pricing ($0.01 per API call + $29 base) reduced churn among light users by 40% and increased revenue from heavy users by 300%.
+An API company launched with flat-rate pricing at $99/mo. Usage analysis showed 80% of customers used less than 10% of the included API calls, while 5% of customers used 60% of [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Switching to usage-based pricing ($0.01 per API call + $29 base) reduced churn among light users by 40% and increased revenue from heavy users by 300%.
 
 Method: Usage data analysis, pricing model simulation
 Key insight: Flat-rate pricing was cross-subsidizing heavy users with light user revenue
@@ -577,7 +577,7 @@ A B2B document generation API had flat-rate pricing at $199/month with a 5-docum
 New model: $29/month base + $10 per document. Light users saw 50-85% savings. Heavy users paid more but usage was predictable with a price cap at $199/month for unlimited. Results: signups increased 140% (low barrier). Light user churn reduced 45%. Heavy user revenue increased 35%. Overall revenue increased 28% due to volume growth.
 
 ### Case Study 5: Enterprise Tier as Growth Driver
-A B2B collaboration tool had two tiers: Free ($0) and Pro ($12/user/month). Enterprise sales were ad-hoc with no published pricing. The team created a published Enterprise tier at $35/user/month with SSO, advanced admin, audit logs, and SLA. Enterprise tier was positioned as the anchor.
+A B2B collaboration tool had two tiers: Free ($0) and Pro ($12/user/month). Enterprise sales were ad-hoc with no published pricing. The team created a published Enterprise tier at $35/user/month with SSO, advanced admin, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, and SLA. Enterprise tier was positioned as the anchor.
 
 Impact: Pro tier conversion increased 18% (decoy effect). Enterprise direct sales increased 40% (published pricing reduced sales friction). 15% of new Pro signups came from organizations that would eventually upgrade to Enterprise. The Enterprise anchor made Pro feel like a safe, reasonable choice.
 
@@ -640,5 +640,5 @@ Threshold: >4.0 = Ready to launch, 3.0-4.0 = Revise, <3.0 = Redesign pricing
   - ../../../Global_References/pricing-models-tiering.md — Pricing Models and Tiering
   - ../../../Global_References/pricing-experimentation.md — Pricing Experimentation
 ## Handoff
-For growth experiments on pricing, hand off to `product-growth-engineering`. For GTM strategy for new pricing, hand off to `product-go-to-market`.
+For growth experiments on pricing, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`. For GTM strategy for new pricing, hand off to `[product-go-to-market](../go-to-market/SKILL.md)`.
 

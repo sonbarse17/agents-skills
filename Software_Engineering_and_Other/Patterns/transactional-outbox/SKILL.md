@@ -24,7 +24,7 @@ Guarantee reliable event publication by writing events to an outbox table within
 Exact user phrases: "outbox", "transactional outbox", "outbox pattern", "reliable event publishing", "dual write", "CDC outbox", "message relay", "publish events", "exactly-once publish", "debezium outbox".
 
 ### Input Context
-- Database technology (PostgreSQL, MySQL, SQL Server, etc.).
+- Database technology ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), SQL Server, etc.).
 - Message broker (Kafka, RabbitMQ, SQS, etc.).
 - Whether dual-write (DB + broker) is a current problem.
 - Current event publishing mechanism.
@@ -48,7 +48,7 @@ Consumer dedup: {key and storage}
 - [ ] Outbox records are deleted or marked processed after successful publish.
 - [ ] Relay handles failures with retry and backoff.
 - [ ] Consumers are idempotent (handle duplicate deliveries).
-- [ ] Monitoring in place for outbox backlog.
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in place for outbox backlog.
 
 ### Max Response Length
 15 lines for design. 8 lines for table schema.
@@ -64,7 +64,7 @@ What throughput do you need?
   ├── High throughput (>1000 events/sec), need near real-time
   │   └── CDC relay (Debezium) — tail the WAL, no polling overhead
   └── Moderate throughput, want logical replication, no extra infra
-      └── PostgreSQL LISTEN/NOTIFY + polling as fallback
+      └── [PostgreSQL](../../Backend/postgresql/SKILL.md) LISTEN/NOTIFY + polling as fallback
 ```
 
 ### When to Use Outbox Pattern
@@ -105,7 +105,7 @@ CREATE INDEX idx_outbox_processed ON outbox_messages(processed_at)
 
 ### Step 2: Write Within Transaction
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function placeOrder(command: PlaceOrderCommand): Promise<void> {
   await db.transaction(async (tx) => {
     // 1. Business operation
@@ -128,7 +128,7 @@ async function placeOrder(command: PlaceOrderCommand): Promise<void> {
 
 ### Step 3: Message Relay (Polling)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class OutboxRelay {
   constructor(
     private db: Database,
@@ -173,7 +173,7 @@ class OutboxRelay {
 For high-throughput systems, use CDC instead of polling:
 
 ```
-Application -> PostgreSQL WAL -> Debezium connector -> Kafka -> Consumer
+Application -> [PostgreSQL](../../Backend/postgresql/SKILL.md) WAL -> Debezium connector -> Kafka -> Consumer
 
 1. Application writes business data + outbox row in same transaction
 2. Debezium reads the WAL and captures the outbox insert
@@ -188,7 +188,7 @@ Debezium outbox configuration:
 {
   "name": "order-service-connector",
   "config": {
-    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "connector.class": "io.debezium.connector.[postgresql](../../Backend/postgresql/SKILL.md).PostgresConnector",
     "database.hostname": "postgres",
     "database.port": "5432",
     "database.user": "debezium",
@@ -208,7 +208,7 @@ Debezium outbox configuration:
 
 ### Step 5: Consumer Idempotency
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function handleOrderPlaced(event: OutboxEvent): Promise<void> {
   // Deduplicate by event ID
   const processed = await checkProcessed(event.eventId);
@@ -223,7 +223,7 @@ async function handleOrderPlaced(event: OutboxEvent): Promise<void> {
 
 For higher throughput with polling relay:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class BatchedOutboxRelay {
   async poll(): Promise<void> {
     const messages = await this.db.outbox.findUnprocessed(100);
@@ -250,7 +250,7 @@ class BatchedOutboxRelay {
 }
 ```
 
-### Step 7: Monitoring and Alerting
+### Step 7: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 
 | Metric | What It Tells | Alert Threshold |
 |--------|--------------|-----------------|
@@ -261,7 +261,7 @@ class BatchedOutboxRelay {
 | Relay processing rate | Throughput | Sudden drop > 50% |
 
 ```sql
--- Monitoring queries
+-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) queries
 -- Backlog count
 SELECT COUNT(*) FROM outbox_messages WHERE processed_at IS NULL;
 
@@ -314,10 +314,10 @@ DELETE FROM outbox_messages
 | Anti-Pattern | Why It's Bad | Fix |
 |-------------|-------------|-----|
 | Publishing directly from request handler | If broker is down, event is lost. DB tx fails, but user already got response | Use outbox: write to DB first, relay separately |
-| Same transaction, different DB | Outbox in PostgreSQL, business data in MySQL — no atomicity | Keep outbox in same DB as business data |
+| Same transaction, different DB | Outbox in [PostgreSQL](../../Backend/postgresql/SKILL.md), business data in [MySQL](../../Backend/mysql/SKILL.md) — no atomicity | Keep outbox in same DB as business data |
 | No dedup in consumer | At-least-once delivery causes duplicate processing | Check idempotency key before processing |
 | Long-running relay blocking | Single relay thread blocks if one message fails to publish | Individual message retry, skip failures, process batch |
-| Deleting outbox immediately after publish | Lose audit trail, cannot replay | Archive after 7 days, keep for replay capability |
+| Deleting outbox immediately after publish | Lose [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, cannot replay | Archive after 7 days, keep for replay capability |
 
 ## Rules
 - Business operation and outbox insert MUST be in the same database transaction. If either fails, both roll back.
@@ -378,9 +378,9 @@ CREATE TABLE outbox_messages (
 -- Enforces: events for same aggregate are published in order
 ```
 
-## PostgreSQL LISTEN/NOTIFY as Lightweight Relay
+## [PostgreSQL](../../Backend/postgresql/SKILL.md) LISTEN/NOTIFY as Lightweight Relay
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Hybrid approach: NOTIFY for low latency, polling as fallback
 class HybridOutboxRelay {
   private db: Database;
@@ -416,7 +416,7 @@ CREATE TRIGGER outbox_notify
 
 ## Error Recovery and Dead Letter Queue
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class OutboxDLQ {
   private deadLetterStore: Map<string, DeadLetterEntry> = new Map();
 
@@ -458,7 +458,7 @@ class OutboxDLQ {
 
 ## Kafka Producer Integration
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class KafkaOutboxRelay {
   private producer: Producer;
   private db: Database;
@@ -500,7 +500,7 @@ class KafkaOutboxRelay {
 
 ## Deduplication and Idempotency Strategies
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Consumer-side deduplication
 // Option 1: Database-backed dedup
 const processedEvents = new Set<string>(); // or Redis set with TTL
@@ -555,7 +555,7 @@ async function handleOrderCreated(event: OutboxEvent): Promise<void> {
   - ../../../Global_References/outbox-deployment.md — Outbox Deployment
   - ../../../Global_References/outbox-implementation.md — Transactional Outbox Pattern
   - ../../../Global_References/outbox-implementations.md — Outbox Implementations
-  - ../../../Global_References/outbox-monitoring.md — Outbox Monitoring and Recovery
+  - ../../../Global_References/outbox-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Outbox [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Recovery
 ## Handoff
 No artifact produced.
 Next skill: message-queue — for message broker configuration once outbox is in place.

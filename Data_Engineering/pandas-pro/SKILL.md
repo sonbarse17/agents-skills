@@ -20,7 +20,7 @@ Expert pandas developer specializing in efficient data manipulation, analysis, a
 ## Core Workflow
 
 1. **Assess data structure** — Examine dtypes, memory usage, missing values, data quality:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    print(df.dtypes)
    print(df.memory_usage(deep=True).sum() / 1e6, "MB")
    print(df.isna().sum())
@@ -29,7 +29,7 @@ Expert pandas developer specializing in efficient data manipulation, analysis, a
 2. **Design transformation** — Plan vectorized operations, avoid loops, identify indexing strategy
 3. **Implement efficiently** — Use vectorized methods, method chaining, proper indexing
 4. **Validate results** — Check dtypes, shapes, null counts, and row counts:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    assert result.shape[0] == expected_rows, f"Row count mismatch: {result.shape[0]}"
    assert result.isna().sum().sum() == 0, "Unexpected nulls after transform"
    assert set(result.columns) == expected_cols
@@ -52,7 +52,7 @@ Load detailed guidance based on context:
 
 ### Vectorized Operations (before/after)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # ❌ AVOID: row-by-row iteration
 for i, row in df.iterrows():
     df.at[i, 'tax'] = row['price'] * 0.2
@@ -63,7 +63,7 @@ df['tax'] = df['price'] * 0.2
 
 ### Safe Subsetting with `.copy()`
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # ❌ AVOID: chained indexing triggers SettingWithCopyWarning
 df['A']['B'] = 1
 
@@ -74,7 +74,7 @@ subset['score'] = subset['score'].fillna(0)
 
 ### GroupBy Aggregation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 summary = (
     df.groupby(['region', 'category'], observed=True)
     .agg(
@@ -88,7 +88,7 @@ summary = (
 
 ### Merge with Validation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 merged = pd.merge(
     left_df, right_df,
     on=['customer_id', 'date'],
@@ -103,7 +103,7 @@ merged.drop(columns=['_merge'], inplace=True)
 
 ### Missing Value Handling
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Forward-fill then interpolate numeric gaps
 df['price'] = df['price'].ffill().interpolate(method='linear')
 
@@ -116,7 +116,7 @@ for col in df.select_dtypes(include='number'):
 
 ### Time Series Resampling
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 daily = (
     df.set_index('timestamp')
     .resample('D')
@@ -127,7 +127,7 @@ daily = (
 
 ### Pivot Table
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 pivot = df.pivot_table(
     values='revenue',
     index='region',
@@ -140,7 +140,7 @@ pivot = df.pivot_table(
 
 ### Memory Optimization
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Downcast numerics and convert low-cardinality strings to categorical
 df['category'] = df['category'].astype('category')
 df['count'] = pd.to_numeric(df['count'], downcast='integer')
@@ -166,7 +166,7 @@ print(df.memory_usage(deep=True).sum() / 1e6, "MB after optimization")
 - Ignore SettingWithCopyWarning messages
 - Load entire large datasets without chunking
 - Use deprecated methods (`.ix`, `.append()` — use `pd.concat()`)
-- Convert to Python lists for operations possible in pandas
+- Convert to [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) lists for operations possible in pandas
 - Assume data is clean without validation
 
 ## Output Templates
@@ -177,5 +177,5 @@ When implementing pandas solutions, provide:
 3. Memory/performance considerations if dataset is large
 4. Data validation checks (dtypes, nulls, shapes)
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/pandas-pro/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/pandas-pro/)
 

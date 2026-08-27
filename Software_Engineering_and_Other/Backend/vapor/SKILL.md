@@ -26,8 +26,8 @@ User request includes: `vapor`, `vapor backend`, `vapor swift`, `fluent`, `vapor
 ### Input Context
 - Swift version (5.9+)
 - Vapor version (4.x)
-- Database driver (Fluent — PostgreSQL, MySQL, SQLite, MongoDB)
-- Hosting (Vapor Cloud, Docker, bare metal)
+- Database driver (Fluent — [PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite, [MongoDB](../mongodb/SKILL.md))
+- Hosting (Vapor Cloud, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), bare metal)
 - Features (REST, WebSocket, APNs, Leaf templates)
 
 ### Output Artifact
@@ -70,9 +70,9 @@ mkdir OrderService && cd OrderService
 swift package init --type executable
 
 # Add Vapor and Fluent
-swift package add https://github.com/vapor/vapor
-swift package add https://github.com/vapor/fluent
-swift package add https://github.com/vapor/fluent-postgres-driver
+swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/vapor
+swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent
+swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent-postgres-driver
 ```
 
 ### Step 2: Package.swift
@@ -84,11 +84,11 @@ let package = Package(
   name: "OrderService",
   platforms: [.macOS(.v13)],
   dependencies: [
-    .package(url: "https://github.com/vapor/vapor", from: "4.90.0"),
-    .package(url: "https://github.com/vapor/fluent", from: "4.9.0"),
-    .package(url: "https://github.com/vapor/fluent-postgres-driver", from: "2.8.0"),
-    .package(url: "https://github.com/vapor/leaf", from: "4.3.0"),
-    .package(url: "https://github.com/vapor/jwt", from: "4.3.0"),
+    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
+    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
+    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
+    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
+    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
   ],
   targets: [
     .executableTarget(
@@ -494,10 +494,10 @@ final class OrderControllerTests: XCTestCase {
 ### Database Selection
 ```
 Need production-grade relational DB?
-  +-- Yes -> PostgreSQL (FluentPostgresDriver)
+  +-- Yes -> [PostgreSQL](../postgresql/SKILL.md) (FluentPostgresDriver)
   +-- No  -> Need embedded/simple?
       +-- Yes -> SQLite (FluentSQLiteDriver)
-      +-- No  -> MySQL or MongoDB
+      +-- No  -> [MySQL](../mysql/SKILL.md) or [MongoDB](../mongodb/SKILL.md)
 ```
 
 ### Project Structure
@@ -560,7 +560,7 @@ First-party mobile/web app?
 |---|---|---|---|
 | Async support | async/await | async/await | Callbacks |
 | ORM | Fluent | None (raw SQL) | SwiftKuery |
-| Template engine | Leaf | None | Stencil |
+| Template engine | Leaf | None | [Stencil](../../Frontend/stencil/SKILL.md) |
 | WebSocket | Built-in | Via plugin | Built-in |
 | Community size | Large | Small | Deprecated |
 | macOS deployment | First-class | First-class | First-class |
@@ -569,7 +569,7 @@ First-party mobile/web app?
 
 ## Performance
 
-- Vapor 4 achieves ~80k req/s on modern hardware with PostgreSQL (simple queries).
+- Vapor 4 achieves ~80k req/s on modern hardware with [PostgreSQL](../postgresql/SKILL.md) (simple queries).
 - Connection pooling: Configure `maxConnectionsPerEventLoop` (default 2). Increase for high-throughput workloads.
 - Keep-alive reduces latency by 40% for repeated requests.
 - Leaf template caching in production: set `app.leaf.cache = .enabled`.
@@ -588,7 +588,7 @@ First-party mobile/web app?
 | **APNS** | Apple Push Notification service |
 | **Queues** | Background job processing (Redis, DB) |
 | **Redis** | Caching and session storage |
-| **Docker** | Containerized deployment |
+| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Containerized deployment |
 | **SwiftLint** | Code style enforcement |
 | **swift-format** | Code formatting |
 

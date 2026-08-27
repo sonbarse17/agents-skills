@@ -15,7 +15,7 @@ Raw user queries are often heavily underspecified, containing lexical ambiguitie
 - **Query Decomposition:** The LLM rewrites the single input into $N$ distinct queries targeting different facets of the problem.
 - **Routing:** A small classifier or LLM router directs the rewritten queries to specific indices (e.g., tabular SQL DB, dense vector index, BM25 keyword index).
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     User["Raw User Query"] -->|"Send()"| Rewriter["LLM Query Rewriter"]

@@ -77,7 +77,7 @@ Quality report: 25 lines. Gate configuration: 20 lines.
 | Security hotspots | 0 | SonarQube, CodeQL |
 | Test success rate | 100% | CI pipeline |
 | Lint errors | 0 | ESLint, Ruff, golangci-lint |
-| Dependency vulnerabilities | 0 critical/high | npm audit, cargo audit, govulncheck |
+| Dependency vulnerabilities | 0 critical/high | npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), govulncheck |
 
 ### Step 2: Quality Gate Configuration
 
@@ -102,10 +102,10 @@ security:
 
 ### Step 3: Static Analysis Configuration per Stack
 
-**TypeScript / JavaScript:**
+**[TypeScript](../../Frontend/typescript/SKILL.md) / JavaScript:**
 ```json
 {
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/strict"],
+  "extends": ["eslint:recommended", "plugin:@[typescript](../../Frontend/typescript/SKILL.md)-eslint/strict"],
   "rules": {
     "complexity": ["error", 10],
     "max-lines-per-function": ["warn", 50],
@@ -114,7 +114,7 @@ security:
 }
 ```
 
-**Python:**
+**[Python](../../Languages/python/SKILL.md):**
 ```toml
 [tool.ruff]
 line-length = 100
@@ -177,7 +177,7 @@ jobs:
     steps:
       - run: npm run lint
       - run: npm run test -- --coverage
-      - run: npm audit --audit-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
       - uses: sonarsource/sonarqube-scan-action@v2
 ```
 
@@ -215,7 +215,7 @@ Schedule recurring quality reviews:
 Define escalation path for quality violations:
 - Gate failure in PR: Blocked merge, author must fix
 - Repeated gate failure (3+ times): Team lead notified
-- Production incident due to quality gap: Root cause analysis, process update
+- Production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) due to quality gap: Root cause analysis, process update
 - Exception request: Requires documented justification, security review, expiry date
 
 ## Framework / Methodologies
@@ -237,14 +237,14 @@ What is your primary goal?
   ├── Enforce minimum standards in CI
   │   └── Use SonarQube Quality Gate with tool-specific linters
   │       └── Language? JS/TS → ESLint + Jest + SonarQube
-  │       └── Python → Ruff + pytest-cov + SonarQube
+  │       └── [Python](../../Languages/python/SKILL.md) → Ruff + pytest-cov + SonarQube
   │       └── Go → golangci-lint + go test + govulncheck
-  │       └── Rust → clippy + cargo-tarpaulin + cargo-audit
+  │       └── Rust → clippy + cargo-tarpaulin + cargo-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   ├── Measure and reduce technical debt
   │   └── Use SQALE model with remediation cost estimation
   │       └── Track TD ratio (remediation cost / development cost)
   │       └── Target: TD ratio < 5%
-  ├── Prepare for external audit or compliance
+  ├── Prepare for external [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or compliance
   │   └── Use ISO 25010 with full documentation
   │       └── Map controls to quality characteristics
   │       └── Generate compliance evidence automatically
@@ -258,7 +258,7 @@ What is your primary goal?
 | Level | Stage | Characteristics | Automation |
 |-------|-------|-----------------|------------|
 | 1 | Initial | No standards, manual reviews | None |
-| 2 | Managed | Basic linter, coverage targets | Pre-commit hooks |
+| 2 | Managed | Basic linter, coverage targets | Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks |
 | 3 | Defined | Quality gates in CI, rules defined | PR checks |
 | 4 | Measured | Dashboard, trend analysis, TD tracking | Automated reporting |
 | 5 | Optimizing | AI-assisted review, predictive quality | Continuous improvement |
@@ -268,11 +268,11 @@ What is your primary goal?
 | Phase | Gate | Minimum Pass |
 |-------|------|--------------|
 | Design | Architecture review, ADR | All concerns addressed |
-| Development | Pre-commit hooks, local lint | Zero errors |
+| Development | Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks, local lint | Zero errors |
 | Pull request | CI quality gates, peer review | All gates pass |
 | Staging | Integration tests, security scan | All critical pass |
 | Production | Smoke tests, canary analysis | Zero errors |
-| Post-release | Monitoring, error budgets | SLO within budget |
+| Post-release | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), error budgets | SLO within budget |
 
 ## Common Pitfalls
 
@@ -286,7 +286,7 @@ Setting only overall coverage targets allows teams to meet thresholds by coverin
 Applying a blanket cyclomatic complexity limit of 10 everywhere ignores legitimate complexity in state machines, parsers, or complex business rules. Use complexity limits with exemptions for well-documented cases, or use cognitive complexity instead.
 
 ### Pitfall 4: Alert Fatigue from Too Many Rules
-Enabling every lint rule creates noise that desensitizes the team. Important violations get lost in hundreds of warnings. Start with the strict preset, then selectively disable low-value rules. Keep warning count manageable (< 100 warnings in the entire codebase).
+Enabling every lint rule creates noise that desensitizes the team. Important violations get lost in hundreds of warnings. Start with the strict [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md), then selectively disable low-value rules. Keep warning count manageable (< 100 warnings in the entire codebase).
 
 ### Pitfall 5: Technical Debt Register Abandonment
 Teams create a technical debt register during the first quality initiative and never update it. The register becomes stale and irrelevant. Integrate TD tracking into the sprint planning process. Review and update the register every sprint.
@@ -301,14 +301,14 @@ Running a quality improvement sprint and declaring victory creates a temporary s
 Using quality metrics to evaluate individual performance creates perverse incentives — engineers game the numbers instead of improving quality. Quality data is process data, not people data. Focus metrics on the system, not individuals.
 
 ### Pitfall 9: Ignoring Third-Party Dependencies
-Focusing quality efforts exclusively on first-party code while ignoring npm packages, PyPI dependencies, and container base images leaves significant risk unaddressed. Run `npm audit`, `cargo audit`, `govulncheck`, and container scanning in CI. Maintain an SBOM for every release.
+Focusing quality efforts exclusively on first-party code while ignoring npm packages, PyPI dependencies, and container base images leaves significant risk unaddressed. Run `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `govulncheck`, and container scanning in CI. Maintain an SBOM for every release.
 
 ### Pitfall 10: Over-Automation of Reviews
 Automating every aspect of code review (format, lint, complexity, coverage) can create a false sense of security. Automated tools catch style and obvious bugs but miss architectural issues, design problems, and subtle logic errors. Automated gates are a floor, not a ceiling.
 
 ## Best Practices
 
-- **Enforce gates at PR time, not at commit time**: Developers should be able to commit and push freely; gates block merge, not work.
+- **Enforce gates at PR time, not at [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) time**: Developers should be able to [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and push freely; gates block merge, not work.
 - **Separate overall vs new code coverage**: New code should meet a higher threshold (90%) than legacy code (80%) to prevent quality drift.
 - **Use incremental analysis**: Only analyze changed files in PRs, not the entire codebase. Full analysis runs nightly.
 - **Track quality trends, not snapshots**: A single snapshot is misleading. Track 4-week rolling averages for coverage, defect density, and technical debt.
@@ -368,7 +368,7 @@ register:
 }
 ```
 
-### PR Quality Check GitHub Action
+### PR Quality Check [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action
 
 ```yaml
 name: Quality Gate
@@ -385,7 +385,7 @@ jobs:
       - uses: sonarsource/sonarqube-quality-gate-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - run: npm audit --audit-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 ```
 
 ## Case Studies
@@ -423,17 +423,17 @@ An open-source project with 500+ contributors needed consistent quality across P
 ## References
 
 - ../../../Global_References/inspection-process.md — Formal inspection process with roles and defect classification
-- ../../../Global_References/qc-advanced.md — QC advanced topics including microservices, security, and DevOps
+- ../../../Global_References/qc-advanced.md — QC advanced topics including [microservices](../../Patterns/microservices/SKILL.md), security, and DevOps
 - ../../../Global_References/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
 - ../../../Global_References/qc-fundamentals.md — Core QC concepts and terminology
-- ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, Python, Go, Rust)
+- ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../Languages/python/SKILL.md), Go, Rust)
 - ../../../Global_References/technical-debt-register.md — Technical debt register template with severity and effort
 - ../../../Global_References/qc-process-framework.md — QC process framework and maturity model
-- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality dashboards and KPIs
+- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and KPIs
 
 ## Handoff
 After completing this skill:
-- Next skill: **code-review** — detailed code review on the implementation
+- Next skill: **[code-review](../code-review/SKILL.md)** — detailed code review on the implementation
 - Pass context: quality gate results, violation list, technical debt register
 
 ## Architecture Decision Trees
@@ -448,7 +448,7 @@ After completing this skill:
 ### Tool Selection
 - Static analysis → SonarQube, ESLint, Pylint
 - Security scanning → Snyk, Trivy, Semgrep
-- Performance profiling → Lighthouse, k6 bundled
+- Performance [profiling](../../Frontend/profiling/SKILL.md) → Lighthouse, k6 bundled
 - Dependency scanning → Dependabot, Renovate
 
 ## Implementation Patterns
@@ -485,7 +485,7 @@ quality_gate:
 ### Gate Maintenance
 - **Threshold tuning**: Review gate thresholds quarterly. Adjust based on team performance and project needs.
 - **False positive management**: Review static analysis rule set regularly. Suppress known false positives with traceable justification.
-- **Technical debt budget**: Allocate 20% of sprint capacity to tech debt. Track debt ratio in quality dashboard.
+- **Technical debt budget**: Allocate 20% of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to tech debt. Track debt ratio in quality dashboard.
 
 ### Process Integration
 - **PR workflow**: Quality gates run automatically on PR creation. Gate results posted as PR comment.
@@ -510,7 +510,7 @@ quality_gate:
 - **Tiered execution**: Fast checks (lint, unit tests) run on every push. Slow checks (SAST, full coverage) run on PR ready-for-review.
 
 ### Developer Experience
-- **Pre-commit hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
 - **IDE integration**: Provide IDE config files (ESLint, Prettier, EditorConfig). Reduce format/style discussions in code review.
 - **Self-service exemptions**: Allow developers to temporarily override non-critical gates. Auto-revert after 7 days.
 
@@ -518,7 +518,7 @@ quality_gate:
 
 ### Gate Security
 - **SAST integration**: Run static application security testing as mandatory gate. Block PRs with critical/high findings.
-- **Secret scanning**: Scan every commit for hardcoded secrets. Alert security team on credential exposure.
+- **Secret scanning**: Scan every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for hardcoded secrets. Alert security team on credential exposure.
 - **License compliance**: Scan dependencies for license compatibility. Block open-source licenses not on approved list.
 
 ### Supply Chain

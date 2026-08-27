@@ -23,7 +23,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete Kubernetes Deployment On-Prem With kubeadm From Scratch
+# Complete [Kubernetes](../kubernetes/SKILL.md) Deployment On-Prem With kubeadm From Scratch
 
 ## Purpose
 
@@ -31,7 +31,7 @@ A self-managed on-prem cluster has no cloud provider underneath it doing
 any of the work every cloud-managed skill in this family takes for
 granted — no managed control plane, no automatic CNI, no cloud
 LoadBalancer, and no publicly-trusted DNS-01 path unless one is
-deliberately built. Every piece that a managed-Kubernetes deployment gets
+deliberately built. Every piece that a managed-[Kubernetes](../kubernetes/SKILL.md) deployment gets
 "for free" (a healthy etcd, a working `Service` of `type: LoadBalancer`,
 TLS certs from a well-known CA) has to be assembled explicitly here, in a
 specific order, by the team operating the hardware. Getting the order
@@ -42,12 +42,12 @@ control-plane VIP and etcd topology are actually settled, so a later
 control-plane change disrupts already-configured networking. This skill
 sequences the physical/network prerequisites, kubeadm HA bootstrap,
 MetalLB, CNI, ingress, cert-manager, conformance validation, etcd backup,
-and a first workload into one ordered path for bare-metal/on-prem
+and a first workload into one ordered path for [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/on-prem
 specifically.
 
 ## When to use
 
-- Bootstrapping a brand-new self-managed Kubernetes cluster on physical
+- Bootstrapping a brand-new self-managed [Kubernetes](../kubernetes/SKILL.md) cluster on physical
   or on-prem virtualized hardware, from racked-and-cabled servers to a
   production-ready cluster.
 - Auditing an existing on-prem kubeadm deployment for a skipped or
@@ -56,7 +56,7 @@ specifically.
   ever taken).
 - Rebuilding a reference on-prem cluster (a second site, a DR cluster)
   that should follow the same sequence as a known-good first cluster.
-- Deciding, deliberately, the bare-metal-specific answers to problems a
+- Deciding, deliberately, the [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-specific answers to problems a
   cloud-managed cluster would otherwise solve automatically: which CNI,
   how `LoadBalancer` Services get a real address, and where TLS trust
   comes from.
@@ -67,10 +67,10 @@ specifically.
   out-of-band management network reachable via Redfish/IPMI, and a
   reconciled DCIM/IPAM inventory — this skill does **not** cover physical
   facility or inventory setup; see
-  [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md).
+  [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md).
 - A container runtime (containerd) already installed on every host — see
-  [container-runtime-docker-containerd](../container-runtime-docker-containerd/SKILL.md).
-- Matching `kubeadm`/`kubelet`/`kubectl` minor versions across every node,
+  [container-runtime-[docker](../docker/SKILL.md)-containerd](../[container-runtime-[docker](../docker/SKILL.md)-containerd](../container-runtime-[docker](../docker/SKILL.md)-containerd/SKILL.md)/SKILL.md).
+- Matching `kubeadm`/`kubelet`/`[kubectl](../kubectl/SKILL.md)` minor versions across every node,
   swap disabled, and the kernel/sysctl preflight requirements satisfied
   on every host.
 - A stable control-plane endpoint address reachable **before**
@@ -86,26 +86,26 @@ specifically.
   signing key/cert, or genuine internet reachability for public ACME —
   decide this before Phase 6, since it changes what credentials/network
   paths must exist.
-- `helm` ≥ 3.14 and `kubectl` on an administrative workstation with
+- `helm` ≥ 3.14 and `[kubectl](../kubectl/SKILL.md)` on an administrative workstation with
   access to the control-plane endpoint once it exists.
 
 ## Step-by-step guidance
 
 This is the phase sequence. Each phase links to the skill that covers its
-full depth; the text here covers only on-prem/bare-metal-specific
+full depth; the text here covers only on-prem/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-specific
 sequencing and integration decisions.
 
 1. **Phase 1 — Physical/network prerequisites and IP planning.** Confirm
    inventory-as-code, out-of-band management isolation, and the
-   virtualization/bare-metal provisioning pipeline are in place per
-   [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md).
+   virtualization/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning pipeline are in place per
+   [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md).
    Reserve, in one place, every IP range this deployment will need:
    the pod CIDR (Phase 3), the control-plane VIP (Phase 2), and the
    MetalLB pool (Phase 4) — deciding these together now avoids a CIDR
    collision discovered mid-bootstrap.
 
 2. **Phase 2 — kubeadm HA control plane with kube-vip.** Follow
-   [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)
+   [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md)
    for the full `kubeadm init`/`join`/`kube-vip` bootstrap detail. The
    on-prem-specific sequencing point: `kube-vip` (or an equivalent
    hardware LB) must be reachable at the address passed to
@@ -126,19 +126,19 @@ sequencing and integration decisions.
    ```
 
 3. **Phase 3 — CNI: Calico or Flannel, no cloud default to fall back
-   on.** Unlike every managed-Kubernetes skill in this family (which
+   on.** Unlike every managed-[Kubernetes](../kubernetes/SKILL.md) skill in this family (which
    ship a CNI already running) and unlike K3s (which bundles Flannel),
    a fresh kubeadm cluster leaves every node `NotReady` until a CNI is
    explicitly applied — there is no default here at all:
    ```bash
-   kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
-   kubectl apply -f custom-resources.yaml   # ipPools.cidr must match podSubnet from Phase 2 exactly
+   [kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+   [kubectl](../kubectl/SKILL.md) apply -f custom-resources.yaml   # ipPools.cidr must match podSubnet from Phase 2 exactly
    ```
    Choose Calico when `NetworkPolicy` enforcement is required (the common
    case for on-prem clusters subject to the same security expectations as
    any cloud cluster) or Flannel for the simplest possible overlay when
    it isn't — see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for the full tradeoff, including the BGP-vs-overlay data-path decision
    this on-prem network (unlike most cloud VPCs) may actually be able to
    support natively.
@@ -148,34 +148,34 @@ sequencing and integration decisions.
    bare metal has no cloud API to allocate a real load balancer, so
    every `Service` of `type: LoadBalancer` sits `EXTERNAL-IP: <pending>`
    forever without something to satisfy that request. See
-   [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md)
+   [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
    for the full Layer2-vs-BGP decision and IP pool setup:
    ```bash
-   kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-   kubectl apply -f metallb-ipaddresspool-and-l2advertisement.yaml
+   [kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+   [kubectl](../kubectl/SKILL.md) apply -f metallb-ipaddresspool-and-l2advertisement.yaml
    ```
    Use the IP range reserved in Phase 1 — a range still handed out by
    DHCP elsewhere on the same segment produces intermittent, confusing
-   address conflicts that look like a Kubernetes bug rather than an IPAM
+   address conflicts that look like a [Kubernetes](../kubernetes/SKILL.md) bug rather than an IPAM
    coordination gap.
 
 5. **Phase 5 — ingress-nginx, exposed via the MetalLB-provisioned
    address.** Install per
-   [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md),
+   [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md),
    with `controller.service.type=LoadBalancer` now meaningful because
    Phase 4 gave MetalLB something to allocate from:
    ```bash
    helm install ingress-nginx ingress-nginx/ingress-nginx \
      --namespace ingress-nginx --create-namespace \
      --set controller.service.type=LoadBalancer
-   kubectl get svc -n ingress-nginx ingress-nginx-controller   # confirm a real EXTERNAL-IP from the MetalLB pool
+   [kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # confirm a real EXTERNAL-IP from the MetalLB pool
    ```
    Point internal DNS (or a hosts-file entry for a small lab deployment)
    at this address before Phase 6 needs it resolvable.
 
 6. **Phase 6 — cert-manager with an internal CA or ACME, decided by
    actual reachability.** Install cert-manager per
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md).
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md).
    On-prem-specific decision, made explicitly rather than defaulted:
    - **Internal/private CA** — the common on-prem choice when services
      are internal-only and there's no reason to seek public trust; use
@@ -194,31 +194,31 @@ sequencing and integration decisions.
 7. **Phase 7 — Conformance validation and etcd backup setup together.**
    Run Sonobuoy quick mode, then full `certified-conformance`, then
    targeted smoke tests per
-   [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md),
+   [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md),
    explicitly including a `NetworkPolicy` positive/negative test if
    Calico was chosen in Phase 3. **In parallel, and before this cluster
    is declared production-ready, stand up scheduled etcd snapshots** —
-   unlike every managed-Kubernetes skill in this family, this cluster's
+   unlike every managed-[Kubernetes](../kubernetes/SKILL.md) skill in this family, this cluster's
    etcd is entirely self-operated and has no provider-side safety net at
    all:
    ```bash
    ETCDCTL_API=3 etcdctl snapshot save /backup/etcd-snapshot-$(date +%Y%m%d%H%M%S).db \
      --endpoints=https://127.0.0.1:2379 \
-     --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-     --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
-     --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+     --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt \
+     --cert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.crt \
+     --key=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.key
    ETCDCTL_API=3 etcdctl snapshot status /backup/etcd-snapshot-$(date +%Y%m%d%H%M%S).db -w table
    ```
    See
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
    for automating this as a CronJob, shipping snapshots off-node, and the
-   quorum-health monitoring that should run continuously from this point
+   quorum-health [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) that should run continuously from this point
    forward — treat a cluster with no verified etcd backup as not yet
    production-ready, regardless of how clean its conformance results are.
 
 8. **Phase 8 — Deploy the first workload via Helm.** Package and install
    per
-   [helm-chart-authoring](../helm-chart-authoring/SKILL.md):
+   [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md):
    ```bash
    helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
      --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
@@ -226,7 +226,7 @@ sequencing and integration decisions.
    If this workload needs to call a public cloud provider's API (a
    hybrid architecture), design that credential path via the hybrid
    connectivity and federation guidance in
-   [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md)
+   [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md)
    rather than assuming any of the cloud-managed workload-identity
    mechanisms (IRSA, Azure AD Workload Identity, Workload Identity
    Federation) are automatically available — none of them apply to a
@@ -235,10 +235,10 @@ sequencing and integration decisions.
 9. **Phase 9 — Node/cluster health baseline.** Establish node drain/
    cordon discipline and `NotReady` diagnosis, including the
    kubeadm-specific one-node-at-a-time upgrade sequence, via
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md)
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md)
    and
-   [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md).
-   Confirm the etcd quorum-monitoring from Phase 7 is genuinely running
+   [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md).
+   Confirm the etcd quorum-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) from Phase 7 is genuinely running
    (not just configured once) as part of this ongoing baseline.
 
 ## Best practices
@@ -259,12 +259,12 @@ sequencing and integration decisions.
 - Practice a full etcd restore in a non-production environment on a real
   schedule once Phase 7 is complete — a backup that's never been test-
   restored is unverified, exactly as
-  [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+  [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   describes.
 - Keep the whole sequence (kubeadm config, MetalLB pools, ingress-nginx
   values, cert-manager Issuers) as versioned IaC in one repository per
   cluster, mirroring the discipline
-  [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md)
+  [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md)
   recommends for the hardware layer beneath it.
 
 ## Common pitfalls
@@ -274,7 +274,7 @@ sequencing and integration decisions.
   nothing.
   **Fix:** This is Phase 3 being skipped or misordered — a fresh kubeadm
   cluster has no CNI at all until one is explicitly applied, unlike every
-  managed-Kubernetes skill in this family. Confirm Calico or Flannel is
+  managed-[Kubernetes](../kubernetes/SKILL.md) skill in this family. Confirm Calico or Flannel is
   actually applied and its `ipPools`/CIDR matches `podSubnet` from Phase
   2 exactly before troubleshooting any later phase.
 
@@ -296,15 +296,15 @@ sequencing and integration decisions.
   CA `Issuer` instead of continuing to debug a network path that cannot
   work as designed.
 
-- **Symptom:** A production incident requires an etcd restore, and there
+- **Symptom:** A production [incident](../../Observability_and_SecOps/incident/SKILL.md) requires an etcd restore, and there
   is no snapshot to restore from — or the only snapshot that exists was
   never verified and turns out to be corrupt.
   **Fix:** Phase 7's etcd backup setup was treated as optional or
   deferred past the initial deployment. This is exactly the gap
-  [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+  [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   exists to close — schedule snapshots, verify each one with
   `etcdctl snapshot status`, and ship them off-node as part of Phase 7,
-  not as a task revisited only after an incident makes it urgent.
+  not as a task revisited only after an [incident](../../Observability_and_SecOps/incident/SKILL.md) makes it urgent.
 
 - **Symptom:** The control-plane VIP needs to move to a new address
   months after go-live (a network redesign, a rack migration), and doing
@@ -341,32 +341,32 @@ kubeadm join 10.0.0.100:6443 --token <TOKEN> --discovery-token-ca-cert-hash sha2
   --control-plane --certificate-key <CERT_KEY>              # node-2, node-3
 
 # Phase 3 — Calico, matching podSubnet
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
-kubectl create -f calico-custom-resources.yaml   # ipPools.cidr: 192.168.0.0/16
-kubectl get nodes   # all Ready once Calico is up
+[kubectl](../kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+[kubectl](../kubectl/SKILL.md) create -f calico-custom-resources.yaml   # ipPools.cidr: 192.168.0.0/16
+[kubectl](../kubectl/SKILL.md) get nodes   # all Ready once Calico is up
 
 # Phase 4 — MetalLB, Layer2 mode, using the reserved range
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-kubectl apply -f metallb-pool-10.0.0.200-220-l2.yaml
+[kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+[kubectl](../kubectl/SKILL.md) apply -f metallb-pool-10.0.0.200-220-l2.yaml
 
 # Phase 5 — ingress-nginx exposed via MetalLB
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
-kubectl get svc -n ingress-nginx ingress-nginx-controller   # EXTERNAL-IP from 10.0.0.200-220
+[kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # EXTERNAL-IP from 10.0.0.200-220
 
 # Phase 6 — internal CA (no public internet path at this site)
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 --set crds.enabled=true
-kubectl apply -f internal-ca-issuer.yaml
+[kubectl](../kubectl/SKILL.md) apply -f internal-ca-issuer.yaml
 
 # Phase 7 — conformance + etcd backup together
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
 sonobuoy run --mode certified-conformance --wait && sonobuoy results "$(sonobuoy retrieve)" --mode=report
-kubectl apply -f netpol-default-deny.yaml -n payments   # positive/negative Calico smoke test
+[kubectl](../kubectl/SKILL.md) apply -f netpol-default-deny.yaml -n payments   # positive/negative Calico smoke test
 ETCDCTL_API=3 etcdctl snapshot save /backup/etcd-baseline-$(date +%F).db \
-  --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-  --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+  --endpoints=https://127.0.0.1:2379 --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt \
+  --cert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.crt --key=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.key
 ETCDCTL_API=3 etcdctl snapshot status /backup/etcd-baseline-$(date +%F).db -w table
 
 # Phase 8 — first workload
@@ -374,7 +374,7 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
   --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
 
 # Phase 9 — health baseline
-kubectl get pdb -A
+[kubectl](../kubectl/SKILL.md) get pdb -A
 ```
 
 `curl -I https://payments.internal.example.com` (validated against the
@@ -382,18 +382,18 @@ internal CA's trust bundle, distributed to internal clients as part of
 Phase 6) returns `HTTP/2 200`, the etcd snapshot's `snapshot status`
 reports a non-zero key count confirming a real, verified backup exists,
 and the cluster is handed off with a documented node-maintenance and
-etcd-restore runbook rather than an assumed-but-unverified one.
+etcd-restore [runbook](../../Observability_and_SecOps/runbook/SKILL.md) rather than an assumed-but-unverified one.
 
 ## Cross-references
 
-- [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md) — the physical/network/inventory layer this sequence assumes already exists, and the hybrid-connectivity pattern for any workload needing cloud API access.
-- [container-runtime-docker-containerd](../container-runtime-docker-containerd/SKILL.md) — installing/configuring the container runtime kubeadm requires on every node before Phase 2.
-- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md) — full detail for Phase 2's kubeadm HA bootstrap and Phase 9's upgrade sequence.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — full detail for Phase 3's CNI choice and installation.
-- [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md) — full detail for Phase 4's Layer2/BGP mode and IP pool setup.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — full detail for Phase 5's controller install and Ingress configuration.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — full detail for Phase 6's internal-CA and ACME Issuer setup.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — full detail for Phase 7's validation gate.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — full detail for Phase 7's backup automation and the ongoing quorum-health monitoring in Phase 9.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — full detail for Phase 8's chart packaging and release discipline.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — the ongoing operational baseline established in Phase 9.
+- [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — the physical/network/inventory layer this sequence assumes already exists, and the hybrid-connectivity pattern for any workload needing cloud API access.
+- [container-runtime-[docker](../docker/SKILL.md)-containerd](../[container-runtime-[docker](../docker/SKILL.md)-containerd](../container-runtime-[docker](../docker/SKILL.md)-containerd/SKILL.md)/SKILL.md) — installing/configuring the container runtime kubeadm requires on every node before Phase 2.
+- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — full detail for Phase 2's kubeadm HA bootstrap and Phase 9's upgrade sequence.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — full detail for Phase 3's CNI choice and installation.
+- [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for Phase 4's Layer2/BGP mode and IP pool setup.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for Phase 5's controller install and Ingress configuration.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 6's internal-CA and ACME Issuer setup.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 7's validation gate.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for Phase 7's backup automation and the ongoing quorum-health [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) in Phase 9.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for Phase 8's chart packaging and release discipline.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 9.

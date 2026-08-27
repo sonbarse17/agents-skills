@@ -26,7 +26,7 @@ User request includes: `Rails`, `Ruby on Rails`, `Rails API`, `ActiveRecord`, `R
 ### Input Context
 - Rails version (7.0+, 7.1+)
 - Ruby version (3.1+, 3.2+, 3.3+)
-- Database (PostgreSQL, MySQL, SQLite)
+- Database ([PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite)
 - Mode (API-only, full MVC)
 - Auth (Devise, JWT, OAuth)
 - Background jobs (Sidekiq, GoodJob, Solid Queue)
@@ -79,7 +79,7 @@ Decision: Rails project → ActiveRecord. Heavy data pipeline → Sequel. Hexago
 ### Step 1: Rails API Setup
 
 ```bash
-rails new my_api --api --database=postgresql --skip-test
+rails new my_api --api --database=[postgresql](../postgresql/SKILL.md) --skip-test
 cd my_api
 ```
 
@@ -474,7 +474,7 @@ Use `factory_bot_rails` for test data. Use `shoulda-matchers` for model specs. U
   - ../../../Global_References/rails-api-conventions.md — Rails API Conventions
   - ../../../Global_References/rails-api-design.md — Rails API Design
   - ../../../Global_References/rails-background-jobs.md — Background Jobs
-  - ../../../Global_References/rails-performance-tuning.md — Performance Tuning
+  - ../../../Global_References/rails-[performance-tuning](../../Frontend/performance-tuning/SKILL.md).md — Performance Tuning
   - ../../../Global_References/rails-performance.md — Rails Performance
   - ../../../Global_References/rails-security.md — Rails Security
   - ../../../Global_References/rails-testing.md — Testing Rails Applications
@@ -509,7 +509,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -517,7 +517,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

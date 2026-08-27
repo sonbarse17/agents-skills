@@ -5,7 +5,7 @@ description: Export a promoted fine-tuned model in the right deployment format �
 
 # Quantized Export
 
-The last stop after `checkpoint-promotion`
+The last stop after `[checkpoint-promotion](../checkpoint-promotion/SKILL.md)`
 hands off a `PROMOTE` verdict: a checkpoint
 that cleared the four-stage gate still isn't
 deployed until it's exported in the right
@@ -48,7 +48,7 @@ specific workloads (see Workload Overrides).
   Use it for local or CPU-adjacent
   deployment, not for GPU-serving
   throughput — it optimizes for footprint,
-  not tokens/sec on a datacenter GPU.
+  not tokens/sec on a [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU.
 - **NVFP4 is for Blackwell-at-scale
   deployments only — and explicitly NOT on
   GB10.** NVFP4 on SM121 (GB10) runs **~32%
@@ -78,8 +78,8 @@ lookup table for common scenarios:
 
 | Target | Workload | Format |
 |---|---|---|
-| Datacenter GPU | generic chat | FP8 |
-| Datacenter GPU | long-context/code/math | FP8 or W8A8 — never INT4 |
+| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU | generic chat | FP8 |
+| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU | long-context/code/math | FP8 or W8A8 — never INT4 |
 | Older GPU generation | generic | AWQ INT4 |
 | Edge device / laptop | llama.cpp serving | GGUF Q4_K_M + imatrix |
 | GB10 | any workload | FP8 via vLLM nightly, or GGUF via llama.cpp locally — skip NVFP4 |
@@ -109,7 +109,7 @@ on cost grounds.
   similar broad-knowledge benchmarks — they
   don't stress the failure mode. **Measure
   with the actual task evals** — the goldens
-  and graders from `eval-harness-first`, run
+  and graders from `[eval-harness-first](../eval-harness-first/SKILL.md)`, run
   through the exported artifact — because
   INT4 degradation on long-context, code, or
   math shows up as task-specific failures
@@ -141,7 +141,7 @@ work":**
    the one that will serve it in production.
 2. **Run 3–5 golden prompts through it** —
    pull these from the same `eval/goldens.jsonl`
-   `eval-harness-first` maintains, not a fresh
+   `[eval-harness-first](../eval-harness-first/SKILL.md)` maintains, not a fresh
    ad hoc set.
 3. **Compare each output against the
    pre-export generation** for the same
@@ -161,7 +161,7 @@ work":**
 Run this as a gate, not a manual check:
 
 ```bash
-python smoke_test.py "$EXPORT_PATH" \
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) smoke_test.py "$EXPORT_PATH" \
     eval/goldens.jsonl pre-export-outputs.jsonl
 # non-zero exit on any pre/post mismatch
 ```
@@ -196,17 +196,17 @@ smoke-test script skeleton:
 
 ## Related Skills
 
-- `checkpoint-promotion` — the only valid
+- `[checkpoint-promotion](../checkpoint-promotion/SKILL.md)` — the only valid
   upstream source for this skill. A checkpoint
   without a `PROMOTE` verdict doesn't reach
   export.
-- `eval-harness-first` — owns the
+- `[eval-harness-first](../eval-harness-first/SKILL.md)` — owns the
   `eval/goldens.jsonl` this skill's smoke test
   draws its 3–5 prompts from, and the task
   evals the Workload Overrides section
   requires for long-context/code/math
   validation.
-- `finetuning-method-selection` — its
+- `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` — its
   `references/model-catalog.md` is the place
   to check hardware-class assumptions (which
   GPU generations a base model targets) before

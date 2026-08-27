@@ -30,7 +30,7 @@ just their lost afternoon — it's the platform's credibility with every
 team watching, at the exact moment adoption depends on the golden path
 visibly working. This skill covers the validation discipline that belongs
 between designing a template (covered in
-[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md))
+[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
 and pointing new-service creation at it: a CI pipeline that scaffolds a
 real instance from the template, builds it, deploys it to an ephemeral
 environment, runs a smoke test, and tears it down — repeated for every
@@ -60,14 +60,14 @@ shipped as a tested option.
 - The templating substrate already in place — Backstage Scaffolder
   (`scaffolder.backstage.io/v1beta3` `Template` manifests) or a Score-based
   skeleton workflow; see
-  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)
+  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
   for the template structure this skill validates.
-- CI runner capacity and permissions to: check out a freshly scaffolded
+- CI runner [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and permissions to: check out a freshly scaffolded
   repository, run its build, push a throwaway image to a registry, and
   deploy to an ephemeral namespace/environment — this is a real,
   if short-lived, deploy, not a dry parse of the template's YAML.
 - An ephemeral deploy target dedicated to template testing (a
-  `template-ci` Kubernetes namespace, or a disposable Humanitec/Score
+  `template-ci` [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) namespace, or a disposable Humanitec/Score
   Environment) with a teardown mechanism (TTL-based namespace cleanup, or
   an explicit teardown CI job) so failed test runs don't accumulate
   orphaned infrastructure.
@@ -86,7 +86,7 @@ shipped as a tested option.
    For Backstage, call the Scaffolder's own execution API rather than
    reimplementing template rendering:
    ```yaml
-   # .github/workflows/validate-golden-path.yml
+   # .[github](../github/SKILL.md)/workflows/validate-golden-path.yml
    name: Validate golden-path template
    on:
      pull_request:
@@ -132,9 +132,9 @@ shipped as a tested option.
    syntactically valid files that still don't compile, especially after a
    runtime-version bump:
    ```bash
-   git clone "https://github.com/acme-corp/template-ci-standard-${GITHUB_RUN_ID}.git"
+   git clone "https://[github](../github/SKILL.md).com/acme-corp/template-ci-standard-${GITHUB_RUN_ID}.git"
    cd "template-ci-standard-${GITHUB_RUN_ID}"
-   docker build -t "template-ci:${GITHUB_RUN_ID}" .
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t "template-ci:${GITHUB_RUN_ID}" .
    ```
    A failure here is the single most valuable signal this pipeline
    produces — it means the template renders something that doesn't even
@@ -145,7 +145,7 @@ shipped as a tested option.
    the generated deploy config works, not just the generated code):
    ```bash
    score-compose generate score.yaml -o compose.yaml
-   docker compose -f compose.yaml up -d
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) compose -f compose.yaml up -d
    # or, for a Humanitec-backed golden path:
    humctl score deploy --app "template-ci-standard-${GITHUB_RUN_ID}" \
      --env template-ci --file score.yaml
@@ -167,10 +167,10 @@ shipped as a tested option.
    failure paths, so a template-validation run never leaves an orphaned
    repository, catalog entry, or ephemeral deploy behind:
    ```bash
-   docker compose -f compose.yaml down -v
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) compose -f compose.yaml down -v
    gh repo delete "acme-corp/template-ci-standard-${GITHUB_RUN_ID}" --yes
    ```
-   Run teardown in a workflow `if: always()` step (GitHub Actions) or
+   Run teardown in a workflow `if: always()` step ([GitHub](../github/SKILL.md) Actions) or
    equivalent `after_script`/`finally` block, not only on the happy path —
    a failed smoke test that skips cleanup is exactly the run most likely
    to need re-investigation later, and an accumulating pile of
@@ -191,7 +191,7 @@ shipped as a tested option.
    `metadata.name`/version tag, route a small subset of new-service
    requests (or a designated pilot team) to it first, and only flip the
    default once it has both passed this pipeline and produced at least
-   one real, developer-scaffolded service without incident:
+   one real, developer-scaffolded service without [incident](../../Observability_and_SecOps/incident/SKILL.md):
    ```yaml
    metadata:
      name: golden-path-service-standard
@@ -213,7 +213,7 @@ shipped as a tested option.
   upstream base image, runtime version, or dependency it pulls in drifts,
   and the first sign shouldn't be a developer's failed scaffold.
 - Name every artifact this pipeline creates with a clearly identifiable,
-  greppable prefix (`template-ci-*`) so cleanup, monitoring, and incident
+  greppable prefix (`template-ci-*`) so cleanup, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), and [incident](../../Observability_and_SecOps/incident/SKILL.md)
   triage can all distinguish real services from validation runs at a
   glance.
 - Make teardown unconditional (`if: always()`), not just a happy-path step
@@ -288,12 +288,12 @@ the default every new Go service gets.
    `template-ci-standard-48213` from the *changed* template ref, using
    `runtime: go1.22` explicitly (not relying on the default alone, to test
    the exact value being changed).
-3. `docker build` on the generated repository succeeds — the Dockerfile's
+3. `[docker](../../Containers_and_Orchestration/docker/SKILL.md) build` on the generated repository succeeds — the Dockerfile's
    base image update is compatible with the generated `go.mod`.
-4. `score-compose generate` and `docker compose up` deploy it locally in
+4. `score-compose generate` and `[docker](../../Containers_and_Orchestration/docker/SKILL.md) compose up` deploy it locally in
    the CI runner; the smoke test polls `/healthz` and gets `200` within
    4 seconds.
-5. Teardown removes the throwaway GitHub repo and stops the compose stack,
+5. Teardown removes the throwaway [GitHub](../github/SKILL.md) repo and stops the compose stack,
    `if: always()`.
 6. The matrix also runs `golden-path-service-minimal` and
    `golden-path-service-advanced` against the same runtime bump — both
@@ -307,6 +307,6 @@ the default every new Go service gets.
 
 ## Cross-references
 
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — the tiering, parameterization, and versioning design this pipeline validates; read that first for the template structure being tested here.
-- [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md) — the equivalent validation discipline for a single Score workload spec, used inside step 4/5 when the golden path's deploy mechanism is Score-based.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — how the canary/pilot sequencing in step 8 fits into the platform's broader rollout and change-management approach.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the tiering, parameterization, and versioning design this pipeline validates; read that first for the template structure being tested here.
+- [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for a single Score workload spec, used inside step 4/5 when the golden path's deploy mechanism is Score-based.
+- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — how the canary/pilot sequencing in step 8 fits into the platform's broader rollout and [change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md) approach.

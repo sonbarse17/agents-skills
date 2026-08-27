@@ -19,10 +19,10 @@ metadata:
 
 1. **Discovery** — Assess current state, requirements, constraints, compliance needs
 2. **Design** — Select services, design topology, plan data architecture
-3. **Security** — Implement zero-trust, identity federation, encryption
-4. **Cost Model** — Right-size resources, reserved capacity, auto-scaling
+3. **Security** — Implement [zero-trust](../../../Security/zero-trust/SKILL.md), identity federation, encryption
+4. **Cost Model** — Right-size resources, reserved [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), auto-scaling
 5. **Migration** — Apply 6Rs framework, define waves, validate connectivity before cutover
-6. **Operate** — Set up monitoring, automation, continuous optimization
+6. **Operate** — Set up [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), automation, continuous optimization
 
 ### Workflow Validation Checkpoints
 
@@ -58,16 +58,16 @@ Load detailed guidance based on context:
 | AWS Services | `../../../Global_References/aws.md` | EC2, S3, Lambda, RDS, Well-Architected Framework |
 | Azure Services | `../../../Global_References/azure.md` | VMs, Storage, Functions, SQL, Cloud Adoption Framework |
 | GCP Services | `../../../Global_References/gcp.md` | Compute Engine, Cloud Storage, Cloud Functions, BigQuery |
-| Multi-Cloud | `../../../Global_References/multi-cloud.md` | Abstraction layers, portability, vendor lock-in mitigation |
+| [Multi-Cloud](../multi-cloud/SKILL.md) | `../../../Global_References/[multi-cloud](../multi-cloud/SKILL.md).md` | Abstraction layers, portability, vendor lock-in mitigation |
 | Cost Optimization | `../../../Global_References/cost.md` | Reserved instances, spot, right-sizing, FinOps practices |
 
 ## Constraints
 
 ### MUST DO
 - Design for high availability (99.9%+)
-- Implement security by design (zero-trust)
-- Use infrastructure as code (Terraform, CloudFormation)
-- Enable cost allocation tags and monitoring
+- Implement security by design ([zero-trust](../../../Security/zero-trust/SKILL.md))
+- Use infrastructure as code (Terraform, [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md))
+- Enable cost allocation tags and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Plan disaster recovery with defined RTO/RPO
 - Implement multi-region for critical workloads
 - Use managed services when possible
@@ -78,14 +78,14 @@ Load detailed guidance based on context:
 - Skip encryption (at rest and in transit)
 - Create single points of failure
 - Ignore cost optimization opportunities
-- Deploy without proper monitoring
+- Deploy without proper [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Use overly complex architectures
 - Ignore compliance requirements
 - Skip disaster recovery testing
 
 ## Common Patterns with Examples
 
-### Least-Privilege IAM (Zero-Trust)
+### Least-Privilege IAM ([Zero-Trust](../../../Security/zero-trust/SKILL.md))
 
 Rather than broad policies, scope permissions to specific resources and actions:
 
@@ -215,5 +215,5 @@ When designing cloud architecture, provide:
 4. Cost estimation and optimization strategy
 5. Deployment approach and rollback plan
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/cloud-architect/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/cloud-architect/)
 

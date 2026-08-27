@@ -7,18 +7,18 @@ metadata:
   version: "1.0"
 ---
 
-# Incident Management
+# [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management
 
-Implement effective incident management processes including severity definitions, escalation matrices, war room procedures, and blameless post-mortem templates.
+Implement effective [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management processes including severity definitions, escalation matrices, war room procedures, and blameless post-mortem templates.
 
 ## When to Use
 
-- Establishing incident management processes for production systems
+- Establishing [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management processes for production systems
 - Defining severity levels and escalation procedures
-- Running war rooms and coordinating incident response
-- Conducting blameless post-incident reviews
+- Running war rooms and coordinating [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
+- Conducting blameless post-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) reviews
 - Building on-call schedules and notification workflows
-- Meeting compliance requirements for incident response (SOC 2, HIPAA, PCI DSS)
+- Meeting compliance requirements for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response (SOC 2, HIPAA, PCI DSS)
 
 ## Severity Levels
 
@@ -30,10 +30,10 @@ severity_definitions:
       - Production site completely down
       - Data breach confirmed or suspected
       - Complete loss of a critical business function
-      - Security incident with active exploitation
+      - Security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) with active exploitation
     response_time: "Immediate (within 5 minutes)"
     update_frequency: "Every 15-30 minutes"
-    who_is_paged: "On-call engineer, engineering manager, incident commander, executive on-call"
+    who_is_paged: "On-call engineer, engineering manager, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander, executive on-call"
     communication: "Status page update, customer email, executive notification"
     resolution_target: "< 1 hour to mitigate"
 
@@ -67,7 +67,7 @@ severity_definitions:
     impact: "Cosmetic issue, minor inconvenience, or non-customer-facing problem"
     examples:
       - UI cosmetic bug
-      - Non-critical monitoring gap
+      - Non-critical [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gap
       - Internal tool degradation
       - Documentation inaccuracy in production
     response_time: "Next business day"
@@ -102,7 +102,7 @@ escalation_matrix:
   tier_3_engineering_management:
     reached_via: "PagerDuty escalation or direct call"
     responsibilities:
-      - Assign incident commander (if not already)
+      - Assign [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander (if not already)
       - Allocate additional resources
       - Make business decisions (feature disable, rollback, etc.)
       - Coordinate external communication
@@ -137,24 +137,24 @@ war_room:
 
   setup:
     communication_channel:
-      primary: "Dedicated Slack channel (#incident-YYYY-MM-DD-brief-name)"
+      primary: "Dedicated Slack channel (#[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-YYYY-MM-DD-brief-name)"
       voice: "Zoom/Google Meet bridge (persistent link)"
       backup: "Phone conference bridge"
     channel_rules:
-      - "Only incident-related communication in the channel"
+      - "Only [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-related communication in the channel"
       - "Use threads for side discussions"
       - "Prefix messages with role (IC:, COMMS:, ENG:)"
 
   roles:
     incident_commander:
       responsibilities:
-        - Own the incident from declaration to resolution
+        - Own the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from declaration to resolution
         - Coordinate all response activities
         - Make decisions on response actions
         - Assign tasks to responders
-        - Determine when incident is resolved
+        - Determine when [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is resolved
         - Schedule post-mortem
-      selection: "On-call IC roster, or senior engineer who declares the incident"
+      selection: "On-call IC roster, or senior engineer who declares the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
 
     communications_lead:
       responsibilities:
@@ -183,7 +183,7 @@ war_room:
 
   workflow:
     1_declare:
-      - "IC declares incident with severity level"
+      - "IC declares [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) with severity level"
       - "War room channel and bridge created"
       - "Roles assigned"
       - "First status update posted"
@@ -201,8 +201,8 @@ war_room:
 
     4_resolve:
       - "Confirm service restored to normal"
-      - "Verify monitoring shows healthy metrics"
-      - "IC declares incident resolved"
+      - "Verify [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) shows healthy metrics"
+      - "IC declares [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolved"
       - "Final status page update"
 
     5_follow_up:
@@ -261,12 +261,12 @@ on_call_schedule:
 ## Post-Mortem Template
 
 ```markdown
-# Post-Incident Review: [Incident Title]
+# Post-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Review: [Incident Title]
 
 **Date:** YYYY-MM-DD
 **Severity:** SEV[1-4]
 **Duration:** [Start time] to [End time] ([X hours Y minutes])
-**Incident Commander:** [Name]
+**[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Commander:** [Name]
 **Author:** [Name]
 **Status:** Draft / In Review / Final
 
@@ -297,23 +297,23 @@ on_call_schedule:
 [Detailed technical explanation of what caused the incident]
 
 ## Detection
-- **How was the incident detected?** [Monitoring alert / customer report / manual observation]
+- **How was the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) detected?** [Monitoring alert / customer report / manual observation]
 - **Time to detect:** [Time from first anomaly to detection]
 - **Could we have detected sooner?** [Yes/No, with explanation]
 
 ## Response
 - **What went well:**
   - [List things that worked effectively during response]
-  - [E.g., "Runbook for database failover was accurate and followed successfully"]
+  - [E.g., "[Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for database failover was accurate and followed successfully"]
   - [E.g., "Communication to customers was timely and clear"]
 
 - **What could be improved:**
   - [List things that slowed or hindered response]
   - [E.g., "Took 20 minutes to identify the correct service owner"]
-  - [E.g., "Monitoring did not alert on the specific failure mode"]
+  - [E.g., "[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) did not alert on the specific failure mode"]
 
 ## Contributing Factors
-[List all factors that contributed to the incident occurring or being worse than it could have been. This is not about blame - it is about understanding the system.]
+[List all factors that contributed to the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) occurring or being worse than it could have been. This is not about blame - it is about understanding the system.]
 
 1. [Factor 1: e.g., "Configuration change was not tested in staging"]
 2. [Factor 2: e.g., "Alert threshold was too high to catch gradual degradation"]
@@ -331,7 +331,7 @@ on_call_schedule:
 [Key takeaways that should be shared broadly]
 
 ## Appendix
-- [Link to monitoring dashboards during incident]
+- [Link to [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) during incident]
 - [Link to relevant log queries]
 - [Link to war room channel archive]
 ```
@@ -367,7 +367,7 @@ post_mortem_process:
     - "Actionable: Every finding should produce a tracked action item"
 
   action_item_tracking:
-    - "All action items entered into issue tracker (Jira, GitHub Issues)"
+    - "All action items entered into issue tracker (Jira, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues)"
     - "Priority assigned based on risk reduction potential"
     - "Owner assigned with due date"
     - "Reviewed in team standups and sprint planning"
@@ -375,21 +375,21 @@ post_mortem_process:
     - "Monthly review of open post-mortem action items"
 ```
 
-## Incident Metrics
+## [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Metrics
 
 ```yaml
 incident_metrics:
   mttr:
     name: "Mean Time to Resolve"
-    definition: "Average time from incident detection to resolution"
+    definition: "Average time from [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) detection to resolution"
     target: "SEV1: <1h, SEV2: <4h"
     trending: "Track monthly, aim for improvement"
 
   mttd:
     name: "Mean Time to Detect"
-    definition: "Average time from incident start to detection"
+    definition: "Average time from [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) start to detection"
     target: "< 5 minutes for SEV1/2"
-    trending: "Monitors effectiveness of alerting"
+    trending: "Monitors effectiveness of [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)"
 
   mtta:
     name: "Mean Time to Acknowledge"
@@ -408,12 +408,12 @@ incident_metrics:
     trending: "Monitors follow-through on improvements"
 
   recurring_incidents:
-    name: "Percentage of incidents with same root cause as previous incident"
+    name: "Percentage of incidents with same root cause as previous [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
     target: "< 10%"
     trending: "Monitors effectiveness of preventive actions"
 ```
 
-## Incident Management Checklist
+## [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management Checklist
 
 ```yaml
 incident_management_checklist:
@@ -424,38 +424,38 @@ incident_management_checklist:
     - [ ] War room procedures documented
     - [ ] Post-mortem template created
     - [ ] Communication templates prepared (status page, email)
-    - [ ] Incident management tool configured (PagerDuty, OpsGenie)
+    - [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management tool configured (PagerDuty, OpsGenie)
 
   per_incident:
-    - [ ] Incident declared with severity level
+    - [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) declared with severity level
     - [ ] War room established (SEV1/2)
     - [ ] Roles assigned (IC, comms, technical lead, scribe)
     - [ ] Timeline maintained in real-time
     - [ ] Status page updated (customer-facing impact)
     - [ ] Stakeholders notified per communication plan
-    - [ ] Resolution verified with monitoring
+    - [ ] Resolution verified with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
     - [ ] Post-mortem scheduled
     - [ ] Post-mortem conducted and published
     - [ ] Action items tracked to completion
 
   compliance:
     - [ ] All SEV1/2 incidents have post-mortems
-    - [ ] Incident log maintained for audit evidence
+    - [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) log maintained for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) evidence
     - [ ] Metrics reported monthly
     - [ ] On-call health monitored (pages per person)
-    - [ ] Annual incident response training conducted
-    - [ ] Annual incident response plan test completed
+    - [ ] Annual [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response training conducted
+    - [ ] Annual [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan test completed
 ```
 
 ## Best Practices
 
-- Define severity levels with concrete examples so there is no ambiguity during an active incident
+- Define severity levels with concrete examples so there is no ambiguity during an active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
 - Implement time-based escalation: if the on-call does not acknowledge, automatically escalate
 - Focus on mitigation first, root cause second: restore service before investigating why it failed
 - Run blameless post-mortems: the goal is to improve systems, not to assign fault to individuals
-- Track post-mortem action items to completion: an unfinished action item means the same incident can recur
-- Monitor incident metrics (MTTR, MTTD, frequency) as leading indicators of system reliability
+- Track post-mortem action items to completion: an unfinished action item means the same [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) can recur
+- Monitor [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) metrics (MTTR, MTTD, frequency) as leading indicators of system reliability
 - Protect on-call health: track page volume per person and redistribute if someone is overburdened
-- Separate the incident commander role from the technical lead role in SEV1/2 incidents
-- Practice incident response regularly with game days or chaos engineering exercises
-- Archive incident records and post-mortems for compliance evidence and organizational learning
+- Separate the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander role from the technical lead role in SEV1/2 incidents
+- Practice [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response regularly with game days or chaos engineering exercises
+- Archive [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) records and post-mortems for compliance evidence and organizational learning

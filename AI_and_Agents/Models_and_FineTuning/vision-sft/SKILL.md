@@ -5,12 +5,12 @@ description: Fine-tune vision-language models (VLMs) with supervised learning on
 
 # Vision-Language SFT
 
-This skill assumes `finetuning-method-selection`
+This skill assumes `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 already routed here: the data shape is
 image+text demonstrations, not preference pairs
 or a verifiable reward signal, and the base is a
 vision-language model rather than a text-only
-one. `lora-qlora-recipes` covers the text-only
+one. `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` covers the text-only
 LoRA/QLoRA recipe this skill specializes for the
 vision tower and projector; read that skill first
 if the LoRA fundamentals (rank, alpha, target
@@ -21,7 +21,7 @@ model already picked from the model catalog.
 **Output format:** a validated adapter config —
 which components are frozen, LoRA target modules,
 and a `min_pixels`/`max_pixels` budget — that
-`llm-finetuning-training-engineer` consumes
+`[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer` consumes
 directly when it generates a runnable script.
 
 ## Quick Reference
@@ -39,7 +39,7 @@ directly when it generates a runnable script.
 Freeze the vision tower and the projector. Put
 LoRA on the LLM only, all-linear (the same
 attention + MLP target list as text-only SFT —
-see `lora-qlora-recipes`), at **r=8–16,
+see `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`), at **r=8–16,
 α=16–32**. This is the settled default for
 adapting a VLM's behavior without disturbing how
 it sees.
@@ -62,7 +62,7 @@ it sees.
   needs to unfreeze, drop QLoRA and use bf16 LoRA
   instead.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # freeze tower + projector; LoRA on LLM only
 for name, param in model.named_parameters():
     if "vision_tower" in name or "projector" in name:
@@ -167,7 +167,7 @@ check, not just a clean training log.
 
 Base VLM choice is out of scope for this skill —
 it lives in one place, the model catalog at
-`finetuning-method-selection`'s
+`[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`'s
 `references/model-catalog.md`. This skill and its
 references describe recipes by architecture
 family only, never by recommending one model over
@@ -176,7 +176,7 @@ another.
 VLM reinforcement learning (VLM-GRPO) is
 reference-only in this plugin — the fragmented
 tooling and reward-hacking failure modes specific
-to VLM-RL are covered in `grpo-rlvr-training`,
+to VLM-RL are covered in `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)`,
 not here. This skill's scope stops at supervised
 fine-tuning.
 
@@ -202,10 +202,10 @@ before touching any hyperparameter.
   stage projector-alignment recipe as an advanced
   pattern.
 
-Related skills: `finetuning-method-selection`
-routes here; `lora-qlora-recipes` covers the
+Related skills: `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
+routes here; `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` covers the
 text-only LoRA fundamentals this skill
-specializes; `grpo-rlvr-training` covers VLM-RL
-(reference-only); `dataset-curation` covers
+specializes; `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)` covers VLM-RL
+(reference-only); `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)` covers
 image+text dataset preparation this skill doesn't.
 

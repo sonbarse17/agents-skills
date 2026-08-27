@@ -19,16 +19,16 @@ Senior mobile engineer building production-ready cross-platform applications wit
 
 ## Core Workflow
 
-1. **Setup** — Expo Router or React Navigation, TypeScript config → _run `npx expo doctor` to verify environment and SDK compatibility; fix any reported issues before proceeding_
+1. **Setup** — Expo Router or React Navigation, [TypeScript](../typescript/SKILL.md) config → _run `npx expo doctor` to verify environment and SDK compatibility; fix any reported issues before proceeding_
 2. **Structure** — Feature-based organization
-3. **Implement** — Components with platform handling → _verify on iOS simulator and Android emulator; check Metro bundler output for errors before moving on_
+3. **Implement** — Components with platform handling → _verify on iOS simulator and [Android](../../../Mobile/android/SKILL.md) emulator; check Metro bundler output for errors before moving on_
 4. **Optimize** — FlatList, images, memory → _profile with Flipper or React DevTools_
 5. **Test** — Both platforms, real devices
 
 ### Error Recovery
 - **Metro bundler errors** → clear cache with `npx expo start --clear`, then restart
 - **iOS build fails** → check Xcode logs → resolve native dependency or provisioning issue → rebuild with `npx expo run:ios`
-- **Android build fails** → check `adb logcat` or Gradle output → resolve SDK/NDK version mismatch → rebuild with `npx expo run:android`
+- **[Android](../../../Mobile/android/SKILL.md) build fails** → check `adb logcat` or Gradle output → resolve SDK/NDK version mismatch → rebuild with `npx expo run:[android](../../../Mobile/android/SKILL.md)`
 - **Native module not found** → run `npx expo install <module>` to ensure compatible version, then rebuild native layers
 
 ## Reference Guide
@@ -38,7 +38,7 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Navigation | `../../../Global_References/expo-router.md` | Expo Router, tabs, stacks, deep linking |
-| Platform | `../../../Global_References/platform-handling.md` | iOS/Android code, SafeArea, keyboard |
+| Platform | `../../../Global_References/platform-handling.md` | iOS/[Android](../../../Mobile/android/SKILL.md) code, SafeArea, keyboard |
 | Lists | `../../../Global_References/list-optimization.md` | FlatList, performance, memo |
 | Storage | `../../../Global_References/storage-hooks.md` | AsyncStorage, MMKV, persistence |
 | Structure | `../../../Global_References/react-native-expert_project-structure.md` | Project setup, architecture |
@@ -49,9 +49,9 @@ Load detailed guidance based on context:
 - Use FlatList/SectionList for lists (not ScrollView)
 - Implement memo + useCallback for list items
 - Handle SafeAreaView for notches
-- Test on both iOS and Android real devices
+- Test on both iOS and [Android](../../../Mobile/android/SKILL.md) real devices
 - Use KeyboardAvoidingView for forms
-- Handle Android back button in navigation
+- Handle [Android](../../../Mobile/android/SKILL.md) back button in navigation
 
 ### MUST NOT DO
 - Use ScrollView for large lists
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     // Platform-specific shadow
     ...Platform.select({
       ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.2, shadowRadius: 4 },
-      android: { elevation: 3 },
+      [android](../../../Mobile/android/SKILL.md): { elevation: 3 },
     }),
   },
   label: { color: '#fff', fontSize: 13, fontWeight: '600' },
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
 ## Output Format
 
 When implementing React Native features, deliver:
-1. **Component code** — TypeScript, with prop types defined
-2. **Platform handling** — `Platform.select` or `.ios.tsx` / `.android.tsx` splits as needed
+1. **Component code** — [TypeScript](../typescript/SKILL.md), with prop types defined
+2. **Platform handling** — `Platform.select` or `.ios.tsx` / `.[android](../../../Mobile/android/SKILL.md).tsx` splits as needed
 3. **Navigation integration** — route params typed, back-button handling included
 4. **Performance notes** — memo boundaries, key extractor strategy, image caching
 
@@ -184,5 +184,5 @@ When implementing React Native features, deliver:
 
 React Native 0.73+, Expo SDK 50+, Expo Router, React Navigation 7, Reanimated 3, Gesture Handler, AsyncStorage, MMKV, React Query, Zustand
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/react-native-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/react-native-expert/)
 

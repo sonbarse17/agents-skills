@@ -413,8 +413,8 @@ resource "aws_flow_log" "main" {
 
 ## Related Skills
 
-- [aws-ec2](../aws-ec2/) - Instances deployed in VPC subnets
-- [aws-ecs-fargate](../aws-ecs-fargate/) - ECS tasks in VPC networking
-- [aws-rds](../aws-rds/) - Database subnet groups
-- [terraform-aws](../terraform-aws/) - IaC for VPC infrastructure
-- [firewall-config](../../../security/network/firewall-config/) - Network security controls
+- [aws-ec2](../[aws-ec2](../aws-ec2/SKILL.md)/) - Instances deployed in VPC subnets
+- [aws-ecs-fargate](../[aws-ecs-fargate](../aws-ecs-fargate/SKILL.md)/) - ECS tasks in VPC networking
+- [aws-rds](../[aws-rds](../aws-rds/SKILL.md)/) - Database subnet groups
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - IaC for VPC infrastructure
+- [firewall-config](../../../security/network/[firewall-config](../firewall-config/SKILL.md)/) - Network security controls

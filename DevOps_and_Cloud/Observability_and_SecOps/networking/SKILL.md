@@ -26,7 +26,7 @@ Design mobile networking layers with offline-first architecture, caching strateg
 User request includes: `mobile network`, `api client mobile`, `rest mobile`, `graphql mobile`, `offline first`, `api caching mobile`, `retry mobile`, `pagination mobile`, `background sync`, `api interceptor`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
+- Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
 - API type (REST, GraphQL, gRPC)
 - Current library (Retrofit, Apollo, Dio, Axios, URLSession)
 - Offline requirements
@@ -52,12 +52,12 @@ No preamble. No postamble. No explanations.
 What API style does the backend expose?
 ├── REST (standard CRUD, simple endpoints)
 │   ├── iOS → URLSession + async/await or Alamofire
-│   ├── Android → Retrofit + OkHttp
+│   ├── [Android](../../../Mobile/android/SKILL.md) → Retrofit + OkHttp
 │   ├── Flutter → Dio or http
 │   └── React Native → Axios or fetch
 ├── GraphQL (flexible queries, real-time subs)
 │   ├── iOS → Apollo iOS
-│   ├── Android → Apollo Kotlin
+│   ├── [Android](../../../Mobile/android/SKILL.md) → Apollo Kotlin
 │   ├── Flutter → graphql_flutter
 │   └── React Native → Apollo Client
 ├── gRPC (high-performance, streaming)
@@ -65,7 +65,7 @@ What API style does the backend expose?
 │   └── Limited mobile adoption; prefer REST/GraphQL for most apps
 └── WebSocket (real-time, bidirectional)
     ├── iOS → URLSessionWebSocketTask
-    └── Android → OkHttp WebSocket
+    └── [Android](../../../Mobile/android/SKILL.md) → OkHttp WebSocket
 ```
 
 ### Caching Strategy
@@ -146,7 +146,7 @@ dio.interceptors.add(LogInterceptor(requestBody: true, error: true));
 ```
 
 ### React Native — Axios
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import axios, { AxiosInstance, AxiosError } from 'axios';
 
 const api: AxiosInstance = axios.create({
@@ -174,7 +174,7 @@ api.interceptors.response.use(
 );
 ```
 
-### Android — Retrofit + OkHttp
+### [Android](../../../Mobile/android/SKILL.md) — Retrofit + OkHttp
 ```kotlin
 // ApiClient.kt
 object ApiClient {
@@ -334,7 +334,7 @@ class TokenInterceptor: ApolloInterceptor {
 }
 ```
 
-### Android — Apollo Kotlin
+### [Android](../../../Mobile/android/SKILL.md) — Apollo Kotlin
 ```kotlin
 val apolloClient = ApolloClient.Builder()
   .serverUrl("https://api.example.com/graphql")
@@ -360,7 +360,7 @@ class AuthInterceptor : ApolloInterceptor {
 ## Interceptors
 
 ### Auth Token Interceptor
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Axios — transparent token refresh
 api.interceptors.response.use(
   (response) => response,
@@ -542,7 +542,7 @@ class OrderRepository {
 
 ### Cursor-Based Pagination
 ```kotlin
-// Android — Paging 3
+// [Android](../../../Mobile/android/SKILL.md) — Paging 3
 class OrderPagingSource : PagingSource<String, Order>() {
   override suspend fun load(params: LoadParams<String>): LoadResult<String, Order> {
     return try {
@@ -678,7 +678,7 @@ class NetworkMonitor(context: Context) {
 
 ## SSL Pinning
 
-### Android — OkHttp CertificatePinner
+### [Android](../../../Mobile/android/SKILL.md) — OkHttp CertificatePinner
 ```kotlin
 val certificatePinner = CertificatePinner.Builder()
   .add("api.example.com", "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
@@ -784,7 +784,7 @@ Future<void> downloadFile(String url, String savePath) async {
 - **Direct API calls in ViewModels**: Ties UI to networking. Always use repository abstraction
 - **No timeout configuration**: Default timeouts are too long (minutes). Set 10s connect/read/write
 - **Ignoring 401 globally**: Each request retrying auth independently causes race conditions. Queue and retry once
-- **Blocking main thread with network calls**: ANR on Android, frozen UI on iOS. Always async
+- **Blocking main thread with network calls**: ANR on [Android](../../../Mobile/android/SKILL.md), frozen UI on iOS. Always async
 - **Caching without TTL**: Users see stale data forever. Configurable TTL per data type
 - **Loading indicator per page instead of global**: Leads to flickering. Track loading per-page
 - **No request cancellation leaving stale observers**: Memory leaks. Cancel on dispose
@@ -810,7 +810,7 @@ After networking setup, hand off to:
 - `mobile/universal/testing` — Network mocking, API testing
 - `mobile/universal/storage` — Cache persistence layer
 - `mobile/universal/performance` — Network optimization, caching
-- `mobile/android` — OkHttp, Retrofit specifics
+- `mobile/[android](../../../Mobile/android/SKILL.md)` — OkHttp, Retrofit specifics
 - `mobile/ios` — URLSession, Alamofire specifics
 - `mobile/flutter` — Dio, connectivity
 - `mobile/react-native` — Axios, NetInfo

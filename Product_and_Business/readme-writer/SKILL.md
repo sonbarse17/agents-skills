@@ -26,9 +26,9 @@ Exact user phrases: "write README", "create README", "README file", "README.md",
 ### Input Context
 - Project name and description
 - Project type (CLI tool, library, web app, API server, desktop app, game)
-- Language and framework (Node.js, Python, Rust, Go, .NET, etc.)
+- Language and framework (Node.js, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Rust, Go, .NET, etc.)
 - Target audience (end users, developers, both)
-- Installation method (npm, pip, cargo, Docker, Homebrew, manual)
+- Installation method (npm, pip, cargo, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Homebrew, manual)
 - Build and test commands
 - Configuration options and environment variables
 - Contributing guidelines (if available)
@@ -105,9 +105,9 @@ with automatic retry and timeout handling.
 
 <!-- Badges -->
 [![npm version](https://img.shields.io/npm/v/@myorg/api-client.svg)](https://www.npmjs.com/package/@myorg/api-client)
-[![build](https://github.com/myorg/api-client/actions/workflows/ci.yml/badge.svg)](https://github.com/myorg/api-client/actions)
+[![build](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/api-client/actions/workflows/ci.yml/badge.svg)](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/api-client/actions)
 [![coverage](https://codecov.io/gh/myorg/api-client/branch/main/graph/badge.svg)](https://codecov.io/gh/myorg/api-client)
-[![license](https://img.shields.io/github/license/myorg/api-client.svg)](https://github.com/myorg/api-client/blob/main/LICENSE)
+[![license](https://img.shields.io/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/license/myorg/api-client.svg)](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/api-client/blob/main/LICENSE)
 [![npm downloads](https://img.shields.io/npm/dm/@myorg/api-client.svg)](https://www.npmjs.com/package/@myorg/api-client)
 ```
 
@@ -116,7 +116,7 @@ with automatic retry and timeout handling.
 ```markdown
 ## Features
 
-- 🚀 **Typed requests and responses** — Full TypeScript generics for end-to-end type safety
+- 🚀 **Typed requests and responses** — Full [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) generics for end-to-end type safety
 - 🔁 **Automatic retry** — Configurable retry policy with exponential backoff
 - ⏱ **Timeout handling** — Per-request and global timeouts with cancellation
 - 🔒 **Auth integration** — Bearer token, API key, OAuth2, and custom auth providers
@@ -147,7 +147,7 @@ pnpm add @myorg/api-client
 
 ## Quick Start
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createClient } from '@myorg/api-client';
 
 const api = createClient({
@@ -240,7 +240,7 @@ See [full API documentation](https://docs.example.com/api-client) for details.
 ### Setup
 
 ```bash
-git clone https://github.com/myorg/api-client.git
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/api-client.git
 cd api-client
 pnpm install
 pnpm build
@@ -253,7 +253,7 @@ pnpm build
 | `pnpm build` | Build the project |
 | `pnpm test` | Run tests |
 | `pnpm lint` | Lint source code |
-| `pnpm typecheck` | Run TypeScript checks |
+| `pnpm typecheck` | Run [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) checks |
 | `pnpm format` | Format code with Prettier |
 
 ### Project Structure
@@ -264,7 +264,7 @@ src/
   auth/           # Authentication providers
   retry/          # Retry policy implementations
   plugins/        # Middleware system
-  types.ts        # TypeScript types
+  types.ts        # [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types
 test/
   unit/           # Unit tests
   integration/    # Integration tests
@@ -331,7 +331,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
 | Use real examples | Don't use foo/bar, use realistic values |
 | Link to detailed docs | README is the front door, not the whole house |
 | Include platform-specific notes | Not everyone uses macOS or Linux |
-| Pin Node.js/Python/etc. versions | Users need to know what's compatible |
+| Pin Node.js/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/etc. versions | Users need to know what's compatible |
 
 ## Templates & Tools
 
@@ -369,11 +369,11 @@ Type-safe library for doing Y.
 `npm install @myorg/libname`
 
 ## Usage
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 ```
 
 ## API
-<!-- Generated from TypeScript types -->
+<!-- Generated from [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types -->
 
 ## License
 MIT
@@ -385,13 +385,13 @@ MIT
   - references/readme-writer-templates.md — README Templates Reference
   - references/readme-writer-style-guide.md — README Style Guide Reference
 ## Handoff
-Hand off to `dev-loop-changelog-generator` for changelog content. Hand off to `dev-loop-pr-writer` for PR descriptions.
+Hand off to `[dev-loop-changelog-generator](../changelog-generator/SKILL.md)` for changelog content. Hand off to `[dev-loop-pr-writer](../pr-writer/SKILL.md)` for PR descriptions.
 
 ## Implementation Patterns
 
 ### README Generator
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Dict, List, Optional
 import json
 import subprocess
@@ -417,8 +417,8 @@ class READMEGenerator:
                 pkg = json.load(f)
                 info["name"] = pkg.get("name", info["name"])
                 info["version"] = pkg.get("version", info["version"])
-                info["description"] = pkg.get("description", "TypeScript/JavaScript project")
-                info["language"] = "JavaScript/TypeScript"
+                info["description"] = pkg.get("description", "[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript project")
+                info["language"] = "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)"
                 if pkg.get("bin"):
                     info["has_cli"] = True
         except (FileNotFoundError, json.JSONDecodeError):
@@ -441,7 +441,7 @@ class READMEGenerator:
         features = {
             "has_tests": self._file_exists("tests/") or self._file_exists("__tests__/"),
             "has_docs": self._file_exists("docs/"),
-            "has_ci": self._file_exists(".github/workflows/"),
+            "has_ci": self._file_exists(".[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/"),
             "has_docker": self._file_exists("Dockerfile"),
             "has_cli": self.package_info["has_cli"],
             "has_api": self._file_exists("api/") or self._file_exists("routes/"),
@@ -457,8 +457,8 @@ class READMEGenerator:
         name = self.package_info["name"]
         badges = [
             f"[![npm version](https://img.shields.io/npm/v/{name})](https://www.npmjs.com/package/{name})",
-            f"[![CI](https://img.shields.io/github/actions/workflow/status/org/{name}/ci.yml)](https://github.com/org/{name}/actions)",
-            f"[![License](https://img.shields.io/github/license/org/{name})](https://github.com/org/{name}/blob/main/LICENSE)",
+            f"[![CI](https://img.shields.io/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/actions/workflow/status/org/{name}/ci.yml)](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/{name}/actions)",
+            f"[![License](https://img.shields.io/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/license/org/{name})](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/{name}/blob/main/LICENSE)",
         ]
         return " ".join(badges)
 
@@ -475,7 +475,7 @@ class READMEGenerator:
             "```bash",
         ]
         lang = self.package_info["language"]
-        if lang == "JavaScript/TypeScript":
+        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)":
             lines.append("npm install")
             lines.append("npm run dev")
         elif lang == "Rust":
@@ -514,10 +514,10 @@ class READMEGenerator:
             "## Development",
             "",
             "```bash",
-            "git clone https://github.com/org/" + self.package_info['name'] + ".git",
+            "git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/" + self.package_info['name'] + ".git",
             "cd " + self.package_info['name'],
         ])
-        if lang == "JavaScript/TypeScript":
+        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)":
             lines.append("npm install")
             lines.append("npm test")
         elif lang == "Rust":
@@ -539,7 +539,7 @@ class READMEGenerator:
 
 ### README Quality Checker
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from typing import List, Dict
 
@@ -618,7 +618,7 @@ Who is the primary audience?
 │   ├── Running tests
 │   ├── Deployment guide
 │   ├── API documentation
-│   └── Monitoring / observability
+│   └── [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) / [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 │
 └── Both (open source project)
     ├── Top: User-focused content (install, quick start)
@@ -638,7 +638,7 @@ What format fits the content?
 │   └── Most projects — library, tool, app
 │
 ├── Detailed (with subsections)
-│   └── Large project, monorepo, framework
+│   └── Large project, [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), framework
 │
 └── Multi-file docs
     └── Very large project — separate docs/ directory
@@ -670,6 +670,6 @@ What format fits the content?
 
 - **README generation from package metadata**: Use package.json, Cargo.toml etc. to auto-generate badges, install commands, and version info. Reduces manual maintenance.
 - **Badge caching with shields.io**: Use shields.io's cache to serve badges. Static badges (license, version) rarely change. Dynamic badges (CI status, coverage) use short cache.
-- **README link checking**: Use `awesome_bot` or `markdown-link-check` for automated link validation. Run weekly, not on every commit, to avoid CI time waste.
+- **README link checking**: Use `awesome_bot` or `markdown-link-check` for automated link validation. Run weekly, not on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), to avoid CI time waste.
 - **Render preview in PR**: Use tools like `grip` or `remark` to render README preview in CI PR comments. Catches formatting issues before merge.
 

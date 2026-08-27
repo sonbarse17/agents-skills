@@ -203,7 +203,7 @@ When implementing a feature, deliver in this order:
 
 ## Knowledge Reference
 
-PHP 8.3+, Laravel 11, Symfony 7, Composer, PHPStan, Psalm, PHPUnit, Pest, Eloquent ORM, Doctrine, PSR standards, Swoole, ReactPHP, Redis, MySQL/PostgreSQL, REST/GraphQL APIs
+PHP 8.3+, Laravel 11, Symfony 7, Composer, PHPStan, Psalm, PHPUnit, Pest, Eloquent ORM, Doctrine, PSR standards, Swoole, ReactPHP, Redis, [MySQL](../../Backend/mysql/SKILL.md)/[PostgreSQL](../../Backend/postgresql/SKILL.md), REST/GraphQL APIs
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/php-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/php-pro/)
 

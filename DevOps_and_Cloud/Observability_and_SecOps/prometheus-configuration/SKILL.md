@@ -9,11 +9,11 @@ Complete guide to Prometheus setup, metric collection, scrape configuration, and
 
 ## Purpose
 
-Configure Prometheus for comprehensive metric collection, alerting, and monitoring of infrastructure and applications.
+Configure Prometheus for comprehensive metric collection, [alerting](../alerting/SKILL.md), and [monitoring](../monitoring/SKILL.md) of infrastructure and applications.
 
 ## When to Use
 
-- Set up Prometheus monitoring
+- Set up Prometheus [monitoring](../monitoring/SKILL.md)
 - Configure metric scraping
 - Create recording rules
 - Design alert rules
@@ -29,7 +29,7 @@ Detailed pattern documentation lives in `../../../Global_References/prometheus-c
 2. **Set appropriate scrape intervals** (15-60s typical)
 3. **Use recording rules** for expensive queries
 4. **Implement high availability** (multiple Prometheus instances)
-5. **Configure retention** based on storage capacity
+5. **Configure retention** based on storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)
 6. **Use relabeling** for metric cleanup
 7. **Monitor Prometheus itself**
 8. **Implement federation** for large deployments
@@ -59,7 +59,7 @@ curl 'http://localhost:9090/api/v1/query?query=up'
 
 ## Related Skills
 
-- `grafana-dashboards` - For visualization
-- `slo-implementation` - For SLO monitoring
-- `distributed-tracing` - For request tracing
+- `[grafana-dashboards](../grafana-[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/SKILL.md)` - For visualization
+- `[slo-implementation](../slo-implementation/SKILL.md)` - For SLO [monitoring](../monitoring/SKILL.md)
+- `[distributed-tracing](../distributed-tracing/SKILL.md)` - For request tracing
 

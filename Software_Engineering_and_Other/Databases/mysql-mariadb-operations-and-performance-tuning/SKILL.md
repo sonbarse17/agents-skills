@@ -15,26 +15,26 @@ metadata:
   maturity: stable
 ---
 
-# MySQL/MariaDB Operations and Performance Tuning
+# [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Operations and Performance Tuning
 
 ## Purpose
 
-MySQL and MariaDB (a drop-in-compatible fork that has since diverged in
+[MySQL](../../Backend/mysql/SKILL.md) and MariaDB (a drop-in-compatible fork that has since diverged in
 storage engines, replication internals, and some SQL syntax) both default
 to configurations sized for a small development box, not a production
 workload — an under-sized `innodb_buffer_pool_size` turns every read into
 disk I/O, and replication left on plain asynchronous mode with no GTIDs
 makes failover a manual, error-prone reconciliation exercise. This skill
-covers the recurring operational work of keeping a MySQL/MariaDB fleet
+covers the recurring operational work of keeping a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB fleet
 healthy: replication topology and consistency modes, InnoDB buffer pool
 and I/O tuning, index/query optimization, and MariaDB-specific storage
 engine selection. It assumes a working, already-provisioned instance; for
 validating `my.cnf` changes and connection limits before they reach
 production, see
-[mysql-mariadb-configuration-validation](../mysql-mariadb-configuration-validation/SKILL.md),
+[mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md),
 and for multi-master clustering (Galera, Group Replication/InnoDB
 Cluster) and split-brain prevention, see
-[mysql-mariadb-high-availability-and-replication](../mysql-mariadb-high-availability-and-replication/SKILL.md).
+[mysql-mariadb-high-availability-and-replication](../[mysql-mariadb-high-availability-and-replication](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-high-availability-and-replication/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -56,23 +56,23 @@ Cluster) and split-brain prevention, see
 
 ## Prerequisites & environment
 
-- MySQL 8.0+ or MariaDB 10.5+ assumed for the guidance and syntax below.
-  Note explicitly where behavior differs: MySQL 8.0 replaced
+- [MySQL](../../Backend/mysql/SKILL.md) 8.0+ or MariaDB 10.5+ assumed for the guidance and syntax below.
+  Note explicitly where behavior differs: [MySQL](../../Backend/mysql/SKILL.md) 8.0 replaced
   `MASTER_*`/`SLAVE_*` SQL keywords and terminology with
   `SOURCE_*`/`REPLICA_*` from 8.0.23 onward (both remain accepted as
   aliases for compatibility); MariaDB kept the original terminology and
   has its own GTID implementation (`gtid_strict_mode`,
-  `gtid_current_pos`) that is not wire-compatible with MySQL's GTID sets
+  `gtid_current_pos`) that is not wire-compatible with [MySQL](../../Backend/mysql/SKILL.md)'s GTID sets
   (`gtid_executed`) — the two are not interchangeable in a mixed
   replication topology.
-- `REPLICATION SLAVE` (MySQL) / `REPLICATION REPLICA` privilege for
+- `REPLICATION SLAVE` ([MySQL](../../Backend/mysql/SKILL.md)) / `REPLICATION REPLICA` privilege for
   setting up replication; `PROCESS` and `SELECT` on
   `performance_schema`/`information_schema` for diagnostics.
 - Binary logging enabled (`log_bin`) on any instance that will act as a
   replication source — this is off by default on a vanilla install and
   requires a restart to enable.
 - For query diagnostics: `performance_schema` enabled (default on in
-  recent MySQL/MariaDB) and, ideally, the `sys` schema views
+  recent [MySQL](../../Backend/mysql/SKILL.md)/MariaDB) and, ideally, the `sys` schema views
   (`sys.statement_analysis`) or MariaDB's `slow_query_log` with
   `long_query_time` set low enough to actually catch problem queries.
 - Enough free disk headroom on the source for binary log retention
@@ -85,7 +85,7 @@ Cluster) and split-brain prevention, see
 
 **Asynchronous** (the default): the source commits and returns to the
 client without waiting for any replica to acknowledge — fastest, but a
-source crash immediately after commit can lose transactions that never
+source crash immediately after [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) can lose transactions that never
 reached a replica.
 
 **Semi-synchronous**: the source waits for at least one replica to
@@ -103,7 +103,7 @@ plugin_load = "rpl_semi_sync_replica=semisync_replica.so"
 rpl_semi_sync_replica_enabled = 1
 ```
 Semi-sync closes the "lost transaction on source crash" gap for
-acknowledged transactions, at the cost of added commit latency
+acknowledged transactions, at the cost of added [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) latency
 (round-trip to at least one replica). It silently falls back to async if
 `rpl_semi_sync_source_timeout` is exceeded — monitor
 `Rpl_semi_sync_source_status` so a permanently-fallen-back-to-async
@@ -139,7 +139,7 @@ position meaningful only relative to one specific binlog file.
 SHOW REPLICA STATUS\G
 -- Seconds_Behind_Source, Replica_IO_Running, Replica_SQL_Running
 ```
-`Seconds_Behind_Source` (MySQL) / `Seconds_Behind_Master` (MariaDB) is
+`Seconds_Behind_Source` ([MySQL](../../Backend/mysql/SKILL.md)) / `Seconds_Behind_Master` (MariaDB) is
 computed from timestamps embedded in binlog events, not real-time
 measurement — a replica that has been disconnected and just reconnected
 can show a misleadingly small lag briefly before catching up on the
@@ -157,7 +157,7 @@ generated as of that check.
 innodb_buffer_pool_size = 24G      # commonly 60-75% of available RAM on a dedicated DB host
 innodb_buffer_pool_instances = 8   # split the pool to reduce mutex contention above a few GB
 innodb_log_file_size = 2G          # larger = fewer checkpoints, longer crash recovery
-innodb_flush_log_at_trx_commit = 1 # durable (fsync every commit); = 2 trades durability for throughput
+innodb_flush_log_at_trx_commit = 1 # durable (fsync every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)); = 2 trades durability for throughput
 innodb_flush_method = O_DIRECT     # avoid double-buffering through the OS page cache
 ```
 `innodb_buffer_pool_size` is the single highest-leverage setting for read
@@ -168,11 +168,11 @@ Check the actual hit ratio before assuming a bigger pool is needed:
 SHOW STATUS LIKE 'Innodb_buffer_pool_read%';
 -- ratio of Innodb_buffer_pool_reads (disk) to Innodb_buffer_pool_read_requests (logical) should be very low (well under 1%) on a well-sized pool
 ```
-`innodb_flush_log_at_trx_commit = 1` (fsync the redo log on every commit)
+`innodb_flush_log_at_trx_commit = 1` (fsync the redo log on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md))
 is the durable, ACID-compliant default — never change it to `0` or `2`
 fleet-wide to "improve throughput" without an explicit, deliberate
 decision that losing up to a second of committed transactions on an OS
-crash (value `2`) or a MySQL crash (value `0`) is an acceptable trade for
+crash (value `2`) or a [MySQL](../../Backend/mysql/SKILL.md) crash (value `0`) is an acceptable trade for
 that specific workload.
 
 ### 4. Diagnose and fix a slow query
@@ -234,7 +234,7 @@ low-impact operation the way a secondary index add can be.
   `gtid_strict_mode`) on any new topology — the operational cost of
   file/position-based replication (manually computing resume positions
   during failover) is avoidable and error-prone at the exact moment
-  (an incident) when mistakes are costliest.
+  (an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) when mistakes are costliest.
 - Treat `innodb_flush_log_at_trx_commit = 1` and
   `sync_binlog = 1` as the production default for any data that must
   survive a crash without loss; only relax them for a specific,
@@ -255,7 +255,7 @@ low-impact operation the way a secondary index add can be.
 - Keep binary log retention (`binlog_expire_logs_seconds`) long enough to
   survive your worst realistic replica outage window, mirroring the same
   reasoning as oplog sizing in
-  [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md).
+  [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -266,7 +266,7 @@ low-impact operation the way a secondary index add can be.
   (`replica_parallel_workers` / `slave_parallel_threads`) is enabled but
   set too low, or is bottlenecked by a small number of hot tables that
   serialize regardless of worker count. Increase parallel replica
-  workers, confirm `replica_parallel_type = LOGICAL_CLOCK` (MySQL) or the
+  workers, confirm `replica_parallel_type = LOGICAL_CLOCK` ([MySQL](../../Backend/mysql/SKILL.md)) or the
   MariaDB equivalent for genuine cross-transaction parallelism, and
   investigate whether a few frequently-updated rows/tables are forcing
   serialization regardless of worker count.
@@ -353,12 +353,12 @@ several hundred milliseconds.
    `Innodb_buffer_pool_read` hit ratio so both classes of regression are
    caught before they're user-visible again, and validate the new
    `slave_parallel_threads`/GTID settings through
-   [mysql-mariadb-configuration-validation](../mysql-mariadb-configuration-validation/SKILL.md)
+   [mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md)
    before rolling the same change out fleet-wide.
 
 ## Cross-references
 
-- [mysql-mariadb-configuration-validation](../mysql-mariadb-configuration-validation/SKILL.md) — validates `my.cnf` changes (buffer pool size, replication settings, connection limits) like the ones made here before they reach production.
-- [mysql-mariadb-high-availability-and-replication](../mysql-mariadb-high-availability-and-replication/SKILL.md) — multi-master clustering (Galera, Group Replication/InnoDB Cluster) and split-brain prevention, beyond the single-primary replication covered here.
-- [database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md) — sizing and configuring ProxySQL in front of a MySQL/MariaDB replication topology like the one tuned here.
-- [postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md) — the equivalent replication/vacuum/index tuning concerns in PostgreSQL, useful when the two engines coexist in the same platform.
+- [mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md) — validates `my.cnf` changes (buffer pool size, replication settings, connection limits) like the ones made here before they reach production.
+- [mysql-mariadb-high-availability-and-replication](../[mysql-mariadb-high-availability-and-replication](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-high-availability-and-replication/SKILL.md)/SKILL.md) — multi-master clustering (Galera, Group Replication/InnoDB Cluster) and split-brain prevention, beyond the single-primary replication covered here.
+- [database-connection-pooling-strategies](../[database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md)/SKILL.md) — sizing and configuring ProxySQL in front of a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB replication topology like the one tuned here.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the equivalent replication/vacuum/index tuning concerns in [PostgreSQL](../../Backend/postgresql/SKILL.md), useful when the two engines coexist in the same platform.

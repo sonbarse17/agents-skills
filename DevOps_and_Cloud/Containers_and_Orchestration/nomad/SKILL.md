@@ -30,7 +30,7 @@ tags: [devops, nomad, hashicorp, orchestrator, scheduler, phase-4]
 # Nomad
 
 ## Purpose
-Deploy and operate HashiCorp Nomad for workload scheduling, service orchestration, batch processing, and canary deployments with Consul and Vault integration.
+Deploy and operate HashiCorp Nomad for workload scheduling, service orchestration, batch processing, and canary deployments with Consul and [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) integration.
 
 ## Agent Protocol
 
@@ -39,7 +39,7 @@ Exact user phrases: "nomad", "nomad job", "nomad cluster", "nomad server", "noma
 
 ### Input Context
 - Nomad cluster size and topology.
-- Integration with Consul and Vault.
+- Integration with Consul and [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
 - Job types: service, batch, system, periodic, parameterized.
 - Networking: host, bridge, Consul Connect.
 - Storage: host volumes or CSI.
@@ -53,11 +53,11 @@ Nomad HCL job specification. No preamble.
 ### Completion Criteria
 - [ ] Job specification written with correct type, task groups, tasks.
 - [ ] Networking configured (host, bridge, or Consul Connect sidecar).
-- [ ] Secrets from Vault or template stanza configured.
+- [ ] Secrets from [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or template stanza configured.
 - [ ] Update strategy (canary, rolling, blue-green) defined.
 - [ ] Scaling policy defined.
 - [ ] ACL policies and namespace configuration set.
-- [ ] Monitoring with Nomad autoscaler and Consul health checks.
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) with Nomad autoscaler and Consul health checks.
 
 ### Max Response Length
 400 lines.
@@ -90,8 +90,8 @@ client {
   enabled       = true
   node_class    = "general"
   servers       = ["10.0.1.10:4647", "10.0.1.11:4647", "10.0.1.12:4647"]
-  host_volume "docker-data" {
-    path      = "/data/docker"
+  host_volume "[docker](../docker/SKILL.md)-data" {
+    path      = "/data/[docker](../docker/SKILL.md)"
     read_only = false
   }
   host_volume "prometheus-data" {
@@ -108,10 +108,10 @@ consul {
   auto_advertise      = true
 }
 
-# Vault integration
-vault {
+# [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) integration
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) {
   enabled          = true
-  address          = "https://vault.service.consul:8200"
+  address          = "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).service.consul:8200"
   create_from_role = "nomad-cluster"
 }
 
@@ -120,8 +120,8 @@ acl {
   enabled = true
 }
 
-# Audit logging
-audit {
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) {
   enabled = true
 }
 ```
@@ -165,7 +165,7 @@ job "webapp" {
     }
 
     task "web" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
 
       config {
         image = "myorg/webapp:${NOMAD_ALLOC_INDEX}"
@@ -236,7 +236,7 @@ job "data-pipeline" {
     count = 1
 
     task "etl" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
 
       config {
         image = "myorg/etl:latest"
@@ -286,7 +286,7 @@ job "node-exporter" {
     }
 
     task "exporter" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
 
       config {
         image = "prom/node-exporter:latest"
@@ -320,7 +320,7 @@ job "db-backup" {
 
   group "backup" {
     task "pg_dump" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
 
       config {
         image = "myorg/pg-backup:latest"
@@ -363,7 +363,7 @@ job "ci-build" {
 
   group "build" {
     task "build" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
 
       config {
         image = "myorg/ci-runner:latest"
@@ -430,7 +430,7 @@ job "api" {
     }
 
     task "api" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
       config {
         image = "myorg/api:latest"
       }
@@ -447,7 +447,7 @@ job "api" {
 }
 ```
 
-### Step 8: CSI Volume (PostgreSQL on Nomad)
+### Step 8: CSI Volume ([PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) on Nomad)
 ```hcl
 # Register volume first:
 # nomad volume create volume.hcl
@@ -498,13 +498,13 @@ job "postgres" {
     }
 
     task "postgres" {
-      driver = "docker"
+      driver = "[docker](../docker/SKILL.md)"
       config {
         image = "postgres:16"
       }
       volume_mount {
         volume      = "data"
-        destination = "/var/lib/postgresql/data"
+        destination = "/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data"
       }
       env {
         POSTGRES_PASSWORD = "{{ with secret \"secret/data/postgres\" }}{{ .Data.data.password }}{{ end }}"
@@ -519,7 +519,7 @@ job "postgres" {
 }
 ```
 
-### Step 9: Autoscaling
+### Step 9: [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 ```hcl
 # autoscaler.hcl (Nomad Autoscaler configuration)
 apm "prometheus" {
@@ -596,7 +596,7 @@ operator {
 # nomad acl token create -name="webapp-ci" -policy=webapp-deploy
 ```
 
-### Step 11: Monitoring and Observability
+### Step 11: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 ```yaml
 Nomad metrics (Prometheus endpoint: :4646/v1/metrics):
   - nomad.client.allocated.cpu / memory / disk
@@ -605,8 +605,8 @@ Nomad metrics (Prometheus endpoint: :4646/v1/metrics):
   - nomad.client.allocation.memory.usage
   - nomad.client.allocation.cpu.percent
 
-Audit logging:
-  - Enable audit log on servers
+[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging:
+  - Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log on servers
   - Log to file or syslog
   - Ship to Loki / Elasticsearch for centralized access
 
@@ -625,7 +625,7 @@ Key metrics to alert on:
 - Always run `nomad job plan` before `nomad job run` for diff review.
 - Use `auto_revert = true` for all service jobs to rollback failed deployments.
 - Use `canary = 1` for production deployments — promote after verification.
-- Always template secrets from Vault — never embed in job HCL.
+- Always template secrets from [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) — never embed in job HCL.
 - Use `bridge` networking mode for multi-port + Consul Connect jobs.
 - Set resource limits (CPU/memory) on every task — no unlimited jobs.
 - Use `check_restart` with 3 limit for production service jobs.
@@ -635,12 +635,12 @@ Key metrics to alert on:
 
 ## Production Considerations
 - Nomad servers: 3 or 5 minimum for HA, always an odd number.
-- Consul ACL tokens should be scoped per job (`template` stanza with Vault).
-- Vault token role `nomad-cluster` must allow token creation for Nomad workloads.
+- Consul ACL tokens should be scoped per job (`template` stanza with [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).
+- [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token role `nomad-cluster` must allow token creation for Nomad workloads.
 - CSI volumes need the Nomad CSI plugin installed and running as a system job.
 - Nomad Autoscaler requires Prometheus for metric queries.
 - Use `NOMAD_UPSTREAM_ADDR_<service>` env vars for Consul Connect upstream discovery.
-- Audit log to a separate volume — log volume can spike during attacks.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log to a separate volume — log volume can spike during attacks.
 - Set `address_mode = "driver"` in service definitions for bridge network support.
 - Use `host_volume` for persistent data; prefer CSI for production.
 - Parameterized jobs support `payload` as a tar.gz for build artifacts.
@@ -656,7 +656,7 @@ Key metrics to alert on:
 - Not setting `check_restart` — unhealthy containers keep running.
 - Using `canary` without `auto_promote = false` — manual gate needed.
 - CSI volumes without proper plugin setup — volume registration fails silently.
-- No audit logging — compliance violations go undetected.
+- No [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging — compliance violations go undetected.
 
 ## References
   - ../../../Global_References/nomad-advanced.md — Nomad Advanced Topics
@@ -665,12 +665,12 @@ Key metrics to alert on:
   - references/nomad-job-spec.md — Nomad Job Specification Reference
   - references/nomad-consul-connect.md — Consul Connect with Nomad
   - references/nomad-csi.md — CSI Volume Integration
-  - references/nomad-autoscaling.md — Nomad Autoscaler
-  - references/nomad-security.md — ACLs and Vault Integration
+  - references/nomad-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).md — Nomad Autoscaler
+  - references/nomad-security.md — ACLs and [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Integration
 ## Handoff
 - `devops-consul` for Consul service discovery and Connect mesh.
-- `devops-vault` for Vault secrets management integration.
+- `devops-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)` for [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets management integration.
 - `devops-terraform` for Nomad cluster Terraform provisioning.
-- `devops-monitoring` for Prometheus/Grafana monitoring of Nomad.
-- `devops-kubernetes` for comparison when deciding between Nomad and K8s.
+- `devops-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus/Grafana [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) of Nomad.
+- `devops-[kubernetes](../kubernetes/SKILL.md)` for comparison when deciding between Nomad and K8s.
 

@@ -9,7 +9,7 @@ metadata:
 
 # kubectl
 
-Use this skill to keep Kubernetes resource management deterministic and safe across clusters and namespaces.
+Use this skill to keep [Kubernetes](../kubernetes/SKILL.md) resource management deterministic and safe across clusters and namespaces.
 
 ## Intent Router
 
@@ -77,8 +77,8 @@ kubectl logs my-pod --previous -n my-namespace
 
 ## Related Skills
 
-- **helm** — package manager for Kubernetes applications
-- **docker** — container image building for Kubernetes workloads
+- **helm** — package manager for [Kubernetes](../kubernetes/SKILL.md) applications
+- **[docker](../docker/SKILL.md)** — container image building for [Kubernetes](../kubernetes/SKILL.md) workloads
 
 ## References
 
@@ -86,5 +86,5 @@ kubectl logs my-pod --previous -n my-namespace
 - `resources/command-cookbook.md`
 - `resources/resource-management.md`
 - `resources/troubleshooting.md`
-- Official docs: <https://kubernetes.io/docs/reference/kubectl/>
-- Command reference: <https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands>
+- Official docs: <https://[kubernetes](../kubernetes/SKILL.md).io/docs/reference/kubectl/>
+- Command reference: <https://[kubernetes](../kubernetes/SKILL.md).io/docs/reference/generated/kubectl/kubectl-commands>

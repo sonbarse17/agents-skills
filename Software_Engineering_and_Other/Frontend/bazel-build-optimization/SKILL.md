@@ -64,7 +64,7 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 ### Don'ts
 
 - **Don't use glob for deps** - Explicit is better
-- **Don't commit bazel-\* dirs** - Add to .gitignore
+- **Don't [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) bazel-\* dirs** - Add to .gitignore
 - **Don't skip WORKSPACE setup** - Foundation of build
 - **Don't ignore build warnings** - Technical debt
 

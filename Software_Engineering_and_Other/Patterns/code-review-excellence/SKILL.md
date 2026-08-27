@@ -211,7 +211,7 @@ the performance impact with 100k users?"
 
 ❌ "You must change this to use async/await"
 ✅ "Suggestion: async/await might make this more readable:
-`typescript
+`[typescript](../../Frontend/typescript/SKILL.md)
     async function fetchUser(id: string) {
         const user = await db.query('SELECT * FROM users WHERE id = ?', id);
         return user;
@@ -247,10 +247,10 @@ Please use parameterized queries."
 
 ## Language-Specific Patterns
 
-### Python Code Review
+### [Python](../../Languages/python/SKILL.md) Code Review
 
-```python
-# Check for Python-specific issues
+```[python](../../Languages/python/SKILL.md)
+# Check for [Python](../../Languages/python/SKILL.md)-specific issues
 
 # ❌ Mutable default arguments
 def add_item(item, items=[]):  # Bug! Shared across calls
@@ -287,10 +287,10 @@ class User:
         self.permissions = []
 ```
 
-### TypeScript/JavaScript Code Review
+### [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript Code Review
 
-```typescript
-// Check for TypeScript-specific issues
+```[typescript](../../Frontend/typescript/SKILL.md)
+// Check for [TypeScript](../../Frontend/typescript/SKILL.md)-specific issues
 
 // ❌ Using any defeats type safety
 function processData(data: any) {  // Avoid any
@@ -366,7 +366,7 @@ When reviewing significant changes:
 
 ### Pattern 2: Test Quality Review
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // ❌ Poor test: Implementation detail testing
 test('increments counter variable', () => {
     const component = render(<Counter />);
@@ -478,7 +478,7 @@ When author disagrees with your feedback:
 1. **Review Promptly**: Within 24 hours, ideally same day
 2. **Limit PR Size**: 200-400 lines max for effective review
 3. **Review in Time Blocks**: 60 minutes max, take breaks
-4. **Use Review Tools**: GitHub, GitLab, or dedicated tools
+4. **Use Review Tools**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab, or dedicated tools
 5. **Automate What You Can**: Linters, formatters, security scans
 6. **Build Rapport**: Emoji, praise, and empathy matter
 7. **Be Available**: Offer to pair on complex issues

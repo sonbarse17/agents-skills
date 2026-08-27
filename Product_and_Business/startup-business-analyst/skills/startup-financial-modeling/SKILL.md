@@ -212,7 +212,7 @@ Year 3: $60M GMV, 15% take rate = $9M revenue
 - Billable hours or projects
 - Hourly rate or project fee
 - Utilization rate
-- Team capacity
+- Team [capacity](../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 **Key Ratios:**
 

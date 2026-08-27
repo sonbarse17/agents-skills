@@ -8,15 +8,15 @@ metadata:
   package: "@microsoft/applicationinsights-web"
 ---
 
-# Application Insights JavaScript SDK (Web) for TypeScript
+# Application Insights JavaScript SDK (Web) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
-Real User Monitoring (RUM) for browser apps with `@microsoft/applicationinsights-web`. Auto-collects page views, AJAX/fetch dependencies, unhandled exceptions, and (with the Click Analytics plugin) clicks. Supports custom events, metrics, and **GenAI agent traces** that follow OpenTelemetry GenAI semantic conventions and correlate to backend spans via W3C Trace Context.
+Real User [Monitoring](../../../../Observability_and_SecOps/monitoring/SKILL.md) (RUM) for browser apps with `@microsoft/applicationinsights-web`. Auto-collects page views, AJAX/fetch dependencies, unhandled exceptions, and (with the Click Analytics plugin) clicks. Supports custom events, metrics, and **GenAI agent traces** that follow [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) GenAI semantic conventions and correlate to backend spans via W3C Trace Context.
 
-> **Distinct from `azure-monitor-opentelemetry-ts`**, which is for Node.js server apps. This skill is for **browser/web** code (and React Native).
+> **Distinct from `[azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../../../[azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md)`**, which is for Node.js server apps. This skill is for **browser/web** code (and React Native).
 
 ## Before Implementation
 
-Search `microsoft-docs` MCP for current API patterns:
+Search `[microsoft-docs](../../../microsoft-docs/SKILL.md)` MCP for current API patterns:
 
 - Query: "Application Insights JavaScript SDK setup"
 - Query: "Application Insights JavaScript SDK configuration"
@@ -58,7 +58,7 @@ NEXT_PUBLIC_APPINSIGHTS_CONNECTION_STRING="InstrumentationKey=..."
 
 ## Quick Start (npm)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 
 export const appInsights = new ApplicationInsights({
@@ -103,7 +103,7 @@ Loader-only API (queued until SDK loads): `trackEvent`, `trackPageView`, `trackE
 
 ## Core Tracking APIs
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Page views (SPAs that disable enableAutoRouteTracking)
 appInsights.trackPageView({ name: "Checkout", uri: "/checkout", properties: { cartSize: 3 } });
 
@@ -143,7 +143,7 @@ appInsights.flush();
 
 Run for every envelope before send. Return `false` to drop.
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import type { ITelemetryItem } from "@microsoft/applicationinsights-web";
 
 appInsights.addTelemetryInitializer((item: ITelemetryItem) => {
@@ -166,7 +166,7 @@ appInsights.addTelemetryInitializer((item: ITelemetryItem) => {
 
 ## Click Analytics
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ClickAnalyticsPlugin } from "@microsoft/applicationinsights-clickanalytics-js";
 
 const clickPlugin = new ClickAnalyticsPlugin();
@@ -197,13 +197,13 @@ Mark elements with `data-ai-*` attributes; clicks are emitted as Custom Events w
 
 ## Distributed Tracing (correlate to backend)
 
-Set `distributedTracingMode: 2` (`DistributedTracingModes.AI_AND_W3C`). The SDK adds `traceparent` (and legacy `Request-Id`) to outbound `fetch`/`XHR`. Backends instrumented with **OpenTelemetry** (e.g. `@azure/monitor-opentelemetry`) auto-link to the browser's operation_Id.
+Set `distributedTracingMode: 2` (`DistributedTracingModes.AI_AND_W3C`). The SDK adds `traceparent` (and legacy `Request-Id`) to outbound `fetch`/`XHR`. Backends instrumented with **[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)** (e.g. `@azure/monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)`) auto-link to the browser's operation_Id.
 
 For cross-origin calls, also set `enableCorsCorrelation: true` and add the calling origin to the **CORS exposed headers** on the API.
 
 ## GenAI Agent Traces (OTel semantic conventions)
 
-When the browser invokes an AI agent (function-calling, tool-use, model calls direct from the client), emit App Insights **Dependency** telemetry whose attributes follow the OpenTelemetry **GenAI semantic conventions** so they are queryable alongside backend agent spans in App Insights / Log Analytics.
+When the browser invokes an AI agent (function-calling, tool-use, model calls direct from the client), emit App Insights **Dependency** telemetry whose attributes follow the [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) **GenAI semantic conventions** so they are queryable alongside backend agent spans in App Insights / Log Analytics.
 
 **Set the opt-in env first** so backend instrumentations agree on the same schema version:
 
@@ -226,7 +226,7 @@ OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
 
 ### Pattern: invoke_agent + nested tool/model spans
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ApplicationInsights, SeverityLevel } from "@microsoft/applicationinsights-web";
 
 type GenAiAttrs = Record<string, string | number | boolean | undefined>;
@@ -321,11 +321,11 @@ dependencies
             avg_in=avg(tin), avg_out=avg(tout) by op, agent, model, bin(timestamp, 5m)
 ```
 
-## React (TypeScript)
+## React ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
 
 See [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) for full React, React Native, Angular, Next.js, and Vite recipes.
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 import { ReactPlugin, withAITracking } from "@microsoft/applicationinsights-react-js";
 import { createBrowserHistory } from "history";
@@ -347,7 +347,7 @@ export const TrackedCheckout = withAITracking(reactPlugin, Checkout, "Checkout")
 
 ## React Native
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 import { ReactNativePlugin } from "@microsoft/applicationinsights-react-native";
 
@@ -366,7 +366,7 @@ appInsights.loadAppInsights();
 
 Auto-collected: page-load timings via `PerformanceTiming` / `PerformanceNavigationTiming`. To add Core Web Vitals:
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { onCLS, onLCP, onINP, type Metric } from "web-vitals";
 
 function send(m: Metric) {
@@ -380,7 +380,7 @@ onCLS(send); onLCP(send); onINP(send);
 
 ## Cookies & Privacy
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 new ApplicationInsights({ config: {
   connectionString,
   isCookieUseDisabled: true,         // hard-disable all cookies
@@ -390,7 +390,7 @@ new ApplicationInsights({ config: {
 
 To honor consent dynamically:
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 appInsights.getCookieMgr().setEnabled(userGaveConsent);
 appInsights.config.disableTelemetry = !userGaveConsent;
 ```
@@ -399,7 +399,7 @@ appInsights.config.disableTelemetry = !userGaveConsent;
 
 Server-side ingestion sampling (recommended) is configured on the App Insights resource. SDK-side sampling reduces network use:
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 new ApplicationInsights({ config: { connectionString, samplingPercentage: 50 } });
 ```
 
@@ -426,7 +426,7 @@ The full web SDK is ~110 KB minified (~36 KB gzipped). For aggressive budgets, u
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   ApplicationInsights,
   SeverityLevel,
@@ -461,6 +461,6 @@ import {
 - [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) — React, React Native, Angular, Next.js, Vite recipes.
 - [../../../../../Global_References/configuration.md](../../../../../Global_References/configuration.md) — Full `IConfiguration` reference and tuning guide.
 - Microsoft Learn: <https://learn.microsoft.com/azure/azure-monitor/app/javascript-sdk>
-- ApplicationInsights-JS source: <https://github.com/microsoft/ApplicationInsights-JS>
-- OTel GenAI semantic conventions: <https://opentelemetry.io/docs/specs/semconv/gen-ai/>
+- ApplicationInsights-JS source: <https://[github](../../../../CI_CD/github/SKILL.md).com/microsoft/ApplicationInsights-JS>
+- OTel GenAI semantic conventions: <https://[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/>
 

@@ -119,10 +119,10 @@ PopulationData | summarize dcount(State)     // → 52 — safe to join
 
 ## 4. Regex in KQL
 
-KQL handles regex natively — no need for Python.
+KQL handles regex natively — no need for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
 
 ### The `extract_all` gotcha
-Unlike Python's `re.findall()`, KQL's `extract_all` **requires capturing groups** in the regex:
+Unlike [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)'s `re.findall()`, KQL's `extract_all` **requires capturing groups** in the regex:
 
 ```kql
 // ❌ ERROR: "extractall(): argument 2 must be a valid regex with [1..16] matching groups"
@@ -132,7 +132,7 @@ StormEvents | extend words = extract_all(@"[a-zA-Z]{3,}", EventNarrative)
 StormEvents | extend words = extract_all(@"([a-zA-Z]{3,})", EventNarrative)
 ```
 
-### Regex toolkit — don't fall back to Python
+### Regex toolkit — don't fall back to [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 | Function | Use case | Example |
 |----------|----------|---------|
 | `extract(regex, group, source)` | Single match | `extract(@"User '([^']+)'", 1, Msg)` |
@@ -233,7 +233,7 @@ This is most common with computed values from `geo_point_to_s2cell()` and `strca
 
 ## 9. Advanced Functions
 
-KQL handles these natively — no need for Python:
+KQL handles these natively — no need for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):
 
 ### Vector similarity
 ```kql
@@ -296,7 +296,7 @@ When you encounter an error, look it up here before retrying:
 | `E_RUNAWAY_QUERY` | Join/aggregation produced too many rows | Check cardinality before joining; add pre-filters |
 | `for each left attribute, right attribute` | Join `on` clause incomplete | Use explicit form: `on $left.X == $right.Y` |
 | `needs to be bracketed` | Reserved word used as identifier | Use `['keyword']` syntax |
-| `plugin doesn't exist` | Unavailable plugin on this cluster | Fall back to equivalent function or Python |
+| `plugin doesn't exist` | Unavailable plugin on this cluster | Fall back to equivalent function or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) |
 | `Expected string literal in datetime()` | Bare integer in datetime literal | Use `datetime(2024-01-01)` not `datetime(2024)` |
 | `Unexpected token` after `by` | Complex expression in summarize by-clause | `extend` the expression first, then `summarize by` the column |
 | `not recognized` / `unknown operator` | Operator not available on this engine | Check operator support; try equivalent (`order by` = `sort by`) |
@@ -399,7 +399,7 @@ When a first KQL query fails, the temptation is to abandon the entire approach a
 Query 1: extract(@"pattern", 1, col)  → Parse error
 Query 2: todynamic(col)               → Different error  
 Query 3: parse_json(col)              → Another error
-Query 4: Python script                → Works but 10x tokens
+Query 4: [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) script                → Works but 10x tokens
 ```
 
 ### The correct pattern

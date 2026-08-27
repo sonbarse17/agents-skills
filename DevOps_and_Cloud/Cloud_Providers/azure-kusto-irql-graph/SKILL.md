@@ -17,10 +17,10 @@ Apply the IRQL graph function family to tabular results. Given a KQL or IRQL que
 |---|---|
 | Turn supplied KQL/IRQL rows into an icon-decorated visual graph | This skill: `Lift_To_Graph` + `Graph_Render_View` |
 | Fold nodes or apply `Extract_Node_*`, `Enrich_Node_*`, or `Enrich_Graph_*` | This skill |
-| Use `make-graph`, `graph-match`, shortest paths, connected components, graph models, or snapshots | `azure-kusto-graph` |
+| Use `make-graph`, `graph-match`, shortest paths, connected components, graph models, or snapshots | `[azure-kusto-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)` |
 | Author a non-trivial KQL/IRQL investigation from natural language | A Kusto or IRQL query-generation skill, then this skill |
 
-If a request mixes visualization and native graph analysis, use this skill for the lift/render portion and `azure-kusto-graph` for operator semantics. Do not replace graph-lift functions with a hand-built edges-first graph unless the user asks for native graph operators.
+If a request mixes visualization and native graph analysis, use this skill for the lift/render portion and `[azure-kusto-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)` for operator semantics. Do not replace graph-lift functions with a hand-built edges-first graph unless the user asks for native graph operators.
 
 ## Input Contract
 
@@ -40,7 +40,7 @@ Use this skill when the user:
 - Wants to fold/collapse nodes by a shared property
 - Requests graph extraction or enrichment through `Extract_Node_*`, `Enrich_Node_*`, or `Enrich_Graph_*`
 
-Do not activate this skill solely for `graph-match`, graph paths/components, persistent graphs, or generic `make-graph` construction; those belong to `azure-kusto-graph`.
+Do not activate this skill solely for `graph-match`, graph paths/components, persistent graphs, or generic `make-graph` construction; those belong to `[azure-kusto-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)`.
 
 **Not a natural-language-to-KQL/IRQL converter.** The input should generally be a working KQL or IRQL query whose results need graph visualization. Basic NL source requests work only for trivial single-table/selector cases. For general NL-to-KQL or NL-to-IRQL, use a dedicated query-generation skill (available separately).
 
@@ -195,7 +195,7 @@ Given the supplied query columns and the user's graph description, generate the 
 
 ## Examples
 
-For additional prompts and worked examples, see [../../../Global_References/azure-kusto-irql-graph_EXAMPLES.md](../../../Global_References/azure-kusto-irql-graph_EXAMPLES.md).
+For additional prompts and worked examples, see [../../../Global_References/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph_EXAMPLES.md](../../../Global_References/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph_EXAMPLES.md).
 
 ### Authentication graph: IP -> AuthEvent -> User -> Host
 

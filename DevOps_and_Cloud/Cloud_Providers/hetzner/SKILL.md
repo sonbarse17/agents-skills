@@ -28,12 +28,12 @@ tags: [devops, hetzner, cloud-provider, cost-optimization, phase-4]
 # Hetzner Cloud & Dedicated
 
 ## Purpose
-Manage Hetzner Cloud and Dedicated infrastructure: servers, networking, volumes, firewalls, load balancers, Storage Boxes, and Kubernetes clusters. Optimize for cost efficiency while maintaining reliability.
+Manage Hetzner Cloud and Dedicated infrastructure: servers, networking, volumes, firewalls, load balancers, Storage Boxes, and [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters. Optimize for cost efficiency while maintaining reliability.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "hetzner", "hcloud", "hetzner cloud", "hetzner dedicated", "hetzner robot", "CX", "CCX", "CAX", "hetzner kubernetes", "hcloud terraform", "hcloud packer".
+Exact user phrases: "hetzner", "hcloud", "hetzner cloud", "hetzner dedicated", "hetzner robot", "CX", "CCX", "CAX", "hetzner [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)", "hcloud terraform", "hcloud packer".
 
 ### Input Context
 - Product: Hetzner Cloud (API-based) or Hetzner Dedicated (Robot).
@@ -54,7 +54,7 @@ Terraform HCL or hcloud CLI commands. No preamble.
 - [ ] Firewall rules applied (Hetzner Cloud Firewall or iptables).
 - [ ] Volume attached and formatted.
 - [ ] DNS configured (Hetzner DNS or external).
-- [ ] Monitoring set up (Hetzner Monitoring or external).
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) set up (Hetzner [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) or external).
 - [ ] Cost optimization applied (server type, reserved, BI-directional traffic).
 - [ ] K8s cluster running (k3s, Rancher, or Talos).
 
@@ -62,7 +62,7 @@ Terraform HCL or hcloud CLI commands. No preamble.
 400 lines.
 
 ## Quick Start
-Create project → Generate API token → Configure private network → Provision CX52 server with cloud-init → Attach volume → Apply firewall → Set up monitoring. For dedicated: order server via Robot → Configure vSwitch → Install OS via Rescue → Provision.
+Create project → Generate API token → Configure private network → Provision CX52 server with cloud-init → Attach volume → Apply firewall → Set up [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md). For dedicated: order server via Robot → Configure vSwitch → Install OS via Rescue → Provision.
 
 ## Decision Tree: Hetzner Product Types
 | Product | Access | Management | Use Case |
@@ -182,11 +182,11 @@ resource "hcloud_server" "app" {
   #cloud-config
   package_upgrade: true
   packages:
-    - docker.io
-    - docker-compose-v2
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md).io
+    - [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)-v2
     - prometheus-node-exporter
   runcmd:
-    - systemctl enable --now docker
+    - systemctl enable --now [docker](../../Containers_and_Orchestration/docker/SKILL.md)
     - systemctl enable --now prometheus-node-exporter
     - ufw allow 9100/tcp
   EOF
@@ -287,18 +287,18 @@ resource "hcloud_server" "node" {
 }
 ```
 
-### Step 9: Kubernetes on Hetzner
+### Step 9: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) on Hetzner
 ```bash
 # Option A: k3s with Hetzner Cloud Controller Manager
 # 1. Provision 3+ servers (CX52 or CAX31) with private network
 # 2. Install k3s on master
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable servicelb --disable traefik" sh -
 # 3. Install Hetzner Cloud Controller Manager
-kubectl apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../CI_CD/github/SKILL.md).com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
 # 4. Install Hetzner CSI Driver for volumes
-kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v2.5.0/deploy/kubernetes/hcloud-csi.yml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v2.5.0/deploy/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/hcloud-csi.yml
 # 5. Install MetalLB for LoadBalancer IPs (use Floating IP pool)
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
 
 # Option B: Talos Linux on Hetzner (immutable K8s)
 # 1. Download talosctl
@@ -346,25 +346,25 @@ sudo mount -t cifs //<username>.your-storagebox.de/backup /mnt/backup \
 #!/bin/bash
 BACKUP_DIR="/mnt/backup/$(date +%Y-%m-%d)"
 mkdir -p "$BACKUP_DIR"
-tar czf "$BACKUP_DIR/volumes.tgz" /var/lib/docker/volumes
+tar czf "$BACKUP_DIR/volumes.tgz" /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/volumes
 find /mnt/backup -type d -mtime +30 -exec rm -rf {} +
 
 # Borg backup to Storage Box (encrypted, deduplicated)
 borg init --encryption=repokey-blake2 ssh://<username>@<username>.your-storagebox.de:23/./backups
 borg create --stats --compression lz4 \
   ssh://<username>@<username>.your-storagebox.de:23/./backups::$(date +%Y-%m-%d) \
-  /var/lib/docker/volumes /etc /home
+  /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/volumes /etc /home
 borg prune --keep-daily 7 --keep-weekly 4 --keep-monthly 6 \
   ssh://<username>@<username>.your-storagebox.de:23/./backups
 ```
 
-### Step 12: Monitoring Setup
+### Step 12: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Setup
 ```yaml
 # Prometheus + Node Exporter (Hetzer-optimized)
 Prometheus config:
   - Hetzner servers export metrics via node_exporter
   - Hetzner API exporter for server status and costs
-  - Blackbox_exporter for external endpoint monitoring
+  - Blackbox_exporter for external endpoint [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 Alert rules:
   - server_down: up == 0 for 2m
@@ -389,7 +389,7 @@ Cost tracking:
 - Prefer Floating IPs over Elastic IPs for HA failover patterns.
 - Use cloud-init for server bootstrap — never SSH into a fresh server to configure.
 - All servers should have both IPv4 and IPv6 — IPv6 traffic is often unmetered.
-- Deploy Hetzner CCM and CSI for Kubernetes to natively use Cloud resources.
+- Deploy Hetzner CCM and CSI for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) to natively use Cloud resources.
 
 ## Production Considerations
 - CX22 (2 vCPU, 4 GB) is minimum for production workloads — CX11/CX12 are too small.
@@ -431,27 +431,27 @@ Cost-saving strategies:
 - Using default public network without firewall — all ports exposed by default.
 - No private network for inter-server traffic — incurs bandwidth costs.
 - Running production on CX11 (2 GB RAM) — OOM under load.
-- Manual SSH configuration — no repeatability, no audit trail.
+- Manual SSH configuration — no repeatability, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - Not setting up backups — Hetzner doesn't auto-backup your data.
 - Over-provisioning with dedicated servers when Cloud would be sufficient.
 - Ignoring IPv6 — dual-stack is free and reduces IPv4 address scarcity.
 - No HA strategy for single-point-of-failure servers.
 - Using Hetzner Load Balancer for HTTPS termination — no TLS support.
-- Not monitoring included traffic — unexpected overage charges.
+- Not [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) included traffic — unexpected overage charges.
 
 ## References
   - references/hetzner-cloud-advanced.md — Hetzner Cloud Advanced Topics
   - references/hetzner-cloud-fundamentals.md — Hetzner Cloud Fundamentals
   - references/hetzner-dedicated.md — Hetzner Dedicated Server Setup
-  - ../../../Global_References/hetzner-kubernetes.md — Kubernetes on Hetzner (k3s, Talos, Rancher)
-  - references/hetzner-cost-optimization.md — Hetzner Cost Optimization
+  - ../../../Global_References/hetzner-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md — [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) on Hetzner (k3s, Talos, Rancher)
+  - references/hetzner-[cost-optimization](../cost-optimization/SKILL.md).md — Hetzner Cost Optimization
 ## Handoff
-- `devops-kubernetes` for deploying workloads on Hetzner K8s.
+- `devops-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` for deploying workloads on Hetzner K8s.
 - `devops-terraform` for Terraform state and module patterns.
-- `devops-backup-dr` for backup strategies using Storage Boxes.
-- `devops-monitoring` for Prometheus-based monitoring.
-- `devops-hybrid-cloud` for connecting Hetzner with other providers.
-- `devops-datacenter` for physical hardware considerations.
+- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
+- `devops-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
+- `devops-[hybrid-cloud](../hybrid-cloud/SKILL.md)` for connecting Hetzner with other providers.
+- `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical hardware considerations.
 
 ## Architecture Decision Trees
 
@@ -459,11 +459,11 @@ Cost-saving strategies:
 
 | Decision | Dedicated Server (Hetzner) | Cloud Instance (Hetzner Cloud) |
 |---|---|---|
-| Performance | Full bare-metal (no neighbors) | Virtualized (shared hypervisor) |
+| Performance | Full [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) (no neighbors) | Virtualized (shared hypervisor) |
 | Flexibility | OS from ISO, full control | Pre-installed images, API-driven |
 | Provisioning | Hours (manual setup) | Seconds (API, Terraform) |
 | Cost | Lower at high utilization | Higher per-hour, pay-as-you-go |
-| Autoscaling | Not supported | Supported via API/Terraform |
+| [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) | Not supported | Supported via API/Terraform |
 | Network | Single server, BGP possible | Private network, floating IPs |
 | Best for | Workloads needing raw throughput | Variable workloads, ephemeral |
 
@@ -473,10 +473,10 @@ Cost-saving strategies:
 |---|---|---|
 | Protocol | SFTP, SMB, WebDAV | iSCSI, attached via SCSI |
 | Performance | Sequential OK, slow IOPS | Fast IOPS, low latency |
-| Capacity | Up to 20 TB | Up to 10 TB per volume |
+| [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Up to 20 TB | Up to 10 TB per volume |
 | Use case | Backups, file shares | Database disks, app data |
 | Mountability | Network mount | Direct block device |
-| Redundancy | RAID on datacenter side | Replicated across hosts |
+| Redundancy | RAID on [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) side | Replicated across hosts |
 
 ## Implementation Patterns
 
@@ -569,15 +569,15 @@ delete_old_snapshots() {
 - Set up **robot-wg-tools** for WireGuard VPN between dedicated servers in different datacenters
 - Use **Hetzner Cloud Firewall** with least-privilege rules — default deny inbound
 - Monitor **Hetzner Robot** for hardware health alerts (ECC errors, disk SMART, temperature)
-- Use **Hetzner API tokens** with restricted scopes per server group (read-only for monitoring)
+- Use **Hetzner API tokens** with restricted scopes per server group (read-only for [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md))
 
 ## Anti-Patterns
 
 - Ignoring **traffic limits** on dedicated servers — exceeding included traffic incurs significant overage
 - Using **default VLAN** for all servers — segment by function (web, db, storage) with separate networks
-- Provisioning **servers without monitoring** — Hetzner doesn't provide built-in server monitoring
+- Provisioning **servers without [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)** — Hetzner doesn't provide built-in server [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Skipping **rescue mode testing** — know how to boot into rescue mode for recovery scenarios
-- Relying on **single datacenter** for production — FSN1/HEL1/NBG1 inter-DC latency is low but non-zero
+- Relying on **single [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)** for production — FSN1/HEL1/NBG1 inter-DC latency is low but non-zero
 - Underestimating **Storage Box IOPS limits** — not suitable for database workloads directly
 - Forgetting to **detach volumes** before deleting servers — volumes survive but must be cleaned up
 
@@ -599,5 +599,5 @@ delete_old_snapshots() {
 - Restrict **HCloud API tokens** to IP allowlist (office IPs, CI runner IPs only)
 - Set up **fail2ban** on dedicated servers to protect against brute force SSH attempts
 - Use **Storage Box snapshots** via Borg backup — snapshots are immutable and encrypt at rest
-- Audit **team member access** to Hetzner project — remove keys and tokens on offboarding
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **team member access** to Hetzner project — remove keys and tokens on offboarding
 

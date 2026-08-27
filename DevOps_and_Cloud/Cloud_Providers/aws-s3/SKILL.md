@@ -411,8 +411,8 @@ resource "aws_s3_bucket_policy" "enforce_https" {
 
 ## Related Skills
 
-- [aws-iam](../aws-iam/) - Bucket and object access policies
-- [aws-vpc](../aws-vpc/) - VPC endpoints for private S3 access
-- [aws-cost-optimization](../aws-cost-optimization/) - Storage class optimization
-- [terraform-aws](../terraform-aws/) - IaC deployment for S3
-- [cloudformation](../cloudformation/) - AWS-native S3 templates
+- [aws-iam](../[aws-iam](../aws-iam/SKILL.md)/) - Bucket and object access policies
+- [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/) - VPC endpoints for private S3 access
+- [aws-cost-optimization](../[aws-cost-optimization](../aws-[cost-optimization](../cost-optimization/SKILL.md)/SKILL.md)/) - Storage class optimization
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - IaC deployment for S3
+- [cloudformation](../[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/) - AWS-native S3 templates

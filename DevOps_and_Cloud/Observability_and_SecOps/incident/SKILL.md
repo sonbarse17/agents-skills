@@ -24,7 +24,7 @@ specific to live incident work.
 ## Hard Rules
 
 1. **Read-only on every system.** Diagnostic and read-only commands only:
-   `kubectl get/describe/logs/top`, `kubectl diff`, `git log`, `aws ... describe/get/list`,
+   `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get/describe/logs/top`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) diff`, `git log`, `aws ... describe/get/list`,
    `terraform plan`, metric/log queries, status-page checks. **Never** run
    anything that mutates state — no `rollback`, `scale`, `delete`, `restart`,
    `apply`, `cordon`, feature-flag flips, or config edits. You recommend; the
@@ -57,8 +57,8 @@ before you start — it is the document you produce.
   paraphrase.
 - Set **severity** and start an append-only, timestamped timeline.
 - Capture current state with read-only probes appropriate to the stack:
-  `kubectl get pods/events`, `kubectl describe`, `kubectl logs --previous`,
-  `kubectl top`, load-balancer/target-group health, DB connection/latency
+  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods/events`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs --previous`,
+  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) top`, load-balancer/target-group health, DB connection/latency
   metrics, queue depth, upstream provider status pages.
 
 ### Phase 2 — "What changed?"
@@ -93,8 +93,8 @@ Once stable, state the causal chain, distinguishing the **trigger** from the
 **root cause** (the latent condition). Then translate prevention into durable
 work: each follow-up hands off to the relevant review skill and becomes a plan
 per [../docs/plan-template.md](../docs/plan-template.md) — e.g. a missing
-resource limit → `/k8s-review`, a late alert → `/observability`, an unsafe
-deploy path → `/pipeline-review`.
+resource limit → `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)`, a late alert → `/[observability](../observability/SKILL.md)`, an unsafe
+deploy path → `/[pipeline-review](../../CI_CD/pipeline-review/SKILL.md)`.
 
 ## Invocation variants
 
@@ -123,10 +123,10 @@ canonical columns before they are routed:
 
 ## Related skills
 
-- `/observability` — a late or missing alert found here becomes a detection plan there.
-- `/k8s-review`, `/terraform-review`, `/db-review` — durable fixes for the failure mode.
-- `/dr-review` — if the incident exposed a broken backup, restore, or failover path.
-- `/runbook` — if no runbook existed for this failure mode, writing one is a follow-up.
+- `/[observability](../observability/SKILL.md)` — a late or missing alert found here becomes a detection plan there.
+- `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — durable fixes for the failure mode.
+- `/[dr-review](../dr-review/SKILL.md)` — if the incident exposed a broken backup, restore, or failover path.
+- `/[runbook](../runbook/SKILL.md)` — if no [runbook](../runbook/SKILL.md) existed for this failure mode, writing one is a follow-up.
 
 ## Before you finish
 
@@ -139,7 +139,7 @@ canonical columns before they are routed:
       helped, and rollback — and that the operator executes it, not you.
 - [ ] Trigger and root cause are distinguished; unknowns are listed as unknowns.
 - [ ] Follow-ups are routed to a skill and specific enough to become plans —
-      never "improve monitoring".
+      never "improve [monitoring](../monitoring/SKILL.md)".
 
 ## Tone of the output
 

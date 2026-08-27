@@ -10,7 +10,7 @@ metadata:
   package: azure-containerregistry
 ---
 
-# Azure Container Registry SDK for Python
+# Azure Container Registry SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Manage container images, artifacts, and repositories in Azure Container Registry.
 
@@ -31,7 +31,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -42,7 +42,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Entra ID (Recommended)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.containerregistry import ContainerRegistryClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
@@ -50,7 +50,7 @@ from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ContainerRegistryClient(
@@ -63,7 +63,7 @@ with ContainerRegistryClient(
 
 ### Anonymous Access (Public Registry)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import ContainerRegistryClient
 
 with ContainerRegistryClient(
@@ -77,7 +77,7 @@ with ContainerRegistryClient(
 
 ## List Repositories
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 with ContainerRegistryClient(endpoint, DefaultAzureCredential()) as client:
     for repository in client.list_repository_names():
         print(repository)
@@ -87,7 +87,7 @@ with ContainerRegistryClient(endpoint, DefaultAzureCredential()) as client:
 
 ### Get Repository Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 properties = client.get_repository_properties("my-image")
 print(f"Created: {properties.created_on}")
 print(f"Modified: {properties.last_updated_on}")
@@ -97,7 +97,7 @@ print(f"Tags: {properties.tag_count}")
 
 ### Update Repository Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import RepositoryProperties
 
 client.update_repository_properties(
@@ -111,20 +111,20 @@ client.update_repository_properties(
 
 ### Delete Repository
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.delete_repository("my-image")
 ```
 
 ## List Tags
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for tag in client.list_tag_properties("my-image"):
     print(f"{tag.name}: {tag.created_on}")
 ```
 
 ### Filter by Order
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import ArtifactTagOrder
 
 # Most recent first
@@ -139,7 +139,7 @@ for tag in client.list_tag_properties(
 
 ### List Manifests
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import ArtifactManifestOrder
 
 for manifest in client.list_manifest_properties(
@@ -153,7 +153,7 @@ for manifest in client.list_manifest_properties(
 
 ### Get Manifest Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 manifest = client.get_manifest_properties("my-image", "latest")
 print(f"Digest: {manifest.digest}")
 print(f"Architecture: {manifest.architecture}")
@@ -162,7 +162,7 @@ print(f"OS: {manifest.operating_system}")
 
 ### Update Manifest Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import ArtifactManifestProperties
 
 client.update_manifest_properties(
@@ -177,7 +177,7 @@ client.update_manifest_properties(
 
 ### Delete Manifest
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Delete by digest
 client.delete_manifest("my-image", "sha256:abc123...")
 
@@ -190,7 +190,7 @@ client.delete_manifest("my-image", manifest.digest)
 
 ### Get Tag Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 tag = client.get_tag_properties("my-image", "latest")
 print(f"Digest: {tag.digest}")
 print(f"Created: {tag.created_on}")
@@ -198,13 +198,13 @@ print(f"Created: {tag.created_on}")
 
 ### Delete Tag
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.delete_tag("my-image", "old-tag")
 ```
 
 ## Upload and Download Artifacts
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry import ContainerRegistryClient
 
 with ContainerRegistryClient(endpoint, DefaultAzureCredential()) as client:
@@ -222,7 +222,7 @@ with ContainerRegistryClient(endpoint, DefaultAzureCredential()) as client:
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.containerregistry.aio import ContainerRegistryClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -235,7 +235,7 @@ async def list_repos():
 
 ## Clean Up Old Images
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 
 cutoff = datetime.now(timezone.utc) - timedelta(days=30)

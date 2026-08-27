@@ -31,7 +31,7 @@ later, automatically removes) the corresponding `Application`, with no
 manual manifest authored per instance. This matters operationally because
 it turns fleet-wide rollout consistency from a copy-paste discipline
 problem into a generator-configuration problem, and it's the mechanism
-that makes [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)'s
+that makes [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)'s
 hub-and-spoke topology actually maintainable at scale.
 
 ## When to use
@@ -42,9 +42,9 @@ hub-and-spoke topology actually maintainable at scale.
 - Onboarding a new cluster or environment should automatically produce the
   right set of `Application`s, not require someone to author new YAML.
   See also
-  [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
+  [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
   for what goes inside each generated `Application`.
-- A monorepo has one directory per microservice and each should become its
+- A [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) has one directory per microservice and each should become its
   own `Application` without per-service boilerplate.
 - Rolling a service out to every registered cluster (fleet-wide) or a
   filtered subset of clusters by label.
@@ -56,10 +56,10 @@ hub-and-spoke topology actually maintainable at scale.
 
 - Argo CD ≥ 2.9 with the `ApplicationSet` controller enabled (bundled by
   default in the standard install manifests since Argo CD 2.x; verify with
-  `kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-applicationset-controller`).
+  `[kubectl](../kubectl/SKILL.md) get pods -n [argocd](../argocd/SKILL.md) -l app.[kubernetes](../kubernetes/SKILL.md).io/name=[argocd](../argocd/SKILL.md)-applicationset-controller`).
 - For the Cluster generator: target clusters already registered with Argo
-  CD (`argocd cluster add <CONTEXT>` or a `Secret` labeled
-  `argocd.argoproj.io/secret-type: cluster` in the `argocd` namespace).
+  CD (`[argocd](../argocd/SKILL.md) cluster add <CONTEXT>` or a `Secret` labeled
+  `[argocd](../argocd/SKILL.md).argoproj.io/secret-type: cluster` in the `[argocd](../argocd/SKILL.md)` namespace).
 - For the Git generator: read access to the config repo already
   configured as an Argo CD repository credential.
 - Familiarity with Go template syntax (`{{.field}}`) or, for newer
@@ -77,7 +77,7 @@ hub-and-spoke topology actually maintainable at scale.
    kind: ApplicationSet
    metadata:
      name: payments-api-envs
-     namespace: argocd
+     namespace: [argocd](../argocd/SKILL.md)
    spec:
      goTemplate: true
      goTemplateOptions: ["missingkey=error"]
@@ -96,11 +96,11 @@ hub-and-spoke topology actually maintainable at scale.
        spec:
          project: default
          source:
-           repoURL: https://github.com/example/gitops-config.git
+           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: "apps/payments-api/overlays/{{.env}}"
          destination:
-           server: https://kubernetes.default.svc
+           server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
            namespace: "{{.namespace}}"
          syncPolicy:
            automated: { prune: true, selfHeal: true }
@@ -113,7 +113,7 @@ hub-and-spoke topology actually maintainable at scale.
    kind: ApplicationSet
    metadata:
      name: platform-agent-fleet
-     namespace: argocd
+     namespace: [argocd](../argocd/SKILL.md)
    spec:
      goTemplate: true
      generators:
@@ -127,7 +127,7 @@ hub-and-spoke topology actually maintainable at scale.
        spec:
          project: default
          source:
-           repoURL: https://github.com/example/gitops-config.git
+           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: apps/platform-agent/base
          destination:
@@ -138,11 +138,11 @@ hub-and-spoke topology actually maintainable at scale.
    ```
    `{{.name}}` and `{{.server}}` come from the cluster `Secret`'s labels
    and `server` field automatically; add custom labels
-   (`argocd.argoproj.io/secret-type: cluster` Secrets support arbitrary
+   (`[argocd](../argocd/SKILL.md).argoproj.io/secret-type: cluster` Secrets support arbitrary
    labels) to filter which clusters this `ApplicationSet` targets, and
    custom `values.*` fields in the Secret to pass per-cluster parameters
    into the template — this is the mechanism
-   [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
+   [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
    builds on for hub-and-spoke fleet rollout.
 
 3. **Git directory generator** — one `Application` per matching directory,
@@ -152,12 +152,12 @@ hub-and-spoke topology actually maintainable at scale.
    kind: ApplicationSet
    metadata:
      name: all-services
-     namespace: argocd
+     namespace: [argocd](../argocd/SKILL.md)
    spec:
      goTemplate: true
      generators:
        - git:
-           repoURL: https://github.com/example/gitops-config.git
+           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            revision: main
            directories:
              - path: "apps/*/overlays/prod"
@@ -169,11 +169,11 @@ hub-and-spoke topology actually maintainable at scale.
        spec:
          project: default
          source:
-           repoURL: https://github.com/example/gitops-config.git
+           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: "{{.path.path}}"
          destination:
-           server: https://kubernetes.default.svc
+           server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
            namespace: "{{.path.basenameNormalized}}-prod"
          syncPolicy:
            automated: { prune: true, selfHeal: true }
@@ -189,7 +189,7 @@ hub-and-spoke topology actually maintainable at scale.
    ```yaml
    generators:
      - git:
-         repoURL: https://github.com/example/gitops-config.git
+         repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
          revision: main
          files:
            - path: "clusters/*/config.yaml"
@@ -208,14 +208,14 @@ hub-and-spoke topology actually maintainable at scale.
    kind: ApplicationSet
    metadata:
      name: services-x-clusters
-     namespace: argocd
+     namespace: [argocd](../argocd/SKILL.md)
    spec:
      goTemplate: true
      generators:
        - matrix:
            generators:
              - git:
-                 repoURL: https://github.com/example/gitops-config.git
+                 repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
                  revision: main
                  directories:
                    - path: "apps/*"
@@ -228,7 +228,7 @@ hub-and-spoke topology actually maintainable at scale.
        spec:
          project: default
          source:
-           repoURL: https://github.com/example/gitops-config.git
+           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: "{{.path.path}}/overlays/{{.metadata.labels.tier}}"
          destination:
@@ -264,9 +264,9 @@ hub-and-spoke topology actually maintainable at scale.
 
 7. **Verify what a change to a generator will produce before merging:**
    ```bash
-   argocd appset generate applicationset.yaml   # dry-run: list what would be generated
-   kubectl get applicationset payments-api-envs -n argocd -o yaml   # inspect .status.conditions
-   kubectl get applications -n argocd -l argocd.argoproj.io/application-set-name=payments-api-envs
+   [argocd](../argocd/SKILL.md) appset generate applicationset.yaml   # dry-run: list what would be generated
+   [kubectl](../kubectl/SKILL.md) get applicationset payments-api-envs -n [argocd](../argocd/SKILL.md) -o yaml   # inspect .status.conditions
+   [kubectl](../kubectl/SKILL.md) get applications -n [argocd](../argocd/SKILL.md) -l [argocd](../argocd/SKILL.md).argoproj.io/application-set-name=payments-api-envs
    ```
 
 ## Best practices
@@ -303,7 +303,7 @@ hub-and-spoke topology actually maintainable at scale.
   **Fix:** Check the cluster Secret's labels against the generator's
   `selector.matchLabels` — the most common cause is the new cluster
   Secret missing the label the `ApplicationSet` filters on. Confirm with
-  `kubectl get secret -n argocd -l argocd.argoproj.io/secret-type=cluster --show-labels`.
+  `[kubectl](../kubectl/SKILL.md) get secret -n [argocd](../argocd/SKILL.md) -l [argocd](../argocd/SKILL.md).argoproj.io/secret-type=cluster --show-labels`.
 
 - **Symptom:** A Matrix generator combining a Git directory generator (50
   service directories) with a Cluster generator (20 clusters) suddenly
@@ -317,7 +317,7 @@ hub-and-spoke topology actually maintainable at scale.
 
 - **Symptom:** Removing a directory from the Git generator's match (a
   service was deprecated and its overlay folder deleted) also deleted the
-  live Kubernetes resources for that service immediately, with no
+  live [Kubernetes](../kubernetes/SKILL.md) resources for that service immediately, with no
   warning, in production.
   **Fix:** This is expected `ApplicationSet` behavior without
   `preserveResourcesOnDeletion: true` combined with the generated
@@ -334,7 +334,7 @@ hub-and-spoke topology actually maintainable at scale.
   **Fix:** Template names must be unique across everything the
   `ApplicationSet` generates. Include a discriminating field
   (environment, cluster name) in the name template, and check
-  `kubectl get applications -n argocd -l argocd.argoproj.io/application-set-name=<name>`
+  `[kubectl](../kubectl/SKILL.md) get applications -n [argocd](../argocd/SKILL.md) -l [argocd](../argocd/SKILL.md).argoproj.io/application-set-name=<name>`
   for unexpected duplicates or count mismatches versus expected generator
   matches.
 
@@ -344,7 +344,7 @@ hub-and-spoke topology actually maintainable at scale.
   **Fix:** Set `goTemplateOptions: ["missingkey=error"]` so a
   misspelled or missing template variable fails `ApplicationSet`
   generation loudly instead of silently rendering empty — check
-  `kubectl describe applicationset <name> -n argocd` for the resulting
+  `[kubectl](../kubectl/SKILL.md) describe applicationset <name> -n [argocd](../argocd/SKILL.md)` for the resulting
   condition/error once this is set.
 
 ## Worked example
@@ -360,7 +360,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: platform-agent-fleet
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -374,7 +374,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/example/gitops-config.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
         targetRevision: main
         path: apps/platform-agent/base
       destination:
@@ -389,13 +389,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: all-services-prod
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/example/gitops-config.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
         revision: main
         directories:
           - path: "apps/*/overlays/prod"
@@ -405,11 +405,11 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/example/gitops-config.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
         targetRevision: main
         path: "{{.path.path}}"
       destination:
-        server: https://kubernetes.default.svc
+        server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
         namespace: "{{.path.basenameNormalized}}-prod"
       syncPolicy:
         automated: { prune: true, selfHeal: true }
@@ -417,17 +417,17 @@ spec:
     preserveResourcesOnDeletion: true
 ```
 
-Verify: `argocd appset generate platform-agent-fleet.yaml` before
+Verify: `[argocd](../argocd/SKILL.md) appset generate platform-agent-fleet.yaml` before
 applying shows exactly N Applications for N production-labeled clusters;
-after applying, `kubectl get applications -n argocd -l
-argocd.argoproj.io/application-set-name=platform-agent-fleet` confirms the
+after applying, `[kubectl](../kubectl/SKILL.md) get applications -n [argocd](../argocd/SKILL.md) -l
+[argocd](../argocd/SKILL.md).argoproj.io/application-set-name=platform-agent-fleet` confirms the
 count matches the cluster registry, and a subsequent deregistration of one
 cluster leaves that cluster's workload running (rather than deleted)
 because of `preserveResourcesOnDeletion: true`, pending deliberate cleanup.
 
 ## Cross-references
 
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
-- [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
-- [argo-rollouts-progressive-delivery](../argo-rollouts-progressive-delivery/SKILL.md)
-- [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md)
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
+- [argo-rollouts-progressive-delivery](../[argo-rollouts-progressive-delivery](../argo-rollouts-[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)/SKILL.md)/SKILL.md)
+- [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)

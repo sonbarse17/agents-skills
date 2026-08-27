@@ -13,7 +13,7 @@ Production patterns for implementing data quality with Great Expectations, dbt t
 - Setting up Great Expectations validation
 - Building comprehensive dbt test suites
 - Establishing data contracts between teams
-- Monitoring data quality metrics
+- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data quality metrics
 - Automating data validation in CI/CD
 
 ## Core Concepts
@@ -56,7 +56,7 @@ great_expectations init
 great_expectations datasource new
 ```
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # great_expectations/checkpoints/daily_validation.yml
 import great_expectations as gx
 
@@ -126,7 +126,7 @@ if not all(r.passed for r in results.values()):
 - **Test early** - Validate source data before transformations
 - **Test incrementally** - Add tests as you find issues
 - **Document expectations** - Clear descriptions for each test
-- **Alert on failures** - Integrate with monitoring
+- **Alert on failures** - Integrate with [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - **Version contracts** - Track schema changes
 
 ### Don'ts

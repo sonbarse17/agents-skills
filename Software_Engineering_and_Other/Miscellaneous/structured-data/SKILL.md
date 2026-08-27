@@ -9,7 +9,7 @@ Injecting JSON-LD provides explicit clues about the meaning of a page to search 
 
 ## Workflow
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Extract Page Metadata] --> B[Format as JSON-LD]

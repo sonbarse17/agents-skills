@@ -23,29 +23,29 @@ metadata:
 
 ## Purpose
 
-Consul solves a problem Kubernetes-native meshes (Istio, Linkerd) don't:
+Consul solves a problem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native meshes (Istio, Linkerd) don't:
 service discovery and mesh connectivity across environments that aren't
-a single Kubernetes cluster — VMs, bare metal, multiple Kubernetes
+a single [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster — VMs, bare metal, multiple [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 clusters, and multiple cloud providers, all registered in one catalog
 and reachable through one mesh. Its service discovery (DNS and HTTP API
 over a distributed, Raft-backed catalog) predates and works
-independently of its service-mesh (Connect) capability, which is why
-Consul is often chosen specifically for hybrid/multi-cloud estates where
-"just use the Kubernetes-native mesh" isn't an option because not
-everything is in Kubernetes. This skill covers configuring Consul
+independently of its [service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md) (Connect) capability, which is why
+Consul is often chosen specifically for hybrid/[multi-cloud](../multi-cloud/SKILL.md) estates where
+"just use the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh" isn't an option because not
+everything is in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md). This skill covers configuring Consul
 Connect sidecars, intentions, traffic-management config entries, and
-cross-datacenter connectivity. Validating service definitions and
+cross-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) connectivity. Validating service definitions and
 intentions before they reach production is a separate, deeper topic —
 see
-[consul-configuration-validation](../consul-configuration-validation/SKILL.md).
+[consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
 - Standing up Consul as the mesh and/or discovery layer for an estate
-  that spans VMs and Kubernetes, or multiple Kubernetes clusters across
+  that spans VMs and [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), or multiple [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters across
   cloud providers.
-- Registering non-Kubernetes services (VM-hosted, bare-metal) into the
-  same catalog and mesh as Kubernetes-hosted services.
+- Registering non-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) services (VM-hosted, [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)) into the
+  same catalog and mesh as [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-hosted services.
 - Writing or reviewing **intentions** that authorize (or deny)
   service-to-service mesh traffic.
 - Configuring traffic splitting/routing across service versions with
@@ -53,29 +53,29 @@ see
   config entries.
 - Federating multiple Consul datacenters (WAN federation) or connecting
   independently-administered Consul clusters (cluster peering) for
-  cross-datacenter or cross-cloud service discovery and mesh traffic.
+  cross-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) or cross-cloud service discovery and mesh traffic.
 - A user is choosing between Consul, Linkerd, Cilium, or Istio for a new
-  mesh and the deciding factor is non-Kubernetes workloads or
-  multi-datacenter reach.
+  mesh and the deciding factor is non-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads or
+  multi-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) reach.
 
 ## Prerequisites & environment
 
 - A running Consul server cluster (odd number of servers, typically 3
   or 5, using the Raft consensus protocol) reachable by every agent that
   needs to register services or resolve the catalog.
-- For Kubernetes workloads: the `consul-k8s` Helm chart installed with
+- For [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads: the `consul-k8s` Helm chart installed with
   `connectInject.enabled=true`, which runs the sidecar-injection webhook
   and (per pod) an Envoy sidecar proxy — Consul Connect's data plane is
   Envoy, not a custom proxy, so Envoy version compatibility with your
   Consul server version matters when upgrading either.
-- For VM/bare-metal workloads: the `consul` agent running locally on
+- For VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) workloads: the `consul` agent running locally on
   each host in client mode, registering local services via service
   definition files or the HTTP API.
 - ACLs enabled (`acl.enabled = true`) with a bootstrap token rotated out
   of the initial bootstrap state — running a production Consul cluster
   with ACLs disabled means intentions have no enforcement teeth, since
   anything can register or call anything.
-- For multi-datacenter: either WAN federation (requires routable network
+- For multi-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md): either WAN federation (requires routable network
   connectivity between all federated datacenters' server clusters, plus
   matching Gossip encryption keys) or cluster peering (Consul's newer
   mechanism that doesn't require federated servers to share a flat
@@ -103,8 +103,8 @@ see
    }
    ```
    `"connect": {"sidecar_service": {}}` is what enrolls this service into
-   the mesh with an auto-configured Envoy sidecar on a VM/bare-metal
-   host; on Kubernetes this is handled instead by the `consul-k8s`
+   the mesh with an auto-configured Envoy sidecar on a VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
+   host; on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) this is handled instead by the `consul-k8s`
    inject webhook via a pod annotation
    (`consul.hashicorp.com/connect-inject: "true"`).
 
@@ -126,7 +126,7 @@ see
    ]
    ```
    Apply via `consul config write payments-api-intentions.hcl`, or as a
-   Kubernetes CRD (`ServiceIntentions`) if using `consul-k8s`. The
+   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRD (`ServiceIntentions`) if using `consul-k8s`. The
    trailing wildcard `deny` makes the default-deny posture explicit in
    the same file rather than relying on a separate global default.
 
@@ -167,8 +167,8 @@ see
 5. **Federate across datacenters with WAN federation** when server
    clusters can reach each other over a routable network:
    ```hcl
-   # datacenter "dc2" server config
-   datacenter = "dc2"
+   # [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) "dc2" server config
+   [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) = "dc2"
    primary_datacenter = "dc1"
    retry_join_wan = ["<dc1-server-1-address>", "<dc1-server-2-address>"]
    ```
@@ -185,16 +185,16 @@ see
    `exported-services` config entry — peering does not expose the whole
    catalog by default.
 
-6. **Enable mesh gateways for cross-datacenter mesh traffic** so
+6. **Enable mesh gateways for cross-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) mesh traffic** so
    service-to-service calls across datacenters don't require every
    agent to have direct L3 connectivity to every remote service, only to
-   the remote datacenter's mesh gateway:
+   the remote [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)'s mesh gateway:
    ```hcl
    Kind = "mesh"
    TransparentProxy { MeshDestinationsOnly = false }
    ```
    Mesh gateways terminate/originate the encrypted mesh connection at
-   the datacenter boundary, which is also what makes WAN federation or
+   the [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) boundary, which is also what makes WAN federation or
    peering practical across networks that aren't fully flat/routable.
 
 7. **Confirm ACLs and intentions are actually enforcing**, not just
@@ -214,7 +214,7 @@ see
 - Prefer cluster peering over WAN federation for genuinely separate
   cloud environments or organizations — federation assumes a level of
   network and Gossip-key trust between datacenters that often doesn't
-  match a real multi-cloud/multi-tenant boundary.
+  match a real [multi-cloud](../multi-cloud/SKILL.md)/multi-tenant boundary.
 - Keep `service-resolver`/`service-splitter`/`service-router` config
   entries paired and reviewed together per service — a `service-splitter`
   referencing a subset the `service-resolver` doesn't define fails
@@ -225,14 +225,14 @@ see
 - Explicitly declare `exported-services` per peering relationship rather
   than assuming peered clusters see each other's whole catalog — peering
   is opt-in per service by design.
-- If most of the estate is Kubernetes-only with no VM/bare-metal or
-  multi-datacenter requirement, weigh whether Consul's operational
+- If most of the estate is [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or
+  multi-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) requirement, weigh whether Consul's operational
   overhead (running and federating server clusters, agent placement on
-  every VM) is worth it versus a Kubernetes-native mesh — see
-  [linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md)
+  every VM) is worth it versus a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh — see
+  [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   or
-  [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md)
-  for that comparison when hybrid/multi-cloud reach isn't actually
+  [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
+  for that comparison when hybrid/[multi-cloud](../multi-cloud/SKILL.md) reach isn't actually
   needed.
 
 ## Common pitfalls
@@ -283,13 +283,13 @@ see
   Debug via `consul intention check` and agent/proxy logs instead of
   disabling enforcement; if enforcement genuinely must be relaxed to
   isolate a problem, scope the relaxation narrowly (one specific
-  source/destination pair, on a non-production datacenter) and track an
+  source/destination pair, on a non-production [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)) and track an
   explicit revert.
 
 ## Worked example
 
 **Scenario:** A hybrid estate has `checkout-service` running on
-Kubernetes and `payments-api` running on a fleet of VMs in a different
+[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) and `payments-api` running on a fleet of VMs in a different
 cloud account, connected via cluster peering, with a canary rollout of
 `payments-api` v2 at 10% traffic.
 
@@ -343,17 +343,17 @@ consul config write payments-api-splitter.hcl
 consul intention check checkout-service payments-api
 ```
 
-`checkout-service`, running on Kubernetes in a peered cluster, resolves
+`checkout-service`, running on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) in a peered cluster, resolves
 and calls `payments-api` through the mesh gateway connecting the two
 peered environments, with 10% of calls landing on the v2 subset — all
 without either side needing direct L3 reachability to individual
 instances in the other cloud account. Before promoting the split
 further, run the intention and config-entry checks in
-[consul-configuration-validation](../consul-configuration-validation/SKILL.md).
+[consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [consul-configuration-validation](../consul-configuration-validation/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
-- [linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md) — a simpler Kubernetes-native mesh alternative when the multi-cloud/VM reach Consul provides isn't actually needed.
-- [cilium-ebpf-cni-and-mesh-configuration](../cilium-ebpf-cni-and-mesh-configuration/SKILL.md) — a CNI-layer alternative for Kubernetes-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
-- [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md) — the equivalent Kubernetes-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.
+- [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
+- [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
+- [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../../Containers_and_Orchestration/[cilium-ebpf](../../Containers_and_Orchestration/cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — a CNI-layer alternative for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
+- [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the equivalent [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.

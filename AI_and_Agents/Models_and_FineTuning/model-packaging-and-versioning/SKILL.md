@@ -41,7 +41,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 - The user is designing a promotion workflow (dev → staging → canary →
   production) with approval gates.
 - The user needs to package a model for a specific serving runtime (ONNX,
-  TorchScript, TensorFlow SavedModel, a Docker/OCI image, a `.tar.gz` bundle
+  TorchScript, TensorFlow SavedModel, a [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/OCI image, a `.tar.gz` bundle
   for SageMaker/Vertex).
 - The user asks how to roll back a bad model deployment quickly and safely.
 - The user is building CI/CD for models and wants packaging to be a pipeline
@@ -58,10 +58,10 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 - Framework export tooling as applicable: `torch.jit.trace`/`torch.onnx.export`
   (PyTorch ≥ 2.0), `tf.saved_model.save` (TensorFlow ≥ 2.x), `optimum`/`onnxruntime`
   for transformer export.
-- Container tooling (Docker or equivalent OCI builder) if packaging as an
+- Container tooling ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or equivalent OCI builder) if packaging as an
   image for serving.
 - CI/CD system with the ability to run build steps, store artifacts, and gate
-  promotions (GitHub Actions, GitLab CI, Jenkins, Argo Workflows).
+  promotions ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), Argo Workflows).
 - Read/write permissions to the registry's "staging" and "production" stages
   are usually separated — confirm who/what has production write access before
   designing the promotion workflow.
@@ -77,20 +77,20 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
    - `patch`: bug-fix retrain (e.g. fixed a data leak, no architecture change).
    - Example: `fraud-scorer-v2.3.1+a1b2c3d.run-8841`.
 2. **Capture full lineage metadata at packaging time**, not after the fact:
-   - Git commit SHA of the training code.
+   - Git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA of the training code.
    - Training data snapshot ID/URI (e.g. a Delta Lake version or a dataset
      hash) — see
-     [data-and-model-lineage](../data-and-model-lineage/SKILL.md) for how to
+     [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md) for how to
      wire this into a lineage graph.
    - Experiment tracking run ID and key metrics — see
-     [experiment-tracking](../experiment-tracking/SKILL.md).
+     [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md).
    - Exact framework/library versions (`pip freeze` or `conda env export`
      snapshot, or a locked `pyproject.toml`).
    - Input/output schema (feature names, dtypes, expected ranges; for LLMs,
      prompt template version and tokenizer version).
 3. **Export to the target runtime format** and validate the export is
    numerically equivalent to the training-time model on a held-out sample:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import torch
 
    model.eval()
@@ -106,7 +106,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
    traced.save("fraud-scorer-v2.3.1.pt")
    ```
 4. **Register the artifact** with its version, stage, and metadata:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow
 
    with mlflow.start_run(run_id="run-8841"):
@@ -131,10 +131,10 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
    - `staging` → requires passing offline eval thresholds and a schema
      compatibility check against the current production model.
    - `production` → requires a human approval or an automated canary result
-     (see [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)
-     for canary/shadow rollout mechanics) plus monitoring hooks already wired
+     (see [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
+     for canary/shadow rollout mechanics) plus [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) hooks already wired
      up (see
-     [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)).
+     [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 6. **Keep the previous production version pinned and retrievable.** Do not
    delete or overwrite the prior production registry entry when promoting a
    new one — archive it to an "Archived" stage instead so it is one click
@@ -142,7 +142,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 7. **Wire rollback as a promotion, not a deploy hack**: rolling back means
    re-promoting the previously archived version through the same gated path
    used for forward promotion (possibly with an expedited/emergency approval
-   track), so the audit trail stays intact.
+   track), so the [audit](../../Operations/audit/SKILL.md) trail stays intact.
 8. **Sign and checksum production artifacts** (e.g. cosign for container
    images, SHA-256 manifest for tarballs) so the serving layer can verify it
    is running exactly the bits that were approved.
@@ -214,7 +214,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 A team maintains a fraud-scoring model, `fraud-scorer`, retrained weekly.
 
 1. Training run `run-8841` (tracked per
-   [experiment-tracking](../experiment-tracking/SKILL.md)) completes with
+   [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)) completes with
    AUC 0.912 on the held-out set, git SHA `a1b2c3d`, trained on data snapshot
    `s3://data-lake/fraud/snapshots/2026-07-20`.
 2. CI packaging job exports the model to TorchScript, runs the parity check,
@@ -227,18 +227,18 @@ A team maintains a fraud-scoring model, `fraud-scorer`, retrained weekly.
    production version (13, AUC 0.905) and approves promotion.
 5. Version 14 is promoted to `Production`; version 13 is moved to `Archived`
    (not deleted). The serving layer (see
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)) is
+   [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)) is
    configured to route 5% of traffic to version 14 as a canary for 24 hours
    before full cutover.
-6. Two hours into the canary, monitoring
-   ([model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md))
+6. Two hours into the canary, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+   ([model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
    flags a spike in the false-positive rate on version 14. On-call rolls back
    by re-promoting version 13 from `Archived` to `Production` — a two-minute
    action because the artifact and its metadata were never deleted.
 
 ## Cross-references
 
-- [experiment-tracking](../experiment-tracking/SKILL.md)
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md)
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)
+- [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md)
+- [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)

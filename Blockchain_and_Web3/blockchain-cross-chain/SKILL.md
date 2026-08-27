@@ -21,7 +21,7 @@ Guide cross-chain protocol selection, bridge architecture, and interoperability 
 ### Input Context
 - Problem type (asset transfer/message passing/data query/atomic execution)
 - Source and destination chains with finality models
-- Security requirements (trust minimization, audit level, value secured)
+- Security requirements (trust minimization, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) level, value secured)
 - Performance needs (latency, throughput, cost budget)
 - Existing infrastructure (current bridge usage, token standards)
 
@@ -83,7 +83,7 @@ Cross-chain problem:
 │   └── Streaming → Event indexing + relayer
 └── Atomic execution across chains?
     ├── Same sequencer → Shared sequencer (Espresso, Astria)
-    └── Different sequencers → Atomic commit protocol (two-phase commit with timeouts)
+    └── Different sequencers → Atomic [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) protocol (two-phase [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with timeouts)
 ```
 
 ### Trust Model Comparison
@@ -152,18 +152,18 @@ Source finality model:
 | Smart contract bug | Bridge contract vulnerability (reentrancy, access control) | Audits, formal verification, bug bounties |
 | Oracle manipulation | Price feed manipulation during bridge operation | Redundant oracles, TWAP pricing |
 | Griefing | Relayer stops processing messages | Permissionless relayer set, economic incentives |
-| MEV extraction | Sandwiching bridge transactions | Commit-reveal, slippage protection |
+| MEV extraction | Sandwiching bridge transactions | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, slippage protection |
 | Bridge draining | Flash loan + oracle manipulation to drain bridge | Rate limits, tiered withdrawal, circuit breakers |
 | Phantom token | Attacker creates fake representation token | Verified token registry, canonical token lists |
 | Governance attack | Bridge governance taken over | Timelock, multi-sig, progressive decentralization |
 
 ### Historical Bridge Exploits
-| Incident | Bridge | Loss | Cause | Date |
+| [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) | Bridge | Loss | Cause | Date |
 |----------|--------|------|-------|------|
 | Wormhole | Wormhole | $326M | Guardian signature compromise | Feb 2022 |
 | Ronin | Ronin | $624M | Private key compromise of 5/9 validators | Mar 2022 |
 | BNB Chain | BSC Token Hub | $570M | Light client proof verification bug | Oct 2022 |
-| Nomad | Nomad | $190M | Trusted root not initialized (default = zero) | Aug 2022 |
+| [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md) | [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md) | $190M | Trusted root not initialized (default = zero) | Aug 2022 |
 | Multichain | Multichain | $1.5B | Private key compromise, bridge halted | Jul 2023 |
 | Orbit Bridge | Orbit | $81M | Smart contract vulnerability | Jan 2024 |
 
@@ -265,7 +265,7 @@ function lzReceive(
 ```
 
 ### Wormhole Guardian Quorum
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Wormhole uses 19 guardians (N=19, threshold=13/19)
 // Each guardian observes emitted messages on each chain
 // Guardian signs verified Observation → VAAs (Verified Action Approval)
@@ -349,7 +349,7 @@ contract CrossChainMessenger {
 Relayer costs:
 ├── Source chain: gas for observing events (read operations, cheap)
 ├── Destination chain: gas for submitting messages (write operations)
-├── Infrastructure: node operation, monitoring, alerting
+├── Infrastructure: node operation, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 └── Capital: pre-funded gas on destination chains
 
 Revenue models:
@@ -386,8 +386,8 @@ Relayer sustainability:
   - ../../../Global_References/atomic-composability.md — Atomic Composability Across Chains
   - ../../../Global_References/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
   - ../../../Global_References/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
-  - ../../../Global_References/bridge-incident-response.md — Bridge Incident Response
-  - ../../../Global_References/bridge-monitoring-alerting.md — Bridge Monitoring and Alerting
+  - ../../../Global_References/bridge-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Bridge [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+  - ../../../Global_References/bridge-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).md — Bridge [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
   - ../../../Global_References/bridge-security.md — Bridge Security
   - ../../../Global_References/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
   - ../../../Global_References/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive
@@ -406,7 +406,7 @@ Cross-Chain Bridge Selection
 │   ├── External validator → PoS oracle bridge (LayerZero, Wormhole)
 │   └── Liquidity network → Atomic swap / HTLC-based (ThorChain, Connext)
 ├── Finality requirement?
-│   ├── Fast (< 30 min) → Optimistic bridge (Nomad, Synapse)
+│   ├── Fast (< 30 min) → Optimistic bridge ([Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md), Synapse)
 │   ├── Instant → Liquidity network (Celer, Connext)
 │   └── Slow but secure → ZK bridge with light client verification
 ├── Asset type?
@@ -455,7 +455,7 @@ contract HTLC {
 ```
 
 ### Relayer Verification
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # blockchain-cross-chain/relayer_verification.py
 class CrossChainRelayer:
     def __init__(self, source_rpc: str, dest_rpc: str):
@@ -507,7 +507,7 @@ class CrossChainRelayer:
 - **Message replay protection**: Include originating chain ID, nonce, and block number in message digest.
 - **Oracle manipulation**: Use multiple oracle sources for exchange rates; TWAP-based pricing.
 - **Bridge contract upgradeability**: Timelock + multisig for bridge upgrades; pause before upgrade.
-- **Audit requirements**: Bridge contracts require multiple audits; formal verification for critical paths.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) requirements**: Bridge contracts require multiple audits; formal verification for critical paths.
 
 ## Phase: blockchain → blockchain-cross-chain
 

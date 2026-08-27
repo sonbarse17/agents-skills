@@ -10,14 +10,14 @@ plugin: a checkpoint that trains
 cleanly and beats its task metric
 still doesn't ship without
 clearing all four stages below.
-`eval-harness-first` built the
+`[eval-harness-first](../eval-harness-first/SKILL.md)` built the
 suite re-run here — this skill is
 where that suite's baseline
 decides something.
 
 **Input:** a trained checkpoint,
 `eval/baseline-<model>.json` from
-`eval-harness-first`, and the
+`[eval-harness-first](../eval-harness-first/SKILL.md)`, and the
 frozen `eval/drift-suite.yaml`.
 **Output format:**
 `promotion-report.md` — the
@@ -47,7 +47,7 @@ where the real savings are.
    checkpoint: dedup the training
    set, check for eval-goldens
    leakage (the exact failure
-   `trace-to-training-data`'s
+   `[trace-to-training-data](../trace-to-training-data/SKILL.md)`'s
    Hygiene section exists to
    prevent), and scan for label
    noise. A checkpoint trained on
@@ -55,7 +55,7 @@ where the real savings are.
    every later stage.
 2. **Held-out + frozen
    capability-drift suite.**
-   Re-run `eval-harness-first`'s
+   Re-run `[eval-harness-first](../eval-harness-first/SKILL.md)`'s
    `eval/drift-suite.yaml` —
    MMLU/GSM8K/IFEval plus 200–500
    domain-adjacent items — against
@@ -173,8 +173,8 @@ both point to:
 3. **Fewer epochs.**
 4. **A smaller LoRA rank** — the
    same rank/LR levers
-   `lora-qlora-recipes` and
-   `preference-optimization` tune
+   `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` and
+   `[preference-optimization](../preference-optimization/SKILL.md)` tune
    for the training run, applied
    here in reverse.
 
@@ -261,28 +261,28 @@ constant.
   training run. A `REJECT` hands
   the remediation back to a human
   decision at
-  `finetuning-method-selection` or
+  `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` or
   the relevant training skill.
 
 ## Related Skills
 
-- `eval-harness-first` — owns the
+- `[eval-harness-first](../eval-harness-first/SKILL.md)` — owns the
   drift suite and baseline this
   skill re-runs and diffs
   against; no `baseline-<model>.json`
   means nothing to gate against.
-- `quantized-export` — the only
+- `[quantized-export](../quantized-export/SKILL.md)` — the only
   valid next step after a
   `PROMOTE` verdict.
-- `preference-optimization` and
-  `lora-qlora-recipes` — own the
+- `[preference-optimization](../preference-optimization/SKILL.md)` and
+  `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` — own the
   LR and rank levers in the
   Catastrophic Forgetting
   escalation path; this skill
   diagnoses the breach, those
   skills own the config that
   caused it.
-- `dataset-curation` — owns the
+- `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)` — owns the
   replay-mix construction recipe
   the escalation ladder's first
   rung applies.

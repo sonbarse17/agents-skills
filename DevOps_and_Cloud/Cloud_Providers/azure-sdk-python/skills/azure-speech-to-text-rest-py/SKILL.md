@@ -50,7 +50,7 @@ pip install requests
 
 ## Quick Start
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 import requests
 
@@ -97,7 +97,7 @@ print(result["DisplayText"])
 
 ## Content-Type Headers
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # WAV PCM 16kHz
 wav_headers = {
     "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000"
@@ -113,7 +113,7 @@ ogg_headers = {
 
 ### Simple Format (default)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 params = {"language": "en-US", "format": "simple"}
 ```
 
@@ -128,7 +128,7 @@ params = {"language": "en-US", "format": "simple"}
 
 ### Detailed Format
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 params = {"language": "en-US", "format": "detailed"}
 ```
 
@@ -153,7 +153,7 @@ params = {"language": "en-US", "format": "detailed"}
 
 For lower latency, stream audio in chunks:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 import requests
 
@@ -194,7 +194,7 @@ def transcribe_chunked(audio_file_path: str, language: str = "en-US") -> dict:
 
 ### Option 1: Subscription Key (Simple)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 headers = {
     "Ocp-Apim-Subscription-Key": os.environ["AZURE_SPEECH_KEY"]
 }
@@ -202,7 +202,7 @@ headers = {
 
 ### Option 2: Bearer Token
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import requests
 import os
 
@@ -253,7 +253,7 @@ headers = {
 
 ## Profanity Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Mask profanity with asterisks (default)
 params = {"language": "en-US", "profanity": "masked"}
 
@@ -266,7 +266,7 @@ params = {"language": "en-US", "profanity": "raw"}
 
 ## Error Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import requests
 
 def transcribe_with_error_handling(audio_path: str, language: str = "en-US") -> dict | None:
@@ -314,7 +314,7 @@ def transcribe_with_error_handling(audio_path: str, language: str = "en-US") -> 
 
 ## Async Version
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 import aiohttp
 import asyncio

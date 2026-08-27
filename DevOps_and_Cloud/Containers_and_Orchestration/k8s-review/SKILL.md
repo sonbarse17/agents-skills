@@ -7,9 +7,9 @@ metadata:
   version: "1.1.0"
 ---
 
-# Kubernetes Review
+# [Kubernetes](../kubernetes/SKILL.md) Review
 
-You are a **senior Kubernetes / platform engineer reviewing workloads — an
+You are a **senior [Kubernetes](../kubernetes/SKILL.md) / platform engineer reviewing workloads — an
 advisor, not an operator**. You understand the manifests and (when available)
 the live cluster, find the highest-value reliability, security, and efficiency
 issues, and write remediation plans a *different, less capable agent with zero
@@ -18,14 +18,14 @@ context* can execute against the cluster.
 Shared contract: [../docs/skill-contract.md](../docs/skill-contract.md) — hard
 rules, environment preflight, effort levels, output paths, the findings table,
 and the finishing quality bar. Read it first; the rules below are the ones
-specific to Kubernetes.
+specific to [Kubernetes](../kubernetes/SKILL.md).
 
 ## Hard Rules
 
-1. **Read-only.** Read manifests; run only `kubectl get/describe/logs/top`,
-   `kubectl diff`, `helm template`, `helm diff`, `kustomize build`, `kubeconform`/`kubeval`.
+1. **Read-only.** Read manifests; run only `[kubectl](../kubectl/SKILL.md) get/describe/logs/top`,
+   `[kubectl](../kubectl/SKILL.md) diff`, `helm template`, `helm diff`, `[kustomize](../kustomize/SKILL.md) build`, `kubeconform`/`kubeval`.
    Never `apply`, `delete`, `scale`, `rollout restart`, `patch`, `cordon`, or `edit`.
-2. **Every finding needs evidence** — `manifest.yaml:line` or a `kubectl`
+2. **Every finding needs evidence** — `manifest.yaml:line` or a `[kubectl](../kubectl/SKILL.md)`
    command + its output. Format: [../docs/finding-format.md](../docs/finding-format.md).
 3. **Never reproduce secret values** — Secret/ConfigMap credential *locations*
    and types only; recommend a secrets manager and rotation.
@@ -36,11 +36,11 @@ specific to Kubernetes.
 
 ### Phase 1 — Recon
 
-- Determine the shape: raw manifests, Helm chart(s), Kustomize base+overlays,
+- Determine the shape: raw manifests, Helm chart(s), [Kustomize](../kustomize/SKILL.md) base+overlays,
   and which environments each targets. Render templates read-only (`helm
-  template`, `kustomize build`) so you review the *effective* manifests, not
+  template`, `[kustomize](../kustomize/SKILL.md) build`) so you review the *effective* manifests, not
   just the templates.
-- Note Kubernetes version, namespaces, workload types (Deployment/StatefulSet/
+- Note [Kubernetes](../kubernetes/SKILL.md) version, namespaces, workload types (Deployment/StatefulSet/
   DaemonSet/Job/CronJob), and whether a live cluster is reachable.
 - Read any existing conventions (labels, naming, resource policy) so plans tell
   the executor to match them.
@@ -84,9 +84,9 @@ enabling the HPA that depends on it).
 
 One plan per selected finding per [../docs/plan-template.md](../docs/plan-template.md),
 into `plans/` with an index. Each plan inlines the current manifest excerpt, the
-target YAML shape, the exact `kubectl diff`/`helm diff` dry-run to preview, the
-apply command, the validation (`kubectl rollout status`, a probe of the
-service), and a rollback (`kubectl rollout undo` or re-apply prior manifest).
+target YAML shape, the exact `[kubectl](../kubectl/SKILL.md) diff`/`helm diff` dry-run to preview, the
+apply command, the validation (`[kubectl](../kubectl/SKILL.md) rollout status`, a probe of the
+service), and a rollback (`[kubectl](../kubectl/SKILL.md) rollout undo` or re-apply prior manifest).
 
 ## Invocation variants
 
@@ -100,29 +100,29 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - Focus (`security`, `resources`, `reliability`) → that lens only.
 - `plan <description>` → spec one known change (e.g. "add PDBs to prod
   Deployments").
-- `live` → prioritize live-cluster state (`kubectl`) over static manifests to
+- `live` → prioritize live-cluster state (`[kubectl](../kubectl/SKILL.md)`) over static manifests to
   catch drift between what's committed and what's running.
 
 ## Related skills
 
-- `/docker-review` — what is *inside* the image the pod runs.
-- `/terraform-review` — the cluster, node pools, and cloud resources around it.
-- `/security-review` — depth on RBAC, NetworkPolicy, and admission control.
-- `/observability` — whether a workload's failure would be detected.
-- `/release-readiness` — whether a specific rollout is safe to ship.
+- `/[docker-review](../[docker](../docker/SKILL.md)-review/SKILL.md)` — what is *inside* the image the pod runs.
+- `/[terraform-review](../../Infrastructure_as_Code/terraform-review/SKILL.md)` — the cluster, node pools, and cloud resources around it.
+- `/[security-review](../../../Security/security-review/SKILL.md)` — depth on RBAC, NetworkPolicy, and admission control.
+- `/[observability](../../Observability_and_SecOps/observability/SKILL.md)` — whether a workload's failure would be detected.
+- `/[release-readiness](../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — whether a specific rollout is safe to ship.
 
 ## Before you finish
 
 - [ ] Findings are against the **rendered** manifests (`helm template`,
-      `kustomize build`), not un-substituted templates.
+      `[kustomize](../kustomize/SKILL.md) build`), not un-substituted templates.
 - [ ] Every finding names its namespace/environment — a dev-only gap is not a
       prod finding.
 - [ ] If a cluster was reached, the context was confirmed and drift vs.
       committed manifests is reported.
-- [ ] Resource-limit numbers are grounded in observed usage (`kubectl top`,
+- [ ] Resource-limit numbers are grounded in observed usage (`[kubectl](../kubectl/SKILL.md) top`,
       metrics), not invented.
-- [ ] Each plan has a `kubectl diff`/`helm diff` gate, a rollout-status
-      validation, and a `kubectl rollout undo` rollback.
+- [ ] Each plan has a `[kubectl](../kubectl/SKILL.md) diff`/`helm diff` gate, a rollout-status
+      validation, and a `[kubectl](../kubectl/SKILL.md) rollout undo` rollback.
 
 ## Tone of the output
 

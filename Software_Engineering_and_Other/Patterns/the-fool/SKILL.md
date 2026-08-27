@@ -72,7 +72,7 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 | Dialectic and synthesis | `../../../Global_References/dialectic-synthesis.md` | "Argue the other side" selected |
 | Pre-mortem analysis | `../../../Global_References/pre-mortem-analysis.md` | "Find the failure modes" selected |
 | Red team adversarial | `../../../Global_References/red-team-adversarial.md` | "Attack this" selected |
-| Evidence audit | `../../../Global_References/evidence-audit.md` | "Test the evidence" selected |
+| Evidence [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | `../../../Global_References/evidence-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).md` | "Test the evidence" selected |
 | Mode selection guide | `../../../Global_References/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
 
 ## Constraints
@@ -119,5 +119,5 @@ After any mode, the final output must include:
 
 Socratic method, Hegelian dialectic, steel manning, pre-mortem analysis, red teaming, falsificationism, abductive reasoning, second-order thinking, cognitive biases, inversion technique
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/the-fool/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/workflow/the-fool/)
 

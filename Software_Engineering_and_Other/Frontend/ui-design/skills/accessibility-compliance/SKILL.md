@@ -15,7 +15,7 @@ Master accessibility implementation to create inclusive experiences that work fo
 - Implementing focus management and focus trapping
 - Creating accessible forms with proper labeling
 - Supporting reduced motion and high contrast preferences
-- Building mobile accessibility features (iOS VoiceOver, Android TalkBack)
+- Building mobile accessibility features (iOS VoiceOver, [Android](../../../../../Mobile/android/SKILL.md) TalkBack)
 - Conducting accessibility audits and fixing violations
 
 ## Detailed patterns and worked examples
@@ -47,6 +47,6 @@ Detailed pattern documentation lives in `../../../../../Global_References/access
 ## Testing Tools
 
 - **Automated**: axe DevTools, WAVE, Lighthouse
-- **Manual**: VoiceOver (macOS/iOS), NVDA/JAWS (Windows), TalkBack (Android)
+- **Manual**: VoiceOver (macOS/iOS), NVDA/JAWS (Windows), TalkBack ([Android](../../../../../Mobile/android/SKILL.md))
 - **Simulators**: NoCoffee (vision), Silktide (various disabilities)
 

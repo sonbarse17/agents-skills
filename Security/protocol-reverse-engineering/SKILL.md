@@ -101,7 +101,7 @@ tshark -r capture.pcap -q -z io,phs
 
 ### Scapy for Custom Analysis
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from scapy.all import *
 
 # Read pcap
@@ -136,10 +136,10 @@ SMB         - 0xFF 0x53 0x4D 0x42 ("SMB" signature)
 SSH         - "SSH-2.0" banner
 FTP         - "220 " response, "USER " command
 SMTP        - "220 " banner, "EHLO" command
-MySQL       - 0x00 length prefix, protocol version
-PostgreSQL  - 0x00 0x00 0x00 startup length
+[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)       - 0x00 length prefix, protocol version
+[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)  - 0x00 0x00 0x00 startup length
 Redis       - "*" RESP array prefix
-MongoDB     - BSON documents with specific header
+[MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)     - BSON documents with specific header
 ```
 
 ### Protocol Header Patterns
@@ -162,7 +162,7 @@ MongoDB     - BSON documents with specific header
 
 ### Structure Identification
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Common patterns in binary protocols
 
 # Length-prefixed message
@@ -191,9 +191,9 @@ struct Packet {
 };
 ```
 
-### Python Protocol Parser
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Protocol Parser
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import struct
 from dataclasses import dataclass
 
@@ -240,7 +240,7 @@ def parse_tlv(data: bytes):
 
 ### Hex Dump Analysis
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def hexdump(data: bytes, width: int = 16):
     """Format binary data as hex dump."""
     lines = []
@@ -263,7 +263,7 @@ def hexdump(data: bytes, width: int = 16):
 
 ### Identifying Encryption
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Entropy analysis - high entropy suggests encryption/compression
 import math
 from collections import Counter
@@ -444,7 +444,7 @@ tcp_table:add(8888, proto)
 
 ### Fuzzing with Boofuzz
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from boofuzz import *
 
 def main():
@@ -474,7 +474,7 @@ if __name__ == "__main__":
 
 ### Replay and Modification
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from scapy.all import *
 
 # Replay captured traffic

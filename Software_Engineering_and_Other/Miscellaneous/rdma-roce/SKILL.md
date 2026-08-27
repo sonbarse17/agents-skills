@@ -19,9 +19,9 @@ At the silicon level, RoCEv2 encapsulates InfiniBand (IB) transport headers with
 4.  **Network Transit**: The packet traverses Lossless Ethernet switches (PFC/ECN enabled).
 5.  **Hardware Decapsulation & DMA Write**: The receiving NIC verifies the packet (ICRC/VCRC checks), extracts the virtual address from the memory payload, and performs a direct PCIe DMA Write to the destination GPU HBM. No kernel intervention occurs.
 
-## Mermaid Flowchart: RoCEv2 GPU-to-GPU Datapath
+## [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) Flowchart: RoCEv2 GPU-to-GPU Datapath
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     subgraph NodeASenderNodeNodeASenderNode ["Node_A['Sender Node<br><br><br>"]

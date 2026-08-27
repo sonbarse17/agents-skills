@@ -14,9 +14,9 @@ Implement comprehensive, automated database backup strategies with tested recove
 ## When to Use
 
 - You are deploying a new database and need a backup plan from day one.
-- You need to automate nightly or hourly backups for PostgreSQL, MySQL, or MongoDB.
+- You need to automate nightly or hourly backups for [PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), or [MongoDB](../../Backend/mongodb/SKILL.md).
 - You want to ship backups to S3-compatible object storage with retention policies.
-- You are building or verifying disaster recovery runbooks.
+- You are building or verifying disaster recovery [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
 
 ## Prerequisites
 
@@ -34,13 +34,13 @@ Implement comprehensive, automated database backup strategies with tested recove
 | Transaction log / WAL | Continuous log shipping | Continuous | Point-in-time recovery (PITR) |
 | Snapshot | Storage-level snapshot (EBS, ZFS) | Daily | Fast full restores |
 
-## PostgreSQL Backups
+## [PostgreSQL](../../Backend/postgresql/SKILL.md) Backups
 
 ### Logical Backup with pg_dump
 
 ```bash
 #!/bin/bash
-# pg_backup.sh — PostgreSQL logical backup
+# pg_backup.sh — [PostgreSQL](../../Backend/postgresql/SKILL.md) logical backup
 set -euo pipefail
 
 DB_NAME="mydb"
@@ -55,14 +55,14 @@ mkdir -p "$BACKUP_DIR"
 # Custom compressed format (recommended for selective restore)
 pg_dump -h "$DB_HOST" -U "$DB_USER" -Fc -Z6 "$DB_NAME" > "$FILENAME"
 
-echo "[$(date)] PostgreSQL backup complete: $FILENAME ($(du -h "$FILENAME" | cut -f1))"
+echo "[$(date)] [PostgreSQL](../../Backend/postgresql/SKILL.md) backup complete: $FILENAME ($(du -h "$FILENAME" | cut -f1))"
 ```
 
 ### Physical Backup with pg_basebackup
 
 ```bash
 #!/bin/bash
-# pg_basebackup.sh — PostgreSQL physical backup for PITR
+# pg_basebackup.sh — [PostgreSQL](../../Backend/postgresql/SKILL.md) physical backup for PITR
 set -euo pipefail
 
 BACKUP_DIR="/backups/postgres/base_$(date +%Y%m%d)"
@@ -80,7 +80,7 @@ pg_basebackup \
 echo "[$(date)] Base backup complete: $BACKUP_DIR"
 ```
 
-### PostgreSQL Restore
+### [PostgreSQL](../../Backend/postgresql/SKILL.md) Restore
 
 ```bash
 # Restore from custom-format dump
@@ -93,19 +93,19 @@ pg_restore -h localhost -U myapp -d mydb -t orders /backups/postgres/mydb_202501
 psql -h localhost -U myapp -d mydb < /backups/postgres/mydb_20250115.sql
 ```
 
-## MySQL Backups
+## [MySQL](../../Backend/mysql/SKILL.md) Backups
 
 ### Logical Backup with mysqldump
 
 ```bash
 #!/bin/bash
-# mysql_backup.sh — MySQL logical backup
+# mysql_backup.sh — [MySQL](../../Backend/mysql/SKILL.md) logical backup
 set -euo pipefail
 
 DB_NAME="mydb"
 DB_USER="backup_user"
 DB_PASS="${MYSQL_BACKUP_PASSWORD}"
-BACKUP_DIR="/backups/mysql"
+BACKUP_DIR="/backups/[mysql](../../Backend/mysql/SKILL.md)"
 DATE=$(date +%Y%m%d_%H%M%S)
 FILENAME="${BACKUP_DIR}/${DB_NAME}_${DATE}.sql.gz"
 
@@ -118,17 +118,17 @@ mysqldump -u "$DB_USER" -p"$DB_PASS" \
   --events \
   "$DB_NAME" | gzip > "$FILENAME"
 
-echo "[$(date)] MySQL backup complete: $FILENAME ($(du -h "$FILENAME" | cut -f1))"
+echo "[$(date)] [MySQL](../../Backend/mysql/SKILL.md) backup complete: $FILENAME ($(du -h "$FILENAME" | cut -f1))"
 ```
 
 ### Physical Backup with Percona XtraBackup
 
 ```bash
 #!/bin/bash
-# xtrabackup.sh — MySQL physical backup
+# xtrabackup.sh — [MySQL](../../Backend/mysql/SKILL.md) physical backup
 set -euo pipefail
 
-BACKUP_DIR="/backups/mysql/full_$(date +%Y%m%d)"
+BACKUP_DIR="/backups/[mysql](../../Backend/mysql/SKILL.md)/full_$(date +%Y%m%d)"
 
 xtrabackup --backup \
   --user=backup_user \
@@ -140,31 +140,31 @@ xtrabackup --prepare --target-dir="$BACKUP_DIR"
 echo "[$(date)] XtraBackup complete: $BACKUP_DIR"
 ```
 
-### MySQL Restore
+### [MySQL](../../Backend/mysql/SKILL.md) Restore
 
 ```bash
 # Restore from compressed mysqldump
-gunzip < /backups/mysql/mydb_20250115_020000.sql.gz | mysql -u root -p mydb
+gunzip < /backups/[mysql](../../Backend/mysql/SKILL.md)/mydb_20250115_020000.sql.gz | [mysql](../../Backend/mysql/SKILL.md) -u root -p mydb
 
 # Restore from XtraBackup
-sudo systemctl stop mysql
-sudo rm -rf /var/lib/mysql/*
-xtrabackup --move-back --target-dir=/backups/mysql/full_20250115
-sudo chown -R mysql:mysql /var/lib/mysql
-sudo systemctl start mysql
+sudo systemctl stop [mysql](../../Backend/mysql/SKILL.md)
+sudo rm -rf /var/lib/[mysql](../../Backend/mysql/SKILL.md)/*
+xtrabackup --move-back --target-dir=/backups/[mysql](../../Backend/mysql/SKILL.md)/full_20250115
+sudo chown -R [mysql](../../Backend/mysql/SKILL.md):[mysql](../../Backend/mysql/SKILL.md) /var/lib/[mysql](../../Backend/mysql/SKILL.md)
+sudo systemctl start [mysql](../../Backend/mysql/SKILL.md)
 ```
 
-## MongoDB Backups
+## [MongoDB](../../Backend/mongodb/SKILL.md) Backups
 
 ### Logical Backup with mongodump
 
 ```bash
 #!/bin/bash
-# mongo_backup.sh — MongoDB backup
+# mongo_backup.sh — [MongoDB](../../Backend/mongodb/SKILL.md) backup
 set -euo pipefail
 
-MONGO_URI="mongodb://backup_user:${MONGO_BACKUP_PASSWORD}@localhost:27017"
-BACKUP_DIR="/backups/mongodb"
+MONGO_URI="[mongodb](../../Backend/mongodb/SKILL.md)://backup_user:${MONGO_BACKUP_PASSWORD}@localhost:27017"
+BACKUP_DIR="/backups/[mongodb](../../Backend/mongodb/SKILL.md)"
 DATE=$(date +%Y%m%d_%H%M%S)
 TARGET="${BACKUP_DIR}/${DATE}"
 
@@ -173,24 +173,24 @@ mkdir -p "$BACKUP_DIR"
 # Full backup with compression
 mongodump --uri="$MONGO_URI" --gzip --out="$TARGET"
 
-echo "[$(date)] MongoDB backup complete: $TARGET"
+echo "[$(date)] [MongoDB](../../Backend/mongodb/SKILL.md) backup complete: $TARGET"
 ```
 
-### MongoDB Restore
+### [MongoDB](../../Backend/mongodb/SKILL.md) Restore
 
 ```bash
 # Restore all databases
-mongorestore --uri="mongodb://admin:secret@localhost:27017" \
-  --gzip --drop /backups/mongodb/20250115_020000/
+mongorestore --uri="[mongodb](../../Backend/mongodb/SKILL.md)://admin:secret@localhost:27017" \
+  --gzip --drop /backups/[mongodb](../../Backend/mongodb/SKILL.md)/20250115_020000/
 
 # Restore a single database
-mongorestore --uri="mongodb://admin:secret@localhost:27017" \
-  --gzip --drop --db mydb /backups/mongodb/20250115_020000/mydb/
+mongorestore --uri="[mongodb](../../Backend/mongodb/SKILL.md)://admin:secret@localhost:27017" \
+  --gzip --drop --db mydb /backups/[mongodb](../../Backend/mongodb/SKILL.md)/20250115_020000/mydb/
 
 # Restore a single collection
-mongorestore --uri="mongodb://admin:secret@localhost:27017" \
+mongorestore --uri="[mongodb](../../Backend/mongodb/SKILL.md)://admin:secret@localhost:27017" \
   --gzip --drop --db mydb --collection users \
-  /backups/mongodb/20250115_020000/mydb/users.bson.gz
+  /backups/[mongodb](../../Backend/mongodb/SKILL.md)/20250115_020000/mydb/users.bson.gz
 ```
 
 ## Upload to S3
@@ -204,18 +204,18 @@ S3_BUCKET="s3://my-backups"
 BACKUP_DIR="/backups"
 DATE=$(date +%Y%m%d)
 
-# Upload PostgreSQL backup
+# Upload [PostgreSQL](../../Backend/postgresql/SKILL.md) backup
 aws s3 cp "${BACKUP_DIR}/postgres/" "${S3_BUCKET}/postgres/${DATE}/" \
   --recursive --storage-class STANDARD_IA \
   --sse AES256
 
-# Upload MySQL backup
-aws s3 cp "${BACKUP_DIR}/mysql/" "${S3_BUCKET}/mysql/${DATE}/" \
+# Upload [MySQL](../../Backend/mysql/SKILL.md) backup
+aws s3 cp "${BACKUP_DIR}/[mysql](../../Backend/mysql/SKILL.md)/" "${S3_BUCKET}/[mysql](../../Backend/mysql/SKILL.md)/${DATE}/" \
   --recursive --storage-class STANDARD_IA \
   --sse AES256
 
-# Upload MongoDB backup
-aws s3 cp "${BACKUP_DIR}/mongodb/" "${S3_BUCKET}/mongodb/${DATE}/" \
+# Upload [MongoDB](../../Backend/mongodb/SKILL.md) backup
+aws s3 cp "${BACKUP_DIR}/[mongodb](../../Backend/mongodb/SKILL.md)/" "${S3_BUCKET}/[mongodb](../../Backend/mongodb/SKILL.md)/${DATE}/" \
   --recursive --storage-class STANDARD_IA \
   --sse AES256
 
@@ -258,7 +258,7 @@ export RESTIC_REPOSITORY="s3:s3.amazonaws.com/my-backups-restic"
 restic init
 
 # Backup the local backup directory
-restic backup /backups/postgres /backups/mysql /backups/mongodb
+restic backup /backups/postgres /backups/[mysql](../../Backend/mysql/SKILL.md) /backups/[mongodb](../../Backend/mongodb/SKILL.md)
 
 # List snapshots
 restic snapshots
@@ -275,13 +275,13 @@ restic restore latest --target /restore/
 ```bash
 # /etc/cron.d/db-backups
 
-# PostgreSQL: nightly at 02:00
+# [PostgreSQL](../../Backend/postgresql/SKILL.md): nightly at 02:00
 0 2 * * * backup /opt/scripts/pg_backup.sh >> /var/log/backup-pg.log 2>&1
 
-# MySQL: nightly at 02:30
-30 2 * * * backup /opt/scripts/mysql_backup.sh >> /var/log/backup-mysql.log 2>&1
+# [MySQL](../../Backend/mysql/SKILL.md): nightly at 02:30
+30 2 * * * backup /opt/scripts/mysql_backup.sh >> /var/log/backup-[mysql](../../Backend/mysql/SKILL.md).log 2>&1
 
-# MongoDB: nightly at 03:00
+# [MongoDB](../../Backend/mongodb/SKILL.md): nightly at 03:00
 0 3 * * * backup /opt/scripts/mongo_backup.sh >> /var/log/backup-mongo.log 2>&1
 
 # Upload to S3: daily at 04:00
@@ -305,8 +305,8 @@ BACKUP_FILE=$(ls -t /backups/postgres/mydb_*.dump | head -1)
 
 echo "[$(date)] Starting backup verification with $BACKUP_FILE"
 
-# Spin up a temporary PostgreSQL container
-docker run -d --name pg-restore-test \
+# Spin up a temporary [PostgreSQL](../../Backend/postgresql/SKILL.md) container
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d --name pg-restore-test \
   -e POSTGRES_USER=testuser \
   -e POSTGRES_PASSWORD=testpass \
   -e POSTGRES_DB=testdb \
@@ -314,22 +314,22 @@ docker run -d --name pg-restore-test \
 
 # Wait for container to be ready
 sleep 5
-until docker exec pg-restore-test pg_isready -U testuser; do
+until [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec pg-restore-test pg_isready -U testuser; do
   sleep 2
 done
 
 # Copy backup into container and restore
-docker cp "$BACKUP_FILE" pg-restore-test:/tmp/backup.dump
-docker exec pg-restore-test pg_restore -U testuser -d testdb --clean --if-exists /tmp/backup.dump
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) cp "$BACKUP_FILE" pg-restore-test:/tmp/backup.dump
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec pg-restore-test pg_restore -U testuser -d testdb --clean --if-exists /tmp/backup.dump
 
 # Run verification queries
-USERS_COUNT=$(docker exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM users;")
-ORDERS_COUNT=$(docker exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM orders;")
+USERS_COUNT=$([docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM users;")
+ORDERS_COUNT=$([docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM orders;")
 
 echo "[$(date)] Verification: users=$USERS_COUNT, orders=$ORDERS_COUNT"
 
 # Cleanup
-docker rm -f pg-restore-test
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) rm -f pg-restore-test
 
 # Alert on failure
 if [ "$USERS_COUNT" -lt 1 ]; then
@@ -364,9 +364,9 @@ run_backup() {
   fi
 }
 
-run_backup "PostgreSQL" /opt/scripts/pg_backup.sh
-run_backup "MySQL"      /opt/scripts/mysql_backup.sh
-run_backup "MongoDB"    /opt/scripts/mongo_backup.sh
+run_backup "[PostgreSQL](../../Backend/postgresql/SKILL.md)" /opt/scripts/pg_backup.sh
+run_backup "[MySQL](../../Backend/mysql/SKILL.md)"      /opt/scripts/mysql_backup.sh
+run_backup "[MongoDB](../../Backend/mongodb/SKILL.md)"    /opt/scripts/mongo_backup.sh
 run_backup "S3 Upload"  /opt/scripts/s3_upload.sh
 
 if [ "$ERRORS" -gt 0 ]; then
@@ -386,7 +386,7 @@ log "All backups completed successfully."
 - **Monitor backup jobs**: Alert immediately on any failure; do not rely on silent cron jobs.
 - **Document RTOs and RPOs**: Define Recovery Time Objective and Recovery Point Objective for each database.
 - **Version your backup scripts**: Store them in Git alongside your infrastructure code.
-- **Use `--single-transaction`**: For MySQL and PostgreSQL logical backups to get a consistent snapshot.
+- **Use `--single-transaction`**: For [MySQL](../../Backend/mysql/SKILL.md) and [PostgreSQL](../../Backend/postgresql/SKILL.md) logical backups to get a consistent snapshot.
 - **Separate backup credentials**: Use a dedicated read-only database user for backups.
 
 ## Troubleshooting
@@ -402,7 +402,7 @@ log "All backups completed successfully."
 
 ## Related Skills
 
-- [postgresql](../postgresql/) - PostgreSQL administration and pg_dump details
-- [mysql](../mysql/) - MySQL administration and mysqldump details
-- [mongodb](../mongodb/) - MongoDB administration and mongodump details
+- [postgresql](../[postgresql](../../Backend/postgresql/SKILL.md)/) - [PostgreSQL](../../Backend/postgresql/SKILL.md) administration and pg_dump details
+- [mysql](../[mysql](../../Backend/mysql/SKILL.md)/) - [MySQL](../../Backend/mysql/SKILL.md) administration and mysqldump details
+- [mongodb](../[mongodb](../../Backend/mongodb/SKILL.md)/) - [MongoDB](../../Backend/mongodb/SKILL.md) administration and mongodump details
 - [redis](../redis/) - Redis RDB/AOF persistence and backup

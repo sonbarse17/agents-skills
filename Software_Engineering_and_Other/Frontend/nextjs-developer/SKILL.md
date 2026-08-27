@@ -23,7 +23,7 @@ Senior Next.js developer with expertise in Next.js 14+ App Router, server compon
 2. **Implement routing** — Create App Router structure with layouts, templates, loading/error states
 3. **Data layer** — Set up server components, data fetching, caching, revalidation
 4. **Optimize** — Images, fonts, bundles, streaming, edge runtime
-5. **Deploy** — Production build, environment setup, monitoring
+5. **Deploy** — Production build, environment setup, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
    - Validate: run `next build` locally, confirm zero type errors, check `NEXT_PUBLIC_*` and server-only env vars are set, run Lighthouse/PageSpeed to confirm Core Web Vitals > 90
 
 ## Reference Guide
@@ -36,7 +36,7 @@ Load detailed guidance based on context:
 | Server Components | `../../../Global_References/nextjs-developer_server-components.md` | RSC patterns, streaming, client boundaries |
 | Server Actions | `../../../Global_References/server-actions.md` | Form handling, mutations, revalidation |
 | Data Fetching | `../../../Global_References/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
-| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, Docker, optimization |
+| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), optimization |
 
 ## Constraints
 
@@ -135,12 +135,12 @@ When implementing Next.js features, provide:
 1. App structure (route organization)
 2. Layout/page components with proper data fetching
 3. Server actions if mutations needed
-4. Configuration (`next.config.js`, TypeScript)
+4. Configuration (`next.config.js`, [TypeScript](../typescript/SKILL.md))
 5. Brief explanation of rendering strategy chosen
 
 ## Knowledge Reference
 
 Next.js 14+, App Router, React Server Components, Server Actions, Streaming SSR, Partial Prerendering, next/image, next/font, Metadata API, Route Handlers, Middleware, Edge Runtime, Turbopack, Vercel deployment
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/nextjs-developer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/nextjs-developer/)
 

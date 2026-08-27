@@ -84,7 +84,7 @@ Strategy:
 1. Identify the smell
 2. Apply the minimal refactoring technique
 3. Run tests (verify behavior preserved)
-4. Commit
+4. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 5. Repeat
 ```
 
@@ -92,7 +92,7 @@ Strategy:
 
 ### Step 1: Identify Code Smells
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // SMELL: Long method (>20 lines)
 // SMELL: Deep nesting (arrow code)
 function processOrder(order: Order, user: User, config: Config): Promise<Result> {
@@ -130,7 +130,7 @@ function processOrder(order: Order, user: User, config: Config): Promise<Result>
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // SMELL: Primitive obsession (using string for concept)
 function sendEmail(to: string, from: string, subject: string, body: string, cc?: string, bcc?: string, replyTo?: string) {
   // ...
@@ -156,7 +156,7 @@ class OrderService {
 
 ### Step 2: Apply Refactoring Techniques
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // REFACTOR 1: Extract method + guard clauses
 async function processOrder(order: Order, user: User, config: Config): Promise<Result> {
   validateOrderInputs(order, user, config);
@@ -188,7 +188,7 @@ function validateUserBalance(user: User, requiredAmount: number): void {
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // REFACTOR 2: Introduce parameter object
 interface EmailConfig {
   to: string;
@@ -205,7 +205,7 @@ function sendEmail(config: EmailConfig): void {
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // REFACTOR 3: Move method (feature envy fix)
 class Customer {
   // ... fields ...
@@ -221,7 +221,7 @@ class Customer {
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // REFACTOR 4: Replace primitive with value object
 class Email {
   constructor(private readonly value: string) {
@@ -250,14 +250,14 @@ refactoring_workflow:
     fallback: "Write characterization tests first"
   step_3:
     action: "Apply ONE refactoring technique"
-    rule: "Only one structural change per commit"
+    rule: "Only one structural change per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)"
     example: "Extract method for validation logic only"
   step_4:
     action: "Run tests"
     expectation: "All tests pass (behavior preserved)"
     if_fails: "Undo the change (the technique was wrong)"
   step_5:
-    action: "Commit"
+    action: "[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)"
     message: "refactor: extract validation logic from processOrder"
   step_6:
     action: "Repeat"
@@ -301,7 +301,7 @@ legacy_refactoring:
 
 ### Step 5: Verify Behavior Preservation
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Tests MUST pass before and after refactoring (same tests)
 describe('processOrder', () => {
   it('should reject null order', async () => {
@@ -330,10 +330,10 @@ describe('processOrder', () => {
 | Pitfall | Description | Prevention |
 |---------|-------------|------------|
 | Refactoring without tests | Can't verify behavior preserved | Write characterization tests first |
-| Too big a refactoring | Many changes at once = many bugs | One technique per commit |
+| Too big a refactoring | Many changes at once = many bugs | One technique per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) |
 | Refactoring AND adding features | Confuse structural and behavioral changes | Dedicated refactoring sessions/commits |
 | Perfect abstraction syndrome | Over-engineering for hypothetical needs | Rule of three — wait for the third occurrence |
-| Renaming while restructuring | Impossible to review diff | One commit for rename, another for restructure |
+| Renaming while restructuring | Impossible to review diff | One [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for rename, another for restructure |
 | Missing API documentation | Nobody knows the new interface | Update docs in same PR as refactoring |
 | Refactoring hot code | High-traffic production code without safety net | Use feature flags, canary deploy |
 | Not getting review | Missed behavioral changes | Always PR refactoring changes |
@@ -343,7 +343,7 @@ describe('processOrder', () => {
 
 | Practice | Rationale |
 |----------|-----------|
-| One refactoring per commit | Atomic, reviewable, reversible |
+| One refactoring per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | Atomic, reviewable, reversible |
 | Test before and after | Verify behavior is preserved |
 | Smaller, more frequent refactorings | Less risk, easier to review |
 | Don't mix refactor and feature | Two different concerns in one PR |
@@ -362,7 +362,7 @@ describe('processOrder', () => {
 
 ### Code Smell Detector
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import ast
 import re
 from typing import List, Dict, Optional
@@ -506,7 +506,7 @@ class PythonSmellDetector:
 
 ### Strangler Fig Pattern Implementation
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import Dict, Any, Callable, Optional
 import re
 
@@ -620,5 +620,5 @@ What's the goal and risk level?
   - references/refactor-guide-techniques.md — Refactoring Techniques Reference
 
 ## Handoff
-Hand off to `dev-loop-code-review` for refactoring PR review. Hand off to `dev-loop-tech-debt-tracker` for debt tracking.
+Hand off to `dev-loop-[code-review](../../Miscellaneous/code-review/SKILL.md)` for refactoring PR review. Hand off to `[dev-loop-tech-debt-tracker](../tech-debt-tracker/SKILL.md)` for debt tracking.
 

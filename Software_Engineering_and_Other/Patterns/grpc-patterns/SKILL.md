@@ -111,7 +111,7 @@ syntax = "proto3";
 
 package acme.users.v1;
 
-option go_package = "github.com/acme/gen/go/users/v1;usersv1";
+option go_package = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/acme/gen/go/users/v1;usersv1";
 option java_package = "com.acme.users.v1";
 ```
 
@@ -208,7 +208,7 @@ Order matters — apply in this sequence:
 Client side:
   1. Deadline/timeout interceptor (outermost)
   2. Auth token injection
-  3. Tracing (OpenTelemetry span injection)
+  3. Tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) span injection)
   4. Logging (request/response summary)
   5. Circuit breaker / retry (innermost)
 
@@ -220,7 +220,7 @@ Server side:
   5. Deadline enforcement (innermost)
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // gRPC server interceptor — auth + logging (Node.js)
 import { ServerInterceptor, status } from '@grpc/grpc-js';
 
@@ -290,7 +290,7 @@ func (s *EventService) Subscribe(req *pb.SubscribeRequest, stream pb.EventServic
 ```
 
 Bidirectional streaming with flow control (Node.js):
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function chat(call: ServerDuplexStream<ChatMessage, ChatMessage>) {
   call.on('data', (msg: ChatMessage) => {
     // Process incoming message
@@ -311,7 +311,7 @@ async function chat(call: ServerDuplexStream<ChatMessage, ChatMessage>) {
 
 ### Step 9: Client-Side Patterns
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // gRPC client with deadline and retry
 import { credentials, ServiceError } from '@grpc/grpc-js';
 
@@ -353,7 +353,7 @@ Client migration: run both versions simultaneously, migrate clients one by one
 |---------|----------|
 | Timeouts | Every RPC must have a deadline. Server enforces; client sets |
 | Connection management | Keep-alive pings (server: 1h idle, client: 30s). gRPC connection pooling |
-| TLS | mTLS for inter-service. Use Kubernetes cert-manager or SPIFFE |
+| TLS | mTLS for inter-service. Use [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cert-manager or SPIFFE |
 | Load balancing | Client-side load balancing (lookaside) or proxy (Envoy, Linkerd). Avoid random LB |
 | Max message size | Default 4MB. Increase if needed, but prefer streaming for large payloads |
 | Flow control | HTTP/2 flow control is automatic. Monitor `GOAWAY` frames for connection issues |
@@ -417,8 +417,8 @@ Client migration: run both versions simultaneously, migrate clients one by one
   - ../../../Global_References/protobuf-basics.md — Protocol Buffer Basics
 ## Handoff
 No artifact produced unless requested.
-Next skill: backend-message-queue — if the service needs async communication or event-driven patterns.
-Next skill: backend-caching — if the service needs response caching or data store optimization.
+Next skill: [backend-message-queue](../message-queue/SKILL.md) — if the service needs async communication or event-driven patterns.
+Next skill: [backend-caching](../../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md) — if the service needs response caching or data store optimization.
 Carry forward: protobuf schemas, service definitions, auth requirements, deadline configurations.
 ## Implementation Patterns
 
@@ -472,7 +472,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -486,7 +486,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -502,12 +502,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -516,7 +516,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -524,13 +524,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -539,8 +539,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

@@ -16,7 +16,7 @@ tags: [backend, jobs, phase-6, universal]
 # Backend Background Jobs
 
 ## Purpose
-Design reliable background job processing with queue topology, retry, concurrency, and monitoring. Every job must be idempotent, retryable, observable, and gracefully handled on failure.
+Design reliable background job processing with queue topology, retry, concurrency, and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Every job must be idempotent, retryable, observable, and gracefully handled on failure.
 
 ## Agent Protocol
 
@@ -33,7 +33,7 @@ Exact user phrases: "background job", "task queue", "worker", "job processing", 
 Job and worker design as formatted text.
 
 ### Response Format
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Job contract (interface/type)
 // Worker implementation outline
 ```
@@ -50,7 +50,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Retry strategy with exponential backoff and jitter configured
 - [ ] Queue topology defined (default, priority, dead letter, scheduling queues)
 - [ ] Worker concurrency and graceful shutdown configured
-- [ ] Monitoring hooks for success/failure/metrics
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) hooks for success/failure/metrics
 - [ ] Scheduled/cron jobs defined with timezone and error notification
 
 ## Architecture Decision Trees
@@ -79,7 +79,7 @@ What infrastructure do you already have?
 Does the job need a response or callback?
 ├── Yes → Is it a multi-step workflow?
 │   ├── Yes → Chained jobs with compensation/rollback
-│   └── No → Fire-and-forget with monitoring
+│   └── No → Fire-and-forget with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 └── No → Should it run at a specific time?
     ├── Yes → Delayed job (scheduled execution)
     └── No → Should it run on a fixed schedule?
@@ -108,7 +108,7 @@ What happens when the job fails?
 
 | Type | Delivery Guarantee | Max Delay | Persistence | Use Case |
 |------|-------------------|-----------|-------------|----------|
-| Fire-and-forget | At-most-once | None | Optional | Email notification, audit log |
+| Fire-and-forget | At-most-once | None | Optional | Email notification, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log |
 | Delayed | At-least-once | Arbitrary | Required | Payment reminder in 24h |
 | Scheduled (cron) | At-least-once | N/A | Required | Daily report generation |
 | Recurring (interval) | At-least-once | N/A | Required | Health check every 5 min |
@@ -168,7 +168,7 @@ Fire-and-forget: no callback, best-effort delivery, highest throughput. Delayed:
 
 ### Step 4: Job Contract Definition
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface Job<T = unknown> {
   id: string;                         // UUIDv7, sortable by time
   type: string;                       // Discriminator: "send-email" | "generate-report"
@@ -178,7 +178,7 @@ interface Job<T = unknown> {
   priority: 'high' | 'medium' | 'low';
   scheduledAt?: string;               // ISO 8601 for delayed execution
   idempotencyKey: string;             // Deduplication: "{job-type}:{entity-id}:{action}"
-  tags: string[];                     // Filtering and monitoring
+  tags: string[];                     // Filtering and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   timeout: number;                    // Per-job timeout in ms
   createdAt: string;                  // ISO 8601
 }
@@ -194,7 +194,7 @@ interface SendEmailPayload {
 ```
 
 **BullMQ job definition:**
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { Queue, Worker, Job } from 'bullmq';
 
 const emailQueue = new Queue<SendEmailPayload>('email', {
@@ -215,8 +215,8 @@ await emailQueue.add('send-email', payload, {
 });
 ```
 
-**Python Celery:**
-```python
+**[Python](../../Languages/python/SKILL.md) Celery:**
+```[python](../../Languages/python/SKILL.md)
 from celery import Celery
 
 app = Celery('tasks', broker='redis://localhost:6379')
@@ -240,7 +240,7 @@ def send_email(self, to: str, subject: str, template_id: str, variables: dict):
 
 **Go with asynq:**
 ```go
-import "github.com/hibiken/asynq"
+import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hibiken/asynq"
 
 type EmailPayload struct {
   To      string            `json:"to"`
@@ -279,7 +279,7 @@ BackgroundJob.Schedule<SendEmailJob>(j => j.ExecuteAsync(...), TimeSpan.FromHour
 
 Exponential backoff with jitter: `delay = min(baseDelay * 2^retryCount + jitter, maxDelay)`.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 function calculateDelay(retryCount: number, baseDelay = 1000, maxDelay = 21_600_000): number {
   const delay = Math.min(baseDelay * Math.pow(2, retryCount), maxDelay);
   const jitter = delay * 0.25 * (Math.random() * 2 - 1);
@@ -295,7 +295,7 @@ function calculateDelay(retryCount: number, baseDelay = 1000, maxDelay = 21_600_
 | Non-recoverable | 0 (immediate DLQ) | None | ValidationError, AuthenticationError |
 
 DLQ schema:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface DeadLetterMessage {
   originalJob: Job;
   errorHistory: Array<{
@@ -318,7 +318,7 @@ interface DeadLetterMessage {
 | >30s (video transcoding, data sync) | 1 | CPU * 0.5 | 10 |
 
 Graceful shutdown:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function gracefulShutdown(worker: Worker): Promise<void> {
   console.log('Shutting down worker...');
   await worker.close(); // Stop accepting new jobs
@@ -341,7 +341,7 @@ process.on('SIGINT', () => gracefulShutdown(worker));
 
 Same job payload processed twice must produce same result.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function processJob(job: Job<SendEmailPayload>): Promise<void> {
   const alreadyProcessed = await checkIdempotency(job.idempotencyKey);
   if (alreadyProcessed) { return; }
@@ -362,7 +362,7 @@ Idempotency key format: `{job-type}:{entity-id}:{action}` (e.g., `send-email:ord
 
 ### Step 8: Job Scheduling (Cron)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BullMQ scheduler
 import { QueueScheduler } from 'bullmq';
 
@@ -390,7 +390,7 @@ Cron best practices:
 
 ### Step 9: Chained Workflows
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BullMQ flow producer
 const flow = new FlowProducer({ connection: { host: 'redis', port: 6379 } });
 
@@ -421,7 +421,7 @@ await flow.add({
 ```
 
 For compensation on failure:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function processOrder(job: Job): Promise<void> {
   try {
     await chargePayment(job.data.orderId);
@@ -438,9 +438,9 @@ async function processOrder(job: Job): Promise<void> {
 
 ## Production Considerations
 
-### Job Monitoring Configuration
+### Job [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Configuration
 ```yaml
-monitoring:
+[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
   metrics:
     - job_success_rate: "p99 > 99%"
     - queue_depth: "alert if > 10000"
@@ -455,7 +455,7 @@ monitoring:
 ```
 
 ### Prometheus Metrics
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { Counter, Histogram, Gauge } from 'prom-client';
 
 const jobsProcessed = new Counter({
@@ -485,7 +485,7 @@ const workerUtilization = new Gauge({
 ```
 
 ### Job Dashboard
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { ExpressAdapter } from '@bull-board/express';
@@ -568,7 +568,7 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 ### Access Control
 - Queue admin UI requires authentication
 - Separate queue management permissions from job processing
-- Audit log all enqueue/dequeue/replay operations
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log all enqueue/dequeue/replay operations
 - Rate limit enqueue operations per source
 
 ### Network Security
@@ -632,7 +632,7 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 - Always alert when DLQ receives a message
 
 ## References
-  - ../../../Global_References/job-monitoring.md — Background Job Monitoring
+  - ../../../Global_References/job-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Background Job [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/job-patterns.md — Background Job Patterns
   - ../../../Global_References/job-scheduling.md — Background Job Scheduling
   - ../../../Global_References/job-testing.md — Background Job Testing
@@ -643,5 +643,5 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
   - ../../../Global_References/background-jobs-chaining.md — Job Chaining and Workflow Patterns
 
 ## Handoff
-`backend-event-driven` for job completion events and chained workflows
+`[backend-event-driven](../event-driven/SKILL.md)` for job completion events and chained workflows
 

@@ -42,7 +42,7 @@ Master AngularJS to Angular migration, including hybrid apps, component conversi
 
 ## Hybrid App Setup
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // main.ts - Bootstrap hybrid app
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { UpgradeModule } from "@angular/upgrade/static";
@@ -57,7 +57,7 @@ platformBrowserDynamic()
   });
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app.module.ts
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -98,7 +98,7 @@ angular
   });
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // After: Angular component
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "./user.service";
@@ -154,7 +154,7 @@ angular.module("myApp").directive("userCard", function () {
 });
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // After: Angular component
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
@@ -191,7 +191,7 @@ angular.module("myApp").factory("UserService", function ($http) {
 });
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // After: Angular service
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -217,7 +217,7 @@ export class UserService {
 
 ### Downgrading Angular → AngularJS
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Angular service
 import { Injectable } from "@angular/core";
 
@@ -241,7 +241,7 @@ angular.module("myApp").controller("OldController", function (newService) {
 
 ### Upgrading AngularJS → Angular
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // AngularJS service
 angular.module('myApp').factory('oldService', function() {
   return {
@@ -290,7 +290,7 @@ angular.module("myApp").config(function ($routeProvider) {
 });
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // After: Angular routing
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";

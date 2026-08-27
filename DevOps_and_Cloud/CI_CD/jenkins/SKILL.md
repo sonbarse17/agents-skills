@@ -81,12 +81,12 @@ pipeline {
 
 ## Agent Configuration
 
-### Docker Agent
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Agent
 
 ```groovy
 pipeline {
     agent {
-        docker {
+        [docker](../../Containers_and_Orchestration/docker/SKILL.md) {
             image 'node:20'
             args '-v /tmp:/tmp'
         }
@@ -101,12 +101,12 @@ pipeline {
 }
 ```
 
-### Kubernetes Agent
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Agent
 
 ```groovy
 pipeline {
     agent {
-        kubernetes {
+        [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) {
             yaml '''
                 apiVersion: v1
                 kind: Pod
@@ -118,8 +118,8 @@ pipeline {
                     - sleep
                     args:
                     - infinity
-                  - name: docker
-                    image: docker:24-dind
+                  - name: [docker](../../Containers_and_Orchestration/docker/SKILL.md)
+                    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md):24-dind
                     securityContext:
                       privileged: true
             '''
@@ -141,7 +141,7 @@ pipeline {
 
 ```groovy
 pipeline {
-    agent { label 'linux && docker' }
+    agent { label 'linux && [docker](../../Containers_and_Orchestration/docker/SKILL.md)' }
     stages {
         stage('Build') {
             steps {
@@ -187,7 +187,7 @@ pipeline {
     
     environment {
         AWS_CREDS = credentials('aws-credentials')
-        DOCKER_CREDS = credentials('docker-hub')
+        DOCKER_CREDS = credentials('[docker](../../Containers_and_Orchestration/docker/SKILL.md)-hub')
     }
     
     stages {
@@ -195,12 +195,12 @@ pipeline {
             steps {
                 withCredentials([
                     usernamePassword(
-                        credentialsId: 'github-token',
+                        credentialsId: '[github](../github/SKILL.md)-token',
                         usernameVariable: 'GH_USER',
                         passwordVariable: 'GH_TOKEN'
                     )
                 ]) {
-                    sh 'git push https://${GH_USER}:${GH_TOKEN}@github.com/repo.git'
+                    sh 'git push https://${GH_USER}:${GH_TOKEN}@[github](../github/SKILL.md).com/repo.git'
                 }
             }
         }
@@ -262,7 +262,7 @@ resources/
 def call(Map config = [:]) {
     def nodeVersion = config.nodeVersion ?: '20'
     
-    docker.image("node:${nodeVersion}").inside {
+    [docker](../../Containers_and_Orchestration/docker/SKILL.md).image("node:${nodeVersion}").inside {
         sh 'npm ci'
         sh 'npm run build'
     }
@@ -308,7 +308,7 @@ node('linux') {
         }
         
         stage('Build') {
-            docker.image('node:20').inside {
+            [docker](../../Containers_and_Orchestration/docker/SKILL.md).image('node:20').inside {
                 sh 'npm ci'
                 sh 'npm run build'
             }
@@ -341,8 +341,8 @@ node('linux') {
 def plugins = [
     'workflow-aggregator',      // Pipeline
     'git',                      // Git integration
-    'docker-workflow',          // Docker Pipeline
-    'kubernetes',               // Kubernetes agent
+    '[docker](../../Containers_and_Orchestration/docker/SKILL.md)-workflow',          // [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Pipeline
+    '[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)',               // [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) agent
     'credentials-binding',      // Credentials
     'blueocean',               // Blue Ocean UI
     'job-dsl',                 // Job DSL
@@ -375,7 +375,7 @@ credentials:
     domainCredentials:
       - credentials:
           - usernamePassword:
-              id: "docker-hub"
+              id: "[docker](../../Containers_and_Orchestration/docker/SKILL.md)-hub"
               username: "user"
               password: ${DOCKER_PASSWORD}
 ```
@@ -432,6 +432,6 @@ pipeline {
 
 ## Related Skills
 
-- [github-actions](../github-actions/) - GitHub native CI/CD
-- [kubernetes-ops](../../orchestration/kubernetes-ops/) - K8s deployment target
-- [docker-management](../../containers/docker-management/) - Container builds
+- [github-actions](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../github/SKILL.md) native CI/CD
+- [kubernetes-ops](../../orchestration/[kubernetes-ops](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s deployment target
+- [docker-management](../../containers/[docker-management](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-management/SKILL.md)/) - Container builds

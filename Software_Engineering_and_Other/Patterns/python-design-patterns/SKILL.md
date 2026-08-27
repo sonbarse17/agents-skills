@@ -3,9 +3,9 @@ name: python-design-patterns
 description: Python design patterns including KISS, Separation of Concerns, Single Responsibility, and composition over inheritance. Use this skill when designing a new service or component from scratch and choosing how to layer responsibilities, when refactoring a God class or monolithic function that has grown too large, when deciding whether to add a new abstraction or live with duplication, when evaluating a pull request for structural issues like tight coupling or leaking internal types, when choosing between inheritance and composition for a new class hierarchy, or when a codebase is becoming hard to test because of entangled I/O and business logic.
 ---
 
-# Python Design Patterns
+# [Python](../../Languages/python/SKILL.md) Design Patterns
 
-Write maintainable Python code using fundamental design principles. These patterns help you build systems that are easy to understand, test, and modify.
+Write maintainable [Python](../../Languages/python/SKILL.md) code using fundamental design principles. These patterns help you build systems that are easy to understand, test, and modify.
 
 ## When to Use This Skill
 
@@ -36,7 +36,7 @@ Wait until you have three instances before abstracting. Duplication is often bet
 
 ## Quick Start
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Simple beats clever
 # Instead of a factory/registry pattern:
 FORMATTERS = {"json": JsonFormatter, "csv": CsvFormatter}
@@ -47,7 +47,7 @@ def get_formatter(name: str) -> Formatter:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/python-design-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[python](../../Languages/python/SKILL.md)-design-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 
@@ -81,6 +81,6 @@ This is a layering violation. The service layer must not import from handlers. I
 
 ## Related Skills
 
-- [python-testing-patterns](../python-testing-patterns/SKILL.md) — Test each layer in isolation using the dependency injection structure established here
-- [python-project-structure](../python-project-structure/SKILL.md) — Organize modules and directory layout so layer boundaries are explicit from the start
+- [python-testing-patterns](../[python-testing-patterns](../../Languages/[python](../../Languages/python/SKILL.md)-testing-patterns/SKILL.md)/SKILL.md) — Test each layer in isolation using the dependency injection structure established here
+- [python-project-structure](../[python-project-structure](../../../AI_and_Agents/Architecture/[python](../../Languages/python/SKILL.md)-project-structure/SKILL.md)/SKILL.md) — Organize modules and directory layout so layer boundaries are explicit from the start
 

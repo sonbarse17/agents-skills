@@ -10,12 +10,12 @@ metadata:
   package: azure-identity
 ---
 
-# Azure Identity library for Python
+# Azure Identity library for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Authentication library for Azure SDK clients using Microsoft Entra ID.
 
 Use this skill when:
-- An app needs to authenticate to Azure services from Python
+- An app needs to authenticate to Azure services from [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 - You need `DefaultAzureCredential` for local dev + Azure deployment
 - You need `ManagedIdentityCredential` for Azure-hosted workloads
 - You need service principal auth with secret or certificate
@@ -34,9 +34,9 @@ For VS Code or broker-based desktop auth:
 pip install azure-identity-broker
 ```
 
-## Python Version
+## [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Version
 
-`azure-identity` supports Python 3.9+.
+`azure-identity` supports [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+.
 
 ## Environment Variables
 
@@ -66,7 +66,7 @@ AZURE_TOKEN_CREDENTIALS=dev|prod|<credential-name>  # Optional, restricts DAC ch
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap credentials and clients in context managers** when they own token caches / transports:
@@ -79,7 +79,7 @@ AZURE_TOKEN_CREDENTIALS=dev|prod|<credential-name>  # Optional, restricts DAC ch
 
 The recommended credential for most scenarios. Tries multiple authentication methods in order:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
 
@@ -95,11 +95,11 @@ with BlobServiceClient(
 
 ### Credential Chain Order
 
-See [DefaultAzureCredential overview](https://aka.ms/azsdk/python/identity/credential-chains#defaultazurecredential-overview) for the current credential chain order and defaults.
+See [DefaultAzureCredential overview](https://aka.ms/azsdk/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/identity/credential-chains#defaultazurecredential-overview) for the current credential chain order and defaults.
 
 ### Customizing DefaultAzureCredential
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Exclude credentials you don't need
 credential = DefaultAzureCredential(
     exclude_environment_credential=True,
@@ -124,7 +124,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 | Parameter | Default | Effect |
 |-----------|---------|--------|
 | `exclude_environment_credential` | False | Skip env-var-based auth |
-| `exclude_workload_identity_credential` | False | Skip Kubernetes workload identity |
+| `exclude_workload_identity_credential` | False | Skip [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) workload identity |
 | `exclude_managed_identity_credential` | False | Skip managed identity |
 | `exclude_shared_token_cache_credential` | False | Skip shared token cache |
 | `exclude_visual_studio_code_credential` | False | Skip VS Code credential |
@@ -138,7 +138,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 
 Helper that wraps a credential into a callable returning a bearer token string. Essential for OpenAI SDK and other non-Azure-SDK clients:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
 credential = DefaultAzureCredential()
@@ -173,7 +173,7 @@ with AzureOpenAI(
 |------------|----------|
 | `EnvironmentCredential` | Auth via AZURE_CLIENT_SECRET / AZURE_CLIENT_CERTIFICATE_PATH env vars |
 | `ManagedIdentityCredential` | Azure VMs, App Service, Functions, AKS, Arc, Service Fabric |
-| `WorkloadIdentityCredential` | Kubernetes with Microsoft Entra Workload ID |
+| `WorkloadIdentityCredential` | [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) with Microsoft Entra Workload ID |
 
 ### Service Principals
 
@@ -208,7 +208,7 @@ with AzureOpenAI(
 
 For Azure-hosted resources (VMs, App Service, Functions, AKS):
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import ManagedIdentityCredential
 
 # System-assigned managed identity
@@ -225,7 +225,7 @@ credential = ManagedIdentityCredential(
 
 ### ClientSecretCredential
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import ClientSecretCredential
 
@@ -240,7 +240,7 @@ credential = ClientSecretCredential(
 
 > **Note:** The class is `CertificateCredential`, NOT `ClientCertificateCredential`.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import CertificateCredential
 
 # From file path
@@ -262,7 +262,7 @@ credential = CertificateCredential(
 
 ### AzureCliCredential
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import AzureCliCredential
 
 credential = AzureCliCredential()
@@ -274,7 +274,7 @@ credential = AzureCliCredential(tenant_id="<tenant-id>")
 
 Custom credential chain:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import (
     ChainedTokenCredential,
     ManagedIdentityCredential,
@@ -290,9 +290,9 @@ credential = ChainedTokenCredential(
 
 ### WorkloadIdentityCredential
 
-For Azure Kubernetes Service with workload identity:
+For Azure [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) Service with workload identity:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import WorkloadIdentityCredential
 
 # Reads from AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_FEDERATED_TOKEN_FILE
@@ -310,7 +310,7 @@ credential = WorkloadIdentityCredential(
 
 For headless devices (IoT, SSH, CLI tools):
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DeviceCodeCredential
 
 credential = DeviceCodeCredential()
@@ -330,7 +330,7 @@ credential = DeviceCodeCredential(
 
 For interactive OAuth browser sign-in:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import InteractiveBrowserCredential
 
 credential = InteractiveBrowserCredential()
@@ -346,7 +346,7 @@ credential = InteractiveBrowserCredential(
 
 For middle-tier services propagating user identity:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import OnBehalfOfCredential
 
 credential = OnBehalfOfCredential(
@@ -361,7 +361,7 @@ credential = OnBehalfOfCredential(
 
 For Azure DevOps pipelines with workload identity federation:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import AzurePipelinesCredential
 
@@ -375,7 +375,7 @@ credential = AzurePipelinesCredential(
 
 ## Getting Tokens Directly
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 
 with DefaultAzureCredential() as credential:
@@ -383,7 +383,7 @@ with DefaultAzureCredential() as credential:
     token = credential.get_token("https://management.azure.com/.default")
     print(f"Token expires: {token.expires_on}")
 
-    # For Azure Database for PostgreSQL
+    # For Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
     token = credential.get_token("https://ossrdbms-aad.database.windows.net/.default")
 ```
 
@@ -391,7 +391,7 @@ with DefaultAzureCredential() as credential:
 
 Async credentials are in `azure.identity.aio`. Always close them or use `async with`:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity.aio import DefaultAzureCredential
 from azure.storage.blob.aio import BlobServiceClient
 
@@ -412,7 +412,7 @@ async def main():
 
 Use `AzureAuthorityHosts` or the `AZURE_AUTHORITY_HOST` env var:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, AzureAuthorityHosts
 
 # Azure Government
@@ -432,7 +432,7 @@ credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_CHINA)
 
 Opt-in disk-based caching with `TokenCachePersistenceOptions`:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, TokenCachePersistenceOptions
 
 credential = DefaultAzureCredential(
@@ -451,7 +451,7 @@ Storage: Windows (DPAPI), macOS (Keychain), Linux (Keyring).
 
 Allow token acquisition for additional tenants beyond the configured one:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import ClientSecretCredential
 
 credential = ClientSecretCredential(
@@ -464,7 +464,7 @@ credential = ClientSecretCredential(
 
 ## Error Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, CredentialUnavailableError
 from azure.core.exceptions import ClientAuthenticationError
 
@@ -484,7 +484,7 @@ with DefaultAzureCredential() as credential:
 
 Enable authentication logging for debugging:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
 
 # Enable verbose Azure Identity logging
@@ -505,7 +505,7 @@ AZURE_LOG_LEVEL=debug
 | Local Development | `DefaultAzureCredential` (uses Azure CLI) |
 | Azure App Service | `DefaultAzureCredential` (uses Managed Identity) |
 | Azure Functions | `DefaultAzureCredential` (uses Managed Identity) |
-| Azure Kubernetes Service | `WorkloadIdentityCredential` |
+| Azure [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) Service | `WorkloadIdentityCredential` |
 | Azure VMs | `DefaultAzureCredential` (uses Managed Identity) |
 | CI/CD Pipeline | `EnvironmentCredential` or `AzurePipelinesCredential` |
 | Desktop App | `InteractiveBrowserCredential` |
@@ -532,9 +532,9 @@ AZURE_LOG_LEVEL=debug
 | Resource | URL |
 |----------|-----|
 | PyPI Package | https://pypi.org/project/azure-identity/ |
-| API Reference | https://learn.microsoft.com/python/api/azure-identity |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity |
-| Credential Chains | https://aka.ms/azsdk/python/identity/credential-chains |
+| API Reference | https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/azure-identity |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/tree/main/sdk/identity/azure-identity |
+| Credential Chains | https://aka.ms/azsdk/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/identity/credential-chains |
 
 ## Reference Files
 

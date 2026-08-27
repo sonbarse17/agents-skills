@@ -27,15 +27,15 @@ pool — it says nothing about whether that address is actually reachable
 from outside the cluster, which depends on a second, independent layer
 (ARP/NDP announcement in Layer2 mode, or an `Established` BGP session in
 BGP mode) that can fail silently relative to the allocation itself. This
-gap — "Kubernetes says it's assigned" vs. "the network actually routes
+gap — "[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) says it's assigned" vs. "the network actually routes
 to it" — is the most common source of confusing MetalLB incidents, and
 is structurally the same class of problem as trusting a `CephCluster`
 CRD's `Ready` status over `ceph status` in
-[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md).
-This skill covers the validation checks — pool capacity, BGP peer state,
+[rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md).
+This skill covers the validation checks — pool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), BGP peer state,
 and true external reachability — that should run before depending on a
 MetalLB configuration built per
-[metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md)
+[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
 in production.
 
 ## When to use
@@ -50,26 +50,26 @@ in production.
   exists) after initial setup or after any network-side router
   reconfiguration.
 - Periodic health verification of an existing MetalLB deployment as
-  part of an operational runbook, not only during an active incident.
+  part of an operational [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), not only during an active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Diagnosing intermittent reachability (works from some clients/paths,
   not others) that suggests a partial rather than total failure.
 
 ## Prerequisites & environment
 
 - A MetalLB deployment already configured per
-  [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md),
-  with `kubectl` access to the `metallb-system` namespace.
+  [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md),
+  with `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to the `metallb-system` namespace.
 - For BGP-mode validation: read access to the upstream router's BGP
   neighbor status (via its own CLI/API, or coordination with whoever
   manages it) — MetalLB's own view of peer state should be
   cross-checked against the router's view, not trusted alone, the same
   way a `CephCluster` CRD's status shouldn't be trusted alone in
-  [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md).
+  [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md).
 - Network access to test actual external reachability from outside the
   cluster's own nodes — validating only from inside the cluster network
   can miss a failure that only manifests from a genuinely external
   vantage point.
-- `metallb` CLI or direct `kubectl` access to MetalLB CRDs
+- `metallb` CLI or direct `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to MetalLB CRDs
   (`IPAddressPool`, `BGPPeer`, `BGPAdvertisement`,
   `L2Advertisement`) and the speaker pods' logs.
 
@@ -79,19 +79,19 @@ in production.
    wait for a Service to fail to get an IP to notice a pool is nearly
    exhausted:
    ```bash
-   kubectl -n metallb-system get ipaddresspools -o yaml
-   kubectl get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system get ipaddresspools -o yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'
    ```
    Compare the pool's configured range size against the count of
    currently-allocated Services; if headroom is within a handful of
-   addresses of the pool's total capacity, treat that as an action item
+   addresses of the pool's total [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), treat that as an action item
    (expand the pool, or move some Services to another pool) before it
    blocks a future rollout.
 
 2. **Confirm every `LoadBalancer` Service actually has a real, non-empty
    `EXTERNAL-IP`**, not just a status field that looks populated:
    ```bash
-   kubectl get svc -A -o wide | grep LoadBalancer
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -A -o wide | grep LoadBalancer
    ```
    A Service stuck showing `<pending>` after a reasonable time (more
    than a few seconds past creation) means allocation itself failed —
@@ -100,13 +100,13 @@ in production.
    `metallb.io/address-pool` annotation, `autoAssign: false` on every
    candidate pool with no explicit pool referenced):
    ```bash
-   kubectl -n metallb-system logs -l app=metallb,component=controller --tail=100
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=controller --tail=100
    ```
 
 3. **For Layer2 mode, confirm which node is currently announcing each
    service IP**, and that it's a genuinely healthy node:
    ```bash
-   kubectl -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep <service-ip>
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep <service-ip>
    ```
    MetalLB's speaker logs identify which node currently holds the
    "leader" role for each address; cross-check that node is `Ready` and
@@ -117,13 +117,13 @@ in production.
 4. **For BGP mode, check MetalLB's own view of peer state first, but
    don't stop there**:
    ```bash
-   kubectl -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep -i bgp
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep -i bgp
    ```
    Recent MetalLB versions expose peer session state directly; a peer
    stuck anywhere other than `Established` (`Active`, `Connect`,
    `OpenSent`, `OpenConfirm`) means the session never actually formed,
    and every IP MetalLB "assigned" for that peer is unreachable from
-   the network side despite Kubernetes reporting the Service as having
+   the network side despite [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) reporting the Service as having
    an `EXTERNAL-IP`.
 
 5. **Cross-check against the router's own BGP neighbor table** — this
@@ -154,10 +154,10 @@ in production.
 
 7. **Simulate a node failure in a non-production validation exercise**
    to confirm failover actually works before trusting it in an
-   incident:
+   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
    ```bash
-   kubectl cordon <node-currently-announcing-ip>
-   # for a real test: power off or kubectl drain --delete-emptydir-data --force the node in a staging cluster
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) cordon <node-currently-announcing-ip>
+   # for a real test: power off or [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) drain --delete-emptydir-data --force the node in a staging cluster
    ```
    For Layer2 mode, confirm a different node picks up the
    announcement within an acceptable time window (watch the speaker
@@ -182,19 +182,19 @@ in production.
 - Cross-check BGP peer state on both sides (MetalLB and the router),
   not MetalLB's self-reported state alone — a session state
   disagreement between the two sides is itself a diagnostic signal.
-- Track pool utilization as a capacity metric over time, the same way
+- Track pool utilization as a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) metric over time, the same way
   you'd track any other finite resource pool, rather than discovering
   exhaustion only when the next Service creation fails.
 - Practice a node-failure/failover drill in a non-production
   environment on a recurring basis, mirroring the etcd/Ceph
   restore-drill discipline in
-  [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+  [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../../DevOps_and_Cloud/Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   and
-  [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md).
+  [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md).
 - Wire pool-utilization and BGP-peer-state checks into
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   (MetalLB exposes Prometheus metrics for both) so degradation is
-  caught by alerting, not by a customer reporting an outage.
+  caught by [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), not by a customer reporting an outage.
 - Coordinate any BGP peering validation or test with whoever owns the
   physical network — checking neighbor state on a router you don't own
   without informing its owner can look like unexpected/unauthorized
@@ -202,12 +202,12 @@ in production.
 
 ## Common pitfalls
 
-- **Symptom:** `kubectl get svc` shows a real `EXTERNAL-IP`, but the
+- **Symptom:** `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc` shows a real `EXTERNAL-IP`, but the
   Service is unreachable from outside the cluster.
   **Fix:** An allocated IP is not the same as a reachable one — check
   Layer2 speaker logs for which node (if any) is actually announcing
   that address, or BGP peer state for `Established` vs. stuck in an
-  earlier negotiation phase. Kubernetes-level Service status reflects
+  earlier negotiation phase. [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level Service status reflects
   successful allocation from the pool, not network-level reachability.
 
 - **Symptom:** A new Service fails to get any `EXTERNAL-IP` at all,
@@ -225,7 +225,7 @@ in production.
   **Fix:** Check for an ASN or peer-address mismatch between the
   `BGPPeer` CRD's `myASN`/`peerASN`/`peerAddress` and what's actually
   configured on the router — this is the single most common BGP
-  peering failure, and it's invisible from the Kubernetes side alone
+  peering failure, and it's invisible from the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) side alone
   since MetalLB may just show the session stuck in an early state
   without a descriptive error pointing at "your ASN doesn't match."
 
@@ -247,31 +247,31 @@ in production.
   **Fix:** This is a destructive validation action performed against
   the wrong environment — failover/failure-injection tests belong in a
   staging/non-production cluster with a planned maintenance window and
-  stakeholder notice, following the same discipline as chaos-engineering
+  stakeholder notice, following the same discipline as [chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)
   practice in
-  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md),
+  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../Frontend/[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md),
   not as an ad hoc test against production.
 
 ## Worked example
 
 **Scenario:** `payments-api`'s `LoadBalancer` Service (configured per
-[metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md)'s
+[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)'s
 worked example) shows `EXTERNAL-IP: 10.0.0.210`, but a customer reports
 intermittent timeouts reaching it.
 
 1. Confirm the Service's own status looks fine (allocation succeeded):
    ```bash
-   kubectl get svc payments-api -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc payments-api -n payments
    # EXTERNAL-IP: 10.0.0.210   PORT(S): 443:31820/TCP
    ```
 
 2. Check which node is currently announcing that IP in Layer2 mode:
    ```bash
-   kubectl -n metallb-system logs -l app=metallb,component=speaker --tail=500 | grep 10.0.0.210
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=500 | grep 10.0.0.210
    ```
    Shows `worker-2` announcing the address. Check `worker-2`'s health:
    ```bash
-   kubectl describe node worker-2 | grep -A5 Conditions
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe node worker-2 | grep -A5 Conditions
    ```
    `MemoryPressure: True` — the node is under memory pressure, which
    can cause the speaker pod itself to be slow to respond to ARP
@@ -296,8 +296,8 @@ intermittent timeouts reaching it.
 
 ## Cross-references
 
-- [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md) — the configuration (IP pools, Layer2/BGP mode, peering) this skill validates.
-- [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md) — the same "CRD status vs. actual system health" validation pattern applied to storage instead of networking.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — a structurally similar BGP-session validation workflow (`calicoctl node status`), for pod-network BGP rather than MetalLB's service-IP BGP.
-- [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md) — continuous alerting on MetalLB's pool-utilization and peer-state metrics.
-- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md) — the disciplined approach to failure-injection testing referenced in the node-failure drill above.
+- [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — the configuration (IP pools, Layer2/BGP mode, peering) this skill validates.
+- [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — the same "CRD status vs. actual system health" validation pattern applied to storage instead of networking.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../../DevOps_and_Cloud/Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md) — a structurally similar BGP-session validation workflow (`calicoctl node status`), for pod-network BGP rather than MetalLB's service-IP BGP.
+- [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — continuous [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on MetalLB's pool-utilization and peer-state metrics.
+- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../Frontend/[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — the disciplined approach to failure-injection testing referenced in the node-failure drill above.

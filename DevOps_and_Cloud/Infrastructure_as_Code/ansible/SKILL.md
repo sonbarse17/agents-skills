@@ -16,7 +16,7 @@ metadata:
 | Install tool, SSH setup, ansible.cfg | `resources/install-and-setup.md` | User needs to install Ansible or configure control node |
 | Inventory files, group_vars, host_vars | `resources/inventory-and-variables.md` | User needs inventory structure or variable precedence |
 | Playbook authoring, roles, modules | `resources/playbook-patterns.md` | User needs play structure, task patterns, or common modules |
-| CLI commands, vault, galaxy | `resources/command-cookbook.md` | User needs ansible/ansible-playbook/ansible-vault/galaxy commands |
+| CLI commands, [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), galaxy | `resources/command-cookbook.md` | User needs ansible/ansible-playbook/ansible-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/galaxy commands |
 
 ## Quick Start
 
@@ -45,7 +45,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 
 | Concept | Description |
 | --- | --- |
-| **Control node** | Machine where Ansible runs (requires Python; no agent needed on targets) |
+| **Control node** | Machine where Ansible runs (requires [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md); no agent needed on targets) |
 | **Managed node** | Target host reached via SSH (Linux) or WinRM (Windows) |
 | **Inventory** | List of managed nodes (INI, YAML, or dynamic script) |
 | **Playbook** | YAML file defining ordered plays and tasks |
@@ -59,7 +59,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 - Use `--limit` to target a subset of hosts before running against all inventory.
 - Avoid `command` and `shell` modules when an idempotent module exists.
 - Running as root (`become: true`) requires explicit approval — confirm privilege escalation scope.
-- Protect secrets with `ansible-vault encrypt` — never commit plaintext passwords.
+- Protect secrets with `ansible-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) encrypt` — never [commit](../../CI_CD/commit/SKILL.md) plaintext passwords.
 
 ```bash
 # Install a role then dry-run the playbook to preview changes
@@ -79,7 +79,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 ## Related Skills
 
 - **terraform** — provision infrastructure; Ansible configures after provisioning
-- **pulumi** — IaC with code; Ansible handles post-provision configuration
+- **[pulumi](../pulumi/SKILL.md)** — IaC with code; Ansible handles post-provision configuration
 
 ## References
 

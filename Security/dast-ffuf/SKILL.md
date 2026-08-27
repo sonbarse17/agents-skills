@@ -29,7 +29,7 @@ ffuf is a fast web fuzzer written in Go designed for discovering hidden resource
 
 ```bash
 # Using Go
-go install github.com/ffuf/ffuf/v2@latest
+go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/ffuf/ffuf/v2@latest
 
 # Using package managers
 # Debian/Ubuntu
@@ -38,7 +38,7 @@ apt install ffuf
 # macOS
 brew install ffuf
 
-# Or download pre-compiled binary from GitHub releases
+# Or download pre-compiled binary from [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) releases
 ```
 
 ## Quick Start
@@ -368,7 +368,7 @@ ffuf -u https://target.com/FUZZ -w wordlist.txt -o results -of all
 
 - **Sensitive Data Handling**: Discovered files may contain credentials, API keys, or PII. Handle findings securely and report responsibly
 - **Access Control**: Only fuzz applications with proper authorization. Obtain written permission before testing third-party systems
-- **Audit Logging**: Log all fuzzing activities including targets, wordlists used, and findings for compliance and audit trails
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all fuzzing activities including targets, wordlists used, and findings for compliance and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
 - **Compliance**: Ensure fuzzing activities comply with bug bounty program rules, penetration testing agreements, and legal requirements
 - **Safe Defaults**: Use reasonable rate limits to avoid DoS conditions. Start with small wordlists before scaling up
 
@@ -471,6 +471,6 @@ Map ffuf usage to OWASP Testing Guide categories:
 
 ## References
 
-- [ffuf GitHub Repository](https://github.com/ffuf/ffuf)
-- [SecLists Wordlists](https://github.com/danielmiessler/SecLists)
+- [ffuf [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/ffuf/ffuf)
+- [SecLists Wordlists](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/danielmiessler/SecLists)
 - [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)

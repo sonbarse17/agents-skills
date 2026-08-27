@@ -257,6 +257,6 @@ try {
 | Maven Package | https://central.sonatype.com/artifact/com.azure/azure-cosmos |
 | API Documentation | https://azuresdkdocs.z19.web.core.windows.net/java/azure-cosmos/latest/index.html |
 | Product Docs | https://learn.microsoft.com/azure/cosmos-db/ |
-| Samples | https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples |
+| Samples | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure-Samples/[azure-cosmos-java](../../../azure-cosmos-java/SKILL.md)-sql-api-samples |
 | Performance Guide | https://learn.microsoft.com/azure/cosmos-db/performance-tips-java-sdk-v4-sql |
 | Troubleshooting | https://learn.microsoft.com/azure/cosmos-db/troubleshoot-java-sdk-v4-sql |

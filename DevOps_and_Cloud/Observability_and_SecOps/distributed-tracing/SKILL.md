@@ -60,7 +60,7 @@ The fastest way to find where latency actually accumulated is to look for the sp
 
 A trace tells you where the time went; it rarely tells you why a specific query was slow or what the error message actually was.
 
-- **Attach the trace ID to every log line the request produces** — see `log-management` for how that field should be structured.
+- **Attach the trace ID to every log line the request produces** — see `[log-management](../log-management/SKILL.md)` for how that field should be structured.
 - **Tag the relevant metrics with the same dimensions** used in span attributes, so a metric spike and a trace agree on what they're describing.
 - **A shared ID turns a manual timestamp-and-hope search** into a direct pivot from trace to logs for the exact same request.
 

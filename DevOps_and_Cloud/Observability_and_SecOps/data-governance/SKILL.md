@@ -31,9 +31,9 @@ Pillar 2 - Catalog: Deploy data catalog with schema registry and business glossa
 
 Pillar 3 - Trace: Map end-to-end data lineage from source to consumption. Enable impact analysis for schema changes. Automate lineage capture in pipelines.
 
-Pillar 4 - Measure: Define quality dimensions and SLAs per dataset. Implement automated quality monitoring. Report quality scorecards and alert on breaches.
+Pillar 4 - Measure: Define quality dimensions and SLAs per dataset. Implement automated quality [monitoring](../monitoring/SKILL.md). Report quality scorecards and alert on breaches.
 
-Pillar 5 - Retain: Define retention schedules per classification. Implement automated purge with dry-run mode. Support legal hold overrides. Maintain audit trail.
+Pillar 5 - Retain: Define retention schedules per classification. Implement automated purge with dry-run mode. Support legal hold overrides. Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 
 ### Data Governance Operating Model
 | Model | Decision Authority | Best For |
@@ -95,7 +95,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Define classification levels: Public (no harm if exposed), Internal (internal use only), Confidential (business sensitive), Restricted (PII, PHI, PCI, credentials). Mark each data field with classification. Apply controls per level: Restricted requires encryption at rest, access logging, quarterly access review. Automate classification detection: scan for PII patterns (SSN, credit card, email, phone). Use data discovery tools to tag fields automatically. Maintain a classification register.
 
 Automated PII detection patterns:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Example: PII scanning with regex
 import re
 
@@ -120,11 +120,11 @@ Deploy schema registry (Schema Registry, Atlan, DataHub). Define business glossa
 ### Step 3: Data Lineage
 Map data flow from source -> transformation -> consumption. Capture at column level for critical data. Enable impact analysis for schema changes. Track upstream dependencies before migrations. Document transformation logic per pipeline step. Automate lineage capture using dbt docs, Airflow integration, or custom instrumentation. Maintain lineage artifact per environment.
 
-### Step 4: Data Quality Monitoring
+### Step 4: Data Quality [Monitoring](../monitoring/SKILL.md)
 Define quality dimensions: completeness (no nulls required), accuracy (matches source of truth), timeliness (within SLA), consistency (same value across systems), uniqueness (no duplicates), validity (conforms to format). Set targets per dataset. Monitor with automated pipelines (Great Expectations, dbt tests, custom checks). Report quality scorecards. Alert on SLA breaches.
 
 ### Step 5: Data Retention and Purge
-Define retention schedules per classification (PII: 6 years, logs: 90 days, business records: 7 years). Implement automated purge pipeline. Legal hold overrides retention. Verify purge completeness with reconciliation. Dry-run mode before execution. Maintain audit trail of all purge operations. Schedule quarterly retention review.
+Define retention schedules per classification (PII: 6 years, logs: 90 days, business records: 7 years). Implement automated purge pipeline. Legal hold overrides retention. Verify purge completeness with reconciliation. Dry-run mode before execution. Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail of all purge operations. Schedule quarterly retention review.
 
 ## Architecture / Decision Trees
 
@@ -148,12 +148,12 @@ Define retention schedules per classification (PII: 6 years, logs: 90 days, busi
 
 ### Classification Level Access Controls
 
-| Level | Encryption | Access Control | Audit | Retention |
+| Level | Encryption | Access Control | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | Retention |
 |---|---|---|---|---|
 | Public | None | None | None | Optional |
 | Internal | At rest (default) | Auth required | Error events | 90 days |
 | Confidential | At rest + transit | Role-based | All access logged | 3 years |
-| Restricted | At rest + transit + field-level | Explicit approval per use | Immutable audit trail | Per regulation |
+| Restricted | At rest + transit + field-level | Explicit approval per use | Immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Per regulation |
 
 ### Quality Dimension Priority
 
@@ -169,7 +169,7 @@ Define retention schedules per classification (PII: 6 years, logs: 90 days, busi
 ## Common Pitfalls
 
 ### Pitfall 1: Governance Without Automation
-Manual governance processes don't scale. Classification by hand, manual quality checks, and manual lineage capture fail as data volume grows. Automate classification scanning. Use dbt for lineage capture. Schedule quality monitoring. Automate retention purge.
+Manual governance processes don't scale. Classification by hand, manual quality checks, and manual lineage capture fail as data volume grows. Automate classification scanning. Use dbt for lineage capture. Schedule quality [monitoring](../monitoring/SKILL.md). Automate retention purge.
 
 ### Pitfall 2: Over-Classification
 Classifying everything as Restricted renders classification meaningless. Reserve Restricted for actual sensitive data (PII, PHI, PCI, secrets). Default to Internal. Use data discovery to identify sensitive data. Periodically review classification assignments.
@@ -177,11 +177,11 @@ Classifying everything as Restricted renders classification meaningless. Reserve
 ### Pitfall 3: Neglecting Data Ownership
 Without clear data ownership, no one is accountable for quality, classification, or retention. Assign business owner (who defines what data means), technical steward (who implements pipelines), and data custodian (who manages storage) per dataset.
 
-### Pitfall 4: Quality Monitoring Without SLAs
-Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in dashboards. Escalate breaches to data owners.
+### Pitfall 4: Quality [Monitoring](../monitoring/SKILL.md) Without SLAs
+Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../../Cloud_Providers/dashboards/SKILL.md). Escalate breaches to data owners.
 
 ### Pitfall 5: Retention Without Purge Automation
-Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain audit trail.
+Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 
 ### Pitfall 6: Ignoring Data Contracts
 Without data contracts, producers change schemas and break consumers. Define contracts between producer and consumer: schema, freshness SLA, row count bounds. Validate contracts in CI. Notify consumers of pending changes.
@@ -207,10 +207,10 @@ Trying to capture lineage for every dataset is overwhelming. Start with critical
 - Catalog versions for schema evolution history
 - Enable self-service discovery for business users
 
-### Quality Monitoring
+### Quality [Monitoring](../monitoring/SKILL.md)
 - Define SLAs per dataset based on criticality
 - Automate quality checks in CI/CD
-- Schedule daily quality monitoring for critical datasets
+- Schedule daily quality [monitoring](../monitoring/SKILL.md) for critical datasets
 - Weekly quality scorecard for each domain
 - Monthly governance review with quality trends
 - Alert data owners on SLA breaches
@@ -220,7 +220,7 @@ Trying to capture lineage for every dataset is overwhelming. Start with critical
 - Dry-run mode before purge execution
 - Legal hold mechanism overrides retention
 - Purge verification with reconciliation count
-- Immutable audit trail of all purge operations
+- Immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail of all purge operations
 - Quarterly retention policy review
 
 ## Compared With
@@ -241,7 +241,7 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 | GDPR Art. 5 | Data minimization, purpose limitation | Classification, retention |
 | GDPR Art. 17 | Right to erasure | Retention, purge automation |
 | GDPR Art. 30 | Records of processing | Data catalog, lineage |
-| HIPAA 164.312 | Access controls, audit controls | Classification, access logging |
+| HIPAA 164.312 | Access controls, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) controls | Classification, access logging |
 | HIPAA 164.314 | Business associate agreements | Data contracts |
 | PCI DSS Req. 3 | Protect stored cardholder data | Classification, encryption at rest |
 | SOX 404 | Financial reporting controls | Data quality, lineage |
@@ -249,11 +249,11 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 ## Operations & Maintenance
 
 ### Governance Review Cadence
-- Daily: automated quality monitoring, compliance scanning
+- Daily: automated quality [monitoring](../monitoring/SKILL.md), compliance scanning
 - Weekly: data steward review of quality alerts and exceptions
 - Monthly: quality scorecards, retention compliance report
 - Quarterly: classification review, ownership review, policy updates
-- Annually: full governance framework audit
+- Annually: full governance framework [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ### Data Owner Responsibilities
 - Define data meaning and business rules
@@ -263,14 +263,14 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 - Maintain data documentation
 - Participate in quarterly governance review
 
-### Incident Response for Data Quality
-1. Detect: automated monitoring triggers alert
+### [Incident](../incident/SKILL.md) Response for Data Quality
+1. Detect: automated [monitoring](../monitoring/SKILL.md) triggers alert
 2. Assess: determine impact and affected consumers
 3. Contain: stop propagation of bad data
 4. Investigate: root cause analysis
 5. Remediate: fix source, recalculate derived data
 6. Verify: validate data is correct post-fix
-7. Document: incident report and preventive measures
+7. Document: [incident](../incident/SKILL.md) report and preventive measures
 
 ### Data Contract Template (YAML)
 ```yaml
@@ -331,8 +331,8 @@ data_contract:
       severity: error
 ```
 
-### Data Quality Scorecard (Python Pattern)
-```python
+### Data Quality Scorecard ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Pattern)
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class DataQualityScorecard:
     def __init__(self, dataset_name, reporting_period):
         self.dataset = dataset_name
@@ -372,7 +372,7 @@ scorecard.add_dimension("Consistency", 99.5, 99.5, weight=1.0)
 print(scorecard.report())
 ```
 
-### Compliance Audit Preparation
+### Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Preparation
 1. Maintain data classification register
 2. Document retention schedules and purge logs
 3. Keep lineage documentation for critical data
@@ -383,8 +383,8 @@ print(scorecard.report())
 
 ## Code Examples
 
-### Automated PII Scanner (Python/Schema Registry Integration)
-```python
+### Automated PII Scanner ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Schema Registry Integration)
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re, yaml
 from typing import List, Dict, Optional
 
@@ -400,10 +400,10 @@ class PIIAutomatedClassifier:
     }
 
     CLASSIFICATION_ACCESS = {
-        "public": {"encrypt_at_rest": False, "encrypt_in_transit": False, "audit": False, "retention_days": 0},
-        "internal": {"encrypt_at_rest": True, "encrypt_in_transit": True, "audit": "errors_only", "retention_days": 90},
-        "confidential": {"encrypt_at_rest": True, "encrypt_in_transit": True, "audit": "all_access", "retention_days": 1095},
-        "restricted": {"encrypt_at_rest": True, "encrypt_in_transit": True, "audit": "immutable_trail", "retention_days": 2190},
+        "public": {"encrypt_at_rest": False, "encrypt_in_transit": False, "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)": False, "retention_days": 0},
+        "internal": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)": "errors_only", "retention_days": 90},
+        "confidential": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)": "all_access", "retention_days": 1095},
+        "restricted": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)": "immutable_trail", "retention_days": 2190},
     }
 
     def __init__(self, schema_registry_url: str):
@@ -454,7 +454,7 @@ print(scanner.generate_classification_report(schema))
 ```
 
 ### Data Quality Monitor (Great Expectations Pattern)
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Pattern: Automated data quality pipeline
 quality_checks = {
     "completeness": "SELECT COUNT(*) - COUNT({column}) AS nulls FROM {table}",
@@ -520,7 +520,7 @@ retention_policies:
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Governance by Spreadsheet
-Managing data classification, lineage, and quality in shared spreadsheets. Spreadsheets are stale the moment they're saved, have no enforcement, and no audit trail. Use automated tools: data catalogs, schema registries, quality monitors.
+Managing data classification, lineage, and quality in shared spreadsheets. Spreadsheets are stale the moment they're saved, have no enforcement, and no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail. Use automated tools: data catalogs, schema registries, quality monitors.
 
 ### Anti-Pattern 2: Classifying Everything as Restricted
 When everything is Restricted, nothing is. Teams bypass controls because they're too burdensome. Default to Internal. Use automated discovery to find and escalate only genuinely sensitive data. Review quarterly.
@@ -539,7 +539,7 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - PII detection must be automated in CI/CD pipelines
 - Schema changes must pass through registry with backward compatibility check
 - Data lineage must be updated when pipelines change
-- Quality dashboards visible to data owners and stewards
+- Quality [dashboards](../../Cloud_Providers/dashboards/SKILL.md) visible to data owners and stewards
 - Retention purge must have dry-run mode before execution
 - Legal hold must be irrevocable until manually removed
 - Data contracts enforced between producer and consumer services
@@ -548,13 +548,13 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - Automated scanning for sensitive data must run weekly
 - Access reviews for Restricted data conducted quarterly
 - Retention schedules reviewed and updated annually
-- All purge operations logged with immutable audit trail
+- All purge operations logged with immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
 
 ## References
 - ../../../Global_References/data-governance-fundamentals.md -- Data Governance Fundamentals
 - ../../../Global_References/data-governance-advanced.md -- Data Governance Advanced Topics
 - ../../../Global_References/data-governance_data-classification.md -- Data Classification Framework
-- ../../../Global_References/data-lineage.md -- Data Lineage Tracking
+- ../../../Global_References/[data-lineage](../../../Data_Engineering/data-lineage/SKILL.md).md -- Data Lineage Tracking
 - ../../../Global_References/data-policies.md -- Data Policies Framework
 - references/data-governance-framework.md -- Data Governance Framework
 - references/data-governance-framework-implementation.md -- Governance Framework Implementation
@@ -562,5 +562,5 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
   - ../../../Global_References/data-contracts.md -- Data Contracts and Sharing Agreements
 
 ## Handoff
-For compliance requirements on data handling, hand off to `enterprise-compliance-audit`. For multi-tenant data isolation, hand off to `enterprise-multi-tenant`.
+For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)`.
 

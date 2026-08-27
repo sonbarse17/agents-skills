@@ -16,7 +16,7 @@ Build secure, scalable authentication and authorization systems using industry-s
 - Designing session management
 - Migrating authentication systems
 - Debugging auth issues
-- Implementing SSO or multi-tenancy
+- Implementing SSO or [multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)
 
 ## Core Concepts
 
@@ -52,7 +52,7 @@ Build secure, scalable authentication and authorization systems using industry-s
 **OAuth2/OpenID Connect:**
 
 - Delegate authentication
-- Social login (Google, GitHub)
+- Social login (Google, [GitHub](../../CI_CD/github/SKILL.md))
 - Enterprise SSO
 
 ## Detailed patterns and worked examples

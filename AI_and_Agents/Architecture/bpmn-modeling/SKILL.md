@@ -268,7 +268,7 @@ Chaining 5+ exclusive gateways in sequence makes the diagram unreadable. Fix: ex
 |----------|-----------------|-----|-----------|------------|------|
 | Camunda 8 | Full | Yes | Java, JS, Go | SaaS/Self-hosted | Free + Enterprise |
 | Flowable | Full | Yes | Java, Spring | Self-hosted | Free + Enterprise |
-| Temporal | Workflow engine | No | Java, Go, TS, Python | Self-hosted/SaaS | Free + Cloud |
+| Temporal | Workflow engine | No | Java, Go, TS, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Self-hosted/SaaS | Free + Cloud |
 | Zeebe (Camunda) | Full | Yes | Java, Go, JS | SaaS/Orchestration | Included in Camunda 8 |
 | jBPM | Full | Yes | Java | Self-hosted | Open source |
 | IBM BPM | Full | Limited | Java | Self-hosted | Commercial |
@@ -283,7 +283,7 @@ Map each BPMN activity to the correct automation implementation type:
 | Service Task | API call / microservice | REST, gRPC, GraphQL call | Deterministic, stateless operations |
 | Business Rule Task | DMN decision | Decision table evaluation | Complex business logic with explicit rules |
 | User Task | Human workflow | Task list, form, approval UI | Requires human judgment or input |
-| Script Task | Inline code execution | JavaScript, Groovy, Python | Simple transformations, data mapping |
+| Script Task | Inline code execution | JavaScript, Groovy, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Simple transformations, data mapping |
 | Send Task | Outbound message | Email, SMS, webhook, event | Notification or external system trigger |
 | Receive Task | Inbound event listener | Message queue, webhook, polling | Waiting for external system response |
 | Manual Task | No automation | Documented procedure | Cannot or should not be automated |
@@ -351,7 +351,7 @@ Hit Policy: UNIQUE (only one rule matches)
 |--------|--------|-------------|
 | Process cycle time reduction | >30% | Before/after comparison |
 | Error rate reduction | >50% | Exception path frequency |
-| Automation coverage | >80% of deterministic tasks | Task type audit |
+| Automation coverage | >80% of deterministic tasks | Task type [audit](../../Operations/audit/SKILL.md) |
 | Stakeholder understanding | >90% can explain diagram | Survey |
 | Model accuracy | Matches reality within 5% deviation | Process mining comparison |
 
@@ -533,7 +533,7 @@ Designing the process flow without considering performance, security, or complia
 Designing the TO-BE process by simply automating the AS-IS process without rethinking the flow. You automate inefficiency. Fix: after documenting AS-IS, step back and redesign the process from scratch. Remove unnecessary steps. Change the order. Eliminate handoffs. Then add automation.
 
 ### 12. Missing Process Governance
-No ownership, no monitoring, no version control for process models. BPMN diagrams become outdated within weeks. Nobody knows which version is deployed. Fix: assign a process owner for each major process. Store BPMN files in version control. Define a review cadence. Link process metrics to dashboards.
+No ownership, no [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), no version control for process models. BPMN diagrams become outdated within weeks. Nobody knows which version is deployed. Fix: assign a process owner for each major process. Store BPMN files in version control. Define a review cadence. Link process metrics to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 ### 13. Data Flow Neglect
 Modeling activity flow without specifying data flow. Service tasks have no defined inputs or outputs. The process works in theory but breaks in practice because data isn't available when needed. Fix: add data objects and data stores to every diagram. Define data mapping for each service task. Validate data flow end-to-end before implementation.
@@ -541,17 +541,17 @@ Modeling activity flow without specifying data flow. Service tasks have no defin
 ## Process Simulation Guidance
 
 ### When to Simulate
-Run process simulation when: estimating capacity needs, evaluating "what-if" scenarios, validating TO-BE design before implementation, identifying bottlenecks and resource constraints, or building a business case for automation investment.
+Run process simulation when: estimating [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) needs, evaluating "what-if" scenarios, validating TO-BE design before implementation, identifying bottlenecks and resource constraints, or building a business case for automation investment.
 
 ### Simulation Parameters
 | Parameter | Definition | Data Source |
 |-----------|------------|-------------|
 | Arrival rate | How often does the process trigger? | Historical logs |
 | Processing time | How long does each activity take? | Time tracking, estimates |
-| Resource pool | Who or what performs each activity? | Org chart, system capacity |
+| Resource pool | Who or what performs each activity? | Org chart, system [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Cost per resource | Hourly cost of each resource | Finance data |
 | Rule probabilities | Which path is taken at each gateway? | Historical data |
-| Error rate | How often does each activity fail? | Incident logs |
+| Error rate | How often does each activity fail? | [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) logs |
 
 ### Simulation Output Analysis
 | Output | What It Tells You | Decision |
@@ -560,7 +560,7 @@ Run process simulation when: estimating capacity needs, evaluating "what-if" sce
 | Resource utilization | % of time resources are busy | Staffing decisions |
 | Queue lengths | Where work piles up | Bottleneck identification |
 | Cost per process instance | Total cost breakdown | Automation ROI |
-| Throughput | Completed instances per time period | Capacity planning |
+| Throughput | Completed instances per time period | [Capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 
 ## BPMN Collaboration Patterns
 
@@ -584,5 +584,5 @@ Use data stores visible to multiple pools when participants share data. Define r
   - references/process-discovery-guide.md — Process Discovery Guide
   - references/bpmn-automation-patterns.md — BPMN to Automation Patterns
 ## Handoff
-`create-tech-spec` for automation implementation specifications. `solution-architecture` for integration architecture design. `create-story` for breaking automation into user stories.
+`[create-tech-spec](../../../Product_and_Business/create-tech-spec/SKILL.md)` for automation implementation specifications. `solution-architecture` for integration architecture design. `[create-story](../../../Product_and_Business/create-story/SKILL.md)` for breaking automation into user stories.
 

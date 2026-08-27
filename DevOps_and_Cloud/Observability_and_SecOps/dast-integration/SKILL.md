@@ -71,12 +71,12 @@ every staging deploy.
   community template library; complements ZAP rather than replacing it.
 - Test credentials/service accounts for authenticated scanning (never
   real user or production credentials), provisioned via your secrets
-  manager — see [secrets-management](../secrets-management/SKILL.md).
+  manager — see [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
 - An OpenAPI/Swagger or Postman collection spec if scanning an API,
   to seed the scanner's crawl instead of relying on link discovery alone.
 - CI runner with enough memory/CPU headroom — active scans against a
   non-trivial app can run 15-60+ minutes; budget pipeline time
-  accordingly or run on a schedule rather than every commit.
+  accordingly or run on a schedule rather than every [commit](../../CI_CD/commit/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -84,7 +84,7 @@ every staging deploy.
    PR-preview environment — it only observes traffic and crawls
    passively, so it's safe to run frequently and unattended:
    ```yaml
-   # GitHub Actions
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions
    name: dast-baseline
    on:
      pull_request:
@@ -95,7 +95,7 @@ every staging deploy.
          - name: ZAP Baseline Scan
            uses: zaproxy/action-baseline@v0.12.0
            with:
-             target: 'https://pr-${{ github.event.number }}.staging.example.internal'
+             target: 'https://pr-${{ [github](../../CI_CD/github/SKILL.md).event.number }}.staging.example.internal'
              rules_file_name: '.zap/rules.tsv'
              cmd_options: '-a'
    ```
@@ -103,7 +103,7 @@ every staging deploy.
 2. **Seed the scan with an API spec** for better coverage of non-linked
    endpoints:
    ```bash
-   docker run --rm -v "$(pwd)":/zap/wrk/:rw \
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
      -t zaproxy/zap-stable zap-api-scan.py \
      -t https://staging.example.internal/openapi.json \
      -f openapi \
@@ -154,7 +154,7 @@ every staging deploy.
 
 7. **Feed results into the same triage workflow as SAST/SCA** (SARIF
    export, ticket auto-creation, PR comments) so security findings live
-   in one place rather than three disconnected dashboards.
+   in one place rather than three disconnected [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
 
 ## Best practices
 
@@ -169,12 +169,12 @@ every staging deploy.
   available — crawler-only discovery misses most API-only endpoints with
   no HTML links pointing to them.
 - Rate-limit and IP-allowlist the scanner in the target environment so it
-  doesn't trip WAF/bot-protection or DDoS-style alerting meant for real
+  doesn't trip WAF/bot-protection or DDoS-style [alerting](../alerting/SKILL.md) meant for real
   traffic.
 - Treat DAST findings as one input among several: it does not see source
   code, so pair it with
-  [sast-integration](../sast-integration/SKILL.md) for code-level issues
-  and [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)
+  [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) for code-level issues
+  and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
   for vulnerable dependencies — none of the three alone gives full
   coverage.
 - Version-pin scanner images/actions and periodically refresh them —
@@ -231,7 +231,7 @@ scheduled full scan against a dedicated DAST test environment.
 10096	WARN	Timestamp disclosure in response headers - internal env only
 ```
 
-`.github/workflows/dast.yml`:
+`.[github](../../CI_CD/github/SKILL.md)/workflows/dast.yml`:
 ```yaml
 name: dast
 on:
@@ -241,19 +241,19 @@ on:
 
 jobs:
   baseline:
-    if: github.event_name == 'pull_request'
+    if: [github](../../CI_CD/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: ZAP baseline scan against PR preview
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: 'https://pr-${{ github.event.number }}.staging.example.internal'
+          target: 'https://pr-${{ [github](../../CI_CD/github/SKILL.md).event.number }}.staging.example.internal'
           rules_file_name: '.zap/rules.tsv'
           fail_action: true
 
   full-scan:
-    if: github.event_name == 'schedule'
+    if: [github](../../CI_CD/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -282,9 +282,9 @@ confirm the finding clears.
 
 ## Cross-references
 
-- [sast-integration](../sast-integration/SKILL.md) — static, source-level
+- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — static, source-level
   analysis that runs earlier and faster than DAST but cannot see runtime
   configuration or deployment-specific issues.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — how to combine
+- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine
   DAST with SAST/SCA gates into a coherent pipeline without duplicating
   or contradicting each other's blocking behavior.

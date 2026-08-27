@@ -32,10 +32,10 @@ of connected cloud accounts against policies (public S3 buckets,
 overly-permissive security groups, IAM users without MFA) using
 read-only API access — it never touches running workloads. **IaC
 scanning** evaluates the same class of misconfiguration *before* it's
-ever deployed, against Terraform/CloudFormation/ARM source, using an
+ever deployed, against Terraform/[CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/ARM source, using an
 engine built on the open-source Checkov project. **Workload Protection**
 requires installing a Defender agent onto hosts, container runtimes, or
-serverless functions to observe and enforce behavior at runtime — a
+[serverless](../../Containers_and_Orchestration/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
 fundamentally different data source (agent telemetry) from CSPM's
 API-polling model. A team that stops at CSPM alone has visibility into
 *configuration* drift but zero visibility into what's actually happening
@@ -49,11 +49,11 @@ capabilities and where each one's blind spots require the others.
 - The user needs to write or debug a custom Prisma Cloud policy in RQL
   (Resource Query Language) for an organization-specific compliance
   requirement not covered by a built-in policy.
-- The user wants Terraform/CloudFormation scanned for misconfiguration
+- The user wants Terraform/[CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) scanned for misconfiguration
   before merge/apply, using Prisma Cloud's IaC scanning (`checkov` CLI
-  or the Prisma Cloud IaC scan API/GitHub App).
+  or the Prisma Cloud IaC scan API/[GitHub](../../CI_CD/github/SKILL.md) App).
 - The user wants to deploy Prisma Cloud **Defender agents** to hosts,
-  a Kubernetes cluster, or serverless functions for runtime workload
+  a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster, or [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) functions for runtime workload
   protection, and needs to understand what that adds beyond CSPM alone.
 - The user is triaging a Prisma Cloud alert and needs to know whether
   it's a posture (CSPM) finding, an IaC finding, or a runtime
@@ -61,7 +61,7 @@ capabilities and where each one's blind spots require the others.
 - The user is comparing Prisma Cloud against a narrower point tool
   (e.g. Trivy for IaC/image scanning, native cloud-provider security
   services) for overlapping ground, and needs to know what's genuinely
-  additive at enterprise/multi-cloud scale.
+  additive at enterprise/[multi-cloud](../multi-cloud/SKILL.md) scale.
 
 ## Prerequisites & environment
 
@@ -71,7 +71,7 @@ capabilities and where each one's blind spots require the others.
   CSPM-only).
 - Cloud account onboarding requires a **read-only** IAM role/service
   principal per connected account for CSPM (AWS cross-account IAM role
-  via CloudFormation/Terraform onboarding template, Azure service
+  via [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/Terraform onboarding template, Azure service
   principal with Reader role, GCP service account with `roles/viewer`
   plus specific additional read permissions Prisma documents per
   feature) — this is intentionally least-privilege and read-only; it
@@ -80,12 +80,12 @@ capabilities and where each one's blind spots require the others.
   built on it) or the Prisma Cloud IaC scan API/CI plugin, plus a
   Prisma Cloud access key (API key ID + secret) for API-based scans —
   store as CI secrets, never inline. See
-  [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md).
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
 - For Workload Protection: outbound network connectivity from each
   host/cluster to the Prisma Cloud Compute console (self-hosted
   Compute console or the SaaS one), and sufficient privilege to deploy
-  a DaemonSet (Kubernetes), a host agent package, or a Lambda
-  layer/extension (serverless) — Defender agents typically need
+  a DaemonSet ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)), a host agent package, or a Lambda
+  layer/extension ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md)) — Defender agents typically need
   elevated (often privileged, for container-runtime visibility) access
   on the host, which is a materially different trust boundary than
   CSPM's read-only cloud API access and should be reviewed accordingly.
@@ -104,7 +104,7 @@ capabilities and where each one's blind spots require the others.
    either unnecessary exposure or silent gaps in what CSPM can see):
    ```bash
    # AWS onboarding (illustrative — use Prisma's current CFT/Terraform module)
-   aws cloudformation create-stack \
+   aws [cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md) create-stack \
      --stack-name prisma-cloud-cspm-readonly \
      --template-url https://<prisma-provided-template-url> \
      --capabilities CAPABILITY_NAMED_IAM \
@@ -135,7 +135,7 @@ capabilities and where each one's blind spots require the others.
    before `terraform apply`, not only after the fact by CSPM polling a
    deployed resource:
    ```yaml
-   # GitHub Actions, using checkov (Prisma Cloud's IaC scan engine)
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions, using checkov (Prisma Cloud's IaC scan engine)
    name: iac-scan
    on: [pull_request]
    jobs:
@@ -170,12 +170,12 @@ capabilities and where each one's blind spots require the others.
    fleet-wide rollout on day one, given the elevated host/runtime
    access Defender requires:
    ```bash
-   # Kubernetes Defender DaemonSet (illustrative install pattern)
-   twistcli defender export kubernetes \
+   # [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Defender DaemonSet (illustrative install pattern)
+   twistcli defender export [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) \
      --address https://<prisma-compute-console> \
      --cluster-address <cluster-endpoint> \
      > defender.yaml
-   kubectl apply -f defender.yaml
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f defender.yaml
    ```
 
 7. **Use Defender for runtime + image scanning together**, not CSPM
@@ -188,7 +188,7 @@ capabilities and where each one's blind spots require the others.
 
 8. **Triage by resource criticality and exposure, not raw alert
    count** — tag cloud resources (environment, data classification,
-   internet-facing) so Prisma's alert rules and dashboards can prioritize
+   internet-facing) so Prisma's alert rules and [dashboards](../dashboards/SKILL.md) can prioritize
    a public-facing production resource's misconfiguration over an
    identical finding on an isolated internal dev resource.
 
@@ -201,7 +201,7 @@ capabilities and where each one's blind spots require the others.
   happens to be easiest to turn on first.
 - Onboard cloud accounts read-only via the vendor-provided template,
   not a hand-written role — see
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
   for the underlying least-privilege principle this onboarding role
   should itself follow.
 - Gate the pipeline on IaC scanning for new/changed infrastructure and
@@ -214,13 +214,13 @@ capabilities and where each one's blind spots require the others.
   its own access-control decision, not an automatic extension of CSPM's
   read-only trust.
 - Map custom RQL policies and Defender runtime rules to a compliance
-  framework (CIS, PCI-DSS, SOC 2) explicitly where relevant, so audit
-  evidence is a byproduct of normal alerting rather than a separate
+  framework (CIS, PCI-DSS, SOC 2) explicitly where relevant, so [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+  evidence is a byproduct of normal [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rather than a separate
   manual exercise.
 - Don't treat a clean CSPM dashboard as "no runtime risk" — CSPM cannot
   see a compromised process inside a correctly-configured container;
   pair it with
-  [sysdig-secure-runtime-security](../sysdig-secure-runtime-security/SKILL.md)
+  [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md)
   or Prisma's own Defender runtime detection for that layer.
 
 ## Common pitfalls
@@ -230,7 +230,7 @@ capabilities and where each one's blind spots require the others.
   re-flagged weeks later on a newly-provisioned resource of the same
   type.
   **Fix:** The fix is being applied to the live resource but not to the
-  Terraform/CloudFormation module that provisions new instances of it —
+  Terraform/[CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) module that provisions new instances of it —
   add the equivalent IaC scan check (step 4-5) to the pipeline that
   actually creates these resources so the class of misconfiguration
   can't recur, not just the one instance CSPM happened to catch.
@@ -244,10 +244,10 @@ capabilities and where each one's blind spots require the others.
   resources only, and schedule the rest as a longer-term paydown rather
   than an all-at-once effort.
 
-- **Symptom:** Defender agent deployment to a Kubernetes cluster is
+- **Symptom:** Defender agent deployment to a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster is
   blocked or delayed pending a lengthy security review, because it
   requests privileged/host-level access that the platform team wasn't
-  expecting from what they assumed was "just another monitoring agent."
+  expecting from what they assumed was "just another [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) agent."
   **Fix:** Review and document the Defender agent's actual required
   privileges up front as part of onboarding (it needs container-runtime
   and host-level visibility to do behavioral detection, which is a
@@ -309,16 +309,16 @@ production EKS cluster.
 
 ## Cross-references
 
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) —
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) —
   the least-privilege principle behind Prisma's read-only CSPM
   onboarding role, and the broader IAM hardening practice CSPM findings
   frequently point back to.
-- [trivy-vulnerability-scanning](../trivy-vulnerability-scanning/SKILL.md) —
+- [trivy-vulnerability-scanning](../[trivy-vulnerability-scanning](../../../Security/trivy-[vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md)/SKILL.md)/SKILL.md) —
   a lighter-weight, self-hosted alternative/complement for IaC and
   image scanning at a smaller scale than Prisma's full CNAPP.
-- [sysdig-secure-runtime-security](../sysdig-secure-runtime-security/SKILL.md) —
+- [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a comparable runtime-protection approach (Falco-rule-based) worth
   understanding alongside Prisma's Defender agent model.
-- [container-image-hardening](../../../devsecops/skills/container-image-hardening/SKILL.md) —
+- [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing what both Defender's image scanning and CSPM have to find in
   workload images in the first place.

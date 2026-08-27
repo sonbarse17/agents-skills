@@ -33,7 +33,7 @@ dig api.example.com NS                    # who is authoritative
 ```
 
 - **A mismatch between the two queries above** means propagation lag or a stale local cache, not a
-  wrong record — see `dns-management` for TTL behavior.
+  wrong record — see `[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)` for TTL behavior.
 - **`NXDOMAIN` from the authoritative server itself** means the record genuinely doesn't exist;
   stop looking downstream and fix the zone.
 
@@ -115,7 +115,7 @@ tcpdump -i any port 443 and host api.example.com   # narrow before capturing bro
   application-level reset rather than a routing problem.
 
 **Done when:** the capture shows the specific packet-level event causing the failure, or
-definitively rules out the network layer and hands the investigation to `root-cause-analysis` at
+definitively rules out the network layer and hands the investigation to `[root-cause-analysis](../root-cause-analysis/SKILL.md)` at
 the application level.
 
 ## Report

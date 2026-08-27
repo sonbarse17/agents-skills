@@ -25,9 +25,9 @@ references:
 
 ## Overview
 
-Hadolint is a Dockerfile linter that validates container build files against security best practices and the CIS Docker Benchmark. It analyzes Dockerfile instructions to identify misconfigurations, anti-patterns, and security vulnerabilities before images are built and deployed.
+Hadolint is a Dockerfile linter that validates container build files against security best practices and the CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark. It analyzes Dockerfile instructions to identify misconfigurations, anti-patterns, and security vulnerabilities before images are built and deployed.
 
-Hadolint integrates ShellCheck to validate RUN instructions, ensuring shell commands follow security best practices. With 100+ built-in rules mapped to CIS Docker Benchmark controls, Hadolint provides comprehensive security validation for container images.
+Hadolint integrates ShellCheck to validate RUN instructions, ensuring shell commands follow security best practices. With 100+ built-in rules mapped to CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark controls, Hadolint provides comprehensive security validation for container images.
 
 ## Quick Start
 
@@ -38,11 +38,11 @@ Hadolint integrates ShellCheck to validate RUN instructions, ensuring shell comm
 brew install hadolint
 
 # Linux via binary
-wget -O /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+wget -O /usr/local/bin/hadolint https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
 chmod +x /usr/local/bin/hadolint
 
-# Via Docker
-docker pull hadolint/hadolint
+# Via [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull hadolint/hadolint
 ```
 
 ### Scan Dockerfile
@@ -54,8 +54,8 @@ hadolint Dockerfile
 # Scan with specific Dockerfile path
 hadolint path/to/Dockerfile
 
-# Using Docker
-docker run --rm -i hadolint/hadolint < Dockerfile
+# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -i hadolint/hadolint < Dockerfile
 ```
 
 ### Generate Report
@@ -98,13 +98,13 @@ Dockerfile:7 DL3025 error: Use JSON notation for CMD and ENTRYPOINT
 Dockerfile:12 DL3059 info: Multiple RUN instructions detected
 ```
 
-**When to use**: Developer workstation, pre-commit validation, iterative Dockerfile development.
+**When to use**: Developer workstation, pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) validation, iterative Dockerfile development.
 
 ### 2. CI/CD Pipeline Integration
 
 Automate Dockerfile validation in build pipelines:
 
-#### GitHub Actions
+#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
 
 ```yaml
 name: Hadolint
@@ -124,9 +124,9 @@ jobs:
           format: sarif
           output-file: hadolint.sarif
 
-      - name: Upload SARIF to GitHub Security
+      - name: Upload SARIF to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Security
         if: always()
-        uses: github/codeql-action/upload-sarif@v2
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: hadolint.sarif
 ```
@@ -149,7 +149,7 @@ hadolint:
 
 ### 3. Configuration Customization
 
-Create `.hadolint.yaml` to customize rules:
+Create `.hadolint.yaml` to [customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) rules:
 
 ```yaml
 # .hadolint.yaml
@@ -159,7 +159,7 @@ ignored:
   - DL3059  # Allow multiple RUN instructions
 
 trustedRegistries:
-  - docker.io/library  # Official Docker Hub images
+  - [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library  # Official [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub images
   - gcr.io/distroless  # Google distroless images
   - registry.access.redhat.com  # Red Hat registry
 
@@ -193,7 +193,7 @@ Enforce critical security rules:
 hadolint --failure-threshold error Dockerfile
 
 # Check specific security rules
-hadolint --trusted-registry docker.io/library Dockerfile
+hadolint --trusted-registry [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library Dockerfile
 
 # Scan all Dockerfiles in project
 find . -name "Dockerfile*" -exec hadolint {} \;
@@ -229,25 +229,25 @@ hadolint Dockerfile
 - Missing security hardening in final stage
 - Secrets present in build stage propagating to runtime
 
-**When to use**: Complex builds, security-hardened images, production containerization.
+**When to use**: Complex builds, security-hardened images, production [containerization](../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md).
 
-### 6. Pre-Commit Hook Integration
+### 6. Pre-[Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hook Integration
 
 Prevent insecure Dockerfiles from being committed:
 
 ```bash
-# Install pre-commit hook using bundled script
+# Install pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook using bundled script
 ./scripts/install_precommit.sh
 
 # Or manually create hook
-cat << 'EOF' > .git/hooks/pre-commit
+cat << 'EOF' > .git/hooks/pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 #!/bin/bash
 for dockerfile in $(git diff --cached --name-only | grep -E 'Dockerfile'); do
   hadolint --failure-threshold warning "$dockerfile" || exit 1
 done
 EOF
 
-chmod +x .git/hooks/pre-commit
+chmod +x .git/hooks/pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 ```
 
 **When to use**: Developer workstations, team onboarding, mandatory security controls.
@@ -257,7 +257,7 @@ chmod +x .git/hooks/pre-commit
 ### Sensitive Data Handling
 
 - **Secret Detection**: Hadolint flags hardcoded secrets in ENV, ARG, LABEL instructions
-- **Build Secrets**: Use Docker BuildKit secrets (`RUN --mount=type=secret`) instead of ARG for credentials
+- **Build Secrets**: Use [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) BuildKit secrets (`RUN --mount=type=secret`) instead of ARG for credentials
 - **Multi-Stage Security**: Ensure secrets in build stages don't leak to final image
 - **Image Scanning**: Hadolint validates Dockerfile - combine with image scanning (Trivy, Grype) for runtime security
 
@@ -267,7 +267,7 @@ chmod +x .git/hooks/pre-commit
 - **Report Storage**: Treat scan reports as internal documentation - may reveal security practices
 - **Trusted Registries**: Configure `trustedRegistries` to enforce approved base image sources
 
-### Audit Logging
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Log the following for compliance and security auditing:
 - Scan execution timestamps and Dockerfile paths
@@ -278,12 +278,12 @@ Log the following for compliance and security auditing:
 
 ### Compliance Requirements
 
-- **CIS Docker Benchmark 1.6**: Hadolint rules map to CIS controls (see `references/cis_mapping.md`)
+- **CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark 1.6**: Hadolint rules map to CIS controls (see `references/cis_mapping.md`)
   - 4.1: Create a user for the container (DL3002)
   - 4.6: Add HEALTHCHECK instruction (DL3025)
   - 4.7: Do not use update alone in Dockerfile (DL3009)
   - 4.9: Use COPY instead of ADD (DL3020)
-- **OWASP Docker Security**: Validates against OWASP container security best practices
+- **OWASP [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Security**: Validates against OWASP container security best practices
 - **NIST SP 800-190**: Application container security guidance
 
 ## Bundled Resources
@@ -292,13 +292,13 @@ Log the following for compliance and security auditing:
 
 - `hadolint_scan.py` - Comprehensive scanning with multiple Dockerfiles and output formats
 - `hadolint_multistage.py` - Multi-stage Dockerfile analysis with stage-specific validation
-- `install_precommit.sh` - Automated pre-commit hook installation
+- `install_precommit.sh` - Automated pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook installation
 - `ci_integration.sh` - CI/CD integration examples for multiple platforms
 
 ### References (`references/`)
 
 - `security_rules.md` - Complete Hadolint security rules with CIS Benchmark mappings
-- `cis_mapping.md` - Detailed CIS Docker Benchmark control mapping
+- `cis_mapping.md` - Detailed CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark control mapping
 - `remediation_guide.md` - Rule-by-rule remediation guidance with secure examples
 - `shellcheck_integration.md` - ShellCheck rules for RUN instruction validation
 
@@ -307,13 +307,13 @@ Log the following for compliance and security auditing:
 - `hadolint-strict.yaml` - Strict security configuration
 - `hadolint-balanced.yaml` - Production-ready configuration (recommended)
 - `hadolint-permissive.yaml` - Legacy Dockerfile migration configuration
-- `github-actions.yml` - Complete GitHub Actions workflow
-- `gitlab-ci.yml` - Complete GitLab CI pipeline
-- `precommit-config.yaml` - Pre-commit framework configuration
+- `[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow
+- `[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline
+- `precommit-config.yaml` - Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) framework configuration
 
 ## Common Patterns
 
-### Pattern 1: Initial Dockerfile Security Audit
+### Pattern 1: Initial Dockerfile Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 First-time security assessment:
 
@@ -361,7 +361,7 @@ Build security-first container image:
 # Example secure Dockerfile following Hadolint best practices
 
 # Use specific base image version from trusted registry
-FROM docker.io/library/node:18.19.0-alpine3.19
+FROM [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library/node:18.19.0-alpine3.19
 
 # Install packages with version pinning and cleanup
 RUN apk add --no-cache \
@@ -425,23 +425,23 @@ gh pr comment --body-file pr-comment.md
 
 ### CI/CD Integration
 
-- **GitHub Actions**: Native hadolint-action with SARIF support for Security tab
+- **[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions**: Native hadolint-action with SARIF support for Security tab
 - **GitLab CI**: GitLab Code Quality format integration
-- **Jenkins**: Checkstyle format for Jenkins Warnings plugin
-- **CircleCI**: Docker-based executor with artifact retention
+- **[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)**: Checkstyle format for [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) Warnings plugin
+- **[CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based executor with artifact retention
 - **Azure Pipelines**: Task integration with results publishing
 
 ### Security Tools Ecosystem
 
 - **Image Scanning**: Combine with Trivy, Grype, Clair for runtime vulnerability scanning
 - **Secret Scanning**: Integrate with Gitleaks, TruffleHog for comprehensive secret detection
-- **IaC Security**: Chain with Checkov for Kubernetes/Terraform validation
+- **IaC Security**: Chain with Checkov for [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/Terraform validation
 - **SBOM Generation**: Export findings alongside Syft/Trivy SBOM reports
-- **Security Dashboards**: Export JSON to Grafana, Kibana, Datadog for centralized monitoring
+- **Security [Dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)**: Export JSON to Grafana, Kibana, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) for centralized [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ### SDLC Integration
 
-- **Development**: Pre-commit hooks provide immediate feedback
+- **Development**: Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks provide immediate feedback
 - **Code Review**: PR checks prevent insecure Dockerfiles from merging
 - **Testing**: Scan test environment Dockerfiles
 - **Staging**: Validation gate before production promotion
@@ -476,7 +476,7 @@ Consult `references/remediation_guide.md` for rule-specific guidance.
 trustedRegistries:
   - mycompany.azurecr.io
   - gcr.io/my-project
-  - docker.io/library
+  - [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library
 ```
 
 ### Issue: ShellCheck Warnings in RUN Instructions
@@ -567,13 +567,13 @@ RUN apt-get update && apt-get install -y wget
 ```yaml
 # .hadolint.yaml
 trustedRegistries:
-  - docker.io/library      # Official images only
+  - [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library      # Official images only
   - gcr.io/distroless      # Google distroless
   - cgr.dev/chainguard     # Chainguard images
 
 # This will error on:
-# FROM nginx:latest                    ❌ (docker.io/nginx)
-# FROM docker.io/library/nginx:latest  ✅ (trusted)
+# FROM nginx:latest                    ❌ ([docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/nginx)
+# FROM [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library/nginx:latest  ✅ (trusted)
 ```
 
 ### Label Schema Validation
@@ -591,9 +591,9 @@ Ensures Dockerfile LABELs conform to OCI image specification.
 
 ## References
 
-- [Hadolint GitHub Repository](https://github.com/hadolint/hadolint)
-- [CIS Docker Benchmark](https://www.cisecurity.org/benchmark/docker)
-- [Docker Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [Hadolint [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hadolint/hadolint)
+- [CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark](https://www.cisecurity.org/benchmark/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
+- [Docker Best Practices](https://docs.[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/develop/develop-images/dockerfile_best-practices/)
 - [ShellCheck Documentation](https://www.shellcheck.net/)
-- [OCI Image Specification](https://github.com/opencontainers/image-spec)
+- [OCI Image Specification](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/opencontainers/image-spec)
 

@@ -51,10 +51,10 @@ judgment," and judgment-heavy tasks have been removed from the list, not automat
 
 Toil reduction competes directly with feature work for the same engineers' time, and feature work
 almost always has a louder, more immediate advocate. Without an explicit, protected allocation —
-a percentage of sprint capacity, a standing rotation, whatever fits the team — toil reduction loses
+a percentage of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), a standing rotation, whatever fits the team — toil reduction loses
 every time it's not urgent, which is most of the time, right up until it is.
 
-- **Name a fixed share of capacity for toil reduction** and defend it in planning the same way
+- **Name a fixed share of [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) for toil reduction** and defend it in planning the same way
   you'd defend a security fix.
 - **Track toil-reduction work with the same visibility as features** — if it's invisible in
   planning, it's the first thing cut under deadline pressure.
@@ -91,7 +91,7 @@ root instead of automating your side of a request that shouldn't need a human on
 - **A golden path that lets requesters serve themselves** removes the toil entirely, not just the
   manual-execution part of it.
 
-See `internal-developer-platform` and `golden-paths` for building that self-service path once
+See `[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)` and `[golden-paths](../../../Product_and_Business/golden-paths/SKILL.md)` for building that self-service path once
 you've identified the recurring request.
 
 **Done when:** every recurring cross-team request has been evaluated for self-service, not just

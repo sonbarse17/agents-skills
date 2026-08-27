@@ -73,7 +73,7 @@ Master advanced prompt engineering techniques to maximize LLM performance, relia
 
 ## Quick Start
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field

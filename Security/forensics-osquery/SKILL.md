@@ -24,19 +24,19 @@ references:
   - https://osquery.readthedocs.io/
 ---
 
-# osquery Forensics & Incident Response
+# osquery Forensics & [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 ## Overview
 
-osquery transforms operating systems into queryable relational databases, enabling security analysts to investigate compromises using SQL rather than traditional CLI tools. This skill provides forensic investigation workflows, common detection queries, and incident response patterns for rapid evidence collection across Linux, macOS, and Windows endpoints.
+osquery transforms operating systems into queryable relational databases, enabling security analysts to investigate compromises using SQL rather than traditional CLI tools. This skill provides forensic investigation workflows, common detection queries, and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response patterns for rapid evidence collection across Linux, macOS, and Windows endpoints.
 
 **Core capabilities**:
 - SQL-based system interrogation for process, network, file, and user analysis
 - Cross-platform forensic artifact collection (Linux, macOS, Windows)
 - Live system analysis without deploying heavyweight forensic tools
 - Threat hunting queries mapped to MITRE ATT&CK techniques
-- Scheduled monitoring with osqueryd for continuous detection
-- Integration with SIEM and incident response platforms
+- Scheduled [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with osqueryd for continuous detection
+- Integration with SIEM and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response platforms
 
 ## Quick Start
 
@@ -77,7 +77,7 @@ osqueryi --line "SELECT name, used_by, status FROM kernel_modules WHERE name NOT
 
 ## Core Workflows
 
-### Workflow 1: Initial Incident Response Triage
+### Workflow 1: Initial [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Triage
 
 For rapid assessment of potentially compromised systems:
 
@@ -188,7 +188,7 @@ LEFT JOIN processes p ON lp.pid = p.pid
 WHERE lp.address NOT IN ('127.0.0.1', '::1')
 ORDER BY lp.port;
 
--- DNS lookups (requires events table or process monitoring)
+-- DNS lookups (requires events table or process [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
 SELECT name, domains, pid FROM dns_resolvers;
 ```
 
@@ -252,7 +252,7 @@ LEFT JOIN processes p2 ON p1.parent = p2.pid;
 SELECT pid, name, path, cmdline, uid, euid FROM processes WHERE uid = 0 OR euid = 0;
 ```
 
-### Pattern 2: User Activity Monitoring
+### Pattern 2: User Activity [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 Track user accounts and authentication:
 
@@ -289,13 +289,13 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 
 ## Security Considerations
 
-- **Sensitive Data Handling**: osquery can access sensitive system information (password hashes, private keys, process memory). Limit access to forensic analysts and incident responders. Export query results to encrypted storage. Sanitize logs before sharing with third parties.
+- **Sensitive Data Handling**: osquery can access sensitive system information (password hashes, private keys, process memory). Limit access to forensic analysts and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) responders. Export query results to encrypted storage. Sanitize logs before sharing with third parties.
 
-- **Access Control**: Requires root/administrator privileges on investigated systems. Use dedicated forensic user accounts with audit logging. Restrict osqueryd configuration files (osquery.conf) to prevent query tampering. Implement least-privilege access to query results.
+- **Access Control**: Requires root/administrator privileges on investigated systems. Use dedicated forensic user accounts with [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging. Restrict osqueryd configuration files (osquery.conf) to prevent query tampering. Implement least-privilege access to query results.
 
-- **Audit Logging**: Log all osquery executions for forensic chain-of-custody. Record analyst username, timestamp, queries executed, and systems queried. Maintain immutable audit logs for compliance and legal requirements. Use `osqueryd --audit` flag for detailed logging.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all osquery executions for forensic chain-of-custody. Record analyst username, timestamp, queries executed, and systems queried. Maintain immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for compliance and legal requirements. Use `osqueryd --[audit](../../AI_and_Agents/Operations/audit/SKILL.md)` flag for detailed logging.
 
-- **Compliance**: osquery supports NIST SP 800-53 AU (Audit and Accountability) controls and NIST Cybersecurity Framework detection capabilities. Enables evidence collection for GDPR data breach investigations (Article 33). Query results constitute forensic evidence - maintain integrity and chain-of-custody.
+- **Compliance**: osquery supports NIST SP 800-53 AU ([Audit](../../AI_and_Agents/Operations/audit/SKILL.md) and Accountability) controls and NIST Cybersecurity Framework detection capabilities. Enables evidence collection for GDPR data breach investigations (Article 33). Query results constitute forensic evidence - maintain integrity and chain-of-custody.
 
 - **Safe Defaults**: Use read-only queries during investigations to avoid system modification. Test complex queries in lab environments before production use. Monitor osqueryd resource consumption to prevent denial of service. Disable dangerous tables (e.g., `curl`, `yara`) in osqueryd configurations unless explicitly needed.
 
@@ -303,7 +303,7 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 
 ### Scripts
 
-- `scripts/osquery_triage.sh` - Automated triage collection script for rapid incident response
+- `scripts/osquery_triage.sh` - Automated triage collection script for rapid [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
 - `scripts/osquery_hunt.py` - Threat hunting query executor with MITRE ATT&CK mapping
 - `scripts/parse_osquery_json.py` - Parse and analyze osquery JSON output
 - `scripts/osquery_to_timeline.py` - Generate forensic timelines from osquery results
@@ -313,12 +313,12 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 - `../../../Global_References/table-guide.md` - Comprehensive osquery table reference for forensic investigations
 - `../../../Global_References/mitre-attack-queries.md` - Pre-built queries mapped to MITRE ATT&CK techniques
 - `../../../Global_References/platform-differences.md` - Platform-specific tables and query variations (Linux/macOS/Windows)
-- `../../../Global_References/osqueryd-deployment.md` - Deploy osqueryd for continuous monitoring and fleet management
+- `../../../Global_References/osqueryd-deployment.md` - Deploy osqueryd for continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and fleet management
 
 ### Assets
 
-- `assets/osquery.conf` - Production osqueryd configuration template for security monitoring
-- `assets/forensic-packs/` - Query packs for incident response scenarios
+- `assets/osquery.conf` - Production osqueryd configuration template for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- `assets/forensic-packs/` - Query packs for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response scenarios
   - `ir-triage.conf` - Initial triage queries
   - `persistence-hunt.conf` - Persistence mechanism detection
   - `lateral-movement.conf` - Lateral movement indicators
@@ -337,7 +337,7 @@ SELECT p1.name AS webserver, p1.pid, p1.cmdline,
 FROM processes p1
 JOIN processes p2 ON p1.pid = p2.parent
 WHERE p1.name IN ('httpd', 'nginx', 'apache2', 'w3wp.exe')
-  AND p2.name IN ('bash', 'sh', 'cmd.exe', 'powershell.exe', 'perl', 'python');
+  AND p2.name IN ('bash', 'sh', 'cmd.exe', 'powershell.exe', 'perl', '[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)');
 
 -- Files in web directories with recent modifications
 SELECT path, filename, mtime, md5, sha256
@@ -485,7 +485,7 @@ See [../../../Global_References/mitre-attack-queries.md](../../../Global_Referen
 
 ## References
 
-- [osquery GitHub Repository](https://github.com/osquery/osquery)
+- [osquery [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/osquery/osquery)
 - [osquery Schema Documentation](https://osquery.io/schema/)
 - [osquery Deployment Guide](https://osquery.readthedocs.io/en/stable/deployment/)
 - [osquery SQL Reference](https://osquery.readthedocs.io/en/stable/introduction/sql/)

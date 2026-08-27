@@ -13,7 +13,7 @@ metadata:
 
 ## Core Concepts
 
-Connectors store connection information for Elastic services and third-party systems. Alerting rules use connectors to
+Connectors store connection information for Elastic services and third-party systems. [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules use connectors to
 route **actions** (notifications) when rule conditions are met. Connectors are managed per **Kibana Space** and can be
 shared across all rules within that space.
 
@@ -22,10 +22,10 @@ shared across all rules within that space.
 | Category                    | Connector Types                                                                                                                                                      |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **LLM Providers**           | OpenAI, Google Gemini, Amazon Bedrock, Elastic Managed LLMs, AI Connector, MCP (Preview, 9.3+)                                                                       |
-| **Incident Management**     | PagerDuty, Opsgenie, ServiceNow (ITSM, SecOps, ITOM), Jira, Jira Service Management (9.2+), IBM Resilient, Swimlane, Torq, Tines, D3 Security, XSOAR (9.1+), TheHive |
+| **[Incident](../../Observability_and_SecOps/incident/SKILL.md) Management**     | PagerDuty, Opsgenie, ServiceNow (ITSM, SecOps, ITOM), Jira, Jira Service Management (9.2+), IBM Resilient, Swimlane, Torq, Tines, D3 Security, XSOAR (9.1+), TheHive |
 | **Endpoint Security**       | CrowdStrike, SentinelOne, Microsoft Defender for Endpoint                                                                                                            |
 | **Messaging**               | Slack (API / Webhook), Microsoft Teams, Email                                                                                                                        |
-| **Logging & Observability** | Server log, Index, Observability AI Assistant                                                                                                                        |
+| **Logging & [Observability](../../Observability_and_SecOps/observability/SKILL.md)** | Server log, Index, [Observability](../../Observability_and_SecOps/observability/SKILL.md) AI Assistant                                                                                                                        |
 | **Webhook**                 | Webhook, Webhook - Case Management, xMatters                                                                                                                         |
 | **Elastic**                 | Cases                                                                                                                                                                |
 
@@ -39,7 +39,7 @@ kbn-xsrf: true
 
 ## Required Privileges
 
-Access to connectors is granted based on your privileges to alerting-enabled features. You need `all` privileges for
+Access to connectors is granted based on your privileges to [alerting](../../Observability_and_SecOps/alerting/SKILL.md)-enabled features. You need `all` privileges for
 Actions and Connectors in Stack Management.
 
 ## API Reference
@@ -122,8 +122,8 @@ curl -X GET "https://my-kibana:5601/api/actions/connectors" \
 curl -X GET "https://my-kibana:5601/api/actions/connector_types" \
   -H "Authorization: ApiKey <your-api-key>"
 
-# Filter connector types by feature (e.g., only those supporting alerting)
-curl -X GET "https://my-kibana:5601/api/actions/connector_types?feature_id=alerting" \
+# Filter connector types by feature (e.g., only those supporting [alerting](../../Observability_and_SecOps/alerting/SKILL.md))
+curl -X GET "https://my-kibana:5601/api/actions/connector_types?feature_id=[alerting](../../Observability_and_SecOps/alerting/SKILL.md)" \
   -H "Authorization: ApiKey <your-api-key>"
 ```
 
@@ -239,7 +239,7 @@ Preconfigured connectors cannot be edited or deleted via the API or UI. They sho
 
 ## Networking Configuration
 
-Customize connector networking (proxies, TLS, certificates) via `kibana.yml`:
+[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) connector networking (proxies, TLS, certificates) via `kibana.yml`:
 
 ```yaml
 # Global proxy for all connectors
@@ -255,15 +255,15 @@ xpack.actions.customHostSettings:
 
 ## Connectors in Kibana Workflows
 
-Connectors serve as the integration layer across multiple Kibana workflows, not just alerting notifications:
+Connectors serve as the integration layer across multiple Kibana workflows, not just [alerting](../../Observability_and_SecOps/alerting/SKILL.md) notifications:
 
 | Workflow                  | Connector Types                       | Key Pattern                                                                    |
 | ------------------------- | ------------------------------------- | ------------------------------------------------------------------------------ |
 | **ITSM ticketing**        | ServiceNow, Jira, IBM Resilient       | Create ticket on active, close on `Recovered`                                  |
 | **On-call escalation**    | PagerDuty, Opsgenie                   | `trigger` on active, `resolve` on `Recovered`; always set a deduplication key  |
 | **Case management**       | Cases (system action)                 | UI-only; groups alerts into investigation Cases; can auto-push to ITSM         |
-| **Messaging / awareness** | Slack, Teams, Email                   | `onActionGroupChange` for incident channels; summaries for monitoring channels |
-| **Audit logging**         | Index                                 | `onActiveAlert` to write full alert time-series to Elasticsearch               |
+| **Messaging / awareness** | Slack, Teams, Email                   | `onActionGroupChange` for [incident](../../Observability_and_SecOps/incident/SKILL.md) channels; summaries for [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) channels |
+| **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging**         | Index                                 | `onActiveAlert` to write full alert time-series to Elasticsearch               |
 | **AI workflows**          | OpenAI, Bedrock, Gemini, AI Connector | Powers Elastic AI Assistant and Attack Discovery; system-managed               |
 | **Custom integrations**   | Webhook                               | Generic HTTP outbound with Mustache-templated JSON body                        |
 
@@ -296,7 +296,7 @@ For detailed patterns, examples, and decision guidance for each workflow, see [w
 
 8. **Monitor connector health.** Failed connector executions are logged in the event log index (`.kibana-event-log-*`).
    Connector failures report as successful to Task Manager but fail silently for alert delivery. Check the
-   [Event Log Index](https://www.elastic.co/docs/explore-analyze/alerting/alerts/event-log-index) for true failure
+   [Event Log Index](https://www.elastic.co/docs/explore-analyze/[alerting](../../Observability_and_SecOps/alerting/SKILL.md)/alerts/event-log-index) for true failure
    rates.
 
 9. **Always configure a recovery action alongside the active action.** Connectors for ITSM and on-call tools
@@ -304,14 +304,14 @@ For detailed patterns, examples, and decision guidance for each workflow, see [w
    remain open forever.
 
 10. **Use deduplication keys for on-call connectors.** Set `dedupKey` (PagerDuty) or `alias` (Opsgenie) to
-    `{{rule.id}}-{{alert.id}}` to ensure the resolve event closes exactly the right incident. Without this, a new
-    incident is created every time the alert re-fires.
+    `{{rule.id}}-{{alert.id}}` to ensure the resolve event closes exactly the right [incident](../../Observability_and_SecOps/incident/SKILL.md). Without this, a new
+    [incident](../../Observability_and_SecOps/incident/SKILL.md) is created every time the alert re-fires.
 
 11. **Prefer the Cases connector for investigation workflows.** When an alert requires investigation with comments,
     attachments, and assignees, use Cases rather than a direct Jira/ServiceNow connector. Cases gives you a native
     investigation UI and can still push to ITSM via the Case's external connection.
 
-12. **Use the Index connector for durable audit trails.** The Index connector writes to Elasticsearch, making alert
+12. **Use the Index connector for durable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.** The Index connector writes to Elasticsearch, making alert
     history searchable and dashboardable. Pair it with an ILM policy on the target index to control retention.
 
 13. **Restrict connector access via Action settings.** Use `xpack.actions.enabledActionTypes` to allowlist only the
@@ -392,7 +392,7 @@ For detailed patterns, examples, and decision guidance for each workflow, see [w
 `POST /api/actions/connector/{id}/_execute` with a minimal params object to confirm connectivity before adding to any
 rule.
 
-**Audit connector usage before deletion:** "Remove the old email connector." `GET /api/actions/connectors`, inspect
+**[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) connector usage before deletion:** "Remove the old email connector." `GET /api/actions/connectors`, inspect
 `referenced_by_count` — if non-zero, reassign the referencing rules first, then `DELETE /api/actions/connector/{id}`.
 
 ## Guidelines
@@ -410,7 +410,7 @@ rule.
 - [Kibana Connectors API Reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-connectors)
 - [Connectors Overview](https://www.elastic.co/docs/reference/kibana/connectors-kibana)
 - [Preconfigured Connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana/pre-configured-connectors)
-- [Alerting Settings (Action Config)](https://www.elastic.co/docs/reference/kibana/configuration-reference/alerting-settings#action-settings)
+- [Alerting Settings (Action Config)](https://www.elastic.co/docs/reference/kibana/configuration-reference/[alerting](../../Observability_and_SecOps/alerting/SKILL.md)-settings#action-settings)
 - [Terraform: elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector)
 - [Terraform: Managing Kibana Rule and Connector Resources](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/guides/elasticstack-kibana-rule)
 

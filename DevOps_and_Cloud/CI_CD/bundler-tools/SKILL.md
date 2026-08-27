@@ -37,7 +37,7 @@ User request includes any of: "bundler", "Vite", "Webpack", "Turbopack", "build 
 ### Input Context
 - Current bundler (if migrating)
 - Framework (React, Vue, Svelte, etc.)
-- Project size and monorepo structure
+- Project size and [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) structure
 - Performance targets (bundle size, build time)
 
 ### Output Artifact
@@ -91,7 +91,7 @@ Project type?
   |     |-- ESM only -> tsup / bunchee
   |     |-- UMD + ESM + CJS -> Rollup
   |     |-- Micro-frontend -> Module Federation (Webpack 5 / Vite plugin)
-  |-- Monorepo -->
+  |-- [Monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) -->
         |-- Batch: TurboRepo + Vite
         |-- Fine-grained: Nx + Vite/Webpack
 ```
@@ -156,7 +156,7 @@ Best for: Publishing npm packages with multiple formats (ESM, CJS, UMD).
 - Lib splitting: extract large deps to separate chunks.
 - Interaction-triggered loading: load code only when user clicks/hovers.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Route-level code splitting
 const UserDashboard = lazy(() => import('./pages/UserDashboard'))
 const AdminPanel = lazy(() => import('./pages/AdminPanel'))
@@ -188,7 +188,7 @@ function SidebarLink({ to, label }: { to: string; label: string }) {
 - Dead code elimination via minifier (terser, esbuild, swc).
 - Mark components as `/*#__PURE__*/` when they have no side effects.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD -- barrel file prevents tree shaking
 // components/index.ts
 export { Button } from './Button'
@@ -208,7 +208,7 @@ import { Button } from './components/Button'
 - Font subsetting: remove unused glyphs from icon fonts / variable fonts.
 - Brotli/Gzip compression generated at build time for static hosting.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Vite config with image optimization
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -244,7 +244,7 @@ export default defineConfig({
 - swc-loader as alternative (faster than babel, slower than esbuild).
 - Exclude large deps from bundling if served separately (CDN).
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Webpack 5 persistent caching
 module.exports = {
   cache: {
@@ -263,7 +263,7 @@ module.exports = {
 - Build-time constants: `__VERSION__`, `__COMMIT_HASH__`, `__BUILD_TIME__`.
 
 ### 7. Migrating Between Bundlers
-1. Audit all bundler-specific plugins and replace with framework-native alternatives
+1. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all bundler-specific plugins and replace with framework-native alternatives
 2. Migrate PostCSS config to framework-native CSS handling
 3. Replace `process.env.*` with `import.meta.env.*` (Vite) or inject via define
 4. Update import paths for asset resolution
@@ -279,7 +279,7 @@ npx webpack-bundle-analyzer dist/stats.json
 ```
 
 ### 9. Vite Specific Configuration
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -386,9 +386,9 @@ Some npm packages export as CommonJS (`module.exports`). These cannot be tree-sh
 All node_modules in a single vendor chunk means a change to any dependency invalidates the entire cache. Split vendors by category: `react-vendor`, `ui-lib`, `utility`.
 
 ### 6. Source Maps in Production
-Generating full source maps in production slows the build and exposes source code. Use `hidden-source-map` for error monitoring or disable entirely.
+Generating full source maps in production slows the build and exposes source code. Use `hidden-source-map` for error [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) or disable entirely.
 
-### 7. Missing TypeScript Path Aliases Resolution
+### 7. Missing [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Path Aliases Resolution
 If you use `@/components/Button` in code, the bundler must resolve it. Vite: `resolve.alias`. Webpack: `resolve.alias`.
 
 ### 8. CSS Ordering Issues with Code Splitting
@@ -465,7 +465,7 @@ jobs:
 ### Plugin Libraries
 - **Vite plugins:** `@vitejs/plugin-react`, `@vitejs/plugin-vue`, `vite-plugin-pwa`, `vite-plugin-svgr`
 - **Webpack plugins:** `html-webpack-plugin`, `mini-css-extract-plugin`, `copy-webpack-plugin`
-- **Rollup plugins:** `@rollup/plugin-commonjs`, `@rollup/plugin-node-resolve`, `@rollup/plugin-typescript`
+- **Rollup plugins:** `@rollup/plugin-commonjs`, `@rollup/plugin-node-resolve`, `@rollup/plugin-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)`
 
 ---
 
@@ -476,7 +476,7 @@ jobs:
 3. Set `"sideEffects": false` in library `package.json` for tree shaking.
 4. Avoid barrel `index.ts` files that re-export everything from a directory.
 5. Environment variables are build-time constants -- never reference runtime env in client code.
-6. Source maps only in development -- disable in production or use hidden source maps for error monitoring.
+6. Source maps only in development -- disable in production or use hidden source maps for error [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 7. Enable tree shaking at bundler level -- don't rely solely on minifier.
 8. Keep production entry chunk under 200KB (gzipped) for fast initial load.
 9. Separate vendor code from application code for cache optimization.
@@ -494,7 +494,7 @@ jobs:
 - `../../../Global_References/bundler-optimization.md` -- Bundler Optimization
 - `../../../Global_References/module-federation.md` -- Module Federation
 - `../../../Global_References/vite-config.md` -- Vite Configuration
-- `../../../Global_References/bundler-performance-tuning.md` -- Bundler Performance Tuning
+- `../../../Global_References/bundler-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md` -- Bundler Performance Tuning
 - `../../../Global_References/module-federation-code-splitting.md` -- Module Federation & Code Splitting
 
 ## Handoff

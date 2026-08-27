@@ -21,18 +21,18 @@ metadata:
 ## Purpose
 
 Cloud billing is emitted per node, per disk, per load balancer — never
-per pod, per namespace, or per team. On a shared Kubernetes cluster
+per pod, per namespace, or per team. On a shared [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster
 running dozens of workloads on the same node pool, that means the
 provider's cost dashboard tells you the cluster costs $40k/month but
 cannot tell you which of twenty teams' namespaces is responsible for how
 much of it. Kubecost closes that gap: it correlates node/PV/load-balancer
 pricing (from cloud provider billing APIs or custom pricing sheets) with
-actual Kubernetes resource **requests and usage** at the pod/container
+actual [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) resource **requests and usage** at the pod/container
 level, then rolls that up by namespace, label, deployment, or any other
-Kubernetes concept — turning an opaque node-level bill into per-team
-showback and chargeback numbers, and giving rightsizing and autoscaling
+[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) concept — turning an opaque node-level bill into per-team
+showback and chargeback numbers, and giving [rightsizing](../rightsizing/SKILL.md) and [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 decisions a cost dimension instead of just a utilization one. This skill
-is Kubernetes-specific allocation; for the broader cross-cloud FinOps
+is [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation; for the broader cross-cloud FinOps
 practices (tagging discipline, commitment discounts, anomaly response)
 that Kubecost data feeds into, see the general FinOps skill referenced
 below.
@@ -40,11 +40,11 @@ below.
 ## When to use
 
 - Standing up per-namespace/per-team cost visibility on a shared
-  Kubernetes cluster for the first time.
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster for the first time.
 - Building a showback (visibility) or chargeback (internal billing)
   report broken down by namespace, label, deployment, or annotation.
 - Investigating which workload, team, or environment is driving an
-  unexpected increase in Kubernetes-hosted cloud spend.
+  unexpected increase in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-hosted cloud spend.
 - Deciding whether to rightsize a workload's CPU/memory requests based
   on the gap between requested and actually-used resources (idle cost).
 - Feeding cost-per-node-shape data into cluster autoscaler/Karpenter
@@ -52,16 +52,16 @@ below.
   Reserved/Savings-Plan-covered node pools based on workload
   cost-sensitivity).
 - Auditing shared-cost allocation (control-plane overhead, cluster
-  add-ons, idle capacity) so it's distributed fairly rather than landing
+  add-ons, idle [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) so it's distributed fairly rather than landing
   entirely on whichever team's namespace happens to be biggest.
 
 ## Prerequisites & environment
 
-- A running Kubernetes cluster (EKS, AKS, GKE, or self-managed) with
+- A running [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster (EKS, AKS, GKE, or self-managed) with
   metrics-server and, ideally, the kube-prometheus-stack already
   installed — Kubecost ships its own bundled Prometheus but can instead
   federate from an existing one to avoid running two metrics stacks.
-  See [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
+  See [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   if that stack isn't in place yet.
 - Cloud billing API access so Kubecost can price nodes/storage/network
   accurately: an AWS IAM role with Cost and Usage Report / Cost Explorer
@@ -73,10 +73,10 @@ below.
   install the `cost-analyzer` Helm chart into a `kubecost` namespace.
 - A tagging/labeling convention already applied to namespaces/workloads
   (e.g. `team`, `cost-center`, `environment` labels) — Kubecost allocates
-  by whatever Kubernetes labels/annotations exist, so allocation quality
+  by whatever [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) labels/annotations exist, so allocation quality
   is only as good as label coverage. Reuse the same taxonomy as the
   cross-cloud FinOps tagging convention rather than inventing a
-  Kubernetes-only one.
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only one.
 - Kubecost Free tier covers single-cluster allocation and is sufficient
   for the guidance in this skill; multi-cluster aggregation and
   SSO/RBAC require Kubecost Enterprise — confirm licensing needs before
@@ -87,7 +87,7 @@ below.
 1. **Install Kubecost via Helm**, pointing it at cloud billing for
    accurate node pricing:
    ```bash
-   helm repo add kubecost https://kubecost.github.io/cost-analyzer/
+   helm repo add kubecost https://kubecost.[github](../../CI_CD/github/SKILL.md).io/cost-analyzer/
    helm upgrade --install kubecost kubecost/cost-analyzer \
      --namespace kubecost --create-namespace \
      --set kubecostToken="<KUBECOST_TOKEN>" \
@@ -103,7 +103,7 @@ below.
      athenaTable: "cur_report"
      masterPayerARN: "arn:aws:iam::<PAYER_ACCOUNT_ID>:role/<KUBECOST_ROLE>"
    prometheus:
-     fqdn: "http://kube-prom-stack-prometheus.monitoring:9090"  # federate existing Prometheus
+     fqdn: "http://kube-prom-stack-prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090"  # federate existing Prometheus
      enabled: false  # don't install a second Prometheus if one already exists
    ```
    Without a CUR/Cost Management/Billing-export connection, Kubecost
@@ -113,7 +113,7 @@ below.
 
 2. **Confirm allocation data is flowing** before building reports:
    ```bash
-   kubectl port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
    curl "http://localhost:9090/model/allocation?window=1d&aggregate=namespace"
    ```
    A response with non-zero `cpuCost`/`ramCost`/`totalCost` per namespace
@@ -138,18 +138,18 @@ below.
    ```bash
    curl "http://localhost:9090/model/allocation?window=7d&aggregate=namespace&idle=true&shareIdle=true&shareTenancyCosts=true"
    ```
-   `shareIdle=true` distributes unallocated (idle) node capacity
+   `shareIdle=true` distributes unallocated (idle) node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    proportionally across active namespaces instead of leaving it as an
    unattributed lump — decide with stakeholders whether idle cost should
    be shared proportionally (fair to teams who scaled down) or charged
    to a platform/shared-services cost center (clearer accountability for
-   who owns rightsizing the cluster's headroom).
+   who owns [rightsizing](../rightsizing/SKILL.md) the cluster's headroom).
 
 5. **Build a showback dashboard** (Kubecost's built-in UI, or export to
    Grafana via Kubecost's Prometheus metrics `kubecost_cluster_management_cost`,
    `container_cpu_allocation`, etc.) broken down by the same `team`/
    `cost-center` labels used in the cross-cloud FinOps showback view, so
-   Kubernetes cost isn't a separate silo from the rest of cloud spend.
+   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cost isn't a separate silo from the rest of cloud spend.
 
 6. **Set up chargeback only once label coverage is reliably high**
    (>95% of pods carry the `team`/`cost-center` label) — enable
@@ -157,7 +157,7 @@ below.
    against the team's own understanding of their footprint before
    treating the numbers as authoritative for internal billing.
 
-7. **Use request-vs-usage data to drive rightsizing**, not just cost
+7. **Use request-vs-usage data to drive [rightsizing](../rightsizing/SKILL.md)**, not just cost
    totals:
    ```bash
    curl "http://localhost:9090/model/allocation?window=7d&aggregate=namespace&filter=namespace:payments" \
@@ -165,18 +165,18 @@ below.
    ```
    A namespace with `cpuEfficiency`/`ramEfficiency` well below 50%
    (requests far exceeding actual usage) is paying for idle headroom —
-   feed that back to the owning team as a rightsizing recommendation
+   feed that back to the owning team as a [rightsizing](../rightsizing/SKILL.md) recommendation
    with the dollar amount attached, which lands better than a raw
    utilization percentage.
 
-8. **Feed cost signals into autoscaling/node-shape decisions.** Query
+8. **Feed cost signals into [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/node-shape decisions.** Query
    Kubecost's cluster-level `savings` recommendations
    (`/model/savings/requestSizingV2`) and cross-reference with node-pool
    composition: workloads that are cost-sensitive and interruption-
    tolerant are candidates for Spot-backed Karpenter `NodePool`s; steady,
    latency-sensitive workloads justify On-Demand or Reserved/Savings-
-   Plan-covered capacity. See
-   [karpenter-cluster-autoscaling](../karpenter-cluster-autoscaling/SKILL.md)
+   Plan-covered [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). See
+   [karpenter-cluster-autoscaling](../[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
    for how consolidation and node-shape selection actually happen.
 
 ## Best practices
@@ -194,8 +194,8 @@ below.
   undocumented default confuses teams when their showback number moves
   for reasons unrelated to anything they changed.
 - **Tie chargeback to the same tagging/labeling taxonomy used for
-  cross-cloud FinOps**, not a Kubernetes-only one, so a team's total
-  cost story (VMs + Kubernetes + managed services) is coherent in one
+  cross-cloud FinOps**, not a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only one, so a team's total
+  cost story (VMs + [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) + managed services) is coherent in one
   place.
 - **Report cost alongside efficiency (requested vs. used), not cost
   alone** — a namespace's bill going up because it's serving more
@@ -220,9 +220,9 @@ below.
 
 - **Symptom:** A namespace's showback cost is far higher than the team
   believes it should be, and they dispute the number.
-  **Fix:** Idle/shared cluster capacity is being allocated to that
+  **Fix:** Idle/shared cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is being allocated to that
   namespace in a way the team wasn't told about (e.g.
-  `shareIdle=true` spreading unused node capacity across all active
+  `shareIdle=true` spreading unused node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) across all active
   namespaces including theirs). Make the idle-allocation policy explicit
   and visible in the report itself, not just in the API parameters.
 
@@ -242,14 +242,14 @@ below.
   `prometheus.enabled: false` and point `prometheus.fqdn` at the
   existing kube-prometheus-stack instance.
 
-- **Symptom:** A rightsizing recommendation based on Kubecost's
+- **Symptom:** A [rightsizing](../rightsizing/SKILL.md) recommendation based on Kubecost's
   efficiency numbers is applied and the workload starts getting OOMKilled
   under peak load.
   **Fix:** Efficiency was computed from average usage over the query
   window, hiding periodic peaks (batch jobs, traffic spikes). Cross-check
   peak (not just average) usage — the same caution that applies to
-  cloud-level rightsizing applies here; see
-  [cloud-cost-finops-optimization](../../../cloud/skills/cloud-cost-finops-optimization/SKILL.md)
+  cloud-level [rightsizing](../rightsizing/SKILL.md) applies here; see
+  [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
   for the general principle.
 
 ## Worked example
@@ -265,7 +265,7 @@ and finance wants a monthly chargeback report.
 2. Confirm allocation data via the Allocation API and spot-check that
    `cpuCost + ramCost + pvCost` roughly reconciles with the actual AWS
    invoice for the node group over the same window.
-3. Run a label-coverage audit: 92% of pods carry a `team` label; the
+3. Run a label-coverage [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): 92% of pods carry a `team` label; the
    remaining 8% (mostly cluster add-ons and a couple of unlabeled jobs)
    are backfilled with labels before proceeding.
 4. Query `aggregate=label:team&shareIdle=true&shareTenancyCosts=true`
@@ -288,6 +288,6 @@ and finance wants a monthly chargeback report.
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-- [karpenter-cluster-autoscaling](../karpenter-cluster-autoscaling/SKILL.md)
-- [cloud-cost-finops-optimization](../../../cloud/skills/cloud-cost-finops-optimization/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [karpenter-cluster-autoscaling](../[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
+- [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)

@@ -38,7 +38,7 @@ vendor SDK is driving it.
 - An existing agent occasionally loops, stalls, or takes an unexpected
   destructive action, and you need to redesign its control flow.
 - Deciding whether a task needs one agent with many tools or several
-  narrower agents (see [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)).
+  narrower agents (see [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)).
 - Designing how an agent's memory persists across sessions (vs. what lives
   only in the current context window).
 - Code review of an agent's main loop before it is given write access to
@@ -86,7 +86,7 @@ vendor SDK is driving it.
    it's done. Fail closed (stop and surface an error) rather than fail open
    (silently keep going or silently give up and claim success).
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    MAX_ITERATIONS = 12
    TIMEOUT_SECONDS = 180
 
@@ -100,7 +100,7 @@ vendor SDK is driving it.
                return AgentResult(status="done", output=response.text)
            if response.stop_reason == "tool_use":
                for call in response.tool_calls:
-                   result = dispatch_tool(call, allowlist=tools)  # see agent-tool-use-patterns
+                   result = dispatch_tool(call, allowlist=tools)  # see [agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)
                    state.messages.append(tool_result_message(call, result))
        return AgentResult(status="max_iterations_exceeded", partial=state.transcript)
    ```
@@ -129,13 +129,13 @@ vendor SDK is driving it.
 7. **Instrument before you optimize.** Log, at minimum: the input to each
    LLM call, the tool calls it emitted, the tool results, and the final
    stop reason. Without this, pitfalls like loops and context bloat are
-   invisible until they cause an incident.
+   invisible until they cause an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 8. **Decide single-agent vs multi-agent last, not first.** Start with the
    simplest single agent with a well-scoped tool set; only split into
    multiple agents once you have concrete evidence of context overload,
    role confusion, or the need for parallel independent workstreams (see
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) for
+   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) for
    when that split is justified).
 
 ## Best practices
@@ -145,7 +145,7 @@ vendor SDK is driving it.
   authentication logic.
 - Prefer fewer, well-scoped tools over many overlapping ones; tool
   proliferation increases both hallucinated tool calls and prompt size (see
-  [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)).
+  [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)).
 - Keep the system prompt's description of "what this agent is for" narrow.
   A narrowly scoped agent is both easier to evaluate and less prone to
   scope creep mid-task.
@@ -156,7 +156,7 @@ vendor SDK is driving it.
   latency matters — a cheaper/faster model can often execute a
   well-specified plan step, reserving the strongest model for planning and
   ambiguous judgment calls (see
-  [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)).
+  [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
 - Version your system prompt and tool schemas together; a tool schema
   change without a matching prompt update is a common source of silent
   regressions.
@@ -226,8 +226,8 @@ transitions:
 Loop bound: max 6 state transitions per ticket, 60s timeout per LLM call.
 Every transition emits a `ticket.state_changed` event with ticket id, from
 state, to state, and the tool calls made in that state — this is what an
-observability dashboard and later
-[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
+[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) dashboard and later
+[agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 checks consume. The `send` state is the only place `send_reply` (an
 irreversible-write tool) is even present in the tool list passed to the
 model, so a prompt-injection attempt from ticket content cannot cause a
@@ -235,7 +235,7 @@ send from an earlier state — the tool literally isn't offered.
 
 ## Cross-references
 
-- [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)
-- [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)
-- [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
-- [mcp-server-development](../mcp-server-development/SKILL.md)
+- [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+- [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md)

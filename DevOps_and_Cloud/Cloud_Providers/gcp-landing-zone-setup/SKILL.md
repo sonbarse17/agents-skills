@@ -24,7 +24,7 @@ independently, but with no inherent hierarchy unless one is imposed through
 Resource Manager folders. Without a landing zone, organizations accumulate
 hundreds of ungoverned projects with inconsistent Organization Policies,
 no shared VPC, and IAM bindings granted directly at the project level with
-no audit trail of why. This skill defines a landing zone aligned to
+no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail of why. This skill defines a landing zone aligned to
 Google's **enterprise foundations blueprint**: a folder hierarchy that
 encodes environment and business-unit boundaries, Organization Policy
 constraints enforced top-down, Shared VPC for centralized networking, and
@@ -128,7 +128,7 @@ network-connected the moment they're created.
    `iam.disableServiceAccountKeyUpload` at the **Organization** node —
    long-lived service account keys are one of the most common GCP
    credential-leak vectors, and Workload Identity Federation (see
-   `cloud-iam-hardening`) removes the need for them almost entirely.
+   `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)`) removes the need for them almost entirely.
 
 4. **Vend projects through a project factory**, not manual `gcloud
    projects create`, so every project lands in the correct folder,
@@ -156,10 +156,10 @@ network-connected the moment they're created.
 
 6. **Enable an organization-wide log sink** to a centralized project
    (`fldr-common`) using an aggregated log sink at the Organization node,
-   so every project's Admin Activity and Data Access audit logs land in
+   so every project's Admin Activity and Data Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs land in
    one place regardless of which folder the project sits in:
    ```bash
-   gcloud logging sinks create org-audit-sink \
+   gcloud logging sinks create org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-sink \
      bigquery.googleapis.com/projects/prj-logging/datasets/audit_logs \
      --organization=<ORG_ID> --include-children \
      --log-filter='logName:"logs/cloudaudit.googleapis.com"'
@@ -175,7 +175,7 @@ network-connected the moment they're created.
 8. **Validate with a canary project**: vend one throwaway project through
    the factory, confirm Organization Policy constraints show as enforced
    (`gcloud resource-manager org-policies describe`), Shared VPC
-   attachment succeeded, and the aggregated log sink captured its audit
+   attachment succeeded, and the aggregated log sink captured its [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
    logs, then delete it.
 
 ## Best practices
@@ -185,7 +185,7 @@ network-connected the moment they're created.
   project-level bindings, so access review is one place per team.
 - Disable **service account key creation org-wide** and use Workload
   Identity Federation for external workloads and attached service
-  accounts for GCE/GKE/Cloud Run — see `cloud-iam-hardening` for the
+  accounts for GCE/GKE/Cloud Run — see `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)` for the
   detailed pattern.
 - Use **Shared VPC** as the default network model; only use VPC Peering
   or standalone VPCs when a team has a genuine regulatory or
@@ -264,6 +264,6 @@ before launching a new streaming analytics product.
 
 ## Cross-references
 
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
-- [multi-cloud-networking-patterns](../multi-cloud-networking-patterns/SKILL.md)
-- [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
+- [multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)/SKILL.md)
+- [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)

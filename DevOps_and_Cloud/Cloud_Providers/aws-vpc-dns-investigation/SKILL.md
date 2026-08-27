@@ -11,7 +11,7 @@ metadata:
 
 # Investigate VPC DNS Resolution
 
-Use the tools on the connected `aws-vpc-dns-diagnostics` MCP server.
+Use the tools on the connected `[aws-vpc](../aws-vpc/SKILL.md)-dns-diagnostics` MCP server.
 
 ## Step 1: Classify the request as Mode A or Mode B
 
@@ -50,7 +50,7 @@ account_id, region, instance_id, and the failing DNS name.
 2. `dns_probe_compare` — runs the allowlisted probe set inside the instance via
    SSM. Returns each resolver's answer and the resolver's own identity from
    `hostname.bind`. The VPC DHCP resolver is auto-added for comparison.
-3. `get_sop` — load the pattern runbook matching the observed signature
+3. `get_sop` — load the pattern [runbook](../../Observability_and_SecOps/runbook/SKILL.md) matching the observed signature
    (see trap-to-SOP mapping below).
 
 ### Interpretation rules
@@ -97,7 +97,7 @@ and type-specific fields). No instance required.
    associated Route 53 Profile, each construct tagged by source.
 2. `dns_simulate_change` — applies the proposed change symbolically and returns a
    per-name impact report (before/after, delta, traps, severity, volume).
-3. `get_sop` — load runbooks for any traps reported in the impact table
+3. `get_sop` — load [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md) for any traps reported in the impact table
    (see trap-to-SOP mapping below).
 
 ### Interpretation rules
@@ -165,7 +165,7 @@ Every response produced by this skill must include:
 
 ## Prerequisites
 
-Requires the aws-vpc-dns-diagnostics MCP server registered in the Agent Space
-with its tools allowlisted. The server is at `mcp/aws-vpc-dns-diagnostics-mcp/`.
+Requires the [aws-vpc](../aws-vpc/SKILL.md)-dns-diagnostics MCP server registered in the Agent Space
+with its tools allowlisted. The server is at `mcp/[aws-vpc](../aws-vpc/SKILL.md)-dns-diagnostics-mcp/`.
 If the server is not registered or SSM is unreachable, report that as the blocker
 rather than guessing at the resolution path.

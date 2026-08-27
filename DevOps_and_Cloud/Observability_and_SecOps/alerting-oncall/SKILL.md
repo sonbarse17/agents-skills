@@ -7,26 +7,26 @@ metadata:
   version: "1.0"
 ---
 
-# Alerting & On-Call
+# [Alerting](../alerting/SKILL.md) & On-Call
 
-Configure effective alerting and on-call management for production systems.
+Configure effective [alerting](../alerting/SKILL.md) and on-call management for production systems.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Setting up alerting rules and thresholds
+- Setting up [alerting](../alerting/SKILL.md) rules and thresholds
 - Configuring on-call rotations and schedules
 - Implementing alert routing and escalation
 - Reducing alert fatigue
-- Managing incident response workflows
+- Managing [incident](../incident/SKILL.md) response workflows
 
 ## Prerequisites
 
-- Monitoring system (Prometheus, Datadog, etc.)
+- [Monitoring](../monitoring/SKILL.md) system (Prometheus, [Datadog](../datadog/SKILL.md), etc.)
 - On-call platform (PagerDuty, Opsgenie, Grafana OnCall)
 - Communication channels (Slack, email)
 
-## Alerting Best Practices
+## [Alerting](../alerting/SKILL.md) Best Practices
 
 ### Alert Categories
 
@@ -41,7 +41,7 @@ critical:
 high:
   - Service degraded significantly
   - Error rate above SLO
-  - Capacity near limit
+  - [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) near limit
   response: Page during business hours, notify after hours
 
 medium:
@@ -52,7 +52,7 @@ medium:
 
 low:
   - Informational alerts
-  - Capacity planning triggers
+  - [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning triggers
   - Routine maintenance needed
   response: Email notification, weekly review
 ```
@@ -64,13 +64,13 @@ low:
 alerts:
   actionable:
     - Every alert should require human action
-    - Include runbook links
+    - Include [runbook](../runbook/SKILL.md) links
     - Clear remediation steps
 
   relevant:
     - Alert on symptoms, not causes
     - Focus on user impact
-    - Avoid alerting on expected behavior
+    - Avoid [alerting](../alerting/SKILL.md) on expected behavior
 
   timely:
     - Appropriate thresholds
@@ -83,7 +83,7 @@ alerts:
     - Clear ownership
 ```
 
-## Prometheus Alerting
+## Prometheus [Alerting](../alerting/SKILL.md)
 
 ### Alert Rules
 
@@ -101,7 +101,7 @@ groups:
         annotations:
           summary: "Service {{ $labels.instance }} is down"
           description: "{{ $labels.job }} on {{ $labels.instance }} has been down for more than 1 minute."
-          runbook_url: "https://wiki.example.com/runbooks/service-down"
+          runbook_url: "https://wiki.example.com/[runbooks](../runbooks/SKILL.md)/service-down"
 
       # Error rate alert
       - alert: HighErrorRate
@@ -188,7 +188,7 @@ receivers:
         text: '{{ .CommonAnnotations.description }}'
         actions:
           - type: button
-            text: 'Runbook'
+            text: '[Runbook](../runbook/SKILL.md)'
             url: '{{ .CommonAnnotations.runbook_url }}'
           - type: button
             text: 'Dashboard'
@@ -303,7 +303,7 @@ resource "pagerduty_schedule" "primary" {
 ### Integration Setup
 
 ```yaml
-# docker-compose.yml addition
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml addition
 services:
   oncall:
     image: grafana/oncall
@@ -360,7 +360,7 @@ escalation_chains:
 *Alert:* {{ .Annotations.summary }}
 *Severity:* {{ .Labels.severity }}
 *Description:* {{ .Annotations.description }}
-*Runbook:* {{ .Annotations.runbook_url }}
+*[Runbook](../runbook/SKILL.md):* {{ .Annotations.runbook_url }}
 {{ end }}
 {{ end }}
 ```
@@ -405,7 +405,7 @@ on_call_guidelines:
     - No-interrupt recovery day after shift
 ```
 
-### Runbook Template
+### [Runbook](../runbook/SKILL.md) Template
 
 ```markdown
 # Alert: High Error Rate
@@ -417,20 +417,20 @@ Error rate has exceeded the threshold of 5% for the service.
 Users may experience errors when accessing the application.
 
 ## Investigation Steps
-1. Check service logs: `kubectl logs -l app=myapp -n production`
-2. Review recent deployments: `kubectl rollout history deployment/myapp`
-3. Check database connectivity: `kubectl exec -it myapp -- nc -zv postgres 5432`
+1. Check service logs: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=myapp -n production`
+2. Review recent deployments: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout history deployment/myapp`
+3. Check database connectivity: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -it myapp -- nc -zv postgres 5432`
 4. Review error traces in APM dashboard
 
 ## Remediation
 ### If caused by recent deployment:
 ```bash
-kubectl rollout undo deployment/myapp -n production
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/myapp -n production
 ```
 
 ### If database related:
 ```bash
-kubectl delete pod -l app=postgres -n production
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) delete pod -l app=postgres -n production
 ```
 
 ## Escalation
@@ -483,16 +483,16 @@ fatigue_reduction:
 ## Best Practices
 
 - Define clear severity levels
-- Every alert needs a runbook
+- Every alert needs a [runbook](../runbook/SKILL.md)
 - Test on-call notifications regularly
 - Review and tune alerts weekly
 - Implement proper escalation paths
 - Use alert grouping and inhibition
 - Track alert metrics (MTTR, frequency)
-- Practice incident response regularly
+- Practice [incident](../incident/SKILL.md) response regularly
 
 ## Related Skills
 
-- [prometheus-grafana](../prometheus-grafana/) - Monitoring setup
-- [incident-response](../../../security/operations/incident-response/) - Incident handling
-- [runbook-creation](../../../compliance/continuity/runbook-creation/) - Runbook creation
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - [Monitoring](../monitoring/SKILL.md) setup
+- [incident-response](../../../security/operations/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)/) - [Incident](../incident/SKILL.md) handling
+- [runbook-creation](../../../compliance/continuity/[runbook-creation](../../../Software_Engineering_and_Other/Frontend/[runbook](../runbook/SKILL.md)-creation/SKILL.md)/) - [Runbook](../runbook/SKILL.md) creation

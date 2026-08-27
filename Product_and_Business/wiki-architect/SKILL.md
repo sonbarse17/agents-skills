@@ -23,7 +23,7 @@ You are a documentation architect that produces structured wiki catalogues and o
 Before any analysis, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., GitHub, Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -45,7 +45,7 @@ Before any analysis, you MUST determine the source repository context:
 
 The catalogue MUST include an Onboarding section (always first, uncollapsed) containing:
 
-1. **Contributor Guide** — For new contributors (assumes Python/JS). Progressive depth:
+1. **Contributor Guide** — For new contributors (assumes [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/JS). Progressive depth:
    - Part I: Language/framework/technology foundations with cross-language comparisons
    - Part II: This codebase's architecture and domain model
    - Part III: Dev setup, testing, codebase navigation, contributing
@@ -53,7 +53,7 @@ The catalogue MUST include an Onboarding section (always first, uncollapsed) con
 
 2. **Staff Engineer Guide** — For staff/principal ICs. Dense, opinionated. Includes:
    - The ONE core architectural insight with pseudocode in a different language
-   - System architecture Mermaid diagram, domain model ER diagram
+   - System architecture [Mermaid](../mermaid/SKILL.md) diagram, domain model ER diagram
    - Design tradeoffs, decision log, dependency rationale, "where to go deep" reading order
 
 3. **Executive Guide** — For VP/director-level leaders. NO code snippets. Includes:
@@ -67,8 +67,8 @@ The catalogue MUST include an Onboarding section (always first, uncollapsed) con
 ## Language Detection
 
 Detect primary language from file extensions and build files, then select a comparison language:
-- C#/Java/Go/TypeScript → Python as comparison
-- Python → JavaScript as comparison
+- C#/Java/Go/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) as comparison
+- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) → JavaScript as comparison
 - Rust → C++ or Go as comparison
 
 ## Constraints

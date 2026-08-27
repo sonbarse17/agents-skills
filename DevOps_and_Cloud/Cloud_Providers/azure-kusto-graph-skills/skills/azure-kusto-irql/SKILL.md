@@ -7,7 +7,7 @@ metadata:
   version: "1.2.1"
 ---
 
-# IRQL -- Incident Response Query Language
+# IRQL -- [Incident](../../../../Observability_and_SecOps/incident/SKILL.md) Response Query Language
 
 Compose IRQL function pipelines from selector, extractor, and enricher building blocks. IRQL wraps raw KQL security tables behind intent-revealing, composable functions so analysts (and LLMs) can express hunts without memorizing schemas, cluster locations, or join keys.
 
@@ -18,7 +18,7 @@ Use this skill when the user:
 - Says "use IRQL" or "write an IRQL query"
 - Requests a composable hunting pipeline using known IRQL selectors
 
-Do **not** activate for generic security queries (e.g. "find failed logins") unless the user explicitly asks for IRQL. Route those to `azure-kusto` instead.
+Do **not** activate for generic security queries (e.g. "find failed logins") unless the user explicitly asks for IRQL. Route those to `[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)` instead.
 
 **Not a natural-language-to-IRQL converter.** This skill composes IRQL function pipelines and may handle basic natural-language requests that map directly to known selectors and simple filters. For general NL-to-KQL or NL-to-IRQL conversion, use a dedicated query-generation skill (available separately).
 
@@ -32,7 +32,7 @@ Before generating a pipeline, verify IRQL is available on the target database:
 | project Name
 ```
 
-If no IRQL functions are found, inform the user that IRQL is not deployed on the target database and suggest using `azure-kusto` for raw KQL queries instead. IRQL functions are a prerequisite -- this skill does not deploy base IRQL selectors.
+If no IRQL functions are found, inform the user that IRQL is not deployed on the target database and suggest using `[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)` for raw KQL queries instead. IRQL functions are a prerequisite -- this skill does not deploy base IRQL selectors.
 
 ## What IRQL Is
 
@@ -134,7 +134,7 @@ Always pipe (`|`) between steps. Extractors and Enrichers use `| invoke Function
 
 ## Examples
 
-For additional prompts and worked examples, see [../../../../../Global_References/azure-kusto-irql_EXAMPLES.md](../../../../../Global_References/azure-kusto-irql_EXAMPLES.md).
+For additional prompts and worked examples, see [../../../../../Global_References/[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql_EXAMPLES.md](../../../../../Global_References/[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql_EXAMPLES.md).
 
 ### Brute-force detection
 ```kql
@@ -237,5 +237,5 @@ If the user asks to save or open in Kusto Explorer, follow the procedure in [../
 - Never use shell interpolation or here-strings — write files via `Set-Content`/`Add-Content`
 - Never encode queries into browser URLs
 - On macOS/Linux, save the `.kql` file and suggest the VS Code Kusto extension or ADX Web Explorer
-- For graph visualization from IRQL data, see `azure-kusto-graph` and `azure-kusto-irql-graph`
+- For graph visualization from IRQL data, see `[azure-kusto-graph](../../../[azure-kusto-graph](../[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)` and `[azure-kusto-irql-graph](../[azure-kusto-irql-graph](../../../[azure-kusto-irql](../../../[azure-kusto](../../../azure-skills/skills/[azure-kusto](../../../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)-graph/SKILL.md)/SKILL.md)`
 

@@ -73,7 +73,7 @@ samples.
 A profile taken against an empty local database, with no concurrent requests, measures a
 different program than the one running in production — index scans, lock contention, and cache
 misses only appear at realistic data volume and concurrency. Combine profiling with
-`load-testing` to get a profile that reflects the real hot path.
+`[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` to get a profile that reflects the real hot path.
 
 - **Use production-scale data**, not a seeded dev dataset — query plans change with cardinality.
 - **Profile under concurrent load**, not a single request — contention and queueing don't exist
@@ -95,7 +95,7 @@ what's now the widest frame instead.
   latency number can improve for the wrong reason.
 - **Expect a new hot spot to appear** — fixing the biggest bottleneck routinely promotes the
   second-biggest into view; that's progress, not failure.
-- **Hand the confirmed win to `performance-tuning`** to record the change and its measured delta
+- **Hand the confirmed win to `[performance-tuning](../performance-tuning/SKILL.md)`** to record the change and its measured delta
   against the baseline.
 
 **Done when:** a post-change profile confirms the previous hot frame shrank and identifies

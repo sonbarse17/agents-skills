@@ -17,7 +17,7 @@ Use this skill when:
 - Hardening new Windows Server deployments
 - Implementing CIS benchmarks or Microsoft security baselines
 - Preparing for compliance audits (SOC2, PCI-DSS, HIPAA)
-- Configuring security features after a security incident
+- Configuring security features after a security [incident](../incident/SKILL.md)
 - Setting up Windows Defender and advanced threat protection
 - Establishing Group Policy security standards for a domain
 
@@ -242,7 +242,7 @@ New-NetFirewallRule -DisplayName "Allow NTP" `
     -Action Allow
 
 # ============================================
-# Firewall Audit
+# Firewall [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 # ============================================
 
 # List all enabled firewall rules
@@ -257,11 +257,11 @@ Get-NetFirewallRule -Enabled True -Direction Inbound |
     Format-Table DisplayName, LocalPort, RemoteAddress, Profile
 ```
 
-## Audit Policy Configuration
+## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Policy Configuration
 
 ```powershell
 # ============================================
-# Advanced Audit Policy
+# Advanced [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Policy
 # ============================================
 
 # Account Logon
@@ -286,7 +286,7 @@ auditpol /set /subcategory:"Registry" /success:enable /failure:enable
 auditpol /set /subcategory:"SAM" /success:enable /failure:enable
 
 # Policy Change
-auditpol /set /subcategory:"Audit Policy Change" /success:enable /failure:enable
+auditpol /set /subcategory:"[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Policy Change" /success:enable /failure:enable
 auditpol /set /subcategory:"Authentication Policy Change" /success:enable
 auditpol /set /subcategory:"Authorization Policy Change" /success:enable
 
@@ -298,11 +298,11 @@ auditpol /set /subcategory:"Security State Change" /success:enable /failure:enab
 auditpol /set /subcategory:"Security System Extension" /success:enable /failure:enable
 auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable
 
-# Verify audit policy
+# Verify [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) policy
 auditpol /get /category:*
 
-# Export audit policy
-auditpol /backup /file:C:\SecurityAudit\audit-policy.csv
+# Export [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) policy
+auditpol /backup /file:C:\SecurityAudit\[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-policy.csv
 
 # ============================================
 # PowerShell Logging (Critical for forensics)
@@ -515,16 +515,16 @@ $ruleCollection = @"
 Set-Service -Name AppIDSvc -StartupType Automatic
 Start-Service AppIDSvc
 
-# Set to Audit mode first, then switch to Enforce after tuning
+# Set to [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode first, then switch to Enforce after tuning
 # Review logs: Event Viewer > Applications and Services Logs > Microsoft > Windows > AppLocker
 ```
 
-## Security Audit Script
+## Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Script
 
 ```powershell
-# windows-security-audit.ps1 - Comprehensive security audit
+# windows-security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).ps1 - Comprehensive security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
-Write-Host "=== Windows Security Audit Report ===" -ForegroundColor Cyan
+Write-Host "=== Windows Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Report ===" -ForegroundColor Cyan
 Write-Host "Date: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss UTC' -AsUTC)"
 Write-Host "Host: $env:COMPUTERNAME"
 Write-Host ""
@@ -568,11 +568,11 @@ $updateSearcher = $updateSession.CreateUpdateSearcher()
 $pendingUpdates = $updateSearcher.Search("IsInstalled=0")
 Write-Host "Pending updates: $($pendingUpdates.Updates.Count)"
 
-# Audit policy
-Write-Host "--- Audit Policy ---" -ForegroundColor Yellow
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) policy
+Write-Host "--- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Policy ---" -ForegroundColor Yellow
 auditpol /get /category:* | Select-String "Success|Failure|No Auditing"
 
-Write-Host "`n=== Audit Complete ===" -ForegroundColor Cyan
+Write-Host "`n=== [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Complete ===" -ForegroundColor Cyan
 ```
 
 ## Troubleshooting
@@ -581,11 +581,11 @@ Write-Host "`n=== Audit Complete ===" -ForegroundColor Cyan
 |---------|-------|----------|
 | GPO not applying | GPO not linked or filtered | Run `gpresult /r`; check OU linking and security filtering |
 | BitLocker fails to enable | TPM not present or enabled | Check BIOS/UEFI for TPM; run `manage-bde -status` |
-| AppLocker blocks legitimate apps | Rules too restrictive | Start in Audit mode; review AppLocker event logs; add exceptions |
+| AppLocker blocks legitimate apps | Rules too restrictive | Start in [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode; review AppLocker event logs; add exceptions |
 | Credential Guard breaks apps | Legacy auth protocols blocked | Identify apps using NTLM/CredSSP; migrate to Kerberos/modern auth |
 | SMBv1 removal breaks legacy devices | Old devices require SMBv1 | Isolate legacy devices; plan migration; document risk acceptance |
 | Windows Defender exclusions too broad | Performance tuning added wide paths | Review and narrow exclusions; document business justification |
-| Audit logs filling disk | Too many audit events | Increase log size; configure log forwarding to SIEM; tune audit categories |
+| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs filling disk | Too many [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events | Increase log size; configure log forwarding to SIEM; tune [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) categories |
 | Firewall rules not persisting | Rules created without -PolicyStore | Use `-PolicyStore PersistentStore`; verify with `Get-NetFirewallRule` |
 
 ## Best Practices
@@ -593,19 +593,19 @@ Write-Host "`n=== Audit Complete ===" -ForegroundColor Cyan
 - Apply Microsoft security baselines as a starting point
 - Disable SMBv1 on all systems (no exceptions without documented risk acceptance)
 - Enable Credential Guard on all compatible hardware
-- Configure AppLocker in audit mode first, then enforce after tuning
-- Enable all recommended audit subcategories and forward to SIEM
+- Configure AppLocker in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode first, then enforce after tuning
+- Enable all recommended [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) subcategories and forward to SIEM
 - Enable PowerShell script block and module logging on all servers
 - Implement LAPS for local administrator password management
 - Enable BitLocker on all drives with TPM and recovery key backup
 - Apply Attack Surface Reduction rules in Windows Defender
-- Perform monthly security audits with the audit script
+- Perform monthly security audits with the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) script
 - Keep Windows fully patched with automated update management
 - Disable unnecessary services and features to reduce attack surface
 - Use Windows Firewall with explicit allow rules per application
 
 ## Related Skills
 
-- [cis-benchmarks](../cis-benchmarks/) - Compliance scanning
-- [windows-server](../../../infrastructure/servers/windows-server/) - Server administration
-- [linux-hardening](../linux-hardening/) - Linux security hardening
+- [cis-benchmarks](../[cis-benchmarks](../cis-benchmarks/SKILL.md)/) - Compliance scanning
+- [windows-server](../../../infrastructure/servers/[windows-server](../../../Software_Engineering_and_Other/Miscellaneous/windows-server/SKILL.md)/) - Server administration
+- [linux-hardening](../[linux-hardening](../linux-hardening/SKILL.md)/) - Linux security hardening

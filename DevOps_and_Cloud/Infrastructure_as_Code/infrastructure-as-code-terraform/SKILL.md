@@ -30,7 +30,7 @@ itself.
 ## When to use
 
 - Provisioning new cloud infrastructure (VPCs, compute, managed databases,
-  Kubernetes clusters, IAM) that should be reproducible across
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters, IAM) that should be reproducible across
   environments.
 - Structuring a Terraform codebase into reusable modules instead of one
   large monolithic configuration.
@@ -184,11 +184,11 @@ itself.
 - Store `.tfvars` per environment (`dev.tfvars`, `prod.tfvars`) so the
   same module code is reused with different inputs — this is the
   foundation for a clean
-  [environment-promotion-strategy](../environment-promotion-strategy/SKILL.md).
+  [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md).
 - Run `terraform plan` in CI on every PR touching `.tf` files and post the
   plan output as a PR comment for human review before merge/apply — this
   is the IaC equivalent of a code review gate in
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 - Prefer many small, single-purpose state files over one giant state file
   — smaller blast radius, faster plans, and less contention on the state
   lock.
@@ -230,7 +230,7 @@ itself.
   **Fix:** Use separate state files/backends per environment (not just
   workspaces sharing one backend config) with distinct backend `key`
   values, and require `terraform workspace show`/an explicit
-  `-var-file=prod.tfvars` confirmation step in any destroy runbook.
+  `-var-file=prod.tfvars` confirmation step in any destroy [runbook](../../Observability_and_SecOps/runbook/SKILL.md).
 
 ## Worked example
 
@@ -274,7 +274,7 @@ module "app_logs" {
 }
 ```
 
-CI workflow step (GitHub Actions):
+CI workflow step ([GitHub](../../CI_CD/github/SKILL.md) Actions):
 ```yaml
 - name: Terraform Plan
   working-directory: environments/staging
@@ -282,12 +282,12 @@ CI workflow step (GitHub Actions):
     terraform init
     terraform plan -no-color -out=tfplan | tee plan_output.txt
 - name: Post plan to PR
-  uses: actions/github-script@v7
+  uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
   with:
     script: |
       const fs = require('fs');
       const plan = fs.readFileSync('environments/staging/plan_output.txt', 'utf8');
-      github.rest.issues.createComment({
+      [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
         ...context.repo, issue_number: context.issue.number,
         body: "```\n" + plan.slice(-60000) + "\n```"
       });
@@ -299,6 +299,6 @@ using the exact plan artifact that was reviewed.
 
 ## Cross-references
 
-- [gitops-workflow](../gitops-workflow/SKILL.md)
-- [environment-promotion-strategy](../environment-promotion-strategy/SKILL.md)
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)
+- [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
+- [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)

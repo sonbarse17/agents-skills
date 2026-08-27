@@ -37,7 +37,7 @@ GraphQL schema design with resolver patterns and DataLoader setup as formatted t
 ```graphql
 # Schema types, queries, mutations
 ```
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // DataLoader setup
 // Resolver patterns
 // Auth directive definitions
@@ -121,7 +121,7 @@ Each resolver is a function that returns data for a specific field. Resolvers ca
 ### DataLoader Batching
 Create one DataLoader per data source per request lifecycle. The batch function receives an array of keys and returns an array of values in the same order. Cache per request — never across requests. Use the `dataloader` library (JS/TS) or equivalent in other languages. Place DataLoader instantiation in the request context factory so it is available to all resolvers. Handle partial failures by mapping null for missing keys in the correct position.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // DataLoader setup — per request
 function createLoaders(db: Database) {
   return {
@@ -141,7 +141,7 @@ function createLoaders(db: Database) {
 DataLoader provides per-request caching automatically. For cross-request caching, use a distributed cache (Redis, Memcached) in the DataLoader batch function. Cache keys include the entity type and ID. Set appropriate TTLs based on data volatility. Invalidate cache entries when mutations modify data. Use cache tags for group invalidation.
 
 ### N+1 Prevention
-The N+1 problem occurs when a resolver fetches a list of N items and then makes N additional queries to fetch related data for each item. DataLoader prevents this by batching all requests for the same data type into a single query. Always use DataLoader for any field that resolves related data from a different data source (database, REST API, or another GraphQL service). Profile resolver performance with Apollo Tracing or OpenTelemetry to detect N+1 queries in production.
+The N+1 problem occurs when a resolver fetches a list of N items and then makes N additional queries to fetch related data for each item. DataLoader prevents this by batching all requests for the same data type into a single query. Always use DataLoader for any field that resolves related data from a different data source (database, REST API, or another GraphQL service). Profile resolver performance with Apollo Tracing or [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) to detect N+1 queries in production.
 
 ## Authorization
 
@@ -204,7 +204,7 @@ The client checks for the `error` field first. If present, handle the error. If 
 ## Resolver Implementation Patterns
 
 ### Query Resolver Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 const resolvers = {
   Query: {
     user: async (_, { id }, { dataLoaders, auth }) => {
@@ -219,7 +219,7 @@ const resolvers = {
 ```
 
 ### Mutation Resolver Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 const resolvers = {
   Mutation: {
     createUser: async (_, { input }, { dataLoaders, auth, services }) => {
@@ -232,7 +232,7 @@ const resolvers = {
 ```
 
 ### Subscription Resolver Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 const resolvers = {
   Subscription: {
     orderCreated: {
@@ -327,7 +327,7 @@ Batch multiple DataLoader loads into a single database query. When a resolver ne
 ### Query Complexity Budgeting
 Allocate complexity points per field based on data source access cost. Fields resolved from the same database call cost 1 point. Fields resolved from external API calls cost 5+ points. List fields cost `1 + childCost * expectedPageSize`. Set a per-query budget of 1000 points and reject queries that exceed it.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Apollo Server — query complexity plugin
 const complexityPlugin = {
   async requestDidStart() {
@@ -353,7 +353,7 @@ Use Apollo cache hints to set cache policies per type and field. `@cacheControl(
 ### Persisted Queries
 Register common queries by hash to reduce request size and prevent arbitrary query execution. The client sends a hash instead of the full query string. The server looks up the query by hash. Persisted queries are whitelisted through CI/CD and cannot contain arbitrary operations.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Persisted queries setup (Apollo)
 const persistedQueries = new Map([
   ['hash1', 'query GetUser($id: ID!) { user(id: $id) { name email } }'],
@@ -388,7 +388,7 @@ app.use('/graphql', (req, res, next) => {
 
 ### Resolver with DataLoader
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import DataLoader from 'dataloader';
 import { GraphQLResolveInfo } from 'graphql';
 
@@ -436,7 +436,7 @@ const mutationResolvers = {
 
 ### Complexity Analysis
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { createComplexityRule, simpleEstimator } from 'graphql-query-complexity';
 
 const complexityRule = createComplexityRule({
@@ -545,7 +545,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -559,7 +559,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -575,12 +575,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -589,7 +589,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -597,13 +597,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -612,8 +612,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

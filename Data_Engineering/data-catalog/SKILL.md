@@ -64,7 +64,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | Platform | Strengths | Weaknesses | Best For |
 |---|---|---|---|
 | **DataHub** | Column-level lineage, real-time push, GraphQL API | Complex deployment | ML-first orgs, real-time metadata |
-| **Amundsen** | Simple search, good Tableau integration | Limited lineage, Python-only | Search-first use cases |
+| **Amundsen** | Simple search, good Tableau integration | Limited lineage, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-only | Search-first use cases |
 | **OpenMetadata** | Ingestion framework, role-based access, UI | Newer ecosystem, smaller community | Organizations wanting all-in-one |
 | **Apache Atlas** | Hadoop-native, tag-based policies | Outdated UX, heavy | Existing Hadoop ecosystem |
 
@@ -98,7 +98,7 @@ source:
     role: DATAHUB_ROLE
     include_views: true
     include_tables: true
-    profiling:
+    [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md):
       enabled: true
       profile_table_level_only: false
     capture_column_lineage:
@@ -144,7 +144,7 @@ source:
       lineage_type: COLUMN
 ```
 
-Column-level lineage enables impact analysis: "which dashboards break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
+Column-level lineage enables impact analysis: "which [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
 
 ### Step 4: Business Glossary
 
@@ -184,7 +184,7 @@ Track: `dataset_queries`, `column_access_frequency`, `top_users`, `search_querie
 
 ### Step 8: DataHub API Integration
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datahub.ingestion.graph.client import DataHubGraph
 
 graph = DataHubGraph(
@@ -250,7 +250,7 @@ Which sources first?
 6. **Permission model not defined**: catalog must respect data access policies or risk exposing sensitive metadata.
 7. **Lineage depth too shallow**: only table-level lineage without column-level for critical datasets.
 8. **No enforcement of metadata requirements**: datasets in catalog without required fields degrade trust.
-9. **Ingestion pipeline not monitoring source changes**: schema changes in source break ingestion silently.
+9. **Ingestion pipeline not [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) source changes**: schema changes in source break ingestion silently.
 10. **Search not optimized**: poor search rankings make catalog useless. Tune based on user behavior.
 
 ## Best Practices
@@ -261,13 +261,13 @@ Which sources first?
 - Monitor ingestion pipeline health and alert on failures within 24 hours.
 - Link business glossary terms to technical columns for complete discoverability.
 - Use catalog as the access request gateway for all data assets.
-- Tier data assets: Critical (C-level reports), Important (team dashboards), Operational (internal tools).
+- Tier data assets: Critical (C-level reports), Important (team [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)), Operational (internal tools).
 - Purge metadata for deleted datasets within 30 days.
 - Catalog should support both push (real-time API) and pull (scheduled ingestion) metadata collection.
 - Implement metadata quality scoring to drive improvement.
 - Use catalog API for automated metadata operations in CI/CD.
 - Set up catalog access for all data consumers (analysts, engineers, scientists).
-- Publish catalog usage dashboards to demonstrate ROI.
+- Publish catalog usage [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) to demonstrate ROI.
 
 ## Compared With
 
@@ -291,7 +291,7 @@ Data catalog vs data quality tools: catalog is about discovery and governance. Q
 - Metadata ingestion: DataHub push API handles 1000+ events/second per instance.
 - Search latency: < 200ms for 10M+ indexed entities with Elasticsearch backend.
 - Lineage graph queries: < 1s for full lineage of highly-connected datasets.
-- Profiling: enable on critical tables only (expensive on large tables).
+- [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md): enable on critical tables only (expensive on large tables).
 - Ingestion pipeline: schedule during off-peak hours to minimize load on source systems.
 - Catalog storage: multiply number of datasets by 10KB for metadata storage estimate.
 - Batch ingestion: 10K-50K entities/hour per ingestion worker.
@@ -330,7 +330,7 @@ datahub_ingestion:
       warehouse: "transforming"
       include_views: true
       include_tables: true
-      profiling:
+      [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md):
         enabled: true
         profile_table_level_only: false
         profile_pattern:
@@ -405,7 +405,7 @@ metadata_model:
 
 #### Catalog API Usage
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # DataHub GraphQL queries for catalog integration
 import requests
 
@@ -456,10 +456,10 @@ Team size and metadata requirements?
 ├── Small team (< 10), need quick data discovery
 │   └── Amundsen (simple, search-focused)
 ├── Mid-size team, need lineage + governance
-│   ├── Python/Spark/Airflow stack → DataHub (best lineage support)
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Spark/Airflow stack → DataHub (best lineage support)
 │   └── dbt-native stack → OpenMetadata (dbt integration)
 ├── Large enterprise, compliance-driven
-│   └── DataHub or Atlan (strong governance, RBAC, audit)
+│   └── DataHub or Atlan (strong governance, RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 └── Hadoop/Hive-centric ecosystem
     └── Apache Atlas (native Hive/HBase/Spark integration)
 ```
@@ -515,7 +515,7 @@ Catalog Platform Selection
 ## Implementation Patterns
 
 ### Metadata Ingestion Pattern
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_catalog/ingestion.py
 from dataclasses import dataclass
 from datetime import datetime
@@ -597,11 +597,11 @@ index:
 ## Security Considerations
 
 - **PII classification**: Auto-tag columns with PII/PCI using regex patterns; restrict discovery by role.
-- **Audit trail**: Log all catalog searches, views, and ownership changes for compliance.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all catalog searches, views, and ownership changes for compliance.
 - **API security**: Require service tokens with least privilege; rotate tokens every 90 days.
 - **Data masking**: Preview queries run on sampled masked data; never expose raw sensitive values.
 - **RBAC integration**: Sync catalog roles from enterprise IdP (Okta, Azure AD) via SCIM.
 
 ## Handoff
-`data-data-platform` for platform infrastructure. `data-data-quality` for linking quality metadata to catalog. `data-data-observability` for freshness monitoring. `data-data-contracts` for contract metadata in catalog.
+`[data-data-platform](../data-platform/SKILL.md)` for platform infrastructure. `[data-data-quality](../data-quality/SKILL.md)` for linking quality metadata to catalog. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for freshness [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-contracts](../data-contracts/SKILL.md)` for contract metadata in catalog.
 

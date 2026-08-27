@@ -5,12 +5,12 @@ description: Align a fine-tuned model with preference data using DPO, ORPO, KTO,
 
 # Preference Optimization
 
-This skill assumes `finetuning-method-selection`
+This skill assumes `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 already routed here because the data shape is
 preference pairs or unpaired thumbs-up/down
 feedback, not demonstrations (that's
-`lora-qlora-recipes`) or a verifiable reward
-signal (that's `grpo-rlvr-training`). What
+`[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`) or a verifiable reward
+signal (that's `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)`). What
 follows is method selection among the DPO family,
 the evidence for how much that selection actually
 matters, the production training pattern, and how
@@ -22,7 +22,7 @@ feedback, usually from an SFT checkpoint.
 **Output format:** a validated method choice plus
 a config — the kwarg values in
 `../../../Global_References/method-configs.md`, not free-form
-advice — that `llm-finetuning-training-engineer`
+advice — that `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer`
 consumes directly.
 
 ## Method Selection
@@ -170,7 +170,7 @@ rejected = closest(sorted_by_reward, mu - 2 * sigma)
 For the mechanics of turning graded traces into
 these pairs — including rejection sampling and
 judge-scored delta selection — see
-`trace-to-training-data`.
+`[trace-to-training-data](../trace-to-training-data/SKILL.md)`.
 
 ## References
 
@@ -180,7 +180,7 @@ SimPO sweep grid — plus Unsloth wrappers and a
 catastrophic-forgetting note live in
 `../../../Global_References/method-configs.md`. Those configs use
 the same current-TRL API conventions established
-in `lora-qlora-recipes`'s
+in `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`'s
 `references/unsloth-trl-mapping.md`
 (`processing_class`, not `tokenizer=`).
 
@@ -192,11 +192,11 @@ is almost always to drop the LR toward the low end
 of the range in the Method Selection table above
 before reaching for any other remediation.
 
-Related skills: `finetuning-method-selection`
+Related skills: `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 routes here once preference pairs or unpaired
-feedback exist; `lora-qlora-recipes` produces the
+feedback exist; `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` produces the
 SFT checkpoint DPO/KTO/SimPO align (ORPO's
-fused path can skip it); `trace-to-training-data`
+fused path can skip it); `[trace-to-training-data](../trace-to-training-data/SKILL.md)`
 converts passing/failing trajectories into the
 pairs this skill's Pair Construction section
 consumes.

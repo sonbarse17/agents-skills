@@ -21,14 +21,14 @@ metadata:
 
 Every platform team eventually needs a service catalog, ownership map, and
 maturity scorecard — but building that on top of Backstage means owning a
-Node.js/TypeScript application, its plugin ecosystem, its upgrade cadence,
+Node.js/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) application, its plugin ecosystem, its upgrade cadence,
 and its frontend, indefinitely, with an engineering team that could
 otherwise be building golden paths instead of portal infrastructure. Port,
 Cortex, and OpsLevel solve the same problem as commercial, hosted products:
 you model entities and rules through their UI/API/config files instead of
 writing React plugins and Backstage backend modules. The operational
 decision this skill supports is not "which tool has more features" but
-"does our team have the in-house frontend/platform engineering capacity to
+"does our team have the in-house frontend/platform engineering [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) to
 justify owning a framework, or is buying 12-18 months of catalog/scorecard
 value faster and cheaper than building it" — and, once bought, how to model
 the catalog and scorecards correctly in whichever product is chosen.
@@ -41,7 +41,7 @@ the catalog and scorecards correctly in whichever product is chosen.
 - Someone asks specifically "Port vs Cortex vs OpsLevel" or "what's the
   difference between a Cortex scorecard and a Backstage plugin."
 - A team already running Backstage is hitting the ceiling of in-house
-  frontend capacity and is considering migrating catalog/scorecard
+  frontend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) and is considering migrating catalog/scorecard
   functionality to a SaaS product.
 - Modeling a new entity type, relation, or self-service provisioning action
   in Port; a `cortex.yaml` descriptor or Scorecard rule in Cortex; or a
@@ -57,7 +57,7 @@ the catalog and scorecards correctly in whichever product is chosen.
   OpsLevel (workspace admin access, an API token for `opslevel-cli` or the
   Terraform provider).
 - For Cortex: the `cortex.yaml` descriptor lives in each service's repo and
-  is registered via the Cortex GitHub/GitLab integration or a CI step
+  is registered via the Cortex [GitHub](../../CI_CD/github/SKILL.md)/GitLab integration or a CI step
   calling the Cortex CLI (`cortex catalog apply`, or later CLI names as
   the CLI is renamed) or the ingestion API.
 - For OpsLevel: `opslevel-cli` (or the `opslevel` Terraform provider,
@@ -65,18 +65,18 @@ the catalog and scorecards correctly in whichever product is chosen.
   (`OPSLEVEL_API_TOKEN`) scoped to catalog and rubric management.
 - For Port: an org-level API client (`PORT_CLIENT_ID` /
   `PORT_CLIENT_SECRET`) with permission to create Blueprints and
-  Self-service Actions; a webhook endpoint, GitHub Actions workflow, or
+  Self-service Actions; a webhook endpoint, [GitHub](../../CI_CD/github/SKILL.md) Actions workflow, or
   Kafka topic to back each self-service action's execution.
 - Existing source-of-truth data (a repo list, an ownership spreadsheet, a
   CMDB export) to seed the initial catalog import — none of these tools
-  discover services from nothing without at least a GitHub/GitLab org
+  discover services from nothing without at least a [GitHub](../../CI_CD/github/SKILL.md)/GitLab org
   integration or a bulk import file.
 
 ## Step-by-step guidance
 
 1. **Frame the decision before touching any tool.** Answer three questions
    first: (a) does the org have spare frontend/platform engineering
-   capacity to build and *maintain* a Backstage instance for years, not
+   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) to build and *maintain* a Backstage instance for years, not
    just stand one up once; (b) how much of what's needed is genuinely
    bespoke logic (a custom plugin calling an internal system) versus
    generic catalog/scorecard/self-service functionality all three vendors
@@ -96,7 +96,7 @@ the catalog and scorecards correctly in whichever product is chosen.
      "icon": "Microservice",
      "schema": {
        "properties": {
-         "language": { "type": "string", "enum": ["go", "typescript", "python"] },
+         "language": { "type": "string", "enum": ["go", "[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)", "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"] },
          "tier": { "type": "string", "enum": ["tier-1", "tier-2", "tier-3"] },
          "repo_url": { "type": "string", "format": "url" }
        },
@@ -117,7 +117,7 @@ the catalog and scorecards correctly in whichever product is chosen.
    existing repo/ownership data.
 
 3. **Add a Port self-service action for a provisioning workflow**, backed
-   by a GitHub Actions workflow dispatch:
+   by a [GitHub](../../CI_CD/github/SKILL.md) Actions workflow dispatch:
    ```json
    {
      "identifier": "scaffold_new_service",
@@ -128,13 +128,13 @@ the catalog and scorecards correctly in whichever product is chosen.
        "userInputs": {
          "properties": {
            "service_name": { "type": "string" },
-           "language": { "type": "string", "enum": ["go", "typescript"] }
+           "language": { "type": "string", "enum": ["go", "[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)"] }
          },
          "required": ["service_name", "language"]
        }
      },
      "invocationMethod": {
-       "type": "GITHUB",
+       "type": "[GITHUB](../../CI_CD/github/SKILL.md)",
        "org": "<GITHUB_ORG>",
        "repo": "platform-scaffolder",
        "workflow": "scaffold.yml",
@@ -159,7 +159,7 @@ the catalog and scorecards correctly in whichever product is chosen.
        - type: group
          name: checkout-team
      x-cortex-git:
-       github:
+       [github](../../CI_CD/github/SKILL.md):
          repository: org/checkout-api
      x-cortex-domain-parents:
        - tag: checkout-domain
@@ -178,8 +178,8 @@ the catalog and scorecards correctly in whichever product is chosen.
        expression: "entity.hasPagerDutyOncall()"
        level: Bronze
        weight: 1
-     - title: Has a documented runbook
-       expression: "entity.hasDocument('runbook')"
+     - title: Has a documented [runbook](../runbook/SKILL.md)
+       expression: "entity.hasDocument('[runbook](../runbook/SKILL.md)')"
        level: Silver
        weight: 2
      - title: p99 latency SLO defined and tracked
@@ -189,7 +189,7 @@ the catalog and scorecards correctly in whichever product is chosen.
    ```
    Services must pass all rules at a level (and below) to be badged at
    that level; Cortex evaluates this continuously from ingested metadata,
-   not as a one-time manual audit.
+   not as a one-time manual [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 6. **Populate the OpsLevel catalog via `opslevel.yml` or Terraform**, not
    manual UI entry, so the catalog is diffable and PR-reviewable like the
@@ -212,12 +212,12 @@ the catalog and scorecards correctly in whichever product is chosen.
 7. **Define OpsLevel maturity via a Rubric of Checks**, OpsLevel's
    analogue to a Cortex Scorecard:
    ```hcl
-   resource "opslevel_rubric_check_has_documentation" "runbook" {
-     name     = "Has a runbook"
+   resource "opslevel_rubric_check_has_documentation" "[runbook](../runbook/SKILL.md)" {
+     name     = "Has a [runbook](../runbook/SKILL.md)"
      enabled  = true
      category = opslevel_rubric_category.production_readiness.id
      level    = opslevel_level.silver.id
-     document_type    = "runbook"
+     document_type    = "[runbook](../runbook/SKILL.md)"
      document_subtype = "markdown"
    }
    ```
@@ -293,10 +293,10 @@ the catalog and scorecards correctly in whichever product is chosen.
   (e.g. requiring SLOs before any service has them) or never re-baselined;
   set the entry tier to what's realistically true today, and raise the bar
   incrementally as adoption of the next criterion actually happens — see
-  [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md).
+  [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 - **Symptom:** Two teams register the same service twice — once via a
-  Cortex GitHub integration auto-discovery and once via a manually
+  Cortex [GitHub](../../CI_CD/github/SKILL.md) integration auto-discovery and once via a manually
   committed `cortex.yaml` with a different `x-cortex-tag` — producing
   duplicate catalog entries.
   **Fix:** Pick one registration mechanism per entity type org-wide
@@ -304,25 +304,25 @@ the catalog and scorecards correctly in whichever product is chosen.
   as the platform team's convention, the same discipline required for
   Backstage `catalog-info.yaml` discovery.
 
-- **Symptom:** A Port self-service action's GitHub Actions workflow fails
+- **Symptom:** A Port self-service action's [GitHub](../../CI_CD/github/SKILL.md) Actions workflow fails
   silently from the developer's point of view — Port shows "success"
   because the workflow was *triggered*, not because it *completed*.
   **Fix:** Set `reportWorkflowStatus: true` (Port) or the equivalent
   status-callback option, and design the backing workflow to post an
   explicit failure state back to the tool rather than only relying on
-  GitHub's own run status, which the catalog tool doesn't poll by default
+  [GitHub](../../CI_CD/github/SKILL.md)'s own run status, which the catalog tool doesn't poll by default
   in every configuration.
 
 ## Worked example
 
 **Scenario:** A 40-engineer platform team at a mid-size SaaS company is
-deciding how to stand up a service catalog for 120 microservices. They have
+deciding how to stand up a service catalog for 120 [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md). They have
 one platform engineer with light frontend experience and no dedicated
 frontend team. They need: an ownership map, a production-readiness
 scorecard, and a self-service "scaffold new service" action — all live
 within one quarter.
 
-**Decision:** No in-house frontend capacity to own a Backstage instance for
+**Decision:** No in-house frontend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) to own a Backstage instance for
 years (criterion a fails) and all three needs are generic catalog/
 scorecard/self-service functionality (criterion b confirms buy). They pilot
 Cortex for 3 weeks against 10 pilot services.
@@ -337,7 +337,7 @@ info:
     - type: group
       name: checkout-team
   x-cortex-git:
-    github:
+    [github](../../CI_CD/github/SKILL.md):
       repository: org/checkout-api
   x-cortex-custom-metadata:
     language: go
@@ -348,7 +348,7 @@ Scorecard rule added for "Production Readiness," Bronze level requiring an
 on-call rotation and a `cortex.yaml` file present at all (so services with
 no descriptor at all are visibly Tier-0/unscored rather than silently
 absent). After the pilot, all 10 services reach Bronze within a week
-because the bar was set to what already existed; Silver (runbook required)
+because the bar was set to what already existed; Silver ([runbook](../runbook/SKILL.md) required)
 is added in month two once every pilot team has one. The self-service
 scaffold need is deferred to a simple internally-hosted `cookiecutter`
 template invoked by CI for now, since Cortex's action model at evaluation
@@ -359,6 +359,6 @@ catalog tool" in the abstract.
 
 ## Cross-references
 
-- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md) — the scorecard/rubric design principles (what to measure, how to tier) that apply regardless of which of these three tools' scorecard feature implements them.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — how these tools' self-service actions/scaffolding compare to and can wrap Backstage Software Templates or a standalone scaffolding CLI.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — the adoption and change-management implications of the buy-vs-build decision covered in step 1 here.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — the scorecard/rubric design principles (what to measure, how to tier) that apply regardless of which of these three tools' scorecard feature implements them.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — how these tools' self-service actions/scaffolding compare to and can wrap Backstage Software Templates or a standalone scaffolding CLI.
+- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — the adoption and [change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md) implications of the buy-vs-build decision covered in step 1 here.

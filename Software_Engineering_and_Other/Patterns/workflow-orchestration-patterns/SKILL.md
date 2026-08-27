@@ -66,7 +66,7 @@ Detailed pattern documentation lives in `../../../Global_References/workflow-orc
 
 ### Operational Considerations
 
-**Monitoring**:
+**[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**:
 
 - Workflow execution duration
 - Activity failure rates
@@ -85,7 +85,7 @@ Detailed pattern documentation lives in `../../../Global_References/workflow-orc
 **Official Documentation**:
 
 - Temporal Core Concepts: docs.temporal.io/workflows
-- Workflow Patterns: docs.temporal.io/evaluate/use-cases-design-patterns
+- Workflow Patterns: docs.temporal.io/evaluate/use-cases-[design-patterns](../design-patterns/SKILL.md)
 - Best Practices: docs.temporal.io/develop/best-practices
 - Saga Pattern: temporal.io/blog/saga-pattern-made-easy
 

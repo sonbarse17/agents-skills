@@ -21,7 +21,7 @@ Catalog and guide the selection of blockchain design patterns covering token sta
 ## Agent Protocol
 
 ### Trigger
-"blockchain pattern", "token standard", "ERC-20", "ERC-721", "ERC-1155", "ERC-4626", "ERC-4337", "ERC-2612", "ERC-3525", "ERC-3643", "ERC-4907", "ERC-5192", "permit", "upgradeable contract", "proxy pattern", "UUPS", "oracle pattern", "bridge pattern", "layer 2", "state channel", "sidechain", "MEV", "cross-chain", "blockchain design pattern", "smart contract pattern", "vault pattern", "yield-bearing vault", "semi-fungible", "soulbound", "rollup", "validium", "optimistic rollup", "zk-rollup", "IBC", "LayerZero", "light client", "AMM", "constant product", "lending pool", "compound fork", "aave fork", "flash loan", "governance token", "veToken", "vote escrow", "factory pattern", "minimal proxy", "EIP-1167", "EIP-1967", "EIP-1822", "EIP-2535", "diamond pattern", "multi-facet", "federated sidechain", "ZK-bridge", "optimistic bridge", "PBS", "MEV-Boost", "ePBS", "ERC-5218", "NFT rental", "soulbound token", "account abstraction", "ERC-6551", "TBA", "token bound account", "ERC-6909"
+"blockchain pattern", "token standard", "ERC-20", "ERC-721", "ERC-1155", "ERC-4626", "ERC-4337", "ERC-2612", "ERC-3525", "ERC-3643", "ERC-4907", "ERC-5192", "permit", "upgradeable contract", "proxy pattern", "UUPS", "oracle pattern", "bridge pattern", "layer 2", "state channel", "sidechain", "MEV", "cross-chain", "blockchain design pattern", "smart contract pattern", "[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) pattern", "yield-bearing [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)", "semi-fungible", "soulbound", "rollup", "validium", "optimistic rollup", "zk-rollup", "IBC", "LayerZero", "light client", "AMM", "constant product", "lending pool", "compound fork", "aave fork", "flash loan", "governance token", "veToken", "vote escrow", "factory pattern", "minimal proxy", "EIP-1167", "EIP-1967", "EIP-1822", "EIP-2535", "diamond pattern", "multi-facet", "federated sidechain", "ZK-bridge", "optimistic bridge", "PBS", "MEV-Boost", "ePBS", "ERC-5218", "NFT rental", "soulbound token", "account abstraction", "ERC-6551", "TBA", "token bound account", "ERC-6909"
 
 ### Input Context
 - Requirement type (token/upgrade/oracle/bridge/scaling)
@@ -78,7 +78,7 @@ Pattern recommendation with:
 ### Phase 4: Integration and Testing
 13. Test pattern with all standard interfaces (ERC-165 support)
 14. Fork-test against mainnet state (simulate real-world interactions)
-15. Audit pattern interactions (composability risks, circular dependencies)
+15. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pattern interactions (composability risks, circular dependencies)
 16. Deploy with proper initialization and ownership transfer
 
 ## Architecture / Decision Trees
@@ -101,7 +101,7 @@ Pattern recommendation with:
 Decide: Token Standard
 ├── Fungible token?
 │   ├── Standard → ERC-20 + ERC-2612 (permit)
-│   ├── Yield-bearing vault → ERC-4626 (share-based accounting)
+│   ├── Yield-bearing [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) → ERC-4626 (share-based accounting)
 │   ├── Minimal gas (no permit) → ERC-20 (Solady)
 │   └── Semi-fungible → ERC-3525 (financial NFTs: invoices, bonds)
 ├── Non-fungible token?
@@ -202,7 +202,7 @@ Decide: Bridge Architecture
 7. **Reentrancy in cross-chain callbacks**: Cross-chain message execution reenters the calling contract. Use reentrancy guards on all message handlers.
 8. **Beacon pattern update delay**: Beacon proxy updates affect ALL implementation contracts atomically—coordinate upgrades carefully.
 9. **EIP-1967 storage slot collision**: Using wrong storage slot for proxy admin or implementation UUID breaks proxy detection tools.
-10. **MEV extraction in AMM patterns**: Unprotected AMM functions enable sandwich attacks. Implement slippage protection and commit-reveal.
+10. **MEV extraction in AMM patterns**: Unprotected AMM functions enable sandwich attacks. Implement slippage protection and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal.
 11. **ERC-4626 inflation attack**: Early depositors can manipulate share price, stealing from later depositors. Use virtual shares + assets as defense.
 12. **ERC-2612 permit replay**: Without nonce or deadline checking, valid permits can be replayed. Always include nonce and validate deadline.
 13. **Cross-chain message timeout**: Messages stuck in bridge without timeout handling lock user funds forever. Implement cancelation with timeout.
@@ -244,7 +244,7 @@ Decide: Bridge Architecture
 
 ### MEV-Aware Design
 - Include slippage tolerance in all AMM interactions
-- Use commit-reveal schemes for order submission
+- Use [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal schemes for order submission
 - Implement private mempool integration (Flashbots Protect)
 - Batch auctions for large trades (CowSwap model)
 - Oracle extraction protection: use TWAP not spot price for liquidations
@@ -255,7 +255,7 @@ Decide: Bridge Architecture
 | Standard | Category | Key Feature |
 |---|---|---|
 | ERC-2612 | Fungible | Gasless approve via off-chain signature (permit) |
-| ERC-4626 | Vault | Standardized yield-bearing share accounting |
+| ERC-4626 | [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Standardized yield-bearing share accounting |
 | ERC-3525 | Semi-fungible | Financial NFTs with slot/value model |
 | ERC-3643 | Security | Permissioned transfer, compliance wrapper |
 | ERC-4907 | NFT | Rental roles (user + expires) |
@@ -313,7 +313,7 @@ Decide: Bridge Architecture
 - Run daily invariant checks (supply = borrow + reserves)
 - Gas optimization review every quarter (reduce costs for users)
 
-### MEV Monitoring
+### MEV [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Detect sandwich attacks on AMM pools (frontrun + backrun same tx)
 - Track validator proposer boost usage for block reorgs
 - Monitor private mempool (Flashbots) usage and censored transactions
@@ -391,7 +391,7 @@ contract MyContractV2 is MyContractV1 {
 }
 ```
 
-### ERC-4626 Yield-Bearing Vault (Solidity)
+### ERC-4626 Yield-Bearing [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (Solidity)
 ```solidity
 contract YieldVault is ERC4626, ERC20Permit {
     using SafeERC20 for IERC20;
@@ -576,7 +576,7 @@ contract WalletFactory {
 | Transparent Proxy | Function selector collision | Admin storage at `0xb53127684a...` (EIP-1967) |
 | Beacon Proxy | Beacon implementation change mid-transaction | Atomic updates with reentrancy guard |
 | Diamond (EIP-2535) | Storage collision across facets | Diamond storage with unique namespace |
-| ERC-4626 Vault | Inflation attack | Virtual shares + assets (OpenZeppelin fix) |
+| ERC-4626 [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Inflation attack | Virtual shares + assets (OpenZeppelin fix) |
 | AMM Constant Product | Sandwich attack | Slippage tolerance + TWAP oracle |
 | AMM Concentrated Liquidity | Range manipulation | Tick-based pricing, immutable tick boundaries |
 | Bridge (Canonical) | Reorg finality gap | Challenge window (7d Optimistic / 30min ZK) |
@@ -605,7 +605,7 @@ contract WalletFactory {
 - ../../../Global_References/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
 - ../../../Global_References/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
 - ../../../Global_References/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
-- ../../../Global_References/erc-4626-vault.md — ERC-4626 Yield-Bearing Vault Standard
+- ../../../Global_References/erc-4626-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).md — ERC-4626 Yield-Bearing [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Standard
 - ../../../Global_References/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
 - ../../../Global_References/mev-and-order-flow.md — MEV & Order Flow Patterns
 - ../../../Global_References/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns
@@ -613,7 +613,7 @@ contract WalletFactory {
 - ../../../Global_References/upgradeable-contracts.md — Upgradeable Contract Patterns
 
 ## Handoff
-blockchain-patterns → blockchain-application (for pattern implementation in code)
-blockchain-patterns → blockchain-security (for pattern-specific security analysis)
-blockchain-patterns → blockchain-core (for scaling protocol integration)
+blockchain-patterns → [blockchain-application](../blockchain-application/SKILL.md) (for pattern implementation in code)
+blockchain-patterns → [blockchain-security](../blockchain-security/SKILL.md) (for pattern-specific security analysis)
+blockchain-patterns → [blockchain-core](../blockchain-core/SKILL.md) (for scaling protocol integration)
 

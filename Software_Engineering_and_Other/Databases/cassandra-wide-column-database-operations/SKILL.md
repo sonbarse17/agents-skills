@@ -49,7 +49,7 @@ determine whether a Cassandra cluster stays healthy as it scales.
   TTLs.
 - Adding, removing, or replacing a node in the ring, or diagnosing an
   uneven token/data distribution across nodes.
-- Deciding on and validating a replication factor and rack/datacenter
+- Deciding on and validating a replication factor and rack/[datacenter](../../Miscellaneous/datacenter/SKILL.md)
   topology for a new keyspace.
 
 ## Prerequisites & environment
@@ -64,9 +64,9 @@ determine whether a Cassandra cluster stays healthy as it scales.
   and compaction administration — this typically requires host access
   or JMX credentials, not just CQL client access.
 - A replication factor and `NetworkTopologyStrategy` keyspace
-  configuration appropriate to the deployment's rack/datacenter
+  configuration appropriate to the deployment's rack/[datacenter](../../Miscellaneous/datacenter/SKILL.md)
   layout — `SimpleStrategy` (rack/DC-unaware) is only appropriate for a
-  single-datacenter test/dev cluster, never production.
+  single-[datacenter](../../Miscellaneous/datacenter/SKILL.md) test/dev cluster, never production.
 - Familiarity with the actual query patterns a table will serve
   **before** creating it — unlike a relational schema, a Cassandra table
   design is driven by "what queries will read this data," since
@@ -115,7 +115,7 @@ replication factor (RF):
   replica hasn't yet received the latest write).
 - `QUORUM` — a strict majority of **all** replicas across **all**
   datacenters must respond; `LOCAL_QUORUM` requires a majority only
-  within the local datacenter, avoiding cross-DC latency for
+  within the local [datacenter](../../Miscellaneous/datacenter/SKILL.md), avoiding cross-DC latency for
   multi-region deployments while still giving strong-enough consistency
   for most application needs.
 - `ALL` — every replica must respond; strongest consistency, but
@@ -198,7 +198,7 @@ nodetool ring
 Adding a node with `auto_bootstrap: true` (default) streams a share of
 existing data to it from current owners of the token ranges it takes
 over — this is I/O- and network-intensive and should be done one node
-at a time, monitoring `nodetool netstats` for streaming progress, never
+at a time, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) `nodetool netstats` for streaming progress, never
 multiple nodes joining concurrently in a way that could leave overlapping
 token ranges under-replicated during the transition.
 ```bash
@@ -216,12 +216,12 @@ nodetool decommission   # run on the node being removed — streams its data OUT
 ## Best practices
 
 - Design partition keys to bound growth (a natural bucketing dimension
-  like a time window, matching this repo's guidance for MongoDB shard
+  like a time window, matching this repo's guidance for [MongoDB](../../Backend/mongodb/SKILL.md) shard
   keys in
-  [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md))
+  [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md))
   rather than an unbounded, ever-growing key — this is the single
   hardest decision to fix after data has accumulated.
-- Use `NetworkTopologyStrategy` with an explicit per-datacenter
+- Use `NetworkTopologyStrategy` with an explicit per-[datacenter](../../Miscellaneous/datacenter/SKILL.md)
   replication factor for every production keyspace — never
   `SimpleStrategy` outside of local development.
 - Choose consistency level per query based on the actual
@@ -239,7 +239,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   routine tombstone GC into a data-resurrection bug.
 - Always `nodetool decommission` a node being removed (never just stop
   the process), and add/remove nodes to a live cluster strictly one at
-  a time, monitoring streaming progress before proceeding to the next.
+  a time, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) streaming progress before proceeding to the next.
 
 ## Common pitfalls
 
@@ -287,7 +287,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   rebalancing alone will fix a skewed-key-driven imbalance.
 
 - **Symptom:** Someone runs `TRUNCATE` on a table, or `DROP KEYSPACE`,
-  directly against production to "reset" data during an incident.
+  directly against production to "reset" data during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   **Fix:** Both are immediately destructive, cluster-wide operations —
   `TRUNCATE` in particular also forces a table-wide snapshot on all
   nodes by default (which is itself an I/O-heavy operation across the
@@ -296,7 +296,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   > KEYSPACE` against a shared or production cluster without an
   > independently confirmed target and a verified, tested backup/snapshot
   > restore path (see
-  > [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md)),
+  > [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)),
   > and restrict these operations via role-based access control to a
   > narrow admin role rather than general application credentials.
 
@@ -340,6 +340,6 @@ noticeably.
 
 ## Cross-references
 
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — comparable partition/shard-key design trade-offs (monotonic/unbounded keys creating hotspots) in a document-oriented distributed database, useful as a direct conceptual parallel.
-- [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
-- [elasticsearch-opensearch-cluster-operations](../elasticsearch-opensearch-cluster-operations/SKILL.md) — comparable distributed-cluster shard placement and rebalancing operational concerns for a different (search-oriented) data model.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable partition/shard-key design trade-offs (monotonic/unbounded keys creating hotspots) in a document-oriented distributed database, useful as a direct conceptual parallel.
+- [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
+- [elasticsearch-opensearch-cluster-operations](../[elasticsearch-opensearch-cluster-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/elasticsearch-opensearch-cluster-operations/SKILL.md)/SKILL.md) — comparable distributed-cluster shard placement and rebalancing operational concerns for a different (search-oriented) data model.

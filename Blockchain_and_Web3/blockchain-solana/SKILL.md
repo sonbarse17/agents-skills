@@ -33,7 +33,7 @@ Solana program specification: architecture, account design, instruction handlers
 1. **Architecture selection**: cluster type, program type (Anchor/raw BPF), account model design
 2. **Program design**: account structs, instruction handlers, PDA seeds, CPI design
 3. **Implementation**: Anchor macro patterns, error codes, compute budget optimization, security invariants
-4. **Testing**: Anchor test framework (TypeScript/Rust), local validator, fork testing with mainnet data
+4. **Testing**: Anchor test framework ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/Rust), local validator, fork testing with mainnet data
 5. **Deployment**: solana CLI deploy, program upgrade authority, verifiable build, IDL publishing
 
 ### Completion Criteria
@@ -310,8 +310,8 @@ pub fn checked_operation(ctx: Context<Op>, amount: u64) -> Result<()> {
 
 ## Testing with Anchor
 
-### TypeScript Test Suite
-```typescript
+### [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Test Suite
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { MyProgram } from "../target/types/my_program";
@@ -365,7 +365,7 @@ describe("my_program", () => {
 ```
 
 ### Compute Budget Testing
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 it("measures compute units", async () => {
   // Add compute budget tracking
   const computeBudget = anchor.web3.ComputeBudgetProgram;
@@ -396,7 +396,7 @@ it("measures compute units", async () => {
 ## SPL Token Program
 
 ### Token Operations
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // SPL Token CLI patterns
 // Create mint: spl-token create-token
 // Create account: spl-token create-account <MINT>
@@ -466,7 +466,7 @@ pub struct Metadata {
 - [ ] Test on localnet first (solana-test-validator)
 - [ ] Deploy to devnet, verify with anchor test
 - [ ] Set upgrade authority to multi-sig (Squads)
-- [ ] Consider immutable program after final audit
+- [ ] Consider immutable program after final [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 - [ ] Publish IDL for client SDK generation
 - [ ] Verify build is deterministic (solana-verify)
 - [ ] Configure program-derived addresses correctly

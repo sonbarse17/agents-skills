@@ -63,7 +63,7 @@ Does the change fit the system's design?
 
 ### 4. Security
 
-For detailed security guidance, see `security-and-hardening`. Does the change introduce vulnerabilities?
+For detailed security guidance, see `[security-and-hardening](../../../Security/security-and-hardening/SKILL.md)`. Does the change introduce vulnerabilities?
 
 - Is user input validated and sanitized?
 - Are secrets kept out of code, logs, and version control?
@@ -76,7 +76,7 @@ For detailed security guidance, see `security-and-hardening`. Does the change in
 
 ### 5. Performance
 
-For detailed profiling and optimization, see `performance-optimization`. Does the change introduce performance problems?
+For detailed [profiling](../../Frontend/profiling/SKILL.md) and optimization, see `[performance-optimization](../../Backend/performance-optimization/SKILL.md)`. Does the change introduce performance problems?
 
 - Any N+1 query patterns?
 - Any unbounded loops or unconstrained data fetching?
@@ -283,8 +283,8 @@ Part of code review is dependency review:
 **Before adding any dependency:**
 1. Does the existing stack solve this? (Often it does.)
 2. How large is the dependency? (Check bundle impact.)
-3. Is it actively maintained? (Check last commit, open issues.)
-4. Does it have known vulnerabilities? (`npm audit`)
+3. Is it actively maintained? (Check last [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), open issues.)
+4. Does it have known vulnerabilities? (`npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`)
 5. What's the license? (Must be compatible with the project.)
 
 **Rule:** Prefer standard library and existing utilities over new dependencies. Every dependency is a liability.
@@ -295,9 +295,9 @@ Part of code review is dependency review:
 2. **One dependency per change.** Upgrade and merge them individually (or in small related groups). When a bulk bump breaks the build, you've lost which package did it; a single-package change makes the cause obvious and the revert clean.
 3. **Let the tests decide.** The upgrade is verified by a green suite before *and* after, not by "it installed." If coverage around the dependency's behavior is thin, that gap is the real finding — add a test first.
 4. **Mind the transitive graph.** Most installed packages are ones nobody chose directly. Review the lockfile diff, not just `package.json`; a single direct bump can pull in dozens of indirect changes.
-5. **Keep the lockfile honest.** Commit it, review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
+5. **Keep the lockfile honest.** [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) it, review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
 
-For triaging `npm audit` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `security-and-hardening` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
+For triaging `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `[security-and-hardening](../../../Security/security-and-hardening/SKILL.md)` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
 
 ## The Review Checklist
 

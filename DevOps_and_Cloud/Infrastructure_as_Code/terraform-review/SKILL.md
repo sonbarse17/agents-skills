@@ -62,7 +62,7 @@ specific to Terraform.
 - **Maintainability** — copy-pasted blocks that should be modules, no variable
   validation/descriptions, no outputs, magic values instead of variables,
   provider config duplicated, no consistent tagging strategy.
-- **Cost** — oversized instance types, no autoscaling, always-on non-prod,
+- **Cost** — oversized instance types, no [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), always-on non-prod,
   resources with no lifecycle/retention (logs, snapshots). (Deep dive: `/cost`.)
 - **Drift & hygiene** — `terraform plan` shows unexpected diffs (config drifted
   from reality), deprecated provider syntax, `fmt` violations.
@@ -106,10 +106,10 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/security-review` — depth on IAM policy design and network exposure.
+- `/[security-review](../../../Security/security-review/SKILL.md)` — depth on IAM policy design and network exposure.
 - `/cost` — right-sizing and purchasing decisions for the resources declared here.
-- `/k8s-review` — the workloads running on the cluster this code provisions.
-- `/dr-review` — backup, restore, and the recovery story for stateful resources.
+- `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)` — the workloads running on the cluster this code provisions.
+- `/[dr-review](../../Observability_and_SecOps/dr-review/SKILL.md)` — backup, restore, and the recovery story for stateful resources.
 
 ## Before you finish
 

@@ -21,7 +21,7 @@ metadata:
 
 `ingress-nginx` is the most widely deployed way to get HTTP(S) traffic
 from outside a cluster to Services inside it, translating the
-Kubernetes `Ingress` resource into a running NGINX configuration. Most
+[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `Ingress` resource into a running NGINX configuration. Most
 production incidents with it are configuration-shaped, not NGINX bugs:
 missing TLS secrets, annotation typos that silently no-op, rate limits
 set too aggressively for real traffic, or body-size limits that reject
@@ -46,23 +46,23 @@ loudly instead of silently.
 
 ## Prerequisites & environment
 
-- `ingress-nginx` ≥ 1.10 (tracks Kubernetes ≥ 1.29; check the project's
-  support matrix — the controller drops support for older Kubernetes
+- `ingress-nginx` ≥ 1.10 (tracks [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.29; check the project's
+  support matrix — the controller drops support for older [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
   minor versions on a rolling basis, and running a controller version
-  outside its supported Kubernetes range risks undocumented webhook/API
+  outside its supported [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) range risks undocumented webhook/API
   incompatibilities).
 - A way to get external traffic to the controller: a cloud
   `LoadBalancer` Service (managed clusters), `NodePort` + external LB,
-  or `hostNetwork`/`hostPort` for bare-metal without a cloud LB — decide
+  or `hostNetwork`/`hostPort` for [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) without a cloud LB — decide
   this before install since it changes the Helm values used.
 - `helm` ≥ 3.14 (installed via the official `ingress-nginx` chart) or
   the static manifest install method — prefer Helm for upgrade
-  tracking. See [helm-chart-authoring](../helm-chart-authoring/SKILL.md)
+  tracking. See [helm-chart-authoring](../[helm-chart-authoring](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md)
   for general chart-management practices that apply to operating this
   chart long-term.
 - cert-manager installed if TLS certificates are to be issued/renewed
   automatically rather than manually maintained — see
-  [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md).
+  [cert-manager-tls-automation](../[cert-manager-tls-automation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md).
 - Cluster admin rights to install the `IngressClass` resource and the
   controller's RBAC/webhook configuration cluster-wide.
 
@@ -71,7 +71,7 @@ loudly instead of silently.
 1. **Install via Helm**, choosing the exposure method for your
    environment:
    ```bash
-   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+   helm repo add ingress-nginx https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/ingress-nginx
    helm repo update
    helm install ingress-nginx ingress-nginx/ingress-nginx \
      --namespace ingress-nginx --create-namespace \
@@ -79,15 +79,15 @@ loudly instead of silently.
      --set controller.ingressClassResource.name=nginx \
      --set controller.ingressClassResource.default=true
    ```
-   On bare-metal without a cloud load balancer, use
+   On [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) without a cloud load balancer, use
    `--set controller.hostNetwork=true --set controller.kind=DaemonSet`
    (or pair with MetalLB) instead of `LoadBalancer`, which will otherwise
    stay `<pending>` forever.
 
 2. **Confirm the controller is healthy and has an external address**:
    ```bash
-   kubectl get pods -n ingress-nginx
-   kubectl get svc -n ingress-nginx ingress-nginx-controller
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n ingress-nginx
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller
    ```
 
 3. **Write a basic host+path routed Ingress**:
@@ -98,7 +98,7 @@ loudly instead of silently.
      name: payments-api
      namespace: payments
      annotations:
-       nginx.ingress.kubernetes.io/rewrite-target: /
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/rewrite-target: /
    spec:
      ingressClassName: nginx
      rules:
@@ -118,7 +118,7 @@ loudly instead of silently.
    Ingresses.
 
 4. **Terminate TLS** by referencing a Secret of type
-   `kubernetes.io/tls`, ideally issued by cert-manager rather than
+   `[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/tls`, ideally issued by cert-manager rather than
    manually maintained:
    ```yaml
    spec:
@@ -132,7 +132,7 @@ loudly instead of silently.
      annotations:
        cert-manager.io/cluster-issuer: letsencrypt-prod
    ```
-   See [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)
+   See [cert-manager-tls-automation](../[cert-manager-tls-automation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md)
    for the Issuer/ClusterIssuer setup this depends on.
 
 5. **Add rate limiting** per Ingress (enforced per NGINX worker process,
@@ -140,8 +140,8 @@ loudly instead of silently.
    ```yaml
    metadata:
      annotations:
-       nginx.ingress.kubernetes.io/limit-rps: "20"
-       nginx.ingress.kubernetes.io/limit-burst-multiplier: "3"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/limit-rps: "20"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/limit-burst-multiplier: "3"
    ```
 
 6. **Adjust body size / timeouts** for endpoints outside the defaults
@@ -149,9 +149,9 @@ loudly instead of silently.
    ```yaml
    metadata:
      annotations:
-       nginx.ingress.kubernetes.io/proxy-body-size: "25m"
-       nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
-       nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-body-size: "25m"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-read-timeout: "120"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-send-timeout: "120"
    ```
 
 7. **Set up canary routing** for a simple weighted or header-based
@@ -160,8 +160,8 @@ loudly instead of silently.
    metadata:
      name: payments-api-canary
      annotations:
-       nginx.ingress.kubernetes.io/canary: "true"
-       nginx.ingress.kubernetes.io/canary-weight: "10"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/canary: "true"
+       nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/canary-weight: "10"
    spec:
      ingressClassName: nginx
      rules:
@@ -182,7 +182,7 @@ loudly instead of silently.
    change took effect by inspecting the generated config rather than
    assuming the apply succeeded:
    ```bash
-   kubectl exec -n ingress-nginx deploy/ingress-nginx-controller -- \
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec -n ingress-nginx deploy/ingress-nginx-controller -- \
      cat /etc/nginx/nginx.conf | grep -A5 'server_name payments.example.com'
    ```
 
@@ -191,7 +191,7 @@ loudly instead of silently.
    combinations — `ingress-nginx` picks one deterministically but will
    emit a warning event, not fail the apply:
    ```bash
-   kubectl get events -n payments --field-selector reason=Sync
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get events -n payments --field-selector reason=Sync
    ```
 
 ## Best practices
@@ -201,10 +201,10 @@ loudly instead of silently.
   commonly grow a second controller (an internal-only class) later.
 - Terminate TLS via cert-manager-issued secrets rather than manually
   uploaded certs, so renewal isn't a manual, easy-to-forget task — see
-  [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md).
+  [cert-manager-tls-automation](../[cert-manager-tls-automation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md).
 - Treat annotation typos as a silent-failure risk: `ingress-nginx`
   ignores unrecognized annotation keys rather than rejecting the
-  resource, so a misspelled `nginx.ingress.kubernetes.io/` annotation
+  resource, so a misspelled `nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/` annotation
   simply does nothing instead of erroring — verify effect via the
   generated NGINX config or observed behavior, not just "the apply
   succeeded."
@@ -229,13 +229,13 @@ loudly instead of silently.
   for a host into one NGINX server block and resolves conflicts by an
   internal precedence rule (exact path match, then longest prefix),
   which often isn't the rule the author assumed. List all Ingresses for
-  the host (`kubectl get ingress -A | grep <host>`) before debugging
+  the host (`[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get ingress -A | grep <host>`) before debugging
   further.
 
 - **Symptom:** Uploads or large POST bodies fail with `413 Request
   Entity Too Large`.
   **Fix:** Default `proxy-body-size` is 1m. Set
-  `nginx.ingress.kubernetes.io/proxy-body-size` explicitly on the
+  `nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-body-size` explicitly on the
   Ingress for endpoints that need larger payloads, rather than raising
   the controller-wide default for every route.
 
@@ -262,8 +262,8 @@ loudly instead of silently.
 - **Symptom:** After changing an annotation (e.g. `limit-rps`),
   behavior doesn't change at all.
   **Fix:** Confirm the annotation key/namespace prefix is exactly
-  correct (`nginx.ingress.kubernetes.io/...`) — a typo or wrong prefix
-  is silently ignored rather than rejected, since Kubernetes annotations
+  correct (`nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/...`) — a typo or wrong prefix
+  is silently ignored rather than rejected, since [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) annotations
   are free-form strings with no schema validation. Grep the rendered
   NGINX config for the expected directive to confirm it actually applied.
 
@@ -281,10 +281,10 @@ metadata:
   namespace: payments
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/limit-rps: "20"
-    nginx.ingress.kubernetes.io/limit-burst-multiplier: "3"
-    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/limit-rps: "20"
+    nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/limit-burst-multiplier: "3"
+    nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-body-size: "10m"
+    nginx.ingress.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   tls:
@@ -303,8 +303,8 @@ spec:
 ```
 
 ```bash
-kubectl apply -f payments-api-ingress.yaml
-kubectl get certificate -n payments payments-example-com-tls -w   # wait for Ready: True
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f payments-api-ingress.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get certificate -n payments payments-example-com-tls -w   # wait for Ready: True
 curl -I https://payments.example.com/api/health
 ```
 
@@ -316,6 +316,6 @@ working end to end.
 
 ## Cross-references
 
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — the Issuer/ClusterIssuer setup that automatically provisions the TLS secrets referenced above.
-- [service-mesh-istio](../service-mesh-istio/SKILL.md) — when north-south routing needs mTLS, richer traffic-shaping, or east-west policy beyond what ingress-nginx alone provides.
-- [kustomize-overlay-management](../kustomize-overlay-management/SKILL.md) — patching per-environment Ingress hosts/annotations without duplicating the whole resource.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md) — the Issuer/ClusterIssuer setup that automatically provisions the TLS secrets referenced above.
+- [service-mesh-istio](../[service-mesh-istio](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — when north-south routing needs mTLS, richer traffic-shaping, or east-west policy beyond what ingress-nginx alone provides.
+- [kustomize-overlay-management](../[kustomize-overlay-management](../[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)-overlay-management/SKILL.md)/SKILL.md) — patching per-environment Ingress hosts/annotations without duplicating the whole resource.

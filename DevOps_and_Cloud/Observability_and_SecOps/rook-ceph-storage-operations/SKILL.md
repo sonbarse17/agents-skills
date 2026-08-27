@@ -21,47 +21,47 @@ metadata:
 
 ## Purpose
 
-Rook is a Kubernetes operator that turns raw block devices attached to
+Rook is a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) operator that turns raw block devices attached to
 cluster nodes into a fully-managed Ceph cluster, then exposes that
-cluster's storage back to Kubernetes as ordinary StorageClasses — giving
-on-prem or bare-metal clusters the same self-service, dynamically
+cluster's storage back to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) as ordinary StorageClasses — giving
+on-prem or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) clusters the same self-service, dynamically
 provisioned persistent storage that cloud providers offer natively via
 EBS/Persistent Disk/managed disks. This matters operationally because
 Ceph itself is a complex, stateful distributed system (OSDs, monitors,
 managers, placement groups, CRUSH maps); Rook's value is collapsing that
-operational surface into a handful of Kubernetes CRDs (`CephCluster`,
+operational surface into a handful of [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRDs (`CephCluster`,
 `CephBlockPool`, `CephFilesystem`, `CephObjectStore`) that are
-declarative and GitOps-friendly, at the cost of still needing to
+declarative and [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md)-friendly, at the cost of still needing to
 understand what Ceph is doing underneath when something goes wrong. This
 skill covers deploying and configuring Rook-managed Ceph for production
 use; validating that the resulting cluster is actually healthy before
 depending on it is
-[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)'s
+[rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md)'s
 job, and comparing this approach against the simpler
-[longhorn-storage-configuration](../longhorn-storage-configuration/SKILL.md)
+[longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
 alternative is covered there.
 
 ## When to use
 
 - Standing up persistent, dynamically-provisioned storage on a
-  bare-metal or on-prem Kubernetes cluster with no cloud block-storage
+  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../Cloud_Providers/block-storage/SKILL.md)
   service available.
 - Deciding OSD device placement and count per node for a new
   `CephCluster`.
 - Creating block (RBD), shared-filesystem (CephFS), or S3-compatible
   object (RGW) storage classes for different workload storage needs
   within the same underlying Ceph cluster.
-- Scaling Ceph capacity by adding nodes/devices to an existing
+- Scaling Ceph [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) by adding nodes/devices to an existing
   Rook-managed cluster.
 - Deciding replication (replica count) or erasure-coding policy for a
-  storage pool based on the durability/capacity tradeoff a workload
+  storage pool based on the durability/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) tradeoff a workload
   needs.
 - Migrating workloads that need `ReadWriteMany` volumes (shared
   filesystem) onto CephFS-backed storage.
 
 ## Prerequisites & environment
 
-- Kubernetes ≥ 1.26 and Rook ≥ v1.14 (check the Rook/Ceph/Kubernetes
+- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.26 and Rook ≥ v1.14 (check the Rook/Ceph/[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
   compatibility matrix in Rook's release notes before upgrading either
   component independently — Rook version compatibility with a given
   Ceph release is not automatic).
@@ -76,15 +76,15 @@ alternative is covered there.
   starting point per OSD, scaling with device size and I/O load); do
   not co-locate OSDs on nodes already tightly resource-constrained by
   workload pods.
-- The Rook Ceph Helm chart or raw operator manifests, plus `kubectl`/
+- The Rook Ceph Helm chart or raw operator manifests, plus `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`/
   Helm access with permission to create cluster-scoped CRDs and
   privileged DaemonSets (Rook's OSD pods require host-level device
   access).
 - A decision on storage strategy already made relative to
-  [longhorn-storage-configuration](../longhorn-storage-configuration/SKILL.md)
+  [longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
   — Rook-Ceph is the right choice when object storage (S3-compatible
   RGW) or CephFS shared filesystems are needed alongside block storage;
-  Longhorn is simpler when only replicated block storage is required.
+  [Longhorn](../longhorn/SKILL.md) is simpler when only replicated block storage is required.
 
 ## Step-by-step guidance
 
@@ -94,7 +94,7 @@ alternative is covered there.
    helm install --create-namespace --namespace rook-ceph rook-ceph rook-release/rook-ceph --version v1.14.9
    ```
    Confirm the operator pod is `Running` before proceeding —
-   `kubectl -n rook-ceph get pods -l app=rook-ceph-operator`.
+   `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get pods -l app=rook-ceph-operator`.
 
 2. **Define the `CephCluster`**, specifying node/device selection
    explicitly rather than letting Rook opportunistically claim every
@@ -132,7 +132,7 @@ alternative is covered there.
        mon: { requests: { cpu: "500m", memory: "1Gi" } }
    ```
    `mon.count: 3` (odd, for quorum, same principle as
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md))
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md))
    is the minimum for production; explicit `storage.nodes`/`devices`
    avoids Rook accidentally wiping a device that happens to look
    unformatted but is actually in use.
@@ -140,12 +140,12 @@ alternative is covered there.
 3. **Wait for the cluster to reach `HEALTH_OK`** before creating any
    pools or StorageClasses on top of it:
    ```bash
-   kubectl -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
    ```
    (The `rook-ceph-tools` deployment, deployed separately, provides a
    `ceph`/`rbd`/`radosgw-admin` CLI shell inside the cluster — see
-   [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)
+   [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md)
    for the full health-check workflow.)
 
 4. **Create a block pool and StorageClass** for RWO block storage
@@ -232,7 +232,7 @@ alternative is covered there.
        instances: 2
    ```
    Expose it to clients with a `CephObjectStoreUser` (issues S3
-   access/secret key pairs stored as a Kubernetes Secret Rook
+   access/secret key pairs stored as a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret Rook
    generates — never hand-write these keys into a manifest):
    ```yaml
    apiVersion: ceph.rook.io/v1
@@ -245,7 +245,7 @@ alternative is covered there.
      displayName: "app-user"
    ```
 
-7. **Scale capacity by adding nodes/devices to `CephCluster.spec.storage.nodes`**
+7. **Scale [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) by adding nodes/devices to `CephCluster.spec.storage.nodes`**
    rather than replacing the whole cluster — Rook detects the change,
    provisions new OSDs, and Ceph's CRUSH algorithm rebalances data
    across the expanded device set automatically. Expect a rebalancing
@@ -276,12 +276,12 @@ alternative is covered there.
   recovery/rebuild cost per failure.
 - Enable the Ceph dashboard (`spec.dashboard.enabled: true`) and wire
   its metrics into
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   rather than relying only on `ceph status` run ad hoc during
   incidents.
 - Deploy the `rook-ceph-tools` pod in every environment running Ceph —
   it's the primary interface for the health checks in
-  [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)
+  [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md)
   and for any manual `ceph`/`rbd` diagnostic command.
 - Never let `reclaimPolicy: Delete` surprise someone on a StorageClass
   backing genuinely important data — set `Retain` for pools where an
@@ -293,7 +293,7 @@ alternative is covered there.
 - **Symptom:** `CephCluster` never reaches `HEALTH_OK`; OSD pods are
   stuck `Pending` or `CrashLoopBackOff`.
   **Fix:** Usually a device selection problem — check
-  `kubectl -n rook-ceph logs -l app=rook-ceph-operator` for "no
+  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph logs -l app=rook-ceph-operator` for "no
   available devices," which means the specified device already has a
   filesystem/partition table Rook won't overwrite by default (by
   design, to avoid destroying data). Wipe the device explicitly and
@@ -302,9 +302,9 @@ alternative is covered there.
   than changing device selectors to "make the error go away."
 
 - **Symptom:** PVCs using a Rook StorageClass stay `Pending` indefinitely
-  with no clear error in `kubectl describe pvc`.
+  with no clear error in `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe pvc`.
   **Fix:** Check the CSI provisioner pods
-  (`kubectl -n rook-ceph get pods -l app=csi-rbdplugin-provisioner`) for
+  (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get pods -l app=csi-rbdplugin-provisioner`) for
   crash-looping or a missing/misnamed
   `csi.storage.k8s.io/provisioner-secret-name` in the StorageClass —
   the CSI secrets are auto-generated by Rook per pool/filesystem and
@@ -320,7 +320,7 @@ alternative is covered there.
   `retain`) on any pool holding real data, and always confirm no PVCs
   still reference a pool before deleting it — treat pool/filesystem
   deletion with the same caution as `terraform destroy` in
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md).
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../Infrastructure_as_Code/[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md).
 
 - **Symptom:** A single-node or 2-node test cluster's `CephCluster`
   reports `HEALTH_WARN` with placement groups stuck `undersized` or
@@ -333,7 +333,7 @@ alternative is covered there.
   for more replicas than the cluster topology can satisfy.
 
 - **Symptom:** OSD pods get OOM-killed repeatedly during a large data
-  rebalance after adding capacity.
+  rebalance after adding [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md).
   **Fix:** Default/unset resource limits on `osd` pods let a rebalance's
   memory spike exceed available node memory. Set explicit
   `resources.osd.limits.memory` with real headroom (Ceph's own sizing
@@ -347,7 +347,7 @@ alternative is covered there.
 
 **Scenario:** Stand up Rook-Ceph across 3 worker nodes each with one
 free 500GiB block device, then provide both block storage for a
-PostgreSQL StatefulSet and a shared CephFS volume for a CI artifact
+[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) StatefulSet and a shared CephFS volume for a CI artifact
 cache.
 
 ```bash
@@ -375,7 +375,7 @@ spec:
 ```
 
 ```bash
-kubectl -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
 # HEALTH_OK
 ```
 
@@ -422,9 +422,9 @@ spec:
 
 ## Cross-references
 
-- [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md) — validating `ceph status`/OSD placement/PG health before trusting this cluster for production.
-- [longhorn-storage-configuration](../longhorn-storage-configuration/SKILL.md) — a simpler block-storage-only alternative when object storage and CephFS aren't required.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — the same quorum/failure-domain reasoning applied to etcd rather than Ceph monitors.
-- [cloud-native-storage-strategy](../../../cloud/skills/cloud-native-storage-strategy/SKILL.md) — broader decision framework for choosing in-cluster storage (Rook/Longhorn) vs. cloud-managed storage.
-- [velero-backup-and-restore](../../../observability-and-platform-extras/skills/velero-backup-and-restore/SKILL.md) — backing up PVC data (including Rook-backed volumes) at the application/workload level.
-- [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md) — scraping the Ceph dashboard/mgr Prometheus exporter for ongoing capacity and health monitoring.
+- [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — validating `ceph status`/OSD placement/PG health before trusting this cluster for production.
+- [longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md) — a simpler [block-storage](../../Cloud_Providers/block-storage/SKILL.md)-only alternative when object storage and CephFS aren't required.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — the same quorum/failure-domain reasoning applied to etcd rather than Ceph monitors.
+- [cloud-native-storage-strategy](../../../cloud/skills/[cloud-native-storage-strategy](../../Cloud_Providers/cloud-native-storage-strategy/SKILL.md)/SKILL.md) — broader decision framework for choosing in-cluster storage (Rook/[Longhorn](../longhorn/SKILL.md)) vs. cloud-managed storage.
+- [velero-backup-and-restore](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../../Containers_and_Orchestration/velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — backing up PVC data (including Rook-backed volumes) at the application/workload level.
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — scraping the Ceph dashboard/mgr Prometheus exporter for ongoing [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) and health [monitoring](../monitoring/SKILL.md).

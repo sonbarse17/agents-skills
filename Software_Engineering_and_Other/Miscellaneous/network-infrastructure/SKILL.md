@@ -64,7 +64,7 @@ No preamble. No postamble. No explanations.
 - [ ] L2 redundancy via MLAG/VPC + VRRP/HSRP
 - [ ] Consistent MTU policy across underlay
 - [ ] IPv6 dual-stack
-- [ ] Monitoring: BGP neighbor state, interface errors, throughput
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): BGP neighbor state, interface errors, throughput
 
 ## Architecture Decision Trees
 
@@ -115,14 +115,14 @@ Egress preference:
 | Vendor | Switching | Routing | Automation | Best For |
 |---|---|---|---|---|
 | Arista | EOS VXLAN/EVPN | BGP, ISIS | CloudVision, eAPI | DC leaf-spine |
-| Cisco Nexus | NX-OS VXLAN/EVPN | BGP, OSPF | NX-API, Ansible | Enterprise DC |
-| Juniper | Junos EVPN | BGP, ISIS | PyEZ, Ansible | ISP, large DC |
-| FRR (Linux) | Linux bridge | BGP, OSPF | Ansible, Cumulus | White-box, DIY |
+| Cisco Nexus | NX-OS VXLAN/EVPN | BGP, OSPF | NX-API, [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) | Enterprise DC |
+| Juniper | Junos EVPN | BGP, ISIS | PyEZ, [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) | ISP, large DC |
+| FRR (Linux) | Linux bridge | BGP, OSPF | [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), Cumulus | White-box, DIY |
 | SONiC | Switch abstraction | BGP | Redis DB, K8s | Hyperscale, OCP |
-| Aruba CX | VSX, EVPN | BGP, OSPF | AOS-CX Ansible | Campus + DC |
+| Aruba CX | VSX, EVPN | BGP, OSPF | AOS-CX [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) | Campus + DC |
 
 ## Quick Start
-Leaf-spine topology → BGP unnumbered underlay → EVPN/VXLAN overlay (if needed) → BGP multi-homing for north-south → Anycast for DNS/API → VRRP for L2 redundancy → MTU 9216 core → Monitoring with Prometheus + SNMP.
+Leaf-spine topology → BGP unnumbered underlay → EVPN/VXLAN overlay (if needed) → BGP multi-homing for north-south → Anycast for DNS/API → VRRP for L2 redundancy → MTU 9216 core → [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Prometheus + SNMP.
 
 ## Core Workflow
 
@@ -343,9 +343,9 @@ Classify at edge:
 Apply on all uplinks: shape, queue, police inbound to protect fabric.
 ```
 
-### Step 14: Network Automation — Ansible
+### Step 14: Network Automation — [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
 ```yaml
-# ansible/bgp-config.yaml
+# [ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)/bgp-config.yaml
 - name: Configure BGP on leaf switches
   hosts: leaf_switches
   gather_facts: no
@@ -374,7 +374,7 @@ Apply on all uplinks: shape, queue, police inbound to protect fabric.
 ```
 
 ### Step 15: Network Automation — Nornir
-```python
+```[python](../../Languages/python/SKILL.md)
 # nornir/bgp_check.py
 from nornir import InitNornir
 from nornir_netmiko import netmiko_send_command
@@ -402,7 +402,7 @@ print_result(results)
 For ISPs or edge POPs, apply cable access standards. DOCSIS 3.1 supports 10G down/1G up.
 GPON/XGS-PON for fiber to the home. Use BNG (Broadband Network Gateway) for subscriber management.
 
-### Step 17: Monitoring Tools and KPIs
+### Step 17: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Tools and KPIs
 ```
 BGP neighbor state          up/down + uptime + prefixes received
 Interface counters          errors, drops, throughput per port
@@ -435,7 +435,7 @@ Spanning tree disables redundant links to prevent loops. Use MLAG/VPC for L2 red
 Storage traffic (Ceph, iSCSI, NFS) requires predictable throughput. Oversubscription above 5:1 creates contention. Design storage fabric at 1:1 or 3:1 maximum.
 
 ### Anti-Pattern 6: Manual Config Only
-Config drift, no audit trail, no rollback capability. All changes must go through NetOps automation (Ansible, Nornir, Salt). Enable config backup with oxidized.
+Config drift, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, no rollback capability. All changes must go through NetOps automation ([Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), Nornir, Salt). Enable config backup with oxidized.
 
 ### Anti-Pattern 7: Flat Network (No L3 Segmentation)
 Broadcast storms, large blast radius, no tenant isolation. Use VLANs or VXLAN for segmentation. Route at the leaf layer — never stretch L2 across the fabric unnecessarily.
@@ -476,11 +476,11 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
 
 ### Operational Excellence
 - Color-code and label both ends of every fiber patch for ops clarity.
-- Use digital optical monitoring (DOM) on all optics to predict failures.
+- Use digital optical [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (DOM) on all optics to predict failures.
 - All changes via NetOps automation, never manual on prod.
 - Separate underlay (loopbacks) from overlay (VNI) addressing plan.
 - Run BGP timers aggressively: 3s keepalive, 9s hold for ToR-to-spine.
-- NetFlow/sFlow export from every ToR for capacity planning + DDoS detection.
+- NetFlow/sFlow export from every ToR for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning + DDoS detection.
 
 ## Security Considerations
 | Threat | Mitigation | Implementation |
@@ -508,7 +508,7 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
 - All changes via NetOps automation, never manual on prod.
 - Quarterly fail-test: pull one uplink / one switch and verify auto-recovery.
 - Deploy QoS classification at edge; trust boundaries on all uplinks.
-- NetFlow/sFlow export from every ToR for capacity planning + DDoS detection.
+- NetFlow/sFlow export from every ToR for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning + DDoS detection.
 
 ## References
   - ../../../Global_References/bgp-anycast.md — BGP + Anycast — Policy, RPKI, Multi-Homing
@@ -518,10 +518,10 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
   - references/sd-wan-mpls.md — SD-WAN vs MPLS — Branch + Hybrid Connectivity
   - ../../../Global_References/vrrp-hsrp.md — L2 Redundancy — VRRP / HSRP / CARP / MLAG
   - references/evpn-vxlan-deep-dive.md — EVPN/VXLAN Deep Dive
-  - references/bgp-automation.md — BGP Automation with Ansible
+  - references/bgp-automation.md — BGP Automation with [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
 ## Handoff
-- `devops-datacenter` for physical cabling and patch panels.
-- `devops-cdn-edge` for global anycast and DDoS scrubbing.
-- `devops-cloud-architecture` for cloud VPC and Transit Gateway alongside on-prem.
-- `enterprise-high-availability` for app-level LB and failover.
+- `devops-[datacenter](../datacenter/SKILL.md)` for physical cabling and patch panels.
+- `devops-[cdn-edge](../../../DevOps_and_Cloud/Cloud_Providers/cdn-edge/SKILL.md)` for global anycast and DDoS scrubbing.
+- `devops-[cloud-architecture](../../../DevOps_and_Cloud/Cloud_Providers/cloud-architecture/SKILL.md)` for cloud VPC and Transit Gateway alongside on-prem.
+- `[enterprise-high-availability](../../../DevOps_and_Cloud/Observability_and_SecOps/high-availability/SKILL.md)` for app-level LB and failover.
 

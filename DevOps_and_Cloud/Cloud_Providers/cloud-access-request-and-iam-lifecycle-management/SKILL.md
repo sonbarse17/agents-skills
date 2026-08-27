@@ -26,14 +26,14 @@ the hundreds of small, one-off access grants made under time pressure
 that never get revoked: a contractor's temporary S3 access still active a
 year after the contract ended, a new hire given broad access "just to get
 them started" while the ticket to scope it down never gets filed, an
-on-call engineer's incident break-fix grant that quietly becomes
+on-call engineer's [incident](../../Observability_and_SecOps/incident/SKILL.md) break-fix grant that quietly becomes
 permanent. This skill covers that everyday operational transaction —
 receiving a request, granting the narrowest permission that satisfies it,
-attaching a hard expiry, and leaving an audit trail that a review can
+attaching a hard expiry, and leaving an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail that a review can
 reconstruct without asking "who approved this and why" — as a repeatable
 process, not a design exercise. It assumes the underlying policy/role
 structure already exists (or is designed per
-[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)); this skill is
+[cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)); this skill is
 about the individual grant/revoke lifecycle transaction on top of that
 structure.
 
@@ -42,9 +42,9 @@ structure.
 - A contractor, new hire, vendor, or auditor needs a specific, scoped
   permission for a defined period (e.g. "read-only access to the
   `analytics` S3 bucket for 30 days").
-- An incident responder needs temporary elevated (break-fix) access to a
+- An [incident](../../Observability_and_SecOps/incident/SKILL.md) responder needs temporary elevated (break-fix) access to a
   production resource beyond their standing role, for the duration of the
-  incident only.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md) only.
 - Someone changed teams, finished a contract, or left the company, and
   their previously granted access needs to be revoked.
 - A recurring or one-off access request needs to be logged with who
@@ -59,13 +59,13 @@ structure.
 
 - An existing IAM structure to grant *into* — predefined least-privilege
   roles/policies/groups per
-  [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md), not
+  [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md), not
   freehand `AdministratorAccess`/`Owner`/`roles/editor` grants improvised
   per request.
 - A ticketing system (Jira, ServiceNow, or equivalent) or a version-
   controlled access-request record as the system of truth for the
   request — an access grant made only via console click-ops with no
-  linked ticket has no audit trail.
+  linked ticket has no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - Time-bound access mechanics available on the platform: AWS IAM
   Identity Center permission set assignments or IAM Conditions with a
   `aws:CurrentTime`/`aws:TokenIssueTime` expiry, Azure AD **Privileged
@@ -134,14 +134,14 @@ structure.
      --condition='expression=request.time < timestamp("2026-08-27T00:00:00Z"),title=contractor-temp-access,description=Expires 2026-08-27'
    ```
 
-3. **Record the grant in the audit trail immediately**, linking: the
+3. **Record the grant in the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail immediately**, linking: the
    ticket ID, the exact policy/role/condition applied, the expiry
    timestamp, and the approver — in the ticket itself and, ideally, as a
    tag/label on the IAM resource (`access-ticket=JIRA-1234`,
    `expires=2026-08-27`) so the grant is traceable from the cloud console
    alone, not only from the ticketing system.
 
-4. **For incident break-fix access, grant via the platform's
+4. **For [incident](../../Observability_and_SecOps/incident/SKILL.md) break-fix access, grant via the platform's
    time-bound elevation mechanism, not a manually attached policy someone
    has to remember to remove.** AWS IAM Identity Center or Azure PIM
    "activate" flows both auto-expire the session; if neither is available,
@@ -184,7 +184,7 @@ structure.
    throughput.** If the same kind of request is repeatedly needed (e.g.
    every new hire on a team needs the same three permissions), that's a
    signal to fold it into the team's standing least-privilege role design
-   — escalate to [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
+   — escalate to [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
    rather than repeating the same one-off grant indefinitely.
 
 ## Best practices
@@ -202,18 +202,18 @@ structure.
   humans forget, expiring conditions don't.
 - **Tag every temporary grant with its ticket ID and expiry** on the IAM
   object itself, not only in the ticketing system, so an access review
-  or `cloud-iam-hardening` audit can reconcile cloud-side reality against
+  or `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)` [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) can reconcile cloud-side reality against
   the ticket trail without cross-referencing two systems by hand.
 - **Revoke access the same day someone's role or employment changes** —
   a scoped one-off grant left dangling after an offboarding is exactly
   the kind of stale, unowned access that
-  [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)'s quarterly
+  [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)'s quarterly
   review exists to catch, but catching it quarterly is a backstop, not
   the primary control.
-- **Log break-glass/incident access grants with an automatic
+- **Log break-glass/[incident](../../Observability_and_SecOps/incident/SKILL.md) access grants with an automatic
   notification on use**, mirroring the break-glass guidance in
-  [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md), so an
-  emergency grant always gets a post-incident review even under time
+  [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md), so an
+  emergency grant always gets a post-[incident](../../Observability_and_SecOps/incident/SKILL.md) review even under time
   pressure.
 - **Fold recurring identical requests into a standing role**, don't keep
   re-granting the same permission set one ticket at a time — repeated
@@ -251,14 +251,14 @@ structure.
   user unless that user is being fully offboarded and that is explicitly
   confirmed.
 
-- **Symptom:** An incident break-fix access grant to production is still
-  active weeks after the incident closed, and nobody can say why.
+- **Symptom:** An [incident](../../Observability_and_SecOps/incident/SKILL.md) break-fix access grant to production is still
+  active weeks after the [incident](../../Observability_and_SecOps/incident/SKILL.md) closed, and nobody can say why.
   **Fix:** Break-fix access was granted as a standing policy attachment
   instead of through a time-bound elevation mechanism (IAM Identity
-  Center, Azure PIM activation). Always grant incident access with a
-  hard expiry tied to the expected incident window (extend explicitly if
-  the incident runs long, don't grant open-ended "for now" access), and
-  require a post-incident ticket confirming the grant either already
+  Center, Azure PIM activation). Always grant [incident](../../Observability_and_SecOps/incident/SKILL.md) access with a
+  hard expiry tied to the expected [incident](../../Observability_and_SecOps/incident/SKILL.md) window (extend explicitly if
+  the [incident](../../Observability_and_SecOps/incident/SKILL.md) runs long, don't grant open-ended "for now" access), and
+  require a post-[incident](../../Observability_and_SecOps/incident/SKILL.md) ticket confirming the grant either already
   expired or was manually removed.
 
 - **Symptom:** An access-request queue has a growing backlog of pending
@@ -267,7 +267,7 @@ structure.
   access").
   **Fix:** This is a process-design failure, not just a queue-depth
   problem — it produces access equivalent to an ungoverned grant with
-  zero audit trail. Set an SLA for routine, pre-approved-pattern requests
+  zero [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail. Set an SLA for routine, pre-approved-pattern requests
   (e.g. same-team standard onboarding access) to auto-approve or
   fast-track, reserving manual approval friction for genuinely unusual or
   high-privilege requests.
@@ -292,7 +292,7 @@ team build a report. They need read-only access to one S3 bucket
    `access-ticket=JIRA-4821`, `expires=2026-09-08`, `granted-by=<manager>`.
 4. The ticket is updated with the exact policy JSON applied and the
    expiry date, then closed as fulfilled — the ticket itself is now the
-   audit record a review can pull up months later.
+   [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) record a review can pull up months later.
 5. A weekly scheduled script queries all IAM users/roles for an
    `expires=` tag in the past; when `jsmith`'s tag matches after
    2026-09-08, it opens a low-priority ticket confirming the grant either
@@ -306,15 +306,15 @@ team build a report. They need read-only access to one S3 bucket
 
 ## Cross-references
 
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md) — designs the
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — designs the
   underlying least-privilege role/policy structure and break-glass
   process that this skill grants *into*; use it when a recurring one-off
   request pattern should become a standing role, or when doing the
   periodic access review this skill's grants feed into.
-- [aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md) — IAM
+- [aws-landing-zone-setup](../[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md) — IAM
   Identity Center permission sets and OU-level guardrails that scope what
   any individual grant made under this skill can reach.
-- [cloud-cost-anomaly-investigation](../cloud-cost-anomaly-investigation/SKILL.md) —
+- [cloud-cost-anomaly-investigation](../[cloud-cost-anomaly-investigation](../cloud-cost-anomaly-investigation/SKILL.md)/SKILL.md) —
   a spike caused by a resource an over-broad or stale temporary grant let
   someone provision is one of the things that investigation traces back
   to a specific identity/grant.

@@ -7,23 +7,23 @@ metadata:
   version: "1.0"
 ---
 
-# Docker Management
+# [Docker](../docker/SKILL.md) Management
 
-Build, run, and manage Docker containers for application deployment and development.
+Build, run, and manage [Docker](../docker/SKILL.md) containers for application deployment and development.
 
 ## When to Use This Skill
 
 Use this skill when:
 - Creating and optimizing Dockerfiles
-- Building and tagging Docker images
+- Building and tagging [Docker](../docker/SKILL.md) images
 - Running and managing containers
 - Debugging container issues
-- Configuring Docker networking and volumes
+- Configuring [Docker](../docker/SKILL.md) networking and volumes
 - Implementing container security best practices
 
 ## Prerequisites
 
-- Docker Engine installed (20.10+)
+- [Docker](../docker/SKILL.md) Engine installed (20.10+)
 - Basic command line knowledge
 - Understanding of application deployment
 
@@ -55,7 +55,7 @@ CMD ["node", "dist/index.js"]
 ### Layer Optimization
 
 ```dockerfile
-FROM python:3.12-slim
+FROM [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim
 
 # Install dependencies first (cached unless requirements change)
 COPY requirements.txt .
@@ -64,7 +64,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code (changes frequently)
 COPY . .
 
-CMD ["python", "app.py"]
+CMD ["[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "app.py"]
 ```
 
 ### Security Hardening
@@ -94,26 +94,26 @@ CMD ["node", "server.js"]
 
 ```bash
 # Build with tag
-docker build -t myapp:1.0 .
+[docker](../docker/SKILL.md) build -t myapp:1.0 .
 
 # Build with build args
-docker build --build-arg NODE_ENV=production -t myapp:prod .
+[docker](../docker/SKILL.md) build --build-arg NODE_ENV=production -t myapp:prod .
 
 # Build for specific platform
-docker build --platform linux/amd64 -t myapp:amd64 .
+[docker](../docker/SKILL.md) build --platform linux/amd64 -t myapp:amd64 .
 
 # Build with no cache
-docker build --no-cache -t myapp:fresh .
+[docker](../docker/SKILL.md) build --no-cache -t myapp:fresh .
 ```
 
 ### Multi-Platform Builds
 
 ```bash
 # Create builder
-docker buildx create --name multiplatform --use
+[docker](../docker/SKILL.md) buildx create --name multiplatform --use
 
 # Build for multiple architectures
-docker buildx build \
+[docker](../docker/SKILL.md) buildx build \
   --platform linux/amd64,linux/arm64 \
   -t myregistry/myapp:latest \
   --push .
@@ -125,52 +125,52 @@ docker buildx build \
 
 ```bash
 # Run container
-docker run -d --name myapp -p 8080:3000 myapp:latest
+[docker](../docker/SKILL.md) run -d --name myapp -p 8080:3000 myapp:latest
 
 # Run with environment variables
-docker run -d \
+[docker](../docker/SKILL.md) run -d \
   -e DATABASE_URL=postgres://localhost/db \
   -e NODE_ENV=production \
   myapp:latest
 
 # Run with resource limits
-docker run -d \
+[docker](../docker/SKILL.md) run -d \
   --memory="512m" \
   --cpus="1.0" \
   myapp:latest
 
 # Run with restart policy
-docker run -d --restart=unless-stopped myapp:latest
+[docker](../docker/SKILL.md) run -d --restart=unless-stopped myapp:latest
 ```
 
 ### Volume Management
 
 ```bash
 # Named volume
-docker volume create mydata
-docker run -v mydata:/app/data myapp:latest
+[docker](../docker/SKILL.md) volume create mydata
+[docker](../docker/SKILL.md) run -v mydata:/app/data myapp:latest
 
 # Bind mount
-docker run -v $(pwd)/config:/app/config:ro myapp:latest
+[docker](../docker/SKILL.md) run -v $(pwd)/config:/app/config:ro myapp:latest
 
 # tmpfs mount (memory)
-docker run --tmpfs /tmp:rw,noexec,nosuid myapp:latest
+[docker](../docker/SKILL.md) run --tmpfs /tmp:rw,noexec,nosuid myapp:latest
 ```
 
 ### Networking
 
 ```bash
 # Create network
-docker network create mynetwork
+[docker](../docker/SKILL.md) network create mynetwork
 
 # Run on network
-docker run -d --network mynetwork --name api myapp:latest
+[docker](../docker/SKILL.md) run -d --network mynetwork --name api myapp:latest
 
 # Connect existing container
-docker network connect mynetwork existing-container
+[docker](../docker/SKILL.md) network connect mynetwork existing-container
 
 # Expose specific ports
-docker run -d -p 127.0.0.1:8080:3000 myapp:latest
+[docker](../docker/SKILL.md) run -d -p 127.0.0.1:8080:3000 myapp:latest
 ```
 
 ## Container Lifecycle
@@ -179,35 +179,35 @@ docker run -d -p 127.0.0.1:8080:3000 myapp:latest
 
 ```bash
 # List containers
-docker ps -a
+[docker](../docker/SKILL.md) ps -a
 
 # Stop container
-docker stop myapp
+[docker](../docker/SKILL.md) stop myapp
 
 # Remove container
-docker rm myapp
+[docker](../docker/SKILL.md) rm myapp
 
 # Force remove running container
-docker rm -f myapp
+[docker](../docker/SKILL.md) rm -f myapp
 
 # Prune stopped containers
-docker container prune -f
+[docker](../docker/SKILL.md) container prune -f
 ```
 
-### Logs and Monitoring
+### Logs and [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # View logs
-docker logs myapp
+[docker](../docker/SKILL.md) logs myapp
 
 # Follow logs
-docker logs -f --tail 100 myapp
+[docker](../docker/SKILL.md) logs -f --tail 100 myapp
 
 # View resource usage
-docker stats myapp
+[docker](../docker/SKILL.md) stats myapp
 
 # Inspect container
-docker inspect myapp
+[docker](../docker/SKILL.md) inspect myapp
 ```
 
 ## Debugging Containers
@@ -216,32 +216,32 @@ docker inspect myapp
 
 ```bash
 # Execute command in running container
-docker exec -it myapp /bin/sh
+[docker](../docker/SKILL.md) exec -it myapp /bin/sh
 
 # Run container with shell
-docker run -it --rm myapp:latest /bin/sh
+[docker](../docker/SKILL.md) run -it --rm myapp:latest /bin/sh
 
 # Debug failed container
-docker run -it --entrypoint /bin/sh myapp:latest
+[docker](../docker/SKILL.md) run -it --entrypoint /bin/sh myapp:latest
 ```
 
 ### Troubleshooting
 
 ```bash
 # Check container logs for errors
-docker logs myapp 2>&1 | grep -i error
+[docker](../docker/SKILL.md) logs myapp 2>&1 | grep -i error
 
 # Inspect container state
-docker inspect --format='{{.State.Status}}' myapp
+[docker](../docker/SKILL.md) inspect --format='{{.State.Status}}' myapp
 
 # Check container processes
-docker top myapp
+[docker](../docker/SKILL.md) top myapp
 
 # View container filesystem changes
-docker diff myapp
+[docker](../docker/SKILL.md) diff myapp
 
 # Export container filesystem
-docker export myapp > myapp-fs.tar
+[docker](../docker/SKILL.md) export myapp > myapp-fs.tar
 ```
 
 ### Health Checks
@@ -253,7 +253,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 ```bash
 # Check health status
-docker inspect --format='{{.State.Health.Status}}' myapp
+[docker](../docker/SKILL.md) inspect --format='{{.State.Health.Status}}' myapp
 ```
 
 ## Image Management
@@ -262,48 +262,48 @@ docker inspect --format='{{.State.Health.Status}}' myapp
 
 ```bash
 # Tag image
-docker tag myapp:latest myregistry.com/myapp:v1.0
+[docker](../docker/SKILL.md) tag myapp:latest myregistry.com/myapp:v1.0
 
 # Push to registry
-docker push myregistry.com/myapp:v1.0
+[docker](../docker/SKILL.md) push myregistry.com/myapp:v1.0
 
 # Pull image
-docker pull myregistry.com/myapp:v1.0
+[docker](../docker/SKILL.md) pull myregistry.com/myapp:v1.0
 ```
 
 ### Cleanup
 
 ```bash
 # Remove unused images
-docker image prune -a
+[docker](../docker/SKILL.md) image prune -a
 
 # Remove all unused resources
-docker system prune -a --volumes
+[docker](../docker/SKILL.md) system prune -a --volumes
 
 # Remove specific image
-docker rmi myapp:old
+[docker](../docker/SKILL.md) rmi myapp:old
 
 # List image sizes
-docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
+[docker](../docker/SKILL.md) images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
 ```
 
 ### Image Analysis
 
 ```bash
 # View image history
-docker history myapp:latest
+[docker](../docker/SKILL.md) history myapp:latest
 
 # Inspect image layers
-docker inspect myapp:latest
+[docker](../docker/SKILL.md) inspect myapp:latest
 
-# Check image vulnerabilities (with Docker Scout)
-docker scout cves myapp:latest
+# Check image vulnerabilities (with [Docker](../docker/SKILL.md) Scout)
+[docker](../docker/SKILL.md) scout cves myapp:latest
 ```
 
-## Docker Compose Integration
+## [Docker](../docker/SKILL.md) Compose Integration
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -326,7 +326,7 @@ services:
     environment:
       POSTGRES_PASSWORD: secret
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
 
 volumes:
   app-data:
@@ -355,7 +355,7 @@ COPY . .
 
 ```bash
 # Run with security options
-docker run -d \
+[docker](../docker/SKILL.md) run -d \
   --security-opt=no-new-privileges \
   --cap-drop=ALL \
   --cap-add=NET_BIND_SERVICE \
@@ -363,22 +363,22 @@ docker run -d \
   myapp:latest
 
 # Use user namespace remapping
-# Add to /etc/docker/daemon.json: {"userns-remap": "default"}
+# Add to /etc/[docker](../docker/SKILL.md)/daemon.json: {"userns-remap": "default"}
 ```
 
 ## Common Issues
 
 ### Issue: Container Exits Immediately
 **Problem**: Container starts and stops instantly
-**Solution**: Check if CMD/ENTRYPOINT runs foreground process, use `docker logs` to see errors
+**Solution**: Check if CMD/ENTRYPOINT runs foreground process, use `[docker](../docker/SKILL.md) logs` to see errors
 
 ### Issue: Cannot Connect to Container
 **Problem**: Port not accessible
 **Solution**: Verify port mapping (-p), check container is running, verify firewall rules
 
 ### Issue: Out of Disk Space
-**Problem**: Docker using too much disk
-**Solution**: Run `docker system prune -a --volumes`, check for large unused images
+**Problem**: [Docker](../docker/SKILL.md) using too much disk
+**Solution**: Run `[docker](../docker/SKILL.md) system prune -a --volumes`, check for large unused images
 
 ### Issue: Build Cache Not Working
 **Problem**: Every build downloads dependencies
@@ -393,10 +393,10 @@ docker run -d \
 - Use .dockerignore to exclude unnecessary files
 - Run containers as non-root users
 - Scan images for vulnerabilities regularly
-- Use Docker BuildKit for faster builds
+- Use [Docker](../docker/SKILL.md) BuildKit for faster builds
 
 ## Related Skills
 
-- [docker-compose](../docker-compose/) - Multi-container applications
-- [container-scanning](../../../security/scanning/container-scanning/) - Security scanning
-- [container-hardening](../../../security/hardening/container-hardening/) - Security hardening
+- [docker-compose](../[docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md)/) - Multi-container applications
+- [container-scanning](../../../security/scanning/[container-scanning](../container-scanning/SKILL.md)/) - Security scanning
+- [container-hardening](../../../security/hardening/[container-hardening](../container-hardening/SKILL.md)/) - Security hardening

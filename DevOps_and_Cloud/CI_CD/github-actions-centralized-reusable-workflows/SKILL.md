@@ -16,15 +16,15 @@ metadata:
   maturity: stable
 ---
 
-# GitHub Actions Centralized Reusable Workflows
+# [GitHub](../github/SKILL.md) Actions Centralized Reusable Workflows
 
 ## Purpose
 
 When the same workflow YAML — build, test, security scan, deploy — is
-copy-pasted across dozens of repos ([github-actions-single-repo-workflows](../github-actions-single-repo-workflows/SKILL.md)
+copy-pasted across dozens of repos ([github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md)
 covers that per-repo pattern), a policy change (a new required scan, a
 registry migration) requires editing every repo individually and drifts
-immediately. GitHub Actions solves this at the organization level with
+immediately. [GitHub](../github/SKILL.md) Actions solves this at the organization level with
 **reusable workflows** (`workflow_call`), which let a caller workflow in
 any repo invoke one centrally-maintained workflow definition with inputs/
 secrets, and **shared composite actions** hosted in a dedicated repo for
@@ -34,7 +34,7 @@ standardized pipeline rather than diverging copies.
 
 ## When to use
 
-- More than a handful of repos have near-identical `.github/workflows/*.yml`
+- More than a handful of repos have near-identical `.[github](../github/SKILL.md)/workflows/*.yml`
   files and a change requires updating each one individually.
 - Standing up an organization-wide CI/CD standard (e.g. "every service
   repo must run this exact set of security gates before deploy") that
@@ -44,16 +44,16 @@ standardized pipeline rather than diverging copies.
   schedule.
 - Deciding whether a step sequence belongs in a per-repo composite action
   (see
-  [github-actions-single-repo-workflows](../github-actions-single-repo-workflows/SKILL.md))
+  [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md))
   versus a centrally-hosted one consumed by many repos.
-- Migrating from Jenkins shared libraries to GitHub Actions and wanting
+- Migrating from [Jenkins](../jenkins/SKILL.md) shared libraries to [GitHub](../github/SKILL.md) Actions and wanting
   the equivalent centralization model — compare with
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md).
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md).
 
 ## Prerequisites & environment
 
 - A dedicated repository to host reusable workflows/composite actions
-  (commonly `.github` at the org level for org-wide defaults, or a
+  (commonly `.[github](../github/SKILL.md)` at the org level for org-wide defaults, or a
   purpose-named repo like `actions-library`).
 - Organization (or repo, for repo-scoped reuse) admin access to configure
   which repos may call reusable workflows: **Organization Settings →
@@ -77,7 +77,7 @@ standardized pipeline rather than diverging copies.
    declaring explicit `inputs:` and `secrets:` — this is what makes it
    callable from another repo rather than only runnable in its own repo:
    ```yaml
-   # .github/workflows/standard-node-ci.yml  (in org/actions-library)
+   # .[github](../github/SKILL.md)/workflows/standard-node-ci.yml  (in org/actions-library)
    name: standard-node-ci
    on:
      workflow_call:
@@ -115,7 +115,7 @@ standardized pipeline rather than diverging copies.
 2. **Call it from a consumer repo with a pinned version**, keeping the
    caller workflow thin:
    ```yaml
-   # .github/workflows/ci.yml  (in org/checkout-api)
+   # .[github](../github/SKILL.md)/workflows/ci.yml  (in org/checkout-api)
    name: ci
    on:
      pull_request:
@@ -124,7 +124,7 @@ standardized pipeline rather than diverging copies.
        branches: [main]
    jobs:
      ci:
-       uses: org/actions-library/.github/workflows/standard-node-ci.yml@v1.3.0
+       uses: org/actions-library/.[github](../github/SKILL.md)/workflows/standard-node-ci.yml@v1.3.0
        with:
          node-version: "20"
          deploy-target: staging
@@ -132,8 +132,8 @@ standardized pipeline rather than diverging copies.
          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
    ```
    Pin `@v1.3.0` (a tag), not `@main` — the same versioning discipline as a
-   Jenkins shared library (see
-   [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md)
+   [Jenkins](../jenkins/SKILL.md) shared library (see
+   [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md)
    for the direct analog).
 
 3. **Use `secrets: inherit` only when the caller repo's full secret set is
@@ -159,9 +159,9 @@ standardized pipeline rather than diverging copies.
    - uses: org/actions-library/setup-node-env@v1.3.0
    ```
 
-5. **Nest reusable workflows sparingly** — GitHub Actions allows calling a
+5. **Nest reusable workflows sparingly** — [GitHub](../github/SKILL.md) Actions allows calling a
    reusable workflow from within another reusable workflow up to a depth
-   limit (4 levels as of current GitHub Actions); design the org's
+   limit (4 levels as of current [GitHub](../github/SKILL.md) Actions); design the org's
    standard workflows as a shallow, well-documented hierarchy rather than
    deep nesting that's hard to trace.
 
@@ -178,21 +178,21 @@ standardized pipeline rather than diverging copies.
    without their own review.
 
 8. **Enforce adoption, don't just offer it**, via a required organization
-   ruleset or a periodic audit (e.g. a scheduled workflow that scans repos
-   for `.github/workflows/*.yml` files that don't call the standard
+   ruleset or a periodic [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (e.g. a scheduled workflow that scans repos
+   for `.[github](../github/SKILL.md)/workflows/*.yml` files that don't call the standard
    reusable workflow) if the goal is a hard organization-wide standard
    rather than an opt-in convenience.
 
 ## Best practices
 
-- Pin callers to a tagged version (`@v1.3.0`) or full commit SHA, never
+- Pin callers to a tagged version (`@v1.3.0`) or full [commit](../commit/SKILL.md) SHA, never
   `@main`, for the same reason third-party actions should be pinned — see
-  [github-actions-single-repo-workflows](../github-actions-single-repo-workflows/SKILL.md).
+  [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md).
 - Keep the reusable workflow's `inputs:`/`secrets:` surface small and
   well-documented (a table in the library repo's README); every input
   should have a sensible `default` unless it's genuinely required.
 - Prefer named `secrets:` passing over `secrets: inherit` for anything
-  security-sensitive, so an audit of the reusable workflow's YAML alone
+  security-sensitive, so an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of the reusable workflow's YAML alone
   shows exactly what secrets it can touch.
 - Give the reusable-workflow repo its own tests: a workflow in that same
   repo that calls the reusable workflow against a throwaway/sample
@@ -204,8 +204,8 @@ standardized pipeline rather than diverging copies.
   invokes the shared workflow.
 - Document a clear deprecation/migration path (a fixed window, e.g. 90
   days) when retiring an old major version, mirroring the same discipline
-  used for Jenkins shared library majors — see
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md).
+  used for [Jenkins](../jenkins/SKILL.md) shared library majors — see
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -242,12 +242,12 @@ standardized pipeline rather than diverging copies.
   renames the hosting repo without checking who still references it,
   breaking pipelines across the org simultaneously with no warning.
   **Fix:** Before deleting a version tag or moving/renaming the
-  actions-library repo, search caller repos (e.g. a GitHub code search for
-  `uses: org/actions-library/.github/workflows/standard-node-ci.yml@v1`)
+  actions-library repo, search caller repos (e.g. a [GitHub](../github/SKILL.md) code search for
+  `uses: org/actions-library/.[github](../github/SKILL.md)/workflows/standard-node-ci.yml@v1`)
   for references still pinned to that tag/path — treat this the same as
-  the "don't delete a still-referenced Jenkins shared library version"
+  the "don't delete a still-referenced [Jenkins](../jenkins/SKILL.md) shared library version"
   warning in
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md).
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md).
 
 ## Worked example
 
@@ -257,7 +257,7 @@ reusable workflow so each repo's caller file is ~10 lines, and adding a
 new required security scan later needs only one PR to the library repo
 plus each caller bumping its version pin.
 
-`org/actions-library/.github/workflows/standard-node-ci.yml` (excerpt
+`org/actions-library/.[github](../github/SKILL.md)/workflows/standard-node-ci.yml` (excerpt
 adding a scan stage in `v1.4.0`):
 ```yaml
 on:
@@ -285,7 +285,7 @@ jobs:
 
   deploy:
     needs: security-scan
-    if: github.ref == 'refs/heads/main'
+    if: [github](../github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: staging
     steps:
@@ -293,7 +293,7 @@ jobs:
         env: { DEPLOY_TOKEN: "${{ secrets.DEPLOY_TOKEN }}" }
 ```
 
-Caller repo (`org/checkout-api/.github/workflows/ci.yml`), unchanged
+Caller repo (`org/checkout-api/.[github](../github/SKILL.md)/workflows/ci.yml`), unchanged
 except bumping the version pin when ready to adopt the new scan stage:
 ```yaml
 name: ci
@@ -302,7 +302,7 @@ on:
   push: { branches: [main] }
 jobs:
   ci:
-    uses: org/actions-library/.github/workflows/standard-node-ci.yml@v1.4.0
+    uses: org/actions-library/.[github](../github/SKILL.md)/workflows/standard-node-ci.yml@v1.4.0
     with: { node-version: "20" }
     secrets:
       DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
@@ -313,6 +313,6 @@ one-line PR, instead of 40 separate workflow-file rewrites to add the
 
 ## Cross-references
 
-- [github-actions-single-repo-workflows](../github-actions-single-repo-workflows/SKILL.md) — the per-repo workflow/composite-action pattern this centralizes once duplicated across repos.
-- [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md) — the equivalent centralization pattern and versioning discipline on Jenkins.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the security-scan stage this reusable workflow enforces consistently across all callers.
+- [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) — the per-repo workflow/composite-action pattern this centralizes once duplicated across repos.
+- [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — the equivalent centralization pattern and versioning discipline on [Jenkins](../jenkins/SKILL.md).
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security-scan stage this reusable workflow enforces consistently across all callers.

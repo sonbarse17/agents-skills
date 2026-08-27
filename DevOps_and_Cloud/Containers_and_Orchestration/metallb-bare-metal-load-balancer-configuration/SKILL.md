@@ -16,14 +16,14 @@ metadata:
   maturity: stable
 ---
 
-# MetalLB Bare-Metal Load Balancer Configuration
+# MetalLB [Bare-Metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) Load Balancer Configuration
 
 ## Purpose
 
 A `Service` of `type: LoadBalancer` is meaningless on a cluster with no
 cloud provider integration — without something to satisfy that request,
 the Service sits with `EXTERNAL-IP: <pending>` forever. MetalLB fills
-exactly that gap for bare-metal and on-prem clusters by implementing the
+exactly that gap for [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) and on-prem clusters by implementing the
 load-balancer API itself: it watches for `LoadBalancer` Services,
 allocates an IP from a configured pool, and announces reachability to
 that IP using one of two fundamentally different mechanisms — Layer2
@@ -36,13 +36,13 @@ most common way MetalLB looks "installed" but doesn't actually make
 Services reachable. This skill covers configuring both modes and the IP
 pool; verifying that allocation and peering are actually healthy before
 depending on it in production is
-[metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)'s
+[metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md)'s
 job.
 
 ## When to use
 
-- Standing up `LoadBalancer` Service support on a new bare-metal/on-prem
-  Kubernetes cluster (kubeadm, K3s, Cluster API on bare metal) with no
+- Standing up `LoadBalancer` Service support on a new [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/on-prem
+  [Kubernetes](../kubernetes/SKILL.md) cluster (kubeadm, K3s, Cluster API on bare metal) with no
   cloud load-balancer integration.
 - Deciding between Layer2 and BGP mode for a specific network
   environment.
@@ -50,14 +50,14 @@ job.
   from which pool.
 - Setting up BGP peering between cluster nodes and upstream
   top-of-rack/router infrastructure.
-- Debugging a `LoadBalancer` Service stuck `<pending>` on a bare-metal
+- Debugging a `LoadBalancer` Service stuck `<pending>` on a [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
   cluster.
 - Migrating a cluster from Layer2 to BGP mode (or the reverse) for
   better failover/load-spreading characteristics.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster ≥ 1.26 with no existing cloud-provider
+- A [Kubernetes](../kubernetes/SKILL.md) cluster ≥ 1.26 with no existing cloud-provider
   `LoadBalancer` implementation already claiming that role (MetalLB
   and a cloud controller manager's LB integration conflict if both are
   active).
@@ -74,7 +74,7 @@ job.
   physical network, since MetalLB's BGP speaker needs a peer
   relationship configured on both sides (MetalLB's `BGPPeer` CRD and
   the router's own BGP neighbor configuration).
-- Familiarity with [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+- Familiarity with [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
   if also running Calico in BGP mode on the same cluster — Calico's pod
   networking BGP and MetalLB's service-IP BGP are separate BGP sessions
   serving different purposes, and can coexist but should be configured
@@ -84,8 +84,8 @@ job.
 
 1. **Install MetalLB**:
    ```bash
-   kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-   kubectl -n metallb-system get pods   # controller + speaker DaemonSet, wait for Running
+   [kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+   [kubectl](../kubectl/SKILL.md) -n metallb-system get pods   # controller + speaker DaemonSet, wait for Running
    ```
 
 2. **If kube-proxy runs in IPVS mode, enable `strictARP`** before
@@ -93,9 +93,9 @@ job.
    conflicts with MetalLB's, and Services intermittently become
    unreachable:
    ```bash
-   kubectl get configmap kube-proxy -n kube-system -o yaml | \
+   [kubectl](../kubectl/SKILL.md) get configmap kube-proxy -n kube-system -o yaml | \
      sed -e 's/strictARP: false/strictARP: true/' | \
-     kubectl apply -f - -n kube-system
+     [kubectl](../kubectl/SKILL.md) apply -f - -n kube-system
    ```
    Not required for iptables-mode kube-proxy (the more common default),
    but always confirm which mode is actually running before skipping
@@ -105,7 +105,7 @@ job.
    familiarity:
    - **Layer2** when nodes share a flat L2 segment and there's no BGP
      fabric available (the common case for smaller on-prem/homelab/
-     simpler datacenter setups) — one node at a time answers ARP/NDP
+     simpler [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) setups) — one node at a time answers ARP/NDP
      for each service IP; failover on node loss takes a few seconds
      (ARP cache expiry-dependent) and there's no real load spreading
      across nodes for a single Service IP.
@@ -113,7 +113,7 @@ job.
      faster failover or genuine multi-node ECMP load spreading for a
      single Service IP is required — this is a real network design
      decision requiring the network team's involvement, not a
-     Kubernetes-only configuration change.
+     [Kubernetes](../kubernetes/SKILL.md)-only configuration change.
 
 4. **Configure an `IPAddressPool`** (works for both modes — this is
    what actually gets allocated to Services):
@@ -172,7 +172,7 @@ job.
    `myASN`/`peerASN`/`peerAddress` must exactly match what's configured
    on the router's side — mismatches here are the most common cause of
    a `BGPPeer` never reaching `Established` (see
-   [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)).
+   [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md)).
 
 7. **Scope pools to specific namespaces/Services** when different
    teams or environments must not draw from each other's IP ranges:
@@ -220,9 +220,9 @@ job.
 - Reserve the IP range given to MetalLB explicitly with whoever manages
   DHCP/IPAM for that network segment — an overlapping range handed out
   by both DHCP and MetalLB produces intermittent, very confusing IP
-  conflicts that look like a Kubernetes bug.
+  conflicts that look like a [Kubernetes](../kubernetes/SKILL.md) bug.
 - Default to Layer2 mode unless BGP's load-spreading or faster-failover
-  benefits are actually needed and the network team can commit to
+  benefits are actually needed and the network team can [commit](../../CI_CD/commit/SKILL.md) to
   maintaining the peering — BGP mode adds a real, ongoing
   cross-team dependency that Layer2 mode doesn't.
 - Keep `aggregationLength: 32` (advertise each service IP individually)
@@ -248,7 +248,7 @@ job.
   **Fix:** Check that an `IPAddressPool` actually exists with
   `autoAssign: true` (or the Service references one explicitly via
   annotation) and that the pool isn't already exhausted
-  (`kubectl -n metallb-system get ipaddresspools -o yaml` and compare
+  (`[kubectl](../kubectl/SKILL.md) -n metallb-system get ipaddresspools -o yaml` and compare
   addresses used vs. available) — a common cause is every address in
   the pool already allocated to existing Services, leaving nothing for
   a new one.
@@ -259,10 +259,10 @@ job.
   runs in IPVS mode (step 2) — without it, ARP responses for the
   service IP can be inconsistent. In BGP mode, confirm the `BGPPeer`
   session is actually `Established` (see
-  [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md))
+  [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md))
   — an assigned IP with no working BGP session announces nothing to
   the upstream network, leaving the address unreachable despite
-  Kubernetes reporting it as allocated.
+  [Kubernetes](../kubernetes/SKILL.md) reporting it as allocated.
 
 - **Symptom:** Two Services end up with the same external IP, or a
   Service gets an IP that's also in use by something else on the
@@ -270,7 +270,7 @@ job.
   **Fix:** The MetalLB pool overlaps with a range still handed out by
   DHCP or statically assigned elsewhere — reserve the pool's range
   explicitly and remove it from DHCP scope before assigning it to
-  MetalLB, and audit existing static assignments on that subnet before
+  MetalLB, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) existing static assignments on that subnet before
   the pool is put into production use.
 
 - **Symptom:** Failover after a node failure in Layer2 mode takes much
@@ -287,7 +287,7 @@ job.
   Services actively using addresses from it, "to reconfigure the range."
   **Fix:** Deleting a pool still in use by live Services leaves those
   Services with an orphaned/unmanaged external IP and can disrupt
-  traffic — check `kubectl get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'`
+  traffic — check `[kubectl](../kubectl/SKILL.md) get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'`
   for current allocations from a pool before deleting or resizing it,
   and migrate/re-provision affected Services deliberately rather than
   deleting the pool out from under them.
@@ -300,16 +300,16 @@ router available, and a stable IP reserved in advance for a public-
 facing `payments-api` Service that's already registered in DNS.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-kubectl -n metallb-system get pods
+[kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+[kubectl](../kubectl/SKILL.md) -n metallb-system get pods
 ```
 
 Confirm kube-proxy mode and enable `strictARP` if IPVS:
 ```bash
-kubectl get configmap kube-proxy -n kube-system -o jsonpath='{.data.config\.conf}' | grep mode
+[kubectl](../kubectl/SKILL.md) get configmap kube-proxy -n kube-system -o jsonpath='{.data.config\.conf}' | grep mode
 # mode: "ipvs"
-kubectl get configmap kube-proxy -n kube-system -o yaml | \
-  sed -e 's/strictARP: false/strictARP: true/' | kubectl apply -f - -n kube-system
+[kubectl](../kubectl/SKILL.md) get configmap kube-proxy -n kube-system -o yaml | \
+  sed -e 's/strictARP: false/strictARP: true/' | [kubectl](../kubectl/SKILL.md) apply -f - -n kube-system
 ```
 
 ```yaml
@@ -345,14 +345,14 @@ spec:
 `payments-api.example.com` in DNS) and sits outside the `.200-.220`
 `autoAssign` pool's typical auto-pick order but still within it, so it's
 both explicitly pinned and validly drawn from the reserved range —
-`kubectl get svc payments-api -n payments` confirms
+`[kubectl](../kubectl/SKILL.md) get svc payments-api -n payments` confirms
 `EXTERNAL-IP: 10.0.0.210` and the Service is reachable from outside the
 cluster once ARP for that address resolves to the node currently
 holding it.
 
 ## Cross-references
 
-- [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md) — validating IP pool allocation and BGP peering health before relying on this configuration in production.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — Calico's separate BGP usage for pod networking, distinct from but potentially coexisting with MetalLB's BGP mode on the same cluster.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — commonly layered on top of a MetalLB-provided `LoadBalancer` IP to route HTTP(S) traffic to multiple Services.
-- [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md) — broader on-prem network/infrastructure design this skill's IP pool and BGP peering decisions fit into.
+- [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md) — validating IP pool allocation and BGP peering health before relying on this configuration in production.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — Calico's separate BGP usage for pod networking, distinct from but potentially coexisting with MetalLB's BGP mode on the same cluster.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — commonly layered on top of a MetalLB-provided `LoadBalancer` IP to route HTTP(S) traffic to multiple Services.
+- [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — broader on-prem network/infrastructure design this skill's IP pool and BGP peering decisions fit into.

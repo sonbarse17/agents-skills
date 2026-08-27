@@ -21,17 +21,17 @@ metadata:
   maturity: stable
 ---
 
-# Complete Kubernetes Deployment with K3s From Scratch
+# Complete [Kubernetes](../kubernetes/SKILL.md) Deployment with K3s From Scratch
 
 ## Purpose
 
-K3s's whole value proposition is that most of a full Kubernetes stack
+K3s's whole value proposition is that most of a full [Kubernetes](../kubernetes/SKILL.md) stack
 (CNI, Ingress, a LoadBalancer implementation, a datastore) ships bundled
 and pre-decided — which means the end-to-end deployment sequence for K3s
 looks different in kind, not just in vendor-specific detail, from EKS/
 AKS/GKE/OKE or a self-managed kubeadm cluster: several phases that are
 mandatory elsewhere (install a CNI, install an Ingress controller, solve
-the bare-metal LoadBalancer problem) are instead "confirm the bundled
+the [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) LoadBalancer problem) are instead "confirm the bundled
 default is acceptable, or deliberately disable and replace it." Getting
 this sequence wrong most commonly means either fighting K3s's own
 defaults without realizing they're what's causing the odd behavior, or
@@ -70,20 +70,20 @@ gate, and a first workload into one ordered path for K3s specifically.
   fall into by skipping the decision.
 - If the hosts are physical edge/on-prem equipment rather than VMs or CI
   runners, the inventory and out-of-band management discipline from
-  [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md)
+  [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md)
   applies before K3s installation begins.
 - **No built-in cloud workload-identity mechanism.** Unlike EKS/AKS/GKE/
   OKE, K3s has no IRSA/Workload-Identity-Federation equivalent baked in —
   if a workload on this cluster needs to call a cloud provider's API,
-  plan that credential path (a secrets manager, HashiCorp Vault, or a
+  plan that credential path (a secrets manager, HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or a
   cloud-specific federation mechanism configured independently of K3s
   itself) as part of Phase 1, not as an assumption carried over from a
-  managed-Kubernetes deployment.
+  managed-[Kubernetes](../kubernetes/SKILL.md) deployment.
 - A registered DNS name and, if Let's Encrypt HTTP-01/DNS-01 is the TLS
   plan, either port 80 reachable from the internet or a DNS provider API
   credential — many K3s edge deployments have neither, which changes the
   Phase 5 decision materially (see that phase).
-- `helm` ≥ 3.14 on a machine with `kubectl` access to the cluster.
+- `helm` ≥ 3.14 on a machine with `[kubectl](../kubectl/SKILL.md)` access to the cluster.
 
 ## Step-by-step guidance
 
@@ -94,7 +94,7 @@ integration decisions.
 1. **Phase 1 — Decide topology and datastore before installing
    anything.** This is the single highest-leverage decision in the whole
    sequence and the hardest to change after the fact. See
-   [lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md)
+   [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md)
    for the full single-server-SQLite vs. multi-server-embedded-etcd vs.
    multi-server-external-datastore tradeoff. Decide explicitly which one
    this deployment needs based on its actual availability requirement,
@@ -124,11 +124,11 @@ integration decisions.
    there is no separate "apply a CNI manifest" step the way a fresh
    kubeadm cluster requires. Confirm it's healthy:
    ```bash
-   kubectl get pods -n kube-system -l app=flannel
+   [kubectl](../kubectl/SKILL.md) get pods -n kube-system -l app=flannel
    ```
    **Alternative:** if `NetworkPolicy` enforcement is required, Flannel's
    bundled default does not provide it — swap in Calico following
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md),
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md),
    installed at `k3s server` startup via `--flannel-backend=none` plus a
    separate Calico install, decided in this phase rather than attempted
    as a live swap on a cluster with running workloads.
@@ -147,9 +147,9 @@ integration decisions.
      small clusters but has no real load-spreading or health-aware
      failover the way MetalLB's BGP mode or a cloud LB does.
    - **Swap to ingress-nginx (see
-     [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md))
+     [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md))
      and MetalLB (see
-     [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md))**
+     [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md))**
      when standardizing configuration across K3s and other on-prem/
      kubeadm clusters, or when ServiceLB's limitations (no real
      multi-node load spreading, coarse failover) are a real constraint —
@@ -159,14 +159,14 @@ integration decisions.
 
 5. **Phase 5 — cert-manager, sized to the deployment's actual
    reachability.** Install cert-manager per
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md),
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md),
    but choose the issuance mechanism based on what this specific K3s
    deployment can actually reach — an edge site with no public IP and no
    port-80 ingress cannot use HTTP-01 at all, and may not have a
    DNS-provider API credential available either:
    - **Internet-reachable K3s (dev, CI, small public-facing on-prem
      site)**: Let's Encrypt HTTP-01 or DNS-01 exactly as documented in
-     [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md).
+     [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md).
    - **Air-gapped or NAT'd edge sites with no public DNS-01 path**: a
      private/internal CA `Issuer` (cert-manager's self-signed root plus
      an intermediate `CA` Issuer, or an existing internal CA's key
@@ -176,15 +176,15 @@ integration decisions.
 
 6. **Phase 6 — Conformance and smoke validation, scaled to K3s's
    footprint.** Full CNCF `certified-conformance` is designed for
-   clusters with real spare scheduling capacity — running it against a
-   512MB-RAM edge device is likely to produce capacity-driven false
+   clusters with real spare scheduling [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — running it against a
+   512MB-RAM edge device is likely to produce [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-driven false
    failures rather than a meaningful conformance signal. See
-   [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+   [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
    for the base procedure, and adapt it for K3s:
    - Run **quick mode** on every K3s deployment, edge included — it's
      fast and low-resource enough to be a legitimate gate everywhere.
    - Run **full `certified-conformance`** only on a cluster with genuine
-     spare capacity (a dev/CI K3s cluster, or a staging cluster built with
+     spare [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (a dev/CI K3s cluster, or a staging cluster built with
      the same config as the target edge fleet) rather than directly
      against a resource-constrained production edge device.
    - Always run the **targeted DNS/storage/ingress smoke tests**
@@ -192,15 +192,15 @@ integration decisions.
      misconfigurations specific to whatever was decided in Phases 3–5.
    - If multi-server HA was chosen in Phase 1, add an etcd/datastore
      health check (member count, quorum) to this gate — see
-     [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md),
+     [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md),
      which applies to K3s's embedded etcd exactly as it does to kubeadm's.
 
 7. **Phase 7 — Deploy the first workload, via Helm or K3s's built-in
    HelmChart CRD.** Standard `helm upgrade --install` works exactly as
-   [helm-chart-authoring](../helm-chart-authoring/SKILL.md) describes.
+   [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) describes.
    K3s-specific alternative: its built-in Helm controller reconciles
    `HelmChart`/`HelmChartConfig` custom resources declaratively, useful
-   for GitOps-style bootstrap of a chart at cluster creation time without
+   for [GitOps](../gitops/SKILL.md)-style bootstrap of a chart at cluster creation time without
    a separate `helm` invocation:
    ```yaml
    apiVersion: helm.cattle.io/v1
@@ -216,14 +216,14 @@ integration decisions.
        replicaCount: 2
    ```
    Prefer this path specifically when the chart install should be part of
-   the same GitOps-applied manifest set as the rest of the cluster's
+   the same [GitOps](../gitops/SKILL.md)-applied manifest set as the rest of the cluster's
    bootstrap config; otherwise plain `helm` is simpler to reason about.
 
 8. **Phase 8 — Node/cluster health baseline, including the datastore
    backup Phases 3–6 didn't finalize.** Establish node drain/cordon
    discipline via
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md),
-   and — unlike the managed-Kubernetes skills in this family — **actually
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md),
+   and — unlike the managed-[Kubernetes](../kubernetes/SKILL.md) skills in this family — **actually
    schedule the datastore backup now**, since K3s's control plane is
    entirely self-managed regardless of topology:
    ```bash
@@ -234,8 +234,8 @@ integration decisions.
    `etcd-snapshot` command only covers the embedded-etcd path); for an
    external SQL datastore, back it up through that database's own
    tooling. See
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
-   for the restore procedure and quorum-monitoring detail this baseline
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
+   for the restore procedure and quorum-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) detail this baseline
    depends on.
 
 ## Best practices
@@ -244,14 +244,14 @@ integration decisions.
   keep vs. disable (Phase 2) before the first `k3s server` command ever
   runs — both are far more disruptive to change once nodes have joined
   and workloads are scheduled.
-- Never assume a managed-Kubernetes workload-identity pattern (IRSA,
+- Never assume a managed-[Kubernetes](../kubernetes/SKILL.md) workload-identity pattern (IRSA,
   Azure AD Workload Identity, Workload Identity Federation) is available
   on K3s — if a workload needs cloud API access, design that credential
   path explicitly and independently in Phase 1.
 - Scale conformance validation to the deployment's actual footprint
   (Phase 6) rather than either skipping it entirely on edge devices or
   forcing the full suite onto hardware it will simply fail against for
-  capacity reasons unrelated to correctness.
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) reasons unrelated to correctness.
 - Schedule the datastore backup (Phase 8) as part of initial deployment,
   not as a follow-up task — K3s gives no managed-control-plane safety net
   the way EKS/AKS/GKE/OKE do.
@@ -293,14 +293,14 @@ integration decisions.
   network path that structurally cannot work.
 
 - **Symptom:** A single-server K3s cluster's node goes offline for
-  unrelated maintenance, and every `kubectl` command (and any GitOps
+  unrelated maintenance, and every `[kubectl](../kubectl/SKILL.md)` command (and any [GitOps](../gitops/SKILL.md)
   reconciliation depending on API access) fails simultaneously.
   **Fix:** This is the expected consequence of the Phase 1 topology
   decision, not a new problem — a single-server cluster has no control-
   plane HA by design. If this outage class is unacceptable, the fix is
   revisiting Phase 1's topology choice (multi-server embedded etcd or
   external datastore) for this deployment, not patching around a single
-  incident after the fact.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md) after the fact.
 
 - **Symptom:** An edge device runs fine for months, then a K3s version
   upgrade corrupts or loses cluster state.
@@ -333,11 +333,11 @@ curl -sfL https://get.k3s.io | sh -s - server \
   --token <TOKEN_FROM_SERVER_1> --disable traefik --disable servicelb
 
 # Phase 3 — bundled Flannel confirmed healthy (no NetworkPolicy requirement here)
-kubectl get pods -n kube-system -l app=flannel
+[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l app=flannel
 
 # Phase 4 — MetalLB + ingress-nginx instead of ServiceLB/Traefik
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-kubectl apply -f metallb-pool-and-l2advertisement.yaml
+[kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+[kubectl](../kubectl/SKILL.md) apply -f metallb-pool-and-l2advertisement.yaml
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
@@ -345,22 +345,22 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 # Phase 5 — cert-manager with DNS-01 (no reliable inbound HTTP-01 path)
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 --set crds.enabled=true
-kubectl apply -f dns01-staging-issuer.yaml   # validate, then swap to prod
+[kubectl](../kubectl/SKILL.md) apply -f dns01-staging-issuer.yaml   # validate, then swap to prod
 
 # Phase 6 — quick mode always; full conformance run against an identically-configured staging cluster, not this edge site directly
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
-kubectl run dns-check --image=busybox:1.36 --rm -it --restart=Never -- \
-  nslookup kubernetes.default.svc.cluster.local
+[kubectl](../kubectl/SKILL.md) run dns-check --image=busybox:1.36 --rm -it --restart=Never -- \
+  nslookup [kubernetes](../kubernetes/SKILL.md).default.svc.cluster.local
 
 # Phase 7 — first workload via K3s's built-in HelmChart CRD
-kubectl apply -f payments-api-helmchart.yaml
+[kubectl](../kubectl/SKILL.md) apply -f payments-api-helmchart.yaml
 
 # Phase 8 — datastore backup and node health baseline
 k3s etcd-snapshot save --name baseline-$(date +%F)
-kubectl get nodes -o wide
+[kubectl](../kubectl/SKILL.md) get nodes -o wide
 ```
 
-`kubectl get nodes` shows all three server nodes `Ready` on separate
+`[kubectl](../kubectl/SKILL.md) get nodes` shows all three server nodes `Ready` on separate
 underlying hardware, `curl -I https://payments-edge.example.com` returns
 `HTTP/2 200` with a production Let's Encrypt certificate issued via
 DNS-01, and the etcd snapshot confirms the datastore backup discipline
@@ -368,13 +368,13 @@ from Phase 8 is active before the site is considered handed off.
 
 ## Cross-references
 
-- [lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md) — full detail for Phase 1's topology/datastore decision and Phase 2's install flags.
-- [on-prem-infrastructure-patterns](../../../cloud/skills/on-prem-infrastructure-patterns/SKILL.md) — inventory/out-of-band management discipline for physical edge hardware hosting K3s.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — the Calico alternative to K3s's bundled Flannel referenced in Phase 3.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — full detail for swapping Traefik for ingress-nginx in Phase 4.
-- [metallb-bare-metal-load-balancer-configuration](../metallb-bare-metal-load-balancer-configuration/SKILL.md) — full detail for swapping ServiceLB for MetalLB in Phase 4.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup, both the ACME and private-CA paths.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — the base validation procedure Phase 6 scales down for K3s's footprint.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — full detail for the embedded-etcd backup/restore/quorum-monitoring referenced in Phases 6 and 8.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — full detail for the standard `helm install` path in Phase 7.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — the ongoing operational baseline established in Phase 8.
+- [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — full detail for Phase 1's topology/datastore decision and Phase 2's install flags.
+- [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — inventory/out-of-band management discipline for physical edge hardware hosting K3s.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — the Calico alternative to K3s's bundled Flannel referenced in Phase 3.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for swapping Traefik for ingress-nginx in Phase 4.
+- [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for swapping ServiceLB for MetalLB in Phase 4.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup, both the ACME and private-CA paths.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — the base validation procedure Phase 6 scales down for K3s's footprint.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for the embedded-etcd backup/restore/quorum-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) referenced in Phases 6 and 8.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for the standard `helm install` path in Phase 7.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 8.

@@ -21,15 +21,15 @@ references:
   - https://owasp.org/www-project-top-ten/
 ---
 
-# Bandit Python SAST
+# Bandit [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SAST
 
 ## Overview
 
-Bandit is a security-focused static analysis tool for Python that identifies common security vulnerabilities and coding anti-patterns. It parses Python code into Abstract Syntax Trees (AST) and executes security plugins to detect issues like hardcoded credentials, SQL injection, command injection, weak cryptography, and insecure API usage. Bandit provides actionable reports with severity classifications aligned to industry security standards.
+Bandit is a security-focused static analysis tool for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) that identifies common security vulnerabilities and coding anti-patterns. It parses [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code into Abstract Syntax Trees (AST) and executes security plugins to detect issues like hardcoded credentials, SQL injection, command injection, weak cryptography, and insecure API usage. Bandit provides actionable reports with severity classifications aligned to industry security standards.
 
 ## Quick Start
 
-Scan a Python file or directory for security vulnerabilities:
+Scan a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) file or directory for security vulnerabilities:
 
 ```bash
 # Install Bandit
@@ -39,7 +39,7 @@ pip install bandit
 bandit suspicious_file.py
 
 # Scan entire directory recursively
-bandit -r /path/to/python/project
+bandit -r /path/to/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/project
 
 # Generate JSON report
 bandit -r project/ -f json -o bandit_report.json
@@ -58,7 +58,7 @@ Install Bandit via pip:
 pip install bandit
 ```
 
-Create a configuration file `.bandit` or `.bandit.yaml` to customize scans:
+Create a configuration file `.bandit` or `.bandit.yaml` to [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) scans:
 
 ```yaml
 # .bandit.yaml
@@ -80,7 +80,7 @@ tests:
 
 ### Step 2: Execute Security Scan
 
-Run Bandit against Python codebase:
+Run Bandit against [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) codebase:
 
 ```bash
 # Basic scan with severity threshold
@@ -138,7 +138,7 @@ For each finding, consult the bundled `../../../Global_References/sast-bandit_re
 Add Bandit to CI/CD pipelines to enforce security gates:
 
 ```yaml
-# .github/workflows/security-scan.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on: [push, pull_request]
 
@@ -147,9 +147,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v4
         with:
-          python-version: '3.11'
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
       - name: Install Bandit
         run: pip install bandit
       - name: Run Bandit
@@ -166,9 +166,9 @@ Use the bundled script `scripts/bandit_analyzer.py` for enhanced reporting with 
 
 - **Access Control**: Run Bandit in sandboxed CI/CD environments with read-only access to source code. Restrict write permissions to prevent tampering with security configurations.
 
-- **Audit Logging**: Log all Bandit executions with timestamps, scan scope, findings count, and operator identity for security auditing and compliance purposes.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Bandit executions with timestamps, scan scope, findings count, and operator identity for security auditing and compliance purposes.
 
-- **Compliance**: Bandit supports SOC2, PCI-DSS, and GDPR compliance by identifying security weaknesses. Document scan frequency, remediation timelines, and exception approvals for audit trails.
+- **Compliance**: Bandit supports SOC2, PCI-DSS, and GDPR compliance by identifying security weaknesses. Document scan frequency, remediation timelines, and exception approvals for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
 
 - **False Positives**: Review LOW confidence findings manually. Use inline `# nosec` comments sparingly and document justifications in code review processes.
 
@@ -188,7 +188,7 @@ Use the bundled script `scripts/bandit_analyzer.py` for enhanced reporting with 
 
 - `bandit_config.yaml` - Production-ready Bandit configuration with optimized test selection, exclusion patterns for common false positives, and severity thresholds. Use as baseline configuration for projects.
 
-- `pre-commit-config.yaml` - Pre-commit hook configuration for Bandit integration. Prevents commits with HIGH severity findings.
+- `pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml` - Pre-[commit](../../CI_CD/commit/SKILL.md) hook configuration for Bandit integration. Prevents commits with HIGH severity findings.
 
 ## Common Patterns
 
@@ -237,7 +237,7 @@ bandit -r . -l
 
 Document exceptions inline with justification:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Example: Suppressing pickle warning for internal serialization
 import pickle  # nosec B301 - Internal cache, not user input
 
@@ -248,13 +248,13 @@ def load_cache(file_path):
 
 ## Integration Points
 
-- **CI/CD**: Integrate as GitHub Actions, GitLab CI, Jenkins pipeline stage, or pre-commit hook. Use `scripts/bandit_analyzer.py` for enhanced reporting.
+- **CI/CD**: Integrate as [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md) pipeline stage, or pre-[commit](../../CI_CD/commit/SKILL.md) hook. Use `scripts/bandit_analyzer.py` for enhanced reporting.
 
 - **Security Tools**: Combine with Semgrep for additional SAST coverage, Safety for dependency scanning, and SonarQube for code quality metrics.
 
-- **SDLC**: Execute during development (pre-commit), code review (PR checks), and release gates (pipeline stage). Establish baseline scans for legacy code and enforce strict checks for new code.
+- **SDLC**: Execute during development (pre-[commit](../../CI_CD/commit/SKILL.md)), code review (PR checks), and release gates (pipeline stage). Establish baseline scans for legacy code and enforce strict checks for new code.
 
-- **Ticketing Integration**: Use `scripts/bandit_analyzer.py` to automatically create Jira/GitHub issues for HIGH severity findings with remediation guidance.
+- **Ticketing Integration**: Use `scripts/bandit_analyzer.py` to automatically create Jira/[GitHub](../../CI_CD/github/SKILL.md) issues for HIGH severity findings with remediation guidance.
 
 ## Troubleshooting
 
@@ -263,7 +263,7 @@ def load_cache(file_path):
 **Solution**:
 1. Use confidence filtering: `bandit -r . -i` (HIGH confidence only)
 2. Exclude test files: `bandit -r . --exclude /tests/`
-3. Customize `.bandit.yaml` to skip specific tests for known safe patterns
+3. [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) `.bandit.yaml` to skip specific tests for known safe patterns
 4. Review and suppress with inline `# nosec` comments with justification
 
 ### Issue: Scan Performance on Large Codebases
@@ -281,26 +281,26 @@ def load_cache(file_path):
 3. Combine with Semgrep for additional coverage (e.g., business logic vulnerabilities)
 4. Update Bandit regularly: `pip install --upgrade bandit`
 
-### Issue: Integration with Pre-commit Hooks
+### Issue: Integration with Pre-[commit](../../CI_CD/commit/SKILL.md) Hooks
 
 **Solution**:
-Use the bundled `assets/pre-commit-config.yaml`:
+Use the bundled `assets/pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml`:
 
 ```yaml
-- repo: https://github.com/PyCQA/bandit
+- repo: https://[github](../../CI_CD/github/SKILL.md).com/PyCQA/bandit
   rev: '1.7.5'
   hooks:
     - id: bandit
       args: ['-ll', '--recursive', '--configfile', '.bandit.yaml']
 ```
 
-Install hooks: `pre-commit install`
+Install hooks: `pre-[commit](../../CI_CD/commit/SKILL.md) install`
 
 ## References
 
 - [Bandit Documentation](https://bandit.readthedocs.io/)
-- [Bandit GitHub Repository](https://github.com/PyCQA/bandit)
+- [Bandit [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/PyCQA/bandit)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE Database](https://cwe.mitre.org/)
-- [Python Security Best Practices](https://python.readthedocs.io/en/stable/library/security_warnings.html)
+- [Python Security Best Practices](https://[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).readthedocs.io/en/stable/library/security_warnings.html)
 

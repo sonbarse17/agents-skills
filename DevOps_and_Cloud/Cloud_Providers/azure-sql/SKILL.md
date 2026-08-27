@@ -70,9 +70,9 @@ az sql db create \
   --server myapp-sqlserver \
   --name myapp-db \
   --edition GeneralPurpose \
-  --compute-model Serverless \
+  --compute-model [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) \
   --auto-pause-delay 60 \
-  --min-capacity 0.5 \
+  --min-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 0.5 \
   --max-size 32GB \
   --backup-storage-redundancy Geo \
   --zone-redundant false
@@ -114,9 +114,9 @@ az sql elastic-pool create \
   --server myapp-sqlserver \
   --name myapp-pool \
   --edition GeneralPurpose \
-  --capacity 4 \
-  --db-max-capacity 2 \
-  --db-min-capacity 0.25 \
+  --[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 4 \
+  --db-max-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 2 \
+  --db-min-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 0.25 \
   --max-size 256GB \
   --zone-redundant false
 
@@ -322,7 +322,7 @@ az sql db threat-policy update \
   --email-account-admins true
 
 # Enable auditing to storage
-az sql server audit-policy update \
+az sql server [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-policy update \
   --resource-group database-rg \
   --name myapp-sqlserver \
   --state Enabled \
@@ -330,7 +330,7 @@ az sql server audit-policy update \
   --retention-days 90
 
 # Enable auditing to Log Analytics
-az sql server audit-policy update \
+az sql server [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-policy update \
   --resource-group database-rg \
   --name myapp-sqlserver \
   --state Enabled \
@@ -437,8 +437,8 @@ resource "azurerm_mssql_database" "main" {
     email_addresses            = ["security@example.com"]
     email_account_admins       = "Enabled"
     retention_days             = 90
-    storage_endpoint           = azurerm_storage_account.audit.primary_blob_endpoint
-    storage_account_access_key = azurerm_storage_account.audit.primary_access_key
+    storage_endpoint           = azurerm_storage_account.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).primary_blob_endpoint
+    storage_account_access_key = azurerm_storage_account.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).primary_access_key
   }
 
   tags = var.tags
@@ -485,13 +485,13 @@ resource "azurerm_private_endpoint" "sql" {
 | Database DTU at 100% | Under-provisioned tier or inefficient queries | Scale up service objective; review Query Store for expensive queries |
 | Geo-replication lag is high | Large transaction volumes or network latency | Monitor with `sys.dm_geo_replication_link_status`; consider Hyperscale |
 | Point-in-time restore fails | Requested time is outside retention window | Check retention policy; use long-term backups for older data |
-| Elastic pool running out of eDTUs | Too many active databases in pool | Increase pool capacity or move heavy databases to dedicated tier |
-| TDE key rotation failure | Key Vault access policy missing | Grant SQL server managed identity GET, WRAP, UNWRAP permissions |
+| Elastic pool running out of eDTUs | Too many active databases in pool | Increase pool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or move heavy databases to dedicated tier |
+| TDE key rotation failure | Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access policy missing | Grant SQL server managed identity GET, WRAP, UNWRAP permissions |
 | Connection timeout from app | Network path blocked or DNS issue | Use `az network watcher test-connectivity`; verify private DNS resolution |
 
 ## Related Skills
 
-- `azure-networking` -- Private endpoints and VNet rules for SQL access.
-- `azure-functions` -- SQL bindings for serverless data access.
-- `terraform-azure` -- Terraform-based SQL infrastructure provisioning.
-- `arm-templates` -- Bicep templates for SQL deployments.
+- `[azure-networking](../azure-networking/SKILL.md)` -- Private endpoints and VNet rules for SQL access.
+- `[azure-functions](../azure-functions/SKILL.md)` -- SQL bindings for [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) data access.
+- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Terraform-based SQL infrastructure provisioning.
+- `[arm-templates](../arm-templates/SKILL.md)` -- Bicep templates for SQL deployments.

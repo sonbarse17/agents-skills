@@ -66,7 +66,7 @@ automation, not the C/C++ compiled-build use case Make originated for.
   matters for anything using `cd`, `set -e`, or shell variables across
   lines (see pitfalls).
 - Nothing runtime-specific beyond whatever the targets themselves invoke
-  (Docker, a compiler, `terraform`, `kubectl`, etc.) — Make itself has no
+  ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), a compiler, `terraform`, `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, etc.) — Make itself has no
   dependencies beyond being installed.
 
 ## Step-by-step guidance
@@ -121,9 +121,9 @@ automation, not the C/C++ compiled-build use case Make originated for.
    GIT_SHA := $(shell git rev-parse --short HEAD)
    IMAGE_TAG := myapp:$(GIT_SHA)
 
-   .PHONY: docker-build
-   docker-build:
-   	docker build -t $(IMAGE_TAG) .
+   .PHONY: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build
+   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build:
+   	[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $(IMAGE_TAG) .
    ```
    With `=` instead of `:=`, `$(shell git rev-parse ...)` would re-run on
    every reference to `GIT_SHA`, not just once — usually not what's
@@ -206,7 +206,7 @@ automation, not the C/C++ compiled-build use case Make originated for.
   pipefail -c` so a failing command mid-recipe stops the target instead
   of Make silently continuing to the next line — mirroring the
   strict-mode discipline in
-  [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md).
+  [shell-scripting-best-practices](../[shell-scripting-best-practices](../../Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md).
 - Prefix noisy/expected commands with `@` (suppress echoing the command
   itself) sparingly — full echoing is usually more useful for debugging a
   failing CI run than a quiet Makefile.
@@ -283,7 +283,7 @@ GIT_SHA := $(shell git rev-parse --short HEAD)
 IMAGE_TAG := checkout-api:$(GIT_SHA)
 ENV ?= dev
 
-.PHONY: help build test lint docker-build deploy clean
+.PHONY: help build test lint [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build deploy clean
 
 help: ## Show available targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -300,8 +300,8 @@ test: ## Run the test suite
 lint: ## Run static analysis
 	golangci-lint run ./...
 
-docker-build: ## Build a tagged container image
-	docker build -t $(IMAGE_TAG) .
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build: ## Build a tagged container image
+	[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $(IMAGE_TAG) .
 
 deploy: build test ## Deploy to ENV (default: dev; override with ENV=staging|prod)
 	@echo "Deploying $(IMAGE_TAG) to $(ENV)"
@@ -330,6 +330,6 @@ environment.
 
 ## Cross-references
 
-- [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md) — strict-mode/quoting guidance for any non-trivial script a Makefile target shells out to.
-- [python-automation-scripting-for-ops](../python-automation-scripting-for-ops/SKILL.md) — an alternative for automation logic that's grown beyond what a Makefile recipe should reasonably contain inline.
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — where `make build`/`make test`/`make deploy` targets typically get invoked from within a pipeline's stages.
+- [shell-scripting-best-practices](../[shell-scripting-best-practices](../../Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md) — strict-mode/quoting guidance for any non-trivial script a Makefile target shells out to.
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../../Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md) — an alternative for automation logic that's grown beyond what a Makefile recipe should reasonably contain inline.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where `make build`/`make test`/`make deploy` targets typically get invoked from within a pipeline's stages.

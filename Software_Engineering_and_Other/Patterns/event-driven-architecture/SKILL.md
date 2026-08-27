@@ -10,7 +10,7 @@ description: Best practices for Kafka/RabbitMQ message brokering and event sourc
 - **Event Sourcing**: State is determined by a sequence of events.
 
 ## Diagram
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Producer] --> B(Message Broker)
@@ -24,7 +24,7 @@ flowchart TD
 package main
 
 import (
-    "github.com/confluentinc/confluent-kafka-go/kafka"
+    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/confluentinc/confluent-kafka-go/kafka"
     "log"
 )
 

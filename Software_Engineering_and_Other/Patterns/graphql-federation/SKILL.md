@@ -96,7 +96,7 @@ type Order @key(fields: "id") {
 
 Each subgraph that extends an entity must implement `__resolveReference`:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Users subgraph — entity origin
 const resolvers = {
   User: {
@@ -206,9 +206,9 @@ rover subgraph publish my-graph@current \
 - Value type to entity conversion
 - Enum value additions/removals
 
-### Federated Tracing & Observability
+### Federated Tracing & [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
-#### OpenTelemetry in Apollo Router
+#### [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) in Apollo Router
 ```yaml
 # router.yaml — federated tracing
 telemetry:
@@ -286,7 +286,7 @@ headers:
 ```
 
 #### Subgraph-Level Authorization
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Each subgraph independently validates permissions
 const resolvers = {
   Query: {
@@ -332,10 +332,10 @@ demand_control:
 
 rate_limiting:
   global:
-    capacity: 1000
+    [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): 1000
     time_window: 60s
   per_user:
-    capacity: 100
+    [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): 100
     time_window: 60s
 ```
 
@@ -382,7 +382,7 @@ query_planning:
 ```
 
 Warm the cache on deploy:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Pre-warm common query plans
 const commonQueries = [
   `query { me { id name } }`,
@@ -434,7 +434,7 @@ extend type Product @key(fields: "id") {
 ```
 
 ### DataLoader Across Subgraphs
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Batch-load entities to avoid N+1 resolution calls
 class UserLoader {
   private batch = new Map<string, Promise<User>>();
@@ -459,7 +459,7 @@ class UserLoader {
 ### Testing Federated Graphs
 
 #### Unit Test: Subgraph Entity Resolution
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 describe('Accounts Subgraph', () => {
   it('resolves User entity by key', async () => {
     const result = await subgraph.executeQuery(`
@@ -478,7 +478,7 @@ describe('Accounts Subgraph', () => {
 ```
 
 #### Integration Test: Cross-Subgraph Query
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 describe('Supergraph: User with Orders', () => {
   it('resolves fields across subgraphs', async () => {
     const query = `
@@ -492,7 +492,7 @@ describe('Supergraph: User with Orders', () => {
 ```
 
 #### Contract Testing Between Subgraphs
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Each subgraph publishes its schema contract
 // CI validates that contracts remain compatible
 describe('Contracts', () => {
@@ -558,7 +558,7 @@ describe('Contracts', () => {
 | Domain-aligned | One subgraph per bounded context | Each domain team owns 1 subgraph | Clear domain boundaries, DDD org |
 | Split by volatility | Seperate read vs write subgraphs | Platform + domain teams | High read/write asymmetry |
 | API gateway pattern | Subgraph wraps existing REST/gRPC | Integration team owns gateway | Legacy system integration |
-| Shared subgraph | Cross-cutting concerns (auth, audit) | Platform team | truly shared capabilities |
+| Shared subgraph | Cross-cutting concerns (auth, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)) | Platform team | truly shared capabilities |
 
 ### Team API Contract
 ```yaml
@@ -632,9 +632,9 @@ schema_tags:
     updated_on: monthly
 ```
 
-## Incident Management for Federated Graphs
+## [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management for Federated Graphs
 
-### Incident Classification
+### [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Classification
 | Severity | Definition | Response Time | Example |
 |----------|-----------|---------------|---------|
 | P0 | Complete supergraph outage | < 5 min | Router crash, composition failure |
@@ -642,7 +642,7 @@ schema_tags:
 | P2 | Isolated field errors | < 1 hour | Specific resolver returns errors |
 | P3 | Non-critical anomalies | < 1 day | Suboptimal query plan |
 
-### Incident Response Playbook
+### [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Playbook
 ```yaml
 playbook:
   p0_outage:
@@ -714,12 +714,12 @@ fn supergraph_service(service) {
 ```
 
 ### Custom Subgraph Span Attributes
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 const resolvers = {
   Query: {
     users: async (_, __, { tracer }) => {
       return tracer.startActiveSpan('users.query', (span) => {
-        span.setAttribute('db.system', 'postgresql');
+        span.setAttribute('db.system', '[postgresql](../../Backend/postgresql/SKILL.md)');
         span.setAttribute('db.table', 'users');
         span.setAttribute('query.plan', 'index_scan');
         return db.users.findAll();
@@ -751,7 +751,7 @@ const resolvers = {
 - [Supergraph Composition](../../../Global_References/supergraph-composition.md) — Composition pipeline, directives, CI/CD
 - [Supergraph Config](../../../Global_References/supergraph-config.md) — Router configuration, traffic shaping, query plans
 - [Federation vs Mesh](../../../Global_References/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
-- [Federated Tracing](../../../Global_References/federated-tracing.md) — OpenTelemetry, Studio integration, distributed tracing
+- [Federated Tracing](../../../Global_References/federated-tracing.md) — [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), Studio integration, distributed tracing
 - [Federation Migration Monolith](../../../Global_References/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
 - [Federation Cost Management](../../../Global_References/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
 

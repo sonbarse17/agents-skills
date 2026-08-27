@@ -16,7 +16,7 @@ LLVM IR is a Static Single Assignment (SSA) based representation. Optimization p
 - **Transform Passes:** Mutate the IR (e.g., Dead Code Elimination (DCE), Loop Unrolling, Constant Propagation).
 The PassManager schedules these passes to ensure dependency constraints are met before emitting target-specific assembly.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Source["Source Code"] -->|"Lex()"| Tokens

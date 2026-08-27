@@ -29,7 +29,7 @@ same availability zone as its primary, or a Sentinel quorum number
 copied from an example that doesn't match the actual number of deployed
 Sentinels. This skill is the pre-production validation gate for those
 settings, complementing the operational depth in
-[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)
+[redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md)
 — that skill covers how persistence, cluster, and memory management
 work; this one covers how to check a specific proposed configuration
 against them before it's trusted with production traffic.
@@ -49,7 +49,7 @@ against them before it's trusted with production traffic.
 - Before applying a `CONFIG SET` change (or an infra-as-code-managed
   `redis.conf` change) to a production instance, especially anything
   touching `maxmemory`, `appendfsync`, or `save`.
-- As a review gate for infrastructure-as-code that provisions Redis
+- As a review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) that provisions Redis
   Cluster/Sentinel topology.
 
 ## Prerequisites & environment
@@ -87,7 +87,7 @@ redis-cli CONFIG GET maxmemory
   use is genuinely safe to evict at any time, not assumed to be.
 - If the instance stores a **mix** of disposable and non-disposable
   data, only a `volatile-*` policy is safe, and it must be paired with a
-  concrete audit that every non-disposable key genuinely has no TTL and
+  concrete [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that every non-disposable key genuinely has no TTL and
   every disposable key genuinely does:
   ```bash
   redis-cli --scan --pattern 'session:*' | head -20 | xargs -I{} redis-cli TTL {}
@@ -100,7 +100,7 @@ redis-cli CONFIG GET maxmemory
   a primary datastore (queues, non-cache session truth, rate-limit
   counters that must not silently disappear) — confirm the application
   has a real plan for handling `OOM command not allowed` errors (backoff,
-  alerting) rather than this being an unplanned failure mode discovered
+  [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) rather than this being an unplanned failure mode discovered
   in production.
 
 ### 2. Validate persistence settings match the actual recovery-time/data-loss tolerance
@@ -207,7 +207,7 @@ distribution, not just total dataset size.
   replica placement is actually fault-tolerant.
 - Recompute Sentinel quorum and leader-majority math after every change
   to Sentinel count, the same way replica-set voting math must be
-  recomputed after any MongoDB membership change.
+  recomputed after any [MongoDB](../../Backend/mongodb/SKILL.md) membership change.
 - Bake `CONFIG REWRITE` (or the infra-as-code equivalent of updating the
   source-of-truth `redis.conf`) into the same change as any `CONFIG SET`
   applied live, so the file and the running instance never silently
@@ -216,15 +216,15 @@ distribution, not just total dataset size.
 ## Common pitfalls
 
 - **Symptom:** A Redis instance is provisioned as "just a cache," but
-  months later an incident reveals it also stores rate-limit counters
+  months later an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) reveals it also stores rate-limit counters
   that must not silently disappear, and a memory-pressure event evicted
   them under `allkeys-lru`.
   **Fix:** The `maxmemory-policy` was validated against an assumption
-  ("it's a cache") rather than the actual keyspace contents. Audit real
+  ("it's a cache") rather than the actual keyspace contents. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) real
   key prefixes in use (`--scan --pattern`) before approving an
   `allkeys-*` policy, and require any non-disposable use case to either
   move to its own instance or use a validated `volatile-*` policy with a
-  confirmed TTL audit.
+  confirmed TTL [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 - **Symptom:** A Redis Cluster passes every health check
   (`CLUSTER NODES` shows every shard with a replica) but an AZ outage
@@ -247,7 +247,7 @@ distribution, not just total dataset size.
   for the actual deployed count.
 
 - **Symptom:** A `CONFIG SET maxmemory-policy volatile-lru` change
-  applied via `redis-cli` during an incident works immediately, but
+  applied via `redis-cli` during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) works immediately, but
   reverts to the old (wrong) policy after the next routine restart/
   failover.
   **Fix:** `CONFIG REWRITE` was never run (or the infra-as-code
@@ -282,7 +282,7 @@ survive a restart without silently vanishing, per the product team).
    would be evicted under memory pressure exactly like catalog cache
    entries. Flag as blocking; recommend either splitting cart data to a
    separate instance/policy, or moving to `volatile-lru` with a
-   confirmed TTL audit showing catalog-cache keys have TTLs and cart
+   confirmed TTL [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) showing catalog-cache keys have TTLs and cart
    keys do not (making carts eviction-exempt) — team confirms carts
    should also expire, just on a longer, explicit TTL (24h), resolving
    the conflict cleanly under `volatile-lru`.
@@ -306,6 +306,6 @@ survive a restart without silently vanishing, per the product team).
 
 ## Cross-references
 
-- [redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md) — the operational mechanics (persistence, cluster topology, memory management) this skill's validation checks are grounded in.
-- [redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md) — validates the *policy* layer here against the actual caching pattern in use (e.g. whether TTL strategy assumed by `volatile-*` matches the application's cache-aside/write-through design).
-- [mongodb-configuration-validation](../mongodb-configuration-validation/SKILL.md) — comparable pre-production configuration validation discipline (quorum math, replica placement, staged rollout) applied to MongoDB, useful as a pattern reference in a polyglot environment.
+- [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md) — the operational mechanics (persistence, cluster topology, memory management) this skill's validation checks are grounded in.
+- [redis-caching-strategy-and-invalidation-patterns](../[redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md)/SKILL.md) — validates the *policy* layer here against the actual caching pattern in use (e.g. whether TTL strategy assumed by `volatile-*` matches the application's cache-aside/write-through design).
+- [mongodb-configuration-validation](../[mongodb-configuration-validation](../[mongodb](../../Backend/mongodb/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline (quorum math, replica placement, staged rollout) applied to [MongoDB](../../Backend/mongodb/SKILL.md), useful as a pattern reference in a polyglot environment.

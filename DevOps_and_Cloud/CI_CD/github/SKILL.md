@@ -22,7 +22,7 @@ Use the `gh` CLI to interact with GitHub repositories, issues, PRs, and CI.
 
 ## When NOT to Use
 
-- Local git operations (commit, push, pull, branch) → use `git` directly
+- Local git operations ([commit](../commit/SKILL.md), push, pull, branch) → use `git` directly
 - Non-GitHub repos (GitLab, Bitbucket, self-hosted) → different CLIs
 - Cloning repositories → use `git clone`
 - Reviewing actual code changes → read files directly

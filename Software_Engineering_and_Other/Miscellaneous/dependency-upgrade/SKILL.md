@@ -33,17 +33,17 @@ PATCH: Bug fixes, backward compatible
 
 ## Dependency Analysis
 
-### Audit Dependencies
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Dependencies
 
 ```bash
 # npm
 npm outdated
-npm audit
-npm audit fix
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix
 
 # yarn
 yarn outdated
-yarn audit
+yarn [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # Check for major updates
 npx npm-check-updates
@@ -107,7 +107,7 @@ npm list --depth=0
 
 # 3. Create upgrade plan
 echo "Upgrade order:
-1. TypeScript
+1. [TypeScript](../../Frontend/typescript/SKILL.md)
 2. React
 3. React Router
 4. Testing libraries
@@ -119,8 +119,8 @@ echo "Upgrade order:
 ```bash
 # Don't upgrade everything at once!
 
-# Step 1: Update TypeScript
-npm install typescript@latest
+# Step 1: Update [TypeScript](../../Frontend/typescript/SKILL.md)
+npm install [typescript](../../Frontend/typescript/SKILL.md)@latest
 
 # Test
 npm run test
@@ -174,7 +174,7 @@ npx jscodeshift -t <transform-url> <path>
 # Example: Rename unsafe lifecycle methods
 npx jscodeshift -t https://raw.githubusercontent.com/reactjs/react-codemod/master/transforms/rename-unsafe-lifecycles.js src/
 
-# For TypeScript files
+# For [TypeScript](../../Frontend/typescript/SKILL.md) files
 npx jscodeshift -t https://raw.githubusercontent.com/reactjs/react-codemod/master/transforms/rename-unsafe-lifecycles.js --parser=tsx src/
 
 # Dry run to preview changes
@@ -292,7 +292,7 @@ describe("E2E Tests", () => {
 ### Dependabot Configuration
 
 ```yaml
-# .github/dependabot.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -302,7 +302,7 @@ updates:
     open-pull-requests-limit: 5
     reviewers:
       - "team-leads"
-    commit-message:
+    [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-message:
       prefix: "chore"
       include: "scope"
 ```
@@ -324,7 +324,7 @@ npm install package@latest
 if npm run test; then
   echo "Upgrade successful"
   git add package.json package-lock.json
-  git commit -m "chore: upgrade package"
+  git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "chore: upgrade package"
 else
   echo "Upgrade failed, rolling back"
   git checkout main

@@ -35,7 +35,7 @@ Exact user phrases: "monorepo", "Nx", "Turborepo", "nx build", "nx affected", "w
 Before activating, verify:
 - Package manager (pnpm, yarn, npm).
 - Monorepo tool (Nx, Turborepo, or both).
-- CI provider (GitHub Actions, GitLab CI, CircleCI).
+- CI provider ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)).
 - Remote caching preference (Nx Cloud, Turborepo remote, self-hosted).
 
 ### Output Artifact
@@ -109,7 +109,7 @@ packages:
   "nxCloudAccessToken": "…",
   "plugins": [
     {
-      "plugin": "@nx/js/typescript",
+      "plugin": "@nx/js/[typescript](../typescript/SKILL.md)",
       "options": {
         "buildTargetName": "build"
       }
@@ -246,7 +246,7 @@ turbo link
 ```
 
 ### Step 7: Nx Generators (Custom Code Generation)
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tools/generators/feature/index.ts
 import { Tree, formatFiles, generateFiles, joinPathFragments } from '@nx/devkit';
 
@@ -352,7 +352,7 @@ npx nx g @nx/js:lib shared --directory=packages/shared
 
 ### Step 13: Nx Cloud On-Prem Configuration
 ```bash
-# docker-compose for self-hosted Nx Cloud
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) for self-hosted Nx Cloud
 version: '3.8'
 services:
   nx-cloud:
@@ -371,7 +371,7 @@ services:
 ```
 
 ### Step 14: Custom Nx Plugin for Shared Config
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tools/plugins/shared-config/src/index.ts
 import { createNodesFromFiles } from '@nx/devkit';
 import type { Tree, CreateNodesFunction } from '@nx/devkit';
@@ -443,7 +443,7 @@ on:
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_BRANCH: ${{ github.head_ref || github.ref_name }}
+  NX_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref || [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref_name }}
 
 jobs:
   quality:
@@ -472,7 +472,7 @@ jobs:
   e2e:
     needs: [quality]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false)
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'push' || ([github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request' && [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.draft == false)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -501,13 +501,13 @@ jobs:
 | Best for project count | 50+ | 10-100 | <30 | <20 |
 
 ## Security Considerations
-- Nx Cloud access tokens must be stored as CI secrets — never commit to repository
+- Nx Cloud access tokens must be stored as CI secrets — never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to repository
 - Remote cache artifacts can contain environment variables — sanitize build outputs
 - Self-hosted Nx Cloud requires encryption at rest for cached artifacts
 - Turborepo remote cache over Vercel uses HTTPS — verify TLS configuration
 - pnpm workspace protocol (`workspace:^`) prevents accidental registry publishing of internal packages
 - Module boundary rules prevent accidental cross-scope imports that could leak internal APIs
-- Audit `nx.json` and `turbo.json` exposure in CI logs — tokens may appear in verbose output
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) `nx.json` and `turbo.json` exposure in CI logs — tokens may appear in verbose output
 - Use `.nxignore` to prevent sensitive directories from being cached or distributed
 
 ## Production Considerations
@@ -517,7 +517,7 @@ jobs:
 - Run `nx graph --affected --base=main` before merge to validate dependency impact.
 - Configure Nx Cloud or Turborepo remote cache for faster CI across branches.
 - Use task distribution (Nx Agents) for large monorepos with 50+ projects.
-- Regularly audit circular dependencies with `nx graph --watch`.
+- Regularly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) circular dependencies with `nx graph --watch`.
 - Pin `tsconfig.paths` to enforce type-safe module resolution.
 - Use `pnpm` over `npm` or `yarn` for faster installs and disk efficiency.
 - Enable Nx task distribution via Nx Agents to parallelize across multiple machines.
@@ -549,6 +549,6 @@ jobs:
   - ../../../Global_References/turborepo-guide.md — Turborepo Guide
 ## Handoff
 After completing this skill:
-- Next skill: **dependency-management** — Dependabot, Renovate for mono-repo deps
+- Next skill: **[dependency-management](../../Miscellaneous/dependency-management/SKILL.md)** — Dependabot, Renovate for mono-repo deps
 - Pass context: workspace structure, package manager, CI pipeline
 

@@ -33,7 +33,7 @@ Sigma is to log detection what Snort is to network traffic and YARA is to files 
 - Validate rule syntax and logic
 - Map detections to MITRE ATT&CK framework
 - Build threat hunting queries
-- Implement compliance-based monitoring
+- Implement compliance-based [monitoring](../monitoring/SKILL.md)
 
 ## Quick Start
 
@@ -78,13 +78,13 @@ level: medium
 
 ```bash
 # Convert to Splunk
-python scripts/sigma_convert.py rule.yml --backend splunk
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend splunk
 
 # Convert to Elasticsearch
-python scripts/sigma_convert.py rule.yml --backend elasticsearch
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend elasticsearch
 
 # Convert to Microsoft Sentinel
-python scripts/sigma_convert.py rule.yml --backend sentinel
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend sentinel
 ```
 
 ## Core Workflows
@@ -95,7 +95,7 @@ Progress:
 [ ] 1. Identify detection requirement from threat intelligence or compliance
 [ ] 2. Research log sources and field mappings for target environment
 [ ] 3. Create Sigma rule using standard template
-[ ] 4. Validate rule syntax: `python scripts/sigma_validate.py rule.yml`
+[ ] 4. Validate rule syntax: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py rule.yml`
 [ ] 5. Test rule against sample logs or historical data
 [ ] 6. Convert to target SIEM format
 [ ] 7. Deploy and tune based on false positive rate
@@ -123,7 +123,7 @@ For proactive threat hunting based on TTPs:
    - Use field modifiers for robust matching (endswith, contains, re)
 
 4. **Validate and Test**
-   - Run validation: `python scripts/sigma_validate.py hunting-rule.yml`
+   - Run validation: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py hunting-rule.yml`
    - Test against known-good and known-bad samples
    - Tune detection logic based on results
 
@@ -138,13 +138,13 @@ When migrating between SIEM platforms:
 
 ```bash
 # Validate all rules first
-python scripts/sigma_validate.py --directory rules/ --report validation-report.json
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py --directory rules/ --report validation-report.json
 
 # Convert entire rule set
-python scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
 
 # Generate deployment report
-python scripts/sigma_convert.py --directory rules/ --backend splunk --report conversion-report.md
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --report conversion-report.md
 ```
 
 Review conversion report for:
@@ -155,11 +155,11 @@ Review conversion report for:
 
 ### Workflow 4: Compliance-Based Detection
 
-For implementing compliance monitoring (PCI-DSS, NIST, ISO 27001):
+For implementing compliance [monitoring](../monitoring/SKILL.md) (PCI-DSS, NIST, ISO 27001):
 
 1. **Map Requirements to Detections**
    - Identify compliance control requirements
-   - Determine required log monitoring
+   - Determine required log [monitoring](../monitoring/SKILL.md)
    - See [../../../Global_References/compliance-mappings.md](../../../Global_References/compliance-mappings.md)
 
 2. **Create Detection Rules**
@@ -168,14 +168,14 @@ For implementing compliance monitoring (PCI-DSS, NIST, ISO 27001):
    - Set appropriate severity levels
 
 3. **Validate Coverage**
-   - Run: `python scripts/compliance_coverage.py --framework pci-dss`
+   - Run: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/compliance_coverage.py --framework pci-dss`
    - Review coverage gaps
    - Create additional rules as needed
 
 4. **Generate Compliance Report**
    - Document detection coverage by control
    - Include sample queries and expected alerts
-   - Maintain audit trail for compliance evidence
+   - Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance evidence
 
 ## Rule Structure Reference
 
@@ -183,7 +183,7 @@ For implementing compliance monitoring (PCI-DSS, NIST, ISO 27001):
 
 ```yaml
 title: Human-readable rule name
-id: UUID (generate with: python -c "import uuid; print(uuid.uuid4())")
+id: UUID (generate with: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "import uuid; print(uuid.uuid4())")
 status: stable|test|experimental|deprecated
 description: Detailed description of what this detects
 author: Your Name
@@ -288,9 +288,9 @@ detection:
 
 - **Access Control**: Detection rules reveal defensive capabilities to adversaries. Implement role-based access for rule repositories. Limit rule modification to authorized detection engineers.
 
-- **Audit Logging**: Log all rule deployments, modifications, and deletions. Track who deployed which rules to which systems. Maintain change history for compliance auditing.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all rule deployments, modifications, and deletions. Track who deployed which rules to which systems. Maintain change history for compliance auditing.
 
-- **Compliance**: Sigma rules support compliance monitoring (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for audit evidence.
+- **Compliance**: Sigma rules support compliance [monitoring](../monitoring/SKILL.md) (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) evidence.
 
 - **Safe Defaults**: Use conservative false positive filtering in production. Start rules at "experimental" status. Test thoroughly in test environment before production deployment.
 
@@ -320,13 +320,13 @@ detection:
   - `credential-access.yml` - Credential dumping detection template
 
 - `assets/compliance-rules/` - Compliance-focused rule templates
-  - `pci-dss-monitoring.yml` - PCI-DSS monitoring requirements
-  - `nist-800-53-audit.yml` - NIST 800-53 audit logging requirements
-  - `iso27001-logging.yml` - ISO 27001 logging and monitoring
+  - `pci-dss-[monitoring](../monitoring/SKILL.md).yml` - PCI-DSS [monitoring](../monitoring/SKILL.md) requirements
+  - `nist-800-53-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).yml` - NIST 800-53 [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging requirements
+  - `iso27001-logging.yml` - ISO 27001 logging and [monitoring](../monitoring/SKILL.md)
 
 ## Common Detection Patterns
 
-### Pattern 1: Process Execution Monitoring
+### Pattern 1: Process Execution [Monitoring](../monitoring/SKILL.md)
 
 Detect suspicious process creation with command-line analysis:
 
@@ -345,7 +345,7 @@ detection:
             - 'FromBase64String'
 ```
 
-### Pattern 2: Network Connection Monitoring
+### Pattern 2: Network Connection [Monitoring](../monitoring/SKILL.md)
 
 Detect suspicious outbound connections:
 
@@ -368,7 +368,7 @@ detection:
     condition: selection and not filter
 ```
 
-### Pattern 3: File Event Monitoring
+### Pattern 3: File Event [Monitoring](../monitoring/SKILL.md)
 
 Detect file creation in suspicious locations:
 
@@ -394,7 +394,7 @@ detection:
 Build detection-as-code pipelines:
 
 ```yaml
-# .github/workflows/sigma-validation.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/sigma-validation.yml
 name: Sigma Rule Validation
 on: [push, pull_request]
 jobs:
@@ -405,10 +405,10 @@ jobs:
       - name: Validate Sigma Rules
         run: |
           pip install pysigma
-          python scripts/sigma_validate.py --directory rules/
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py --directory rules/
       - name: Convert to Production Format
         run: |
-          python scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
 ```
 
 ### SIEM Deployment
@@ -488,7 +488,7 @@ For detailed technique mappings, see [../../../Global_References/mitre-attack-ma
 ## Best Practices
 
 1. **Start with Community Rules**: Use SigmaHQ repository (3000+ peer-reviewed rules) as foundation
-2. **Version Control**: Store rules in Git with meaningful commit messages
+2. **Version Control**: Store rules in Git with meaningful [commit](../../CI_CD/commit/SKILL.md) messages
 3. **Test Before Deploy**: Validate against historical data in test environment
 4. **Document Tuning**: Track false positive patterns and tuning decisions
 5. **Map to Frameworks**: Tag all rules with MITRE ATT&CK and compliance mappings
@@ -498,9 +498,9 @@ For detailed technique mappings, see [../../../Global_References/mitre-attack-ma
 
 ## References
 
-- [Sigma Specification](https://github.com/SigmaHQ/sigma-specification)
-- [SigmaHQ Rule Repository](https://github.com/SigmaHQ/sigma/tree/master/rules)
-- [pySigma Documentation](https://github.com/SigmaHQ/pySigma)
+- [Sigma Specification](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/sigma-specification)
+- [SigmaHQ Rule Repository](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/sigma/tree/master/rules)
+- [pySigma Documentation](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/pySigma)
 - [Sigma Converter Web Tool](https://sigconverter.io/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

@@ -31,7 +31,7 @@ Senior React specialist with deep expertise in React 19, Server Components, and 
 
 1. **Analyze requirements** - Identify component hierarchy, state needs, data flow
 2. **Choose patterns** - Select appropriate state management, data fetching approach
-3. **Implement** - Write TypeScript components with proper types
+3. **Implement** - Write [TypeScript](../typescript/SKILL.md) components with proper types
 4. **Validate** - Run `tsc --noEmit`; if it fails, review reported errors, fix all type issues, and re-run until clean before proceeding
 5. **Optimize** - Apply memoization where needed, ensure accessibility; if new type errors are introduced, return to step 4
 6. **Test** - Write tests with React Testing Library; if any assertions fail, debug and fix before submitting
@@ -121,7 +121,7 @@ function useWindowWidth(): number {
 ## Constraints
 
 ### MUST DO
-- Use TypeScript with strict mode
+- Use [TypeScript](../typescript/SKILL.md) with strict mode
 - Implement error boundaries for graceful failures
 - Use `key` props correctly (stable, unique identifiers)
 - Clean up effects (return cleanup function)
@@ -140,13 +140,13 @@ function useWindowWidth(): number {
 ## Output Templates
 
 When implementing React features, provide:
-1. Component file with TypeScript types
+1. Component file with [TypeScript](../typescript/SKILL.md) types
 2. Test file if non-trivial logic
 3. Brief explanation of key decisions
 
 ## Knowledge Reference
 
-React 19, Server Components, use() hook, Suspense, TypeScript, TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
+React 19, Server Components, use() hook, Suspense, [TypeScript](../typescript/SKILL.md), TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/react-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/react-expert/)
 

@@ -129,7 +129,7 @@ Exact user phrases: enterprise integration, system integration, legacy integrati
 - What error handling and retry policies exist?
 
 ### Output Artifact
-Integration architecture design with routing, transformation, error handling, and monitoring.
+Integration architecture design with routing, transformation, error handling, and [monitoring](../monitoring/SKILL.md).
 
 ### Response Format
 ```
@@ -146,8 +146,8 @@ Integration architecture design with routing, transformation, error handling, an
 ### Error Handling
 {retry: strategy, DLQ: location, alert: threshold}
 
-### Monitoring
-{tracing, SLAs, dashboards}
+### [Monitoring](../monitoring/SKILL.md)
+{tracing, SLAs, [dashboards](../../Cloud_Providers/dashboards/SKILL.md)}
 ```
 
 No preamble. No postamble. No explanations.
@@ -158,7 +158,7 @@ No preamble. No postamble. No explanations.
 - [ ] Message routing rules documented
 - [ ] Protocol transformation mapped
 - [ ] Error handling and retry strategy designed
-- [ ] Dead letter queue monitoring configured
+- [ ] Dead letter queue [monitoring](../monitoring/SKILL.md) configured
 - [ ] End-to-end tracing implemented
 - [ ] SLA metrics defined per integration
 
@@ -182,8 +182,8 @@ Transform between SOAP/WSDL to REST/JSON, fixed-width files to structured payloa
 ### Step 5: Error Handling and Retry
 Implement retry with exponential backoff (base delay 1s, max 30s, jitter 0.1). Dead letter queue for poison messages. Manual intervention queue for business errors. Idempotency keys for safe retries.
 
-### Step 6: Monitoring Integration Flows
-End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput dashboards partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
+### Step 6: [Monitoring](../monitoring/SKILL.md) Integration Flows
+End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput [dashboards](../../Cloud_Providers/dashboards/SKILL.md) partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
 
 ## Common Pitfalls
 
@@ -228,12 +228,12 @@ Producer changes message schema; consumer fails to deserialize. Always enforce s
 - Alert on DLQ depth exceeding threshold
 - Circuit breaker for all synchronous calls
 
-### Monitoring
+### [Monitoring](../monitoring/SKILL.md)
 - End-to-end distributed tracing with correlation IDs
-- SLA dashboards per integration flow
-- DLQ monitoring with automated reprocessing
+- SLA [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per integration flow
+- DLQ [monitoring](../monitoring/SKILL.md) with automated reprocessing
 - Alert on latency spikes and error rate thresholds
-- Throughput tracking for capacity planning
+- Throughput tracking for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 
 ## Compared With
 
@@ -248,25 +248,25 @@ Integration: connecting systems, message routing, protocol transformation. Orche
 
 ## Operations & Maintenance
 
-### Integration Health Monitoring
+### Integration Health [Monitoring](../monitoring/SKILL.md)
 - Daily: review DLQ depth, check throughput, verify SLA compliance
 - Weekly: analyze error patterns, review circuit breaker state
-- Monthly: capacity review, schema compatibility audit
-- Quarterly: integration audit, deprecation planning
+- Monthly: [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) review, schema compatibility [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Quarterly: integration [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), deprecation planning
 - As needed: update connection credentials, rotate certificates
 
-### Incident Response for Integration Failures
-1. Detect: monitoring alert (DLQ growth, latency spike, error rate increase)
+### [Incident](../incident/SKILL.md) Response for Integration Failures
+1. Detect: [monitoring](../monitoring/SKILL.md) alert (DLQ growth, latency spike, error rate increase)
 2. Assess: is this a producer issue or consumer issue?
 3. For producer issue: notify producer team, isolate failed messages
 4. For consumer issue: check consumer health, restart if needed
 5. For network issue: check connectivity, retry on recovery
 6. Reprocess DLQ messages after root cause fixed
-7. Document incident and add preventive monitoring
+7. Document [incident](../incident/SKILL.md) and add preventive [monitoring](../monitoring/SKILL.md)
 
 ### Integration Lifecycle Management
 1. Request: new integration request with SLAs
-2. Design: integration style, error handling, monitoring
+2. Design: integration style, error handling, [monitoring](../monitoring/SKILL.md)
 3. Implement: build connectors, transformers, routing
 4. Test: integration tests covering failure modes
 5. Deploy: canary traffic, monitor for regressions
@@ -283,8 +283,8 @@ Integration: connecting systems, message routing, protocol transformation. Orche
 
 ## Code Examples
 
-### Anti-Corruption Layer (Python)
-```python
+### Anti-Corruption Layer ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, asdict
 import json
@@ -350,8 +350,8 @@ class OrderService:
         return asdict(modern)
 ```
 
-### Message Router with Content-Based Routing (Python)
-```python
+### Message Router with Content-Based Routing ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import json, enum
 from typing import Callable
 
@@ -402,8 +402,8 @@ msg = Message({"amount": 15000, "region": "domestic", "risk_score": 0.3})
 print(router.route(msg))  # ['order-fulfillment-premium']
 ```
 
-### Retry with Exponential Backoff (Python)
-```python
+### Retry with Exponential Backoff ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import time, random
 from functools import wraps
 
@@ -434,8 +434,8 @@ def call_downstream_service(url):
     return response.json()
 ```
 
-### Schema Registry Compatibility Check (Python)
-```python
+### Schema Registry Compatibility Check ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class SchemaRegistry:
     def __init__(self):
         self.schemas = {}
@@ -516,7 +516,7 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - System of record defined per data domain -- no ambiguity
 - Protocol transformation documented at every integration boundary
 - Message brokers must have high-availability configuration
-- Integration monitoring dashboards visible to all consuming teams
+- Integration [monitoring](../monitoring/SKILL.md) [dashboards](../../Cloud_Providers/dashboards/SKILL.md) visible to all consuming teams
 - Schema registry used for all message serialization formats
 - Integration deprecation follows documented lifecycle with consumer notification
 
@@ -529,8 +529,8 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - ../../../Global_References/etl-integration.md -- ETL Integration Patterns
 - ../../../Global_References/enterprise-integration-architecture.md -- Enterprise Integration Architecture
   - ../../../Global_References/event-driven-integration.md -- Event-Driven Integration
-  - ../../../Global_References/api-gateway-patterns.md -- API Gateway Patterns
+  - ../../../Global_References/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-patterns.md -- API Gateway Patterns
 
 ## Handoff
-For monitoring integration SLAs, hand off to `enterprise-sla-management`. For data governance across integrations, hand off to `enterprise-data-governance`.
+For [monitoring](../monitoring/SKILL.md) integration SLAs, hand off to `[enterprise-sla-management](../sla-management/SKILL.md)`. For data governance across integrations, hand off to `[enterprise-data-governance](../data-governance/SKILL.md)`.
 

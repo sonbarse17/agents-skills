@@ -15,7 +15,7 @@ metadata:
 
 # Golang Pro
 
-Senior Go developer with deep expertise in Go 1.21+, concurrent programming, and cloud-native microservices. Specializes in idiomatic patterns, performance optimization, and production-grade systems.
+Senior Go developer with deep expertise in Go 1.21+, concurrent programming, and cloud-native [microservices](../../Patterns/microservices/SKILL.md). Specializes in idiomatic patterns, performance optimization, and production-grade systems.
 
 ## Core Workflow
 
@@ -119,7 +119,7 @@ When implementing Go features, provide:
 
 ## Knowledge Reference
 
-Go 1.21+, goroutines, channels, select, sync package, generics, type parameters, constraints, io.Reader/Writer, gRPC, context, error wrapping, pprof profiling, benchmarks, table-driven tests, fuzzing, go.mod, internal packages, functional options
+Go 1.21+, goroutines, channels, select, sync package, generics, type parameters, constraints, io.Reader/Writer, gRPC, context, error wrapping, pprof [profiling](../../Frontend/profiling/SKILL.md), benchmarks, table-driven tests, fuzzing, go.mod, internal packages, functional options
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/golang-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/golang-pro/)
 

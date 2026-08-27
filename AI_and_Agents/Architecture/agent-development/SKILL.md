@@ -134,9 +134,9 @@ Read `resources/concurrency.md` for detailed patterns.
 
 ## Implementation Examples
 
-### Python (SDK-based)
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (SDK-based)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 agent = client.agents.create(
     name="my-agent",
     model="gpt-4o",
@@ -148,9 +148,9 @@ agent = client.agents.create(
 )
 ```
 
-### TypeScript (SDK-based)
+### [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (SDK-based)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const agent = await client.agents.create({
   name: "my-agent",
   model: "gpt-4o",

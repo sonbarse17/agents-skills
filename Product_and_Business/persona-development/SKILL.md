@@ -153,7 +153,7 @@ Is this user segment a target for the product?
 ```
 How does a proposed feature score for primary persona?
 ├── Essential (3): BUILD — directly enables core goal
-├── Helpful (2): BUILD if capacity allows — improves experience
+├── Helpful (2): BUILD if [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allows — improves experience
 ├── Neutral (1): QUESTION — does it serve anyone else?
 │   ├── Serves secondary well → Build for secondary after primary needs
 │   └── No one cares → DEPRIORITIZE
@@ -181,7 +181,7 @@ Quarterly (light): 2-3 validation interviews, analytics check, support ticket re
   Update statistics, pain point priorities, behavioral data.
 
 Annually (full): 8-12 new interviews per persona, field validation survey (n=200+).
-  Full persona audit: revise attributes, goals, behaviors, needs.
+  Full persona [audit](../../AI_and_Agents/Operations/audit/SKILL.md): revise attributes, goals, behaviors, needs.
   Present updated personas to entire product team.
   Archive previous version, publish changelog.
 
@@ -390,12 +390,12 @@ Anti-persona feature reject| >5/mo | 3/mo    | Needs improvement
 
 ## Integration Patterns
 
-### With User Research (product-user-research)
+### With User Research ([product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md))
 Handoff point: raw interview data, transcripts, recordings
 Direction: Research → Persona Development
 Persona development consumes research data; identifies gaps for new research.
 
-### With Customer Journey Mapping (product-customer-journey)
+### With Customer Journey Mapping ([product-customer-journey](../customer-journey/SKILL.md))
 Handoff point: completed personas with empathy maps
 Direction: Persona Development → Customer Journey
 Journey maps use personas as the lens; persona context informs journey stages.
@@ -405,12 +405,12 @@ Handoff point: persona-to-feature matrix with weighted scores
 Direction: Persona Development → Feature Prioritization
 Feature prioritization uses persona fit scores as input dimension.
 
-### With A/B Testing (product-ab-testing)
+### With A/B Testing ([product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md))
 Handoff point: persona-specific hypotheses for testing
 Direction: Bidirectional
 Personas generate hypotheses; A/B testing validates persona-driven designs.
 
-### With User Story Mapping (planning-create-story)
+### With User Story Mapping (planning-[create-story](../create-story/SKILL.md))
 Handoff point: persona-tagged user stories
 Direction: Persona Development → Story Creation
 Stories reference persona by name; acceptance criteria include persona validation.
@@ -435,7 +435,7 @@ Incoming feature request → apply persona filter:
 
 Step 1: Which persona does this serve?
   Primary → Fast-track evaluation
-  Secondary → Queue for capacity-based evaluation
+  Secondary → Queue for [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-based evaluation
   Anti → Decline with explanation referencing anti-persona definition
   Unknown → Ask: "What persona would use this? What research supports it?"
 
@@ -604,5 +604,5 @@ persona_synthesis:
   - ../../../Global_References/persona-to-feature.md — Persona-Driven Design
   - ../../../Global_References/persona-workshop-facilitation.md — Persona Workshop Facilitation
 ## Handoff
-For journey mapping with persona context, hand off to `product-customer-journey`. For user research to validate personas, hand off to `product-user-research`. For feature prioritization using persona scores, hand off to `product-feature-prioritization`.
+For journey mapping with persona context, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For user research to validate personas, hand off to `[product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md)`. For feature prioritization using persona scores, hand off to `product-feature-prioritization`.
 

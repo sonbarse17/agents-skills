@@ -15,12 +15,12 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 
 ### What You Provide
 
-- **Application type**: Language/runtime, containerized or bare-metal, monolith or microservices
-- **Deployment target**: Kubernetes, ECS, VMs, serverless, or platform-as-a-service
+- **Application type**: Language/runtime, containerized or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), monolith or [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+- **Deployment target**: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), ECS, VMs, [serverless](../../Containers_and_Orchestration/serverless/SKILL.md), or platform-as-a-service
 - **Environment topology**: Number of environments (dev/staging/prod), region layout, air-gap requirements
 - **Rollout requirements**: Acceptable downtime, rollback SLA, traffic splitting needs, canary vs blue-green preference
 - **Gate constraints**: Approval teams, required test coverage thresholds, compliance scans (SAST, DAST, SCA)
-- **Monitoring stack**: Prometheus, Datadog, CloudWatch, or other metrics sources used for automated promotion decisions
+- **[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) stack**: Prometheus, [Datadog](../../Observability_and_SecOps/datadog/SKILL.md), CloudWatch, or other metrics sources used for automated promotion decisions
 
 ### What This Skill Produces
 
@@ -28,7 +28,7 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 - **Deployment strategy**: Chosen rollout pattern with annotated configuration (canary weights, blue-green switchover, rolling parameters)
 - **Health check setup**: Shallow vs deep readiness probes, post-deployment smoke test scripts
 - **Gate definitions**: Automated metric thresholds and manual approval workflows
-- **Rollback plan**: Automated rollback triggers and manual runbook steps
+- **Rollback plan**: Automated rollback triggers and manual [runbook](../../Observability_and_SecOps/runbook/SKILL.md) steps
 
 ## When to Use
 
@@ -68,9 +68,9 @@ spec:
 
 ### Staging deploy succeeds but production job never starts
 
-Check that production environment protection rules are configured — a missing reviewer assignment means the approval gate waits indefinitely with no notification. In GitHub Actions, ensure `Required reviewers` is set to an existing user or team in **Settings → Environments → production**.
+Check that production environment protection rules are configured — a missing reviewer assignment means the approval gate waits indefinitely with no notification. In [GitHub](../github/SKILL.md) Actions, ensure `Required reviewers` is set to an existing user or team in **Settings → Environments → production**.
 
-### Docker layer cache busted on every run causing slow builds
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) layer cache busted on every run causing slow builds
 
 If `COPY . .` appears before dependency installation, any source file change invalidates the dependency layer. Reorder to copy dependency manifests first:
 
@@ -97,11 +97,11 @@ Never run destructive migrations (DROP COLUMN, ALTER NOT NULL) until the old cod
 
 For platform-specific pipeline configurations, multi-region promotion workflows, and advanced Argo Rollouts patterns, see:
 
-- [`../../../Global_References/advanced-strategies.md`](../../../Global_References/advanced-strategies.md) — Extended YAML examples, platform-specific configs (GitHub Actions, GitLab CI, Azure Pipelines), multi-region canary patterns, and database migration rollback strategies
+- [`../../../Global_References/advanced-strategies.md`](../../../Global_References/advanced-strategies.md) — Extended YAML examples, platform-specific configs ([GitHub](../github/SKILL.md) Actions, GitLab CI, Azure Pipelines), multi-region canary patterns, and database migration rollback strategies
 
 ## Related Skills
 
-- `github-actions-templates` - For GitHub Actions implementation patterns and reusable workflows
-- `gitlab-ci-patterns` - For GitLab CI/CD pipeline implementation
-- `secrets-management` - For secrets handling in CI/CD pipelines
+- `[github-actions-templates](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-templates/SKILL.md)` - For [GitHub](../github/SKILL.md) Actions implementation patterns and reusable workflows
+- `[gitlab-ci-patterns](../[gitlab-ci](../gitlab-ci/SKILL.md)-patterns/SKILL.md)` - For GitLab CI/CD pipeline implementation
+- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling in CI/CD pipelines
 

@@ -22,7 +22,7 @@ You are a senior documentation engineer that generates comprehensive technical d
 Before generating any page, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., GitHub, Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -41,7 +41,7 @@ Before generating any page, you MUST determine the source repository context:
 1. **Plan**: Determine scope, audience, and documentation budget based on file count
 2. **Analyze**: Read all relevant files; identify patterns, algorithms, dependencies, data flow
 3. **Write**: Generate structured Markdown with diagrams and citations
-4. **Validate**: Verify file paths exist, class names are accurate, Mermaid renders correctly
+4. **Validate**: Verify file paths exist, class names are accurate, [Mermaid](../../../mermaid/SKILL.md) renders correctly
 
 ## Mandatory Requirements
 
@@ -54,7 +54,7 @@ description: "One-line description"
 ---
 ```
 
-### Mermaid Diagrams
+### [Mermaid](../../../mermaid/SKILL.md) Diagrams
 - **Minimum 3–5 per page** (scaled by scope: small=3, medium=4, large=5+)
 - **Use at least 2 different diagram types** — don't repeat the same type. Mix `graph`, `sequenceDiagram`, `classDiagram`, `stateDiagram-v2`, `erDiagram`, `flowchart` as appropriate
 - Use `autonumber` in all `sequenceDiagram` blocks
@@ -71,7 +71,7 @@ description: "One-line description"
   - **Line ranges**: `[src/path/file.ts:42-58](REPO_URL/blob/BRANCH/src/path/file.ts#L42-L58)`
 - Minimum 5 different source files cited per page
 - If evidence is missing: `(Unknown – verify in path/to/check)`
-- **Mermaid diagrams**: Add a `<!-- Sources: file_path:line, file_path:line -->` comment block immediately after each diagram
+- **[Mermaid](../../../mermaid/SKILL.md) diagrams**: Add a `<!-- Sources: file_path:line, file_path:line -->` comment block immediately after each diagram
 - **Tables**: Include a "Source" column with linked citations when listing components, APIs, or configurations
 
 ### Structure
@@ -102,5 +102,5 @@ description: "One-line description"
 
 ### VitePress Compatibility
 - Escape bare generics outside code fences: `` `List<T>` `` not bare `List<T>`
-- No `<br/>` in Mermaid blocks
+- No `<br/>` in [Mermaid](../../../mermaid/SKILL.md) blocks
 - All hex colors must be 3 or 6 digits

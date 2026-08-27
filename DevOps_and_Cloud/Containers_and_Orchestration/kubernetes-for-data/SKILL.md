@@ -15,15 +15,15 @@ compatibility:
 tags: [devops, kubernetes, data, phase-11]
 ---
 
-# Kubernetes for Data Agent
+# [Kubernetes](../kubernetes/SKILL.md) for Data Agent
 
 ## Purpose
-Configures Kubernetes for data-intensive workloads: Spark, Airflow, Kafka, with GPU scheduling, node pools, and storage optimization.
+Configures [Kubernetes](../kubernetes/SKILL.md) for data-intensive workloads: Spark, Airflow, Kafka, with GPU scheduling, node pools, and storage optimization.
 
 ## Agent Protocol
 
 ### Trigger
-User request includes: Kubernetes for data, Spark on K8s, Airflow on K8s, Kafka on K8s, Strimzi, Spark Operator, Volcano, GPU scheduling, node pools, data workloads K8s, Karpenter.
+User request includes: [Kubernetes](../kubernetes/SKILL.md) for data, Spark on K8s, Airflow on K8s, Kafka on K8s, Strimzi, Spark Operator, Volcano, GPU scheduling, node pools, data workloads K8s, Karpenter.
 
 ### Protocol
 1. Identify data workload types (Spark, Airflow, Kafka, batch).
@@ -35,11 +35,11 @@ User request includes: Kubernetes for data, Spark on K8s, Airflow on K8s, Kafka 
 7. Configure Karpenter or autoscaler for elasticity.
 
 ## Output
-Kubernetes configuration for data workloads with Spark/Airflow/Kafka setup, GPU strategy, storage plan.
+[Kubernetes](../kubernetes/SKILL.md) configuration for data workloads with Spark/Airflow/Kafka setup, GPU strategy, storage plan.
 
 ### Response Format
 ```
-## Data Workloads on Kubernetes
+## Data Workloads on [Kubernetes](../kubernetes/SKILL.md)
 ### Workload Configuration
 Spark Operator: {enabled/disabled} | Version: {N}
 Airflow Executor: {KubernetesExecutor / CelacyKubernetesExecutor}
@@ -81,7 +81,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## Workflow
 
 ### Step 1: Operator Selection
-- **Spark Operator**: Kubernetes operator for Apache Spark. Handles driver/executor lifecycle, resource management, dynamic allocation.
+- **Spark Operator**: [Kubernetes](../kubernetes/SKILL.md) operator for Apache Spark. Handles driver/executor lifecycle, resource management, dynamic allocation.
 - **Strimzi**: Kafka operator. Manages Kafka clusters, topics, users, and MirrorMaker.
 - **Airflow**: Official Helm chart. Use KubernetesExecutor for per-task pods or CeleryKubernetesExecutor for hybrid.
 
@@ -142,8 +142,8 @@ spec:
   sparkConf:
     spark.shuffle.service.enabled: "false"
     spark.dynamicAllocation.enabled: "true"
-    spark.kubernetes.allocation.driver.requests.cores: "1"
-    spark.kubernetes.allocation.executor.requests.cores: "2"
+    spark.[kubernetes](../kubernetes/SKILL.md).allocation.driver.requests.cores: "1"
+    spark.[kubernetes](../kubernetes/SKILL.md).allocation.executor.requests.cores: "2"
     spark.sql.adaptive.enabled: "true"
     spark.sql.adaptive.coalescePartitions.enabled: "true"
 ```
@@ -176,7 +176,7 @@ spec:
         containers:
         - name: trainer
           image: pytorch/pytorch:2.1.0-cuda12.1
-          command: ["python", "train.py"]
+          command: ["[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "train.py"]
           resources:
             requests:
               cpu: "8"
@@ -239,13 +239,13 @@ spec:
   template:
     spec:
       requirements:
-      - key: kubernetes.io/arch
+      - key: [kubernetes](../kubernetes/SKILL.md).io/arch
         operator: In
         values: ["amd64"]
-      - key: karpenter.sh/capacity-type
+      - key: karpenter.sh/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type
         operator: In
         values: ["spot"]
-      - key: node.kubernetes.io/instance-type
+      - key: node.[kubernetes](../kubernetes/SKILL.md).io/instance-type
         operator: In
         values: ["c5.4xlarge", "c5.8xlarge", "m5.4xlarge"]
       - key: karpenter.k8s.aws/instance-family
@@ -324,7 +324,7 @@ spec:
         deleteClaim: false
         class: kafka-ssd
     rack:
-      topologyKey: topology.kubernetes.io/zone
+      topologyKey: topology.[kubernetes](../kubernetes/SKILL.md).io/zone
     template:
       pod:
         affinity:
@@ -332,11 +332,11 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                - key: app.kubernetes.io/name
+                - key: app.[kubernetes](../kubernetes/SKILL.md).io/name
                   operator: In
                   values:
                   - kafka-cluster
-              topologyKey: kubernetes.io/hostname
+              topologyKey: [kubernetes](../kubernetes/SKILL.md).io/hostname
         tolerations:
         - key: workload-type
           operator: Equal
@@ -355,17 +355,17 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                - key: app.kubernetes.io/name
+                - key: app.[kubernetes](../kubernetes/SKILL.md).io/name
                   operator: In
                   values:
                   - kafka-zookeeper
-              topologyKey: kubernetes.io/hostname
+              topologyKey: [kubernetes](../kubernetes/SKILL.md).io/hostname
   entityOperator:
     topicOperator: {}
     userOperator: {}
 ```
 
-### Step 8: Airflow on Kubernetes with KubernetesExecutor
+### Step 8: Airflow on [Kubernetes](../kubernetes/SKILL.md) with KubernetesExecutor
 ```yaml
 # values.yaml for airflow Helm chart
 config:
@@ -401,7 +401,7 @@ dags:
     size: 10Gi
   gitSync:
     enabled: true
-    repo: https://github.com/org/airflow-dags.git
+    repo: https://[github](../../CI_CD/github/SKILL.md).com/org/airflow-dags.git
     branch: main
     subPath: dags
     wait: 60
@@ -460,17 +460,17 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: kafka-cluster
+      app.[kubernetes](../kubernetes/SKILL.md).io/name: kafka-cluster
   policyTypes:
   - Ingress
   ingress:
   - from:
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: spark
+          [kubernetes](../kubernetes/SKILL.md).io/metadata.name: spark
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: airflow
+          [kubernetes](../kubernetes/SKILL.md).io/metadata.name: airflow
     ports:
     - protocol: TCP
       port: 9092
@@ -480,7 +480,7 @@ spec:
 
 ### Step 11: Data Locality with Node Tuning Operator
 ```yaml
-apiVersion: tuned.openshift.io/v1
+apiVersion: tuned.[openshift](../openshift/SKILL.md).io/v1
 kind: Tuned
 metadata:
   name: data-workloads
@@ -498,7 +498,7 @@ spec:
     name: data-workloads
   recommend:
   - match:
-    - label: tuned.openshift.io/data
+    - label: tuned.[openshift](../openshift/SKILL.md).io/data
       value: "true"
     priority: 10
     profile: data-workloads
@@ -509,7 +509,7 @@ spec:
 - GPU nodes must be tainted to prevent non-GPU workloads.
 - Kafka brokers require dedicated nodes — no colocation.
 - Local SSDs are ephemeral — use replication for durability.
-- Spot nodes must have `cluster-autoscaler.kubernetes.io/safe-to-evict: "true"`.
+- Spot nodes must have `cluster-autoscaler.[kubernetes](../kubernetes/SKILL.md).io/safe-to-evict: "true"`.
 - Always set resource requests equal to limits for data workloads.
 - Prefer Karpenter over cluster-autoscaler for data workloads.
 - Use podAntiAffinity for Kafka brokers to spread across AZs.
@@ -536,7 +536,7 @@ spec:
 - Set resource quotas per namespace per workload type.
 - Monitor Spark executors for shuffle spill to disk (indicates memory pressure).
 - For Airflow, prefer GitSync over DAG image embedding for faster iteration.
-- Use Prometheus + Grafana dashboards for Spark executor resource utilization.
+- Use Prometheus + Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for Spark executor resource utilization.
 
 ## Anti-Patterns
 - Running Spark driver and executor on same node — single point of failure.
@@ -545,7 +545,7 @@ spec:
 - Using default storage class without performance testing for Kafka.
 - Unlimited Spark dynamic allocation — can exhaust cluster resources.
 - No pod disruption budgets — all executors can be evicted simultaneously.
-- Over-allocating executor memory without monitoring actual usage.
+- Over-allocating executor memory without [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) actual usage.
 - Mixing Spark executors and Kafka brokers on same nodes — resource contention.
 - Not setting memoryOverhead for Spark executors — OOM kills from off-heap.
 - Using suboptimal instance types for data workloads (burstable t-series).
@@ -560,12 +560,12 @@ spec:
 - Strimzi cluster not stabilizing: check ZooKeeper quorum, verify storage class.
 
 ## References
-  - ../../../Global_References/data-infrastructure-k8s.md — Data Infrastructure on Kubernetes
-  - ../../../Global_References/data-processing-k8s.md — Data Processing on Kubernetes
-  - ../../../Global_References/data-workloads-k8s.md — Data Workloads on Kubernetes
-  - ../../../Global_References/gpu-storage-k8s.md — GPU & Storage for Kubernetes Data Workloads
-  - ../../../Global_References/kubernetes-for-data-advanced.md — Kubernetes For Data Advanced Topics
-  - ../../../Global_References/kubernetes-for-data-fundamentals.md — Kubernetes For Data Fundamentals
+  - ../../../Global_References/data-infrastructure-k8s.md — Data Infrastructure on [Kubernetes](../kubernetes/SKILL.md)
+  - ../../../Global_References/data-processing-k8s.md — Data Processing on [Kubernetes](../kubernetes/SKILL.md)
+  - ../../../Global_References/data-workloads-k8s.md — Data Workloads on [Kubernetes](../kubernetes/SKILL.md)
+  - ../../../Global_References/gpu-storage-k8s.md — GPU & Storage for [Kubernetes](../kubernetes/SKILL.md) Data Workloads
+  - ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-for-data-advanced.md — [Kubernetes](../kubernetes/SKILL.md) For Data Advanced Topics
+  - ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-for-data-fundamentals.md — [Kubernetes](../kubernetes/SKILL.md) For Data Fundamentals
 ## Handoff
 For data pipeline orchestration, hand off to `etl-pipeline`. For streaming infrastructure, hand off to `streaming`.
 

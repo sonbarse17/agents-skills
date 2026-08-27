@@ -13,7 +13,7 @@ Manage Stripe subscription lifecycles securely via robust webhook handling and I
 3. **Async Webhook Processing**: Acknowledge the webhook with a `200 OK` immediately, then process the event asynchronously.
 
 ## Code Snippet: Webhook Handler
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import Stripe from 'stripe';
 import { buffer } from 'micro';
 
@@ -52,7 +52,7 @@ export default async function webhookHandler(req, res) {
 ```
 
 ## Subscription Lifecycle Flow
-```mermaid
+```[mermaid](../mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Checkout] -->|Create Subscription| B(Stripe API)

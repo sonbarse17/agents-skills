@@ -21,7 +21,7 @@ metadata:
 
 A golden path is the platform team's answer to "how do I start a new
 service" — a scaffolding template that produces a service with a working
-CI pipeline, a Dockerfile, base observability instrumentation, catalog
+CI pipeline, a Dockerfile, base [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) instrumentation, catalog
 registration, and a security baseline already wired in, so most teams
 never have to make those decisions themselves. The operational risk is at
 either extreme: a template with too many knobs turns into an unmaintainable
@@ -47,7 +47,7 @@ sanctioned, tracked decision rather than an invisible fork.
   branches in its scaffolder steps that changing it risks breaking
   combinations nobody tests.
 - Deciding what the template should hardcode vs. parameterize (base image
-  version, CI runner size, observability agent version).
+  version, CI runner size, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent version).
 - Standing up governance for who owns the golden path and how other teams
   propose changes to it.
 - A previously scaffolded service breaks after an unrelated template change,
@@ -61,22 +61,22 @@ sanctioned, tracked decision rather than an invisible fork.
   `score-compose`/`humctl` to materialize platform-specific manifests) are
   the two most common substrates; the design principles here apply to
   either.
-- Git hosting with branch protection and CODEOWNERS support (GitHub,
+- Git hosting with branch protection and CODEOWNERS support ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md),
   GitLab) so template changes go through review, not direct pushes to the
   templates repo's default branch.
 - An existing (even minimal) CI pipeline standard, base container image,
-  and observability agent/library the platform already endorses — a golden
+  and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent/library the platform already endorses — a golden
   path packages existing platform decisions, it doesn't invent them from
   scratch.
 - A defined security baseline (e.g. required non-root Dockerfile `USER`,
   a mandatory SAST/secret-scan CI step, a minimum set of IAM permissions)
   that the template can encode as a default rather than each team deciding
   independently.
-- Write access to wherever generated services land (a GitHub org/group, an
+- Write access to wherever generated services land (a [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) org/group, an
   artifact registry) for the templating engine's publish step.
 - Agreement on ownership: a named platform team (or a specific sub-team)
   with the authority to merge template changes — see
-  [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md).
+  [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -108,7 +108,7 @@ sanctioned, tracked decision rather than an invisible fork.
      name: golden-path-service-standard
      title: "Standard Service (Golden Path — Tier 2: API + Datastore)"
      description: >
-       CI, Dockerfile, observability, catalog registration, and a
+       CI, Dockerfile, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), catalog registration, and a
        provisioned datastore. Use golden-path-service-minimal if the
        service has no persistent state.
      tags: [golden-path, tier-2]
@@ -149,9 +149,9 @@ sanctioned, tracked decision rather than an invisible fork.
              datastore: '${{ parameters.datastore }}'
        - id: publish
          name: Create repository
-         action: publish:github
+         action: publish:[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
          input:
-           repoUrl: 'github.com?owner=acme-corp&repo=${{ parameters.name }}'
+           repoUrl: '[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
        - id: register
          name: Register in catalog
          action: catalog:register
@@ -172,7 +172,7 @@ sanctioned, tracked decision rather than an invisible fork.
    `metadata.name` and `resources` blocks, materialized per-tier via
    `score-compose init --file score-standard.yaml` or `humctl score deploy
    -f score-standard.yaml`; see
-   [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)
+   [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
    for the workload-spec authoring details this skill doesn't repeat.
 
 4. **Document escape hatches explicitly — never silently block anything
@@ -234,7 +234,7 @@ sanctioned, tracked decision rather than an invisible fork.
 
 8. **Before making a tier the mandatory default, validate it end-to-end**
    — see
-   [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)
+   [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md)
    for the CI pipeline that scaffolds a real instance and proves it builds,
    deploys, and passes a smoke test before you point new-service creation
    at it.
@@ -248,7 +248,7 @@ sanctioned, tracked decision rather than an invisible fork.
 - **Prefer a small enum of supported values over a free-text parameter**
   for anything the platform has to operate long-term (runtime, base image,
   datastore engine) — a free-text `runtime: string` with no validation
-  looks flexible but produces services the CI fleet and observability
+  looks flexible but produces services the CI fleet and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
   stack were never built to support.
 - **Keep the skeleton a set of files with placeholders, not scaffolder
   logic with deep conditionals** — a `fetch:template` skeleton diffed in a
@@ -297,7 +297,7 @@ sanctioned, tracked decision rather than an invisible fork.
   **Fix:** Version the template, stamp generated services with the
   version, and treat a default-changing update as a minor/major version
   bump communicated through the same channel as any platform change — see
-  [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)
+  [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md)
   for canary-rolling template changes before they become the default.
 
 - **Symptom:** The platform team makes the golden path the *only* way to
@@ -307,7 +307,7 @@ sanctioned, tracked decision rather than an invisible fork.
   **Fix:** This is a specific documented rollout failure mode — pair the
   template's launch with an explicit, fast exception/RFC path from day
   one, not an afterthought added after the first blowup; see
-  [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md)
+  [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md)
   for sequencing a mandatory-golden-path rollout without stifling
   legitimate edge cases.
 
@@ -355,11 +355,11 @@ hand-roll their own pipeline outside the platform entirely.
 6. Before `golden-path-service-advanced@1.0.0` becomes the default choice
    surfaced to all teams, it runs through the scaffold-build-deploy-smoke-
    test CI pipeline described in
-   [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md).
+   [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — testing a template design like this one end-to-end before publishing it broadly or promoting it to the default.
-- [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md) — the Score workload spec as an alternative templating substrate for the same tiering and parameterization principles.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — sequencing a golden path's rollout so it doesn't become mandatory-with-no-exceptions from day one, a documented failure mode this skill's escape-hatch design exists to prevent.
-- [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md) — who the "platform team" that owns and governs the golden path actually is, organizationally.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — testing a template design like this one end-to-end before publishing it broadly or promoting it to the default.
+- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the Score workload spec as an alternative templating substrate for the same tiering and parameterization principles.
+- [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — sequencing a golden path's rollout so it doesn't become mandatory-with-no-exceptions from day one, a documented failure mode this skill's escape-hatch design exists to prevent.
+- [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — who the "platform team" that owns and governs the golden path actually is, organizationally.

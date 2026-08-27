@@ -44,7 +44,7 @@ OTA updates allow you to ship bug fixes and small features instantly.
 - Always verify compatibility between JS bundle and native layer before deploying.
 - Ensure critical paths handle update download failures gracefully.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Trigger OTA Update] --> B{Check Native Version}

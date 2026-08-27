@@ -10,7 +10,7 @@ FreeRTOS utilizes a priority-based, preemptive scheduling algorithm. The core da
 ## Priority Inheritance in Mutexes
 To prevent priority inversion, FreeRTOS implements priority inheritance for its Mutex objects (which are specialized semaphores). When a high-priority task attempts to acquire a Mutex held by a lower-priority task, the scheduler temporarily elevates the priority of the mutex holder to match the blocked high-priority task. Upon releasing the mutex, the holder's original base priority is restored.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph SchedulerFreeRTOSScheduler ["FreeRTOS Scheduler<br><br><br>"]

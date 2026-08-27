@@ -27,7 +27,7 @@ references:
 
 Grype is an open-source vulnerability scanner that identifies known security flaws in container images,
 filesystems, and Software Bill of Materials (SBOM) documents. It analyzes operating system packages
-(Alpine, Ubuntu, Red Hat, Debian) and language-specific dependencies (Java, Python, JavaScript, Ruby,
+(Alpine, Ubuntu, Red Hat, Debian) and language-specific dependencies (Java, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), JavaScript, Ruby,
 Go, PHP, Rust) against vulnerability databases to detect CVEs.
 
 Grype emphasizes actionable security insights through:
@@ -45,10 +45,10 @@ grype <image-name>
 
 Examples:
 ```bash
-# Scan official Docker image
+# Scan official [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
 grype alpine:latest
 
-# Scan local Docker image
+# Scan local [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
 grype myapp:v1.2.3
 
 # Scan filesystem directory
@@ -96,7 +96,7 @@ grype <image> -o json > results.json
 Use Grype with Syft-generated SBOMs for faster re-scanning:
 
 ```bash
-# Generate SBOM with Syft (separate skill: sbom-syft)
+# Generate SBOM with Syft (separate skill: [sbom-syft](../sbom-syft/SKILL.md))
 syft <image> -o json > sbom.json
 
 # Scan SBOM with Grype (faster than re-analyzing image)
@@ -207,11 +207,11 @@ grype <image> --db /path/to/database
 - **Sensitive Data Handling**: Scan results may contain package names and versions that reveal
   application architecture. Store results securely and limit access to authorized security personnel.
 
-- **Access Control**: Grype requires Docker socket access when scanning container images.
+- **Access Control**: Grype requires [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket access when scanning container images.
   Restrict permissions to prevent unauthorized image access.
 
-- **Audit Logging**: Log all Grype scans with timestamps, target details, and operator identity
-  for compliance and incident response. Archive scan results for historical vulnerability tracking.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
+  for compliance and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
 
 - **Compliance**: Regular vulnerability scanning supports SOC2, PCI-DSS, NIST 800-53, and ISO 27001
   requirements. Document scan frequency and remediation SLAs.
@@ -245,13 +245,13 @@ Scan before pushing images to registry:
 
 ```bash
 # Build image
-docker build -t myapp:latest .
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:latest .
 
 # Scan locally before push
 grype myapp:latest --fail-on critical
 
 # If scan passes, push to registry
-docker push myapp:latest
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push myapp:latest
 ```
 
 ### Pattern 2: Scheduled Scanning
@@ -260,7 +260,7 @@ Re-scan existing images for newly disclosed vulnerabilities:
 
 ```bash
 # Scan all production images daily
-for image in $(docker images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
+for image in $([docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
   grype $image -o json >> daily-scan-$(date +%Y%m%d).json
 done
 ```
@@ -282,10 +282,10 @@ grype alpine:3.19
 
 ## Integration Points
 
-- **CI/CD**: Integrate with GitHub Actions, GitLab CI, Jenkins, CircleCI using `--fail-on` thresholds
-- **Container Registries**: Scan images from Docker Hub, ECR, GCR, ACR, Harbor
-- **Security Tools**: Export SARIF for GitHub Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
-- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous monitoring)
+- **CI/CD**: Integrate with [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) using `--fail-on` thresholds
+- **Container Registries**: Scan images from [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
+- **Security Tools**: Export SARIF for [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
+- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
 
 ## Troubleshooting
 
@@ -321,8 +321,8 @@ grype alpine:3.19
 
 ## References
 
-- [Grype GitHub Repository](https://github.com/anchore/grype)
-- [Grype Documentation](https://github.com/anchore/grype#getting-started)
+- [Grype [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anchore/grype)
+- [Grype Documentation](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anchore/grype#getting-started)
 - [NIST National Vulnerability Database](https://nvd.nist.gov/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 - [FIRST EPSS (Exploit Prediction Scoring System)](https://www.first.org/epss/)

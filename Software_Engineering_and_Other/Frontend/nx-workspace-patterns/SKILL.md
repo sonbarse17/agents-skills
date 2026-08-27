@@ -5,7 +5,7 @@ description: Configure and optimize Nx monorepo workspaces. Use when setting up 
 
 # Nx Workspace Patterns
 
-Production patterns for Nx monorepo management.
+Production patterns for Nx [monorepo](../monorepo/SKILL.md) management.
 
 ## When to Use This Skill
 

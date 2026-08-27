@@ -29,11 +29,11 @@ metadata:
 An MLOps platform on Azure is a chain of dependent phases — tenant
 guardrails, a compute platform, GPU quota and clusters, experiment
 tracking, pipeline orchestration, a model registry, a serving layer, and
-drift monitoring — and each phase's setup assumes the previous one exists
+drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) — and each phase's setup assumes the previous one exists
 in a specific, working state. Get the order wrong and failures show up in
 the wrong phase entirely: a training pipeline authored before GPU quota is
 approved queues with an opaque error, or a model promoted to a managed
-online endpoint before monitoring is wired means a regression is invisible
+online endpoint before [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is wired means a regression is invisible
 until a human notices. Every individual piece here is covered in depth by
 an existing skill; this skill is the Azure-specific sequencing across all
 of them, worked through the managed Azure ML platform end to end, with the
@@ -50,7 +50,7 @@ sequence where the choice actually diverges.
   specific worked path instead of an abstract comparison.
 - Auditing an existing Azure ML platform for a skipped or out-of-order
   phase (e.g. GPU quota requested after a training pipeline was already
-  authored, or drift monitoring added only after months of unmonitored
+  authored, or drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) added only after months of unmonitored
   endpoint traffic).
 - Rebuilding a reference ML platform (a second business unit, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -63,7 +63,7 @@ sequence where the choice actually diverges.
 - An Azure tenant with a real landing zone already in place, or the intent
   to build one first — this skill does **not** cover Management
   Group/subscription design; see
-  [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md).
+  [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md).
   Confirm the target subscription sits in the correct Management Group and
   that its Azure Policy assignments (diagnostic settings, allowed regions,
   allowed VM/GPU SKUs) are already propagated and compliant before
@@ -73,14 +73,14 @@ sequence where the choice actually diverges.
   different identity models (Azure ML managed identity/datastore RBAC vs.
   Azure AD Workload Identity for AKS pods) that should not be mixed
   mid-project.
-- Azure CLI ≥ 2.60 with the `ml` extension, or the `azureml` Python SDK
+- Azure CLI ≥ 2.60 with the `ml` extension, or the `azureml` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
   v2, and Terraform ≥ 1.5 with the `azurerm` provider ≥ 3.x if managing
   the workspace as IaC.
 - GPU VM quota (e.g. `Standard_NC` or `Standard_ND` family) requested and
   approved in the target region **before** the training pipeline phase —
   Azure GPU quota approval can take days and is a common source of a
   stalled first training run if requested late.
-- A storage account and Key Vault already provisioned (or provisioned as
+- A storage account and Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) already provisioned (or provisioned as
   part of Phase 3) for the Azure ML workspace's default datastore and
   secrets — decide this before Phase 4, not improvised per phase.
 
@@ -93,7 +93,7 @@ integration decisions between phases.
 1. **Phase 1 — Azure landing zone.** Confirm (or stand up) the Management
    Group hierarchy, Azure Policy guardrails, centralized Log Analytics
    workspace, and subscription vending per
-   [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md).
+   [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md).
    Specifically confirm the subscription's assigned policies allow the GPU
    VM SKUs this platform needs — a SKU-allowlist policy scoped too
    narrowly at the Sandbox/NonProd Management Group level (a common
@@ -107,21 +107,21 @@ integration decisions between phases.
      compute clusters, pipelines, a model registry, and managed online
      endpoints behind one control plane and one RBAC/managed-identity
      model — the right default for teams that want to minimize
-     infrastructure ownership and don't need Kubernetes-native scheduling
+     infrastructure ownership and don't need [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native scheduling
      control.
    - **AKS+Kubeflow (brief alternative)**: provision AKS per
-     [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+     [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
      (Azure AD Workload Identity for pod-level access to Blob Storage/Key
-     Vault) and run Kubeflow Pipelines per
-     [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md)
+     [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) and run Kubeflow Pipelines per
+     [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
      on top, with GPU node pools per
-     [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+     [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
      — the right choice when the team needs MIG partitioning, custom
-     bin-packing, or already runs Kubernetes-native ML infrastructure on
+     bin-packing, or already runs [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native ML infrastructure on
      other clouds and wants a consistent operating model.
 
 3. **Phase 3 — Azure ML workspace and GPU compute clusters.** Create the
-   workspace (linked storage account, Key Vault, Application Insights,
+   workspace (linked storage account, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), Application Insights,
    container registry) and a GPU-backed compute cluster sized to the
    approved quota from Phase 1:
    ```bash
@@ -135,15 +135,15 @@ integration decisions between phases.
    target created against unapproved quota fails at job-submission time,
    not at cluster-creation time, which makes the root cause harder to spot
    days later. (AKS+Kubeflow alternative: provision GPU node pools via
-   [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
    instead of an `AmlCompute` cluster.)
 
 4. **Phase 4 — experiment tracking.** Azure ML workspaces have built-in,
    MLflow-compatible experiment tracking — point the standard `mlflow`
    SDK at the workspace's tracking URI rather than standing up a separate
    MLflow server, applying the logging discipline from
-   [experiment-tracking](../experiment-tracking/SKILL.md):
-   ```python
+   [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md):
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow
    mlflow.set_tracking_uri(azureml_mlflow_tracking_uri)  # from az ml workspace show
    mlflow.set_experiment("fraud-scorer")
@@ -158,14 +158,14 @@ integration decisions between phases.
    features across models, stand up a feature layer (Feast against Azure
    Blob Storage for the offline store and Azure Cache for Redis for the
    online store) per
-   [feature-store-design](../feature-store-design/SKILL.md). Optional —
+   [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md). Optional —
    skip for a single model with no feature-reuse need.
 
 6. **Phase 6 — training pipeline orchestration.** Author the retraining
-   DAG using Azure ML Pipelines (`azure-ai-ml` SDK v2), applying the
+   DAG using Azure ML Pipelines (`[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml` SDK v2), applying the
    vendor-neutral gate/reproducibility principles from
-   [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md):
-   ```python
+   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md):
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from azure.ai.ml import dsl, Input
 
    @dsl.pipeline(compute="gpu-training-cluster")
@@ -181,12 +181,12 @@ integration decisions between phases.
    placeholder compute name) and that logging calls resolve to the Phase
    4 workspace tracking URI. (AKS+Kubeflow alternative: author with the
    KFP SDK per
-   [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md).)
+   [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md).)
 
 7. **Phase 7 — model registry and packaging.** Register the pipeline's
    output model to the Azure ML Model Registry, applying the promotion-
    gate discipline from
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md):
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md):
    ```bash
    az ml model create --name fraud-scorer --version 14 --type mlflow_model \
      --path azureml://jobs/<job-id>/outputs/model \
@@ -199,7 +199,7 @@ integration decisions between phases.
 8. **Phase 8 — serving and scaling.** Deploy a managed online endpoint
    referencing the Phase 7 registered model, applying the canary rollout
    discipline from
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md):
+   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md):
    ```bash
    az ml online-deployment create --name fraud-scorer-v14 \
      --endpoint-name fraud-scorer-endpoint --model fraud-scorer:14 \
@@ -208,14 +208,14 @@ integration decisions between phases.
      --traffic "fraud-scorer-v14=5 fraud-scorer-v13=95"
    ```
    Do not shift traffic past this initial 5% split until Phase 9's
-   monitoring is confirmed collecting data against this endpoint. (AKS
+   [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is confirmed collecting data against this endpoint. (AKS
    +Kubeflow alternative: KServe `InferenceService` per
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md).)
+   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
-9. **Phase 9 — monitoring and drift detection.** Enable Azure ML's data
-   drift monitoring (or a self-managed Evidently job reading endpoint
+9. **Phase 9 — [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Enable Azure ML's data
+   drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (or a self-managed Evidently job reading endpoint
    request/response logs from Application Insights) per
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md),
+   [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
    with the reference baseline frozen at the moment version 14 first
    received production traffic in Phase 8 — not recomputed later from a
    rolling window that would already include the new version's own
@@ -235,7 +235,7 @@ integration decisions between phases.
   server — this is one of the concrete advantages of the managed path
   over AKS+Kubeflow, where a self-hosted tracker would be required
   instead.
-- Treat Phase 9 (monitoring) as a blocking prerequisite before any
+- Treat Phase 9 ([monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite before any
   traffic-split ramp-up past the first stage in Phase 8, exactly as on
   every other cloud in this family — an unmonitored canary defeats the
   purpose of canarying.
@@ -244,7 +244,7 @@ integration decisions between phases.
   is reproducible for a second environment or business unit.
 - Verify Azure Policy `deployIfNotExists` remediation for diagnostic
   settings actually completed against the ML resource group (`az policy
-  remediation list`) before assuming Phase 9's dashboards will show data —
+  remediation list`) before assuming Phase 9's [dashboards](../dashboards/SKILL.md) will show data —
   a policy that evaluates "compliant" does not guarantee the remediation
   identity's role assignment succeeded.
 
@@ -276,7 +276,7 @@ integration decisions between phases.
   endpoint-to-lineage chain (endpoint → registry version → job → MLflow
   run) stays intact.
 
-- **Symptom:** A drift-monitoring alert fires constantly in the days
+- **Symptom:** A drift-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) alert fires constantly in the days
   immediately following Phase 8's traffic-split cutover, even though
   nothing about the model changed.
   **Fix:** Phase 9's reference baseline was computed from a rolling
@@ -346,17 +346,17 @@ within the first hour of the 5% canary; three days later, with drift and
 quality metrics stable, traffic is ramped to 100% and version 2's
 deployment is scaled down (not deleted) for a two-week rollback window,
 following the same soak-period discipline described in
-[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md).
+[model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md) — Phase 1's Management Group/subscription/policy foundation.
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — the AKS cluster/workload-identity setup for the Phase 2 AKS+Kubeflow alternative.
-- [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md) — GPU node pool design for the AKS+Kubeflow alternative to Phase 3.
-- [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md) — the KFP-specific implementation for the AKS+Kubeflow alternative to Phase 6.
-- [experiment-tracking](../experiment-tracking/SKILL.md) — Phase 4's logging discipline, applied to Azure ML's built-in MLflow-compatible tracking.
-- [feature-store-design](../feature-store-design/SKILL.md) — Phase 5's optional feature layer.
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) — Phase 7's registry and promotion gates.
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md) — Phase 8's canary/traffic-split rollout.
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md) — Phase 9's drift/quality monitoring.
+- [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's Management Group/subscription/policy foundation.
+- [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the AKS cluster/workload-identity setup for the Phase 2 AKS+Kubeflow alternative.
+- [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — GPU node pool design for the AKS+Kubeflow alternative to Phase 3.
+- [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP-specific implementation for the AKS+Kubeflow alternative to Phase 6.
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Azure ML's built-in MLflow-compatible tracking.
+- [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
+- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
+- [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).

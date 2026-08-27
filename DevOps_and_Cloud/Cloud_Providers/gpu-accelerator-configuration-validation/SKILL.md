@@ -20,17 +20,17 @@ metadata:
 
 ## Purpose
 
-[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+[gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
 covers building GPU infrastructure correctly; this skill covers verifying
 that a *specific job's* configuration actually engages that infrastructure
-before it runs. GPU scheduling on Kubernetes has an unusually large number
+before it runs. GPU scheduling on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) has an unusually large number
 of small, independently-failing config surfaces — a missing
 `resources.limits` block, a typo'd resource key (`nvidia.com/gpu` vs.
 `nvidia.com/mig-1g.10gb`), a missing toleration, a CUDA version the job
 image wasn't built against — and nearly all of them fail *silently*: the
 pod still schedules, the container still starts, and the job still runs to
 completion, just on the CPU (much slower) or against the wrong device
-(possibly with wrong numerical results). There is rarely a Kubernetes-level
+(possibly with wrong numerical results). There is rarely a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level
 error to alert on. This skill is a pre-submit and in-job validation
 checklist specifically aimed at catching that class of silent
 misconfiguration before hours or days of compute are wasted.
@@ -54,21 +54,21 @@ misconfiguration before hours or days of compute are wasted.
 
 ## Prerequisites & environment
 
-- `kubectl` access to the cluster and namespace running the job, plus
-  `nvidia-smi` access on the node or via `kubectl exec` into a running pod
+- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` access to the cluster and namespace running the job, plus
+  `nvidia-smi` access on the node or via `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec` into a running pod
   for direct GPU visibility.
 - The GPU infrastructure from
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   already installed (device plugin, DCGM exporter) — this skill validates
   *against* that infrastructure, it doesn't install it.
   For OOM/crash-loop diagnosis on GPU nodes generally, also see
-  [pod-crashloop-and-oom-troubleshooting](../../../kubernetes-platform/skills/pod-crashloop-and-oom-troubleshooting/SKILL.md).
+  [pod-crashloop-and-oom-troubleshooting](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[pod-crashloop-and-oom-troubleshooting](../../Containers_and_Orchestration/pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md).
 - Framework-level GPU visibility inside the training/serving image
   (`torch.cuda.is_available()` for PyTorch, `tf.config.list_physical_devices('GPU')`
   for TensorFlow) to add in-job fail-fast checks.
 - If enforcing validation via admission policy: OPA Gatekeeper or Kyverno
   already installed in the cluster — see
-  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md).
+  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -77,13 +77,13 @@ misconfiguration before hours or days of compute are wasted.
    all — a correct pod spec against a broken device plugin still fails
    silently:
    ```bash
-   kubectl get nodes -o json \
-     | jq '.items[] | {name:.metadata.name, gpu:.status.capacity["nvidia.com/gpu"], mig:.status.capacity | with_entries(select(.key|startswith("nvidia.com/mig")))}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o json \
+     | jq '.items[] | {name:.metadata.name, gpu:.status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)["nvidia.com/gpu"], mig:.status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | with_entries(select(.key|startswith("nvidia.com/mig")))}'
    ```
    If a node has a physical GPU but no `nvidia.com/gpu` or
-   `nvidia.com/mig-*` capacity entry, the device plugin isn't healthy on
+   `nvidia.com/mig-*` [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) entry, the device plugin isn't healthy on
    that node — fix that first (see
-   [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md))
+   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md))
    since no pod spec fix downstream will make the job actually use a GPU.
 
 2. **Check that the resource key in the pod spec exactly matches what the
@@ -102,13 +102,13 @@ misconfiguration before hours or days of compute are wasted.
        nvidia.com/mig-1g.10gb: 1
    ```
    ```bash
-   # Diff the pod's requested resource key against the node's actual capacity keys
-   kubectl get pod <pod> -o jsonpath='{.spec.containers[*].resources.limits}'
-   kubectl get node <node> -o jsonpath='{.status.capacity}' | jq 'with_entries(select(.key|startswith("nvidia.com")))'
+   # Diff the pod's requested resource key against the node's actual [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) keys
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pod <pod> -o jsonpath='{.spec.containers[*].resources.limits}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get node <node> -o jsonpath='{.status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)}' | jq 'with_entries(select(.key|startswith("nvidia.com")))'
    ```
 
 3. **Verify the resource appears in `limits`, not only `requests` (or vice
-   versa left empty).** Kubernetes device plugins are "limit-only"
+   versa left empty).** [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) device plugins are "limit-only"
    resources — a pod that sets `requests.nvidia.com/gpu: 1` but omits
    `limits` (or sets it to `0` by a templating bug) is **not guaranteed a
    GPU allocation at all** and can schedule onto a CPU-only node, silently
@@ -136,16 +136,16 @@ misconfiguration before hours or days of compute are wasted.
    forever (visible) or, worse, schedules onto an *untainted* fallback
    node with no GPU at all (invisible):
    ```bash
-   kubectl get node <gpu-node> -o jsonpath='{.spec.taints}'
-   kubectl get pod <pod> -o jsonpath='{.spec.tolerations}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get node <gpu-node> -o jsonpath='{.spec.taints}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pod <pod> -o jsonpath='{.spec.tolerations}'
    ```
 
 5. **Add an in-job fail-fast assertion** as a second line of defense
-   independent of the Kubernetes scheduling layer, so a job that somehow
+   independent of the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) scheduling layer, so a job that somehow
    schedules onto a GPU node but can't actually initialize CUDA (driver/
    library mismatch) fails loudly in its first seconds instead of running
    to completion on CPU:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import torch, sys
 
    if not torch.cuda.is_available():
@@ -172,9 +172,9 @@ misconfiguration before hours or days of compute are wasted.
    combinations, a silent fallback to a slower or CPU-only code path:
    ```bash
    # Driver version on the node
-   kubectl exec -it <pod> -- nvidia-smi --query-gpu=driver_version --format=csv
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -it <pod> -- nvidia-smi --query-gpu=driver_version --format=csv
    # CUDA toolkit baked into the image
-   kubectl exec -it <pod> -- nvcc --version
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -it <pod> -- nvcc --version
    ```
    Cross-check both against the NVIDIA driver/CUDA compatibility table
    before assuming a mismatch is fine — newer drivers are usually backward
@@ -216,19 +216,19 @@ misconfiguration before hours or days of compute are wasted.
 
 ## Best practices
 
-- Never treat "the job finished without a Kubernetes-level error" as
+- Never treat "the job finished without a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level error" as
   evidence it used a GPU — the failure modes here are specifically the
   ones that don't produce scheduler or container errors.
 - Validate at three independent layers: admission-time policy (catches bad
   manifests before scheduling), the in-job fail-fast assertion (catches
   runtime CUDA/driver issues the scheduler can't see), and post-hoc
-  monitoring on `DCGM_FI_DEV_GPU_UTIL` for the pod (catches a job that got
+  [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) on `DCGM_FI_DEV_GPU_UTIL` for the pod (catches a job that got
   a GPU allocation but isn't actually using it, e.g. a data-loading
   bottleneck or a code path that never calls `.cuda()`).
 - Keep a single source of truth for the resource key naming convention
   (`nvidia.com/gpu` for whole GPUs, `nvidia.com/mig-<profile>` for MIG
   slices) documented alongside the node pool labels from
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md),
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md),
   so job authors aren't guessing the exact string.
 - Bake the in-job fail-fast GPU assertion into a shared base training image
   or entrypoint script rather than leaving it to each job author to
@@ -253,7 +253,7 @@ misconfiguration before hours or days of compute are wasted.
   job silently falling back to CPU produces no error and no alert, just
   wasted compute budget and a delayed result. Treat any GPU-labeled job
   without an in-job fail-fast CUDA assertion as unvalidated and at risk of
-  this failure mode, and add GPU-utilization alerting rather than relying
+  this failure mode, and add GPU-utilization [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rather than relying
   on someone noticing run duration by eye.
   **Fix:** Add the in-job `torch.cuda.is_available()` (or framework
   equivalent) assertion from step 5, plus admission-time enforcement from
@@ -262,8 +262,8 @@ misconfiguration before hours or days of compute are wasted.
 
 - **Symptom:** A pod requests `nvidia.com/gpu: 1` but the node pool was
   reconfigured for MIG partitioning last week; the pod stays `Pending`
-  indefinitely with no obvious reason in `kubectl describe pod`.
-  **Fix:** Check `kubectl describe node <node>` for the actual resource
+  indefinitely with no obvious reason in `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe pod`.
+  **Fix:** Check `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe node <node>` for the actual resource
   keys currently advertised — a MIG-enabled node no longer advertises
   `nvidia.com/gpu` at all, only `nvidia.com/mig-<profile>` keys. Update the
   job spec to request the matching MIG resource key, and communicate MIG
@@ -273,8 +273,8 @@ misconfiguration before hours or days of compute are wasted.
   despite requesting `nvidia.com/gpu: 4`, with no error.
   **Fix:** Check the training framework's distributed launch configuration
   (`torchrun --nproc_per_node`, `CUDA_VISIBLE_DEVICES`, or the framework's
-  device-count detection) separately from the Kubernetes resource request —
-  Kubernetes correctly allocating 4 GPU devices to a pod does not
+  device-count detection) separately from the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) resource request —
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) correctly allocating 4 GPU devices to a pod does not
   automatically make a training script use more than one of them; that's
   a framework-level distributed launch concern, not a scheduling one.
 
@@ -282,7 +282,7 @@ misconfiguration before hours or days of compute are wasted.
   with a CUDA driver/library version mismatch error after a platform-wide
   driver upgrade.
   **Fix:** Roll driver upgrades to a canary GPU node pool first (per
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)'s
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)'s
   best practices) and validate the existing fleet of training/serving
   images' CUDA toolkit versions against the new driver before a
   cluster-wide rollout, rather than discovering incompatibility from a
@@ -294,7 +294,7 @@ misconfiguration before hours or days of compute are wasted.
   from their pod spec, and the (still GPU-intended) job now silently runs
   on CPU with no policy check applied at all.
   **Fix:** Don't rely solely on a workload-shaped label the job author
-  controls as the enforcement trigger; also add a monitoring-side check
+  controls as the enforcement trigger; also add a [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-side check
   independent of pod labels — e.g. alert when a container image known to
   be a GPU-training image is running on a node with no GPU resource
   allocation, using image name/tag as the trigger instead of a
@@ -341,7 +341,7 @@ Pre-submit validation catches it two ways:
    nvidia.com/mig-* resource limit.` — submission fails immediately with a
    clear message, no compute spent.
 
-2. If the policy weren't in place, the pod **would schedule** — Kubernetes
+2. If the policy weren't in place, the pod **would schedule** — [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
    only strictly enforces device-plugin resources via `limits`, so a
    `requests`-only GPU key is not a guaranteed allocation — and the
    in-job assertion (step 5) baked into the training entrypoint fires
@@ -367,8 +367,8 @@ Corrected manifest adds the missing `limits`:
 
 ## Cross-references
 
-- [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md) — the infrastructure layer (device plugin, MIG, node pools) this skill validates a specific job's config against.
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) — where GPU resource requests should be templated consistently across pipeline steps rather than hand-copied per job.
-- [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md) and [ray-distributed-ml-orchestration](../ray-distributed-ml-orchestration/SKILL.md) — orchestrators whose component/task GPU resource declarations should be validated with this checklist before a pipeline run.
-- [pod-crashloop-and-oom-troubleshooting](../../../kubernetes-platform/skills/pod-crashloop-and-oom-troubleshooting/SKILL.md) — general Kubernetes pod failure diagnosis, complementary when a GPU pod fails outright rather than silently falling back.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) — authoring the admission-time policies referenced in step 7 as OPA/Rego instead of Kyverno.
+- [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — the infrastructure layer (device plugin, MIG, node pools) this skill validates a specific job's config against.
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — where GPU resource requests should be templated consistently across pipeline steps rather than hand-copied per job.
+- [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) and [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — orchestrators whose component/task GPU resource declarations should be validated with this checklist before a pipeline run.
+- [pod-crashloop-and-oom-troubleshooting](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[pod-crashloop-and-oom-troubleshooting](../../Containers_and_Orchestration/pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md) — general [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) pod failure diagnosis, complementary when a GPU pod fails outright rather than silently falling back.
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — authoring the admission-time policies referenced in step 7 as OPA/Rego instead of Kyverno.

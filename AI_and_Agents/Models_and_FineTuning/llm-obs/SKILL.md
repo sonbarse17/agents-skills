@@ -9,9 +9,9 @@ metadata:
   version: 0.1.0
 ---
 
-# LLM and Agentic Observability
+# LLM and Agentic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
-Answer user questions about monitoring LLMs and agentic components using **data ingested into Elastic** only. Focus on
+Answer user questions about [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) LLMs and agentic components using **data ingested into Elastic** only. Focus on
 LLM performance, cost and token utilization, response quality, and call chaining or agentic workflow orchestration. Use
 **ES|QL**, Elasticsearch APIs, and (where needed) Kibana APIs. Do not rely on Kibana UI; the skill works without it. A
 given deployment typically uses **one or more** ingestion paths (APM/OTLP traces **and/or** integration metrics/logs)—
@@ -20,28 +20,28 @@ discover what is available before querying.
 ## Where to look
 
 - **Trace and metrics data (APM / OTel):** Trace data in Elastic is stored in **`traces*`** when collected by the
-  Elastic APM Agent, and in **`traces-generic.otel-default`** (and similar) when collected by OpenTelemetry. Use the
+  Elastic APM Agent, and in **`traces-generic.otel-default`** (and similar) when collected by [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md). Use the
   generic pattern **`traces*`** to find all trace data regardless of source. When the application is instrumented with
-  OpenTelemetry (e.g. Elastic
-  [Distributions of OpenTelemetry (EDOT)](https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/use-cases/llms),
+  [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) (e.g. Elastic
+  [Distributions of [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) (EDOT)](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/get-started/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/use-cases/llms),
   OpenLLMetry, OpenLIT, Langtrace exporting to OTLP), LLM and agent spans land in these trace data streams; metrics may
   land in **`metrics-apm*`** or metrics-generic. Query **`traces*`** and **`metrics*`** data streams for per-request and
   aggregated LLM signals.
 - **Integration metrics and logs:** When the user collects data via
-  [Elastic LLM integrations](https://www.elastic.co/docs/solutions/observability/applications/llm-observability)
+  [Elastic LLM integrations](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/applications/llm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md))
   (OpenAI, Azure OpenAI, Azure AI Foundry, Amazon Bedrock, Bedrock AgentCore, GCP Vertex AI, etc.), metrics and logs go
   to **integration data streams** (e.g. `metrics*`, `logs*` with dataset/namespace per integration). Check which data
   streams exist.
 - **Discover first:** Use Elasticsearch to list data streams or indices (e.g. `GET _data_stream`, or
   `GET traces*/_mapping`, `GET metrics*/_mapping`) and optionally sample a document to see which LLM-related fields are
   present. Do not assume both APM and integration data exist.
-- **ES|QL:** Use the **elasticsearch-esql** skill for ES|QL syntax, commands, and query patterns when building queries
+- **ES|QL:** Use the **[elasticsearch-esql](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-esql/SKILL.md)** skill for ES|QL syntax, commands, and query patterns when building queries
   against `traces*` or metrics data streams.
-- **Alerts and SLOs:** Use the [Observability APIs](https://www.elastic.co/docs/solutions/observability/apis) **SLOs
+- **Alerts and SLOs:** Use the [Observability APIs](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/apis) **SLOs
   API** ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo) |
-  [Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-slo)) and **Alerting API**
-  ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) |
-  [Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-alerting)) to find SLOs and alerting rules
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-slo)) and **[Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) API**
+  ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) |
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md))) to find SLOs and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules
   that target LLM-related data (e.g. services backed by `traces*`, or integration metrics). Firing alerts or
   violated/degrading SLOs point to potential degraded performance.
 
@@ -50,7 +50,7 @@ discover what is available before querying.
 ### From traces and metrics (traces*, metrics-apm* / metrics-generic)
 
 Spans from OTel/EDOT (and compatible SDKs) carry **span attributes** that may follow
-[OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-spans/) or
+[OpenTelemetry GenAI semantic conventions](https://[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/gen-ai-spans/) or
 provider-specific names. In Elasticsearch, attributes typically appear under `span.attributes` (exact key names depend
 on ingestion). Common attributes:
 
@@ -82,14 +82,14 @@ stream mapping.
 
 1. **List data streams:** `GET _data_stream` and filter for `traces*`, `metrics-apm*` (or `metrics*`), and `metrics-*` /
    `logs-*` that match known LLM integration datasets (e.g. from
-   [Elastic LLM observability](https://www.elastic.co/docs/solutions/observability/applications/llm-observability)).
+   [Elastic LLM observability](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/applications/llm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md))).
 2. **Inspect trace indices:** For `traces*`, run a small search or use mapping to see if spans contain `gen_ai.*` or
    `llm.*` (or similar) attributes. Confirm presence of token, model, and duration fields.
 3. **Inspect integration indices:** For metrics/logs data streams, check mapping or one document to see token, cost,
    latency, and model dimensions.
 4. **Use one source per use case:** If both APM and integration data exist, prefer one consistent source for a given
    question (e.g. use traces for per-request chain analysis, integration metrics for aggregate token/cost).
-5. **Check alerts and SLOs:** Use the SLOs API and Alerting API to list SLOs and alerting rules that target LLM-related
+5. **Check alerts and SLOs:** Use the SLOs API and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) API to list SLOs and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules that target LLM-related
    services or integration metrics, and to get open or recently fired alerts. Firing alerts or SLOs in
    degrading/violated status point to potential degraded performance.
 
@@ -116,7 +116,7 @@ stream mapping.
   `traces*` to identify failures, timeouts, or content filters. Correlate with prompts/responses if captured in
   attributes (e.g. `gen_ai.input.messages`, `gen_ai.output.messages`) and not redacted.
 - **Integrations:** Query integration logs for guardrail blocks, content filter events, or policy violations (e.g.
-  [Bedrock Guardrails](https://www.elastic.co/observability-labs/blog/llm-observability-amazon-bedrock-guardrails))
+  [Bedrock Guardrails](https://www.elastic.co/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-labs/blog/llm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-amazon-bedrock-guardrails))
   using the fields defined by that integration.
 
 ### Call chaining and agentic workflow orchestration
@@ -128,7 +128,7 @@ stream mapping.
 
 ## Using ES|QL for LLM data
 
-- **Availability:** ES|QL is available in Elasticsearch 8.11+ (GA in 8.14) and in Elastic Observability Serverless.
+- **Availability:** ES|QL is available in Elasticsearch 8.11+ (GA in 8.14) and in Elastic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).
 - **Scoping:** Always restrict by time range (`@timestamp`). When present, add `service.name` and optionally
   `service.environment`. For LLM-specific spans, filter by span attributes once you know the field names (e.g. a keyword
   field for `gen_ai.provider.name` or `gen_ai.operation.name`).
@@ -138,11 +138,11 @@ stream mapping.
 ## Workflow
 
 ```text
-LLM observability progress:
+LLM [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) progress:
 - [ ] Step 1: Determine available data (traces*, metrics-apm* or metrics*, or integration data streams)
 - [ ] Step 2: Discover LLM-related field names (mapping or sample doc)
 - [ ] Step 3: Run ES|QL or Elasticsearch queries for the user's question (performance, cost, quality, orchestration)
-- [ ] Step 4: Check for active alerts or SLOs defined on LLM-related data (Alerting API, SLOs API); field names from
+- [ ] Step 4: Check for active alerts or SLOs defined on LLM-related data ([Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) API, SLOs API); field names from
         Step 2 help identify related rules; firing alerts or violated/degrading SLOs indicate potential degraded performance
 - [ ] Step 5: Summarize findings from ingested data only; include alert/SLO status when relevant
 ```
@@ -200,8 +200,8 @@ FROM traces*
 The [Amazon Bedrock AgentCore integration](https://www.elastic.co/docs/reference/integrations/aws_bedrock_agentcore)
 ships metrics to the `metrics-aws_bedrock_agentcore.metrics-*` data stream (time series index). Use **`TS`** for
 aggregations on time series data streams (Elasticsearch 9.2+); use a time range with **`TRANGE`** (9.3+). The
-integration’s dashboards and
-[alerting rule templates](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock_agentcore/kibana/alerting_rule_template)
+integration’s [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and
+[alerting rule templates](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/elastic/integrations/tree/main/packages/aws_bedrock_agentcore/kibana/alerting_rule_template)
 Example: token usage (counter), invocations (counter), and average latency (gauge) by hour and agent:
 
 ```esql
@@ -219,7 +219,7 @@ TS metrics-aws_bedrock_agentcore.metrics-*
 For Elasticsearch 8.x or when `TS` is not available, use `FROM` with `BUCKET(@timestamp, 1 hour)` and `SUM`/`AVG` over
 the metric fields (as in the integration's alert rule templates). For other LLM integrations (OpenAI, Azure OpenAI,
 Vertex AI, etc.), use that integration’s data stream index pattern and field names from its package (see
-[Elastic LLM observability](https://www.elastic.co/docs/solutions/observability/applications/llm-observability)).
+[Elastic LLM observability](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/applications/llm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md))).
 
 ## Guidelines
 
@@ -230,13 +230,13 @@ Vertex AI, etc.), use that integration’s data stream index pattern and field n
 - **Discover field names:** Before writing ES|QL or Query DSL, confirm LLM-related attribute or metric names from
   `_mapping` or a sample document; naming may differ (e.g. `gen_ai.*` vs `llm.*` or integration-specific fields).
 - **No Kibana UI dependency:** Prefer ES|QL and Elasticsearch APIs; use Kibana APIs only when needed (e.g. SLO,
-  alerting). Do not instruct the user to open Kibana UI.
+  [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)). Do not instruct the user to open Kibana UI.
 - **References:**
-  [LLM and agentic AI observability](https://www.elastic.co/docs/solutions/observability/applications/llm-observability),
-  [Observability Labs – LLM Observability](https://www.elastic.co/observability-labs/blog/tag/llmobs),
-  [OpenTelemetry GenAI spans](https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-spans/). For ES|QL syntax and
-  query patterns, use the **elasticsearch-esql** skill, or look through
+  [LLM and agentic AI observability](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/applications/llm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)),
+  [Observability Labs – LLM Observability](https://www.elastic.co/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-labs/blog/tag/llmobs),
+  [OpenTelemetry GenAI spans](https://[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/gen-ai-spans/). For ES|QL syntax and
+  query patterns, use the **[elasticsearch-esql](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-esql/SKILL.md)** skill, or look through
   [ES|QL TS command reference](https://www.elastic.co/docs/reference/query-languages/esql/commands/ts) for Elastic v9.3
-  or higher and for Serverless, and look through
+  or higher and for [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), and look through
   [ES|QL FROM command reference](https://www.elastic.co/docs/reference/query-languages/esql/commands/from) for other
   Elastic versions.

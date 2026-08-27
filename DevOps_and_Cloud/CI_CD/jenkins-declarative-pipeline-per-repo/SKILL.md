@@ -15,18 +15,18 @@ metadata:
   maturity: stable
 ---
 
-# Jenkins Declarative Pipeline Per Repo
+# [Jenkins](../jenkins/SKILL.md) Declarative Pipeline Per Repo
 
 ## Purpose
 
 A per-repo `Jenkinsfile` puts pipeline-as-code directly in the repository it
 builds: it's reviewed in the same pull request as the code change, versioned
-alongside it, and doesn't require a Jenkins administrator to touch a
-separate job configuration. This skill covers Jenkins **Declarative
+alongside it, and doesn't require a [Jenkins](../jenkins/SKILL.md) administrator to touch a
+separate job configuration. This skill covers [Jenkins](../jenkins/SKILL.md) **Declarative
 Pipeline** syntax specifically — the `agent`/`stages`/`steps`/`post` block
 structure, `environment` and `when` conditionals, and the concrete
 constructs (not generic CI concepts, which are covered in
-[ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md))
+[ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md))
 needed to write a correct, maintainable Jenkinsfile that lives in a single
 repo. It also covers the specific trade-off of the per-repo model versus
 centralizing logic in a shared library, so a team can make an informed
@@ -42,29 +42,29 @@ choice rather than defaulting to copy-paste.
   `always` cleanup step (e.g. `deleteDir()`), to an existing pipeline.
 - Deciding whether pipeline logic that's growing complex in one Jenkinsfile
   should stay per-repo or be extracted into a shared library — see
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md)
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md)
   for that migration.
 - Reviewing a Jenkinsfile PR and needing to know whether `sh`, `script`, or
   a plugin step is idiomatic for a given task.
 
 ## Prerequisites & environment
 
-- A Jenkins controller (2.401+ LTS recommended for current Declarative
+- A [Jenkins](../jenkins/SKILL.md) controller (2.401+ LTS recommended for current Declarative
   Pipeline features) with the **Pipeline** plugin suite installed
   (`workflow-aggregator`), which ships Declarative Pipeline support.
 - The repo is registered as a **Multibranch Pipeline** or **Pipeline job
   with "Pipeline script from SCM"** pointing at `Jenkinsfile` in the repo
   root (or a path configured in the job) — the Jenkinsfile is not useful
   without a job/multibranch config that reads it from SCM.
-- Build agents (nodes) with the required labels available — e.g. a `docker`
+- Build agents (nodes) with the required labels available — e.g. a `[docker](../../Containers_and_Orchestration/docker/SKILL.md)`
   or `linux-x64` label matching what the Jenkinsfile's `agent` block
-  requests. Confirm labels via **Manage Jenkins → Nodes**.
+  requests. Confirm labels via **Manage [Jenkins](../jenkins/SKILL.md) → Nodes**.
 - Credentials (SSH keys, registry tokens, cloud creds) already created in
-  **Manage Jenkins → Credentials** with known IDs — a Jenkinsfile only
+  **Manage [Jenkins](../jenkins/SKILL.md) → Credentials** with known IDs — a Jenkinsfile only
   references a credential ID (`${JENKINS_CRED_ID}`), it never stores the
   secret value itself.
-- For Docker-based agents: the controller/agent has Docker available and
-  the `Docker Pipeline` plugin installed if using `agent { docker { ... } }`.
+- For [Docker](../../Containers_and_Orchestration/docker/SKILL.md)-based agents: the controller/agent has [Docker](../../Containers_and_Orchestration/docker/SKILL.md) available and
+  the `[Docker](../../Containers_and_Orchestration/docker/SKILL.md) Pipeline` plugin installed if using `agent { [docker](../../Containers_and_Orchestration/docker/SKILL.md) { ... } }`.
 
 ## Step-by-step guidance
 
@@ -94,24 +94,24 @@ choice rather than defaulting to copy-paste.
    ```
 
 2. **Pin `agent` precisely, not just `agent any`.** Use a label for a
-   specific node pool, or a `docker` agent for a reproducible toolchain
+   specific node pool, or a `[docker](../../Containers_and_Orchestration/docker/SKILL.md)` agent for a reproducible toolchain
    pinned by image tag:
 
    ```groovy
    agent {
-       docker {
+       [docker](../../Containers_and_Orchestration/docker/SKILL.md) {
            image 'node:20.11-bullseye'
            args '-v $HOME/.npm:/home/node/.npm'
        }
    }
    ```
    `agent any` is fine for a small team with a homogeneous fleet; pin a
-   label or Docker image once tooling versions must be reproducible or
+   label or [Docker](../../Containers_and_Orchestration/docker/SKILL.md) image once tooling versions must be reproducible or
    multiple agent types exist.
 
 3. **Model real stages, not one giant `script` block.** Each logical phase
    (checkout, build, test, package, deploy) is its own `stage`, so the
-   Jenkins UI/API shows per-stage pass/fail and timing:
+   [Jenkins](../jenkins/SKILL.md) UI/API shows per-stage pass/fail and timing:
 
    ```groovy
    stages {
@@ -128,7 +128,7 @@ choice rather than defaulting to copy-paste.
        }
        stage('Package') {
            steps {
-               sh 'docker build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
+               sh '[docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
            }
        }
        stage('Deploy to staging') {
@@ -140,8 +140,8 @@ choice rather than defaulting to copy-paste.
                                                   usernameVariable: 'REG_USER',
                                                   passwordVariable: 'REG_PASS')]) {
                    sh '''
-                     echo "$REG_PASS" | docker login registry.example.com -u "$REG_USER" --password-stdin
-                     docker push ${IMAGE_NAME}:${GIT_COMMIT}
+                     echo "$REG_PASS" | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
+                     [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
                    '''
                }
            }
@@ -165,7 +165,7 @@ choice rather than defaulting to copy-paste.
    conditionals on computed values) that the declarative DSL can't express
    directly — keep these blocks small; anything non-trivial belongs in a
    shared library function, see
-   [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md).
+   [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md).
    ```groovy
    steps {
        script {
@@ -193,12 +193,12 @@ choice rather than defaulting to copy-paste.
    }
    ```
 
-7. **Validate syntax before pushing** using the Jenkins CLI or the
+7. **Validate syntax before pushing** using the [Jenkins](../jenkins/SKILL.md) CLI or the
    `Jenkinsfile` linter endpoint:
    ```bash
    curl -s -X POST -u ${JENKINS_USER}:${JENKINS_API_TOKEN} \
      -F "jenkinsfile=<Jenkinsfile" \
-     https://jenkins.example.com/pipeline-model-converter/validate
+     https://[jenkins](../jenkins/SKILL.md).example.com/pipeline-model-converter/validate
    ```
    Catching a `WorkflowScript: 12: Expected one of ...` error here is far
    faster than waiting for a real build to fail at parse time.
@@ -209,28 +209,28 @@ choice rather than defaulting to copy-paste.
   for logic the DSL genuinely can't express, and keep those blocks under
   ~10 lines — anything bigger is a sign the logic belongs in a shared
   library function instead of inline Groovy (see
-  [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md)).
+  [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md)).
 - Set `options { timeout(...) }` and `disableConcurrentBuilds()` (or
   `options { skipDefaultCheckout() }` where appropriate) explicitly — a
   Jenkinsfile with no timeout can hang a stuck agent indefinitely, tying up
   an executor.
 - Reference credentials only by ID (`withCredentials`, `credentialsId:`),
-  never inline — Jenkins masks values referenced this way in console
+  never inline — [Jenkins](../jenkins/SKILL.md) masks values referenced this way in console
   output automatically; a value assigned to a plain `env` var from a
   credential is not masked.
 - Use `junit`/`archiveArtifacts`/`recordIssues` (Warnings Next Generation
-  plugin) to surface structured results in the Jenkins UI rather than only
+  plugin) to surface structured results in the [Jenkins](../jenkins/SKILL.md) UI rather than only
   a pass/fail exit code — this mirrors the "fail fast and make failures
   actionable" guidance in
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 - Decide early whether logic is genuinely repo-specific (belongs inline)
   or organization-wide (belongs in a shared library) — a Jenkinsfile that
   has grown past ~150 lines of duplicated logic across many repos is the
   signal to migrate, see
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md).
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md).
 - Version-pin plugin-provided steps where the plugin has known breaking
   changes between major versions (check the plugin's changelog before a
-  Jenkins upgrade), since a per-repo Jenkinsfile has no central place to
+  [Jenkins](../jenkins/SKILL.md) upgrade), since a per-repo Jenkinsfile has no central place to
   absorb a plugin API change across many repos.
 
 ## Common pitfalls
@@ -254,7 +254,7 @@ choice rather than defaulting to copy-paste.
   `environment { TOKEN = credentials('id') }` followed by manual `echo`, and
   never `sh "curl -H Authorization: ${TOKEN}"` without quoting through
   `withCredentials`'s masked bindings — use `withCredentials([...])` and
-  keep the secret variable inside its scope; Jenkins only masks values it
+  keep the secret variable inside its scope; [Jenkins](../jenkins/SKILL.md) only masks values it
   knows are secret-bound in that block.
 
 - **Symptom:** Build hangs for hours consuming an executor after an agent
@@ -266,20 +266,20 @@ choice rather than defaulting to copy-paste.
 - **Symptom:** Two builds of the same branch run concurrently and race on
   a shared resource (e.g. both push to the same tag).
   **Fix:** Add `options { disableConcurrentBuilds() }`, or narrow it with
-  `disableConcurrentBuilds(abortPrevious: true)` (Jenkins 2.263+) so a new
+  `disableConcurrentBuilds(abortPrevious: true)` ([Jenkins](../jenkins/SKILL.md) 2.263+) so a new
   build cancels the superseded one rather than running in parallel.
 
 ## Worked example
 
 **Scenario:** A single Node.js service repo needs its own Jenkinsfile:
-lint/test on every branch and PR, Docker build + push to a registry only on
+lint/test on every branch and PR, [Docker](../../Containers_and_Orchestration/docker/SKILL.md) build + push to a registry only on
 `main`, with Slack notification on failure.
 
 `Jenkinsfile` (repo root):
 ```groovy
 pipeline {
     agent {
-        docker { image 'node:20.11-bullseye' }
+        [docker](../../Containers_and_Orchestration/docker/SKILL.md) { image 'node:20.11-bullseye' }
     }
     options {
         timestamps()
@@ -307,13 +307,13 @@ pipeline {
         stage('Build & Push image') {
             when { branch 'main' }
             steps {
-                sh 'docker build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
+                sh '[docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
                 withCredentials([usernamePassword(credentialsId: '${JENKINS_CRED_ID}',
                                                    usernameVariable: 'REG_USER',
                                                    passwordVariable: 'REG_PASS')]) {
                     sh '''
-                      echo "$REG_PASS" | docker login registry.example.com -u "$REG_USER" --password-stdin
-                      docker push ${IMAGE_NAME}:${GIT_COMMIT}
+                      echo "$REG_PASS" | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
+                      [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
                     '''
                 }
             }
@@ -336,7 +336,7 @@ registry credential scoped to the one `withCredentials` block that needs it.
 
 ## Cross-references
 
-- [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md) — extract logic here into an org-wide shared library once it's duplicated across repos.
-- [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md) — writing safe, testable Groovy inside `script {}` blocks.
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — vendor-neutral stage layout, caching, and gating concepts this Jenkinsfile implements.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the security scan stages to add into this pipeline.
+- [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — extract logic here into an org-wide shared library once it's duplicated across repos.
+- [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md) — writing safe, testable Groovy inside `script {}` blocks.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage layout, caching, and gating concepts this Jenkinsfile implements.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security scan stages to add into this pipeline.

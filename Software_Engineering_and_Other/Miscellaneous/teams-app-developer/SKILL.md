@@ -24,7 +24,7 @@ Build Microsoft 365 agents and Teams apps using the ATK CLI.
    - Always wait for completion before running the next step (timeout 120000ms+)
 
 5. **Local Service Startup — Hangs terminal (expected):**
-   - `npm run dev`, `npm start`, `python app.py`, `devtunnel host`, etc. will hang — the process keeps running indefinitely
+   - `npm run dev`, `npm start`, `[python](../../Languages/python/SKILL.md) app.py`, `devtunnel host`, etc. will hang — the process keeps running indefinitely
    - ALWAYS run as a background process (`isBackground=true`) — NEVER use `isBackground=false` for these commands
    - Do NOT wait for it to "finish" — verify startup by checking output for "listening on port" or tunnel URL
    - If errors appear, read logs, diagnose, fix, restart
@@ -67,7 +67,7 @@ npm i -g @microsoft/m365agentstoolkit-cli@beta
 | **test-teams**       | Run on Teams, devtunnel, sideload, Teams testing, test in Copilot                | [test-teams/test-teams.md](test-teams/test-teams.md)                         |
 | **provision-deploy** | Provision Azure resources, deploy to cloud, `atk provision`, `atk deploy`        | [provision-deploy/provision-deploy.md](provision-deploy/provision-deploy.md) |
 | **troubleshoot**     | Fix errors, 401, port conflicts, YAML errors, stale bots                         | [troubleshoot/troubleshoot.md](troubleshoot/troubleshoot.md)                 |
-| **slack-to-teams**   | Migrate Slack bot to Teams, cross-platform bridging, Block Kit to Adaptive Cards | [slack-to-teams/SKILL.md](slack-to-teams/SKILL.md)                           |
+| **[slack-to-teams](../microsoft-365-agents-toolkit/skills/teams-app-developer/[slack-to-teams](../[slack-to-teams](slack-to-teams/SKILL.md)/SKILL.md)/SKILL.md)**   | Migrate Slack bot to Teams, cross-platform bridging, Block Kit to Adaptive Cards | [slack-to-teams/SKILL.md]([slack-to-teams](../microsoft-365-agents-toolkit/skills/teams-app-developer/[slack-to-teams](../[slack-to-teams](slack-to-teams/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)                           |
 
 > **MANDATORY:** Before executing any workflow, read the corresponding sub-skill document.
 
@@ -89,9 +89,9 @@ Match user intent to the smallest valid workflow.
 | Test existing project locally | test-playground (recommended) or test-teams |
 | Deploy to Azure               | provision-deploy                            |
 | Fix broken bot                | troubleshoot → re-test                      |
-| Migrate Slack bot to Teams    | slack-to-teams                              |
+| Migrate Slack bot to Teams    | [slack-to-teams](../microsoft-365-agents-toolkit/skills/teams-app-developer/[slack-to-teams](../[slack-to-teams](slack-to-teams/SKILL.md)/SKILL.md)/SKILL.md)                              |
 
-> **MANDATORY:** Before executing any slack-to-teams workflow, read [slack-to-teams/SKILL.md](slack-to-teams/SKILL.md) first. The sub-skill contains a routed expert system with 100+ micro-expert files for cross-platform bot development.
+> **MANDATORY:** Before executing any [slack-to-teams](../microsoft-365-agents-toolkit/skills/teams-app-developer/[slack-to-teams](../[slack-to-teams](slack-to-teams/SKILL.md)/SKILL.md)/SKILL.md) workflow, read [slack-to-teams/SKILL.md]([slack-to-teams](../microsoft-365-agents-toolkit/skills/teams-app-developer/[slack-to-teams](../[slack-to-teams](slack-to-teams/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) first. The sub-skill contains a routed expert system with 100+ micro-expert files for cross-platform bot development.
 
 ## ATK Project Context Resolution
 

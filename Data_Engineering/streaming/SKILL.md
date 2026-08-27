@@ -58,7 +58,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Stream processing job with exactly-once semantics
 - [ ] CDC pipeline from source database configured
 - [ ] Error handling with DLQ defined
-- [ ] Monitoring and lag alerting configured
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and lag [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured
 - [ ] Security configured (TLS, auth, ACLs)
 - [ ] Data retention and compaction strategy defined
 
@@ -85,7 +85,7 @@ A consumer group divides topic partitions among its members. When a consumer joi
 acks=0: fire-and-forget, no acknowledgment, possible data loss. acks=1: leader acknowledges, possible leader failover loss. acks=all (with min.insync.replicas): leader + ISR acknowledge, no loss. Enable `enable.idempotence=true` to prevent duplicate produces within a session. Set `transactional.id` for exactly-once across partitions.
 
 #### Consumer Semantics
-At-most-once: commit offset before processing (message may be lost on failure). At-least-once: commit offset after processing (message may be reprocessed on failure). Exactly-once: process and commit offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
+At-most-once: [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset before processing (message may be lost on failure). At-least-once: [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset after processing (message may be reprocessed on failure). Exactly-once: process and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
 
 #### Transactional API
 ```java
@@ -231,7 +231,7 @@ Never remove fields. New fields must have defaults for backward compatibility. U
 
 | Source Type | Tool | Configuration Key |
 |---|---|---|
-| Database CDC | Debezium | `connector.class=io.debezium.connector.postgresql.PostgresConnector` |
+| Database CDC | Debezium | `connector.class=io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).PostgresConnector` |
 | Application events | Kafka Producer | Direct API |
 | Log files | Filebeat/Logstash → Kafka | Filebeat Kafka output |
 | IoT/MQTT | MQTT Proxy → Kafka | Custom connector or bridge |
@@ -251,7 +251,7 @@ Never remove fields. New fields must have defaults for backward compatibility. U
 ## CDC with Debezium
 
 ### Debezium Architecture
-Debezium connects to database transaction logs (WAL for PostgreSQL, binlog for MySQL, redo log for Oracle, change feed for SQL Server). Emits each row change as a separate Kafka message. Handles schema changes, snapshots, and continuous streaming.
+Debezium connects to database transaction logs (WAL for [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), binlog for [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), redo log for Oracle, change feed for SQL Server). Emits each row change as a separate Kafka message. Handles schema changes, snapshots, and continuous streaming.
 
 #### Debezium Message Structure
 ```json
@@ -279,7 +279,7 @@ Debezium connects to database transaction logs (WAL for PostgreSQL, binlog for M
 {
   "name": "postgres-orders-connector",
   "config": {
-    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "connector.class": "io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).PostgresConnector",
     "database.hostname": "postgres-prod",
     "database.port": "5432",
     "database.user": "debezium",
@@ -373,7 +373,7 @@ State schema changes (e.g., adding a field to state) require savepoint-to-savepo
 Test individual operators and functions with mock Kafka records. Use `TopologyTestDriver` for Kafka Streams, `TestHarness` for Flink processors. Verify: correct outputs for given inputs, side outputs for errors, state updates, watermark behavior.
 
 ### Integration Testing
-Spin up Kafka + Schema Registry + processing engine via Testcontainers or docker-compose. Produce test events, consume results, assert correctness. Test: consumer group rebalancing, checkpointing and recovery (kill job, verify resume), schema evolution compatibility, exactly-once delivery.
+Spin up Kafka + Schema Registry + processing engine via Testcontainers or [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md). Produce test events, consume results, assert correctness. Test: consumer group rebalancing, checkpointing and recovery (kill job, verify resume), schema evolution compatibility, exactly-once delivery.
 
 ### Performance Testing
 Define throughput targets (msg/s, MB/s), latency SLAs (p50, p95, p99), and data loss tolerance. Test with production-scale data volume and partition count. Identify bottlenecks: CPU-bound (serialization, compression), memory-bound (state size, buffering), IO-bound (network, disk). Run for minimum 24 hours to detect long-term drift.
@@ -389,13 +389,13 @@ SSL client authentication: mutual TLS between clients and brokers. SASL/PLAIN: u
 ### Authorization
 Kafka ACLs: `--allow-principal User:app1 --operation read --topic orders`. Topic-level: read, write, create, describe, alter. Consumer group-level: read, describe. Cluster-level: create topics, describe configs. Use prefix ACLs for topic patterns: `--topic orders.*`. Prefer RBAC via Apache Ranger for multi-team clusters.
 
-## Monitoring
+## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ### Consumer Lag
 Consumer lag is the difference between the latest produced offset and the consumer's committed offset. High lag means the consumer is falling behind. Lag is the most critical streaming metric. Monitor lag every 60 seconds. Alert on lag > 1000 messages or lag growing steadily (indicates consumer cannot keep up).
 
 ### Key Metrics
-Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, commit rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a monitoring dashboard with alerts for anomalous values.
+Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard with alerts for anomalous values.
 
 ### Streaming Health Dashboard
 ```
@@ -421,7 +421,7 @@ Orders Streaming Pipeline
 | State management | Required (windowed, keyed) | Not needed |
 | Failure recovery | Checkpoint/savepoint | Re-run from start |
 | Cost | Higher (always-on infra) | Lower (scheduled compute) |
-| Use case | Real-time dashboards, alerts, CDC | Reports, ML training, backfill |
+| Use case | Real-time [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
 
 ## Common Streaming Topology Patterns
 
@@ -439,7 +439,7 @@ Producer → Kafka Topic (domain events) → Multiple Consumer Groups:
   └── Group C: ksqlDB → Push Query → Real-time Dashboard
 ```
 
-### Microservices Communication Pattern
+### [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) Communication Pattern
 ```
 Service A → Kafka Topic (command/event) → Service B
   ├── Service B processes event → Publishes result event
@@ -479,7 +479,7 @@ Input Topic → Kafka Streams / Flink
 |---|---|---|---|
 | Business events | delete | 7 days | `orders.created.v1` |
 | CDC events | delete | 30 days | `postgres.orders.orders` |
-| Audit events | delete | 365 days | `audit.access.v1` |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) events | delete | 365 days | `[audit](../../AI_and_Agents/Operations/audit/SKILL.md).access.v1` |
 | Keyed state | compact | N/A (keep latest per key) | `customer.profile.v1` |
 | DLQ | delete | 90 days | `orders.created.v1.dlq` |
 | Logs | delete | 3 days | `app.logs.v1` |
@@ -492,7 +492,7 @@ Input Topic → Kafka Streams / Flink
 | Clickstream | 50000 msg/s | 500 B | 24 | 50000 * 500B = 25MB/s |
 | IoT sensor data | 100000 msg/s | 100 B | 48 | 100000 * 100B = 10MB/s |
 | CDC from Postgres | 100 msg/s | 5 KB | 3 | Low volume |
-| Audit log | 2000 msg/s | 1 KB | 12 | Moderate volume |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log | 2000 msg/s | 1 KB | 12 | Moderate volume |
 
 ## Streaming SLA Targets
 
@@ -514,7 +514,7 @@ Creating a topic per event type per entity (hundreds of topics). Leads to ZK ove
 Producing/consuming raw JSON without Schema Registry. Inevitably leads to deserialization failures when schema changes. Fix: enforce Schema Registry with Avro/Protobuf and BACKWARD compatibility.
 
 ### Ignoring Offset Management
-Auto-committing offsets with `enable.auto.commit=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
+Auto-committing offsets with `enable.auto.[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
 
 ### Synchronous Processing in Consumers
 Calling external APIs synchronously in consumer poll loop blocks the thread and causes rebalance timeouts. Fix: async processing with callbacks, or use a separate processing thread pool.
@@ -525,13 +525,13 @@ Setting partition count once and never reviewing it. As throughput grows, partit
 ## Streaming Platform Ecosystem
 
 ### Apache Pulsar
-Pulsar is a multi-tenant, high-throughput messaging platform with native geo-replication. Unlike Kafka, Pulsar separates serving (Brokers) from storage (Bookies via Apache BookKeeper), enabling elastic scaling without data rebalancing. Key features: segment-centric storage for unlimited log retention, tiered storage (offload to S3/GCS), built-in Pulsar Functions for lightweight processing, and native multi-tenancy. Topics are virtual and scale transparently. Use Pulsar for geo-distributed deployments, unlimited retention, or multi-tenant streaming.
+Pulsar is a multi-tenant, high-throughput messaging platform with native geo-replication. Unlike Kafka, Pulsar separates serving (Brokers) from storage (Bookies via Apache BookKeeper), enabling elastic scaling without data rebalancing. Key features: segment-centric storage for unlimited log retention, tiered storage (offload to S3/GCS), built-in Pulsar Functions for lightweight processing, and native [multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md). Topics are virtual and scale transparently. Use Pulsar for geo-distributed deployments, unlimited retention, or multi-tenant streaming.
 
 ### Redpanda
 Redpanda is a Kafka-compatible streaming platform in C++ with a single binary (no ZooKeeper, no JVM). Achieves 10x lower latency and 6x higher throughput per node. Uses Raft-based consensus for HA, full Kafka API compatibility, and includes built-in Schema Registry, REST Proxy, and Connectors. Best for teams wanting Kafka compatibility with reduced ops overhead and lower TCO.
 
 ### Streaming Databases (Materialize, RisingWave)
-Both provide incremental materialized views on streaming data using PostgreSQL-compatible SQL. Materialize updates results incrementally as new data arrives without re-running queries, with persistent storage and exactly-once semantics. RisingWave is cloud-native with decoupled compute-storage and object store persistence. Both support `CREATE MATERIALIZED VIEW` on streams, window functions, stream-table joins, and JDBC/PostgreSQL wire protocol. Choose Materialize for Kafka-native SQL with strong consistency; RisingWave for large-scale persistence with PG compatibility.
+Both provide incremental materialized views on streaming data using [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-compatible SQL. Materialize updates results incrementally as new data arrives without re-running queries, with persistent storage and exactly-once semantics. RisingWave is cloud-native with decoupled compute-storage and object store persistence. Both support `CREATE MATERIALIZED VIEW` on streams, window functions, stream-table joins, and JDBC/[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) wire protocol. Choose Materialize for Kafka-native SQL with strong consistency; RisingWave for large-scale persistence with PG compatibility.
 
 ## Rules
 - Exactly-once semantics for all critical streams
@@ -543,8 +543,8 @@ Both provide incremental materialized views on streaming data using PostgreSQL-c
 - Compacted topics for keyed state, delete retention for events
 - Watermarks account for out-of-order events
 - Alert on lag > 1000 or lag growing for 5+ minutes
-- Set retention based on replay and audit requirements
-- Never auto-commit offsets in production
+- Set retention based on replay and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) requirements
+- Never auto-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offsets in production
 - Test checkpointing by simulating broker failures
 - Monitor rebalance frequency as cluster health indicator
 - Use TLS for all inter-component communication
@@ -556,8 +556,8 @@ Both provide incremental materialized views on streaming data using PostgreSQL-c
   - ../../../Global_References/pulsar-patterns.md — Apache Pulsar Patterns
   - ../../../Global_References/streaming-architecture.md — Streaming Architecture
   - ../../../Global_References/streaming-databases.md — Streaming Databases
-  - ../../../Global_References/streaming-monitoring.md — Streaming Monitoring
+  - ../../../Global_References/streaming-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Streaming [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 ## Handoff
-`data-data-warehouse` for streaming data landing in the warehouse
-`data-etl-pipeline` for batch processing of streamed data
+`[data-data-warehouse](../data-warehouse/SKILL.md)` for streaming data landing in the warehouse
+`[data-etl-pipeline](../etl-pipeline/SKILL.md)` for batch processing of streamed data
 

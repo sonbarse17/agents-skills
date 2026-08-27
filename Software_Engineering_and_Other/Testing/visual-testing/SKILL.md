@@ -27,7 +27,7 @@ Exact user phrases: "visual testing", "visual regression", "screenshot diff", "P
 Before activating, verify:
 - Existing test framework (Playwright, Cypress, Storybook)
 - Deployment frequency and team size
-- CI platform (GitHub Actions, GitLab CI, etc.)
+- CI platform ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, etc.)
 - Design system maturity (ad-hoc, partial, comprehensive)
 
 ### Output Artifact
@@ -38,7 +38,7 @@ Visual testing setup with tool configuration, baseline management, and CI workfl
 # Tool selection and rationale
 # Diff threshold configuration
 ```
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // CI pipeline configuration
 // Baseline management workflow
 ```
@@ -76,7 +76,7 @@ Percy + Playwright: `npm install @percy/cli @percy/playwright`, wrap snapshot ca
 
 Playwright built-in: `await expect(page).toHaveScreenshot('name.png')` with configurable `maxDiffPixelRatio` and `threshold`. Store baselines in `__screenshots__` directory alongside tests.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // playwright.config.ts
 import { defineConfig } from "@playwright/test";
 
@@ -245,7 +245,7 @@ When UI changes are intentionally made, developers must update baselines via the
 | Run on PR only | Running visual tests on every push wastes CI budget | Run on `pull_request` event, not `push` |
 | Cache dependencies | Speeds up CI visual test runs | Cache node_modules, Playwright browsers, Storybook build output |
 | Preview deployments | Visual tests against live preview environments for accuracy | Deploy preview on Vercel/Netlify, run visual tests against preview URL |
-| Review diffs in context | Cloud dashboards with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
+| Review diffs in context | Cloud [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
 
 ## Compared With
 
@@ -256,8 +256,8 @@ When UI changes are intentionally made, developers must update baselines via the
 | Applitools (cloud SaaS) | AI-powered matching, Ultrafast Grid, layout matching modes | Expensive, complex setup | Enterprise cross-browser visual testing |
 | Playwright built-in | Free, no external dependency, fast | Manual review, no cloud dashboard, local baseline storage | Teams already using Playwright, no budget |
 | Cypress screenshot diff | Free, Cypress-native | Manual review, no cloud dashboard | Teams already using Cypress exclusively |
-| BackstopJS (open source) | Free, configurable, Docker support | Manual review, HTML report only, no cloud | Open source projects, no budget |
-| Loki (open source) | Docker-based, Storybook integration | Docker dependency, CLI only | Component library visual testing |
+| BackstopJS (open source) | Free, configurable, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support | Manual review, HTML report only, no cloud | Open source projects, no budget |
+| Loki (open source) | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based, Storybook integration | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) dependency, CLI only | Component library visual testing |
 | Happo (cloud SaaS) | Animation GIF diff, cross-browser | Paid, smaller ecosystem | Animation-heavy applications |
 
 For most projects: use Percy (Playwright/Cypress) or Chromatic (Storybook). For advanced needs: Applitools. For zero budget: Playwright built-in screenshots. For animation testing: Happo.
@@ -306,7 +306,7 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 ### Cloud Visual Testing Services
 
-- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via GitHub/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
+- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
 - **Chromatic** (Chroma): `chromatic` CLI, Storybook addon. Git-native review workflow. Auto-accept changes on main branch. TurboSnap for smart snapshot filtering. Zero-config setup for Storybook projects.
 - **Applitools Eyes**: `@applitools/eyes-playwright`, `@applitools/eyes-cypress`, `@applitools/eyes-storybook`. Ultrafast Grid for parallel cross-browser rendering. AI-powered visual matching with layout, strict, and content match levels.
 - **Happo**: `happo-plugin-playwright`, `happo-plugin-cypress`, `happo-plugin-storybook`. Cross-browser and cross-platform snapshots. Animated GIF diff for motion testing.
@@ -315,20 +315,20 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 - **Playwright**: Built-in `toHaveScreenshot` with `maxDiffPixelRatio` and `threshold` options. Baseline storage in repository. No external dependency. Use with `@playwright/test` for zero-cost visual testing.
 - **Cypress**: `cy.screenshot()` with `cy.task` for diff comparison. No built-in visual testing -- requires community plugins or custom setup.
-- **BackstopJS**: CLI tool with Docker support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
-- **Loki**: Docker-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
+- **BackstopJS**: CLI tool with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
+- **Loki**: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
 - **Pixelmatch**: Low-level pixel comparison library. Used internally by many visual testing tools. Accepts raw PNG buffers, returns mismatched pixel count and diff image.
 
 ### Related Testing Tools
 
 - **Storybook**: Component development environment. Chromatic integration for automatic snapshot capture. Visual testing addon for in-Storybook diff review.
-- **Argos CI**: Open-source visual testing with GitHub integration. Git-lfs for baseline image storage. Self-hostable.
-- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. GitHub Action integration. Visual diff report with zoom and highlight.
+- **Argos CI**: Open-source visual testing with [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration. Git-lfs for baseline image storage. Self-hostable.
+- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action integration. Visual diff report with zoom and highlight.
 
 ## Visual Testing Examples
 
 ### Playwright — Element-Level Snapshot
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { test, expect } from "@playwright/test";
 
 test("product card component renders correctly", async ({ page }) => {
@@ -343,7 +343,7 @@ test("product card component renders correctly", async ({ page }) => {
 ```
 
 ### Playwright — Full Page Snapshot with Masking
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 test("dashboard page matches baseline", async ({ page }) => {
   await page.goto("/dashboard");
   await page.waitForLoadState("networkidle");
@@ -359,7 +359,7 @@ test("dashboard page matches baseline", async ({ page }) => {
 ```
 
 ### Percy + Playwright Integration
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import percySnapshot from "@percy/playwright";
 
 test("checkout page visual regression", async ({ page }) => {
@@ -373,7 +373,7 @@ test("checkout page visual regression", async ({ page }) => {
 ```
 
 ### Visual Testing with Dynamic Content Handling
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 test("user profile page with stable snapshot", async ({ page }) => {
   await page.goto("/profile");
   // Freeze dynamic content before snapshot
@@ -410,15 +410,15 @@ jobs:
         run: npx percy exec -- npx playwright test --grep @visual
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_BRANCH: ${{ github.head_ref }}
-          PERCY_TARGET_BRANCH: ${{ github.base_ref }}
+          PERCY_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref }}
+          PERCY_TARGET_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).base_ref }}
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: visual-diffs
           path: __screenshots__/
   chromatic:
-    if: github.event_name == 'pull_request'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -440,7 +440,7 @@ jobs:
 | 1: Initial | No visual testing | Manual visual inspection only, no automation, UI bugs found by users |
 | 2: Defined | Basic visual snapshots | Playwright built-in snapshots for critical pages, manual baseline update, local storage |
 | 3: Managed | Cloud-based visual testing | Percy/Chromatic with cloud review workflow, per-component thresholds, cross-browser testing, CI integration |
-| 4: Measured | Comprehensive visual coverage | Responsive breakpoints tested, dynamic content handling (masks, clips), flaky diff management, quarterly baseline audit |
+| 4: Measured | Comprehensive visual coverage | Responsive breakpoints tested, dynamic content handling (masks, clips), flaky diff management, quarterly baseline [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
 | 5: Optimized | AI-powered visual QA | Applitools AI matching for layout tolerance, automatic baseline updates on intentional changes, predictive diff analysis, self-healing selectors for visual targets |
 
 ## Visual Testing Anti-Patterns (Additional)
@@ -488,8 +488,8 @@ baseline_workflow:
   - references/visual-testing-ci-integration.md -- Visual Testing CI Integration
 
 ## Handoff
-`quality-e2e-testing` for combined E2E + visual test suite.
-`design-design-systems` for component baseline snapshots.
+`[quality-e2e-testing](../e2e-testing/SKILL.md)` for combined E2E + visual test suite.
+`design-[design-systems](../../Frontend/design-systems/SKILL.md)` for component baseline snapshots.
 Carry forward: visual test config, baseline snapshots, review workflow.
 ## Implementation Patterns
 
@@ -543,7 +543,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -557,7 +557,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -573,12 +573,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -587,7 +587,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -595,13 +595,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -610,8 +610,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

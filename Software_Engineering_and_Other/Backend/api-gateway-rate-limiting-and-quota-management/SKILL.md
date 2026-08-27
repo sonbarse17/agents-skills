@@ -32,14 +32,14 @@ allowance is safe versus how much it just delays the same overload, and
 how (or whether) the counter is kept consistent across multiple gateway
 nodes. Getting these wrong produces two opposite failures that are
 equally bad: a limit so tight it throttles legitimate traffic and gets
-"temporarily" raised during an incident until it's effectively
+"temporarily" raised during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) until it's effectively
 meaningless, or a limit so loose (or inconsistently enforced across
 nodes) that it fails to protect the backend it was meant to protect at
 all. This skill covers that vendor-neutral strategy layer — the
 tool-specific plugin mechanics for applying it live in
-[kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md)
+[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
 and
-[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md).
+[apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -87,7 +87,7 @@ and
 1. **Decide whether you're rate-limiting or quota-managing — or both,
    as separate policies** — before picking an algorithm:
    - **Rate-limiting** bounds request *rate* over a short window
-     (per-second/per-minute) to protect a backend's real-time capacity.
+     (per-second/per-minute) to protect a backend's real-time [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
    - **Quota management** bounds total *consumption* over a long window
      (per-day/per-month), typically tied to a pricing tier or fair-use
      policy, independent of how bursty the traffic was within that
@@ -98,7 +98,7 @@ and
    covering only one leaves the other failure mode unprotected. This is
    exactly why Apigee ships `SpikeArrest` and `Quota` as separate
    policies (see
-   [apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md))
+   [apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md))
    rather than one combined mechanism.
 
 2. **Choose an algorithm based on the traffic pattern, not habit:**
@@ -134,7 +134,7 @@ and
      consumer classes of the same API, usually layered on top of (not
      instead of) a per-client limit.
    - **Global** (across all callers combined): protects the backend's
-     absolute capacity regardless of how many distinct clients there
+     absolute [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) regardless of how many distinct clients there
      are — necessary in addition to per-client limits when enough
      well-behaved clients calling near their individual limits could
      still collectively overwhelm the backend.
@@ -148,10 +148,10 @@ and
    Pull real percentile data (p50/p95/p99 request rate per client over
    short windows) and set the bucket/burst size to comfortably cover
    legitimate p99 burst behavior, with the sustained/refill rate set to
-   the backend's real sustained capacity:
+   the backend's real sustained [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
    ```
    Observed: typical client bursts to ~40 req/s for 2-3s during a page
-   load, then idles; sustained backend capacity: 500 req/s total.
+   load, then idles; sustained backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): 500 req/s total.
 
    Token bucket per client: bucket size 50 (covers the p99 burst),
    refill rate 10 req/s (bounds sustained abuse without punishing the
@@ -173,9 +173,9 @@ and
    ```
    Back the counter with Redis (or the gateway's cluster-aware counting
    mode) so all nodes enforce against the same count. See
-   [kong-configuration-validation](../kong-configuration-validation/SKILL.md)
+   [kong-configuration-validation](../[kong-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/kong-configuration-validation/SKILL.md)/SKILL.md)
    and
-   [kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md)
+   [kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
    for the concrete `policy: redis` configuration this maps to in one
    specific tool.
 
@@ -209,15 +209,15 @@ and
    backoff) — the fix differs, so don't default to "just raise the
    limit" without checking which case it is.
 
-8. **Re-validate limits after any significant backend capacity
+8. **Re-validate limits after any significant backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    change**, since a rate limit sized to protect a specific backend
-   capacity becomes wrong (too tight or, more dangerously, too loose)
-   the moment that capacity changes and nobody revisits the limit.
+   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) becomes wrong (too tight or, more dangerously, too loose)
+   the moment that [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) changes and nobody revisits the limit.
 
 ## Best practices
 
 - Always separate rate-limiting (short-window, protects real-time
-  capacity) from quota management (long-window, protects a
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) from quota management (long-window, protects a
   business/fair-use allowance) as distinct policies, even when one
   gateway plugin technically could enforce both — conflating them
   tends to leave one dimension unprotected.
@@ -237,7 +237,7 @@ and
   response so well-behaved clients can back off correctly instead of
   hammering the gateway harder.
 - Monitor rejection rate per client/tier continuously, and investigate
-  before adjusting — a limit raised reactively during every incident
+  before adjusting — a limit raised reactively during every [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
   eventually protects nothing.
 
 ## Common pitfalls
@@ -254,7 +254,7 @@ and
 - **Symptom:** A rate limit sized from "round numbers that seemed
   reasonable" either constantly throttles normal usage (frequent
   support complaints) or never triggers at all even during a known
-  abuse incident.
+  abuse [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   **Fix:** The limit wasn't sized from real observed traffic. Pull
   actual p95/p99 per-client request-rate data and re-derive the
   burst/refill (or window) size from it, rather than guessing and then
@@ -270,12 +270,12 @@ and
 
 - **Symptom:** During a traffic spike, an on-call engineer doubles or
   removes the rate limit for the affected client "to stop the 429s,"
-  the incident resolves, and the change is never reverted.
+  the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolves, and the change is never reverted.
   **Fix:** This is a real, standing risk once left in place — the limit
   no longer protects the backend from that client (or anyone using the
-  same raised ceiling) going forward. Treat any incident-time limit
+  same raised ceiling) going forward. Treat any [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-time limit
   change as temporary and explicitly tracked for revert, and once the
-  incident is over, investigate whether the real fix is a legitimate
+  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is over, investigate whether the real fix is a legitimate
   tier increase (a deliberate, reviewed change) or addressing an actual
   misbehaving client (a retry loop, a missing cache) rather than leaving
   the emergency value in place by default.
@@ -295,7 +295,7 @@ and
 **Scenario:** `payments-api` is called by many partner clients through
 a 3-node gateway cluster. Observed traffic: typical client bursts to
 ~15 req/s for a few seconds during checkout completion, then idles;
-overall backend sustained capacity is 300 req/s across all clients
+overall backend sustained [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is 300 req/s across all clients
 combined. Partner contracts also specify a 500,000-request monthly
 allowance per partner.
 
@@ -306,8 +306,8 @@ Design:
   rejecting the normal checkout-completion burst.
 - **Rate-limiting (global):** a second, backend-wide token bucket
   capped at 300 req/s total, refill rate matching real sustained
-  backend capacity — protects against the case where enough clients
-  near their individual limits collectively exceed backend capacity.
+  backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — protects against the case where enough clients
+  near their individual limits collectively exceed backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - **Quota (per-client, long window):** 500,000 requests/month, enforced
   independently of the rate-limit buckets, tied to the partner's
   contractual tier.
@@ -319,7 +319,7 @@ Design:
   `X-RateLimit-Remaining`/quota-remaining headers so partner clients can
   observe how close they are to either limit and back off accordingly.
 
-Monitoring: a dashboard tracking 429 rate per partner and per limit type
+[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): a dashboard tracking 429 rate per partner and per limit type
 (rate-limit vs. quota) separately, so a partner hitting their monthly
 quota (a contract conversation) is distinguishable at a glance from a
 partner triggering the per-second rate-limit (likely a retry loop or a
@@ -328,13 +328,13 @@ an undifferentiated "429 spike."
 
 The concrete plugin configuration implementing this design in Kong is
 covered in
-[kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md);
+[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md);
 the equivalent `Quota`/`SpikeArrest` policy pairing in Apigee is covered
 in
-[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md).
+[apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md) — the concrete `rate-limiting` plugin configuration (including the `redis`/`cluster` counter policy) implementing this strategy in Kong.
-- [apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md) — the `Quota`/`SpikeArrest` policy pairing implementing rate-limiting vs. quota management separately in Apigee, plus how quota ties into monetization tiers.
-- [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md) — mesh-level local/global rate limiting (Envoy rate-limit filters via `EnvoyFilter`) as an alternative enforcement point for east-west traffic, versus enforcing at the north-south gateway edge covered here.
+- [kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the concrete `rate-limiting` plugin configuration (including the `redis`/`cluster` counter policy) implementing this strategy in Kong.
+- [apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md) — the `Quota`/`SpikeArrest` policy pairing implementing rate-limiting vs. quota management separately in Apigee, plus how quota ties into monetization tiers.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — mesh-level local/global rate limiting (Envoy rate-limit filters via `EnvoyFilter`) as an alternative enforcement point for east-west traffic, versus enforcing at the north-south gateway edge covered here.

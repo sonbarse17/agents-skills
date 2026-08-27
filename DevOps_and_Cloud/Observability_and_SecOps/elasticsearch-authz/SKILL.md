@@ -17,11 +17,11 @@ metadata:
 Manage Elasticsearch role-based access control: native users, roles, role assignment, and role mappings for external
 realms.
 
-For authentication methods and API key management, see the **elasticsearch-authn** skill.
+For authentication methods and API key management, see the **[elasticsearch-authn](../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)** skill.
 
 For detailed API endpoints, see [../../../Global_References/elasticsearch-authz_api-reference.md](../../../Global_References/elasticsearch-authz_api-reference.md).
 
-> **Deployment note:** Feature availability differs between self-managed, ECH, and Serverless. See
+> **Deployment note:** Feature availability differs between self-managed, ECH, and [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.
 
 ## Jobs to Be Done
@@ -43,7 +43,7 @@ For detailed API endpoints, see [../../../Global_References/elasticsearch-authz_
 | ---------------------- | -------------------------------------------------------------------------- |
 | **Elasticsearch URL**  | Cluster endpoint (e.g. `https://localhost:9200` or a Cloud deployment URL) |
 | **Kibana URL**         | Required only when setting Kibana feature/space privileges                 |
-| **Authentication**     | Valid credentials (see the elasticsearch-authn skill)                      |
+| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md) skill)                      |
 | **Cluster privileges** | `manage_security` is required for user and role management operations      |
 
 Prompt the user for any missing values.
@@ -63,8 +63,8 @@ Extract from the prompt:
 | **What**         | Which indices, data streams, or Kibana features                           |
 | **Access level** | Read, write, manage, or a specific set of privileges                      |
 | **Scope**        | All documents/fields, or restricted by region, department, sensitivity?   |
-| **Kibana?**      | Does the request mention any Kibana feature (dashboards, Discover, etc.)  |
-| **Deployment?**  | Self-managed, ECH, or Serverless? Serverless has a different user model.  |
+| **Kibana?**      | Does the request mention any Kibana feature ([dashboards](../../Cloud_Providers/dashboards/SKILL.md), Discover, etc.)  |
+| **Deployment?**  | Self-managed, ECH, or [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)? [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) has a different user model.  |
 
 ### Step 2 — Check for existing roles
 
@@ -88,22 +88,22 @@ Kibana API if Kibana features are involved (see [Choosing the right API](#choosi
 | **New native user**      | Create the user with the role and a strong generated password. (Self-managed / ECH only.)                                            |
 | **Existing native user** | Fetch current roles, append the new role, update the user with the full array. (Self-managed / ECH only.)                            |
 | **External realm user**  | Create a role mapping that matches the user's realm attributes to the role. (Self-managed / ECH only.)                               |
-| **Serverless user**      | Use the **cloud-access-management** skill. Assign a predefined role or create a custom role first, then assign it via the Cloud API. |
+| **[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) user**      | Use the **[cloud-access-management](../../Cloud_Providers/access-management/SKILL.md)** skill. Assign a predefined role or create a custom role first, then assign it via the Cloud API. |
 
 ### Example decomposition
 
-**Prompt:** "Create a user `analyst` with read-only access to `logs-*` and `metrics-*` and view dashboards in Kibana."
+**Prompt:** "Create a user `analyst` with read-only access to `logs-*` and `metrics-*` and view [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in Kibana."
 
-1. Identify: new user `analyst`, indices `logs-*`/`metrics-*`, dashboards, read access.
+1. Identify: new user `analyst`, indices `logs-*`/`metrics-*`, [dashboards](../../Cloud_Providers/dashboards/SKILL.md), read access.
 1. Check roles: `GET /_security/role` — no match.
-1. Create role via Kibana API (dashboards involved): `logs-metrics-dashboard-viewer`.
+1. Create role via Kibana API ([dashboards](../../Cloud_Providers/dashboards/SKILL.md) involved): `logs-metrics-dashboard-viewer`.
 1. Create user: `POST /_security/user/analyst` with `roles: ["logs-metrics-dashboard-viewer"]`.
 
 Confirm each step with the user if the request is ambiguous.
 
 ## Manage Native Users
 
-> Native user management applies to self-managed and ECH deployments. On Serverless, users are managed at the
+> Native user management applies to self-managed and ECH deployments. On [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), users are managed at the
 > organization level — skip this section.
 
 ### Create a user
@@ -146,7 +146,7 @@ privileges. This is the default — no Kibana endpoint is required.
 
 Use the **Kibana role API** (`PUT /api/security/role/{name}`) when the role includes any Kibana feature or space
 privileges. The Elasticsearch API cannot set Kibana feature grants, space scoping, or base privileges, so if the user
-mentions Kibana features like Discover, Dashboards, Maps, Visualize, Canvas, or any other Kibana application, the Kibana
+mentions Kibana features like Discover, [Dashboards](../../Cloud_Providers/dashboards/SKILL.md), Maps, Visualize, Canvas, or any other Kibana application, the Kibana
 API is required.
 
 If the Kibana endpoint is not available or API key authentication to Kibana fails, fall back to the Elasticsearch API
@@ -308,8 +308,8 @@ unrestricted role overrides DLS/FLS intent.
 
 ## Assign Roles to Users
 
-> Self-managed and ECH only. On Serverless, use the **cloud-access-management** skill — see
-> [Serverless User Access](#serverless-user-access).
+> Self-managed and ECH only. On [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), use the **[cloud-access-management](../../Cloud_Providers/access-management/SKILL.md)** skill — see
+> [Serverless User Access](#[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-user-access).
 
 Update the user with the new `roles` array:
 
@@ -346,8 +346,8 @@ curl -X POST "${ELASTICSEARCH_URL}/_security/user/_has_privileges" \
 
 ## Manage Role Mappings
 
-> Role mappings are **not available** on Serverless (both ES API and Kibana UI are disabled). Use the
-> **cloud-access-management** skill instead — see [Serverless User Access](#serverless-user-access).
+> Role mappings are **not available** on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) (both ES API and Kibana UI are disabled). Use the
+> **[cloud-access-management](../../Cloud_Providers/access-management/SKILL.md)** skill instead — see [Serverless User Access](#[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-user-access).
 
 Role mappings assign external-realm users (LDAP, AD, SAML, PKI) to roles based on attribute rules. Self-managed and ECH
 only. For supported rule operators and resource fields, see
@@ -419,9 +419,9 @@ curl "${ELASTICSEARCH_URL}/_security/role_mapping" <auth_flags>
 curl -X DELETE "${ELASTICSEARCH_URL}/_security/role_mapping/saml-default-access" <auth_flags>
 ```
 
-## Serverless User Access
+## [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) User Access
 
-On Serverless, there are no native users or role mappings. Users receive project access through Cloud-level role
+On [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), there are no native users or role mappings. Users receive project access through Cloud-level role
 assignments.
 
 - **Predefined roles** (e.g. `admin`, `developer`, `viewer`) cover common access patterns. If one fits, assign it
@@ -429,10 +429,10 @@ assignments.
 - **Custom roles** are required when the user needs fine-grained access (specific indices, Kibana features, DLS/FLS).
   Create the custom role using the Elasticsearch API or Kibana API (same as self-managed — see
   [Manage Roles](#manage-roles)), then assign it to the user alongside a predefined base role via the Cloud API.
-- **Run-as** privileges are unavailable in Serverless custom roles.
+- **Run-as** privileges are unavailable in [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) custom roles.
 
-Use the **cloud-access-management** skill for the full workflow (inviting users, assigning roles, managing Cloud API
-keys, and verifying access). This skill handles only role definition; cloud-access-management handles user assignment.
+Use the **[cloud-access-management](../../Cloud_Providers/access-management/SKILL.md)** skill for the full workflow (inviting users, assigning roles, managing Cloud API
+keys, and verifying access). This skill handles only role definition; [cloud-access-management](../../Cloud_Providers/access-management/SKILL.md) handles user assignment.
 
 ## Examples
 
@@ -446,7 +446,7 @@ keys, and verifying access). This skill handles only role definition; cloud-acce
 
 ### Create a role with Kibana dashboard access
 
-**Request:** "Let users read `logs-*` and view dashboards in Kibana."
+**Request:** "Let users read `logs-*` and view [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in Kibana."
 
 Use the Kibana API (`PUT <KIBANA_URL>/api/security/role/logs-dashboard-viewer`) with `elasticsearch.indices` for data
 access and `kibana[].feature` for dashboard and Discover read access on all spaces. See
@@ -460,14 +460,14 @@ access and `kibana[].feature` for dashboard and Discover read access on all spac
 1. Create `apm-reader` role with `indices: [{ names: ["apm-*"], privileges: ["read", "view_index_metadata"] }]`.
 1. `PUT /_security/user/alice` with `"roles": ["viewer", "apm-reader"]` (include all roles).
 
-### Grant a Serverless user read-write access with Kibana dashboards
+### Grant a [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) user read-write access with Kibana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
-**Request:** "Give `alice@example.com` read-write access to the `colors` index and let her use dashboards and Discover."
+**Request:** "Give `alice@example.com` read-write access to the `colors` index and let her use [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and Discover."
 
 1. Create a custom role via the Kibana API: `PUT <KIBANA_URL>/api/security/role/colors-rw-kibana` with
    `elasticsearch.indices` for `read`, `write`, `view_index_metadata` on `colors` and `kibana[].feature` for
    `dashboard`, `discover`.
-1. Use the **cloud-access-management** skill to assign the user the custom role `colors-rw-kibana`.
+1. Use the **[cloud-access-management](../../Cloud_Providers/access-management/SKILL.md)** skill to assign the user the custom role `colors-rw-kibana`.
 
 ### Restrict HR data by department (DLS + FLS)
 
@@ -521,7 +521,7 @@ Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad
 
 - Generate strong passwords by default: at least 16 characters mixing uppercase, lowercase, digits, and symbols (e.g.
   `X9k#mP2vL!qR7wZn`). Never use placeholder values like `changeme` or `password123`.
-- Prefer disabling users over deleting them to preserve audit trail.
+- Prefer disabling users over deleting them to preserve [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - The `roles` array on a user is **replaced entirely** on update. Always fetch current roles before modifying.
 
 ### Role mapping best practices
@@ -534,5 +534,5 @@ Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad
 ## Deployment Compatibility
 
 See [../../../Global_References/deployment-compatibility.md](../../../Global_References/deployment-compatibility.md) for a feature matrix and detailed
-notes on self-managed, ECH, and Serverless deployment differences.
+notes on self-managed, ECH, and [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) deployment differences.
 

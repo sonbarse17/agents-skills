@@ -23,9 +23,9 @@ Use this skill when:
 ## Prerequisites
 
 - NVIDIA GPU(s) with CUDA 12.1+ (A100/H100 recommended for production)
-- Docker or Python 3.9+ with pip
+- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with pip
 - 40GB+ VRAM for 70B models; 8GB+ for 7B models
-- `nvidia-container-toolkit` for Docker GPU passthrough
+- `nvidia-container-toolkit` for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) GPU passthrough
 
 ## Quick Start
 
@@ -49,10 +49,10 @@ curl http://localhost:8000/v1/chat/completions \
   }'
 ```
 
-## Docker Deployment
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Deployment
 
 ```bash
-docker run --runtime nvidia --gpus all \
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --runtime nvidia --gpus all \
   -v ~/.cache/huggingface:/root/.cache/huggingface \
   -p 8000:8000 \
   --ipc=host \
@@ -61,7 +61,7 @@ docker run --runtime nvidia --gpus all \
   --api-key your-secret-key
 ```
 
-## Docker Compose (Production)
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (Production)
 
 ```yaml
 services:
@@ -164,7 +164,7 @@ vllm serve <model> \
 pip install vllm
 
 # Run throughput benchmark
-python -m vllm.entrypoints.openai.run_batch \
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m vllm.entrypoints.openai.run_batch \
   --model meta-llama/Llama-3.1-8B-Instruct \
   --input-file prompts.jsonl \
   --output-file results.jsonl
@@ -177,7 +177,7 @@ vllm bench throughput \
   --output-len 128
 ```
 
-## Monitoring
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # Check running server stats
@@ -212,8 +212,8 @@ curl http://localhost:8000/metrics  # Prometheus metrics
 
 ## Related Skills
 
-- [llm-inference-scaling](../llm-inference-scaling/) - Auto-scaling vLLM deployments
-- [gpu-server-management](../../servers/gpu-server-management/) - GPU driver setup
-- [llm-gateway](../../networking/llm-gateway/) - Load balancing across vLLM instances
-- [llm-cost-optimization](../../../devops/ai/llm-cost-optimization/) - Cost management
-- [model-serving-kubernetes](../../../devops/orchestration/model-serving-kubernetes/) - K8s deployment
+- [llm-inference-scaling](../[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - Auto-scaling vLLM deployments
+- [gpu-server-management](../../servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU driver setup
+- [llm-gateway](../../networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Load balancing across vLLM instances
+- [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost management
+- [model-serving-kubernetes](../../../devops/orchestration/[model-serving-kubernetes](../model-serving-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/) - K8s deployment

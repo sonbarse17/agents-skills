@@ -33,7 +33,7 @@ Load detailed guidance based on context:
 | Window Functions | `../../../Global_References/window-functions.md` | ROW_NUMBER, RANK, LAG/LEAD, analytics |
 | Optimization | `../../../Global_References/optimization.md` | EXPLAIN plans, indexes, statistics, tuning |
 | Database Design | `../../../Global_References/database-design.md` | Normalization, keys, constraints, schemas |
-| Dialect Differences | `../../../Global_References/dialect-differences.md` | PostgreSQL vs MySQL vs SQL Server specifics |
+| Dialect Differences | `../../../Global_References/dialect-differences.md` | [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) vs [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) vs SQL Server specifics |
 
 ## Quick-Reference Examples
 
@@ -68,7 +68,7 @@ FROM employees;
 
 ### EXPLAIN ANALYZE Interpretation
 ```sql
--- PostgreSQL: always use ANALYZE to see actual row counts vs. estimates
+-- [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): always use ANALYZE to see actual row counts vs. estimates
 EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT)
 SELECT *
 FROM orders o
@@ -128,5 +128,5 @@ When implementing SQL solutions, provide:
 4. Performance metrics (before/after)
 5. Platform-specific notes if applicable
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/sql-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/sql-pro/)
 

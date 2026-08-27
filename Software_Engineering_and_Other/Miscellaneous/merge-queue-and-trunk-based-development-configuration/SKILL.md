@@ -26,7 +26,7 @@ both pass CI independently against `main`, but merging A first can make B's
 already-green CI result stale — B was tested against a `main` that no
 longer reflects reality the moment A lands, so B can merge a change that
 was never actually tested against the code it's landing on top of. A
-**merge queue** (GitHub's native merge queue, or a bot like Mergify)
+**merge queue** ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue, or a bot like Mergify)
 automates the fix: it serializes merges, re-testing each PR against the
 *current* `main` (which may include changes from other PRs merged
 moments earlier) immediately before it actually merges, batching several
@@ -45,7 +45,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 - A team's merge-to-`main` rate is high enough that "PR passed CI, but
   broke `main` after merging because another PR landed first" incidents
   are recurring.
-- Setting up GitHub's native merge queue or a Mergify configuration for
+- Setting up [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue or a Mergify configuration for
   automated, serialized merging with re-validation against current `main`.
 - A configured merge queue is stalling, piling up, or taking longer than
   expected to drain, and needs tuning (batch size, required checks, timeout
@@ -66,14 +66,14 @@ branching discipline that keeps it from becoming its own chokepoint.
   place — a merge queue amplifies, rather than fixes, a slow or flaky
   pipeline, since every queued PR gets re-validated through the same
   checks (see
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) for pipeline
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) for pipeline
   speed/reliability fundamentals this depends on).
-- For GitHub's native merge queue: a GitHub repository with branch
+- For [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue: a [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) repository with branch
   protection enabled and at least one required status check configured;
-  GitHub merge queue is available on GitHub Team/Enterprise plans for
+  [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) merge queue is available on [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Team/Enterprise plans for
   private repos (public repos on any plan) — confirm current plan
   eligibility before assuming availability.
-- For Mergify: a Mergify GitHub App (or GitLab equivalent) installed on the
+- For Mergify: a Mergify [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App (or GitLab equivalent) installed on the
   repository/organization, plus a `.mergify.yml` configuration file
   committed to the repo.
 - A feature-flag mechanism (a config-driven flag service, or even a simple
@@ -90,7 +90,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 ## Step-by-step guidance
 
-1. **Enable GitHub's native merge queue on the protected branch**, requiring
+1. **Enable [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue on the protected branch**, requiring
    PRs to enter the queue instead of merging directly once checks pass:
    ```
    Settings → Branches → Branch protection rule for "main"
@@ -102,8 +102,8 @@ branching discipline that keeps it from becoming its own chokepoint.
          Build concurrency: 5           # how many queue entries run CI in parallel
          Minimum group size: 1, Maximum group size: 5   # batch size per queue run
    ```
-   When a PR is added to the queue, GitHub creates a temporary merge
-   commit combining it with the current `main` (and, depending on batch
+   When a PR is added to the queue, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) creates a temporary merge
+   [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) combining it with the current `main` (and, depending on batch
    size, other queued PRs) and runs required checks against *that*
    combination — not against the PR's original, possibly-stale branch
    state.
@@ -116,7 +116,7 @@ branching discipline that keeps it from becoming its own chokepoint.
    > routine use of that override as a process failure to investigate, not
    > a normal escape hatch.
 
-2. **Configure Mergify as an equivalent (or GitHub Enterprise-independent)
+2. **Configure Mergify as an equivalent (or [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Enterprise-independent)
    alternative**, with an explicit queue and merge conditions:
    ```yaml
    # .mergify.yml
@@ -150,7 +150,7 @@ branching discipline that keeps it from becoming its own chokepoint.
    run**, separate from a fuller, slower suite that can run pre-merge on
    the original PR but doesn't need to re-run for every queue batch —
    mirrors the "keep fast checks first" staging guidance in
-   [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md), applied
+   [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md), applied
    specifically to what blocks queue throughput.
 
 4. **Adopt short-lived branches as the actual prerequisite for a healthy
@@ -168,7 +168,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 5. **Use feature flags to merge incomplete work safely**, rather than
    keeping a branch open until the feature is "done":
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    if feature_flags.is_enabled("new_checkout_flow", user=current_user):
        return new_checkout_handler(request)
    return legacy_checkout_handler(request)
@@ -177,7 +177,7 @@ branching discipline that keeps it from becoming its own chokepoint.
    multi-week features — the code merges continuously and stays inert in
    production until the flag flips, decoupling "merged" from "released"
    the same way
-   [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)
+   [blue-green-canary-deployments](../[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
    decouples "deployed" from "serving live traffic."
 
 6. **Set the merge queue's required "up to date with base" behavior
@@ -195,7 +195,7 @@ branching discipline that keeps it from becoming its own chokepoint.
    taking 45 minutes to drain under normal load is a throughput problem the
    same way a slow pipeline is, and should be tracked alongside pipeline
    duration metrics per
-   [devops-delivery-metrics-and-dora-analysis](../devops-delivery-metrics-and-dora-analysis/SKILL.md).
+   [devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md).
 
 8. **Set a queue timeout and a clear failure path** for a PR that fails
    validation inside the queue, so a failing PR doesn't block every PR
@@ -207,7 +207,7 @@ branching discipline that keeps it from becoming its own chokepoint.
        checks_timeout: 60m
    ```
    A PR that times out or fails should be automatically removed from the
-   queue (both GitHub's merge queue and Mergify do this by default) and the
+   queue (both [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s merge queue and Mergify do this by default) and the
    next queued PR re-validated without it, rather than the whole queue
    stalling on one bad entry.
 
@@ -223,8 +223,8 @@ branching discipline that keeps it from becoming its own chokepoint.
   aspiration — a merge queue's benefits degrade quickly once branches carry
   large, conflict-prone diffs.
 - Prefer squash-merge for a clean, linear `main` history when using a merge
-  queue — it keeps the trunk's commit history readable and avoids
-  merge-commit noise from queue batching mechanics.
+  queue — it keeps the trunk's [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history readable and avoids
+  merge-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) noise from queue batching mechanics.
 - Use feature flags (not long-lived branches) as the default answer to
   "this feature isn't finished yet" — this is the actual enabling practice
   behind trunk-based development, and skipping it is the most common
@@ -236,7 +236,7 @@ branching discipline that keeps it from becoming its own chokepoint.
   benefit of batching entirely.
 - Track queue depth/drain time as a first-class delivery metric alongside
   deploy frequency and lead time, per
-  [devops-delivery-metrics-and-dora-analysis](../devops-delivery-metrics-and-dora-analysis/SKILL.md)
+  [devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md)
   — a stalling queue is a delivery-speed regression even if every
   individual PR's CI still passes.
 
@@ -256,7 +256,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 - **Symptom:** The merge queue "pileup" — queue depth grows faster than it
   drains, and PRs sit queued for tens of minutes to hours during busy
   periods.
-  **Fix:** Increase build concurrency/batch size if CI capacity allows, cut
+  **Fix:** Increase build concurrency/batch size if CI [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allows, cut
   the set of required checks to the fastest high-signal subset, and check
   whether a small number of large, frequently-failing PRs are repeatedly
   forcing batch re-splits — those are usually the actual root cause, not
@@ -268,7 +268,7 @@ branching discipline that keeps it from becoming its own chokepoint.
   **Fix:** Remove the flaky PR from the queue (most implementations do this
   automatically on a `checks_timeout` or repeated failure) and fix the
   flaky test at its root per the flaky-test guidance in
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) — don't let a
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — don't let a
   known-flaky check remain in the queue's required-checks list, since it
   will keep recreating this pileup.
 
@@ -296,7 +296,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 **Scenario:** A team of 25 engineers merging ~40 PRs/day to `main` is
 seeing 2-3 "green PR broke main after merge" incidents a week, and separately
-has several feature branches open for 2+ weeks. They adopt GitHub's merge
+has several feature branches open for 2+ weeks. They adopt [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s merge
 queue and formalize trunk-based development norms together.
 
 Branch protection on `main`:
@@ -326,7 +326,7 @@ Trunk-based development norms documented and adopted:
 
 Result after one month: queue drain time stays under 10 minutes at typical
 load (tracked alongside existing DORA metrics per
-[devops-delivery-metrics-and-dora-analysis](../devops-delivery-metrics-and-dora-analysis/SKILL.md)),
+[devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md)),
 "green PR broke main" incidents drop to zero (every merge is now
 re-validated against current `main` immediately before landing), and the
 previously-common 2-week-old feature branch is retired as a pattern in
@@ -334,7 +334,7 @@ favor of flag-gated incremental merges.
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) — the pipeline speed/reliability and required-status-check fundamentals a merge queue depends on and amplifies; read this first if CI itself is slow or flaky before adding queue tooling on top.
-- [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md) — the deploy-side analogue of decoupling "merged" from "released," using feature flags and progressive rollout the same way trunk-based development decouples "merged" from "finished."
-- [devops-delivery-metrics-and-dora-analysis](../devops-delivery-metrics-and-dora-analysis/SKILL.md) — tracking queue depth/drain time and merge frequency as delivery metrics alongside deploy frequency and lead time.
-- [gitops-workflow](../gitops-workflow/SKILL.md) — a related git-driven-automation pattern for deployment reconciliation, distinct from but philosophically aligned with automating merge serialization here.
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — the pipeline speed/reliability and required-status-check fundamentals a merge queue depends on and amplifies; read this first if CI itself is slow or flaky before adding queue tooling on top.
+- [blue-green-canary-deployments](../[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — the deploy-side analogue of decoupling "merged" from "released," using feature flags and progressive rollout the same way trunk-based development decouples "merged" from "finished."
+- [devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md) — tracking queue depth/drain time and merge frequency as delivery metrics alongside deploy frequency and lead time.
+- [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — a related git-driven-automation pattern for deployment reconciliation, distinct from but philosophically aligned with automating merge serialization here.

@@ -3,14 +3,14 @@ name: service-mesh-observability
 description: Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debugging latency issues, or implementing SLOs for service communication.
 ---
 
-# Service Mesh Observability
+# Service Mesh [Observability](../observability/SKILL.md)
 
-Complete guide to observability patterns for Istio, Linkerd, and service mesh deployments.
+Complete guide to [observability](../observability/SKILL.md) patterns for Istio, Linkerd, and service mesh deployments.
 
 ## When to Use This Skill
 
 - Setting up distributed tracing across services
-- Implementing service mesh metrics and dashboards
+- Implementing service mesh metrics and [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 - Debugging latency and error issues
 - Defining SLOs for service communication
 - Visualizing service dependencies
@@ -18,18 +18,18 @@ Complete guide to observability patterns for Istio, Linkerd, and service mesh de
 
 ## Core Concepts
 
-### 1. Three Pillars of Observability
+### 1. Three Pillars of [Observability](../observability/SKILL.md)
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  Observability                       │
+│                  [Observability](../observability/SKILL.md)                       │
 ├─────────────────┬─────────────────┬─────────────────┤
 │     Metrics     │     Traces      │      Logs       │
 │                 │                 │                 │
 │ • Request rate  │ • Span context  │ • Access logs   │
 │ • Error rate    │ • Latency       │ • Error details │
 │ • Latency P50   │ • Dependencies  │ • Debug info    │
-│ • Saturation    │ • Bottlenecks   │ • Audit trail   │
+│ • Saturation    │ • Bottlenecks   │ • [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail   │
 └─────────────────┴─────────────────┴─────────────────┘
 ```
 
@@ -44,7 +44,7 @@ Complete guide to observability patterns for Istio, Linkerd, and service mesh de
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/service-mesh-observability_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../Global_References/[service-mesh](../service-mesh/SKILL.md)-observability_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 
@@ -60,6 +60,6 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 
 - **Don't over-sample** - Storage costs add up
 - **Don't ignore cardinality** - Limit label values
-- **Don't skip dashboards** - Visualize dependencies
-- **Don't forget costs** - Monitor observability costs
+- **Don't skip [dashboards](../../Cloud_Providers/dashboards/SKILL.md)** - Visualize dependencies
+- **Don't forget costs** - Monitor [observability](../observability/SKILL.md) costs
 

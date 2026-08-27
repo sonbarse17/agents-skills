@@ -24,9 +24,9 @@ metadata:
 Getting a RAG system's vectors into its index reliably is a data
 pipeline engineering problem, distinct from the retrieval design
 question of *how* chunks should be shaped for good retrieval (covered
-in [rag-pipeline-design](../rag-pipeline-design/SKILL.md)) and from the
+in [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) and from the
 index's own operational tuning (covered in
-[vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)).
+[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)).
 This skill is specifically about the pipeline that runs chunking as a
 production job stage, batches embedding calls reliably at scale,
 upserts idempotently so a retried or partially-failed run doesn't
@@ -67,7 +67,7 @@ unreliable.
   idempotent upserts and clean deletes possible (see step 2).
 - The embedding model and vector index already chosen, with dimension/
   metric already validated (see
-  [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md))
+  [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md))
   — this pipeline assumes the target index configuration is correct,
   it does not validate it.
 - A job runner/orchestrator (a workflow engine, a scheduled batch job,
@@ -88,9 +88,9 @@ unreliable.
    not inline logic scattered across the ingestion script — chunking
    parameters are effectively part of the index's schema, and changing
    them (per
-   [rag-pipeline-design](../rag-pipeline-design/SKILL.md)) means
+   [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) means
    re-processing the whole corpus, not incrementally patching it:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def chunk_document(doc, chunk_size=400, overlap=60):
        # deterministic chunker — same doc + same config always
        # produces the same chunk boundaries and count
@@ -101,7 +101,7 @@ unreliable.
    chunk index**, never a random/generated ID — this is the single
    change that makes upserts idempotent and stale-chunk deletion
    possible:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def chunk_id(source_doc_id, chunk_index):
        return f"{source_doc_id}::chunk-{chunk_index:04d}"
    ```
@@ -114,7 +114,7 @@ unreliable.
 3. **Batch embedding calls, and make each batch idempotent and
    independently retryable** — a single failed batch in a 10,000-
    document backfill should not force reprocessing the other 9,999:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    BATCH_SIZE = 100
 
    def process_batch(doc_batch, run_id):
@@ -140,7 +140,7 @@ unreliable.
    providers offer a batch endpoint trading higher latency for lower
    per-token cost, which is the right trade for an overnight or
    one-time bulk load (see
-   [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)
+   [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
    for the same batch-vs-synchronous trade-off applied to generation
    calls).
 
@@ -148,7 +148,7 @@ unreliable.
    or its content shrinks**, not just upsert new content — an upsert-
    only pipeline accumulates orphaned chunks from deleted documents and
    from documents that produce fewer chunks after an edit:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def reindex_document(doc, previous_chunk_count):
        new_chunks = chunk_document(doc)
        new_ids = {chunk_id(doc.id, i) for i in range(len(new_chunks))}
@@ -182,10 +182,10 @@ unreliable.
    query traffic** on the same index — a large backfill or full
    re-embed is a write-heavy burst that can degrade production query
    latency if run unthrottled during peak hours (see
-   [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)
+   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
    for the index-side write/query resource contention this throttling
    is protecting against):
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    for batch in chunked(documents, BATCH_SIZE):
        process_batch(batch, run_id)
        time.sleep(THROTTLE_SECONDS)  # or use a token-bucket rate limiter
@@ -204,14 +204,14 @@ unreliable.
    A sudden jump in chunks-per-document without a corresponding source
    content change usually indicates a chunking regression (e.g. a
    parser change that stopped detecting section boundaries) — see
-   [agent-cost-and-latency-spike-investigation](../agent-cost-and-latency-spike-investigation/SKILL.md)
+   [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
    for the general shape of this kind of correlation-against-recent-
    changes investigation, applied here to the ingestion pipeline
    specifically.
 
 9. **Version and re-run the full corpus on any chunking or embedding-
    model change**, treating it as a new index build (see
-   [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)
+   [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md)
    for validating the result before cutover) rather than an incremental
    patch — mixing chunks produced under two different chunking
    configs, or embeddings from two different model versions, in the
@@ -241,7 +241,7 @@ unreliable.
   lower-traffic windows where possible.
 - Re-process the entire corpus (not incrementally) on any chunking-
   config or embedding-model change, and validate it before cutover per
-  [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md) —
+  [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md) —
   never let two chunking/embedding generations coexist silently in one
   index.
 
@@ -269,7 +269,7 @@ unreliable.
   **Fix:** The bulk write and live queries are competing for the same
   index resources with no throttling. Throttle batch rate, schedule
   large backfills during lower-traffic windows, and see
-  [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)
+  [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
   for separating write-path from query-path resource contention at the
   index-operations layer.
 
@@ -310,7 +310,7 @@ idempotently, and clean up stale chunks — plus a one-time backfill for
 the existing ~2,000-document corpus.
 
 Backfill (one-time, batch API, throttled):
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 BATCH_SIZE = 100
 THROTTLE_SECONDS = 2
 run_id = "backfill-2026-07-28"
@@ -324,7 +324,7 @@ minutes — recorded as the pipeline's first baseline for future
 regression comparison (step 8).
 
 Ongoing event-driven re-indexing:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def on_cms_webhook(event):
     if event.type in ("publish", "update"):
         doc = fetch_document(event.doc_id)
@@ -347,13 +347,13 @@ letting new documents get new-model vectors while old documents keep
 old-model vectors, the entire corpus is re-chunked and re-embedded into
 a new collection under a new `run_id`, validated for recall against the
 existing production collection (see
-[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md))
+[vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md))
 before the application's index alias is repointed.
 
 ## Cross-references
 
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md) — the retrieval-quality design decisions (chunk size/overlap, metadata to attach, re-index-on-change principle) this pipeline implements operationally without repeating the design rationale.
-- [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md) — index-side write-path tuning (batch upsert sizing, avoiding hot partitions) that this pipeline's batching and throttling steps feed into.
-- [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md) — the pre-cutover recall/latency validation gate to run before repointing traffic to a corpus this pipeline fully re-processed.
-- [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md) — the batch-vs-synchronous cost/latency trade-off referenced in step 4, applied there to generation calls and here to embedding calls.
-- [agent-cost-and-latency-spike-investigation](../agent-cost-and-latency-spike-investigation/SKILL.md) — triaging a RAG workflow's cost/latency spike that correlates with a recent re-indexing run from this pipeline.
+- [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — the retrieval-quality design decisions (chunk size/overlap, metadata to attach, re-index-on-change principle) this pipeline implements operationally without repeating the design rationale.
+- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — index-side write-path tuning (batch upsert sizing, avoiding hot partitions) that this pipeline's batching and throttling steps feed into.
+- [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md) — the pre-cutover recall/latency validation gate to run before repointing traffic to a corpus this pipeline fully re-processed.
+- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the batch-vs-synchronous cost/latency trade-off referenced in step 4, applied there to generation calls and here to embedding calls.
+- [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a RAG workflow's cost/latency spike that correlates with a recent re-indexing run from this pipeline.

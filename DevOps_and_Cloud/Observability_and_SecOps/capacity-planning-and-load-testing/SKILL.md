@@ -17,7 +17,7 @@ metadata:
   maturity: stable
 ---
 
-# Capacity Planning and Load Testing
+# [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning and Load Testing
 
 ## Purpose
 
@@ -33,28 +33,28 @@ skill covers forecasting demand, choosing the right test type (load,
 stress, soak) for the question being asked, instrumenting the *whole*
 request path during a test (not just app-tier CPU/memory) so the real
 bottleneck is found instead of assumed, and turning test results into
-concrete, evidence-based autoscaling and capacity triggers.
+concrete, evidence-based [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) triggers.
 
 ## When to use
 
-- Validating capacity before a known high-traffic event (product launch,
+- Validating [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) before a known high-traffic event (product launch,
   marketing campaign, seasonal peak).
-- Setting or revisiting autoscaling thresholds (HPA target metrics,
+- Setting or revisiting [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) thresholds (HPA target metrics,
   connection pool sizes, thread pool limits) that were previously set by
   guesswork or copied defaults.
 - "It works fine in staging but falls over in production under real
   traffic" — a strong sign the test never found the real bottleneck.
 - Investigating whether a target SLO (see
-  [slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md))
+  [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../../../Software_Engineering_and_Other/Frontend/slo-sli-and-error-budget-design/SKILL.md)/SKILL.md))
   is actually achievable given current architecture and expected peak
   demand.
-- Routine (e.g. quarterly) capacity review as traffic patterns and code
+- Routine (e.g. quarterly) [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) review as traffic patterns and code
   change over time.
 
 ## Prerequisites & environment
 
-- A load-testing tool: **k6** (scriptable in JavaScript, good CI
-  integration, used for the examples below), **Locust** (Python,
+- A [load-testing](../load-testing/SKILL.md) tool: **k6** (scriptable in JavaScript, good CI
+  integration, used for the examples below), **Locust** ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md),
   distributed load generation, good for complex user-behavior
   simulation), or **JMeter** (GUI/XML-based, long-established, strong
   protocol support) — any of the three is a reasonable choice; pick based
@@ -66,13 +66,13 @@ concrete, evidence-based autoscaling and capacity triggers.
   directly against production is a destructive action, not a shortcut.
 - Historical traffic data (requests/sec over time, growth rate,
   known upcoming events) to forecast a realistic target peak.
-- Monitoring across the *entire* request path — app tier, database
+- [Monitoring](../monitoring/SKILL.md) across the *entire* request path — app tier, database
   (including connection pool utilization), cache, message queue, and any
   downstream/third-party dependency — available during the test run; see
-  [Prometheus and Grafana monitoring stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [Prometheus and Grafana [monitoring](../monitoring/SKILL.md) stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for how this is typically wired.
 - Stakeholder awareness/scheduling for any test run that could affect
-  shared staging capacity or, if unavoidable, production.
+  shared staging [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) or, if unavoidable, production.
 
 ## Step-by-step guidance
 
@@ -164,18 +164,18 @@ concrete, evidence-based autoscaling and capacity triggers.
    > customer-visible impact, and have an abort/kill-switch and rollback
    > path ready before starting (the traffic-shifting/rollback mechanics
    > from
-   > [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md)
+   > [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
    > are a reasonable abort mechanism). Prefer an isolated,
    > production-topology-mirroring environment whenever the question can
    > be answered there.
 
-8. **Re-run periodically.** Capacity assumptions decay as code and
+8. **Re-run periodically.** [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) assumptions decay as code and
    traffic patterns change — re-run before major events and on a fixed
    cadence (e.g. quarterly), and feed results into the pre-production
    gates in
-   [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md)
+   [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)
    and the canary-analysis thresholds in
-   [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md).
+   [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -194,9 +194,9 @@ concrete, evidence-based autoscaling and capacity triggers.
 - Always run a soak test in addition to a short peak-load test — many of
   the worst production incidents (memory leaks, descriptor exhaustion)
   only manifest after hours of sustained load.
-- Treat load-test-derived capacity numbers as an input to cost/FinOps
-  conversations too — a validated capacity ceiling should inform reserved
-  capacity purchases, not just autoscaling config.
+- Treat load-test-derived [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) numbers as an input to cost/FinOps
+  conversations too — a validated [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) ceiling should inform reserved
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) purchases, not just [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) config.
 
 ## Common pitfalls
 
@@ -231,7 +231,7 @@ concrete, evidence-based autoscaling and capacity triggers.
   moderate sustained load alongside the shorter peak-load test — this is
   the only test type designed to catch time-dependent degradation.
 
-- **Symptom:** Autoscaling is configured with the default 70% CPU target
+- **Symptom:** [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) is configured with the default 70% CPU target
   "because that's what the docs suggested," with no test evidence behind
   it, and the service still degrades under real peak load.
   **Fix:** Derive the scaling trigger directly from where the test
@@ -240,7 +240,7 @@ concrete, evidence-based autoscaling and capacity triggers.
 
 ## Worked example
 
-**Scenario:** `checkout-service` capacity validation ahead of a major
+**Scenario:** `checkout-service` [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) validation ahead of a major
 seasonal sales event.
 
 1. **Forecast:** last year's peak was 2,000 RPS; marketing expects 2x
@@ -266,14 +266,14 @@ seasonal sales event.
    350-connection ceiling.
 6. Results are fed into the canary-analysis error-rate/latency
    thresholds in
-   [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md)
+   [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
    for the event-day release, and into the pre-event gate in
-   [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md).
+   [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [chaos-engineering-and-resilience-testing](../chaos-engineering-and-resilience-testing/SKILL.md) — load testing finds capacity ceilings under expected traffic; chaos experiments find failure-*handling* gaps under fault conditions — run both, they answer different questions.
-- [slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md) — capacity test results tell you whether a target SLO is realistically achievable under peak demand.
-- [toil-reduction-and-operational-automation](../toil-reduction-and-operational-automation/SKILL.md) — recurring manual load-test runs are good candidates for scheduling into CI rather than repeating by hand.
-- [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md) — canary analysis thresholds and rollback mechanics should be informed by, and can serve as an abort path during, load testing.
-- [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md) — capacity validation is a natural pre-production gate ahead of major traffic events.
+- [chaos-engineering-and-resilience-testing](../[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — load testing finds [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) ceilings under expected traffic; chaos experiments find failure-*handling* gaps under fault conditions — run both, they answer different questions.
+- [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../../../Software_Engineering_and_Other/Frontend/slo-sli-and-error-budget-design/SKILL.md)/SKILL.md) — [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) test results tell you whether a target SLO is realistically achievable under peak demand.
+- [toil-reduction-and-operational-automation](../[toil-reduction-and-operational-automation](../../../Software_Engineering_and_Other/Frontend/[toil-reduction](../toil-reduction/SKILL.md)-and-operational-automation/SKILL.md)/SKILL.md) — recurring manual load-test runs are good candidates for scheduling into CI rather than repeating by hand.
+- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — canary analysis thresholds and rollback mechanics should be informed by, and can serve as an abort path during, load testing.
+- [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md) — [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) validation is a natural pre-production gate ahead of major traffic events.

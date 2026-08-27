@@ -7,9 +7,9 @@ metadata:
   version: "2.0"
 ---
 
-# Agent Observability
+# Agent [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
-Monitor AI agent behavior with logs, traces, metrics, and cost telemetry. This skill covers the full observability stack for LLM-powered applications: from raw Prometheus counters to Grafana dashboards, OpenTelemetry tracing, structured logging, cost tracking, SLO definition, and PII redaction.
+Monitor AI agent behavior with logs, traces, metrics, and cost telemetry. This skill covers the full [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack for LLM-powered applications: from raw Prometheus counters to Grafana [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) tracing, structured logging, cost tracking, SLO definition, and PII redaction.
 
 ---
 
@@ -28,7 +28,7 @@ Key signals that you need this skill:
 1. You cannot answer "what is p95 latency for agent responses this week?"
 2. You have no per-request cost attribution.
 3. Debugging a bad agent response requires grepping raw application logs.
-4. You have no alerting on token-usage spikes or elevated error rates.
+4. You have no [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on token-usage spikes or elevated error rates.
 
 ---
 
@@ -38,7 +38,7 @@ Define these metrics at the application layer. All examples use the Prometheus c
 
 ### Latency
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Histogram
 
 # Total end-to-end latency for a full agent turn (user prompt -> final response)
@@ -68,7 +68,7 @@ TOOL_CALL_LATENCY = Histogram(
 
 ### Token Usage
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Counter, Histogram
 
 PROMPT_TOKENS = Counter(
@@ -99,7 +99,7 @@ TOKENS_PER_REQUEST = Histogram(
 
 ### Cost
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Counter
 
 LLM_COST = Counter(
@@ -111,7 +111,7 @@ LLM_COST = Counter(
 
 ### Tool Calls
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Counter
 
 TOOL_CALLS_TOTAL = Counter(
@@ -123,7 +123,7 @@ TOOL_CALLS_TOTAL = Counter(
 
 ### Errors and Retries
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Counter, Gauge
 
 LLM_ERRORS = Counter(
@@ -147,19 +147,19 @@ AGENT_ACTIVE_REQUESTS = Gauge(
 
 ---
 
-## OpenTelemetry Integration
+## [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Integration
 
-Use the OpenTelemetry Python SDK to create traces that capture every step of an agent turn: the top-level request, each LLM call, each tool execution, and retrieval operations.
+Use the [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK to create traces that capture every step of an agent turn: the top-level request, each LLM call, each tool execution, and retrieval operations.
 
 ### Setup
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # otel_setup.py
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.resources import Resource
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.resources import Resource
 
 def init_tracing(service_name: str, otlp_endpoint: str = "http://localhost:4317"):
     resource = Resource.create({
@@ -176,16 +176,16 @@ def init_tracing(service_name: str, otlp_endpoint: str = "http://localhost:4317"
 
 ### Tracing LLM Calls
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # llm_tracing.py
 import time
-from opentelemetry import trace
-from opentelemetry.trace import StatusCode
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).trace import StatusCode
 
 tracer = trace.get_tracer("agent.llm")
 
 def traced_llm_call(client, messages, model="gpt-4o", **kwargs):
-    """Wrap an LLM completion call with a full OpenTelemetry span."""
+    """Wrap an LLM completion call with a full [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) span."""
     with tracer.start_as_current_span("llm.chat_completion") as span:
         span.set_attribute("llm.model", model)
         span.set_attribute("llm.provider", "openai")
@@ -225,11 +225,11 @@ def traced_llm_call(client, messages, model="gpt-4o", **kwargs):
 
 ### Tracing Tool Execution
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # tool_tracing.py
 import functools
-from opentelemetry import trace
-from opentelemetry.trace import StatusCode
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).trace import StatusCode
 
 tracer = trace.get_tracer("agent.tools")
 
@@ -284,10 +284,10 @@ def sql_query(statement: str) -> list:
 
 ### Propagating Trace Context Across Services
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # context_propagation.py
-from opentelemetry import context
-from opentelemetry.propagate import inject, extract
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import context
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).propagate import inject, extract
 import httpx
 
 def call_downstream_service(url: str, payload: dict) -> dict:
@@ -309,11 +309,11 @@ def extract_context_from_request(request_headers: dict):
 
 ## Structured Logging
 
-Emit JSON logs for every agent action so they can be ingested by Loki, Elasticsearch, or Datadog.
+Emit JSON logs for every agent action so they can be ingested by Loki, Elasticsearch, or [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md).
 
-### Python Logging Configuration
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Logging Configuration
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # logging_config.py
 import logging
 import json
@@ -358,15 +358,15 @@ def configure_logging(level: str = "INFO"):
 
     # Suppress noisy libraries
     logging.getLogger("httpx").setLevel(logging.WARNING)
-    logging.getLogger("opentelemetry").setLevel(logging.WARNING)
+    logging.getLogger("[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)").setLevel(logging.WARNING)
 ```
 
 ### Logging Agent Actions
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # agent_logging.py
 import logging
-from opentelemetry import trace
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
 
 logger = logging.getLogger("agent")
 
@@ -430,7 +430,7 @@ Example log output:
 
 ---
 
-## Grafana Dashboards
+## Grafana [Dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 
 ### Agent Overview Dashboard
 
@@ -579,7 +579,7 @@ Save this JSON as `agent-overview.json` and import it into Grafana.
 
 ### Per-Model Cost Calculation
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # cost_tracker.py
 from dataclasses import dataclass
 
@@ -620,7 +620,7 @@ def record_cost(model: str, prompt_tokens: int, completion_tokens: int, agent_na
     LLM_COST.labels(model=model, agent_name=agent_name, cost_type="completion").inc(completion_cost)
 ```
 
-### Budget Alerting -- Prometheus Rules
+### Budget [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) -- Prometheus Rules
 
 Save as `agent-cost-alerts.yaml` and load it into Prometheus or Cortex ruler.
 
@@ -679,7 +679,7 @@ groups:
 
 Langfuse provides trace-level visibility with prompt management and scoring. It can run alongside your existing OTel stack.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # langfuse_integration.py
 from langfuse import Langfuse
 from langfuse.decorators import observe, langfuse_context
@@ -726,7 +726,7 @@ export LANGFUSE_HOST="https://cloud.langfuse.com"  # or your self-hosted URL
 
 Helicone acts as a logging proxy. Point your OpenAI base URL at Helicone and it captures everything automatically.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # helicone_integration.py
 from openai import OpenAI
 
@@ -754,7 +754,7 @@ response = client.chat.completions.create(
 
 ## SLO Definition
 
-Define Service Level Objectives for your agents and enforce them with Prometheus recording and alerting rules.
+Define Service Level Objectives for your agents and enforce them with Prometheus recording and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules.
 
 ### Recording Rules
 
@@ -849,7 +849,7 @@ groups:
 
 ### Sloth SLO Spec (Alternative)
 
-If you use [Sloth](https://github.com/slok/sloth) to manage SLOs declaratively:
+If you use [Sloth](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/slok/sloth) to manage SLOs declaratively:
 
 ```yaml
 # agent-slo-sloth.yaml
@@ -865,7 +865,7 @@ slos:
       events:
         error_query: sum(rate(llm_errors_total{job="agent"}[{{.window}}]))
         total_query: sum(rate(llm_call_duration_seconds_count{job="agent"}[{{.window}}]))
-    alerting:
+    [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md):
       name: AgentAvailability
       labels:
         team: ai-platform
@@ -955,11 +955,11 @@ Scrub sensitive data before spans and logs leave the application boundary. This 
 
 ### Span Processor for PII Redaction
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # pii_redactor.py
 import re
-from opentelemetry.sdk.trace import SpanProcessor, ReadableSpan
-from opentelemetry.sdk.trace.export import SpanExporter
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import SpanProcessor, ReadableSpan
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import SpanExporter
 
 # Patterns for common PII
 PII_PATTERNS = {
@@ -1016,13 +1016,13 @@ class PIIRedactingSpanProcessor(SpanProcessor):
 
 ### Using the Redactor in Setup
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # otel_setup_with_redaction.py
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.resources import Resource
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.resources import Resource
 from pii_redactor import PIIRedactingSpanProcessor
 
 def init_tracing_with_redaction(service_name: str, otlp_endpoint: str = "http://localhost:4317"):
@@ -1040,7 +1040,7 @@ def init_tracing_with_redaction(service_name: str, otlp_endpoint: str = "http://
 
 ### Redacting Logs
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # log_redactor.py
 import logging
 from pii_redactor import redact_string
@@ -1068,15 +1068,15 @@ logger.addFilter(PIIRedactingFilter())
 
 - **Separate high-cardinality labels.** Do not put `user_id` or `request_id` in Prometheus labels. Store those in traces and logs instead.
 - **Sample traces in production.** Use a head-based sampler (e.g., 10% of requests) plus a tail-based sampler that keeps all error traces.
-- **Keep a replayable request envelope.** Store the full prompt and response in a durable store (S3, GCS) keyed by trace ID for post-incident review.
+- **Keep a replayable request envelope.** Store the full prompt and response in a durable store (S3, GCS) keyed by trace ID for post-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review.
 - **Alert on anomalies, not thresholds alone.** Combine static thresholds (SLO breach) with anomaly detection (cost spike relative to baseline).
 - **Version your prompts.** Tag each trace with the prompt template version so you can correlate quality regressions with prompt changes.
-- **Test observability in staging.** Run synthetic agent requests in staging and verify that traces, metrics, and alerts fire correctly before shipping to production.
+- **Test [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) in staging.** Run synthetic agent requests in staging and verify that traces, metrics, and alerts fire correctly before shipping to production.
 
 ---
 
 ## Related Skills
 
-- [alerting-oncall](../../observability/alerting-oncall/) - Alert workflows and on-call routing
-- [agent-evals](../agent-evals/) - Quality verification and evaluation pipelines
-- [sre-dashboards](../../observability/sre-dashboards/) - General SRE dashboard patterns
+- [alerting-oncall](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[alerting-oncall](../../../DevOps_and_Cloud/Observability_and_SecOps/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert workflows and on-call routing
+- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Quality verification and evaluation pipelines
+- [sre-dashboards](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[sre-dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/sre-[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/SKILL.md)/) - General SRE dashboard patterns

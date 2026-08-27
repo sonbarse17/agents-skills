@@ -195,19 +195,19 @@ az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name web-subnet \
-  --network-security-group web-nsg
+  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group web-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name app-subnet \
-  --network-security-group app-nsg
+  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group app-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name data-subnet \
-  --network-security-group data-nsg
+  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group data-nsg
 
 # View effective NSG rules
 az network nic list-effective-nsg \
@@ -290,14 +290,14 @@ az network private-endpoint create \
   --group-id blob \
   --connection-name storage-blob-connection
 
-# Create private endpoint for Key Vault
+# Create private endpoint for Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 az network private-endpoint create \
   --resource-group networking-rg \
   --name kv-private-endpoint \
   --vnet-name spoke-prod-vnet \
   --subnet app-subnet \
   --private-connection-resource-id "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/myvault" \
-  --group-id vault \
+  --group-id [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
   --connection-name kv-connection
 ```
 
@@ -403,7 +403,7 @@ az network application-gateway create \
   --name myapp-appgw \
   --location eastus \
   --sku WAF_v2 \
-  --capacity 2 \
+  --[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 2 \
   --vnet-name spoke-prod-vnet \
   --subnet AppGatewaySubnet \
   --public-ip-address appgw-public-ip \
@@ -547,8 +547,8 @@ resource "azurerm_private_endpoint" "sql" {
 
 ## Related Skills
 
-- `azure-vms` -- VM network interface and NSG configuration.
-- `azure-aks` -- AKS VNet integration with Azure CNI.
-- `azure-sql` -- Private endpoint configuration for database access.
-- `terraform-azure` -- Network infrastructure provisioning with Terraform.
-- `azure-functions` -- VNet integration for Premium plan functions.
+- `[azure-vms](../azure-vms/SKILL.md)` -- VM network interface and NSG configuration.
+- `[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)` -- AKS VNet integration with Azure CNI.
+- `[azure-sql](../azure-sql/SKILL.md)` -- Private endpoint configuration for database access.
+- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Network infrastructure provisioning with Terraform.
+- `[azure-functions](../azure-functions/SKILL.md)` -- VNet integration for Premium plan functions.

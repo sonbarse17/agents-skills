@@ -34,9 +34,9 @@ Create, manage, and monitor systemd services and timers. Covers unit file author
 [Unit]
 Description=MyApp Production Server
 Documentation=https://docs.example.com/myapp
-After=network-online.target postgresql.service
+After=network-online.target [postgresql](../../Backend/postgresql/SKILL.md).service
 Wants=network-online.target
-Requires=postgresql.service
+Requires=[postgresql](../../Backend/postgresql/SKILL.md).service
 
 [Service]
 Type=notify
@@ -357,7 +357,7 @@ journalctl --vacuum-size=500M
 
 ## Related Skills
 
-- `linux-administration` -- General system administration context
-- `performance-tuning` -- Kernel tuning and resource optimization
-- `user-management` -- Service accounts and permissions
-- `backup-recovery` -- Scheduling backups with systemd timers
+- `[linux-administration](../linux-administration/SKILL.md)` -- General system administration context
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Kernel tuning and resource optimization
+- `[user-management](../user-management/SKILL.md)` -- Service accounts and permissions
+- `[backup-recovery](../../../DevOps_and_Cloud/Cloud_Providers/backup-recovery/SKILL.md)` -- Scheduling backups with systemd timers

@@ -59,7 +59,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Provider Abstraction**: Unified interface over multiple providers with failover.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface MessageProvider {
   name: string;
   send(params: SendParams): Promise<SendResult>;
@@ -108,7 +108,7 @@ class MessagingService {
 
 2. **Twilio Integration**: SMS and Voice with webhook status callbacks.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import twilio from 'twilio';
 
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
@@ -152,7 +152,7 @@ app.post('/webhooks/sms/twilio', (req, res) => {
 
 3. **2FA OTP Delivery**: Generate, send, verify, expire OTP codes.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class OTPService {
   private readonly OTP_LENGTH = 6;
   private readonly OTP_TTL = 300; // 5 minutes
@@ -233,7 +233,7 @@ class OTPService {
 
 4. **Message Templates**: Pre-approved, localized message templates.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface MessageTemplate {
   id: string;
   name: string;
@@ -262,7 +262,7 @@ function renderTemplate(template: MessageTemplate, variables: Record<string, str
 
 5. **Rate Limiting & Throttling**: Per-recipient, per-number, global limits.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class SmsRateLimiter {
   private readonly redis: Redis;
 
@@ -317,7 +317,7 @@ class SmsRateLimiter {
 
 6. **Opt-In/Opt-Out Management**: TCPA-compliant consent tracking.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface ConsentRecord {
   id: string;
   userId: string;
@@ -370,7 +370,7 @@ class ConsentManager {
 
 7. **WhatsApp Business API**: Template-based messaging with opt-in.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 async function sendWhatsAppMessage(to: string, templateName: string, params: Record<string, string>): Promise<SendResult> {
   const response = await fetch(`https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: 'POST',
@@ -430,7 +430,7 @@ async function sendWhatsAppMessage(to: string, templateName: string, params: Rec
   - ../../../Global_References/compliance-analytics.md — Compliance and Analytics
   - ../../../Global_References/sms-messaging-advanced.md — Sms Messaging Advanced Topics
   - ../../../Global_References/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
-  - ../../../Global_References/sms-messaging-monitoring.md — SMS Messaging Monitoring
+  - ../../../Global_References/sms-messaging-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — SMS Messaging [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/sms-messaging-testing.md — SMS Messaging Testing
   - ../../../Global_References/sms-providers.md — SMS Providers
   - ../../../Global_References/whatsapp-api.md — WhatsApp API
@@ -468,7 +468,7 @@ Message urgency and content type?
 
 ### Pattern: Multi-Provider Failover with Circuit Breaker
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class ResilientMessagingService {
   private providers: MessageProvider[];
   private circuitState: Map<string, { failures: number; lastFailure: Date; open: boolean }> = new Map();
@@ -513,7 +513,7 @@ class ResilientMessagingService {
 
 ### Pattern: Delivery Webhook Aggregation
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Aggregates delivery receipts from multiple providers into normalized format
 class DeliveryAggregator {
   async handleWebhook(provider: string, payload: any): Promise<void> {
@@ -560,7 +560,7 @@ class DeliveryAggregator {
 | No delivery tracking | Blind to failures. Customers don't receive messages. | Webhook handler + real-time status dashboard |
 | OTP in plaintext database | Breach exposes all OTP codes. | bcrypt hash. In-memory TTL cache as alternative |
 | Shared short codes | Carrier filtering, reputation issues. | Dedicated long codes for transactional messaging |
-| Sending without consent check | TCPA fines up to $1500 per message. | Consent check before every send. Audit trail of consent. |
+| Sending without consent check | TCPA fines up to $1500 per message. | Consent check before every send. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail of consent. |
 | Blocking on send | SMS API latency adds to page load time. | Async send with queue. Webhook for status. |
 
 ## Performance Optimization
@@ -575,13 +575,13 @@ class DeliveryAggregator {
 
 ## Security Considerations
 
-- API keys for SMS providers stored in secrets manager (AWS Secrets Manager, Vault). Never in code.
-- OTP codes: generated with `crypto.randomInt()` (Node.js) or `secrets.randbelow()` (Python). Never `Math.random()`.
+- API keys for SMS providers stored in secrets manager (AWS Secrets Manager, [Vault](../../Miscellaneous/vault/SKILL.md)). Never in code.
+- OTP codes: generated with `crypto.randomInt()` (Node.js) or `secrets.randbelow()` ([Python](../../Languages/python/SKILL.md)). Never `Math.random()`.
 - OTP storage: bcrypt hashed in database. TTL enforced at read time. Max 3 verify attempts then invalidate.
 - Rate limiting on OTP endpoints: per phone number (max 5/min), per IP (max 20/min).
 - Message content scanning: block PII leakage (SSN, credit cards) in outbound messages. Regex patterns + ML scanning.
 - TLS for all provider API calls. mTLS for high-security environments.
 - Webhook signatures: validate Twilio `X-Twilio-Signature` header. Reject unsigned webhooks.
 - Data retention: message logs retained per regulatory requirements. Purge after compliance window.
-- Consent records: immutable append-only log. Export for regulatory audit within 24 hours.
+- Consent records: immutable append-only log. Export for regulatory [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) within 24 hours.
 

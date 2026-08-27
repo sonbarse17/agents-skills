@@ -22,7 +22,7 @@ write it as an artifact for future action, not a ritual for closure.
 
 Postmortems written days later from memory drift toward whoever tells the most coherent story,
 which is rarely the most accurate one. Reconstruct the timeline from logs, metrics, deploy
-history, and the incident channel transcript — actual timestamps, not "around then" — before
+history, and the [incident](../incident/SKILL.md) channel transcript — actual timestamps, not "around then" — before
 anyone starts interpreting what it means.
 
 - **Pull from systems, not recollection** — deploy logs, alert history, chat transcripts, git
@@ -39,7 +39,7 @@ regardless of who wrote it.
 
 "Blameless" is not a tone, it's a structural choice: you assume every person in the timeline
 made a reasonable decision given what they knew at the time, and the investigation's job is to
-find out what made that decision look reasonable — a missing alert, a confusing runbook, an
+find out what made that decision look reasonable — a missing alert, a confusing [runbook](../runbook/SKILL.md), an
 untested assumption. The moment a postmortem asks "who did this," people stop giving the
 honest details that make the analysis useful, and every future postmortem in that organization
 gets thinner.
@@ -61,12 +61,12 @@ Real incidents are usually a stack: a code change that introduced a bug, a test 
 didn't cover the case, a review process that approved it anyway, an alert threshold set too
 loose to catch it early, and an on-call engineer unfamiliar with the service because of a
 recent reorg. Each of those is independently fixable, and fixing only the first one —
-reverting the bad code — leaves the other four in place for the next incident.
+reverting the bad code — leaves the other four in place for the next [incident](../incident/SKILL.md).
 
 - **Ask "five whys" as a technique, not a religion** — stop when you reach an organizational
   or process factor you can actually act on, not an infinite regress or an unfalsifiable "root
   cause."
-- **Look across the whole stack**: code, tests, review, deploy process, monitoring, alerting,
+- **Look across the whole stack**: code, tests, review, deploy process, [monitoring](../monitoring/SKILL.md), [alerting](../alerting/SKILL.md),
   and response — a factor in any layer is worth naming.
 - **Resist compressing the list back to one headline cause** for the sake of a tidy summary —
   the list is the value.
@@ -76,8 +76,8 @@ than one layer of the system or process.
 
 ## 4. Write action items that are actually fixable and actually owned
 
-An action item like "improve monitoring" with no owner and no date is a wish, not a
-commitment, and it will still be open — unstarted — at the next incident review. Every action
+An action item like "improve [monitoring](../monitoring/SKILL.md)" with no owner and no date is a wish, not a
+commitment, and it will still be open — unstarted — at the next [incident](../incident/SKILL.md) review. Every action
 item needs a specific owner, a specific deliverable, and a date, or it doesn't go in the
 document.
 
@@ -105,7 +105,7 @@ items never ship because nobody revisits them. Review open action items on a rec
 cadence, separate from writing new postmortems, and treat a stale one as a finding in itself.
 
 - **Review open items monthly** across all recent postmortems, not just at the retro meeting.
-- **Re-open the incident lineage** if an unshipped action item's failure mode recurs — that's
+- **Re-open the [incident](../incident/SKILL.md) lineage** if an unshipped action item's failure mode recurs — that's
   a direct, measurable cost of not following through.
 - **Report completion rate** as an organizational health metric, the same way you'd report SLO
   attainment.

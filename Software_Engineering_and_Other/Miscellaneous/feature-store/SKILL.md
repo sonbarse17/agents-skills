@@ -27,7 +27,7 @@ Design feature store architecture with Feast or Tecton for consistent feature co
 Feature requirements
   ├── Open-source, self-hosted, batch features
   │   └── Feast (Redis/DynamoDB online store, Parquet/ BigQuery offline)
-  ├── Managed, streaming + batch, built-in monitoring
+  ├── Managed, streaming + batch, built-in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   │   └── Tecton (higher cost, less operational overhead)
   └── Cloud-native feature platform
       ├── AWS → SageMaker Feature Store (integrated with SageMaker)
@@ -109,8 +109,8 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ## Workflow
 
 ### Step 1: Choose Feature Store
-- **Feast**: Open-source, self-hosted, batch features. Supports Redis, DynamoDB. Python SDK.
-- **Tecton**: Managed, declarative, streaming + batch, built-in monitoring. Higher cost.
+- **Feast**: Open-source, self-hosted, batch features. Supports Redis, DynamoDB. [Python](../../Languages/python/SKILL.md) SDK.
+- **Tecton**: Managed, declarative, streaming + batch, built-in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Higher cost.
 - **SageMaker Feature Store**: Native AWS integration, good for SageMaker workflows.
 - **Vertex AI Feature Store**: GCP-native, BigQuery-backed.
 - **Databricks Feature Store**: Delta Lake-based, Spark-native.
@@ -126,7 +126,7 @@ feature_repo/
 ```
 
 ### Step 3: Configure Entities and Sources
-```python
+```[python](../../Languages/python/SKILL.md)
 # entities.py
 from feast import Entity
 
@@ -147,7 +147,7 @@ driver_stats_source = FileSource(
 ```
 
 ### Step 4: Define Feature Views
-```python
+```[python](../../Languages/python/SKILL.md)
 # feature_views.py
 from feast import FeatureView, Feature
 from datetime import timedelta
@@ -186,7 +186,7 @@ driver_stream_fv = StreamFeatureView(
 ```
 
 ### Step 5: Point-in-Time Join
-```python
+```[python](../../Languages/python/SKILL.md)
 from feast import FeatureStore
 
 store = FeatureStore(repo_path='.')
@@ -200,7 +200,7 @@ training_df = store.get_historical_features(
 ```
 
 ### Step 6: Online Serving
-```python
+```[python](../../Languages/python/SKILL.md)
 # Online feature retrieval
 feature_vector = store.get_online_features(
     features=['driver_stats:avg_daily_trips', 'driver_stats:avg_rating'],
@@ -216,7 +216,7 @@ store.materialize_incremental(end_date=datetime.now())
 ```
 
 ### Step 7: Feature Validation
-```python
+```[python](../../Languages/python/SKILL.md)
 from feast import Feature
 from feast.infra.offline_stores.bigquery_source import BigQuerySource
 from great_expectations.core import ExpectationSuite
@@ -259,14 +259,14 @@ def validate_features(store, feature_view_name):
 - **No point-in-time join**: Using latest values for training causes data leakage — model sees future info.
 - **Infinite TTL**: Feature views need explicit TTL. No infinite retention for stale features.
 - **Serving raw features without transformation logic**: Must document all transforms.
-- **Feature drift without alerting**: Should trigger validation alert on distribution shift.
+- **Feature drift without [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)**: Should trigger validation alert on distribution shift.
 - **No feature ownership**: Every feature must have documented owner, description, source.
 - **Online store chosen for wrong latency**: Redis for <10ms, DynamoDB for <50ms, Cassandra for high write.
 - **Training with stale features**: Point-in-time correctness requires event_timestamp alignment.
 
 ## Production Considerations
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Feature freshness (age of online features).
 - Feature value distribution (PSI, KS test for drift).
 - Online serving latency (p50/p95/p99).
@@ -328,7 +328,7 @@ GROUP BY l.user_id, l.event_timestamp, l.label
 ```
 
 ### Pattern: Sequential PIT (Multiple Feature Versions)
-```python
+```[python](../../Languages/python/SKILL.md)
 # When feature computation changed (e.g., feature v2 deployed on date D)
 # Use feature v1 for events before D, feature v2 for events after D
 
@@ -341,7 +341,7 @@ def get_feature_at_time(user_id: str, event_time: datetime):
 ```
 
 ### Pattern: Streaming PIT Join
-```python
+```[python](../../Languages/python/SKILL.md)
 # For real-time features (e.g., current session activity)
 # Use Kafka + Flink: join label event with latest feature state
 
@@ -360,7 +360,7 @@ joined = label_stream.join(feature_stream)
 ## Feature Validation Templates
 
 ### Basic Validation — Batch Feature Pipeline
-```python
+```[python](../../Languages/python/SKILL.md)
 import pandera as pa
 from datetime import datetime, timedelta
 
@@ -385,7 +385,7 @@ def validate_features(df: pd.DataFrame) -> pd.DataFrame:
 ```
 
 ### Distribution Shift Detection
-```python
+```[python](../../Languages/python/SKILL.md)
 from scipy.stats import ks_2samp
 import numpy as np
 
@@ -469,7 +469,7 @@ feature_3          | 15.0%    | NA          | -0.1 | 0.8 | -3  | 4   | YES - KS=
   - ../../../Global_References/feature-store-advanced.md — Feature Store Advanced Topics
   - ../../../Global_References/feature-store-fundamentals.md — Feature Store Fundamentals
 ## Handoff
-For model training with feature store integration, hand off to `ml-ml-pipeline`. For serving infrastructure, hand off to `ml-model-serving`.
+For model training with feature store integration, hand off to `ml-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)`. For serving infrastructure, hand off to `[ml-model-serving](../../../AI_and_Agents/Models_and_FineTuning/model-serving/SKILL.md)`.
 
 ## Architecture Decision Trees
 
@@ -489,7 +489,7 @@ For model training with feature store integration, hand off to `ml-ml-pipeline`.
 ## Implementation Patterns
 
 ### Feast Feature Definition
-`python
+`[python](../../Languages/python/SKILL.md)
 from datetime import timedelta
 from feast import Entity, FeatureView, Field, FileSource, ValueType
 from feast.types import Float32, Int64, String
@@ -521,7 +521,7 @@ transaction_features = FeatureView(
 `
 
 ### Feature Serving API
-`python
+`[python](../../Languages/python/SKILL.md)
 from feast import FeatureStore
 import pandas as pd
 
@@ -569,4 +569,4 @@ training_df = store.get_historical_features(
 ### Data Governance
 - **Feature lineage**: Track which models consume which features. Document feature owner, source, and transformation logic.
 - **Feature validation**: Validate feature values against defined ranges. Flag and quarantine anomalous feature values.
-- **Audit trail**: Log all feature retrieval requests with identity and timestamp. Enable compliance audit of feature access.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all feature retrieval requests with identity and timestamp. Enable compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of feature access.

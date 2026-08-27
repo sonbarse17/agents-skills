@@ -24,19 +24,19 @@ metadata:
 ## Purpose
 
 Senior-level engineering work is defined less by writing more code and
-more by exercising judgment without a runbook: designing a component
+more by exercising judgment without a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): designing a component
 independently within constraints someone else set, reviewing someone
 else's design or code deeply enough to catch what a naive read would
-miss, and root-causing an incident that has no documented procedure to
+miss, and root-causing an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) that has no documented procedure to
 follow because nobody has seen this exact failure before. Each of these
 is qualitatively different from the entry-level discipline of executing
 a known procedure precisely (see
-[operational-runbook-execution-and-escalation](../operational-runbook-execution-and-escalation/SKILL.md))
-— here, the engineer is the one deciding what the "runbook" should say,
+[operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../[operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../../../DevOps_and_Cloud/CI_CD/operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation/SKILL.md)/SKILL.md))
+— here, the engineer is the one deciding what the "[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" should say,
 or whether there even should be one. This skill covers designing within
 architectural constraints (not designing the constraints themselves —
 that's the architect-level work in
-[system-design-technology-selection-and-decision-records](../system-design-technology-selection-and-decision-records/SKILL.md)),
+[system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md)),
 running a code/design review that goes past style into correctness and
 failure modes, leading ambiguous root-cause investigations, and
 mentoring through the review and pairing process itself.
@@ -50,7 +50,7 @@ mentoring through the review and pairing process itself.
 - Reviewing a pull request, design document, or RFC and wanting a
   checklist that goes beyond formatting/style to genuinely test whether
   the design/code is correct.
-- An incident or bug has no existing runbook — its cause is ambiguous,
+- An [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or bug has no existing [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — its cause is ambiguous,
   novel, or spans multiple systems — and someone needs to lead the
   investigation rather than follow a documented procedure.
 - Pairing with, or giving written review feedback to, a more junior
@@ -69,19 +69,19 @@ mentoring through the review and pairing process itself.
   reopening or ignoring them; if a design genuinely can't be met within
   the given constraints, that's an escalation to the architecture-level
   process in
-  [system-design-technology-selection-and-decision-records](../system-design-technology-selection-and-decision-records/SKILL.md),
+  [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md),
   not something to route around unilaterally.
 - Read/write access to the codebase, its test suite, and its CI pipeline
   (see
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md)
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
   for what a healthy quality gate looks like) so a design or review can
   be grounded in what the pipeline will actually enforce.
-- Review tooling (GitHub/GitLab PR review, a design-doc commenting tool)
+- Review tooling ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab PR review, a design-doc commenting tool)
   with the authority to request changes, not just comment — a senior
   reviewer without the standing to block a merge on a real correctness
   concern can't do this job effectively.
-- Observability access (logs, traces, metrics, dashboards) sufficient to
-  investigate an incident beyond what a runbook's predefined checks
+- [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) access (logs, traces, metrics, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)) sufficient to
+  investigate an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) beyond what a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)'s predefined checks
   cover — this is what makes ambiguous root-cause work possible at all.
 - A junior engineer or team member to pair with or review, and enough
   standing time/context to give feedback that explains *why*, not only
@@ -133,7 +133,7 @@ mentoring through the review and pairing process itself.
    - Worker crashes mid-retry: rows use a `claimed_at` lock with a
      timeout so a crashed worker's claims are released, not stuck.
    - Retry storm if a customer endpoint is down for hours: backoff caps
-     at 2h and gives up after 4 attempts, alerting rather than retrying
+     at 2h and gives up after 4 attempts, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rather than retrying
      indefinitely.
    - Duplicate delivery on a retry that actually succeeded but the ack
      was lost: covered by the idempotency key.
@@ -158,10 +158,10 @@ mentoring through the review and pairing process itself.
    - **Test coverage**: do the tests actually exercise the edge cases
      and failure modes above, or only the happy path? A PR with 100%
      line coverage on happy-path-only tests is not well-tested.
-   - **Rollback/observability**: if this change misbehaves in
+   - **Rollback/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: if this change misbehaves in
      production, is there a fast way to detect it (metric/alert) and
      revert it (feature flag, quick rollback), or does a bad deploy here
-     become a multi-hour incident by design?
+     become a multi-hour [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) by design?
    - **Security-adjacent basics**: any new input trust boundary, any new
      place secrets/PII could leak into logs.
 
@@ -172,22 +172,22 @@ mentoring through the review and pairing process itself.
    for genuine correctness/security issues, and use suggestion-level
    feedback for style or preference.
 
-6. **When an incident or bug has no existing runbook, lead a structured
+6. **When an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or bug has no existing [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), lead a structured
    investigation rather than guessing serially**: form a hypothesis from
    the evidence available, find the fastest way to confirm or rule it
    out (a log query, a targeted metric, reproducing in a lower
    environment), and only then move to the next hypothesis — narrating
-   this process out loud (in the incident channel or a doc) so others
+   this process out loud (in the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel or a doc) so others
    can follow and contribute, rather than debugging silently and
    presenting only a final answer.
 
-7. **After resolving a novel incident, decide explicitly whether a
-   runbook should now exist** for this failure mode — if a similar
-   failure is plausible again, write the runbook so the next occurrence
+7. **After resolving a novel [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), decide explicitly whether a
+   [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) should now exist** for this failure mode — if a similar
+   failure is plausible again, write the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) so the next occurrence
    is entry-level, documented work instead of another ambiguous
    investigation; see
-   [operational-runbook-execution-and-escalation](../operational-runbook-execution-and-escalation/SKILL.md)
-   for what a good runbook and its escalation triggers look like.
+   [operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../[operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../../../DevOps_and_Cloud/CI_CD/operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation/SKILL.md)/SKILL.md)
+   for what a good [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) and its escalation triggers look like.
 
 8. **Mentor deliberately through pairing and review**, not only by
    fixing things faster yourself: when pairing, narrate your own
@@ -215,13 +215,13 @@ mentoring through the review and pairing process itself.
   hypothesis out loud before you go test it — this lets others correct
   or contribute to the theory instead of only seeing your final
   conclusion.
-- If an ambiguous incident is likely to recur, treat writing the runbook
+- If an ambiguous [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is likely to recur, treat writing the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
   as part of finishing the work, not optional follow-up that quietly
   never happens.
 - Escalate to the architecture level (rather than quietly reinterpreting
   a constraint yourself) when a design genuinely can't meet its
   requirements within the given constraints — see
-  [system-design-technology-selection-and-decision-records](../system-design-technology-selection-and-decision-records/SKILL.md).
+  [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -254,12 +254,12 @@ mentoring through the review and pairing process itself.
   discovered later is expensive to unwind and erodes trust in
   independent design being given at all.
 
-- **Symptom:** A novel incident with no runbook gets root-caused and
+- **Symptom:** A novel [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) with no [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) gets root-caused and
   fixed, but nobody writes anything down, and an on-call engineer six
   months later spends hours re-diagnosing the exact same failure from
   scratch.
-  **Fix:** Treat "should this become a runbook" as an explicit step at
-  the end of any ambiguous incident (step 7) — a novel investigation that
+  **Fix:** Treat "should this become a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" as an explicit step at
+  the end of any ambiguous [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (step 7) — a novel investigation that
   isn't captured anywhere guarantees the next occurrence is novel again
   too.
 
@@ -269,7 +269,7 @@ mentoring through the review and pairing process itself.
   can follow what's already been checked.
   **Fix:** State the current hypothesis explicitly before testing it,
   and record what was ruled out as you go (even a running comment in the
-  incident channel) — this both keeps the investigation converging and
+  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel) — this both keeps the investigation converging and
   lets someone else pick up the thread if you need to hand off.
 
 ## Worked example
@@ -311,7 +311,7 @@ this instance.
 
 ## Cross-references
 
-- [operational-runbook-execution-and-escalation](../operational-runbook-execution-and-escalation/SKILL.md) — the entry-level discipline this skill's engineers escalate from and, in turn, write new runbooks for once a novel incident's root cause is understood.
-- [technical-roadmap-ownership-and-cross-team-coordination](../technical-roadmap-ownership-and-cross-team-coordination/SKILL.md) — the next level of practice: sequencing and owning multiple such design efforts across a team's roadmap rather than one component at a time.
-- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md) — the structured, multi-contributing-factor analysis format an ambiguous incident's root-cause findings should feed into once resolved.
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — the quality gates (required checks, coverage thresholds) that a thorough code review in step 4 should be able to rely on, and where to strengthen them if a review keeps catching what CI should have.
+- [operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../[operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation](../../../DevOps_and_Cloud/CI_CD/operational-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-execution-and-escalation/SKILL.md)/SKILL.md) — the entry-level discipline this skill's engineers escalate from and, in turn, write new [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for once a novel [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s root cause is understood.
+- [technical-roadmap-ownership-and-cross-team-coordination](../[technical-roadmap-ownership-and-cross-team-coordination](../../../Product_and_Business/technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)/SKILL.md) — the next level of practice: sequencing and owning multiple such design efforts across a team's roadmap rather than one component at a time.
+- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../Frontend/blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — the structured, multi-contributing-factor analysis format an ambiguous [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s root-cause findings should feed into once resolved.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — the quality gates (required checks, coverage thresholds) that a thorough code review in step 4 should be able to rely on, and where to strengthen them if a review keeps catching what CI should have.

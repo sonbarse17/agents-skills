@@ -14,9 +14,9 @@ Ship web apps quickly with preview environments and managed edge infrastructure.
 ## When to Use This Skill
 
 Use this skill when:
-- Deploying Next.js, SvelteKit, Nuxt, or static sites
+- Deploying Next.js, [SvelteKit](../../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md), Nuxt, or static sites
 - Setting up preview environments for every PR
-- Configuring edge functions and serverless APIs
+- Configuring edge functions and [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) APIs
 - Managing environment variables across preview/production
 - Setting up custom domains and redirects
 
@@ -24,7 +24,7 @@ Use this skill when:
 
 - Node.js 18+
 - Vercel account (free tier works for personal projects)
-- Git repository (GitHub, GitLab, or Bitbucket)
+- Git repository ([GitHub](../../CI_CD/github/SKILL.md), GitLab, or Bitbucket)
 
 ## Quick Start
 
@@ -103,20 +103,20 @@ vercel env rm SECRET_KEY production
 
 ```bash
 # Production — real credentials
-vercel env add DATABASE_URL production <<< "postgresql://prod-host:5432/app"
+vercel env add DATABASE_URL production <<< "[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://prod-host:5432/app"
 vercel env add STRIPE_SECRET_KEY production
 
 # Preview — staging/test credentials
-vercel env add DATABASE_URL preview <<< "postgresql://staging-host:5432/app"
+vercel env add DATABASE_URL preview <<< "[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://staging-host:5432/app"
 vercel env add STRIPE_SECRET_KEY preview   # Use test mode key
 
 # Development — local values
-vercel env add DATABASE_URL development <<< "postgresql://localhost:5432/app"
+vercel env add DATABASE_URL development <<< "[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://localhost:5432/app"
 ```
 
 ## Edge Functions
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // app/api/geo/route.ts — Edge API route (Next.js App Router)
 import { NextRequest } from 'next/server';
 
@@ -135,7 +135,7 @@ export function GET(request: NextRequest) {
 }
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // middleware.ts — Edge middleware for auth/redirects
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -159,10 +159,10 @@ export const config = {
 };
 ```
 
-## GitHub Actions Integration
+## [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
 
 ```yaml
-# .github/workflows/preview.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/preview.yml
 name: Vercel Preview
 on: pull_request
 
@@ -188,10 +188,10 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Comment PR with preview URL
-        uses: actions/github-script@v7
+        uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
         with:
           script: |
-            github.rest.issues.createComment({
+            [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -227,7 +227,7 @@ vercel inspect <deployment-url>
 
 ## Production Guardrails
 
-- Require preview checks before merge (GitHub branch protection)
+- Require preview checks before merge ([GitHub](../../CI_CD/github/SKILL.md) branch protection)
 - Separate preview and production environment variables — never share API keys
 - Use branch protection with required deployment status checks
 - Monitor function duration and cold start behavior in Vercel Analytics
@@ -235,7 +235,7 @@ vercel inspect <deployment-url>
 - Enable Vercel Firewall for DDoS and bot protection
 - Use `vercel.json` headers for security (CSP, HSTS, X-Frame-Options)
 
-## Monitoring & Analytics
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) & Analytics
 
 ```bash
 # Enable Speed Insights in Next.js
@@ -245,7 +245,7 @@ npm install @vercel/speed-insights
 npm install @vercel/analytics
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // app/layout.tsx
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -269,12 +269,12 @@ export default function RootLayout({ children }) {
 |-------|---------|
 | Build fails | Check `vercel logs`, verify Node.js version in `engines` field |
 | Env vars missing | Run `vercel env pull`, check variable scope (preview vs production) |
-| Edge function timeout | Edge has 30s limit; move heavy work to serverless (no `runtime = 'edge'`) |
+| Edge function timeout | Edge has 30s limit; move heavy work to [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) (no `runtime = 'edge'`) |
 | Cold starts slow | Use edge runtime where possible, reduce bundle size |
 | Domain not working | Check DNS propagation, verify `vercel domains` configuration |
 
 ## Related Skills
 
-- [github-actions](../../../devops/ci-cd/github-actions/) — Automated deployment gates
-- [cloudflare-pages](../../cloudflare/cloudflare-pages/) — Alternative edge hosting
-- [ssl-tls-management](../../../security/network/ssl-tls-management/) — Custom certificate setup
+- [github-actions](../../../devops/ci-cd/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/) — Automated deployment gates
+- [cloudflare-pages](../../cloudflare/[cloudflare-pages](../cloudflare-pages/SKILL.md)/) — Alternative edge hosting
+- [ssl-tls-management](../../../security/network/[ssl-tls-management](../../../Software_Engineering_and_Other/Frontend/ssl-tls-management/SKILL.md)/) — Custom certificate setup

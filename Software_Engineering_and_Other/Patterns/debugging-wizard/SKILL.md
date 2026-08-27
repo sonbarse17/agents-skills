@@ -59,9 +59,9 @@ Load detailed guidance based on context:
 
 ## Common Debugging Commands
 
-**Python (pdb)**
+**[Python](../../Languages/python/SKILL.md) (pdb)**
 ```bash
-python -m pdb script.py          # launch debugger
+[python](../../Languages/python/SKILL.md) -m pdb script.py          # launch debugger
 # inside pdb:
 # b 42          — set breakpoint at line 42
 # n             — step over
@@ -80,11 +80,11 @@ node --inspect-brk script.js     # pause at first line, attach Chrome DevTools
 **Git bisect (regression hunting)**
 ```bash
 git bisect start
-git bisect bad                   # current commit is broken
-git bisect good v1.2.0           # last known good tag/commit
+git bisect bad                   # current [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) is broken
+git bisect good v1.2.0           # last known good tag/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 # Git checks out midpoint — test, then:
 git bisect good   # or: git bisect bad
-# Repeat until git identifies the first bad commit
+# Repeat until git identifies the first bad [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 git bisect reset
 ```
 
@@ -104,5 +104,5 @@ When debugging, provide:
 3. **Fix**: Code change that resolves it
 4. **Prevention**: Test or safeguard to prevent recurrence
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/debugging-wizard/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/quality/debugging-wizard/)
 

@@ -36,11 +36,11 @@ Load detailed guidance based on context:
 | Security Checklist | `../../../Global_References/security-checklist.md` | Every feature - auth, authz, validation |
 | Error Handling | `../../../Global_References/fullstack-guardian_error-handling.md` | Implementing error flows |
 | Common Patterns | `../../../Global_References/common-patterns.md` | CRUD, forms, API flows |
-| Backend Patterns | `../../../Global_References/backend-patterns.md` | Microservices, queues, observability, Docker |
+| Backend Patterns | `../../../Global_References/backend-patterns.md` | [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), queues, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) |
 | Frontend Patterns | `../../../Global_References/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
 | Integration Patterns | `../../../Global_References/integration-patterns.md` | Type sharing, deployment, architecture decisions |
 | API Design | `../../../Global_References/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
-| Architecture Decisions | `../../../Global_References/architecture-decisions.md` | Tech selection, monolith vs microservices |
+| Architecture Decisions | `../../../Global_References/architecture-decisions.md` | Tech selection, monolith vs [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) |
 | Deliverables Checklist | `../../../Global_References/deliverables-checklist.md` | Completing features, preparing handoff |
 
 ## Constraints
@@ -68,7 +68,7 @@ Load detailed guidance based on context:
 A minimal authenticated endpoint illustrating all three layers:
 
 **[Backend]** — Authenticated route with parameterized query and scoped response:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @router.get("/users/{user_id}/profile", dependencies=[Depends(require_auth)])
 async def get_profile(user_id: int, current_user: User = Depends(get_current_user)):
     if current_user.id != user_id:
@@ -81,7 +81,7 @@ async def get_profile(user_id: int, current_user: User = Depends(get_current_use
 ```
 
 **[Frontend]** — Component calls the endpoint and handles errors gracefully:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function fetchProfile(userId: number): Promise<Profile> {
   const res = await apiFetch(`/users/${userId}/profile`);   // apiFetch attaches auth header
   if (!res.ok) throw new Error(await res.text());
@@ -104,5 +104,5 @@ When implementing features, provide:
 3. Frontend code (components, hooks, API calls)
 4. Brief security notes
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/security/fullstack-guardian/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/security/fullstack-guardian/)
 

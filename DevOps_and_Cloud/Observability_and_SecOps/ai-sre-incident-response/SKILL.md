@@ -7,7 +7,7 @@ metadata:
   version: "1.0"
 ---
 
-# AI SRE Incident Response
+# AI SRE [Incident](../incident/SKILL.md) Response
 
 Apply SRE rigor to AI systems where incidents include quality regressions, unsafe outputs, and budget explosions.
 
@@ -22,23 +22,23 @@ Apply SRE rigor to AI systems where incidents include quality regressions, unsaf
 ## Prerequisites
 
 - Prometheus and Alertmanager deployed with scrape targets for AI services
-- Grafana dashboards for golden signals (latency, error rate, cost, quality)
+- Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for golden signals (latency, error rate, cost, quality)
 - On-call rotation configured in PagerDuty, Opsgenie, or equivalent
-- Runbook repository accessible to responders
-- Rollback mechanism for model and prompt versions (GitOps or feature flags)
+- [Runbook](../runbook/SKILL.md) repository accessible to responders
+- Rollback mechanism for model and prompt versions ([GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) or feature flags)
 
-## AI Incident Classes
+## AI [Incident](../incident/SKILL.md) Classes
 
-- **Availability incident**: model/provider unavailable, timeout storm.
-- **Quality incident**: answer accuracy or tool success drops below SLO.
-- **Safety incident**: harmful or policy-violating outputs increase.
-- **Cost incident**: unexpected token or provider spend spike.
+- **Availability [incident](../incident/SKILL.md)**: model/provider unavailable, timeout storm.
+- **Quality [incident](../incident/SKILL.md)**: answer accuracy or tool success drops below SLO.
+- **Safety [incident](../incident/SKILL.md)**: harmful or policy-violating outputs increase.
+- **Cost [incident](../incident/SKILL.md)**: unexpected token or provider spend spike.
 
 ## Severity Framework
 
 | Severity | Criteria | Response Time | Notification |
 |----------|----------|---------------|--------------|
-| SEV1 | User-facing outage, compliance risk, data leak | 5 min | Page on-call + incident commander |
+| SEV1 | User-facing outage, compliance risk, data leak | 5 min | Page on-call + [incident](../incident/SKILL.md) commander |
 | SEV2 | Major degradation in key flows | 15 min | Page on-call |
 | SEV3 | Limited impact or internal-only issue | 1 hour | Slack alert |
 | SEV4 | Cosmetic or low-priority regression | Next business day | Ticket |
@@ -65,7 +65,7 @@ groups:
           severity: sev1
         annotations:
           summary: "LLM inference endpoint {{ $labels.instance }} is down"
-          runbook_url: "https://runbooks.internal/ai/model-outage"
+          runbook_url: "https://[runbooks](../runbooks/SKILL.md).internal/ai/model-outage"
 
       - alert: HighHallucinationRate
         expr: |
@@ -76,7 +76,7 @@ groups:
           severity: sev2
         annotations:
           summary: "Hallucination rate above 15% for {{ $labels.model }}"
-          runbook_url: "https://runbooks.internal/ai/quality-regression"
+          runbook_url: "https://[runbooks](../runbooks/SKILL.md).internal/ai/quality-regression"
 
       - alert: TokenCostExplosion
         expr: |
@@ -87,7 +87,7 @@ groups:
           severity: sev2
         annotations:
           summary: "Token spend exceeds $0.50/min for tenant {{ $labels.tenant }}"
-          runbook_url: "https://runbooks.internal/ai/cost-spike"
+          runbook_url: "https://[runbooks](../runbooks/SKILL.md).internal/ai/cost-spike"
 
       - alert: LatencyP95Exceeded
         expr: |
@@ -109,7 +109,7 @@ groups:
           severity: sev1
         annotations:
           summary: "Guardrail violations above 5% for {{ $labels.model }}"
-          runbook_url: "https://runbooks.internal/ai/safety-incident"
+          runbook_url: "https://[runbooks](../runbooks/SKILL.md).internal/ai/safety-[incident](../incident/SKILL.md)"
 
       - alert: ModelQualityDrop
         expr: |
@@ -133,7 +133,7 @@ groups:
 
 ## Response Playbooks
 
-### Model Outage Runbook
+### Model Outage [Runbook](../runbook/SKILL.md)
 
 ```text
 TRIGGER: ModelEndpointDown fires for > 2 minutes
@@ -145,25 +145,25 @@ RESPONDER: On-call AI platform engineer
      curl -s -o /dev/null -w "%{http_code}" https://api.provider.com/health
 4. If provider is down:
      a. Enable fallback model route in gateway config.
-     b. kubectl set env deployment/llm-gateway FALLBACK_ENABLED=true
+     b. [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) FALLBACK_ENABLED=true
      c. Verify fallback traffic is flowing via Grafana dashboard.
 5. If self-hosted model is down:
-     a. Check pod status: kubectl get pods -l app=llm-inference -n ai
-     b. Check GPU health: kubectl logs -l app=llm-inference --tail=50
-     c. Restart if OOM: kubectl rollout restart deployment/llm-inference -n ai
+     a. Check pod status: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -l app=llm-inference -n ai
+     b. Check GPU health: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=llm-inference --tail=50
+     c. Restart if OOM: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment/llm-inference -n ai
 6. Freeze all deployments:
-     kubectl annotate deployment --all deploy-freeze=true -n ai
-7. Communicate ETA in #incident-channel.
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) annotate deployment --all deploy-freeze=true -n ai
+7. Communicate ETA in #[incident](../incident/SKILL.md)-channel.
 8. When resolved, unfreeze and run smoke tests.
 ```
 
-### Quality Regression Runbook (Hallucination Spike)
+### Quality Regression [Runbook](../runbook/SKILL.md) (Hallucination Spike)
 
 ```text
 TRIGGER: HighHallucinationRate or ModelQualityDrop fires
 RESPONDER: On-call AI engineer + ML lead
 
-1. Acknowledge alert. Open incident ticket.
+1. Acknowledge alert. Open [incident](../incident/SKILL.md) ticket.
 2. Identify scope:
      - Which model version? Check deployment metadata.
      - Which routes/tenants affected? Filter by labels in Grafana.
@@ -172,17 +172,17 @@ RESPONDER: On-call AI engineer + ML lead
      - Prompt template changes in last 24h?
      - Retrieval index rebuild in last 24h?
 4. If recent model change:
-     kubectl rollout undo deployment/llm-inference -n ai
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/llm-inference -n ai
 5. If recent prompt change:
-     git revert <commit> && git push  # triggers GitOps redeploy
+     git revert <[commit](../../CI_CD/commit/SKILL.md)> && git push  # triggers [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) redeploy
 6. Increase trace sampling to 100% for affected route:
-     kubectl set env deployment/llm-gateway TRACE_SAMPLE_RATE=1.0
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:
-     python run_evals.py --target prod --suite quality --compare baseline
+     [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) run_evals.py --target prod --suite quality --compare baseline
 8. Confirm metrics return to baseline before closing.
 ```
 
-### Token Cost Explosion Runbook
+### Token Cost Explosion [Runbook](../runbook/SKILL.md)
 
 ```text
 TRIGGER: TokenCostExplosion fires
@@ -195,15 +195,15 @@ RESPONDER: On-call platform engineer
      - Missing max_tokens caps on new routes
      - Cache bypass due to config change
 3. Apply immediate caps:
-     kubectl patch configmap llm-quotas -n ai --patch '
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) patch configmap llm-quotas -n ai --patch '
        data:
          max_tokens_per_request: "4096"
          rpm_limit: "60"
      '
 4. Enable semantic cache if disabled:
-     kubectl set env deployment/llm-gateway CACHE_ENABLED=true
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) CACHE_ENABLED=true
 5. Route traffic to cheaper model tier:
-     kubectl set env deployment/llm-gateway DEFAULT_MODEL=gpt-4o-mini
+     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) DEFAULT_MODEL=gpt-4o-mini
 6. Notify affected tenants of temporary limits.
 7. Open postmortem with cost attribution analysis.
 ```
@@ -213,8 +213,8 @@ RESPONDER: On-call platform engineer
 ```text
 Level 1 (0-15 min):  On-call AI platform engineer
 Level 2 (15-30 min): AI platform team lead + affected product owner
-Level 3 (30-60 min): Engineering director + security (if safety incident)
-Level 4 (60+ min):   VP Engineering + legal (if compliance/data incident)
+Level 3 (30-60 min): Engineering director + security (if safety [incident](../incident/SKILL.md))
+Level 4 (60+ min):   VP Engineering + legal (if compliance/data [incident](../incident/SKILL.md))
 
 Safety incidents always start at Level 2 minimum.
 Provider-side incidents: open support ticket immediately at Level 1.
@@ -258,7 +258,7 @@ topk(10, sum(rate(llm_token_cost_dollars[1h])) by (tenant))
 ## Postmortem Template
 
 ```markdown
-## Incident Summary
+## [Incident](../incident/SKILL.md) Summary
 - **Severity**: SEVx
 - **Duration**: start_time - end_time (Xh Ym)
 - **Detection**: How was it detected? (alert / customer report / manual)
@@ -271,7 +271,7 @@ topk(10, sum(rate(llm_token_cost_dollars[1h])) by (tenant))
 | HH:MM | Responder acknowledged |
 | HH:MM | Root cause identified |
 | HH:MM | Mitigation applied |
-| HH:MM | Incident resolved |
+| HH:MM | [Incident](../incident/SKILL.md) resolved |
 
 ## Root Cause
 [Description]
@@ -285,7 +285,7 @@ topk(10, sum(rate(llm_token_cost_dollars[1h])) by (tenant))
 
 ## Chaos Engineering for AI Systems
 
-Regularly test incident readiness:
+Regularly test [incident](../incident/SKILL.md) readiness:
 
 - **Provider failover drill**: block provider API at network level, verify fallback activates within SLO.
 - **Model rollback drill**: deploy known-bad model version, verify automated quality gate catches it.
@@ -304,8 +304,8 @@ Regularly test incident readiness:
 
 ## Related Skills
 
-- [incident-response](../../../security/operations/incident-response/) - Standard incident process and evidence
-- [alerting-oncall](../../observability/alerting-oncall/) - Paging and escalation policy
-- [llm-cost-optimization](../llm-cost-optimization/) - Spend controls and efficiency patterns
-- [agent-observability](../agent-observability/) - Instrument requests, traces, and costs
-- [rag-observability-evals](../rag-observability-evals/) - RAG quality monitoring
+- [incident-response](../../../security/operations/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)/) - Standard [incident](../incident/SKILL.md) process and evidence
+- [alerting-oncall](../../[observability](../observability/SKILL.md)/[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - Paging and escalation policy
+- [llm-cost-optimization](../[llm-cost-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Spend controls and efficiency patterns
+- [agent-observability](../[agent-observability](../../../AI_and_Agents/Operations/agent-[observability](../observability/SKILL.md)/SKILL.md)/) - Instrument requests, traces, and costs
+- [rag-[observability](../observability/SKILL.md)-evals](../[rag-[observability](../observability/SKILL.md)-evals](../../../AI_and_Agents/Infrastructure/rag-[observability](../observability/SKILL.md)-evals/SKILL.md)/) - RAG quality [monitoring](../monitoring/SKILL.md)

@@ -11,23 +11,23 @@ tags: [blockchain, testing, security, audit, phase-blockchain]
 # Blockchain Testing
 
 ## Purpose
-Guide blockchain smart contract testing covering the full testing pyramid: unit tests, integration tests, fuzz tests, invariant tests, formal verification, and audit preparation. Ensures contract correctness before deployment.
+Guide blockchain smart contract testing covering the full testing pyramid: unit tests, integration tests, fuzz tests, invariant tests, formal verification, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation. Ensures contract correctness before deployment.
 
 ## Agent Protocol
 
 ### Trigger
-"smart contract test", "foundry test", "forge test", "hardhat test", "truffle test", "fuzz testing", "invariant testing", "property-based testing", "echidna", "certora", "formal verification", "audit preparation", "blockchain testing", "web3 testing", "dapp testing", "contract audit", "gas benchmark", "mainnet fork test", "integration test blockchain", "e2e blockchain test", "foundry cheatcode", "forge snapshot"
+"smart contract test", "foundry test", "forge test", "hardhat test", "truffle test", "fuzz testing", "invariant testing", "property-based testing", "echidna", "certora", "formal verification", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation", "blockchain testing", "web3 testing", "dapp testing", "contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "gas benchmark", "mainnet fork test", "integration test blockchain", "e2e blockchain test", "foundry cheatcode", "forge snapshot"
 
 ### Input Context
 - Smart contracts to test (with source files)
 - Framework preference (Foundry/Hardhat/Truffle)
-- Testing phase (unit/fuzz/invariant/formal/audit)
+- Testing phase (unit/fuzz/invariant/formal/[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 - Existing test suite and coverage
 - Target chains (EVM/Solana/Cosmos)
-- Security requirements (audit timeline, TVL at risk)
+- Security requirements ([audit](../../AI_and_Agents/Operations/audit/SKILL.md) timeline, TVL at risk)
 
 ### Output Artifact
-Testing strategy specification: framework setup, test organization, fuzz/invariant properties, gas benchmarking, and audit preparation checklist.
+Testing strategy specification: framework setup, test organization, fuzz/invariant properties, gas benchmarking, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation checklist.
 
 ### Response Format
 1. **Test strategy**: unit vs integration vs fuzz vs invariant vs formal (testing pyramid)
@@ -36,7 +36,7 @@ Testing strategy specification: framework setup, test organization, fuzz/invaria
 4. **Fuzz tests**: input ranges, invariant properties, assertion types
 5. **Integration tests**: mainnet fork, multi-contract flows, protocol composition
 6. **Gas & performance**: benchmark snapshot, optimization targets
-7. **Security audit**: tooling (Slither, Mythril, Halmos), manual review checklist
+7. **Security [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: tooling (Slither, Mythril, Halmos), manual review checklist
 
 ### Completion Criteria
 - Unit tests cover all functions with boundary values and error cases
@@ -44,7 +44,7 @@ Testing strategy specification: framework setup, test organization, fuzz/invaria
 - Invariant tests capture protocol-level properties (solvency, access control, correctness)
 - Integration tests validate against mainnet fork with real protocol interactions
 - Gas benchmarks established and tracked in CI
-- Audit prep checklist completed (static analysis, fuzz, invariant, manual review)
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) prep checklist completed (static analysis, fuzz, invariant, manual review)
 
 ### Max Response Length
 4000 tokens
@@ -60,13 +60,13 @@ Blockchain platform:
 │   │   ├── forge coverage: line/branch coverage
 │   │   ├── forge snapshot: gas benchmarking
 │   │   └── Foundry fuzz: built-in parameterized + stateful fuzzing
-│   ├── JavaScript/TypeScript → Hardhat
+│   ├── JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) → Hardhat
 │   │   ├── Hardhat network: mainnet forking, mining control
 │   │   ├── Hardhat chai matchers: ethers-native assertions
 │   │   └── Hardhat console.log: debug in Solidity
 │   └── Legacy → Truffle (not recommended)
 ├── Solana → Anchor test framework
-│   ├── TypeScript SDK for integration tests
+│   ├── [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK for integration tests
 │   ├── Local validator (solana-test-validator)
 │   └── Mainnet fork via bankrun
 ├── Cosmos → Cosmos SDK test suite
@@ -307,7 +307,7 @@ contract GasBenchmark is Test {
 // testGasTransfer() (gas: ~48723)
 ```
 
-## Security Audit Testing Flow
+## Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Testing Flow
 
 ```
 Phase 1: Static Analysis
@@ -331,9 +331,9 @@ Phase 4: Integration
 └── Gas snapshot — cost regression check
 ```
 
-### Audit Preparation Checklist
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation Checklist
 ```markdown
-Pre-Audit Checklist:
+Pre-[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Checklist:
 - [ ] All functions have unit tests with boundary conditions
 - [ ] Fuzz tests written for all numeric inputs (>10K runs each)
 - [ ] Invariant tests cover protocol-level properties
@@ -357,7 +357,7 @@ Pre-Audit Checklist:
 5. Use Echidna or Foundry invariant tester for property-based testing
 6. Include gas benchmarks (forge snapshot) in CI to track gas cost regressions
 7. Simulate various network conditions: reorgs, failed txns, out-of-gas scenarios
-8. Before audit: full fuzz coverage, invariant tests, slither analysis, manual review checklist
+8. Before [audit](../../AI_and_Agents/Operations/audit/SKILL.md): full fuzz coverage, invariant tests, slither analysis, manual review checklist
 9. Coverage is a guide, not a target — 100% coverage doesn't mean 100% correctness
 10. Always test on a testnet deployment before mainnet
 11. Bound fuzz inputs to realistic ranges — unbounded fuzzing wastes compute on unrealistic values
@@ -374,19 +374,19 @@ import {Test} from "forge-std/Test.sol";
 import {MyVault} from "../src/MyVault.sol";
 
 contract MyVaultTest is Test {
-    MyVault vault;
+    MyVault [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md);
     address alice = makeAddr("alice");
     uint256 constant BAL = 1000e18;
 
     function setUp() public {
-        vault = new MyVault();
+        [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) = new MyVault();
         deal(alice, BAL);
     }
 
     // Unit test
     function test_Deposit() public {
         vm.prank(alice);
-        uint256 shares = vault.deposit{value: 100e18}(100e18, alice);
+        uint256 shares = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: 100e18}(100e18, alice);
         assertEq(shares, 100e18, "Shares == assets at 1:1");
     }
 
@@ -394,15 +394,15 @@ contract MyVaultTest is Test {
     function testFuzz_Deposit_RoundTrip(uint256 amount) public {
         vm.assume(amount > 0 && amount <= BAL);
         vm.prank(alice);
-        uint256 shares = vault.deposit{value: amount}(amount, alice);
+        uint256 shares = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: amount}(amount, alice);
         vm.prank(alice);
-        uint256 returned = vault.withdraw(shares, alice, alice);
+        uint256 returned = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).withdraw(shares, alice, alice);
         assertEq(returned, amount, "Roundtrip preserves value");
     }
 
     // Invariant test
     function invariant_Solvency() public {
-        assertGe(address(vault).balance, vault.totalSupply());
+        assertGe(address([vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).balance, [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).totalSupply());
     }
 }
 ```
@@ -415,7 +415,7 @@ contract VaultHandler is Test {
         address u = users[seed % users.length];
         amount = bound(amount, 1, u.balance);
         vm.prank(u);
-        vault.deposit{value: amount}(amount, u);
+        [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: amount}(amount, u);
     }
 }
 ```
@@ -448,7 +448,7 @@ Blockchain Testing Strategy
 │   ├── Yes (extensive) → Tenderly virtual testnet
 │   └── No → Mock external contracts
 └── CI integration?
-    ├── Yes → Forge test in GitHub Actions / CircleCI
+    ├── Yes → Forge test in [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions / [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)
     └── No → Local testing only (risky)
 ```
 
@@ -531,14 +531,14 @@ contract InvariantTest is Test {
 - **Fuzz optimization**: Bound inputs with `bound()` to reduce search space; use targeted fuzzing for critical funcs.
 - **Selective fork testing**: Fork only specific contracts needed; use mock for rest to reduce overhead.
 - **Cache dependencies**: Warm fork RPC cache; reuse state across test runs in CI.
-- **Test tiering**: Unit (every commit) → Fuzz (every PR) → Fork (nightly) — fastest gates first.
+- **Test tiering**: Unit (every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) → Fuzz (every PR) → Fork (nightly) — fastest gates first.
 
 ## Security Considerations
 
 - **Test isolation**: Use `vm.prank` and `vm.startPrank` for isolated test contexts; reset state between tests.
 - **Mainnet state safety**: Never run fork tests on production RPC with write access; use read-only archives.
-- **Secrets in tests**: Store fork RPC URLs in env vars; never commit API keys to test files.
-- **Audit readiness**: Structure tests for auditor review; document test coverage and invariant rationale.
+- **Secrets in tests**: Store fork RPC URLs in env vars; never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) API keys to test files.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) readiness**: Structure tests for auditor review; document test coverage and invariant rationale.
 - **Test timeout**: Set test timeout (e.g., `forge test --no-match-contract "Fork" --timeout 300`) to prevent CI hangs.
 
 ## Phase

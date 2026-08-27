@@ -15,7 +15,7 @@ Run and manage containers without a daemon using Podman's rootless container eng
 
 Use this skill when:
 - Running containers without root privileges
-- Managing containers on systems without Docker
+- Managing containers on systems without [Docker](../docker/SKILL.md)
 - Creating pod-based container groups
 - Using systemd for container management
 - Working in security-conscious environments
@@ -26,22 +26,22 @@ Use this skill when:
 - For rootless: user namespaces enabled
 - Basic container concepts understanding
 
-## Key Differences from Docker
+## Key Differences from [Docker](../docker/SKILL.md)
 
-| Feature | Docker | Podman |
+| Feature | [Docker](../docker/SKILL.md) | Podman |
 |---------|--------|--------|
 | Architecture | Client-daemon | Daemonless |
 | Root required | Default | Optional (rootless) |
-| Pod support | No | Yes (Kubernetes-style) |
+| Pod support | No | Yes ([Kubernetes](../kubernetes/SKILL.md)-style) |
 | Systemd integration | Limited | Native |
-| Socket | docker.sock | podman.sock (optional) |
+| Socket | [docker](../docker/SKILL.md).sock | podman.sock (optional) |
 
 ## Basic Commands
 
 ### Container Operations
 
 ```bash
-# Run container (identical to Docker)
+# Run container (identical to [Docker](../docker/SKILL.md))
 podman run -d --name webserver -p 8080:80 nginx
 
 # List containers
@@ -62,7 +62,7 @@ podman logs -f webserver
 
 ```bash
 # Pull image
-podman pull docker.io/library/nginx:latest
+podman pull [docker](../docker/SKILL.md).io/library/nginx:latest
 
 # List images
 podman images
@@ -153,7 +153,7 @@ podman pod rm -f mypod
 # View pod details
 podman pod inspect mypod
 
-# Generate Kubernetes YAML from pod
+# Generate [Kubernetes](../kubernetes/SKILL.md) YAML from pod
 podman generate kube mypod > mypod.yaml
 ```
 
@@ -180,7 +180,7 @@ systemctl --user enable --now container-myapp.service
 ```ini
 # ~/.config/containers/systemd/webapp.container
 [Container]
-Image=docker.io/library/nginx:latest
+Image=[docker](../docker/SKILL.md).io/library/nginx:latest
 PublishPort=8080:80
 Volume=webapp-data:/usr/share/nginx/html
 
@@ -210,16 +210,16 @@ pip install podman-compose
 # Run compose file
 podman-compose up -d
 
-# Or use Docker Compose with Podman socket
+# Or use [Docker](../docker/SKILL.md) Compose with Podman socket
 systemctl --user enable --now podman.socket
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
-docker-compose up -d
+[docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md) up -d
 ```
 
 ### Native Podman Kube
 
 ```bash
-# Play Kubernetes YAML
+# Play [Kubernetes](../kubernetes/SKILL.md) YAML
 podman kube play deployment.yaml
 
 # Stop and remove
@@ -297,11 +297,11 @@ podman run -v ./data:/app/data:Z myapp
 ```
 
 ```toml
-unqualified-search-registries = ["docker.io", "quay.io"]
+unqualified-search-registries = ["[docker](../docker/SKILL.md).io", "quay.io"]
 
 [[registry]]
-prefix = "docker.io"
-location = "docker.io"
+prefix = "[docker](../docker/SKILL.md).io"
+location = "[docker](../docker/SKILL.md).io"
 
 [[registry.mirror]]
 location = "mirror.gcr.io"
@@ -311,7 +311,7 @@ location = "mirror.gcr.io"
 
 ```bash
 # Login to registry
-podman login docker.io
+podman login [docker](../docker/SKILL.md).io
 
 # Login to private registry
 podman login registry.example.com
@@ -329,7 +329,7 @@ podman login registry.example.com
 podman build -t myapp:latest .
 
 # Build with specific format
-podman build --format docker -t myapp .
+podman build --format [docker](../docker/SKILL.md) -t myapp .
 
 # Multi-stage build
 podman build --target production -t myapp:prod .
@@ -342,7 +342,7 @@ podman build --target production -t myapp:prod .
 buildah from scratch
 buildah copy working-container ./app /app
 buildah config --entrypoint '["/app/main"]' working-container
-buildah commit working-container myapp:minimal
+buildah [commit](../../CI_CD/commit/SKILL.md) working-container myapp:minimal
 ```
 
 ## Common Issues
@@ -372,10 +372,10 @@ buildah commit working-container myapp:minimal
 - Configure SELinux labels for bind mounts
 - Enable user lingering for persistent services
 - Use podman auto-update for automatic updates
-- Alias `docker` to `podman` for compatibility
+- Alias `[docker](../docker/SKILL.md)` to `podman` for compatibility
 
 ## Related Skills
 
-- [docker-management](../docker-management/) - Docker fundamentals
-- [kubernetes-ops](../../orchestration/kubernetes-ops/) - K8s orchestration
-- [container-hardening](../../../security/hardening/container-hardening/) - Security
+- [docker-management](../[docker-management](../[docker](../docker/SKILL.md)-management/SKILL.md)/) - [Docker](../docker/SKILL.md) fundamentals
+- [kubernetes-ops](../../orchestration/[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s orchestration
+- [container-hardening](../../../security/hardening/[container-hardening](../container-hardening/SKILL.md)/) - Security

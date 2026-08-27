@@ -3,13 +3,13 @@ name: python-project-structure
 description: Python project organization, module architecture, and public API design. Use when setting up new projects, organizing modules, defining public interfaces with __all__, or planning directory layouts.
 ---
 
-# Python Project Structure & Module Architecture
+# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Project Structure & Module Architecture
 
-Design well-organized Python projects with clear module boundaries, explicit public interfaces, and maintainable directory structures. Good organization makes code discoverable and changes predictable.
+Design well-organized [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) projects with clear module boundaries, explicit public interfaces, and maintainable directory structures. Good organization makes code discoverable and changes predictable.
 
 ## When to Use This Skill
 
-- Starting a new Python project from scratch
+- Starting a new [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) project from scratch
 - Reorganizing an existing codebase for clarity
 - Defining module public APIs with `__all__`
 - Deciding between flat and nested directory structures
@@ -59,7 +59,7 @@ Each file should focus on a single concept or closely related set of functions. 
 - Grows beyond 300-500 lines (varies by complexity)
 - Contains classes that change for different reasons
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Good: Focused files
 # user_service.py - User business logic
 # user_repository.py - User data access
@@ -73,7 +73,7 @@ Each file should focus on a single concept or closely related set of functions. 
 
 Define the public interface for every module. Unlisted members are internal implementation details.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # mypackage/services/__init__.py
 from .user_service import UserService
 from .order_service import OrderService
@@ -152,7 +152,7 @@ Benefits: Clean separation between production and test code. Standard for larger
 
 Use `__init__.py` to provide a clean public interface for package consumers.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # mypackage/__init__.py
 """MyPackage - A library for doing useful things."""
 
@@ -173,7 +173,7 @@ __version__ = "1.0.0"
 
 Consumers can then import directly from the package:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from mypackage import MainClass, Settings
 ```
 
@@ -228,7 +228,7 @@ ecommerce/
 
 Use absolute imports for clarity and reliability:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Preferred: Absolute imports
 from myproject.services import UserService
 from myproject.models import User

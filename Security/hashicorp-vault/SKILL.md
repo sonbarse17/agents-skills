@@ -7,9 +7,9 @@ metadata:
   version: "1.0"
 ---
 
-# HashiCorp Vault
+# HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 
-Centrally manage secrets, encryption, and access with HashiCorp Vault.
+Centrally manage secrets, encryption, and access with HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
 
 ## When to Use This Skill
 
@@ -22,9 +22,9 @@ Use this skill when:
 
 ## Prerequisites
 
-- Vault server (dev or production)
-- Vault CLI installed
-- Network access to Vault
+- [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) server (dev or production)
+- [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) CLI installed
+- Network access to [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 
 ## Quick Start
 
@@ -32,14 +32,14 @@ Use this skill when:
 
 ```bash
 # Start dev server
-vault server -dev
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) server -dev
 
 # Set environment
 export VAULT_ADDR='http://127.0.0.1:8200'
 export VAULT_TOKEN='root'
 
 # Verify connection
-vault status
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) status
 ```
 
 ### Production Deployment
@@ -47,33 +47,33 @@ vault status
 ```hcl
 # config.hcl
 storage "raft" {
-  path = "/opt/vault/data"
-  node_id = "vault-1"
+  path = "/opt/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/data"
+  node_id = "[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1"
 }
 
 listener "tcp" {
   address = "0.0.0.0:8200"
-  tls_cert_file = "/opt/vault/tls/vault.crt"
-  tls_key_file = "/opt/vault/tls/vault.key"
+  tls_cert_file = "/opt/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/tls/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).crt"
+  tls_key_file = "/opt/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/tls/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).key"
 }
 
-api_addr = "https://vault.example.com:8200"
-cluster_addr = "https://vault.example.com:8201"
+api_addr = "https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.com:8200"
+cluster_addr = "https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.com:8201"
 
 ui = true
 ```
 
 ```bash
-# Initialize Vault
-vault operator init -key-shares=5 -key-threshold=3
+# Initialize [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator init -key-shares=5 -key-threshold=3
 
 # Unseal (run 3 times with different keys)
-vault operator unseal <key-1>
-vault operator unseal <key-2>
-vault operator unseal <key-3>
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-1>
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-2>
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-3>
 
 # Login
-vault login <root-token>
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) login <root-token>
 ```
 
 ## Secret Engines
@@ -82,72 +82,72 @@ vault login <root-token>
 
 ```bash
 # Enable KV v2
-vault secrets enable -path=secret kv-v2
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=secret kv-v2
 
 # Write secret
-vault kv put secret/myapp/config \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv put secret/myapp/config \
   username="admin" \
   password="s3cr3t"
 
 # Read secret
-vault kv get secret/myapp/config
-vault kv get -field=password secret/myapp/config
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv get secret/myapp/config
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv get -field=password secret/myapp/config
 
 # Update secret
-vault kv put secret/myapp/config \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv put secret/myapp/config \
   username="admin" \
   password="new-password"
 
 # List secrets
-vault kv list secret/
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv list secret/
 
 # Delete secret
-vault kv delete secret/myapp/config
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv delete secret/myapp/config
 
 # Version history
-vault kv metadata get secret/myapp/config
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv metadata get secret/myapp/config
 ```
 
 ### Database Secrets
 
 ```bash
 # Enable database engine
-vault secrets enable database
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable database
 
-# Configure PostgreSQL connection
-vault write database/config/postgresql \
-  plugin_name=postgresql-database-plugin \
-  connection_url="postgresql://{{username}}:{{password}}@localhost:5432/mydb" \
+# Configure [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) connection
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write database/config/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
+  plugin_name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-database-plugin \
+  connection_url="[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{{username}}:{{password}}@localhost:5432/mydb" \
   allowed_roles="readonly,readwrite" \
-  username="vault" \
-  password="vault-password"
+  username="[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)" \
+  password="[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-password"
 
 # Create role
-vault write database/roles/readonly \
-  db_name=postgresql \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write database/roles/readonly \
+  db_name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
   creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
     GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
   default_ttl="1h" \
   max_ttl="24h"
 
 # Get credentials
-vault read database/creds/readonly
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read database/creds/readonly
 ```
 
 ### AWS Secrets
 
 ```bash
 # Enable AWS engine
-vault secrets enable aws
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable aws
 
 # Configure root credentials
-vault write aws/config/root \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write aws/config/root \
   access_key=AKIA... \
   secret_key=secret... \
   region=us-east-1
 
 # Create role
-vault write aws/roles/deploy \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write aws/roles/deploy \
   credential_type=iam_user \
   policy_document=-<<EOF
 {
@@ -163,34 +163,34 @@ vault write aws/roles/deploy \
 EOF
 
 # Get credentials
-vault read aws/creds/deploy
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read aws/creds/deploy
 ```
 
 ### PKI Secrets
 
 ```bash
 # Enable PKI engine
-vault secrets enable pki
-vault secrets tune -max-lease-ttl=87600h pki
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable pki
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets tune -max-lease-ttl=87600h pki
 
 # Generate root CA
-vault write -field=certificate pki/root/generate/internal \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=certificate pki/root/generate/internal \
   common_name="example.com" \
   ttl=87600h > ca_cert.crt
 
 # Configure URLs
-vault write pki/config/urls \
-  issuing_certificates="https://vault.example.com:8200/v1/pki/ca" \
-  crl_distribution_points="https://vault.example.com:8200/v1/pki/crl"
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki/config/urls \
+  issuing_certificates="https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.com:8200/v1/pki/ca" \
+  crl_distribution_points="https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.com:8200/v1/pki/crl"
 
 # Create role
-vault write pki/roles/web-server \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki/roles/web-server \
   allowed_domains="example.com" \
   allow_subdomains=true \
   max_ttl="720h"
 
 # Issue certificate
-vault write pki/issue/web-server \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki/issue/web-server \
   common_name="web.example.com" \
   ttl="24h"
 ```
@@ -201,40 +201,40 @@ vault write pki/issue/web-server \
 
 ```bash
 # Enable AppRole
-vault auth enable approle
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) auth enable approle
 
 # Create role
-vault write auth/approle/role/myapp \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/approle/role/myapp \
   token_policies="myapp-policy" \
   token_ttl=1h \
   token_max_ttl=4h \
   secret_id_ttl=10m
 
 # Get role ID
-vault read auth/approle/role/myapp/role-id
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read auth/approle/role/myapp/role-id
 
 # Generate secret ID
-vault write -f auth/approle/role/myapp/secret-id
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -f auth/approle/role/myapp/secret-id
 
 # Login
-vault write auth/approle/login \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/approle/login \
   role_id=<role-id> \
   secret_id=<secret-id>
 ```
 
-### Kubernetes
+### [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```bash
-# Enable Kubernetes auth
-vault auth enable kubernetes
+# Enable [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) auth enable [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 
 # Configure
-vault write auth/kubernetes/config \
-  kubernetes_host="https://kubernetes.default.svc" \
-  kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/config \
+  kubernetes_host="https://[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc" \
+  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/ca.crt
 
 # Create role
-vault write auth/kubernetes/role/myapp \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/myapp \
   bound_service_account_names=myapp \
   bound_service_account_namespaces=default \
   policies=myapp-policy \
@@ -245,17 +245,17 @@ vault write auth/kubernetes/role/myapp \
 
 ```bash
 # Enable OIDC auth
-vault auth enable oidc
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) auth enable oidc
 
 # Configure
-vault write auth/oidc/config \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/oidc/config \
   oidc_discovery_url="https://accounts.google.com" \
   oidc_client_id="your-client-id" \
   oidc_client_secret="your-client-secret" \
   default_role="default"
 
 # Create role
-vault write auth/oidc/role/default \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/oidc/role/default \
   bound_audiences="your-client-id" \
   allowed_redirect_uris="http://localhost:8250/oidc/callback" \
   user_claim="sub" \
@@ -291,20 +291,20 @@ path "secret/data/other/*" {
 
 ```bash
 # Create policy
-vault policy write myapp myapp-policy.hcl
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write myapp myapp-policy.hcl
 
 # List policies
-vault policy list
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy list
 
 # Read policy
-vault policy read myapp
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy read myapp
 ```
 
 ## Application Integration
 
-### Python
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hvac
 
 # Initialize client
@@ -329,7 +329,7 @@ db_creds = client.secrets.database.generate_credentials(
 )
 ```
 
-### Kubernetes Sidecar
+### [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Sidecar
 
 ```yaml
 apiVersion: v1
@@ -337,10 +337,10 @@ kind: Pod
 metadata:
   name: myapp
   annotations:
-    vault.hashicorp.com/agent-inject: "true"
-    vault.hashicorp.com/role: "myapp"
-    vault.hashicorp.com/agent-inject-secret-config: "secret/data/myapp/config"
-    vault.hashicorp.com/agent-inject-template-config: |
+    [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject: "true"
+    [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/role: "myapp"
+    [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject-secret-config: "secret/data/myapp/config"
+    [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject-template-config: |
       {{- with secret "secret/data/myapp/config" -}}
       export DB_PASSWORD="{{ .Data.data.password }}"
       {{- end }}
@@ -349,13 +349,13 @@ spec:
   containers:
     - name: myapp
       image: myapp:latest
-      command: ["/bin/sh", "-c", "source /vault/secrets/config && ./start.sh"]
+      command: ["/bin/sh", "-c", "source /[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/secrets/config && ./start.sh"]
 ```
 
 ## Common Issues
 
-### Issue: Sealed Vault
-**Problem**: Vault is sealed after restart
+### Issue: Sealed [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+**Problem**: [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is sealed after restart
 **Solution**: Implement auto-unseal with cloud KMS or HSM
 
 ### Issue: Token Expired
@@ -370,7 +370,7 @@ spec:
 
 - Use short-lived tokens
 - Implement auto-unseal
-- Enable audit logging
+- Enable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Use namespaces for isolation
 - Rotate root tokens regularly
 - Implement least-privilege policies
@@ -379,6 +379,6 @@ spec:
 
 ## Related Skills
 
-- [aws-secrets-manager](../aws-secrets-manager/) - AWS native secrets
-- [sops-encryption](../sops-encryption/) - File encryption
-- [kubernetes-hardening](../../hardening/kubernetes-hardening/) - K8s security
+- [aws-secrets-manager](../[aws-secrets-manager](../../DevOps_and_Cloud/Cloud_Providers/aws-secrets-manager/SKILL.md)/) - AWS native secrets
+- [sops-encryption](../[sops-encryption](../../DevOps_and_Cloud/Containers_and_Orchestration/sops-encryption/SKILL.md)/) - File encryption
+- [kubernetes-hardening](../../hardening/[kubernetes-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-hardening/SKILL.md)/) - K8s security

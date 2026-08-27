@@ -93,5 +93,5 @@ When creating test plans, provide:
 4. Findings with severity (Critical/High/Medium/Low)
 5. Specific fix recommendations
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/test-master/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/quality/test-master/)
 

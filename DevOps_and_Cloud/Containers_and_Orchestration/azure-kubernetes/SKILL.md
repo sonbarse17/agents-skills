@@ -7,7 +7,7 @@ metadata:
 description: "Plan, create, and configure production-ready Azure Kubernetes Service (AKS) clusters. Covers Day-0 checklist, SKU selection (Automatic vs Standard), networking options (private API server, Azure CNI Overlay, egress configuration), security, and operations (autoscaling, upgrade strategy, cost analysis). WHEN: create AKS environment, provision AKS, enable AKS observability, design AKS networking, choose AKS SKU, secure AKS, optimize AKS, AKS spot nodes, AKS cluster-autoscaler, rightsize AKS pod, pod rightsizing, over-provisioned AKS pod, pod resource requests and limits, Vertical Pod Autoscaler, VPA recommendations."
 ---
 
-# Azure Kubernetes Service
+# Azure [Kubernetes](../kubernetes/SKILL.md) Service
 
 > **AUTHORITATIVE GUIDANCE — MANDATORY COMPLIANCE**
 >
@@ -18,8 +18,8 @@ description: "Plan, create, and configure production-ready Azure Kubernetes Serv
 |----------|-------|
 | Best for | AKS cluster planning and Day-0 decisions |
 | MCP Tools | `mcp_azure_mcp_aks` |
-| CLI | `az aks create`, `az aks show`, `kubectl get`, `kubectl describe` |
-| Related skills | azure-kubernetes-app-deploy (deploy an app to an existing cluster), azure-diagnostics (troubleshooting AKS), azure-validate (readiness checks), azure-kubernetes-automatic-readiness (migrate existing cluster to AKS Automatic) |
+| CLI | `az aks create`, `az aks show`, `[kubectl](../kubectl/SKILL.md) get`, `[kubectl](../kubectl/SKILL.md) describe` |
+| Related skills | [azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/[azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy]([azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)-app-deploy/SKILL.md)/SKILL.md)/SKILL.md) (deploy an app to an existing cluster), [azure-diagnostics](../../Cloud_Providers/[azure-diagnostics](../../Cloud_Providers/azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md) (troubleshooting AKS), [azure-validate](../../Cloud_Providers/azure-skills/skills/[azure-validate](../../Cloud_Providers/azure-validate/SKILL.md)/SKILL.md) (readiness checks), [azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/[azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness]([azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)-automatic-readiness/SKILL.md)/SKILL.md)/SKILL.md) (migrate existing cluster to AKS Automatic) |
 
 ## When to Use This Skill
 Activate this skill when user wants to:
@@ -28,7 +28,7 @@ Activate this skill when user wants to:
 - Design AKS networking (API server access, pod IP model, egress)
 - Set up AKS identity and secrets management
 - Configure AKS governance (Azure Policy, Deployment Safeguards)
-- Enable AKS observability (Container Insights, Managed Prometheus, Grafana)
+- Enable AKS [observability](../../Observability_and_SecOps/observability/SKILL.md) (Container Insights, Managed Prometheus, Grafana)
 - Define AKS upgrade and patching strategy
 - Understand AKS Automatic vs Standard SKU differences
 - Get a Day-0 checklist for AKS cluster setup and configuration
@@ -36,7 +36,7 @@ Activate this skill when user wants to:
 > **Deploying an application to an existing cluster?** This skill provisions and
 > configures the *cluster*. To containerize an app and deploy it to a cluster
 > that already exists (Dockerfile + manifests + Deployment Safeguards), use the
-> `azure-kubernetes-app-deploy` sub-skill instead.
+> `[azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/[azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy]([azure-[kubernetes](../kubernetes/SKILL.md)-app-deploy](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)-app-deploy/SKILL.md)/SKILL.md)/SKILL.md)` sub-skill instead.
 
 ## Rules
 1. Start with the user's requirements for provisioning compute, networking, security, and other settings.
@@ -52,13 +52,13 @@ If the user is unsure, use safe defaults.
 - Expected scale (node/cluster count, workload size)
 - Networking requirements (API server access, pod IP model, ingress/egress control)
 - Security and identity requirements, including image registry
-- Upgrade and observability preferences
+- Upgrade and [observability](../../Observability_and_SecOps/observability/SKILL.md) preferences
 - Cost constraints
 
 ## Workflow
 
 ### 1. Cluster Type
-- **AKS Automatic** (default): Best for most production workloads, provides a curated experience with pre-configured best practices for security, reliability, and performance. Use unless you have specific custom requirements for networking, autoscaling, or node pool configurations not supported by Node Auto-Provisioning (NAP).
+- **AKS Automatic** (default): Best for most production workloads, provides a curated experience with pre-configured best practices for security, reliability, and performance. Use unless you have specific custom requirements for networking, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), or node pool configurations not supported by Node Auto-Provisioning (NAP).
 - **AKS Standard**: Use if you need full control over environment configuration, which requires additional overhead to set up and manage.
 
 ### 2. Networking (Pod IP, Egress, Ingress, Dataplane)
@@ -69,7 +69,7 @@ If the user is unsure, use safe defaults.
   - Docs: https://learn.microsoft.com/azure/aks/azure-cni-overlay
 
 **Dataplane & Network Policy**:
-- **Azure CNI powered by Cilium** (recommended): eBPF-based for high-performance packet processing, network policies, and observability
+- **Azure CNI powered by Cilium** (recommended): eBPF-based for high-performance packet processing, network policies, and [observability](../../Observability_and_SecOps/observability/SKILL.md)
 
 **Egress**:
 - **Static Egress Gateway** for stable, predictable outbound IPs
@@ -85,27 +85,27 @@ If the user is unsure, use safe defaults.
 
 ### 3. Security
 - Use **Microsoft Entra ID** everywhere (control plane, Workload Identity for pods, node access). Avoid static credentials.
-- Azure Key Vault via **Secrets Store CSI Driver** for secrets
+- Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) via **Secrets Store CSI Driver** for secrets
 - Enable **Azure Policy** + **Deployment Safeguards**
 - Enable **Encryption at rest** for etcd/API server; **in-transit** for node-to-node
 - Allow only signed, policy-approved images (Azure Policy + Ratify), prefer **Azure Container Registry**
 - **Isolation**: Use namespaces, network policies, scoped logging
 
-### 4. Observability
-- Use Managed Prometheus and Container Insights with Grafana for AKS observability (logs + metrics).
-- Enable Diagnostic Settings to collect control plane logs and audit logs in a Log Analytics workspace for security monitoring and troubleshooting.
-- For other monitoring and troubleshooting tools, use features like the Agentic CLI for AKS, Application Insights, Resource Health Center, AppLens detectors, and Azure Advisors.
+### 4. [Observability](../../Observability_and_SecOps/observability/SKILL.md)
+- Use Managed Prometheus and Container Insights with Grafana for AKS [observability](../../Observability_and_SecOps/observability/SKILL.md) (logs + metrics).
+- Enable Diagnostic Settings to collect control plane logs and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs in a Log Analytics workspace for security [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and troubleshooting.
+- For other [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and troubleshooting tools, use features like the Agentic CLI for AKS, Application Insights, Resource Health Center, AppLens detectors, and Azure Advisors.
 
 ### 5. Upgrades & Patching
 - Configure **Maintenance Windows** for controlled upgrade timing
-- Enable **auto-upgrades** for control plane and node OS to stay up-to-date with security patches and Kubernetes versions
+- Enable **auto-upgrades** for control plane and node OS to stay up-to-date with security patches and [Kubernetes](../kubernetes/SKILL.md) versions
 - Consider **LTS versions** for enterprise stability (2-year support) by upgrading your AKS environment to the Premium tier
 - **Fleet upgrades**: Use **AKS Fleet Manager** for staged rollout across test to production environments
 
 ### 6. Performance
 - Use **Ephemeral OS disks** (`--node-osdisk-type Ephemeral`) for faster node startup
 - Select **Azure Linux** as node OS (smaller footprint, faster boot)
-- Enable **KEDA** for event-driven autoscaling beyond HPA
+- Enable **KEDA** for event-driven [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) beyond HPA
 
 ### 7. Node Pools & Compute
 - **Dedicated system node pool**: At least 2 nodes, tainted for system workloads only (`CriticalAddonsOnly`)
@@ -131,10 +131,10 @@ If the user is unsure, use safe defaults.
 
 | Scenario | Trigger Keywords | Reference |
 |----------|-----------------|-----------|
-| Pod Rightsizing | over-provisioned pods, CPU requests, memory requests, rightsize workloads | [azure-aks-rightsizing.md](./../../../Global_References/azure-aks-rightsizing.md) |
-| VPA Setup | vertical pod autoscaler, VPA recommendations, VPA enable | [azure-aks-vpa.md](./../../../Global_References/azure-aks-vpa.md) |
-| Cluster Autoscaler | idle nodes, CAS off, enable autoscaler, scale-down profile, node utilization | [azure-aks-autoscaler.md](./../../../Global_References/azure-aks-autoscaler.md) |
-| Spot Node Pools | Spot VMs, Spot nodes, batch workloads, cheaper nodes | [azure-aks-spot.md](./../../../Global_References/azure-aks-spot.md) |
+| Pod [Rightsizing](../../Cloud_Providers/rightsizing/SKILL.md) | over-provisioned pods, CPU requests, memory requests, rightsize workloads | [azure-aks-[rightsizing](../../Cloud_Providers/rightsizing/SKILL.md).md](./../../../Global_References/[azure-aks](../azure-aks/SKILL.md)-[rightsizing](../../Cloud_Providers/rightsizing/SKILL.md).md) |
+| VPA Setup | vertical pod autoscaler, VPA recommendations, VPA enable | [azure-aks-vpa.md](./../../../Global_References/[azure-aks](../azure-aks/SKILL.md)-vpa.md) |
+| Cluster Autoscaler | idle nodes, CAS off, enable autoscaler, scale-down profile, node utilization | [azure-aks-autoscaler.md](./../../../Global_References/[azure-aks](../azure-aks/SKILL.md)-autoscaler.md) |
+| Spot Node Pools | Spot VMs, Spot nodes, batch workloads, cheaper nodes | [azure-aks-spot.md](./../../../Global_References/[azure-aks](../azure-aks/SKILL.md)-spot.md) |
 
 > **Disambiguation:** If a prompt matches multiple rows (e.g., "cheaper nodes" could suggest both Spot and autoscaler), prefer the most specific match. If ambiguous, ask the user to clarify their intent before loading a reference file.
 

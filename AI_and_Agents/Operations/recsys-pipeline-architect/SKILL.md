@@ -5,7 +5,7 @@ description: Design composable recommendation, ranking, and feed pipelines using
 
 # Recsys Pipeline Architect
 
-A spec-and-scaffold skill for building composable recommendation, ranking, and feed pipelines. Encodes the six-stage pattern popularized by xAI's open-sourced [For You algorithm](https://github.com/xai-org/x-algorithm) (Apache 2.0) and applies it to any "top K for (user, context)" problem.
+A spec-and-scaffold skill for building composable recommendation, ranking, and feed pipelines. Encodes the six-stage pattern popularized by xAI's open-sourced [For You algorithm](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/xai-org/x-algorithm) (Apache 2.0) and applies it to any "top K for (user, context)" problem.
 
 ## Overview
 
@@ -82,7 +82,7 @@ Default to isolation. Joint only when there's a specific reason (e.g., explicit 
 ## Hard Rules
 
 1. **Do not invent benchmark numbers.** "How fast is this?" → "depends on workload, run it yourself."
-2. **Attribution discipline.** Attribute the pattern as "popularized by xAI's open-sourced For You algorithm" / `github.com/xai-org/x-algorithm` (Apache 2.0).
+2. **Attribution discipline.** Attribute the pattern as "popularized by xAI's open-sourced For You algorithm" / `[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/xai-org/x-algorithm` (Apache 2.0).
 3. **No trademark use.** Don't name the user's artifact "X-like" or use "For You" branding. Use neutral names: "candidate pipeline", "feed pipeline", "ranking pipeline".
 4. **Surface trade-offs.** Multi-action vs single, isolation vs joint, online vs offline — never default silently.
 5. **The generated scaffold must run.** No pseudocode passing as code.
@@ -99,11 +99,11 @@ Default to isolation. Joint only when there's a specific reason (e.g., explicit 
 
 ## Common Use Cases
 
-### Content feed (Strapi v5 plugin, TypeScript)
+### Content feed (Strapi v5 plugin, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
 
 User has a CMS with 50k articles, wants a personalized "for you" feed. Walk through 8 steps → generate a Strapi plugin scaffold with multi-action scoring, author diversity, standard filters, async side-effect lane.
 
-### RAG retrieval reranker (Python async)
+### RAG retrieval reranker ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) async)
 
 User's RAG returns top-50 chunks from a vector DB, wants to rerank with a more expensive scorer and return top-5. Single-source pipeline with a scorer chain (cheap retrieval + expensive rerank).
 
@@ -117,9 +117,9 @@ User wants a daily digest that picks the top 10 from the last 24h queue. Offline
 
 ## Upstream
 
-This skill is a single-file adapter for the upstream repository, which ships 5 load-on-demand reference docs and 3 runnable example scaffolds (Strapi v5 / Go / Python — every one green on its test suite, 9/9 tests total).
+This skill is a single-file adapter for the upstream repository, which ships 5 load-on-demand reference docs and 3 runnable example scaffolds (Strapi v5 / Go / [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) — every one green on its test suite, 9/9 tests total).
 
-- **Upstream:** https://github.com/mturac/recsys-pipeline-architect
+- **Upstream:** https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/mturac/recsys-pipeline-architect
 - **Release:** v0.1.0 (MIT)
-- **References:** interfaces in 4 languages (TS/Go/Python/Rust), multi-action scoring, candidate isolation, filter cookbook (12 patterns), scorer cookbook
+- **References:** interfaces in 4 languages (TS/Go/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Rust), multi-action scoring, candidate isolation, filter cookbook (12 patterns), scorer cookbook
 - **Cross-platform install:** `npx skills add mturac/recsys-pipeline-architect`

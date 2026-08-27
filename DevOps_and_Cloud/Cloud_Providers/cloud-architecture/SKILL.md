@@ -45,11 +45,11 @@ still true.
 
 ## 3. Make statelessness the default for compute
 
-Stateless compute can be killed, replaced, and scaled horizontally without a runbook. State that
+Stateless compute can be killed, replaced, and scaled horizontally without a [runbook](../../Observability_and_SecOps/runbook/SKILL.md). State that
 must survive a restart belongs in a database, object store, or managed cache — not on local disk,
-not in process memory. This single rule is what makes autoscaling, rolling deploys, and zone
-failover boring instead of terrifying. See `stateful-workloads` for the cases where state on the
-compute layer is genuinely unavoidable, and `caching-strategies` for keeping a fast local cache
+not in process memory. This single rule is what makes [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), rolling deploys, and zone
+failover boring instead of terrifying. See `[stateful-workloads](../../Containers_and_Orchestration/stateful-workloads/SKILL.md)` for the cases where state on the
+compute layer is genuinely unavoidable, and `[caching-strategies](../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md)` for keeping a fast local cache
 without making it a source of truth.
 
 **Done when:** killing any compute instance without warning loses no data and no in-flight
@@ -61,18 +61,18 @@ Every architectural choice — cross-AZ traffic, multi-region replication, a man
 per-request pricing — has a cost curve that is invisible until the bill arrives. Cross-zone and
 cross-region data transfer is usually the surprise line item, not compute. Estimate it from
 expected traffic, not from the diagram looking clean. For the ongoing discipline of catching cost
-drift, use `cost-optimization`; this step is about not committing to a shape that is expensive by
+drift, use `[cost-optimization](../cost-optimization/SKILL.md)`; this step is about not committing to a shape that is expensive by
 construction.
 
 **Done when:** the dominant cost drivers of the design are named and estimated, not just guessed.
 
 ## 5. Name the lock-in and decide if it's worth it
 
-A managed queue, a proprietary database API, a provider-specific serverless trigger — each buys
+A managed queue, a proprietary database API, a provider-specific [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) trigger — each buys
 convenience by binding you to one vendor's implementation. That is frequently a good trade: the
 switching cost you're avoiding by not building portability you'll never use is real. It is a bad
 trade only when you can't articulate why you took it. Do not build abstraction layers "just in
-case" — that is its own cost, covered in `multi-cloud`.
+case" — that is its own cost, covered in `[multi-cloud](../multi-cloud/SKILL.md)`.
 
 **Done when:** each vendor-specific dependency has a one-line justification, not just a shrug.
 
@@ -80,7 +80,7 @@ case" — that is its own cost, covered in `multi-cloud`.
 
 An architecture sized for one region and ten engineers does not automatically stay right at ten
 regions and two hundred engineers. Revisit the failure-domain diagram and the managed/self-run
-list on a cadence, not only after an incident forces it.
+list on a cadence, not only after an [incident](../../Observability_and_SecOps/incident/SKILL.md) forces it.
 
 **Done when:** the architecture diagram and its assumptions have an owner and a review date.
 

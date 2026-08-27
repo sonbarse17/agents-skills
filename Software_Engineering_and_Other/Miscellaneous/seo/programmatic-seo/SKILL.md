@@ -9,7 +9,7 @@ Focuses on generating pages from structured data sets using templates to target 
 
 ## Architecture
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Data Source CSV/DB/API] --> B[Data Transformation]

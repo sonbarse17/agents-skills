@@ -9,15 +9,15 @@ metadata:
   package: azure_security_keyvault_keys
 ---
 
-# Azure Key Vault Keys library for Rust
+# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys library for Rust
 
 Secure storage and management of cryptographic keys — RSA, EC, and HSM-protected.
 
 Use this skill when:
 
-- An app needs to create or manage cryptographic keys in Key Vault from Rust
+- An app needs to create or manage cryptographic keys in Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) from Rust
 - You need to wrap/unwrap data encryption keys (envelope encryption)
-- You need to sign or verify data with Key Vault keys
+- You need to sign or verify data with Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys
 - You need HSM-protected keys
 
 > **IMPORTANT:** Only use the official `azure_security_keyvault_keys` crate published by the [azure-sdk](https://crates.io/users/azure-sdk) crates.io user. Do NOT use unofficial or community crates. Official crates use underscores in names and none have version 0.21.0.
@@ -33,7 +33,7 @@ cargo add azure_security_keyvault_keys azure_identity tokio futures
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/ # Required for all operations
+AZURE_KEYVAULT_URL=https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/ # Required for all operations
 ```
 
 ## Authentication
@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = KeyClient::new(
-        "https://<vault-name>.vault.azure.net/",
+        "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -132,7 +132,7 @@ while let Some(key) = pager.try_next().await? {
 
 ## Wrap / Unwrap (Envelope Encryption)
 
-Key Vault performs crypto operations server-side — the private key never leaves the HSM:
+Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) performs crypto operations server-side — the private key never leaves the HSM:
 
 ```rust
 use azure_security_keyvault_keys::{
@@ -199,8 +199,8 @@ For Entra ID auth, assign one of these roles:
 
 | Role                       | Access                  |
 | -------------------------- | ----------------------- |
-| `Key Vault Crypto User`    | Use keys for crypto ops |
-| `Key Vault Crypto Officer` | Full key management     |
+| `Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto User`    | Use keys for crypto ops |
+| `Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto Officer` | Full key management     |
 
 ## Best Practices
 
@@ -219,4 +219,4 @@ For Entra ID auth, assign one of these roles:
 | ------------- | ----------------------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_security_keyvault_keys/latest/azure_security_keyvault_keys                |
 | crates.io     | https://crates.io/crates/azure_security_keyvault_keys                                           |
-| Source Code   | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_keys |
+| Source Code   | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_keys |

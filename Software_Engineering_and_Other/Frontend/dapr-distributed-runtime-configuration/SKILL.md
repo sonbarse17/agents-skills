@@ -24,14 +24,14 @@ Dapr (Distributed Application Runtime) runs as a **sidecar** alongside
 each service instance, exposing language-agnostic HTTP/gRPC APIs for
 building blocks like state management, publish/subscribe messaging, and
 service-to-service invocation — so a polyglot fleet of services (Go,
-Python, Java, Node) gets consistent, swappable infrastructure
+[Python](../../Languages/python/SKILL.md), Java, Node) gets consistent, swappable infrastructure
 integrations (Redis today, a different state store tomorrow) without
 each service embedding its own client library and retry logic per
 backend. The value is in the abstraction and the operational
 consistency it buys across languages; getting component scoping,
 resiliency policies, and sidecar resource sizing wrong undermines both.
 Validating these configurations before deploy is covered separately in
-[dapr-configuration-validation](../dapr-configuration-validation/SKILL.md).
+[dapr-configuration-validation](../[dapr-configuration-validation](../../../DevOps_and_Cloud/CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -42,15 +42,15 @@ Validating these configurations before deploy is covered separately in
 - Configuring retry, timeout, and circuit-breaker resiliency policies
   for a specific component or service.
 - Scoping which applications can access which Dapr components in a
-  shared Kubernetes namespace or cluster.
+  shared [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) namespace or cluster.
 - Deciding whether a given integration belongs in application code,
-  behind a Dapr building block, or as a native Kubernetes/cloud-provider
+  behind a Dapr building block, or as a native [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/cloud-provider
   integration instead.
 
 ## Prerequisites & environment
 
-- Dapr control plane installed on the target Kubernetes cluster (or
-  Dapr's self-hosted mode for local/non-Kubernetes development), with a
+- Dapr control plane installed on the target [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (or
+  Dapr's self-hosted mode for local/non-[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) development), with a
   version whose component API version (`v1alpha1`, `v1`) matches what's
   used in component manifests — component spec fields have changed
   across Dapr major versions, so check the installed `dapr --version`
@@ -58,8 +58,8 @@ Validating these configurations before deploy is covered separately in
   sidecar image is pulled/available in the cluster's container
   registry.
 - `dapr` CLI for local development/testing (`dapr run`) and
-  `kubectl` for inspecting sidecar injection and component status on
-  Kubernetes.
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` for inspecting sidecar injection and component status on
+  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
 - A backing service for each building block in use (Redis, Kafka,
   a cloud provider's managed queue/state store, etc.) already
   provisioned — Dapr components are configuration pointing at real
@@ -117,7 +117,7 @@ Validating these configurations before deploy is covered separately in
      - order-service
      - order-fulfillment-service
    ```
-   `spec.metadata[].secretKeyRef` pulls the password from a Kubernetes
+   `spec.metadata[].secretKeyRef` pulls the password from a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
    `Secret` rather than embedding it in the component manifest — never
    put a real credential value directly in `spec.metadata`.
    `scopes` restricts which `app-id`s may use this component at all;
@@ -170,8 +170,8 @@ Validating these configurations before deploy is covered separately in
    ```
    The call goes to the local sidecar (`localhost:3500` in this
    example's Dapr HTTP port), which resolves `order-fulfillment-service`
-   via the configured name resolution component (Kubernetes DNS
-   resolution is the default on Kubernetes) and forwards the request
+   via the configured name resolution component ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DNS
+   resolution is the default on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) and forwards the request
    over mTLS to that service's own sidecar.
 
 5. **Attach a resiliency policy scoped to specific components/apps**,
@@ -227,8 +227,8 @@ Validating these configurations before deploy is covered separately in
   actually need it — an unscoped component is reachable by any
   Dapr-enabled app in the namespace, which is rarely the intended
   blast radius for anything holding state or credentials.
-- Reference secrets via `secretKeyRef` (backed by Kubernetes Secrets or
-  a dedicated Dapr secret store component such as Vault) in every
+- Reference secrets via `secretKeyRef` (backed by [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secrets or
+  a dedicated Dapr secret store component such as [Vault](../../Miscellaneous/vault/SKILL.md)) in every
   component manifest — never inline a credential value directly under
   `spec.metadata`.
 - Attach resiliency policies per component/app pairing based on that
@@ -241,8 +241,8 @@ Validating these configurations before deploy is covered separately in
   latency contribution, not just the application container's — a
   starved sidecar adds latency to every building-block call the
   application makes.
-- Use a dedicated Dapr secret store component (Vault, cloud KMS-backed
-  secret managers) rather than Kubernetes Secrets alone when the
+- Use a dedicated Dapr secret store component ([Vault](../../Miscellaneous/vault/SKILL.md), cloud KMS-backed
+  secret managers) rather than [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secrets alone when the
   organization already has a centralized secrets management standard
   elsewhere.
 
@@ -258,7 +258,7 @@ Validating these configurations before deploy is covered separately in
 - **Symptom:** A component manifest committed to source control
   contains a plaintext database password or broker credential.
   **Fix:** Replace the inline `value` field with `secretKeyRef` pointing
-  at a Kubernetes `Secret` (or a Dapr secret store component), remove
+  at a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `Secret` (or a Dapr secret store component), remove
   the plaintext value from git history, and rotate the exposed
   credential.
 
@@ -383,6 +383,6 @@ downstream that isn't responding.
 
 ## Cross-references
 
-- [dapr-configuration-validation](../dapr-configuration-validation/SKILL.md) — pre-deploy validation for the component scoping, secret references, and resiliency policies shown here.
-- [knative-eventing-configuration](../knative-eventing-configuration/SKILL.md) — Knative's Broker/Trigger model as an alternative event-routing approach to Dapr's pub/sub building block.
-- [azure-functions-configuration](../azure-functions-configuration/SKILL.md) — Azure Functions' Dapr extension lets triggers/bindings target these same Dapr building blocks from a FaaS platform instead of a long-running sidecar-attached service.
+- [dapr-configuration-validation](../[dapr-configuration-validation](../../../DevOps_and_Cloud/CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md) — pre-deploy validation for the component scoping, secret references, and resiliency policies shown here.
+- [knative-eventing-configuration](../[knative-eventing-configuration](../../../DevOps_and_Cloud/Cloud_Providers/knative-eventing-configuration/SKILL.md)/SKILL.md) — Knative's Broker/Trigger model as an alternative event-routing approach to Dapr's pub/sub building block.
+- [azure-functions-configuration](../[azure-functions-configuration](../../../DevOps_and_Cloud/Cloud_Providers/[azure-functions](../../../DevOps_and_Cloud/Cloud_Providers/azure-functions/SKILL.md)-configuration/SKILL.md)/SKILL.md) — Azure Functions' Dapr extension lets triggers/bindings target these same Dapr building blocks from a FaaS platform instead of a long-running sidecar-attached service.

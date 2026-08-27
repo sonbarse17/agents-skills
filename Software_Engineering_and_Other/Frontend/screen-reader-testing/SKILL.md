@@ -25,7 +25,7 @@ Practical guide to testing web applications with screen readers for comprehensiv
 | **VoiceOver** | macOS/iOS | Safari         | ~15%  |
 | **NVDA**      | Windows   | Firefox/Chrome | ~31%  |
 | **JAWS**      | Windows   | Chrome/IE      | ~40%  |
-| **TalkBack**  | Android   | Chrome         | ~10%  |
+| **TalkBack**  | [Android](../../../Mobile/android/SKILL.md)   | Chrome         | ~10%  |
 | **Narrator**  | Windows   | Edge           | ~4%   |
 
 ### 2. Testing Priority
@@ -38,7 +38,7 @@ Minimum Coverage:
 
 Comprehensive Coverage:
 + JAWS + Chrome (Windows)
-+ TalkBack + Chrome (Android)
++ TalkBack + Chrome ([Android](../../../Mobile/android/SKILL.md))
 + Narrator + Edge (Windows)
 ```
 
@@ -323,7 +323,7 @@ Tables:
 Ctrl + Alt + Arrows Table navigation
 ```
 
-## TalkBack (Android)
+## TalkBack ([Android](../../../Mobile/android/SKILL.md))
 
 ### Setup
 

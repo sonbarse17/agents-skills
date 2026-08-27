@@ -33,7 +33,7 @@ Implement comprehensive backup and recovery strategies using rsync, Restic, and 
 
 - **3** copies of your data (1 primary + 2 backups)
 - **2** different storage media or types (e.g., local disk + cloud)
-- **1** copy offsite (cloud storage, remote datacenter)
+- **1** copy offsite (cloud storage, remote [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md))
 
 ## rsync Backups
 
@@ -97,7 +97,7 @@ apt install -y restic
 dnf install -y restic
 
 # Or download the latest binary
-curl -L https://github.com/restic/restic/releases/latest/download/restic_0.17.3_linux_amd64.bz2 \
+curl -L https://[github](../../CI_CD/github/SKILL.md).com/restic/restic/releases/latest/download/restic_0.17.3_linux_amd64.bz2 \
   | bunzip2 > /usr/local/bin/restic
 chmod +x /usr/local/bin/restic
 
@@ -142,7 +142,7 @@ chmod 600 /etc/restic/password.txt
 restic backup /data --repo /backup/restic-repo --password-file /etc/restic/password.txt
 
 # Backup multiple directories
-restic backup /data /etc /var/lib/postgresql \
+restic backup /data /etc /var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
@@ -263,7 +263,7 @@ LOG="/var/log/restic-backup.log"
 
 echo "$(date): Starting backup" >> "$LOG"
 
-restic backup /data /etc /var/lib/postgresql \
+restic backup /data /etc /var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
   --exclude-file=/etc/restic/excludes.txt \
   --tag "$(hostname)" --tag daily \
   --verbose >> "$LOG" 2>&1
@@ -330,20 +330,20 @@ journalctl -u restic-backup.service -f
 ## Database Backups with Restic
 
 ```bash
-# PostgreSQL: stream dump directly into restic (no temp file)
+# [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): stream dump directly into restic (no temp file)
 pg_dump -U postgres -Fc mydb | restic backup --stdin --stdin-filename mydb.dump \
   --tag postgres --tag mydb \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
-# MySQL / MariaDB: stream dump into restic
+# [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) / MariaDB: stream dump into restic
 mysqldump --all-databases --single-transaction | \
   restic backup --stdin --stdin-filename all-databases.sql \
-  --tag mysql \
+  --tag [mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
-# Restore PostgreSQL from restic
+# Restore [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) from restic
 restic dump latest mydb.dump \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt \
@@ -365,8 +365,8 @@ restic dump latest mydb.dump \
 
 ## Related Skills
 
-- `linux-administration` -- Server maintenance and log management
-- `systemd-services` -- Scheduling backups with systemd timers
-- `object-storage` -- S3 and MinIO as backup destinations
-- `block-storage` -- LVM snapshots for consistent backups
-- `nfs-storage` -- Backing up NFS-shared data
+- `[linux-administration](../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server maintenance and log management
+- `[systemd-services](../../../Software_Engineering_and_Other/Miscellaneous/systemd-services/SKILL.md)` -- Scheduling backups with systemd timers
+- `[object-storage](../object-storage/SKILL.md)` -- S3 and MinIO as backup destinations
+- `[block-storage](../block-storage/SKILL.md)` -- LVM snapshots for consistent backups
+- `[nfs-storage](../nfs-storage/SKILL.md)` -- Backing up NFS-shared data

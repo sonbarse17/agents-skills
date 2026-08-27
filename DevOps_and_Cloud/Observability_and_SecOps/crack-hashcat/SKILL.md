@@ -300,7 +300,7 @@ hashcat -m 0 hashes.txt --left
 - **Temperature**: Ensure adequate cooling for extended GPU usage
 - **Power**: Use surge protection for hardware safety
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all password cracking activities:
 - Hash source and acquisition method
@@ -322,7 +322,7 @@ Document all password cracking activities:
 
 ## Common Patterns
 
-### Pattern 1: Windows Domain Password Audit
+### Pattern 1: Windows Domain Password [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
 # Extract NTLM hashes from NTDS.dit
@@ -335,7 +335,7 @@ hashcat -m 1000 -a 0 ad_hashes.txt rockyou.txt -r rules/best64.rule
 hashcat -m 1000 ad_hashes.txt --show | grep -i "domain admins"
 ```
 
-### Pattern 2: Linux Password Audit
+### Pattern 2: Linux Password [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
 # Extract hashes from /etc/shadow
@@ -410,14 +410,14 @@ grep -E "^password|123456|qwerty" "$CRACKED_FILE" | wc -l
 ### Reporting
 
 ```bash
-# Generate password audit report
+# Generate password [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) report
 cat > audit_report.sh <<'EOF'
 #!/bin/bash
 TOTAL=$(wc -l < hashes.txt)
 CRACKED=$(hashcat -m 1000 hashes.txt --show | wc -l)
 PERCENT=$((CRACKED * 100 / TOTAL))
 
-echo "Password Audit Report"
+echo "Password [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Report"
 echo "===================="
 echo "Total Hashes: $TOTAL"
 echo "Cracked: $CRACKED"

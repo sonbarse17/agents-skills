@@ -8,9 +8,9 @@ metadata:
 ---
 
 
-# Azure Quotas - Service Limits & Capacity Management
+# Azure Quotas - Service Limits & [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Management
 
-> **AUTHORITATIVE GUIDANCE** — Follow these instructions exactly for quota management and capacity validation.
+> **AUTHORITATIVE GUIDANCE** — Follow these instructions exactly for quota management and [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) validation.
 
 ## Overview
 
@@ -19,7 +19,7 @@ metadata:
 Azure quotas (also called service limits) are the maximum number of resources you can deploy in a subscription. Quotas:
 - Prevent accidental over-provisioning
 - Ensure fair resource distribution across Azure
-- Represent **available capacity** in each region
+- Represent **available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** in each region
 - Can be increased (adjustable quotas) or are fixed (non-adjustable)
 
 **Key Concept:** **Quotas = Resource Availability**
@@ -30,11 +30,11 @@ If you don't have quota, you cannot deploy resources. Always check quotas when p
 
 Invoke this skill when:
 
-- **Planning a new deployment** - Validate capacity before deployment
+- **Planning a new deployment** - Validate [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) before deployment
 - **Selecting an Azure region** - Compare quota availability across regions
 - **Troubleshooting quota exceeded errors** - Check current usage vs limits
 - **Requesting quota increases** - Submit increase requests via CLI or Portal
-- **Comparing regional capacity** - Find regions with available quota
+- **Comparing regional [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** - Find regions with available quota
 - **Validating provisioning limits** - Ensure deployment won't exceed quotas
 
 ## Quick Reference
@@ -52,7 +52,7 @@ Invoke this skill when:
 
 > **⚠️ ALWAYS USE CLI FIRST**
 >
-> REST API and Portal can show misleading "No Limit" values — this does **not** mean unlimited capacity. It means the quota API doesn't support that resource type. Always start with `az quota` commands; fall back to [Azure service limits docs](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) if CLI returns `BadRequest`.
+> REST API and Portal can show misleading "No Limit" values — this does **not** mean unlimited [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). It means the quota API doesn't support that resource type. Always start with `az quota` commands; fall back to [Azure service limits docs](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) if CLI returns `BadRequest`.
 >
 > For complete CLI reference, see [commands.md](./../../../../../Global_References/commands.md).
 
@@ -98,11 +98,11 @@ Invoke this skill when:
 
 ## Scripts
 
-Pre-built scripts handle quota extension installation, usage queries, and capacity calculation. Use these instead of constructing commands manually. A single call returns limits, usage, and available capacity.
+Pre-built scripts handle quota extension installation, usage queries, and [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) calculation. Use these instead of constructing commands manually. A single call returns limits, usage, and available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `scripts/check-quota.ps1` | Returns limit, usage, and available capacity for all quotas (or a single quota when resource name is provided) | Primary script for quota checks |
+| `scripts/check-quota.ps1` | Returns limit, usage, and available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for all quotas (or a single quota when resource name is provided) | Primary script for quota checks |
 | `scripts/check-quota.sh` | Same as above (bash) | Primary script for quota checks |
 
 ## Core Workflows
@@ -111,7 +111,7 @@ Pre-built scripts handle quota extension installation, usage queries, and capaci
 
 **Scenario:** Verify quota limits and current usage before deployment
 
-Run the script with the resource provider and region. It returns a table of **all** quotas with their limit, current usage, and available capacity in a single call:
+Run the script with the resource provider and region. It returns a table of **all** quotas with their limit, current usage, and available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) in a single call:
 
 ```powershell
 .\scripts\check-quota.ps1 -ResourceProvider <provider> -Region <region>
@@ -148,7 +148,7 @@ To check a single resource, add the resource name:
 
 ### Workflow 2: Compare Quotas Across Regions
 
-**Scenario:** Find the best region for deployment based on available capacity
+**Scenario:** Find the best region for deployment based on available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ```bash
 # Define candidate regions
@@ -270,7 +270,7 @@ az quota list \
 
 1. ✅ **Always check quotas before deployment** - Prevent quota exceeded errors
 2. ✅ **Run `az quota list` first** - Discover correct quota resource names
-3. ✅ **Compare regions** - Find regions with available capacity
+3. ✅ **Compare regions** - Find regions with available [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 4. ✅ **Account for growth** - Request 20% buffer above immediate needs
 5. ✅ **Use table output for overview** - `--output table` for quick scanning
 6. ✅ **Monitor usage trends** - Set up alerts at 80% threshold (via Portal)

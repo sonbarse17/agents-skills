@@ -7,7 +7,7 @@ license: MIT
 # Artifact Management
 
 An artifact is the one thing that should never be ambiguous in a delivery pipeline: given a
-version or digest, everyone — CI, CD, an engineer debugging an incident six months later — should
+version or digest, everyone — CI, CD, an engineer debugging an [incident](../../Observability_and_SecOps/incident/SKILL.md) six months later — should
 be able to retrieve the exact same bytes. The moment an artifact can be overwritten, rebuilt with
 a different result, or referenced by a mutable tag like `latest`, every downstream promise (this
 is what passed CI, this is what's in staging, this is what's in prod) becomes unverifiable.
@@ -55,18 +55,18 @@ never by a mutable tag.
 
 ## 3. Attach provenance so "what's in this artifact" is answerable without archaeology
 
-An artifact without metadata about its source commit, build pipeline run, and dependency versions
+An artifact without metadata about its source [commit](../commit/SKILL.md), build pipeline run, and dependency versions
 is a black box the moment something goes wrong with it — you're left guessing what code actually
-produced it. Attach provenance at build time: source commit SHA, build pipeline/job ID,
+produced it. Attach provenance at build time: source [commit](../commit/SKILL.md) SHA, build pipeline/job ID,
 dependency lockfile hash, and ideally a signed attestation (SLSA-style) that the artifact came
-from the pipeline it claims to. This is what makes an incident retro or a security review
+from the pipeline it claims to. This is what makes an [incident](../../Observability_and_SecOps/incident/SKILL.md) retro or a security review
 tractable instead of a forensic exercise.
 
-- **Source commit** the build was cut from.
+- **Source [commit](../commit/SKILL.md)** the build was cut from.
 - **Build pipeline run ID** for tracing back to logs and inputs.
 - **Dependency manifest hash** for answering "was this affected by CVE-X" without a rebuild.
 
-**Done when:** given only an artifact's digest, you can trace it back to the exact commit and
+**Done when:** given only an artifact's digest, you can trace it back to the exact [commit](../commit/SKILL.md) and
 pipeline run that produced it.
 
 ## 4. Set retention policy before storage costs force a bad one
@@ -89,11 +89,11 @@ when storage alerts fire.
 ## 5. Scope registry access by least privilege, per environment
 
 A registry where any CI job can push directly to the tag that production pulls is one compromised
-pipeline away from a supply-chain incident. Separate write access (only the build pipeline can
+pipeline away from a supply-chain [incident](../../Observability_and_SecOps/incident/SKILL.md). Separate write access (only the build pipeline can
 push new artifacts) from promotion access (only the deploy pipeline, gated appropriately, can
 move a digest into a production-referenced state) from read access (runtime pulls should be
-read-only). This is a narrower, artifact-specific instance of the concerns in `pipeline-security`
-and `supply-chain-security` — worth restating here because registry permissions are so often left
+read-only). This is a narrower, artifact-specific instance of the concerns in `[pipeline-security](../pipeline-security/SKILL.md)`
+and `[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)` — worth restating here because registry permissions are so often left
 at their overly permissive defaults.
 
 **Done when:** no single compromised credential can both push a new artifact and cause it to be

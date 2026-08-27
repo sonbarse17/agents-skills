@@ -8,20 +8,20 @@ license: MIT
 
 Continuous delivery means every merged change is, by default, in a shippable state — a human
 decision (or, in continuous deployment, no decision at all) is the only thing standing between a
-commit and production. The discipline this demands is upstream of the deploy pipeline itself: if
+[commit](../commit/SKILL.md) and production. The discipline this demands is upstream of the deploy pipeline itself: if
 main isn't always releasable, "delivery" is a lie and someone will eventually hit "deploy" on a
 broken build.
 
 Most teams' real bottleneck isn't the deploy mechanics, it's the courage to trust that main is
 always good enough to ship.
 
-**Every commit on the default branch should be deployable at any moment — if it isn't, that's a
+**Every [commit](../commit/SKILL.md) on the default branch should be deployable at any moment — if it isn't, that's a
 defect in the pipeline, not a reason to slow down releases.**
 
 ## 1. Make "always releasable" a property of main, not a hope
 
 This means trunk-based development or short-lived branches, feature flags for incomplete work
-instead of long-lived feature branches (see `feature-flags`), and a CI signal from `ci-pipelines`
+instead of long-lived feature branches (see `[feature-flags](../feature-flags/SKILL.md)`), and a CI signal from `[ci-pipelines](../ci-pipelines/SKILL.md)`
 that's trusted enough that green means go. If merging to main regularly breaks things, the fix is
 smaller PRs and better CI coverage, not a slower delivery cadence — slowing down delivery treats
 the symptom and lets the branch rot further between merges.
@@ -31,7 +31,7 @@ the symptom and lets the branch rot further between merges.
 - **Incomplete features ship dark** behind a flag rather than living on a branch for weeks.
 - **A red main is a stop-the-line event**, fixed or reverted before other work continues.
 
-**Done when:** any commit on main can be deployed to production without someone first checking
+**Done when:** any [commit](../commit/SKILL.md) on main can be deployed to production without someone first checking
 "is this actually safe."
 
 ## 2. Automate promotion through environments, gate deliberately
@@ -54,7 +54,7 @@ false confidence that a human is actually checking.
   run: deploy.sh --env prod --artifact $ARTIFACT_DIGEST
 ```
 
-**Done when:** every gate between commit and production is either an automated check with a
+**Done when:** every gate between [commit](../commit/SKILL.md) and production is either an automated check with a
 defined pass/fail, or a named human role with real authority to say no.
 
 ## 3. Deploy on merge, decouple release from deploy
@@ -64,7 +64,7 @@ automatically — the two are not the same and conflating them causes needless f
 every merge to production instantly while still controlling *release* with a feature flag, so the
 code being live and the feature being visible to users are separate decisions. This is what makes
 "deploy on every merge" safe even for risky features: the deploy is reversible instantly (flag
-off) without a rollback. See `feature-flags` for the mechanics.
+off) without a rollback. See `[feature-flags](../feature-flags/SKILL.md)` for the mechanics.
 
 - **Deploy** = new code is running in production.
 - **Release** = users can reach the new behavior.
@@ -76,9 +76,9 @@ what gates the release.
 ## 4. Keep the pipeline itself boring and idempotent
 
 A deploy pipeline that behaves differently on retry, or that can't be re-run safely after a
-partial failure, turns every incident into a pipeline debugging session on top of the actual
+partial failure, turns every [incident](../../Observability_and_SecOps/incident/SKILL.md) into a pipeline debugging session on top of the actual
 outage. Deploys should be idempotent (running the same deploy twice produces the same end state)
-and the pipeline should be the *only* way production changes — no manual kubectl apply or console
+and the pipeline should be the *only* way production changes — no manual [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply or console
 click that the pipeline doesn't know about, or your "always releasable main" claim stops being
 true the moment someone bypasses it.
 
@@ -87,7 +87,7 @@ unintended side effects.
 
 ## 5. Instrument the pipeline itself, not just the app
 
-Lead time (commit to production) and deploy frequency are the two numbers that tell you whether
+Lead time ([commit](../commit/SKILL.md) to production) and deploy frequency are the two numbers that tell you whether
 delivery is actually continuous or just automated-but-rare. If a team ships once a week despite
 having a fully automated pipeline, the bottleneck is process (approval queues, batching releases)
 not tooling, and no amount of pipeline engineering fixes that. Track these numbers over time —

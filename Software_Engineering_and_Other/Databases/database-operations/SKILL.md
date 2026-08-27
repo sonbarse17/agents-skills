@@ -50,7 +50,7 @@ but only if you use the online variant and avoid the naive one.
   production-sized copy first so lock duration and table rewrite time are known quantities.
 
 For the full multi-phase pattern of changing a schema without downtime, including backfills
-and dual-writes, see `data-migration` — this section is about the mechanics of one statement,
+and dual-writes, see `[data-migration](../../../Data_Engineering/data-migration/SKILL.md)` — this section is about the mechanics of one statement,
 not the sequencing of a whole change.
 
 **Done when:** the migration's lock behavior has been verified on a realistic data volume
@@ -62,7 +62,7 @@ A replica that only exists for failover is doing half its job. Routing read-heav
 replicas takes load off the primary, but it only works if the application tolerates the
 replication lag that comes with it.
 
-- **Route reads that can tolerate slight staleness to replicas** — dashboards, reports, list
+- **Route reads that can tolerate slight staleness to replicas** — [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), reports, list
   views — and keep reads that must be immediately consistent on the primary.
 - **Monitor replication lag as a first-class metric**, since an application silently reading
   stale data after a write is a correctness bug, not a performance quirk.
@@ -90,7 +90,7 @@ the last quarter.
 
 ## 5. Watch leading indicators, not just uptime
 
-By the time a database is down, it is too late to prevent the incident — the useful signals
+By the time a database is down, it is too late to prevent the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — the useful signals
 are the ones that predict trouble minutes or hours ahead.
 
 - **Long-running and idle-in-transaction sessions** hold locks and block vacuum/cleanup work;
@@ -102,17 +102,17 @@ are the ones that predict trouble minutes or hours ahead.
 **Done when:** an alert exists for at least long-running transactions, lock contention, and
 disk growth rate — not only for the database being unreachable.
 
-## 6. Give every database a named owner and a runbook
+## 6. Give every database a named owner and a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 
 A database with no owner accumulates configuration drift and unreviewed changes until someone
-has to reverse-engineer it during an incident. Ownership is what makes the previous five
+has to reverse-engineer it during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Ownership is what makes the previous five
 sections actually happen instead of staying aspirational.
 
-- **Name a team or person responsible** for capacity, upgrades, and drills for each database.
+- **Name a team or person responsible** for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), upgrades, and drills for each database.
 - **Write down the connection topology, failover procedure, and backup schedule** somewhere
   the on-call engineer can find at 3am without asking anyone.
 
-**Done when:** every production database has a named owner and a runbook that a different
+**Done when:** every production database has a named owner and a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) that a different
 engineer could follow unassisted.
 
 ## Report
@@ -120,5 +120,5 @@ engineer could follow unassisted.
 State the connection pool budget and current headroom, the replication topology and its
 measured lag, and the date of the last failover drill. Name the honest gap — usually a
 failover procedure that has never been tested end to end, or an owner that exists on paper but
-has not touched the database's runbook in months — rather than presenting the setup as
+has not touched the database's [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) in months — rather than presenting the setup as
 fully rehearsed.

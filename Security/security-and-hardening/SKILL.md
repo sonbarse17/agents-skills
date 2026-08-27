@@ -30,7 +30,7 @@ Controls bolted on without a threat model are guesses. Before hardening, spend f
 |---|---|---|
 | **S**poofing | Can someone impersonate a user/service? | Authentication, signature verification |
 | **T**ampering | Can data be altered in transit or at rest? | Integrity checks, parameterized queries, HTTPS |
-| **R**epudiation | Can an action be denied later? | Audit logging of security events |
+| **R**epudiation | Can an action be denied later? | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging of security events |
 | **I**nformation disclosure | Can data leak? | Encryption, field allowlists, generic errors |
 | **D**enial of service | Can it be overwhelmed? | Rate limiting, input size caps, timeouts |
 | **E**levation of privilege | Can a user gain rights they shouldn't? | Authorization checks, least privilege |
@@ -50,7 +50,7 @@ If you can't name the trust boundaries for a feature, you're not ready to secure
 - **Hash passwords** with bcrypt/scrypt/argon2 (never store plaintext)
 - **Set security headers** (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
 - **Use httpOnly, secure, sameSite cookies** for sessions
-- **Run the detected package manager's native audit** against the committed lockfile before every release
+- **Run the detected package manager's native [audit](../../AI_and_Agents/Operations/audit/SKILL.md)** against the committed lockfile before every release
 
 ### Ask First (Requires Human Approval)
 
@@ -64,7 +64,7 @@ If you can't name the trust boundaries for a feature, you're not ready to secure
 
 ### Never Do
 
-- **Never commit secrets** to version control (API keys, passwords, tokens)
+- **Never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets** to version control (API keys, passwords, tokens)
 - **Never log sensitive data** (passwords, tokens, full credit card numbers)
 - **Never trust client-side validation** as a security boundary
 - **Never disable security headers** for convenience
@@ -78,7 +78,7 @@ These are prevention patterns, not a ranking. For the 2021 ordering, see the qui
 
 ### Injection (SQL, NoSQL, OS Command)
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD: SQL injection via string concatenation
 const query = `SELECT * FROM users WHERE id = '${userId}'`;
 
@@ -91,7 +91,7 @@ const user = await prisma.user.findUnique({ where: { id: userId } });
 
 ### Broken Authentication
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Password hashing
 import { hash, compare } from 'bcrypt';
 
@@ -115,7 +115,7 @@ app.use(session({
 
 ### Cross-Site Scripting (XSS)
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD: Rendering user input as HTML
 element.innerHTML = userInput;
 
@@ -129,7 +129,7 @@ const clean = DOMPurify.sanitize(userInput);
 
 ### Broken Access Control
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Always check authorization, not just authentication
 app.patch('/api/tasks/:id', authenticate, async (req, res) => {
   const task = await taskService.findById(req.params.id);
@@ -149,7 +149,7 @@ app.patch('/api/tasks/:id', authenticate, async (req, res) => {
 
 ### Security Misconfiguration
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Security headers (use helmet for Express)
 import helmet from 'helmet';
 app.use(helmet());
@@ -174,7 +174,7 @@ app.use(cors({
 
 ### Sensitive Data Exposure
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Never return sensitive fields in API responses
 function sanitizeUser(user: UserRecord): PublicUser {
   const { passwordHash, resetToken, ...publicFields } = user;
@@ -190,7 +190,7 @@ if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');
 
 Any time the server fetches a URL the user influenced — webhooks, "import from URL", image proxies, link previews — an attacker can aim it at internal services (cloud metadata, `localhost`, private IPs).
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD: fetch whatever the user gives you
 await fetch(req.body.webhookUrl);
 
@@ -223,7 +223,7 @@ The `range() !== 'unicast'` check covers loopback, link-local `169.254.169.254` 
 
 ### Schema Validation at Boundaries
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { z } from 'zod';
 
 const CreateTaskSchema = z.object({
@@ -253,7 +253,7 @@ app.post('/api/tasks', async (req, res) => {
 
 ### File Upload Safety
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Restrict file types and sizes
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
@@ -269,12 +269,12 @@ function validateUpload(file: UploadedFile) {
 }
 ```
 
-## Triaging Dependency Audit Results
+## Triaging Dependency [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Results
 
 Package-manager audits report known advisories; they do not prove a package is trustworthy or that vulnerable code is reachable. Use this decision tree:
 
 ```
-The native package-manager audit reports a vulnerability
+The native package-manager [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reports a vulnerability
 ├── Severity: critical or high
 │   ├── Is the vulnerable code reachable in runtime, build, test, or deployment paths?
 │   │   ├── YES --> Fix immediately (update, patch, or replace the dependency)
@@ -301,17 +301,17 @@ When you defer a fix, document the reason and set a review date.
 Do not assume npm or treat the nearest manifest as the install root. Apply this order:
 
 1. **Find the installation boundary and manager.** Use the workspace root that owns the lockfile, or an independent nested project only when it is outside that workspace. There, corroborate `packageManager` (when present), the lockfile, and CI; stop on disagreement or competing lockfiles. Pin the manager version and use the matrix in `../../references/security-checklist.md`.
-2. **Block dependency scripts before first execution.** Bootstrap with scripts disabled or a documented fail-closed policy, inspect the pending script source, approve only the minimum required packages, commit the policy, then verify with a clean frozen/immutable install. Never blanket-approve scripts.
+2. **Block dependency scripts before first execution.** Bootstrap with scripts disabled or a documented fail-closed policy, inspect the pending script source, approve only the minimum required packages, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the policy, then verify with a clean frozen/immutable install. Never blanket-approve scripts.
 
 Audits only find known advisories; they do not catch a newly malicious or typosquatted package. Therefore:
 
-- **Never apply forced audit remediation automatically** (`npm audit fix --force` or equivalent). Preview the remediation, read changelogs, and test each resulting upgrade; forced fixes may cross declared dependency ranges.
-- **Verify registry signatures and provenance where supported** (`npm audit signatures`, `pnpm audit signatures`) and treat absence as a signal to investigate, not automatic proof of compromise.
+- **Never apply forced [audit](../../AI_and_Agents/Operations/audit/SKILL.md) remediation automatically** (`npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) fix --force` or equivalent). Preview the remediation, read changelogs, and test each resulting upgrade; forced fixes may cross declared dependency ranges.
+- **Verify registry signatures and provenance where supported** (`npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) signatures`, `pnpm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) signatures`) and treat absence as a signal to investigate, not automatic proof of compromise.
 - **Review new dependencies, lockfile diffs, and script-policy changes together** — ownership, maintenance, release age, provenance, transitive graph, and typosquats such as `cross-env` vs `crossenv` (OWASP **A06**, **LLM03**).
 
 ## Rate Limiting
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import rateLimit from 'express-rate-limit';
 
 // General API rate limit
@@ -363,16 +363,16 @@ Securing data is "can an attacker read it?" Privacy is "should *we* even hold it
 |---|---|---|
 | **Non-personal** | Aggregates, anonymized counts | Normal handling |
 | **Personal (PII)** | Name, email, IP, device/user IDs | Minimize, access-control, include in export/delete |
-| **Sensitive** | Health, finance, location, biometrics, gov IDs, anything about minors | Extra basis to collect, stricter access, often encryption + audit logging |
+| **Sensitive** | Health, finance, location, biometrics, gov IDs, anything about minors | Extra basis to collect, stricter access, often encryption + [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging |
 
 **Operating rules:**
-- **Minimize and set a purpose.** Collect a field only against a stated use. "It might be useful later" is not a purpose — it's latent breach scope. Don't log PII into telemetry (the `observability-and-instrumentation` skill makes the same point from the ops side).
+- **Minimize and set a purpose.** Collect a field only against a stated use. "It might be useful later" is not a purpose — it's latent breach scope. Don't log PII into telemetry (the `[observability-and-instrumentation](../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md)` skill makes the same point from the ops side).
 - **Set retention up front, then actually delete.** Every personal-data store needs a TTL and a working deletion path — including backups, caches, search indexes, and analytics copies. Data with no expiry is a breach scheduled for later.
 - **Support the data-subject rights your jurisdiction requires** (GDPR/CCPA and kin): export, correct, and delete on request. These are engineering features — design the schema so a user's data is *findable* and *erasable*, not smeared irreversibly across systems.
 - **Get consent before collection or third-party sharing**, and make it auditable. Sending PII to an analytics/ad/LLM vendor is "sharing" — the user's choice gates it, and the vendor needs a data-processing agreement.
 - **Localize defaults, don't hardcode one region's law.** Data-residency and rules differ by user location; make the policy a configurable boundary, not an assumption.
 
-When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy incident exposes personal data, the breach-notification clock is part of the postmortem — follow the `debugging-and-error-recovery` skill.
+When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) exposes personal data, the breach-notification clock is part of the postmortem — follow the `[debugging-and-error-recovery](../../Software_Engineering_and_Other/Patterns/debugging-and-error-recovery/SKILL.md)` skill.
 
 ## Securing AI / LLM Features
 
@@ -385,7 +385,7 @@ If your app calls an LLM — chatbots, summarizers, agents, RAG — it inherits 
 - **Bound consumption (LLM10: Unbounded Consumption).** Cap tokens, request rate, and loop/recursion depth so a crafted input can't run up cost or hang the system.
 - **Isolate retrieval data (LLM08: Vector and Embedding Weaknesses).** In RAG, treat the vector store as a trust boundary: partition embeddings per tenant so one user can't retrieve another's data, and validate documents before indexing so poisoned content can't steer answers.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD: trusting model output as a command or as markup
 const sql = await llm.generate(`Write SQL for: ${userQuestion}`);
 await db.query(sql);                                   // arbitrary query execution
@@ -438,7 +438,7 @@ container.textContent = await llm.reply(userMessage);
 
 ### Supply Chain
 - [ ] One authoritative lockfile committed; CI uses that manager's frozen/immutable install
-- [ ] Native audit triaged by reachability and fix risk; dependency install scripts blocked unless explicitly approved
+- [ ] Native [audit](../../AI_and_Agents/Operations/audit/SKILL.md) triaged by reachability and fix risk; dependency install scripts blocked unless explicitly approved
 - [ ] New dependencies reviewed (ownership, provenance, release age, transitive graph)
 
 ### AI / LLM (if used)
@@ -448,7 +448,7 @@ container.textContent = await llm.reply(userMessage);
 ```
 ## See Also
 
-For detailed security checklists and pre-commit verification steps, see `../../references/security-checklist.md`.
+For detailed security checklists and pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) verification steps, see `../../references/security-checklist.md`.
 
 ## Common Rationalizations
 
@@ -461,7 +461,7 @@ For detailed security checklists and pre-commit verification steps, see `../../r
 | "It's just a prototype" | Prototypes become production. Security habits from day one. |
 | "Threat modeling is overkill here" | Five minutes of "how would I attack this?" prevents the design flaws no control can patch later. |
 | "It's just LLM output, it's only text" | That "text" can be a SQL statement, a script tag, or a shell command. Treat it like any untrusted input. |
-| "The audit passed, so the dependency is safe" | Audits match known advisories. They do not detect a newly malicious package or make unreviewed install scripts safe to execute. |
+| "The [audit](../../AI_and_Agents/Operations/audit/SKILL.md) passed, so the dependency is safe" | Audits match known advisories. They do not detect a newly malicious package or make unreviewed install scripts safe to execute. |
 | "Collect it now, we might need it later" | Data you don't hold can't be breached, subpoenaed, or mis-deleted. "Might need it" is breach scope, not a purpose. |
 | "We'll handle deletion requests manually" | Manual erasure misses backups, caches, and analytics copies. If the schema can't find a user's data, you can't honor the request — design for it. |
 | "Compliance is legal's problem, not ours" | Export, deletion, retention, and consent are schema and code. Legal can't bolt them on after you've smeared PII across ten systems. |
@@ -469,7 +469,7 @@ For detailed security checklists and pre-commit verification steps, see `../../r
 ## Red Flags
 
 - User input passed directly to database queries, shell commands, or HTML rendering
-- Secrets in source code or commit history
+- Secrets in source code or [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history
 - API endpoints without authentication or authorization checks
 - Missing CORS configuration or wildcard (`*`) origins
 - No rate limiting on authentication endpoints
@@ -486,7 +486,7 @@ For detailed security checklists and pre-commit verification steps, see `../../r
 
 After implementing security-relevant code:
 
-- [ ] The native audit has no unmitigated reachable critical/high findings; CI preserves the authoritative lockfile and blocks unreviewed dependency scripts
+- [ ] The native [audit](../../AI_and_Agents/Operations/audit/SKILL.md) has no unmitigated reachable critical/high findings; CI preserves the authoritative lockfile and blocks unreviewed dependency scripts
 - [ ] No secrets in source code or git history
 - [ ] All user input validated at system boundaries
 - [ ] Authentication and authorization checked on every protected endpoint

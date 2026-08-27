@@ -144,8 +144,8 @@ Attachments: {logs, screenshots}
 ### Framework Selection
 | Language | Framework | Preferred For |
 |----------|-----------|---------------|
-| TypeScript | Playwright | E2E, web apps |
-| Python | Pytest | API, backend |
+| [TypeScript](../typescript/SKILL.md) | Playwright | E2E, web apps |
+| [Python](../../Languages/python/SKILL.md) | Pytest | API, backend |
 | Go | Testify | Go services |
 | Rust | cargo test | Rust services |
 
@@ -177,8 +177,8 @@ Verify all planned tests executed. Review open defects and blocker status. Confi
 |--------|---------------------|---------------|------------|-------------|------------|
 | Testing phase | After development | Throughout sprint | During development | Production | Throughout |
 | Test planning | Detailed upfront | Continuous refinement | Before coding | After release | Risk-weighted |
-| Test creation | Full test cases | ATDD/BDD acceptance criteria | Unit tests first | A/B tests, monitoring | Risk-based selection |
-| Automation | Late automation | Built-in automation | From start | Monitoring | Critical paths only |
+| Test creation | Full test cases | ATDD/BDD acceptance criteria | Unit tests first | A/B tests, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Risk-based selection |
+| Automation | Late automation | Built-in automation | From start | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Critical paths only |
 | Feedback cycle | Weeks | Days | Hours | Real-time | Varies |
 | Best For | Regulated/contract | Product development | CI/CD pipelines | Production validation | Resource-limited |
 
@@ -193,7 +193,7 @@ What is the project context?
   ├── Established product with CI/CD
   │   └── Shift-left: unit tests, static analysis, contract tests in pipeline
   ├── Production system with live users
-  │   └── Shift-right: canary testing, feature flags, production monitoring
+  │   └── Shift-right: canary testing, feature flags, production [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   └── Resource-constrained / quick delivery
       └── Risk-based testing: prioritize tests by probability × impact
 ```
@@ -236,7 +236,7 @@ Focusing exclusively on functional testing while ignoring performance, security,
 A defect report that says "it doesn't work" cannot be actioned. Every defect must include clear steps to reproduce, expected vs actual results, environment details, and supporting evidence.
 
 ### Pitfall 8: Regression Suite That Takes Hours
-A regression suite that takes hours to run is rarely run. Developers skip it, CI pipelines get bypassed. Keep the suite fast (under 30 minutes). Split if needed — run critical tests on every commit, full suite nightly.
+A regression suite that takes hours to run is rarely run. Developers skip it, CI pipelines get bypassed. Keep the suite fast (under 30 minutes). Split if needed — run critical tests on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), full suite nightly.
 
 ### Pitfall 9: Testing Without Requirements
 Testing without clear acceptance criteria or requirements leads to subjective pass/fail decisions. Every test must have a clear expected result. If the requirement is unclear, clarify before testing.
@@ -377,10 +377,10 @@ A fintech company had manual-only testing with release cycles of 4 weeks. They i
 A growing e-commerce platform had 1,200 E2E tests with a 40% flake rate. Tests failed randomly, developers ignored failures, and defects leaked to production. The team spent 2 sprints quarantining flaky tests, fixing root causes (test data isolation, timing, environment dependency), and reducing the flake rate to 3%. The remaining test suite went from 1,200 to 400 reliable tests — with better coverage.
 
 ### Case Study 3: Healthcare — Risk-Based Testing for Compliance
-A healthcare SaaS company needed to release quickly while maintaining HIPAA compliance. They implemented risk-based testing: critical path tests (authentication, authorization, data access) ran on every commit; full regression ran nightly; compliance audit suite ran weekly. This balanced speed and compliance. Audit findings related to testing were reduced by 80%.
+A healthcare SaaS company needed to release quickly while maintaining HIPAA compliance. They implemented risk-based testing: critical path tests (authentication, authorization, data access) ran on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md); full regression ran nightly; compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) suite ran weekly. This balanced speed and compliance. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings related to testing were reduced by 80%.
 
 ### Case Study 4: Retail — Shift-Left with Contract Testing
-A retail company implemented consumer-driven contract testing (Pact) for microservices. Integration issues between services dropped 90%. Developer feedback cycle reduced from days to minutes. The contract test suite caught breaking changes before they reached staging.
+A retail company implemented consumer-driven contract testing (Pact) for [microservices](../../Patterns/microservices/SKILL.md). Integration issues between services dropped 90%. Developer feedback cycle reduced from days to minutes. The contract test suite caught breaking changes before they reached staging.
 
 ## Rules
 
@@ -425,7 +425,7 @@ After completing this skill:
 | Test data strategy | Production clone (realistic) | Synthetic data (controlled) | Privacy compliance, data volume |
 
 ### Automation Framework Decision
-- Microservices API → REST Assured + Postman/Newman
+- [Microservices](../../Patterns/microservices/SKILL.md) API → REST Assured + Postman/Newman
 - Frontend-heavy SPA → Playwright or Cypress
 - Mobile app → Appium + Maestro
 - Legacy monolith → Selenium + JUnit
@@ -509,7 +509,7 @@ After completing this skill:
 ### CI Integration
 - **Fast feedback**: Run unit tests in < 5 minutes. Run full suite in < 30 minutes on CI.
 - **Test splitting**: Split test suite into fast (PR) and full (nightly). PR pipeline runs critical tests only.
-- **Caching**: Cache node_modules, build artifacts, and test results. Use buildkite/github actions cache features.
+- **Caching**: Cache node_modules, build artifacts, and test results. Use buildkite/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) actions cache features.
 
 ## Security Considerations
 

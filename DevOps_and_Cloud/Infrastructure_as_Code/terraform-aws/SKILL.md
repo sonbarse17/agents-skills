@@ -96,5 +96,5 @@ terraform destroy
 
 ## Related Skills
 
-- [aws-vpc](../aws-vpc/) - VPC networking
-- [aws-iam](../aws-iam/) - IAM policies
+- [aws-vpc](../[aws-vpc](../../Cloud_Providers/aws-vpc/SKILL.md)/) - VPC networking
+- [aws-iam](../[aws-iam](../../Cloud_Providers/aws-iam/SKILL.md)/) - IAM policies

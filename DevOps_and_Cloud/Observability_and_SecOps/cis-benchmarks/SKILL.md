@@ -9,7 +9,7 @@ metadata:
 
 # CIS Benchmarks
 
-Implement and audit CIS security benchmarks.
+Implement and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) CIS security benchmarks.
 
 ## When to Use This Skill
 
@@ -41,11 +41,11 @@ oscap xccdf eval \
 # Install
 apt install lynis
 
-# Run audit
-lynis audit system
+# Run [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+lynis [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) system
 
 # Generate report
-lynis audit system --report-file /tmp/lynis-report.dat
+lynis [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) system --report-file /tmp/lynis-report.dat
 ```
 
 ### InSpec
@@ -76,11 +76,11 @@ end
 inspec exec cis-profile -t ssh://user@target
 ```
 
-### Kubernetes CIS
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CIS
 
 ```bash
 # kube-bench
-docker run --rm -v /etc:/etc:ro -v /var:/var:ro \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v /etc:/etc:ro -v /var:/var:ro \
   aquasec/kube-bench:latest run --targets node
 
 # Check specific sections
@@ -122,5 +122,5 @@ workflow:
 
 ## Related Skills
 
-- [linux-hardening](../linux-hardening/) - Linux security
-- [vulnerability-scanning](../../scanning/vulnerability-scanning/) - Security scanning
+- [linux-hardening](../[linux-hardening](../linux-hardening/SKILL.md)/) - Linux security
+- [vulnerability-scanning](../../scanning/[vulnerability-scanning](../vulnerability-scanning/SKILL.md)/) - Security scanning

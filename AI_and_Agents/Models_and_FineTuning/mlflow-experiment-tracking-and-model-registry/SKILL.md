@@ -32,14 +32,14 @@ deployed, what a backend store actually is, how registry stage transitions
 work, how autologging hooks into training frameworks, and how self-hosted
 deployment differs operationally from Databricks-managed MLflow. It does not
 repeat the vendor-neutral case for experiment tracking itself, which is
-covered in [experiment-tracking](../experiment-tracking/SKILL.md) — read that
+covered in [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — read that
 first if the question is "why track experiments," not "how does MLflow do
 it."
 
 ## When to use
 
 - Standing up a new MLflow tracking server and choosing a backend store
-  (SQLite/Postgres/MySQL) and artifact store (S3/GCS/Azure Blob/NFS).
+  (SQLite/Postgres/[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)) and artifact store (S3/GCS/Azure Blob/NFS).
 - Registering a trained model to the Model Registry and moving it through
   `Staging` → `Production` → `Archived`, or adopting the newer alias/tag
   model that supersedes stages in recent MLflow versions.
@@ -63,7 +63,7 @@ it."
   API is available.
 - A backend store: `sqlite:///...` for local/single-user experimentation
   only, or a real SQLAlchemy-compatible database
-  (`postgresql://`, `mysql://`) for any shared/team/production tracking
+  (`[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://`, `[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)://`) for any shared/team/production tracking
   server. The plain local file store (`./mlruns`, MLflow's zero-config
   default) does not support the Model Registry and is unsafe under
   concurrent writers.
@@ -78,7 +78,7 @@ it."
   proxy handling authn/authz — MLflow does not enforce authentication by
   default.
 - For Databricks-managed MLflow: a Databricks workspace, and (if using
-  Unity Catalog as the registry backend) Unity Catalog enabled with
+  [Unity](../../../Game_Development/unity/SKILL.md) Catalog as the registry backend) [Unity](../../../Game_Development/unity/SKILL.md) Catalog enabled with
   appropriate catalog/schema permissions.
 
 ## Step-by-step guidance
@@ -89,7 +89,7 @@ it."
    support and corrupts under concurrent writers:
    ```bash
    mlflow server \
-     --backend-store-uri postgresql://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
+     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
      --default-artifact-root s3://ml-artifacts-<ACCOUNT_ID>/mlflow \
      --host 0.0.0.0 \
      --port 5000
@@ -100,7 +100,7 @@ it."
    different systems.
 
 2. **Point training clients at the tracking server**, not a local path:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow
 
    mlflow.set_tracking_uri("http://mlflow.internal:5000")
@@ -110,7 +110,7 @@ it."
 3. **Use autologging to instrument standard training calls** with minimal
    code changes, then add manual logging only for what autolog doesn't
    capture:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow
    import mlflow.xgboost
    import xgboost as xgb
@@ -147,12 +147,12 @@ it."
          learning_rate: {type: float, default: 0.05}
          data_snapshot: {type: string, default: "s3://data-lake/fraud/snapshots/latest"}
        command: >
-         python train.py --max-depth {max_depth} --learning-rate {learning_rate}
+         [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) train.py --max-depth {max_depth} --learning-rate {learning_rate}
          --data-snapshot {data_snapshot}
    ```
    ```yaml
    # python_env.yaml — pin exact versions, not ranges, for reproducibility
-   python: "3.11.6"
+   [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md): "3.11.6"
    dependencies:
      - mlflow==2.16.2
      - xgboost==2.1.1
@@ -167,7 +167,7 @@ it."
    the training script's ad hoc setup steps.
 
 5. **Register the winning run's model artifact to the Model Registry**:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    result = mlflow.register_model(
        model_uri="runs:/<RUN_ID>/model",
        name="fraud-scorer",
@@ -178,7 +178,7 @@ it."
    classic stage model (`None` → `Staging` → `Production` → `Archived`)
    is being superseded by a tag/alias-based model starting around MLflow
    2.9 — check which your server version and client expect:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from mlflow import MlflowClient
 
    client = MlflowClient()
@@ -213,27 +213,27 @@ it."
 
 7. **Serve or load a specific registered version explicitly by
    version/alias**, never "whatever is latest" implicitly:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    model = mlflow.pyfunc.load_model("models:/fraud-scorer@champion")
    # or, pinned to an explicit version:
    model = mlflow.pyfunc.load_model("models:/fraud-scorer/14")
    ```
 
 8. **Decide self-hosted vs. Databricks-managed deliberately, based on
-   operational capacity, not default inertia:**
+   operational [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not default inertia:**
    - **Self-hosted** (`mlflow server` on your own compute, own Postgres/
-     MySQL, own S3/GCS bucket): full control over cost and data locality,
+     [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), own S3/GCS bucket): full control over cost and data locality,
      but your team owns HA, backups of the backend database, artifact
      store lifecycle policies, and access control (MLflow's own
      authentication is basic; most teams front it with a reverse proxy or
      SSO gateway).
    - **Databricks-managed MLflow**: tracking server, registry, and
-     (optionally) Unity-Catalog-backed model governance are operated by
+     (optionally) [Unity](../../../Game_Development/unity/SKILL.md)-Catalog-backed model governance are operated by
      Databricks, integrated with Databricks workspace permissions and
      compute — removes the server/database/HA operational burden, at the
      cost of coupling the workflow to the Databricks platform and its
      pricing/access model.
-   - A team without dedicated platform engineering capacity to patch,
+   - A team without dedicated platform engineering [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to patch,
      back up, and scale a tracking server should default to managed;
      a team with strict data-residency or cost constraints that already
      operates Postgres/S3 in-house has a straightforward self-hosted path.
@@ -245,7 +245,7 @@ it."
   developer's throwaway experiments.
 - Keep the artifact store durable and independent of the tracking server's
   own compute (S3/GCS/Blob, not local disk on an ephemeral instance) so a
-  server restart or autoscaling event doesn't lose logged models.
+  server restart or [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) event doesn't lose logged models.
 - Prefer framework-specific `autolog()` calls over the blanket
   `mlflow.autolog()` in shared training code, so enabling MLflow for one
   framework doesn't silently start instrumenting an unrelated library also
@@ -255,8 +255,8 @@ it."
   `mlflow run` is meant to provide.
 - Use aliases (or well-documented stage conventions) consistently across
   the team, and always carry the originating run ID as a registry tag, so
-  [experiment-tracking](../experiment-tracking/SKILL.md)'s guidance on
-  reproducibility and audit trail applies end-to-end from run to registered
+  [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)'s guidance on
+  reproducibility and [audit](../../Operations/audit/SKILL.md) trail applies end-to-end from run to registered
   model.
 - Restrict who/what can call `transition_model_version_stage` or
   `set_registered_model_alias` for the `Production`/`champion` designation
@@ -268,7 +268,7 @@ it."
 - **Symptom:** A team starts logging to MLflow's default local `./mlruns`
   file store from multiple machines/CI jobs, and runs occasionally go
   missing or the store becomes corrupted.
-  **Fix:** Stand up a real tracking server backed by Postgres/MySQL before
+  **Fix:** Stand up a real tracking server backed by Postgres/[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) before
   more than one process writes concurrently — the file store has no
   concurrency guarantees and no Model Registry support.
 
@@ -306,7 +306,7 @@ it."
   (e.g. S3 lifecycle rules) for experiments tagged as exploratory, while
   explicitly excluding any run referenced by a current registry entry —
   consistent with the retention guidance in
-  [experiment-tracking](../experiment-tracking/SKILL.md); never let a
+  [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md); never let a
   blanket age-based deletion rule reach a run backing a production model.
 
 ## Worked example
@@ -318,13 +318,13 @@ XGBoost autologging and alias-based registry promotion.
 1. Tracking server, started once as shared infrastructure:
    ```bash
    mlflow server \
-     --backend-store-uri postgresql://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
+     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
      --default-artifact-root s3://ml-artifacts-<ACCOUNT_ID>/mlflow \
      --host 0.0.0.0 --port 5000
    ```
 2. Training script, run via `mlflow run` for reproducibility, with
    XGBoost autologging enabled:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow, mlflow.xgboost, xgboost as xgb
 
    mlflow.set_tracking_uri("http://mlflow.internal:5000")
@@ -341,7 +341,7 @@ XGBoost autologging and alias-based registry promotion.
    ```
 3. Registration and alias-based promotion, run as a controlled step
    after the run's metrics clear a review bar (not automatically):
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from mlflow import MlflowClient
 
    client = MlflowClient()
@@ -356,28 +356,28 @@ XGBoost autologging and alias-based registry promotion.
    ```
 4. Serving code loads the alias, never a hardcoded version, so the next
    promotion doesn't require a code change:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    model = mlflow.pyfunc.load_model("models:/fraud-scorer@champion")
    ```
 5. Two weeks later the new champion's live precision drops; on-call
    reverts with the recorded previous version:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    client.set_registered_model_alias("fraud-scorer", "champion", previous_champion.version)
    ```
    because step 3 captured the rollback target before promoting, this is
-   a one-line fix rather than an incident-time scramble.
+   a one-line fix rather than an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-time scramble.
 
 ## Cross-references
 
-- [experiment-tracking](../experiment-tracking/SKILL.md) — the
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — the
   vendor-neutral case for tracking runs, tagging conventions, and
   reproducibility that this skill implements in MLflow-specific terms.
-- [weights-and-biases-experiment-tracking](../weights-and-biases-experiment-tracking/SKILL.md) —
+- [weights-and-biases-experiment-tracking](../[weights-and-biases-experiment-tracking](../weights-and-biases-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)/SKILL.md) —
   the comparable SaaS-first tool; see its Cross-references section for
   how to choose between the two.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) —
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md) —
   broader model packaging/versioning concerns beyond the Model Registry's
   stage/alias mechanics covered here.
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) —
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md) —
   how an `MLproject`-style training run fits into an orchestrated
   pipeline rather than being invoked ad hoc.

@@ -23,8 +23,8 @@ Deploy and manage Amazon EC2 compute instances for production, staging, and deve
 ## Prerequisites
 
 - AWS CLI v2 installed and configured (`aws configure`)
-- IAM permissions: `ec2:*`, `autoscaling:*`, `elasticloadbalancing:*`, `iam:PassRole`
-- An existing VPC with subnets (see [aws-vpc](../aws-vpc/))
+- IAM permissions: `ec2:*`, `[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):*`, `elasticloadbalancing:*`, `iam:PassRole`
+- An existing VPC with subnets (see [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/))
 - SSH key pair created (`aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > my-key.pem`)
 
 ## Instance Type Selection Guide
@@ -103,7 +103,7 @@ wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 
-# Signal CloudFormation (if launched via CFN)
+# Signal [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) (if launched via CFN)
 # /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource ASG --region ${AWS::Region}
 ```
 
@@ -139,7 +139,7 @@ aws ec2 create-launch-template \
         {"Key": "ManagedBy", "Value": "launch-template"}
       ]
     }],
-    "Monitoring": {"Enabled": true},
+    "[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)": {"Enabled": true},
     "UserData": "'"$(base64 -w0 userdata.sh)"'"
   }'
 
@@ -160,7 +160,7 @@ aws ec2 modify-launch-template \
 
 ```bash
 # Create ASG with mixed instances (on-demand + spot)
-aws autoscaling create-auto-scaling-group \
+aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-auto-scaling-group \
   --auto-scaling-group-name web-asg \
   --mixed-instances-policy '{
     "LaunchTemplate": {
@@ -177,10 +177,10 @@ aws autoscaling create-auto-scaling-group \
     "InstancesDistribution": {
       "OnDemandBaseCapacity": 2,
       "OnDemandPercentageAboveBaseCapacity": 25,
-      "SpotAllocationStrategy": "capacity-optimized"
+      "SpotAllocationStrategy": "[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-optimized"
     }
   }' \
-  --min-size 2 --max-size 10 --desired-capacity 4 \
+  --min-size 2 --max-size 10 --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 4 \
   --vpc-zone-identifier "subnet-aaa,subnet-bbb" \
   --target-group-arns "arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/web-tg/abc123" \
   --health-check-type ELB \
@@ -191,7 +191,7 @@ aws autoscaling create-auto-scaling-group \
   ]'
 
 # Create target tracking scaling policy (target 60% CPU)
-aws autoscaling put-scaling-policy \
+aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --auto-scaling-group-name web-asg \
   --policy-name cpu-target-tracking \
   --policy-type TargetTrackingScaling \
@@ -205,17 +205,17 @@ aws autoscaling put-scaling-policy \
   }'
 
 # Create scheduled scaling for known traffic patterns
-aws autoscaling put-scheduled-update-group-action \
+aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-up-morning \
   --recurrence "0 8 * * MON-FRI" \
-  --min-size 4 --max-size 20 --desired-capacity 8
+  --min-size 4 --max-size 20 --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 8
 
-aws autoscaling put-scheduled-update-group-action \
+aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-down-evening \
   --recurrence "0 20 * * MON-FRI" \
-  --min-size 2 --max-size 10 --desired-capacity 2
+  --min-size 2 --max-size 10 --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 2
 ```
 
 ## Spot Instances
@@ -392,19 +392,19 @@ resource "aws_autoscaling_policy" "cpu" {
 
 | Problem | Cause | Fix |
 |---|---|---|
-| Instance stuck in `pending` | Insufficient capacity | Try a different AZ or instance type |
+| Instance stuck in `pending` | Insufficient [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Try a different AZ or instance type |
 | Cannot SSH to instance | Security group or NACL blocks port 22 | Check SG ingress rules and route tables |
 | Instance immediately terminates | EBS volume limit or AMI issue | Check `describe-instances` for StateReason |
 | IMDSv1 deprecation warnings | Metadata options not set | Set `HttpTokens=required` in launch template |
 | User data not running | Script missing shebang or not base64 | Verify `#!/bin/bash` header; check `/var/log/cloud-init-output.log` |
-| Spot instance terminated | Capacity reclaimed by AWS | Use capacity-optimized allocation and diversify types |
+| Spot instance terminated | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) reclaimed by AWS | Use [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-optimized allocation and diversify types |
 | ASG not replacing unhealthy | Health check grace period too short | Increase grace period to cover app boot time |
 | EBS throughput bottleneck | gp2 volume too small for IOPS | Migrate to gp3 and set explicit IOPS/throughput |
 
 ## Related Skills
 
-- [aws-vpc](../aws-vpc/) - VPC networking, subnets, and security groups
-- [aws-iam](../aws-iam/) - Instance profiles and roles
-- [aws-cost-optimization](../aws-cost-optimization/) - Rightsizing and Spot strategies
-- [terraform-aws](../terraform-aws/) - Infrastructure as Code deployment
-- [cloudformation](../cloudformation/) - AWS-native IaC templates
+- [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/) - VPC networking, subnets, and security groups
+- [aws-iam](../[aws-iam](../aws-iam/SKILL.md)/) - Instance profiles and roles
+- [aws-cost-optimization](../[aws-cost-optimization](../aws-[cost-optimization](../cost-optimization/SKILL.md)/SKILL.md)/) - [Rightsizing](../rightsizing/SKILL.md) and Spot strategies
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - Infrastructure as Code deployment
+- [cloudformation](../[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/) - AWS-native IaC templates

@@ -25,23 +25,23 @@ is operationally unsafe — an unscoped state store reachable by every
 app in the namespace, a plaintext credential inlined under
 `spec.metadata`, a pub/sub component with no dead-letter or retry
 policy, or a binding pointed at the wrong environment's backend all
-pass Kubernetes' schema validation and only surface later as a security
-finding, a silent data-loss incident, or a cross-environment data leak.
+pass [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)' schema validation and only surface later as a security
+finding, a silent data-loss [incident](../../Observability_and_SecOps/incident/SKILL.md), or a cross-environment data leak.
 This skill is the pre-deploy validation gate for Dapr component
 configuration, complementing
-[dapr-distributed-runtime-configuration](../dapr-distributed-runtime-configuration/SKILL.md),
+[dapr-distributed-runtime-configuration](../[dapr-distributed-runtime-configuration](../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md),
 which covers building that configuration in the first place — the same
 role
-[aws-lambda-configuration-validation](../aws-lambda-configuration-validation/SKILL.md)
+[aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../../Cloud_Providers/[aws-lambda](../../Cloud_Providers/aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
 plays for Lambda and
-[knative-configuration-validation](../knative-configuration-validation/SKILL.md)
+[knative-configuration-validation](../[knative-configuration-validation](../../Containers_and_Orchestration/knative-configuration-validation/SKILL.md)/SKILL.md)
 plays for Knative Serving.
 
 ## When to use
 
 - Before merging or applying a new or changed Dapr `Component` manifest
   (state store, pub/sub, binding, secret store) to any environment.
-- Reviewing a GitOps PR that touches `dapr.io/v1alpha1` `Component` or
+- Reviewing a [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) PR that touches `dapr.io/v1alpha1` `Component` or
   `Resiliency` resources.
 - Auditing existing components across a namespace/cluster for missing
   `scopes`, inline secrets, or absent resiliency policies.
@@ -52,7 +52,7 @@ plays for Knative Serving.
 
 ## Prerequisites & environment
 
-- `kubectl` read access to `components.dapr.io` and
+- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` read access to `components.dapr.io` and
   `resiliencies.dapr.io` in the target namespace(s).
 - `yq`/`jq` for parsing manifest output in scripted checks.
 - A list of which `app-id`s are legitimately allowed to use each
@@ -62,7 +62,7 @@ plays for Knative Serving.
   confirming it's the *correct* set of apps still requires a human
   reviewer with that context.
 - Awareness of which secret store/reference mechanism the organization
-  standardizes on (Kubernetes Secrets, Vault, a cloud KMS-backed
+  standardizes on ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secrets, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), a cloud KMS-backed
   store) so inline-secret detection knows what a *correct* reference
   looks like, not just that a `secretKeyRef` exists syntactically.
 
@@ -71,7 +71,7 @@ plays for Knative Serving.
 1. **Validate every component has non-empty `scopes`.** An unscoped
    component is usable by any Dapr-enabled app in the namespace:
    ```bash
-   kubectl get components.dapr.io -n prod -o json | \
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n prod -o json | \
      jq '.items[] | select((.scopes // []) | length == 0) | .metadata.name'
    ```
    Any component name in the output is a required fix — add explicit
@@ -83,11 +83,11 @@ plays for Knative Serving.
    holding something that looks like a password, connection string, or
    API key is a finding:
    ```bash
-   kubectl get components.dapr.io -n prod -o json | \
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n prod -o json | \
      jq '.items[] | .spec.metadata[] | select(.value != null and (.name | test("(?i)password|secret|token|key")))'
    ```
    Any match here should be replaced with `secretKeyRef` pointing at a
-   Kubernetes `Secret` or the organization's standard secret store
+   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) `Secret` or the organization's standard secret store
    component, and the exposed value rotated if it was ever applied to
    a live cluster (and doubly so if committed to source control).
 
@@ -96,7 +96,7 @@ plays for Knative Serving.
    holding data with a durability requirement) — Dapr does not require
    one, and its absence is easy to miss:
    ```bash
-   kubectl get resiliencies.dapr.io -n prod -o json | \
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get resiliencies.dapr.io -n prod -o json | \
      jq '[.items[].spec.targets.components // {} | keys[]] + [.items[].spec.targets.apps // {} | keys[]]'
    ```
    Cross-check the resulting list of targets against the full list of
@@ -110,7 +110,7 @@ plays for Knative Serving.
    at the same target can hold a caller's request open indefinitely
    during a sustained downstream outage:
    ```bash
-   kubectl get resiliencies.dapr.io -n prod -o json | \
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get resiliencies.dapr.io -n prod -o json | \
      jq '.items[].spec.policies.retries | to_entries[] | select(.value.maxRetries == -1)'
    ```
    Flag any `maxRetries: -1` policy and confirm a `timeout` policy is
@@ -132,13 +132,13 @@ plays for Knative Serving.
    #!/usr/bin/env bash
    set -euo pipefail
    NS=prod
-   UNSCOPED=$(kubectl get components.dapr.io -n "$NS" -o json | \
+   UNSCOPED=$([kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n "$NS" -o json | \
      jq -r '.items[] | select((.scopes // []) | length == 0) | .metadata.name')
    if [ -n "$UNSCOPED" ]; then
      echo "FAIL: unscoped Dapr component(s) found: $UNSCOPED"
      exit 1
    fi
-   INLINE_SECRETS=$(kubectl get components.dapr.io -n "$NS" -o json | \
+   INLINE_SECRETS=$([kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n "$NS" -o json | \
      jq -r '.items[] | .metadata.name as $n | .spec.metadata[]? |
        select(.value != null and (.name | test("(?i)password|secret|token|key"))) | $n')
    if [ -n "$INLINE_SECRETS" ]; then
@@ -153,7 +153,7 @@ plays for Knative Serving.
 - Run these checks as a required CI/admission gate on every change
   touching `Component`/`Resiliency` resources, not only before a
   first deploy — a component can be hand-edited directly in a cluster
-  outside GitOps, and periodic re-validation catches that drift.
+  outside [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md), and periodic re-validation catches that drift.
 - Treat "no `scopes`" and "inline secret-shaped value" as hard failures
   by default, not warnings — both are common, easy-to-introduce
   mistakes with real security consequences, not edge cases.
@@ -184,10 +184,10 @@ plays for Knative Serving.
   plaintext inside a component manifest, either in a cluster or in
   source control.
   **Fix:** Replace the inline `value` with `secretKeyRef` pointing at a
-  Kubernetes `Secret` or the standard secret store component, purge the
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) `Secret` or the standard secret store component, purge the
   plaintext value from git history if it was committed, and rotate the
   exposed credential immediately — treat this as a live security
-  incident, not just a config cleanup.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md), not just a config cleanup.
 
 - **Symptom:** A service-to-service call via Dapr's invocation building
   block occasionally hangs for a very long time during a downstream
@@ -209,7 +209,7 @@ plays for Knative Serving.
 
 - **Symptom:** A component intended only for a staging environment is
   found configured with a production backend's connection details (or
-  vice versa) during an audit.
+  vice versa) during an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
   **Fix:** Component manifests weren't namespaced/labeled clearly per
   environment, or an environment-specific overlay was applied to the
   wrong target; validate component `metadata` values (hostnames,
@@ -226,16 +226,16 @@ directly as plaintext, alongside a `Resiliency` policy that sets
 
 Validation run:
 ```bash
-$ kubectl get components.dapr.io -n prod -o json | \
+$ [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n prod -o json | \
     jq '.items[] | select((.scopes // []) | length == 0) | .metadata.name'
 "orders-statestore"
-$ kubectl get components.dapr.io -n prod -o json | \
+$ [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get components.dapr.io -n prod -o json | \
     jq '.items[] | .spec.metadata[] | select(.value != null and (.name | test("(?i)password")))'
 {
   "name": "redisPassword",
   "value": "<REDACTED-EXAMPLE-VALUE>"
 }
-$ kubectl get resiliencies.dapr.io -n prod -o json | \
+$ [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get resiliencies.dapr.io -n prod -o json | \
     jq '.items[].spec.policies.retries | to_entries[] | select(.value.maxRetries == -1)'
 {
   "key": "retryForever",
@@ -247,7 +247,7 @@ an inline plaintext password instead of a `secretKeyRef`, and the
 attached retry policy has no paired timeout. The fixes applied: add
 `scopes: [order-service, order-fulfillment-service]`; replace the
 inline `redisPassword` value with `secretKeyRef` against a
-`orders-redis-secret` Kubernetes Secret and rotate the credential that
+`orders-redis-secret` [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret and rotate the credential that
 was briefly inlined; and add a `timeouts` policy bound to the same
 target as `retryForever` so a sustained outage fails fast instead of
 hanging indefinitely. The pipeline is re-run only after all three
@@ -255,6 +255,6 @@ findings are resolved.
 
 ## Cross-references
 
-- [dapr-distributed-runtime-configuration](../dapr-distributed-runtime-configuration/SKILL.md) — how the component scoping, secret references, and resiliency policies validated here are built and operated.
-- [aws-lambda-configuration-validation](../aws-lambda-configuration-validation/SKILL.md) — the same pre-deploy validation discipline applied to AWS Lambda configuration.
-- [knative-configuration-validation](../knative-configuration-validation/SKILL.md) — equivalent pre-deploy validation for Knative Serving configuration, often deployed on the same cluster as Dapr components.
+- [dapr-distributed-runtime-configuration](../[dapr-distributed-runtime-configuration](../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md) — how the component scoping, secret references, and resiliency policies validated here are built and operated.
+- [aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../../Cloud_Providers/[aws-lambda](../../Cloud_Providers/aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — the same pre-deploy validation discipline applied to AWS Lambda configuration.
+- [knative-configuration-validation](../[knative-configuration-validation](../../Containers_and_Orchestration/knative-configuration-validation/SKILL.md)/SKILL.md) — equivalent pre-deploy validation for Knative Serving configuration, often deployed on the same cluster as Dapr components.

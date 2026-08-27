@@ -32,10 +32,10 @@ non-clustered deployments, and memory management under `maxmemory` and
 eviction policies. It is deliberately scoped to infrastructure/topology
 operations — for validating a proposed `maxmemory`/eviction/cluster
 config before it's relied on in production, see
-[redis-configuration-validation](../redis-configuration-validation/SKILL.md);
+[redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md);
 for the application-facing question of *how* to use Redis as a cache
 (cache-aside vs. write-through, TTL strategy, invalidation), see
-[redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md),
+[redis-caching-strategy-and-invalidation-patterns](../[redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md)/SKILL.md),
 which is a distinct concern from the cluster/persistence mechanics here.
 
 ## When to use
@@ -51,7 +51,7 @@ which is a distinct concern from the cluster/persistence mechanics here.
   expected.
 - Redis is evicting keys or returning `OOM command not allowed` errors,
   and the cause isn't obvious from `maxmemory` alone.
-- Planning capacity: sizing `maxmemory` per node, deciding shard count
+- Planning [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): sizing `maxmemory` per node, deciding shard count
   for a cluster, or estimating memory overhead of a specific data
   structure choice at scale.
 - Rebalancing an unevenly-loaded cluster (a hot shard, uneven hash slot
@@ -147,7 +147,7 @@ operations across them) — a design decision that must be made when
 choosing key naming conventions, not retrofitted later, since existing
 keys don't get hash tags added automatically.
 
-### 4. Reshard deliberately, with monitoring, never as a blind migration
+### 4. Reshard deliberately, with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), never as a blind migration
 
 ```bash
 redis-cli --cluster reshard <any-node>:6379 \
@@ -313,12 +313,12 @@ often doesn't.
 **Scenario:** A session-store Redis deployment (currently a single
 primary + 1 replica with Sentinel) needs to move to a 3-shard Redis
 Cluster ahead of an expected 4x traffic increase, and persistence needs
-review since a prior incident lost 30 minutes of session data on an
+review since a prior [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) lost 30 minutes of session data on an
 unplanned restart.
 
 1. Review current persistence: RDB-only, `save 3600 1` (hourly
    snapshot) — this is why 30 minutes of writes were lost on restart, a
-   30-minute window is far larger than the incident's actual tolerance.
+   30-minute window is far larger than the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s actual tolerance.
    Enable AOF alongside the existing RDB schedule:
    ```
    appendonly yes
@@ -352,6 +352,6 @@ unplanned restart.
 
 ## Cross-references
 
-- [redis-configuration-validation](../redis-configuration-validation/SKILL.md) — validates `maxmemory`/eviction policy and cluster topology changes like the ones made here before they're relied on in production.
-- [redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md) — the application-facing caching patterns (cache-aside, TTL strategy, invalidation) that run on top of the cluster/persistence infrastructure covered here.
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — comparable sharding/resharding and replica-election concerns (chunk migration vs. hash slot migration) if MongoDB and Redis Cluster coexist in the same platform.
+- [redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md) — validates `maxmemory`/eviction policy and cluster topology changes like the ones made here before they're relied on in production.
+- [redis-caching-strategy-and-invalidation-patterns](../[redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md)/SKILL.md) — the application-facing caching patterns (cache-aside, TTL strategy, invalidation) that run on top of the cluster/persistence infrastructure covered here.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable sharding/resharding and replica-election concerns (chunk migration vs. hash slot migration) if [MongoDB](../../Backend/mongodb/SKILL.md) and Redis Cluster coexist in the same platform.

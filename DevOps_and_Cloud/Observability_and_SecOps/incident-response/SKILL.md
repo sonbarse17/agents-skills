@@ -4,11 +4,11 @@ description: Runs a live incident from first alert to resolution — assigning c
 license: MIT
 ---
 
-# Incident Response
+# [Incident](../incident/SKILL.md) Response
 
-An incident is not a debugging session with an audience — it is a distinct mode with its own
+An [incident](../incident/SKILL.md) is not a debugging session with an audience — it is a distinct mode with its own
 goals. The instinct of a good engineer is to understand the problem before acting; the
-discipline of incident response is to reduce customer harm before you understand anything at
+discipline of [incident](../incident/SKILL.md) response is to reduce customer harm before you understand anything at
 all. Those two goals conflict, and the second one wins until stated otherwise.
 
 The single biggest failure mode in live incidents is not technical, it is organizational:
@@ -18,23 +18,23 @@ what changed. Fixing that costs nothing and saves the most time.
 **Mitigate first, understand second, and let one person own the decisions.**
 
 For role definitions, a severity matrix, and copy-paste status-update templates, read
-`../../../Global_References/incident-roles.md`.
+`../../../Global_References/[incident](../incident/SKILL.md)-roles.md`.
 
-## 1. Name an incident commander in the first five minutes
+## 1. Name an [incident](../incident/SKILL.md) commander in the first five minutes
 
 The IC does not fix anything. Their job is to hold the shared model of what is happening, make
 the call on what to try next, and stop responders from working at cross purposes. Without a
 named IC, every responder is independently trying to be the hero, which means duplicated
 effort and nobody watching the whole board.
 
-- **One IC per incident**, full stop — if it feels like it needs two, split into two
+- **One IC per [incident](../incident/SKILL.md)**, full stop — if it feels like it needs two, split into two
   incidents.
 - **Ops does the hands-on-keyboard work**, comms talks to stakeholders, IC decides — do not
   let one person try to be all three on anything above the lowest severity.
-- **The IC can be reassigned** mid-incident if someone more senior joins or the first IC needs
+- **The IC can be reassigned** mid-[incident](../incident/SKILL.md) if someone more senior joins or the first IC needs
   to become hands-on; say so out loud when it happens.
 
-**Done when:** everyone in the incident channel can name the current IC without asking.
+**Done when:** everyone in the [incident](../incident/SKILL.md) channel can name the current IC without asking.
 
 ## 2. Mitigate before you diagnose
 
@@ -47,7 +47,7 @@ permanent — it needs to be now.
   deploy, config change, or scaling event, and reverting it is faster than understanding it.
 - **Prefer reversible mitigations** — a rollback or a traffic shift you can undo beats a
   targeted code fix you're improvising under pressure.
-- **A mitigated incident is not a closed incident** — it moves to lower urgency, not to done.
+- **A mitigated [incident](../incident/SKILL.md) is not a closed [incident](../incident/SKILL.md)** — it moves to lower urgency, not to done.
 
 **Done when:** customer-facing impact has stopped or measurably reduced, independent of
 whether the cause is understood.
@@ -65,17 +65,17 @@ facts come in — severity is a snapshot of current customer impact, not a predi
 | SEV2 | Degraded for a subset of users/features | Updates hourly |
 | SEV3 | Minor or internal-only impact | Updates at milestones |
 
-**Done when:** the incident has a stated severity that matches current, not worst-case,
+**Done when:** the [incident](../incident/SKILL.md) has a stated severity that matches current, not worst-case,
 customer impact.
 
 ## 4. Communicate on a fixed cadence, not when you feel like it
 
-Silence during an incident is read as "nobody is working on it," even when three engineers are
+Silence during an [incident](../incident/SKILL.md) is read as "nobody is working on it," even when three engineers are
 heads-down. A predictable update cadence — even a boring "still investigating, next update in
 30 minutes" — is what keeps stakeholders off the responders' backs and prevents the same
 question being asked in five channels at once.
 
-- **One channel of record** — status page, incident channel, whatever it is, say it once and
+- **One channel of record** — status page, [incident](../incident/SKILL.md) channel, whatever it is, say it once and
   point everyone there.
 - **State impact, current action, and next update time** — every update, not just the first
   one.
@@ -86,23 +86,23 @@ status without asking.
 
 ## 5. Protect the responders' attention
 
-An incident channel that fills with speculation, side debugging, and "have you tried"
+An [incident](../incident/SKILL.md) channel that fills with speculation, side debugging, and "have you tried"
 suggestions from well-meaning bystanders slows the people actually holding context. The IC's
 job includes triage of *people*, not just systems.
 
 - **Move deep-dive debugging to a thread or side channel**, keep the main channel for status
   and decisions.
-- **Limit who can push changes** during the incident — uncoordinated fixes are how a SEV2
+- **Limit who can push changes** during the [incident](../incident/SKILL.md) — uncoordinated fixes are how a SEV2
   becomes a SEV1.
 - **Call a break** on long incidents — a swapped-in fresh responder catches things a
   six-hour-deep one won't.
 
-**Done when:** the main incident channel is readable as a decision log, not a debugging
+**Done when:** the main [incident](../incident/SKILL.md) channel is readable as a decision log, not a debugging
 transcript.
 
-## 6. Close the loop before closing the incident
+## 6. Close the loop before closing the [incident](../incident/SKILL.md)
 
-An incident isn't over when the graph looks normal — it's over when you've confirmed the
+An [incident](../incident/SKILL.md) isn't over when the graph looks normal — it's over when you've confirmed the
 mitigation holds and handed off what's left. Declaring victory too early is how the same page
 fires again an hour later.
 
@@ -110,16 +110,16 @@ fires again an hour later.
   run) before declaring resolved.
 - **Capture the timeline while it's fresh** — timestamps, who did what, get lost fast once
   people move on.
-- **Schedule the postmortem before people scatter** — see `root-cause-analysis`.
+- **Schedule the postmortem before people scatter** — see `[root-cause-analysis](../root-cause-analysis/SKILL.md)`.
 
-**Done when:** the incident is marked resolved with a confirmed-stable window and a postmortem
+**Done when:** the [incident](../incident/SKILL.md) is marked resolved with a confirmed-stable window and a postmortem
 is on the calendar.
 
 ## Report
 
 State the final severity, who was IC, what mitigated the impact and when, and how long
 customers were affected. Name explicitly what is still not understood about root cause — an
-incident report that claims full understanding under time pressure is usually wrong, and
+[incident](../incident/SKILL.md) report that claims full understanding under time pressure is usually wrong, and
 saying "mitigated, cause not yet confirmed" is more honest and more useful than a guess
 dressed up as a conclusion.
 

@@ -12,7 +12,7 @@ system actually is without logging into anything. The moment someone makes a cha
 band, that promise breaks, and every plan after it lies a little.
 
 Terraform is the default lens here because it's the common ground across clouds, but the
-discipline applies equally to CloudFormation, Pulumi, or Bicep.
+discipline applies equally to [CloudFormation](../cloudformation/SKILL.md), [Pulumi](../pulumi/SKILL.md), or Bicep.
 
 **If the state of the system can't be reconstructed by reading the repo, it isn't infrastructure
 as code — it's infrastructure with extra steps.**
@@ -24,7 +24,7 @@ detection — read `../../../Global_References/terraform.md`.
 
 `terraform plan` exists so nobody has to trust their own diff — read the actual output, every
 time, even for changes that feel trivial. The plan is the one place a typo becomes visible before
-it becomes an incident: a renamed resource that Terraform reads as destroy-then-create, a
+it becomes an [incident](../../Observability_and_SecOps/incident/SKILL.md): a renamed resource that Terraform reads as destroy-then-create, a
 provider default that shifted, a variable that resolved to something unexpected.
 
 - **Look for destroy and replace, not just create** — those are the operations with a blast
@@ -32,7 +32,7 @@ provider default that shifted, a variable that resolved to something unexpected.
 - **Treat "no changes" as a result to verify, not skip** — if you expected a change and got none,
   something upstream is wrong.
 - **Never apply a plan you didn't personally read**, even in CI — a human or a policy gate (see
-  `policy-as-code`) should see the diff before it lands.
+  `[policy-as-code](../../../Security/policy-as-code/SKILL.md)`) should see the diff before it lands.
 
 **Done when:** the plan output for every production apply is attached to its approval record, so
 what was approved can be compared against what was applied.
@@ -69,7 +69,7 @@ instance_type  = "m5.xlarge"
 ```
 
 One module, one set of `.tf` files, and a `.tfvars` file per environment. See
-`environment-management` for the fuller promotion and parity story — this is the mechanical
+`[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for the fuller promotion and parity story — this is the mechanical
 enabler of it.
 
 **Done when:** creating a new environment means adding a values file, not copying and editing a
@@ -95,7 +95,7 @@ standing between a plan and its apply.
 Copy-pasting the same 20 lines into a third resource is the signal to modularize — not the first
 time you write it, and often not even the second. A module built from one use case guesses at an
 interface; a module built from three real ones has an interface backed by evidence. See
-`terraform-modules` for how to design the interface once you're actually there.
+`[terraform-modules](../terraform-modules/SKILL.md)` for how to design the interface once you're actually there.
 
 **Done when:** every module in the repo can point to at least two real call sites that justified
 its extraction, not a single speculative one.

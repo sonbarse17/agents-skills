@@ -27,7 +27,7 @@ The temporal decoupling of strategy from execution. The agent first synthesizes 
 ## The Necessity of Self-Reflection
 Without self-reflection, an agent is an open-loop controller doomed to terminal error spirals. Self-reflection acts as the error-correction mechanism, forcing the agent to evaluate the delta between expected observation and actual observation, dynamically altering its system prompt or execution graph to converge on the goal state.
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Start([Goal Initialization]) --> Perceive

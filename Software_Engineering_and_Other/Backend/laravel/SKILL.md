@@ -26,7 +26,7 @@ User request includes: `Laravel structure`, `Laravel app`, `Eloquent`, `Laravel 
 ### Input Context
 - Laravel version (10.x, 11.x)
 - PHP version (8.1+)
-- Database (MySQL, PostgreSQL, SQLite)
+- Database ([MySQL](../mysql/SKILL.md), [PostgreSQL](../postgresql/SKILL.md), SQLite)
 - Features (Auth, Queues, Broadcasting, Notifications, Cashier)
 
 ### Output Artifact

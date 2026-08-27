@@ -24,11 +24,11 @@ when possible, or recommending a support case when programmatic increases are no
 
 - An error message indicates throttling or limit exceeded (e.g., `ThrottlingException`,
   `TooManyRequestsException`, `LimitExceededException`, `ResourceLimitExceeded`).
-- A resource creation or scaling operation fails with capacity errors.
+- A resource creation or scaling operation fails with [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) errors.
 - An investigation recommendation involves provisioning additional AWS resources
   (e.g., adding EC2 instances, creating VPCs, adding NAT Gateways, launching RDS instances).
-- Capacity planning or pre-launch readiness checks.
-- Proactive monitoring of quota utilization across services.
+- [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning or pre-launch readiness checks.
+- Proactive [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) of quota utilization across services.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ Determine which service and quota to check based on the investigation context:
 1. **From error messages** — extract the service name and specific limit mentioned.
 2. **From recommendations** — if the recommendation is to provision resources, identify
    the service (e.g., EC2, VPC, RDS, Lambda, ELB) and the resource type.
-3. **From alarms** — if a CloudWatch alarm indicates capacity pressure, identify the
+3. **From alarms** — if a CloudWatch alarm indicates [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) pressure, identify the
    underlying service.
 
 ### Common service codes
@@ -71,13 +71,13 @@ Determine which service and quota to check based on the investigation context:
 | Amazon S3 | `s3` |
 | Amazon DynamoDB | `dynamodb` |
 | AWS Fargate | `fargate` |
-| Amazon CloudWatch | `monitoring` |
-| AWS CloudFormation | `cloudformation` |
+| Amazon CloudWatch | `[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` |
+| AWS [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) | `[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)` |
 | Amazon SQS | `sqs` |
 | Amazon SNS | `sns` |
 | Amazon ElastiCache | `elasticache` |
 | Amazon OpenSearch Service | `es` |
-| Auto Scaling | `autoscaling` |
+| Auto Scaling | `[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)` |
 
 If you do not know the service code, use:
 
@@ -331,7 +331,7 @@ Confirm the `Value` field reflects the new limit.
 ## Multi-Quota Check (Bulk Assessment)
 
 When a recommendation involves provisioning multiple resource types, or for proactive
-capacity planning, check all relevant quotas for the service:
+[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning, check all relevant quotas for the service:
 
 ```bash
 aws service-quotas list-service-quotas \
@@ -340,7 +340,7 @@ aws service-quotas list-service-quotas \
 ```
 
 For each quota that has a `UsageMetric`, calculate utilization. Report any quotas
-at 70%+ utilization as part of a comprehensive capacity report.
+at 70%+ utilization as part of a comprehensive [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) report.
 
 ---
 
@@ -377,5 +377,5 @@ frequently checked quota codes by service.
 - **Resource-level quotas**: Some quotas (e.g., OpenSearch instances per domain) are
   resource-level. Use `--context-id` with the resource ARN for these.
 - **Rate-based quotas**: Some quotas measure requests per second (e.g., API call rates).
-  These require different monitoring approaches (CloudWatch metrics rather than resource counts).
+  These require different [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) approaches (CloudWatch metrics rather than resource counts).
 

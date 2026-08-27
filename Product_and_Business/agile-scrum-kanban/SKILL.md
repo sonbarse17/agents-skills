@@ -31,7 +31,7 @@ This skill manages and orchestrates Agile workflows and ceremonies.
 
 ## Agent Protocol
 Triggers: Sprint start or end
-Input Context Required: Backlog items, team capacity
+Input Context Required: Backlog items, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 Output Artifact: Sprint plan or retrospective report
 Response Formats:
 ```json
@@ -53,7 +53,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. Commit to sprint
+3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -82,7 +82,7 @@ Phase 6:
 | Low velocity | Too many blockers | Focus on removing blockers |
 | No communication | Remote disconnect | Enforce daily async standups |
 | Scope creep | Undefined acceptance | Clear acceptance criteria |
-| Burnout | High workload | Adjust capacity planning |
+| Burnout | High workload | Adjust [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 | Technical debt | Ignoring non-functional | Allocate 20% to tech debt |
 
 ## Complete Execution Scenario
@@ -112,7 +112,7 @@ Flow Diagram
 <!-- compression footer -->
 
 ---
-name: agile-scrum-kanban
+name: [agile-scrum](../agile-scrum/SKILL.md)-kanban
 description: >
   Deep integration of Agile methodologies,
   Scrum frameworks, and Kanban boards.
@@ -144,7 +144,7 @@ This skill manages and orchestrates Agile workflows and ceremonies.
 
 ## Agent Protocol
 Triggers: Sprint start or end
-Input Context Required: Backlog items, team capacity
+Input Context Required: Backlog items, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 Output Artifact: Sprint plan or retrospective report
 Response Formats:
 ```json
@@ -166,7 +166,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. Commit to sprint
+3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -195,7 +195,7 @@ Phase 6:
 | Low velocity | Too many blockers | Focus on removing blockers |
 | No communication | Remote disconnect | Enforce daily async standups |
 | Scope creep | Undefined acceptance | Clear acceptance criteria |
-| Burnout | High workload | Adjust capacity planning |
+| Burnout | High workload | Adjust [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 | Technical debt | Ignoring non-functional | Allocate 20% to tech debt |
 
 ## Complete Execution Scenario
@@ -225,7 +225,7 @@ Flow Diagram
 <!-- compression footer -->
 
 ---
-name: agile-scrum-kanban
+name: [agile-scrum](../agile-scrum/SKILL.md)-kanban
 description: >
   Deep integration of Agile methodologies,
   Scrum frameworks, and Kanban boards.
@@ -257,7 +257,7 @@ This skill manages and orchestrates Agile workflows and ceremonies.
 
 ## Agent Protocol
 Triggers: Sprint start or end
-Input Context Required: Backlog items, team capacity
+Input Context Required: Backlog items, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 Output Artifact: Sprint plan or retrospective report
 Response Formats:
 ```json
@@ -279,7 +279,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. Commit to sprint
+3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -308,7 +308,7 @@ Phase 6:
 | Low velocity | Too many blockers | Focus on removing blockers |
 | No communication | Remote disconnect | Enforce daily async standups |
 | Scope creep | Undefined acceptance | Clear acceptance criteria |
-| Burnout | High workload | Adjust capacity planning |
+| Burnout | High workload | Adjust [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 | Technical debt | Ignoring non-functional | Allocate 20% to tech debt |
 
 ## Complete Execution Scenario
@@ -338,7 +338,7 @@ Flow Diagram
 <!-- compression footer -->
 
 ---
-name: agile-scrum-kanban
+name: [agile-scrum](../agile-scrum/SKILL.md)-kanban
 description: >
   Deep integration of Agile methodologies,
   Scrum frameworks, and Kanban boards.
@@ -370,7 +370,7 @@ This skill manages and orchestrates Agile workflows and ceremonies.
 
 ## Agent Protocol
 Triggers: Sprint start or end
-Input Context Required: Backlog items, team capacity
+Input Context Required: Backlog items, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 Output Artifact: Sprint plan or retrospective report
 Response Formats:
 ```json
@@ -392,7 +392,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. Commit to sprint
+3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -421,7 +421,7 @@ Phase 6:
 | Low velocity | Too many blockers | Focus on removing blockers |
 | No communication | Remote disconnect | Enforce daily async standups |
 | Scope creep | Undefined acceptance | Clear acceptance criteria |
-| Burnout | High workload | Adjust capacity planning |
+| Burnout | High workload | Adjust [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 | Technical debt | Ignoring non-functional | Allocate 20% to tech debt |
 
 ## Complete Execution Scenario
@@ -451,7 +451,7 @@ Flow Diagram
 <!-- compression footer -->
 
 ---
-name: agile-scrum-kanban
+name: [agile-scrum](../agile-scrum/SKILL.md)-kanban
 description: >
   Deep integration of Agile methodologies,
   Scrum frameworks, and Kanban boards.
@@ -483,7 +483,7 @@ This skill manages and orchestrates Agile workflows and ceremonies.
 
 ## Agent Protocol
 Triggers: Sprint start or end
-Input Context Required: Backlog items, team capacity
+Input Context Required: Backlog items, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 Output Artifact: Sprint plan or retrospective report
 Response Formats:
 ```json
@@ -505,7 +505,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. Commit to sprint
+3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -534,7 +534,7 @@ Phase 6:
 | Low velocity | Too many blockers | Focus on removing blockers |
 | No communication | Remote disconnect | Enforce daily async standups |
 | Scope creep | Undefined acceptance | Clear acceptance criteria |
-| Burnout | High workload | Adjust capacity planning |
+| Burnout | High workload | Adjust [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning |
 | Technical debt | Ignoring non-functional | Allocate 20% to tech debt |
 
 ## Complete Execution Scenario

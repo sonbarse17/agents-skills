@@ -13,18 +13,18 @@ metadata:
   related-skills: fastapi-expert, devops-engineer
 ---
 
-# Python Pro
+# [Python](../python/SKILL.md) Pro
 
-Modern Python 3.11+ specialist focused on type-safe, async-first, production-ready code.
+Modern [Python](../python/SKILL.md) 3.11+ specialist focused on type-safe, async-first, production-ready code.
 
 ## When to Use This Skill
 
-- Writing type-safe Python with complete type coverage
+- Writing type-safe [Python](../python/SKILL.md) with complete type coverage
 - Implementing async/await patterns for I/O operations
 - Setting up pytest test suites with fixtures and mocking
 - Creating Pythonic code with comprehensions, generators, context managers
 - Building packages with Poetry and proper project structure
-- Performance optimization and profiling
+- Performance optimization and [profiling](../../Frontend/profiling/SKILL.md)
 
 ## Core Workflow
 
@@ -44,9 +44,9 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Type System | `../../../Global_References/type-system.md` | Type hints, mypy, generics, Protocol |
-| Async Patterns | `../../../Global_References/python-pro_async-patterns.md` | async/await, asyncio, task groups |
+| Async Patterns | `../../../Global_References/[python](../python/SKILL.md)-pro_async-patterns.md` | async/await, asyncio, task groups |
 | Standard Library | `../../../Global_References/standard-library.md` | pathlib, dataclasses, functools, itertools |
-| Testing | `../../../Global_References/python-pro_testing.md` | pytest, fixtures, mocking, parametrize |
+| Testing | `../../../Global_References/[python](../python/SKILL.md)-pro_testing.md` | pytest, fixtures, mocking, parametrize |
 | Packaging | `../../../Global_References/packaging.md` | poetry, pip, pyproject.toml, distribution |
 
 ## Constraints
@@ -56,7 +56,7 @@ Load detailed guidance based on context:
 - PEP 8 compliance with black formatting
 - Comprehensive docstrings (Google style)
 - Test coverage exceeding 90% with pytest
-- Use `X | None` instead of `Optional[X]` (Python 3.10+)
+- Use `X | None` instead of `Optional[X]` ([Python](../python/SKILL.md) 3.10+)
 - Async/await for I/O-bound operations
 - Dataclasses over manual __init__ methods
 - Context managers for resource handling
@@ -73,7 +73,7 @@ Load detailed guidance based on context:
 ## Code Examples
 
 ### Type-annotated function with error handling
-```python
+```[python](../python/SKILL.md)
 from pathlib import Path
 
 def read_config(path: Path) -> dict[str, str]:
@@ -100,7 +100,7 @@ def read_config(path: Path) -> dict[str, str]:
 ```
 
 ### Dataclass with validation
-```python
+```[python](../python/SKILL.md)
 from dataclasses import dataclass, field
 
 @dataclass
@@ -116,7 +116,7 @@ class AppConfig:
 ```
 
 ### Async pattern
-```python
+```[python](../python/SKILL.md)
 import asyncio
 import httpx
 
@@ -129,7 +129,7 @@ async def fetch_all(urls: list[str]) -> list[bytes]:
 ```
 
 ### pytest fixture and parametrize
-```python
+```[python](../python/SKILL.md)
 import pytest
 from pathlib import Path
 
@@ -166,7 +166,7 @@ Any reported error (e.g., `error: Function is missing a return type annotation`)
 
 ## Output Templates
 
-When implementing Python features, provide:
+When implementing [Python](../python/SKILL.md) features, provide:
 1. Module file with complete type hints
 2. Test file with pytest fixtures
 3. Type checking confirmation (mypy --strict passes)
@@ -174,7 +174,7 @@ When implementing Python features, provide:
 
 ## Knowledge Reference
 
-Python 3.11+, typing module, mypy, pytest, black, ruff, dataclasses, async/await, asyncio, pathlib, functools, itertools, Poetry, Pydantic, contextlib, collections.abc, Protocol
+[Python](../python/SKILL.md) 3.11+, typing module, mypy, pytest, black, ruff, dataclasses, async/await, asyncio, pathlib, functools, itertools, Poetry, Pydantic, contextlib, collections.abc, Protocol
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/python-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/[python](../python/SKILL.md)-pro/)
 

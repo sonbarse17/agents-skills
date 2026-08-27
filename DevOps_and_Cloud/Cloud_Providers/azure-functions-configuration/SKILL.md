@@ -67,12 +67,12 @@ sensitivity is a recurring, avoidable source of production complaints.
    for a while pays a cold start on the next invocation while a new
    instance initializes. Premium (`EP1`–`EP3` SKUs) keeps a configurable
    number of pre-warmed instances always ready, eliminating cold starts
-   for traffic within that pre-warmed capacity, and supports VNet
+   for traffic within that pre-warmed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and supports VNet
    integration; it has an always-on baseline cost even at zero traffic.
    Dedicated (App Service Plan) runs on VMs you already pay for
    continuously — the right choice when the Function App shares
    infrastructure with an existing App Service workload, or needs fully
-   predictable, always-on capacity:
+   predictable, always-on [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
    ```bash
    az functionapp plan create \
      --name checkout-functions-premium \
@@ -84,7 +84,7 @@ sensitivity is a recurring, avoidable source of production complaints.
      --resource-group <RESOURCE_GROUP> \
      --plan checkout-functions-premium \
      --storage-account <STORAGE_ACCOUNT_NAME> \
-     --runtime python \
+     --runtime [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
      --runtime-version 3.11 \
      --functions-version 4
    ```
@@ -146,7 +146,7 @@ sensitivity is a recurring, avoidable source of production complaints.
    Settings.** `local.settings.json` is for local `func start` only and
    must never be deployed or committed with real connection strings; in
    Azure, the equivalent values live in Application Settings (or
-   Key Vault references) on the Function App:
+   Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references) on the Function App:
    ```bash
    az functionapp config appsettings set \
      --name checkout-functions \
@@ -169,9 +169,9 @@ sensitivity is a recurring, avoidable source of production complaints.
 - Pin the extension bundle version range in `host.json` (`[4.*, 5.0.0)`
   style) rather than leaving it fully open, so a major bundle version
   bump doesn't silently change binding behavior on the next deploy.
-- Store secrets and connection strings as Key Vault references in
+- Store secrets and connection strings as Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references in
   Application Settings, not as plaintext values, even though Application
-  Settings are already encrypted at rest — Key Vault references add
+  Settings are already encrypted at rest — Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references add
   centralized rotation and access auditing.
 - Size Premium plan instance count and pre-warmed count from observed
   traffic (Application Insights request rate), not a guess, and revisit
@@ -202,7 +202,7 @@ sensitivity is a recurring, avoidable source of production complaints.
   connection string) gets committed to source control or accidentally
   included in a deployment package.
   **Fix:** Add `local.settings.json` to `.gitignore` by default in every
-  new Function App project, and rely on Application Settings / Key Vault
+  new Function App project, and rely on Application Settings / Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
   references for any deployed environment — never deploy this file.
 
 - **Symptom:** A queue-triggered function processes the same message
@@ -246,17 +246,17 @@ size for the async path, which doesn't need low latency:
   "extensions": { "queues": { "batchSize": 32, "maxDequeueCount": 3 } }
 }
 ```
-The Cosmos DB connection string is stored as a Key Vault reference in
+The Cosmos DB connection string is stored as a Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) reference in
 Application Settings rather than a plaintext value. Before this ships,
 the trigger/binding declarations and `host.json` are reviewed against the
 general pre-deploy discipline described in
-[aws-lambda-configuration-validation](../aws-lambda-configuration-validation/SKILL.md)'s
+[aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../[aws-lambda](../aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)'s
 approach (adapted to Azure equivalents: App Settings secret scanning,
 VNet integration correctness), since this domain doesn't yet have an
 Azure-specific validation skill of its own.
 
 ## Cross-references
 
-- [aws-lambda-packaging-and-configuration](../aws-lambda-packaging-and-configuration/SKILL.md) — the equivalent packaging/tuning/cold-start decisions on AWS Lambda, useful when comparing platforms or migrating.
-- [google-cloud-functions-configuration](../google-cloud-functions-configuration/SKILL.md) — the equivalent hosting/scaling configuration on Google Cloud Functions Gen1/Gen2.
-- [dapr-distributed-runtime-configuration](../dapr-distributed-runtime-configuration/SKILL.md) — Azure Functions' Dapr extension lets triggers/bindings target Dapr state stores and pub/sub components instead of native Azure services, useful for polyglot or multi-cloud portability.
+- [aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — the equivalent packaging/tuning/cold-start decisions on AWS Lambda, useful when comparing platforms or migrating.
+- [google-cloud-functions-configuration](../[google-cloud-functions-configuration](../google-cloud-functions-configuration/SKILL.md)/SKILL.md) — the equivalent hosting/scaling configuration on Google Cloud Functions Gen1/Gen2.
+- [dapr-distributed-runtime-configuration](../[dapr-distributed-runtime-configuration](../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md) — Azure Functions' Dapr extension lets triggers/bindings target Dapr state stores and pub/sub components instead of native Azure services, useful for polyglot or [multi-cloud](../multi-cloud/SKILL.md) portability.

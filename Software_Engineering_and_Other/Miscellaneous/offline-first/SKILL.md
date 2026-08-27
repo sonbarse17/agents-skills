@@ -77,7 +77,7 @@ What kind of data?
 ```
 Cross-platform need?
 ├── Single platform
-│   ├── Android → Room (compile-time SQL, Flow, migrations)
+│   ├── [Android](../../../Mobile/android/SKILL.md) → Room (compile-time SQL, Flow, migrations)
 │   └── iOS → CoreData (SwiftUI integration, iCloud sync)
 ├── KMP (Kotlin Multiplatform) → SQLDelight (type-safe, cross-platform)
 ├── Hybrid/React Native → WatermelonDB (SQLite-based, lazy loading)
@@ -104,10 +104,10 @@ Three layers:
 - **UI layer**: Observes local DB via reactive streams (Flow, Combine), displays connectivity state, shows staleness indicators
 
 ### 2. Local Database Selection
-- **Room** (Android): compile-time SQL verification, Flow-based reactive queries, migrations
-- **SQLDelight** (KMP): cross-platform, type-safe, generates drivers for Android/iOS/JVM
+- **Room** ([Android](../../../Mobile/android/SKILL.md)): compile-time SQL verification, Flow-based reactive queries, migrations
+- **SQLDelight** (KMP): cross-platform, type-safe, generates drivers for [Android](../../../Mobile/android/SKILL.md)/iOS/JVM
 - **CoreData** (iOS native): SwiftUI @FetchRequest, iCloud sync, lightweight migration
-- **Realm**: MongoDB Atlas Device Sync, real-time sync, larger binary
+- **Realm**: [MongoDB](../../Backend/mongodb/SKILL.md) Atlas Device Sync, real-time sync, larger binary
 - **WatermelonDB**: SQLite lazy loading for React Native
 - **MMKV**: Fast key-value, no schema, ideal for settings/cache
 
@@ -134,7 +134,7 @@ Write flow: validate → write to local DB → enqueue sync op → if online, tr
 Persistent queue in local DB. Each operation: id, entity type, entity ID, action, payload, idempotency key, created timestamp, retry count, last error. FIFO replay with exponential backoff.
 
 ### 7. Connectivity Detection and UX
-Android: ConnectivityManager.NetworkCallback. iOS: NWPathMonitor. UI: persistent offline banner, sync status indicator, disable mutation buttons with tooltip.
+[Android](../../../Mobile/android/SKILL.md): ConnectivityManager.NetworkCallback. iOS: NWPathMonitor. UI: persistent offline banner, sync status indicator, disable mutation buttons with tooltip.
 
 ## Conflict Resolution Strategies
 
@@ -148,7 +148,7 @@ Android: ConnectivityManager.NetworkCallback. iOS: NWPathMonitor. UI: persistent
 
 ## Implementation
 
-### Repository Pattern — Android Room
+### Repository Pattern — [Android](../../../Mobile/android/SKILL.md) Room
 ```kotlin
 // OrderRepository.kt
 class OrderRepository(
@@ -280,7 +280,7 @@ class SyncQueue {
 }
 ```
 
-### Background Sync — Android WorkManager
+### Background Sync — [Android](../../../Mobile/android/SKILL.md) WorkManager
 ```kotlin
 class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
   override suspend fun doWork(): Result {
@@ -448,7 +448,7 @@ class ConnectivityBanner extends StatelessWidget {
 ```
 
 ```kotlin
-// Android — offline state in ViewModel
+// [Android](../../../Mobile/android/SKILL.md) — offline state in ViewModel
 class OrderViewModel(private val repo: OrderRepository) : ViewModel() {
   val orders: StateFlow<List<Order>> = repo.getOrders()
     .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -552,6 +552,6 @@ After offline-first setup, hand off to:
 - `mobile/universal/testing` — Offline scenario testing, sync testing
 - `mobile/universal/performance` — Sync performance, DB query optimization
 - `mobile/universal/push-notifications` — Silent push as sync trigger
-- `mobile/android` — WorkManager, Room specifics
+- `mobile/[android](../../../Mobile/android/SKILL.md)` — WorkManager, Room specifics
 - `mobile/ios` — CoreData, BGTaskScheduler specifics
 

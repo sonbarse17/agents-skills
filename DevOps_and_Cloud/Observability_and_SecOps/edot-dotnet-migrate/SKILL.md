@@ -12,16 +12,16 @@ metadata:
 
 Read the migration guide before making changes:
 
-- [Migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/migration)
-- [EDOT .NET setup](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup)
-- [EDOT .NET configuration](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/configuration)
+- [Migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/migration)
+- [EDOT .NET setup](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/setup)
+- [EDOT .NET configuration](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/configuration)
 
 ## Guidelines
 
 1. Remove ALL classic APM references: `Elastic.Apm.*` NuGet packages (including `Elastic.Apm.NetCoreAll`),
    `UseAllElasticApm()` / `AddAllElasticApm()` calls, the `ElasticApm` section from `appsettings.json`, and all
    `ELASTIC_APM_*` env vars
-1. Add NuGet packages: `Elastic.OpenTelemetry` and `OpenTelemetry.Instrumentation.AspNetCore` (for ASP.NET Core apps)
+1. Add NuGet packages: `Elastic.[OpenTelemetry](../opentelemetry/SKILL.md)` and `[OpenTelemetry](../opentelemetry/SKILL.md).Instrumentation.AspNetCore` (for ASP.NET Core apps)
 1. Register EDOT in startup: call `builder.AddElasticOpenTelemetry()` on the `IHostApplicationBuilder` (in `Program.cs`
    or equivalent). Without this, no telemetry is collected
 1. Set exactly three required environment variables:
@@ -37,5 +37,5 @@ Read the migration guide before making changes:
 
 ## Examples
 
-See the [EDOT .NET migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/migration) for
+See the [EDOT .NET migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/migration) for
 complete examples.

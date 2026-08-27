@@ -44,14 +44,14 @@ $$ O(\log N) \text{ time complexity for Git bisect across } N \text{ commits} $$
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -68,9 +68,9 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 
 ### Mathematical Thresholds
 $$ O(\log N) \text{ time complexity for Git bisect across } N \text{ commits} $$
@@ -81,11 +81,11 @@ $$ O(\log N) \text{ time complexity for Git bisect across } N \text{ commits} $$
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
 
 ### Core Implementation
 ```javascript
@@ -107,14 +107,14 @@ module.exports = {
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -130,8 +130,8 @@ graph TD
 To optimize **Skill**, we enforce the following foundational rules:
 
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 
 ### Core Implementation
 ```javascript
@@ -153,8 +153,8 @@ module.exports = {
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
 
 ### Mathematical Thresholds
@@ -166,12 +166,12 @@ $$ O(\log N) \text{ time complexity for Git bisect across } N \text{ commits} $$
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -186,10 +186,10 @@ graph TD
 
 To optimize **Skill**, we enforce the following foundational rules:
 
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
-- **CI/CD Pipelines**: Automating testing and deployment using GitHub Actions or GitLab CI.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
+- **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or GitLab CI.
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 
 ### Mathematical Thresholds
@@ -202,9 +202,9 @@ $$ O(\log N) \text{ time complexity for Git bisect across } N \text{ commits} $$
 To optimize **Skill**, we enforce the following foundational rules:
 
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
-- **Pre-commit Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
+- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
-- **VCS Bisecting**: Automating regression detection through binary search of commit history.
+- **VCS Bisecting**: Automating regression detection through binary search of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history.
 
 ### Core Implementation
 ```javascript

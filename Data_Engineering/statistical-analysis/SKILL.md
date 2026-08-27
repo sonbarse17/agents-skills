@@ -180,11 +180,11 @@ Outcome type?
 └── Multivariate → MANOVA or multivariate regression
 ```
 
-### Python Implementation Examples
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Implementation Examples
 
 #### Hypothesis Tests
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -231,7 +231,7 @@ def anova_test(*groups):
 
 #### Linear Regression with Diagnostics
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import statsmodels.api as sm
 
 def regression_with_diagnostics(X, y):
@@ -273,7 +273,7 @@ def regression_with_diagnostics(X, y):
 
 #### Components and Decomposition
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller, acf, pacf
 
@@ -328,7 +328,7 @@ arima_workflow:
     - "Metrics: MAE, RMSE, MAPE, MASE"
 ```
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.stats.diagnostic import acorr_ljungbox
 
@@ -353,7 +353,7 @@ def fit_and_diagnose_arima(series, order, seasonal_order=None):
 
 #### Bayesian A/B Test with PyMC
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import pymc as pm
 
 def bayesian_ab_test(clicks_a, impressions_a, clicks_b, impressions_b):
@@ -384,7 +384,7 @@ def bayesian_ab_test(clicks_a, impressions_a, clicks_b, impressions_b):
 
 #### Bayesian Linear Regression
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def bayesian_regression(X, y):
     with pm.Model() as reg_model:
         # Priors
@@ -414,7 +414,7 @@ def bayesian_regression(X, y):
 
 #### PCA Implementation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
@@ -452,7 +452,7 @@ def pca_analysis(X, n_components=None, standardize=True):
 
 #### K-Means with Optimal K Selection
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
@@ -490,7 +490,7 @@ def optimal_kmeans(X, k_range=(2, 15), random_state=42):
 
 #### MICE (Multiple Imputation by Chained Equations)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 from sklearn.ensemble import RandomForestRegressor
@@ -526,7 +526,7 @@ def pool_estimates(estimates, variances):
 
 ### Bootstrapping
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def bootstrap_ci(data, statistic=np.mean, n_bootstrap=10000, ci_level=0.95):
     n = len(data); stats = np.zeros(n_bootstrap)
     for i in range(n_bootstrap):

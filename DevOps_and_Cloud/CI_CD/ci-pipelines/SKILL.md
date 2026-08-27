@@ -18,8 +18,8 @@ once a week.
 **A CI pipeline exists to produce a merge signal that is fast, deterministic, and trusted — in
 that order of what you sacrifice first.**
 
-For concrete GitHub Actions patterns — caching, matrix builds, SHA pinning, OIDC, reusable
-workflows — read `../../../Global_References/github-actions.md`.
+For concrete [GitHub](../github/SKILL.md) Actions patterns — caching, matrix builds, SHA pinning, OIDC, reusable
+workflows — read `../../../Global_References/[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md).md`.
 
 ## 1. Order stages cheapest-and-most-likely-to-fail first
 
@@ -39,7 +39,7 @@ case (lint or unit test failure).
 
 ## 2. Pin everything the pipeline touches
 
-A pipeline that produces a different answer on a re-run of the same commit is not a merge signal,
+A pipeline that produces a different answer on a re-run of the same [commit](../commit/SKILL.md) is not a merge signal,
 it's a random number generator. Pin the CI runner image, the language/toolchain version, and
 every dependency via a lockfile (package-lock.json, poetry.lock, go.sum, Gemfile.lock). "Latest"
 tags for base images and unpinned action versions (`uses: actions/checkout@v4` vs `@sha256:...`)
@@ -59,7 +59,7 @@ reason.
 - run: npm ci   # not `npm install` — respects the lockfile exactly
 ```
 
-**Done when:** re-running the same commit's pipeline twice, a week apart, produces the same
+**Done when:** re-running the same [commit](../commit/SKILL.md)'s pipeline twice, a week apart, produces the same
 pass/fail result.
 
 ## 3. Cache aggressively, but never let the cache change the answer
@@ -67,7 +67,7 @@ pass/fail result.
 Dependency and build caches are the biggest lever on CI wall-clock time, but a cache keyed wrong
 silently serves stale artifacts and turns a real failure into a false pass (or vice versa). Key
 the cache on a hash of the lockfile, not on branch name or "latest" — if the lockfile hasn't
-changed, the cache is valid regardless of which branch produced it. See `build-optimization` for
+changed, the cache is valid regardless of which branch produced it. See `[build-optimization](../build-optimization/SKILL.md)` for
 the deeper mechanics of cache layering and remote caches; here the concern is narrower:
 correctness before speed.
 
@@ -89,7 +89,7 @@ advisory checks (a nightly-only integration suite, a slow visual regression test
 non-blocking reports, not required statuses — a required check that's flaky trains people to
 click "re-run" without reading the failure, which defeats the entire point of requiring it.
 
-- **Audit required checks quarterly** — delete ones nobody remembers the purpose of.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) required checks quarterly** — delete ones nobody remembers the purpose of.
 - **A flaky required check gets fixed or demoted within days**, not left flaky indefinitely.
 - **New required checks get introduced as non-blocking first**, promoted to required once they've
   proven stable for real PRs.
@@ -104,7 +104,7 @@ Conflating them — deploying to a shared staging environment as part of the sam
 runs unit tests — means a deploy failure blocks unrelated PRs, and a slow deploy step makes every
 contributor wait for infrastructure that has nothing to do with their code's correctness. Keep
 the boundary at the merge: CI runs on every push and PR; CD triggers on merge to main (or on tag)
-and is a separate pipeline. See `continuous-delivery` for what happens on the far side of that
+and is a separate pipeline. See `[continuous-delivery](../continuous-delivery/SKILL.md)` for what happens on the far side of that
 boundary.
 
 **Done when:** a developer can get a full green CI signal on a PR without anything being deployed
@@ -114,9 +114,9 @@ anywhere.
 
 If CI builds artifact X and CD rebuilds "the same" artifact from source for deployment, you've
 tested something you're not shipping. Compilers, dependency resolution, and even timestamps can
-make two builds of the "same" commit different. Build once in CI, publish it with a
+make two builds of the "same" [commit](../commit/SKILL.md) different. Build once in CI, publish it with a
 content-addressed or immutable version, and have every later stage pull that exact artifact.
-Details on where and how to store it belong to `artifact-management`.
+Details on where and how to store it belong to `[artifact-management](../artifact-management/SKILL.md)`.
 
 **Done when:** the SHA/digest of the artifact deployed to production matches the SHA/digest of
 the artifact that passed CI, byte for byte.

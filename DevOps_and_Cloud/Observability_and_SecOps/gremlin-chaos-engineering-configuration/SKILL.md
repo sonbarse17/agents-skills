@@ -24,24 +24,24 @@ metadata:
 ## Purpose
 
 Gremlin is a commercial, cross-platform fault-injection tool that runs
-attacks via a lightweight agent (a Kubernetes DaemonSet/sidecar, a host
+attacks via a lightweight agent (a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet/sidecar, a host
 daemon on EC2/on-prem, or an ECS task) and a central control plane that
 handles targeting, scheduling, and halting attacks — distinct from
-Kubernetes-native tools like Chaos Mesh/LitmusChaos in that it works
-consistently across Kubernetes, VMs, and bare metal without needing a
+[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native tools like Chaos Mesh/LitmusChaos in that it works
+consistently across [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), VMs, and bare metal without needing a
 different tool per platform. This skill covers the Gremlin-specific
 mechanics: installing the agent, defining attacks (resource, state,
 network) via the CLI/API/Terraform provider, scoping targets and halt
 conditions, and composing multi-step Scenarios. The *why* — steady-state
 hypotheses, blast-radius philosophy, game-day facilitation, and
 graduating to production — is covered generically in
-[chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md)
+[chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md)
 and is not repeated here; apply that skill's principles using Gremlin as
 the execution tool.
 
 ## When to use
 
-- Standing up Gremlin in a Kubernetes cluster, EC2 fleet, or ECS
+- Standing up Gremlin in a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster, EC2 fleet, or ECS
   environment for the first time (agent installation, team/target
   configuration).
 - Defining a specific Gremlin attack — CPU/memory/disk/IO resource
@@ -54,7 +54,7 @@ the execution tool.
 - Composing a multi-step Gremlin **Scenario** that chains several attacks
   in sequence to simulate a more complex failure (e.g., an AZ
   degradation followed by a dependency timeout).
-- Migrating an existing Kubernetes-native chaos setup (Chaos Mesh/
+- Migrating an existing [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native chaos setup (Chaos Mesh/
   Litmus) to Gremlin for cross-platform consistency, or vice versa.
 
 ## Prerequisites & environment
@@ -63,7 +63,7 @@ the execution tool.
   scoped to the specific team that owns the target infrastructure —
   never a single account-wide credential shared across unrelated teams.
 - The Gremlin agent installed on every target:
-  - **Kubernetes:** the `gremlin` Helm chart, deployed as a DaemonSet so
+  - **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md):** the `gremlin` Helm chart, deployed as a DaemonSet so
     every node runs an agent capable of attacking pods/containers
     scheduled there.
   - **EC2/on-prem (Linux):** the `gremlind` daemon installed via package
@@ -74,17 +74,17 @@ the execution tool.
     the task definition.
 - Network egress from the agent to Gremlin's control plane (or a
   configured on-premises relay for network-restricted environments).
-- The same automated abort/observability wiring called for generically in
-  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md) —
+- The same automated abort/[observability](../observability/SKILL.md) wiring called for generically in
+  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) —
   Gremlin's own halt conditions (below) are necessary but should be paired
-  with your own SLI-based alerting, not relied on alone.
+  with your own SLI-based [alerting](../alerting/SKILL.md), not relied on alone.
 
 ## Step-by-step guidance
 
 1. **Install the agent scoped to the intended blast-radius environment**
    — start in a non-production namespace/cluster/ASG, not org-wide:
    ```bash
-   # Kubernetes: install via Helm, scoped to a specific namespace's
+   # [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): install via Helm, scoped to a specific namespace's
    # nodes by targeting later at the attack level, not by limiting
    # agent install (the agent itself is typically cluster-wide, but
    # attacks are scoped per-attack in step 3)
@@ -123,7 +123,7 @@ the execution tool.
    ```
    This is the Gremlin equivalent of Chaos Mesh's `PodChaos` `pod-kill`
    action — validates the same restart/redundancy assumption, on
-   whatever platform the agent runs on (Kubernetes, EC2, or bare metal).
+   whatever platform the agent runs on ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), EC2, or bare metal).
 
 4. **Define a network attack** to test timeout/circuit-breaker handling
    for a specific downstream dependency, rather than a blanket network
@@ -146,7 +146,7 @@ the execution tool.
    {
      "haltCondition": {
        "type": "metric",
-       "metricSource": "datadog",
+       "metricSource": "[datadog](../datadog/SKILL.md)",
        "query": "avg:checkout.error_rate{service:payments-api}",
        "comparator": ">",
        "threshold": 2.0
@@ -188,7 +188,7 @@ the execution tool.
 
 7. **Use the Gremlin Terraform provider to version-control recurring
    attacks/scenarios** (e.g., a scheduled monthly game-day scenario)
-   alongside other infrastructure-as-code, instead of only ever
+   alongside other [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md), instead of only ever
    click-configuring them in the web UI:
    ```hcl
    resource "gremlin_scenario" "monthly_payments_gameday" {
@@ -262,7 +262,7 @@ the execution tool.
 
 ## Worked example
 
-**Scenario:** The `payments-api` team, running on Kubernetes with the
+**Scenario:** The `payments-api` team, running on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) with the
 Gremlin agent already installed as a DaemonSet, wants to validate the
 same replica-loss resilience hypothesis used in the generic chaos skill's
 worked example, but using Gremlin instead of Chaos Mesh, and additionally
@@ -290,17 +290,17 @@ test it combined with downstream latency.
 5. The Scenario is then captured as a `gremlin_scenario` Terraform
    resource and scheduled to re-run monthly as part of the team's
    recurring game-day cadence defined in
-   [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md).
+   [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md) —
+- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) —
   the tool-agnostic principles (steady-state hypothesis, blast-radius
   philosophy, game days, graduating to production) this skill implements
   specifically with Gremlin.
-- [infrastructure-post-deployment-validation-and-smoke-testing](../infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md) —
+- [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../../Infrastructure_as_Code/infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) —
   the same health/smoke-check thinking used for halt conditions here
   applies to verifying a deployment actually worked.
-- [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md) —
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) —
   a reasonable way to automate installing/configuring the Gremlin agent
   consistently across a fleet of existing hosts.

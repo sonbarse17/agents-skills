@@ -47,10 +47,10 @@ Produce `.claude/pipeline/project-doc.md` using the following structure (based o
 > Generated: [timestamp] | Mode: FULL
 
 ## Tech Stack
-- Runtime: [e.g. Node.js 20, Python 3.11]
-- Language: [e.g. TypeScript, Python]
+- Runtime: [e.g. Node.js 20, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11]
+- Language: [e.g. [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Python]
 - Framework: [e.g. Next.js 14 App Router, FastAPI]
-- Database: [e.g. PostgreSQL via Prisma]
+- Database: [e.g. [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) via Prisma]
 - Styling: [e.g. Tailwind CSS]
 - State Management: [e.g. Zustand, Redux]
 
@@ -124,7 +124,7 @@ Every agent in this pipeline reads this file before doing any work.
 It defines the rules, patterns, and guardrails specific to this project.
 
 ## Stack Context
-[One-line summary: e.g. "Next.js 14 App Router + Prisma + PostgreSQL + Tailwind + Vitest"]
+[One-line summary: e.g. "Next.js 14 App Router + Prisma + [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) + Tailwind + Vitest"]
 
 ## Code Style Rules
 [Written as DO/DON'T instructions inferred from actual codebase patterns]
@@ -180,7 +180,7 @@ Example:
 [e.g. "Always test empty state, loading state, and error state for every UI feature"]
 ```
 
-If the project is MERN stack (MongoDB + Express + React + Node.js — detected from package.json / requirements), append a `### MERN Stack Notes` section to AGENTS.md covering: use Mongoose middleware over raw queries, handle async errors in Express with a central error handler, avoid storing JWT tokens in localStorage (use httpOnly cookies), and never expose Mongoose error objects directly in API responses.
+If the project is MERN stack ([MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) + Express + React + Node.js — detected from package.json / requirements), append a `### MERN Stack Notes` section to AGENTS.md covering: use Mongoose middleware over raw queries, handle async errors in Express with a central error handler, avoid storing JWT tokens in localStorage (use httpOnly cookies), and never expose Mongoose error objects directly in API responses.
 
 ## Step 4B: Architectural Change Detection (Delta Runs Only)
 

@@ -10,14 +10,14 @@ metadata:
   package: azure-ai-transcription
 ---
 
-# Azure AI Transcription SDK for Python
+# Azure AI Transcription SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure AI Transcription (speech-to-text) with real-time and batch transcription.
 
 ## Installation
 
 ```bash
-pip install azure-ai-transcription
+pip install [azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-transcription
 ```
 
 ## Environment Variables
@@ -40,7 +40,7 @@ TRANSCRIPTION_KEY=<your-key>  # For key auth; not needed when using DefaultAzure
 
 Use subscription key authentication:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
@@ -54,7 +54,7 @@ with TranscriptionClient(
 
 ## Transcription (Batch)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
@@ -75,7 +75,7 @@ with TranscriptionClient(
 
 ## Transcription (Real-time)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
@@ -105,6 +105,6 @@ with TranscriptionClient(
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/azure-ai-transcription-py_capabilities.md](../../../../../Global_References/azure-ai-transcription-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/azure-ai-transcription-py_non-hero-scenarios.md](../../../../../Global_References/azure-ai-transcription-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-transcription-py_capabilities.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-transcription-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-transcription-py_non-hero-scenarios.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-transcription-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

@@ -15,23 +15,23 @@ Collect metrics and visualize system performance with the Prometheus-Grafana sta
 
 Use this skill when:
 - Setting up metrics collection infrastructure
-- Creating monitoring dashboards
+- Creating [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md)
 - Writing PromQL queries for analysis
-- Configuring alerting rules
-- Monitoring Kubernetes clusters
+- Configuring [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules
+- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters
 
 ## Prerequisites
 
-- Docker or Kubernetes for deployment
+- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) for deployment
 - Network access to monitored targets
 - Basic understanding of metrics concepts
 
 ## Prometheus Setup
 
-### Docker Deployment
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -70,7 +70,7 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
 
-alerting:
+[alerting](../../Observability_and_SecOps/alerting/SKILL.md):
   alertmanagers:
     - static_configs:
         - targets:
@@ -97,17 +97,17 @@ scrape_configs:
     metrics_path: /metrics
 ```
 
-## Kubernetes Deployment
+## [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment
 
 ### Using Helm
 
 ```bash
 # Add Prometheus community Helm repo
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 
 # Install kube-prometheus-stack
 helm install prometheus prometheus-community/kube-prometheus-stack \
-  --namespace monitoring \
+  --namespace [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) \
   --create-namespace \
   --set grafana.adminPassword=admin
 ```
@@ -115,11 +115,11 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 ### ServiceMonitor
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: myapp
-  namespace: monitoring
+  namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 spec:
   selector:
     matchLabels:
@@ -183,7 +183,7 @@ changes(up[5m])
 avg_over_time(http_requests_total[24h])
 ```
 
-## Alerting Rules
+## [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Rules
 
 ```yaml
 # rules/alerts.yml
@@ -262,7 +262,7 @@ receivers:
         severity: critical
 ```
 
-## Grafana Dashboards
+## Grafana [Dashboards](../dashboards/SKILL.md)
 
 ### Dashboard JSON Structure
 
@@ -297,10 +297,10 @@ receivers:
 }
 ```
 
-### Provisioning Dashboards
+### Provisioning [Dashboards](../dashboards/SKILL.md)
 
 ```yaml
-# grafana/provisioning/dashboards/dashboards.yml
+# grafana/provisioning/[dashboards](../dashboards/SKILL.md)/[dashboards](../dashboards/SKILL.md).yml
 apiVersion: 1
 
 providers:
@@ -311,7 +311,7 @@ providers:
     disableDeletion: false
     updateIntervalSeconds: 30
     options:
-      path: /var/lib/grafana/dashboards
+      path: /var/lib/grafana/[dashboards](../dashboards/SKILL.md)
 ```
 
 ### Data Source Provisioning
@@ -359,8 +359,8 @@ groups:
 
 ```go
 import (
-    "github.com/prometheus/client_golang/prometheus"
-    "github.com/prometheus/client_golang/prometheus/promhttp"
+    "[github](../../CI_CD/github/SKILL.md).com/prometheus/client_golang/prometheus"
+    "[github](../../CI_CD/github/SKILL.md).com/prometheus/client_golang/prometheus/promhttp"
 )
 
 var httpRequests = prometheus.NewCounterVec(
@@ -431,15 +431,15 @@ app.get('/metrics', async (req, res) => {
 
 - Use recording rules for frequently-used queries
 - Limit label cardinality to prevent memory issues
-- Set appropriate retention based on storage capacity
+- Set appropriate retention based on storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Use histogram metrics for latency measurement
-- Implement proper alerting thresholds
-- Version control dashboards as code
+- Implement proper [alerting](../../Observability_and_SecOps/alerting/SKILL.md) thresholds
+- Version control [dashboards](../dashboards/SKILL.md) as code
 - Use federation for large-scale deployments
 - Regularly review and prune unused metrics
 
 ## Related Skills
 
-- [alerting-oncall](../alerting-oncall/) - Alert management
-- [loki-logging](../loki-logging/) - Log aggregation
-- [kubernetes-ops](../../orchestration/kubernetes-ops/) - K8s monitoring
+- [alerting-oncall](../[alerting-oncall](../../Observability_and_SecOps/[alerting](../../Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert management
+- [loki-logging](../[loki-logging](../../Observability_and_SecOps/loki-logging/SKILL.md)/) - Log aggregation
+- [kubernetes-ops](../../orchestration/[kubernetes-ops](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)

@@ -18,7 +18,7 @@ Client library for running large-scale parallel and high-performance computing (
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-compute-batch</artifactId>
+    <artifactId>[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-batch</artifactId>
     <version>1.0.0-beta.5</version>
 </dependency>
 ```
@@ -387,9 +387,9 @@ try {
 
 | Resource | URL |
 |----------|-----|
-| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-compute-batch |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/batch/azure-compute-batch |
+| Maven Package | https://central.sonatype.com/artifact/com.azure/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-batch |
+| [GitHub](../../CI_CD/github/SKILL.md) | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/batch/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-batch |
 | API Documentation | https://learn.microsoft.com/java/api/com.azure.compute.batch |
 | Product Docs | https://learn.microsoft.com/azure/batch/ |
 | REST API | https://learn.microsoft.com/rest/api/batchservice/ |
-| Samples | https://github.com/azure/azure-batch-samples |
+| Samples | https://[github](../../CI_CD/github/SKILL.md).com/azure/azure-batch-samples |

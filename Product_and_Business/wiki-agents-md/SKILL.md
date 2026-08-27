@@ -18,7 +18,7 @@ Generate high-quality `AGENTS.md` files for repository folders. Each file provid
 - **Predictable location** — Agents look for `AGENTS.md` in the current directory, then walk up the tree
 - **Nested files** — Subfolders can have their own `AGENTS.md` that takes precedence over the root one
 - **Separate from README** — Keeps READMEs concise; agent-specific details (exact commands, boundaries, conventions) go here
-- **NOT the same as `.github/agents/*.agent.md`** — Those are agent persona definitions (who the agent is). `AGENTS.md` is project context (what the agent should know about this code)
+- **NOT the same as `.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/agents/*.agent.md`** — Those are agent persona definitions (who the agent is). `AGENTS.md` is project context (what the agent should know about this code)
 
 ## Critical Guard: Only Generate If Missing
 
@@ -49,7 +49,7 @@ Identify which folders should have an `AGENTS.md`:
 ### Generate if they exist:
 
 - `tests/`, `src/`, `lib/`, `app/`, `api/`
-- Monorepo packages: `packages/*/`, `apps/*/`, `services/*/`
+- [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) packages: `packages/*/`, `apps/*/`, `services/*/`
 - Any folder with its own build manifest:
   - `package.json`
   - `pyproject.toml`
@@ -57,7 +57,7 @@ Identify which folders should have an `AGENTS.md`:
   - `*.csproj` / `*.fsproj`
   - `go.mod`
   - `pom.xml` / `build.gradle`
-- `.github/` — only if it contains workflows or actions
+- `.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/` — only if it contains workflows or actions
 
 ### Always skip:
 
@@ -87,7 +87,7 @@ Read these sources to find real commands:
 - `Makefile` → targets
 - `pyproject.toml` → `[tool.poetry.scripts]` or `[project.scripts]`
 - `Cargo.toml` → standard cargo commands
-- CI configs → `.github/workflows/*.yml`, `Jenkinsfile`, `.gitlab-ci.yml`
+- CI configs → `.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml`, `Jenkinsfile`, `.[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml`
 
 ### b) Testing Instructions
 
@@ -138,7 +138,7 @@ One real code example beats three paragraphs of description.
 
 ### Example
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def get_user_by_id(user_id: str) -> User:
     """Fetch a user by their unique identifier."""
     async with get_db_session() as session:
@@ -157,9 +157,9 @@ Detect conventions by reading existing code:
 ## Git Workflow
 
 - Branch naming: `feature/`, `fix/`, `chore/`
-- Commit messages: conventional commits (`feat:`, `fix:`, `docs:`)
+- [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages: conventional commits (`feat:`, `fix:`, `docs:`)
 - Run `npm test && npm run lint` before committing
-- PR titles follow conventional commit format
+- PR titles follow conventional [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) format
 ```
 
 Only include if the repo has evidence of conventions (e.g., commitlint config, PR templates, contributing guides).
@@ -173,7 +173,7 @@ Use a three-tier system:
 
 - ✅ **Always do:** Run tests before committing. Write tests for new features. Use type hints.
 - ⚠️ **Ask first:** Adding new dependencies. Changing database schemas. Modifying CI/CD configs. Changing public API signatures.
-- 🚫 **Never do:** Commit secrets or credentials. Modify `vendor/` or `node_modules/`. Push directly to `main`. Delete migration files.
+- 🚫 **Never do:** [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets or credentials. Modify `vendor/` or `node_modules/`. Push directly to `main`. Delete migration files.
 ```
 
 Tailor boundaries to the project:
@@ -196,7 +196,7 @@ If it exists, **stop**. Report and move to the next folder.
 ### Step 2: Scan the folder
 
 Identify:
-- Primary language (Python, TypeScript, Rust, Go, Java, C#)
+- Primary language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Rust, Go, Java, C#)
 - Framework (FastAPI, Next.js, Actix, Spring Boot)
 - Build tool (npm, cargo, poetry, maven, gradle)
 - Test runner (pytest, vitest, cargo test, JUnit)
@@ -208,8 +208,8 @@ Extract real commands and settings from:
 - `Makefile` / `Justfile` targets
 - `pyproject.toml` scripts and tool configs
 - `Cargo.toml` metadata
-- `.github/workflows/*.yml` build/test steps
-- `docker-compose.yml` service definitions
+- `.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml` build/test steps
+- `[docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` service definitions
 - Linter configs (`.eslintrc`, `ruff.toml`, `rustfmt.toml`)
 
 ### Step 4: Detect conventions
@@ -296,7 +296,7 @@ Use this template (adapt to the actual project):
 # Wiki — Agent Instructions
 
 ## Overview
-Generated VitePress documentation site. Contains architecture docs, onboarding guides, and API references with source-linked citations and dark-mode Mermaid diagrams.
+Generated VitePress documentation site. Contains architecture docs, onboarding guides, and API references with source-linked citations and dark-mode [Mermaid](../mermaid/SKILL.md) diagrams.
 
 ## Build & Run
 - Install: `npm install`
@@ -310,18 +310,18 @@ Generated VitePress documentation site. Contains architecture docs, onboarding g
 - `{NN}-{section}/` — Numbered documentation sections
 - `llms.txt` — LLM-friendly project summary (links + descriptions)
 - `llms-full.txt` — LLM-friendly full content (inlined pages)
-- `.vitepress/config.mts` — VitePress config with sidebar and Mermaid setup
+- `.vitepress/config.mts` — VitePress config with sidebar and [Mermaid](../mermaid/SKILL.md) setup
 - `.vitepress/theme/` — Dark theme (custom.css) and zoom handlers (index.ts)
 
 ## Content Conventions
-- All Mermaid diagrams use dark-mode colors (fills `#2d333b`, borders `#6d5dfc`, text `#e6edf3`)
+- All [Mermaid](../mermaid/SKILL.md) diagrams use dark-mode colors (fills `#2d333b`, borders `#6d5dfc`, text `#e6edf3`)
 - Every page has VitePress frontmatter (`title`, `description`)
 - Citations link to source repository with line numbers
 - Tables include a "Source" column with linked citations
-- Mermaid diagrams followed by `<!-- Sources: ... -->` comment blocks
+- [Mermaid](../mermaid/SKILL.md) diagrams followed by `<!-- Sources: ... -->` comment blocks
 
 ## Boundaries
-- ✅ **Always do:** Add new pages following existing section numbering, use dark-mode Mermaid colors
+- ✅ **Always do:** Add new pages following existing section numbering, use dark-mode [Mermaid](../mermaid/SKILL.md) colors
 - ⚠️ **Ask first:** Change theme CSS, modify VitePress config, restructure sections
 - 🚫 **Never do:** Delete generated pages without understanding dependencies, use light-mode colors, remove citation links
 
@@ -357,7 +357,7 @@ This ensures Claude Code (and similar tools that look for `CLAUDE.md`) are redir
 
 | Principle | Good | Bad |
 |-----------|------|-----|
-| **Specific** | "React 18 with TypeScript, Vite, Tailwind CSS" | "React project" |
+| **Specific** | "React 18 with [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Vite, Tailwind CSS" | "React project" |
 | **Executable** | `pytest tests/ -v --tb=short` | "run the tests" |
 | **Grounded** | Show a real code snippet from the project | Describe the style in abstract terms |
 | **Real paths** | `src/api/routes/` | `path/to/your/code/` |

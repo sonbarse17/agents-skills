@@ -9,7 +9,7 @@ metadata:
 
 # Microsoft Entra Agent ID
 
-Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Graph. Every agent instance gets a distinct identity, audit trail, and independently-scoped permission grants.
+Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Graph. Every agent instance gets a distinct identity, [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, and independently-scoped permission grants.
 
 ## Quick Reference
 
@@ -30,7 +30,7 @@ Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Gra
 - Configuring credentials (FIC, Managed Identity, or client secret) on the Blueprint
 - Implementing the two-step `fmi_path` runtime token exchange (autonomous or OBO)
 - Cross-tenant agent token flows
-- Deploying the Microsoft Entra SDK for AgentID sidecar for polyglot agents (Python, Node, Go, Java)
+- Deploying the Microsoft Entra SDK for AgentID sidecar for polyglot agents ([Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node, Go, Java)
 - Granting per-Agent-Identity application (`appRoleAssignments`) or delegated (`oauth2PermissionGrants`) permissions
 - Diagnosing Agent ID errors such as `AADSTS82001`, `AADSTS700211`, or `PropertyNotCompatibleWithAgentIdentity`
 
@@ -40,7 +40,7 @@ Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Gra
 |------|-----|
 | `mcp_azure_mcp_documentation` | Search Microsoft Learn for current Agent ID setup, Graph API shapes, and SDK configuration |
 
-There is no dedicated Agent Identity MCP server today. This skill guides direct Microsoft Graph API calls (PowerShell or Python `requests`). Use `mcp_azure_mcp_documentation` to verify request bodies and endpoints against current docs before running.
+There is no dedicated Agent Identity MCP server today. This skill guides direct Microsoft Graph API calls (PowerShell or [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) `requests`). Use `mcp_azure_mcp_documentation` to verify request bodies and endpoints against current docs before running.
 
 ## Before You Start
 
@@ -80,7 +80,7 @@ One of: **Agent Identity Developer**, **Agent Identity Administrator**, or **App
 Install-Module Microsoft.Graph.Applications -Scope CurrentUser -Force
 ```
 
-### Python (programmatic provisioning)
+### [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (programmatic provisioning)
 
 ```bash
 pip install azure-identity requests
@@ -102,9 +102,9 @@ Connect-MgGraph -Scopes @(
 )
 ```
 
-### Python (application)
+### [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (application)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os, requests
 from azure.identity import ClientSecretCredential
 
@@ -127,9 +127,9 @@ headers = {
 
 ### Step 1: Create Agent Identity Blueprint
 
-Use the typed endpoint. Sponsors must be **Users** at Blueprint creation. This snippet assumes the `requests` client and `headers` dict from the Python authentication block above.
+Use the typed endpoint. Sponsors must be **Users** at Blueprint creation. This snippet assumes the `requests` client and `headers` dict from the [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) authentication block above.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import subprocess
 import requests
 
@@ -160,7 +160,7 @@ blueprint_obj_id = blueprint["id"]
 > Mandatory. Creating a Blueprint does NOT auto-create its service principal. Skipping this step produces:
 > `400: The Agent Blueprint Principal for the Agent Blueprint does not exist.`
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 sp_body = {"appId": app_id}
 resp = requests.post(
     f"{GRAPH}/servicePrincipals/microsoft.graph.agentIdentityBlueprintPrincipal",
@@ -175,7 +175,7 @@ Make your provisioning scripts idempotent — always check for the BlueprintPrin
 
 Sponsors for an Agent Identity may be **Users or Groups**.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 agent_body = {
     "displayName": "my-agent-instance-1",
     "agentIdentityBlueprintId": app_id,
@@ -202,17 +202,17 @@ Agents authenticate at runtime using credentials configured on the **Blueprint**
 | **Client secret** | Local dev / testing | Password credential |
 | **Microsoft Entra SDK for AgentID** | Polyglot / 3P agents | Sidecar container acquires tokens over HTTP |
 
-For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and audit trail, see [../../../../../Global_References/runtime-token-exchange.md](../../../../../Global_References/runtime-token-exchange.md).
+For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, see [../../../../../Global_References/runtime-token-exchange.md](../../../../../Global_References/runtime-token-exchange.md).
 
 For OBO (agent acting on behalf of a user), see [../../../../../Global_References/obo-blueprint-setup.md](../../../../../Global_References/obo-blueprint-setup.md).
 
-For the containerized polyglot auth sidecar (Python, Node, Go, Java — no SDK embedding), see [../../../../../Global_References/entra-agent-id_sdk-sidecar.md](../../../../../Global_References/entra-agent-id_sdk-sidecar.md).
+For the containerized polyglot auth sidecar ([Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node, Go, Java — no SDK embedding), see [../../../../../Global_References/entra-agent-id_sdk-sidecar.md](../../../../../Global_References/entra-agent-id_sdk-sidecar.md).
 
 For MI+WIF and client-secret setup details, see [../../../../../Global_References/entra-agent-id_oauth2-token-flow.md](../../../../../Global_References/entra-agent-id_oauth2-token-flow.md).
 
 ### .NET quick path
 
-For .NET services, use **`Microsoft.Identity.Web.AgentIdentities`** — it handles Federated Identity Credential management and the two-step exchange for you. See the package README at `github.com/AzureAD/microsoft-identity-web` under `src/Microsoft.Identity.Web.AgentIdentities/`.
+For .NET services, use **`Microsoft.Identity.Web.AgentIdentities`** — it handles Federated Identity Credential management and the two-step exchange for you. See the package README at `[github](../../../../CI_CD/github/SKILL.md).com/AzureAD/microsoft-identity-web` under `src/Microsoft.Identity.Web.AgentIdentities/`.
 
 ## Granting Permissions (Per Agent Identity)
 
@@ -220,7 +220,7 @@ Agent Identities support both application permissions (autonomous) and delegated
 
 ### Application permissions (autonomous)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 graph_sp = requests.get(
     f"{GRAPH}/servicePrincipals?$filter=appId eq '00000003-0000-0000-c000-000000000000'",
     headers=headers,
@@ -241,7 +241,7 @@ requests.post(
 
 ### Delegated permissions (OBO)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 
 expiry = (datetime.now(timezone.utc) + timedelta(days=3650)).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -343,7 +343,7 @@ After admin consent, tokens may not include new claims for 30–120 seconds — 
 | [../../../../../Global_References/entra-agent-id_oauth2-token-flow.md](../../../../../Global_References/entra-agent-id_oauth2-token-flow.md) | MI + WIF (production) and client secret (local dev) |
 | [../../../../../Global_References/obo-blueprint-setup.md](../../../../../Global_References/obo-blueprint-setup.md) | Configuring the Blueprint as an OAuth2 API for OBO |
 | [../../../../../Global_References/entra-agent-id_sdk-sidecar.md](../../../../../Global_References/entra-agent-id_sdk-sidecar.md) | Microsoft Entra SDK for AgentID — architecture, configuration, endpoints |
-| [../../../../../Global_References/sdk-sidecar-deployment.md](../../../../../Global_References/sdk-sidecar-deployment.md) | SDK code patterns (Python/TypeScript), Docker/Kubernetes manifests, security, troubleshooting |
+| [../../../../../Global_References/sdk-sidecar-deployment.md](../../../../../Global_References/sdk-sidecar-deployment.md) | SDK code patterns ([Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/[TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)), [Docker](../../../../Containers_and_Orchestration/docker/SKILL.md)/[Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) manifests, security, troubleshooting |
 | [../../../../../Global_References/entra-agent-id_known-limitations.md](../../../../../Global_References/entra-agent-id_known-limitations.md) | Documented gaps organized by category |
 
 ### External Links
@@ -353,5 +353,5 @@ After admin consent, tokens may not include new claims for 30–120 seconds — 
 | Agent ID Setup Guide | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-setup-instructions |
 | AI-Guided Setup | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-ai-guided-setup |
 | Microsoft Entra SDK for AgentID | https://learn.microsoft.com/en-us/entra/msidweb/agent-id-sdk/overview |
-| Microsoft.Identity.Web.AgentIdentities (.NET) | https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.AgentIdentities/README.AgentIdentities.md |
+| Microsoft.Identity.Web.AgentIdentities (.NET) | https://[github](../../../../CI_CD/github/SKILL.md).com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.AgentIdentities/README.AgentIdentities.md |
 

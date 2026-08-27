@@ -10,7 +10,7 @@ description: Expertise in product analytics tools (Mixpanel/Amplitude) and User 
 - **DAU/MAU Ratio**: Daily/Monthly Active Users for product stickiness.
 
 ## Event Tracking Workflow
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[User Action] --> B[Client SDK]

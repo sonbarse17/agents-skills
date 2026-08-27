@@ -48,7 +48,7 @@ untagged resource before it exists rather than flagging it after the fact.
 - **Apply the same enforcement to manual console changes** as to automated pipelines, or the
   policy only covers the traffic that was already disciplined.
 
-See `policy-as-code` for how to express and gate on rules like this.
+See `[policy-as-code](../../../Security/policy-as-code/SKILL.md)` for how to express and gate on rules like this.
 
 **Done when:** a resource missing a required tag cannot be created through any normal path.
 
@@ -78,7 +78,7 @@ catches what enforcement missed.
 - **Assign an expiry to remediation**, not an open-ended backlog item nobody owns.
 
 **Done when:** the untagged-resource count is tracked over time and trending down, not discovered
-fresh in every audit.
+fresh in every [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 ## 5. Treat tag values as data with an owner, not free text
 

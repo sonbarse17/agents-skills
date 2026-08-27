@@ -30,11 +30,11 @@ retention setting that silently does nothing because the compactor isn't
 enabled. This skill covers validating a Loki config **before** it's
 deployed: structural/schema checks via Loki's own `-verify-config` flag,
 a pre-deploy review checklist for the specific fields most likely to
-cause silent ingestion rejection, and a lightweight cardinality audit
+cause silent ingestion rejection, and a lightweight cardinality [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 against a candidate label design. It assumes the config's actual content
 decisions (deployment mode, schema/storage choice, retention design) are
 made per
-[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+[loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
 — this skill is specifically about catching mistakes in that config
 before rollout, not about designing it from scratch.
 
@@ -52,11 +52,11 @@ before rollout, not about designing it from scratch.
   it ships to a shared/production Loki instance.
 - Auditing an existing production config for common misconfigurations
   (retention set but compactor disabled, schema edited in place instead
-  of appended) as a health check, not just after an incident.
+  of appended) as a health check, not just after an [incident](../incident/SKILL.md).
 
 ## Prerequisites & environment
 
-- The `loki` binary (or `docker run grafana/loki:<version> -verify-config
+- The `loki` binary (or `[docker](../../Containers_and_Orchestration/docker/SKILL.md) run grafana/loki:<version> -verify-config
   -config.file=...`) available locally or in CI to run structural
   validation without needing a full running cluster.
 - The candidate config file(s) — base config plus any per-environment
@@ -64,11 +64,11 @@ before rollout, not about designing it from scratch.
   render the final config before validating it, since the raw
   `values.yaml` alone isn't the actual Loki config).
 - Read access to a running Loki instance's `/metrics` endpoint (or its
-  Prometheus-scraped metrics) for the cardinality-audit and post-deploy
+  Prometheus-scraped metrics) for the cardinality-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and post-deploy
   confirmation steps — validation of intent is not a substitute for
   confirming actual behavior against real data.
 - Familiarity with the config fields being validated — see
-  [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+  [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
   for what each of `limits_config`, `schema_config`, `compactor`, and
   `ingester` actually controls if unfamiliar; this skill assumes that
   context rather than re-explaining it.
@@ -82,7 +82,7 @@ before rollout, not about designing it from scratch.
    ```bash
    loki -config.file=loki-config.yaml -verify-config
    # or, without a local binary:
-   docker run --rm -v "$(pwd)/loki-config.yaml:/etc/loki/config.yaml" \
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)/loki-config.yaml:/etc/loki/config.yaml" \
      grafana/loki:3.1.0 -config.file=/etc/loki/config.yaml -verify-config
    ```
    For Helm-deployed Loki, render the final config first — validating
@@ -126,7 +126,7 @@ before rollout, not about designing it from scratch.
      requirement that was actually agreed, and cross-check step 5 that
      the compactor will actually enforce it.
 
-4. **Audit label cardinality for any new/changed label** before the
+4. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) label cardinality for any new/changed label** before the
    config or the app instrumentation change ships, using a running
    instance's existing data as a proxy where available:
    ```bash
@@ -139,7 +139,7 @@ before rollout, not about designing it from scratch.
    tells you whether a proposed label is safe. Reject any new label
    candidate that is a raw identifier (request ID, user ID, IP address,
    trace ID) at the design stage — see
-   [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+   [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
    for where such fields belong instead (unindexed log content, parsed
    at query time).
 
@@ -157,10 +157,10 @@ before rollout, not about designing it from scratch.
 6. **Wire structural validation into CI** so a bad config fails the PR
    instead of failing at deploy time:
    ```yaml
-   # GitHub Actions example
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions example
    - name: Validate Loki config
      run: |
-       docker run --rm -v "${{ github.workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
+       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
          grafana/loki:3.1.0 -config.file=/etc/loki/config.yaml -verify-config
    ```
    Pair with a simple script/lint step asserting `schema_config.configs`
@@ -181,7 +181,7 @@ before rollout, not about designing it from scratch.
 
 ## Best practices
 
-- Run `-verify-config` (or the Docker equivalent) in CI on every PR
+- Run `-verify-config` (or the [Docker](../../Containers_and_Orchestration/docker/SKILL.md) equivalent) in CI on every PR
   touching Loki config — treat a failing structural check the same as a
   failing unit test, not a manual pre-deploy step someone might skip.
 - Never validate a Helm `values.yaml` directly — always render the
@@ -287,15 +287,15 @@ service," and separately bumps the schema store from `boltdb-shipper` to
    `checkout-events` and find it's actually emitting a `session_id` label
    per user session — an unbounded label, not a volume problem at all.
    Raising `max_streams_per_user` to 50,000 would have masked a real
-   cardinality bug rather than fixed a capacity shortfall.
+   cardinality bug rather than fixed a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) shortfall.
 
 4. Correct recommendation delivered in review: don't raise the limit;
    remove `session_id` as a label (move it into log content, filtered at
    query time via LogQL per
-   [logql-query-authoring](../logql-query-authoring/SKILL.md)) and keep
+   [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)) and keep
    `max_streams_per_user` at a value sized to the actual bounded label
    design, per
-   [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md).
+   [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md).
 
 5. Re-submit with the schema change as a new appended entry and the
    labeling bug fixed at the source; `-verify-config` and the CI
@@ -304,6 +304,6 @@ service," and separately bumps the schema store from `boltdb-shipper` to
 
 ## Cross-references
 
-- [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md) — designing the schema, limits, and label strategy this skill validates before deployment.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — where a label that should have stayed unindexed content gets parsed/filtered at query time instead.
-- [fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md) — the equivalent pre-deploy validation discipline applied to the shipper side of the pipeline feeding this Loki instance.
+- [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — designing the schema, limits, and label strategy this skill validates before deployment.
+- [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — where a label that should have stayed unindexed content gets parsed/filtered at query time instead.
+- [fluent-bit-configuration-validation](../[fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-deploy validation discipline applied to the shipper side of the pipeline feeding this Loki instance.

@@ -22,7 +22,7 @@ Adopt platform engineering practices when your organization experiences:
 - **Slow onboarding** -- new engineers take weeks to get a working development environment.
 - **Repeated toil** -- the same Terraform/Helm/CI boilerplate is copy-pasted across dozens of repos.
 - **Compliance bottlenecks** -- security and ops reviews gate every deployment, slowing release cadence.
-- **Scale inflection points** -- you have 5+ teams and shared infrastructure concerns (networking, observability, secrets).
+- **Scale inflection points** -- you have 5+ teams and shared infrastructure concerns (networking, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), secrets).
 
 Platform engineering is NOT about replacing ops with a portal. It is about encoding organizational standards into reusable, self-service abstractions that dev teams consume through golden paths.
 
@@ -45,7 +45,7 @@ cd internal-platform
 yarn dev
 ```
 
-### Production Docker Build
+### Production [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Build
 
 ```dockerfile
 # Dockerfile for Backstage production image
@@ -95,8 +95,8 @@ backend:
       password: ${POSTGRES_PASSWORD}
 
 integrations:
-  github:
-    - host: github.com
+  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
+    - host: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
       token: ${GITHUB_TOKEN}
 
 catalog:
@@ -107,16 +107,16 @@ catalog:
     - allow: [Component, System, API, Resource, Location, Template]
   locations:
     - type: url
-      target: https://github.com/myorg/software-catalog/blob/main/catalog-info.yaml
+      target: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/software-catalog/blob/main/catalog-info.yaml
     - type: url
-      target: https://github.com/myorg/backstage-templates/blob/main/all-templates.yaml
+      target: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/backstage-templates/blob/main/all-templates.yaml
 ```
 
 ---
 
 ## 3. Crossplane for Self-Service Infrastructure
 
-Crossplane extends Kubernetes to provision and manage cloud infrastructure through declarative YAML.
+Crossplane extends [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) to provision and manage cloud infrastructure through declarative YAML.
 
 ### Install Crossplane
 
@@ -132,7 +132,7 @@ helm install crossplane crossplane-stable/crossplane \
   --set args='{"--enable-composition-revisions"}'
 
 # Install the AWS provider
-kubectl apply -f - <<EOF
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
@@ -142,11 +142,11 @@ spec:
 EOF
 
 # Configure AWS credentials
-kubectl create secret generic aws-creds \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create secret generic aws-creds \
   -n crossplane-system \
   --from-file=creds=./aws-credentials.txt
 
-kubectl apply -f - <<EOF
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
@@ -195,7 +195,7 @@ spec:
                   properties:
                     engine:
                       type: string
-                      enum: ["postgres", "mysql"]
+                      enum: ["postgres", "[mysql](../../Backend/mysql/SKILL.md)"]
                       default: "postgres"
                     engineVersion:
                       type: string
@@ -323,7 +323,7 @@ kind: Template
 metadata:
   name: nodejs-service
   title: Node.js Microservice
-  description: Create a production-ready Node.js service with CI/CD, monitoring, and Kubernetes manifests.
+  description: Create a production-ready Node.js service with CI/CD, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests.
   tags:
     - recommended
     - nodejs
@@ -364,7 +364,7 @@ spec:
         database:
           title: Database
           type: string
-          enum: ["none", "postgres", "mysql"]
+          enum: ["none", "postgres", "[mysql](../../Backend/mysql/SKILL.md)"]
           default: "none"
         cacheLayer:
           title: Cache
@@ -390,23 +390,23 @@ spec:
           database: ${{ parameters.database }}
           cacheLayer: ${{ parameters.cacheLayer }}
     - id: publish
-      name: Publish to GitHub
-      action: publish:github
+      name: Publish to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+      action: publish:[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
       input:
-        allowedHosts: ["github.com"]
-        repoUrl: github.com?owner=myorg&repo=${{ parameters.name }}
+        allowedHosts: ["[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com"]
+        repoUrl: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com?owner=myorg&repo=${{ parameters.name }}
         repoVisibility: internal
         defaultBranch: main
         protectDefaultBranch: true
         requireCodeOwnerReviews: true
-    - id: create-argocd-app
-      name: Register with ArgoCD
-      action: argocd:create-resources
+    - id: create-[argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)-app
+      name: Register with [ArgoCD](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)
+      action: [argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md):create-resources
       input:
         appName: ${{ parameters.name }}
         argoInstance: main
         namespace: ${{ parameters.name }}
-        repoUrl: https://github.com/myorg/${{ parameters.name }}
+        repoUrl: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/${{ parameters.name }}
         path: deploy/k8s
     - id: register
       name: Register in Catalog
@@ -440,7 +440,7 @@ golden-path-nodejs/
         deployment.yaml
         service.yaml
         ingress.yaml
-    .github/
+    .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/
       workflows/
         ci.yaml
         deploy.yaml
@@ -454,7 +454,7 @@ golden-path-nodejs/
   "description": "A new microservice",
   "owner_team": "platform",
   "port": "3000",
-  "database": ["none", "postgres", "mysql"],
+  "database": ["none", "postgres", "[mysql](../../Backend/mysql/SKILL.md)"],
   "node_version": "18"
 }
 ```
@@ -474,10 +474,10 @@ metadata:
   description: Handles order creation, fulfillment, and tracking.
   annotations:
     backstage.io/techdocs-ref: dir:.
-    github.com/project-slug: myorg/orders-service
-    backstage.io/kubernetes-id: orders-service
-    backstage.io/kubernetes-namespace: team-commerce
-    argocd/app-name: orders-service
+    [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/project-slug: myorg/orders-service
+    backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-id: orders-service
+    backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-namespace: team-commerce
+    [argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)/app-name: orders-service
     pagerduty.com/integration-key: ${PAGERDUTY_KEY}
     grafana/dashboard-selector: "app=orders-service"
   tags:
@@ -487,8 +487,8 @@ metadata:
     - url: https://grafana.internal/d/orders-service
       title: Grafana Dashboard
       icon: dashboard
-    - url: https://runbooks.internal/orders-service
-      title: Runbook
+    - url: https://[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).internal/orders-service
+      title: [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
       icon: docs
 spec:
   type: service
@@ -535,7 +535,7 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - API Reference: api-reference.md
-  - Runbook: runbook.md
+  - [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).md
   - ADRs:
       - adr/001-choose-grpc.md
       - adr/002-event-sourcing.md
@@ -548,9 +548,9 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: [mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+          class: [mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+          format: !![python](../../Languages/python/SKILL.md)/name:pymdownx.superfences.fence_code_format
 ```
 
 Enable TechDocs in `app-config.yaml`:
@@ -559,7 +559,7 @@ Enable TechDocs in `app-config.yaml`:
 techdocs:
   builder: external
   generator:
-    runIn: docker
+    runIn: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
   publisher:
     type: awsS3
     awsS3:
@@ -573,18 +573,18 @@ techdocs:
 
 ## 6. Developer Portal -- Backstage Plugins
 
-### Kubernetes Plugin
+### [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Plugin
 
 ```bash
-# Install Kubernetes plugin
-yarn --cwd packages/app add @backstage/plugin-kubernetes
-yarn --cwd packages/backend add @backstage/plugin-kubernetes-backend
+# Install [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) plugin
+yarn --cwd packages/app add @backstage/plugin-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+yarn --cwd packages/backend add @backstage/plugin-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-backend
 ```
 
 Backend configuration in `app-config.yaml`:
 
 ```yaml
-kubernetes:
+[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md):
   serviceLocatorMethod:
     type: multiTenant
   clusterLocatorMethods:
@@ -604,20 +604,20 @@ kubernetes:
           caData: ${K8S_PROD_CA_DATA}
 ```
 
-### CI/CD Plugin (GitHub Actions)
+### CI/CD Plugin ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions)
 
 ```yaml
 # app-config.yaml addition
 proxy:
   endpoints:
-    /github-actions:
-      target: https://api.github.com
+    /[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md):
+      target: https://api.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
       headers:
         Authorization: Bearer ${GITHUB_TOKEN}
-        Accept: application/vnd.github+json
+        Accept: application/vnd.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)+json
 ```
 
-### Monitoring Plugin (Grafana)
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Plugin (Grafana)
 
 ```yaml
 # app-config.yaml addition
@@ -719,14 +719,14 @@ service:
 # Install score-compose for local development
 brew install score-spec/tap/score-compose
 
-# Generate docker-compose from score.yaml
+# Generate [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) from score.yaml
 score-compose init
 score-compose generate score.yaml
 
-# Install score-k8s for Kubernetes targets
+# Install score-k8s for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) targets
 brew install score-spec/tap/score-k8s
 
-# Generate Kubernetes manifests from score.yaml
+# Generate [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests from score.yaml
 score-k8s init
 score-k8s generate score.yaml
 ```
@@ -776,7 +776,7 @@ module "network_policy" {
   namespace = module.namespace.name
   allow_ingress_from = [
     "istio-system",
-    "monitoring"
+    "[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
   ]
 }
 
@@ -800,11 +800,11 @@ output "namespace" {
 }
 
 output "kubeconfig_command" {
-  value = "kubectl config set-context ${var.team_name}-${var.environment} --namespace=${module.namespace.name}"
+  value = "[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) config set-context ${var.team_name}-${var.environment} --namespace=${module.namespace.name}"
 }
 ```
 
-### Environment Request CRD (Kubernetes Operator Pattern)
+### Environment Request CRD ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Operator Pattern)
 
 ```yaml
 # environment-request.yaml
@@ -836,7 +836,7 @@ spec:
 
 ### Backstage Self-Service Action (Custom Plugin)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // plugins/platform-actions/src/actions/provision-environment.ts
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 import { Config } from '@backstage/config';
@@ -908,11 +908,11 @@ export const provisionEnvironmentAction = (config: Config) => {
 
 ```yaml
 # prometheus-rules-dora.yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: dora-metrics
-  namespace: monitoring
+  namespace: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 spec:
   groups:
     - name: dora.deployment_frequency
@@ -1126,7 +1126,7 @@ metadata:
     policies.kyverno.io/title: Require Platform Labels
     policies.kyverno.io/description: >-
       All workloads must include standard platform labels for
-      cost attribution, ownership tracking, and incident routing.
+      cost attribution, ownership tracking, and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) routing.
 spec:
   validationFailureAction: Enforce
   background: true
@@ -1194,7 +1194,7 @@ spec:
               platform.myorg.io/system: ingress-gateway
         - namespaceSelector:
             matchLabels:
-              platform.myorg.io/system: monitoring
+              platform.myorg.io/system: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
           podSelector:
             matchLabels:
               app: prometheus

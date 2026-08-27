@@ -154,8 +154,8 @@ For each candidate pattern, evaluate:
 
 ## Pattern Implementation Examples
 
-### Factory Method (TypeScript)
-```typescript
+### Factory Method ([TypeScript](../../Frontend/typescript/SKILL.md))
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface PaymentGateway {
   charge(amount: Money): Promise<PaymentResult>;
 }
@@ -179,8 +179,8 @@ class StripeFactory extends PaymentGatewayFactory {
 }
 ```
 
-### Strategy Pattern (Python)
-```python
+### Strategy Pattern ([Python](../../Languages/python/SKILL.md))
+```[python](../../Languages/python/SKILL.md)
 from abc import ABC, abstractmethod
 
 class ShippingStrategy(ABC):
@@ -205,7 +205,7 @@ class Order:
 ```
 
 ### Observer Pattern (Event-Driven)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface Observer<T> {
   update(event: T): Promise<void>;
 }
@@ -229,8 +229,8 @@ class EventEmitter<T> {
 }
 ```
 
-### Decorator Pattern (TypeScript)
-```typescript
+### Decorator Pattern ([TypeScript](../../Frontend/typescript/SKILL.md))
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface Notifier {
   send(message: string): Promise<void>;
 }
@@ -256,7 +256,7 @@ class SlackNotifierDecorator implements Notifier {
 ```
 
 ### Adapter Pattern (Third-Party Integration)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Third-party SDK (incompatible interface)
 class StripeSDK {
   createPayment(amountCents: number, currency: string, token: string): Promise<any> { }
@@ -283,7 +283,7 @@ class StripeAdapter implements PaymentProcessor {
 ```
 
 ### Command Pattern (CQRS)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface Command<T = void> {
   execute(): Promise<T>;
 }
@@ -309,7 +309,7 @@ await commandBus.dispatch(command);
 ```
 
 ### State Pattern (State Machine)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface OrderState {
   addItem(item: OrderItem): void;
   pay(amount: Money): void;
@@ -345,7 +345,7 @@ class Order {
 | God Class | Too many responsibilities | Decompose into smaller classes |
 | Spaghetti Code | Unstructured flow | Clean Architecture layers |
 | Golden Hammer | Applying familiar pattern everywhere | Match pattern to problem |
-| Premature Optimization | Optimizing without profiling | Measure first, optimize later |
+| Premature Optimization | Optimizing without [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize later |
 | Service Locator | Hidden dependencies | Constructor injection |
 
 ## Pattern Composition
@@ -358,7 +358,7 @@ class Order {
 | Strategy + Factory | Behavioral + Creational | Pluggable algorithms with auto-selection |
 | Decorator + Proxy | Structural + Structural | Layered cross-cutting concerns |
 | Adapter + Factory | Structural + Creational | Third-party integration abstraction |
-| Saga + CQRS + Event Sourcing | Architectural + Architectural | Distributed transactions with audit |
+| Saga + CQRS + Event Sourcing | Architectural + Architectural | Distributed transactions with [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Chain of Responsibility + Composite | Behavioral + Structural | Request processing pipeline |
 
 ## Performance Considerations
@@ -369,11 +369,11 @@ class Order {
 - Command pattern with many commands — use command bus with async dispatch
 
 ## Security Considerations
-- Proxy pattern for access control (validation proxy, audit proxy)
+- Proxy pattern for access control (validation proxy, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) proxy)
 - Strategy pattern for role-based algorithm selection
 - Template Method for secure base implementation with overridable hooks
 - Factory pattern for input validation before object creation
-- Command pattern enables security audit trail (every action is an object)
+- Command pattern enables security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail (every action is an object)
 
 ## Rules
 - Identify axis of change before selecting pattern.
@@ -403,7 +403,7 @@ class Order {
   - ../../../Global_References/selection-decision-tree.md — Pattern Selection Decision Tree
   - ../../../Global_References/design-patterns_testing-patterns.md — Testing Design Patterns
 ## Handoff
-Hand off to `backend/universal/microservices/SKILL.md` if distributed system patterns need implementation details. Hand off to `backend/universal/clean-architecture/SKILL.md` if structuring the entire application. Hand off to `backend/universal/event-driven/SKILL.md` if event-driven patterns need elaboration.
+Hand off to `backend/universal/[microservices](../microservices/SKILL.md)/SKILL.md` if distributed system patterns need implementation details. Hand off to `backend/universal/clean-architecture/SKILL.md` if structuring the entire application. Hand off to `backend/universal/event-driven/SKILL.md` if event-driven patterns need elaboration.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -456,7 +456,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -470,7 +470,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -486,12 +486,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -500,7 +500,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -508,13 +508,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -523,8 +523,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

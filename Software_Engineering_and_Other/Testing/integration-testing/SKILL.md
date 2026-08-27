@@ -28,7 +28,7 @@ User mentions integration testing, component testing, API testing, database test
 - Infrastructure dependencies (databases, message queues, caches)
 - External service integrations
 - Existing test suite and coverage levels
-- CI environment capabilities (Docker availability)
+- CI environment capabilities ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) availability)
 
 ### Output Artifact
 Integration test suite with containerized infrastructure, service virtualization, and CI configuration.
@@ -44,7 +44,7 @@ Structured integration test files with:
 - All component interactions tested with real (containerized) infrastructure
 - External services simulated with WireMock or similar
 - Database state management strategy defined (truncation, rollback, or fresh containers)
-- CI integration configured with Docker-in-Docker and parallel execution
+- CI integration configured with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) and parallel execution
 - Error paths tested (timeouts, failures, validation errors)
 
 ## Workflow
@@ -57,7 +57,7 @@ Structured integration test files with:
 6. **Write integration tests**: Structure with beforeAll (containers), beforeEach (data setup), test (AAA), afterEach (cleanup), afterAll (container stop)
 7. **Test error paths**: Include timeouts, network failures, validation errors, auth failures, and resource exhaustion
 8. **Optimize execution**: Parallelize container startup, share containers across suites, configure appropriate timeouts
-9. **Integrate CI**: Configure Docker-in-Docker, pre-pull images, set generous timeouts, parallelize test execution
+9. **Integrate CI**: Configure [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), pre-pull images, set generous timeouts, parallelize test execution
 10. **Monitor flakiness**: Track flaky tests, investigate infrastructure-related failures, quarantine non-deterministic tests
 
 ## Architecture / Decision Trees
@@ -67,7 +67,7 @@ Structured integration test files with:
 ```
 Is this dependency your own service/infrastructure?
 ├── YES → Use real (containerized) for testing
-│   ├── Database → TestContainers (PostgreSQL, MySQL, etc.)
+│   ├── Database → TestContainers ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), etc.)
 │   ├── Message queue → TestContainers (Kafka, RabbitMQ)
 │   ├── Cache → TestContainers (Redis)
 │   └── Object storage → TestContainers (MinIO)
@@ -93,14 +93,14 @@ Is state isolation critical?
 ├── YES → Fresh container per test class
 └── NO → Data cleanup between tests (truncation)
 
-Does CI support Docker?
+Does CI support [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)?
 ├── YES → TestContainers with DinD
 └── NO → Embedded services or mocked infrastructure
 ```
 
 ## Common Pitfalls
 
-1. **In-memory database substitutes**: H2/SQLite are not PostgreSQL/MySQL — different SQL dialect, constraints, and transaction behavior. Always use the real database in a container
+1. **In-memory database substitutes**: H2/SQLite are not [PostgreSQL](../../Backend/postgresql/SKILL.md)/[MySQL](../../Backend/mysql/SKILL.md) — different SQL dialect, constraints, and transaction behavior. Always use the real database in a container
 2. **No data cleanup**: Tests that leave data behind cause non-deterministic failures in subsequent tests. Implement truncation, delete-by-run-id, or fresh containers
 3. **Hardcoded connection parameters**: Hardcoded ports, hosts, or credentials prevent parallel execution. Use dynamic ports and environment-aware configuration
 4. **Missing wait strategies**: Tests that access containers before they're ready fail intermittently. Always use proper wait strategies (log message, HTTP health check, port listening)
@@ -133,8 +133,8 @@ Does CI support Docker?
 | Speed | Seconds to minutes | Milliseconds | Minutes |
 | Confidence | High (real infra) | Low (isolated) | Very High |
 | Debugging | Medium | Easy | Hard |
-| Infrastructure | Docker/containers | None | Full environment |
-| When | After unit tests | Every commit | Pre-release |
+| Infrastructure | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/containers | None | Full environment |
+| When | After unit tests | Every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | Pre-release |
 
 ## Performance Considerations
 
@@ -142,13 +142,13 @@ Does CI support Docker?
 - Database migration: 5-30s per suite. Run once per suite, not per test
 - Data cleanup: Truncation (100ms) vs fresh container (30s). Choose based on isolation needs
 - Test execution: Aim for < 15 minutes per suite. Use parallel workers, each with its own database
-- CI resources: Docker-in-Docker requires privileged mode or dedicated runners. Plan resource allocation
+- CI resources: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) requires privileged mode or dedicated runners. Plan resource allocation
 - Network: Container-to-container communication is fast (< 1ms). External service calls add latency
 
 ## Integration Test Examples
 
-### Python + TestContainers — Database Integration Test
-```python
+### [Python](../../Languages/python/SKILL.md) + TestContainers — Database Integration Test
+```[python](../../Languages/python/SKILL.md)
 import pytest
 from testcontainers.postgres import PostgresContainer
 from sqlalchemy import create_engine, text
@@ -249,8 +249,8 @@ class OrderServiceIntegrationTest {
 }
 ```
 
-### TypeScript + TestContainers — Message Queue Integration Test
-```typescript
+### [TypeScript](../../Frontend/typescript/SKILL.md) + TestContainers — Message Queue Integration Test
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { GenericContainer } from "testcontainers";
 import { Kafka } from "kafkajs";
 
@@ -318,9 +318,9 @@ jobs:
       - run: npm ci
       - name: Pre-pull container images
         run: |
-          docker pull postgres:16-alpine
-          docker pull confluentinc/cp-kafka:7.6.0
-          docker pull wiremock/wiremock:3.5.4
+          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull postgres:16-alpine
+          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull confluentinc/cp-kafka:7.6.0
+          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull wiremock/wiremock:3.5.4
       - name: Run integration tests
         run: npx vitest run --config vitest.integration.config.ts --shard=${{ matrix.shard }}/2
         env:
@@ -336,7 +336,7 @@ jobs:
 ## Integration Testing Anti-Patterns
 
 ### Anti-Pattern: In-Memory Database Substitutes
-Using H2 for PostgreSQL or SQLite for MySQL. In-memory substitutes have different SQL dialects, constraint behaviors, and transaction semantics. Tests pass with H2 but fail with PostgreSQL in production. Always use the real database in a container.
+Using H2 for [PostgreSQL](../../Backend/postgresql/SKILL.md) or SQLite for [MySQL](../../Backend/mysql/SKILL.md). In-memory substitutes have different SQL dialects, constraint behaviors, and transaction semantics. Tests pass with H2 but fail with [PostgreSQL](../../Backend/postgresql/SKILL.md) in production. Always use the real database in a container.
 
 ### Anti-Pattern: No Wait Strategy
 Accessing containers before they're ready produces non-deterministic failures. Never use fixed `Thread.sleep()`. Use predicate-based wait strategies: wait for log message ("database system is ready to accept connections"), HTTP health check, or port listening.
@@ -369,8 +369,8 @@ Hardcoded ports, hosts, or credentials prevent parallel test execution. Use `wit
 - Database migration: 5-30s per suite. Run once per suite (beforeAll), not per test.
 - Data cleanup: truncation (50-200ms) vs fresh container (30s). Choose based on isolation needs.
 - Test execution: target < 15 minutes per suite. Parallel workers each get isolated database.
-- CI resources: Docker-in-Docker requires privileged mode or dedicated runners. Use `TESTCONTAINERS_RYUK_DISABLED: true` in CI.
-- Container image caching: pre-pull all images in CI to avoid network timeouts. Use `docker pull` in a setup step.
+- CI resources: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) requires privileged mode or dedicated runners. Use `TESTCONTAINERS_RYUK_DISABLED: true` in CI.
+- Container image caching: pre-pull all images in CI to avoid network timeouts. Use `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull` in a setup step.
 - WireMock startup: < 3s per instance. Reuse across tests within a suite.
 
 ## Rules
@@ -407,10 +407,10 @@ Hardcoded ports, hosts, or credentials prevent parallel test execution. Use `wit
 
 ## Handoff
 After integration testing, hand off to:
-- `quality-e2e-testing` — for end-to-end validation of complete workflows
-- `quality-contract-testing` — for formal contract verification between services
-- `quality-regression-testing` — for regression suite updates
-- `quality-smoke-testing` — for BVT smoke test inclusion
+- `[quality-e2e-testing](../e2e-testing/SKILL.md)` — for end-to-end validation of complete workflows
+- `[quality-contract-testing](../contract-testing/SKILL.md)` — for formal contract verification between services
+- `[quality-regression-testing](../regression-testing/SKILL.md)` — for regression suite updates
+- `[quality-smoke-testing](../smoke-testing/SKILL.md)` — for BVT smoke test inclusion
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -463,7 +463,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -477,7 +477,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -493,12 +493,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -507,7 +507,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -515,13 +515,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -530,9 +530,9 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

@@ -16,7 +16,7 @@ Fine-tune models using SFT (supervised), DPO (preference), or RFT (reinforcement
 Use this sub-skill when the user asks about:
 - Fine-tuning a model (SFT, DPO, or RFT)
 - Preparing, validating, or formatting training data
-- Submitting, monitoring, or diagnosing training jobs
+- Submitting, [monitoring](../../../../../Observability_and_SecOps/monitoring/SKILL.md), or diagnosing training jobs
 - Calibrating graders or pass thresholds for RFT
 - Deploying or evaluating a fine-tuned model
 - Choosing between training types (SFT vs DPO vs RFT)
@@ -24,7 +24,7 @@ Use this sub-skill when the user asks about:
 - Large file uploads for training data
 - Cleaning up fine-tuning resources (files, deployments)
 
-**Do NOT use for:** General model deployment without fine-tuning (use deploy-model), agent creation (use agents), prompt optimization without training (use prompt-optimizer).
+**Do NOT use for:** General model deployment without fine-tuning (use [deploy-model](../../../../../../AI_and_Agents/Infrastructure/[deploy-model](../models/deploy-model/SKILL.md)/SKILL.md)), agent creation (use agents), prompt optimization without training (use prompt-optimizer).
 
 ## Workflows
 
@@ -81,12 +81,12 @@ Use this sub-skill when the user asks about:
 
 | Task | Command |
 |------|---------|
-| Validate SFT data | `python scripts/validate/validate_sft.py data.jsonl` |
-| Submit SFT job | `python scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
-| Monitor job | `python scripts/monitor_training.py --job-id ftjob-xxx` |
-| Analyze curves | `python scripts/check_training.py --job-id ftjob-xxx` |
-| Deploy model | `python scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
-| Evaluate model | `python scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
+| Validate SFT data | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
+| Submit SFT job | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
+| Monitor job | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
+| Analyze curves | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
+| Deploy model | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
+| Evaluate model | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
 
 ## Error Handling
 

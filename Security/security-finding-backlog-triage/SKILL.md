@@ -38,9 +38,9 @@ finding backlog — scoring severity, exploitability, and false-positive
 likelihood together to produce a defensible fix-order, and routing each
 finding to a lane (fix now, scheduled remediation, accepted risk,
 false positive) with an owner and a re-review date. It is the day-to-day
-counterpart to [secure-cicd-gates](../secure-cicd-gates/SKILL.md), which
+counterpart to [secure-cicd-gates](../[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md), which
 designs where findings enter the pipeline in the first place, and to
-[security-gate-exception-management](../security-gate-exception-management/SKILL.md),
+[security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md),
 which governs how an individual accepted-risk decision is recorded and
 expires.
 
@@ -67,25 +67,25 @@ expires.
 
 - At least one operating scanner producing findings in a
   queryable/exportable form (SARIF, tool-native JSON/API, or a
-  centralized AppSec dashboard such as DefectDojo, GitHub code scanning,
+  centralized AppSec dashboard such as DefectDojo, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) code scanning,
   or a SIEM ingesting scan output). This skill triages what scanners
   already produce; if no scanning exists yet, start with
-  [sast-integration](../sast-integration/SKILL.md),
-  [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md),
-  or [dast-integration](../dast-integration/SKILL.md) first.
+  [sast-integration](../[sast-integration](../sast-integration/SKILL.md)/SKILL.md),
+  [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md),
+  or [dast-integration](../[dast-integration](../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md) first.
 - Enough system/architecture context to assess reachability and exposure
   per finding — which services are internet-facing, which run with
   elevated privileges, which process untrusted input — typically an
   asset inventory or service catalog, even an informal one.
-- A ticketing system (Jira, GitHub Issues, Linear) to assign owners and
+- A ticketing system (Jira, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Linear) to assign owners and
   due dates per triage lane, rather than tracking decisions only inside
   the scanner's own UI comment field.
 - Organizational agreement on who has authority to move a finding into
   the "accepted risk" lane — see
-  [security-gate-exception-management](../security-gate-exception-management/SKILL.md)
+  [security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md)
   for the exception-approval workflow this hands off to.
 - A defined remediation SLA by severity tier (e.g. from
-  [secure-cicd-gates](../secure-cicd-gates/SKILL.md)'s severity-to-action
+  [secure-cicd-gates](../[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md)'s severity-to-action
   table) that triage scoring feeds into — triage without an SLA produces
   a ranked list nobody is accountable for actually working through.
 
@@ -133,7 +133,7 @@ expires.
 
 3. **Fold in per-tool/per-rule false-positive rate as a discount
    factor**, tracked over time (see
-   [security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md)
+   [security-posture-metrics-and-trend-analysis](../[security-posture-metrics-and-trend-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/security-posture-metrics-and-trend-analysis/SKILL.md)/SKILL.md)
    for how to measure it). A specific SAST rule with a historical 80%
    dismissal rate on this codebase should not carry the same weight in
    the initial ranking as a rule that has never once been marked a false
@@ -152,13 +152,13 @@ expires.
      fixed for a documented reason (compensating control, low
      exploitability confirmed, cost disproportionate to risk); hand off
      to
-     [security-gate-exception-management](../security-gate-exception-management/SKILL.md)
+     [security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md)
      for the formal expiring-exception record — never leave this as an
      informal "we decided not to fix it" comment with no expiry.
    - **False positive** — confirmed non-issue; suppress in the scanner
      with a justification comment (per the suppression guidance in
-     [sast-integration](../sast-integration/SKILL.md) and
-     [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)),
+     [sast-integration](../[sast-integration](../sast-integration/SKILL.md)/SKILL.md) and
+     [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)),
      and log it so the tool/rule's false-positive rate metric reflects
      it.
 
@@ -180,7 +180,7 @@ expires.
    to leadership — "4,200 open findings" is not actionable; "180 exceed
    their SLA, oldest is 340 days, concentrated in three legacy services"
    points at where to actually intervene. See
-   [security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md)
+   [security-posture-metrics-and-trend-analysis](../[security-posture-metrics-and-trend-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/security-posture-metrics-and-trend-analysis/SKILL.md)/SKILL.md)
    for the trend-tracking this feeds.
 
 ## Best practices
@@ -231,7 +231,7 @@ expires.
   clear the backlog dashboard before a leadership review, without
   individually verifying each one.
   **Fix:** Require a specific justification per suppression (or per
-  batch of genuinely identical findings), and periodically audit a
+  batch of genuinely identical findings), and periodically [audit](../../AI_and_Agents/Operations/audit/SKILL.md) a
   sample of "false positive" dispositions — a backlog that looks clean
   because of unverified mass-dismissal is worse than a visibly large,
   honestly-triaged one.
@@ -240,7 +240,7 @@ expires.
   carried forward in every triage meeting for over a year with no
   formal record of who approved the acceptance or when it expires.
   **Fix:** Every accepted-risk disposition must go through
-  [security-gate-exception-management](../security-gate-exception-management/SKILL.md)'s
+  [security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md)'s
   exception process with an explicit owner and expiry — an informal
   "we've always just left this one" is exactly the unbounded waiver list
   that process exists to prevent.
@@ -282,7 +282,7 @@ Triage outcome recorded in the tracking ticket system:
   (matches the critical-severity SLA).
 - F-0894 → JIRA-SEC-442, scheduled, due in 2 weeks.
 - F-1042 → routed to
-  [security-gate-exception-management](../security-gate-exception-management/SKILL.md),
+  [security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md),
   exception granted with a 2026-12-01 expiry and owner recorded, not left
   as an unowned backlog item.
 - F-1103 → JIRA-SEC-443, scheduled, due in 90 days per medium-severity
@@ -293,24 +293,24 @@ The remaining ~1,146 findings are batch-triaged by grouping on
 ZAP finding repeated per endpoint (one scheduled fix at the framework
 middleware level closes all of them at once), and roughly 200 Trivy
 findings trace to a single outdated base image (one base-image bump
-fix, see [container-image-hardening](../container-image-hardening/SKILL.md)),
+fix, see [container-image-hardening](../[container-image-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md)),
 rather than requiring 540 individual triage decisions.
 
 ## Cross-references
 
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — designs where and
+- [secure-cicd-gates](../[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — designs where and
   when findings enter the pipeline and the severity-to-action table this
   skill's scoring model feeds into.
-- [critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md) —
+- [critical-vulnerability-emergency-response](../[critical-vulnerability-emergency-response](../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md) —
   the accelerated, out-of-band process for a single newly-disclosed
   critical CVE, versus this skill's steady-state ongoing backlog
   management.
-- [security-gate-exception-management](../security-gate-exception-management/SKILL.md) —
+- [security-gate-exception-management](../[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md) —
   the formal, expiring-exception workflow that an "accepted risk" triage
   lane hands off to.
-- [security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md) —
+- [security-posture-metrics-and-trend-analysis](../[security-posture-metrics-and-trend-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/security-posture-metrics-and-trend-analysis/SKILL.md)/SKILL.md) —
   tracking backlog age distribution, mean-time-to-remediate, and
   false-positive rate over time as inputs back into this triage process.
-- [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md) —
+- [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) —
   the SCA-specific finding source and reachability-analysis tooling
   referenced in the scoring step.

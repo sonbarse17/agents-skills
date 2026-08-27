@@ -58,11 +58,11 @@ them and installing/troubleshooting each.
   Operator is now the recommended install path over raw manifests for
   new installs; both projects move quickly enough that the exact
   manifest URLs and default backend are worth re-checking against the
-  target Kubernetes version's compatibility matrix before install).
-- Know your target Kubernetes CNI plugin conformance requirement — most
-  managed Kubernetes distributions (EKS, AKS, GKE) ship their own
+  target [Kubernetes](../kubernetes/SKILL.md) version's compatibility matrix before install).
+- Know your target [Kubernetes](../kubernetes/SKILL.md) CNI plugin conformance requirement — most
+  managed [Kubernetes](../kubernetes/SKILL.md) distributions (EKS, AKS, GKE) ship their own
   default CNI (see
-  [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md))
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md))
   and this skill applies primarily to self-managed clusters, or to
   managed clusters that explicitly support swapping the CNI (e.g. EKS
   with the AWS VPC CNI replaced by Calico for policy enforcement).
@@ -83,7 +83,7 @@ them and installing/troubleshooting each.
      a non-overlay BGP data path is wanted for performance or
      network-visibility reasons, or when advanced policy (Calico's own
      `GlobalNetworkPolicy`, tiered policy, host endpoint protection)
-     is needed beyond what native Kubernetes `NetworkPolicy` supports.
+     is needed beyond what native [Kubernetes](../kubernetes/SKILL.md) `NetworkPolicy` supports.
    - Flannel has an experimental/limited policy story; **do not rely on
      Flannel alone if `NetworkPolicy` enforcement is a stated security
      requirement** — it typically requires pairing with a separate
@@ -93,7 +93,7 @@ them and installing/troubleshooting each.
 
 2. **Install Flannel** (VXLAN backend, the common default):
    ```bash
-   kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+   [kubectl](../kubectl/SKILL.md) apply -f https://[github](../../CI_CD/github/SKILL.md).com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
    ```
    Confirm the pod CIDR passed to `kubeadm init --pod-network-cidr=...`
    matches Flannel's expected default (`10.244.0.0/16`) or override
@@ -103,7 +103,7 @@ them and installing/troubleshooting each.
 3. **Install Calico** via the Tigera Operator (recommended over raw
    manifests for lifecycle management):
    ```bash
-   kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+   [kubectl](../kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
    ```
    ```yaml
    # custom-resources.yaml
@@ -118,8 +118,8 @@ them and installing/troubleshooting each.
            encapsulation: VXLANCrossSubnet   # overlay only across subnets, native routing within
    ```
    ```bash
-   kubectl create -f custom-resources.yaml
-   watch kubectl get tigerastatus
+   [kubectl](../kubectl/SKILL.md) create -f custom-resources.yaml
+   watch [kubectl](../kubectl/SKILL.md) get tigerastatus
    ```
 
 4. **Choose Calico's data path deliberately**:
@@ -131,7 +131,7 @@ them and installing/troubleshooting each.
      requires either full-mesh BGP between nodes (works out of the box
      on a flat L2 network) or peering with physical top-of-rack
      routers/route reflectors for larger/segmented networks — this is
-     an infrastructure decision, not just a Kubernetes config change.
+     an infrastructure decision, not just a [Kubernetes](../kubernetes/SKILL.md) config change.
    - `VXLANCrossSubnet`/`IPIPCrossSubnet` hybrid: encapsulates only when
      crossing an L3 subnet boundary, giving native routing performance
      within a subnet and overlay compatibility across subnets — a
@@ -178,10 +178,10 @@ them and installing/troubleshooting each.
 7. **Validate cross-node pod connectivity directly** when debugging,
    independent of any application-level assumption:
    ```bash
-   kubectl run net-test --image=busybox:1.36 --rm -it --restart=Never -- \
+   [kubectl](../kubectl/SKILL.md) run net-test --image=busybox:1.36 --rm -it --restart=Never -- \
      wget -qO- --timeout=2 <target-pod-ip>:<port>
    ```
-   Combine with `kubectl get pods -o wide` to confirm which nodes the
+   Combine with `[kubectl](../kubectl/SKILL.md) get pods -o wide` to confirm which nodes the
    source/destination land on — same-node connectivity working while
    cross-node fails points squarely at the CNI's inter-node data path
    (VXLAN interface, BGP route, or a firewall blocking the
@@ -221,15 +221,15 @@ them and installing/troubleshooting each.
 - **Symptom:** `NetworkPolicy` resources apply without error, but
   traffic that should be denied still gets through.
   **Fix:** Confirm the CNI actually enforces `NetworkPolicy` — plain
-  Flannel accepts the resource via the Kubernetes API (any CNI can, since
+  Flannel accepts the resource via the [Kubernetes](../kubernetes/SKILL.md) API (any CNI can, since
   the API server doesn't require a specific CNI to store the object) but
   does not enforce it without a paired policy engine. Check
-  `kubectl get pods -n kube-system` for a policy-enforcing component
+  `[kubectl](../kubectl/SKILL.md) get pods -n kube-system` for a policy-enforcing component
   (`calico-node`, `kube-router`) actually running; if absent, the
   `NetworkPolicy` is a no-op regardless of how correct it looks.
 
 - **Symptom:** New nodes join the cluster and stay `NotReady`
-  indefinitely with a CNI-related error in `kubectl describe node`.
+  indefinitely with a CNI-related error in `[kubectl](../kubectl/SKILL.md) describe node`.
   **Fix:** Usually a pod CIDR mismatch between what `kubeadm`/the
   cluster bootstrap configured and what the CNI's ConfigMap/IPPool
   expects, or the CNI DaemonSet pod failing to schedule on that node
@@ -242,8 +242,8 @@ them and installing/troubleshooting each.
   **Fix:** The overlay's encapsulation traffic (VXLAN UDP/4789 for
   Flannel/Calico VXLAN mode, IP protocol 4 for IPIP) is being blocked
   by a host firewall, security group, or NACL between nodes — this is
-  an infrastructure-firewall problem, not a Kubernetes-level
-  misconfiguration, and is invisible to `kubectl` since the API server
+  an infrastructure-firewall problem, not a [Kubernetes](../kubernetes/SKILL.md)-level
+  misconfiguration, and is invisible to `[kubectl](../kubectl/SKILL.md)` since the API server
   reports the node `Ready` regardless.
 
 - **Symptom:** After switching Calico from overlay to native BGP mode
@@ -256,13 +256,13 @@ them and installing/troubleshooting each.
   a planned, monitored migration with a rollback plan, not a
   live config flip on a single-digit-minute change window.
 
-- **Symptom:** BGP-mode Calico shows nodes `Ready` in Kubernetes but
+- **Symptom:** BGP-mode Calico shows nodes `Ready` in [Kubernetes](../kubernetes/SKILL.md) but
   `calicoctl node status` shows peers stuck in `Active`/`Connect`
   (never `Established`).
   **Fix:** BGP session isn't forming — check that nothing between nodes
   blocks TCP/179, and that any router-reflector or peering
   configuration (for non-full-mesh topologies) matches on both sides.
-  Kubernetes-level node readiness does not reflect BGP peering health at
+  [Kubernetes](../kubernetes/SKILL.md)-level node readiness does not reflect BGP peering health at
   all.
 
 ## Worked example
@@ -273,7 +273,7 @@ default-deny with an explicit allow rule.
 
 ```bash
 kubeadm init --pod-network-cidr=192.168.0.0/16
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+[kubectl](../kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
 ```
 
 ```yaml
@@ -290,9 +290,9 @@ spec:
 ```
 
 ```bash
-kubectl create -f custom-resources.yaml
-watch kubectl get tigerastatus
-kubectl get nodes    # confirm all nodes reach Ready
+[kubectl](../kubectl/SKILL.md) create -f custom-resources.yaml
+watch [kubectl](../kubectl/SKILL.md) get tigerastatus
+[kubectl](../kubectl/SKILL.md) get nodes    # confirm all nodes reach Ready
 ```
 
 ```yaml
@@ -313,12 +313,12 @@ spec:
 ```
 
 ```bash
-kubectl apply -f netpol.yaml
+[kubectl](../kubectl/SKILL.md) apply -f netpol.yaml
 # negative test: should time out
-kubectl run probe --image=busybox:1.36 --rm -it --restart=Never -n payments -- \
+[kubectl](../kubectl/SKILL.md) run probe --image=busybox:1.36 --rm -it --restart=Never -n payments -- \
   wget -qO- --timeout=2 payments-api:8080
 # positive test from an allowed pod: should succeed
-kubectl exec -n payments deploy/frontend -- wget -qO- --timeout=2 payments-api:8080
+[kubectl](../kubectl/SKILL.md) exec -n payments deploy/frontend -- wget -qO- --timeout=2 payments-api:8080
 ```
 
 The first probe (unlabeled pod) times out, confirming default-deny is
@@ -328,5 +328,5 @@ intended.
 
 ## Cross-references
 
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — CNI choices and constraints on managed clusters, where the default CNI is often fixed or cloud-specific.
-- [service-mesh-istio](../service-mesh-istio/SKILL.md) — how mesh sidecar traffic interception layers on top of (and depends on) a working CNI data path.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — CNI choices and constraints on managed clusters, where the default CNI is often fixed or cloud-specific.
+- [service-mesh-istio](../[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — how mesh sidecar traffic interception layers on top of (and depends on) a working CNI data path.

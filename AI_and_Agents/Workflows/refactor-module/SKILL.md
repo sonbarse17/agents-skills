@@ -93,7 +93,7 @@ output "private_subnet_ids" {
 - Configuration with clear boundaries
 
 **What to Keep Separate:**
-- Cross-cutting concerns (monitoring, tagging)
+- Cross-cutting concerns ([monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), tagging)
 - Resources with different lifecycles
 - Provider-specific configurations
 ```
@@ -398,7 +398,7 @@ See [examples/](./examples/) directory for complete usage examples.
 
 ### 6. Testing
 
-Use skill terraform-test
+Use skill [terraform-test](../../../DevOps_and_Cloud/Infrastructure_as_Code/[terraform-test](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-test/SKILL.md)/SKILL.md)
 
 **Test File**: A `.tftest.hcl` or `.tftest.json` file containing test configuration and run blocks that validate your Terraform configuration.
 
@@ -526,7 +526,7 @@ terraform apply migration.tfplan
 ```hcl
 # Use semantic versioning for modules
 module "vpc" {
-  source  = "git::https://github.com/org/terraform-modules.git//vpc?ref=v1.2.0"
+  source  = "git::https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/[terraform-modules](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md).git//vpc?ref=v1.2.0"
   version = "~> 1.2"
 }
 
@@ -546,8 +546,8 @@ module "vpc" {
 - [ ] No plan differences after refactoring
 
 ## Related Skills
-- [Terraform code generation](https://raw.githubusercontent.com/hashicorp/agent-skills/refs/heads/main/terraform/code-generation/skills/terraform-style-guide/SKILL.md) - Style guide for the new Terraform Module
-- [Azure Verified Modules](https://raw.githubusercontent.com/hashicorp/agent-skills/refs/heads/main/terraform/code-generation/skills/azure-verified-modules/SKILL.md) - Recommended module specifications for Azure
+- [Terraform code generation](https://raw.githubusercontent.com/hashicorp/agent-skills/refs/heads/main/terraform/code-generation/skills/[terraform-style-guide](../../../DevOps_and_Cloud/Infrastructure_as_Code/[terraform-style-guide](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-style-guide/SKILL.md)/SKILL.md)/SKILL.md) - Style guide for the new Terraform Module
+- [Azure Verified Modules](https://raw.githubusercontent.com/hashicorp/agent-skills/refs/heads/main/terraform/code-generation/skills/[azure-verified-modules](../../../DevOps_and_Cloud/Infrastructure_as_Code/[azure-verified-modules](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/azure-verified-modules/SKILL.md)/SKILL.md)/SKILL.md) - Recommended module specifications for Azure
 
 ## Resources
 - [Terraform Module Development](https://developer.hashicorp.com/terraform/language/modules/develop)

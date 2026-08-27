@@ -30,7 +30,7 @@ placement, shard sizing, or shard-lifecycle problems wearing a
 lifecycle from hot ingestion through cold storage to deletion (ILM in
 Elasticsearch, ISM in OpenSearch), and reindexing safely when a
 mapping needs to change. It is the cluster-operations counterpart to
-[elasticsearch-opensearch-configuration-validation](../elasticsearch-opensearch-configuration-validation/SKILL.md),
+[elasticsearch-opensearch-configuration-validation](../[elasticsearch-opensearch-configuration-validation](../../../Software_Engineering_and_Other/Databases/elasticsearch-opensearch-configuration-validation/SKILL.md)/SKILL.md),
 which validates index mapping and shard allocation settings *before*
 production indexing begins rather than operating a cluster already
 under load.
@@ -139,7 +139,7 @@ stage breach is the actual cause behind a confusing "why can't I write
 to this index anymore, nothing changed in the mapping" symptom — check
 node disk usage before suspecting a mapping/application-side cause.
 Recovering from flood-stage requires freeing real disk space (deleting
-old indices via ILM, adding capacity) and then explicitly clearing the
+old indices via ILM, adding [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) and then explicitly clearing the
 read-only block once space is available:
 ```bash
 curl -X PUT "http://<HOST>:9200/<index>/_settings" -H 'Content-Type: application/json' -d '
@@ -253,7 +253,7 @@ undersized nodes is a common early sign to investigate.
 - Always read/write through an alias, never a concrete backing index
   name, so ILM rollover and reindex-based mapping changes are invisible
   to application code.
-- Treat disk watermark breaches as a capacity-planning signal to act on
+- Treat disk watermark breaches as a [capacity-planning](../../Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md) signal to act on
   before flood-stage, not just something to unblock reactively after
   writes start failing — alert on watermark proximity, not only on the
   read-only block itself.
@@ -279,7 +279,7 @@ undersized nodes is a common early sign to investigate.
   **Fix:** A data node crossed the flood-stage disk watermark, which
   forces `index.blocks.read_only_allow_delete` on automatically. Check
   node disk usage first, free space (delete old ILM-managed indices,
-  add capacity), then explicitly clear the block — it does not clear
+  add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)), then explicitly clear the block — it does not clear
   itself just because disk usage subsequently drops.
 
 - **Symptom:** An ILM/ISM delete phase removes data earlier than
@@ -366,6 +366,6 @@ deliberate rollout.
 
 ## Cross-references
 
-- [elasticsearch-opensearch-configuration-validation](../elasticsearch-opensearch-configuration-validation/SKILL.md) — validates index mapping and shard allocation/replica settings before production indexing begins, complementing the operational triage covered here.
-- [redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md) — comparable cluster-topology and node-failure-handling concerns (shard/replica placement, quorum-based master election) in a different distributed-systems shape.
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — comparable sharding and chunk/shard-balancing concerns (shard key selection vs. shard/replica allocation here) if both systems are in the same platform.
+- [elasticsearch-opensearch-configuration-validation](../[elasticsearch-opensearch-configuration-validation](../../../Software_Engineering_and_Other/Databases/elasticsearch-opensearch-configuration-validation/SKILL.md)/SKILL.md) — validates index mapping and shard allocation/replica settings before production indexing begins, complementing the operational triage covered here.
+- [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../../../Software_Engineering_and_Other/Databases/redis-operations-and-cluster-management/SKILL.md)/SKILL.md) — comparable cluster-topology and node-failure-handling concerns (shard/replica placement, quorum-based master election) in a different distributed-systems shape.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../../../Software_Engineering_and_Other/Databases/[mongodb](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable sharding and chunk/shard-balancing concerns (shard key selection vs. shard/replica allocation here) if both systems are in the same platform.

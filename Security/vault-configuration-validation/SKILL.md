@@ -18,43 +18,43 @@ metadata:
   maturity: stable
 ---
 
-# Vault Configuration Validation
+# [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Configuration Validation
 
 ## Purpose
 
-A Vault cluster's actual security guarantee is only as strong as its
+A [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster's actual security guarantee is only as strong as its
 policies, auth-method role bindings, and seal configuration — a
-correctly-operated, highly-available Vault cluster (see
-[vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md))
+correctly-operated, highly-available [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster (see
+[vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md))
 still leaks broad access if a policy grants `path "secret/*" {
-capabilities = ["read"] }` instead of a scoped path, or if a Kubernetes
+capabilities = ["read"] }` instead of a scoped path, or if a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 auth-method role binds to `bound_service_account_names: ["*"]` instead
-of a specific service account. Because Vault policy changes take effect
+of a specific service account. Because [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy changes take effect
 immediately and apply broadly (a single policy can be attached to many
 tokens/roles), an overly broad or subtly wrong policy is a
-production-security-incident-in-waiting the moment it's applied, not
-just a code-review nitpick. This skill covers validating policies, auth
+production-security-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-in-waiting the moment it's applied, not
+just a [code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) nitpick. This skill covers validating policies, auth
 method bindings, and seal/storage configuration changes *before*
-rollout — via `vault policy fmt`/`vault policy read` inspection,
+rollout — via `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy fmt`/`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy read` inspection,
 automated linting in CI, least-privilege review of path grants, and a
 staged-rollout discipline for anything cluster-wide (seal migration,
 storage backend changes).
 
 ## When to use
 
-- The user has drafted a new or modified Vault ACL policy (HCL) and
+- The user has drafted a new or modified [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) ACL policy (HCL) and
   wants it reviewed for overly broad path grants or capability sets
   before applying it to a production cluster.
-- The user wants CI-based linting/validation of Vault policy files
+- The user wants CI-based linting/validation of [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy files
   version-controlled alongside application code, rather than manual
   review only at apply time.
-- The user is configuring a new auth method (Kubernetes, AWS IAM, OIDC,
+- The user is configuring a new auth method ([Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), AWS IAM, OIDC,
   AppRole) and wants the role/binding reviewed for least privilege
   before workloads start authenticating against it.
 - The user is planning a seal migration (Shamir → auto-unseal, or
   changing auto-unseal KMS key) and wants the plan validated for safety
   before executing it against a live cluster.
-- The user is auditing an existing Vault installation's policies for
+- The user is auditing an existing [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) installation's policies for
   drift from least privilege (wildcard paths, `sudo` capabilities
   granted broadly, root tokens still in use for routine operations).
 - Debugging why a token with an attached policy unexpectedly can (or
@@ -62,23 +62,23 @@ storage backend changes).
 
 ## Prerequisites & environment
 
-- Vault CLI (`vault`) matching the target cluster's version, with at
-  least read access to policies (`vault policy list`/`vault policy
+- [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) CLI (`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)`) matching the target cluster's version, with at
+  least read access to policies (`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy list`/`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy
   read`) for inspection — full validation of a *proposed* change can
   happen offline against the HCL file itself without live cluster
   access.
 - Policy files version-controlled as HCL (or JSON) in a repo, not only
-  ever written directly via `vault policy write` from an ad hoc shell —
+  ever written directly via `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write` from an ad hoc shell —
   version control is what makes CI-based linting and PR review possible
   at all.
-- `vault-lint` or an equivalent policy-linting tool (community tools
+- `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-lint` or an equivalent policy-linting tool (community tools
   exist; a lightweight in-house script checking for wildcard paths and
   broad capability sets is also a reasonable, low-dependency starting
   point — see the worked example) wired into CI for automated checks
   ahead of manual review.
 - For auth-method review: read access to the specific auth method's
-  role configuration (`vault read auth/kubernetes/role/<name>`,
-  `vault read auth/aws/role/<name>`, etc.) to inspect bound
+  role configuration (`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/<name>`,
+  `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read auth/aws/role/<name>`, etc.) to inspect bound
   constraints.
 - For seal-migration review: a maintenance window and a tested rollback
   plan — a seal migration is a cluster-wide, one-way-in-practice
@@ -91,7 +91,7 @@ storage backend changes).
    trivial first gate that catches typos before they reach a human
    reviewer's attention:
    ```bash
-   vault policy fmt -check policies/payments-prod-read.hcl
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy fmt -check policies/payments-prod-read.hcl
    ```
 
 2. **Review every path grant for scope, not just syntax correctness.**
@@ -125,9 +125,9 @@ storage backend changes).
    }
    ```
    ```bash
-   # Audit whether the root token is still in routine use — it should
+   # [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) whether the root token is still in routine use — it should
    # only ever be used for initial setup/emergency recovery, then revoked
-   vault token lookup   # inspect the token currently in use for policy/display_name
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token lookup   # inspect the token currently in use for policy/display_name
    ```
    > **Warning:** a policy granting broad `sudo` capability, or routine
    > operational use of the initial root token instead of scoped,
@@ -143,7 +143,7 @@ storage backend changes).
    set -euo pipefail
    fail=0
    for f in policies/*.hcl; do
-     vault policy fmt -check "$f" || fail=1
+     [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy fmt -check "$f" || fail=1
      if grep -qE 'path\s+"\*"' "$f"; then
        echo "FAIL: $f grants a bare wildcard path"
        fail=1
@@ -156,8 +156,8 @@ storage backend changes).
    exit $fail
    ```
    ```yaml
-   # .github/workflows/vault-policy-lint.yml
-   name: vault-policy-lint
+   # .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-policy-lint.yml
+   name: [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-policy-lint
    on: [pull_request]
    jobs:
      lint:
@@ -168,9 +168,9 @@ storage backend changes).
    ```
 
 5. **Validate auth-method role bindings scope to a specific identity**,
-   not a wildcard match. Kubernetes auth method example:
+   not a wildcard match. [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth method example:
    ```bash
-   vault read auth/kubernetes/role/payments-prod
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/payments-prod
    ```
    ```hcl
    # Overly broad — any service account in any namespace can assume this role
@@ -189,7 +189,7 @@ storage backend changes).
    and policies — a long-lived, broadly-renewable token defeats much of
    the value of an auth method's identity binding:
    ```bash
-   vault read auth/kubernetes/role/payments-prod | grep -E "ttl|max_ttl"
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) read auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/payments-prod | grep -E "ttl|max_ttl"
    ```
    Flag `token_max_ttl` set to `0` (unlimited) or an unusually long
    duration (weeks/months) on a role meant to authenticate a
@@ -199,11 +199,11 @@ storage backend changes).
    first**, never directly against production:
    ```bash
    # Dry-run/staging validation sequence before touching production
-   vault operator seal   # confirm current seal type and status on staging
-   vault status
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator seal   # confirm current seal type and status on staging
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) status
    # Apply the new seal stanza to staging config, restart, confirm
    # migration completes and staging remains operable
-   vault status   # confirm Type reflects the new seal mechanism
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) status   # confirm Type reflects the new seal mechanism
    ```
    Confirm the exact migration steps (config change, restart sequence,
    recovery-key handling) are rehearsed and documented, with a rollback
@@ -212,17 +212,17 @@ storage backend changes).
 
 8. **Diff policy/auth-method state against the version-controlled source
    of truth periodically**, to catch configuration drift from ad hoc
-   `vault policy write`/`vault write auth/.../role/...` changes made
+   `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write`/`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/.../role/...` changes made
    outside the reviewed change process:
    ```bash
-   vault policy read payments-prod-read > /tmp/live-policy.hcl
+   [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy read payments-prod-read > /tmp/live-policy.hcl
    diff /tmp/live-policy.hcl policies/payments-prod-read.hcl
    ```
 
 ## Best practices
 
 - Version-control every policy and auth-method role definition, and
-  require PR review before applying — a `vault policy write` run
+  require PR review before applying — a `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write` run
   directly from an operator's shell, with no review trail, is exactly
   how drift and over-broad grants accumulate unnoticed.
 - Lint for wildcard paths and unjustified `sudo`/broad-capability grants
@@ -283,20 +283,20 @@ storage backend changes).
   auth-method-issued, scoped tokens for all routine operations —
   ongoing root-token use is a standing, unnecessary blast-radius risk.
 
-- **Symptom:** Live Vault policy state has drifted from what's in the
-  version-controlled repo, because someone ran `vault policy write`
-  directly during an incident and never backported the change.
+- **Symptom:** Live [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy state has drifted from what's in the
+  version-controlled repo, because someone ran `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write`
+  directly during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and never backported the change.
   **Fix:** Run a periodic diff of live policy/auth-method state against
   the repo (step 8) as a scheduled check, and require any emergency
   direct change to be backported to version control and reviewed
   within a fixed follow-up window (mirroring the emergency-change
   discipline in
-  [critical-vulnerability-emergency-response](../../../devsecops/skills/critical-vulnerability-emergency-response/SKILL.md)).
+  [critical-vulnerability-emergency-response](../../../[devsecops](../devsecops/SKILL.md)/skills/[critical-vulnerability-emergency-response](../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md)).
 
 ## Worked example
 
-A platform team reviews a pull request proposing a new Vault policy and
-Kubernetes auth-method role for a `payments-svc` workload, before
+A platform team reviews a pull request proposing a new [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy and
+[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth-method role for a `payments-svc` workload, before
 applying either to production.
 
 Proposed policy (`policies/payments-prod-read.hcl`):
@@ -324,7 +324,7 @@ path "pki_int/issue/payments-svc" {
   capabilities = ["create", "update"]
 }
 ```
-CI lint now passes (`vault policy fmt -check` clean, no wildcard-path
+CI lint now passes (`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy fmt -check` clean, no wildcard-path
 match).
 
 Proposed auth-method role (also in the PR):
@@ -344,23 +344,23 @@ token_max_ttl: "4h"
 ```
 
 Both changes are approved and merged, then applied to the cluster via
-the same CI pipeline that ran the lint (not a manual `vault policy
+the same CI pipeline that ran the lint (not a manual `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy
 write` from an operator's shell), keeping the version-controlled source
 of truth and the live cluster state in sync from the outset.
 
 ## Cross-references
 
-- [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md) —
-  operating the Vault cluster (seal/unseal, PKI engine, HA/DR topology)
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
+  operating the [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster (seal/unseal, PKI engine, HA/DR topology)
   that this skill's policy and configuration validation protects.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) —
+- [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager selection and least-privilege rationale
-  this skill's Vault-specific policy review implements in HCL terms.
-- [security-gate-exception-management](../../../devsecops/skills/security-gate-exception-management/SKILL.md) —
+  this skill's [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-specific policy review implements in HCL terms.
+- [security-gate-exception-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md) —
   if a genuinely broad grant is temporarily necessary (e.g. a migration
   needing wider read access for a bounded period), route it through a
   scoped, expiring exception rather than approving it as permanent
   policy.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) —
-  a comparable audit-before-enforce/least-privilege review discipline
-  applied to Kubernetes admission policy rather than Vault ACL policy.
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
+  a comparable [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce/least-privilege review discipline
+  applied to [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission policy rather than [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) ACL policy.

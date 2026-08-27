@@ -100,7 +100,7 @@ Resources:
           - !Ref SecurityGroup
 
   AutoScalingGroup:
-    Type: AWS::AutoScaling::AutoScalingGroup
+    Type: AWS::[AutoScaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)::AutoScalingGroup
     Properties:
       AutoScalingGroupName: !Sub '${Environment}-web-asg'
       LaunchTemplate:
@@ -438,8 +438,8 @@ aws cloudformation get-template \
 
 ## Related Skills
 
-- [terraform-aws](../terraform-aws/) - Alternative IaC with Terraform
-- [aws-iam](../aws-iam/) - IAM resources in templates
-- [aws-vpc](../aws-vpc/) - Network infrastructure templates
-- [aws-ec2](../aws-ec2/) - Compute resources in templates
-- [aws-s3](../aws-s3/) - Storage resources in templates
+- [terraform-aws](../[terraform-aws](../terraform-aws/SKILL.md)/) - Alternative IaC with Terraform
+- [aws-iam](../[aws-iam](../../Cloud_Providers/aws-iam/SKILL.md)/) - IAM resources in templates
+- [aws-vpc](../[aws-vpc](../../Cloud_Providers/aws-vpc/SKILL.md)/) - Network infrastructure templates
+- [aws-ec2](../[aws-ec2](../../Cloud_Providers/aws-ec2/SKILL.md)/) - Compute resources in templates
+- [aws-s3](../[aws-s3](../../Cloud_Providers/aws-s3/SKILL.md)/) - Storage resources in templates

@@ -10,7 +10,7 @@ description: Integrating Stable Diffusion for vision generation and Whisper for 
 - **Whisper**: Process audio locally or via API for high-accuracy transcription to complement visual tasks.
 
 ## Multimodal Workflow
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[User Audio] --> B(Whisper)
@@ -19,7 +19,7 @@ graph TD
 ```
 
 ## Stable Diffusion Snippet
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 from diffusers import StableDiffusionPipeline
 

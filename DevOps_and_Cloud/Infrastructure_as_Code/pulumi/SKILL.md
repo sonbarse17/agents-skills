@@ -22,7 +22,7 @@ metadata:
 
 ```bash
 # 1. Create a new project (prompts for language, cloud, stack)
-pulumi new aws-typescript
+pulumi new aws-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 # 2. Preview changes (no modifications made)
 pulumi preview
@@ -40,8 +40,8 @@ Pulumi supports multiple languages — choose based on your team's familiarity:
 
 | Language | Template prefix | Runtime needed |
 | --- | --- | --- |
-| TypeScript | `aws-typescript` | Node.js |
-| Python | `aws-python` | Python 3.8+ |
+| [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) | `aws-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)` | Node.js |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `aws-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)` | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.8+ |
 | Go | `aws-go` | Go 1.21+ |
 | C# | `aws-csharp` | .NET 6+ |
 | Java | `aws-java` | JDK 11+ |
@@ -72,7 +72,7 @@ pulumi up
 - Always run `pulumi preview` before `pulumi up` — review resource diffs carefully.
 - `pulumi destroy` is **irreversible** — confirm the stack resource list before proceeding.
 - Use `pulumi config set --secret` for sensitive values (passwords, API keys).
-- Never commit Pulumi state files or unencrypted secret values.
+- Never [commit](../../CI_CD/commit/SKILL.md) Pulumi state files or unencrypted secret values.
 - Use stack policies (CrossGuard) to enforce organizational guardrails.
 
 ## Workflow
@@ -87,7 +87,7 @@ pulumi up
 ## Related Skills
 
 - **terraform** — HCL-based IaC; Pulumi can import from Terraform state
-- **ansible** — configuration management for post-provision setup
+- **[ansible](../ansible/SKILL.md)** — configuration management for post-provision setup
 
 ## References
 

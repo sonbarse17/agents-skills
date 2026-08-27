@@ -47,7 +47,7 @@ WORKDIR /app
 
 ```bash
 # Run with security options
-docker run -d \
+[docker](../docker/SKILL.md) run -d \
   --read-only \
   --tmpfs /tmp \
   --security-opt=no-new-privileges:true \
@@ -57,7 +57,7 @@ docker run -d \
   myapp:latest
 ```
 
-## Kubernetes Security Context
+## [Kubernetes](../kubernetes/SKILL.md) Security Context
 
 ```yaml
 apiVersion: v1
@@ -98,5 +98,5 @@ FROM gcr.io/distroless/static-debian11
 
 ## Related Skills
 
-- [container-scanning](../../scanning/container-scanning/) - Vulnerability scanning
-- [kubernetes-hardening](../kubernetes-hardening/) - K8s security
+- [container-scanning](../../scanning/[container-scanning](../container-scanning/SKILL.md)/) - Vulnerability scanning
+- [kubernetes-hardening](../[kubernetes-hardening](../[kubernetes](../kubernetes/SKILL.md)-hardening/SKILL.md)/) - K8s security

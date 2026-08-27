@@ -10,7 +10,7 @@ metadata:
   package: azure-servicebus
 ---
 
-# Azure Service Bus SDK for Python
+# Azure Service Bus SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Enterprise messaging for reliable cloud communication with queues and pub/sub topics.
 
@@ -34,7 +34,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -43,14 +43,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.servicebus import ServiceBusClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 namespace = "<namespace>.servicebus.windows.net"
 
@@ -72,7 +72,7 @@ with ServiceBusClient(
 
 ## Send Messages (Async)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 from azure.servicebus.aio import ServiceBusClient
 from azure.servicebus import ServiceBusMessage
@@ -112,7 +112,7 @@ asyncio.run(send_messages())
 
 ## Receive Messages (Async)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def receive_messages():
     credential = DefaultAzureCredential()
     
@@ -143,7 +143,7 @@ asyncio.run(receive_messages())
 | `PEEK_LOCK` (default) | Message locked, must complete/abandon | Reliable processing |
 | `RECEIVE_AND_DELETE` | Removed immediately on receive | At-most-once delivery |
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.servicebus import ServiceBusReceiveMode
 
 receiver = client.get_queue_receiver(
@@ -154,7 +154,7 @@ receiver = client.get_queue_receiver(
 
 ## Message Settlement
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async with receiver:
     messages = await receiver.receive_messages(max_message_count=1)
     
@@ -181,7 +181,7 @@ async with receiver:
 
 ## Topics and Subscriptions
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Send to topic
 sender = client.get_topic_sender(topic_name="mytopic")
 async with sender:
@@ -198,7 +198,7 @@ async with receiver:
 
 ## Sessions (FIFO)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Send with session
 message = ServiceBusMessage("Session message")
 message.session_id = "order-123"
@@ -220,7 +220,7 @@ receiver = client.get_queue_receiver(
 
 ## Scheduled Messages
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 
 message = ServiceBusMessage("Scheduled message")
@@ -235,7 +235,7 @@ await sender.cancel_scheduled_messages(sequence_number)
 
 ## Dead-Letter Queue
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.servicebus import ServiceBusSubQueue
 
 # Receive from dead-letter queue
@@ -253,7 +253,7 @@ async with dlq_receiver:
 
 ## Sync Client (for simple scripts)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.servicebus import ServiceBusClient, ServiceBusMessage
 from azure.identity import DefaultAzureCredential
 
@@ -288,5 +288,5 @@ with ServiceBusClient(
 |------|----------|
 | [../../../../../Global_References/azure-servicebus-py_patterns.md](../../../../../Global_References/azure-servicebus-py_patterns.md) | Competing consumers, sessions, retry patterns, request-response, transactions |
 | [../../../../../Global_References/dead-letter.md](../../../../../Global_References/dead-letter.md) | DLQ handling, poison messages, reprocessing strategies |
-| [scripts/setup_servicebus.py](scripts/setup_servicebus.py) | CLI for queue/topic/subscription management and DLQ monitoring |
+| [scripts/setup_servicebus.py](scripts/setup_servicebus.py) | CLI for queue/topic/subscription management and DLQ [monitoring](../../../../Observability_and_SecOps/monitoring/SKILL.md) |
 

@@ -25,7 +25,7 @@ metadata:
 
 ## Purpose
 
-Zero-trust service-to-service authentication requires each workload to
+[Zero-trust](../zero-trust/SKILL.md) service-to-service authentication requires each workload to
 prove *what it is* cryptographically, without relying on a shared
 secret, a static API key, or network location (which IP/subnet it's on)
 as a stand-in for identity — all three of those are exactly what an
@@ -40,13 +40,13 @@ through an intermediary that terminates TLS). **SPIRE** is the reference
 implementation: a **SPIRE Server** acting as the trust domain's
 certificate authority and identity registry, and a **SPIRE Agent**
 running on every node that **attests** each local workload's identity
-(verifying, via a selector like a Kubernetes service account or a Unix
+(verifying, via a selector like a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account or a Unix
 process attribute, that a workload really is what it claims to be)
 before handing it a short-lived SVID — with no long-lived credential
 ever touching disk. This is a different layer than
-[enterprise-sso-and-idp-federation-configuration](../enterprise-sso-and-idp-federation-configuration/SKILL.md),
+[enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md),
 which federates *human* workforce identity into applications, and than
-[vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md),
+[vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md),
 which issues general-purpose secrets and certificates on request but has
 no built-in concept of automatically *attesting* which specific workload
 process is asking. This skill covers designing the trust domain and
@@ -55,15 +55,15 @@ rotation, and trust domain federation.
 
 ## When to use
 
-- Designing a zero-trust service-to-service authentication scheme where
+- Designing a [zero-trust](../zero-trust/SKILL.md) service-to-service authentication scheme where
   workload identity must be cryptographically provable, not
   network-location- or shared-secret-based.
-- Standing up SPIRE Server and Agent(s) for a Kubernetes cluster, a
+- Standing up SPIRE Server and Agent(s) for a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster, a
   fleet of VMs, or a hybrid environment spanning both.
 - Designing a SPIFFE ID naming scheme (trust domain and path structure)
   before registration entries proliferate without one.
 - Writing registration entries that attest a workload via a selector —
-  a Kubernetes service account/namespace/pod label, a Unix UID, a Docker
+  a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account/namespace/pod label, a Unix UID, a [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
   label, or a cloud instance metadata attribute.
 - Rotating SVIDs automatically (they're deliberately short-lived) and
   confirming workloads actually pick up rotated identities without a
@@ -85,24 +85,24 @@ rotation, and trust domain federation.
   `prod.example.internal`) — this is embedded in every SPIFFE ID issued
   under it and is expensive to change later since it's baked into every
   workload's identity and every relying party's trust configuration.
-- A **SPIRE Server** deployment with a datastore (SQL — PostgreSQL or
-  MySQL — for anything beyond a single-node trial; the default embedded
+- A **SPIRE Server** deployment with a datastore (SQL — [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or
+  [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) — for anything beyond a single-node trial; the default embedded
   SQLite is not intended for production HA) and an upstream CA
   configuration — either SPIRE's self-signed root, or an upstream
-  authority (a Vault PKI mount via SPIRE's `upstream_authority` plugin,
+  authority (a [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI mount via SPIRE's `upstream_authority` plugin,
   or a cloud provider's ACM Private CA) if the org wants SPIRE's issued
   certificates chained to an already-trusted root.
 - A **SPIRE Agent** running on every node that hosts workloads needing an
-  identity — deployed as a Kubernetes DaemonSet for a Kubernetes cluster,
-  or as a system service on each VM/bare-metal host.
+  identity — deployed as a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet for a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster,
+  or as a system service on each VM/[bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) host.
 - A **node attestation** mechanism appropriate to the environment — the
-  Kubernetes PSAT (Projected Service Account Token) node attestor for
-  Kubernetes, the AWS/GCP/Azure node attestor plugins for cloud VM
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) PSAT (Projected Service Account Token) node attestor for
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), the AWS/GCP/Azure node attestor plugins for cloud VM
   fleets, or the `join_token` attestor only for small/manual setups
   (not recommended at scale — it doesn't cryptographically verify
   anything about the node itself).
 - A **workload attestation** mechanism appropriate to how workloads run
-  — the Kubernetes workload attestor (matching on namespace, service
+  — the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload attestor (matching on namespace, service
   account, pod label/selector) for containerized workloads, or the Unix
   workload attestor (matching on UID/GID/path) for processes on a
   traditional VM.
@@ -124,7 +124,7 @@ rotation, and trust domain federation.
    spiffe://prod.example.internal/ns/checkout/sa/checkout-service
    ```
    Mirror the identity path structure to something already meaningful in
-   the environment (Kubernetes namespace/service account, or an
+   the environment ([Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) namespace/service account, or an
    environment/team/service hierarchy for VMs) rather than an arbitrary
    flat list of workload names.
 
@@ -158,11 +158,11 @@ rotation, and trust domain federation.
          }
        }
      }
-     UpstreamAuthority "vault" {
+     UpstreamAuthority "[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)" {
        plugin_data {
-         vault_addr = "https://vault.internal:8200"
+         vault_addr = "https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).internal:8200"
          pki_mount_point = "pki_int"
-         ca_cert_path = "/etc/spire/certs/vault-ca.pem"
+         ca_cert_path = "/etc/spire/certs/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-ca.pem"
        }
      }
    }
@@ -175,7 +175,7 @@ rotation, and trust domain federation.
 3. **Configure the SPIRE Agent** on each node with the matching trust
    domain and the node attestor appropriate to the environment:
    ```hcl
-   # agent.conf (Kubernetes DaemonSet)
+   # agent.conf ([Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet)
    agent {
      trust_domain  = "prod.example.internal"
      server_address = "spire-server.spire.svc"
@@ -272,7 +272,7 @@ rotation, and trust domain federation.
    trust domain's published JWKS and checks the `aud` claim matches
    itself — treat an unchecked `aud` claim the same as an unchecked JWT
    audience in any other OIDC flow (see
-   [enterprise-sso-and-idp-federation-configuration](../enterprise-sso-and-idp-federation-configuration/SKILL.md)
+   [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md)
    for the equivalent human-identity pitfall).
 
 8. **Federate two trust domains explicitly**, exchanging each domain's
@@ -351,7 +351,7 @@ rotation, and trust domain federation.
   (or an otherwise too-broad selector) rather than combining namespace
   with a service-account or pod-label selector specific to the intended
   workload (step 4). Tighten every registration entry to the narrowest
-  selector combination the workload attestor supports, and audit
+  selector combination the workload attestor supports, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
   existing entries for this exact broad-selector pattern.
 
 - **Symptom:** mTLS between two SPIRE-issued workloads succeeds even
@@ -385,21 +385,21 @@ rotation, and trust domain federation.
   genuinely need cross-domain access.
 
 - **Symptom:** A newly onboarded team stands up their own node
-  attestation using `join_token`, and months later an audit can't
+  attestation using `join_token`, and months later an [audit](../../AI_and_Agents/Operations/audit/SKILL.md) can't
   explain what actually proves a node running under that token is the
   node it claims to be.
   **Fix:** `join_token` node attestation provides no cryptographic
   verification of the node's actual identity/environment — it's meant
   for small manual/testing setups, not production fleets. Migrate to an
-  environment-appropriate attestor (`k8s_psat` for Kubernetes, the
+  environment-appropriate attestor (`k8s_psat` for [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), the
   cloud-provider node attestor for VM fleets) that ties node identity to
   something independently verifiable (a cloud instance's own attested
-  metadata, a Kubernetes-issued service account token).
+  metadata, a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-issued service account token).
 
 ## Worked example
 
 **Scenario:** `payments-service` and `checkout-service` run as
-Kubernetes workloads in the `prod.example.internal` trust domain and
+[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workloads in the `prod.example.internal` trust domain and
 need mutual TLS between them with cryptographically attested identity —
 no shared API keys, no long-lived certificates.
 
@@ -443,7 +443,7 @@ no shared API keys, no long-lived certificates.
 
 ## Cross-references
 
-- [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md) — general-purpose secrets/PKI issuance (including a possible `UpstreamAuthority` chain target for SPIRE's own CA), distinct from SPIRE's automated, attested workload-identity issuance covered here.
-- [enterprise-sso-and-idp-federation-configuration](../enterprise-sso-and-idp-federation-configuration/SKILL.md) — the equivalent federation and audience-validation discipline applied to human/workforce SSO rather than workload identity, including the same "validate the audience claim" pitfall that applies to JWT-SVIDs here.
-- [certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md) — rotating and automating longer-lived certificates across many services, a complementary concern to SPIRE's short-lived SVID rotation for workloads that also need conventional TLS certificates.
-- [sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md) — a Kubernetes-native secret-sync pattern worth contrasting with SPIFFE/SPIRE's no-secrets-at-rest identity model for service-to-service auth specifically.
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) — general-purpose secrets/PKI issuance (including a possible `UpstreamAuthority` chain target for SPIRE's own CA), distinct from SPIRE's automated, attested workload-identity issuance covered here.
+- [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md) — the equivalent federation and audience-validation discipline applied to human/workforce SSO rather than workload identity, including the same "validate the audience claim" pitfall that applies to JWT-SVIDs here.
+- [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../../DevOps_and_Cloud/Containers_and_Orchestration/certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) — rotating and automating longer-lived certificates across many services, a complementary concern to SPIRE's short-lived SVID rotation for workloads that also need conventional TLS certificates.
+- [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) — a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native secret-sync pattern worth contrasting with SPIFFE/SPIRE's no-secrets-at-rest identity model for service-to-service auth specifically.

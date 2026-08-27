@@ -5,7 +5,7 @@ description: Simplifies code for clarity. Use when refactoring code for clarity 
 
 # Code Simplification
 
-> Inspired by the [Claude Code Simplifier plugin](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md). Adapted here as a model-agnostic, process-driven skill for any AI coding agent.
+> Inspired by the [Claude Code Simplifier plugin](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md). Adapted here as a model-agnostic, process-driven skill for any AI coding agent.
 
 ## Overview
 
@@ -62,7 +62,7 @@ Simplification that breaks project consistency is not simplification — it's ch
 
 Explicit code is better than compact code when the compact version requires a mental pause to parse.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // UNCLEAR: Dense ternary chain
 const label = isNew ? 'New' : isUpdated ? 'Updated' : isArchived ? 'Archived' : 'Active';
 
@@ -75,7 +75,7 @@ function getStatusLabel(item: Item): string {
 }
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // UNCLEAR: Chained reduces with inline logic
 const result = items.reduce((acc, item) => ({
   ...acc,
@@ -162,7 +162,7 @@ Make one simplification at a time. Run tests after each change. **Submit refacto
 FOR EACH SIMPLIFICATION:
 1. Make the change
 2. Run the test suite
-3. If tests pass → commit (or continue to next simplification)
+3. If tests pass → [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (or continue to next simplification)
 4. If tests fail → revert and reconsider
 ```
 
@@ -186,9 +186,9 @@ If the "simplified" version is harder to understand or review, revert. Not every
 
 ## Language-Specific Guidance
 
-### TypeScript / JavaScript
+### [TypeScript](../../Frontend/typescript/SKILL.md) / JavaScript
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // SIMPLIFY: Unnecessary async wrapper
 // Before
 async function getUser(id: string): Promise<User> {
@@ -235,9 +235,9 @@ function isValid(input: string): boolean {
 }
 ```
 
-### Python
+### [Python](../../Languages/python/SKILL.md)
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # SIMPLIFY: Verbose dictionary building
 # Before
 result = {}
@@ -313,7 +313,7 @@ function UserBadge({ user }: Props) {
 - Renaming things to match your preferences rather than project conventions
 - Removing error handling because "it makes the code cleaner"
 - Simplifying code you don't fully understand
-- Batching many simplifications into one large, hard-to-review commit
+- Batching many simplifications into one large, hard-to-review [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 - Refactoring code outside the scope of the current task without being asked
 
 ## Verification

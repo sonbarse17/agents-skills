@@ -16,12 +16,12 @@ tags: [data, modeling, warehouse, phase-7]
 # Dimensional Modeling
 
 ## Purpose
-Design robust dimensional data models for analytical workloads following Kimball methodology, star schema best practices, slowly changing dimension strategies, fact table design patterns, and Data Vault 2.0 architecture.
+Design robust dimensional data models for analytical workloads following Kimball methodology, star schema best practices, slowly changing dimension strategies, fact table design patterns, and Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) 2.0 architecture.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "dimensional modeling", "Kimball", "star schema", "snowflake schema", "bus matrix", "conformed dimension", "slowly changing dimension", "SCD", "fact table", "dimension table", "data vault", "hub link satellite", "grain declaration", "surrogate key", "degenerate dimension".
+Exact user phrases: "dimensional modeling", "Kimball", "star schema", "snowflake schema", "bus matrix", "conformed dimension", "slowly changing dimension", "SCD", "fact table", "dimension table", "data [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)", "hub link satellite", "grain declaration", "surrogate key", "degenerate dimension".
 
 ### Input Context
 - Business processes to model (sales, inventory, orders, payments)
@@ -58,7 +58,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Fact table type (transaction, periodic snapshot, accumulating) selected
 - [ ] Additive, semi-additive, and non-additive measures classified
 - [ ] Surrogate key strategy defined
-- [ ] Data Vault model designed if applicable
+- [ ] Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) model designed if applicable
 
 ### Max Response Length
 300 lines of code and configuration.
@@ -336,9 +336,9 @@ CREATE TABLE fct_order_fulfillment (
 );
 ```
 
-### Step 8: Consider Data Vault
+### Step 8: Consider Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 
-#### Data Vault 2.0 Components
+#### Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) 2.0 Components
 Hubs: store unique business keys with metadata. Hubs have no foreign keys, no descriptive data; contains surrogate hash key (HK), business key, load date, record source. Links: store relationships between hubs. Contains hub references, load date, record source. Satellites: store descriptive attributes for hubs and links. Contains hub/link reference, load date, source, valid_from/to, all descriptive columns.
 
 ```sql
@@ -373,11 +373,11 @@ CREATE TABLE sat_customer_detail (
 );
 ```
 
-#### Data Vault Pros and Cons
-Pros: scalable for enterprise EDW, audit-friendly (source tracking), resilient to source changes (add satellites), parallel loading, handles heterogeneous sources. Cons: complex to query (many joins), requires transformation for BI consumption, overkill for small-medium warehouses, limited tool support.
+#### Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Pros and Cons
+Pros: scalable for enterprise EDW, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-friendly (source tracking), resilient to source changes (add satellites), parallel loading, handles heterogeneous sources. Cons: complex to query (many joins), requires transformation for BI consumption, overkill for small-medium warehouses, limited tool support.
 
-#### Raw Vault vs Business Vault
-Raw Vault: mirrors source data as-is, no business rules, no aggregation, preserves historical accuracy. Business Vault: adds business rules, derived data, reference data, bridging tables. Pattern: load raw vault from sources, then transform to business vault, then to star schema marts.
+#### Raw [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) vs Business [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+Raw [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md): mirrors source data as-is, no business rules, no aggregation, preserves historical accuracy. Business [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md): adds business rules, derived data, reference data, bridging tables. Pattern: load raw [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) from sources, then transform to business [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), then to star schema marts.
 
 ### Bus Matrix Design
 
@@ -483,7 +483,7 @@ CREATE TABLE agg_daily_product_sales (
 ```
 
 #### Bitmap Indexes
-Use bitmap indexes on low-cardinality dimension columns in data warehouse databases that support them (Oracle, PostgreSQL with extensions). Efficient for: columns with few distinct values (gender, status, region), columns used in WHERE clauses, columns used in GROUP BY. Not for: high-cardinality columns, OLTP workloads with frequent updates.
+Use bitmap indexes on low-cardinality dimension columns in data warehouse databases that support them (Oracle, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) with extensions). Efficient for: columns with few distinct values (gender, status, region), columns used in WHERE clauses, columns used in GROUP BY. Not for: high-cardinality columns, OLTP workloads with frequent updates.
 
 ### Common Anti-Patterns
 
@@ -509,7 +509,7 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
 - Type 2 SCD for any attribute where historical reporting matters
 - Facts must match the declared grain exactly
 - Degenerate dimensions for transaction identifiers only
-- Data Vault for enterprise EDW; star schema for presentation layer
+- Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for enterprise EDW; star schema for presentation layer
 - Snowflake dimensions only when hierarchies exceed 3 levels
 - Test grain by querying: can I aggregate to the right level?
 - Partition fact tables by date for manageability
@@ -518,7 +518,7 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
 - Document every design decision in an ADR (Architecture Decision Record)
 
 ## References
-  - ../../../Global_References/data-vault.md — Data Vault 2.0 Reference
+  - ../../../Global_References/data-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).md — Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) 2.0 Reference
   - ../../../Global_References/dimensional-modeling-etl.md — Dimensional Modeling ETL
   - ../../../Global_References/dimensional-modeling-performance.md — Dimensional Modeling Performance
   - ../../../Global_References/fact-table-design.md — Fact Table Design Reference
@@ -526,7 +526,7 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
   - ../../../Global_References/scd-types.md — Slowly Changing Dimensions Reference
   - ../../../Global_References/star-schema.md — Star Schema Design Reference
 ## Handoff
-`data-etl-pipeline` for ETL/ELT implementation of dimensional models
-`data-data-warehouse` for warehouse platform-specific optimizations
-`data-data-quality` for dimension and fact quality monitoring
+`[data-etl-pipeline](../etl-pipeline/SKILL.md)` for ETL/ELT implementation of dimensional models
+`[data-data-warehouse](../data-warehouse/SKILL.md)` for warehouse platform-specific optimizations
+`[data-data-quality](../data-quality/SKILL.md)` for dimension and fact quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 

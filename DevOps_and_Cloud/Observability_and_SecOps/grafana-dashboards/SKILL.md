@@ -3,19 +3,19 @@ name: grafana-dashboards
 description: Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.
 ---
 
-# Grafana Dashboards
+# Grafana [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
-Create and manage production-ready Grafana dashboards for comprehensive system observability.
+Create and manage production-ready Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for comprehensive system [observability](../observability/SKILL.md).
 
 ## Purpose
 
-Design effective Grafana dashboards for monitoring applications, infrastructure, and business metrics.
+Design effective Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for [monitoring](../monitoring/SKILL.md) applications, infrastructure, and business metrics.
 
 ## When to Use
 
 - Visualize Prometheus metrics
-- Create custom dashboards
-- Implement SLO dashboards
+- Create custom [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Implement SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 - Monitor infrastructure
 - Track business KPIs
 
@@ -47,12 +47,12 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 
 ## Dashboard Structure
 
-### API Monitoring Dashboard
+### API [Monitoring](../monitoring/SKILL.md) Dashboard
 
 ```json
 {
   "dashboard": {
-    "title": "API Monitoring",
+    "title": "API [Monitoring](../monitoring/SKILL.md)",
     "tags": ["api", "production"],
     "timezone": "browser",
     "refresh": "30s",
@@ -246,7 +246,7 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 ```
 
-## Alerts in Dashboards
+## Alerts in [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
 ```json
 {
@@ -266,7 +266,7 @@ sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
         "type": "query"
       }
     ],
-    "executionErrorState": "alerting",
+    "executionErrorState": "[alerting](../alerting/SKILL.md)",
     "for": "5m",
     "frequency": "1m",
     "message": "Error rate is above 5%",
@@ -278,7 +278,7 @@ sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 
 ## Dashboard Provisioning
 
-**dashboards.yml:**
+**[dashboards](../../Cloud_Providers/dashboards/SKILL.md).yml:**
 
 ```yaml
 apiVersion: 1
@@ -292,7 +292,7 @@ providers:
     updateIntervalSeconds: 10
     allowUiUpdates: true
     options:
-      path: /etc/grafana/dashboards
+      path: /etc/grafana/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 ```
 
 ## Common Dashboard Patterns
@@ -337,7 +337,7 @@ providers:
 
 ## Best Practices
 
-1. **Start with templates** (Grafana community dashboards)
+1. **Start with templates** (Grafana community [dashboards](../../Cloud_Providers/dashboards/SKILL.md))
 2. **Use consistent naming** for panels and variables
 3. **Group related metrics** in rows
 4. **Set appropriate time ranges** (default: Last 6 hours)
@@ -345,7 +345,7 @@ providers:
 6. **Add panel descriptions** for context
 7. **Configure units** correctly
 8. **Set meaningful thresholds** for colors
-9. **Use consistent colors** across dashboards
+9. **Use consistent colors** across [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 10. **Test with different time ranges**
 
 ## Dashboard as Code
@@ -354,29 +354,29 @@ providers:
 
 ```hcl
 resource "grafana_dashboard" "api_monitoring" {
-  config_json = file("${path.module}/dashboards/api-monitoring.json")
-  folder      = grafana_folder.monitoring.id
+  config_json = file("${path.module}/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/api-[monitoring](../monitoring/SKILL.md).json")
+  folder      = grafana_folder.[monitoring](../monitoring/SKILL.md).id
 }
 
-resource "grafana_folder" "monitoring" {
-  title = "Production Monitoring"
+resource "grafana_folder" "[monitoring](../monitoring/SKILL.md)" {
+  title = "Production [Monitoring](../monitoring/SKILL.md)"
 }
 ```
 
-### Ansible Provisioning
+### [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) Provisioning
 
 ```yaml
-- name: Deploy Grafana dashboards
+- name: Deploy Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
   copy:
     src: "{{ item }}"
-    dest: /etc/grafana/dashboards/
+    dest: /etc/grafana/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/
   with_fileglob:
-    - "dashboards/*.json"
+    - "[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/*.json"
   notify: restart grafana
 ```
 
 
 ## Related Skills
 
-- `prometheus-configuration` - For metric collection
-- `slo-implementation` - For SLO dashboards
+- `[prometheus-configuration](../prometheus-configuration/SKILL.md)` - For metric collection
+- `[slo-implementation](../slo-implementation/SKILL.md)` - For SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md)

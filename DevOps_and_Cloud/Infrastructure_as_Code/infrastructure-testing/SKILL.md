@@ -7,7 +7,7 @@ license: MIT
 # Infrastructure Testing
 
 Infrastructure changes fail differently than application code — a syntactically valid Terraform
-plan can still delete a production database, and a Kubernetes manifest that passes schema
+plan can still delete a production database, and a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifest that passes schema
 validation can still deploy a container that can't reach anything it needs. "It applied without
 error" is not evidence of correctness; it's evidence the tool understood the syntax.
 
@@ -31,7 +31,7 @@ most mistakes, and a real environment is reserved for what nothing else can vali
 | Integration test | Real resources actually work together | Minutes–hours |
 
 - **Push failures as far left as possible** — a mistake caught by a linter costs nothing; the same
-  mistake caught by a failed production apply costs an incident.
+  mistake caught by a failed production apply costs an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 - **Reserve the expensive layers for what only they can catch** — real network reachability, real
   IAM behavior, real cross-resource interaction.
 
@@ -40,7 +40,7 @@ provisions anything real.
 
 ## 2. Never trust a plan you haven't diffed against intent
 
-A `terraform plan` or `kubectl diff` tells you what will change, not whether that change is what
+A `terraform plan` or `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) diff` tells you what will change, not whether that change is what
 you meant. The dangerous failure is a plan that's technically correct but does something the
 author didn't intend — a renamed resource that Terraform reads as delete-then-recreate, a changed
 selector that silently orphans running pods.
@@ -59,7 +59,7 @@ reviewed by a human against what the change was intended to do.
 
 A policy check that runs and reports violations without blocking the change is documentation, not
 enforcement — it gets ignored under deadline pressure exactly when it matters most. See
-`policy-as-code` for writing the rules; this skill is about making sure they actually stop a bad
+`[policy-as-code](../../../Security/policy-as-code/SKILL.md)` for writing the rules; this skill is about making sure they actually stop a bad
 change rather than just noting it happened.
 
 - **Block the pipeline on a policy failure** for anything above a defined severity — no public S3
@@ -76,11 +76,11 @@ logged override, not just a warning in CI output.
 
 An IaC module that's reused across a dozen environments deserves the same input-output testing
 discipline as a shared library — feed it a set of inputs, assert the plan or rendered output looks
-right, without provisioning anything real. See `terraform-modules` for the module structure this
+right, without provisioning anything real. See `[terraform-modules](../terraform-modules/SKILL.md)` for the module structure this
 tests against.
 
 - **Assert on generated configuration or plan output**, not on live infrastructure, for fast
-  feedback on every commit.
+  feedback on every [commit](../../CI_CD/commit/SKILL.md).
 - **Cover the module's documented input combinations**, especially optional variables and their
   defaults — the untested default is where drift hides.
 - **Run these on every module change**, since a module used in ten places breaks ten places at once
@@ -101,7 +101,7 @@ shared test environment.
 - **Scope it to what static checks can't cover** — running a full integration suite here for
   something a linter already catches wastes the most expensive layer of the pyramid.
 - **Match its topology to production closely enough** that a pass here is meaningful — see
-  `environment-management` for keeping environments consistent.
+  `[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for keeping environments consistent.
 
 **Done when:** every change that can't be fully validated statically runs against a fresh, isolated
 environment before reaching production, and that environment is torn down afterward.

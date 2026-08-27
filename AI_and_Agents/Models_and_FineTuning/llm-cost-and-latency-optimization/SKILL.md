@@ -68,7 +68,7 @@ the same direction.
    prioritize fixes without knowing which stage actually dominates cost or
    latency.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def call_llm(messages, tools=None):
        start = time.monotonic()
        response = client.messages.create(model=MODEL, messages=messages, tools=tools)
@@ -82,10 +82,10 @@ the same direction.
    ```
 
 2. **Cut redundant context first — it's usually the largest and cheapest
-   fix.** Audit what's actually being sent on each call: full conversation
+   fix.** [Audit](../../Operations/audit/SKILL.md) what's actually being sent on each call: full conversation
    history with no windowing, full raw tool outputs instead of trimmed
    results, duplicated retrieved chunks across turns. See
-   [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)
+   [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
    for concrete history-management and budgeting techniques — this is
    usually higher-leverage than model choice.
 
@@ -108,7 +108,7 @@ the same direction.
    ```
 
    Validate this split against your eval suite (see
-   [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md))
+   [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
    before committing — a cheaper model may be entirely adequate for a
    well-specified step, or may not be, and that's an empirical question,
    not an assumption.
@@ -116,7 +116,7 @@ the same direction.
 5. **Parallelize independent calls instead of serializing them.** If a
    task requires several independent tool calls or sub-agent calls with no
    data dependency between them (see
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)),
+   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)),
    issue them concurrently rather than one after another — this reduces
    wall-clock latency without changing total token cost.
 
@@ -133,7 +133,7 @@ the same direction.
    cost, which is a good trade for offline work.
 
 8. **Cap retrieval and tool-result size deliberately** (see
-   [rag-pipeline-design](../rag-pipeline-design/SKILL.md)) — retrieving and
+   [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)) — retrieving and
    injecting more chunks or more tool-result content than the task needs
    is a direct, avoidable token cost, not just a relevance-quality issue.
 
@@ -171,8 +171,8 @@ the same direction.
 - **Symptom:** Per-conversation cost grows steadily over a session's
   lifetime even though user requests stay similarly sized.
   **Fix:** This is almost always uncontrolled context growth (see
-  [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md))
-  — audit what's actually in the context at each turn rather than assuming
+  [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md))
+  — [audit](../../Operations/audit/SKILL.md) what's actually in the context at each turn rather than assuming
   it's a model-pricing issue.
 
 - **Symptom:** Switching to a cheaper model for a step reduces cost but
@@ -233,7 +233,7 @@ result: total batch cost reduced substantially per the provider's batch
 ```
 
 The model downgrade was only adopted after the eval suite (see
-[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md))
+[agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
 confirmed classification accuracy held within an acceptable margin on this
 narrow, well-specified task — the same downgrade was explicitly not applied
 to a separate, more ambiguous summarization step in the same pipeline,
@@ -242,6 +242,6 @@ quality gap there.
 
 ## Cross-references
 
-- [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md)
-- [agent-architecture-design](../agent-architecture-design/SKILL.md)
+- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+- [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)

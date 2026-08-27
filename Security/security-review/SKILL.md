@@ -9,7 +9,7 @@ metadata:
 
 # Security Review
 
-You are a **senior DevSecOps engineer performing a defensive security review —
+You are a **senior [DevSecOps](../devsecops/SKILL.md) engineer performing a defensive security review —
 an advisor, not an operator and not an attacker**. You find infrastructure and
 configuration security risks from code and config evidence, explain the
 production impact and the remediation, and write plans a *different, less
@@ -48,7 +48,7 @@ specific to a defensive security review.
 
 - Map the attack surface: what is internet-facing, what holds sensitive data,
   the identity/trust boundaries, the cloud accounts and their blast radius.
-- Inventory the layers in scope: IaC, Kubernetes, containers, pipelines, cloud
+- Inventory the layers in scope: IaC, [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), containers, pipelines, cloud
   config, application config, secrets management. Read any threat model,
   security ADRs, or compliance requirements.
 
@@ -109,15 +109,15 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - `plan <description>` → spec one known hardening change.
 - `compliance <framework>` → map findings to a named control set (CIS, SOC 2,
   PCI) where evidence supports it; state clearly this is engineering input, not
-  a formal audit.
+  a formal [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 
 ## Related skills
 
-- `/terraform-review`, `/k8s-review`, `/docker-review` — the layer-specific
+- `/[terraform-review](../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[k8s-review](../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[docker-review](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the layer-specific
   review and the plans that land the hardening.
-- `/pipeline-review` — CI/CD supply chain and secret scoping.
-- `/db-review` — data access paths, encryption, and audit logging.
-- `/dr-review` — ransomware/deletion resilience of backups.
+- `/[pipeline-review](../../DevOps_and_Cloud/CI_CD/pipeline-review/SKILL.md)` — CI/CD supply chain and secret scoping.
+- `/[db-review](../../AI_and_Agents/Operations/db-review/SKILL.md)` — data access paths, encryption, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+- `/[dr-review](../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — ransomware/deletion resilience of backups.
 
 ## Before you finish
 
@@ -130,7 +130,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
       treats the old value as compromised.
 - [ ] Documented, accepted risks (ADR/threat model) were not re-reported.
 - [ ] Compliance mapping, if requested, is labelled engineering input — not an
-      audit opinion.
+      [audit](../../AI_and_Agents/Operations/audit/SKILL.md) opinion.
 
 ## Tone of the output
 

@@ -90,7 +90,7 @@ var schedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS)
     {
         Sku = new DurableTaskSchedulerSku(DurableTaskSchedulerSkuName.Dedicated)
         {
-            Capacity = 1  // Number of instances
+            [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = 1  // Number of instances
         },
         // Optional: IP allowlist for network security
         IPAllowlist = { "10.0.0.0/24", "192.168.1.0/24" }
@@ -112,19 +112,19 @@ Console.WriteLine($"Endpoint: {scheduler.Data.Properties.Endpoint}");
 ### 2. Create Scheduler with Consumption SKU
 
 ```csharp
-// Consumption SKU (serverless)
+// Consumption SKU ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md))
 var consumptionSchedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS)
 {
     Properties = new DurableTaskSchedulerProperties
     {
         Sku = new DurableTaskSchedulerSku(DurableTaskSchedulerSkuName.Consumption)
-        // No capacity needed for consumption
+        // No [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) needed for consumption
     }
 };
 
 var operation = await schedulerCollection.CreateOrUpdateAsync(
     WaitUntil.Completed,
-    "my-serverless-scheduler",
+    "my-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-scheduler",
     consumptionSchedulerData);
 ```
 
@@ -196,7 +196,7 @@ var updateData = new DurableTaskSchedulerData(scheduler.Value.Data.Location)
     {
         Sku = new DurableTaskSchedulerSku(DurableTaskSchedulerSkuName.Dedicated)
         {
-            Capacity = 2  // Scale up
+            [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = 2  // Scale up
         },
         IPAllowlist = { "10.0.0.0/16" }  // Update IP allowlist
     }
@@ -249,7 +249,7 @@ var retentionOperation = await retentionPolicies.CreateOrUpdateAsync(
 | `DurableTaskSchedulerCollection` | Collection for scheduler CRUD |
 | `DurableTaskSchedulerData` | Scheduler creation/update payload |
 | `DurableTaskSchedulerProperties` | Scheduler configuration (SKU, IPAllowlist) |
-| `DurableTaskSchedulerSku` | SKU configuration (Name, Capacity, RedundancyState) |
+| `DurableTaskSchedulerSku` | SKU configuration (Name, [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), RedundancyState) |
 | `DurableTaskSchedulerSkuName` | SKU options: `Dedicated`, `Consumption` |
 | `DurableTaskHubResource` | Represents a Task Hub |
 | `DurableTaskHubCollection` | Collection for task hub CRUD |
@@ -262,8 +262,8 @@ var retentionOperation = await retentionPolicies.CreateOrUpdateAsync(
 
 | SKU | Description | Use Case |
 |-----|-------------|----------|
-| `Dedicated` | Fixed capacity with configurable instances | Production workloads, predictable performance |
-| `Consumption` | Serverless, auto-scaling | Development, variable workloads |
+| `Dedicated` | Fixed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with configurable instances | Production workloads, predictable performance |
+| `Consumption` | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), auto-scaling | Development, variable workloads |
 
 ## Extension Methods
 
@@ -345,7 +345,7 @@ var schedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS)
     {
         Sku = new DurableTaskSchedulerSku(DurableTaskSchedulerSkuName.Dedicated)
         {
-            Capacity = 1
+            [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = 1
         }
     }
 };
@@ -382,5 +382,5 @@ await scheduler.DeleteAsync(WaitUntil.Completed);
 
 ## Source Reference
 
-- [GitHub: Azure.ResourceManager.DurableTask](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
+- [GitHub: Azure.ResourceManager.DurableTask](https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
 - [NuGet: Azure.ResourceManager.DurableTask](https://www.nuget.org/packages/Azure.ResourceManager.DurableTask)

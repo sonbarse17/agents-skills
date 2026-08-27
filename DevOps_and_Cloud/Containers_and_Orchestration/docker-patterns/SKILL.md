@@ -19,15 +19,15 @@ compatibility:
 tags: [devops, docker, phase-5]
 ---
 
-# Docker Patterns
+# [Docker](../docker/SKILL.md) Patterns
 
 ## Purpose
-Containerize applications following Docker best practices for development and production.
+Containerize applications following [Docker](../docker/SKILL.md) best practices for development and production.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Dockerfile", "Docker", "Docker Compose", "containerize", "container", "docker build", "multi-stage build", "docker-compose.yml".
+Exact user phrases: "Dockerfile", "[Docker](../docker/SKILL.md)", "[Docker](../docker/SKILL.md) Compose", "containerize", "container", "[docker](../docker/SKILL.md) build", "multi-stage build", "[docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md).yml".
 
 ### Input Context
 - Application stack (for base image selection).
@@ -36,10 +36,10 @@ Exact user phrases: "Dockerfile", "Docker", "Docker Compose", "containerize", "c
 - Language-specific build requirements (compilers, system deps).
 
 ### Output Artifact
-Writes to Dockerfile, .dockerignore, and/or docker-compose.yml.
+Writes to Dockerfile, .dockerignore, and/or [docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md).yml.
 
 ### Response Format
-Dockerfile or docker-compose.yml with comments explaining each section.
+Dockerfile or [docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md).yml with comments explaining each section.
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
@@ -58,7 +58,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Base Image | Size | Security Surface | Use Case |
 |---|---|---|---|
 | alpine | ~5MB | Minimal (musl libc) | Go, Rust, static binaries |
-| slim (debian) | ~80MB | Reduced (glibc) | Node, Python, Ruby |
+| slim (debian) | ~80MB | Reduced (glibc) | Node, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby |
 | distroless | ~15MB | Minimal (no shell) | Production, security-hardened |
 | ubuntu/debian | ~200MB | Full (apt, tools) | Development, complex deps |
 | scratch | 0MB | Empty | Static Go binaries |
@@ -66,14 +66,14 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Build Strategy Decision Tree
 - Static binary (Go, Rust): scratch or distroless for smallest size.
-- Interpreted (Node, Python, Ruby): slim or distroless.
+- Interpreted (Node, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby): slim or distroless.
 - Compile-to-binary (Java, .NET): multi-stage JDK builder -> JRE runner.
 - System dependencies needed: alpine with apk or slim with apt.
 - Development: full image with dev tools + mounted source as volume.
 - Production: minimal image, no shell, no package manager.
-- Security audit required: distroless (no shell, no apt)
+- Security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) required: distroless (no shell, no apt)
 
-### Docker Compose Profile Decision Tree
+### [Docker](../docker/SKILL.md) Compose Profile Decision Tree
 
 | Profile | Build Target | Volumes | Environment | Best For |
 |---|---|---|---|---|
@@ -87,7 +87,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Language | Base Image | Multi-Stage | Non-Root | Caching |
 |---|---|---|---|---|
 | Node.js | node:22-alpine | npm ci in builder, copy dist to runner | adduser -D nodeuser | COPY package*.json first |
-| Python | python:3.12-slim | pip install in builder, copy site-packages | adduser --disabled-password | COPY requirements.txt first |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim | pip install in builder, copy site-packages | adduser --disabled-password | COPY requirements.txt first |
 | Go | golang:1.22-alpine | go build in builder, copy binary to scratch | USER 65534 | COPY go.mod go.sum first |
 | Rust | rust:1.77-slim | cargo build in builder, copy binary to distroless | USER 1000 | COPY Cargo.toml Cargo.lock first |
 | Java | eclipse-temurin:21-jdk-alpine | mvn package in builder, copy jar to jre | addgroup -S appgroup | COPY pom.xml first |
@@ -159,8 +159,8 @@ node_modules
 *.md
 Dockerfile
 .dockerignore
-.gitlab-ci.yml
-.github
+.[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml
+.[github](../../CI_CD/github/SKILL.md)
 dist
 .cache
 coverage
@@ -170,7 +170,7 @@ test-results
 .idea
 ```
 
-### Step 4: Docker Compose with Profiles
+### Step 4: [Docker](../docker/SKILL.md) Compose with Profiles
 ```yaml
 services:
   app:
@@ -214,7 +214,7 @@ services:
   db:
     image: postgres:16-alpine
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: ${DB_PASSWORD:?error}
@@ -278,11 +278,11 @@ USER 65534
 
 ### Step 7: Health Check Patterns
 ```dockerfile
-# HTTP health check (Node, Python, Go web servers)
+# HTTP health check (Node, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go web servers)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 
-# MySQL/Postgres
+# [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/Postgres
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 \
   CMD pg_isready -U user -d app || exit 1
 
@@ -310,13 +310,13 @@ Copying source code before dependency files invalidates the cache on every code 
 The latest tag is ambiguous and mutable, making rollback impossible. Always tag with semver + git SHA. Use latest only as additional convenience tag.
 
 ### Anti-Pattern 5: No Health Checks
-Without health checks, Docker cannot determine if the application is responsive. The container appears up even if the process is hung. Always configure HEALTHCHECK.
+Without health checks, [Docker](../docker/SKILL.md) cannot determine if the application is responsive. The container appears up even if the process is hung. Always configure HEALTHCHECK.
 
 ### Anti-Pattern 6: Secrets in Images
-Secrets baked into images persist in every layer and are visible to anyone with image pull access. Use Docker secrets (Swarm), build args (non-persistent), or external stores.
+Secrets baked into images persist in every layer and are visible to anyone with image pull access. Use [Docker](../docker/SKILL.md) secrets (Swarm), build args (non-persistent), or external stores.
 
 ### Anti-Pattern 7: No .dockerignore
-Without .dockerignore, the entire build context (including node_modules, .git) is sent to the Docker daemon, causing slow builds and cache misses.
+Without .dockerignore, the entire build context (including node_modules, .git) is sent to the [Docker](../docker/SKILL.md) daemon, causing slow builds and cache misses.
 
 ### Anti-Pattern 8: Pinning No Version
 Using FROM node:latest makes builds non-reproducible. Pin to specific version tag (node:22.3-alpine). Use Renovate/Dependabot for updates.
@@ -357,36 +357,36 @@ Without --memory and --cpus limits, a single container can consume all host reso
 ```
 - Use structured logging (JSON format).
 - Configure log rotation to prevent disk exhaustion.
-- Use docker logs or logging drivers (syslog, fluentd, Splunk, CloudWatch).
+- Use [docker](../docker/SKILL.md) logs or logging drivers (syslog, fluentd, Splunk, CloudWatch).
 
 ### CI/CD Integration
-- Build and tag images in CI (never docker build on production).
-- Cache layers using GitHub Actions cache or registry cache.
+- Build and tag images in CI (never [docker](../docker/SKILL.md) build on production).
+- Cache layers using [GitHub](../../CI_CD/github/SKILL.md) Actions cache or registry cache.
 - Run vulnerability scan before push.
 - Sign images with cosign in CI.
-- Use docker buildx for multi-architecture builds (amd64 + arm64).
+- Use [docker](../docker/SKILL.md) buildx for multi-architecture builds (amd64 + arm64).
 
 ## Troubleshooting
 
 ### Build Failures
-1. docker build --no-cache . -- fresh build
-2. docker build --progress=plain . -- verbose output
+1. [docker](../docker/SKILL.md) build --no-cache . -- fresh build
+2. [docker](../docker/SKILL.md) build --progress=plain . -- verbose output
 3. Check Dockerfile syntax (each instruction)
 4. Check network access (registry, package repos)
-5. Check disk space: docker system df
+5. Check disk space: [docker](../docker/SKILL.md) system df
 
 ### Container Start Failures
-1. docker logs <container> -- check application output
-2. docker inspect <container> -- check exit code, state
-3. docker run -it <image> sh -- override entrypoint for debugging
+1. [docker](../docker/SKILL.md) logs <container> -- check application output
+2. [docker](../docker/SKILL.md) inspect <container> -- check exit code, state
+3. [docker](../docker/SKILL.md) run -it <image> sh -- override entrypoint for debugging
 4. Check port conflicts: netstat -tulpn
-5. Check volume mounts: docker inspect --format='{{json .Mounts}}'
+5. Check volume mounts: [docker](../docker/SKILL.md) inspect --format='{{json .Mounts}}'
 
 ### Runtime Issues
-1. docker stats -- live resource usage
-2. docker exec -it <container> sh -- interactive shell
+1. [docker](../docker/SKILL.md) stats -- live resource usage
+2. [docker](../docker/SKILL.md) exec -it <container> sh -- interactive shell
 3. Check application health endpoint
-4. Verify environment variables: docker inspect --format='{{json .Config.Env}}'
+4. Verify environment variables: [docker](../docker/SKILL.md) inspect --format='{{json .Config.Env}}'
 
 ## Rules
 - Always use multi-stage builds for production images.
@@ -403,12 +403,12 @@ Without --memory and --cpus limits, a single container can consume all host reso
 - Use read-only root filesystem for production containers.
 - Drop unnecessary capabilities (--cap-drop=ALL).
 - Configure log rotation to prevent disk exhaustion.
-- Use Docker Compose with profiles for dev/prod separation.
+- Use [Docker](../docker/SKILL.md) Compose with profiles for dev/prod separation.
 
 ## Compared With
 
-### Docker Compose vs Kubernetes
-Docker Compose: single host, simple networking, good for dev and small deployments. Kubernetes: multi-host, service discovery, auto-scaling, self-healing, complex. Use Compose for development and small production, K8s for large-scale production.
+### [Docker](../docker/SKILL.md) Compose vs [Kubernetes](../kubernetes/SKILL.md)
+[Docker](../docker/SKILL.md) Compose: single host, simple networking, good for dev and small deployments. [Kubernetes](../kubernetes/SKILL.md): multi-host, service discovery, auto-scaling, self-healing, complex. Use Compose for development and small production, K8s for large-scale production.
 
 ### Multi-stage vs Single-stage
 Single-stage: simpler Dockerfile, larger image, includes build tools. Multi-stage: separates build and runtime, smaller final image, reduced attack surface. Multi-stage is always preferred for production.
@@ -417,18 +417,18 @@ Single-stage: simpler Dockerfile, larger image, includes build tools. Multi-stag
 alpine: smallest with apk, musl libc compatibility issues possible. slim: debian-based, glibc compatible, medium size. distroless: minimal, no shell or package manager, hardest to debug. Choose based on security requirements and dependency compatibility.
 
 ## References
-- ../../../Global_References/docker-patterns_container-security.md -- Container Security
-- ../../../Global_References/docker-compose-production.md -- Docker Compose in Production
-- ../../../Global_References/docker-networking.md -- Docker Networking
-- ../../../Global_References/docker-patterns-advanced.md -- Docker Patterns Advanced Topics
-- ../../../Global_References/docker-patterns-fundamentals.md -- Docker Patterns Fundamentals
+- ../../../Global_References/[docker](../docker/SKILL.md)-patterns_container-security.md -- Container Security
+- ../../../Global_References/[docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md)-production.md -- [Docker](../docker/SKILL.md) Compose in Production
+- ../../../Global_References/[docker](../docker/SKILL.md)-networking.md -- [Docker](../docker/SKILL.md) Networking
+- ../../../Global_References/[docker](../docker/SKILL.md)-patterns-advanced.md -- [Docker](../docker/SKILL.md) Patterns Advanced Topics
+- ../../../Global_References/[docker](../docker/SKILL.md)-patterns-fundamentals.md -- [Docker](../docker/SKILL.md) Patterns Fundamentals
 - ../../../Global_References/dockerfile-guide.md -- Dockerfile Best Practices
-- ../../../Global_References/image-optimization.md -- Image Optimization
+- ../../../Global_References/[image-optimization](../../../Software_Engineering_and_Other/Frontend/image-optimization/SKILL.md).md -- Image Optimization
 
 ## Handoff
 After completing this skill:
-- Next skill: cicd-pipeline -- CI/CD for the containerized app
-- Pass context: Dockerfile structure, multi-stage setup, Docker Compose config
+- Next skill: [cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md) -- CI/CD for the containerized app
+- Pass context: Dockerfile structure, multi-stage setup, [Docker](../docker/SKILL.md) Compose config
 
 ## Architecture Decision Trees
 
@@ -443,15 +443,15 @@ After completing this skill:
 | Build caching | Requires `--cache-from` per stage | Single cache chain |
 | Debugging | Harder (distroless base) | Easier (full shell) |
 
-### Docker Compose vs Kubernetes
+### [Docker](../docker/SKILL.md) Compose vs [Kubernetes](../kubernetes/SKILL.md)
 
-| Aspect | Docker Compose | Kubernetes |
+| Aspect | [Docker](../docker/SKILL.md) Compose | [Kubernetes](../kubernetes/SKILL.md) |
 |---|---|---|
 | Learning curve | Low | High |
 | Scalability | Single host | Multi-cluster |
 | Service discovery | DNS via compose network | DNS, K8s Services |
 | Secrets management | Basic env_file | Secrets, external stores |
-| Monitoring | Docker stats, basic | Prometheus, Grafana stack |
+| [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | [Docker](../docker/SKILL.md) stats, basic | Prometheus, Grafana stack |
 | Production readiness | Limited | Enterprise-grade |
 
 ## Implementation Patterns
@@ -459,7 +459,7 @@ After completing this skill:
 ### Dockerfile: Multi-stage Build with Distroless
 
 ```dockerfile
-# syntax=docker/dockerfile:1.4
+# syntax=[docker](../docker/SKILL.md)/dockerfile:1.4
 ARG GO_VERSION=1.22
 
 FROM golang:${GO_VERSION}-alpine AS builder
@@ -478,7 +478,7 @@ EXPOSE 8080
 ENTRYPOINT ["/app"]
 ```
 
-### YAML: Docker Compose for Dev Environment
+### YAML: [Docker](../docker/SKILL.md) Compose for Dev Environment
 
 ```yaml
 version: "3.9"
@@ -506,7 +506,7 @@ services:
   db:
     image: postgres:16-alpine
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U user -d app"]
       interval: 5s
@@ -531,15 +531,15 @@ volumes:
 - Use **healthchecks** (HEALTHCHECK instruction) for container orchestrator to manage lifecycle
 - Implement **graceful shutdown** by handling SIGTERM in the application entrypoint
 - Pin **base image digests** (not tags) for reproducible builds — `FROM node:22@sha256:...`
-- Enable **Docker Content Trust** to verify image integrity in production pulls
+- Enable **[Docker](../docker/SKILL.md) Content Trust** to verify image integrity in production pulls
 - Configure **log drivers** (json-file with max-size, fluentd, or cloud logging) — never default
 - Use **read-only root filesystem** (`--read-only`) and mount tmpfs for runtime writes
 
 ## Anti-Patterns
 
-- Using **`latest` tag** in production — always pin to semantic version or commit SHA
+- Using **`latest` tag** in production — always pin to semantic version or [commit](../../CI_CD/commit/SKILL.md) SHA
 - Running **as root** inside the container — create a non-root user in the Dockerfile
-- Storing **secrets in environment variables** visible via `docker inspect` — use Docker secrets
+- Storing **secrets in environment variables** visible via `[docker](../docker/SKILL.md) inspect` — use [Docker](../docker/SKILL.md) secrets
 - Building **giant images** with build tools and caches in the final stage — always multi-stage
 - Ignoring **layer ordering** — putting frequently-changing files early in the Dockerfile
 - Using **`ADD`** instead of `COPY` when extracting archives isn't needed — COPY is more transparent
@@ -553,15 +553,15 @@ volumes:
 - Compress **image layers** with `--squash` (experimental) or use distroless base images
 - Set **`--mount=type=cache`** for package manager caches (apt, pip, npm) during build
 - Use **`.dockerignore`** to exclude node_modules, .git, and other large files from context
-- Enable **Docker Buildx** with multi-architecture builds in parallel (arm64 + amd64)
+- Enable **[Docker](../docker/SKILL.md) Buildx** with multi-architecture builds in parallel (arm64 + amd64)
 
 ## Security Considerations
 
 - Scan **all images** with Trivy or Snyk before pushing to registry — fail on critical CVEs
 - Use **distroless** or scratch base images to minimize attack surface
 - Sign **images** with cosign and verify signatures before deployment
-- Run **Docker Bench Security** regularly to audit host and daemon configuration
-- Enable **user namespace remapping** (`userns-remap`) on Docker daemon for extra isolation
-- Never mount **Docker socket** (`/var/run/docker.sock`) in containers — use remote API with TLS
+- Run **[Docker](../docker/SKILL.md) Bench Security** regularly to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) host and daemon configuration
+- Enable **user namespace remapping** (`userns-remap`) on [Docker](../docker/SKILL.md) daemon for extra isolation
+- Never mount **[Docker](../docker/SKILL.md) socket** (`/var/run/[docker](../docker/SKILL.md).sock`) in containers — use remote API with TLS
 - Set **seccomp** and **AppArmor** profiles to restrict container syscall access
 

@@ -20,7 +20,7 @@ metadata:
 ## Purpose
 
 Application teams shouldn't need to know whether "staging" runs on a shared
-Postgres RDS instance, a per-namespace CloudSQL database, or a local Docker
+Postgres RDS instance, a per-namespace CloudSQL database, or a local [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
 container — but without a shared abstraction, every environment difference
 leaks into the app's deployment config, and every platform migration means
 rewriting every service's manifests. Score (an open, vendor-neutral
@@ -28,7 +28,7 @@ specification at score.dev) solves this by letting a developer declare a
 workload's containers and *abstract* resource dependencies (`postgres`,
 `route`, `dns`) once, in a single `score.yaml`, without naming a concrete
 cloud service; a separate implementation — `score-compose` for local
-Docker Compose, `score-k8s` for plain Kubernetes, or Humanitec's Platform
+[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose, `score-k8s` for plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), or Humanitec's Platform
 Orchestrator for full environment-aware provisioning — resolves those
 abstract resources into real infrastructure per target. This skill covers
 writing a correct `score.yaml` and understanding how Humanitec's Resource
@@ -41,7 +41,7 @@ infrastructure across dev/staging/prod.
   (from the app team's perspective) across local dev, CI, and multiple
   cloud environments.
 - Migrating a service's deployment config off environment-specific
-  Kubernetes manifests or Helm values files and onto a portable Score spec.
+  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests or Helm values files and onto a portable Score spec.
 - Setting up a Humanitec Resource Definition so an abstract `resources`
   entry in `score.yaml` (e.g. `type: postgres`) resolves to a real
   Terraform-provisioned database in a given environment.
@@ -58,8 +58,8 @@ infrastructure across dev/staging/prod.
   `apiVersion` (`score.dev/v1b1` is the current stable schema version as
   of this writing — check score.dev for the latest before assuming a
   newer `v1b2`/GA version hasn't shipped).
-- For local resolution: `score-compose` (Docker Compose target) or
-  `score-k8s` (plain Kubernetes target), both open-source CLIs maintained
+- For local resolution: `score-compose` ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose target) or
+  `score-k8s` (plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) target), both open-source CLIs maintained
   under the Score project — install via the project's release binaries or
   `brew install score-spec/tap/score-compose`.
 - For Humanitec-orchestrated environments: a Humanitec organization, at
@@ -138,18 +138,18 @@ infrastructure across dev/staging/prod.
    ```bash
    score-compose init
    score-compose generate score.yaml -o compose.yaml
-   docker compose -f compose.yaml up
+   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose -f compose.yaml up
    ```
    `score-compose generate` fails fast on a malformed spec (missing
    required fields, unknown resource `type` it doesn't have a built-in
    provisioner for) — this is the cheapest validation loop, run before any
    CI or Humanitec deploy.
 
-4. **Run the same file against plain Kubernetes with `score-k8s`** for a
+4. **Run the same file against plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with `score-k8s`** for a
    team not using Humanitec at all:
    ```bash
    score-k8s generate score.yaml -o manifests.yaml
-   kubectl apply -f manifests.yaml -n checkout
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f manifests.yaml -n checkout
    ```
    `score-k8s` resolves `postgres`/`route`/etc. using its own default
    provisioners (e.g. a `postgres` resource becomes a StatefulSet + Service
@@ -175,13 +175,13 @@ infrastructure across dev/staging/prod.
    apiVersion: entity.humanitec.io/v1b1
    kind: Definition
    metadata:
-     id: postgres-aws-rds
+     id: postgres-[aws-rds](../../../DevOps_and_Cloud/Cloud_Providers/aws-rds/SKILL.md)
    entity:
      type: postgres
      driver_type: humanitec/terraform
      driver_inputs:
        source:
-         path: "git::https://github.com/<ORG>/tf-modules//postgres-rds"
+         path: "git::https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/<ORG>/tf-modules//postgres-rds"
        variables:
          instance_class: "db.t3.medium"
          engine_version: "15"
@@ -200,7 +200,7 @@ infrastructure across dev/staging/prod.
      --res-def postgres-dev-local
    humctl score resources apply \
      --env production \
-     --res-def postgres-aws-rds-multiaz
+     --res-def postgres-[aws-rds](../../../DevOps_and_Cloud/Cloud_Providers/aws-rds/SKILL.md)-multiaz
    ```
    This environment-level binding — not anything in `score.yaml` — is what
    makes the same workload spec produce a throwaway dev database and a
@@ -236,7 +236,7 @@ infrastructure across dev/staging/prod.
   without touching real infrastructure or waiting on a Terraform apply.
 - Version Resource Definitions the same way as application code (in git,
   reviewed via PR) — a Resource Definition is platform-team-owned
-  infrastructure-as-code, not a one-off console click, and a bad module
+  [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md), not a one-off console click, and a bad module
   reference in one Resource Definition can break every workload in an
   Environment that resolves to it.
 - Keep the number of distinct resource `type`/`class` combinations a
@@ -272,7 +272,7 @@ infrastructure across dev/staging/prod.
   Definition in the target Environment) that the open-source CLIs, which
   ship their own built-in default provisioners, don't need to enforce —
   run `humctl score deploy --dry-run` (or the org's CI validation gate; see
-  [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md))
+  [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md))
   against the actual target Environment, not just local resolution, before
   assuming the spec is deploy-ready everywhere.
 
@@ -281,7 +281,7 @@ infrastructure across dev/staging/prod.
   (e.g. missing `resources.requests`) has to be fixed in a dozen places.
   **Fix:** Generate `score.yaml` from a shared golden-path template with
   parameterized fields, rather than hand-copying between services — see
-  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md).
+  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 - **Symptom:** A Resource Definition change (e.g. bumping the Terraform
   module's `instance_class` default) is applied directly against
@@ -289,14 +289,14 @@ infrastructure across dev/staging/prod.
   unplanned resize on next deploy.
   **Fix:** Test Resource Definition changes against a non-production
   Environment's resource graph first and gate the change through review,
-  the same as any other infrastructure-as-code change — see
-  [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md)
+  the same as any other [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) change — see
+  [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md)
   for the dry-run/Resource Graph workflow.
 
 ## Worked example
 
 **Scenario:** The `checkout-api` service needs to run identically (from the
-app team's point of view) in a developer's local Docker environment, a
+app team's point of view) in a developer's local [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) environment, a
 shared `staging` environment, and `production`, where `staging` uses a
 small shared RDS instance and `production` uses Multi-AZ RDS with read
 replicas — without the app team maintaining three different manifests.
@@ -327,7 +327,7 @@ resources:
       port: 8080
 ```
 
-Local dev: `score-compose generate score.yaml -o compose.yaml && docker
+Local dev: `score-compose generate score.yaml -o compose.yaml && [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
 compose -f compose.yaml up` — resolves `db` to a local `postgres:15`
 container with no Humanitec involvement at all.
 
@@ -347,6 +347,6 @@ bindings differ.
 
 ## Cross-references
 
-- [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md) — validating this `score.yaml` and its target Resource Definitions before a real deploy, referenced above for dry-run/CI gating.
-- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md) — Score as the developer-facing spec inside a larger self-service provisioning workflow.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — embedding a pre-filled, parameterized `score.yaml` in a scaffolding template so new services start from a correct spec instead of hand-copying one.
+- [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — validating this `score.yaml` and its target Resource Definitions before a real deploy, referenced above for dry-run/CI gating.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Score as the developer-facing spec inside a larger self-service provisioning workflow.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — embedding a pre-filled, parameterized `score.yaml` in a scaffolding template so new services start from a correct spec instead of hand-copying one.

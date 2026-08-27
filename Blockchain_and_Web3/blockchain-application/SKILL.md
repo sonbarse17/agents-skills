@@ -22,7 +22,7 @@ Guide smart contract development across all major blockchain platforms. Covers l
 - Target blockchain and VM type (EVM/SVM/eUTxO/StarkNet/MoveVM)
 - Contract purpose (token/DeFi/NFT/oracle/governance/bridge)
 - Upgradeability requirements (proxy/non-upgradeable/beacon)
-- Security requirements (audit level, formal verification need)
+- Security requirements ([audit](../../AI_and_Agents/Operations/audit/SKILL.md) level, formal verification need)
 - Performance constraints (gas budget, compute units, TPS needs)
 - Existing dependencies (OpenZeppelin, Anchor libraries, Plutus contracts)
 
@@ -42,7 +42,7 @@ Complete contract architecture specification: platform selection, contract desig
 - Storage layout compatible with upgradeability pattern (if upgradeable)
 - Gas optimization applied: storage reads minimized, calldata over memory where possible
 - Security review covers platform-specific attack vectors (reentrancy, oracle manipulation, flash loans)
-- Deployment plan includes verification, multi-sig ownership, and monitoring
+- Deployment plan includes verification, multi-sig ownership, and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ### Max Response Length
 5000 tokens
@@ -57,7 +57,7 @@ Smart contract platform:
 │   │   ├── Solidity: EVM chains (Ethereum, Polygon, Arbitrum, Optimism, Base, BSC)
 │   │   │   ├── Toolchain: Foundry (default), Hardhat (complex workflows)
 │   │   │   └── Libraries: OpenZeppelin, Solady
-│   │   └── Vyper: Simple contracts, audit-friendliness prioritized
+│   │   └── Vyper: Simple contracts, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-friendliness prioritized
 │   │       └── Toolchain: ape, brownie
 │   ├── NO → Evaluate non-EVM chains
 │   │   ├── Solana → Rust + Anchor framework
@@ -93,7 +93,7 @@ EVM language choice:
 │   ├── Pros: Largest ecosystem, most tutorials, OpenZeppelin libs
 │   ├── Cons: More attack surface (implicit behavior, inheritance)
 │   └── Best for: Complex protocols, composability-focused
-├── Vyper (audit-first projects)
+├── Vyper ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first projects)
 │   ├── Pros: Simpler, fewer foot-guns, explicit behavior
 │   ├── Cons: Smaller ecosystem, limited libraries
 │   └── Best for: Simple contracts, high-value vaults, DAO treasuries
@@ -302,7 +302,7 @@ pub struct User {
 | Reentrancy | Checks-effects-interactions, ReentrancyGuard |
 | Flash loan manipulation | TWAP pricing, min/max output constraints |
 | Oracle manipulation | Redundant oracles, stale price checks, circuit breakers |
-| Frontrunning | Commit-reveal, submarine sends, FCFS ordering |
+| Frontrunning | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, submarine sends, FCFS ordering |
 | Signature replay | Include chain ID, contract address, nonce in EIP-712 |
 | Access control | Timelock + multi-sig, not single admin key |
 | Integer overflow | Solidity 0.8+ built-in checks, SafeMath for older |
@@ -320,7 +320,7 @@ pub struct User {
 - [ ] Ownership transferred to timelock + governance
 - [ ] Emergency pause mechanism tested
 - [ ] Rate limits configured for high-value functions
-- [ ] Monitoring alerts set up for suspicious activity
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts set up for suspicious activity
 
 ### Multi-Chain Deployment
 - Deterministic addresses via CREATE2 (same address on all EVM chains)
@@ -537,6 +537,6 @@ contract CloneFactory {
 - **Upgrade safety**: Test upgrades on fork; use `oz upgrade` validator; never upgrade without timelock.
 
 ## Handoff
-blockchain-application → blockchain-testing (for test strategy implementation)
-blockchain-application → blockchain-security (for pre-audit review)
+blockchain-application → [blockchain-testing](../blockchain-testing/SKILL.md) (for test strategy implementation)
+blockchain-application → [blockchain-security](../blockchain-security/SKILL.md) (for pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
 

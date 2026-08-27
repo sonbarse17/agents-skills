@@ -71,7 +71,7 @@ Use stronger LLMs to evaluate weaker model outputs.
 
 ## Quick Start
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from dataclasses import dataclass
 from typing import Callable
 import numpy as np

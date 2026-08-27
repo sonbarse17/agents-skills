@@ -9,7 +9,7 @@ metadata:
 
 # AI Coding Agent Guardrails
 
-Secure the use of AI coding agents across engineering teams. This skill covers permission boundaries, secret protection, sandbox isolation, code review gates, and audit trails for Claude Code, Cursor, Copilot, and Codex.
+Secure the use of AI coding agents across engineering teams. This skill covers permission boundaries, secret protection, sandbox isolation, code review gates, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails for Claude Code, Cursor, Copilot, and Codex.
 
 ---
 
@@ -28,7 +28,7 @@ Signs you need tighter guardrails:
 
 - Agents have committed secrets or credentials to version control
 - Agent-generated code has introduced vulnerabilities caught late in the pipeline
-- No clear audit trail distinguishes human-written from AI-generated code
+- No clear [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail distinguishes human-written from AI-generated code
 - Developers are bypassing code review for "simple" agent changes
 - Agents are executing arbitrary shell commands in production-connected environments
 
@@ -46,9 +46,9 @@ Create a `CLAUDE.md` at the repository root to restrict Claude Code behavior:
 ## Restrictions
 
 - NEVER read or output contents of .env, .env.*, secrets.yaml, or any file matching *.pem, *.key
-- NEVER execute `rm -rf`, `DROP TABLE`, `kubectl delete`, or `terraform destroy` commands
+- NEVER execute `rm -rf`, `DROP TABLE`, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete`, or `terraform destroy` commands
 - NEVER push directly to main or master branches
-- NEVER modify files in the infrastructure/, terraform/, or .github/workflows/ directories without explicit user approval
+- NEVER modify files in the infrastructure/, terraform/, or .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ directories without explicit user approval
 - NEVER install new dependencies without listing them first for review
 - NEVER access or display API keys, tokens, passwords, or connection strings
 
@@ -87,7 +87,7 @@ agent_permissions:
     - "git log"
     - "git checkout -b"
     - "git add"
-    - "git commit"
+    - "git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)"
     - "ls"
     - "cat"
     - "head"
@@ -99,12 +99,12 @@ agent_permissions:
     - "wget"
     - "ssh"
     - "scp"
-    - "kubectl"
+    - "[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)"
     - "terraform"
     - "aws"
     - "gcloud"
     - "az"
-    - "docker push"
+    - "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push"
     - "npm publish"
 
   blocked_paths:
@@ -113,7 +113,7 @@ agent_permissions:
     - "**/*.key"
     - "**/secrets/**"
     - "infrastructure/**"
-    - ".github/workflows/**"
+    - ".[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/**"
 
   allowed_paths:
     - "src/**"
@@ -151,7 +151,7 @@ setfacl -R -m u:${AGENT_USER}:rwx "${REPO_DIR}/docs"
 # Deny agent access to sensitive files
 setfacl -m u:${AGENT_USER}:--- "${REPO_DIR}/.env"
 setfacl -R -m u:${AGENT_USER}:--- "${REPO_DIR}/infrastructure"
-setfacl -R -m u:${AGENT_USER}:--- "${REPO_DIR}/.github/workflows"
+setfacl -R -m u:${AGENT_USER}:--- "${REPO_DIR}/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows"
 
 echo "Agent workspace permissions configured."
 ```
@@ -160,14 +160,14 @@ echo "Agent workspace permissions configured."
 
 ## Secret Protection
 
-### Pre-commit Hooks with git-secrets
+### Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hooks with git-secrets
 
 ```bash
 #!/bin/bash
 # install-secret-scanning.sh
 
 # Install git-secrets
-git clone https://github.com/awslabs/git-secrets.git /tmp/git-secrets
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/awslabs/git-secrets.git /tmp/git-secrets
 cd /tmp/git-secrets && make install
 
 # Initialize in repository
@@ -195,7 +195,7 @@ git secrets --add --allowed 'your-api-key-here'
 
 Scan agent-generated output before it reaches version control:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 """scan_agent_output.py - Scan AI agent output for leaked secrets."""
 
@@ -206,8 +206,8 @@ from pathlib import Path
 SECRET_PATTERNS = [
     (r'AKIA[0-9A-Z]{16}', 'AWS Access Key'),
     (r'(?i)aws_secret_access_key\s*[:=]\s*\S+', 'AWS Secret Key'),
-    (r'ghp_[a-zA-Z0-9]{36}', 'GitHub Personal Access Token'),
-    (r'gho_[a-zA-Z0-9]{36}', 'GitHub OAuth Token'),
+    (r'ghp_[a-zA-Z0-9]{36}', '[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Personal Access Token'),
+    (r'gho_[a-zA-Z0-9]{36}', '[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) OAuth Token'),
     (r'sk-[a-zA-Z0-9]{48,}', 'OpenAI/Anthropic API Key'),
     (r'xox[baprs]-[0-9a-zA-Z\-]{10,}', 'Slack Token'),
     (r'-----BEGIN (RSA |EC |DSA )?PRIVATE KEY-----', 'Private Key'),
@@ -258,11 +258,11 @@ if __name__ == "__main__":
     main()
 ```
 
-### Git Pre-commit Hook Integration
+### Git Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hook Integration
 
 ```bash
 #!/bin/bash
-# .git/hooks/pre-commit
+# .git/hooks/pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 # Block commits containing secrets from AI agents
 
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
@@ -283,8 +283,8 @@ SCANNER_EXIT=$?
 
 if [ $GIT_SECRETS_EXIT -ne 0 ] || [ $SCANNER_EXIT -ne 0 ]; then
   echo ""
-  echo "COMMIT BLOCKED: Secrets detected in staged files."
-  echo "If this is a false positive, use: git commit --no-verify"
+  echo "[COMMIT](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) BLOCKED: Secrets detected in staged files."
+  echo "If this is a false positive, use: git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) --no-verify"
   exit 1
 fi
 ```
@@ -293,7 +293,7 @@ fi
 
 ## Sandbox Configuration
 
-### Docker Sandbox for Agent Execution
+### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Sandbox for Agent Execution
 
 ```dockerfile
 # Dockerfile.agent-sandbox
@@ -317,7 +317,7 @@ USER agent
 WORKDIR /workspace
 
 # No network by default - override at runtime if needed
-# No access to Docker socket
+# No access to [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket
 # No access to host filesystem beyond mounted volume
 ```
 
@@ -329,7 +329,7 @@ WORKDIR /workspace
 REPO_DIR="$(pwd)"
 CONTAINER_NAME="agent-sandbox-$$"
 
-docker run \
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run \
   --name "$CONTAINER_NAME" \
   --rm \
   --network none \
@@ -401,10 +401,10 @@ docker run \
 
 ## Code Review Gates
 
-### GitHub Actions Workflow for Agent PRs
+### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Workflow for Agent PRs
 
 ```yaml
-# .github/workflows/agent-pr-review.yaml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/agent-pr-review.yaml
 name: Agent PR Security Review
 
 on:
@@ -420,9 +420,9 @@ jobs:
       - name: Check if PR is from an AI agent
         id: check
         run: |
-          BRANCH="${{ github.head_ref }}"
-          AUTHOR="${{ github.event.pull_request.user.login }}"
-          BODY="${{ github.event.pull_request.body }}"
+          BRANCH="${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref }}"
+          AUTHOR="${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.user.login }}"
+          BODY="${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.body }}"
 
           IS_AGENT="false"
           if [[ "$BRANCH" == ai/* ]] || [[ "$BRANCH" == agent/* ]]; then
@@ -475,9 +475,9 @@ jobs:
       - name: Require extra review for dependency changes
         if: env.DEPENDENCY_CHANGED == 'true'
         run: |
-          gh pr edit "${{ github.event.pull_request.number }}" \
+          gh pr edit "${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }}" \
             --add-label "agent-dependency-change" \
-            --add-label "requires-security-review"
+            --add-label "requires-[security-review](../security-review/SKILL.md)"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -488,7 +488,7 @@ jobs:
     steps:
       - name: Label as agent-generated
         run: |
-          gh pr edit "${{ github.event.pull_request.number }}" \
+          gh pr edit "${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }}" \
             --add-label "ai-generated"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -504,7 +504,7 @@ jobs:
 ```bash
 #!/bin/bash
 # configure-branch-protection.sh
-# Set up branch protection rules for agent-generated PRs via GitHub API
+# Set up branch protection rules for agent-generated PRs via [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) API
 
 OWNER="your-org"
 REPO="your-repo"
@@ -567,7 +567,7 @@ You are working in a production codebase. Follow these rules strictly:
 - Never introduce SQL string concatenation; always use parameterized queries.
 
 ## File Restrictions
-- Do not modify any files in: infrastructure/, terraform/, .github/workflows/, deploy/
+- Do not modify any files in: infrastructure/, terraform/, .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/, deploy/
 - Do not create or modify Dockerfiles without explicit approval.
 - Do not modify CI/CD configuration files.
 
@@ -579,19 +579,19 @@ You are working in a production codebase. Follow these rules strictly:
 
 ## Git Behavior
 - Create branches with the prefix: ai/
-- Write descriptive commit messages referencing the task or issue.
+- Write descriptive [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages referencing the task or issue.
 - Never force push or rebase shared branches.
 ```
 
-### GitHub Copilot Configuration
+### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot Configuration
 
 ```yaml
-# .github/copilot-config.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/copilot-config.yml
 #
 # Note: Copilot content exclusion is configured at the org/repo level
-# via GitHub settings. This file documents intended exclusions and
+# via [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) settings. This file documents intended exclusions and
 # can be referenced by org admins when configuring the settings at
-# github.com > Org Settings > Copilot > Content Exclusions.
+# [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com > Org Settings > Copilot > Content Exclusions.
 
 content_exclusions:
   paths:
@@ -653,9 +653,9 @@ iptables -A AGENT_CHAIN -d pypi.org -p tcp --dport 443 -j ACCEPT
 iptables -A AGENT_CHAIN -d files.pythonhosted.org -p tcp --dport 443 -j ACCEPT
 iptables -A AGENT_CHAIN -d proxy.golang.org -p tcp --dport 443 -j ACCEPT
 
-# Allow GitHub for git operations
-iptables -A AGENT_CHAIN -d github.com -p tcp --dport 443 -j ACCEPT
-iptables -A AGENT_CHAIN -d github.com -p tcp --dport 22 -j ACCEPT
+# Allow [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) for git operations
+iptables -A AGENT_CHAIN -d [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com -p tcp --dport 443 -j ACCEPT
+iptables -A AGENT_CHAIN -d [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com -p tcp --dport 22 -j ACCEPT
 
 # Block everything else
 iptables -A AGENT_CHAIN -j DROP
@@ -671,7 +671,7 @@ iptables -A OUTPUT -m owner --uid-owner ai-agent -j AGENT_CHAIN
 # Transparent proxy for AI agent network requests
 
 acl agent_user proxy_auth ai-agent
-acl allowed_domains dstdomain .npmjs.org .pypi.org .github.com .golang.org
+acl allowed_domains dstdomain .npmjs.org .pypi.org .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com .golang.org
 
 # Allow only specific domains
 http_access allow agent_user allowed_domains
@@ -688,10 +688,10 @@ reply_body_max_size 50 MB
 http_port 3128
 ```
 
-### Docker Compose with Network Isolation
+### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose with Network Isolation
 
 ```yaml
-# docker-compose.agent.yaml
+# [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).agent.yaml
 version: "3.8"
 
 services:
@@ -732,20 +732,20 @@ networks:
 
 ---
 
-## Audit Trail
+## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trail
 
 ### Git Trailers for AI-Generated Code
 
 ```bash
 #!/bin/bash
-# git-ai-commit.sh
+# git-ai-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).sh
 # Wrapper for committing agent-generated code with proper attribution
 
 AGENT_NAME="${AI_AGENT_NAME:-unknown-agent}"
 AGENT_VERSION="${AI_AGENT_VERSION:-unknown}"
 TASK_ID="${AI_TASK_ID:-none}"
 
-git commit -m "$(cat <<EOF
+git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "$(cat <<EOF
 $1
 
 AI-Generated-By: ${AGENT_NAME} ${AGENT_VERSION}
@@ -758,7 +758,7 @@ EOF
 
 ### Agent Action Logger
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 """agent_audit_logger.py - Log all AI agent actions for compliance."""
 
@@ -817,15 +817,15 @@ def log_pr_created(agent: str, pr_url: str, files_changed: list[str]) -> None:
 # Usage example:
 # log_file_write("claude-code", "src/api/handler.py", 42)
 # log_command("claude-code", "npm test", 0)
-# log_pr_created("claude-code", "https://github.com/org/repo/pull/99", ["src/main.py"])
+# log_pr_created("claude-code", "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/pull/99", ["src/main.py"])
 ```
 
-### Querying the Audit Log
+### Querying the [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Log
 
 ```bash
 #!/bin/bash
-# query-agent-audit.sh
-# Query agent audit logs for compliance reporting
+# query-agent-[audit](../../AI_and_Agents/Operations/audit/SKILL.md).sh
+# Query agent [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for compliance reporting
 
 LOG_FILE="/var/log/ai-agents/agent-actions.jsonl"
 
@@ -858,7 +858,7 @@ jq -r 'select(.action == "pr_created") | "\(.agent): \(.target)"' "$LOG_FILE"
 ### Agent Usage Policy Template
 
 ```yaml
-# .github/agent-policy.yaml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/agent-policy.yaml
 # Team policy for AI coding agent usage
 
 policy:
@@ -907,15 +907,15 @@ policy:
     - "Modifying authentication or authorization logic"
     - "Writing or changing cryptographic implementations"
     - "Modifying CI/CD pipelines or deployment configs"
-    - "Changing infrastructure-as-code without human authorship"
+    - "Changing [infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) without human authorship"
     - "Accessing production databases or systems"
-    - "Modifying security controls or audit logging"
+    - "Modifying security controls or [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging"
 ```
 
 ### CODEOWNERS for Agent Oversight
 
 ```text
-# .github/CODEOWNERS
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/CODEOWNERS
 # Require specific reviewers for agent-sensitive areas
 
 # All agent-generated branches require security team review
@@ -924,7 +924,7 @@ policy:
 # Infrastructure is off-limits to agents and requires platform team
 /infrastructure/    @platform-team
 /terraform/         @platform-team
-/.github/workflows/ @platform-team @security-team
+/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ @platform-team @security-team
 
 # Security-sensitive code requires security team
 /src/auth/          @security-team
@@ -945,7 +945,7 @@ go.sum              @security-team
 ### Mandatory Test Coverage for Agent Code
 
 ```yaml
-# .github/workflows/agent-test-gate.yaml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/agent-test-gate.yaml
 name: Agent Code Test Gate
 
 on:
@@ -968,7 +968,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          # Python
+          # [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
           if ls tests/*.py &>/dev/null; then
             pip install pytest pytest-cov
             pytest --cov=src --cov-report=json --cov-fail-under=80
@@ -996,7 +996,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Bandit (Python)
+      - name: Run Bandit ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
         if: hashFiles('**/*.py') != ''
         run: |
           pip install bandit
@@ -1007,7 +1007,7 @@ jobs:
             jq -r '.results[] | "  \(.severity): \(.issue_text) in \(.filename):\(.line_number)"' bandit-report.json
           fi
 
-      - name: Run ESLint security plugin (JavaScript/TypeScript)
+      - name: Run ESLint security plugin (JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
         if: hashFiles('**/*.js') != '' || hashFiles('**/*.ts') != ''
         run: |
           npm ci
@@ -1097,7 +1097,7 @@ warn_check "Coverage above 80%" npm test -- --coverage --coverageThreshold='{"gl
 
 # Check for forbidden file modifications
 FORBIDDEN_CHANGES=$(git diff --name-only origin/main..."$PR_BRANCH" -- \
-  'infrastructure/' 'terraform/' '.github/workflows/' '.env*' '*.pem' '*.key')
+  'infrastructure/' 'terraform/' '.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/' '.env*' '*.pem' '*.key')
 check "No forbidden file changes" [ -z "$FORBIDDEN_CHANGES" ]
 
 # Check for new dependencies
@@ -1105,7 +1105,7 @@ DEP_CHANGES=$(git diff --name-only origin/main..."$PR_BRANCH" -- \
   'package.json' 'requirements.txt' 'go.mod' 'Cargo.toml')
 warn_check "No dependency changes" [ -z "$DEP_CHANGES" ]
 
-# Check commit messages have AI trailers
+# Check [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages have AI trailers
 MISSING_TRAILERS=$(git log origin/main.."$PR_BRANCH" --format='%B' \
   | grep -cL "AI-Generated-By:" || true)
 warn_check "All commits have AI attribution trailers" [ "$MISSING_TRAILERS" -eq 0 ]
@@ -1129,10 +1129,10 @@ echo -e "${GREEN}PR validation passed.${NC}"
 | Control | Tool | Purpose |
 |---|---|---|
 | Permission boundaries | CLAUDE.md, .cursorrules, codex.md | Restrict agent behavior per-repo |
-| Secret scanning | git-secrets, pre-commit hooks | Block credential leaks |
-| Sandbox isolation | Docker, seccomp, network=none | Contain agent execution |
-| Code review gates | GitHub Actions, branch protection | Enforce human review |
+| Secret scanning | git-secrets, pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks | Block credential leaks |
+| Sandbox isolation | [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), seccomp, network=none | Contain agent execution |
+| Code review gates | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, branch protection | Enforce human review |
 | Network controls | iptables, Squid proxy | Limit agent internet access |
-| Audit trail | Git trailers, JSONL logger | Track AI-generated code |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail | Git trailers, JSONL logger | Track AI-generated code |
 | Test requirements | Coverage gates, mutation testing | Validate agent output quality |
 | Team policies | agent-policy.yaml, CODEOWNERS | Govern agent usage org-wide |

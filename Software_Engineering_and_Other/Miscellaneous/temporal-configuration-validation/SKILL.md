@@ -22,13 +22,13 @@ metadata:
 
 A Temporal workflow can be authored correctly — deterministic, with
 sensible activities and compensation logic as covered in
-[temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md)
+[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
 — and still fail in production because of configuration sitting outside
 the workflow code itself: a worker polling the wrong (or no) task queue,
 an activity timeout too tight for its real-world latency distribution, a
 retry policy that never gives up on a permanently failing call, or a
 namespace whose retention period silently discards the event history an
-operator needed to debug an incident. These are the kind of mistakes
+operator needed to debug an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). These are the kind of mistakes
 that pass every unit test against a mocked activity and only surface
 under real production load or after the first workflow needs
 investigating weeks later. This skill covers validating exactly that
@@ -36,7 +36,7 @@ configuration surface — task queues, timeouts/retries, and namespace
 settings — before a Temporal-backed service goes live, as a
 complement to (not a replacement for) the workflow/activity authoring
 guidance in
-[temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md).
+[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -49,7 +49,7 @@ guidance in
   for values that are either dangerously loose (retrying forever) or
   dangerously tight (failing fast on normal latency variance).
 - Setting up a new Temporal namespace and deciding retention,
-  archival, and multi-tenancy boundaries before workflows start
+  archival, and [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) boundaries before workflows start
   running in it.
 - Adding a CI check that catches a missing timeout, an unset retry
   policy, or a task queue name mismatch before merge, rather than
@@ -68,11 +68,11 @@ guidance in
 - Familiarity with the workflow/activity code being validated (or the
   ability to grep it) to cross-check declared timeouts/retry policies
   against what
-  [temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md)
+  [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
   recommends per activity.
 - For namespace validation: awareness of the organization's actual
   operational/compliance requirement for how long workflow history must
-  remain queryable (debugging an incident from three weeks ago requires
+  remain queryable (debugging an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from three weeks ago requires
   retention to still cover that window).
 - Temporal Server 1.20+ recommended if validating worker versioning /
   Build ID-based safe-deploy features — the exact versioning API
@@ -113,7 +113,7 @@ guidance in
    worker pool), verify a worker is registered specifically for that
    queue — don't assume the workflow's own worker also covers it.
 
-3. **Audit every activity for an explicit timeout appropriate to its
+3. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) every activity for an explicit timeout appropriate to its
    real latency**, treating a missing or default-only timeout as a
    finding, not an acceptable gap:
    ```go
@@ -137,13 +137,13 @@ guidance in
    effectively unbounded total duration if `MaximumAttempts` is also
    unset.
 
-4. **Audit every retry policy for a bounded `MaximumAttempts` or a
+4. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) every retry policy for a bounded `MaximumAttempts` or a
    sane `MaximumInterval`**, and confirm genuinely non-retryable error
    types are actually listed:
    ```go
    // FLAG: unbounded retries with no non-retryable error classification
    // — a permanently failing call (bad request, auth failure, business
-   // rejection) retries indefinitely, burning worker capacity and
+   // rejection) retries indefinitely, burning worker [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and
    // delaying the workflow's own failure/compensation path.
    RetryPolicy: &temporal.RetryPolicy{
        InitialInterval: time.Second,
@@ -193,12 +193,12 @@ guidance in
      --retention 30d
    ```
    A retention period shorter than how long an operator might reasonably
-   need to look back at a workflow's event history (an incident
+   need to look back at a workflow's event history (an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    investigation, a customer support escalation) means the history is
    already gone by the time someone asks — validate this against a real
    organizational requirement, not the server's out-of-the-box default.
 
-7. **Validate namespace-level multi-tenancy boundaries** — confirm
+7. **Validate namespace-level [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) boundaries** — confirm
    distinct environments (staging, production) and, where relevant,
    distinct customer-facing tenants use separate namespaces rather than
    sharing one namespace distinguished only by a naming convention in
@@ -208,7 +208,7 @@ guidance in
    temporal operator namespace create --namespace production
    ```
    A shared namespace across environments means a staging load test or a
-   buggy staging workflow can consume the same task-queue capacity,
+   buggy staging workflow can consume the same task-queue [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
    visibility store, and retention budget as production — validate that
    this separation actually exists rather than assuming it from naming
    alone.
@@ -229,7 +229,7 @@ guidance in
    the same task queue with no compatibility guarantee — this is the
    configuration-level complement to the code-level `GetVersion`
    patching discipline in
-   [temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md).
+   [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
 
 9. **Run a replay test against real production history as a pre-deploy
    CI gate**, not just unit tests against mocked activities — this is
@@ -265,7 +265,7 @@ guidance in
   error types as part of code review — an out-of-date list is a silent
   correctness regression, not a cosmetic gap.
 - Set namespace retention from an explicit organizational requirement
-  (compliance, typical incident-investigation lookback), and document
+  (compliance, typical [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation lookback), and document
   the reasoning next to the `temporal operator namespace update` command
   that set it.
 - Run replay tests against sampled real production history in CI before
@@ -306,7 +306,7 @@ guidance in
   activity at an interval comfortably shorter than the configured
   `HeartbeatTimeout` (step 5).
 
-- **Symptom:** An operator investigating an incident from a month ago
+- **Symptom:** An operator investigating an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from a month ago
   finds the relevant workflow's event history is simply gone.
   **Fix:** The namespace's retention period is shorter than the
   organization's actual investigation/compliance window. Check
@@ -327,7 +327,7 @@ guidance in
 
 **Scenario:** Pre-production readiness review for the
 `order-fulfillment` workflow from
-[temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md)
+[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
 before it goes live for real customer orders.
 
 1. Task queue check:
@@ -339,7 +339,7 @@ before it goes live for real customer orders.
    `TASK_QUEUE=order-fulfillment-tq` matching the workflow-starter code
    exactly.
 
-2. Timeout/retry audit of each activity (`ReserveInventory`,
+2. Timeout/retry [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of each activity (`ReserveInventory`,
    `ChargePayment`, `ReleaseInventory`, `ShipOrder`) confirms each has an
    explicit `StartToCloseTimeout`, a `MaximumAttempts` bound, and
    `ChargePayment` specifically lists `CardDeclinedError` under
@@ -376,6 +376,6 @@ before it goes live for real customer orders.
 
 ## Cross-references
 
-- [temporal-durable-workflow-orchestration](../temporal-durable-workflow-orchestration/SKILL.md) — authoring the workflow/activity/signal code this skill validates the configuration around, including the `GetVersion` patching discipline this skill's Build ID checks complement.
-- [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md) — a comparable pre-production configuration-validation discipline (topic/consumer-group settings checked before go-live) for the messaging side of a system a Temporal workflow might integrate with.
-- [airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md) — a comparable "diagnose a stuck orchestration unit" workflow for Airflow's scheduler, useful for contrasting how a stuck DAG run is diagnosed versus a stuck Temporal workflow (task queue pollers) covered here.
+- [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md) — authoring the workflow/activity/signal code this skill validates the configuration around, including the `GetVersion` patching discipline this skill's Build ID checks complement.
+- [kafka-configuration-validation](../[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md) — a comparable pre-production configuration-validation discipline (topic/consumer-group settings checked before go-live) for the messaging side of a system a Temporal workflow might integrate with.
+- [airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../../../AI_and_Agents/Workflows/airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md) — a comparable "diagnose a stuck orchestration unit" workflow for Airflow's scheduler, useful for contrasting how a stuck DAG run is diagnosed versus a stuck Temporal workflow (task queue pollers) covered here.

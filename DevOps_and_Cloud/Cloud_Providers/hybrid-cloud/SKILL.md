@@ -33,7 +33,7 @@ Design and operate hybrid cloud architectures that span on-premises data centers
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "hybrid cloud", "cloud burst", "hybrid connectivity", "Direct Connect", "ExpressRoute", "transit gateway", "cloud interconnect", "multi-cloud", "cross-cloud", "data gravity", "cloud migration", "hybrid workload", "repatriation", "hybrid identity".
+Exact user phrases: "hybrid cloud", "cloud burst", "hybrid connectivity", "Direct Connect", "ExpressRoute", "transit gateway", "cloud interconnect", "[multi-cloud](../multi-cloud/SKILL.md)", "cross-cloud", "data gravity", "cloud migration", "hybrid workload", "repatriation", "hybrid identity".
 
 ### Input Context
 Before activating, verify:
@@ -62,7 +62,7 @@ No preamble. No postamble. No explanations.
 - [ ] Workload placement matrix (data gravity, latency, compliance documented).
 - [ ] Data synchronization strategy for stateful workloads.
 - [ ] DR plan with RPO/RTO for hybrid workloads.
-- [ ] Monitoring and observability across environments.
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [observability](../../Observability_and_SecOps/observability/SKILL.md) across environments.
 
 ## Architecture Decision Trees
 
@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations.
 | Direct Connect / ExpressRoute | 1-3ms | 50 Mbps - 100 Gbps | Medium + egress | 1-4 hours | Primary, high-volume |
 | SD-WAN over MPLS | 5-10ms | Up to 1 Gbps per circuit | Medium | Automatic | Branch offices |
 | Cloud Interconnect (GCP) | 1-3ms | 10-200 Gbps | Medium | 1-2 hours | GCP primary |
-| Megaport / Equinix Fabric | <1ms | Up to 10 Gbps per port | Medium | Instant | Multi-cloud exchange |
+| Megaport / Equinix Fabric | <1ms | Up to 10 Gbps per port | Medium | Instant | [Multi-cloud](../multi-cloud/SKILL.md) exchange |
 | Colo cross-connect | <1ms | 1-100 Gbps | Low per link | Days | Same-facility hybrid |
 
 ### Hybrid Compute Platform Comparison
@@ -81,9 +81,9 @@ No preamble. No postamble. No explanations.
 |---|---|---|---|---|
 | VMware HCX | vSphere | AWS VMC, Azure VMware | L2 stretch, bulk migration | VMware-centric orgs |
 | Google Anthos | GKE on-prem | GKE, GCP | Config Management, Service Mesh | K8s-native hybrid |
-| Azure Arc | Any K8s, Linux/Windows | Azure | Azure Policy, GitOps | Azure-first hybrid |
+| Azure Arc | Any K8s, Linux/Windows | Azure | Azure Policy, [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) | Azure-first hybrid |
 | AWS Outposts | Native AWS HW | AWS | Same APIs as cloud | AWS extension |
-| EKS Anywhere | EKS on-prem | EKS | GitOps, Curated packages | K8s hybrid |
+| EKS Anywhere | EKS on-prem | EKS | [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md), Curated packages | K8s hybrid |
 | Nutanix Cloud Clusters | AHV | AWS, Azure | Single management | Nutanix shops |
 
 ### Identity Federation Comparison
@@ -119,7 +119,7 @@ Is data structured (RDBMS)?
 | Multi-site active-active | <1s | <1min | Very High | High | Automatic |
 
 ## Quick Start
-Establish hybrid connectivity: VPN to cloud as interim → provision Direct Connect/ExpressRoute within 30 days → configure route propagation via Transit Gateway → federate on-prem AD with cloud IdP → deploy hybrid compute (VMware HCX, Anthos, Arc) → set up data sync layer → implement monitoring across both environments.
+Establish hybrid connectivity: VPN to cloud as interim → provision Direct Connect/ExpressRoute within 30 days → configure route propagation via Transit Gateway → federate on-prem AD with cloud IdP → deploy hybrid compute (VMware HCX, Anthos, Arc) → set up data sync layer → implement [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) across both environments.
 
 ## Core Workflow
 
@@ -219,7 +219,7 @@ Migration types:
 ### Step 5: Hybrid Compute — Google Anthos
 ```yaml
 # Google Anthos (GKE on-prem + cloud)
-- GKE on VMware for on-premises Kubernetes
+- GKE on VMware for on-premises [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 - Cloud Run for Anthos
 - Config Management (sync from Cloud Source Repositories or GitLab)
 - Service Mesh (Anthos Service Mesh, Istio-based)
@@ -233,10 +233,10 @@ Migration types:
 # Azure Arc / AWS Outposts
 Azure Arc:
   - Servers: Any Linux/Windows VM on-prem
-  - Kubernetes: AKS hybrid, K3s, Rancher
-  - Data: SQL Managed Instance, PostgreSQL Hyperscale
+  - [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): AKS hybrid, K3s, Rancher
+  - Data: SQL Managed Instance, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Hyperscale
   - Policies: Azure Policy + Guest Configuration
-  - Extensions: Monitoring, security, custom scripts
+  - Extensions: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), security, custom scripts
 
 AWS Outposts:
   - Native AWS services on-prem (EC2, EBS, RDS, ECS, EKS)
@@ -289,12 +289,12 @@ resource "aws_dms_replication_task" "hybrid" {
 }
 ```
 
-### Step 9: Monitoring Across Environments
+### Step 9: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Across Environments
 ```yaml
-Observability stack for hybrid cloud:
+[Observability](../../Observability_and_SecOps/observability/SKILL.md) stack for hybrid cloud:
   Metrics:  Prometheus + Thanos / Azure Monitor + Grafana
   Logs:     Loki / Splunk / Azure Log Analytics
-  Tracing:  OpenTelemetry Collector (gateway mode)
+  Tracing:  [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Collector (gateway mode)
   Alerts:   PagerDuty / Opsgenie with on-call rotations
 
 Key metrics to monitor:
@@ -306,7 +306,7 @@ Key metrics to monitor:
   - Queue depth for async workloads
 ```
 
-### Step 10: Hybrid Kubernetes (EKS Anywhere)
+### Step 10: Hybrid [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (EKS Anywhere)
 ```yaml
 # EKS Anywhere cluster on-prem
 apiVersion: anywhere.eks.amazonaws.com/v1alpha1
@@ -329,17 +329,17 @@ spec:
   managementCluster:
     name: hybrid-cluster
 ---
-# GitOps sync to cloud
+# [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) sync to cloud
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hybrid-apps
 spec:
   source:
-    repoURL: https://github.com/org/hybrid-gitops
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/hybrid-[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)
     path: environments/production
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).default.svc
   syncPolicy:
     automated:
       prune: true
@@ -390,7 +390,7 @@ Optimization strategies:
 - Never expose on-prem services to cloud without firewall inspection.
 - Use private IPs for all hybrid connectivity — avoid public internet.
 - Implement network segmentation: separate VRF per environment.
-- Monitor and audit all cross-environment access with VPC Flow Logs.
+- Monitor and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all cross-environment access with VPC Flow Logs.
 - Rotate VPN pre-shared keys and API tokens regularly.
 
 ## Anti-Patterns
@@ -434,20 +434,20 @@ Optimization strategies:
   - references/vpn-direct-connect.md — VPN vs Direct Connect — Decision Guide
   - ../../../Global_References/identity-federation.md — Identity Federation Patterns
   - references/hybrid-storage.md — Hybrid Storage Patterns
-  - references/disaster-recovery-hybrid.md — Hybrid DR Strategies
+  - references/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-hybrid.md — Hybrid DR Strategies
   - references/repatriation.md — Cloud Repatriation Guide
-  - references/hybrid-kubernetes.md — Hybrid Kubernetes with EKS Anywhere
+  - references/hybrid-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md — Hybrid [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) with EKS Anywhere
 ## Handoff
 - `devops-aws` for native AWS services integration.
-- `devops-azure` for Azure Arc and ExpressRoute depth.
-- `devops-gcp` for Anthos and GCP interconnect.
-- `devops-datacenter` for on-prem DC alongside hybrid.
-- `enterprise-high-availability` for HA/DR across environments.
-- `devops-network-infrastructure` for BGP and connectivity deep-dive.
+- `[devops-azure](../azure/SKILL.md)` for Azure Arc and ExpressRoute depth.
+- `[devops-gcp](../gcp/SKILL.md)` for Anthos and GCP interconnect.
+- `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for on-prem DC alongside hybrid.
+- `[enterprise-high-availability](../../Observability_and_SecOps/high-availability/SKILL.md)` for HA/DR across environments.
+- `[devops-network-infrastructure](../../../Software_Engineering_and_Other/Miscellaneous/network-infrastructure/SKILL.md)` for BGP and connectivity deep-dive.
 
 ## Implementation Patterns
 
-### Terraform: Multi-cloud VPN Tunnel (AWS ↔ On-prem)
+### Terraform: [Multi-cloud](../multi-cloud/SKILL.md) VPN Tunnel (AWS ↔ On-prem)
 
 ```hcl
 resource "aws_vpn_connection" "hybrid_tunnel" {
@@ -472,7 +472,7 @@ resource "aws_ec2_transit_gateway" "main" {
 }
 ```
 
-### YAML: Azure Arc-enabled Kubernetes Cluster
+### YAML: Azure Arc-enabled [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Cluster
 
 ```yaml
 apiVersion: arc.azure.com/v1
@@ -491,7 +491,7 @@ spec:
 apiVersion: arc.azure.com/v1
 kind: Extension
 metadata:
-  name: monitoring
+  name: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 spec:
   clusterName: on-prem-k8s
   extensionType: microsoft.azuremonitor.containers
@@ -537,16 +537,16 @@ sync_dns_zones() {
 - Establish **dedicated connectivity** (AWS Direct Connect, Azure ExpressRoute, GCP Interconnect) for reliable hybrid networking
 - Use **shared DNS resolution** across environments with Route53 Resolver or Azure DNS Private Resolver
 - Implement **centralized identity** (Azure AD / Okta) with federation to on-prem AD for consistent auth
-- Deploy **hybrid Kubernetes** (EKS Anywhere, AKS on HCI, GKE on-prem) for consistent container orchestration
-- Monitor **circuit health** from both sides with BGP session monitoring and synthetic probes
-- Use **cloud-agnostic IaC** (Terraform, Pulumi) with provider abstraction for multi-cloud portability
+- Deploy **hybrid [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)** (EKS Anywhere, AKS on HCI, GKE on-prem) for consistent container orchestration
+- Monitor **circuit health** from both sides with BGP session [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and synthetic probes
+- Use **cloud-agnostic IaC** (Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md)) with provider abstraction for [multi-cloud](../multi-cloud/SKILL.md) portability
 - Implement **failover** with Route53 ARC (Application Recovery Controller) or Azure Traffic Manager
 
 ## Anti-Patterns
 
 - Assuming **cloud is always cheaper** — repatriate steady-state workloads to on-prem when cost analysis favors it
-- Using **different IaC tools** for on-prem and cloud — Terraform/Pulumi should manage both uniformly
-- Ignoring **latency** between sites — chatty microservices across WAN links degrade performance
+- Using **different IaC tools** for on-prem and cloud — Terraform/[Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md) should manage both uniformly
+- Ignoring **latency** between sites — chatty [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) across WAN links degrade performance
 - Managing **separate identity stores** — federate everything to a single IdP
 - Treating **hybrid as temporary** — hybrid is a long-term architecture, plan for it
 - Skipping **cost governance** — egress charges and dual-running resources balloon budgets
@@ -566,9 +566,9 @@ sync_dns_zones() {
 
 - Encrypt **all traffic** between sites with IPsec VPN or MACsec for dedicated connections
 - Use **PrivateLink / VPC Endpoints** for cloud services — never traverse public internet
-- Implement **zero-trust** for hybrid: every cross-site call must authenticate and authorize
+- Implement **[zero-trust](../../../Security/zero-trust/SKILL.md)** for hybrid: every cross-site call must authenticate and authorize
 - Harden **VPN appliances** with certificate-based auth instead of pre-shared keys
-- Centralize **audit logging** from all environments into a single SIEM (Splunk, Sentinel)
+- Centralize **[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging** from all environments into a single SIEM (Splunk, Sentinel)
 - Use **SCPs / Azure Policy** to enforce hybrid connectivity standards across cloud accounts
 - Rotate **VPN pre-shared keys** quarterly and revoke compromised customer gateways immediately
 ## Implementation Patterns
@@ -623,7 +623,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -637,7 +637,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -653,12 +653,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -667,7 +667,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -675,13 +675,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -690,8 +690,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

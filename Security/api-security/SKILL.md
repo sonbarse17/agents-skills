@@ -21,7 +21,7 @@ OWASP API Top 10 threat modeling, authentication
 (JWT, OAuth2, API keys), rate limiting (token bucket,
 sliding window, per-user/per-endpoint), input validation
 (JSON schema, allowlist), WAF rules (ModSecurity CRS),
-request signing, and audit logging.
+request signing, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 
 ## Agent Protocol
 
@@ -31,7 +31,7 @@ Exact user phrases: "API security", "OWASP API Top 10",
 "API gateway", "WAF", "API abuse", "API threat modeling",
 "API protection", "API authentication", "API authorization",
 "API keys", "OAuth2 API", "API gateway config",
-"request signing", "API audit", "GraphQL security".
+"request signing", "API [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "GraphQL security".
 
 ### Input Context
 Before activating, verify:
@@ -44,7 +44,7 @@ Before activating, verify:
 
 ### Output Artifact
 API security checklist with threat model,
-protection configuration, monitoring setup.
+protection configuration, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup.
 
 ### Response Format
 ```yaml
@@ -52,7 +52,7 @@ protection configuration, monitoring setup.
 # Rate limit policy
 # WAF rules
 # Auth middleware config
-# Audit log schema
+# [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log schema
 ```
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
@@ -65,7 +65,7 @@ Compress output — why use many token when few do trick.
 - [ ] Rate limiting policy with tiered quotas
 - [ ] Input validation rules for all endpoints
 - [ ] WAF rules for API-specific attacks
-- [ ] Audit logging and abuse monitoring configured
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging and abuse [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configured
 - [ ] Request signing for critical operations
 
 ### Max Response Length
@@ -100,7 +100,7 @@ Use DTOs, whitelist updatable fields only.
 
 API7: Security misconfiguration.
 CORS misconfigured, debug endpoints exposed.
-Audit configs, disable debug in production.
+[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) configs, disable debug in production.
 
 API8: Injection.
 SQL, NoSQL, command injection.
@@ -150,7 +150,7 @@ Service layer: check resource ownership.
 `userId == resource.ownerId`.
 Validate actions against role matrix.
 
-Policy-as-code: OPA for cross-cutting authorization.
+[Policy-as-code](../policy-as-code/SKILL.md): OPA for cross-cutting authorization.
 Organization-level and multi-resource policies.
 
 Test: every role against every endpoint in CI.
@@ -216,8 +216,8 @@ Prevents replay attacks, tampering, unauthorized source.
 Middleware at gateway or service mesh sidecar.
 Reference pattern: AWS Signature V4.
 
-### Step 7: Audit Logging and Abuse Monitoring
-Audit events:
+### Step 7: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging and Abuse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) events:
 Auth decisions (success, failure, reason).
 Privilege escalation.
 Sensitive data access.
@@ -268,8 +268,8 @@ function authenticateJWT(req, res, next) {
 }
 ```
 
-### Python FastAPI Rate Limiting with SlowAPI
-```python
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) FastAPI Rate Limiting with SlowAPI
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 
@@ -307,8 +307,8 @@ func jwtMiddleware(next http.Handler) http.Handler {
 }
 ```
 
-### Python Input Validation with Pydantic
-```python
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Input Validation with Pydantic
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 
@@ -352,7 +352,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Basic auth or API keys
 - No rate limiting
 - No input validation
-- No audit logging
+- No [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Default CORS policy
 
 ### Level 2: Standard
@@ -368,10 +368,10 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Rate limiting per user + per endpoint (distributed)
 - WAF with API-specific rules
 - Request signing for critical operations
-- Audit logging with alerting
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 
 ### Level 4: Optimized
-- Zero-trust API architecture
+- [Zero-trust](../zero-trust/SKILL.md) API architecture
 - Behavioral anomaly detection
 - Adaptive rate limiting (ML-based)
 - API security mesh (service mesh + WAF + API gateway)
@@ -387,7 +387,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Verify API gateway health
 
 ### Weekly Operations
-- Review audit logs for suspicious access patterns
+- Review [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for suspicious access patterns
 - Analyze rate limit hit distribution by consumer tier
 - Tune WAF rules for false positives
 - Review new API endpoints added in last week
@@ -399,20 +399,20 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Penetration test of critical API endpoints
 - API inventory reconciliation (discover shadow APIs)
 
-### Incident Response
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 1. Detect: rate limit breach, auth failure spike, WAF block surge, anomalous payload patterns
 2. Assess: identify affected endpoints, consumer, data potentially exposed
 3. Contain: revoke compromised keys, block IP/subnet, enable maintenance mode for affected endpoints
-4. Investigate: audit logs, WAF logs, gateway access logs
+4. Investigate: [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, WAF logs, gateway access logs
 5. Remediate: patch vulnerability, update WAF rules, rotate all affected credentials
-6. Post-mortem: write incident report, update threat model, improve detection rules
+6. Post-mortem: write [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report, update threat model, improve detection rules
 
 ## Rules
 - No hardcoded secrets, API keys, or tokens in code
 - JWT validated on every request — signature, expiry, issuer
 - Rate limits enforced at gateway, not application
 - Input validation rejects early, fails securely
-- Audit logs include every auth decision
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs include every auth decision
 - Default deny for endpoints unless explicitly permitted
 - API versioning: never remove old versions without migration
 - Sensitive data filtered from responses by default
@@ -429,8 +429,8 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
   - ../../../Global_References/graphql-security.md — GraphQL Security
   - ../../../Global_References/oauth2-deep-dive.md — OAuth2 Deep Dive
 ## Handoff
-`security-sast-dast` for API-specific DAST scanning
-`backend-api-design` for endpoint design and versioning
+`[security-sast-dast](../sast-dast/SKILL.md)` for API-specific DAST scanning
+`[backend-api-design](../../Software_Engineering_and_Other/Backend/api-design/SKILL.md)` for endpoint design and versioning
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -483,7 +483,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -497,7 +497,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -513,12 +513,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -527,7 +527,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -535,13 +535,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -550,8 +550,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

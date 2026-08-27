@@ -31,8 +31,8 @@ rollout to 100% of traffic) actually live.
 
 - The user is choosing a serving pattern (online/real-time, batch, or
   streaming) for a model or deciding between them for a given use case.
-- The user needs to set up or tune autoscaling for a model inference
-  endpoint (Kubernetes HPA, KServe, SageMaker endpoints, Vertex AI
+- The user needs to set up or tune [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for a model inference
+  endpoint ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
   endpoints, or a custom autoscaler).
 - The user is trying to reduce inference latency (cold start, batching,
   quantization, hardware choice) or inference cost.
@@ -46,18 +46,18 @@ rollout to 100% of traffic) actually live.
 ## Prerequisites & environment
 
 - A packaged, versioned model artifact ready to serve (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 - A serving runtime: TorchServe, Triton Inference Server, KServe, BentoML,
   a cloud-managed endpoint (SageMaker, Vertex AI, Azure ML), or, for LLMs,
   vLLM/TGI (Text Generation Inference) for high-throughput batched
   inference.
-- A container/orchestration platform (Kubernetes ≥ 1.25 typical for
+- A container/orchestration platform ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.25 typical for
   self-managed serving) or a managed inference service.
 - Defined latency and throughput SLOs for the use case (e.g. p95 ≤ 200 ms
   for a synchronous user-facing call) before choosing hardware/batching
   strategy — sizing decisions are meaningless without a target.
-- Monitoring already wired to track latency, error rate, and (per
-  [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md))
+- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) already wired to track latency, error rate, and (per
+  [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
   prediction quality once deployed.
 - GPU or CPU inventory/quota appropriate to the model size — e.g. a 7B
   parameter LLM in fp16 needs roughly 14+ GB of GPU memory just for weights,
@@ -73,7 +73,7 @@ rollout to 100% of traffic) actually live.
    - **Batch**: appropriate when predictions are needed on a schedule over a
      large dataset with no per-request latency requirement (e.g. nightly
      churn scoring for the whole customer base) — much cheaper per
-     prediction since it can run on spot/preemptible capacity and maximize
+     prediction since it can run on spot/preemptible [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and maximize
      throughput via large batch sizes.
    - **Streaming**: appropriate when predictions need to happen continuously
      on an event stream (e.g. real-time fraud scoring on a transaction
@@ -81,11 +81,11 @@ rollout to 100% of traffic) actually live.
 2. **Right-size the serving hardware to the model and SLO**, validated with
    a load test on realistic input shapes — don't extrapolate from a single
    warm request.
-3. **Configure autoscaling on a signal that reflects actual load**, not just
+3. **Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on a signal that reflects actual load**, not just
    CPU utilization for GPU-bound or I/O-bound inference workloads. Example
-   Kubernetes HPA using a custom metric (requests-in-flight or queue depth):
+   [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
    ```yaml
-   apiVersion: autoscaling/v2
+   apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
    kind: HorizontalPodAutoscaler
    metadata:
      name: fraud-scorer-hpa
@@ -160,13 +160,13 @@ rollout to 100% of traffic) actually live.
   version change, reserving instant blue/green cutover for cases where
   canarying isn't feasible (e.g. a hard schema break).
 - Separate the serving runtime's health (process up, responding) from model
-  health (predictions still good) in monitoring — a healthy process serving
+  health (predictions still good) in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — a healthy process serving
   degraded predictions is the more dangerous failure mode.
 - Quantize or distill where quality tolerates it, particularly for LLMs —
   meaningful latency/cost reductions are often available at acceptable
   quality cost, but validate the quality impact on your actual eval set
   before committing, not just on published leaderboard numbers.
-- Keep serving configuration (replica counts, autoscaling thresholds,
+- Keep serving configuration (replica counts, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) thresholds,
   hardware type) in version control alongside the model version it's tuned
   for — these are coupled and should change together deliberately, not
   drift independently.
@@ -193,7 +193,7 @@ rollout to 100% of traffic) actually live.
   serving; reserve scale-to-zero for genuinely latency-tolerant batch/async
   workloads.
 
-- **Symptom:** Autoscaling is configured on CPU utilization for a GPU-bound
+- **Symptom:** [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) is configured on CPU utilization for a GPU-bound
   model server, so the autoscaler never triggers even though GPU is
   saturated and request queues are growing, causing latency to degrade
   silently under load.
@@ -214,7 +214,7 @@ rollout to 100% of traffic) actually live.
 ## Worked example
 
 Rolling out `fraud-scorer` version 14 (from
-[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md))
+[model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md))
 to replace version 13 in production.
 
 1. **SLO:** p95 latency ≤ 50 ms per scoring request, sustained throughput up
@@ -223,7 +223,7 @@ to replace version 13 in production.
    the target hardware (2 vCPU / 4 GB per replica), confirming p95 latency
    of 38 ms and identifying that 6 replicas comfortably cover peak load with
    headroom.
-3. **Autoscaling:** HPA configured with `minReplicas: 4` (covers steady-state
+3. **[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):** HPA configured with `minReplicas: 4` (covers steady-state
    traffic with no cold start), `maxReplicas: 20`, scaling on
    `inference_requests_in_flight`.
 4. **Shadow phase (24h):** version 14 receives a mirrored copy of production
@@ -236,11 +236,11 @@ to replace version 13 in production.
 6. **Post-cutover:** version 13's deployment is scaled down to a single
    standby replica (not deleted) for a two-week soak period, giving instant
    rollback capability while version 14 is monitored in production (see
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md))
+   [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
    before version 13's resources are finally reclaimed.
 
 ## Cross-references
 
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
-- [llmops-fine-tuning-and-deployment](../llmops-fine-tuning-and-deployment/SKILL.md)
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [llmops-fine-tuning-and-deployment](../[llmops-fine-tuning-and-deployment](../llmops-fine-tuning-and-deployment/SKILL.md)/SKILL.md)

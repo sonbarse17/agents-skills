@@ -13,22 +13,22 @@ metadata:
   version: 0.1.0
 ---
 
-# Create Serverless Project
+# Create [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project
 
-Create Elastic Cloud Serverless projects using the Serverless REST API. Use the `cloud-manage-project` skill for day-2
+Create Elastic Cloud [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects using the [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) REST API. Use the `[cloud-manage-project](../manage-project/SKILL.md)` skill for day-2
 operations like listing, updating, or deleting projects.
 
 ## Prerequisites and permissions
 
-- Ensure `EC_API_KEY` is configured. If not, run `cloud-setup` skill first.
+- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first.
 - Creating projects requires a Cloud API key with **Admin** or **Organization owner** role.
 - This skill does not perform a separate role pre-check. Attempt the requested operation and let the API enforce
   authorization. If the API returns an authorization error (for example, `403 Forbidden`), stop and ask the user to
   verify the provided API key permissions.
 
-### Manual setup fallback (when `cloud-setup` is unavailable)
+### Manual setup fallback (when `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is unavailable)
 
-If this skill is installed standalone and `cloud-setup` is not available, instruct the user to configure Cloud
+If this skill is installed standalone and `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is not available, instruct the user to configure Cloud
 environment variables manually before running commands. Never ask the user to paste API keys in chat.
 
 | Variable      | Required | Description                                                    |
@@ -69,14 +69,14 @@ an agent.
 - **Confirm before creating.** Always present the project configuration to the user and ask for confirmation before
   running the creation script.
 - **Admin credentials are for API key creation only.** The script saves the `admin` password to `.elastic-credentials`
-  for bootstrapping a scoped API key. The `admin` user has full privileges and cannot be modified in serverless. Never
+  for bootstrapping a scoped API key. The `admin` user has full privileges and cannot be modified in [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Never
   use admin credentials for direct Elasticsearch operations (querying, indexing, etc.) — always create a scoped API key
   first (see Step 8). The `load-credentials` command excludes admin credentials by default — use `--include-admin`
   **only** during Step 7/8, then reload without it once the API key is created. Never read or display the contents of
   `.elastic-credentials` in chat.
 - **Recover lost credentials.** If the script fails to write `.elastic-credentials` (disk full, permissions, etc.), the
   save may be incomplete. Check `.elastic-credentials` for the password first. If missing, use the
-  `cloud-manage-project` skill's `reset-credentials` command to generate a new password.
+  `[cloud-manage-project](../manage-project/SKILL.md)` skill's `reset-credentials` command to generate a new password.
 - **Region is permanent.** A project's region cannot be changed after creation.
 - **Prefer automatic readiness checks.** Pass `--wait` to the creation script so it polls until the phase changes from
   `initializing` to `initialized`. Only fall back to manually polling the status endpoint if `--wait` is unavailable.
@@ -86,7 +86,7 @@ an agent.
 | Type            | Description                               | Key endpoints                    |
 | --------------- | ----------------------------------------- | -------------------------------- |
 | `elasticsearch` | Search, analytics, and vector workloads   | Elasticsearch, Kibana            |
-| `observability` | Logs, metrics, traces, and APM            | Elasticsearch, Kibana, APM, OTLP |
+| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | Logs, metrics, traces, and APM            | Elasticsearch, Kibana, APM, OTLP |
 | `security`      | SIEM, endpoint protection, cloud security | Elasticsearch, Kibana, OTLP      |
 
 ### Project type inference
@@ -96,23 +96,23 @@ Map the user's request to the correct `--type` value:
 | User says                                                   | `--type`        |
 | ----------------------------------------------------------- | --------------- |
 | "search project", "elasticsearch project", vector search    | `elasticsearch` |
-| "observability project", "o11y", logs, metrics, traces, APM | `observability` |
+| "[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` |
 | "security project", "SIEM", detections, endpoint protection | `security`      |
 
 Do **not** silently default to any type. If the user does not specify a type, infer it from the conversation context
-(for example, discussing log ingestion suggests `observability`, discussing detections or SIEM suggests `security`,
+(for example, discussing log ingestion suggests `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, discussing detections or SIEM suggests `security`,
 discussing search or vector workloads suggests `elasticsearch`). Always present the inferred type to the user and ask
 for confirmation before proceeding. If context is insufficient to infer a type, ask the user to choose.
 
 ### Product tiers
 
-Observability and security projects support a `--product-tier` flag. Default to `complete` unless the user explicitly
+[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects support a `--product-tier` flag. Default to `complete` unless the user explicitly
 requests a different tier.
 
 | Project type    | Tier              | Description                                           |
 | --------------- | ----------------- | ----------------------------------------------------- |
-| `observability` | `complete`        | Full observability suite (logs, metrics, traces, APM) |
-| `observability` | `logs_essentials` | Log management only                                   |
+| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | `complete`        | Full [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) suite (logs, metrics, traces, APM) |
+| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | `logs_essentials` | Log management only                                   |
 | `security`      | `complete`        | Full security suite (SIEM, cloud, endpoint)           |
 | `security`      | `essentials`      | Core SIEM only                                        |
 
@@ -153,13 +153,13 @@ Project Creation:
 echo "${EC_API_KEY:?Not set}"
 ```
 
-If `EC_API_KEY` is not set, run the `cloud-setup` skill first to configure authentication and defaults.
+If `EC_API_KEY` is not set, run the `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first to configure authentication and defaults.
 
 ### Step 2: Present summary and confirm with user
 
 Before presenting the summary, ensure the project type has been explicitly confirmed by the user. If no type was
 specified, infer one from the conversation context and propose it. If the context is ambiguous, ask the user to choose
-from `elasticsearch`, `observability`, or `security`.
+from `elasticsearch`, `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, or `security`.
 
 Always show a confirmation summary before creating. Include different fields depending on project type:
 
@@ -172,11 +172,11 @@ Project Summary:
   Region:        gcp-us-central1
 ```
 
-**Observability project:**
+**[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project:**
 
 ```text
 Project Summary:
-  Type:          observability
+  Type:          [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
   Name:          my-project
   Region:        gcp-us-central1
   Product tier:  complete
@@ -217,7 +217,7 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 Always pass `--optimized-for general_purpose` for Elasticsearch projects. Only use `vector` if the user explicitly
 requests it.
 
-For observability and security projects, pass `--product-tier complete` unless the user explicitly requests a different
+For [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects, pass `--product-tier complete` unless the user explicitly requests a different
 tier.
 
 Always pass `--wait` so the script automatically polls until the project is ready.
@@ -237,7 +237,7 @@ Do **not** read, cat, or display the contents of `.elastic-credentials` in chat.
 
 **If saving fails**, the script prints an error to stderr. Check whether `.elastic-credentials` exists and contains a
 password (a partial write is possible). If the password is missing or the file does not exist, immediately run the
-`cloud-manage-project` skill's `reset-credentials` command to generate a new password.
+`[cloud-manage-project](../manage-project/SKILL.md)` skill's `reset-credentials` command to generate a new password.
 
 The creation response also contains:
 
@@ -278,10 +278,10 @@ admin `ELASTICSEARCH_USERNAME`/`ELASTICSEARCH_PASSWORD` needed to bootstrap an A
 
 ### Step 8: Create a scoped API key
 
-The `admin` user has full privileges and cannot be modified in serverless projects. **Do not proceed with Elasticsearch
+The `admin` user has full privileges and cannot be modified in [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects. **Do not proceed with Elasticsearch
 operations using admin credentials.** Create a scoped Elasticsearch API key with only the permissions the user needs.
 
-If the `elasticsearch-authn` skill is available, use it for API key creation — it covers the full lifecycle (create,
+If the `[elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)` skill is available, use it for API key creation — it covers the full lifecycle (create,
 grant, invalidate, query) and handles scoping privileges correctly. If the skill is not installed, ask the user to
 either install it or create the API key manually through **Kibana > Stack Management > API keys**. After creation, save
 the API key to `.elastic-credentials` using the project-specific header format (see `manage-project` skill's "Credential
@@ -305,11 +305,11 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
   --wait
 ```
 
-### Create an observability project
+### Create an [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project
 
 ```bash
 python3 skills/cloud/create-project/scripts/create-project.py create \
-  --type observability \
+  --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) \
   --name "prod-o11y" \
   --region aws-eu-west-1 \
   --product-tier complete \
@@ -329,15 +329,15 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 
 ## Guidelines
 
-- Run the `cloud-setup` skill first if `EC_API_KEY` is not set.
+- Run the `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
 - Always confirm the project configuration with the user before creating.
 - Never display passwords or API keys in chat. Direct the user to `.elastic-credentials`.
 - Never silently default to a project type. Infer from context and confirm with the user.
 - Default to `general_purpose` optimization. Only use `vector` if the user explicitly requests it.
-- Default to `complete` product tier for observability and security projects. Only use `logs_essentials` or `essentials`
+- Default to `complete` product tier for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects. Only use `logs_essentials` or `essentials`
   if the user explicitly requests it.
 - Always pass `--wait` so the script polls until the project is ready.
-- If credential saving fails, immediately reset credentials using the `cloud-manage-project` skill.
+- If credential saving fails, immediately reset credentials using the `[cloud-manage-project](../manage-project/SKILL.md)` skill.
 - After creation, recommend creating a scoped API key instead of relying on admin credentials.
 - Region cannot be changed after creation — confirm the choice before proceeding.
 
@@ -345,18 +345,18 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 
 | Command        | Description                       |
 | -------------- | --------------------------------- |
-| `create`       | Create a new serverless project   |
+| `create`       | Create a new [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project   |
 | `status`       | Get project initialization status |
 | `list-regions` | List available regions            |
 
 | Flag              | Commands       | Description                                                |
 | ----------------- | -------------- | ---------------------------------------------------------- |
-| `--type`          | create, status | Project type: `elasticsearch`, `observability`, `security` |
+| `--type`          | create, status | Project type: `elasticsearch`, `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `security` |
 | `--name`          | create         | Project name (required)                                    |
 | `--region`        | create         | Region ID (default: `gcp-us-central1`)                     |
 | `--id`            | status         | Project ID                                                 |
 | `--optimized-for` | create         | Elasticsearch subtype: `general_purpose` or `vector`       |
-| `--product-tier`  | create         | Observability/security tier (see "Product tiers" section)  |
+| `--product-tier`  | create         | [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/security tier (see "Product tiers" section)  |
 | `--wait`          | create         | Poll until project is initialized before exiting           |
 
 ## Environment variables
@@ -367,8 +367,8 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 | `EC_BASE_URL`           | No       | Cloud API base URL (default: `https://api.elastic-cloud.com`)            |
 | `ELASTICSEARCH_URL`     | Output   | Elasticsearch URL (loaded via `load-credentials` after creation)         |
 | `KIBANA_URL`            | Output   | Kibana URL (loaded via `load-credentials` after creation)                |
-| `APM_URL`               | Output   | APM endpoint (observability projects only)                               |
-| `INGEST_URL`            | Output   | OTLP ingest endpoint (observability and security projects)               |
+| `APM_URL`               | Output   | APM endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) projects only)                               |
+| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects)               |
 | `ELASTICSEARCH_API_KEY` | Output   | Elasticsearch API key (created in Step 8, loaded via `load-credentials`) |
 
 ## Additional resources

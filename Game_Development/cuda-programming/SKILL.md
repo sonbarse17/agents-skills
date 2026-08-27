@@ -13,7 +13,7 @@ Shared memory is organized into 32 banks, allowing simultaneous access by all 32
 ## PTX Assembly
 Parallel Thread Execution (PTX) is NVIDIA's intermediate instruction set architecture. It is Just-In-Time (JIT) compiled to SASS (Shader Assembly) by the device driver. Inspecting PTX or SASS is crucial for understanding register spillage (when registers exceed the limit and spill to slow local memory) and instruction-level parallelism. 
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph SMStreamingMultiprocessor ["Streaming Multiprocessor<br><br><br>"]

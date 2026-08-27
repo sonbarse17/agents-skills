@@ -27,7 +27,7 @@ This means: every public behavior — including undocumented quirks, error messa
 
 - **Be intentional about what you expose.** Every observable behavior is a potential commitment.
 - **Don't leak implementation details.** If users can observe it, they will depend on it.
-- **Plan for deprecation at design time.** See `deprecation-and-migration` for how to safely remove things users depend on.
+- **Plan for deprecation at design time.** See `[deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md)` for how to safely remove things users depend on.
 - **Tests are not enough.** Even with perfect contract tests, Hyrum's Law means "safe" changes can break real users who depend on undocumented behavior.
 
 ### The One-Version Rule
@@ -38,7 +38,7 @@ Avoid forcing consumers to choose between multiple versions of the same dependen
 
 Define the interface before implementing it. The contract is the spec — implementation follows.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Define the contract first
 interface TaskAPI {
   // Creates a task and returns the created task with server-generated fields
@@ -62,7 +62,7 @@ interface TaskAPI {
 
 Pick one error strategy and use it everywhere:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // REST: HTTP status codes + structured error body
 // Every error response follows the same shape
 interface APIError {
@@ -89,7 +89,7 @@ interface APIError {
 
 Trust internal code. Validate at system edges where external input enters:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Validate at the API boundary
 app.post('/api/tasks', async (req, res) => {
   const result = CreateTaskSchema.safeParse(req.body);
@@ -126,7 +126,7 @@ Where validation does NOT belong:
 
 Extend interfaces without breaking existing consumers:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Good: Add optional fields
 interface CreateTaskInput {
   title: string;
@@ -159,7 +159,7 @@ Accepting an `Idempotency-Key` is the contract. Honouring it is the implementati
 
 **Derive the key from the intent, not the attempt.** The key must be stable across retries of one intent and different across distinct intents:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 crypto.randomUUID()                    // ✗ new key per attempt — every retry is a new charge
 `${userId}:${amount}`                  // ✗ two legitimate $50 charges collapse into one
 `${orderId}:${Date.now()}`             // ✗ a timestamp is randomUUID() wearing a hat
@@ -172,7 +172,7 @@ The key comes from the client or the initiating event — never from the layer d
 
 **Claim atomically. A check followed by an act is a race:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // ✗ TOCTOU: two concurrent retries both read "not seen", both charge
 if (!(await db.exists(key))) {
   await chargeCard(amount);
@@ -194,7 +194,7 @@ The unique constraint *is* the mechanism. A store that cannot enforce uniqueness
 
 **Guard the payload.** Same key with a different body is a client bug, and must fail loudly rather than serving the first response to a second request:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 if (existing.requestHash !== hash(req.body)) {
   return res.status(422).json({ error: 'idempotency key reused with a different payload' });
 }
@@ -233,7 +233,7 @@ POST   /api/tasks/:id/comments → Add a comment to a task
 
 Paginate list endpoints:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Request
 GET /api/tasks?page=1&pageSize=20&sortBy=createdAt&sortOrder=desc
 
@@ -261,17 +261,17 @@ GET /api/tasks?status=in_progress&assignee=user123&createdAfter=2025-01-01
 
 Accept partial objects — only update what's provided:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Only title changes, everything else preserved
 PATCH /api/tasks/123
 { "title": "Updated title" }
 ```
 
-## TypeScript Interface Patterns
+## [TypeScript](../../Frontend/typescript/SKILL.md) Interface Patterns
 
 ### Use Discriminated Unions for Variants
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Good: Each variant is explicit
 type TaskStatus =
   | { type: 'pending' }
@@ -292,7 +292,7 @@ function getStatusLabel(status: TaskStatus): string {
 
 ### Input/Output Separation
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Input: what the caller provides
 interface CreateTaskInput {
   title: string;
@@ -312,7 +312,7 @@ interface Task {
 
 ### Use Branded Types for IDs
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type TaskId = string & { readonly __brand: 'TaskId' };
 type UserId = string & { readonly __brand: 'UserId' };
 

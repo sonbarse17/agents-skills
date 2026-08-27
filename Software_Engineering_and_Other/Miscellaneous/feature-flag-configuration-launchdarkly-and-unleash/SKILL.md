@@ -56,7 +56,7 @@ the initial `if (flag.isEnabled())` wiring.
 
 - A flagging platform account/instance: LaunchDarkly (SaaS, requires an
   SDK key per environment and a project/environment hierarchy) or Unleash
-  (open-source; self-hosted via Docker/Helm, or Unleash's own hosted
+  (open-source; self-hosted via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/Helm, or Unleash's own hosted
   offering — requires a running Unleash server plus a client/frontend API
   token).
 - An SDK for each language/runtime that evaluates flags — both platforms
@@ -71,7 +71,7 @@ the initial `if (flag.isEnabled())` wiring.
   actual failure path (not just at startup/initialization), and the
   flagging platform's own availability/latency must not become a new
   single point of failure — confirm the SDK's local-evaluation/fallback
-  behavior (see pitfalls) before relying on a flag as an incident lever.
+  behavior (see pitfalls) before relying on a flag as an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) lever.
 - Read access to whatever holds flag *definitions* as code if flags are
   managed via Terraform/config-as-code (LaunchDarkly's Terraform provider,
   Unleash's API-driven config) rather than only through a web console.
@@ -143,7 +143,7 @@ the initial `if (flag.isEnabled())` wiring.
    Start internal-only (dogfood), then 5-10% of real traffic, then
    ramp — watching error rate/latency at each step before increasing the
    percentage, the same staged-rollout discipline covered generically in
-   [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md),
+   [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md),
    here implemented at the application-logic layer instead of the
    infrastructure-routing layer.
 
@@ -168,7 +168,7 @@ the initial `if (flag.isEnabled())` wiring.
    unreliable.
 
 5. **Track flag debt as a first-class metric, not an afterthought.** Run
-   a periodic audit (scripted against the platform's API) for flags at
+   a periodic [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (scripted against the platform's API) for flags at
    100%/0% rollout for longer than a defined threshold (e.g. 30 days) with
    no experiment/ops tag:
    ```bash
@@ -202,7 +202,7 @@ the initial `if (flag.isEnabled())` wiring.
    LaunchDarkly's Terraform provider and Unleash's OpenAPI-driven admin
    API both allow flag creation/targeting rules to be defined
    declaratively and reviewed in a PR, the same review discipline as
-   [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)
+   [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../../DevOps_and_Cloud/Infrastructure_as_Code/[infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
    applies to infrastructure:
    ```hcl
    # LaunchDarkly Terraform provider
@@ -235,7 +235,7 @@ the initial `if (flag.isEnabled())` wiring.
   multivariate flags used as a substitute for config management add
   complexity without a corresponding operational win.
 - Alert on kill-switch flag state changes (a flag flipping off unexpectedly
-  in production is itself an incident signal worth a Slack/PagerDuty
+  in production is itself an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) signal worth a Slack/PagerDuty
   notification, not silent).
 - Keep local SDK evaluation (streaming/polling to a local cache) as the
   default rather than a remote evaluation call per request — a
@@ -248,7 +248,7 @@ the initial `if (flag.isEnabled())` wiring.
 
 ## Common pitfalls
 
-- **Symptom:** An incident kill-switch flag is flipped off, but the
+- **Symptom:** An [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) kill-switch flag is flipped off, but the
   service keeps behaving as if it's still on.
   **Fix:** The flag is likely checked once at process startup/cached
   in a long-lived variable rather than evaluated per-request (or the
@@ -260,7 +260,7 @@ the initial `if (flag.isEnabled())` wiring.
   still in the codebase, and three more flags have since been layered
   on top of the same code path, producing nested conditionals nobody can
   reason about.
-  **Fix:** This is flag debt — run the periodic stale-flag audit (step 5)
+  **Fix:** This is flag debt — run the periodic stale-flag [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (step 5)
   and treat "flag has been at a terminal value for N days" as an
   actionable backlog item with the same priority as other tech debt, not
   a someday task.
@@ -275,7 +275,7 @@ the initial `if (flag.isEnabled())` wiring.
   deliberately, not discovered in production.
 
 - **Symptom:** A flag's targeting rule change made in the platform's web
-  console during an incident isn't reflected anywhere in version control,
+  console during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) isn't reflected anywhere in version control,
   and nobody can explain a week later why the rule looks the way it does.
   **Fix:** For any flag whose targeting logic matters beyond a quick
   on/off flip, manage the definition via Terraform (LaunchDarkly) or a
@@ -355,14 +355,14 @@ async function chargeCustomer(order) {
 Rollout sequence: internal accounts only (via `internal` targeting
 rule) for one week -> 10% of external merchants for three days, watching
 the payment-success-rate dashboard at each step -> 50% -> 100%. Two weeks
-after reaching 100% with no incident, `release-new-payment-provider` is
+after reaching 100% with no [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), `release-new-payment-provider` is
 removed from code (only the `newProviderClient.charge` branch remains)
 and its Terraform resource deleted; `ops-disable-new-payment-provider`
 stays permanently as the team's ongoing kill switch for that integration.
 
 ## Cross-references
 
-- [gremlin-chaos-engineering-configuration](../gremlin-chaos-engineering-configuration/SKILL.md) — blast-radius scoping and halt conditions for deliberately injected failure, a close cousin of the kill-switch fail-safe design here.
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the same plan-reviewed, code-as-config discipline applied to flag definitions managed via the LaunchDarkly Terraform provider.
-- [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md) — infrastructure-layer progressive rollout that flag-based percentage rollout complements at the application-logic layer.
-- [emergency-hotfix-deployment-procedure](../../../devops/skills/emergency-hotfix-deployment-procedure/SKILL.md) — the redeploy-based mitigation path for incidents a kill-switch flag isn't already wired to cover.
+- [gremlin-[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-configuration](../[gremlin-[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/gremlin-[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-configuration/SKILL.md)/SKILL.md) — blast-radius scoping and halt conditions for deliberately injected failure, a close cousin of the kill-switch fail-safe design here.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../../DevOps_and_Cloud/Infrastructure_as_Code/[infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the same plan-reviewed, code-as-config discipline applied to flag definitions managed via the LaunchDarkly Terraform provider.
+- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — infrastructure-layer progressive rollout that flag-based percentage rollout complements at the application-logic layer.
+- [emergency-hotfix-deployment-procedure](../../../devops/skills/[emergency-hotfix-deployment-procedure](../../../DevOps_and_Cloud/CI_CD/emergency-hotfix-deployment-procedure/SKILL.md)/SKILL.md) — the redeploy-based mitigation path for incidents a kill-switch flag isn't already wired to cover.

@@ -20,16 +20,16 @@ Build a data quality framework covering quality dimensions
 (completeness, accuracy, timeliness, consistency, uniqueness,
 integrity), automated validation tests (Great Expectations
 expectations suites, data docs, checkpoints; dbt singular,
-generic, freshness tests), data observability (Soda, Monte Carlo,
+generic, freshness tests), data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (Soda, Monte Carlo,
 Elementary), data SLAs with escalation paths, and data contracts.
 
 ## Agent Protocol
 
 ### Trigger
 Exact user phrases: "data quality", "data validation",
-"data profiling", "Great Expectations", "dbt tests",
-"data observability", "data contract", "schema validation",
-"data quality check", "data testing", "data monitoring",
+"data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)", "Great Expectations", "dbt tests",
+"data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)", "data contract", "schema validation",
+"data quality check", "data testing", "data [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)",
 "quality dimensions", "data freshness", "data completeness",
 "Soda", "Monte Carlo", "data SLA", "data integrity".
 
@@ -38,13 +38,13 @@ Before activating, verify:
 - Data stack (warehouse, lake, streaming platform)
 - Transformation tool (dbt, Spark, custom SQL)
 - Data sources and producers (internal, external, partner)
-- Existing monitoring and alerting infrastructure
+- Existing [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) infrastructure
 - Critical data assets for business operations
 - Data consumers and their quality SLAs
 
 ### Output Artifact
 Data quality framework with dimension definitions,
-test configurations, monitoring setup, and contract templates.
+test configurations, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup, and contract templates.
 
 ### Response Format
 ```yaml
@@ -62,8 +62,8 @@ Compress output — why use many token when few do trick.
 ### Completion Criteria
 - [ ] Quality dimensions defined with measurement approach
 - [ ] Automated validation suite (Great Expectations + dbt)
-- [ ] Data profiling established for baseline expectations
-- [ ] Data observability with monitoring and alerting
+- [ ] Data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) established for baseline expectations
+- [ ] Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) with [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 - [ ] Data contracts between producers and consumers
 - [ ] Quality SLAs documented with escalation paths
 - [ ] Soda checks configured for in-storage validation
@@ -112,7 +112,7 @@ Expectation suites per critical table.
 Types: not_null, unique, between (range),
 match_regex (format), pair_equal (cross-column).
 
-Profiling: auto-generate from sample data.
+[Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md): auto-generate from sample data.
 Analyzes null rate, min/max, distinct values,
 value frequency, type inference.
 Review and adjust before production deployment.
@@ -244,7 +244,7 @@ missing percentage threshold, duplicate percentage equals 0,
 schema change detection.
 
 Execution: `soda scan -d warehouse -c config.yml checks.yml`.
-Soda Cloud for visualization and alerting.
+Soda Cloud for visualization and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 Open-source CLI for CI pipeline integration.
 
 Rules: every production table has checks before deployment.
@@ -323,7 +323,7 @@ Changes require both parties to approve.
 ### Step 5a: Automated Quality Gate CI Config
 
 ```yaml
-# .github/workflows/quality-gate.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/quality-gate.yml
 jobs:
   quality-gate:
     runs-on: ubuntu-latest
@@ -349,7 +349,7 @@ jobs:
 
 Gate blocks deploy on: critical GE expectation failure, dbt test failure on tag:critical, Soda scan finding invalid schema or referential integrity violation. Warnings pass through but log to quality dashboard.
 
-### Step 6: Observability (Monte Carlo / Elementary)
+### Step 6: [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (Monte Carlo / Elementary)
 Key metrics:
 Freshness: time since last successful load.
 Volume: row count versus expected range.
@@ -357,7 +357,7 @@ Schema: new, missing, or renamed columns.
 Quality: test pass rate over time.
 Lineage: data flow from source to consumption.
 
-Monte Carlo: SaaS end-to-end observability.
+Monte Carlo: SaaS end-to-end [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).
 ML-based anomaly detection, no manual config.
 
 Elementary: open-source, dbt-native.
@@ -375,7 +375,7 @@ Financial reporting, customer-facing data.
 PagerDuty notification.
 
 High: 99% quality score, 15-min alert SLA.
-Operational reports, team dashboards.
+Operational reports, team [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 Slack notification.
 
 Medium: 95% quality score, daily digest.
@@ -389,24 +389,24 @@ Test fails → team channel → on-call engineer → data quality lead.
 SLA breach documented in post-mortem with root cause.
 
 ### Step 8: Data Quality Ecosystem Tools
-re_data is an open-source framework that tracks row count, freshness, null rates, and distributions over time, building baselines for anomaly detection. Configure tables with YAML thresholds; auto-generates dbt tests from observed patterns. Use for automated baseline-driven quality monitoring without manual expectations.
+re_data is an open-source framework that tracks row count, freshness, null rates, and distributions over time, building baselines for anomaly detection. Configure tables with YAML thresholds; auto-generates dbt tests from observed patterns. Use for automated baseline-driven quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) without manual expectations.
 
-dbt-audit-helper is a dbt package that compares two relations row-by-row on specified columns, reporting differences, missing rows, and mismatches. Essential for validating refactored dbt models produce identical results to originals.
+dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper is a dbt package that compares two relations row-by-row on specified columns, reporting differences, missing rows, and mismatches. Essential for validating refactored dbt models produce identical results to originals.
 
-ODD (Open Data Discovery) is an open-source observability platform ingesting metadata from data sources, tracking quality scores over time, with catalog and lineage. Integrates with dbt, Airflow, and Great Expectations. Use for centralized quality metric aggregation.
+ODD (Open Data Discovery) is an open-source [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform ingesting metadata from data sources, tracking quality scores over time, with catalog and lineage. Integrates with dbt, Airflow, and Great Expectations. Use for centralized quality metric aggregation.
 
 data-diff is an open-source tool for diffing tables across databases using checksum-based algorithms. Reports added, removed, and changed rows. Supports cross-database comparison (Postgres vs Snowflake). Use for migration validation, ETL QA, and source-target reconciliation.
 
 ```bash
 # data-diff: compare tables across databases
-data-diff --dbs postgresql://user@pg-host/db snowflake://user@sf-account/db \
+data-diff --dbs [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://user@pg-host/db snowflake://user@sf-account/db \
   --table public.orders public.orders \
   --key order_id \
   --columns status,total_amount,updated_at
 ```
 
-### Step 9: Extended Observability Integration
-Combine re_data (baseline tracking) + dbt-audit-helper (migration validation) + ODD (centralized observability) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-audit-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS observability costs.
+### Step 9: Extended [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Integration
+Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper (migration validation) + ODD (centralized [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) costs.
 
 ## Rules
 - Every critical table has a data contract
@@ -423,10 +423,10 @@ Combine re_data (baseline tracking) + dbt-audit-helper (migration validation) + 
 ## References
   - ../../../Global_References/data-quality-automation.md — Data Quality Automation
   - ../../../Global_References/data-quality-ecosystem.md — Data Quality Ecosystem Tools
-  - ../../../Global_References/data-quality-incident-management.md — Data Quality Incident Management
+  - ../../../Global_References/data-quality-[incident-management](../../Software_Engineering_and_Other/Miscellaneous/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md).md — Data Quality [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management
   - ../../../Global_References/data-quality-management.md — Data Quality Management
   - ../../../Global_References/data-quality-metrics.md — Data Quality Metrics
-  - ../../../Global_References/data-quality-monitoring.md — Data Quality Monitoring
+  - ../../../Global_References/data-quality-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Data Quality [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/ge-advanced-patterns.md — Great Expectations Advanced Patterns
   - ../../../Global_References/quality-automation.md — Quality Automation
   - ../../../Global_References/quality-dimensions.md — Data Quality Dimensions
@@ -454,7 +454,7 @@ Data Quality Framework
 ## Implementation Patterns
 
 ### Great Expectations Checkpoint
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_quality/ge_checkpoint.py
 import great_expectations as ge
 from great_expectations.core.batch import RuntimeBatchRequest
@@ -525,7 +525,7 @@ models:
 | Testing everything equally | Noise, ignored alerts | Tier quality checks by criticality |
 | No baseline for thresholds | False positives from unfamiliar data | Profile data first, set dynamic thresholds |
 | Quality checks on production only | Bad data reaches consumers | Block at staging/Bronze layer |
-| No observability integration | Alerts with no context | Link to catalog, lineage, dashboard |
+| No [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) integration | Alerts with no context | Link to catalog, lineage, dashboard |
 | Ignoring data distribution drift | Static thresholds become obsolete | Periodic retraining of expectation baselines |
 
 ## Performance Optimization
@@ -542,9 +542,9 @@ models:
 - **PII in expectations**: Never reference raw PII values in expectation parameters; use hashed references.
 - **Alert channels**: Encrypt Slack webhook URLs; avoid including sensitive data values in alert messages.
 - **Schema validation**: Validate quality results schema before writing to warehouse; reject malformed records.
-- **Audit trail**: Log all quality configuration changes and threshold modifications for compliance.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all quality configuration changes and threshold modifications for compliance.
 
 ## Handoff
-`data-etl-pipeline` for embedding quality checks into pipeline
-`data-bi-tools` for displaying quality metadata on dashboards
+`[data-etl-pipeline](../etl-pipeline/SKILL.md)` for embedding quality checks into pipeline
+`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 

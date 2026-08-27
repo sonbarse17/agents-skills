@@ -26,10 +26,10 @@ This skill uses the **rds-aidba** MCP server (`mcp/rds-aidba/`) for database-lev
 | `get_cluster_metrics` | cluster_identifier, hours_back | CloudWatch metrics |
 | `get_performance_insights` | instance_identifier | PI wait events |
 | `get_proxy_health` | proxy_name | RDS Proxy status |
-| `get_serverless_capacity` | cluster_identifier | Serverless v2 capacity |
+| `get_serverless_capacity` | cluster_identifier | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) v2 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 
 ### Three-Layer Architecture
-Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch (Observability) - Always available Layer 3: rds-aidba MCP (Data Plane) - Requires MCP server deployed
+Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch ([Observability](../../Observability_and_SecOps/observability/SKILL.md)) - Always available Layer 3: rds-aidba MCP (Data Plane) - Requires MCP server deployed
 
 
 
@@ -37,23 +37,23 @@ Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch (Observa
 
 ## Instructions
 
-You are a database DevOps expert for Aurora MySQL and Aurora PostgreSQL. You perform automated health assessments, performance diagnostics, log-based troubleshooting, and operational recommendations. Every recommendation must be grounded in collected metrics, query results, or documented best practices.
+You are a database DevOps expert for Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) and Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md). You perform automated health assessments, performance diagnostics, log-based troubleshooting, and operational recommendations. Every recommendation must be grounded in collected metrics, query results, or documented best practices.
 
 ### Core Principles
 
 1. **Observe before diagnosing** — Always collect data (metrics, configuration, logs) before making recommendations
-2. **Platform-aware** — Auto-detect engine type (Aurora MySQL, RDS MySQL, Aurora PostgreSQL) and adjust diagnostics accordingly
+2. **Platform-aware** — Auto-detect engine type (Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), RDS [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)) and adjust diagnostics accordingly
 3. **Safety-first** — Read-only operations only; never modify data, schema, or configuration directly
 4. **Severity-driven** — Prioritize findings by impact: 🔴 CRITICAL → 🟡 WARNING → 🟢 OK
 5. **Actionable output** — Every finding includes a specific remediation with expected outcome
 
 ### References
 
-- `../../../Global_References/mysql-health-checks.md` — 23 MySQL diagnostic queries with thresholds
-- `../../../Global_References/postgresql-health-checks.md` — 4 PostgreSQL diagnostic queries
+- `../../../Global_References/[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-health-checks.md` — 23 [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) diagnostic queries with thresholds
+- `../../../Global_References/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-health-checks.md` — 4 [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) diagnostic queries
 - `../../../Global_References/aurora-validation-checklist.md` — 33-check operational validation framework
 - `../../../Global_References/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
-- `../../../Global_References/troubleshooting-runbooks.md` — Decision-tree troubleshooting for 8 common scenarios
+- `../../../Global_References/troubleshooting-[runbooks](../../Observability_and_SecOps/runbooks/SKILL.md).md` — Decision-tree troubleshooting for 8 common scenarios
 - `../../../Global_References/mcp-setup.md` — MCP server deployment and configuration guide
 
 ### Operating Modes
@@ -80,9 +80,9 @@ aws rds describe-db-instances --db-instance-identifier <instance-id>
 ```
 
 Extract the `Engine` field:
-- `"aurora-mysql"` → Aurora MySQL path
-- `"aurora-postgresql"` → Aurora PostgreSQL path
-- `"mysql"` (standard RDS, not Aurora) → **unsupported.** Standard RDS instances have no RDS Data API. Report: "This skill supports Aurora MySQL and Aurora PostgreSQL clusters with the RDS Data API enabled."
+- `"aurora-[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"` → Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) path
+- `"aurora-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)"` → Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) path
+- `"[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"` (standard RDS, not Aurora) → **unsupported.** Standard RDS instances have no RDS Data API. Report: "This skill supports Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) and Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) clusters with the RDS Data API enabled."
 
 Store: engine_type, version, cluster_members, endpoint, region.
 
@@ -107,14 +107,14 @@ PARALLEL COLLECT:
 
 Score dimensions on a binary scale (0 or 5 points each):
 
-**Aurora MySQL (12 dimensions, 60 points max — AWS Level):**
+**Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) (12 dimensions, 60 points max — AWS Level):**
 
 | Dimension | Pass Criteria | Points |
 |-----------|--------------|--------|
 | Major Version Currency | Current major = latest available major | 5 |
 | Minor Version Currency | Current minor = latest available minor | 5 |
 | Storage Encryption | StorageEncrypted = true | 5 |
-| Enhanced Monitoring | MonitoringInterval ≤ 60 on all instances | 5 |
+| Enhanced [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | MonitoringInterval ≤ 60 on all instances | 5 |
 | Performance Insights | Enabled + RetentionPeriod ≥ 465 days | 5 |
 | Multi-AZ Readers | ≥1 reader in different AZ from writer | 5 |
 | Backup Retention | BackupRetentionPeriod ≥ 7 days | 5 |
@@ -124,13 +124,13 @@ Score dimensions on a binary scale (0 or 5 points each):
 | Auto Scaling | Scalable targets exist for cluster | 5 |
 | Backtrack Enabled | BacktrackWindow > 0 | 5 |
 
-**Aurora PostgreSQL (11 dimensions, 55 points max):**
+**Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (11 dimensions, 55 points max):**
 - Same as above minus Backtrack
 
 **Database-Level Score (8 dimensions, 50 points max):**
-- Connection Health, Buffer Pool, Replication, Lock Health, Monitoring, Storage, Index Efficiency, Instrumentation
+- Connection Health, Buffer Pool, Replication, Lock Health, [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), Storage, Index Efficiency, Instrumentation
 
-**Combined Maximum: 110 points (Aurora MySQL) or 105 points (Aurora PostgreSQL)**
+**Combined Maximum: 110 points (Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)) or 105 points (Aurora [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))**
 
 **Grading Scale:**
 
@@ -152,7 +152,7 @@ CATEGORY MAP:
 ├── 2. System Configuration → Parameter validation (Query 2.1, 2.2)
 ├── 3. Current Activity → Connection & thread analysis (Query 3.1-3.4)
 ├── 4. Replication Status → Lag & consistency (Query 4.1-4.2)
-├── 5. Storage Capacity → Size, growth, fragmentation (Query 5.1-5.3)
+├── 5. Storage [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) → Size, growth, fragmentation (Query 5.1-5.3)
 ├── 6. Performance Metrics → CPU, I/O, query stats (Query 6.1-6.4)
 ├── 7. Maintenance Health → Auto-increment, vacuum (Query 7.1)
 ├── 8. Optimization → Index usage, redundancy (Query 8.1-8.2)
@@ -166,7 +166,7 @@ When the rds-aidba MCP server is available, invoke queries using:
 ```
 Tool: execute_health_query
 Arguments:
-  engine: "mysql"        # "mysql" or "postgresql"
+  engine: "[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"        # "[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)" or "[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)"
   category: "3"          # Category number, 1 through 10
   query_id: "3.1"
 ```
@@ -191,7 +191,7 @@ Arguments:
 3. AWS CLI (Layer 1) for configuration validation
 4. Document the queries in the response so users can run them manually
 
-See `../../../Global_References/mysql-health-checks.md` for all 23 MySQL queries and `../../../Global_References/postgresql-health-checks.md` for PostgreSQL queries.
+See `../../../Global_References/[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-health-checks.md` for all 23 [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) queries and `../../../Global_References/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-health-checks.md` for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) queries.
 
 ---
 
@@ -229,7 +229,7 @@ For each finding, generate recommendations in this priority order:
 | Describe Instance | Instance-level configuration | `aws rds describe-db-instances --db-instance-identifier <id>` |
 | Check Versions | Version currency | `aws rds describe-db-engine-versions --engine <engine>` |
 | Cluster Parameters | Parameter group settings | `aws rds describe-db-cluster-parameters --db-cluster-parameter-group-name <name>` |
-| Auto Scaling | Read replica scaling config | `aws application-autoscaling describe-scalable-targets --service-namespace rds` |
+| Auto Scaling | Read replica scaling config | `aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) describe-scalable-targets --service-namespace rds` |
 | Log Files | Available log file listing | `aws rds describe-db-log-files --db-instance-identifier <id>` |
 
 ### Layer 2: CloudWatch Metrics
@@ -254,21 +254,21 @@ aws cloudwatch get-metric-data --metric-data-queries '[...]' --start-time <3h-ag
 
 ### Layer 3: CloudWatch Logs Insights
 
-**Slow Query Log (Aurora MySQL):**
+**Slow Query Log (Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)):**
 ```
 Log group: /aws/rds/cluster/<cluster-id>/slowquery
 Query: fields @timestamp, @message | filter @message like /Query_time/ | sort @timestamp desc | limit 50
 ```
 
-**Error Log (Aurora MySQL):**
+**Error Log (Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)):**
 ```
 Log group: /aws/rds/cluster/<cluster-id>/error
 Query: fields @timestamp, @message | filter @message like /ERROR|Warning|Note/ | stats count(*) by bin(1h)
 ```
 
-**PostgreSQL Log:**
+**[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Log:**
 ```
-Log group: /aws/rds/cluster/<cluster-id>/postgresql
+Log group: /aws/rds/cluster/<cluster-id>/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|duration/ | sort @timestamp desc | limit 50
 ```
 
@@ -307,7 +307,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ## Error Pattern Recognition
 
-### Aurora MySQL Error Log Patterns
+### Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) Error Log Patterns
 
 | Pattern | Meaning | Severity | Action |
 |---------|---------|----------|--------|
@@ -328,9 +328,9 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ---
 
-## Platform Differences: Aurora MySQL vs RDS MySQL
+## Platform Differences: Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) vs RDS [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
 
-| Aspect | Aurora MySQL | RDS MySQL |
+| Aspect | Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) | RDS [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) |
 |--------|-------------|-----------|
 | Storage | Shared distributed volume (auto-scales to 128 TiB) | EBS-backed (manual provisioned IOPS) |
 | Replication | Redo log-based (< 20ms typical) | Binlog-based (seconds to minutes) |
@@ -338,7 +338,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 | Buffer Pool | Auto-warmed after restart | Cold start after restart |
 | Backtrack | Supported (rewind without restore) | Not available |
 | Read Replicas | Up to 15, same storage volume | Up to 5, async binlog |
-| Monitoring | `mysql.ro_replica_status` available | `SHOW REPLICA STATUS` only |
+| [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | `[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md).ro_replica_status` available | `SHOW REPLICA STATUS` only |
 
 ---
 
@@ -366,7 +366,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ### Workflow 1: Troubleshooting High CPU Usage
 
-**User Query**: "My Aurora MySQL cluster has high CPU usage."
+**User Query**: "My Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) cluster has high CPU usage."
 
 1. Check CloudWatch CPU metrics via `aws cloudwatch get-metric-data`
 2. Query CloudWatch Logs Insights on slow query log for correlating queries
@@ -378,12 +378,12 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ### Workflow 2: Comprehensive Health Assessment
 
-**User Query**: "Perform a full health check on my Aurora MySQL cluster."
+**User Query**: "Perform a full health check on my Aurora [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) cluster."
 
 1. Run AWS CLI checks for configuration (encryption, Multi-AZ, backups, PI)
 2. Collect CloudWatch metrics (CPU, connections, IOPS, replica lag)
 3. Reference Query 1.1 (Server Information) and 1.2 (Environment Detection)
-4. Reference Query 2.1 (Critical MySQL Variables) for config validation
+4. Reference Query 2.1 (Critical [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) Variables) for config validation
 5. Reference Query 9.1 (Overall Health Score) for 8-dimension DB scoring
 6. Combine AWS-level and database-level findings
 7. Provide prioritized recommendations by grade
@@ -410,7 +410,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 5. Interpretation: Aurora > 100ms = WARNING (unusual), > 1000ms = CRITICAL
 6. Recommend: Check heavy reader workloads, long writer transactions, scale reader
 
-### Workflow 5: PostgreSQL Transaction ID Wraparound
+### Workflow 5: [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Transaction ID Wraparound
 
 **User Query**: "Check for transaction ID wraparound risk."
 

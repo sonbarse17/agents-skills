@@ -3,22 +3,22 @@ name: godot-gdscript-patterns
 description: Master Godot 4 GDScript patterns including signals, scenes, state machines, and optimization. Use when building Godot games, implementing game systems, or learning GDScript best practices.
 ---
 
-# Godot GDScript Patterns
+# [Godot](../../../Game_Development/godot/SKILL.md) GDScript Patterns
 
-Production patterns for Godot 4.x game development with GDScript, covering architecture, signals, scenes, and optimization.
+Production patterns for [Godot](../../../Game_Development/godot/SKILL.md) 4.x game development with GDScript, covering architecture, signals, scenes, and optimization.
 
 ## When to Use This Skill
 
-- Building games with Godot 4
+- Building games with [Godot](../../../Game_Development/godot/SKILL.md) 4
 - Implementing game systems in GDScript
 - Designing scene architecture
 - Managing game state
 - Optimizing GDScript performance
-- Learning Godot best practices
+- Learning [Godot](../../../Game_Development/godot/SKILL.md) best practices
 
 ## Core Concepts
 
-### 1. Godot Architecture
+### 1. [Godot](../../../Game_Development/godot/SKILL.md) Architecture
 
 ```
 Node: Base building block
@@ -74,6 +74,6 @@ func take_damage(amount: int) -> void:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/godot-gdscript-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[godot-gdscript](../../../Game_Development/[godot](../../../Game_Development/godot/SKILL.md)-gdscript/SKILL.md)-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 

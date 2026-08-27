@@ -7,9 +7,9 @@ metadata:
   version: "1.0"
 ---
 
-# Firebase App Platform
+# [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) App Platform
 
-Ship mobile and web backends with Firebase managed services.
+Ship mobile and web backends with [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) managed services.
 
 ## When to Use This Skill
 
@@ -17,37 +17,37 @@ Use this skill when:
 - Building mobile or web apps with real-time data sync
 - Need authentication with minimal backend code
 - Prototyping quickly with managed infrastructure
-- Building serverless APIs with Cloud Functions
+- Building [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) APIs with Cloud Functions
 - Hosting static sites or SPAs with CDN
 
 ## Prerequisites
 
 - Node.js 18+
-- Firebase CLI (`npm install -g firebase-tools`)
-- Google Cloud account (Firebase is part of GCP)
-- A Firebase project (create at console.firebase.google.com)
+- [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) CLI (`npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-tools`)
+- Google Cloud account ([Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) is part of GCP)
+- A [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (create at console.[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).google.com)
 
 ## Quick Start
 
 ```bash
 # Install and authenticate
-npm install -g firebase-tools
-firebase login
+npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-tools
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) login
 
 # Initialize in your project directory
-firebase init
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) init
 # Select: Firestore, Functions, Hosting, Emulators
 
 # Start local emulators
-firebase emulators:start
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start
 
 # Deploy everything
-firebase deploy
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy
 
 # Deploy specific services
-firebase deploy --only functions
-firebase deploy --only hosting
-firebase deploy --only firestore:rules
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only functions
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only hosting
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only firestore:rules
 ```
 
 ## Firestore Database
@@ -91,11 +91,11 @@ service cloud.firestore {
 
 ### Data Operations
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // lib/firestore.ts
 import { getFirestore, collection, doc, setDoc, getDoc,
          query, where, orderBy, limit, onSnapshot,
-         serverTimestamp, increment } from "firebase/firestore";
+         serverTimestamp, increment } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/firestore";
 
 const db = getFirestore();
 
@@ -151,11 +151,11 @@ async function incrementViews(postId: string) {
 
 ## Authentication
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // lib/auth.ts
 import { getAuth, signInWithPopup, GoogleAuthProvider,
          createUserWithEmailAndPassword, signInWithEmailAndPassword,
-         signOut, onAuthStateChanged } from "firebase/auth";
+         signOut, onAuthStateChanged } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/auth";
 
 const auth = getAuth();
 
@@ -184,12 +184,12 @@ onAuthStateChanged(auth, (user) => {
 
 ## Cloud Functions
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // functions/src/index.ts
-import { onRequest } from "firebase-functions/v2/https";
-import { onDocumentCreated } from "firebase-functions/v2/firestore";
-import { getFirestore } from "firebase-admin/firestore";
-import { initializeApp } from "firebase-admin/app";
+import { onRequest } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/https";
+import { onDocumentCreated } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/firestore";
+import { getFirestore } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin/firestore";
+import { initializeApp } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin/app";
 
 initializeApp();
 const db = getFirestore();
@@ -227,11 +227,11 @@ export const onMessageCreated = onDocumentCreated(
 ## Hosting
 
 ```json
-// firebase.json
+// [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": ["[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       { "source": "/api/**", "function": "api" },
       { "source": "**", "destination": "/index.html" }
@@ -258,20 +258,20 @@ export const onMessageCreated = onDocumentCreated(
 
 ```bash
 # Start all emulators
-firebase emulators:start
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start
 
 # Start specific emulators
-firebase emulators:start --only auth,firestore,functions
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --only auth,firestore,functions
 
 # Export emulator data for persistence
-firebase emulators:export ./emulator-data
-firebase emulators:start --import=./emulator-data
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:export ./emulator-data
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --import=./emulator-data
 
 # Emulator UI at http://localhost:4000
 ```
 
 ```json
-// firebase.json — emulator config
+// [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json — emulator config
 {
   "emulators": {
     "auth": { "port": 9099 },
@@ -287,10 +287,10 @@ firebase emulators:start --import=./emulator-data
 
 ```bash
 # Set environment variables for functions
-firebase functions:config:set stripe.key="sk_live_xxx" app.name="MyApp"
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:config:set stripe.key="sk_live_xxx" app.name="MyApp"
 
 # View config
-firebase functions:config:get
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:config:get
 
 # Use in functions (v1)
 const stripeKey = functions.config().stripe.key;
@@ -307,13 +307,13 @@ STRIPE_KEY=sk_test_xxx
 
 ```bash
 # Create separate projects for each environment
-firebase use --add   # Add staging project alias
-firebase use staging # Switch to staging
-firebase use production
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use --add   # Add staging project alias
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use staging # Switch to staging
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use production
 
 # Deploy to specific project
-firebase deploy --project my-app-staging
-firebase deploy --project my-app-production
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --project my-app-staging
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --project my-app-production
 
 # .firebaserc
 {
@@ -327,24 +327,24 @@ firebase deploy --project my-app-production
 ## CLI Reference
 
 ```bash
-firebase projects:list              # List all projects
-firebase deploy                      # Deploy everything
-firebase deploy --only functions     # Deploy only functions
-firebase deploy --only hosting       # Deploy only hosting
-firebase deploy --only firestore     # Deploy rules + indexes
-firebase functions:log               # View function logs
-firebase hosting:channel:create pr-123  # Preview channel
-firebase hosting:channel:delete pr-123
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) projects:list              # List all projects
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy                      # Deploy everything
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only functions     # Deploy only functions
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only hosting       # Deploy only hosting
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only firestore     # Deploy rules + indexes
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:log               # View function logs
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) hosting:channel:create pr-123  # Preview channel
+[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) hosting:channel:delete pr-123
 ```
 
 ## Security Best Practices
 
 - Write strict Firestore security rules before any other code
-- Separate environments by Firebase project (staging/production)
-- Enable budget alerts and quota monitoring in GCP console
+- Separate environments by [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (staging/production)
+- Enable budget alerts and quota [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) in GCP console
 - Move privileged logic into Cloud Functions (never trust the client)
 - Use App Check to prevent API abuse from non-app clients
-- Enable Firestore audit logging for compliance
+- Enable Firestore [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
 - Review OAuth consent screen settings
 
 ## Troubleshooting
@@ -353,12 +353,12 @@ firebase hosting:channel:delete pr-123
 |-------|---------|
 | Permission denied | Check Firestore rules, verify auth state |
 | Function cold starts | Use min instances (`minInstances: 1`), optimize imports |
-| Emulator won't start | Check port conflicts, run `firebase emulators:start --debug` |
-| Deploy fails | Run `firebase deploy --debug`, check service account permissions |
-| Rules test failing | Use `firebase emulators:exec` to run rules unit tests |
+| Emulator won't start | Check port conflicts, run `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --debug` |
+| Deploy fails | Run `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --debug`, check service account permissions |
+| Rules test failing | Use `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:exec` to run rules unit tests |
 
 ## Related Skills
 
-- [gcp-cloud-functions](../../cloud-gcp/gcp-cloud-functions/) — Function runtime patterns
-- [vercel-deployments](../vercel-deployments/) — Alternative frontend hosting
-- [convex-backend](../convex-backend/) — Alternative managed backend
+- [gcp-cloud-functions](../../cloud-gcp/[gcp-cloud-functions](../gcp-cloud-functions/SKILL.md)/) — Function runtime patterns
+- [vercel-deployments](../[vercel-deployments](../vercel-deployments/SKILL.md)/) — Alternative frontend hosting
+- [convex-backend](../[convex-backend](../../../Software_Engineering_and_Other/Backend/convex-backend/SKILL.md)/) — Alternative managed backend

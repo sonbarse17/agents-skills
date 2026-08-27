@@ -20,10 +20,10 @@ metadata:
 
 ## Purpose
 
-Kyverno is a Kubernetes-native policy engine that expresses admission
-policies as plain Kubernetes YAML (`ClusterPolicy`/`Policy` custom
+Kyverno is a [Kubernetes](../kubernetes/SKILL.md)-native policy engine that expresses admission
+policies as plain [Kubernetes](../kubernetes/SKILL.md) YAML (`ClusterPolicy`/`Policy` custom
 resources) instead of a separate policy language — a team that already
-reads and writes Kubernetes manifests can read and modify a Kyverno rule
+reads and writes [Kubernetes](../kubernetes/SKILL.md) manifests can read and modify a Kyverno rule
 without learning Rego. Beyond validation (the OPA/Gatekeeper-equivalent
 "allow or deny this resource"), Kyverno natively supports **mutate**
 rules (rewrite or inject fields into a resource on admission — e.g. add a
@@ -32,7 +32,7 @@ resource when a triggering resource appears — e.g. a default
 `NetworkPolicy` or `ResourceQuota` whenever a new `Namespace` is created),
 both of which OPA/Gatekeeper handles less directly. This skill covers
 Kyverno's actual rule syntax across all three rule types, its
-`background`/`validationFailureAction` audit-vs-enforce controls, and
+`background`/`validationFailureAction` [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-vs-enforce controls, and
 `PolicyReport` output for visibility — and gives explicit guidance on
 when Kyverno's YAML-native approach is the better fit than OPA/Gatekeeper
 versus when Rego's generality is worth the learning-curve cost.
@@ -40,7 +40,7 @@ versus when Rego's generality is worth the learning-curve cost.
 ## When to use
 
 - The user wants to write a `ClusterPolicy` or namespaced `Policy` to
-  validate, mutate, or auto-generate Kubernetes resources, without
+  validate, mutate, or auto-generate [Kubernetes](../kubernetes/SKILL.md) resources, without
   writing Rego.
 - The user wants to inject or default fields on admission (a sidecar
   container, an annotation, a resource limit default) rather than only
@@ -60,7 +60,7 @@ versus when Rego's generality is worth the learning-curve cost.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster (1.21+ recommended for the admission webhook
+- A [Kubernetes](../kubernetes/SKILL.md) cluster (1.21+ recommended for the admission webhook
   behavior Kyverno relies on) with cluster-admin access to install the
   Kyverno CRDs, controller, and webhook configurations.
 - **Kyverno** installed via its Helm chart or static manifests (the
@@ -75,7 +75,7 @@ versus when Rego's generality is worth the learning-curve cost.
 - `kyverno` CLI installed locally for `kyverno test` (offline unit testing
   against sample resources) before deploying policies to a live cluster.
 - A rollout plan: **every new or changed policy must be applied with
-  `validationFailureAction: Audit` first**, not `Enforce` — identical
+  `validationFailureAction: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` first**, not `Enforce` — identical
   discipline to Gatekeeper's `dryrun`, and for the same reason (surfacing
   what a policy would have blocked before it can break a legitimate
   deploy).
@@ -87,7 +87,7 @@ versus when Rego's generality is worth the learning-curve cost.
 
 ## Step-by-step guidance
 
-1. **Write a `validate` rule in `Audit` mode first**, using Kyverno's
+1. **Write a `validate` rule in `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` mode first**, using Kyverno's
    `pattern` block (structural match against the resource) rather than
    Rego:
    ```yaml
@@ -96,7 +96,7 @@ versus when Rego's generality is worth the learning-curve cost.
    metadata:
      name: require-run-as-non-root
    spec:
-     validationFailureAction: Audit   # start here, not Enforce
+     validationFailureAction: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)   # start here, not Enforce
      background: true                 # also evaluate existing resources, not just new admissions
      rules:
        - name: check-runAsNonRoot
@@ -129,13 +129,13 @@ versus when Rego's generality is worth the learning-curve cost.
    ```
 
 3. **Review `PolicyReport`/`ClusterPolicyReport` results** generated
-   during the audit period before enforcing:
+   during the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) period before enforcing:
    ```bash
-   kubectl get clusterpolicyreport -o wide
-   kubectl get policyreport -A -o jsonpath='{.items[*].summary}'
+   [kubectl](../kubectl/SKILL.md) get clusterpolicyreport -o wide
+   [kubectl](../kubectl/SKILL.md) get policyreport -A -o jsonpath='{.items[*].summary}'
    ```
 
-4. **Switch to `Enforce` once audit is clean**, with a documented,
+4. **Switch to `Enforce` once [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is clean**, with a documented,
    time-boxed exclusion for genuine exceptions:
    ```yaml
    spec:
@@ -154,16 +154,16 @@ versus when Rego's generality is worth the learning-curve cost.
    > **Warning — destructive action risk:** switching `validationFailureAction`
    > to `Enforce` on a broadly-scoped `ClusterPolicy` blocks every
    > matching admission cluster-wide the moment it's applied — not just
-   > new deploys from CI, but any `kubectl apply`. Confirm the audit
+   > new deploys from CI, but any `[kubectl](../kubectl/SKILL.md) apply`. Confirm the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
    > period covered representative traffic and that a rollback
-   > (`kubectl patch clusterpolicy <name> --type merge -p
-   > '{"spec":{"validationFailureAction":"Audit"}}'`) is understood by
+   > (`[kubectl](../kubectl/SKILL.md) patch clusterpolicy <name> --type merge -p
+   > '{"spec":{"validationFailureAction":"[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"}}'`) is understood by
    > on-call before enforcing against production namespaces.
 
 5. **Use `mutate` rules to inject or default fields** rather than only
    rejecting non-compliant resources — useful for defaults that don't
    need a human decision (e.g. a default `imagePullPolicy`, an
-   observability sidecar):
+   [observability](../../Observability_and_SecOps/observability/SKILL.md) sidecar):
    ```yaml
    apiVersion: kyverno.io/v1
    kind: ClusterPolicy
@@ -246,7 +246,7 @@ versus when Rego's generality is worth the learning-curve cost.
 8. **Wire `PolicyReport` output into CI or a dashboard** so compliance
    status is visible without manually querying the cluster:
    ```bash
-   kubectl get policyreport -A -o json | \
+   [kubectl](../kubectl/SKILL.md) get policyreport -A -o json | \
      jq '[.items[].results[] | select(.result=="fail")] | length'
    ```
 
@@ -256,13 +256,13 @@ versus when Rego's generality is worth the learning-curve cost.
 
 ## Best practices
 
-- Choose Kyverno when the target is Kubernetes-only, the team is more
+- Choose Kyverno when the target is [Kubernetes](../kubernetes/SKILL.md)-only, the team is more
   comfortable with YAML than a new DSL, and the use case benefits from
   `mutate`/`generate` (defaulting fields, auto-provisioning companion
   resources) — these are first-class Kyverno concepts that are more
   awkward to express in OPA/Gatekeeper. Choose OPA/Gatekeeper
-  ([opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md))
-  when policies need to run outside Kubernetes too (CI-time Terraform
+  ([opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
+  when policies need to run outside [Kubernetes](../kubernetes/SKILL.md) too (CI-time Terraform
   plan checks via Conftest, API authorization), when logic is complex
   enough that Rego's real programming constructs (helper functions,
   recursion, set operations) pay off over pattern-matching YAML, or when
@@ -281,7 +281,7 @@ versus when Rego's generality is worth the learning-curve cost.
   deletes/edits the generated resource, which is powerful but surprising
   if the team expects generated resources to be independent once
   created.
-- Roll out every new or changed policy `Audit` → review `PolicyReport` →
+- Roll out every new or changed policy `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` → review `PolicyReport` →
   `Enforce`, identically to the Gatekeeper `dryrun` → `deny` pattern —
   the two engines differ in syntax, not in the rollout discipline needed.
 - Keep one `ClusterPolicy` per concern (non-root, registry allowlist,
@@ -293,11 +293,11 @@ versus when Rego's generality is worth the learning-curve cost.
 
 - **Symptom:** A new `ClusterPolicy` is applied directly with
   `validationFailureAction: Enforce` and immediately blocks a legitimate
-  deploy, triggering an incident.
-  **Fix:** Always deploy with `validationFailureAction: Audit` first,
+  deploy, triggering an [incident](../../Observability_and_SecOps/incident/SKILL.md).
+  **Fix:** Always deploy with `validationFailureAction: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` first,
   review `PolicyReport`/`ClusterPolicyReport` results for a representative
   period, then switch to `Enforce` with documented, time-boxed
-  `exclude` blocks for anything legitimate the audit surfaced.
+  `exclude` blocks for anything legitimate the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) surfaced.
 
 - **Symptom:** A `validate` rule with a `pattern` block never fails,
   even for a resource that clearly violates the intended rule.
@@ -324,7 +324,7 @@ versus when Rego's generality is worth the learning-curve cost.
   it, temporarily removing network segmentation.
   **Fix:** Before deleting or disabling a `generate` policy with
   `synchronize: true`, check what resources it has generated
-  (`kubectl get networkpolicy -A -l kyverno.io/generated-by-policy) and
+  (`[kubectl](../kubectl/SKILL.md) get networkpolicy -A -l kyverno.io/generated-by-policy) and
   decide deliberately whether to detach (patch `synchronize: false`
   first, which stops further sync but leaves existing generated resources
   in place) versus a full removal.
@@ -332,22 +332,22 @@ versus when Rego's generality is worth the learning-curve cost.
 - **Symptom:** Team picked Kyverno for everything, including a CI-time
   check on Terraform plans, and finds the policy awkward to express or
   simply unsupported.
-  **Fix:** Kyverno's design center is Kubernetes admission (and, via
-  newer `ClusterCleanupPolicy`/JSON payload support, some non-Kubernetes
-  JSON validation) — but non-Kubernetes IaC gating (Terraform plan JSON,
+  **Fix:** Kyverno's design center is [Kubernetes](../kubernetes/SKILL.md) admission (and, via
+  newer `ClusterCleanupPolicy`/JSON payload support, some non-[Kubernetes](../kubernetes/SKILL.md)
+  JSON validation) — but non-[Kubernetes](../kubernetes/SKILL.md) IaC gating (Terraform plan JSON,
   arbitrary CI artifacts) is squarely OPA/Conftest's use case as covered
-  in [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md).
-  Use Kyverno for Kubernetes-native admission policy and OPA/Conftest for
+  in [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
+  Use Kyverno for [Kubernetes](../kubernetes/SKILL.md)-native admission policy and OPA/Conftest for
   IaC/CI-time checks rather than forcing one engine to do both.
 
 ## Worked example
 
-A platform team standardizes on Kyverno (team is Kubernetes-YAML-fluent,
+A platform team standardizes on Kyverno (team is [Kubernetes](../kubernetes/SKILL.md)-YAML-fluent,
 no existing Rego investment) for three policies: validating non-root
 containers, defaulting a memory limit via mutation, and auto-generating a
 default-deny NetworkPolicy per namespace.
 
-`policies/require-non-root.yaml` (Audit, then Enforce after a clean week):
+`policies/require-non-root.yaml` ([Audit](../../../AI_and_Agents/Operations/audit/SKILL.md), then Enforce after a clean week):
 ```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
@@ -447,24 +447,24 @@ results:
 
 After applying, creating a namespace `team-payments` automatically
 provisions `NetworkPolicy/default-deny-all` in that namespace, and
-`kubectl get policyreport -n team-payments` confirms the non-root policy
-is passing for all existing Pods before the team flips it from `Audit` to
+`[kubectl](../kubectl/SKILL.md) get policyreport -n team-payments` confirms the non-root policy
+is passing for all existing Pods before the team flips it from `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` to
 `Enforce`.
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   the Rego-based alternative; read this to decide which engine fits a
-  given team/use case, especially for non-Kubernetes (CI/IaC) policy
+  given team/use case, especially for non-[Kubernetes](../kubernetes/SKILL.md) (CI/IaC) policy
   needs Kyverno doesn't cover.
-- [fairwinds-polaris-and-goldilocks](../fairwinds-polaris-and-goldilocks/SKILL.md) —
+- [fairwinds-polaris-and-goldilocks](../[fairwinds-polaris-and-goldilocks](../../../AI_and_Agents/Workflows/fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
   a lighter-weight, no-authoring-required option for common workload
   configuration checks (resource limits, probes, security context) that
   may cover a policy before it's worth writing a custom Kyverno rule for
   it.
-- [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md) —
-  the broader policy-as-code rationale and audit-before-enforce
+- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+  the broader [policy-as-code](../../../Security/policy-as-code/SKILL.md) rationale and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   discipline this skill's rollout steps follow.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) —
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where Kyverno's admission-time enforcement fits relative to earlier
   CI-time pipeline gates.

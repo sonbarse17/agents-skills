@@ -15,14 +15,14 @@ Aggregate and query logs with Grafana Loki, the Prometheus-inspired logging syst
 
 Use this skill when:
 - Implementing cost-effective log aggregation
-- Building logging for Kubernetes environments
-- Integrating logs with Grafana dashboards
+- Building logging for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) environments
+- Integrating logs with Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 - Querying logs with label-based filtering
 - Preferring lighter-weight alternative to ELK
 
 ## Prerequisites
 
-- Docker or Kubernetes
+- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 - Grafana for visualization
 - Promtail or other log shipper
 
@@ -39,10 +39,10 @@ Use this skill when:
                                      └──────────┘
 ```
 
-## Docker Deployment
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -60,7 +60,7 @@ services:
     volumes:
       - ./promtail-config.yaml:/etc/promtail/config.yaml
       - /var/log:/var/log:ro
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:ro
     command: -config.file=/etc/promtail/config.yaml
 
   grafana:
@@ -153,10 +153,10 @@ scrape_configs:
           job: varlogs
           __path__: /var/log/*.log
 
-  # Docker container logs
-  - job_name: docker
+  # [Docker](../../Containers_and_Orchestration/docker/SKILL.md) container logs
+  - job_name: [docker](../../Containers_and_Orchestration/docker/SKILL.md)
     docker_sd_configs:
-      - host: unix:///var/run/docker.sock
+      - host: unix:///var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock
         refresh_interval: 5s
     relabel_configs:
       - source_labels: ['__meta_docker_container_name']
@@ -186,13 +186,13 @@ scrape_configs:
           format: RFC3339
 ```
 
-## Kubernetes Deployment
+## [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment
 
 ```bash
 # Using Helm
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add grafana https://grafana.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm install loki grafana/loki-stack \
-  --namespace monitoring \
+  --namespace [monitoring](../monitoring/SKILL.md) \
   --create-namespace \
   --set grafana.enabled=true \
   --set promtail.enabled=true
@@ -205,7 +205,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: promtail
-  namespace: monitoring
+  namespace: [monitoring](../monitoring/SKILL.md)
 spec:
   selector:
     matchLabels:
@@ -226,7 +226,7 @@ spec:
             - name: varlog
               mountPath: /var/log
             - name: varlibdockercontainers
-              mountPath: /var/lib/docker/containers
+              mountPath: /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers
               readOnly: true
       volumes:
         - name: config
@@ -237,7 +237,7 @@ spec:
             path: /var/log
         - name: varlibdockercontainers
           hostPath:
-            path: /var/lib/docker/containers
+            path: /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers
 ```
 
 ## LogQL Queries
@@ -401,7 +401,7 @@ groups:
           sum by (job) (rate({level="error"}[5m]))
 ```
 
-## Alerting
+## [Alerting](../alerting/SKILL.md)
 
 ```yaml
 # loki-alerts.yaml
@@ -450,6 +450,6 @@ groups:
 
 ## Related Skills
 
-- [prometheus-grafana](../prometheus-grafana/) - Metrics monitoring
-- [elk-stack](../elk-stack/) - Alternative logging
-- [alerting-oncall](../alerting-oncall/) - Alert management
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Metrics [monitoring](../monitoring/SKILL.md)
+- [elk-stack](../[elk-stack](../elk-stack/SKILL.md)/) - Alternative logging
+- [alerting-oncall](../[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - Alert management

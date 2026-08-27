@@ -84,7 +84,7 @@ When validation and iteration are needed:
 
 - **Sensitive Data Handling**: Guidance on handling secrets, credentials, PII
 - **Access Control**: Required permissions and authorization contexts
-- **Audit Logging**: What should be logged for security auditing
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: What should be logged for security auditing
 - **Compliance**: Relevant compliance requirements (SOC2, GDPR, etc.)
 
 ## Bundled Resources
@@ -93,7 +93,7 @@ When validation and iteration are needed:
 
 Executable scripts for deterministic operations. Use scripts for low-freedom operations requiring consistency.
 
-- `example_script.py` - Python script template with argparse, error handling, and JSON output
+- `example_script.py` - [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) script template with argparse, error handling, and JSON output
 - `example_script.sh` - Bash script template with argument parsing and colored output
 - `validator_example.py` - Validation script demonstrating feedback loop pattern
 
@@ -141,7 +141,7 @@ Additional patterns as needed.
 ## Integration Points
 
 - **CI/CD**: How this integrates with build pipelines
-- **Security Tools**: Compatible security scanning/monitoring tools
+- **Security Tools**: Compatible security scanning/[monitoring](../monitoring/SKILL.md) tools
 - **SDLC**: Where this fits in the secure development lifecycle
 
 ## Troubleshooting

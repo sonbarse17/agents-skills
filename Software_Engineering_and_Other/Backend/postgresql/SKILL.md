@@ -20,7 +20,7 @@ Administer, optimize, and secure PostgreSQL databases in development and product
 
 ## Prerequisites
 
-- Linux server (Debian/Ubuntu or RHEL-based) or Docker.
+- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).
 - Root or sudo access for package installation.
 - Familiarity with SQL fundamentals.
 
@@ -227,7 +227,7 @@ SELECT pg_last_wal_receive_lsn();
 SELECT pg_last_wal_replay_lsn();
 ```
 
-## Monitoring Queries
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
 
 ```sql
 -- Active connections by state
@@ -270,10 +270,10 @@ FROM pg_database
 ORDER BY pg_database_size(pg_database.datname) DESC;
 ```
 
-## Docker Compose Setup
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Setup
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.9"
 
 services:
@@ -288,7 +288,7 @@ services:
       POSTGRES_DB: mydb
     volumes:
       - pg_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       postgres
         -c shared_buffers=256MB
@@ -321,7 +321,7 @@ volumes:
 ```
 
 ```bash
-docker compose up -d
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 psql -h 127.0.0.1 -p 6432 -U myapp mydb
 ```
 
@@ -355,7 +355,7 @@ sudo -u postgres psql -d mydb -c "
 
 ## Related Skills
 
-- [mysql](../mysql/) - Alternative relational database
-- [database-backups](../database-backups/) - Automated backup strategies
+- [mysql](../[mysql](../mysql/SKILL.md)/) - Alternative relational database
+- [database-backups](../[database-backups](../../Databases/database-backups/SKILL.md)/) - Automated backup strategies
 - [redis](../redis/) - Caching layer to reduce database load
-- [planetscale](../planetscale/) - Managed MySQL-compatible alternative
+- [planetscale](../[planetscale](../../Databases/planetscale/SKILL.md)/) - Managed [MySQL](../mysql/SKILL.md)-compatible alternative

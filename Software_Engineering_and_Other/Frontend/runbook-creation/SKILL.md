@@ -7,15 +7,15 @@ metadata:
   version: "1.0"
 ---
 
-# Runbook Creation
+# [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Creation
 
-Create effective operational runbooks, standard operating procedures, and
+Create effective operational [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), standard operating procedures, and
 troubleshooting guides that any on-call engineer can follow under pressure.
 
-## Runbook Template — Full Structure
+## [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Template — Full Structure
 
 ````markdown
-# Runbook: [Service / Process Name]
+# [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): [Service / Process Name]
 
 **Owner:** [Team or individual]
 **Last Reviewed:** YYYY-MM-DD
@@ -26,7 +26,7 @@ troubleshooting guides that any on-call engineer can follow under pressure.
 
 ## Overview
 
-Brief description of the service, why this runbook exists, and when to
+Brief description of the service, why this [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists, and when to
 use it.
 
 ## Prerequisites
@@ -93,10 +93,10 @@ If unresolved after [X] minutes:
 - **Primary:** @[team-lead] — [phone/Slack]
 - **Secondary:** @[manager] — [phone/Slack]
 
-## Related Runbooks
+## Related [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)
 
-- [Link to related runbook 1]
-- [Link to related runbook 2]
+- [Link to related [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) 1]
+- [Link to related [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) 2]
 
 ## Change Log
 
@@ -105,10 +105,10 @@ If unresolved after [X] minutes:
 | YYYY-MM-DD | [Name] | Initial version |
 ````
 
-## Example Runbook — Database Failover
+## Example [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — Database Failover
 
 ````markdown
-# Runbook: PostgreSQL Database Failover
+# [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): [PostgreSQL](../../Backend/postgresql/SKILL.md) Database Failover
 
 **Owner:** Platform / DBA team
 **Last Reviewed:** 2025-06-15
@@ -119,8 +119,8 @@ If unresolved after [X] minutes:
 
 ## Overview
 
-Failover the primary PostgreSQL instance to the synchronous replica when
-the primary is unreachable or degraded. This runbook covers both planned
+Failover the primary [PostgreSQL](../../Backend/postgresql/SKILL.md) instance to the synchronous replica when
+the primary is unreachable or degraded. This [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) covers both planned
 (maintenance) and unplanned (emergency) failover.
 
 ## Prerequisites
@@ -145,8 +145,8 @@ psql -h replica.db.internal -U dba -d postgres -c \
 ### Step 2 — Stop Application Writes
 
 ```bash
-kubectl scale deployment api-server --replicas=0 -n production
-kubectl scale deployment worker --replicas=0 -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment api-server --replicas=0 -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment worker --replicas=0 -n production
 ```
 
 **Expected output:** Deployments scaled to 0 pods.
@@ -195,8 +195,8 @@ aws route53 change-resource-record-sets \
 ### Step 6 — Restart Application
 
 ```bash
-kubectl scale deployment api-server --replicas=6 -n production
-kubectl scale deployment worker --replicas=4 -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment api-server --replicas=6 -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment worker --replicas=4 -n production
 ```
 
 ## Verification
@@ -254,21 +254,21 @@ done
 exit $EXIT_CODE
 ```
 
-### Log Collection for Incident Investigation
+### Log Collection for [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Investigation
 
 ```bash
 #!/usr/bin/env bash
-# collect-logs.sh — Gather logs from multiple sources for incident review
+# collect-logs.sh — Gather logs from multiple sources for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review
 set -euo pipefail
 
-INCIDENT_ID="${1:?Usage: collect-logs.sh <incident-id>}"
-OUTDIR="/tmp/incident-${INCIDENT_ID}"
+INCIDENT_ID="${1:?Usage: collect-logs.sh <[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-id>}"
+OUTDIR="/tmp/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-${INCIDENT_ID}"
 mkdir -p "$OUTDIR"
 
-echo "Collecting logs for incident $INCIDENT_ID..."
+echo "Collecting logs for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) $INCIDENT_ID..."
 
-# Kubernetes pod logs (last 30 min)
-kubectl logs -l app=api-server -n production --since=30m \
+# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) pod logs (last 30 min)
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=api-server -n production --since=30m \
   > "${OUTDIR}/api-server-pods.log" 2>&1
 
 # CloudWatch Logs (last 30 min)
@@ -283,10 +283,10 @@ psql -h db.internal -U dba -d postgres -c \
   > "${OUTDIR}/db-active-queries.log" 2>&1
 
 # System resource snapshot
-kubectl top pods -n production > "${OUTDIR}/pod-resources.log" 2>&1
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) top pods -n production > "${OUTDIR}/pod-resources.log" 2>&1
 
 echo "Logs saved to $OUTDIR"
-tar czf "${OUTDIR}.tar.gz" -C /tmp "incident-${INCIDENT_ID}"
+tar czf "${OUTDIR}.tar.gz" -C /tmp "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-${INCIDENT_ID}"
 echo "Archive: ${OUTDIR}.tar.gz"
 ```
 
@@ -337,8 +337,8 @@ df -h /
 # Remove old journal logs (> 7 days)
 journalctl --vacuum-time=7d 2>/dev/null || true
 
-# Clean Docker artifacts
-docker system prune -f --volumes 2>/dev/null || true
+# Clean [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) artifacts
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system prune -f --volumes 2>/dev/null || true
 
 # Remove old log files
 find /var/log -name "*.gz" -mtime +7 -delete 2>/dev/null || true
@@ -348,14 +348,14 @@ echo "=== Disk Usage After ==="
 df -h /
 ```
 
-## Runbook Review Checklist
+## [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Review Checklist
 
-Use this checklist every time a runbook is created or updated.
+Use this checklist every time a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) is created or updated.
 
 ```yaml
 content_review:
   - [ ] Title clearly identifies the service and operation
-  - [ ] Overview explains WHEN and WHY to use this runbook
+  - [ ] Overview explains WHEN and WHY to use this [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
   - [ ] Prerequisites list all required access, tools, and setup
   - [ ] Every step has a concrete command (no vague instructions)
   - [ ] Expected output is documented for each step
@@ -365,7 +365,7 @@ content_review:
   - [ ] Troubleshooting table covers the top 3-5 known failure modes
 
 usability_review:
-  - [ ] A new team member can follow the runbook without tribal knowledge
+  - [ ] A new team member can follow the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) without tribal knowledge
   - [ ] Steps are numbered and sequential (no branching without clear labels)
   - [ ] Commands can be copy-pasted (no placeholder values without explanation)
   - [ ] Time estimates included for long-running steps
@@ -375,39 +375,39 @@ maintenance_review:
   - [ ] Owner and last-reviewed date are set
   - [ ] Version number incremented
   - [ ] Change log entry added
-  - [ ] Related runbooks section is up to date
-  - [ ] Links to dashboards and docs are valid (not broken)
+  - [ ] Related [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) section is up to date
+  - [ ] Links to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and docs are valid (not broken)
 ```
 
-## Runbook Testing Procedures
+## [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Testing Procedures
 
 ```yaml
 testing_strategy:
   dry_run:
-    frequency: "Every time a runbook is created or substantially edited"
+    frequency: "Every time a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) is created or substantially edited"
     method: "Walk through each step in a staging environment"
     goal: "Verify commands work and output matches documentation"
 
   peer_review:
     frequency: "Every edit"
-    method: "Another engineer follows the runbook in staging without help"
-    goal: "Confirm the runbook is self-contained and unambiguous"
+    method: "Another engineer follows the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) in staging without help"
+    goal: "Confirm the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) is self-contained and unambiguous"
 
   scheduled_validation:
     frequency: "Quarterly"
-    method: "SRE team picks 5 runbooks at random, executes in staging"
-    goal: "Catch runbooks that have drifted from production reality"
+    method: "SRE team picks 5 [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) at random, executes in staging"
+    goal: "Catch [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) that have drifted from production reality"
 
   incident_triggered:
-    trigger: "Any time a runbook is used in a real incident"
-    method: "Post-mortem includes runbook accuracy assessment"
+    trigger: "Any time a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) is used in a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
+    method: "Post-mortem includes [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) accuracy assessment"
     goal: "Capture improvements while the experience is fresh"
 
   automation_testing:
     method: "CI pipeline validates bash scripts with shellcheck and dry-run"
     example: |
-      # .github/workflows/runbook-lint.yml
-      name: Lint Runbook Scripts
+      # .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-lint.yml
+      name: Lint [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Scripts
       on: [pull_request]
       jobs:
         shellcheck:
@@ -416,15 +416,15 @@ testing_strategy:
             - uses: actions/checkout@v4
             - name: ShellCheck
               run: |
-                find runbooks/ -name "*.sh" -exec shellcheck {} +
+                find [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/ -name "*.sh" -exec shellcheck {} +
 ```
 
 ## Versioning Strategy
 
 ```yaml
 versioning:
-  storage: "Git repository — one directory per service, one file per runbook"
-  naming: "runbooks/<service>/<operation>.md"
+  storage: "Git repository — one directory per service, one file per [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)"
+  naming: "[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/<service>/<operation>.md"
   branching: "PRs required for all changes; reviewed by service owner"
 
   version_scheme:
@@ -433,7 +433,7 @@ versioning:
     minor_bump: "Clarifications, typo fixes, updated contact info"
 
   directory_layout: |
-    runbooks/
+    [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/
       api-server/
         deploy.md
         rollback.md
@@ -452,17 +452,17 @@ versioning:
     - CI must pass (shellcheck for scripts, markdown lint)
     - Reviewer confirms they can follow the steps independently
 
-  retention: "Git history serves as full audit trail — never delete old versions"
+  retention: "Git history serves as full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail — never delete old versions"
 ```
 
-## Runbook Index Template
+## [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Index Template
 
-Keep a top-level index so engineers can find the right runbook quickly.
+Keep a top-level index so engineers can find the right [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) quickly.
 
 ```markdown
-# Runbook Index
+# [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Index
 
-| Service | Runbook | Severity | Owner | Last Tested |
+| Service | [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) | Severity | Owner | Last Tested |
 |---------|---------|----------|-------|-------------|
 | API Server | [Deploy](api-server/deploy.md) | — | @platform | 2025-05-01 |
 | API Server | [Rollback](api-server/rollback.md) | SEV1 | @platform | 2025-05-01 |
@@ -474,12 +474,12 @@ Keep a top-level index so engineers can find the right runbook quickly.
 
 ## Best Practices
 
-- Write runbooks for the engineer at 3 AM — clear, sequential, copy-pasteable
+- Write [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for the engineer at 3 AM — clear, sequential, copy-pasteable
 - Include expected output so the operator knows if a step succeeded
 - Always provide a rollback path; every action should be reversible
-- Test runbooks in staging before they are needed in production
-- Keep runbooks in version control alongside the code they support
-- Assign an owner to every runbook; ownerless runbooks rot fast
-- After every incident, update the relevant runbook with lessons learned
-- Automate repetitive runbook steps into scripts, but keep the runbook as
+- Test [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) in staging before they are needed in production
+- Keep [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) in version control alongside the code they support
+- Assign an owner to every [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md); ownerless [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) rot fast
+- After every [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), update the relevant [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) with lessons learned
+- Automate repetitive [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) steps into scripts, but keep the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) as
   the orchestration guide so operators understand the "why"

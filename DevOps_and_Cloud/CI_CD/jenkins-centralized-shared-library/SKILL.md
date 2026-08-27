@@ -15,18 +15,18 @@ metadata:
   maturity: stable
 ---
 
-# Jenkins Centralized Shared Library
+# [Jenkins](../jenkins/SKILL.md) Centralized Shared Library
 
 ## Purpose
 
 When ten, fifty, or a hundred repos each carry their own hand-written
-Jenkinsfile ([jenkins-declarative-pipeline-per-repo](../jenkins-declarative-pipeline-per-repo/SKILL.md)),
+Jenkinsfile ([jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md)),
 a single change — a new required security scan, a registry migration, a
 Groovy bugfix — has to be copy-pasted into every repo, drifts immediately,
-and is untestable in isolation. A **Jenkins Shared Library** solves this by
+and is untestable in isolation. A **[Jenkins](../jenkins/SKILL.md) Shared Library** solves this by
 hosting the real pipeline logic in one Git repository (`vars/` for
 callable global steps, `src/` for supporting Groovy classes), registered
-once with the Jenkins controller, so every consuming repo's Jenkinsfile
+once with the [Jenkins](../jenkins/SKILL.md) controller, so every consuming repo's Jenkinsfile
 shrinks to a few lines that call one shared function with parameters. This
 skill covers the shared library's structure, how a thin per-repo
 Jenkinsfile consumes it, and how to version the library so a change
@@ -37,14 +37,14 @@ doesn't break every pipeline simultaneously.
 - More than a handful of repos have near-duplicate Jenkinsfiles and a
   change (new stage, new gate, new notification channel) requires editing
   each one individually.
-- Standing up Jenkins pipeline standards for a new team/org and wanting
+- Standing up [Jenkins](../jenkins/SKILL.md) pipeline standards for a new team/org and wanting
   every repo's Jenkinsfile to be a thin wrapper from day one.
 - An existing shared library needs a new global step (`vars/*.groovy`) or
   a breaking change that must be versioned so consumers can opt in
   gradually.
 - Deciding what belongs in the shared library (org-wide, stable logic)
   versus the per-repo Jenkinsfile (repo-specific parameters) — see
-  [jenkins-declarative-pipeline-per-repo](../jenkins-declarative-pipeline-per-repo/SKILL.md)
+  [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md)
   for the per-repo side of that boundary.
 - Debugging why a pipeline behaves differently after a shared library
   update landed on `main`/`master` and consumers pinned to a floating ref.
@@ -52,31 +52,31 @@ doesn't break every pipeline simultaneously.
 ## Prerequisites & environment
 
 - A dedicated Git repository for the shared library (commonly named
-  `jenkins-shared-library` or `pipeline-library`), separate from any
+  `[jenkins](../jenkins/SKILL.md)-shared-library` or `pipeline-library`), separate from any
   consumer application repo.
-- Jenkins **Pipeline: Shared Groovy Libraries** plugin, and the library
-  registered in **Manage Jenkins → System → Global Pipeline Libraries**
+- [Jenkins](../jenkins/SKILL.md) **Pipeline: Shared Groovy Libraries** plugin, and the library
+  registered in **Manage [Jenkins](../jenkins/SKILL.md) → System → Global Pipeline Libraries**
   with a `Name` (e.g. `shared-lib`), a default version, and either
   "Load implicitly" off (recommended — require explicit `@Library`) or on.
 - Git tags or branches in the library repo to serve as version references
   (e.g. `v1.4.0`, or a floating `main` for early adoption only).
-- Repo admin/Jenkins admin coordination: consuming repos need to reference
+- Repo admin/[Jenkins](../jenkins/SKILL.md) admin coordination: consuming repos need to reference
   the library by name and version in their Jenkinsfile; the library itself
   needs its own CI (recommended — see Step 6) so changes are tested before
   every consumer picks them up.
 - Groovy familiarity for anyone modifying `src/` classes — see
-  [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md)
+  [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md)
   for sandboxing and testing guidance specific to this code.
 
 ## Step-by-step guidance
 
-1. **Lay out the library repo in the required structure** — Jenkins
+1. **Lay out the library repo in the required structure** — [Jenkins](../jenkins/SKILL.md)
    expects exactly these top-level directories:
    ```
    (root)
    ├── vars/
    │   ├── standardPipeline.groovy      # callable as standardPipeline(...)
-   │   └── standardPipeline.txt         # optional: help text shown in Jenkins UI
+   │   └── standardPipeline.txt         # optional: help text shown in [Jenkins](../jenkins/SKILL.md) UI
    ├── src/
    │   └── org/example/pipeline/
    │       ├── DeployTarget.groovy      # supporting classes
@@ -126,7 +126,7 @@ doesn't break every pipeline simultaneously.
 
 3. **Put reusable, testable logic in `src/` classes**, not scattered across
    multiple `vars/*.groovy` files — this is ordinary Groovy/Java-style code
-   and can be unit tested independently of a running Jenkins instance:
+   and can be unit tested independently of a running [Jenkins](../jenkins/SKILL.md) instance:
    ```groovy
    // src/org/example/pipeline/Notifier.groovy
    package org.example.pipeline
@@ -143,8 +143,8 @@ doesn't break every pipeline simultaneously.
    ```
    Passing `this`/`script` explicitly (rather than relying on an implicit
    global `steps` binding) keeps `src/` classes usable and unit-testable
-   outside the Jenkins CPS runtime — see
-   [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md).
+   outside the [Jenkins](../jenkins/SKILL.md) CPS runtime — see
+   [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md).
 
 4. **Consume the library from a thin per-repo Jenkinsfile** using
    `@Library` pinned to an explicit version — never an unpinned/floating
@@ -176,7 +176,7 @@ doesn't break every pipeline simultaneously.
    Jenkinsfile in the library repo itself, or a separate lightweight
    Groovy test runner) using the **JenkinsPipelineUnit** test framework so
    `vars/` and `src/` logic is validated before a tag is cut — see
-   [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md)
+   [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md)
    for the test setup.
 
 7. **Roll out breaking changes gradually.** Cut a new major version tag,
@@ -196,7 +196,7 @@ doesn't break every pipeline simultaneously.
   unit test and reuse across multiple `vars/` entry points.
 - Provide a `.txt` companion file next to each `vars/*.groovy` (e.g.
   `standardPipeline.txt`) documenting the config map's expected keys — this
-  renders in the Jenkins "Global Variables Reference" and saves consumers
+  renders in the [Jenkins](../jenkins/SKILL.md) "Global Variables Reference" and saves consumers
   from reading the Groovy source to know what parameters exist.
 - Default every optional config key sensibly (`config.timeoutMinutes ?:
   30`) so a minimal consumer Jenkinsfile still works, and document required
@@ -239,14 +239,14 @@ doesn't break every pipeline simultaneously.
   throws "Scripts not permitted to use ..." for another team's pipeline.
   **Fix:** This is the Groovy sandbox blocking a method/class not on the
   approved list — see
-  [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md)
+  [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md)
   for the script-approval workflow; don't work around it by disabling the
   sandbox globally.
 
 - **Symptom:** A repo owner wants to delete an old shared-library
   credential or an old library version, unaware three other teams'
   Jenkinsfiles still pin that exact version/credential ID.
-  **Fix:** Before deleting a Jenkins credential or an old library tag,
+  **Fix:** Before deleting a [Jenkins](../jenkins/SKILL.md) credential or an old library tag,
   search consumer Jenkinsfiles (`grep -r "@Library('shared-lib@v1" .` across
   known consumer repos, or check the credential's "Used by" list if the
   Credentials plugin exposes it) for references — deleting a
@@ -261,7 +261,7 @@ repo's Jenkinsfile becomes ~10 lines, and a future change (e.g. adding a
 dependency-scan stage) needs only one PR in the library repo plus a
 version bump per consumer.
 
-Library repo layout (`jenkins-shared-library`):
+Library repo layout (`[jenkins](../jenkins/SKILL.md)-shared-library`):
 ```
 vars/nodeServicePipeline.groovy
 vars/nodeServicePipeline.txt
@@ -275,7 +275,7 @@ def call(Map config = [:]) {
         error "nodeServicePipeline: 'serviceName' is required"
     }
     pipeline {
-        agent { docker { image config.nodeImage ?: 'node:20.11-bullseye' } }
+        agent { [docker](../../Containers_and_Orchestration/docker/SKILL.md) { image config.nodeImage ?: 'node:20.11-bullseye' } }
         options { timeout(time: 20, unit: 'MINUTES') }
         stages {
             stage('Install & Test') {
@@ -315,7 +315,7 @@ on its own schedule instead of 30 separate Jenkinsfile edits.
 
 ## Cross-references
 
-- [jenkins-declarative-pipeline-per-repo](../jenkins-declarative-pipeline-per-repo/SKILL.md) — the thin consumer-side Jenkinsfile pattern this library is called from.
-- [jenkins-groovy-scripting-best-practices](../jenkins-groovy-scripting-best-practices/SKILL.md) — sandbox approvals, `Serializable` requirements, and unit-testing `vars/`/`src/` code.
-- [github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md) — the equivalent centralization pattern on GitHub Actions.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the security gates a shared library's stages should enforce consistently across all consumers.
+- [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — the thin consumer-side Jenkinsfile pattern this library is called from.
+- [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md) — sandbox approvals, `Serializable` requirements, and unit-testing `vars/`/`src/` code.
+- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the equivalent centralization pattern on [GitHub](../github/SKILL.md) Actions.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security gates a shared library's stages should enforce consistently across all consumers.

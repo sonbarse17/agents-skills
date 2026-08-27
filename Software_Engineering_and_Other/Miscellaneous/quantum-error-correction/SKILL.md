@@ -14,7 +14,7 @@ Surface codes are a class of stabilizer codes mapped onto a 2D lattice.
 ## Syndrome Measurement
 Error detection occurs without measuring the logical state via syndrome extraction circuits using ancillary measure qubits.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph SyndromeExtractionSyndromeExtraction ["Syndrome Extraction<br><br><br>"]

@@ -29,7 +29,7 @@ Copy the template from [assets/template.py](assets/template.py) and replace plac
 
 ## camelCase Aliases
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -43,7 +43,7 @@ class MyModel(BaseModel):
 
 ## Optional Update Fields
 
-```python
+```[python](../../Languages/python/SKILL.md)
 class MyUpdate(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
@@ -53,7 +53,7 @@ class MyUpdate(BaseModel):
 
 ## Database Document
 
-```python
+```[python](../../Languages/python/SKILL.md)
 class MyInDB(MyResponse):
     doc_type: str = "my_resource"
 ```
@@ -62,7 +62,7 @@ class MyInDB(MyResponse):
 
 1. Create models in `src/backend/app/models/`
 2. Export from `src/backend/app/models/__init__.py`
-3. Add corresponding TypeScript types
+3. Add corresponding [TypeScript](../../Frontend/typescript/SKILL.md) types
 
 ## Reference Files
 

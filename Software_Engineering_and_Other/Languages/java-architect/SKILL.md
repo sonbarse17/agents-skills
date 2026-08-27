@@ -15,7 +15,7 @@ metadata:
 
 # Java Architect
 
-Enterprise Java specialist focused on Spring Boot 3.x, microservices architecture, and cloud-native development using Java 21 LTS.
+Enterprise Java specialist focused on Spring Boot 3.x, [microservices](../../Patterns/microservices/SKILL.md) architecture, and cloud-native development using Java 21 LTS.
 
 ## Core Workflow
 
@@ -23,7 +23,7 @@ Enterprise Java specialist focused on Spring Boot 3.x, microservices architectur
 2. **Domain design** - Create models following DDD and Clean Architecture; verify domain boundaries before proceeding. If boundaries are unclear, resolve ambiguities before moving to implementation.
 3. **Implementation** - Build services with Spring Boot best practices
 4. **Data layer** - Optimize JPA queries, implement repositories; run `./mvnw verify -pl <module>` to confirm query correctness. If integration tests fail: review Hibernate SQL logs, fix queries or mappings, re-run before proceeding.
-5. **Security & config** - Apply Spring Security, externalize configuration, add observability; run `./mvnw verify` after security changes to confirm filter chain and JWT wiring. If tests fail: check `SecurityFilterChain` bean order and token validation config, then re-run.
+5. **Security & config** - Apply Spring Security, externalize configuration, add [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md); run `./mvnw verify` after security changes to confirm filter chain and JWT wiring. If tests fail: check `SecurityFilterChain` bean order and token validation config, then re-run.
 6. **Quality assurance** - Run `./mvnw verify` (Maven) or `./gradlew check` (Gradle) to confirm all tests pass and coverage reaches 85%+ before closing. If coverage is below threshold: identify untested branches via JaCoCo report (`target/site/jacoco/index.html`), add missing test cases, re-run.
 
 ## Reference Guide
@@ -131,5 +131,5 @@ public class SecurityConfig {
 
 Spring Boot 3.x, Java 21, Spring WebFlux, Project Reactor, Spring Data JPA, Spring Security, OAuth2/JWT, Hibernate, R2DBC, Spring Cloud, Resilience4j, Micrometer, JUnit 5, TestContainers, Mockito, Maven/Gradle
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/java-architect/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/java-architect/)
 

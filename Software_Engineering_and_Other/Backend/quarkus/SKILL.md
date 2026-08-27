@@ -27,7 +27,7 @@ User request includes: `quarkus`, `quarkus backend`, `supersonic java`, `quarkus
 - JDK version (17+)
 - Build tool (Gradle, Maven)
 - Runtime (JIT, GraalVM native)
-- Extensions (RESTEasy Reactive, Hibernate, Kafka, MongoDB)
+- Extensions (RESTEasy Reactive, Hibernate, Kafka, [MongoDB](../mongodb/SKILL.md))
 - Deployment (JAR, native binary, container)
 
 ### Output Artifact
@@ -102,7 +102,7 @@ src/
 |   +-- java/com/example/
 |       +-- OrderResourceTest.java
 |       +-- OrderServiceTest.java
-+-- docker-compose.yml
++-- [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 ```
 
 ### Step 3: RESTEasy Reactive Resource
@@ -290,7 +290,7 @@ quarkus.log.level=INFO
 quarkus.log.console.enable=true
 
 # Datasource
-quarkus.datasource.db-kind=postgresql
+quarkus.datasource.db-kind=[postgresql](../postgresql/SKILL.md)
 quarkus.datasource.username=${DB_USER}
 quarkus.datasource.password=${DB_PASS}
 quarkus.datasource.reactive.url=${DB_URL}
@@ -316,7 +316,7 @@ quarkus.native.builder-image=graalvm:21
 
 # Dev Services (auto-starts containers in dev/test)
 quarkus.devservices.enabled=true
-quarkus.devservices.postgresql.image-name=postgres:15
+quarkus.devservices.[postgresql](../postgresql/SKILL.md).image-name=postgres:15
 
 # CORS
 quarkus.http.cors=true
@@ -499,7 +499,7 @@ Container deployment with cold-start requirements?
 
 ## Compared With
 
-| Feature | Quarkus | Spring Boot | Micronaut |
+| Feature | Quarkus | Spring Boot | [Micronaut](../micronaut/SKILL.md) |
 |---|---|---|---|
 | Startup time (JIT) | ~0.3s | ~2-4s | ~0.4s |
 | Startup (GraalVM native) | <0.1s | ~0.5s | <0.1s |
@@ -533,7 +533,7 @@ Container deployment with cold-start requirements?
 | **Hibernate Reactive** | Reactive database access |
 | **Testcontainers** | Integration test containers |
 | **GraalVM** | Native image compilation |
-| **Container-first Docker** | Optimized container images |
+| **Container-first [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Optimized container images |
 
 ## Rules
 

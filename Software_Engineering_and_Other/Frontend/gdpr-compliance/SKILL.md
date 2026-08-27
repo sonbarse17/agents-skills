@@ -13,7 +13,7 @@ Implement General Data Protection Regulation requirements for organizations that
 
 ## When to Use
 
-- Processing personal data of EU/EEA residents in any capacity
+- Processing personal data of EU/EEA residents in any [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Building consent management and preference centers
 - Implementing Data Subject Access Request (DSAR) workflows
 - Conducting Data Protection Impact Assessments (DPIAs)
@@ -64,7 +64,7 @@ gdpr_principles:
       description: "Appropriate security measures"
       implementation:
         - Encryption at rest and in transit
-        - Access controls and audit logging
+        - Access controls and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
         - Pseudonymization where appropriate
 
     accountability:
@@ -117,7 +117,7 @@ processing_activity:
     - AES-256 encryption at rest
     - TLS 1.3 in transit
     - Role-based access control
-    - Audit logging of all access
+    - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of all access
   dpia_required: false
   last_reviewed: "2024-06-01"
 
@@ -145,7 +145,7 @@ processing_activity_template:
 
 ## Consent Management Implementation
 
-```python
+```[python](../../Languages/python/SKILL.md)
 """
 Consent management system implementing GDPR Article 7 requirements.
 Consent must be freely given, specific, informed, and unambiguous.
@@ -162,7 +162,7 @@ class ConsentPurpose(Enum):
     ANALYTICS = "analytics"
     PERSONALIZATION = "personalization"
     THIRD_PARTY_SHARING = "third_party_sharing"
-    PROFILING = "profiling"
+    [PROFILING](../profiling/SKILL.md) = "[profiling](../profiling/SKILL.md)"
 
 
 class ConsentManager:
@@ -171,7 +171,7 @@ class ConsentManager:
 
     def record_consent(self, user_id, purpose, granted, source,
                        privacy_policy_version, ip_address=None):
-        """Record a consent decision with full audit trail."""
+        """Record a consent decision with full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail."""
         consent_record = {
             "user_id": user_id,
             "purpose": purpose.value,
@@ -182,7 +182,7 @@ class ConsentManager:
             "ip_address": ip_address,
             "withdrawal_timestamp": None,
         }
-        # Store with immutable audit trail
+        # Store with immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
         consent_record["record_hash"] = hashlib.sha256(
             json.dumps(consent_record, sort_keys=True).encode()
         ).hexdigest()
@@ -301,7 +301,7 @@ dsar_workflow:
       - Update data mapping if new data stores discovered
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 """DSAR automation - data collection across systems."""
 import json
 from datetime import datetime, timezone
@@ -388,7 +388,7 @@ dpa_requirements:
       - Assistance with data subject rights requests
       - Assistance with security obligations (Art. 32-36)
       - Deletion or return of data after service ends
-      - Audit and inspection rights for the controller
+      - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and inspection rights for the controller
 
   sub_processor_management:
     - [ ] List of current sub-processors provided by processor
@@ -425,9 +425,9 @@ dpa_requirements:
 ```yaml
 dpia_template:
   when_required:
-    - Systematic and extensive profiling with significant effects
+    - Systematic and extensive [profiling](../profiling/SKILL.md) with significant effects
     - Large-scale processing of special category data
-    - Systematic monitoring of publicly accessible areas
+    - Systematic [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of publicly accessible areas
     - Any processing on national supervisory authority's list
     - New technologies with likely high risk to rights and freedoms
 
@@ -454,7 +454,7 @@ dpia_template:
           likelihood: "medium"
           severity: "high"
           risk_level: "high"
-          existing_controls: "Encryption, access controls, audit logs"
+          existing_controls: "Encryption, access controls, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs"
           residual_risk: "medium"
 
         - risk: "Accidental data loss or destruction"
@@ -480,10 +480,10 @@ dpia_template:
       organizational_measures:
         - Staff training on data protection
         - Data protection policies and procedures
-        - Incident response procedures
+        - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response procedures
         - Regular access reviews
-      monitoring:
-        - Audit logging of all data access
+      [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+        - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of all data access
         - Anomaly detection for unusual access patterns
         - Regular compliance testing
 
@@ -527,7 +527,7 @@ gdpr_compliance_checklist:
     - [ ] Encryption at rest and in transit for all personal data
     - [ ] Pseudonymization applied where feasible
     - [ ] Access controls enforce least privilege
-    - [ ] Audit logging of personal data access
+    - [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of personal data access
     - [ ] Data retention automated with defined schedules
     - [ ] Secure deletion procedures verified
 
@@ -557,4 +557,4 @@ gdpr_compliance_checklist:
 - Ensure data processing agreements are signed with every processor before sharing personal data
 - Implement automated retention enforcement to prevent storage beyond defined periods
 - Train all staff who handle personal data, not just the IT and legal teams
-- Regularly audit data flows to discover shadow processing or undocumented data stores
+- Regularly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) data flows to discover shadow processing or undocumented data stores

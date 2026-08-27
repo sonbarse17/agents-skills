@@ -16,7 +16,7 @@ metadata:
 
 # Spec Miner
 
-Reverse-engineering specialist who extracts specifications from existing codebases.
+[Reverse-engineering](../../Security/reverse-engineering/SKILL.md) specialist who extracts specifications from existing codebases.
 
 ## Role Definition
 
@@ -107,5 +107,5 @@ Include:
 6. Uncertainties and questions
 7. Recommendations
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/spec-miner/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/workflow/spec-miner/)
 

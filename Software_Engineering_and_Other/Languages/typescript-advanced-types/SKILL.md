@@ -3,9 +3,9 @@ name: typescript-advanced-types
 description: Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types for building type-safe applications. Use when implementing complex type logic, creating reusable type utilities, or ensuring compile-time type safety in TypeScript projects.
 ---
 
-# TypeScript Advanced Types
+# [TypeScript](../../Frontend/typescript/SKILL.md) Advanced Types
 
-Comprehensive guidance for mastering TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.
+Comprehensive guidance for mastering [TypeScript](../../Frontend/typescript/SKILL.md)'s advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.
 
 ## When to Use This Skill
 
@@ -16,7 +16,7 @@ Comprehensive guidance for mastering TypeScript's advanced type system including
 - Building form validation systems
 - Creating strongly-typed configuration objects
 - Implementing type-safe state management
-- Migrating JavaScript codebases to TypeScript
+- Migrating JavaScript codebases to [TypeScript](../../Frontend/typescript/SKILL.md)
 
 ## Core Concepts
 
@@ -26,7 +26,7 @@ Comprehensive guidance for mastering TypeScript's advanced type system including
 
 **Basic Generic Function:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 function identity<T>(value: T): T {
   return value;
 }
@@ -38,7 +38,7 @@ const auto = identity(true); // Type inferred: boolean
 
 **Generic Constraints:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface HasLength {
   length: number;
 }
@@ -56,7 +56,7 @@ logLength({ length: 10 }); // OK: object has length
 
 **Multiple Type Parameters:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 function merge<T, U>(obj1: T, obj2: U): T & U {
   return { ...obj1, ...obj2 };
 }
@@ -71,7 +71,7 @@ const merged = merge({ name: "John" }, { age: 30 });
 
 **Basic Conditional Type:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type IsString<T> = T extends string ? true : false;
 
 type A = IsString<string>; // true
@@ -80,7 +80,7 @@ type B = IsString<number>; // false
 
 **Extracting Return Types:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 
 function getUser() {
@@ -93,7 +93,7 @@ type User = ReturnType<typeof getUser>;
 
 **Distributive Conditional Types:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type ToArray<T> = T extends any ? T[] : never;
 
 type StrOrNumArray = ToArray<string | number>;
@@ -102,7 +102,7 @@ type StrOrNumArray = ToArray<string | number>;
 
 **Nested Conditions:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type TypeName<T> = T extends string
   ? "string"
   : T extends number
@@ -125,7 +125,7 @@ type T2 = TypeName<() => void>; // "function"
 
 **Basic Mapped Type:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type Readonly<T> = {
   readonly [P in keyof T]: T[P];
 };
@@ -141,7 +141,7 @@ type ReadonlyUser = Readonly<User>;
 
 **Optional Properties:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type Partial<T> = {
   [P in keyof T]?: T[P];
 };
@@ -152,7 +152,7 @@ type PartialUser = Partial<User>;
 
 **Key Remapping:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type Getters<T> = {
   [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
 };
@@ -168,7 +168,7 @@ type PersonGetters = Getters<Person>;
 
 **Filtering Properties:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type PickByType<T, U> = {
   [K in keyof T as T[K] extends U ? K : never]: T[K];
 };
@@ -190,7 +190,7 @@ type OnlyNumbers = PickByType<Mixed, number>;
 
 **Basic Template Literal:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type EventName = "click" | "focus" | "blur";
 type EventHandler = `on${Capitalize<EventName>}`;
 // Type: "onClick" | "onFocus" | "onBlur"
@@ -198,7 +198,7 @@ type EventHandler = `on${Capitalize<EventName>}`;
 
 **String Manipulation:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type UppercaseGreeting = Uppercase<"hello">; // "HELLO"
 type LowercaseGreeting = Lowercase<"HELLO">; // "hello"
 type CapitalizedName = Capitalize<"john">; // "John"
@@ -207,7 +207,7 @@ type UncapitalizedName = Uncapitalize<"John">; // "john"
 
 **Path Building:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type Path<T> = T extends object
   ? {
       [K in keyof T]: K extends string ? `${K}` | `${K}.${Path<T[K]>}` : never;
@@ -232,7 +232,7 @@ type ConfigPath = Path<Config>;
 
 **Built-in Utility Types:**
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Partial<T> - Make all properties optional
 type PartialUser = Partial<User>;
 
@@ -263,14 +263,14 @@ type PageInfo = Record<"home" | "about", { title: string }>;
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/typescript-advanced-types_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-advanced-types_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 
 1. **Use `unknown` over `any`**: Enforce type checking
 2. **Prefer `interface` for object shapes**: Better error messages
 3. **Use `type` for unions and complex types**: More flexible
-4. **Leverage type inference**: Let TypeScript infer when possible
+4. **Leverage type inference**: Let [TypeScript](../../Frontend/typescript/SKILL.md) infer when possible
 5. **Create helper types**: Build reusable type utilities
 6. **Use const assertions**: Preserve literal types
 7. **Avoid type assertions**: Use type guards instead
@@ -280,7 +280,7 @@ Detailed sections (starting with `## Advanced Patterns`) live in `../../../Globa
 
 ## Type Testing
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Type assertion tests
 type AssertEqual<T, U> = [T] extends [U]
   ? [U] extends [T]
@@ -301,7 +301,7 @@ type ShouldError = ExpectError<AssertEqual<string, number>>;
 
 ## Common Pitfalls
 
-1. **Over-using `any`**: Defeats the purpose of TypeScript
+1. **Over-using `any`**: Defeats the purpose of [TypeScript](../../Frontend/typescript/SKILL.md)
 2. **Ignoring strict null checks**: Can lead to runtime errors
 3. **Too complex types**: Can slow down compilation
 4. **Not using discriminated unions**: Misses type narrowing opportunities

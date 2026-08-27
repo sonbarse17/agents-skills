@@ -19,11 +19,11 @@ metadata:
   maturity: stable
 ---
 
-# Testkube Kubernetes-Native Test Execution
+# Testkube [Kubernetes](../kubernetes/SKILL.md)-Native Test Execution
 
 ## Purpose
 
-A CI runner (a GitHub Actions job, a Jenkins agent) executes outside the
+A CI runner (a [GitHub](../../CI_CD/github/SKILL.md) Actions job, a [Jenkins](../../CI_CD/jenkins/SKILL.md) agent) executes outside the
 cluster by default — reaching an in-cluster-only service (one with no
 public Ingress, addressable only via its `ClusterIP`/internal DNS name)
 requires port-forwarding, a VPN hop, or a temporary Ingress just for the
@@ -35,13 +35,13 @@ collection, a k6 load test, a Cypress/Playwright E2E suite, a JMeter
 plan, or a custom script) runs as a **pod inside the cluster**, with
 direct network access to the same internal services, Secrets, and
 ConfigMaps the application itself uses — no port-forward, no temporary
-Ingress, no VPN. Test executions, results, and logs become Kubernetes
-objects (`Execution`s) queryable via `kubectl`/the Testkube CLI/API, not
+Ingress, no VPN. Test executions, results, and logs become [Kubernetes](../kubernetes/SKILL.md)
+objects (`Execution`s) queryable via `[kubectl](../kubectl/SKILL.md)`/the Testkube CLI/API, not
 just CI console output that disappears when the job ends. This skill
 covers authoring `Test`/`TestSuite` resources and wiring them into CI;
 the resulting workload-scaling behavior under a Testkube-driven load test
 is a good input to
-[keda-configuration-validation](../keda-configuration-validation/SKILL.md)'s
+[keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md)'s
 threshold checks, but that validation itself is out of scope here.
 
 ## When to use
@@ -56,21 +56,21 @@ threshold checks, but that validation itself is out of scope here.
 - Chaining multiple test types (API test, then load test, then E2E) into
   a single ordered `TestSuite` run, rather than juggling separate CI job
   definitions for each tool.
-- Triggering test execution from a CI pipeline (GitHub Actions, Jenkins,
+- Triggering test execution from a CI pipeline ([GitHub](../../CI_CD/github/SKILL.md) Actions, [Jenkins](../../CI_CD/jenkins/SKILL.md),
   GitLab CI) via the Testkube CLI or API, so the CI job itself stays a
   thin trigger/poll-for-result step rather than needing every test
   tool's runtime installed on the CI runner.
 - Running tests on a schedule (nightly regression, periodic synthetic
-  monitoring) independent of any CI pipeline trigger.
+  [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)) independent of any CI pipeline trigger.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster with the Testkube operator and CRDs installed
+- A [Kubernetes](../kubernetes/SKILL.md) cluster with the Testkube operator and CRDs installed
   (commonly via the `kubeshop/testkube` Helm chart or the Testkube CLI's
   `testkube init`), which installs the API server, the executor
   controller, and (optionally) a MinIO/S3-backed artifact store for test
   logs and results.
-- The Testkube CLI (`kubectl testkube` plugin or standalone `testkube`
+- The Testkube CLI (`[kubectl](../kubectl/SKILL.md) testkube` plugin or standalone `testkube`
   binary) installed wherever tests are triggered from — a developer
   machine or the CI runner.
 - Network policy in the cluster that permits Testkube's executor pods to
@@ -102,7 +102,7 @@ threshold checks, but that validation itself is out of scope here.
      content:
        type: git
        repository:
-         uri: https://github.com/example-org/checkout-api-tests.git
+         uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
          branch: main
          path: collections/smoke.postman_collection.json
      executionRequest:
@@ -130,7 +130,7 @@ threshold checks, but that validation itself is out of scope here.
      content:
        type: git
        repository:
-         uri: https://github.com/example-org/checkout-api-tests.git
+         uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
          branch: main
          path: k6/checkout-load.js
      executionRequest:
@@ -145,7 +145,7 @@ threshold checks, but that validation itself is out of scope here.
    ```
    Running this inside the cluster means the load test's own network hop
    to the target is the same internal-service-to-internal-service path
-   real production traffic between microservices takes — a load test run
+   real production traffic between [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) takes — a load test run
    from outside the cluster instead measures the cluster's Ingress/LB
    path, which is a different (and often more favorable) bottleneck
    profile.
@@ -177,24 +177,24 @@ threshold checks, but that validation itself is out of scope here.
    tests run in parallel within that step, with the suite as a whole
    failing if any required step fails — model this the same way a
    CI pipeline's sequential stages of parallel jobs are modeled in
-   [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+   [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 
 4. **Trigger execution manually or via CLI** to validate the definitions
    before wiring them into CI:
    ```bash
-   kubectl testkube run test checkout-api-smoke --namespace testkube -f
-   kubectl testkube run testsuite checkout-release-validation --namespace testkube -f
+   [kubectl](../kubectl/SKILL.md) testkube run test checkout-api-smoke --namespace testkube -f
+   [kubectl](../kubectl/SKILL.md) testkube run testsuite checkout-release-validation --namespace testkube -f
    ```
    The `-f` flag follows execution logs live; omit it to trigger
    asynchronously and poll status separately with
-   `kubectl testkube get execution <execution-id>`.
+   `[kubectl](../kubectl/SKILL.md) testkube get execution <execution-id>`.
 
 5. **Wire test execution into CI as a thin trigger-and-poll step**,
    keeping the CI runner itself free of every test tool's runtime
-   (GitHub Actions example; the same CLI invocation works from Jenkins,
-   GitLab CI, or any other runner with `kubectl`/cluster access):
+   ([GitHub](../../CI_CD/github/SKILL.md) Actions example; the same CLI invocation works from [Jenkins](../../CI_CD/jenkins/SKILL.md),
+   GitLab CI, or any other runner with `[kubectl](../kubectl/SKILL.md)`/cluster access):
    ```yaml
-   # .github/workflows/post-deploy-validation.yml
+   # .[github](../../CI_CD/github/SKILL.md)/workflows/post-deploy-validation.yml
    jobs:
      run-testkube-suite:
        runs-on: ubuntu-latest
@@ -205,7 +205,7 @@ threshold checks, but that validation itself is out of scope here.
            run: curl -sSLf https://get.testkube.io | sh
          - name: Run release validation suite
            run: |
-             kubectl testkube run testsuite checkout-release-validation \
+             [kubectl](../kubectl/SKILL.md) testkube run testsuite checkout-release-validation \
                --namespace testkube -f --output-format json > result.json
          - name: Fail the job if the suite failed
            run: |
@@ -213,7 +213,7 @@ threshold checks, but that validation itself is out of scope here.
    ```
    The actual test tooling (k6, Newman, Cypress binaries/images) never
    needs to be installed on the CI runner — Testkube's executor images
-   inside the cluster carry that, and the CI job only needs `kubectl`
+   inside the cluster carry that, and the CI job only needs `[kubectl](../kubectl/SKILL.md)`
    cluster access and the Testkube CLI.
 
 6. **Scope the CI-facing credential to trigger and read executions only**,
@@ -265,15 +265,15 @@ threshold checks, but that validation itself is out of scope here.
   itself consume enough cluster resources to starve the very services
   it's testing, producing misleading results.
 - Feed a Testkube-driven k6 load test's measured throughput back into
-  [keda-configuration-validation](../keda-configuration-validation/SKILL.md)'s
-  per-replica capacity checks — an in-cluster load test is a more
-  realistic capacity signal than a synthetic guess.
+  [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md)'s
+  per-replica [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) checks — an in-cluster load test is a more
+  realistic [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) signal than a synthetic guess.
 
 ## Common pitfalls
 
 - **Symptom:** A `Test` execution fails with a connection timeout/refused
   error reaching the target service, even though the service is
-  confirmed healthy via `kubectl port-forward`.
+  confirmed healthy via `[kubectl](../kubectl/SKILL.md) port-forward`.
   **Fix:** Check for a `NetworkPolicy` in the target namespace that
   default-denies ingress from other namespaces (including Testkube's
   executor namespace) — the executor pod runs as a normal in-cluster
@@ -287,7 +287,7 @@ threshold checks, but that validation itself is out of scope here.
   against the same service.
   **Fix:** Confirm the test's `TARGET_URL` actually points at the
   service's cluster-internal address, not a public Ingress/LB hostname —
-  if it's internal, the results are measuring internal service-mesh
+  if it's internal, the results are measuring internal [service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)
   latency, not what an external client experiences through Ingress/CDN/
   TLS termination; that's a legitimate and useful measurement, but it
   must be labeled as such rather than presented as end-user latency.
@@ -296,7 +296,7 @@ threshold checks, but that validation itself is out of scope here.
   reports "success" even though one of the suite's later steps actually
   failed.
   **Fix:** Check the actual JSON/exit status of the *suite* execution,
-  not just that the `kubectl testkube run` command itself returned exit
+  not just that the `[kubectl](../kubectl/SKILL.md) testkube run` command itself returned exit
   code 0 (which it usually does even for a failed test run unless
   explicitly checked) — parse the result payload's status field (as in
   step 5's `jq -e` check) and fail the CI job explicitly on anything
@@ -305,7 +305,7 @@ threshold checks, but that validation itself is out of scope here.
 - **Symptom:** A load test's executor pod consumes enough CPU/memory to
   cause the namespace's other pods (including the service under test)
   to be throttled or evicted, producing load-test results that reflect
-  resource contention rather than the target service's real capacity.
+  resource contention rather than the target service's real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
   **Fix:** Set explicit resource requests/limits on the executor pod
   template and, for anything beyond a light smoke test, run load tests
   in a dedicated namespace/node pool separate from the services being
@@ -318,7 +318,7 @@ threshold checks, but that validation itself is out of scope here.
   **Fix:** Configure Testkube's execution history retention/cleanup (via
   its Helm chart values or a scheduled cleanup job) to a bounded window,
   the same way `successfulJobsHistoryLimit`/`failedJobsHistoryLimit`
-  bound Kubernetes `Job` history elsewhere in this repo's guidance.
+  bound [Kubernetes](../kubernetes/SKILL.md) `Job` history elsewhere in this repo's guidance.
 
 ## Worked example
 
@@ -341,7 +341,7 @@ spec:
   content:
     type: git
     repository:
-      uri: https://github.com/example-org/checkout-api-tests.git
+      uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
       branch: main
       path: e2e
   executionRequest:
@@ -354,10 +354,10 @@ spec:
 `TestSuite` gating a full release (as authored in step 3), triggered
 from the deploy pipeline's post-deploy stage:
 ```yaml
-# GitHub Actions step, appended after the deploy job succeeds
+# [GitHub](../../CI_CD/github/SKILL.md) Actions step, appended after the deploy job succeeds
 - name: Run full release validation suite
   run: |
-    kubectl testkube run testsuite checkout-release-validation \
+    [kubectl](../kubectl/SKILL.md) testkube run testsuite checkout-release-validation \
       --namespace testkube -f --output-format json > result.json
     jq -e '.status == "passed"' result.json
 ```
@@ -369,8 +369,8 @@ before a slow integration-test stage in any other pipeline design.
 
 ## Cross-references
 
-- [keda-configuration-validation](../keda-configuration-validation/SKILL.md) — using a Testkube-driven k6 load test's measured throughput as an input to validating KEDA scaling thresholds for the same service.
-- [keda-event-driven-autoscaling-configuration](../keda-event-driven-autoscaling-configuration/SKILL.md) — the autoscaling configuration whose behavior a Testkube load test can be used to exercise and observe.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — packaging the Testkube operator installation and `Test`/`TestSuite` resources as a Helm chart alongside the application they test.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — where a Testkube-driven test gate fits relative to security scan gates in an overall pipeline.
-- [github-actions-centralized-reusable-workflows](../../../cicd-tooling/skills/github-actions-centralized-reusable-workflows/SKILL.md) — centralizing the Testkube CLI trigger-and-poll step (step 5) as a reusable workflow shared across multiple services' pipelines.
+- [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md) — using a Testkube-driven k6 load test's measured throughput as an input to validating KEDA scaling thresholds for the same service.
+- [keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration](../[keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration](../keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configuration whose behavior a Testkube load test can be used to exercise and observe.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — packaging the Testkube operator installation and `Test`/`TestSuite` resources as a Helm chart alongside the application they test.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where a Testkube-driven test gate fits relative to security scan gates in an overall pipeline.
+- [github-actions-centralized-reusable-workflows](../../../cicd-tooling/skills/[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — centralizing the Testkube CLI trigger-and-poll step (step 5) as a reusable workflow shared across multiple services' pipelines.

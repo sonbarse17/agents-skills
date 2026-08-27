@@ -11,7 +11,7 @@ metadata:
 
 # Logs Search
 
-Search and filter logs to support incident investigation. The workflow mirrors Kibana Discover: apply a time range and
+Search and filter logs to support [incident](../incident/SKILL.md) investigation. The workflow mirrors Kibana Discover: apply a time range and
 scope filter, then **iteratively add exclusion filters (NOT)** until a small, interesting subset of logs remains—either
 the root cause or the key document. Optionally view logs in context (preceding and following that document) or pivot to
 another entity and start a fresh search. Use ES|QL only (`POST /_query`); do not use Query DSL.
@@ -22,7 +22,7 @@ another entity and start a fresh search. Use ES|QL only (`POST /_query`); do not
 
 ## Parameter conventions
 
-Use consistent names for Observability log search:
+Use consistent names for [Observability](../observability/SKILL.md) log search:
 
 | Parameter   | Type   | Description                                                                 |
 | ----------- | ------ | --------------------------------------------------------------------------- |
@@ -32,8 +32,8 @@ Use consistent names for Observability log search:
 | `limit`     | number | Maximum log samples to return (e.g. 10–100)                                 |
 | `groupBy`   | string | Optional field to group the histogram by (e.g. `log.level`, `service.name`) |
 
-For entity filters, use ECS field names: `service.name`, `host.name`, `service.environment`, `kubernetes.pod.name`,
-`kubernetes.namespace`. Query ECS names only; OpenTelemetry aliases map automatically in Observability indices.
+For entity filters, use ECS field names: `service.name`, `host.name`, `service.environment`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).pod.name`,
+`[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).namespace`. Query ECS names only; [OpenTelemetry](../opentelemetry/SKILL.md) aliases map automatically in [Observability](../observability/SKILL.md) indices.
 
 ### Context minimization
 
@@ -43,10 +43,10 @@ exceed 4000 tokens.
 
 **Recommended KEEP list for sample logs:**  
 `message`, `error.message`, `service.name`, `container.name`, `host.name`, `container.id`, `agent.name`,
-`kubernetes.container.name`, `kubernetes.node.name`, `kubernetes.namespace`, `kubernetes.pod.name`
+`[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).container.name`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).node.name`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).namespace`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).pod.name`
 
 **Message fallback:** If present, use the first non-empty of: `body.text` (OTel), `message`, `error.message`,
-`event.original`, `exception.message`, `error.exception.message`, `attributes.exception.message` (OTel). Observability
+`event.original`, `exception.message`, `error.exception.message`, `attributes.exception.message` (OTel). [Observability](../observability/SKILL.md)
 index templates often alias these; when building a single “message” for display, prefer that order.
 
 **Limit samples:** Default to a small sample (10–20 logs) per query. Cap at 500; do not fetch thousands in one call.
@@ -101,7 +101,7 @@ patterns remain and to choose the next exclusions—**continue iterating until f
 - If the target would not be tokenized as a single term, use a **wildcard** (e.g. `message: *Returning*`,
   `message: *WARNING*`). Do **not** put wildcard characters inside quoted phrases.
 - Use **explicit fielded KQL**: `service.name: "payment-api"`, `message: "GET /health"`,
-  `NOT kubernetes.namespace: "kube-system"`, `error.message: * AND NOT message: "Known benign warning"`.
+  `NOT [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).namespace: "kube-system"`, `error.message: * AND NOT message: "Known benign warning"`.
 - **Filtering on `log.level`** (e.g. `log.level: error`) can be useful, but it is **often flawed**: many logs have
   missing or incorrect level metadata (e.g. everything as "info", or level only in the message text). Prefer funneling
   by message content or `error.message` when hunting failures; treat `log.level` as a hint, not a reliable filter.
@@ -117,7 +117,7 @@ five-way FORK: trend, total, samples, common patterns, rare patterns.
 ```json
 POST /_query
 {
-  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= TO_DATETIME(\"2025-03-06T10:00:00.000Z\") AND @timestamp <= TO_DATETIME(\"2025-03-06T11:00:00.000Z\") | FORK (STATS count = COUNT(*) BY bucket = BUCKET(@timestamp, 1m) | SORT bucket) (STATS total = COUNT(*)) (SORT @timestamp DESC | LIMIT 10 | KEEP _id, _index, message, error.message, service.name, container.name, host.name, kubernetes.container.name, kubernetes.node.name, kubernetes.namespace, kubernetes.pod.name) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` DESC | LIMIT 20) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` ASC | LIMIT 20)"
+  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= TO_DATETIME(\"2025-03-06T10:00:00.000Z\") AND @timestamp <= TO_DATETIME(\"2025-03-06T11:00:00.000Z\") | FORK (STATS count = COUNT(*) BY bucket = BUCKET(@timestamp, 1m) | SORT bucket) (STATS total = COUNT(*)) (SORT @timestamp DESC | LIMIT 10 | KEEP _id, _index, message, error.message, service.name, container.name, host.name, [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).container.name, [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).node.name, [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).namespace, [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).pod.name) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` DESC | LIMIT 20) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` ASC | LIMIT 20)"
 }
 ```
 
@@ -142,7 +142,7 @@ literal quote characters.
 ```json
 POST /_query
 {
-  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= TO_DATETIME(\"2025-03-06T10:00:00.000Z\") AND @timestamp <= TO_DATETIME(\"2025-03-06T11:00:00.000Z\") | WHERE KQL(\"service.name: checkout AND log.level: error\") | FORK (STATS count = COUNT(*) BY bucket = BUCKET(@timestamp, 1m) | SORT bucket) (STATS total = COUNT(*)) (SORT @timestamp DESC | LIMIT 10 | KEEP _id, _index, message, error.message, service.name, host.name, kubernetes.pod.name) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` DESC | LIMIT 20) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` ASC | LIMIT 20)"
+  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= TO_DATETIME(\"2025-03-06T10:00:00.000Z\") AND @timestamp <= TO_DATETIME(\"2025-03-06T11:00:00.000Z\") | WHERE KQL(\"service.name: checkout AND log.level: error\") | FORK (STATS count = COUNT(*) BY bucket = BUCKET(@timestamp, 1m) | SORT bucket) (STATS total = COUNT(*)) (SORT @timestamp DESC | LIMIT 10 | KEEP _id, _index, message, error.message, service.name, host.name, [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).pod.name) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` DESC | LIMIT 20) (LIMIT 10000 | STATS COUNT(*) BY CATEGORIZE(message) | SORT `COUNT(*)` ASC | LIMIT 20)"
 }
 ```
 
@@ -152,7 +152,7 @@ Build the funnel by excluding known noise. In the request body, wrap the KQL str
 inside the KQL expression as `\\\"`:
 
 ```json
-"query": "... | WHERE KQL(\"NOT message: \\\"GET /health\\\" AND NOT kubernetes.namespace: \\\"kube-system\\\"\") | ..."
+"query": "... | WHERE KQL(\"NOT message: \\\"GET /health\\\" AND NOT [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).namespace: \\\"kube-system\\\"\") | ..."
 ```
 
 ```json
@@ -177,7 +177,7 @@ Use a limited set of group values in the response to avoid explosion (e.g. top N
 ```json
 POST /_query
 {
-  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= NOW() - 1 hour AND @timestamp <= NOW() | WHERE KQL(\"service.name: api-gateway\") | SORT @timestamp DESC | LIMIT 20"
+  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= NOW() - 1 hour AND @timestamp <= NOW() | WHERE KQL(\"service.name: [api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)\") | SORT @timestamp DESC | LIMIT 20"
 }
 ```
 
@@ -224,7 +224,7 @@ Escaping: wrap the KQL string in `\"...\"` in the JSON; for quoted phrases insid
   wrapper, `\\\"` for quotes inside the KQL expression (e.g. phrase values).
 - Use Elasticsearch date math for `start` and `end` (e.g. `now-1h`, `now-15m`) when building queries programmatically.
 - Choose bucket size from the time range: aim for roughly 20–50 buckets (e.g. 1h window → `1m` or `2m`).
-- Prefer ECS field names. In Observability index templates, OTel fields are aliased to ECS; see
+- Prefer ECS field names. In [Observability](../observability/SKILL.md) index templates, OTel fields are aliased to ECS; see
   [../../../Global_References/log-search-reference.md](../../../Global_References/log-search-reference.md) for resource metadata field fallbacks
   (container, host, cluster, namespace, pod, workload).
 - **`log.level`:** Filtering or grouping by it can be OK but is often unreliable when levels are missing or mis-set;

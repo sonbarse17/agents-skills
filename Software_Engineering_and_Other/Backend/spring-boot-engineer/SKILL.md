@@ -18,11 +18,11 @@ metadata:
 ## Core Workflow
 
 1. **Analyze requirements** — Identify service boundaries, APIs, data models, security needs
-2. **Design architecture** — Plan microservices, data access, cloud integration, security; confirm design before coding
+2. **Design architecture** — Plan [microservices](../../Patterns/microservices/SKILL.md), data access, cloud integration, security; confirm design before coding
 3. **Implement** — Create services with constructor injection and layered architecture (see Quick Start below)
 4. **Secure** — Add Spring Security, OAuth2, method security, CORS configuration; verify security rules compile and pass tests. If compilation or tests fail: review error output, fix the failing rule or configuration, and re-run before proceeding
 5. **Test** — Write unit, integration, and slice tests; run `./mvnw test` (or `./gradlew test`) and confirm all pass before proceeding. If tests fail: review the stack trace, isolate the failing assertion or component, fix the issue, and re-run the full suite
-6. **Deploy** — Configure health checks and observability via Actuator; validate `/actuator/health` returns `UP`. If health is `DOWN`: check the `components` detail in the response, resolve the failing component (e.g., datasource, broker), and re-validate
+6. **Deploy** — Configure health checks and [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) via Actuator; validate `/actuator/health` returns `UP`. If health is `DOWN`: check the `components` detail in the response, resolve the failing component (e.g., datasource, broker), and re-validate
 
 ## Reference Guide
 
@@ -194,5 +194,5 @@ class ProductControllerTest {
 - Hardcode URLs, credentials, or environment-specific values
 - Use deprecated Spring Boot 2.x patterns (e.g., `WebSecurityConfigurerAdapter`)
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/backend/spring-boot-engineer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/spring-boot-engineer/)
 

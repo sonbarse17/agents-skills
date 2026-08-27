@@ -16,25 +16,25 @@ metadata:
   maturity: stable
 ---
 
-# Prometheus and Grafana Monitoring Stack
+# Prometheus and Grafana [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Stack
 
 ## Purpose
 
 Prometheus and Grafana are the de facto open-source metrics stack for
-Kubernetes and cloud-native workloads: Prometheus pulls (scrapes) metrics
-on an interval, evaluates alerting rules against them, and hands firing
+[Kubernetes](../kubernetes/SKILL.md) and cloud-native workloads: Prometheus pulls (scrapes) metrics
+on an interval, evaluates [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules against them, and hands firing
 alerts to Alertmanager for routing/deduplication/silencing, while Grafana
-turns the same time-series data into dashboards. The stack is simple to
+turns the same time-series data into [dashboards](../../Cloud_Providers/dashboards/SKILL.md). The stack is simple to
 install (kube-prometheus-stack Helm chart is a one-command bootstrap) but
 easy to run badly: scrape configs that silently miss targets, PromQL
 queries that are technically valid but semantically wrong (rate() over
-too short a window, missing `by()` clauses that collapse dashboards to a
-single line), alerting rules that page on transient blips, and
-hand-edited Grafana dashboards that drift from what's checked into git.
+too short a window, missing `by()` clauses that collapse [dashboards](../../Cloud_Providers/dashboards/SKILL.md) to a
+single line), [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules that page on transient blips, and
+hand-edited Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) that drift from what's checked into git.
 This skill covers configuring scrape targets and service discovery
 correctly, writing PromQL that means what you think it means, defining
-alerting rules and Alertmanager routing that produce actionable pages
-instead of noise, and provisioning Grafana as code so dashboards survive
+[alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules and Alertmanager routing that produce actionable pages
+instead of noise, and provisioning Grafana as code so [dashboards](../../Cloud_Providers/dashboards/SKILL.md) survive
 a cluster rebuild.
 
 ## When to use
@@ -43,21 +43,21 @@ a cluster rebuild.
   (adding a `ServiceMonitor`/`PodMonitor`, a static scrape config, or a
   Prometheus Operator CRD).
 - Writing or debugging a PromQL query for a dashboard panel, a
-  recording rule, or an alerting rule.
-- Defining or tuning Prometheus alerting rules and Alertmanager
+  recording rule, or an [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule.
+- Defining or tuning Prometheus [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules and Alertmanager
   routing trees, grouping, inhibition, and silences.
-- Provisioning Grafana datasources and dashboards declaratively
+- Provisioning Grafana datasources and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) declaratively
   (as ConfigMaps/sidecars, Grafana provisioning YAML, or Terraform) so
   they are version-controlled rather than edited by hand in the UI.
 - Investigating a target showing `up == 0` in Prometheus, a dashboard
   panel showing "No data", or an alert that fired but didn't page
   anyone (or paged everyone, repeatedly).
 - Reducing alert fatigue — too many pages, duplicate pages across
-  teams, or alerts with no clear owner/runbook.
+  teams, or alerts with no clear owner/[runbook](../../Observability_and_SecOps/runbook/SKILL.md).
 
 ## Prerequisites & environment
 
-- Kubernetes cluster with the **kube-prometheus-stack** Helm chart
+- [Kubernetes](../kubernetes/SKILL.md) cluster with the **kube-prometheus-stack** Helm chart
   (bundles Prometheus Operator, Prometheus, Alertmanager, Grafana, and
   the `node-exporter`/`kube-state-metrics` exporters) — version 55.x+
   tracks Prometheus 2.5x and Grafana 10.x/11.x at the time of writing;
@@ -68,11 +68,11 @@ a cluster rebuild.
   on top of the Operator, versus hand-written `scrape_configs` in
   `prometheus.yml` if running vanilla Prometheus.
 - Cluster RBAC allowing Prometheus's service account to `list`/`watch`
-  `Endpoints`, `Service`, and `Pod` objects for Kubernetes service
+  `Endpoints`, `Service`, and `Pod` objects for [Kubernetes](../kubernetes/SKILL.md) service
   discovery (`kubernetes_sd_configs`) to function.
 - A notification receiver already provisioned for Alertmanager
   (Slack webhook, PagerDuty integration key, Opsgenie API key, or
-  generic webhook) stored as a Kubernetes `Secret` — never inline in the
+  generic webhook) stored as a [Kubernetes](../kubernetes/SKILL.md) `Secret` — never inline in the
   Alertmanager config.
 - For Grafana provisioning as code: either the sidecar pattern
   (ConfigMaps labeled `grafana_dashboard: "1"` auto-loaded by a
@@ -83,22 +83,22 @@ a cluster rebuild.
 
 1. **Install the stack with an explicit, pinned chart version:**
    ```bash
-   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo add prometheus-community https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
    helm upgrade --install kube-prom-stack prometheus-community/kube-prometheus-stack \
-     --namespace monitoring --create-namespace \
+     --namespace [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) --create-namespace \
      --version 65.5.0 \
-     -f values-monitoring.yaml
+     -f values-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).yaml
    ```
 
 2. **Add a scrape target for a new service.** Prefer the Prometheus
    Operator `ServiceMonitor` CRD over hand-editing `scrape_configs` —
    it's picked up automatically without a Prometheus reload/restart:
    ```yaml
-   apiVersion: monitoring.coreos.com/v1
+   apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
    kind: ServiceMonitor
    metadata:
      name: payments-api
-     namespace: monitoring
+     namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
      labels:
        release: kube-prom-stack   # must match the Prometheus CR's serviceMonitorSelector
    spec:
@@ -114,7 +114,7 @@ a cluster rebuild.
          interval: 30s
          scrapeTimeout: 10s
    ```
-   For non-Kubernetes targets (a VM, an on-prem host), use a static
+   For non-[Kubernetes](../kubernetes/SKILL.md) targets (a VM, an on-prem host), use a static
    `scrape_configs` entry or `file_sd_configs` pointing at a JSON/YAML
    file so targets can be added without restarting Prometheus:
    ```yaml
@@ -152,15 +152,15 @@ a cluster rebuild.
    for a 30s-60s scrape interval) so `rate()` always has enough samples
    to extrapolate correctly.
 
-5. **Add recording rules for anything queried repeatedly** (dashboards,
+5. **Add recording rules for anything queried repeatedly** ([dashboards](../../Cloud_Providers/dashboards/SKILL.md),
    alerts) to precompute expensive aggregations rather than recomputing
    them on every dashboard refresh:
    ```yaml
-   apiVersion: monitoring.coreos.com/v1
+   apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
    kind: PrometheusRule
    metadata:
      name: payments-api-recording-rules
-     namespace: monitoring
+     namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
      labels:
        release: kube-prom-stack
    spec:
@@ -172,15 +172,15 @@ a cluster rebuild.
              expr: sum by (job) (rate(http_requests_total[5m]))
    ```
 
-6. **Write alerting rules with a `for:` duration** to suppress
-   flapping/transient blips, and attach severity + runbook labels so
+6. **Write [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules with a `for:` duration** to suppress
+   flapping/transient blips, and attach severity + [runbook](../../Observability_and_SecOps/runbook/SKILL.md) labels so
    routing and on-call response are automatic:
    ```yaml
-   apiVersion: monitoring.coreos.com/v1
+   apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
    kind: PrometheusRule
    metadata:
      name: payments-api-alerts
-     namespace: monitoring
+     namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
      labels:
        release: kube-prom-stack
    spec:
@@ -197,7 +197,7 @@ a cluster rebuild.
                team: payments
              annotations:
                summary: "Payments API error rate above 5% for 10m"
-               runbook_url: "https://runbooks.internal/payments-api-error-rate"
+               runbook_url: "https://[runbooks](../../Observability_and_SecOps/runbooks/SKILL.md).internal/payments-api-error-rate"
 
            - alert: PrometheusTargetDown
              expr: up{job="payments-api"} == 0
@@ -244,18 +244,18 @@ a cluster rebuild.
        pagerduty_configs:
          - routing_key: '${PAGERDUTY_ROUTING_KEY}'
    ```
-   Store `SLACK_WEBHOOK_URL`/`PAGERDUTY_ROUTING_KEY` in a Kubernetes
+   Store `SLACK_WEBHOOK_URL`/`PAGERDUTY_ROUTING_KEY` in a [Kubernetes](../kubernetes/SKILL.md)
    `Secret` referenced via `alertmanagerConfigSecret`/`envFrom`, never
    inline.
 
-8. **Provision Grafana datasources and dashboards as code**, not
+8. **Provision Grafana datasources and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) as code**, not
    through the UI, using the sidecar pattern:
    ```yaml
    apiVersion: v1
    kind: ConfigMap
    metadata:
      name: payments-api-dashboard
-     namespace: monitoring
+     namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
      labels:
        grafana_dashboard: "1"   # auto-discovered by the Grafana sidecar
    data:
@@ -269,7 +269,7 @@ a cluster rebuild.
      - name: Prometheus
        type: prometheus
        access: proxy
-       url: http://kube-prom-stack-prometheus.monitoring:9090
+       url: http://kube-prom-stack-prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090
        isDefault: true
        jsonData:
          timeInterval: 30s
@@ -291,8 +291,8 @@ a cluster rebuild.
   reconciled automatically and don't require a Prometheus restart/reload.
 - **Every alert must have `severity` and `team` (or equivalent
   ownership) labels** and a `runbook_url` annotation — an alert with no
-  clear owner and no runbook is a page nobody knows how to act on.
-- **Set `for:` on every alerting rule** long enough to ride out normal
+  clear owner and no [runbook](../../Observability_and_SecOps/runbook/SKILL.md) is a page nobody knows how to act on.
+- **Set `for:` on every [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule** long enough to ride out normal
   noise (typically 5-15 minutes for error-rate/latency alerts, shorter
   for hard down/crash-loop conditions) — alerts without a `for:` fire on
   a single bad scrape.
@@ -301,17 +301,17 @@ a cluster rebuild.
   keeps dashboard load fast and query cost predictable.
 - **Alert on symptoms (error rate, latency, saturation), not on every
   possible cause** — a smaller set of well-tuned symptom-based alerts
-  produces far less noise than alerting on every internal metric.
+  produces far less noise than [alerting](../../Observability_and_SecOps/alerting/SKILL.md) on every internal metric.
 - **Use inhibition rules to suppress redundant lower-severity alerts**
   when a related critical alert is already firing for the same target,
   instead of paging on every layer of a cascading failure.
 - **Set retention and remote-write/long-term-storage deliberately** —
   local Prometheus TSDB retention (commonly 15-30 days) is for
   operational queries; use Thanos, Cortex, or Mimir (or a managed
-  remote-write target) if you need long-term retention for capacity
+  remote-write target) if you need long-term retention for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   planning or compliance.
-- **Version-control Grafana dashboards and Alertmanager config** in the
-  same repo/pipeline as the rest of the platform config — dashboards
+- **Version-control Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and Alertmanager config** in the
+  same repo/pipeline as the rest of the platform config — [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
   edited only in the UI are lost on the next cluster rebuild.
 
 ## Common pitfalls
@@ -322,7 +322,7 @@ a cluster rebuild.
   custom resource's `serviceMonitorSelector` (commonly `release:
   <helm-release-name>`), or the `endpoints.port` name doesn't match a
   named port on the target `Service`. Check
-  `kubectl get prometheus -o yaml` for the selector and confirm the
+  `[kubectl](../kubectl/SKILL.md) get prometheus -o yaml` for the selector and confirm the
   Service exposes a **named** port, not just a numeric one.
 
 - **Symptom:** A dashboard panel using `rate(http_requests_total[1m])`
@@ -338,7 +338,7 @@ a cluster rebuild.
   `for:` clause matched to the metric's natural noise level so the
   condition must hold for the full duration before firing.
 
-- **Symptom:** The same underlying incident produces five separate
+- **Symptom:** The same underlying [incident](../../Observability_and_SecOps/incident/SKILL.md) produces five separate
   pages across four different teams within two minutes.
   **Fix:** No `inhibit_rules` or `group_by` tuning in Alertmanager — every
   downstream symptom alert fired independently. Group alerts by
@@ -357,7 +357,7 @@ a cluster rebuild.
   **Fix:** Retention (`--storage.tsdb.retention.time`/`.size`) wasn't
   bounded relative to actual disk size, or high-cardinality labels
   (e.g. a label containing a raw user ID or full URL path) blew up
-  the number of time series. Bound retention explicitly, and audit
+  the number of time series. Bound retention explicitly, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   metrics/labels for unbounded cardinality before scraping them at
   scale.
 
@@ -365,7 +365,7 @@ a cluster rebuild.
 
 **Scenario:** The `payments-api` team ships a new service. It exposes
 Prometheus metrics on `/metrics` but is invisible in Prometheus, has no
-dashboard, and no alerting — the team wants to be paged only on genuine
+dashboard, and no [alerting](../../Observability_and_SecOps/alerting/SKILL.md) — the team wants to be paged only on genuine
 customer-impacting error rates, not on every blip.
 
 1. Confirm the Service exposes a named metrics port:
@@ -395,17 +395,17 @@ customer-impacting error rates, not on every blip.
    receiver and everything else to the team's Slack channel (step 7),
    with an inhibition rule so a firing `PaymentsAPIHighErrorRate`
    suppresses the lower-severity `PrometheusTargetDown` warning for
-   the same job if both trip during the same incident.
+   the same job if both trip during the same [incident](../../Observability_and_SecOps/incident/SKILL.md).
 6. Provision a Grafana dashboard (request rate, error rate, p99 latency
    panels backed by the recording rule and histogram query from step 4)
    as a labeled ConfigMap, checked into the team's platform-config repo
    alongside the `ServiceMonitor` and `PrometheusRule` manifests.
 7. Run `promtool check rules` and `promtool test rules` in CI against
-   the alerting rule file before merging, catching a typo'd metric name
+   the [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule file before merging, catching a typo'd metric name
    before it reaches production.
 
 ## Cross-references
 
-- [kubecost-cost-visibility](../kubecost-cost-visibility/SKILL.md)
-- [karpenter-cluster-autoscaling](../karpenter-cluster-autoscaling/SKILL.md)
-- [kubernetes-network-policy-zero-trust](../kubernetes-network-policy-zero-trust/SKILL.md)
+- [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md)
+- [karpenter-cluster-autoscaling](../[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
+- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)

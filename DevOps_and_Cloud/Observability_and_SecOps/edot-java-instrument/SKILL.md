@@ -13,9 +13,9 @@ metadata:
 
 Read the setup guide before making changes:
 
-- [EDOT Java setup](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/setup)
-- [OpenTelemetry Java agent](https://opentelemetry.io/docs/zero-code/java/agent/)
-- [EDOT Java configuration](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/configuration)
+- [EDOT Java setup](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/setup)
+- [OpenTelemetry Java agent](https://[opentelemetry](../opentelemetry/SKILL.md).io/docs/zero-code/java/agent/)
+- [EDOT Java configuration](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/configuration)
 
 ## Guidelines
 
@@ -35,5 +35,5 @@ Read the setup guide before making changes:
 
 ## Examples
 
-See the [EDOT Java setup guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/setup) for complete
-Dockerfile and docker-compose examples.
+See the [EDOT Java setup guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/setup) for complete
+Dockerfile and [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) examples.

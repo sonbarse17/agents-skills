@@ -27,7 +27,7 @@ ordering guarantees, and under-replicated topics silently risk data loss
 until a broker actually fails. This skill covers designing that
 configuration correctly the first time — validating it before rollout is
 covered separately in
-[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md).
+[kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -139,7 +139,7 @@ covered separately in
    high enough that a single partition's throughput stays within one
    broker's practical per-partition write throughput. Over-partitioning
    has a real cost too — see the rebalance and metadata pitfalls in
-   [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md).
+   [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md).
 
 6. **Enable rack awareness** so Kafka spreads a topic's replicas across
    failure domains instead of colocating them:
@@ -162,7 +162,7 @@ covered separately in
    ```
    Compacted topics (state/changelog topics) need `cleanup.policy=compact`
    instead of time-based retention — see
-   [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)
+   [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
    for validating that the right policy is applied before production
    rollout.
 
@@ -201,7 +201,7 @@ covered separately in
   producers with `acks=all` are correctly refused rather than silently
   under-protected — the fix is addressing why replicas were already
   lagging (see under-replicated-partition causes in
-  [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)),
+  [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md)),
   not lowering `min.insync.replicas`.
 
 - **Symptom:** A topic created early in the cluster's life with 3
@@ -290,6 +290,6 @@ keeping the topic writable throughout the outage.
 
 ## Cross-references
 
-- [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md) — validating this cluster's topic configs and consumer group settings before production rollout.
-- [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md) — diagnosing under-replicated partitions and rebalance storms that stem from the partition/replication choices made here.
-- [kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md) — schema governance layered on top of the topics designed in this skill.
+- [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — validating this cluster's topic configs and consumer group settings before production rollout.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — diagnosing under-replicated partitions and rebalance storms that stem from the partition/replication choices made here.
+- [kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — schema governance layered on top of the topics designed in this skill.

@@ -76,7 +76,7 @@ Cloud provider?
 ├── AWS → S3 (best integration with AWS ecosystem)
 ├── Azure → ADLS Gen2 (best with Azure AD, Active Directory)
 ├── GCP → GCS (strong consistency, best for Google ecosystem)
-├── Multi-cloud → MinIO (S3-compatible layer across clouds)
+├── [Multi-cloud](../multi-cloud/SKILL.md) → MinIO (S3-compatible layer across clouds)
 └── On-premise / air-gapped → MinIO or HDFS
 
 Primary workload?
@@ -177,7 +177,7 @@ dfs.permissions.enabled: true
 ### Step 8: Security
 
 #### Encryption at Rest
-Server-side encryption: SSE-S3 (AES-256, S3-managed keys), SSE-KMS (AWS KMS-managed keys), SSE-C (customer-provided keys). Client-side encryption: encrypt before upload, decrypt after download. For compliance: SSE-KMS with audit logging.
+Server-side encryption: SSE-S3 (AES-256, S3-managed keys), SSE-KMS (AWS KMS-managed keys), SSE-C (customer-provided keys). Client-side encryption: encrypt before upload, decrypt after download. For compliance: SSE-KMS with [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 
 #### Encryption in Transit
 TLS 1.2+ for all S3/ADLS/GCS API calls. Enforce HTTPS-only bucket policies. HDFS: enable SSL for RPC and data transfer.
@@ -201,9 +201,9 @@ TLS 1.2+ for all S3/ADLS/GCS API calls. Enforce HTTPS-only bucket policies. HDFS
 ### Step 9: Cost Optimization
 
 #### Strategies
-Use intelligent tiering for automatic cost savings on variable-access data. Request (S3) Reduced Redundancy for non-critical data (lower durability = lower cost). Reserved capacity for predictable usage. Monitor and alert on cost anomalies.
+Use intelligent tiering for automatic cost savings on variable-access data. Request (S3) Reduced Redundancy for non-critical data (lower durability = lower cost). Reserved [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for predictable usage. Monitor and alert on cost anomalies.
 
-#### Cost Monitoring
+#### Cost [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 Track: storage cost per bucket/container, data transfer costs (egress), request costs (PUT/GET/LIST), lifecycle transition costs. Allocate costs to teams/domains via tag-based cost allocation.
 
 ### Decision Trees
@@ -212,10 +212,10 @@ Track: storage cost per bucket/container, data transfer costs (egress), request 
 ```
 Cloud adoption strategy?
 ├── Single cloud → Native object store (S3/ADLS/GCS)
-├── Multi-cloud → MinIO (abstraction layer)
+├── [Multi-cloud](../multi-cloud/SKILL.md) → MinIO (abstraction layer)
 ├── On-premise
 │   ├── Hadoop ecosystem → HDFS
-│   └── Kubernetes-native → MinIO (S3-compatible)
+│   └── [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native → MinIO (S3-compatible)
 └── Edge / IoT → MinIO (lightweight, S3 API)
 ```
 
@@ -231,10 +231,10 @@ Data access pattern?
 ### MinIO Deployment Architecture
 
 #### Multi-Node Setup
-MinIO runs as a distributed system across multiple nodes. Minimum 4 nodes for erasure coding protection. Each node: 4+ drives, SSD/NVMe preferred for performance. Deployed via: Docker Compose (dev/tiny), Kubernetes Operator (production), bare metal (HPC).
+MinIO runs as a distributed system across multiple nodes. Minimum 4 nodes for erasure coding protection. Each node: 4+ drives, SSD/NVMe preferred for performance. Deployed via: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose (dev/tiny), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Operator (production), bare metal (HPC).
 
 ```yaml
-# MinIO Kubernetes Operator
+# MinIO [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Operator
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
@@ -380,7 +380,7 @@ object_lock_examples:
 # - Per-region buckets with IAM restrictions
 # - S3 bucket policies denying cross-region replication for sensitive data
 # - MinIO multi-tenant deployment per region
-# - Regular audit to verify no data leaves allowed regions
+# - Regular [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) to verify no data leaves allowed regions
 ```
 
 ### Step 12: Cost Modeling
@@ -406,7 +406,7 @@ cost_components:
   
   additional:
     - encryption (KMS: per key, per API call)
-    - monitoring (CloudWatch, metrics per custom metric)
+    - [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (CloudWatch, metrics per custom metric)
     - backup / replication (CRR storage in destination region)
 ```
 
@@ -442,17 +442,17 @@ cost_estimate:
   
   monitoring_backup:
     cross_region_replication: $500/mo  # 50TB replicated
-    monitoring: $100/mo
+    [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md): $100/mo
   
   total_monthly: $5,825/mo
   total_annual: $69,900/yr
 ```
 
-### Step 13: Monitoring and Observability
+### Step 13: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 
 #### Storage Metrics
 ```yaml
-# Object store monitoring (CloudWatch, Azure Monitor, GCS Ops)
+# Object store [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (CloudWatch, Azure Monitor, GCS Ops)
 metrics:
   storage:
     - BucketSizeBytes (by storage tier)
@@ -476,7 +476,7 @@ metrics:
     - TotalCost
 ```
 
-#### Alerting Thresholds
+#### [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Thresholds
 ```yaml
 alerts:
   - name: "Storage growth anomaly"
@@ -531,7 +531,7 @@ Compliance requirement?
 │   └── Same-region replication (SRR) + backup to another AZ
 ├── GDPR right to erasure
 │   ├── Replicate selectively (no unnecessary copies)
-│   └── Document replication topology for audit
+│   └── Document replication topology for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 └── No compliance requirement
     └── No replication — rely on cloud provider durability
 ```
@@ -558,5 +558,5 @@ Compliance requirement?
 
 ## References
   - references/distributed-storage-patterns.md — Distributed Storage Patterns
-  - references/storage-cost-optimization.md — Storage Cost Optimization
+  - references/storage-[cost-optimization](../cost-optimization/SKILL.md).md — Storage Cost Optimization
   - references/storage-tiering.md — Storage Tiering Reference

@@ -10,8 +10,8 @@ description: Implementing Module Federation for scaling frontend teams.
 - **Host App (Shell):** The main container application.
 - **Remote App:** Independently deployed feature modules.
 
-## Mermaid Diagram
-```mermaid
+## [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) Diagram
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Host App Shell] --> B[Remote App 1: Auth]

@@ -29,12 +29,12 @@ Implement push notifications with correct permission flow, token management, pay
 User request includes: `push notification`, `APNs`, `FCM`, `remote notification`, `push token`, `notification payload`, `notification channel`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
+- Platform (iOS, [Android](../android/SKILL.md), Flutter, React Native)
 - Push service (APNs, FCM, or both)
 - Existing notification infrastructure
 
 ### Output Artifact
-A markdown document containing permission flow, token registration and refresh, payload structure (alert, data, silent), foreground/background handling, notification channels (Android), and platform-specific considerations.
+A markdown document containing permission flow, token registration and refresh, payload structure (alert, data, silent), foreground/background handling, notification channels ([Android](../android/SKILL.md)), and platform-specific considerations.
 
 ### Response Format
 Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with full implementation. Summarize platform divergence points in bullet list. No preamble. No postamble. No explanations.
@@ -43,7 +43,7 @@ Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with full imple
 - [ ] Permission flow implemented for all target platforms
 - [ ] Token registration and refresh handled
 - [ ] Foreground and background notification handling implemented
-- [ ] Notification channels defined (Android)
+- [ ] Notification channels defined ([Android](../android/SKILL.md))
 - [ ] Payload structure documented (alert, data, silent)
 
 ### Max Response Length
@@ -55,12 +55,12 @@ Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with full imple
 ```
 Which push service?
 ├── iOS-only → APNs directly (simpler, no extra dependency)
-├── Android-only → FCM directly (required for Play Store apps)
-├── iOS + Android → FCM (unified, single server endpoint)
+├── [Android](../android/SKILL.md)-only → FCM directly (required for Play Store apps)
+├── iOS + [Android](../android/SKILL.md) → FCM (unified, single server endpoint)
 │   └── FCM handles APNs relay for iOS automatically
-├── Cross-platform (Flutter/RN) → Firebase Cloud Messaging SDK
-│   └── flutter-fire / react-native-firebase handles both platforms
-└── Need advanced analytics → Firebase + BigQuery / custom analytics
+├── Cross-platform (Flutter/RN) → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Cloud Messaging SDK
+│   └── flutter-fire / react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) handles both platforms
+└── Need advanced analytics → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) + BigQuery / custom analytics
 ```
 
 ### Notification Type Selection
@@ -68,14 +68,14 @@ Which push service?
 What type of notification?
 ├── User-facing alert (new message, order update, reminder)
 │   ├── iOS: alert payload with aps.alert, badge, sound
-│   └── Android: notification channel with importance level
+│   └── [Android](../android/SKILL.md): notification channel with importance level
 ├── Silent data sync (content sync, cache refresh)
 │   ├── iOS: content-available:1, no alert/badge/sound
-│   ├── Android: data-only payload, no notification key
-│   └── Triggers background processing (30s iOS, variable Android)
+│   ├── [Android](../android/SKILL.md): data-only payload, no notification key
+│   └── Triggers background processing (30s iOS, variable [Android](../android/SKILL.md))
 ├── Rich notification (image, actions, reply)
 │   ├── iOS: UNNotificationServiceExtension for media download
-│   └── Android: BigPictureStyle, InboxStyle, action buttons
+│   └── [Android](../android/SKILL.md): BigPictureStyle, InboxStyle, action buttons
 └── Critical alert (health, safety, security)
     └── iOS: critical alert entitlement + critical:1 in payload
 ```
@@ -86,11 +86,11 @@ When to request permission?
 ├── On first launch (preferred: explain why first)
 │   ├── Show custom UI explaining notification benefits
 │   ├── Then call system permission dialog
-│   └── If denied: never prompt again (iOS), can re-prompt (Android)
+│   └── If denied: never prompt again (iOS), can re-prompt ([Android](../android/SKILL.md))
 ├── On value moment (after user completes key action)
 │   ├── "Enable notifications for order updates?"
 │   └── Higher grant rate but later token registration
-└── Proactive re-prompt (Android only)
+└── Proactive re-prompt ([Android](../android/SKILL.md) only)
     └── Use shouldShowRequestPermissionRationale to check
 ```
 
@@ -107,7 +107,7 @@ App Launch → Explain why notifications → Request Authorization → Grant →
 
 ### Step 3: Handle Foreground vs Background Notifications
 
-### Step 4: Define Notification Channels (Android)
+### Step 4: Define Notification Channels ([Android](../android/SKILL.md))
 
 ### Step 5: Configure Server-Side Sending
 
@@ -145,7 +145,7 @@ class NotificationService: NSObject {
 }
 ```
 
-### Android — NotificationCompat
+### [Android](../android/SKILL.md) — NotificationCompat
 ```kotlin
 class NotificationHelper(private val context: Context) {
   companion object {
@@ -174,7 +174,7 @@ class NotificationHelper(private val context: Context) {
     channels.forEach { manager.createNotificationChannel(it) }
   }
 
-  // Android 13+ requires runtime permission (POST_NOTIFICATIONS)
+  // [Android](../android/SKILL.md) 13+ requires runtime permission (POST_NOTIFICATIONS)
   fun requestPermission(activity: Activity) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       ActivityCompat.requestPermissions(
@@ -195,7 +195,7 @@ class PushService {
   final _messaging = FirebaseMessaging.instance;
 
   Future<void> setup() async {
-    // Request permission (iOS) / no-op on Android
+    // Request permission (iOS) / no-op on [Android](../android/SKILL.md)
     final settings = await _messaging.requestPermission(
       alert: true,
       badge: true,
@@ -239,9 +239,9 @@ class PushService {
 }
 ```
 
-### React Native — @react-native-firebase/messaging
-```typescript
-import messaging from '@react-native-firebase/messaging';
+### React Native — @react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+import messaging from '@react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 
 class PushService {
@@ -252,7 +252,7 @@ class PushService {
       || authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      // Create notification channels (Android)
+      // Create notification channels ([Android](../android/SKILL.md))
       await notifee.createChannel({
         id: 'orders',
         name: 'Orders',
@@ -278,7 +278,7 @@ class PushService {
         await notifee.displayNotification({
           title: remoteMessage.notification?.title,
           body: remoteMessage.notification?.body,
-          android: { channelId: remoteMessage.data?.channel || 'default' },
+          [android](../android/SKILL.md): { channelId: remoteMessage.data?.channel || 'default' },
           ios: {},  // iOS shows system notification automatically
         });
       });
@@ -317,23 +317,23 @@ func application(_ application: UIApplication, didFailToRegisterForRemoteNotific
 }
 ```
 
-### Android — FCM Token
+### [Android](../android/SKILL.md) — FCM Token
 ```kotlin
 // FirebaseMessagingService
 class MyFirebaseService : FirebaseMessagingService() {
   override fun onNewToken(token: String) {
     super.onNewToken(token)
     // Token changed (rotated, restored, new install)
-    api.registerToken(token, "android")
+    api.registerToken(token, "[android](../android/SKILL.md)")
   }
 }
 ```
 
 ## Server-Side Sending
 
-### Node.js — Firebase Admin
+### Node.js — [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Admin
 ```javascript
-const admin = require('firebase-admin');
+const admin = require('[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin');
 admin.initializeApp({ credential: admin.credential.applicationDefault() });
 
 async function sendPush(userId, title, body, data = {}) {
@@ -343,7 +343,7 @@ async function sendPush(userId, title, body, data = {}) {
     tokens,  // Up to 500 per call
     notification: { title, body },
     data: { ...data, click_action: 'FLUTTER_NOTIFICATION_CLICK' },
-    android: {
+    [android](../android/SKILL.md): {
       notification: {
         channelId: data.channel || 'default',
         priority: 'high',
@@ -441,7 +441,7 @@ async function sendAPNs(deviceToken, title, body, data = {}) {
 }
 ```
 
-### Android — FCM Data Payload
+### [Android](../android/SKILL.md) — FCM Data Payload
 ```json
 {
   "to": "device_token",
@@ -496,7 +496,7 @@ class NotificationService: UNNotificationServiceExtension {
 }
 ```
 
-### Android — Big Picture Style
+### [Android](../android/SKILL.md) — Big Picture Style
 ```kotlin
 val bigPictureStyle = NotificationCompat.BigPictureStyle()
   .bigPicture(bitmap)
@@ -542,7 +542,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 }
 ```
 
-### Android — Direct Reply
+### [Android](../android/SKILL.md) — Direct Reply
 ```kotlin
 val replyLabel = "Reply"
 val remoteInput = RemoteInput.Builder("reply_text")
@@ -580,7 +580,7 @@ class ReplyReceiver : BroadcastReceiver() {
 let summary = UNNotificationSummarySetting... 
 ```
 
-### Android — Group Summary
+### [Android](../android/SKILL.md) — Group Summary
 ```kotlin
 val groupKey = "orders"
 val summaryNotification = NotificationCompat.Builder(context, CHANNEL_ORDERS)
@@ -619,7 +619,7 @@ Future<void> showLocalNotification({
     DateTime.now().millisecondsSinceEpoch ~/ 1000,
     title,
     body,
-    NotificationDetails(android: androidDetails, iOS: iosDetails),
+    NotificationDetails([android](../android/SKILL.md): androidDetails, iOS: iosDetails),
     payload: payload,
   );
 }
@@ -632,7 +632,7 @@ Future<void> showLocalNotification({
 - **Ignoring delivery failures**: Dead tokens accumulate. Process `SendResponse` failures, remove stale tokens
 - **Sending same push simultaneously to many tokens of same device**: FCM handles multiple tokens/device. Don't duplicate
 - **Payload too large**: APNs/FCM 4KB limit applies to entire payload. Keep data minimal, reference URLs
-- **No notification channel differentiation (Android)**: All notifications same importance. Users turn off all instead of just promotions
+- **No notification channel differentiation ([Android](../android/SKILL.md))**: All notifications same importance. Users turn off all instead of just promotions
 - **Silent push without throttling**: iOS respects `content-available` throttling per app. Too many silent pushes = dropped
 - **No thread-id/grouping**: Notification tray becomes a mess. Group related notifications
 - **Critical alerts overused**: Users revoke critical alert entitlement if overused. Save for genuinely urgent
@@ -648,18 +648,18 @@ Future<void> showLocalNotification({
 - Use topic-based messaging for broadcasts over individual token sends
 - Silent pushes limited to ~3 per app per hour by iOS — budget accordingly
 - Notification service extension has 30s to download media (iOS)
-- Android notification rate limit: ~100/second per device
+- [Android](../android/SKILL.md) notification rate limit: ~100/second per device
 - Monitor notification delivery rate, tap rate, and opt-out rate as KPIs
 - Compress payload data, reference images by URL rather than embedding
 
 ## Testing Push Notifications
 - iOS: use `swcutil` or Xcode > Simulate Push Notification with `.apns` file
-- Android: use Firebase Console > Cloud Messaging > Send Test Message
+- [Android](../android/SKILL.md): use [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Console > Cloud Messaging > Send Test Message
 - Test all three states: foreground, background, killed
 - Test permission flow: accept, deny, accept-then-deny-in-settings
 - Test rich media: image, video, audio attachments
 - Test interactive actions: reply, track, dismiss
-- Test notification channel importance levels (Android)
+- Test notification channel importance levels ([Android](../android/SKILL.md))
 - Test token refresh: uninstall/reinstall, restore from backup
 - Test push on WiFi, cellular, airplane mode
 - Test critical alert entitlement (iOS) — real device, special provisioning
@@ -682,5 +682,5 @@ After push notification setup, hand off to:
 - `mobile/universal/security` — Token security, APNs certificate management
 - `mobile/universal/testing` — Push notification testing scenarios
 - `mobile/ios` — APNs, notification service extension, critical alerts
-- `mobile/android` — FCM, notification channels, direct reply
+- `mobile/[android](../android/SKILL.md)` — FCM, notification channels, direct reply
 

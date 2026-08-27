@@ -30,13 +30,13 @@ outage, training responders to ignore their pager. This skill covers the
 concrete PagerDuty and Opsgenie configuration — schedules, layers,
 escalation policies, event orchestration/alert policies, deduplication
 keys, and maintenance windows — that implements the on-call *process*.
-The process itself (severity levels, Incident Command roles, rotation
+The process itself (severity levels, [Incident](../incident/SKILL.md) Command roles, rotation
 length, follow-the-sun design) is covered in
-[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md);
+[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md);
 this skill is where that design becomes an actual escalation policy JSON
 payload or Terraform resource. Whether that configuration is *correct* —
 no gaps, no single point of failure — is a separate concern covered in
-[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md).
+[pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -44,11 +44,11 @@ no gaps, no single point of failure — is a separate concern covered in
   PagerDuty or Opsgenie for a team or service that doesn't have one yet.
 - Writing or editing an escalation policy — how many rungs, what timeout
   between them, who/what each rung pages.
-- Routing alerts from a monitoring/alerting source (Prometheus
-  Alertmanager, Datadog, CloudWatch) into the correct PagerDuty service
+- Routing alerts from a [monitoring](../monitoring/SKILL.md)/[alerting](../alerting/SKILL.md) source (Prometheus
+  Alertmanager, [Datadog](../datadog/SKILL.md), CloudWatch) into the correct PagerDuty service
   or Opsgenie team, including severity-based routing.
 - Configuring alert deduplication so a flapping check or a burst of
-  correlated alerts from one root cause produces one incident, not one
+  correlated alerts from one root cause produces one [incident](../incident/SKILL.md), not one
   page per alert.
 - Setting up a maintenance window/override so planned maintenance or a
   known ongoing issue doesn't page anyone unnecessarily.
@@ -68,15 +68,15 @@ no gaps, no single point of failure — is a separate concern covered in
   `pagerduty/pagerduty` or `opsgenie/opsgenie` (or direct REST calls) —
   Terraform is strongly preferred over console clicks so schedules and
   escalation policies are diffable and reviewable in a PR.
-- Monitoring already producing alerts with enough metadata (a stable
+- [Monitoring](../monitoring/SKILL.md) already producing alerts with enough metadata (a stable
   `dedup_key`/alias, severity, source service) to route and deduplicate
   on — see
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for the Alertmanager side of getting that metadata into the alert
   payload in the first place.
 - Decide the on-call process (severity levels, rotation length,
   follow-the-sun) *before* configuring the tool — see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md).
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
   This skill implements that design; it doesn't design it from scratch.
 
 ## Step-by-step guidance
@@ -152,7 +152,7 @@ no gaps, no single point of failure — is a separate concern covered in
      }
    }
    ```
-   `num_loops: 2` means the whole chain repeats twice before the incident
+   `num_loops: 2` means the whole chain repeats twice before the [incident](../incident/SKILL.md)
    is marked unacknowledged and left open — don't leave this at the
    default of `0` (no repeat) for anything Sev1/Sev2-capable.
    Opsgenie's equivalent is an **escalation** object referencing a team
@@ -171,13 +171,13 @@ no gaps, no single point of failure — is a separate concern covered in
    Whether this policy actually has redundant coverage at every rung (not
    just two rungs that both happen to point at the same one person) is
    the specific thing
-   [pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)
+   [pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md)
    checks — do that validation after writing any escalation policy, not
    only when something goes wrong.
 
 3. **Route alerts to the correct service/team with explicit rules, not
    a single catch-all integration.** PagerDuty Event Orchestration lets
-   you route on payload fields before an event even creates an incident:
+   you route on payload fields before an event even creates an [incident](../incident/SKILL.md):
    ```yaml
    # PagerDuty Event Orchestration (router) — abbreviated
    sets:
@@ -196,14 +196,14 @@ no gaps, no single point of failure — is a separate concern covered in
    ```
    Opsgenie uses **alert policies** on the team/integration with `match`
    conditions and a `routeTo` action, evaluated similarly. Either way,
-   route on a stable field the monitoring source guarantees is present
+   route on a stable field the [monitoring](../monitoring/SKILL.md) source guarantees is present
    (a `service` or `team` label from Alertmanager, not a free-text
    message you have to substring-match).
 
 4. **Deduplicate at the source, using a stable key, not the tool's
    default event-per-alert behavior.** PagerDuty's Events API v2 accepts
    a `dedup_key` — reusing the same key across firing/resolving events
-   for the same underlying problem collapses them into one incident:
+   for the same underlying problem collapses them into one [incident](../incident/SKILL.md):
    ```json
    {
      "routing_key": "${PAGERDUTY_INTEGRATION_KEY}",
@@ -267,13 +267,13 @@ no gaps, no single point of failure — is a separate concern covered in
   before it falls through to a policy-wide "notify everyone" — see the
   dedicated validation skill for how to check this systematically rather
   than by inspection.
-- Set schedule timezones explicitly and audit them whenever a rotation
+- Set schedule timezones explicitly and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) them whenever a rotation
   member relocates — an inherited default timezone is a common source of
   off-hours pages landing at the wrong local time.
 - Deduplicate as close to the alert source as practical (a stable
   `dedup_key`/`alias` derived from resource + check name) so one root
   cause never fans out into dozens of pages; pair with Alertmanager-side
-  grouping if the monitoring stack supports it.
+  grouping if the [monitoring](../monitoring/SKILL.md) stack supports it.
 - Route by explicit payload fields (service/team labels), never by
   matching free-text alert summaries — a message wording change silently
   breaks substring-based routing.
@@ -296,7 +296,7 @@ no gaps, no single point of failure — is a separate concern covered in
   unreachable, the page never actually escalates to anyone new. Add at
   least one independent human at a later rung (secondary on-call, a
   manager, a different team member) and validate it with
-  [pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)
+  [pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md)
   rather than trusting a visual policy review.
 
 - **Symptom:** One flapping check or one root-cause outage generates
@@ -305,8 +305,8 @@ no gaps, no single point of failure — is a separate concern covered in
   form.
   **Fix:** Add a stable `dedup_key`/`alias` at the event-submission layer
   so repeated firings of the same underlying condition update one
-  incident instead of creating new ones, and check whether the
-  monitoring source itself (Alertmanager `group_by`) should be
+  [incident](../incident/SKILL.md) instead of creating new ones, and check whether the
+  [monitoring](../monitoring/SKILL.md) source itself (Alertmanager `group_by`) should be
   correlating these before they ever reach PagerDuty/Opsgenie.
 
 - **Symptom:** A schedule was created without setting `time_zone`
@@ -314,11 +314,11 @@ no gaps, no single point of failure — is a separate concern covered in
   (often UTC), so the "9am–5pm local" rotation actually runs on a
   4-8 hour offset from what the team intended.
   **Fix:** Set `time_zone`/`timezone` explicitly on every schedule at
-  creation time, and audit existing schedules whenever a rotation
+  creation time, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) existing schedules whenever a rotation
   member's location changes.
 
 - **Symptom:** A maintenance window is set on an entire service to
-  silence a known noisy alert, and a real, unrelated incident on that
+  silence a known noisy alert, and a real, unrelated [incident](../incident/SKILL.md) on that
   same service goes unpaged during the window.
   **Fix:** Scope maintenance windows as narrowly as the tool allows
   (specific alert/integration where supported, not the whole service),
@@ -331,7 +331,7 @@ no gaps, no single point of failure — is a separate concern covered in
   never gets notified.
   **Fix:** Require every on-call-eligible user to configure at least two
   escalating contact methods (push → SMS → phone call) and periodically
-  audit for users with only one configured.
+  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for users with only one configured.
 
 ## Worked example
 
@@ -403,7 +403,7 @@ resource "pagerduty_service" "payments_db" {
 
 Alertmanager sends the replica-lag alert with a stable `dedup_key`
 derived from `{{ .Labels.instance }}` (not a timestamp), so a check that
-flaps every 30 seconds for ten minutes produces one PagerDuty incident,
+flaps every 30 seconds for ten minutes produces one PagerDuty [incident](../incident/SKILL.md),
 not twenty:
 
 ```json
@@ -421,13 +421,13 @@ not twenty:
 ```
 
 Before rolling this out, run the escalation-coverage check from
-[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)
+[pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md)
 against `payments-team-escalation` to confirm rung 1 and rung 2 resolve
 to genuinely different humans, not an overlapping roster.
 
 ## Cross-references
 
-- [pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md) — validating that the escalation policy and schedule configured here actually has no coverage gaps or single points of failure before relying on it in production.
-- [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md) — syncing incidents created by this PagerDuty/Opsgenie configuration into a ServiceNow incident/change record for ITIL-heavy organizations.
-- [chatops-runbook-automation](../chatops-runbook-automation/SKILL.md) — triggering automated runbook actions from the incident this escalation policy pages someone into.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md) — the severity levels, rotation design, and Incident Command process this tool configuration implements.
+- [pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md) — validating that the escalation policy and schedule configured here actually has no coverage gaps or single points of failure before relying on it in production.
+- [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md) — syncing incidents created by this PagerDuty/Opsgenie configuration into a ServiceNow [incident](../incident/SKILL.md)/change record for ITIL-heavy organizations.
+- [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — triggering automated [runbook](../runbook/SKILL.md) actions from the [incident](../incident/SKILL.md) this escalation policy pages someone into.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the severity levels, rotation design, and [Incident](../incident/SKILL.md) Command process this tool configuration implements.

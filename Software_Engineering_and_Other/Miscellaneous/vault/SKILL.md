@@ -33,12 +33,12 @@ Exact user phrases: "Vault", "HashiCorp Vault", "secrets management", "dynamic s
 ### Input Context
 Before activating, verify:
 - Vault deployment mode (dev, HA, integrated storage, external backend).
-- Auth method to use (token, Kubernetes, OIDC, AppRole, AWS IAM).
+- Auth method to use (token, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), OIDC, AppRole, AWS IAM).
 - Secrets engine needed (KV, database, PKI, Transit, AWS).
 - Dynamic vs static secret requirements.
 
 ### Output Artifact
-Writes to Vault CLI commands, Terraform HCL for Vault, Vault policy HCL, and/or Kubernetes injector annotations.
+Writes to Vault CLI commands, Terraform HCL for Vault, Vault policy HCL, and/or [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) injector annotations.
 
 ### Response Format
 Vault CLI commands, policy HCL, or Terraform configuration with no extraneous explanation.
@@ -49,7 +49,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 This skill is complete when:
 - [ ] Secrets engine(s) are enabled and configured.
 - [ ] Policies are defined and associated with auth methods/roles.
-- [ ] Auth method is configured (Kubernetes, AppRole, OIDC, or token).
+- [ ] Auth method is configured ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), AppRole, OIDC, or token).
 - [ ] Dynamic secrets path is validated (read + renew + revoke).
 - [ ] Encryption (transit engine) or PKI is configured if needed.
 
@@ -138,14 +138,14 @@ vault kv destroy secret/myapp/config
 vault kv undelete -versions=1 secret/myapp/config
 ```
 
-### Step 3: Dynamic Database Secrets — PostgreSQL
+### Step 3: Dynamic Database Secrets — [PostgreSQL](../../Backend/postgresql/SKILL.md)
 ```bash
 vault secrets enable database
 
 vault write database/config/postgres-prod \
-  plugin_name=postgresql-database-plugin \
+  plugin_name=[postgresql](../../Backend/postgresql/SKILL.md)-database-plugin \
   allowed_roles="app-role,readonly-role" \
-  connection_url="postgresql://{{username}}:{{password}}@postgres:5432/app" \
+  connection_url="[postgresql](../../Backend/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app" \
   username="vault_admin" \
   password="vault_pass"
 
@@ -173,15 +173,15 @@ vault lease revoke database/creds/app-role/abc123
 
 ### Step 4: Dynamic Database Secrets — AWS RDS
 ```bash
-vault write database/config/mysql-prod \
-  plugin_name=mysql-database-plugin \
-  allowed_roles="app-mysql" \
-  connection_url="{{username}}:{{password}}@tcp(mysql.example.com:3306)/" \
+vault write database/config/[mysql](../../Backend/mysql/SKILL.md)-prod \
+  plugin_name=[mysql](../../Backend/mysql/SKILL.md)-database-plugin \
+  allowed_roles="app-[mysql](../../Backend/mysql/SKILL.md)" \
+  connection_url="{{username}}:{{password}}@tcp([mysql](../../Backend/mysql/SKILL.md).example.com:3306)/" \
   username="vault_admin" \
   password="vault_pass"
 
-vault write database/roles/app-mysql \
-  db_name=mysql-prod \
+vault write database/roles/app-[mysql](../../Backend/mysql/SKILL.md) \
+  db_name=[mysql](../../Backend/mysql/SKILL.md)-prod \
   creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}'; GRANT SELECT ON app.* TO '{{name}}'@'%';" \
   default_ttl="30m" \
   max_ttl="4h"
@@ -228,8 +228,8 @@ path "transit/decrypt/ci-key" {
   capabilities = ["create", "update"]
 }
 
-# audit-log.hcl
-path "sys/audit/*" {
+# [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log.hcl
+path "sys/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/*" {
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
 ```
@@ -242,14 +242,14 @@ vault policy write ci-bot ci-bot.hcl
 
 ### Step 6: Auth Methods
 ```bash
-# Kubernetes auth
-vault auth enable kubernetes
-vault write auth/kubernetes/config \
-  kubernetes_host=https://kubernetes.default.svc \
-  token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
-  kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth
+vault auth enable [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+vault write auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/config \
+  kubernetes_host=https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc \
+  token_reviewer_jwt="$(cat /var/run/secrets/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/token)" \
+  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/ca.crt
 
-vault write auth/kubernetes/role/my-app \
+vault write auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/my-app \
   bound_service_account_names=my-app \
   bound_service_account_namespaces=default \
   policies=developer \
@@ -365,8 +365,8 @@ vault {
 }
 
 auto_auth {
-  method "kubernetes" {
-    mount_path = "auth/kubernetes"
+  method "[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)" {
+    mount_path = "auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)"
     config = {
       role = "my-app"
     }
@@ -399,7 +399,7 @@ DB_PASS={{ .Data.password }}
 {{- end }}
 ```
 
-### Step 10: Vault Agent Injector (Kubernetes)
+### Step 10: Vault Agent Injector ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -417,22 +417,22 @@ metadata:
     vault.hashicorp.com/agent-run-as-group: "1000"
 ```
 
-### Step 11: Audit Logging
+### Step 11: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 ```bash
-# Enable file audit
-vault audit enable file file_path=/vault/logs/audit.log
+# Enable file [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) enable file file_path=/vault/logs/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log
 
-# Enable syslog audit
-vault audit enable syslog \
+# Enable syslog [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) enable syslog \
   facility="AUTH" \
   tag="vault" \
   log_level="info"
 
-# List audit devices
-vault audit list
+# List [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) devices
+vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) list
 
-# Disable audit
-vault audit disable file/
+# Disable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) disable file/
 ```
 
 ### Step 12: Terraform Provider for Vault
@@ -453,12 +453,12 @@ resource "vault_policy" "developer" {
 }
 
 resource "vault_kubernetes_auth_backend_config" "k8s" {
-  backend = vault_auth_backend.kubernetes.path
-  kubernetes_host = "https://kubernetes.default.svc"
+  backend = vault_auth_backend.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).path
+  kubernetes_host = "https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc"
 }
 
 resource "vault_kubernetes_auth_backend_role" "app" {
-  backend                          = vault_auth_backend.kubernetes.path
+  backend                          = vault_auth_backend.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).path
   role_name                        = "my-app"
   bound_service_account_names      = ["my-app"]
   bound_service_account_namespaces = ["default"]
@@ -471,8 +471,8 @@ resource "vault_database_secret_backend_connection" "postgres" {
   name          = "postgres-prod"
   allowed_roles = ["app-role"]
 
-  postgresql {
-    connection_url = "postgresql://{{username}}:{{password}}@postgres:5432/app"
+  [postgresql](../../Backend/postgresql/SKILL.md) {
+    connection_url = "[postgresql](../../Backend/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app"
     username       = "vault_admin"
     password       = var.db_admin_password
   }
@@ -497,14 +497,14 @@ resource "vault_database_secret_backend_role" "app_role" {
 - Use `kv-v2` over `kv-v1` for secret versioning and delete protection
 - Store Vault unseal keys in a secure key management system, never in code
 - Use response wrapping for distributing secrets to CI/CD
-- Enable audit logging in production
+- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging in production
 - Use auto-unseal (AWS KMS, Azure KeyVault, GCP KMS) in production
 - Set `max_lease_ttl` of 1h for dynamic secrets whenever possible
 
 ## Production Considerations
 - Deploy Vault with 3 or 5 nodes for HA with Raft storage.
 - Use auto-unseal with cloud KMS (AWS KMS, Azure KeyVault, GCP KMS).
-- Enable audit logging to both file and syslog for redundancy.
+- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging to both file and syslog for redundancy.
 - Store unseal keys in a secure KMS (AWS Secrets Manager, Azure Key Vault).
 - Use Vault Agent sidecar for app secret injection instead of SDK.
 - Set conservative TTLs: 1h default, 24h max for dynamic secrets.
@@ -518,8 +518,8 @@ resource "vault_database_secret_backend_role" "app_role" {
 - No TTL on dynamic secrets — credentials never expire.
 - Overly permissive policies (wildcard `*` capabilities) — security risk.
 - Storing unseal keys alongside Vault config — defeats security purpose.
-- No audit logging — can't trace who accessed which secret.
-- Using root token for daily operations — no audit trail, no revocation.
+- No [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging — can't trace who accessed which secret.
+- Using root token for daily operations — no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, no revocation.
 - Not rotating transit keys — compromised key affects all encrypted data.
 - Manual secrets management — Vault is automated secrets, not a password manager.
 - Cross-mount policy bypass — ensuring policies restrict cross-path access.

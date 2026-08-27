@@ -34,9 +34,9 @@ model, running a labeled recall evaluation against real queries, and
 gating a cutover behind that evaluation rather than a visual "looks
 right" review. It assumes the index's operational tuning (sharding,
 replication, HNSW parameter selection) is handled in
-[vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)
+[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
 and that vectors are arriving via
-[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md) —
+[vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) —
 this skill is specifically the pre-cutover validation gate sitting
 between those two.
 
@@ -89,7 +89,7 @@ between those two.
    since some models expose a configurable output dimension
    (e.g. Matryoshka-style truncation) that can silently differ from the
    nominal default:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    sample_vector = embedding_model.embed("sanity check")
    assert len(sample_vector) == index_config["dimension"], (
        f"embedding model outputs {len(sample_vector)} dims, "
@@ -112,7 +112,7 @@ between those two.
    vectorIndexConfig:
      distance: cosine     # must match the embedding model's trained metric
    ```
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Milvus
    index_params = {"index_type": "HNSW", "metric_type": "COSINE", "params": {...}}
    ```
@@ -126,7 +126,7 @@ between those two.
    but not indexed for filtering will either error or (for some
    vendors) silently fail to filter, depending on the vendor and query
    type:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Pinecone example: confirm a metadata field is usable as a filter
    results = index.query(
        vector=sample_vector, top_k=5,
@@ -139,7 +139,7 @@ between those two.
    candidate index before cutover** — this is the core validation gate,
    and the only thing that actually answers "will retrieval be as good
    or better than before":
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # eval_set: list of (query, set_of_expected_doc_ids)
    def recall_at_k(index, eval_set, k=10):
        hits = 0
@@ -163,7 +163,7 @@ between those two.
    not just an unfiltered single-vector query — a filtered query or a
    high `top_k` can behave very differently under the candidate index's
    actual configuration:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import time
    for top_k in (5, 10, 50):
        start = time.monotonic()
@@ -176,7 +176,7 @@ between those two.
    change intended to hold at scale — recall and latency measured
    against a 1,000-vector test index do not reliably predict behavior
    at 20 million vectors (see
-   [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)
+   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
    for sizing/HNSW-tuning guidance this validation step should be run
    against once applied).
 
@@ -205,7 +205,7 @@ between those two.
    ```yaml
    # CI step (illustrative)
    - name: Validate vector index config
-     run: python validate_index_config.py --config index-config.yaml --eval-set eval_set.jsonl --min-recall-at-10 0.85
+     run: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) validate_index_config.py --config index-config.yaml --eval-set eval_set.jsonl --min-recall-at-10 0.85
    ```
 
 ## Best practices
@@ -289,7 +289,7 @@ the vector dimension from 1024 to 1536. The team needs to validate the
 new index before repointing production traffic.
 
 1. Confirm dimension agreement with a live embed call:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    sample = new_embedding_model.embed("refund policy for damaged items")
    assert len(sample) == 1536  # matches new index's configured dimension
    ```
@@ -300,7 +300,7 @@ new index before repointing production traffic.
    collection, fully re-embedding the entire ~2,000-document corpus with
    the new model (no partial/mixed re-embed).
 4. Run the existing 50-query labeled eval set (already maintained per
-   [rag-pipeline-design](../rag-pipeline-design/SKILL.md)) against both
+   [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) against both
    collections:
    ```
    candidate (new model, 1536-dim): recall@10 = 0.91
@@ -321,7 +321,7 @@ new index before repointing production traffic.
 
 ## Cross-references
 
-- [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md) — the operational tuning (sharding, replication, HNSW parameters) this validation gate sits in front of before those settings serve production traffic.
-- [vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md) — the upstream pipeline that produces the vectors and re-embeds the corpus this skill validates before cutover.
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md) — where the labeled (query, expected document) eval set referenced throughout this skill is originally built and maintained.
-- [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md) — general evaluation-harness discipline (thresholds decided in advance, regression gating) applied here specifically to retrieval recall.
+- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — the operational tuning (sharding, replication, HNSW parameters) this validation gate sits in front of before those settings serve production traffic.
+- [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — the upstream pipeline that produces the vectors and re-embeds the corpus this skill validates before cutover.
+- [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — where the labeled (query, expected document) eval set referenced throughout this skill is originally built and maintained.
+- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — general evaluation-harness discipline (thresholds decided in advance, regression gating) applied here specifically to retrieval recall.

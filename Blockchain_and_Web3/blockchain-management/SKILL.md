@@ -16,12 +16,12 @@ tags: [blockchain, management, governance, dao, phase-blockchain]
 # Blockchain Management
 
 ## Purpose
-Guide blockchain-specific project management covering DAO governance, multi-sig operations, treasury management, and tokenomics engineering. This skill enforces web3-specific methodology (audit-first, progressive decentralization) distinct from traditional software project management.
+Guide blockchain-specific project management covering DAO governance, multi-sig operations, treasury management, and tokenomics engineering. This skill enforces web3-specific methodology ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first, progressive decentralization) distinct from traditional software project management.
 
 ## Agent Protocol
 
 ### Trigger
-"blockchain management", "DAO governance", "Compound Governor", "Snapshot vote", "Tally", "multi-sig", "Gnosis Safe", "timelock", "treasury management", "tokenomics", "token supply", "vesting", "token emission", "web3 project management", "blockchain project methodology", "progressive decentralization", "audit-first", "community governance", "DAO operations", "token launch", "airdrop", "LBP", "IDO", "IEO", "governance attack", "flash loan attack", "DAO legal structure", "Wyoming DAO", "legal wrappers", "contributor compensation", "vesting contract", "streaming", "Sablier", "LlamaPay", "treasury diversification", "yield farming", "on-chain payroll", "delegate", "delegation", "quorum", "proposal lifecycle", "proposer bond", "governance token", "veToken", "vote escrow"
+"blockchain management", "DAO governance", "Compound Governor", "Snapshot vote", "Tally", "multi-sig", "Gnosis Safe", "timelock", "treasury management", "tokenomics", "token supply", "vesting", "token emission", "web3 project management", "blockchain project methodology", "progressive decentralization", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first", "community governance", "DAO operations", "token launch", "airdrop", "LBP", "IDO", "IEO", "governance attack", "flash loan attack", "DAO legal structure", "Wyoming DAO", "legal wrappers", "contributor compensation", "vesting contract", "streaming", "Sablier", "LlamaPay", "treasury diversification", "yield farming", "on-chain payroll", "delegate", "delegation", "quorum", "proposal lifecycle", "proposer bond", "governance token", "veToken", "vote escrow"
 
 ### Input Context
 - Blockchain platform (Ethereum/Solana/Cosmos)
@@ -44,7 +44,7 @@ Governance architecture specification including:
 2. **Operational security**: multisig configuration, signing policies, key management
 3. **Treasury strategy**: allocation, vesting, diversification, yield generation
 4. **Token economics**: supply model, distribution, incentives, emission schedule
-5. **Project methodology**: development lifecycle, audit gates, community involvement
+5. **Project methodology**: development lifecycle, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) gates, community involvement
 
 ### Completion Criteria
 - Governance contract architecture is fully specified with all parameters
@@ -80,10 +80,10 @@ Governance architecture specification including:
 15. Establish treasury strategy: diversification targets, yield generation, spending policies
 
 ### Phase 4: Operational Procedures
-16. Implement monitoring: proposal health dashboard, delegate tracking, timelock watchers
+16. Implement [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): proposal health dashboard, delegate tracking, timelock watchers
 17. Set up communication channels: governance forum, Discord, emergency notification
 18. Create emergency response plan: guardian pause, communication template, fork coordination
-19. Establish audit schedule: annual comprehensive audit, quarterly parameter review
+19. Establish [audit](../../AI_and_Agents/Operations/audit/SKILL.md) schedule: annual comprehensive [audit](../../AI_and_Agents/Operations/audit/SKILL.md), quarterly parameter review
 
 ### Phase 5: Progressive Decentralization
 20. Start centralized: core team controls multi-sig with timelock
@@ -209,7 +209,7 @@ Decide: DAO Legal Structure
 - Quarterly key signing ceremonies with backup verification
 - Social recovery setup for lost keys
 - Simulate transaction on Tenderly before mainnet execution
-- Rotate signers annually and after any security incident
+- Rotate signers annually and after any security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
 
 ### Tokenomics Engineering
 - Total supply should be determined by security budget requirements, not arbitrary caps
@@ -234,7 +234,7 @@ Decide: DAO Legal Structure
 3. **Voting period**: 3-7 days depending on governance framework
 4. **Timelock queue**: 48h minimum after vote passes
 5. **Execution**: After timelock delay expires, anyone can execute
-6. **Post-execution monitoring**: 7-day watch period for anomalous behavior
+6. **Post-execution [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: 7-day watch period for anomalous behavior
 
 ## Compared With
 
@@ -242,7 +242,7 @@ Decide: DAO Legal Structure
 |---|---|---|
 | Decision making | Centralized (management) | Distributed (token vote) |
 | Upgrade process | CI/CD pipeline | Governance proposal + timelock |
-| Incident response | Central authority can act immediately | Timelock delays response |
+| [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response | Central authority can act immediately | Timelock delays response |
 | Funding | Budget allocation | Treasury management + token emission |
 | Stakeholder alignment | Shareholder value | Token holder alignment |
 | Security model | Perimeter defense | Economic security + code audits |
@@ -277,7 +277,7 @@ Decide: DAO Legal Structure
 
 ## Operations & Maintenance
 
-### Monitoring Requirements
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Requirements
 - **Proposal tracker**: Real-time dashboard of active proposals, quorum progress, voting deadline
 - **Delegate tracker**: Large delegation changes (>1% supply) trigger alert
 - **Timelock watcher**: Monitor queued transactions, execute when delay expires
@@ -289,7 +289,7 @@ Decide: DAO Legal Structure
 - **Weekly**: Check pending proposals, execute queued transactions
 - **Monthly**: Review treasury allocation, rebalance if needed
 - **Quarterly**: Governance parameter review (quorum, delay, threshold)
-- **Annual**: Comprehensive security audit of governance contracts
+- **Annual**: Comprehensive security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of governance contracts
 - **Emergency**: Immediate pause and assessment for critical vulnerabilities
 - **Signer rotation**: Every 6-12 months or after any hardware wallet sunset
 
@@ -300,7 +300,7 @@ Decide: DAO Legal Structure
 4. **Communicate**: Pre-prepared message template → Discord/Twitter/Governance forum
 5. **Mitigate**: Emergency proposal with fix (requires timelock delay)
 6. **Resume**: Governance vote to unpause + validate fix
-7. **Post-mortem**: Public incident report within 7 days
+7. **Post-mortem**: Public [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report within 7 days
 
 ## Rules
 
@@ -699,5 +699,5 @@ contract PaymentStream {
 
 ## Handoff
 blockchain-management → blockchain-tokenomics (for deep token model implementation)
-blockchain-management → blockchain-security (for audit and governance security)
+blockchain-management → [blockchain-security](../blockchain-security/SKILL.md) (for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and governance security)
 

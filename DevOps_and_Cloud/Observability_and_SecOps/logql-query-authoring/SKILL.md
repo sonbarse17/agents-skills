@@ -32,7 +32,7 @@ and started being "scan everything and grep," which is the single
 biggest cause of slow or timed-out Loki queries. This skill covers
 stream selectors, line filters, structured parsing, and LogQL's metric
 queries; it assumes Loki itself is already ingesting logs — see
-[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+[loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
 for ingestion, retention, and storage backend configuration, which this
 skill does not repeat.
 
@@ -55,9 +55,9 @@ skill does not repeat.
   Loki datasource) to test queries interactively.
 - Log lines already being ingested with a reasonably designed, low-
   cardinality label set (`app`, `namespace`, `env`) — see
-  [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+  [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
   and
-  [loki-configuration-validation](../loki-configuration-validation/SKILL.md)
+  [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md)
   if labels are unbounded/high-cardinality, since that's a labeling/
   ingestion problem, not something a query can work around.
 - Familiarity with the log lines' actual format (plain text, JSON,
@@ -134,9 +134,9 @@ skill does not repeat.
    > (near-free). If you filter on the same extracted field constantly,
    > consider whether it should be promoted to a real ingestion-time
    > label instead — see
-   > [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md).
+   > [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md).
 
-5. **Turn a log stream into a metric query for dashboards/alerts** using
+5. **Turn a log stream into a metric query for [dashboards](../../Cloud_Providers/dashboards/SKILL.md)/alerts** using
    LogQL's PromQL-like aggregation functions:
    ```logql
    # count of matching lines per second, per service, over 5m windows
@@ -198,7 +198,7 @@ skill does not repeat.
 - Promote a field you filter/aggregate on constantly from a parsed
   extraction to a real ingestion-time label (with cardinality reviewed
   first) rather than re-parsing it in every query — see
-  [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md).
+  [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md).
 - Always bound queries with an explicit time range and a sane `--limit`/
   dashboard row limit, especially for ad hoc investigation queries run
   directly against production.
@@ -246,14 +246,14 @@ skill does not repeat.
   dashboard) silently changes the window being counted.
 
 - **Symptom:** An ad hoc investigation query run directly against
-  production during an active incident makes Loki itself slow to respond
-  for everyone, compounding the incident.
+  production during an active [incident](../incident/SKILL.md) makes Loki itself slow to respond
+  for everyone, compounding the [incident](../incident/SKILL.md).
   **Fix:** This is exactly the unbounded-query risk — an under-scoped
   selector with a wide time range and a regex filter run under
-  incident-time pressure. Scope by every known label, keep the range as
+  [incident](../incident/SKILL.md)-time pressure. Scope by every known label, keep the range as
   narrow as the investigation allows (extend only if the narrow window
   comes back empty), and add `--limit` — treat "just grep everything"
-  as a red flag during a live incident, not a shortcut.
+  as a red flag during a live [incident](../incident/SKILL.md), not a shortcut.
 
 - **Symptom:** Filtering on a field extracted via `| logfmt`/`| json`
   (e.g. `user_id`) works but is consistently slow no matter how the query
@@ -263,12 +263,12 @@ skill does not repeat.
   selector. If this field is queried constantly, it likely belongs as a
   real ingestion-time label instead (with its cardinality reviewed first
   — see
-  [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)),
+  [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)),
   not repeatedly re-parsed per query.
 
 ## Worked example
 
-**Scenario:** During an incident, `payments-api` is returning elevated
+**Scenario:** During an [incident](../incident/SKILL.md), `payments-api` is returning elevated
 5xx errors. Logs are JSON with `status_code`, `duration_ms`, and
 `request_id` fields, labeled by `app`/`namespace`/`env` at ingestion.
 
@@ -285,7 +285,7 @@ skill does not repeat.
    ```
 3. Turn it into a rate for a dashboard panel/alert, matching the same
    service/label breakdown used in the PromQL error-rate query from
-   [promql-query-authoring](../promql-query-authoring/SKILL.md):
+   [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md):
    ```logql
    sum by (app) (
      rate(
@@ -309,12 +309,12 @@ skill does not repeat.
 5. Pick one `request_id` from a failing line and pivot to the trace
    backend using that ID, correlating the log-level finding with a
    specific distributed trace — see
-   [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md)
+   [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md)
    for the full cross-signal workflow this feeds into.
 
 ## Cross-references
 
-- [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md) — configuring Loki's ingestion, retention, and storage backend; label cardinality decisions referenced above belong there.
-- [loki-configuration-validation](../loki-configuration-validation/SKILL.md) — validating limits/schema config before deploying so ingestion isn't silently rejected for logs these queries need.
-- [promql-query-authoring](../promql-query-authoring/SKILL.md) — the equivalent query-authoring depth for Prometheus/PromQL; LogQL's metric-query functions are deliberately modeled on it.
-- [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md) — using LogQL queries like these as one leg of a live cross-signal investigation, correlated with metrics and traces.
+- [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — configuring Loki's ingestion, retention, and storage backend; label cardinality decisions referenced above belong there.
+- [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md) — validating limits/schema config before deploying so ingestion isn't silently rejected for logs these queries need.
+- [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md) — the equivalent query-authoring depth for Prometheus/PromQL; LogQL's metric-query functions are deliberately modeled on it.
+- [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — using LogQL queries like these as one leg of a live cross-signal investigation, correlated with metrics and traces.

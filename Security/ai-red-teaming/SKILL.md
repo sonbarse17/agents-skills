@@ -17,12 +17,12 @@ Use this skill when:
 - Launching a new LLM-powered feature or product
 - Evaluating a third-party model before adoption
 - Running periodic security assessments of existing AI systems
-- Responding to a reported jailbreak or prompt injection incident
+- Responding to a reported jailbreak or prompt injection [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
 - Preparing for compliance audits requiring adversarial testing evidence
 
 ## Prerequisites
 
-- Python 3.10+ with `openai`, `anthropic`, or equivalent SDK installed
+- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `openai`, `anthropic`, or equivalent SDK installed
 - Access to the target model endpoint (API key or local deployment)
 - A prompt management tool or spreadsheet for tracking attack payloads
 - Familiarity with OWASP Top 10 for LLM Applications
@@ -92,7 +92,7 @@ categories:
 
 ## Automated Testing Script
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 """ai_red_team_runner.py - Automated red team test harness."""
 
@@ -258,7 +258,7 @@ notification_webhook: "https://hooks.slack.com/services/XXX/YYY/ZZZ"
 
 ### Risk Score Calculation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> dict:
     """Calculate composite risk score (1-125). Higher = more urgent."""
     raw_score = likelihood * impact * detectability
@@ -281,7 +281,7 @@ def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> di
 
 - Pre-release blocking red-team gate.
 - Monthly deep-dive campaigns.
-- Post-incident targeted retests.
+- Post-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) targeted retests.
 - Quarterly full-scope exercises covering all categories.
 
 ## Report Template
@@ -334,7 +334,7 @@ def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> di
 ## CI/CD Integration
 
 ```yaml
-# .github/workflows/ai-red-team.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ai-red-team.yml
 name: AI Red Team Gate
 on:
   pull_request:
@@ -347,11 +347,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.11'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
       - run: pip install -r requirements-redteam.txt
-      - run: python ai_red_team_runner.py
+      - run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) ai_red_team_runner.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - run: |
@@ -379,6 +379,6 @@ jobs:
 
 ## Related Skills
 
-- [agent-evals](../../../devops/ai/agent-evals/) - Convert findings into regression tests
-- [prompt-injection-defense](../prompt-injection-defense/) - Implement injection countermeasures
-- [penetration-testing](../../operations/penetration-testing/) - Broader offensive security process
+- [agent-evals](../../../devops/ai/[agent-evals](../../AI_and_Agents/Workflows/agent-evals/SKILL.md)/) - Convert findings into regression tests
+- [prompt-injection-defense](../[prompt-injection-defense](../prompt-injection-defense/SKILL.md)/) - Implement injection countermeasures
+- [penetration-testing](../../operations/[penetration-testing](../penetration-testing/SKILL.md)/) - Broader offensive security process

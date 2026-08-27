@@ -15,11 +15,11 @@ metadata:
   maturity: stable
 ---
 
-# Python Automation Scripting for Ops
+# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Automation Scripting for Ops
 
 ## Purpose
 
-Python is the usual escalation point once a task outgrows what a shell
+[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) is the usual escalation point once a task outgrows what a shell
 script can cleanly express: real data structures, cloud SDK calls with
 pagination/retries, structured error handling, and logic worth unit
 testing. The operational payoff of doing this well is that an automation
@@ -38,17 +38,17 @@ cloud resources — that can be trusted in CI or handed to another engineer.
 - Adding structured (JSON) logging so a script's output is ingestible by
   a log pipeline instead of only human-readable text.
 - Packaging a script so it's installable (`pip install .`) and runnable as
-  a console command, rather than invoked as `python path/to/script.py`.
+  a console command, rather than invoked as `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) path/to/script.py`.
 - Testing automation logic — especially cloud API interactions — without
   making real API calls in CI.
 - Deciding whether a task belongs in a shell script or has grown enough to
-  justify Python — see
-  [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md)
+  justify [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) — see
+  [shell-scripting-best-practices](../[shell-scripting-best-practices](../../../Software_Engineering_and_Other/Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md)
   for the shell-side equivalent and the crossover point.
 
 ## Prerequisites & environment
 
-- Python ≥ 3.10 recommended (structural pattern matching, better error
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ≥ 3.10 recommended (structural pattern matching, better error
   messages); anything ≥ 3.9 works for the patterns here — confirm the
   target runtime (e.g. an older Lambda runtime or bastion host image)
   before relying on very recent syntax.
@@ -62,13 +62,13 @@ cloud resources — that can be trusted in CI or handed to another engineer.
   codebase uses type hints (recommended for anything beyond a trivial
   script).
 - A virtual environment (`venv`, `uv`, or `pipx` for installed CLIs) so
-  dependencies are isolated from system Python.
+  dependencies are isolated from system [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
 
 ## Step-by-step guidance
 
 1. **Parse arguments explicitly** with `argparse` (standard library, no
    extra dependency) rather than hand-rolling `sys.argv` parsing:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import argparse
 
    def build_parser() -> argparse.ArgumentParser:
@@ -89,7 +89,7 @@ cloud resources — that can be trusted in CI or handed to another engineer.
 
 2. **Set up structured logging early**, so every run's output is both
    human-readable locally and machine-parseable in a log pipeline:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import json
    import logging
    import sys
@@ -115,13 +115,13 @@ cloud resources — that can be trusted in CI or handed to another engineer.
    ```
    Logging to stderr (not stdout) keeps stdout free for the script's
    actual data output, mirroring the same convention covered in
-   [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md).
+   [shell-scripting-best-practices](../[shell-scripting-best-practices](../../../Software_Engineering_and_Other/Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md).
 
 3. **Wrap cloud SDK calls with explicit error handling and pagination**,
    since `boto3` raises `botocore.exceptions.ClientError` for API errors
    and requires paginators for any list operation that can exceed one
    page:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import boto3
    from botocore.exceptions import ClientError
 
@@ -142,7 +142,7 @@ cloud resources — that can be trusted in CI or handed to another engineer.
 
 4. **Never make destructive/mutating calls without a dry-run path
    surfaced by default expectations**:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def tag_volume(ec2_client, volume_id: str, dry_run: bool, logger: logging.Logger) -> None:
        tags = [{"Key": "stale-review", "Value": "true"}]
        if dry_run:
@@ -155,14 +155,14 @@ cloud resources — that can be trusted in CI or handed to another engineer.
    > resources in bulk should default new/unfamiliar invocations to
    > `--dry-run`, log exactly what it *would* do, and require an explicit
    > flag (not a default) to actually mutate state — the same
-   > review-before-apply discipline as a Terraform plan or CloudFormation
+   > review-before-apply discipline as a Terraform plan or [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)
    > change set.
 
 5. **Retry transient failures with backoff**, not a bare loop — `botocore`
    already retries some errors internally (configurable via
    `Config(retries={"max_attempts": ...})`), but application-level retry
    logic (e.g. around a multi-call workflow) should back off explicitly:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import time
    from botocore.config import Config
 
@@ -209,7 +209,7 @@ cloud resources — that can be trusted in CI or handed to another engineer.
 7. **Test with mocked cloud calls, not live infrastructure.** Use `moto`
    to simulate AWS at the API layer so tests run offline, deterministically,
    and in CI without real credentials:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import boto3
    from moto import mock_aws
    from tag_stale_volumes.aws import find_stale_unattached_volumes
@@ -244,17 +244,17 @@ cloud resources — that can be trusted in CI or handed to another engineer.
   source — take them as arguments/environment variables
   (`AWS_PROFILE`, `--region`) so the same script runs safely across
   accounts/environments without code changes.
-- Pin dependency versions (`boto3>=1.34,<2`) and run `pip-audit` or
+- Pin dependency versions (`boto3>=1.34,<2`) and run `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or
   equivalent in CI so a script's own dependencies don't become the
   vulnerability.
 - Prefer `pathlib.Path` over string path manipulation, and
   `subprocess.run([...], check=True)` (list form, not `shell=True`) when a
   script must shell out — avoids the injection/quoting hazards covered in
-  [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md).
+  [shell-scripting-best-practices](../[shell-scripting-best-practices](../../../Software_Engineering_and_Other/Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md).
 - When a script's job is really "configure existing hosts" rather than
   "call a cloud API," reconsider whether
-  [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md)
-  is a better fit than a bespoke Python/SSH script — Ansible already
+  [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
+  is a better fit than a bespoke [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/SSH script — [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) already
   solves inventory, idempotency, and parallel execution for that shape of
   problem.
 
@@ -274,7 +274,7 @@ cloud resources — that can be trusted in CI or handed to another engineer.
   wasn't run in dry-run mode first. Add the dry-run path (step 4), run it
   once and inspect the log output for exactly what would change, and only
   then re-run with mutation enabled — the cloud-tooling equivalent of
-  reviewing a Terraform plan or CloudFormation change set first.
+  reviewing a Terraform plan or [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) change set first.
 
 - **Symptom:** Tests pass locally but the CI job fails with
   `NoCredentialsError` or, worse, someone notices a test accidentally
@@ -309,7 +309,7 @@ days and tags them for review, dry-run by default behavior enforced via
 tests, packaged as an installable console command.
 
 `src/tag_stale_volumes/aws.py`:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 import logging
 
@@ -339,7 +339,7 @@ def tag_volume(ec2_client, volume_id: str, dry_run: bool, logger: logging.Logger
 ```
 
 `src/tag_stale_volumes/cli.py`:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import boto3
 
 from .aws import find_stale_unattached_volumes, tag_volume
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 ```
 
 `tests/test_aws.py`:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
 import boto3
 from moto import mock_aws
@@ -404,6 +404,6 @@ tag-stale-volumes --region us-east-1 --min-age-days 30 --dry-run
 
 ## Cross-references
 
-- [shell-scripting-best-practices](../shell-scripting-best-practices/SKILL.md)
-- [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md)
-- [aws-cloudformation-templates](../aws-cloudformation-templates/SKILL.md)
+- [shell-scripting-best-practices](../[shell-scripting-best-practices](../../../Software_Engineering_and_Other/Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md)
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
+- [aws-[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../../Infrastructure_as_Code/aws-[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md)

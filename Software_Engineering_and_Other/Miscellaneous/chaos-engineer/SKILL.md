@@ -28,8 +28,8 @@ metadata:
 
 1. **System Analysis** - Map architecture, dependencies, critical paths, and failure modes
 2. **Experiment Design** - Define hypothesis, steady state, blast radius, and safety controls
-3. **Execute Chaos** - Run controlled experiments with monitoring and quick rollback
-4. **Learn & Improve** - Document findings, implement fixes, enhance monitoring
+3. **Execute Chaos** - Run controlled experiments with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and quick rollback
+4. **Learn & Improve** - Document findings, implement fixes, enhance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 5. **Automate** - Integrate chaos testing into CI/CD for continuous resilience
 
 ## Reference Guide
@@ -40,7 +40,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Experiments | `../../../Global_References/chaos-engineer_experiment-design.md` | Designing hypothesis, blast radius, rollback |
 | Infrastructure | `../../../Global_References/infrastructure-chaos.md` | Server, network, zone, region failures |
-| Kubernetes | `../../../Global_References/kubernetes-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
+| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
 | Tools & Automation | `../../../Global_References/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
 | Game Days | `../../../Global_References/game-days.md` | Planning, executing, learning from game days |
 
@@ -60,20 +60,20 @@ Non-obvious constraints that must be enforced on every experiment:
 When implementing chaos engineering, provide:
 1. Experiment design document (hypothesis, metrics, blast radius)
 2. Implementation code (failure injection scripts/manifests)
-3. Monitoring setup and alert configuration
+3. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup and alert configuration
 4. Rollback procedures and safety controls
 5. Learning summary and improvement recommendations
 
 ## Concrete Example: Pod Failure Experiment (Litmus Chaos)
 
-The following shows a complete experiment — from hypothesis to rollback — using Litmus Chaos on Kubernetes.
+The following shows a complete experiment — from hypothesis to rollback — using Litmus Chaos on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
 
 ### Step 1 — Define steady state and apply the experiment
 
 ```bash
 # Verify baseline: p99 latency < 200ms, error rate < 0.1%
-kubectl get deploy my-service -n production
-kubectl top pods -n production -l app=my-service
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get deploy my-service -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) top pods -n production -l app=my-service
 ```
 
 ### Step 2 — Create and apply a Litmus ChaosEngine manifest
@@ -110,21 +110,21 @@ spec:
 
 ```bash
 # Apply the experiment
-kubectl apply -f chaos-pod-delete.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f chaos-pod-delete.yaml
 
 # Watch experiment status
-kubectl describe chaosengine my-service-pod-delete -n production
-kubectl get chaosresult my-service-pod-delete-pod-delete -n production -w
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe chaosengine my-service-pod-delete -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete -n production -w
 ```
 
 ### Step 3 — Monitor during the experiment
 
 ```bash
 # Tail application logs for errors
-kubectl logs -l app=my-service -n production --since=2m -f
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=my-service -n production --since=2m -f
 
 # Check ChaosResult verdict when complete
-kubectl get chaosresult my-service-pod-delete-pod-delete \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete \
   -n production -o jsonpath='{.status.experimentStatus.verdict}'
 ```
 
@@ -132,11 +132,11 @@ kubectl get chaosresult my-service-pod-delete-pod-delete \
 
 ```bash
 # Immediately stop the experiment
-kubectl patch chaosengine my-service-pod-delete \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) patch chaosengine my-service-pod-delete \
   -n production --type merge -p '{"spec":{"engineState":"stop"}}'
 
 # Confirm all pods are healthy
-kubectl rollout status deployment/my-service -n production
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-service -n production
 ```
 
 ## Concrete Example: Network Latency with toxiproxy
@@ -181,5 +181,5 @@ chaos:
 chaos-monkey --app my-service --account staging --dry-run false
 ```
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/devops/chaos-engineer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/devops/chaos-engineer/)
 

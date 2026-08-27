@@ -217,7 +217,7 @@ Governance metrics:
 ### Governance Automation Patterns
 Architecture fitness functions in CI/CD:
 ```yaml
-# Example: GitHub Action for architecture compliance
+# Example: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action for architecture compliance
 name: architecture-compliance
 on: pull_request
 jobs:
@@ -351,13 +351,13 @@ Practice 6: Publish governance metrics transparently. Share ARB decisions, excep
 - Governance tracking: Jira with architecture workflows, Notion, custom ADR database
 - Documentation: Confluence, Backstage, Hugo/static site for architecture catalog
 - Fitness functions: ArchUnit (Java), NetArchTest (.NET), custom linters
-- Diagramming: Draw.io, Lucidchart, Mermaid, PlantUML
+- Diagramming: Draw.io, Lucidchart, [Mermaid](../../../Product_and_Business/mermaid/SKILL.md), PlantUML
 
 ### Exception Register Template
 ```
 | ID | Exception Description | Principle/Standard | Severity | Owner | Approval Date | Expiry | Status | Remediation Plan |
 |----|----------------------|-------------------|----------|-------|--------------|--------|--------|-----------------|
-| EX-001 | Use of MongoDB instead of RDS | Prefer managed SQL databases | Minor | Team A | 2025-01-15 | 2025-07-15 | Active | Migrate to Aurora by expiry |
+| EX-001 | Use of [MongoDB](../../Backend/mongodb/SKILL.md) instead of RDS | Prefer managed SQL databases | Minor | Team A | 2025-01-15 | 2025-07-15 | Active | Migrate to Aurora by expiry |
 ```
 
 ## Case Studies
@@ -402,7 +402,7 @@ A technology company used its architecture principles to make a difficult build-
 ### Pattern: Automated Compliance Gate in CI/CD
 
 ```yaml
-# .github/workflows/architecture-compliance.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/architecture-compliance.yml
 name: Architecture Compliance Gate
 on: pull_request
 jobs:
@@ -421,12 +421,12 @@ jobs:
           diff-api openapi-spec-v2.yaml openapi-spec-v3.yaml || true
       - name: Principle adherence
         run: |
-          python scripts/check-principles.py --principles docs/architecture/principles.yaml
+          [python](../../Languages/python/SKILL.md) scripts/check-principles.py --principles docs/architecture/principles.yaml
       - name: Notify ARB on violation
         if: failure()
         run: |
-          gh issue create --title "Architecture compliance failure: ${{ github.sha }}" \
-            --body "PR ${{ github.event.number }} failed fitness functions." \
+          gh issue create --title "Architecture compliance failure: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}" \
+            --body "PR ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.number }} failed fitness functions." \
             --label "architecture"
 ```
 
@@ -436,18 +436,18 @@ jobs:
 # Initialize ADR tool
 adr init docs/architecture/decisions/
 adr new "Use Event-Driven Architecture for Order Processing"
-adr new "Adopt PostgreSQL as Primary Database"
+adr new "Adopt [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database"
 adr new "Deprecate Legacy SOAP Integration" -s 2
 
 # Link ADRs
-adr new -s 4 -s 5 "Migrate from Monolith to Microservices"
+adr new -s 4 -s 5 "Migrate from Monolith to [Microservices](../microservices/SKILL.md)"
 
 # Output
 # docs/architecture/decisions/
 #   0001-use-event-driven-architecture-for-order-processing.md
-#   0002-adopt-postgresql-as-primary-database.md
+#   0002-adopt-[postgresql](../../Backend/postgresql/SKILL.md)-as-primary-database.md
 #   0003-deprecate-legacy-soap-integration.md
-#   0004-migrate-from-monolith-to-microservices.md
+#   0004-migrate-from-monolith-to-[microservices](../microservices/SKILL.md).md
 ```
 
 ## Production Considerations
@@ -494,7 +494,7 @@ adr new -s 4 -s 5 "Migrate from Monolith to Microservices"
 - Exception process: security exceptions require CISO approval. Max 6 months. Non-renewable.
 - Architecture decisions affecting PII/PHI handling require privacy impact assessment.
 - Third-party architecture reviews include vendor security posture assessment.
-- Compliance gates verify encryption, access control, and audit logging requirements.
+- Compliance gates verify encryption, access control, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging requirements.
 - Architecture repository access: read-only for all engineers. Write access limited to architects.
 - Principle violations with security impact: immediate escalation to CISO. No grace period.
 - Architecture sign-off: two-person rule for security-relevant decisions (architect + security lead).
@@ -550,7 +550,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -564,7 +564,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -580,12 +580,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -594,7 +594,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -602,13 +602,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -617,8 +617,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

@@ -16,7 +16,7 @@ Install it in projects where a Claude Code agent:
 - Reviews, comments on, or merges pull requests (`gh pr review`, `gh pr merge`)
 - Triages issues (`gh issue comment`, `gh issue close`)
 - Publishes releases (`gh release create`)
-- Modifies CI configuration (`.github/workflows/`, `.gitlab-ci.yml`)
+- Modifies CI configuration (`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/`, `.[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml`)
 - Pushes to protected branches (`main`, `master`, `release`, `production`)
 - Posts to external notification surfaces (Slack webhooks, Discord)
 
@@ -52,7 +52,7 @@ echo "./review-governance.key" >> .gitignore
 echo "./.review-approved" >> .gitignore
 ```
 
-The first invocation of `protect-mcp sign` will create the key. Commit the
+The first invocation of `protect-mcp sign` will create the key. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the
 public key from the first receipt so auditors can verify later.
 
 ## Per-session workflow
@@ -91,7 +91,7 @@ export REVIEW_APPROVAL_FLAG=./.never-approve
 ```
 
 Any tool call matching a forbid rule will be denied; approved windows have
-no effect. Useful for CI or for a locked-down audit run.
+no effect. Useful for CI or for a locked-down [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) run.
 
 ## Verifying the chain
 

@@ -236,8 +236,8 @@ String query = "MyTable_CL | where TimeGenerated > ago(1h) | limit 10";
 | Resource | URL |
 |----------|-----|
 | Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-ingestion |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-ingestion |
+| [GitHub](../../CI_CD/github/SKILL.md) | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-ingestion |
 | Product Docs | https://learn.microsoft.com/azure/azure-monitor/logs/logs-ingestion-api-overview |
 | DCE Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-endpoint-overview |
 | DCR Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview |
-| Troubleshooting | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-ingestion/TROUBLESHOOTING.md |
+| Troubleshooting | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-ingestion/TROUBLESHOOTING.md |

@@ -179,7 +179,7 @@ modbus read <target-ip> 502 1 0 10
 # S7 information gathering
 nmap -p 102 --script s7-info <target-ip> -oA s7_info
 
-# Python SNAP7 enumeration
+# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SNAP7 enumeration
 python3 -c "import snap7; client = snap7.client.Client(); client.connect('<target-ip>', 0, 1); print(client.get_cpu_info()); client.disconnect()"
 ```
 
@@ -353,7 +353,7 @@ EOF
   Commands NOT requiring root:
   - TCP Connect scans (`nmap -sT`): Safe, no root needed
   - Service version detection (`nmap -sV`): No root needed
-  - Most Python tools (pymodbus, snap7): Run as regular user
+  - Most [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) tools (pymodbus, snap7): Run as regular user
   - Metasploit console: Runs as regular user
 
 - **Claude CLI Safety Considerations**:
@@ -364,10 +364,10 @@ EOF
     sudo setcap cap_net_raw,cap_net_admin+eip $(which nmap)
     # Then run without sudo: nmap -sS <target-ip>
     ```
-  - Log all privileged command executions for audit purposes
+  - Log all privileged command executions for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes
   - Use principle of least privilege - only elevate when necessary
 
-- **Audit Logging**: Document all assessment activities including:
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Document all assessment activities including:
   - Authorization documents and scope
   - Scanning windows and rate limits
   - All privileged command executions
@@ -434,7 +434,7 @@ msf6 > search scada
 ## Integration Points
 
 - **Metasploit**: Import Nmap results with `db_import <nmap-xml-file>` for correlation and deeper analysis
-- **SIEM Integration**: Parse Nmap XML output for security monitoring and alerting on discovered OT devices
+- **SIEM Integration**: Parse Nmap XML output for security [monitoring](../monitoring/SKILL.md) and [alerting](../alerting/SKILL.md) on discovered OT devices
 - **Asset Management**: Update CMDB with discovered OT devices, protocols, and service versions
 - **Reporting**: Generate structured reports from Nmap XML output and combine with Metasploit results for comprehensive assessment documentation
 - **CI/CD**: Not typically applicable for OT assessments due to air-gapped network requirements

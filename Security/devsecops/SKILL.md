@@ -8,7 +8,7 @@ Embed security directly into CI/CD pipelines to catch vulnerabilities early. Foc
 
 ## Pipeline Architecture
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Push Code] --> B[Lint & Unit Test]
@@ -23,7 +23,7 @@ flowchart TD
     J --> K[Deploy]
 ```
 
-## GitHub Actions Example (SAST & Secrets)
+## [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Example (SAST & Secrets)
 
 ```yaml
 name: DevSecOps Pipeline
@@ -40,7 +40,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
+          base: ${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.repository.default_branch }}
           head: HEAD
           extra_args: --only-verified
 

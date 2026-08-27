@@ -21,9 +21,9 @@ Host many teams/customers on shared inference infrastructure without sacrificing
 
 ## Prerequisites
 
-- Kubernetes cluster with GPU node pools
+- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU node pools
 - API gateway or LLM gateway (LiteLLM, Envoy, Kong)
-- Prometheus + Grafana for per-tenant observability
+- Prometheus + Grafana for per-tenant [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - Redis or equivalent for rate limiting state
 - Billing system or cost attribution database
 
@@ -241,7 +241,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              name: llm-gateway
+              name: [llm-gateway](../llm-gateway/SKILL.md)
   egress:
     - to:
         - namespaceSelector:
@@ -275,7 +275,7 @@ spec:
 
 ## Request Routing and Rate Limiting
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # gateway_router.py
 """Multi-tenant request router with rate limiting and model routing."""
 import time
@@ -417,7 +417,7 @@ metadata:
   namespace: llm-serving
 data:
   config.yaml: |
-    domain: llm-gateway
+    domain: [llm-gateway](../llm-gateway/SKILL.md)
     descriptors:
       # Per-tenant rate limits
       - key: tenant_id
@@ -445,7 +445,7 @@ data:
 
 ## Billing Integration
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # billing_export.py
 """Export tenant usage data for billing systems."""
 import redis
@@ -535,7 +535,7 @@ globalDefault: false
 description: "Free tier tenant workloads"
 ```
 
-## Per-Tenant Monitoring
+## Per-Tenant [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```yaml
 # tenant-alerts.yaml
@@ -577,13 +577,13 @@ groups:
 - Encrypt data in transit and at rest.
 - Disallow cross-tenant cache leakage.
 - Restrict debug data access by role.
-- Audit all privileged administrative actions.
+- [Audit](../../Operations/audit/SKILL.md) all privileged administrative actions.
 
-## Operational Runbook
+## Operational [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 
 1. Onboard tenant with policy template.
 2. Issue virtual key and quota profile.
-3. Validate observability and billing tags.
+3. Validate [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and billing tags.
 4. Run tenant-specific load/safety tests.
 5. Enable production traffic with canary limits.
 
@@ -600,8 +600,8 @@ groups:
 
 ## Related Skills
 
-- [llm-gateway](../../networking/llm-gateway/) - Key management and traffic routing
-- [llm-cost-optimization](../../../devops/ai/llm-cost-optimization/) - Cost controls and optimization tactics
-- [zero-trust](../../../security/network/zero-trust/) - Identity-centric network and access patterns
-- [gpu-kubernetes-operations](../gpu-kubernetes-operations/) - GPU cluster management
-- [llm-inference-scaling](../llm-inference-scaling/) - Autoscaling inference workloads
+- [llm-gateway](../../networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Key management and traffic routing
+- [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost controls and optimization tactics
+- [zero-trust](../../../security/network/[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Identity-centric network and access patterns
+- [gpu-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations](../[gpu-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/gpu-[kubernetes-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)/SKILL.md)/) - GPU cluster management
+- [llm-inference-scaling](../[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) inference workloads

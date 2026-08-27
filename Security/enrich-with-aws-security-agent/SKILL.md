@@ -59,14 +59,14 @@ AWS Security Agent is an AI-powered security service that performs automated cod
    - **Description**: What the vulnerability is and why it's a risk
    - **Remediation**: Suggested fix or mitigation
 
-4. **Correlate findings with the incident** by matching:
+4. **Correlate findings with the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)** by matching:
    - Affected services or components
-   - Timeframes (when the vulnerability was introduced vs. when the incident occurred)
+   - Timeframes (when the vulnerability was introduced vs. when the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) occurred)
    - Code paths involved in the failing functionality
 
 5. **Present findings to the customer** with:
    - Clear identification of the vulnerable code location
-   - Explanation of how this vulnerability may relate to the incident
+   - Explanation of how this vulnerability may relate to the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    - Specific remediation steps they can take to fix the code
 
 ## Example Log Query for Specific Application
@@ -83,5 +83,5 @@ fields @timestamp, @message
 
 - AWS Security Agent API access may require additional IAM permissions. If API calls fail, fall back to the CloudWatch logs approach.
 - Always provide the exact file and line number when available — this is the key value for customers.
-- Link the security finding to the observed incident behavior when possible.
+- Link the security finding to the observed [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) behavior when possible.
 - **When in doubt, check security logs** — it's better to rule out security issues than to miss them.

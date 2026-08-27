@@ -53,7 +53,7 @@ and a healthy one is never flapped by check noise.
 `round-robin` assumes every request costs about the same to serve — true for stateless, uniform
 work, false the moment request cost varies widely. `least-connections` accounts for backends
 already carrying more in-flight work, which matters when request duration is uneven.
-Weighted variants let heterogeneous backend capacity be reflected explicitly instead of assuming
+Weighted variants let heterogeneous backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) be reflected explicitly instead of assuming
 every instance is identical.
 
 | Algorithm | Best fit | Weak point |
@@ -85,7 +85,7 @@ can serve any request; reach for stickiness only when that's genuinely not feasi
 
 - **Stickiness concentrates load** on whichever backends happen to hold the busiest sessions.
 - **A backend replacement drops sticky sessions** unless state lives outside the process — see
-  `caching-strategies` for externalizing that state properly.
+  `[caching-strategies](../../Miscellaneous/caching-strategies/SKILL.md)` for externalizing that state properly.
 - **Cookie-based affinity survives client IP changes**; IP-based affinity breaks behind NAT or
   mobile networks where source IP shifts mid-session.
 
@@ -97,7 +97,7 @@ load is graphed so the distribution cost of that affinity is visible rather than
 A balancer can report 100% healthy backends while sending traffic wildly unevenly — a stale
 weight, an algorithm interacting badly with connection reuse, or one AZ silently getting starved.
 Per-backend request rate and latency, not just aggregate numbers, are what surface this; see
-`metrics-and-monitoring` for the RED breakdown to apply per backend.
+`[metrics-and-monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/metrics-and-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/SKILL.md)` for the RED breakdown to apply per backend.
 
 **Done when:** per-backend traffic share can be graphed and is within expected bounds, not just
 inferred from an aggregate health-check pass rate.

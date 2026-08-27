@@ -108,7 +108,7 @@ Deployment target?
 7. **Stale credentials**: Expired smoke test credentials cause false failures. Rotate regularly
 8. **Overlapping coverage**: Multiple tests verifying the same path waste time. Deduplicate
 9. **Missing production verification**: Deploying to production without running smoke tests is risky
-10. **No monitoring integration**: Smoke test results must feed into metrics and alerting systems
+10. **No [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integration**: Smoke test results must feed into metrics and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) systems
 
 ## Best Practices
 
@@ -116,12 +116,12 @@ Deployment target?
 2. Every smoke test must be 100% deterministic — non-deterministic tests erode trust
 3. Classify tests as critical (100% pass required) or non-critical (95% threshold)
 4. Run full smoke suite in staging, read-only smoke in production
-5. Connect smoke results to automatic rollback and alerting systems
+5. Connect smoke results to automatic rollback and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) systems
 6. Use dedicated smoke test service accounts with limited permissions
 7. Review and update smoke suite monthly to reflect current critical paths
 8. Run smoke tests in parallel for speed, but each test must be independent
 9. Use infrastructure health checks + core service checks + critical user journeys for complete coverage
-10. Continue monitoring after deployment — initial smoke pass doesn't guarantee long-term health
+10. Continue [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) after deployment — initial smoke pass doesn't guarantee long-term health
 
 ## Compared With
 
@@ -148,7 +148,7 @@ Deployment target?
 ## Smoke Test Examples
 
 ### Playwright — Critical Path Smoke Tests
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // e2e/smoke/critical-paths.spec.ts
 import { test, expect } from "@playwright/test";
 
@@ -199,8 +199,8 @@ test.describe("Smoke: Core Business Flow", () => {
 });
 ```
 
-### Python — API Health Smoke Tests
-```python
+### [Python](../../Languages/python/SKILL.md) — API Health Smoke Tests
+```[python](../../Languages/python/SKILL.md)
 # smoke/test_api_health.py
 import requests
 import sys
@@ -236,7 +236,7 @@ if __name__ == "__main__":
 
 ## CI/CD Pipeline Integration
 
-### GitHub Actions — Smoke Test Stage with Rollback
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Smoke Test Stage with Rollback
 ```yaml
 name: Deploy with Smoke Tests
 on:
@@ -273,14 +273,14 @@ jobs:
         run: ./promote.sh staging production
 ```
 
-### ArgoCD Health Check Integration
+### [ArgoCD](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) Health Check Integration
 ```yaml
 # application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 spec:
   source:
-    repoURL: https://github.com/example/app
+    repoURL: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/example/app
   syncPolicy:
     automated:
       selfHeal: true
@@ -309,7 +309,7 @@ Smoke tests requiring complex data setup (API seeding, database migrations, mult
 Production smoke tests that create test orders, register test users, or modify data cause data pollution and may trigger real downstream effects. Production smoke tests must be read-only. Use GET requests only.
 
 ### Anti-Pattern: No Automatic Rollback
-Smoke test failures that only notify humans instead of triggering automatic rollback introduce delay in incident response. Critical smoke test failures must trigger automatic rollback. Test the rollback automation quarterly.
+Smoke test failures that only notify humans instead of triggering automatic rollback introduce delay in [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response. Critical smoke test failures must trigger automatic rollback. Test the rollback automation quarterly.
 
 ### Anti-Pattern: Ignoring Infrastructure Health
 Starting functional smoke tests before verifying infrastructure is healthy wastes time debugging false failures. Infrastructure checks (health endpoints, database connectivity, cache connectivity) must run first. If infrastructure is down, skip functional tests and fail fast.
@@ -321,7 +321,7 @@ Starting functional smoke tests before verifying infrastructure is healthy waste
 | 1: Initial | Manual smoke | Manual checks after deployment, inconsistent execution, no automation |
 | 2: Defined | Automated basic smoke | Scripted health checks, CI/CD integration, manual rollback on failure |
 | 3: Managed | Comprehensive smoke suite | Infrastructure + critical path smoke, automatic rollback, 100% deterministic, reviewed every sprint |
-| 4: Measured | Smoke as deployment gate | Automatic rollback on critical failure, post-deployment monitoring, layered smoke (staging vs production), execution time trend tracked |
+| 4: Measured | Smoke as deployment gate | Automatic rollback on critical failure, post-deployment [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), layered smoke (staging vs production), execution time trend tracked |
 | 5: Optimized | Predictive smoke | Canary analysis combines with smoke results, progressive delivery based on smoke + metrics, self-healing smoke suite automatically updates baseline expectations |
 
 ## Canary Testing Strategy
@@ -382,14 +382,14 @@ smoke_metrics:
 10. Smoke test results must be recorded with evidence (response times, status codes, logs)
 11. Smoke test credentials must be rotated every 90 days and stored in secrets management
 12. Non-critical failure rate below 95% blocks promotion but does not trigger rollback
-13. Post-deployment health monitoring must continue for at least 15 minutes after smoke pass
+13. Post-deployment health [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) must continue for at least 15 minutes after smoke pass
 14. Smoke tests must be version-controlled alongside application code and pipeline config
 15. No more than 25 tests in the smoke suite — exceeding this requires pruning
 16. Rollback from smoke failure must be tested quarterly to verify automation works
 17. Smoke tests for staging may include write operations; production smoke is read-only
 18. Each smoke test must produce a clear pass/fail signal — no ambiguous results
 19. Canary deployments require smoke tests to pass before traffic shifting
-20. Smoke test results must feed into deployment health dashboards automatically
+20. Smoke test results must feed into deployment health [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) automatically
 
 ## References
 - ../../../Global_References/bvt-strategy.md — Build Verification Testing (BVT)
@@ -405,10 +405,10 @@ smoke_metrics:
 
 ## Handoff
 After smoke testing, hand off to:
-- `quality-regression-testing` — if smoke passes, run targeted regression on affected areas
-- `quality-acceptance-testing` — if smoke passes and UAT is scheduled
-- `quality-e2e-testing` — for deeper end-to-end verification of critical journeys
-- `quality-load-testing` — if smoke reveals performance concerns
+- `[quality-regression-testing](../regression-testing/SKILL.md)` — if smoke passes, run targeted regression on affected areas
+- `[quality-acceptance-testing](../../Miscellaneous/acceptance-testing/SKILL.md)` — if smoke passes and UAT is scheduled
+- `[quality-e2e-testing](../e2e-testing/SKILL.md)` — for deeper end-to-end verification of critical journeys
+- `quality-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` — if smoke reveals performance concerns
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -461,7 +461,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -475,7 +475,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -491,12 +491,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -505,7 +505,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -513,13 +513,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -528,9 +528,9 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

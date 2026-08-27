@@ -15,11 +15,11 @@ metadata:
   maturity: stable
 ---
 
-# Lightweight Kubernetes (K3s)
+# Lightweight [Kubernetes](../kubernetes/SKILL.md) (K3s)
 
 ## Purpose
 
-K3s packages a CNCF-conformant Kubernetes distribution into a single
+K3s packages a CNCF-conformant [Kubernetes](../kubernetes/SKILL.md) distribution into a single
 binary under 100MB, with sane defaults (embedded containerd, an
 embedded CNI, an embedded Ingress controller, and a lightweight
 datastore option) that make it practical to run on resource-constrained
@@ -35,33 +35,33 @@ and sizing.
 
 ## When to use
 
-- Standing up Kubernetes on edge devices (industrial gateways, retail
+- Standing up [Kubernetes](../kubernetes/SKILL.md) on edge devices (industrial gateways, retail
   POS, IoT hubs) with limited CPU/RAM and often no reliable connectivity
   to a central control plane.
-- Running Kubernetes on a small on-prem VM or bare-metal box where a
+- Running [Kubernetes](../kubernetes/SKILL.md) on a small on-prem VM or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) box where a
   full multi-node kubeadm cluster's control-plane overhead isn't
   justified.
 - Local development or CI ephemeral clusters needing a fast-starting,
-  low-resource Kubernetes (an alternative to kind/minikube with a closer-
+  low-resource [Kubernetes](../kubernetes/SKILL.md) (an alternative to kind/minikube with a closer-
   to-production single-binary distribution).
 - Deciding whether a deployment needs single-server K3s (embedded
   SQLite), HA K3s (embedded etcd, 3+ server nodes), or a full managed/
-  self-managed Kubernetes distribution instead.
+  self-managed [Kubernetes](../kubernetes/SKILL.md) distribution instead.
 - Sizing node resources and datastore choice for a specific number of
   worker nodes and pods.
 
 ## Prerequisites & environment
 
-- K3s ≥ v1.30 (K3s version strings embed the Kubernetes version, e.g.
-  `v1.30.4+k3s1` — track upstream Kubernetes support windows the same
+- K3s ≥ v1.30 (K3s version strings embed the [Kubernetes](../kubernetes/SKILL.md) version, e.g.
+  `v1.30.4+k3s1` — track upstream [Kubernetes](../kubernetes/SKILL.md) support windows the same
   way as any other distribution).
 - A Linux host (K3s does not run natively on Windows/macOS as a server
   node; use a Linux VM for those) with `curl` access to
   `get.k3s.io` (or a pre-downloaded binary/air-gapped bundle for edge
   sites with no internet access — K3s explicitly supports air-gapped
   installs via a bundled image tarball).
-- For multi-server HA: either an external SQL datastore (MySQL,
-  PostgreSQL, or the officially supported etcd-compatible options) or
+- For multi-server HA: either an external SQL datastore ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md),
+  [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), or the officially supported etcd-compatible options) or
   K3s's embedded etcd, plus a fixed registration address (a load
   balancer or DNS name, not a single server's IP) for agents to join
   through.
@@ -69,7 +69,7 @@ and sizing.
   service.
 - Minimum practical sizing: K3s itself targets devices with as little
   as 512MB RAM / 1 vCPU for the smallest edge use cases, but real
-  workload capacity must be added on top of that floor — size nodes for
+  workload [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) must be added on top of that floor — size nodes for
   the actual pods scheduled, not just the K3s baseline.
 
 ## Step-by-step guidance
@@ -85,7 +85,7 @@ and sizing.
      control-plane HA with no external database to operate, at the cost
      of etcd's own quorum requirements (need an odd number ≥ 3 server
      nodes to tolerate a single node loss).
-   - **Multi-server, external datastore (MySQL/PostgreSQL)**: control
+   - **Multi-server, external datastore ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))**: control
      plane HA backed by a database the team already operates/backs up
      — a reasonable choice when etcd operational expertise isn't
      available in-house but a managed/existing RDBMS is.
@@ -109,7 +109,7 @@ and sizing.
    ```
    `--tls-san` must include the load-balanced registration address so
    the server's TLS certificate validates for whatever hostname/IP
-   agents and `kubectl` actually connect through — a missing SAN entry
+   agents and `[kubectl](../kubectl/SKILL.md)` actually connect through — a missing SAN entry
    here is the most common HA setup failure.
 
 4. **Join agent (worker) nodes**:
@@ -127,7 +127,7 @@ and sizing.
      --disable traefik --disable servicelb
    ```
    Disable `traefik` if standardizing on
-   [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+   [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
    instead, and disable the bundled local-path provisioner if a
    different CSI/storage backend is required for the workload.
 
@@ -190,7 +190,7 @@ and sizing.
 ## Common pitfalls
 
 - **Symptom:** A single-server K3s cluster's node goes offline and
-  every `kubectl` command starts failing, even though the workload pods
+  every `[kubectl](../kubectl/SKILL.md)` command starts failing, even though the workload pods
   were still technically running fine right before the outage.
   **Fix:** This is expected for a single-server (single control-plane)
   topology — there is no HA without multiple server nodes. If the
@@ -211,11 +211,11 @@ and sizing.
 
 - **Symptom:** A workload's Ingress or LoadBalancer Service behaves
   unexpectedly differently than an equivalent setup on a full
-  Kubernetes cluster.
+  [Kubernetes](../kubernetes/SKILL.md) cluster.
   **Fix:** K3s ships Traefik and ServiceLB by default, which most teams
   don't run on their primary clusters — confirm whether the observed
   behavior comes from K3s's bundled defaults rather than a general
-  Kubernetes behavior difference, and disable the bundled component
+  [Kubernetes](../kubernetes/SKILL.md) behavior difference, and disable the bundled component
   (`--disable traefik`/`--disable servicelb`) if standardizing on a
   different Ingress/LB stack.
 
@@ -230,10 +230,10 @@ and sizing.
 - **Symptom:** An edge device with severely constrained RAM starts
   evicting pods or the K3s agent itself becomes unstable under normal
   load.
-  **Fix:** The device's total capacity was sized against K3s's
+  **Fix:** The device's total [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) was sized against K3s's
   documented minimums without headroom for the actual scheduled
   workload's requests/limits plus OS/K3s baseline overhead. Re-size
-  using real observed usage (`kubectl top nodes`, `k3s check-config`)
+  using real observed usage (`[kubectl](../kubectl/SKILL.md) top nodes`, `k3s check-config`)
   rather than the bare minimum figures quoted for K3s alone.
 
 ## Worked example
@@ -241,7 +241,7 @@ and sizing.
 **Scenario:** Stand up a 3-node HA K3s cluster (embedded etcd) for a
 regional edge site running a handful of lightweight services, with
 Traefik disabled in favor of ingress-nginx, and a pre-upgrade backup
-step included in the runbook.
+step included in the [runbook](../../Observability_and_SecOps/runbook/SKILL.md).
 
 ```bash
 # server-1
@@ -268,7 +268,7 @@ curl -sfL https://get.k3s.io | \
 ```
 
 ```bash
-kubectl get nodes -o wide     # 3 control-plane + N agent nodes, all Ready
+[kubectl](../kubectl/SKILL.md) get nodes -o wide     # 3 control-plane + N agent nodes, all Ready
 k3s etcd-snapshot save --name baseline-$(date +%F)
 ```
 
@@ -279,7 +279,7 @@ k3s etcd-snapshot save --name pre-upgrade-$(date +%F)
 k3s etcd-snapshot ls
 ```
 
-`kubectl get nodes` confirms all three server nodes report `Ready` and
+`[kubectl](../kubectl/SKILL.md) get nodes` confirms all three server nodes report `Ready` and
 are separate failure domains (verify they run on distinct underlying
 hosts/hypervisors — etcd quorum tolerance is meaningless if all three
 "nodes" share one physical failure point), giving the edge site a
@@ -287,6 +287,6 @@ control plane that survives the loss of any single server node.
 
 ## Cross-references
 
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — the alternative when the deployment's scale/availability needs exceed what a self-operated K3s HA cluster comfortably provides.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — K3s ships a Helm controller (`HelmChart`/`HelmChartConfig` CRDs) for declaratively installing charts at cluster bootstrap time.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — K3s bundles Flannel by default; swapping in Calico for NetworkPolicy enforcement follows the same tradeoffs described there.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the alternative when the deployment's scale/availability needs exceed what a self-operated K3s HA cluster comfortably provides.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — K3s ships a Helm controller (`HelmChart`/`HelmChartConfig` CRDs) for declaratively installing charts at cluster bootstrap time.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — K3s bundles Flannel by default; swapping in Calico for NetworkPolicy enforcement follows the same tradeoffs described there.

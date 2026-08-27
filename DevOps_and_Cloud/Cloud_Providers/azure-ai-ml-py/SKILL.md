@@ -10,14 +10,14 @@ metadata:
   package: azure-ai-ml
 ---
 
-# Azure Machine Learning SDK v2 for Python
+# Azure Machine Learning SDK v2 for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for managing Azure ML resources: workspaces, jobs, models, data, and compute.
 
 ## Installation
 
 ```bash
-pip install azure-ai-ml
+pip install [azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml
 ```
 
 ## Environment Variables
@@ -33,7 +33,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -42,7 +42,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml import MLClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 import os
@@ -50,7 +50,7 @@ import os
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 with MLClient(
     credential=credential,
@@ -64,7 +64,7 @@ with MLClient(
 
 ### From Config File
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml import MLClient
 from azure.identity import DefaultAzureCredential
 
@@ -82,7 +82,7 @@ with MLClient.from_config(
 
 ### Create Workspace
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml.entities import Workspace
 
 ws = Workspace(
@@ -98,7 +98,7 @@ ml_client.workspaces.begin_create(ws).result()
 
 ### List Workspaces
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for ws in ml_client.workspaces.list():
     print(f"{ws.name}: {ws.location}")
 ```
@@ -107,7 +107,7 @@ for ws in ml_client.workspaces.list():
 
 ### Register Data
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml.entities import Data
 from azure.ai.ml.constants import AssetTypes
 
@@ -125,7 +125,7 @@ ml_client.data.create_or_update(my_data)
 
 ### Register Folder
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 my_data = Data(
     name="my-folder-dataset",
     version="1",
@@ -140,7 +140,7 @@ ml_client.data.create_or_update(my_data)
 
 ### Register Model
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml.entities import Model
 from azure.ai.ml.constants import AssetTypes
 
@@ -157,7 +157,7 @@ ml_client.models.create_or_update(model)
 
 ### List Models
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for model in ml_client.models.list(name="my-model"):
     print(f"{model.name} v{model.version}")
 ```
@@ -166,7 +166,7 @@ for model in ml_client.models.list(name="my-model"):
 
 ### Create Compute Cluster
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml.entities import AmlCompute
 
 cluster = AmlCompute(
@@ -183,7 +183,7 @@ ml_client.compute.begin_create_or_update(cluster).result()
 
 ### List Compute
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for compute in ml_client.compute.list():
     print(f"{compute.name}: {compute.type}")
 ```
@@ -192,12 +192,12 @@ for compute in ml_client.compute.list():
 
 ### Command Job
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml import command, Input
 
 job = command(
     code="./src",
-    command="python train.py --data ${{inputs.data}} --lr ${{inputs.learning_rate}}",
+    command="[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) train.py --data ${{inputs.data}} --lr ${{inputs.learning_rate}}",
     inputs={
         "data": Input(type="uri_folder", path="azureml:my-dataset:1"),
         "learning_rate": 0.01
@@ -213,13 +213,13 @@ print(f"Job URL: {returned_job.studio_url}")
 
 ### Monitor Job
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 ml_client.jobs.stream(returned_job.name)
 ```
 
 ## Pipelines
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml import dsl, Input, Output
 from azure.ai.ml.entities import Pipeline
 
@@ -246,7 +246,7 @@ pipeline_job = ml_client.jobs.create_or_update(pipeline)
 
 ### Create Custom Environment
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.ml.entities import Environment
 
 env = Environment(
@@ -263,14 +263,14 @@ ml_client.environments.create_or_update(env)
 
 ### List Datastores
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for ds in ml_client.datastores.list():
     print(f"{ds.name}: {ds.type}")
 ```
 
 ### Get Default Datastore
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 default_ds = ml_client.datastores.get_default()
 print(f"Default: {default_ds.name}")
 ```
@@ -304,6 +304,6 @@ print(f"Default: {default_ds.name}")
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-ai-ml-py_capabilities.md](../../../Global_References/azure-ai-ml-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-ai-ml-py_non-hero-scenarios.md](../../../Global_References/azure-ai-ml-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml-py_capabilities.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml-py_non-hero-scenarios.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

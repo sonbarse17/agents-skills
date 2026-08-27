@@ -47,7 +47,7 @@ change_types:
       - Non-critical configuration changes
       - Feature flag toggles
       - Documentation updates to production systems
-      - Adding monitoring dashboards or alerts
+      - Adding [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) or alerts
 
   normal_medium:
     risk: Medium
@@ -135,7 +135,7 @@ change_request:
     post_change_verification:
       - "Health check endpoints responding"
       - "Key transactions processing successfully"
-      - "No error rate increase in monitoring"
+      - "No error rate increase in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
       - "Performance metrics within baseline"
 
   rollback:
@@ -225,9 +225,9 @@ emergency_change_process:
   step_1_declare:
     actions:
       - On-call engineer identifies need for emergency change
-      - Incident commander approves emergency classification
+      - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander approves emergency classification
       - Minimum 2 approvers from emergency CAB roster contacted
-      - Document initial justification in incident channel
+      - Document initial justification in [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel
 
   step_2_approve:
     approval_method:
@@ -314,7 +314,7 @@ emergency_change_process:
 - [ ] Health checks passing
 - [ ] Error rates within baseline
 - [ ] Key transactions working
-- [ ] Monitoring dashboards reviewed
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) reviewed
 
 ### Communication
 - [ ] Team notified
@@ -331,7 +331,7 @@ emergency_change_process:
 ## CI/CD Change Tracking Automation
 
 ```yaml
-# GitHub Actions - Automated change tracking
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions - Automated change tracking
 name: Change Management
 on:
   pull_request:
@@ -341,7 +341,7 @@ on:
 
 jobs:
   classify-change:
-    if: github.event_name == 'pull_request'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -349,7 +349,7 @@ jobs:
       - name: Classify change risk
         id: classify
         run: |
-          FILES_CHANGED=$(gh pr diff ${{ github.event.pull_request.number }} --name-only)
+          FILES_CHANGED=$(gh pr diff ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} --name-only)
 
           # High risk indicators
           if echo "$FILES_CHANGED" | grep -qE 'terraform/|infrastructure/|migrations/|auth/|security/'; then
@@ -365,7 +365,7 @@ jobs:
 
       - name: Add risk label
         run: |
-          gh pr edit ${{ github.event.pull_request.number }} \
+          gh pr edit ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} \
             --add-label "risk:${{ steps.classify.outputs.risk }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -373,7 +373,7 @@ jobs:
       - name: Enforce approvals by risk
         if: steps.classify.outputs.risk == 'high'
         run: |
-          APPROVALS=$(gh pr view ${{ github.event.pull_request.number }} \
+          APPROVALS=$(gh pr view ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} \
             --json reviews --jq '[.reviews[] | select(.state=="APPROVED")] | length')
           if [ "$APPROVALS" -lt 2 ]; then
             echo "::error::High-risk changes require at least 2 approvals"
@@ -383,23 +383,23 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   record-deployment:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'push' && [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Record deployment
         run: |
-          CHANGE_ID="CR-$(date +%Y)-$(printf '%04d' ${{ github.run_number }})"
+          CHANGE_ID="CR-$(date +%Y)-$(printf '%04d' ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).run_number }})"
           echo "Change ID: $CHANGE_ID"
           echo "Deployed at: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "Commit: ${{ github.sha }}"
-          echo "Author: ${{ github.actor }}"
+          echo "[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}"
+          echo "Author: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}"
 
           cat > /tmp/deployment-record.json <<EOF
           {
             "change_id": "$CHANGE_ID",
             "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "commit": "${{ github.sha }}",
-            "author": "${{ github.actor }}",
+            "[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)": "${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}",
+            "author": "${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}",
             "environment": "production",
             "status": "deployed"
           }
@@ -441,7 +441,7 @@ change_freeze:
 ```yaml
 metrics:
   change_success_rate:
-    description: "Percentage of changes implemented without rollback or incident"
+    description: "Percentage of changes implemented without rollback or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
     target: ">95%"
     formula: "(successful changes / total changes) * 100"
 
@@ -480,7 +480,7 @@ change_management_checklist:
     - [ ] Automated risk classification in CI/CD
     - [ ] Branch protection enforces required approvals
     - [ ] Deployment records captured automatically
-    - [ ] Change audit trail preserved (PR history, approvals)
+    - [ ] Change [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail preserved (PR history, approvals)
 
   compliance:
     - [ ] All production changes have documented approval
@@ -488,7 +488,7 @@ change_management_checklist:
     - [ ] Post-implementation reviews conducted for failures
     - [ ] Emergency changes documented retroactively within 48 hours
     - [ ] Change metrics reported monthly
-    - [ ] Audit trail retained for compliance period (1-3 years)
+    - [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail retained for compliance period (1-3 years)
 ```
 
 ## Best Practices

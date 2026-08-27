@@ -27,7 +27,7 @@ tags: [devops, helm, kubernetes, charts, phase-5]
 # Helm Patterns
 
 ## Purpose
-Develop, test, deploy, and operate Helm charts for Kubernetes with best practices for templating, dependency management, security, CI/CD integration, and advanced patterns.
+Develop, test, deploy, and operate Helm charts for [Kubernetes](../kubernetes/SKILL.md) with best practices for templating, dependency management, security, CI/CD integration, and advanced patterns.
 
 ## Agent Protocol
 
@@ -36,9 +36,9 @@ Exact user phrases: "helm", "helm chart", "helm template", "helm install", "helm
 
 ### Input Context
 - Chart purpose (app, infrastructure, library).
-- Kubernetes version and distribution.
-- CI/CD system (GitHub Actions, GitLab CI, ArgoCD).
-- Secrets management (SOPS, SealedSecrets, External Secrets, Vault).
+- [Kubernetes](../kubernetes/SKILL.md) version and distribution.
+- CI/CD system ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [ArgoCD](../argocd/SKILL.md)).
+- Secrets management (SOPS, SealedSecrets, External Secrets, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).
 - Multi-environment strategy.
 
 ### Output Artifact
@@ -111,40 +111,40 @@ type: application
 version: 1.2.3
 appVersion: "2.5.0"
 kubeVersion: ">=1.27.0-0"
-home: https://github.com/myorg/my-app
+home: https://[github](../../CI_CD/github/SKILL.md).com/myorg/my-app
 sources:
-  - https://github.com/myorg/my-app
+  - https://[github](../../CI_CD/github/SKILL.md).com/myorg/my-app
 maintainers:
   - name: DevOps Team
     email: devops@example.com
 dependencies:
-  - name: postgresql
+  - name: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
     version: "15.5.2"
     repository: "https://charts.bitnami.com/bitnami"
-    condition: postgresql.enabled
+    condition: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).enabled
     tags:
       - database
   - name: redis
     version: "19.6.1"
-    repository: "oci://registry-1.docker.io/bitnamicharts"
+    repository: "oci://registry-1.[docker](../docker/SKILL.md).io/bitnamicharts"
     condition: redis.enabled
   - name: common
     version: "2.x"
     repository: "file://../common"
-  - name: monitoring
+  - name: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
     version: "0.x"
-    repository: "https://prometheus-community.github.io/helm-charts"
+    repository: "https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)"
     alias: prometheus
     import-values:
       - child: defaults
-        parent: monitoring
+        parent: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 ```
 
 ### Step 3: values.yaml (with documentation)
 ```yaml
 # @section Global parameters
-# @param global.imageRegistry Global Docker image registry
-# @param global.imagePullSecrets Global Docker image pull secrets
+# @param global.imageRegistry Global [Docker](../docker/SKILL.md) image registry
+# @param global.imagePullSecrets Global [Docker](../docker/SKILL.md) image pull secrets
 
 global:
   imageRegistry: ""
@@ -175,7 +175,7 @@ ingress:
   className: nginx
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.[kubernetes](../kubernetes/SKILL.md).io/ssl-redirect: "true"
   hosts:
     - host: app.example.com
       paths:
@@ -195,8 +195,8 @@ resources:
     cpu: 250m
     memory: 256Mi
 
-# @section Autoscaling
-autoscaling:
+# @section [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):
   enabled: true
   minReplicas: 3
   maxReplicas: 20
@@ -247,14 +247,14 @@ containerSecurityContext:
 helm.sh/chart: {{ include "my-app.name" . }}-{{ .Chart.Version | replace "+" "_" }}
 {{ include "my-app.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+app.[kubernetes](../kubernetes/SKILL.md).io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.[kubernetes](../kubernetes/SKILL.md).io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{- define "my-app.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "my-app.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.[kubernetes](../kubernetes/SKILL.md).io/name: {{ include "my-app.name" . }}
+app.[kubernetes](../kubernetes/SKILL.md).io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "my-app.image" -}}
@@ -274,8 +274,8 @@ metadata:
     {{- include "my-app.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
-  {{- if .Values.autoscaling.enabled }}
-  replicas: {{ .Values.autoscaling.minReplicas }}
+  {{- if .Values.[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).enabled }}
+  replicas: {{ .Values.[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).minReplicas }}
   {{- end }}
   selector:
     matchLabels:
@@ -379,7 +379,7 @@ spec:
       containers:
       - name: migrate
         image: "{{ include "my-app.image" . }}"
-        command: ["python", "manage.py", "migrate"]
+        command: ["[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "manage.py", "migrate"]
 ```
 
 ```yaml
@@ -524,7 +524,7 @@ sops decrypt secrets/prod.yaml | helm upgrade --install my-app ./my-chart -f -
 
 ### Step 9: CI/CD Pipeline
 ```yaml
-# .github/workflows/helm-ci.yaml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/helm-ci.yaml
 name: Helm CI
 on:
   pull_request:
@@ -552,12 +552,12 @@ jobs:
     - uses: azure/setup-helm@v4
     - name: Run helm-unittest
       run: |
-        helm plugin install https://github.com/helm-unittest/helm-unittest
+        helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest
         helm unittest charts/my-app
 
   package:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: [github](../../CI_CD/github/SKILL.md).ref == 'refs/heads/main'
     needs: [lint, unittest]
     steps:
     - uses: actions/checkout@v4
@@ -567,7 +567,7 @@ jobs:
         helm package charts/my-app --destination dist/
     - name: Push to OCI registry
       run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
+        echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u ${{ [github](../../CI_CD/github/SKILL.md).actor }} --password-stdin
         helm push dist/my-app-*.tgz oci://ghcr.io/myorg
 ```
 
@@ -588,7 +588,7 @@ jobs:
 - Use `helm get manifest` and `helm get values` for debugging deployed charts.
 - Package charts with provenance (`helm package --sign`) for supply chain security.
 - OCI registries support Helm charts natively — prefer OCI over Chartmuseum for new setups.
-- Use Chart.yaml `kubeVersion` to prevent install on incompatible Kubernetes versions.
+- Use Chart.yaml `kubeVersion` to prevent install on incompatible [Kubernetes](../kubernetes/SKILL.md) versions.
 - Helm v3 no longer requires Tiller; use v3 for all new deployments.
 - CRDs: install via `crds/` directory; Helm will install them before templates.
 - Use `--atomic` for production upgrades to auto-rollback on failure.
@@ -616,9 +616,9 @@ jobs:
   - references/helm-testing.md — Helm Unit and Integration Testing
   - ../../../Global_References/helm-security.md — Chart Signing and Supply Chain Security
 ## Handoff
-- `devops-kubernetes` for deploying Helm charts to Kubernetes clusters.
-- `devops-argo-cd` for GitOps deployment of Helm charts via ArgoCD.
-- `devops-gitops` for GitOps workflow integration.
+- `devops-[kubernetes](../kubernetes/SKILL.md)` for deploying Helm charts to [Kubernetes](../kubernetes/SKILL.md) clusters.
+- `devops-[argo-cd](../argo-cd/SKILL.md)` for [GitOps](../gitops/SKILL.md) deployment of Helm charts via [ArgoCD](../argocd/SKILL.md).
+- `devops-[gitops](../gitops/SKILL.md)` for [GitOps](../gitops/SKILL.md) workflow integration.
 - `devops-security` for secrets management and chart signing.
-- `devops-cicd-pipeline` for CI/CD integration.
+- `devops-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)` for CI/CD integration.
 

@@ -49,8 +49,8 @@ asset_categories:
 
   security:
     - IAM users, roles, and policies
-    - KMS keys / Key Vault keys
-    - Certificates (ACM, Key Vault, Certificate Manager)
+    - KMS keys / Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys
+    - Certificates (ACM, Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), Certificate Manager)
     - Security groups / NSGs / Firewall rules
     - WAF configurations
 
@@ -345,16 +345,16 @@ provider "aws" {
 }
 ```
 
-## Multi-Cloud Discovery
+## [Multi-Cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) Discovery
 
 ```bash
 #!/usr/bin/env bash
-# multi-cloud-discovery.sh - Discover assets across AWS, Azure, and GCP
+# [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md)-discovery.sh - Discover assets across AWS, Azure, and GCP
 
-OUTPUT_DIR="./asset-inventory/multi-cloud/$(date +%Y-%m-%d)"
+OUTPUT_DIR="./asset-inventory/[multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md)/$(date +%Y-%m-%d)"
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== Multi-Cloud Asset Discovery ==="
+echo "=== [Multi-Cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) Asset Discovery ==="
 
 # AWS - using Resource Groups Tagging API
 echo "--- AWS Resources ---"
@@ -383,7 +383,7 @@ echo "Discovery complete. Results in $OUTPUT_DIR"
 
 ## CMDB Integration
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """
 CMDB sync script - Normalize cloud assets and push to CMDB API.
 """
@@ -493,11 +493,11 @@ asset_inventory_checklist:
 
 - Automate discovery rather than relying on manual inventory: cloud environments change too fast for spreadsheets
 - Use AWS Config, Azure Resource Graph, and GCP Cloud Asset Inventory as authoritative data sources
-- Enforce tagging at provisioning time through IaC defaults and policy-as-code guardrails
+- Enforce tagging at provisioning time through IaC defaults and [policy-as-code](../policy-as-code/SKILL.md) guardrails
 - Assign every asset an owner: unowned resources become security and cost liabilities
 - Reconcile inventory regularly and investigate orphaned assets (CMDB record with no real resource and vice versa)
 - Track data classification as a mandatory tag to support compliance scoping decisions
 - Maintain asset lifecycle states to distinguish active resources from those being decommissioned
-- Integrate asset inventory with incident response to quickly identify affected systems during investigations
+- Integrate asset inventory with [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response to quickly identify affected systems during investigations
 - Export inventory data for compliance audits in accessible formats (CSV, JSON)
 - Review untagged and unclassified resource reports weekly to maintain inventory quality

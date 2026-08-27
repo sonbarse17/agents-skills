@@ -35,7 +35,7 @@ Exact user phrases: "backup", "disaster recovery", "DR", "RPO", "RTO", "backup s
 
 ### Input Context
 Before activating, verify:
-- Infrastructure type (on-prem VMs, cloud instances, Kubernetes, databases, files).
+- Infrastructure type (on-prem VMs, cloud instances, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), databases, files).
 - Current RPO/RTO targets (recovery point/time objectives).
 - Compliance requirements (HIPAA, PCI, SOC 2, GDPR — determines retention).
 - Budget for backup storage and DR infrastructure.
@@ -43,17 +43,17 @@ Before activating, verify:
 - Existing backup tools (Veeam, Rubrik, Commvault, cloud-native).
 
 ### Output Artifact
-Writes to backup automation scripts (Python/Bash/PowerShell), Terraform for DR infra, runbooks, and CI/CD pipeline for backup validation.
+Writes to backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash/PowerShell), Terraform for DR infra, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), and CI/CD pipeline for backup validation.
 
 ### Response Format
-Configuration files, scripts, and runbook templates with no extraneous explanation.
+Configuration files, scripts, and [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) templates with no extraneous explanation.
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
 - [ ] RPO and RTO defined per workload tier.
 - [ ] 3-2-1 backup strategy implemented (3 copies, 2 media, 1 offsite).
-- [ ] Backup automation configured with alerting.
+- [ ] Backup automation configured with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 - [ ] DR plan documented with failover/failback procedures.
 - [ ] Backup validation testing scheduled (automated restore test).
 - [ ] Immutable backups configured for ransomware protection.
@@ -77,7 +77,7 @@ Direct file write. No response text.
 | On-prem only (tape/NAS) | Fast (local) | High (CAPEX) | Low | Physical security |
 | Cloud only (S3/Blob) | Depends on network | Pay-per-use | Low | Encryption built-in |
 | Hybrid (local + cloud) | Fast local, cloud DR | Medium | Medium | Best of both |
-| Multi-cloud backup | DR flexibility | High | High | Complex compliance |
+| [Multi-cloud](../../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) backup | DR flexibility | High | High | Complex compliance |
 
 ### Cloud DR Patterns
 | Pattern | RTO | RPO | Cost | Use Case |
@@ -116,7 +116,7 @@ Identify workload tiers → Set RPO/RTO → Implement 3-2-1 backup → Automate 
 workloads:
   - name: production-database
     tier: 1
-    type: postgresql
+    type: [postgresql](../../Backend/postgresql/SKILL.md)
     rpo: 15m
     rto: 1h
     backup_frequency: continuous_wal
@@ -136,7 +136,7 @@ workloads:
     encryption:
       at_rest: aes256
       in_transit: tls12
-    monitoring:
+    [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
       backup_success_sli: 99.9
       restore_test_frequency: monthly
 
@@ -173,12 +173,12 @@ workloads:
 ```terraform
 # backup/aws-backup.tf
 resource "aws_backup_vault" "primary" {
-  name        = "primary-backup-vault"
+  name        = "primary-backup-[vault](../../Miscellaneous/vault/SKILL.md)"
   kms_key_arn = aws_kms_key.backup.arn
 }
 
 resource "aws_backup_vault" "dr" {
-  name        = "dr-backup-vault"
+  name        = "dr-backup-[vault](../../Miscellaneous/vault/SKILL.md)"
   kms_key_arn = aws_kms_key.backup_dr.arn
 }
 
@@ -263,11 +263,11 @@ resource "aws_backup_global_settings" "org_settings" {
 }
 ```
 
-### Step 3: Database Backup Automation (PostgreSQL)
-```python
+### Step 3: Database Backup Automation ([PostgreSQL](../../Backend/postgresql/SKILL.md))
+```[python](../../Languages/python/SKILL.md)
 #!/usr/bin/env python3
 # backup/db_backup.py
-"""Automated PostgreSQL backup with WAL archiving and offsite replication."""
+"""Automated [PostgreSQL](../../Backend/postgresql/SKILL.md) backup with WAL archiving and offsite replication."""
 
 import os
 import sys
@@ -301,7 +301,7 @@ def create_full_backup():
     # Use pg_dump with custom format for parallel restore support
     cmd = [
         "pg_dump",
-        f"--dbname=postgresql://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+        f"--dbname=[postgresql](../../Backend/postgresql/SKILL.md)://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
         "--format=custom",      # Custom format for pg_restore
         "--compress=9",         # Max compression
         "--verbose",
@@ -366,7 +366,7 @@ def verify_backup_integrity(backup_file):
 
 def backup_wal():
     """Archive WAL segments for point-in-time recovery."""
-    wal_dir = Path("/var/lib/postgresql/16/main/pg_wal")
+    wal_dir = Path("/var/lib/[postgresql](../../Backend/postgresql/SKILL.md)/16/main/pg_wal")
     s3_client = boto3.client("s3")
     cutoff = datetime.utcnow() - timedelta(hours=WAL_RETENTION_HOURS)
 
@@ -413,13 +413,13 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### Step 4: Disaster Recovery Runbook
+### Step 4: Disaster Recovery [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 ```markdown
-# Disaster Recovery Runbook — Production Environment
+# Disaster Recovery [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — Production Environment
 # Version: 2.1
 # Last tested: 2025-05-15
 
-## 1. Incident Classification
+## 1. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Classification
 | Severity | Description | Response Time |
 |---|---|---|
 | SEV1 | Complete outage, data loss | 15 min |
@@ -437,8 +437,8 @@ if __name__ == "__main__":
 - [ ] Confirm DNS TTL set to 60 seconds (or lower)
 - [ ] Check network connectivity between DR region and dependencies
 - [ ] Verify backup consistency (latest restore test passed)
-- [ ] Notify stakeholders (incident channel, on-call, management)
-- [ ] Scale up DR environment to production capacity
+- [ ] Notify stakeholders ([incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel, on-call, management)
+- [ ] Scale up DR environment to production [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ## 4. Failover Procedure (estimated: 30-60 min)
 
@@ -482,11 +482,11 @@ aws route53 change-resource-record-sets \
   }'
 
 # Scale up DR application fleet
-aws autoscaling update-auto-scaling-group \
+aws [autoscaling](../../Backend/autoscaling/SKILL.md) update-auto-scaling-group \
   --auto-scaling-group-name dr-app-asg \
   --min-size 3 \
   --max-size 20 \
-  --desired-capacity 5
+  --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 5
 ```
 
 ### Phase 3: Validation (15 min)
@@ -509,14 +509,14 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 - [ ] All services responding with 200 OK
 - [ ] Database read/write operational
 - [ ] Background jobs processing
-- [ ] Monitoring alerts firing correctly (DR baseline)
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts firing correctly (DR baseline)
 - [ ] Team notified of successful failover
-- [ ] Incident ticket updated
+- [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket updated
 
 ## 5. Failback Procedure (when primary is restored)
 1. Reverse database replication (promote original primary)
 2. Point DNS back to primary region
-3. Update monitoring to primary region baseline
+3. Update [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to primary region baseline
 4. Run data consistency check
 5. Scale down DR resources
 6. Document lessons learned
@@ -524,12 +524,12 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 ## 6. Contact Information
 | Role | Name | Phone | Email |
 |---|---|---|---|
-| Incident Commander | On-call SRE | N/A | sre@company.com |
+| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Commander | On-call SRE | N/A | sre@company.com |
 | Database Admin | On-call DBA | N/A | dba@company.com |
 | Network Engineer | On-call NetOps | N/A | netops@company.com |
 | Management | VP Engineering | N/A | vp-eng@company.com |
 
-## 7. Post-Incident
+## 7. Post-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
 - Conduct post-mortem within 48 hours
 - Update RPO/RTO targets if needed
 - Improve automation for failover steps
@@ -538,7 +538,7 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 
 ### Step 5: Backup Validation Pipeline
 ```yaml
-# .github/workflows/backup-validation.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/backup-validation.yml
 name: Backup Validation
 on:
   schedule:
@@ -550,9 +550,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.11'
+          [python](../../Languages/python/SKILL.md)-version: '3.11'
 
       - name: Install dependencies
         run: pip install boto3 pg8000
@@ -600,7 +600,7 @@ jobs:
       - name: Report results
         if: always()
         run: |
-          # Send results to monitoring
+          # Send results to [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
           METRIC_VALUE=$([ "${{ job.status }}" == "success" ] && echo 1 || echo 0)
           aws cloudwatch put-metric-data \
             --namespace "BackupValidation" \
@@ -638,7 +638,7 @@ Full backups only without WAL archiving for databases. RPO is the time between f
 ### Anti-Pattern 5: Testing DR Once Per Year
 Annual DR tests are insufficient for Tier 1 workloads. Test quarterly at minimum, and automate partial failover testing monthly.
 
-### Anti-Pattern 6: No Backup Monitoring
+### Anti-Pattern 6: No Backup [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 Silent backup failures going undetected for weeks. Monitor backup success rates, completion time, and storage usage with alerts.
 
 ## Production Considerations
@@ -649,7 +649,7 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 - Use separate AWS account for backup storage with restricted access.
 - Enable MFA delete on S3 backup buckets.
 - Rotate backup encryption keys annually.
-- Audit backup access logs quarterly (CloudTrail + Athena).
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) backup access logs quarterly (CloudTrail + Athena).
 
 ### Cost Optimization
 - Use tiered backup storage: hot (7d), warm (30d), cold (90d), archive (365d+).
@@ -661,7 +661,7 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 
 ### Compliance
 - HIPAA: require encryption, access logging, backup retention >= 6 years.
-- PCI DSS: require backups of cardholder data, annual restore testing, audit trails.
+- PCI DSS: require backups of cardholder data, annual restore testing, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
 - SOC 2: backup availability controls, change management for backup config.
 - GDPR: right to erasure includes backup copies. Implement purge procedures.
 
@@ -671,8 +671,8 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 |---|---|---|
 | Backup fails mid-way | Storage full or network timeout | Check disk space; increase timeout |
 | Restore slow | No parallelism in restore tool | Use --jobs=N with pg_restore |
-| Cross-region copy fails | IAM role missing permissions | Check vault policy and KMS key permissions |
-| Snapshot deletion blocked | Lock policy or retention lock | Check backup vault lock and retention settings |
+| Cross-region copy fails | IAM role missing permissions | Check [vault](../../Miscellaneous/vault/SKILL.md) policy and KMS key permissions |
+| Snapshot deletion blocked | Lock policy or retention lock | Check backup [vault](../../Miscellaneous/vault/SKILL.md) lock and retention settings |
 | Backup size unexpectedly large | No deduplication or compression | Enable compression; check for log bloat |
 | Validation test fails | Data corruption during backup | Create fresh full backup; check storage integrity |
 
@@ -680,30 +680,30 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 - All backups must follow 3-2-1 rule: 3 copies, 2 media, 1 offsite.
 - Immutable backups for all Tier 1 workloads — no exceptions.
 - Automated restore test every 30 days minimum.
-- Backup monitoring with alerts on failure — never rely on manual checks.
+- Backup [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with alerts on failure — never rely on manual checks.
 - Encryption at rest (AES-256) and in transit (TLS 1.2+) for all backup data.
-- RPO/RTO defined per workload tier and documented in runbook.
+- RPO/RTO defined per workload tier and documented in [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
 - DR plan tested quarterly for Tier 1, annually for Tier 2-3.
 - Backup retention minimum: 90 days for production, 7 years for compliance.
 - MFA required for backup deletion operations.
 - Backup logs exported to SIEM for analysis.
 
 ## Output Format
-Backup automation scripts (Python/Bash), Terraform for backup infrastructure, runbook markdown, CI/CD validation pipeline.
+Backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) markdown, CI/CD validation pipeline.
 
 ## References
   - ../../../Global_References/backup-3-2-1.md
   - ../../../Global_References/backup-automation.md
-  - ../../../Global_References/backup-disaster-recovery.md
+  - ../../../Global_References/backup-[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md).md
   - ../../../Global_References/backup-dr-advanced.md
   - ../../../Global_References/backup-dr-fundamentals.md
   - ../../../Global_References/backup-strategies.md
-  - ../../../Global_References/disaster-recovery.md
+  - ../../../Global_References/[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md).md
   - ../../../Global_References/dr-recovery.md
   - references/ransomware-protection-guide.md
 
 ## Handoff
 After completing this skill:
-- Next skill: **storage-infrastructure** — storage architecture for backup targets
-- Pass context: workload tiers, RPO/RTO, backup schedule, DR runbook location
+- Next skill: **[storage-infrastructure](../../../DevOps_and_Cloud/Cloud_Providers/storage-infrastructure/SKILL.md)** — storage architecture for backup targets
+- Pass context: workload tiers, RPO/RTO, backup schedule, DR [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) location
 

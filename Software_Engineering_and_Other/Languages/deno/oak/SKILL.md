@@ -21,13 +21,13 @@ Define Oak backend application architecture: Deno-native HTTP server, middleware
 ## Agent Protocol
 
 ### Trigger
-User request includes: `oak`, `oak backend`, `deno oak`, `oak middleware`, `oak router`, `deno http`, `oak context`, `oak typescript`.
+User request includes: `oak`, `oak backend`, `deno oak`, `oak middleware`, `oak router`, `deno http`, `oak context`, `oak [typescript](../../../Frontend/typescript/SKILL.md)`.
 
 ### Input Context
 - Deno version (1.40+)
 - Oak version (13.x)
-- Language (TypeScript)
-- Database (Deno KV, MongoDB via deno_mongo, PostgreSQL via deno_postgres)
+- Language ([TypeScript](../../../Frontend/typescript/SKILL.md))
+- Database (Deno KV, [MongoDB](../../../Backend/mongodb/SKILL.md) via deno_mongo, [PostgreSQL](../../../Backend/postgresql/SKILL.md) via deno_postgres)
 - Templating (eta, deno mustache)
 - Deployment (Deno Deploy, self-hosted)
 
@@ -63,13 +63,13 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 | Criterion | Oak | Hono | std/http |
 |-----------|-----|------|----------|
 | Middleware ecosystem | Rich (cors, auth, rate-limit, static) | Growing (cors, etag, jwt) | Manual |
-| TypeScript context typing | Generic `State` param | `c.req.valid()` | Manual |
+| [TypeScript](../../../Frontend/typescript/SKILL.md) context typing | Generic `State` param | `c.req.valid()` | Manual |
 | Router pattern | `Router({ prefix })` | Chained `.get().post()` | Switch/match |
 | File upload | `ctx.request.body({ type: 'form-data' })` | `c.req.parseBody()` | Manual |
 | WebSocket | `oak_websocket` | Built-in `hono/ws` | Manual |
 | Community | Mature (12.x, stable) | Growing (4.x) | Std lib |
 
-Decision: Complex middleware needs → Oak. TypeScript validation-first → Hono. Max throughput/minimal → std/http.
+Decision: Complex middleware needs → Oak. [TypeScript](../../../Frontend/typescript/SKILL.md) validation-first → Hono. Max throughput/minimal → std/http.
 
 ### Route Organization Strategy
 
@@ -124,7 +124,7 @@ order-service/
 ```
 
 ### Step 3: App Initialization
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/app.ts
 import { Application } from 'oak'
 import { errorMiddleware } from './middleware/error.ts'
@@ -156,7 +156,7 @@ await app.listen({ port })
 ```
 
 ### Step 4: Router and Controller
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/router/orders.ts
 import { Router } from 'oak'
 import { OrderController } from '../controllers/order.controller.ts'
@@ -203,7 +203,7 @@ export class OrderController {
 ```
 
 ### Step 5: Middleware Pipeline
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/middleware/error.ts
 import type { Middleware } from 'oak'
 
@@ -236,7 +236,7 @@ export const loggerMiddleware: Middleware = async (ctx, next) => {
 
 ### Step 6: Typed State Management
 
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/types/index.ts
 export interface AppState {
   userId: string
@@ -265,7 +265,7 @@ export const authMiddleware: Middleware<AppState> = async (ctx, next) => {
 
 ### Step 7: Validation with Zod
 
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/middleware/validate.ts
 import { z } from 'zod/mod.ts'
 import type { Middleware } from 'oak'
@@ -292,7 +292,7 @@ export function validate(schema: z.ZodSchema): Middleware {
 ```
 
 ### Step 8: Testing
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // tests/orders_test.ts
 import { createApp } from '../src/app.ts'
 import { assertEquals, assertExists } from 'std/testing/asserts.ts'
@@ -326,7 +326,7 @@ Deno.test('GET /api/orders/:id returns 404 for missing', async () => {
 
 ### Pattern: Composite Router (Versioned API)
 
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 // src/router/index.ts
 import { Router } from 'oak'
 import { orderRouter } from './orders.ts'
@@ -346,7 +346,7 @@ export { router }
 
 ### Pattern: Static File Serving
 
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 import { send } from 'oak/send.ts'
 
 // Serve static files
@@ -360,7 +360,7 @@ router.get('/static/:path+', async (ctx) => {
 
 ### Pattern: CORS with Dynamic Origins
 
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 const allowedOrigins = ['https://app.example.com', 'https://admin.example.com']
 
 app.use(async (ctx, next) => {
@@ -395,7 +395,7 @@ app.use(async (ctx, next) => {
 
 ### Deployment
 - Deno Deploy: entrypoint is `src/app.ts` exporting `app.handle` not `app.listen`
-- Docker: user `deno:alpine` image, run as non-root user
+- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): user `deno:alpine` image, run as non-root user
 - PM2 alternative: systemd service with `Restart=always`
 
 ## Anti-Patterns
@@ -420,7 +420,7 @@ app.use(async (ctx, next) => {
 ## Testing Strategies
 
 ### Unit Testing Services
-```typescript
+```[typescript](../../../Frontend/typescript/SKILL.md)
 Deno.test('calculateOrderTotal', () => {
   const result = calculateTotal([{ price: 10, qty: 2 }, { price: 5, qty: 3 }])
   assertEquals(result, 35)
@@ -431,7 +431,7 @@ Deno.test('calculateOrderTotal', () => {
 Use in-memory KV for test isolation. Mock external HTTP calls via `std/testing/mock.ts`. Test error paths explicitly — validation errors, auth failures, 404s, 500s.
 
 ## Rules
-- TypeScript strict mode — all files .ts extension.
+- [TypeScript](../../../Frontend/typescript/SKILL.md) strict mode — all files .ts extension.
 - Router instances separate from Application — never inline routes.
 - Middleware pipeline: error → logger → auth → router.
 - Context state for per-request data (user, requestId).
@@ -479,7 +479,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -487,7 +487,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

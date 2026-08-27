@@ -37,7 +37,7 @@ User request includes any of: "theming", "dark mode", "light mode", "theme switc
 ### Input Context
 - Framework (React, Vue, Svelte, vanilla, Tailwind)
 - Existing styling approach (CSS modules, styled-components, Tailwind)
-- SSR / SSG setup (Next.js, Nuxt, SvelteKit)
+- SSR / SSG setup (Next.js, Nuxt, [SvelteKit](../sveltekit/SKILL.md))
 - Design token requirements (colors, spacing, typography)
 
 ### Output Artifact
@@ -76,7 +76,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Theme Strategy Decision Tree
 ```
 SSR application?
-  |-- YES (Next.js, Nuxt, SvelteKit) -->
+  |-- YES (Next.js, Nuxt, [SvelteKit](../sveltekit/SKILL.md)) -->
   |     Anti-flicker is critical
   |     Strategy: inline script in <head> reads cookie/localStorage
   |     Set class on <html> before any paint
@@ -287,7 +287,7 @@ If the server renders HTML with the light theme but the user prefers dark, the m
 
 ## Tailwind CSS Dark Mode Integration
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tailwind.config.ts
 export default {
   darkMode: 'class', // Use class-based dark mode
@@ -316,7 +316,7 @@ export default {
 
 ## Multi-Theme Architecture (3+ Themes)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // For apps needing >2 themes (light, dark, high-contrast, sepia)
 // Strategy: class-based with data attribute on <html>
 
@@ -383,7 +383,7 @@ function applyTheme(themeName: keyof typeof themes) {
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // style-dictionary.config.js
 module.exports = {
   source: ['tokens/**/*.json'],
@@ -400,7 +400,7 @@ module.exports = {
       transformGroup: 'js',
       buildPath: 'src/',
       files: [{
-        format: 'typescript/es6-declarations',
+        format: '[typescript](../typescript/SKILL.md)/es6-declarations',
         destination: 'tokens.ts',
       }],
     },
@@ -410,7 +410,7 @@ module.exports = {
 
 ## Testing Theming
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Theme switching unit tests
 describe('ThemeProvider', () => {
   afterEach(() => {

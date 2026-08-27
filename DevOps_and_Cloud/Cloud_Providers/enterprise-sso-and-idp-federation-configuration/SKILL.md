@@ -25,7 +25,7 @@ metadata:
 
 Enterprise single sign-on lets a workforce authenticate once against a
 central identity provider (IdP) and reach every downstream application
-(a SaaS tool, an internal admin console, a Kubernetes dashboard) without
+(a SaaS tool, an internal admin console, a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) dashboard) without
 a separate password for each — but that convenience only holds up if the
 federation trust between IdP and service provider (SP) is configured
 correctly. A SAML assertion with the wrong `NameID` format, an OIDC
@@ -38,7 +38,7 @@ actually run (Okta, Azure AD/Entra ID, Keycloak for self-hosted/hybrid
 needs), exchanging and validating metadata, mapping IdP groups/claims to
 application roles, provisioning via SCIM, and trusting a second IdP
 (common after an acquisition or a multi-tenant B2B scenario). It is
-distinct from [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md),
+distinct from [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md),
 which covers a cloud provider's own IAM for workload/service identity —
 this skill is squarely about *workforce* identity reaching applications
 via SSO, not machine-to-machine or cloud-resource authorization.
@@ -223,7 +223,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
    Confirm the IdP is configured to push a **deactivation** (`active:
    false` via `PATCH`) on termination, not just creation on hire — SCIM
    deprovisioning is the half of the integration most often left
-   untested until an offboarding audit finds a terminated employee still
+   untested until an offboarding [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finds a terminated employee still
    able to log in.
 
 7. **Federate a second IdP without disrupting the first**, scoping each
@@ -276,7 +276,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   account is a standing access-control gap that often goes unnoticed
   for months.
 - Track IdP and SP signing-certificate expiry dates as monitored,
-  alerting events well ahead of expiry, and support certificate rollover
+  [alerting](../../Observability_and_SecOps/alerting/SKILL.md) events well ahead of expiry, and support certificate rollover
   (both old and new trusted simultaneously) rather than a hard cutover.
 - Route a second/acquired-company IdP through explicit, tested routing
   rules (domain- or tenant-based) rather than an ambiguous trust that
@@ -301,7 +301,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   set to `admin` (or the group filter/regex is too permissive and
   unintentionally matches an unrelated group name). Set the default
   role to the least-privileged option and tighten the group-matching
-  filter, then audit any other user currently authenticated under the
+  filter, then [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) any other user currently authenticated under the
   same broad default.
 
 - **Symptom:** An employee is terminated and removed from the IdP
@@ -385,15 +385,15 @@ existing users.
 
 ## Cross-references
 
-- [certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md) —
+- [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../../Containers_and_Orchestration/certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) —
   tracking and rotating the SAML/OIDC signing certificates this
   federation trust depends on, across many applications at once.
-- [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md) —
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../Containers_and_Orchestration/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain/certificate-rotation discipline, applied to
   internal PKI rather than IdP federation certificates.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md) —
   where OIDC client secrets and SCIM bearer tokens should actually live
   (a secrets manager, not hardcoded application config).
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) —
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) —
   the cloud-provider-native IAM/workload-identity side of access
   control, distinct from the workforce SSO federation this skill covers.

@@ -6,14 +6,14 @@ license: MIT
 
 # Compliance as Code
 
-The traditional audit is a controlled panic: weeks of screenshotting console settings, chasing
+The traditional [audit](../../AI_and_Agents/Operations/audit/SKILL.md) is a controlled panic: weeks of screenshotting console settings, chasing
 down who approved what, and hoping nothing changed between the evidence snapshot and the actual
-audit date. That process proves compliance at one instant in time and says nothing about the
+[audit](../../AI_and_Agents/Operations/audit/SKILL.md) date. That process proves compliance at one instant in time and says nothing about the
 other 364 days of the year — which is exactly when the control usually drifts.
 
 Compliance as code expresses each control as a check that runs continuously against real
 infrastructure, producing evidence as a byproduct of normal operation instead of a special one-
-time effort. The audit stops being an event you prepare for and becomes a report you already
+time effort. The [audit](../../AI_and_Agents/Operations/audit/SKILL.md) stops being an event you prepare for and becomes a report you already
 have.
 
 **If proving a control holds requires a human to go look, the control isn't actually enforced —
@@ -34,7 +34,7 @@ infrastructure state.
 
 Tools like OPA/Rego, Chef InSpec, or cloud-native config rules let you express "this is what
 compliant looks like" as a versioned artifact that runs on a schedule or on every change, not
-just before an audit. Version control gives you the same review and history for a compliance
+just before an [audit](../../AI_and_Agents/Operations/audit/SKILL.md). Version control gives you the same review and history for a compliance
 rule that you'd expect for application code — a control change should go through a pull
 request, not a spreadsheet edit.
 
@@ -47,12 +47,12 @@ deny[msg] {
 }
 ```
 
-**Done when:** compliance checks run on a schedule independent of any upcoming audit date.
+**Done when:** compliance checks run on a schedule independent of any upcoming [audit](../../AI_and_Agents/Operations/audit/SKILL.md) date.
 
 ## 3. Generate evidence automatically, not manually
 
 An auditor wants proof a control held over a period, not a screenshot from the morning of the
-audit. Pipe check results, timestamps, and remediation history into a store the audit process
+[audit](../../AI_and_Agents/Operations/audit/SKILL.md). Pipe check results, timestamps, and remediation history into a store the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) process
 reads directly, so "show me evidence for control X for the last quarter" is a query, not a
 scavenger hunt through Slack and email threads.
 
@@ -69,10 +69,10 @@ evidence-gathering effort.
 A control that passed at deploy time can silently fail six months later — someone opens a
 security group "temporarily," a bucket policy gets loosened for a one-off debugging session and
 never gets reverted. Continuous checks catch this the same day it happens rather than at the
-next audit cycle, when the cause is long forgotten and the exposure window was months, not
+next [audit](../../AI_and_Agents/Operations/audit/SKILL.md) cycle, when the cause is long forgotten and the exposure window was months, not
 hours.
 
-**Done when:** a manual change that violates a control triggers an alert before the next audit,
+**Done when:** a manual change that violates a control triggers an alert before the next [audit](../../AI_and_Agents/Operations/audit/SKILL.md),
 not during it.
 
 ## 5. Treat every finding as a ticket with an owner, not a checkbox

@@ -25,14 +25,14 @@ Design well-architected, production-grade cloud systems following Azure Architec
 
 | # | Principle | Key Tactics |
 |---|-----------|-------------|
-| 1 | **Design for self-healing** | Retry with backoff, circuit breaker, bulkhead isolation, health endpoint monitoring, graceful degradation |
+| 1 | **Design for self-healing** | Retry with backoff, circuit breaker, bulkhead isolation, health endpoint [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), graceful degradation |
 | 2 | **Make all things redundant** | Eliminate single points of failure, use availability zones, deploy multi-region, replicate data |
 | 3 | **Minimize coordination** | Decouple services, use async messaging, embrace eventual consistency, use domain events |
-| 4 | **Design to scale out** | Horizontal scaling, autoscaling rules, stateless services, avoid session stickiness, partition workloads |
+| 4 | **Design to scale out** | Horizontal scaling, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) rules, stateless services, avoid session stickiness, partition workloads |
 | 5 | **Partition around limits** | Data partitioning (shard/hash/range), respect compute & network limits, use CDNs for static content |
-| 6 | **Design for operations** | Structured logging, distributed tracing, metrics & dashboards, runbook automation, infrastructure as code |
+| 6 | **Design for operations** | Structured logging, distributed tracing, metrics & [dashboards](../dashboards/SKILL.md), [runbook](../../Observability_and_SecOps/runbook/SKILL.md) automation, infrastructure as code |
 | 7 | **Use managed services** | Prefer PaaS over IaaS, reduce operational burden, leverage built-in HA/DR/scaling |
-| 8 | **Use an identity service** | Microsoft Entra ID, managed identity, RBAC, avoid storing credentials, zero-trust principles |
+| 8 | **Use an identity service** | Microsoft Entra ID, managed identity, RBAC, avoid storing credentials, [zero-trust](../../../Security/zero-trust/SKILL.md) principles |
 | 9 | **Design for evolution** | Loose coupling, versioned APIs, backward compatibility, async messaging for integration, feature flags |
 | 10 | **Build for business needs** | Define SLAs/SLOs, establish RTO/RPO targets, domain-driven design, cost modeling, composite SLAs |
 
@@ -44,15 +44,15 @@ Design well-architected, production-grade cloud systems following Azure Architec
 |-------|-------------|-------------|--------------|
 | **N-tier** | Horizontal layers (presentation, business, data) | Traditional enterprise apps, lift-and-shift | App Service, SQL Database, VNets |
 | **Web-Queue-Worker** | Web frontend → message queue → backend worker | Moderate-complexity apps with long-running tasks | App Service, Service Bus, Functions |
-| **Microservices** | Small autonomous services, bounded contexts, independent deploy | Complex domains, independent team scaling | AKS, Container Apps, API Management |
+| **[Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)** | Small autonomous services, bounded contexts, independent deploy | Complex domains, independent team scaling | AKS, Container Apps, API Management |
 | **Event-driven** | Pub/sub model, event producers/consumers | Real-time processing, IoT, reactive systems | Event Hubs, Event Grid, Functions |
 | **Big data** | Batch + stream processing pipeline | Analytics, ML pipelines, large-scale data | Synapse, Data Factory, Databricks |
 | **Big compute** | HPC, parallel processing | Simulations, modeling, rendering, genomics | Batch, CycleCloud, HPC VMs |
 
 ### Selection Criteria
 
-- **Domain complexity** → Microservices (high), N-tier (low-medium)
-- **Team autonomy** → Microservices (independent teams), N-tier (single team)
+- **Domain complexity** → [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) (high), N-tier (low-medium)
+- **Team autonomy** → [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) (independent teams), N-tier (single team)
 - **Data volume** → Big data (TB+), others (GB)
 - **Latency requirements** → Event-driven (real-time), Web-Queue-Worker (tolerant)
 
@@ -84,10 +84,10 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Bulkhead** | Isolate resources per workload to prevent cascading failure | R |
 | **Circuit Breaker** | Stop calling a failing service; fail fast to protect resources | R |
 | **Compensating Transaction** | Undo previously committed steps when a later step fails | R |
-| **Health Endpoint Monitoring** | Expose health checks for load balancers and orchestrators | R, OE |
+| **Health Endpoint [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)** | Expose health checks for load balancers and orchestrators | R, OE |
 | **Leader Election** | Coordinate distributed instances by electing a leader | R |
 | **Retry** | Handle transient faults by retrying with exponential backoff | R |
-| **Saga** | Manage data consistency across microservices with compensating transactions | R |
+| **Saga** | Manage data consistency across [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with compensating transactions | R |
 | **Scheduler Agent Supervisor** | Coordinate distributed actions with retry and failure handling | R |
 
 ### Data Management
@@ -136,7 +136,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Gateway Routing** | Route requests to multiple backends using a single endpoint | OE |
 | **Geode** | Deploy backends to multiple regions for active-active serving | R, PE |
 
-See [Design Patterns Reference](./../../../Global_References/design-patterns.md) for detailed implementation guidance.
+See [Design Patterns Reference](./../../../Global_References/[design-patterns](../../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md) for detailed implementation guidance.
 
 ---
 
@@ -150,7 +150,7 @@ For each technology area, evaluate: **requirements → constraints → tradeoffs
 |------|-------------|-------------------|
 | **Compute** | App Service, Functions, Container Apps, AKS, VMs, Batch | Hosting model, scaling, cost, team skills |
 | **Storage** | Blob Storage, Data Lake, Files, Disks, Managed Lustre | Access patterns, throughput, cost tier |
-| **Data stores** | SQL Database, Cosmos DB, PostgreSQL, Redis, Table Storage | Consistency model, query patterns, scale |
+| **Data stores** | SQL Database, Cosmos DB, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Redis, Table Storage | Consistency model, query patterns, scale |
 | **Messaging** | Service Bus, Event Hubs, Event Grid, Queue Storage | Ordering, throughput, pub/sub vs queue |
 | **Networking** | Front Door, Application Gateway, Load Balancer, Traffic Manager | Global vs regional, L4 vs L7, WAF |
 | **AI services** | Azure OpenAI, AI Search, AI Foundry, Document Intelligence | Model needs, data grounding, orchestration |
@@ -166,7 +166,7 @@ See [Technology Choices Reference](./../../../Global_References/technology-choic
 |----------|-------------|
 | **API design** | RESTful conventions, resource-oriented URIs, HATEOAS, versioning via URL path or header |
 | **API implementation** | Async operations, pagination, idempotent PUT/DELETE, content negotiation, ETag caching |
-| **Autoscaling** | Scale on metrics (CPU, queue depth, custom), cool-down periods, predictive scaling, scale-in protection |
+| **[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** | Scale on metrics (CPU, queue depth, custom), cool-down periods, predictive scaling, scale-in protection |
 | **Background jobs** | Use queues or scheduled triggers, idempotent processing, poison message handling, graceful shutdown |
 | **Caching** | Cache-aside pattern, TTL policies, cache invalidation strategies, distributed cache for multi-instance |
 | **CDN** | Static asset offloading, cache-busting with versioned URLs, geo-distribution, HTTPS enforcement |
@@ -174,7 +174,7 @@ See [Technology Choices Reference](./../../../Global_References/technology-choic
 | **Partitioning strategies** | Hash-based, range-based, directory-based; rebalancing approach, cross-partition query avoidance |
 | **Host name preservation** | Preserve original host header through proxies/gateways for cookies, redirects, auth flows |
 | **Message encoding** | Schema evolution (Avro/Protobuf), backward/forward compatibility, schema registry |
-| **Monitoring & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, dashboards |
+| **[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, [dashboards](../dashboards/SKILL.md) |
 | **Transient fault handling** | Retry with exponential backoff + jitter, circuit breaker, idempotency keys, timeout budgets |
 
 See [Best Practices Reference](./../../../Global_References/best-practices.md) for implementation details.
@@ -211,9 +211,9 @@ For workloads targeting **99.99%+ SLO**, address these design areas:
 | **Networking** | Azure Front Door (global LB), DDoS Protection, private endpoints, redundant connectivity |
 | **Data platform** | Multi-region Cosmos DB, zone-redundant SQL, async replication, conflict resolution |
 | **Deployment & testing** | Blue-green deployments, canary releases, chaos engineering, automated rollback |
-| **Health modeling** | Composite health scores, dependency health tracking, automated remediation, SLI dashboards |
-| **Security** | Zero-trust, managed identity everywhere, key rotation, WAF policies, threat modeling |
-| **Operational procedures** | Automated runbooks, incident response playbooks, game days, postmortems |
+| **Health modeling** | Composite health scores, dependency health tracking, automated remediation, SLI [dashboards](../dashboards/SKILL.md) |
+| **Security** | [Zero-trust](../../../Security/zero-trust/SKILL.md), managed identity everywhere, key rotation, WAF policies, threat modeling |
+| **Operational procedures** | Automated [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md), [incident](../../Observability_and_SecOps/incident/SKILL.md) response playbooks, game days, postmortems |
 
 See [Mission-Critical Reference](./../../../Global_References/mission-critical.md) for detailed guidance.
 
@@ -228,7 +228,7 @@ Every architecture decision should be evaluated against all five pillars:
 | **Reliability** | Resiliency, availability, disaster recovery | What is the RTO/RPO? How does it handle failures? Is there redundancy? |
 | **Security** | Threat protection, identity, data protection | Is identity managed? Is data encrypted? Are there network controls? |
 | **Cost Optimization** | Cost management, efficiency, right-sizing | Is compute right-sized? Are there reserved instances? Is there waste? |
-| **Operational Excellence** | Monitoring, deployment, automation | Is deployment automated? Is there observability? Are there runbooks? |
+| **Operational Excellence** | [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), deployment, automation | Is deployment automated? Is there [observability](../../Observability_and_SecOps/observability/SKILL.md)? Are there [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md)? |
 | **Performance Efficiency** | Scaling, load testing, performance targets | Can it scale horizontally? Are there performance baselines? Is caching used? |
 
 ### WAF Tradeoff Matrix
@@ -274,9 +274,9 @@ Select relevant patterns from the 44 cloud design patterns based on identified c
 ### Step 5: Address Cross-Cutting Concerns
 
 - **Identity & access** — Microsoft Entra ID, managed identity, RBAC
-- **Monitoring** — Application Insights, Azure Monitor, Log Analytics
-- **Security** — Network segmentation, encryption at rest/in transit, Key Vault
-- **CI/CD** — GitHub Actions, Azure DevOps Pipelines, infrastructure as code
+- **[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)** — Application Insights, Azure Monitor, Log Analytics
+- **Security** — Network segmentation, encryption at rest/in transit, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+- **CI/CD** — [GitHub](../../CI_CD/github/SKILL.md) Actions, Azure DevOps Pipelines, infrastructure as code
 
 ### Step 6: Validate Against WAF Pillars
 
@@ -305,7 +305,7 @@ Use Architecture Decision Records (ADRs):
 
 ## References
 
-- [Design Patterns Reference](./../../../Global_References/design-patterns.md) — Detailed pattern implementations
+- [Design Patterns Reference](./../../../Global_References/[design-patterns](../../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md) — Detailed pattern implementations
 - [Technology Choices Reference](./../../../Global_References/technology-choices.md) — Decision trees for Azure services
 - [Best Practices Reference](./../../../Global_References/best-practices.md) — Implementation guidance
 - [Mission-Critical Reference](./../../../Global_References/mission-critical.md) — High-availability design

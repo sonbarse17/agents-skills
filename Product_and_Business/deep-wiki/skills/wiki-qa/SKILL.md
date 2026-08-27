@@ -22,7 +22,7 @@ Answer repository questions grounded entirely in source code evidence.
 Before answering any question, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., GitHub, Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -43,7 +43,7 @@ Before answering any question, you MUST determine the source repository context:
   - **Remote**: `[src/path/file.ts:42](REPO_URL/blob/BRANCH/src/path/file.ts#L42)`
   - **Local**: `(src/path/file.ts:42)`
 - Include a "Key Files" table mapping files to their roles (with linked citations in the "File" column)
-- **Include at least 1 Mermaid diagram** when the answer involves architecture, data flow, or relationships — a diagram makes the answer 10x more useful
+- **Include at least 1 [Mermaid](../../../mermaid/SKILL.md) diagram** when the answer involves architecture, data flow, or relationships — a diagram makes the answer 10x more useful
 - **Use tables** for any structured data in the answer (component lists, API endpoints, config options, comparisons)
 - If information is insufficient, say so and suggest files to examine
 

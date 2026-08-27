@@ -9,13 +9,13 @@ description: Playbook for building full-stack Web3 applications (Next.js, Solidi
 
 ## 1. Architecture Map
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A["Next.js Frontend"] -->|RPC Call| B["Smart Contract (Solidity)"]
     B -->|Emits Events| C["Indexer (The Graph/Squid)"]
     C -->|GraphQL Query| A
-    D["Kubernetes"] -->|Deploys| A
+    D["[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)"] -->|Deploys| A
     D -->|Deploys| C
 ```
 
@@ -23,7 +23,7 @@ flowchart TD
 
 1. **Frontend**: Next.js (App Router). Strict typing. Server components where possible.
 2. **Contracts**: Solidity. Foundry for testing. CI/CD requires 100% test coverage.
-3. **Deployment**: Kubernetes. Helm charts for deterministic state.
+3. **Deployment**: [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md). Helm charts for deterministic state.
 4. **Integration**: No direct DB writes from frontend for on-chain state. Always read from indexer.
 
 ## 3. Unified Scaffold (Makefile)
@@ -41,12 +41,12 @@ build:
 deploy-contracts:
 	cd contracts && forge script script/Deploy.s.sol --rpc-url $(RPC_URL) --broadcast
 
-# Deploy infrastructure via kubectl
+# Deploy infrastructure via [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
 deploy-k8s:
-	kubectl apply -f k8s/namespace.yaml
-	kubectl apply -f k8s/frontend-deployment.yaml
-	kubectl apply -f k8s/indexer-deployment.yaml
-	kubectl rollout status deployment/frontend -n web3
+	[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/namespace.yaml
+	[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/frontend-deployment.yaml
+	[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/indexer-deployment.yaml
+	[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/frontend -n web3
 ```
 
 Execute with precision. No deviations.

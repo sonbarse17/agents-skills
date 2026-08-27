@@ -18,7 +18,7 @@ Use this skill when:
 - Making significant architectural changes to existing systems
 - Onboarding a new third-party integration or dependency
 - Preparing for security audits or compliance reviews
-- Responding to a security incident to improve defenses
+- Responding to a security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to improve defenses
 - Reviewing infrastructure changes that affect trust boundaries
 
 ## Prerequisites
@@ -35,9 +35,9 @@ Use this skill when:
 |--------|-------------|-------------------|---------------------|
 | **S**poofing | Pretending to be another user or system | Authentication | MFA, mTLS, API key validation, certificate pinning |
 | **T**ampering | Modifying data in transit or at rest | Integrity | HMAC, digital signatures, checksums, immutable logs |
-| **R**epudiation | Denying having performed an action | Non-repudiation | Audit logging, digital signatures, tamper-evident logs |
+| **R**epudiation | Denying having performed an action | Non-repudiation | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging, digital signatures, tamper-evident logs |
 | **I**nformation Disclosure | Exposing data to unauthorized parties | Confidentiality | Encryption (TLS, AES), access controls, data masking |
-| **D**enial of Service | Making service unavailable | Availability | Rate limiting, autoscaling, CDN, circuit breakers |
+| **D**enial of Service | Making service unavailable | Availability | Rate limiting, [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), CDN, circuit breakers |
 | **E**levation of Privilege | Gaining unauthorized higher access | Authorization | RBAC, principle of least privilege, input validation |
 
 ## STRIDE Worksheet Template
@@ -96,7 +96,7 @@ threats:
     existing_controls:
       - "Generic error pages in production"
     gaps:
-      - "Some microservices return raw exceptions"
+      - "Some [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) return raw exceptions"
     recommended_mitigations:
       - "Centralized error handling middleware"
       - "Error response schema validation"
@@ -247,7 +247,7 @@ categories:
       name: "Credential stuffing"
       description: "Attacker uses leaked credential databases to attempt logins"
       applicable_to: ["login endpoints", "API authentication"]
-      mitigations: ["MFA", "rate limiting", "credential breach monitoring", "CAPTCHA"]
+      mitigations: ["MFA", "rate limiting", "credential breach [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "CAPTCHA"]
 
     - id: TL-AUTH-002
       name: "Session hijacking"
@@ -285,7 +285,7 @@ categories:
       name: "Dependency confusion"
       description: "Malicious package with internal name published to public registry"
       applicable_to: ["npm, pip, maven projects using private packages"]
-      mitigations: ["namespace scoping", "registry prioritization", "SBOM monitoring"]
+      mitigations: ["namespace scoping", "registry prioritization", "SBOM [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"]
 
     - id: TL-SC-002
       name: "Compromised CI/CD pipeline"
@@ -370,8 +370,8 @@ risk_treatment:
 ## OWASP Threat Dragon Setup
 
 ```bash
-# Run Threat Dragon locally with Docker
-docker run -d \
+# Run Threat Dragon locally with [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name threat-dragon \
   -p 3000:3000 \
   -e ENCRYPTION_KEYS='["threat-dragon-encryption-key-change-me"]' \
@@ -381,13 +381,13 @@ docker run -d \
 # Access at http://localhost:3000
 
 # Or install as desktop application
-# Download from: https://github.com/OWASP/threat-dragon/releases
+# Download from: https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/OWASP/threat-dragon/releases
 ```
 
 ### Integration with CI/CD
 
 ```yaml
-# .github/workflows/threat-model-review.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/threat-model-review.yml
 name: Threat Model Review
 on:
   pull_request:
@@ -405,7 +405,7 @@ jobs:
         run: |
           for model in docs/threat-model/*.yaml; do
             echo "Validating $model..."
-            python -c "
+            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
           import yaml, sys
           with open('$model') as f:
               data = yaml.safe_load(f)
@@ -456,6 +456,6 @@ jobs:
 
 ## Related Skills
 
-- [sast-scanning](../../scanning/sast-scanning/) - Code analysis
-- [penetration-testing](../penetration-testing/) - Validation of threat model findings
-- [incident-response](../incident-response/) - Response when threats materialize
+- [sast-scanning](../../scanning/[sast-scanning](../sast-scanning/SKILL.md)/) - Code analysis
+- [penetration-testing](../[penetration-testing](../penetration-testing/SKILL.md)/) - Validation of threat model findings
+- [incident-response](../[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/) - Response when threats materialize

@@ -26,14 +26,14 @@ metadata:
 
 A tech lead's job shifts from "design and ship one thing well" (the
 senior-level work in
-[independent-solution-design-and-technical-review](../independent-solution-design-and-technical-review/SKILL.md))
+[independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md))
 to "decide what the team builds, in what order, and make that work
 alongside other teams pulling on shared resources in different
 directions" — without the unilateral authority an architect or manager
 might have to simply mandate an outcome. A roadmap that's 100% feature
 work with zero platform/technical-debt investment looks productive in
 the short term and produces a slow-motion collapse later: rising
-incident rates, declining velocity, and an eventual forced rewrite under
+[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) rates, declining velocity, and an eventual forced rewrite under
 worse conditions than a deliberate one. A cross-team conflict left
 unresolved (two teams needing the same shared API changed in
 incompatible ways) doesn't go away on its own — it either gets resolved
@@ -89,7 +89,7 @@ rather than optimistic guessing.
   data alone, an escalation path to someone with cross-team authority
   (an engineering manager, a staff/principal engineer, or the
   architecture-review process in
-  [system-design-technology-selection-and-decision-records](../system-design-technology-selection-and-decision-records/SKILL.md))
+  [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md))
   — knowing this path exists in advance keeps a stuck conflict from
   festering indefinitely.
 
@@ -97,7 +97,7 @@ rather than optimistic guessing.
 
 1. **Build (or refresh) the technical debt and platform-gap inventory
    before sequencing anything.** List each known item with its
-   user/team-facing cost if left unaddressed (increasing incident rate,
+   user/team-facing cost if left unaddressed (increasing [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) rate,
    rising onboarding time, a specific outage class it enables) — an
    inventory of vague "we should clean this up someday" items can't be
    sequenced against concrete feature asks with any credibility.
@@ -111,7 +111,7 @@ rather than optimistic guessing.
      prioritized by (cost-if-unaddressed × likelihood-of-recurrence).
    - 15% platform/infrastructure investment: work that reduces future
      cost across multiple features, not just one (e.g. a shared test
-     harness, a CI speed improvement, an observability gap).
+     harness, a CI speed improvement, an [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) gap).
 
    Adjust the split explicitly and visibly when conditions change (e.g.
    temporarily to 80/15/5 for a hard launch deadline), with an agreed
@@ -122,7 +122,7 @@ rather than optimistic guessing.
    visible allocation and a mechanism to review it — a roadmap that is
    100% feature work by default, forever, is trading long-term system
    health for short-term velocity in a way that eventually collapses
-   (rising incident rate, slowing delivery, an eventual unplanned
+   (rising [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) rate, slowing delivery, an eventual unplanned
    rewrite) and should be treated as a flagged risk, not a neutral
    default.
 
@@ -130,9 +130,9 @@ rather than optimistic guessing.
    volume**: for technical debt, prioritize items whose cost-if-
    unaddressed is rising (an increasingly fragile system nearing a
    breaking point) over ones that are merely old but stable. Feed
-   recurring toil/manual-fix patterns from incident postmortems directly
+   recurring toil/manual-fix patterns from [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) postmortems directly
    into this prioritization — see
-   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md)
+   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md)
    for where those patterns typically surface first.
 
 4. **When a cross-team conflict emerges over a shared resource**, start
@@ -205,7 +205,7 @@ rather than optimistic guessing.
   first proposed solution each side brought to the table — the two
   proposed solutions being incompatible doesn't mean the underlying
   needs are.
-- Use data (incident rates, before/after pilot results, actual adoption
+- Use data ([incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) rates, before/after pilot results, actual adoption
   numbers) to drive standard adoption across teams rather than authority
   or seniority — you likely don't have the authority, but data plus a
   low-friction migration path usually works better than authority alone
@@ -222,7 +222,7 @@ rather than optimistic guessing.
 
 - **Symptom:** The roadmap has been 100% committed feature work for
   three consecutive quarters, technical debt items keep getting
-  reprioritized down, and the team's incident rate and average
+  reprioritized down, and the team's [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) rate and average
   time-to-fix have both been quietly climbing.
   **Fix:** This is a genuinely risky trajectory, not just a scheduling
   preference — a roadmap with zero platform/debt investment trades
@@ -279,13 +279,13 @@ quarter's roadmap, and mid-quarter a conflict emerges with the
 1. **Inventory refresh**: the team's tech-debt inventory shows the order
    service's integration test suite takes 45 minutes and has a rising
    flake rate (cross-referencing the pattern-tracking guidance in
-   [pipeline-failure-triage-and-recovery](../../../devops/skills/pipeline-failure-triage-and-recovery/SKILL.md)),
-   and the payment-retry logic from a prior incident's postmortem action
+   [pipeline-failure-triage-and-recovery](../../../devops/skills/[pipeline-failure-triage-and-recovery](../../DevOps_and_Cloud/CI_CD/pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md)),
+   and the payment-retry logic from a prior [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s postmortem action
    item is still unimplemented three months later.
 2. **Allocation**: the team commits to 60% feature (two committed
    product items), 25% debt paydown (test suite speed-up, the overdue
    postmortem action item), 15% platform (contributing hours to a shared
-   observability initiative another team is leading) — published in the
+   [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) initiative another team is leading) — published in the
    team's visible roadmap doc alongside the product roadmap.
 3. **Cross-team conflict surfaces**: mid-quarter, `fulfillment` objects to
    checkout's planned `/v1/orders` schema change (see the conflict-framing
@@ -302,7 +302,7 @@ quarter's roadmap, and mid-quarter a conflict emerges with the
 5. **Standard adoption, in parallel**: the tech lead has been trying to
    get other teams to adopt a structured-logging convention developed on
    checkout; rather than a second email, they pilot a migration script on
-   one willing team, publish that team's 30% faster incident triage time
+   one willing team, publish that team's 30% faster [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) triage time
    as a result, and get two more teams opted in for next quarter.
 6. **End of quarter review**: the roadmap review reports what shipped in
    each of the three buckets, confirms the platform-investment
@@ -311,7 +311,7 @@ quarter's roadmap, and mid-quarter a conflict emerges with the
 
 ## Cross-references
 
-- [independent-solution-design-and-technical-review](../independent-solution-design-and-technical-review/SKILL.md) — the senior-level design and review work this skill sequences and prioritizes across a roadmap, rather than executing directly.
-- [system-design-technology-selection-and-decision-records](../system-design-technology-selection-and-decision-records/SKILL.md) — the architect-level escalation path for a cross-team conflict or constraint question that can't be resolved by influence alone, and for standards that need to become an organization-wide architectural decision rather than a bottom-up pilot.
-- [platform-engineering-team-topology-and-operating-model](../../../internal-developer-platform/skills/platform-engineering-team-topology-and-operating-model/SKILL.md) — the "thinnest viable platform" sizing discipline this skill's platform-investment bucket should draw on when deciding what's worth building versus what's scope creep.
-- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md) — where recurring, unimplemented action items typically surface as the concrete evidence behind a technical-debt inventory item's priority.
+- [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design and review work this skill sequences and prioritizes across a roadmap, rather than executing directly.
+- [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md) — the architect-level escalation path for a cross-team conflict or constraint question that can't be resolved by influence alone, and for standards that need to become an organization-wide architectural decision rather than a bottom-up pilot.
+- [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the "thinnest viable platform" sizing discipline this skill's platform-investment bucket should draw on when deciding what's worth building versus what's scope creep.
+- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — where recurring, unimplemented action items typically surface as the concrete evidence behind a technical-debt inventory item's priority.

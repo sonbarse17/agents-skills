@@ -60,7 +60,7 @@ docs.
   (or `INFORMATION_SCHEMA` for shorter retention), BigQuery's
   `INFORMATION_SCHEMA.JOBS` views and Cloud Billing export, Redshift's
   `STL_QUERY`/`SVL_QUERY_SUMMARY` system tables or Redshift's query
-  monitoring in the console — all three require this for any cost-
+  [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in the console — all three require this for any cost-
   attribution or slow-query diagnosis in this skill.
 - An understanding of the workload's actual query pattern (concurrent
   BI dashboard load vs. scheduled batch ETL vs. ad hoc analyst queries)
@@ -84,7 +84,7 @@ CREATE WAREHOUSE analytics_wh
   INITIALLY_SUSPENDED = TRUE;
 ```
 Warehouse size (`X-SMALL` through `4X-LARGE` and beyond) determines
-compute capacity and cost **per-second while running** — Snowflake
+compute [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and cost **per-second while running** — Snowflake
 bills by warehouse-seconds regardless of how much of that compute a
 query actually used, so `AUTO_SUSPEND` set too high (or left at a large
 default) is pure wasted spend for bursty workloads. Start smaller than
@@ -112,8 +112,8 @@ checking `QUERY_HISTORY` for queued-vs-executing time.
 BigQuery's default **on-demand pricing** bills by bytes scanned per
 query, with slots (BigQuery's unit of query-execution compute)
 allocated dynamically and shared across the project/organization with
-no dedicated capacity guarantee. For predictable, high query volume,
-purchase a **capacity commitment** (a slot reservation) instead:
+no dedicated [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) guarantee. For predictable, high query volume,
+purchase a **[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) commitment** (a slot reservation) instead:
 ```sql
 -- Assign a reservation to a specific project/folder (via bq CLI or console)
 bq mk --reservation --project_id=<PROJECT_ID> \
@@ -123,7 +123,7 @@ bq mk --reservation_assignment --project_id=<PROJECT_ID> \
   --reservation_id=analytics_reservation \
   --job_type=QUERY --assignee_id=<PROJECT_ID>
 ```
-Reservations trade variable on-demand cost for predictable capacity and
+Reservations trade variable on-demand cost for predictable [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and
 (usually) lower effective cost at sustained high query volume — the
 crossover point depends on actual query volume/bytes-scanned, so
 compare a representative month's on-demand billing against reservation
@@ -165,7 +165,7 @@ For node sizing, **RA3 nodes** (current generation) separate compute
 from managed storage — scaling compute (adding/resizing nodes) no
 longer requires also scaling storage, unlike legacy dense-storage
 nodes where the two were coupled. Use **Concurrency Scaling** (Redshift
-automatically adds transient capacity for bursts of concurrent read
+automatically adds transient [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for bursts of concurrent read
 queries) for spiky BI dashboard load instead of permanently over-
 provisioning the base cluster for peak concurrency:
 ```sql
@@ -208,12 +208,12 @@ plus reload, or `ALTER TABLE ... ALTER DISTKEY` in newer Redshift
 versions that support in-place key changes) and should be validated
 against actual join patterns, not guessed.
 
-### 5. Control cost with usage attribution before cutting capacity blindly
+### 5. Control cost with usage attribution before cutting [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) blindly
 
 All three warehouses make it possible to attribute spend to a specific
 team/workload — do this before reducing warehouse size, slots, or node
 count, since an undersized cut applied to the wrong workload just
-trades a cost problem for a performance incident:
+trades a cost problem for a performance [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
 ```sql
 -- Snowflake: cost by warehouse over the last 30 days
 SELECT warehouse_name, sum(credits_used) AS credits
@@ -247,7 +247,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   refresh) via multi-cluster warehouses, reservation assignment, or WLM
   queues so one workload's burst can't starve another's latency
   budget.
-- Attribute spend to team/workload before cutting capacity — reducing a
+- Attribute spend to team/workload before cutting [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — reducing a
   warehouse/slot/node count without knowing which workload actually
   drives the cost risks degrading the wrong thing.
 - Treat any table restructuring (repartitioning, changing
@@ -264,7 +264,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   warehouse stays running is billed the same as a busy second. Lower
   `AUTO_SUSPEND` to the shortest value tolerable for the workload's
   query pattern (60 seconds is a common starting point for interactive
-  workloads) and audit for any warehouse left permanently resumed by
+  workloads) and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) for any warehouse left permanently resumed by
   habit.
 
 - **Symptom:** A BigQuery on-demand bill spikes dramatically for a query
@@ -274,7 +274,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   BigQuery can prune), so the full table is scanned and billed
   regardless of the filter. Confirm via `total_bytes_processed` in the
   job's execution details, then partition the table by the dominant
-  filter column and re-point ETL/dashboards at the partitioned table.
+  filter column and re-point ETL/[dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) at the partitioned table.
 
 - **Symptom:** Redshift queries queue for a long time during business
   hours even though the cluster's CPU utilization doesn't look
@@ -287,7 +287,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   needed for what's actually a queue-configuration problem.
 
 - **Symptom:** A join between two large Redshift tables is far slower
-  than expected, with high network I/O visible in query monitoring.
+  than expected, with high network I/O visible in query [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
   **Fix:** One or both tables use a `DISTKEY`/`DISTSTYLE` that doesn't
   align with the join column, forcing Redshift to redistribute rows
   across nodes at query time. Check `svv_table_info.diststyle` and
@@ -299,7 +299,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
 - **Symptom:** Someone runs `TRUNCATE TABLE` or `DROP TABLE` directly
   against a production warehouse table (Snowflake, BigQuery, or
   Redshift) intending to clear staging data, and it turns out to be the
-  production fact table feeding live dashboards.
+  production fact table feeding live [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
   **Fix:** This is an immediately destructive, and in most
   configurations irreversible outside of engine-specific time-travel/
   fail-safe windows, action.
@@ -313,7 +313,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   > object and environment, and restrict `TRUNCATE`/`DROP` privileges
   > on production schemas to a narrow role rather than broad analyst/
   > engineer access; see
-  > [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md)
+  > [database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
   > for the restore-testing discipline that should back up whatever
   > time-travel window each engine provides.
 
@@ -364,6 +364,6 @@ corresponding growth in data volume.
 
 ## Cross-references
 
-- [clickhouse-analytical-database-operations](../clickhouse-analytical-database-operations/SKILL.md) — a self-hosted OLAP alternative to these three managed warehouses, useful when full operational control (at the cost of managing the cluster yourself) is preferred over a managed service's billing model.
-- [postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md) — Redshift's query engine and much of its SQL surface derive from PostgreSQL, so `EXPLAIN`-driven query diagnosis concepts there carry over partially, though Redshift's columnar/MPP execution model differs materially from OLTP PostgreSQL.
-- [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md) — the restore-testing discipline that should back up each warehouse's time-travel/snapshot recovery window for accidental destructive DDL.
+- [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../../Software_Engineering_and_Other/Databases/clickhouse-analytical-[database-operations](../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a self-hosted OLAP alternative to these three managed warehouses, useful when full operational control (at the cost of managing the cluster yourself) is preferred over a managed service's billing model.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — Redshift's query engine and much of its SQL surface derive from [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), so `EXPLAIN`-driven query diagnosis concepts there carry over partially, though Redshift's columnar/MPP execution model differs materially from OLTP [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).
+- [database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing discipline that should back up each warehouse's time-travel/snapshot recovery window for accidental destructive DDL.

@@ -30,7 +30,7 @@ Design and maintain SIEM infrastructure, onboard log sources, develop correlatio
 
 ### Input Context
 - SIEM platform (Splunk, Elastic, Sentinel, Wazuh, QRadar) and licensing model
-- Data sources: cloud audit logs, endpoint logs, network flows, application logs
+- Data sources: cloud [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, endpoint logs, network flows, application logs
 - Ingestion volume: daily log volume (GB/day), peak ingestion rate, retention requirements
 - Compliance requirements: retention periods, data sovereignty, chain of custody
 - Existing detection rules and false positive rate
@@ -70,7 +70,7 @@ What is the primary deployment model?
 ├── Cloud-native SaaS
 │   ├── Microsoft shop (Azure, M365) → Microsoft Sentinel
 │   ├── AWS shop → Splunk Cloud or ELK on Elastic Cloud
-│   ├── Multi-cloud → Splunk Cloud (broadest integration)
+│   ├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) → Splunk Cloud (broadest integration)
 │   └── Budget-conscious → Wazuh (free, open-source)
 ├── On-premises / air-gapped
 │   ├── Mature SOC team → Splunk Enterprise
@@ -95,14 +95,14 @@ Tier 1 (Day 1-7): Must-have for baseline detection
 ├── Authentication: AD/LDAP, Okta, Azure AD, VPN
 ├── Endpoint: EDR (CrowdStrike, Defender, SentinelOne), Windows Event Logs
 ├── Network: Firewall, DNS, Proxy, IDS/IPS
-├── Cloud: CloudTrail (AWS), Activity Logs (Azure), Audit Logs (GCP)
+├── Cloud: CloudTrail (AWS), Activity Logs (Azure), [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logs (GCP)
 └── Email: M365 Exchange, Proofpoint, Mimecast
 
 Tier 2 (Week 2-4): Detect common attack patterns
 ├── Application: Web server (IIS, Nginx, Apache), API gateway
-├── Database: SQL Server, PostgreSQL, MySQL audit logs
-├── Container: K8s audit logs, Docker events
-├── SaaS: Salesforce, Slack, GitHub audit logs
+├── Database: SQL Server, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
+├── Container: K8s [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) events
+├── SaaS: Salesforce, Slack, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
 └── Vulnerability: Scanner results (Nessus, Qualys, Rapid7)
 
 Tier 3 (Month 2-3): Advanced detection and forensics
@@ -352,7 +352,7 @@ recon
 <group name="linux_anomaly">
   <rule id="100001" level="12">
     <if_sid>550</if_sid>
-    <field name="audit.key">user_login</field>
+    <field name="[audit](../../AI_and_Agents/Operations/audit/SKILL.md).key">user_login</field>
     <field name="user" type="pcre2">^(?!root|deploy|monitor)</field>
     <description>SSH login from unexpected user account</description>
     <mitre>
@@ -374,7 +374,7 @@ recon
 ### Step 4: Use Case Management
 
 **Use Case Lifecycle:**
-1. **Triage**: Identify detection gap from threat model, incident, or threat intel
+1. **Triage**: Identify detection gap from threat model, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), or threat intel
 2. **Design**: Write rule logic, define data sources, set thresholds
 3. **Test**: Run against historical data, verify true positive rate
 4. **Tune**: Adjust thresholds, add exclusions, reduce noise
@@ -449,16 +449,16 @@ coverage_matrix:
 **Tuning Methodology:**
 
 1. **Measure FP rate per rule**: `FP / (TP + FP) * 100`. Target: < 10% for high severity, < 20% for medium, < 50% for low
-2. **Analyze FPs**: Common causes — misconfigured applications, legitimate admin activity, scheduled tasks, monitoring tools, backup software, security scanners
+2. **Analyze FPs**: Common causes — misconfigured applications, legitimate admin activity, scheduled tasks, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tools, backup software, security scanners
 3. **Tune threshold**: Increase count threshold, extend time window, add environment filter (exclude known-good subnets)
-4. **Add exclusion**: Known-good: security scanners (nessus, qualys), admin tools (ansible, puppet, salt), backup agents (veam, commvault), monitoring agents (datadog, new relic)
+4. **Add exclusion**: Known-good: security scanners (nessus, qualys), admin tools ([ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), puppet, salt), backup agents (veam, commvault), [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agents ([datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), new relic)
 5. **Simplify rule**: Overly complex correlation rules with multiple conditions have higher FP rates. Start simple, add conditions only when needed
 6. **Retest**: Run against 7 days of historical data to verify FP reduction
 
 **Suppression Rules (Splunk):**
 ```spl
 index=windows EventCode=4625 LogonType=3
-| search NOT AccountName IN ("Nessus$", "Qualys$", "Ansible$", "Backup$")
+| search NOT AccountName IN ("Nessus$", "Qualys$", "[Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)$", "Backup$")
 | search NOT Source_Network_Address IN ("10.100.0.0/16", "192.168.200.0/24")
 | search NOT ComputerName IN ("SCANNER-01", "SCANNER-02")
 ```
@@ -500,9 +500,9 @@ index=windows EventCode=4625 LogonType=3
 | Data Type | Retention Hot | Retention Warm | Retention Cold | Archive | Notes |
 |-----------|--------------|----------------|----------------|---------|-------|
 | Authentication logs | 7 days | 30 days | 90 days | 1 year | High volume, important for investigations |
-| Endpoint logs (EDR) | 14 days | 60 days | 180 days | 2 years | High value for incident response |
+| Endpoint logs (EDR) | 14 days | 60 days | 180 days | 2 years | High value for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response |
 | Network logs | 7 days | 30 days | 90 days | 1 year | Medium volume, good for lateral movement |
-| Cloud audit logs | 14 days | 60 days | 180 days | 3 years | Compliance requirement |
+| Cloud [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs | 14 days | 60 days | 180 days | 3 years | Compliance requirement |
 | Application logs | 3 days | 14 days | 30 days | 90 days | Use case dependent, often low value |
 | DNS logs | 7 days | 30 days | 90 days | 1 year | High value for C2 detection |
 | Threat intel feeds | N/A | Live | 7 days | 30 days | Keep fresh, refresh daily |
@@ -524,9 +524,9 @@ Daily Volume → Indexers → Search Heads → Storage (Hot + Cold)
 5 TB/day    → 30-40 indexers → 6-8 search heads → 180 TB hot + 450 TB cold
 ```
 
-### Step 7: Incident Detection and Response Integration
+### Step 7: [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Detection and Response Integration
 
-**Alert to Incident Pipeline:**
+**Alert to [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Pipeline:**
 ```
 Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation Rule → Alert
                                                                                     ↓
@@ -534,7 +534,7 @@ Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation R
                                                                                     ↓
                                                                               Severity Assignment
                                                                                     ↓
-                                                                              Incident Creation
+                                                                              [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Creation
                                                                                     ↓
                                                                          SOC Tier 1 Triage
                                                                                     ↓
@@ -549,7 +549,7 @@ Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation R
 - Case management: create ticket, assign analyst, track SLA, document findings
 - Feedback loop: analyst verdict → SIEM rule tuning → improved detection
 
-**Incident Response Data Sources:**
+**[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Data Sources:**
 ```spl
 index=windows EventCode=4688 CommandLine=*          // Process creation - track execution
 index=windows EventCode=4103 EventLog=PowerShell*    // PowerShell pipeline execution
@@ -559,20 +559,20 @@ index=windows EventCode=4698 EventLog=Security        // Scheduled task creation
 index=syslog sourcetype=fortigate                     // FW logs - network connections
 ```
 
-### Step 8: Compliance and Audit Readiness
+### Step 8: Compliance and [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Readiness
 
 **Log Retention Requirements:**
 
 | Regulation | Retention Requirement | Special Requirements |
 |------------|----------------------|---------------------|
-| PCI DSS 4.0 | 12 months (7 years for audit trails) | Chronological ordering, cannot be altered |
+| PCI DSS 4.0 | 12 months (7 years for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails) | Chronological ordering, cannot be altered |
 | SOC 2 | Policy-defined minimum (typically 90 days) | Access control, tamper detection |
 | HIPAA | 6 years | Access log review every 3 months |
 | GDPR | Duration of processing | Right to erasure, data minimization |
 | SOX | 7 years | Financial system logs |
 | NIST 800-53 | 1 year minimum, 3 years for critical | Offline backup, chain of custody |
 
-**Audit-Readiness Checklist:**
+**[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)-Readiness Checklist:**
 - [ ] All data sources have documented log generation and retention
 - [ ] Log review process documented and followed
 - [ ] Access to SIEM logged and audited
@@ -598,11 +598,11 @@ Single-source rules miss multi-stage attacks (phishing → credential theft → 
 ### Pitfall 5: Ignoring Compliance Retention Requirements
 Storing all logs with the same retention policy is either insufficient (compliance failure) or excessive (cost overrun). Map retention to data source compliance requirements. Implement tiered storage.
 
-### Pitfall 6: No Monitoring of SIEM Health
+### Pitfall 6: No [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of SIEM Health
 SIEM that is down, overloaded, or missing data sources is a security blind spot. Monitor: ingestion rate vs expected, license usage, indexer CPU/disk, search head response time, agent health.
 
 ### Pitfall 7: Over-Normalization
-Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing dashboards.
+Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 ### Pitfall 8: Underestimating Storage Growth
 Log volume grows 20-50% annually from new sources, increased verbosity, and data retention requirements. Over-provision by 50% minimum. Plan for storage scaling. Use compression and sampling.
@@ -611,7 +611,7 @@ Log volume grows 20-50% annually from new sources, increased verbosity, and data
 Rules with 5+ conditions, multiple lookups, and subsearches are hard to troubleshoot and slow to execute. Start with single-condition rules. Add complexity only when needed. Test each incremental change.
 
 ### Pitfall 10: No Use Case Lifecycle Management
-Rules deployed and never reviewed accumulate noise. Quarterly use case review: retire low-value rules, tune high-FP rules, add new use cases from threat intelligence and incident findings.
+Rules deployed and never reviewed accumulate noise. Quarterly use case review: retire low-value rules, tune high-FP rules, add new use cases from threat intelligence and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) findings.
 
 ## Best Practices
 
@@ -626,9 +626,9 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Test correlation rules against historical data before production deployment
 - Automate enrichment with geoIP, asset DB, threat intel feeds (reduces analyst investigation time 40-60%)
 - Onboard log sources in priority order: authentication → endpoint → network → cloud → application
-- Implement chain of custody for forensic data: immutable logs, access audit, integrity verification
-- Plan for 30-50% annual log volume growth in capacity planning
-- Document runbooks for every detection use case: triage steps, investigation queries, response actions
+- Implement chain of custody for forensic data: immutable logs, access [audit](../../AI_and_Agents/Operations/audit/SKILL.md), integrity verification
+- Plan for 30-50% annual log volume growth in [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
+- Document [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for every detection use case: triage steps, investigation queries, response actions
 
 ## SIEM Platform Comparison
 
@@ -660,7 +660,7 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Search performance degrades when indexer CPU > 60% or hot storage > 75% full
 - Use summary indexing for common queries: pre-aggregate hourly/daily statistics
 - Schedule heavy searches during off-peak hours (evening, weekends)
-- Limit real-time searches to critical use cases only — use scheduled searches for routine monitoring
+- Limit real-time searches to critical use cases only — use scheduled searches for routine [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Use data model acceleration for faster pivot/search in large datasets
 - Monitor search head CPU — oversubscribed search heads cause query timeouts
 
@@ -674,7 +674,7 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - All SIEM administrative access must be logged and audited
 - No production rule changes without change control documentation
 - Use case lifecycle: propose → test (7 days) → deploy → review (quarterly) → retire
-- Indexer storage must not exceed 75% capacity — add capacity at 60% threshold
+- Indexer storage must not exceed 75% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — add [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) at 60% threshold
 - Security events must be correlated with at least one other data source for validation
 - Raw logs must be preserved alongside normalized fields for forensic integrity
 - SIEM rule changes must be version-controlled (XML/YAML in git)
@@ -689,5 +689,5 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
   - ../../../Global_References/siem-engineering-fundamentals.md — Siem Engineering Fundamentals
   - ../../../Global_References/siem-tuning.md — SIEM Tuning
 ## Handoff
-Use cases feed into soc-operations for triage workflows. Rules can be automated via soar-automation.
+Use cases feed into [soc-operations](../soc-operations/SKILL.md) for triage workflows. Rules can be automated via soar-automation.
 

@@ -30,7 +30,7 @@ that can't share the load.
 - **Avoid sticky routing as the default fix** — it papers over statefulness instead of removing
   it, and it reintroduces a single point of failure per session.
 - **Treat local disk as ephemeral** — anything written locally disappears when the instance is
-  replaced; see `stateful-workloads` for components that must genuinely hold state.
+  replaced; see `[stateful-workloads](../../../DevOps_and_Cloud/Containers_and_Orchestration/stateful-workloads/SKILL.md)` for components that must genuinely hold state.
 
 **Done when:** any request can be served by any instance of the stateless tier, verified by
 killing an instance mid-traffic without a user-visible failure.
@@ -63,14 +63,14 @@ not a default applied uniformly.
 
 Every architecture has a component that scales linearly and one that doesn't — a shared lock, a
 single message queue partition, a rate-limited third-party API, a database sequence. Adding
-capacity everywhere except that one component just moves the queue in front of it; the system's
-real capacity is the bottleneck's capacity, full stop.
+[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) everywhere except that one component just moves the queue in front of it; the system's
+real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is the bottleneck's [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), full stop.
 
 - **Look for anything shared across all requests** — a single lock, counter, or connection pool
   is a serialization point no amount of horizontal scaling elsewhere fixes.
 - **Partition or shard what can't otherwise scale** — splitting a database by key range or tenant
   turns one bottleneck into many independently-scalable ones.
-- **Confirm the bottleneck empirically**, via `profiling` and `load-testing`, rather than
+- **Confirm the bottleneck empirically**, via `[profiling](../../Frontend/profiling/SKILL.md)` and `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)`, rather than
   guessing which component is the constraint.
 
 **Done when:** the component that would be the first to saturate at 10x current load has been
@@ -87,11 +87,11 @@ at the speed of its slowest link.
   absorbs bursts instead of propagating them upstream.
 - **Set timeouts and circuit breakers on every synchronous call** — an unbounded call to a slow
   dependency turns their saturation into yours.
-- **Cache aggressively at read-heavy boundaries** — see `caching-strategies` for what's safe to
+- **Cache aggressively at read-heavy boundaries** — see `[caching-strategies](../../Miscellaneous/caching-strategies/SKILL.md)` for what's safe to
   cache and for how long.
 
 **Done when:** a slowdown in one component, injected deliberately, does not cause cascading
-failure in components that don't directly depend on its capacity.
+failure in components that don't directly depend on its [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## 5. Design for the failure of any single instance, not just its slowness
 
@@ -100,11 +100,11 @@ always failing. A design that assumes every instance stays up will fail unpredic
 even if it works fine in a three-node test. Redundancy and graceful degradation have to be
 designed in, not patched on after the first outage.
 
-- **Run enough replicas that losing one doesn't lose capacity**, not just enough for redundancy
+- **Run enough replicas that losing one doesn't lose [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)**, not just enough for redundancy
   on paper.
 - **Design degraded modes explicitly** — what serves when a dependency is down — rather than
   discovering the failure mode live.
-- **Validate the assumption with `load-testing`, especially under an injected instance failure**
+- **Validate the assumption with `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)`, especially under an injected instance failure**
   — a design that's never seen a failure under load is unverified.
 
 **Done when:** the design has an explicit answer for what happens when any single instance or

@@ -7,7 +7,7 @@ description: Prepares production launches. Use when preparing to deploy to produ
 
 ## Overview
 
-Ship with confidence. The goal is not just to deploy — it's to deploy safely, with monitoring in place, a rollback plan ready, and a clear understanding of what success looks like. Every launch should be reversible, observable, and incremental.
+Ship with confidence. The goal is not just to deploy — it's to deploy safely, with [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in place, a rollback plan ready, and a clear understanding of what success looks like. Every launch should be reversible, observable, and incremental.
 
 ## When to Use
 
@@ -32,7 +32,7 @@ Ship with confidence. The goal is not just to deploy — it's to deploy safely, 
 ### Security
 
 - [ ] No secrets in code or version control
-- [ ] The ecosystem's dependency audit (`npm audit`, `pip-audit`, `cargo audit`, ...) shows no critical or high vulnerabilities
+- [ ] The ecosystem's dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (`npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, `pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, `cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, ...) shows no critical or high vulnerabilities
 - [ ] Input validation on all user-facing endpoints
 - [ ] Authentication and authorization checks in place
 - [ ] Security headers configured (CSP, HSTS, etc.)
@@ -78,7 +78,7 @@ Ship with confidence. The goal is not just to deploy — it's to deploy safely, 
 
 Ship behind feature flags to decouple deployment from release:
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Feature flag check
 const flags = await getFeatureFlags(userId);
 
@@ -118,20 +118,20 @@ return null;
 
 2. DEPLOY to production (feature flag OFF)
    └── Verify deployment succeeded (health check)
-   └── Check error monitoring (no new errors)
+   └── Check error [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (no new errors)
 
 3. ENABLE for team (flag ON for internal users)
    └── Team uses the feature in production
-   └── 24-hour monitoring window
+   └── 24-hour [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window
 
 4. CANARY rollout (flag ON for 5% of users)
    └── Monitor error rates, latency, user behavior
    └── Compare metrics: canary vs. baseline
-   └── 24-48 hour monitoring window
+   └── 24-48 hour [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window
    └── Advance only if all thresholds pass (see table below)
 
 5. GRADUAL increase (25% -> 50% -> 100%)
-   └── Same monitoring at each step
+   └── Same [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) at each step
    └── Ability to roll back to previous percentage at any point
 
 6. FULL rollout (flag ON for all users)
@@ -159,7 +159,7 @@ Roll back immediately if:
 - Data integrity issues detected
 - Security vulnerability discovered
 
-## Monitoring and Observability
+## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 ### What to Monitor
 
@@ -187,7 +187,7 @@ Client metrics:
 
 ### Error Reporting
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Set up error boundary with reporting
 class ErrorBoundary extends React.Component {
   componentDidCatch(error: Error, info: React.ErrorInfo) {
@@ -228,7 +228,7 @@ In the first hour after launch:
 
 ```
 1. Check health endpoint returns 200
-2. Check error monitoring dashboard (no new error types)
+2. Check error [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard (no new error types)
 3. Check latency dashboard (no regression)
 4. Test the critical user flow manually
 5. Verify logs are flowing and readable
@@ -250,8 +250,8 @@ Every deployment needs a rollback plan before it happens:
 ### Rollback Steps
 1. Disable feature flag (if applicable)
    OR
-1. Deploy previous version: `git revert <commit> && git push`
-2. Verify rollback: health check, error monitoring
+1. Deploy previous version: `git revert <[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)> && git push`
+2. Verify rollback: health check, error [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 3. Communicate: notify team of rollback
 
 ### Database Considerations
@@ -276,17 +276,17 @@ Every deployment needs a rollback plan before it happens:
 |---|---|
 | "It works in staging, it'll work in production" | Production has different data, traffic patterns, and edge cases. Monitor after deploy. |
 | "We don't need feature flags for this" | Every feature benefits from a kill switch. Even "simple" changes can break things. |
-| "Monitoring is overhead" | Not having monitoring means you discover problems from user complaints instead of dashboards. |
-| "We'll add monitoring later" | Add it before launch. You can't debug what you can't see. |
+| "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is overhead" | Not having [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) means you discover problems from user complaints instead of [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). |
+| "We'll add [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) later" | Add it before launch. You can't debug what you can't see. |
 | "Rolling back is admitting failure" | Rolling back is responsible engineering. Shipping a broken feature is the failure. |
 
 ## Red Flags
 
 - Deploying without a rollback plan
-- No monitoring or error reporting in production
+- No [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or error reporting in production
 - Big-bang releases (everything at once, no staging)
 - Feature flags with no expiration or owner
-- No one monitoring the deploy for the first hour
+- No one [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) the deploy for the first hour
 - Production environment configuration done by memory, not code
 - "It's Friday afternoon, let's ship it"
 
@@ -297,7 +297,7 @@ Before deploying:
 - [ ] Pre-launch checklist completed (all sections green)
 - [ ] Feature flag configured (if applicable)
 - [ ] Rollback plan documented
-- [ ] Monitoring dashboards set up
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) set up
 - [ ] Team notified of deployment
 
 After deploying:

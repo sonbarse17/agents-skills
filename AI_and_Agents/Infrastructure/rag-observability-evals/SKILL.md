@@ -7,25 +7,25 @@ metadata:
   version: "1.0"
 ---
 
-# RAG Observability and Evaluations
+# RAG [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and Evaluations
 
 Run retrieval-augmented generation like a measurable production system, not a black box.
 
 ## When to Use This Skill
 
-- Deploying a RAG system to production and need quality monitoring
+- Deploying a RAG system to production and need quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Setting up automated evaluation pipelines for retrieval and generation
 - Debugging hallucination or relevance regressions
-- Building dashboards for RAG-specific golden signals
+- Building [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for RAG-specific golden signals
 - Establishing quality gates for RAG pipeline changes
 
 ## Prerequisites
 
 - RAG pipeline with instrumented retrieval and generation stages
-- Python 3.10+ with evaluation libraries (ragas, langchain, openai)
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with evaluation libraries (ragas, langchain, openai)
 - Prometheus endpoint for custom metrics export
 - Benchmark dataset with gold-standard question/answer/source triples
-- OpenTelemetry SDK integrated into the RAG service
+- [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK integrated into the RAG service
 
 ## What to Measure
 
@@ -46,7 +46,7 @@ Run retrieval-augmented generation like a measurable production system, not a bl
 
 ## RAGAS Evaluation Script
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # rag_eval.py
 """Evaluate RAG pipeline quality using RAGAS metrics."""
 from ragas import evaluate
@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
 ## Groundedness Scoring
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # groundedness.py
 """Score whether generated answers are grounded in retrieved context."""
 from openai import OpenAI
@@ -189,7 +189,7 @@ def batch_groundedness(eval_data: list) -> dict:
 
 ## Retrieval Quality Metrics
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # retrieval_metrics.py
 """Compute retrieval quality metrics for RAG evaluation."""
 from typing import List, Set
@@ -255,7 +255,7 @@ def compute_retrieval_metrics(
 
 ## Prometheus Metrics Export
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # rag_metrics_exporter.py
 """Export RAG quality metrics to Prometheus."""
 from prometheus_client import Histogram, Counter, Gauge, start_http_server
@@ -382,7 +382,7 @@ spec:
             - name: eval-runner
               image: registry.internal/rag-eval:latest
               command:
-                - python
+                - [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
                 - -m
                 - rag_eval
                 - --dataset=/data/benchmark_v3.json
@@ -409,7 +409,7 @@ spec:
           restartPolicy: OnFailure
 ```
 
-## Alerting Strategy
+## [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Strategy
 
 ```yaml
 # rag-alerts.yaml
@@ -465,7 +465,7 @@ groups:
 - Re-rank retrieved chunks before final generation.
 - Use query rewriting only with strict regression tests.
 
-## Incident Triage Checklist
+## [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Triage Checklist
 
 | Symptom | Check First | Check Second |
 |---------|-------------|--------------|
@@ -487,8 +487,8 @@ groups:
 
 ## Related Skills
 
-- [rag-infrastructure](../../../infrastructure/local-ai/rag-infrastructure/) - Deploy robust RAG backends
-- [agent-observability](../agent-observability/) - Instrument requests, traces, and costs
-- [agent-evals](../agent-evals/) - Build repeatable eval suites
-- [ai-sre-incident-response](../ai-sre-incident-response/) - Incident response for quality regressions
-- [opentelemetry](../../observability/opentelemetry/) - Distributed tracing for RAG pipelines
+- [rag-infrastructure](../../../infrastructure/local-ai/[rag-infrastructure](../rag-infrastructure/SKILL.md)/) - Deploy robust RAG backends
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Instrument requests, traces, and costs
+- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build repeatable eval suites
+- [ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response for quality regressions
+- [opentelemetry](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines

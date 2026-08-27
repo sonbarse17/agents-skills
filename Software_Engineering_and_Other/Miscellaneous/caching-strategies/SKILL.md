@@ -7,7 +7,7 @@ license: MIT
 # Caching Strategies
 
 Caching is one of the few changes that can make a system both faster and more fragile in the
-same commit. It is easy to add and easy to get subtly wrong, and the failure mode is rarely a
+same [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md). It is easy to add and easy to get subtly wrong, and the failure mode is rarely a
 crash — it is a user seeing data that is quietly, plausibly wrong, which is far harder to
 notice and debug than an error.
 

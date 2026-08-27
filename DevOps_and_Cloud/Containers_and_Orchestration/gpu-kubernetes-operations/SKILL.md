@@ -7,22 +7,22 @@ metadata:
   version: "1.0"
 ---
 
-# GPU Kubernetes Operations
+# GPU [Kubernetes](../kubernetes/SKILL.md) Operations
 
 Run resilient and cost-efficient GPU clusters for production AI workloads.
 
 ## When to Use This Skill
 
-- Setting up GPU node pools in Kubernetes for AI inference or training
+- Setting up GPU node pools in [Kubernetes](../kubernetes/SKILL.md) for AI inference or training
 - Configuring NVIDIA device plugin and GPU operator
 - Implementing MIG partitioning to share GPUs across workloads
-- Building GPU-aware autoscaling policies
-- Monitoring GPU health with DCGM and Prometheus
+- Building GPU-aware [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) policies
+- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) GPU health with DCGM and Prometheus
 - Troubleshooting GPU scheduling, driver, or OOM issues
 
 ## Prerequisites
 
-- Kubernetes 1.28+ cluster with GPU-capable nodes
+- [Kubernetes](../kubernetes/SKILL.md) 1.28+ cluster with GPU-capable nodes
 - NVIDIA GPUs (A10, L4, A100, H100, or similar)
 - NVIDIA drivers installed on nodes (535+ recommended)
 - Helm 3 for operator and plugin installation
@@ -50,8 +50,8 @@ helm install gpu-operator nvidia/gpu-operator \
   --version v24.3.0
 
 # Verify installation
-kubectl get pods -n gpu-operator
-kubectl get nodes -o json | jq '.items[].status.allocatable["nvidia.com/gpu"]'
+[kubectl](../kubectl/SKILL.md) get pods -n gpu-operator
+[kubectl](../kubectl/SKILL.md) get nodes -o json | jq '.items[].status.allocatable["nvidia.com/gpu"]'
 ```
 
 ## NVIDIA Device Plugin (Standalone)
@@ -115,7 +115,7 @@ data:
   config.yaml: |
     version: v1
     mig-configs:
-      # 7 small instances for inference microservices
+      # 7 small instances for inference [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
       all-1g.10gb:
         - devices: all
           mig-enabled: true
@@ -145,13 +145,13 @@ data:
 
 ```bash
 # Apply MIG profile to a node
-kubectl label nodes gpu-node-01 nvidia.com/mig.config=all-1g.10gb --overwrite
+[kubectl](../kubectl/SKILL.md) label nodes gpu-node-01 nvidia.com/mig.config=all-1g.10gb --overwrite
 
 # Verify MIG instances
-kubectl exec -it nvidia-device-plugin-xxxxx -n kube-system -- nvidia-smi mig -lgi
+[kubectl](../kubectl/SKILL.md) exec -it nvidia-device-plugin-xxxxx -n kube-system -- nvidia-smi mig -lgi
 
 # Check available MIG resources
-kubectl get nodes gpu-node-01 -o json | jq '.status.allocatable | with_entries(select(.key | startswith("nvidia.com")))'
+[kubectl](../kubectl/SKILL.md) get nodes gpu-node-01 -o json | jq '.status.allocatable | with_entries(select(.key | startswith("nvidia.com")))'
 ```
 
 ### Requesting MIG Slices in Pods
@@ -165,7 +165,7 @@ metadata:
 spec:
   containers:
     - name: model
-      image: registry.internal/vllm-server:latest
+      image: registry.internal/[vllm-server](../../../AI_and_Agents/Models_and_FineTuning/vllm-server/SKILL.md):latest
       resources:
         limits:
           nvidia.com/mig-1g.10gb: 1
@@ -202,20 +202,20 @@ data:
 
 ```bash
 # Apply time-slicing config
-kubectl patch clusterpolicy/cluster-policy \
+[kubectl](../kubectl/SKILL.md) patch clusterpolicy/cluster-policy \
   --type merge \
   -p '{"spec":{"devicePlugin":{"config":{"name":"time-slicing-config","default":"any"}}}}'
 
 # After applying, each physical GPU appears as 4 virtual GPUs
-kubectl get nodes -o json | jq '.items[].status.allocatable["nvidia.com/gpu"]'
+[kubectl](../kubectl/SKILL.md) get nodes -o json | jq '.items[].status.allocatable["nvidia.com/gpu"]'
 # Output: "4" per physical GPU
 ```
 
-## DCGM Monitoring
+## DCGM [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ```yaml
 # dcgm-servicemonitor.yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: dcgm-exporter
@@ -275,7 +275,7 @@ groups:
         labels:
           severity: info
         annotations:
-          summary: "GPU underutilized on {{ $labels.node }} - consider rightsizing"
+          summary: "GPU underutilized on {{ $labels.node }} - consider [rightsizing](../../Cloud_Providers/rightsizing/SKILL.md)"
 
       - alert: GPUDriverMismatch
         expr: count(count by (driver_version)(DCGM_FI_DRIVER_VERSION)) > 1
@@ -333,10 +333,10 @@ spec:
                 labelSelector:
                   matchLabels:
                     app: llm-inference
-                topologyKey: kubernetes.io/hostname
+                topologyKey: [kubernetes](../kubernetes/SKILL.md).io/hostname
       containers:
         - name: vllm
-          image: registry.internal/vllm-server:0.4.1
+          image: registry.internal/[vllm-server](../../../AI_and_Agents/Models_and_FineTuning/vllm-server/SKILL.md):0.4.1
           resources:
             requests:
               nvidia.com/gpu: 1
@@ -351,11 +351,11 @@ spec:
               value: "all"
 ```
 
-## GPU Autoscaling
+## GPU [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 
 ```yaml
 # gpu-hpa.yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: llm-inference-hpa
@@ -435,7 +435,7 @@ data:
 
 | Symptom | Check | Fix |
 |---------|-------|-----|
-| Pod stuck in Pending | `kubectl describe pod` for GPU resource events | Verify node has allocatable GPUs, check taints/tolerations |
+| Pod stuck in Pending | `[kubectl](../kubectl/SKILL.md) describe pod` for GPU resource events | Verify node has allocatable GPUs, check taints/tolerations |
 | CUDA OOM during inference | Model too large for GPU memory | Reduce batch size, use quantization, or use MIG slice |
 | DCGM metrics missing | ServiceMonitor labels matching | Verify DCGM exporter pod is running and scrape config |
 | Driver mismatch after upgrade | `nvidia-smi` on each node | Cordon node, drain, upgrade driver, uncordon |
@@ -445,8 +445,8 @@ data:
 
 ## Related Skills
 
-- [llm-inference-scaling](../llm-inference-scaling/) - Autoscale inference workloads
-- [model-serving-kubernetes](../../../devops/orchestration/model-serving-kubernetes/) - Production model serving patterns
-- [gpu-server-management](../../servers/gpu-server-management/) - Host-level GPU management fundamentals
-- [multi-tenant-llm-hosting](../multi-tenant-llm-hosting/) - Multi-tenant GPU sharing
-- [llm-cost-optimization](../../../devops/ai/llm-cost-optimization/) - Cost optimization strategies
+- [llm-inference-scaling](../[llm-inference-scaling](../../../AI_and_Agents/Models_and_FineTuning/llm-inference-scaling/SKILL.md)/) - Autoscale inference workloads
+- [model-serving-kubernetes](../../../devops/orchestration/[model-serving-kubernetes](../../../AI_and_Agents/Models_and_FineTuning/model-serving-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/) - Production model serving patterns
+- [gpu-server-management](../../servers/[gpu-server-management](../../../AI_and_Agents/Models_and_FineTuning/gpu-server-management/SKILL.md)/) - Host-level GPU management fundamentals
+- [multi-tenant-llm-hosting](../[multi-tenant-llm-hosting](../../../AI_and_Agents/Models_and_FineTuning/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant GPU sharing
+- [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost optimization strategies

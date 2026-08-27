@@ -24,7 +24,7 @@ Transform slow database queries into lightning-fast operations through systemati
 
 Understanding EXPLAIN output is fundamental to optimization.
 
-**PostgreSQL EXPLAIN:**
+**[PostgreSQL](../../Backend/postgresql/SKILL.md) EXPLAIN:**
 
 ```sql
 -- Basic explain
@@ -159,7 +159,7 @@ Detailed pattern documentation lives in `../../../Global_References/sql-optimiza
 ANALYZE users;
 ANALYZE VERBOSE orders;
 
--- Vacuum (PostgreSQL)
+-- Vacuum ([PostgreSQL](../../Backend/postgresql/SKILL.md))
 VACUUM ANALYZE users;
 VACUUM FULL users;  -- Reclaim space (locks table)
 
@@ -178,16 +178,16 @@ REINDEX TABLE users;
 - **LIKE with Leading Wildcard**: `LIKE '%abc'` can't use index
 - **Function in WHERE**: Prevents index usage unless functional index exists
 
-## Monitoring Queries
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
 
 ```sql
--- Find slow queries (PostgreSQL)
+-- Find slow queries ([PostgreSQL](../../Backend/postgresql/SKILL.md))
 SELECT query, calls, total_time, mean_time
 FROM pg_stat_statements
 ORDER BY mean_time DESC
 LIMIT 10;
 
--- Find missing indexes (PostgreSQL)
+-- Find missing indexes ([PostgreSQL](../../Backend/postgresql/SKILL.md))
 SELECT
     schemaname,
     tablename,
@@ -200,7 +200,7 @@ WHERE seq_scan > 0
 ORDER BY seq_tup_read DESC
 LIMIT 10;
 
--- Find unused indexes (PostgreSQL)
+-- Find unused indexes ([PostgreSQL](../../Backend/postgresql/SKILL.md))
 SELECT
     schemaname,
     tablename,

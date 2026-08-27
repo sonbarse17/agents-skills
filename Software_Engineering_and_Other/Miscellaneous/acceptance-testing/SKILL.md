@@ -104,9 +104,9 @@ Scenario Outline: Discount application by order value
     | 500.00      | 20       |
 ```
 
-## Automated Acceptance Tests (Python + pytest-bdd)
+## Automated Acceptance Tests ([Python](../../Languages/python/SKILL.md) + pytest-bdd)
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # tests/acceptance/test_checkout.py
 from pytest_bdd import scenarios, given, when, then, parsers
 
@@ -211,7 +211,7 @@ alpha_test:
   feedback_channels:
     - "In-app feedback widget"
     - "Weekly sync with alpha testers"
-    - "Automated error tracking (Sentry)"
+    - "Automated error tracking ([Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md))"
   exit_criteria:
     - "No P0 or P1 bugs open"
     - "Core workflow completion rate > 90%"
@@ -280,7 +280,7 @@ Running UAT as a single event at the end of the sprint instead of continuous val
 | 2: Defined | Basic UAT with scripts | Manual UAT sessions, Gherkin scenarios for critical paths, spreadsheet tracking |
 | 3: Managed | Automated acceptance tests | pytest-bdd/SpecFlow/Cucumber, CI-gated acceptance, traceability matrix |
 | 4: Measured | Continuous acceptance validation | Automated acceptance in CI/CD pipeline, metric-driven sign-off, acceptance coverage > 80% |
-| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder dashboards |
+| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
 
 ## Performance Considerations
 
@@ -458,9 +458,9 @@ metrics:
   - ../../../Global_References/uat-process.md — User Acceptance Testing (UAT) Process
 ## Handoff
 After acceptance testing completion, hand off to:
-- `quality-regression-testing` — for regression suite updates from accepted changes
-- `quality-e2e-testing` — for end-to-end automation of accepted scenarios
-- `quality-smoke-testing` — for BVT smoke test inclusion of critical paths
+- `[quality-regression-testing](../../Testing/regression-testing/SKILL.md)` — for regression suite updates from accepted changes
+- `[quality-e2e-testing](../../Testing/e2e-testing/SKILL.md)` — for end-to-end automation of accepted scenarios
+- `[quality-smoke-testing](../../Testing/smoke-testing/SKILL.md)` — for BVT smoke test inclusion of critical paths
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -513,7 +513,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -527,7 +527,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -543,12 +543,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -557,7 +557,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -565,13 +565,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -580,9 +580,9 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

@@ -16,12 +16,12 @@ Requests are added to a queue (bucket). The queue is processed at a fixed rate. 
 ## Redis Lua Script (Token Bucket)
 ```lua
 -- KEYS[1]: rate limit key
--- ARGV[1]: capacity (max tokens)
+-- ARGV[1]: [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (max tokens)
 -- ARGV[2]: rate (tokens per second)
 -- ARGV[3]: current timestamp
 
 local key = KEYS[1]
-local capacity = tonumber(ARGV[1])
+local [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = tonumber(ARGV[1])
 local rate = tonumber(ARGV[2])
 local now = tonumber(ARGV[3])
 
@@ -30,17 +30,17 @@ local tokens = tonumber(info[1])
 local last_update = tonumber(info[2])
 
 if tokens == nil then
-    tokens = capacity
+    tokens = [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
     last_update = now
 else
     local delta = math.max(0, now - last_update)
-    tokens = math.min(capacity, tokens + delta * rate)
+    tokens = math.min([capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), tokens + delta * rate)
 end
 
 if tokens >= 1 then
     tokens = tokens - 1
     redis.call("HMSET", key, "tokens", tokens, "last_update", now)
-    redis.call("EXPIRE", key, math.ceil(capacity / rate))
+    redis.call("EXPIRE", key, math.ceil([capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) / rate))
     return 1 -- Allowed
 else
     return 0 -- Rate Limited
@@ -48,7 +48,7 @@ end
 ```
 
 ## Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Client Request] --> B{Rate Limiter}

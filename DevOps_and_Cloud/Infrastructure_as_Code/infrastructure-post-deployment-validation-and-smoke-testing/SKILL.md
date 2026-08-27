@@ -22,8 +22,8 @@ metadata:
 
 ## Purpose
 
-`terraform apply` exiting 0, a CloudFormation stack reaching
-`UPDATE_COMPLETE`, or `ansible-playbook` reporting no failed tasks all
+`terraform apply` exiting 0, a [CloudFormation](../cloudformation/SKILL.md) stack reaching
+`UPDATE_COMPLETE`, or `[ansible](../ansible/SKILL.md)-playbook` reporting no failed tasks all
 mean exactly one thing: the tool successfully executed the operations it
 was told to perform. None of them mean the resulting system actually
 works — a security group with an unreachable rule, a load balancer
@@ -36,21 +36,21 @@ actually exist with the expected configuration, and — going one step
 further — that the system is functionally healthy from the outside, the
 way a real client would observe it. Without this layer, "the pipeline is
 green" and "the service works" are two different claims that get
-conflated until an incident proves they weren't the same thing.
+conflated until an [incident](../../Observability_and_SecOps/incident/SKILL.md) proves they weren't the same thing.
 
 ## When to use
 
-- Immediately after any `terraform apply`, CloudFormation stack
-  create/update, or Ansible playbook run that provisions or reconfigures
+- Immediately after any `terraform apply`, [CloudFormation](../cloudformation/SKILL.md) stack
+  create/update, or [Ansible](../ansible/SKILL.md) playbook run that provisions or reconfigures
   production-facing infrastructure, before considering the deployment
   complete.
 - Adding an automated post-deploy validation/smoke-test stage to a CI/CD
   pipeline, distinct from and running after the apply/deploy stage itself.
   Also see
-  [aws-codepipeline-and-codedeploy](../../../cicd-tooling/skills/aws-codepipeline-and-codedeploy/SKILL.md)
+  [aws-codepipeline-and-codedeploy](../../../cicd-tooling/skills/[aws-codepipeline-and-codedeploy](../../Cloud_Providers/aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md)
   for CodeDeploy's built-in `ValidateService` lifecycle hook, which is one
   concrete mechanism for wiring this in on AWS.
-- Investigating an incident where the deployment tooling reported success
+- Investigating an [incident](../../Observability_and_SecOps/incident/SKILL.md) where the deployment tooling reported success
   but the service is degraded or fully down — determining what a
   pre-existing smoke test would have caught.
 - Deciding what to actually assert post-deploy: existence checks (does
@@ -61,12 +61,12 @@ conflated until an incident proves they weren't the same thing.
 ## Prerequisites & environment
 
 - Read access to whichever cloud/API surface is being validated (AWS
-  CLI/SDK, `kubectl`, a database client) with credentials scoped to
+  CLI/SDK, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, a database client) with credentials scoped to
   read-only where the validation itself doesn't need write access.
 - The deployment tool's own state/output as the source of truth for
   *what* to check: Terraform outputs (`terraform output -json`),
-  CloudFormation stack outputs (`aws cloudformation describe-stacks
-  --query Stacks[0].Outputs`), or an Ansible fact/registered variable —
+  [CloudFormation](../cloudformation/SKILL.md) stack outputs (`aws [cloudformation](../cloudformation/SKILL.md) describe-stacks
+  --query Stacks[0].Outputs`), or an [Ansible](../ansible/SKILL.md) fact/registered variable —
   validation should check the resources the deployment *actually*
   produced, not a hardcoded list that can drift out of sync with the
   IaC.
@@ -79,7 +79,7 @@ conflated until an incident proves they weren't the same thing.
   for the service being validated (a `/healthz` endpoint, an expected
   response code/body, an expected DB query result) — validation without
   a concrete pass/fail contract degenerates into someone eyeballing
-  dashboards.
+  [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
 - A rollback or remediation path already decided *before* running
   validation, not designed in the moment a check fails — post-deploy
   validation is only useful if there's a defined next action (automatic
@@ -116,9 +116,9 @@ conflated until an incident proves they weren't the same thing.
      --query 'TargetHealthDescriptions[].TargetHealth.State'
    # Expect every entry: "healthy" — not just "the target group exists"
    ```
-   For CloudFormation, the equivalent is reading `Outputs` from
+   For [CloudFormation](../cloudformation/SKILL.md), the equivalent is reading `Outputs` from
    `describe-stacks` rather than assuming a resource's name/ARN pattern;
-   for Ansible, register the actual result of a task
+   for [Ansible](../ansible/SKILL.md), register the actual result of a task
    (`register: db_result`) and assert against it in a subsequent task
    rather than assuming success from the play recap alone.
 
@@ -154,7 +154,7 @@ conflated until an incident proves they weren't the same thing.
 4. **Run validation as its own pipeline stage, after apply/deploy,
    gating progression to the next environment**:
    ```yaml
-   # GitHub Actions, abbreviated
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions, abbreviated
    jobs:
      terraform-apply:
        runs-on: ubuntu-latest
@@ -179,23 +179,23 @@ conflated until an incident proves they weren't the same thing.
    tool succeed" from "did validation pass" in the pipeline's own status
    history.
 
-5. **For CloudFormation, use `ValidateService`-equivalent hooks or
+5. **For [CloudFormation](../cloudformation/SKILL.md), use `ValidateService`-equivalent hooks or
    `cfn-signal`/custom resources where the platform provides them**,
    rather than only checking stack status:
    ```bash
-   aws cloudformation describe-stacks --stack-name checkout-api-prod \
+   aws [cloudformation](../cloudformation/SKILL.md) describe-stacks --stack-name checkout-api-prod \
      --query 'Stacks[0].StackStatus'
-   # "UPDATE_COMPLETE" means CloudFormation finished its operations —
+   # "UPDATE_COMPLETE" means [CloudFormation](../cloudformation/SKILL.md) finished its operations —
    # it says nothing about whether the new resources are functionally
    # healthy; always follow with the same existence + functional checks
    # as step 1-3.
    ```
 
-6. **For Ansible, assert against registered results rather than trusting
+6. **For [Ansible](../ansible/SKILL.md), assert against registered results rather than trusting
    the play recap alone**:
    ```yaml
    - name: Check application health endpoint post-deploy
-     ansible.builtin.uri:
+     [ansible](../ansible/SKILL.md).builtin.uri:
        url: "http://{{ inventory_hostname }}:8080/healthz"
        status_code: 200
        timeout: 5
@@ -205,7 +205,7 @@ conflated until an incident proves they weren't the same thing.
      until: health_check.status == 200
 
    - name: Fail the play explicitly if health check never passed
-     ansible.builtin.fail:
+     [ansible](../ansible/SKILL.md).builtin.fail:
        msg: "Post-deploy health check failed on {{ inventory_hostname }}"
      when: health_check.status != 200
    ```
@@ -218,9 +218,9 @@ conflated until an incident proves they weren't the same thing.
    validation stage that fails and does nothing but print red text in CI
    isn't actually protecting anything:
    > **Warning:** Automatic rollback (`terraform apply` of the previous
-   > known-good plan, CloudFormation stack rollback, redeploying a prior
+   > known-good plan, [CloudFormation](../cloudformation/SKILL.md) stack rollback, redeploying a prior
    > CodeDeploy revision) is itself a change to production and should be
-   > exercised/tested before relying on it during a real incident — an
+   > exercised/tested before relying on it during a real [incident](../../Observability_and_SecOps/incident/SKILL.md) — an
    > untested rollback path can fail exactly when it's needed most.
    At minimum, a failed post-deploy validation stage should block
    promotion to the next environment and page on-call rather than
@@ -248,13 +248,13 @@ conflated until an incident proves they weren't the same thing.
   no longer exists gives false green just as dangerously as no smoke
   test at all.
 - Where the platform supports it (CodeDeploy's `ValidateService`,
-  Kubernetes readiness probes), wire the smoke test into the deployment
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) readiness probes), wire the smoke test into the deployment
   tool's own gating mechanism rather than only as an after-the-fact CI
   step, so a failing check can block traffic shift automatically.
 
 ## Common pitfalls
 
-- **Symptom:** `terraform apply`/CloudFormation stack update reports
+- **Symptom:** `terraform apply`/[CloudFormation](../cloudformation/SKILL.md) stack update reports
   success, but the service is down or degraded minutes later.
   **Fix:** This is precisely the gap this skill exists to close — add a
   post-deploy validation stage with both existence checks (step 1) and a
@@ -265,7 +265,7 @@ conflated until an incident proves they weren't the same thing.
   manually checking the same endpoint 30 seconds later succeeds fine.
   **Fix:** The service takes a few seconds to become ready (connection
   pools warming, health checks stabilizing) after it starts. Add
-  `retries`/backoff to the smoke test (as in the Ansible example, step
+  `retries`/backoff to the smoke test (as in the [Ansible](../ansible/SKILL.md) example, step
   6) rather than treating a single immediate check as authoritative, and
   set the retry window based on the service's actual observed startup
   time, not an arbitrary guess.
@@ -350,7 +350,7 @@ echo "FAIL: smoke test did not pass after ${MAX_ATTEMPTS} attempts" >&2
 exit 1
 ```
 
-Pipeline stage (GitHub Actions), gating promotion to `staging`:
+Pipeline stage ([GitHub](../../CI_CD/github/SKILL.md) Actions), gating promotion to `staging`:
 ```yaml
 post-deploy-validation:
   needs: terraform-apply
@@ -377,8 +377,8 @@ reaching the next environment.
 
 ## Cross-references
 
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the apply/plan-review workflow this skill's validation stage runs after.
-- [aws-cloudformation-templates](../aws-cloudformation-templates/SKILL.md) — stack status and output patterns referenced for the CloudFormation-specific validation steps here.
-- [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md) — registered-result assertion pattern for validating a playbook run's actual effect, not just its recap.
-- [aws-codepipeline-and-codedeploy](../../../cicd-tooling/skills/aws-codepipeline-and-codedeploy/SKILL.md) — the `ValidateService` lifecycle hook as a native mechanism for gating traffic shift on exactly this kind of check.
-- [terragrunt-configuration-and-dry-run-validation](../terragrunt-configuration-and-dry-run-validation/SKILL.md) — the plan-time (pre-apply) validation layer this skill's post-apply checks complement.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the apply/plan-review workflow this skill's validation stage runs after.
+- [aws-[cloudformation](../cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../cloudformation/SKILL.md)-templates](../aws-[cloudformation](../cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md) — stack status and output patterns referenced for the [CloudFormation](../cloudformation/SKILL.md)-specific validation steps here.
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../[ansible](../ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — registered-result assertion pattern for validating a playbook run's actual effect, not just its recap.
+- [aws-codepipeline-and-codedeploy](../../../cicd-tooling/skills/[aws-codepipeline-and-codedeploy](../../Cloud_Providers/aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md) — the `ValidateService` lifecycle hook as a native mechanism for gating traffic shift on exactly this kind of check.
+- [terragrunt-configuration-and-dry-run-validation](../[terragrunt-configuration-and-dry-run-validation](../terragrunt-configuration-and-dry-run-validation/SKILL.md)/SKILL.md) — the plan-time (pre-apply) validation layer this skill's post-apply checks complement.

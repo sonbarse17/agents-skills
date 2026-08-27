@@ -9,7 +9,7 @@ Comprehensive patterns and techniques for analyzing compiled binaries, understan
 
 ## When to Use This Skill
 
-- Reverse-engineering an unknown executable to understand its behavior
+- [Reverse-engineering](../../../Security/reverse-engineering/SKILL.md) an unknown executable to understand its behavior
 - Analyzing malware or obfuscated binaries with Ghidra / IDA Pro / Binary Ninja
 - Recognizing common assembly idioms (function prologues, switch tables, vtable dispatch)
 - Reconstructing high-level control flow from compiled code
@@ -294,7 +294,7 @@ createData(toAddr(0x601000), struct);
 
 ### Pattern Matching Scripts
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Find all calls to dangerous functions
 for func in currentProgram.getFunctionManager().getFunctions(True):
     for ref in getReferencesTo(func.getEntryPoint()):
@@ -306,7 +306,7 @@ for func in currentProgram.getFunctionManager().getFunctions(True):
 
 ### IDAPython Analysis
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import idaapi
 import idautils
 import idc

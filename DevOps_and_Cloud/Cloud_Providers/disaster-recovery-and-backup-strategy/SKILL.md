@@ -23,7 +23,7 @@ metadata:
 Backups that have never been restored, and DR plans that have never been
 tested with a real failover, are aspirational documents, not operational
 capabilities — the outage or ransomware event is the worst possible time
-to discover a backup is corrupt, a runbook step references a
+to discover a backup is corrupt, a [runbook](../../Observability_and_SecOps/runbook/SKILL.md) step references a
 decommissioned system, or the cross-region replica has silent lag. This
 skill covers picking a DR pattern (backup-restore through active-active)
 matched to a genuine Recovery Time Objective (RTO) and Recovery Point
@@ -64,7 +64,7 @@ failover on a schedule so the plan is proven, not assumed.
   boundaries established in the landing-zone skills — a backup that
   lives only in the same account as the primary data does not protect
   against account-level compromise or accidental account deletion.
-- A tested, version-controlled DR runbook (Infrastructure as Code for
+- A tested, version-controlled DR [runbook](../../Observability_and_SecOps/runbook/SKILL.md) (Infrastructure as Code for
   the DR-site infrastructure itself, plus documented manual steps for
   anything not yet automated) — a plan that exists only as institutional
   knowledge in one engineer's head is not a DR plan.
@@ -88,7 +88,7 @@ failover on a schedule so the plan is proven, not assumed.
      provisioned only when needed. Cheapest, slowest (hours to
      provision + restore).
    - **Pilot light**: core data stores (e.g. a replicated database)
-     are always running in the DR region at minimal capacity; compute
+     are always running in the DR region at minimal [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md); compute
      is provisioned and scaled up only during failover. Moderate cost,
      faster than backup-restore.
    - **Warm standby**: a scaled-down but fully functional copy of the
@@ -113,7 +113,7 @@ failover on a schedule so the plan is proven, not assumed.
        schedule          = "cron(0 5 * * ? *)"
 
        copy_action {
-         destination_vault_arn = "arn:aws:backup:eu-west-1:<DR_ACCOUNT_ID>:backup-vault:tier0-dr-vault"
+         destination_vault_arn = "arn:aws:backup:eu-west-1:<DR_ACCOUNT_ID>:backup-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md):tier0-dr-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)"
          lifecycle {
            delete_after = 90
          }
@@ -121,29 +121,29 @@ failover on a schedule so the plan is proven, not assumed.
      }
    }
    ```
-   Equivalent patterns: Azure Backup with a Recovery Services vault in a
-   paired region plus cross-subscription vault access, or GCP Backup and
+   Equivalent patterns: Azure Backup with a Recovery Services [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) in a
+   paired region plus cross-subscription [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access, or GCP Backup and
    DR Service / Cloud SQL cross-region replicas combined with
    cross-project backup storage. The DR-account/subscription/project
    backup copy should use a **separate IAM/RBAC trust boundary** from the
    primary so that a compromise of the primary account's credentials
    cannot also delete the DR copy.
 
-4. **Automate DR-site infrastructure as code**, not as a manual runbook
-   step performed only during an actual incident — the DR environment's
+4. **Automate DR-site infrastructure as code**, not as a manual [runbook](../../Observability_and_SecOps/runbook/SKILL.md)
+   step performed only during an actual [incident](../../Observability_and_SecOps/incident/SKILL.md) — the DR environment's
    Terraform/Bicep/Deployment Manager templates should be applied
    (or kept warm, per the chosen pattern) and validated in CI the same
    way production infrastructure is.
 
-5. **Write the failover runbook as executable steps**, including: DNS/
+5. **Write the failover [runbook](../../Observability_and_SecOps/runbook/SKILL.md) as executable steps**, including: DNS/
    traffic-routing cutover (e.g. Route 53 / Azure Traffic Manager /
    Cloud DNS failover routing policies), data promotion (promoting a
    read replica to primary), application configuration changes, and
    the reverse (fail-back) procedure — fail-back is frequently
    forgotten and is often riskier than the initial failover.
 
-6. **Test the failover on a schedule**, not only during a real incident:
-   - Tabletop exercise (walk through the runbook without executing it)
+6. **Test the failover on a schedule**, not only during a real [incident](../../Observability_and_SecOps/incident/SKILL.md):
+   - Tabletop exercise (walk through the [runbook](../../Observability_and_SecOps/runbook/SKILL.md) without executing it)
      at minimum quarterly.
    - A live, controlled failover test (actually promoting the DR
      database, actually cutting DNS) at least annually for Tier 0/1
@@ -155,7 +155,7 @@ failover on a schedule so the plan is proven, not assumed.
      at restore time, not at backup-job-success time.
 
 7. **Protect backups against ransomware/mass-deletion specifically**:
-   enable immutability (AWS Backup Vault Lock, Azure Backup immutable
+   enable immutability (AWS Backup [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock, Azure Backup immutable
    vaults, GCP Backup and DR immutable backup storage) so that even a
    fully compromised primary-account administrator credential cannot
    delete or shorten the retention of existing backup copies.
@@ -174,7 +174,7 @@ failover on a schedule so the plan is proven, not assumed.
 - **Test restores, not just backup job success** — a green checkmark on
   a nightly backup job proves the job ran, not that the data is
   recoverable.
-- **Enable backup immutability/vault lock for anything protecting
+- **Enable backup immutability/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lock for anything protecting
   against ransomware or insider threat**, since a mutable backup that an
   attacker (or a compromised automation credential) can delete provides
   no real protection.
@@ -183,27 +183,27 @@ failover on a schedule so the plan is proven, not assumed.
   workloads genuinely belong in backup-restore or pilot light once RTO/
   RPO requirements are honestly assessed.
 - **Automate DNS/traffic failover**, not manual DNS record edits during
-  an incident — manual cutover under pressure is where failover time
+  an [incident](../../Observability_and_SecOps/incident/SKILL.md) — manual cutover under pressure is where failover time
   budgets are blown.
 - **Document and rehearse fail-back**, not just failover — many
   organizations can execute a failover under pressure but have never
   practiced returning to the primary region cleanly.
-- **Version and test DR infrastructure-as-code in CI** the same as
+- **Version and test DR [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) in CI** the same as
   production IaC — DR infrastructure that only gets applied during a
-  real incident is untested infrastructure.
+  real [incident](../../Observability_and_SecOps/incident/SKILL.md) is untested infrastructure.
 
 ## Common pitfalls
 
 - **Symptom:** During an actual regional outage, the DR failover takes
   many hours longer than the documented RTO.
-  **Fix:** The runbook was written and reviewed but never executed
+  **Fix:** The [runbook](../../Observability_and_SecOps/runbook/SKILL.md) was written and reviewed but never executed
   live — steps referenced outdated resource names, a manual approval
   step wasn't accounted for, or DNS TTLs were set too high to cut over
   quickly. Run at least one live failover test per year for Tier 0/1
-  workloads and update the runbook based on what actually happened, not
+  workloads and update the [runbook](../../Observability_and_SecOps/runbook/SKILL.md) based on what actually happened, not
   what was planned.
 
-- **Symptom:** A backup restore is attempted during an incident and the
+- **Symptom:** A backup restore is attempted during an [incident](../../Observability_and_SecOps/incident/SKILL.md) and the
   restored data is missing recent transactions or is outright corrupt.
   **Fix:** Backup jobs were reporting success, but nobody had performed
   an actual restore-and-verify test. Add scheduled restore-verification
@@ -214,9 +214,9 @@ failover on a schedule so the plan is proven, not assumed.
   both the production data and its backups.
   **Fix:** Backups shared the same account/credentials/trust boundary as
   production, and were mutable (deletable by the same role that manages
-  production). Enable backup vault immutability/lock and store DR
+  production). Enable backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) immutability/lock and store DR
   copies under a separate account/subscription/project with a distinct,
-  narrowly scoped IAM/RBAC role — see `cloud-iam-hardening` for how to
+  narrowly scoped IAM/RBAC role — see `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)` for how to
   scope that role tightly.
 
 - **Symptom:** RTO/RPO targets exist on paper but every workload was
@@ -232,12 +232,12 @@ failover on a schedule so the plan is proven, not assumed.
   cost, deletes the DR-region database replica or storage bucket
   entirely.
   **Fix:** **Never tear down DR-region infrastructure (a promoted-
-  capable read replica, a cross-region backup vault/bucket) as a cost
+  capable read replica, a cross-region backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/bucket) as a cost
   cleanup without explicit sign-off from whoever owns the DR plan for
   that workload** — confirm current RTO/RPO commitments still require it
   before any destructive action, and prefer scaling down (pilot
   light) over full deletion if cost is the concern. See
-  `cloud-native-storage-strategy` for the equivalent caution on deleting
+  `[cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)` for the equivalent caution on deleting
   storage resources generally.
 
 ## Worked example
@@ -251,19 +251,19 @@ account) — effectively no real disaster recovery.
    critical; a 15-minute RTO and 5-minute RPO are validated as real
    requirements, not aspirational.
 2. Given the tight RTO/RPO, select **warm standby**: run a scaled-down
-   (e.g. 25% capacity) copy of the checkout stack continuously in a
+   (e.g. 25% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) copy of the checkout stack continuously in a
    second region, with RDS configured for cross-region read replication
    and Route 53 failover routing pointed at both regions' load
    balancers with health checks.
 3. Set up AWS Backup with a daily cross-account, cross-region copy
    (as shown in the Terraform snippet above) to a dedicated backup
-   account, with Vault Lock enabled in compliance mode so backups cannot
+   account, with [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock enabled in compliance mode so backups cannot
    be deleted even by a compromised admin credential in the primary
    account — this protects against ransomware/mass-deletion in addition
    to the warm-standby replica, which protects against a regional
    outage.
-4. Write the failover runbook: promote the DR-region RDS read replica to
-   primary, scale the DR-region compute stack from 25% to 100% capacity,
+4. Write the failover [runbook](../../Observability_and_SecOps/runbook/SKILL.md): promote the DR-region RDS read replica to
+   primary, scale the DR-region compute stack from 25% to 100% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
    confirm Route 53 health checks have already begun routing traffic
    (automatic, since failover routing is DNS-health-check-driven rather
    than manual).
@@ -271,17 +271,17 @@ account) — effectively no real disaster recovery.
    window: actually promote the replica, actually fail DNS over, measure
    real RTO/RPO achieved, and identify that the compute scale-up step
    took 9 minutes — inside budget, but close enough to warrant
-   pre-warming an additional capacity buffer.
+   pre-warming an additional [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) buffer.
 6. Document and rehearse fail-back: after the test, reverse the process
    deliberately (re-establish the original region as primary, resync
    data) rather than leaving the DR region as primary indefinitely by
    default.
-7. Schedule monthly restore-verification jobs against the backup vault
+7. Schedule monthly restore-verification jobs against the backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
    copy (independent of the warm-standby replica) so a corrupted backup
    would be caught long before it's ever needed as the last resort.
 
 ## Cross-references
 
-- [cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)
-- [multi-cloud-networking-patterns](../multi-cloud-networking-patterns/SKILL.md)
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
+- [cloud-native-storage-strategy](../[cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)/SKILL.md)
+- [multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)

@@ -167,7 +167,7 @@ function getAmount0Delta(
 ```
 
 ### Stableswap Invariant (Curve)
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Curve's stableswap invariant: combination of constant sum and constant product
 # x + y + (x*y) / (D/2) = D + D^2 / (4*amplification_coefficient)
 # A * n^n * sum(x_i) + D = A * D * n^n + D^(n+1) / (n^n * prod(x_i))
@@ -331,7 +331,7 @@ function getLiquidationPrice(
 |--------|-------------|------------|
 | Flash loan attack | Borrow huge capital, manipulate price, profit, repay | TWAP pricing, min/max output, circuit breakers |
 | Oracle manipulation | Move price to trigger liquidations or profit from trades | Redundant oracles, TWAP, stale-price checks |
-| Sandwich attack | Frontrun trade, let trade execute, backrun | Slippage protection, commit-reveal |
+| Sandwich attack | Frontrun trade, let trade execute, backrun | Slippage protection, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal |
 | Donation attack | Manipulate rebasing token to steal yields | Track internal balances separately |
 | Infinite approval | DApp drains approved tokens | Approve exact amounts, use permit |
 | Reentrancy in callbacks | Callback reenters during token transfer | Reentrancy guard, CEI pattern |
@@ -384,7 +384,7 @@ Price feed types:
 | Backrunning | Profit from pending tx execution | Medium |
 
 ### MEV-Protected Trading
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // MEV-protected swap via CowSwap (Coincidence of Wants)
 // 1. User signs intent: "swap X ETH for >= Y USDC"
 // 2. Solvers compete to find best execution
@@ -410,7 +410,7 @@ interface CowOrder {
 2. Use TWAP over spot price for on-chain pricing to resist flash loan manipulation
 3. Understand and quantify impermanent loss before committing to AMM liquidity strategies
 4. Design for composability — interfaces should follow standards (ERC-4626, ERC-3156 flash loans)
-5. Consider MEV resistance — implement private mempools, commit-reveal, or delay-based protections
+5. Consider MEV resistance — implement private mempools, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, or delay-based protections
 6. Follow oracle best practices — redundant, manipulation-resistant feeds with stale-price checks
 7. Implement circuit breakers and rate limits — pause, deposit/withdraw caps, borrow limits
 8. Model liquidation economics carefully — ensure liquidators are always incentivized
@@ -441,7 +441,7 @@ DeFi Protocol Design
 ├── Protocol type?
 │   ├── DEX → AMM (Uniswap v2/v3, Curve) / Orderbook (dYdX, Serum)
 │   ├── Lending → Pool-based (Aave, Compound) / Isolated (Morpho)
-│   ├── Yield → Vault strategy (Yearn) / Auto-compounder
+│   ├── Yield → [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) strategy (Yearn) / Auto-compounder
 │   └── Derivatives → Perpetuals (GMX, Synthetix) / Options (Opyn)
 ├── AMM curve?
 │   ├── Constant product → x*y=k (Uniswap v2) — simple, capital inefficient
@@ -515,10 +515,10 @@ contract LendingPool {
 
 ## Production Considerations
 
-- **Liquidation monitoring**: Monitor positions with health factor < 1.2; trigger liquidation at 1.0.
+- **Liquidation [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor positions with health factor < 1.2; trigger liquidation at 1.0.
 - **Oracle freshness**: Alert on oracle price staleness (> 2 hours); pause borrowing if stale.
 - **Slippage protection**: Set max slippage per transaction (0.5% default for major pairs).
-- **MEV protection**: Implement commit-reveal or batch auctions for large liquidations.
+- **MEV protection**: Implement [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal or batch auctions for large liquidations.
 - **Emergency withdrawal**: Pause deposits/borrows during incidents; allow withdrawals only.
 
 ## Anti-Patterns
@@ -545,7 +545,7 @@ contract LendingPool {
 - **Oracle manipulation**: Use TWAP (30 min) for critical price feeds; circuit breaker on > 5% deviation.
 - **Flash loan attacks**: Check price deviation against multiple sources; use time-weighted prices.
 - **Economic security**: Formal verification of liquidation math; fuzz testing for edge cases.
-- **Composability risk**: Audit integration points with external protocols; whitelist allowed adapters.
+- **Composability risk**: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) integration points with external protocols; whitelist allowed adapters.
 
 ## Phase
 blockchain → blockchain-defi

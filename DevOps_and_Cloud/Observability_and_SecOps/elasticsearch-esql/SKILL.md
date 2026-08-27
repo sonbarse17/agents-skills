@@ -35,9 +35,9 @@ ES|QL uses pipes (`|`) to chain commands:
 >
 > **Cluster Detection:** Use the `GET /` response to determine the cluster type and version:
 >
-> - `build_flavor: "serverless"` — Elastic Cloud Serverless. `version.number` tracks the stack line under active
->   development (next minor from main), so clients that only semver-compare may treat Serverless as “latest.” **Do not**
->   use `version.number` to gate features: if `build_flavor` is `"serverless"`, assume all GA and preview ES|QL features
+> - `build_flavor: "[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)"` — Elastic Cloud [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). `version.number` tracks the stack line under active
+>   development (next minor from main), so clients that only semver-compare may treat [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) as “latest.” **Do not**
+>   use `version.number` to gate features: if `build_flavor` is `"[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)"`, assume all GA and preview ES|QL features
 >   are available.
 > - `build_flavor: "default"` — Self-managed or Elastic Cloud Hosted. Use `version.number` for feature availability.
 > - **Snapshot builds** have `version.number` like `9.4.0-SNAPSHOT`. Strip the `-SNAPSHOT` suffix and use the
@@ -89,8 +89,8 @@ node scripts/esql.js test
 ## Guidelines
 
 1. **Detect deployment type**: Always run `node scripts/esql.js test` first. This detects whether the deployment is a
-   Serverless project (all features available) or a versioned cluster (features depend on version). The `build_flavor`
-   field from `GET /` is the authoritative signal — if it equals `"serverless"`, ignore the reported version number and
+   [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) project (all features available) or a versioned cluster (features depend on version). The `build_flavor`
+   field from `GET /` is the authoritative signal — if it equals `"[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)"`, ignore the reported version number and
    use all ES|QL features freely.
 
 2. **Discover schema** (required — never guess index or field names):
@@ -350,11 +350,11 @@ FROM application_logs
 ```esql
 // Filter by multivalue membership
 FROM employees
-| WHERE MV_CONTAINS(languages, "Python")
+| WHERE MV_CONTAINS(languages, "[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
 
 // Find entries matching multiple values
 FROM employees
-| WHERE MV_CONTAINS(languages, "Java") AND MV_CONTAINS(languages, "Python")
+| WHERE MV_CONTAINS(languages, "Java") AND MV_CONTAINS(languages, "[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
 
 // Count multivalue entries
 FROM employees

@@ -25,7 +25,7 @@ metadata:
 ## Purpose
 
 SonarQube (self-hosted) and SonarCloud (its SaaS counterpart) analyze
-source code for both security vulnerabilities and code-quality issues
+source code for both security vulnerabilities and [code-quality](../../../Software_Engineering_and_Other/Miscellaneous/skills-main/skills/[code-quality](../../../Software_Engineering_and_Other/Patterns/code-quality/SKILL.md)/SKILL.md) issues
 (bugs, code smells, duplication, cyclomatic complexity) in a single
 platform, and — unlike a pure SAST tool — attach a maintainability
 rating and a "technical debt" time estimate to what it finds. Its
@@ -39,7 +39,7 @@ it becomes an unpassable or ignored gate within weeks. This skill goes
 deep on SonarQube's specific quality-gate mechanics, PR decoration, and
 debt-ratio/rating metrics. For the general SAST concept — tool
 selection, triage workflow, suppression policy — see
-[sast-integration](../../../devsecops/skills/sast-integration/SKILL.md).
+[sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -49,7 +49,7 @@ selection, triage workflow, suppression policy — see
   condition tripped (coverage on new code, duplicated lines, security
   rating, reliability rating) and how to fix it.
 - The user wants pull requests decorated with inline SonarQube findings
-  (GitHub/GitLab/Bitbucket/Azure DevOps PR comments) rather than only a
+  ([GitHub](../../CI_CD/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps PR comments) rather than only a
   dashboard.
 - The user needs to triage **security hotspots** — code SonarQube flags
   as security-sensitive but requiring human judgment to confirm as a
@@ -83,10 +83,10 @@ selection, triage workflow, suppression policy — see
 - A generated authentication token (user token or project analysis
   token) with `Execute Analysis` permission, stored in the CI secrets
   store — never inline in `sonar-project.properties`. See
-  [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md).
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
 - For PR decoration: the SonarQube/SonarCloud instance needs network
   reachability to call back to the source-control platform's API
-  (GitHub/GitLab/Bitbucket/Azure DevOps App or PAT configured in
+  ([GitHub](../../CI_CD/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps App or PAT configured in
   server-wide DevOps Platform Integration settings).
 - A defined baseline: a "new code" definition (since a fixed date, since
   the previous version, or since a reference branch) — the single most
@@ -105,13 +105,13 @@ selection, triage workflow, suppression policy — see
    sonar.test.exclusions=**/*.spec.ts,**/*.test.ts
    sonar.coverage.exclusions=**/migrations/**,**/*.d.ts
    sonar.javascript.lcov.reportPaths=coverage/lcov.info
-   sonar.python.coverage.reportPaths=coverage.xml
+   sonar.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
    ```
 
 2. **Run the scanner in CI**, feeding in the auth token as a secret,
    not a literal value:
    ```yaml
-   # GitHub Actions
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions
    name: sonarqube
    on:
      pull_request:
@@ -166,7 +166,7 @@ selection, triage workflow, suppression policy — see
      - Security Hotspots Reviewed  is less than   100%
    ```
    Add Overall Code conditions sparingly (e.g. "Security Rating on
-   Overall Code is worse than C") only once the team has capacity to
+   Overall Code is worse than C") only once the team has [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to
    work down historical debt — an overall-code gate applied to an
    existing large codebase on day one typically fails immediately and
    permanently.
@@ -223,10 +223,10 @@ selection, triage workflow, suppression policy — see
   program: its rule engine is broad but shallower on deep
   interprocedural taint-tracking for compiled languages than a
   dedicated engine like CodeQL; pair it with
-  [fortify-static-analysis](../fortify-static-analysis/SKILL.md) or
+  [fortify-static-analysis](../[fortify-static-analysis](../../../Software_Engineering_and_Other/Frontend/fortify-static-analysis/SKILL.md)/SKILL.md) or
   another deep-taint SAST tool for high-assurance compiled-language
   codebases, and with
-  [owasp-zap-dast-configuration](../owasp-zap-dast-configuration/SKILL.md)
+  [owasp-zap-dast-configuration](../[owasp-zap-dast-configuration](../../../Software_Engineering_and_Other/Frontend/owasp-zap-dast-configuration/SKILL.md)/SKILL.md)
   for runtime-only issues neither can see.
 - Version-pin the scanner action/CLI and coordinate SonarQube server
   upgrades deliberately — rule-set updates between versions can shift
@@ -270,7 +270,7 @@ selection, triage workflow, suppression policy — see
   its own, and wire the coverage report path
   (`sonar.coverage.jacoco.xmlReportPaths`) explicitly.
 
-- **Symptom:** PR decoration comments never appear on GitHub/GitLab
+- **Symptom:** PR decoration comments never appear on [GitHub](../../CI_CD/github/SKILL.md)/GitLab
   pull requests even though the dashboard shows the analysis completed.
   **Fix:** DevOps Platform Integration isn't configured/bound for the
   project, or the token used lacks permission to post PR comments on
@@ -282,7 +282,7 @@ selection, triage workflow, suppression policy — see
 
 ## Worked example
 
-A Python service (`payments-api`) adopts SonarCloud with a new-code
+A [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) service (`payments-api`) adopts SonarCloud with a new-code
 quality gate and PR decoration.
 
 `sonar-project.properties`:
@@ -291,7 +291,7 @@ sonar.projectKey=example-org_payments-api
 sonar.organization=example-org
 sonar.sources=app
 sonar.tests=tests
-sonar.python.coverage.reportPaths=coverage.xml
+sonar.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
 sonar.exclusions=**/migrations/**,**/__pycache__/**
 ```
 
@@ -304,7 +304,7 @@ Security Rating             worse than A -> FAIL
 Security Hotspots Reviewed  < 100%     -> FAIL
 ```
 
-`.github/workflows/sonar.yml`:
+`.[github](../../CI_CD/github/SKILL.md)/workflows/sonar.yml`:
 ```yaml
 name: sonarqube
 on:
@@ -345,22 +345,22 @@ New Code:
 ```
 Remediation: replace the hardcoded key with one sourced from the secrets
 manager (see
-[secrets-management](../../../devsecops/skills/secrets-management/SKILL.md)),
+[secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md)),
 add tests to cover `charge.py`'s new branch, push, and confirm the gate
-re-evaluates to passed on the updated commit.
+re-evaluates to passed on the updated [commit](../../CI_CD/commit/SKILL.md).
 
 ## Cross-references
 
-- [sast-integration](../../../devsecops/skills/sast-integration/SKILL.md) —
+- [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) —
   the tool-agnostic SAST concept, triage workflow, and suppression
   policy this skill goes deep on for SonarQube's quality-gate model
   specifically.
-- [fortify-static-analysis](../fortify-static-analysis/SKILL.md) —
+- [fortify-static-analysis](../[fortify-static-analysis](../../../Software_Engineering_and_Other/Frontend/fortify-static-analysis/SKILL.md)/SKILL.md) —
   an enterprise, deep-taint-tracking alternative worth pairing with
   SonarQube for high-assurance compiled-language codebases.
-- [owasp-zap-dast-configuration](../owasp-zap-dast-configuration/SKILL.md) —
+- [owasp-zap-dast-configuration](../[owasp-zap-dast-configuration](../../../Software_Engineering_and_Other/Frontend/owasp-zap-dast-configuration/SKILL.md)/SKILL.md) —
   runtime testing that catches issues SonarQube's static analysis
   cannot see.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md) —
   where a hardcoded-secret hotspot/finding should actually be remediated
   to (a secrets manager), not just suppressed.

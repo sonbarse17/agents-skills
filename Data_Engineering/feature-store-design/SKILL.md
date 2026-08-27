@@ -61,14 +61,14 @@ diagnose after the fact.
   distinct from "when was this row loaded."
 - Access to the training pipeline and serving pipeline codebases, since the
   feature store's value depends on both consuming it identically (see
-  [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)).
+  [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
 1. **Define entities and feature views explicitly.** An entity is the join
    key (e.g. `driver_id`); a feature view is a named, versioned group of
    features tied to that entity with a defined source and freshness.
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Feast example: feature_repo/driver_features.py
    from feast import Entity, FeatureView, Field, FileSource
    from feast.types import Float32, Int64
@@ -97,7 +97,7 @@ diagnose after the fact.
 2. **Build point-in-time-correct training datasets** by joining the label
    timestamps against feature history "as of" that timestamp — never a naive
    join against the latest feature value:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from feast import FeatureStore
 
    store = FeatureStore(repo_path="feature_repo/")
@@ -123,7 +123,7 @@ diagnose after the fact.
    ```
 4. **Serve features online** using the identical feature view definition
    used in training:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    online_features = store.get_online_features(
        features=[
            "driver_stats:trips_last_7d",
@@ -135,14 +135,14 @@ diagnose after the fact.
    ```
 5. **Version feature definitions** alongside a schema/semver similar to model
    versioning (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)):
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)):
    changing a feature's computation logic (e.g. window from 7d to 14d) should
    bump a feature view version and be tracked so historical training runs
    remain reproducible against the definition they were trained with.
 6. **Register lineage** from raw source tables → feature view → training
    dataset → model version, so a drift alert or a bad prediction can be
    traced back to the exact feature definition and source data involved (see
-   [data-and-model-lineage](../data-and-model-lineage/SKILL.md)).
+   [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)).
 7. **Backfill new features carefully**: when adding a feature to an
    existing feature view, run a backfill job over historical source data
    before enabling it for training, and validate the backfilled values
@@ -151,7 +151,7 @@ diagnose after the fact.
    online store (e.g. a materialization job silently failing) causes serving
    to use outdated features while nothing else in the system errors, which
    is a common source of silent degradation (see
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)).
+   [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 
 ## Best practices
 
@@ -194,7 +194,7 @@ diagnose after the fact.
   skew), traced to the online store returning slightly stale values because a
   materialization job has been silently failing for two days.
   **Fix:** Monitor feature freshness explicitly (max age since last
-  materialization per feature view) with alerting, not just pipeline
+  materialization per feature view) with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), not just pipeline
   success/failure status — a "successful" job that ran 0 rows still shows
   green in most schedulers.
 
@@ -232,7 +232,7 @@ A ride-hailing company builds a feature store for a driver-acceptance model.
    current rating as of today.
 4. The resulting training dataframe trains a gradient-boosted classifier;
    the run and its resolved feature view versions are logged (see
-   [experiment-tracking](../experiment-tracking/SKILL.md)).
+   [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)).
 5. In production, the same `driver_stats` feature view is materialized to a
    Redis-backed online store every 15 minutes. At inference time, the
    serving layer calls `get_online_features` for the incoming
@@ -246,7 +246,7 @@ A ride-hailing company builds a feature store for a driver-acceptance model.
 
 ## Cross-references
 
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md)
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
-- [experiment-tracking](../experiment-tracking/SKILL.md)
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+- [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)

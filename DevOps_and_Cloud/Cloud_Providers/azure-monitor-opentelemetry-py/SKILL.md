@@ -10,14 +10,14 @@ metadata:
   package: azure-monitor-opentelemetry
 ---
 
-# Azure Monitor OpenTelemetry Distro for Python
+# Azure Monitor [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Distro for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-One-line setup for Application Insights with OpenTelemetry auto-instrumentation.
+One-line setup for Application Insights with [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) auto-instrumentation.
 
 ## Installation
 
 ```bash
-pip install azure-monitor-opentelemetry
+pip install azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)
 ```
 
 ## Environment Variables
@@ -40,9 +40,9 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Quick Start
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 # Connection string identifies the App Insights resource (read from APPLICATIONINSIGHTS_CONNECTION_STRING env var).
 # DefaultAzureCredential authenticates ingestion via Microsoft Entra ID (preferred over instrumentation-key-only auth).
@@ -58,9 +58,9 @@ configure_azure_monitor(
 Pass the connection string explicitly by reading it from the environment variable.
 The value includes both `InstrumentationKey` and `IngestionEndpoint`.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 # Read the full connection string from the environment.
 # Format: "InstrumentationKey=<key>;IngestionEndpoint=https://<id>.in.applicationinsights.azure.com/"
@@ -77,9 +77,9 @@ except Exception as exc:
 
 ## With Flask
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from flask import Flask
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -95,9 +95,9 @@ if __name__ == "__main__":
 
 ## With Django
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # settings.py
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -106,9 +106,9 @@ configure_azure_monitor()
 
 ## With FastAPI
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from fastapi import FastAPI
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -121,9 +121,9 @@ async def root():
 
 ## Custom Traces
 
-```python
-from opentelemetry import trace
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -136,9 +136,9 @@ with tracer.start_as_current_span("my-operation") as span:
 
 ## Custom Metrics
 
-```python
-from opentelemetry import metrics
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import metrics
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -150,9 +150,9 @@ counter.add(1, {"dimension": "value"})
 
 ## Custom Logs
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
-from azure.monitor.opentelemetry import configure_azure_monitor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor()
 
@@ -165,8 +165,8 @@ logger.error("Errors are captured too", exc_info=True)
 
 ## Sampling
 
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 # Sample 10% of requests
 configure_azure_monitor(
@@ -178,9 +178,9 @@ configure_azure_monitor(
 
 Set cloud role name for Application Map:
 
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-from opentelemetry.sdk.resources import Resource, SERVICE_NAME
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.resources import Resource, SERVICE_NAME
 
 configure_azure_monitor(
     resource=Resource.create({SERVICE_NAME: "my-service-name"})
@@ -189,8 +189,8 @@ configure_azure_monitor(
 
 ## Disable Specific Instrumentations
 
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor(
     instrumentations=["flask", "requests"]  # Only enable these
@@ -199,8 +199,8 @@ configure_azure_monitor(
 
 ## Enable Live Metrics
 
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor(
     enable_live_metrics=True
@@ -209,14 +209,14 @@ configure_azure_monitor(
 
 ## Azure AD Authentication
 
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import configure_azure_monitor
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. In production, set AZURE_TOKEN_CREDENTIALS=prod or use a specific credential.
 credential = DefaultAzureCredential()
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 configure_azure_monitor(
@@ -247,7 +247,7 @@ configure_azure_monitor(
 | `connection_string` | Application Insights connection string | From env var |
 | `credential` | Azure credential for AAD auth | None |
 | `sampling_ratio` | Sampling rate (0.0 to 1.0) | 1.0 |
-| `resource` | OpenTelemetry Resource | Auto-detected |
+| `resource` | [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Resource | Auto-detected |
 | `instrumentations` | List of instrumentations to enable | All |
 | `enable_live_metrics` | Enable Live Metrics stream | False |
 
@@ -267,6 +267,6 @@ configure_azure_monitor(
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-monitor-opentelemetry-py_capabilities.md](../../../Global_References/azure-monitor-opentelemetry-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-monitor-opentelemetry-py_non-hero-scenarios.md](../../../Global_References/azure-monitor-opentelemetry-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py_capabilities.md](../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py_non-hero-scenarios.md](../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

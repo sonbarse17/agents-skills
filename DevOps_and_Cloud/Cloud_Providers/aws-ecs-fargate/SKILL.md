@@ -9,24 +9,24 @@ metadata:
 
 # AWS ECS & Fargate
 
-Run containerized applications on Amazon ECS with Fargate serverless compute or EC2 launch type.
+Run containerized applications on Amazon ECS with Fargate [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) compute or EC2 launch type.
 
 ## When to Use This Skill
 
-- Deploying Docker containers to AWS without managing servers (Fargate)
-- Running microservices with service discovery and load balancing
+- Deploying [Docker](../../Containers_and_Orchestration/docker/SKILL.md) containers to AWS without managing servers (Fargate)
+- Running [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with service discovery and load balancing
 - Setting up blue/green or rolling deployments for containerized apps
 - Configuring auto-scaling for container workloads
-- Migrating from docker-compose or Kubernetes to ECS
+- Migrating from [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) to ECS
 - Troubleshooting task failures, health check issues, or networking problems
 
 ## Prerequisites
 
 - AWS CLI v2 installed and configured
-- Docker installed for building and pushing images
+- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) installed for building and pushing images
 - IAM permissions: `ecs:*`, `ecr:*`, `elasticloadbalancing:*`, `logs:*`, `iam:PassRole`
 - An ECR repository for storing container images
-- A VPC with subnets and an ALB (see [aws-vpc](../aws-vpc/))
+- A VPC with subnets and an ALB (see [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/))
 
 ## Cluster Setup
 
@@ -34,8 +34,8 @@ Run containerized applications on Amazon ECS with Fargate serverless compute or 
 # Create an ECS cluster with Container Insights enabled
 aws ecs create-cluster \
   --cluster-name production \
-  --capacity-providers FARGATE FARGATE_SPOT \
-  --default-capacity-provider-strategy '[
+  --[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-providers FARGATE FARGATE_SPOT \
+  --default-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-provider-strategy '[
     {"capacityProvider": "FARGATE", "weight": 1, "base": 2},
     {"capacityProvider": "FARGATE_SPOT", "weight": 3}
   ]' \
@@ -54,17 +54,17 @@ aws ecs describe-clusters --clusters production --include STATISTICS ATTACHMENTS
 # Create ECR repository
 aws ecr create-repository \
   --repository-name myapp \
-  --image-scanning-configuration scanOnPush=true \
+  --[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
   --encryption-configuration encryptionType=KMS
 
-# Authenticate Docker to ECR
+# Authenticate [Docker](../../Containers_and_Orchestration/docker/SKILL.md) to ECR
 aws ecr get-login-password --region us-east-1 | \
-  docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+  [docker](../../Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
 
 # Build, tag, and push
-docker build -t myapp:latest .
-docker tag myapp:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
-docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:latest .
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) push 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
 ```
 
 ## Task Definition
@@ -210,15 +210,15 @@ aws ecs execute-command \
 
 ```bash
 # Register ECS service as a scalable target
-aws application-autoscaling register-scalable-target \
+aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) register-scalable-target \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
-  --min-capacity 2 \
-  --max-capacity 20
+  --min-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 2 \
+  --max-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 20
 
 # Target tracking policy - scale on CPU utilization
-aws application-autoscaling put-scaling-policy \
+aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -234,7 +234,7 @@ aws application-autoscaling put-scaling-policy \
   }'
 
 # Scale on request count per target (ALB)
-aws application-autoscaling put-scaling-policy \
+aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -353,20 +353,20 @@ aws logs filter-log-events \
 
 | Problem | Cause | Fix |
 |---|---|---|
-| Task stuck in PROVISIONING | No available capacity in subnets | Check subnet availability and capacity provider |
+| Task stuck in PROVISIONING | No available [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) in subnets | Check subnet availability and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) provider |
 | Task fails immediately | Container crashes on startup | Check CloudWatch logs; run image locally first |
 | Health check failing | App not ready within startPeriod | Increase `startPeriod`; verify health endpoint |
 | Cannot pull ECR image | Execution role missing ECR permissions | Attach `AmazonECSTaskExecutionRolePolicy` |
 | Service stuck at 0 running | Security group blocks ALB health check | Allow ALB SG to reach container port |
 | Exec command fails | SSM agent not initialized | Ensure `enableExecuteCommand` is true; check task role |
-| High Fargate costs | Not using Fargate Spot for tolerant workloads | Add FARGATE_SPOT capacity provider |
+| High Fargate costs | Not using Fargate Spot for tolerant workloads | Add FARGATE_SPOT [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) provider |
 | Container OOM killed | Memory limit too low | Increase `memory` in task definition; check for leaks |
 | Slow deployments | minimumHealthyPercent too high | Set to 50% for faster rolling updates |
 
 ## Related Skills
 
-- [docker-management](../../../devops/containers/docker-management/) - Container fundamentals
-- [container-registries](../../../devops/containers/container-registries/) - ECR and image management
-- [aws-vpc](../aws-vpc/) - Networking for ECS tasks
-- [aws-iam](../aws-iam/) - Task and execution roles
-- [terraform-aws](../terraform-aws/) - Infrastructure as Code deployment
+- [docker-management](../../../devops/containers/[docker-management](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-management/SKILL.md)/) - Container fundamentals
+- [container-registries](../../../devops/containers/[container-registries](../container-registries/SKILL.md)/) - ECR and image management
+- [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/) - Networking for ECS tasks
+- [aws-iam](../[aws-iam](../aws-iam/SKILL.md)/) - Task and execution roles
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - Infrastructure as Code deployment

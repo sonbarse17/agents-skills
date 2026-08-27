@@ -10,7 +10,7 @@ Service Level Indicators (SLIs) must be quantifiable fractions of good events ov
 - **Latency SLI**: $SLI_{latency} = \frac{\text{Requests } < 200ms}{\text{Total Requests}}$
 - **Continuous Aggregation**: SLIs are typically evaluated over rolling windows (e.g., 28 days) using integration of time-series metrics.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph ModelingSLIMathematics ["SLI Mathematics<br><br><br>"]
@@ -25,5 +25,5 @@ flowchart TD
 
 ## Error Budget Policies
 An error budget represents the allowed unreliability: $1 - \text{SLO}$.
-- **Burn Rate Alerts**: Instead of absolute thresholds, alerting is based on the rate of budget consumption. A burn rate of 1 means the budget will be exactly exhausted in the 28-day window.
+- **Burn Rate Alerts**: Instead of absolute thresholds, [alerting](../alerting/SKILL.md) is based on the rate of budget consumption. A burn rate of 1 means the budget will be exactly exhausted in the 28-day window.
 - **Consequence Automation**: If the 28-day budget falls below 0, CI/CD pipelines are programmatically frozen to enforce reliability over feature velocity.

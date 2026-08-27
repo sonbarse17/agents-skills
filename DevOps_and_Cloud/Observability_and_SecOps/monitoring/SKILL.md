@@ -16,7 +16,7 @@ tags: [devops, monitoring, phase-5]
 # Monitoring Stack
 
 ## Purpose
-Define and enforce monitoring stack configuration with Prometheus, Grafana, Loki, and ELK for metrics, logs, traces, and alerting.
+Define and enforce monitoring stack configuration with Prometheus, Grafana, Loki, and ELK for metrics, logs, traces, and [alerting](../alerting/SKILL.md).
 
 ## Agent Protocol
 
@@ -25,7 +25,7 @@ User request includes: `monitoring`, `prometheus`, `grafana`, `loki`, `elk`, `el
 
 ### Input Context
 - Current monitoring setup (if any)
-- Infrastructure (Kubernetes, bare metal, cloud)
+- Infrastructure ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), bare metal, cloud)
 - Scale (number of nodes/services)
 - Budget (open-source vs enterprise)
 - Required integrations (Slack, PagerDuty, Opsgenie)
@@ -33,8 +33,8 @@ User request includes: `monitoring`, `prometheus`, `grafana`, `loki`, `elk`, `el
 ### Output Artifact
 A markdown document containing:
 - Monitoring stack architecture diagram (text)
-- Tool selection rationale (Prometheus vs Datadog, etc.)
-- Prometheus configuration (scrape configs, recording rules, alerting rules)
+- Tool selection rationale (Prometheus vs [Datadog](../datadog/SKILL.md), etc.)
+- Prometheus configuration (scrape configs, recording rules, [alerting](../alerting/SKILL.md) rules)
 - Grafana dashboard structure (folder hierarchy, data source setup)
 - Loki configuration (log scrape, labels, retention)
 - ELK configuration (index templates, pipeline, shard strategy)
@@ -60,12 +60,12 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 
 | Tool | Purpose | When |
 |---|---|---|
-| **Prometheus** | Metrics collection + alerting | Kubernetes, dynamic workloads |
-| **Grafana** | Dashboards + visualization | Universal (any data source) |
-| **Loki** | Log aggregation (K8s native) | Kubernetes, Prometheus ecosystem |
+| **Prometheus** | Metrics collection + [alerting](../alerting/SKILL.md) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), dynamic workloads |
+| **Grafana** | [Dashboards](../../Cloud_Providers/dashboards/SKILL.md) + visualization | Universal (any data source) |
+| **Loki** | Log aggregation (K8s native) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Prometheus ecosystem |
 | **ELK (Elasticsearch + Logstash + Kibana)** | Log aggregation + search | Complex log parsing, full-text search, SIEM |
 | **Tempo** | Distributed tracing | Need traces correlated with metrics/logs |
-| **Promtail** | Log shipping → Loki | Kubernetes log collection |
+| **Promtail** | Log shipping → Loki | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) log collection |
 | **Filebeat** | Log shipping → ELK | Lightweight, wide format support |
 | **Metricbeat** | System metrics → ELK | Infrastructure metrics |
 
@@ -80,7 +80,7 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'kubernetes-pods'
+  - job_name: '[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-pods'
     kubernetes_sd_configs:
       - role: pod
     relabel_configs:
@@ -140,7 +140,7 @@ groups:
 | **Cardinality limit** | <500,000 active series per Prometheus |
 | **Storage calculation** | ~1KB per sample → 8M samples/day = ~8GB/day |
 
-**Alerting Rules**
+**[Alerting](../alerting/SKILL.md) Rules**
 
 ```yaml
 # rules/alerts.yml
@@ -155,7 +155,7 @@ groups:
           severity: P0
         annotations:
           summary: "Node {{ $labels.instance }} down"
-          runbook: "https://runbook.example.com/node-down"
+          [runbook](../runbook/SKILL.md): "https://[runbook](../runbook/SKILL.md).example.com/node-down"
 
       - alert: HighCpuUsage
         expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
@@ -181,7 +181,7 @@ groups:
         annotations:
           summary: "Memory < 10% available on {{ $labels.instance }}"
 
-  - name: kubernetes
+  - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
     interval: 30s
     rules:
       - alert: PodCrashLooping
@@ -350,7 +350,7 @@ inhibit_rules:
 /
 ├── Infrastructure/
 │   ├── Node Exporter / CPU, Memory, Disk, Network
-│   └── Kubernetes / Cluster, Nodes, Pods
+│   └── [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) / Cluster, Nodes, Pods
 ├── Applications/
 │   ├── {service-name} / RED metrics
 │   └── Databases / Query latency, connections
@@ -495,25 +495,25 @@ output.elasticsearch:
 | **Alert delivery** | <1 min | Alert fired → notification received |
 
 ## Rules
-- Prometheus scrape configs use relabeling for Kubernetes service discovery — never static targets for K8s workloads.
-- Grafana dashboards organized by folder hierarchy: Infrastructure → Applications → Business → SLOs. No unorganized dashboards.
+- Prometheus scrape configs use relabeling for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) service discovery — never static targets for K8s workloads.
+- Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) organized by folder hierarchy: Infrastructure → Applications → Business → SLOs. No unorganized [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
 - Loki labels limited to low-cardinality values — never use `pod` or `traceID` as mandatory labels.
 - Alertmanager routes segregated by severity: P0 → PagerDuty, P1 → Slack warning, P2 → Slack info, P3 → suppressed.
-- Every Prometheus alert has a `runbook` annotation pointing to a recovery procedure.
+- Every Prometheus alert has a `[runbook](../runbook/SKILL.md)` annotation pointing to a recovery procedure.
 - Retention period set per component: Prometheus 15d local, Loki 30d, ELK 90d with tiered lifecycle.
 - Cardinality limit <500,000 active series per Prometheus instance — monitor with `prometheus_tsdb_head_series`.
 - All monitoring components deployed with resource limits and persistent storage.
 - SLOs defined with error budget tracking for every production service.
-- Alert delivery verified with synthetic tests — never trust alerting without validation.
+- Alert delivery verified with synthetic tests — never trust [alerting](../alerting/SKILL.md) without validation.
 
 ## References
   - ../../../Global_References/elk-setup.md — ELK Stack Setup Reference
-  - ../../../Global_References/grafana-dashboards.md — Grafana Dashboard Design
+  - ../../../Global_References/[grafana-dashboards](../grafana-[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/SKILL.md).md — Grafana Dashboard Design
   - ../../../Global_References/loki-setup.md — Loki Setup Reference
   - ../../../Global_References/monitoring-advanced.md — Monitoring Advanced Topics
   - ../../../Global_References/monitoring-fundamentals.md — Monitoring Fundamentals
   - ../../../Global_References/prometheus-setup.md — Prometheus Setup Reference
 ## Handoff
 
-Hand off to `management/alerting/SKILL.md` for alert rule configuration. Hand off to `devops/helm-patterns/SKILL.md` for deploying monitoring stack on Kubernetes. Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.
+Hand off to `management/[alerting](../alerting/SKILL.md)/SKILL.md` for alert rule configuration. Hand off to `devops/[helm-patterns](../../Containers_and_Orchestration/helm-patterns/SKILL.md)/SKILL.md` for deploying monitoring stack on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md). Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.
 

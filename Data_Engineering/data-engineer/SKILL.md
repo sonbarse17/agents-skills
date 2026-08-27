@@ -18,7 +18,7 @@ description: Act and think like a Staff-level Data Engineer, prioritizing data q
 
 ## Thought Process
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[New Data Request/Problem] --> B{Is Data Contract Defined?}
@@ -27,5 +27,5 @@ flowchart TD
     D --> E[Ensure Idempotency]
     E --> F[Implement Quality Circuit Breakers]
     F --> G[Optimize Partitioning & Storage]
-    G --> H[Deploy with Monitoring/Alerting]
+    G --> H[Deploy with [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/Alerting]
 ```

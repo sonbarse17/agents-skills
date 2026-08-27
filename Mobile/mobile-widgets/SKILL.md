@@ -19,15 +19,15 @@ tags: [mobile, widgets, phase-10]
 # Mobile Widgets Skill
 
 ## Purpose
-Build glanceable, performant widget experiences across iOS and Android with proper timeline management, refresh strategies, and platform-specific best practices.
+Build glanceable, performant widget experiences across iOS and [Android](../android/SKILL.md) with proper timeline management, refresh strategies, and platform-specific best practices.
 
 ## Agent Protocol
 
 ### Trigger
-User mentions widgets, iOS WidgetKit, Android App Widgets, Live Activities, complications, watchOS complications, Wear OS tiles, widget timeline, widget families, widget configuration, widget deep linking, widget refresh, or widget testing.
+User mentions widgets, iOS WidgetKit, [Android](../android/SKILL.md) App Widgets, Live Activities, complications, watchOS complications, Wear OS tiles, widget timeline, widget families, widget configuration, widget deep linking, widget refresh, or widget testing.
 
 ### Input Context
-- Platform target (iOS, Android, or both)
+- Platform target (iOS, [Android](../android/SKILL.md), or both)
 - Widget types (static, dynamic, configurable, Live Activity, complication)
 - Widget families/sizes needed (small, medium, large, extra large)
 - Data sources and update frequency
@@ -268,7 +268,7 @@ struct DeliveryLiveActivityView: View {
 }
 ```
 
-5. **Android App Widgets**: RemoteViews with configuration activity.
+5. **[Android](../android/SKILL.md) App Widgets**: RemoteViews with configuration activity.
 
 ```kotlin
 // TodoWidgetProvider.kt
@@ -345,16 +345,16 @@ class TodoWidgetProvider : AppWidgetProvider() {
 
 // Widget layout: res/layout/todo_widget.xml
 // <LinearLayout
-//   xmlns:android="http://schemas.android.com/apk/res/android"
-//   android:layout_width="match_parent"
-//   android:layout_height="match_parent"
-//   android:orientation="vertical"
-//   android:padding="@dimen/widget_margin">
-//   <LinearLayout android:orientation="horizontal" android:layout_width="match_parent">
-//     <TextView android:id="@+id/widget_title" .../>
-//     <ImageButton android:id="@+id/widget_settings" .../>
+//   xmlns:[android](../android/SKILL.md)="http://schemas.[android](../android/SKILL.md).com/apk/res/[android](../android/SKILL.md)"
+//   [android](../android/SKILL.md):layout_width="match_parent"
+//   [android](../android/SKILL.md):layout_height="match_parent"
+//   [android](../android/SKILL.md):orientation="vertical"
+//   [android](../android/SKILL.md):padding="@dimen/widget_margin">
+//   <LinearLayout [android](../android/SKILL.md):orientation="horizontal" [android](../android/SKILL.md):layout_width="match_parent">
+//     <TextView [android](../android/SKILL.md):id="@+id/widget_title" .../>
+//     <ImageButton [android](../android/SKILL.md):id="@+id/widget_settings" .../>
 //   </LinearLayout>
-//   <LinearLayout android:id="@+id/widget_list_container" android:orientation="vertical" .../>
+//   <LinearLayout [android](../android/SKILL.md):id="@+id/widget_list_container" [android](../android/SKILL.md):orientation="vertical" .../>
 // </LinearLayout>
 ```
 
@@ -374,7 +374,7 @@ func handleWidgetPush(token: String, data: [String: Any]) {
   WidgetCenter.shared.reloadTimelines(ofKind: "TodoWidget")
 }
 
-// Android periodic refresh
+// [Android](../android/SKILL.md) periodic refresh
 class TodoWidgetProvider : AppWidgetProvider() {
   override fun onUpdate(...) {
     // Scheduled via AlarmManager or WorkManager
@@ -401,7 +401,7 @@ Link(destination: URL(string: "myapp://todo/\(item.id)")!) {
   Text(item.title)
 }
 
-// Android: PendingIntent with custom URI
+// [Android](../android/SKILL.md): PendingIntent with custom URI
 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("myapp://todo/$itemId"))
 val pendingIntent = PendingIntent.getActivity(context, requestCode, intent, flags)
 views.setOnClickPendingIntent(R.id.item_container, pendingIntent)
@@ -454,14 +454,14 @@ struct TodoWidget_Previews: PreviewProvider {
 20. Always remove widget data when all widget instances are deleted.
 
 ## References
-  - ../../../Global_References/android-app-widgets.md — Android App Widgets
+  - ../../../Global_References/[android](../android/SKILL.md)-app-widgets.md — [Android](../android/SKILL.md) App Widgets
   - ../../../Global_References/complications.md — Complications (Watch Widgets)
   - ../../../Global_References/ios-widgetkit.md — iOS WidgetKit
   - ../../../Global_References/mobile-widgets-advanced.md — Mobile Widgets Advanced Topics
   - ../../../Global_References/mobile-widgets-fundamentals.md — Mobile Widgets Fundamentals
   - ../../../Global_References/widget-refresh.md — Widget Refresh Strategy
 ## Handoff
-- `mobile/mobile-localization` — Widget string localization and RTL support
+- `mobile/[mobile-localization](../mobile-localization/SKILL.md)` — Widget string localization and RTL support
 - `design/ui-kit` — Widget design guidelines and brand consistency
 - `frontend/react-native-widgets` — React Native widget bridge patterns
 ## Implementation Patterns
@@ -516,7 +516,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -530,7 +530,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -546,12 +546,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -560,7 +560,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -568,13 +568,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -583,8 +583,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

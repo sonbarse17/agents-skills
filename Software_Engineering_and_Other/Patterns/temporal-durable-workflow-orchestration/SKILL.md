@@ -33,8 +33,8 @@ crash, a deploy, or a deliberate worker restart. This makes a workflow
 that runs for minutes, days, or months as durable as a single
 transaction, with no external database, message queue, or scheduler of
 its own to build and operate. This is a fundamentally different tool
-than [airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)
-or [dagster-and-prefect-pipeline-authoring](../dagster-and-prefect-pipeline-authoring/SKILL.md):
+than [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
+or [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md):
 those orchestrate *batch data pipelines* on a schedule, where a "task"
 is typically a bounded unit of data processing and the unit of state is
 a DAG run for a given logical date. Temporal orchestrates **long-running,
@@ -47,7 +47,7 @@ instance* via signals and queries, not a scheduled trigger. This skill
 covers authoring that workflow/activity/signal model correctly;
 validating worker, timeout, retry, and namespace configuration before
 production is covered separately in
-[temporal-configuration-validation](../temporal-configuration-validation/SKILL.md).
+[temporal-configuration-validation](../[temporal-configuration-validation](../../Miscellaneous/temporal-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -73,14 +73,14 @@ production is covered separately in
 ## Prerequisites & environment
 
 - A running **Temporal Server** (Temporal Cloud, or self-hosted via
-  `docker compose` / the `temporal` Helm chart) reachable from worker
+  `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose` / the `temporal` Helm chart) reachable from worker
   processes — self-hosted deployments also need a supported persistence
-  store (PostgreSQL, MySQL, or Cassandra) and, for production, Elasticsearch
+  store ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), or Cassandra) and, for production, Elasticsearch
   or OpenSearch if visibility/advanced search (`temporal workflow list`
   filters) is required.
 - A Temporal SDK matching the language the workflow/activity code is
-  written in (Go, Java, TypeScript/Node.js, Python, .NET, PHP) — this
-  skill's examples use the Go and TypeScript SDKs, but the
+  written in (Go, Java, [TypeScript](../../Frontend/typescript/SKILL.md)/Node.js, [Python](../../Languages/python/SKILL.md), .NET, PHP) — this
+  skill's examples use the Go and [TypeScript](../../Frontend/typescript/SKILL.md) SDKs, but the
   workflow/activity/signal concepts are identical across all of them.
 - At least one **worker** process running and polling a specific **task
   queue** — workflows and activities do not execute anywhere until a
@@ -433,7 +433,7 @@ duplicate inventory reservation.
 
 ## Cross-references
 
-- [temporal-configuration-validation](../temporal-configuration-validation/SKILL.md) — validating this workflow's task queue, timeout/retry, and namespace configuration before it reaches production.
-- [airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md) — the scheduled, tabular batch-pipeline model to reach for instead of Temporal when the problem is a recurring data job, not a long-running stateful application process.
-- [dagster-and-prefect-pipeline-authoring](../dagster-and-prefect-pipeline-authoring/SKILL.md) — the asset-based batch-orchestration alternative, with the same scheduled-data-pipeline scope distinction from Temporal described in this skill's Purpose section.
-- [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) — a message-broker-based alternative worth comparing against Temporal's signal mechanism when the interaction is a simple fire-and-forget event rather than a durable, replayable workflow step.
+- [temporal-configuration-validation](../[temporal-configuration-validation](../../Miscellaneous/temporal-configuration-validation/SKILL.md)/SKILL.md) — validating this workflow's task queue, timeout/retry, and namespace configuration before it reaches production.
+- [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the scheduled, tabular batch-pipeline model to reach for instead of Temporal when the problem is a recurring data job, not a long-running stateful application process.
+- [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md) — the asset-based batch-orchestration alternative, with the same scheduled-data-pipeline scope distinction from Temporal described in this skill's Purpose section.
+- [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — a message-broker-based alternative worth comparing against Temporal's signal mechanism when the interaction is a simple fire-and-forget event rather than a durable, replayable workflow step.

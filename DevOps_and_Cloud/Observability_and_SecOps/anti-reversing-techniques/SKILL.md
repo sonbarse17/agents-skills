@@ -32,7 +32,7 @@ For advanced techniques, see [../../../Global_References/advanced-techniques.md]
 - **Protection identification**: named technique (e.g., RDTSC timing check, PEB BeingDebugged) with location in binary
 - **Bypass strategy**: specific patch addresses, hook points, or tool commands to neutralize each check
 - **Analysis report**: structured findings listing each protection layer, severity, and recommended bypass
-- **Code artifacts**: Python/IDAPython scripts, GDB command sequences, or C stubs for bypassing or implementing checks
+- **Code artifacts**: [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/IDAPython scripts, GDB command sequences, or C stubs for bypassing or implementing checks
 
 ---
 
@@ -48,7 +48,7 @@ RDTSC and CPUID are x86-only. On ARM, use `MRS x0, PMCCNTR_EL0` (requires kernel
 
 **False positive on legitimate debugger or analysis tool**
 
-Timing checks fire when Process Monitor or AV hooks inflate syscall latency. Calibrate the threshold at startup: measure the guarded path 3 times and use `mean + 3*stddev`. For ptrace checks, verify the TracerPid comm name via `/proc/<pid>/comm` before exiting — it may be an unrelated monitoring tool, not a debugger.
+Timing checks fire when Process Monitor or AV hooks inflate syscall latency. Calibrate the threshold at startup: measure the guarded path 3 times and use `mean + 3*stddev`. For ptrace checks, verify the TracerPid comm name via `/proc/<pid>/comm` before exiting — it may be an unrelated [monitoring](../monitoring/SKILL.md) tool, not a debugger.
 
 **Bypass patch causes crash instead of continuing execution**
 
@@ -58,7 +58,7 @@ Before NOPing a conditional jump, trace the "detected" branch fully. If it initi
 
 ## Related Skills
 
-- `binary-analysis-patterns` — static and dynamic analysis workflows for ELF/PE/Mach-O
-- `memory-forensics` — process memory acquisition, artifact extraction, and live analysis
-- `protocol-reverse-engineering` — decoding custom binary protocols and encrypted network traffic
+- `[binary-analysis-patterns](../../../Software_Engineering_and_Other/Miscellaneous/binary-analysis-patterns/SKILL.md)` — static and dynamic analysis workflows for ELF/PE/Mach-O
+- `[memory-forensics](../../../Security/memory-forensics/SKILL.md)` — process memory acquisition, artifact extraction, and live analysis
+- `[protocol-reverse-engineering](../../../Security/protocol-[reverse-engineering](../../../Security/reverse-engineering/SKILL.md)/SKILL.md)` — decoding custom binary protocols and encrypted network traffic
 

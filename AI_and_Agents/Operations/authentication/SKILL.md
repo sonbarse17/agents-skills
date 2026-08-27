@@ -25,7 +25,7 @@ Exact phrases: "auth", "authentication", "login", "signup", "JWT", "OAuth", "rou
 
 ### Input Context
 - Framework (React, Vue, Angular, Svelte)
-- Auth provider (Auth0, Clerk, Supabase, Firebase, Cognito, custom)
+- Auth provider (Auth0, Clerk, [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md), [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md), Cognito, custom)
 - OAuth or credentials-based flow
 - Session strategy (JWT + refresh token vs httpOnly cookie)
 - Route protection pattern (middleware, wrapper, guard)
@@ -72,8 +72,8 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Team size and requirements?
   |-- Solo / small team, need quick setup -->
   |     |-- Want hosted auth UI? --> Clerk or Auth0
-  |     |-- Want database integration? --> Supabase Auth
-  |     |-- Need social login quick? --> Firebase Auth
+  |     |-- Want database integration? --> [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) Auth
+  |     |-- Need social login quick? --> [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Auth
   |-- Mid-size team, need control -->
   |     |-- Using AWS? --> Cognito
   |     |-- Need enterprise SSO? --> Auth0 or Azure AD B2C
@@ -111,16 +111,16 @@ Route type?
 ## Workflow
 
 ### 1. Auth Provider Integration
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Auth0
 import { Auth0Provider } from '@auth0/auth0-react'
 <Auth0Provider domain="dev-xxx.us.auth0.com" clientId="xxx" authorizationParams={{ redirect_uri: window.location.origin }}>
   <App />
 </Auth0Provider>
 
-// Supabase
-import { createClient } from '@supabase/supabase-js'
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+// [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)
+import { createClient } from '@[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)-js'
+const [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // Custom JWT
 const login = async (email: string, password: string) => {
@@ -138,7 +138,7 @@ const login = async (email: string, password: string) => {
 | sessionStorage | Moderate | No (tab-scoped) | Short-lived sessions |
 
 ### 3. Auth Context
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface AuthState {
   user: User | null
   accessToken: string | null
@@ -153,7 +153,7 @@ interface AuthActions {
 }
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Complete auth context with session recovery
 const AuthContext = createContext<AuthState & AuthActions | null>(null)
 
@@ -218,7 +218,7 @@ function useAuth() {
 ```
 
 ### 4. Route Guards
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // React component guard
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth()
@@ -247,7 +247,7 @@ function AdminRoute({ children }: { children: ReactNode }) {
 ```
 
 ### 5. Token Refresh Interceptor
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Axios interceptor for automatic token refresh
 let isRefreshing = false
 let failedQueue: Array<{ resolve: Function; reject: Function }> = []
@@ -300,7 +300,7 @@ api.interceptors.response.use(
 ```
 
 ### 6. Logout
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function logout() {
   await api.post('/auth/logout') // invalidate refresh token server-side
   tokenStorage.clear()
@@ -310,7 +310,7 @@ async function logout() {
 ```
 
 ### 7. OAuth with PKCE
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Generate code verifier and challenge
 const verifier = generateRandomString(64)
 const challenge = await sha256(verifier)
@@ -326,7 +326,7 @@ const tokens = await api.post('/auth/token', { code, verifier, redirect_uri: RED
 ```
 
 ### 8. Session Recovery & Token Rotation
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Proactive token refresh — refresh before expiry, not after
 function useTokenRefresh(expiresIn: number, threshold = 60_000) {
   const { getAccessToken, isAuthenticated } = useAuth()
@@ -362,7 +362,7 @@ function useSessionSync() {
 ```
 
 ### 9. MFA / 2FA Integration
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 type MfaStep = 'verify' | 'enroll' | 'challenge'
 type MfaMethod = 'totp' | 'sms' | 'email' | 'recovery-code'
 
@@ -406,7 +406,7 @@ function useMfa() {
 ### 11. Provider-Specific Patterns
 
 #### Custom JWT with Backend
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Login
 const login = async (email: string, password: string) => {
   const response = await fetch('/api/auth/login', {
@@ -425,7 +425,7 @@ const login = async (email: string, password: string) => {
 ```
 
 #### Auth0
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Profile() {
@@ -438,29 +438,29 @@ function Profile() {
 }
 ```
 
-#### Supabase
-```typescript
-import { createClient, User } from '@supabase/supabase-js'
+#### [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+import { createClient, User } from '@[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)-js'
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 function useSupabaseAuth() {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
     })
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
     })
     return () => subscription.unsubscribe()
   }, [])
 
-  const loginWithGoogle = () => supabase.auth.signInWithOAuth({ provider: 'google' })
+  const loginWithGoogle = () => [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signInWithOAuth({ provider: 'google' })
   const loginWithEmail = (email: string, password: string) =>
-    supabase.auth.signInWithPassword({ email, password })
-  const logout = () => supabase.auth.signOut()
+    [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signInWithPassword({ email, password })
+  const logout = () => [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signOut()
 
   return { user, loginWithGoogle, loginWithEmail, logout }
 }
@@ -482,8 +482,8 @@ function useSupabaseAuth() {
 |----------|-------------|--------------|-----|-----|---------|
 | Auth0 | OIDC, OAuth2, SAML | 50+ providers | Yes | Yes | Free tier: 7K users |
 | Clerk | OIDC, OAuth2 | 10+ providers | Yes | Yes | Free tier: 5K users |
-| Supabase | OAuth2, email/pw | 10+ providers | Yes | No | Free tier: 50K users |
-| Firebase | OAuth2, email/pw, phone | 10+ providers | Yes | No | Free tier: 10K auth |
+| [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) | OAuth2, email/pw | 10+ providers | Yes | No | Free tier: 50K users |
+| [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) | OAuth2, email/pw, phone | 10+ providers | Yes | No | Free tier: 10K auth |
 | Cognito | OIDC, SAML, OAuth2 | Social + SAML | Yes | Yes | Per MAU pricing |
 | Custom JWT | Email/password | Manual | Manual | Manual | Infrastructure cost |
 

@@ -5,7 +5,7 @@ description: "Use when authoring or repairing a coordinate-explicit JSON specifi
 
 # PPTX Slide Specification
 
-Author final coordinates directly in `layout_tree`. No renderer may decide placement, shrink text, or infer layout after the audit.
+Author final coordinates directly in `layout_tree`. No renderer may decide placement, shrink text, or infer layout after the [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 ## Required contract
 

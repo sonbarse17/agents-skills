@@ -5,11 +5,11 @@ description: Configure mutual TLS (mTLS) for zero-trust service-to-service commu
 
 # mTLS Configuration
 
-Comprehensive guide to implementing mutual TLS for zero-trust service mesh communication.
+Comprehensive guide to implementing mutual TLS for [zero-trust](../zero-trust/SKILL.md) service mesh communication.
 
 ## When to Use This Skill
 
-- Implementing zero-trust networking
+- Implementing [zero-trust](../zero-trust/SKILL.md) networking
 - Securing service-to-service communication
 - Certificate rotation and management
 - Debugging TLS handshake issues
@@ -63,7 +63,7 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 - **Monitor certificate expiry** - Set up alerts
 - **Use short-lived certs** - 24h or less for workloads
 - **Rotate CA periodically** - Plan for CA rotation
-- **Log TLS errors** - For debugging and audit
+- **Log TLS errors** - For debugging and [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ### Don'ts
 

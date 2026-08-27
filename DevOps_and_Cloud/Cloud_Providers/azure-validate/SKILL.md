@@ -15,13 +15,13 @@ metadata:
 >
 > Before proceeding, verify this prerequisite is met:
 >
-> **azure-prepare** was invoked and completed → `.azure/deployment-plan.md` exists with status `Approved` or later
+> **[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)** was invoked and completed → `.azure/deployment-plan.md` exists with status `Approved` or later
 >
-> If the plan is missing, **STOP IMMEDIATELY** and invoke **azure-prepare** first.
+> If the plan is missing, **STOP IMMEDIATELY** and invoke **[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)** first.
 >
 > The complete workflow ensures success:
 >
-> `azure-prepare` → `azure-validate` → `azure-deploy`
+> `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` → `[azure-validate](../azure-skills/skills/azure-validate/SKILL.md)` → `[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)`
 
 ## Triggers
 
@@ -32,7 +32,7 @@ metadata:
 
 ## Rules
 
-1. Run after azure-prepare, before azure-deploy
+1. Run after [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md), before [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)
 2. All checks must pass—do not deploy with failures
 3. ⛔ **Destructive actions require `ask_user`** — [global-rules](../../../Global_References/azure-validate_global-rules.md)
 
@@ -47,7 +47,7 @@ pwsh references/scripts/workflow.ps1 -WorkspacePath <workspace-path>
 # macOS/Linux: bash references/scripts/workflow.sh --workspace-path <workspace-path>
 ```
 
-Each run prints the next action and the value to pass next. Perform the action, then re-run with that value (`-CompletedStep <value>` for pwsh, `--completed-step <value>` for bash). Repeat until it reports the azure-validate workflow is complete.
+Each run prints the next action and the value to pass next. Perform the action, then re-run with that value (`-CompletedStep <value>` for pwsh, `--completed-step <value>` for bash). Repeat until it reports the [azure-validate](../azure-skills/skills/azure-validate/SKILL.md) workflow is complete.
 
 The steps reference recipe details in [references/recipes/README.md](references/recipes/README.md) and role checks in [../../../Global_References/role-verification.md](../../../Global_References/role-verification.md).
 
@@ -61,8 +61,8 @@ The steps reference recipe details in [references/recipes/README.md](references/
 > **⚠️ NEXT STEP — DEPENDS ON USER INTENT**
 >
 > After ALL validations pass, check whether the user asked to deploy:
-> - **If the user explicitly requested deployment**, you **MUST** invoke **azure-deploy** to execute it. Do NOT run `azd up`, `azd deploy`, or any deployment commands directly — let azure-deploy handle execution.
-> - **If the user only asked to validate or prepare** (not deploy), STOP after recording proof and setting status to `Validated`. Report the validation results and do NOT invoke azure-deploy.
+> - **If the user explicitly requested deployment**, you **MUST** invoke **[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)** to execute it. Do NOT run `azd up`, `azd deploy`, or any deployment commands directly — let [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md) handle execution.
+> - **If the user only asked to validate or prepare** (not deploy), STOP after recording proof and setting status to `Validated`. Report the validation results and do NOT invoke [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md).
 >
-> If any validation failed, fix the issues and re-run azure-validate before proceeding.
+> If any validation failed, fix the issues and re-run [azure-validate](../azure-skills/skills/azure-validate/SKILL.md) before proceeding.
 

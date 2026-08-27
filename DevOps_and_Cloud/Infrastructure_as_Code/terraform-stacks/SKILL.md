@@ -49,9 +49,9 @@ my-stack/
 
 **Note**: The `modules/` directory is only required when using local module sources. Components can reference modules from:
 - Local file paths: `./modules/vpc`
-- Public registry: `terraform-aws-modules/vpc/aws`
+- Public registry: `[terraform-aws](../terraform-aws/SKILL.md)-modules/vpc/aws`
 - Private registry: `app.terraform.io/<org-name>/vpc/aws`
-- Git: `git::https://github.com/org/repo.git//path?ref=v1.0.0`
+- Git: `git::https://[github](../../CI_CD/github/SKILL.md).com/org/repo.git//path?ref=v1.0.0`
 
 HCP Terraform processes all `.tfcomponent.hcl` and `.tfdeploy.hcl` files in dependency order.
 
@@ -416,9 +416,9 @@ terraform stacks version             # Display version
 terraform stacks deployment-group rerun -deployment-group=...  # Rerun deployment
 ```
 
-## Monitoring Deployments with HCP Terraform API
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Deployments with HCP Terraform API
 
-For programmatic monitoring in automation, CI/CD, or non-interactive environments (like AI agents), use the HCP Terraform API instead of CLI watch commands. The API provides endpoints for:
+For programmatic [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) in automation, CI/CD, or non-interactive environments (like AI agents), use the HCP Terraform API instead of CLI watch commands. The API provides endpoints for:
 
 - Configuration status and validation
 - Deployment group summaries
@@ -433,7 +433,7 @@ For programmatic monitoring in automation, CI/CD, or non-interactive environment
 - Diagnostics endpoint requires `stack_deployment_step_id` query parameter
 - Artifacts endpoint returns HTTP 307 redirect (use `curl -L`)
 
-For complete API workflow, authentication, polling best practices, and example scripts, see `../../../Global_References/api-monitoring.md`.
+For complete API workflow, authentication, polling best practices, and example scripts, see `../../../Global_References/api-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).md`.
 
 ## Common Patterns
 
@@ -452,10 +452,10 @@ For complete examples including multi-region deployments, component dependencies
    - Modules used with Stacks cannot include provider blocks (configure providers in Stack configuration)
    - **Test public registry modules** before using in production Stacks - some modules may have compatibility issues
    - Consider using raw resources for critical infrastructure if module compatibility is uncertain
-   - Example: Some terraform-aws-modules versions have been found to have compatibility issues with Stacks (e.g., ALB and ECS modules)
+   - Example: Some [terraform-aws](../terraform-aws/SKILL.md)-modules versions have been found to have compatibility issues with Stacks (e.g., ALB and ECS modules)
 3. **State Isolation**: Each deployment has its own isolated state
 4. **Input Variables**: Use variables for values that differ across deployments; use locals for shared values
-5. **Provider Lock Files**: Always generate and commit `.terraform.lock.hcl` to version control
+5. **Provider Lock Files**: Always generate and [commit](../../CI_CD/commit/SKILL.md) `.terraform.lock.hcl` to version control
 6. **Naming Conventions**: Use descriptive names for components and deployments
 7. **Deployment Groups**: You can organize deployments into deployment groups. Deployment groups enable auto-approval rules, logical organization, and provide a foundation for scaling. Deployment groups are an HCP Terraform Premium tier feature
 8. **Testing**: Test Stack configurations in dev/staging deployments before production
@@ -477,6 +477,6 @@ For detailed documentation, see:
 - `../../../Global_References/deployment-blocks.md` - Complete deployment block reference with all configuration options
 - `../../../Global_References/linked-stacks.md` - Publish outputs and upstream inputs for linking Stacks together
 - `../../../Global_References/terraform-stacks_examples.md` - Complete working examples for multi-region and component dependencies
-- `../../../Global_References/api-monitoring.md` - Full API workflow for programmatic monitoring and automation
+- `../../../Global_References/api-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).md` - Full API workflow for programmatic [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and automation
 - `../../../Global_References/terraform-stacks_troubleshooting.md` - Detailed troubleshooting guide for common issues and solutions
 

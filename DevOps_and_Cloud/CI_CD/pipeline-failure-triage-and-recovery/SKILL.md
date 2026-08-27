@@ -36,7 +36,7 @@ re-running around it.
 
 - A pipeline run fails and it's unclear whether the failure is caused by
   the change under test, a flaky test, or CI infrastructure/environment.
-- The same commit passes on re-run with no code change, suggesting
+- The same [commit](../commit/SKILL.md) passes on re-run with no code change, suggesting
   flakiness rather than a real bug.
 - A build fails with dependency-resolution errors, missing packages, or
   "works on my machine but not in CI" symptoms that point at a corrupted
@@ -50,18 +50,18 @@ re-running around it.
 ## Prerequisites & environment
 
 - Read access to the CI platform's run logs and, ideally, per-step timing
-  and cache-hit metadata (GitHub Actions run logs and `actions/cache`
-  hit/miss output, GitLab CI job traces and cache job artifacts, Jenkins
+  and cache-hit metadata ([GitHub](../github/SKILL.md) Actions run logs and `actions/cache`
+  hit/miss output, GitLab CI job traces and cache job artifacts, [Jenkins](../jenkins/SKILL.md)
   console output and workspace state).
 - The ability to re-run a single job/stage in isolation, not only the
   entire pipeline from scratch — this is a platform capability, not
-  something to build ad hoc (GitHub Actions "Re-run failed jobs", GitLab
-  "Retry" per job, Jenkins "Replay"/stage restart where supported).
+  something to build ad hoc ([GitHub](../github/SKILL.md) Actions "Re-run failed jobs", GitLab
+  "Retry" per job, [Jenkins](../jenkins/SKILL.md) "Replay"/stage restart where supported).
 - A test-flakiness or quarantine mechanism appropriate to the test
   framework (a `@flaky`/quarantine tag, a separate flaky-test job that
   doesn't block merge, or a test-management tool that tracks flake rate
   per test) — see
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) for where
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) for where
   quality gates sit in the overall pipeline.
 - Enough historical run data (last 10-20 runs of the same job) to tell a
   one-off blip from a pattern; most CI platforms retain this by default.
@@ -80,14 +80,14 @@ re-running around it.
    - **Real regression** — the failure is a deterministic assertion/
      compile/lint error directly traceable to lines changed in this diff.
      Fix the code; do not re-run.
-   - **Flaky** — the *same commit*, unchanged, fails intermittently across
+   - **Flaky** — the *same [commit](../commit/SKILL.md)*, unchanged, fails intermittently across
      multiple re-runs with a non-deterministic symptom (race condition,
      timing-dependent assertion, order-dependent test state). Confirm by
      re-running the specific failed job (not the whole pipeline) 2-3
      times; if it passes without any code change, it's flaky.
    - **Environmental/infrastructure** — package registry timeout, runner
      out of disk space, transient network error to an external service,
-     Docker daemon not ready yet. Usually has a recognizable
+     [Docker](../../Containers_and_Orchestration/docker/SKILL.md) daemon not ready yet. Usually has a recognizable
      infrastructure-level error message (`ECONNRESET`, `429 Too Many
      Requests`, `no space left on device`) rather than an assertion
      failure.
@@ -103,11 +103,11 @@ re-running around it.
    Re-running the entire pipeline from Source when only one downstream
    test job failed wastes time and CI minutes, and — worse — can mask a
    real intermittent failure by giving it more chances to pass by luck.
-   - GitHub Actions: `gh run rerun <run-id> --failed` re-runs only failed
+   - [GitHub](../github/SKILL.md) Actions: `gh run rerun <run-id> --failed` re-runs only failed
      jobs.
    - GitLab CI: retry the specific failed job from the pipeline UI/API
      (`POST /projects/:id/jobs/:job_id/retry`), not "Run pipeline" again.
-   - Jenkins (declarative): use `Restart from Stage` for a specific stage
+   - [Jenkins](../jenkins/SKILL.md) (declarative): use `Restart from Stage` for a specific stage
      when the plugin supports it, rather than re-triggering the whole
      build.
 
@@ -116,7 +116,7 @@ re-running around it.
    are keyed off a lockfile hash) so the next run rebuilds from a clean
    state:
    ```yaml
-   # GitHub Actions actions/cache — bump the key suffix to force a miss
+   # [GitHub](../github/SKILL.md) Actions actions/cache — bump the key suffix to force a miss
    - uses: actions/cache@v4
      with:
        path: ~/.npm
@@ -163,7 +163,7 @@ re-running around it.
 ## Best practices
 
 - Track flake rate per test/job over time (most CI platforms or test
-  dashboards surface this); a rising flake rate is an early warning sign
+  [dashboards](../../Cloud_Providers/dashboards/SKILL.md) surface this); a rising flake rate is an early warning sign
   worth acting on before it becomes "just re-run it twice."
 - Never silently delete or comment out a failing test to make CI green —
   quarantine it visibly with an owner and a tracking ticket (step 6), so
@@ -175,7 +175,7 @@ re-running around it.
   not just a manifest file that doesn't capture transitive version
   changes) so corruption from a stale cache doesn't recur.
 - Distinguish "the pipeline is flaky" from "this one test is flaky" —
-  infrastructure-level flakiness (runner capacity, network to a shared
+  infrastructure-level flakiness (runner [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), network to a shared
   dependency) needs a different fix than a race condition in one test.
 - Keep a lightweight log (even just linked tickets) of quarantined flaky
   tests and their fix status — an unowned quarantine list grows forever
@@ -222,7 +222,7 @@ re-running around it.
 
 ## Worked example
 
-**Scenario:** A GitHub Actions job `test-integration` fails on a PR with
+**Scenario:** A [GitHub](../github/SKILL.md) Actions job `test-integration` fails on a PR with
 `Error: connect ECONNRESET` from a call to an external payments sandbox
 API, while the `test-unit` job in the same run passes.
 
@@ -253,14 +253,14 @@ API, while the `test-unit` job in the same run passes.
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) — where
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where
   quality gates and required checks sit in the overall pipeline; this
   skill covers what to do when one of those gates fails or flakes.
-- [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md) —
+- [artifact-and-dependency-management](../[artifact-and-dependency-management](../../../Software_Engineering_and_Other/Frontend/artifact-and-[dependency-management](../../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)/SKILL.md)/SKILL.md) —
   lockfile/version-pinning discipline that prevents the dependency-drift
   class of cache corruption covered in step 4.
-- [devops-delivery-metrics-and-dora-analysis](../devops-delivery-metrics-and-dora-analysis/SKILL.md) —
+- [devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md) —
   a rising rate of pipeline re-runs/flakiness quietly inflates lead time
   for changes; tracking flake rate feeds directly into that metric.
-- [github-actions-single-repo-workflows](../../../cicd-tooling/skills/github-actions-single-repo-workflows/SKILL.md) —
+- [github-actions-single-repo-workflows](../../../cicd-tooling/skills/[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) —
   platform-specific job/cache syntax referenced in steps 3-4.

@@ -18,7 +18,7 @@ tags: [ml, computer-vision, image, phase-11]
 # ML Computer Vision
 
 ## Quick Start
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from ultralytics import YOLO
 model = YOLO("yolov8n.pt")
 results = model("image.jpg")
@@ -152,7 +152,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Task & Model Selection
 Image classification: ResNet (simple, reliable), EfficientNet (better accuracy/parameter ratio), ConvNeXt (modernized), ViT (best accuracy with sufficient data). Object detection: YOLOv8 (real-time, best speed/accuracy), DETR (transformer end-to-end, no NMS). Faster R-CNN (two-stage, best for small objects). Segmentation: Mask R-CNN, YOLOv8-seg, SAM (zero-shot). Semantic segmentation: U-Net, DeepLabV3+, SegFormer.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Classification backbone selection
 def select_classification_model(dataset_size, accuracy_target):
     if dataset_size < 1000:
@@ -168,7 +168,7 @@ def select_classification_model(dataset_size, accuracy_target):
 ### Step 2: Image Preprocessing
 Resize to fixed input size: 224x224 for classification, 640x640 for detection, 800x1333 for Faster R-CNN. Letterbox resize: preserve aspect ratio. Interpolation: bilinear for downscaling, bicubic for upscaling, nearest for masks. Normalize: ImageNet mean [0.485, 0.456, 0.406] and std [0.229, 0.224, 0.225].
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import cv2
 import numpy as np
 from torchvision import transforms
@@ -194,7 +194,7 @@ def letterbox_resize(image, target_size=640):
 ### Step 3: Augmentation Strategy
 Light (1000+): horizontal flip, slight rotation ±10°, small random crop. Medium (100-1000): light + color jitter, random scaling, cutout. Heavy (<100): medium + mixup, cutmix, RandAugment, elastic transform.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import albumentations as A
 
 def get_augmentation_pipeline(dataset_size):
@@ -238,7 +238,7 @@ def get_detection_augmentation():
 ### Step 4: Training Configuration
 Loss functions: cross-entropy for classification. Focal Loss for detection (gamma=2). Dice loss + BCE for segmentation. Optimizer: AdamW (default, decoupled weight decay). Learning rate: 1e-4 for AdamW, 1e-2 for SGD. Schedule: cosine decay with warmup (5-10%). Label smoothing: epsilon=0.1.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -275,7 +275,7 @@ def configure_training(model, config):
 ### Step 5: Evaluation Metrics
 Classification: top-1 accuracy, top-5 accuracy, per-class F1. Detection: mAP@0.5:0.95 (COCO standard). Segmentation: mean IoU, Dice coefficient. Per-class metrics essential for identifying weak categories.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def compute_map(predictions, targets, iou_thresholds=np.arange(0.5, 0.96, 0.05)):
     """Simplified mAP computation (full implementation requires matching)."""
     aps = []
@@ -294,7 +294,7 @@ def compute_map(predictions, targets, iou_thresholds=np.arange(0.5, 0.96, 0.05))
 ### Step 6: Inference Optimization
 Model export: PyTorch → ONNX, ONNX → TensorRT. Quantization: FP16 (2x speed), INT8 (4x). Batch inference for max GPU utilization. NMS optimization: fast NMS, batched NMS. Model pruning: structured pruning (2x compression, <1% mAP loss).
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 
 def export_to_onnx(model, dummy_input, output_path="model.onnx"):
@@ -348,7 +348,7 @@ def optimize_tensorrt(onnx_path, engine_path, precision="fp16"):
 - Set up A/B testing for gradual rollout with automatic rollback.
 - Monitor for adversarial inputs using confidence thresholds.
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Track mAP@0.5:0.95 over time to detect performance regression.
 - Monitor inference latency (preprocessing + model + postprocessing).
 - Track per-class AP — specific classes may degrade while overall mAP stays stable.
@@ -431,7 +431,7 @@ What task?
   - ../../../Global_References/image-segmentation.md — Image Segmentation
   - ../../../Global_References/video-analysis.md — Video Analysis
 ## Handoff
-Hand off to ml-experiment-tracking for training runs. For model deployment on edge devices, hand off to devops-ml-serving.
+Hand off to ml-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md) for training runs. For model deployment on edge devices, hand off to devops-ml-serving.
 
 ## Architecture Decision Trees
 
@@ -452,7 +452,7 @@ Hand off to ml-experiment-tracking for training runs. For model deployment on ed
 ## Implementation Patterns
 
 ### Transfer Learning for Classification
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import tensorflow as tf
 from tensorflow.keras.applications import EfficientNetB0
 from tensorflow.keras import layers, Model
@@ -480,7 +480,7 @@ model.compile(
 `
 
 ### YOLO Training Setup (PyTorch)
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 from ultralytics import YOLO
 

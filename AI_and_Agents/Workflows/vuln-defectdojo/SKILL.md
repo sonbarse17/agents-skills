@@ -41,8 +41,8 @@ Key concepts:
 
 Start DefectDojo locally:
 ```bash
-git clone https://github.com/DefectDojo/django-DefectDojo.git
-cd django-DefectDojo && docker compose up -d
+git clone https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
+cd django-DefectDojo && [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 # Access at http://localhost:8080 — change admin/admin password immediately
 ```
 
@@ -108,7 +108,7 @@ For the complete mapping of every SecOpsAgentKit tool to its DefectDojo parser n
 Add an import step after each scanner in any pipeline:
 
 ```yaml
-# GitHub Actions — add after each scanner step
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — add after each scanner step
 - name: Import findings to DefectDojo
   env:
     DD_HOST: ${{ secrets.DD_HOST }}
@@ -151,9 +151,9 @@ After import in the DefectDojo UI:
 
 - **Sensitive Data Handling**: DefectDojo stores vulnerability details that reveal application internals. Restrict access by role. Enable HTTPS and use SSO/LDAP for authentication in production.
 - **Access Control**: Issue separate API keys per pipeline with minimum `importer` role. Use `security lead` role for triage operations. Rotate keys quarterly.
-- **Audit Logging**: DefectDojo logs all finding status changes. Export audit logs as SOC2 CC7.1 and PCI-DSS 6.3.3 compliance evidence.
-- **Compliance**: SLA tracking and risk acceptance workflows directly satisfy SOC2, PCI-DSS, and GDPR vulnerability management requirements. Tag findings with compliance controls for filtered audit exports.
-- **Safe Defaults**: Enable 2FA, change default admin/admin credentials immediately, enable HTTPS via the override compose file (`docker-compose.override.https.yml`).
+- **[Audit](../../Operations/audit/SKILL.md) Logging**: DefectDojo logs all finding status changes. Export [audit](../../Operations/audit/SKILL.md) logs as SOC2 CC7.1 and PCI-DSS 6.3.3 compliance evidence.
+- **Compliance**: SLA tracking and risk acceptance workflows directly satisfy SOC2, PCI-DSS, and GDPR vulnerability management requirements. Tag findings with compliance controls for filtered [audit](../../Operations/audit/SKILL.md) exports.
+- **Safe Defaults**: Enable 2FA, change default admin/admin credentials immediately, enable HTTPS via the override compose file (`[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).override.https.yml`).
 
 ## Bundled Resources
 
@@ -179,15 +179,15 @@ Create one persistent `CI/CD` engagement per branch. Re-import on every merge to
 
 Import all scanner outputs at end of sprint into a single time-boxed engagement. Review combined risk posture in one place; assign findings to the next sprint backlog.
 
-### Pattern 3: Compliance Audit Export
+### Pattern 3: Compliance [Audit](../../Operations/audit/SKILL.md) Export
 
-Before an audit, filter findings by compliance tag (e.g., `pci-dss`), include risk acceptances and closure timestamps. Export as the vulnerability management evidence package.
+Before an [audit](../../Operations/audit/SKILL.md), filter findings by compliance tag (e.g., `pci-dss`), include risk acceptances and closure timestamps. Export as the vulnerability management evidence package.
 
 ## Integration Points
 
 - **All SecOpsAgentKit scanners**: Parser names mapped in [../../../Global_References/tool-parser-map.md](../../../Global_References/tool-parser-map.md)
-- **CI/CD**: GitHub Actions, GitLab CI, Jenkins, CircleCI — add import step after each scanner
-- **Issue Trackers**: DefectDojo pushes findings to JIRA, GitHub Issues via built-in integrations
+- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) — add import step after each scanner
+- **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues via built-in integrations
 - **Notifications**: Slack and email alerts for new Critical/High findings via DefectDojo notification rules
 - **SIEM**: Export findings as JSON for ingestion into Splunk, Elastic, or other SIEM platforms
 
@@ -207,8 +207,8 @@ Before an audit, filter findings by compliance tag (e.g., `pci-dss`), include ri
 
 ## References
 
-- [DefectDojo Documentation](https://defectdojo.github.io/django-DefectDojo/)
-- [DefectDojo GitHub](https://github.com/DefectDojo/django-DefectDojo)
+- [DefectDojo Documentation](https://defectdojo.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/django-DefectDojo/)
+- [DefectDojo GitHub](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/DefectDojo/django-DefectDojo)
 - [OWASP DefectDojo Project](https://owasp.org/www-project-defectdojo/)
 - [DefectDojo API Reference](https://demo.defectdojo.org/api/v2/oa3/swagger-ui/)
 

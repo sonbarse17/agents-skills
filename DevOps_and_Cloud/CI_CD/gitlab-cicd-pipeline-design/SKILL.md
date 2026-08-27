@@ -18,11 +18,11 @@ metadata:
 
 ## Purpose
 
-GitLab CI/CD pipelines are defined entirely in one file, `.gitlab-ci.yml`,
+GitLab CI/CD pipelines are defined entirely in one file, `.[gitlab-ci](../gitlab-ci/SKILL.md).yml`,
 executed by GitLab Runners (shared, group, or project-specific) against a
-`stages:`/`rules:` model that differs in specifics from GitHub Actions or
-Jenkins even though the underlying pipeline concepts overlap (see
-[ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md)
+`stages:`/`rules:` model that differs in specifics from [GitHub](../github/SKILL.md) Actions or
+[Jenkins](../jenkins/SKILL.md) even though the underlying pipeline concepts overlap (see
+[ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md)
 for the vendor-neutral version). This skill covers GitLab-specific
 mechanics: the `stages:`/`rules:` trigger model (and why `rules:` has
 superseded the legacy `only:`/`except:`), `include:` for sharing pipeline
@@ -31,7 +31,7 @@ specifics.
 
 ## When to use
 
-- A project needs its first `.gitlab-ci.yml`, or an existing one has a
+- A project needs its first `.[gitlab-ci](../gitlab-ci/SKILL.md).yml`, or an existing one has a
   job that isn't running (or runs) when expected.
 - Migrating legacy `only:`/`except:` job keywords to the modern `rules:`
   syntax.
@@ -41,7 +41,7 @@ specifics.
   only on certain runners.
 - Designing merge-request pipelines (`merge_request_event`) alongside
   branch/tag pipelines without running both redundantly on the same
-  commit.
+  [commit](../commit/SKILL.md).
 
 ## Prerequisites & environment
 
@@ -49,8 +49,8 @@ specifics.
   block are fully mature from GitLab 13+, but 15+ is assumed here for
   current defaults and deprecation warnings around `only:`/`except:`.
 - At least one available GitLab Runner registered against the project,
-  group, or instance, with an executor type understood (`shell`, `docker`,
-  `docker+machine`, `kubernetes`) — job `tags:` must match a runner's
+  group, or instance, with an executor type understood (`shell`, `[docker](../../Containers_and_Orchestration/docker/SKILL.md)`,
+  `[docker](../../Containers_and_Orchestration/docker/SKILL.md)+machine`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)`) — job `tags:` must match a runner's
   configured tags or the job stays `pending` forever.
 - Project or group maintainer access to configure CI/CD variables
   (**Settings → CI/CD → Variables**, marked "Protected"/"Masked" as
@@ -73,7 +73,7 @@ specifics.
 
 2. **Use `workflow:` to control whether a pipeline runs at all**, before
    worrying about individual job rules — this avoids running duplicate
-   pipelines for the same commit (once as a branch pipeline, once as a
+   pipelines for the same [commit](../commit/SKILL.md) (once as a branch pipeline, once as a
    merge-request pipeline):
    ```yaml
    workflow:
@@ -103,7 +103,7 @@ specifics.
    project is a common source of confusing, hard-to-predict trigger
    behavior.
 
-4. **Use `changes:` for monorepo path filtering** so an unrelated change
+4. **Use `changes:` for [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) path filtering** so an unrelated change
    doesn't trigger a full pipeline:
    ```yaml
    test-backend:
@@ -128,7 +128,7 @@ specifics.
      - local: '/.gitlab/ci/deploy.yml'
    ```
    Pin `ref:` to a tag for a `project:` include, the same versioning
-   discipline as a Jenkins shared library or GitHub Actions reusable
+   discipline as a [Jenkins](../jenkins/SKILL.md) shared library or [GitHub](../github/SKILL.md) Actions reusable
    workflow — an unpinned `ref: main` include means every consumer's
    pipeline changes the moment the template repo's `main` branch changes.
 
@@ -155,7 +155,7 @@ specifics.
      stage: build
      tags: [docker]
      script:
-       - docker build -t myapp:$CI_COMMIT_SHORT_SHA .
+       - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
    ```
 
 8. **Gate production deploys with `environment:` and `when: manual`**,
@@ -177,11 +177,11 @@ specifics.
 ## Best practices
 
 - Standardize on `rules:` across the project; don't mix `only:`/`except:`
-  and `rules:` in the same `.gitlab-ci.yml` — the interaction between the
+  and `rules:` in the same `.[gitlab-ci](../gitlab-ci/SKILL.md).yml` — the interaction between the
   two legacy and modern mechanisms on different jobs is a frequent source
   of "why did this job run/not run" confusion.
 - Set `workflow:rules` once at the top of the file to prevent duplicate
-  branch + merge-request pipelines firing for the same commit, rather than
+  branch + merge-request pipelines firing for the same [commit](../commit/SKILL.md), rather than
   trying to fix it job-by-job.
 - Pin `include:` refs to tags for cross-project templates; treat the
   template repo like any other shared library with semantic versioning
@@ -204,7 +204,7 @@ specifics.
   after merge, and both look like separate, sometimes contradictory
   states in the merge request widget.
   **Fix:** Add a top-level `workflow:rules:` block that picks exactly one
-  pipeline source per commit context (`merge_request_event` OR
+  pipeline source per [commit](../commit/SKILL.md) context (`merge_request_event` OR
   `$CI_COMMIT_BRANCH == "main"`), rather than letting both branch and
   merge-request pipelines trigger unconditionally.
 
@@ -238,16 +238,16 @@ specifics.
   it with a **protected environment** (Settings → CI/CD → Environments)
   restricted to specific users/groups/roles to actually gate *who* can
   press it, mirroring the manual-approval-gate guidance in
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 
 ## Worked example
 
-**Scenario:** A monorepo with a `backend/` and `frontend/` directory needs
+**Scenario:** A [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with a `backend/` and `frontend/` directory needs
 path-filtered pipelines (only test what changed), a shared lint template
 pulled from a central templates project, and a manually-gated production
 deploy restricted to a protected environment.
 
-`.gitlab-ci.yml`:
+`.[gitlab-ci](../gitlab-ci/SKILL.md).yml`:
 ```yaml
 stages: [lint, test, build, deploy]
 
@@ -291,7 +291,7 @@ build-image:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   script:
-    - docker build -t myapp:$CI_COMMIT_SHORT_SHA .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
 
 deploy-production:
   stage: deploy
@@ -312,6 +312,6 @@ merge and an authorized manual trigger.
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — vendor-neutral stage/gate/caching concepts this file implements in GitLab's specific syntax.
-- [github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md) — the closest GitHub Actions analog to GitLab's `include: project:` shared-template pattern.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate/caching concepts this file implements in GitLab's specific syntax.
+- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the closest [GitHub](../github/SKILL.md) Actions analog to GitLab's `include: project:` shared-template pattern.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.

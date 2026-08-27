@@ -22,13 +22,13 @@ metadata:
 
 A backup that has never been restored is a hypothesis, not a safety
 net — the single most common cause of a "we had backups but couldn't
-recover" incident is a backup process that ran successfully (per its
+recover" [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is a backup process that ran successfully (per its
 own logs/exit code) but produced an artifact that was never actually
 tested end-to-end against a real restore. This skill covers the
 dominant backup tooling for the three most common relational/document
-engines — **pg_dump**/**pg_basebackup** for PostgreSQL,
-**mysqldump**/**Percona XtraBackup** for MySQL/MariaDB, and
-**mongodump**/**mongorestore** for MongoDB — the logical-vs-physical
+engines — **pg_dump**/**pg_basebackup** for [PostgreSQL](../../Backend/postgresql/SKILL.md),
+**mysqldump**/**Percona XtraBackup** for [MySQL](../../Backend/mysql/SKILL.md)/MariaDB, and
+**mongodump**/**mongorestore** for [MongoDB](../../Backend/mongodb/SKILL.md) — the logical-vs-physical
 backup trade-off that applies across all of them, and the restore-
 testing discipline that turns a backup process into an actual, provable
 recovery capability rather than an assumption.
@@ -71,8 +71,8 @@ recovery capability rather than an assumption.
   validated only by re-reading the archive's own metadata, without an
   independent restore, does not confirm the backup is usable.
 - For point-in-time recovery specifically: continuous WAL archiving
-  (PostgreSQL), binary log retention (MySQL/MariaDB), or oplog-based
-  replication (MongoDB) already configured and retained for at least as
+  ([PostgreSQL](../../Backend/postgresql/SKILL.md)), binary log retention ([MySQL](../../Backend/mysql/SKILL.md)/MariaDB), or oplog-based
+  replication ([MongoDB](../../Backend/mongodb/SKILL.md)) already configured and retained for at least as
   long as the interval between full backups — PITR requires the
   continuous log, not just periodic full snapshots.
 
@@ -91,7 +91,7 @@ row take time proportional to data volume, and a large logical restore
 can take hours where a physical restore of the same data takes minutes.
 
 **Physical backups** (`pg_basebackup`, Percona XtraBackup, filesystem/
-block-storage snapshots) copy the database's actual on-disk files —
+[block-storage](../../../DevOps_and_Cloud/Cloud_Providers/block-storage/SKILL.md) snapshots) copy the database's actual on-disk files —
 much faster for both backup and restore at scale, since they don't
 serialize/deserialize every row, but the resulting artifact is tied to
 the same major engine version and (for some tools) similar
@@ -105,7 +105,7 @@ primary strategy, with logical dumps reserved for smaller
 databases, ad hoc data extraction, or as a supplementary,
 version-portable safety net alongside the primary physical strategy.
 
-### 2. PostgreSQL: pg_dump for logical, pg_basebackup + WAL archiving for physical/PITR
+### 2. [PostgreSQL](../../Backend/postgresql/SKILL.md): pg_dump for logical, pg_basebackup + WAL archiving for physical/PITR
 
 ```bash
 # Logical: portable, human-inspectable, slow to restore at scale
@@ -121,7 +121,7 @@ shipping WAL segments to durable storage) so a restore can replay WAL
 up to any specific target timestamp/LSN, not just the base backup's
 moment:
 ```ini
-# postgresql.conf on the source
+# [postgresql](../../Backend/postgresql/SKILL.md).conf on the source
 archive_mode = on
 archive_command = 'cp %p /archive/wal/%f'   # or a script shipping to object storage
 ```
@@ -131,11 +131,11 @@ archive_command = 'cp %p /archive/wal/%f'   # or a script shipping to object sto
 recovery_target_time = '2026-07-28 14:32:00'
 ```
 Validate this against the more general replication/WAL guidance in
-[postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md),
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md),
 since WAL retention sizing and archiving overlap directly with
 replication slot management there.
 
-### 3. MySQL/MariaDB: mysqldump for logical, XtraBackup for physical/hot backups
+### 3. [MySQL](../../Backend/mysql/SKILL.md)/MariaDB: mysqldump for logical, XtraBackup for physical/hot backups
 
 ```bash
 # Logical: fine for smaller databases, or extracting a specific schema/table
@@ -153,7 +153,7 @@ xtrabackup --prepare --target-dir=/backup/full   # applies redo log to make the 
 ```
 XtraBackup's `--prepare` step is not optional — a backup directory that
 hasn't been prepared is not yet consistent and cannot be safely used to
-start a MySQL instance from; always confirm `--prepare` completed
+start a [MySQL](../../Backend/mysql/SKILL.md) instance from; always confirm `--prepare` completed
 successfully (check its exit code and log output for
 "completed OK") before considering the backup restore-ready. For
 point-in-time recovery, retain binary logs covering at least the
@@ -162,21 +162,21 @@ recorded position forward:
 ```bash
 mysqlbinlog --start-datetime="2026-07-28 00:00:00" \
   --stop-datetime="2026-07-28 14:32:00" \
-  binlog.000123 | mysql -u <USER> -p appdb
+  binlog.000123 | [mysql](../../Backend/mysql/SKILL.md) -u <USER> -p appdb
 ```
 
-### 4. MongoDB: mongodump/mongorestore, and oplog-based point-in-time recovery
+### 4. [MongoDB](../../Backend/mongodb/SKILL.md): mongodump/mongorestore, and oplog-based point-in-time recovery
 
 ```bash
-mongodump --uri="mongodb://<HOST>:27017" --db=appdb --out=/backup/appdb
+mongodump --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<HOST>:27017" --db=appdb --out=/backup/appdb
 ```
 ```bash
-mongorestore --uri="mongodb://<TARGET_HOST>:27017" --db=appdb /backup/appdb/appdb
+mongorestore --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<TARGET_HOST>:27017" --db=appdb /backup/appdb/appdb
 ```
 `mongodump` against a replica set member (rather than the primary)
 avoids adding backup load to the node serving live writes, but confirm
 the replica isn't so far behind (see oplog-window guidance in
-[mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md))
+[mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md))
 that the backup reflects meaningfully stale data. For point-in-time
 recovery, `mongodump --oplog` captures the oplog alongside the data
 dump, allowing `mongorestore --oplogReplay` to bring the restored data
@@ -184,7 +184,7 @@ forward to a consistent point matching when the dump completed, rather
 than a data set that's inconsistent across collections captured at
 slightly different moments during a long-running dump.
 ```bash
-mongodump --uri="mongodb://<HOST>:27017" --oplog --out=/backup/appdb
+mongodump --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<HOST>:27017" --oplog --out=/backup/appdb
 mongorestore --oplogReplay /backup/appdb
 ```
 For a sharded cluster, back up each shard's replica set independently
@@ -217,10 +217,10 @@ RTO, it's a guess.
 Retention has two distinct drivers that are easy to conflate: how far
 back you need to be able to *restore* for operational recovery (often
 weeks), and how long you're required to *retain* data for compliance/
-audit (often much longer, sometimes years). Configure them as
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (often much longer, sometimes years). Configure them as
 separate policies rather than one retention setting serving both —
 a short operational-recovery retention window is fine for disaster
-recovery but inadequate for a compliance audit requiring data from
+recovery but inadequate for a compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) requiring data from
 eighteen months ago, and conversely, keeping every daily backup
 indefinitely "just in case" for compliance reasons is wasteful storage
 cost when only the most recent few weeks are ever actually restored
@@ -253,13 +253,13 @@ from in practice.
 ## Common pitfalls
 
 - **Symptom:** A restore is attempted for the first time during a real
-  incident, and it fails, is missing data, or takes far longer than
+  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and it fails, is missing data, or takes far longer than
   anyone expected.
   **Fix:** The backup process had never been validated with an actual
   restore — only its own success exit code was trusted. This is the
   single most common and most expensive backup failure mode; establish
   a recurring restore-test schedule immediately, even retroactively
-  after an incident, and measure real restore time against the
+  after an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and measure real restore time against the
   required RTO going forward.
 
 - **Symptom:** A `mysqldump`-based backup of a large production
@@ -272,7 +272,7 @@ from in practice.
   hot-backup approach instead for a large production database where
   even a brief mysqldump-induced slowdown is unacceptable.
 
-- **Symptom:** A Percona XtraBackup restore fails to start MySQL, or
+- **Symptom:** A Percona XtraBackup restore fails to start [MySQL](../../Backend/mysql/SKILL.md), or
   starts but is missing recent transactions.
   **Fix:** The `--prepare` step was skipped or failed silently, leaving
   the backup directory in an inconsistent, unprepared state — a raw
@@ -306,16 +306,16 @@ from in practice.
   > actually needed (using PITR to target the correct moment if
   > available), and only then plan a deliberate, communicated cutover
   > — treating the restore itself the same way a
-  > [database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md)
+  > [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md)
   > migration rollback is treated: a real production change requiring
   > sign-off, not an emergency shortcut.
 
 ## Worked example
 
-**Scenario:** A team discovers, during a post-incident review, that
-their PostgreSQL production database (600GB) has been backed up nightly
+**Scenario:** A team discovers, during a post-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review, that
+their [PostgreSQL](../../Backend/postgresql/SKILL.md) production database (600GB) has been backed up nightly
 via `pg_dump` for two years, but no restore has ever been tested, and
-the last incident took over 14 hours to (partially) recover from
+the last [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) took over 14 hours to (partially) recover from
 because the logical restore was far slower than anyone expected.
 
 1. Measure the actual problem: a test logical restore of the full
@@ -345,12 +345,12 @@ because the logical restore was far slower than anyone expected.
    retention requirement, confirmed with the compliance team rather
    than guessed at.
 6. Document the tested, timed restore procedure as the team's actual
-   incident-response runbook, replacing the previous untested
+   [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), replacing the previous untested
    assumption that "we have nightly backups" was itself sufficient.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for PostgreSQL point-in-time recovery.
-- [mysql-mariadb-operations-and-performance-tuning](../mysql-mariadb-operations-and-performance-tuning/SKILL.md) — binary log retention and GTID-based replication that a MySQL/MariaDB point-in-time recovery strategy depends on.
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — oplog window sizing, which directly bounds how far back `mongodump --oplog`-based point-in-time recovery can reach.
-- [timescaledb-time-series-operations-and-configuration](../timescaledb-time-series-operations-and-configuration/SKILL.md) — retention policies there permanently drop chunks; this skill's archive-before-drop discipline is the safety net that should precede enabling one on data with any retention requirement.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for [PostgreSQL](../../Backend/postgresql/SKILL.md) point-in-time recovery.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — binary log retention and GTID-based replication that a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB point-in-time recovery strategy depends on.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — oplog window sizing, which directly bounds how far back `mongodump --oplog`-based point-in-time recovery can reach.
+- [timescaledb-time-series-operations-and-configuration](../[timescaledb-time-series-operations-and-configuration](../timescaledb-time-series-operations-and-configuration/SKILL.md)/SKILL.md) — retention policies there permanently drop chunks; this skill's archive-before-drop discipline is the safety net that should precede enabling one on data with any retention requirement.

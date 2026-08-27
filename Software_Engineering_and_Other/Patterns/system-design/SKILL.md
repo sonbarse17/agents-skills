@@ -55,7 +55,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant Client
@@ -104,7 +104,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### Core Implementation
 
-```python
+```[python](../../Languages/python/SKILL.md)
 def get_consistent_hash_node(key, nodes, virtual_nodes=100):
     ring = {}
     for node in nodes:
@@ -133,7 +133,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Client] -->|HTTP| B(API Gateway)
@@ -141,7 +141,7 @@ graph TD
     C -->|Round Robin| D[App Server 1]
     C -->|Round Robin| E[App Server 2]
     D -->|Read| F[(Redis Cache)]
-    E -->|Write| G[(PostgreSQL Master)]
+    E -->|Write| G[([PostgreSQL](../../Backend/postgresql/SKILL.md) Master)]
     G -->|Async Rep| H[(Postgres Replica)]
 ```
 
@@ -205,7 +205,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Client] -->|HTTP| B(API Gateway)
@@ -213,7 +213,7 @@ graph TD
     C -->|Round Robin| D[App Server 1]
     C -->|Round Robin| E[App Server 2]
     D -->|Read| F[(Redis Cache)]
-    E -->|Write| G[(PostgreSQL Master)]
+    E -->|Write| G[([PostgreSQL](../../Backend/postgresql/SKILL.md) Master)]
     G -->|Async Rep| H[(Postgres Replica)]
 ```
 

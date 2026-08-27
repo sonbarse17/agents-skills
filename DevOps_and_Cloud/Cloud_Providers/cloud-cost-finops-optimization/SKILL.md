@@ -22,14 +22,14 @@ metadata:
 
 Cloud spend left ungoverned grows faster than the value it produces —
 not because any one decision was wrong, but because pay-as-you-go pricing
-removes the natural friction that used to force capacity planning
+removes the natural friction that used to force [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 conversations. FinOps closes that gap by making cost a first-class,
 continuously reviewed signal: every resource attributable to a team and
 purpose, every commitment decision (Reserved Instances, Savings Plans,
 Committed Use Discounts) made deliberately rather than defaulted to
 on-demand, and every anomaly caught within days, not discovered at
 month-end reconciliation. This skill covers the recurring, cross-cloud
-practices — tagging, rightsizing, commitment strategy, showback/
+practices — tagging, [rightsizing](../rightsizing/SKILL.md), commitment strategy, showback/
 chargeback, and anomaly response — that turn cost from a lagging
 indicator into an operating input.
 
@@ -41,7 +41,7 @@ indicator into an operating input.
 - Deciding between commitment-based discount instruments (Reserved
   Instances vs. Savings Plans on AWS; Reserved VM Instances vs. Azure
   Savings Plans; Committed Use Discounts on GCP) for a stable workload.
-- Rightsizing over-provisioned compute, storage, or database instances.
+- [Rightsizing](../rightsizing/SKILL.md) over-provisioned compute, storage, or database instances.
 - Building a showback or chargeback dashboard so teams see (and are
   accountable for) their own spend.
 - Responding to finance/leadership asking "why did the bill go up" or
@@ -64,7 +64,7 @@ indicator into an operating input.
   per instance family/region to size commitments against real, not
   guessed, baseline usage.
 - Optional but recommended: a FinOps tool (CloudHealth, Cloudability,
-  Kubecost for Kubernetes-specific allocation, or the open-source
+  Kubecost for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation, or the open-source
   OpenCost) if spend is complex enough that native cost-explorer tools
   become unwieldy across multiple accounts/subscriptions/projects.
 
@@ -104,7 +104,7 @@ indicator into an operating input.
      and `google.compute.instanceGroupManager.MachineTypeRecommender`.
    Downsize or change family only after confirming the workload's actual
    peak (not average) utilization has headroom — average-based
-   rightsizing is a common cause of production incidents.
+   [rightsizing](../rightsizing/SKILL.md) is a common cause of production incidents.
 
 5. **Decide commitment strategy per workload class**, not organization-wide:
    - **Stable, predictable baseline usage** (e.g. a database tier that
@@ -116,13 +116,13 @@ indicator into an operating input.
      Reserved Instances) or GCP flexible CUDs — trade a small discount
      reduction for flexibility.
    - **Genuinely spiky/unpredictable workloads**: leave on-demand, or use
-     Spot/preemptible capacity (AWS Spot, Azure Spot VMs, GCP Spot VMs)
+     Spot/preemptible [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (AWS Spot, Azure Spot VMs, GCP Spot VMs)
      for fault-tolerant, interruptible work instead of committing.
-   - Never commit to more than roughly 70-80% of observed baseline usage
+   - Never [commit](../../CI_CD/commit/SKILL.md) to more than roughly 70-80% of observed baseline usage
      — commitments covering 100% of a fluctuating baseline routinely end
      up unused when demand dips.
 
-6. **Set up anomaly detection and a response runbook.** When a cost
+6. **Set up anomaly detection and a response [runbook](../../Observability_and_SecOps/runbook/SKILL.md).** When a cost
    anomaly alert fires: identify the resource/tag responsible from the
    CUR/Cost Management/BigQuery export, confirm with the owning team
    whether it's expected (a legitimate scale-up) or a mistake (an
@@ -148,15 +148,15 @@ indicator into an operating input.
   retroactive cleanup project — see the landing-zone skills for how to
   wire this into account/subscription/project vending.
 - **Rightsize based on peak, not average, utilization** to avoid
-  performance regressions; pair rightsizing changes with a rollback plan
-  and a monitoring window.
+  performance regressions; pair [rightsizing](../rightsizing/SKILL.md) changes with a rollback plan
+  and a [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) window.
 - **Match commitment term to business certainty**, not just the discount
   curve — a deeper 3-year discount on a workload that might be
   decommissioned in 18 months is a false saving.
 - **Separate showback (visibility) from chargeback (billing)** —
   chargeback without mature, trusted tagging data creates disputes that
   undermine the whole program.
-- Treat **Kubernetes/container cost allocation as its own problem** —
+- Treat **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/container cost allocation as its own problem** —
   node-level cloud billing does not natively reflect per-pod or
   per-namespace cost; use a tool like OpenCost/Kubecost if container
   spend is material.
@@ -165,9 +165,9 @@ indicator into an operating input.
   deleted instances still billing for storage) as a recurring scheduled
   check, not a one-time cleanup.
 - Involve **engineering, not just finance**, in every optimization
-  decision — a rightsizing or commitment change that isn't understood by
+  decision — a [rightsizing](../rightsizing/SKILL.md) or commitment change that isn't understood by
   the team running the workload will get silently reverted or cause an
-  incident.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Common pitfalls
 
@@ -182,22 +182,22 @@ indicator into an operating input.
   optimization technique.
 
 - **Symptom:** A team purchased Reserved Instances/CUDs for peak-season
-  capacity, and six months later most of the commitment sits unused,
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and six months later most of the commitment sits unused,
   still billing.
   **Fix:** Commitment was sized against a temporary peak instead of
   sustained baseline usage. Size commitments to the trailing 90-day p10
   (near-floor) usage, and cover the variable portion above that with
   on-demand or Savings Plans/flexible CUDs instead of Reserved Instances.
 
-- **Symptom:** A rightsizing recommendation is applied automatically and
+- **Symptom:** A [rightsizing](../rightsizing/SKILL.md) recommendation is applied automatically and
   causes a latency-sensitive service to start throttling under load.
   **Fix:** The recommendation was based on average CPU utilization,
   which hid short bursts to near 100%. Cross-check peak utilization and
   application-level SLOs (latency, error rate) before applying automated
-  rightsizing recommendations, and roll out during a low-traffic window
+  [rightsizing](../rightsizing/SKILL.md) recommendations, and roll out during a low-traffic window
   with fast rollback available.
 
-- **Symptom:** Kubernetes cluster shows a flat, high cloud compute bill
+- **Symptom:** [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster shows a flat, high cloud compute bill
   regardless of which team scales its workloads up or down.
   **Fix:** Cost is being measured at the node level, not attributed
   per-namespace/pod. Deploy a cost-allocation tool (OpenCost/Kubecost) to
@@ -211,8 +211,8 @@ indicator into an operating input.
   without a tagged grace period and human confirmation** — idle-resource
   detection should open a ticket or require explicit approval before any
   deletion, especially for anything holding data (see
-  `cloud-native-storage-strategy` and
-  `disaster-recovery-and-backup-strategy` for what's safe to actually
+  `[cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)` and
+  `[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)` for what's safe to actually
   remove versus what must be retained under a backup/retention policy).
 
 ## Worked example
@@ -233,17 +233,17 @@ the week.
    down.
 4. Rightsize the non-prod RDS instances to `db.r5.large` after confirming
    with the data-platform team that non-prod doesn't need production-
-   scale capacity, monitored over a one-week rollout window.
+   scale [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), monitored over a one-week rollout window.
 5. Identify that the same team's stable production baseline usage
    qualifies for a 1-year Compute Savings Plan sized to the trailing
    90-day p10 usage, covering roughly 70% of baseline while leaving burst
-   capacity on-demand.
+   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) on-demand.
 6. Set an AWS Cost Anomaly Detection monitor scoped to the
    `data-platform` cost-allocation tag so a similar unmonitored ramp is
    caught within days next time, not a quarter later.
 
 ## Cross-references
 
-- [aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
-- [cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)
+- [aws-landing-zone-setup](../[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
+- [cloud-native-storage-strategy](../[cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)/SKILL.md)

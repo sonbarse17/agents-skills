@@ -14,7 +14,7 @@ description: Authoritative playbook for building a full-stack AI SaaS platform i
 
 ## 2. System Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[User Request / Prompt] --> B{Subscription Active?}
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 3. Core Orchestration Logic
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 import json
 from fastapi import FastAPI, HTTPException

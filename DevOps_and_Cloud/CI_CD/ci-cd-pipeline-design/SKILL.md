@@ -30,13 +30,13 @@ change.
 
 ## When to use
 
-- Standing up CI/CD for a new service or monorepo from scratch.
+- Standing up CI/CD for a new service or [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) from scratch.
 - A pipeline is slow (multi-tens-of-minutes) and engineers are asking to
   skip it or it's blocking delivery cadence.
 - Adding quality gates: required checks, branch protection, test coverage
   thresholds, or manual approval gates before production deploy.
-- Migrating a pipeline between platforms (e.g., Jenkins to GitHub Actions,
-  or GitHub Actions to GitLab CI).
+- Migrating a pipeline between platforms (e.g., [Jenkins](../jenkins/SKILL.md) to [GitHub](../github/SKILL.md) Actions,
+  or [GitHub](../github/SKILL.md) Actions to GitLab CI).
 - Diagnosing flaky or intermittently failing pipeline stages.
 - Adding matrix builds, caching, or parallel test sharding to reduce
   pipeline wall-clock time.
@@ -44,18 +44,18 @@ change.
 ## Prerequisites & environment
 
 - A version-controlled repository (Git) with a CI platform already
-  available or to be provisioned: GitHub Actions, GitLab CI, Jenkins,
-  CircleCI, etc. Examples below use GitHub Actions and GitLab CI syntax.
+  available or to be provisioned: [GitHub](../github/SKILL.md) Actions, GitLab CI, [Jenkins](../jenkins/SKILL.md),
+  [CircleCI](../circleci/SKILL.md), etc. Examples below use [GitHub](../github/SKILL.md) Actions and GitLab CI syntax.
 - Repository or project admin permission to configure branch protection,
   required status checks, and CI/CD variables/secrets.
-- For GitHub Actions: Actions enabled on the repo; runner availability
-  (GitHub-hosted or self-hosted) understood, since self-hosted runners
+- For [GitHub](../github/SKILL.md) Actions: Actions enabled on the repo; runner availability
+  ([GitHub](../github/SKILL.md)-hosted or self-hosted) understood, since self-hosted runners
   need their own patching/security posture.
 - For GitLab CI: a configured runner (shared or project-specific) and
-  `.gitlab-ci.yml` support; GitLab 15+ recommended for modern
+  `.[gitlab-ci](../gitlab-ci/SKILL.md).yml` support; GitLab 15+ recommended for modern
   `rules:`/`workflow:` syntax (older `only:`/`except:` still works but is
   deprecated in favor of `rules:`).
-- Secrets already stored in the platform's secret store (GitHub Actions
+- Secrets already stored in the platform's secret store ([GitHub](../github/SKILL.md) Actions
   secrets/environments, GitLab CI/CD variables marked "masked" and
   "protected") — never in the pipeline file itself.
 
@@ -72,7 +72,7 @@ change.
    branches. For monorepos, use path filters so a docs-only change doesn't
    trigger a full backend build.
 
-   GitHub Actions:
+   [GitHub](../github/SKILL.md) Actions:
    ```yaml
    name: ci
    on:
@@ -81,7 +81,7 @@ change.
      push:
        branches: [main]
    concurrency:
-     group: ci-${{ github.workflow }}-${{ github.ref }}
+     group: ci-${{ [github](../github/SKILL.md).workflow }}-${{ [github](../github/SKILL.md).ref }}
      cancel-in-progress: true
    jobs:
      lint:
@@ -115,10 +115,10 @@ change.
        runs-on: ubuntu-latest
        steps:
          - uses: actions/checkout@v4
-         - run: docker build -t myapp:${{ github.sha }} .
+         - run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:${{ [github](../github/SKILL.md).sha }} .
    ```
 
-   GitLab CI equivalent (`.gitlab-ci.yml`):
+   GitLab CI equivalent (`.[gitlab-ci](../gitlab-ci/SKILL.md).yml`):
    ```yaml
    stages: [lint, test, build]
 
@@ -144,7 +144,7 @@ change.
      stage: build
      needs: ["test"]
      script:
-       - docker build -t myapp:$CI_COMMIT_SHORT_SHA .
+       - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
    ```
 
 3. **Cache dependencies, not build output you can't trust.** Cache package
@@ -153,12 +153,12 @@ change.
    stale caches cause "works in CI, fails locally" (or the reverse) bugs.
 
 4. **Add required quality gates as required status checks**, not just as
-   jobs that "happen to run." In GitHub: Settings → Branches → branch
+   jobs that "happen to run." In [GitHub](../github/SKILL.md): Settings → Branches → branch
    protection rule → "Require status checks to pass" and select the exact
    job names. A job that runs but isn't marked required can fail silently
    and still allow merge.
 
-5. **Add a manual approval gate before production deploy** using GitHub
+5. **Add a manual approval gate before production deploy** using [GitHub](../github/SKILL.md)
    Actions `environment:` protection rules or GitLab's `when: manual` with
    `environment:`, rather than trusting a human to remember to "deploy
    only after checking."
@@ -171,9 +171,9 @@ change.
        name: production
        url: https://app.example.com
      steps:
-       - run: ./deploy.sh prod ${{ github.sha }}
+       - run: ./deploy.sh prod ${{ [github](../github/SKILL.md).sha }}
    ```
-   Configure `production` as a protected GitHub environment requiring
+   Configure `production` as a protected [GitHub](../github/SKILL.md) environment requiring
    reviewer approval under Settings → Environments.
 
 6. **Fail fast and make failures actionable.** Surface test reports, not
@@ -203,10 +203,10 @@ change.
 - Treat flaky tests as a defect to fix, not something to retry away
   indefinitely — a `retry: 2` band-aid that runs forever hides real
   instability.
-- Emit structured build metadata (commit SHA, build number, timestamp)
+- Emit structured build metadata ([commit](../commit/SKILL.md) SHA, build number, timestamp)
   into the artifact/image so any deployed instance is traceable back to
   its pipeline run — this underpins
-  [release-versioning-and-changelog-automation](../release-versioning-and-changelog-automation/SKILL.md).
+  [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md).
 - Keep secrets out of logs: mask output, avoid `set -x` around commands
   that interpolate secret env vars, and use the platform's masked/secret
   variable feature rather than plain CI variables.
@@ -214,7 +214,7 @@ change.
 ## Common pitfalls
 
 - **Symptom:** Pipeline is green but a bug reaches production anyway.
-  **Fix:** Audit whether the job that "should have" caught it is actually
+  **Fix:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) whether the job that "should have" caught it is actually
   a *required* status check, not just a job that runs — non-required jobs
   can fail without blocking merge.
 
@@ -235,13 +235,13 @@ change.
   `-x` shell trace).
   **Fix:** Store secrets only in the platform's secret store, reference
   them as `${{ secrets.NAME }}` / `${SECRET_NAME}` masked CI/CD variables,
-  and audit logs for accidental `echo`/`env`/`printenv` dumps of the
+  and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for accidental `echo`/`env`/`printenv` dumps of the
   environment.
 
 - **Symptom:** Self-hosted runner has stale tooling and pipeline behavior
-  differs from GitHub-hosted runners used elsewhere.
+  differs from [GitHub](../github/SKILL.md)-hosted runners used elsewhere.
   **Fix:** Pin the runner image/tooling versions explicitly in the
-  workflow (language runtime, Docker version) rather than relying on
+  workflow (language runtime, [Docker](../../Containers_and_Orchestration/docker/SKILL.md) version) rather than relying on
   whatever happens to be installed on the runner host.
 
 ## Worked example
@@ -250,7 +250,7 @@ change.
 build, container image) and CD to a `staging` environment automatically on
 merge to `main`, with a manual gate to `production`.
 
-`.github/workflows/ci-cd.yml`:
+`.[github](../github/SKILL.md)/workflows/ci-cd.yml`:
 ```yaml
 name: ci-cd
 on:
@@ -260,7 +260,7 @@ on:
     branches: [main]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ [github](../github/SKILL.md).workflow }}-${{ [github](../github/SKILL.md).ref }}
   cancel-in-progress: true
 
 jobs:
@@ -279,29 +279,29 @@ jobs:
 
   build-image:
     needs: verify
-    if: github.event_name == 'push'
+    if: [github](../github/SKILL.md).event_name == 'push'
     runs-on: ubuntu-latest
     permissions: { contents: read, packages: write }
     steps:
       - uses: actions/checkout@v4
       - run: |
-          docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+          [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t ghcr.io/${{ [github](../github/SKILL.md).repository }}:${{ [github](../github/SKILL.md).sha }} .
+          echo "${{ secrets.GITHUB_TOKEN }}" | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login ghcr.io -u ${{ [github](../github/SKILL.md).actor }} --password-stdin
+          [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/${{ [github](../github/SKILL.md).repository }}:${{ [github](../github/SKILL.md).sha }}
 
   deploy-staging:
     needs: build-image
     runs-on: ubuntu-latest
     environment: { name: staging }
     steps:
-      - run: ./deploy.sh staging ${{ github.sha }}
+      - run: ./deploy.sh staging ${{ [github](../github/SKILL.md).sha }}
 
   deploy-prod:
     needs: deploy-staging
     runs-on: ubuntu-latest
     environment: { name: production }   # protected: requires reviewer approval
     steps:
-      - run: ./deploy.sh prod ${{ github.sha }}
+      - run: ./deploy.sh prod ${{ [github](../github/SKILL.md).sha }}
 ```
 With branch protection on `main` requiring the `verify` job's checks
 (`lint`, `test`) and the `production` environment configured with a
@@ -311,6 +311,6 @@ for fast feedback.
 
 ## Cross-references
 
-- [environment-promotion-strategy](../environment-promotion-strategy/SKILL.md)
-- [release-versioning-and-changelog-automation](../release-versioning-and-changelog-automation/SKILL.md)
-- [gitops-workflow](../gitops-workflow/SKILL.md)
+- [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)
+- [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+- [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)

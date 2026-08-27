@@ -15,7 +15,7 @@ silently absorbs.
 
 The signal that on-call is broken is rarely a missed SLA — it's an engineer quietly dreading
 their week, or the best people avoiding teams with bad rotations. That signal shows up as
-attrition and burnout long before it shows up in an incident report.
+attrition and burnout long before it shows up in an [incident](../incident/SKILL.md) report.
 
 **Treat on-call health as a reliability metric, not a personal cost the rotation absorbs
 silently.**
@@ -55,7 +55,7 @@ as something to use early, not a last resort that signals failure.
 - **Keep the escalation contact info current** — a stale phone number in a policy doc is
   discovered at the worst possible time.
 - **Cross-team escalation paths need the same rigor** as within-team ones — see
-  `incident-response` for the coordination once escalation lands.
+  `[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)` for the coordination once escalation lands.
 
 **Done when:** every engineer on the rotation can state the escalation path from memory, and
 it's been used or drilled recently enough to trust.
@@ -87,7 +87,7 @@ almost never "toughen up the rotation," it's fixing what's paging.
 - **Track pages per shift over time** — a rising trend is a leading indicator of both system
   decay and human burnout, treat it with the same urgency as an SLO breach.
 - **Every page should be actionable** — a page nobody can act on at 3am is noise dressed as
-  signal; route it to a ticket or business-hours channel instead, see `alerting`.
+  signal; route it to a ticket or business-hours channel instead, see `[alerting](../alerting/SKILL.md)`.
 - **Set a stated threshold for "this rotation is unsustainable"** and have a real response
   when it's crossed — adding headcount, fixing root causes, or reducing scope — not just
   enduring it.
@@ -104,7 +104,7 @@ someone quits or the rotation quietly loses its best people to teams with better
 
 - **Ask about on-call specifically**, separate from general job satisfaction — it's a distinct
   source of stress with its own fix.
-- **Give real recovery time after a bad night or a bad incident** — a rough overnight page
+- **Give real recovery time after a bad night or a bad [incident](../incident/SKILL.md)** — a rough overnight page
   followed by a normal 9am standup is how burnout compounds.
 - **Rotate people off on-call periodically**, not just off shifts — sustained months-long
   tenure on a rotation, even a good one, has diminishing returns.

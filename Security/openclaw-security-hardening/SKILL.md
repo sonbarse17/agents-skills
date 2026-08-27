@@ -57,8 +57,8 @@ Example reverse proxy controls to enforce:
 
 ## Protect Secrets and Tokens
 
-- Store secrets in a vault or platform secret manager, not committed `.env` files.
-- Rotate provider and admin tokens on a fixed interval and after any incident.
+- Store secrets in a [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or platform secret manager, not committed `.env` files.
+- Rotate provider and admin tokens on a fixed interval and after any [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Scope tokens minimally (least privilege, per-service keys).
 - Scan repos and deployment artifacts for leaked credentials before release.
 
@@ -82,16 +82,16 @@ Do not publish raw OpenClaw service ports directly to the internet.
 
 ## Add Detection and Recovery Paths
 
-- Centralize auth, error, and audit logs.
+- Centralize auth, error, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs.
 - Alert on brute-force attempts, token failures, and unusual outbound traffic.
 - Capture immutable backup snapshots of configs and prompt data retention settings.
 - Test rollback and restore procedures every release cycle.
 
-Minimum operational runbook:
+Minimum operational [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md):
 
 - service restart path
 - key revocation path
-- incident isolation path (network block + token disable)
+- [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) isolation path (network block + token disable)
 - known-good rollback version
 
 ## Validation Checklist
@@ -104,6 +104,6 @@ Minimum operational runbook:
 
 ## Related Skills
 
-- [openclaw-local-mac-mini](../openclaw-local-mac-mini/) - Local OpenClaw hosting setup
-- [multi-tenant-llm-hosting](../multi-tenant-llm-hosting/) - Multi-tenant AI isolation patterns
-- [zero-trust](../../../security/network/zero-trust/) - Private access and identity-aware network controls
+- [openclaw-local-mac-mini](../[openclaw-local-mac-mini](../openclaw-local-mac-mini/SKILL.md)/) - Local OpenClaw hosting setup
+- [multi-tenant-llm-hosting](../[multi-tenant-llm-hosting](../../AI_and_Agents/Models_and_FineTuning/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant AI isolation patterns
+- [zero-trust](../../../security/network/[zero-trust](../zero-trust/SKILL.md)/) - Private access and identity-aware network controls

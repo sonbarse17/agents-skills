@@ -20,7 +20,7 @@ Administer, optimize, and secure MySQL and MariaDB databases in development and 
 
 ## Prerequisites
 
-- Linux server (Debian/Ubuntu or RHEL-based) or Docker.
+- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).
 - Root or sudo access for package installation.
 - Familiarity with SQL fundamentals.
 
@@ -247,7 +247,7 @@ SHOW REPLICA STATUS\G
 -- Check: Replica_IO_Running = Yes, Replica_SQL_Running = Yes, Seconds_Behind_Source = 0
 ```
 
-## Monitoring Queries
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
 
 ```sql
 -- Connection statistics
@@ -281,10 +281,10 @@ SHOW REPLICA STATUS\G
 -- Look at Seconds_Behind_Source
 ```
 
-## Docker Compose Setup
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Setup
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.9"
 
 services:
@@ -300,7 +300,7 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       --innodb-buffer-pool-size=512M
       --max-connections=200
@@ -332,7 +332,7 @@ volumes:
 ```
 
 ```bash
-docker compose up -d
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 mysql -h 127.0.0.1 -u myapp -psecret mydb
 ```
 
@@ -367,7 +367,7 @@ mysqladmin -u root -p flush-logs
 
 ## Related Skills
 
-- [postgresql](../postgresql/) - Alternative relational database
-- [database-backups](../database-backups/) - Automated backup strategies
+- [postgresql](../[postgresql](../postgresql/SKILL.md)/) - Alternative relational database
+- [database-backups](../[database-backups](../../Databases/database-backups/SKILL.md)/) - Automated backup strategies
 - [redis](../redis/) - Caching layer to reduce database load
-- [planetscale](../planetscale/) - Managed MySQL-compatible with branching
+- [planetscale](../[planetscale](../../Databases/planetscale/SKILL.md)/) - Managed MySQL-compatible with branching

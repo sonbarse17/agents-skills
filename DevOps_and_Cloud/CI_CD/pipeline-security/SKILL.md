@@ -39,7 +39,7 @@ it's actually responsible for touching.
 
 A long-lived cloud access key stored as a CI secret is a standing liability — it doesn't expire
 on its own, it can leak through logs or a misconfigured job, and revoking it requires someone to
-notice and act. OIDC federation (GitHub Actions ↔ AWS/GCP/Azure via workload identity) issues
+notice and act. OIDC federation ([GitHub](../github/SKILL.md) Actions ↔ AWS/GCP/Azure via workload identity) issues
 short-lived, scoped credentials per job run, tied to verifiable claims about which repo and
 workflow requested them — nothing persists to leak after the job ends.
 
@@ -69,7 +69,7 @@ malicious PR to steal a secret it should never see.
 
 - **Never grant secrets to fork-triggered PR workflows** by default — this is the single most
   common secret-leak vector in public and semi-public repos.
-- **Mask and never log** secret values, and audit that debug/verbose flags don't defeat masking.
+- **Mask and never log** secret values, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that debug/verbose flags don't defeat masking.
 - **Scope secrets per environment**, not one giant shared secret bag every job can read.
 
 **Done when:** a malicious pull request from an outside contributor cannot access any production
@@ -83,7 +83,7 @@ than the application's — often bypassing code review entirely if the CI config
 reviewed with equal rigor. Require review for changes to pipeline definitions with the same or
 greater scrutiny as production code, disable auto-run of pipeline changes proposed by untrusted
 contributors until reviewed, and treat any script the pipeline executes (build scripts,
-Makefiles, pre-commit hooks) as part of the trusted codebase, not incidental tooling.
+Makefiles, pre-[commit](../commit/SKILL.md) hooks) as part of the trusted codebase, not incidental tooling.
 
 **Done when:** a change to the pipeline configuration itself requires the same review gate as a
 change to production code, and untrusted contributors' pipeline changes don't auto-execute with
@@ -94,21 +94,21 @@ privileged credentials.
 A workflow that references `uses: some-action@v1` trusts that the tag `v1` will always point at
 the same, safe code — but tags are mutable, and a compromised or malicious action maintainer can
 repoint `v1` to something else entirely, and every pipeline using that tag inherits the change on
-the next run with no review. Pin to a commit SHA, which is immutable, and update deliberately
+the next run with no review. Pin to a [commit](../commit/SKILL.md) SHA, which is immutable, and update deliberately
 with a reviewed diff rather than silently trusting whatever the tag currently resolves to. This
 is the CI-specific instance of a pattern this collection also covers for container base images in
-`image-scanning`.
+`[image-scanning](../../../Security/image-scanning/SKILL.md)`.
 
 ```yaml
 # fragile: v4 can be repointed by the action's maintainer, or their compromised account
 - uses: actions/checkout@v4
 
-# durable: this exact commit's code, verified once, never silently changes
+# durable: this exact [commit](../commit/SKILL.md)'s code, verified once, never silently changes
 - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
 ```
 
 **Done when:** every third-party action or reusable workflow the pipeline depends on is pinned to
-a commit SHA, not a mutable tag.
+a [commit](../commit/SKILL.md) SHA, not a mutable tag.
 
 ## 6. Sign what the pipeline produces
 
@@ -116,7 +116,7 @@ Signed commits and signed artifacts let anyone downstream verify that what they'
 actually came from the pipeline it claims to, rather than trusting the chain of custody
 implicitly. Sign build artifacts (cosign for container images, in-toto/SLSA attestations for
 provenance) as a pipeline step, and require verification of that signature before deploy — this
-closes the loop with `artifact-management`'s provenance tracking by making provenance
+closes the loop with `[artifact-management](../artifact-management/SKILL.md)`'s provenance tracking by making provenance
 cryptographically checkable, not just recorded metadata someone could tamper with.
 
 **Done when:** the deploy stage refuses to deploy an artifact whose signature doesn't verify

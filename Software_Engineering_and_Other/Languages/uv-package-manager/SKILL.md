@@ -5,20 +5,20 @@ description: Master the uv package manager for fast Python dependency management
 
 # UV Package Manager
 
-Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.
+Comprehensive guide to using uv, an extremely fast [Python](../python/SKILL.md) package installer and resolver written in Rust, for modern [Python](../python/SKILL.md) project management and dependency workflows.
 
 ## When to Use This Skill
 
-- Setting up new Python projects quickly
-- Managing Python dependencies faster than pip
+- Setting up new [Python](../python/SKILL.md) projects quickly
+- Managing [Python](../python/SKILL.md) dependencies faster than pip
 - Creating and managing virtual environments
-- Installing Python interpreters
+- Installing [Python](../python/SKILL.md) interpreters
 - Resolving dependency conflicts efficiently
 - Migrating from pip/pip-tools/poetry
 - Speeding up CI/CD pipelines
-- Managing monorepo Python projects
+- Managing [monorepo](../../Frontend/monorepo/SKILL.md) [Python](../python/SKILL.md) projects
 - Working with lockfiles for reproducible builds
-- Optimizing Docker builds with Python dependencies
+- Optimizing [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds with [Python](../python/SKILL.md) dependencies
 
 ## Core Concepts
 
@@ -28,7 +28,7 @@ Comprehensive guide to using uv, an extremely fast Python package installer and 
 - **Written in Rust**: Leverages Rust's performance
 - **Drop-in pip replacement**: Compatible with pip workflows
 - **Virtual environment manager**: Create and manage venvs
-- **Python installer**: Download and manage Python versions
+- **[Python](../python/SKILL.md) installer**: Download and manage [Python](../python/SKILL.md) versions
 - **Resolver**: Advanced dependency resolution
 - **Lockfile support**: Reproducible installations
 
@@ -39,7 +39,7 @@ Comprehensive guide to using uv, an extremely fast Python package installer and 
 - Compatible with pip, pip-tools, poetry
 - Comprehensive dependency resolution
 - Cross-platform support (Linux, macOS, Windows)
-- No Python required for installation
+- No [Python](../python/SKILL.md) required for installation
 - Built-in virtual environment support
 
 ### 3. UV vs Traditional Tools
@@ -47,7 +47,7 @@ Comprehensive guide to using uv, an extremely fast Python package installer and 
 - **vs pip**: 10-100x faster, better resolver
 - **vs pip-tools**: Faster, simpler, better UX
 - **vs poetry**: Faster, less opinionated, lighter
-- **vs conda**: Faster, Python-focused
+- **vs conda**: Faster, [Python](../python/SKILL.md)-focused
 
 ## Installation
 
@@ -60,14 +60,14 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # Windows (PowerShell)
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-# Using pip (if you already have Python)
+# Using pip (if you already have [Python](../python/SKILL.md))
 pip install uv
 
 # Using Homebrew (macOS)
 brew install uv
 
 # Using cargo (if you have Rust)
-cargo install --git https://github.com/astral-sh/uv uv
+cargo install --git https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/astral-sh/uv uv
 ```
 
 ### Verify Installation
@@ -90,7 +90,7 @@ cd my-project
 uv init .
 
 # Initialize creates:
-# - .python-version (Python version)
+# - .[python](../python/SKILL.md)-version ([Python](../python/SKILL.md) version)
 # - pyproject.toml (project config)
 # - README.md
 # - .gitignore
@@ -120,8 +120,8 @@ uv sync
 # Create virtual environment with uv
 uv venv
 
-# Create with specific Python version
-uv venv --python 3.12
+# Create with specific [Python](../python/SKILL.md) version
+uv venv --[python](../python/SKILL.md) 3.12
 
 # Create with custom name
 uv venv my-env
@@ -146,25 +146,25 @@ source .venv/bin/activate
 .venv\Scripts\Activate.ps1
 
 # Or use uv run (no activation needed)
-uv run python script.py
+uv run [python](../python/SKILL.md) script.py
 uv run pytest
 ```
 
 ### Pattern 3: Using uv run
 
 ```bash
-# Run Python script (auto-activates venv)
-uv run python app.py
+# Run [Python](../python/SKILL.md) script (auto-activates venv)
+uv run [python](../python/SKILL.md) app.py
 
 # Run installed CLI tool
 uv run black .
 uv run pytest
 
-# Run with specific Python version
-uv run --python 3.11 python script.py
+# Run with specific [Python](../python/SKILL.md) version
+uv run --[python](../python/SKILL.md) 3.11 [python](../python/SKILL.md) script.py
 
 # Pass arguments
-uv run python script.py --arg value
+uv run [python](../python/SKILL.md) script.py --arg value
 ```
 
 ## Package Management
@@ -188,10 +188,10 @@ uv add --dev pytest pytest-cov
 uv add --optional docs sphinx
 
 # Add from git
-uv add git+https://github.com/user/repo.git
+uv add git+https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git
 
 # Add from git with specific ref
-uv add git+https://github.com/user/repo.git@v1.0.0
+uv add git+https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git@v1.0.0
 
 # Add from local path
 uv add ./local-package
@@ -245,40 +245,40 @@ uv lock --no-install
 uv lock --upgrade-package requests
 ```
 
-## Python Version Management
+## [Python](../python/SKILL.md) Version Management
 
-### Pattern 8: Installing Python Versions
+### Pattern 8: Installing [Python](../python/SKILL.md) Versions
 
 ```bash
-# Install Python version
-uv python install 3.12
+# Install [Python](../python/SKILL.md) version
+uv [python](../python/SKILL.md) install 3.12
 
 # Install multiple versions
-uv python install 3.11 3.12 3.13
+uv [python](../python/SKILL.md) install 3.11 3.12 3.13
 
 # Install latest version
-uv python install
+uv [python](../python/SKILL.md) install
 
 # List installed versions
-uv python list
+uv [python](../python/SKILL.md) list
 
 # Find available versions
-uv python list --all-versions
+uv [python](../python/SKILL.md) list --all-versions
 ```
 
-### Pattern 9: Setting Python Version
+### Pattern 9: Setting [Python](../python/SKILL.md) Version
 
 ```bash
-# Set Python version for project
-uv python pin 3.12
+# Set [Python](../python/SKILL.md) version for project
+uv [python](../python/SKILL.md) pin 3.12
 
-# This creates/updates .python-version file
+# This creates/updates .[python](../python/SKILL.md)-version file
 
-# Use specific Python version for command
-uv --python 3.11 run python script.py
+# Use specific [Python](../python/SKILL.md) version for command
+uv --[python](../python/SKILL.md) 3.11 run [python](../python/SKILL.md) script.py
 
 # Create venv with specific version
-uv venv --python 3.12
+uv venv --[python](../python/SKILL.md) 3.12
 ```
 
 ## Project Configuration
@@ -291,7 +291,7 @@ name = "my-project"
 version = "0.1.0"
 description = "My awesome project"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-[python](../python/SKILL.md) = ">=3.8"
 dependencies = [
     "requests>=2.31.0",
     "pydantic>=2.0.0",
@@ -322,7 +322,7 @@ dev-dependencies = [
 
 [tool.uv.sources]
 # Custom package sources
-my-package = { git = "https://github.com/user/repo.git" }
+my-package = { git = "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git" }
 ```
 
 ### Pattern 11: Using uv with Existing Projects
@@ -342,5 +342,5 @@ uv pip freeze > requirements.txt
 uv pip freeze --require-hashes > requirements.txt
 ```
 
-For advanced workflows including Docker integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../Global_References/uv-package-manager_advanced-patterns.md](../../../Global_References/uv-package-manager_advanced-patterns.md)
+For advanced workflows including [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../Global_References/uv-package-manager_advanced-patterns.md](../../../Global_References/uv-package-manager_advanced-patterns.md)
 

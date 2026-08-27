@@ -10,14 +10,14 @@ metadata:
   package: azure-ai-translation-document
 ---
 
-# Azure AI Document Translation SDK for Python
+# Azure AI Document Translation SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure AI Translator document translation service for batch document translation with format preservation.
 
 ## Installation
 
 ```bash
-pip install azure-ai-translation-document
+pip install [azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-translation-document
 ```
 
 ## Environment Variables
@@ -35,7 +35,7 @@ AZURE_DOCUMENT_TRANSLATION_KEY=<your-api-key>  # Only required for the legacy AP
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -44,7 +44,7 @@ AZURE_DOCUMENT_TRANSLATION_KEY=<your-api-key>  # Only required for the legacy AP
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.translation.document import DocumentTranslationClient
@@ -52,7 +52,7 @@ from azure.ai.translation.document import DocumentTranslationClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential()
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with DocumentTranslationClient(
@@ -66,7 +66,7 @@ with DocumentTranslationClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.translation.document import DocumentTranslationClient, SingleDocumentTranslationClient
@@ -82,7 +82,7 @@ with DocumentTranslationClient(
 
 ## Basic Document Translation
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.ai.translation.document import DocumentTranslationClient, DocumentTranslationInput, TranslationTarget
 from azure.core.exceptions import HttpResponseError
@@ -126,7 +126,7 @@ with DocumentTranslationClient(
 
 ## Multiple Target Languages
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 poller = client.begin_translation(
     inputs=[
         DocumentTranslationInput(
@@ -143,7 +143,7 @@ poller = client.begin_translation(
 
 ## Translate Single Document
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.translation.document import SingleDocumentTranslationClient
 from azure.identity import DefaultAzureCredential
 
@@ -164,7 +164,7 @@ with open("document_es.docx", "wb") as f:
 
 ## Check Translation Status
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get all translation operations
 operations = client.list_translation_statuses()
 
@@ -179,7 +179,7 @@ for op in operations:
 
 ## List Document Statuses
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get status of individual documents in a job
 operation_id = poller.id
 document_statuses = client.list_document_statuses(operation_id)
@@ -194,14 +194,14 @@ for doc in document_statuses:
 
 ## Cancel Translation
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Cancel a running translation
 client.cancel_translation(operation_id)
 ```
 
 ## Using Glossary
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.translation.document import TranslationGlossary
 
 poller = client.begin_translation(
@@ -227,7 +227,7 @@ poller = client.begin_translation(
 
 ## Supported Document Formats
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get supported formats
 formats = client.get_supported_document_formats()
 
@@ -239,7 +239,7 @@ for fmt in formats:
 
 ## Supported Languages
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get supported languages
 languages = client.get_supported_languages()
 
@@ -249,7 +249,7 @@ for lang in languages:
 
 ## Async Client
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.translation.document.aio import DocumentTranslationClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -294,6 +294,6 @@ async def translate_documents():
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/azure-ai-translation-document-py_capabilities.md](../../../../../Global_References/azure-ai-translation-document-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/azure-ai-translation-document-py_non-hero-scenarios.md](../../../../../Global_References/azure-ai-translation-document-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-translation-document-py_capabilities.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-translation-document-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-translation-document-py_non-hero-scenarios.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-translation-document-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

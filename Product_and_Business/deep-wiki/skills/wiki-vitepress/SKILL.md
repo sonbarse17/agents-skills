@@ -9,7 +9,7 @@ metadata:
 
 # Wiki VitePress Packager
 
-Transform generated wiki Markdown files into a polished VitePress static site with dark theme and interactive Mermaid diagrams.
+Transform generated wiki Markdown files into a polished VitePress static site with dark theme and interactive [Mermaid](../../../mermaid/SKILL.md) diagrams.
 
 ## When to Activate
 
@@ -36,13 +36,13 @@ wiki-site/
 
 ## Config Requirements (`config.mts`)
 
-- Use `withMermaid` wrapper from `vitepress-plugin-mermaid`
+- Use `withMermaid` wrapper from `vitepress-plugin-[mermaid](../../../mermaid/SKILL.md)`
 - Set `appearance: 'dark'` for dark-only theme
 - Configure `themeConfig.nav` and `themeConfig.sidebar` from the catalogue structure
-- Mermaid config must set dark theme variables:
+- [Mermaid](../../../mermaid/SKILL.md) config must set dark theme variables:
 
-```typescript
-mermaid: {
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+[mermaid](../../../mermaid/SKILL.md): {
   theme: 'dark',
   themeVariables: {
     primaryColor: '#1e3a5f',
@@ -61,34 +61,34 @@ mermaid: {
 }
 ```
 
-## Dark-Mode Mermaid: Three-Layer Fix
+## Dark-Mode [Mermaid](../../../mermaid/SKILL.md): Three-Layer Fix
 
 ### Layer 1: Theme Variables (in config.mts)
-Set via `mermaid.themeVariables` as shown above.
+Set via `[mermaid](../../../mermaid/SKILL.md).themeVariables` as shown above.
 
 ### Layer 2: CSS Overrides (`custom.css`)
-Target Mermaid SVG elements with `!important`:
+Target [Mermaid](../../../mermaid/SKILL.md) SVG elements with `!important`:
 
 ```css
-.mermaid .node rect,
-.mermaid .node circle,
-.mermaid .node polygon { fill: #1e3a5f !important; stroke: #4a9eed !important; }
-.mermaid .edgeLabel { background-color: #1a1a2e !important; color: #e0e0e0 !important; }
-.mermaid text { fill: #e0e0e0 !important; }
-.mermaid .label { color: #e0e0e0 !important; }
+.[mermaid](../../../mermaid/SKILL.md) .node rect,
+.[mermaid](../../../mermaid/SKILL.md) .node circle,
+.[mermaid](../../../mermaid/SKILL.md) .node polygon { fill: #1e3a5f !important; stroke: #4a9eed !important; }
+.[mermaid](../../../mermaid/SKILL.md) .edgeLabel { background-color: #1a1a2e !important; color: #e0e0e0 !important; }
+.[mermaid](../../../mermaid/SKILL.md) text { fill: #e0e0e0 !important; }
+.[mermaid](../../../mermaid/SKILL.md) .label { color: #e0e0e0 !important; }
 ```
 
 ### Layer 3: Inline Style Replacement (`theme/index.ts`)
-Mermaid inline `style` attributes override everything. Use `onMounted` + polling to replace them:
+[Mermaid](../../../mermaid/SKILL.md) inline `style` attributes override everything. Use `onMounted` + polling to replace them:
 
-```typescript
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { onMounted } from 'vue'
 
 // In setup()
 onMounted(() => {
   let attempts = 0
   const fix = setInterval(() => {
-    document.querySelectorAll('.mermaid svg [style]').forEach(el => {
+    document.querySelectorAll('.[mermaid](../../../mermaid/SKILL.md) svg [style]').forEach(el => {
       const s = (el as HTMLElement).style
       if (s.fill && !s.fill.includes('#1e3a5f')) s.fill = '#1e3a5f'
       if (s.stroke && !s.stroke.includes('#4a9eed')) s.stroke = '#4a9eed'
@@ -101,16 +101,16 @@ onMounted(() => {
 
 Use `setup()` with `onMounted`, NOT `enhanceApp()` — DOM doesn't exist during SSR.
 
-## Click-to-Zoom for Mermaid Diagrams
+## Click-to-Zoom for [Mermaid](../../../mermaid/SKILL.md) Diagrams
 
-Wrap each `.mermaid` container in a clickable wrapper that opens a fullscreen modal:
+Wrap each `.[mermaid](../../../mermaid/SKILL.md)` container in a clickable wrapper that opens a fullscreen modal:
 
-```typescript
-document.querySelectorAll('.mermaid').forEach(el => {
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+document.querySelectorAll('.[mermaid](../../../mermaid/SKILL.md)').forEach(el => {
   el.style.cursor = 'zoom-in'
   el.addEventListener('click', () => {
     const modal = document.createElement('div')
-    modal.className = 'mermaid-zoom-modal'
+    modal.className = '[mermaid](../../../mermaid/SKILL.md)-zoom-modal'
     modal.innerHTML = el.outerHTML
     modal.addEventListener('click', () => modal.remove())
     document.body.appendChild(modal)
@@ -120,13 +120,13 @@ document.querySelectorAll('.mermaid').forEach(el => {
 
 Modal CSS:
 ```css
-.mermaid-zoom-modal {
+.[mermaid](../../../mermaid/SKILL.md)-zoom-modal {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center;
   z-index: 9999; cursor: zoom-out;
 }
-.mermaid-zoom-modal .mermaid { transform: scale(1.5); }
+.[mermaid](../../../mermaid/SKILL.md)-zoom-modal .[mermaid](../../../mermaid/SKILL.md) { transform: scale(1.5); }
 ```
 
 ## Post-Processing Rules
@@ -146,7 +146,7 @@ Output goes to `wiki-site/.vitepress/dist/`.
 
 ## Known Gotchas
 
-- Mermaid renders async — SVGs don't exist when `onMounted` fires. Must poll.
+- [Mermaid](../../../mermaid/SKILL.md) renders async — SVGs don't exist when `onMounted` fires. Must poll.
 - `isCustomElement` compiler option for bare `<T>` causes worse crashes — do NOT use it
-- Node text in Mermaid uses inline `style` with highest specificity — CSS alone won't fix it
+- Node text in [Mermaid](../../../mermaid/SKILL.md) uses inline `style` with highest specificity — CSS alone won't fix it
 - `enhanceApp()` runs during SSR where `document` doesn't exist — use `setup()` only

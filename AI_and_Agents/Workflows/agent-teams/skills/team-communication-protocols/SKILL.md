@@ -72,7 +72,7 @@ The teammate responds with `shutdown_response` (approve or reject with reason).
 | Not communicating at integration points | Teammates build against stale interfaces | Message when your interface is ready   |
 | Micromanaging via messages              | Overwhelms teammates, slows work         | Check in at milestones, not every step |
 | Using UUIDs instead of names            | Hard to read, error-prone                | Always use teammate names              |
-| Ignoring idle teammates                 | Wasted capacity                          | Assign new work or shut down           |
+| Ignoring idle teammates                 | Wasted [capacity](../../../../Infrastructure/deploy-model/[capacity](../../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)                          | Assign new work or shut down           |
 
 ## Plan Approval Workflow
 
@@ -139,7 +139,7 @@ Find team members by reading the config file:
 {
   "members": [
     {
-      "name": "security-reviewer",
+      "name": "[security-reviewer](../../../../../DevOps_and_Cloud/Cloud_Providers/security-reviewer/SKILL.md)",
       "agentId": "uuid-here",
       "agentType": "team-reviewer"
     },
@@ -176,5 +176,5 @@ This is a deadlock: both are blocked waiting for the other to finish first. The 
 
 ## Related Skills
 
-- [team-composition-patterns](../team-composition-patterns/SKILL.md) — Select agent types and team size before establishing communication norms
-- [parallel-feature-development](../parallel-feature-development/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers
+- [team-composition-patterns](../[team-composition-patterns](../[team-composition-patterns](../../../../../Product_and_Business/team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Select agent types and team size before establishing communication norms
+- [parallel-feature-development](../[parallel-feature-development](../[parallel-feature-development](../../../parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers

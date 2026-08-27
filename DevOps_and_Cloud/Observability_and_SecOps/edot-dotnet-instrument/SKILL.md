@@ -13,13 +13,13 @@ metadata:
 
 Read the setup guide before making changes:
 
-- [EDOT .NET setup](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup)
-- [EDOT .NET configuration](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/configuration)
-- [OpenTelemetry .NET instrumentation](https://opentelemetry.io/docs/zero-code/net/)
+- [EDOT .NET setup](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/setup)
+- [EDOT .NET configuration](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/configuration)
+- [OpenTelemetry .NET instrumentation](https://[opentelemetry](../opentelemetry/SKILL.md).io/docs/zero-code/net/)
 
 ## Guidelines
 
-1. Add NuGet packages: `Elastic.OpenTelemetry` and `OpenTelemetry.Instrumentation.AspNetCore` (for ASP.NET Core apps)
+1. Add NuGet packages: `Elastic.[OpenTelemetry](../opentelemetry/SKILL.md)` and `[OpenTelemetry](../opentelemetry/SKILL.md).Instrumentation.AspNetCore` (for ASP.NET Core apps)
 1. Register EDOT in startup: call `builder.AddElasticOpenTelemetry()` on the `IHostApplicationBuilder` (in `Program.cs`
    or equivalent). Without this, no telemetry is collected
 1. Set exactly three required environment variables:
@@ -34,5 +34,5 @@ Read the setup guide before making changes:
 
 ## Examples
 
-See the [EDOT .NET setup guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup) for complete
+See the [EDOT .NET setup guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/dotnet/setup) for complete
 examples.

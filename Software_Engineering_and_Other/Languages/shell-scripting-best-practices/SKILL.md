@@ -209,10 +209,10 @@ state.
 - Give scripts a `--dry-run` mode for anything destructive or
   state-changing, printing what would happen without executing it —
   mirrors the review-before-apply pattern used for
-  `terraform plan`/CloudFormation change sets/`ansible-playbook --check`.
+  `terraform plan`/[CloudFormation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) change sets/`[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook --check`.
 - Set explicit, descriptive exit codes (`exit 2` for usage errors, `exit 1`
   for runtime failures) instead of always `exit 1`, so calling automation
-  (CI, cron alerting) can distinguish failure classes.
+  (CI, cron [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) can distinguish failure classes.
 - Log to stderr for diagnostics/progress and reserve stdout for the
   script's actual output, so a script's output remains pipeable/parseable
   by other tools without diagnostic noise mixed in.
@@ -223,7 +223,7 @@ state.
 - For anything beyond simple glue logic — real data structures, HTTP
   calls with retries/backoff, structured logging, unit-testable business
   logic — reach for
-  [python-automation-scripting-for-ops](../python-automation-scripting-for-ops/SKILL.md)
+  [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)
   instead of stretching Bash past what it's good at.
 
 ## Common pitfalls
@@ -355,6 +355,6 @@ tests/deploy.bats
 
 ## Cross-references
 
-- [python-automation-scripting-for-ops](../python-automation-scripting-for-ops/SKILL.md)
-- [ansible-playbook-and-role-design](../ansible-playbook-and-role-design/SKILL.md)
-- [aws-cloudformation-templates](../aws-cloudformation-templates/SKILL.md)
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
+- [aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../../../DevOps_and_Cloud/Infrastructure_as_Code/aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md)

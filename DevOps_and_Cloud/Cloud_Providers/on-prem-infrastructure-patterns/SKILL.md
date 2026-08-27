@@ -25,7 +25,7 @@ metadata:
 Not every workload belongs in the public cloud, and not every
 organization can (or should) migrate everything at once — data residency
 law, sub-millisecond latency requirements, existing capital investment in
-depreciating hardware, or genuinely predictable steady-state capacity all
+depreciating hardware, or genuinely predictable steady-state [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) all
 make on-premises or private-cloud infrastructure the correct choice for at
 least part of most large estates. But on-prem infrastructure without the
 same engineering discipline applied to cloud — inventory as code, IaC-
@@ -34,7 +34,7 @@ placement — degenerates into hand-built snowflake servers, spreadsheet
 inventories that drift from physical reality, and a single point of
 failure between the data center and everything the business has since
 moved to the cloud. This skill covers the common virtualization baseline
-(VMware vSphere), automated bare-metal provisioning, inventory-as-code
+(VMware vSphere), automated [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning, inventory-as-code
 discipline, and the hybrid connectivity patterns that let on-prem and
 cloud infrastructure operate as one coherent estate rather than two
 disconnected islands.
@@ -42,8 +42,8 @@ disconnected islands.
 ## When to use
 
 - Designing or expanding a private-cloud/data-center footprint: a new
-  vSphere cluster, a bare-metal fleet, or a colocation build-out.
-- Automating bare-metal server provisioning (OS install, firmware
+  vSphere cluster, a [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) fleet, or a colocation build-out.
+- Automating [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) server provisioning (OS install, firmware
   baseline, network configuration) instead of manual per-server setup.
 - Planning or troubleshooting hybrid connectivity between an on-premises
   data center and a public cloud (VPN, dedicated circuit, DNS/IP
@@ -51,12 +51,12 @@ disconnected islands.
 - Deciding whether a specific workload should stay on-premises, burst to
   cloud, or migrate fully — using a documented framework rather than
   defaulting to "cloud, always."
-- Building or auditing an infrastructure-as-code pipeline for on-prem
-  resources (Terraform against vSphere/bare-metal providers, Ansible
+- Building or auditing an [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) pipeline for on-prem
+  resources (Terraform against vSphere/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) providers, [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md)
   configuration baselines).
 - Establishing or fixing an IPAM/DCIM inventory that has drifted from
   what's physically racked and cabled.
-- Planning capacity ahead of a hardware refresh cycle, given that
+- Planning [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) ahead of a hardware refresh cycle, given that
   procurement lead times (weeks to months) are nothing like cloud
   elasticity.
 
@@ -64,7 +64,7 @@ disconnected islands.
 
 - Physical facility prerequisites already in place: rack space, power
   (with A/B redundant feeds for anything production-critical), cooling
-  capacity, and physical access control — infrastructure-as-code cannot
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and physical access control — [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) cannot
   fix a data center that's out of power or cooling headroom.
 - An **out-of-band management network** physically or logically separate
   from the production network, reachable to every server's BMC (iLO,
@@ -76,7 +76,7 @@ disconnected islands.
   default and treat others as deliberate exceptions, not a mixed fleet by
   accident.
 - Terraform ≥ 1.5 with the `vsphere` provider (or the relevant
-  bare-metal/private-cloud provider) and Ansible ≥ 2.15 for OS/config
+  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/private-cloud provider) and [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) ≥ 2.15 for OS/config
   management if managing on-prem infrastructure as code — strongly
   recommended over console/CLI click-ops past a handful of hosts.
 - A single source of truth for IP address space and physical inventory
@@ -133,14 +133,14 @@ disconnected islands.
    }
    ```
 
-3. **Automate bare-metal provisioning** rather than hand-installing OS
+3. **Automate [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning** rather than hand-installing OS
    images per server. Two common patterns:
    - **PXE + kickstart/preseed**: a DHCP/TFTP-served PXE boot chain that
      hands each new host an automated OS install (Kickstart for RHEL/
      Rocky, preseed/cloud-init for Debian/Ubuntu), driven by the
      inventory record's MAC address.
-   - **MAAS (Metal-as-a-Service) or Ironic (OpenStack bare-metal)**: a
-     dedicated bare-metal provisioning service that commissions, images,
+   - **MAAS (Metal-as-a-Service) or Ironic (OpenStack [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md))**: a
+     dedicated [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning service that commissions, images,
      and hands off servers as a managed pool — closer to "cloud-like"
      self-service for physical hardware.
    Either way, drive the initial power-on and OS install through the
@@ -153,8 +153,8 @@ disconnected islands.
      https://<BMC_IP>/redfish/v1/Systems/1/Actions/ComputerSystem.Reset
    ```
 
-4. **Configure the OS and baseline agents with Ansible immediately after
-   provisioning** — firmware/BIOS version check, NTP, monitoring agent,
+4. **Configure the OS and baseline agents with [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) immediately after
+   provisioning** — firmware/BIOS version check, NTP, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) agent,
    security baseline (CIS benchmark), and hypervisor join-to-cluster —
    so every host reaches a known-good state before carrying workloads:
    ```yaml
@@ -181,7 +181,7 @@ disconnected islands.
 
 6. **Reserve IP address space centrally, including on-prem ranges, before
    connecting to any cloud.** The same IPAM discipline covered in
-   `multi-cloud-networking-patterns` applies here in reverse: on-prem
+   `[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)` applies here in reverse: on-prem
    CIDR blocks must be reserved and known before a cloud VPC/VNet/VCN is
    peered to them, or the connection will fail on first overlap.
 
@@ -215,11 +215,11 @@ disconnected islands.
    existing capex/depreciation runway on already-owned hardware, data
    gravity (cost/time to move large existing datasets), and whether the
    workload's demand is genuinely elastic/bursty (cloud's core advantage)
-   or flat and predictable (where owned steady-state capacity is often
+   or flat and predictable (where owned steady-state [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is often
    cheaper). Document the decision and revisit it — it is not permanent.
 
-9. **Capacity-plan with real lead-time headroom.** Unlike cloud
-   autoscaling, a bare-metal or vSphere cluster capacity shortfall means
+9. **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with real lead-time headroom.** Unlike cloud
+   [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), a [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or vSphere cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) shortfall means
    weeks-to-months of hardware procurement, not minutes. Track
    utilization trends and trigger procurement well before a cluster
    reaches the threshold where DRS/HA admission control starts rejecting
@@ -228,14 +228,14 @@ disconnected islands.
 10. **Validate hybrid failover and provisioning automation before relying
     on them.** Run a controlled VPN-failover test (drop the primary
     dedicated circuit deliberately, confirm traffic reroutes), and
-    provision one canary bare-metal host end to end through the
-    PXE/MAAS + Ansible pipeline to confirm it reaches the expected
+    provision one canary [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) host end to end through the
+    PXE/MAAS + [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) pipeline to confirm it reaches the expected
     baseline before trusting the pipeline for a full fleet rollout.
 
 ## Best practices
 
 - **Manage on-prem infrastructure as code** (Terraform for
-  vSphere/bare-metal provisioning, Ansible for OS/config baselines) with
+  vSphere/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning, [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) for OS/config baselines) with
   the same PR review rigor as cloud IaC — a hand-built ESXi host is a
   future outage nobody can explain.
 - **Keep the out-of-band management network physically or logically
@@ -245,7 +245,7 @@ disconnected islands.
   every additional platform as a deliberate, documented exception —
   mixed fleets multiply operational tooling and staffing cost.
 - **Version and stage firmware/BIOS baselines** before fleet-wide
-  rollout; firmware drift across a bare-metal fleet is one of the most
+  rollout; firmware drift across a [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) fleet is one of the most
   common causes of "it works on some hosts but not others" incidents.
 - **Design hybrid connectivity redundant from day one** — a dedicated
   circuit with VPN failover, not a single link, for anything
@@ -257,17 +257,17 @@ disconnected islands.
   build time — a workload's latency/data-residency/elasticity profile can
   change as the business does, and "we built it here five years ago" is
   not a durable placement justification.
-- **Plan power, cooling, and rack capacity alongside compute capacity** —
+- **Plan power, cooling, and rack [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) alongside compute [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** —
   a cluster can be compute/memory-healthy and still be unable to grow
   because the rack is out of power headroom.
 
 ## Common pitfalls
 
-- **Symptom:** A new vSphere host or bare-metal server takes days to
+- **Symptom:** A new vSphere host or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) server takes days to
   bring into service even though procurement delivered it on schedule.
   **Fix:** Provisioning was still a manual, per-host process (rack it,
   console in, click through an OS installer). Automate the PXE/MAAS +
-  Ansible pipeline described above so bringing a racked, cabled, and
+  [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) pipeline described above so bringing a racked, cabled, and
   BMC-reachable host into service is a single pipeline run, not a
   multi-day manual checklist.
 
@@ -288,9 +288,9 @@ disconnected islands.
   updates were applied ad hoc, host by host, whenever someone happened to
   notice an available update. Track a single firmware/BIOS baseline
   version per hardware model, stage updates through a canary subset, and
-  enforce the baseline via the same Ansible assertion shown in step 4.
+  enforce the baseline via the same [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) assertion shown in step 4.
 
-- **Symptom:** An external audit or incident response finds the BMC/iLO/
+- **Symptom:** An external [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../Observability_and_SecOps/incident/SKILL.md) response finds the BMC/iLO/
   iDRAC management interfaces reachable from the general corporate
   network, several still on default vendor credentials.
   **Fix:** The out-of-band management network was never actually
@@ -300,10 +300,10 @@ disconnected islands.
   immediately, and require the management network to sit behind its own
   access-controlled jump host.
 
-- **Symptom:** A "cloud burst" plan for seasonal capacity turns out to
+- **Symptom:** A "cloud burst" plan for seasonal [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) turns out to
   cost far more, or perform far worse, than expected once actually
   exercised.
-  **Fix:** The workload-placement decision assumed cloud capacity would
+  **Fix:** The workload-placement decision assumed cloud [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) would
   behave like an on-prem extension with negligible cost/latency
   difference — it didn't account for egress cost on data moved back and
   forth, or the added latency of round-tripping to a dependency that
@@ -317,10 +317,10 @@ disconnected islands.
 **Scenario:** A manufacturing company runs a single on-prem data center
 on VMware vSphere. Plant-floor OT systems must stay on-premises for
 latency and regulatory reasons, but the company's e-commerce storefront
-needs seasonal burst capacity for a holiday sales spike, and inventory
+needs seasonal burst [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for a holiday sales spike, and inventory
 records have drifted badly from what's actually racked.
 
-1. Stand up NetBox and reconcile it against a physical audit of the data
+1. Stand up NetBox and reconcile it against a physical [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of the data
    center — every rack, host, IP subnet, and VLAN gets a real device
    record before any new automation is trusted to act on it.
 2. Confirm the vSphere cluster's DRS/HA configuration is managed via the
@@ -339,19 +339,19 @@ records have drifted badly from what's actually racked.
 5. Reserve on-prem CIDR ranges in the same IPAM system already tracking
    the cloud VPC ranges, confirming no overlap before the hybrid
    connection goes live.
-6. Automate provisioning of a small pool of bare-metal hosts reserved for
+6. Automate provisioning of a small pool of [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) hosts reserved for
    OT workloads using PXE + kickstart driven by the NetBox inventory, with
-   firmware baseline enforcement via Ansible.
+   firmware baseline enforcement via [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md).
 7. Run a controlled failover test: fail the dedicated circuit
    deliberately during a maintenance window, confirm the VPN path takes
    over automatically, then fail back.
 8. Result: OT systems stay on-prem with a verified inventory and
-   automated bare-metal pipeline; the storefront bursts to cloud through
+   automated [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) pipeline; the storefront bursts to cloud through
    a redundant hybrid connection with pre-reserved, non-overlapping IP
    space — and the placement decision is documented for the next review
    cycle rather than assumed permanent.
 
 ## Cross-references
 
-- [multi-cloud-networking-patterns](../multi-cloud-networking-patterns/SKILL.md)
-- [disaster-recovery-and-backup-strategy](../disaster-recovery-and-backup-strategy/SKILL.md)
+- [multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)/SKILL.md)
+- [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)

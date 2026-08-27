@@ -9,7 +9,7 @@ metadata:
 
 # helm
 
-Use this skill to keep Helm-based Kubernetes deployments reproducible, auditable, and safe across environments.
+Use this skill to keep Helm-based [Kubernetes](../kubernetes/SKILL.md) deployments reproducible, auditable, and safe across environments.
 
 ## Intent Router
 
@@ -18,7 +18,7 @@ Use this skill to keep Helm-based Kubernetes deployments reproducible, auditable
 | Install Helm, add repos, configure registries | `resources/install-and-setup.md` | User needs to install Helm or configure repositories |
 | install/upgrade/list/rollback/template commands | `resources/command-cookbook.md` | User needs day-to-day Helm release operations |
 | Chart.yaml, templates, values, helpers | `resources/chart-authoring.md` | User wants to author or modify a Helm chart |
-| Release lifecycle, --atomic, --wait, diff plugin | `resources/release-management.md` | User asks about release management or upgrade strategies |
+| Release lifecycle, --atomic, --wait, diff plugin | `resources/[release-management](../../CI_CD/release-management/SKILL.md).md` | User asks about release management or upgrade strategies |
 
 ## Quick Start
 
@@ -70,7 +70,7 @@ helm list -A
 3. Create a `values.yaml` override file for environment-specific configuration.
 4. Render and review manifests: `helm template <release> <chart> -f values.yaml`.
 5. Install or upgrade: `helm upgrade --install <release> <chart> -f values.yaml --atomic --wait`.
-6. Verify: `helm list`, `helm status <release>`, `kubectl get pods -n <namespace>`.
+6. Verify: `helm list`, `helm status <release>`, `[kubectl](../kubectl/SKILL.md) get pods -n <namespace>`.
 7. On failure, check: `helm history <release>` and `helm rollback <release>`.
 
 ```bash
@@ -82,14 +82,14 @@ helm status my-nginx -n my-namespace
 
 ## Related Skills
 
-- **kubectl** — inspect and manage Kubernetes resources created by Helm
-- **docker** — build container images referenced in Helm chart values
+- **[kubectl](../kubectl/SKILL.md)** — inspect and manage [Kubernetes](../kubernetes/SKILL.md) resources created by Helm
+- **[docker](../docker/SKILL.md)** — build container images referenced in Helm chart values
 
 ## References
 
 - `resources/install-and-setup.md`
 - `resources/command-cookbook.md`
 - `resources/chart-authoring.md`
-- `resources/release-management.md`
+- `resources/[release-management](../../CI_CD/release-management/SKILL.md).md`
 - Official docs: <https://helm.sh/docs/>
 - Chart hub: <https://artifacthub.io/>

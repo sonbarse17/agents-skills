@@ -7,23 +7,23 @@ metadata:
   version: "1.0"
 ---
 
-# Kubernetes Operations
+# [Kubernetes](../kubernetes/SKILL.md) Operations
 
-Deploy and manage containerized applications on Kubernetes clusters.
+Deploy and manage containerized applications on [Kubernetes](../kubernetes/SKILL.md) clusters.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Deploying applications to Kubernetes
+- Deploying applications to [Kubernetes](../kubernetes/SKILL.md)
 - Managing pods, deployments, and services
 - Configuring resource limits and scaling
-- Troubleshooting Kubernetes workloads
+- Troubleshooting [Kubernetes](../kubernetes/SKILL.md) workloads
 - Setting up networking and ingress
 
 ## Prerequisites
 
-- kubectl installed and configured
-- Access to a Kubernetes cluster
+- [kubectl](../kubectl/SKILL.md) installed and configured
+- Access to a [Kubernetes](../kubernetes/SKILL.md) cluster
 - Basic understanding of containers
 
 ## Core Resources
@@ -116,7 +116,7 @@ kind: Ingress
 metadata:
   name: myapp
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.[kubernetes](../kubernetes/SKILL.md).io/rewrite-target: /
 spec:
   ingressClassName: nginx
   tls:
@@ -185,66 +185,66 @@ stringData:
 
 ```bash
 # Create secret from command line
-kubectl create secret generic myapp-secrets \
+[kubectl](../kubectl/SKILL.md) create secret generic myapp-secrets \
   --from-literal=database-url='postgres://...' \
   --from-file=tls.crt=cert.pem
 ```
 
-## kubectl Commands
+## [kubectl](../kubectl/SKILL.md) Commands
 
 ### Resource Management
 
 ```bash
 # Apply configuration
-kubectl apply -f deployment.yaml
+[kubectl](../kubectl/SKILL.md) apply -f deployment.yaml
 
 # Get resources
-kubectl get pods
-kubectl get deployments
-kubectl get services
-kubectl get all -n myapp
+[kubectl](../kubectl/SKILL.md) get pods
+[kubectl](../kubectl/SKILL.md) get deployments
+[kubectl](../kubectl/SKILL.md) get services
+[kubectl](../kubectl/SKILL.md) get all -n myapp
 
 # Describe resource
-kubectl describe pod myapp-xxx
+[kubectl](../kubectl/SKILL.md) describe pod myapp-xxx
 
 # Delete resource
-kubectl delete -f deployment.yaml
-kubectl delete pod myapp-xxx
+[kubectl](../kubectl/SKILL.md) delete -f deployment.yaml
+[kubectl](../kubectl/SKILL.md) delete pod myapp-xxx
 
 # Edit resource
-kubectl edit deployment myapp
+[kubectl](../kubectl/SKILL.md) edit deployment myapp
 ```
 
 ### Debugging
 
 ```bash
 # View logs
-kubectl logs myapp-xxx
-kubectl logs -f myapp-xxx --tail=100
-kubectl logs myapp-xxx -c sidecar  # specific container
+[kubectl](../kubectl/SKILL.md) logs myapp-xxx
+[kubectl](../kubectl/SKILL.md) logs -f myapp-xxx --tail=100
+[kubectl](../kubectl/SKILL.md) logs myapp-xxx -c sidecar  # specific container
 
 # Execute command
-kubectl exec -it myapp-xxx -- /bin/sh
+[kubectl](../kubectl/SKILL.md) exec -it myapp-xxx -- /bin/sh
 
 # Port forward
-kubectl port-forward svc/myapp 8080:80
-kubectl port-forward pod/myapp-xxx 8080:8080
+[kubectl](../kubectl/SKILL.md) port-forward svc/myapp 8080:80
+[kubectl](../kubectl/SKILL.md) port-forward pod/myapp-xxx 8080:8080
 
 # View events
-kubectl get events --sort-by='.lastTimestamp'
+[kubectl](../kubectl/SKILL.md) get events --sort-by='.lastTimestamp'
 
 # Debug pod
-kubectl debug myapp-xxx -it --image=busybox
+[kubectl](../kubectl/SKILL.md) debug myapp-xxx -it --image=busybox
 ```
 
 ### Scaling
 
 ```bash
 # Manual scaling
-kubectl scale deployment myapp --replicas=5
+[kubectl](../kubectl/SKILL.md) scale deployment myapp --replicas=5
 
-# Autoscaling
-kubectl autoscale deployment myapp \
+# [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+[kubectl](../kubectl/SKILL.md) autoscale deployment myapp \
   --min=2 --max=10 \
   --cpu-percent=80
 ```
@@ -252,7 +252,7 @@ kubectl autoscale deployment myapp \
 ## Horizontal Pod Autoscaler
 
 ```yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: myapp
@@ -332,7 +332,7 @@ spec:
         - containerPort: 5432
         volumeMounts:
         - name: data
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
   volumeClaimTemplates:
   - metadata:
       name: data
@@ -445,17 +445,17 @@ spec:
 
 ```bash
 # Update image
-kubectl set image deployment/myapp myapp=myapp:2.0.0
+[kubectl](../kubectl/SKILL.md) set image deployment/myapp myapp=myapp:2.0.0
 
 # Check rollout status
-kubectl rollout status deployment/myapp
+[kubectl](../kubectl/SKILL.md) rollout status deployment/myapp
 
 # View history
-kubectl rollout history deployment/myapp
+[kubectl](../kubectl/SKILL.md) rollout history deployment/myapp
 
 # Rollback
-kubectl rollout undo deployment/myapp
-kubectl rollout undo deployment/myapp --to-revision=2
+[kubectl](../kubectl/SKILL.md) rollout undo deployment/myapp
+[kubectl](../kubectl/SKILL.md) rollout undo deployment/myapp --to-revision=2
 ```
 
 ## Common Issues
@@ -465,8 +465,8 @@ kubectl rollout undo deployment/myapp --to-revision=2
 **Solution**: Check resource availability, node selector, PVC binding
 
 ```bash
-kubectl describe pod myapp-xxx
-kubectl get events
+[kubectl](../kubectl/SKILL.md) describe pod myapp-xxx
+[kubectl](../kubectl/SKILL.md) get events
 ```
 
 ### Issue: CrashLoopBackOff
@@ -474,8 +474,8 @@ kubectl get events
 **Solution**: Check logs, verify entrypoint, check probes
 
 ```bash
-kubectl logs myapp-xxx --previous
-kubectl describe pod myapp-xxx
+[kubectl](../kubectl/SKILL.md) logs myapp-xxx --previous
+[kubectl](../kubectl/SKILL.md) describe pod myapp-xxx
 ```
 
 ### Issue: Service Not Accessible
@@ -483,8 +483,8 @@ kubectl describe pod myapp-xxx
 **Solution**: Check selector labels, verify endpoints exist
 
 ```bash
-kubectl get endpoints myapp
-kubectl describe svc myapp
+[kubectl](../kubectl/SKILL.md) get endpoints myapp
+[kubectl](../kubectl/SKILL.md) describe svc myapp
 ```
 
 ### Issue: Image Pull Error
@@ -492,10 +492,10 @@ kubectl describe svc myapp
 **Solution**: Check image name, verify registry credentials
 
 ```bash
-kubectl create secret docker-registry regcred \
-  --docker-server=registry.example.com \
-  --docker-username=user \
-  --docker-password=pass
+[kubectl](../kubectl/SKILL.md) create secret [docker](../docker/SKILL.md)-registry regcred \
+  --[docker](../docker/SKILL.md)-server=registry.example.com \
+  --[docker](../docker/SKILL.md)-username=user \
+  --[docker](../docker/SKILL.md)-password=pass
 ```
 
 ## Best Practices
@@ -511,6 +511,6 @@ kubectl create secret docker-registry regcred \
 
 ## Related Skills
 
-- [helm-charts](../helm-charts/) - Package management
-- [argocd-gitops](../argocd-gitops/) - GitOps deployments
-- [kubernetes-hardening](../../../security/hardening/kubernetes-hardening/) - Security
+- [helm-charts](../[helm-charts](../helm-charts/SKILL.md)/) - Package management
+- [argocd-gitops](../[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../gitops/SKILL.md)/SKILL.md)/) - [GitOps](../gitops/SKILL.md) deployments
+- [kubernetes-hardening](../../../security/hardening/[kubernetes-hardening](../[kubernetes](../kubernetes/SKILL.md)-hardening/SKILL.md)/) - Security

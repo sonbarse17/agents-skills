@@ -14,7 +14,7 @@ Transform debugging from frustrating guesswork into systematic problem-solving w
 - Understanding unfamiliar codebases
 - Debugging production issues
 - Analyzing crash dumps and stack traces
-- Profiling application performance
+- [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) application performance
 - Investigating memory leaks
 - Debugging distributed systems
 
@@ -150,9 +150,9 @@ Based on gathered info, ask:
 
 ## Debugging Tools
 
-### JavaScript/TypeScript Debugging
+### JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Debugging
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Chrome DevTools Debugger
 function processOrder(order: Order) {
   debugger; // Execution pauses here
@@ -176,7 +176,7 @@ console.time("operation");
 console.trace(); // Stack trace
 console.assert(value > 0, "Value must be positive"); // Assertion
 
-// Performance profiling
+// Performance [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
 performance.mark("start-operation");
 // ... operation code
 performance.mark("end-operation");
@@ -212,9 +212,9 @@ console.log(performance.getEntriesByType("measure"));
 }
 ```
 
-### Python Debugging
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Debugging
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Built-in debugger (pdb)
 import pdb
 
@@ -227,7 +227,7 @@ def calculate_total(items):
 
     return total
 
-# Breakpoint (Python 3.7+)
+# Breakpoint ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.7+)
 def process_order(order):
     breakpoint()  # More convenient than pdb.set_trace()
     # ... code
@@ -268,7 +268,7 @@ stats.print_stats(10)  # Top 10 slowest
 
 ```go
 // Delve debugger
-// Install: go install github.com/go-delve/delve/cmd/dlv@latest
+// Install: go install [github](../../CI_CD/github/SKILL.md).com/go-delve/delve/cmd/dlv@latest
 // Run: dlv debug main.go
 
 import (
@@ -294,11 +294,11 @@ func processRequest() {
     // ... code that might panic
 }
 
-// Memory profiling
+// Memory [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
 import _ "net/http/pprof"
 // Visit http://localhost:6060/debug/pprof/
 
-// CPU profiling
+// CPU [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
 import (
     "os"
     "runtime/pprof"
@@ -317,10 +317,10 @@ defer pprof.StopCPUProfile()
 ```bash
 # Git bisect for finding regression
 git bisect start
-git bisect bad                    # Current commit is bad
+git bisect bad                    # Current [commit](../../CI_CD/commit/SKILL.md) is bad
 git bisect good v1.0.0            # v1.0.0 was good
 
-# Git checks out middle commit
+# Git checks out middle [commit](../../CI_CD/commit/SKILL.md)
 # Test it, then:
 git bisect good   # if it works
 git bisect bad    # if it's broken
@@ -350,7 +350,7 @@ Hypothesis: Time-based issue? Check timezone handling.
 
 ### Technique 3: Trace Debugging
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Function call tracing
 function trace(
   target: any,
@@ -379,7 +379,7 @@ class OrderService {
 
 ### Technique 4: Memory Leak Detection
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Chrome DevTools Memory Profiler
 // 1. Take heap snapshot
 // 2. Perform action
@@ -459,7 +459,7 @@ afterEach(() => {
 3. **Tools**
    - Browser DevTools Performance tab
    - Lighthouse
-   - Python: cProfile, line_profiler
+   - [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md): cProfile, line_profiler
    - Node: clinic.js, 0x
 ```
 
@@ -469,10 +469,10 @@ afterEach(() => {
 ## Production Debugging
 
 1. **Gather evidence**
-   - Error tracking (Sentry, Bugsnag)
+   - Error tracking ([Sentry](../sentry/SKILL.md), Bugsnag)
    - Application logs
    - User reports
-   - Metrics/monitoring
+   - Metrics/[monitoring](../monitoring/SKILL.md)
 
 2. **Reproduce locally**
    - Use production data (anonymized)
@@ -482,7 +482,7 @@ afterEach(() => {
 3. **Safe investigation**
    - Don't change production
    - Use feature flags
-   - Add monitoring/logging
+   - Add [monitoring](../monitoring/SKILL.md)/logging
    - Test fixes in staging
 ```
 

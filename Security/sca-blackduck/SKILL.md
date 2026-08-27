@@ -104,7 +104,7 @@ Work through each step systematically. Check off completed items.
 
 1. Identify direct and transitive dependencies
 2. Analyze component quality metrics:
-   - Maintenance activity (last update, commit frequency)
+   - Maintenance activity (last update, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) frequency)
    - Community health (contributors, issue resolution)
    - Security track record (historical CVEs)
 3. Flag high-risk components (unmaintained, few maintainers, security issues)
@@ -114,14 +114,14 @@ Work through each step systematically. Check off completed items.
 ## Security Considerations
 
 - **Sensitive Data Handling**: Black Duck scans require API tokens with read/write access.
-  Store credentials securely in secrets management (Vault, AWS Secrets Manager).
-  Never commit tokens to version control.
+  Store credentials securely in secrets management ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
+  Never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) tokens to version control.
 
 - **Access Control**: Limit Black Duck access to authorized security and development teams.
   Use role-based access control (RBAC) for scan result visibility and policy management.
 
-- **Audit Logging**: Log all scan executions with timestamps, user, project version, and
-  findings count for compliance auditing. Enable Black Duck's built-in audit trail.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, project version, and
+  findings count for compliance auditing. Enable Black Duck's built-in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 
 - **Compliance**: SCA scanning supports SOC2, PCI-DSS, GDPR, and HIPAA compliance by
   tracking third-party component risks. Generate SBOM for regulatory requirements.
@@ -134,7 +134,7 @@ Work through each step systematically. Check off completed items.
 Black Duck Detect automatically identifies and scans:
 
 - **JavaScript/Node**: npm, yarn, pnpm
-- **Python**: pip, pipenv, poetry
+- **[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)**: pip, pipenv, poetry
 - **Java**: Maven, Gradle
 - **Ruby**: Bundler, gem
 - **.NET**: NuGet
@@ -142,7 +142,7 @@ Black Duck Detect automatically identifies and scans:
 - **PHP**: Composer
 - **Rust**: Cargo
 - **C/C++**: Conan, vcpkg
-- **Docker**: Container image layers
+- **[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)**: Container image layers
 
 ## Bundled Resources
 
@@ -162,9 +162,9 @@ Black Duck Detect automatically identifies and scans:
 
 ### Assets
 
-- `assets/ci_integration/github_actions.yml` - GitHub Actions workflow for Black Duck scanning
+- `assets/ci_integration/github_actions.yml` - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for Black Duck scanning
 - `assets/ci_integration/gitlab_ci.yml` - GitLab CI configuration for SCA
-- `assets/ci_integration/jenkins_pipeline.groovy` - Jenkins pipeline with Black Duck integration
+- `assets/ci_integration/jenkins_pipeline.groovy` - [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) pipeline with Black Duck integration
 - `assets/policy_templates/` - Pre-configured security and compliance policies
 - `assets/blackduck_config.yml` - Recommended Black Duck Detect configuration
 
@@ -193,7 +193,7 @@ bash <(curl -s -L https://detect.synopsys.com/detect.sh) \
   --detect.wait.for.results=true
 ```
 
-### Pattern 3: License Compliance Audit
+### Pattern 3: License Compliance [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
 # Generate license compliance report
@@ -230,9 +230,9 @@ scripts/sbom_generator.sh \
 
 ### CI/CD Integration
 
-- **GitHub Actions**: Use `synopsys-sig/detect-action@v1` with policy enforcement
+- **[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions**: Use `synopsys-sig/detect-action@v1` with policy enforcement
 - **GitLab CI**: Run as security scanning job with dependency scanning template
-- **Jenkins**: Execute Detect as pipeline step with quality gates
+- **[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)**: Execute Detect as pipeline step with quality gates
 - **Azure DevOps**: Integrate using Black Duck extension from marketplace
 
 See `assets/ci_integration/` for ready-to-use pipeline configurations.
@@ -251,7 +251,7 @@ See `assets/ci_integration/` for ready-to-use pipeline configurations.
 - **Code Review**: Automated dependency review in PR workflow
 - **Testing**: Validate security of third-party components
 - **Deployment**: Final dependency gate before production release
-- **Operations**: Continuous monitoring for new vulnerabilities in production
+- **Operations**: Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for new vulnerabilities in production
 
 ## Severity Classification
 
@@ -366,14 +366,14 @@ Black Duck supports standard SBOM formats:
 Use SBOMs for:
 - Supply chain transparency
 - Regulatory compliance (Executive Order 14028)
-- Incident response (rapid vulnerability identification)
+- [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response (rapid vulnerability identification)
 - M&A due diligence
 
 ## Best Practices
 
 1. **Shift Left**: Integrate SCA early in development lifecycle
 2. **Policy-Driven**: Define clear policies for vulnerabilities and licenses
-3. **Continuous Monitoring**: Run scans on every commit and nightly for production
+3. **Continuous [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Run scans on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and nightly for production
 4. **Remediation Prioritization**: Focus on exploitable vulnerabilities first
 5. **SBOM Management**: Maintain up-to-date SBOM for all production applications
 6. **Supply Chain Hygiene**: Regularly review dependency health and maintainability

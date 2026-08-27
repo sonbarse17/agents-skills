@@ -9,13 +9,13 @@ metadata:
 
 # PlanetScale
 
-Use PlanetScale for serverless MySQL-compatible databases with non-blocking schema change workflows built on Vitess.
+Use PlanetScale for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [MySQL](../../Backend/mysql/SKILL.md)-compatible databases with non-blocking schema change workflows built on Vitess.
 
 ## When to Use
 
-- You need a managed MySQL-compatible database with zero-downtime migrations.
+- You need a managed [MySQL](../../Backend/mysql/SKILL.md)-compatible database with zero-downtime migrations.
 - Your team wants Git-like branching for schema development.
-- You are building a serverless or edge application that benefits from connection pooling.
+- You are building a [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) or edge application that benefits from connection pooling.
 - You need horizontal sharding without managing Vitess directly.
 
 ## Prerequisites
@@ -31,7 +31,7 @@ Use PlanetScale for serverless MySQL-compatible databases with non-blocking sche
 brew install planetscale/tap/pscale
 
 # Linux (deb)
-curl -fsSL https://github.com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
+curl -fsSL https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
 sudo dpkg -i pscale.deb
 
 # Verify installation
@@ -129,7 +129,7 @@ pscale branch delete my-app add-users-table
 pscale password create my-app main production-creds
 
 # Output includes host, username, and password for the connection string:
-# mysql://USERNAME:PASSWORD@HOST/my-app?sslmode=verify_identity
+# [mysql](../../Backend/mysql/SKILL.md)://USERNAME:PASSWORD@HOST/my-app?sslmode=verify_identity
 
 # Proxy a branch to localhost for local development (no password needed)
 pscale connect my-app add-users-table --port 3306
@@ -139,10 +139,10 @@ pscale connect my-app add-users-table --port 3306
 
 ```bash
 # .env (local development using pscale connect)
-DATABASE_URL="mysql://root@127.0.0.1:3306/my-app"
+DATABASE_URL="[mysql](../../Backend/mysql/SKILL.md)://root@127.0.0.1:3306/my-app"
 
 # .env.production (using PlanetScale connection string)
-DATABASE_URL="mysql://USERNAME:PASSWORD@us-east.connect.psdb.cloud/my-app?sslaccept=strict"
+DATABASE_URL="[mysql](../../Backend/mysql/SKILL.md)://USERNAME:PASSWORD@us-east.connect.psdb.cloud/my-app?sslaccept=strict"
 ```
 
 ## Prisma Integration
@@ -150,7 +150,7 @@ DATABASE_URL="mysql://USERNAME:PASSWORD@us-east.connect.psdb.cloud/my-app?sslacc
 ```prisma
 // prisma/schema.prisma
 datasource db {
-  provider     = "mysql"
+  provider     = "[mysql](../../Backend/mysql/SKILL.md)"
   url          = env("DATABASE_URL")
   relationMode = "prisma"   // required — PlanetScale does not support foreign keys
 }
@@ -218,17 +218,17 @@ SHOW INDEX FROM users;
 EXPLAIN SELECT * FROM orders WHERE user_id = 42 AND status = 'paid';
 ```
 
-## Docker Setup for Local Development
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Setup for Local Development
 
-Use a plain MySQL 8 container to mirror PlanetScale locally when you are offline or want fast iteration without the CLI proxy.
+Use a plain [MySQL](../../Backend/mysql/SKILL.md) 8 container to mirror PlanetScale locally when you are offline or want fast iteration without the CLI proxy.
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.9"
 
 services:
-  mysql:
-    image: mysql:8.0
+  [mysql](../../Backend/mysql/SKILL.md):
+    image: [mysql](../../Backend/mysql/SKILL.md):8.0
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -238,8 +238,8 @@ services:
       MYSQL_USER: myapp
       MYSQL_PASSWORD: secret
     volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/[mysql](../../Backend/mysql/SKILL.md)
+      - ./init.sql:/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       --default-authentication-plugin=mysql_native_password
       --character-set-server=utf8mb4
@@ -250,15 +250,15 @@ volumes:
 ```
 
 ```bash
-docker compose up -d
-mysql -h 127.0.0.1 -u myapp -psecret my-app
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
+[mysql](../../Backend/mysql/SKILL.md) -h 127.0.0.1 -u myapp -psecret my-app
 ```
 
 ## Production Best Practices
 
 - Keep every schema change backward compatible; deploy the schema first, then the application code.
 - Use deploy request reviews as a gate; require at least one approval before merging.
-- Enable connection pooling (`@planetscale/database` driver or Prisma Data Proxy) for serverless workloads.
+- Enable connection pooling (`@planetscale/database` driver or Prisma Data Proxy) for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) workloads.
 - Monitor query insights weekly and add indexes for queries exceeding 100 ms.
 - Set branch promotion rules so only specific team members can deploy to `main`.
 - Use read-only regions to reduce latency for geographically distributed reads.
@@ -271,11 +271,11 @@ mysql -h 127.0.0.1 -u myapp -psecret my-app
 | Deploy request shows "schema conflict" | Concurrent branch changes to the same table | Rebase: delete branch, recreate from current `main`, reapply changes |
 | `foreign key constraint` error | PlanetScale does not support foreign keys | Use `relationMode = "prisma"` or remove FK definitions |
 | High latency on reads | No index on queried column | Add index via a new branch and deploy request |
-| `max connections` exceeded | Connection pooling not enabled | Use `@planetscale/database` serverless driver or PgBouncer-style proxy |
+| `max connections` exceeded | Connection pooling not enabled | Use `@planetscale/database` [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) driver or PgBouncer-style proxy |
 | `pscale connect` hangs | Firewall blocking outbound TLS | Allow outbound 443 to `*.psdb.cloud` |
 
 ## Related Skills
 
-- [mysql](../mysql/) - MySQL tuning fundamentals
-- [database-backups](../database-backups/) - Recovery planning
-- [postgresql](../postgresql/) - Alternative relational database
+- [mysql](../[mysql](../../Backend/mysql/SKILL.md)/) - [MySQL](../../Backend/mysql/SKILL.md) tuning fundamentals
+- [database-backups](../[database-backups](../database-backups/SKILL.md)/) - Recovery planning
+- [postgresql](../[postgresql](../../Backend/postgresql/SKILL.md)/) - Alternative relational database

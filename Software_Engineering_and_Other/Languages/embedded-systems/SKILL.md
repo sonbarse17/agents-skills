@@ -33,7 +33,7 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | RTOS Patterns | `../../../Global_References/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
-| Microcontroller | `../../../Global_References/microcontroller-programming.md` | Bare-metal, registers, peripherals, interrupts |
+| Microcontroller | `../../../Global_References/microcontroller-programming.md` | [Bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), registers, peripherals, interrupts |
 | Power Management | `../../../Global_References/power-optimization.md` | Sleep modes, low-power design, battery life |
 | Communication | `../../../Global_References/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
 | Memory & Performance | `../../../Global_References/memory-optimization.md` | Code size, RAM usage, flash management |
@@ -127,7 +127,7 @@ void app_init(void) {
 }
 ```
 
-### GPIO + Timer-Interrupt Blink (Bare-Metal STM32)
+### GPIO + Timer-Interrupt Blink ([Bare-Metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) STM32)
 
 ```c
 /* Demonstrates: clock enable, register-level GPIO, TIM2 interrupt */
@@ -166,5 +166,5 @@ When implementing embedded features, provide:
 4. Resource usage summary (flash, RAM, power estimate)
 5. Brief explanation of timing and optimization decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/embedded-systems/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/specialized/embedded-systems/)
 

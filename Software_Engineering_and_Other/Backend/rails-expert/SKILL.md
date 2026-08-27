@@ -25,7 +25,7 @@ metadata:
 5. **Validate** — `bundle exec rspec` must pass; `bundle exec rubocop` for style
    - If specs fail: check error output, fix failing examples, re-run with `--format documentation` for detail
    - If N+1 queries surface during review: add `includes`/`eager_load` (see Common Patterns) and re-run specs
-6. **Optimize** — Audit for N+1 queries, add missing indexes, add caching
+6. **Optimize** — [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for N+1 queries, add missing indexes, add caching
 
 ## Reference Guide
 
@@ -153,5 +153,5 @@ When implementing Rails features, provide:
 5. Spec files for models and requests
 6. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/backend/rails-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/rails-expert/)
 

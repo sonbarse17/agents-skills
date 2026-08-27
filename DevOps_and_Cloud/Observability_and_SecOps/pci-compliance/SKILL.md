@@ -58,7 +58,7 @@ Master PCI DSS (Payment Card Industry Data Security Standard) compliance for sec
 
 ## Data Minimization (Never Store)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # NEVER STORE THESE
 PROHIBITED_DATA = {
     'full_track_data': 'Magnetic stripe data',
@@ -106,7 +106,7 @@ class PaymentData:
 
 ### Using Payment Processor Tokens
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import stripe
 
 class TokenizedPayment:
@@ -169,16 +169,16 @@ class TokenizedPayment:
 
 ### Custom Tokenization (Advanced)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import secrets
 from cryptography.fernet import Fernet
 
 class TokenVault:
-    """Secure token vault for card data (if you must store it)."""
+    """Secure token [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for card data (if you must store it)."""
 
     def __init__(self, encryption_key):
         self.cipher = Fernet(encryption_key)
-        self.vault = {}  # In production: use encrypted database
+        self.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) = {}  # In production: use encrypted database
 
     def tokenize(self, card_data):
         """Convert card data to token."""
@@ -189,13 +189,13 @@ class TokenVault:
         encrypted = self.cipher.encrypt(json.dumps(card_data).encode())
 
         # Store token -> encrypted data mapping
-        self.vault[token] = encrypted
+        self.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)[token] = encrypted
 
         return token
 
     def detokenize(self, token):
         """Retrieve card data from token."""
-        encrypted = self.vault.get(token)
+        encrypted = self.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).get(token)
         if not encrypted:
             raise ValueError("Token not found")
 
@@ -204,15 +204,15 @@ class TokenVault:
         return json.loads(decrypted.decode())
 
     def delete_token(self, token):
-        """Remove token from vault."""
-        self.vault.pop(token, None)
+        """Remove token from [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)."""
+        self.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).pop(token, None)
 ```
 
 ## Encryption
 
 ### Data at Rest
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 import os
 
@@ -255,7 +255,7 @@ encrypted_pan = storage.encrypt("4242424242424242")
 
 ### Data in Transit
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Always use TLS 1.2 or higher
 # Flask/Django example
 app.config['SESSION_COOKIE_SECURE'] = True  # HTTPS only

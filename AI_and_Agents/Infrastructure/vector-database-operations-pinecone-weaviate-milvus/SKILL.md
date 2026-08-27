@@ -29,12 +29,12 @@ concrete, comparable guidance across the three most common choices
 (Pinecone as a managed service, Weaviate and Milvus as commonly
 self-hosted or managed alternatives). It assumes the index schema and
 dimension are already correct and validated (see
-[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md))
+[vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md))
 and that data is already flowing in via an ingestion pipeline (see
-[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md));
+[vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md));
 this skill is specifically the operate-and-tune layer underneath a RAG
 system's retrieval stage (see
-[rag-pipeline-design](../rag-pipeline-design/SKILL.md) for the retrieval
+[rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) for the retrieval
 pattern itself, which this skill doesn't repeat).
 
 ## When to use
@@ -49,7 +49,7 @@ pattern itself, which this skill doesn't repeat).
   upgrades/maintenance.
 - Upserts are slow, timing out, or backing up during a bulk load or a
   re-indexing run.
-- Capacity planning before a corpus grows significantly (more documents,
+- [Capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning before a corpus grows significantly (more documents,
   more tenants, higher QPS).
 
 ## Prerequisites & environment
@@ -57,21 +57,21 @@ pattern itself, which this skill doesn't repeat).
 - A known embedding dimension and distance metric already fixed for the
   corpus (changing either requires a full re-embed and a new index, not a
   config tweak — see
-  [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)).
+  [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md)).
 - Estimated corpus size (vector count), expected query QPS, and expected
   write (upsert) rate — sizing decisions below depend on having real
   numbers, not guesses.
-- For Pinecone: an account with pod-based or serverless index access
-  (capacity/scaling mechanics differ between the two — check current
+- For Pinecone: an account with pod-based or [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) index access
+  ([capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/scaling mechanics differ between the two — check current
   Pinecone documentation for which applies to your plan, since this has
   changed over time).
 - For Weaviate/Milvus: a self-hosted or managed cluster with enough nodes
   to support the replication/sharding plan you choose — these are
   self-operated systems, so cluster sizing is your responsibility in a way
   it isn't with a fully managed Pinecone index.
-- Monitoring for index-level metrics (query latency, upsert throughput,
+- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for index-level metrics (query latency, upsert throughput,
   index/memory fullness) wired to a dashboard — see
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for the metrics-pipeline mechanics if self-hosting Weaviate/Milvus.
 
 ## Step-by-step guidance
@@ -84,7 +84,7 @@ pattern itself, which this skill doesn't repeat).
    (cosine similarity is the common default; some models are tuned for dot
    product) — a mismatch here degrades relevance silently, not with an
    error (see
-   [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)
+   [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md)
    for the validation gate on this specifically).
 
 2. **Tune HNSW's core knobs deliberately — they trade recall, latency, and
@@ -109,7 +109,7 @@ pattern itself, which this skill doesn't repeat).
      efConstruction: 128
      maxConnections: 32  # M
    ```
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Milvus index params (illustrative)
    index_params = {
        "index_type": "HNSW",
@@ -118,11 +118,11 @@ pattern itself, which this skill doesn't repeat).
    }
    search_params = {"ef": 128}  # tuned separately at query time
    ```
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Pinecone: HNSW internals are managed for you on pod-based indexes;
    # the primary tunable is pod type/size and top_k at query time rather
    # than raw M/ef parameters — check current Pinecone docs for what's
-   # exposed on your index type (pod-based vs. serverless).
+   # exposed on your index type (pod-based vs. [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)).
    ```
 
 3. **Shard/partition the corpus deliberately, not by default.** Options
@@ -130,7 +130,7 @@ pattern itself, which this skill doesn't repeat).
    - **Pinecone namespaces**: logical partitions within one index, common
      for per-tenant isolation in a multi-tenant application — queries are
      scoped to one namespace at a time.
-   - **Weaviate multi-tenancy / sharding**: dedicated tenant partitions
+   - **Weaviate [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) / sharding**: dedicated tenant partitions
      within a collection, or manual sharding across multiple collections
      for very large single-tenant corpora.
    - **Milvus partitions within a collection**: similar per-tenant or
@@ -167,7 +167,7 @@ pattern itself, which this skill doesn't repeat).
    spread a large backfill across partitions/time rather than one burst
    against one shard.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Generic batch-upsert pattern applicable across vendors' SDKs
    BATCH_SIZE = 200
    for batch in chunked(vectors_with_metadata, BATCH_SIZE):
@@ -185,7 +185,7 @@ pattern itself, which this skill doesn't repeat).
    vendor and by whether the filtered field is indexed — verify against
    current documentation for your specific setup rather than assuming.
 
-7. **Size capacity with an explicit formula, not a guess.** A rough
+7. **Size [capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with an explicit formula, not a guess.** A rough
    working estimate for HNSW memory footprint:
 
    ```
@@ -203,7 +203,7 @@ pattern itself, which this skill doesn't repeat).
 
 8. **Monitor operational metrics continuously, not just at launch**: query
    latency (p50/p95), upsert throughput and error rate, index/memory
-   fullness relative to the tier or node's capacity, and (for
+   fullness relative to the tier or node's [capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and (for
    replicated setups) replica lag. Alert on index fullness well before
    the hard ceiling — performance commonly degrades before an index is
    literally full, not only at 100%.
@@ -215,14 +215,14 @@ pattern itself, which this skill doesn't repeat).
    a new index (a new HNSW parameter set, a new sharding scheme), build
    the new index alongside the old one and cut over via an alias/pointer
    swap rather than deleting and rebuilding in place (see
-   [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)
+   [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md)
    for the validation gate before that cutover).
 
 ## Best practices
 
 - Start `ef_search` conservatively and raise it only if a recall
   evaluation (see
-  [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md))
+  [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md))
   shows it's needed — raising it blindly trades latency for recall you
   may not need.
 - Partition by the dimension your queries actually filter on most often
@@ -238,7 +238,7 @@ pattern itself, which this skill doesn't repeat).
   during lower-traffic windows where possible.
 - Track index/memory fullness as a leading indicator, not a lagging one —
   most vector indexes degrade in latency and/or recall well before hitting
-  a hard capacity wall.
+  a hard [capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) wall.
 - Re-validate recall and latency after any HNSW parameter change, sharding
   change, or vendor-tier change — these are configuration changes with
   real correctness and performance implications, not routine tuning knobs
@@ -252,7 +252,7 @@ pattern itself, which this skill doesn't repeat).
   **Fix:** `ef_search` that was adequate at a smaller corpus size often
   needs to increase as the corpus grows, since more candidates compete for
   the same approximate search — re-run a labeled recall evaluation (see
-  [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md))
+  [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md))
   after significant corpus growth, don't assume a fixed `ef_search` scales
   forever.
 
@@ -299,7 +299,7 @@ occasional large backfills when new customers onboard.
 Configuration decisions:
 
 ```
-Capacity estimate:
+[Capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) estimate:
   memory_per_vector ≈ 1536 × 4 bytes × (1 + ~0.2 hnsw_overhead) ≈ ~7.4 KB
   total ≈ 7.4 KB × 20,000,000 ≈ ~148 GB (before metadata/final-tier
   overhead — verify against the chosen vendor's current sizing guidance
@@ -313,7 +313,7 @@ gives per-tenant data isolation as a side effect.
 HNSW config: M=24, efConstruction=200 at index-build time;
 ef_search=128 as the initial production value, re-validated against a
 50-query labeled recall set at the full 20M-vector scale before cutover
-(see vector-database-configuration-validation).
+(see [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)).
 
 Replication: replica_number=2 (Milvus) / equivalent replica pods
 (Pinecone) — survives one node loss during rolling upgrades with no
@@ -324,15 +324,15 @@ at 200 vectors/upsert call, throttled to run during off-peak hours and
 isolated from the live query path so onboarding a new customer doesn't
 degrade existing customers' query latency.
 
-Monitoring: p95 query latency, upsert error rate, and per-partition
+[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): p95 query latency, upsert error rate, and per-partition
 memory fullness alerted at 75% of the provisioned tier's documented
-capacity — well before the hard ceiling.
+[capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — well before the hard ceiling.
 ```
 
 ## Cross-references
 
-- [vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md) — the pre-cutover gate for dimension/metric/recall validation referenced throughout this skill's tuning steps.
-- [vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md) — the upstream pipeline whose batch upsert behavior this skill's write-path tuning operates on.
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md) — the retrieval pattern (chunking, re-ranking, hybrid search) this operational layer serves; not repeated here.
-- [agent-cost-and-latency-spike-investigation](../agent-cost-and-latency-spike-investigation/SKILL.md) — triaging a sudden query latency spike that may originate at this operational layer.
-- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/capacity-planning-and-load-testing/SKILL.md) — general load-testing methodology applicable to validating query throughput at target scale.
+- [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md) — the pre-cutover gate for dimension/metric/recall validation referenced throughout this skill's tuning steps.
+- [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — the upstream pipeline whose batch upsert behavior this skill's write-path tuning operates on.
+- [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — the retrieval pattern (chunking, re-ranking, hybrid search) this operational layer serves; not repeated here.
+- [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a sudden query latency spike that may originate at this operational layer.
+- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — general [load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md) methodology applicable to validating query throughput at target scale.

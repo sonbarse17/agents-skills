@@ -14,7 +14,7 @@ Master React version upgrades, class to hooks migration, concurrent features ado
 - Adopting concurrent React features (Suspense, transitions)
 - Applying codemods for automated refactoring
 - Modernizing state management patterns
-- Updating to TypeScript
+- Updating to [TypeScript](../typescript/SKILL.md)
 - Improving performance with React 18+ features
 
 ## Version Upgrade Path

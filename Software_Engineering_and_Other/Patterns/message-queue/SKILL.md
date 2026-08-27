@@ -80,7 +80,7 @@ What are your requirements?
   ├── Fully managed, no ops, Lambda triggers, simple
   │   └── AWS SQS — auto-scale, limited features, 256KB max
   ├── High throughput, low latency, JVM-free
-  │   └── Pulsar — geo-replication, multi-tenancy, segment-based storage
+  │   └── Pulsar — geo-replication, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), segment-based storage
   └── Pub/sub with push delivery, mobile/web integration
       └── Google Pub/Sub — managed, exactly-once, push subscriptions
 ```
@@ -104,7 +104,7 @@ What happens if a message is lost?
 ### Step 1: Select Broker
 ```
 Kafka:      high throughput (100k+ msg/s), replay, log compaction, multi-consumer
-            Best for: event sourcing, analytics pipelines, audit logs, CDC
+            Best for: event sourcing, analytics pipelines, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, CDC
 
 RabbitMQ:   flexible routing (exchanges, bindings), low latency, per-message ack
             Best for: task queues, RPC, complex routing, lower throughput
@@ -167,13 +167,13 @@ Exactly-once:     transactional producers + idempotent consumers + dedup.
 On receive message:
   1. Check if idempotency_key exists in processed set (Redis / DB).
   2. If exists → ack and skip (duplicate).
-  3. If not exists → process, store idempotency_key, commit offset / ack.
+  3. If not exists → process, store idempotency_key, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset / ack.
 
 Idempotency key = message.id or business_key + event_type
 Processed set TTL: match broker retention period
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class IdempotentConsumer {
   private processed = new Set<string>();
 
@@ -207,7 +207,7 @@ SQS:
   - Lambda DLQ destinations for async invocation failures
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Kafka consumer with retry (Node.js)
 class RetryableConsumer {
   private maxRetries = 3;
@@ -258,7 +258,7 @@ Kafka partitions vs consumers:
   Rule: consumer count <= partition count
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Graceful shutdown for consumer
 async function shutdownGracefully(consumer: Consumer) {
   process.on('SIGTERM', async () => {
@@ -271,7 +271,7 @@ async function shutdownGracefully(consumer: Consumer) {
 
 ### Step 8: Producer Patterns
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Kafka producer with idempotency
 const producer = kafka.producer({
   idempotent: true,                   // exactly-once production
@@ -299,7 +299,7 @@ async function publishEvent(event: DomainEvent) {
 }
 ```
 
-### Step 9: Monitoring and Observability
+### Step 9: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 | Metric | What It Tells | Alert Threshold |
 |--------|--------------|-----------------|
@@ -310,8 +310,8 @@ async function publishEvent(event: DomainEvent) {
 | Failed deliveries | Broker connectivity | > 1% for > 1 min |
 | Queue depth (SQS/Rabbit) | Backlog | Depth > 10000 |
 
-```typescript
-// Kafka lag monitoring
+```[typescript](../../Frontend/typescript/SKILL.md)
+// Kafka lag [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   const lag = await admin.fetchOffsets({ groupId });
   for (const partition of lag) {
@@ -342,7 +342,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 | Message tampering | TLS in transit. Optional: message-level HMAC or encryption |
 | Sensitive data in messages | Encrypt payload at application level before producing |
 | DoS via large messages | Enforce max message size at broker level |
-| Credential exposure | Use IAM roles (AWS), service accounts, or vault, never hardcoded creds |
+| Credential exposure | Use IAM roles (AWS), service accounts, or [vault](../../Miscellaneous/vault/SKILL.md), never hardcoded creds |
 
 ## Anti-Patterns
 
@@ -350,8 +350,8 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 |-------------|-------------|-----|
 | Using MQ as a database | Storage grows unbounded, no query capability | Define retention limits, use DB for persistence |
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time and size |
-| No DLQ monitoring | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | Commit after processing (at-least-once) |
+| No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers × 2-3 max |
 | Synchronous producing | Increases latency, reduces throughput | Batch or async produce |
 | Single consumer on partitioned topic | N-1 idle partitions | Match consumer count to partitions |
@@ -362,9 +362,9 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Every message must have a unique id and timestamp.
 - Always use key-based partitioning when message ordering matters.
 - Schema evolve via new version — never mutate existing message schemas.
-- DLQ must have monitoring and alerting. Unattended DLQ = silent data loss.
+- DLQ must have [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). Unattended DLQ = silent data loss.
 - Consumer lag must be monitored. Set alerts for lag > threshold.
-- Never commit offsets before processing is complete (at-least-once).
+- Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offsets before processing is complete (at-least-once).
 - Max message size: 1MB for Kafka, 256KB for SQS, unlimited for RabbitMQ (practical: 10MB).
 - Never produce to a topic that doesn't exist — create topics with proper config first.
 - Use idempotent producers for Kafka (exactly-once semantics to broker).
@@ -374,20 +374,20 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   - ../../../Global_References/consumer-patterns.md — Consumer Patterns
   - ../../../Global_References/kafka-patterns.md — Kafka Patterns
   - ../../../Global_References/message-design.md — Message Schema Design
-  - ../../../Global_References/message-queue-monitoring.md — Message Queue Monitoring
+  - ../../../Global_References/message-queue-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/message-queue-security.md — Message Queue Security
   - ../../../Global_References/producer-patterns.md — Producer Patterns
   - ../../../Global_References/rabbitmq-patterns.md — RabbitMQ Patterns
 ## Handoff
 No artifact produced unless requested.
-Next skill: backend-caching — if the event-driven system needs to cache materialized views or read models.
+Next skill: [backend-caching](../../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md) — if the event-driven system needs to cache materialized views or read models.
 Carry forward: topic/queue topology, message schemas, consumer group configs, retry/DLQ policies.
 
 ## Implementation Patterns
 
 ### Kafka Producer/Consumer
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import Dict, Callable, Any, Optional
 import json
 import asyncio
@@ -433,7 +433,7 @@ class KafkaMessageConsumer:
             "bootstrap.servers": bootstrap_servers,
             "group.id": group_id,
             "auto.offset.reset": "earliest",
-            "enable.auto.commit": False,
+            "enable.auto.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)": False,
             "max.poll.interval.ms": 300000,
         })
         self.consumer.subscribe(topics)
@@ -453,7 +453,7 @@ class KafkaMessageConsumer:
                 try:
                     value = json.loads(msg.value().decode())
                     handler(value, msg.key().decode() if msg.key() else None, msg.headers() or [])
-                    self.consumer.commit(msg)
+                    self.consumer.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(msg)
                 except Exception as e:
                     print(f"Processing error: {e}")
                     # Send to DLQ
@@ -466,7 +466,7 @@ class KafkaMessageConsumer:
     def _send_to_dlq(self, msg):
         dlq_topic = f"{msg.topic()}.dlq"
         self.consumer.produce(dlq_topic, key=msg.key(), value=msg.value())
-        self.consumer.commit(msg)
+        self.consumer.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(msg)
 ```
 
 ## Architecture Decision Trees
@@ -487,7 +487,7 @@ What are the requirements?
 │       ├── Priority queues, TTL, DLX
 │       └── Good for RPC and work queues
 │
-├── Serverless, fully managed, no ops
+├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), fully managed, no ops
 │   └── AWS SQS / SNS or GCP Pub/Sub
 │       ├── Automatic scaling
 │       ├── No broker management
@@ -502,8 +502,8 @@ What are the requirements?
 | Anti-Pattern | Why It Fails | Correct Approach |
 |---|---|---|
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time (7d default) and size |
-| No DLQ monitoring | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | Commit after processing (at-least-once) |
+| No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers x 2-3 max |
 
 ## Performance Optimization

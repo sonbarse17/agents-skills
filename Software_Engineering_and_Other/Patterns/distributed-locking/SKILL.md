@@ -21,11 +21,11 @@ Coordinate access to shared resources across multiple service instances using di
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "distributed lock", "Redis lock", "Redlock", "ZooKeeper lock", "advisory lock", "PostgreSQL lock", "pg_advisory_lock", "lease", "distributed mutex", "fencing token", "lock timeout".
+Exact user phrases: "distributed lock", "Redis lock", "Redlock", "ZooKeeper lock", "advisory lock", "[PostgreSQL](../../Backend/postgresql/SKILL.md) lock", "pg_advisory_lock", "lease", "distributed mutex", "fencing token", "lock timeout".
 
 ### Input Context
 - Resource being protected.
-- Available infrastructure (Redis, PostgreSQL, ZooKeeper, etcd).
+- Available infrastructure (Redis, [PostgreSQL](../../Backend/postgresql/SKILL.md), ZooKeeper, etcd).
 - Number of competing instances.
 - Duration of the critical section.
 
@@ -34,7 +34,7 @@ Lock configuration or implementation code. No file unless requested.
 
 ### Response Format
 ```
-Provider: {Redis|PostgreSQL|ZooKeeper|etcd}
+Provider: {Redis|[PostgreSQL](../../Backend/postgresql/SKILL.md)|ZooKeeper|etcd}
 Strategy: {Redlock|Advisory|Ephemeral|Lease}
 TTL: {duration}
 Safety: {fencing?}
@@ -57,7 +57,7 @@ Safety: {fencing?}
 ```
 What infrastructure is already available?
   ├── Redis → High throughput, short locks, needs Redlock for failover
-  ├── PostgreSQL → Same DB as data, simple setup, lock contention impacts DB
+  ├── [PostgreSQL](../../Backend/postgresql/SKILL.md) → Same DB as data, simple setup, lock contention impacts DB
   ├── ZooKeeper/etcd → Strong consistency, leader election, operational complexity
   └── In-memory → Single instance only, NOT distributed
 ```
@@ -66,7 +66,7 @@ What infrastructure is already available?
 
 ```
 Is the critical section short (< 1 second)?
-  ├── Yes → Redis simple lock or PostgreSQL advisory lock
+  ├── Yes → Redis simple lock or [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory lock
   └── No → Is the critical section a resource write?
             ├── Yes → Lease-based lock with fencing token
             └── No → Redlock (Redis with multi-node failover)
@@ -94,7 +94,7 @@ Does the lock protect a write to shared storage?
 | Provider | Best For | Trade-off |
 |----------|----------|-----------|
 | Redis | High throughput, short locks | Needs failover (Redlock) |
-| PostgreSQL | Same DB as data | Lock contention impacts DB |
+| [PostgreSQL](../../Backend/postgresql/SKILL.md) | Same DB as data | Lock contention impacts DB |
 | ZooKeeper/etcd | Strong consistency | Operational complexity |
 | In-memory | Single instance only | Not distributed |
 
@@ -113,7 +113,7 @@ async function processResource() {
 }
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from redlock import Redlock
 import aioredis
 
@@ -126,8 +126,8 @@ async with lock:
 
 ```go
 // Go — Redis lock with go-redis
-import "github.com/go-redsync/redsync/v4"
-import "github.com/go-redsync/redsync/v4/redis/goredis/v9"
+import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/go-redsync/redsync/v4"
+import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/go-redsync/redsync/v4/redis/goredis/v9"
 
 func processOrder(ctx context.Context, orderId string) error {
     mutex := rs.NewMutex("resource:order-" + orderId, redsync.WithExpiry(5*time.Second))
@@ -146,7 +146,7 @@ func processOrder(ctx context.Context, orderId string) error {
 ### Step 3: Implement Fencing Token
 Fencing tokens ensure that even if a lock is held after its timeout, stale holders cannot write.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class FencedResource {
   private currentFencingToken = 0;
 
@@ -167,7 +167,7 @@ class FencedResource {
 ```
 
 ```sql
--- PostgreSQL advisory lock with fencing
+-- [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory lock with fencing
 SELECT pg_advisory_xact_lock(12345);
 UPDATE resources
 SET status = 'locked', version = version + 1
@@ -202,7 +202,7 @@ func withLock(ctx context.Context, key string, ttl time.Duration, fn func() erro
 ```
 
 ### Step 5: Monitor Locks
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface LockMetrics {
   acquisitionTime: number;   // ms to acquire
   holdTime: number;          // ms held
@@ -210,7 +210,7 @@ interface LockMetrics {
   timeoutRate: number;       // how often locks expire before release
 }
 
-// Export metrics via your monitoring system
+// Export metrics via your [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) system
 metrics.histogram('lock.acquisition_time', acquisitionTime);
 metrics.histogram('lock.hold_time', holdTime);
 metrics.counter('lock.contention', contentionCount);
@@ -219,8 +219,8 @@ metrics.counter('lock.timeout', timeoutRate);
 
 ## Implementation Patterns
 
-### PostgreSQL Advisory Lock
-```typescript
+### [PostgreSQL](../../Backend/postgresql/SKILL.md) Advisory Lock
+```[typescript](../../Frontend/typescript/SKILL.md)
 class PostgresDistributedLock {
   constructor(private pool: Pool) {}
 
@@ -256,10 +256,10 @@ class PostgresDistributedLock {
 }
 ```
 
-PostgreSQL advisory locks are session-level: must hold the same connection for lock and release. Transaction-level: `pg_advisory_xact_lock` auto-releases on transaction end. Use bigint lock IDs: hash your resource name to a bigint for consistent lock IDs.
+[PostgreSQL](../../Backend/postgresql/SKILL.md) advisory locks are session-level: must hold the same connection for lock and release. Transaction-level: `pg_advisory_xact_lock` auto-releases on transaction end. Use bigint lock IDs: hash your resource name to a bigint for consistent lock IDs.
 
 ### Lease-Based Lock (etcd)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class EtcdLeaseLock {
   constructor(private etcd: Etcd3) {}
 
@@ -281,7 +281,7 @@ class EtcdLeaseLock {
 ```
 
 ### Simple Redis Lock (Single Node)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class RedisLock {
   constructor(private redis: Redis) {}
 
@@ -306,7 +306,7 @@ class RedisLock {
 ```
 
 ### Semaphore Pattern (Multiple Permits)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class RedisSemaphore {
   async acquire(key: string, permits: number, maxPermits: number, ttlMs: number): Promise<boolean> {
     const script = `
@@ -350,7 +350,7 @@ Redlock assumes synchronized clocks. In practice:
 ### Lock Cleanup on Crash
 - Redis locks auto-expire via TTL
 - ZooKeeper ephemeral nodes auto-delete on session loss
-- PostgreSQL advisory locks auto-release on connection close
+- [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory locks auto-release on connection close
 - Always set TTL — never rely on cleanup logic in finally blocks alone
 
 ## Anti-Patterns
@@ -398,7 +398,7 @@ Carry forward: lock provider, TTL configuration, fencing requirement.
 
 ### Redis-Based Distributed Lock
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import redis
 import uuid
 import time
@@ -482,7 +482,7 @@ What's the consistency requirement?
 │       └── No clock drift issues
 │
 ├── Simple, no infrastructure
-│   └── Database-based (PostgreSQL advisory lock)
+│   └── Database-based ([PostgreSQL](../../Backend/postgresql/SKILL.md) advisory lock)
 │       ├── pg_try_advisory_lock() for simple cases
 │       └── SELECT ... FOR UPDATE for row-level locks
 │

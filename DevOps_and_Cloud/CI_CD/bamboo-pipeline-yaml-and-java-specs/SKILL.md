@@ -24,9 +24,9 @@ historically configured plans through its web UI. **Bamboo Specs** bring
 plans under version control two ways: a **Java DSL** (compiled and run as
 a small program that calls the Bamboo REST API to create/update a plan) or
 Bamboo's newer **YAML specs** format (a declarative file read directly
-from the repo, closer to GitHub Actions/GitLab CI in spirit). This skill
+from the repo, closer to [GitHub](../github/SKILL.md) Actions/GitLab CI in spirit). This skill
 covers both, plus Bamboo's plan → job → stage → task hierarchy (distinct
-from GitHub Actions' workflow → job → step or GitLab's stage → job model)
+from [GitHub](../github/SKILL.md) Actions' workflow → job → step or GitLab's stage → job model)
 and the mechanics of linking a Specs definition to a live Bamboo plan so
 changes actually take effect.
 
@@ -68,7 +68,7 @@ changes actually take effect.
    control (loops, shared builder functions across many plans, real unit
    testing of the Specs code itself) at the cost of a compile step and
    more boilerplate; YAML specs is declarative, easier to review in a PR
-   diff, and closer to what teams coming from GitHub Actions/GitLab expect,
+   diff, and closer to what teams coming from [GitHub](../github/SKILL.md) Actions/GitLab expect,
    but less expressive for highly dynamic plan generation. Use Java DSL
    when one team maintains dozens of structurally-similar plans
    programmatically; use YAML specs for a single project's plan that a
@@ -213,19 +213,19 @@ changes actually take effect.
   unit tests, security scan) and sequential **stages** only where a real
   dependency exists (build before deploy) — this is the direct Bamboo
   analog of the vendor-neutral parallelization guidance in
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 - For Java Specs maintaining many structurally similar plans, factor
   shared builder logic into a common Java method/class rather than
   copy-pasting the `Plan`/`Stage`/`Job` construction across each plan's
   Spec class.
 - Run the Specs publish step itself from a CI job (a Bamboo plan, or even
-  a GitHub Actions/Jenkins job) rather than a developer's laptop, so plan
-  changes go through the same review/audit trail as code changes.
+  a [GitHub](../github/SKILL.md) Actions/[Jenkins](../jenkins/SKILL.md) job) rather than a developer's laptop, so plan
+  changes go through the same review/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail as code changes.
 - Use manual stages (`.manual()` in Java Specs, or the equivalent
   approval configuration in YAML) for production deploy stages so a human
   gate exists before the "Deploy to Production" stage runs, mirroring the
   manual-approval-gate guidance in
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -323,11 +323,11 @@ repositories:
 With `manual: true` on "Deploy Production", the stage waits for a user
 with plan permission to click "Run" in the Bamboo UI, giving the same
 release gate as the manual-approval pattern in
-[ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md),
+[ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md),
 expressed in Bamboo's own stage-level construct.
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — vendor-neutral stage/gate design this Bamboo plan structure implements.
-- [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md) — a comparable "logic centralized, consumers thin" pattern on a different CI platform, useful when migrating between the two.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the severity/blocking policy for any scan tasks added into this plan.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate design this Bamboo plan structure implements.
+- [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — a comparable "logic centralized, consumers thin" pattern on a different CI platform, useful when migrating between the two.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for any scan tasks added into this plan.

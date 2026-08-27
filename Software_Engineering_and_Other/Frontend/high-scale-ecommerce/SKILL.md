@@ -14,7 +14,7 @@ description: Playbook for building a High-Scale E-Commerce platform.
 
 ## 2. System Flow
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     SEO[Organic SEO Traffic] --> CDN[Edge CDN / WAF]
@@ -26,7 +26,7 @@ flowchart TD
     CO --> S3[(DB Shard 3)]
 ```
 
-## 3. Infrastructure (Kubernetes)
+## 3. Infrastructure ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
 
 ```yaml
 apiVersion: apps/v1

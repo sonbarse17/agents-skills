@@ -27,9 +27,9 @@ A six-pillar framework for systematic cloud cost governance:
 
 Pillar 1 - Governance Structure: Define cost center hierarchy, assign budget owners, establish approval gates. Create a Cloud Cost Council with representatives from engineering, finance, and product.
 
-Pillar 2 - Observability: Implement real-time cost visibility through native cloud tools and third-party platforms. Build dashboards per cost center, service, and resource type. Track unit economics (cost per transaction, per user, per API call).
+Pillar 2 - [Observability](../../Observability_and_SecOps/observability/SKILL.md): Implement real-time cost visibility through native cloud tools and third-party platforms. Build [dashboards](../dashboards/SKILL.md) per cost center, service, and resource type. Track unit economics (cost per transaction, per user, per API call).
 
-Pillar 3 - Validation: Enforce tagging policy through policy-as-code. Use preventive controls (SCPs, organization policies) to block non-compliant resource creation. Implement detective controls (scheduled compliance scans).
+Pillar 3 - Validation: Enforce tagging policy through [policy-as-code](../../../Security/policy-as-code/SKILL.md). Use preventive controls (SCPs, organization policies) to block non-compliant resource creation. Implement detective controls (scheduled compliance scans).
 
 Pillar 4 - Enforcement: Configure budget alerts at graduated thresholds. Implement automated actions (stop non-critical resources, send notifications, create tickets) when budgets are exceeded.
 
@@ -81,7 +81,7 @@ Is the resource ephemeral (dev/test)?
 | Low | Medium | Right-size over-provisioned instances | Week 2-3 |
 | Medium | High | Purchase RIs/SPs for stable workloads | Month 1 |
 | Medium | Medium | Storage tiering (hot→cold→archive) | Month 2 |
-| High | High | Architecture redesign (serverless, containerization) | Quarter 2+ |
+| High | High | Architecture redesign ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md), [containerization](../../Containers_and_Orchestration/containerization/SKILL.md)) | Quarter 2+ |
 | High | Medium | Data transfer optimization (CDN, compression) | Quarter 2-3 |
 
 ## Agent Protocol
@@ -141,7 +141,7 @@ No preamble. No postamble. No explanations.
 ## Workflow
 
 ### Step 1: Cost Allocation
-Define mandatory resource tags (cost-center, environment, owner, project, service). Enforce tags via policy-as-code (Azure Policy, AWS SCP, GCP Organization Policy). Create cost center hierarchy mapped to business units. Use cost categories for untagged resource grouping.
+Define mandatory resource tags (cost-center, environment, owner, project, service). Enforce tags via [policy-as-code](../../../Security/policy-as-code/SKILL.md) (Azure Policy, AWS SCP, GCP Organization Policy). Create cost center hierarchy mapped to business units. Use cost categories for untagged resource grouping.
 
 Tag design principles:
 - Tag key names should be consistent across all cloud providers
@@ -200,7 +200,7 @@ Optimization categories ranked by effort-to-impact:
 
 Track savings with methodology: baseline cost (pre-optimization) minus actual cost (post-optimization), adjusted for usage changes. Report gross savings and net savings (after RI/SP costs).
 
-### Example: Policy-as-Code for Tag Enforcement
+### Example: [Policy-as-Code](../../../Security/policy-as-code/SKILL.md) for Tag Enforcement
 ```hcl
 # AWS SCP to deny creation of untagged resources
 policy {
@@ -242,13 +242,13 @@ Pitfall 7: Siloed cost data. Engineering sees cloud costs, finance sees invoices
 
 Practice 1: Implement cost governance from day one of a new project. Retroactive tagging and allocation is expensive and inaccurate. Automate governance into IaC templates and CI/CD pipelines.
 
-Practice 2: Publish cost per team visibly. Teams manage what they can see. Showback dashboards with team-name budget progress are the single highest-impact action for cost control.
+Practice 2: Publish cost per team visibly. Teams manage what they can see. Showback [dashboards](../dashboards/SKILL.md) with team-name budget progress are the single highest-impact action for cost control.
 
 Practice 3: Centralize commitment purchases (RI/SP). A single team managing cloud commitments achieves higher coverage and better utilization than distributed purchasing. Finance + Engineering joint review.
 
 Practice 4: Automate tiered storage lifecycle. Move data from hot to warm to cold to archive based on access patterns. Automate retention policy enforcement. Never let data sit on hot storage unaccessed.
 
-Practice 5: Use container rightsizing tools. Kubernetes resource requests and limits are often set once and forgotten. Use VPA or rightsizing recommendations to right-size continuously.
+Practice 5: Use container [rightsizing](../rightsizing/SKILL.md) tools. [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) resource requests and limits are often set once and forgotten. Use VPA or [rightsizing](../rightsizing/SKILL.md) recommendations to right-size continuously.
 
 Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expensive resource should flag the cost impact. Review cost changes alongside code changes.
 
@@ -260,7 +260,7 @@ Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expens
 | Budgeting | FinOps Capability: Budget Management | AWS Budgets, Azure Budgets, GCP Budgets |
 | Anomaly Detection | FinOps Capability: Anomaly Management | AWS Anomaly Detection, Azure Anomaly Detector |
 | Optimization | FinOps Capability: Resource Utilization | AWS Compute Optimizer, Azure Advisor |
-| Unit Economics | FinOps Capability: Unit Cost | Custom dashboards, CloudZero |
+| Unit Economics | FinOps Capability: Unit Cost | Custom [dashboards](../dashboards/SKILL.md), CloudZero |
 
 ## Templates & Tools
 
@@ -292,7 +292,7 @@ Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expens
 ```
 
 ### Cost Optimization Automation Scripts
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Automated idle resource detection
 import boto3
 from datetime import datetime, timedelta
@@ -379,7 +379,7 @@ resource "aws_organizations_policy" "require_cost_tags" {
 ```
 
 ### Unit Economics Tracking Template
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class UnitEconomics:
     def __init__(self, service_name):
         self.service = service_name
@@ -411,8 +411,8 @@ print(ue.report())
 - AWS Cost Explorer / AWS Budgets for native cost management
 - Azure Cost Management + Billing for Azure environments
 - GCP Cost Management tools
-- CloudHealth / Vantage / CloudZero for multi-cloud cost platforms
-- Terraform + Sentinel / OPA for policy-as-code enforcement
+- CloudHealth / Vantage / CloudZero for [multi-cloud](../multi-cloud/SKILL.md) cost platforms
+- Terraform + Sentinel / OPA for [policy-as-code](../../../Security/policy-as-code/SKILL.md) enforcement
 - PagerDuty / OpsGenie for budget alert routing
 - Tableau / Power BI for cost reporting and analytics
 
@@ -427,7 +427,7 @@ print(ue.report())
 
 ## Code Examples
 
-### Policy-as-Code: Tag Enforcement (Open Policy Agent/Rego)
+### [Policy-as-Code](../../../Security/policy-as-code/SKILL.md): Tag Enforcement (Open Policy Agent/Rego)
 ```rego
 package terraform.cost_tags
 
@@ -442,8 +442,8 @@ deny[msg] {
 }
 ```
 
-### Cost Anomaly Detection (Python)
-```python
+### Cost Anomaly Detection ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import statistics
 from datetime import datetime, timedelta
 
@@ -548,10 +548,10 @@ Publishing cost reports that no one reads or acts on. Showback is step 1 — the
 A 5000-employee enterprise with $50M annual cloud spend had 60% untagged resources. Implementing enforced tagging through SCPs and Terraform validators took 6 months. The unallocated cost bucket shrank from 60% to 5%. Cost center owners could finally see their teams spend. Within 3 months of visibility, teams identified $4M in annualized savings.
 
 ### Case Study 2: Startup Anomaly Detection
-A Series B SaaS company deployed ML-based anomaly detection after a $50K unexpected GPU compute spike from a misconfigured CI/CD pipeline. The anomaly detection caught the next incident within 2 hours of the job starting, limiting damage to $3K. Payback period on the anomaly detection investment: 2 weeks.
+A Series B SaaS company deployed ML-based anomaly detection after a $50K unexpected GPU compute spike from a misconfigured CI/CD pipeline. The anomaly detection caught the next [incident](../../Observability_and_SecOps/incident/SKILL.md) within 2 hours of the job starting, limiting damage to $3K. Payback period on the anomaly detection investment: 2 weeks.
 
 ### Case Study 3: FinOps Transformation Journey
-A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run) over 18 months. Starting with tagging enforcement and showback dashboards, they added anomaly detection at month 6, monthly optimization reviews at month 9, and chargeback at month 15. Annual cloud spend grew 40% (business growth) but cost-per-transaction dropped 25%. Total savings identified and realized: $1.2M/year.
+A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run) over 18 months. Starting with tagging enforcement and showback [dashboards](../dashboards/SKILL.md), they added anomaly detection at month 6, monthly optimization reviews at month 9, and chargeback at month 15. Annual cloud spend grew 40% (business growth) but cost-per-transaction dropped 25%. Total savings identified and realized: $1.2M/year.
 
 ## Rules
 - All resources must have mandatory tags before creation.
@@ -582,5 +582,5 @@ A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run)
   - ../../../Global_References/cost-governance-practices.md -- Cloud Cost Governance Practices
   - ../../../Global_References/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
 ## Handoff
-For multi-tenant cost tracking, hand off to `enterprise-multi-tenant`. For compliance cost reporting, hand off to `enterprise-compliance-audit`.
+For multi-tenant cost tracking, hand off to `[enterprise-multi-tenant](../../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)`. For compliance cost reporting, hand off to `[enterprise-compliance-audit](../../Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`.
 

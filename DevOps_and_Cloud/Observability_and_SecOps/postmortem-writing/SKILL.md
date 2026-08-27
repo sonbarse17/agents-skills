@@ -5,11 +5,11 @@ description: Write effective blameless postmortems with root cause analysis, tim
 
 # Postmortem Writing
 
-Comprehensive guide to writing effective, blameless postmortems that drive organizational learning and prevent incident recurrence.
+Comprehensive guide to writing effective, blameless postmortems that drive organizational learning and prevent [incident](../incident/SKILL.md) recurrence.
 
 ## When to Use This Skill
 
-- Conducting post-incident reviews
+- Conducting post-[incident](../incident/SKILL.md) reviews
 - Writing postmortem documents
 - Facilitating blameless postmortem meetings
 - Identifying root causes and contributing factors
@@ -42,7 +42,7 @@ Comprehensive guide to writing effective, blameless postmortems that drive organ
 ### Postmortem Timeline
 
 ```
-Day 0: Incident occurs
+Day 0: [Incident](../incident/SKILL.md) occurs
 Day 1-2: Draft postmortem document
 Day 3-5: Postmortem meeting
 Day 5-7: Finalize document, create tickets
@@ -56,7 +56,7 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 
 ## References
 - [Connection Pool Best Practices](internal-wiki/connection-pools)
-- [Deployment Runbook](internal-wiki/deployment-runbook)
+- [Deployment Runbook](internal-wiki/deployment-[runbook](../runbook/SKILL.md))
 ```
 
 ### Template 2: 5 Whys Analysis

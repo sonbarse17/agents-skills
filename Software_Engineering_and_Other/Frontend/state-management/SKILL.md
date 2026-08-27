@@ -137,7 +137,7 @@ Is the source of truth on the server?
 ```
 
 ### Step 2: Server State Pattern
-```typescript
+```[typescript](../typescript/SKILL.md)
 function useUsers() {
   return useQuery({
     queryKey: ['users', { page }],
@@ -154,7 +154,7 @@ Server state rules:
 - Mutations invalidate related queries on success. Never manually set query data.
 
 ### Step 3: Client State Patterns
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Local state (one component)
 function Counter() {
   const [count, setCount] = useState(0)
@@ -197,7 +197,7 @@ const orderMachine = createMachine({
 | Form validation | Component local or form library | react-hook-form |
 
 ### Step 5: Zustand Store Example
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
@@ -232,7 +232,7 @@ const useCartStore = create<CartStore>()(
 ```
 
 ### Step 6: State Testing Patterns
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Test Zustand store
 describe('CartStore', () => {
   beforeEach(() => {
@@ -257,7 +257,7 @@ describe('CartStore', () => {
 ## Common Pitfalls
 
 ### 1. Server State in Global Store
-```typescript
+```[typescript](../typescript/SKILL.md)
 // BAD -- putting API data in Zustand
 const useUserStore = create((set) => ({
   user: null,
@@ -356,7 +356,7 @@ Carry forward: state architecture decisions, store structure, server state confi
 
 ### State Store Factory
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Generic store factory for Zustand
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
@@ -435,7 +435,7 @@ const useUIStore = createStore<UIState>(
 
 ### Selector Utilities
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // createSelector with memoization
 import { createSelector } from 'reselect';
 

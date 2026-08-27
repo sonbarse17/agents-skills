@@ -201,18 +201,18 @@ See `../../../Global_References/er.md` for cardinality, identification, attribut
 
 ```
 gitGraph
-    commit
-    commit
+    [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+    [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
     branch develop
     checkout develop
-    commit
+    [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
     checkout main
     merge develop
 ```
 
-Commands: `commit`, `branch name`, `checkout name` (or `switch`), `merge name`, `cherry-pick id: "id"`. Commit attributes: `id: "custom_id"`, `type: NORMAL|REVERSE|HIGHLIGHT`, `tag: "v1.0"`. Merge attributes: same as commit. Orientation: `gitGraph LR:` / `TB:` / `BT:`. Config: `showBranches`, `showCommitLabel`, `mainBranchName`, `parallelCommits`.
+Commands: `[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)`, `branch name`, `checkout name` (or `switch`), `merge name`, `cherry-pick id: "id"`. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) attributes: `id: "custom_id"`, `type: NORMAL|REVERSE|HIGHLIGHT`, `tag: "v1.0"`. Merge attributes: same as [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md). Orientation: `gitGraph LR:` / `TB:` / `BT:`. Config: `showBranches`, `showCommitLabel`, `mainBranchName`, `parallelCommits`.
 
-See `../../../Global_References/gitgraph.md` for commit types, cherry-pick, branch ordering, orientation, and theming.
+See `../../../Global_References/gitgraph.md` for [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) types, cherry-pick, branch ordering, orientation, and theming.
 
 ### User Journey
 
@@ -432,7 +432,7 @@ Load these when you need full syntax details, edge cases, or examples for a spec
 - `../../../Global_References/class.md` — Visibility, generics, relationships, cardinality, namespaces, annotations, notes
 - `../../../Global_References/state.md` — Composite states, choice, fork, concurrency, notes, direction, classDefs
 - `../../../Global_References/er.md` — Cardinality, identification, attributes, keys, comments, aliases, subgraphs, direction
-- `../../../Global_References/gitgraph.md` — Commit types, tags, cherry-pick, branch ordering, orientation, config, themes
+- `../../../Global_References/gitgraph.md` — [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) types, tags, cherry-pick, branch ordering, orientation, config, themes
 - `../../../Global_References/journey.md` — Sections, tasks, scores, actors
 - `../../../Global_References/quadrant.md` — Axes, quadrants, points, styling, classes, config, theme variables
 - `../../../Global_References/xychart.md` — Orientation, axes, line/bar plots, legends, data labels, config, theme variables

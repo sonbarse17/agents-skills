@@ -3,24 +3,24 @@ name: copilot-sdk
 description: Build applications powered by GitHub Copilot using the Copilot SDK. Use when creating programmatic integrations with Copilot across Node.js/TypeScript, Python, Go, or .NET. Covers session management, custom tools, streaming, hooks, MCP servers, BYOK providers, session persistence, custom agents, skills, and deployment patterns. Requires GitHub Copilot CLI installed and a GitHub Copilot subscription (unless using BYOK).
 ---
 
-# GitHub Copilot SDK
+# [GitHub](../../CI_CD/github/SKILL.md) Copilot SDK
 
-Build applications that programmatically interact with GitHub Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, Python, Go, and .NET.
+Build applications that programmatically interact with [GitHub](../../CI_CD/github/SKILL.md) Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, and .NET.
 
 ## Prerequisites
 
-- **GitHub Copilot CLI** installed and authenticated (`copilot --version`)
-- **GitHub Copilot subscription** (Individual, Business, or Enterprise) — not required for BYOK
-- **Runtime:** Node.js 18+ / Python 3.8+ / Go 1.21+ / .NET 8.0+
+- **[GitHub](../../CI_CD/github/SKILL.md) Copilot CLI** installed and authenticated (`copilot --version`)
+- **[GitHub](../../CI_CD/github/SKILL.md) Copilot subscription** (Individual, Business, or Enterprise) — not required for BYOK
+- **Runtime:** Node.js 18+ / [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.8+ / Go 1.21+ / .NET 8.0+
 
 ## Installation
 
 | Language | Package | Install |
 |----------|---------|---------|
-| Node.js | `@github/copilot-sdk` | `npm install @github/copilot-sdk` |
-| Python | `github-copilot-sdk` | `pip install github-copilot-sdk` |
-| Go | `github.com/github/copilot-sdk/go` | `go get github.com/github/copilot-sdk/go` |
-| .NET | `GitHub.Copilot.SDK` | `dotnet add package GitHub.Copilot.SDK` |
+| Node.js | `@[github](../../CI_CD/github/SKILL.md)/copilot-sdk` | `npm install @[github](../../CI_CD/github/SKILL.md)/copilot-sdk` |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `[github](../../CI_CD/github/SKILL.md)-copilot-sdk` | `pip install [github](../../CI_CD/github/SKILL.md)-copilot-sdk` |
+| Go | `[github](../../CI_CD/github/SKILL.md).com/[github](../../CI_CD/github/SKILL.md)/copilot-sdk/go` | `go get [github](../../CI_CD/github/SKILL.md).com/[github](../../CI_CD/github/SKILL.md)/copilot-sdk/go` |
+| .NET | `[GitHub](../../CI_CD/github/SKILL.md).Copilot.SDK` | `dotnet add package [GitHub](../../CI_CD/github/SKILL.md).Copilot.SDK` |
 
 ## Architecture
 
@@ -45,10 +45,10 @@ Your App → SDK Client → [stdio/TCP] → Copilot CLI → Model Provider
 
 All SDK usage follows: create a client, create a session, send messages.
 
-### Node.js / TypeScript
+### Node.js / [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
-```typescript
-import { CopilotClient } from "@github/copilot-sdk";
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+import { CopilotClient } from "@[github](../../CI_CD/github/SKILL.md)/copilot-sdk";
 
 const client = new CopilotClient();
 const session = await client.createSession({ model: "gpt-4.1" });
@@ -59,9 +59,9 @@ console.log(response?.data.content);
 await client.stop();
 ```
 
-### Python
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 from copilot import CopilotClient
 
@@ -105,7 +105,7 @@ Enable real-time output by setting `streaming: true` and subscribing to delta ev
 
 ### Node.js
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({ model: "gpt-4.1", streaming: true });
 
 session.on("assistant.message_delta", (event) => {
@@ -116,9 +116,9 @@ session.on("session.idle", () => console.log());
 await session.sendAndWait({ prompt: "Tell me a joke" });
 ```
 
-### Python
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from copilot.generated.session_events import SessionEventType
 
 session = await client.create_session({"model": "gpt-4.1", "streaming": True})
@@ -151,8 +151,8 @@ Define tools that Copilot can call to extend its capabilities.
 
 ### Node.js
 
-```typescript
-import { CopilotClient, defineTool } from "@github/copilot-sdk";
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+import { CopilotClient, defineTool } from "@[github](../../CI_CD/github/SKILL.md)/copilot-sdk";
 
 const getWeather = defineTool("get_weather", {
     description: "Get the current weather for a city",
@@ -170,9 +170,9 @@ const session = await client.createSession({
 });
 ```
 
-### Python
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from copilot.tools import define_tool
 from pydantic import BaseModel, Field
 
@@ -230,7 +230,7 @@ await using var session = await client.CreateSessionAsync(new SessionConfig {
 
 ## Hooks
 
-Intercept and customize session behavior at key lifecycle points.
+Intercept and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) session behavior at key lifecycle points.
 
 | Hook | Trigger | Use Case |
 |------|---------|----------|
@@ -239,13 +239,13 @@ Intercept and customize session behavior at key lifecycle points.
 | `onUserPromptSubmitted` | User sends message | Prompt modification, filtering, context injection |
 | `onSessionStart` | Session begins (new or resumed) | Add context, configure session |
 | `onSessionEnd` | Session ends | Cleanup, analytics, metrics |
-| `onErrorOccurred` | Error happens | Custom error handling, retry logic, monitoring |
+| `onErrorOccurred` | Error happens | Custom error handling, retry logic, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) |
 
 ### Pre-Tool Use Hook
 
 Control tool permissions, modify arguments, or inject context before tool execution.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     hooks: {
         onPreToolUse: async (input) => {
@@ -274,7 +274,7 @@ const session = await client.createSession({
 
 Transform results, redact sensitive data, or log tool activity after execution.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 hooks: {
     onPostToolUse: async (input) => {
         // Redact sensitive data from results
@@ -298,7 +298,7 @@ hooks: {
 
 Modify or enhance user prompts before processing. Useful for prompt templates, context injection, and input validation.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 hooks: {
     onUserPromptSubmitted: async (input) => {
         return {
@@ -313,12 +313,12 @@ hooks: {
 
 ### Session Lifecycle Hooks
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 hooks: {
     onSessionStart: async (input, invocation) => {
         // input.source: "startup" | "resume" | "new"
         console.log(`Session ${invocation.sessionId} started (${input.source})`);
-        return { additionalContext: "Project uses TypeScript and React." };
+        return { additionalContext: "Project uses [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) and React." };
     },
     onSessionEnd: async (input, invocation) => {
         // input.reason: "complete" | "error" | "abort" | "timeout" | "user_exit"
@@ -330,7 +330,7 @@ hooks: {
 
 ### Error Handling Hook
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 hooks: {
     onErrorOccurred: async (input) => {
         // input.errorContext: "model_call" | "tool_execution" | "system" | "user_input"
@@ -345,9 +345,9 @@ hooks: {
 
 **Output fields:** `suppressOutput`, `errorHandling` (`"retry"` | `"skip"` | `"abort"`), `retryCount`, `userNotification`
 
-### Python Hook Example
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Hook Example
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def on_pre_tool_use(input_data, invocation):
     if input_data["toolName"] in ["shell", "bash"]:
         return {"permissionDecision": "deny", "permissionDecisionReason": "Not permitted"}
@@ -378,7 +378,7 @@ Connect to MCP (Model Context Protocol) servers for pre-built tool capabilities.
 
 ### Local Stdio Server
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     mcpServers: {
         filesystem: {
@@ -396,10 +396,10 @@ const session = await client.createSession({
 
 ### Remote HTTP Server
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     mcpServers: {
-        github: {
+        [github](../../CI_CD/github/SKILL.md): {
             type: "http",
             url: "https://api.githubcopilot.com/mcp/",
             headers: { Authorization: "Bearer ${TOKEN}" },
@@ -463,33 +463,33 @@ npx @modelcontextprotocol/inspector /path/to/your/mcp-server
 3. **Direct API token** — `GITHUB_COPILOT_API_TOKEN` with `COPILOT_API_URL`
 4. **Environment variables** — `COPILOT_GITHUB_TOKEN` → `GH_TOKEN` → `GITHUB_TOKEN`
 5. **Stored OAuth** — From `copilot auth login`
-6. **GitHub CLI** — `gh auth` credentials
+6. **[GitHub](../../CI_CD/github/SKILL.md) CLI** — `gh auth` credentials
 
 ### Programmatic Token
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ githubToken: process.env.GITHUB_TOKEN });
 ```
 
-### OAuth GitHub App
+### OAuth [GitHub](../../CI_CD/github/SKILL.md) App
 
-For multi-user apps where users sign in with GitHub:
+For multi-user apps where users sign in with [GitHub](../../CI_CD/github/SKILL.md):
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({
     githubToken: userAccessToken,    // gho_ or ghu_ token from OAuth flow
     useLoggedInUser: false,          // Don't use stored CLI credentials
 });
 ```
 
-**Supported token types:** `gho_` (OAuth), `ghu_` (GitHub App), `github_pat_` (fine-grained PAT).
+**Supported token types:** `gho_` (OAuth), `ghu_` ([GitHub](../../CI_CD/github/SKILL.md) App), `github_pat_` (fine-grained PAT).
 **Not supported:** `ghp_` (classic PAT — deprecated).
 
 ### Disable Auto-Login
 
 Prevent the SDK from using stored credentials:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ useLoggedInUser: false });
 ```
 
@@ -502,12 +502,12 @@ Use your own API keys — no Copilot subscription required. The CLI acts as agen
 ### Provider Configurations
 
 **OpenAI:**
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 provider: { type: "openai", baseUrl: "https://api.openai.com/v1", apiKey: process.env.OPENAI_API_KEY }
 ```
 
 **Azure AI Foundry (OpenAI-compatible):**
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 provider: {
     type: "openai",
     baseUrl: "https://your-resource.openai.azure.com/openai/v1/",
@@ -517,7 +517,7 @@ provider: {
 ```
 
 **Azure OpenAI (native endpoint):**
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 provider: {
     type: "azure",
     baseUrl: "https://my-resource.openai.azure.com",  // Just the host — no /openai/v1
@@ -527,12 +527,12 @@ provider: {
 ```
 
 **Anthropic:**
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 provider: { type: "anthropic", baseUrl: "https://api.anthropic.com", apiKey: process.env.ANTHROPIC_API_KEY }
 ```
 
 **Ollama (local):**
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 provider: { type: "openai", baseUrl: "http://localhost:11434/v1" }
 ```
 
@@ -551,7 +551,7 @@ provider: { type: "openai", baseUrl: "http://localhost:11434/v1" }
 
 Use `DefaultAzureCredential` to get short-lived bearer tokens for Azure deployments:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from copilot import CopilotClient, ProviderConfig, SessionConfig
 
@@ -584,7 +584,7 @@ session = await client.create_session(SessionConfig(
 
 Resume sessions across restarts by providing your own session ID.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Create with explicit ID
 const session = await client.createSession({
     sessionId: "user-123-task-456",
@@ -598,7 +598,7 @@ await resumed.sendAndWait({ prompt: "What did we discuss?" });
 
 ### Session Management
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const sessions = await client.listSessions();           // List all
 const lastId = await client.getLastSessionId();          // Get most recent
 await client.deleteSession("user-123-task-456");         // Delete from storage
@@ -634,7 +634,7 @@ Session state is saved to `~/.copilot/session-state/{sessionId}/`:
 
 For long-running workflows that may exceed context limits, enable auto-compaction:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     infiniteSessions: {
         enabled: true,
@@ -652,7 +652,7 @@ const session = await client.createSession({
 
 Define specialized AI personas:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     customAgents: [{
         name: "pr-reviewer",
@@ -669,7 +669,7 @@ const session = await client.createSession({
 
 Control AI behavior and personality:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     systemMessage: { content: "You are a helpful assistant. Always be concise." },
 });
@@ -681,16 +681,16 @@ const session = await client.createSession({
 
 Load skill directories to extend Copilot's capabilities:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
-    skillDirectories: ["./skills/code-review", "./skills/documentation"],
+    skillDirectories: ["./skills/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)", "./skills/documentation"],
     disabledSkills: ["experimental-feature"],
 });
 ```
 
 Skills can be combined with custom agents and MCP servers:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     skillDirectories: ["./skills/security"],
     customAgents: [{ name: "auditor", prompt: "Focus on OWASP Top 10." }],
@@ -704,7 +704,7 @@ const session = await client.createSession({
 
 Handle tool permissions and user input requests programmatically. The SDK uses a **deny-by-default** permission model — all permission requests are denied unless you provide a handler.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const session = await client.createSession({
     onPermissionRequest: async (request) => {
         if (request.kind === "shell") {
@@ -722,7 +722,7 @@ const session = await client.createSession({
 
 Subscribe to usage events instead of using CLI `/usage`:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 session.on("assistant.usage", (event) => {
     console.log("Tokens:", { input: event.data.inputTokens, output: event.data.outputTokens });
 });
@@ -736,7 +736,7 @@ session.on("assistant.usage", (event) => {
 
 SDK auto-spawns CLI as subprocess. Simplest setup — zero configuration.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient(); // Auto-manages CLI process
 ```
 
@@ -748,7 +748,7 @@ Run CLI in headless mode, connect SDK over TCP:
 copilot --headless --port 4321
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ cliUrl: "localhost:4321" });
 ```
 
@@ -758,16 +758,16 @@ const client = new CopilotClient({ cliUrl: "localhost:4321" });
 
 Ship CLI binary with your app:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ cliPath: path.join(__dirname, "vendor", "copilot") });
 ```
 
-### Docker Compose
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose
 
 ```yaml
 services:
   copilot-cli:
-    image: ghcr.io/github/copilot-cli:latest
+    image: ghcr.io/[github](../../CI_CD/github/SKILL.md)/copilot-cli:latest
     command: ["--headless", "--port", "4321"]
     environment:
       - COPILOT_GITHUB_TOKEN=${COPILOT_GITHUB_TOKEN}
@@ -795,7 +795,7 @@ volumes:
 - Session cleanup: periodic deletion of expired sessions
 - Health checks: ping CLI server, restart if unresponsive
 - Persistent storage: mount `~/.copilot/session-state/` for containers
-- Secret management: use Vault/K8s Secrets for tokens
+- Secret management: use [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/K8s Secrets for tokens
 - Session locking: Redis or similar for shared session access
 - Graceful shutdown: drain active sessions before stopping CLI
 
@@ -807,7 +807,7 @@ volumes:
 |--------|------|---------|-------------|
 | `cliPath` | string | Auto-detected | Path to Copilot CLI executable |
 | `cliUrl` | string | — | URL of external CLI server |
-| `githubToken` | string | — | GitHub token for auth |
+| `githubToken` | string | — | [GitHub](../../CI_CD/github/SKILL.md) token for auth |
 | `useLoggedInUser` | boolean | `true` | Use stored CLI credentials |
 | `logLevel` | string | `"none"` | `"none"` \| `"error"` \| `"warning"` \| `"info"` \| `"debug"` |
 | `autoRestart` | boolean | `true` | Auto-restart CLI on crash |
@@ -857,13 +857,13 @@ Session export (`--share`), slash commands, interactive UI, terminal rendering, 
 
 Enable debug logging:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ logLevel: "debug" });
 ```
 
 Custom log directory:
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const client = new CopilotClient({ cliArgs: ["--log-dir", "/path/to/logs"] });
 ```
 
@@ -879,7 +879,7 @@ const client = new CopilotClient({ cliArgs: ["--log-dir", "/path/to/logs"] });
 
 ### Connection State
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 console.log("State:", client.getState());  // "connected" after start()
 client.on("stateChange", (state) => console.log("Changed to:", state));
 ```
@@ -891,14 +891,14 @@ client.on("stateChange", (state) => console.log("Changed to:", state));
 | Language | Client | Session Create | Send | Resume | Stop |
 |----------|--------|---------------|------|--------|------|
 | Node.js | `new CopilotClient()` | `client.createSession()` | `session.sendAndWait()` | `client.resumeSession()` | `client.stop()` |
-| Python | `CopilotClient()` | `client.create_session()` | `session.send_and_wait()` | `client.resume_session()` | `client.stop()` |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `CopilotClient()` | `client.create_session()` | `session.send_and_wait()` | `client.resume_session()` | `client.stop()` |
 | Go | `copilot.NewClient(nil)` | `client.CreateSession()` | `session.SendAndWait()` | `client.ResumeSession()` | `client.Stop()` |
 | .NET | `new CopilotClient()` | `client.CreateSessionAsync()` | `session.SendAndWaitAsync()` | `client.ResumeSessionAsync()` | `client.DisposeAsync()` |
 
 ## References
 
-- [GitHub Copilot SDK](https://github.com/github/copilot-sdk)
-- [Copilot CLI Installation](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli)
+- [GitHub Copilot SDK](https://[github](../../CI_CD/github/SKILL.md).com/[github](../../CI_CD/github/SKILL.md)/copilot-sdk)
+- [Copilot CLI Installation](https://docs.[github](../../CI_CD/github/SKILL.md).com/en/copilot/how-tos/set-up/install-copilot-cli)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
-- [MCP Servers Directory](https://github.com/modelcontextprotocol/servers)
-- [GitHub MCP Server](https://github.com/github/github-mcp-server)
+- [MCP Servers Directory](https://[github](../../CI_CD/github/SKILL.md).com/modelcontextprotocol/servers)
+- [GitHub MCP Server](https://[github](../../CI_CD/github/SKILL.md).com/[github](../../CI_CD/github/SKILL.md)/[github](../../CI_CD/github/SKILL.md)-mcp-server)

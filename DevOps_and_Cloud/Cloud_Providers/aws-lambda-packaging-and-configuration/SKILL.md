@@ -43,14 +43,14 @@ function nobody scoped down after the initial "just get it working" deploy.
   when someone has broadened it to unblock a deploy.
 - Adding a Lambda layer for shared dependencies across multiple functions.
 - Deciding whether a function needs VPC attachment at all, and if so,
-  configuring it without starving cold-start latency or IP capacity.
+  configuring it without starving cold-start latency or IP [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## Prerequisites & environment
 
-- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, CloudFormation) with
+- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)) with
   permissions to create/update Lambda functions, IAM roles, and (for
   container images) push to Amazon ECR.
-- For container image packaging: Docker (or another OCI-compatible
+- For container image packaging: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) (or another OCI-compatible
   builder) and an ECR repository the build can push to.
 - Know your runtime's supported version at deploy time — AWS deprecates
   Lambda runtimes on a schedule (e.g. `python3.9`, `nodejs16.x` reach
@@ -72,18 +72,18 @@ function nobody scoped down after the initial "just get it working" deploy.
    binaries compiled for the target architecture) or want to reuse an
    existing container build/scan pipeline:
    ```dockerfile
-   FROM public.ecr.aws/lambda/python:3.12
+   FROM public.ecr.aws/lambda/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12
    COPY requirements.txt ${LAMBDA_TASK_ROOT}
    RUN pip install -r requirements.txt -t ${LAMBDA_TASK_ROOT}
    COPY app.py ${LAMBDA_TASK_ROOT}
    CMD ["app.handler"]
    ```
    ```bash
-   docker build -t my-fn:latest .
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t my-fn:latest .
    aws ecr get-login-password --region <REGION> \
-     | docker login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
-   docker tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
-   docker push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+     | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+   [docker](../../Containers_and_Orchestration/docker/SKILL.md) push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
    ```
 
 2. **Create the function with an explicit, least-privilege execution
@@ -180,7 +180,7 @@ function nobody scoped down after the initial "just get it working" deploy.
 - Give each function (or tightly related group) its own execution role
   scoped to the specific resource ARNs it touches — a shared "does
   everything" role defeats least privilege and makes blast radius
-  analysis impossible after an incident.
+  analysis impossible after an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 - Version functions and use aliases (`prod`, `staging`) as the stable
   target for Provisioned Concurrency and downstream integrations, rather
   than pointing everything at the mutable `$LATEST`.
@@ -230,12 +230,12 @@ function nobody scoped down after the initial "just get it working" deploy.
 
 ## Worked example
 
-**Scenario:** An image-processing function (Python, Pillow, with native
+**Scenario:** An image-processing function ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Pillow, with native
 image-codec bindings) needs to resize uploaded images from S3 and write
 results to DynamoDB, with low p99 latency for a user-facing upload flow.
 
 Packaging: native Pillow dependencies make a container image the better
-fit, built `FROM public.ecr.aws/lambda/python:3.12`, pushed to ECR as
+fit, built `FROM public.ecr.aws/lambda/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`, pushed to ECR as
 shown in step 1.
 
 Configuration:
@@ -266,13 +266,13 @@ provisioned concurrency, since occasional cold starts there are
 acceptable.
 
 Before this configuration ships, run it through
-[aws-lambda-configuration-validation](../aws-lambda-configuration-validation/SKILL.md)
+[aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../[aws-lambda](../aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
 to confirm the reserved/provisioned concurrency numbers don't starve the
 account's shared concurrency pool and that the environment variables and
 role policy don't regress.
 
 ## Cross-references
 
-- [aws-lambda-configuration-validation](../aws-lambda-configuration-validation/SKILL.md) — pre-deploy checks (reserved concurrency budget, VPC subnet capacity, IAM scope) for the configuration produced here.
-- [azure-functions-configuration](../azure-functions-configuration/SKILL.md) — equivalent packaging/hosting-plan decisions and cold-start tradeoffs on Azure.
-- [google-cloud-functions-configuration](../google-cloud-functions-configuration/SKILL.md) — equivalent packaging and scaling configuration on Google Cloud Functions Gen1/Gen2.
+- [aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../[aws-lambda](../aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — pre-deploy checks (reserved concurrency budget, VPC subnet [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), IAM scope) for the configuration produced here.
+- [azure-functions-configuration](../[azure-functions-configuration](../[azure-functions](../azure-functions/SKILL.md)-configuration/SKILL.md)/SKILL.md) — equivalent packaging/hosting-plan decisions and cold-start tradeoffs on Azure.
+- [google-cloud-functions-configuration](../[google-cloud-functions-configuration](../google-cloud-functions-configuration/SKILL.md)/SKILL.md) — equivalent packaging and scaling configuration on Google Cloud Functions Gen1/Gen2.

@@ -9,7 +9,7 @@ metadata:
 
 # Access Review
 
-Implement periodic access review processes for AWS IAM, GitHub, Okta, and other identity providers, including automated reporting, certification workflows, and unused permission detection.
+Implement periodic access review processes for AWS IAM, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Okta, and other identity providers, including automated reporting, certification workflows, and unused permission detection.
 
 ## When to Use
 
@@ -76,7 +76,7 @@ access_review_workflow:
 
 ```bash
 #!/usr/bin/env bash
-# aws-iam-review.sh - Comprehensive IAM access review report
+# [aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-review.sh - Comprehensive IAM access review report
 
 OUTPUT_DIR="./access-review/$(date +%Y-%m)"
 mkdir -p "$OUTPUT_DIR"
@@ -141,17 +141,17 @@ aws iam get-credential-report --output text --query Content | base64 -d | \
 echo "Report generated in $OUTPUT_DIR"
 ```
 
-## GitHub Access Review
+## [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Access Review
 
 ```bash
 #!/usr/bin/env bash
-# github-access-review.sh - GitHub organization access audit
+# [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-access-review.sh - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) organization access [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ORG="your-org"
-OUTPUT_DIR="./access-review/github/$(date +%Y-%m)"
+OUTPUT_DIR="./access-review/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/$(date +%Y-%m)"
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== GitHub Organization Access Review ==="
+echo "=== [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Organization Access Review ==="
 
 echo "--- Organization Members ---"
 gh api orgs/$ORG/members --paginate \
@@ -216,7 +216,7 @@ echo "Report generated in $OUTPUT_DIR"
 
 ```bash
 #!/usr/bin/env bash
-# okta-access-review.sh - Okta user and application access audit
+# okta-access-review.sh - Okta user and application access [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 # Requires OKTA_DOMAIN and OKTA_API_TOKEN environment variables
 
 OUTPUT_DIR="./access-review/okta/$(date +%Y-%m)"
@@ -278,7 +278,7 @@ echo "Report generated in $OUTPUT_DIR"
 
 ## Unused Permission Detection
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """
 Detect unused IAM permissions using CloudTrail and IAM Access Analyzer.
 Generates recommendations for right-sizing access.
@@ -366,7 +366,7 @@ def detect_overprivileged_roles():
 ## Certification Workflow Automation
 
 ```yaml
-# GitHub Actions - Automated access review reminder and tracking
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions - Automated access review reminder and tracking
 name: Quarterly Access Review
 on:
   schedule:
@@ -386,8 +386,8 @@ jobs:
           OKTA_DOMAIN: ${{ secrets.OKTA_DOMAIN }}
           OKTA_API_TOKEN: ${{ secrets.OKTA_API_TOKEN }}
         run: |
-          bash scripts/aws-iam-review.sh
-          bash scripts/github-access-review.sh
+          bash scripts/[aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-review.sh
+          bash scripts/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-access-review.sh
           bash scripts/okta-access-review.sh
 
       - name: Create review issue
@@ -414,7 +414,7 @@ jobs:
           - [ ] Enforce MFA for non-compliant users
           - [ ] Rotate or deactivate stale access keys
           - [ ] Review admin/privileged access assignments
-          - [ ] Review outside collaborators on GitHub
+          - [ ] Review outside collaborators on [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
           - [ ] Certify remaining access is appropriate
           - [ ] Document exceptions with justification
 
@@ -461,7 +461,7 @@ access_review_checklist:
     - [ ] Non-response escalations documented
     - [ ] Remediation actions summarized
     - [ ] Exception register updated
-    - [ ] Evidence archived for audit (retained 3+ years)
+    - [ ] Evidence archived for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (retained 3+ years)
     - [ ] Metrics compared to prior review cycle
 ```
 
@@ -476,4 +476,4 @@ access_review_checklist:
 - Review service accounts and API keys alongside human accounts to prevent credential sprawl
 - Document all exceptions with business justification, approver, and expiration date
 - Track review metrics over time: completion rates, revocation rates, time to remediate
-- Archive all access review evidence for a minimum of 3 years for audit purposes
+- Archive all access review evidence for a minimum of 3 years for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) purposes

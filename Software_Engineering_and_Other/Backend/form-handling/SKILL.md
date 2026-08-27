@@ -80,7 +80,7 @@ Form complexity?
   |     |-- React --> React Hook Form (uncontrolled, fast) or Formik (controlled, simpler)
   |     |-- Vue --> VeeValidate + Zod
   |     |-- Angular --> Reactive Forms (built-in)
-  |     |-- Svelte --> SvelteKit Forms or Felte
+  |     |-- Svelte --> [SvelteKit](../../Frontend/sveltekit/SKILL.md) Forms or Felte
   |
   |-- Moderate (10-30 fields, field arrays, dependent fields) -->
   |     |-- React --> React Hook Form + Zod (field arrays, useWatch)
@@ -89,7 +89,7 @@ Form complexity?
   |-- Complex (30+ fields, multi-step wizard, dynamic field arrays) -->
   |     |-- React --> React Hook Form + Zod (persist step data, lazy register)
   |
-  |-- Cross-framework / monorepo -->
+  |-- Cross-framework / [monorepo](../../Frontend/monorepo/SKILL.md) -->
         |-- TanStack Form (React, Vue, Solid, Svelte)
 ```
 
@@ -146,7 +146,7 @@ Paginated or wizard?
 
 ### 2. Schema Validation
 - Define Zod/Yup/Joi schemas shared between frontend and backend when possible.
-- Infer TypeScript types from schema: `z.infer<typeof schema>`.
+- Infer [TypeScript](../../Frontend/typescript/SKILL.md) types from schema: `z.infer<typeof schema>`.
 - Field-level validation for immediate feedback; form-level validation for cross-field rules.
 - Async validation (e.g., username uniqueness): debounce 300ms, abort previous on new keystroke.
 - Schema is the single source of truth — never duplicate validation rules.
@@ -204,7 +204,7 @@ All form fields have associated `<label>` elements. Error messages use `role="al
 | Dynamic invoice form with line items | React Hook Form | Zod | Client + server |
 | Settings page with auto-save | TanStack Form | Zod | Debounced server |
 | Admin dashboard with file uploads | React Hook Form | Zod | Client + server |
-| Enterprise signup with compliance | Formik or RHF | Yup | Client + server + audit |
+| Enterprise signup with compliance | Formik or RHF | Yup | Client + server + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Angular app with complex validation | Angular Reactive | Built-in + Zod | Client + server |
 
 ## Validation Strategy Decision Tree
@@ -254,7 +254,7 @@ User interacts with field
 
 Prompt the user when they navigate away from a dirty form:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // React Router v6
 import { useBlocker } from 'react-router-dom';
 
@@ -268,7 +268,7 @@ function useUnsavedChanges(isDirty: boolean) {
 }
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Next.js App Router
 import { useEffect } from 'react';
 
@@ -302,7 +302,7 @@ For forms with 50+ fields, consider: virtualized field list (react-window), defe
 ## Form Testing Patterns
 
 ### React Hook Form Testing
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -328,7 +328,7 @@ describe('RegistrationForm', () => {
 ```
 
 ### Form Security Patterns
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // CSRF token
 <form method="POST" action="/api/submit">
   <input type="hidden" name="_csrf" value={csrfToken} />
@@ -353,7 +353,7 @@ const handleSubmit = async (data: FormData) => {
 ## Common Pitfalls
 
 ### 1. Submit Button Disabled Based on isValid
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BAD -- user can't submit to see all errors
 <button disabled={!isValid}>Submit</button>
 
@@ -368,7 +368,7 @@ Users lose form data when they accidentally navigate away. Always implement unsa
 Client validation is for UX. Server validation is for security. Always re-validate on the server — client validation can be bypassed.
 
 ### 4. Not Resetting Form After Submit
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BAD -- form stays dirty after submit
 onSubmit: async (data) => { await api.post(data) }
 
@@ -461,7 +461,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -475,7 +475,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -485,7 +485,7 @@ config:
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -493,13 +493,13 @@ config:
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

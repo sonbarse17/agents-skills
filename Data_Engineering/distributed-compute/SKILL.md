@@ -71,11 +71,11 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | Feature | Apache Spark | Dask | Ray | Hadoop MapReduce |
 |---|---|---|---|---|
 | Execution model | Driver-executor | Scheduler-worker | GCS (Global Control Store) | JobTracker-TaskTracker |
-| Language | Scala, Python, R, SQL | Python | Python, Java | Java, streaming |
+| Language | Scala, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), R, SQL | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Java | Java, streaming |
 | In-memory | Yes (RDD/DataFrame) | Yes (dataframes) | Yes (object store) | No (disk-based) |
 | Streaming | Micro-batch | Streaming dataframes | Streaming actors | N/A |
 | ML | MLlib | Dask-ML, XGBoost | Ray Tune, RLlib | Apache Mahout |
-| Best for | Batch ETL, SQL, ML | Pandas-scale, custom Python | ML training, RL, serving | Legacy batch |
+| Best for | Batch ETL, SQL, ML | Pandas-scale, custom [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | ML training, RL, serving | Legacy batch |
 | Maturity | Very high | High | High | Declining |
 
 #### Decision Tree
@@ -83,8 +83,8 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Primary workload?
 ├── Batch ETL, large-scale SQL, data warehouse processing
 │   └── Apache Spark (most mature, best ecosystem)
-├── Python-native dataframes, NumPy/Pandas-scale workloads
-│   └── Dask (Python-native, familiar API)
+├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native dataframes, NumPy/Pandas-scale workloads
+│   └── Dask ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native, familiar API)
 ├── ML training, reinforcement learning, hyperparameter tuning
 │   └── Ray (Ray Train, Ray Tune, RLlib)
 ├── Real-time inference, serving, distributed actors
@@ -146,7 +146,7 @@ ray_config:
     min: 4
     max: 32
     resources: { CPU: 8, memory: 32GB }
-    autoscaling:
+    [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):
       target_num_workers: 16
       idle_timeout_minutes: 5
       upscaling_speed: 1.0
@@ -351,11 +351,11 @@ spark.kryoserializer.buffer: 64k
 
 ### Resource Manager Comparison
 
-| Feature | YARN | Kubernetes | Standalone | Slurm |
+| Feature | YARN | [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) | Standalone | Slurm |
 |---|---|---|---|---|
 | Maturity | Very high | High | Medium | High |
 | Spark support | Native | Spark Operator | Native | Via wrapper |
-| Multi-tenancy | Queues + ACLs | Namespaces + RBAC | None | Partitions |
+| [Multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) | Queues + ACLs | Namespaces + RBAC | None | Partitions |
 | Auto-scaling | Limited | Horizontal Pod Autoscaler | No | No |
 | GPU support | Yes (via YARN) | Native (device plugin) | Limited | Native |
 | Dynamic allocation | Requires shuffle service | Supports | Supports | N/A |
@@ -416,7 +416,7 @@ spark.executor.extraJavaOptions: >
 # Full GC symptoms: task timeouts, executor heartbeats missed
 ```
 
-### Spark on Kubernetes
+### Spark on [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```yaml
 # Spark Operator deployment
@@ -426,14 +426,14 @@ metadata:
   name: etl-pipeline
 spec:
   sparkConf:
-    spark.kubernetes.container.image: ghcr.io/org/spark:3.5.0
-    spark.kubernetes.authenticate.driver.serviceAccountName: spark
-    spark.kubernetes.allocation.maxExecutors: 50
-    spark.kubernetes.executor.deleteOnTermination: true
-    spark.kubernetes.memoryOverheadFactor: 0.1
-    spark.kubernetes.node.selector.role: spark-worker
-    spark.kubernetes.executor.label.app: spark-job
-    spark.kubernetes.driver.label.app: spark-job
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).container.image: ghcr.io/org/spark:3.5.0
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).authenticate.driver.serviceAccountName: spark
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).allocation.maxExecutors: 50
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).executor.deleteOnTermination: true
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).memoryOverheadFactor: 0.1
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).node.selector.role: spark-worker
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).executor.label.app: spark-job
+    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).driver.label.app: spark-job
   driver:
     cores: 4
     memory: "16g"
@@ -455,7 +455,7 @@ Distributed Compute Framework
 │   ├── Streaming → Flink / Kafka Streams / Spark Streaming
 │   └── Both → Flink (unified) / Spark Structured Streaming
 ├── Language preference?
-│   ├── Python → PySpark / Dask / Ray
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) → PySpark / Dask / Ray
 │   ├── SQL → Trino / Spark SQL / Hive
 │   └── Java/Scala → Flink / Beam / Spark
 ├── ML workload?
@@ -471,7 +471,7 @@ Distributed Compute Framework
 ## Implementation Patterns
 
 ### Spark Shuffle Optimization
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # distributed_compute/shuffle_optimization.py
 from pyspark.sql import SparkSession
 
@@ -492,7 +492,7 @@ class ShuffleOptimizer:
 ```
 
 ### Flink Stream Processing
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # distributed_compute/flink_stream.py
 from pyflink.datastream import StreamExecutionEnvironment
 from pyflink.table import StreamTableEnvironment
@@ -523,7 +523,7 @@ t_env.execute_sql("""
 - **Shuffle tuning**: Configure `spark.shuffle.partitions` = 2x-3x cluster cores; monitor shuffle spill to disk.
 - **Flink checkpointing**: Set checkpoint interval = 1 min with exactly-once semantics; store in durable backend (S3).
 - **Task parallelism**: Set parallelism = 2x-3x cores per node for CPU-bound tasks; adjust for IO-bound tasks.
-- **Cluster autoscaling**: Configure Spark on K8s with cluster autoscaler; min 2, max 20 nodes.
+- **Cluster [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)**: Configure Spark on K8s with cluster autoscaler; min 2, max 20 nodes.
 
 ## Anti-Patterns
 
@@ -545,13 +545,13 @@ t_env.execute_sql("""
 
 ## Security Considerations
 
-- **Cluster isolation**: Use separate Spark/Flink clusters per environment (dev, staging, prod) via Kubernetes namespaces.
-- **Job authentication**: Require service accounts for job submission; audit who submits which job.
+- **Cluster isolation**: Use separate Spark/Flink clusters per environment (dev, staging, prod) via [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) namespaces.
+- **Job authentication**: Require service accounts for job submission; [audit](../../AI_and_Agents/Operations/audit/SKILL.md) who submits which job.
 - **Data access control**: Enforce Spark SQL `GRANT/REVOKE` via Apache Ranger for table-level access.
-- **Credential injection**: Pass storage credentials via Kubernetes secrets, never in code; use IAM roles.
+- **Credential injection**: Pass storage credentials via [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets, never in code; use IAM roles.
 - **Network security**: Restrict cluster communication to private VPC; no public endpoints for Spark UI.
 
 ## Handoff
-`data-batch-processing` for Spark SQL and Hive-specific optimizations
-`data-data-platform` for cluster provisioning and infrastructure
-`data-data-lakehouse` for lake-wide compute integration
+`[data-batch-processing](../../DevOps_and_Cloud/CI_CD/batch-processing/SKILL.md)` for Spark SQL and Hive-specific optimizations
+`[data-data-platform](../data-platform/SKILL.md)` for cluster provisioning and infrastructure
+`[data-data-lakehouse](../data-lakehouse/SKILL.md)` for lake-wide compute integration

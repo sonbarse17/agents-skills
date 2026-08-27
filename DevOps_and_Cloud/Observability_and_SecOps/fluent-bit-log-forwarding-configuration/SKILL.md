@@ -29,27 +29,27 @@ and **OUTPUT** (where logs go) sections connected by **tags** and
 node, a misconfigured pipeline doesn't just misroute logs, it can
 silently drop them cluster-wide or exhaust node memory buffering
 backpressure from a slow downstream. This skill covers building that
-INPUT → FILTER → OUTPUT pipeline for the common Kubernetes case
-(container log tailing, Kubernetes metadata enrichment, routing to
+INPUT → FILTER → OUTPUT pipeline for the common [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) case
+(container log tailing, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata enrichment, routing to
 Loki/Elasticsearch/S3) and the buffering/backpressure settings that
 determine what happens when an output is slow or unavailable. It assumes
 the destination (Loki) is already configured to receive pushed logs —
 see
-[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+[loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
 — and does not cover writing queries against the logs once they land
 (see
-[logql-query-authoring](../logql-query-authoring/SKILL.md)).
+[logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)).
 
 ## When to use
 
-- Standing up Fluent Bit (as a Kubernetes DaemonSet or standalone
+- Standing up Fluent Bit (as a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet or standalone
   process) to forward application/container logs somewhere.
-- Adding Kubernetes metadata (pod name, namespace, labels) to raw
+- Adding [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata (pod name, namespace, labels) to raw
   container log lines before they're shipped.
 - Writing a custom parser for an application's log format (multiline
   stack traces, a custom timestamp format, JSON with nested fields).
 - Routing different log streams to different destinations (e.g.
-  application logs to Loki, audit logs to S3 for compliance retention,
+  application logs to Loki, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs to S3 for compliance retention,
   security-relevant logs to Elasticsearch/OpenSearch) from the same
   Fluent Bit pipeline.
 - Fluent Bit is dropping logs, falling behind, or a node running it is
@@ -63,14 +63,14 @@ see
   assumed for the YAML config format shown below — the classic `.conf`
   INI-style format is also still supported and shown where the
   distinction matters).
-- For Kubernetes: DaemonSet deployment with a hostPath volume mount for
-  `/var/log/containers` (and `/var/log/pods`, `/var/lib/docker/
+- For [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): DaemonSet deployment with a hostPath volume mount for
+  `/var/log/containers` (and `/var/log/pods`, `/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/
   containers` depending on the container runtime's log location) and a
   ServiceAccount with RBAC to read Pod/Namespace metadata for the
-  `kubernetes` filter.
+  `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter.
 - The destination(s) already reachable and, for Loki/Elasticsearch,
   already configured to accept the expected volume — see
-  [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)
+  [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
   for Loki-side ingestion limits that a misconfigured Fluent Bit output
   can otherwise slam into.
 - Persistent local disk (or emptyDir with enough size) available on each
@@ -100,13 +100,13 @@ see
    buffering durable across a Fluent Bit restart, not just the `db` file
    alone.
 
-2. **Enrich with Kubernetes metadata using the `kubernetes` filter**
+2. **Enrich with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata using the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter**
    before any routing decision that depends on namespace/labels:
    ```yaml
      filters:
-       - name: kubernetes
+       - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
          match: kube.*
-         kube_url: https://kubernetes.default.svc:443
+         kube_url: https://[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).default.svc:443
          kube_tag_prefix: kube.var.log.containers.
          merge_log: on
          merge_log_key: log_processed
@@ -143,7 +143,7 @@ see
    For multi-line stack traces specifically, use the `multiline` filter
    (or `multiline.parser` on the `tail` input in newer versions) rather
    than a regex parser alone — a plain parser processes line-by-line and
-   cannot join a Java/Python stack trace's continuation lines back into
+   cannot join a Java/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack trace's continuation lines back into
    one log entry on its own.
 
 4. **Drop or redact fields that shouldn't be shipped downstream** —
@@ -172,20 +172,20 @@ see
      outputs:
        - name: loki
          match: kube.payments.*
-         host: loki-gateway.monitoring.svc
+         host: loki-gateway.[monitoring](../monitoring/SKILL.md).svc
          port: 3100
-         labels: job=fluentbit, namespace=$kubernetes['namespace_name'], app=$kubernetes['labels']['app']
+         labels: job=fluentbit, namespace=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['labels']['app']
          line_format: json
 
        - name: es
-         match: kube.security-audit.*
+         match: kube.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*
          host: opensearch.security.svc
          port: 9200
-         index: security-audit
+         index: security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
          suppress_type_name: on
 
        - name: s3
-         match: kube.compliance-audit.*
+         match: kube.compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*
          bucket: <S3_BUCKET_NAME>
          region: <AWS_REGION>
          total_file_size: 50M
@@ -194,11 +194,11 @@ see
    ```
    > **Warning — Loki label cardinality:** the `labels` field on the
    > `loki` output plugin becomes indexed Loki stream labels exactly like
-   > any other Loki label — never map an unbounded Kubernetes field
+   > any other Loki label — never map an unbounded [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) field
    > (pod name, pod IP, a per-request annotation) into it. Stick to
    > `namespace_name`, `app`/`container_name`, and similarly bounded
    > values, per
-   > [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md).
+   > [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md).
 
 6. **Enable filesystem-backed buffering for genuine delivery
    guarantees under backpressure** — the default in-memory-only buffering
@@ -216,8 +216,8 @@ see
    inputs, plus `service.storage.path` set) persists chunks to local
    disk when memory limits are reached, trading some latency/disk usage
    for not silently dropping logs during a downstream outage — worth it
-   for anything where log loss during an incident is unacceptable
-   (audit/compliance streams especially).
+   for anything where log loss during an [incident](../incident/SKILL.md) is unacceptable
+   ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance streams especially).
 
 7. **Set retry and backoff behavior on outputs** so a transient
    destination outage doesn't either drop data immediately or retry so
@@ -226,7 +226,7 @@ see
      outputs:
        - name: loki
          match: kube.payments.*
-         host: loki-gateway.monitoring.svc
+         host: loki-gateway.[monitoring](../monitoring/SKILL.md).svc
          port: 3100
          retry_limit: 5
          net.connect_timeout: 10
@@ -234,7 +234,7 @@ see
 
 8. **Validate and dry-run the pipeline before rolling out broadly** —
    see
-   [fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md)
+   [fluent-bit-configuration-validation](../[fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md)/SKILL.md)
    for the full pre-deploy validation workflow (`fluent-bit --dry-run`,
    testing parsers against sample lines); at minimum, confirm the
    pipeline is emitting before a cluster-wide rollout:
@@ -244,7 +244,7 @@ see
 
 ## Best practices
 
-- Add Kubernetes metadata enrichment before any tag-based routing
+- Add [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata enrichment before any tag-based routing
   decision that depends on namespace/labels — routing on the raw
   container log path alone is fragile across runtime/log-location
   changes.
@@ -256,11 +256,11 @@ see
   accidentally logged) at the Fluent Bit filter stage, as close to the
   source as practical — never depend on the destination to scrub them
   after the fact.
-- Map only bounded, low-cardinality Kubernetes fields into a Loki
+- Map only bounded, low-cardinality [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) fields into a Loki
   output's `labels` — namespace and app/service name, not pod name, pod
   IP, or any per-request value.
 - Enable `storage.type: filesystem` buffering for any log stream where
-  loss during a downstream outage is unacceptable (audit/compliance
+  loss during a downstream outage is unacceptable ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance
   logs, anything feeding a security pipeline) — accept the in-memory-only
   default only for genuinely disposable/best-effort telemetry.
 - Route different log classes to the backend suited to their access
@@ -289,14 +289,14 @@ see
   space or memory, and it's traced back to log forwarding.
   **Fix:** Filesystem buffering was enabled without a bounded
   `storage.backlog.mem_limit`/`storage.max_chunks_up`, or `mem_buf_limit`
-  on the `tail` input was left too high relative to node capacity, so
+  on the `tail` input was left too high relative to node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), so
   buffered chunks accumulated unbounded during a prolonged downstream
   outage instead of being capped. Set explicit limits sized to the
-  node's actual available resources, and pair with alerting on Fluent
+  node's actual available resources, and pair with [alerting](../alerting/SKILL.md) on Fluent
   Bit's own buffer/retry metrics so this is caught before it becomes a
-  node-level incident.
+  node-level [incident](../incident/SKILL.md).
 
-- **Symptom:** Multi-line Java/Python stack traces show up in the
+- **Symptom:** Multi-line Java/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack traces show up in the
   destination as dozens of separate single-line log entries instead of
   one coherent trace.
   **Fix:** A `regex`/`json` parser was applied line-by-line without a
@@ -307,39 +307,39 @@ see
 - **Symptom:** A Loki output starts getting `429`/rejected ingestion
   shortly after a new field was added to the `labels` mapping on the
   `loki` output plugin.
-  **Fix:** The new label maps an unbounded Kubernetes field (pod name,
+  **Fix:** The new label maps an unbounded [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) field (pod name,
   pod IP) into Loki's indexed labels, exploding stream count on the Loki
   side. Remove it from the output's `labels` mapping and, if the field
   is genuinely useful for querying, ship it as part of the log line
   content instead (parsed at query time via LogQL, per
-  [logql-query-authoring](../logql-query-authoring/SKILL.md)).
+  [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)).
 
 - **Symptom:** After adding a new `grep`/`modify` filter meant to
   redact a sensitive field, the field still shows up at the destination.
   **Fix:** The filter's `Match` pattern doesn't actually match the tag
   of the logs carrying that field (commonly a tag-prefix mismatch after
-  the `kubernetes` filter's `kube_tag_prefix` rewrites tags), so the
+  the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter's `kube_tag_prefix` rewrites tags), so the
   filter is silently never applied to the intended stream. Confirm with
   `fluent-bit -c fluent-bit.yaml -o stdout -m '*'` that the filter's
   `match` pattern actually catches the target tag before assuming the
   filter itself is broken.
 
 - **Symptom:** Two teams' logs, meant to go to two different outputs
-  (e.g. `payments` to Loki, `security-audit` to Elasticsearch), both end
+  (e.g. `payments` to Loki, `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` to Elasticsearch), both end
   up in both destinations.
   **Fix:** Both outputs' `match` patterns are broader than intended
   (e.g. both using `kube.*` instead of a properly scoped tag), so every
   output matches every input. Scope `match` patterns as narrowly as the
   actual tag structure allows (`kube.payments.*` vs.
-  `kube.security-audit.*`), and verify with the stdout dry-run before
+  `kube.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*`), and verify with the stdout dry-run before
   rolling out to production destinations.
 
 ## Worked example
 
-**Scenario:** A Kubernetes cluster needs Fluent Bit configured to: ship
-`payments` namespace application logs to Loki with Kubernetes metadata,
-ship `security-audit` namespace logs to OpenSearch, and archive
-`compliance-audit` namespace logs to S3 for 7-year retention — with
+**Scenario:** A [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster needs Fluent Bit configured to: ship
+`payments` namespace application logs to Loki with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata,
+ship `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to OpenSearch, and archive
+`compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to S3 for 7-year retention — with
 filesystem buffering so a Loki maintenance window doesn't lose payments
 logs.
 
@@ -360,7 +360,7 @@ pipeline:
       mem_buf_limit: 50MB
 
   filters:
-    - name: kubernetes
+    - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
       match: kube.*
       kube_tag_prefix: kube.var.log.containers.
       merge_log: on
@@ -373,20 +373,20 @@ pipeline:
   outputs:
     - name: loki
       match: kube.var.log.containers.*payments*
-      host: loki-gateway.monitoring.svc
+      host: loki-gateway.[monitoring](../monitoring/SKILL.md).svc
       port: 3100
-      labels: job=fluentbit, namespace=$kubernetes['namespace_name'], app=$kubernetes['labels']['app']
+      labels: job=fluentbit, namespace=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['labels']['app']
       retry_limit: 5
 
     - name: es
-      match: kube.var.log.containers.*security-audit*
+      match: kube.var.log.containers.*security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)*
       host: opensearch.security.svc
       port: 9200
-      index: security-audit
+      index: security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
       retry_limit: 3
 
     - name: s3
-      match: kube.var.log.containers.*compliance-audit*
+      match: kube.var.log.containers.*compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)*
       bucket: <S3_BUCKET_NAME>
       region: <AWS_REGION>
       total_file_size: 100M
@@ -398,11 +398,11 @@ Loki goes into a planned maintenance window, payments logs buffer to
 local disk (bounded by `storage.backlog.mem_limit`) instead of being
 dropped, and drain automatically once Loki is reachable again — verified
 before rollout with the stdout dry-run and the checks in
-[fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md).
+[fluent-bit-configuration-validation](../[fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md) — dry-running and syntax-checking this exact pipeline before a production rollout.
-- [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md) — the ingestion-side limits and label-cardinality rules that this forwarder's `loki` output must respect.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — querying logs once they land in Loki, including parsing fields that were deliberately kept out of the `labels` mapping here.
-- [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md) — using logs forwarded by this pipeline as one leg of a live cross-signal investigation.
+- [fluent-bit-configuration-validation](../[fluent-bit-configuration-validation](../fluent-bit-configuration-validation/SKILL.md)/SKILL.md) — dry-running and syntax-checking this exact pipeline before a production rollout.
+- [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — the ingestion-side limits and label-cardinality rules that this forwarder's `loki` output must respect.
+- [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — querying logs once they land in Loki, including parsing fields that were deliberately kept out of the `labels` mapping here.
+- [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — using logs forwarded by this pipeline as one leg of a live cross-signal investigation.

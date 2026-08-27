@@ -25,11 +25,11 @@ it binds a Git source (repo, revision, path) to a cluster destination and a
 sync policy, and everything about how a service actually gets deployed and
 kept in sync lives in its `spec`. Getting the `Application` spec right —
 sync policy, ordering via sync waves/hooks, and health assessment — is the
-difference between a GitOps setup that quietly self-heals drift and one
+difference between a [GitOps](../gitops/SKILL.md) setup that quietly self-heals drift and one
 that either does nothing on its own (manual toil) or auto-prunes resources
-nobody meant to delete. This skill assumes you already know *why* GitOps
+nobody meant to delete. This skill assumes you already know *why* [GitOps](../gitops/SKILL.md)
 and Argo CD exist (see
-[gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)) and goes
+[gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)) and goes
 deep on the mechanics of the `Application` CRD itself: sync policy fields,
 sync wave/phase ordering, hooks, and custom health checks.
 
@@ -52,16 +52,16 @@ sync wave/phase ordering, hooks, and custom health checks.
 
 ## Prerequisites & environment
 
-- Argo CD ≥ 2.9 installed in-cluster (`argocd` namespace) with the
-  `argocd` CLI matching the server's major version, and CLI/API access
-  (`argocd login <ARGOCD_SERVER>`) with permissions on the target
+- Argo CD ≥ 2.9 installed in-cluster (`[argocd](../argocd/SKILL.md)` namespace) with the
+  `[argocd](../argocd/SKILL.md)` CLI matching the server's major version, and CLI/API access
+  (`[argocd](../argocd/SKILL.md) login <ARGOCD_SERVER>`) with permissions on the target
   `AppProject`.
 - The application's manifests already exist in a Git repo Argo CD can
-  reach — plain YAML, Kustomize, or Helm; this skill focuses on the
+  reach — plain YAML, [Kustomize](../kustomize/SKILL.md), or Helm; this skill focuses on the
   `Application` resource wrapping any of those, not on templating itself.
-- `kubectl` access to the cluster for direct inspection when the
-  `argocd` CLI/UI view isn't enough (`kubectl get application -n argocd`,
-  `kubectl describe`).
+- `[kubectl](../kubectl/SKILL.md)` access to the cluster for direct inspection when the
+  `[argocd](../argocd/SKILL.md)` CLI/UI view isn't enough (`[kubectl](../kubectl/SKILL.md) get application -n [argocd](../argocd/SKILL.md)`,
+  `[kubectl](../kubectl/SKILL.md) describe`).
 - An `AppProject` already defined (or using `default`) that permits the
   source repo and destination namespace/cluster you're targeting —
   `Application` creation fails silently into a permission error otherwise.
@@ -74,23 +74,23 @@ sync wave/phase ordering, hooks, and custom health checks.
    kind: Application
    metadata:
      name: payments-api-prod
-     namespace: argocd
+     namespace: [argocd](../argocd/SKILL.md)
      finalizers:
-       - resources-finalizer.argocd.argoproj.io
+       - resources-finalizer.[argocd](../argocd/SKILL.md).argoproj.io
    spec:
      project: default
      source:
-       repoURL: https://github.com/example/gitops-config.git
+       repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
        targetRevision: main
        path: apps/payments-api/overlays/prod
      destination:
-       server: https://kubernetes.default.svc
+       server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
        namespace: payments-prod
      syncPolicy:
        syncOptions:
          - CreateNamespace=true
    ```
-   The `resources-finalizer.argocd.argoproj.io` finalizer ensures that
+   The `resources-finalizer.[argocd](../argocd/SKILL.md).argoproj.io` finalizer ensures that
    deleting the `Application` object also cascades to delete the managed
    resources (rather than orphaning them) — omit it deliberately if you
    want "delete the Application, leave the workload running" semantics.
@@ -101,7 +101,7 @@ sync wave/phase ordering, hooks, and custom health checks.
    syncPolicy:
      automated:
        prune: true        # delete live resources removed from Git
-       selfHeal: true      # revert out-of-band (kubectl edit) drift
+       selfHeal: true      # revert out-of-band ([kubectl](../kubectl/SKILL.md) edit) drift
        allowEmpty: false   # refuse to sync if the source renders 0 resources
      syncOptions:
        - CreateNamespace=true
@@ -116,7 +116,7 @@ sync wave/phase ordering, hooks, and custom health checks.
    ```
    - Omit `automated` entirely for **manual-only** sync — the common
      choice for production. The `Application` sits `OutOfSync` until an
-     operator runs `argocd app sync payments-api-prod`.
+     operator runs `[argocd](../argocd/SKILL.md) app sync payments-api-prod`.
    - `prune: true` **without** `selfHeal` still auto-deletes resources
      removed from Git on the next automated sync trigger, but does not
      revert manual in-cluster edits.
@@ -128,8 +128,8 @@ sync wave/phase ordering, hooks, and custom health checks.
    > resource that is no longer declared in the Git source, including
    > accidentally-deleted manifests. Never enable it on a production
    > `Application` without `PrunePropagationPolicy` reviewed and, ideally,
-   > `argocd app sync --dry-run` exercised first. Combine with
-   > `metadata.annotations["argocd.argoproj.io/sync-options"]:
+   > `[argocd](../argocd/SKILL.md) app sync --dry-run` exercised first. Combine with
+   > `metadata.annotations["[argocd](../argocd/SKILL.md).argoproj.io/sync-options"]:
    > Prune=false` on any specific *resource* (not just the whole
    > Application) that must never be auto-deleted, such as a
    > `PersistentVolumeClaim` holding production data.
@@ -144,14 +144,14 @@ sync wave/phase ordering, hooks, and custom health checks.
    metadata:
      name: payments-api
      annotations:
-       argocd.argoproj.io/sync-wave: "1"   # after wave 0 (e.g., a CRD/ConfigMap)
+       [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "1"   # after wave 0 (e.g., a CRD/ConfigMap)
    ---
    apiVersion: batch/v1
    kind: Job
    metadata:
      name: payments-api-db-migrate
      annotations:
-       argocd.argoproj.io/sync-wave: "0"   # runs, and must succeed, before wave 1
+       [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "0"   # runs, and must succeed, before wave 1
    ```
    Use negative waves (e.g., `"-1"`) for prerequisites like Namespaces or
    CRDs that must exist before anything else applies.
@@ -164,8 +164,8 @@ sync wave/phase ordering, hooks, and custom health checks.
    metadata:
      name: payments-api-migrate
      annotations:
-       argocd.argoproj.io/hook: PreSync
-       argocd.argoproj.io/hook-delete-policy: HookSucceeded
+       [argocd](../argocd/SKILL.md).argoproj.io/hook: PreSync
+       [argocd](../argocd/SKILL.md).argoproj.io/hook-delete-policy: HookSucceeded
    spec:
      template:
        spec:
@@ -190,13 +190,13 @@ sync wave/phase ordering, hooks, and custom health checks.
    built-in logic for common kinds (Deployment, StatefulSet, Ingress,
    etc.); unknown CRDs default to `Healthy` as soon as they exist, which
    hides real failures. Configure a Lua health check in the
-   `argocd-cm` ConfigMap:
+   `[argocd](../argocd/SKILL.md)-cm` ConfigMap:
    ```yaml
    apiVersion: v1
    kind: ConfigMap
    metadata:
-     name: argocd-cm
-     namespace: argocd
+     name: [argocd](../argocd/SKILL.md)-cm
+     namespace: [argocd](../argocd/SKILL.md)
    data:
      resource.customizations.health.example.com_DatabaseClaim: |
        hs = {}
@@ -236,15 +236,15 @@ sync wave/phase ordering, hooks, and custom health checks.
 
 7. **Apply and verify:**
    ```bash
-   kubectl apply -f payments-api-prod-application.yaml
-   argocd app get payments-api-prod
-   argocd app sync payments-api-prod --dry-run   # preview before a real sync
-   argocd app sync payments-api-prod
-   argocd app wait payments-api-prod --health --timeout 300
+   [kubectl](../kubectl/SKILL.md) apply -f payments-api-prod-application.yaml
+   [argocd](../argocd/SKILL.md) app get payments-api-prod
+   [argocd](../argocd/SKILL.md) app sync payments-api-prod --dry-run   # preview before a real sync
+   [argocd](../argocd/SKILL.md) app sync payments-api-prod
+   [argocd](../argocd/SKILL.md) app wait payments-api-prod --health --timeout 300
    ```
-   `argocd app sync --dry-run` (client-side diff, not a real `--dry-run`
+   `[argocd](../argocd/SKILL.md) app sync --dry-run` (client-side diff, not a real `--dry-run`
    apply) shows what would change without applying — always run it before
-   the first sync of a risky change, and before ever running `argocd app
+   the first sync of a risky change, and before ever running `[argocd](../argocd/SKILL.md) app
    sync <app> --force` (which replaces resources instead of patching,
    useful for unrecoverable field conflicts but a stronger action —
    confirm the diff first).
@@ -270,7 +270,7 @@ sync wave/phase ordering, hooks, and custom health checks.
 - Write custom health checks for every CRD your `Application`s manage that
   isn't in Argo CD's built-in list — an `Application` reporting `Healthy`
   the instant a custom resource is created (because Argo CD doesn't know
-  how to check it) hides real provisioning failures from dashboards and
+  how to check it) hides real provisioning failures from [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and
   alerts.
 - Set `retry.limit` and `backoff` explicitly on sync policy rather than
   leaving Argo CD to retry indefinitely against a resource that will never
@@ -280,7 +280,7 @@ sync wave/phase ordering, hooks, and custom health checks.
 
 - **Symptom:** An `Application` continuously reports `OutOfSync` even
   though nothing in Git changed and no one touched the cluster; each
-  `argocd app diff` shows the same one or two fields flipping back and
+  `[argocd](../argocd/SKILL.md) app diff` shows the same one or two fields flipping back and
   forth.
   **Fix:** This is a sync loop caused by a mutating admission
   webhook/controller (HPA setting `replicas`, a service mesh sidecar
@@ -295,16 +295,16 @@ sync wave/phase ordering, hooks, and custom health checks.
   — anything no longer in Git is deleted. Before removing manifests for
   stateful resources, either move them to a separate `Application` with
   manual sync, or annotate the specific resource with
-  `argocd.argoproj.io/sync-options: Prune=false` so it survives removal
-  from Git until deliberately deleted via `kubectl`.
+  `[argocd](../argocd/SKILL.md).argoproj.io/sync-options: Prune=false` so it survives removal
+  from Git until deliberately deleted via `[kubectl](../kubectl/SKILL.md)`.
 
 - **Symptom:** An `Application` is stuck `Progressing` indefinitely for a
   custom resource (e.g., a `DatabaseClaim` CRD from an internal operator)
-  even though `kubectl get` shows the resource's `status.phase: Ready`.
+  even though `[kubectl](../kubectl/SKILL.md) get` shows the resource's `status.phase: Ready`.
   **Fix:** Argo CD has no built-in health logic for that CRD and defaults
   unknown types to a generic `Progressing`/`Healthy` guess based on
   presence, not actual status. Add a `resource.customizations.health.*`
-  Lua script to `argocd-cm` (step 5 above) that reads the CRD's actual
+  Lua script to `[argocd](../argocd/SKILL.md)-cm` (step 5 above) that reads the CRD's actual
   status fields.
 
 - **Symptom:** A `PreSync` migration Job fails once, is fixed, and re-run
@@ -314,15 +314,15 @@ sync wave/phase ordering, hooks, and custom health checks.
   `hook-delete-policy` was set to only `HookSucceeded`. Set it to
   `HookSucceeded,HookFailed` (or `BeforeHookCreation`) so a failed hook
   Job is removed before the next attempt, rather than manually
-  `kubectl delete job` every time.
+  `[kubectl](../kubectl/SKILL.md) delete job` every time.
 
-- **Symptom:** `argocd app sync --force` was run to clear a stuck sync,
+- **Symptom:** `[argocd](../argocd/SKILL.md) app sync --force` was run to clear a stuck sync,
   and it turned out to delete and recreate a Service, causing a brief
   `ClusterIP` change that broke a hardcoded downstream reference.
   **Fix:** `--force` uses replace (delete+create) semantics instead of a
   patch, which can change immutable fields like `ClusterIP` on
   recreation. Reserve `--force` for genuine "normal patch/apply is
-  rejected by the API server" cases, run `argocd app diff` first, and
+  rejected by the API server" cases, run `[argocd](../argocd/SKILL.md) app diff` first, and
   never treat it as an interchangeable stronger version of an ordinary
   sync.
 
@@ -337,17 +337,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: payments-api-prod
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.[argocd](../argocd/SKILL.md).argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/example/gitops-config.git
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
     targetRevision: main
     path: apps/payments-api/overlays/prod
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: payments-prod
   syncPolicy:
     automated:
@@ -372,8 +372,8 @@ kind: Job
 metadata:
   name: payments-api-migrate
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded,HookFailed
+    [argocd](../argocd/SKILL.md).argoproj.io/hook: PreSync
+    [argocd](../argocd/SKILL.md).argoproj.io/hook-delete-policy: HookSucceeded,HookFailed
 spec:
   template:
     spec:
@@ -386,12 +386,12 @@ kind: DatabaseClaim
 metadata:
   name: payments-api-db
   annotations:
-    argocd.argoproj.io/sync-options: Prune=false
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-options: Prune=false
 spec:
   storageClassRef: fast-ssd
 ```
 
-And `argocd-cm` gets a health check for `DatabaseClaim` (step 5 above).
+And `[argocd](../argocd/SKILL.md)-cm` gets a health check for `DatabaseClaim` (step 5 above).
 Result: on each sync, the migration Job runs and must succeed before the
 Deployment applies; `DatabaseClaim` health reflects its real
 `status.phase`, not just its existence; and even if `payments-api-db` is
@@ -400,7 +400,7 @@ deletion of the live claim.
 
 ## Cross-references
 
-- [argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md)
-- [argo-rollouts-progressive-delivery](../argo-rollouts-progressive-delivery/SKILL.md)
-- [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)
+- [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md)
+- [argo-rollouts-progressive-delivery](../[argo-rollouts-progressive-delivery](../argo-rollouts-[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)/SKILL.md)/SKILL.md)
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)

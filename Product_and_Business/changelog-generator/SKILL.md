@@ -16,7 +16,7 @@ tags: [dev-loop, changelog, release-notes, conventional-commits]
 # Changelog Generator
 
 ## Purpose
-Generate structured, human-readable changelogs and release notes from conventional commit history, GitHub release data, or JIRA release versions. Automated changelogs reduce manual release effort, enforce consistent formatting, and provide clear communication to users and stakeholders.
+Generate structured, human-readable changelogs and release notes from conventional [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) release data, or JIRA release versions. Automated changelogs reduce manual release effort, enforce consistent formatting, and provide clear communication to users and stakeholders.
 
 ## Agent Protocol
 
@@ -24,26 +24,26 @@ Generate structured, human-readable changelogs and release notes from convention
 Exact user phrases: "generate changelog", "release notes", "conventional changelog", "CHANGELOG.md", "auto-changelog", "git-cliff", "standard-version", "release-please", "semantic-release", "generate release notes".
 
 ### Input Context
-- Commit message convention (Conventional Commits, Angular convention, custom)
-- Output format (Keep a Changelog, custom Markdown, GitHub release, Slack message)
+- [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) message convention (Conventional Commits, Angular convention, custom)
+- Output format (Keep a Changelog, custom Markdown, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) release, Slack message)
 - Tool preference (git-cliff, standard-version, release-please, semantic-release, auto-changelog)
-- Source of truth (git log, GitHub releases, JIRA)
+- Source of truth (git log, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) releases, JIRA)
 - Release cadence (continuous delivery, scheduled releases, hotfixes)
 - Versioning strategy (semver, calver, date-based, custom)
-- Monorepo structure (single changelog vs per-package)
+- [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) structure (single changelog vs per-package)
 
 ### Output Artifact
 Generated CHANGELOG.md or release notes document with categorized, versioned entries.
 
 ### Completion Criteria
 - [ ] Tool selected and configured
-- [ ] Conventional commit convention established
-- [ ] Parsing rules defined (commit scopes, types, breaking changes)
+- [ ] Conventional [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) convention established
+- [ ] Parsing rules defined ([commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) scopes, types, breaking changes)
 - [ ] Changelog generated for current version
 - [ ] Unreleased section included for upcoming changes
 - [ ] Breaking changes highlighted prominently
 - [ ] Links to commits, issues, PRs included
-- [ ] Per-package changelogs (if monorepo)
+- [ ] Per-package changelogs (if [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md))
 - [ ] CI automated generation configured
 - [ ] Version bump integrated with changelog
 
@@ -57,17 +57,17 @@ Generated CHANGELOG.md or release notes document with categorized, versioned ent
 What is the project setup?
 ├── Single package, standard git → git-cliff
 │   Configurable, TOML config, conventional commits
-├── Monorepo (lerna, nx, turborepo) → release-please
-│   Per-package changelogs, GitHub releases, PR-based
+├── [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) (lerna, nx, turborepo) → release-please
+│   Per-package changelogs, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) releases, PR-based
 ├── npm package, simple → standard-version
 │   npm-aware, version bump + changelog + tag
 ├── Full CI/CD pipeline → semantic-release
-│   Automated release from CI, npm/GitHub/GCR publish
+│   Automated release from CI, npm/[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GCR publish
 └── Custom needs → custom script with conventional-changelog
     Flexible, integrate with any workflow
 ```
 
-### Conventional Commit Format
+### Conventional [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Format
 ```
 <type>(<scope>): <description>
 
@@ -105,9 +105,9 @@ header = "# Changelog\n\nAll notable changes to this project will be documented 
 body = """
 {% for group, commits in commits | group_by(attribute="group") %}
   ### {{ group | upper_first }}
-  {% for commit in commits %}
-    - {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }}
-      {% if commit.breaking %}[**breaking**]{% endif %}
+  {% for [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) in commits %}
+    - {% if [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).scope %}**{{ [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).scope }}:** {% endif %}{{ [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).message | upper_first }}
+      {% if [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).breaking %}[**breaking**]{% endif %}
   {% endfor %}
 {% endfor %}
 """
@@ -119,7 +119,7 @@ sed -i 's/- \[**breaking**\]/⚠️ **BREAKING CHANGE:**/' CHANGELOG.md
 [git]
 conventional_commits = true
 commit_preprocessors = [
-  { pattern = "\\(#(\\d+)\\)", replace = "([#${1}](https://github.com/myorg/myapp/pull/${1}))" },
+  { pattern = "\\(#(\\d+)\\)", replace = "([#${1}](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myapp/pull/${1}))" },
 ]
 
 # Group definitions
@@ -180,13 +180,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New feature description ([#42](https://github.com/org/repo/pull/42))
+- New feature description ([#42](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/pull/42))
 
 ### Changed
 - Updated dependency from v1 to v2
 
 ### Fixed
-- Bug fix description ([#41](https://github.com/org/repo/pull/41))
+- Bug fix description ([#41](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/pull/41))
 
 ## [2.0.0] - 2026-05-15
 
@@ -202,13 +202,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Memory leak in websocket connection
 - Incorrect sorting in data table
 
-[2.0.0]: https://github.com/org/repo/releases/tag/v2.0.0
+[2.0.0]: https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/releases/tag/v2.0.0
 ```
 
 ### Step 4: CI Automation
 
 ```yaml
-# .github/workflows/release.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/release.yml
 name: Release
 on:
   push:
@@ -239,10 +239,10 @@ jobs:
           generate_release_notes: true
 ```
 
-### Step 5: Monorepo Changelogs with release-please
+### Step 5: [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) Changelogs with release-please
 
 ```yaml
-# .github/workflows/release-please.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/release-please.yml
 name: Release Please
 on:
   push:
@@ -256,7 +256,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          monorepo-tags: true
+          [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)-tags: true
           packages:
             packages/core: {}
             packages/cli: {}
@@ -265,13 +265,13 @@ jobs:
 
 ### Step 6: Changelog with Custom Sections
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // scripts/generate-changelog.ts
 import conventionalChangelog from 'conventional-changelog';
 import { writeFileSync } from 'fs';
 
 const config: conventionalChangelog.Options = {
-  preset: {
+  [preset](../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../AI_and_Agents/Models_and_FineTuning/[preset](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md): {
     name: 'conventionalcommits',
     types: [
       { type: 'feat', section: '🚀 Features' },
@@ -302,8 +302,8 @@ conventionalChangelog(config)
 |---------|-------------|------------|
 | Non-conventional commits | Commits that don't match patterns are skipped | Enforce commitlint in CI, educate team |
 | No version tags | Tool can't find previous release to diff from | Always tag releases with v-prefix semver |
-| Monorepo tag collision | Multiple packages creating same tag | Use package-scoped tags: pkg@1.0.0 |
-| Breaking changes buried | Users miss critical upgrade info | BREAKING CHANGE: in commit footer always |
+| [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) tag collision | Multiple packages creating same tag | Use package-scoped tags: pkg@1.0.0 |
+| Breaking changes buried | Users miss critical upgrade info | BREAKING CHANGE: in [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) footer always |
 | Changelog in wrong format | Doesn't follow Keep a Changelog | Validate with changelog-lint |
 | Generated file committed stale | Outdated if generated manually | CI enforces fresh generation on release |
 | Ignoring dependencies | Dependency updates need visibility | Group dep updates in "Dependencies" section |
@@ -319,11 +319,11 @@ conventionalChangelog(config)
 | Highlight breaking changes prominently | Users need to know before upgrading |
 | Link to PRs/issues | Traceability from changelog to source |
 | Group by type | Users scan for "Features" or "Bug Fixes" |
-| Generate at release time, not per-commit | One consistent document per version |
+| Generate at release time, not per-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | One consistent document per version |
 | Pin tool version | Avoid unexpected formatting changes |
 | Include migration notes for breaking changes | Reduced support burden |
 | Automate in CI | Manual changelogs get skipped or stale |
-| Validate commit messages with commitlint | Catch non-conventional commits before merge |
+| Validate [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages with commitlint | Catch non-conventional commits before merge |
 
 ## Templates
 
@@ -342,7 +342,7 @@ conventionalChangelog(config)
 
 ## [MAJOR.MINOR.PATCH] - YYYY-MM-DD
 
-[MAJOR.MINOR.PATCH]: https://github.com/org/repo/releases/tag/vMAJOR.MINOR.PATCH
+[MAJOR.MINOR.PATCH]: https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/releases/tag/vMAJOR.MINOR.PATCH
 ```
 
 ### Release Notes Template (PR-based)
@@ -373,13 +373,13 @@ conventionalChangelog(config)
   - references/conventional-commits.md — Conventional Commits Reference
   - references/release-workflow.md — Release Workflow Reference
 ## Handoff
-Hand off to `dev-loop-git-workflow` for version tagging strategy. Hand off to `dev-loop-code-review` for PR-based changelog entries.
+Hand off to `dev-loop-[git-workflow](../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)` for version tagging strategy. Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for PR-based changelog entries.
 
 ## Implementation Patterns
 
-### Changelog Generator (Python)
+### Changelog Generator ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import subprocess
 import re
 from typing import List, Dict, Optional
@@ -537,15 +537,15 @@ class ChangelogGenerator:
 
 ```
 Given the commits since last release:
-├── Has any commit with BREAKING CHANGE or feat!
+├── Has any [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with BREAKING CHANGE or feat!
 │   └── MAJOR bump (1.0.0 → 2.0.0)
 │       └── Update all consumers for breaking API changes
 │
-├── Has any commit with feat (and no breaking)
+├── Has any [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with feat (and no breaking)
 │   └── MINOR bump (1.0.0 → 1.1.0)
 │       └── New features, backward compatible
 │
-├── Has any commit with fix, perf, refactor
+├── Has any [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with fix, perf, refactor
 │   └── PATCH bump (1.0.0 → 1.0.1)
 │       └── Bug fixes, performance improvements
 │
@@ -560,7 +560,7 @@ Given the commits since last release:
 ### Changelog Section Selection
 
 ```
-What type is the commit?
+What type is the [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)?
 ├── feat → "Features" section
 ├── fix → "Bug Fixes" section
 ├── perf → "Performance Improvements" section
@@ -575,9 +575,9 @@ What type is the commit?
 
 ## Production Considerations
 
-- **Release automation pipeline**: Generate changelog automatically as part of the release CI pipeline. Tag the release commit, generate changelog, create GitHub Release with changelog content. Never manual.
+- **Release automation pipeline**: Generate changelog automatically as part of the release CI pipeline. Tag the release [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), generate changelog, create [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Release with changelog content. Never manual.
 - **Changelog linting**: Validate changelog format in CI using `changelog-lint` or similar. Ensure all required sections exist. Verify links to releases are valid.
-- **Monorepo changelogs**: Use package-scoped changelogs (one per package) plus an overall monorepo changelog. Tools like `lerna-changelog` or `changesets` handle this well.
+- **[Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) changelogs**: Use package-scoped changelogs (one per package) plus an overall [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) changelog. Tools like `lerna-changelog` or `changesets` handle this well.
 - **Dependency update visibility**: Group automated dependency updates (Dependabot, Renovate) into a "Dependencies" section. Prevents noise from hiding in "Chores" or "Other".
 
 ## Anti-Patterns
@@ -587,16 +587,16 @@ What type is the commit?
 | Manual changelog writing | Gets skipped or outdated | Auto-generate from commits |
 | Only changelog at release | Users want to see what's coming | Always maintain Unreleased section |
 | No version tags | Can't generate diff-based changelog | Git tag every release with semver |
-| Ignoring Conventional Commits | Changelog is a mess of random messages | Enforce commit convention in CI |
-| Single changelog for monorepo | Hard to see per-package changes | Per-package changelogs + summary |
+| Ignoring Conventional Commits | Changelog is a mess of random messages | Enforce [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) convention in CI |
+| Single changelog for [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) | Hard to see per-package changes | Per-package changelogs + summary |
 | Breaking changes not highlighted | Users upgrade and things break | Breaking changes as first section |
 | No migration notes | Users don't know how to migrate | Include migration guide for breaking changes |
 | Stale generated file | Doesn't reflect current state | Generate on CI, not committed manually |
 
 ## Performance Optimization
 
-- **Limit commit history depth**: When generating changelog for large repos, limit to last 1000 commits. Use `git log --max-count=1000` to avoid slow full-history traversal.
-- **Cache tag-to-commit mapping**: Cache the tag-to-commit hash mapping. Avoids repeated git operations when rendering multiple changelogs (e.g., per-package in monorepo).
+- **Limit [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history depth**: When generating changelog for large repos, limit to last 1000 commits. Use `git log --max-count=1000` to avoid slow full-history traversal.
+- **Cache tag-to-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) mapping**: Cache the tag-to-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hash mapping. Avoids repeated git operations when rendering multiple changelogs (e.g., per-package in [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)).
 - **Incremental generation**: Only process commits since the last generated changelog entry. Append new entries at the top of the Unreleased section.
-- **Parallel monorepo generation**: Generate per-package changelogs in parallel. Use a thread pool for repos with 10+ packages. Recombine into a summary changelog.
+- **Parallel [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) generation**: Generate per-package changelogs in parallel. Use a thread pool for repos with 10+ packages. Recombine into a summary changelog.
 

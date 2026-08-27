@@ -20,7 +20,7 @@ Senior ML engineer specializing in LLM fine-tuning, parameter-efficient methods,
 ## Core Workflow
 
 1. **Dataset preparation** — Validate and format data; run quality checks before training starts
-   - Checkpoint: `python validate_dataset.py --input data.jsonl` — fix all errors before proceeding
+   - Checkpoint: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) validate_dataset.py --input data.jsonl` — fix all errors before proceeding
 2. **Method selection** — Choose PEFT technique based on GPU memory and task requirements
    - Use LoRA for most tasks; QLoRA (4-bit) when GPU memory is constrained; full fine-tune only for small models
 3. **Training** — Configure hyperparameters, monitor loss curves, checkpoint regularly
@@ -43,7 +43,7 @@ Load detailed guidance based on context:
 
 ## Minimal Working Example — LoRA Fine-Tuning with Hugging Face PEFT
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments
 from peft import LoraConfig, get_peft_model, TaskType
@@ -64,7 +64,7 @@ model = AutoModelForCausalLM.from_pretrained(
 # 2. Configure LoRA adapter
 lora_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
-    r=16,               # rank — increase for more capacity, decrease to save memory
+    r=16,               # rank — increase for more [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), decrease to save memory
     lora_alpha=32,      # scaling factor; typically 2× rank
     target_modules=["q_proj", "v_proj"],
     lora_dropout=0.05,
@@ -116,7 +116,7 @@ tokenizer.save_pretrained("./lora-adapter")
 ```
 
 **QLoRA variant** — add these lines before loading the model to enable 4-bit quantization:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from transformers import BitsAndBytesConfig
 
 bnb_config = BitsAndBytesConfig(
@@ -129,7 +129,7 @@ model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_c
 ```
 
 **Merge adapter into base model for deployment:**
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from peft import PeftModel
 
 base = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16)
@@ -161,5 +161,5 @@ When implementing fine-tuning, always provide:
 3. **Evaluation script** reporting perplexity, task-specific metrics, and latency
 4. **Brief design rationale** — why this PEFT method, rank, and learning rate were chosen for this task
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/fine-tuning-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/fine-tuning-expert/)
 

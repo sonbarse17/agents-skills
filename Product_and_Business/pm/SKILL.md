@@ -27,7 +27,7 @@ Provide structured project management workflows covering agile ceremonies, estim
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "project management", "sprint planning", "estimate", "story points", "t-shirt sizing", "risk register", "stakeholder", "status report", "blocker", "retrospective", "velocity", "burndown", "capacity planning", "sprint retrospective", "daily standup", "backlog grooming", "sprint review".
+Exact user phrases: "project management", "sprint planning", "estimate", "story points", "t-shirt sizing", "risk register", "stakeholder", "status report", "blocker", "retrospective", "velocity", "burndown", "[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning", "sprint retrospective", "daily standup", "backlog grooming", "sprint review".
 
 ### Input Context
 Before activating, verify:
@@ -40,7 +40,7 @@ No file output. This skill produces text guidance, templates, or structured plan
 
 ### Response Format
 Answer in the format matching the request:
-- **Sprint Plan**: Sprint goal + committed stories + capacity.
+- **Sprint Plan**: Sprint goal + committed stories + [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - **Estimation**: Story points or t-shirt size with justification.
 - **Risk Register**: Risk + likelihood + impact + mitigation.
 - **Status Report**: What was done + what's blocked + what's next.
@@ -59,13 +59,13 @@ Sprint plan: 20 lines. Risk register: 15 lines. Status report: 10 lines.
 ## Workflow
 
 ### Step 1: Sprint Planning
-Given sprint length (default 2 weeks) and team capacity:
+Given sprint length (default 2 weeks) and team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
 
-1. Calculate capacity:
+1. Calculate [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
    - Team members sprint days hours/day focus factor (0.6-0.8)
    - Subtract ceremonies, PTO, support rotation
 2. Select backlog items by priority:
-   - Top stories that fit within capacity
+   - Top stories that fit within [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    - Include buffer for unknowns (15-20%)
 3. Break down stories into tasks with hourly estimates
 4. Define sprint goal (one sentence)
@@ -73,7 +73,7 @@ Given sprint length (default 2 weeks) and team capacity:
 
 ```
 Sprint Goal: {one sentence}
-Capacity: {n} story points / {n} hours
+[Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): {n} story points / {n} hours
 Committed: STORY-1, STORY-2, STORY-3
 Buffer: {n} points for unknowns
 Risks: {list}
@@ -128,7 +128,7 @@ Velocity: {n} / {n} points (on track / at risk / behind)
 
 ### Next
 - STORY-45: Export to PDF
-- STORY-46: Audit log viewer
+- STORY-46: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log viewer
 ```
 
 ### Step 5: Retrospective
@@ -159,8 +159,8 @@ Identify and track dependencies between teams, systems, and external parties. Ca
 ### Step 7: Stakeholder Communication Plan
 Define per-stakeholder communication: frequency (daily/weekly/monthly), format (email/Slack/dashboard/meeting), content focus (technical details for dev team, metrics for executives, progress for clients), and owner. Map communication intensity to project phase (more frequent during high-risk periods). Maintain a distribution list and calendar of communications.
 
-### Step 8: Capacity Planning Across Sprints
-Use historical velocity to forecast future capacity. Calculate the rolling average of the last 3-5 sprints. Apply focus factor adjustments for known leaves and ceremonies. Maintain a capacity calendar showing planned vs available person-days per sprint. Use this data during sprint planning to set realistic commitments.
+### Step 8: [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning Across Sprints
+Use historical velocity to forecast future [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Calculate the rolling average of the last 3-5 sprints. Apply focus factor adjustments for known leaves and ceremonies. Maintain a [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) calendar showing planned vs available person-days per sprint. Use this data during sprint planning to set realistic commitments.
 
 ### Step 9: Project Health Dashboard
 Define and track key project health indicators: schedule (planned vs actual milestone dates), budget (planned vs actual spend), quality (defect metrics, test coverage), risk (open risk count and score), team health (squad health check, turnover rate). Display on a single dashboard visible to all stakeholders. Update weekly. Flag items in red immediately.
@@ -219,7 +219,7 @@ estimation_framework:
     "Who needs the estimate?":
       leadership: "T-shirt sizing + quarter-level ranges"
       product: "Story points for prioritization"
-      engineering: "Hours for sprint capacity"
+      engineering: "Hours for sprint [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)"
 ```
 
 ### Delivery Risk Management
@@ -253,7 +253,7 @@ delivery_risk:
 ## Common Pitfalls
 
 1. **Estimates treated as deadlines**: Estimates are ranges, not promises. Never treat estimates as deadlines.
-2. **No buffer in planning**: Teams commit to 100% capacity leaving no room for unknowns. Always include 15-20% buffer.
+2. **No buffer in planning**: Teams [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to 100% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) leaving no room for unknowns. Always include 15-20% buffer.
 3. **Velocity as performance metric**: Velocity is a planning tool, not a performance metric. Never use it to evaluate individuals.
 4. **Status reports without actions**: Reports that state facts but don't flag issues or propose solutions.
 5. **Stakeholders not identified early**: Missing stakeholders cause late-stage surprises.
@@ -289,17 +289,17 @@ delivery_risk:
 
 ## Templates and Tools
 
-### Capacity Planning Template
+### [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning Template
 ```
 Sprint: {n} | Start: {date} | End: {date}
 Team Members: {n} | Working Days: {n}
-Total Capacity: {n} hours
+Total [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): {n} hours
   - Ceremonies: {n} hours ({n}%)
   - Support: {n} hours ({n}%)
   - PTO: {n} hours ({n}%)
   - Available: {n} hours ({n}%)
 Focus Factor: {n}%
-Effective Capacity: {n} points (at {n} points/person-sprint)
+Effective [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): {n} points (at {n} points/person-sprint)
 ```
 
 ### Dependency Tracking Template
@@ -323,7 +323,7 @@ D-03 | Info | Migration timeline | Ops | Carol | Sprint 7 | Not started
 - Communicate bad news immediately, do not wait for the next status report
 - Dependencies must be tracked and assigned owners
 - Stakeholder communication must be tailored per group
-- Capacity planning must account for ceremonies, support, and PTO
+- [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning must account for ceremonies, support, and PTO
 - Sprint buffer of 15-20% for unknowns is mandatory
 
 ## Estimation Techniques — Deep Dive
@@ -549,5 +549,5 @@ Dependency Health Check:
 ## Handoff
 After completing this skill:
 - Next skill: **ba** — to elaborate requirements for planned stories
-- Pass context: sprint plan, estimated stories, risk register, team capacity
+- Pass context: sprint plan, estimated stories, risk register, team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 

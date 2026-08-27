@@ -93,7 +93,7 @@ What does the caller need?
   │   └── Saga orchestration — central coordinator
   ├── Guaranteed event publication DB → broker
   │   └── Transactional outbox — write event in same DB transaction
-  └── Need to rebuild state from events or audit trail
+  └── Need to rebuild state from events or [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
       └── Event sourcing — store events as source of truth
 ```
 
@@ -134,7 +134,7 @@ What does the caller need?
 |---|---|---|
 | **Database per Service** | Each service owns its database | No shared schema, data duplication, eventual consistency |
 | **CQRS** | Separate read and write models | Optimized queries, eventual consistency, higher complexity |
-| **Event Sourcing** | Store events, derive state | Complete audit trail, complex querying, storage growth |
+| **Event Sourcing** | Store events, derive state | Complete [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, complex querying, storage growth |
 | **Saga (data)** | Compensating transactions | No distributed lock, eventual consistency, compensating logic needed |
 
 **Data ownership rules**:
@@ -148,17 +148,17 @@ What does the caller need?
 |---|---|
 | **Client-side Discovery** | Client queries registry, load-balances directly |
 | **Server-side Discovery** | Load balancer queries registry, routes request |
-| **Service Registry** | DNS-based (Consul, Eureka, Kubernetes DNS) |
+| **Service Registry** | DNS-based (Consul, Eureka, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DNS) |
 
-**Recommendation**: Kubernetes-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
+**Recommendation**: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
 
-### Step 5: Implement Observability
+### Step 5: Implement [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 | Pillar | Tool (Language-agnostic) | What to Capture |
 |---|---|---|
 | **Logging** | Structured (JSON), centralized | Service ID, trace ID, span ID, severity, message |
 | **Metrics** | Prometheus + Grafana | RED (Rate, Errors, Duration) for every endpoint |
-| **Tracing** | OpenTelemetry | Request path across services, span timings |
+| **Tracing** | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) | Request path across services, span timings |
 | **Health Checks** | Readiness + Liveness probes | Can serve traffic? Is process alive? |
 
 ### Step 6: Choose Deployment Strategy
@@ -166,7 +166,7 @@ What does the caller need?
 | Pattern | Strategy | Risk |
 |---|---|---|
 | **Blue/Green** | Two full environments, switch traffic | Low, double resources |
-| **Canary** | Gradual traffic shift | Medium, requires monitoring |
+| **Canary** | Gradual traffic shift | Medium, requires [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
 | **Rolling** | Incremental instance replacement | Low, slow |
 | **Feature Flags** | Toggle features independently | Low, requires flag infrastructure |
 
@@ -200,7 +200,7 @@ What does the caller need?
 
 ### Step 10: API Versioning and Contracts
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Contract-first approach: define OpenAPI / protobuf before implementation
 // Use consumer-driven contracts (CDC) to detect breaking changes
 
@@ -224,7 +224,7 @@ What does the caller need?
 
 ### Step 12: API Gateway Integration
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // API Gateway (Kong / APISIX / Envoy) configuration pattern
 // Route: /orders/* -> order-service:3001
 // Route: /payments/* -> payment-service:3002
@@ -268,17 +268,17 @@ spec:
         subset: v2
       weight: 10
 # Service mesh provides: mTLS, traffic shifting, fault injection,
-# circuit breaking, observability — without changing application code
+# circuit breaking, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — without changing application code
 ```
 
 ### Step 14: Database per Service Implementation
 
-```typescript
-// Order Service — owns its PostgreSQL database
+```[typescript](../../Frontend/typescript/SKILL.md)
+// Order Service — owns its [PostgreSQL](../../Backend/postgresql/SKILL.md) database
 // Schema: orders, order_items, order_events
 // No other service has direct DB access
 
-// Payment Service — owns its PostgreSQL database
+// Payment Service — owns its [PostgreSQL](../../Backend/postgresql/SKILL.md) database
 // Schema: payments, refunds, payment_methods
 
 // Cross-service data access: via API calls only
@@ -288,7 +288,7 @@ spec:
 
 ### Step 15: Contract Testing with Pact
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Consumer-driven contract test (Order Service -> Payment Service)
 describe('Order Service - Payment API contract', () => {
   const provider = new Pact({
@@ -324,7 +324,7 @@ describe('Order Service - Payment API contract', () => {
 ```
 
 ## API Composition Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // API Gateway / BFF that aggregates multiple downstream services
 // Instead of client making 4 requests, gateway does it server-side
 
@@ -382,7 +382,7 @@ class CircuitBreaker {
 
 ## Service Discovery
 ```yaml
-# Kubernetes Headless Service for DNS-based discovery
+# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Headless Service for DNS-based discovery
 # Services discover peers via SRV DNS lookups
 apiVersion: v1
 kind: Service
@@ -399,7 +399,7 @@ spec:
       port: 8080
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // DNS-based service discovery with retry
 import * as dns from 'dns/promises';
 
@@ -418,10 +418,10 @@ async function resolveService(name: string): Promise<string> {
 | Service boundaries wrong | Expect to merge/split services as understanding grows. Plan for refactoring |
 | Network latency | Inter-service calls add 1-10ms. Batch queries where possible |
 | Data consistency | Eventual consistency is default. Accept it or use saga with compensating actions |
-| Team autonomy vs consistency | Balance: shared infrastructure (monitoring, CI) without coupling service decisions |
+| Team autonomy vs consistency | Balance: shared infrastructure ([monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), CI) without coupling service decisions |
 | Testing | Unit (service-local) + Integration (per service) + Contract (per API pair) + E2E (minimal) |
-| Observability | Must be in place before going live. Debugging without it is guesswork |
-| Cold start latency | Serverless services (Lambda) add 200ms-5s cold start — keep latency-critical services on persistent compute |
+| [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | Must be in place before going live. Debugging without it is guesswork |
+| Cold start latency | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) services (Lambda) add 200ms-5s cold start — keep latency-critical services on persistent compute |
 | Inter-service auth overhead | mTLS handshake adds ~10-50ms per connection — use connection pooling and keepalive |
 | Schema changes | Independent DB migrations per service — coordination needed for cross-service schema changes |
 | Backup and restore | Each service has independent backup strategy — test restore procedure quarterly |
@@ -433,12 +433,12 @@ async function resolveService(name: string): Promise<string> {
 | API Gateway | DDoS, brute force | Rate limiting, WAF, IP allowlisting, request size limits |
 | Inter-service | Man-in-the-middle | mTLS with short-lived certs (Istio/Linkerd auto-rotation) |
 | Data at rest | Data breach | Encrypt DB volumes (AES-256), encrypt S3 buckets (SSE-KMS) |
-| Secrets | Credential leak | Vault/AWS Secrets Manager, never in env files or config repos |
+| Secrets | Credential leak | [Vault](../../Miscellaneous/vault/SKILL.md)/AWS Secrets Manager, never in env files or config repos |
 | Auth tokens | Token theft | Short-lived JWT (15 min), refresh tokens with rotation, httpOnly cookies |
 | Supply chain | Compromised dependency | Dependency scanning (Snyk/Dependabot), signed artifacts, SBOM generation |
 | API contracts | Breaking changes | Consumer-driven contracts, CI-validated, versioned APIs |
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Service-to-service authentication with mTLS
 import { credentials, Metadata } from '@grpc/grpc-js';
 import { readFileSync } from 'fs';
@@ -459,7 +459,7 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 | **Shared Database** | Multiple services same DB schema | Extract shared data into dedicated service |
 | **Too Fine-grained** | Excessive network calls, latency | Merge related services |
 | **God Service** | One service does everything | Decompose by capability |
-| **No Monitoring** | Cannot debug production issues | Add OpenTelemetry before going live |
+| **No [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** | Cannot debug production issues | Add [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) before going live |
 | **Synchronous Chains** | A calls B calls C — high latency, fragile | Async where possible, parallel calls |
 | **Leaky Abstractions** | Service exposes internal DB schema in API | API is contract — hide implementation |
 | **Golden Hammer** | All problems solved with microservices | Consider monolith first, extract when needed |
@@ -483,8 +483,8 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 - No shared databases between services — ever.
 - Each service independently deployable with its own CI/CD.
 - 3+ services in a saga? Use orchestration.
-- Kubernetes-native discovery preferred over external registries.
-- OpenTelemetry for all observability pillars.
+- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native discovery preferred over external registries.
+- [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for all [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) pillars.
 - No service calls another service's database directly.
 - Strangler Fig for monolith migration — no big-bang rewrites.
 - Communication patterns documented per service pair with rationale.
@@ -501,10 +501,10 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
   - ../../../Global_References/data-patterns.md — Data Patterns
   - ../../../Global_References/decomposition-patterns.md — Decomposition Patterns
   - ../../../Global_References/microservices-communication.md — Microservices Communication
-  - ../../../Global_References/microservices-observability.md — Microservices Observability
+  - ../../../Global_References/microservices-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).md — Microservices [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
   - ../../../Global_References/microservices-testing.md — Microservices Testing
 ## Handoff
-Hand off to `devops/containerization/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
+Hand off to `devops/[containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -557,7 +557,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -571,7 +571,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -587,12 +587,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -601,7 +601,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -609,13 +609,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -624,8 +624,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

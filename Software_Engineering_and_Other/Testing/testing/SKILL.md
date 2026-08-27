@@ -26,9 +26,9 @@ Design comprehensive mobile test strategies following the test pyramid — unit,
 User request includes: `mobile test`, `mobile testing`, `unit test mobile`, `widget test`, `component test`, `ui test mobile`, `e2e mobile`, `golden test`, `snapshot test mobile`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
+- Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
 - Testing framework (XCTest, JUnit, flutter_test, Jest)
-- CI provider (GitHub Actions, Bitrise, GitLab CI)
+- CI provider ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Bitrise, GitLab CI)
 
 ### Output Artifact
 A markdown document containing:
@@ -133,7 +133,7 @@ Run unit + widget tests on every PR, integration nightly, E2E before release.
 
 ## Unit Tests
 
-### Android — JUnit + MockK
+### [Android](../../../Mobile/android/SKILL.md) — JUnit + MockK
 ```kotlin
 class GetOrdersUseCaseTest {
   private val repository = mockk<OrderRepository>()
@@ -236,7 +236,7 @@ void main() {
 ```
 
 ### React Native — Jest
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useOrderStore } from './orderStore';
 
@@ -273,7 +273,7 @@ describe('useOrderStore', () => {
 
 ## ViewModel Tests
 
-### Android — ViewModel Test
+### [Android](../../../Mobile/android/SKILL.md) — ViewModel Test
 ```kotlin
 @OptIn(ExperimentalCoroutinesApi::class)
 class OrderViewModelTest {
@@ -384,7 +384,7 @@ testWidgets('OrderCard tap triggers callback', (tester) async {
 ```
 
 ### React Native — Testing Library
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { render, fireEvent } from '@testing-library/react-native';
 
 describe('OrderCard', () => {
@@ -454,7 +454,7 @@ func testOrderCardSnapshot() {
 }
 ```
 
-### Android — Paparazzi
+### [Android](../../../Mobile/android/SKILL.md) — Paparazzi
 ```kotlin
 @Test
 fun orderCardSnapshot() {
@@ -483,7 +483,7 @@ void main() {
 }
 ```
 
-### Android — Compose Test (Integration)
+### [Android](../../../Mobile/android/SKILL.md) — Compose Test (Integration)
 ```kotlin
 @Test
 fun createOrderFlow() {
@@ -500,7 +500,7 @@ fun createOrderFlow() {
 ## E2E Tests
 
 ### Detox (React Native)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 describe('Order Flow', () => {
   beforeAll(async () => {
     await device.launchApp({ newInstance: true });
@@ -549,7 +549,7 @@ final class OrderFlowTests: XCTestCase {
 }
 ```
 
-### Espresso (Android) + Compose
+### Espresso ([Android](../../../Mobile/android/SKILL.md)) + Compose
 ```kotlin
 @Test
 fun createOrderE2E() {
@@ -573,7 +573,7 @@ appId: com.example.app
 
 ## CI Integration
 
-### GitHub Actions — Flutter
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Flutter
 ```yaml
 name: Tests
 on: [pull_request]
@@ -594,9 +594,9 @@ jobs:
           min_coverage: 80
 ```
 
-### GitHub Actions — Android
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — [Android](../../../Mobile/android/SKILL.md)
 ```yaml
-name: Android Tests
+name: [Android](../../../Mobile/android/SKILL.md) Tests
 on: [pull_request]
 jobs:
   test:
@@ -614,7 +614,7 @@ jobs:
           path: app/build/reports/tests
 ```
 
-### GitHub Actions — iOS
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — iOS
 ```yaml
 name: iOS Tests
 on: [pull_request]
@@ -627,7 +627,7 @@ jobs:
       - run: swiftlint
 ```
 
-### GitHub Actions — React Native
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — React Native
 ```yaml
 name: RN Tests
 on: [pull_request]
@@ -646,8 +646,8 @@ jobs:
 
 ### Configuration
 ```kotlin
-// Android — build.gradle.kts
-android {
+// [Android](../../../Mobile/android/SKILL.md) — build.gradle.kts
+[android](../../../Mobile/android/SKILL.md) {
   testOptions {
     unitTests.all {
       jacoco {
@@ -696,7 +696,7 @@ exclude:
 
 ## Performance Testing
 ```kotlin
-// Android — Macrobenchmark for startup/scrolling
+// [Android](../../../Mobile/android/SKILL.md) — Macrobenchmark for startup/scrolling
 @RunWith(AndroidJUnit4::class)
 class StartupBenchmark {
   @get:Rule
@@ -753,7 +753,7 @@ After testing setup, hand off to:
 - `mobile/universal/security` — Security testing, penetration testing
 - `mobile/universal/deployment` — CI/CD pipeline integration for tests
 - `mobile/universal/analytics` — Test analytics for flaky detection
-- `mobile/android` — Espresso, Robolectric, Compose test
+- `mobile/[android](../../../Mobile/android/SKILL.md)` — Espresso, Robolectric, Compose test
 - `mobile/ios` — XCUITest, XCTest, snapshot testing
 - `mobile/flutter` — flutter_test, integration_test
 - `mobile/react-native` — Jest, Detox, React Native Testing Library

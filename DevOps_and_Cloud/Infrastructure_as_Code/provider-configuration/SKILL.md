@@ -82,7 +82,7 @@ credential anywhere in the provider. Defaults belong in the resolution logic
 
 Resolve credentials by consulting an ordered list of sources and taking the
 first one that produces a **complete** set. This is the pattern the AWS
-provider uses via [`aws-sdk-go-base`](https://github.com/hashicorp/aws-sdk-go-base),
+provider uses via [`aws-sdk-go-base`](https://[github](../../CI_CD/github/SKILL.md).com/hashicorp/aws-sdk-go-base),
 and it generalizes to any provider. The canonical precedence, highest first:
 
 1. **Static configuration** — values set directly in the `provider` block.
@@ -296,7 +296,7 @@ Full test examples are in `../../../Global_References/credential-chain.md`.
 
 ## Related Skills
 
-Use the `new-terraform-provider` skill (if available) to scaffold the
-provider this configuration lives in, and the `provider-resources` skill for
+Use the `[new-terraform-provider](../[new-terraform-provider](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/new-terraform-provider/SKILL.md)/SKILL.md)` skill (if available) to scaffold the
+provider this configuration lives in, and the `[provider-resources](../[provider-resources](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-resources/SKILL.md)/SKILL.md)` skill for
 consuming the configured client from resources and data sources.
 

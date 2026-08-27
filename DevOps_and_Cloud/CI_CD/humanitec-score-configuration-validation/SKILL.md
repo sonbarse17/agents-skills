@@ -32,7 +32,7 @@ platform-team Resource Definition edit silently resizes every production
 database — is what separates a validation gate from "we'll find out when
 someone complains." This skill covers the validation layer that sits in
 front of the authoring practices in
-[humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md):
+[humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md):
 schema/lint checks, dry-run resolution, policy checks on resource
 types/classes, and Resource Graph diffing for Resource Definition changes.
 
@@ -62,12 +62,12 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
   ahead of any Humanitec-specific call.
 - `score-compose` and/or `score-k8s` installed for the fast, no-network
   first validation pass described in
-  [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md).
+  [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md).
 - A policy engine for org-specific rules beyond the base schema — Conftest
   (Open Policy Agent) is the common choice for checking YAML/JSON against
   Rego policies in CI; see
-  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md)
-  for Rego authoring if the org already runs Gatekeeper for Kubernetes
+  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
+  for Rego authoring if the org already runs Gatekeeper for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
   admission and wants to reuse the same policy language.
 - A non-production Humanitec Environment (e.g. `ci-validate`) with a full
   set of Resource Definitions bound, dedicated to dry-run validation so CI
@@ -90,10 +90,10 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 
 2. **Add a CI job that runs schema validation on every pull request
    touching `score.yaml`**, so a broken spec never reaches review as
-   "looks fine" (GitHub Actions example; the same job model applies to
-   GitLab CI/Jenkins with equivalent syntax):
+   "looks fine" ([GitHub](../github/SKILL.md) Actions example; the same job model applies to
+   GitLab CI/[Jenkins](../jenkins/SKILL.md) with equivalent syntax):
    ```yaml
-   # .github/workflows/validate-score.yml
+   # .[github](../github/SKILL.md)/workflows/validate-score.yml
    name: Validate Score spec
    on:
      pull_request:
@@ -106,7 +106,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
          - name: Install score-compose
            run: |
              curl -Lo score-compose.tar.gz \
-               https://github.com/score-spec/score-compose/releases/latest/download/score-compose_linux_amd64.tar.gz
+               https://[github](../github/SKILL.md).com/score-spec/score-compose/releases/latest/download/score-compose_linux_amd64.tar.gz
              tar -xzf score-compose.tar.gz
              sudo mv score-compose /usr/local/bin/
          - name: Validate schema
@@ -159,7 +159,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 5. **Before promoting a workload's first deploy to `staging`/`production`**,
    dry-run against those specific Environments too, not only
    `ci-validate` — Resource Definition bindings are per-Environment (see
-   [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)),
+   [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)),
    so a spec validating clean against `ci-validate` says nothing about
    whether `production` has the matching binding:
    ```bash
@@ -171,7 +171,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
    Environments currently resolve the `type`/`class` you're about to
    change:
    ```bash
-   humctl score resources list --env production --res-def postgres-aws-rds
+   humctl score resources list --env production --res-def postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)
    ```
    Every Application/Environment pair returned is a workload that will be
    affected the next time it deploys (or immediately, for Resource
@@ -265,9 +265,9 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
   instead of a tag, and it silently changes behavior when that branch is
   later force-pushed.
   **Fix:** Pin Resource Definition `source.path` module references to an
-  immutable tag or commit SHA, and add a Conftest/Rego rule (or a
-  pre-commit check) rejecting a `ref=` value that isn't a semver tag —
-  treat this the same as pinning any other infrastructure-as-code module
+  immutable tag or [commit](../commit/SKILL.md) SHA, and add a Conftest/Rego rule (or a
+  pre-[commit](../commit/SKILL.md) check) rejecting a `ref=` value that isn't a semver tag —
+  treat this the same as pinning any other [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) module
   dependency.
 
 ## Worked example
@@ -276,7 +276,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 `resources.cache` entry (`type: redis`) to their `score.yaml`, targeting
 `production`. The platform team wants this caught in CI before it reaches
 a real deploy attempt, and also wants to know the blast radius before
-changing the existing `postgres-aws-rds` Resource Definition to bump
+changing the existing `postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)` Resource Definition to bump
 `engine_version` for a CVE fix.
 
 1. The PR's CI workflow runs `score-compose generate score.yaml -o
@@ -301,9 +301,9 @@ changing the existing `postgres-aws-rds` Resource Definition to bump
    to `ci-validate` (and, separately, confirms `production` already has a
    `redis-aws-elasticache` Definition bound). Dry-run now passes against
    both `ci-validate` and `production`.
-4. Separately, before bumping `postgres-aws-rds`'s `engine_version`, the
+4. Separately, before bumping `postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)`'s `engine_version`, the
    platform engineer runs `humctl score resources list --env production
-   --res-def postgres-aws-rds` and gets back 14 Applications — including
+   --res-def postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)` and gets back 14 Applications — including
    `checkout-api`. They open the Resource Definition change as its own PR,
    list those 14 services in the description, and route it through the
    same review as any shared infrastructure change, rather than merging it
@@ -311,6 +311,6 @@ changing the existing `postgres-aws-rds` Resource Definition to bump
 
 ## Cross-references
 
-- [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md) — the `score.yaml` authoring practices and Resource Definition binding model this validation layer checks against.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — the equivalent end-to-end validation discipline applied to golden-path scaffolding templates rather than a single Score spec.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) — Rego policy-authoring detail if the org wants to share policy logic between Score-spec validation and Kubernetes admission control.
+- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the `score.yaml` authoring practices and Resource Definition binding model this validation layer checks against.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — the equivalent end-to-end validation discipline applied to golden-path scaffolding templates rather than a single Score spec.
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Rego policy-authoring detail if the org wants to share policy logic between Score-spec validation and [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) admission control.

@@ -10,7 +10,7 @@ metadata:
   package: azure-eventgrid
 ---
 
-# Azure Event Grid SDK for Python
+# Azure Event Grid SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Event routing service for building event-driven applications with pub/sub semantics.
 
@@ -32,7 +32,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -41,7 +41,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.eventgrid import EventGridPublisherClient
@@ -49,7 +49,7 @@ from azure.eventgrid import EventGridPublisherClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 endpoint = "https://<topic-name>.<region>.eventgrid.azure.net/api/events"
@@ -68,7 +68,7 @@ with EventGridPublisherClient(endpoint, credential) as client:
 
 ## Publish CloudEvents
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventgrid import EventGridPublisherClient, CloudEvent
 from azure.identity import DefaultAzureCredential
 
@@ -95,7 +95,7 @@ with EventGridPublisherClient(endpoint, DefaultAzureCredential()) as client:
 
 ## Publish EventGridEvents
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventgrid import EventGridEvent
 from datetime import datetime, timezone
 
@@ -113,7 +113,7 @@ client.send(event)
 
 ### CloudEvent Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 event = CloudEvent(
     type="MyApp.Events.ItemCreated",      # Required: event type
     source="/myapp/items",                 # Required: event source
@@ -128,7 +128,7 @@ event = CloudEvent(
 
 ### EventGridEvent Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 event = EventGridEvent(
     subject="/myapp/items/123",            # Required: subject
     event_type="MyApp.ItemCreated",        # Required: event type
@@ -141,7 +141,7 @@ event = EventGridEvent(
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventgrid.aio import EventGridPublisherClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -164,7 +164,7 @@ asyncio.run(publish_events())
 
 For Event Grid Namespaces (pull delivery):
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventgrid import EventGridPublisherClient
 from azure.identity import DefaultAzureCredential
 

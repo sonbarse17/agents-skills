@@ -93,11 +93,11 @@ az vm create \
 # package_update: true
 # packages:
 #   - nginx
-#   - docker.io
+#   - [docker](../../Containers_and_Orchestration/docker/SKILL.md).io
 # runcmd:
 #   - systemctl enable nginx
 #   - systemctl start nginx
-#   - usermod -aG docker azureuser
+#   - usermod -aG [docker](../../Containers_and_Orchestration/docker/SKILL.md) azureuser
 
 az vm create \
   --resource-group compute-rg \
@@ -272,7 +272,7 @@ done
 ## Virtual Machine Scale Sets
 
 ```bash
-# Create VMSS with autoscaling
+# Create VMSS with [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 az vmss create \
   --resource-group compute-rg \
   --name myapp-vmss \
@@ -318,7 +318,7 @@ az monitor autoscale rule create \
 az vmss scale \
   --resource-group compute-rg \
   --name myapp-vmss \
-  --new-capacity 5
+  --new-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 5
 
 # Update VMSS image
 az vmss update \
@@ -367,7 +367,7 @@ az vm boot-diagnostics get-boot-log \
 # Enable Azure Backup
 az backup protection enable-for-vm \
   --resource-group compute-rg \
-  --vault-name myapp-vault \
+  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
   --vm myapp-vm \
   --policy-name DefaultPolicy
 
@@ -497,11 +497,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 | Scale set not scaling out | Autoscale rule threshold not met | Review autoscale settings; verify metric thresholds match workload |
 | Custom image VM boot fails | Image not properly generalized | Re-run `waagent -deprovision` before capturing; check boot diagnostics |
 | VMSS rolling upgrade stuck | Health probe failing on new instances | Fix application health endpoint; check `az vmss rolling-upgrade get-latest` |
-| Spot VM evicted unexpectedly | Azure reclaimed capacity | Use eviction policy `Deallocate` and set up eviction notifications |
+| Spot VM evicted unexpectedly | Azure reclaimed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Use eviction policy `Deallocate` and set up eviction notifications |
 
 ## Related Skills
 
-- `azure-networking` -- VNet and NSG configuration for VM connectivity.
-- `azure-aks` -- Container alternative when VMs are not required.
-- `arm-templates` -- Bicep-based VM deployment templates.
-- `terraform-azure` -- Terraform-based VM and VMSS provisioning.
+- `[azure-networking](../azure-networking/SKILL.md)` -- VNet and NSG configuration for VM connectivity.
+- `[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)` -- Container alternative when VMs are not required.
+- `[arm-templates](../arm-templates/SKILL.md)` -- Bicep-based VM deployment templates.
+- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Terraform-based VM and VMSS provisioning.

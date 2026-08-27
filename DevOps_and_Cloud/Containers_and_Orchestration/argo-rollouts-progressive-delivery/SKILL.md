@@ -21,13 +21,13 @@ metadata:
 
 ## Purpose
 
-Argo Rollouts replaces the Kubernetes `Deployment` controller with a
+Argo Rollouts replaces the [Kubernetes](../kubernetes/SKILL.md) `Deployment` controller with a
 `Rollout` CRD that understands canary and blue-green *strategies* natively
 — traffic-weighted steps, paused promotion gates, and automated
 analysis-driven rollback — rather than the all-or-nothing rolling update a
 plain `Deployment` performs. This skill assumes you already know *why*
 progressive delivery reduces blast radius (see
-[blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md)
+[blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
 for the tool-agnostic rationale and a introductory Argo Rollouts example)
 and goes deep on the `Rollout` CRD's actual mechanics: strategy
 configuration, traffic-provider integration, `AnalysisTemplate` metric
@@ -44,7 +44,7 @@ back, or (worse) reports healthy while serving errors.
 - Configuring canary `steps` (weights, pauses, analysis gates) or a
   blue-green strategy's preview/active service split.
 - Wiring an `AnalysisTemplate` to a specific metrics backend (Prometheus,
-  Datadog, CloudWatch, Wavefront, New Relic, or a Kubernetes `Job`-based
+  [Datadog](../../Observability_and_SecOps/datadog/SKILL.md), CloudWatch, Wavefront, New Relic, or a [Kubernetes](../kubernetes/SKILL.md) `Job`-based
   custom check) to gate promotion automatically.
 - Integrating traffic management (Istio `VirtualService`, NGINX/ALB
   ingress annotations, SMI, or Argo Rollouts' native traffic router) so
@@ -57,22 +57,22 @@ back, or (worse) reports healthy while serving errors.
 ## Prerequisites & environment
 
 - Argo Rollouts controller ≥ 1.6 installed cluster-wide, plus the
-  `kubectl argo rollouts` plugin (or standalone `kubectl-argo-rollouts`
+  `[kubectl](../kubectl/SKILL.md) argo rollouts` plugin (or standalone `[kubectl](../kubectl/SKILL.md)-argo-rollouts`
   binary) matching the controller's major version for CLI operations and
-  the terminal dashboard (`kubectl argo rollouts dashboard`).
+  the terminal dashboard (`[kubectl](../kubectl/SKILL.md) argo rollouts dashboard`).
 - For **canary with real traffic-weighting** (not just replica-ratio
   approximation): a supported traffic provider — Istio, NGINX Ingress
-  (with the `nginx.ingress.kubernetes.io/canary*` annotations Argo
+  (with the `nginx.ingress.[kubernetes](../kubernetes/SKILL.md).io/canary*` annotations Argo
   Rollouts manages), AWS ALB Ingress Controller, SMI, or Traefik. Without
   one, canary weight is approximated by pod replica ratio, which is
   coarse-grained at low replica counts (a 10% weight target with 3 total
   replicas cannot be represented exactly).
 - For **automated analysis**: a metrics backend reachable from the
   cluster (Prometheus is the most common `AnalysisTemplate` provider) with
-  the queries/dashboards for the service's key signals already defined —
+  the queries/[dashboards](../../Cloud_Providers/dashboards/SKILL.md) for the service's key signals already defined —
   this skill assumes those metrics already exist, not that you build
-  observability from scratch (see
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [observability](../../Observability_and_SecOps/observability/SKILL.md) from scratch (see
+  [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for that).
 - The workload's existing `Deployment` manifest, to be converted (`kind:
   Deployment` → `kind: Rollout`, `spec.strategy` replaced).
@@ -104,9 +104,9 @@ back, or (worse) reports healthy while serving errors.
    ```
    A plain `Deployment` cannot be edited in-place into a `Rollout` (they
    are different kinds); apply the new `Rollout` and delete the old
-   `Deployment` deliberately, or use `kubectl argo rollouts` tooling to
+   `Deployment` deliberately, or use `[kubectl](../kubectl/SKILL.md) argo rollouts` tooling to
    assist migration (`argo rollouts convert deployment` pattern varies by
-   version — verify by checking `kubectl argo rollouts --help` for the
+   version — verify by checking `[kubectl](../kubectl/SKILL.md) argo rollouts --help` for the
    installed version).
 
 2. **Configure canary steps with weighted traffic and an analysis gate**,
@@ -155,7 +155,7 @@ back, or (worse) reports healthy while serving errors.
    `previewService` lets you (or an automated smoke test) hit the new
    version directly before flipping `activeService`;
    `autoPromotionEnabled: false` requires an explicit
-   `kubectl argo rollouts promote payments-api`;
+   `[kubectl](../kubectl/SKILL.md) argo rollouts promote payments-api`;
    `scaleDownDelaySeconds` keeps the old ReplicaSet warm after promotion
    so an immediate rollback doesn't require a cold start.
 
@@ -178,7 +178,7 @@ back, or (worse) reports healthy while serving errors.
          failureLimit: 2
          provider:
            prometheus:
-             address: http://prometheus.monitoring:9090
+             address: http://prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090
              query: |
                sum(rate(http_requests_total{service="{{args.service-name}}",status=~"5.."}[5m]))
                /
@@ -208,12 +208,12 @@ back, or (worse) reports healthy while serving errors.
 
 6. **Operate the rollout: inspect, pause, promote, abort, roll back:**
    ```bash
-   kubectl argo rollouts get rollout payments-api --watch
-   kubectl argo rollouts promote payments-api            # skip remaining pause/advance one step
-   kubectl argo rollouts promote payments-api --full      # skip straight to 100%
-   kubectl argo rollouts pause payments-api               # manually pause an in-progress rollout
-   kubectl argo rollouts abort payments-api               # halt, revert traffic to stable
-   kubectl argo rollouts undo payments-api                # revert to previous revision entirely
+   [kubectl](../kubectl/SKILL.md) argo rollouts get rollout payments-api --watch
+   [kubectl](../kubectl/SKILL.md) argo rollouts promote payments-api            # skip remaining pause/advance one step
+   [kubectl](../kubectl/SKILL.md) argo rollouts promote payments-api --full      # skip straight to 100%
+   [kubectl](../kubectl/SKILL.md) argo rollouts pause payments-api               # manually pause an in-progress rollout
+   [kubectl](../kubectl/SKILL.md) argo rollouts abort payments-api               # halt, revert traffic to stable
+   [kubectl](../kubectl/SKILL.md) argo rollouts undo payments-api                # revert to previous revision entirely
    ```
    > **Warning — destructive/overriding action:** `promote --full` skips
    > *all* remaining steps and analysis gates, going straight to 100%
@@ -223,12 +223,12 @@ back, or (worse) reports healthy while serving errors.
    > manually) — it is not a "speed up a slow rollout" shortcut for
    > routine releases.
 
-7. **Set `dryRun`/`measurementRetention` and dashboard for observability
+7. **Set `dryRun`/`measurementRetention` and dashboard for [observability](../../Observability_and_SecOps/observability/SKILL.md)
    into why an analysis failed:**
    ```bash
-   kubectl argo rollouts dashboard   # local web UI: http://localhost:3100
-   kubectl get analysisrun -n <ns>
-   kubectl describe analysisrun <name> -n <ns>   # per-measurement results
+   [kubectl](../kubectl/SKILL.md) argo rollouts dashboard   # local web UI: http://localhost:3100
+   [kubectl](../kubectl/SKILL.md) get analysisrun -n <ns>
+   [kubectl](../kubectl/SKILL.md) describe analysisrun <name> -n <ns>   # per-measurement results
    ```
 
 ## Best practices
@@ -245,18 +245,18 @@ back, or (worse) reports healthy while serving errors.
 - Tune `count`/`failureLimit`/`interval` together with the success
   threshold — a single flaky sample aborting an otherwise-good rollout
   erodes trust in the gate exactly like the generic canary-noise pitfall
-  in [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md).
+  in [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md).
 - Keep `scaleDownDelaySeconds` (blue-green) or the canary ReplicaSet's
   scale-down timing non-zero so a same-minute rollback doesn't require a
   fresh cold start on the previous version.
 - Version-pin the exact image tag/digest under analysis — an
   `AnalysisRun`'s results are only attributable to a specific build if the
   tag didn't move mid-rollout; combine with
-  [container-build-and-release](../../../devops/skills/container-build-and-release/SKILL.md)'s
+  [container-build-and-release](../../../devops/skills/[container-build-and-release](../container-build-and-release/SKILL.md)/SKILL.md)'s
   immutable-tag guidance.
-- Manage `Rollout` specs the same way as any other GitOps-tracked
+- Manage `Rollout` specs the same way as any other [GitOps](../gitops/SKILL.md)-tracked
   resource — see
-  [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
+  [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
   for how an `Application`'s sync policy and health checks interact with a
   `Rollout` (Argo CD has native `Rollout` health-check support built in,
   unlike arbitrary CRDs).
@@ -268,20 +268,20 @@ back, or (worse) reports healthy while serving errors.
   **Fix:** Distinguish a manual `pause: {}` (no duration — waits for an
   explicit `promote`) from an `analysis` step whose `AnalysisRun` is
   stuck `Inconclusive`/never satisfying its success condition. Run
-  `kubectl get analysisrun -n <ns>` and `kubectl describe analysisrun
+  `[kubectl](../kubectl/SKILL.md) get analysisrun -n <ns>` and `[kubectl](../kubectl/SKILL.md) describe analysisrun
   <name>` — a common root cause is a Prometheus query referencing a label
   selector that doesn't match the canary Pods' actual labels, so the
   query returns no data and never satisfies `successCondition`.
 
 - **Symptom:** Argo CD shows the `Rollout` as perpetually `Progressing`,
-  never `Healthy`, even though `kubectl argo rollouts get rollout` shows
+  never `Healthy`, even though `[kubectl](../kubectl/SKILL.md) argo rollouts get rollout` shows
   it fully promoted at 100%.
   **Fix:** Confirm Argo CD's version has native `Rollout` health check
   support enabled (bundled in recent Argo CD releases) — an outdated
   or misconfigured Argo CD install falls back to generic health logic
   that doesn't understand `Rollout` status subresources correctly.
 
-- **Symptom:** `kubectl argo rollouts abort` was run to stop a bad
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) argo rollouts abort` was run to stop a bad
   canary, but traffic didn't fully revert to the stable version for
   several minutes.
   **Fix:** Check the traffic provider's own propagation delay (Istio
@@ -290,7 +290,7 @@ back, or (worse) reports healthy while serving errors.
   immediately, but the underlying mesh/ingress controller still needs its
   normal reconciliation/propagation time; this is a traffic-provider
   characteristic, not an Argo Rollouts bug, and matters when setting
-  incident-response expectations.
+  [incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) expectations.
 
 - **Symptom:** A background `analysis` correctly detects a regression and
   aborts, but the canary ReplicaSet's pods keep running and consuming
@@ -298,11 +298,11 @@ back, or (worse) reports healthy while serving errors.
   **Fix:** `abort` reverts traffic and marks the rollout degraded but by
   default does not immediately scale down the canary ReplicaSet — check
   `scaleDownDelaySeconds`/`abortScaleDownDelaySeconds` settings; set an
-  explicit `abortScaleDownDelaySeconds` if leftover canary capacity is a
+  explicit `abortScaleDownDelaySeconds` if leftover canary [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is a
   cost/security concern rather than assuming abort tears everything down
   instantly.
 
-- **Symptom:** Promoting via `kubectl argo rollouts promote --full` was
+- **Symptom:** Promoting via `[kubectl](../kubectl/SKILL.md) argo rollouts promote --full` was
   used routinely "to save time," and a genuinely bad release reached
   100% traffic because every analysis gate was skipped along with the
   pauses.
@@ -366,7 +366,7 @@ spec:
       successCondition: result[0] <= 0.01
       provider:
         prometheus:
-          address: http://prometheus.monitoring:9090
+          address: http://prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090
           query: |
             sum(rate(http_requests_total{service="payments-api-canary",status=~"5.."}[5m]))
             /
@@ -384,7 +384,7 @@ spec:
       successCondition: result[0] <= 0.3
       provider:
         prometheus:
-          address: http://prometheus.monitoring:9090
+          address: http://prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090
           query: |
             histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{service="payments-api-canary"}[5m])) by (le))
 ```
@@ -397,7 +397,7 @@ matters even after a step-level gate has already passed.
 
 ## Cross-references
 
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
-- [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
-- [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md)
-- [container-build-and-release](../../../devops/skills/container-build-and-release/SKILL.md)
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
+- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
+- [container-build-and-release](../../../devops/skills/[container-build-and-release](../container-build-and-release/SKILL.md)/SKILL.md)

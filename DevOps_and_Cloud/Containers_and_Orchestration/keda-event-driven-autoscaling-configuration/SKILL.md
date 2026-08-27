@@ -17,11 +17,11 @@ metadata:
   maturity: stable
 ---
 
-# KEDA Event-Driven Autoscaling Configuration
+# KEDA Event-Driven [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration
 
 ## Purpose
 
-The built-in Kubernetes `HorizontalPodAutoscaler` (HPA) can only scale on
+The built-in [Kubernetes](../kubernetes/SKILL.md) `HorizontalPodAutoscaler` (HPA) can only scale on
 metrics it understands natively — CPU and memory, or a custom/external
 metric wired through the metrics API, which most teams never bother to
 build. KEDA closes that gap: it runs as a **metrics adapter** that exposes
@@ -31,15 +31,15 @@ machinery, and it can additionally **scale a workload to zero** replicas
 when there is no work at all — something the stock HPA cannot do on its
 own. KEDA operates entirely at the **pod** level, deciding how many
 replicas of a `Deployment` (or how many `Job`s) should exist right now;
-it says nothing about whether the *cluster* has enough node capacity to
+it says nothing about whether the *cluster* has enough node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to
 run them, which is
-[Karpenter](../../../observability-and-platform-extras/skills/karpenter-cluster-autoscaling/SKILL.md)'s
+[Karpenter](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)'s
 job. A cluster commonly runs both together: KEDA decides pod count from
 event backlog, Karpenter provisions the nodes those pods land on. This
 skill covers designing `ScaledObject`/`ScaledJob` and
 `TriggerAuthentication` resources correctly; validating them (thresholds,
 auth, cooldowns) before production is covered separately in
-[keda-configuration-validation](../keda-configuration-validation/SKILL.md).
+[keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -60,7 +60,7 @@ auth, cooldowns) before production is covered separately in
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster with the KEDA operator installed (commonly via
+- A [Kubernetes](../kubernetes/SKILL.md) cluster with the KEDA operator installed (commonly via
   the `kedacore/keda` Helm chart into a `keda` namespace), which installs
   the `keda-operator`, `keda-operator-metrics-apiserver`, and the KEDA
   CRDs (`ScaledObject`, `ScaledJob`, `TriggerAuthentication`,
@@ -75,9 +75,9 @@ auth, cooldowns) before production is covered separately in
   changes) unless the operator's own logs are checked.
 - Credentials for the event source (SASL/mTLS for Kafka, IAM role or
   access keys for SQS, a bearer token for a secured Prometheus) stored
-  as a Kubernetes `Secret`, referenced via `TriggerAuthentication` —
+  as a [Kubernetes](../kubernetes/SKILL.md) `Secret`, referenced via `TriggerAuthentication` —
   never inlined directly into the `ScaledObject` spec.
-- The standard Kubernetes `metrics-server` is **not** required for KEDA
+- The standard [Kubernetes](../kubernetes/SKILL.md) `metrics-server` is **not** required for KEDA
   scalers themselves (KEDA runs its own metrics adapter), but is still
   needed if the same `ScaledObject` also wants to blend in a CPU/memory
   trigger alongside an external one.
@@ -184,7 +184,7 @@ auth, cooldowns) before production is covered separately in
    triggers:
      - type: prometheus
        metadata:
-         serverAddress: http://prometheus.monitoring.svc:9090
+         serverAddress: http://prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).svc:9090
          metricName: pending_orders_count
          query: sum(pending_orders_total{queue="fulfillment"})
          threshold: "100"
@@ -265,7 +265,7 @@ auth, cooldowns) before production is covered separately in
 - Always set both `minReplicaCount` and `maxReplicaCount` explicitly —
   an unbounded `maxReplicaCount` (or one left at KEDA's default) can
   let a runaway backlog spike scale a workload out far enough to starve
-  cluster capacity or a downstream dependency (a database connection
+  cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or a downstream dependency (a database connection
   pool, a rate-limited third-party API) that wasn't sized for that many
   concurrent callers.
 - Treat `minReplicaCount: 0` as a deliberate cost/latency trade-off, not
@@ -323,7 +323,7 @@ auth, cooldowns) before production is covered separately in
 
 - **Symptom:** A `ScaledJob` for a batch workload leaves large numbers
   of completed/failed `Job` objects accumulating in the namespace,
-  slowing down `kubectl` operations and cluttering the namespace.
+  slowing down `[kubectl](../kubectl/SKILL.md)` operations and cluttering the namespace.
   **Fix:** Set `successfulJobsHistoryLimit` and
   `failedJobsHistoryLimit` to a small bounded number (a handful, not the
   default of keeping everything) rather than leaving cleanup to manual
@@ -396,7 +396,7 @@ spec:
 `maxReplicaCount: 15` was chosen deliberately after confirming the
 downstream payment API's connection pool and rate limit can absorb 15
 concurrent consumer instances without being overwhelmed — a value picked
-without that check would just move the bottleneck (and the incident)
+without that check would just move the bottleneck (and the [incident](../../Observability_and_SecOps/incident/SKILL.md))
 downstream instead of preventing it. During a flash sale, lag crosses
 100 messages per partition, KEDA's generated HPA scales `order-consumer`
 toward 15 replicas over a few polling intervals, and once lag drops back
@@ -406,7 +406,7 @@ consumer warm for the next order.
 
 ## Cross-references
 
-- [keda-configuration-validation](../keda-configuration-validation/SKILL.md) — validating this `ScaledObject`/`TriggerAuthentication` configuration (auth, thresholds, cooldowns) before it reaches production.
-- [kubernetes-operator-development](../kubernetes-operator-development/SKILL.md) — the CRD/controller/reconciliation pattern KEDA itself is built on, useful background when debugging KEDA operator behavior directly.
-- [karpenter-cluster-autoscaling](../../../observability-and-platform-extras/skills/karpenter-cluster-autoscaling/SKILL.md) — node-level autoscaling that complements KEDA's pod-level scaling; KEDA decides replica count, Karpenter provisions the nodes for them.
-- [kafka-consumer-lag-and-partition-troubleshooting](../../../messaging-and-data-orchestration/skills/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md) — diagnosing the underlying Kafka lag signal this skill's Kafka trigger consumes, when lag behaves unexpectedly independent of KEDA.
+- [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md) — validating this `ScaledObject`/`TriggerAuthentication` configuration (auth, thresholds, cooldowns) before it reaches production.
+- [kubernetes-operator-development](../[kubernetes-operator-development](../[kubernetes](../kubernetes/SKILL.md)-operator-development/SKILL.md)/SKILL.md) — the CRD/controller/reconciliation pattern KEDA itself is built on, useful background when debugging KEDA operator behavior directly.
+- [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) that complements KEDA's pod-level scaling; KEDA decides replica count, Karpenter provisions the nodes for them.
+- [kafka-consumer-lag-and-partition-troubleshooting](../../../messaging-and-data-orchestration/skills/[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — diagnosing the underlying Kafka lag signal this skill's Kafka trigger consumes, when lag behaves unexpectedly independent of KEDA.

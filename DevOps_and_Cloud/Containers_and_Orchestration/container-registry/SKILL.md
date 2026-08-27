@@ -28,7 +28,7 @@ myapp@sha256:abc123...  -> what actually got pulled, verifiable
 
 **Done when:** every running deployment can be traced to one specific, unchangeable image digest.
 
-## 2. Set a retention policy before storage becomes the incident
+## 2. Set a retention policy before storage becomes the [incident](../../Observability_and_SecOps/incident/SKILL.md)
 
 Registries fill up silently — every CI run pushes a new tag, and without garbage collection the
 registry grows until a push fails mid-release. Define retention rules explicitly: keep all tags
@@ -37,7 +37,7 @@ and expire untagged/dangling manifests on a schedule. Automate the sweep; a manu
 is a process nobody runs until it's an emergency.
 
 - **Never expire** a tag or digest currently referenced by a running deployment.
-- **Cap per-branch history** (e.g., last 20 builds) instead of keeping every commit forever.
+- **Cap per-branch history** (e.g., last 20 builds) instead of keeping every [commit](../../CI_CD/commit/SKILL.md) forever.
 - **Sweep dangling manifests** left behind by re-tags and failed pushes on a schedule.
 
 **Done when:** registry storage growth is bounded by a policy, not by whoever notices it's full.
@@ -60,7 +60,7 @@ A digest tells you the image is unchanged since push; a signature tells you *who
 images at build time (cosign or the registry's native signing) and enforce signature verification
 at deploy time via admission control, so an image that reached the registry through some path
 other than your pipeline — a compromised credential, a manual push — gets rejected before it runs.
-Signing is about provenance of the artifact; what's *inside* it is `image-scanning`'s concern, and
+Signing is about provenance of the artifact; what's *inside* it is `[image-scanning](../../../Security/image-scanning/SKILL.md)`'s concern, and
 the two should run as separate, complementary gates.
 
 **Done when:** a deploy of an unsigned or invalidly-signed image is rejected, not just logged.
@@ -68,7 +68,7 @@ the two should run as separate, complementary gates.
 ## 5. Replicate or cache for the regions that actually pull
 
 A single-region registry turns every pull from a distant cluster into a cross-region network
-dependency — slow at best, a hard outage dependency at worst if that region has an incident.
+dependency — slow at best, a hard outage dependency at worst if that region has an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 Use registry replication or a pull-through cache local to each region or cluster so pulls resolve
 against nearby storage. Verify replication lag explicitly; a replica that's behind by an hour can
 serve an older, potentially vulnerable image without anyone noticing.

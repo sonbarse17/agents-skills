@@ -16,7 +16,7 @@ tags: [security, devops, containers, phase-10]
 # Security Container Security
 
 ## Purpose
-Build a container security program spanning image scanning (Trivy, Grype, Clair, Snyk), Dockerfile hardening (distroless, multi-stage, non-root), admission control (Kyverno, OPA/Gatekeeper), runtime monitoring (Falco, Tracee), image signing (Cosign), and SBOM generation.
+Build a container security program spanning image scanning (Trivy, Grype, Clair, Snyk), Dockerfile hardening (distroless, multi-stage, non-root), admission control (Kyverno, OPA/Gatekeeper), runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (Falco, Tracee), image signing (Cosign), and SBOM generation.
 
 ## Agent Protocol
 
@@ -25,15 +25,15 @@ Exact user phrases: "container security", "image scanning", "Trivy", "Grype", "C
 
 ### Input Context
 Before activating, verify:
-- Container registry (Docker Hub, ECR, GCR, GAR, ACR)
-- Orchestration platform (Kubernetes, ECS, Nomad)
+- Container registry ([Docker](../docker/SKILL.md) Hub, ECR, GCR, GAR, ACR)
+- Orchestration platform ([Kubernetes](../kubernetes/SKILL.md), ECS, [Nomad](../nomad/SKILL.md))
 - CI/CD platform and image build pipeline
-- Existing security tools and incident history
+- Existing security tools and [incident](../../Observability_and_SecOps/incident/SKILL.md) history
 - Compliance standards (PCI DSS, SOC 2, HIPAA)
 - Image volume (number of images, build frequency)
 
 ### Output Artifact
-Container security policy with image scanning config, admission rules, runtime monitoring as YAML files.
+Container security policy with image scanning config, admission rules, runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) as YAML files.
 
 ### Response Format
 ```yaml
@@ -50,7 +50,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Image scanning configured in CI with severity-gated policy
 - [ ] Dockerfile follows hardening checklist
 - [ ] Admission controller deployed with policy rules
-- [ ] Runtime monitoring configured with Falco rules
+- [ ] Runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) configured with Falco rules
 - [ ] Image signing and verification configured (Cosign)
 - [ ] Vulnerability management SLA defined
 - [ ] SBOM generation integrated into build pipeline
@@ -72,7 +72,7 @@ Snyk: developer-friendly with IDE integration. Provides fix advice and reachabil
 
 Policy gates: CRITICAL -> block build, fix immediately. HIGH -> block if fixable version exists. MEDIUM -> warn with PR comment. LOW -> info, log only.
 
-Scan at build time and rescan daily for new CVEs. Store results as attestation in registry. Output SARIF for GitHub Code Scanning integration.
+Scan at build time and rescan daily for new CVEs. Store results as attestation in registry. Output SARIF for [GitHub](../../CI_CD/github/SKILL.md) Code Scanning integration.
 
 ### Step 2: Dockerfile Hardening
 Base image selection: Distroless for production: `gcr.io/distroless/base`. Scratch for statically linked Go binaries. Alpine for tooling and utility images.
@@ -97,7 +97,7 @@ Formats: CycloneDX and SPDX supported. Use SBOM for vulnerability matching, lice
 ### Step 4: Image Signing with Cosign
 Sign image digest after scan passes. `cosign sign --keyless <image>`.
 
-Keyless mode uses OIDC from CI provider. GitHub, GitLab, Google identities supported. No key management burden.
+Keyless mode uses OIDC from CI provider. [GitHub](../../CI_CD/github/SKILL.md), GitLab, Google identities supported. No key management burden.
 
 Signature stored in registry alongside image. Verify before admission: `cosign verify --keyless <image>`.
 
@@ -106,7 +106,7 @@ Attest scan results and SBOM: `cosign attest --keyless --type cyclonedx sbom.cdx
 Policy: only signed images with passing scans deployable. Key-based signing for air-gapped environments.
 
 ### Step 5: Admission Control
-Kyverno: Kubernetes-native admission policies. Policy types: Validate (deny if violated), Mutate (auto-modify spec), Generate (create resources), VerifyImages (require Cosign).
+Kyverno: [Kubernetes](../kubernetes/SKILL.md)-native admission policies. Policy types: Validate (deny if violated), Mutate (auto-modify spec), Generate (create resources), VerifyImages (require Cosign).
 
 Key policies:
 - Require image from approved registry
@@ -120,12 +120,12 @@ Key policies:
 
 OPA/Gatekeeper: alternative using Rego language. Better for complex cross-resource policies.
 
-Dry-run mode: 7 days before enforcement. Audit violations, tune rules, then enforce.
+Dry-run mode: 7 days before enforcement. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) violations, tune rules, then enforce.
 
-Pod Security Standards: Restricted profile. Audit -> warn -> enforce rollout sequence.
+Pod Security Standards: Restricted profile. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) -> warn -> enforce rollout sequence.
 
 ### Step 6: Runtime Security
-Falco: syscall-level monitoring. Driver: `driver.kind=modern-bpf` for performance.
+Falco: syscall-level [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md). Driver: `driver.kind=modern-bpf` for performance.
 
 Default rules:
 - Shell spawned inside container
@@ -167,7 +167,7 @@ Daily scan of deployed images for new CVEs. Alert on new critical or high findin
 | Grype | Medium | OS + language libs | CLI, SBOM | Secondary cross-ref |
 | Clair | Slow (registry) | OS packages | Quay, registry | Registry-based orgs |
 | Snyk | Fast | OS + libs + IaC | IDE, CI, registry | Developer experience |
-| Docker Scout | Fast | OS + libs | Docker only | Docker Hub users |
+| [Docker](../docker/SKILL.md) Scout | Fast | OS + libs | [Docker](../docker/SKILL.md) only | [Docker](../docker/SKILL.md) Hub users |
 
 ### Runtime Security Tool Comparison
 
@@ -176,13 +176,13 @@ Daily scan of deployed images for new CVEs. Alert on new critical or high findin
 | Falco | Syscall (kernel module/eBPF) | < 5% CPU | System calls, file access | General container security |
 | Tracee | eBPF | < 3% CPU | Signatures, behavior | Advanced threat detection |
 | Aqua | Agent + eBPF | < 5% CPU | Full stack (K8s, network) | Enterprise security platform |
-| Sysdig Secure | Agent + eBPF | < 5% CPU | Falco-based + forensics | Performance monitoring + security |
+| Sysdig Secure | Agent + eBPF | < 5% CPU | Falco-based + forensics | Performance [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) + security |
 
 ### Admission Control Decision Tree
 
 | Tool | Language | Complexity | Best For |
 |---|---|---|---|
-| Kyverno | YAML | Low | Kubernetes-native teams |
+| Kyverno | YAML | Low | [Kubernetes](../kubernetes/SKILL.md)-native teams |
 | OPA/Gatekeeper | Rego | Medium | Complex policies, multi-platform |
 | Custom webhook | Any | High | Special requirements |
 
@@ -195,9 +195,9 @@ Images scanned at build time can have new CVEs discovered hours later. Daily res
 Using the same base image for months accumulates vulnerabilities. Update base images monthly minimum. Use automated base image update tools. Pin base image SHA for reproducibility.
 
 ### Pitfall 3: Admission Control Without Dry Run
-Enforcing admission policies without dry-run breaks existing workloads. Use dry-run mode for 7-14 days before enforcement. Audit violations, tune rules, notify teams.
+Enforcing admission policies without dry-run breaks existing workloads. Use dry-run mode for 7-14 days before enforcement. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) violations, tune rules, notify teams.
 
-### Pitfall 4: Runtime Security Without Alerting
+### Pitfall 4: Runtime Security Without [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 Falco detects events but they go to /var/log/syslog by default. Without alert pipeline, events are invisible. Configure Falcosidekick. Route critical alerts to PagerDuty.
 
 ### Pitfall 5: Blocking All Vulnerabilities
@@ -232,7 +232,7 @@ SBOM generated once and forgotten. SBOM must be generated per build, stored alon
 5. Attest scan results and SBOM
 6. Push to registry
 7. Deploy through admission control
-8. Runtime monitoring with Falco
+8. Runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) with Falco
 9. Daily rescan deployed images
 
 ### Admission Policy Minimum Set
@@ -280,7 +280,7 @@ Keyless (Cosign OIDC): no key management, CI provider identity, cloud CI suitabl
 - Review vulnerability exceptions and expiry
 - Tune Falco rules (false positive reduction)
 - Update base images
-- Review admission audit logs
+- Review admission [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
 - Patch confirmed vulnerabilities
 
 ### Monthly Operations
@@ -290,19 +290,19 @@ Keyless (Cosign OIDC): no key management, CI provider identity, cloud CI suitabl
 - Test Cosign verification pipeline
 - Validate SBOM generation
 
-### Security Incident Response
+### Security [Incident](../../Observability_and_SecOps/incident/SKILL.md) Response
 1. Detect: Falco alert or vulnerability scan finding
 2. Assess: criticality, affected images, running instances
 3. Contain: patch image, redeploy, isolate compromised pods
 4. Investigate: root cause analysis
 5. Remediate: update base images, add scanning rules, tune policies
-6. Document: incident report, preventive measures
+6. Document: [incident](../../Observability_and_SecOps/incident/SKILL.md) report, preventive measures
 
 ## CI/CD Pipeline Examples
 
-### GitHub Actions — Container Security Pipeline
+### [GitHub](../../CI_CD/github/SKILL.md) Actions — Container Security Pipeline
 ```yaml
-# .github/workflows/container-scan.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/container-scan.yml
 name: Container Security
 on:
   push:
@@ -315,18 +315,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Image
-        run: docker build -t app:${{ github.sha }} .
+        run: [docker](../docker/SKILL.md) build -t app:${{ [github](../../CI_CD/github/SKILL.md).sha }} .
       - name: Trivy Scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: app:${{ github.sha }}
+          image-ref: app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
           format: sarif
           severity: CRITICAL,HIGH
           exit-code: 1
       - name: Generate SBOM
         uses: anchore/sbom-action@v0
         with:
-          image: app:${{ github.sha }}
+          image: app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
           format: cyclonedx-json
       - name: Sign Image
         run: |
@@ -334,7 +334,7 @@ jobs:
             --identity-token ${{ secrets.ID_TOKEN }} \
             registry.example.com/app@${{ steps.digest.outputs.digest }}
       - name: Push to Registry
-        run: docker push registry.example.com/app:${{ github.sha }}
+        run: [docker](../docker/SKILL.md) push registry.example.com/app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
 ```
 
 ### GitLab CI — Container Security
@@ -402,10 +402,10 @@ spec:
 ## Container Security Anti-Patterns
 
 ### Anti-Pattern: Using :latest Tag
-`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no audit. Use semantic versioning (`v1.2.3`) or commit SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
+`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Use semantic versioning (`v1.2.3`) or [commit](../../CI_CD/commit/SKILL.md) SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
 
 ### Anti-Pattern: Blindly Trusting Base Images
-Pulling base images from Docker Hub without verification. Base images can contain malware, outdated packages, or backdoors. Use only verified official images. Pin to digest. Scan base images before building. Use Docker Content Trust or Cosign verification.
+Pulling base images from [Docker](../docker/SKILL.md) Hub without verification. Base images can contain malware, outdated packages, or backdoors. Use only verified official images. Pin to digest. Scan base images before building. Use [Docker](../docker/SKILL.md) Content Trust or Cosign verification.
 
 ### Anti-Pattern: Scanning Only at Build Time
 New CVEs discovered daily. An image passing scan at build time may have critical vulnerabilities hours later. Rescan deployed images daily. Alert on new critical findings in running workloads. Auto-create tickets.
@@ -414,7 +414,7 @@ New CVEs discovered daily. An image passing scan at build time may have critical
 Containers without CPU/memory limits can DoS the host node. One compromised container can starve others. Always set resource requests and limits. Admission policy should require resource specifications.
 
 ### Anti-Pattern: Storing Secrets in Image Layers
-Using `ENV` or build args for secrets embeds them in image layers. Anyone with `docker history` or registry access can extract secrets. Use `RUN --mount=type=secret` for build-time secrets. Inject runtime secrets via volumes, env-from, or secrets manager.
+Using `ENV` or build args for secrets embeds them in image layers. Anyone with `[docker](../docker/SKILL.md) history` or registry access can extract secrets. Use `RUN --mount=type=secret` for build-time secrets. Inject runtime secrets via volumes, env-from, or secrets manager.
 
 ## Vulnerability Management Anti-Patterns
 
@@ -440,7 +440,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - [ ] Review vulnerability exception requests and expiry
 - [ ] Tune Falco rules for false positives
 - [ ] Update base images to latest patch versions
-- [ ] Review admission control audit logs
+- [ ] Review admission control [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
 - [ ] Patch confirmed vulnerabilities within SLA
 
 ### Monthly Operations
@@ -451,7 +451,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - [ ] Validate SBOM generation for all active images
 - [ ] Review and update exception list
 
-### Incident Response Playbook
+### [Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Playbook
 1. **Detect**: Falco alert (shell in container, crypto miner behavior, unexpected outbound connection) or scan finding (new critical CVE in deployed image)
 2. **Assess**: Identify affected images, running instances, blast radius. Determine if exploit exists in the wild (CISA KEV, EPSS > 0.9).
 3. **Contain**: Patch image, rebuild, redeploy. If active compromise, isolate pod with network policy, capture forensic snapshot.
@@ -466,7 +466,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - Root user in containers
 - `latest` tags used in production
 - No admission control
-- No runtime monitoring
+- No runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ### Level 2: Defined
 - Image scanning in CI (Trivy, fail on critical)
@@ -478,12 +478,12 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 ### Level 3: Managed
 - Automated SBOM generation and signing per build
 - Admission control with image verification (Cosign)
-- Runtime monitoring with custom Falco rules and alerting
+- Runtime [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) with custom Falco rules and [alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 - Vulnerability management with SLA and exception process
 - Daily rescan of deployed images
 
 ### Level 4: Optimized
-- Policy-as-code with GitOps-driven admission (Kyverno/OPA in CI)
+- [Policy-as-code](../../../Security/policy-as-code/SKILL.md) with [GitOps](../gitops/SKILL.md)-driven admission (Kyverno/OPA in CI)
 - Behavioral analysis with Tracee for advanced threat detection
 - Automated CVE remediation with PR creation
 - Reachability-aware vulnerability prioritization
@@ -491,7 +491,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 
 ## Rules
 - No root user in container runtime
-- No latest tag -- use semantic versioning or commit SHA
+- No latest tag -- use semantic versioning or [commit](../../CI_CD/commit/SKILL.md) SHA
 - Distroless base for production images
 - Image scan on every build, daily rescan of registry
 - Admission controller blocks unsigned images
@@ -509,7 +509,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 ## References
 - ../../../Global_References/container-security-fundamentals.md -- Container Security Fundamentals
 - ../../../Global_References/container-security-advanced.md -- Container Security Advanced Topics
-- ../../../Global_References/container-vulnerability-scanning.md -- Container Vulnerability Scanning
+- ../../../Global_References/container-[vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
 - ../../../Global_References/image-security.md -- Image Security
 - ../../../Global_References/runtime-security.md -- Runtime Security
 - ../../../Global_References/admission-controller-policies.md -- Admission Controller Policies
@@ -517,6 +517,6 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - ../../../Global_References/container-runtime-security.md -- Container Runtime Security
 
 ## Handoff
-security-secrets-management for credential injection
-security-api-security for gateway and service mesh policies
+security-[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md) for credential injection
+[security-api-security](../../../Security/api-security/SKILL.md) for gateway and service mesh policies
 

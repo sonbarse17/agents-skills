@@ -11,9 +11,9 @@ metadata:
   version: 0.2.0
 ---
 
-# Kubernetes Investigation
+# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Investigation
 
-Diagnose Kubernetes issues using OTel telemetry collected via EDOT (Elastic Distribution of OpenTelemetry) and the
+Diagnose [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) issues using OTel telemetry collected via EDOT (Elastic Distribution of [OpenTelemetry](../opentelemetry/SKILL.md)) and the
 kube-stack collector. Correlate cluster state, pod runtime metrics, K8s events, application logs, and APM to identify
 root cause across the workload, node, and control-plane layers.
 
@@ -25,11 +25,11 @@ semantic conventions (`k8s.pod.name`, `k8s.namespace.name`, `k8s.container.resta
 
 **Out of scope:**
 
-- The legacy Elastic Agent Kubernetes integration (`metrics-kubernetes.*`, `logs-kubernetes.*`, `kubernetes.*` fields).
+- The legacy Elastic Agent [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) integration (`metrics-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).*`, `logs-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).*`, `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).*` fields).
   Being deprecated — do not author queries against these paths.
 - APM-layer analysis (service SLO breaches, transaction error rates, upstream dependency health). Different domain —
   once a K8s root cause is ruled in or out, APM investigation continues outside this skill.
-- Cluster provisioning, capacity planning, cost optimization. Different domain.
+- Cluster provisioning, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning, cost optimization. Different domain.
 
 ## Guidelines
 
@@ -147,7 +147,7 @@ at; use "Investigate" to know what else should corroborate.
 | ----------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **OOMKilled**                       | `last_terminated_reason == "OOMKilled"` + `memory_limit_utilization → 1.0`       | Monotonic rise (leak) vs. load-driven spike? Compare current trend to 7-day baseline. Check heap metrics (JVM, Go, Node) for GC pressure.                                                                                                                 |
 | **CPU throttling → Error exit**     | `cpu_limit_utilization > 1.0` + `last_terminated_reason == "Error"`              | Liveness/readiness probe timeouts from CFS throttling. Average CPU can look fine (40–60%) while p99 throttle is severe. Check probe timeouts vs observed startup/health latency.                                                                          |
-| **Liveness probe misconfiguration** | Restarts without resource pressure; `initialDelaySeconds` < startup time         | K8s events show `Unhealthy` / `Killing`. `kubectl logs --previous` typically shows healthy startup before kill.                                                                                                                                           |
+| **Liveness probe misconfiguration** | Restarts without resource pressure; `initialDelaySeconds` < startup time         | K8s events show `Unhealthy` / `Killing`. `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs --previous` typically shows healthy startup before kill.                                                                                                                                           |
 | **CrashLoopBackOff (generic)**      | `BackOff` events + rising `k8s.container.restarts`                               | Branch on `last_terminated_reason` — this is a meta-mode. OOMKilled → memory path; Error → logs + throttling; ContainerCannotRun → image/exec.                                                                                                            |
 | **ImagePullBackOff**                | K8s events `Failed` with image name + `429` or `not found`                       | Registry rate limit? Missing tag? Wrong imagePullSecret? Check recency of `Pulling`/`Pulled` events.                                                                                                                                                      |
 | **Stuck rollout**                   | New pods `Pending`/not-Ready > `progressDeadlineSeconds`; old pods still serving | Check `k8s.deployment.available` vs `.desired`. Admission rejection? Readiness probe failing on new pods? HPA not scaling?                                                                                                                                |
@@ -159,7 +159,7 @@ at; use "Investigate" to know what else should corroborate.
 | ----------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | **Node NotReady cascade**           | `k8s.node.condition_ready == 0` + mass `Evicted` events                 | Memory pressure? Disk pressure? Network partition from API server? Inspect kubelet logs, `k8s.node.condition_*` history.           |
 | **Resource eviction**               | `status_reason == "Evicted"` + `condition_memory_pressure == 1` on node | Node-level noisy neighbor. QoS order: BestEffort → Burstable → Guaranteed. Identify which pod drove node memory up.                |
-| **Node affinity/selector conflict** | Mass unschedulable pods after label change                              | K8s events show `FailedScheduling`. Often triggered by cluster upgrades (e.g. `node-role.kubernetes.io/master` → `control-plane`). |
+| **Node affinity/selector conflict** | Mass unschedulable pods after label change                              | K8s events show `FailedScheduling`. Often triggered by cluster upgrades (e.g. `node-role.[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/master` → `control-plane`). |
 
 ### Control plane
 
@@ -170,7 +170,7 @@ at; use "Investigate" to know what else should corroborate.
 | **Priority preemption storm** | Production pods terminating with `preempted-by` annotation         | New `PriorityClass` with `globalDefault:true` caused cascade. Check `kube-scheduler` events.                                            |
 | **PDB drain deadlock**        | Node drain stuck indefinitely; HTTP 429 from Eviction API          | PDB `minAvailable`/`maxUnavailable` too strict. No default drain timeout. Manual PDB deletion unblocks.                                 |
 
-### Autoscaling & admission
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) & admission
 
 | Mode                          | Pivotal signal                                                     | Investigate                                                                                                                                        |
 | ----------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -351,7 +351,7 @@ DOWNSTREAM IMPACT
 **When two hypotheses are live:** replace HYPOTHESIS with COMPETING HYPOTHESES; list both, say which you lean toward and
 why, and list the evidence that would disambiguate them.
 
-**When no incident is found** (symptom resolved, or alert appears spurious): say so directly.
+**When no [incident](../incident/SKILL.md) is found** (symptom resolved, or alert appears spurious): say so directly.
 `ALERT FIRED BUT SYSTEM APPEARS HEALTHY` is a valid output. List what you checked and what you didn't find.
 
 ### Confidence calibration
@@ -416,7 +416,7 @@ FROM logs-k8seventsreceiver.otel-*
 ### Firing K8s alerts
 
 ```text
-GET /api/alerting/rules/_find?search=k8s&search_fields=tags&filter=alert.attributes.executionStatus.status:active
+GET /api/[alerting](../alerting/SKILL.md)/rules/_find?search=k8s&search_fields=tags&filter=alert.attributes.executionStatus.status:active
 ```
 
 ## Examples

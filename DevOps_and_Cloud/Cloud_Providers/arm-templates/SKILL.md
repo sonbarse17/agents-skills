@@ -405,7 +405,7 @@ az deployment group delete \
     "adminPublicKey": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{vault}"
+          "id": "/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)}"
         },
         "secretName": "ssh-public-key"
       }
@@ -429,8 +429,8 @@ module networkInSharedRg 'modules/network.bicep' = {
 // Conditional deployment
 param deployMonitoring bool = true
 
-module monitoring 'modules/monitoring.bicep' = if (deployMonitoring) {
-  name: 'monitoring-deployment'
+module [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) 'modules/[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).bicep' = if (deployMonitoring) {
+  name: '[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-deployment'
   params: {
     location: location
   }
@@ -460,14 +460,14 @@ module storageLoop 'modules/storage.bicep' = [for account in storageAccounts: {
 | `ResourceNotFound` during deployment | Resource dependency not declared | Add `dependsOn` or use implicit references in Bicep |
 | `DeploymentFailed` with quota error | Subscription quota exceeded | Request quota increase or use a different region |
 | `AuthorizationFailed` | Insufficient RBAC permissions | Assign Contributor role on the target resource group |
-| Parameter file secrets in source control | Secrets stored as plain text | Use Key Vault references in parameter files |
+| Parameter file secrets in source control | Secrets stored as plain text | Use Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references in parameter files |
 | Deployment takes very long | Large number of resources deployed serially | Use `dependsOn` carefully to allow parallel deployment |
 | `What-If` shows unexpected deletions | Complete mode instead of Incremental | Use `--mode Incremental` (the default) to avoid deleting unmanaged resources |
 | Bicep module not found | Incorrect relative path | Verify path is relative to the consuming file |
 
 ## Related Skills
 
-- `terraform-azure` -- Multi-cloud IaC alternative with broader provider support.
-- `azure-networking` -- VNet, NSG, and firewall configurations referenced in templates.
-- `azure-vms` -- Virtual machine sizing and configuration details.
-- `azure-aks` -- Kubernetes cluster definitions for Bicep/ARM.
+- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- [Multi-cloud](../multi-cloud/SKILL.md) IaC alternative with broader provider support.
+- `[azure-networking](../azure-networking/SKILL.md)` -- VNet, NSG, and firewall configurations referenced in templates.
+- `[azure-vms](../azure-vms/SKILL.md)` -- Virtual machine sizing and configuration details.
+- `[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)` -- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster definitions for Bicep/ARM.

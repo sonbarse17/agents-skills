@@ -3,7 +3,7 @@ name: signed-audit-trails-recipe
 description: Step-by-step cookbook for setting up cryptographically signed audit trails on Claude Code tool calls. Use when explaining, evaluating, or demonstrating the pattern before committing to the protect-mcp runtime hooks. Covers Cedar policy, Ed25519 receipts, offline verification, tamper detection, CI/CD integration, and SLSA composition.
 ---
 
-# Signed Audit Trails for Claude Code Tool Calls
+# Signed [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trails for Claude Code Tool Calls
 
 Cookbook-style walkthrough for cryptographically signed receipts on every
 Claude Code tool call. This is the teaching skill. For the runtime
@@ -64,8 +64,8 @@ Create `.claude/settings.json` in your project root:
 ```
 
 The first run of `protect-mcp sign` generates `./protect-mcp.key` (Ed25519
-private key) if one does not exist. Commit the **public** key fingerprint
-(visible in any receipt's `public_key` field); do not commit the private
+private key) if one does not exist. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the **public** key fingerprint
+(visible in any receipt's `public_key` field); do not [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the private
 key.
 
 Add the private key and receipt directory to `.gitignore`:
@@ -95,7 +95,7 @@ permit (
 ) when {
     context.command_pattern in [
         "git", "npm", "pnpm", "yarn", "ls", "cat", "pwd",
-        "echo", "test", "node", "python", "make"
+        "echo", "test", "node", "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "make"
     ]
 };
 
@@ -232,10 +232,10 @@ The receipt format has four independent implementations today:
 
 | Implementation | Language | Use case |
 |----------------|----------|----------|
-| [protect-mcp](https://www.npmjs.com/package/protect-mcp) | TypeScript | Claude Code, Cursor, MCP hosts |
-| [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | Python | Google Agent Development Kit |
-| [sb-runtime](https://github.com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
-| APS governance hook | Python | CrewAI, LangChain |
+| [protect-mcp](https://www.npmjs.com/package/protect-mcp) | [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) | Claude Code, Cursor, MCP hosts |
+| [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Google Agent Development Kit |
+| [sb-runtime](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
+| APS governance hook | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | CrewAI, LangChain |
 
 A receipt produced by any of them verifies against
 [`@veritasacta/verify`](https://www.npmjs.com/package/@veritasacta/verify).
@@ -248,7 +248,7 @@ Gate merges on receipt chain verification so no build lands with a broken
 evidence chain:
 
 ```yaml
-# .github/workflows/verify-receipts.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/verify-receipts.yml
 name: Verify Decision Receipts
 on: [push, pull_request]
 
@@ -260,7 +260,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - name: Run governed agent
-        run: python scripts/run_agent.py > receipts.jsonl
+        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/run_agent.py > receipts.jsonl
       - name: Verify receipt chain
         run: npx @veritasacta/verify receipts.jsonl
 ```
@@ -284,7 +284,7 @@ per-step build log. SLSA Provenance v1 has an extension point for this: the
 `byproducts` field can reference the receipt chain alongside the build
 attestation.
 
-The [agent-commit build type](https://refs.arewm.com/agent-commit/v0.2)
+The [agent-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/v0.2)
 documents the pattern using the ResourceDescriptor shape:
 
 ```json
@@ -302,7 +302,7 @@ documents the pattern using the ResourceDescriptor shape:
 The SLSA provenance is signed by the builder identity; the receipt
 attestation is signed by the supervisor-hook identity. Two trust domains,
 cross-referenced at the byproduct layer. See
-[slsa-framework/slsa#1594](https://github.com/slsa-framework/slsa/issues/1594)
+[slsa-framework/slsa#1594](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/slsa-framework/slsa/issues/1594)
 for the composition discussion.
 
 ## Common pitfalls
@@ -339,7 +339,7 @@ missing policy is treated as a hard failure.
 - [Cedar policy language](https://docs.cedarpolicy.com/)
 - [protect-mcp on npm](https://www.npmjs.com/package/protect-mcp)
 - [@veritasacta/verify on npm](https://www.npmjs.com/package/@veritasacta/verify)
-- [in-toto/attestation#549](https://github.com/in-toto/attestation/pull/549) — Decision Receipt predicate proposal
-- [agent-commit build type](https://refs.arewm.com/agent-commit/v0.2) — SLSA provenance for agent-produced commits
-- [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit) (`examples/protect-mcp-governed/`)
-- [AWS Cedar for Agents](https://github.com/cedar-policy/cedar-for-agents)
+- [in-toto/attestation#549](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/in-toto/attestation/pull/549) — Decision Receipt predicate proposal
+- [agent-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/v0.2) — SLSA provenance for agent-produced commits
+- [Microsoft Agent Governance Toolkit](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/agent-governance-toolkit) (`examples/protect-mcp-governed/`)
+- [AWS Cedar for Agents](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/cedar-policy/cedar-for-agents)

@@ -3,7 +3,7 @@ name: temporal-python-testing
 description: Test Temporal workflows with pytest, time-skipping, and mocking strategies. Covers unit testing, integration testing, replay testing, and local development setup. Use when implementing Temporal workflow tests or debugging test failures.
 ---
 
-# Temporal Python Testing Strategies
+# Temporal [Python](../../Languages/python/SKILL.md) Testing Strategies
 
 Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.
 
@@ -18,7 +18,7 @@ Comprehensive testing approaches for Temporal workflows using pytest, progressiv
 
 ## Testing Philosophy
 
-**Recommended Approach** (Source: docs.temporal.io/develop/python/testing-suite):
+**Recommended Approach** (Source: docs.temporal.io/develop/[python](../../Languages/python/SKILL.md)/testing-suite):
 
 - Write majority as integration tests
 - Use pytest with async fixtures
@@ -77,7 +77,7 @@ This skill provides detailed guidance through progressive disclosure. Load speci
 **When to load**: Setting up development environment
 **Contains**:
 
-- Docker Compose configuration
+- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose configuration
 - pytest setup and configuration
 - Coverage tool integration
 - Development workflow
@@ -86,7 +86,7 @@ This skill provides detailed guidance through progressive disclosure. Load speci
 
 ### Basic Workflow Test
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import pytest
 from temporalio.testing import WorkflowEnvironment
 from temporalio.worker import Worker
@@ -116,7 +116,7 @@ async def test_workflow(workflow_env):
 
 ### Basic Activity Test
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from temporalio.testing import ActivityEnvironment
 
 async def test_activity():
@@ -153,6 +153,6 @@ async def test_activity():
 
 ## Additional References
 
-- Python SDK Testing: docs.temporal.io/develop/python/testing-suite
-- Testing Patterns: github.com/temporalio/temporal/blob/main/docs/development/testing.md
-- Python Samples: github.com/temporalio/samples-python
+- [Python](../../Languages/python/SKILL.md) SDK Testing: docs.temporal.io/develop/[python](../../Languages/python/SKILL.md)/testing-suite
+- Testing Patterns: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
+- [Python](../../Languages/python/SKILL.md) Samples: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/temporalio/samples-[python](../../Languages/python/SKILL.md)

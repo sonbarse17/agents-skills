@@ -35,7 +35,7 @@ Linkerd deliberately, understanding what mTLS "automatic" actually means
 and when it isn't in effect, and configuring traffic splits for canary
 rollouts. Validating the result before it reaches production is a
 separate, deeper topic — see
-[linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md).
+[linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -59,9 +59,9 @@ separate, deeper topic — see
 - The `linkerd` CLI installed locally, matching (or within one minor
   version of) the control plane version you intend to run — check with
   `linkerd version` before installing.
-- A Kubernetes cluster meeting Linkerd's minimum supported Kubernetes
+- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster meeting Linkerd's minimum supported [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
   version for your chosen Linkerd release (check the release's install
-  docs; Linkerd tracks a rolling window of recent Kubernetes minor
+  docs; Linkerd tracks a rolling window of recent [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) minor
   versions, not every version indefinitely).
 - Cluster-admin access to install CRDs (`linkerd install --crds`) before
   the control plane itself — recent Linkerd versions split CRD
@@ -82,8 +82,8 @@ separate, deeper topic — see
 1. **Install CRDs, then the control plane, as separate steps**, and
    verify each before moving to the next:
    ```bash
-   linkerd install --crds | kubectl apply -f -
-   linkerd install | kubectl apply -f -
+   linkerd install --crds | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+   linkerd install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
    linkerd check
    ```
    `linkerd check` validates the control plane is healthy, certificates
@@ -93,7 +93,7 @@ separate, deeper topic — see
 2. **Install the `viz` extension** if you need metrics, the dashboard, or
    `linkerd viz stat`/`tap` for day-to-day operation:
    ```bash
-   linkerd viz install | kubectl apply -f -
+   linkerd viz install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
    linkerd viz check
    linkerd viz dashboard &
    ```
@@ -106,7 +106,7 @@ separate, deeper topic — see
      --identity-trust-anchors-file ca.crt \
      --identity-issuer-certificate-file issuer.crt \
      --identity-issuer-key-file issuer.key \
-     | kubectl apply -f -
+     | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
    ```
    The issuer certificate has a limited validity window (Linkerd rotates
    the leaf identity certs it issues to workloads automatically, but the
@@ -116,13 +116,13 @@ separate, deeper topic — see
 4. **Enable proxy injection per namespace**, not cluster-wide, so rollout
    stays deliberate and reversible per team:
    ```bash
-   kubectl annotate namespace payments linkerd.io/inject=enabled
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
    ```
    As with any mesh, labeling/annotating a namespace only affects *new*
    pod admissions through the injector webhook — existing pods need a
    rollout to actually get the proxy container:
    ```bash
-   kubectl rollout restart deployment -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
    ```
    To inject a single workload instead of a whole namespace, annotate the
    pod template directly (`spec.template.metadata.annotations`) with the
@@ -244,7 +244,7 @@ separate, deeper topic — see
   smaller (though evolving) set of L7 traffic-management primitives, and
   the once-stable `TrafficSplit` CRD's ongoing migration toward Gateway
   API — see
-  [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md)
+  [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
   for the equivalent Istio concepts if a side-by-side comparison is
   needed.
 
@@ -270,11 +270,11 @@ separate, deeper topic — see
   before the warning becomes an outage.
 
 - **Symptom:** A namespace was annotated `linkerd.io/inject=enabled` but
-  a `kubectl get pods` shows only one container per pod, no
+  a `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods` shows only one container per pod, no
   `linkerd-proxy`.
   **Fix:** The annotation only affects pods created *after* it's applied,
   through the mutating webhook — existing pods must be recreated
-  (`kubectl rollout restart deployment -n <ns>`) to actually get injected.
+  (`[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n <ns>`) to actually get injected.
 
 - **Symptom:** A `TrafficSplit` is applied but 100% of traffic keeps
   going to the original backend regardless of the configured weights.
@@ -301,17 +301,17 @@ mTLS in the `payments` namespace, with only `checkout-service` authorized
 to call it.
 
 ```bash
-linkerd install --crds | kubectl apply -f -
+linkerd install --crds | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 linkerd install \
   --identity-trust-anchors-file ca.crt \
   --identity-issuer-certificate-file issuer.crt \
   --identity-issuer-key-file issuer.key \
-  | kubectl apply -f -
+  | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 linkerd check
-linkerd viz install | kubectl apply -f -
+linkerd viz install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
-kubectl annotate namespace payments linkerd.io/inject=enabled
-kubectl rollout restart deployment -n payments
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
 ```
 
 ```yaml
@@ -355,7 +355,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f canary.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f canary.yaml
 linkerd viz edges deployment -n payments
 linkerd viz stat trafficsplit -n payments
 ```
@@ -365,13 +365,13 @@ connections are `tls: true` with the expected client/server identities,
 and `linkerd viz stat` shows the ~90/10 traffic split and per-version
 success rate before shifting weight further. Before this rollout ships,
 run it through
-[linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md)
+[linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md)
 to check injection and policy correctness ahead of time rather than
 discovering a gap live.
 
 ## Cross-references
 
-- [linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md) — validating proxy injection and traffic policy correctness before this configuration reaches production.
-- [consul-service-mesh-and-discovery-configuration](../consul-service-mesh-and-discovery-configuration/SKILL.md) — an alternative mesh with a stronger multi-cloud/hybrid service-discovery story, useful when comparing options.
-- [grpc-service-troubleshooting](../grpc-service-troubleshooting/SKILL.md) — diagnosing gRPC-specific failures on top of a meshed connection, which look different from the HTTP/1.1 failure modes this skill mostly covers.
-- [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md) — the more feature-rich alternative mesh; consult when a comparison or migration between the two is needed.
+- [linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md) — validating proxy injection and traffic policy correctness before this configuration reaches production.
+- [consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — an alternative mesh with a stronger [multi-cloud](../../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md)/hybrid service-discovery story, useful when comparing options.
+- [grpc-service-troubleshooting](../[grpc-service-troubleshooting](../../../DevOps_and_Cloud/Observability_and_SecOps/grpc-service-troubleshooting/SKILL.md)/SKILL.md) — diagnosing gRPC-specific failures on top of a meshed connection, which look different from the HTTP/1.1 failure modes this skill mostly covers.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the more feature-rich alternative mesh; consult when a comparison or migration between the two is needed.

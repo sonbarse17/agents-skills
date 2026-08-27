@@ -27,7 +27,7 @@ references:
 
 Gitleaks is a secret detection tool that scans git repositories, files, and directories for hardcoded credentials including passwords, API keys, tokens, and other sensitive information. It uses regex-based pattern matching combined with Shannon entropy analysis to identify secrets that could lead to unauthorized access if exposed.
 
-This skill provides comprehensive guidance for integrating Gitleaks into DevSecOps workflows, from pre-commit hooks to CI/CD pipelines, with emphasis on preventing secret leakage before code reaches production.
+This skill provides comprehensive guidance for integrating Gitleaks into [DevSecOps](../../../Security/devsecops/SKILL.md) workflows, from pre-[commit](../../CI_CD/commit/SKILL.md) hooks to CI/CD pipelines, with emphasis on preventing secret leakage before code reaches production.
 
 ## Quick Start
 
@@ -36,7 +36,7 @@ Scan current repository for secrets:
 ```bash
 # Install gitleaks
 brew install gitleaks  # macOS
-# or: docker pull zricethezav/gitleaks:latest
+# or: [docker](../../Containers_and_Orchestration/docker/SKILL.md) pull zricethezav/gitleaks:latest
 
 # Scan current git repository
 gitleaks detect -v
@@ -64,24 +64,24 @@ gitleaks detect --config .gitleaks.toml -v
 # Generate JSON report for further analysis
 gitleaks detect --report-path findings.json --report-format json
 
-# Generate SARIF report for GitHub/GitLab integration
+# Generate SARIF report for [GitHub](../../CI_CD/github/SKILL.md)/GitLab integration
 gitleaks detect --report-path findings.sarif --report-format sarif
 ```
 
-**When to use**: Initial security audit, compliance checks, incident response.
+**When to use**: Initial security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), compliance checks, [incident](../../Observability_and_SecOps/incident/SKILL.md) response.
 
-### 2. Pre-Commit Hook Protection
+### 2. Pre-[Commit](../../CI_CD/commit/SKILL.md) Hook Protection
 
 Prevent secrets from being committed in the first place:
 
 ```bash
-# Install pre-commit hook (run in repository root)
-cat << 'EOF' > .git/hooks/pre-commit
+# Install pre-[commit](../../CI_CD/commit/SKILL.md) hook (run in repository root)
+cat << 'EOF' > .git/hooks/pre-[commit](../../CI_CD/commit/SKILL.md)
 #!/bin/sh
 gitleaks protect --verbose --redact --staged
 EOF
 
-chmod +x .git/hooks/pre-commit
+chmod +x .git/hooks/pre-[commit](../../CI_CD/commit/SKILL.md)
 ```
 
 Use the bundled script for automated hook installation:
@@ -94,7 +94,7 @@ Use the bundled script for automated hook installation:
 
 ### 3. CI/CD Pipeline Integration
 
-#### GitHub Actions
+#### [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```yaml
 name: gitleaks
@@ -193,12 +193,12 @@ Use bundled configuration templates in `assets/`:
 - **Report Access**: Restrict access to scan reports containing sensitive findings
 - **Baseline Files**: Baseline JSON files contain secret metadata - protect with same controls as findings
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Log the following for compliance and incident response:
-- Scan execution timestamps and scope (repository, branch, commit range)
+Log the following for compliance and [incident](../../Observability_and_SecOps/incident/SKILL.md) response:
+- Scan execution timestamps and scope (repository, branch, [commit](../../CI_CD/commit/SKILL.md) range)
 - Number and types of secrets detected
-- Remediation actions taken (credential rotation, commit history cleanup)
+- Remediation actions taken (credential rotation, [commit](../../CI_CD/commit/SKILL.md) history cleanup)
 - False positive classifications and allowlist updates
 
 ### Compliance Requirements
@@ -214,7 +214,7 @@ Log the following for compliance and incident response:
 
 ### Scripts (`scripts/`)
 
-- `install_precommit.sh` - Automated pre-commit hook installation with configuration prompts
+- `install_precommit.sh` - Automated pre-[commit](../../CI_CD/commit/SKILL.md) hook installation with configuration prompts
 - `scan_and_report.py` - Comprehensive scanning with multiple output formats and severity classification
 - `baseline_manager.py` - Baseline creation, comparison, and incremental scan management
 
@@ -230,32 +230,32 @@ Log the following for compliance and incident response:
 - `config-strict.toml` - High-sensitivity configuration (maximum detection)
 - `config-balanced.toml` - Production-ready balanced configuration
 - `config-custom.toml` - Template with inline documentation for custom rules
-- `precommit-config.yaml` - Pre-commit framework configuration
-- `github-action.yml` - Complete GitHub Actions workflow template
-- `gitlab-ci.yml` - Complete GitLab CI pipeline template
+- `precommit-config.yaml` - Pre-[commit](../../CI_CD/commit/SKILL.md) framework configuration
+- `[github](../../CI_CD/github/SKILL.md)-action.yml` - Complete [GitHub](../../CI_CD/github/SKILL.md) Actions workflow template
+- `[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline template
 
 ## Common Patterns
 
-### Pattern 1: Initial Repository Audit
+### Pattern 1: Initial Repository [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 First-time secret scanning for security assessment:
 
 ```bash
 # 1. Clone repository with full history
-git clone --mirror https://github.com/org/repo.git audit-repo
-cd audit-repo
+git clone --mirror https://[github](../../CI_CD/github/SKILL.md).com/org/repo.git [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-repo
+cd [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-repo
 
 # 2. Run comprehensive scan
-gitleaks detect --report-path audit-report.json --report-format json -v
+gitleaks detect --report-path [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json --report-format json -v
 
 # 3. Generate human-readable report
-./scripts/scan_and_report.py --input audit-report.json --format markdown --output audit-report.md
+./scripts/scan_and_report.py --input [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json --format markdown --output [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.md
 
 # 4. Review findings and classify false positives
 # Edit .gitleaks.toml to add allowlist entries
 
 # 5. Create baseline for future scans
-cp audit-report.json baseline.json
+cp [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json baseline.json
 ```
 
 ### Pattern 2: Developer Workstation Setup
@@ -267,13 +267,13 @@ Protect developers from accidental secret commits:
 brew install gitleaks  # macOS
 # or use package manager for your OS
 
-# 2. Install pre-commit hook
+# 2. Install pre-[commit](../../CI_CD/commit/SKILL.md) hook
 ./scripts/install_precommit.sh
 
-# 3. Test hook with dummy commit
+# 3. Test hook with dummy [commit](../../CI_CD/commit/SKILL.md)
 echo "api_key = 'EXAMPLE_KEY_12345'" > test.txt
 git add test.txt
-git commit -m "test"  # Should be blocked by gitleaks
+git [commit](../../CI_CD/commit/SKILL.md) -m "test"  # Should be blocked by gitleaks
 
 # 4. Clean up test
 git reset HEAD~1
@@ -303,7 +303,7 @@ else
     --exit-code 0  # Don't fail on first scan
 fi
 
-# 2. Generate SARIF for GitHub Security tab
+# 2. Generate SARIF for [GitHub](../../CI_CD/github/SKILL.md) Security tab
 if [ -f "new-findings.json" ] && [ -s "new-findings.json" ]; then
   gitleaks detect \
     --baseline-path .gitleaks-baseline.json \
@@ -341,25 +341,25 @@ tags = ["password", "database", "acme-internal"]
 
 ### CI/CD Integration
 
-- **GitHub Actions**: Use `gitleaks/gitleaks-action@v2` for native integration with Security tab
-- **GitLab CI**: Docker-based scanning with artifact retention for audit trails
-- **Jenkins**: Execute via Docker or installed binary in pipeline stages
-- **CircleCI**: Docker executor with orb support
+- **[GitHub](../../CI_CD/github/SKILL.md) Actions**: Use `gitleaks/gitleaks-action@v2` for native integration with Security tab
+- **GitLab CI**: [Docker](../../Containers_and_Orchestration/docker/SKILL.md)-based scanning with artifact retention for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- **[Jenkins](../../CI_CD/jenkins/SKILL.md)**: Execute via [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or installed binary in pipeline stages
+- **[CircleCI](../../CI_CD/circleci/SKILL.md)**: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) executor with orb support
 - **Azure Pipelines**: Task-based integration with results publishing
 
 ### Security Tools Ecosystem
 
-- **SIEM Integration**: Export JSON findings to Splunk, ELK, or Datadog for centralized monitoring
+- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../Observability_and_SecOps/datadog/SKILL.md) for centralized [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - **Vulnerability Management**: Import SARIF reports into Snyk, SonarQube, or Checkmarx
-- **Secret Management**: Integrate findings with HashiCorp Vault or AWS Secrets Manager rotation workflows
+- **Secret Management**: Integrate findings with HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or AWS Secrets Manager rotation workflows
 - **Ticketing Systems**: Automated Jira/ServiceNow ticket creation for remediation tracking
 
 ### SDLC Integration
 
 - **Design Phase**: Include secret detection requirements in security architecture reviews
-- **Development**: Pre-commit hooks provide immediate feedback to developers
+- **Development**: Pre-[commit](../../CI_CD/commit/SKILL.md) hooks provide immediate feedback to developers
 - **Code Review**: PR/MR checks prevent secrets from reaching main branches
-- **Testing**: Scan test environments and infrastructure-as-code
+- **Testing**: Scan test environments and [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)
 - **Deployment**: Final validation gate before production release
 - **Operations**: Periodic scanning of deployed configurations and logs
 
@@ -377,10 +377,10 @@ tags = ["password", "database", "acme-internal"]
    paths = ['''test/''', '''examples/''', '''\.md$''']
    stopwords = ["EXAMPLE", "PLACEHOLDER", "YOUR_API_KEY_HERE"]
    ```
-3. Use commit allowlists for specific false positives:
+3. Use [commit](../../CI_CD/commit/SKILL.md) allowlists for specific false positives:
    ```toml
    [allowlist]
-   commits = ["commit-sha-here"]
+   commits = ["[commit](../../CI_CD/commit/SKILL.md)-sha-here"]
    ```
 4. Consult `../../../Global_References/false_positives.md` for common patterns
 
@@ -395,15 +395,15 @@ tags = ["password", "database", "acme-internal"]
 4. Consider shallow clone for initial scans: `git clone --depth=1000`
 5. Parallelize scans across multiple branches or subdirectories
 
-### Issue: Pre-commit Hook Blocking Valid Commits
+### Issue: Pre-[commit](../../CI_CD/commit/SKILL.md) Hook Blocking Valid Commits
 
-**Symptoms**: Developers unable to commit code with legitimate patterns
+**Symptoms**: Developers unable to [commit](../../CI_CD/commit/SKILL.md) code with legitimate patterns
 
 **Solution**:
 1. Add inline comment to bypass hook: `# gitleaks:allow`
 2. Update `.gitleaks.toml` allowlist for the specific pattern
 3. Use `--redact` to safely review findings: `gitleaks protect --staged --redact`
-4. Temporary bypass (use with caution): `git commit --no-verify`
+4. Temporary bypass (use with caution): `git [commit](../../CI_CD/commit/SKILL.md) --no-verify`
 5. Review with security team if pattern is genuinely needed
 
 ### Issue: Secrets Found in Git History
@@ -418,7 +418,7 @@ tags = ["password", "database", "acme-internal"]
 3. Force-push cleaned history: `git push --force`
 4. Notify all contributors to rebase/re-clone
 5. See `../../../Global_References/remediation_guide.md` for detailed procedures
-6. Document incident in security audit log
+6. Document [incident](../../Observability_and_SecOps/incident/SKILL.md) in security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log
 
 ### Issue: Custom Secret Patterns Not Detected
 
@@ -493,7 +493,7 @@ regexes = ['''key\s*=\s*EXAMPLE''']
 
 ## References
 
-- [Gitleaks Official Documentation](https://github.com/gitleaks/gitleaks)
+- [Gitleaks Official Documentation](https://[github](../../CI_CD/github/SKILL.md).com/gitleaks/gitleaks)
 - [OWASP A07:2021 - Identification and Authentication Failures](https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/)
 - [CWE-798: Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)
 - [CWE-259: Use of Hard-coded Password](https://cwe.mitre.org/data/definitions/259.html)

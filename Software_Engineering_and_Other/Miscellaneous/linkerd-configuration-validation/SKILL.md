@@ -31,7 +31,7 @@ doesn't error, it just doesn't encrypt or observe traffic, and a
 misdirected `TrafficSplit` doesn't error, it just sends 100% of traffic
 to the wrong backend. This skill covers the validation commands and
 checks that catch these before they reach production, distinct from
-[linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md),
+[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers writing the configuration in the first place.
 
 ## When to use
@@ -58,7 +58,7 @@ which covers writing the configuration in the first place.
 - The `viz` extension installed (`linkerd viz install`) for
   traffic-level checks (`edges`, `stat`, `tap`) — the base `linkerd
   check` only validates the control plane itself, not live traffic.
-- `kubectl` access to the namespaces being validated, including read
+- `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to the namespaces being validated, including read
   access to `Server`, `AuthorizationPolicy`, `TrafficSplit`, and
   `ServiceProfile` custom resources.
 - For CI-integrated validation: a cluster (or a disposable
@@ -82,7 +82,7 @@ which covers writing the configuration in the first place.
 2. **Confirm a specific workload actually has the proxy injected**,
    rather than trusting the namespace annotation was sufficient:
    ```bash
-   kubectl get pod <pod-name> -n payments -o jsonpath='{.spec.containers[*].name}'
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pod <pod-name> -n payments -o jsonpath='{.spec.containers[*].name}'
    # expect: <app-container> linkerd-proxy
    linkerd identity <pod-name> -n payments
    ```
@@ -107,7 +107,7 @@ which covers writing the configuration in the first place.
    equivalent is applying to a staging namespace with representative
    `ServiceAccount` identities and watching `linkerd viz tap`:
    ```bash
-   kubectl apply -f authz-policy.yaml -n payments-staging
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
    linkerd viz tap deploy/payments-api -n payments-staging
    ```
    Watch for `tap` output showing responses your policy should be
@@ -116,12 +116,12 @@ which covers writing the configuration in the first place.
 
 5. **Validate `ServiceProfile` and `TrafficSplit` resources reference
    real Services and routes** before applying, since a typo in a
-   `service:`/`host:` field is accepted by the Kubernetes API (it's just
+   `service:`/`host:` field is accepted by the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) API (it's just
    a string) but silently does nothing at the data plane:
    ```bash
-   kubectl get svc payments-api-v1 payments-api-v2 -n payments
-   kubectl apply --dry-run=server -f trafficsplit.yaml
-   kubectl get trafficsplit payments-api-canary -n payments -o yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc payments-api-v1 payments-api-v2 -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f trafficsplit.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get trafficsplit payments-api-canary -n payments -o yaml
    ```
    After applying for real, confirm the split is actually being honored,
    not just accepted:
@@ -142,7 +142,7 @@ which covers writing the configuration in the first place.
    non-zero `linkerd check`/`linkerd viz check` exit code, and on any
    `TrafficSplit`/`ServiceProfile`/`AuthorizationPolicy` manifest whose
    referenced Service or `ServiceAccount` doesn't resolve via
-   `kubectl apply --dry-run=server`:
+   `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server`:
    ```bash
    linkerd check --output json > check.json || (cat check.json && exit 1)
    ```
@@ -170,7 +170,7 @@ which covers writing the configuration in the first place.
 - Fail CI hard on any non-zero `linkerd check` exit code rather than
   logging and continuing — a "warning" from `linkerd check` about
   identity or control-plane health is exactly the kind of thing that's
-  easy to defer until it becomes an incident.
+  easy to defer until it becomes an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 ## Common pitfalls
 
@@ -182,7 +182,7 @@ which covers writing the configuration in the first place.
   the specific connection in question — a healthy control plane doesn't
   guarantee every workload is correctly injected or configured.
 
-- **Symptom:** A `TrafficSplit` was applied and `kubectl get
+- **Symptom:** A `TrafficSplit` was applied and `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get
   trafficsplit` shows it exists with the intended weights, but
   `linkerd viz stat` shows 100% of traffic still on the old backend.
   **Fix:** Callers are likely resolving the version-specific backend
@@ -192,7 +192,7 @@ which covers writing the configuration in the first place.
   `TrafficSplit` resource's own YAML looks correct.
 
 - **Symptom:** A new `AuthorizationPolicy` was validated successfully by
-  `kubectl apply --dry-run=server` (no schema errors) but breaks
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server` (no schema errors) but breaks
   production traffic the moment it's applied for real.
   **Fix:** Schema-level dry-run only checks the manifest is
   well-formed — it cannot know whether the `MeshTLSAuthentication`
@@ -206,7 +206,7 @@ which covers writing the configuration in the first place.
   again until identity issuance actually started failing.
   **Fix:** Pre-deploy checks only run on deploy cadence — a service that
   isn't redeployed won't re-trigger the check. Schedule `linkerd check`
-  independently (e.g. a daily CI cron job posting to an alerting
+  independently (e.g. a daily CI cron job posting to an [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
   channel) so certificate expiry is caught on a calendar cadence, not
   only a deploy cadence.
 
@@ -226,7 +226,7 @@ which covers writing the configuration in the first place.
 **Scenario:** Before promoting a new `AuthorizationPolicy` restricting
 `payments-api` to `checkout-service` callers only (from the worked
 example in
-[linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md)),
+[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)),
 validate it end-to-end.
 
 ```bash
@@ -235,11 +235,11 @@ linkerd check
 linkerd check --proxy -n payments
 
 # 2. Confirm injection on the actual running pods
-kubectl get pods -n payments -l app=payments-api \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n payments -l app=payments-api \
   -o jsonpath='{range .items[*]}{.metadata.name}{": "}{.spec.containers[*].name}{"\n"}{end}'
 
 # 3. Apply to staging first, then tap live traffic
-kubectl apply -f authz-policy.yaml -n payments-staging
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
 linkerd viz tap deploy/payments-api -n payments-staging --to deploy/checkout-service
 linkerd viz tap deploy/payments-api -n payments-staging --to deploy/some-other-caller
 ```
@@ -251,7 +251,7 @@ actually blocks unauthorized callers, not just that it deployed without
 error). Only after both are confirmed in staging:
 
 ```bash
-kubectl apply -f authz-policy.yaml -n payments
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments
 linkerd viz edges deployment -n payments
 linkerd viz tap deploy/payments-api -n payments
 ```
@@ -263,6 +263,6 @@ considered complete.
 
 ## Cross-references
 
-- [linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md) — writing the Linkerd installation, injection, and traffic/authorization policy this skill validates.
-- [cilium-configuration-validation](../cilium-configuration-validation/SKILL.md) — the equivalent validation discipline for Cilium network policy and Hubble observability, if the cluster also runs Cilium as CNI underneath Linkerd.
-- [consul-configuration-validation](../consul-configuration-validation/SKILL.md) — the equivalent validation discipline for Consul service definitions and intentions, useful when comparing pre-production checks across mesh choices.
+- [linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Linkerd installation, injection, and traffic/authorization policy this skill validates.
+- [cilium-configuration-validation](../[cilium-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Cilium network policy and Hubble [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), if the cluster also runs Cilium as CNI underneath Linkerd.
+- [consul-configuration-validation](../[consul-configuration-validation](../consul-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Consul service definitions and intentions, useful when comparing pre-production checks across mesh choices.

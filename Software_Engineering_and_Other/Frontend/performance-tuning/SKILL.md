@@ -76,7 +76,7 @@ redoing all of it blind. One change, one remeasurement, one recorded delta.
 ## 4. Optimize the hot path, not the path you know best
 
 Time spent making a function that runs once per request 10% faster is wasted if a different
-function runs 10,000 times per request. Let `profiling` tell you where time is actually spent,
+function runs 10,000 times per request. Let `[profiling](../profiling/SKILL.md)` tell you where time is actually spent,
 then fix the disproportionate cost, even when it means touching unfamiliar code.
 
 - **Fix the biggest contributor first** — a 5% speedup on 80% of the time beats a 50% speedup on
@@ -93,13 +93,13 @@ the most familiar code.
 
 A change that helps one hand-run request can regress under concurrency — lock contention,
 connection pool limits, and GC pauses only appear under real traffic shape. Confirm the win with
-`load-testing` at production-like concurrency before calling it done.
+`[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` at production-like concurrency before calling it done.
 
 - **Re-run the exact baseline scenario**, same load level and duration, not a friendlier one.
 - **Check for new bottlenecks introduced by the fix** — a bigger cache can trade latency for
   memory pressure elsewhere.
 - **Watch resource cost alongside speed** — a change that halves latency by doubling instance
-  count is a scaling decision, not a tuning win; that tradeoff belongs in `scalability-design`.
+  count is a scaling decision, not a tuning win; that tradeoff belongs in `[scalability-design](../../Patterns/scalability-design/SKILL.md)`.
 
 **Done when:** the improvement holds under a load test that matches the original baseline's
 concurrency and duration.
@@ -110,9 +110,9 @@ An untracked tuning change looks like an arbitrary setting to the next person wh
 system, and they either revert it by accident or are afraid to touch it at all. Document the
 bottleneck found, the change made, and the measured effect next to the config itself.
 
-- **Link the change to its measurement**, not just a commit message saying "perf improvements."
+- **Link the change to its measurement**, not just a [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) message saying "perf improvements."
 - **Note the load level the tuning was valid for** — a setting tuned for today's traffic may be
-  wrong at 10x; flag it for revisit in `capacity-planning`.
+  wrong at 10x; flag it for revisit in `[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)`.
 
 **Done when:** the change, its cause, and its measured effect are documented next to the
 configuration that changed.

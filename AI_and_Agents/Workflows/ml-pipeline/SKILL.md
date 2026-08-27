@@ -34,7 +34,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Feature Engineering | `../../../Global_References/ml-pipeline_feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
 | Training Pipelines | `../../../Global_References/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
-| Experiment Tracking | `../../../Global_References/experiment-tracking.md` | MLflow, Weights & Biases, experiment logging, model registry |
+| Experiment Tracking | `../../../Global_References/[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md).md` | MLflow, Weights & Biases, experiment logging, model registry |
 | Pipeline Orchestration | `../../../Global_References/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
 | Model Validation | `../../../Global_References/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
 
@@ -42,7 +42,7 @@ Load detailed guidance based on context:
 
 ### MLflow Experiment Logging (minimal reproducible example)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
@@ -76,11 +76,11 @@ with mlflow.start_run():
 
 ### Kubeflow Pipeline Component (single-step template)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from kfp.v2 import dsl
 from kfp.v2.dsl import component, Input, Output, Dataset, Model, Metrics
 
-@component(base_image="python:3.10", packages_to_install=["scikit-learn", "mlflow"])
+@component(base_image="[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.10", packages_to_install=["scikit-learn", "mlflow"])
 def train_model(
     train_data: Input[Dataset],
     model_output: Output[Model],
@@ -112,7 +112,7 @@ def training_pipeline(data_path: str, n_estimators: int = 100):
 
 ### Data Validation Checkpoint (Great Expectations style)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import great_expectations as ge
 
 def validate_training_data(df):
@@ -134,7 +134,7 @@ def validate_training_data(df):
 - Log all hyperparameters, metrics, and artifacts to experiment tracking
 - Validate data schema and distribution before training begins
 - Use containerized environments; store credentials in secrets managers, never in code
-- Implement error handling, retry logic, and pipeline alerting
+- Implement error handling, retry logic, and pipeline [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 - Separate training and inference code clearly
 
 **Never:**
@@ -155,7 +155,7 @@ When implementing a pipeline, provide:
 
 ## Knowledge Reference
 
-MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, Kubernetes, Docker, S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
+MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/ml-pipeline/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
 

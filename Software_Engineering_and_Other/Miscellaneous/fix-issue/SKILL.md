@@ -14,4 +14,4 @@ arguments: [issue]
 3. Implement the fix following codebase conventions
 4. Write tests matching existing test patterns
 5. Run tests to verify
-6. Commit with `Fixes #$issue` in message
+6. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with `Fixes #$issue` in message

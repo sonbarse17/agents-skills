@@ -4,12 +4,12 @@ description: Covers persistent data in the cluster — PersistentVolumes/Claims,
 license: MIT
 ---
 
-# Kubernetes Storage
+# [Kubernetes](../kubernetes/SKILL.md) Storage
 
-Kubernetes was designed for stateless, disposable pods, and storage is the layer where that
+[Kubernetes](../kubernetes/SKILL.md) was designed for stateless, disposable pods, and storage is the layer where that
 assumption breaks down and has to be bolted back on carefully. A pod can be rescheduled to any node
 at any time; the volume it depends on has to either follow it there or already be reachable from
-there — get this wrong and a routine reschedule becomes a data-loss incident.
+there — get this wrong and a routine reschedule becomes a data-loss [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 Treat every PVC as a promise about what happens when the pod above it dies, not just where the bytes
 live today. **The reclaim policy and access mode you pick now decide what happens the day something
@@ -20,12 +20,12 @@ goes wrong, not the day it's created.**
 A PVC asks for a certain size, access mode, and StorageClass; the PV that satisfies it is either
 pre-provisioned or, more commonly now, dynamically created by the StorageClass's provisioner. A
 `Pending` PVC almost always means no StorageClass/provisioner can satisfy what was asked for —
-capacity, access mode, or a zone constraint that doesn't match available storage.
+[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), access mode, or a zone constraint that doesn't match available storage.
 
 ```bash
-kubectl get pvc <name>                       # Pending? check events
-kubectl describe pvc <name>                  # provisioning failure reason
-kubectl get storageclass                     # is the referenced class real, and is one default?
+[kubectl](../kubectl/SKILL.md) get pvc <name>                       # Pending? check events
+[kubectl](../kubectl/SKILL.md) describe pvc <name>                  # provisioning failure reason
+[kubectl](../kubectl/SKILL.md) get storageclass                     # is the referenced class real, and is one default?
 ```
 
 - **No default StorageClass** and no `storageClassName` specified means the PVC has nothing to bind
@@ -83,7 +83,7 @@ deletes the wrong PVC.
   `Released`, requiring manual intervention to reuse or clean up, which is the point: it forces a
   human decision instead of an automatic one.
 - **This is not a backup strategy** — Retain prevents accidental deletion via the PVC lifecycle, it
-  does nothing for corruption, node loss, or the underlying disk failing; see `backup-and-restore`
+  does nothing for corruption, node loss, or the underlying disk failing; see `[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)`
   for actual recovery guarantees.
 
 **Done when:** every StorageClass backing non-disposable data is explicitly set to `Retain`, and
@@ -91,7 +91,7 @@ that decision is documented, not inherited by accident.
 
 ## 5. Assume the volume, not the pod, is what needs the reschedule guarantee
 
-When a node fails, Kubernetes reschedules the pod elsewhere, but the volume has to actually be
+When a node fails, [Kubernetes](../kubernetes/SKILL.md) reschedules the pod elsewhere, but the volume has to actually be
 detachable from the dead node and attachable to the new one — with `ReadWriteOnce` volumes and some
 CSI drivers, this can stall for minutes waiting for a force-detach, which shows up as a pod stuck in
 `ContainerCreating`.

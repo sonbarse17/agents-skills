@@ -9,7 +9,7 @@ metadata:
 
 # OpenTofu Migration
 
-Migrate infrastructure-as-code from HashiCorp Terraform to the open-source OpenTofu fork.
+Migrate [infrastructure-as-code](../infrastructure-as-code/SKILL.md) from HashiCorp Terraform to the open-source OpenTofu fork.
 
 ## When to Use This Skill
 
@@ -41,8 +41,8 @@ rm install-opentofu.sh
 # Linux (RPM)
 ./install-opentofu.sh --install-method rpm
 
-# Docker
-docker run --rm -v $(pwd):/workspace -w /workspace \
+# [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/workspace -w /workspace \
   ghcr.io/opentofu/opentofu:latest init
 
 # Verify installation
@@ -124,8 +124,8 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
+    [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) = {
+      source  = "hashicorp/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)"
       version = "~> 2.25"
     }
     # OpenTofu-specific providers
@@ -178,10 +178,10 @@ terraform {
 
 ## CI/CD Pipeline Updates
 
-### GitHub Actions
+### [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```yaml
-# .github/workflows/tofu.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/tofu.yml
 name: OpenTofu
 on:
   pull_request:
@@ -222,15 +222,15 @@ jobs:
         working-directory: infra/
 
       - name: Comment PR with plan
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        if: [github](../../CI_CD/github/SKILL.md).event_name == 'pull_request'
+        uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
         with:
           script: |
             const output = `#### OpenTofu Plan
             \`\`\`
             ${{ steps.plan.outputs.stdout }}
             \`\`\``;
-            github.rest.issues.createComment({
+            [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -239,7 +239,7 @@ jobs:
 
   apply:
     needs: plan
-    if: github.ref == 'refs/heads/main'
+    if: [github](../../CI_CD/github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -256,7 +256,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .gitlab-ci.yml
+# .[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml
 stages: [validate, plan, apply]
 
 variables:
@@ -326,7 +326,7 @@ fi
 
 ## Related Skills
 
-- [terraform-aws](../../cloud-aws/terraform-aws/) — AWS IaC patterns (works with both)
-- [terraform-azure](../../cloud-azure/terraform-azure/) — Azure IaC patterns
-- [terraform-gcp](../../cloud-gcp/terraform-gcp/) — GCP IaC patterns
-- [policy-as-code](../../../compliance/governance/policy-as-code/) — OPA policy checks for IaC
+- [terraform-aws](../../cloud-aws/[terraform-aws](../terraform-aws/SKILL.md)/) — AWS IaC patterns (works with both)
+- [terraform-azure](../../cloud-azure/[terraform-azure](../terraform-azure/SKILL.md)/) — Azure IaC patterns
+- [terraform-gcp](../../cloud-gcp/[terraform-gcp](../terraform-gcp/SKILL.md)/) — GCP IaC patterns
+- [policy-as-code](../../../compliance/governance/[policy-as-code](../../../Security/policy-as-code/SKILL.md)/) — OPA policy checks for IaC

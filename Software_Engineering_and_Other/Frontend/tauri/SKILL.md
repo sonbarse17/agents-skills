@@ -45,7 +45,7 @@ async function triggerAction() {
 
 ## Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     UI[Frontend UI HTML/JS] <-->|IPC Commands| Core[Rust Core]

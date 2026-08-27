@@ -12,7 +12,7 @@ doing anything. That distinction is the entire value: a script run twice can fai
 work, but a well-written playbook run a hundred times against a host that's already correct does
 nothing at all, safely.
 
-Ansible, Chef, and Puppet exist to describe *desired state*, not a sequence of steps. The moment
+[Ansible](../../Infrastructure_as_Code/ansible/SKILL.md), Chef, and Puppet exist to describe *desired state*, not a sequence of steps. The moment
 a task is written as an imperative command instead of a declared outcome, that guarantee is gone.
 
 **If running the same playbook twice changes anything the second time, it isn't idempotent — and
@@ -21,7 +21,7 @@ if it isn't idempotent, it isn't safe to run in a hurry, which is exactly when y
 ## 1. Write tasks that declare an outcome, not a command
 
 `command: apt-get install -y nginx` runs every time, whether or not nginx is already there, and
-Ansible has no way to know if it changed anything. The `apt` or `package` module, by contrast,
+[Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) has no way to know if it changed anything. The `apt` or `package` module, by contrast,
 checks state first and reports back "changed" or "ok" honestly.
 
 ```yaml
@@ -66,7 +66,7 @@ change.
 
 A role that configures nginx, sets up log rotation, and hardens SSH all at once can't be reused
 for a host that needs only one of those things, and it's harder to test in isolation. Roles are
-the module system of configuration management — see `terraform-modules` for the equivalent
+the module system of configuration management — see `[terraform-modules](../../Infrastructure_as_Code/terraform-modules/SKILL.md)` for the equivalent
 discipline in Terraform, though the composition mechanics differ.
 
 - **One role, one responsibility** — `nginx`, `log-rotation`, `ssh-hardening` as separate roles
@@ -96,7 +96,7 @@ Configuration management manages long-lived, mutable hosts well. It manages the 
 host has drifted and I need to reconcile it" — a problem that doesn't exist at all if hosts are
 never mutated after boot. If the fleet is autoscaled, frequently replaced, or the goal is a
 byte-identical fleet, baking a golden image and replacing rather than converging is usually
-simpler and more reliable. See `immutable-infrastructure` for that model and how to decide
+simpler and more reliable. See `[immutable-infrastructure](../../Infrastructure_as_Code/immutable-infrastructure/SKILL.md)` for that model and how to decide
 between the two.
 
 **Done when:** the choice between config management and image-baking for this fleet is a
@@ -107,7 +107,7 @@ documented decision, not a default nobody reconsidered.
 A playbook that's only ever been run manually against production is a playbook that's never
 actually been tested — it's been performed. Run it in CI against a container or ephemeral VM,
 asserting both that the first run converges and the second run is a no-op. See
-`infrastructure-testing` for the broader pattern this fits into.
+`[infrastructure-testing](../../Infrastructure_as_Code/infrastructure-testing/SKILL.md)` for the broader pattern this fits into.
 
 **Done when:** every playbook change runs through an automated convergence test before it's
 applied to a real fleet.
@@ -117,5 +117,5 @@ applied to a real fleet.
 State which roles and playbooks exist, what inventory groups they target, and whether idempotency
 was verified with a two-run test. Name the honest gap — usually a play still using raw shell
 commands without change guards, an inventory that's manually maintained instead of dynamic, or a
-fleet that was never evaluated against the immutable-infrastructure alternative — rather than
+fleet that was never evaluated against the [immutable-infrastructure](../../Infrastructure_as_Code/immutable-infrastructure/SKILL.md) alternative — rather than
 implying the whole fleet reliably converges.

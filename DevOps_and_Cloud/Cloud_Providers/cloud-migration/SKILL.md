@@ -46,8 +46,8 @@ has already moved when it hasn't.
 For anything but the smallest datasets, a one-time copy means the data is stale the moment
 traffic starts flowing on the old system after the copy began. Use continuous replication or
 change-data-capture to keep source and target in sync until the actual cutover moment, then cut
-over with a short, well-understood freeze window. See `data-migration` for the sync mechanics and
-`backup-and-restore` for the safety net if the sync itself fails.
+over with a short, well-understood freeze window. See `[data-migration](../../../Data_Engineering/data-migration/SKILL.md)` for the sync mechanics and
+`[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)` for the safety net if the sync itself fails.
 
 **Done when:** source and target data are verified consistent immediately before cutover, with a
 freeze window short enough to be acceptable to the business.
@@ -57,7 +57,7 @@ freeze window short enough to be acceptable to the business.
 A cutover plan without a tested rollback is a bet with no exit. Know exactly how to redirect
 traffic back to the old environment, how stale the old environment's data will be if you do, and
 how long that rollback takes — before you need any of that under pressure. This is the same
-discipline as `deployment-strategies`, applied to an environment-level cutover instead of a
+discipline as `[deployment-strategies](../../Containers_and_Orchestration/deployment-strategies/SKILL.md)`, applied to an environment-level cutover instead of a
 release.
 
 ```
@@ -74,7 +74,7 @@ cutover checklist:
 Route a small percentage of real traffic to the new environment before the full switch, and watch
 error rates, latency, and cost against the old environment's baseline. A full cutover based only
 on staging tests finds its problems in production, at full volume, with no comparison baseline.
-For the traffic-shifting mechanics themselves, see `progressive-delivery`.
+For the traffic-shifting mechanics themselves, see `[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)`.
 
 **Done when:** the new environment has served a canary slice of real production traffic within an
 acceptable error-rate band before full cutover.

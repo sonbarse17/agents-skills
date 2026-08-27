@@ -5,7 +5,7 @@ description: Implement Linkerd service mesh patterns for lightweight, security-f
 
 # Linkerd Patterns
 
-Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.
+Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).
 
 ## When to Use This Skill
 
@@ -61,16 +61,16 @@ curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install | sh
 linkerd check --pre
 
 # Install CRDs
-linkerd install --crds | kubectl apply -f -
+linkerd install --crds | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
 # Install control plane
-linkerd install | kubectl apply -f -
+linkerd install | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
 # Verify installation
 linkerd check
 
 # Install viz extension (optional)
-linkerd viz install | kubectl apply -f -
+linkerd viz install | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 ```
 
 ### Template 2: Inject Namespace
@@ -238,22 +238,22 @@ spec:
 
 ```bash
 # On each cluster, install with cluster credentials
-linkerd multicluster install | kubectl apply -f -
+linkerd multicluster install | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
 # Link clusters
 linkerd multicluster link --cluster-name west \
   --api-server-address https://west.example.com:6443 \
-  | kubectl apply -f -
+  | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
 # Export a service to other clusters
-kubectl label svc/my-service mirror.linkerd.io/exported=true
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) label svc/my-service mirror.linkerd.io/exported=true
 
 # Verify cross-cluster connectivity
 linkerd multicluster check
 linkerd multicluster gateways
 ```
 
-## Monitoring Commands
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Commands
 
 ```bash
 # Live traffic view
@@ -279,7 +279,7 @@ linkerd viz dashboard
 linkerd check --proxy -n my-namespace
 
 # View proxy logs
-kubectl logs deploy/my-app -c linkerd-proxy
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs deploy/my-app -c linkerd-proxy
 
 # Debug identity/TLS
 linkerd identity -n my-namespace

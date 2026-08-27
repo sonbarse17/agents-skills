@@ -328,7 +328,7 @@ resource "cloudflare_ruleset" "waf_custom" {
 apt install -y libmodsecurity3 libmodsecurity-dev nginx libnginx-mod-http-modsecurity
 
 # Or compile from source
-git clone https://github.com/SpiderLabs/ModSecurity /opt/modsecurity
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/SpiderLabs/ModSecurity /opt/modsecurity
 cd /opt/modsecurity
 git submodule init && git submodule update
 ./build.sh && ./configure && make && make install
@@ -393,10 +393,10 @@ Include /etc/nginx/modsec/crs/rules/*.conf
 ```bash
 # Download and install OWASP CRS
 cd /etc/nginx/modsec
-git clone https://github.com/coreruleset/coreruleset crs
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/coreruleset/coreruleset crs
 cp crs/crs-setup.conf.example crs/crs-setup.conf
 
-# Customize CRS settings
+# [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) CRS settings
 cat >> crs/crs-setup.conf << 'EOF'
 
 # Set paranoia level (1-4, higher = more strict)
@@ -466,7 +466,7 @@ AUDIT_LOG="/var/log/modsec/modsec_audit.log"
 TIMEFRAME="24h"
 
 echo "=== WAF Tuning Report ==="
-echo "Analyzing last ${TIMEFRAME} of audit logs"
+echo "Analyzing last ${TIMEFRAME} of [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs"
 echo ""
 
 # Top blocked rules
@@ -495,7 +495,7 @@ grep -oP 'id "\K[0-9]+' "$AUDIT_LOG" | sort | uniq -c | sort -rn | \
 
 | Problem | Cause | Solution |
 |---------|-------|----------|
-| Legitimate requests blocked | False positives from CRS rules | Set `SecRuleEngine DetectionOnly` first; review audit log; add exclusions |
+| Legitimate requests blocked | False positives from CRS rules | Set `SecRuleEngine DetectionOnly` first; review [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log; add exclusions |
 | WAF not blocking attacks | Rules in detection-only mode | Switch `SecRuleEngine On` after tuning period |
 | High latency with WAF enabled | Response body inspection overhead | Disable `SecResponseBodyAccess` if not needed; reduce `paranoia_level` |
 | AWS WAF rules not matching | Rule priority order wrong | Lower priority number = evaluated first; reorder rules |
@@ -514,10 +514,10 @@ grep -oP 'id "\K[0-9]+' "$AUDIT_LOG" | sort | uniq -c | sort -rn | \
 - Set appropriate rate limits per endpoint
 - Maintain exclusion rules documentation with justifications
 - Test WAF rules with known attack payloads before deploying
-- Keep audit logs for at least 90 days for forensic analysis
+- Keep [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for at least 90 days for forensic analysis
 
 ## Related Skills
 
-- [dast-scanning](../../scanning/dast-scanning/) - Web security testing
-- [ssl-tls-management](../ssl-tls-management/) - HTTPS configuration
-- [firewall-config](../firewall-config/) - Network-level firewalling
+- [dast-scanning](../../scanning/[dast-scanning](../../DevOps_and_Cloud/Observability_and_SecOps/dast-scanning/SKILL.md)/) - Web security testing
+- [ssl-tls-management](../[ssl-tls-management](../../Software_Engineering_and_Other/Frontend/ssl-tls-management/SKILL.md)/) - HTTPS configuration
+- [firewall-config](../[firewall-config](../../DevOps_and_Cloud/Cloud_Providers/firewall-config/SKILL.md)/) - Network-level firewalling

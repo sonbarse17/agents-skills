@@ -54,20 +54,20 @@ Infrastructure deployed via Bicep, AKS cluster operational, pipeline passing, ne
 ### Compute: AKS vs App Service vs Functions vs Container Instances vs VMs
 | Workload Type | Recommended | Key Factor | Scaling |
 |---|---|---|---|
-| Kubernetes workloads | AKS | Need K8s ecosystem | Node pools + HPA |
+| [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads | AKS | Need K8s ecosystem | Node pools + HPA |
 | Web app, simple | App Service | PaaS, deployment slots | Auto-scale |
 | Event-driven, short | Azure Functions | <10min execution | Consumption plan |
 | Container, simple | Container Instances | Quick, burst | Manual |
 | Full OS control | Virtual Machines | Legacy, custom OS | VMSS |
 
-### Database: Azure SQL vs Cosmos DB vs PostgreSQL vs SQL Managed Instance
+### Database: Azure SQL vs Cosmos DB vs [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) vs SQL Managed Instance
 | Requirement | Recommended | HA Model |
 |---|---|---|
 | SQL Server compatible, <4TB | Azure SQL Database (DTU) | Active geo-replication |
 | SQL Server compatible, >4TB | Azure SQL Database (vCore) | Zone-redundant |
 | SQL Server, full instance | SQL Managed Instance | Auto-failover groups |
 | NoSQL, multi-model | Cosmos DB | Multi-region writes |
-| PostgreSQL/MySQL | Azure Database for PostgreSQL | Read replicas |
+| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) | Azure Database for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) | Read replicas |
 | Cache | Azure Cache for Redis | Premium with clustering |
 
 ### Networking: VNet Hub-Spoke vs Virtual WAN vs Azure Front Door
@@ -86,7 +86,7 @@ Infrastructure deployed via Bicep, AKS cluster operational, pipeline passing, ne
 | Managed Identity | Azure resource to Azure resource | High (no credentials) |
 | Service Principal | External app, CI/CD | Medium (secret rotation needed) |
 | Azure AD Pod Identity | Pods to Azure services (AKS) | High |
-| Workload Identity Federation | GitHub Actions, Terraform Cloud | High (OIDC, no secrets) |
+| Workload Identity Federation | [GitHub](../../CI_CD/github/SKILL.md) Actions, Terraform Cloud | High (OIDC, no secrets) |
 
 ## Quick Start
 Management group hierarchy → Bicep template for VNet hub-spoke → AKS cluster + Azure AD integration → Azure DevOps pipeline → Private Link for PaaS → Azure Policy for governance → Monitor with Log Analytics → Cost budgets + tags.
@@ -382,7 +382,7 @@ stages:
         pool:
           vmImage: 'ubuntu-latest'
         steps:
-          - task: Docker@2
+          - task: [Docker](../../Containers_and_Orchestration/docker/SKILL.md)@2
             displayName: Build and Push
             inputs:
               command: buildAndPush
@@ -394,7 +394,7 @@ stages:
                 latest
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: 'kubernetes/'
+              targetPath: '[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/'
               artifact: 'manifests'
 
   - stage: DeployDev
@@ -543,7 +543,7 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 |---|---|---|
 | Compute - VMs | Virtual Machines | EC2 |
 | Compute - Containers | AKS | EKS |
-| Compute - Serverless | Azure Functions | Lambda |
+| Compute - [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) | Azure Functions | Lambda |
 | Compute - PaaS Web | App Service | Elastic Beanstalk |
 | Storage - Object | Blob Storage | S3 |
 | Storage - Block | Disk Storage | EBS |
@@ -555,10 +555,10 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 | Networking - CDN | Azure Front Door / CDN | CloudFront |
 | DNS | Azure DNS | Route53 |
 | IAM | Azure AD + RBAC | IAM |
-| Key Management | Key Vault | KMS |
-| Monitoring | Azure Monitor | CloudWatch |
+| Key Management | Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | KMS |
+| [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | Azure Monitor | CloudWatch |
 | CI/CD | Azure DevOps Pipelines | CodePipeline |
-| IaC | Bicep/ARM | CloudFormation/CDK |
+| IaC | Bicep/ARM | [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/CDK |
 | Governance | Azure Policy | AWS Config |
 
 ## Anti-Patterns
@@ -586,11 +586,11 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 ### Security
 - Enable Azure Defender (Microsoft Defender for Cloud) on all subscriptions.
 - Use Azure AD Conditional Access with MFA for all administrative access.
-- Enable Diagnostic Settings on all resources for audit logging.
+- Enable Diagnostic Settings on all resources for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 - Use Azure Policy to enforce HTTPS, deny public IPs on NSGs, require encryption.
-- Use Key Vault with soft-delete and purge protection enabled.
+- Use Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with soft-delete and purge protection enabled.
 - Enable network security groups with just-in-time (JIT) VM access.
-- Use Azure RBAC with least privilege; audit role assignments quarterly.
+- Use Azure RBAC with least privilege; [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) role assignments quarterly.
 
 ### Cost Optimization
 - Use Azure Reservations (1yr/3yr) for predictable VMs and SQL databases (20-60% savings).
@@ -616,17 +616,17 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 | Azure DevOps pipeline fails | Service Principal expired | Rotate SP secret or use Workload Identity |
 | Bicep deployment fails | Module not found | Verify module registry path and version |
 | Azure Policy non-compliant | Resource missing required tag | Add tags; check policy definition |
-| Key Vault access denied | Missing access policy | Add service principal/managed identity to KV |
+| Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access denied | Missing access policy | Add service principal/managed identity to KV |
 
 ## Rules
 1. Bicep over ARM JSON for all new IaC.
 2. Managed identities over service principals for Azure resource auth.
-3. Private endpoints for all PaaS services (SQL, Storage, ACR, Key Vault).
+3. Private endpoints for all PaaS services (SQL, Storage, ACR, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).
 4. Azure Policy for compliance enforcement at resource creation.
 5. AKS with Azure CNI and Azure AD integration.
 6. Cost allocation via resource tags — every resource gets mandatory tags.
 7. Deployment slots for zero-downtime App Service deployments.
-8. Diagnostic settings enabled on all services for audit and monitoring.
+8. Diagnostic settings enabled on all services for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 9. Resource locks (CanNotDelete) on production resource groups.
 10. Azure Defender enabled on all subscriptions.
 11. Budget alerts at 50%, 80%, 100%, 200% of forecast.
@@ -636,15 +636,15 @@ Bicep/ARM templates, Azure DevOps YAML pipeline definitions, AKS config, Azure C
 
 ## References
   - ../../../Global_References/azure-advanced.md
-  - ../../../Global_References/azure-aks.md
-  - ../../../Global_References/azure-compute.md
-  - ../../../Global_References/azure-devops-pipelines.md
+  - ../../../Global_References/[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md).md
+  - ../../../Global_References/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md).md
+  - ../../../Global_References/[azure-devops](../azure-devops/SKILL.md)-pipelines.md
   - ../../../Global_References/azure-fundamentals.md
   - ../../../Global_References/azure-iac.md
-  - ../../../Global_References/azure-networking.md
+  - ../../../Global_References/[azure-networking](../azure-networking/SKILL.md).md
   - ../../../Global_References/azure-resource-management.md
   - references/azure-policy-guide.md
 
 ## Handoff
-Hand off to Azure when provisioning Azure-specific infrastructure or pipelines. Hand off to terraform for multi-cloud IaC. Hand off to monitoring for Azure Monitor configuration.
+Hand off to Azure when provisioning Azure-specific infrastructure or pipelines. Hand off to terraform for [multi-cloud](../multi-cloud/SKILL.md) IaC. Hand off to [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for Azure Monitor configuration.
 

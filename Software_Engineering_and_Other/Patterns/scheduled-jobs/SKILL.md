@@ -13,14 +13,14 @@ is also what makes it dangerous without deliberate guardrails.
 
 **Design a scheduled job assuming nobody is watching it run — because nobody is, until it breaks.**
 
-For cron syntax, DST pitfalls, locking, and Kubernetes CronJob settings, read
+For cron syntax, DST pitfalls, locking, and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CronJob settings, read
 `../../../Global_References/cron-patterns.md`.
 
 ## 1. Make the job idempotent, not just retry-friendly
 
 A scheduler that fires a job that's already running, or re-fires after a timeout that wasn't
 actually a hang, needs the job itself to tolerate a duplicate execution. This is the same
-idempotency discipline from `scripting-automation`, but scheduled jobs need it more: nobody is
+idempotency discipline from `[scripting-automation](../../Languages/scripting-automation/SKILL.md)`, but scheduled jobs need it more: nobody is
 present to notice a duplicate run happened.
 
 - **Key the job's effect on the scheduled time or a run ID**, not on "whatever the current time
@@ -53,8 +53,8 @@ and a skip due to overlap is visible, not silent.
 ## 3. Monitor for the job not running at all
 
 The failure mode that hurts most is silence — a job that used to run nightly stops running, and
-nothing alerts because there's no failed run to alert on, just an absent one. Monitoring "did the
-job fail" is not the same as monitoring "did the job run."
+nothing alerts because there's no failed run to alert on, just an absent one. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) "did the
+job fail" is not the same as [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) "did the job run."
 
 ```yaml
 # dead man's switch: job must check in within its expected window, or this pages
@@ -68,7 +68,7 @@ job fail" is not the same as monitoring "did the job run."
 - **Alert on absence, not just on failure** — a scheduler that itself stopped (a paused CronJob, a
   disabled cron entry) produces zero failed runs and zero alerts under a failure-only setup.
 - **Set the missed-run window wider than normal jitter** but tight enough to catch a real gap
-  before it compounds — see `alerting` for the tuning discipline behind that threshold.
+  before it compounds — see `[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` for the tuning discipline behind that threshold.
 
 **Done when:** every scheduled job has a heartbeat-based check that pages when the job hasn't
 succeeded within its expected window, independent of the scheduler's own health.
@@ -95,7 +95,7 @@ A cron job failing silently into `/dev/null` is the default in a lot of legacy s
 the first sign of trouble is the downstream consumer of the job's output noticing something's
 stale or missing — far later than the job's own exit code would have told you.
 
-- **Route failures to the same alerting path as everything else** — see `alerting` for severity
+- **Route failures to the same [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) path as everything else** — see `[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` for severity
   routing — not to an email nobody reads.
 - **Include the run's context in the failure alert** — which scheduled slot, how far it got, what
   it was operating on — so triage doesn't start from zero.

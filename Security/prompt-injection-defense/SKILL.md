@@ -22,7 +22,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- Python 3.10+ with `re`, `hashlib`, `json` standard libraries
+- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `re`, `hashlib`, `json` standard libraries
 - Access to the LLM application source code or configuration
 - Understanding of the application's prompt architecture (system/user/tool boundaries)
 - Test environment with representative user inputs and documents
@@ -46,7 +46,7 @@ Use this skill when:
 
 ## Input Sanitization Functions
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """prompt_sanitizer.py - Input sanitization for LLM applications."""
 
 import re
@@ -170,7 +170,7 @@ def validate_tool_call(tool_name: str, args: dict, allowed_tools: dict) -> dict:
 
 ## Canary Token System
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """canary_tokens.py - Detect data exfiltration from LLM context."""
 
 import hashlib
@@ -308,7 +308,7 @@ defense_layers:
 
 ## Output Validation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """output_validator.py - Validate and sanitize LLM outputs."""
 
 import re
@@ -317,7 +317,7 @@ from typing import Optional
 SECRET_PATTERNS = [
     (r'sk-[a-zA-Z0-9]{32,}', 'OpenAI API key'),
     (r'AKIA[0-9A-Z]{16}', 'AWS access key'),
-    (r'ghp_[a-zA-Z0-9]{36}', 'GitHub personal access token'),
+    (r'ghp_[a-zA-Z0-9]{36}', '[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) personal access token'),
     (r'(?i)password\s*[:=]\s*\S+', 'password in output'),
     (r'CNRY-[a-f0-9]{16}', 'canary token'),
 ]
@@ -408,7 +408,7 @@ test_cases:
 - Canary token trigger rate
 - Output redaction frequency
 
-## Monitoring Dashboard Queries
+## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Dashboard Queries
 
 ```yaml
 # prometheus alerts for prompt injection
@@ -453,6 +453,6 @@ groups:
 
 ## Related Skills
 
-- [ai-agent-security](../ai-agent-security/) - Agent threat model and controls
-- [llm-app-security](../llm-app-security/) - End-to-end LLM app hardening
-- [security-automation](../../operations/security-automation/) - Automated policy response workflows
+- [ai-agent-security](../[ai-agent-security](../ai-agent-security/SKILL.md)/) - Agent threat model and controls
+- [llm-app-security](../[llm-app-security](../llm-app-security/SKILL.md)/) - End-to-end LLM app hardening
+- [security-automation](../../operations/[security-automation](../security-automation/SKILL.md)/) - Automated policy response workflows

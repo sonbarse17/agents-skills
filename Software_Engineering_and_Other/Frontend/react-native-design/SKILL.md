@@ -14,7 +14,7 @@ Master React Native styling patterns, React Navigation, and Reanimated 3 to buil
 - Creating performant animations with Reanimated 3
 - Styling components with StyleSheet and styled-components
 - Building responsive layouts for different screen sizes
-- Implementing platform-specific designs (iOS/Android)
+- Implementing platform-specific designs (iOS/[Android](../../../Mobile/android/SKILL.md))
 - Creating gesture-driven interactions with Gesture Handler
 - Optimizing React Native performance
 
@@ -24,7 +24,7 @@ Originally a 6471-byte section in this SKILL.md. Moved to `../../../Global_Refer
 
 ## Quick Start Component
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import React from 'react';
 import {
   View,
@@ -110,14 +110,14 @@ const styles = StyleSheet.create({
 
 ## Best Practices
 
-1. **Use TypeScript**: Define navigation and prop types for type safety
+1. **Use [TypeScript](../typescript/SKILL.md)**: Define navigation and prop types for type safety
 2. **Memoize Components**: Use `React.memo` and `useCallback` to prevent unnecessary rerenders
 3. **Run Animations on UI Thread**: Use Reanimated worklets for 60fps animations
 4. **Avoid Inline Styles**: Use StyleSheet.create for performance
 5. **Handle Safe Areas**: Use `SafeAreaView` or `useSafeAreaInsets`
 6. **Test on Real Devices**: Simulator/emulator performance differs from real devices
 7. **Use FlatList for Lists**: Never use ScrollView with map for long lists
-8. **Platform-Specific Code**: Use Platform.select for iOS/Android differences
+8. **Platform-Specific Code**: Use Platform.select for iOS/[Android](../../../Mobile/android/SKILL.md) differences
 
 ## Common Issues
 
@@ -126,5 +126,5 @@ const styles = StyleSheet.create({
 - **Animation Jank**: Move animations to UI thread with `runOnUI` worklets
 - **Memory Leaks**: Cancel animations and cleanup in useEffect
 - **Font Loading**: Use `expo-font` or `react-native-asset` for custom fonts
-- **Safe Area Issues**: Test on notched devices (iPhone, Android with cutouts)
+- **Safe Area Issues**: Test on notched devices (iPhone, [Android](../../../Mobile/android/SKILL.md) with cutouts)
 

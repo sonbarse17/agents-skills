@@ -21,7 +21,7 @@ fast and cheaply you can undo it if you learn something bad.**
 ## 1. Match the strategy to the blast radius, not the org's default
 
 Rolling updates are the right default for most internal services and low-risk changes —
-Kubernetes does this natively, it's cheap, and a bad version only affects a fraction of traffic
+[Kubernetes](../kubernetes/SKILL.md) does this natively, it's cheap, and a bad version only affects a fraction of traffic
 briefly before it's caught by a readiness probe. Reach for canary or blue-green when the cost of
 a bad version reaching real users is high (payment paths, anything customer-facing at scale) or
 when the change touches something readiness probes can't catch, like subtle data corruption or
@@ -41,7 +41,7 @@ before the first health gate — and that number is what the rollout actually en
 ## 2. Treat rollback as a feature you test, not a hope
 
 A rollback plan that has never been executed is a guess. If "roll back" means "redeploy the
-previous artifact," verify that artifact is still available (see `artifact-management`) and that
+previous artifact," verify that artifact is still available (see `[artifact-management](../../CI_CD/artifact-management/SKILL.md)`) and that
 redeploying it actually restores the previous behavior — not just the previous code, but
 compatibility with whatever state (DB schema, message formats, feature flags) the system is
 currently in. Practice rollback on a low-stakes deploy occasionally so the first time it's used
@@ -53,7 +53,7 @@ under pressure isn't the first time it's used at all.
 # 2. how long does rollback take, end to end, measured — not estimated?
 ```
 
-**Done when:** someone who did not write the deploy can execute the rollback from the runbook
+**Done when:** someone who did not write the deploy can execute the rollback from the [runbook](../../Observability_and_SecOps/runbook/SKILL.md)
 alone, and it has been timed at least once.
 
 ## 3. Separate deploy from release for anything risky
@@ -63,7 +63,7 @@ your safety margin. A canary or blue-green switch is still a full release the in
 traffic; wrapping the risky code path in a feature flag lets you deploy fully, verify health with
 zero users on the new path, then ramp exposure independently of the deploy. This is the sharper
 tool for anything where "50% of pods have the bug" (rolling) is still too much exposure. See
-`feature-flags` for flag mechanics and cleanup discipline.
+`[feature-flags](../../CI_CD/feature-flags/SKILL.md)` for flag mechanics and cleanup discipline.
 
 **Done when:** for any deploy marked risky, there's a way to reduce user exposure to zero without
 also reverting the deploy.
@@ -91,7 +91,7 @@ of writes will pass a naive health check and still cause damage. Pick metrics sp
 change being shipped (error rate on the affected endpoint, p99 latency for the affected path, a
 business metric if the change touches revenue logic) rather than generic infra metrics alone, and
 automate the canary's promote/abort decision on those metrics wherever the strategy supports it.
-See `metrics-and-monitoring` for building the underlying signal.
+See `[metrics-and-monitoring](../../Observability_and_SecOps/metrics-and-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/SKILL.md)` for building the underlying signal.
 
 **Done when:** the canary or rollout stage has an automated abort condition, not just a person
 watching a dashboard and hoping.

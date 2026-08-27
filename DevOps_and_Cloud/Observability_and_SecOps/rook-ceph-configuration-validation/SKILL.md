@@ -20,10 +20,10 @@ metadata:
 
 ## Purpose
 
-A `CephCluster` CRD can report `Ready` in Kubernetes terms — the
+A `CephCluster` CRD can report `Ready` in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) terms — the
 operator reconciled it, all expected pods are `Running` — while the
 underlying Ceph cluster itself is in `HEALTH_WARN` or even `HEALTH_ERR`,
-because Kubernetes-level pod health and Ceph's own internal
+because [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level pod health and Ceph's own internal
 consensus/data-placement health are two different signals that don't
 automatically agree. Trusting Rook-Ceph for production workloads without
 directly checking Ceph's own health output is the single most common
@@ -32,7 +32,7 @@ depends on it and something breaks. This skill covers the validation
 workflow — `ceph status`, OSD placement/CRUSH, and PG state — that
 should run before a newly deployed cluster is trusted, and periodically
 after. It assumes the cluster was deployed per
-[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)
+[rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md)
 and focuses purely on verifying its health, not on configuring it.
 
 ## When to use
@@ -40,27 +40,27 @@ and focuses purely on verifying its health, not on configuring it.
 - Before pointing any production workload's StorageClass at a newly
   deployed Rook-Ceph cluster.
 - A `CephCluster` shows `HEALTH_WARN`/`HEALTH_ERR` and the specific
-  cause isn't obvious from the Kubernetes-level CRD status alone.
+  cause isn't obvious from the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level CRD status alone.
 - Confirming OSDs are actually spread across the intended failure
   domains (hosts, racks) rather than accidentally concentrated in ways
   that defeat the configured replication.
 - Investigating placement groups stuck `degraded`, `undersized`,
   `stale`, or `inactive` after a node failure, device replacement, or
-  capacity expansion.
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) expansion.
 - Periodic (e.g. weekly, or pre-change) health verification as part of
-  an operational runbook, not only during incidents.
+  an operational [runbook](../runbook/SKILL.md), not only during incidents.
 - Validating a Ceph cluster's health *before* a planned disruptive
-  operation (node drain, Kubernetes upgrade, device replacement) to
+  operation (node drain, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) upgrade, device replacement) to
   confirm the cluster can tolerate it.
 
 ## Prerequisites & environment
 
 - A Rook-Ceph cluster already deployed per
-  [rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md),
-  with the `rook-ceph-tools` deployment running (`kubectl -n rook-ceph
+  [rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md),
+  with the `rook-ceph-tools` deployment running (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph
   get pods -l app=rook-ceph-tools`) — most of the checks below assume a
-  shell into this pod (`kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- bash`).
-- `kubectl` read access to the `rook-ceph` namespace and the
+  shell into this pod (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec -it deploy/rook-ceph-tools -- bash`).
+- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` read access to the `rook-ceph` namespace and the
   cluster-scoped `CephCluster`/`CephBlockPool`/`CephFilesystem`/
   `CephObjectStore` CRDs.
 - Familiarity with the CRUSH map concept (Ceph's data-placement
@@ -74,10 +74,10 @@ and focuses purely on verifying its health, not on configuring it.
 
 ## Step-by-step guidance
 
-1. **Start from `ceph status`, not the Kubernetes CRD's `Ready`
+1. **Start from `ceph status`, not the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRD's `Ready`
    field** — they measure different things:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
    ```
    Read the `health:` line first (`HEALTH_OK`/`HEALTH_WARN`/
    `HEALTH_ERR`), then `mon`/`mgr`/`osd` counts (`3 up, 3 in` for a
@@ -89,7 +89,7 @@ and focuses purely on verifying its health, not on configuring it.
 2. **Get the specific reason behind any non-`HEALTH_OK` state** —
    `ceph status`'s health line is a summary; the detail is elsewhere:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph health detail
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph health detail
    ```
    This surfaces the actual warning/error codes (e.g.
    `PG_DEGRADED`, `OSD_DOWN`, `MON_DISK_LOW`,
@@ -97,23 +97,23 @@ and focuses purely on verifying its health, not on configuring it.
    output, not the one-line summary, as the starting point for any
    investigation.
 
-3. **Cross-check the Kubernetes-level CRD status against the Ceph-level
+3. **Cross-check the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level CRD status against the Ceph-level
    status** — they should agree, but confirm rather than assume:
    ```bash
-   kubectl -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.phase}{"\n"}{.status.ceph.health}{"\n"}{.status.ceph.details}'
-   kubectl -n rook-ceph get pods -o wide | grep -E 'osd|mon|mgr'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.phase}{"\n"}{.status.ceph.health}{"\n"}{.status.ceph.details}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get pods -o wide | grep -E 'osd|mon|mgr'
    ```
-   A `CephCluster` reporting Kubernetes-level `Ready`/`Progressing` with
+   A `CephCluster` reporting [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level `Ready`/`Progressing` with
    an inconsistent or stale `.status.ceph.health` field usually means
    the operator's own reconciliation loop is behind — check the
    operator's own logs
-   (`kubectl -n rook-ceph logs -l app=rook-ceph-operator --tail=200`)
+   (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph logs -l app=rook-ceph-operator --tail=200`)
    rather than trusting a CRD status that hasn't updated recently.
 
 4. **Verify OSD placement matches the intended failure domain**, not
    just that OSD count matches expectation:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd tree
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd tree
    ```
    Confirm each `host` bucket in the tree output actually corresponds
    to a distinct physical/VM node, and that no single host holds a
@@ -126,8 +126,8 @@ and focuses purely on verifying its health, not on configuring it.
 5. **Confirm the CRUSH map's rule set matches the pool's declared
    `failureDomain`**:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd crush rule dump
-   kubectl -n rook-ceph get cephblockpool replicapool -o jsonpath='{.spec.failureDomain}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd crush rule dump
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephblockpool replicapool -o jsonpath='{.spec.failureDomain}'
    ```
    A pool declared with `failureDomain: host` in its CRD but whose
    actual CRUSH rule steps by `osd` (not `host`) indicates the CRD spec
@@ -140,8 +140,8 @@ and focuses purely on verifying its health, not on configuring it.
 6. **Check placement group (PG) state for anything other than
    `active+clean`**:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph pg stat
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph pg dump_stuck
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph pg stat
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph pg dump_stuck
    ```
    `active+clean` is the fully healthy state. `degraded` means fewer
    replicas than configured currently exist (usually mid-recovery after
@@ -152,13 +152,13 @@ and focuses purely on verifying its health, not on configuring it.
    responding — I/O to that data is blocked, which is more urgent than
    `degraded`.
 
-7. **Check capacity headroom before it becomes an outage**:
+7. **Check [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) headroom before it becomes an outage**:
    ```bash
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph df
-   kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd df
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph df
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd df
    ```
    `ceph df`'s `%USED` per pool and `ceph osd df`'s per-OSD `%USE`
-   matter separately: overall cluster capacity can look fine in
+   matter separately: overall cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) can look fine in
    aggregate while one specific OSD is nearly full (Ceph's CRUSH
    placement isn't perfectly uniform), and a single near-full OSD can
    trigger `OSD_NEARFULL`/`OSD_FULL` warnings and eventually block
@@ -169,7 +169,7 @@ and focuses purely on verifying its health, not on configuring it.
    that Ceph itself is healthy — a healthy Ceph cluster with a broken
    CSI driver still fails every PVC:
    ```bash
-   kubectl apply -f - <<'EOF'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<'EOF'
    apiVersion: v1
    kind: PersistentVolumeClaim
    metadata: { name: rook-validation-test, namespace: default }
@@ -178,8 +178,8 @@ and focuses purely on verifying its health, not on configuring it.
      storageClassName: rook-ceph-block
      resources: { requests: { storage: 1Gi } }
    EOF
-   kubectl get pvc rook-validation-test -w   # confirm it reaches Bound
-   kubectl delete pvc rook-validation-test
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pvc rook-validation-test -w   # confirm it reaches Bound
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) delete pvc rook-validation-test
    ```
    Run this as a smoke test after any Rook/Ceph upgrade or CRUSH/pool
    change, not only at initial install.
@@ -187,11 +187,11 @@ and focuses purely on verifying its health, not on configuring it.
 ## Best practices
 
 - Treat `ceph status`/`ceph health detail` as the source of truth for
-  storage health, and the Kubernetes CRD status as a secondary,
+  storage health, and the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRD status as a secondary,
   sometimes-lagging signal — never certify a cluster healthy from
-  `kubectl get cephcluster` output alone.
+  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get cephcluster` output alone.
 - Run the OSD-placement and CRUSH-rule checks (steps 4-5) after *every*
-  capacity change (node/device addition or removal), not just at
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) change (node/device addition or removal), not just at
   initial deployment — a rebalance can shift which hosts hold which
   data, and it's worth confirming the failure-domain intent still
   holds afterward.
@@ -199,9 +199,9 @@ and focuses purely on verifying its health, not on configuring it.
   (`OSD_NEARFULL`, `PG_DEGRADED`, `MON_DISK_LOW`) via the Ceph
   mgr Prometheus exporter rather than only checking manually during
   incidents — see
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md).
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md).
 - Include the end-to-end PVC provisioning smoke test (step 8) in CI/CD
-  or a post-upgrade runbook — a cluster can be `HEALTH_OK` at the Ceph
+  or a post-upgrade [runbook](../runbook/SKILL.md) — a cluster can be `HEALTH_OK` at the Ceph
   layer while the CSI driver itself is broken (a stale secret, a
   version mismatch after an upgrade).
 - Don't treat `HEALTH_WARN` as automatically low-priority — read
@@ -215,10 +215,10 @@ and focuses purely on verifying its health, not on configuring it.
 
 ## Common pitfalls
 
-- **Symptom:** `kubectl get cephcluster` shows `phase: Ready`, but an
+- **Symptom:** `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get cephcluster` shows `phase: Ready`, but an
   application backed by Rook storage experiences I/O errors or extreme
   latency.
-  **Fix:** The CRD's Kubernetes-level `Ready` reflects operator
+  **Fix:** The CRD's [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level `Ready` reflects operator
   reconciliation, not Ceph's internal health — always cross-check
   `ceph status`/`ceph health detail` directly; a cluster can be
   `HEALTH_ERR` (e.g. PGs `inactive`) while the CRD itself still reports
@@ -235,7 +235,7 @@ and focuses purely on verifying its health, not on configuring it.
   power/network path, a single physical failure can take out multiple
   replicas simultaneously. Confirm actual physical/availability-zone
   independence of each node Ceph considers a separate host, not just
-  that Kubernetes lists them as separate `Node` objects.
+  that [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) lists them as separate `Node` objects.
 
 - **Symptom:** PGs are stuck `undersized` and `degraded` indefinitely,
   well beyond any reasonable recovery window.
@@ -244,7 +244,7 @@ and focuses purely on verifying its health, not on configuring it.
   because there simply aren't enough OSDs/hosts to satisfy the pool's
   replica count). `ceph osd df` and `ceph osd tree` show whether enough
   healthy OSDs across enough distinct failure domains actually exist;
-  if not, either add capacity or reduce the pool's replica requirement
+  if not, either add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) or reduce the pool's replica requirement
   deliberately — waiting longer does not resolve a structural
   under-provisioning problem.
 
@@ -252,10 +252,10 @@ and focuses purely on verifying its health, not on configuring it.
   writes to a specific pool start failing with a "near full" or
   "full" error.
   **Fix:** Check `ceph osd df` per-OSD, not just cluster-aggregate
-  capacity — CRUSH placement is not perfectly uniform, and one OSD can
-  hit its full-ratio threshold while overall cluster capacity looks
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — CRUSH placement is not perfectly uniform, and one OSD can
+  hit its full-ratio threshold while overall cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) looks
   comfortable. Rebalance (`ceph osd reweight-by-utilization`) or add
-  capacity to the specific overloaded OSDs/hosts rather than concluding
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) to the specific overloaded OSDs/hosts rather than concluding
   the cluster overall has room to spare.
 
 - **Symptom:** Someone runs `ceph osd out <osd-id>` or deletes a
@@ -270,12 +270,12 @@ and focuses purely on verifying its health, not on configuring it.
 
 ## Worked example
 
-**Scenario:** Before migrating a production PostgreSQL StatefulSet onto
+**Scenario:** Before migrating a production [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) StatefulSet onto
 an existing Rook-Ceph cluster that's been running for a few weeks,
 confirm it's genuinely healthy end-to-end.
 
 ```bash
-kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
 ```
 ```
   cluster:
@@ -298,7 +298,7 @@ kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
 requires investigation before proceeding, not a shrug.
 
 ```bash
-kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph health detail
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph health detail
 ```
 ```
 HEALTH_WARN 1 pools nearfull
@@ -306,24 +306,24 @@ POOL_NEARFULL 1 pools nearfull
     pool 'replicapool' is nearfull
 ```
 ```bash
-kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd df
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd df
 ```
 Shows `osd.1` at 87% used versus `osd.0`/`osd.2` around 55% — an
-uneven distribution, not a genuine capacity shortfall.
+uneven distribution, not a genuine [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) shortfall.
 
 Remediate with a reweight (a routine operational action, not
 destructive) rather than immediately adding hardware:
 ```bash
-kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd reweight-by-utilization
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph osd reweight-by-utilization
 ```
 Re-run `ceph status` after rebalancing completes — `health: HEALTH_OK`
 — then run the end-to-end PVC smoke test (step 8) to confirm CSI
-provisioning works, before greenlighting the PostgreSQL migration.
+provisioning works, before greenlighting the [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) migration.
 
 ## Cross-references
 
-- [rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md) — deploying and configuring the CephCluster/pools this skill validates.
-- [longhorn-storage-configuration](../longhorn-storage-configuration/SKILL.md) — the equivalent validation concerns (replica placement, capacity) for the simpler Longhorn alternative.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — analogous quorum/health-monitoring discipline applied to etcd rather than Ceph.
-- [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md) — continuous alerting on the Ceph health signals checked manually here.
-- [cloud-resource-post-provisioning-validation-and-drift-detection](../../../cloud/skills/cloud-resource-post-provisioning-validation-and-drift-detection/SKILL.md) — the broader post-provisioning validation discipline this skill applies specifically to Rook-Ceph.
+- [rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md) — deploying and configuring the CephCluster/pools this skill validates.
+- [longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md) — the equivalent validation concerns (replica placement, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)) for the simpler [Longhorn](../longhorn/SKILL.md) alternative.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — analogous quorum/health-[monitoring](../monitoring/SKILL.md) discipline applied to etcd rather than Ceph.
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — continuous [alerting](../alerting/SKILL.md) on the Ceph health signals checked manually here.
+- [cloud-resource-post-provisioning-validation-and-drift-detection](../../../cloud/skills/[cloud-resource-post-provisioning-validation-and-drift-detection](../cloud-resource-post-provisioning-validation-and-drift-detection/SKILL.md)/SKILL.md) — the broader post-provisioning validation discipline this skill applies specifically to Rook-Ceph.

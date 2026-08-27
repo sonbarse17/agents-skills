@@ -31,7 +31,7 @@ Levels are an action filter, not a mood indicator:
 - **`INFO`** — a notable state change worth keeping around.
 - **`DEBUG`** — detail only useful while actively investigating.
 
-Getting this consistent matters more than getting it clever, because levels are what alerting and dashboards filter on downstream. The failure mode in both directions is common:
+Getting this consistent matters more than getting it clever, because levels are what [alerting](../alerting/SKILL.md) and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) filter on downstream. The failure mode in both directions is common:
 
 - **Logging expected, handled events at `ERROR`** — a retried request, a routine 404 — trains everyone to ignore that level entirely.
 - **Logging genuine failures at `WARN`** means they never surface in an error-rate alert built to watch `ERROR`.
@@ -57,13 +57,13 @@ A log line without a correlation ID is an island — you can read it, but you ca
 - **Set it at the entry point of the system** — the edge, the gateway, the first service that sees the request — so it exists before any service has a chance to skip it.
 - **Log the ID even on success**, not just on error, so a slow-but-successful request is just as traceable as a failed one.
 
-That single field collapses what used to be a cross-team log-grepping exercise into one query. See `distributed-tracing` for how it gets propagated across service boundaries in the first place.
+That single field collapses what used to be a cross-team log-grepping exercise into one query. See `[distributed-tracing](../distributed-tracing/SKILL.md)` for how it gets propagated across service boundaries in the first place.
 
 **Done when:** you can pull every log line for one request across every service it touched using a single ID.
 
 ## 5. Price retention by how long the question stays worth asking
 
-Keeping every log line at full fidelity forever is rarely worth the cost, and the right retention period differs by use: debug-level detail is often worthless after a day, INFO-level business events might matter for months for audit purposes, and error logs sit somewhere in between. Tiering storage keeps cost proportional to how often data at that age actually gets queried.
+Keeping every log line at full fidelity forever is rarely worth the cost, and the right retention period differs by use: debug-level detail is often worthless after a day, INFO-level business events might matter for months for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes, and error logs sit somewhere in between. Tiering storage keeps cost proportional to how often data at that age actually gets queried.
 
 - **Hot and searchable for a short recent window** — the window where most real investigations actually happen.
 - **Cold and cheap for compliance-driven longer retention** — rarely queried, but sometimes legally required to exist.
@@ -77,9 +77,9 @@ Logs get copied, exported, and retained longer than almost anything else in the 
 
 - **Strip or mask known-sensitive fields at the logging library level** — auth headers, tokens, full card numbers — so it's structurally impossible to log them, not just discouraged.
 - **Treat a new sensitive field type as a library change**, not a per-call-site reminder that will eventually be forgotten.
-- **Audit existing logs periodically** for patterns that shouldn't be there, since the masking rule is only as good as its coverage.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) existing logs periodically** for patterns that shouldn't be there, since the masking rule is only as good as its coverage.
 
-See `secrets-management` for handling the credentials themselves upstream of this problem.
+See `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` for handling the credentials themselves upstream of this problem.
 
 **Done when:** a grep for known secret patterns across recent logs returns nothing, and the logging layer — not code review — is what prevents it.
 

@@ -69,7 +69,7 @@ Work through each step systematically. Check off completed items.
 ### 1. Authorization Verification
 
 **CRITICAL**: Before any packet capture:
-- Confirm written authorization for network monitoring
+- Confirm written authorization for network [monitoring](../monitoring/SKILL.md)
 - Verify legal compliance (wiretapping laws, privacy regulations)
 - Understand data handling and retention requirements
 - Document scope of capture (interfaces, duration, filters)
@@ -198,7 +198,7 @@ tshark -r capture.pcap -Y "http.request.method == POST and (http contains \"pass
 tshark -r capture.pcap -Y "smb2.cmd == 8 or smb2.cmd == 9"
 
 # Suspicious User-Agents
-tshark -r capture.pcap -Y "http.user_agent contains \"python\" or http.user_agent contains \"curl\""
+tshark -r capture.pcap -Y "http.user_agent contains \"[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)\" or http.user_agent contains \"curl\""
 
 # Large data transfers
 tshark -r capture.pcap -Y "tcp.len > 1400"
@@ -399,7 +399,7 @@ tshark -r capture.pcap -q -z expert
 
 ### Authorization & Legal Compliance
 
-- **Written Authorization**: Obtain explicit permission for network monitoring
+- **Written Authorization**: Obtain explicit permission for network [monitoring](../monitoring/SKILL.md)
 - **Privacy Laws**: Comply with wiretapping and privacy regulations (GDPR, CCPA, ECPA)
 - **Data Minimization**: Capture only necessary traffic for investigation
 - **Credential Handling**: Treat extracted credentials as highly sensitive
@@ -413,7 +413,7 @@ tshark -r capture.pcap -q -z expert
 - **Anonymization**: Remove or redact PII when sharing captures
 - **Chain of Custody**: Maintain forensic integrity for legal proceedings
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all packet capture activities:
 - Capture start and end timestamps
@@ -428,27 +428,27 @@ Document all packet capture activities:
 
 - **MITRE ATT&CK**: T1040 (Network Sniffing)
 - **NIST CSF**: DE.AE (Detection Processes - Anomalies and Events)
-- **PCI-DSS**: Network security monitoring requirements
-- **ISO 27001**: A.12.4 Logging and monitoring
+- **PCI-DSS**: Network security [monitoring](../monitoring/SKILL.md) requirements
+- **ISO 27001**: A.12.4 Logging and [monitoring](../monitoring/SKILL.md)
 - **GDPR**: Data protection and privacy requirements
 
 ## Common Patterns
 
-### Pattern 1: Incident Response Investigation
+### Pattern 1: [Incident](../incident/SKILL.md) Response Investigation
 
 ```bash
-# Capture traffic during incident
+# Capture traffic during [incident](../incident/SKILL.md)
 sudo tshark -i eth0 -w incident_$(date +%Y%m%d_%H%M%S).pcap -a duration:300
 
 # Analyze for lateral movement
-tshark -r incident.pcap -Y "smb2 or rdp or ssh" -T fields -e ip.src -e ip.dst
+tshark -r [incident](../incident/SKILL.md).pcap -Y "smb2 or rdp or ssh" -T fields -e ip.src -e ip.dst
 
 # Identify C2 communication
-tshark -r incident.pcap -Y "http or dns" -T fields -e ip.dst -e http.host -e dns.qry.name
+tshark -r [incident](../incident/SKILL.md).pcap -Y "http or dns" -T fields -e ip.dst -e http.host -e dns.qry.name
 
 # Extract IOCs
-tshark -r incident.pcap -Y "ip.dst" -T fields -e ip.dst | sort -u > ioc_ips.txt
-tshark -r incident.pcap -Y "dns.qry.name" -T fields -e dns.qry.name | sort -u > ioc_domains.txt
+tshark -r [incident](../incident/SKILL.md).pcap -Y "ip.dst" -T fields -e ip.dst | sort -u > ioc_ips.txt
+tshark -r [incident](../incident/SKILL.md).pcap -Y "dns.qry.name" -T fields -e dns.qry.name | sort -u > ioc_domains.txt
 ```
 
 ### Pattern 2: Malware Traffic Analysis
@@ -542,7 +542,7 @@ tshark -r capture.pcap -T fields -E separator=, -e frame.time -e ip.src -e ip.ds
 
 ```bash
 #!/bin/bash
-# continuous_monitor.sh - Continuous network monitoring
+# continuous_monitor.sh - Continuous network [monitoring](../monitoring/SKILL.md)
 
 INTERFACE="eth0"
 ALERT_FILTER="http contains \"cmd.exe\" or dns.qry.name contains \".tk\" or dns.qry.name contains \".xyz\""
@@ -550,7 +550,7 @@ ALERT_FILTER="http contains \"cmd.exe\" or dns.qry.name contains \".tk\" or dns.
 sudo tshark -i $INTERFACE -Y "$ALERT_FILTER" -T fields -e frame.time -e ip.src -e ip.dst -e http.host -e dns.qry.name | \
 while read line; do
   echo "[ALERT] $(date): $line" | tee -a security_alerts.log
-  # Trigger incident response workflow
+  # Trigger [incident](../incident/SKILL.md) response workflow
   echo "$line" | mail -s "Security Alert" soc@company.com
 done
 ```
@@ -625,7 +625,7 @@ Organizations should protect against unauthorized packet capture:
 Detect packet capture activity:
 - Monitor for promiscuous mode network interfaces
 - Detect ARP spoofing and MAC flooding attacks
-- Audit administrative access to network devices
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) administrative access to network devices
 - Monitor for unusual outbound data transfers
 - Deploy network access control (802.1X)
 

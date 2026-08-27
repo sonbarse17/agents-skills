@@ -135,7 +135,7 @@ var poolData = new ElasticPoolData(AzureLocation.EastUS)
     Sku = new SqlSku("StandardPool")
     {
         Tier = "Standard",
-        Capacity = 100 // 100 eDTUs
+        [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = 100 // 100 eDTUs
     },
     PerDatabaseSettings = new ElasticPoolPerDatabaseSettings
     {
@@ -214,7 +214,7 @@ await foreach (var db in server.GetSqlDatabases())
 // List elastic pools
 await foreach (var ep in server.GetElasticPools())
 {
-    Console.WriteLine($"Pool: {ep.Data.Name}, DTU: {ep.Data.Sku?.Capacity}");
+    Console.WriteLine($"Pool: {ep.Data.Name}, DTU: {ep.Data.Sku?.[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)}");
 }
 ```
 
@@ -251,7 +251,7 @@ var connectionString = $"Server=tcp:{serverFqdn},1433;" +
 | `SqlDatabaseData` | Database creation/update payload |
 | `ElasticPoolData` | Elastic pool creation/update payload |
 | `SqlFirewallRuleData` | Firewall rule creation/update payload |
-| `SqlSku` | SKU configuration (tier, capacity) |
+| `SqlSku` | SKU configuration (tier, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) |
 
 ## Common SKUs
 
@@ -316,7 +316,7 @@ catch (RequestFailedException ex)
 | File | When to Read |
 |------|--------------|
 | [../../../Global_References/server-management.md](../../../Global_References/server-management.md) | Server CRUD, admin credentials, Azure AD auth, networking |
-| [../../../Global_References/database-operations.md](../../../Global_References/database-operations.md) | Database CRUD, scaling, backup, restore, copy |
+| [../../../Global_References/[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md).md](../../../Global_References/[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md).md) | Database CRUD, scaling, backup, restore, copy |
 | [../../../Global_References/elastic-pools.md](../../../Global_References/elastic-pools.md) | Pool management, adding/removing databases, scaling |
 
 ## Related SDKs

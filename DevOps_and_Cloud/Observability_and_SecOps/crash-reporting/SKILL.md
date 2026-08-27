@@ -16,16 +16,16 @@ tags: [mobile, crash-reporting, universal]
 # Mobile Crash Reporting
 
 ## Purpose
-Set up crash reporting with proper SDK configuration, symbolication, breadcrumbs, non-fatal error capture, and release health monitoring across all mobile platforms.
+Set up crash reporting with proper SDK configuration, symbolication, breadcrumbs, non-fatal error capture, and release health [monitoring](../monitoring/SKILL.md) across all mobile platforms.
 
 ## Agent Protocol
 
 ### Trigger
-User request includes: `crash report`, `crashlytics`, `sentry`, `symbolication`, `dsym`, `breadcrumb`, `non-fatal`, `user context`, `error tracking`.
+User request includes: `crash report`, `crashlytics`, `[sentry](../sentry/SKILL.md)`, `symbolication`, `dsym`, `breadcrumb`, `non-fatal`, `user context`, `error tracking`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
-- Crash service (Sentry, Crashlytics, or both)
+- Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
+- Crash service ([Sentry](../sentry/SKILL.md), Crashlytics, or both)
 - Existing error handling infrastructure
 
 ### Output Artifact
@@ -40,7 +40,7 @@ Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with setup and 
 - [ ] Non-fatal error capture implemented
 - [ ] User context attached to crash reports
 - [ ] Breadcrumbs configured for key user actions
-- [ ] Release health monitoring enabled
+- [ ] Release health [monitoring](../monitoring/SKILL.md) enabled
 
 ### Max Response Length
 4096 tokens
@@ -50,28 +50,28 @@ Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with setup and 
 ### Crash Service Selection
 ```
 Budget and requirements?
-├── Free, Google ecosystem → Firebase Crashlytics
+├── Free, Google ecosystem → [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Crashlytics
 │   Pros: Free, Google Analytics integration, real-time alerts
-│   Cons: Firebase dependency, limited session replay
-├── Developer-friendly, cross-platform → Sentry
+│   Cons: [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) dependency, limited session replay
+├── Developer-friendly, cross-platform → [Sentry](../sentry/SKILL.md)
 │   Pros: Breadcrumbs, performance tracing, wide platform support
 │   Cons: Paid beyond free tier (5000 events/month), self-hosting option
-├── Enterprise, full observability → Datadog Crash Reporting / New Relic
+├── Enterprise, full [observability](../observability/SKILL.md) → [Datadog](../datadog/SKILL.md) Crash Reporting / New Relic
 │   Pros: Unified metrics + traces + logs + crashes
 │   Cons: Expensive, heavy SDK
-└── Privacy-first, self-hosted → Countly / Sentry self-hosted
+└── Privacy-first, self-hosted → Countly / [Sentry](../sentry/SKILL.md) self-hosted
     Full data control, GDPR certainty, ops overhead
 ```
 
 ### Symbolication Strategy
 ```
 Platform?
-├── iOS → dSYM upload (Sentry.framework or Crashlytics upload-symbols)
+├── iOS → dSYM upload ([Sentry](../sentry/SKILL.md).framework or Crashlytics upload-symbols)
 │   CI/CD must upload dSYMs after each build
 │   Bitcode: upload dSYMs separately for recompiled slices
-├── Android → ProGuard/R8 mapping file upload
+├── [Android](../../../Mobile/android/SKILL.md) → ProGuard/R8 mapping file upload
 │   `mapping.txt` generated at build time
-│   Upload via Firebase CLI or Gradle plugin
+│   Upload via [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) CLI or Gradle plugin
 ├── Flutter → Dart symbols + native dSYMs
 │   Both Dart and native layer need symbolication
 ├── React Native → Source maps upload
@@ -83,12 +83,12 @@ Platform?
 
 ### Step 1: Initialize SDK
 
-Sentry:
+[Sentry](../sentry/SKILL.md):
 ```swift
 // iOS
-import Sentry
+import [Sentry](../sentry/SKILL.md)
 SentrySDK.start { options in
-    options.dsn = "https://key@o123.ingest.sentry.io/456"
+    options.dsn = "https://key@o123.ingest.[sentry](../sentry/SKILL.md).io/456"
     options.debug = false
     options.environment = "production"
     options.tracesSampleRate = 0.2
@@ -96,9 +96,9 @@ SentrySDK.start { options in
 ```
 
 ```kotlin
-// Android
+// [Android](../../../Mobile/android/SKILL.md)
 SentryAndroid.init(this) { options ->
-    options.dsn = "https://key@o123.ingest.sentry.io/456"
+    options.dsn = "https://key@o123.ingest.[sentry](../sentry/SKILL.md).io/456"
     options.environment = BuildConfig.BUILD_TYPE
     options.tracesSampleRate = 0.2
 }
@@ -108,24 +108,24 @@ SentryAndroid.init(this) { options ->
 // Flutter
 await SentryFlutter.init(
   (options) => options
-    ..dsn = 'https://key@o123.ingest.sentry.io/456'
+    ..dsn = 'https://key@o123.ingest.[sentry](../sentry/SKILL.md).io/456'
     ..tracesSampleRate = 0.2,
   appRunner: () => runApp(MyApp()),
 );
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // React Native
-import * as Sentry from '@sentry/react-native';
-Sentry.init({
-  dsn: 'https://key@o123.ingest.sentry.io/456',
+import * as [Sentry](../sentry/SKILL.md) from '@[sentry](../sentry/SKILL.md)/react-native';
+[Sentry](../sentry/SKILL.md).init({
+  dsn: 'https://key@o123.ingest.[sentry](../sentry/SKILL.md).io/456',
   tracesSampleRate: 0.2,
 });
 ```
 
-Firebase Crashlytics:
+[Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Crashlytics:
 ```kotlin
-// Android
+// [Android](../../../Mobile/android/SKILL.md)
 FirebaseCrashlytics.getInstance().apply {
     setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
 }
@@ -133,7 +133,7 @@ FirebaseCrashlytics.getInstance().apply {
 
 ### Step 2: Capture Non-Fatal Errors
 ```swift
-// Sentry
+// [Sentry](../sentry/SKILL.md)
 SentrySDK.capture(error: error) { scope in
     scope.setTag(value: "data_sync", key: "operation")
 }
@@ -164,7 +164,7 @@ SentrySDK.addBreadcrumb(Breadcrumb(
 ```
 
 ```kotlin
-Sentry.addBreadcrumb(Breadcrumb().apply {
+[Sentry](../sentry/SKILL.md).addBreadcrumb(Breadcrumb().apply {
     level = SentryLevel.INFO
     category = "ui_action"
     message = "User tapped checkout"
@@ -172,7 +172,7 @@ Sentry.addBreadcrumb(Breadcrumb().apply {
 })
 ```
 
-### Step 5: Configure Release Health Monitoring
+### Step 5: Configure Release Health [Monitoring](../monitoring/SKILL.md)
 
 | Metric | Description | Alert Threshold |
 |--------|-------------|-----------------|
@@ -185,12 +185,12 @@ Sentry.addBreadcrumb(Breadcrumb().apply {
 ### Step 6: CI/CD Symbol Upload
 
 ```yaml
-# iOS — GitHub Actions dSYM upload
+# iOS — [GitHub](../../CI_CD/github/SKILL.md) Actions dSYM upload
 - run: ./Pods/FirebaseCrashlytics/upload-symbols -gsp $GCS_SERVICE_ACCOUNT
   env:
     GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
 
-# Android — automatic via Crashlytics Gradle plugin
+# [Android](../../../Mobile/android/SKILL.md) — automatic via Crashlytics Gradle plugin
 - run: ./gradlew assembleRelease crashlyticsUploadSymbolsRelease
 ```
 
@@ -220,11 +220,11 @@ Sentry.addBreadcrumb(Breadcrumb().apply {
 
 ## ANR & OOM Detection
 
-Android ANRs (Application Not Responding) and iOS OOMs (Out of Memory) are not traditional crashes and require special handling. Android: ANRs are detected by the system when the main thread is blocked for >5s. Capture via `ANRWatcher` or `FirebasePerformance`'s ANR tracking. Custom ANR detection: a background thread posts a runnable to the main thread handler every 2s; if the runnable isn't executed within 5s, an ANR is recorded. iOS: OOM detection is indirect — the system kills the process without an exception. Detect OOMs by comparing app launch reason: if the previous termination was not a normal termination (user swipe, crash, app update), it's likely an OOM. Sentry's OOM integration tracks `app.breadcrumbs` before termination and flags OOM candidates. For both: correlate ANR/OOM with memory pressure events, screen state, and foreground duration. Mitigations: (a) instrument OOM-prone screens with memory warnings, (b) reduce image cache size on memory warning, (c) implement state restoration so OOM termination is invisible to user.
+[Android](../../../Mobile/android/SKILL.md) ANRs (Application Not Responding) and iOS OOMs (Out of Memory) are not traditional crashes and require special handling. [Android](../../../Mobile/android/SKILL.md): ANRs are detected by the system when the main thread is blocked for >5s. Capture via `ANRWatcher` or `FirebasePerformance`'s ANR tracking. Custom ANR detection: a background thread posts a runnable to the main thread handler every 2s; if the runnable isn't executed within 5s, an ANR is recorded. iOS: OOM detection is indirect — the system kills the process without an exception. Detect OOMs by comparing app launch reason: if the previous termination was not a normal termination (user swipe, crash, app update), it's likely an OOM. [Sentry](../sentry/SKILL.md)'s OOM integration tracks `app.breadcrumbs` before termination and flags OOM candidates. For both: correlate ANR/OOM with memory pressure events, screen state, and foreground duration. Mitigations: (a) instrument OOM-prone screens with memory warnings, (b) reduce image cache size on memory warning, (c) implement state restoration so OOM termination is invisible to user.
 
 ## Custom Error Grouping & Fingerprinting
 
-Crash reporting platforms auto-group crashes by stack trace, but custom grouping is needed for specific patterns. Sentry: set `event.fingerprint` to override default grouping. Use when: (a) generic error types with different root causes (e.g., `NetworkError` with different endpoints), (b) crashes in shared library code that collapse into one group, (c) non-fatal errors you want to group differently than crashes. Fingerprint rules: `["{{ default }}", "{{ machine }}" ]` for environment-specific grouping, or `["error", error.code]` for code-based grouping. Crashlytics: use `setCustomKey` to add distinguishing keys, then filter/search in the dashboard. For custom server: implement grouping algorithm that considers (stack trace hash * 0.6 + error message hash * 0.2 + custom tags * 0.2) to compute a grouping key.
+Crash reporting platforms auto-group crashes by stack trace, but custom grouping is needed for specific patterns. [Sentry](../sentry/SKILL.md): set `event.fingerprint` to override default grouping. Use when: (a) generic error types with different root causes (e.g., `NetworkError` with different endpoints), (b) crashes in shared library code that collapse into one group, (c) non-fatal errors you want to group differently than crashes. Fingerprint rules: `["{{ default }}", "{{ machine }}" ]` for environment-specific grouping, or `["error", error.code]` for code-based grouping. Crashlytics: use `setCustomKey` to add distinguishing keys, then filter/search in the dashboard. For custom server: implement grouping algorithm that considers (stack trace hash * 0.6 + error message hash * 0.2 + custom tags * 0.2) to compute a grouping key.
 
 ### Alert Routing Decision Tree
 ```
@@ -236,7 +236,7 @@ Crash spike detected?
 │   Route: Slack/Teams → #alerts channel
 │   SLA: respond within 30 min (business hours)
 ├── New issue type appears (never seen before)
-│   → Auto-create ticket (Jira/GitHub issue) with full stack trace
+│   → Auto-create ticket (Jira/[GitHub](../../CI_CD/github/SKILL.md) issue) with full stack trace
 │   Priority: P2 (normal bug) or P0 (crash affecting >1% of users)
 └── Error rate spikes (>5% sessions with non-fatals)
     → Send digest to team, no page
@@ -280,7 +280,7 @@ Maximum breadcrumbs: 200 (ring buffer). When 201st is added, oldest is dropped. 
 
 ## Session Replay & Event Debugging
 
-Session replay (Sentry Replay, Datadog Session Replay) records user interactions leading up to a crash. Implementation: (a) record canvas/snapshot diffs at 1fps (not full video — too large), (b) capture DOM mutations (Flutter: widget tree diffs, React Native: virtual DOM events), (c) mask sensitive fields (input values, PII fields) automatically, (d) on crash, attach the replay buffer to the crash event, (e) upload replay after crash or at session end. Privacy: never record passwords, credit card fields, or personal messages. Mask all text input fields by default, allow opt-in recording for specified screens. Replay storage: 7-30 days retention, ~1MB per session. Bandwidth: upload replay asynchronously after session ends, not in real-time. Budget: cap replay storage at 100MB per device, oldest-delete when full.
+Session replay ([Sentry](../sentry/SKILL.md) Replay, [Datadog](../datadog/SKILL.md) Session Replay) records user interactions leading up to a crash. Implementation: (a) record canvas/snapshot diffs at 1fps (not full video — too large), (b) capture DOM mutations (Flutter: widget tree diffs, React Native: virtual DOM events), (c) mask sensitive fields (input values, PII fields) automatically, (d) on crash, attach the replay buffer to the crash event, (e) upload replay after crash or at session end. Privacy: never record passwords, credit card fields, or personal messages. Mask all text input fields by default, allow opt-in recording for specified screens. Replay storage: 7-30 days retention, ~1MB per session. Bandwidth: upload replay asynchronously after session ends, not in real-time. Budget: cap replay storage at 100MB per device, oldest-delete when full.
 
 ## Production Considerations
 
@@ -306,12 +306,12 @@ Session replay (Sentry Replay, Datadog Session Replay) records user interactions
 - Check release health dashboard after deployment
 - Verify alert thresholds set: crash-free rate <99.5%, error rate >5%
 - Confirm panic/native crash handlers are initialized (Flutter/RN)
-- Validate ProGuard/R8 mapping uploaded for Android release build
+- Validate ProGuard/R8 mapping uploaded for [Android](../../../Mobile/android/SKILL.md) release build
 
 ### CI/CD Symbol Upload Automation
 
 ```yaml
-# .github/workflows/symbols.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/symbols.yml
 name: Upload Symbols
 
 on:
@@ -323,12 +323,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Upload dSYMs to Sentry
+      - name: Upload dSYMs to [Sentry](../sentry/SKILL.md)
         run: |
           export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
           export SENTRY_ORG=myorg
           export SENTRY_PROJECT=myapp
-          sentry-cli upload-dif --include-sources ./build/ios/*.app.dSYM.zip
+          [sentry](../sentry/SKILL.md)-cli upload-dif --include-sources ./build/ios/*.app.dSYM.zip
 
   upload-mapping:
     runs-on: ubuntu-latest
@@ -336,8 +336,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Upload ProGuard mapping
         run: |
-          find . -name "mapping.txt" -exec firebase crashlytics:upload:mapping \
-            --app=1:123456:android:abc123 {} \;
+          find . -name "mapping.txt" -exec [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) crashlytics:upload:mapping \
+            --app=1:123456:[android](../../../Mobile/android/SKILL.md):abc123 {} \;
 
   upload-sourcemaps:
     runs-on: ubuntu-latest
@@ -345,12 +345,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Upload React Native source maps
         run: |
-          npx @sentry/react-native-upload \
-            --platform android \
-            --path ./android/app/build/generated/sourcemaps/react/release/index.android.bundle.map
+          npx @[sentry](../sentry/SKILL.md)/react-native-upload \
+            --platform [android](../../../Mobile/android/SKILL.md) \
+            --path ./[android](../../../Mobile/android/SKILL.md)/app/build/generated/sourcemaps/react/release/index.[android](../../../Mobile/android/SKILL.md).bundle.map
 ```
 
-### ANR Detection Implementation (Android)
+### ANR Detection Implementation ([Android](../../../Mobile/android/SKILL.md))
 ```kotlin
 class ANRDetector {
     private val handler = Handler(Looper.getMainLooper())
@@ -383,7 +383,7 @@ class ANRDetector {
             val elapsed = System.currentTimeMillis() - lastPing
             if (elapsed > TIMEOUT_MS) {
                 // Main thread blocked >5s
-                Sentry.captureMessage("ANR detected: main thread blocked ${elapsed}ms")
+                [Sentry](../sentry/SKILL.md).captureMessage("ANR detected: main thread blocked ${elapsed}ms")
             }
             watchdogHandler.postDelayed(this, TIMEOUT_MS)
         }
@@ -393,7 +393,7 @@ class ANRDetector {
 
 ## Rules (Additional)
 
-- ANR detection must be enabled for Android builds targeting API 30+
+- ANR detection must be enabled for [Android](../../../Mobile/android/SKILL.md) builds targeting API 30+
 - OOM detection must log memory pressure breadcrumbs (iOS: `didReceiveMemoryWarning`)
 - Always attach user context to crashes: user ID, app version, OS version, device model
 - Breadcrumbs must include timestamp, category, and level for each event
@@ -408,9 +408,9 @@ class ANRDetector {
 
 - **Initializing crash SDK after other SDKs**: Crash in a third-party SDK before crash reporting is initialized = crash lost. Initialize crash reporting as the very first line of `application:didFinishLaunching`.
 - **Not testing crash reporting before release**: Crash reporting "works" in debug but fails in production (missing dSYM, different build config). Test crash on TestFlight/internal track build before production release.
-- **Logging sensitive data in breadcrumbs**: Breadcrumbs containing passwords, credit card numbers, or auth tokens are uploaded to crash servers. Audit breadcrumb data regularly.
+- **Logging sensitive data in breadcrumbs**: Breadcrumbs containing passwords, credit card numbers, or auth tokens are uploaded to crash servers. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) breadcrumb data regularly.
 - **Too many breadcrumbs**: Setting max breadcrumbs to 1000 creates memory overhead. 200 is sufficient for crash context — any more is noise.
-- **Ignoring native crashes in cross-platform apps**: Flutter/React Native crash reporting often captures only the framework layer. Configure native crash handlers (iOS/Android) separately for full coverage.
+- **Ignoring native crashes in cross-platform apps**: Flutter/React Native crash reporting often captures only the framework layer. Configure native crash handlers (iOS/[Android](../../../Mobile/android/SKILL.md)) separately for full coverage.
 - **Setting `tracesSampleRate` too high**: Performance tracing at 100% sample rate creates significant overhead. 10-20% is sufficient for most apps. Only increase for targeted debugging.
 - **Not filtering test device crashes**: Developers' test devices submit crashes to production dashboard, polluting crash-free rate. Filter by test device IDs or debug build flag.
 - **Debug logs level in production**: `SentryLogLevel.debug` in production writes verbose log output to device console. Use `.error` or disable in production builds.
@@ -451,7 +451,7 @@ NSSetUncaughtExceptionHandler { exception in
 ```
 
 ```kotlin
-// Android — UncaughtExceptionHandler
+// [Android](../../../Mobile/android/SKILL.md) — UncaughtExceptionHandler
 class CustomExceptionHandler(
     private val defaultHandler: Thread.UncaughtExceptionHandler?
 ) : Thread.UncaughtExceptionHandler {
@@ -482,7 +482,7 @@ Thread.setDefaultUncaughtExceptionHandler(
   - ../../../Global_References/crash-analysis-workflow.md — Crash Analysis Workflow
   - ../../../Global_References/crash-reporting-architecture.md — Crash Reporting Architecture
   - ../../../Global_References/crashlytics-setup.md — Crashlytics Setup
-  - ../../../Global_References/sentry-setup.md — Sentry Setup
+  - ../../../Global_References/[sentry](../sentry/SKILL.md)-setup.md — [Sentry](../sentry/SKILL.md) Setup
   - ../../../Global_References/symbolication.md — Symbolication
   - ../../../Global_References/crash-reporting-fundamentals.md — Crash Reporting Fundamentals
   - ../../../Global_References/crash-reporting-advanced.md — Advanced Crash Reporting
@@ -542,7 +542,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../monitoring/SKILL.md) and [Alerting](../alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -556,7 +556,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -572,12 +572,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -586,7 +586,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -594,13 +594,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -609,8 +609,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

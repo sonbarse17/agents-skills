@@ -16,7 +16,7 @@ license: "MIT"
 # Mobile Deep Linking
 
 ## Purpose
-Guide for implementing deep linking across iOS and Android using universal links, custom URL schemes, and deferred deep linking.
+Guide for implementing deep linking across iOS and [Android](../android/SKILL.md) using universal links, custom URL schemes, and deferred deep linking.
 
 ## Agent Protocol
 
@@ -30,7 +30,7 @@ Phrases: "deep linking", "universal link", "app link", "URL scheme", "deferred d
 - Attribution SDK (if deferred linking needed)
 
 ### Output Artifact
-Deep link configuration: apple-app-site-association JSON, Android intent filters, route mapping table, navigation handler code.
+Deep link configuration: apple-app-site-association JSON, [Android](../android/SKILL.md) intent filters, route mapping table, navigation handler code.
 
 ### Response Format
 No preamble. No postamble. No explanations. No filler/hedging/transitions. Compress output — why use many token when few do trick.
@@ -50,7 +50,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Linking Mechanism Decision
 ```
 Production or development?
-├── Production → Universal Links (iOS) / App Links (Android)
+├── Production → Universal Links (iOS) / App Links ([Android](../android/SKILL.md))
 │   Benefits: no confirmation dialog, exclusive to your app, SEO-friendly
 │   Requires: HTTPS domain with verification files
 ├── Development → Custom URL scheme (myapp://)
@@ -66,8 +66,8 @@ Need to attribute installs?
 ├── Yes → Branch, Adjust, or AppsFlyer
 │   SDK stores click data before install, resolves on first launch
 │   Use for: referral programs, ad attribution, personalized onboarding
-├── Simple install tracking → Firebase Dynamic Links (deprecated)
-│   Note: Firebase Dynamic Links deprecated — migrate to Branch or custom
+├── Simple install tracking → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Dynamic Links (deprecated)
+│   Note: [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Dynamic Links deprecated — migrate to Branch or custom
 └── No deferred needed → Standard universal links only
     App must be installed for links to work
 ```
@@ -75,7 +75,7 @@ Need to attribute installs?
 ### Routing Strategy
 ```
 Navigation framework?
-├── Jetpack Navigation (Android) → NavDeepLink with route patterns
+├── Jetpack Navigation ([Android](../android/SKILL.md)) → NavDeepLink with route patterns
 │   Auto-extracts path/query params as arguments
 ├── SwiftUI / UIKit → Custom route registry
 │   Parse URL → Match against route table → Navigate
@@ -89,23 +89,23 @@ Navigation framework?
 
 ## Workflow
 
-1. **URI scheme vs universal link vs app link** — Three mechanisms for deep linking with different characteristics. Custom URL scheme (e.g., `myapp://path`): simplest, works in development, shows confirmation dialog on iOS, no HTTPS requirement, no verification, can be claimed by multiple apps. Universal links (iOS): HTTPS URLs that open your app silently, require `apple-app-site-association` file on server, verified by Apple at install, only your app can claim the domain. Android App Links: equivalent to universal links, require `intent-filter` with `autoVerify`, verified by Google via Digital Asset Links JSON. For production, always use universal links / app links — custom schemes are for development only.
+1. **URI scheme vs universal link vs app link** — Three mechanisms for deep linking with different characteristics. Custom URL scheme (e.g., `myapp://path`): simplest, works in development, shows confirmation dialog on iOS, no HTTPS requirement, no verification, can be claimed by multiple apps. Universal links (iOS): HTTPS URLs that open your app silently, require `apple-app-site-association` file on server, verified by Apple at install, only your app can claim the domain. [Android](../android/SKILL.md) App Links: equivalent to universal links, require `intent-filter` with `autoVerify`, verified by Google via Digital Asset Links JSON. For production, always use universal links / app links — custom schemes are for development only.
 
 2. **Route configuration and mapping** — Design a URL structure that mirrors your app's navigation hierarchy. URL path segments map to screen routes, query parameters map to screen arguments. Example: `https://app.example.com/profile/42?tab=orders` -> screen `ProfileScreen` with id=42, tab=orders. Maintain a route registry (array/table of pattern -> screen mappings) with support for path parameters (`:id`), wildcards (`*`), and optional segments. The parser iterates the registry and returns the first match. Support both path-based and query-based routing.
 
 3. **Deep link setup — iOS** — Create `apple-app-site-association` JSON file (no .json extension) and host at `https://{domain}/.well-known/apple-app-site-association`. The file maps `appID` (Team ID + Bundle ID) to allowed URL paths. iOS fetches this file at first install and periodically thereafter. Verify success via device console logs (`swcutil` or search for `[CoreBroker]`). In `AppDelegate.swift`, implement `application(_:continue:restorationHandler:)` to receive incoming `NSUserActivity` of type `NSUserActivityTypeBrowsingWeb`. Extract the `webpageURL` and pass to your deep link router.
 
-4. **Deep link setup — Android** — Add `intent-filter` to the activity in `AndroidManifest.xml` that should receive deep links. Include `<data android:scheme="https" android:host="app.example.com" />` and `android:autoVerify="true"`. For custom schemes, add a second intent-filter with `android:scheme="myapp"`. Verify app links via Google Search Console: add Digital Asset Links JSON at `https://{domain}/.well-known/assetlinks.json`. Check verification with `adb shell dumpsys package domain-preferred-apps`. Handle incoming links in `MainActivity.onCreate()` or `onNewIntent()` by extracting the intent data URI.
+4. **Deep link setup — [Android](../android/SKILL.md)** — Add `intent-filter` to the activity in `AndroidManifest.xml` that should receive deep links. Include `<data [android](../android/SKILL.md):scheme="https" [android](../android/SKILL.md):host="app.example.com" />` and `[android](../android/SKILL.md):autoVerify="true"`. For custom schemes, add a second intent-filter with `[android](../android/SKILL.md):scheme="myapp"`. Verify app links via Google Search Console: add Digital Asset Links JSON at `https://{domain}/.well-known/assetlinks.json`. Check verification with `adb shell dumpsys package domain-preferred-apps`. Handle incoming links in `MainActivity.onCreate()` or `onNewIntent()` by extracting the intent data URI.
 
 5. **Deep link handling and routing** — Create a unified deep link handler that: (a) parses incoming URL using platform URL parsing, (b) matches against route registry to extract path and query parameters, (c) validates required parameters, (d) checks authentication requirements — if user not logged in, queue the deep link for post-login navigation, (e) pushes the target screen with extracted parameters, (f) tracks the deep link event in analytics. Support both cold start (app not running) and warm start (app in background) scenarios. Deep links arriving while app is in background should navigate from current state, not reset navigation stack.
 
 6. **Deferred deep linking** — Standard universal links only work if the app is already installed. Deferred deep links work after install: user taps link -> opens App Store / Play Store -> installs app -> first launch -> SDK identifies the original link -> app navigates to the expected content. Requires an attribution SDK (Branch, Adjust, AppsFlyer, or custom solution). Implementation: SDK generates a tracking link, user taps it, SDK stores click data, on first launch SDK callback delivers the deep link data. Chain: install -> SDK init -> retrieve deferred link -> navigate. Fallback: if no deferred link, navigate to default home screen.
 
-7. **Testing and fallback behavior** — iOS simulator: `xcrun simctl openurl booted "https://app.example.com/profile/42"`. Android emulator: `adb shell am start -W -a android.intent.action.VIEW -d "https://app.example.com/profile/42"`. Test with app in foreground, background, and not running. Test with and without app installed. Fallback: when app is not installed, the OS redirects to the website. Configure the webpage at the same URL to redirect to App Store / Play Store. Server-side redirect logic: detect mobile user-agent, redirect to appropriate store. Test deferred links with clean install (uninstall, tap link, install from test track).
+7. **Testing and fallback behavior** — iOS simulator: `xcrun simctl openurl booted "https://app.example.com/profile/42"`. [Android](../android/SKILL.md) emulator: `adb shell am start -W -a [android](../android/SKILL.md).intent.action.VIEW -d "https://app.example.com/profile/42"`. Test with app in foreground, background, and not running. Test with and without app installed. Fallback: when app is not installed, the OS redirects to the website. Configure the webpage at the same URL to redirect to App Store / Play Store. Server-side redirect logic: detect mobile user-agent, redirect to appropriate store. Test deferred links with clean install (uninstall, tap link, install from test track).
 
 ## Platform Differences
 
-| Feature | iOS (Universal Link) | Android (App Link) |
+| Feature | iOS (Universal Link) | [Android](../android/SKILL.md) (App Link) |
 |---------|---------------------|-------------------|
 | Verification file | `apple-app-site-association` | `.well-known/assetlinks.json` |
 | File format | JSON (no extension) | JSON |
@@ -130,7 +130,7 @@ Navigation framework?
 - **AASA not served correctly**: Server must serve `apple-app-site-association` with `Content-Type: application/json` (or `application/pkix-cert` for iOS). No redirect. Must be HTTPS with valid certificate.
 - **iOS simulator cache**: AASA changes aren't picked up quickly. Use `swcutil` to force refresh or test on device.
 - **Multiple apps claim same custom scheme**: iOS picks one arbitrarily. Use universal links to guarantee your app opens.
-- **Android auto-verify timeout**: Verification is asynchronous. May take minutes to hours after first install.
+- **[Android](../android/SKILL.md) auto-verify timeout**: Verification is asynchronous. May take minutes to hours after first install.
 - **Deferred link race condition**: If SDK initialize before user logs in, the deferred link may be lost. Queue it.
 - **Deep link without fallback URL**: If no webpage at the same URL, users without the app see a broken page.
 
@@ -155,13 +155,13 @@ Navigation framework?
 ```
 
 ```xml
-<!-- Android AndroidManifest.xml -->
-<activity android:name=".MainActivity">
-  <intent-filter android:autoVerify="true">
-    <action android:name="android.intent.action.VIEW" />
-    <category android:name="android.intent.category.DEFAULT" />
-    <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="https" android:host="app.example.com" />
+<!-- [Android](../android/SKILL.md) AndroidManifest.xml -->
+<activity [android](../android/SKILL.md):name=".MainActivity">
+  <intent-filter [android](../android/SKILL.md):autoVerify="true">
+    <action [android](../android/SKILL.md):name="[android](../android/SKILL.md).intent.action.VIEW" />
+    <category [android](../android/SKILL.md):name="[android](../android/SKILL.md).intent.category.DEFAULT" />
+    <category [android](../android/SKILL.md):name="[android](../android/SKILL.md).intent.category.BROWSABLE" />
+    <data [android](../android/SKILL.md):scheme="https" [android](../android/SKILL.md):host="app.example.com" />
   </intent-filter>
 </activity>
 ```
@@ -180,7 +180,7 @@ In complex apps (e-commerce with multiple brands, white-label apps), deep links 
   }
 }
 ```
-iOS enforces that each domain must have its own AASA at `/.well-known/apple-app-site-association`. Android auto-verifies each domain independently via Digital Asset Links. Route resolution with domain: maintain a `Map<DomainPattern, Route>` in the route registry. Match the link's domain against the registry before path matching. Reject links from unknown domains with an error event logged to analytics.
+iOS enforces that each domain must have its own AASA at `/.well-known/apple-app-site-association`. [Android](../android/SKILL.md) auto-verifies each domain independently via Digital Asset Links. Route resolution with domain: maintain a `Map<DomainPattern, Route>` in the route registry. Match the link's domain against the registry before path matching. Reject links from unknown domains with an error event logged to analytics.
 
 ## Deep Link Security Hardening
 
@@ -188,11 +188,11 @@ Deep links are an attack vector — malicious apps can register URL schemes, cra
 
 ## Deep Link Testing Matrix
 
-| Scenario | iOS Command | Android Command |
+| Scenario | iOS Command | [Android](../android/SKILL.md) Command |
 |----------|-------------|-----------------|
-| Cold start (app not running) | `xcrun simctl openurl booted "https://app.example.com/profile/42"` | `adb shell am start -W -a android.intent.action.VIEW -d "https://app.example.com/profile/42"` |
+| Cold start (app not running) | `xcrun simctl openurl booted "https://app.example.com/profile/42"` | `adb shell am start -W -a [android](../android/SKILL.md).intent.action.VIEW -d "https://app.example.com/profile/42"` |
 | Warm start (app in background) | Same command (app resumes) | Same command (calls `onNewIntent`) |
-| URL scheme (debug) | `xcrun simctl openurl booted "myapp://profile/42"` | `adb shell am start -W -a android.intent.action.VIEW -d "myapp://profile/42"` |
+| URL scheme (debug) | `xcrun simctl openurl booted "myapp://profile/42"` | `adb shell am start -W -a [android](../android/SKILL.md).intent.action.VIEW -d "myapp://profile/42"` |
 | Invalid path (404) | Link should open default screen | Same |
 | Malformed params | Should show error or ignore | Same |
 | Deferred link (fresh install) | Use Branch/Adjust test dashboard | Same |
@@ -250,7 +250,7 @@ Rather than hardcoding deep link URLs, generate them dynamically from server-sid
 |---------|---------|------------|
 | AASA not served correctly | Universal link opens website instead of app | Verify Content-Type: application/json, no redirects, HTTPS |
 | iOS AASA cache stale | Link stops working after path changes | Clear Safari cache, test with `swcutil` |
-| Android auto-verify timeout | App link not verified for hours | Use Digital Asset Links API, test with `adb shell dumpsys` |
+| [Android](../android/SKILL.md) auto-verify timeout | App link not verified for hours | Use Digital Asset Links API, test with `adb shell dumpsys` |
 | Deferred link race condition | Deep link not delivered on first launch | Queue deep link, resolve after SDK init completes |
 | URL scheme conflict | Wrong app opens | Use universal/App Links exclusively |
 | Deep link during onboarding | User not logged in | Queue link, replay after login completes |
@@ -262,7 +262,7 @@ Rather than hardcoding deep link URLs, generate them dynamically from server-sid
 - Verify assetlinks.json at `https://domain/.well-known/assetlinks.json`
 - Test with `curl -v https://domain/.well-known/apple-app-site-association` (check Content-Type)
 - Check iOS device console for `[CoreBroker]` messages indicating AASA fetch status
-- Run `adb shell dumpsys package domain-preferred-apps` to verify Android app link status
+- Run `adb shell dumpsys package domain-preferred-apps` to verify [Android](../android/SKILL.md) app link status
 - Test with app in all states: not installed (fallback), terminated, background, foreground
 - Verify route params extracted correctly for edge cases (empty, special chars, unicode)
 - Confirm deferred link resolves after clean install from TestFlight/internal track
@@ -350,7 +350,7 @@ class DeepLinkRouter {
 }
 ```
 
-### Android Deep Link Handler (MainActivity)
+### [Android](../android/SKILL.md) Deep Link Handler (MainActivity)
 ```kotlin
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -432,7 +432,7 @@ void main() {
 ```
 
 ### React Navigation Deep Link Config
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { LinkingOptions } from '@react-navigation/native';
 
 const linking: LinkingOptions<RootStackParamList> = {
@@ -528,7 +528,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -542,7 +542,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -558,12 +558,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -572,7 +572,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -580,13 +580,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -595,8 +595,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

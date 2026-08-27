@@ -30,16 +30,16 @@ last two quarters is improving; a program with 300 open findings that
 has quietly grown from 50 over the same period is not, even though the
 raw count looks better in absolute terms. This skill covers turning the
 raw output of
-[security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md),
-[secure-cicd-gates](../secure-cicd-gates/SKILL.md), and
-[security-gate-exception-management](../security-gate-exception-management/SKILL.md)
-into trend data that actually answers whether a DevSecOps program is
+[security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md),
+[secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md), and
+[security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md)
+into trend data that actually answers whether a [DevSecOps](../../../Security/devsecops/SKILL.md) program is
 working: mean/median time-to-remediate by severity, backlog age
 distribution (not just size), false-positive rate per tool/rule,
 exception-list growth and renewal frequency, and gate override/bypass
 frequency. Done well, this becomes the evidence base for both internal
 prioritization decisions and external reporting (leadership updates,
-audit/compliance evidence); done poorly (vanity metrics like raw finding
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance evidence); done poorly (vanity metrics like raw finding
 count, or metrics collected but never reviewed), it becomes a dashboard
 nobody trusts or acts on.
 
@@ -66,17 +66,17 @@ nobody trusts or acts on.
 - Historical finding data with, at minimum, creation date, resolution
   date (or still-open status), severity, and source tool — exported from
   SAST/SCA/DAST tools' native history, a SARIF archive, or (preferably,
-  at any real scale) a centralized AppSec/vulnerability-management
-  platform such as DefectDojo, GitHub code scanning's API, or a
+  at any real scale) a centralized AppSec/[vulnerability-management](../../../AI_and_Agents/Workflows/vulnerability-management/SKILL.md)
+  platform such as DefectDojo, [GitHub](../../CI_CD/github/SKILL.md) code scanning's API, or a
   dedicated GRC tool. Point-in-time-only tool UIs that don't retain
   history make trend analysis impossible without a separate store —
   export/archive scan results on every run if the native tool doesn't
   keep history long enough.
 - The severity-to-action/SLA table from
-  [secure-cicd-gates](../secure-cicd-gates/SKILL.md) as the benchmark
+  [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) as the benchmark
   MTTR is measured against.
 - The exception registry from
-  [security-gate-exception-management](../security-gate-exception-management/SKILL.md)
+  [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md)
   as the data source for exception-list trend metrics.
 - A place to render trend data over time — a BI tool (Grafana, Looker,
   Metabase) pointed at a data warehouse/table of historical scan
@@ -143,7 +143,7 @@ nobody trusts or acts on.
 
 4. **Track false-positive rate per tool/rule** as its own trend, feeding
    back into triage weighting
-   ([security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md))
+   ([security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md))
    and tuning decisions:
    ```sql
    SELECT
@@ -162,7 +162,7 @@ nobody trusts or acts on.
 
 5. **Track exception-list size, age, and renewal frequency** as a trend,
    sourced from the exception registry in
-   [security-gate-exception-management](../security-gate-exception-management/SKILL.md):
+   [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md):
    ```sql
    SELECT
      DATE_TRUNC('month', granted) AS month,
@@ -192,7 +192,7 @@ nobody trusts or acts on.
    functionally advisory, not blocking — surface this explicitly rather
    than letting the raw "gate exists and is marked required" status
    imply it's actually working, per the guidance in
-   [secure-cicd-gates](../secure-cicd-gates/SKILL.md).
+   [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md).
 
 7. **Present trend, not just current value, in every report** — a line
    chart over the last 2-4 quarters for each metric above, not a single
@@ -247,7 +247,7 @@ nobody trusts or acts on.
   right before the reporting period, without individual review.
   **Fix:** Cross-check MTTR trend against the false-positive-rate and
   exception-count trends in the same period — a sudden MTTR
-  improvement paired with a spike in either is a signal to audit the
+  improvement paired with a spike in either is a signal to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) the
   underlying dispositions rather than take the improved MTTR at face
   value.
 
@@ -276,7 +276,7 @@ nobody trusts or acts on.
   **Fix:** Metrics with no review cadence are equivalent to no metrics —
   put the dashboard review on the same recurring agenda as the
   finding-triage meeting in
-  [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md),
+  [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md),
   with an explicit owner responsible for flagging regressions.
 
 ## Worked example
@@ -315,7 +315,7 @@ for individual follow-up, rather than letting it blend into the
 aggregate high-severity count.
 
 Exception trend (from the registry in
-[security-gate-exception-management](../security-gate-exception-management/SKILL.md)):
+[security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md)):
 ```
 | Quarter | Active exceptions | New this quarter | Renewed >1x |
 |---------|--------------------|--------------------|--------------|
@@ -328,19 +328,19 @@ in the report as a regression worth investigating, even though every
 individual exception was properly approved — leading to a follow-up
 review of which exceptions are being repeatedly renewed and why, per
 the guidance in
-[security-gate-exception-management](../security-gate-exception-management/SKILL.md).
+[security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md) —
+- [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md) —
   the triage process that produces the disposition/resolution data this
   skill's metrics are computed from.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — the
+- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — the
   severity-to-action SLA table that MTTR targets are measured against,
   and the gate design whose override rate this skill tracks.
-- [security-gate-exception-management](../security-gate-exception-management/SKILL.md) —
+- [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md) —
   the exception registry this skill's exception-trend metrics are
   sourced from.
-- [critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md) —
+- [critical-vulnerability-emergency-response](../[critical-vulnerability-emergency-response](../../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md) —
   detection-to-mitigation timing from individual emergency responses
   feeds into this skill's trend tracking across successive events.

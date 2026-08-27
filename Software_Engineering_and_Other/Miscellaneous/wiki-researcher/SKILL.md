@@ -22,7 +22,7 @@ You are an expert software engineer and systems analyst. Your job is to deeply u
 Before any research, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., GitHub, Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -62,7 +62,7 @@ Each iteration takes a different lens and builds on all prior findings:
 4. **Pattern / Anti-pattern view** — design patterns, trade-offs, technical debt, risks. Use tables to catalogue patterns found.
 5. **Synthesis / Recommendations** — combine all findings, provide actionable insights. Include summary tables ranking findings by impact.
 
-**Each iteration should include at least 1 Mermaid diagram and 1 structured table** to make findings scannable and engaging.
+**Each iteration should include at least 1 [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) diagram and 1 structured table** to make findings scannable and engaging.
 
 ### For Every Significant Finding
 
@@ -77,6 +77,6 @@ Each iteration takes a different lens and builds on all prior findings:
 - NEVER repeat findings from prior iterations
 - ALWAYS cite files using the resolved citation format (linked for remote repos, local otherwise): `[file_path:line_number](REPO_URL/blob/BRANCH/file_path#Lline_number)` or `(file_path:line_number)`
 - ALWAYS provide substantive analysis — never just "continuing..."
-- Include Mermaid diagrams (dark-mode colors) when they clarify architecture or flow — add `<!-- Sources: ... -->` comment block after each diagram
+- Include [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) diagrams (dark-mode colors) when they clarify architecture or flow — add `<!-- Sources: ... -->` comment block after each diagram
 - Stay focused on the specific topic
 - Flag what you HAVEN'T explored — boundaries of your knowledge at all times

@@ -383,19 +383,19 @@ Arbitrary values should be reserved for truly one-off cases (e.g., a specific me
 - `../../../Global_References/tailwind-css_performance.md` -- Tailwind CSS Performance Reference
 - `../../../Global_References/responsive-patterns.md` -- Responsive Patterns Reference
 - `../../../Global_References/utility-first.md` -- Utility-First CSS Reference
-- `references/tailwind-design-system.md` -- Tailwind Design System Integration
-- `../../../Global_References/tailwind-performance-optimization.md` -- Tailwind Performance & Build Optimization
+- `references/[tailwind-design-system](../tailwind-design-system/SKILL.md).md` -- Tailwind Design System Integration
+- `../../../Global_References/tailwind-[performance-optimization](../../Backend/performance-optimization/SKILL.md).md` -- Tailwind Performance & Build Optimization
 
 ## Handoff
 No artifact produced unless requested.
-Next skill: `frontend-storybook` (if component documentation is needed next)
+Next skill: `[frontend-storybook](../storybook/SKILL.md)` (if component documentation is needed next)
 Carry forward: Tailwind theme config tokens (colors, spacing, fonts, breakpoints)
 
 ## Implementation Patterns
 
 ### Design Token Integration
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tailwind.config.ts with design tokens
 import type { Config } from 'tailwindcss';
 

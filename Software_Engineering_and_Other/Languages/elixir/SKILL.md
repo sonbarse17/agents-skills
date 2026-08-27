@@ -27,8 +27,8 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 
 ### Input Context
 - Project type (Phoenix web app, OTP app, Nerves firmware, CLI tool)
-- Database (PostgreSQL via Ecto, ETS, Mnesia)
-- Deployment target (bare-metal, Docker, Fly.io, Gigalixir)
+- Database ([PostgreSQL](../../Backend/postgresql/SKILL.md) via Ecto, ETS, Mnesia)
+- Deployment target ([bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Fly.io, Gigalixir)
 
 ## Decision Trees
 
@@ -37,7 +37,7 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 What are you building?
 ├── Web app with real-time features → Phoenix (LiveView, PubSub, Channels)
 ├── Real-time API / WebSocket server → Phoenix Channels or simply GenServer + WebSock
-├── Background job processor → Oban (persistent, PostgreSQL-backed jobs)
+├── Background job processor → Oban (persistent, [PostgreSQL](../../Backend/postgresql/SKILL.md)-backed jobs)
 ├── CLI tool → Mix escript.build (self-contained binary) or Burrito
 ├── Firmware / IoT → Nerves (Raspberry Pi, BeagleBone, embedded Linux)
 └── Distributed system → OTP with :global / Horde / Swarm for node discovery
@@ -46,7 +46,7 @@ What are you building?
 ### Data Store Selection
 ```
 Data access pattern?
-├── Relational, complex queries → Ecto + PostgreSQL (Phoenix standard)
+├── Relational, complex queries → Ecto + [PostgreSQL](../../Backend/postgresql/SKILL.md) (Phoenix standard)
 ├── In-memory, fast lookups → ETS (:ets, DETS for disk)
 ├── Process-local state → Agent, GenServer state
 ├── Distributed, replicated → Mnesia (built-in, eventually consistent)
@@ -274,14 +274,14 @@ end
 ### Tooling
 ```bash
 # Type checking (Dialyzer)
-mix dialyzer --format github  # CI-friendly output
+mix dialyzer --format [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)  # CI-friendly output
 
 # Code quality
 mix credo --strict            # Linter
 mix sobelow                  # Phoenix security linter
 mix format --check-formatted # CI check
 
-# Profiling
+# [Profiling](../../Frontend/profiling/SKILL.md)
 mix run -e "MyModule.bench()" --profile time  # Erlang profiler
 :eprof.start()                                 # Per-function timing
 ```
@@ -316,13 +316,13 @@ Phoenix 1.7+ encourages organizing code by domain context, not architectural lay
 
 Elixir deployments must handle database migrations carefully. Pattern: (a) run migrations BEFORE deploying new code (not simultaneously), (b) write backward-compatible migrations that don't break running old code, (c) use a separate migration step in CI/CD before the release step. Migration safety: (1) adding a column with a default is safe — old code ignores it, (2) removing a column: deploy code change (stop using column) FIRST, THEN remove column in next release, (3) renaming a column: add new column -> dual-write -> migrate data -> deploy code (read new) -> remove old column, (4) creating a table: always safe — deploy first. Use Ecto.Migrator for runtime migration in production: `Ecto.Migrator.run(Repo, "priv/repo/migrations", :up, all: true)`.
 
-## Observability with Telemetry
+## [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) with Telemetry
 
-Elixir's Telemetry library provides metrics and instrumentation. Each library (Phoenix, Ecto, Oban) emits Telemetry events: `[:phoenix, :endpoint, :start]`, `[:ecto, :query, :total]`, `[:oban, :job, :start]`. Attach handlers for (a) metrics aggregation (Prometheus via Telemetry.Metrics), (b) structured logging (via Logger.metadata), (c) distributed tracing (OpenTelemetry via :opentelemetry_elixir). Common metrics: HTTP request duration (histogram), DB query count/duration per request, LiveView mount time, Oban job duration and failure rate, VM metrics (memory, processes, reductions). Export via `prometheus_ecto`, `prometheus_phoenix`, or custom TelemetryMetricsPrometheus for a `/metrics` endpoint scraped by Prometheus.
+Elixir's Telemetry library provides metrics and instrumentation. Each library (Phoenix, Ecto, Oban) emits Telemetry events: `[:phoenix, :endpoint, :start]`, `[:ecto, :query, :total]`, `[:oban, :job, :start]`. Attach handlers for (a) metrics aggregation (Prometheus via Telemetry.Metrics), (b) structured logging (via Logger.metadata), (c) distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) via :opentelemetry_elixir). Common metrics: HTTP request duration (histogram), DB query count/duration per request, LiveView mount time, Oban job duration and failure rate, VM metrics (memory, processes, reductions). Export via `prometheus_ecto`, `prometheus_phoenix`, or custom TelemetryMetricsPrometheus for a `/metrics` endpoint scraped by Prometheus.
 
 ## Elixir Release & Deployment
 
-Production releases are built with `mix release`. The release bundles the Erlang VM, all compiled BEAM files, and the runtime config into a self-contained directory. Steps: (1) set `start_permanent: true` in `mix.exs` for `:prod` env, (2) configure releases in mix.exs with `include_executables_for: [:unix]`, (3) build with `MIX_ENV=prod mix release`, (4) copy the `_build/prod/rel/my_app/` directory to the server, (5) run `bin/my_app start`, (6) run `bin/my_app eval "MyApp.Release.migrate"` to run migrations. Docker: use a multi-stage build: builder stage installs Elixir+Erlang, fetches deps, compiles, builds release. Runtime stage uses a minimal image (debian-slim or distroless), copies the release, runs with `bin/my_app start`. Gigalixir: `gigalixir deploy` builds and deploys. Fly.io: `fly deploy` with release command for migrations.
+Production releases are built with `mix release`. The release bundles the Erlang VM, all compiled BEAM files, and the runtime config into a self-contained directory. Steps: (1) set `start_permanent: true` in `mix.exs` for `:prod` env, (2) configure releases in mix.exs with `include_executables_for: [:unix]`, (3) build with `MIX_ENV=prod mix release`, (4) copy the `_build/prod/rel/my_app/` directory to the server, (5) run `bin/my_app start`, (6) run `bin/my_app eval "MyApp.Release.migrate"` to run migrations. [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): use a multi-stage build: builder stage installs Elixir+Erlang, fetches deps, compiles, builds release. Runtime stage uses a minimal image (debian-slim or distroless), copies the release, runs with `bin/my_app start`. Gigalixir: `gigalixir deploy` builds and deploys. Fly.io: `fly deploy` with release command for migrations.
 
 ## ETS as First-Class Cache
 
@@ -334,8 +334,8 @@ ETS (Erlang Term Storage) is built into the BEAM and provides in-memory key-valu
 Deployment environment?
 ├── Bare metal / VPS → mix release + systemd unit
 │   Config: environment variables, secret files
-│   Monitoring: Prometheus + Grafana + Loki
-├── Docker / Kubernetes → Multi-stage Dockerfile
+│   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus + Grafana + Loki
+├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) / [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Multi-stage Dockerfile
 │   Config: environment variables + config provider
 │   Orchestration: K8s Deployment with readiness/liveness probes
 └── Platform-as-a-Service → Gigalixir / Fly.io / Render
@@ -435,9 +435,9 @@ Where does this code belong?
 Production hosting choice?
 ├── Bare metal / VPS → mix release + systemd service
 │   Build: mix release on CI, scp to server, restart
-│   Monitoring: Prometheus (telemetry_metrics_prometheus) + Grafana
+│   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus (telemetry_metrics_prometheus) + Grafana
 │   Logs: JSON logger -> journald -> Loki
-├── Docker / Kubernetes → Multi-stage Dockerfile with distroless runtime
+├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) / [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Multi-stage Dockerfile with distroless runtime
 │   Builder: elixir:1.17-slim → deps.get → compile → release
 │   Runtime: gcr.io/distroless/cc-debian12
 │   Config: environment variables at deploy time (not build time)
@@ -547,7 +547,7 @@ end
 
 ### Configuration Management
 - Use `config/runtime.exs` for all env-dependent config. `config/prod.exs` for compile-time config only.
-- Secrets in environment variables or Vault. Never commit `.secret` files.
+- Secrets in environment variables or [Vault](../../Miscellaneous/vault/SKILL.md). Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.secret` files.
 - Release config: `RELEASE_CONFIG_DIR` points to external config directory. Overrides at runtime without rebuild.
 - Feature flags via persistent_term or a GenServer loaded from DB at boot. Toggle without restart.
 
@@ -588,6 +588,6 @@ end
 - SQL injection protection: Ecto parameterized queries. Never raw `Ecto.Adapters.SQL.query!(Repo, "SELECT ... #{unsafe}")`.
 - LiveView: autoload `:current_user` in assigns. Verify on every handle_event/handle_params.
 - Rate limiting: `ExRated` with GenServer-backed bucket. Apply to auth, signup, password-reset endpoints.
-- Dependency audit: `mix hex.audit` in CI. Fail on known vulnerabilities.
+- Dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): `mix hex.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` in CI. Fail on known vulnerabilities.
 - Secrets: `config/runtime.exs` reads from environment. Never `config/prod.exs` with hardcoded values.
 

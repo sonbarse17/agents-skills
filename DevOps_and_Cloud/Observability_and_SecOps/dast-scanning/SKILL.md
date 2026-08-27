@@ -39,11 +39,11 @@ Use this skill when:
 
 ## OWASP ZAP
 
-### Docker Setup
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Setup
 
 ```bash
 # Run ZAP in daemon mode
-docker run -d --name zap \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d --name zap \
   -p 8080:8080 \
   -v $(pwd)/reports:/zap/reports \
   ghcr.io/zaproxy/zaproxy:stable \
@@ -56,13 +56,13 @@ docker run -d --name zap \
 
 ```bash
 # Quick baseline scan
-docker run --rm -v $(pwd):/zap/wrk \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-baseline.py -t https://target.example.com \
   -r baseline-report.html
 
 # With authentication
-docker run --rm -v $(pwd):/zap/wrk \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-baseline.py -t https://target.example.com \
   -r report.html \
@@ -75,7 +75,7 @@ docker run --rm -v $(pwd):/zap/wrk \
 
 ```bash
 # Comprehensive scan
-docker run --rm -v $(pwd):/zap/wrk \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-full-scan.py -t https://target.example.com \
   -r full-report.html \
@@ -86,7 +86,7 @@ docker run --rm -v $(pwd):/zap/wrk \
 
 ```bash
 # OpenAPI specification scan
-docker run --rm -v $(pwd):/zap/wrk \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-api-scan.py -t https://target.example.com/openapi.json \
   -f openapi \
@@ -152,14 +152,14 @@ jobs:
 
 ```bash
 # Run automation
-docker run --rm -v $(pwd):/zap/wrk \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap.sh -cmd -autorun /zap/wrk/zap-automation.yaml
 ```
 
 ## CI/CD Integration
 
-### GitHub Actions
+### [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```yaml
 name: DAST Scan
@@ -177,7 +177,7 @@ jobs:
 
       - name: Start Application
         run: |
-          docker-compose up -d
+          [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) up -d
           sleep 30  # Wait for app to be ready
 
       - name: OWASP ZAP Scan
@@ -218,7 +218,7 @@ dast:
 
 ### REST API Usage
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import requests
 
 class BurpScanner:
@@ -230,7 +230,7 @@ class BurpScanner:
         """Create and start a new scan."""
         payload = {
             'scan_configurations': [
-                {'name': 'Crawl and Audit - Balanced'}
+                {'name': 'Crawl and [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) - Balanced'}
             ],
             'scope': {
                 'include': [{'rule': target_url}]
@@ -394,6 +394,6 @@ tests:
 
 ## Related Skills
 
-- [sast-scanning](../sast-scanning/) - Static analysis
-- [penetration-testing](../../operations/penetration-testing/) - Manual testing
-- [waf-setup](../../network/waf-setup/) - WAF configuration
+- [sast-scanning](../[sast-scanning](../../../Security/sast-scanning/SKILL.md)/) - Static analysis
+- [penetration-testing](../../operations/[penetration-testing](../../../Security/penetration-testing/SKILL.md)/) - Manual testing
+- [waf-setup](../../network/[waf-setup](../../../Security/waf-setup/SKILL.md)/) - WAF configuration

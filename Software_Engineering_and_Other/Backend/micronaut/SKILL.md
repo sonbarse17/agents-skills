@@ -27,7 +27,7 @@ User request includes: `Micronaut`, `micronaut framework`, `micronaut DI`, `micr
 - JDK version (17+, 21+)
 - Micronaut version (4.x)
 - Build tool (Gradle, Maven)
-- Database (JDBC, R2DBC, MongoDB)
+- Database (JDBC, R2DBC, [MongoDB](../mongodb/SKILL.md))
 - Features (Reactive, Declarative Client, AOT, Security)
 
 ### Output Artifact
@@ -109,7 +109,7 @@ dependencies {
     implementation 'io.micronaut.data:micronaut-data-jdbc'
     implementation 'io.micronaut.sql:micronaut-jdbc-hikari'
     implementation 'io.micronaut:micronaut-validation'
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.[postgresql](../postgresql/SKILL.md):[postgresql](../postgresql/SKILL.md)'
     testImplementation 'io.micronaut.test:micronaut-test-junit5'
 }
 ```
@@ -139,8 +139,8 @@ micronaut:
 
 datasources:
   default:
-    url: ${JDBC_URL:`jdbc:postgresql://localhost:5432/mydb`}
-    driverClassName: org.postgresql.Driver
+    url: ${JDBC_URL:`jdbc:[postgresql](../postgresql/SKILL.md)://localhost:5432/mydb`}
+    driverClassName: org.[postgresql](../postgresql/SKILL.md).Driver
     username: ${DB_USER:postgres}
     password: ${DB_PASS:postgres}
     schema-generate: NONE
@@ -386,7 +386,7 @@ public record AppConfig(
 - Native image: `gradlew nativeCompile` (requires GraalVM)
 - Test native: `gradlew nativeTest`
 
-### Observability
+### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 ```java
 // Export metrics via Prometheus
 @Factory
@@ -434,7 +434,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 - CORS: configure in `application.yml` with `micronaut.server.cors`
 - Rate limiting: `micronaut-ratelimiter-core` or gateway-level
 - Input validation: `@Valid` + Jakarta Validation annotations
-- Secrets: `micronaut-config-kubernetes` or environment variables; never hardcoded
+- Secrets: `micronaut-config-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` or environment variables; never hardcoded
 
 ## Testing Strategies
 
@@ -505,7 +505,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -513,7 +513,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

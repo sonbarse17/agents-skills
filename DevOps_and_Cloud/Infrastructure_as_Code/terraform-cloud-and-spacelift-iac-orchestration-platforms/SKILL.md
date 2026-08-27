@@ -20,18 +20,18 @@ metadata:
 
 ## Purpose
 
-[infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md)
+[infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 covers the CLI-only workflow: a remote backend (S3+DynamoDB or equivalent)
 for state, and `terraform plan`/`apply` run by hand or from a hand-rolled CI
 job. **Terraform Cloud (rebranded HCP Terraform for HashiCorp's managed
 offering)** and **Spacelift** are a different layer entirely: they are
 run-orchestration platforms that sit on top of Terraform (or, for Spacelift,
-also OpenTofu, Pulumi, and CloudFormation) and provide, as managed
+also OpenTofu, [Pulumi](../pulumi/SKILL.md), and [CloudFormation](../cloudformation/SKILL.md)) and provide, as managed
 capabilities, what a CLI-only workflow otherwise has to assemble by hand —
 remote state storage with locking as a first-class hosted service (not just
 a backend you configure), VCS-driven runs (a PR against your IaC repo
 automatically triggers a plan, and merging triggers an apply, with no
-custom CI YAML required), policy-as-code gates that block a run before
+custom CI YAML required), [policy-as-code](../../../Security/policy-as-code/SKILL.md) gates that block a run before
 apply (Sentinel or OPA on Terraform Cloud; OPA on Spacelift) evaluated
 against the plan's actual proposed changes, and scheduled drift detection
 (a recurring job that runs `plan` against real infrastructure and reports
@@ -39,13 +39,13 @@ when it no longer matches state, independent of anyone actually running a
 new apply). This skill covers configuring each platform's workspace/stack
 model, VCS integration, policy gates, and drift-detection scheduling — it
 assumes the underlying Terraform module/state concepts from
-[infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md)
+[infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 and doesn't repeat HCL authoring or module design.
 
 ## When to use
 
 - Deciding whether a team's Terraform workflow should move from a
-  hand-rolled CI pipeline (a GitHub Actions/GitLab CI job running
+  hand-rolled CI pipeline (a [GitHub](../../CI_CD/github/SKILL.md) Actions/GitLab CI job running
   `terraform plan`/`apply` against an S3+DynamoDB backend) to a managed
   orchestration platform, and which one.
 - Setting up Terraform Cloud/HCP Terraform workspaces or Spacelift stacks
@@ -59,7 +59,7 @@ and doesn't repeat HCL authoring or module design.
   discovered at the next intentional apply.
 - Comparing Terraform Cloud, Spacelift, and a self-managed CI-driven
   workflow on cost, policy-gate model, and multi-IaC-tool support
-  (Spacelift's Pulumi/CloudFormation/OpenTofu support vs. Terraform Cloud's
+  (Spacelift's [Pulumi](../pulumi/SKILL.md)/[CloudFormation](../cloudformation/SKILL.md)/OpenTofu support vs. Terraform Cloud's
   Terraform/OpenTofu-only scope).
 - Migrating an existing CLI-only Terraform setup (S3+DynamoDB backend, CI
   pipeline running plan/apply) onto one of these platforms without losing
@@ -67,9 +67,9 @@ and doesn't repeat HCL authoring or module design.
 
 ## Prerequisites & environment
 
-- An existing Terraform (or OpenTofu; Spacelift also supports Pulumi and
-  CloudFormation) codebase already structured into modules/environments,
-  per [infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md)
+- An existing Terraform (or OpenTofu; Spacelift also supports [Pulumi](../pulumi/SKILL.md) and
+  [CloudFormation](../cloudformation/SKILL.md)) codebase already structured into modules/environments,
+  per [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
   — these platforms orchestrate runs against your existing code, they
   don't replace the need for well-structured HCL.
 - A Terraform Cloud/HCP Terraform organization and account, or a Spacelift
@@ -77,7 +77,7 @@ and doesn't repeat HCL authoring or module design.
   boundaries (run/user/workspace counts, which policy engine is available
   on which tier) against each vendor's own pricing page before assuming
   parity, since both have changed their tiering over time.
-- A VCS provider (GitHub, GitLab, Bitbucket, Azure DevOps) connected via an
+- A VCS provider ([GitHub](../../CI_CD/github/SKILL.md), GitLab, Bitbucket, Azure DevOps) connected via an
   OAuth app or VCS integration so the platform can receive webhook events
   for PR-triggered plans and merge-triggered applies.
 - Cloud provider credentials the platform's run environment will use to
@@ -85,7 +85,7 @@ and doesn't repeat HCL authoring or module design.
   workspace/stack manages, injected as the platform's own encrypted
   variable/credential store rather than committed anywhere in the repo.
 - A decision on policy engine: **Sentinel** (Terraform Cloud/Enterprise's
-  native policy-as-code language, paid tiers only) or **OPA/Rego**
+  native [policy-as-code](../../../Security/policy-as-code/SKILL.md) language, paid tiers only) or **OPA/Rego**
   (supported on Terraform Cloud's newer OPA integration and natively by
   Spacelift) — confirm which is available on your tier/platform before
   writing policy in a language the platform can't actually enforce with.
@@ -119,7 +119,7 @@ and doesn't repeat HCL authoring or module design.
 2. **Create one workspace (Terraform Cloud) or stack (Spacelift) per
    deployable unit/environment**, mirroring the state-isolation-per-
    blast-radius principle from
-   [infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md) —
+   [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) —
    a workspace/stack is the platform's unit of state, variables, and run
    history, so conflating environments into one workspace defeats blast-
    radius isolation the same way sharing one state file would:
@@ -141,7 +141,7 @@ and doesn't repeat HCL authoring or module design.
    needed for the plan/apply mechanics themselves:
    ```
    Terraform Cloud workspace settings:
-     VCS repo: github.com/example-org/infra
+     VCS repo: [github](../../CI_CD/github/SKILL.md).com/example-org/infra
      Working directory: environments/prod
      Trigger: only when files in "environments/prod/**" change (path-based trigger)
      Apply method: Manual apply (require a human to confirm after plan)
@@ -158,15 +158,15 @@ and doesn't repeat HCL authoring or module design.
    Keep `autodeploy`/apply method set to manual confirmation for production
    workspaces/stacks — automatic apply-on-merge is reasonable for a
    low-risk dev environment but removes the human review step that
-   [infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md)
+   [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
    treats as essential before a production apply.
 
-4. **Write a policy-as-code check that evaluates the plan itself**, not
+4. **Write a [policy-as-code](../../../Security/policy-as-code/SKILL.md) check that evaluates the plan itself**, not
    just the HCL source, so it can catch issues that only exist in the
    proposed change (a plan that would remove encryption, widen an IAM
    policy, or touch a disallowed region) — Sentinel example (Terraform
    Cloud/Enterprise):
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import "tfplan/v2" as tfplan
 
    s3_buckets = filter tfplan.resource_changes as _, rc {
@@ -217,7 +217,7 @@ and doesn't repeat HCL authoring or module design.
    default — automatically applying to correct drift can itself be a
    surprising, unreviewed production change if the drift was actually an
    intentional out-of-band fix (e.g. an emergency console change during an
-   incident) rather than unwanted deviation.
+   [incident](../../Observability_and_SecOps/incident/SKILL.md)) rather than unwanted deviation.
 
    > **Warning:** enabling `reconcile: true` (Spacelift) or an equivalent
    > auto-apply-on-drift setting means the platform will run `apply`
@@ -235,13 +235,13 @@ and doesn't repeat HCL authoring or module design.
      db_password  (Terraform variable, category: terraform, Sensitive: true)
    ```
    This is the same "keep secrets out of `.tf`/`.tfvars`" discipline from
-   [infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md),
+   [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md),
    applied to the platform's own variable store instead of CI secrets.
 
 7. **Use run tasks/policy checks as a place to wire in existing scanners**
    rather than duplicating them — both platforms support hooking external
    checks (e.g. a Checkov/tfsec run, per
-   [checkov-and-tfsec-iac-security-scanning](../../../devsecops/skills/checkov-and-tfsec-iac-security-scanning/SKILL.md))
+   [checkov-and-tfsec-iac-security-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md))
    into the run pipeline as a required check before apply, so IaC security
    scanning and orchestration-platform policy gates compose instead of
    running as two disconnected systems.
@@ -257,7 +257,7 @@ and doesn't repeat HCL authoring or module design.
 - Require manual apply confirmation for any production workspace/stack;
   reserve auto-apply-on-merge for genuinely low-risk environments (a
   scratch/dev workspace) where an unreviewed apply is an acceptable risk.
-- Roll out a new policy-as-code check in advisory/warn mode before
+- Roll out a new [policy-as-code](../../../Security/policy-as-code/SKILL.md) check in advisory/warn mode before
   switching it to mandatory/blocking — an under-tuned policy blocking every
   run has the same organization-wide blast radius as an under-tuned
   security scanner suddenly gating merges.
@@ -270,7 +270,7 @@ and doesn't repeat HCL authoring or module design.
   don't reuse one broad, account-wide credential across every
   workspace/stack for convenience.
 - Use path-based VCS triggers (only run a workspace when files under its
-  specific directory change) in a monorepo layout, so an unrelated change
+  specific directory change) in a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) layout, so an unrelated change
   elsewhere in the repo doesn't trigger every workspace's plan.
 - Treat the platform's policy engine as complementary to, not a
   replacement for, static IaC scanning that runs earlier in the PR
@@ -282,7 +282,7 @@ and doesn't repeat HCL authoring or module design.
 ## Common pitfalls
 
 - **Symptom:** A workspace/stack's automatic VCS-triggered plan runs (and
-  posts a comment) for every PR in a monorepo, even ones that don't touch
+  posts a comment) for every PR in a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), even ones that don't touch
   that workspace's infrastructure at all.
   **Fix:** Configure a path-based trigger scoped to the workspace's working
   directory, rather than the default "any change in the connected repo"
@@ -298,7 +298,7 @@ and doesn't repeat HCL authoring or module design.
   phased-rollout discipline as any new blocking gate.
 
 - **Symptom:** Scheduled drift detection reports drift on a resource that
-  was intentionally changed out-of-band during an incident, and the
+  was intentionally changed out-of-band during an [incident](../../Observability_and_SecOps/incident/SKILL.md), and the
   reconciliation setting automatically applies a "fix" that reverts the
   emergency change.
   **Fix:** Keep drift detection in detect-and-notify mode, not
@@ -329,7 +329,7 @@ and doesn't repeat HCL authoring or module design.
 ## Worked example
 
 **Scenario:** A team migrates `payments-api`'s production Terraform from a
-hand-rolled GitHub Actions pipeline (S3+DynamoDB backend, manual `apply`
+hand-rolled [GitHub](../../CI_CD/github/SKILL.md) Actions pipeline (S3+DynamoDB backend, manual `apply`
 approval via a protected environment) to Terraform Cloud, adding a Sentinel
 policy requiring encryption on all S3 buckets and daily drift detection.
 
@@ -351,7 +351,7 @@ terraform init   # prompts to migrate existing S3-backed state into Terraform Cl
 
 Workspace configuration:
 ```
-VCS repo: github.com/example-org/infra, branch: main
+VCS repo: [github](../../CI_CD/github/SKILL.md).com/example-org/infra, branch: main
 Working directory: environments/prod
 Trigger: only on changes under environments/prod/**
 Apply method: Manual apply
@@ -359,7 +359,7 @@ Apply method: Manual apply
 
 Sentinel policy (mandatory, after a 2-week advisory period showed zero
 false positives):
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import "tfplan/v2" as tfplan
 
 s3_buckets = filter tfplan.resource_changes as _, rc {
@@ -387,7 +387,7 @@ intentional deploy.
 
 ## Cross-references
 
-- [infrastructure-as-code-terraform](../infrastructure-as-code-terraform/SKILL.md) — the underlying CLI-only Terraform workflow (module design, state, plan review) this skill's platforms orchestrate; read that skill first for HCL/state fundamentals not repeated here.
-- [checkov-and-tfsec-iac-security-scanning](../../../devsecops/skills/checkov-and-tfsec-iac-security-scanning/SKILL.md) — static IaC misconfiguration scanning that composes with, rather than duplicates, a Sentinel/OPA plan-time policy gate configured here.
-- [gitops-workflow](../gitops-workflow/SKILL.md) — a comparable git-driven-reconciliation pattern for Kubernetes/application deployments; VCS-driven Terraform runs here are the IaC-provisioning analogue.
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) — the general pipeline-gate concepts (required checks, manual approval) that these platforms implement as native features instead of hand-rolled CI YAML.
+- [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the underlying CLI-only Terraform workflow (module design, state, plan review) this skill's platforms orchestrate; read that skill first for HCL/state fundamentals not repeated here.
+- [checkov-and-tfsec-iac-security-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md) — static IaC misconfiguration scanning that composes with, rather than duplicates, a Sentinel/OPA plan-time policy gate configured here.
+- [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — a comparable git-driven-reconciliation pattern for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/application deployments; VCS-driven Terraform runs here are the IaC-provisioning analogue.
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — the general pipeline-gate concepts (required checks, manual approval) that these platforms implement as native features instead of hand-rolled CI YAML.

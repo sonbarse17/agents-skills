@@ -22,7 +22,7 @@ metadata:
 ## Purpose
 
 OPA Gatekeeper packages the general-purpose Open Policy Agent as a
-Kubernetes-native admission controller: it registers a `ValidatingWebhookConfiguration`
+[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native admission controller: it registers a `ValidatingWebhookConfiguration`
 (and optionally a mutating one) that calls out to Rego policies on every
 resource create/update, and it audits existing cluster state against the
 same policies on a schedule so drift is caught even for resources created
@@ -32,11 +32,11 @@ more **Constraints** (a concrete resource specifying which Rego template to
 apply, to which resources, with which parameter values, in `deny` or
 `dryrun` enforcement action). This skill covers the actual mechanics of
 writing and testing that Rego, structuring templates so they're reusable
-across teams via parameters, and the audit-before-enforce rollout
+across teams via parameters, and the [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce rollout
 discipline that keeps a new policy from taking down a legitimate
 deployment. It assumes the reader already understands *why* policy as
 code matters operationally — see
-[policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md)
+[policy-as-code-guardrails](../../../[devsecops](../devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)
 for that framing — and goes deep specifically on Gatekeeper/Rego syntax
 and rollout mechanics.
 
@@ -49,9 +49,9 @@ and rollout mechanics.
   is firing on input it shouldn't (false positives) and needs help
   tracing the actual `input.review.object` structure Gatekeeper passes.
 - The user is deciding between OPA/Gatekeeper and Kyverno for a new
-  Kubernetes policy and wants the tradeoffs made concrete for their
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) policy and wants the tradeoffs made concrete for their
   specific use case (see the decision guidance below and in
-  [kyverno-policy-management](../kyverno-policy-management/SKILL.md)).
+  [kyverno-policy-management](../[kyverno-policy-management](../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)).
 - The user wants to parameterize a policy so different teams/namespaces
   can supply different allowed values (e.g. per-team allowed registries)
   without duplicating the Rego.
@@ -62,7 +62,7 @@ and rollout mechanics.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster (1.21+ for stable `admissionregistration.k8s.io/v1`
+- A [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (1.21+ for stable `admissionregistration.k8s.io/v1`
   webhooks) with cluster-admin access to install the Gatekeeper CRDs and
   webhook configuration.
 - **Gatekeeper** installed via its official Helm chart or manifest
@@ -154,8 +154,8 @@ and rollout mechanics.
      msg := sprintf("privileged container not allowed: %v", [c.name])
    }
    ```
-   Test the exact shape with `kubectl create --dry-run=server -o json` or
-   by checking the audit logs of a recently created resource, rather than
+   Test the exact shape with `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create --dry-run=server -o json` or
+   by checking the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs of a recently created resource, rather than
    guessing at the schema.
 
 4. **Unit-test the Rego with `opa test`** before deploying, covering both
@@ -194,7 +194,7 @@ and rollout mechanics.
 6. **Deploy in `dryrun` and review violations before flipping to `deny`.**
    Query violations without blocking anything:
    ```bash
-   kubectl get k8srequiredlabels require-team-label -o yaml \
+   [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get k8srequiredlabels require-team-label -o yaml \
      | grep -A5 "status:"
    ```
    Gatekeeper surfaces violations in the Constraint's `.status.violations`
@@ -224,7 +224,7 @@ and rollout mechanics.
    >  misconfiguration can block **all** matching deploys cluster-wide,
    >  not just the specific resource that should fail. Before setting
    >  `Fail` on any new Constraint, confirm there's a rollback path
-   >  (`kubectl delete constraint <name>` or patch `enforcementAction`
+   >  (`[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete constraint <name>` or patch `enforcementAction`
    >  back to `dryrun`) that on-call staff know how to execute quickly.
 
 9. **Version-control ConstraintTemplates and Constraints together** in
@@ -260,7 +260,7 @@ and rollout mechanics.
   will evaluate them in-cluster.
 - Set resource requests/limits on the Gatekeeper controller pods
   themselves and monitor their health — Gatekeeper being down is itself
-  an admission-control availability incident, not just a policy concern.
+  an admission-control availability [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not just a policy concern.
 
 ## Common pitfalls
 
@@ -300,7 +300,7 @@ and rollout mechanics.
 
 - **Symptom:** A Gatekeeper pod outage combined with
   `failurePolicy: Fail` on a webhook blocks every deploy cluster-wide,
-  including unrelated emergency hotfixes, during an incident.
+  including unrelated emergency hotfixes, during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   **Fix:** Treat Gatekeeper pod health as a monitored, alertable
   dependency of cluster admission; keep a documented, fast rollback path
   (deleting or patching the problem Constraint, or in a true emergency,
@@ -308,11 +308,11 @@ and rollout mechanics.
   on-call staff can execute without needing to understand Rego under
   pressure.
 
-- **Symptom:** Audit mode (`dryrun`) shows zero violations for weeks, so
+- **Symptom:** [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) mode (`dryrun`) shows zero violations for weeks, so
   the team assumes the policy is safe to enforce — then enforcing it
   immediately blocks a deploy from a workflow that only runs quarterly
   (e.g. a batch job or a DR failover) and wasn't exercised during the
-  audit window.
+  [audit](../../AI_and_Agents/Operations/audit/SKILL.md) window.
   **Fix:** Make sure the dry-run review window covers infrequent but
   legitimate deploy paths, not just the common daily/weekly cadence, or
   explicitly flag the gap and stage a longer or targeted dry-run for
@@ -367,7 +367,7 @@ package k8sallowedregistries
 test_disallowed_registry_denied {
   count(violation) == 1 with input as {
     "review": {"object": {"spec": {"containers": [
-      {"name": "app", "image": "docker.io/library/nginx:latest"}
+      {"name": "app", "image": "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library/nginx:latest"}
     ]}}},
     "parameters": {"registries": ["registry.example.internal/"]}
   }
@@ -407,28 +407,28 @@ opa test policies/ -v
 gator test --filename=templates/ --filename=constraints/
 ```
 
-Rollout: after a one-week `dryrun` period, `kubectl get
+Rollout: after a one-week `dryrun` period, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get
 k8sallowedregistries require-approved-registry -o jsonpath='{.status.violations}'`
 shows zero unexpected hits, so the team patches `enforcementAction: deny`.
-From then on, `kubectl apply -f pod-using-dockerhub.yaml` is rejected at
+From then on, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f pod-using-dockerhub.yaml` is rejected at
 admission time with `admission webhook "validation.gatekeeper.sh" denied
-the request: [require-approved-registry] image docker.io/library/nginx:latest
+the request: [require-approved-registry] image [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/library/nginx:latest
 is not from an approved registry` — regardless of whether the apply came
-from CI or a direct `kubectl` command.
+from CI or a direct `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` command.
 
 ## Cross-references
 
-- [kyverno-policy-management](../kyverno-policy-management/SKILL.md) —
+- [kyverno-policy-management](../[kyverno-policy-management](../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md) —
   the YAML-native alternative to writing Rego for the same class of
-  Kubernetes admission policies; read this to decide which engine fits a
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission policies; read this to decide which engine fits a
   given team/use case.
-- [fairwinds-polaris-and-goldilocks](../fairwinds-polaris-and-goldilocks/SKILL.md) —
+- [fairwinds-polaris-and-goldilocks](../[fairwinds-polaris-and-goldilocks](../../AI_and_Agents/Workflows/fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
   a lighter-weight, opinionated tool for workload configuration scoring
   and right-sizing that complements (and can precede) writing custom
   Gatekeeper policies for the same properties.
-- [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md) —
-  the broader rationale for policy as code, audit-first rollout
+- [policy-as-code-guardrails](../../../[devsecops](../devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+  the broader rationale for policy as code, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first rollout
   discipline, and how admission policy fits alongside CI-time IaC checks.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) —
+- [secure-cicd-gates](../../../[devsecops](../devsecops/SKILL.md)/skills/[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) —
   where admission-time enforcement fits relative to earlier pipeline
   gates.

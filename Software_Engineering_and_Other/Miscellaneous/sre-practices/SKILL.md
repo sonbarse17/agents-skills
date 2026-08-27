@@ -25,16 +25,16 @@ tags: [devops, sre, sli, slo, error-budget, reliability, phase-3]
 # SRE Practices
 
 ## Purpose
-Implement Site Reliability Engineering practices: define SLIs/SLOs aligned with business goals, manage error budgets with burn rate alerts, systematically reduce toil, conduct blameless incident analysis, build production readiness reviews, and mature reliability culture across the organization.
+Implement Site Reliability Engineering practices: define SLIs/SLOs aligned with business goals, manage error budgets with burn rate alerts, systematically reduce toil, conduct blameless [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) analysis, build production readiness reviews, and mature reliability culture across the organization.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "SRE", "site reliability", "SLI", "SLO", "error budget", "error budget policy", "burn rate", "toil", "toil reduction", "reliability engineering", "postmortem", "incident analysis", "5 whys", "production readiness review", "PRR", "reliability dashboard", "multi-window", "multi-burn-rate", "reliability maturity", "SLO monitoring", "service level objective", "service level indicator".
+Exact user phrases: "SRE", "site reliability", "SLI", "SLO", "error budget", "error budget policy", "burn rate", "toil", "toil reduction", "reliability engineering", "postmortem", "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) analysis", "5 whys", "production readiness review", "PRR", "reliability dashboard", "multi-window", "multi-burn-rate", "reliability maturity", "SLO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "service level objective", "service level indicator".
 
 ### Input Context
-- Current monitoring and alerting stack (Prometheus, Datadog, Grafana)
-- Existing incident response process
+- Current [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) stack (Prometheus, [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), Grafana)
+- Existing [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response process
 - Team size and on-call rotation structure
 - Current service-level objectives (if any)
 - Known reliability pain points and past incidents
@@ -69,7 +69,7 @@ What is the service's business criticality?
   Customer-facing but not revenue-critical (search, browse, profile):
     → 99.9% (3 nines), monthly error budget ~43 min
 
-  Internal platform (CI/CD, monitoring, API gateways):
+  Internal platform (CI/CD, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), API gateways):
     → 99.9% (3 nines) if supporting revenue-critical services
     → 99.5% (2 nines) if dev-facing only
 
@@ -127,7 +127,7 @@ slis:
 
   durability:
     definition: "Fraction of written data not lost"
-    measurement: "Audit-based (not real-time metric)"
+    measurement: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-based (not real-time metric)"
     source: "Periodic integrity checks"
     threshold: "99.999999% (11 nines)"
 
@@ -175,7 +175,7 @@ slo_definitions:
 ### Step 3: Multi-Window, Multi-Burn-Rate Alerts
 
 ```yaml
-# Prometheus alerting rules for SLO burn rate
+# Prometheus [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules for SLO burn rate
 groups:
   - name: slo_burn_rate
     interval: 30s
@@ -296,7 +296,7 @@ error_budget_policy:
 
   consequences:
     - "Feature deploys frozen until budget recovers above 10%"
-    - "Incident review required for budget-exhausting events"
+    - "[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review required for budget-exhausting events"
     - "Monthly reliability review with engineering leadership"
     - "SLO target review — may be too aggressive or too loose"
 ```
@@ -366,7 +366,7 @@ toil_assessment:
     manual_deployments:
       description: "Deploying via SSH or clicking buttons in console"
       current_hours_week: 8
-      automation_strategy: "CI/CD pipeline with GitOps"
+      automation_strategy: "CI/CD pipeline with [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)"
       target_hours_week: 1
       effort_estimate: "2 weeks"
       priority: P0
@@ -374,7 +374,7 @@ toil_assessment:
     alert_triage:
       description: "Investigating non-actionable alerts"
       current_hours_week: 12
-      automation_strategy: "Tune alert thresholds, add runbooks, auto-remediate"
+      automation_strategy: "Tune alert thresholds, add [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), auto-remediate"
       target_hours_week: 3
       effort_estimate: "3 weeks"
       priority: P1
@@ -424,13 +424,13 @@ production_readiness_review:
       - "No single point of failure in critical path"
       - "Load testing completed at 2x expected peak"
 
-    observability:
+    [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md):
       - "Structured JSON logging with traceId correlation"
       - "RED metrics instrumented (Rate, Errors, Duration)"
       - "SLIs defined and SLOs agreed with stakeholders"
       - "Grafana dashboard created (service + business metrics)"
       - "Prometheus alert rules defined (symptom-based only)"
-      - "Distributed tracing (OpenTelemetry) configured"
+      - "Distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)) configured"
 
     reliability:
       - "Error budget tracking configured"
@@ -448,23 +448,23 @@ production_readiness_review:
 
     security:
       - "OWASP Top 10 vulnerabilities reviewed"
-      - "Secrets stored in Vault, not in code or env"
+      - "Secrets stored in [Vault](../vault/SKILL.md), not in code or env"
       - "Principle of least privilege for IAM/service accounts"
       - "Dependency vulnerabilities scanned and remediated"
       - "TLS termination configured"
 
     operations:
-      - "Runbook documented (incident response, recovery, escalation)"
+      - "[Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) documented ([incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, recovery, escalation)"
       - "On-call team trained on service behavior"
       - "PagerDuty/Opsgenie integration with accurate routing"
-      - "Capacity plan documented (growth projections)"
+      - "[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) plan documented (growth projections)"
       - "Disaster recovery plan tested"
 
   cadence: "Every new service. Every major refactor. Quarterly for existing services."
   approval: "SRE team lead + Engineering manager sign-off"
 ```
 
-### Step 8: Postmortem and Incident Analysis
+### Step 8: Postmortem and [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Analysis
 
 ```yaml
 postmortem:
@@ -523,7 +523,7 @@ postmortem:
     - "Schedule SEV1 postmortem within 48h, SEV2 within 1 week"
     - "Action items must have single owner and due date"
     - "Track action items to closure — 95% closure target"
-    - "Share postmortem org-wide — every incident is a learning opportunity"
+    - "Share postmortem org-wide — every [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is a learning opportunity"
     - "Classify incidents by severity (SEV1-4) and by type (bug, change, dependency, process, security)"
 ```
 
@@ -596,10 +596,10 @@ reliability_maturity:
     description: "Data-driven reliability, proactive prevention"
     characteristics:
       - "Multi-window burn rate alerts everywhere"
-      - "Reliability dashboards visible org-wide"
+      - "Reliability [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) visible org-wide"
       - "Toil < 20% of engineering time"
       - "Chaos engineering for resilience testing"
-      - "Capacity planning based on growth models"
+      - "[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning based on growth models"
 
   level_5_optimizing:
     description: "Autonomous reliability, self-healing, predictive"
@@ -618,15 +618,15 @@ reliability_maturity:
 | Risk tolerance | Error budgets | Shared ownership | Zero tolerance |
 | Changes | Encouraged (within budget) | Frequent, small | Change advisory board |
 | Metrics | SLIs/SLOs/error budgets | DORA metrics | Uptime only |
-| Incident response | Blameless postmortem | Blameless | Root cause analysis |
-| Automation | Toil elimination | CI/CD | Manual runbooks |
+| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response | Blameless postmortem | Blameless | Root cause analysis |
+| Automation | Toil elimination | CI/CD | Manual [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) |
 | Team structure | SRE team + dev collaboration | Cross-functional | Separate ops team |
 | On-call | Devs share on-call | Devs own ops | Dedicated ops on-call |
 
 ## References
 - ../../../Global_References/sre-practices_error-budget-policy.md — Error Budget Policy Design
-- ../../../Global_References/incident-analysis.md — Incident Analysis Framework
-- ../../../Global_References/incident-command.md — Incident Command Structure
+- ../../../Global_References/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-analysis.md — [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Analysis Framework
+- ../../../Global_References/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-command.md — [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Command Structure
 - ../../../Global_References/sli-slo-guide.md — SLI/SLO Definition Guide
 - ../../../Global_References/sre-practices-advanced.md — SRE Practices Advanced Topics
 - ../../../Global_References/sre-practices-fundamentals.md — SRE Practices Fundamentals
@@ -637,5 +637,5 @@ reliability_maturity:
 - references/reliability-maturity.md — Reliability Maturity Model
 
 ## Handoff
-Related skills: platform-engineering (IDP for self-service toil reduction), incident-response (on-call and incident management), chaos-engineering (resilience testing), monitoring (observability stack for SLO data), progressive-delivery (deployment strategies for safe changes).
+Related skills: [platform-engineering](../../Frontend/platform-engineering/SKILL.md) (IDP for self-service toil reduction), [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) (on-call and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management), [chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md) (resilience testing), [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) ([observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack for SLO data), [progressive-delivery](../../../DevOps_and_Cloud/CI_CD/progressive-delivery/SKILL.md) (deployment strategies for safe changes).
 

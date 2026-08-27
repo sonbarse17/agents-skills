@@ -254,7 +254,7 @@ Lottie:
 2. Export as JSON using Bodymovin
 3. Optimize: reduce keyframes, remove unused assets
 4. Test on target devices (performance, rendering)
-5. Integrate using Lottie-web, Lottie-iOS, or Lottie-Android
+5. Integrate using Lottie-web, Lottie-iOS, or Lottie-[Android](../../Mobile/android/SKILL.md)
 
 Rive:
 1. Design animation in Rive editor
@@ -417,7 +417,7 @@ function AnimatedComponent() {
 ### Case Study 1: E-commerce Micro-interaction Overhaul Increases Conversion 12%
 An e-commerce site had no micro-interactions — buttons simply changed appearance without animation. They implemented purposeful micro-interactions: hover animations on product cards (300ms, ease-out, shadow lift), button press feedback (100ms, scale 0.95), cart add confirmation (badge bounce animation), and smooth page transitions between categories. The result: 12% increase in add-to-cart rate, 8% increase in conversion, and a 5% decrease in bounce rate. Users perceived the site as faster and more responsive even though actual load times hadn't changed.
 
-Method: Systematic micro-interaction audit and redesign
+Method: Systematic micro-interaction [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and redesign
 Key insight: Perceived performance (mediated by animation) matters as much as actual performance
 Impact: Add-to-cart +12%, conversion +8%, bounce -5%
 
@@ -429,9 +429,9 @@ Key insight: Design systems must include motion, not just visual components
 Impact: Satisfaction score +22%, animation dev time -40%
 
 ### Case Study 3: Lottie Optimization for Mobile Performance
-A mobile app used Lottie animations for onboarding illustrations but users experienced jank on mid-range Android devices. Analysis showed Lottie files were averaging 120KB each with 2000+ keyframes. After optimization — reducing to 6 keyframes per animation, removing unused layers, using solid fills instead of gradients, and converting complex shapes to simpler paths — file sizes dropped to 18KB average and frame rate improved from 30fps to 58fps on target devices.
+A mobile app used Lottie animations for onboarding illustrations but users experienced jank on mid-range [Android](../../Mobile/android/SKILL.md) devices. Analysis showed Lottie files were averaging 120KB each with 2000+ keyframes. After optimization — reducing to 6 keyframes per animation, removing unused layers, using solid fills instead of gradients, and converting complex shapes to simpler paths — file sizes dropped to 18KB average and frame rate improved from 30fps to 58fps on target devices.
 
-Method: Lottie file optimization audit and reconstruction
+Method: Lottie file optimization [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and reconstruction
 Key insight: Animation file size and complexity directly impact runtime performance
 Impact: File size 120KB to 18KB, frame rate 30fps to 58fps on mid-range devices
 
@@ -518,7 +518,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -532,7 +532,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -548,12 +548,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -562,7 +562,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -570,13 +570,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -604,7 +604,7 @@ Does the animation need interactivity?
        ├── Yes → Rive (state machine) for interactive animated components
        └── No  → CSS transitions/animations for simple micro-interactions
             Developer handoff format?
-            ├── Lottie → JSON file for Lottie-web, Lottie-iOS, Lottie-Android
-            └── Rive → .riv file with runtimes for web, iOS, Android
+            ├── Lottie → JSON file for Lottie-web, Lottie-iOS, Lottie-[Android](../../Mobile/android/SKILL.md)
+            └── Rive → .riv file with runtimes for web, iOS, [Android](../../Mobile/android/SKILL.md)
 `
 

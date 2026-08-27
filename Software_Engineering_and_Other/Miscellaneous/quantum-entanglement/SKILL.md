@@ -14,7 +14,7 @@ Entanglement is the quintessential quantum resource, violating Bell inequalities
   3. Alice transmits the two bits via CC.
   4. Bob applies conditional Pauli operations ($I, X, Z, XZ$) to his half of the pair, perfectly reconstructing $|\psi\rangle$.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Start[Unknown State & Shared EPR Pair] --> A[Alice's Local Operations]

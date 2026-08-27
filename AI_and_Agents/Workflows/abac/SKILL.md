@@ -94,7 +94,7 @@ Action Attributes ───┤
 | Roles needed | 10-50 predefined roles | 0-5 base roles + policies |
 | Policy change | New role or permission assignment | Update policy condition |
 | Context awareness | None | Full (time, location, risk, etc.) |
-| Audit complexity | Simple (role assignments) | Complex (attribute snapshots needed) |
+| [Audit](../../Operations/audit/SKILL.md) complexity | Simple (role assignments) | Complex (attribute snapshots needed) |
 | Implementation complexity | Low | High |
 | Scalability | Linear with roles | Linear with policies |
 | Best for | Stable org structures | Dynamic, context-sensitive environments |
@@ -530,7 +530,7 @@ function hybridCheck(user, action, resource, env) {
 }
 ```
 
-### Step 7: Test & Audit ABAC Policies
+### Step 7: Test & [Audit](../../Operations/audit/SKILL.md) ABAC Policies
 
 ```javascript
 // Policy test cases
@@ -620,7 +620,7 @@ function analyzePolicyCoverage(policies) {
 }
 ```
 
-**Audit logging for ABAC decisions:**
+**[Audit](../../Operations/audit/SKILL.md) logging for ABAC decisions:**
 ```javascript
 function logABACDecision(user, action, resource, env, result, matchedPolicies) {
   logger.info({
@@ -659,7 +659,7 @@ function logABACDecision(user, action, resource, env, result, matchedPolicies) {
 - Cache attribute lookups but never cache the final authorization decision (context changes).
 - Policy changes take effect immediately; version all policies.
 - ABAC is not a replacement for RBAC — use hybrid.
-- Every ABAC decision must be logged with attribute snapshot for audit.
+- Every ABAC decision must be logged with attribute snapshot for [audit](../../Operations/audit/SKILL.md).
 - Test every policy with minimum/maximum/boundary attribute values.
 - Risk-based policies must have a floor: never allow if risk > 90 regardless of other attributes.
 

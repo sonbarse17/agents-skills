@@ -28,16 +28,16 @@ Applies to any task involving code documentation, API specs, or developer-facing
 3. **Analyze** - Find undocumented code
 4. **Document** - Apply consistent format
 5. **Validate** - Test all code examples compile/run:
-   - Python: `python -m doctest file.py` for doctest blocks; `pytest --doctest-modules` for module-wide checks
-   - TypeScript/JavaScript: `tsc --noEmit` to confirm typed examples compile
+   - [Python](../../Languages/python/SKILL.md): `[python](../../Languages/python/SKILL.md) -m doctest file.py` for doctest blocks; `pytest --doctest-modules` for module-wide checks
+   - [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript: `tsc --noEmit` to confirm typed examples compile
    - OpenAPI: validate spec with `npx @redocly/cli lint openapi.yaml`
    - If validation fails: fix examples and re-validate before proceeding to the Report step
 6. **Report** - Generate coverage summary
 
 ## Quick-Reference Examples
 
-### Google-style Docstring (Python)
-```python
+### Google-style Docstring ([Python](../../Languages/python/SKILL.md))
+```[python](../../Languages/python/SKILL.md)
 def fetch_user(user_id: int, active_only: bool = True) -> dict:
     """Fetch a single user record by ID.
 
@@ -54,8 +54,8 @@ def fetch_user(user_id: int, active_only: bool = True) -> dict:
     """
 ```
 
-### NumPy-style Docstring (Python)
-```python
+### NumPy-style Docstring ([Python](../../Languages/python/SKILL.md))
+```[python](../../Languages/python/SKILL.md)
 def compute_similarity(vec_a: np.ndarray, vec_b: np.ndarray) -> float:
     """Compute cosine similarity between two vectors.
 
@@ -78,8 +78,8 @@ def compute_similarity(vec_a: np.ndarray, vec_b: np.ndarray) -> float:
     """
 ```
 
-### JSDoc (TypeScript)
-```typescript
+### JSDoc ([TypeScript](../../Frontend/typescript/SKILL.md))
+```[typescript](../../Frontend/typescript/SKILL.md)
 /**
  * Fetches a paginated list of products from the catalog.
  *
@@ -106,9 +106,9 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Python Docstrings | `../../../Global_References/python-docstrings.md` | Google, NumPy, Sphinx styles |
-| TypeScript JSDoc | `../../../Global_References/typescript-jsdoc.md` | JSDoc patterns, TypeScript |
-| FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | Python API documentation |
+| [Python](../../Languages/python/SKILL.md) Docstrings | `../../../Global_References/[python](../../Languages/python/SKILL.md)-docstrings.md` | Google, NumPy, Sphinx styles |
+| [TypeScript](../../Frontend/typescript/SKILL.md) JSDoc | `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-jsdoc.md` | JSDoc patterns, [TypeScript](../../Frontend/typescript/SKILL.md) |
+| FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | [Python](../../Languages/python/SKILL.md) API documentation |
 | NestJS/Express API | `../../../Global_References/api-docs-nestjs-express.md` | Node.js API documentation |
 | Coverage Reports | `../../../Global_References/coverage-reports.md` | Generating documentation reports |
 | Documentation Systems | `../../../Global_References/documentation-systems.md` | Doc sites, static generators, search, testing |
@@ -146,5 +146,5 @@ Depending on the task, provide:
 
 Google/NumPy/Sphinx docstrings, JSDoc, OpenAPI 3.0/3.1, AsyncAPI, gRPC/protobuf, FastAPI, Django, NestJS, Express, GraphQL, Docusaurus, MkDocs, VitePress, Swagger UI, Redoc, Stoplight
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-documenter/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/quality/code-documenter/)
 

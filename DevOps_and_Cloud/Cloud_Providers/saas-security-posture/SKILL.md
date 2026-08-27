@@ -16,9 +16,9 @@ Secure every SaaS tool your company relies on with practical, command-driven har
 - **SOC 2 preparation** — auditors need evidence of MFA, access controls, and OAuth governance.
 - **Suspicious OAuth app** — an employee authorized a third-party app with broad scopes.
 - **SaaS sprawl** — teams sign up for tools with company email and nobody tracks them.
-- **Post-incident hardening** — after phishing or credential leaks, tighten every surface.
+- **Post-[incident](../../Observability_and_SecOps/incident/SKILL.md) hardening** — after phishing or credential leaks, tighten every surface.
 
-## 2. SaaS Inventory Audit
+## 2. SaaS Inventory [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ### Google Workspace — OAuth Grants
 
@@ -26,7 +26,7 @@ Secure every SaaS tool your company relies on with practical, command-driven har
 gam all users show tokens > oauth_tokens_audit.csv
 ```
 
-### GitHub — Installed Apps
+### [GitHub](../../CI_CD/github/SKILL.md) — Installed Apps
 
 ```bash
 gh api /orgs/{ORG}/installations --paginate \
@@ -59,7 +59,7 @@ tools:
     owner: it@company.com
     sso: true
     mfa: enforced
-  - name: GitHub Enterprise
+  - name: [GitHub](../../CI_CD/github/SKILL.md) Enterprise
     owner: engineering@company.com
     sso: true
     mfa: enforced
@@ -75,7 +75,7 @@ tools:
 
 ---
 
-## 3. GitHub Security Hardening
+## 3. [GitHub](../../CI_CD/github/SKILL.md) Security Hardening
 
 ```bash
 # Enforce 2FA and find non-compliant members
@@ -92,7 +92,7 @@ gh api -X POST /orgs/{ORG}/ip-allow-list \
 
 # Branch protection on main
 gh api -X PUT /repos/{ORG}/{REPO}/branches/main/protection \
-  -H "Accept: application/vnd.github+json" --input - <<'EOF'
+  -H "Accept: application/vnd.[github](../../CI_CD/github/SKILL.md)+json" --input - <<'EOF'
 {
   "required_status_checks": {"strict": true, "contexts": ["ci/build","ci/test"]},
   "enforce_admins": true,
@@ -107,12 +107,12 @@ gh api -X PUT /repos/{ORG}/{REPO}/branches/main/protection \
 }
 EOF
 
-# Audit PATs and revoke stale tokens
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) PATs and revoke stale tokens
 gh api /orgs/{ORG}/personal-access-tokens --paginate \
   --jq '.[] | {owner: .owner.login, name: .token_name, expires: .token_expires_at}'
 gh api -X DELETE /orgs/{ORG}/personal-access-tokens/{PAT_ID}
 
-# Audit deploy keys and webhooks
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) deploy keys and webhooks
 for repo in $(gh repo list {ORG} --limit 500 --json name -q '.[].name'); do
   gh api /repos/{ORG}/${repo}/keys --jq '.[] | {title: .title, read_only: .read_only}'
 done
@@ -147,7 +147,7 @@ curl -s -X POST -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
   "https://slack.com/api/admin.teams.settings.setRetentionPolicy" \
   -d '{"team_id": "T0XXXXXXX", "retention_type": "all", "retention_duration": 365}'
 
-# Audit Slack Connect shared channels
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Slack Connect shared channels
 curl -s -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
   "https://slack.com/api/admin.conversations.search?search_channel_types=connect" \
   | jq '.conversations[] | {name: .name, is_ext_shared: .is_ext_shared}'
@@ -237,7 +237,7 @@ aws cloudtrail start-logging --name org-security-trail
 # Google — find apps with dangerous scopes
 gam all users show tokens | grep -E "(drive|gmail|admin)" > high_risk_oauth.txt
 
-# GitHub — find apps with write access
+# [GitHub](../../CI_CD/github/SKILL.md) — find apps with write access
 gh api /orgs/{ORG}/installations --paginate \
   --jq '.installations[] | select(.permissions.contents == "write") | {app: .app_slug}'
 ```
@@ -247,7 +247,7 @@ gh api /orgs/{ORG}/installations --paginate \
 ```bash
 gam user compromised@company.com delete token clientid APP_CLIENT_ID  # single app
 gam user compromised@company.com delete tokens                        # all apps
-gh api -X DELETE /orgs/{ORG}/installations/{INSTALLATION_ID}           # GitHub app
+gh api -X DELETE /orgs/{ORG}/installations/{INSTALLATION_ID}           # [GitHub](../../CI_CD/github/SKILL.md) app
 curl -s -X POST -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
   -H "Content-Type: application/json" \
   "https://slack.com/api/admin.apps.uninstall" -d '{"app_id": "A0XXXXXXX"}'
@@ -257,11 +257,11 @@ curl -s -X POST -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
 
 ```
 CRITICAL — revoke unless justified:
-  Google: mail.google.com, admin.directory.user | GitHub: admin:org, repo | Slack: admin
+  Google: mail.google.com, admin.directory.user | [GitHub](../../CI_CD/github/SKILL.md): admin:org, repo | Slack: admin
 HIGH — review carefully:
-  Google: googleapis.com/auth/drive | GitHub: contents:write | Slack: channels:read
+  Google: googleapis.com/auth/drive | [GitHub](../../CI_CD/github/SKILL.md): contents:write | Slack: channels:read
 LOW — generally safe:
-  Google: userinfo.email | GitHub: read:org | Slack: identity.basic
+  Google: userinfo.email | [GitHub](../../CI_CD/github/SKILL.md): read:org | Slack: identity.basic
 ```
 
 ---
@@ -297,7 +297,7 @@ BREAK_GLASS_PW=$(openssl rand -base64 48)
 gam create user breakglass@company.com firstname "Break" lastname "Glass" \
   password "${BREAK_GLASS_PW}" org "/Admins" admin on
 # Store password in a sealed envelope in a physical safe
-# After every use: rotate password, re-seal, log the incident
+# After every use: rotate password, re-seal, log the [incident](../../Observability_and_SecOps/incident/SKILL.md)
 ```
 
 ---
@@ -309,7 +309,7 @@ gam create user breakglass@company.com firstname "Break" lastname "Glass" \
 gam update org "/" settings drive sharing_outside_domain off
 gam update org "/" settings drive disable_download_print_copy_for_viewers on
 
-# GitHub — enable secret scanning and push protection org-wide
+# [GitHub](../../CI_CD/github/SKILL.md) — enable secret scanning and push protection org-wide
 gh api -X PATCH /orgs/{ORG} -f security_product=secret_scanning -f enablement=enable_all
 gh api -X PATCH /orgs/{ORG} -f security_product=secret_scanning_push_protection -f enablement=enable_all
 gh api /orgs/{ORG}/secret-scanning/alerts --paginate \
@@ -343,7 +343,7 @@ for domain in "${SHADOW_IT_DOMAINS[@]}"; do
 done
 ```
 
-### Google Workspace Login Audit
+### Google Workspace Login [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
 gam report login parameters app_name \
@@ -360,7 +360,7 @@ comm -23 <(awk '{print $2}' top_domains.txt | sort) \
   <(yq '.tools[].domains[]' saas-inventory.yaml | sort) > unapproved.txt
 ```
 
-### Automated Alerting
+### Automated [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 
 ```bash
 cat <<'SCRIPT' > /usr/local/bin/shadow-it-check.sh
@@ -382,12 +382,12 @@ echo "0 8 * * * root /usr/local/bin/shadow-it-check.sh" >> /etc/cron.d/shadow-it
 
 | # | Action | Scope |
 |---|--------|-------|
-| 1 | Enforce MFA/2FA everywhere | Google, GitHub, AWS, Slack |
+| 1 | Enforce MFA/2FA everywhere | Google, [GitHub](../../CI_CD/github/SKILL.md), AWS, Slack |
 | 2 | Enable SSO with your IdP | All tools |
-| 3 | Audit and revoke OAuth grants | Google, GitHub |
+| 3 | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and revoke OAuth grants | Google, [GitHub](../../CI_CD/github/SKILL.md) |
 | 4 | Require Slack app approval | Slack |
-| 5 | Branch protection on main | GitHub |
-| 6 | Secret scanning + push protection | GitHub |
+| 5 | Branch protection on main | [GitHub](../../CI_CD/github/SKILL.md) |
+| 6 | Secret scanning + push protection | [GitHub](../../CI_CD/github/SKILL.md) |
 | 7 | Block public S3 buckets | AWS |
 | 8 | Enable org-wide CloudTrail | AWS |
 | 9 | Disable external Drive sharing | Google |

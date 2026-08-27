@@ -21,7 +21,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete Kubernetes Deployment on AKS From Scratch
+# Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on AKS From Scratch
 
 ## Purpose
 
@@ -33,7 +33,7 @@ changed later without rebuilding), and cert-manager's Azure DNS-01
 credentials each have their own setup order, and getting that order wrong
 produces a cluster that looks finished right up until someone depends on
 the piece that was skipped or sequenced too late. This skill is the
-Azure-specific end-to-end runbook: it sequences Azure landing zone
+Azure-specific end-to-end [runbook](../../Observability_and_SecOps/runbook/SKILL.md): it sequences Azure landing zone
 prerequisites, AKS provisioning, CNI mode selection, ingress, cert-manager
 with Azure DNS, conformance validation, a first workload, and a health
 baseline into one ordered path, cross-referencing the tool-specific skill
@@ -43,7 +43,7 @@ that covers each phase's actual detail.
 
 - Deploying a brand-new AKS cluster into an Azure subscription for the
   first time, where the subscription already exists inside the org's
-  Management Group hierarchy but has no Kubernetes workload yet.
+  Management Group hierarchy but has no [Kubernetes](../kubernetes/SKILL.md) workload yet.
 - Auditing an existing AKS rollout for a skipped or out-of-order phase
   (e.g. cert-manager configured before its federated credential existed,
   or a cluster handed off with no conformance validation).
@@ -59,16 +59,16 @@ that covers each phase's actual detail.
   vending process and landed in the correct Management Group with Azure
   Policy guardrails applied — this skill does **not** cover Management
   Group design or subscription vending; see
-  [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md).
+  [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../../Cloud_Providers/azure-landing-zone-setup/SKILL.md)/SKILL.md).
 - RBAC rights to create the AKS cluster, its node resource group, Entra ID
   app registrations/managed identities, and federated credentials — see
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
   for the least-privilege design that should govern every identity
   created in Phase 1.
 - An Azure DNS public zone already delegated for the domain cert-manager
   will issue certificates for (Phase 4 depends on this existing before
   DNS-01 can succeed).
-- `az` CLI ≥ 2.60 with the `aks-preview` extension current, `kubectl`, and
+- `az` CLI ≥ 2.60 with the `aks-preview` extension current, `[kubectl](../kubectl/SKILL.md)`, and
   `helm` ≥ 3.14.
 - A non-production subscription to rehearse this exact sequence in at
   least once — the CNI mode decision in Phase 3 in particular cannot be
@@ -84,7 +84,7 @@ integration decisions.
 1. **Phase 1 — Azure landing zone & identity prerequisites.** Confirm the
    subscription sits in the correct Management Group with Azure Policy
    guardrails applied (see
-   [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md)).
+   [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../../Cloud_Providers/azure-landing-zone-setup/SKILL.md)/SKILL.md)).
    AKS-specific sequencing point: **create the Entra ID managed identities
    this cluster will need up front**, even though their federated
    credentials (which require the AKS OIDC issuer URL from Phase 2) can't
@@ -97,7 +97,7 @@ integration decisions.
    creation pass once Phase 5 needs one.
 
 2. **Phase 2 — Provision the AKS cluster and node pools.** Use
-   [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
    for the full `az aks create`/node pool/workload identity setup detail.
    AKS-specific sequencing point: enable Azure AD Workload Identity and
    OIDC issuer **at cluster creation** — retrofitting these onto a live
@@ -106,7 +106,7 @@ integration decisions.
    step alone):
    ```bash
    az aks create --name payments-prod --resource-group payments-rg \
-     --kubernetes-version 1.30 --enable-managed-identity \
+     --[kubernetes](../kubernetes/SKILL.md)-version 1.30 --enable-managed-identity \
      --enable-oidc-issuer --enable-workload-identity \
      --network-plugin azure --enable-private-cluster
    az aks get-credentials --name payments-prod --resource-group payments-rg
@@ -134,7 +134,7 @@ integration decisions.
    specific CNI for portability, Azure CNI Powered by Cilium (an
    AKS-native option) or a self-managed Calico installation are valid
    swaps — see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for the underlying tradeoffs; decide this alongside the CNI mode
    above, not as an afterthought once nodes are already running.
 
@@ -145,7 +145,7 @@ integration decisions.
      Azure WAF or Application Gateway-specific features are required.
    - **ingress-nginx** behind a `Service` of `type: LoadBalancer`
      (provisions an Azure Load Balancer) — see
-     [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+     [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
      for full install/annotation detail; preferred for parity with
      non-Azure clusters running the same ingress-nginx configuration.
    Once the controller has an external address, create the Azure DNS
@@ -156,7 +156,7 @@ integration decisions.
 
 5. **Phase 5 — cert-manager with Azure DNS.** Install cert-manager and
    configure a `ClusterIssuer` per
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md),
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md),
    substituting Azure DNS for the Route 53 example shown there. The
    AKS-specific integration point: complete the federated credential for
    the `cert-manager-dns01-identity` planned in Phase 1, using the OIDC
@@ -189,13 +189,13 @@ integration decisions.
            selector: { dnsZones: ["example.com"] }
    ```
    Validate against Let's Encrypt staging first, exactly as
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
    describes.
 
 6. **Phase 6 — Conformance and smoke validation.** Run Sonobuoy quick
    mode, then full `certified-conformance`, then targeted smoke tests —
    see
-   [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md).
+   [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md).
    For AKS specifically, also confirm the default `managed-csi`
    `StorageClass` (Azure Disk CSI driver) provisions a PVC, and — if Azure
    CNI Overlay was chosen in Phase 3 — that cross-node pod connectivity
@@ -204,7 +204,7 @@ integration decisions.
 
 7. **Phase 7 — Deploy the first workload via Helm.** Package and install
    per
-   [helm-chart-authoring](../helm-chart-authoring/SKILL.md), completing
+   [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md), completing
    the `payments-api-identity` federated credential from Phase 1 the same
    way Phase 5 completed cert-manager's, using the workload's own
    namespace/ServiceAccount subject:
@@ -220,10 +220,10 @@ integration decisions.
 8. **Phase 8 — Node/cluster health baseline.** Establish the ongoing
    operational baseline: node drain/cordon discipline and `NotReady`
    diagnosis via
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md).
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md).
    **Note what does *not* apply here:** AKS's control plane and etcd are
    fully Azure-managed — the procedures in
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
    do not apply; rely on AKS diagnostic settings routed to the landing
    zone's central Log Analytics workspace instead.
 
@@ -285,7 +285,7 @@ integration decisions.
   provisioning gap or overlay-CNI cross-node issue surfaces days later
   under real traffic.
   **Fix:** Treat Phase 6 as a required gate, not optional — see
-  [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+  [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
   for exactly the checklist this catches before handoff.
 
 ## Worked example
@@ -302,7 +302,7 @@ az identity create --name cert-manager-dns01-identity --resource-group payments-
 
 # Phase 2 — cluster with workload identity + OIDC issuer enabled at creation
 az aks create --name payments-prod --resource-group payments-rg \
-  --kubernetes-version 1.30 --enable-managed-identity \
+  --[kubernetes](../kubernetes/SKILL.md)-version 1.30 --enable-managed-identity \
   --enable-oidc-issuer --enable-workload-identity \
   --network-plugin azure --network-plugin-mode overlay --enable-private-cluster
 az aks get-credentials --name payments-prod --resource-group payments-rg
@@ -310,13 +310,13 @@ AKS_OIDC_ISSUER=$(az aks show --name payments-prod --resource-group payments-rg 
   --query "oidcIssuerProfile.issuerUrl" -o tsv)
 
 # Phase 3 — overlay CNI already active; confirm
-kubectl get pods -n kube-system -l k8s-app=azure-cni
+[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=azure-cni
 
 # Phase 4 — ingress-nginx via Helm
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
-kubectl get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
+[kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
 az network dns record-set a add-record --zone-name example.com \
   --resource-group dns-rg --record-set-name payments --ipv4-address <EXTERNAL_IP>
 
@@ -327,7 +327,7 @@ az identity federated-credential create \
   --subject system:serviceaccount:cert-manager:cert-manager
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 --set crds.enabled=true
-kubectl apply -f azure-dns-staging-issuer.yaml   # validate, then swap to prod
+[kubectl](../kubectl/SKILL.md) apply -f azure-dns-staging-issuer.yaml   # validate, then swap to prod
 
 # Phase 6 — validation gate
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
@@ -342,24 +342,24 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
   --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
 
 # Phase 8 — health baseline
-kubectl get nodes
-kubectl get pdb -A
+[kubectl](../kubectl/SKILL.md) get nodes
+[kubectl](../kubectl/SKILL.md) get pdb -A
 ```
 
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming the full sequence wired
-together correctly, and the node maintenance runbook (Phase 8) is
+together correctly, and the node maintenance [runbook](../../Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is
 documented before the first planned patch window.
 
 ## Cross-references
 
-- [azure-landing-zone-setup](../../../cloud/skills/azure-landing-zone-setup/SKILL.md) — the Management Group/subscription/guardrail layer this sequence assumes already exists.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege design for every identity created across Phases 1, 5, and 7.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — full detail for Phase 2's cluster/node pool/workload identity provisioning.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — the Calico alternative/complement to Azure CNI referenced in Phase 3.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — full detail for Phase 6's validation gate.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — the ongoing operational baseline established in Phase 8.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — explains why its procedures do not apply to this managed control plane.
+- [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../../Cloud_Providers/azure-landing-zone-setup/SKILL.md)/SKILL.md) — the Management Group/subscription/guardrail layer this sequence assumes already exists.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege design for every identity created across Phases 1, 5, and 7.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — full detail for Phase 2's cluster/node pool/workload identity provisioning.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — the Calico alternative/complement to Azure CNI referenced in Phase 3.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 6's validation gate.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 8.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — explains why its procedures do not apply to this managed control plane.

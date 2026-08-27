@@ -25,7 +25,7 @@ notices. Blue-green and canary strategies exist to decouple *deploying* new
 code from *exposing* it to all traffic, so that a bad release affects a
 small, quickly-reversible blast radius (or none at all, in blue-green's
 case) instead of the whole user base. This matters operationally because
-it turns "did the deploy work?" from a question answered by incident
+it turns "did the deploy work?" from a question answered by [incident](../../Observability_and_SecOps/incident/SKILL.md)
 reports into one answered by automated health signals before full rollout.
 
 ## When to use
@@ -45,17 +45,17 @@ reports into one answered by automated health signals before full rollout.
 
 ## Prerequisites & environment
 
-- A deployment platform supporting traffic splitting: Kubernetes with a
+- A deployment platform supporting traffic splitting: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) with a
   service mesh (Istio, Linkerd) or an ingress supporting weighted
-  routing, or a progressive-delivery controller — Argo Rollouts ≥ 1.6 or
-  Flagger ≥ 1.x are the common choices; plain Kubernetes `Deployment`
+  routing, or a [progressive-delivery](../progressive-delivery/SKILL.md) controller — Argo Rollouts ≥ 1.6 or
+  Flagger ≥ 1.x are the common choices; plain [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) `Deployment`
   rolling updates alone do not give you traffic-percentage control, only
   pod-replacement pacing.
 - Health/metrics signals available for automated analysis: a metrics
   backend (Prometheus is the common default for both Argo Rollouts
   `AnalysisTemplate` and Flagger) exposing error rate, latency, and
   saturation for the service.
-- For blue-green specifically: enough infrastructure capacity to run two
+- For blue-green specifically: enough infrastructure [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to run two
   full environments (or replica sets) simultaneously during the cutover
   window, plus a router/load balancer or DNS layer that can flip traffic
   atomically.
@@ -67,13 +67,13 @@ reports into one answered by automated health signals before full rollout.
 
 1. **Choose the strategy based on risk and cost tolerance.** Blue-green
    gives instant, full-traffic rollback (flip the router back) at the
-   cost of running double capacity briefly. Canary gives fine-grained,
+   cost of running double [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) briefly. Canary gives fine-grained,
    metric-driven risk containment (bad version only ever sees a fraction
    of traffic) at the cost of more complex automation and a longer
    rollout window. Many teams combine them: canary for routine releases,
    blue-green for high-risk or infrequent major changes.
 
-2. **Blue-green with a Kubernetes Service selector flip** (simple
+2. **Blue-green with a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service selector flip** (simple
    approach, no mesh required):
    ```yaml
    # New version deployed as "green", labeled distinctly from "blue"
@@ -145,7 +145,7 @@ reports into one answered by automated health signals before full rollout.
          successCondition: result[0] <= 0.01
          provider:
            prometheus:
-             address: http://prometheus.monitoring:9090
+             address: http://prometheus.[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):9090
              query: |
                sum(rate(http_requests_total{app="payments-api",status=~"5.."}[5m]))
                /
@@ -183,7 +183,7 @@ reports into one answered by automated health signals before full rollout.
    ```
 
 5. **Verify before promoting, promote deliberately.** Whether via
-   `pause:` steps that require an operator to confirm (`kubectl argo
+   `pause:` steps that require an operator to confirm (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) argo
    rollouts promote payments-api`) or fully automated analysis, never
    promote to 100% purely on a fixed timer with no health signal attached
    — the whole point of canary is that the *signal*, not the clock,
@@ -191,8 +191,8 @@ reports into one answered by automated health signals before full rollout.
 
 6. **Roll back explicitly when analysis fails or a human calls it.**
    ```bash
-   kubectl argo rollouts abort payments-api     # halt and revert to stable
-   kubectl argo rollouts undo payments-api      # revert to previous revision
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts abort payments-api     # halt and revert to stable
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts undo payments-api      # revert to previous revision
    ```
    For blue-green's Service-selector approach, rollback is simply
    flipping the selector back to `blue` — keep `blue` running unscaled
@@ -206,8 +206,8 @@ reports into one answered by automated health signals before full rollout.
   rollback is "flip back" rather than "redeploy from scratch."
 - Base promotion/rollback decisions on the same metrics that page
   on-call for the service (error rate, latency, saturation) — a canary
-  analysis using different signals than production alerting can pass
-  while production alerting would have failed, or vice versa.
+  analysis using different signals than production [alerting](../../Observability_and_SecOps/alerting/SKILL.md) can pass
+  while production [alerting](../../Observability_and_SecOps/alerting/SKILL.md) would have failed, or vice versa.
 - Start canary weight small (5-10%) for high-traffic services — even a
   short exposure at 10% of a large fleet's traffic is a meaningful sample
   size for catching regressions without meaningful user impact.
@@ -222,7 +222,7 @@ reports into one answered by automated health signals before full rollout.
   outside business hours.
 - Tag/version the specific image under test so canary results are
   attributable to an exact build — this is where
-  [container-build-and-release](../container-build-and-release/SKILL.md)'s
+  [container-build-and-release](../[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)'s
   immutable-tag practice matters most; a canary running a `latest` tag
   that moved mid-rollout invalidates the whole analysis.
 
@@ -240,7 +240,7 @@ reports into one answered by automated health signals before full rollout.
   downstream service or the database breaks once the old version is
   fully retired.
   **Fix:** This usually means a backward-incompatible schema or contract
-  change shipped as part of the release — audit for migrations that
+  change shipped as part of the release — [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for migrations that
   aren't safe for both versions to run against simultaneously, and adopt
   an expand/contract pattern for future schema changes.
 
@@ -273,9 +273,9 @@ reports into one answered by automated health signals before full rollout.
 30-minute automated rollout with an error-rate gate, on a cluster already
 running Argo Rollouts.
 
-1. Update the `Rollout` resource's image to `1.4.2` (via the GitOps
+1. Update the `Rollout` resource's image to `1.4.2` (via the [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md)
    config repo, per
-   [gitops-workflow](../gitops-workflow/SKILL.md)) and let the operator
+   [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)) and let the operator
    reconcile it.
 2. Argo Rollouts creates the canary ReplicaSet at `setWeight: 10` and
    begins routing 10% of traffic to `1.4.2`.
@@ -291,11 +291,11 @@ running Argo Rollouts.
    for those 5 minutes.
 5. On success at `setWeight: 100`, the previous stable ReplicaSet (`1.4.1`)
    is scaled down but not deleted immediately, preserving a fast-rollback
-   option (`kubectl argo rollouts undo payments-api`) during the
+   option (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts undo payments-api`) during the
    post-release soak window.
 
 ## Cross-references
 
-- [container-build-and-release](../container-build-and-release/SKILL.md)
-- [gitops-workflow](../gitops-workflow/SKILL.md)
-- [environment-promotion-strategy](../environment-promotion-strategy/SKILL.md)
+- [container-build-and-release](../[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)
+- [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
+- [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)

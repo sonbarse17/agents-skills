@@ -74,7 +74,7 @@ Detailed pattern documentation lives in `../../../Global_References/e2e-testing-
 7. **Meaningful Assertions**: Check actual user-visible behavior
 8. **Optimize for Speed**: Mock when possible, parallel execution
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // ❌ Bad selectors
 cy.get(".btn.btn-primary.submit-button").click();
 cy.get("div > form > div:nth-child(2) > input").type("text");
@@ -97,7 +97,7 @@ cy.get('[data-testid="email-input"]').type("user@example.com");
 
 ## Debugging Failing Tests
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Playwright debugging
 // 1. Run in headed mode
 npx playwright test --headed

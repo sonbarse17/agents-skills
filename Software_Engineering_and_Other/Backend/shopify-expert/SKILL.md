@@ -126,8 +126,8 @@ shopify app generate extension                        # Add checkout UI extensio
 shopify app generate graphql                          # Generate typed GraphQL hooks
 ```
 
-### App — Authenticated Admin API fetch (TypeScript)
-```typescript
+### App — Authenticated Admin API fetch ([TypeScript](../../Frontend/typescript/SKILL.md))
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { authenticate } from "../shopify.server";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 
@@ -156,7 +156,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 - Use App Bridge for embedded apps
 - Implement proper error handling for API calls
 - Follow Shopify theme architecture patterns
-- Use TypeScript for app development
+- Use [TypeScript](../../Frontend/typescript/SKILL.md) for app development
 - Test checkout extensions in sandbox
 - Run `shopify theme check` before every theme deployment
 
@@ -174,7 +174,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 When implementing Shopify solutions, provide:
 1. Complete file structure with proper naming
-2. Liquid/GraphQL/TypeScript code with types
+2. Liquid/GraphQL/[TypeScript](../../Frontend/typescript/SKILL.md) code with types
 3. Configuration files (shopify.app.toml, schema settings)
 4. API scopes and permissions needed
 5. Testing approach and deployment steps
@@ -183,5 +183,5 @@ When implementing Shopify solutions, provide:
 
 Shopify CLI 3.x, Liquid 2.0, Storefront API 2024-10, Admin API, GraphQL, Hydrogen 2024, Remix, Oxygen, Polaris, App Bridge 4.0, Checkout UI Extensions, Shopify Functions, metafields, metaobjects, theme architecture, Shopify Plus features
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/platform/shopify-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/platform/shopify-expert/)
 

@@ -10,7 +10,7 @@ metadata:
 
 # Service-Level Objectives (SLOs)
 
-Create and manage SLOs in Elastic Observability. SLOs track service performance against measurable targets using
+Create and manage SLOs in Elastic [Observability](../observability/SKILL.md). SLOs track service performance against measurable targets using
 service-level indicators (SLIs) computed from Elasticsearch data.
 
 ## Authentication
@@ -19,13 +19,13 @@ SLO operations go through the Kibana API. Authenticate with either an API key or
 
 ```bash
 # API key
-curl -H "Authorization: ApiKey <base64-encoded-key>" -H "kbn-xsrf: true" <KIBANA_URL>/api/observability/slos
+curl -H "Authorization: ApiKey <base64-encoded-key>" -H "kbn-xsrf: true" <KIBANA_URL>/api/[observability](../observability/SKILL.md)/slos
 
 # Basic auth
-curl -u "$KIBANA_USER:$KIBANA_PASSWORD" -H "kbn-xsrf: true" <KIBANA_URL>/api/observability/slos
+curl -u "$KIBANA_USER:$KIBANA_PASSWORD" -H "kbn-xsrf: true" <KIBANA_URL>/api/[observability](../observability/SKILL.md)/slos
 ```
 
-For non-default spaces, prefix the path: `/s/<space_id>/api/observability/slos`.
+For non-default spaces, prefix the path: `/s/<space_id>/api/[observability](../observability/SKILL.md)/slos`.
 
 Include `kbn-xsrf: true` on all POST, PUT, and DELETE requests.
 
@@ -58,11 +58,11 @@ For official documentation, refer to the following resources:
 
 ### SLO documentation
 
-- [Service-level objectives (SLOs)](https://www.elastic.co/docs/solutions/observability/incident-management/service-level-objectives-slos)
+- [Service-level objectives (SLOs)](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)/service-level-objectives-slos)
   — concepts, SLI types, budgeting methods, and dashboard panels.
-- [Create an SLO](https://www.elastic.co/docs/solutions/observability/incident-management/create-an-slo) — step-by-step
+- [Create an SLO](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)/create-an-slo) — step-by-step
   guide for creating SLOs in the Kibana UI.
-- [View and manage SLOs](https://www.elastic.co/docs/solutions/observability/incident-management/slo-management) —
+- [View and manage SLOs](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)/slo-management) —
   searching, filtering, and managing existing SLOs.
 
 ### Kibana SLO API
@@ -79,6 +79,6 @@ For official documentation, refer to the following resources:
 
 ### Troubleshooting and access
 
-- [Troubleshoot SLOs](https://www.elastic.co/docs/troubleshoot/observability/troubleshoot-service-level-objectives-slos)
-- [Configure SLO access](https://www.elastic.co/docs/solutions/observability/incident-management/configure-service-level-objective-slo-access)
-- [Create an SLO burn rate rule](https://www.elastic.co/docs/solutions/observability/incident-management/create-an-slo-burn-rate-rule)
+- [Troubleshoot SLOs](https://www.elastic.co/docs/troubleshoot/[observability](../observability/SKILL.md)/troubleshoot-service-level-objectives-slos)
+- [Configure SLO access](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)/configure-service-level-objective-slo-access)
+- [Create an SLO burn rate rule](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)/create-an-slo-burn-rate-rule)

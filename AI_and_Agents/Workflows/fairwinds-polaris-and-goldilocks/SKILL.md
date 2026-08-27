@@ -21,7 +21,7 @@ metadata:
 
 ## Purpose
 
-Not every Kubernetes configuration problem needs a custom-authored policy
+Not every [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) configuration problem needs a custom-authored policy
 engine. Fairwinds **Polaris** ships a curated, opinionated set of
 best-practice checks (resource requests/limits set, security context
 hardened, liveness/readiness probes present, image tags not `latest`,
@@ -45,7 +45,7 @@ investing in custom policy authoring for gaps neither tool covers.
   configuration (resource limits, security context, probes) without
   writing custom Rego or Kyverno rules first.
 - The user is auditing an existing cluster and wants a scored report of
-  which workloads violate common Kubernetes best practices, to prioritize
+  which workloads violate common [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) best practices, to prioritize
   remediation.
 - The user wants Polaris running as an **admission webhook** to block (or
   warn on) new workloads that don't meet the baseline, as a lighter-weight
@@ -63,7 +63,7 @@ investing in custom policy authoring for gaps neither tool covers.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster (Polaris and Goldilocks both work against any
+- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (Polaris and Goldilocks both work against any
   conformant 1.2x+ cluster) with access to install via Helm or the CLI.
 - **Polaris** — install as a one-off CLI scan (no cluster install
   required, works against local YAML or a live cluster context) or as an
@@ -72,7 +72,7 @@ investing in custom policy authoring for gaps neither tool covers.
   enforcement, not just scoring/visibility.
 - **Goldilocks** requires the **Vertical Pod Autoscaler (VPA)** CRDs and
   controller installed first (`vertical-pod-autoscaler` from the
-  `kubernetes/autoscaler` project) — Goldilocks is a UI/controller layer
+  `[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler` project) — Goldilocks is a UI/controller layer
   on top of VPA's `recommender` component, not a replacement for it.
   Install VPA in recommendation-only mode; do not enable VPA's
   auto-update mode as a side effect of installing Goldilocks, since that
@@ -80,7 +80,7 @@ investing in custom policy authoring for gaps neither tool covers.
   recommend.
 - Both tools are read/report-focused by default (dashboard, CLI exit
   code) — enforcement (blocking a deploy) requires deliberately enabling
-  Polaris's admission webhook, which follows the same audit-before-enforce
+  Polaris's admission webhook, which follows the same [audit](../../Operations/audit/SKILL.md)-before-enforce
   discipline as any other admission control.
 - Helm 3.x if installing via the Fairwinds Helm charts (`fairwinds-stable`
   repo) — check chart version compatibility notes since Polaris's default
@@ -92,9 +92,9 @@ investing in custom policy authoring for gaps neither tool covers.
    manifests to get a baseline score before installing anything
    persistent:
    ```bash
-   polaris audit --format=pretty
+   polaris [audit](../../Operations/audit/SKILL.md) --format=pretty
    # or against local YAML without a cluster:
-   polaris audit --audit-path ./k8s-manifests/ --format=json > polaris-report.json
+   polaris [audit](../../Operations/audit/SKILL.md) --[audit](../../Operations/audit/SKILL.md)-path ./k8s-manifests/ --format=json > polaris-report.json
    ```
 
 2. **Review the score and per-check breakdown** — Polaris groups checks
@@ -103,7 +103,7 @@ investing in custom policy authoring for gaps neither tool covers.
    findings first (e.g. privileged containers, missing memory limits
    that risk OOM-killing the node) over `warning`-level style issues.
 
-3. **Customize the check set with a config file** — Polaris ships broad
+3. **[Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the check set with a config file** — Polaris ships broad
    defaults, but every organization should tune severities and exclusions
    rather than accepting the defaults uncritically:
    ```yaml
@@ -125,7 +125,7 @@ investing in custom policy authoring for gaps neither tool covers.
          - readinessProbeMissing   # batch job has no HTTP endpoint to probe
    ```
    ```bash
-   polaris audit --config polaris-config.yaml --format=pretty
+   polaris [audit](../../Operations/audit/SKILL.md) --config polaris-config.yaml --format=pretty
    ```
 
 4. **Install the in-cluster dashboard** for ongoing visibility rather
@@ -162,7 +162,7 @@ investing in custom policy authoring for gaps neither tool covers.
    ```bash
    # VPA (recommender only — do not enable the updater/admission components
    # unless auto-resizing is explicitly wanted)
-   kubectl apply -f https://github.com/kubernetes/autoscaler/releases/latest/download/vpa-recommender.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler/releases/latest/download/vpa-recommender.yaml
 
    helm install goldilocks fairwinds-stable/goldilocks --namespace goldilocks --create-namespace
    ```
@@ -170,7 +170,7 @@ investing in custom policy authoring for gaps neither tool covers.
 7. **Opt namespaces in explicitly** — Goldilocks only generates
    recommendations for labeled namespaces, so nothing is auto-enrolled:
    ```bash
-   kubectl label namespace payments goldilocks.fairwinds.com/enabled=true
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
    ```
 
 8. **Read recommendations from the dashboard or CLI**, and treat them as
@@ -179,8 +179,8 @@ investing in custom policy authoring for gaps neither tool covers.
    (recommend-only) so nothing changes without a human editing the
    Deployment/StatefulSet:
    ```bash
-   kubectl get vpa -n payments
-   kubectl describe vpa payments-api -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get vpa -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe vpa payments-api -n payments
    ```
 
 9. **Apply the recommended values manually** (or via a reviewed PR to the
@@ -197,20 +197,20 @@ investing in custom policy authoring for gaps neither tool covers.
 
 10. **Re-run both tools periodically** (weekly dashboard review is
     reasonable) since usage patterns and best-practice adherence drift as
-    workloads change — this isn't a one-time audit.
+    workloads change — this isn't a one-time [audit](../../Operations/audit/SKILL.md).
 
 ## Best practices
 
-- Treat Polaris as the fast first pass for well-known Kubernetes
+- Treat Polaris as the fast first pass for well-known [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
   configuration hygiene (limits, probes, security context, image tags),
   and reserve custom OPA/Kyverno policy authoring
-  ([opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md),
-  [kyverno-policy-management](../kyverno-policy-management/SKILL.md)) for
+  ([opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md),
+  [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)) for
   organization-specific rules Polaris doesn't have a built-in check for
   (custom label schemas, internal registry allowlists, business-specific
   constraints) — don't reimplement Polaris's own checks in Rego/Kyverno
   from scratch.
-- Customize severities and add documented exemptions rather than running
+- [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) severities and add documented exemptions rather than running
   with Polaris's raw defaults — a batch Job with no HTTP endpoint will
   legitimately fail `readinessProbeMissing` forever unless exempted, and
   an unreviewed default config trains teams to ignore the dashboard.
@@ -225,7 +225,7 @@ investing in custom policy authoring for gaps neither tool covers.
   workload-specific spikes (e.g. a batch job that briefly needs much more
   memory once a day).
 - Enable the Polaris admission webhook only after a warn/dashboard-only
-  period, exactly like the audit-before-enforce discipline for
+  period, exactly like the [audit](../../Operations/audit/SKILL.md)-before-enforce discipline for
   Gatekeeper/Kyverno — Polaris enforcement is still a cluster-wide
   blocking gate, just with a different rule engine underneath.
 - Label namespaces into Goldilocks deliberately and incrementally (start
@@ -237,11 +237,11 @@ investing in custom policy authoring for gaps neither tool covers.
 - **Symptom:** The Polaris admission webhook is enabled with default
   severities and immediately blocks deploys for workloads that
   legitimately don't need a readiness probe (e.g. CronJobs, batch Jobs),
-  causing an unplanned incident.
+  causing an unplanned [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   **Fix:** Run Polaris in CLI/dashboard-only (report) mode first, add
   `exemptions` for controller types/names that legitimately fail specific
   checks, and only enable the webhook once the exemption list reflects
-  real cluster workloads — the same audit-first discipline used for
+  real cluster workloads — the same [audit](../../Operations/audit/SKILL.md)-first discipline used for
   Gatekeeper/Kyverno enforcement.
 
 - **Symptom:** A team installs Goldilocks, sees VPA objects appear, and
@@ -250,7 +250,7 @@ investing in custom policy authoring for gaps neither tool covers.
   **Fix:** Confirm the VPA `updateMode` is `"Off"` (Goldilocks' default) —
   this is intentional; Goldilocks only recommends. Values must be applied
   manually to the workload's own manifest/Helm values, then verified with
-  `kubectl describe vpa` and a follow-up Polaris scan.
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe vpa` and a follow-up Polaris scan.
 
 - **Symptom:** A workload is resized to Goldilocks' exact recommended CPU
   request, and shortly after starts getting CPU-throttled during a daily
@@ -266,8 +266,8 @@ investing in custom policy authoring for gaps neither tool covers.
   internal-only compliance rule about required annotations).
   **Fix:** Polaris's check set is a curated, generic best-practices list —
   it is not a substitute for organization-specific policy. Use
-  [opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md)
-  or [kyverno-policy-management](../kyverno-policy-management/SKILL.md)
+  [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
+  or [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)
   to add custom checks for anything specific to your org that Polaris
   doesn't cover, rather than treating a good Polaris score as full policy
   coverage.
@@ -282,7 +282,7 @@ investing in custom policy authoring for gaps neither tool covers.
 
 ## Worked example
 
-A platform team wants a fast baseline audit before investing in custom
+A platform team wants a fast baseline [audit](../../Operations/audit/SKILL.md) before investing in custom
 Kyverno policies, plus right-sizing data for one overprovisioned service.
 
 `polaris-config.yaml`:
@@ -305,7 +305,7 @@ exemptions:
 
 CLI scan in CI (report-only, non-blocking initially):
 ```bash
-polaris audit --audit-path ./k8s/ --config polaris-config.yaml --format=json \
+polaris [audit](../../Operations/audit/SKILL.md) --[audit](../../Operations/audit/SKILL.md)-path ./k8s/ --config polaris-config.yaml --format=json \
   > polaris-report.json
 python3 -c "
 import json, sys
@@ -332,26 +332,26 @@ resources:
 Separately, Goldilocks is enabled for the same namespace to get an
 evidence-based value instead of a guessed one:
 ```bash
-kubectl label namespace payments goldilocks.fairwinds.com/enabled=true
-kubectl get vpa payments-api -n payments -o jsonpath='{.status.recommendation}'
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get vpa payments-api -n payments -o jsonpath='{.status.recommendation}'
 ```
 Output shows a target recommendation of `cpu: 120m, memory: 340Mi` based
 on two weeks of observed usage — noticeably lower than the
 previously-guessed `cpu: 500m, memory: 1Gi` the team had copy-pasted from
 another service. The team updates the manifest to the recommended values,
-re-runs `polaris audit`, and confirms `memoryLimitsMissing` and
+re-runs `polaris [audit](../../Operations/audit/SKILL.md)`, and confirms `memoryLimitsMissing` and
 `cpuRequestsMissing` both now pass.
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   for organization-specific rules Polaris's built-in checks don't cover,
   authored as Rego ConstraintTemplates.
-- [kyverno-policy-management](../kyverno-policy-management/SKILL.md) — a
+- [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md) — a
   YAML-native alternative for the same class of custom policy, without
   Rego.
-- [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md) —
-  the broader audit-before-enforce discipline this skill's webhook
+- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+  the broader [audit](../../Operations/audit/SKILL.md)-before-enforce discipline this skill's webhook
   guidance follows.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) —
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where a Polaris CLI scan fits as a PR-time or pre-deploy pipeline stage.

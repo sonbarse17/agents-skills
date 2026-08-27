@@ -23,7 +23,7 @@ Configure and manage object storage solutions including AWS S3, MinIO (self-host
 ## Prerequisites
 
 - AWS CLI v2 installed and configured (`aws configure`) for S3 operations
-- Docker installed for MinIO self-hosted setup
+- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) installed for MinIO self-hosted setup
 - MinIO client (`mc`) installed for MinIO management
 - IAM credentials with appropriate S3 permissions
 - Network access to the object storage endpoint
@@ -227,11 +227,11 @@ aws s3api put-bucket-logging --bucket my-app-assets-prod --bucket-logging-status
 
 ## MinIO Self-Hosted Setup
 
-### Docker Deployment
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
 
 ```bash
 # Single-node MinIO with persistent storage
-docker run -d \
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name minio \
   --restart unless-stopped \
   -p 9000:9000 \
@@ -242,10 +242,10 @@ docker run -d \
   minio/minio server /data --console-address ":9001"
 ```
 
-### Docker Compose (Multi-Drive)
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose (Multi-Drive)
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.8"
 services:
   minio:
@@ -279,10 +279,10 @@ volumes:
 
 ```bash
 # Start the stack
-docker compose up -d
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) compose up -d
 
 # Check health
-docker compose ps
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) compose ps
 curl -s http://localhost:9000/minio/health/live
 ```
 
@@ -356,7 +356,7 @@ mc event ls myminio/app-data
 
 ## Related Skills
 
-- `block-storage` -- Underlying disk storage for MinIO data volumes
-- `backup-recovery` -- Using S3/MinIO as a backup destination with restic
-- `nfs-storage` -- Alternative shared storage for file-level access
-- `linux-administration` -- Server setup and maintenance for MinIO hosts
+- `[block-storage](../block-storage/SKILL.md)` -- Underlying disk storage for MinIO data volumes
+- `[backup-recovery](../backup-recovery/SKILL.md)` -- Using S3/MinIO as a backup destination with restic
+- `[nfs-storage](../nfs-storage/SKILL.md)` -- Alternative shared storage for file-level access
+- `[linux-administration](../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and maintenance for MinIO hosts

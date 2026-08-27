@@ -37,7 +37,7 @@ Config:
 ```
 // vite.config.ts
 import { defineConfig } from 'vite'
-import preact from '@preact/preset-vite'
+import preact from '@preact/[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)-vite'
 export default defineConfig({ plugins: [preact()] })
 ```
 
@@ -88,7 +88,7 @@ Does the project use React ecosystem libraries?
 ```tsx
 // vite.config.ts
 import { defineConfig } from 'vite'
-import preact from '@preact/preset-vite'
+import preact from '@preact/[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)-vite'
 
 export default defineConfig({
   plugins: [preact()]
@@ -256,7 +256,7 @@ Both are lightweight alternatives to React. SolidJS avoids VDOM entirely for fin
 ## Testing Strategies
 
 ### Unit Testing with Vitest
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { render, screen, fireEvent } from '@testing-library/preact'
 import { Counter } from './Counter'
 
@@ -269,7 +269,7 @@ test('renders counter and increments', () => {
 ```
 
 ### Signal Testing
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { signal, computed } from '@preact/signals'
 
 test('signal computed values', () => {
@@ -300,7 +300,7 @@ test('signal computed values', () => {
 | `React.lazy` | `lazy()` from preact/compat |
 | `React.memo` | `memo()` from preact/compat |
 
-**Migration steps**: 1) Install preact + @preact/preset-vite, 2) Add alias in vite.config, 3) Replace react-dom imports with preact, 4) Add preact/compat for remaining React libs, 5) Verify bundle size reduction.
+**Migration steps**: 1) Install preact + @preact/[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)-vite, 2) Add alias in vite.config, 3) Replace react-dom imports with preact, 4) Add preact/compat for remaining React libs, 5) Verify bundle size reduction.
 
 ### From Vue/Options API to Preact
 | Vue Concept | Preact Equivalent |
@@ -314,7 +314,7 @@ test('signal computed values', () => {
 
 ## Build and Bundle Considerations
 
-- Vite plugin: `@preact/preset-vite` auto-configures JSX pragma.
+- Vite plugin: `@preact/[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)-vite` auto-configures JSX pragma.
 - Aliasing: `resolve.alias = { react: 'preact/compat', 'react-dom': 'preact/compat' }`.
 - WMR: Preact's own dev server (alternative to Vite).
 - Production builds: Vite's default build tree-shakes unused compat features.
@@ -325,7 +325,7 @@ test('signal computed values', () => {
 ## Tooling
 
 1. Preact DevTools browser extension — inspect component tree, hooks, signals.
-2. `@preact/preset-vite` — official Vite preset with HMR and alias config.
+2. `@preact/[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)-vite` — official Vite [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) with HMR and alias config.
 3. `preact-render-to-string` — SSR rendering for Preact.
 4. `@testing-library/preact` — component testing utilities.
 5. `preact-ssr-prepass` — data prefetching for SSR (Apollo, TanStack Query).
@@ -377,7 +377,7 @@ Carry forward: signal-based reactivity, hooks conventions, tiny-bundle mindset.
 
 ### Signal-Based State
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { signal, computed, effect, Signal } from '@preact/signals';
 
 // Reactive state
@@ -408,7 +408,7 @@ function Counter() {
 
 ### Optimized Component Pattern
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { h, Fragment, ComponentChildren } from 'preact';
 import { useRef, useCallback, useEffect } from 'preact/hooks';
 
@@ -469,7 +469,7 @@ function App() {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -477,7 +477,7 @@ function App() {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -490,8 +490,8 @@ function App() {
 
 - **DangerousHtml sanitization**: Preact doesn't auto-sanitize `dangerouslySetInnerHTML`. Always sanitize HTML content through DOMPurify before injecting. Never set `__html` from untrusted sources.
 - **Signal expression safety**: Signal values in JSX auto-escape via Preact's diffing. However, signals in `innerHTML` bypass JSX escaping. Always use `{signal.value}` in JSX, never construct raw HTML strings.
-- **XSS via compat**: `preact/compat` may expose React patterns like `createElement` with dangerouslySetInnerHTML. Audit compat-using components for injection vectors. Use PropTypes or TypeScript runtime checks for user input.
+- **XSS via compat**: `preact/compat` may expose React patterns like `createElement` with dangerouslySetInnerHTML. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) compat-using components for injection vectors. Use PropTypes or [TypeScript](../typescript/SKILL.md) runtime checks for user input.
 - **Third-party script isolation**: Preact apps embedded in third-party sites must handle CSS/JS conflicts. Use shadow DOM for widget components via `preact-shadow-root` or custom elements. Isolate state from host page globals.
 - **Input validation**: Always validate and sanitize user inputs before rendering. Use Preact's built-in escaping through JSX expressions `{value}`. For rich text rendering, use a dedicated component with DOMPurify integration and never bypass JSX escaping with `innerHTML`.
-- **Dependency audit**: Preact's small API surface reduces attack surface but `preact/compat` pulls in more code. Audit compat dependencies for known vulnerabilities. Keep Preact and compat versions in sync to avoid security patch gaps.
+- **Dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)**: Preact's small API surface reduces attack surface but `preact/compat` pulls in more code. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) compat dependencies for known vulnerabilities. Keep Preact and compat versions in sync to avoid security patch gaps.
 

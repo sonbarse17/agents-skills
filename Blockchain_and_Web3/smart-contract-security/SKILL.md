@@ -11,7 +11,7 @@ Use the Checks-Effects-Interactions pattern and OpenZeppelin's `ReentrancyGuard`
 ```solidity
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract Vault is ReentrancyGuard {
+contract [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is ReentrancyGuard {
     mapping(address => uint) public balances;
 
     function withdraw() external nonReentrant {
@@ -27,8 +27,8 @@ contract Vault is ReentrancyGuard {
 ## Flashloan Attack Prevention
 Use decentralized oracles (Chainlink) or TWAP (Uniswap V3) to prevent price manipulation.
 
-## Security Audit Workflow
-```mermaid
+## Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Workflow
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Source Code] --> B[Static Analysis (Slither)]

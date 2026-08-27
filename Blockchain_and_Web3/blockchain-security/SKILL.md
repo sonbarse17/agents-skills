@@ -11,18 +11,18 @@ tags: [blockchain, security, audit, formal-verification, phase-blockchain]
 # Blockchain Security
 
 ## Purpose
-Guide blockchain-specific security analysis covering smart contract auditing, DeFi threat modeling, economic security, incident response, formal verification, and bug bounty programs. Combines traditional security engineering with blockchain-specific risks like economic attack vectors, flash loans, oracle manipulation, and MEV.
+Guide blockchain-specific security analysis covering smart contract auditing, DeFi threat modeling, economic security, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, formal verification, and bug bounty programs. Combines traditional security engineering with blockchain-specific risks like economic attack vectors, flash loans, oracle manipulation, and MEV.
 
 ## Agent Protocol
 
 ### Trigger
-"blockchain security", "smart contract audit", "DeFi security", "DeFi threat model", "blockchain threat modeling", "audit methodology", "blockchain incident response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
+"blockchain security", "smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "DeFi security", "DeFi threat model", "blockchain threat modeling", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology", "blockchain [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
 
 ### Input Context
 - Smart contracts or protocol to analyze
 - Platform (EVM/Solana/Cosmos/Cardano)
-- Security objective (audit/threat model/incident response/pre-audit review)
-- Codebase location and audit history
+- Security objective ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)/threat model/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response/pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
+- Codebase location and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) history
 - Previous incidents or vulnerabilities
 - TVL and risk exposure
 
@@ -31,11 +31,11 @@ Security analysis including: threat model, vulnerability findings, economic anal
 
 ### Response Format
 1. **Threat model**: assets, actors, attack vectors, trust assumptions, attack surface
-2. **Audit approach**: methodology, tools, timeline, expected coverage
+2. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) approach**: methodology, tools, timeline, expected coverage
 3. **Economic analysis**: incentive structures, game theory, exploit scenarios
-4. **Security controls**: mitigations, circuit breakers, monitoring
+4. **Security controls**: mitigations, circuit breakers, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 5. **Verification**: formal properties, invariants, proof techniques
-6. **Incident response**: emergency plan, communication template
+6. **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: emergency plan, communication template
 
 ### Completion Criteria
 - Threat model identifies all trust assumptions and attack surfaces
@@ -52,29 +52,29 @@ Security analysis including: threat model, vulnerability findings, economic anal
 ### Security Assessment Type
 ```
 Security need:
-├── Pre-deployment audit?
+├── Pre-deployment [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?
 │   ├── Early stage → Threat modeling + architecture review
 │   │   ├── Identify trust assumptions
 │   │   ├── Map attack surface
 │   │   └── Design security controls
-│   ├── Mid-development → Full audit (automated + manual + fuzz)
+│   ├── Mid-development → Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (automated + manual + fuzz)
 │   │   ├── Slither + Mythril static analysis (first pass)
 │   │   ├── Manual line-by-line review (second pass)
 │   │   ├── Foundry fuzz + invariant tests (third pass)
 │   │   ├── Echidna/Medusa property-based fuzzing (fourth pass)
 │   │   └── Certora/Halmos formal verification (fifth pass)
-│   └── Pre-launch → Final audit + bug bounty launch
-│       ├── Re-audit after fixes
+│   └── Pre-launch → Final [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + bug bounty launch
+│       ├── Re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) after fixes
 │       ├── Immunefi or Code4rena bounty program
 │       └── Emergency response plan
-├── Incident response?
+├── [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response?
 │   ├── Ongoing exploit → Emergency pause + communication
 │   ├── Post-exploit → Damage assessment + recovery plan
 │   └── Post-mortem → Root cause analysis + fix implementation
 └── Ongoing security?
-    ├── Continuous monitoring → Forta, Tenderly alerts
+    ├── Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) → Forta, Tenderly alerts
     ├── Bug bounty management → VRT, severity classification
-    └── Periodic review → Quarterly parameter review, annual deep audit
+    └── Periodic review → Quarterly parameter review, annual deep [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 ```
 
 ### Vulnerability Severity (Immunefi Standard)
@@ -200,7 +200,7 @@ function getLiquidationValue(address user) external view returns (uint256) {
 ### ERC-4626 Inflation Attack
 ```solidity
 // VULNERABLE: first depositor manipulates share price
-// Attacker mints 1 wei shares, then donates large amount to vault
+// Attacker mints 1 wei shares, then donates large amount to [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 // share price becomes very high → subsequent depositors get 0 shares
 
 // FIXED: virtual shares + assets
@@ -213,10 +213,10 @@ function convertToShares(uint256 assets) public view returns (uint256) {
 }
 ```
 
-## Audit Methodology
+## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Methodology
 
 ### Phase 1: Scope & Recon
-1. Define audit scope: contracts, functions, interactions
+1. Define [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scope: contracts, functions, interactions
 2. Review specification and architecture documentation
 3. Understand trust model: admin roles, upgrade paths, emergency mechanisms
 4. Set up local environment with all dependencies
@@ -251,7 +251,7 @@ function convertToShares(uint256 assets) public view returns (uint256) {
 23. Retest fixes after remediation
 24. Final report with methodology, findings, and risk assessment
 
-### Audit Tools Comparison
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Tools Comparison
 | Tool | Type | Best For | Limitations |
 |------|------|----------|-------------|
 | Slither | Static analysis | First-pass vulnerability detection, inheritance analysis | False positives, limited deep logic |
@@ -307,7 +307,7 @@ Protocol economic security:
     └── Can a failure cascade through the system?
 ```
 
-## Incident Response
+## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 ### Emergency Response Playbook
 ```solidity
@@ -335,9 +335,9 @@ contract Pausable {
 }
 ```
 
-### Incident Response Phases
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Phases
 ```
-1. DETECT: Monitoring alert, community report, or security partner notification
+1. DETECT: [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert, community report, or security partner notification
    - Forta bot detects anomalous activity
    - Tenderly alert on unexpected state changes
    - Community report via Discord/Immunefi
@@ -365,7 +365,7 @@ contract Pausable {
    - Multi-sig unpause after fix confirmed
    - Bug bounty payout for reporter
 
-7. POST-MORTEM: Public incident report within 7 days
+7. POST-MORTEM: Public [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report within 7 days
    - Root cause analysis
    - Timeline of events
    - Fix details
@@ -374,10 +374,10 @@ contract Pausable {
 
 ## Rules
 1. Always start with threat modeling before writing any code — identify assets, trust boundaries, attack surfaces
-2. Audit pipeline: scope → manual review → automated tooling → fuzz/invariant → formal verification → report
+2. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pipeline: scope → manual review → automated tooling → fuzz/invariant → formal verification → report
 3. Economic security is as important as code security — analyze game theory and incentive alignment
 4. Bug bounty programs follow Immunefi severity: Critical (up to $1M+), High ($50K-$100K), Medium ($5K-$20K), Low ($1K-$5K)
-5. Incident response: freeze/pause contract → assess damage → communicate → fork coordination → post-mortem → compensation
+5. [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response: freeze/pause contract → assess damage → communicate → fork coordination → post-mortem → compensation
 6. Formal verification complements but does NOT replace manual review and fuzz testing
 7. Always verify signature malleability (low-s for ECDSA), nonce reuse, and signature replay protection
 8. Cross-chain bridges require additional security layers: rate limiting, circuit breakers, tiered security
@@ -423,9 +423,9 @@ invariant solvency()
   - ../../../Global_References/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
   - ../../../Global_References/economic-security.md — Economic Security in Blockchain Systems
   - ../../../Global_References/formal-verification-deep.md — Formal Verification for Smart Contracts
-  - ../../../Global_References/incident-response.md — Blockchain Incident Response
+  - ../../../Global_References/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Blockchain [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
   - ../../../Global_References/smart-contract-security.md — Smart Contract Security
-  - ../../../Global_References/threat-modeling.md — Threat Modeling for Blockchain Systems
+  - ../../../Global_References/[threat-modeling](../../Security/threat-modeling/SKILL.md).md — Threat Modeling for Blockchain Systems
   - references/blockchain-vulnerability-catalog.md — Common Blockchain Vulnerabilities Catalog
   - references/cross-chain-security.md — Cross-Chain Security Considerations
   - references/flash-loan-attack-patterns.md — Flash Loan Attack Patterns
@@ -434,11 +434,11 @@ invariant solvency()
 
 ```
 Blockchain Security Approach
-├── Audit phase?
+├── [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) phase?
 │   ├── Pre-development → Threat model + formal spec
-│   ├── Post-development → Smart contract audit + fuzzing
+│   ├── Post-development → Smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + fuzzing
 │   ├── Pre-deployment → Comprehensive security review + bug bounty
-│   └── Post-deployment → Continuous monitoring + incident response
+│   └── Post-deployment → Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) + [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
 ├── Vulnerability type?
 │   ├── Reentrancy → ReentrancyGuard, checks-effects-interactions
 │   ├── Access control → OpenZeppelin AccessControl, multisig
@@ -447,7 +447,7 @@ Blockchain Security Approach
 ├── Formal verification needed?
 │   ├── Yes (high-value) → Certora / Halmos (rule-based verification)
 │   ├── Yes (ZK circuits) → Circom compiler checks, zkVerify
-│   └── No → Standard audit + fuzz testing
+│   └── No → Standard [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + fuzz testing
 └── Bug bounty program?
     ├── Yes → Immunefi / HackerOne (up to 10% of TVL)
     └── No → Internal audits only (higher residual risk)
@@ -506,10 +506,10 @@ contract TimelockController {
 
 ## Production Considerations
 
-- **Audit frequency**: Full audit before mainnet deploy; re-audit on major upgrade (> 20% code change).
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) frequency**: Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) before mainnet deploy; re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) on major upgrade (> 20% code change).
 - **Bug bounty**: Launch Immunefi bounty (up to 10% TVL); scope all contracts and frontend.
-- **Monitoring**: Deploy Forta/OpenZeppelin Defender Sentinel for transaction monitoring.
-- **Incident response**: Pre-defined IR playbook; pause contracts within 30 min of exploit detection.
+- **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Deploy Forta/OpenZeppelin Defender Sentinel for transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: Pre-defined IR playbook; pause contracts within 30 min of exploit detection.
 - **Insurance**: Purchase DeFi insurance (Nexus Mutual, Sherlock) for TVL coverage.
 - **Responsible disclosure**: Maintain security.txt; private disclosure channel for vulnerability reports.
 
@@ -520,16 +520,16 @@ contract TimelockController {
 | Skipping threat model | Miss architecture-level vulnerabilities | Mandatory threat model before code |
 | Only automated audits | Miss logic bugs | Manual review + automated + fuzzing |
 | No timelock on upgrades | Compromised owner upgrades malicious code | Enforce minimum 48h timelock |
-| Fixing bugs without re-audit | New bugs introduced | Re-audit > 20% code changes |
+| Fixing bugs without re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) | New bugs introduced | Re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) > 20% code changes |
 | No pause mechanism | Can't stop exploit in progress | Implement pausable + emergency stop |
 
 ## Performance Optimization
 
 - **Gas-efficient access control**: Use bitmap-based roles (BitMaps) instead of array for role management.
 - **Batch verification**: Verify multiple signatures in single operation for multisig.
-- **Storage-efficient audits**: Use event-based audit trail instead of on-chain storage for non-critical logs.
-- **Off-chain monitoring**: Use The Graph subgraph for security monitoring; avoid on-chain overhead.
-- **Selective audit scope**: Focus formal verification on critical paths (token transfers, liquidations).
+- **Storage-efficient audits**: Use event-based [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail instead of on-chain storage for non-critical logs.
+- **Off-chain [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Use The Graph subgraph for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md); avoid on-chain overhead.
+- **Selective [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scope**: Focus formal verification on critical paths (token transfers, liquidations).
 
 ## Security Considerations
 

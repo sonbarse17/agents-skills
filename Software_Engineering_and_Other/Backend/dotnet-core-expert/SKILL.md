@@ -33,7 +33,7 @@ Load detailed guidance based on context:
 | Clean Architecture | `../../../Global_References/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
 | Entity Framework | `../../../Global_References/entity-framework.md` | DbContext, migrations, relationships |
 | Authentication | `../../../Global_References/authentication.md` | JWT, Identity, authorization policies |
-| Cloud-Native | `../../../Global_References/cloud-native.md` | Docker, health checks, configuration |
+| Cloud-Native | `../../../Global_References/cloud-native.md` | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), health checks, configuration |
 
 ## Constraints
 
@@ -137,5 +137,5 @@ When implementing .NET features, provide:
 4. Database context and migrations if applicable
 5. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/backend/dotnet-core-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/dotnet-core-expert/)
 

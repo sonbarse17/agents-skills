@@ -32,7 +32,7 @@ source "amazon-ebs" "windows" {
     owners      = ["amazon"]
   }
 
-  ami_name = "windows-server-2022-${local.timestamp}"
+  ami_name = "[windows-server](../windows-server/SKILL.md)-2022-${local.timestamp}"
 
   communicator   = "winrm"
   winrm_username = "Administrator"
@@ -79,7 +79,7 @@ source "azure-arm" "windows" {
   os_type         = "Windows"
   image_publisher = "MicrosoftWindowsServer"
   image_offer     = "WindowsServer"
-  image_sku       = "2022-datacenter-g2"
+  image_sku       = "2022-[datacenter](../datacenter/SKILL.md)-g2"
 
   location = "East US"
   vm_size  = "Standard_D2s_v3"

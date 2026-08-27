@@ -31,9 +31,9 @@ Use this skill when:
 | Tool | License | Languages | Best For |
 |------|---------|-----------|----------|
 | Semgrep | OSS/Commercial | 30+ | Custom rules, speed |
-| CodeQL | Free (GitHub) | 10+ | Deep analysis |
+| CodeQL | Free ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)) | 10+ | Deep analysis |
 | SonarQube | OSS/Commercial | 25+ | Quality + Security |
-| Bandit | OSS | Python | Python projects |
+| Bandit | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) projects |
 | Brakeman | OSS | Ruby | Rails apps |
 
 ## Semgrep
@@ -55,12 +55,12 @@ brew install semgrep
 semgrep --config auto .
 
 # Run specific rulesets
-semgrep --config p/security-audit .
+semgrep --config p/security-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) .
 semgrep --config p/owasp-top-ten .
 semgrep --config p/ci .
 
 # Scan specific languages
-semgrep --config p/python .
+semgrep --config p/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) .
 semgrep --config p/javascript .
 
 # Output formats
@@ -108,7 +108,7 @@ rules:
 ### CI Configuration
 
 ```yaml
-# .github/workflows/semgrep.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/semgrep.yml
 name: Semgrep
 
 on:
@@ -135,7 +135,7 @@ jobs:
 ### Setup
 
 ```yaml
-# .github/workflows/codeql.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/codeql.yml
 name: CodeQL Analysis
 
 on:
@@ -156,22 +156,22 @@ jobs:
 
     strategy:
       matrix:
-        language: ['javascript', 'python']
+        language: ['javascript', '[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)']
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/analyze@v3
         with:
           category: "/language:${{ matrix.language }}"
 ```
@@ -191,10 +191,10 @@ jobs:
  * @tags security
  */
 
-import python
-import semmle.python.dataflow.new.DataFlow
-import semmle.python.dataflow.new.TaintTracking
-import semmle.python.security.dataflow.SqlInjectionQuery
+import [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).dataflow.new.DataFlow
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).dataflow.new.TaintTracking
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).security.dataflow.SqlInjectionQuery
 
 from SqlInjectionConfiguration config, DataFlow::PathNode source, DataFlow::PathNode sink
 where config.hasFlowPath(source, sink)
@@ -203,10 +203,10 @@ select sink.getNode(), source, sink, "SQL injection from $@.", source.getNode(),
 
 ## SonarQube
 
-### Docker Setup
+### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Setup
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -215,7 +215,7 @@ services:
     ports:
       - "9000:9000"
     environment:
-      - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
+      - SONAR_JDBC_URL=jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://db:5432/sonar
       - SONAR_JDBC_USERNAME=sonar
       - SONAR_JDBC_PASSWORD=sonar
     volumes:
@@ -231,7 +231,7 @@ services:
       - POSTGRES_PASSWORD=sonar
       - POSTGRES_DB=sonar
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
+      - postgresql_data:/var/lib/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
 
 volumes:
   sonarqube_data:
@@ -252,7 +252,7 @@ sonar.tests=tests
 sonar.exclusions=**/node_modules/**,**/vendor/**
 
 sonar.language=py
-sonar.python.coverage.reportPaths=coverage.xml
+sonar.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
 
 sonar.qualitygate.wait=true
 ```
@@ -260,7 +260,7 @@ sonar.qualitygate.wait=true
 ### CI Integration
 
 ```yaml
-# GitHub Actions
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
 - name: SonarQube Scan
   uses: sonarsource/sonarqube-scan-action@master
   env:
@@ -276,7 +276,7 @@ sonar.qualitygate.wait=true
 
 ## Language-Specific Tools
 
-### Python (Bandit)
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (Bandit)
 
 ```bash
 # Install
@@ -403,7 +403,7 @@ exit 0
 
 ## Best Practices
 
-- Run on every PR/commit
+- Run on every PR/[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 - Establish baseline for existing code
 - Prioritize by severity and exploitability
 - Maintain custom rules for your codebase
@@ -414,6 +414,6 @@ exit 0
 
 ## Related Skills
 
-- [dast-scanning](../dast-scanning/) - Dynamic testing
-- [dependency-scanning](../dependency-scanning/) - Dependency vulnerabilities
-- [github-actions](../../../devops/ci-cd/github-actions/) - CI integration
+- [dast-scanning](../[dast-scanning](../../DevOps_and_Cloud/Observability_and_SecOps/dast-scanning/SKILL.md)/) - Dynamic testing
+- [dependency-scanning](../[dependency-scanning](../dependency-scanning/SKILL.md)/) - Dependency vulnerabilities
+- [github-actions](../../../devops/ci-cd/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) - CI integration

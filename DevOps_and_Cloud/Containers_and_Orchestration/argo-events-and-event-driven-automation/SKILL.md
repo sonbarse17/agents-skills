@@ -20,26 +20,26 @@ metadata:
 
 ## Purpose
 
-Argo Events is a Kubernetes-native event framework that decouples *event
+Argo Events is a [Kubernetes](../kubernetes/SKILL.md)-native event framework that decouples *event
 sources* (webhooks, message queues, cloud storage notifications, cron
 schedules, and dozens of other emitters) from *triggers* (starting an Argo
-Workflow, creating/patching a Kubernetes resource, calling another
+Workflow, creating/patching a [Kubernetes](../kubernetes/SKILL.md) resource, calling another
 webhook), connected through a `Sensor`'s dependency/filter logic and an
 `EventBus` for durable delivery between them. It exists so that
 "kick off automation when X happens" doesn't require bespoke polling
 scripts, a hand-rolled webhook receiver Deployment, or gluing together an
 external broker's client libraries per language/team — the event
 plumbing, retry, and filtering logic is declarative and lives in the same
-GitOps-managed cluster as everything else. This matters operationally
+[GitOps](../gitops/SKILL.md)-managed cluster as everything else. This matters operationally
 because event-driven automation that's implemented as ad hoc scripts
-tends to have no consistent retry/dedup/observability story; Argo Events
+tends to have no consistent retry/dedup/[observability](../../Observability_and_SecOps/observability/SKILL.md) story; Argo Events
 gives all three uniformly across every event source.
 
 ## When to use
 
 - Triggering an Argo Workflows pipeline (see
-  [argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md))
-  from an external event: a GitHub webhook, a file landing in S3/GCS, a
+  [argo-workflows-pipeline-design](../[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md))
+  from an external event: a [GitHub](../../CI_CD/github/SKILL.md) webhook, a file landing in S3/GCS, a
   Kafka/NATS/SQS message, or a cron schedule.
 - Fanning one event out to multiple independent triggers (start a
   Workflow *and* post a Slack notification *and* patch a ConfigMap) with
@@ -49,7 +49,7 @@ gives all three uniformly across every event source.
   validation-passed events have arrived") — Argo Events' Sensor
   dependency/circuit logic exists for this.
 - Replacing a bespoke webhook-receiver Deployment/polling script with a
-  declarative, GitOps-managed `EventSource`/`Sensor` pair.
+  declarative, [GitOps](../gitops/SKILL.md)-managed `EventSource`/`Sensor` pair.
 - Diagnosing why an event arrived but nothing downstream happened
   (a Sensor that isn't firing, or fired but the trigger silently failed).
 
@@ -61,7 +61,7 @@ gives all three uniformly across every event source.
   `Kafka`-backed `EventBus` is available for higher-throughput/durability
   needs.
 - Network reachability for the event's origin to hit the cluster: for
-  webhook-based `EventSource`s (GitHub, Gitlab, generic webhook), an
+  webhook-based `EventSource`s ([GitHub](../../CI_CD/github/SKILL.md), Gitlab, generic webhook), an
   Ingress or LoadBalancer exposing the `EventSource`'s Service publicly
   (or within the org's network) with TLS terminated appropriately.
 - For queue-based `EventSource`s (Kafka, NATS, SQS, RabbitMQ, Redis
@@ -71,7 +71,7 @@ gives all three uniformly across every event source.
   installed and the `Sensor`'s `ServiceAccount` granted RBAC to create
   `Workflow`/`WorkflowTemplate` resources in the target namespace — Argo
   Events triggers a Workflow by creating the CRD object directly via the
-  Kubernetes API, so ordinary RBAC applies.
+  [Kubernetes](../kubernetes/SKILL.md) API, so ordinary RBAC applies.
 
 ## Step-by-step guidance
 
@@ -91,7 +91,7 @@ gives all three uniformly across every event source.
    ```
 
 2. **Define an `EventSource`** for the origin of events. Webhook example
-   (generic HTTP webhook — GitHub/GitLab have dedicated event source
+   (generic HTTP webhook — [GitHub](../../CI_CD/github/SKILL.md)/GitLab have dedicated event source
    types with signature verification):
    ```yaml
    apiVersion: argoproj.io/v1alpha1
@@ -237,10 +237,10 @@ gives all three uniformly across every event source.
 
 6. **Verify and debug:**
    ```bash
-   kubectl get eventsource,sensor,eventbus -n automation
-   kubectl logs -n automation deploy/upload-webhook-eventsource -f
-   kubectl logs -n automation deploy/upload-processor-sensor -f
-   kubectl describe sensor upload-processor -n automation   # trigger conditions/status
+   [kubectl](../kubectl/SKILL.md) get eventsource,sensor,eventbus -n automation
+   [kubectl](../kubectl/SKILL.md) logs -n automation deploy/upload-webhook-eventsource -f
+   [kubectl](../kubectl/SKILL.md) logs -n automation deploy/upload-processor-sensor -f
+   [kubectl](../kubectl/SKILL.md) describe sensor upload-processor -n automation   # trigger conditions/status
    ```
    The Sensor's own logs show whether an event was received, which
    filters it passed/failed, and whether the trigger action itself
@@ -256,7 +256,7 @@ gives all three uniformly across every event source.
   namespace/resource kinds its triggers need to create — a Sensor
   authorized to create arbitrary cluster resources is a lateral-movement
   risk if the event source itself is ever spoofable.
-- Use dedicated `EventSource` types (GitHub, GitLab, Stripe, etc.) with
+- Use dedicated `EventSource` types ([GitHub](../../CI_CD/github/SKILL.md), GitLab, Stripe, etc.) with
   their built-in signature/secret verification rather than the generic
   webhook type whenever the origin supports it — the generic webhook type
   has no built-in authenticity check, so anyone who can reach the
@@ -270,9 +270,9 @@ gives all three uniformly across every event source.
   and another polls) when a trigger genuinely depends on multiple prior
   events — the built-in correlation window is simpler and more reliable
   than home-rolled coordination.
-- Version and GitOps-manage `EventSource`/`Sensor`/`EventBus` manifests
+- Version and [GitOps](../gitops/SKILL.md)-manage `EventSource`/`Sensor`/`EventBus` manifests
   the same as any other cluster resource — treat them as part of the
-  GitOps-tracked config repo, not a one-off `kubectl apply` nobody
+  [GitOps](../gitops/SKILL.md)-tracked config repo, not a one-off `[kubectl](../kubectl/SKILL.md) apply` nobody
   remembers making.
 
 ## Common pitfalls
@@ -288,7 +288,7 @@ gives all three uniformly across every event source.
 
 - **Symptom:** A `Sensor` trigger fires but the target `Workflow` never
   gets created, with no obvious error in the `EventSource` logs.
-  **Fix:** Check the `Sensor` Pod's own logs and `kubectl describe
+  **Fix:** Check the `Sensor` Pod's own logs and `[kubectl](../kubectl/SKILL.md) describe
   sensor` — this is almost always an RBAC denial (the Sensor's
   `ServiceAccount` lacks permission to create `Workflow` resources in the
   target namespace) or a malformed `argoWorkflow.source.resource`
@@ -321,7 +321,7 @@ gives all three uniformly across every event source.
   Workflow runs.
   **Fix:** The generic `webhook` EventSource type has no built-in
   signature verification. Migrate to the origin's dedicated EventSource
-  type (e.g., `github` with a configured webhook secret) which validates
+  type (e.g., `[github](../../CI_CD/github/SKILL.md)` with a configured webhook secret) which validates
   a signature header before the event is even considered, or add an
   authenticating proxy/Ingress rule in front of the generic webhook
   endpoint.
@@ -330,7 +330,7 @@ gives all three uniformly across every event source.
 
 **Scenario:** A file landing in an S3 bucket should trigger the
 `nightly-etl` `WorkflowTemplate` (from
-[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)),
+[argo-workflows-pipeline-design](../[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md)),
 but only for `.parquet` files, and only after a separate validation
 webhook confirms the file passed a checksum check.
 
@@ -411,12 +411,12 @@ Only when both `upload-dep` (a `.parquet` object key) and `validate-dep`
 (`status: passed`) have each delivered a matching event does `conditions:
 "upload-dep && validate-dep"` become true and the `nightly-etl` Workflow
 gets submitted — a non-parquet upload or a failed validation never
-triggers the pipeline, and `kubectl describe sensor upload-processor -n
+triggers the pipeline, and `[kubectl](../kubectl/SKILL.md) describe sensor upload-processor -n
 automation` shows exactly which dependency is still pending if the
 Workflow doesn't start when expected.
 
 ## Cross-references
 
-- [argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)
+- [argo-workflows-pipeline-design](../[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md)
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)

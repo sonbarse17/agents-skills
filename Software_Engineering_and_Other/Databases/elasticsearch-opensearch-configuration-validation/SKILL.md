@@ -32,7 +32,7 @@ validation gate — checking a proposed mapping, shard count, replica
 setting, or ILM/ISM policy against real data volume, query patterns,
 and failure-domain topology before an index goes live — complementing
 the day-2 operational and reindexing guidance in
-[elasticsearch-opensearch-cluster-operations](../elasticsearch-opensearch-cluster-operations/SKILL.md).
+[elasticsearch-opensearch-cluster-operations](../[elasticsearch-opensearch-cluster-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/elasticsearch-opensearch-cluster-operations/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -49,7 +49,7 @@ the day-2 operational and reindexing guidance in
 - Before changing `number_of_replicas` or allocation-awareness
   attributes, to validate the change actually improves the fault
   tolerance it's intended to.
-- As a review gate for infrastructure-as-code or index-template
+- As a review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) or index-template
   automation that provisions Elasticsearch/OpenSearch indices.
 
 ## Prerequisites & environment
@@ -69,7 +69,7 @@ the day-2 operational and reindexing guidance in
   is meaningless without this context from the owning team.
 - Knowledge of the actual cluster's node count, per-node heap size, and
   existing shard distribution (`_cat/allocation`), to validate a
-  proposed shard count against real capacity rather than in isolation.
+  proposed shard count against real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) rather than in isolation.
 - Access to a staging cluster with a representative (if smaller) node
   topology, to test a mapping/ILM policy against realistic data shape
   before production rollout.
@@ -313,6 +313,6 @@ ILM policy attached yet, and `dynamic: true` left at default.
 
 ## Cross-references
 
-- [elasticsearch-opensearch-cluster-operations](../elasticsearch-opensearch-cluster-operations/SKILL.md) — the operational depth (health triage, ILM/ISM mechanics, reindexing procedure) this skill's validation checks are grounded in, and where to go once an index is already live and needs a corrective reindex.
-- [postgresql-configuration-validation](../postgresql-configuration-validation/SKILL.md) — comparable pre-production configuration validation discipline (restart/rebuild-required changes, capacity math) applied to PostgreSQL, useful as a pattern reference in a polyglot environment.
-- [redis-configuration-validation](../redis-configuration-validation/SKILL.md) — comparable validation approach (matching a data-store's config to actual data classification and failure-domain topology) applied to Redis.
+- [elasticsearch-opensearch-cluster-operations](../[elasticsearch-opensearch-cluster-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/elasticsearch-opensearch-cluster-operations/SKILL.md)/SKILL.md) — the operational depth (health triage, ILM/ISM mechanics, reindexing procedure) this skill's validation checks are grounded in, and where to go once an index is already live and needs a corrective reindex.
+- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline (restart/rebuild-required changes, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) math) applied to [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a pattern reference in a polyglot environment.
+- [redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md) — comparable validation approach (matching a data-store's config to actual data classification and failure-domain topology) applied to Redis.

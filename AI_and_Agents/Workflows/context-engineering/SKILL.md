@@ -44,8 +44,8 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 # Project: [Name]
 
 ## Tech Stack
-- React 18, TypeScript 5, Vite, Tailwind CSS 4
-- Node.js 22, Express, PostgreSQL, Prisma
+- React 18, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
+- Node.js 22, Express, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Prisma
 
 ## Commands
 - Build: `npm run build`
@@ -62,7 +62,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 - Error boundaries at route level
 
 ## Boundaries
-- Never commit .env files or secrets
+- Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) .env files or secrets
 - Never add dependencies without checking bundle size impact
 - Ask before modifying database schema
 - Always run tests before committing
@@ -74,7 +74,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 **Equivalent files for other tools:**
 - `.cursorrules` or `.cursor/rules/*.md` (Cursor)
 - `.windsurfrules` (Windsurf)
-- `.github/copilot-instructions.md` (GitHub Copilot)
+- `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/copilot-instructions.md` ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot)
 - `AGENTS.md` (OpenAI Codex)
 
 ### Level 2: Specs and Architecture
@@ -185,9 +185,9 @@ For richer context, use Model Context Protocol servers:
 |-----------|-----------------|
 | **Context7** | Auto-fetches relevant documentation for libraries |
 | **Chrome DevTools** | Live browser state, DOM, console, network |
-| **PostgreSQL** | Direct database schema and query results |
+| **[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)** | Direct database schema and query results |
 | **Filesystem** | Project file access and search |
-| **GitHub** | Issue, PR, and repository context |
+| **[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)** | Issue, PR, and repository context |
 
 ## Confusion Management
 

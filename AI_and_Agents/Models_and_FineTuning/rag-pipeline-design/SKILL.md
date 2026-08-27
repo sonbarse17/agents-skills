@@ -56,7 +56,7 @@ for user-supplied instructions.
   document change (stale indexes are a common, avoidable failure mode).
 - A way to evaluate retrieval quality independent of end-to-end answer
   quality — at minimum a labeled set of (query, expected source document)
-  pairs (see [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)).
+  pairs (see [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)).
 - Clarity on the trust level of the corpus: fully internal and
   access-controlled vs. containing user-submitted or external content that
   could carry adversarial text.
@@ -103,7 +103,7 @@ for user-supplied instructions.
    LLM call for relevance (more expensive but more accurate), and pass only
    the top 3–8 to the final generation call.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    candidates = vector_index.search(query_embedding, top_k=30)
    reranked = reranker.score(query, [c.text for c in candidates])
    top_chunks = sorted(zip(candidates, reranked), key=lambda x: -x[1])[:5]
@@ -160,7 +160,7 @@ for user-supplied instructions.
 - Cap the number and total token size of chunks injected per query — more
   context is not strictly better past a point, and irrelevant chunks
   measurably distract the model even when a relevant one is also present
-  (see [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)).
+  (see [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)).
 - Version your chunking/embedding pipeline configuration; changing chunk
   size or the embedding model is effectively a new index and should be
   evaluated as such before replacing production.
@@ -197,7 +197,7 @@ for user-supplied instructions.
   chunks with an explicit untrusted-data framing and an instruction to
   treat them as reference only; keep any tool with side effects unavailable
   in the same turn as raw retrieved content where feasible (see
-  [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)); for
+  [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md)); for
   corpora with untrusted contributors, consider a content-screening step
   at ingestion time.
 
@@ -251,7 +251,7 @@ generation_prompt: |
 ```
 
 Evaluation (see
-[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)):
+[agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)):
 a 50-query labeled set checks retrieval recall (right doc in top-6) and,
 separately, whether the generated answer correctly cites that doc and
 declines when the answer isn't present — including 5 adversarial queries
@@ -261,6 +261,6 @@ the model from injecting unsolicited recommendations not asked for.
 
 ## Cross-references
 
-- [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)
-- [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
-- [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)
+- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)

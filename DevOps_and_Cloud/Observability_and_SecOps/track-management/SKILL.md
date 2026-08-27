@@ -28,7 +28,7 @@ Detailed pattern documentation lives in `../../../Global_References/track-manage
 2. **Small phases**: Break work into phases of 3-5 tasks maximum
 3. **Verification after phases**: Always include verification tasks
 4. **Update markers immediately**: Mark task status as you work
-5. **Record SHAs**: Always note commit SHAs for completed tasks
+5. **Record SHAs**: Always note [commit](../../CI_CD/commit/SKILL.md) SHAs for completed tasks
 6. **Review specs before planning**: Ensure spec is complete before creating plan
 7. **Link dependencies**: Explicitly note track dependencies
 8. **Archive, don't delete**: Preserve completed tracks for reference

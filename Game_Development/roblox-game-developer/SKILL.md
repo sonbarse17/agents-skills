@@ -88,7 +88,7 @@ end
 ### Best Practices
 - **Code Organization**: Use ModuleScripts for reusable components
 - **Security First**: Always validate on server-side
-- **Performance Monitoring**: Regular profiling and optimization
+- **Performance [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Regular [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and optimization
 - **Player Feedback**: Iterative development based on player data
 - **Version Control**: Proper backup and collaboration workflows
 
@@ -230,7 +230,7 @@ Comprehensive debugging resources available in [Debugging Guide](resources/debug
 
 ### Common Issues
 - **Memory Leaks**: Connection cleanup and proper garbage collection
-- **Performance Bottlenecks**: Profiling tools and optimization strategies
+- **Performance Bottlenecks**: [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) tools and optimization strategies
 - **Networking Problems**: Latency handling and connection management
 - **Cross-Platform Bugs**: Device-specific testing and compatibility
 

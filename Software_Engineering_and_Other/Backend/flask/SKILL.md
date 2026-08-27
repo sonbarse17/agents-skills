@@ -21,15 +21,15 @@ Define Flask backend application architecture: lightweight server setup, bluepri
 ## Agent Protocol
 
 ### Trigger
-User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app factory`, `flask sqlalchemy`, `flask extension`, `flask rest api`, `python flask`.
+User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app factory`, `flask sqlalchemy`, `flask extension`, `flask rest api`, `[python](../../Languages/python/SKILL.md) flask`.
 
 ### Input Context
-- Python version (3.10+)
+- [Python](../../Languages/python/SKILL.md) version (3.10+)
 - Flask version (3.x)
 - Database ORM (SQLAlchemy, Peewee)
 - API style (REST, Flask-RESTx)
 - Template engine (Jinja2, none for SPA)
-- Deployment (Gunicorn, uWSGI, serverless)
+- Deployment (Gunicorn, uWSGI, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
 
 ### Output Artifact
 A markdown document containing:
@@ -121,7 +121,7 @@ project/
 ```
 
 ### Step 3: Application Factory
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/__init__.py
 from flask import Flask
 
@@ -168,7 +168,7 @@ def register_cli_commands(app: Flask) -> None:
 ```
 
 ### Step 4: Configuration Classes
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/config.py
 import os
 from datetime import timedelta
@@ -207,7 +207,7 @@ config_map = {
 ```
 
 ### Step 5: Blueprint Pattern with Service Layer
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/blueprints/orders/routes.py
 from flask import Blueprint, request, jsonify
 from pydantic import ValidationError
@@ -257,7 +257,7 @@ def delete_order(order_id):
 ```
 
 ### Step 6: Service Layer
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/services/order_service.py
 from app.extensions import db
 from app.models.order import Order
@@ -267,7 +267,7 @@ class OrderService:
     def create(self, data: dict) -> Order:
         order = Order(**data)
         db.session.add(order)
-        db.session.commit()
+        db.session.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
         return order
 
     def get_by_id(self, order_id: str) -> Optional[Order]:
@@ -285,7 +285,7 @@ class OrderService:
             return None
         for key, value in data.items():
             setattr(order, key, value)
-        db.session.commit()
+        db.session.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
         return order
 
     def delete(self, order_id: str) -> bool:
@@ -293,12 +293,12 @@ class OrderService:
         if not order:
             return False
         db.session.delete(order)
-        db.session.commit()
+        db.session.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
         return True
 ```
 
 ### Step 7: Pydantic Schemas
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/blueprints/orders/schemas.py
 from pydantic import BaseModel, Field, UUID4
 from typing import List, Optional
@@ -325,7 +325,7 @@ class OrderResponseSchema(BaseModel):
 ```
 
 ### Step 8: Error Handling
-```python
+```[python](../../Languages/python/SKILL.md)
 # app/utils/errors.py
 from flask import jsonify
 
@@ -374,7 +374,7 @@ def register_error_handlers(app):
 ```
 
 ### Step 9: Testing
-```python
+```[python](../../Languages/python/SKILL.md)
 # tests/conftest.py
 import pytest
 from app import create_app
@@ -456,7 +456,7 @@ Server-rendered HTML?
 
 5. **Not closing database connections**: Flask-SQLAlchemy handles this, but raw connections from `psycopg2` or direct engine usage must be closed.
 
-6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with python-dotenv. Never commit secrets.
+6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with [python](../../Languages/python/SKILL.md)-dotenv. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets.
 
 7. **No CORS configuration for API**: API consumed by browser-based SPA needs `flask-cors` with proper origin whitelist.
 
@@ -518,7 +518,7 @@ Server-rendered HTML?
 | **Ruff** | Linting (replaces Flake8) |
 | **Mypy** | Type checking |
 | **Gunicorn** | Production WSGI server |
-| **Docker** | Containerization |
+| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | [Containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
 | **Poetry / pip-tools** | Dependency management |
 | **Flask-DebugToolbar** | Development debugging |
 

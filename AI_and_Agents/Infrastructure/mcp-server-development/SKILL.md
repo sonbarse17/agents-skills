@@ -23,7 +23,7 @@ wiring external tools, data sources, and prompt templates into AI agents
 over a common transport (stdio or HTTP with JSON-RPC framing). It solves the
 "N agents × M integrations" problem: one MCP server implementation for, say,
 a ticketing system or a database can be connected to Claude Code, Cursor,
-GitHub Copilot, Gemini CLI, or any other MCP-compatible client without
+[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot, Gemini CLI, or any other MCP-compatible client without
 rewriting the integration per client. MCP is distinct from and complementary
 to the **Agent Skills** standard (SKILL.md packages of instructions and
 bundled resources, which is what this repository packages): MCP is the wire
@@ -54,7 +54,7 @@ server side of that pairing.
 ## Prerequisites & environment
 
 - An MCP SDK for your language of choice (official SDKs exist for
-  TypeScript/Node and Python at minimum; check current SDK versions before
+  [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/Node and [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) at minimum; check current SDK versions before
   starting, as the protocol has evolved across revisions).
 - A transport decision: `stdio` for local, single-user tool servers
   launched by the agent host process; streamable HTTP for remote or
@@ -105,7 +105,7 @@ server side of that pairing.
    `update_ticket_status` over one `manage_ticket` tool with a `mode` enum
    — single-purpose tools are easier for a model to select correctly and
    easier for you to authorize independently (see
-   [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md) for the
+   [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md) for the
    general tool-design principles this follows).
 
 4. **Implement the server with strict input validation on every tool
@@ -113,7 +113,7 @@ server side of that pairing.
    schema — a malicious or buggy client, or a model that emits malformed
    arguments, must not reach your backend with unvalidated input.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from mcp.server import Server
    from mcp.types import Tool, TextContent
 
@@ -155,7 +155,7 @@ server side of that pairing.
 
 7. **Add rate limiting and timeouts** on every backend call the server
    makes, so a runaway agent loop (see
-   [agent-architecture-design](../agent-architecture-design/SKILL.md))
+   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md))
    cannot turn into a backend outage.
 
 8. **Test against a real client, not just unit tests.** Connect the server
@@ -181,7 +181,7 @@ server side of that pairing.
   server capabilities.
 - Log every tool invocation server-side (caller identity if available,
   arguments, and result summary) independent of whatever the agent client
-  logs — this is your primary incident-response artifact.
+  logs — this is your primary [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) artifact.
 - Prefer `stdio` transport for local dev/single-user tools and HTTP with
   proper auth (OAuth or signed tokens, not a shared static token in a URL)
   for anything remote or multi-tenant.
@@ -207,8 +207,8 @@ server side of that pairing.
   returned content with clear data delimiters, strip suspicious
   imperative-instruction patterns, and keep destructive tools out of the
   toolset available in contexts where untrusted content will be read (see
-  [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md) and
-  [rag-pipeline-design](../rag-pipeline-design/SKILL.md) for the same risk
+  [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md) and
+  [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) for the same risk
   on the retrieval side).
 
 - **Symptom:** The server works fine in manual testing but a production
@@ -216,7 +216,7 @@ server side of that pairing.
   rate limit or racking up cost.
   **Fix:** Add server-side rate limiting and timeouts independent of the
   client; don't rely on the agent's own loop bound as your only defense
-  (see [agent-architecture-design](../agent-architecture-design/SKILL.md)).
+  (see [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)).
 
 - **Symptom:** A schema change (e.g. renaming a required field) silently
   breaks agent sessions that cached the old tool definition, producing
@@ -235,7 +235,7 @@ server side of that pairing.
 
 ## Worked example
 
-**Task:** expose a read-mostly interface to an internal incident-management
+**Task:** expose a read-mostly interface to an internal [incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md)
 system so any MCP-compatible coding agent can look up incidents while
 debugging, without giving it write access to close or escalate incidents.
 
@@ -248,7 +248,7 @@ Server manifest (conceptual, `stdio` transport):
   "tools": [
     {
       "name": "get_incident",
-      "description": "Fetch a single incident by id, including timeline and current status.",
+      "description": "Fetch a single [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) by id, including timeline and current status.",
       "inputSchema": {
         "type": "object",
         "properties": { "incident_id": { "type": "string", "pattern": "^INC-[0-9]{6}$" } },
@@ -269,22 +269,22 @@ Server manifest (conceptual, `stdio` transport):
     }
   ],
   "resources": [
-    { "uriTemplate": "incident-runbook://{service}", "description": "Static runbook text for a given service, read-only" }
+    { "uriTemplate": "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)://{service}", "description": "Static [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) text for a given service, read-only" }
   ]
 }
 ```
 
-Deployment: the server authenticates to the incident backend with a
+Deployment: the server authenticates to the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) backend with a
 read-only API token (`${INCIDENTS_API_TOKEN}`) scoped to that endpoint only
 — it has no credential capable of closing or mutating incidents, so even a
 fully hijacked agent session cannot take a destructive action through this
-server, regardless of what instructions might be embedded in incident text
+server, regardless of what instructions might be embedded in [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) text
 it reads back. Client-side (Claude Code, Cursor, etc.) configuration points
 at the server's local command; each client's own config format is
 consulted separately since that part is not standardized by MCP itself.
 
 ## Cross-references
 
-- [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)
-- [agent-architecture-design](../agent-architecture-design/SKILL.md)
-- [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
+- [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

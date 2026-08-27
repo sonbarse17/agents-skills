@@ -114,9 +114,9 @@ Host db-tunnel
   ProxyJump bastion
   LocalForward 5432 localhost:5432
 
-# GitHub deploy key
-Host github-deploy
-  HostName github.com
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) deploy key
+Host [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-deploy
+  HostName [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
   User git
   IdentityFile ~/.ssh/github_deploy_key
   IdentitiesOnly yes
@@ -236,7 +236,7 @@ ssh -J ops@bastion,deploy@10.0.1.10 dba@10.0.2.50
 
 ```bash
 # Local port forward: access remote service on localhost
-# Access remote PostgreSQL (10.0.2.50:5432) via bastion at localhost:5432
+# Access remote [PostgreSQL](../../Backend/postgresql/SKILL.md) (10.0.2.50:5432) via bastion at localhost:5432
 ssh -L 5432:10.0.2.50:5432 ops@bastion.example.com -N
 
 # Remote port forward: expose local service to the remote network
@@ -302,7 +302,7 @@ command="internal-sftp",no-port-forwarding,no-pty ssh-ed25519 AAAA... sftp-uploa
 
 ## Related Skills
 
-- `linux-administration` -- General Linux system administration
-- `user-management` -- Managing the users who connect via SSH
-- `systemd-services` -- Managing sshd as a systemd service
-- `performance-tuning` -- Network tuning for SSH performance
+- `[linux-administration](../linux-administration/SKILL.md)` -- General Linux system administration
+- `[user-management](../user-management/SKILL.md)` -- Managing the users who connect via SSH
+- `[systemd-services](../systemd-services/SKILL.md)` -- Managing sshd as a systemd service
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Network tuning for SSH performance

@@ -6,10 +6,10 @@ license: MIT
 
 # Service Catalog
 
-During an incident, "who owns this" is a question that should never require asking around. A
+During an [incident](../incident/SKILL.md), "who owns this" is a question that should never require asking around. A
 service catalog exists to make ownership, on-call routing, and dependencies a lookup instead of a
 Slack archaeology exercise. The catalog fails the moment it drifts from reality — a stale entry is
-worse than no entry, because it sends the incident responder to the wrong team with false
+worse than no entry, because it sends the [incident](../incident/SKILL.md) responder to the wrong team with false
 confidence.
 
 Treat the catalog as the source of truth by construction, not by discipline: **an entry that isn't
@@ -21,11 +21,11 @@ documentation.**
 If registering a new service in the catalog is a manual form someone fills out after the fact, it
 gets skipped under deadline pressure and the catalog silently loses coverage. Wire catalog
 registration into the scaffolding path itself — creating a service from a template in
-`golden-paths` should register it automatically, with owner and metadata pre-populated from the
+`[golden-paths](../../../Product_and_Business/golden-paths/SKILL.md)` should register it automatically, with owner and metadata pre-populated from the
 template's prompts.
 
 **Done when:** a newly scaffolded service appears in the catalog with correct ownership metadata
-before its first commit is merged.
+before its first [commit](../../CI_CD/commit/SKILL.md) is merged.
 
 ## 2. Require an owner, not a team name in a text field
 
@@ -33,7 +33,7 @@ before its first commit is merged.
 Ownership metadata needs to resolve to a real identity — a group that maps to an actual on-call
 rotation and a real access-control group, not a label. This is what lets ownership metadata drive
 paging automatically instead of requiring a human to translate "team name" into "who do I actually
-call." See `on-call-management` for wiring that owner field into the paging path itself.
+call." See `[on-call-management](../on-call-management/SKILL.md)` for wiring that owner field into the paging path itself.
 
 ```yaml
 # bad: a string, unqueryable and unenforceable
@@ -53,37 +53,37 @@ identity provider and the paging system — not a free-text string.
 A catalog that relies on developers remembering to update it degrades at a predictable, steady
 rate. Add a CI check that fails a service's pipeline if its catalog entry is missing required
 fields (owner, tier, repo link, on-call) or hasn't been reviewed past a staleness threshold. This
-turns "someone should update the catalog" into an enforced gate, the same way `pipeline-security`
+turns "someone should update the catalog" into an enforced gate, the same way `[pipeline-security](../../CI_CD/pipeline-security/SKILL.md)`
 turns security review from a suggestion into a required check.
 
 **Done when:** a service with a missing owner field fails its CI pipeline, not just a quarterly
-audit spreadsheet.
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) spreadsheet.
 
 ## 4. Make discovery the default reason people open it
 
-A catalog only survives if people open it to find things, not just to satisfy an audit. Index
-service dependencies, API contracts, and runbook links alongside ownership, so "what does this
+A catalog only survives if people open it to find things, not just to satisfy an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Index
+service dependencies, API contracts, and [runbook](../runbook/SKILL.md) links alongside ownership, so "what does this
 depend on" and "how do I call this service" are answered in the same place as "who owns it." A
 catalog that only answers ownership questions gets bookmarked by one team and forgotten by
 everyone else.
 
-- **Link runbooks directly on the service page** — see `runbooks` for what belongs in them.
+- **Link [runbooks](../runbooks/SKILL.md) directly on the service page** — see `[runbooks](../runbooks/SKILL.md)` for what belongs in them.
 - **Surface deployment status and recent incidents** inline, not in a separate tool nobody
   cross-references.
 - **Make search actually fast** — a catalog developers can't find things in gets abandoned within
   a month.
 
 **Done when:** a developer unfamiliar with a service can find its owner, dependencies, and
-runbook in under thirty seconds without asking anyone.
+[runbook](../runbook/SKILL.md) in under thirty seconds without asking anyone.
 
-## 5. Audit for orphans on a schedule, not by accident
+## 5. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for orphans on a schedule, not by accident
 
 Teams get reorged, services get deprecated, and the catalog entry outlives both unless something
-actively checks. Run a scheduled audit that flags services with no recent deploys, an owner group
+actively checks. Run a scheduled [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that flags services with no recent deploys, an owner group
 that no longer exists, or a tier mismatched to actual traffic, and route those flags to a real
 person, not a dashboard nobody watches.
 
-**Done when:** every catalog entry has been touched or reviewed within the audit's staleness
+**Done when:** every catalog entry has been touched or reviewed within the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)'s staleness
 window, with zero entries pointing to owner groups that no longer exist.
 
 ## Report

@@ -21,7 +21,7 @@ description: Act and think like a Staff-level AI Solutions Architect, focusing o
 
 ## Thought Process
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[AI Use Case] --> B{Does it need GenAI?}

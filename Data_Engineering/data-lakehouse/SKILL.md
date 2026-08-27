@@ -16,16 +16,16 @@ tags: [data, lakehouse, architecture, phase-11]
 # Data Data Lakehouse
 
 ## Purpose
-Design lakehouse architectures that merge data lake flexibility with warehouse reliability. Implement medallion architecture for data quality progression, Unity Catalog for governance, Delta Sharing for data collaboration, and multi-cloud deployment patterns.
+Design lakehouse architectures that merge data lake flexibility with warehouse reliability. Implement medallion architecture for data quality progression, [Unity](../../Game_Development/unity/SKILL.md) Catalog for governance, Delta Sharing for data collaboration, and [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) deployment patterns.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "lakehouse", "medallion architecture", "bronze", "silver", "gold", "Databricks", "Unity Catalog", "Delta Sharing", "Apache Paimon", "multi-cloud lakehouse", "open formats", "lakehouse governance", "data mesh lakehouse".
+Exact user phrases: "lakehouse", "medallion architecture", "bronze", "silver", "gold", "Databricks", "[Unity](../../Game_Development/unity/SKILL.md) Catalog", "Delta Sharing", "Apache Paimon", "[multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) lakehouse", "open formats", "lakehouse governance", "data mesh lakehouse".
 
 ### Input Context
 Before activating, verify:
-- Cloud provider (AWS, Azure, GCP, multi-cloud)
+- Cloud provider (AWS, Azure, GCP, [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md))
 - Lakehouse platform (Databricks, AWS EMR, Azure Synapse, GCP Dataproc)
 - Table format (Delta, Iceberg, Paimon)
 - Data sources volume and types
@@ -34,18 +34,18 @@ Before activating, verify:
 - Data sharing requirements (internal teams, external partners)
 
 ### Output Artifact
-Lakehouse architecture with medallion layers, Unity Catalog configuration, and platform deployment specs.
+Lakehouse architecture with medallion layers, [Unity](../../Game_Development/unity/SKILL.md) Catalog configuration, and platform deployment specs.
 
 ### Response Format
 ```
 Lakehouse Platform: {Databricks | EMR + Iceberg | Synapse + Delta | Dataproc + Iceberg}
-Catalog: {Unity Catalog | Hive Metastore | AWS Glue | Nessie}
+Catalog: {[Unity](../../Game_Development/unity/SKILL.md) Catalog | Hive Metastore | AWS Glue | Nessie}
 Table Format: {Delta | Iceberg | Paimon}
 Medallion Layers: Bronze (raw), Silver (cleaned), Gold (aggregated)
 Sharing: {Delta Sharing | open | proprietary}
 ```
 ```yaml
-# Unity Catalog metastore config
+# [Unity](../../Game_Development/unity/SKILL.md) Catalog metastore config
 # Medallion pipeline YAML
 ```
 
@@ -53,11 +53,11 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 ### Completion Criteria
 - [ ] Medallion layers defined with data flow and transformations
-- [ ] Unity Catalog or equivalent metastore configured
+- [ ] [Unity](../../Game_Development/unity/SKILL.md) Catalog or equivalent metastore configured
 - [ ] RBAC and column-level security defined
 - [ ] Delta Sharing setup for cross-team/partner data access
 - [ ] Table format selected with interoperability plan
-- [ ] Multi-cloud or cross-region replication strategy
+- [ ] [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) or cross-region replication strategy
 - [ ] Data quality checks at each medallion layer
 - [ ] Platform deployment topology (compute, storage, catalog)
 
@@ -89,11 +89,11 @@ CREATE TABLE silver.events (
 TBLPROPERTIES ('delta.feature.timestampNtz' = 'true');
 ```
 
-### Step 2: Unity Catalog
+### Step 2: [Unity](../../Game_Development/unity/SKILL.md) Catalog
 Metastore: top-level container for metadata, maps to cloud storage location. Catalog: logical database grouping (e.g., prod, dev, analytics). Schema: namespace within catalog (e.g., bronze, silver, gold). Tables, views, functions, models.
 
 ```sql
--- Unity Catalog DDL
+-- [Unity](../../Game_Development/unity/SKILL.md) Catalog DDL
 CREATE CATALOG IF NOT EXISTS retail;
 USE CATALOG retail;
 
@@ -148,8 +148,8 @@ CREATE TABLE paimon.orders (
 
 Paimon bucket count should be a factor of the parallelism. Bucket = max(parallelism / 2, 1). For append-only tables, use no bucket key and higher bucket count for write parallelism.
 
-### Step 5: Multi-Cloud Lakehouse
-Single pane of glass across AWS, Azure, GCP. Delta as universal format, Unity Catalog as centralized metadata, object store replication (S3 -> ADLS -> GCS).
+### Step 5: [Multi-Cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) Lakehouse
+Single pane of glass across AWS, Azure, GCP. Delta as universal format, [Unity](../../Game_Development/unity/SKILL.md) Catalog as centralized metadata, object store replication (S3 -> ADLS -> GCS).
 
 ```yaml
 multi_cloud_setup:
@@ -169,7 +169,7 @@ Replication strategies: Delta Sharing for cross-cloud reads, cloud-native tools 
 ### Step 6: Data Quality Gates
 Bronze: ensure files readable, schema matches, no empty payloads. Silver: null rate <5% on key columns, referential integrity, dedup by business key. Gold: aggregate totals match across dimensions, historical trend consistent.
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Quality gate at silver layer
 from pyspark.sql import functions as F
 
@@ -208,8 +208,8 @@ LSM flow: MemTable -> flush to L0 -> compaction into sorted L1+ runs. Merge engi
 
 Paimon's LSM compaction is configurable: num-sorted-run-stop-trigger (default 5), num-sorted-run-max-size (default 50), max-compacted-files (default 50). Tune for write-heavy vs read-heavy workloads. Write-heavy: increase stop-trigger, reduce max-compacted-files. Read-heavy: decrease stop-trigger, increase max-compacted-files.
 
-### Step 10: Lakehouse Monitoring
-Track bronze ingestion lag, silver dedup rate, gold freshness compliance, query latency per engine, storage cost per layer, and Unity Catalog access patterns.
+### Step 10: Lakehouse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+Track bronze ingestion lag, silver dedup rate, gold freshness compliance, query latency per engine, storage cost per layer, and [Unity](../../Game_Development/unity/SKILL.md) Catalog access patterns.
 
 ```sql
 -- Monitor table size and file count
@@ -223,11 +223,11 @@ SELECT * FROM system.table_metrics
 WHERE table_name = 'silver.orders';
 ```
 
-### Step 11: Unity Catalog Lineage and Discovery
-Unity Catalog automatically captures column-level lineage when using Databricks. Lineage is visible in Catalog Explorer and queryable via system tables. Enable lineage tracking on all production catalogs. Use system tables for access audit: `system.access.databricks_access` and `system.access.table_lineage`.
+### Step 11: [Unity](../../Game_Development/unity/SKILL.md) Catalog Lineage and Discovery
+[Unity](../../Game_Development/unity/SKILL.md) Catalog automatically captures column-level lineage when using Databricks. Lineage is visible in Catalog Explorer and queryable via system tables. Enable lineage tracking on all production catalogs. Use system tables for access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): `system.access.databricks_access` and `system.access.table_lineage`.
 
 ### Step 12: Lakehouse Federation
-Federate queries across multiple lakehouse instances using Trino or Databricks Lakehouse Federation. Register external data sources (PostgreSQL, Snowflake, MySQL, SQL Server) as foreign catalogs in Unity Catalog. This enables queries that join lakehouse data with operational databases without data movement.
+Federate queries across multiple lakehouse instances using Trino or Databricks Lakehouse Federation. Register external data sources ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Snowflake, [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), SQL Server) as foreign catalogs in [Unity](../../Game_Development/unity/SKILL.md) Catalog. This enables queries that join lakehouse data with operational databases without data movement.
 
 ## Architecture / Decision Trees
 
@@ -265,53 +265,53 @@ Deploy lakehouse
   ├── Already on GCP
   │   ├── Need managed? → Databricks on GCP
   │   └── Prefer native? → Dataproc + Iceberg
-  └── Multi-cloud → Databricks + Delta + Unity Catalog
+  └── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) → Databricks + Delta + [Unity](../../Game_Development/unity/SKILL.md) Catalog
 ```
 
 ## Common Pitfalls
 
 1. **Bronze table modifications**: bronze is append-only. Never update or delete rows in bronze.
 2. **Too many small files**: streaming micro-batches create many small Parquet files. Enable auto-compaction.
-3. **Unity Catalog metastore single region**: UC metastore is region-scoped. Plan cross-region catalog strategy.
+3. **[Unity](../../Game_Development/unity/SKILL.md) Catalog metastore single region**: UC metastore is region-scoped. Plan cross-region catalog strategy.
 4. **Delta Sharing permission over-sharing**: share tokens grant access to all tables in a share. Scope shares carefully.
 5. **No vacuum policy**: transaction log never shrinks. Set VACUUM retention and schedule.
 6. **Cross-cloud replication latency**: expect 5-30min lag. Design applications to tolerate eventual consistency.
 7. **Paimon bucket misconfiguration**: too few buckets limit parallelism, too many cause small files. Test with production data volume.
 8. **No liquid clustering on large tables**: static partitioning causes partition explosion. Use liquid clustering for adaptive performance.
-9. **Unity Catalog permissions not audited**: stale grants accumulate security risk. Review quarterly.
+9. **[Unity](../../Game_Development/unity/SKILL.md) Catalog permissions not audited**: stale grants accumulate security risk. Review quarterly.
 10. **Bronze data not partitioned**: raw data accumulates as single large directory. Partition bronze by ingest_date.
 11. **Auto-compaction disabled on streaming tables**: micro-batches create 10,000+ small files per day. Enable auto-optimize.
 12. **Cross-cloud Delta Sharing without pre-signed URL TTL**: expired tokens cause consumer failures. Set TTL to 7 days, auto-refresh.
 13. **Schema evolution on bronze**: changing bronze schema breaks downstream Silver ingestion. Freeze bronze schema; evolve Silver instead.
-14. **Insufficient IAM permissions for Unity Catalog**: UC needs specific S3/ADLS/GCS permissions. Use credential vending, not direct access.
+14. **Insufficient IAM permissions for [Unity](../../Game_Development/unity/SKILL.md) Catalog**: UC needs specific S3/ADLS/GCS permissions. Use credential vending, not direct access.
 
 ## Best Practices
 
 - Keep bronze in original format with schema-on-read. Silver converts to optimized Parquet.
-- Each medallion transition is a quality gate with alerting.
-- Unity Catalog secures at catalog/schema/table/column level. Grant minimum permissions.
+- Each medallion transition is a quality gate with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+- [Unity](../../Game_Development/unity/SKILL.md) Catalog secures at catalog/schema/table/column level. Grant minimum permissions.
 - Delta Sharing recipients get pre-signed URLs valid for 7 days, auto-refreshed.
 - Vacuum with 7-day minimum to preserve time travel capability.
 - Use liquid clustering over manual partitioning for adaptive performance.
 - Run OPTIMIZE on tables after large data loads.
 - Monitor file sizes: target 256MB-1GB per file for optimal read performance.
-- Multi-cloud lakehouse requires consistent cloud permissions and network connectivity.
-- Enable Unity Catalog system tables for monitoring and auditing.
+- [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) lakehouse requires consistent cloud permissions and network connectivity.
+- Enable [Unity](../../Game_Development/unity/SKILL.md) Catalog system tables for [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and auditing.
 - Use Delta Lake change data feed for streaming consumers instead of re-reading full tables.
 - Set bronze retention to match SLA of longest-running pipeline that reads it.
 - Use column mapping with Delta Lake to rename or drop columns without rewriting data.
 - Deploy staging catalog for CI/CD validation before promoting to production catalog.
 - Pin Spark/Databricks runtime versions to prevent compatibility breaks from auto-upgrades.
-- Set cost budgets per catalog/schema in Unity Catalog for cost attribution.
+- Set cost budgets per catalog/schema in [Unity](../../Game_Development/unity/SKILL.md) Catalog for cost attribution.
 
 ## Compared With
 
 | Feature | Databricks Lakehouse | AWS Lake Formation | Azure Synapse | GCP Dataproc + Iceberg |
 |---|---|---|---|---|
 | Table format | Delta Lake | Parquet + Glue | Delta | Iceberg |
-| Catalog | Unity Catalog | AWS Glue | Purview | Hive Metastore / Dataproc |
+| Catalog | [Unity](../../Game_Development/unity/SKILL.md) Catalog | AWS Glue | Purview | Hive Metastore / Dataproc |
 | Sharing | Delta Sharing | LF-Tagged | Azure Data Share | BigQuery Analytics Hub |
-| Multi-cloud | Yes | No | No | No |
+| [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) | Yes | No | No | No |
 | Streaming | Structured Streaming | Kinesis | Stream Analytics | Dataflow |
 | ML integration | MLflow, Feature Store | SageMaker | Azure ML | Vertex AI |
 | RBAC | Catalog-level | Lake Formation | AAD RBAC | IAM + Dataproc |
@@ -335,7 +335,7 @@ Lakehouse vs data lake: lakehouse adds ACID transactions, schema enforcement, an
 - Photon engine: Databricks vectorized query engine. 2-5x faster on SQL workloads. Enable on gold tables.
 - File skipping: Delta/iceberg partition pruning + min/max stats skip files without relevant data. Z-order improves file skipping by clustering similar values.
 
-Scalability considerations: Bronze layer scales horizontally with object storage (no compute bottleneck). Silver and Gold are compute-bound — provision auto-scaling clusters. For petabyte-scale bronze, partition by source + date and use batch ingestion windows. For Unity Catalog, each metastore supports up to 10,000 tables. Use multiple metastores for larger deployments.
+Scalability considerations: Bronze layer scales horizontally with object storage (no compute bottleneck). Silver and Gold are compute-bound — provision auto-scaling clusters. For petabyte-scale bronze, partition by source + date and use batch ingestion windows. For [Unity](../../Game_Development/unity/SKILL.md) Catalog, each metastore supports up to 10,000 tables. Use multiple metastores for larger deployments.
 
 ## Tooling
 
@@ -346,7 +346,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 | Delta Lake | Table format with ACID |
 | Apache Iceberg | Open table format, multi-engine |
 | Apache Paimon | Streaming + batch lake format |
-| Unity Catalog | Centralized governance |
+| [Unity](../../Game_Development/unity/SKILL.md) Catalog | Centralized governance |
 | Delta Sharing | Inter-org data sharing |
 | Apache XTable | Format interoperability |
 | Nessie | Catalog-level version control |
@@ -354,7 +354,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 | Apache Flink | Streaming engine for Paimon |
 | Trino / Starburst | Federated SQL query engine |
 | dbt | Data transformation, contract enforcement |
-| Soda / Monte Carlo | Data observability and quality |
+| Soda / Monte Carlo | Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and quality |
 | Delta Live Tables (DLT) | Declarative ETL pipelines |
 
 ### Lakehouse Query Engine Optimization
@@ -363,7 +363,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 # Query engine optimization by workload
 optimization:
   bi_dashboards:
-    engine: "Databricks SQL Warehouse (serverless)"
+    engine: "Databricks SQL Warehouse ([serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))"
     config:
       - use_photon: true  # Vectorized engine (2-10x faster)
       - warehouse_size: "SMALL to LARGE"  # Scale based on concurrency
@@ -377,7 +377,7 @@ optimization:
       - "Aggregate at gold layer — avoid detail-level queries in BI"
   
   ml_training:
-    engine: "Spark (Python DataFrame API)"
+    engine: "Spark ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) DataFrame API)"
     config:
       - "Use Delta format for training data reads"
       - "Enable Delta caching for repeated data access"
@@ -391,7 +391,7 @@ optimization:
     engine: "Databricks Notebooks + Spark SQL"
     config:
       - "Use Databricks SQL for SQL exploration"
-      - "Pandas on Spark for Python exploration"
+      - "Pandas on Spark for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) exploration"
       - "Auto-scaling clusters for concurrent ad-hoc queries"
     tips:
       - "Set query timeout (5min default for exploration)"
@@ -416,11 +416,11 @@ optimization:
 lakehouse_platforms:
   databricks:
     description: "Unified analytics platform (original lakehouse)"
-    catalog: "Unity Catalog"
+    catalog: "[Unity](../../Game_Development/unity/SKILL.md) Catalog"
     formats: "Delta Lake (native), Iceberg, Hudi"
     engines: "Spark, Databricks SQL, Photon"
     ml_integration: "MLflow, Feature Store, Model Serving"
-    strengths: ["Best Delta Lake support", "Unity Catalog", "Photon", "ML integration"]
+    strengths: ["Best Delta Lake support", "[Unity](../../Game_Development/unity/SKILL.md) Catalog", "Photon", "ML integration"]
     weaknesses: ["DBU cost at scale", "Vendor lock-in concerns"]
   
   apache_iceberg:
@@ -428,9 +428,9 @@ lakehouse_platforms:
     catalog: "Nessie, Hive, JDBC, REST, Glue"
     formats: "Iceberg"
     engines: "Spark, Trino, Flink, Hive, Presto, Dremio"
-    ml_integration: "Via Spark/Python"
+    ml_integration: "Via Spark/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)"
     strengths: ["Most open ecosystem", "Partition evolution", "Multi-engine"]
-    weaknesses: ["Less mature governance vs Unity Catalog", "Self-managed catalog"]
+    weaknesses: ["Less mature governance vs [Unity](../../Game_Development/unity/SKILL.md) Catalog", "Self-managed catalog"]
   
   aws_sagemaker_lakehouse:
     description: "AWS lakehouse with SageMaker + Athena + Iceberg"
@@ -438,7 +438,7 @@ lakehouse_platforms:
     formats: "Iceberg (via Athena), Delta (via Spark)"
     engines: "Athena, Spark on EMR, Redshift Spectrum"
     ml_integration: "SageMaker"
-    strengths: ["AWS-native", "Serverless Athena queries", "Low cost"]
+    strengths: ["AWS-native", "[Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Athena queries", "Low cost"]
     weaknesses: ["Decoupled components", "Less integrated than Databricks"]
 ```
 
@@ -448,14 +448,14 @@ lakehouse_platforms:
 ```
 Primary ecosystem?
 ├── Databricks ecosystem, need unified ML + BI
-│   └── Databricks with Delta Lake + Unity Catalog
+│   └── Databricks with Delta Lake + [Unity](../../Game_Development/unity/SKILL.md) Catalog
 ├── Open-source, multi-engine, non-Databricks
 │   └── Apache Iceberg with Nessie/REST catalog + Trino/Spark
 ├── AWS-native, tight AWS integration
 │   └── AWS Lake Formation + Iceberg + Athena/EMR
 ├── Google Cloud-native
 │   └── BigLake + Iceberg + BigQuery/Dataproc
-└── Multi-cloud, avoid vendor lock-in
+└── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md), avoid vendor lock-in
     └── Apache Iceberg (most portable table format)
 ```
 
@@ -463,7 +463,7 @@ Primary ecosystem?
 - Bronze is append-only, never modified in place
 - Silver enforces schema, deduplicates, and validates
 - Gold is read-optimized for BI and ML consumption
-- Unity Catalog is the single source of truth for metadata
+- [Unity](../../Game_Development/unity/SKILL.md) Catalog is the single source of truth for metadata
 - Delta Sharing for external sharing — never share credentials or bucket paths
 - Quality gates at each medallion layer boundary
 - Vacuum with 7-day minimum retention for time travel
@@ -472,7 +472,7 @@ Primary ecosystem?
 - Use liquid clustering over manual partitioning for new tables
 - Set bronze retention to match longest pipeline SLA
 - Column-level permissions for PII data in silver and gold
-- Audit Unity Catalog permissions quarterly
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) [Unity](../../Game_Development/unity/SKILL.md) Catalog permissions quarterly
 - Deploy across at least two availability zones for HA
 - Monitor file sizes — target 256MB-1GB per file
 - Enable change data feed for gold tables consumed by streaming
@@ -485,12 +485,12 @@ Primary ecosystem?
   - ../../../Global_References/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
   - ../../../Global_References/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
   - ../../../Global_References/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
-  - ../../../Global_References/lakehouse-monitoring.md — Lakehouse Monitoring
+  - ../../../Global_References/lakehouse-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/lakehouse-platform.md — Lakehouse Platform Reference
   - ../../../Global_References/lakehouse-query-engines.md — Lakehouse Query Engines
   - ../../../Global_References/medallion-architecture.md — Medallion Architecture Reference
-  - ../../../Global_References/lakehouse-architecture-patterns.md — Lakehouse Architecture Patterns
-  - ../../../Global_References/lakehouse-performance-optimization.md — Performance Optimization Reference
+  - ../../../Global_References/lakehouse-[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture-patterns/SKILL.md).md — Lakehouse Architecture Patterns
+  - ../../../Global_References/lakehouse-[performance-optimization](../../Software_Engineering_and_Other/Backend/performance-optimization/SKILL.md).md — Performance Optimization Reference
 ## Architecture Decision Trees
 
 ```
@@ -498,7 +498,7 @@ Lakehouse Architecture Selection
 ├── Medallion architecture (bronze/silver/gold)?
 │   ├── Yes → Delta Lake / Iceberg with medallion layers
 │   └── No → Direct ingestion to gold/pre-aggregated
-├── Multi-cloud or hybrid?
+├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) or hybrid?
 │   ├── Yes → Iceberg (cloud-agnostic)
 │   ├── AWS-native → Delta Lake on S3
 │   └── Azure-native → Delta Lake on ADLS
@@ -515,7 +515,7 @@ Lakehouse Architecture Selection
 ## Implementation Patterns
 
 ### Medallion Architecture Pipeline
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_lakehouse/medallion_pipeline.py
 from pyspark.sql import SparkSession, DataFrame
 
@@ -565,7 +565,7 @@ sync:
 - **Table maintenance**: Schedule Iceberg `expire_snapshots` and `rewrite_data_files` / Delta `VACUUM` and `OPTIMIZE` as weekly jobs.
 - **Catalog consistency**: Run catalog sync between Nessie/Iceberg REST and Glue/Hive Metastore for cross-engine support.
 - **Cost governance**: Tag tables with owner and cost center; set storage lifecycle policies (bronze 30d, silver 90d, gold indefinite).
-- **Write audit**: Track who wrote what via Spark listener or AWS CloudTrail for lakehouse write operations.
+- **Write [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Track who wrote what via Spark listener or AWS CloudTrail for lakehouse write operations.
 - **Schema enforcement**: Enforce strict schema on write for silver/gold layers; schema on read for bronze.
 - **Time travel window**: Retain 7 days of snapshots for point-in-time queries; balance storage cost.
 
@@ -584,7 +584,7 @@ sync:
 - **Z-order clustering**: Apply Z-ordering on frequently filtered columns in silver/gold tables.
 - **File compaction**: Rewrite small files into 256 MB–1 GB targets; trigger after large ingest batches.
 - **Incremental queries**: Use Iceberg incremental reads (`table_changes`) for downstream consumers instead of full scans.
-- **Materialized views**: Create materialized views (Trino, Spark) for gold-level dashboards; refresh on schedule.
+- **Materialized views**: Create materialized views (Trino, Spark) for gold-level [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md); refresh on schedule.
 - **Data skipping**: Enable Iceberg/Delta statistics collection for better data skipping in WHERE clauses.
 
 ## Security Considerations
@@ -592,11 +592,11 @@ sync:
 - **Column-level security**: Use Iceberg column mapping or Delta column mapping for PII restriction.
 - **Access controls**: Enforce lakehouse access via SQL standard `GRANT`/`REVOKE` on table/catalog level.
 - **Encryption at rest**: Enable S3/ADLS encryption with customer-managed keys for lakehouse storage.
-- **Audit logging**: Log all table reads and writes through Spark/Trino audit hooks to SIEM.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Log all table reads and writes through Spark/Trino [audit](../../AI_and_Agents/Operations/audit/SKILL.md) hooks to SIEM.
 - **Credential rotation**: Rotate storage access keys and catalog credentials every 90 days; use IAM roles.
 
 ## Handoff
-`data-data-lake` for underlying table format operations (compaction, vacuum, Z-order)
-`data-distributed-storage` for S3-compatible storage backend configuration
-`data-data-quality` for validation rules and data contract enforcement
+`[data-data-lake](../../Software_Engineering_and_Other/Databases/data-lake/SKILL.md)` for underlying table format operations (compaction, vacuum, Z-order)
+`[data-distributed-storage](../../DevOps_and_Cloud/Cloud_Providers/distributed-storage/SKILL.md)` for S3-compatible storage backend configuration
+`[data-data-quality](../data-quality/SKILL.md)` for validation rules and data contract enforcement
 

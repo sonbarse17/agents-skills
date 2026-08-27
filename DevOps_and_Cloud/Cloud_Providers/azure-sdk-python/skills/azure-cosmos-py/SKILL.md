@@ -10,7 +10,7 @@ metadata:
   package: azure-cosmos
 ---
 
-# Azure Cosmos DB SDK for Python
+# Azure Cosmos DB SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure Cosmos DB NoSQL API — globally distributed, multi-model database.
 
@@ -33,7 +33,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -42,7 +42,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.cosmos import CosmosClient
@@ -50,7 +50,7 @@ from azure.cosmos import CosmosClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 endpoint = "https://<account>.documents.azure.com:443/"
@@ -72,7 +72,7 @@ with CosmosClient(url=endpoint, credential=credential) as client:
 
 ### Setup Database and Container
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get or create database
 database = client.create_database_if_not_exists(id="mydb")
 
@@ -89,7 +89,7 @@ container = database.get_container_client("mycontainer")
 
 ### Create Item
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 item = {
     "id": "item-001",           # Required: unique within partition
     "category": "electronics",   # Partition key value
@@ -104,7 +104,7 @@ print(f"Created: {created['id']}")
 
 ### Read Item
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Read requires id AND partition key
 item = container.read_item(
     item="item-001",
@@ -115,7 +115,7 @@ print(f"Name: {item['name']}")
 
 ### Update Item (Replace)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 item = container.read_item(item="item-001", partition_key="electronics")
 item["price"] = 899.99
 item["on_sale"] = True
@@ -125,7 +125,7 @@ updated = container.replace_item(item=item["id"], body=item)
 
 ### Upsert Item
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create if not exists, replace if exists
 item = {
     "id": "item-002",
@@ -139,7 +139,7 @@ result = container.upsert_item(body=item)
 
 ### Delete Item
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 container.delete_item(
     item="item-001",
     partition_key="electronics"
@@ -150,7 +150,7 @@ container.delete_item(
 
 ### Basic Query
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Query within a partition (efficient)
 query = "SELECT * FROM c WHERE c.price < @max_price"
 items = container.query_items(
@@ -165,7 +165,7 @@ for item in items:
 
 ### Cross-Partition Query
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Cross-partition (more expensive, use sparingly)
 query = "SELECT * FROM c WHERE c.price < @max_price"
 items = container.query_items(
@@ -180,7 +180,7 @@ for item in items:
 
 ### Query with Projection
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 query = "SELECT c.id, c.name, c.price FROM c WHERE c.category = @category"
 items = container.query_items(
     query=query,
@@ -191,7 +191,7 @@ items = container.query_items(
 
 ### Read All Items
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Read all in a partition
 items = container.read_all_items()  # Cross-partition
 # Or with partition key
@@ -205,7 +205,7 @@ items = container.query_items(
 
 **Critical**: Always include partition key for efficient operations.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.cosmos import PartitionKey
 
 # Single partition key
@@ -223,7 +223,7 @@ container = database.create_container_if_not_exists(
 
 ## Throughput
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create container with provisioned throughput
 container = database.create_container_if_not_exists(
     id="mycontainer",
@@ -241,7 +241,7 @@ container.replace_throughput(throughput=1000)
 
 ## Async Client
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.cosmos.aio import CosmosClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -270,7 +270,7 @@ asyncio.run(cosmos_operations())
 
 ## Error Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.cosmos.exceptions import CosmosHttpResponseError
 
 try:

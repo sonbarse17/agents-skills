@@ -3,7 +3,7 @@ name: python-background-jobs
 description: Python background job patterns including task queues, workers, and event-driven architecture. Use when implementing async task processing, job queues, long-running operations, or decoupling work from request/response cycles.
 ---
 
-# Python Background Jobs & Task Queues
+# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Background Jobs & Task Queues
 
 Decouple long-running or unreliable work from request/response cycles. Return immediately to the user while background workers handle the heavy lifting asynchronously.
 
@@ -38,7 +38,7 @@ Most queues guarantee at-least-once delivery. Your code must handle duplicates.
 
 This skill uses Celery for examples, a widely adopted task queue. Alternatives like RQ, Dramatiq, and cloud-native solutions (AWS SQS, GCP Tasks) are equally valid choices.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from celery import Celery
 
 app = Celery("tasks", broker="redis://localhost:6379")
@@ -58,7 +58,7 @@ send_email.delay("user@example.com", "Welcome!", "Thanks for signing up")
 
 For operations exceeding a few seconds, return a job ID and process asynchronously.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from uuid import uuid4
 from dataclasses import dataclass
 from enum import Enum
@@ -111,7 +111,7 @@ async def start_export(request: ExportRequest) -> JobResponse:
 
 Configure Celery tasks with proper retry and timeout settings.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from celery import Celery
 
 app = Celery("tasks", broker="redis://localhost:6379")
@@ -148,7 +148,7 @@ def process_payment(self, payment_id: str) -> dict:
 
 Workers may retry on crash or timeout. Design for safe re-execution.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @app.task(bind=True)
 def process_order(self, order_id: str) -> None:
     """Process order idempotently."""
@@ -184,7 +184,7 @@ def process_order(self, order_id: str) -> None:
 
 Persist job state transitions for visibility and debugging.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class JobRepository:
     """Repository for managing job state."""
 
@@ -225,7 +225,7 @@ class JobRepository:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-background-jobs_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-background-jobs_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

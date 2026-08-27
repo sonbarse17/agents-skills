@@ -137,7 +137,7 @@ If bare `runevals` prints `This version of the M365 Evals CLI has stopped workin
 | `evals\evals.json` | Source-controlled eval dataset if the user wants it committed. |
 | `.evals\` | Local run outputs; usually gitignored. |
 
-Never print or commit secrets, prompts containing sensitive data, retrieved content, debug logs, or raw result files unless the user explicitly asks and confirms the data is safe to share.
+Never print or [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets, prompts containing sensitive data, retrieved content, debug logs, or raw result files unless the user explicitly asks and confirms the data is safe to share.
 
 ## Generation guidance
 

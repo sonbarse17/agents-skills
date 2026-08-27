@@ -3,19 +3,19 @@ name: python-packaging
 description: Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.
 ---
 
-# Python Packaging
+# [Python](../python/SKILL.md) Packaging
 
-Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.
+Comprehensive guide to creating, structuring, and distributing [Python](../python/SKILL.md) packages using modern packaging tools, pyproject.toml, and publishing to PyPI.
 
 ## When to Use This Skill
 
-- Creating Python libraries for distribution
+- Creating [Python](../python/SKILL.md) libraries for distribution
 - Building command-line tools with entry points
 - Publishing packages to PyPI or private repositories
-- Setting up Python project structure
+- Setting up [Python](../python/SKILL.md) project structure
 - Creating installable packages with dependencies
 - Building wheels and source distributions
-- Versioning and releasing Python packages
+- Versioning and releasing [Python](../python/SKILL.md) packages
 - Creating namespace packages
 - Implementing package metadata and classifiers
 
@@ -39,12 +39,12 @@ Comprehensive guide to creating, structuring, and distributing Python packages u
 
 - **setuptools**: Traditional, widely used
 - **hatchling**: Modern, opinionated
-- **flit**: Lightweight, for pure Python
+- **flit**: Lightweight, for pure [Python](../python/SKILL.md)
 - **poetry**: Dependency management + packaging
 
 ### 4. Distribution
 
-- **PyPI**: Python Package Index (public)
+- **PyPI**: [Python](../python/SKILL.md) Package Index (public)
 - **TestPyPI**: Testing before production
 - **Private repositories**: JFrog, AWS CodeArtifact, etc.
 
@@ -78,7 +78,7 @@ version = "0.1.0"
 description = "A short description"
 authors = [{name = "Your Name", email = "you@example.com"}]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-[python](../python/SKILL.md) = ">=3.8"
 dependencies = [
     "requests>=2.28.0",
 ]
@@ -162,6 +162,6 @@ project/
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/python-packaging_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[python](../python/SKILL.md)-packaging_details.md`. Read that file when the navigation tier above is insufficient.
 
 

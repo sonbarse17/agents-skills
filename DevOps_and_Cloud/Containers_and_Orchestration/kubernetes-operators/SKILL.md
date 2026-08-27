@@ -21,19 +21,19 @@ compatibility:
 tags: [devops, kubernetes-operators, kubebuilder, controller-runtime, phase-3]
 ---
 
-# Kubernetes Operators
+# [Kubernetes](../kubernetes/SKILL.md) Operators
 
 ## Purpose
-Build Kubernetes operators and custom controllers using Kubebuilder, Operator SDK, or raw controller-runtime to automate application management on Kubernetes. Covers CRD design, reconciliation loops, finalizers, webhooks, testing, and deployment.
+Build [Kubernetes](../kubernetes/SKILL.md) operators and custom controllers using Kubebuilder, Operator SDK, or raw controller-runtime to automate application management on [Kubernetes](../kubernetes/SKILL.md). Covers CRD design, reconciliation loops, finalizers, webhooks, testing, and deployment.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Kubernetes operator", "operator", "custom controller", "Kubebuilder", "Operator SDK", "CRD", "Custom Resource Definition", "reconciliation loop", "reconcile", "controller-runtime", "finalizer", "admission webhook", "conversion webhook", "multi-version CRD", "envtest", "OLM", "Operator Lifecycle Manager", "operator pattern".
+Exact user phrases: "[Kubernetes](../kubernetes/SKILL.md) operator", "operator", "custom controller", "Kubebuilder", "Operator SDK", "CRD", "Custom Resource Definition", "reconciliation loop", "reconcile", "controller-runtime", "finalizer", "admission webhook", "conversion webhook", "multi-version CRD", "envtest", "OLM", "Operator Lifecycle Manager", "operator pattern".
 
 ### Input Context
 - Go programming experience level
-- Kubernetes version targeted
+- [Kubernetes](../kubernetes/SKILL.md) version targeted
 - Operation to automate (backup, deploy, configure, clean up)
 - Existing CRD structures (if any)
 - Testing framework preference
@@ -62,7 +62,7 @@ Go code, YAML manifests, and Makefile targets. No preamble. No postamble. No fil
 ```
 What are you managing?
   Application lifecycle (deploy, upgrade, backup) → Consider operator
-  Single resource creation → Helm chart + ArgoCD (simpler)
+  Single resource creation → Helm chart + [ArgoCD](../argocd/SKILL.md) (simpler)
   Multi-step orchestration across resources → Operator pattern
 
   Is the logic simple (create/delete static resources)?
@@ -75,11 +75,11 @@ What are you managing?
 
   Do you need to manage stateful applications?
     YES → Operator (backup, restore, scale up/down, failover)
-    NO → Helm + Kubernetes primitives
+    NO → Helm + [Kubernetes](../kubernetes/SKILL.md) primitives
 
   Is your team comfortable with Go?
     YES → Kubebuilder (most features, best performance)
-    NO → Python operator (kopf), Ansible operator, or Java (java-operator-sdk)
+    NO → [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) operator (kopf), [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) operator, or Java (java-operator-sdk)
 ```
 
 ### Operator Implementation Comparison
@@ -88,9 +88,9 @@ What are you managing?
 |----------|----------|----------------|---------|------------|-------------|
 | Kubebuilder | Go | Built-in | envtest | Medium | Best |
 | Operator SDK (Go) | Go | Built-in | envtest | Medium | Best |
-| Operator SDK (Ansible) | Ansible | Manual | Molecule | Low | Moderate |
+| Operator SDK ([Ansible](../../Infrastructure_as_Code/ansible/SKILL.md)) | [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) | Manual | Molecule | Low | Moderate |
 | Operator SDK (Helm) | Helm | Manual | Limited | Low | Moderate |
-| Kopf | Python | Manual | pytest | Low | Moderate |
+| Kopf | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Manual | pytest | Low | Moderate |
 | Java Operator SDK | Java | Manual | JUnit | Medium | Good |
 | Metacontroller | JS (Lambda) | Manual | Custom | Low | Good |
 
@@ -104,7 +104,7 @@ curl -L -o kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go e
 chmod +x kubebuilder && sudo mv kubebuilder /usr/local/bin/
 
 # Scaffold project
-kubebuilder init --domain example.com --repo github.com/org/my-operator
+kubebuilder init --domain example.com --repo [github](../../CI_CD/github/SKILL.md).com/org/my-operator
 kubebuilder create api --group batch --version v1 --kind BackupJob --resource=true --controller=true
 
 # Project structure
@@ -167,8 +167,8 @@ type BackupJobSpec struct {
 }
 
 type BackupSource struct {
-    // Type of source: "postgres", "mysql", "filesystem", "volume"
-    // +kubebuilder:validation:Enum=postgres;mysql;filesystem;volume
+    // Type of source: "postgres", "[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)", "filesystem", "volume"
+    // +kubebuilder:validation:Enum=postgres;[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md);filesystem;volume
     Type string `json:"type"`
 
     // Namespace where the source is located
@@ -259,7 +259,7 @@ import (
     "fmt"
     "time"
 
-    batchv1 "github.com/org/my-operator/api/v1"
+    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
     corev1 "k8s.io/api/core/v1"
     apierrors "k8s.io/apimachinery/pkg/api/errors"
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -344,7 +344,7 @@ func (r *BackupJobReconciler) handleDeletion(ctx context.Context, backupJob *bat
         // Perform cleanup tasks
         logger.Info("Running cleanup for backup job", "name", backupJob.Name)
 
-        // Remove all associated Kubernetes Jobs
+        // Remove all associated [Kubernetes](../kubernetes/SKILL.md) Jobs
         jobList := &batchv1.JobList{}
         if err := r.List(ctx, jobList, client.InNamespace(backupJob.Namespace),
             client.MatchingLabels{"backup-job": backupJob.Name}); err != nil {
@@ -366,7 +366,7 @@ func (r *BackupJobReconciler) handleDeletion(ctx context.Context, backupJob *bat
 }
 
 func (r *BackupJobReconciler) executeBackup(ctx context.Context, backupJob *batchv1.BackupJob) error {
-    // Create a Kubernetes Job to perform the backup
+    // Create a [Kubernetes](../kubernetes/SKILL.md) Job to perform the backup
     job := &batchv1.Job{
         ObjectMeta: metav1.ObjectMeta{
             GenerateName: fmt.Sprintf("backup-%s-", backupJob.Name),
@@ -515,7 +515,7 @@ func (r *BackupJob) ValidateDelete() (admission.Warnings, error) {
 func (r *BackupJob) validateBackupJob() (admission.Warnings, error) {
     // Validate source type
     validSources := map[string]bool{
-        "postgres": true, "mysql": true, "filesystem": true, "volume": true,
+        "postgres": true, "[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)": true, "filesystem": true, "volume": true,
     }
     if !validSources[r.Spec.Source.Type] {
         return nil, fmt.Errorf("invalid source type: %s", r.Spec.Source.Type)
@@ -552,11 +552,11 @@ import (
     "flag"
     "os"
 
-    batchv1 "github.com/org/my-operator/api/v1"
-    "github.com/org/my-operator/internal/controller"
+    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
+    "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/internal/controller"
     "k8s.io/apimachinery/pkg/runtime"
     utilruntime "k8s.io/apimachinery/pkg/util/runtime"
-    clientgoscheme "k8s.io/client-go/kubernetes/scheme"
+    clientgoscheme "k8s.io/client-go/[kubernetes](../kubernetes/SKILL.md)/scheme"
     _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
     ctrl "sigs.k8s.io/controller-runtime"
     "sigs.k8s.io/controller-runtime/pkg/healthz"
@@ -637,9 +637,9 @@ import (
     "context"
     "time"
 
-    batchv1 "github.com/org/my-operator/api/v1"
-    . "github.com/onsi/ginkgo/v2"
-    . "github.com/onsi/gomega"
+    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
+    . "[github](../../CI_CD/github/SKILL.md).com/onsi/ginkgo/v2"
+    . "[github](../../CI_CD/github/SKILL.md).com/onsi/gomega"
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
     "k8s.io/apimachinery/pkg/types"
 )
@@ -757,8 +757,8 @@ import (
     "encoding/json"
     "net/http"
 
-    v1 "github.com/org/my-operator/api/v1"
-    v2 "github.com/org/my-operator/api/v2"
+    v1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
+    v2 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v2"
     "sigs.k8s.io/controller-runtime/pkg/webhook/conversion"
 )
 
@@ -843,12 +843,12 @@ func init() {
 
 ## Compared With
 
-| Aspect | Kubebuilder | Operator SDK (Go) | Operator SDK (Ansible) | Kopf (Python) |
+| Aspect | Kubebuilder | Operator SDK (Go) | Operator SDK ([Ansible](../../Infrastructure_as_Code/ansible/SKILL.md)) | Kopf ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)) |
 |--------|-------------|-------------------|----------------------|---------------|
 | CRD generation | Automatic | Automatic | Manual | Manual |
 | Webhook support | Built-in | Built-in | Limited | Custom |
 | Testing framework | envtest + Ginkgo | envtest + Ginkgo | Molecule | pytest |
-| Reconciliation | controller-runtime | controller-runtime | Ansible Runner | Python asyncio |
+| Reconciliation | controller-runtime | controller-runtime | [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) Runner | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) asyncio |
 | Deployment | OLM/Helm/Manifests | OLM/Helm/Manifests | OLM | Helm |
 | Multi-version CRD | Conversion webhook | Conversion webhook | Manual | Manual |
 | Go skill required | Yes | Yes | No | No |
@@ -857,15 +857,15 @@ func init() {
 ## References
 - ../../../Global_References/controller-runtime.md — Controller Runtime Deep Dive
 - ../../../Global_References/finalizers-garbage.md — Finalizers, Garbage Collection, and Owner References
-- ../../../Global_References/kubernetes-operators-advanced.md — Kubernetes Operators Advanced Topics
-- ../../../Global_References/kubernetes-operators-fundamentals.md — Kubernetes Operators Fundamentals
-- ../../../Global_References/operator-patterns.md — Kubernetes Operator Design Patterns
+- ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-operators-advanced.md — [Kubernetes](../kubernetes/SKILL.md) Operators Advanced Topics
+- ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-operators-fundamentals.md — [Kubernetes](../kubernetes/SKILL.md) Operators Fundamentals
+- ../../../Global_References/operator-patterns.md — [Kubernetes](../kubernetes/SKILL.md) Operator Design Patterns
 - ../../../Global_References/operator-sdk-guide.md — Operator SDK Guide
 - ../../../Global_References/testing-operators.md — Operator Testing
 - references/conversion-webhooks.md — Multi-Version CRD with Conversion Webhooks
-- references/operator-metrics.md — Operator Metrics and Observability
+- references/operator-metrics.md — Operator Metrics and [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 - references/olm-deployment.md — OLM Operator Deployment
 
 ## Handoff
-Related skills: kubernetes-patterns (K8s resource patterns), helm-patterns (Helm chart design), gitops-advanced (GitOps with custom operators), policy-as-code (admission webhooks integration), monitoring (operator metrics and dashboards).
+Related skills: [kubernetes](../kubernetes/SKILL.md)-patterns (K8s resource patterns), [helm-patterns](../helm-patterns/SKILL.md) (Helm chart design), [gitops](../gitops/SKILL.md)-advanced ([GitOps](../gitops/SKILL.md) with custom operators), [policy-as-code](../../../Security/policy-as-code/SKILL.md) (admission webhooks integration), [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (operator metrics and [dashboards](../../Cloud_Providers/dashboards/SKILL.md)).
 

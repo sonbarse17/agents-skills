@@ -19,7 +19,7 @@ Low-level SDK for creating and managing persistent AI agents with threads, messa
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-ai-agents-persistent</artifactId>
+    <artifactId>[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-persistent</artifactId>
     <version>1.0.0-beta.1</version>
 </dependency>
 ```
@@ -148,5 +148,5 @@ try {
 
 | Resource | URL |
 |----------|-----|
-| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-ai-agents-persistent |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/ai/azure-ai-agents-persistent |
+| Maven Package | https://central.sonatype.com/artifact/com.azure/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-persistent |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-persistent |

@@ -11,7 +11,7 @@ metadata:
 
 Evaluate a user's repository for build health, app completeness, and Azure deployment feasibility — before infrastructure planning. Produces per-component verdicts (PASS/WARN/FAIL) consumed by downstream phases.
 
-> **Orchestrator relationship:** Called by `azure-app-onboard` at Step 3, or standalone for code readiness checks. When called by orchestrator, return control to `azure-app-onboard` after writing artifacts — do NOT invoke downstream phases directly.
+> **Orchestrator relationship:** Called by `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)` at Step 3, or standalone for code readiness checks. When called by orchestrator, return control to `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)` after writing artifacts — do NOT invoke downstream phases directly.
 
 Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-id}/`. Reads `context.json`. Writes `components[]`, `repo{}`, `detectedInfra[]`. Produces `prereq-output.json`. Schema: [`prereq-schemas.ts`](../../../Global_References/prereq-schemas.ts) — `PrereqOutput`, `BuildRequirements`. Direct entry supported.
 
@@ -19,10 +19,10 @@ Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-
 
 | Signal | Redirect |
 |--------|----------|
-| Validate infrastructure (Bicep/TF/azure.yaml) | **azure-validate** |
-| Generate IaC | **azure-prepare** |
-| End-to-end idea-to-production | **azure-app-onboard** |
-| Run `azd up` or deploy | **azure-deploy** |
+| Validate infrastructure (Bicep/TF/azure.yaml) | **[azure-validate](../../Cloud_Providers/azure-skills/skills/[azure-validate](../../Cloud_Providers/azure-validate/SKILL.md)/SKILL.md)** |
+| Generate IaC | **[azure-prepare](../../Cloud_Providers/[azure-prepare](../../Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)** |
+| End-to-end idea-to-production | **[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)** |
+| Run `azd up` or deploy | **[azure-deploy](../../Cloud_Providers/azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)** |
 
 ## Rules
 
@@ -48,7 +48,7 @@ Phase 1 of 4 in AppOnboard pipeline. Session: `.copilot-azure/sessions/{session-
 **Orchestrator entry:** Session exists — read `context.json`, proceed to Step 2.
 
 **Direct entry:** Check `.copilot-azure/sessions/active-session.json`:
-- **Exists** → ⛔ read [session-protocol.md](../../../Global_References/azure-app-onboard-prereq_session-protocol.md) for resume/fresh gate. Do NOT proceed until user answers.
+- **Exists** → ⛔ read [session-protocol.md](../../../Global_References/[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)-prereq_session-protocol.md) for resume/fresh gate. Do NOT proceed until user answers.
 - **Missing** → create session: generate UUID, `New-Item -ItemType Directory -Path ".copilot-azure/sessions/{uuid}" -Force`, write `context.json` + `active-session.json` via `create` tool.
 
 Then: `az account show` → merge `{id, name, tenantId}` into `context.json.azure`. ⛔ Session MUST exist on disk before any scanning.
@@ -59,7 +59,7 @@ Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detecte
 
 > If no project files, no Dockerfile, AND no index.html → ⛔ read [zero-code-path.md](../../../Global_References/zero-code-path.md).
 
-> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|firebase`. If functional deps found → read [cloud-sdk-migration.md](../../../Global_References/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "azure-cloud-migrate"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
+> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)`. If functional deps found → read [cloud-sdk-migration.md](../../../Global_References/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "[azure-cloud-migrate](../../Cloud_Providers/[azure-cloud-migrate](../../Cloud_Providers/azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md)"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
 
 ### Step 3: Per-Component Evaluation
 
@@ -68,7 +68,7 @@ Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detecte
 | 3.1 | **Build check** | ⛔ **You MUST read [build-check.md](../../../Global_References/build-check.md)** |
 | 3.2 | **Completeness check** | ⛔ **You MUST read [completeness-check.md](../../../Global_References/completeness-check.md)** |
 | 3.3 | **Deployability check** | ⛔ **You MUST read [deployability-check.md](../../../Global_References/deployability-check.md)** |
-| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](../../../Global_References/component-mapping.md) ONLY IF >1 project manifest found (monorepo) |
+| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](../../../Global_References/component-mapping.md) ONLY IF >1 project manifest found ([monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)) |
 
 Populate `buildRequirements` per component after evaluation. Verdict propagation, tier rules, and f1Viable aggregation are in [readiness-gate.md](../../../Global_References/readiness-gate.md) and the individual check references.
 
@@ -103,10 +103,10 @@ Per [readiness-gate.md § Present Findings](../../../Global_References/readiness
 | # | Condition | Action |
 |---|-----------|--------|
 | 1 | `routeToSkill` set (any entry) | `ask_user`: "Redirect to {routeToSkill}" / "Not now". ⛔ Pipeline stops — do NOT proceed to architecture planning. |
-| 2 | `cloudSdkFindings[]` non-empty (user chose "Continue evaluation anyway") | Present the cloud-SDK → Azure swap mapping as 🔶 blockers, then `ask_user` with this exact prompt: **"🔶 Cloud SDK migration required — these dependencies must be swapped before this app can deploy to Azure. (Redirect to azure-cloud-migrate / Stop — swap manually and re-run)"** — Redirect sets `routeToSkill: "azure-cloud-migrate"`, Stop halts. ⛔ Pipeline stops — do NOT proceed to architecture planning, and do NOT offer a "continue to prepare" option; the app can't deploy until the deps are swapped. |
-| 3 | Orchestrator + no `routeToSkill` | Tell the user: "✅ Your app has been evaluated and is ready — let's plan your Azure deployment." Then invoke `azure-app-onboard`. ⛔ Do NOT stop, do NOT wait for user input, do NOT narrate internal handoffs. The user already consented to the full pipeline at scope triage. |
-| 4 | Direct + ready/readyWithCaveats + no Azure infra | `ask_user`: "Deploy to Azure (full pipeline)" → invoke `azure-app-onboard` / "Not now" |
-| 5 | Direct + ready/readyWithCaveats + existing Azure infra | `ask_user`: "Start fresh" → invoke `azure-app-onboard` / "Use existing infra" → invoke `azure-prepare` / "Not now" |
+| 2 | `cloudSdkFindings[]` non-empty (user chose "Continue evaluation anyway") | Present the cloud-SDK → Azure swap mapping as 🔶 blockers, then `ask_user` with this exact prompt: **"🔶 Cloud SDK migration required — these dependencies must be swapped before this app can deploy to Azure. (Redirect to [azure-cloud-migrate](../../Cloud_Providers/[azure-cloud-migrate](../../Cloud_Providers/azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md) / Stop — swap manually and re-run)"** — Redirect sets `routeToSkill: "[azure-cloud-migrate](../../Cloud_Providers/[azure-cloud-migrate](../../Cloud_Providers/azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md)"`, Stop halts. ⛔ Pipeline stops — do NOT proceed to architecture planning, and do NOT offer a "continue to prepare" option; the app can't deploy until the deps are swapped. |
+| 3 | Orchestrator + no `routeToSkill` | Tell the user: "✅ Your app has been evaluated and is ready — let's plan your Azure deployment." Then invoke `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)`. ⛔ Do NOT stop, do NOT wait for user input, do NOT narrate internal handoffs. The user already consented to the full pipeline at scope triage. |
+| 4 | Direct + ready/readyWithCaveats + no Azure infra | `ask_user`: "Deploy to Azure (full pipeline)" → invoke `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)` / "Not now" |
+| 5 | Direct + ready/readyWithCaveats + existing Azure infra | `ask_user`: "Start fresh" → invoke `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)` / "Use existing infra" → invoke `[azure-prepare](../../Cloud_Providers/[azure-prepare](../../Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` / "Not now" |
 | 6 | Direct + blocked | Report blocker summary + "Fix and re-run." |
 
 Severity tiers (🛑🔶❌🔧⚠️✅) are defined in [readiness-gate.md](../../../Global_References/readiness-gate.md).
@@ -116,5 +116,5 @@ Severity tiers (🛑🔶❌🔧⚠️✅) are defined in [readiness-gate.md](../
 | Artifact | Location | Consumer |
 |----------|----------|----------|
 | Session context | `context.json` → `components[]`, `repo{}`, `detectedInfra[]`, `detectedServices[]` | All downstream phases |
-| Prereq output | `prereq-output.json` | prepare phase (via `azure-app-onboard`) |
+| Prereq output | `prereq-output.json` | prepare phase (via `[azure-app-onboard](../../Cloud_Providers/[azure-app-onboard](../../Cloud_Providers/azure-skills/skills/azure-app-onboard/SKILL.md)/SKILL.md)`) |
 | Readiness report | `.copilot-azure/sessions/{uuid}/readiness-report.md` | User (offline reference) |

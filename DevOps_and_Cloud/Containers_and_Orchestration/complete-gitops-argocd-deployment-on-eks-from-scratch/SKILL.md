@@ -18,7 +18,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete GitOps/Argo CD Deployment on EKS, From Scratch
+# Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on EKS, From Scratch
 
 ## Purpose
 
@@ -29,46 +29,46 @@ skill in this repo. What's missing is the **sequencing**: in what order do
 you actually do these things on a fresh EKS cluster so that each step's
 prerequisites are satisfied by the step before it, and where does this
 specific cloud's IAM model (IRSA) plug in versus where the mechanics are
-identical to any other Kubernetes cluster? This skill is that runbook. The
+identical to any other [Kubernetes](../kubernetes/SKILL.md) cluster? This skill is that [runbook](../../Observability_and_SecOps/runbook/SKILL.md). The
 one genuinely AWS-specific decision point is **how Argo CD authenticates to
 AWS**, both for its own EKS cluster access (via IAM, not a static bearer
 token) and for pulling images from a private ECR registry — everything
 downstream (the `Application` spec, the `ApplicationSet` generator, sync
-policy) is identical to any other Kubernetes target and is covered in depth
+policy) is identical to any other [Kubernetes](../kubernetes/SKILL.md) target and is covered in depth
 by the linked skills, not repeated here.
 
 ## When to use
 
 - Starting from a bare, already-provisioned EKS cluster with nothing
-  GitOps-related installed, and needing a working Argo CD + first deployed
+  [GitOps](../gitops/SKILL.md)-related installed, and needing a working Argo CD + first deployed
   app + multi-environment rollout by the end of the session.
 - The user explicitly wants IRSA wired into Argo CD's own service accounts
   (not just application workloads) for cluster access or ECR pulls.
 - Standing up a second/third environment (staging, prod) for a service
-  already GitOps-managed in one EKS cluster.
-- Migrating a team off manual `kubectl apply`/`helm upgrade` deploys to EKS
-  onto a full GitOps flow, starting from zero.
+  already [GitOps](../gitops/SKILL.md)-managed in one EKS cluster.
+- Migrating a team off manual `[kubectl](../kubectl/SKILL.md) apply`/`helm upgrade` deploys to EKS
+  onto a full [GitOps](../gitops/SKILL.md) flow, starting from zero.
 - Diagnosing why a freshly installed Argo CD on EKS can't reach a private
   ECR image or can't register a second EKS cluster as a destination.
 
 ## Prerequisites & environment
 
-- An EKS cluster already provisioned and reachable via `kubectl` — cluster
+- An EKS cluster already provisioned and reachable via `[kubectl](../kubectl/SKILL.md)` — cluster
   creation, node groups, and networking are covered by
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
   and are **not** repeated here; this skill starts from "the cluster
   exists."
 - An IAM OIDC identity provider already associated with the cluster
   (`eksctl utils associate-iam-oidc-provider`) — required before any IRSA
   role can be created; if this is missing, do it as the very first step,
   since every later IAM step silently fails without it.
-- `helm` ≥ 3.12, `kubectl`, `eksctl` or Terraform's `aws` provider, and
+- `helm` ≥ 3.12, `[kubectl](../kubectl/SKILL.md)`, `eksctl` or Terraform's `aws` provider, and
   `aws` CLI v2 with IAM permissions to create roles/policies and EKS
   access entries.
 - A Git repository already reachable from the cluster's network path to
-  hold the GitOps config (Application manifests, Kustomize/Helm overlays).
+  hold the [GitOps](../gitops/SKILL.md) config (Application manifests, [Kustomize](../kustomize/SKILL.md)/Helm overlays).
 - Least-privilege IAM design principles from
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
   should govern every role created in Phase 2 below.
 
 ## Step-by-step guidance
@@ -87,13 +87,13 @@ is already installed.
 ### Phase 1 — Install Argo CD via Helm
 
 ```bash
-helm repo add argo https://argoproj.github.io/argo-helm
+helm repo add argo https://argoproj.[github](../../CI_CD/github/SKILL.md).io/argo-helm
 helm repo update
-helm install argocd argo/argo-cd \
-  --namespace argocd --create-namespace \
+helm install [argocd](../argocd/SKILL.md) argo/[argo-cd](../argo-cd/SKILL.md) \
+  --namespace [argocd](../argocd/SKILL.md) --create-namespace \
   --version 7.6.12 \
   --set server.service.type=ClusterIP
-kubectl get pods -n argocd   # wait for all Deployments/StatefulSet Ready
+[kubectl](../kubectl/SKILL.md) get pods -n [argocd](../argocd/SKILL.md)   # wait for all Deployments/StatefulSet Ready
 ```
 Use `ClusterIP` (not a public `LoadBalancer`) for the server service by
 default — Phase 3 puts a proper Ingress + TLS in front of it rather than
@@ -101,7 +101,7 @@ exposing the API server directly on a cloud load balancer.
 
 ### Phase 2 — AWS IAM integration for Argo CD's own components (IRSA)
 
-This is the AWS-specific step with no equivalent on a plain Kubernetes
+This is the AWS-specific step with no equivalent on a plain [Kubernetes](../kubernetes/SKILL.md)
 cluster. Two distinct needs, both solved with IRSA:
 
 1. **Argo CD's `application-controller`/`server` need IAM, not just a
@@ -114,19 +114,19 @@ cluster. Two distinct needs, both solved with IRSA:
    long-lived kubeconfig token:
    ```bash
    eksctl create iamserviceaccount \
-     --cluster payments-prod --namespace argocd \
-     --name argocd-application-controller \
-     --role-name argocd-eks-cross-cluster \
+     --cluster payments-prod --namespace [argocd](../argocd/SKILL.md) \
+     --name [argocd](../argocd/SKILL.md)-application-controller \
+     --role-name [argocd](../argocd/SKILL.md)-eks-cross-cluster \
      --attach-policy-arn arn:aws:iam::<AWS_ACCOUNT_ID>:policy/ArgoCDAssumeSpokeRole \
      --override-existing-serviceaccounts --approve
 
    aws eks create-access-entry \
      --cluster-name payments-staging \
-     --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/argocd-eks-cross-cluster \
+     --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/[argocd](../argocd/SKILL.md)-eks-cross-cluster \
      --type STANDARD
    aws eks associate-access-policy \
      --cluster-name payments-staging \
-     --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/argocd-eks-cross-cluster \
+     --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/[argocd](../argocd/SKILL.md)-eks-cross-cluster \
      --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy \
      --access-scope type=cluster
    ```
@@ -138,38 +138,38 @@ cluster. Two distinct needs, both solved with IRSA:
      {
        "execProviderConfig": {
          "command": "aws",
-         "args": ["eks", "get-token", "--cluster-name", "payments-staging", "--role-arn", "arn:aws:iam::<AWS_ACCOUNT_ID>:role/argocd-eks-cross-cluster"],
+         "args": ["eks", "get-token", "--cluster-name", "payments-staging", "--role-arn", "arn:aws:iam::<AWS_ACCOUNT_ID>:role/[argocd](../argocd/SKILL.md)-eks-cross-cluster"],
          "apiVersion": "client.authentication.k8s.io/v1beta1"
        },
        "tlsClientConfig": { "insecure": false, "caData": "${SPOKE_CA_DATA_BASE64}" }
      }
    ```
    This is the EKS-specific version of the cluster-registration pattern in
-   [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
+   [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
    — same `Secret`-based registration mechanism, but the credential is a
    short-lived STS token brokered by IRSA instead of a static bearer token.
 
-2. **`argocd-repo-server` (and any workload pulling private images) needs
-   ECR pull access without a static Docker config secret.** IRSA-bind the
+2. **`[argocd](../argocd/SKILL.md)-repo-server` (and any workload pulling private images) needs
+   ECR pull access without a static [Docker](../docker/SKILL.md) config secret.** IRSA-bind the
    repo-server's ServiceAccount to a role with `ecr:GetAuthorizationToken`/
    `ecr:BatchGetImage`, matching the workload-identity pattern in
-   [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md):
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md):
    ```bash
    eksctl create iamserviceaccount \
-     --cluster payments-prod --namespace argocd \
-     --name argocd-repo-server --role-name argocd-repo-server-ecr-read \
+     --cluster payments-prod --namespace [argocd](../argocd/SKILL.md) \
+     --name [argocd](../argocd/SKILL.md)-repo-server --role-name [argocd](../argocd/SKILL.md)-repo-server-ecr-read \
      --attach-policy-arn arn:aws:iam::<AWS_ACCOUNT_ID>:policy/EcrReadOnly \
      --override-existing-serviceaccounts --approve
-   kubectl patch deployment argocd-repo-server -n argocd --type=json \
-     -p '[{"op":"add","path":"/spec/template/spec/serviceAccountName","value":"argocd-repo-server"}]'
+   [kubectl](../kubectl/SKILL.md) patch deployment [argocd](../argocd/SKILL.md)-repo-server -n [argocd](../argocd/SKILL.md) --type=json \
+     -p '[{"op":"add","path":"/spec/template/spec/serviceAccountName","value":"[argocd](../argocd/SKILL.md)-repo-server"}]'
    ```
 
 ### Phase 3 — Ingress and TLS for the Argo CD API/UI
 
-Front the `argocd-server` Service with
-[ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md)
+Front the `[argocd](../argocd/SKILL.md)-server` Service with
+[ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
 and issue its certificate with
-[cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md)
+[cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
 (DNS-01 via Route 53, backed by its own scoped IRSA role per that skill's
 guidance) rather than a self-signed cert or a directly-exposed
 `LoadBalancer` Service:
@@ -177,44 +177,44 @@ guidance) rather than a self-signed cert or a directly-exposed
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-server
-  namespace: argocd
+  name: [argocd](../argocd/SKILL.md)-server
+  namespace: [argocd](../argocd/SKILL.md)
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-dns
     nginx.ingress.nginx.io/backend-protocol: "GRPC"
 spec:
   ingressClassName: nginx
   tls:
-    - hosts: ["argocd.example.com"]
-      secretName: argocd-server-tls
+    - hosts: ["[argocd](../argocd/SKILL.md).example.com"]
+      secretName: [argocd](../argocd/SKILL.md)-server-tls
   rules:
-    - host: argocd.example.com
+    - host: [argocd](../argocd/SKILL.md).example.com
       http:
         paths:
           - path: /
             pathType: Prefix
-            backend: { service: { name: argocd-server, port: { number: 443 } } }
+            backend: { service: { name: [argocd](../argocd/SKILL.md)-server, port: { number: 443 } } }
 ```
 
 ### Phase 4 — First `Application`
 
 Write the first real `Application` following
-[argocd-application-configuration](../argocd-application-configuration/SKILL.md)
+[argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
 in full — sync policy fields, sync waves/hooks, and custom health checks
 are all covered there in depth:
 ```bash
-kubectl apply -f payments-api-staging-application.yaml
-argocd login argocd.example.com --sso
-argocd app sync payments-api-staging --dry-run
-argocd app sync payments-api-staging
-argocd app wait payments-api-staging --health --timeout 300
+[kubectl](../kubectl/SKILL.md) apply -f payments-api-staging-application.yaml
+[argocd](../argocd/SKILL.md) login [argocd](../argocd/SKILL.md).example.com --sso
+[argocd](../argocd/SKILL.md) app sync payments-api-staging --dry-run
+[argocd](../argocd/SKILL.md) app sync payments-api-staging
+[argocd](../argocd/SKILL.md) app wait payments-api-staging --health --timeout 300
 ```
 
 ### Phase 5 — `ApplicationSet` for multi-environment rollout
 
 Once the first `Application` works, replace hand-authored per-environment
 manifests with an `ApplicationSet` per
-[argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md)
+[argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md)
 — a List generator for a small fixed set of environments, or a Cluster
 generator (labeled `tier: staging`/`tier: prod`) if staging and prod are
 separate EKS clusters rather than separate namespaces on one cluster, in
@@ -223,20 +223,20 @@ pattern from Phase 2.
 
 ### Phase 6 — Sync policy and health checks, deliberately
 
-Per [argocd-application-configuration](../argocd-application-configuration/SKILL.md):
+Per [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md):
 manual sync for the initial rollout, `automated` (with `prune`/`selfHeal`)
 only after the team trusts the pipeline; add custom Lua health checks for
 any internal CRDs the workloads depend on before relying on Argo CD's
-health status for alerting.
+health status for [alerting](../../Observability_and_SecOps/alerting/SKILL.md).
 
 ### Phase 7 — Verify end-to-end
 
 ```bash
-argocd cluster list
-argocd app list
-kubectl exec -n argocd deploy/argocd-repo-server -- aws sts get-caller-identity
+[argocd](../argocd/SKILL.md) cluster list
+[argocd](../argocd/SKILL.md) app list
+[kubectl](../kubectl/SKILL.md) exec -n [argocd](../argocd/SKILL.md) deploy/[argocd](../argocd/SKILL.md)-repo-server -- aws sts get-caller-identity
 ```
-The `sts get-caller-identity` from inside `argocd-repo-server` should show
+The `sts get-caller-identity` from inside `[argocd](../argocd/SKILL.md)-repo-server` should show
 the IRSA role's ARN, not an EC2 instance profile — confirming the pod is
 actually using the federated identity, not silently falling back to node
 credentials.
@@ -252,15 +252,15 @@ credentials.
   for any cluster created on a current EKS version — access entries are
   auditable via the EKS API and don't risk a ConfigMap edit locking out
   cluster-admin.
-- Keep the IRSA role for `argocd-repo-server` scoped to `ecr:GetAuthorizationToken`
+- Keep the IRSA role for `[argocd](../argocd/SKILL.md)-repo-server` scoped to `ecr:GetAuthorizationToken`
   plus `GetDownloadUrlForLayer`/`BatchGetImage` on the specific repositories
   it needs — not registry-wide `ecr:*`, mirroring the least-privilege
-  guidance in [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md).
-- Never expose `argocd-server` directly via a public `LoadBalancer` Service
+  guidance in [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md).
+- Never expose `[argocd](../argocd/SKILL.md)-server` directly via a public `LoadBalancer` Service
   — always terminate through Ingress + cert-manager so TLS and access
   logging are consistent with every other service on the cluster.
 - Default to manual sync until the config repo's own CI (SAST/SCA gates
-  per [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md))
+  per [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md))
   is trusted, then promote to `automated` per environment.
 
 ## Common pitfalls
@@ -276,7 +276,7 @@ credentials.
   service account.
 
 - **Symptom:** A second EKS cluster is registered as an Argo CD destination
-  using the exec-based `aws eks get-token` credential, and `argocd cluster
+  using the exec-based `aws eks get-token` credential, and `[argocd](../argocd/SKILL.md) cluster
   list` shows it as `Unknown`/unreachable even though the access entry was
   created.
   **Fix:** `aws eks associate-access-policy` was likely run with the wrong
@@ -296,7 +296,7 @@ credentials.
   `--dry-run` first (Phase 4), and only add `automated` sync in a later,
   deliberate step (Phase 6) once the manifest set is verified.
 
-- **Symptom:** `argocd-repo-server` can clone the Git repo fine but pulling
+- **Symptom:** `[argocd](../argocd/SKILL.md)-repo-server` can clone the Git repo fine but pulling
   the application's own container image from ECR fails with
   `ImagePullBackOff` even though the repo-server itself authenticates to
   AWS correctly.
@@ -306,7 +306,7 @@ credentials.
   registry), not what the deployed workload's own ServiceAccount can pull
   as its container image; bind IRSA to the workload's ServiceAccount
   separately, per
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md).
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md).
 
 ## Worked example
 
@@ -320,41 +320,41 @@ environments via an `ApplicationSet`.
 eksctl utils associate-iam-oidc-provider --cluster payments-prod --approve
 
 # Phase 1
-helm install argocd argo/argo-cd -n argocd --create-namespace --version 7.6.12
+helm install [argocd](../argocd/SKILL.md) argo/[argo-cd](../argo-cd/SKILL.md) -n [argocd](../argocd/SKILL.md) --create-namespace --version 7.6.12
 
 # Phase 2 — cross-cluster IRSA + access entry
-eksctl create iamserviceaccount --cluster payments-prod --namespace argocd \
-  --name argocd-application-controller --role-name argocd-eks-cross-cluster \
+eksctl create iamserviceaccount --cluster payments-prod --namespace [argocd](../argocd/SKILL.md) \
+  --name [argocd](../argocd/SKILL.md)-application-controller --role-name [argocd](../argocd/SKILL.md)-eks-cross-cluster \
   --attach-policy-arn arn:aws:iam::<AWS_ACCOUNT_ID>:policy/ArgoCDAssumeSpokeRole --approve
 aws eks create-access-entry --cluster-name payments-staging \
-  --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/argocd-eks-cross-cluster --type STANDARD
+  --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/[argocd](../argocd/SKILL.md)-eks-cross-cluster --type STANDARD
 aws eks associate-access-policy --cluster-name payments-staging \
-  --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/argocd-eks-cross-cluster \
+  --principal-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/[argocd](../argocd/SKILL.md)-eks-cross-cluster \
   --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy --access-scope type=cluster
 
 # Phase 3 — Ingress/TLS (see linked skills for full manifests)
-kubectl apply -f argocd-server-ingress.yaml
+[kubectl](../kubectl/SKILL.md) apply -f [argocd](../argocd/SKILL.md)-server-ingress.yaml
 
 # Phase 4 — first Application, manual sync
-kubectl apply -f payments-api-staging-application.yaml
-argocd app sync payments-api-staging --dry-run
-argocd app sync payments-api-staging
+[kubectl](../kubectl/SKILL.md) apply -f payments-api-staging-application.yaml
+[argocd](../argocd/SKILL.md) app sync payments-api-staging --dry-run
+[argocd](../argocd/SKILL.md) app sync payments-api-staging
 ```
 Phase 5 then replaces the single `Application` with a Cluster-generator
 `ApplicationSet` selecting `tier: staging`/`tier: prod` labeled clusters
 (full YAML in
-[argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md)),
+[argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md)),
 and Phase 6 promotes `staging`'s sync policy to `automated` once the
 manual rollout in Phase 4 is confirmed healthy, while `prod` stays manual
 per the environment-specific policy guidance in
-[argocd-application-configuration](../argocd-application-configuration/SKILL.md).
+[argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — EKS cluster/node-group provisioning and IRSA mechanics this skill assumes and builds on.
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
-- [argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md) — generator mechanics used in Phase 5.
-- [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md) — hub-and-spoke RBAC/registration pattern this skill's Phase 2 adapts with IRSA.
-- [ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md) and [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md) — Phase 3's Ingress/TLS mechanics.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege principles governing every IAM role/policy created here.
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) — the vendor-neutral GitOps concepts this EKS-specific runbook implements.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — EKS cluster/node-group provisioning and IRSA mechanics this skill assumes and builds on.
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
+- [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — generator mechanics used in Phase 5.
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke RBAC/registration pattern this skill's Phase 2 adapts with IRSA.
+- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege principles governing every IAM role/policy created here.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../gitops/SKILL.md) concepts this EKS-specific [runbook](../../Observability_and_SecOps/runbook/SKILL.md) implements.

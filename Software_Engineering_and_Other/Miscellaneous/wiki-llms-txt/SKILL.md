@@ -65,7 +65,7 @@ The file follows the [llms.txt specification](https://llmstxt.org/):
 | ❌ Bad | ✅ Good |
 |--------|---------|
 | "Architecture overview" | "System architecture showing how Orleans grains communicate via message passing with at-least-once delivery" |
-| "Getting started guide" | "Prerequisites, local dev setup with Docker Compose, and first API call walkthrough" |
+| "Getting started guide" | "Prerequisites, local dev setup with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose, and first API call walkthrough" |
 | "The API reference" | "REST endpoints with auth requirements, rate limits, and request/response schemas" |
 
 ## llms-full.txt Format
@@ -89,7 +89,7 @@ Same structure as `llms.txt` but with full content inlined:
 ### Inlining Rules
 
 - **Strip YAML frontmatter** (`---` blocks) from each page
-- **Preserve Mermaid diagrams** — keep `` ```mermaid `` fences intact
+- **Preserve [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) diagrams** — keep `` ```[mermaid](../../../Product_and_Business/mermaid/SKILL.md) `` fences intact
 - **Preserve citations** — all `[file:line](URL)` links stay as-is
 - **Preserve tables** — all markdown tables stay intact
 - **Preserve `<!-- Sources: -->` comments** — these provide diagram provenance
@@ -107,7 +107,7 @@ Generate three files:
 
 | File | Purpose | Discoverability |
 |------|---------|-----------------|
-| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. GitHub MCP `get_file_contents` and `search_code` find this first. |
+| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) MCP `get_file_contents` and `search_code` find this first. |
 | `wiki/llms.txt` | Wiki-relative links | For VitePress deployment and wiki-internal navigation. |
 | `wiki/llms-full.txt` | Full inlined content | Comprehensive reference for agents needing all docs in one file. |
 

@@ -10,7 +10,7 @@ metadata:
   package: azure-search-documents
 ---
 
-# Azure AI Search SDK for Python
+# Azure AI Search SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Full-text, vector, and hybrid search with AI enrichment capabilities.
 
@@ -33,7 +33,7 @@ AZURE_SEARCH_API_KEY=<your-api-key>  # Only required for the legacy API-key auth
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -42,7 +42,7 @@ AZURE_SEARCH_API_KEY=<your-api-key>  # Only required for the legacy API-key auth
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.search.documents import SearchClient
@@ -50,7 +50,7 @@ from azure.search.documents import SearchClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with SearchClient(
@@ -65,7 +65,7 @@ with SearchClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout. The same `AzureKeyCredential` works with `SearchIndexClient` and `SearchIndexerClient` for admin operations.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
@@ -88,7 +88,7 @@ with SearchClient(
 
 ## Create Index with Vector Field
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
     SearchIndex,
@@ -138,7 +138,7 @@ with SearchIndexClient(endpoint, DefaultAzureCredential()) as index_client:
 
 ## Upload Documents
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents import SearchClient
 
 documents = [
@@ -157,7 +157,7 @@ with SearchClient(endpoint, "my-index", DefaultAzureCredential()) as client:
 
 ## Keyword Search
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 results = client.search(
     search_text="azure search",
     select=["id", "title", "content"],
@@ -170,7 +170,7 @@ for result in results:
 
 ## Vector Search
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.models import VectorizedQuery
 
 # Your query embedding (1536 dimensions)
@@ -193,7 +193,7 @@ for result in results:
 
 ## Hybrid Search (Vector + Keyword)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.models import VectorizedQuery
 
 vector_query = VectorizedQuery(
@@ -212,7 +212,7 @@ results = client.search(
 
 ## Semantic Ranking
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.models import QueryType
 
 results = client.search(
@@ -231,7 +231,7 @@ for result in results:
 
 ## Filters
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 results = client.search(
     search_text="*",
     filter="category eq 'Technology' and rating gt 4",
@@ -242,7 +242,7 @@ results = client.search(
 
 ## Facets
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 results = client.search(
     search_text="*",
     facets=["category,count:10", "rating"],
@@ -257,7 +257,7 @@ for facet_name, facet_values in results.get_facets().items():
 
 ## Autocomplete & Suggest
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Autocomplete
 results = client.autocomplete(
     search_text="sea",
@@ -275,7 +275,7 @@ results = client.suggest(
 
 ## Indexer with Skillset
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.indexes import SearchIndexerClient
 from azure.search.documents.indexes.models import (
     SearchIndexer,
@@ -343,9 +343,9 @@ with SearchIndexerClient(endpoint, DefaultAzureCredential()) as indexer_client:
 
 ## Additional Azure AI Search Patterns
 
-# Azure AI Search Python SDK
+# Azure AI Search [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
 
-Write clean, idiomatic Python code for Azure AI Search using `azure-search-documents`.
+Write clean, idiomatic [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code for Azure AI Search using `azure-search-documents`.
 
 ## Installation
 
@@ -363,7 +363,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.search.documents import SearchClient
@@ -371,7 +371,7 @@ from azure.search.documents import SearchClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with SearchClient(
@@ -393,7 +393,7 @@ with SearchClient(
 
 ## Index Creation Pattern
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
     SearchIndex, SearchField, VectorSearch, VectorSearchProfile,
@@ -444,7 +444,7 @@ with SearchIndexClient(endpoint, credential) as index_client:
 
 ## Document Operations
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents import SearchIndexingBufferedSender
 
 # Batch upload with automatic batching
@@ -461,7 +461,7 @@ with SearchClient(endpoint, index_name, credential) as search_client:
 
 ## Search Patterns
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Basic search
 results = search_client.search(search_text="query")
 
@@ -505,7 +505,7 @@ Key concepts:
 
 ## Async Pattern
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.search.documents.aio import SearchClient
 
 async with SearchClient(endpoint, index_name, credential) as client:
@@ -525,7 +525,7 @@ async with SearchClient(endpoint, index_name, credential) as client:
 
 ## Field Types Reference
 
-| EDM Type | Python | Notes |
+| EDM Type | [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Notes |
 |----------|--------|-------|
 | `Edm.String` | str | Searchable text |
 | `Edm.Int32` | int | Integer |
@@ -538,7 +538,7 @@ async with SearchClient(endpoint, index_name, credential) as client:
 
 ## Error Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.core.exceptions import (
     HttpResponseError,
     ResourceNotFoundError,

@@ -29,25 +29,25 @@ Syft is a CLI tool and Go library for generating comprehensive Software Bills of
 ## Supported Ecosystems
 
 **Languages & Package Managers:**
-Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), Python (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
+Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
 
 **Container & System:**
-OCI images, Docker images, Singularity, container layers, Linux distributions
+OCI images, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images, Singularity, container layers, Linux distributions
 
 ## Quick Start
 
 Generate SBOM for container image:
 
 ```bash
-# Using Docker
-docker run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
+# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
 
 # Local installation
 syft <image> -o cyclonedx-json=sbom.json
 
 # Examples
 syft alpine:latest -o cyclonedx-json
-syft docker.io/nginx:latest -o spdx-json
+syft [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/nginx:latest -o spdx-json
 syft dir:/path/to/project -o cyclonedx-json
 ```
 
@@ -133,7 +133,7 @@ For creating cryptographically signed SBOM attestations:
    brew install cosign
 
    # Linux
-   wget https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
+   wget https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
    chmod +x cosign-linux-amd64
    mv cosign-linux-amd64 /usr/local/bin/cosign
    ```
@@ -163,7 +163,7 @@ Syft supports multiple SBOM formats for different use cases:
 | `spdx-tag-value` | SPDX text format | SPDX 2.3 |
 | `syft-json` | Syft native format (most detail) | Syft-specific |
 | `syft-text` | Human-readable console output | Syft-specific |
-| `github-json` | GitHub dependency submission | GitHub-specific |
+| `[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-json` | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) dependency submission | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-specific |
 | `template` | Custom Go template output | User-defined |
 
 Specify with `-o` flag:
@@ -228,8 +228,8 @@ syft <image> --platform all -o cyclonedx-json
 Access images from private registries:
 
 ```bash
-# Using Docker credentials
-docker login registry.example.com
+# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) credentials
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login registry.example.com
 syft registry.example.com/private/image:tag -o cyclonedx-json
 
 # Using environment variables
@@ -244,17 +244,17 @@ syft registry.example.com/private/image:tag -o cyclonedx-json
 
 ### Pattern 3: OCI Archive Scanning
 
-Scan saved container images (OCI or Docker format):
+Scan saved container images (OCI or [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) format):
 
 ```bash
 # Save image to archive
-docker save nginx:latest -o nginx.tar
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) save nginx:latest -o nginx.tar
 
 # Scan archive
 syft oci-archive:nginx.tar -o cyclonedx-json=sbom.json
 
-# Or scan Docker archive
-syft docker-archive:nginx.tar -o cyclonedx-json=sbom.json
+# Or scan [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) archive
+syft [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive:nginx.tar -o cyclonedx-json=sbom.json
 ```
 
 ### Pattern 4: Comparing SBOMs Between Versions
@@ -279,8 +279,8 @@ Extract specific package information:
 # Generate detailed SBOM
 syft <target> -o syft-json=full-sbom.json
 
-# Extract only Python packages
-cat full-sbom.json | jq '.artifacts[] | select(.type == "python")'
+# Extract only [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) packages
+cat full-sbom.json | jq '.artifacts[] | select(.type == "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)")'
 
 # Extract packages with specific licenses
 cat full-sbom.json | jq '.artifacts[] | select(.licenses[].value == "MIT")'
@@ -293,7 +293,7 @@ cat full-sbom.json | jq '.artifacts | group_by(.type) | map({type: .[0].type, co
 
 - **Sensitive Data Handling**: SBOMs may contain internal package names and versions. Store SBOMs securely and restrict access to authorized personnel
 - **Access Control**: Limit SBOM generation and access to build systems. Use read-only credentials for registry access
-- **Audit Logging**: Log SBOM generation events, distribution, and access for compliance tracking
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log SBOM generation events, distribution, and access for compliance tracking
 - **Compliance**: SBOMs support compliance with Executive Order 14028 (Software Supply Chain Security), NIST guidelines, and OWASP recommendations
 - **Safe Defaults**: Use signed attestations for production SBOMs to ensure integrity and provenance
 
@@ -301,12 +301,12 @@ cat full-sbom.json | jq '.artifacts | group_by(.type) | map({type: .[0].type, co
 
 ### CI/CD Integration
 
-**GitHub Actions:**
+**[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions:**
 ```yaml
 - name: Generate SBOM with Syft
   uses: anchore/sbom-action@v0
   with:
-    image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+    image: ${{ env.IMAGE_NAME }}:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
     format: cyclonedx-json
     output-file: sbom.json
 
@@ -328,7 +328,7 @@ sbom-generation:
       cyclonedx: sbom.json
 ```
 
-**Jenkins:**
+**[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md):**
 ```groovy
 stage('Generate SBOM') {
   steps {
@@ -356,7 +356,7 @@ Attach SBOMs to container images:
 # Using ORAS
 oras attach <image> --artifact-type application/vnd.cyclonedx+json sbom.json
 
-# Using Docker manifest
+# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) manifest
 # Store SBOM as additional layer or separate artifact
 ```
 
@@ -416,9 +416,9 @@ Verify package manifest files exist (package.json, requirements.txt, go.mod, etc
 
 ### Issue: Registry Authentication Failure
 
-**Solution**: Ensure Docker credentials are configured or use explicit auth:
+**Solution**: Ensure [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) credentials are configured or use explicit auth:
 ```bash
-docker login <registry>
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login <registry>
 # Then run syft
 syft <registry>/<image> -o cyclonedx-json
 ```
@@ -484,9 +484,9 @@ Work through each step systematically. Check off completed items.
 
 ## References
 
-- [Syft GitHub Repository](https://github.com/anchore/syft)
+- [Syft [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anchore/syft)
 - [Anchore SBOM Documentation](https://anchore.com/sbom/)
 - [CycloneDX Specification](https://cyclonedx.org/)
 - [SPDX Specification](https://spdx.dev/)
-- [NIST Software Supply Chain Security](https://www.nist.gov/itl/executive-order-improving-nations-cybersecurity/software-supply-chain-security-guidance)
+- [NIST Software Supply Chain Security](https://www.nist.gov/itl/executive-order-improving-nations-cybersecurity/software-[supply-chain-security](../supply-chain-security/SKILL.md)-guidance)
 - [OWASP Software Component Verification Standard](https://owasp.org/www-project-software-component-verification-standard/)

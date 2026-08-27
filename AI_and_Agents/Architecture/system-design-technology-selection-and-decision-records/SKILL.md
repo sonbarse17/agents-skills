@@ -26,7 +26,7 @@ metadata:
 
 Architect-level work operates one level above sequencing a single team's
 roadmap (the lead-level work in
-[technical-roadmap-ownership-and-cross-team-coordination](../technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)):
+[technical-roadmap-ownership-and-cross-team-coordination](../[technical-roadmap-ownership-and-cross-team-coordination](../../../Product_and_Business/technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)/SKILL.md)):
 it sets the constraints multiple teams design within, chooses the
 technologies those teams will live with for years, and is responsible for
 whether those choices actually fit the organization that has to operate
@@ -75,8 +75,8 @@ ignoring the other.
   build and operate it, not assumed from a generic "how big companies do
   it" reference.
 - Visibility into the organization's actual operational maturity for a
-  given technology choice: existing team skills, on-call capacity,
-  observability tooling maturity, and appetite for operating a new class
+  given technology choice: existing team skills, on-call [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
+  [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tooling maturity, and appetite for operating a new class
   of system — this is what "total cost of ownership" and "team maturity"
   mean concretely in the selection framework below, not an abstract
   concern.
@@ -135,7 +135,7 @@ ignoring the other.
    Amazon MSK, contingent on the PoC criteria above passing. SQS/SNS
    rejected on replay semantics (no real retention/replay); self-hosted
    Kafka rejected on operational burden — no team currently has the
-   on-call capacity to run Kafka's own operational surface (broker
+   on-call [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to run Kafka's own operational surface (broker
    failure, partition rebalancing) on top of everything else they own.
    ```
    Total cost of ownership must include the ongoing operational burden
@@ -161,10 +161,10 @@ ignoring the other.
 5. **Design system boundaries around team/service ownership that will
    actually hold**, not an idealized decomposition that ignores which
    team can realistically own which piece — a beautifully decomposed set
-   of microservices that no team is staffed to operate individually is a
+   of [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that no team is staffed to operate individually is a
    worse outcome than a coarser boundary matched to real team
-   capacity, echoing the "thinnest viable" sizing discipline in
-   [platform-engineering-team-topology-and-operating-model](../../../internal-developer-platform/skills/platform-engineering-team-topology-and-operating-model/SKILL.md).
+   [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), echoing the "thinnest viable" sizing discipline in
+   [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
 
 6. **Write the ADR at decision time, not after the fact**, using a
    consistent template:
@@ -189,14 +189,14 @@ ignoring the other.
    - SQS + SNS fan-out: rejected — no real replay/retention semantics
      for a 30+ minute consumer outage.
    - Self-hosted Kafka on EKS: rejected — no team currently has on-call
-     capacity for broker/partition operational burden; revisit if a
-     platform team forms with that capacity.
+     [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for broker/partition operational burden; revisit if a
+     platform team forms with that [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
    ## Consequences
    - Producers/consumers must implement idempotent processing (at-least-
      once delivery, not exactly-once).
    - Introduces a new operational dependency (MSK) requiring on-call
-     familiarity; a Kafka fundamentals runbook and on-call training are
+     familiarity; a Kafka fundamentals [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) and on-call training are
      required before this ships to production (tracked in
      `PLAT-4821`).
    - Reversible in principle by migrating consumers back to direct calls
@@ -231,7 +231,7 @@ ignoring the other.
 
 - Gather requirements from the people who will operate the system, not
   only the people who requested it — operational reality (on-call
-  capacity, existing tooling, team skill) is as much a real requirement
+  [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), existing tooling, team skill) is as much a real requirement
   as throughput and latency.
 - Define PoC success criteria before running the PoC, in writing, and
   hold to them — adjusting criteria after seeing results turns
@@ -241,7 +241,7 @@ ignoring the other.
   just build/license/infra cost.
 - State the organizational-maturity trade-off explicitly when it changes
   the decision — "we chose the operationally simpler option because no
-  team currently has capacity to run the more powerful one" is a
+  team currently has [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to run the more powerful one" is a
   legitimate, honest architectural decision, not a compromise to hide.
 - Write the ADR's Context section as it genuinely was at decision time,
   including real uncertainty and rejected alternatives — a future reader
@@ -279,14 +279,14 @@ ignoring the other.
   documentation.
 
 - **Symptom:** A system is decomposed into a textbook-ideal set of
-  fine-grained microservices, but no individual team has the staffing to
+  fine-grained [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), but no individual team has the staffing to
   own more than one or two of them, and cross-service coordination
   overhead ends up slower than the monolith it replaced.
   **Fix:** Design service boundaries around what teams can realistically
   own and operate (step 5), not around the theoretically cleanest
   decomposition — an architecturally elegant design that no team can
   actually run well is a worse outcome in practice than a coarser one
-  matched to real team capacity.
+  matched to real team [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 - **Symptom:** A proof-of-concept "passes" but its success criteria were
   written or adjusted after the results were already in, and the chosen
@@ -331,14 +331,14 @@ notifications) that currently communicate via brittle direct HTTP calls.
    operational-maturity concern directly rather than assuming it away.
 4. **Organizational constraint made explicit**: self-hosted Kafka would
    give more operational control, but no team currently has on-call
-   capacity for broker-level operations — the decision explicitly names
+   [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for broker-level operations — the decision explicitly names
    this trade-off rather than defaulting to the "more powerful" option
    or silently picking the "safe" one without saying why.
 5. **Service boundaries designed around real ownership**: rather than
    each team also standing up its own Kafka-adjacent tooling, a single
    shared "event infrastructure" ownership sits with the platform team
    (see
-   [platform-engineering-team-topology-and-operating-model](../../../internal-developer-platform/skills/platform-engineering-team-topology-and-operating-model/SKILL.md)),
+   [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md)),
    with checkout/fulfillment/notifications as X-as-a-Service consumers.
 6. **ADR 0007 written at decision time** (the template in step 6), stored
    in `docs/adr/0007-order-events-streaming.md`, reviewed by the
@@ -351,7 +351,7 @@ notifications) that currently communicate via brittle direct HTTP calls.
 
 ## Cross-references
 
-- [technical-roadmap-ownership-and-cross-team-coordination](../technical-roadmap-ownership-and-cross-team-coordination/SKILL.md) — the lead-level work that sequences and resources implementation of the architecture and technology decisions made here across individual teams' roadmaps.
-- [independent-solution-design-and-technical-review](../independent-solution-design-and-technical-review/SKILL.md) — the senior-level design work that operates within the architectural constraints and technology choices this skill sets, and the escalation source when a senior engineer's design can't be met within existing constraints.
-- [cloud-well-architected-framework-review](../../../standards-and-compliance-frameworks/skills/cloud-well-architected-framework-review/SKILL.md) — a structured, pillar-based way to audit an existing workload's architecture against reliability/cost/security/performance trade-offs, complementary to this skill's forward-looking design and technology-selection focus.
-- [platform-engineering-team-topology-and-operating-model](../../../internal-developer-platform/skills/platform-engineering-team-topology-and-operating-model/SKILL.md) — the team-ownership and "thinnest viable platform" sizing discipline this skill's service-boundary design (step 5) should align with.
+- [technical-roadmap-ownership-and-cross-team-coordination](../[technical-roadmap-ownership-and-cross-team-coordination](../../../Product_and_Business/technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)/SKILL.md) — the lead-level work that sequences and resources implementation of the architecture and technology decisions made here across individual teams' roadmaps.
+- [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design work that operates within the architectural constraints and technology choices this skill sets, and the escalation source when a senior engineer's design can't be met within existing constraints.
+- [cloud-well-architected-framework-review](../../../standards-and-compliance-frameworks/skills/[cloud-well-architected-framework-review](../../../DevOps_and_Cloud/Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — a structured, pillar-based way to [audit](../../Operations/audit/SKILL.md) an existing workload's architecture against reliability/cost/security/performance trade-offs, complementary to this skill's forward-looking design and technology-selection focus.
+- [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the team-ownership and "thinnest viable platform" sizing discipline this skill's service-boundary design (step 5) should align with.

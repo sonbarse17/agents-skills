@@ -22,20 +22,20 @@ metadata:
 
 # AWS Health Event Review
 
-Use this skill when investigating an incident and you need to check for AWS-side
+Use this skill when investigating an [incident](../../Observability_and_SecOps/incident/SKILL.md) and you need to check for AWS-side
 service events that may be causing or contributing to the observed issue. Also
 use this skill when a user requests a summary report of AWS Health events over a
 configurable time period.
 
 ## When to Use This Skill
 
-**Incident Investigation (automatic activation):**
+**[Incident](../../Observability_and_SecOps/incident/SKILL.md) Investigation (automatic activation):**
 
-- An active incident may be caused by an AWS service disruption or degradation.
+- An active [incident](../../Observability_and_SecOps/incident/SKILL.md) may be caused by an AWS service disruption or degradation.
 - You observe service degradation, elevated error rates, latency spikes,
-  connection failures, throttling, or capacity issues.
+  connection failures, throttling, or [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) issues.
 - You need to determine whether an AWS-side event is the root cause or a
-  contributing factor to the current incident.
+  contributing factor to the current [incident](../../Observability_and_SecOps/incident/SKILL.md).
 - You want to correlate observed symptoms with known AWS Health events.
 
 **Chat Reporting (on-demand activation):**
@@ -62,20 +62,20 @@ configurable time period.
 
 ---
 
-## Step 1: Gather Incident Context
+## Step 1: Gather [Incident](../../Observability_and_SecOps/incident/SKILL.md) Context
 
-Before searching Health events, extract key details from the current incident:
+Before searching Health events, extract key details from the current [incident](../../Observability_and_SecOps/incident/SKILL.md):
 
 1. **Affected AWS services** — identify the service(s) experiencing issues
    (e.g., EC2, RDS, Lambda, ELB, ECS).
-2. **Timeframe** — determine when the incident started and its current duration.
+2. **Timeframe** — determine when the [incident](../../Observability_and_SecOps/incident/SKILL.md) started and its current duration.
    Use ISO 8601 timestamps.
 3. **Affected resources** — collect specific resource identifiers (instance IDs,
    ARNs, endpoint names, cluster names).
 4. **Region and availability zone** — identify the AWS region and, if known, the
    specific availability zone(s) affected.
 5. **Symptoms** — note the observed symptoms (latency spikes, 5xx errors,
-   connection timeouts, throttling, capacity errors).
+   connection timeouts, throttling, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) errors).
 
 Use these details as filter criteria in subsequent steps.
 
@@ -84,7 +84,7 @@ Use these details as filter criteria in subsequent steps.
 ## Step 2: Search Health Events
 
 Use the AWS Health API `DescribeEvents` operation to retrieve events matching
-the incident context. All calls must target the **us-east-1** endpoint.
+the [incident](../../Observability_and_SecOps/incident/SKILL.md) context. All calls must target the **us-east-1** endpoint.
 
 ### API call pattern
 
@@ -105,10 +105,10 @@ aws health describe-events \
 
 | Strategy | How to Apply |
 |----------|-------------|
-| By service | Use the `services` filter with the AWS Health service code (e.g., `EC2`, `RDS`, `ELASTICLOADBALANCING`), because service-specific events are most likely to correlate with the incident. |
-| By time range | Use `startTimes` with a `from` value set to 7 days before the incident start, because events that started before the incident may still be active and causing impact. |
+| By service | Use the `services` filter with the AWS Health service code (e.g., `EC2`, `RDS`, `ELASTICLOADBALANCING`), because service-specific events are most likely to correlate with the [incident](../../Observability_and_SecOps/incident/SKILL.md). |
+| By time range | Use `startTimes` with a `from` value set to 7 days before the [incident](../../Observability_and_SecOps/incident/SKILL.md) start, because events that started before the [incident](../../Observability_and_SecOps/incident/SKILL.md) may still be active and causing impact. |
 | By region | Use the `regions` filter to scope events to the affected region, because regional events are more likely to impact the specific resources under investigation. |
-| By availability zone | Use the `availabilityZones` filter when the incident is isolated to a specific AZ, because AZ-scoped events have the highest correlation with AZ-specific failures. |
+| By availability zone | Use the `availabilityZones` filter when the [incident](../../Observability_and_SecOps/incident/SKILL.md) is isolated to a specific AZ, because AZ-scoped events have the highest correlation with AZ-specific failures. |
 | By status | Include both `open` and `closed` statuses, because recently closed events may have caused residual impact that is still being observed. |
 | By event scope | Include both `ACCOUNT_SPECIFIC` and `PUBLIC` events, because public service events affect all accounts in the region while account-specific events target your resources directly. |
 
@@ -134,25 +134,25 @@ Evaluate each event from the `DescribeEvents` response using these fields
 
 | Field | Relevance Signal |
 |-------|-----------------|
-| `service` | Must match one of the affected services from the incident context, or a related service from the Service Dependency Map |
-| `eventTypeCategory` | Prioritize `issue` events for active incidents; include `scheduledChange` if the incident coincides with a maintenance window |
+| `service` | Must match one of the affected services from the [incident](../../Observability_and_SecOps/incident/SKILL.md) context, or a related service from the Service Dependency Map |
+| `eventTypeCategory` | Prioritize `issue` events for active incidents; include `scheduledChange` if the [incident](../../Observability_and_SecOps/incident/SKILL.md) coincides with a maintenance window |
 | `eventTypeCode` | Match against known operational event patterns (e.g., `AWS_EC2_OPERATIONAL_ISSUE`, `AWS_RDS_MAINTENANCE`) |
-| `statusCode` | Prioritize `open` events; include `closed` only if the event ended within 2 hours of the incident start |
-| `startTime` / `endTime` | The event's active period must overlap with the incident timeframe |
-| `region` / `availabilityZone` | Must match the incident's affected region or AZ |
+| `statusCode` | Prioritize `open` events; include `closed` only if the event ended within 2 hours of the [incident](../../Observability_and_SecOps/incident/SKILL.md) start |
+| `startTime` / `endTime` | The event's active period must overlap with the [incident](../../Observability_and_SecOps/incident/SKILL.md) timeframe |
+| `region` / `availabilityZone` | Must match the [incident](../../Observability_and_SecOps/incident/SKILL.md)'s affected region or AZ |
 
 ### Filtering rules
 
 1. **Keep** events where the `service` matches an affected service or a related
    service from the Service Dependency Map.
 2. **Keep** events where the active period (startTime to endTime, or to present
-   if open) overlaps with the incident timeframe.
+   if open) overlaps with the [incident](../../Observability_and_SecOps/incident/SKILL.md) timeframe.
 3. **Keep** events where the `region` or `availabilityZone` matches the
-   incident's affected region/AZ.
-4. **Discard** `accountNotification` events unless the incident context
+   [incident](../../Observability_and_SecOps/incident/SKILL.md)'s affected region/AZ.
+4. **Discard** `accountNotification` events unless the [incident](../../Observability_and_SecOps/incident/SKILL.md) context
    specifically suggests an account-level issue (e.g., abuse notification,
    certificate expiry).
-5. **Discard** `closed` events that ended more than 2 hours before the incident
+5. **Discard** `closed` events that ended more than 2 hours before the [incident](../../Observability_and_SecOps/incident/SKILL.md)
    started (unlikely to be contributing).
 
 ### Result
@@ -220,12 +220,12 @@ aws health describe-affected-entities \
 
 ### Entity matching
 
-When the incident context includes specific resource identifiers:
+When the [incident](../../Observability_and_SecOps/incident/SKILL.md) context includes specific resource identifiers:
 
 1. Retrieve all affected entities for the event (paginate up to **500 entities**
    per event using `nextToken`).
 2. Perform exact string matching of each entity's `entityValue` against the
-   incident context resource identifiers.
+   [incident](../../Observability_and_SecOps/incident/SKILL.md) context resource identifiers.
 3. Present matched entities in a separate section before non-matched entities.
 4. Include entity status (`IMPAIRED`, `UNIMPAIRED`, `UNKNOWN`, `PENDING`) and
    last updated time for each entity.
@@ -237,9 +237,9 @@ When the incident context includes specific resource identifiers:
 
 ---
 
-## Step 6: Correlate with Incident
+## Step 6: Correlate with [Incident](../../Observability_and_SecOps/incident/SKILL.md)
 
-Score each Health event for relevance to the current incident using the
+Score each Health event for relevance to the current [incident](../../Observability_and_SecOps/incident/SKILL.md) using the
 following criteria:
 
 ### Relevance scoring
@@ -253,25 +253,25 @@ following criteria:
 ### Scoring rules
 
 - **Service match**: The event's service code matches one of the affected
-  services from the incident context.
+  services from the [incident](../../Observability_and_SecOps/incident/SKILL.md) context.
 - **Timeframe overlap**: The event's active period (start time through end time,
-  or through present if still open) intersects with the incident's timeframe
+  or through present if still open) intersects with the [incident](../../Observability_and_SecOps/incident/SKILL.md)'s timeframe
   (start time through end time, or through present if ongoing).
 - **Region/AZ match**: The event's region or availability zone matches the
-  incident's affected region or AZ.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md)'s affected region or AZ.
 - **Resource match**: At least one affected entity's `entityValue` matches a
-  resource identifier from the incident context.
+  resource identifier from the [incident](../../Observability_and_SecOps/incident/SKILL.md) context.
 
 ### Contributing factor labeling
 
 - Any **open** event classified as High or Medium relevance SHALL be labeled as
   a "likely contributing factor" in addition to its relevance classification.
 - Closed events with High relevance should be noted as potential recent causes
-  if the incident started shortly after the event closed.
+  if the [incident](../../Observability_and_SecOps/incident/SKILL.md) started shortly after the event closed.
 
 ### When resource identifiers are unavailable
 
-If the incident context does not include specific resource identifiers, score
+If the [incident](../../Observability_and_SecOps/incident/SKILL.md) context does not include specific resource identifiers, score
 relevance using only service, timeframe, and region/AZ factors:
 
 - **High**: Matching service + overlapping timeframe + matching region or AZ
@@ -332,7 +332,7 @@ Is this a chat-based health report request?
 ├── YES → Search the user-specified time period (default 30 days, max 90 days)
 │         Organize results by category, service, and status
 │         Present as a summary report
-└── NO → Continue with incident investigation flow below
+└── NO → Continue with [incident](../../Observability_and_SecOps/incident/SKILL.md) investigation flow below
 
 Is the affected AWS service known?
 ├── YES → Search events for that service within the past 7 days
@@ -348,7 +348,7 @@ Is the affected AWS service known?
         ├── Events found → Proceed to Step 3
         └── No events found → Report no events found, suggest other investigation paths
 
-Does the incident involve a specific availability zone?
+Does the [incident](../../Observability_and_SecOps/incident/SKILL.md) involve a specific availability zone?
 ├── YES → Include the AZ filter in all searches above
 └── NO → Filter by region only
 ```
@@ -404,7 +404,7 @@ codes from the references document (e.g., `ELASTICLOADBALANCING` for ELB,
 - **Check both open and closed events**: A recently closed event may still be
   causing residual impact.
 - **Correlate with support cases**: If a Health event references a service
-  disruption, check if related support cases exist using the support-cases skill.
+  disruption, check if related support cases exist using the [support-cases](../support-cases/SKILL.md) skill.
 - **Account-specific vs public events**: Account-specific events directly affect
   your resources. Public events are service-wide but may still impact you.
 - **Look at scheduled changes**: Upcoming or recent maintenance windows can

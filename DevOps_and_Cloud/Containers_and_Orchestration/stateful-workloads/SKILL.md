@@ -6,7 +6,7 @@ license: MIT
 
 # Stateful Workloads
 
-Kubernetes and most modern orchestration platforms were designed around the assumption that
+[Kubernetes](../kubernetes/SKILL.md) and most modern orchestration platforms were designed around the assumption that
 any instance can be killed and replaced without consequence. That assumption is exactly wrong
 for stateful systems — a database pod is not interchangeable with a fresh one, because the
 data lives on that one pod's storage and nowhere else until you've deliberately made it
@@ -30,23 +30,23 @@ make the workload stateful-aware, backed up, or replicated on its own.
   member is which — cluster formation, primary election, and shard assignment all depend on
   identity that a Deployment's interchangeable pods cannot provide.
 - **Do not expect a StatefulSet to handle replication, quorum, or failover logic** — that is
-  the stateful application's own responsibility, or an operator's (see `operators-and-crds`)
+  the stateful application's own responsibility, or an operator's (see `[operators-and-crds](../operators-and-crds/SKILL.md)`)
   built specifically for that system.
 - **Scale StatefulSets deliberately, not automatically** — adding or removing a stateful
-  member usually requires a rebalance or resync that autoscaling logic knows nothing about.
+  member usually requires a rebalance or resync that [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) logic knows nothing about.
 
 **Done when:** each stateful pod has a stable identity the application actually depends on, not
 just a default StatefulSet used out of habit for something that could be a Deployment.
 
 ## 2. Provision storage that survives the pod
 
-The single most common way to lose data on Kubernetes is storage that is tied to the node
+The single most common way to lose data on [Kubernetes](../kubernetes/SKILL.md) is storage that is tied to the node
 instead of the cluster — when the node dies, the data dies with it, regardless of how the pod
 gets rescheduled.
 
 - **Use a StorageClass backed by network-attached, replicated storage** for anything that must
   survive a node failure, not local/ephemeral volumes unless the application itself replicates
-  data elsewhere. See `kubernetes-storage` for the volume provisioning mechanics.
+  data elsewhere. See `[kubernetes-storage](../[kubernetes](../kubernetes/SKILL.md)-storage/SKILL.md)` for the volume provisioning mechanics.
 - **Set the reclaim policy to Retain for critical data**, so a deleted PersistentVolumeClaim
   does not silently delete the underlying volume along with it.
 - **Verify the storage's own durability and IOPS characteristics** match what the workload
@@ -62,7 +62,7 @@ Treating backup and failover as an afterthought added after the workload is alre
 production means finding out they do not work at the worst possible time. Both need to be part
 of the initial deployment, not a follow-up ticket.
 
-- **Automate backups from day one**, using the mechanisms in `backup-and-restore`, rather than
+- **Automate backups from day one**, using the mechanisms in `[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)`, rather than
   deferring backup setup until after the workload is handling real traffic.
 - **Use an operator where one exists for the workload** (for Postgres, Kafka, Elasticsearch,
   and similar systems) — mature operators encode failover and backup logic that is genuinely
@@ -75,7 +75,7 @@ not assumed to work because the underlying software supports them in general.
 
 ## 4. Weigh self-managed against managed honestly
 
-Running a database or queue yourself on Kubernetes is not free just because the compute is
+Running a database or queue yourself on [Kubernetes](../kubernetes/SKILL.md) is not free just because the compute is
 "already there" — it trades a monthly bill for ongoing operational burden: patching, failover
 tuning, backup verification, and being the one paged when it breaks at 3am.
 
@@ -92,13 +92,13 @@ tuning, backup verification, and being the one paged when it breaks at 3am.
 **Done when:** the self-managed-versus-managed decision for this workload is written down with
 its actual reasoning, not left as an unexamined default.
 
-## 5. Plan capacity before you are paged for it
+## 5. Plan [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) before you are paged for it
 
 Stateful systems degrade differently than stateless ones when they run out of room — a full
 disk on a database can corrupt state or halt writes entirely, not just slow down under load.
 
 - **Alert on storage growth trend, not just current usage**, so there is lead time to expand
-  before a volume fills — see `capacity-planning` for the broader forecasting discipline.
+  before a volume fills — see `[capacity-planning](../../Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)` for the broader forecasting discipline.
 - **Know whether the storage backend supports online expansion** before you need it; some
   StorageClasses require a pod restart or manual intervention to grow a volume.
 

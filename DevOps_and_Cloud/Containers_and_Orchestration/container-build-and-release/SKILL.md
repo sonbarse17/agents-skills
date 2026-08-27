@@ -35,24 +35,24 @@ release pipeline with scanning and provenance.
   tags, `latest` usage policy).
 - Adding vulnerability scanning or SBOM generation to the image build
   pipeline.
-- Publishing a versioned release image to a registry (GHCR, Docker Hub,
+- Publishing a versioned release image to a registry (GHCR, [Docker](../docker/SKILL.md) Hub,
   ECR, ACR, GCR/Artifact Registry).
 
 ## Prerequisites & environment
 
-- Docker Engine ≥ 24 or a compatible builder (BuildKit is default in
-  Docker ≥ 23; enable explicitly on older versions with
+- [Docker](../docker/SKILL.md) Engine ≥ 24 or a compatible builder (BuildKit is default in
+  [Docker](../docker/SKILL.md) ≥ 23; enable explicitly on older versions with
   `DOCKER_BUILDKIT=1`) — BuildKit enables cache mounts and multi-stage
   parallelism used below.
-- `docker buildx` for multi-architecture builds (bundled with Docker
-  Desktop and modern Docker Engine installs).
+- `[docker](../docker/SKILL.md) buildx` for multi-architecture builds (bundled with [Docker](../docker/SKILL.md)
+  Desktop and modern [Docker](../docker/SKILL.md) Engine installs).
 - Registry credentials with least-privilege push access, stored as CI
   secrets, not embedded in the Dockerfile or committed config.
 - A base image policy decided (distro-based minimal images like
   `debian-slim`/`alpine`, or distroless) — this affects available shell
   tooling for debugging vs. attack surface trade-offs.
 - Optional but recommended: `trivy`, `grype`, or the registry's built-in
-  scanner for vulnerability scanning; `syft` or `docker buildx imagetools`
+  scanner for vulnerability scanning; `syft` or `[docker](../docker/SKILL.md) buildx imagetools`
   for SBOM generation.
 
 ## Step-by-step guidance
@@ -61,7 +61,7 @@ release pipeline with scanning and provenance.
    runtime image, so compilers, dev headers, and package manager caches
    never ship in the final image:
    ```dockerfile
-   # syntax=docker/dockerfile:1.7
+   # syntax=[docker](../docker/SKILL.md)/dockerfile:1.7
    FROM node:20-bookworm-slim AS build
    WORKDIR /app
    COPY package.json package-lock.json ./
@@ -91,32 +91,32 @@ release pipeline with scanning and provenance.
    Renovate/Dependabot can automate digest bumps so this doesn't become
    manual toil.
 
-3. **Order layers from least to most frequently changing** so Docker's
+3. **Order layers from least to most frequently changing** so [Docker](../docker/SKILL.md)'s
    layer cache is actually useful: dependency manifests
    (`package.json`/`go.mod`/`requirements.txt`) copied and installed
    *before* application source, so a source-only change doesn't
    invalidate the dependency install layer.
 
 4. **Run as a non-root user** and drop unnecessary capabilities; avoid
-   `--privileged` runs and Docker socket mounts in production containers.
+   `--privileged` runs and [Docker](../docker/SKILL.md) socket mounts in production containers.
 
 5. **Build multi-arch images with buildx** when targeting mixed
    architectures (e.g., amd64 CI runners, arm64 Graviton/Apple Silicon
    production nodes):
    ```bash
-   docker buildx create --use --name multiarch-builder
-   docker buildx build \
+   [docker](../docker/SKILL.md) buildx create --use --name multiarch-builder
+   [docker](../docker/SKILL.md) buildx build \
      --platform linux/amd64,linux/arm64 \
      -t ghcr.io/example/payments-api:1.4.2 \
      --push .
    ```
 
 6. **Tag deliberately**: give every built image an immutable, traceable
-   tag (commit SHA or semantic version) in addition to any mutable
+   tag ([commit](../../CI_CD/commit/SKILL.md) SHA or semantic version) in addition to any mutable
    convenience tag:
    ```bash
    IMAGE=ghcr.io/example/payments-api
-   docker buildx build \
+   [docker](../docker/SKILL.md) buildx build \
      -t $IMAGE:1.4.2 \
      -t $IMAGE:$(git rev-parse --short HEAD) \
      -t $IMAGE:latest \
@@ -126,7 +126,7 @@ release pipeline with scanning and provenance.
    resolved digest (`$IMAGE@sha256:...`) — never deploy `latest` to a
    real environment, since it gives no guarantee of *which* build is
    actually running. See
-   [release-versioning-and-changelog-automation](../release-versioning-and-changelog-automation/SKILL.md)
+   [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
    for how the version number itself should be derived.
 
 7. **Scan the image before publishing it as a release candidate**:
@@ -139,14 +139,14 @@ release pipeline with scanning and provenance.
 8. **Generate and attach an SBOM** for supply-chain traceability:
    ```bash
    syft $IMAGE:1.4.2 -o spdx-json > sbom.spdx.json
-   docker buildx imagetools create --tag $IMAGE:1.4.2 --annotation index:sbom=sbom.spdx.json ...
+   [docker](../docker/SKILL.md) buildx imagetools create --tag $IMAGE:1.4.2 --annotation index:sbom=sbom.spdx.json ...
    ```
 
 9. **Push to the registry and record the resulting digest** as a build
    output so downstream deploy steps deploy an exact digest, not a tag
    that could be repointed after the fact:
    ```bash
-   DIGEST=$(docker buildx imagetools inspect $IMAGE:1.4.2 --format '{{json .Manifest.Digest}}')
+   DIGEST=$([docker](../docker/SKILL.md) buildx imagetools inspect $IMAGE:1.4.2 --format '{{json .Manifest.Digest}}')
    ```
 
 ## Best practices
@@ -182,7 +182,7 @@ release pipeline with scanning and provenance.
   runtime stage.
 
 - **Symptom:** A secret used during build (private package registry
-  token) is discoverable via `docker history` or by extracting layers,
+  token) is discoverable via `[docker](../docker/SKILL.md) history` or by extracting layers,
   even though it's not in the final `ENV`.
   **Fix:** Any value passed via `ARG`/`ENV` or written to a file and later
   deleted in a subsequent `RUN` still persists in that layer's history.
@@ -211,7 +211,7 @@ release pipeline with scanning and provenance.
 ## Worked example
 
 **Scenario:** Build, scan, and publish a release image for `payments-api`
-version `1.4.2` from a GitHub Actions pipeline, targeting both amd64 and
+version `1.4.2` from a [GitHub](../../CI_CD/github/SKILL.md) Actions pipeline, targeting both amd64 and
 arm64, with a failing gate on critical vulnerabilities.
 
 ```yaml
@@ -227,14 +227,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: docker/setup-qemu-action@v3
-      - uses: docker/setup-buildx-action@v3
+      - uses: [docker](../docker/SKILL.md)/setup-qemu-action@v3
+      - uses: [docker](../docker/SKILL.md)/setup-buildx-action@v3
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: [docker](../docker/SKILL.md)/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ [github](../../CI_CD/github/SKILL.md).actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Derive version
@@ -242,7 +242,7 @@ jobs:
         run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
       - name: Build (local, for scan)
-        uses: docker/build-push-action@v6
+        uses: [docker](../docker/SKILL.md)/build-push-action@v6
         with:
           context: .
           load: true
@@ -253,23 +253,23 @@ jobs:
           trivy image --severity HIGH,CRITICAL --exit-code 1 local/payments-api:scan
 
       - name: Build and push multi-arch
-        uses: docker/build-push-action@v6
+        uses: [docker](../docker/SKILL.md)/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ghcr.io/example/payments-api:${{ steps.ver.outputs.version }}
-            ghcr.io/example/payments-api:${{ github.sha }}
+            ghcr.io/example/payments-api:${{ [github](../../CI_CD/github/SKILL.md).sha }}
 ```
 A tag push of `v1.4.2` produces
 `ghcr.io/example/payments-api:1.4.2` (and a SHA-tagged twin for exact
 traceability), only after the scan gate passes — the deploy pipeline
-(see [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md))
+(see [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md))
 then references that immutable tag, never `latest`.
 
 ## Cross-references
 
-- [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)
-- [release-versioning-and-changelog-automation](../release-versioning-and-changelog-automation/SKILL.md)
-- [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md)
+- [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
+- [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+- [artifact-and-dependency-management](../[artifact-and-dependency-management](../../../Software_Engineering_and_Other/Frontend/artifact-and-[dependency-management](../../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)

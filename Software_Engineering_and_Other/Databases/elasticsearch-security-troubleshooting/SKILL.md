@@ -15,12 +15,12 @@ Diagnose and resolve common Elasticsearch security issues. This skill provides a
 authentication failures, authorization errors, TLS problems, API key issues, role mapping mismatches, Kibana login
 failures, and license-expiry lockouts.
 
-For authentication methods and API key management, see the **elasticsearch-authn** skill. For roles, users, and role
-mappings, see the **elasticsearch-authz** skill. For license management, see the **elasticsearch-license** skill.
+For authentication methods and API key management, see the **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)** skill. For roles, users, and role
+mappings, see the **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)** skill. For license management, see the **elasticsearch-license** skill.
 
 For diagnostic API endpoints, see [../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md](../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md).
 
-> **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and Serverless. See
+> **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.
 
 ## Jobs to Be Done
@@ -130,8 +130,8 @@ the intended realm is reached, authentication fails.
 
 | Cause                   | Action                                                                     |
 | ----------------------- | -------------------------------------------------------------------------- |
-| Wrong credentials       | Verify username/password or API key value. See **elasticsearch-authn**.    |
-| Disabled user           | `PUT /_security/user/{name}/_enable`. See **elasticsearch-authz**.         |
+| Wrong credentials       | Verify username/password or API key value. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.    |
+| Disabled user           | `PUT /_security/user/{name}/_enable`. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.         |
 | Expired API key         | Create a new API key. See [API Key Issues](#api-key-issues).               |
 | Realm chain order       | Check `elasticsearch.yml` realm order (self-managed only).                 |
 | Security disabled       | Enable `xpack.security.enabled: true` in `elasticsearch.yml` and restart.  |
@@ -181,10 +181,10 @@ Inspect the `roles` array and `authentication_realm` to confirm the user is who 
 
 | Cause                     | Action                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------------------------- |
-| Missing index privilege   | Add the privilege to the role or create a new role. See **elasticsearch-authz**.         |
-| Missing cluster privilege | Add the cluster privilege. See **elasticsearch-authz**.                                  |
-| Roles replaced on update  | Fetch current roles first, then update with the full array. See **elasticsearch-authz**. |
-| Stale API key privileges  | Create a new API key with updated `role_descriptors`. See **elasticsearch-authn**.       |
+| Missing index privilege   | Add the privilege to the role or create a new role. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.         |
+| Missing cluster privilege | Add the cluster privilege. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.                                  |
+| Roles replaced on update  | Fetch current roles first, then update with the full array. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**. |
+| Stale API key privileges  | Create a new API key with updated `role_descriptors`. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.       |
 
 ## TLS and Certificate Errors
 
@@ -231,7 +231,7 @@ This displays the full certificate chain, expiry dates, and subject alternative 
 | Quick workaround    | Use `curl -k` / `--insecure` to skip verification. **Not for production.** |
 
 On ECH, TLS is managed by Elastic — certificate errors usually indicate the client is not using the correct Cloud
-endpoint URL. On Serverless, TLS is fully managed and transparent.
+endpoint URL. On [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), TLS is fully managed and transparent.
 
 ## API Key Issues
 
@@ -258,10 +258,10 @@ Check `expiration`, `invalidated`, and `role_descriptors` in the response.
 
 | Cause               | Action                                                                                          |
 | ------------------- | ----------------------------------------------------------------------------------------------- |
-| Expired key         | Create a new key with appropriate `expiration`. See **elasticsearch-authn**.                    |
+| Expired key         | Create a new key with appropriate `expiration`. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.                    |
 | Invalidated key     | Create a new key. Invalidated keys cannot be reinstated.                                        |
-| Wrong scope         | Create a new key with correct `role_descriptors`. See **elasticsearch-authn**.                  |
-| Derived key problem | Use `POST /_security/api_key/grant` with user credentials instead. See **elasticsearch-authn**. |
+| Wrong scope         | Create a new key with correct `role_descriptors`. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.                  |
+| Derived key problem | Use `POST /_security/api_key/grant` with user credentials instead. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**. |
 
 ## Role Mapping Issues
 
@@ -299,8 +299,8 @@ find the mismatch.
 | ---------------- | ------------------------------------------------------------------------------------ |
 | No matching rule | Update the mapping rules to match the user's realm and attributes.                   |
 | Mapping disabled | Set `"enabled": true` on the mapping.                                                |
-| Template error   | Test the Mustache template with known attribute values. See **elasticsearch-authz**. |
-| Rule too broad   | Add `all` / `except` conditions to narrow the match. See **elasticsearch-authz**.    |
+| Template error   | Test the Mustache template with known attribute values. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**. |
+| Rule too broad   | Add `all` / `except` conditions to narrow the match. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.    |
 
 ## Kibana Authentication Issues
 
@@ -362,7 +362,7 @@ deployment type:
 | ------------ | ------------------------------------------------------------------------- |
 | Self-managed | Log in with a file-based user (`elasticsearch-users` CLI) or native user. |
 | ECH          | Contact Elastic support or renew via the Cloud console.                   |
-| Serverless   | Not applicable — licensing is fully managed by Elastic.                   |
+| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)   | Not applicable — licensing is fully managed by Elastic.                   |
 
 ## Examples
 
@@ -389,7 +389,7 @@ curl -X POST "${ELASTICSEARCH_URL}/_security/user/_has_privileges" \
 
 Response: `"has_all_requested": false` — the `viewer` role does not include `read` on `logs-*`.
 
-1. Fix: create a `logs-reader` role and assign it to Joe. See **elasticsearch-authz**.
+1. Fix: create a `logs-reader` role and assign it to Joe. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.
 
 ### API key stopped working
 
@@ -403,7 +403,7 @@ curl -u "admin:${PASSWORD}" "${ELASTICSEARCH_URL}/_security/api_key?name=my-key"
 
 Response shows `"expiration": 1709251200000` — the key expired.
 
-1. Fix: create a new API key with a suitable `expiration`. See **elasticsearch-authn**.
+1. Fix: create a new API key with a suitable `expiration`. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.
 
 ### SAML login redirects to error
 
@@ -470,7 +470,7 @@ diagnosis, then fix the underlying certificate problem.
 
 Diagnostic tool and API availability differs across deployment types.
 
-| Tool / API                       | Self-managed | ECH           | Serverless    |
+| Tool / API                       | Self-managed | ECH           | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)    |
 | -------------------------------- | ------------ | ------------- | ------------- |
 | `_security/_authenticate`        | Yes          | Yes           | Yes           |
 | `_security/user/_has_privileges` | Yes          | Yes           | Yes           |
@@ -488,7 +488,7 @@ Diagnostic tool and API availability differs across deployment types.
 - TLS is managed by Elastic — certificate errors typically indicate an incorrect endpoint URL.
 - Use the Cloud console for log inspection and deployment configuration.
 
-**Serverless notes:**
+**[Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) notes:**
 
 - Licensing APIs are not exposed. License-related lockouts do not occur.
 - Native users do not exist — authentication issues are handled at the organization level.

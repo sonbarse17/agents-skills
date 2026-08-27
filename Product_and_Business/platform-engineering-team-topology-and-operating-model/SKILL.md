@@ -65,7 +65,7 @@ that structural and operating-model design.
   this skill assumes that vocabulary rather than re-deriving it.
 - An honest inventory of what stream-aligned teams currently have to do
   themselves that a platform could absorb — provisioning a new
-  environment, wiring CI from scratch, setting up observability — as the
+  environment, wiring CI from scratch, setting up [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — as the
   starting input for scoping the platform, not a list of technologies the
   platform team finds interesting.
 - Organizational willingness to treat the platform as having internal
@@ -101,10 +101,10 @@ that structural and operating-model design.
    scanning, one golden-path scaffolding tier, catalog registration.
    Explicitly out of scope (revisit only if demand is demonstrated):
    multi-cluster failover, a custom internal PaaS UI, cost-allocation
-   dashboards, a bespoke secrets-rotation service.
+   [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), a bespoke secrets-rotation service.
    ```
    This mirrors the golden-path tiering discipline in
-   [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)
+   [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
    — start narrow, expand from evidence, not speculation.
 
 3. **Default the platform's interaction mode with stream-aligned teams to
@@ -116,7 +116,7 @@ that structural and operating-model design.
    ```markdown
    # Interaction mode by platform capability
    - Environment provisioning: X-as-a-Service (self-service API/portal,
-     see platform-self-service-api-and-workflow-design)
+     see [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md))
    - New capability onboarding (e.g. a team's first golden-path adoption):
      Facilitating, time-boxed (platform engineer pairs with the team for
      the first onboarding, then hands off to self-service)
@@ -151,7 +151,7 @@ that structural and operating-model design.
 5. **Run the platform with real product-management practices**, not
    purely inbound-ticket-driven work: maintain a public roadmap,
    prioritize a backlog against actual demand signal (see
-   [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md)),
+   [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)),
    and hold a recurring feedback loop with representative stream-aligned
    teams (an advisory council, office hours, a quarterly survey) — treat
    internal developers as customers whose retention and satisfaction
@@ -159,7 +159,7 @@ that structural and operating-model design.
    customers.
 
 6. **Push back on scope creep using the TVP discipline as the explicit
-   criterion**, not team capacity alone. When a request or an internally
+   criterion**, not team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) alone. When a request or an internally
    generated idea proposes expanding the platform, require it to name
    which stream-aligned team's cognitive load it removes and what
    evidence (a ticket pattern, a survey finding, a repeated Slack
@@ -196,7 +196,7 @@ that structural and operating-model design.
 - Start at the thinnest viable platform and expand only against
   demonstrated demand — the same tiering/expand-from-evidence discipline
   applied to golden paths in
-  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)
+  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
   applies to the platform team's own scope.
 - Run the platform with a visible roadmap and backlog prioritized against
   real demand signal, not purely reactive to whichever team escalated
@@ -239,13 +239,13 @@ that structural and operating-model design.
   as non-compliance, investigate whether the sanctioned golden path
   genuinely doesn't cover their case (a scope gap — expand the golden path,
   see
-  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md))
+  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
   or whether the platform team was simply too slow/hard to engage with
   (an interaction-mode problem — move that capability further toward
   X-as-a-Service).
 
 - **Symptom:** A single platform team of 15 engineers owns catalog,
-  golden paths, infrastructure provisioning, observability tooling, and
+  golden paths, infrastructure provisioning, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tooling, and
   the CI runner fleet, with no internal sub-boundaries — any given
   request's actual owner is unclear even to other engineers on the same
   team, and cross-cutting changes require coordinating the whole team.
@@ -263,7 +263,7 @@ that structural and operating-model design.
   **Fix:** Uptime and ticket SLA measure operational health, not product
   value delivered to internal customers — add the customer-facing
   measurement practices in
-  [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md),
+  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md),
   and treat the platform team's product-management discipline (roadmap,
   backlog, customer feedback loop) as core to its operating model, not
   optional polish.
@@ -281,7 +281,7 @@ templates because "it's faster than waiting on DevOps."
    Leadership names the team's mandate explicitly: reduce stream-aligned
    teams' cognitive load via self-service, not process their requests
    faster.
-2. **Audit ticket volume by category** over the last two quarters: 40% are
+2. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) ticket volume by category** over the last two quarters: 40% are
    new-environment provisioning requests, 25% are DNS/routing changes,
    20% are CI runner configuration, 15% miscellaneous.
 3. **Scope a thinnest-viable-platform**: a self-service provisioning API
@@ -309,6 +309,6 @@ templates because "it's faster than waiting on DevOps."
 
 ## Cross-references
 
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — the tiering and expand-from-evidence discipline this skill's "thinnest viable platform" sizing principle mirrors, applied to team scope rather than template scope.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — sequencing how a newly-scoped platform capability actually gets adopted, once this skill has determined what the platform team should build and how it should engage.
-- [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md) — the customer-facing measurement practices a platform team run as a product, per this skill, needs in place of (or alongside) purely operational metrics like uptime and ticket SLA.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the tiering and expand-from-evidence discipline this skill's "thinnest viable platform" sizing principle mirrors, applied to team scope rather than template scope.
+- [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — sequencing how a newly-scoped platform capability actually gets adopted, once this skill has determined what the platform team should build and how it should engage.
+- [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — the customer-facing measurement practices a platform team run as a product, per this skill, needs in place of (or alongside) purely operational metrics like uptime and ticket SLA.

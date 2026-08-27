@@ -45,8 +45,8 @@ npm install -g @stoplight/spectral-cli
 # Or using Yarn
 yarn global add @stoplight/spectral-cli
 
-# Or using Docker
-docker pull stoplight/spectral
+# Or using [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull stoplight/spectral
 
 # Verify installation
 spectral --version
@@ -158,7 +158,7 @@ spectral lint openapi.yaml \
 - `json` - Machine-readable JSON for CI/CD integration
 - `junit` - JUnit XML for test reporting platforms
 - `html` - HTML report (requires additional plugins)
-- `github-actions` - GitHub Actions annotations format
+- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)` - [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions annotations format
 
 ### Step 3: OWASP API Security Validation
 
@@ -290,16 +290,16 @@ rules:
 
 **Custom Rule Development Resources:**
 - `../../../Global_References/custom_rules_guide.md` - Complete rule authoring guide with functions
-- `references/custom_functions.md` - Creating custom JavaScript/TypeScript functions
+- `references/custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) functions
 - `assets/rule-templates/` - Reusable rule templates for common security patterns
 
 ### Step 5: CI/CD Pipeline Integration
 
 Integrate Spectral into continuous integration workflows:
 
-**GitHub Actions:**
+**[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions:**
 ```yaml
-# .github/workflows/api-security-lint.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/api-security-lint.yml
 name: API Security Linting
 
 on: [push, pull_request]
@@ -322,7 +322,7 @@ jobs:
         run: |
           spectral lint api-specs/*.yaml \
             --ruleset .spectral.yaml \
-            --format github-actions \
+            --format [github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md) \
             --fail-severity error
 
       - name: Generate Report
@@ -343,7 +343,7 @@ jobs:
 
 **GitLab CI:**
 ```yaml
-# .gitlab-ci.yml
+# .[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml
 api-security-lint:
   stage: test
   image: node:18
@@ -356,10 +356,10 @@ api-security-lint:
       junit: spectral-report.xml
 ```
 
-**Docker-Based Pipeline:**
+**[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-Based Pipeline:**
 ```bash
-# Run in CI/CD with Docker
-docker run --rm \
+# Run in CI/CD with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm \
   -v $(pwd):/work \
   stoplight/spectral lint /work/openapi.yaml \
   --ruleset /work/.spectral.yaml \
@@ -464,12 +464,12 @@ spectral lint openapi.yaml --ruleset .spectral-phase1.yaml
 spectral lint openapi.yaml --ruleset .spectral-phase2.yaml --fail-severity error
 ```
 
-### Pattern 3: API Security Pre-Commit Validation
+### Pattern 3: API Security Pre-[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Validation
 
 Prevent insecure API specifications from being committed:
 
 ```bash
-# .git/hooks/pre-commit
+# .git/hooks/pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 #!/bin/bash
 
 # Find staged API specification files
@@ -501,7 +501,7 @@ python3 scripts/generate_pr_comments.py \
   --severity error,warn \
   --output pr-comments.json
 
-# Post to GitHub PR via gh CLI
+# Post to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PR via gh CLI
 gh pr comment $PR_NUMBER --body-file pr-comments.json
 ```
 
@@ -556,7 +556,7 @@ For complete custom function development guide, see `references/custom_functions
   --slack-webhook $SLACK_WEBHOOK
 ```
 
-### API Specification Monitoring
+### API Specification [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # Monitor API specifications for security regressions
@@ -576,7 +576,7 @@ For complete custom function development guide, see `references/custom_functions
 - **Secrets in Specs**: Never include actual credentials, API keys, or secrets in example values - use placeholder values only
 - **Compliance Mapping**: Document how Spectral rules map to compliance requirements (PCI-DSS, GDPR, HIPAA)
 - **Governance Enforcement**: Define exception process for legitimate rule violations with security team approval
-- **Audit Logging**: Log all Spectral scans, findings, and remediation actions for security auditing
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Spectral scans, findings, and remediation actions for security auditing
 - **Access Control**: Restrict modification of security rulesets to designated API security team members
 - **Continuous Validation**: Re-validate API specifications whenever they change or when new security rules are added
 
@@ -589,15 +589,15 @@ For complete custom function development guide, see `references/custom_functions
 - `compare_spectral_results.py` - Compare two Spectral scans to track remediation progress
 - `aggregate_api_findings.py` - Aggregate findings across multiple API specifications
 - `spectral_ci.sh` - CI/CD integration wrapper with exit code handling
-- `spectral_scheduler.sh` - Scheduled scanning with alerting
-- `spectral_monitor.sh` - Continuous monitoring with baseline comparison
+- `spectral_scheduler.sh` - Scheduled scanning with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- `spectral_monitor.sh` - Continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with baseline comparison
 - `generate_pr_comments.py` - Convert Spectral findings to PR review comments
 
 ### References (`references/`)
 
 - `owasp_api_mappings.md` - Complete OWASP API Security Top 10 rule mappings
 - `custom_rules_guide.md` - Custom rule authoring with examples
-- `custom_functions.md` - Creating custom JavaScript/TypeScript validation functions
+- `custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) validation functions
 - `ruleset_patterns.md` - Reusable ruleset patterns for common security scenarios
 - `api_security_checklist.md` - API security validation checklist
 
@@ -605,8 +605,8 @@ For complete custom function development guide, see `references/custom_functions
 
 - `spectral-owasp.yaml` - Comprehensive OWASP API Security Top 10 ruleset
 - `spectral-org-template.yaml` - Organization-wide API security standards template
-- `github-actions-template.yml` - Complete GitHub Actions workflow
-- `gitlab-ci-template.yml` - GitLab CI integration template
+- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)-template.yml` - Complete [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow
+- `[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md)-template.yml` - GitLab CI integration template
 - `rule-templates/` - Reusable security rule templates
 
 ## Common Patterns
@@ -657,11 +657,11 @@ rules:
 
 ## Integration Points
 
-- **CI/CD**: GitHub Actions, GitLab CI, Jenkins, CircleCI, Azure DevOps
+- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), Azure DevOps
 - **API Gateways**: Kong, Apigee, AWS API Gateway (validate specs before deployment)
 - **IDE Integration**: VS Code extension, JetBrains plugins for real-time validation
 - **API Documentation**: Stoplight Studio, Swagger UI, Redoc
-- **Issue Tracking**: Jira, GitHub Issues, Linear (automated ticket creation for findings)
+- **Issue Tracking**: Jira, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Linear (automated ticket creation for findings)
 - **API Governance**: Backstage, API catalogs (enforce standards across portfolios)
 - **Security Platforms**: Defect Dojo, SIEM platforms (via JSON export)
 
@@ -702,7 +702,7 @@ rules:
 ## References
 
 - [Spectral Documentation](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview)
-- [Spectral GitHub Repository](https://github.com/stoplightio/spectral)
+- [Spectral [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stoplightio/spectral)
 - [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
 - [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 - [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)

@@ -23,7 +23,7 @@ Guide zero-knowledge proof integration in blockchain systems covering proof syst
 - Proof system requirements (trusted setup? proof size? verification cost?)
 - Target blockchain (EVM/Solana/Cosmos/StarkNet)
 - Performance constraints (proving time, verification gas, proof size)
-- Security requirements (transparent vs PPTR, audit history)
+- Security requirements (transparent vs PPTR, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) history)
 
 ### Output Artifact
 ZK architecture specification: proof system selection, circuit design, prover infrastructure, verifier deployment, and integration plan.
@@ -36,7 +36,7 @@ ZK architecture specification: proof system selection, circuit design, prover in
 - Constraints: <number of constraints>
 - Proving Time: <time estimate>
 - Verification Gas: <gas cost on target chain>
-- Security: <trusted setup? audit?>
+- Security: <trusted setup? [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?>
 - Recommendation: <best approach for this use case>
 ```
 
@@ -266,7 +266,7 @@ impl<F: FieldExt> Chip<F> for RangeCheckChip {
 ## ZK Rollup Architecture
 
 ### Rollup Components
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ZKRollup {
   // Sequencer: orders transactions, creates batches
   sequencer: {
@@ -319,7 +319,7 @@ interface ZKRollup {
 ## Recursive Proofs
 
 ### Recursion Patterns
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Recursive proof aggregation
 // 1. Prove each batch individually → individual proofs
 // 2. Prover aggregates N proofs into 1 recursive proof
@@ -350,7 +350,7 @@ interface ZKRollup {
 | Non-deterministic witness | Multiple constraints don't pin value | Unique constraint per signal |
 | Toxic waste exposure | Trusted setup data leaked | Secure multi-party computation |
 | Hash function mismatch | Using prover-unfriendly hash | Poseidon, MiMC, or SHA-256 with optimizations |
-| Frontrunning on proofs | Third-party submits proof first | Commit-reveal, nonce in public inputs |
+| Frontrunning on proofs | Third-party submits proof first | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, nonce in public inputs |
 | Weak FRI parameters | Insufficient query rounds | Follow ethSTARK parameter recommendations |
 | Underpowered field | Field too small for security target | Use 256-bit+ field for 128-bit security |
 
@@ -547,7 +547,7 @@ contract Groth16Verifier {
 - **Trusted setup**: Verify MPC transcript contributions; use ceremony coordinator with transparency log.
 - **Replay protection**: Include domain separator and nullifier to prevent double-use of proofs.
 - **Oracle inputs**: Verify oracle-signed data as public inputs; validate timestamps and sources.
-- **Dependency audit**: Audit all circom/Noir library code; pin versions and verify hashes.
+- **Dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all circom/Noir library code; pin versions and verify hashes.
 - **DDoS protection**: Rate limit proof submission; verify proof cost before state changes.
 
 ## Phase: blockchain → blockchain-zk

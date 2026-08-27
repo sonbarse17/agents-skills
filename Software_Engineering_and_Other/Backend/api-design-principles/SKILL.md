@@ -97,7 +97,7 @@ Detailed pattern documentation lives in `../../../Global_References/api-design-p
 4. **Error Handling**: Return structured errors in mutation payloads
 5. **Pagination**: Use cursor-based pagination (Relay spec)
 6. **Deprecation**: Use `@deprecated` directive for gradual migration
-7. **Monitoring**: Track query complexity and execution time
+7. **[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track query complexity and execution time
 
 ## Common Pitfalls
 

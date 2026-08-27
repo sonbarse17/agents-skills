@@ -18,7 +18,7 @@ tags: [backend, universal, supabase, baas, phase-4]
 # Supabase
 
 ## Purpose
-Build production backends on Supabase — PostgreSQL schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for serverless compute.
+Build production backends on Supabase — [PostgreSQL](../postgresql/SKILL.md) schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) compute.
 
 ## Agent Protocol
 
@@ -27,7 +27,7 @@ User request includes: `Supabase`, `Supabase database`, `RLS`, `Row Level Securi
 
 ### Input Context
 - Required Supabase features (DB, Auth, Realtime, Storage, Edge Functions)
-- PostgreSQL schema requirements (tables, relations, indexes)
+- [PostgreSQL](../postgresql/SKILL.md) schema requirements (tables, relations, indexes)
 - Auth providers needed (email, OAuth, magic link, phone)
 - Estimated scale (concurrent users, data volume)
 
@@ -38,7 +38,7 @@ Supabase project config, SQL schema + RLS policies, client setup, edge function 
 Produce artifact directly. No preamble, no postamble, no explanations. No filler, no hedging, no transitions. Strip articles a/an/the where unambiguous. Compress output — why use many token when few do trick.
 
 ### Completion Criteria
-- PostgreSQL schema defined with proper types, indexes, and relations
+- [PostgreSQL](../postgresql/SKILL.md) schema defined with proper types, indexes, and relations
 - RLS policies applied to every table (select, insert, update, delete)
 - Auth providers configured with proper redirect URLs
 - Realtime channels designed with proper filters
@@ -67,7 +67,7 @@ supabase link --project-ref <ref>
 supabase start
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/lib/supabase-client.ts
 import { createClient } from '@supabase/supabase-js';
 
@@ -163,7 +163,7 @@ CREATE POLICY "posts_delete" ON public.posts
 ```
 
 ### Step 4: Realtime Subscriptions
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Enable replication for table in Supabase dashboard
 // ALTER PUBLICATION supabase_realtime ADD TABLE posts;
 
@@ -201,7 +201,7 @@ presenceChannel
 ```
 
 ### Step 5: Storage
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Upload file
 const { data, error } = await supabase.storage
   .from('avatars')
@@ -222,7 +222,7 @@ const { data: { signedUrl } } = await supabase.storage
 ```
 
 ### Step 6: Edge Functions
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // supabase/functions/hello/index.ts
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
@@ -333,7 +333,7 @@ USING (status != 'archived')
 WITH CHECK (status != 'archived');
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Client: subscribe with role-aware filters
 const channel = supabase.channel('documents')
   .on('postgres_changes',
@@ -392,7 +392,7 @@ CREATE POLICY admin_access ON tenant_data
   );
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Server-side only: service role operations
 // Use for admin tasks, background jobs, webhooks
 import { createClient } from '@supabase/supabase-js';
@@ -444,7 +444,7 @@ CREATE TRIGGER order_created_trigger
 | Backup strategy | PITR + daily database dumps. Test restore monthly |
 | Rate limiting | Implement at application level (Supabase doesn't have built-in rate limiting) |
 | Connection limits | Free tier: 2 concurrent connections. Pro: 60. Team: 120. Plan accordingly |
-| Monitoring | Supabase dashboard for DB metrics + custom health checks on Edge Functions |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Supabase dashboard for DB metrics + custom health checks on Edge Functions |
 | Staging environment | Separate Supabase project for staging with anonymized production data |
 | CI/CD integration | `supabase db push` in CI pipeline. Test migrations against staging first |
 
@@ -481,7 +481,7 @@ CREATE TRIGGER order_created_trigger
 
 ## References
   - ../../../Global_References/edge-functions.md — Edge Functions
-  - ../../../Global_References/postgres-rls.md — PostgreSQL & Row Level Security
+  - ../../../Global_References/postgres-rls.md — [PostgreSQL](../postgresql/SKILL.md) & Row Level Security
   - ../../../Global_References/supabase-auth.md — Supabase Auth
   - ../../../Global_References/supabase-backup-migration.md — Supabase Backup and Migration
   - ../../../Global_References/supabase-realtime.md — Supabase Realtime
@@ -540,7 +540,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -554,7 +554,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -570,12 +570,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -584,7 +584,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -592,13 +592,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -607,8 +607,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

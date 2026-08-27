@@ -51,7 +51,7 @@ Load detailed guidance based on context:
 
 The snippet below demonstrates the core MUST DO constraints: indexed fields, `select_related`, serializer validation, and endpoint permissions.
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # models.py
 from django.db import models
 
@@ -105,7 +105,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # tests.py
 from rest_framework.test import APITestCase
 from rest_framework import status
@@ -159,5 +159,5 @@ When implementing Django features, provide:
 
 Django 5.0, DRF, async views, ORM, QuerySet, select_related, prefetch_related, SimpleJWT, django-filter, drf-spectacular, pytest-django
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/backend/django-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/django-expert/)
 

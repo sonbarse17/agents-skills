@@ -18,31 +18,31 @@ metadata:
   maturity: stable
 ---
 
-# Crossplane: Kubernetes-Native Infrastructure Provisioning
+# Crossplane: [Kubernetes](../kubernetes/SKILL.md)-Native Infrastructure Provisioning
 
 ## Purpose
 
 Crossplane provisions and manages real cloud infrastructure — VPCs,
 managed databases, IAM roles, storage buckets — but does it as a
-Kubernetes control-plane extension rather than as a standalone CLI tool
+[Kubernetes](../kubernetes/SKILL.md) control-plane extension rather than as a standalone CLI tool
 run against a state file: cloud resources are represented as
-Kubernetes custom resources, and Crossplane's providers continuously
+[Kubernetes](../kubernetes/SKILL.md) custom resources, and Crossplane's providers continuously
 reconcile them toward desired state the same way a Deployment
 controller reconciles Pods, indefinitely, not just at `apply` time. This
 is a genuinely different paradigm from
-[infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)'s
-plan-then-apply, state-file-tracked model — not a Kubernetes wrapper
+[infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../Infrastructure_as_Code/[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)'s
+plan-then-apply, state-file-tracked model — not a [Kubernetes](../kubernetes/SKILL.md) wrapper
 around Terraform — and the tradeoff is real: continuous reconciliation
 and drift correction come for free, a `Composition` lets a platform team
 expose a curated, higher-level self-service API (a `DatabaseClaim`
 instead of raw `RDSInstance` fields) to application teams, but the
 provider ecosystem and HCL-equivalent expressiveness are less mature
 than Terraform's for some clouds/resources, and every provisioned
-resource now lives inside the same Kubernetes API server that runs
+resource now lives inside the same [Kubernetes](../kubernetes/SKILL.md) API server that runs
 workloads. This skill covers the Composition/XRD/Claim model and
 day-to-day provisioning; validating Compositions and Claims before
 applying (catching schema mismatches) is
-[crossplane-configuration-validation](../crossplane-configuration-validation/SKILL.md)'s
+[crossplane-configuration-validation](../[crossplane-configuration-validation](../../Infrastructure_as_Code/crossplane-configuration-validation/SKILL.md)/SKILL.md)'s
 job.
 
 ## When to use
@@ -50,34 +50,34 @@ job.
 - Building a self-service infrastructure API for application teams
   (e.g. "request a `DatabaseClaim`" instead of "file a ticket" or
   "write your own Terraform module") on a platform already built around
-  Kubernetes.
+  [Kubernetes](../kubernetes/SKILL.md).
 - Deciding whether Crossplane or Terraform is the better fit for a new
   infra-provisioning workflow, especially when the surrounding platform
-  is already Kubernetes-centric (an internal developer platform, a
-  GitOps-managed fleet).
+  is already [Kubernetes](../kubernetes/SKILL.md)-centric (an internal developer platform, a
+  [GitOps](../gitops/SKILL.md)-managed fleet).
 - Defining a `CompositeResourceDefinition` (XRD) and `Composition` so a
   namespaced `Claim` can provision a multi-resource cloud stack (a
   database plus its network access plus its IAM role) as one request.
 - Provisioning cloud infrastructure that should reconcile continuously
   (self-heal from drift) rather than only on a scheduled `apply`.
 - Migrating a subset of Terraform-managed infrastructure that would
-  benefit from a Kubernetes-native, self-service front end, without
+  benefit from a [Kubernetes](../kubernetes/SKILL.md)-native, self-service front end, without
   necessarily replacing Terraform everywhere.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster ≥ 1.26 with Crossplane ≥ v1.16 installed (via
+- A [Kubernetes](../kubernetes/SKILL.md) cluster ≥ 1.26 with Crossplane ≥ v1.16 installed (via
   Helm), plus cluster-admin (or sufficiently scoped) access to install
   Providers and define XRDs/Compositions — these are cluster-scoped,
   platform-team-owned resources, distinct from the namespaced Claims
   application teams create.
 - Cloud provider credentials scoped per Crossplane `Provider`
   (`provider-aws`, `provider-azure`, `provider-gcp`, or the newer
-  `provider-family` split providers) stored as a Kubernetes `Secret`
+  `provider-family` split providers) stored as a [Kubernetes](../kubernetes/SKILL.md) `Secret`
   and referenced by a `ProviderConfig` — never embedded directly in a
   `Provider`/`ProviderConfig` manifest.
 - Familiarity with
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)'s
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../Infrastructure_as_Code/[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)'s
   module/variable/output concepts is useful context (an XRD's schema
   plays a similar role to a Terraform module's `variables.tf`/
   `outputs.tf`), but this skill does not assume or repeat Terraform
@@ -88,10 +88,10 @@ job.
   Claim schema); using it as a thin one-to-one passthrough to a single
   managed resource captures less of that benefit.
 - If also running Argo CD or Flux, decide how Crossplane's continuous
-  reconciliation interacts with GitOps-managed manifests that create
+  reconciliation interacts with [GitOps](../gitops/SKILL.md)-managed manifests that create
   Claims — see
-  [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md);
-  the two are complementary (GitOps manages the Claim manifest, Crossplane
+  [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md);
+  the two are complementary ([GitOps](../gitops/SKILL.md) manages the Claim manifest, Crossplane
   reconciles the actual cloud resources it describes), not competing.
 
 ## Step-by-step guidance
@@ -105,9 +105,9 @@ job.
    apiVersion: pkg.crossplane.io/v1
    kind: Provider
    metadata:
-     name: provider-aws-rds
+     name: provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)
    spec:
-     package: xpkg.upbound.io/upbound/provider-aws-rds:v1.19.0
+     package: xpkg.upbound.io/upbound/provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md):v1.19.0
    ```
    ```yaml
    apiVersion: v1
@@ -132,9 +132,9 @@ job.
        secretRef: { namespace: crossplane-system, name: aws-creds, key: creds }
    ```
    Source the actual credential values from your organization's
-   secrets manager at apply time (never commit them), per
-   [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md)
-   — the `${...}` placeholders above are not literal syntax to commit.
+   secrets manager at apply time (never [commit](../../CI_CD/commit/SKILL.md) them), per
+   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+   — the `${...}` placeholders above are not literal syntax to [commit](../../CI_CD/commit/SKILL.md).
 
 2. **Provision a single managed resource directly** first, to confirm
    the provider/credentials work, before building a `Composition` on
@@ -158,10 +158,10 @@ job.
      providerConfigRef: { name: default }
    ```
    ```bash
-   kubectl get instance.rds.aws.upbound.io test-db -o jsonpath='{.status.conditions}'
+   [kubectl](../kubectl/SKILL.md) get instance.rds.aws.upbound.io test-db -o jsonpath='{.status.conditions}'
    ```
    A `Ready: True`/`Synced: True` condition pair confirms the resource
-   was actually created in AWS, not just accepted by the Kubernetes API
+   was actually created in AWS, not just accepted by the [Kubernetes](../kubernetes/SKILL.md) API
    server.
 
 3. **Define a `CompositeResourceDefinition` (XRD)** — the schema for
@@ -255,8 +255,8 @@ job.
        name: payments-db-conn
    ```
    ```bash
-   kubectl get databaseclaim payments-db -n payments -o jsonpath='{.status.conditions}'
-   kubectl get secret payments-db-conn -n payments   # connection details Crossplane populated
+   [kubectl](../kubectl/SKILL.md) get databaseclaim payments-db -n payments -o jsonpath='{.status.conditions}'
+   [kubectl](../kubectl/SKILL.md) get secret payments-db-conn -n payments   # connection details Crossplane populated
    ```
    The application team never sees or edits `Instance`/`ProviderConfig`
    directly — their entire surface is the `DatabaseClaim`'s narrow
@@ -267,14 +267,14 @@ job.
    watch the managed resource continuously and correct drift as soon as
    it's detected, without a separate invocation:
    ```bash
-   kubectl get managed   # aggregate view across all managed resource kinds
+   [kubectl](../kubectl/SKILL.md) get managed   # aggregate view across all managed resource kinds
    ```
    Confirm `SYNCED` and `READY` columns are both `True` for anything
    provisioned — a resource that's `READY` but not `SYNCED` (or the
    reverse) indicates the desired spec and actual cloud state have
    diverged and Crossplane is actively working to reconcile it, similar
    in spirit to distinguishing Argo CD's `sync`/`health` signals in
-   [argocd-sync-failure-and-drift-investigation](../../../gitops-argo-ecosystem/skills/argocd-sync-failure-and-drift-investigation/SKILL.md).
+   [argocd-sync-failure-and-drift-investigation](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argocd-sync-failure-and-drift-investigation](../[argocd](../argocd/SKILL.md)-sync-failure-and-drift-investigation/SKILL.md)/SKILL.md).
 
 7. **Manage Composition/XRD changes like any platform API change** —
    version the XRD (`v1alpha1` → `v1beta1` → `v1`) rather than
@@ -289,10 +289,10 @@ job.
    > are configured with a `deletionPolicy: Orphan` — this is
    > equivalent in consequence to `terraform destroy` and deserves the
    > same caution (see
-   > [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)).
+   > [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../Infrastructure_as_Code/[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)).
    ```bash
-   kubectl get databaseclaim payments-db -n payments -o jsonpath='{.spec.compositeDeletePolicy}'
-   kubectl delete databaseclaim payments-db -n payments   # only after confirming backups/intent
+   [kubectl](../kubectl/SKILL.md) get databaseclaim payments-db -n payments -o jsonpath='{.spec.compositeDeletePolicy}'
+   [kubectl](../kubectl/SKILL.md) delete databaseclaim payments-db -n payments   # only after confirming backups/intent
    ```
 
 ## Best practices
@@ -308,24 +308,24 @@ job.
 - Scope each `ProviderConfig`'s credentials to the minimum cloud IAM
   permissions the Compositions built on it actually need — the same
   least-privilege principle as
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md),
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md),
   applied to the identity Crossplane itself assumes.
 - Set `deletionPolicy`/`compositeDeletePolicy` deliberately per resource
   class — `Delete` (the default) for genuinely ephemeral/reproducible
   infrastructure, `Orphan` for anything where accidental Claim deletion
   should not also delete real, hard-to-recreate cloud state (a
   production database) without a separate explicit action.
-- Treat `kubectl get managed`'s `SYNCED`/`READY` columns as two
+- Treat `[kubectl](../kubectl/SKILL.md) get managed`'s `SYNCED`/`READY` columns as two
   independent signals worth checking separately, the same discipline
   applied to Argo CD's `sync`/`health` split in
-  [argocd-sync-failure-and-drift-investigation](../../../gitops-argo-ecosystem/skills/argocd-sync-failure-and-drift-investigation/SKILL.md).
-- Pair Crossplane Claims with GitOps (Flux or Argo CD) so Claim
+  [argocd-sync-failure-and-drift-investigation](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argocd-sync-failure-and-drift-investigation](../[argocd](../argocd/SKILL.md)-sync-failure-and-drift-investigation/SKILL.md)/SKILL.md).
+- Pair Crossplane Claims with [GitOps](../gitops/SKILL.md) (Flux or Argo CD) so Claim
   manifests themselves are version-controlled and reviewed the same way
-  any other Kubernetes manifest is, rather than created ad hoc via
-  `kubectl apply` — see
-  [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) and
-  [flux-cd-configuration-and-reconciliation](../flux-cd-configuration-and-reconciliation/SKILL.md).
-- Don't reach for Crossplane just because a team is Kubernetes-native —
+  any other [Kubernetes](../kubernetes/SKILL.md) manifest is, rather than created ad hoc via
+  `[kubectl](../kubectl/SKILL.md) apply` — see
+  [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) and
+  [flux-cd-configuration-and-reconciliation](../[flux-cd-configuration-and-reconciliation](../flux-cd-configuration-and-reconciliation/SKILL.md)/SKILL.md).
+- Don't reach for Crossplane just because a team is [Kubernetes](../kubernetes/SKILL.md)-native —
   if application teams don't need self-service infra requests and the
   org already has mature Terraform tooling/reviews, introducing a
   second provisioning paradigm has a real adoption/maintenance cost
@@ -334,9 +334,9 @@ job.
 ## Common pitfalls
 
 - **Symptom:** A `Claim` is created and never becomes `Ready`, with no
-  obvious error in `kubectl describe databaseclaim`.
+  obvious error in `[kubectl](../kubectl/SKILL.md) describe databaseclaim`.
   **Fix:** Check the underlying `Composite` resource and managed
-  resource directly (`kubectl get composite`, `kubectl get managed`) —
+  resource directly (`[kubectl](../kubectl/SKILL.md) get composite`, `[kubectl](../kubectl/SKILL.md) get managed`) —
   the Claim's own status often just reflects "waiting on the composite,"
   and the real error (a provider credential rejected by the cloud API,
   a schema validation failure in a patch) is one or two levels down in
@@ -350,11 +350,11 @@ job.
   `fromFieldPath`/`toFieldPath` strings exactly match the XRD's schema
   and the target provider resource's actual field structure
   respectively; validate with
-  [crossplane-configuration-validation](../crossplane-configuration-validation/SKILL.md)'s
+  [crossplane-configuration-validation](../[crossplane-configuration-validation](../../Infrastructure_as_Code/crossplane-configuration-validation/SKILL.md)/SKILL.md)'s
   dry-run workflow before assuming the Composition logic itself is
   broken.
 
-- **Symptom:** `kubectl get managed` shows a resource `READY: True` but
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) get managed` shows a resource `READY: True` but
   `SYNCED: False` persistently, not just transiently during a normal
   reconcile cycle.
   **Fix:** Persistent `SYNCED: False` means Crossplane's provider
@@ -388,7 +388,7 @@ job.
 ## Worked example
 
 **Scenario:** A platform team wants application teams to self-service
-provision PostgreSQL databases via a `DatabaseClaim`, without any team
+provision [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) databases via a `DatabaseClaim`, without any team
 needing to know AWS RDS's actual API surface, and with production
 databases protected from accidental deletion.
 
@@ -399,8 +399,8 @@ helm install crossplane crossplane-stable/crossplane --namespace crossplane-syst
 ```yaml
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
-metadata: { name: provider-aws-rds }
-spec: { package: xpkg.upbound.io/upbound/provider-aws-rds:v1.19.0 }
+metadata: { name: provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md) }
+spec: { package: xpkg.upbound.io/upbound/provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md):v1.19.0 }
 ```
 
 ```yaml
@@ -473,8 +473,8 @@ spec:
 ```
 
 ```bash
-kubectl get databaseclaim payments-db -n payments -o jsonpath='{.status.conditions}'
-kubectl get secret payments-db-conn -n payments -o jsonpath='{.data.endpoint}' | base64 -d
+[kubectl](../kubectl/SKILL.md) get databaseclaim payments-db -n payments -o jsonpath='{.status.conditions}'
+[kubectl](../kubectl/SKILL.md) get secret payments-db-conn -n payments -o jsonpath='{.data.endpoint}' | base64 -d
 ```
 
 The `payments` team never touched an `Instance` or `ProviderConfig`
@@ -484,9 +484,9 @@ it needs to connect.
 
 ## Cross-references
 
-- [crossplane-configuration-validation](../crossplane-configuration-validation/SKILL.md) — dry-running Compositions/Claims and catching XRD schema mismatches before they reach a live cluster.
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the plan-then-apply, state-file-tracked alternative paradigm this skill's continuous-reconciliation model differs from; read for contrast, not duplicated here.
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) — how Claim manifests themselves should be version-controlled and reviewed via GitOps rather than applied ad hoc.
-- [flux-cd-configuration-and-reconciliation](../flux-cd-configuration-and-reconciliation/SKILL.md) — pairing Flux-managed Claim manifests with Crossplane's own reconciliation of the infrastructure they describe.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege design for the cloud credentials backing each `ProviderConfig`.
-- [argocd-sync-failure-and-drift-investigation](../../../gitops-argo-ecosystem/skills/argocd-sync-failure-and-drift-investigation/SKILL.md) — the analogous "two independent status signals" investigative pattern, referenced here for Crossplane's `SYNCED`/`READY` conditions.
+- [crossplane-configuration-validation](../[crossplane-configuration-validation](../../Infrastructure_as_Code/crossplane-configuration-validation/SKILL.md)/SKILL.md) — dry-running Compositions/Claims and catching XRD schema mismatches before they reach a live cluster.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../Infrastructure_as_Code/[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the plan-then-apply, state-file-tracked alternative paradigm this skill's continuous-reconciliation model differs from; read for contrast, not duplicated here.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — how Claim manifests themselves should be version-controlled and reviewed via [GitOps](../gitops/SKILL.md) rather than applied ad hoc.
+- [flux-cd-configuration-and-reconciliation](../[flux-cd-configuration-and-reconciliation](../flux-cd-configuration-and-reconciliation/SKILL.md)/SKILL.md) — pairing Flux-managed Claim manifests with Crossplane's own reconciliation of the infrastructure they describe.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege design for the cloud credentials backing each `ProviderConfig`.
+- [argocd-sync-failure-and-drift-investigation](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argocd-sync-failure-and-drift-investigation](../[argocd](../argocd/SKILL.md)-sync-failure-and-drift-investigation/SKILL.md)/SKILL.md) — the analogous "two independent status signals" investigative pattern, referenced here for Crossplane's `SYNCED`/`READY` conditions.

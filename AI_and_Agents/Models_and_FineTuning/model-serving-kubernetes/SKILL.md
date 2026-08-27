@@ -7,31 +7,31 @@ metadata:
   version: "1.0"
 ---
 
-# Model Serving on Kubernetes
+# Model Serving on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 
-Production ML model serving with KServe and Triton — canary deployments, autoscaling, and GPU-aware scheduling.
+Production ML model serving with KServe and Triton — canary deployments, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and GPU-aware scheduling.
 
 ## When to Use This Skill
 
 Use this skill when:
 - Serving scikit-learn, PyTorch, TensorFlow, or ONNX models at scale
 - Implementing canary deployments and A/B testing for ML models
-- Autoscaling inference pods based on request rate or GPU metrics
-- Deploying LLMs with Triton or KServe on Kubernetes
+- [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) inference pods based on request rate or GPU metrics
+- Deploying LLMs with Triton or KServe on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 - Managing multiple model versions with traffic splitting
 
 ## Prerequisites
 
-- Kubernetes 1.28+ with GPU nodes
+- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) 1.28+ with GPU nodes
 - KServe installed (or Triton standalone)
-- `kubectl` and `helm` configured
+- `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` and `helm` configured
 - NVIDIA GPU Operator installed on cluster
 
 ## KServe Installation
 
 ```bash
 # Install KServe with Helm
-helm repo add kserve https://kserve.github.io/helm-charts
+helm repo add kserve https://kserve.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[helm-charts](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install kserve kserve/kserve \
@@ -40,8 +40,8 @@ helm install kserve kserve/kserve \
   --set kserve.controller.gateway.ingressGateway.className=nginx
 
 # Verify
-kubectl get pods -n kserve
-kubectl get crd | grep kserve
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n kserve
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get crd | grep kserve
 ```
 
 ## Basic InferenceService (KServe)
@@ -66,10 +66,10 @@ spec:
 ```
 
 ```bash
-kubectl apply -f inference-service.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f inference-service.yaml
 
 # Get inference service URL
-kubectl get inferenceservice sklearn-iris -n models
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get inferenceservice sklearn-iris -n models
 # NAME           URL                                          READY   ...
 # sklearn-iris   http://sklearn-iris.models.example.com       True
 
@@ -157,17 +157,17 @@ spec:
 
 ```bash
 # Gradually increase canary traffic
-kubectl patch inferenceservice llama-3-8b -n models \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) patch inferenceservice llama-3-8b -n models \
   --type='json' \
   -p='[{"op":"replace","path":"/spec/predictor/canaryTrafficPercent","value":50}]'
 
 # Promote canary to stable
-kubectl patch inferenceservice llama-3-8b -n models \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) patch inferenceservice llama-3-8b -n models \
   --type='json' \
   -p='[{"op":"remove","path":"/spec/predictor/canaryTrafficPercent"}]'
 ```
 
-## Autoscaling with KEDA
+## [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with KEDA
 
 ```yaml
 apiVersion: keda.sh/v1alpha1
@@ -185,7 +185,7 @@ spec:
   triggers:
   - type: prometheus
     metadata:
-      serverAddress: http://prometheus-server.monitoring:9090
+      serverAddress: http://prometheus-server.[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
       metricName: kserve_request_count
       threshold: "10"
       query: |
@@ -284,8 +284,8 @@ curl -X POST http://triton:8000/v2/repository/models/text-classifier/load
 curl -X POST http://triton:8000/v2/repository/models/text-classifier/unload
 
 # KServe — watch rollout status
-kubectl rollout status deployment/llama-3-8b-predictor -n models
-kubectl get inferenceservice llama-3-8b -n models -w
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/llama-3-8b-predictor -n models
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get inferenceservice llama-3-8b -n models -w
 ```
 
 ## Common Issues
@@ -293,7 +293,7 @@ kubectl get inferenceservice llama-3-8b -n models -w
 | Issue | Cause | Fix |
 |-------|-------|-----|
 | `InferenceService not ready` | Model loading or OOM | Check predictor pod logs; increase memory limits |
-| Canary stuck at 0% | KNative routing issue | Check `kubectl get ksvc -n models` |
+| Canary stuck at 0% | KNative routing issue | Check `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get ksvc -n models` |
 | Triton missing model | S3 permissions or path | Verify IAM role; check `--model-store` path |
 | Low GPU utilization | Dynamic batching off | Enable `dynamic_batching` in Triton config |
 | Autoscaler not triggering | Prometheus query wrong | Test query in Prometheus UI |
@@ -308,7 +308,7 @@ kubectl get inferenceservice llama-3-8b -n models -w
 
 ## Related Skills
 
-- [vllm-server](../../../infrastructure/local-ai/vllm-server/) - vLLM for LLM serving
-- [llm-inference-scaling](../../../infrastructure/local-ai/llm-inference-scaling/) - KEDA autoscaling
-- [kubernetes-ops](../kubernetes-ops/) - Core Kubernetes operations
-- [gpu-server-management](../../../infrastructure/servers/gpu-server-management/) - GPU nodes
+- [vllm-server](../../../infrastructure/local-ai/[vllm-server](../vllm-server/SKILL.md)/) - vLLM for LLM serving
+- [llm-inference-scaling](../../../infrastructure/local-ai/[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - KEDA [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+- [kubernetes-ops](../[kubernetes-ops](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - Core [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) operations
+- [gpu-server-management](../../../infrastructure/servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU nodes

@@ -20,65 +20,65 @@ metadata:
   maturity: stable
 ---
 
-# Vault Operations and PKI Engine Configuration
+# [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Operations and PKI Engine Configuration
 
 ## Purpose
 
-HashiCorp Vault is itself a piece of critical infrastructure that has to
+HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is itself a piece of critical infrastructure that has to
 be initialized, kept unsealed, made highly available, and operated with
-its own upgrade and disaster-recovery discipline — separate from the
+its own upgrade and [disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md) discipline — separate from the
 question of how applications *consume* secrets from it, which is
-covered in [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md)
-and, for the Kubernetes-native sync pattern, in
-[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md).
-This skill covers running Vault as the platform team operating it:
+covered in [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+and, for the [Kubernetes](../kubernetes/SKILL.md)-native sync pattern, in
+[sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md).
+This skill covers running [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) as the platform team operating it:
 initialization and the seal/unseal lifecycle (Shamir key shares versus
 auto-unseal against a cloud KMS or HSM), configuring the **PKI secrets
 engine** to stand up an internal certificate authority hierarchy and
 issue short-lived leaf certificates for internal mTLS, and designing
 HA/DR topology with Raft integrated storage and cross-cluster
 replication. Getting this operational layer wrong doesn't just cause an
-outage for one team's secret lookups — since Vault is frequently the
+outage for one team's secret lookups — since [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is frequently the
 root of trust for both secrets and internal PKI, a mishandled unseal
 key, an un-replicated cluster, or a compromised root CA can cascade
 across every system that depends on it.
 
 ## When to use
 
-- Initializing a new Vault cluster and choosing between Shamir
-  key-share unsealing and auto-unseal (AWS KMS, Azure Key Vault, GCP
-  Cloud KMS, or an HSM via PKCS#11/Vault Enterprise).
+- Initializing a new [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster and choosing between Shamir
+  key-share unsealing and auto-unseal (AWS KMS, Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP
+  Cloud KMS, or an HSM via PKCS#11/[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Enterprise).
 - Setting up the **PKI secrets engine** to issue internal TLS
   certificates — a root CA, an intermediate CA, roles constraining what
   an application can request, and short-lived leaf certificate issuance
   for internal service-to-service mTLS.
-- Designing or reviewing a Vault HA cluster's storage backend (Raft
+- Designing or reviewing a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) HA cluster's storage backend (Raft
   integrated storage vs. Consul) and its Performance/DR replication
-  topology across regions or environments (Vault Enterprise feature).
-- Rotating a Vault root or intermediate CA, or responding to a
-  suspected compromise of Vault's own unseal material or CA private
+  topology across regions or environments ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Enterprise feature).
+- Rotating a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) root or intermediate CA, or responding to a
+  suspected compromise of [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s own unseal material or CA private
   key.
-- Recovering a Vault cluster after a restart when auto-unseal isn't
+- Recovering a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster after a restart when auto-unseal isn't
   configured and the cluster is sitting sealed.
-- Planning a Vault version upgrade, including any storage-backend
+- Planning a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) version upgrade, including any storage-backend
   migration or seal-migration (Shamir → auto-unseal) steps.
 
 ## Prerequisites & environment
 
-- Vault ≥ 1.15 recommended for stable Raft integrated-storage
+- [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) ≥ 1.15 recommended for stable Raft integrated-storage
   autopilot features (automated dead-server cleanup, state
   snapshots); PKI engine role/issuer behavior referenced below assumes
-  the `pki` secrets engine's modern multi-issuer support (Vault ≥ 1.11),
+  the `pki` secrets engine's modern multi-issuer support ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) ≥ 1.11),
   not the older single-CA-per-mount model.
 - A storage backend decision made deliberately: **Raft integrated
   storage** (the current recommended default — no external dependency,
   built-in HA) versus **Consul** (viable if the org already operates
-  Consul for other reasons, adds an external dependency Vault itself
+  Consul for other reasons, adds an external dependency [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) itself
   doesn't otherwise need).
-- For auto-unseal: a cloud KMS key (AWS KMS, Azure Key Vault, GCP Cloud
-  KMS) or HSM the Vault servers have network access and IAM permission
-  to call, provisioned *before* initializing Vault against it.
-- Vault Enterprise license if Performance Replication or DR Replication
+- For auto-unseal: a cloud KMS key (AWS KMS, Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Cloud
+  KMS) or HSM the [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) servers have network access and IAM permission
+  to call, provisioned *before* initializing [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) against it.
+- [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Enterprise license if Performance Replication or DR Replication
   across clusters is required — the OSS edition supports Raft-based HA
   within one cluster but not cross-cluster replication.
 - An odd number of Raft voter nodes (3 or 5) across separate failure
@@ -88,7 +88,7 @@ across every system that depends on it.
   shares (if not using auto-unseal) — distributed to separate
   key-holders, never all stored together, and never committed anywhere
   near source control.
-- `vault` CLI matching the server version, and network/firewall access
+- `[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)` CLI matching the server version, and network/firewall access
   to the cluster's API port (default `8200`) and cluster port (`8201`).
 
 ## Step-by-step guidance
@@ -98,7 +98,7 @@ across every system that depends on it.
 1. **Initialize the cluster once, capturing the recovery/unseal
    material immediately and securely**:
    ```bash
-   vault operator init -key-shares=5 -key-threshold=3
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator init -key-shares=5 -key-threshold=3
    ```
    This returns 5 Shamir key shares (any 3 reconstruct the master key)
    and an initial root token. Distribute each share to a different
@@ -107,17 +107,17 @@ across every system that depends on it.
    ran `init`.
 
 2. **Prefer auto-unseal over Shamir shares for any production cluster**
-   — a cloud KMS or HSM unseals Vault automatically on restart without
+   — a cloud KMS or HSM unseals [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) automatically on restart without
    requiring key-holders to be paged and to type in shares manually:
    ```hcl
-   # vault config: auto-unseal via AWS KMS
+   # [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) config: auto-unseal via AWS KMS
    seal "awskms" {
      region     = "us-east-1"
      kms_key_id = "<KMS_KEY_ID>"
    }
    ```
-   With auto-unseal configured, `vault operator init` still returns
-   **recovery keys** (used for `vault operator generate-root` and
+   With auto-unseal configured, `[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator init` still returns
+   **recovery keys** (used for `[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator generate-root` and
    emergency operations) rather than Shamir unseal shares — these still
    need the same careful, distributed storage discipline as Shamir
    shares would.
@@ -126,9 +126,9 @@ across every system that depends on it.
    restart** with the threshold number of distinct key-holders each
    supplying their share:
    ```bash
-   vault operator unseal <key-share-1>
-   vault operator unseal <key-share-2>
-   vault operator unseal <key-share-3>
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-share-1>
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-share-2>
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator unseal <key-share-3>
    ```
    Every server in the cluster must be individually unsealed after a
    restart under Shamir — this operational burden, multiplied across
@@ -138,8 +138,8 @@ across every system that depends on it.
 4. **Verify cluster health and Raft peer status** after any restart or
    topology change:
    ```bash
-   vault operator raft list-peers
-   vault status
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator raft list-peers
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) status
    ```
    Confirm the expected number of voters is present and one node holds
    `leader` status before considering a restart/failover complete.
@@ -151,27 +151,27 @@ across every system that depends on it.
    certificates day to day — never issue leaf certificates directly
    from the root:
    ```bash
-   vault secrets enable -path=pki_root pki
-   vault secrets tune -max-lease-ttl=87600h pki_root   # 10 years
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=pki_root pki
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets tune -max-lease-ttl=87600h pki_root   # 10 years
 
-   vault write -field=certificate pki_root/root/generate/internal \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=certificate pki_root/root/generate/internal \
      common_name="Example Internal Root CA" \
      ttl=87600h > root_ca.crt
    ```
 
 6. **Generate an intermediate CA and get it signed by the root**:
    ```bash
-   vault secrets enable -path=pki_int pki
-   vault secrets tune -max-lease-ttl=43800h pki_int   # 5 years
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=pki_int pki
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets tune -max-lease-ttl=43800h pki_int   # 5 years
 
-   vault write -field=csr pki_int/intermediate/generate/internal \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=csr pki_int/intermediate/generate/internal \
      common_name="Example Internal Intermediate CA" > pki_intermediate.csr
 
-   vault write -field=certificate pki_root/root/sign-intermediate \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=certificate pki_root/root/sign-intermediate \
      csr=@pki_intermediate.csr format=pem_bundle ttl=43800h \
      > intermediate.cert.pem
 
-   vault write pki_int/intermediate/set-signed \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/intermediate/set-signed \
      certificate=@intermediate.cert.pem
    ```
 
@@ -179,7 +179,7 @@ across every system that depends on it.
    — allowed domains, max leaf TTL, key type — rather than a role that
    can issue a certificate for any name:
    ```bash
-   vault write pki_int/roles/payments-svc \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/roles/payments-svc \
      allowed_domains="payments.svc.internal" \
      allow_subdomains=true \
      max_ttl="72h" \
@@ -192,24 +192,24 @@ across every system that depends on it.
    would need explicit revocation.
 
 8. **Issue a leaf certificate**, either via direct API call from a
-   workload's Vault-authenticated identity, or via the Vault Agent /
-   the PKI issuance pattern most Vault client libraries support:
+   workload's [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-authenticated identity, or via the [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Agent /
+   the PKI issuance pattern most [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) client libraries support:
    ```bash
-   vault write pki_int/issue/payments-svc \
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/issue/payments-svc \
      common_name="payments.svc.internal" ttl="24h"
    ```
-   Automate renewal (a sidecar or Vault Agent template re-requesting
+   Automate renewal (a sidecar or [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Agent template re-requesting
    before the short TTL expires) rather than treating internal PKI
    issuance as a one-time manual step — this only works operationally
    at scale with automation, which is the focus of
-   [certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md).
+   [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md).
 
 9. **Configure CRL/OCSP distribution** so revocation is actually
    enforceable, not just theoretically possible:
    ```bash
-   vault write pki_int/config/urls \
-     issuing_certificates="https://vault.example.internal:8200/v1/pki_int/ca" \
-     crl_distribution_points="https://vault.example.internal:8200/v1/pki_int/crl"
+   [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/config/urls \
+     issuing_certificates="https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.internal:8200/v1/pki_int/ca" \
+     crl_distribution_points="https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.internal:8200/v1/pki_int/crl"
    ```
 
 ### HA/DR topology
@@ -218,11 +218,11 @@ across every system that depends on it.
     (3 or 5) spread across separate availability zones**:
     ```hcl
     storage "raft" {
-      path    = "/vault/data"
-      node_id = "vault-1"
+      path    = "/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/data"
+      node_id = "[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1"
     }
-    cluster_addr = "https://vault-1.internal:8201"
-    api_addr     = "https://vault-1.internal:8200"
+    cluster_addr = "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1.internal:8201"
+    api_addr     = "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1.internal:8200"
     ```
     A 2-node or single-node "HA" setup provides no real quorum
     tolerance — a single node failure either has no failover (1 node)
@@ -231,14 +231,14 @@ across every system that depends on it.
 11. **Take regular Raft snapshots** as the backup mechanism, independent
     of any replication setup:
     ```bash
-    vault operator raft snapshot save vault-snapshot-$(date +%Y%m%d).snap
+    [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator raft snapshot save [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-snapshot-$(date +%Y%m%d).snap
     ```
     Store snapshots in a separate, access-controlled location (not on
     the same storage volume as the live cluster) and test restoring
     from one periodically — an untested backup is not a real recovery
     plan.
 
-12. **For cross-region/cross-environment DR, use Vault Enterprise's DR
+12. **For cross-region/cross-environment DR, use [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Enterprise's DR
     Replication** (a passive, promotable secondary cluster) rather than
     relying on Raft snapshots alone for a full-region-loss scenario —
     snapshots give point-in-time recovery; DR replication gives a
@@ -276,22 +276,22 @@ across every system that depends on it.
 - Store unseal/recovery key shares and root CA material with the same
   rigor as any other top-tier secret — distributed among named
   individuals, access-logged, and included in the organization's own
-  incident-response plan for what happens if a share/holder is
+  [incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) plan for what happens if a share/holder is
   compromised.
 
 ## Common pitfalls
 
-- **Symptom:** A Vault cluster restarts (node reboot, upgrade, incident)
-  and comes back up `sealed`, and no on-call runbook exists for who
+- **Symptom:** A [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster restarts (node reboot, upgrade, [incident](../../Observability_and_SecOps/incident/SKILL.md))
+  and comes back up `sealed`, and no on-call [runbook](../../Observability_and_SecOps/runbook/SKILL.md) exists for who
   holds the unseal shares.
   **Fix:** This is the exact failure mode auto-unseal exists to
   eliminate — migrate to cloud KMS/HSM-based auto-unseal for production
   clusters. If Shamir must be retained (e.g. a hard compliance
   requirement against auto-unseal), maintain a tested, on-call-visible
-  runbook naming which individuals hold shares and how to reach them
-  under incident pressure.
+  [runbook](../../Observability_and_SecOps/runbook/SKILL.md) naming which individuals hold shares and how to reach them
+  under [incident](../../Observability_and_SecOps/incident/SKILL.md) pressure.
 
-- **Symptom:** A "highly available" Vault cluster is actually 2 nodes,
+- **Symptom:** A "highly available" [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster is actually 2 nodes,
   and a single node failure leaves the surviving node unable to reach
   Raft quorum, taking the whole cluster down.
   **Fix:** Run 3 or 5 voter nodes, never an even number — Raft quorum
@@ -303,7 +303,7 @@ across every system that depends on it.
   of the point of running an internal CA over just using long-lived
   static certificates.
   **Fix:** Set short max TTLs (hours to a few days) at the role level
-  and invest in renewal automation (Vault Agent templating, a sidecar,
+  and invest in renewal automation ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Agent templating, a sidecar,
   or application-level renewal logic) instead — the operational cost of
   automating short-lived renewal is paid once; the security benefit
   compounds on every subsequent issuance.
@@ -317,8 +317,8 @@ across every system that depends on it.
   operation, ideally requiring a distinct, more tightly controlled
   access path than day-to-day PKI operations use.
 
-- **Symptom:** Vault snapshots are taken but have never been restored
-  in a drill, and during an actual incident the restore procedure turns
+- **Symptom:** [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) snapshots are taken but have never been restored
+  in a drill, and during an actual [incident](../../Observability_and_SecOps/incident/SKILL.md) the restore procedure turns
   out to be broken (wrong storage path, missing unseal material for the
   restored cluster).
   **Fix:** Schedule periodic restore drills against a non-production
@@ -328,63 +328,63 @@ across every system that depends on it.
 
 ## Worked example
 
-**Scenario:** Stand up a new production Vault cluster on Raft integrated
+**Scenario:** Stand up a new production [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster on Raft integrated
 storage with AWS KMS auto-unseal, then configure a two-tier internal PKI
 hierarchy issuing short-lived mTLS certificates for a `payments-svc`
 workload.
 
-Server config (`vault-1.internal`, repeated per node with a unique
+Server config (`[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1.internal`, repeated per node with a unique
 `node_id`):
 ```hcl
 storage "raft" {
-  path    = "/vault/data"
-  node_id = "vault-1"
+  path    = "/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/data"
+  node_id = "[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1"
 }
 listener "tcp" {
   address     = "0.0.0.0:8200"
-  tls_cert_file = "/etc/vault/tls/vault.crt"
-  tls_key_file  = "/etc/vault/tls/vault.key"
+  tls_cert_file = "/etc/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/tls/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).crt"
+  tls_key_file  = "/etc/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/tls/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).key"
 }
 seal "awskms" {
   region     = "us-east-1"
   kms_key_id = "<KMS_KEY_ID>"
 }
-cluster_addr = "https://vault-1.internal:8201"
-api_addr     = "https://vault-1.internal:8200"
+cluster_addr = "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1.internal:8201"
+api_addr     = "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-1.internal:8200"
 ```
 
 Initialize (auto-unseal means this returns recovery keys, not Shamir
 shares needed on every restart):
 ```bash
-vault operator init -recovery-shares=5 -recovery-threshold=3
-vault status   # confirm Sealed: false — auto-unseal engaged immediately
-vault operator raft list-peers   # confirm 3 voters, one leader
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator init -recovery-shares=5 -recovery-threshold=3
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) status   # confirm Sealed: false — auto-unseal engaged immediately
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) operator raft list-peers   # confirm 3 voters, one leader
 ```
 
 PKI hierarchy:
 ```bash
-vault secrets enable -path=pki_root pki
-vault secrets tune -max-lease-ttl=87600h pki_root
-vault write -field=certificate pki_root/root/generate/internal \
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=pki_root pki
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets tune -max-lease-ttl=87600h pki_root
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=certificate pki_root/root/generate/internal \
   common_name="Example Internal Root CA" ttl=87600h > root_ca.crt
 
-vault secrets enable -path=pki_int pki
-vault secrets tune -max-lease-ttl=43800h pki_int
-vault write -field=csr pki_int/intermediate/generate/internal \
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=pki_int pki
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets tune -max-lease-ttl=43800h pki_int
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=csr pki_int/intermediate/generate/internal \
   common_name="Example Internal Intermediate CA" > pki_intermediate.csr
-vault write -field=certificate pki_root/root/sign-intermediate \
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write -field=certificate pki_root/root/sign-intermediate \
   csr=@pki_intermediate.csr format=pem_bundle ttl=43800h > intermediate.cert.pem
-vault write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
 
-vault write pki_int/roles/payments-svc \
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/roles/payments-svc \
   allowed_domains="payments.svc.internal" \
   allow_subdomains=true max_ttl="72h" key_type="rsa" key_bits=2048
 ```
 
-Leaf issuance (24h TTL, renewed automatically by a Vault Agent template
+Leaf issuance (24h TTL, renewed automatically by a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Agent template
 well before expiry):
 ```bash
-vault write pki_int/issue/payments-svc \
+[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write pki_int/issue/payments-svc \
   common_name="payments.svc.internal" ttl="24h"
 ```
 
@@ -396,21 +396,21 @@ handling required.
 
 ## Cross-references
 
-- [vault-configuration-validation](../vault-configuration-validation/SKILL.md) —
-  validating Vault policies, auth methods, and seal configuration before
+- [vault-configuration-validation](../[vault-configuration-validation](../../../Security/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
+  validating [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policies, auth methods, and seal configuration before
   rolling out changes to the operational cluster this skill sets up.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) —
-  the application-facing side of using Vault as a secrets backend
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+  the application-facing side of using [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) as a secrets backend
   (KV engines, dynamic database secrets, rotation policy), which
   assumes the operational cluster this skill covers is already running.
-- [sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md) —
-  syncing secrets *from* an operating Vault cluster into Kubernetes
+- [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) —
+  syncing secrets *from* an operating [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster into [Kubernetes](../kubernetes/SKILL.md)
   `Secret` objects via External Secrets Operator.
-- [certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md) —
+- [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) —
   rotating and automating certificates issued by this PKI engine (or an
-  enterprise CA) across many services beyond a single Kubernetes
+  enterprise CA) across many services beyond a single [Kubernetes](../kubernetes/SKILL.md)
   cluster's scope.
-- [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md) —
+- [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) —
   cert-manager can itself be configured to request certificates from
-  Vault's PKI engine as an `Issuer` backend for Kubernetes-native
+  [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine as an `Issuer` backend for [Kubernetes](../kubernetes/SKILL.md)-native
   automated issuance.

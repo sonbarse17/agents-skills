@@ -16,12 +16,12 @@ tags: [dev-loop, performance, profiling, optimization]
 # Performance Profiler
 
 ## Purpose
-Identify, analyze, and resolve performance bottlenecks in applications — CPU profiling, memory profiling, I/O analysis, database query optimization, and frontend rendering performance — using systematic measurement and optimization.
+Identify, analyze, and resolve performance bottlenecks in applications — CPU [profiling](../../Frontend/profiling/SKILL.md), memory [profiling](../../Frontend/profiling/SKILL.md), I/O analysis, database query optimization, and frontend rendering performance — using systematic measurement and optimization.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "performance profiling", "profiling", "slow application", "performance bottleneck", "CPU profiler", "memory leak", "heap dump", "database slow query", "performance optimization", "flame graph", "page speed", "LCP", "FID", "CLS".
+Exact user phrases: "performance [profiling](../../Frontend/profiling/SKILL.md)", "[profiling](../../Frontend/profiling/SKILL.md)", "slow application", "performance bottleneck", "CPU profiler", "memory leak", "heap dump", "database slow query", "performance optimization", "flame graph", "page speed", "LCP", "FID", "CLS".
 
 ### Input Context
 - Performance symptom (slow response, high CPU, memory growth, network latency, UI jank)
@@ -36,13 +36,13 @@ Performance analysis report with measured metrics, bottleneck identification, an
 
 ### Completion Criteria
 - [ ] Baseline performance metrics established
-- [ ] Profiling tool selected and configured
+- [ ] [Profiling](../../Frontend/profiling/SKILL.md) tool selected and configured
 - [ ] CPU/memory/IO hot spots identified
 - [ ] Root cause of bottleneck documented
 - [ ] Optimization implemented and measured
 - [ ] Improvement verified with before/after metrics
 - [ ] Regression benchmark added
-- [ ] Monitoring alert configured (if in production)
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert configured (if in production)
 
 ### Max Response Length
 200 lines.
@@ -52,19 +52,19 @@ Performance analysis report with measured metrics, bottleneck identification, an
 ### Performance Analysis Decision Tree
 ```
 What is the performance symptom?
-├── Slow API response time → Server-side profiling
-│   → APM (DataDog, New Relic) → flame graph → database query analysis
+├── Slow API response time → Server-side [profiling](../../Frontend/profiling/SKILL.md)
+│   → APM ([DataDog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic) → flame graph → database query analysis
 │   → Cache strategy → N+1 query → index → pagination
-├── High CPU usage → CPU profiling
+├── High CPU usage → CPU [profiling](../../Frontend/profiling/SKILL.md)
 │   → Sampling profiler → hot functions → algorithm optimization
-│   → Worker threads → microservices → resource limits
-├── Memory growth / leak → Memory profiling
+│   → Worker threads → [microservices](../../Patterns/microservices/SKILL.md) → resource limits
+├── Memory growth / leak → Memory [profiling](../../Frontend/profiling/SKILL.md)
 │   → Heap dump → retained size → leak suspect → fix
 │   → Event listener cleanup → cache size → object pooling
 ├── Slow page load (frontend) → Browser DevTools
 │   → Lighthouse → Largest Contentful Paint → bundle analysis
 │   → Code splitting → image optimization → lazy loading
-├── Slow database queries → Query profiling
+├── Slow database queries → Query [profiling](../../Frontend/profiling/SKILL.md)
 │   → EXPLAIN ANALYZE → missing index → full table scan
 │   → Query rewrite → denormalization → read replica
 └── Network latency → Request waterfall
@@ -105,9 +105,9 @@ node --prof-process isolate-*.log > processed.txt
 npx clinic doctor -- node app.js
 npx clinic flame -- node app.js
 
-# Python: cProfile
-python -m cProfile -o output.prof app.py
-python -m pstats output.prof  # Interactive analysis
+# [Python](../../Languages/python/SKILL.md): cProfile
+[python](../../Languages/python/SKILL.md) -m cProfile -o output.prof app.py
+[python](../../Languages/python/SKILL.md) -m pstats output.prof  # Interactive analysis
 # Or use snakeviz for visualization: snakeviz output.prof
 
 # Rust: perf + flamegraph
@@ -122,7 +122,7 @@ dotnet-trace collect --process-id <pid> --providers Microsoft-DotNETCore-SampleP
 
 ### Step 2: Profile Memory
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Node.js: heap snapshot
 import * as v8 from 'v8';
 import * as fs from 'fs';
@@ -144,8 +144,8 @@ setInterval(() => {
 }, 5000);
 ```
 
-```python
-# Python: memory profiler
+```[python](../../Languages/python/SKILL.md)
+# [Python](../../Languages/python/SKILL.md): memory profiler
 from memory_profiler import profile
 
 @profile
@@ -165,8 +165,8 @@ dotnet-gcdump collect -p <pid> -o heap.gcdump
 ### Step 3: Profile Database Queries
 
 ```sql
--- PostgreSQL: slow query log
--- In postgresql.conf:
+-- [PostgreSQL](../../Backend/postgresql/SKILL.md): slow query log
+-- In [postgresql](../../Backend/postgresql/SKILL.md).conf:
 log_min_duration_statement = 200  -- Log queries taking >200ms
 log_connections = on
 log_disconnections = on
@@ -197,7 +197,7 @@ LIMIT 10;  -- Unused indexes
 ```
 
 ```bash
-# MongoDB: slow query profiler
+# [MongoDB](../../Backend/mongodb/SKILL.md): slow query profiler
 db.setProfilingLevel(1, { slowms: 100 })
 db.system.profile.find({ millis: { $gt: 200 } }).sort({ ts: -1 }).limit(10)
 
@@ -333,15 +333,15 @@ optimizations:
 
 ## References
    - ../../../Global_References/performance-profiler-advanced.md — Performance Profiler Advanced Topics
-   - references/performance-profiler-database.md — Database Profiling Reference
-   - references/performance-profiler-frontend.md — Frontend Profiling Reference
+   - references/performance-profiler-database.md — Database [Profiling](../../Frontend/profiling/SKILL.md) Reference
+   - references/performance-profiler-frontend.md — Frontend [Profiling](../../Frontend/profiling/SKILL.md) Reference
    - ../../../Global_References/performance-profiler-fundamentals.md — Performance Profiler Fundamentals
 
 ## Implementation Patterns
 
 ### Performance Profiler CLI
 
-```python
+```[python](../../Languages/python/SKILL.md)
 #!/usr/bin/env python3
 import time
 import functools
@@ -461,7 +461,7 @@ profiler = ProfilerManager()
 
 ### Memory Usage Snapshot Tool
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import tracemalloc
 import gc
 from typing import Dict, List, Optional
@@ -562,23 +562,23 @@ What's the impact/effort ratio?
 
 ## Production Considerations
 
-- **Continuous profiling**: Deploy always-on profilers like Pyroscope or Google Cloud Profiler. Provides flame graphs 24/7 without manual triggering. Distinguishes routine patterns from anomalies.
-- **APM integration**: Use Application Performance Monitoring (Datadog, New Relic, Grafana) for real-time trace sampling. Correlate slow traces with deployments, feature flags, and region.
-- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to dashboards.
-- **Synthetic monitoring**: Set up synthetic transactions that exercise critical user journeys. Alert on latency regressions in top percentiles (p95, p99). Run from multiple geographic regions.
+- **Continuous [profiling](../../Frontend/profiling/SKILL.md)**: Deploy always-on profilers like Pyroscope or Google Cloud Profiler. Provides flame graphs 24/7 without manual triggering. Distinguishes routine patterns from anomalies.
+- **APM integration**: Use Application Performance [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) ([Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic, Grafana) for real-time trace sampling. Correlate slow traces with deployments, feature flags, and region.
+- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+- **Synthetic [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Set up synthetic transactions that exercise critical user journeys. Alert on latency regressions in top percentiles (p95, p99). Run from multiple geographic regions.
 
 ## Anti-Patterns
 
 | Anti-Pattern | Why It Fails | Correct Approach |
 |---|---|---|
-| Optimizing without profiling | Guessing, may optimize wrong thing | Profile first, optimize based on data |
+| Optimizing without [profiling](../../Frontend/profiling/SKILL.md) | Guessing, may optimize wrong thing | Profile first, optimize based on data |
 | Premature optimization | Wastes time on non-hotpaths | Analyze hot paths, optimize only those |
 | Ignoring the bottleneck hierarchy | Fixing wrong layer has no impact | Profile end-to-end, find the actual bottleneck |
-| Single environment profiling | Dev perf != prod perf | Profile in production-like conditions |
+| Single environment [profiling](../../Frontend/profiling/SKILL.md) | Dev perf != prod perf | Profile in production-like conditions |
 | Micro-optimizations over algorithms | Don't fix algorithmic complexity | Fix O(N\u00b2) before optimizing constants |
 | No baseline comparison | Don't know if it improved | Measure before and after |
 | Forgetting cascading effects | Improving one path may overload another | Test overall system impact |
-| Only load testing | Misses code-level hotspots | Combine synthetic load with fine-grained profiling |
+| Only load testing | Misses code-level hotspots | Combine synthetic load with fine-grained [profiling](../../Frontend/profiling/SKILL.md) |
 | Talking about memory without measuring | Memory issues are hard to reason about | Use tracemalloc or heap profiler to measure |
 
 ## Performance Optimization
@@ -590,5 +590,5 @@ What's the impact/effort ratio?
 - **Lazy loading and code splitting**: Split bundles by route. Defer non-critical JavaScript. Load images lazily with IntersectionObserver. Use dynamic imports for rarely-used modules.
 
 ## Handoff
-Hand off to `dev-loop-debugging-strategy` if profiling reveals a bug. Hand off to `dev-loop-code-review` for code-level optimization review. Hand off to `dev-loop-refactor-guide` for performance-related refactoring.
+Hand off to `[dev-loop-debugging-strategy](../../../DevOps_and_Cloud/Observability_and_SecOps/debugging-strategy/SKILL.md)` if [profiling](../../Frontend/profiling/SKILL.md) reveals a bug. Hand off to `dev-loop-[code-review](../code-review/SKILL.md)` for code-level optimization review. Hand off to `[dev-loop-refactor-guide](../../Frontend/refactor-guide/SKILL.md)` for performance-related refactoring.
 

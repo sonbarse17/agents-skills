@@ -7,16 +7,16 @@ metadata:
   version: "1.0.1"
 ---
 
-# Customize Model Deployment
+# [Customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) Model Deployment
 
-Interactive guided workflow for deploying Azure OpenAI models with full customization control over version, SKU, capacity, content filtering, and advanced options.
+Interactive guided workflow for deploying Azure OpenAI models with full customization control over version, SKU, [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), content filtering, and advanced options.
 
 ## Quick Reference
 
 | Property | Description |
 |----------|-------------|
 | **Flow** | Interactive step-by-step guided deployment |
-| **Customization** | Version, SKU, Capacity, RAI Policy, Advanced Options |
+| **Customization** | Version, SKU, [Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), RAI Policy, Advanced Options |
 | **SKU Support** | GlobalStandard, Standard, ProvisionedManaged, DataZoneStandard |
 | **Best For** | Precise control over deployment configuration |
 | **Authentication** | Azure CLI (`az login`) |
@@ -28,23 +28,23 @@ Use this skill when you need **precise control** over deployment configuration:
 
 - ✅ **Choose specific model version** (not just latest)
 - ✅ **Select deployment SKU** (GlobalStandard vs Standard vs PTU)
-- ✅ **Set exact capacity** within available range
+- ✅ **Set exact [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** within available range
 - ✅ **Configure content filtering** (RAI policy selection)
 - ✅ **Enable advanced features** (dynamic quota, priority processing, spillover)
 - ✅ **PTU deployments** (Provisioned Throughput Units)
 
-**Alternative:** Use `preset` for quick deployment to the best available region with automatic configuration.
+**Alternative:** Use `[preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)` for quick deployment to the best available region with automatic configuration.
 
-### Comparison: customize vs preset
+### Comparison: [customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) vs [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)
 
-| Feature | customize | preset |
+| Feature | [customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) | [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md) |
 |---------|---------------------|----------------------------|
 | **Focus** | Full customization control | Optimal region selection |
 | **Version Selection** | User chooses from available | Uses latest automatically |
 | **SKU Selection** | User chooses (GlobalStandard/Standard/PTU) | GlobalStandard only |
-| **Capacity** | User specifies exact value | Auto-calculated (50% of available) |
+| **[Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** | User specifies exact value | Auto-calculated (50% of available) |
 | **RAI Policy** | User selects from options | Default policy only |
-| **Region** | Current region first, falls back to all regions if no capacity | Checks capacity across all regions upfront |
+| **Region** | Current region first, falls back to all regions if no [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Checks [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) across all regions upfront |
 | **Use Case** | Precise deployment requirements | Quick deployment to best region |
 
 ## Prerequisites
@@ -65,8 +65,8 @@ Use this skill when you need **precise control** over deployment configuration:
 4. Get Model Name (if not provided)
 5. List Model Versions → User Selects
 6. List SKUs for Version → User Selects
-7. Get Capacity Range → User Configures
-   7b. If no capacity: Cross-Region Fallback → Query all regions → User selects region/project
+7. Get [Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Range → User Configures
+   7b. If no [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): Cross-Region Fallback → Query all regions → User selects region/project
 8. List RAI Policies → User Selects
 9. Configure Advanced Options (if applicable)
 10. Configure Version Upgrade Policy
@@ -77,13 +77,13 @@ Use this skill when you need **precise control** over deployment configuration:
 
 ### Fast Path (Defaults)
 
-If user accepts all defaults (latest version, GlobalStandard SKU, recommended capacity, default RAI policy, standard upgrade policy), deployment completes in ~5 interactions.
+If user accepts all defaults (latest version, GlobalStandard SKU, recommended [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), default RAI policy, standard upgrade policy), deployment completes in ~5 interactions.
 
 ---
 
 ## Phase Summaries
 
-> ⚠️ **MUST READ:** Before executing any phase, load [../../../../../../../../Global_References/customize-workflow.md](../../../../../../../../Global_References/customize-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, capacity formulas, cross-region fallback logic).
+> ⚠️ **MUST READ:** Before executing any phase, load [../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md](../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) formulas, cross-region fallback logic).
 
 | Phase | Action | Key Details |
 |-------|--------|-------------|
@@ -93,7 +93,7 @@ If user accepts all defaults (latest version, GlobalStandard SKU, recommended ca
 | **4. Get Model** | List models via `az cognitiveservices account list-models` | User selects from available or enters custom name |
 | **5. Select Version** | Query versions for chosen model | Recommend latest; user picks from list |
 | **6. Select SKU** | Query model catalog + subscription quota, show only deployable SKUs | ⚠️ Never hardcode SKU lists — always query live data |
-| **7. Configure Capacity** | Query capacity API, validate min/max/step, user enters value | Cross-region fallback if no capacity in current region |
+| **7. Configure [Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** | Query [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) API, validate min/max/step, user enters value | Cross-region fallback if no [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) in current region |
 | **8. Select RAI Policy** | Present content filter options | Default: `Microsoft.DefaultV2` |
 | **9. Advanced Options** | Dynamic quota (GlobalStandard), priority processing (PTU), spillover | SKU-dependent availability |
 | **10. Upgrade Policy** | Choose: OnceNewDefaultVersionAvailable / OnceCurrentVersionExpired / NoAutoUpgrade | Default: auto-upgrade on new default |
@@ -112,13 +112,13 @@ If user accepts all defaults (latest version, GlobalStandard SKU, recommended ca
 |-------|-------|------------|
 | **Model not found** | Invalid model name | List available models with `az cognitiveservices account list-models` |
 | **Version not available** | Version not supported for SKU | Select different version or SKU |
-| **Insufficient quota** | Capacity > available quota | Skill auto-searches all regions; fails only if no region has quota |
+| **Insufficient quota** | [Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) > available quota | Skill auto-searches all regions; fails only if no region has quota |
 | **SKU not supported** | SKU not available in region | Cross-region fallback searches other regions automatically |
-| **Capacity out of range** | Invalid capacity value | **PREVENTED**: Skill validates min/max/step at input (Phase 7) |
+| **[Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) out of range** | Invalid [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) value | **PREVENTED**: Skill validates min/max/step at input (Phase 7) |
 | **Deployment name exists** | Name conflict | Auto-incremented name generation |
 | **Authentication failed** | Not logged in | Run `az login` |
 | **Permission denied** | Insufficient permissions | Assign Cognitive Services Contributor role |
-| **Capacity query fails** | API/permissions/network error | **DEPLOYMENT BLOCKED**: Will not proceed without valid quota data |
+| **[Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) query fails** | API/permissions/network error | **DEPLOYMENT BLOCKED**: Will not proceed without valid quota data |
 
 ### Troubleshooting Commands
 
@@ -140,11 +140,11 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 
 ## Selection Guides & Advanced Topics
 
-> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../../../../../Global_References/customize-guides.md](../../../../../../../../Global_References/customize-guides.md).
+> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md](../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md).
 
 **SKU selection:** GlobalStandard (production/HA) → Standard (dev/test) → ProvisionedManaged (high-volume/guaranteed throughput) → DataZoneStandard (data residency).
 
-**Capacity:** TPM-based SKUs range from 1K (dev) to 100K+ (large production). PTU-based use formula: `(Input TPM × 0.001) + (Output TPM × 0.002) + (Requests/min × 0.1)`.
+**[Capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):** TPM-based SKUs range from 1K (dev) to 100K+ (large production). PTU-based use formula: `(Input TPM × 0.001) + (Output TPM × 0.002) + (Requests/min × 0.1)`.
 
 **Advanced options:** Dynamic quota (GlobalStandard only), priority processing (PTU only, extra cost), spillover (overflow to backup deployment).
 
@@ -152,8 +152,8 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 
 ## Related Skills
 
-- **preset** - Quick deployment to best region with automatic configuration
-- **microsoft-foundry** - Parent skill for all Microsoft Foundry operations
+- **[preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)** - Quick deployment to best region with automatic configuration
+- **[microsoft-foundry](../../../SKILL.md)** - Parent skill for all Microsoft Foundry operations
 - **[quota](../../../quota/quota.md)** — For quota viewing, increase requests, and troubleshooting quota errors, defer to this skill instead of duplicating guidance
 - **rbac** - Manage permissions and access control
 
@@ -162,7 +162,7 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 ## Notes
 
 - Set `PROJECT_RESOURCE_ID` environment variable to skip prompt
-- Not all SKUs available in all regions; capacity varies by subscription/region/model
+- Not all SKUs available in all regions; [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) varies by subscription/region/model
 - Custom RAI policies can be configured in Azure Portal
 - Automatic version upgrades occur during maintenance windows
 - Use Azure Monitor and Application Insights for production deployments

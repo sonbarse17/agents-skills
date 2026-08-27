@@ -24,10 +24,10 @@ Design database schemas, write performant queries, manage migrations, implement 
 User request includes: `prisma`, `prisma schema`, `prisma migrate`, `prisma client`, `prisma relation`, `prisma middleware`, `prisma query`, `prisma performance`, `prisma seed`, `prisma studio`.
 
 ### Input Context
-- Database (PostgreSQL, MySQL, SQLite, SQL Server, MongoDB)
+- Database ([PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite, SQL Server, [MongoDB](../mongodb/SKILL.md))
 - Prisma version (5.x, 6.x)
 - Schema complexity (relations, enums, composite keys)
-- Deployment (Node.js, serverless, edge)
+- Deployment (Node.js, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), edge)
 
 ### Output Artifact
 Schema definition, query examples, migration setup, middleware patterns, performance optimizations.
@@ -40,7 +40,7 @@ Produce artifact directly. No preamble, no postamble, no explanations.
 - Migrations generated and applied
 - Queries use select, include, and where efficiently
 - Middleware (interactive transactions, extensions) configured
-- Connection pooling for serverless or production
+- Connection pooling for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) or production
 
 ### Max Response Length
 4096 tokens
@@ -85,7 +85,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "[postgresql](../postgresql/SKILL.md)"
   url      = env("DATABASE_URL")
 }
 
@@ -156,7 +156,7 @@ model PostTag {
 
 ### Step 2: Query Patterns
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/repositories/user.repository.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -231,7 +231,7 @@ export async function deleteUser(id: string) {
 
 ### Step 3: Prisma Client Configuration
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -268,7 +268,7 @@ npx prisma migrate status
 
 ### Step 5: Middleware / Extensions (Prisma 5+)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/lib/prisma-extension.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -309,7 +309,7 @@ export const xprisma = new PrismaClient()
 
 ### Step 6: Interactive Transactions
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Transfer funds with transaction
 export async function transferFunds(fromId: string, toId: string, amount: number) {
   return prisma.$transaction(async (tx) => {
@@ -336,7 +336,7 @@ export async function transferFunds(fromId: string, toId: string, amount: number
 
 ### Step 7: Seed Script
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // prisma/seed.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -367,12 +367,12 @@ main()
 
 ## Production Considerations
 
-### Connection Pooling (Serverless)
+### Connection Pooling ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
 
-```typescript
-// Connection pool for serverless (Vercel, Lambda)
+```[typescript](../../Frontend/typescript/SKILL.md)
+// Connection pool for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (Vercel, Lambda)
 import { PrismaClient } from '@prisma/client';
-import { Pool } from '@neondatabase/serverless';
+import { Pool } from '@neondatabase/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)';
 import { PrismaNeon } from '@prisma/adapter-neon';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -389,7 +389,7 @@ const prisma = new PrismaClient({ adapter });
 - Limit relation depth — each `include` adds a JOIN
 
 ### Error Handling
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 try {
@@ -414,7 +414,7 @@ try {
 | Full object in select | Overfetches data, slower queries | Select only needed fields |
 | Nested create without `createMany` | Multiple round trips | Use `createMany` for batch inserts |
 | Missing `@updatedAt` | No auto-update timestamp | Always add `@updatedAt` on mutable models |
-| No connection pooling for serverless | Cold starts, connection exhaustion | Use Prisma Accelerate or pgBouncer |
+| No connection pooling for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) | Cold starts, connection exhaustion | Use Prisma Accelerate or pgBouncer |
 | N+1 via loop queries | Sequential DB calls | Use `include` or batch with `findMany` |
 | Schema drift (manual DB changes) | Out of sync with Prisma schema | Always use Prisma Migrate |
 
@@ -422,13 +422,13 @@ try {
 - Raw queries (`$queryRawUnsafe`) risk SQL injection — use `$queryRaw` with parameterized templates
 - Prisma validates input types, but always validate business rules in application layer
 - Connection string in `.env` — never committed to repo
-- Audit logging via Prisma middleware for sensitive models
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging via Prisma middleware for sensitive models
 - Field-level `@map` for column obfuscation not needed — use DB-level encryption
 - Use `select` to avoid exposing sensitive fields (password hash, etc.)
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { PrismaClient } from '@prisma/client';
 import { vi, describe, it, expect, beforeAll, afterAll } from 'vitest';
 
@@ -451,7 +451,7 @@ describe('User Repository', () => {
 });
 ```
 
-Use separate test database with test user. Use `prisma migrate deploy` in CI. Use `@prisma/nextjs-monorepo-workaround-plugin` for monorepos.
+Use separate test database with test user. Use `prisma migrate deploy` in CI. Use `@prisma/nextjs-[monorepo](../../Frontend/monorepo/SKILL.md)-workaround-plugin` for monorepos.
 
 ## Rules
 - Schema is the source of truth — `prisma migrate dev` after every schema change.
@@ -459,8 +459,8 @@ Use separate test database with test user. Use `prisma migrate deploy` in CI. Us
 - `select` over `include` for production queries — minimize data transfer.
 - Soft deletes via `deletedAt` + middleware filter — never hard delete user data.
 - `$transaction` for atomic multi-table operations.
-- `$extends` for cross-cutting concerns (soft delete, audit, computed fields).
-- No `prisma.$disconnect()` in serverless handlers — let adapter handle pooling.
+- `$extends` for cross-cutting concerns (soft delete, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), computed fields).
+- No `prisma.$disconnect()` in [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) handlers — let adapter handle pooling.
 - Index all foreign keys and frequently queried columns.
 
 ## References
@@ -501,7 +501,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -509,7 +509,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

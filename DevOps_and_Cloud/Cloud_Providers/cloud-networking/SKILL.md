@@ -86,4 +86,4 @@ a redundant path.
 State the CIDR plan and its headroom, which subnets are public vs private and why, whether
 managed-service traffic uses private endpoints, and the egress policy for sensitive workloads.
 Name any network path that exists for historical reasons and isn't reviewed — an unreviewed path
-is the one most likely to be the incident.
+is the one most likely to be the [incident](../../Observability_and_SecOps/incident/SKILL.md).

@@ -48,7 +48,7 @@ lcredit = -1
 # Lock inactive accounts
 useradd -D -f 30
 
-# Audit sudo usage
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) sudo usage
 echo "Defaults logfile=/var/log/sudo.log" >> /etc/sudoers
 ```
 
@@ -101,13 +101,13 @@ find / -type f -perm -0002 -ls
 find / -perm -4000 -type f -ls
 ```
 
-## Audit Configuration
+## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Configuration
 
 ```bash
 # Install auditd
 apt install auditd
 
-# /etc/audit/rules.d/audit.rules
+# /etc/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/rules.d/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).rules
 -w /etc/passwd -p wa -k identity
 -w /etc/shadow -p wa -k identity
 -w /etc/sudoers -p wa -k actions
@@ -126,5 +126,5 @@ apt install auditd
 
 ## Related Skills
 
-- [cis-benchmarks](../cis-benchmarks/) - Compliance scanning
-- [firewall-config](../../network/firewall-config/) - Firewall rules
+- [cis-benchmarks](../[cis-benchmarks](../cis-benchmarks/SKILL.md)/) - Compliance scanning
+- [firewall-config](../../network/[firewall-config](../../Cloud_Providers/firewall-config/SKILL.md)/) - Firewall rules

@@ -30,7 +30,7 @@ Request → Exact Cache → Semantic Cache → Provider Cache → LLM API
 
 ## Layer 1: Exact Match Cache (Redis)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
 import json
 import redis
@@ -71,7 +71,7 @@ def cached_completion(model: str, messages: list, temperature: float = 0.0,
 
 ## Layer 2: Semantic Cache (GPTCache)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from gptcache import cache, Config
 from gptcache.adapter import openai
 from gptcache.embedding import Onnx
@@ -109,7 +109,7 @@ response = openai.ChatCompletion.create(
 
 ## Custom Semantic Cache (Production-Grade)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, Range
@@ -185,7 +185,7 @@ def smart_llm_call(query: str, model: str = "gpt-4o-mini") -> dict:
 
 ## Layer 3: Provider-Side Prompt Caching
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Anthropic — cache long system prompts (saves 90% on cached input tokens)
 import anthropic
 
@@ -230,7 +230,7 @@ print(f"OpenAI cached {cached} tokens")
 
 ## Cache Warming
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def warm_cache(common_queries: list[str], model: str):
     """Pre-populate cache with known frequent queries."""
     import asyncio
@@ -257,7 +257,7 @@ asyncio.run(warm_cache(FREQUENT_QUERIES, "gpt-4o-mini"))
 
 ## Cache Metrics
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from prometheus_client import Counter, Histogram
 
 cache_hits = Counter("llm_cache_hits_total", "Cache hits", ["cache_layer", "model"])
@@ -303,7 +303,7 @@ tcp-keepalive 60
 
 ## Related Skills
 
-- [llm-cost-optimization](../llm-cost-optimization/) - Full cost strategy
-- [llm-gateway](../../../infrastructure/networking/llm-gateway/) - Gateway-level caching
-- [vector-database-ops](../../../infrastructure/databases/vector-database-ops/) - Qdrant setup
-- [agent-observability](../agent-observability/) - Cache metrics dashboards
+- [llm-cost-optimization](../[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Full cost strategy
+- [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Gateway-level caching
+- [vector-database-ops](../../../infrastructure/databases/[vector-database-ops](../../Infrastructure/vector-database-ops/SKILL.md)/) - Qdrant setup
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Cache metrics [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)

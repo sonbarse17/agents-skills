@@ -112,7 +112,7 @@ ConfigurationClient configClient = new ConfigurationClientBuilder()
 | Configuration Setting | Key-value pair with optional label |
 | Label | Dimension for separating settings (e.g., environments) |
 | Feature Flag | Special setting for feature management |
-| Secret Reference | Setting pointing to Key Vault secret |
+| Secret Reference | Setting pointing to Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secret |
 | Snapshot | Point-in-time immutable view of settings |
 
 ## Configuration Setting Operations
@@ -311,7 +311,7 @@ import com.azure.data.appconfiguration.models.SecretReferenceConfigurationSettin
 
 SecretReferenceConfigurationSetting secretRef = new SecretReferenceConfigurationSetting(
     "app/secrets/api-key",
-    "https://myvault.vault.azure.net/secrets/api-key"
+    "https://myvault.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/secrets/api-key"
 );
 
 SecretReferenceConfigurationSetting created = (SecretReferenceConfigurationSetting)
@@ -468,7 +468,7 @@ try {
 1. **Use labels** — Separate configurations by environment (Dev, Staging, Production)
 2. **Use snapshots** — Create immutable snapshots for releases
 3. **Feature flags** — Use for gradual rollouts and A/B testing
-4. **Secret references** — Store sensitive values in Key Vault
+4. **Secret references** — Store sensitive values in Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 5. **Conditional requests** — Use ETags for optimistic concurrency
 6. **Read-only protection** — Lock critical production settings
 7. **Use Entra ID** — Preferred over connection strings
@@ -479,8 +479,8 @@ try {
 | Resource | URL |
 |----------|-----|
 | Maven Package | https://central.sonatype.com/artifact/com.azure/azure-data-appconfiguration |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/appconfiguration/azure-data-appconfiguration |
+| [GitHub](../../CI_CD/github/SKILL.md) | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/appconfiguration/azure-data-appconfiguration |
 | API Documentation | https://aka.ms/java-docs |
 | Product Docs | https://learn.microsoft.com/azure/azure-app-configuration |
-| Samples | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/appconfiguration/azure-data-appconfiguration/src/samples |
-| Troubleshooting | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/appconfiguration/azure-data-appconfiguration/TROUBLESHOOTING.md |
+| Samples | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/appconfiguration/azure-data-appconfiguration/src/samples |
+| Troubleshooting | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/appconfiguration/azure-data-appconfiguration/TROUBLESHOOTING.md |

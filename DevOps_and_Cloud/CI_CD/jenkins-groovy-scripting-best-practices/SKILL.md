@@ -16,19 +16,19 @@ metadata:
   maturity: stable
 ---
 
-# Jenkins Groovy Scripting Best Practices
+# [Jenkins](../jenkins/SKILL.md) Groovy Scripting Best Practices
 
 ## Purpose
 
-Jenkins Pipeline (both per-repo Jenkinsfiles and shared libraries) is
+[Jenkins](../jenkins/SKILL.md) Pipeline (both per-repo Jenkinsfiles and shared libraries) is
 written in Groovy, but it does not run like ordinary Groovy: it executes
 under the **Groovy sandbox** (a security boundary that blocks arbitrary
 Java/Groovy method calls unless explicitly approved) and under **CPS
 (Continuation-Passing Style)** transformation (so pipelines can pause/
-resume across Jenkins restarts), both of which produce failure modes that
+resume across [Jenkins](../jenkins/SKILL.md) restarts), both of which produce failure modes that
 look like bugs in your code but are actually artifacts of the execution
 model. This skill covers the sandbox/script-approval workflow, how to unit
-test shared library Groovy without a running Jenkins controller, and the
+test shared library Groovy without a running [Jenkins](../jenkins/SKILL.md) controller, and the
 specific Groovy/CPS pitfalls (closures capturing `this`, non-serializable
 state, `@NonCPS` usage) that recur in pipeline code.
 
@@ -38,9 +38,9 @@ state, `@NonCPS` usage) that recur in pipeline code.
   sandbox.RejectedAccessException: Scripts not permitted to use ...`.
 - Writing or reviewing Groovy code in a `Jenkinsfile`'s `script {}` block or
   in a shared library's `vars/`/`src/` files (see
-  [jenkins-declarative-pipeline-per-repo](../jenkins-declarative-pipeline-per-repo/SKILL.md)
+  [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md)
   and
-  [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md)
+  [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md)
   for where this code lives).
 - Setting up automated tests for shared library logic so changes are
   verified before a version tag is cut, rather than only discovered when a
@@ -52,19 +52,19 @@ state, `@NonCPS` usage) that recur in pipeline code.
 
 ## Prerequisites & environment
 
-- A Jenkins controller with the **Script Security** plugin (bundled with
-  modern Jenkins Pipeline installs) — this is what enforces the sandbox and
-  stores approved signatures under **Manage Jenkins → In-process Script
+- A [Jenkins](../jenkins/SKILL.md) controller with the **Script Security** plugin (bundled with
+  modern [Jenkins](../jenkins/SKILL.md) Pipeline installs) — this is what enforces the sandbox and
+  stores approved signatures under **Manage [Jenkins](../jenkins/SKILL.md) → In-process Script
   Approval**.
-- Administrator access to approve pending script signatures (only Jenkins
+- Administrator access to approve pending script signatures (only [Jenkins](../jenkins/SKILL.md)
   admins can approve; a pipeline author who hits a `RejectedAccessException`
   must request approval, not self-approve unless they hold that role).
 - For unit testing: a JVM project (Maven or Gradle) alongside the shared
   library repo, with the **JenkinsPipelineUnit** library
-  (`lesfurets:jenkins-pipeline-unit`) added as a test dependency, and a
+  (`lesfurets:[jenkins](../jenkins/SKILL.md)-pipeline-unit`) added as a test dependency, and a
   test framework (JUnit 5 or Spock) to drive it.
-- Groovy 2.x/3.x knowledge (whichever your Jenkins version bundles — check
-  **Manage Jenkins → System Information** for the exact Groovy version) —
+- Groovy 2.x/3.x knowledge (whichever your [Jenkins](../jenkins/SKILL.md) version bundles — check
+  **Manage [Jenkins](../jenkins/SKILL.md) → System Information** for the exact Groovy version) —
   syntax mostly matches plain Groovy but some newer Groovy language
   features may not be supported inside the CPS-transformed subset.
 
@@ -82,7 +82,7 @@ state, `@NonCPS` usage) that recur in pipeline code.
    This is not a bug in your Groovy — it's the sandbox doing its job.
 
 2. **Approve the specific signature, don't disable the sandbox.** As an
-   admin, go to **Manage Jenkins → In-process Script Approval**, review the
+   admin, go to **Manage [Jenkins](../jenkins/SKILL.md) → In-process Script Approval**, review the
    pending signature request, and approve only that specific method
    signature if it's legitimately needed and safe:
    ```
@@ -118,7 +118,7 @@ state, `@NonCPS` usage) that recur in pipeline code.
    methods run outside the CPS interpreter that pipeline steps depend on.
 
 5. **Implement `Serializable` on any `src/` class whose instances are held
-   across pipeline steps**, since Jenkins periodically serializes the
+   across pipeline steps**, since [Jenkins](../jenkins/SKILL.md) periodically serializes the
    pipeline's execution state to disk for durability across restarts:
    ```groovy
    class DeployTarget implements Serializable {
@@ -130,10 +130,10 @@ state, `@NonCPS` usage) that recur in pipeline code.
    `NotSerializableException` at the first checkpoint after it's used.
 
 6. **Unit test shared library code with JenkinsPipelineUnit** instead of
-   only validating by pushing to a real Jenkins and watching a build:
+   only validating by pushing to a real [Jenkins](../jenkins/SKILL.md) and watching a build:
    ```groovy
    // test/groovy/NodeServicePipelineTest.groovy
-   import com.lesfurets.jenkins.unit.BasePipelineTest
+   import com.lesfurets.[jenkins](../jenkins/SKILL.md).unit.BasePipelineTest
    import org.junit.Before
    import org.junit.Test
    import static org.junit.Assert.assertTrue
@@ -162,7 +162,7 @@ state, `@NonCPS` usage) that recur in pipeline code.
    Run via `./gradlew test` (or Maven equivalent) in CI for the shared
    library repo itself — this is what makes the library's own CI (see step
    6 of
-   [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md))
+   [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md))
    meaningful rather than just a syntax check.
 
 7. **Avoid closures that implicitly capture non-serializable pipeline
@@ -202,7 +202,7 @@ state, `@NonCPS` usage) that recur in pipeline code.
   `RejectedAccessException: Scripts not permitted to use staticMethod
   java.util.UUID randomUUID` (or similar) appears the first time a new
   helper method runs, even though the same Groovy runs fine in a plain
-  `groovy` script outside Jenkins.
+  `groovy` script outside [Jenkins](../jenkins/SKILL.md).
   **Fix:** This is expected — the sandbox allowlist is independent of
   whether the code is "valid Groovy." Request/approve the specific
   signature in **In-process Script Approval**, or replace the call with an
@@ -219,12 +219,12 @@ state, `@NonCPS` usage) that recur in pipeline code.
   long-running pipeline, often after several stages have already
   succeeded.
   **Fix:** A class instance held in a pipeline-scoped variable across
-  steps must implement `Serializable`; audit `src/` classes referenced
+  steps must implement `Serializable`; [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) `src/` classes referenced
   from `vars/*.groovy` and add `implements Serializable`, or mark
   genuinely non-serializable fields (e.g. a network client) `transient`
   and re-initialize them lazily.
 
-- **Symptom:** After a Jenkins controller restart, a step appears to
+- **Symptom:** After a [Jenkins](../jenkins/SKILL.md) controller restart, a step appears to
   re-run from an earlier point, producing duplicate side effects (e.g. a
   notification sent twice).
   **Fix:** This is CPS checkpoint/resume behavior interacting with
@@ -238,14 +238,14 @@ state, `@NonCPS` usage) that recur in pipeline code.
   ships that way to production.
   **Fix:** This should be flagged as a security regression, not a
   convenience — running unsandboxed means the pipeline's Groovy has full
-  access to the Jenkins controller's JVM (including credentials store
+  access to the [Jenkins](../jenkins/SKILL.md) controller's JVM (including credentials store
   internals); revert to sandboxed execution and go through proper script
   approval for the specific signatures actually needed.
 
 ## Worked example
 
 **Scenario:** A shared library's `vars/nodeServicePipeline.groovy` (from
-[jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md))
+[jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md))
 needs a helper to parse a semantic version tag and decide whether a build
 is a pre-release, plus a unit test proving the parsing logic works before
 it's used by 30 consumer repos.
@@ -283,7 +283,7 @@ script {
 ```
 
 `test/groovy/VersionUtilTest.groovy` (run in the library's own CI, no
-Jenkins controller required):
+[Jenkins](../jenkins/SKILL.md) controller required):
 ```groovy
 import org.example.pipeline.VersionUtil
 import org.junit.Test
@@ -313,12 +313,12 @@ class VersionUtilTest {
 }
 ```
 Because `VersionUtil.parse` is `@NonCPS` and does no pipeline I/O, it can
-be unit tested as ordinary Groovy/JUnit with no Jenkins controller —
+be unit tested as ordinary Groovy/JUnit with no [Jenkins](../jenkins/SKILL.md) controller —
 regressions in the tag-parsing regex are caught in the library's own CI
 before any of the 30 consumer repos' pipelines run it.
 
 ## Cross-references
 
-- [jenkins-declarative-pipeline-per-repo](../jenkins-declarative-pipeline-per-repo/SKILL.md) — where `script {}` blocks containing this Groovy typically live for a single repo.
-- [jenkins-centralized-shared-library](../jenkins-centralized-shared-library/SKILL.md) — the `vars/`/`src/` structure this Groovy code is organized into at org scale.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — general pipeline security-gate design, complementary to the script-sandbox security boundary covered here.
+- [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — where `script {}` blocks containing this Groovy typically live for a single repo.
+- [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — the `vars/`/`src/` structure this Groovy code is organized into at org scale.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — general pipeline security-gate design, complementary to the script-sandbox security boundary covered here.

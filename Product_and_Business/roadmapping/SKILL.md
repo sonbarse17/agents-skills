@@ -51,11 +51,11 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   └── 99.99% uptime            │   └── API catalog              │   └── Recommendations
 ├── Developer Experience         ├── Mobile SDK Suite             ├── Global Expansion
 │   ├── Self-service portal      │   ├── iOS SDK v2               │   ├── EU region
-│   ├── SDKs for TS/Python/Go    │   ├── Android SDK v2           │   ├── APAC region
+│   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/android/SKILL.md) SDK v2           │   ├── APAC region
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
-    ├── SSO/SAML                     ├── Custom dashboards            ├── Partner marketplace
-    ├── Audit logs                   ├── Export pipelines             ├── Developer community
+    ├── SSO/SAML                     ├── Custom [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)            ├── Partner marketplace
+    ├── [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs                   ├── Export pipelines             ├── Developer community
     └── RBAC                         └── SLA reporting                └── Revenue sharing
 ```
 
@@ -109,17 +109,17 @@ Validates riskiest assumptions first:
 
 ```
 Phase 1 (Weeks 1-6): RISKIEST ASSUMPTION
-  → "Developers will adopt our API if it has TypeScript SDK"
-  → Build: Minimal TypeScript SDK + 5 reference integrations
+  → "Developers will adopt our API if it has [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK"
+  → Build: Minimal [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK + 5 reference integrations
   → Validate: 10 developer interviews, adoption analytics
 
 Phase 2 (Weeks 7-12): NEXT RISKIEST
   → "Enterprises will pay for SLA-backed API access"
-  → Build: Enterprise tier with uptime monitoring
+  → Build: Enterprise tier with uptime [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   → Validate: 5 enterprise pilot customers
 
 Phase 3 (Weeks 13-18): SCALE
-  → Build: Self-service portal, Python/Go SDKs
+  → Build: Self-service portal, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs
   → Validate: Organic signup funnel metrics
 ```
 
@@ -138,7 +138,7 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 ```
 
 ```yaml
-initiative: API TypeScript SDK
+initiative: API [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK
   reach: 5000 developers/month
   impact: 2x (high — reduces integration time)
   confidence: 80% (validated by developer interviews)
@@ -219,7 +219,7 @@ Key Results:
 Initiatives → KR Mapping:
   - Self-service developer portal    → KR1, KR2
   - Interactive API documentation    → KR3
-  - TypeScript/Python/Go SDKs        → KR1, KR4
+  - [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs        → KR1, KR4
   - Automated onboarding email flow  → KR1
   - Developer community forum        → KR2
 ```
@@ -257,7 +257,7 @@ Engineering OKR (Individual):
 ```
 
 ### OKR Health Check
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class OKRHealthCheck:
     def check_progress(self, okrs: list[dict]) -> list[dict]:
         """Check OKR health and flag at-risk items."""
@@ -356,8 +356,8 @@ Current trade-off:
   ✅ Launch multi-region active-active (P0 — SLO requirement)
   ✅ Reduce P99 latency from 500ms to 100ms (KR target)
   ❌ Delay developer portal v2 (moved to Q3)
-  ❌ Defer Python SDK improvements (moved to Q3)
-  ⚠️ Team capacity fully allocated — no new work without descoping
+  ❌ Defer [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK improvements (moved to Q3)
+  ⚠️ Team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) fully allocated — no new work without descoping
 ```
 
 ## Timeline Planning
@@ -429,7 +429,7 @@ risk_register:
 ```
 
 ### Roadmap Data Model
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from dataclasses import dataclass
 from datetime import date
 from enum import Enum
@@ -587,8 +587,8 @@ risk_communication:
   format: "If → Then"
   examples:
     - "If we invest in multi-region, then we must delay the mobile SDK by one quarter."
-    - "If the security audit reveals critical findings, then we will reprioritize Q3 scope."
-    - "If the TypeScript SDK pilot shows strong adoption, then we will accelerate Python and Go SDKs."
+    - "If the security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reveals critical findings, then we will reprioritize Q3 scope."
+    - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Go SDKs."
 
   when_to_communicate:
     - After each quarterly planning cycle
@@ -669,7 +669,7 @@ roadmap_health:
 ## Advanced OKR Linkage Patterns
 
 ### Weighted KR Contribution Model
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def compute_kr_contribution(initiatives: list[dict]) -> dict:
     """Shows how each initiative contributes to each KR."""
     kr_contributions = {}

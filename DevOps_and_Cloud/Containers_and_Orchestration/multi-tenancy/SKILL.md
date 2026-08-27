@@ -6,9 +6,9 @@ license: MIT
 
 # Multi-Tenancy
 
-A namespace is an organizational boundary in the Kubernetes API, not a security or resource
+A namespace is an organizational boundary in the [Kubernetes](../kubernetes/SKILL.md) API, not a security or resource
 boundary by itself. Left alone, tenants in different namespaces on the same cluster can still see
-each other's Services via DNS, exhaust shared node capacity, and — depending on RBAC — read each
+each other's Services via DNS, exhaust shared node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and — depending on RBAC — read each
 other's resources entirely. Multi-tenancy is the work of turning that organizational boundary into
 an actual isolation boundary, one control at a time.
 
@@ -30,16 +30,16 @@ and shared control plane are themselves an attack surface between untrusted tena
   /Kata sandboxing) at minimum, and often separate clusters — the blast radius of a container
   escape or control-plane compromise has to stop at the tenant boundary.
 - **This decision drives cost directly** — hard tenancy's dedicated infrastructure is real spend;
-  see `cost-optimization` for that tradeoff once the isolation requirement is fixed.
+  see `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for that tradeoff once the isolation requirement is fixed.
 
 **Done when:** the tenancy model is written down as a decision (soft or hard) with the trust
 assumption that justifies it, not left implicit.
 
 ## 2. Give every tenant a ResourceQuota before their first workload
 
-Without a ResourceQuota, one tenant's runaway Deployment can consume all schedulable capacity on
-shared nodes, starving every other tenant — this is the single most common multi-tenancy incident
-and it's entirely preventable with a quota set at namespace creation, not after the first incident.
+Without a ResourceQuota, one tenant's runaway Deployment can consume all schedulable [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) on
+shared nodes, starving every other tenant — this is the single most common multi-tenancy [incident](../../Observability_and_SecOps/incident/SKILL.md)
+and it's entirely preventable with a quota set at namespace creation, not after the first [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ```yaml
 apiVersion: v1
@@ -66,11 +66,11 @@ first workload is deployed into it.
 
 ## 3. Isolate tenants at the network layer explicitly
 
-Kubernetes' flat pod network means, absent NetworkPolicy, every tenant can reach every other
+[Kubernetes](../kubernetes/SKILL.md)' flat pod network means, absent NetworkPolicy, every tenant can reach every other
 tenant's pods by IP or Service DNS regardless of namespace boundaries. This is the same
-default-deny pattern covered in `kubernetes-networking`, applied specifically per-tenant: each
+default-deny pattern covered in `[kubernetes-networking](../[kubernetes](../kubernetes/SKILL.md)-networking/SKILL.md)`, applied specifically per-tenant: each
 tenant namespace gets a default-deny policy plus explicit allows only for its own traffic and
-whatever shared platform services (ingress controller, DNS, observability agents) it legitimately
+whatever shared platform services (ingress controller, DNS, [observability](../../Observability_and_SecOps/observability/SKILL.md) agents) it legitimately
 needs.
 
 - **Default-deny cross-namespace by default**, then allow only named exceptions — never the
@@ -89,7 +89,7 @@ instances themselves — aren't namespace-bound and need a separate answer, usua
 owning them exclusively and tenants only referencing them, not modifying them.
 
 - **No tenant gets `ClusterRole` bindings** unless the resource genuinely requires cluster scope and
-  the tenant is trusted for it — this repeats the least-privilege rule from `kubernetes-security`
+  the tenant is trusted for it — this repeats the least-privilege rule from `[kubernetes-security](../[kubernetes](../kubernetes/SKILL.md)-security/SKILL.md)`
   but is worth re-checking specifically at tenant onboarding time, since it's the easiest guardrail
   to skip under time pressure.
 - **Admission policy (OPA/Kyverno) can enforce naming/labeling conventions per tenant** so quota and
@@ -104,8 +104,8 @@ throughput, DNS query volume — aren't covered by ResourceQuota at all, and one
 misbehaving controller or CRD watch loop can degrade the API server for everyone on the cluster.
 
 - **API Priority and Fairness (APF)** lets you isolate tenant request flows so one tenant's
-  API-hammering client doesn't starve others' `kubectl` responsiveness.
-- **Watch for a tenant's controller/operator** (see `operators-and-crds`) doing excessive reconciles
+  API-hammering client doesn't starve others' `[kubectl](../kubectl/SKILL.md)` responsiveness.
+- **Watch for a tenant's controller/operator** (see `[operators-and-crds](../operators-and-crds/SKILL.md)`) doing excessive reconciles
   — this is a common, easy-to-miss source of control-plane load in shared clusters.
 
 **Done when:** you've confirmed no single tenant's workload can degrade API server responsiveness

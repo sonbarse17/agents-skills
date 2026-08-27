@@ -9,13 +9,13 @@ description: "Use when deploying an existing web application or API to an alread
 
 # Deploy to AKS
 
-**Use when:** deploying a web app/API to AKS; containerizing for Kubernetes; generating manifests; AKS CI/CD; DS001–DS013 failures.
+**Use when:** deploying a web app/API to AKS; containerizing for [Kubernetes](../../../../../Containers_and_Orchestration/kubernetes/SKILL.md); generating manifests; AKS CI/CD; DS001–DS013 failures.
 
-**Not for:** provisioning clusters (`azure-kubernetes`), AKS Automatic readiness (`azure-kubernetes-automatic-readiness`), non-AKS targets.
+**Not for:** provisioning clusters (`[azure-kubernetes](../SKILL.md)`), AKS Automatic readiness (`[azure-[kubernetes](../../../../../Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../[azure-[kubernetes](../../../../../Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../../../../../Containers_and_Orchestration/[azure-kubernetes](../SKILL.md)/[azure-[kubernetes](../../../../../Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../../../../../Containers_and_Orchestration/[azure-kubernetes](../SKILL.md)-automatic-readiness/SKILL.md)/SKILL.md)/SKILL.md)`), non-AKS targets.
 
 ## Workflow
 
-Requires: existing AKS cluster, `az login`, `kubectl` configured. Follow `phases/quick-deploy.md`. On failure: `../../../../../../Global_References/rollback.md`.
+Requires: existing AKS cluster, `az login`, `[kubectl](../../../../../Containers_and_Orchestration/kubectl/SKILL.md)` configured. Follow `phases/quick-deploy.md`. On failure: `../../../../../../Global_References/rollback.md`.
 
 ## References
 
@@ -31,5 +31,5 @@ Load `knowledge-packs/frameworks/<framework>.md` per detected framework. Availab
 
 ## Templates
 
-`templates/` (dockerfiles/, k8s/, github-actions/, mermaid/).
+`templates/` (dockerfiles/, k8s/, [github-actions](../../../../../CI_CD/[github](../../../../../CI_CD/github/SKILL.md)-actions/SKILL.md)/, [mermaid](../../../../../../Product_and_Business/mermaid/SKILL.md)/).
 

@@ -53,9 +53,9 @@ Comprehensive guide to designing event stores for event-sourced applications.
 | Technology       | Best For                  | Limitations                      |
 | ---------------- | ------------------------- | -------------------------------- |
 | **EventStoreDB** | Pure event sourcing       | Single-purpose                   |
-| **PostgreSQL**   | Existing Postgres stack   | Manual implementation            |
+| **[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)**   | Existing Postgres stack   | Manual implementation            |
 | **Kafka**        | High-throughput streaming | Not ideal for per-stream queries |
-| **DynamoDB**     | Serverless, AWS-native    | Query limitations                |
+| **DynamoDB**     | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), AWS-native    | Query limitations                |
 | **Marten**       | .NET ecosystems           | .NET specific                    |
 
 ## Templates and detailed worked examples

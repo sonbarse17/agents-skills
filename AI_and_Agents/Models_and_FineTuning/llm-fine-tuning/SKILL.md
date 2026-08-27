@@ -24,7 +24,7 @@ Use this skill when:
 
 - NVIDIA GPU(s) with 24GB+ VRAM (RTX 4090 / A100 / H100)
 - CUDA 12.1+ and `nvidia-smi` working
-- Python 3.10+ with `pip`
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `pip`
 - Hugging Face account and `HF_TOKEN` for gated models
 - 500GB+ disk for model weights and training data
 
@@ -33,7 +33,7 @@ Use this skill when:
 ```bash
 pip install transformers datasets trl peft bitsandbytes accelerate
 
-python - <<'EOF'
+[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) - <<'EOF'
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model
@@ -182,7 +182,7 @@ deepspeed --num_gpus=4 train.py \
 
 ## DPO / RLHF Alignment
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from trl import DPOTrainer, DPOConfig
 from datasets import load_dataset
 
@@ -210,7 +210,7 @@ trainer.train()
 
 ## Merging LoRA Adapters for Deployment
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from peft import PeftModel
 from transformers import AutoModelForCausalLM
 
@@ -233,7 +233,7 @@ tokenizer.save_pretrained("./merged-model")
 merged_model.push_to_hub("your-org/your-fine-tuned-model")
 ```
 
-## Kubernetes Training Job
+## [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Training Job
 
 ```yaml
 apiVersion: batch/v1
@@ -306,7 +306,7 @@ spec:
 
 ## Related Skills
 
-- [vllm-server](../vllm-server/) - Serve fine-tuned models
-- [gpu-server-management](../../servers/gpu-server-management/) - GPU setup
-- [llm-inference-scaling](../llm-inference-scaling/) - Deploy at scale
-- [ai-pipeline-orchestration](../../../devops/ai/ai-pipeline-orchestration/) - Training pipelines
+- [vllm-server](../[vllm-server](../vllm-server/SKILL.md)/) - Serve fine-tuned models
+- [gpu-server-management](../../servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU setup
+- [llm-inference-scaling](../[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - Deploy at scale
+- [ai-pipeline-orchestration](../../../devops/ai/[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Training pipelines

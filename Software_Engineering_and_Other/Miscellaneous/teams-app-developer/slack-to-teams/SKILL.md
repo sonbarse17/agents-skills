@@ -71,7 +71,7 @@ Follow the advisor's or domain router's output. Implement feature by feature:
 
 Run these four sub-analyses **in parallel**:
 
-**Detect language** — Scan for `package.json`+`tsconfig.json` (TypeScript), `pom.xml`/`build.gradle` (Java), `*.csproj`/`*.sln` (C#), `go.mod` (Go), `requirements.txt`/`pyproject.toml` (Python), `Gemfile` (Ruby), `Cargo.toml` (Rust).
+**Detect language** — Scan for `package.json`+`tsconfig.json` ([TypeScript](../../../Frontend/typescript/SKILL.md)), `pom.xml`/`build.gradle` (Java), `*.csproj`/`*.sln` (C#), `go.mod` (Go), `requirements.txt`/`pyproject.toml` ([Python](../../../Languages/python/SKILL.md)), `Gemfile` (Ruby), `Cargo.toml` (Rust).
 
 **Detect current platform** — Scan dependencies for SDK indicators:
 - Slack: `@slack/bolt`, `@slack/web-api`, `slack_bolt`, `app.message`, `app.command`, `ack()`
@@ -79,7 +79,7 @@ Run these four sub-analyses **in parallel**:
 
 **Detect features** — Scan for slash commands, Block Kit/Adaptive Cards, action handlers, OAuth, file upload/download, scheduling, threading, AI/LLM calls, proactive messages.
 
-**Detect architecture** — Scan for web framework (Express, Fastify, etc.), hosting target (Azure, AWS, Docker), cloud provider, architecture pattern (single bot, dual-bot, monolith).
+**Detect architecture** — Scan for web framework (Express, Fastify, etc.), hosting target (Azure, AWS, [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)), cloud provider, architecture pattern (single bot, dual-bot, monolith).
 
 #### 2b: Language gate
 
@@ -87,8 +87,8 @@ Classify the detected language into SDK tiers:
 
 | Tier | Languages | Guidance |
 |---|---|---|
-| **1: Full SDK** | TypeScript / JavaScript | Full expert system available |
-| **2: Adapt** | Python | Both SDKs exist — adapt TS patterns. Load [bolt-python](../experts/slack/bolt-python.md), [teams-python](../experts/teams/teams-python.md), [python-cross-platform](../experts/bridge/python-cross-platform.md) |
+| **1: Full SDK** | [TypeScript](../../../Frontend/typescript/SKILL.md) / JavaScript | Full expert system available |
+| **2: Adapt** | [Python](../../../Languages/python/SKILL.md) | Both SDKs exist — adapt TS patterns. Load [bolt-python](../experts/slack/bolt-[python](../../../Languages/python/SKILL.md).md), [teams-python](../experts/teams/teams-[python](../../../Languages/python/SKILL.md).md), [python-cross-platform](../experts/bridge/[python](../../../Languages/python/SKILL.md)-cross-platform.md) |
 | **3: Split SDK** | Java, C# | One platform has SDK, other needs REST. Load [bolt-java](../experts/slack/bolt-java.md) or [teams-dotnet](../experts/teams/teams-dotnet.md) + [rest-only](../experts/bridge/rest-only-integration-ts.md) |
 | **4: No SDK** | Go, Ruby, Rust | REST-only for both. Load [rest-only](../experts/bridge/rest-only-integration-ts.md) |
 
@@ -149,7 +149,7 @@ If the expert system fails to cover a topic:
 | Bridge | [experts/bridge/index.md](../experts/bridge/index.md) | 27 cross-platform conversion experts (the core differentiator) |
 | Deploy | [experts/deploy/index.md](../experts/deploy/index.md) | Azure & AWS deployment walkthroughs |
 | Models | [experts/models/index.md](../experts/models/index.md) | AI model providers (OpenAI, Anthropic, Bedrock, etc.) |
-| Convert | [experts/convert/index.md](../experts/convert/index.md) | Language conversion to TypeScript |
+| Convert | [experts/convert/index.md](../experts/convert/index.md) | Language conversion to [TypeScript](../../../Frontend/typescript/SKILL.md) |
 | Security | [experts/security/index.md](../experts/security/index.md) | Input validation, secrets management |
 
 ## Platform Comparison Docs

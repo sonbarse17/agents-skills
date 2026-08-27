@@ -41,7 +41,7 @@ Atomic/granular updates → Jotai
 
 ### Zustand (Simplest)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // store/useStore.ts
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
@@ -92,7 +92,7 @@ Detailed pattern documentation lives in `../../../Global_References/react-state-
 - **Colocate state** - Keep state as close to where it's used as possible
 - **Use selectors** - Prevent unnecessary re-renders with selective subscriptions
 - **Normalize data** - Flatten nested structures for easier updates
-- **Type everything** - Full TypeScript coverage prevents runtime errors
+- **Type everything** - Full [TypeScript](../typescript/SKILL.md) coverage prevents runtime errors
 - **Separate concerns** - Server state (React Query) vs client state (Zustand)
 
 ### Don'ts
@@ -107,7 +107,7 @@ Detailed pattern documentation lives in `../../../Global_References/react-state-
 
 ### From Legacy Redux to RTK
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Before (legacy Redux)
 const ADD_TODO = "ADD_TODO";
 const addTodo = (text) => ({ type: ADD_TODO, payload: text });

@@ -131,7 +131,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ## Workflow
 
 ### Step 1: Metric Selection
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.metrics import (
     accuracy_score, balanced_accuracy_score,
     precision_score, recall_score, f1_score,
@@ -161,7 +161,7 @@ def select_metrics(y_true, y_pred, y_prob, task_type, imbalance_ratio=None):
 ```
 
 ### Step 2: Cross-Validation Strategy
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import (
     KFold, StratifiedKFold, GroupKFold,
     TimeSeriesSplit, RepeatedKFold, cross_validate,
@@ -181,7 +181,7 @@ def get_cv_strategy(data_type, n_splits=5, n_repeats=3):
 ```
 
 ### Step 3: Bias-Variance Diagnosis
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def diagnose_bias_variance(train_scores, val_scores, metric_name="accuracy"):
     train_mean = np.mean(train_scores)
     val_mean = np.mean(val_scores)
@@ -190,7 +190,7 @@ def diagnose_bias_variance(train_scores, val_scores, metric_name="accuracy"):
     if train_mean < 0.7 and val_mean < 0.7:
         diagnosis = "High Bias (Underfitting)"
         recommendations = [
-            "Increase model capacity (more layers/trees)",
+            "Increase model [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (more layers/trees)",
             "Add more or better features",
             "Reduce regularization (lower C, lower lambda)",
             "Try a different algorithm",
@@ -211,7 +211,7 @@ def diagnose_bias_variance(train_scores, val_scores, metric_name="accuracy"):
 ```
 
 ### Step 4: Confidence Intervals
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def bootstrap_ci(scores, n_bootstrap=10000, ci=0.95):
     """Bootstrap confidence interval for metric."""
     bootstrapped = np.random.choice(scores, (n_bootstrap, len(scores)), replace=True)
@@ -222,7 +222,7 @@ def bootstrap_ci(scores, n_bootstrap=10000, ci=0.95):
 ```
 
 ### Step 5: Statistical Significance
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from scipy import stats
 
 def compare_models(scores_a, scores_b, paired=True):
@@ -256,7 +256,7 @@ def mcnemar_test(y_true, pred_a, pred_b):
 ```
 
 ### Step 6: Learning Curves
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import learning_curve
 
 def plot_learning_curve(model, X, y, cv, train_sizes):
@@ -292,7 +292,7 @@ def plot_learning_curve(model, X, y, cv, train_sizes):
 ## Production Considerations
 
 ### Threshold Tuning
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def find_optimal_threshold(y_val, y_prob, metric="f1"):
     precision, recall, thresholds = precision_recall_curve(y_val, y_prob)
     if metric == "f1":
@@ -301,7 +301,7 @@ def find_optimal_threshold(y_val, y_prob, metric="f1"):
         return thresholds[best_idx]
 ```
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Track primary metric over time, alert on >5% degradation.
 - Monitor data drift (PSI, KS test, population stability index).
 - Track prediction distribution shift.
@@ -363,7 +363,7 @@ def find_optimal_threshold(y_val, y_prob, metric="f1"):
 | Stratified Group K-Fold | Grouped + imbalanced | Medical, user-level classification | Rare combinations hard to find |
 
 ### CV Implementation — Time Series Split
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import TimeSeriesSplit
 
 def evaluate_timeseries(X, y, model_fn, n_splits=5):
@@ -385,7 +385,7 @@ def evaluate_timeseries(X, y, model_fn, n_splits=5):
 ## Statistical Significance for Model Comparison
 
 ### McNemar's Test (paired, classification)
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from scipy.stats import chi2
 
 def mcnemar_test(y_true, y_model_a, y_model_b):
@@ -402,7 +402,7 @@ def mcnemar_test(y_true, y_model_a, y_model_b):
 ```
 
 ### Paired Bootstrap (any metric)
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def paired_bootstrap_test(y_true, pred_a, pred_b, metric_fn,
                           n_bootstrap=10000, alpha=0.05):
     """Test if model A is significantly different from model B."""
@@ -428,7 +428,7 @@ def paired_bootstrap_test(y_true, pred_a, pred_b, metric_fn,
 
 ## Learning Curve Template
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 
@@ -490,7 +490,7 @@ def plot_learning_curve(model, X, y, train_sizes=np.linspace(0.1, 1.0, 10)):
   - ../../../Global_References/model-evaluation-fundamentals.md — Model Evaluation Fundamentals
   - ../../../Global_References/ranking-metrics.md — Ranking & Recommendation Evaluation
 ## Handoff
-Hand off to ml-experiment-tracking for logging evaluation results. Hand off to ml-hyperparameter-tuning if optimization needed.
+Hand off to ml-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md) for logging evaluation results. Hand off to [ml-hyperparameter-tuning](../hyperparameter-tuning/SKILL.md) if optimization needed.
 
 ## Architecture Decision Trees
 
@@ -512,7 +512,7 @@ Hand off to ml-experiment-tracking for logging evaluation results. Hand off to m
 ## Implementation Patterns
 
 ### Cross-Validation with Metrics
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import StratifiedKFold, cross_validate
 from sklearn.metrics import (
     make_scorer, accuracy_score, precision_score,
@@ -544,7 +544,7 @@ for metric in scoring:
 `
 
 ### Model Comparison Report
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import matplotlib.pyplot as plt
 from sklearn.metrics import RocCurveDisplay, PrecisionRecallDisplay
 
@@ -569,7 +569,7 @@ plt.savefig('model_comparison.png')
 - **GPU-accelerated metrics**: Use CuPy/RAPIDS for large-scale metric computation. Speed up bootstrapped confidence intervals.
 
 ### Bootstrap Confidence Intervals
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.utils import resample
 
 def bootstrap_ci(y_true, y_pred, metric_fn, n_iterations=1000, ci=0.95):

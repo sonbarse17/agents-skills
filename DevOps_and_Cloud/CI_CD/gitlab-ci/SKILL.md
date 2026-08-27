@@ -24,7 +24,7 @@ Use this skill when:
 
 - GitLab repository (gitlab.com or self-hosted)
 - Basic understanding of YAML
-- For self-hosted runners: Linux server or Kubernetes cluster
+- For self-hosted runners: Linux server or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster
 
 ## Pipeline Configuration
 
@@ -166,20 +166,20 @@ stop_staging:
   when: manual
 ```
 
-## Docker Builds
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Builds
 
 ```yaml
 build_image:
   stage: build
-  image: docker:24
+  image: [docker](../../Containers_and_Orchestration/docker/SKILL.md):24
   services:
-    - docker:24-dind
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md):24-dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 ```
 
 ## GitLab Runners
@@ -195,8 +195,8 @@ sudo apt install gitlab-runner
 sudo gitlab-runner register \
   --url https://gitlab.com/ \
   --registration-token TOKEN \
-  --executor docker \
-  --docker-image alpine:latest
+  --executor [docker](../../Containers_and_Orchestration/docker/SKILL.md) \
+  --[docker](../../Containers_and_Orchestration/docker/SKILL.md)-image alpine:latest
 ```
 
 ### Runner Configuration
@@ -204,14 +204,14 @@ sudo gitlab-runner register \
 ```toml
 # /etc/gitlab-runner/config.toml
 [[runners]]
-  name = "docker-runner"
+  name = "[docker](../../Containers_and_Orchestration/docker/SKILL.md)-runner"
   url = "https://gitlab.com/"
   token = "TOKEN"
-  executor = "docker"
+  executor = "[docker](../../Containers_and_Orchestration/docker/SKILL.md)"
   [runners.docker]
     image = "alpine:latest"
     privileged = true
-    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
+    volumes = ["/cache", "/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock"]
 ```
 
 ### Runner Tags
@@ -219,7 +219,7 @@ sudo gitlab-runner register \
 ```yaml
 build:
   tags:
-    - docker
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md)
     - linux
   script:
     - make build
@@ -291,9 +291,9 @@ trigger_downstream:
 **Problem**: Jobs stay pending
 **Solution**: Check runner availability and tags matching
 
-### Issue: Docker-in-Docker Fails
-**Problem**: Cannot connect to Docker daemon
-**Solution**: Use `docker:dind` service with proper TLS configuration
+### Issue: [Docker](../../Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../Containers_and_Orchestration/docker/SKILL.md) Fails
+**Problem**: Cannot connect to [Docker](../../Containers_and_Orchestration/docker/SKILL.md) daemon
+**Solution**: Use `[docker](../../Containers_and_Orchestration/docker/SKILL.md):dind` service with proper TLS configuration
 
 ### Issue: Cache Not Working
 **Problem**: Cache misses between jobs
@@ -310,6 +310,6 @@ trigger_downstream:
 
 ## Related Skills
 
-- [github-actions](../github-actions/) - GitHub CI/CD alternative
-- [argocd-gitops](../../orchestration/argocd-gitops/) - GitOps deployments
-- [container-registries](../../containers/container-registries/) - Registry management
+- [github-actions](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../github/SKILL.md) CI/CD alternative
+- [argocd-gitops](../../orchestration/[argocd-gitops](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) deployments
+- [container-registries](../../containers/[container-registries](../../Cloud_Providers/container-registries/SKILL.md)/) - Registry management

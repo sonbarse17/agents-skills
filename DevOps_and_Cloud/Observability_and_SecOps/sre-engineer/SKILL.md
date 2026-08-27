@@ -20,7 +20,7 @@ metadata:
 1. **Assess reliability** - Review architecture, SLOs, incidents, toil levels
 2. **Define SLOs** - Identify meaningful SLIs and set appropriate targets
 3. **Verify alignment** - Confirm SLO targets reflect user expectations before proceeding
-4. **Implement monitoring** - Build golden signal dashboards and alerting
+4. **Implement [monitoring](../monitoring/SKILL.md)** - Build golden signal [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and [alerting](../alerting/SKILL.md)
 5. **Automate toil** - Identify repetitive tasks and build automation
 6. **Test resilience** - Design and execute chaos experiments; verify recovery meets RTO/RPO targets before marking the experiment complete; validate recovery behavior end-to-end
 
@@ -32,9 +32,9 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | SLO/SLI | `../../../Global_References/slo-sli-management.md` | Defining SLOs, calculating error budgets |
 | Error Budgets | `../../../Global_References/error-budget-policy.md` | Managing budgets, burn rates, policies |
-| Monitoring | `../../../Global_References/monitoring-alerting.md` | Golden signals, alert design, dashboards |
+| [Monitoring](../monitoring/SKILL.md) | `../../../Global_References/[monitoring](../monitoring/SKILL.md)-[alerting](../alerting/SKILL.md).md` | Golden signals, alert design, [dashboards](../../Cloud_Providers/dashboards/SKILL.md) |
 | Automation | `../../../Global_References/automation-toil.md` | Toil reduction, automation patterns |
-| Incidents | `../../../Global_References/incident-chaos.md` | Incident response, chaos engineering |
+| Incidents | `../../../Global_References/[incident](../incident/SKILL.md)-chaos.md` | [Incident](../incident/SKILL.md) response, chaos engineering |
 
 ## Constraints
 
@@ -50,11 +50,11 @@ Load detailed guidance based on context:
 
 ### MUST NOT DO
 - Set SLOs without user impact justification
-- Alert on symptoms without actionable runbooks
+- Alert on symptoms without actionable [runbooks](../runbooks/SKILL.md)
 - Tolerate >50% toil without automation plan
 - Skip postmortems or assign blame
 - Implement manual processes for recurring tasks
-- Deploy without capacity planning
+- Deploy without [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 - Ignore error budget exhaustion
 - Build systems that can't degrade gracefully
 
@@ -62,9 +62,9 @@ Load detailed guidance based on context:
 
 When implementing SRE practices, provide:
 1. SLO definitions with SLI measurements and targets
-2. Monitoring/alerting configuration (Prometheus, etc.)
-3. Automation scripts (Python, Go, Terraform)
-4. Runbooks with clear remediation steps
+2. [Monitoring](../monitoring/SKILL.md)/[alerting](../alerting/SKILL.md) configuration (Prometheus, etc.)
+3. Automation scripts ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, Terraform)
+4. [Runbooks](../runbooks/SKILL.md) with clear remediation steps
 5. Brief explanation of reliability impact
 
 ## Concrete Examples
@@ -81,7 +81,7 @@ When implementing SRE practices, provide:
 # → Trigger error budget policy: freeze non-critical releases
 ```
 
-### Prometheus SLO Alerting Rule (Multiwindow Burn Rate)
+### Prometheus SLO [Alerting](../alerting/SKILL.md) Rule (Multiwindow Burn Rate)
 
 ```yaml
 groups:
@@ -106,7 +106,7 @@ groups:
           severity: critical
         annotations:
           summary: "High error budget burn rate detected"
-          runbook: "https://wiki.internal/runbooks/high-error-burn"
+          [runbook](../runbook/SKILL.md): "https://wiki.internal/[runbooks](../runbooks/SKILL.md)/high-error-burn"
 
       # Slow burn: 5% budget in 6h (1x burn rate sustained)
       - alert: SlowErrorBudgetBurn
@@ -121,7 +121,7 @@ groups:
           severity: warning
         annotations:
           summary: "Sustained error budget consumption"
-          runbook: "https://wiki.internal/runbooks/slow-error-burn"
+          [runbook](../runbook/SKILL.md): "https://wiki.internal/[runbooks](../runbooks/SKILL.md)/slow-error-burn"
 ```
 
 ### PromQL Golden Signal Queries
@@ -144,9 +144,9 @@ sum(rate(container_cpu_cfs_throttled_seconds_total[5m])) by (pod)
 sum(rate(container_cpu_cfs_periods_total[5m])) by (pod)
 ```
 
-### Toil Automation Script (Python)
+### Toil Automation Script ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 """Auto-remediation: restart pods exceeding error threshold."""
 import subprocess, sys, json
@@ -165,7 +165,7 @@ def get_error_rate(service: str) -> float:
 
 def restart_deployment(namespace: str, deployment: str) -> None:
     subprocess.run(
-        ["kubectl", "rollout", "restart", f"deployment/{deployment}", "-n", namespace],
+        ["[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)", "rollout", "restart", f"deployment/{deployment}", "-n", namespace],
         check=True
     )
     print(f"Restarted {namespace}/{deployment}")
@@ -180,5 +180,5 @@ if __name__ == "__main__":
         print("Within SLO threshold — no action required")
 ```
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/devops/sre-engineer/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/devops/sre-engineer/)
 

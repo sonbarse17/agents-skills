@@ -21,7 +21,7 @@ metadata:
 ## Purpose
 
 As an organization grows past a handful of services, "which team owns
-this repo," "what's the on-call runbook for this API," and "what's the
+this repo," "what's the on-call [runbook](../runbook/SKILL.md) for this API," and "what's the
 standard way to spin up a new service" stop being answerable by asking
 around and start requiring a system of record. Backstage (a CNCF
 graduated project originated at Spotify) provides that system: a
@@ -35,7 +35,7 @@ that lets the portal surface CI status, cost, on-call, and security
 posture from other tools in one place. The operational payoff is
 concrete: faster onboarding (a new engineer can self-serve "how do I
 create a new service" instead of asking a senior engineer), and clearer
-ownership (an incident responder can find the owning team and runbook
+ownership (an [incident](../incident/SKILL.md) responder can find the owning team and [runbook](../runbook/SKILL.md)
 for any service without a tribal-knowledge lookup) — but only if the
 catalog stays accurate, which means catalog registration must be
 enforced as part of the service creation path, not left as an optional
@@ -51,7 +51,7 @@ afterthought.
   golden path (standard CI config, standard Dockerfile, standard
   catalog registration) instead of manual copy-paste.
 - Adding or evaluating a Backstage plugin (CI/CD status, cost insight,
-  security scorecards, on-call/incident data) to surface more signal in
+  security scorecards, on-call/[incident](../incident/SKILL.md) data) to surface more signal in
   the portal.
 - Auditing catalog accuracy/ownership coverage — finding services with
   no registered owner, stale `lifecycle`, or missing links.
@@ -62,12 +62,12 @@ afterthought.
 ## Prerequisites & environment
 
 - A running Backstage instance (self-hosted, deployed via the
-  `@backstage/create-app` scaffold and typically run in Kubernetes/on a
+  `@backstage/create-app` scaffold and typically run in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/on a
   container platform) — Backstage is a framework you deploy and extend,
   not a SaaS product; budget for ongoing app maintenance (Node.js/
-  TypeScript upgrades, plugin version compatibility) as part of adopting
+  [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) upgrades, plugin version compatibility) as part of adopting
   it.
-- A source-control integration configured (GitHub App, GitLab
+- A source-control integration configured ([GitHub](../../CI_CD/github/SKILL.md) App, GitLab
   integration, or Bitbucket) so the catalog can discover
   `catalog-info.yaml` files across repos and TechDocs can pull
   Markdown from them.
@@ -90,7 +90,7 @@ afterthought.
 
 ## Step-by-step guidance
 
-1. **Author a `catalog-info.yaml` for an existing service** and commit
+1. **Author a `catalog-info.yaml` for an existing service** and [commit](../../CI_CD/commit/SKILL.md)
    it to the service's repo root:
    ```yaml
    apiVersion: backstage.io/v1alpha1
@@ -99,14 +99,14 @@ afterthought.
      name: payments-api
      description: Handles payment authorization and settlement
      annotations:
-       github.com/project-slug: acme-corp/payments-api
+       [github](../../CI_CD/github/SKILL.md).com/project-slug: acme-corp/payments-api
        backstage.io/techdocs-ref: dir:.
      tags:
        - payments
        - java
      links:
-       - url: https://runbooks.internal/payments-api
-         title: On-call runbook
+       - url: https://[runbooks](../runbooks/SKILL.md).internal/payments-api
+         title: On-call [runbook](../runbook/SKILL.md)
    spec:
      type: service
      lifecycle: production
@@ -154,7 +154,7 @@ afterthought.
    ```yaml
    catalog:
      providers:
-       github:
+       [github](../../CI_CD/github/SKILL.md):
          acmeCorpOrg:
            organization: 'acme-corp'
            catalogPath: '/catalog-info.yaml'
@@ -172,7 +172,7 @@ afterthought.
    nav:
      - Home: index.md
      - Architecture: architecture.md
-     - Runbook: runbook.md
+     - [Runbook](../runbook/SKILL.md): [runbook](../runbook/SKILL.md).md
    plugins:
      - techdocs-core
    ```
@@ -224,9 +224,9 @@ afterthought.
              owner: '${{ parameters.owner }}'
        - id: publish
          name: Create repository
-         action: publish:github
+         action: publish:[github](../../CI_CD/github/SKILL.md)
          input:
-           repoUrl: 'github.com?owner=acme-corp&repo=${{ parameters.name }}'
+           repoUrl: '[github](../../CI_CD/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
        - id: register
          name: Register in catalog
          action: catalog:register
@@ -245,14 +245,14 @@ afterthought.
    already registered in the catalog, not registered as an afterthought.
 
 7. **Add a plugin to surface external signal** in the portal, e.g. the
-   Kubernetes plugin (shows live pod/deployment status for a
+   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) plugin (shows live pod/deployment status for a
    `Component`) or a cost-insights plugin fed by the same allocation
-   data used for Kubernetes showback:
+   data used for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) showback:
    ```yaml
    # catalog-info.yaml annotation wiring a Component to its cluster resources
    metadata:
      annotations:
-       backstage.io/kubernetes-id: payments-api
+       backstage.io/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-id: payments-api
    ```
 
 8. **Enforce catalog registration in the golden path**, not as an
@@ -295,7 +295,7 @@ afterthought.
 
 - **Symptom:** A service shows up in the catalog with `owner:
   unknown` or a broken owner reference, and nobody can tell who's
-  responsible for it during an incident.
+  responsible for it during an [incident](../incident/SKILL.md).
   **Fix:** The `catalog-info.yaml`'s `spec.owner` references a group
   that was never registered as a `Group` entity, or uses a free-text
   name instead of `group:<name>`/`user:<name>` entity-reference syntax.
@@ -316,14 +316,14 @@ afterthought.
   `catalog-info.yaml` never appears in the portal.
   **Fix:** The discovery processor's schedule hasn't run yet (default
   intervals can be 30+ minutes), or the file isn't at the expected
-  `catalogPath`, or the GitHub App/integration lacks read access to the
+  `catalogPath`, or the [GitHub](../../CI_CD/github/SKILL.md) App/integration lacks read access to the
   new repo (e.g. it's in an org the integration wasn't granted access
   to). Check the discovery processor's schedule and confirm the
   integration's access scope includes the repo.
 
 - **Symptom:** A Software Template successfully creates a new
   repository, but the service never appears in the catalog.
-  **Fix:** The template's steps ended at `publish:github` without a
+  **Fix:** The template's steps ended at `publish:[github](../../CI_CD/github/SKILL.md)` without a
   `catalog:register` step, so the new `catalog-info.yaml` exists in
   the repo but was never registered with the running catalog. Add the
   `catalog:register` action (step 6) as the template's final step so
@@ -334,7 +334,7 @@ afterthought.
   **Fix:** Catalog registration was optional and coverage drifted well
   below 100% of active services, so the catalog frequently doesn't
   have the answer. Make registration mandatory in the golden path
-  (a CI gate requiring `catalog-info.yaml`) and run a periodic audit
+  (a CI gate requiring `catalog-info.yaml`) and run a periodic [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   for services missing from the catalog (cross-reference the source-
   control org's repo list against registered `Component`s).
 
@@ -345,19 +345,19 @@ engineering org. Today, "who owns this service" and "how do I spin up a
 new one" are answered by asking in Slack, and there's no central
 documentation index.
 
-1. Deploy Backstage via `@backstage/create-app`, configure the GitHub
-   integration, and enable the GitHub discovery provider (step 4)
+1. Deploy Backstage via `@backstage/create-app`, configure the [GitHub](../../CI_CD/github/SKILL.md)
+   integration, and enable the [GitHub](../../CI_CD/github/SKILL.md) discovery provider (step 4)
    scanning the `acme-corp` org every 30 minutes for
    `catalog-info.yaml` files.
 2. Register the org's team structure as `Group` entities first (step
    3), since every subsequent `Component`'s `owner` field depends on
    these existing.
 3. Backfill `catalog-info.yaml` for the 15 most critical existing
-   services manually (step 1-2), prioritized by the incident-response
+   services manually (step 1-2), prioritized by the [incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)
    team's list of "services we get paged for" — this seeds the catalog
    with the highest-value entries before chasing full coverage.
 4. Set up TechDocs (step 5) for those same 15 services, generating in
-   CI and publishing to an S3 bucket, so each service's on-call runbook
+   CI and publishing to an S3 bucket, so each service's on-call [runbook](../runbook/SKILL.md)
    and architecture doc is discoverable from its catalog entry.
 5. Build the `golden-path-service` Software Template (step 6) wrapping
    the platform team's existing standard CI pipeline and Dockerfile,
@@ -366,11 +366,11 @@ documentation index.
 6. Add a CI check across the org's repos requiring a `catalog-info.yaml`
    at the root for any repo tagged `production` (step 8), giving teams
    a 60-day grace period to backfill before the check becomes blocking.
-7. After rollout, add the Kubernetes plugin (step 7) so each
+7. After rollout, add the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) plugin (step 7) so each
    `Component`'s catalog page shows live pod status, closing the loop
    between "who owns this" and "is it healthy right now" in one place.
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-- [kubecost-cost-visibility](../kubecost-cost-visibility/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md)

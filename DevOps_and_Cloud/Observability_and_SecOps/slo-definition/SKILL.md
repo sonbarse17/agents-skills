@@ -8,7 +8,7 @@ license: MIT
 
 "We should have five nines" is a number picked because it sounds impressive, not because anyone measured what users actually need or what the system can actually deliver without heroics. A Service Level Objective only has value if it's derived from real user tolerance and real system behavior — otherwise it's just a more precise-sounding version of the same unfalsifiable "be reliable" instruction, and nobody will actually gate a decision on it when it matters.
 
-This is why SLO definition is its own discipline, distinct from the broader observability practice it depends on — see `observability` for the signals underneath, but the number itself is a negotiated business artifact, not just a query result.
+This is why SLO definition is its own discipline, distinct from the broader [observability](../observability/SKILL.md) practice it depends on — see `[observability](../observability/SKILL.md)` for the signals underneath, but the number itself is a negotiated business artifact, not just a query result.
 
 The entire value of an SLO is that it turns a subjective argument into a shared, pre-agreed number that both the "ship faster" and "slow down and fix reliability" sides accept in advance.
 
@@ -38,7 +38,7 @@ A Service Level Indicator is the raw measurement the SLO is built on, and the si
 
 Once the target is set, the error budget isn't a separate decision — it's just "100% minus the target," expressed as an allowance: a 99.9% target over 28 days allows roughly 40 minutes of budget to spend.
 
-That reframe matters because it turns the target from a purity goal into a resource: the budget can be spent on a risky deploy, an experiment, or planned maintenance, and spending all of it deliberately on things that matter is a legitimate outcome, not a failure. See `error-budgets` for the ongoing mechanics of tracking spend and deciding what to spend it on.
+That reframe matters because it turns the target from a purity goal into a resource: the budget can be spent on a risky deploy, an experiment, or planned maintenance, and spending all of it deliberately on things that matter is a legitimate outcome, not a failure. See `[error-budgets](../../../Software_Engineering_and_Other/Frontend/error-budgets/SKILL.md)` for the ongoing mechanics of tracking spend and deciding what to spend it on.
 
 **Done when:** the numeric error budget for the current window is stated in concrete units (minutes, request count), not left as an abstract percentage.
 
@@ -70,7 +70,7 @@ A service with fifteen SLOs has, in practice, zero SLOs that anyone can recite o
 
 - **Pick two or three** that best represent the user's experience of that service — usually one availability-shaped and one latency-shaped SLI.
 - **Resist adding an SLO for every metric that seems worth tracking** — that instinct is real, but the right home for it is a dashboard, not a budget-policy conversation.
-- **See `dashboards`** for where the rest of that detail should live instead.
+- **See `[dashboards](../../Cloud_Providers/dashboards/SKILL.md)`** for where the rest of that detail should live instead.
 
 **Done when:** anyone on the team can name the service's SLOs from memory, without looking them up.
 

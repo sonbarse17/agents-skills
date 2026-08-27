@@ -40,7 +40,7 @@ versus not.
   context (params, data version, code version) needed to do so.
 - The user wants to link experiment runs to the artifacts they produced for
   registration (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 - The user is debugging "why is this run's result different from last time
   with the same config."
 
@@ -67,7 +67,7 @@ versus not.
 1. **Log parameters, metrics, and artifacts for every run** — not just the
    ones that "worked." Cheap runs are cheap to log; expensive ones are
    exactly the ones you'll regret not logging if something looks off later.
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import mlflow
 
    mlflow.set_experiment("fraud-scorer")
@@ -97,7 +97,7 @@ versus not.
 2. **Log the exact code and data versions**, not just a description —
    `git_sha` for code, a content-addressed or timestamped snapshot ID for
    data. Tie this in with lineage tracking (see
-   [data-and-model-lineage](../data-and-model-lineage/SKILL.md)) so a run's
+   [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)) so a run's
    full provenance is queryable, not just its hyperparameters.
 3. **Adopt a consistent tagging scheme** across the team: e.g. tags for
    `owner`, `purpose` (baseline/sweep/ablation/production-candidate), and
@@ -105,7 +105,7 @@ versus not.
    memory.
 4. **Use the tracker for hyperparameter sweeps**, logging each trial as its
    own run under a shared parent/sweep ID:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import itertools
    import mlflow
 
@@ -124,7 +124,7 @@ versus not.
 6. **Promote the winning run's artifact to the model registry explicitly**,
    carrying over its run ID as a permanent tag so the registered model
    version always links back to the exact experiment that produced it (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 7. **Set a retention/archival policy for experiment data** — don't let
    artifact storage grow unbounded, but never delete the run that backs the
    currently-registered production model or any run still referenced by
@@ -149,7 +149,7 @@ versus not.
 - Store enough information in each run to answer "could someone else on the
   team rerun this from scratch" — code version, data version, environment
   (container image or locked dependency file), and full hyperparameters.
-- Treat experiment tracking metadata as an audit trail relevant to
+- Treat experiment tracking metadata as an [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail relevant to
   compliance/governance, not merely a developer convenience — for regulated
   use cases, "which data and code produced this production model" needs to
   be answerable definitively.
@@ -185,7 +185,7 @@ versus not.
 - **Symptom:** A well-meaning cleanup deletes "old" experiment runs and
   artifacts to save storage costs, and it turns out one of the deleted runs
   was the originating record for the currently-deployed production model,
-  breaking the audit trail.
+  breaking the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail.
   **Fix:** Never delete experiment runs without cross-checking whether
   they're referenced by an active model registry entry or lineage record;
   archive to cold storage instead of hard-deleting, and treat deletion of
@@ -207,7 +207,7 @@ A team runs a hyperparameter sweep to improve `fraud-scorer`.
    the balance of quality and serving cost.
 3. This run's ID (`run-8841`) and its logged model artifact are registered
    to the model registry as `fraud-scorer` version 14 (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)),
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)),
    with the run ID carried over as a permanent tag on the registry entry.
 4. Three months later, an auditor asks exactly what data and code produced
    the model currently in production. The team queries the registry entry
@@ -218,7 +218,7 @@ A team runs a hyperparameter sweep to improve `fraud-scorer`.
 
 ## Cross-references
 
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md)
-- [llmops-fine-tuning-and-deployment](../llmops-fine-tuning-and-deployment/SKILL.md)
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)
+- [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)
+- [llmops-fine-tuning-and-deployment](../[llmops-fine-tuning-and-deployment](../../AI_and_Agents/Models_and_FineTuning/llmops-fine-tuning-and-deployment/SKILL.md)/SKILL.md)

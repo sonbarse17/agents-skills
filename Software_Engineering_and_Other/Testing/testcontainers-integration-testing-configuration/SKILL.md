@@ -27,7 +27,7 @@ mock correctly, not that it works against a real Postgres — a subtly
 wrong SQL query, an index assumption that doesn't hold, or a
 driver-specific type-mapping quirk routinely passes every mocked test
 and fails only in a real environment. **Testcontainers** closes that gap
-by programmatically starting real, disposable Docker containers (a real
+by programmatically starting real, disposable [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) containers (a real
 Postgres, a real Kafka broker, a real Redis instance) scoped to a test
 run, so integration tests exercise the actual dependency instead of a
 stand-in for it — without a hand-maintained shared staging database that
@@ -35,7 +35,7 @@ tests can corrupt for each other or drift out of sync with production
 versions. This skill covers container lifecycle management (per-test vs.
 module-scoped/singleton containers), wait strategies (waiting for a
 container to actually be ready, not just started), and the CI-runner
-resource and Docker-availability considerations that most commonly break
+resource and [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-availability considerations that most commonly break
 a Testcontainers suite that works fine on a developer's laptop.
 
 ## When to use
@@ -52,26 +52,26 @@ a Testcontainers suite that works fine on a developer's laptop.
   container per test class/method when a shared, module-scoped
   container would be safe and much faster.
 - Setting up Testcontainers to run correctly in a CI runner, especially
-  one using Docker-in-Docker, a remote Docker daemon, or a
+  one using [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), a remote [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon, or a
   resource-constrained shared runner.
 - Diagnosing a Testcontainers test that passes locally but times out,
   hangs, or fails to pull images in CI.
 - Deciding whether a given integration point is worth a real container
   versus a contract test (see
-  [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md))
+  [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md))
   or a lighter-weight fake.
 
 ## Prerequisites & environment
 
-- A Docker daemon reachable from wherever tests run — local Docker
-  Desktop/Docker Engine for developer machines, and a CI runner with
-  Docker available (either the runner's own Docker socket mounted in,
-  or a Docker-in-Docker sidecar/service, depending on the CI platform).
+- A [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon reachable from wherever tests run — local [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+  Desktop/[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Engine for developer machines, and a CI runner with
+  [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available (either the runner's own [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket mounted in,
+  or a [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) sidecar/service, depending on the CI platform).
 - The Testcontainers library for the test language/framework (`testcontainers-java`
-  with JUnit 5, `testcontainers-python`, `testcontainers-go`,
+  with JUnit 5, `testcontainers-[python](../../Languages/python/SKILL.md)`, `testcontainers-go`,
   `testcontainers-node`, or the corresponding module for the test
   framework in use) plus the specific **module** for each dependency
-  (e.g. `testcontainers-java`'s `postgresql`, `kafka`, and `redis`
+  (e.g. `testcontainers-java`'s `[postgresql](../../Backend/postgresql/SKILL.md)`, `kafka`, and `redis`
   modules ship pre-built wait-strategy and configuration support rather
   than requiring a hand-rolled generic container setup).
 - Enough CI runner resource headroom (CPU, memory, and disk for pulled
@@ -85,8 +85,8 @@ a Testcontainers suite that works fine on a developer's laptop.
   or heavily firewalled runner needs images pre-pulled or mirrored
   before Testcontainers can start anything.
 - Testcontainers' own **Ryuk** reaper container (started automatically
-  by default) requires the Docker socket to be reachable with
-  permission to start and stop containers — a locked-down CI Docker
+  by default) requires the [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket to be reachable with
+  permission to start and stop containers — a locked-down CI [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
   daemon that blocks Ryuk specifically is a common source of leaked
   containers accumulating on shared runners (see Common pitfalls).
 
@@ -124,8 +124,8 @@ a Testcontainers suite that works fine on a developer's laptop.
    KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.6.0"))
        .waitingFor(Wait.forListeningPort());
    ```
-   ```python
-   # testcontainers-python: Postgres module's built-in readiness wait
+   ```[python](../../Languages/python/SKILL.md)
+   # testcontainers-[python](../../Languages/python/SKILL.md): Postgres module's built-in readiness wait
    from testcontainers.postgres import PostgresContainer
 
    postgres = PostgresContainer("postgres:16")
@@ -165,7 +165,7 @@ a Testcontainers suite that works fine on a developer's laptop.
        registry.add("spring.datasource.password", postgres::getPassword);
    }
    ```
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    engine = create_engine(postgres.get_connection_url())
    ```
    A hardcoded port (e.g. always mapping to host port `5432`) breaks
@@ -191,15 +191,15 @@ a Testcontainers suite that works fine on a developer's laptop.
    `testcontainers.reuse.enable=true` in `~/.testcontainers.properties`)
    goes further, keeping the same container running *across separate
    test-runner invocations* on a developer's machine for fast local
-   iteration — this specific setting is a local developer-experience
+   iteration — this specific setting is a local [developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)
    optimization and should not be relied on for CI correctness, since a
    CI runner is typically a fresh environment every run.
 
-6. **Confirm the CI runner actually has Docker available and correctly
+6. **Confirm the CI runner actually has [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available and correctly
    configured** before assuming a Testcontainers suite will "just work"
    the same as on a developer laptop:
    ```yaml
-   # GitHub Actions: ubuntu-latest runners include Docker by default;
+   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions: ubuntu-latest runners include [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) by default;
    # nothing extra to configure for the common case
    jobs:
      test:
@@ -209,19 +209,19 @@ a Testcontainers suite that works fine on a developer's laptop.
          - run: ./gradlew test
    ```
    ```yaml
-   # GitLab CI: needs an explicit Docker-in-Docker service and TLS config
+   # GitLab CI: needs an explicit [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) service and TLS config
    test:
      image: eclipse-temurin:21-jdk
      services:
-       - docker:24-dind
+       - [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):24-dind
      variables:
-       DOCKER_HOST: tcp://docker:2376
+       DOCKER_HOST: tcp://[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):2376
        DOCKER_TLS_CERTDIR: "/certs"
      script:
        - ./gradlew test
    ```
-   A CI platform that doesn't provide Docker by default (or provides it
-   only via an explicitly-declared Docker-in-Docker service, as GitLab
+   A CI platform that doesn't provide [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) by default (or provides it
+   only via an explicitly-declared [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) service, as GitLab
    does) is the most common reason a Testcontainers suite passes locally
    and fails outright in CI with a connection-refused error before any
    test logic even runs.
@@ -280,11 +280,11 @@ a Testcontainers suite that works fine on a developer's laptop.
   collisions.
 - Pin exact image tags for every container used in tests, the same
   version-discipline applied to any other dependency.
-- Confirm Docker availability and resource sizing in CI explicitly
+- Confirm [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) availability and resource sizing in CI explicitly
   before assuming a suite that works locally will behave identically —
   this is the single most common source of "works on my machine, fails
   in CI" for Testcontainers-based suites.
-- Reserve `withReuse(true)` for local developer-experience speedups, not
+- Reserve `withReuse(true)` for local [developer-experience](../../../Product_and_Business/developer-experience/SKILL.md) speedups, not
   as a correctness assumption in CI, where runners are typically fresh
   per run anyway.
 
@@ -292,11 +292,11 @@ a Testcontainers suite that works fine on a developer's laptop.
 
 - **Symptom:** A Testcontainers suite passes reliably on every
   developer's laptop and fails immediately in CI with a connection-
-  refused or "cannot connect to the Docker daemon" error.
-  **Fix:** The CI runner either has no Docker daemon available at all,
-  or (on platforms like GitLab CI) needs an explicit Docker-in-Docker
+  refused or "cannot connect to the [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon" error.
+  **Fix:** The CI runner either has no [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon available at all,
+  or (on platforms like GitLab CI) needs an explicit [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
   service declared and `DOCKER_HOST` configured (step 6) — this isn't a
-  test-code bug, it's a CI environment gap. Confirm Docker's actual
+  test-code bug, it's a CI environment gap. Confirm [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)'s actual
   availability and configuration on the specific CI platform before
   debugging the test code itself.
 
@@ -306,7 +306,7 @@ a Testcontainers suite that works fine on a developer's laptop.
   the suite starts concurrently (step 7) — a shared/constrained CI
   executor competing for CPU/memory across a real Postgres, a real
   Kafka broker, and the application's own test process is a common,
-  easy-to-miss capacity gap. Size the runner's resource requests/limits
+  easy-to-miss [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) gap. Size the runner's resource requests/limits
   explicitly for the concurrent container load, not just the
   application process.
 
@@ -326,10 +326,10 @@ a Testcontainers suite that works fine on a developer's laptop.
   defeats that and breaks any parallel execution.
 
 - **Symptom:** Over weeks, a shared CI runner (or a developer's local
-  Docker daemon) accumulates dozens of leftover, no-longer-needed
+  [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon) accumulates dozens of leftover, no-longer-needed
   containers from past test runs.
   **Fix:** Testcontainers' Ryuk reaper (which cleans up containers after
-  the test process exits) either couldn't reach the Docker socket due to
+  the test process exits) either couldn't reach the [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket due to
   a restrictive daemon/network policy, or was explicitly disabled
   (`TESTCONTAINERS_RYUK_DISABLED=true`) without a replacement cleanup
   mechanism. Confirm Ryuk can actually run in the target environment,
@@ -342,7 +342,7 @@ a Testcontainers suite that works fine on a developer's laptop.
 **Scenario:** `order-service`'s repository layer is tested against a
 real Postgres instead of a mocked JDBC driver, and its Kafka event
 publisher is tested against a real Kafka broker instead of a mocked
-producer — both need to run reliably in GitHub Actions CI, in parallel
+producer — both need to run reliably in [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions CI, in parallel
 across multiple test suites.
 
 ```java
@@ -393,8 +393,8 @@ class OrderEventPublisherIntegrationTest extends AbstractIntegrationTest {
 }
 ```
 
-CI (GitHub Actions, Docker available by default on `ubuntu-latest`, no
-extra Docker-in-Docker configuration needed):
+CI ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available by default on `ubuntu-latest`, no
+extra [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) configuration needed):
 ```yaml
 jobs:
   test:
@@ -414,6 +414,6 @@ repository test keeps state isolated without restarting the container.
 
 ## Cross-references
 
-- [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md) — a complementary integration-testing approach: contract tests verify the *shape* of an interaction between independently-deployed services without needing either side's real dependency running, while Testcontainers verifies real behavior against an actual dependency instance within one service's own test suite — many systems benefit from both, applied to different kinds of integration risk.
-- [infrastructure-post-deployment-validation-and-smoke-testing](../infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md) — the post-deploy validation layer that picks up once code has already passed the Testcontainers-backed integration tests covered here.
-- [makefile-authoring-and-validation](../makefile-authoring-and-validation/SKILL.md) — a common place to wrap the Docker-availability and resource-sizing preconditions this skill's CI guidance depends on into a single reusable local/CI entry point.
+- [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a complementary integration-testing approach: contract tests verify the *shape* of an interaction between independently-deployed services without needing either side's real dependency running, while Testcontainers verifies real behavior against an actual dependency instance within one service's own test suite — many systems benefit from both, applied to different kinds of integration risk.
+- [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) — the post-deploy validation layer that picks up once code has already passed the Testcontainers-backed integration tests covered here.
+- [makefile-authoring-and-validation](../[makefile-authoring-and-validation](../../Frontend/makefile-authoring-and-validation/SKILL.md)/SKILL.md) — a common place to wrap the [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-availability and resource-sizing preconditions this skill's CI guidance depends on into a single reusable local/CI entry point.

@@ -46,7 +46,7 @@ increasing with more load. That knee in the curve is the number worth knowing.
 - **Keep ramping past the first sign of trouble** — stopping at the first error hides whether the
   system degrades gracefully or falls off a cliff.
 - **Record the load level of the knee**, not just the final failure — that's the actionable
-  capacity number, distinct from the point of total collapse.
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) number, distinct from the point of total collapse.
 
 **Done when:** the test reports the load level where throughput stops scaling and the load level
 where the system fails, as two distinct numbers.
@@ -67,7 +67,7 @@ rate are the two signals that tell you whether users are actually having a bad t
   and hides the slow tail.
 - **Break errors down by type** — a rising timeout rate signals saturation; a rising 4xx rate
   might just mean the test data ran out.
-- **Correlate the latency knee with a resource signal** — connect it back to `performance-tuning`
+- **Correlate the latency knee with a resource signal** — connect it back to `[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)`
   by checking what saturated at that load level.
 
 **Done when:** the report includes p50/p95/p99 latency and error rate by type at every load step,
@@ -95,10 +95,10 @@ return instantly.
 A load test run once before launch and never again is a snapshot of a system that no longer
 exists by the time the next release ships. Wiring load tests into the pipeline — even a smaller,
 faster version — catches regressions before they reach production instead of during the next
-incident.
+[incident](../incident/SKILL.md).
 
 - **Keep a fast smoke-scale version in CI**, and reserve the full-scale ramp test for pre-release
-  or scheduled runs — see `ci-pipelines` for wiring it in.
+  or scheduled runs — see `[ci-pipelines](../../CI_CD/ci-pipelines/SKILL.md)` for wiring it in.
 - **Fail the pipeline on a percentile or error-rate regression**, not just a hard crash — silent
   latency creep is a regression too.
 - **Re-run the full test whenever the traffic model changes**, not just when code changes — a new

@@ -33,16 +33,16 @@ function" becomes one precomputed lookup instead of a multi-step
 grep-and-read exploration the agent has to redo from scratch each time.
 This is a distinct concern from a RAG pipeline's semantic retrieval over
 document/code *text*
-([rag-pipeline-design](../rag-pipeline-design/SKILL.md)) and from operating
+([rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) and from operating
 a general-purpose vector database
-([vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)):
+([vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)):
 a code knowledge graph indexes *structure* (calls, references, definitions,
 dependencies), not just embedding-similar text chunks, though some of these
 tools combine both. This skill compares three current tools in this space —
 GitNexus, Graphify, and CodeGraph — on architecture, language coverage,
 query model, and licensing, and covers choosing between them and wiring the
 one you pick into an agent via MCP
-([mcp-server-development](../mcp-server-development/SKILL.md) covers
+([mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) covers
 building an MCP server generally; this skill covers consuming these three
 specific pre-built ones).
 
@@ -70,12 +70,12 @@ specific pre-built ones).
 
 - Node.js and `npx` availability for GitNexus (`npx gitnexus analyze && npx
   gitnexus setup`).
-- The `uv` Python package/tool manager for Graphify (`uv tool install
+- The `uv` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) package/tool manager for Graphify (`uv tool install
   graphifyy`).
 - A Rust-toolchain-built binary or published release for CodeGraph (it is
   itself implemented in Rust for its parsing kernel — no Rust toolchain is
   required on the *consuming* machine unless building from source).
-- An MCP-compatible agent host (Claude Code, Cursor, GitHub Copilot, Gemini
+- An MCP-compatible agent host (Claude Code, Cursor, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot, Gemini
   CLI) configured to connect to the tool's MCP server, per each client's own
   MCP configuration mechanism.
 - Disk space for the generated index: GitNexus stores its embedded
@@ -94,7 +94,7 @@ specific pre-built ones).
   tier. This is not a fully permissive open-source license and should be
   flagged to whoever approves tooling for a commercial product, the same
   way you'd flag a GPL/AGPL dependency in
-  [software-composition-analysis-sca](../../../devsecops/skills/software-composition-analysis-sca/SKILL.md).
+  [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -138,9 +138,9 @@ specific pre-built ones).
 3. **Wire the tool's MCP server into your agent host.** All three are
    designed to be consumed by an MCP-compatible agent — the exact client
    config (where you register the server command) is client-specific
-   (Claude Code, Cursor, Gemini CLI, GitHub Copilot each have their own MCP
+   (Claude Code, Cursor, Gemini CLI, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot each have their own MCP
    config location); see
-   [mcp-server-development](../mcp-server-development/SKILL.md) for the
+   [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) for the
    general client/server wiring pattern these tools' own MCP servers
    follow.
 
@@ -223,7 +223,7 @@ specific pre-built ones).
   query results — a graph built against pre-refactor structure will give
   confidently wrong answers about the current codebase, the same staleness
   risk called out for RAG indexes in
-  [rag-pipeline-design](../rag-pipeline-design/SKILL.md).
+  [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -234,7 +234,7 @@ specific pre-built ones).
   adoption, not after — this is exactly the kind of license-compliance gap
   a dependency/SCA license policy should catch; treat it the same as any
   other non-permissive license finding in
-  [software-composition-analysis-sca](../../../devsecops/skills/software-composition-analysis-sca/SKILL.md)
+  [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
   rather than discovering it downstream.
 
 - **Symptom:** An agent given access to a code-graph tool's MCP server still
@@ -242,7 +242,7 @@ specific pre-built ones).
   graph could answer directly, so tool-call/token savings don't materialize.
   **Fix:** Check that the tool's description in the MCP tool list makes
   clear *when* to prefer it over manual search (per the tool-schema clarity
-  guidance in [mcp-server-development](../mcp-server-development/SKILL.md))
+  guidance in [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md))
   — an ambiguous or under-described tool name is often the reason a model
   defaults to familiar grep/read behavior instead.
 
@@ -277,7 +277,7 @@ specific pre-built ones).
 ## Worked example
 
 **Scenario:** A team is choosing a code-knowledge-graph tool for an AI
-coding agent that works across a polyglot monorepo (Go, TypeScript, Python,
+coding agent that works across a polyglot [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) (Go, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md),
 plus some Rust services), with two decision factors: (1) the company's main
 product is commercial, so licensing matters, and (2) the agent frequently
 needs impact-radius answers ("what breaks if I change this function") while
@@ -286,7 +286,7 @@ actively refactoring in the same session.
 Evaluation:
 
 ```
-GitNexus  — 14 languages (covers Go/TS/Python/Rust if all 14 include them;
+GitNexus  — 14 languages (covers Go/TS/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Rust if all 14 include them;
             verify each specific language is on the list), 17 MCP tools
             including dedicated impact-radius/call-chain/blast-zone
             queries, backed by LadybugDB in .gitnexus/.
@@ -322,8 +322,8 @@ alongside code.
 
 ## Cross-references
 
-- [mcp-server-development](../mcp-server-development/SKILL.md) — the general pattern for building and hardening an MCP server; these three tools each ship their own MCP server, so this skill is about consuming, not building, that surface.
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md) — semantic retrieval over document/code text, a distinct concern from these tools' structural graph indexing; the two are complementary when a corpus needs both kinds of lookup.
-- [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md) — operating the vector-store layer underneath a RAG pipeline, relevant if you pair one of these code-graph tools with a separate semantic-search index rather than relying on Graphify's built-in vector component alone.
-- [agent-architecture-design](../agent-architecture-design/SKILL.md) — the general principle of giving an agent narrow, well-described tools; applies directly to how these tools' MCP surfaces (17 tools for GitNexus vs. one for CodeGraph) get selected correctly by a model.
-- [software-composition-analysis-sca](../../../devsecops/skills/software-composition-analysis-sca/SKILL.md) — the general discipline of checking dependency licenses before adoption, directly relevant to GitNexus's noncommercial license restriction.
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — the general pattern for building and hardening an MCP server; these three tools each ship their own MCP server, so this skill is about consuming, not building, that surface.
+- [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — semantic retrieval over document/code text, a distinct concern from these tools' structural graph indexing; the two are complementary when a corpus needs both kinds of lookup.
+- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — operating the vector-store layer underneath a RAG pipeline, relevant if you pair one of these code-graph tools with a separate semantic-search index rather than relying on Graphify's built-in vector component alone.
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the general principle of giving an agent narrow, well-described tools; applies directly to how these tools' MCP surfaces (17 tools for GitNexus vs. one for CodeGraph) get selected correctly by a model.
+- [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the general discipline of checking dependency licenses before adoption, directly relevant to GitNexus's noncommercial license restriction.

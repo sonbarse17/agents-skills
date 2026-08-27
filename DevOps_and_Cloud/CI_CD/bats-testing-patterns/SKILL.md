@@ -167,7 +167,7 @@ cleanup_test_dir() {
 
 ## Integration with CI/CD
 
-### GitHub Actions Workflow
+### [GitHub](../github/SKILL.md) Actions Workflow
 
 ```yaml
 name: Tests

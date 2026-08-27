@@ -47,7 +47,7 @@ export KIBANA_API_KEY="your-kibana-api-key"
 | Task                                | Tools to call (in order)                                                                                |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | **Tune noisy SIEM rule**            | `rule_manager` find/noisy-rules → `run_query` (investigate FPs) → `rule_manager` patch or add-exception |
-| **Add endpoint behavior exception** | `fetch_endpoint_rule` (get rule definition from GitHub) → `add_endpoint_exception` (scoped to rule.id)  |
+| **Add endpoint behavior exception** | `fetch_endpoint_rule` (get rule definition from [GitHub](../../CI_CD/github/SKILL.md)) → `add_endpoint_exception` (scoped to rule.id)  |
 | **Create new detection rule**       | `run_query` (test query against data) → `rule_manager` create                                           |
 | **Investigate rule alert volume**   | `rule_manager` get → `run_query` (query alerts index)                                                   |
 
@@ -196,7 +196,7 @@ live in **Security → Exceptions → Endpoint Security Exception List**, not un
 rule (`rule.id` or `rule.name`). Use full paths over process names. Run the mandatory entity cross-check (Step 4b)
 before any exception. Simulate impact (Step 5b) and aim for ≥60% noise reduction.
 
-**Scripts:** `fetch-endpoint-rule-from-github.js` (get rule TOML by id), `add-endpoint-exception.js` (add to Endpoint
+**Scripts:** `fetch-endpoint-rule-from-[github](../../CI_CD/github/SKILL.md).js` (get rule TOML by id), `add-endpoint-exception.js` (add to Endpoint
 Exception List; rule.id/rule.name required), `check-exclusion-best-practices.js`.
 
 For the full step-by-step workflow (Steps 1–6), queries, and simulation templates, see
@@ -229,7 +229,7 @@ All commands are run from the workspace root. All output is JSON unless noted.
 | `noisy-rules`        | Find noisiest rules by alert volume           |
 | `validate-query`     | Check query syntax before create/patch        |
 
-**Endpoint behavior tuning:** `fetch-endpoint-rule-from-github.js` (get rule TOML by id), `add-endpoint-exception.js`
+**Endpoint behavior tuning:** `fetch-endpoint-rule-from-[github](../../CI_CD/github/SKILL.md).js` (get rule TOML by id), `add-endpoint-exception.js`
 (add to Endpoint Exception List; rule.id/rule.name required), `check-exclusion-best-practices.js`.
 
 ### Exception entry format

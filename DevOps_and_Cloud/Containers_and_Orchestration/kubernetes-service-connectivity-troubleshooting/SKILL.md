@@ -17,11 +17,11 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes Service Connectivity Troubleshooting
+# [Kubernetes](../kubernetes/SKILL.md) Service Connectivity Troubleshooting
 
 ## Purpose
 
-A Kubernetes `Service` is just a stable virtual IP and DNS name backed
+A [Kubernetes](../kubernetes/SKILL.md) `Service` is just a stable virtual IP and DNS name backed
 by a continuously reconciled list of pod IPs — its `Endpoints`/
 `EndpointSlice` — populated automatically from pods matching its
 `spec.selector` *and* currently passing readiness. When traffic doesn't
@@ -38,7 +38,7 @@ the real one. This skill covers the diagnostic sequence for all three.
 
 ## When to use
 
-- `kubectl get endpoints`/`endpointslices` for a Service returns empty
+- `[kubectl](../kubectl/SKILL.md) get endpoints`/`endpointslices` for a Service returns empty
   despite pods that appear to be running.
 - A client gets connection refused or a timeout hitting a Service's
   `ClusterIP` or DNS name.
@@ -51,7 +51,7 @@ the real one. This skill covers the diagnostic sequence for all three.
 
 ## Prerequisites & environment
 
-- `kubectl` access to inspect `Service`, `Endpoints`/`EndpointSlice`,
+- `[kubectl](../kubectl/SKILL.md)` access to inspect `Service`, `Endpoints`/`EndpointSlice`,
   and `Pod` objects in the relevant namespace(s).
 - CoreDNS running in `kube-system` (the standard in-cluster DNS
   provider) — confirm it's healthy before assuming a DNS-specific
@@ -60,7 +60,7 @@ the real one. This skill covers the diagnostic sequence for all three.
   — this skill assumes basic pod-to-pod networking works; if same-node
   connectivity works but cross-node doesn't, that's a CNI data-path
   issue instead, covered in
-  [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md).
+  [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md).
 - Basic familiarity with how a Service's `spec.selector` maps to pod
   `metadata.labels` — matching is an exact key/value match (case- and
   whitespace-sensitive), not a fuzzy or partial match.
@@ -70,18 +70,18 @@ the real one. This skill covers the diagnostic sequence for all three.
 1. **Check the Service's selector and its Endpoints together, side by
    side** — don't eyeball the YAML from memory:
    ```bash
-   kubectl get svc <name> -n <namespace> -o jsonpath='{.spec.selector}{"\n"}'
-   kubectl get endpoints <name> -n <namespace>
-   kubectl get endpointslice -n <namespace> -l kubernetes.io/service-name=<name>
+   [kubectl](../kubectl/SKILL.md) get svc <name> -n <namespace> -o jsonpath='{.spec.selector}{"\n"}'
+   [kubectl](../kubectl/SKILL.md) get endpoints <name> -n <namespace>
+   [kubectl](../kubectl/SKILL.md) get endpointslice -n <namespace> -l [kubernetes](../kubernetes/SKILL.md).io/service-name=<name>
    ```
    Empty `Endpoints`/no `EndpointSlice` addresses is the first branch
    point: either no pod matches the selector at all, or pods match but
-   none are currently `Ready` (Kubernetes only populates Endpoints with
+   none are currently `Ready` ([Kubernetes](../kubernetes/SKILL.md) only populates Endpoints with
    ready pod IPs).
 
 2. **Compare the selector against actual pod labels exactly**:
    ```bash
-   kubectl get pods -n <namespace> --show-labels
+   [kubectl](../kubectl/SKILL.md) get pods -n <namespace> --show-labels
    ```
    Check every key in the Service's selector is present on the pods
    with an exactly matching value — a Service selector with an extra
@@ -93,8 +93,8 @@ the real one. This skill covers the diagnostic sequence for all three.
    readiness** — a `Running` pod that hasn't passed its readiness probe
    is deliberately excluded:
    ```bash
-   kubectl get pods -n <namespace> -o wide
-   kubectl describe pod <pod> -n <namespace>
+   [kubectl](../kubectl/SKILL.md) get pods -n <namespace> -o wide
+   [kubectl](../kubectl/SKILL.md) describe pod <pod> -n <namespace>
    ```
    Look for `Readiness probe failed` in the pod's events, and check the
    probe's configured port/path against what the container actually
@@ -104,20 +104,20 @@ the real one. This skill covers the diagnostic sequence for all three.
    container to confirm whether it's a probe-configuration problem or a
    real application issue:
    ```bash
-   kubectl exec <pod> -n <namespace> -- curl -sf localhost:<port><path>
+   [kubectl](../kubectl/SKILL.md) exec <pod> -n <namespace> -- curl -sf localhost:<port><path>
    ```
    A probe pointed at the wrong port/path, or one with too short a
    `failureThreshold`/`periodSeconds` for the app's real response time,
    produces the same "no endpoints" symptom as an actually-unhealthy
    app — this step distinguishes them. See
-   [pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md)
+   [pod-crashloop-and-oom-troubleshooting](../[pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md)
    for the closely related liveness-probe failure mode, which restarts
    the container instead of just excluding it from Endpoints.
 
 5. **Once Endpoints are populated, test the pod IP directly**, bypassing
    the Service layer, before assuming the Service itself works:
    ```bash
-   kubectl run net-test -n <namespace> --image=busybox:1.36 --rm -it --restart=Never -- \
+   [kubectl](../kubectl/SKILL.md) run net-test -n <namespace> --image=busybox:1.36 --rm -it --restart=Never -- \
      wget -qO- --timeout=2 <pod-ip>:<port>
    ```
    If this fails too, the problem is at the pod/network level (the
@@ -129,8 +129,8 @@ the real one. This skill covers the diagnostic sequence for all three.
    check `kube-proxy`** (or your CNI's Service-implementing component,
    for CNIs with an alternative Service data path):
    ```bash
-   kubectl get pods -n kube-system -l k8s-app=kube-proxy
-   kubectl logs -n kube-system <kube-proxy-pod>
+   [kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=kube-proxy
+   [kubectl](../kubectl/SKILL.md) logs -n kube-system <kube-proxy-pod>
    ```
    A missing or crash-looping `kube-proxy` on the client's node means
    that node has no iptables/IPVS rules programmed for any
@@ -140,15 +140,15 @@ the real one. This skill covers the diagnostic sequence for all three.
 7. **For DNS-specific failures**, test resolution directly and check
    CoreDNS itself:
    ```bash
-   kubectl exec <pod> -n <namespace> -- nslookup <service>.<namespace>.svc.cluster.local
-   kubectl get pods -n kube-system -l k8s-app=kube-dns
-   kubectl logs -n kube-system -l k8s-app=kube-dns
+   [kubectl](../kubectl/SKILL.md) exec <pod> -n <namespace> -- nslookup <service>.<namespace>.svc.cluster.local
+   [kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=kube-dns
+   [kubectl](../kubectl/SKILL.md) logs -n kube-system -l k8s-app=kube-dns
    ```
    If CoreDNS pods are healthy but resolution still fails from a
    specific namespace/pod, check for a default-deny `NetworkPolicy`
    without an explicit egress allow rule for DNS (UDP/TCP port 53 to
    `kube-system`) — see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for `NetworkPolicy` enforcement details; a policy-enforcing CNI
    applies a DNS-blocking default-deny exactly as configured, silently,
    with no distinct error visible from the client side.
@@ -157,8 +157,8 @@ the real one. This skill covers the diagnostic sequence for all three.
    returning no records, check the specific fields that govern
    per-pod DNS rather than the usual Service selector path:
    ```bash
-   kubectl get svc <name> -n <namespace> -o yaml | grep clusterIP
-   kubectl get statefulset <name> -n <namespace> -o jsonpath='{.spec.serviceName}'
+   [kubectl](../kubectl/SKILL.md) get svc <name> -n <namespace> -o yaml | grep clusterIP
+   [kubectl](../kubectl/SKILL.md) get statefulset <name> -n <namespace> -o jsonpath='{.spec.serviceName}'
    ```
    The StatefulSet's `spec.serviceName` must reference the exact
    headless Service backing it for per-pod DNS records
@@ -168,7 +168,7 @@ the real one. This skill covers the diagnostic sequence for all three.
    confirm the failure is at the Service layer and not the Ingress
    controller itself by testing the Service directly (steps 1–6) before
    assuming an Ingress-specific misconfiguration — see
-   [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+   [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
    for Ingress-specific 502/504 diagnosis once the backing Service is
    confirmed healthy on its own.
 
@@ -183,7 +183,7 @@ the real one. This skill covers the diagnostic sequence for all three.
 
 ## Best practices
 
-- Diagnose Service/selector/Endpoints/labels with exact `kubectl`
+- Diagnose Service/selector/Endpoints/labels with exact `[kubectl](../kubectl/SKILL.md)`
   output compared side by side, not by reading YAML from memory — label
   mismatches are frequently a single case or whitespace difference that
   is easy to miss visually.
@@ -202,7 +202,7 @@ the real one. This skill covers the diagnostic sequence for all three.
   under a single "DNS is broken" label.
 - Re-validate Service DNS/connectivity as part of any new cluster's
   post-provision smoke tests — see
-  [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+  [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
   — rather than only discovering a cluster-wide DNS/NetworkPolicy
   interaction issue when the first real application hits it.
 - Never "fix" an empty-Endpoints Service by loosening its selector until
@@ -213,8 +213,8 @@ the real one. This skill covers the diagnostic sequence for all three.
 
 - **Symptom:** A Service has zero Endpoints despite pods that are
   clearly `Running` and appear to be the intended backend.
-  **Fix:** Compare `kubectl get svc -o jsonpath='{.spec.selector}'`
-  against `kubectl get pods --show-labels` directly — a label typo,
+  **Fix:** Compare `[kubectl](../kubectl/SKILL.md) get svc -o jsonpath='{.spec.selector}'`
+  against `[kubectl](../kubectl/SKILL.md) get pods --show-labels` directly — a label typo,
   case mismatch, or an extra selector key not present on the pods at
   all is the most common cause, and neither side surfaces an error for
   it since selector matching is silent by design.
@@ -225,7 +225,7 @@ the real one. This skill covers the diagnostic sequence for all three.
   **Fix:** Its readiness probe is intermittently failing — check the
   probe's configured port/path and `failureThreshold`/`periodSeconds`
   against the app's actual response behavior. A pod excluded from
-  Endpoints purely due to failing readiness is Kubernetes working
+  Endpoints purely due to failing readiness is [Kubernetes](../kubernetes/SKILL.md) working
   correctly, not a bug; fix the probe or the underlying slow-response
   cause, don't treat the exclusion itself as the problem.
 
@@ -272,14 +272,14 @@ Service; separately, a different pod fails to resolve
 `billing.finance.svc.cluster.local`.
 
 ```bash
-kubectl get svc payments-api -n payments -o jsonpath='{.spec.selector}{"\n"}'
+[kubectl](../kubectl/SKILL.md) get svc payments-api -n payments -o jsonpath='{.spec.selector}{"\n"}'
 # {"app":"payments"}
 
-kubectl get endpoints payments-api -n payments
+[kubectl](../kubectl/SKILL.md) get endpoints payments-api -n payments
 # NAME           ENDPOINTS   AGE
 # payments-api   <none>      3h
 
-kubectl get pods -n payments --show-labels
+[kubectl](../kubectl/SKILL.md) get pods -n payments --show-labels
 # NAME                            READY   STATUS    LABELS
 # payments-api-7d9f6-abc12        1/1     Running   app=payments-api
 ```
@@ -289,9 +289,9 @@ label (`app: payments-api`) — a naming-convention drift, not a probe or
 network issue.
 
 ```bash
-kubectl patch deployment payments-api -n payments --type merge \
+[kubectl](../kubectl/SKILL.md) patch deployment payments-api -n payments --type merge \
   -p '{"spec":{"template":{"metadata":{"labels":{"app":"payments"}}}}}'
-kubectl get endpoints payments-api -n payments
+[kubectl](../kubectl/SKILL.md) get endpoints payments-api -n payments
 # NAME           ENDPOINTS
 # payments-api   10.244.2.14:8080,10.244.3.9:8080
 ```
@@ -302,14 +302,14 @@ fix.
 Second issue, in a different namespace:
 
 ```bash
-kubectl exec -n reporting deploy/reporting-job -- \
+[kubectl](../kubectl/SKILL.md) exec -n reporting deploy/reporting-job -- \
   nslookup billing.finance.svc.cluster.local
 # ;; connection timed out; no servers could be reached
 
-kubectl get pods -n kube-system -l k8s-app=kube-dns
+[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=kube-dns
 # coredns-...   1/1   Running   (both replicas healthy)
 
-kubectl get networkpolicy -n reporting -o yaml
+[kubectl](../kubectl/SKILL.md) get networkpolicy -n reporting -o yaml
 # a default-deny-all-egress policy with no DNS (port 53) exception
 ```
 
@@ -325,23 +325,23 @@ spec:
   podSelector: {}
   policyTypes: ["Egress"]
   egress:
-    - to: [{ namespaceSelector: { matchLabels: { kubernetes.io/metadata.name: kube-system } } }]
+    - to: [{ namespaceSelector: { matchLabels: { [kubernetes](../kubernetes/SKILL.md).io/metadata.name: kube-system } } }]
       ports:
         - { protocol: UDP, port: 53 }
         - { protocol: TCP, port: 53 }
 ```
 
 ```bash
-kubectl apply -f allow-dns-egress.yaml
-kubectl exec -n reporting deploy/reporting-job -- \
+[kubectl](../kubectl/SKILL.md) apply -f allow-dns-egress.yaml
+[kubectl](../kubectl/SKILL.md) exec -n reporting deploy/reporting-job -- \
   nslookup billing.finance.svc.cluster.local
 # Address: 10.96.44.201
 ```
 
 ## Cross-references
 
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — NetworkPolicy enforcement mechanics and cross-node data-path issues underlying several of the failure modes above.
-- [pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md) — the related liveness-probe failure mode (restarts the container) versus the readiness-probe failure mode (excludes from Endpoints) covered here.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — diagnosing an Ingress-level 502/504 once the backing Service itself is confirmed healthy.
-- [service-mesh-istio](../service-mesh-istio/SKILL.md) — diagnosing a 503 from an Istio sidecar, a related but distinct failure mode layered on top of the Service/Endpoints mechanics here.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — the post-provision smoke test that should catch cluster-wide DNS/Service issues before applications hit them.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — NetworkPolicy enforcement mechanics and cross-node data-path issues underlying several of the failure modes above.
+- [pod-crashloop-and-oom-troubleshooting](../[pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md) — the related liveness-probe failure mode (restarts the container) versus the readiness-probe failure mode (excludes from Endpoints) covered here.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — diagnosing an Ingress-level 502/504 once the backing Service itself is confirmed healthy.
+- [service-mesh-istio](../[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — diagnosing a 503 from an Istio sidecar, a related but distinct failure mode layered on top of the Service/Endpoints mechanics here.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — the post-provision smoke test that should catch cluster-wide DNS/Service issues before applications hit them.

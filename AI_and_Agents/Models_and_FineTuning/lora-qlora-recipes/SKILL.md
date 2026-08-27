@@ -6,7 +6,7 @@ description: Configure LoRA and QLoRA supervised fine-tuning with current best-p
 # LoRA & QLoRA Recipes
 
 This skill assumes the routing decision already
-happened — `finetuning-method-selection` should
+happened — `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` should
 have already pointed here because the data shape
 is demonstrations (SFT), not preference pairs or
 a verifiable reward signal. What follows is the
@@ -16,13 +16,13 @@ size rank and alpha, what learning rate to use,
 and when QLoRA buys real headroom versus when it
 just adds risk. Dataset preparation and quality
 checks are a separate concern — see
-`dataset-curation`.
+`[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)`.
 
 **Input:** a routing decision (SFT via LoRA/
 QLoRA) plus a target size class.
 **Output format:** a validated adapter config —
 the kwarg values below, not free-form advice —
-that `llm-finetuning-training-engineer` consumes
+that `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer` consumes
 directly when it generates a runnable script.
 
 ## The Reference Recipe
@@ -36,7 +36,7 @@ settled convention for LoRA/QLoRA SFT.
 Target **all-linear** modules, not just
 attention:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 target_modules = [
     "q_proj", "k_proj", "v_proj", "o_proj",   # attention
     "gate_proj", "up_proj", "down_proj",      # MLP — matters most
@@ -72,8 +72,8 @@ Rank is task-shaped, not a single global default:
 | SFT at scale | up to ~256 |
 
 Higher rank isn't automatically better — it
-raises capacity to memorize as fast as it raises
-capacity to generalize. Start at the row matching
+raises [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to memorize as fast as it raises
+[capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to generalize. Start at the row matching
 the task, and only move up a row if the lower
 rank measurably underfits on held-out eval, not
 as a default hedge.
@@ -118,7 +118,7 @@ each one is set that way:
 These show up together on the `get_peft_model`
 call:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 model = FastLanguageModel.get_peft_model(
     model,
     r=32,
@@ -142,7 +142,7 @@ and `../../../Global_References/hyperparameters.md`.
 |---|---|
 | Adapting behavior on demonstrations | LoRA |
 | Base model doesn't fit in bf16 at target rank | QLoRA |
-| Injecting dense new domain knowledge | Full FT (see `finetuning-method-selection`) |
+| Injecting dense new domain knowledge | Full FT (see `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`) |
 | Unsure which one | LoRA — upgrade to QLoRA only if memory forces it |
 
 - **QLoRA** = NF4-quantized frozen base weights +
@@ -162,7 +162,7 @@ and `../../../Global_References/hyperparameters.md`.
   transient CUDA-side allocations that spike
   during load. A QLoRA OOM is not proof the model
   doesn't fit; the `dgx-spark-ops` plugin's
-  `spark-memory-thermal-ops` skill covers the
+  `[spark-memory-thermal-ops](../../../Data_Engineering/spark-memory-thermal-ops/SKILL.md)` skill covers the
   full OOM remediation ladder (bf16 LoRA is the
   next thing to try, not a further QLoRA
   shrink).
@@ -178,7 +178,7 @@ and `../../../Global_References/hyperparameters.md`.
   hardware support before picking a dtype:
 
   ```bash
-  python -c "import torch; print(torch.cuda.is_bf16_supported())"
+  [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "import torch; print(torch.cuda.is_bf16_supported())"
   ```
 
 - **Rank too high on a small dataset overfits.**
@@ -215,9 +215,9 @@ skill before debugging the training loop itself.
   escape-hatch rule for when to drop back to
   plain TRL.
 
-Related skills: `finetuning-method-selection`
-routes here; `dataset-curation` covers the data
-side this skill doesn't; `llm-finetuning-training-engineer`
+Related skills: `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
+routes here; `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)` covers the data
+side this skill doesn't; `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer`
 is the downstream consumer of the config this
 skill produces.
 

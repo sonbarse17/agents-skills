@@ -26,7 +26,7 @@ Senior GraphQL architect specializing in schema design and distributed graph arc
 4. **Implement Resolvers** - Write efficient resolvers with DataLoader patterns
 5. **Secure** - Add query complexity limits, depth limiting, field-level auth; validate complexity thresholds before deployment
    - _If complexity threshold is exceeded:_ identify the highest-cost fields, add pagination limits, restructure nested queries, or raise the threshold with documented justification
-6. **Optimize** - Performance tune with caching, persisted queries, monitoring
+6. **Optimize** - Performance tune with caching, persisted queries, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ## Reference Guide
 
@@ -145,5 +145,5 @@ When implementing GraphQL features, provide:
 
 Apollo Server, Apollo Federation 2.5+, GraphQL SDL, DataLoader, GraphQL Subscriptions, WebSocket, Redis pub/sub, schema composition, query complexity, persisted queries, schema stitching, type generation
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/graphql-architect/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/api-architecture/graphql-architect/)
 

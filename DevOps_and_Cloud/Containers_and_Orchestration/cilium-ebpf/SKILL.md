@@ -24,7 +24,7 @@ tags: [devops, cilium, ebpf, kubernetes, networking, phase-5]
 # Cilium and eBPF
 
 ## Purpose
-Implement Cilium-based Kubernetes networking with eBPF for high-performance networking, security policies, observability, and multi-cluster connectivity.
+Implement Cilium-based [Kubernetes](../kubernetes/SKILL.md) networking with eBPF for high-performance networking, security policies, [observability](../../Observability_and_SecOps/observability/SKILL.md), and multi-cluster connectivity.
 
 ## Architecture Decision Trees
 
@@ -35,7 +35,7 @@ Implement Cilium-based Kubernetes networking with eBPF for high-performance netw
 | L7 network policies | Yes (Envoy) | No | No | No |
 | Encryption | WireGuard/IPsec | WireGuard | No | Yes (encrypt) |
 | Cluster mesh | Yes | Yes (multi-interface) | No | Yes |
-| Hubble observability | Built-in | No | No | No |
+| Hubble [observability](../../Observability_and_SecOps/observability/SKILL.md) | Built-in | No | No | No |
 | Bandwidth management | Yes (eBPF) | No | No | No |
 | Performance | Near-native | Iptables-based | Overlay | Overlay |
 | eBPF-only features | Yes | No | No | No |
@@ -47,7 +47,7 @@ Implement Cilium-based Kubernetes networking with eBPF for high-performance netw
 | Features | Service mesh, bandwidth, encryption | Basic networking |
 | Kernel req | >= 5.10 | >= 4.19 |
 | Migration | Requires kernel support | Safe fallback |
-| Observability | Hubble per-packet | Limited |
+| [Observability](../../Observability_and_SecOps/observability/SKILL.md) | Hubble per-packet | Limited |
 
 ### Network Policy Enforcement
 | Policy Type | Cilium CRD | Traditional K8s | L7 Aware | Performance |
@@ -57,7 +57,7 @@ Implement Cilium-based Kubernetes networking with eBPF for high-performance netw
 | Cluster-wide | CiliumClusterWideNetworkPolicy | Not supported | Yes | eBPF |
 | DNS-based | ToFQDN | Not supported | No | eBPF |
 
-### Hubble vs Prometheus for Observability
+### Hubble vs Prometheus for [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 | Feature | Hubble | Prometheus |
 |---|---|---|
 | Data source | eBPF (kernel-level, per-packet) | Metrics endpoint (app-level) |
@@ -93,7 +93,7 @@ Kernel supports WireGuard?
 ```
 
 ## Quick Start
-Helm install Cilium → Verify with cilium status → kube-proxy replacement → Network policies (L3/L4, L7) → Hubble for observability → Cluster mesh for multi-cluster → Service mesh for L7.
+Helm install Cilium → Verify with cilium status → kube-proxy replacement → Network policies (L3/L4, L7) → Hubble for [observability](../../Observability_and_SecOps/observability/SKILL.md) → Cluster mesh for multi-cluster → Service mesh for L7.
 
 ## Core Workflow
 
@@ -106,7 +106,7 @@ helm upgrade --install cilium cilium/cilium --namespace kube-system \
   --set hubble.relay.enabled=true \
   --set hubble.ui.enabled=true \
   --set encryption.type=wireguard \
-  --set ipam.mode=kubernetes \
+  --set ipam.mode=[kubernetes](../kubernetes/SKILL.md) \
   --set devices='{eth0}' \
   --set routingMode=native \
   --set autoDirectNodeRoutes=true \
@@ -136,7 +136,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app: api-gateway
+            app: [api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)
       toPorts:
         - ports:
             - port: "8080"
@@ -175,7 +175,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app: api-gateway
+            app: [api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)
       toPorts:
         - ports:
             - port: "8080"
@@ -222,10 +222,10 @@ spec:
                 topic: "payments"
 ```
 
-### Step 5: Hubble Observability
+### Step 5: Hubble [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 ```bash
 # Enable Hubble Relay and UI (already enabled in install)
-kubectl port-forward -n kube-system svc/hubble-ui 12000:80
+[kubectl](../kubectl/SKILL.md) port-forward -n kube-system svc/hubble-ui 12000:80
 # Open http://localhost:12000
 
 # Hubble CLI
@@ -293,8 +293,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-    kubernetes.io/ingress-bandwidth: "100M"
-    kubernetes.io/egress-bandwidth: "100M"
+    [kubernetes](../kubernetes/SKILL.md).io/ingress-bandwidth: "100M"
+    [kubernetes](../kubernetes/SKILL.md).io/egress-bandwidth: "100M"
   name: bandwidth-limited-pod
 spec:
   containers:
@@ -319,7 +319,7 @@ cilium bpf ipcache list | grep encrypt
 
 ### Step 9: Cilium Service Mesh — L7 Ingress
 ```yaml
-# service-mesh/cilium-ingress.yaml
+# [service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)/cilium-ingress.yaml
 apiVersion: cilium.io/v2alpha1
 kind: CiliumIngress
 metadata:
@@ -355,7 +355,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": kube-system
+            "k8s:io.[kubernetes](../kubernetes/SKILL.md).pod.namespace": kube-system
   # All other ingress is denied by default
 ```
 
@@ -389,13 +389,13 @@ helm upgrade cilium cilium/cilium --namespace kube-system --reuse-values \
   --set hubble.metrics.enabled="{dns,drop,tcp,flow,icmp,http}" \
   --set hubble.metrics.destination=prometheus
 
-# Grafana dashboards available at:
-# https://github.com/cilium/cilium/tree/main/install/kubernetes/cilium/environment/hubble/grafana
+# Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) available at:
+# https://[github](../../CI_CD/github/SKILL.md).com/cilium/cilium/tree/main/install/[kubernetes](../kubernetes/SKILL.md)/cilium/environment/hubble/grafana
 ```
 
 ### Step 13: Cilium Monitor — Real-time Debugging
 ```bash
-# Real-time packet flow monitoring
+# Real-time packet flow [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 cilium monitor --verbose
 
 # Monitor specific service
@@ -414,7 +414,7 @@ cilium monitor --hex
 ### Step 14: Cilium Endpoint and Identity Inspection
 ```bash
 # List all Cilium endpoints
-kubectl get ciliumendpoints -A
+[kubectl](../kubectl/SKILL.md) get ciliumendpoints -A
 
 # Get endpoint identity details
 cilium endpoint list
@@ -425,7 +425,7 @@ cilium identity list
 cilium identity get <identity-id>
 
 # Check security identity labels
-kubectl get ciliumendpoints --all-namespaces -o json \
+[kubectl](../kubectl/SKILL.md) get ciliumendpoints --all-namespaces -o json \
   | jq '.items[] | {pod: .metadata.name, ns: .metadata.namespace, identity: .status.identity.id}'
 ```
 
@@ -433,10 +433,10 @@ kubectl get ciliumendpoints --all-namespaces -o json \
 
 | Feature | Cilium | Tetragon | Falco | Tracee |
 |---|---|---|---|---|
-| Use case | Network & security | Process & syscall monitoring | System call security | Runtime security |
+| Use case | Network & security | Process & syscall [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | System call security | Runtime security |
 | eBPF hooks | TC, XDP, cgroup, sock | Tracepoints, kprobes | Kernel modules + eBPF | Tracepoints, kprobes |
 | Network policies | Yes (L3-L7) | No (process focus) | No | No |
-| Process monitoring | Basic | Deep (exec, file, network) | Syscalls | Syscalls |
+| Process [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | Basic | Deep (exec, file, network) | Syscalls | Syscalls |
 | K8s integration | Native | Native | Plugin | Plugin |
 | CRD policies | Yes (NetworkPolicy) | Yes (TracingPolicy) | Rules file | Rules file |
 | Prometheus metrics | Yes (Hubble) | Yes | Yes | Yes |
@@ -451,7 +451,7 @@ bpf:
   masquerade: true
   tproxy: true
 ipam:
-  mode: kubernetes
+  mode: [kubernetes](../kubernetes/SKILL.md)
 encryption:
   type: wireguard
   wireguard:
@@ -484,10 +484,10 @@ resources:
 
 ## Security Considerations
 - CiliumNetworkPolicy with `policyEnforcementMode: always` prevents all traffic by default
-- Enable Hubble audit logging for all dropped packets — store in SIEM for compliance
+- Enable Hubble [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all dropped packets — store in SIEM for compliance
 - Use toFQDN policies instead of allowing all egress — prevents data exfiltration via DNS
 - WireGuard encryption ensures node-to-node traffic is secure even on untrusted networks
-- Cilium identities are tied to Kubernetes service accounts — never run containers as root
+- Cilium identities are tied to [Kubernetes](../kubernetes/SKILL.md) service accounts — never run containers as root
 - Hubble Relay API should be internal-only (not exposed externally)
 - Enable TLS for Hubble gRPC communication between relay and UI
 - Use CiliumClusterWideNetworkPolicy for baseline security that spans all namespaces
@@ -499,7 +499,7 @@ resources:
 - Enable encryption (WireGuard) for node-to-node traffic.
 - Use CiliumNetworkPolicy with L7 enforcement for critical services.
 - Apply CiliumClusterWideNetworkPolicy for baseline security (deny all by default).
-- Enable Hubble for network audit trail.
+- Enable Hubble for network [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - Use toFQDN policies instead of allowing all egress to APNs.
 - Enable policy enforcement mode: always.
 
@@ -546,7 +546,7 @@ Allowing all HTTP methods/paths without restrictions. L7 policies should be as s
 Not restricting pod egress traffic. Pods should only be allowed to talk to required services (API server, DNS, specific endpoints).
 
 ### Anti-Pattern 7: Hubble Disabled for Performance Reasons
-Disabling Hubble thinking it adds overhead. Hubble's eBPF-based observability has negligible overhead (< 5% CPU) and provides invaluable debugging.
+Disabling Hubble thinking it adds overhead. Hubble's eBPF-based [observability](../../Observability_and_SecOps/observability/SKILL.md) has negligible overhead (< 5% CPU) and provides invaluable debugging.
 
 ## Rules & Constraints
 - Kernel >= 5.10 required for full eBPF features.
@@ -566,9 +566,9 @@ Disabling Hubble thinking it adds overhead. Hubble's eBPF-based observability ha
   - ../../../Global_References/cluster-mesh.md
   - ../../../Global_References/ebpf-deep-dive.md
   - ../../../Global_References/network-policies.md
-  - ../../../Global_References/observability-hubble.md
-  - references/cilium-service-mesh-guide.md
+  - ../../../Global_References/[observability](../../Observability_and_SecOps/observability/SKILL.md)-hubble.md
+  - references/cilium-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-guide.md
 
 ## Handoff
-Next: **service-mesh** — Istio/Linkerd service mesh integration with Cilium.
+Next: **[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)** — Istio/Linkerd service mesh integration with Cilium.
 

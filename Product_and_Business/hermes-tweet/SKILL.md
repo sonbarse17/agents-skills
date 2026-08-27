@@ -18,7 +18,7 @@ metadata:
 # Hermes Tweet
 
 Hermes Tweet adds an X/Twitter toolset to Hermes Agent. It is useful for social
-listening, account research, launch monitoring, support triage, giveaway audits,
+listening, account research, launch [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), support triage, giveaway audits,
 and controlled workflows where private or state-changing operations stay
 explicit.
 
@@ -55,7 +55,7 @@ draw, or media operation.
 
 Ask for these inputs before selecting routes:
 
-- Objective: research, monitoring, support triage, giveaway audit, or action prep
+- Objective: research, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), support triage, giveaway [audit](../../AI_and_Agents/Operations/audit/SKILL.md), or action prep
 - Target: account handle, tweet URL, keyword, list, monitor, or trend
 - Time window and freshness needs
 - Whether any private or state-changing operation is in scope
@@ -94,7 +94,7 @@ Action plan:
 - Proposed private or state-changing operations, each awaiting explicit approval
 
 Next check:
-- Follow-up route or monitoring cadence when useful
+- Follow-up route or [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) cadence when useful
 ```
 
 ## Usage Examples
@@ -152,11 +152,11 @@ Capture structured route notes:
 
 ## See Also
 
-The social-publishing plugin complements Hermes Tweet for broad multi-platform
+The [social-publishing](../social-publishing/SKILL.md) plugin complements Hermes Tweet for broad multi-platform
 publishing. Hermes Tweet is focused on the Hermes Agent X/Twitter toolset and its
 read-first, approval-gated operating model.
 
 See [the endpoint and approval contract](../../../Global_References/endpoint-contract.md) when a
 route boundary is unclear. See the official guide at
-https://github.com/Xquik-dev/hermes-tweet#readme.
+https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Xquik-dev/hermes-tweet#readme.
 

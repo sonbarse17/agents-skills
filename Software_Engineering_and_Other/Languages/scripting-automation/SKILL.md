@@ -40,7 +40,7 @@ naming what failed, with no partial success reported as success.
 
 A script that's safe to run once but not twice will eventually be run twice — by a retry, by a
 confused operator, by a scheduler that fired while the last run was still cleaning up. Idempotency
-is the same discipline `workflow-automation` requires of workflow steps, applied to the script
+is the same discipline `[workflow-automation](../../Patterns/workflow-automation/SKILL.md)` requires of workflow steps, applied to the script
 itself.
 
 - **Check state before changing it** — "does this exist" before "create this."
@@ -86,13 +86,13 @@ what the script changed.
 
 A script accumulates flags, retries, and edge-case handling until it's effectively an application
 without the tests, ownership, or deployment story of one. That's the point to graduate it — into a
-proper CLI, a scheduled job with monitoring, or a service — rather than adding the twentieth flag.
+proper CLI, a scheduled job with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), or a service — rather than adding the twentieth flag.
 
 - **Growing beyond a few hundred lines, or beyond one owner's head**, is a graduation signal.
 - **Needing its own test suite** to trust changes means it needs the structure a script directory
   doesn't provide.
 - **Being invoked by other automation regularly** means its failure mode now affects more than one
-  person's terminal — treat it with the rigor of `workflow-automation`.
+  person's terminal — treat it with the rigor of `[workflow-automation](../../Patterns/workflow-automation/SKILL.md)`.
 
 **Done when:** you can name, honestly, whether this script is still a script or should already be
 something else — and if it should, that decision is written down, not deferred indefinitely.

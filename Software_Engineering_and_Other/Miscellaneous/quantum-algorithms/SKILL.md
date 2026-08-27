@@ -13,7 +13,7 @@ The quantum bottleneck of Shor's algorithm lies in finding the period $r$ of the
 ## Grover's Diffusion Operator
 Grover's algorithm achieves quadratic speedup for unstructured search using amplitude amplification. The diffusion operator $U_s = 2|s\rangle\langle s| - I$ performs inversion about the mean.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph AmplitudeAmplificationAmplitudeAmplification ["Amplitude Amplification<br><br><br>"]

@@ -21,7 +21,7 @@ Hardware interrupts trigger an asynchronous context switch.
 - **Top Half:** Executes immediately in interrupt context with interrupts disabled. Aims to acknowledge the hardware and schedule deferred work, maintaining ultra-low latency.
 - **Bottom Half (SoftIRQs, Tasklets, Workqueues):** Executes deferred, non-time-critical processing in process context or with interrupts enabled, preventing system starvation.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     HW["Hardware Event"] -->|"Raise(IRQ)"| CPU

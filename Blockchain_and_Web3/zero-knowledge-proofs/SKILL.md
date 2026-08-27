@@ -28,7 +28,7 @@ component main = SecretHasher();
 Use Groth16 or Plonk for succinct non-interactive arguments of knowledge. Ensure trusted setup (PTAU) for Groth16.
 
 ## Privacy Protocol Architecture
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     User[User] -->|Secret| Circuit[ZK Circuit]

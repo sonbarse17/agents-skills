@@ -31,9 +31,9 @@ Use this skill when:
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
     "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+    "ghcr.io/devcontainers/features/[python](../../Languages/python/SKILL.md):1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):2": {},
+    "ghcr.io/devcontainers/features/[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)-helm-minikube:1": {}
   },
   "forwardPorts": [3000, 5432],
   "postCreateCommand": "npm install",
@@ -42,7 +42,7 @@ Use this skill when:
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-python.python"
+        "ms-[python](../../Languages/python/SKILL.md).[python](../../Languages/python/SKILL.md)"
       ],
       "settings": {
         "editor.formatOnSave": true
@@ -52,13 +52,13 @@ Use this skill when:
 }
 ```
 
-### Docker Compose Dev Container
+### [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Dev Container
 
 ```json
 // .devcontainer/devcontainer.json
 {
   "name": "Full Stack Dev",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml",
   "service": "app",
   "workspaceFolder": "/workspace",
   "forwardPorts": [3000, 5432, 6379],
@@ -67,7 +67,7 @@ Use this skill when:
 ```
 
 ```yaml
-# .devcontainer/docker-compose.yml
+# .devcontainer/[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 services:
   app:
     build:
@@ -85,7 +85,7 @@ services:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/[postgresql](../../Backend/postgresql/SKILL.md)/data
     ports:
       - "5432:5432"
 
@@ -115,8 +115,8 @@ RUN apt-get update && apt-get install -y \
 
 # Install project-specific tools
 RUN curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone
-RUN curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-    && install kubectl /usr/local/bin/
+RUN curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)" \
+    && install [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) /usr/local/bin/
 
 # Non-root user setup
 USER vscode
@@ -133,8 +133,8 @@ WORKDIR /workspace
   description = "Project development environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):numtide/flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -152,9 +152,9 @@ WORKDIR /workspace
             cargo
 
             # Tools
-            docker-compose
-            kubectl
-            kubernetes-helm
+            [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)
+            [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+            [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-helm
             opentofu
             awscli2
             jq
@@ -211,8 +211,8 @@ curl -fsSL https://get.jetify.com/devbox | bash
 devbox init
 
 # Add packages
-devbox add nodejs@20 python@3.12 postgresql@16
-devbox add go@1.22 kubectl helm
+devbox add nodejs@20 [python](../../Languages/python/SKILL.md)@3.12 [postgresql](../../Backend/postgresql/SKILL.md)@16
+devbox add go@1.22 [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) helm
 
 # Enter shell
 devbox shell
@@ -228,19 +228,19 @@ devbox run node --version
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
   "packages": [
     "nodejs@20",
-    "python@3.12",
+    "[python](../../Languages/python/SKILL.md)@3.12",
     "go@1.22",
-    "kubectl@1.29",
-    "kubernetes-helm@3.14",
+    "[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)@1.29",
+    "[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-helm@3.14",
     "opentofu@1.8",
     "awscli2@2.15",
     "jq@1.7",
-    "postgresql@16",
+    "[postgresql](../../Backend/postgresql/SKILL.md)@16",
     "redis@7"
   ],
   "env": {
     "PROJECT_ROOT": "$PWD",
-    "DATABASE_URL": "postgresql://localhost:5432/dev"
+    "DATABASE_URL": "[postgresql](../../Backend/postgresql/SKILL.md)://localhost:5432/dev"
   },
   "shell": {
     "init_hook": [
@@ -250,8 +250,8 @@ devbox run node --version
     "scripts": {
       "dev": "npm run dev",
       "test": "npm test",
-      "db:start": "pg_ctl -D .devbox/virtenv/postgresql/data start",
-      "db:stop": "pg_ctl -D .devbox/virtenv/postgresql/data stop",
+      "db:start": "pg_ctl -D .devbox/virtenv/[postgresql](../../Backend/postgresql/SKILL.md)/data start",
+      "db:stop": "pg_ctl -D .devbox/virtenv/[postgresql](../../Backend/postgresql/SKILL.md)/data stop",
       "db:migrate": "npx prisma migrate dev"
     }
   }
@@ -293,10 +293,10 @@ Now `cd`-ing into the project automatically loads the environment.
 
 ## CI/CD Integration
 
-### GitHub Actions with Devbox
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions with Devbox
 
 ```yaml
-# .github/workflows/ci.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ci.yml
 name: CI
 on: [push, pull_request]
 
@@ -312,7 +312,7 @@ jobs:
       - run: devbox run lint
 ```
 
-### GitHub Actions with Nix
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions with Nix
 
 ```yaml
 name: CI
@@ -333,7 +333,7 @@ jobs:
       - run: nix develop --command bash -c "npm ci && npm test"
 ```
 
-### GitHub Codespaces
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Codespaces
 
 ```json
 // .devcontainer/devcontainer.json — works in Codespaces
@@ -356,34 +356,34 @@ jobs:
 | Feature | Dev Containers | Nix Flakes | Devbox |
 |---------|---------------|------------|--------|
 | Learning curve | Low | High | Low |
-| Reproducibility | Good (Docker) | Excellent | Excellent (Nix) |
+| Reproducibility | Good ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) | Excellent | Excellent (Nix) |
 | Speed | Slow (build image) | Fast (cached) | Fast (cached) |
 | IDE support | VS Code, JetBrains | Any terminal | Any terminal |
-| CI integration | Docker-based | Nix actions | Devbox action |
+| CI integration | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based | Nix actions | Devbox action |
 | Offline support | Limited | Full | Full |
 | macOS/Linux/Win | All | macOS/Linux | macOS/Linux |
 
 ## Best Practices
 
 - Pin all tool versions explicitly — never use `latest`
-- Commit lock files (`flake.lock`, `devbox.lock`, etc.)
+- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock files (`flake.lock`, `devbox.lock`, etc.)
 - Use direnv for automatic environment activation
-- Cache Nix store in CI (Cachix or GitHub cache)
+- Cache Nix store in CI (Cachix or [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) cache)
 - Document setup in README: `devbox shell` or `nix develop`
-- Keep dev environment close to production (same Node/Python versions)
+- Keep dev environment close to production (same Node/[Python](../../Languages/python/SKILL.md) versions)
 
 ## Troubleshooting
 
 | Issue | Solution |
 |-------|---------|
 | Nix build slow first time | Use binary cache (Cachix), `nix develop` caches after first run |
-| Dev Container won't build | Check Docker disk space, rebuild with `--no-cache` |
+| Dev Container won't build | Check [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) disk space, rebuild with `--no-cache` |
 | Package not in Nixpkgs | Search at search.nixos.org, or use `fetchFromGitHub` overlay |
 | Devbox hash mismatch | Run `devbox update`, delete `.devbox/` and re-init |
 | direnv not activating | Run `direnv allow`, check shell hook is installed |
 
 ## Related Skills
 
-- [docker-management](../../containers/docker-management/) — Container image optimization
-- [github-actions](../../ci-cd/github-actions/) — CI/CD pipeline setup
-- [linux-administration](../../../infrastructure/servers/linux-administration/) — System-level tooling
+- [docker-management](../../containers/[docker-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-management/SKILL.md)/) — Container image optimization
+- [github-actions](../../ci-cd/[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) — CI/CD pipeline setup
+- [linux-administration](../../../infrastructure/servers/[linux-administration](../linux-administration/SKILL.md)/) — System-level tooling

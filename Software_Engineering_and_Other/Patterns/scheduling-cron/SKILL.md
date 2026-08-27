@@ -25,8 +25,8 @@ Exact user phrases: "cron", "schedule", "scheduled task", "cron job", "job sched
 
 ### Input Context
 - Job definitions and their schedule (cron expressions).
-- Distributed environment (Kubernetes, multi-instance).
-- Existing infrastructure (Redis, PostgreSQL, ZooKeeper).
+- Distributed environment ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), multi-instance).
+- Existing infrastructure (Redis, [PostgreSQL](../../Backend/postgresql/SKILL.md), ZooKeeper).
 
 ### Output Artifact
 Cron job configuration or scheduler code. No file unless requested.
@@ -44,7 +44,7 @@ Provider: {built-in|distributed-scheduler|external}
 - [ ] Exactly-once execution guaranteed in multi-instance deployment.
 - [ ] Timezone handling correct — DST transitions mapped.
 - [ ] Error handling and retry configured.
-- [ ] Monitoring and alerting for missed executions.
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) for missed executions.
 
 ### Max Response Length
 3 lines per job. 15 lines for full setup.
@@ -73,13 +73,13 @@ What infrastructure is available?
   ├── Redis → SET NX with TTL for lock, Lua for atomic operations
   │   ├── PRO: Fast, built-in TTL, simple
   │   └── CON: Lock expiration on Redis failover
-  ├── PostgreSQL → Advisory locks or row-level locks
+  ├── [PostgreSQL](../../Backend/postgresql/SKILL.md) → Advisory locks or row-level locks
   │   ├── PRO: Same DB as data, no extra infra
   │   └── CON: Lock contention impacts DB performance
   ├── ZooKeeper/etcd → Ephemeral znodes for leader election
   │   ├── PRO: Strong consistency, automatic lease renewal
   │   └── CON: Operational complexity, extra infra
-  └── Kubernetes → CronJob resource (native)
+  └── [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → CronJob resource (native)
       ├── PRO: No code needed, self-healing
       └── CON: No intra-job coordination, at-most-once
 ```
@@ -123,7 +123,7 @@ const jobs = [
 ```
 
 ### Step 2: Ensure Exactly-Once Execution (Distributed)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Option A: Distributed lock (Redis)
 class DistributedCron {
   constructor(private redis: Redis, private lockTTL: number = 60000) {}
@@ -155,7 +155,7 @@ class DistributedCron {
   }
 }
 
-// Option B: PostgreSQL advisory lock
+// Option B: [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory lock
 async function executeWithPgLock(job: Job): Promise<void> {
   const lockId = hashString(`cron:${job.name}`);
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -172,7 +172,7 @@ async function executeWithPgLock(job: Job): Promise<void> {
   }
 }
 
-// Option C: Kubernetes CronJob
+// Option C: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CronJob
 // apiVersion: batch/v1
 // kind: CronJob
 // spec:
@@ -189,7 +189,7 @@ async function executeWithPgLock(job: Job): Promise<void> {
 ```
 
 ### Step 3: Handle Timezones and DST
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { DateTime } from 'luxon';
 
 function isDue(job: Job, lastRun: Date | null): boolean {
@@ -230,7 +230,7 @@ function handleDSTTransition(job: Job): boolean {
 ```
 
 ### Step 4: Retry Failed Jobs
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class JobRunner {
   async executeWithRetry(job: Job): Promise<void> {
     for (let attempt = 1; attempt <= (job.retry?.maxAttempts ?? 1); attempt++) {
@@ -252,7 +252,7 @@ class JobRunner {
 ```
 
 ### Step 5: Monitor Jobs
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Expose metrics for every job
 interface JobMetrics {
   duration: number;        // Execution time in ms
@@ -272,7 +272,7 @@ interface JobMetrics {
 ## Implementation Patterns
 
 ### Dynamic Job Registration
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class JobRegistry {
   private jobs = new Map<string, Job>();
   private scheduler: DistributedScheduler;
@@ -328,7 +328,7 @@ Common expressions:
 | Platform | Approach | HA | Exactness | Best For |
 |----------|----------|----|-----------|----------|
 | Linux cron | OS-level | Single node | Minute | Simple, single-node |
-| Kubernetes CronJob | K8s-native | Multi-node | At-least-once | K8s workloads |
+| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CronJob | K8s-native | Multi-node | At-least-once | K8s workloads |
 | Quartz (Java) | DB-backed | Multi-node | Exactly-once | Java ecosystem |
 | Temporal | Workflow engine | Multi-node | Exactly-once | Complex workflows |
 | Airflow | DAG scheduler | Multi-node | At-least-once | Data pipelines |
@@ -355,7 +355,7 @@ Common expressions:
 2. **No timeout**: A job that hangs forever blocks the scheduler. Always set execution timeout.
 3. **Server-local timezone**: Relying on the server timezone for scheduling causes DST bugs. Always specify timezone explicitly.
 4. **Single-instance cron**: Running cron on a single instance creates a SPOF. Use distributed locking.
-5. **Missing monitoring**: A job that silently fails is worse than no job at all. Monitor every execution.
+5. **Missing [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: A job that silently fails is worse than no job at all. Monitor every execution.
 6. **Tight coupling**: Embedding business logic directly in a cron handler makes testing hard. Cron should call service methods.
 7. **Overlapping executions**: If a long-running job overlaps with its next schedule, both run concurrently. Prevent with lock timeout > max expected duration.
 
@@ -366,14 +366,14 @@ Common expressions:
 |-----------|---------|-------|
 | Cron expression parsing | <1ms | Cached after first parse |
 | Lock acquisition (Redis) | ~1-5ms | Network round-trip |
-| Lock acquisition (PostgreSQL) | ~1ms | In-DB advisory lock |
+| Lock acquisition ([PostgreSQL](../../Backend/postgresql/SKILL.md)) | ~1ms | In-DB advisory lock |
 | Job handler | Varies | Business logic |
 | Metric recording | <1ms | In-process counter |
 
 ### Scheduler Throughput
 - Single scheduler process: 1000+ jobs per second (schedule evaluation)
 - Distributed lock overhead: ~5ms per job execution
-- PostgreSQL advisory lock: ~2ms per lock/unlock cycle
+- [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory lock: ~2ms per lock/unlock cycle
 
 ## Rules
 - Always specify timezone explicitly — never rely on server timezone.
@@ -389,15 +389,15 @@ Common expressions:
 ## References
   - ../../../Global_References/cron-expression-guide.md — Cron Expression Guide
   - ../../../Global_References/distributed-cron.md — Distributed Cron
-  - ../../../Global_References/scheduling-cron_job-monitoring.md — Job Monitoring and Management
+  - ../../../Global_References/scheduling-cron_job-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Job [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Management
   - ../../../Global_References/scheduler-implementation.md — Scheduling and Cron Patterns
   - ../../../Global_References/scheduling-architecture.md — Scheduling Architecture
-  - ../../../Global_References/scheduling-monitoring.md — Scheduling Monitoring
+  - ../../../Global_References/scheduling-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Scheduling [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/scheduling-patterns.md — Scheduling Patterns
   - ../../../Global_References/scheduling-security.md — Scheduling Security
 ## Handoff
 No artifact produced unless requested.
-Next skill: multi-tenancy — segregate data for different tenants using the scheduled jobs.
+Next skill: [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) — segregate data for different tenants using the scheduled jobs.
 Carry forward: job definitions, cron expressions, lock provider.
 ## Implementation Patterns
 
@@ -451,7 +451,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -465,7 +465,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -481,12 +481,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -495,7 +495,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -503,13 +503,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -518,8 +518,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

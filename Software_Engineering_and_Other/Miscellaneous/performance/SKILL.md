@@ -10,8 +10,8 @@ description: Optimization strategies for Core Web Vitals (LCP, FID/INP, CLS).
 - **INP (Interaction to Next Paint) / FID:** Measures interactivity and responsiveness (target < 200ms).
 - **CLS (Cumulative Layout Shift):** Measures visual stability (target < 0.1).
 
-## Mermaid Diagram
-```mermaid
+## [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) Diagram
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Performance Optimization] --> B[Improve LCP]

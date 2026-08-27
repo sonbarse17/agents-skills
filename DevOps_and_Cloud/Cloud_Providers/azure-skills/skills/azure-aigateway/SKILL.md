@@ -12,7 +12,7 @@ compatibility: Requires Azure CLI (az) for configuration and testing
 
 Configure Azure API Management (APIM) as an AI Gateway for governing AI models, MCP tools, and agents.
 
-> **To deploy APIM**, use the **azure-prepare** skill. See [APIM deployment guide](https://learn.microsoft.com/azure/api-management/get-started-create-service-instance).
+> **To deploy APIM**, use the **[azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md)** skill. See [APIM deployment guide](https://learn.microsoft.com/azure/api-management/get-started-create-service-instance).
 
 ## When to Use This Skill
 
@@ -32,7 +32,7 @@ Configure Azure API Management (APIM) as an AI Gateway for governing AI models, 
 |--------|---------|---------|
 | `azure-openai-token-limit` | Cost control | [Model Policies](../../../../../Global_References/policies.md#token-rate-limiting) |
 | `azure-openai-semantic-cache-lookup/store` | 60-80% cost savings | [Model Policies](../../../../../Global_References/policies.md#semantic-caching) |
-| `azure-openai-emit-token-metric` | Observability | [Model Policies](../../../../../Global_References/policies.md#token-metrics) |
+| `azure-openai-emit-token-metric` | [Observability](../../../../Observability_and_SecOps/observability/SKILL.md) | [Model Policies](../../../../../Global_References/policies.md#token-metrics) |
 | `llm-content-safety` | Safety & compliance | [Agent Policies](../../../../../Global_References/policies.md#content-safety) |
 | `rate-limit-by-key` | MCP/tool protection | [Tool Policies](../../../../../Global_References/policies.md#request-rate-limiting) |
 
@@ -120,11 +120,11 @@ See [../../../../../Global_References/troubleshooting.md](../../../../../Global_
 - [**Detailed Policies**](../../../../../Global_References/policies.md) - Full policy examples
 - [**Configuration Patterns**](../../../../../Global_References/azure-aigateway_patterns.md) - Step-by-step patterns
 - [**Troubleshooting**](../../../../../Global_References/troubleshooting.md) - Common issues
-- [AI-Gateway Samples](https://github.com/Azure-Samples/AI-Gateway)
+- [AI-Gateway Samples](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure-Samples/AI-Gateway)
 - [GenAI Gateway Docs](https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities)
 
 ## SDK Quick References
 
-- **Content Safety**: [Python](references/sdk/azure-ai-contentsafety-py.md) | [TypeScript](references/sdk/azure-ai-contentsafety-ts.md)
-- **API Management**: [Python](references/sdk/azure-mgmt-apimanagement-py.md) | [.NET](references/sdk/azure-mgmt-apimanagement-dotnet.md)
+- **Content Safety**: [Python](references/sdk/[azure-ai-contentsafety-py](../../../[azure-ai-contentsafety-py](../../../azure-sdk-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/[azure-ai](../../../[azure-ai](../azure-ai/SKILL.md)/SKILL.md)-contentsafety-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-ai-contentsafety-ts](../../../[azure-ai-contentsafety-ts](../../../azure-sdk-[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/[azure-ai](../../../[azure-ai](../azure-ai/SKILL.md)/SKILL.md)-contentsafety-ts/SKILL.md)/SKILL.md).md)
+- **API Management**: [Python](references/sdk/[azure-mgmt-apimanagement-py](../../../[azure-mgmt-apimanagement-py](../../../azure-sdk-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-mgmt-apimanagement-py/SKILL.md)/SKILL.md).md) | [.NET](references/sdk/[azure-mgmt-apimanagement-dotnet](../../../[azure-mgmt-apimanagement-dotnet](../../../azure-sdk-dotnet/skills/azure-mgmt-apimanagement-dotnet/SKILL.md)/SKILL.md).md)
 

@@ -21,7 +21,7 @@ Design information architecture: organize content, create navigation systems, de
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "information architecture" "sitemap" "user flow" "content hierarchy" "navigation" "content organization" "labeling" "taxonomy" "card sorting" "tree testing" "findability" "IA audit".
+Exact user phrases: "information architecture" "sitemap" "user flow" "content hierarchy" "navigation" "content organization" "labeling" "taxonomy" "card sorting" "tree testing" "findability" "IA [audit](../../AI_and_Agents/Operations/audit/SKILL.md)".
 
 ### Input Context
 - What type of product or website is being designed?
@@ -33,12 +33,12 @@ Exact user phrases: "information architecture" "sitemap" "user flow" "content hi
 - What competitive or reference IAs exist?
 
 ### Output Artifact
-Information architecture specification with content audit, sitemap, navigation design, taxonomy, and user flows.
+Information architecture specification with content [audit](../../AI_and_Agents/Operations/audit/SKILL.md), sitemap, navigation design, taxonomy, and user flows.
 
 ### Response Format
 ```
 ## Information Architecture Plan
-### Content Audit Summary
+### Content [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Summary
 Total pages: {N} | Gaps: {list} | Duplicates: {list}
 
 ### Sitemap Structure
@@ -58,7 +58,7 @@ Labels: {list}
 No preamble. No postamble. No explanations.
 
 ### Completion Criteria
-- [ ] Content audit completed with inventory and gap analysis
+- [ ] Content [audit](../../AI_and_Agents/Operations/audit/SKILL.md) completed with inventory and gap analysis
 - [ ] User research conducted to understand mental models
 - [ ] Card sorting conducted (open or closed) with results analyzed
 - [ ] Tree testing conducted with findability rate measured
@@ -120,17 +120,17 @@ The intersection of these three circles (content, users, context) defines the op
 
 ## Workflow
 
-### Step 1: Content Audit
+### Step 1: Content [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 Inventory all content, identify gaps and duplicates. Categorize content by type, owner, format, and status. Quantify volume to understand scale of IA challenge.
 
-Content audit template:
+Content [audit](../../AI_and_Agents/Operations/audit/SKILL.md) template:
 
 | # | URL/Path | Title | Content Type | Format | Owner | Status | Notes |
 |---|----------|-------|-------------|--------|-------|--------|-------|
 | 1 | /products/widget | Widget Pro | Product page | HTML | Product team | Published | Needs IA review |
 | 2 | /help/faq | FAQ | Support | HTML | Support team | Published | Multiple duplicates |
 
-Content audit analysis outputs:
+Content [audit](../../AI_and_Agents/Operations/audit/SKILL.md) analysis outputs:
 - Total content volume (pages, documents, media files)
 - Content type distribution (product, support, marketing, legal)
 - Orphaned content (no parent, no navigation path)
@@ -302,7 +302,7 @@ Failure: {what happens if user can't complete}
 | One-size-fits-all IA | Same structure for different user segments | Consider persona-specific navigation or personalization |
 | Ignoring search behavior | Designing for browsing when users search | Include search prominently; use search analytics to inform IA |
 | Inconsistent labeling | Different terms for same concept across the site | Create label taxonomy with approved terms and variations |
-| Content migration without IA review | Moving content to new design without restructuring | Always conduct content audit and IA review during redesign |
+| Content migration without IA review | Moving content to new design without restructuring | Always conduct content [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and IA review during redesign |
 | Too many navigation systems | Users overwhelmed by choice | Distinguish primary, secondary, and contextual navigation |
 | Skipping mobile IA | Desktop IA that doesn't adapt to mobile | Design mobile-first IA with progressive disclosure |
 | No IA governance | IA degrades over time without ownership | Assign IA owner; establish content publishing guidelines |
@@ -324,7 +324,7 @@ Failure: {what happens if user can't complete}
 
 ## Templates & Tools
 
-### Content Audit Template (Spreadsheet)
+### Content [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Template (Spreadsheet)
 ```
 URL | Page Title | Content Type | Category | Format | Owner | Last Updated | Status | Notes
 /help/getting-started | Getting Started Guide | Help | Onboarding | Article | Docs Team | 2025-06-01 | Published |
@@ -416,7 +416,7 @@ Impact: Findability 35% to 78%, task time -60%
 - IA must be validated with tree testing before implementation.
 - 80% findability rate is the minimum acceptable threshold.
 - Card sorting requires minimum 20 participants for statistically meaningful results.
-- Content audit must be conducted before any IA redesign of existing products.
+- Content [audit](../../AI_and_Agents/Operations/audit/SKILL.md) must be conducted before any IA redesign of existing products.
 - Sitemap must show all pages, including utility and support pages.
 - Mobile IA must be designed independently, not adapted from desktop.
 - IA governance must be established with a designated owner and review cadence.
@@ -482,7 +482,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -496,7 +496,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -512,12 +512,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -526,7 +526,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -534,13 +534,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

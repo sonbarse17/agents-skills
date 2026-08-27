@@ -93,7 +93,7 @@ Master PayPal payment integration including Express Checkout, IPN handling, recu
 </script>
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Backend - Verify and capture order
 from paypalrestsdk import Payment
 import paypalrestsdk
@@ -129,7 +129,7 @@ Detailed pattern documentation lives in `../../../Global_References/paypal-integ
 
 ## Testing
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Use sandbox credentials
 SANDBOX_CLIENT_ID = "..."
 SANDBOX_SECRET = "..."

@@ -28,7 +28,7 @@ A distributed trace is only as useful as the backend that stores,
 retains, and lets you query it — and that backend has its own set of
 operational decisions distinct from how telemetry gets produced and
 routed to it. **Grafana Tempo** and **Jaeger** are the two dominant
-open-source tracing backends: Tempo is object-storage-native (S3/GCS/
+open-source tracing backends: Tempo is [object-storage](../../Cloud_Providers/object-storage/SKILL.md)-native (S3/GCS/
 Azure Blob, or local disk for small deployments) and designed to be
 cheap to run at scale by trading fast arbitrary search for
 ID-based lookup plus structural indexing via TraceQL; Jaeger supports a
@@ -40,16 +40,16 @@ volume to actually keep (sampling), and how to make a trace ID pivotable
 into the logs and metrics for the same request rather than a dead-end
 visualization. This skill covers the backend/storage layer specifically
 — instrumenting applications and configuring the receiver → processor →
-exporter pipeline that feeds traces *into* Tempo/Jaeger is the OpenTelemetry
+exporter pipeline that feeds traces *into* Tempo/Jaeger is the [OpenTelemetry](../opentelemetry/SKILL.md)
 Collector's job, covered in
-[opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md),
+[opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md),
 which this skill assumes is already in place and cross-references
 rather than repeats.
 
 ## When to use
 
 - Standing up Tempo or Jaeger as the tracing backend for an
-  OpenTelemetry-instrumented (or Jaeger-native) system.
+  [OpenTelemetry](../opentelemetry/SKILL.md)-instrumented (or Jaeger-native) system.
 - Deciding a trace retention period and storage backend (object storage
   vs. Elasticsearch/Cassandra) based on trace volume and query needs.
 - Designing or tuning a sampling strategy — deciding what fraction of
@@ -67,9 +67,9 @@ rather than repeats.
 ## Prerequisites & environment
 
 - Traces already arriving in OTLP (or Jaeger native protocol/Thrift)
-  format from an OpenTelemetry Collector or directly-instrumented
+  format from an [OpenTelemetry](../opentelemetry/SKILL.md) Collector or directly-instrumented
   applications — see
-  [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md)
+  [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)
   for getting spans emitted and routed correctly in the first place;
   this skill assumes that plumbing works and covers only what happens
   once spans reach the backend.
@@ -77,21 +77,21 @@ rather than repeats.
   anything beyond a small single-node/local-disk deployment, and
   familiarity with Tempo's block-based storage model (`compactor`,
   `ingester`, `querier`, `distributor` components — deployable
-  monolithically for small setups or as separate microservices at
+  monolithically for small setups or as separate [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at
   scale).
 - **For Jaeger:** a supported storage backend already provisioned —
   Elasticsearch/OpenSearch for production-scale deployments with rich
   tag search, Cassandra as an alternative wide-column option, or Badger
   (embedded, local disk) for a single-node/development instance only.
 - Grafana (see
-  [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md))
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md))
   with Tempo and/or Jaeger configured as a datasource, plus Prometheus
   and Loki datasources already provisioned if trace-to-metrics/
   trace-to-logs correlation is in scope.
 - Clarity on the sampling decision *before* provisioning storage
-  capacity — tail-based sampling requires seeing every span of a trace
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — tail-based sampling requires seeing every span of a trace
   before deciding to keep it, which has different infrastructure
-  implications (a load-balancing exporter routing by trace ID, more
+  implications (a [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter routing by trace ID, more
   Collector-side buffering) than head-based sampling decided once at
   the start of a trace.
 - Tempo 2.x if relying on TraceQL (introduced in Tempo 2.0) as the
@@ -130,7 +130,7 @@ rather than repeats.
        block_retention: 336h   # 14 days
    ```
    A shorter retention (days, not weeks) is common for traces
-   specifically, since traces are typically used for near-term incident
+   specifically, since traces are typically used for near-term [incident](../incident/SKILL.md)
    investigation rather than long-term trend analysis (which metrics
    handle far more cheaply) — validate the actual retention need against
    how far back responders realistically need to pull a trace, not a
@@ -140,13 +140,13 @@ rather than repeats.
    existing operational expertise**, not just default familiarity:
    ```yaml
    # jaeger-collector storage flags (Elasticsearch backend)
-   --es.server-urls=https://elasticsearch.observability.svc:9200
+   --es.server-urls=https://elasticsearch.[observability](../observability/SKILL.md).svc:9200
    --es.index-prefix=jaeger
    --es.num-shards=3
    --es.num-replicas=1
    ```
    Elasticsearch gives Jaeger rich ad hoc tag-based search out of the
-   box, at the operational cost of running (and capacity-planning) an
+   box, at the operational cost of running (and [capacity-planning](../[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)) an
    Elasticsearch cluster; Badger is fine for a single-node/development
    Jaeger instance but is not a multi-node/HA-capable production backend.
 
@@ -182,8 +182,8 @@ rather than repeats.
    ```
    ```yaml
    # tail-based: keep all errors and all slow requests, sample the rest
-   # (this belongs in the OpenTelemetry Collector gateway tier — see
-   # opentelemetry-instrumentation-and-collector-configuration for the
+   # (this belongs in the [OpenTelemetry](../opentelemetry/SKILL.md) Collector gateway tier — see
+   # [opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md) for the
    # full pipeline this feeds into Tempo/Jaeger from)
    processors:
      tail_sampling:
@@ -202,9 +202,9 @@ rather than repeats.
    Tail-based sampling is the right default for production systems where
    the rare slow/erroring request is exactly what an investigation needs
    to find — but it only works correctly if every span for a given trace
-   ID reaches the same Collector replica (see the load-balancing exporter
+   ID reaches the same Collector replica (see the [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter
    note in
-   [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md)).
+   [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)).
 
 6. **Set Jaeger's per-service sampling strategy** if using Jaeger's own
    native sampling configuration rather than Collector-side sampling:
@@ -241,7 +241,7 @@ rather than repeats.
    datasources:
      - name: Tempo
        type: tempo
-       url: http://tempo-query-frontend.observability.svc:3100
+       url: http://tempo-query-frontend.[observability](../observability/SKILL.md).svc:3100
        jsonData:
          tracesToLogsV2:
            datasourceUid: loki-datasource-uid
@@ -253,11 +253,11 @@ rather than repeats.
            query: '{service_name="$__span.tags.service.name"} | json | trace_id="$__trace.traceId"'
    ```
    This is the backend-side half of the correlation described in
-   [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md);
+   [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md);
    it only works if the application/Collector layer actually puts the
    `trace_id` into structured log lines in the first place, which is an
    instrumentation concern covered in
-   [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md).
+   [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md).
 
 8. **Configure trace-to-metrics correlation** so a trace view can jump
    to the relevant service's request-rate/error-rate/latency dashboard,
@@ -283,7 +283,7 @@ rather than repeats.
    { .service.name = "checkout-service" && duration > 500ms && status = error }
    ```
    ```traceql
-   { .service.name = "payments-service" } >> { .db.system = "postgresql" && duration > 200ms }
+   { .service.name = "payments-service" } >> { .db.system = "[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)" && duration > 200ms }
    ```
    The second example finds traces where a `payments-service` span has a
    descendant Postgres span slower than 200ms — a structural query no
@@ -298,7 +298,7 @@ rather than repeats.
 
 ## Best practices
 
-- Choose Tempo's object-storage backend as the default for new
+- Choose Tempo's [object-storage](../../Cloud_Providers/object-storage/SKILL.md) backend as the default for new
   production tracing deployments — the storage-cost advantage at real
   trace volume is substantial compared to Elasticsearch/Cassandra-backed
   Jaeger, unless Jaeger's richer native tag-search UX or existing
@@ -316,7 +316,7 @@ rather than repeats.
   per-service decision, not a single global percentage.
 - Wire both trace-to-logs and trace-to-metrics correlation as a standing
   platform configuration, not something set up ad hoc during an
-  incident — confirm the correlation actually works (a real trace pivots
+  [incident](../incident/SKILL.md) — confirm the correlation actually works (a real trace pivots
   to real matching log lines) as part of onboarding any new service, not
   just once at initial platform setup.
 - Treat a missing `trace_id` in a service's structured logs as a
@@ -324,7 +324,7 @@ rather than repeats.
   only as good as the weakest-instrumented service in a call chain.
 - Version-control Tempo/Jaeger configuration and Grafana datasource
   provisioning (correlation config, TraceQL-backed dashboard panels)
-  alongside the rest of the observability stack's IaC, not as hand-edited
+  alongside the rest of the [observability](../observability/SKILL.md) stack's IaC, not as hand-edited
   console configuration.
 
 ## Common pitfalls
@@ -348,8 +348,8 @@ rather than repeats.
   multiple stateless Collector replicas sit behind a plain round-robin
   load balancer, a trace's spans scatter across replicas and no single
   replica ever sees the whole trace to make a keep/drop decision. Route
-  by trace ID with a load-balancing exporter (see
-  [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md))
+  by trace ID with a [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter (see
+  [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md))
   so tail sampling actually has complete traces to evaluate.
 
 - **Symptom:** Clicking "Logs for this span" in Grafana's trace view
@@ -389,7 +389,7 @@ rather than repeats.
 **Scenario:** Standing up Tempo as the tracing backend for
 `checkout-service` and `payments-service` (both already emitting OTLP
 traces via the Collector gateway from
-[opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md)),
+[opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)),
 with tail-based sampling, 14-day retention, and full trace-to-logs/
 trace-to-metrics correlation in Grafana.
 
@@ -403,12 +403,12 @@ trace-to-metrics correlation in Grafana.
          region: us-east-1
    compactor:
      compaction:
-       block_retention: 336h   # 14 days, matching the platform team's agreed incident-investigation window
+       block_retention: 336h   # 14 days, matching the platform team's agreed [incident](../incident/SKILL.md)-investigation window
    ```
 2. The Collector gateway (configured per
-   [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md))
+   [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md))
    applies tail sampling — all errors, all requests over 500ms, plus a
-   10% baseline — and exports via `otlp/tempo`, with a load-balancing
+   10% baseline — and exports via `otlp/tempo`, with a [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)
    exporter routing by `traceID` so tail sampling sees complete traces.
 3. Grafana's Tempo datasource is provisioned with `tracesToLogsV2`
    pointed at the Loki datasource, matching on `trace_id` in the same
@@ -428,7 +428,7 @@ trace-to-metrics correlation in Grafana.
 
 ## Cross-references
 
-- [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md) — the feeder layer: instrumenting applications and configuring the Collector pipeline (including the load-balancing exporter tail sampling depends on) that produces the spans this backend stores and queries.
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md) — the metrics backend and Grafana instance this skill's trace-to-metrics correlation and exemplar configuration integrate with.
-- [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md) — the cross-signal investigative workflow that depends on the trace-to-logs/trace-to-metrics correlation this skill configures at the backend.
-- [loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md) — the log backend this skill's trace-to-logs correlation queries against, including the label-cardinality discipline that also applies to the `trace_id` correlation query.
+- [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md) — the feeder layer: instrumenting applications and configuring the Collector pipeline (including the [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter tail sampling depends on) that produces the spans this backend stores and queries.
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — the metrics backend and Grafana instance this skill's trace-to-metrics correlation and exemplar configuration integrate with.
+- [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — the cross-signal investigative workflow that depends on the trace-to-logs/trace-to-metrics correlation this skill configures at the backend.
+- [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — the log backend this skill's trace-to-logs correlation queries against, including the label-cardinality discipline that also applies to the `trace_id` correlation query.

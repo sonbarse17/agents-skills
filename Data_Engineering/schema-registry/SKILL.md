@@ -141,16 +141,16 @@ jobs:
       - name: Validate and Check Compatibility
         run: |
           for schema in schemas/**/*.avsc; do
-            python scripts/validate_and_register.py \
+            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate_and_register.py \
               --subject "$(basename $schema .avsc)-value" \
               --schema "$schema" --mode BACKWARD
           done
       - name: Register Schema
-        if: success() && github.ref == 'refs/heads/main'
+        if: success() && [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
         run: |
           for schema in schemas/**/*.avsc; do
             subject=$(basename "$schema" .avsc)-value
-            python scripts/register_schema.py --subject "$subject" --schema "$schema"
+            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/register_schema.py --subject "$subject" --schema "$schema"
           done
 ```
 
@@ -168,7 +168,7 @@ jobs:
 AsyncAPI pairs with Schema Registry by documenting event-driven API message flow with topic names, publish/subscribe patterns, and payload schemas.
 
 ### Step 9: Buf for Schema Management
-Buf enforces Protobuf lint rules and breaking change detection in CI/CD. `buf breaking --against .git` checks breaking changes against previous commit. Use for gRPC microservices requiring rigorous Protobuf governance.
+Buf enforces Protobuf lint rules and breaking change detection in CI/CD. `buf breaking --against .git` checks breaking changes against previous [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md). Use for gRPC [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) requiring rigorous Protobuf governance.
 
 ### Step 10: Schema Registry as Source of Truth
 The schema registry is the authoritative source for all streaming schemas. Producers must register schemas before writing data. Consumers fetch schemas from registry to deserialize. No schema should be hardcoded in application code — always reference the registry.
@@ -246,7 +246,7 @@ Deployment scale:
 - Pin producer/consumer schema versions for canary deployments.
 - Document field semantics with `doc` attribute in schema definition.
 - Use schema references ($ref) for shared types across schemas.
-- Set up monitoring for schema registration failures and compatibility check latency.
+- Set up [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for schema registration failures and compatibility check latency.
 
 ## Compared With
 
@@ -370,7 +370,7 @@ registry_cluster:
   replication_factor: 3
   kafka_bootstrap_servers: "broker1:9092,broker2:9092,broker3:9092"
   
-  # Multi-datacenter setup
+  # Multi-[datacenter](../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) setup
   primary_region: "us-east-1"
   secondary_region: "us-west-2"
   replication:
@@ -387,7 +387,7 @@ registry_cluster:
 
 # Apicurio Registry deployment (alternative, multi-format)
 apicurio_registry:
-  storage: "sql"  # PostgreSQL, SQL Server, or Kafka
+  storage: "sql"  # [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), SQL Server, or Kafka
   formats: ["AVRO", "PROTOBUF", "JSON_SCHEMA", "ASYNCAPI", "OPENAPI"]
   rules:
     global: ["VALIDITY", "COMPATIBILITY"]
@@ -428,7 +428,7 @@ spark_avro_config:
 ### CI/CD Schema Governance
 
 ```yaml
-# GitHub Action: validate schema compatibility on PR
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action: validate schema compatibility on PR
 schema_validation:
   name: "Validate Schema Change"
   steps:
@@ -567,5 +567,5 @@ Primary use case?
   - ../../../Global_References/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
   - ../../../Global_References/schema-registry-integration-patterns.md — Integration Patterns Reference
 ## Handoff
-`data-data-platform` for registry deployment. `data-data-catalog` for schema metadata. `data-data-contracts` for data contract schema integration. `data-data-observability` for schema drift monitoring.
+`[data-data-platform](../data-platform/SKILL.md)` for registry deployment. `[data-data-catalog](../data-catalog/SKILL.md)` for schema metadata. `[data-data-contracts](../data-contracts/SKILL.md)` for data contract schema integration. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for schema drift [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 

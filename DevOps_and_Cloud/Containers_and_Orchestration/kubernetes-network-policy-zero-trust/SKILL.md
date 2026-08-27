@@ -16,17 +16,17 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes NetworkPolicy Zero Trust
+# [Kubernetes](../kubernetes/SKILL.md) NetworkPolicy Zero Trust
 
 ## Purpose
 
-By default, every pod in a Kubernetes cluster can reach every other pod
+By default, every pod in a [Kubernetes](../kubernetes/SKILL.md) cluster can reach every other pod
 — there is no network segmentation unless it's explicitly configured.
 That default is convenient for getting a cluster running and dangerous
 in production: a single compromised or vulnerable pod can reach any
 other workload's ports, including internal admin endpoints, databases,
-and the Kubernetes API server itself, with no additional access
-required. `NetworkPolicy` resources implement zero-trust micro-
+and the [Kubernetes](../kubernetes/SKILL.md) API server itself, with no additional access
+required. `NetworkPolicy` resources implement [zero-trust](../../../Security/zero-trust/SKILL.md) micro-
 segmentation inside the cluster: deny all traffic by default, then
 explicitly allow only the specific pod-to-pod and pod-to-external
 paths a workload actually needs. This requires a CNI plugin that
@@ -44,7 +44,7 @@ CNI-specific skill referenced below for that layer.
 ## When to use
 
 - Establishing default-deny network segmentation for a namespace or
-  cluster as a zero-trust baseline.
+  cluster as a [zero-trust](../../../Security/zero-trust/SKILL.md) baseline.
 - Writing an allow-rule so a specific service can reach only the
   database, cache, or upstream API it actually depends on — nothing
   else.
@@ -56,24 +56,24 @@ CNI-specific skill referenced below for that layer.
 - Implementing cluster-wide, tiered policy (e.g. "no namespace may ever
   bypass this baseline policy, even with its own permissive
   NetworkPolicy") using Calico's `GlobalNetworkPolicy` and tiers, which
-  plain Kubernetes `NetworkPolicy` cannot express.
+  plain [Kubernetes](../kubernetes/SKILL.md) `NetworkPolicy` cannot express.
 - Auditing an existing cluster for namespaces with no `NetworkPolicy`
   at all (fully open) as part of a security review.
 
 ## Prerequisites & environment
 
 - A CNI plugin that **enforces** `NetworkPolicy` — Calico, Cilium, and
-  most managed-Kubernetes default CNIs on EKS (with the AWS VPC CNI's
+  most managed-[Kubernetes](../kubernetes/SKILL.md) default CNIs on EKS (with the AWS VPC CNI's
   NetworkPolicy support, or Calico add-on), AKS (Azure CNI with Calico
   or Cilium enforcement), and GKE (Dataplane V2/Cilium-based). Plain
   Flannel does **not** enforce `NetworkPolicy` on its own — confirm
   enforcement is actually active before assuming a written
-  `NetworkPolicy` does anything (`kubectl` will happily accept and
+  `NetworkPolicy` does anything (`[kubectl](../kubectl/SKILL.md)` will happily accept and
   store a `NetworkPolicy` object even if nothing enforces it).
 - Understanding of which pods are DNS servers (usually CoreDNS in
   `kube-system`) and API server addresses, since default-deny egress
   policies must explicitly allow DNS (UDP/TCP 53) and, where needed,
-  Kubernetes API access, or workloads will fail in ways that look
+  [Kubernetes](../kubernetes/SKILL.md) API access, or workloads will fail in ways that look
   unrelated to networking (e.g. a pod hangs on startup because it can't
   resolve a Service DNS name).
 - A namespace-level or cluster-level rollout plan — apply default-deny
@@ -83,7 +83,7 @@ CNI-specific skill referenced below for that layer.
   the CNI (or as a policy-only layer on top of another CNI's dataplane,
   e.g. Calico for policy + a different CNI for networking) — these CRDs
   don't exist without Calico specifically. See
-  [cni-networking-calico-flannel](../../../kubernetes-platform/skills/cni-networking-calico-flannel/SKILL.md)
+  [cni-networking-calico-flannel](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
   for choosing and installing the CNI layer itself.
 
 ## Step-by-step guidance
@@ -128,7 +128,7 @@ CNI-specific skill referenced below for that layer.
        - to:
            - namespaceSelector:
                matchLabels:
-                 kubernetes.io/metadata.name: kube-system
+                 [kubernetes](../kubernetes/SKILL.md).io/metadata.name: kube-system
              podSelector:
                matchLabels:
                  k8s-app: kube-dns
@@ -158,10 +158,10 @@ CNI-specific skill referenced below for that layer.
        - from:
            - namespaceSelector:
                matchLabels:
-                 kubernetes.io/metadata.name: ingress-nginx
+                 [kubernetes](../kubernetes/SKILL.md).io/metadata.name: ingress-nginx
              podSelector:
                matchLabels:
-                 app.kubernetes.io/name: ingress-nginx
+                 app.[kubernetes](../kubernetes/SKILL.md).io/name: ingress-nginx
          ports:
            - protocol: TCP
              port: 8443
@@ -250,14 +250,14 @@ CNI-specific skill referenced below for that layer.
    break something customer-facing, validate, then proceed.
 
 8. **Verify enforcement, not just that the object was accepted.**
-   `kubectl apply` on a `NetworkPolicy` succeeds even on a CNI that
+   `[kubectl](../kubectl/SKILL.md) apply` on a `NetworkPolicy` succeeds even on a CNI that
    doesn't enforce it. Confirm with a connectivity test
-   (e.g. `kubectl exec` into a pod and attempt a curl/nc to a
+   (e.g. `[kubectl](../kubectl/SKILL.md) exec` into a pod and attempt a curl/nc to a
    supposedly-blocked target) rather than assuming the manifest is
    doing anything.
 
 9. **Debug unexpected blocks** by listing every `NetworkPolicy`
-   selecting the affected pod (`kubectl get networkpolicy -n
+   selecting the affected pod (`[kubectl](../kubectl/SKILL.md) get networkpolicy -n
    <namespace>` plus checking `podSelector` matches) — remember rules
    across multiple policies selecting the same pod are additive
    (union), so a missing allow-rule, not a wrong deny-rule, is almost
@@ -275,7 +275,7 @@ CNI-specific skill referenced below for that layer.
 - **Write the narrowest allow-rule that satisfies the real dependency**
   (specific `podSelector` + specific port), not a broad
   `namespaceSelector: {}` with no pod selector or port restriction —
-  the latter defeats the purpose of zero-trust segmentation.
+  the latter defeats the purpose of [zero-trust](../../../Security/zero-trust/SKILL.md) segmentation.
 - **Block the cloud metadata endpoint (`169.254.169.254`) by default**
   for workloads that don't need instance-role credentials — it's one
   of the highest-value single rules for limiting SSRF/pivot blast
@@ -286,12 +286,12 @@ CNI-specific skill referenced below for that layer.
   policy is purely additive, so there's no way to express "this rule
   always wins" without a tiered-policy CNI feature.
 - **Label namespaces and pods consistently** (e.g.
-  `kubernetes.io/metadata.name` for namespace selection, a standard
-  `app`/`app.kubernetes.io/name` label for pod selection) — inconsistent
+  `[kubernetes](../kubernetes/SKILL.md).io/metadata.name` for namespace selection, a standard
+  `app`/`app.[kubernetes](../kubernetes/SKILL.md).io/name` label for pod selection) — inconsistent
   labeling is the most common reason an intended allow-rule silently
   doesn't match.
 - **Test policy changes against a real connectivity check**, not just
-  `kubectl apply` succeeding — the object being accepted proves nothing
+  `[kubectl](../kubectl/SKILL.md) apply` succeeding — the object being accepted proves nothing
   about enforcement or correctness.
 - **Treat `NetworkPolicy` as one layer of defense-in-depth**, not a
   replacement for authentication/authorization at the application
@@ -312,13 +312,13 @@ CNI-specific skill referenced below for that layer.
   allow-rules (starting with DNS) together, never default-deny alone
   "to be added to later."
 
-- **Symptom:** A `NetworkPolicy` is applied, `kubectl get networkpolicy`
+- **Symptom:** A `NetworkPolicy` is applied, `[kubectl](../kubectl/SKILL.md) get networkpolicy`
   shows it, but traffic that should be blocked still gets through.
   **Fix:** The CNI in use doesn't enforce `NetworkPolicy` at all (e.g.
   plain Flannel without a policy add-on), so the object is stored but
   has no effect. Confirm the CNI actively enforces `NetworkPolicy`
   before treating written policies as real controls — see
-  [cni-networking-calico-flannel](../../../kubernetes-platform/skills/cni-networking-calico-flannel/SKILL.md).
+  [cni-networking-calico-flannel](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md).
 
 - **Symptom:** An allow-rule was written for a specific service, but
   the connection is still blocked.
@@ -326,21 +326,21 @@ CNI-specific skill referenced below for that layer.
   don't actually match the target pod/namespace's real labels (e.g.
   the policy uses `namespace: ingress-nginx` as a bare string instead
   of the correct `namespaceSelector.matchLabels` with
-  `kubernetes.io/metadata.name`, which Kubernetes doesn't support as a
+  `[kubernetes](../kubernetes/SKILL.md).io/metadata.name`, which [Kubernetes](../kubernetes/SKILL.md) doesn't support as a
   literal namespace-name field). Verify actual labels with
-  `kubectl get pods --show-labels`/`kubectl get ns --show-labels`
+  `[kubectl](../kubectl/SKILL.md) get pods --show-labels`/`[kubectl](../kubectl/SKILL.md) get ns --show-labels`
   rather than assuming selector syntax matches intent.
 
 - **Symptom:** A namespace has a strict default-deny policy, but a
   team applies their own `NetworkPolicy` allowing broad egress to
   0.0.0.0/0, defeating the intended baseline, and nobody notices for
   weeks.
-  **Fix:** Plain Kubernetes `NetworkPolicy` has no precedence model —
+  **Fix:** Plain [Kubernetes](../kubernetes/SKILL.md) `NetworkPolicy` has no precedence model —
   every applicable policy is purely additive, so a permissive rule
   from any policy immediately widens access regardless of other
   stricter policies. If a non-bypassable baseline is required, enforce
   it via Calico `GlobalNetworkPolicy` in a higher-order tier (step 6),
-  and audit namespace-level policies on a schedule for accidental
+  and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) namespace-level policies on a schedule for accidental
   over-broad rules in the meantime.
 
 - **Symptom:** Egress is blocked to the internet, but a compromised pod
@@ -357,14 +357,14 @@ CNI-specific skill referenced below for that layer.
 
 **Scenario:** The `payments` namespace currently has no `NetworkPolicy`
 at all — every pod in the cluster can reach `payments-db` and
-`payments-api` directly. A security review flags this as a zero-trust
-gap ahead of a compliance audit, and the team needs default-deny
+`payments-api` directly. A security review flags this as a [zero-trust](../../../Security/zero-trust/SKILL.md)
+gap ahead of a compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), and the team needs default-deny
 segmentation without breaking the ingress path or DNS.
 
 1. In a staging cluster first, apply the default-deny-all policy (step
-   2) and the allow-DNS-egress policy (step 3) **in the same commit/
+   2) and the allow-DNS-egress policy (step 3) **in the same [commit](../../CI_CD/commit/SKILL.md)/
    change**, and confirm pods can still resolve internal Service DNS
-   names via `kubectl exec ... -- nslookup payments-db.payments.svc`.
+   names via `[kubectl](../kubectl/SKILL.md) exec ... -- nslookup payments-db.payments.svc`.
 2. Add the `payments-api-allow` policy (step 4): ingress only from the
    `ingress-nginx` namespace's ingress-controller pods on port 8443,
    egress only to `payments-db` on port 5432.
@@ -380,7 +380,7 @@ segmentation without breaking the ingress path or DNS.
    no longer reach `payments-db:5432` directly.
 6. Roll the same four policies out to production namespace-by-namespace
    (not cluster-wide in one shot), starting with a lower-traffic
-   internal namespace before `payments` itself, monitoring error rates
+   internal namespace before `payments` itself, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) error rates
    during each rollout step.
 7. For the compliance requirement that this baseline can never be
    silently widened by a future namespace-level policy change, add a
@@ -391,6 +391,6 @@ segmentation without breaking the ingress path or DNS.
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-- [velero-backup-and-restore](../velero-backup-and-restore/SKILL.md)
-- [cni-networking-calico-flannel](../../../kubernetes-platform/skills/cni-networking-calico-flannel/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [velero-backup-and-restore](../[velero-backup-and-restore](../velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md)
+- [cni-networking-calico-flannel](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)

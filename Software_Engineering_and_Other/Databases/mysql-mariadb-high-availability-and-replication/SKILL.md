@@ -16,18 +16,18 @@ metadata:
   maturity: stable
 ---
 
-# MySQL/MariaDB High Availability and Replication
+# [MySQL](../../Backend/mysql/SKILL.md)/MariaDB High Availability and Replication
 
 ## Purpose
 
-Standard MySQL/MariaDB replication (covered in
-[mysql-mariadb-operations-and-performance-tuning](../mysql-mariadb-operations-and-performance-tuning/SKILL.md))
+Standard [MySQL](../../Backend/mysql/SKILL.md)/MariaDB replication (covered in
+[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 gives you a single writable primary and read replicas — failover
 requires promoting a replica and repointing traffic, which is either a
 manual process or requires external tooling. **Galera Cluster**
 (available as MariaDB Galera Cluster or Percona XtraDB Cluster) and
-**MySQL Group Replication** (packaged as **InnoDB Cluster** with
-MySQL Router) instead provide certification-based, virtually synchronous
+**[MySQL](../../Backend/mysql/SKILL.md) Group Replication** (packaged as **InnoDB Cluster** with
+[MySQL](../../Backend/mysql/SKILL.md) Router) instead provide certification-based, virtually synchronous
 multi-master replication where every node can accept writes and the
 cluster itself enforces quorum to prevent a split-brain where two
 partitions both believe they're authoritative. This skill covers setting
@@ -39,7 +39,7 @@ operational trade-off.
 ## When to use
 
 - Standing up a Galera Cluster (MariaDB Galera / Percona XtraDB Cluster)
-  or MySQL InnoDB Cluster (Group Replication + MySQL Router) for
+  or [MySQL](../../Backend/mysql/SKILL.md) InnoDB Cluster (Group Replication + [MySQL](../../Backend/mysql/SKILL.md) Router) for
   multi-region or multi-AZ write availability.
 - A Galera node goes into `Non-Primary` state, or the cluster reports
   it can't reach quorum, and writes across the cluster stop.
@@ -54,10 +54,10 @@ operational trade-off.
 ## Prerequisites & environment
 
 - Galera 4 (bundled with MariaDB 10.5+/Percona XtraDB Cluster 8.0+) or
-  MySQL 8.0 Group Replication assumed for the syntax below. Note that
+  [MySQL](../../Backend/mysql/SKILL.md) 8.0 Group Replication assumed for the syntax below. Note that
   Galera and Group Replication are **not interchangeable or
   interoperable** — Galera is a MariaDB/Percona ecosystem technology
-  (via the `wsrep` API), Group Replication is MySQL's own plugin; choose
+  (via the `wsrep` API), Group Replication is [MySQL](../../Backend/mysql/SKILL.md)'s own plugin; choose
   one based on which base engine you're already committed to, not by
   mixing them.
 - An **odd number of nodes** (3 minimum, 5 for more fault tolerance) in
@@ -67,16 +67,16 @@ operational trade-off.
   increasing the chance of an unresolvable 50/50 partition.
 - Low-latency, reliable network links between nodes — both technologies
   use certification-based replication that requires every node to agree
-  on transaction ordering before commit, so cross-region deployments
-  with high inter-node latency will see materially higher commit latency
-  and are more prone to flow-control throttling than a same-datacenter
+  on transaction ordering before [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), so cross-region deployments
+  with high inter-node latency will see materially higher [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) latency
+  and are more prone to flow-control throttling than a same-[datacenter](../../Miscellaneous/datacenter/SKILL.md)
   deployment.
-- For InnoDB Cluster specifically: MySQL Shell (`mysqlsh`) for cluster
-  provisioning (`dba.createCluster()`) and MySQL Router for
+- For InnoDB Cluster specifically: [MySQL](../../Backend/mysql/SKILL.md) Shell (`mysqlsh`) for cluster
+  provisioning (`dba.createCluster()`) and [MySQL](../../Backend/mysql/SKILL.md) Router for
   application-transparent read/write routing to the current primary.
-- A load balancer or proxy layer (ProxySQL, MySQL Router, or an external
+- A load balancer or proxy layer (ProxySQL, [MySQL](../../Backend/mysql/SKILL.md) Router, or an external
   L4 load balancer with health checks) in front of the cluster — see
-  [database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md)
+  [database-connection-pooling-strategies](../[database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md)/SKILL.md)
   for routing patterns, since applications should never hardcode a
   specific node as "the" primary in a multi-master topology.
 
@@ -90,9 +90,9 @@ which independently "certify" it (check for write-set conflicts against
 concurrently-committing transactions on other nodes) before applying it.
 If certification fails on a node — because a concurrent transaction on
 another node modified the same rows first — the *local* transaction
-commit is rolled back and returned to the client as a deadlock-style
+[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) is rolled back and returned to the client as a deadlock-style
 error, even though from the client's perspective it just issued a
-normal `COMMIT`:
+normal `[COMMIT](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)`:
 ```
 ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
 ```
@@ -101,7 +101,7 @@ retry-on-deadlock logic for this specific error class — this is not
 optional error handling, it's a structural consequence of
 certification-based multi-master replication, and its absence is the
 single most common application-level bug when migrating onto Galera or
-Group Replication from single-primary MySQL.
+Group Replication from single-primary [MySQL](../../Backend/mysql/SKILL.md).
 
 ### 2. Bootstrap a Galera Cluster and verify quorum
 
@@ -141,7 +141,7 @@ intended, not a bug to bypass.
 ### 3. Configure Group Replication and InnoDB Cluster
 
 ```sql
--- On each member, via MySQL Shell
+-- On each member, via [MySQL](../../Backend/mysql/SKILL.md) Shell
 dba.configureInstance('root@node1:3306');
 ```
 ```javascript
@@ -155,7 +155,7 @@ Group Replication supports **single-primary mode** (one writable
 primary, others read-only, with automatic primary election on failure —
 the recommended default for most workloads) or **multi-primary mode**
 (every member writable, same certification-conflict/retry requirements
-as Galera above). InnoDB Cluster's MySQL Router automatically discovers
+as Galera above). InnoDB Cluster's [MySQL](../../Backend/mysql/SKILL.md) Router automatically discovers
 the current primary and routes writes to it in single-primary mode, so
 applications connect to Router, never to a specific node's hostname
 directly:
@@ -200,12 +200,12 @@ parallel, for any cluster size.
 
 Multi-master clustering (Galera/Group Replication) is the right choice
 when write availability across multiple nodes/AZs with no manual
-failover step is a hard requirement, and the team can commit to the
+failover step is a hard requirement, and the team can [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to the
 retry-on-deadlock application discipline in step 1. It is *not*
 automatically the safer or simpler choice: certification conflicts,
 flow control throttling, and SST/IST operational complexity are real,
 ongoing costs. A simple primary-replica topology (async/semi-sync, per
-[mysql-mariadb-operations-and-performance-tuning](../mysql-mariadb-operations-and-performance-tuning/SKILL.md))
+[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 paired with an external failover manager (e.g. Orchestrator, or a cloud
 provider's managed failover) is often the better trade-off for a
 workload that doesn't genuinely need multi-region concurrent writes,
@@ -216,7 +216,7 @@ since it avoids certification-conflict application complexity entirely.
 - Build retry-on-deadlock (specifically for error 1213/40001) into every
   application writing to a Galera or multi-primary Group Replication
   cluster as a first-class requirement, not an afterthought discovered
-  after a production incident.
+  after a production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Always run an odd number of nodes (3 or 5), and never bypass
   quorum-loss protection (`pc.ignore_quorum`, `pc.ignore_sb`) as a
   routine operational workaround — those settings exist for narrow,
@@ -228,7 +228,7 @@ since it avoids certification-conflict application complexity entirely.
 - Restart cluster nodes strictly one at a time, verifying full quorum
   and `Synced` state before moving to the next, for both planned
   maintenance and rolling upgrades.
-- Route application traffic through a proxy/router layer (MySQL Router,
+- Route application traffic through a proxy/router layer ([MySQL](../../Backend/mysql/SKILL.md) Router,
   ProxySQL) that tracks real cluster/primary state, never a hardcoded
   node hostname, so a failover or planned node restart doesn't require
   an application-side connection string change.
@@ -315,9 +315,9 @@ across three AZs.
    to whichever node currently reports healthy `wsrep_local_state = 4`
    (Synced), with automatic failover between nodes on health-check
    failure — application connection strings point only at ProxySQL.
-4. Audit application code for retry-on-1213 handling; find the payment
+4. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) application code for retry-on-1213 handling; find the payment
    settlement service lacks it, add exponential-backoff retry around
-   the commit path specifically for deadlock-class errors before
+   the [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) path specifically for deadlock-class errors before
    go-live.
 5. Load-test with concurrent writes to the same customer-account rows
    from different nodes to confirm certification conflicts are
@@ -326,12 +326,12 @@ across three AZs.
    patching, explicitly calling out that patching must proceed one node
    at a time with quorum verification between each — validated against
    a staging replica of the same 3-node topology first via
-   [mysql-mariadb-configuration-validation](../mysql-mariadb-configuration-validation/SKILL.md)-style
+   [mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md)-style
    pre-checks before the first production patch cycle.
 
 ## Cross-references
 
-- [mysql-mariadb-operations-and-performance-tuning](../mysql-mariadb-operations-and-performance-tuning/SKILL.md) — single-primary async/semi-sync replication and general InnoDB tuning that underpins the nodes in a Galera/Group Replication cluster.
-- [mysql-mariadb-configuration-validation](../mysql-mariadb-configuration-validation/SKILL.md) — validates `wsrep_*`/Group Replication settings and topology changes before they're applied to a live cluster.
-- [database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md) — ProxySQL/MySQL Router routing patterns for directing application traffic to the current primary or a healthy node in a multi-master cluster.
-- [postgresql-high-availability-and-failover](../postgresql-high-availability-and-failover/SKILL.md) — comparable HA/failover concerns (quorum, automatic promotion) for PostgreSQL, useful as a contrast since PostgreSQL's ecosystem favors single-primary failover tooling over multi-master clustering.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — single-primary async/semi-sync replication and general InnoDB tuning that underpins the nodes in a Galera/Group Replication cluster.
+- [mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md) — validates `wsrep_*`/Group Replication settings and topology changes before they're applied to a live cluster.
+- [database-connection-pooling-strategies](../[database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md)/SKILL.md) — ProxySQL/[MySQL](../../Backend/mysql/SKILL.md) Router routing patterns for directing application traffic to the current primary or a healthy node in a multi-master cluster.
+- [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — comparable HA/failover concerns (quorum, automatic promotion) for [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a contrast since [PostgreSQL](../../Backend/postgresql/SKILL.md)'s ecosystem favors single-primary failover tooling over multi-master clustering.

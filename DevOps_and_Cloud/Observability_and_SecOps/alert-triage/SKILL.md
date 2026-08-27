@@ -95,7 +95,7 @@ When triaging multiple alerts, **group first, then triage each group**:
 ### Step 0: Group alerts before triaging
 
 When the user asks about multiple open alerts, **group them first** to avoid redundant investigation: query open alerts,
-group by `agent.id`, sub-group by time window (~5 min = likely one incident), triage each group as a single unit.
+group by `agent.id`, sub-group by time window (~5 min = likely one [incident](../incident/SKILL.md)), triage each group as a single unit.
 
 Use ES|QL for an overview (write to file first for PowerShell):
 
@@ -119,7 +119,7 @@ node skills/security/case-management/scripts/case-manager.js cases-for-alert --a
 
 Look for cases with the same agent ID, user, or related detection rule within a similar time window.
 
-> **Note:** `find --search` may return 500 errors on Serverless. Use `find --tags` or `list` instead.
+> **Note:** `find --search` may return 500 errors on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). Use `find --tags` or `list` instead.
 
 ### Step 2: Gather context
 
@@ -270,7 +270,7 @@ Acknowledges alerts by updating `workflow_status` to `acknowledged`.
 - All write operations (`acknowledge-alert.js`) prompt for confirmation. Pass `--yes` or `-y` to skip when called by an
   agent.
 - Use `--dry-run` before bulk acknowledgments to preview scope without modifying data.
-- The acknowledge script uses the Kibana Detection Engine API, which is compatible with both self-managed and Serverless
+- The acknowledge script uses the Kibana Detection Engine API, which is compatible with both self-managed and [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)
   deployments.
 - Verify environment variables point to the intended cluster before running any script — no undo for acknowledgments.
 

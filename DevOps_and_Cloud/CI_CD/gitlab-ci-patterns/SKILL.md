@@ -16,8 +16,8 @@ Create efficient GitLab CI pipelines with proper stage organization, caching, an
 - Automate GitLab-based CI/CD
 - Implement multi-stage pipelines
 - Configure GitLab Runners
-- Deploy to Kubernetes from GitLab
-- Implement GitOps workflows
+- Deploy to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) from GitLab
+- Implement [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) workflows
 
 ## Basic Pipeline Structure
 
@@ -62,10 +62,10 @@ test:
 
 deploy:
   stage: deploy
-  image: bitnami/kubectl:1.31
+  image: bitnami/[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md):1.31
   script:
-    - kubectl apply -f k8s/
-    - kubectl rollout status deployment/my-app
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-app
   only:
     - main
   environment:
@@ -73,21 +73,21 @@ deploy:
     url: https://app.example.com
 ```
 
-## Docker Build and Push
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Build and Push
 
 ```yaml
-build-docker:
+build-[docker](../../Containers_and_Orchestration/docker/SKILL.md):
   stage: build
-  image: docker:24
+  image: [docker](../../Containers_and_Orchestration/docker/SKILL.md):24
   services:
-    - docker:24-dind
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md):24-dind
   before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - docker build -t $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:latest .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:latest
   only:
     - main
     - tags
@@ -97,19 +97,19 @@ build-docker:
 
 ```yaml
 .deploy_template: &deploy_template
-  image: bitnami/kubectl:1.31
+  image: bitnami/[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md):1.31
   before_script:
-    - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
-    - kubectl config set-credentials admin --token="$KUBE_TOKEN"
-    - kubectl config set-context default --cluster=k8s --user=admin
-    - kubectl config use-context default
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) config set-credentials admin --token="$KUBE_TOKEN"
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) config set-context default --cluster=k8s --user=admin
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) config use-context default
 
 deploy:staging:
   <<: *deploy_template
   stage: deploy
   script:
-    - kubectl apply -f k8s/ -n staging
-    - kubectl rollout status deployment/my-app -n staging
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/ -n staging
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-app -n staging
   environment:
     name: staging
     url: https://staging.example.com
@@ -120,8 +120,8 @@ deploy:production:
   <<: *deploy_template
   stage: deploy
   script:
-    - kubectl apply -f k8s/ -n production
-    - kubectl rollout status deployment/my-app -n production
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/ -n production
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-app -n production
   environment:
     name: production
     url: https://app.example.com
@@ -182,9 +182,9 @@ apply:
 
 ```yaml
 include:
-  - template: Security/SAST.gitlab-ci.yml
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
-  - template: Security/Container-Scanning.gitlab-ci.yml
+  - template: Security/SAST.[gitlab-ci](../gitlab-ci/SKILL.md).yml
+  - template: Security/[Dependency-Scanning](../../../Security/dependency-scanning/SKILL.md).[gitlab-ci](../gitlab-ci/SKILL.md).yml
+  - template: Security/[Container-Scanning](../../Containers_and_Orchestration/container-scanning/SKILL.md).[gitlab-ci](../gitlab-ci/SKILL.md).yml
 
 trivy-scan:
   stage: test
@@ -232,7 +232,7 @@ job2:
 generate-pipeline:
   stage: build
   script:
-    - python generate_pipeline.py > child-pipeline.yml
+    - [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) generate_pipeline.py > child-pipeline.yml
   artifacts:
     paths:
       - child-pipeline.yml
@@ -262,6 +262,6 @@ trigger-child:
 
 ## Related Skills
 
-- `github-actions-templates` - For GitHub Actions
-- `deployment-pipeline-design` - For architecture
-- `secrets-management` - For secrets handling
+- `[github-actions-templates](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-templates/SKILL.md)` - For [GitHub](../github/SKILL.md) Actions
+- `[deployment-pipeline-design](../deployment-pipeline-design/SKILL.md)` - For architecture
+- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling

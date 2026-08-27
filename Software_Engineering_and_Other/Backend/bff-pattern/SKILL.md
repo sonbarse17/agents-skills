@@ -24,8 +24,8 @@ Design specialized Backend for Frontend (BFF) services that compose and transfor
 Exact user phrases: "BFF", "Backend for Frontend", "API gateway", "gateway specialization", "frontend API", "mobile API", "web API", "API composition", "aggregation service", "frontend gateway", "BFF pattern".
 
 ### Input Context
-- Client types consuming the API (web, iOS, Android, third-party).
-- Backend microservices architecture.
+- Client types consuming the API (web, iOS, [Android](../../../Mobile/android/SKILL.md), third-party).
+- Backend [microservices](../../Patterns/microservices/SKILL.md) architecture.
 - Latency and data shape requirements per client.
 
 ### Output Artifact
@@ -54,14 +54,14 @@ Security: {auth pattern}
 ### Step 1: Identify Client Types
 ```
 Web BFF      -> SPA (React, Vue)
-Mobile BFF   -> iOS + Android apps
+Mobile BFF   -> iOS + [Android](../../../Mobile/android/SKILL.md) apps
 Partners BFF -> Third-party integrations
 Admin BFF    -> Internal admin panel
 ```
 
 ### Step 2: Design BFF API per Client
 Each BFF exposes APIs shaped for its client:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Web BFF: returns a page-shaped response
 GET /api/web/checkout/{cartId}
 {
@@ -100,7 +100,7 @@ GET /api/partners/checkout/{cartId}?partner=acme
 ```
 
 ### Step 3: Implement Composition
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Web BFF composition logic
 class WebCheckoutComposer {
   constructor(
@@ -181,7 +181,7 @@ class WebCheckoutComposer {
 | Partner BFF | API Key + HMAC | Server-side | Request signing |
 | Admin BFF | SSO + JWT | httpOnly cookie | CSRF token |
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BFF auth middleware factory
 function createBffAuth(bffType: 'web' | 'mobile' | 'partner' | 'admin') {
   switch (bffType) {
@@ -212,7 +212,7 @@ function createBffAuth(bffType: 'web' | 'mobile' | 'partner' | 'admin') {
 ```
 
 ### Step 5: Cache Aggregated Responses
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Caching strategy per BFF
 const BFF_CACHE_CONFIG = {
   web: {
@@ -257,7 +257,7 @@ async function getCheckoutCached(cartId: string, bffType: string): Promise<Check
 ```
 
 ### Step 6: Error Handling and Partial Responses
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BFF error handling: partial success, not total failure
 class BffService {
   async composeWithFallback(serviceCalls: Promise<any>[], fallbacks: any[]): Promise<any> {
@@ -412,7 +412,7 @@ Total = max(service1, service2, ..., serviceN) → Only as slow as slowest
 ```
 
 ### Connection Management
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Per-service connection pool with keep-alive
 import http from 'http';
 
@@ -436,7 +436,7 @@ async function callService(name: string, url: string): Promise<any> {
 ```
 
 ### Load Shedding
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BFF load shedding — reject early when under pressure
 class BffLoadShedder {
   private activeRequests = 0;
@@ -478,8 +478,8 @@ app.get('/api/web/checkout/:cartId', async (req, res) => {
 
 ## Production Considerations
 
-### Observability
-```typescript
+### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Structured BFF logging with request tracing
 interface BffLogContext {
   traceId: string;
@@ -570,10 +570,10 @@ interface BffLogContext {
 | **Axios / node-fetch** | HTTP client for backing services |
 | **opossum** | Circuit breaker |
 | **pino** | Structured logging with request tracing |
-| **Docker** | Per-BFF containerization |
-| **Kubernetes** | BFF deployment and scaling |
+| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Per-BFF [containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
+| **[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)** | BFF deployment and scaling |
 | **Prometheus** | BFF metrics (latency, error rate) |
-| **Grafana** | BFF monitoring dashboards |
+| **Grafana** | BFF [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
 | **jaeger/zipkin** | Distributed tracing |
 
 ## Rules

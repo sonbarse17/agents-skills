@@ -8,7 +8,7 @@ metadata:
   package: '@azure/service-bus'
 ---
 
-# Azure Service Bus SDK for TypeScript
+# Azure Service Bus SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Enterprise messaging with queues, topics, and subscriptions.
 
@@ -30,7 +30,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ServiceBusClient } from "@azure/service-bus";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -48,7 +48,7 @@ const client = new ServiceBusClient(fullyQualifiedNamespace, credential);
 
 ### Send Messages to Queue
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const sender = client.createSender("my-queue");
 
 // Single message
@@ -68,7 +68,7 @@ await sender.close();
 
 ### Receive Messages from Queue
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const receiver = client.createReceiver("my-queue");
 
 // Receive batch
@@ -83,7 +83,7 @@ await receiver.close();
 
 ### Subscribe to Messages (Event-Driven)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const receiver = client.createReceiver("my-queue");
 
 const subscription = receiver.subscribe({
@@ -105,7 +105,7 @@ setTimeout(async () => {
 
 ### Topics and Subscriptions
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Send to topic
 const topicSender = client.createSender("my-topic");
 await topicSender.sendMessages({
@@ -120,7 +120,7 @@ const messages = await subscriptionReceiver.receiveMessages(10);
 
 ## Message Sessions
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Send session message
 const sender = client.createSender("session-queue");
 await sender.sendMessages({
@@ -141,7 +141,7 @@ await sessionReceiver.close();
 
 ## Dead-Letter Handling
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Move to dead-letter
 await receiver.deadLetterMessage(message, {
   deadLetterReason: "Validation failed",
@@ -160,7 +160,7 @@ for (const msg of dlqMessages) {
 
 ## Scheduled Messages
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const sender = client.createSender("my-queue");
 
 // Schedule for future delivery
@@ -176,7 +176,7 @@ await sender.cancelScheduledMessages(sequenceNumber);
 
 ## Message Deferral
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Defer message for later
 await receiver.deferMessage(message);
 
@@ -187,7 +187,7 @@ await receiver.completeMessage(deferredMessage[0]);
 
 ## Peek Messages (Non-Destructive)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const receiver = client.createReceiver("my-queue");
 
 // Peek without removing
@@ -199,7 +199,7 @@ for (const msg of peekedMessages) {
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   ServiceBusClient,
   ServiceBusSender,
@@ -214,7 +214,7 @@ import {
 
 ## Receive Modes
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Peek-Lock (default) - message locked until completed/abandoned
 const receiver = client.createReceiver("my-queue", { receiveMode: "peekLock" });
 await receiver.completeMessage(message);   // Remove from queue

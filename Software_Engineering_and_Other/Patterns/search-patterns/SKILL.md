@@ -54,7 +54,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Indexing strategy chosen (CDC/batch/webhook) with sync mechanism
 - [ ] Search query patterns designed (full-text, faceted, autocomplete, geo)
 - [ ] Relevance tuning configured (BM25, field boosting, function scoring)
-- [ ] Operational concerns addressed (aliases, shards, snapshots, monitoring)
+- [ ] Operational concerns addressed (aliases, shards, snapshots, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
 
 ### Max Response Length
 300 lines of mapping, queries, and configuration.
@@ -207,7 +207,7 @@ POST /_aliases
 ```
 
 ### Step 7: Cluster Operations
-Shard strategy: 20-40GB per shard, shard count = `cluster_nodes * 2` minimum. Heap: 50% of RAM, max 31GB per node (JVM pointer compression limit). Thread pools: search (13 threads, 1000 queue), write (8 threads, 200 queue). Circuit breakers: 95% heap for request, 75% for fielddata. Snapshots: daily to S3, retention 30 days. Monitoring: query latency p95/p99, indexing rate, merge rate, GC pauses.
+Shard strategy: 20-40GB per shard, shard count = `cluster_nodes * 2` minimum. Heap: 50% of RAM, max 31GB per node (JVM pointer compression limit). Thread pools: search (13 threads, 1000 queue), write (8 threads, 200 queue). Circuit breakers: 95% heap for request, 75% for fielddata. Snapshots: daily to S3, retention 30 days. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): query latency p95/p99, indexing rate, merge rate, GC pauses.
 
 ```yaml
 cluster:
@@ -216,7 +216,7 @@ cluster:
   circuit_breaker: { request: 0.95, fielddata: 0.75 }
   field_limit: { default: 1000, max: 2000 }
   shard_limit: { max_per_node: 1000, target_size_gb: 20-40 }
-monitoring:
+[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
   alert_on:
     - query_p99 > 2000ms
     - heap > 85%
@@ -287,7 +287,7 @@ const results = await client.index('products').search('wireless', {
 
 ## Query Performance Optimization
 
-### Profiling Slow Queries
+### [Profiling](../../Frontend/profiling/SKILL.md) Slow Queries
 ```json
 // Elasticsearch Query Profiler
 {
@@ -355,7 +355,7 @@ const results = await client.index('products').search('wireless', {
 
 ## Search-as-You-Type / Autocomplete Patterns
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // 1. Edge n-gram (best for "prefix search")
 // Index time: tokenizes "wireless" -> "wi", "wir", "wire", "wirel", "wirele", "wireles", "wireless"
 // Query: match against same analyzer
@@ -421,7 +421,7 @@ const suggestQuery = {
 | Cluster hijacking | Disable public access, use mTLS or VPN |
 | Index deletion | Snapshot before any destructive operation, RBAC to restrict delete |
 | Data exfiltration via scroll API | Rate-limit scroll requests, restrict scroll API to service accounts |
-| Audit trail | Enable audit logging for all cluster operations |
+| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all cluster operations |
 
 ## Anti-Patterns
 
@@ -463,7 +463,7 @@ const suggestQuery = {
   - ../../../Global_References/search-performance.md — Search Performance
   - ../../../Global_References/search-synonyms.md — Search Synonyms
 ## Handoff
-`backend-database-patterns` for indexing source data schema design
+`[backend-database-patterns](../../Databases/database-patterns/SKILL.md)` for indexing source data schema design
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -516,7 +516,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -530,7 +530,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -546,12 +546,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -560,7 +560,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -568,13 +568,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -583,8 +583,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

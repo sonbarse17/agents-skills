@@ -5,7 +5,7 @@ description: Design, organize, and manage Helm charts for templating and packagi
 
 # Helm Chart Scaffolding
 
-Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications.
+Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying [Kubernetes](../kubernetes/SKILL.md) applications.
 
 ## Purpose
 
@@ -16,9 +16,9 @@ This skill provides step-by-step instructions for building production-ready Helm
 Use this skill when you need to:
 
 - Create new Helm charts from scratch
-- Package Kubernetes applications for distribution
+- Package [Kubernetes](../kubernetes/SKILL.md) applications for distribution
 - Manage multi-environment deployments with Helm
-- Implement templating for reusable Kubernetes manifests
+- Implement templating for reusable [Kubernetes](../kubernetes/SKILL.md) manifests
 - Set up Helm chart repositories
 - Follow Helm best practices and conventions
 
@@ -58,12 +58,12 @@ helm dependency list
 
 ```bash
 helm install my-app ./my-app --dry-run --debug
-kubectl get events --sort-by='.lastTimestamp'
+[kubectl](../kubectl/SKILL.md) get events --sort-by='.lastTimestamp'
 ```
 
 
 ## Related Skills
 
-- `k8s-manifest-generator` - For creating base Kubernetes manifests
-- `gitops-workflow` - For automated Helm chart deployments
+- `[k8s-manifest-generator](../k8s-manifest-generator/SKILL.md)` - For creating base [Kubernetes](../kubernetes/SKILL.md) manifests
+- `[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)` - For automated Helm chart deployments
 

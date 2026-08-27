@@ -19,7 +19,7 @@ High-level SDK for Azure AI Foundry project management with access to connection
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-ai-projects</artifactId>
+    <artifactId>[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects</artifactId>
     <version>1.0.0-beta.1</version>
 </dependency>
 ```
@@ -163,5 +163,5 @@ try {
 |----------|-----|
 | Product Docs | https://learn.microsoft.com/azure/ai-studio/ |
 | API Reference | https://learn.microsoft.com/rest/api/aifoundry/aiprojects/ |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/ai/azure-ai-projects |
-| Samples | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/ai/azure-ai-projects/src/samples |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects |
+| Samples | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects/src/samples |

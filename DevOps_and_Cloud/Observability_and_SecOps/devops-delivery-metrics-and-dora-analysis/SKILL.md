@@ -28,7 +28,7 @@ delivery performance with organizational outcomes, in place of vague
 impressions ("we feel slow") or vanity metrics (lines of code, number of
 commits) that don't actually predict delivery capability. Measured
 correctly, they surface *where* the delivery pipeline is actually
-constrained — batch size, test reliability, deployment risk, incident
+constrained — batch size, test reliability, deployment risk, [incident](../incident/SKILL.md)
 recovery — so improvement effort goes to the real bottleneck. Measured or
 used carelessly, the same four numbers become a scoreboard that teams
 learn to game, or a blame instrument pointed at individuals for something
@@ -42,7 +42,7 @@ that is almost always a systemic, cross-team property.
   teams' DORA numbers against each other or against industry benchmarks.
 - Deciding what to improve next in the delivery pipeline, and wanting
   data on where the actual bottleneck is (build speed vs. review time vs.
-  deployment risk vs. incident recovery) rather than guessing.
+  deployment risk vs. [incident](../incident/SKILL.md) recovery) rather than guessing.
 - Suspecting the current numbers are being gamed or don't reflect reality
   (e.g., deploy frequency is high but nothing meaningful is actually
   shipping, or change failure rate looks good only because failures
@@ -54,18 +54,18 @@ that is almost always a systemic, cross-team property.
 ## Prerequisites & environment
 
 - A source of truth for deploy events — the CI/CD platform's own deploy
-  history (GitHub Actions/GitLab CI/Jenkins deployment job records, an
+  history ([GitHub](../../CI_CD/github/SKILL.md) Actions/GitLab CI/[Jenkins](../../CI_CD/jenkins/SKILL.md) deployment job records, an
   Argo CD sync history) rather than a manually-maintained spreadsheet
   that will drift out of date.
 - A source of truth for incidents and their resolution timestamps (an
-  incident-management tool or at minimum a consistent log with declared/
+  [incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md) tool or at minimum a consistent log with declared/
   resolved times) — see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md).
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
 - A consistent definition, agreed across teams, of what counts as "a
   change" and "a deployment to production" before comparing any numbers —
   teams that deploy a monolith once a day and teams that deploy 50
-  independent microservices are not directly comparable without care.
-- Enough historical commit/PR/deploy timestamp data (ideally several
+  independent [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) are not directly comparable without care.
+- Enough historical [commit](../../CI_CD/commit/SKILL.md)/PR/deploy timestamp data (ideally several
   months) to compute lead time and deployment frequency trends rather
   than a single noisy data point.
 - Executive/leadership buy-in on using the metrics for systemic
@@ -86,7 +86,7 @@ that is almost always a systemic, cross-team property.
    here even with identical total code volume — this metric measures
    batch size and release cadence, not raw productivity.
 
-2. **Define lead time for changes as commit-to-production time**, not
+2. **Define lead time for changes as [commit](../../CI_CD/commit/SKILL.md)-to-production time**, not
    ticket-created-to-done or idea-to-production (which conflates product
    discovery time with delivery-pipeline time):
    ```
@@ -98,16 +98,16 @@ that is almost always a systemic, cross-team property.
    right-skewed (most changes are fast, a few are very slow and drag the
    mean).
 
-3. **Define MTTR as the time from a production incident's detection/
+3. **Define MTTR as the time from a production [incident](../incident/SKILL.md)'s detection/
    declaration to its resolution**, specifically for user-facing
    degradation caused by a deployed change (not scheduled maintenance,
    not an unrelated third-party outage):
    ```
    mttr = incident_resolved_timestamp - incident_declared_timestamp
    ```
-   Pull declared/resolved timestamps from the incident-management system
+   Pull declared/resolved timestamps from the [incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md) system
    used in
-   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md),
+   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md),
    not from memory after the fact — post-hoc timestamp reconstruction is
    a common source of inaccurate MTTR data.
 
@@ -140,9 +140,9 @@ that is almost always a systemic, cross-team property.
      feature deploy).
    - Change failure rate kept artificially low by not classifying a
      rollback as a "failure" if it happened quickly, or by quietly
-     patching forward instead of formally rolling back so the incident
+     patching forward instead of formally rolling back so the [incident](../incident/SKILL.md)
      is never logged against that deploy.
-   - Lead time measured from ticket creation instead of first commit,
+   - Lead time measured from ticket creation instead of first [commit](../../CI_CD/commit/SKILL.md),
      making it look worse (or better) than actual delivery-pipeline
      performance by including product/planning time that isn't part of
      the engineering delivery pipeline at all.
@@ -161,27 +161,27 @@ that is almost always a systemic, cross-team property.
    than a generic "improve everything" push:
    - High lead time, low deploy frequency → look at batch size, review
      turnaround, and pipeline speed; see
-     [pipeline-failure-triage-and-recovery](../pipeline-failure-triage-and-recovery/SKILL.md)
+     [pipeline-failure-triage-and-recovery](../[pipeline-failure-triage-and-recovery](../../CI_CD/pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md)
      if flaky CI is inflating lead time.
    - High change failure rate → look at test coverage, staging fidelity,
-     and progressive-delivery practices; see
-     [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md).
-   - High MTTR → look at observability, rollback speed, and incident
+     and [progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md) practices; see
+     [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md).
+   - High MTTR → look at [observability](../observability/SKILL.md), rollback speed, and [incident](../incident/SKILL.md)
      process; see
-     [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md)
+     [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
      and
-     [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md).
+     [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## Best practices
 
-- Automate metric collection from the CI/CD and incident-management
+- Automate metric collection from the CI/CD and [incident-management](../../../Software_Engineering_and_Other/Miscellaneous/[incident](../incident/SKILL.md)-management/SKILL.md)
   systems' own event data — a manually-maintained spreadsheet drifts out
   of date and invites disputes over what actually happened.
 - Report trends over rolling windows (e.g., trailing 4-13 weeks), not a
   single period's snapshot — all four metrics are noisy week to week,
   especially for lower-volume teams.
 - Agree on and document the exact definitions (what counts as "a
-  deployment," "a change requiring remediation," an "incident") across
+  deployment," "a change requiring remediation," an "[incident](../incident/SKILL.md)") across
   all teams being measured before comparing any numbers between them.
 - Pair change failure rate and MTTR together when discussing risk — a
   team with a higher change failure rate but very fast MTTR (via
@@ -225,7 +225,7 @@ that is almost always a systemic, cross-team property.
 - **Symptom:** Two teams' DORA numbers are compared directly in a
   leadership review, and the team with a monolithic, higher-risk
   architecture looks bad next to a team running independent
-  microservices with much smaller per-deploy blast radius.
+  [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with much smaller per-deploy blast radius.
   **Fix:** DORA numbers are only meaningful compared against a team's own
   trend over time, not directly against a different team with a
   materially different architecture and deploy unit — present trends,
@@ -234,7 +234,7 @@ that is almost always a systemic, cross-team property.
 - **Symptom:** Lead time is measured from Jira ticket creation to
   production, and it looks terrible, but investigation shows most of that
   time is tickets sitting in a backlog before anyone starts coding.
-  **Fix:** Redefine lead time as commit-to-production (step 2) to isolate
+  **Fix:** Redefine lead time as [commit](../../CI_CD/commit/SKILL.md)-to-production (step 2) to isolate
   the engineering delivery pipeline's actual performance; track
   backlog/planning time as a separate, product-side metric if it matters,
   but don't conflate the two.
@@ -256,9 +256,9 @@ sets up DORA measurement for the `checkout-api` service over a trailing
 3. **Change failure rate**: 9% of deploys in the window required a
    hotfix or rollback, using an agreed definition (any deploy followed
    within 24 hours by a hotfix/rollback targeting the same service
-   counts) applied consistently rather than judgment-called per incident.
+   counts) applied consistently rather than judgment-called per [incident](../incident/SKILL.md).
 4. **MTTR**: median 22 minutes for incidents tied to a bad deploy, pulled
-   from the incident tool's declared/resolved timestamps — fast, because
+   from the [incident](../incident/SKILL.md) tool's declared/resolved timestamps — fast, because
    the team already uses blue/green deploys with automated rollback.
 5. **Reading the system, not four isolated numbers**: deploy frequency
    and MTTR are both healthy; the real bottleneck is the long tail of
@@ -271,21 +271,21 @@ sets up DORA measurement for the `checkout-api` service over a trailing
    has a single point of failure inflating lead time's tail, and our
    change failure rate suggests test coverage gaps in the checkout
    pricing module specifically" — routed to
-   [pipeline-failure-triage-and-recovery](../pipeline-failure-triage-and-recovery/SKILL.md)
+   [pipeline-failure-triage-and-recovery](../[pipeline-failure-triage-and-recovery](../../CI_CD/pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md)
    and a targeted test-coverage improvement, not reported as "the
    checkout team is slow."
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) — the pipeline
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — the pipeline
   structure (stages, gates, parallelization) whose speed and reliability
   directly drive lead time and deployment frequency.
-- [pipeline-failure-triage-and-recovery](../pipeline-failure-triage-and-recovery/SKILL.md) —
+- [pipeline-failure-triage-and-recovery](../[pipeline-failure-triage-and-recovery](../../CI_CD/pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md) —
   flaky/failing CI is a common hidden driver of inflated lead time;
   fixing flakiness improves the metric at its root cause.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md) —
-  the incident process that produces the declared/resolved timestamps
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
+  the [incident](../incident/SKILL.md) process that produces the declared/resolved timestamps
   MTTR is computed from.
-- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md) —
+- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) —
   the blameless framing this skill insists on applying to delivery
   metrics as well as to incidents.

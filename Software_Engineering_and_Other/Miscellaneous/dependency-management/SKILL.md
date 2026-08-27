@@ -28,17 +28,17 @@ Automate dependency updates, vulnerability scanning, and policy enforcement with
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Dependabot", "Renovate", "dependencies", "lock file", "vulnerability scanning", "update strategy", "dependabot.yml", "dependency bump", "automated updates", "version pinning", "patch management", "supply chain security", "SBOM", "npm audit".
+Exact user phrases: "Dependabot", "Renovate", "dependencies", "lock file", "vulnerability scanning", "update strategy", "dependabot.yml", "dependency bump", "automated updates", "version pinning", "patch management", "supply chain security", "SBOM", "npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)".
 
 ### Input Context
-- Package ecosystem (npm, pip, maven, go, cargo, nuget, docker, terraform).
+- Package ecosystem (npm, pip, maven, go, cargo, nuget, [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), terraform).
 - Package manager (npm, yarn, pnpm, pip, poetry, maven, gradle, go, cargo).
 - Automation tool (Dependabot, Renovate, or both).
 - Update cadence (daily, weekly, monthly).
 - Vulnerability severity threshold (critical only, high+, all).
 
 ### Output Artifact
-Writes to .github/dependabot.yml, renovate.json, or .github/renovate.json.
+Writes to .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml, renovate.json, or .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/renovate.json.
 
 ### Response Format
 dependabot.yml or renovate.json with no extraneous explanation.
@@ -49,7 +49,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - Dependabot or Renovate configured for the project's ecosystems.
 - Update schedule and strategy defined.
 - Auto-merge rules configured for safe updates.
-- Vulnerability scanning enabled with alerting.
+- Vulnerability scanning enabled with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 - Lock file committed and kept up-to-date.
 
 ## Architecture / Decision Trees
@@ -59,17 +59,17 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Feature | Dependabot | Renovate |
 |---|---|---|
 | Configuration | YAML (dependabot.yml) | JSON (renovate.json) |
-| Auto-merge | Via GitHub Actions | Built-in (platformAutomerge) |
+| Auto-merge | Via [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions | Built-in (platformAutomerge) |
 | Grouped updates | Manual allow lists | Automatic grouping rules |
 | Custom registries | Limited | Extensive (any host) |
 | Onboarding PR | No | Yes (configurable) |
-| Regex manager | No | Yes (Docker, custom) |
+| Regex manager | No | Yes ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), custom) |
 | Presets/shared config | No (org-level only) | Presets, extends, shareable |
 | Lock file maintenance | Manual | Built-in schedule |
 | Dashboard | Dependencies tab only | Dependency Dashboard PR |
-| Rate limiting | GitHub API limits | Configurable concurrency |
-| Monorepo support | Per-directory config | Automatic workspace detection |
-| Self-hosted | Via GitHub | Via Renovate self-hosted |
+| Rate limiting | [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) API limits | Configurable concurrency |
+| [Monorepo](../../Frontend/monorepo/SKILL.md) support | Per-directory config | Automatic workspace detection |
+| Self-hosted | Via [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) | Via Renovate self-hosted |
 
 ### Update Strategy Decision Tree
 - Major version updates: manual review with quarterly batch.
@@ -122,7 +122,7 @@ updates:
       - "team-devs"
     assignees:
       - "bot-owner"
-    commit-message:
+    [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-message:
       prefix: "fix"
       prefix-development: "chore"
       include: "scope"
@@ -131,15 +131,15 @@ updates:
     ignore:
       - dependency-name: "react"
         versions: [">=19.0.0"]
-      - dependency-name: "typescript"
+      - dependency-name: "[typescript](../../Frontend/typescript/SKILL.md)"
         update-types: ["version-update:semver-major"]
 
-  - package-ecosystem: "docker"
+  - package-ecosystem: "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
 
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -147,7 +147,7 @@ updates:
       actions:
         patterns:
           - "actions/*"
-          - "github/codeql-action/*"
+          - "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/*"
 ```
 
 ### Step 2: Renovate Configuration
@@ -216,7 +216,7 @@ on:
 
 jobs:
   auto-merge:
-    if: contains(github.event.pull_request.labels.*.name, 'automerge')
+    if: contains([github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.labels.*.name, 'automerge')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -245,7 +245,7 @@ on:
     branches: [main]
 
 jobs:
-  audit:
+  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -253,7 +253,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm audit --audit-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 
   sbom:
     runs-on: ubuntu-latest
@@ -261,7 +261,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: advanced-security/sbom-generator-action@v0.0.1
         id: sbom
-      - uses: github/codeql-action/upload-sarif@v3
+      - uses: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: ${{ steps.sbom.outputs.sbomPath }}
 
@@ -276,7 +276,7 @@ jobs:
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
-      - uses: github/codeql-action/upload-sarif@v3
+      - uses: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: trivy-results.sarif
 ```
@@ -339,22 +339,22 @@ jobs:
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Ignoring Lock Files
-.gitignoring lock files means builds are non-reproducible and vulnerability scans are inaccurate. Lock files are the source of truth for what is actually installed. Always commit lock files.
+.gitignoring lock files means builds are non-reproducible and vulnerability scans are inaccurate. Lock files are the source of truth for what is actually installed. Always [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock files.
 
 ### Anti-Pattern 2: Auto-Merging Major Updates
 Major version bumps often contain breaking API changes that break builds silently. Auto-merging bypasses review. Always require manual review for major version updates.
 
-### Anti-Pattern 3: No Vulnerability Alerting
-Without vulnerability scanning and alerting, critical security patches go unnoticed. An unpatched CVE in a production dependency can lead to exploitation. Enable and monitor vulnerability alerts.
+### Anti-Pattern 3: No Vulnerability [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+Without vulnerability scanning and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), critical security patches go unnoticed. An unpatched CVE in a production dependency can lead to exploitation. Enable and monitor vulnerability alerts.
 
-### Anti-Pattern 4: Not Pinning GitHub Actions
-Using @v1 or @main for GitHub Actions means the action can change without notice, potentially breaking CI or introducing supply chain vulnerabilities. Pin to SHA or full semver tag.
+### Anti-Pattern 4: Not Pinning [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+Using @v1 or @main for [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions means the action can change without notice, potentially breaking CI or introducing supply chain vulnerabilities. Pin to SHA or full semver tag.
 
 ### Anti-Pattern 5: Too Many Open PRs
 Dependabot or Renovate opens 50+ PRs overwhelming CI and reviewers. Set open-pull-requests-limit or prConcurrentLimit. Use grouped updates to reduce PR count.
 
 ### Anti-Pattern 6: Ignoring Transitive Dependencies
-Auditing only direct dependencies misses vulnerabilities in transitive dependencies. Use npm audit, Dependabot alerts (which scan the full tree), or Renovate vulnerability alerts with OSV.
+Auditing only direct dependencies misses vulnerabilities in transitive dependencies. Use npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), Dependabot alerts (which scan the full tree), or Renovate vulnerability alerts with OSV.
 
 ### Anti-Pattern 7: No Update Schedule
 Running updates daily creates noise. Running updates monthly misses critical security patches. Weekly schedule with security alerts on-demand is the recommended balance.
@@ -365,27 +365,27 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 - Pin all dependency versions (never ranges like ^1.2.3 in production).
 - Use lock files for deterministic installs.
 - Sign commits and tags from Dependabot/Renovate.
-- Scan for malicious packages (Socket.dev, npm audit, Snyk).
+- Scan for malicious packages (Socket.dev, npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), Snyk).
 - Maintain an SBOM for every release.
 - Enable Dependabot security updates for critical and high alerts.
 
 ### CI Integration
-- Run npm audit / pip audit in CI on every PR.
+- Run npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) / pip [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) in CI on every PR.
 - Fail CI on critical and high vulnerabilities.
 - Block PRs that add dependencies with known vulnerabilities.
 - Require SBOM generation in release pipeline.
 - Validate dependency licenses in CI.
 
-### Monorepo Strategy
-- One Dependabot config per monorepo with per-directory updates.
+### [Monorepo](../../Frontend/monorepo/SKILL.md) Strategy
+- One Dependabot config per [monorepo](../../Frontend/monorepo/SKILL.md) with per-directory updates.
 - Renovate auto-detects workspaces (npm, pnpm, lerna).
 - Use Renovate packageRules with matchFileNames for subdirectories.
 - Group updates by workspace to reduce PR count.
 
 ## Rules
-- Always commit lock files -- never .gitignore them.
+- Always [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock files -- never .gitignore them.
 - Never auto-merge major version updates without manual review.
-- Pin GitHub Action versions to SHA for supply chain security.
+- Pin [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action versions to SHA for supply chain security.
 - Enable vulnerability alerts for all production dependencies.
 - Use grouped updates (Renovate) or allow rules (Dependabot) to reduce PR noise.
 - Set open-pull-requests-limit / prConcurrentLimit to avoid overwhelming CI.
@@ -393,20 +393,20 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 - Use Renovate presets for org-wide standardization.
 - Enable lock file maintenance for regular lock file updates.
 - Use dependency review action in CI to block vulnerable PRs.
-- Maintain SBOM for compliance and incident response.
+- Maintain SBOM for compliance and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
 - Set vulnerability SLA: critical = 24h, high = 7d, medium = 30d.
 - Use OSV database for comprehensive vulnerability coverage.
 
 ## Compared With
 
 ### Dependabot vs Renovate vs Manual
-Dependabot: simplest setup, GitHub-native, limited customization. Renovate: more configurable, grouped updates, regex manager, self-hostable. Manual: outdated immediately, no vulnerability alerting, human error prone. Start with Dependabot for simple projects, Renovate for complex monorepos.
+Dependabot: simplest setup, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-native, limited customization. Renovate: more configurable, grouped updates, regex manager, self-hostable. Manual: outdated immediately, no vulnerability [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), human error prone. Start with Dependabot for simple projects, Renovate for complex monorepos.
 
-### npm audit vs Snyk vs Trivy
-npm audit: built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm audit as baseline, Trivy for CI scanning, Snyk for enterprise.
+### npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) vs Snyk vs Trivy
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) as baseline, Trivy for CI scanning, Snyk for enterprise.
 
 ### Lock Files by Ecosystem
-npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn specific. pnpm (pnpm-lock.yaml): pnpm specific, efficient disk. Cargo.lock: Rust standard. go.sum: Go standard, checksum only. Gemfile.lock: Ruby standard. poetry.lock: Python poetry.
+npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn specific. pnpm (pnpm-lock.yaml): pnpm specific, efficient disk. Cargo.lock: Rust standard. go.sum: Go standard, checksum only. Gemfile.lock: Ruby standard. poetry.lock: [Python](../../Languages/python/SKILL.md) poetry.
 
 ## Operations & Maintenance
 
@@ -418,11 +418,11 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 ### Monthly Tasks
 - Review update configuration for new ecosystems.
 - Update Renovate/Dependabot to latest version.
-- Audit SBOM generation outputs.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) SBOM generation outputs.
 
 ### Quarterly Tasks
 - Review dependency licensing.
-- Audit transitive dependency footprint.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) transitive dependency footprint.
 - Update dependency policies based on new supply chain threats.
 - Test rollback of dependency update scenarios.
 
@@ -432,11 +432,11 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 - ../../../Global_References/dependency-management-fundamentals.md -- Dependency Management Fundamentals
 - ../../../Global_References/renovate-config.md -- Renovate Configuration
 - ../../../Global_References/update-strategies.md -- Update Strategies
-- ../../../Global_References/vulnerability-scanning.md -- Vulnerability Scanning
+- ../../../Global_References/[vulnerability-scanning](../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
 
 ## Handoff
 After completing this skill:
-- Next skill: monorepo -- workspace dependency graph, internal packages
+- Next skill: [monorepo](../../Frontend/monorepo/SKILL.md) -- workspace dependency graph, internal packages
 - Pass context: Dependabot/Renovate config, update schedules, security policies
 
 ## Architecture Decision Trees
@@ -452,9 +452,9 @@ After completing this skill:
 | Risk profile | Low to moderate | High (accumulated drift) |
 | Maintenance burden | Low (bot handles PRs) | High (scheduled upgrade weeks) |
 
-### Monorepo vs Polyrepo Dependency Strategy
+### [Monorepo](../../Frontend/monorepo/SKILL.md) vs Polyrepo Dependency Strategy
 
-| Aspect | Monorepo | Polyrepo |
+| Aspect | [Monorepo](../../Frontend/monorepo/SKILL.md) | Polyrepo |
 |---|---|---|
 | Shared dep updates | Single lockfile, atomic | Per-repo, coordinated releases |
 | Version conflicts | Single version constraint | Multiple, drift possible |
@@ -463,7 +463,7 @@ After completing this skill:
 
 ## Implementation Patterns
 
-### YAML: Renovate Configuration for Monorepo
+### YAML: Renovate Configuration for [Monorepo](../../Frontend/monorepo/SKILL.md)
 
 ```yaml
 {
@@ -510,7 +510,7 @@ After completing this skill:
 }
 ```
 
-### Bash: Dependency Audit Script
+### Bash: Dependency [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Script
 
 ```bash
 #!/usr/bin/env bash
@@ -521,8 +521,8 @@ audit_dependencies() {
 
   case "$manifest" in
     package.json)
-      npm audit --json > audit-report.json
-      jq '.vulnerabilities | to_entries | map(select(.value.severity == "critical")) | length' audit-report.json
+      npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --json > [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
+      jq '.vulnerabilities | to_entries | map(select(.value.severity == "critical")) | length' [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
       ;;
     pom.xml)
       mvn org.owasp:dependency-check-maven:check \
@@ -530,7 +530,7 @@ audit_dependencies() {
         -Dformat=JSON
       ;;
     requirements.txt)
-      pip-audit --desc on --format json > audit-report.json
+      pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --desc on --format json > [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
       ;;
   esac
 }
@@ -548,12 +548,12 @@ audit_dependencies() {
 
 ## Anti-Patterns
 
-- Using **`latest`** tags in Docker or npm — always pin to exact semver ranges
+- Using **`latest`** tags in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or npm — always pin to exact semver ranges
 - Ignoring **peer dependency warnings** — they cause runtime failures in shared libraries
 - Running **`npm update`** without review — batch updates hide breaking changes
 - Excluding **transitive dependencies** from security scanning — vulnerabilities hide in nested deps
 - Keeping **abandoned packages** as dependencies — removes the ability to get security patches
-- Mixing **lockfiles** across environments — commit the lockfile and regenerate on CI
+- Mixing **lockfiles** across environments — [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the lockfile and regenerate on CI
 - Applying **automated patches** without running the full test suite — causes silent regressions
 
 ## Performance Optimization
@@ -564,13 +564,13 @@ audit_dependencies() {
 - Enable **pnpm** or **Yarn PnP** (Plug'n'Play) for faster installs and less disk usage
 - Configure **dependency caching** in CI pipelines to skip re-downloading unchanged packages
 - Use **sub-imports / deep imports** to import only needed modules instead of entire libraries
-- Split **monorepo packages** into granular modules so consumers only install what they use
+- Split **[monorepo](../../Frontend/monorepo/SKILL.md) packages** into granular modules so consumers only install what they use
 
 ## Security Considerations
 
 - Enable **Dependabot security alerts** and auto-merge only patch-level security fixes
 - Scan **SBOM** (SPDX/CycloneDX) against NVD database in every CI pipeline
-- Rotate **npm/GitHub tokens** with minimal scopes (read:packages, no write access on CI)
+- Rotate **npm/[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) tokens** with minimal scopes (read:packages, no write access on CI)
 - Use **`.npmrc`** with `engine-strict=true` and `ignore-scripts=false` to block postinstall exploits
 - Implement **package signing** verification for internal packages with Sigstore
 - Monitor **supply chain attacks** by reviewing new dependency maintainers and recent commits

@@ -3,15 +3,15 @@ name: Kubernetes Mastery
 description: Advanced K8s Operators and Helm Charts development.
 ---
 
-# Kubernetes Mastery
+# [Kubernetes](../kubernetes/SKILL.md) Mastery
 
-Focus on writing robust Kubernetes Operators and advanced Helm Charts.
+Focus on writing robust [Kubernetes](../kubernetes/SKILL.md) Operators and advanced Helm Charts.
 
 ## K8s Operator Snippet (Go)
 ```go
 import (
     "context"
-    "github.com/go-logr/logr"
+    "[github](../../CI_CD/github/SKILL.md).com/go-logr/logr"
     ctrl "sigs.k8s.io/controller-runtime"
     "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -57,7 +57,7 @@ spec:
 ```
 
 ## Architecture Diagram
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A["CRD Created"] --> B{"Operator Watches"}

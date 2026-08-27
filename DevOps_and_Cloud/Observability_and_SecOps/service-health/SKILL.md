@@ -11,18 +11,18 @@ metadata:
 
 # APM Service Health
 
-Assess APM service health using [Observability APIs](https://www.elastic.co/docs/solutions/observability/apis),
+Assess APM service health using [Observability APIs](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/apis),
 **ES|QL** against APM indices, Elasticsearch APIs, and (for correlation and APM-specific logic) the Kibana repo. Use
 SLOs, firing alerts, ML anomalies, throughput, latency (avg/p95/p99), error rate, and dependency health.
 
 ## Where to look
 
-- **Observability APIs** ([Observability APIs](https://www.elastic.co/docs/solutions/observability/apis)): Use the
+- **[Observability](../observability/SKILL.md) APIs** ([Observability APIs](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/apis)): Use the
   **SLOs API** ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo) |
-  [Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-slo)) to get SLO definitions, status, burn
-  rate, and error budget. Use the **Alerting API**
-  ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) |
-  [Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-alerting)) to list and manage alerting
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-slo)) to get SLO definitions, status, burn
+  rate, and error budget. Use the **[Alerting](../alerting/SKILL.md) API**
+  ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../alerting/SKILL.md)) |
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-[alerting](../alerting/SKILL.md))) to list and manage [alerting](../alerting/SKILL.md)
   rules and their alerts for the service. Use **APM annotations API** to create or search annotations when needed.
 - **ES|QL and Elasticsearch:** Query `traces*apm*,traces*otel*` and `metrics*apm*,metrics*otel*` with **ES|QL** (see
   [Using ES|QL for APM metrics](#using-esql-for-apm-metrics)) for throughput, latency, error rate, and dependency-style
@@ -37,8 +37,8 @@ SLOs, firing alerts, ML anomalies, throughput, latency (avg/p95/p99), error rate
   throttling** directly impact APM health.
 - **Logs:** Use **ES|QL** or Elasticsearch search on log indices filtered by `service.name` or `trace.id` to explain
   behavior and root cause.
-- **Observability Labs:** [Observability Labs](https://www.elastic.co/observability-labs) and
-  [APM tag](https://www.elastic.co/observability-labs/blog/tag/apm) for patterns and troubleshooting.
+- **[Observability](../observability/SKILL.md) Labs:** [Observability Labs](https://www.elastic.co/[observability](../observability/SKILL.md)-labs) and
+  [APM tag](https://www.elastic.co/[observability](../observability/SKILL.md)-labs/blog/tag/apm) for patterns and troubleshooting.
 
 ## Health criteria
 
@@ -67,7 +67,7 @@ default** where available.
 
 - **Availability:** ES|QL is available in **Elasticsearch 8.11+** (technical preview; GA in 8.14). It is **always
   available** in
-  [Elastic Observability Serverless Complete tier](https://www.elastic.co/docs/solutions/observability/observability-serverless-feature-tiers).
+  [Elastic [Observability](../observability/SKILL.md) [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Complete tier](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[observability](../observability/SKILL.md)-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-feature-tiers).
 - **Scoping to a service:** Always filter by `service.name` (and `service.environment` when relevant). Combine with a
   time range on `@timestamp`:
 
@@ -91,13 +91,13 @@ internal APM correlations API first; if unavailable (e.g. 404), it falls back to
 
 ```bash
 # Latency correlations (attributes over-represented in slow transactions)
-node skills/observability/service-health/scripts/apm-correlations.js latency-correlations --service-name <name> [--start <iso>] [--end <iso>] [--last-minutes 60] [--transaction-type <t>] [--transaction-name <n>] [--space <id>] [--json]
+node skills/[observability](../observability/SKILL.md)/service-health/scripts/apm-correlations.js latency-correlations --service-name <name> [--start <iso>] [--end <iso>] [--last-minutes 60] [--transaction-type <t>] [--transaction-name <n>] [--space <id>] [--json]
 
 # Failed transaction correlations
-node skills/observability/service-health/scripts/apm-correlations.js failed-correlations --service-name <name> [--start <iso>] [--end <iso>] [--last-minutes 60] [--transaction-type <t>] [--transaction-name <n>] [--space <id>] [--json]
+node skills/[observability](../observability/SKILL.md)/service-health/scripts/apm-correlations.js failed-correlations --service-name <name> [--start <iso>] [--end <iso>] [--last-minutes 60] [--transaction-type <t>] [--transaction-name <n>] [--space <id>] [--json]
 
 # Test Kibana connection
-node skills/observability/service-health/scripts/apm-correlations.js test [--space <id>]
+node skills/[observability](../observability/SKILL.md)/service-health/scripts/apm-correlations.js test [--space <id>]
 ```
 
 **Environment:** `KIBANA_URL` and `KIBANA_API_KEY` (or `KIBANA_USERNAME`/`KIBANA_PASSWORD`) for Kibana; for fallback,
@@ -127,7 +127,7 @@ the time range, assume last hour.
 
 **SLOs:** Call the **SLOs API** to get SLO definitions and status for the service (latency, availability),
 healthy/degrading/violated, burn rate, error budget. **Alerts:** For active APM alerts, call
-`/api/alerting/rules/_find?search=apm&search_fields=tags&per_page=100&filter=alert.attributes.executionStatus.status:active`.
+`/api/[alerting](../alerting/SKILL.md)/rules/_find?search=apm&search_fields=tags&per_page=100&filter=alert.attributes.executionStatus.status:active`.
 When checking one service, include both rules where `params.serviceName` matches the service and rules where
 `params.serviceName` is absent (all-services rules). Do not query `.alerts*` indices for active-state checks. Correlate
 with SLO violations or metric changes.
@@ -155,7 +155,7 @@ failing dependencies as likely causes.
 ### Step 6: Correlate with infrastructure and logs
 
 - **APM Correlations (when only a subpopulation is affected):** Run
-  `node skills/observability/service-health/scripts/apm-correlations.js latency-correlations|failed-correlations --service-name <name> [--start ...] [--end ...]`
+  `node skills/[observability](../observability/SKILL.md)/service-health/scripts/apm-correlations.js latency-correlations|failed-correlations --service-name <name> [--start ...] [--end ...]`
   to get correlated attributes. Filter by those attributes and fetch trace samples or errors to confirm root cause. See
   [APM Correlations script](#apm-correlations-script).
 - **Infrastructure:** Use **resource attributes** from traces (e.g. `k8s.pod.name`, `container.id`, `host.name`) and
@@ -177,7 +177,7 @@ caps rows and tokens):
 
 ```esql
 FROM traces*apm*,traces*otel*
-| WHERE service.name == "api-gateway"
+| WHERE service.name == "[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)"
   AND @timestamp >= "2025-03-01T00:00:00Z" AND @timestamp <= "2025-03-01T23:59:59Z"
 | STATS request_count = COUNT(*), failures = COUNT(*) WHERE event.outcome == "failure" BY BUCKET(@timestamp, 1 hour)
 | EVAL error_rate = failures / request_count
@@ -189,21 +189,21 @@ Latency percentiles and exact field names: see Kibana `trace_charts_definition.t
 
 ### Example: "Is service X healthy?"
 
-1. Resolve service X and time range. Call **SLOs API** and **Alerting API**; run **ES|QL** on
+1. Resolve service X and time range. Call **SLOs API** and **[Alerting](../alerting/SKILL.md) API**; run **ES|QL** on
    `traces*apm*,traces*otel*`/`metrics*apm*,metrics*otel*` for throughput, latency, error rate; query
    dependency/service-map data (ES|QL or Kibana repo).
 2. Evaluate SLO status (violated/degrading?), firing rules, ML anomalies, and dependency health.
 3. Answer: Healthy / Degraded / Unhealthy with reasons and next steps (e.g.
-   [Observability Labs](https://www.elastic.co/observability-labs)).
+   [Observability Labs](https://www.elastic.co/[observability](../observability/SKILL.md)-labs)).
 
 ### Example: "Why is service Y slow?"
 
-1. Service Y and slowness time range. Call **SLOs API** and **Alerting API**; run **ES|QL** for Y and dependencies;
+1. Service Y and slowness time range. Call **SLOs API** and **[Alerting](../alerting/SKILL.md) API**; run **ES|QL** for Y and dependencies;
    query ML anomaly results.
 2. Compare latency (avg/p95/p99) to prior period via ES|QL; from dependency data identify high-latency or failing deps.
-3. Summarize (e.g. p99 up; dependency Z elevated) and recommend (investigate Z; Observability Labs for latency).
+3. Summarize (e.g. p99 up; dependency Z elevated) and recommend (investigate Z; [Observability](../observability/SKILL.md) Labs for latency).
 
-### Example: Correlate service to infrastructure (OpenTelemetry)
+### Example: Correlate service to infrastructure ([OpenTelemetry](../opentelemetry/SKILL.md))
 
 Use **resource attributes** on spans/traces to get the runtimes (pods, containers, hosts) for the service. Then check
 CPU and memory for those resources in the same time window as the APM issue:
@@ -211,7 +211,7 @@ CPU and memory for those resources in the same time window as the APM issue:
 - From the service’s traces or metrics, read resource attributes such as `k8s.pod.name`, `k8s.namespace.name`,
   `container.id`, or `host.name`.
 - Run **ES|QL** or Elasticsearch search on infrastructure/metrics indices filtered by those resource values and the
-  incident time range. Check **CPU usage** and **memory consumption** (e.g. `system.cpu.total.norm.pct`); look for
+  [incident](../incident/SKILL.md) time range. Check **CPU usage** and **memory consumption** (e.g. `system.cpu.total.norm.pct`); look for
   **OOMKilled** events, **CPU throttling**, or sustained high CPU/memory that align with APM latency or error spikes.
 
 ### Example: Filter logs by service or trace ID
@@ -226,21 +226,21 @@ To understand behavior for a specific service or a single trace, filter logs acc
 
 ## Guidelines
 
-- Use **Observability APIs** ([SLOs API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo),
-  [Alerting API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting)) and **ES|QL** on
-  `traces*apm*,traces*otel*`/`metrics*apm*,metrics*otel*` (8.11+ or Serverless), filtering by `service.name` (and
+- Use **[Observability](../observability/SKILL.md) APIs** ([SLOs API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo),
+  [Alerting API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../alerting/SKILL.md))) and **ES|QL** on
+  `traces*apm*,traces*otel*`/`metrics*apm*,metrics*otel*` (8.11+ or [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)), filtering by `service.name` (and
   `service.environment` when relevant). For active APM alerts, call
-  `/api/alerting/rules/_find?search=apm&search_fields=tags&per_page=100&filter=alert.attributes.executionStatus.status:active`.
+  `/api/[alerting](../alerting/SKILL.md)/rules/_find?search=apm&search_fields=tags&per_page=100&filter=alert.attributes.executionStatus.status:active`.
   When checking one service, evaluate both rule types: rules where `params.serviceName` matches the target service, and
   rules where `params.serviceName` is absent (all-services rules). Treat either as applicable to the service before
-  declaring health. Do not query `.alerts*` indices when determining currently active alerts; use the Alerting API
+  declaring health. Do not query `.alerts*` indices when determining currently active alerts; use the [Alerting](../alerting/SKILL.md) API
   response above as the source of truth. For APM correlations, run the **apm-correlations** script (see
   [APM Correlations script](#apm-correlations-script)); for dependency/service-map data, use ES|QL or Kibana repo route
   handlers. For Elasticsearch index and search behavior, see the **Elasticsearch** APIs in the Elasticsearch repo.
 - Always use the **user's time range**; avoid assuming "last 1 hour" if the issue is historical.
 - When SLOs exist, anchor the health summary to SLO status and burn rate; when they do not, rely on alerts, anomalies,
   throughput, latency, error rate, and dependencies.
-- When analyzing **only application metrics ingested via OpenTelemetry**, use the ES|QL **TS** (time series) command for
+- When analyzing **only application metrics ingested via [OpenTelemetry](../opentelemetry/SKILL.md)**, use the ES|QL **TS** (time series) command for
   efficient metrics queries. The TS command is available in **Elasticsearch 9.3+** and is **always available** in
-  Elastic Observability Serverless.
+  Elastic [Observability](../observability/SKILL.md) [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md).
 - Summary: one short health verdict plus bullet points for evidence and next steps.

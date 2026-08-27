@@ -27,7 +27,7 @@ code — direct dependencies plus their own transitive dependencies, often
 outnumbering an application's own source code by an order of magnitude or
 more. Software Composition Analysis (SCA) identifies every component in
 that dependency tree, matches it against vulnerability databases (the
-National Vulnerability Database/NVD, GitHub Advisory Database, OSV.dev,
+National Vulnerability Database/NVD, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database, OSV.dev,
 vendor advisories) and license databases, and flags known-vulnerable or
 license-incompatible components before they ship. Unlike SAST (which
 analyzes code you wrote) or DAST (which probes running behavior), SCA is
@@ -48,7 +48,7 @@ that was never updated.
 - The user needs a Software Bill of Materials (SBOM) as an input — SCA
   tools frequently consume or produce SBOMs; for SBOM *generation* and
   supply-chain provenance specifically, see
-  [supply-chain-security-slsa-sbom](../supply-chain-security-slsa-sbom/SKILL.md).
+  [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md).
 - The user wants to enforce a license-compliance policy (e.g. block
   GPL-licensed dependencies in a proprietary product).
 - The user needs to distinguish a container image's OS-package
@@ -58,7 +58,7 @@ that was never updated.
 
 - A resolvable dependency manifest/lockfile per ecosystem: `package-lock.json`
   or `yarn.lock`/`pnpm-lock.yaml` (npm/yarn/pnpm), `requirements.txt`/
-  `poetry.lock`/`Pipfile.lock` (Python), `go.sum` (Go), `pom.xml`/
+  `poetry.lock`/`Pipfile.lock` ([Python](../../Languages/python/SKILL.md)), `go.sum` (Go), `pom.xml`/
   `gradle.lockfile` (Java), `Gemfile.lock` (Ruby), `Cargo.lock` (Rust).
   SCA tools generally need the lockfile, not just the top-level manifest,
   to see transitive dependencies accurately.
@@ -71,15 +71,15 @@ that was never updated.
     filesystem-aware.
   - **OWASP Dependency-Check** — mature, Java/`.NET`-centric roots but
     supports other ecosystems; NVD-based.
-  - Ecosystem-native: `npm audit`, `pip-audit`, `bundler-audit`, `govulncheck`
+  - Ecosystem-native: `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `bundler-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `govulncheck`
     (Go) — good lightweight first line, but each only understands its own
     ecosystem, so a polyglot repo needs multiple tools or a
     multi-ecosystem scanner (Trivy/Grype) as well.
-  - **Dependabot** (native to GitHub) or **Renovate** (self-hosted or
+  - **Dependabot** (native to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)) or **Renovate** (self-hosted or
     Mend-hosted, more configurable) — for automated update PRs rather
     than point-in-time scanning.
 - Network egress from CI to the relevant vulnerability database/registry
-  (NVD, OSV.dev, GitHub Advisory API, or a mirrored internal feed for
+  (NVD, OSV.dev, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory API, or a mirrored internal feed for
   air-gapped environments).
 - A defined severity threshold and remediation SLA (e.g. "critical:
   patch within 48h, high: 2 weeks") — without one, SCA produces a large
@@ -127,7 +127,7 @@ that was never updated.
 4. **Configure automated dependency updates** so fixes land as PRs
    instead of manual triage. Dependabot example:
    ```yaml
-   # .github/dependabot.yml
+   # .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
    version: 2
    updates:
      - package-ecosystem: "npm"
@@ -157,7 +157,7 @@ that was never updated.
    ```
 
 7. **Feed results into the same triage/ticketing pipeline as SAST/DAST**
-   findings (see [secure-cicd-gates](../secure-cicd-gates/SKILL.md)) so
+   findings (see [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)) so
    dependency vulnerabilities aren't managed in a separate, disconnected
    process from other security findings.
 
@@ -180,9 +180,9 @@ that was never updated.
   deadline effectively means "never fix."
 - Treat a clean SCA report as necessary, not sufficient — it only knows
   about *publicly disclosed* vulnerabilities in *known* components; pair
-  it with [sast-integration](../sast-integration/SKILL.md) for code you
+  it with [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) for code you
   wrote yourself and
-  [supply-chain-security-slsa-sbom](../supply-chain-security-slsa-sbom/SKILL.md)
+  [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)
   for provenance/tampering risks a vulnerability scan doesn't address.
 - Regenerate scans on a schedule (not just on dependency change) — new
   CVEs are disclosed against *already-installed* versions constantly, so
@@ -209,7 +209,7 @@ that was never updated.
 - **Symptom:** The same CVE is reported by three different tools with
   three different severity scores, confusing prioritization.
   **Fix:** Pick one primary source of truth for severity (e.g. the
-  vendor/GitHub Advisory Database CVSS score) for gating decisions, and
+  vendor/[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database CVSS score) for gating decisions, and
   treat other tools' scores as supplementary context, not competing gates.
 
 - **Symptom:** A container image scan reports dozens of CRITICAL findings
@@ -218,7 +218,7 @@ that was never updated.
   **Fix:** Bump the base image tag (e.g. move to a newer `-slim`/distroless
   variant or the next patch release) rather than trying to patch
   individual OS packages by hand; see
-  [container-image-hardening](../container-image-hardening/SKILL.md) for
+  [container-image-hardening](../[container-image-hardening](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) for
   a broader base-image strategy.
 
 - **Symptom:** A scan that passed yesterday fails today with no code
@@ -233,7 +233,7 @@ A Node.js service adds Trivy filesystem scanning to CI, Dependabot for
 automated updates, and a documented suppression for one unfixed
 low-exploitability CVE.
 
-`.github/workflows/sca.yml`:
+`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/sca.yml`:
 ```yaml
 name: sca
 on: [pull_request]
@@ -259,7 +259,7 @@ jobs:
 CVE-2024-XXXXX
 ```
 
-`.github/dependabot.yml`:
+`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml`:
 ```yaml
 version: 2
 updates:
@@ -285,17 +285,17 @@ Total: 1 (HIGH: 1)
 │ ejs     │ CVE-2024-YYYYY │ HIGH     │ fixed    │ 3.1.6         │ 3.1.10        │
 └─────────┴────────────────┴──────────┴──────────┴───────────────┴───────────────┘
 ```
-Remediation: bump `ejs` to `>=3.1.10` (`npm install ejs@3.1.10`), commit
+Remediation: bump `ejs` to `>=3.1.10` (`npm install ejs@3.1.10`), [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 the updated lockfile, and re-run the scan to confirm it clears.
 
 ## Cross-references
 
-- [supply-chain-security-slsa-sbom](../supply-chain-security-slsa-sbom/SKILL.md) —
+- [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
   SBOM generation and provenance attestation, which SCA tools often
   consume as input or produce as a byproduct.
-- [sast-integration](../sast-integration/SKILL.md) — analyzes your own
+- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — analyzes your own
   source code rather than third-party dependencies; the two are
   complementary, not overlapping.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — how to combine SCA
+- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine SCA
   with SAST/DAST into one coherent set of pipeline gates and a single
   triage workflow.

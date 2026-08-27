@@ -13,7 +13,7 @@ During autoregressive generation, Transformers cache the Key (K) and Value (V) t
 - **Attention Overloading:** As the context grows, attention dilution can occur, where probability mass is spread too thinly across the long KV cache, potentially leading to the "lost in the middle" phenomenon.
 - **Prefix Caching:** Modern serving infrastructure (e.g., vLLM) leverages PagedAttention to share KV cache blocks for the few-shot prefix across multiple requests, turning the large context into a highly optimized, amortized cost.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     subgraph ICLInContextLearning ["In-Context Learning<br><br><br>"]

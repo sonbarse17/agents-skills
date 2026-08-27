@@ -79,7 +79,7 @@ composable tool that agents can invoke, configure, and tear down programmaticall
 
 ### Input Context Required
 - Execution environment specification (language runtime, dependencies)
-- Isolation level requirement (namespace, gVisor, microVM, bare-metal VM)
+- Isolation level requirement (namespace, gVisor, microVM, [bare-metal](../bare-metal/SKILL.md) VM)
 - Resource budget (CPU cores, memory MB, disk MB, max wall-clock seconds)
 - Network policy (deny-all, allow-list, egress-only)
 - State persistence requirements (ephemeral, checkpoint interval, full snapshot)
@@ -189,7 +189,7 @@ START: Agent requests execution environment
 │  │  Namespace     │  │  gVisor      │  │  Firecracker          │ │
 │  │  Sandbox       │  │  (runsc)     │  │  microVM              │ │
 │  │  ┌───────────┐ │  │  ┌────────┐  │  │  ┌─────────────────┐ │ │
-│  │  │ cgroups v2│ │  │  │ Sentry │  │  │  │ Guest Kernel    │ │ │
+│  │  │ cgroups v2│ │  │  │ [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) │  │  │  │ Guest Kernel    │ │ │
 │  │  │ seccomp   │ │  │  │ Gofer  │  │  │  │ virtio-blk/net  │ │ │
 │  │  │ namespaces│ │  │  │ KVM    │  │  │  │ vsock/mmds      │ │ │
 │  │  └───────────┘ │  │  └────────┘  │  │  └─────────────────┘ │ │
@@ -236,10 +236,10 @@ START: Agent requests execution environment
 3. Mount filesystems according to the manifest (read-only rootfs, writable workspace, shared volumes).
 4. Apply network policies (iptables rules, eBPF programs, virtio-net filtering).
 
-### Phase 3: Execution & Monitoring
+### Phase 3: Execution & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 1. Inject the agent's code and input artifacts into the sandbox workspace.
 2. Launch execution under the configured resource constraints with a wall-clock watchdog.
-3. Stream stdout/stderr and resource telemetry to the observability pipeline.
+3. Stream stdout/stderr and resource telemetry to the [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) pipeline.
 4. Enforce progressive resource warnings (80% memory → soft warning, 95% → hard throttle).
 
 ### Phase 4: State Persistence
@@ -251,7 +251,7 @@ START: Agent requests execution environment
 ### Phase 5: Fork & Speculative Execution
 1. Identify branch points in the agent's reasoning where multiple strategies should be explored.
 2. Create a snapshot at the branch point and fork N child sandboxes from that snapshot.
-3. Execute each branch in parallel with independent resource quotas and monitoring.
+3. Execute each branch in parallel with independent resource quotas and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 4. Evaluate branch results using the agent's scoring function and select the optimal path.
 
 ### Phase 6: Cleanup & Teardown
@@ -267,7 +267,7 @@ START: Agent requests execution environment
 | Sandbox boot time exceeds 5 seconds | Firecracker microVM with large rootfs image | Use minimal Alpine-based rootfs; enable snapshot-resume boot; pre-warm VM pool |
 | OOM kill with no warning | Memory limit set without swap and no soft limit | Configure memory.high (soft) at 80% of memory.max; enable OOM score adjustment |
 | Snapshot restore fails with checksum mismatch | Incomplete upload due to network interruption | Enable multipart upload with server-side checksums; implement retry with verification |
-| Network policy blocks legitimate API calls | Overly restrictive egress allow-list | Audit agent's required endpoints; add to allow-list; use DNS-based policies for dynamic IPs |
+| Network policy blocks legitimate API calls | Overly restrictive egress allow-list | [Audit](../../Operations/audit/SKILL.md) agent's required endpoints; add to allow-list; use DNS-based policies for dynamic IPs |
 | Filesystem mount permission denied | Incorrect UID/GID mapping in user namespace | Configure id-mapped mounts; ensure sandbox user maps to host UID owning the volume |
 | Fork creates too many concurrent sandboxes | Unbounded fork factor in speculative execution | Set max_fork_factor=4; implement fork budget per workflow; queue excess forks |
 | Disk I/O latency spikes during snapshot | Snapshot writes compete with agent workload I/O | Use copy-on-write snapshots (btrfs/ZFS); schedule snapshots during idle periods |
@@ -276,12 +276,12 @@ START: Agent requests execution environment
 ## Complete Execution Scenario
 
 ```
-Agent Request: "Execute Python data analysis with network access to S3"
+Agent Request: "Execute [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) data analysis with network access to S3"
 │
 ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. PARSE REQUEST                                             │
-│    Language: Python 3.11                                     │
+│    Language: [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11                                     │
 │    Dependencies: pandas, numpy, boto3                        │
 │    Network: Egress to *.amazonaws.com:443                    │
 │    Resource budget: 2 CPU, 2GB RAM, 10GB disk, 600s          │
@@ -303,7 +303,7 @@ Agent Request: "Execute Python data analysis with network access to S3"
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. EXECUTE with 60s snapshot interval                        │
-│    t=0s   : Launch python analysis.py                        │
+│    t=0s   : Launch [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) analysis.py                        │
 │    t=42s  : Snapshot snap-001 captured (fs: 1.2GB)           │
 │    t=104s : Snapshot snap-002 captured (fs: 2.8GB)           │
 │    t=187s : Execution complete, exit code 0                  │
@@ -335,8 +335,8 @@ Agent Request: "Execute Python data analysis with network access to S3"
    lifetime enforced by an external watchdog. No sandbox may run indefinitely, even if
    the agent's task is incomplete.
 
-5. **Audit all sandbox lifecycle events**: Provisioning, execution, snapshotting, forking,
-   and teardown events must be emitted to the audit log with correlation IDs linking to
+5. **[Audit](../../Operations/audit/SKILL.md) all sandbox lifecycle events**: Provisioning, execution, snapshotting, forking,
+   and teardown events must be emitted to the [audit](../../Operations/audit/SKILL.md) log with correlation IDs linking to
    the originating agent request.
 
 ## Reference Guides
@@ -352,7 +352,7 @@ Agent Request: "Execute Python data analysis with network access to S3"
 
 ## Handoff
 
-- **agent-observability**: Sandbox telemetry feeds into the observability pipeline for tracing and monitoring
+- **[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)**: Sandbox telemetry feeds into the [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) pipeline for tracing and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - **tool-orchestration**: Sandboxes are invoked as tools within the broader tool orchestration framework
 - **safety-guardrails**: Sandbox policies enforce the safety constraints defined by the guardrails skill
 
@@ -362,7 +362,7 @@ Agent Request: "Execute Python data analysis with network access to S3"
 
 ### Sandbox Manager
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Dict, List, Optional, Callable
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -490,7 +490,7 @@ class SandboxManager:
 
 ### Resource Quota Enforcer
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Dict, Optional
 import time
 
@@ -538,11 +538,11 @@ What's the trust level of the code being executed?
 │       └── Filesystem read-only
 │
 ├── Semi-trusted code (third-party, OSS)
-│   └── Container sandbox (Docker)
+│   └── Container sandbox ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
 │       ├── Full container isolation
 │       ├── Network policy (egress only to allowed domains)
 │       ├── Read-only root filesystem
-│       └── Memory/CPU limits via Docker
+│       └── Memory/CPU limits via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
 │
 ├── Untrusted code (user-submitted, AI-generated)
 │   └── MicroVM sandbox (Firecracker, gVisor)
@@ -555,7 +555,7 @@ What's the trust level of the code being executed?
     └── Air-gapped sandbox
         ├── No network access
         ├── Ephemeral filesystem (wiped on exit)
-        ├── Full audit logging of every operation
+        ├── Full [audit](../../Operations/audit/SKILL.md) logging of every operation
         └── Manual approval for executions
 ```
 

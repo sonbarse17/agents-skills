@@ -6,7 +6,7 @@ description: Build the evaluation harness that gates every fine-tuning run — g
 # Eval Harness First
 
 The Phase 0 gate for the whole plugin:
-`finetuning-method-selection` and every downstream
+`[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` and every downstream
 skill assume this harness exists before a training
 config gets written. The harness is not a run-end
 side artifact — it is the data-curation engine. The
@@ -67,7 +67,7 @@ source and the checkpoint's exit gate.
   persona) and sample the cross-product; free-
   generated prompts cluster around whatever's
   easiest to write.
-- **Goldens are versioned like code** — commit
+- **Goldens are versioned like code** — [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
   `eval/goldens.jsonl`, diff it in review, tag it per
   release. It doubles as the CI regression suite.
 
@@ -131,7 +131,7 @@ against.
 
 `eval/baseline-<model>.json` is the gate token. No
 baseline file, no comparison basis for
-`checkpoint-promotion` — a checkpoint that "looks
+`[checkpoint-promotion](../checkpoint-promotion/SKILL.md)` — a checkpoint that "looks
 better" against nothing measured isn't a finding.
 
 ## Directory Contract
@@ -162,7 +162,7 @@ latter is wrong, not this contract.
 
 ### Phase 0 Exit Checklist
 
-Before `finetuning-method-selection`, confirm:
+Before `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`, confirm:
 
 1. ≥100 traces open-coded; 4–8 failure buckets (N/A
    floor for synthetic goldens on a single-failure-
@@ -183,19 +183,19 @@ file before a run.
 
 ## Related Skills
 
-General-purpose evaluation guidance (dashboards, A/B
+General-purpose evaluation guidance ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), A/B
 testing, non-fine-tuning harnesses) lives in the
-`llm-application-dev` plugin's `llm-evaluation`
+`llm-application-dev` plugin's `[llm-evaluation](../llm-application-dev/skills/[llm-evaluation](../llm-evaluation/SKILL.md)/SKILL.md)`
 skill — this skill covers only the fine-tuning
 coupling: goldens that double as training data, and
 the baseline that gates a checkpoint.
 
-- `finetuning-method-selection` — routes here first.
-- `dataset-curation` — formats these traces into
+- `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` — routes here first.
+- `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)` — formats these traces into
   training rows.
-- `trace-to-training-data` — turns graded traces into
+- `[trace-to-training-data](../trace-to-training-data/SKILL.md)` — turns graded traces into
   training examples.
-- `checkpoint-promotion` — consumes
+- `[checkpoint-promotion](../checkpoint-promotion/SKILL.md)` — consumes
   `baseline-<model>.json`, re-runs this harness on
   each candidate checkpoint.
 

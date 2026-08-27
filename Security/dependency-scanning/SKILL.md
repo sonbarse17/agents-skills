@@ -31,10 +31,10 @@ Use this skill when:
 | Tool | Type | Languages | Best For |
 |------|------|-----------|----------|
 | Snyk | Commercial/Free | Many | Comprehensive SCA |
-| Dependabot | Free (GitHub) | Many | Automated PRs |
+| Dependabot | Free ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)) | Many | Automated PRs |
 | OWASP Dep-Check | OSS | Many | Free scanning |
-| npm audit | Built-in | Node.js | Quick checks |
-| pip-audit | OSS | Python | Python projects |
+| npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | Built-in | Node.js | Quick checks |
+| pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) projects |
 | Trivy | OSS | Many | Container deps |
 
 ## Snyk
@@ -72,7 +72,7 @@ snyk ignore --id=SNYK-JS-LODASH-567746 --expiry=2024-12-31 --reason="No exploit 
 ### CI Integration
 
 ```yaml
-# .github/workflows/snyk.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/snyk.yml
 name: Snyk Security
 
 on:
@@ -93,8 +93,8 @@ jobs:
         with:
           args: --severity-threshold=high
 
-      - name: Upload results to GitHub
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Upload results to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
 ```
@@ -118,12 +118,12 @@ ignore:
 patch: {}
 ```
 
-## GitHub Dependabot
+## [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Dependabot
 
 ### Configuration
 
 ```yaml
-# .github/dependabot.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   # JavaScript/Node.js
@@ -148,20 +148,20 @@ updates:
           - "minor"
           - "patch"
 
-  # Python
+  # [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
     
-  # Docker
-  - package-ecosystem: "docker"
+  # [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+  - package-ecosystem: "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
     
-  # GitHub Actions
-  - package-ecosystem: "github-actions"
+  # [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+  - package-ecosystem: "[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -185,7 +185,7 @@ updates:
 
 ```bash
 # Download
-wget https://github.com/jeremylong/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip
+wget https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/jeremylong/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip
 unzip dependency-check-9.0.0-release.zip
 
 # Or via Homebrew
@@ -221,7 +221,7 @@ dependency-check --project "MyProject" \
 ```xml
 <!-- suppression.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
-<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+<suppressions xmlns="https://jeremylong.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/DependencyCheck/dependency-suppression.1.3.xsd">
   <suppress>
     <notes>False positive - not using vulnerable function</notes>
     <packageUrl regex="true">^pkg:npm/lodash@.*$</packageUrl>
@@ -262,43 +262,43 @@ dependency-check --project "MyProject" \
 
 ## Language-Specific Tools
 
-### Node.js (npm audit)
+### Node.js (npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 
 ```bash
-# Run audit
-npm audit
+# Run [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # JSON output
-npm audit --json
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --json
 
 # Fix automatically
-npm audit fix
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) fix
 
 # Fix with breaking changes
-npm audit fix --force
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) fix --force
 
 # Production only
-npm audit --production
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --production
 ```
 
-### Python (pip-audit)
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 
 ```bash
 # Install
-pip install pip-audit
+pip install pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # Scan installed packages
-pip-audit
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # Scan requirements file
-pip-audit -r requirements.txt
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt
 
 # Output formats
-pip-audit --format json
-pip-audit --format cyclonedx-json
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) --format json
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) --format cyclonedx-json
 
 # Fix vulnerabilities
-pip-audit --fix
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) --fix
 ```
 
 ### Go (govulncheck)
@@ -314,20 +314,20 @@ govulncheck ./...
 govulncheck -json ./...
 ```
 
-### Ruby (bundler-audit)
+### Ruby (bundler-[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 
 ```bash
 # Install
-gem install bundler-audit
+gem install bundler-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # Update database
-bundle-audit update
+bundle-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) update
 
-# Run audit
-bundle-audit check
+# Run [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+bundle-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) check
 
 # Output format
-bundle-audit check --format json
+bundle-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) check --format json
 ```
 
 ## SBOM Generation
@@ -338,12 +338,12 @@ bundle-audit check --format json
 # Node.js
 npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 
-# Python
+# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 pip install cyclonedx-bom
 cyclonedx-py -o sbom.json
 
 # Go
-go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
+go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
 cyclonedx-gomod mod -json > sbom.json
 ```
 
@@ -380,8 +380,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: npm audit
-        run: npm audit --audit-level=high
+      - name: npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+        run: npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 
       - name: Snyk scan
         uses: snyk/actions/node@master
@@ -427,6 +427,6 @@ jobs:
 
 ## Related Skills
 
-- [sast-scanning](../sast-scanning/) - Code vulnerabilities
-- [container-scanning](../container-scanning/) - Container dependencies
-- [github-actions](../../../devops/ci-cd/github-actions/) - CI integration
+- [sast-scanning](../[sast-scanning](../sast-scanning/SKILL.md)/) - Code vulnerabilities
+- [container-scanning](../[container-scanning](../../DevOps_and_Cloud/Containers_and_Orchestration/container-scanning/SKILL.md)/) - Container dependencies
+- [github-actions](../../../devops/ci-cd/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) - CI integration

@@ -8,7 +8,7 @@ metadata:
   package: com.azure:azure-security-keyvault-secrets
 ---
 
-# Azure Key Vault Secrets (Java)
+# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets (Java)
 
 Securely store and manage secrets like passwords, API keys, and connection strings.
 
@@ -42,13 +42,13 @@ TokenCredential credential = new DefaultAzureCredentialBuilder()
 
 // Sync client
 SecretClient secretClient = new SecretClientBuilder()
-    .vaultUrl("https://<vault-name>.vault.azure.net")
+    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildClient();
 
 // Async client
 SecretAsyncClient secretAsyncClient = new SecretClientBuilder()
-    .vaultUrl("https://<vault-name>.vault.azure.net")
+    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildAsyncClient();
 ```
@@ -205,7 +205,7 @@ System.out.println("Restored: " + restored.getName());
 
 ```java
 SecretAsyncClient asyncClient = new SecretClientBuilder()
-    .vaultUrl("https://<vault>.vault.azure.net")
+    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildAsyncClient();
 
@@ -256,7 +256,7 @@ public class ConfigLoader {
 }
 
 // Usage
-ConfigLoader loader = new ConfigLoader("https://my-vault.vault.azure.net");
+ConfigLoader loader = new ConfigLoader("https://my-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net");
 Map<String, String> config = loader.loadSecrets(
     Arrays.asList("db-connection-string", "api-key", "jwt-secret")
 );
@@ -321,7 +321,7 @@ try {
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net  # Required for vault URL
+AZURE_KEYVAULT_URL=https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net  # Required for [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) URL
 AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -332,7 +332,7 @@ AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used 
 3. **Set Expiration** - Use `setExpiresOn()` for credentials that should rotate
 4. **Content Type** - Set `contentType` to indicate format (e.g., `application/json`)
 5. **Version Management** - Don't delete old versions immediately during rotation
-6. **Access Logging** - Enable diagnostic logging on Key Vault
+6. **Access Logging** - Enable diagnostic logging on Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 7. **Least Privilege** - Use separate vaults for different environments
 
 ## Common Secret Types
@@ -366,7 +366,7 @@ secretClient.setSecret(new KeyVaultSecret("cert-password", "CertP@ss!")
 
 ## Trigger Phrases
 
-- "Key Vault secrets Java", "secret management Java"
+- "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets Java", "secret management Java"
 - "store password", "store API key", "connection string"
 - "retrieve secret", "rotate secret"
-- "Azure secrets", "vault secrets"
+- "Azure secrets", "[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets"

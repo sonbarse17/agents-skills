@@ -41,7 +41,7 @@ Single skill covering all anomaly detection work against **Kibana Agent Builder*
 | Missing docs / memory limit / datafeed stopped / CCS / lifecycle / calendars  | **Troubleshoot**                                                                                       |
 | Create a job / configure a datafeed / start analysis / retrieve results       | **Manage**                                                                                             |
 | Security framing (attack chains, MITRE, exfil)                                | Investigate + [../../../Global_References/security-anomaly-expert.md](../../../Global_References/security-anomaly-expert.md)           |
-| Observability/SRE framing (degradation, capacity, deployment regression)      | Investigate + [../../../Global_References/observability-anomaly-expert.md](../../../Global_References/observability-anomaly-expert.md) |
+| [Observability](../observability/SKILL.md)/SRE framing (degradation, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), deployment regression)      | Investigate + [../../../Global_References/[observability](../observability/SKILL.md)-anomaly-expert.md](../../../Global_References/[observability](../observability/SKILL.md)-anomaly-expert.md) |
 
 When a question spans modes: **Investigate → Explain → Troubleshoot**. Don't blend mode logic — finish one before moving
 on.
@@ -344,10 +344,10 @@ Requires Node.js 18+. Defaults to `elastic`/`changeme` when no credentials are s
 cd skills/kibana/kibana-anomaly-detection
 
 # tools → workflows → skills
-node scripts/kibana-agent-builder.mjs all register --kibana-url http://localhost:5601
+node scripts/[kibana-agent-builder](../../../AI_and_Agents/Workflows/agent-builder/SKILL.md).mjs all register --kibana-url http://localhost:5601
 
 # HTTPS with self-signed cert
-node scripts/kibana-agent-builder.mjs all register --kibana-url https://localhost:5601 --insecure
+node scripts/[kibana-agent-builder](../../../AI_and_Agents/Workflows/agent-builder/SKILL.md).mjs all register --kibana-url https://localhost:5601 --insecure
 ```
 
 `all register` runs `tools register`, then `workflows register`, then `skills register`. Kibana allows **at most five**
@@ -398,8 +398,8 @@ datafeed → close → update → open → start).
 **New job:** "Detect unusual error rates per host on nginx access logs." → Manage → `high_count` detector with
 `by_field_name: "host.keyword"` → validate → present → deploy.
 
-**Multi-mode:** "We had an incident last night, scores were high but now low — is the job healthy?" → Investigate the
-incident → Explain the score drift → Troubleshoot if `hard_limit` or delayed data is suspected.
+**Multi-mode:** "We had an [incident](../incident/SKILL.md) last night, scores were high but now low — is the job healthy?" → Investigate the
+[incident](../incident/SKILL.md) → Explain the score drift → Troubleshoot if `hard_limit` or delayed data is suspected.
 
 ---
 

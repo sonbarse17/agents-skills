@@ -45,16 +45,16 @@ Before activating, verify:
 - Current architecture: single node? master-slave? multi-AZ? multi-region?
 - Database engine + replication mode (sync, semi-sync, async)
 - Load balancer layer (L4 TCP, L7 HTTP) and current health-check semantics
-- Deployment model (bare metal, VM, Kubernetes, serverless)
+- Deployment model (bare metal, VM, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), [serverless](../../Containers_and_Orchestration/serverless/SKILL.md))
 - Migration cadence (per-day / per-week) and current downtime per release
 - Read/write ratio, peak TPS, dataset size, max acceptable replication lag
-- Team size and on-call capacity (drives automation vs manual runbook split)
+- Team size and on-call [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) (drives automation vs manual [runbook](../runbook/SKILL.md) split)
 - Budget ceiling — five nines costs 10–100× more than three nines
 
 ### Output Artifact
 HA architecture spec containing: availability tier + error budget, replica topology, LB config with
-health-check contract, version rollout strategy, migration plan with data sync, failover runbook,
-and monitoring/alerting matrix.
+health-check contract, version rollout strategy, migration plan with data sync, failover [runbook](../runbook/SKILL.md),
+and [monitoring](../monitoring/SKILL.md)/[alerting](../alerting/SKILL.md) matrix.
 
 ### Response Format
 ```
@@ -82,8 +82,8 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Schema migration plan using expand-contract (N+1 compatible)
 - [ ] Data sync plan: dual-write window, backfill job, cutover step, verify step
 - [ ] Quorum and split-brain prevention mechanism documented
-- [ ] Failover runbook with RPO/RTO targets and rollback path
-- [ ] Monitoring: replication lag, LB pool health, error budget burn, deploy success
+- [ ] Failover [runbook](../runbook/SKILL.md) with RPO/RTO targets and rollback path
+- [ ] [Monitoring](../monitoring/SKILL.md): replication lag, LB pool health, error budget burn, deploy success
 - [ ] DR drill cadence scheduled (quarterly minimum for ≥99.99%)
 
 ### Max Response Length
@@ -119,13 +119,13 @@ Replica count formula for read scaling: `replicas = ceil(read_tps / per_replica_
 Cap at 5 per primary — beyond that, fan out via cascading or use a sharded primary.
 
 ### Step 3: Slave/Standby DB Configuration
-Always use semi-sync for same-AZ standby (ack from ≥1 replica before commit), async for cross-region.
+Always use semi-sync for same-AZ standby (ack from ≥1 replica before [commit](../../CI_CD/commit/SKILL.md)), async for cross-region.
 GTID/LSN-based replication so promotion is deterministic.
 ```ini
-# MySQL primary (my.cnf) — semi-sync, GTID, row-based
+# [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) primary (my.cnf) — semi-sync, GTID, row-based
 [mysqld]
 server_id = 1
-log_bin = mysql-bin
+log_bin = [mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-bin
 binlog_format = ROW
 gtid_mode = ON
 enforce_gtid_consistency = ON
@@ -150,7 +150,7 @@ plugin_load_add = semisync_slave.so
 rpl_semi_sync_slave_enabled = 1
 ```
 ```conf
-# PostgreSQL primary — streaming + slot, synchronous_commit per workload
+# [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) primary — streaming + slot, synchronous_commit per workload
 wal_level = replica
 max_wal_senders = 10
 max_replication_slots = 10
@@ -191,7 +191,7 @@ backend be_app
 
 backend be_db_reads
   balance roundrobin
-  option mysql-check user haproxy_check
+  option [mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-check user haproxy_check
   server replica-1 10.0.1.20:3306 check
   server replica-2 10.0.2.20:3306 check
   server replica-3 10.0.3.20:3306 check backup   # last resort
@@ -210,7 +210,7 @@ Canary       → safest, gradual % shift (1 → 5 → 25 → 50 → 100), needs 
 Shadow       → mirror prod traffic to new version, compare results, zero user impact.
 ```
 ```yaml
-# Kubernetes rolling — surge 25% / unavailable 0, preStop drain
+# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rolling — surge 25% / unavailable 0, preStop drain
 apiVersion: apps/v1
 kind: Deployment
 metadata: {name: api}
@@ -293,7 +293,7 @@ Phase 4 CONTRACT  (release N+2, after bake)
   - Drop OLD column / table (after retention window for rollback)
 ```
 ```sql
--- Phase 1: PostgreSQL safe DDL
+-- Phase 1: [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) safe DDL
 ALTER TABLE orders ADD COLUMN customer_uuid uuid NULL;            -- instant
 CREATE INDEX CONCURRENTLY idx_orders_customer_uuid ON orders(customer_uuid);
 -- DO NOT: ADD COLUMN ... NOT NULL DEFAULT  (rewrites table on old PG)
@@ -346,10 +346,10 @@ Group size   Failures tolerated   Notes
 5            2                    standard prod
 7            3                    geo-distributed
 ```
-Use etcd / Consul / ZooKeeper / Raft built into the DB (CockroachDB, TiDB, MongoDB). Lease-based leader.
-Fencing token on every primary action so a zombie old-primary cannot commit.
+Use etcd / Consul / ZooKeeper / Raft built into the DB (CockroachDB, TiDB, [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)). Lease-based leader.
+Fencing token on every primary action so a zombie old-primary cannot [commit](../../CI_CD/commit/SKILL.md).
 
-### Step 10: Failover Runbook (RPO/RTO Targets)
+### Step 10: Failover [Runbook](../runbook/SKILL.md) (RPO/RTO Targets)
 ```
 Tier      RPO target   RTO target   Failover mode
 99.0%     1h           4h           Backup restore
@@ -358,19 +358,19 @@ Tier      RPO target   RTO target   Failover mode
 99.99%    <10s         <60s         Sync replica + LB pool swap, auto + GeoDNS
 99.999%   0            <10s         Multi-master, anycast, no human in loop
 ```
-Runbook skeleton (must be tested quarterly for ≥99.99%):
+[Runbook](../runbook/SKILL.md) skeleton (must be tested quarterly for ≥99.99%):
 ```
 1. DETECT     — alert on primary unreachable for >N seconds (N = RTO/3)
 2. FENCE      — revoke old primary's lease token; block its writes
 3. PROMOTE    — quorum elects new primary (or manual cmd: pg_ctl promote / FAILOVER)
 4. REROUTE    — update LB pool / VIP / DNS / Consul service; TTL ≤ RTO/2
 5. VALIDATE   — health check + canary read + canary write succeed
-6. NOTIFY     — page on-call, post status page, log incident
+6. NOTIFY     — page on-call, post status page, log [incident](../incident/SKILL.md)
 7. REBUILD    — old primary becomes new standby (pg_rewind / reseed)
-8. POSTMORTEM — within 48h; update runbook; adjust budget
+8. POSTMORTEM — within 48h; update [runbook](../runbook/SKILL.md); adjust budget
 ```
 
-### Step 11: Monitoring + Burn-Rate Alerting
+### Step 11: [Monitoring](../monitoring/SKILL.md) + Burn-Rate [Alerting](../alerting/SKILL.md)
 Required signals (alert before users notice):
 - Replication lag: warn @ 5s, page @ 30s (async); warn @ 1s for semi-sync
 - LB pool health: page if healthy < 50%
@@ -387,7 +387,7 @@ Required signals (alert before users notice):
 - App releases MUST be backward + forward compatible across one release boundary.
 - Schema migrations MUST follow expand-contract; no in-place rename / drop in same release.
 - Every destructive DDL has a bake window ≥ 1 release before contract phase.
-- Connection draining ≥ 15s, terminationGracePeriod ≥ 60s on Kubernetes.
+- Connection draining ≥ 15s, terminationGracePeriod ≥ 60s on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).
 - All auto-failover paths drilled quarterly with real traffic for ≥99.99%.
 - Burn-rate alerts use multi-window (fast + slow burn), never single-threshold.
 - Never deploy on Friday afternoon to a 99.99% system without senior approval.
@@ -412,7 +412,7 @@ Error budget available?
 ```
 RPO requirement?
 ├── Zero data loss → Synchronous replication
-│   Commit waits for ≥1 replica ack. Increases p99 latency by 1-5ms.
+│   [Commit](../../CI_CD/commit/SKILL.md) waits for ≥1 replica ack. Increases p99 latency by 1-5ms.
 │   Use only for financial transactions. Budget for latency impact.
 ├── < 5s data loss → Semi-synchronous
 │   Default for same-AZ. Timeout falls back to async.
@@ -465,7 +465,7 @@ spec:
 ### Pattern: Semi-Sync Replication with Auto-Failover
 
 ```ini
-# Patroni configuration for PostgreSQL HA
+# Patroni configuration for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) HA
 scope: mydb
 namespace: /service/
 name: pg-primary
@@ -483,7 +483,7 @@ bootstrap:
     loop_wait: 10
     retry_timeout: 10
     maximum_lag_on_failover: 1048576  # 1MB
-    postgresql:
+    [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
       use_pg_rewind: true
       parameters:
         wal_level: replica
@@ -491,11 +491,11 @@ bootstrap:
         wal_log_hints: "on"
         synchronous_standby_names: "ANY 1 (pg-replica-1, pg-replica-2)"
 
-postgresql:
+[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
   listen: 0.0.0.0:5432
   connect_address: 10.0.1.10:5432
-  data_dir: /data/postgresql
-  bin_dir: /usr/lib/postgresql/16/bin
+  data_dir: /data/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+  bin_dir: /usr/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/16/bin
   authentication:
     replication:
       username: replicator
@@ -509,8 +509,8 @@ postgresql:
 ### Disaster Recovery Drills
 - Quarterly for ≥99.99%: scheduled failover exercise during maintenance window. Half production traffic routed to DR.
 - Annual: full region failover. All traffic to DR region for 4 hours. Measure RPO and RTO.
-- Game day: surprise failover scenario. Team follows runbook without prior notice. Measure response time.
-- Post-drill: update runbook based on findings. Add automation for manual steps discovered during drill.
+- Game day: surprise failover scenario. Team follows [runbook](../runbook/SKILL.md) without prior notice. Measure response time.
+- Post-drill: update [runbook](../runbook/SKILL.md) based on findings. Add automation for manual steps discovered during drill.
 
 ### Cost Management
 - Multi-AZ DB: 2x compute cost for standby. ~20% increase for storage (replication).
@@ -531,12 +531,12 @@ postgresql:
 
 ## Performance Optimization
 
-- Connection pooling with PgBouncer: reduce PostgreSQL connection overhead. Transaction pooling mode.
+- Connection pooling with PgBouncer: reduce [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) connection overhead. Transaction pooling mode.
 - Read replicas for reporting: offload analytics queries from primary. Allow 5-10 replicas.
 - Database connection limit: 100 per application instance. Queue with `pgbouncer` for spikes.
 - Caching layer at LB: cache GET responses for 30s. Reduces application load by 30-50%.
 - Query optimization: slow query log (>200ms). Index recommendations from `pg_stat_statements`.
-- Replica lag monitoring: alert on > 5s lag for async, > 1s for semi-sync. Investigate immediately.
+- Replica lag [monitoring](../monitoring/SKILL.md): alert on > 5s lag for async, > 1s for semi-sync. Investigate immediately.
 - Disk throughput: provision IOPS at 3x baseline. Burst credits for gp3 volumes monitored.
 
 ## Security Considerations
@@ -545,14 +545,14 @@ postgresql:
 - Database encryption at rest: AWS RDS encryption / Azure TDE. Key rotation every 12 months.
 - Network segmentation: app and DB in private subnets. Bastion host for admin access.
 - Backup encryption: S3 bucket with SSE-KMS. Cross-region backup copy encrypted with different key.
-- Access control: database credentials in Vault. Rotated every 30 days. Application reads at startup.
-- Audit logging: all schema changes logged. DDL triggers in PostgreSQL. Review weekly.
+- Access control: database credentials in [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md). Rotated every 30 days. Application reads at startup.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all schema changes logged. DDL triggers in [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md). Review weekly.
 - Failover authentication: failover commands require MFA. Human-in-the-loop for manual promotion.
 - WAF in front of LB: rate limiting, SQL injection protection, IP blocklist for known bad actors.
 ## Handoff
-- `enterprise-sla-management` for SLA contract wording, customer credits, multi-tier SLA structure.
+- `[enterprise-sla-management](../sla-management/SKILL.md)` for SLA contract wording, customer credits, multi-tier SLA structure.
 - `data-data-replication` for deep dive on database-specific replication internals (GoldenGate, Patroni, etc).
 - `data-cdc-patterns` when dual-write is implemented via Debezium / Kafka Connect.
-- `devops-progressive-delivery` for Argo Rollouts / Flagger canary automation specifics.
-- `devops-incident-response` for on-call paging, escalation, status page automation.
-- `devops-backup-dr` for backup cadence, snapshot retention, restore drills.
+- `devops-[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)` for Argo Rollouts / Flagger canary automation specifics.
+- `devops-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)` for on-call paging, escalation, status page automation.
+- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup cadence, snapshot retention, restore drills.

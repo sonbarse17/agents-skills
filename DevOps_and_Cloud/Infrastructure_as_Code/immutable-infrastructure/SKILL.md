@@ -25,11 +25,11 @@ pipeline, and a new instance rolls out. SSH access for routine changes shouldn't
 discouraged — the access itself should be hard to get, because the two-second fix under pressure
 is exactly how drift gets reintroduced.
 
-- **Remove standing SSH access for config changes** — break-glass access for genuine incident
+- **Remove standing SSH access for config changes** — break-glass access for genuine [incident](../../Observability_and_SecOps/incident/SKILL.md)
   debugging is different from routine access for "quick fixes."
 - **Automate every provisioning step in the image build**, so nothing about a running instance
   depends on a human having remembered to run a command against it.
-- **Treat any manual change discovered on a running instance as an incident**, not a shortcut that
+- **Treat any manual change discovered on a running instance as an [incident](../../Observability_and_SecOps/incident/SKILL.md)**, not a shortcut that
   saved time — it means the image no longer describes reality.
 
 **Done when:** no instance in the fleet has ever received a change that isn't also in the image it
@@ -54,24 +54,24 @@ build {
 }
 ```
 
-- **Version every image build** and tag it with the commit it was built from, so any running
+- **Version every image build** and tag it with the [commit](../../CI_CD/commit/SKILL.md) it was built from, so any running
   instance can be traced back to exact source.
 - **Rebuild from a clean base every time**, never by patching a previous image in place — the same
   cattle principle applies one level up, to the image itself.
-- **Scan the image before it's promoted** — see `image-scanning` for the vulnerability-scanning
+- **Scan the image before it's promoted** — see `[image-scanning](../../../Security/image-scanning/SKILL.md)` for the [vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md)
   step this pipeline should include.
 
-**Done when:** every image in use can be traced to a specific pipeline run and source commit, and
-rebuilding from that commit reproduces an equivalent image.
+**Done when:** every image in use can be traced to a specific pipeline run and source [commit](../../CI_CD/commit/SKILL.md), and
+rebuilding from that [commit](../../CI_CD/commit/SKILL.md) reproduces an equivalent image.
 
 ## 3. Replace instances to deploy, don't reconfigure them
 
 Deploying a change means launching new instances from the new image and retiring the old ones —
-via a rolling update, blue-green swap, or autoscaling group refresh — not pushing new config to
-instances that keep running. See `deployment-strategies` for the mechanics of how that rollout
+via a rolling update, blue-green swap, or [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group refresh — not pushing new config to
+instances that keep running. See `[deployment-strategies](../../Containers_and_Orchestration/deployment-strategies/SKILL.md)` for the mechanics of how that rollout
 happens safely at the traffic-shifting level.
 
-- **Let the orchestrator (ASG, Kubernetes, managed instance group) drive the replacement**,
+- **Let the orchestrator (ASG, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), managed instance group) drive the replacement**,
   rather than scripting instance-by-instance in-place updates.
 - **Terminate old instances only after new ones pass health checks**, never on a timer that
   assumes success.
@@ -94,7 +94,7 @@ deploy path against the previous image tag.
 Instances are disposable, but data usually isn't — a database, uploaded files, or session state
 baked into local disk vanishes the moment the instance is replaced. Push persistent state onto
 managed, externally-attached storage (a managed database, object storage, a network volume) so
-replacing the compute layer never risks the data layer. See `stateful-workloads` for handling the
+replacing the compute layer never risks the data layer. See `[stateful-workloads](../../Containers_and_Orchestration/stateful-workloads/SKILL.md)` for handling the
 minority of components that genuinely can't be made stateless this way.
 
 **Done when:** terminating any instance in the fleet, without warning, causes no data loss.
@@ -104,7 +104,7 @@ minority of components that genuinely can't be made stateless this way.
 Not everything belongs on this model — a handful of legacy systems or specialized appliances
 can't be cleanly re-imaged on every change without disproportionate cost. For those, converge
 them deliberately with configuration management instead of pretending they're immutable while
-secretly patching them by hand. See `configuration-management` for that model and how to choose
+secretly patching them by hand. See `[configuration-management](../../Cloud_Providers/configuration-management/SKILL.md)` for that model and how to choose
 between the two honestly.
 
 **Done when:** every host that isn't immutable has been explicitly designated as such, with a

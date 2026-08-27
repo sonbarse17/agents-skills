@@ -7,7 +7,7 @@ metadata:
   version: "1.0"
 ---
 
-# Docker Compose
+# [Docker](../docker/SKILL.md) Compose
 
 Orchestrate multi-container applications with declarative YAML configuration.
 
@@ -22,8 +22,8 @@ Use this skill when:
 
 ## Prerequisites
 
-- Docker Engine with Compose plugin (v2)
-- Basic Docker knowledge
+- [Docker](../docker/SKILL.md) Engine with Compose plugin (v2)
+- Basic [Docker](../docker/SKILL.md) knowledge
 - YAML syntax understanding
 
 ## Basic Configuration
@@ -31,7 +31,7 @@ Use this skill when:
 ### Simple Application Stack
 
 ```yaml
-# docker-compose.yml
+# [docker](../docker/SKILL.md)-compose.yml
 version: '3.8'
 
 services:
@@ -53,7 +53,7 @@ services:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: myapp
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
     ports:
       - "5432:5432"
 
@@ -212,14 +212,14 @@ services:
 ### Override Files
 
 ```yaml
-# docker-compose.yml (base)
+# [docker](../docker/SKILL.md)-compose.yml (base)
 services:
   web:
     image: myapp:latest
     ports:
       - "3000:3000"
 
-# docker-compose.override.yml (development - auto-loaded)
+# [docker](../docker/SKILL.md)-compose.override.yml (development - auto-loaded)
 services:
   web:
     build: .
@@ -228,7 +228,7 @@ services:
     environment:
       - DEBUG=true
 
-# docker-compose.prod.yml (production)
+# [docker](../docker/SKILL.md)-compose.prod.yml (production)
 services:
   web:
     deploy:
@@ -241,13 +241,13 @@ services:
 
 ```bash
 # Development (uses override automatically)
-docker compose up
+[docker](../docker/SKILL.md) compose up
 
 # Production
-docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+[docker](../docker/SKILL.md) compose -f [docker](../docker/SKILL.md)-compose.yml -f [docker](../docker/SKILL.md)-compose.prod.yml up
 
 # Merge and view final config
-docker compose -f docker-compose.yml -f docker-compose.prod.yml config
+[docker](../docker/SKILL.md) compose -f [docker](../docker/SKILL.md)-compose.yml -f [docker](../docker/SKILL.md)-compose.prod.yml config
 ```
 
 ## Profiles
@@ -265,21 +265,21 @@ services:
     profiles:
       - debug
 
-  monitoring:
+  [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):
     image: prometheus
     profiles:
-      - monitoring
+      - [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 ```
 
 ```bash
 # Run without profiles (web, db only)
-docker compose up
+[docker](../docker/SKILL.md) compose up
 
 # Run with debug profile
-docker compose --profile debug up
+[docker](../docker/SKILL.md) compose --profile debug up
 
 # Run with multiple profiles
-docker compose --profile debug --profile monitoring up
+[docker](../docker/SKILL.md) compose --profile debug --profile [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) up
 ```
 
 ## Commands
@@ -288,67 +288,67 @@ docker compose --profile debug --profile monitoring up
 
 ```bash
 # Start services
-docker compose up -d
+[docker](../docker/SKILL.md) compose up -d
 
 # Start specific service
-docker compose up -d web
+[docker](../docker/SKILL.md) compose up -d web
 
 # Stop services
-docker compose stop
+[docker](../docker/SKILL.md) compose stop
 
 # Stop and remove containers
-docker compose down
+[docker](../docker/SKILL.md) compose down
 
 # Stop and remove everything including volumes
-docker compose down -v --rmi all
+[docker](../docker/SKILL.md) compose down -v --rmi all
 
 # Restart services
-docker compose restart web
+[docker](../docker/SKILL.md) compose restart web
 ```
 
 ### Building
 
 ```bash
 # Build images
-docker compose build
+[docker](../docker/SKILL.md) compose build
 
 # Build without cache
-docker compose build --no-cache
+[docker](../docker/SKILL.md) compose build --no-cache
 
 # Build and start
-docker compose up --build
+[docker](../docker/SKILL.md) compose up --build
 
 # Pull latest images
-docker compose pull
+[docker](../docker/SKILL.md) compose pull
 ```
 
-### Monitoring
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # View logs
-docker compose logs -f
+[docker](../docker/SKILL.md) compose logs -f
 
 # View specific service logs
-docker compose logs -f web
+[docker](../docker/SKILL.md) compose logs -f web
 
 # View running services
-docker compose ps
+[docker](../docker/SKILL.md) compose ps
 
 # View resource usage
-docker compose top
+[docker](../docker/SKILL.md) compose top
 ```
 
 ### Execution
 
 ```bash
 # Run command in new container
-docker compose run --rm web npm test
+[docker](../docker/SKILL.md) compose run --rm web npm test
 
 # Execute in running container
-docker compose exec web /bin/sh
+[docker](../docker/SKILL.md) compose exec web /bin/sh
 
 # Scale service
-docker compose up -d --scale worker=3
+[docker](../docker/SKILL.md) compose up -d --scale worker=3
 ```
 
 ## Development Workflow
@@ -369,7 +369,7 @@ services:
 ```
 
 ```bash
-docker compose watch
+[docker](../docker/SKILL.md) compose watch
 ```
 
 ### Hot Reload Setup
@@ -397,8 +397,8 @@ services:
   db:
     image: postgres:15
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+      - postgres-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - ./init-scripts:/[docker](../docker/SKILL.md)-entrypoint-initdb.d:ro
     environment:
       POSTGRES_DB: myapp
 ```
@@ -413,7 +413,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/[docker](../docker/SKILL.md).sock:/var/run/[docker](../docker/SKILL.md).sock:ro
       - ./traefik.yml:/etc/traefik/traefik.yml:ro
 
   web:
@@ -453,6 +453,6 @@ services:
 
 ## Related Skills
 
-- [docker-management](../docker-management/) - Docker fundamentals
-- [kubernetes-ops](../../orchestration/kubernetes-ops/) - Production orchestration
-- [reverse-proxy](../../../infrastructure/networking/reverse-proxy/) - Production routing
+- [docker-management](../[docker-management](../[docker](../docker/SKILL.md)-management/SKILL.md)/) - [Docker](../docker/SKILL.md) fundamentals
+- [kubernetes-ops](../../orchestration/[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - Production orchestration
+- [reverse-proxy](../../../infrastructure/networking/[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Production routing

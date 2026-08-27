@@ -87,7 +87,7 @@ dvc remote modify myremote region us-east-1
 # Track data
 dvc add data/raw/customers.csv
 git add data/raw/customers.csv.dvc .gitignore
-git commit -m "add raw customers dataset"
+git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "add raw customers dataset"
 
 # Create pipeline (dvc.yaml)
 dvc stage add -n train \
@@ -96,7 +96,7 @@ dvc stage add -n train \
   -d src/train.py \
   -o models/model.pkl \
   -M metrics/accuracy.json \
-  python src/train.py
+  [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/train.py
 
 # Reproduce pipeline
 dvc repro
@@ -116,8 +116,8 @@ lakectl branch create spark://main@data-lake/refs/heads/etl-dev
 # Work on branch (Spark job reads from etl-dev branch)
 spark.read.format("iceberg").option("branch", "etl-dev").table("analytics.fct_orders")
 
-# Commit changes
-lakectl commit lakefs://data-lake/etl-dev -m "add revenue column to fct_orders"
+# [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) changes
+lakectl [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lakefs://data-lake/etl-dev -m "add revenue column to fct_orders"
 
 # Diff
 lakectl diff lakefs://data-lake/main lakefs://data-lake/etl-dev
@@ -126,7 +126,7 @@ lakectl diff lakefs://data-lake/main lakefs://data-lake/etl-dev
 lakectl merge lakefs://data-lake/etl-dev lakefs://data-lake/main
 
 # Rollback
-lakectl revert lakefs://data-lake/main --commit <bad-commit-hash>
+lakectl revert lakefs://data-lake/main --[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) <bad-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-hash>
 
 # Tag
 lakectl tag lakefs://data-lake/v1.0.0 lakefs://data-lake/main
@@ -142,14 +142,14 @@ main (production data, immutable)
       ↓ merge via PR with data diff review
 ```
 
-Rules: no direct writes to `main`. All changes via branch → PR → data diff review → merge. `experiment/*` branches can diverge without merging. `dev/*` branches merge to main when ready. Tags for releases and audit points.
+Rules: no direct writes to `main`. All changes via branch → PR → data diff review → merge. `experiment/*` branches can diverge without merging. `dev/*` branches merge to main when ready. Tags for releases and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) points.
 
 ### Step 5: Experiment Reproducibility
 
 ```
 Experiment:
-  - Git commit (code): a1b2c3d
-  - DVC commit (data): e4f5g6h
+  - Git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (code): a1b2c3d
+  - DVC [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (data): e4f5g6h
   - Parameters: lr=0.01, epochs=50
   - Metrics: accuracy=0.923, loss=0.18
   - Output: models/exp-a1b2c3d.pkl
@@ -176,7 +176,7 @@ lakectl diff lakefs://data-lake/main lakefs://data-lake/dev-feature
 ### Step 7: CI/CD Integration
 
 ```yaml
-# .github/workflows/data-pipeline.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/data-pipeline.yml
 jobs:
   data-pipeline:
     runs-on: ubuntu-latest
@@ -191,12 +191,12 @@ jobs:
           jq '.added, .modified' diff.json
 ```
 
-LakeFS hooks: `pre-commit` (validate schema), `pre-merge` (check compatibility), `post-merge` (trigger pipeline).
+LakeFS hooks: `pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)` (validate schema), `pre-merge` (check compatibility), `post-merge` (trigger pipeline).
 
 ### Step 8: Nessie — Git for Iceberg
-Nessie provides Git-like version control for data lakes at the Iceberg catalog level. Unlike LakeFS (object store branching), Nessie operates on table metadata via the Iceberg REST Catalog API. A Nessie commit captures all table states atomically, enabling multi-table atomic operations. Branches are zero-copy — instant creation regardless of data size since only metadata references are copied. Key operations: `CREATE BRANCH dev FROM main` for isolated data development; `MERGE dev INTO main` for atomic promotion of all table changes; `TAG release-1.0` for reproducible snapshots. Integrates with Spark, Flink, Trino, and Dremio. Use Nessie for catalog-level Iceberg versioning, multi-table atomic commits, and CI/CD pipeline isolation for data engineering.
+Nessie provides Git-like version control for data lakes at the Iceberg catalog level. Unlike LakeFS (object store branching), Nessie operates on table metadata via the Iceberg REST Catalog API. A Nessie [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) captures all table states atomically, enabling multi-table atomic operations. Branches are zero-copy — instant creation regardless of data size since only metadata references are copied. Key operations: `CREATE BRANCH dev FROM main` for isolated data development; `MERGE dev INTO main` for atomic promotion of all table changes; `TAG release-1.0` for reproducible snapshots. Integrates with Spark, Flink, Trino, and Dremio. Use Nessie for catalog-level Iceberg versioning, multi-table atomic commits, and CI/CD pipeline isolation for data engineering.
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pynessie import NessieClient
 client = NessieClient('http://nessie:19120/api/v2')
 client.create_branch('etl-job-20240501', 'main')
@@ -216,7 +216,7 @@ dvc exp apply lr-mid  # rollback to best experiment
 ```
 
 ### Step 10: Data Lineage Tracking
-Track the full lineage from source data through transformations to output models. For DVC, lineage is captured in `dvc.yaml` and `dvc.lock` files — each stage defines its dependencies and outputs. For LakeFS, lineage is tracked through commit history and metadata. For Nessie, lineage is captured at the catalog level with atomic commits. Use OpenLineage alongside these tools for end-to-end lineage across the entire data platform.
+Track the full lineage from source data through transformations to output models. For DVC, lineage is captured in `dvc.yaml` and `dvc.lock` files — each stage defines its dependencies and outputs. For LakeFS, lineage is tracked through [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history and metadata. For Nessie, lineage is captured at the catalog level with atomic commits. Use OpenLineage alongside these tools for end-to-end lineage across the entire data platform.
 
 ### Step 11: Data Retention and Garbage Collection
 Versioning creates historical data that accumulates over time. Define retention policies: keep all versions for 30 days for rollback, weekly snapshots for 1 year, monthly snapshots for 7 years (compliance). DVC uses `dvc gc` to remove unused cache files. LakeFS garbage collection removes unreferenced objects from branches older than TTL. Nessie GC removes old snapshots not referenced by any branch or tag.
@@ -286,7 +286,7 @@ Data volume:
 
 - Always version data independently of code (DVC pointer files in Git, data in remote storage).
 - Tag every production data release with a semantic version and changelog.
-- Run data validation in pre-commit hooks (LakeFS) or pipeline stages (DVC).
+- Run data validation in pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks (LakeFS) or pipeline stages (DVC).
 - Set retention policies: experiment branches auto-deleted after 30 days, dev branches after 90 days.
 - Use data contracts to validate schema before merging data changes.
 - Document data lineage: source → transformation → output dataset.
@@ -295,7 +295,7 @@ Data volume:
 - Combine with experiment tracking (MLflow, Weights & Biases) for complete ML reproducibility.
 - Use DVC `dvc.lock` as the single source of truth for pipeline state.
 - Set up CI/CD that auto-deletes stale experiment branches.
-- Use LakeFS hooks for automated data quality checks on commit.
+- Use LakeFS hooks for automated data quality checks on [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
 - Monitor storage usage per branch for cost attribution.
 
 ## Compared With
@@ -307,7 +307,7 @@ Data volume:
 | Zero-copy | Yes (pointers) | Yes (metadata) | Yes (metadata) | No (files) |
 | Experiment tracking | Built-in | No | No | No |
 | Pipeline DAG | dvc.yaml | External | External | External |
-| Multi-table atomic | No | Yes (commit) | Yes (commit) | No |
+| Multi-table atomic | No | Yes ([commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | Yes ([commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | No |
 | Scale | < 100 GB | PB-scale | PB-scale | PB-scale |
 | Rollback | dvc checkout | lakectl revert | client.merge | time travel |
 
@@ -326,7 +326,7 @@ DVC vs MLflow: DVC handles data and pipeline versioning. MLflow handles experime
 - Performance degrades with: millions of DVC-tracked files, thousands of LakeFS branches, Nessie snapshots without GC.
 - DVC cache: local cache in `.dvc/cache` avoids re-downloading unchanged files. Use `dvc cache dir` to set a shared cache.
 - LakeFS storage: new writes on branches create new objects. Storage grows with active development branches. Use GC to reclaim space.
-- Nessie metadata: each commit stores a snapshot of the Iceberg catalog. Multi-table commits are atomic but increase metadata size.
+- Nessie metadata: each [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) stores a snapshot of the Iceberg catalog. Multi-table commits are atomic but increase metadata size.
 
 Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie scale to enterprise data lakes with hundreds of users. Nessie is最适合 for Iceberg-native environments where catalog-level operations are critical.
 
@@ -338,7 +338,7 @@ Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie
 | LakeFS | Data lake branching, production data versioning |
 | Nessie | Iceberg catalog versioning, multi-table atomic commits |
 | Delta Lake | Single-table time travel (built into Delta format) |
-| Great Expectations | Data validation in pre-commit hooks |
+| Great Expectations | Data validation in pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks |
 | MLflow | Experiment tracking alongside DVC |
 | NumpyCruncher / Quilt | Alternative data versioning for data science |
 | OpenLineage | Cross-tool lineage tracking |
@@ -350,7 +350,7 @@ Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie
 ```yaml
 branching_strategy:
   main:
-    description: "Production data — serving dashboards, ML models, reports"
+    description: "Production data — serving [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), ML models, reports"
     access: "Read-only for most users, write via PR merge"
     retention: "Indefinite"
     
@@ -397,7 +397,7 @@ branching_strategy:
 # dvc.yaml — reproducible data pipeline
 stages:
   extract:
-    cmd: python src/extract.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/extract.py
     deps:
       - src/extract.py
       - config/extract_config.yaml
@@ -408,7 +408,7 @@ stages:
       - extract.end_date
   
   transform:
-    cmd: python src/transform.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/transform.py
     deps:
       - src/transform.py
       - data/raw/orders.parquet
@@ -418,7 +418,7 @@ stages:
       - transform.min_order_amount
   
   aggregate:
-    cmd: python src/aggregate.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/aggregate.py
     deps:
       - src/aggregate.py
       - data/processed/orders_clean.parquet
@@ -426,7 +426,7 @@ stages:
       - data/features/order_features.parquet
     
   evaluate:
-    cmd: python src/evaluate.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/evaluate.py
     deps:
       - src/evaluate.py
       - data/features/order_features.parquet
@@ -453,7 +453,7 @@ Scale and workflow?
 ├── Experiment tracking with code + data + model
 │   └── MLflow (model registry) + DVC (data versioning)
 └── Compliance-driven data archiving
-    └── LakeFS (retention policies, GC, audit trails)
+    └── LakeFS (retention policies, GC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails)
 ```
 
 ## Rules
@@ -508,7 +508,7 @@ Data Versioning Strategy
 ## Implementation Patterns
 
 ### Nessie Branch Operations
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_versioning/nessie_branch.py
 from pynessie import NessieClient
 
@@ -534,7 +534,7 @@ class NessieBranchManager:
 # data_versioning/dvc.yaml
 stages:
   prepare_data:
-    cmd: python scripts/prepare_data.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/prepare_data.py
     deps:
       - scripts/prepare_data.py
       - data/raw
@@ -570,18 +570,18 @@ stages:
 
 - **Snapshot diff**: Use Nessie diff API to compute changes between branches without scanning all data.
 - **Lazy materialization**: Branch references point to same underlying files until write; zero storage overhead on create.
-- **Metadata caching**: Cache Nessie commit log in memory (Redis) for fast branch listing operations.
+- **Metadata caching**: Cache Nessie [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) log in memory (Redis) for fast branch listing operations.
 - **Incremental GC**: GC only unreferenced files since last GC run; avoid full scans of storage.
 - **Parallel GC**: Parallelize Nessie GC across multiple workers; rate-limit to avoid S3 throttling.
 
 ## Security Considerations
 
 - **Branch access control**: Restrict write access to `production` branch; PR-based merges only.
-- **Audit trail**: Log all Nessie branch operations (create, merge, delete) for compliance.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all Nessie branch operations (create, merge, delete) for compliance.
 - **Snapshot ACLs**: Tag snapshots with sensitivity labels; strip PII columns in non-privileged branches.
 - **Encryption**: Encrypt Nessie catalog metadata at rest; use TLS for Nessie API connections.
 - **Backup**: Backup Nessie catalog metadata daily; test restore procedure quarterly.
 
 ## Handoff
-`data-data-platform` for versioning infrastructure. `data-data-catalog` for cataloging versioned datasets. `data-data-observability` for monitoring version health. `data-data-quality` for quality gates on merge.
+`[data-data-platform](../data-platform/SKILL.md)` for versioning infrastructure. `[data-data-catalog](../data-catalog/SKILL.md)` for cataloging versioned datasets. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) version health. `[data-data-quality](../data-quality/SKILL.md)` for quality gates on merge.
 

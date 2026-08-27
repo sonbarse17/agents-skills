@@ -10,7 +10,7 @@ description: Best practices for sharding algorithms (Consistent Hashing) and sca
 - **Horizontal Scaling**: Adding more machines to a database cluster to handle increased load.
 
 ## Consistent Hashing Pseudocode
-```python
+```[python](../../Languages/python/SKILL.md)
 import hashlib
 import bisect
 
@@ -40,7 +40,7 @@ class ConsistentHash:
 ```
 
 ## Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Client] --> B(Load Balancer)

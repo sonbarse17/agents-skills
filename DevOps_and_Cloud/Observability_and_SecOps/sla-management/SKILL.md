@@ -23,18 +23,18 @@ Defines, measures, and enforces service level agreements with error budgets, bur
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: SLA, service level agreement, uptime, SLO, error budget, availability, reliability target, service guarantee, SLA penalty, SLA monitoring, service level indicator, SLA breach, SLA reporting, SLA negotiation, service credit, burn rate, feature freeze.
+Exact user phrases: SLA, service level agreement, uptime, SLO, error budget, availability, reliability target, service guarantee, SLA penalty, SLA [monitoring](../monitoring/SKILL.md), service level indicator, SLA breach, SLA reporting, SLA negotiation, service credit, burn rate, feature freeze.
 
 ### Input Context
 - What services need SLO definitions and what are their current reliability baselines?
 - What are the current latency (p50, p95, p99), error rate, and availability baselines?
 - Is there an existing SLA structure with customers — what tiers, targets, and penalties exist?
 - What are the penalty terms for SLA breaches and how are service credits calculated?
-- What is the team's current on-call and incident response maturity?
+- What is the team's current on-call and [incident](../incident/SKILL.md) response maturity?
 - What are the business priorities: maximum reliability, feature velocity, or balanced?
 
 ### Output Artifact
-SLA framework with SLO definitions, error budget calculations, burn rate alerting, and multi-tier structure.
+SLA framework with SLO definitions, error budget calculations, burn rate [alerting](../alerting/SKILL.md), and multi-tier structure.
 
 ### Response Format
 ```
@@ -74,11 +74,11 @@ No preamble. No postamble. No explanations.
 - [ ] Error budget formula established per service with consumption tracking
 - [ ] Burn rate alerts configured with proper thresholds for fast/slow/predictive
 - [ ] Multi-tier SLA structure documented with customer-to-tier mapping
-- [ ] SLA reporting automated with dashboards per tier and per customer
+- [ ] SLA reporting automated with [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per tier and per customer
 - [ ] Penalty and service credit terms defined for breach scenarios
 - [ ] Quarterly SLO review process documented with engineering and product
 - [ ] Error budget policy for feature freeze defined and enforced
-- [ ] SLO target validation against current system capacity
+- [ ] SLO target validation against current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ### Max Response Length
 6500 tokens
@@ -88,7 +88,7 @@ No preamble. No postamble. No explanations.
 ### Step 1: SLO Definition
 Define Service Level Indicators (SLIs) for each service: latency (p50, p95, p99) — measured from request receipt to response completion, excluding client-side network time; error rate (5xx / total requests) — includes all server-side errors, excludes client errors (4xx); uptime (successful requests / total requests) — using a request-based or time-based measurement window; throughput (requests per second) — peak and average loads.
 
-For each SLI, define measurement method: server-side metrics from application performance monitoring, request-based (count successful vs. total requests), time-based (availability measured in minutes of uptime per window), synthetic monitoring (external probes measuring from user locations).
+For each SLI, define measurement method: server-side metrics from application performance [monitoring](../monitoring/SKILL.md), request-based (count successful vs. total requests), time-based (availability measured in minutes of uptime per window), synthetic [monitoring](../monitoring/SKILL.md) (external probes measuring from user locations).
 
 Set SLO targets based on: customer requirements (what does the contract require?), operational capability (what can the team consistently deliver?), business priorities (reliability vs. feature velocity), and competitive positioning (what do competitors offer?).
 
@@ -106,7 +106,7 @@ Define budget exhaustion policy: at 100% consumption, all non-critical feature w
 ### Step 3: Burn Rate Alerts
 Configure multi-level burn rate alerts based on how fast the error budget is being consumed relative to the expected rate:
 
-Fast burn rate: consuming budget at a rate that would exhaust it in < 6 hours if sustained. Triggers immediate page (PagerDuty, OpsGenie). Indicates critical incident requiring immediate response.
+Fast burn rate: consuming budget at a rate that would exhaust it in < 6 hours if sustained. Triggers immediate page (PagerDuty, OpsGenie). Indicates critical [incident](../incident/SKILL.md) requiring immediate response.
 
 Slow burn rate: consuming budget at a rate that would exhaust it in < 3 days if sustained. Triggers daily digest alert. Indicates systemic issue requiring investigation but not immediate page.
 
@@ -114,12 +114,12 @@ Nominal burn rate: consuming budget at or below expected rate. No alert needed. 
 
 Predictive alerts: when the current burn rate trend indicates budget will exhaust before the window closes. "At current burn rate, budget will exhaust in 14 days." Allows proactive intervention before exhaustion.
 
-Alert thresholds should be calibrated per service based on SLO target, traffic volume, and incident response time. A 99.99% SLO service has less error budget and needs faster alerting than a 99.9% service.
+Alert thresholds should be calibrated per service based on SLO target, traffic volume, and [incident](../incident/SKILL.md) response time. A 99.99% SLO service has less error budget and needs faster [alerting](../alerting/SKILL.md) than a 99.9% service.
 
 ### Step 4: Multi-Tier SLA Structure
 Define service tiers based on customer requirements and operational investment:
 
-Critical tier (99.99% uptime, <10ms p99 latency, 15-minute response time): for enterprise customers with revenue-critical dependency on the service. Highest operational investment (dedicated support, proactive monitoring, redundancy across regions). Highest penalty for breach (5-10x monthly fee service credits).
+Critical tier (99.99% uptime, <10ms p99 latency, 15-minute response time): for enterprise customers with revenue-critical dependency on the service. Highest operational investment (dedicated support, proactive [monitoring](../monitoring/SKILL.md), redundancy across regions). Highest penalty for breach (5-10x monthly fee service credits).
 
 Standard tier (99.9% uptime, <100ms p99 latency, 1-hour response time): for standard business customers. Standard operational support. Standard penalty for breach (1-5% monthly fee service credits per 0.1% below SLO).
 
@@ -134,7 +134,7 @@ Track SLA attainment trend over rolling 12 months to identify degradation or imp
 
 Service credits: calculate automatically based on breach duration and customer tier. Issue credits on next invoice. Track credit cost as a percentage of revenue — high credit costs indicate systemic reliability problems.
 
-Quarterly SLO review: engineering and product review SLO targets, error budget consumption trends, burn rate patterns, and credit costs. Adjust SLO targets if system capacity has changed (upgraded infrastructure) or customer requirements have evolved.
+Quarterly SLO review: engineering and product review SLO targets, error budget consumption trends, burn rate patterns, and credit costs. Adjust SLO targets if system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) has changed (upgraded infrastructure) or customer requirements have evolved.
 
 ## Decision Trees
 
@@ -149,7 +149,7 @@ Quarterly SLO review: engineering and product review SLO targets, error budget c
    - NO -> Set conservative SLO (99.9% availability, 500ms p99 latency). Monitor for 3 months. Adjust based on actual performance.
 
 3. Is the service customer-facing?
-   - YES -> Set SLO based on user experience metrics (request-based measurement, user-perceived latency). Include synthetic monitoring from user locations.
+   - YES -> Set SLO based on user experience metrics (request-based measurement, user-perceived latency). Include synthetic [monitoring](../monitoring/SKILL.md) from user locations.
    - NO -> Set SLO based on internal SLIs (system availability, internal API latency). May be looser than customer-facing services.
 
 4. Is the service revenue-critical?
@@ -160,18 +160,18 @@ Quarterly SLO review: engineering and product review SLO targets, error budget c
 
 1. Has error budget reached 50% consumption?
    - YES -> Yellow status. Flag in engineering standup. Prioritize reliability work in next sprint. No feature freeze yet.
-   - NO -> Green status. Normal feature work. Continue monitoring.
+   - NO -> Green status. Normal feature work. Continue [monitoring](../monitoring/SKILL.md).
 
 2. Has error budget reached 75% consumption?
-   - YES -> Orange status. Escalate to engineering manager. Reliability sprint planned. Feature freeze discussions begin. Daily burn rate monitoring.
+   - YES -> Orange status. Escalate to engineering manager. Reliability sprint planned. Feature freeze discussions begin. Daily burn rate [monitoring](../monitoring/SKILL.md).
    - NO -> Continue current status.
 
 3. Has error budget reached 100% consumption?
-   - YES -> Red status. Feature freeze activated. All non-critical deployments blocked. Reliability rotation formed. Incident review accelerated. Budget replenishment plan required.
+   - YES -> Red status. Feature freeze activated. All non-critical deployments blocked. Reliability rotation formed. [Incident](../incident/SKILL.md) review accelerated. Budget replenishment plan required.
    - NO -> Continue current status. Review trend.
 
 4. Is error budget replenishing after exhaustion?
-   - YES -> Track replenishment rate. Lift feature freeze when budget exceeds 25% and holding steady. Post-incident review completed.
+   - YES -> Track replenishment rate. Lift feature freeze when budget exceeds 25% and holding steady. Post-[incident](../incident/SKILL.md) review completed.
    - NO -> Investigate root cause of continued consumption. Escalate to executive. Consider SLO target adjustment.
 
 ### Multi-Tier SLA Design Decision Tree
@@ -195,8 +195,8 @@ Core principles: service level indicators (SLIs) measure reliability from the us
 
 Four golden signals: latency (time to serve request), traffic (demand on system), errors (failed requests), saturation (how full the service is). Monitor and set SLOs on all four signals.
 
-### Multi-Window, Multi-Burn-Rate Alerting
-Recommended by Google SRE for balancing detection speed with alert fatigue. Two windows (short and long), two burn rates (fast and slow). Short window + fast burn rate = immediate page (critical incident detected quickly). Long window + slow burn rate = daily alert (systemic degradation detected without noise). No alert when burn rate is nominal.
+### Multi-Window, Multi-Burn-Rate [Alerting](../alerting/SKILL.md)
+Recommended by Google SRE for balancing detection speed with alert fatigue. Two windows (short and long), two burn rates (fast and slow). Short window + fast burn rate = immediate page (critical [incident](../incident/SKILL.md) detected quickly). Long window + slow burn rate = daily alert (systemic degradation detected without noise). No alert when burn rate is nominal.
 
 ### Error Budget Policy Framework
 Error budget tracking: consume budget when SLI falls below SLO threshold. Budget is replenished when SLI is above SLO threshold over the rolling window. Policy levels: green (>50% budget remaining) — normal feature work. Yellow (25-50% remaining) — reliability work prioritized, feature work slowed. Red (<25% remaining) — feature freeze, all hands on reliability.
@@ -204,7 +204,7 @@ Error budget tracking: consume budget when SLI falls below SLO threshold. Budget
 ### Three-Stage SLO Lifecycle
 Stage 1 — Definition: define SLIs, set SLO targets, establish measurement, document for all services.
 
-Stage 2 — Monitoring: implement instrumentation, build dashboards, configure alerts, track attainment.
+Stage 2 — [Monitoring](../monitoring/SKILL.md): implement instrumentation, build [dashboards](../../Cloud_Providers/dashboards/SKILL.md), configure alerts, track attainment.
 
 Stage 3 — Improvement: review targets quarterly, analyze breach patterns, invest in reliability, tighten SLOs as capability improves.
 
@@ -213,8 +213,8 @@ Stage 3 — Improvement: review targets quarterly, analyze breach patterns, inve
 #### SLA Review Cadence
 - Weekly: Error budget status in engineering standup. Burn rate trend review. Feature freeze status check.
 - Monthly: SLA attainment report reviewed by engineering management. Service credit cost analysis. Top breach causes identified.
-- Quarterly: SLO target review with engineering + product + executives. Tier structure assessment. Error budget policy adjustment. Capacity planning for reliability improvements.
-- Annually: Full SLA framework audit. Competitive benchmark. Customer satisfaction correlation analysis. Framework version update.
+- Quarterly: SLO target review with engineering + product + executives. Tier structure assessment. Error budget policy adjustment. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning for reliability improvements.
+- Annually: Full SLA framework [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Competitive benchmark. Customer satisfaction correlation analysis. Framework version update.
 
 #### SLA Governance Roles
 - SLO Owner: Defines and maintains SLO targets per service. Reviews attainment. Proposes adjustments.
@@ -225,13 +225,13 @@ Stage 3 — Improvement: review targets quarterly, analyze breach patterns, inve
 ## Common Pitfalls
 
 ### SLOs Too Tight
-Setting SLO targets that current system capacity cannot meet. Results in constant breach, exhausted error budget, feature freeze, and demoralized engineering team. Mitigation: set initial SLOs based on 3 months of historical performance data. Tighten gradually as reliability improves.
+Setting SLO targets that current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) cannot meet. Results in constant breach, exhausted error budget, feature freeze, and demoralized engineering team. Mitigation: set initial SLOs based on 3 months of historical performance data. Tighten gradually as reliability improves.
 
 ### SLOs Too Loose
 Setting SLO targets that do not reflect customer expectations. Results in satisfied internal metrics but dissatisfied customers. Mitigation: validate SLO targets with customer requirements. Set targets at or above customer expectations.
 
 ### Error Budget Not Visible
-Tracking error budgets in a dashboard that nobody checks. The error budget is useless if it is not visible to decision-makers. Mitigation: display error budget prominently on team dashboards, include in daily standups, and reference in sprint planning.
+Tracking error budgets in a dashboard that nobody checks. The error budget is useless if it is not visible to decision-makers. Mitigation: display error budget prominently on team [dashboards](../../Cloud_Providers/dashboards/SKILL.md), include in daily standups, and reference in sprint planning.
 
 ### Feature Freeze Not Enforced
 Having an error budget policy but never enforcing the feature freeze when budget is exhausted. The error budget mechanism loses all credibility. Mitigation: automate feature freeze enforcement through deployment pipeline. Block non-critical deployments when budget is exhausted.
@@ -246,7 +246,7 @@ Not accounting for the rolling window in error budget calculations. A fixed cale
 All customers receive the same SLA regardless of their needs and revenue contribution. Enterprise customers overpay for basic SLA; small customers get SLA that cannot be operationally supported. Mitigation: implement multi-tier SLA structure. Align operational investment with customer value.
 
 ### Alert Fatigue from Poor Burn Rate Configuration
-Single-threshold alerting on error budget creates too many pages. Team becomes desensitized and misses real incidents. Mitigation: implement multi-window, multi-burn-rate alerting. Calibrate thresholds per service. Test alert configurations.
+Single-threshold [alerting](../alerting/SKILL.md) on error budget creates too many pages. Team becomes desensitized and misses real incidents. Mitigation: implement multi-window, multi-burn-rate [alerting](../alerting/SKILL.md). Calibrate thresholds per service. Test alert configurations.
 
 ## Best Practices
 
@@ -258,28 +258,28 @@ Single-threshold alerting on error budget creates too many pages. Team becomes d
 - Document SLO targets, measurement methods, and window definitions in a shared SLO catalog.
 
 ### Error Budget Management
-- Display error budget consumption on engineering dashboards in real time.
+- Display error budget consumption on engineering [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in real time.
 - Track error budget burn rate, not just consumption level — burn rate predicts exhaustion.
 - Include error budget status in sprint planning: teams should allocate reliability work proportional to budget consumption.
 - Automate feature freeze enforcement when error budget is exhausted — do not rely on manual decisions.
 - Replenish error budget only through improved reliability, not window resets (for rolling windows).
 
-### Alerting
-- Use multi-window, multi-burn-rate alerting to balance detection speed and alert fatigue.
+### [Alerting](../alerting/SKILL.md)
+- Use multi-window, multi-burn-rate [alerting](../alerting/SKILL.md) to balance detection speed and alert fatigue.
 - Calibrate burn rate thresholds per service: tighter for critical services, looser for standard.
 - Exclude planned maintenance windows from burn rate calculations.
-- Test alert configurations regularly with chaos engineering or incident drills.
+- Test alert configurations regularly with chaos engineering or [incident](../incident/SKILL.md) drills.
 - Review alert effectiveness quarterly: how many pages led to incidents? How many incidents were missed?
 
 ### Multi-Tier Design
 - Tier definitions should reflect real differences in operational investment and customer value.
 - Map customers to tiers in the contract with clear target expectations.
-- Provide tier-specific dashboards and reports to customers.
+- Provide tier-specific [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and reports to customers.
 - Review tier assignments annually — customers may have upgraded needs.
 - Support teams should be aligned with tiers (dedicated for critical, pooled for standard).
 
 ### SLA Negotiation
-- Never commit to SLO targets that current system capacity cannot meet. Baseline for 3 months before negotiating.
+- Never [commit](../../CI_CD/commit/SKILL.md) to SLO targets that current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) cannot meet. Baseline for 3 months before negotiating.
 - Define measurement methodology explicitly in contract language. Ambiguity leads to disputes.
 - Include exclusion windows for planned maintenance. Define what counts as downtime and what does not.
 - Define service credit calculation formula precisely. Use tiered credit rates (more credit for larger breaches).
@@ -324,7 +324,7 @@ Projected exhaustion date: {date} at current burn rate
 Alert 1 — Fast burn (critical):
 - Window: 1 hour
 - Threshold: burn rate >= 10 (consuming 10x budget rate)
-- Action: immediate page, incident response
+- Action: immediate page, [incident](../incident/SKILL.md) response
 
 Alert 2 — Slow burn (warning):
 - Window: 6 hours
@@ -350,7 +350,7 @@ Manual override available: {yes/no}
 | Uptime | {X%}   | rolling 30 days | {credit calculation} |
 | Latency p99 | {X}ms | rolling 7 days | {credit calculation} |
 | Error rate | {X}% | rolling 7 days | {credit calculation} |
-| Response time | {X} minutes | per incident | {credit calculation} |
+| Response time | {X} minutes | per [incident](../incident/SKILL.md) | {credit calculation} |
 
 ### Customer Assignments
 | Customer | Contract Date | Tier | Contact | Escalation |
@@ -433,17 +433,17 @@ Implemented automated feature freeze: deployment pipeline checks error budget co
 ### Multi-Window Burn Rate Alert Implementation
 A fintech service had a single alert: page when error budget drops below 50%. Alert fatigue was high — 23 pages per week, most of which were noise. Real incidents were missed because the team was desensitized to alerts.
 
-Implemented multi-window, multi-burn-rate alerting: fast burn (1-hour window, burn rate > 10) — immediate page, average 2 per week. Slow burn (6-hour window, burn rate > 2) — daily digest, average 5 per week but batched into one notification. Predictive (24-hour window, projected exhaustion within 7 days) — team notification, 1-2 per week.
+Implemented multi-window, multi-burn-rate [alerting](../alerting/SKILL.md): fast burn (1-hour window, burn rate > 10) — immediate page, average 2 per week. Slow burn (6-hour window, burn rate > 2) — daily digest, average 5 per week but batched into one notification. Predictive (24-hour window, projected exhaustion within 7 days) — team notification, 1-2 per week.
 
-Results: pages reduced from 23 to 2 per week. Incident response time improved because the team responded to real pages instead of ignoring noise. Two incidents that would have been missed under the old system were caught early by slow burn alerts. Team satisfaction with on-call improved significantly.
+Results: pages reduced from 23 to 2 per week. [Incident](../incident/SKILL.md) response time improved because the team responded to real pages instead of ignoring noise. Two incidents that would have been missed under the old system were caught early by slow burn alerts. Team satisfaction with on-call improved significantly.
 
 ### SaaS SLA Negotiation Gone Wrong
 A B2B SaaS company negotiated a 99.99% SLA to win a large enterprise deal without validating current system capability. Actual system availability was 99.95%. The first month after signing delivered three incidents totaling 45 minutes of downtime. The error budget of 4.32 minutes was exhausted on day 3. Service credits for the first quarter exceeded the contract's annual revenue.
 
-Remediation: immediate reliability investment (multi-region deployment, load testing, redundancy). Renegotiated SLA to 99.95% with a 99.99% target for a subset of APIs. Implemented real-time SLO dashboards for the customer. Internal SLO set at 99.995% to provide buffer. Lessons learned: never negotiate SLA without validating against current system capability. Include phase-in period in new SLAs.
+Remediation: immediate reliability investment (multi-region deployment, load testing, redundancy). Renegotiated SLA to 99.95% with a 99.99% target for a subset of APIs. Implemented real-time SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for the customer. Internal SLO set at 99.995% to provide buffer. Lessons learned: never negotiate SLA without validating against current system capability. Include phase-in period in new SLAs.
 
 ## Rules
-- SLO targets must be achievable with current system capacity — do not commit to targets that cannot be met.
+- SLO targets must be achievable with current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — do not [commit](../../CI_CD/commit/SKILL.md) to targets that cannot be met.
 - Error budgets must have documented consumption policies and escalation procedures.
 - Burn rate alerts must not fire during planned maintenance windows (with proper exclusion).
 - Multi-tier SLA requires clear mapping of customer to tier with documented contract terms.
@@ -453,8 +453,8 @@ Remediation: immediate reliability investment (multi-region deployment, load tes
 - Feature freeze enforced when error budget is fully consumed — reliability takes priority.
 - Internal SLOs must be stricter than external SLAs to provide buffer against breaches.
 - Error budget consumption rate must be visible to all engineering teams, not just management.
-- SLA monitoring must use request-based measurement for accuracy, not time-based approximation.
-- SLA negotiation requires validation against current system capacity before commitment.
+- SLA [monitoring](../monitoring/SKILL.md) must use request-based measurement for accuracy, not time-based approximation.
+- SLA negotiation requires validation against current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) before commitment.
 - Multi-tier SLA structure must align operational investment with customer revenue contribution.
 - Burn rate alert thresholds calibrated per service, not one-size-fits-all.
 - SLO targets tightened incrementally as reliability improves, not in large jumps.
@@ -505,7 +505,7 @@ groups:
 
 ### Pattern: Error Budget Tracker
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ErrorBudget:
     def __init__(self, slo: float, window_days: int = 30):
         self.slo = slo
@@ -547,9 +547,9 @@ class ErrorBudget:
 
 ### SLO Implementation
 - Measurement interval: 10-second buckets for high-traffic services. 60-second for low-traffic.
-- Alerting: multi-window, multi-burn-rate (fast burn page, slow burn digest).
-- Exclusion windows: planned maintenance excluded from SLO calculation. Configured in alerting system.
-- Rolling windows: 30-day rolling prevents permanent deficit. Services recover after incident.
+- [Alerting](../alerting/SKILL.md): multi-window, multi-burn-rate (fast burn page, slow burn digest).
+- Exclusion windows: planned maintenance excluded from SLO calculation. Configured in [alerting](../alerting/SKILL.md) system.
+- Rolling windows: 30-day rolling prevents permanent deficit. Services recover after [incident](../incident/SKILL.md).
 
 ### SLA Reporting
 - Generate automated monthly reports per customer. Delivery within 5 business days of month end.
@@ -564,9 +564,9 @@ class ErrorBudget:
 | SLO tighter than system can deliver | Constant breach. Feature freeze always active. | Set SLO based on 3-month historical performance. |
 | Error budget hidden in dashboard nobody reads | Useless. No behavior change. | Display on team dashboard. Standup status. Sprint planning input. |
 | Feature freeze not enforced | Error budget policy has no teeth. | Automated deploy block when budget exhausted. |
-| Single-threshold alerting | Alert fatigue. Miss real incidents. | Multi-window, multi-burn-rate. Calibrate per service. |
+| Single-threshold [alerting](../alerting/SKILL.md) | Alert fatigue. Miss real incidents. | Multi-window, multi-burn-rate. Calibrate per service. |
 | Wrong SLIs measured | CPU at 20% but p99 latency at 5s. Users unhappy. | Measure user-facing: latency, error rate, uptime. |
-| No maintenance exclusions | Pager on every deploy. | Planned maintenance window configured in alerting. |
+| No maintenance exclusions | Pager on every deploy. | Planned maintenance window configured in [alerting](../alerting/SKILL.md). |
 
 ## Performance Optimization
 
@@ -582,12 +582,12 @@ class ErrorBudget:
 
 - SLA report data: internal use only unless shared per contract. Access controlled per customer.
 - Error budget API: authenticated. Write access for service owners only. Read for all engineers.
-- Alerting webhooks: signed payloads. HMAC verification. TLS for all alert destinations.
-- Service credit automation: calculations logged. Dual approval for credits > $10K. Audit trail.
+- [Alerting](../alerting/SKILL.md) webhooks: signed payloads. HMAC verification. TLS for all alert destinations.
+- Service credit automation: calculations logged. Dual approval for credits > $10K. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - SLO measurement data: immutable metrics database. Tamper-evident via append-only storage.
 - Customer SLA portal: HTTPS only. Session timeout 15 minutes. Per-customer data isolation.
-- Incident data: PII scrubbed from public status page. Customer-specific details in private portal only.
-- Metric retention: raw metrics 90 days. Aggregated 7 years for SLA audit compliance.
+- [Incident](../incident/SKILL.md) data: PII scrubbed from public status page. Customer-specific details in private portal only.
+- Metric retention: raw metrics 90 days. Aggregated 7 years for SLA [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) compliance.
 
 ## Handoff
-For compliance-related SLA requirements, hand off to `enterprise-compliance-audit`. For cost implications of SLA tiers and service credits, hand off to `enterprise-cost-governance`. For incident response processes triggered by burn rate alerts, hand off to `enterprise-incident-response`.
+For compliance-related SLA requirements, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost implications of SLA tiers and service credits, hand off to `[enterprise-cost-governance](../../Cloud_Providers/cost-governance/SKILL.md)`. For [incident](../incident/SKILL.md) response processes triggered by burn rate alerts, hand off to `enterprise-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)`.

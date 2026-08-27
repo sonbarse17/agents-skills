@@ -21,7 +21,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete Kubernetes Deployment on GKE From Scratch
+# Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on GKE From Scratch
 
 ## Purpose
 
@@ -32,7 +32,7 @@ Dataplane V2 (Cilium-based) networking mode chosen at creation, and cert-
 manager's Cloud DNS credentials each have their own setup order. Skip or
 misorder any of them and the cluster looks finished right up until
 something depends on the piece that was never wired up. This skill is the
-GCP-specific end-to-end runbook: it sequences GCP landing zone
+GCP-specific end-to-end [runbook](../../Observability_and_SecOps/runbook/SKILL.md): it sequences GCP landing zone
 prerequisites, GKE provisioning, CNI/Dataplane V2, ingress, cert-manager
 with Cloud DNS, conformance validation, a first workload, and a health
 baseline into one ordered path, cross-referencing the tool-specific skill
@@ -42,7 +42,7 @@ that covers each phase's actual detail.
 
 - Deploying a brand-new GKE cluster into a GCP project for the first
   time, where the project already exists inside the org's folder
-  hierarchy and Shared VPC but has no Kubernetes workload yet.
+  hierarchy and Shared VPC but has no [Kubernetes](../kubernetes/SKILL.md) workload yet.
 - Auditing an existing GKE rollout for a skipped or out-of-order phase
   (e.g. cert-manager configured before its Workload Identity binding
   existed, or a cluster handed off with no conformance validation).
@@ -57,16 +57,16 @@ that covers each phase's actual detail.
 - A GCP project already vended through the org's project factory and
   attached to the correct folder and Shared VPC — this skill does **not**
   cover folder/Organization Policy design or project vending; see
-  [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md).
+  [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../../Cloud_Providers/gcp-landing-zone-setup/SKILL.md)/SKILL.md).
 - IAM rights to create the GKE cluster, GCP service accounts, and
   Workload Identity Federation bindings — see
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
   for the least-privilege design that should govern every service account
   binding created in Phase 1.
 - A Cloud DNS public managed zone already delegated for the domain
   cert-manager will issue certificates for (Phase 4 depends on this
   existing before DNS-01 can succeed).
-- `gcloud` ≥ 470.0.0, `kubectl`, and `helm` ≥ 3.14 authenticated against
+- `gcloud` ≥ 470.0.0, `[kubectl](../kubectl/SKILL.md)`, and `helm` ≥ 3.14 authenticated against
   the target project.
 - A non-production project to rehearse this sequence in first — the
   Shared VPC attachment and Workload Identity pool decisions in Phases
@@ -81,7 +81,7 @@ integration decisions.
 1. **Phase 1 — GCP landing zone & IAM prerequisites.** Confirm the
    project sits in the correct folder, is attached to the Shared VPC host
    project, and inherits the org's Organization Policy constraints (see
-   [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md)).
+   [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../../Cloud_Providers/gcp-landing-zone-setup/SKILL.md)/SKILL.md)).
    GKE-specific sequencing point: **create the GCP service accounts this
    cluster will need now**, even though their Workload Identity bindings
    (which need the cluster's Workload Identity pool from Phase 2) can't
@@ -95,10 +95,10 @@ integration decisions.
    ```
    Scope `roles/dns.admin` down to a custom role restricted to the
    specific managed zone rather than project-wide DNS admin — see
-   [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md).
+   [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md).
 
 2. **Phase 2 — Provision the GKE cluster and node pools.** Use
-   [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
    for the full `gcloud container clusters create`/node pool/Workload
    Identity setup detail. GKE-specific sequencing point: Workload Identity
    Federation is enabled via `--workload-pool` at cluster creation, and
@@ -120,7 +120,7 @@ integration decisions.
    (policy requires a separate add-on), **GKE's default CNI already
    enforces `NetworkPolicy` with no additional installation**:
    ```bash
-   kubectl get pods -n kube-system -l k8s-app=cilium
+   [kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=cilium
    ```
    Confirm this explicitly rather than assuming policy enforcement is
    missing and reaching for Calico unnecessarily — the most common
@@ -130,7 +130,7 @@ integration decisions.
    **Alternative:** legacy GKE clusters or those still on the older
    route-based (non-VPC-native) networking mode may need an explicit CNI
    decision — see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for the underlying Calico tradeoffs if Dataplane V2 is deliberately
    disabled for a specific compatibility reason.
 
@@ -143,7 +143,7 @@ integration decisions.
      simplest cases.
    - **ingress-nginx** behind a `Service` of `type: LoadBalancer`
      (provisions a Google Cloud Network Load Balancer) — see
-     [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+     [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
      for full install/annotation detail; preferred for parity with
      non-GCP clusters running the same ingress-nginx configuration and
      for keeping cert-manager (rather than Google-managed certs) as the
@@ -154,10 +154,10 @@ integration decisions.
 
 5. **Phase 5 — cert-manager with Cloud DNS.** Install cert-manager and
    configure a `ClusterIssuer` per
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md),
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md),
    substituting Cloud DNS for the Route 53 example shown there. The
    GKE-specific integration point: bind the `cert-manager-dns01-gsa`
-   planned in Phase 1 to the cluster's Kubernetes ServiceAccount via
+   planned in Phase 1 to the cluster's [Kubernetes](../kubernetes/SKILL.md) ServiceAccount via
    Workload Identity Federation, using the pool enabled in Phase 2:
    ```bash
    gcloud iam service-accounts add-iam-policy-binding \
@@ -190,13 +190,13 @@ integration decisions.
            selector: { dnsZones: ["example.com"] }
    ```
    Validate against Let's Encrypt staging first, exactly as
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
    describes.
 
 6. **Phase 6 — Conformance and smoke validation.** Run Sonobuoy quick
    mode, then full `certified-conformance`, then targeted smoke tests —
    see
-   [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md).
+   [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md).
    For GKE specifically, also run a positive/negative `NetworkPolicy`
    smoke test given Dataplane V2's built-in enforcement from Phase 3 —
    confirming the policy is actually enforced (not merely accepted by the
@@ -206,7 +206,7 @@ integration decisions.
 
 7. **Phase 7 — Deploy the first workload via Helm.** Package and install
    per
-   [helm-chart-authoring](../helm-chart-authoring/SKILL.md), completing
+   [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md), completing
    the `payments-api-gsa` Workload Identity binding from Phase 1 the same
    way Phase 5 completed cert-manager's:
    ```bash
@@ -221,11 +221,11 @@ integration decisions.
 8. **Phase 8 — Node/cluster health baseline.** Establish the ongoing
    operational baseline: node drain/cordon discipline and `NotReady`
    diagnosis via
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md).
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md).
    **Note what does *not* apply here:** GKE's control plane and etcd are
    fully Google-managed — the procedures in
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
-   do not apply; rely on GKE audit logs routed to the landing zone's
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
+   do not apply; rely on GKE [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs routed to the landing zone's
    aggregated log sink instead.
 
 ## Best practices
@@ -264,7 +264,7 @@ integration decisions.
   **Fix:** Recent GKE clusters already run Dataplane V2 (Cilium-based)
   with `NetworkPolicy` enforcement built in — installing a second CNI on
   top produces two competing dataplanes rather than added capability.
-  Confirm via `kubectl get pods -n kube-system -l k8s-app=cilium` before
+  Confirm via `[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=cilium` before
   Phase 3 concludes that a second CNI is even necessary; it almost always
   isn't on a current GKE cluster.
 
@@ -281,7 +281,7 @@ integration decisions.
   the same day Phase 2 completes, skipping Phase 6 — and a Shared VPC
   routing or `NetworkPolicy` gap surfaces days later under real traffic.
   **Fix:** Treat Phase 6 as a required gate, not optional — see
-  [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+  [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
   for exactly the checklist this catches before handoff.
 
 ## Worked example
@@ -308,13 +308,13 @@ gcloud container clusters create payments-prod \
 gcloud container clusters get-credentials payments-prod --region us-central1
 
 # Phase 3 — Dataplane V2 already active; confirm, don't install Calico
-kubectl get pods -n kube-system -l k8s-app=cilium
+[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=cilium
 
 # Phase 4 — ingress-nginx via Helm
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
-kubectl get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
+[kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
 gcloud dns record-sets create payments.example.com. --type=A --ttl=300 \
   --zone=example-com --rrdatas=<EXTERNAL_IP>
 
@@ -325,7 +325,7 @@ gcloud iam service-accounts add-iam-policy-binding \
   --member "serviceAccount:prj-checkout-prod.svc.id.goog[cert-manager/cert-manager]"
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 --set crds.enabled=true
-kubectl apply -f cloud-dns-staging-issuer.yaml   # validate, then swap to prod
+[kubectl](../kubectl/SKILL.md) apply -f cloud-dns-staging-issuer.yaml   # validate, then swap to prod
 
 # Phase 6 — validation gate
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
@@ -340,25 +340,25 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
   --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
 
 # Phase 8 — health baseline
-kubectl get nodes
-kubectl get pdb -A
+[kubectl](../kubectl/SKILL.md) get nodes
+[kubectl](../kubectl/SKILL.md) get pdb -A
 ```
 
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming the full sequence wired
 together correctly across the Shared VPC boundary, and the node
-maintenance runbook (Phase 8) is documented before the first planned
+maintenance [runbook](../../Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is documented before the first planned
 node pool upgrade.
 
 ## Cross-references
 
-- [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md) — the folder/project/Shared VPC/guardrail layer this sequence assumes already exists.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege design for every service account binding created across Phases 1, 5, and 7.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — full detail for Phase 2's cluster/node pool/Workload Identity provisioning.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — the Calico alternative referenced in Phase 3 for legacy/non-Dataplane-V2 clusters.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — full detail for Phase 6's validation gate.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — the ongoing operational baseline established in Phase 8.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — explains why its procedures do not apply to this managed control plane.
+- [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../../Cloud_Providers/gcp-landing-zone-setup/SKILL.md)/SKILL.md) — the folder/project/Shared VPC/guardrail layer this sequence assumes already exists.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege design for every service account binding created across Phases 1, 5, and 7.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — full detail for Phase 2's cluster/node pool/Workload Identity provisioning.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — the Calico alternative referenced in Phase 3 for legacy/non-Dataplane-V2 clusters.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 6's validation gate.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 8.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — explains why its procedures do not apply to this managed control plane.

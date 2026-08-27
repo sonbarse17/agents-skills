@@ -25,7 +25,7 @@ Detailed pattern documentation lives in `../../../Global_References/workflow-pat
 ## Best Practices
 
 1. **Never skip RED**: Always write failing tests first
-2. **Small commits**: One logical change per commit
+2. **Small commits**: One logical change per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 3. **Immediate updates**: Update plan.md right after task completion
 4. **Wait for approval**: Never skip checkpoint verification
 5. **Rich git notes**: Include context that helps future understanding
@@ -33,7 +33,7 @@ Detailed pattern documentation lives in `../../../Global_References/workflow-pat
 7. **Quality gates**: Check all gates before marking complete
 8. **Sequential phases**: Complete phases in order
 9. **Document deviations**: Note any changes from original plan
-10. **Clean state**: Each commit should leave code in working state
+10. **Clean state**: Each [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) should leave code in working state
 11. **Fast feedback**: Run relevant tests frequently during development
 12. **Clear blockers**: Address blockers promptly, don't work around them
 

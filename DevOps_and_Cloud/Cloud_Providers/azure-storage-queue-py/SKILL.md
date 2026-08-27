@@ -10,14 +10,14 @@ metadata:
   package: azure-storage-queue
 ---
 
-# Azure Queue Storage SDK for Python
+# Azure Queue Storage SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Simple, cost-effective message queuing for asynchronous communication.
 
 ## Installation
 
 ```bash
-pip install azure-storage-queue azure-identity
+pip install [azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-queue azure-identity
 ```
 
 ## Environment Variables
@@ -31,7 +31,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -40,14 +40,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.queue import QueueServiceClient, QueueClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.queue.core.windows.net"
 
@@ -64,7 +64,7 @@ with QueueClient(account_url=account_url, queue_name="myqueue", credential=crede
 
 ## Queue Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create queue
 service_client.create_queue("myqueue")
 
@@ -81,7 +81,7 @@ for queue in service_client.list_queues():
 
 ## Send Messages
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Send message (string)
 queue_client.send_message("Hello, Queue!")
 
@@ -100,7 +100,7 @@ queue_client.send_message(json.dumps(data))
 
 ## Receive Messages
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Receive messages (makes them invisible temporarily)
 messages = queue_client.receive_messages(
     messages_per_page=10,
@@ -120,7 +120,7 @@ for message in messages:
 
 ## Peek Messages
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Peek without hiding (doesn't affect visibility)
 messages = queue_client.peek_messages(max_messages=5)
 
@@ -130,7 +130,7 @@ for message in messages:
 
 ## Update Message
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Extend visibility or update content
 messages = queue_client.receive_messages()
 for message in messages:
@@ -150,7 +150,7 @@ for message in messages:
 
 ## Delete Message
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Delete after successful processing
 messages = queue_client.receive_messages()
 for message in messages:
@@ -164,14 +164,14 @@ for message in messages:
 
 ## Clear Queue
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Delete all messages
 queue_client.clear_messages()
 ```
 
 ## Queue Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get queue properties
 properties = queue_client.get_queue_properties()
 print(f"Approximate message count: {properties.approximate_message_count}")
@@ -184,7 +184,7 @@ print(properties.metadata)
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.queue.aio import QueueServiceClient, QueueClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -210,7 +210,7 @@ asyncio.run(queue_operations())
 
 ## Base64 Encoding
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.queue import QueueClient, BinaryBase64EncodePolicy, BinaryBase64DecodePolicy
 
 # For binary data
@@ -234,7 +234,7 @@ with QueueClient(
 5. **Set appropriate visibility timeout** based on processing time
 6. **Handle `dequeue_count`** for poison message detection
 7. **Use async client** for high-throughput scenarios
-8. **Use `peek_messages`** for monitoring without affecting queue
+8. **Use `peek_messages`** for [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) without affecting queue
 9. **Set `time_to_live`** to prevent stale messages
 10. **Consider Service Bus** for advanced features (sessions, topics)
 
@@ -242,6 +242,6 @@ with QueueClient(
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-storage-queue-py_capabilities.md](../../../Global_References/azure-storage-queue-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-storage-queue-py_non-hero-scenarios.md](../../../Global_References/azure-storage-queue-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-queue-py_capabilities.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-queue-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-queue-py_non-hero-scenarios.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-queue-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

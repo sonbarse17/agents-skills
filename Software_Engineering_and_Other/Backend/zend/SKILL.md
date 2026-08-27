@@ -35,7 +35,7 @@ Exact user phrases: "Zend", "Zend Framework", "Laminas", "Laminas MVC", "Mezzio"
 ### Input Context
 - Framework version (Laminas 3.x, Mezzio 4.x, ZF3 migration).
 - PHP version (8.1+ required for Laminas 3).
-- Database (MySQL, PostgreSQL with laminas-db or Doctrine).
+- Database ([MySQL](../mysql/SKILL.md), [PostgreSQL](../postgresql/SKILL.md) with laminas-db or Doctrine).
 - MVC vs Middleware (Laminas MVC vs Mezzio).
 - Existing modules and their dependencies.
 
@@ -560,6 +560,6 @@ class ListUsersHandler implements RequestHandlerInterface
   - ../../../Global_References/mezzio-api.md — Mezzio API Development
   - ../../../Global_References/zend-migration.md — Zend to Laminas Migration
 ## Handoff
-Next skill: php-laravel — if user prefers Laravel's opinionated conventions.
+Next skill: [php-laravel](../laravel/SKILL.md) — if user prefers Laravel's opinionated conventions.
 Carry forward: PHP version, database driver, module structure, laminas vs zend namespace.
 

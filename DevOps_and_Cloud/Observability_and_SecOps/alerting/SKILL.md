@@ -14,7 +14,7 @@ Coverage and trust trade off against each other more often than teams admit — 
 
 ## 1. Alert on symptoms, not on causes
 
-A symptom is something the user is experiencing — elevated error rate, high latency, failed checkouts. A cause is an internal condition that might explain a symptom — a pod restarted, disk is at 82%, one replica is unhealthy behind a load balancer with four others. Alerting on causes pages people for things that often don't matter (a disk at 82% with an autoscaler about to add capacity) and misses things that do (five separate low-severity causes combining into a real user-facing outage).
+A symptom is something the user is experiencing — elevated error rate, high latency, failed checkouts. A cause is an internal condition that might explain a symptom — a pod restarted, disk is at 82%, one replica is unhealthy behind a load balancer with four others. Alerting on causes pages people for things that often don't matter (a disk at 82% with an autoscaler about to add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)) and misses things that do (five separate low-severity causes combining into a real user-facing outage).
 
 - **Symptoms page** — error rate, latency, failed checkouts, budget burn.
 - **Causes inform the response**, surfaced on a dashboard the paged engineer opens after the page, not baked into the page itself.
@@ -41,7 +41,7 @@ A flat threshold ("error rate > 1% for 5 minutes") either fires on noise at low 
 
 This is the sharpest form of symptom-based alerting because it's directly tied to the number that actually matters to users and to the release-velocity decision.
 
-See `slo-definition` for where the underlying budget comes from.
+See `[slo-definition](../slo-definition/SKILL.md)` for where the underlying budget comes from.
 
 **Done when:** every service with an SLO pages on budget burn rate, not on a hand-picked latency or error threshold.
 
@@ -57,7 +57,7 @@ Collapsing these into one undifferentiated alert stream is how paging alerts get
 
 **Done when:** every alert has an explicit severity tier chosen by required response time, and page-tier alerts are a small minority of the total.
 
-## 4. Never ship an alert without a runbook link
+## 4. Never ship an alert without a [runbook](../runbook/SKILL.md) link
 
 An alert that fires with no documented next step forces the paged engineer to reconstruct the investigation from scratch, at 3am, under pressure — the worst possible conditions to be doing first-principles debugging.
 
@@ -65,9 +65,9 @@ An alert that fires with no documented next step forces the paged engineer to re
 - **The first three things to check** — the fastest path to confirming or ruling out the usual causes.
 - **How to mitigate even without knowing the root cause** — buy time first, diagnose fully later.
 
-See `runbooks` for what that document should actually contain.
+See `[runbooks](../runbooks/SKILL.md)` for what that document should actually contain.
 
-**Done when:** every page-tier alert links a runbook, and the runbook it links to actually exists and is current.
+**Done when:** every page-tier alert links a [runbook](../runbook/SKILL.md), and the [runbook](../runbook/SKILL.md) it links to actually exists and is current.
 
 ## 5. Prune alerts on a schedule, not just after a bad on-call week
 
@@ -81,6 +81,6 @@ Alert fatigue doesn't arrive as one obviously bad alert — it accumulates as ma
 
 ## Report
 
-State the current page-tier alert count, what fraction are burn-rate based versus flat-threshold, and whether every page-tier alert links a working runbook.
+State the current page-tier alert count, what fraction are burn-rate based versus flat-threshold, and whether every page-tier alert links a working [runbook](../runbook/SKILL.md).
 
-Name the honest gap — usually a handful of cause-based alerts still in the page tier, or a runbook link that points at something stale — rather than reporting the alerting setup as fully symptom-based and fatigue-free.
+Name the honest gap — usually a handful of cause-based alerts still in the page tier, or a [runbook](../runbook/SKILL.md) link that points at something stale — rather than reporting the alerting setup as fully symptom-based and fatigue-free.

@@ -3,17 +3,17 @@ name: kubernetes-internals
 description: The Kubernetes Control Plane under the hood, etcd consensus (Raft), kube-apiserver event loops, kubelet operation, and CNI fundamentals.
 ---
 
-# Kubernetes Control Plane Internals
+# [Kubernetes](../kubernetes/SKILL.md) Control Plane Internals
 
-Kubernetes is a declarative, state-reconciling system. Its architecture is fundamentally driven by a distributed control loop paradigm, backed by a strongly consistent distributed key-value store.
+[Kubernetes](../kubernetes/SKILL.md) is a declarative, state-reconciling system. Its architecture is fundamentally driven by a distributed control loop paradigm, backed by a strongly consistent distributed key-value store.
 
 ## 1. The Core: etcd and the Raft Consensus Algorithm
 
 All cluster state (configuration, specifications, statuses) resides in `etcd`. It guarantees linearizability through the Raft consensus algorithm.
 
 - **Raft Mechanics:** etcd operates via a leader-follower topology. Write requests are routed to the leader, which appends the entry to its log and broadcasts `AppendEntries` RPCs to followers. A write is committed only when a quorum (majority) acknowledges the append.
-- **MVCC (Multi-Version Concurrency Control):** etcd maintains historical versions of keys. This allows Kubernetes controllers to `WATCH` for changes effectively without polling.
-- **Resource Revisions:** Every object in Kubernetes has a `resourceVersion`. This is mapped directly to the etcd revision, preventing lost updates via optimistic concurrency control (Compare-and-Swap).
+- **MVCC (Multi-Version Concurrency Control):** etcd maintains historical versions of keys. This allows [Kubernetes](../kubernetes/SKILL.md) controllers to `WATCH` for changes effectively without polling.
+- **Resource Revisions:** Every object in [Kubernetes](../kubernetes/SKILL.md) has a `resourceVersion`. This is mapped directly to the etcd revision, preventing lost updates via optimistic concurrency control (Compare-and-Swap).
 
 ## 2. kube-apiserver: The Central Nervous System
 
@@ -56,7 +56,7 @@ CNI dictates how network namespaces are wired.
 
 ## 6. Architectural Diagram
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     API[kube-apiserver] --> ETCD[(etcd - Raft)]

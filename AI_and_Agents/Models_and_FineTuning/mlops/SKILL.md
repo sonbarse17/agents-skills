@@ -18,7 +18,7 @@ tags: [devops, mlops, ml, phase-11]
 # MLOps Agent
 
 ## Purpose
-Implements ML CI/CD pipelines with model registry, canary deployment, monitoring, and rollback for production ML systems. MLOps applies DevOps principles to machine learning, adding data and model versioning, experiment tracking, model registry, deployment strategies, and monitoring for drift and performance decay.
+Implements ML CI/CD pipelines with model registry, canary deployment, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and rollback for production ML systems. MLOps applies DevOps principles to machine learning, adding data and model versioning, experiment tracking, model registry, deployment strategies, and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for drift and performance decay.
 
 ## Architecture/Decision Trees
 
@@ -37,7 +37,7 @@ Do you have A/B testing infrastructure for model comparison?
   |-- NO --> Blue-green (simpler deployment without experiment infrastructure)
 ```
 
-### Monitoring Strategy Decision Tree
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Strategy Decision Tree
 ```
 Is the input data distribution stable or changing?
   |-- Stable --> Focus on concept drift (prediction accuracy over time)
@@ -55,19 +55,19 @@ Do you have business KPIs correlated with model performance?
 ## Agent Protocol
 
 ### Trigger
-User request includes: MLOps, ML pipeline CI/CD, model deployment pipeline, model registry CI/CD, canary deploy ML, A/B testing ML, model monitoring, model drift, model rollback, feature store CI/CD.
+User request includes: MLOps, ML pipeline CI/CD, model deployment pipeline, model registry CI/CD, canary deploy ML, A/B testing ML, model [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), model drift, model rollback, feature store CI/CD.
 
 ### Protocol
 1. Design CI pipeline: data validation -> training -> evaluation -> registry promotion.
 2. Configure model registry (MLflow, DVC, custom).
 3. Design CD pipeline: deployment strategy (canary, blue-green).
 4. Set up A/B testing infrastructure.
-5. Configure model monitoring (data drift, concept drift, performance decay).
+5. Configure model [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (data drift, concept drift, performance decay).
 6. Implement rollback strategy.
 7. Set up feature pipeline CI/CD.
 
 ## Output
-MLOps pipeline with CI/CD config, model registry, deployment strategy, monitoring.
+MLOps pipeline with CI/CD config, model registry, deployment strategy, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 
 ### Response Format
 ```
@@ -88,7 +88,7 @@ Strategy: {canary / blue-green / rolling}
 Canary Traffic: {N%} | Observation: {duration}
 Auto-rollback: {metric drop >= X%}
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 Drift Detection: {data / concept / both}
 Frequency: {per batch / real-time}
 Alerts: {metric name: threshold}
@@ -104,13 +104,13 @@ Strategy: {revert to previous prod version / shadow traffic}
 - [ ] Model registry stages mapped to environments.
 - [ ] Deployment strategy selected with traffic management.
 - [ ] A/B testing infrastructure configured.
-- [ ] Drift monitoring active for data and concept drift.
+- [ ] Drift [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) active for data and concept drift.
 - [ ] Rollback strategy tested and automated.
 - [ ] Feature pipeline has separate CI/CD.
 
 ## Workflow
 
-### Step 1: CI Pipeline with GitHub Actions
+### Step 1: CI Pipeline with [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
 ```yaml
 name: ML Pipeline
 on:
@@ -130,7 +130,7 @@ jobs:
         great_expectations checkpoint run data_validation
     - name: Check for data drift
       run: |
-        python -m mlops.monitoring.drift_detection \
+        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m mlops.[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).drift_detection \
           --reference data/train.parquet \
           --current data/latest.parquet
 
@@ -139,10 +139,10 @@ jobs:
     runs-on: [self-hosted, gpu]
     steps:
     - name: Train model
-      run: python models/classifier/train.py
+      run: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) models/classifier/train.py
     - name: Evaluate against thresholds
       run: |
-        python -m mlops.evaluate \
+        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m mlops.evaluate \
           --model models/classifier/output/model.pkl \
           --threshold accuracy=0.85 \
           --threshold f1=0.80
@@ -150,12 +150,12 @@ jobs:
       run: |
         mlflow models register \
           --model-name classifier \
-          --version ${{ github.run_number }} \
+          --version ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).run_number }} \
           --stage Staging
 ```
 
 ### Step 2: Model Registry — MLflow Configuration
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import mlflow
 from mlflow.tracking import MlflowClient
 
@@ -248,7 +248,7 @@ spec:
 ```
 
 ### Step 5: A/B Testing Infrastructure
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
 import random
 
@@ -277,8 +277,8 @@ def predict(user_id: str, features: dict):
     return prediction
 ```
 
-### Step 6: Drift Monitoring with Evidently AI
-```python
+### Step 6: Drift [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Evidently AI
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset, RegressionPreset
 from evidently.ui.workspace import Workspace
@@ -325,7 +325,7 @@ offline_store:
   dataset: feature_store
 ```
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from feast import FeatureStore
 
 store = FeatureStore(repo_path="./feature_repo")
@@ -352,10 +352,10 @@ feature_vector = store.get_online_features(
 ```
 
 ### Step 8: Automated Retraining Pipeline
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # scheduler: Airflow DAG for weekly retraining
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) import PythonOperator
 
 dag = DAG(
     "model_retraining",
@@ -412,14 +412,14 @@ retrain = PythonOperator(
 - Requires retraining every 30 days minimum
 - Not calibrated for out-of-distribution inputs
 
-## Monitoring
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Data drift: PSI on 10 key features, alert at >0.15
 - Concept drift: weekly accuracy eval on labeled data
 - Performance: hourly latency p99, throughput, error rate
 ```
 
 ### Step 10: Training-Serving Skew Prevention
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Feature transformation must be identical
 
 # BAD: different logic in training vs serving
@@ -441,7 +441,7 @@ def transform_for_serving(row):
 ```
 
 ### Step 11: Model Explainability (SHAP) in Pipeline
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import shap
 import pickle
 
@@ -469,7 +469,7 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 - Feature consistency: training and serving must use identical transformations.
 - Registry stages must be immutable — no overwrites.
 - A/B tests must reach statistical significance before declaring winner.
-- Log all prediction requests and responses for audit and debugging.
+- Log all prediction requests and responses for [audit](../../Operations/audit/SKILL.md) and debugging.
 - Version training data alongside model artifacts for full reproducibility.
 
 ## Best Practices
@@ -482,7 +482,7 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 
 ## Common Pitfalls
 - **Training-serving skew**: Feature transformations differ between training and inference pipelines. Use a feature store to guarantee consistency.
-- **Silent model degradation**: Model accuracy decays gradually without automated monitoring. Schedule periodic evaluation.
+- **Silent model degradation**: Model accuracy decays gradually without automated [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Schedule periodic evaluation.
 - **Canary blindness**: Insufficient traffic routed to canary means metrics never reach statistical significance. Ensure minimum 5-10% traffic.
 - **Rollback breaks backward compatibility**: New model changes prediction schema; rolling back means clients receive incompatible format. Version the prediction schema.
 - **Data drift threshold tuning**: Too sensitive causes false alarms; too insensitive misses real drift. Tune on historical data.
@@ -494,7 +494,7 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 | CI trigger | Code change | Code change + Data change + Retrain trigger |
 | Test scope | Unit + Integration + E2E | + Data validation + Model evaluation |
 | Deployment | Traffic shift | Traffic shift + Model registry promotion |
-| Monitoring | System metrics (CPU, memory) | + Data drift + Concept drift + Model accuracy |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | System metrics (CPU, memory) | + Data drift + Concept drift + Model accuracy |
 | Rollback | Code revert | Model version revert + Data version revert |
 
 ## Performance
@@ -507,19 +507,19 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 - **ML platforms**: MLflow, Kubeflow, SageMaker, Vertex AI, Azure ML.
 - **Orchestration**: Airflow, Prefect, Dagster, Argo Workflows, Kubeflow Pipelines.
 - **Deployment**: KServe, Seldon Core, BentoML, TF Serving, TorchServe.
-- **Monitoring**: Evidently AI, WhyLabs, Arize AI, NannyML, Alibi Detect.
+- **[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Evidently AI, WhyLabs, Arize AI, NannyML, Alibi Detect.
 - **Registry**: MLflow Model Registry, DVC, Hugging Face Hub.
 - **Feature store**: Feast, Tecton, SageMaker Feature Store.
 
 ## References
-  - ../../../Global_References/ml-cicd-pipeline.md — ML CI/CD Pipeline
-  - ../../../Global_References/ml-deployment.md — ML Deployment & Monitoring
-  - ../../../Global_References/ml-experiment-tracking.md — ML Experiment Tracking
+  - ../../../Global_References/ml-[cicd-pipeline](../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md).md — ML CI/CD Pipeline
+  - ../../../Global_References/ml-deployment.md — ML Deployment & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/ml-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md).md — ML Experiment Tracking
   - ../../../Global_References/ml-retraining.md — ML Model Retraining
   - ../../../Global_References/mlops-advanced.md — Mlops Advanced Topics
   - ../../../Global_References/mlops-fundamentals.md — Mlops Fundamentals
   - ../../../Global_References/mlops-pipeline-automation.md — MLOps Pipeline Automation
   - ../../../Global_References/mlops-model-governance.md — MLOps Model Governance
 ## Handoff
-For data pipeline CI/CD: `devops-dataops`. For Kubernetes deployment: `devops-kubernetes-for-data`.
+For data pipeline CI/CD: `[devops-dataops](../../../Data_Engineering/dataops/SKILL.md)`. For [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) deployment: `[devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data/SKILL.md)`.
 

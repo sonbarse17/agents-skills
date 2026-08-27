@@ -22,11 +22,11 @@ A RabbitMQ queue declared without `durable=true`, without a queue type
 argument, or without any length/TTL bound will accept traffic happily in
 staging and only reveal the gap in production — as messages lost on a
 routine broker restart, a queue that isn't actually mirrored/replicated
-the way an on-call engineer assumes during an incident, or an unbounded
+the way an on-call engineer assumes during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), or an unbounded
 queue that eventually pushes the whole broker over its memory watermark.
 This skill is a concrete pre-production checklist for catching those gaps
 before go-live, building on the topology decisions made in
-[rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) rather than
+[rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) rather than
 re-deriving them.
 
 ## When to use
@@ -50,10 +50,10 @@ re-deriving them.
   queue durability, required queue type for HA, required length/TTL
   bounds, dead-letter policy requirement) — this skill validates
   *against* such a baseline, established alongside the design guidance in
-  [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md).
+  [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md).
 - RabbitMQ 3.8+ if quorum queues are part of the baseline (see
   version-dependency note in
-  [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md)).
+  [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)).
 - Visibility into publisher code (or at least its `BasicProperties`/
   message-publishing configuration) to validate message persistence, not
   just queue-level durability, since the two are independent.
@@ -91,7 +91,7 @@ re-deriving them.
 3. **Validate message persistence on the publisher side for any queue
    marked durable**, since queue durability alone is not sufficient (see
    the pitfall in
-   [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md)):
+   [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)):
    ```bash
    # inspect a sample of in-flight messages via the management API
    curl -u <RABBITMQ_USER>:<RABBITMQ_PASSWORD> \
@@ -111,17 +111,17 @@ re-deriving them.
      pattern="^orders\.fulfillment\." apply-to=queues \
      definition='{"max-length":100000,"overflow":"reject-publish","message-ttl":86400000}'
    ```
-   An unbounded queue is a latent incident: it will eventually either
+   An unbounded queue is a latent [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md): it will eventually either
    exhaust broker memory/disk (tripping the cluster-wide watermark
    described in
-   [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md)) or grow
+   [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)) or grow
    large enough that consumer catch-up becomes impractical. Validation
    should flag any production queue with no `max-length`,
    `max-length-bytes`, or `message-ttl` policy applied.
 
 5. **Validate a dead-letter exchange is configured for any queue where
    poison messages are plausible**, rather than discovering the absence
-   during an incident:
+   during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
    ```bash
    rabbitmqadmin declare policy name=orders-fulfillment-dlx \
      pattern="^orders\.fulfillment\." apply-to=queues \
@@ -134,7 +134,7 @@ re-deriving them.
    checking both sides of the reference, not just the policy's presence.
    Diagnosing dead-letter queues that are filling up unexpectedly is
    covered in
-   [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md).
+   [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md).
 
 6. **Validate vhost permission scoping is least-privilege**, not a
    blanket grant:
@@ -146,7 +146,7 @@ re-deriving them.
    prefix — a validation pass should require permission patterns scoped
    to the specific resource-naming convention, matching the isolation
    guidance in
-   [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md).
+   [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md).
 
 7. **If topology is provisioned via a definitions JSON import or
    Terraform, diff the plan against the current broker state as an
@@ -194,7 +194,7 @@ re-deriving them.
 
 - **Symptom:** A queue intended as highly available is declared with
   `x-queue-type: quorum` and passes a validation check that only greps
-  for the queue-type argument, but during an incident it turns out the
+  for the queue-type argument, but during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) it turns out the
   queue has a single member and goes fully unavailable when its one node
   restarts.
   **Fix:** Validation that checks only for the presence of
@@ -221,7 +221,7 @@ re-deriving them.
   **Fix:** This is exactly what the length/TTL-bound validation step is
   meant to catch — re-run validation periodically (not just at initial
   rollout) against queues that may have been created or had policies
-  changed since the last audit, and treat any unbounded production queue
+  changed since the last [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), and treat any unbounded production queue
   discovered later as a finding requiring the same remediation as if
   caught at go-live.
 
@@ -229,7 +229,7 @@ re-deriving them.
 
 **Scenario:** A pre-production review of the `orders.fulfillment.us-east`
 quorum queue (declared in
-[rabbitmq-configuration](../rabbitmq-configuration/SKILL.md)'s worked
+[rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)'s worked
 example) before it goes live.
 
 Queue state pulled for review:
@@ -268,6 +268,6 @@ passes validation and is approved for production traffic.
 
 ## Cross-references
 
-- [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) — the topology and cluster design decisions this skill validates against a production baseline.
-- [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md) — diagnosing dead-letter/pileup issues that this validation aims to prevent but which can still surface post-launch.
-- [nats-and-pulsar-lightweight-messaging-configuration](../nats-and-pulsar-lightweight-messaging-configuration/SKILL.md) — comparable durability/replication validation concerns if a lighter-weight broker is used instead.
+- [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — the topology and cluster design decisions this skill validates against a production baseline.
+- [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md) — diagnosing dead-letter/pileup issues that this validation aims to prevent but which can still surface post-launch.
+- [nats-and-pulsar-lightweight-messaging-configuration](../[nats-and-pulsar-lightweight-messaging-configuration](../nats-and-pulsar-lightweight-messaging-configuration/SKILL.md)/SKILL.md) — comparable durability/replication validation concerns if a lighter-weight broker is used instead.

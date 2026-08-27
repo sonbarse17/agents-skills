@@ -17,7 +17,7 @@ description: "Rules for breaking down complex projects into granular checklists 
 
 ## Lifecycle Architecture
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Start Project] --> B[Break down into granular tasks]

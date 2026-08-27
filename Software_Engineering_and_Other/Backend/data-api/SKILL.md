@@ -24,7 +24,7 @@ Design and deploy data APIs using Hasura (GraphQL) or PostgREST (REST) with auth
 Exact user phrases: "data API", "Hasura", "PostgREST", "WunderGraph", "GraphQL for data", "REST API for data", "instant API", "database API", "real-time API", "data authorization", "data gateway", "auto-generated API".
 
 ### Input Context
-- Database(s) to expose (PostgreSQL, MySQL, SQL Server)
+- Database(s) to expose ([PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQL Server)
 - API style preference (GraphQL, REST, both)
 - Authentication provider (Auth0, Keycloak, Cognito, custom)
 - Authorization model (RBAC, column-level, row-level)
@@ -54,7 +54,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Column-level permissions set per role
 - [ ] Real-time subscriptions enabled where needed
 - [ ] Caching and rate limiting configured
-- [ ] API monitoring and logging set up
+- [ ] API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging set up
 - [ ] Error handling and mutation constraints defined
 
 ### Max Response Length
@@ -68,31 +68,31 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 | Tool | API Style | Database Support | Real-time | Auth |
 |---|---|---|---|---|
-| **Hasura** | GraphQL + REST | Postgres, MySQL, SQL Server, BigQuery, Snowflake | Subscriptions, live queries | JWT, Webhook, OIDC |
-| **PostgREST** | REST | PostgreSQL only | Webhooks (trigger) | JWT, API key, OAuth |
+| **Hasura** | GraphQL + REST | Postgres, [MySQL](../mysql/SKILL.md), SQL Server, BigQuery, Snowflake | Subscriptions, live queries | JWT, Webhook, OIDC |
+| **PostgREST** | REST | [PostgreSQL](../postgresql/SKILL.md) only | Webhooks (trigger) | JWT, API key, OAuth |
 | **WunderGraph** | GraphQL + REST + RPC | Postgres + any OpenAPI/gRPC | Server-sent events | JWT, OIDC, API key |
 
 #### Decision Tree
 ```
 API style preference?
 ├── GraphQL (client-driven queries, subscriptions)
-│   ├── PostgreSQL database → Hasura
-│   ├── Multiple databases (MySQL, SQL Server, etc.) → Hasura
+│   ├── [PostgreSQL](../postgresql/SKILL.md) database → Hasura
+│   ├── Multiple databases ([MySQL](../mysql/SKILL.md), SQL Server, etc.) → Hasura
 │   └── Polyglot backend (DB + external APIs) → WunderGraph
 ├── REST (simpler, broader client compatibility)
-│   ├── PostgreSQL only → PostgREST
-│   └── PostgreSQL with GraphQL also → Hasura (also serves REST)
-└── RPC / serverless functions
+│   ├── [PostgreSQL](../postgresql/SKILL.md) only → PostgREST
+│   └── [PostgreSQL](../postgresql/SKILL.md) with GraphQL also → Hasura (also serves REST)
+└── RPC / [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions
     ├── Database-centric → PostgREST with stored procedures
-    └── Polyglot → WunderGraph with TypeScript operations
+    └── Polyglot → WunderGraph with [TypeScript](../../Frontend/typescript/SKILL.md) operations
 ```
 
-Default: Hasura for GraphQL (native subscriptions, broad DB support, built-in auth). PostgREST for REST-only PostgreSQL stack. WunderGraph for polyglot backends combining data APIs with external services.
+Default: Hasura for GraphQL (native subscriptions, broad DB support, built-in auth). PostgREST for REST-only [PostgreSQL](../postgresql/SKILL.md) stack. WunderGraph for polyglot backends combining data APIs with external services.
 
 ### Step 2: Hasura Configuration
 
 ```yaml
-# docker-compose.hasura.yaml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).hasura.yaml
 version: "3.8"
 services:
   postgres:
@@ -100,7 +100,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${PG_PASSWORD}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/[postgresql](../postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -192,7 +192,7 @@ tables:
           filter: {}
 ```
 
-### Step 4: Row-Level Security (PostgreSQL + PostgREST)
+### Step 4: Row-Level Security ([PostgreSQL](../postgresql/SKILL.md) + PostgREST)
 
 #### RLS Policy Design Patterns
 
@@ -301,7 +301,7 @@ events:
 #### PostgREST Notify Pattern
 
 ```sql
--- Use PostgreSQL NOTIFY for real-time updates via PostgREST
+-- Use [PostgreSQL](../postgresql/SKILL.md) NOTIFY for real-time updates via PostgREST
 CREATE OR REPLACE FUNCTION notify_order_change()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -404,10 +404,10 @@ update_order:
     - only_owner_or_admin_can_update
 ```
 
-### Step 8: API Monitoring and Observability
+### Step 8: API [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 ```yaml
-monitoring:
+[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
   metrics:
     - query_latency_p50
     - query_latency_p99
@@ -426,9 +426,9 @@ monitoring:
     - error_rate > 1% → Slack + Email
     - p99_latency > 2s → PagerDuty
     - cache_hit_ratio < 80% → Dashboard warning
-    - rate_limited_requests > 5% → Capacity review
+    - rate_limited_requests > 5% → [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) review
   tracing:
-    - OpenTelemetry for request tracing
+    - [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for request tracing
     - Trace from client → Hasura → database
     - Include GraphQL operation name in spans
 ```
@@ -490,7 +490,7 @@ Data API Protocol Selection
 ## Implementation Patterns
 
 ### Pagination Pattern
-```python
+```[python](../../Languages/python/SKILL.md)
 # data_api/pagination.py
 from fastapi import Query
 from typing import Optional
@@ -565,8 +565,8 @@ type Order @key(fields: "id") {
 - **Input validation**: Validate all inputs against OpenAPI/schema; reject unexpected fields.
 - **SQL injection**: Use parameterized queries exclusively; never interpolate user input.
 - **CORS**: Restrict origins to known domains; do not use `Access-Control-Allow-Origin: *`.
-- **Secrets management**: Store API keys and DB credentials in vault (HashiCorp Vault, AWS Secrets Manager).
+- **Secrets management**: Store API keys and DB credentials in [vault](../../Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
 
 ## Handoff
-`data-data-platform` for deployment infrastructure. `data-data-catalog` for API endpoint documentation. `data-data-observability` for API monitoring. `data-data-contracts` for API schema contracts.
+`[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../Data_Engineering/data-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-contracts](../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.
 

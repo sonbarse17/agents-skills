@@ -10,14 +10,14 @@ metadata:
   package: azure-storage-file-datalake
 ---
 
-# Azure Data Lake Storage Gen2 SDK for Python
+# Azure Data Lake Storage Gen2 SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Hierarchical file system for big data analytics workloads.
 
 ## Installation
 
 ```bash
-pip install azure-storage-file-datalake azure-identity
+pip install [azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-file-datalake azure-identity
 ```
 
 ## Environment Variables
@@ -31,7 +31,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -40,14 +40,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.filedatalake import DataLakeServiceClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.dfs.core.windows.net"
 
@@ -67,7 +67,7 @@ with DataLakeServiceClient(account_url=account_url, credential=credential) as se
 
 ## File System Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create file system (container)
 file_system_client = service_client.create_file_system("myfilesystem")
 
@@ -84,7 +84,7 @@ for fs in service_client.list_file_systems():
 
 ## Directory Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_system_client = service_client.get_file_system_client("myfilesystem")
 
 # Create directory
@@ -107,7 +107,7 @@ directory_client.rename_directory(new_name="myfilesystem/newname")
 
 ### Upload File
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get file client
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
@@ -121,12 +121,12 @@ file_client.upload_data(b"Hello, Data Lake!", overwrite=True)
 # Append data (for large files)
 file_client.append_data(data=b"chunk1", offset=0, length=6)
 file_client.append_data(data=b"chunk2", offset=6, length=6)
-file_client.flush_data(12)  # Commit the data
+file_client.flush_data(12)  # [Commit](../../CI_CD/commit/SKILL.md) the data
 ```
 
 ### Download File
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
 # Download all content
@@ -144,13 +144,13 @@ download = file_client.download_file(offset=0, length=100)
 
 ### Delete File
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client.delete_file()
 ```
 
 ## List Contents
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List paths (files and directories)
 for path in file_system_client.get_paths():
     print(f"{'DIR' if path.is_directory else 'FILE'}: {path.name}")
@@ -166,7 +166,7 @@ for path in file_system_client.get_paths(path="mydir", recursive=True):
 
 ## File/Directory Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get properties
 properties = file_client.get_file_properties()
 print(f"Size: {properties.size}")
@@ -178,7 +178,7 @@ file_client.set_metadata(metadata={"processed": "true"})
 
 ## Access Control (ACL)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get ACL
 acl = directory_client.get_access_control()
 print(f"Owner: {acl['owner']}")
@@ -199,7 +199,7 @@ directory_client.update_access_control_recursive(
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.filedatalake.aio import DataLakeServiceClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -238,6 +238,6 @@ asyncio.run(datalake_operations())
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-storage-file-datalake-py_capabilities.md](../../../Global_References/azure-storage-file-datalake-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-storage-file-datalake-py_non-hero-scenarios.md](../../../Global_References/azure-storage-file-datalake-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-file-datalake-py_capabilities.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-file-datalake-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-file-datalake-py_non-hero-scenarios.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-file-datalake-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

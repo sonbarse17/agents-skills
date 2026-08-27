@@ -67,12 +67,12 @@ leaves cost and latency on the table.
   data you don't have rights to use for training, and do not include
   customer PII or secrets in training examples.
 - Experiment tracking wired up before the first run (see
-  [experiment-tracking](../experiment-tracking/SKILL.md)) and a model
+  [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)) and a model
   registry to version resulting adapters/checkpoints (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 - A serving environment capable of loading base weights plus adapters, or
   merged weights, at the latency/throughput the use case requires (see
-  [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)).
+  [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -113,7 +113,7 @@ leaves cost and latency on the table.
    removed) — and only move to full fine-tuning if PEFT demonstrably
    underperforms for the task after reasonable rank/target-module tuning.
 4. **Configure LoRA/QLoRA concretely:**
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from peft import LoraConfig, get_peft_model
    from transformers import AutoModelForCausalLM, BitsAndBytesConfig
    import torch
@@ -145,7 +145,7 @@ leaves cost and latency on the table.
    ```
 5. **Track every run** — dataset version, LoRA rank/alpha, learning rate,
    base model version, and resulting eval scores — in the experiment
-   tracker (see [experiment-tracking](../experiment-tracking/SKILL.md)), not
+   tracker (see [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)), not
    just the final checkpoint.
 6. **Evaluate against the base model on the same held-out set**, using both
    automated metrics relevant to the task (exact-match/format compliance for
@@ -156,7 +156,7 @@ leaves cost and latency on the table.
    with LoRA but still worth checking).
 7. **Version and register the adapter/checkpoint** the same way any model
    artifact is versioned (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)),
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)),
    tagging it with the base model version it was trained against — an
    adapter is only meaningful paired with the exact base model it was tuned
    on.
@@ -164,7 +164,7 @@ leaves cost and latency on the table.
    traffic to the fine-tuned model, compare quality/latency/cost against the
    baseline (base model + prompt, or previous fine-tuned version) before
    full rollout (see
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)).
+   [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)).
 9. **Keep the previous model/prompt configuration available for instant
    rollback** — never overwrite or discard the last known-good
    configuration when deploying a new fine-tuned version.
@@ -216,14 +216,14 @@ leaves cost and latency on the table.
   later (non-reproducible fine-tuning experiments).
   **Fix:** Version the exact training dataset (content hash or a dataset
   registry entry), log all hyperparameters and the base model's exact
-  revision/commit to the experiment tracker, and fix random seeds — treat
+  revision/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to the experiment tracker, and fix random seeds — treat
   this with the same rigor as
-  [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
+  [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)
   recommends for any training pipeline.
 
 - **Symptom:** A fine-tuned model deployed straight to 100% of production
   traffic turns out to have a subtle format regression that breaks a
-  downstream parser, causing an incident before anyone notices via manual
+  downstream parser, causing an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) before anyone notices via manual
   review.
   **Fix:** Always canary a newly fine-tuned model behind a small traffic
   percentage with automated output-format/quality checks before full
@@ -268,7 +268,7 @@ tickets.
 
 ## Cross-references
 
-- [experiment-tracking](../experiment-tracking/SKILL.md)
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
+- [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)

@@ -27,7 +27,7 @@ exhaustion, or a consumer group replaying far more history than intended.
 This skill is a pre-production checklist and set of concrete commands for
 validating topic and consumer group configuration *before* the first
 production message is written — building on the design choices made in
-[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)
+[kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md)
 rather than repeating them.
 
 ## When to use
@@ -36,12 +36,12 @@ rather than repeating them.
 - Reviewing a pull request or infra-as-code change that creates or alters
   Kafka topic configuration.
 - Onboarding a new consumer group and validating its `group.id`,
-  `auto.offset.reset`, and commit strategy won't cause unexpected replay
+  `auto.offset.reset`, and [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) strategy won't cause unexpected replay
   or data loss.
 - Auditing an existing cluster's topics for configuration drift from the
   organization's durability/retention standards.
 - As a gate in a CI/CD pipeline that provisions Kafka topics via
-  Terraform, a GitOps operator, or a custom provisioning script.
+  Terraform, a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator, or a custom provisioning script.
 
 ## Prerequisites & environment
 
@@ -60,7 +60,7 @@ rather than repeating them.
   one is the first real step.
 - For consumer-group validation: visibility into the consuming
   application's configuration (not just the broker side), since
-  `auto.offset.reset` and commit mode are client-side settings.
+  `auto.offset.reset` and [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) mode are client-side settings.
 
 ## Step-by-step guidance
 
@@ -90,7 +90,7 @@ rather than repeating them.
    A topic passing validation with `ReplicationFactor=3` but no explicit
    `min.insync.replicas` override is still a finding — it's inheriting
    the cluster default, which must itself have been confirmed safe (see
-   [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)).
+   [kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md)).
 
 3. **Validate retention and cleanup policy match the topic's actual
    role.** An event-stream topic and a compacted changelog/state topic
@@ -129,7 +129,7 @@ rather than repeating them.
    # consumer.properties for the new service
    group.id=order-fulfillment-service
    auto.offset.reset=earliest   # or 'latest' — validate deliberately, not by default
-   enable.auto.commit=false     # explicit offset commit after processing, not before
+   enable.auto.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)=false     # explicit offset [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) after processing, not before
    isolation.level=read_committed
    ```
    Confirm `auto.offset.reset` was chosen deliberately: `earliest` means
@@ -151,10 +151,10 @@ rather than repeating them.
    instances than partitions or a rebalance in progress) and that lag is
    near zero in a staging soak test before promoting to production —
    ongoing lag growth issues are diagnosed in
-   [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md),
+   [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md),
    but they should be caught here, before go-live, not after.
 
-7. **If topics are provisioned via Terraform or a GitOps operator, run
+7. **If topics are provisioned via Terraform or a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator, run
    the plan/diff as an explicit CI gate** rather than trusting manual CLI
    review alone:
    ```hcl
@@ -181,7 +181,7 @@ rather than repeating them.
   machine-checkable policy (an OPA/Conftest policy over Terraform plan
   JSON, or a small validation script) rather than a checklist a human
   re-reads each time.
-- Validate consumer-side settings (`auto.offset.reset`, commit mode,
+- Validate consumer-side settings (`auto.offset.reset`, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) mode,
   `isolation.level`) with the same rigor as broker-side topic config —
   the broker's durability guarantees are irrelevant if the consumer reads
   data at the wrong offset or commits before processing completes.
@@ -258,7 +258,7 @@ Consumer configuration submitted with the PR:
 ```properties
 group.id=fraud-detection-service
 auto.offset.reset=latest
-enable.auto.commit=false
+enable.auto.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)=false
 isolation.level=read_committed
 ```
 Review flags `auto.offset.reset=latest`: the fraud-detection service is
@@ -277,6 +277,6 @@ the PR pass validation and merge.
 
 ## Cross-references
 
-- [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md) — the broker/topic design decisions this skill validates against a production baseline.
-- [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md) — ongoing lag/rebalance issues that should be caught here pre-production but sometimes surface after go-live anyway.
-- [kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md) — schema compatibility validation to run alongside topic config validation for the same rollout.
+- [kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md) — the broker/topic design decisions this skill validates against a production baseline.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — ongoing lag/rebalance issues that should be caught here pre-production but sometimes surface after go-live anyway.
+- [kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — schema compatibility validation to run alongside topic config validation for the same rollout.

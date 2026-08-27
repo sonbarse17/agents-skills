@@ -32,7 +32,7 @@ Detailed pattern documentation lives in `../../../Global_References/context-driv
 1. **Read context first**: Always read relevant artifacts before starting work
 2. **Small updates**: Make incremental context changes, not massive rewrites
 3. **Link decisions**: Reference context when making implementation choices
-4. **Version context**: Commit context changes alongside code changes
+4. **Version context**: [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) context changes alongside code changes
 5. **Review context**: Include context artifact reviews in code reviews
 6. **Validate regularly**: Run context validation checklist before major work
 7. **Communicate changes**: Notify team when context artifacts change significantly

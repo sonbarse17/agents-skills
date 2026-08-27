@@ -18,7 +18,7 @@ metadata:
   maturity: stable
 ---
 
-# Incident Investigation Using Metrics, Logs, and Traces
+# [Incident](../incident/SKILL.md) Investigation Using Metrics, Logs, and Traces
 
 ## Purpose
 
@@ -37,9 +37,9 @@ between the three deliberately — metrics to scope and localize,
 traces to find the specific slow/failing span, logs to get the
 concrete error detail at that span — as distinct from the setup and
 query-authoring skills for each signal individually (see
-[prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md),
-[promql-query-authoring](../promql-query-authoring/SKILL.md), and
-[logql-query-authoring](../logql-query-authoring/SKILL.md)), which this
+[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md),
+[promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md), and
+[logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)), which this
 skill assumes are already in place and doesn't repeat.
 
 ## When to use
@@ -56,7 +56,7 @@ skill assumes are already in place and doesn't repeat.
 - Multiple services are involved in a request path and it's unclear
   which one is actually responsible for an elevated latency or error
   rate seen at the edge.
-- Coordinating a live incident where different responders are looking
+- Coordinating a live [incident](../incident/SKILL.md) where different responders are looking
   at different tools (a Grafana dashboard, a Loki/Kibana log search, a
   Jaeger/Tempo trace view) and need a shared, systematic way to
   correlate what each is finding.
@@ -71,12 +71,12 @@ skill assumes are already in place and doesn't repeat.
   correlation key, cross-signal pivoting degrades to time-window
   guessing instead of a precise join.
 - A metrics stack (Prometheus/Grafana, see
-  [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md))
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md))
   and comfort writing ad hoc PromQL (see
-  [promql-query-authoring](../promql-query-authoring/SKILL.md)).
+  [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md)).
 - A log aggregation backend (Loki or equivalent) and comfort writing ad
   hoc LogQL/query-language queries (see
-  [logql-query-authoring](../logql-query-authoring/SKILL.md)).
+  [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)).
 - A distributed tracing backend (Jaeger, Tempo, Zipkin, or a vendor
   APM) with tracing instrumented across the services in the request
   path under investigation — a trace can only show you spans that were
@@ -150,7 +150,7 @@ skill assumes are already in place and doesn't repeat.
    ```
    scoped to the precise time window from step 2, using the specific
    service(s) identified in step 1 — see
-   [logql-query-authoring](../logql-query-authoring/SKILL.md) for
+   [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) for
    writing this query efficiently and avoiding an unbounded scan.
 
 6. **Read the actual log line/trace span content for the concrete
@@ -174,7 +174,7 @@ skill assumes are already in place and doesn't repeat.
 
 8. **State a working hypothesis explicitly and look for evidence that
    would disprove it, not just evidence that confirms it** — during a
-   live incident it's easy to stop investigating the moment a plausible
+   live [incident](../incident/SKILL.md) it's easy to stop investigating the moment a plausible
    story emerges; deliberately check whether the timeline, the specific
    error content, and the affected scope are all consistent with the
    hypothesis before acting on it, especially before a rollback that
@@ -184,11 +184,11 @@ skill assumes are already in place and doesn't repeat.
    result, the trace ID and its span breakdown, the specific log
    lines, the change-log correlation) — this becomes the evidence base
    for the postmortem (see
-   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md))
+   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md))
    and saves the next responder from re-deriving the same trail from
    scratch during a recurrence.
 
-10. **After the incident, check whether the cross-signal pivot was
+10. **After the [incident](../incident/SKILL.md), check whether the cross-signal pivot was
     actually possible cleanly** — if trace IDs weren't propagated into
     logs, if the affected service had no tracing instrumentation, or if
     metrics weren't segmented finely enough to localize quickly, treat
@@ -210,9 +210,9 @@ skill assumes are already in place and doesn't repeat.
   service actually responsible for the latency/error.
 - Narrow every log/trace query to the metrics-derived time window
   first, and widen only if the narrow window comes back empty — a
-  wide, unscoped query during an active incident risks becoming its
+  wide, unscoped query during an active [incident](../incident/SKILL.md) risks becoming its
   own load problem on the log/trace backend (see
-  [logql-query-authoring](../logql-query-authoring/SKILL.md) for the
+  [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) for the
   unbounded-query risk this specifically avoids).
 - State the working hypothesis explicitly and actively look for
   disconfirming evidence before acting on it, especially before a
@@ -221,7 +221,7 @@ skill assumes are already in place and doesn't repeat.
   reconstructed afterward from memory for the postmortem.
 - Treat a missing cross-signal pivot (no trace instrumentation on an
   implicated service, no correlation ID in logs) surfaced during an
-  incident as a concrete follow-up action, not an accepted permanent
+  [incident](../incident/SKILL.md) as a concrete follow-up action, not an accepted permanent
   gap.
 
 ## Common pitfalls
@@ -264,7 +264,7 @@ skill assumes are already in place and doesn't repeat.
   hypothesis before declaring root cause found, especially before
   taking an action that itself carries risk.
 
-- **Symptom:** The same class of incident recurs weeks later, and the
+- **Symptom:** The same class of [incident](../incident/SKILL.md) recurs weeks later, and the
   investigation has to be redone almost entirely from scratch because
   no one recorded what was checked or found the first time.
   **Fix:** The cross-signal trail (queries run, trace IDs pulled,
@@ -274,13 +274,13 @@ skill assumes are already in place and doesn't repeat.
   responds to the recurrence.
 
 - **Symptom:** An ad hoc, broad log query run directly against
-  production during an active incident makes the log backend itself
-  slow, compounding the incident for everyone.
+  production during an active [incident](../incident/SKILL.md) makes the log backend itself
+  slow, compounding the [incident](../incident/SKILL.md) for everyone.
   **Fix:** This is the unbounded-query risk covered in
-  [logql-query-authoring](../logql-query-authoring/SKILL.md) — scope by
+  [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — scope by
   every known label, keep the time range as narrow as the
   metrics-derived window allows, and add a result limit; treat "just
-  grep everything" as a red flag during a live incident, not a
+  grep everything" as a red flag during a live [incident](../incident/SKILL.md), not a
   shortcut.
 
 ## Worked example
@@ -329,20 +329,20 @@ between the edge gateway and the actual payments-processing backend.
 
 7. **Action:** `payments-processing` is rolled back to the previous
    version (matching the rollback discipline in
-   [agent-cost-and-latency-spike-investigation](../../../ai-agent/skills/agent-cost-and-latency-spike-investigation/SKILL.md)
+   [agent-cost-and-latency-spike-investigation](../../../ai-agent/skills/[agent-cost-and-latency-spike-investigation](../../../AI_and_Agents/Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
    for a comparable "revert the specific correlated change" pattern);
    error rate returns to baseline within minutes.
 
 8. **Document:** the PromQL query, the trace ID, the specific log line,
-   and the deploy correlation are all recorded in the incident channel
+   and the deploy correlation are all recorded in the [incident](../incident/SKILL.md) channel
    as the investigation happens, feeding directly into the
-   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md)
+   [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md)
    writeup without needing to be reconstructed afterward.
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md) — setting up the scrape/dashboard/alerting layer this investigation's metrics queries run against.
-- [promql-query-authoring](../promql-query-authoring/SKILL.md) — writing the specific PromQL used for the scoping/localization step of this workflow.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — writing the specific LogQL used for the log-pivot step, including the unbounded-query risk this workflow's scoping discipline avoids.
-- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/blameless-postmortem-and-root-cause-analysis/SKILL.md) — where this investigation's documented cross-signal trail feeds into the formal postmortem.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md) — the broader incident-response process (roles, communication, severity) this investigative workflow operates within.
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — setting up the scrape/dashboard/[alerting](../alerting/SKILL.md) layer this investigation's metrics queries run against.
+- [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md) — writing the specific PromQL used for the scoping/localization step of this workflow.
+- [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — writing the specific LogQL used for the log-pivot step, including the unbounded-query risk this workflow's scoping discipline avoids.
+- [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — where this investigation's documented cross-signal trail feeds into the formal postmortem.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the broader [incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md) process (roles, communication, severity) this investigative workflow operates within.

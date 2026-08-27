@@ -7,29 +7,29 @@ metadata:
   version: "1.0"
 ---
 
-# SRE Dashboards
+# SRE [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
-Build dashboards that help teams detect, triage, and prevent reliability incidents.
+Build [dashboards](../../Cloud_Providers/dashboards/SKILL.md) that help teams detect, triage, and prevent reliability incidents.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Defining service-level dashboards for production systems
+- Defining service-level [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for production systems
 - Tracking SLO health and error-budget burn
-- Creating incident command-center views
+- Creating [incident](../incident/SKILL.md) command-center views
 - Standardizing dashboard patterns across teams
 
 ## Prerequisites
 
-- Metrics pipeline (Prometheus, OpenTelemetry, or vendor equivalent)
+- Metrics pipeline (Prometheus, [OpenTelemetry](../opentelemetry/SKILL.md), or vendor equivalent)
 - Logs/traces linked to services and environments
 - Agreed service taxonomy (team, service, tier, environment)
 
 ## Dashboard Architecture
 
-Structure dashboards in layers:
+Structure [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in layers:
 
-1. **Executive Reliability View**: SLO attainment, incident counts, MTTR trends.
+1. **Executive Reliability View**: SLO attainment, [incident](../incident/SKILL.md) counts, MTTR trends.
 2. **Service Health View**: RED/USE metrics, dependency health, release markers.
 3. **Deep-Dive View**: Per-endpoint latency, resource saturation, error categories.
 
@@ -92,9 +92,9 @@ histogram_quantile(0.95,
 
 - Use consistent color semantics (green=healthy, yellow=degrading, red=breach)
 - Label units explicitly (ms, req/s, %, cores)
-- Default time windows to incident-friendly ranges (15m, 1h, 6h, 24h)
+- Default time windows to [incident](../incident/SKILL.md)-friendly ranges (15m, 1h, 6h, 24h)
 - Minimize panel count per dashboard to reduce cognitive load
-- Add runbook links directly in panel descriptions
+- Add [runbook](../runbook/SKILL.md) links directly in panel descriptions
 
 ## Troubleshooting
 
@@ -104,15 +104,15 @@ histogram_quantile(0.95,
 - Confirm scrape/ingest latency is within expected range
 - Check metric rename regressions after instrumentation updates
 
-### High cardinality slows dashboards
+### High cardinality slows [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
 - Aggregate by stable dimensions (`service`, `route_group`) instead of raw IDs
 - Use recording rules for expensive percentile and ratio queries
-- Split deep-dive dashboards from NOC summary dashboards
+- Split deep-dive [dashboards](../../Cloud_Providers/dashboards/SKILL.md) from NOC summary [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
 ## Related Skills
 
-- [prometheus-grafana](../prometheus-grafana/) - Dashboard implementation and PromQL
-- [opentelemetry](../opentelemetry/) - Standardized telemetry instrumentation
-- [alerting-oncall](../alerting-oncall/) - Reliability alert routing and escalation
-- [agent-observability](../../ai/agent-observability/) - AI workload reliability telemetry
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Dashboard implementation and PromQL
+- [opentelemetry](../[opentelemetry](../opentelemetry/SKILL.md)/) - Standardized telemetry instrumentation
+- [alerting-oncall](../[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - Reliability alert routing and escalation
+- [agent-observability](../../ai/[agent-observability](../../../AI_and_Agents/Operations/agent-[observability](../observability/SKILL.md)/SKILL.md)/) - AI workload reliability telemetry

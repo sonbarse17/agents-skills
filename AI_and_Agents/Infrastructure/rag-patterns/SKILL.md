@@ -49,7 +49,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **RAG Architecture**: Retrieval-Augmented Generation feeding context chunks to LLMs to prevent hallucinations.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -86,7 +86,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Cosine Similarity**: Measuring the angle between embeddings to determine semantic closeness.
 
 ### Core Implementation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -109,7 +109,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **HNSW Indexing**: Hierarchical Navigable Small World graphs for ultra-fast Approximate Nearest Neighbor search.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -133,7 +133,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Quantization**: Compressing FP32 vectors to INT8 to fit massive LLMs and indexes into VRAM.
 
 ### Core Implementation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -171,7 +171,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -208,7 +208,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Quantization**: Compressing FP32 vectors to INT8 to fit massive LLMs and indexes into VRAM.
 
 ### Core Implementation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension

@@ -13,17 +13,17 @@ This skill provides **guidance and reference material** for instrumenting webapp
 
 > **⛔ ADDING COMPONENTS?**
 >
-> If the user wants to **add App Insights to their app**, invoke **azure-prepare** instead.
-> This skill provides reference material—azure-prepare orchestrates the actual changes.
+> If the user wants to **add App Insights to their app**, invoke **[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)** instead.
+> This skill provides reference material—[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md) orchestrates the actual changes.
 
 ## When to Use This Skill
 
 - User asks **how** to instrument (guidance, patterns, examples)
 - User needs SDK setup instructions
-- azure-prepare invokes this skill during research phase
+- [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md) invokes this skill during research phase
 - User wants to understand App Insights concepts
 
-## When to Use azure-prepare Instead
+## When to Use [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md) Instead
 
 - User says "add telemetry to my app"
 - User says "add App Insights" 
@@ -63,13 +63,13 @@ No matter which option you choose, recommend the user to create the App Insights
 #### Modify application code
 
 - If the app is an ASP.NET Core app, see [ASPNETCORE guide](../../../Global_References/aspnetcore.md) for how to modify the C# code.
-- If the app is a Node.js app, see [NODEJS guide](../../../Global_References/nodejs.md) for how to modify the JavaScript/TypeScript code.
-- If the app is a Python app, see [PYTHON guide](../../../Global_References/python.md) for how to modify the Python code.
+- If the app is a Node.js app, see [NODEJS guide](../../../Global_References/nodejs.md) for how to modify the JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) code.
+- If the app is a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app, see [PYTHON guide](../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).md) for how to modify the [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code.
 
 ## SDK Quick References
 
-- **OpenTelemetry Distro**: [Python](references/sdk/azure-monitor-opentelemetry-py.md) | [TypeScript](references/sdk/azure-monitor-opentelemetry-ts.md)
-- **OpenTelemetry Exporter**: [Python](references/sdk/azure-monitor-opentelemetry-exporter-py.md) | [Java](references/sdk/azure-monitor-opentelemetry-exporter-java.md)
+- **[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Distro**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md).md)
+- **[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Exporter**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../azure-sdk-java/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java/SKILL.md)/SKILL.md).md)
 
 ## Platform-Specific Guides
 

@@ -15,7 +15,7 @@ Manage identity and access in AWS with least-privilege policies, roles, federati
 
 - Creating roles for EC2 instances, Lambda functions, or ECS tasks
 - Writing custom IAM policies with least-privilege access
-- Setting up OIDC federation for GitHub Actions or other CI/CD systems
+- Setting up OIDC federation for [GitHub](../../CI_CD/github/SKILL.md) Actions or other CI/CD systems
 - Implementing permission boundaries for delegated administration
 - Auditing access with IAM Access Analyzer and credential reports
 - Configuring cross-account access with assume-role patterns
@@ -156,16 +156,16 @@ export AWS_SECRET_ACCESS_KEY="xxx"
 export AWS_SESSION_TOKEN="xxx"
 ```
 
-## OIDC Federation for GitHub Actions
+## OIDC Federation for [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```bash
-# Create the GitHub OIDC identity provider
+# Create the [GitHub](../../CI_CD/github/SKILL.md) OIDC identity provider
 aws iam create-open-id-connect-provider \
   --url https://token.actions.githubusercontent.com \
   --client-id-list sts.amazonaws.com \
   --thumbprint-list "6938fd4d98bab03faadb97b34396831e3780aea1"
 
-# Create a role for GitHub Actions with repo-scoped trust
+# Create a role for [GitHub](../../CI_CD/github/SKILL.md) Actions with repo-scoped trust
 aws iam create-role \
   --role-name GitHubActionsDeployRole \
   --assume-role-policy-document '{
@@ -193,10 +193,10 @@ aws iam attach-role-policy \
   --policy-arn arn:aws:iam::123456789012:policy/DeploymentPolicy
 ```
 
-GitHub Actions workflow usage:
+[GitHub](../../CI_CD/github/SKILL.md) Actions workflow usage:
 
 ```yaml
-# .github/workflows/deploy.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/deploy.yml
 permissions:
   id-token: write
   contents: read
@@ -318,14 +318,14 @@ aws iam simulate-principal-policy \
 ## Terraform IAM Role with OIDC
 
 ```hcl
-# OIDC provider for GitHub Actions
-resource "aws_iam_openid_connect_provider" "github" {
+# OIDC provider for [GitHub](../../CI_CD/github/SKILL.md) Actions
+resource "aws_iam_openid_connect_provider" "[github](../../CI_CD/github/SKILL.md)" {
   url             = "https://token.actions.githubusercontent.com"
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
 }
 
-# Role for GitHub Actions
+# Role for [GitHub](../../CI_CD/github/SKILL.md) Actions
 resource "aws_iam_role" "github_actions" {
   name = "GitHubActionsDeployRole"
 
@@ -334,7 +334,7 @@ resource "aws_iam_role" "github_actions" {
     Statement = [{
       Effect = "Allow"
       Principal = {
-        Federated = aws_iam_openid_connect_provider.github.arn
+        Federated = aws_iam_openid_connect_provider.[github](../../CI_CD/github/SKILL.md).arn
       }
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
@@ -440,8 +440,8 @@ resource "aws_iam_policy" "boundary" {
 
 ## Related Skills
 
-- [terraform-aws](../terraform-aws/) - IaC deployment of IAM resources
-- [aws-ec2](../aws-ec2/) - Instance profiles and roles
-- [aws-lambda](../aws-lambda/) - Lambda execution roles
-- [aws-ecs-fargate](../aws-ecs-fargate/) - ECS task and execution roles
-- [access-review](../../../compliance/governance/access-review/) - Access auditing and governance
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - IaC deployment of IAM resources
+- [aws-ec2](../[aws-ec2](../aws-ec2/SKILL.md)/) - Instance profiles and roles
+- [aws-lambda](../[aws-lambda](../aws-lambda/SKILL.md)/) - Lambda execution roles
+- [aws-ecs-fargate](../[aws-ecs-fargate](../aws-ecs-fargate/SKILL.md)/) - ECS task and execution roles
+- [access-review](../../../compliance/governance/[access-review](../../../Security/access-review/SKILL.md)/) - Access auditing and governance

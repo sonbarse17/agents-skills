@@ -11,8 +11,8 @@ right tool at all, and if so, which method and
 which base-model size class. Every other skill
 in this plugin assumes this routing already
 happened — start here before opening
-`lora-qlora-recipes`, `preference-optimization`,
-or `grpo-rlvr-training`.
+`[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`, `[preference-optimization](../preference-optimization/SKILL.md)`,
+or `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)`.
 
 ## When to Use This Skill
 
@@ -33,10 +33,10 @@ or `grpo-rlvr-training`.
 | Facts change often (prices, docs, news) | RAG, not fine-tuning |
 | Desired behavior still being figured out | Prompt engineering |
 | Stable domain knowledge, ≥500MB text | CPT then SFT — see Off-Ramps First |
-| Have input/output demonstrations | SFT — see `lora-qlora-recipes` |
-| Have preference pairs or thumbs-up/down | DPO/ORPO/KTO — see `preference-optimization` |
-| Have a verifiable pass/fail signal | GRPO+RLVR — see `grpo-rlvr-training` |
-| No eval harness yet | Stop — see `eval-harness-first` |
+| Have input/output demonstrations | SFT — see `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` |
+| Have preference pairs or thumbs-up/down | DPO/ORPO/KTO — see `[preference-optimization](../preference-optimization/SKILL.md)` |
+| Have a verifiable pass/fail signal | GRPO+RLVR — see `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)` |
+| No eval harness yet | Stop — see `[eval-harness-first](../eval-harness-first/SKILL.md)` |
 
 ## Off-Ramps First
 
@@ -177,7 +177,7 @@ model from it.
 **Precedence when the catalog and a method skill
 disagree:** the catalog's per-row Notes column
 states hardware/size-class *feasibility*, not a
-method recommendation — `lora-qlora-recipes`'s
+method recommendation — `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`'s
 LoRA vs QLoRA vs Full FT table (routed by task
 shape) governs the actual method choice.
 
@@ -197,7 +197,7 @@ load peaks, `nvidia-smi` underreporting, thermal
 throttling on long runs). Once the
 `dgx-spark-ops` plugin is installed, defer
 Spark-specific feasibility calls to its
-`spark-memory-thermal-ops` skill rather than
+`[spark-memory-thermal-ops](../../../Data_Engineering/spark-memory-thermal-ops/SKILL.md)` skill rather than
 re-deriving them here.
 
 ## Related Skills
@@ -205,11 +205,11 @@ re-deriving them here.
 Once this skill has picked a method, hand off to
 the skill that executes it:
 
-- `lora-qlora-recipes` — SFT via LoRA/QLoRA
-- `preference-optimization` — DPO, ORPO, KTO
-- `grpo-rlvr-training` — GRPO with verifiable
+- `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)` — SFT via LoRA/QLoRA
+- `[preference-optimization](../preference-optimization/SKILL.md)` — DPO, ORPO, KTO
+- `[grpo-rlvr-training](../grpo-rlvr-training/SKILL.md)` — GRPO with verifiable
   rewards
 
 No method is selected before the eval harness
-exists — see `eval-harness-first`.
+exists — see `[eval-harness-first](../eval-harness-first/SKILL.md)`.
 

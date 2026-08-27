@@ -25,7 +25,7 @@ Configure content delivery networks for fast, reliable global asset delivery wit
 - Origin server or S3/R2 bucket with content to serve.
 - AWS CLI configured (for CloudFront).
 - Cloudflare account with zone configured (for Cloudflare CDN).
-- Terraform 1.5+ (for infrastructure-as-code examples).
+- Terraform 1.5+ (for [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) examples).
 
 ## AWS CloudFront
 
@@ -316,7 +316,7 @@ for url in "${URLS[@]}"; do
 done
 ```
 
-## Monitoring Cache Performance
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Cache Performance
 
 ```bash
 # Check cache status from response headers
@@ -352,7 +352,7 @@ aws cloudwatch get-metric-statistics \
 
 ## Related Skills
 
-- [dns-management](../dns-management/) - DNS records for CDN CNAME setup
-- [cloudflare-pages](../../cloudflare/cloudflare-pages/) - Cloudflare's built-in CDN for Pages projects
-- [reverse-proxy](../reverse-proxy/) - Origin server configuration behind CDN
-- [load-balancing](../load-balancing/) - Multi-origin CDN backends
+- [dns-management](../[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)/) - DNS records for CDN CNAME setup
+- [cloudflare-pages](../../cloudflare/[cloudflare-pages](../cloudflare-pages/SKILL.md)/) - Cloudflare's built-in CDN for Pages projects
+- [reverse-proxy](../[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Origin server configuration behind CDN
+- [load-balancing](../[load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)/) - Multi-origin CDN backends

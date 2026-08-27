@@ -27,7 +27,7 @@ Exact user phrases: "data pipeline CI/CD", "dbt CI/CD", "SQLFluff", "SQL linting
 Before activating, verify:
 - Data transformation framework (dbt, SQLMesh, Dataform, custom SQL)
 - Data warehouse (Snowflake, BigQuery, Redshift, Databricks, Postgres)
-- CI platform (GitHub Actions, GitLab CI, CircleCI, Jenkins)
+- CI platform ([GitHub](../github/SKILL.md) Actions, GitLab CI, [CircleCI](../circleci/SKILL.md), [Jenkins](../jenkins/SKILL.md))
 - Environments (dev, staging, prod) and promotion strategy
 - Testing framework (dbt test, Great Expectations, data-diff, Soda)
 - Schema migration tool (Alembic, Flyway, dbt migrations)
@@ -67,7 +67,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### CI Pipeline for dbt Projects
 
 ```yaml
-# .github/workflows/dbt-ci.yml
+# .[github](../github/SKILL.md)/workflows/dbt-ci.yml
 name: dbt CI
 on:
   pull_request:
@@ -79,9 +79,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.11'
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
       - run: pip install sqlfluff==3.0.0 sqlfluff-templater-dbt
       - run: sqlfluff lint transform/models/ --dialect snowflake --templater dbt
 
@@ -89,9 +89,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.11'
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
       - run: pip install dbt-snowflake dbt-core==1.7.0
       - run: dbt deps --project-dir transform
       - run: dbt build --project-dir transform --target ci
@@ -176,13 +176,13 @@ models:
 ```
 
 ```yaml
-# .github/workflows/promote-to-prod.yml
+# .[github](../github/SKILL.md)/workflows/promote-to-prod.yml
 name: Promote to Production
 on:
   workflow_dispatch:
     inputs:
-      commit-sha:
-        description: 'Commit SHA to promote'
+      [commit](../commit/SKILL.md)-sha:
+        description: '[Commit](../commit/SKILL.md) SHA to promote'
         required: true
 
 jobs:
@@ -197,7 +197,7 @@ jobs:
       - name: dbt data diff
         id: dbt-diff
         run: |
-          git checkout ${{ github.event.inputs.commit-sha }}
+          git checkout ${{ [github](../github/SKILL.md).event.inputs.[commit](../commit/SKILL.md)-sha }}
           # Compare staging vs prod with data-diff
           pip install data-diff
           data-diff \
@@ -214,7 +214,7 @@ jobs:
     environment: production
     steps:
       - name: Manual approval required
-        run: echo "Approved by ${{ github.actor }}"
+        run: echo "Approved by ${{ [github](../github/SKILL.md).actor }}"
 
   deploy:
     needs: [diff, approve]
@@ -257,7 +257,7 @@ ALTER COLUMN created_at SET NOT NULL;
 ```
 
 ```yaml
-# .github/workflows/schema-migration.yml
+# .[github](../github/SKILL.md)/workflows/schema-migration.yml
 name: Schema Migration
 on:
   pull_request:
@@ -286,7 +286,7 @@ jobs:
       - run: |
           # Simulate migration ordering
           pip install sqlparse
-          python -c "
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
             import os, glob
             migrations = sorted(glob.glob('migrations/*.sql'))
             print(f'Found {len(migrations)} migrations to apply:')
@@ -375,7 +375,7 @@ workflows:
         - run: dbt ls --project-dir $DIR --output json > $DIR/model_list.txt
         - run: |
             echo "## dbt Model Changes"
-            cat $DIR/model_list.txt | python -c "
+            cat $DIR/model_list.txt | [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
             import json, sys
             models = json.load(sys.stdin)
             for m in models:
@@ -495,7 +495,7 @@ rollback:
   - ../../../Global_References/pipeline-test-automation.md — Pipeline Test Automation
   - ../../../Global_References/sql-linting-and-testing.md — SQL Linting and Testing
 ## Handoff
-`data-data-quality` for data quality monitoring and alerting in production
-`data-etl-pipeline` for pipeline orchestration and execution
+`[data-data-quality](../../../Data_Engineering/data-quality/SKILL.md)` for data quality [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) in production
+`[data-etl-pipeline](../../../Data_Engineering/etl-pipeline/SKILL.md)` for pipeline orchestration and execution
 `data-workflow-orchestration` for scheduling and dependency management
 

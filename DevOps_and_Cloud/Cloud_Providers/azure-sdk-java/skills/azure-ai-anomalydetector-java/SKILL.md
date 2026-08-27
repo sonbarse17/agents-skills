@@ -17,7 +17,7 @@ Build anomaly detection applications using the Azure AI Anomaly Detector SDK for
 ```xml
 <dependency>
   <groupId>com.azure</groupId>
-  <artifactId>azure-ai-anomalydetector</artifactId>
+  <artifactId>[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-anomalydetector</artifactId>
   <version>3.0.0-beta.6</version>
 </dependency>
 ```

@@ -30,7 +30,7 @@ User request includes: `microfrontend`, `micro-frontend`, `module federation`, `
 - Current frontend architecture (monolith SPA, multi-page)
 - Framework preferences (React, Vue, Angular, Solid)
 - Build tool (Webpack 5, Rspack, Vite)
-- Deployment platform (Kubernetes, S3/CDN, Netlify, Vercel)
+- Deployment platform ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), S3/CDN, Netlify, Vercel)
 - Integration requirements (auth, navigation, cross-app communication)
 
 ### Output Artifact
@@ -64,7 +64,7 @@ Produce the artifact directly. No preamble. No postamble. No explanations. No fi
 Number of independent teams?
   |-- 1-2 teams -->
   |     |-- Monolith SPA recommended (microfrontend overhead not justified)
-  |     |-- Alternative: monorepo with package boundaries
+  |     |-- Alternative: [monorepo](../monorepo/SKILL.md) with package boundaries
   |
   |-- 3+ teams on same product -->
   |     Same framework across all teams?
@@ -160,7 +160,7 @@ Phase extraction: identify boundaries, extract shell, configure federation, extr
 3. **Strict isolation required?** (different auth, sandboxed, legacy app) → iframe
 4. **Single team, small app?** → Monolith SPA (don't over-engineer)
 
-**Rule**: Microfrontend overhead makes sense at 3+ independent teams working on the same product. Below that, monolith SPA or monorepo with package boundaries is sufficient.
+**Rule**: Microfrontend overhead makes sense at 3+ independent teams working on the same product. Below that, monolith SPA or [monorepo](../monorepo/SKILL.md) with package boundaries is sufficient.
 
 ## Module Federation (Recommended Default)
 
@@ -335,7 +335,7 @@ With 3 MFEs each using React (45KB gzipped):
 
 ## Module Federation with Rspack/Vite
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Rspack Module Federation (faster builds than Webpack 5)
 // rspack.config.js (host)
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
@@ -356,7 +356,7 @@ module.exports = {
 };
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Vite Module Federation (@originjs/vite-plugin-federation)
 // vite.config.ts (host)
 import federation from '@originjs/vite-plugin-federation';
@@ -376,7 +376,7 @@ export default defineConfig({
 
 ## Cross-App Routing Patterns
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Microfrontend routing coordination
 // Shell manages top-level routes, delegates sub-routes to MFEs
 
@@ -414,7 +414,7 @@ function OrdersShell() {
 
 ## Shared Auth State Across MFEs
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Auth token stored in httpOnly cookie (accessible to all MFEs via same domain)
 // Shell MFE manages login/logout, shares auth state via custom events
 
@@ -449,7 +449,7 @@ window.addEventListener('auth:changed', (e: CustomEvent) => {
 
 ## Module Federation Dynamic Remotes
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Dynamic remote loading — useful for feature flags or A/B testing
 // Instead of static remotes in webpack config, load at runtime
 
@@ -488,7 +488,7 @@ class DynamicFederationLoader {
 
 ## Testing Microfrontends
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Integration testing MFEs together
 // Playwright test across MFEs on the same page
 test('navigation between MFEs works', async ({ page }) => {

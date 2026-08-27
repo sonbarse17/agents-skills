@@ -34,9 +34,9 @@ states honestly (not just to make a board look green), and how to do all
 of this programmatically against the Jira REST API when an agent is
 creating or updating issues on a user's behalf. It does not cover how to
 comment on or automate updates to an existing ticket (see
-[jira-comments-and-tracking-automation](../jira-comments-and-tracking-automation/SKILL.md))
+[jira-comments-and-tracking-automation](../[jira-comments-and-tracking-automation](../../Software_Engineering_and_Other/Miscellaneous/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md))
 or how to document the resulting work in Confluence (see
-[confluence-page-authoring-and-governance](../confluence-page-authoring-and-governance/SKILL.md)).
+[confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Software_Engineering_and_Other/Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md)).
 
 ## When to use
 
@@ -226,7 +226,7 @@ or how to document the resulting work in Confluence (see
   like five unrelated features should be split into an epic with
   sub-tickets, each independently closeable.
 - Prefer editing the ticket's fields (status, priority, fix version) for
-  state that other people/dashboards depend on; reserve free-text
+  state that other people/[dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) depend on; reserve free-text
   comments for narrative context (see the companion comments skill).
 - When creating tickets programmatically in bulk, dry-run against a
   single issue first and inspect the `201` response before looping —
@@ -234,7 +234,7 @@ or how to document the resulting work in Confluence (see
   unwind.
 - Treat "Definition of Ready" (has AC, has priority, has an owner
   identified) and "Definition of Done" (AC verified, linked
-  PR/commit merged, no unresolved blocking links) as project-wide
+  PR/[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) merged, no unresolved blocking links) as project-wide
   checklists, not a memory exercise per ticket.
 - For cross-team dependencies, link issues explicitly (`Blocks`/`Is
   blocked by`) instead of relying on a mention in the description that
@@ -264,7 +264,7 @@ or how to document the resulting work in Confluence (see
   within a few months, because there's no shared definition of what
   priority means, so it stops being useful for triage.
   **Fix:** Publish and enforce an impact × urgency rubric (see step 4)
-  and periodically audit priority distribution — a healthy backlog is
+  and periodically [audit](../../AI_and_Agents/Operations/audit/SKILL.md) priority distribution — a healthy backlog is
   rarely more than 5-10% Highest.
 
 - **Symptom:** A bug is filed with just a title ("Checkout broken") and
@@ -276,7 +276,7 @@ or how to document the resulting work in Confluence (see
   them rather than letting them enter a sprint.
 
 - **Symptom:** A ticket is filed as a "Task" for what is actually a
-  regression, so it never shows up in defect/quality dashboards, and
+  regression, so it never shows up in defect/quality [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), and
   the team under-reports its real bug rate.
   **Fix:** Use the issue-type test in step 1 consistently, and correct
   misclassified tickets when spotted rather than leaving them for
@@ -361,9 +361,9 @@ epic:
 
 ## Cross-references
 
-- [jira-comments-and-tracking-automation](../jira-comments-and-tracking-automation/SKILL.md) —
+- [jira-comments-and-tracking-automation](../[jira-comments-and-tracking-automation](../../Software_Engineering_and_Other/Miscellaneous/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md) —
   once the ticket exists, how to comment on it usefully and automate
   status/comment updates from CI/CD without creating noise.
-- [confluence-page-authoring-and-governance](../confluence-page-authoring-and-governance/SKILL.md) —
-  when a ticket's resolution needs a durable runbook, design doc, or
+- [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Software_Engineering_and_Other/Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md) —
+  when a ticket's resolution needs a durable [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), design doc, or
   postmortem rather than living only in a Jira description.

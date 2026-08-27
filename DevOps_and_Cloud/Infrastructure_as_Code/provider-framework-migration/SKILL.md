@@ -69,11 +69,11 @@ import (
     "flag"
     "log"
 
-    "github.com/hashicorp/terraform-plugin-framework/providerserver"
-    "github.com/hashicorp/terraform-plugin-go/tfprotov6"
-    "github.com/hashicorp/terraform-plugin-go/tfprotov6/tf6server"
-    "github.com/hashicorp/terraform-plugin-mux/tf5to6server"
-    "github.com/hashicorp/terraform-plugin-mux/tf6muxserver"
+    "[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework/providerserver"
+    "[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6"
+    "[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6/tf6server"
+    "[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf5to6server"
+    "[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf6muxserver"
 
     "example.org/terraform-provider-examplecloud/internal/provider"
     sdkprovider "example.org/terraform-provider-examplecloud/internal/sdkprovider"
@@ -169,7 +169,7 @@ Translate schema and CRUD using the mapping table in
 ## Step 4: Move the Registration
 
 Register the resource in the Framework provider's `Resources()` and delete
-it from the SDKv2 provider's `ResourcesMap` in the same commit — mux errors
+it from the SDKv2 provider's `ResourcesMap` in the same [commit](../../CI_CD/commit/SKILL.md) — mux errors
 on duplicates.
 
 ## Step 5: Verify
@@ -182,7 +182,7 @@ on duplicates.
    must be empty. In `terraform-plugin-testing` this is a two-step test
    using `ExternalProviders` for the old version, then
    `ProtoV6ProviderFactories` with `ConfigPlanChecks` asserting an empty
-   plan. The `provider-test-patterns` skill (if available) documents the
+   plan. The `[provider-test-patterns](../[provider-test-patterns](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-test-patterns/SKILL.md)/SKILL.md)` skill (if available) documents the
    pattern.
 3. `terraform plan` against a real pre-migration state file shows no diff.
 
@@ -199,7 +199,7 @@ on duplicates.
 
 ## Related Skills
 
-Use the `provider-resources` skill (if available) for Framework CRUD,
-finder, and waiter patterns in the ported code, and `provider-test-patterns`
+Use the `[provider-resources](../[provider-resources](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-resources/SKILL.md)/SKILL.md)` skill (if available) for Framework CRUD,
+finder, and waiter patterns in the ported code, and `[provider-test-patterns](../[provider-test-patterns](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-test-patterns/SKILL.md)/SKILL.md)`
 for the regression and version-upgrade test patterns.
 

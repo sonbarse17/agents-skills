@@ -24,9 +24,9 @@ Define and enforce Longhorn distributed storage patterns for installation, volum
 User request includes: `longhorn`, `distributed storage`, `block storage`, `rancher longhorn`, `persistent volume`, `storageclass`, `backup target`, `disaster recovery`, `volume snapshot`, `longhorn replication`.
 
 ### Input Context
-- Kubernetes cluster version and size
+- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster version and size
 - Existing storage solution (if migrating)
-- Storage requirements (IOPS, capacity, replication factor)
+- Storage requirements (IOPS, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), replication factor)
 - Backup target (S3, NFS, SMB)
 - Network configuration (nodes, disks)
 
@@ -37,7 +37,7 @@ A markdown document containing:
 - Volume scheduling and replica strategy
 - Backup and disaster recovery setup
 - Performance tuning (disk selection, network, settings)
-- Monitoring and alerting configuration
+- [Monitoring](../monitoring/SKILL.md) and [alerting](../alerting/SKILL.md) configuration
 - Upgrade and maintenance procedures
 
 ### Response Format
@@ -48,7 +48,7 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 - StorageClass defined with replica count and parameters
 - Backup target configured with schedule
 - DR volume strategy documented
-- Monitoring integration with Prometheus/Grafana
+- [Monitoring](../monitoring/SKILL.md) integration with Prometheus/Grafana
 
 ### Max Response Length
 4096 tokens
@@ -73,7 +73,7 @@ helm install longhorn longhorn/longhorn \
 
 | Requirement | Minimum | Recommended |
 |---|---|---|
-| **Kubernetes** | 1.21+ | 1.28+ |
+| **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)** | 1.21+ | 1.28+ |
 | **Nodes** | 3 (for HA) | 3+ |
 | **CPU per node** | 1 core | 4 cores |
 | **RAM per node** | 2 GB | 8 GB |
@@ -204,12 +204,12 @@ spec:
 | **Storage network** | 10GbE+ separate | Storage traffic isolation |
 | **Replica rebalance** | immediate | Rebalance when new node added |
 
-### Step 7: Configure Monitoring
+### Step 7: Configure [Monitoring](../monitoring/SKILL.md)
 
 **Prometheus Metrics**
 ```yaml
 # ServiceMonitor for Longhorn
-apiVersion: monitoring.coreos.com/v1
+apiVersion: [monitoring](../monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: longhorn
@@ -249,7 +249,7 @@ helm upgrade longhorn longhorn/longhorn \
   --version 1.6.1
 
 # 4. Verify
-kubectl -n longhorn-system get pods -w
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n longhorn-system get pods -w
 ```
 
 **Rules**: Always upgrade one minor version at a time. Check release notes for breaking changes. Test upgrade on non-production first.
@@ -303,14 +303,14 @@ Host volumes are simple bind mounts -- no replication, no snapshots, no backup i
 ### Pitfall 4: Inadequate Network Between Nodes
 Storage sync traffic is latency-sensitive. Longhorn replica sync requires <1ms latency between nodes. Deploy nodes within same availability zone. Cross-AZ latency (1-2ms) may cause replica out-of-sync issues. Use placement groups for low latency.
 
-### Pitfall 5: Not Monitoring Disk Space
-Longhorn allocates disk space for replicas. Running out of disk causes volume to become read-only. Set up monitoring alerts for disk usage at 70%, 85%, 95%. Configure `storageMinAllocatedPercentage` to reserve capacity.
+### Pitfall 5: Not [Monitoring](../monitoring/SKILL.md) Disk Space
+Longhorn allocates disk space for replicas. Running out of disk causes volume to become read-only. Set up [monitoring](../monitoring/SKILL.md) alerts for disk usage at 70%, 85%, 95%. Configure `storageMinAllocatedPercentage` to reserve [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 ### Pitfall 6: Skipping Engine Upgrade Order
 Always upgrade engine image before instance manager image. Check engine compatibility. In-place upgrade: engine upgrade is live, but tests should verify. Rolling back engine requires specific steps.
 
 ### Pitfall 7: Over-Provisioning Replicas
-More replicas = more storage overhead + more sync I/O. 3 replicas = 3x storage cost. For 1TB volume, 3 replicas need 3TB storage. Plan storage capacity including replica overhead. Use thin provisioning carefully.
+More replicas = more storage overhead + more sync I/O. 3 replicas = 3x storage cost. For 1TB volume, 3 replicas need 3TB storage. Plan storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) including replica overhead. Use thin provisioning carefully.
 
 ## Best Practices
 
@@ -345,7 +345,7 @@ More replicas = more storage overhead + more sync I/O. 3 replicas = 3x storage c
 - Encrypt backup target (server-side encryption)
 - Network isolate storage traffic
 - Enable Longhorn UI authentication
-- Audit volume creation and deletion
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) volume creation and deletion
 
 ## Compared With
 
@@ -363,15 +363,15 @@ More replicas = more storage overhead + more sync I/O. 3 replicas = 3x storage c
 OpenEBS offers Mayastor (NVMe-oF), Jiva, and cStor engines. Longhorn is simpler to operate (single engine type). OpenEBS Mayastor is faster for NVMe workloads. Longhorn has better built-in backup and DR features. Choose Longhorn for simplicity, OpenEBS Mayastor for performance.
 
 ### Longhorn vs Cloud Managed Storage (EBS, GCE PD)
-Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handles replication). Longhorn: lower cost (use local disks), cross-cloud portability, snapshots and backup to S3. Longhorn best for on-premises, edge, or multi-cloud. Cloud storage best for single-cloud with deep AWS/Azure/GCP integration.
+Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handles replication). Longhorn: lower cost (use local disks), cross-cloud portability, snapshots and backup to S3. Longhorn best for on-premises, edge, or [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md). Cloud storage best for single-cloud with deep AWS/Azure/GCP integration.
 
 ## Operations & Maintenance
 
 ### Regular Maintenance Tasks
 - Daily: verify volume health, backup status, disk usage
 - Weekly: review replica distribution, rebalance if needed
-- Monthly: test backup restore, review monitoring alerts
-- Quarterly: upgrade Longhorn minor version, review capacity
+- Monthly: test backup restore, review [monitoring](../monitoring/SKILL.md) alerts
+- Quarterly: upgrade Longhorn minor version, review [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - As needed: node maintenance (drain/migrate replicas)
 
 ### Node Replacement Procedure
@@ -379,7 +379,7 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 2. Install prerequisites (open-iscsi, nfs-common)
 3. Add disk to Longhorn via UI or CRD
 4. Set `replicaAutoBalance: immediate` to distribute replicas
-5. Drain old node: `kubectl cordon <old-node>`
+5. Drain old node: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) cordon <old-node>`
 6. Wait for all replicas to move
 7. Remove old node from cluster
 
@@ -392,8 +392,8 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 6. Verify data integrity
 7. Point application to restored PVC
 
-### Capacity Planning
-- 3x storage capacity for 3-replica volumes
+### [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
+- 3x storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) for 3-replica volumes
 - 20% system overhead (engine, snapshots)
 - Monitor disk usage trends monthly
 - Add nodes when aggregate disk usage > 70%
@@ -403,7 +403,7 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - Minimum 3 nodes for production deployment
 - Replica count 3 for all production volumes
 - Backup target configured with S3-compatible storage
-- Monitoring alerts for volume degraded and disk space
+- [Monitoring](../monitoring/SKILL.md) alerts for volume degraded and disk space
 - Engine upgrade before instance manager upgrade
 - Network between nodes must have <1ms latency for sync
 - Disk dedicated to Longhorn (not OS disk)
@@ -423,11 +423,11 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - ../../../Global_References/longhorn-manager.md -- Longhorn Management
 - ../../../Global_References/longhorn-perf.md -- Longhorn Performance
 - ../../../Global_References/longhorn-backup.md -- Longhorn Backup & DR
-- ../../../Global_References/longhorn-disaster-recovery.md -- Longhorn Disaster Recovery
-- ../../../Global_References/longhorn-performance-tuning.md -- Longhorn Performance Tuning
+- ../../../Global_References/longhorn-[disaster-recovery](../disaster-recovery/SKILL.md).md -- Longhorn Disaster Recovery
+- ../../../Global_References/longhorn-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md -- Longhorn Performance Tuning
 
 ## Handoff
-Hand off to `devops/monitoring/SKILL.md` for monitoring integration. Hand off to `devops/helm-patterns/SKILL.md` for Helm deployment best practices.
+Hand off to `devops/[monitoring](../monitoring/SKILL.md)/SKILL.md` for [monitoring](../monitoring/SKILL.md) integration. Hand off to `devops/[helm-patterns](../../Containers_and_Orchestration/helm-patterns/SKILL.md)/SKILL.md` for Helm deployment best practices.
 
 ## Architecture Decision Trees
 
@@ -491,7 +491,7 @@ create_longhorn_backup() {
   local volume=$1
   local backup_target=${2:-"s3://backups/longhorn"}
 
-  kubectl -n longhorn-system create job \
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n longhorn-system create job \
     "manual-backup-$(date +%s)" \
     --image=longhornio/longhorn-engine:v1.7.0 \
     --command -- \
@@ -504,7 +504,7 @@ restore_from_backup() {
   local backup_url=$1
   local pvc_name=$2
 
-  kubectl apply -f - <<EOF
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -525,7 +525,7 @@ EOF
 
 monitor_longhorn_health() {
   while true; do
-    for node in $(kubectl get nodes -o name); do
+    for node in $([kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o name); do
       HEALTH=$(curl -sf "http://${node}:9500/v1/health" || echo "DOWN")
       echo "$(date): $node → $HEALTH"
     done
@@ -541,7 +541,7 @@ monitor_longhorn_health() {
 - Set **`replica-auto-balance: best-effort`** to automatically redistribute replicas when nodes join/leave
 - Enable **snapshot pruning** with recurring jobs to prevent disk exhaustion (keep last 7 daily snapshots)
 - Deploy **Longhorn in dedicated nodes** with taints and tolerations for stable storage performance
-- Configure **Storage Network** (separate from Kubernetes cluster network) for replica traffic
+- Configure **Storage Network** (separate from [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster network) for replica traffic
 - Set **Orphaned Replica** auto-cleanup interval to 1 hour to reclaim space from failed nodes
 
 ## Anti-Patterns
@@ -567,12 +567,12 @@ monitor_longhorn_health() {
 ## Security Considerations
 
 - Enable **Longhorn encryption** at the StorageClass level — uses LUKS with per-volume keys
-- Restrict **Longhorn UI** access to cluster admins only via Kubernetes Ingress with OIDC auth
+- Restrict **Longhorn UI** access to cluster admins only via [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Ingress with OIDC auth
 - Use **RBAC** to limit who can create/modify Longhorn volumes, snapshots, backups
 - Configure **backup target** with IAM roles (S3) or service principal (Azure Blob) — never use access keys
 - Encrypt **backup targets** with server-side encryption (SSE-S3 for AWS, AES-256 for Azure)
 - Set **network policies** to restrict Longhorn engine traffic between pods in the same namespace
-- Audit **volume snapshot and restore** operations — snapshots can bypass application-level access controls
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **volume snapshot and restore** operations — snapshots can bypass application-level access controls
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -625,7 +625,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../monitoring/SKILL.md) and [Alerting](../alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -639,7 +639,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -655,12 +655,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -669,7 +669,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -677,13 +677,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -692,8 +692,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

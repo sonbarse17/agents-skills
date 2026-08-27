@@ -90,7 +90,7 @@ For conversations spanning multiple compressed sessions, merge previous summary'
 
 2. **Extract essential information** — Technology choices (language, framework, database, queue, cache, infra service + why). Architecture decisions (structural choices, tradeoffs accepted, what was rejected). Configuration values (every env var, port, URL, connection string, feature flag). Bug root causes (what caused it, how fixed, tests added). User preferences (naming, indentation, semicolons, test framework, architecture patterns).
 
-3. **Compress format aggressively** — Bullet points exclusively. Strip all articles (the, a, an). Use consistent abbreviations. Use key-value pairs: `PORT=3000`. Use arrow notation for causality: `chose PG → JSONB support needed`. Use parentheses for alternatives: `chose PG (alt: MySQL — rejected: no JSONB)`. No bold, italics, blockquotes, or decorative markdown.
+3. **Compress format aggressively** — Bullet points exclusively. Strip all articles (the, a, an). Use consistent abbreviations. Use key-value pairs: `PORT=3000`. Use arrow notation for causality: `chose PG → JSONB support needed`. Use parentheses for alternatives: `chose PG (alt: [MySQL](../../Backend/mysql/SKILL.md) — rejected: no JSONB)`. No bold, italics, blockquotes, or decorative markdown.
 
 4. **Output structured summary** — 5 markdown H2 sections. Decisions: every decision with rationale, err on inclusion. Files Changed: sorted alphabetically by path. Current State: single line. Next Steps: numbered, ordered by dependency. Open Questions: each = `{question} → blocks {blocked item}`. Count lines. If over 50, sacrifice implementation specifics (line numbers, variable names, test assertions) before removing any decision or question.
 
@@ -155,7 +155,7 @@ Conversation type:
 ## Compression Examples
 | Verbose Original | Compressed |
 |---|---|
-| We decided to use PostgreSQL because it has better JSONB support for our flexible schema requirements. | PG over MySQL — JSONB support needed |
+| We decided to use [PostgreSQL](../../Backend/postgresql/SKILL.md) because it has better JSONB support for our flexible schema requirements. | PG over [MySQL](../../Backend/mysql/SKILL.md) — JSONB support needed |
 | The user should set the LOG_LEVEL env var to debug to get more verbose logging. | LOG_LEVEL=debug |
 | We modified the auth middleware to check for JWT tokens in the Authorization header instead of the cookie. | auth middleware: JWT check moved from cookie to Authorization header |
 | After discussing with the team, we increased the timeout from 10 seconds to 30 seconds to handle the new batch endpoint. | timeout 10s → 30s (batch endpoint needs it) |
@@ -169,7 +169,7 @@ Conversation type:
 - Every bullet = choice + rationale
 - Alternatives in parentheses if explicitly considered
 - Group by domain prefix: `[DB]`, `[Auth]`, `[API]`, `[FE]`, `[Infra]`
-- Colon separates domain prefix from decision: `[DB] PG over MySQL — JSONB support`
+- Colon separates domain prefix from decision: `[DB] PG over [MySQL](../../Backend/mysql/SKILL.md) — JSONB support`
 - Never include "We decided to" preamble
 
 ### Files Changed Section
@@ -366,13 +366,13 @@ against stored code_challenge before issuing tokens.
 
 ### Context Flow Diagram
 ```
-master-orchestrator
+[master-orchestrator](../../../Product_and_Business/master-orchestrator/SKILL.md)
     │
     ├──→ context-compressor (compress session → update context file)
     │       │
     │       └──→ context-file.md (persistent, version-controlled)
     │
-    └──→ master-orchestrator (next session reads context file)
+    └──→ [master-orchestrator](../../../Product_and_Business/master-orchestrator/SKILL.md) (next session reads context file)
                 │
                 └──→ [decide] → continue work OR new task
 ```
@@ -403,7 +403,7 @@ When loading a compressed summary in a new session:
 | Subjective language | "We're almost done" means nothing | "5 files modified, 3 of 10 tests passing" — quantify everything |
 | No ownership | Questions no one answers get forgotten | Always tag: "(decide with: @product)" or "(blocked: waiting on David)" |
 | Missing file paths | "Update the function" — which function, which file? | Always `src/auth/oauth.ts:42` — exact references |
-| Copy-paste of commit messages | Repeats what git log already has | Synthesize: "3 commits refactored auth middleware for PKCE support" |
+| Copy-paste of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages | Repeats what git log already has | Synthesize: "3 commits refactored auth middleware for PKCE support" |
 | Over-tokenization | Full code blocks in summary — uses 80% of budget | Link to files, describe changes, don't paste entire functions |
 | No rehydration step | Jump into work, miss context, duplicate decisions | Always read the context file and verify state first |
 
@@ -465,7 +465,7 @@ Context Compression Strategy
 - **Token budget**: Keep compressed summary under 2k tokens; link to detailed docs for context.
 - **Freshness**: Always update summary at session end; never carry stale context into new session.
 - **Quantification**: Use numbers (3 files, 8 tests, 2 blockers) instead of vague descriptors.
-- **Git integration**: Cross-reference commit SHAs for traceability; don't duplicate git log.
+- **Git integration**: Cross-reference [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHAs for traceability; don't duplicate git log.
 - **Ownership tagging**: Tag every blocker with an owner `(@person)` for accountability.
 - **Decision lifecycle**: Mark decisions as `active`, `superseded`, or `rejected` with dates.
 
@@ -493,9 +493,9 @@ Context Compression Strategy
 - **Secrets in context**: Never include API keys, tokens, or credentials in context summaries.
 - **PII exclusion**: Strip user-identifiable information from error logs and decision rationales.
 - **Access control**: Store context files in private repo/bucket; encrypt if containing sensitive decisions.
-- **Audit trail**: All context updates are version-controlled (git); rollback if incorrect decisions propagate.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail**: All context updates are version-controlled (git); rollback if incorrect decisions propagate.
 - **Retention**: Archive contexts > 90 days; purge sessions with security-sensitive content.
 
 ## Handoff
-master-orchestrator — the compressed summary is injected at the start of the next work session for the master orchestrator skill to continue the work from where it was interrupted.
+[master-orchestrator](../../../Product_and_Business/master-orchestrator/SKILL.md) — the compressed summary is injected at the start of the next work session for the master orchestrator skill to continue the work from where it was interrupted.
 

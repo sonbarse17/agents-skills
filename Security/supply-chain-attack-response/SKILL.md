@@ -17,64 +17,64 @@ Software supply chain attacks target the dependencies, build systems, and distri
 
 Invoke this skill when any of the following apply:
 
-- A dependency you consume has been flagged as compromised (e.g., advisories on OSV.dev, GitHub Advisory Database, or vendor disclosure).
+- A dependency you consume has been flagged as compromised (e.g., advisories on OSV.dev, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database, or vendor disclosure).
 - You observe suspicious behavior from a dependency: unexpected network calls, file system writes outside its scope, or new post-install scripts.
-- You are conducting a periodic supply chain security audit.
+- You are conducting a periodic supply chain security [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 - A CI/CD pipeline is behaving unexpectedly after a dependency update.
 - You are onboarding a new third-party dependency and want to verify its provenance.
-- You need to respond to an incident such as a typosquatted package or registry account takeover.
+- You need to respond to an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) such as a typosquatted package or registry account takeover.
 - You are implementing SLSA compliance or need to generate build provenance.
 
 ---
 
 ## 2. Detection
 
-### 2.1 npm Audit
+### 2.1 npm [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
-# Full audit of installed packages
-npm audit
+# Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of installed packages
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # JSON output for programmatic processing
-npm audit --json | jq '.vulnerabilities | to_entries[] | select(.value.severity == "critical")'
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --json | jq '.vulnerabilities | to_entries[] | select(.value.severity == "critical")'
 
 # Fix automatically where possible
-npm audit fix
+npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) fix
 
 # Check for known malicious packages via Socket.dev CLI
 npx socket scan --package-lock package-lock.json
 ```
 
-### 2.2 pip Audit
+### 2.2 pip [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
-# Install pip-audit (maintained by Google/OSSF)
-pip install pip-audit
+# Install pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) (maintained by Google/OSSF)
+pip install pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
-# Audit current environment against OSV.dev
-pip-audit
+# [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) current environment against OSV.dev
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
-# Audit a requirements file directly
-pip-audit -r requirements.txt --output json
+# [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) a requirements file directly
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt --output json
 
 # Check for typosquatting with bandersnatch or custom script
-pip-audit --strict --desc on
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) --strict --desc on
 ```
 
-### 2.3 Cargo Audit
+### 2.3 Cargo [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
-# Install cargo-audit
-cargo install cargo-audit
+# Install cargo-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+cargo install cargo-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
-# Run audit against RustSec Advisory Database
-cargo audit
+# Run [audit](../../AI_and_Agents/Operations/audit/SKILL.md) against RustSec Advisory Database
+cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 # JSON output for CI integration
-cargo audit --json
+cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --json
 
 # Check for yanked crates
-cargo audit --deny yanked
+cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --deny yanked
 ```
 
 ### 2.4 Sigstore / Cosign Verification
@@ -82,13 +82,13 @@ cargo audit --deny yanked
 ```bash
 # Verify a container image signature with cosign
 cosign verify \
-  --certificate-identity "https://github.com/myorg/myrepo/.github/workflows/build.yml@refs/heads/main" \
+  --certificate-identity "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/build.yml@refs/heads/main" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest
 
-# Verify an artifact with sigstore-python
+# Verify an artifact with sigstore-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 pip install sigstore
-python -m sigstore verify identity \
+[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m sigstore verify identity \
   --cert-identity "release@example.com" \
   --cert-oidc-issuer "https://accounts.google.com" \
   artifact.tar.gz
@@ -98,12 +98,12 @@ python -m sigstore verify identity \
 
 ```bash
 # Install slsa-verifier
-go install github.com/slsa-framework/slsa-verifier/v2/cli/slsa-verifier@latest
+go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/slsa-framework/slsa-verifier/v2/cli/slsa-verifier@latest
 
 # Verify provenance of a binary
 slsa-verifier verify-artifact my-binary \
   --provenance-path my-binary.intoto.jsonl \
-  --source-uri github.com/myorg/myrepo \
+  --source-uri [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo \
   --source-tag v1.2.3
 ```
 
@@ -128,7 +128,7 @@ pip download <package>==<safe-version> --require-hashes -d ./vendor/
 cargo update -p some_crate --precise 1.2.3
 ```
 
-### Step 2: Audit Exposure
+### Step 2: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Exposure
 
 ```bash
 # Determine which versions you pulled and when
@@ -154,8 +154,8 @@ grep -r "eval(atob" ./node_modules/<compromised-package>/
 # Check for unexpected post-install scripts
 cat node_modules/<compromised-package>/package.json | jq '.scripts'
 
-# For Python packages, inspect setup.py and __init__.py
-find ~/.local/lib/python*/site-packages/<compromised-package>/ -name "*.py" \
+# For [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) packages, inspect setup.py and __init__.py
+find ~/.local/lib/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)*/site-packages/<compromised-package>/ -name "*.py" \
   | xargs grep -l "subprocess\|os.system\|exec(\|eval("
 ```
 
@@ -171,7 +171,7 @@ STATUS: Contained -- pinned to safe version <safe-version>
 
 ACTIONS TAKEN:
 1. Pinned all repositories to last known-good version
-2. Initiated audit of all systems that pulled affected versions
+2. Initiated [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of all systems that pulled affected versions
 3. Scanning for indicators of compromise
 
 RECOMMENDED ACTIONS:
@@ -184,13 +184,13 @@ RECOMMENDED ACTIONS:
 
 ```bash
 # If the package maintainer account was compromised, fork the last safe version
-git clone https://github.com/original-author/<package>.git
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/original-author/<package>.git
 cd <package>
 git checkout v<safe-version>
 # Publish to your private registry or vendor directly
 
 # For npm, point to your fork via package.json
-# "dependencies": { "<package>": "git+https://github.com/yourorg/<package>.git#v1.2.3" }
+# "dependencies": { "<package>": "git+https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/yourorg/<package>.git#v1.2.3" }
 ```
 
 ---
@@ -221,8 +221,8 @@ git diff --name-only origin/main...HEAD | grep -E "(package-lock|yarn.lock|Cargo
 # Use the socket CLI to check for typosquatting risk
 npx socket scan --package-lock package-lock.json
 
-# Python: check package names against popular packages
-pip-audit -r requirements.txt 2>&1 | grep -i "typosquat"
+# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md): check package names against popular packages
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt 2>&1 | grep -i "typosquat"
 
 # Custom check: compare package names to known popular packages
 # Flag anything with edit distance <= 2 from a top-1000 package
@@ -244,11 +244,11 @@ for pkg in lock.get('packages', {}):
 ### 4.3 Lockfile Diff in CI
 
 ```yaml
-# .github/workflows/lockfile-check.yml
-name: Lockfile Audit
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/lockfile-check.yml
+name: Lockfile [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 on: pull_request
 jobs:
-  audit:
+  [audit](../../AI_and_Agents/Operations/audit/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -263,9 +263,9 @@ jobs:
               git diff origin/main...HEAD -- "$f" | head -100
             fi
           done
-      - name: Run npm audit
+      - name: Run npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
         if: hashFiles('package-lock.json') != ''
-        run: npm audit --audit-level=high
+        run: npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 ```
 
 ---
@@ -296,11 +296,11 @@ pip-compile --generate-hashes requirements.in
 # Ensure your lockfile contains integrity fields:
 cat package-lock.json | jq '.packages | to_entries[] | select(.value.integrity == null) | .key'
 
-# Enable strict engine and audit checks in .npmrc
+# Enable strict engine and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) checks in .npmrc
 cat >> .npmrc << 'EOF'
 engine-strict=true
-audit=true
-audit-level=high
+[audit](../../AI_and_Agents/Operations/audit/SKILL.md)=true
+[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 EOF
 ```
 
@@ -316,7 +316,7 @@ cargo vet init
 # Certify a crate after review
 cargo vet certify serde 1.0.193
 
-# Import audit results from trusted organizations
+# Import [audit](../../AI_and_Agents/Operations/audit/SKILL.md) results from trusted organizations
 cargo vet trust --all mozilla
 cargo vet trust --all google
 
@@ -336,14 +336,14 @@ cosign sign ghcr.io/myorg/myimage@sha256:abc123...
 
 # Verify with expected identity
 cosign verify \
-  --certificate-identity-regexp "https://github.com/myorg/.*" \
+  --certificate-identity-regexp "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/.*" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest
 
 # Verify and extract attestations
 cosign verify-attestation \
   --type slsaprovenance \
-  --certificate-identity-regexp "https://github.com/myorg/.*" \
+  --certificate-identity-regexp "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/.*" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest | jq '.payload' | base64 -d | jq .
 ```
@@ -372,7 +372,7 @@ spec:
           attestors:
             - entries:
                 - keyless:
-                    subject: "https://github.com/myorg/*"
+                    subject: "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/*"
                     issuer: "https://token.actions.githubusercontent.com"
                     rekor:
                       url: https://rekor.sigstore.dev
@@ -380,10 +380,10 @@ spec:
 
 ```bash
 # Apply the policy
-kubectl apply -f kyverno-require-signed-images.yaml
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f kyverno-require-signed-images.yaml
 
 # Test: this unsigned image should be rejected
-kubectl run test --image=ghcr.io/myorg/unsigned-image:latest
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) run test --image=ghcr.io/myorg/unsigned-image:latest
 # Expected: admission webhook denies the request
 ```
 
@@ -391,20 +391,20 @@ kubectl run test --image=ghcr.io/myorg/unsigned-image:latest
 
 ## 7. CI/CD Pipeline Hardening
 
-### 7.1 Pin GitHub Actions by SHA
+### 7.1 Pin [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions by SHA
 
 ```yaml
 # BAD: mutable tag, can be hijacked
 - uses: actions/checkout@v4
 
-# GOOD: pinned to exact commit SHA
+# GOOD: pinned to exact [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 ```
 
 ```bash
-# Use pin-github-action to automate pinning
-npm install -g pin-github-action
-pin-github-action .github/workflows/*.yml
+# Use pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action to automate pinning
+npm install -g pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action
+pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml
 ```
 
 ### 7.2 Isolated Runners
@@ -427,7 +427,7 @@ jobs:
 ### 7.3 OIDC for Cloud Authentication (No Long-Lived Secrets)
 
 ```yaml
-# GitHub Actions OIDC with AWS -- no static credentials stored
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions OIDC with AWS -- no static credentials stored
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -437,7 +437,7 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:
-          role-to-assume: arn:aws:iam::123456789012:role/github-actions-deploy
+          role-to-assume: arn:aws:iam::123456789012:role/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)-deploy
           aws-region: us-east-1
       - run: aws s3 cp build/ s3://my-bucket/ --recursive
 ```
@@ -473,7 +473,7 @@ jobs:
 ### 8.2 SLSA Level 1 -- Generate Provenance
 
 ```yaml
-# .github/workflows/slsa-build.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/slsa-build.yml
 name: SLSA Build
 on:
   push:
@@ -500,7 +500,7 @@ jobs:
           path: my-binary
 ```
 
-### 8.3 SLSA Level 2-3 -- Use the SLSA GitHub Generator
+### 8.3 SLSA Level 2-3 -- Use the SLSA [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Generator
 
 ```yaml
   provenance:
@@ -509,7 +509,7 @@ jobs:
       actions: read
       id-token: write
       contents: write
-    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
+    uses: slsa-framework/slsa-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-generator/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/generator_generic_slsa3.yml@v2.0.0
     with:
       base64-subjects: |
         ${{ needs.build.outputs.digest }} my-binary
@@ -525,7 +525,7 @@ gh release download v1.2.3 -p "my-binary" -p "my-binary.intoto.jsonl"
 # Verify
 slsa-verifier verify-artifact my-binary \
   --provenance-path my-binary.intoto.jsonl \
-  --source-uri github.com/myorg/myrepo \
+  --source-uri [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo \
   --source-tag v1.2.3
 
 echo $?  # 0 = verified successfully
@@ -562,7 +562,7 @@ spec:
 ### 9.2 Nexus Repository Firewall Rules
 
 ```bash
-# Enable Nexus Firewall audit on a proxy repository
+# Enable Nexus Firewall [audit](../../AI_and_Agents/Operations/audit/SKILL.md) on a proxy repository
 curl -u admin:$NEXUS_PASSWORD -X PUT \
   "https://nexus.internal/service/rest/v1/security/content-selectors" \
   -H "Content-Type: application/json" \
@@ -600,12 +600,12 @@ packages:
 
 ---
 
-## 10. Monitoring and Alerting
+## 10. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 
 ### 10.1 Detect New Dependencies in Pull Requests
 
 ```yaml
-# .github/workflows/dependency-review.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/dependency-review.yml
 name: Dependency Review
 on: pull_request
 permissions:
@@ -628,7 +628,7 @@ jobs:
 
 ```bash
 # Install osv-scanner
-go install github.com/google/osv-scanner/cmd/osv-scanner@latest
+go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/google/osv-scanner/cmd/osv-scanner@latest
 
 # Scan a project directory (auto-detects lockfiles)
 osv-scanner -r /path/to/project
@@ -636,8 +636,8 @@ osv-scanner -r /path/to/project
 # Scan a specific lockfile
 osv-scanner --lockfile=package-lock.json
 
-# Scan a Docker image
-osv-scanner --docker myimage:latest
+# Scan a [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
+osv-scanner --[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) myimage:latest
 
 # Output as JSON for CI processing
 osv-scanner -r /path/to/project --format json | jq '.results[].packages[].vulnerabilities[] | .id'
@@ -646,7 +646,7 @@ osv-scanner -r /path/to/project --format json | jq '.results[].packages[].vulner
 ### 10.3 Dependabot Configuration
 
 ```yaml
-# .github/dependabot.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -673,7 +673,7 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -709,7 +709,7 @@ fi
 
 ---
 
-## 11. Post-Incident Response
+## 11. Post-[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 ### 11.1 Forensics Checklist
 
@@ -724,7 +724,7 @@ fi
 [ ] Verify no additional packages were installed as transitive deps
 [ ] Dump and analyze DNS query logs for the exposure period
 [ ] Check for new cron jobs, systemd services, or scheduled tasks
-[ ] Audit all secrets/tokens that were accessible to the build environment
+[ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all secrets/tokens that were accessible to the build environment
 ```
 
 ### 11.2 Blast Radius Assessment
@@ -765,13 +765,13 @@ done
 aws iam create-access-key --user-name ci-deploy
 aws iam delete-access-key --user-name ci-deploy --access-key-id OLD_KEY_ID
 
-# 2. Rotate GitHub tokens
+# 2. Rotate [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) tokens
 gh auth refresh
 
 # 3. Rotate database credentials
-kubectl create secret generic db-credentials \
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create secret generic db-credentials \
   --from-literal=password="$(openssl rand -base64 32)" \
-  --dry-run=client -o yaml | kubectl apply -f -
+  --dry-run=client -o yaml | [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 
 # 4. Rotate npm/PyPI publish tokens
 npm token revoke <old-token>
@@ -784,9 +784,9 @@ npm token create --read-only
 ### 11.4 Communication Templates
 
 ```text
---- INTERNAL INCIDENT REPORT ---
+--- INTERNAL [INCIDENT](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) REPORT ---
 
-Incident ID: SC-YYYY-NNN
+[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID: SC-YYYY-NNN
 Date Detected: YYYY-MM-DD HH:MM UTC
 Package: <name>@<version>
 Registry: npm / PyPI / crates.io
@@ -795,7 +795,7 @@ Advisory: <link to CVE or advisory>
 Timeline:
   - YYYY-MM-DD HH:MM: Compromised version published to registry
   - YYYY-MM-DD HH:MM: First installation in our environment (from CI logs)
-  - YYYY-MM-DD HH:MM: Compromise detected via <audit tool / advisory / manual review>
+  - YYYY-MM-DD HH:MM: Compromise detected via <[audit](../../AI_and_Agents/Operations/audit/SKILL.md) tool / advisory / manual review>
   - YYYY-MM-DD HH:MM: Pinned to safe version across all repos
   - YYYY-MM-DD HH:MM: Completed IOC scan -- no evidence of exploitation
   - YYYY-MM-DD HH:MM: All exposed secrets rotated
@@ -812,7 +812,7 @@ Remediation:
   1. Pinned to safe version
   2. Rotated all potentially exposed secrets
   3. Deployed clean builds to production
-  4. Added package to monitoring watch list
+  4. Added package to [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) watch list
 
 Preventive Measures:
   1. Enabled hash-pinning for all dependencies
@@ -827,13 +827,13 @@ Preventive Measures:
 
 | Task | Command |
 |------|---------|
-| Audit npm | `npm audit --json` |
-| Audit pip | `pip-audit -r requirements.txt` |
-| Audit cargo | `cargo audit` |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) npm | `npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --json` |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pip | `pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt` |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) cargo | `cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md)` |
 | Scan with OSV | `osv-scanner -r .` |
 | Verify cosign signature | `cosign verify --certificate-identity-regexp ... <image>` |
 | Verify SLSA provenance | `slsa-verifier verify-artifact ...` |
-| Pin GitHub Actions | `pin-github-action .github/workflows/*.yml` |
+| Pin [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions | `pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml` |
 | Check lockfile drift | `npm ci` (fails if lockfile is out of sync) |
 | Generate pip hashes | `pip-compile --generate-hashes requirements.in` |
 | Cargo vet check | `cargo vet check` |

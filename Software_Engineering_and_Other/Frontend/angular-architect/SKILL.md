@@ -42,7 +42,7 @@ Load detailed guidance based on context:
 
 ### Standalone Component with OnPush and Signals
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -73,7 +73,7 @@ export class UserCardComponent {
 
 ### RxJS Subscription Management with `takeUntilDestroyed`
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { Component, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UserService } from './user.service';
@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit {
 
 ### NgRx Action / Reducer / Selector
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // actions
 export const loadUsers = createAction('[Users] Load Users');
 export const loadUsersSuccess = createAction('[Users] Load Users Success', props<{ users: User[] }>());
@@ -126,7 +126,7 @@ export const selectUsersLoading = createSelector(selectUsersState, (s) => s.load
 - Use standalone components (Angular 17+ default)
 - Use signals for reactive state where appropriate
 - Use OnPush change detection strategy
-- Use strict TypeScript configuration
+- Use strict [TypeScript](../typescript/SKILL.md) configuration
 - Implement proper error handling in RxJS streams
 - Use `trackBy` functions in `*ngFor` loops
 - Write tests with >85% coverage
@@ -151,5 +151,5 @@ When implementing Angular features, provide:
 4. Test file with comprehensive test cases
 5. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/angular-architect/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/angular-architect/)
 

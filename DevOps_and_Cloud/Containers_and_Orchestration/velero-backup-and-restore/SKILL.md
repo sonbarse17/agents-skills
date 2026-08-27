@@ -21,11 +21,11 @@ metadata:
 
 ## Purpose
 
-Kubernetes has no built-in way to snapshot "everything a namespace or
+[Kubernetes](../kubernetes/SKILL.md) has no built-in way to snapshot "everything a namespace or
 cluster needs to exist" — object manifests, RBAC, CRDs, and the
 persistent volume data behind stateful workloads are each backed up (if
 at all) through different mechanisms. Velero unifies this: it snapshots
-Kubernetes API objects to object storage (S3, Azure Blob, GCS, or
+[Kubernetes](../kubernetes/SKILL.md) API objects to object storage (S3, Azure Blob, GCS, or
 S3-compatible on-prem storage) and coordinates persistent volume data
 capture either through the cloud provider's native CSI volume snapshot
 API or through Velero's file-system backup path (restic, or its
@@ -35,23 +35,23 @@ makes Velero the tool of choice for three distinct but related jobs:
 routine scheduled backup/restore of cluster state, disaster recovery of
 a specific namespace or the whole cluster, and cross-cluster/cross-account
 migration (e.g. moving a namespace from a dev cluster to a new AWS
-account, or between Kubernetes distributions). This skill is Velero-
+account, or between [Kubernetes](../kubernetes/SKILL.md) distributions). This skill is Velero-
 specific; for the broader RTO/RPO-driven DR pattern selection and backup
 immutability strategy that Velero backups should fit into, see the
-general disaster-recovery skill referenced below.
+general [disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md) skill referenced below.
 
 ## When to use
 
 - Setting up scheduled, recurring backups of a namespace or entire
-  cluster's Kubernetes objects and persistent volumes.
-- Recovering from an accidental `kubectl delete namespace`, a botched
+  cluster's [Kubernetes](../kubernetes/SKILL.md) objects and persistent volumes.
+- Recovering from an accidental `[kubectl](../kubectl/SKILL.md) delete namespace`, a botched
   Helm upgrade/rollback, or a corrupted CRD/webhook that took down a
   workload.
 - Migrating workloads between clusters (dev → staging, on-prem →
   cloud, or old cluster → new cluster during an EKS/AKS/GKE version
   upgrade) or between cloud accounts/subscriptions/projects.
 - Testing whether existing backups actually restore, as part of DR
-  runbook validation.
+  [runbook](../../Observability_and_SecOps/runbook/SKILL.md) validation.
 - Deciding between CSI volume snapshots and Velero's file-system
   backup (restic/kopia) path for a given storage class.
 - Excluding specific namespaces/resources (e.g. `kube-system`,
@@ -62,7 +62,7 @@ general disaster-recovery skill referenced below.
 
 - Velero CLI and server (commonly Velero 1.14.x/1.15.x at the time of
   writing) installed into the cluster, matched to a compatible
-  Kubernetes version — check the Velero compatibility matrix before
+  [Kubernetes](../kubernetes/SKILL.md) version — check the Velero compatibility matrix before
   upgrading either independently.
 - Object storage backend already provisioned: an S3 bucket (or
   S3-compatible, e.g. MinIO on-prem) with a dedicated IAM
@@ -79,8 +79,8 @@ general disaster-recovery skill referenced below.
     reads data at the file level; enabled via
     `--use-node-agent`/`--uploader-type=kopia` (kopia is the default
     uploader path from Velero 1.10+, replacing restic).
-- Velero's own credentials (the object-storage IAM
-  role/service-principal/service-account key) stored as a Kubernetes
+- Velero's own credentials (the [object-storage](../../Cloud_Providers/object-storage/SKILL.md) IAM
+  role/service-principal/service-account key) stored as a [Kubernetes](../kubernetes/SKILL.md)
   `Secret`, never inline in the `BackupStorageLocation`.
 - Cluster-admin access to install Velero's CRDs
   (`Backup`, `Restore`, `Schedule`, `BackupStorageLocation`,
@@ -224,7 +224,7 @@ general disaster-recovery skill referenced below.
   cluster being backed up**, mirroring the general DR principle that a
   backup sharing a trust boundary with its source doesn't protect
   against an account-level compromise or accidental account deletion.
-- **Validate restores on a schedule**, not only when a real incident
+- **Validate restores on a schedule**, not only when a real [incident](../../Observability_and_SecOps/incident/SKILL.md)
   forces the first real test — a `Completed` backup status only means
   the backup job ran, not that the data restores cleanly.
 - **Restore into a new/scratch namespace first for migration or
@@ -268,10 +268,10 @@ general disaster-recovery skill referenced below.
 - **Symptom:** A scheduled `Schedule` backup silently stops running, and
   nobody notices until a restore is needed and the most recent backup
   is weeks old.
-  **Fix:** No monitoring/alerting was wired to Velero's backup status
+  **Fix:** No [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../Observability_and_SecOps/alerting/SKILL.md) was wired to Velero's backup status
   (e.g. via the `velero_backup_last_successful_timestamp` metric
-  scraped by Prometheus). Add an alerting rule against that metric — see
-  [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
+  scraped by Prometheus). Add an [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule against that metric — see
+  [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   — so a stalled schedule pages someone within hours, not weeks.
 
 - **Symptom:** Cross-account migration restore fails with an access-
@@ -285,9 +285,9 @@ general disaster-recovery skill referenced below.
 
 ## Worked example
 
-**Scenario:** An engineer runs `kubectl delete namespace payments`
+**Scenario:** An engineer runs `[kubectl](../kubectl/SKILL.md) delete namespace payments`
 against the wrong cluster context, deleting the `payments` namespace and
-everything in it, including a PostgreSQL StatefulSet's persistent
+everything in it, including a [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) StatefulSet's persistent
 volumes. A daily Velero `Schedule` backup exists.
 
 1. Confirm the most recent backup and inspect it before restoring
@@ -305,7 +305,7 @@ volumes. A daily Velero `Schedule` backup exists.
      --from-backup payments-ns-daily-20260728030000 \
      --namespace-mappings payments:payments-recovery-check
    ```
-3. Confirm the PostgreSQL StatefulSet comes up healthy and data looks
+3. Confirm the [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) StatefulSet comes up healthy and data looks
    intact in the scratch namespace (connect and spot-check row counts
    against what's expected).
 4. Once verified, restore into the real `payments` namespace (which no
@@ -323,10 +323,10 @@ volumes. A daily Velero `Schedule` backup exists.
    limiting who can delete namespaces in this cluster, and add a
    Prometheus alert on `velero_backup_last_successful_timestamp` so a
    future failed/stalled schedule is caught immediately rather than
-   discovered during the next incident.
+   discovered during the next [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-- [kubernetes-network-policy-zero-trust](../kubernetes-network-policy-zero-trust/SKILL.md)
-- [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)
+- [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)

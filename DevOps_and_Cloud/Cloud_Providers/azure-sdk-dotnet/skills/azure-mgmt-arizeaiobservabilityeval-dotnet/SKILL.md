@@ -10,7 +10,7 @@ metadata:
 
 # Azure.ResourceManager.ArizeAIObservabilityEval
 
-.NET SDK for managing Arize AI Observability and Evaluation resources on Azure.
+.NET SDK for managing Arize AI [Observability](../../../../Observability_and_SecOps/observability/SKILL.md) and Evaluation resources on Azure.
 
 ## Installation
 
@@ -233,5 +233,5 @@ var data = await org.GetAsync();
 ## Links
 
 - [NuGet Package](https://www.nuget.org/packages/Azure.ResourceManager.ArizeAIObservabilityEval)
-- [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
+- [Azure SDK for .NET](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net)
 - [Arize AI](https://arize.com/)

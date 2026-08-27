@@ -128,7 +128,7 @@ sqlmap -u "http://example.com/page?id=1" --technique=BEUSTQ
 sqlmap -u "http://example.com/page?id=1" --fingerprint
 
 # Force specific DBMS
-sqlmap -u "http://example.com/page?id=1" --dbms=mysql
+sqlmap -u "http://example.com/page?id=1" --dbms=[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
 ```
 
 **Injection Techniques**:
@@ -271,7 +271,7 @@ sqlmap -u "http://example.com/page?id=1" --tor --check-tor
 - **Data Sanitization**: Redact sensitive data from reports
 - **False Positives**: Verify findings manually
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all SQL injection testing:
 - Target URLs and parameters tested
@@ -448,7 +448,7 @@ Protect applications against SQL injection:
 - Monitor for suspicious query patterns
 - Alert on multiple injection attempts
 
-**Detection and Monitoring**:
+**Detection and [Monitoring](../monitoring/SKILL.md)**:
 - Log all database queries
 - Monitor for unusual query patterns
 - Alert on error-based injection attempts
@@ -460,5 +460,5 @@ Protect applications against SQL injection:
 - [SQLMap Official Documentation](https://sqlmap.org/)
 - [OWASP SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection)
 - [CWE-89: SQL Injection](https://cwe.mitre.org/data/definitions/89.html)
-- [SQLMap Tamper Scripts](https://github.com/sqlmapproject/sqlmap/tree/master/tamper)
+- [SQLMap Tamper Scripts](https://[github](../../CI_CD/github/SKILL.md).com/sqlmapproject/sqlmap/tree/master/tamper)
 - [PTES: Vulnerability Analysis](http://www.pentest-standard.org/index.php/Vulnerability_Analysis)

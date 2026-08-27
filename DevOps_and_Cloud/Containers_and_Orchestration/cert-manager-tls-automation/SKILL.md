@@ -21,7 +21,7 @@ metadata:
 ## Purpose
 
 cert-manager turns TLS certificate issuance and renewal into a
-Kubernetes-native, declarative, continuously-reconciled process: a
+[Kubernetes](../kubernetes/SKILL.md)-native, declarative, continuously-reconciled process: a
 `Certificate` resource describes desired state, and cert-manager's
 controllers (a canonical example of the Operator/CRD/reconcile-loop
 pattern) handle requesting, validating, and renewing the corresponding
@@ -64,9 +64,9 @@ Istio.
   cert-manager's own self-signed/`CA` Issuer type for fully internal,
   non-public-trust use cases (internal mTLS, dev/test).
 - An Ingress controller
-  ([ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md))
+  ([ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md))
   or service mesh gateway
-  ([service-mesh-istio](../service-mesh-istio/SKILL.md)) already
+  ([service-mesh-istio](../[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)) already
   installed as the consumer of the issued certs, if the goal is
   end-to-end automated Ingress/gateway TLS rather than certs alone.
 
@@ -81,7 +81,7 @@ Istio.
      --namespace cert-manager --create-namespace \
      --version v1.15.1 \
      --set crds.enabled=true
-   kubectl get pods -n cert-manager   # controller, webhook, cainjector all Running
+   [kubectl](../kubectl/SKILL.md) get pods -n cert-manager   # controller, webhook, cainjector all Running
    ```
 
 2. **Create a `ClusterIssuer` for Let's Encrypt via HTTP-01** (simplest
@@ -130,7 +130,7 @@ Istio.
    The credential cert-manager uses to call the DNS provider's API
    (an IAM role via IRSA on EKS, a service account key, etc.) should
    itself follow least-privilege workload-identity practice — see
-   [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
    for the IRSA/workload-identity setup pattern that should back this
    rather than a static DNS-provider API key mounted as a Secret.
 
@@ -176,7 +176,7 @@ Istio.
    bundle to clients is feasible.
 
 6. **Wire automated certs into Istio's ingress gateway** rather than
-   Kubernetes Ingress, when the mesh's own gateway is the TLS
+   [Kubernetes](../kubernetes/SKILL.md) Ingress, when the mesh's own gateway is the TLS
    termination point:
    ```yaml
    apiVersion: cert-manager.io/v1
@@ -197,21 +197,21 @@ Istio.
          tls: { mode: SIMPLE, credentialName: gateway-cert-tls }
          hosts: ["payments.example.com"]
    ```
-   See [service-mesh-istio](../service-mesh-istio/SKILL.md) for the
+   See [service-mesh-istio](../[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) for the
    rest of the Gateway/VirtualService setup this depends on; note this
    automates the *gateway's* external TLS cert, separate from Istio's
    own internally-managed mTLS between sidecars.
 
 7. **Verify issuance and renewal**:
    ```bash
-   kubectl describe certificate payments-example-com -n payments
-   kubectl get certificaterequests -n payments
-   kubectl get order,challenge -n payments   # ACME-specific intermediate resources
+   [kubectl](../kubectl/SKILL.md) describe certificate payments-example-com -n payments
+   [kubectl](../kubectl/SKILL.md) get certificaterequests -n payments
+   [kubectl](../kubectl/SKILL.md) get order,challenge -n payments   # ACME-specific intermediate resources
    ```
    A healthy `Certificate` shows `Ready: True` with a `Reason` of
    `Issued`. cert-manager renews automatically starting at
    `renewBefore` prior to expiry — verify this actually happened over
-   time (`kubectl get secret <name> -o jsonpath='{.metadata.annotations}'`
+   time (`[kubectl](../kubectl/SKILL.md) get secret <name> -o jsonpath='{.metadata.annotations}'`
    shows the last-renewed timestamp) rather than assuming the
    `renewBefore` config guarantees it silently worked.
 
@@ -235,7 +235,7 @@ Istio.
   15–30 days before expiry gives room to notice and fix a stuck renewal
   before it becomes a live outage).
 - Monitor `Certificate` resources for `Ready: False` as a first-class
-  alert, not just certificate-expiry monitoring on the resulting Secret
+  alert, not just certificate-expiry [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) on the resulting Secret
   — catching a stuck challenge days before expiry is far cheaper than
   reacting to an already-expired cert.
 - Use namespace-scoped `Issuer`s (not a cluster-wide `ClusterIssuer`)
@@ -246,7 +246,7 @@ Istio.
 ## Common pitfalls
 
 - **Symptom:** A `Certificate` stays `Ready: False` indefinitely, and
-  `kubectl get challenge` shows a challenge stuck in a pending/error
+  `[kubectl](../kubectl/SKILL.md) get challenge` shows a challenge stuck in a pending/error
   state.
   **Fix:** For HTTP-01, confirm the Ingress controller is actually
   routing `/.well-known/acme-challenge/...` externally (a restrictive
@@ -319,10 +319,10 @@ spec:
 ```
 
 ```bash
-kubectl apply -f staging-issuer.yaml
-kubectl patch ingress payments-api -n payments --type merge \
+[kubectl](../kubectl/SKILL.md) apply -f staging-issuer.yaml
+[kubectl](../kubectl/SKILL.md) patch ingress payments-api -n payments --type merge \
   -p '{"metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-staging"}}}'
-kubectl describe certificate payments-example-com-tls -n payments
+[kubectl](../kubectl/SKILL.md) describe certificate payments-example-com-tls -n payments
 ```
 
 Once `Ready: True` is confirmed against staging (the browser will show
@@ -345,22 +345,22 @@ spec:
 ```
 
 ```bash
-kubectl apply -f prod-issuer.yaml
-kubectl patch ingress payments-api -n payments --type merge \
+[kubectl](../kubectl/SKILL.md) apply -f prod-issuer.yaml
+[kubectl](../kubectl/SKILL.md) patch ingress payments-api -n payments --type merge \
   -p '{"metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-prod"}}}'
-kubectl delete certificate payments-example-com-tls -n payments   # forces re-issuance against prod issuer
-kubectl describe certificate payments-example-com-tls -n payments
+[kubectl](../kubectl/SKILL.md) delete certificate payments-example-com-tls -n payments   # forces re-issuance against prod issuer
+[kubectl](../kubectl/SKILL.md) describe certificate payments-example-com-tls -n payments
 curl -vI https://payments.example.com 2>&1 | grep -i "issuer"
 ```
 
 The final `curl` shows a certificate issued by `Let's Encrypt` (not the
-staging CA), and `kubectl get certificate payments-example-com-tls -n
+staging CA), and `[kubectl](../kubectl/SKILL.md) get certificate payments-example-com-tls -n
 payments -o jsonpath='{.status.renewalTime}'` confirms cert-manager has
 scheduled automatic renewal well ahead of the 90-day expiry — no manual
 renewal step required going forward.
 
 ## Cross-references
 
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — the Ingress annotation-driven certificate request flow shown above.
-- [service-mesh-istio](../service-mesh-istio/SKILL.md) — wiring an automated certificate into an Istio Gateway for mesh-ingress TLS termination.
-- [kubernetes-operator-development](../kubernetes-operator-development/SKILL.md) — cert-manager itself as a real-world reference implementation of the CRD + controller + finalizer reconciliation pattern.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — the Ingress annotation-driven certificate request flow shown above.
+- [service-mesh-istio](../[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — wiring an automated certificate into an Istio Gateway for mesh-ingress TLS termination.
+- [kubernetes-operator-development](../[kubernetes-operator-development](../[kubernetes](../kubernetes/SKILL.md)-operator-development/SKILL.md)/SKILL.md) — cert-manager itself as a real-world reference implementation of the CRD + controller + finalizer reconciliation pattern.

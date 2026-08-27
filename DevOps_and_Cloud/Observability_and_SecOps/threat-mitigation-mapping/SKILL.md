@@ -25,10 +25,10 @@ Preventive ────► Stop attacks before they occur
    │              (Firewall, Input validation)
    │
 Detective ─────► Identify attacks in progress
-   │              (IDS, Log monitoring)
+   │              (IDS, Log [monitoring](../monitoring/SKILL.md))
    │
 Corrective ────► Respond and recover from attacks
-                  (Incident response, Backup restore)
+                  ([Incident](../incident/SKILL.md) response, Backup restore)
 ```
 
 ### 2. Control Layers
@@ -39,7 +39,7 @@ Corrective ────► Respond and recover from attacks
 | **Application** | Input validation, authentication     |
 | **Data**        | Encryption, access controls          |
 | **Endpoint**    | EDR, patch management                |
-| **Process**     | Security training, incident response |
+| **Process**     | Security training, [incident](../incident/SKILL.md) response |
 
 ### 3. Defense in Depth
 

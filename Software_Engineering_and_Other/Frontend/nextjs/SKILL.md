@@ -107,7 +107,7 @@ Is the fetch result user-specific?
 
 ### Server Component Data Fetching
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/users/page.tsx
 async function UsersPage() {
   const users = await db.user.findMany({ orderBy: { createdAt: 'desc' }, take: 20 })
@@ -122,7 +122,7 @@ async function UsersPage() {
 
 ### Client Component with Server Action
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/users/UserForm.tsx
 'use client'
 import { useActionState } from 'react'
@@ -143,7 +143,7 @@ export function UserForm() {
 
 ### Server Action
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/users/actions.ts
 'use server'
 import { z } from 'zod'
@@ -162,7 +162,7 @@ export async function createUser(_: any, formData: FormData) {
 
 ### Parallel Route
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/layout.tsx
 export default function Layout({ children, feed, notifications }: {
   children: React.ReactNode
@@ -183,7 +183,7 @@ export default function Layout({ children, feed, notifications }: {
 
 ### Intercepting Route
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/(.)photo/[id]/page.tsx
 export default function PhotoModal({ params }: { params: { id: string } }) {
   return <div className="modal"><Photo id={params.id} /></div>
@@ -192,7 +192,7 @@ export default function PhotoModal({ params }: { params: { id: string } }) {
 
 ### Route Handler
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/api/users/route.ts
 export async function GET() {
   const users = await db.user.findMany()
@@ -210,7 +210,7 @@ export async function POST(request: Request) {
 
 ### Server State via Data Fetching (Primary)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 async function ProfilePage() {
   const user = await db.user.findUnique({ where: { id } })
   return <ProfileCard user={user} />
@@ -219,7 +219,7 @@ async function ProfilePage() {
 
 ### URL State via searchParams
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 function ProductsPage({ searchParams }: { searchParams: { q?: string; page?: string } }) {
   const results = await db.product.search(searchParams.q || '', { page: Number(searchParams.page) || 1 })
   return <ProductList items={results} />
@@ -228,7 +228,7 @@ function ProductsPage({ searchParams }: { searchParams: { q?: string; page?: str
 
 ### Client State with Context
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/Providers.tsx
 'use client'
 import { createContext, useContext } from 'react'
@@ -239,7 +239,7 @@ export const useTheme = () => useContext(ThemeContext)
 
 ### Client State with Zustand
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // store/cart.ts
 import { create } from 'zustand'
 
@@ -264,7 +264,7 @@ export const useCart = create<{ items: CartItem[]; add(item: CartItem): void }>(
 
 ### next.config
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   images: { formats: ['image/avif', 'image/webp'] },
@@ -286,7 +286,7 @@ next build --debug          # verbose build output
 
 ### Unit Test Server Action
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { describe, it, expect } from 'vitest'
 import { createUser } from '../app/users/actions'
 
@@ -304,7 +304,7 @@ describe('createUser', () => {
 
 ### Component Test
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { render, screen } from '@testing-library/react'
 import { UserCard } from '../app/users/UserCard'
 
@@ -316,7 +316,7 @@ it('renders user name', () => {
 
 ### E2E Test
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { test, expect } from '@playwright/test'
 
 test('creates user', async ({ page }) => {
@@ -349,7 +349,7 @@ pages/_app.tsx + pages/_document.tsx -> app/layout.tsx (single file)
 
 ### getServerSideProps to Server Component
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Before
 export const getServerSideProps = async () => {
   const data = await fetchData()
@@ -365,7 +365,7 @@ async function Page() {
 
 ### getStaticProps to Static Fetch
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Before
 export const getStaticProps = async () => {
   const data = await fetchData()
@@ -383,7 +383,7 @@ async function Page() {
 
 ### Full Page as Client Component
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Anti-pattern
 'use client'
 function Page() { /* entire page client-rendered */ }
@@ -394,7 +394,7 @@ function Page() { return <div><ClientWidget /></div> }
 
 ### Fetching in useEffect
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Anti-pattern
 useEffect(() => { fetch('/api/data').then(setData) }, [])
 
@@ -441,7 +441,7 @@ Functions, Date objects, and undefined values crash between Server and Client Co
 4. `next dev --turbo` — Turbopack
 5. `@next/codemod` — migration upgrades
 6. `next-sitemap` — sitemaps
-7. `@sentry/nextjs` — error tracking
+7. `@[sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md)/nextjs` — error tracking
 
 ## Workflow
 
@@ -466,7 +466,7 @@ app/
 ```
 
 ### Step 3: Data Fetching
-```typescript
+```[typescript](../typescript/SKILL.md)
 async function Page() {
   const data = await db.query(...)
   return <div>{data}</div>
@@ -474,7 +474,7 @@ async function Page() {
 ```
 
 ### Step 4: Mutations
-```typescript
+```[typescript](../typescript/SKILL.md)
 'use server'
 export async function action(formData: FormData) {
   await db.mutate(...)
@@ -483,7 +483,7 @@ export async function action(formData: FormData) {
 ```
 
 ### Step 5: Metadata
-```typescript
+```[typescript](../typescript/SKILL.md)
 export const metadata: Metadata = { title: 'Page Title' }
 ```
 
@@ -503,7 +503,7 @@ export const metadata: Metadata = { title: 'Page Title' }
   - ../../../Global_References/nextjs-data-fetching.md
   - ../../../Global_References/nextjs-deployment.md
   - ../../../Global_References/server-components.md
-  - ../../../Global_References/nextjs-app-router-patterns.md
+  - ../../../Global_References/[nextjs-app-router-patterns](../nextjs-app-router-patterns/SKILL.md).md
   - ../../../Global_References/nextjs-data-fetching-caching.md
 
 ## Handoff

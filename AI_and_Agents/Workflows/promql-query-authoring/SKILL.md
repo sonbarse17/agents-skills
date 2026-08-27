@@ -32,23 +32,23 @@ you think it means for the query patterns that come up constantly —
 request rate, error ratio, latency percentiles, saturation — and the
 specific mechanics (counter `rate()`, aggregation `by`/`without`, vector
 matching) that most PromQL mistakes trace back to. It assumes Prometheus
-is already scraping the target and alerting/dashboards exist to attach
+is already scraping the target and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)/[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) exist to attach
 queries to — see
-[prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-for scrape configuration, recording/alerting rule wiring, and
+[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+for scrape configuration, recording/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule wiring, and
 Alertmanager routing, which this skill does not repeat.
 
 ## When to use
 
 - Writing a new PromQL query for a dashboard panel, recording rule, or
-  alerting rule expression.
+  [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule expression.
 - Computing request rate, error rate/ratio, or a latency percentile from
   raw counter/histogram metrics.
 - A query returns no data, a flat/collapsed single line where several
   were expected, or numbers that don't match the expected order of
   magnitude.
 - Combining two different metrics in one expression (e.g. errors over
-  total requests, or a metric divided by a capacity constant) and the
+  total requests, or a metric divided by a [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) constant) and the
   vector match is failing or matching wrong.
 - A query is slow, times out, or is suspected of generating unbounded
   cardinality (a label with unbounded values, e.g. raw user ID or full
@@ -77,14 +77,14 @@ Alertmanager routing, which this skill does not repeat.
 
 1. **Always wrap a counter (`_total`, `_count`, `_sum` suffixed metric)
    in `rate()` or `irate()` before using it — a raw counter's absolute
-   value is meaningless for dashboards/alerts** (it only ever goes up,
+   value is meaningless for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/alerts** (it only ever goes up,
    and resets to 0 on process restart):
    ```promql
    # correct: per-second rate averaged over the trailing window
    rate(http_requests_total[5m])
 
    # irate(): instantaneous rate from the last two samples only —
-   # use for volatile, fast-moving graphs, NOT for alerting rules
+   # use for volatile, fast-moving graphs, NOT for [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules
    # (too noisy — a single bad scrape spikes it)
    irate(http_requests_total[5m])
    ```
@@ -113,7 +113,7 @@ Alertmanager routing, which this skill does not repeat.
 
 3. **Compute error ratios as a guarded division**, not a raw error count
    — an error *count* without the corresponding total is meaningless for
-   alerting (10 errors/sec means something very different at 100 rps vs.
+   [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) (10 errors/sec means something very different at 100 rps vs.
    100,000 rps):
    ```promql
    100 * sum(rate(http_requests_total{status_code=~"5.."}[5m]))
@@ -121,7 +121,7 @@ Alertmanager routing, which this skill does not repeat.
    ```
    > **Warning:** this divides by a live rate that can legitimately be
    > `0` (e.g. a service with no traffic at 3am), producing `NaN`, not an
-   > error. A `NaN` comparison (`> 5`) in an alerting rule silently never
+   > error. A `NaN` comparison (`> 5`) in an [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule silently never
    > fires — decide deliberately whether "no traffic" should page (it
    > usually shouldn't) and, if it must be distinguished from "all
    > traffic failing," guard with an explicit `and total > 0` clause or a
@@ -148,7 +148,7 @@ Alertmanager routing, which this skill does not repeat.
    silently drops every series that doesn't have an exact label match on
    both sides, returning empty rather than erroring:
    ```promql
-   # errors as a fraction of a separate capacity metric (different label sets)
+   # errors as a fraction of a separate [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) metric (different label sets)
    sum by (service) (rate(http_requests_total{status_code=~"5.."}[5m]))
      / on (service) group_left
    sum by (service) (service_capacity_requests_per_second)
@@ -200,7 +200,7 @@ Alertmanager routing, which this skill does not repeat.
 
 - Default every counter query to `rate()` over a window ≥ 4x the scrape
   interval; reserve `irate()` for interactive dashboard exploration, never
-  for alerting rules (it's too sensitive to a single noisy scrape).
+  for [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules (it's too sensitive to a single noisy scrape).
 - Be explicit with `by (...)`/`without (...)` on every aggregation — never
   leave an aggregation bare and assume it "keeps everything," and never
   assume it "keeps nothing" either; read the actual output once via the
@@ -210,10 +210,10 @@ Alertmanager routing, which this skill does not repeat.
   query rather than letting `NaN` silently suppress an alert.
 - Push heavy/expensive aggregations (multi-metric joins, wide `by()`
   clauses queried on every dashboard refresh) into recording rules — see
-  [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   step 5 — rather than repeating the raw expression in every panel.
-- Audit any label you're about to `by()`/`without()` on for cardinality
-  before shipping to production dashboards, not after a query times out
+- [Audit](../../Operations/audit/SKILL.md) any label you're about to `by()`/`without()` on for cardinality
+  before shipping to production [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), not after a query times out
   or the Prometheus instance runs out of memory.
 - When debugging "why is my query empty," check vector-match label
   compatibility (`on`/`ignoring`/`group_left`) before assuming the
@@ -270,7 +270,7 @@ Alertmanager routing, which this skill does not repeat.
   **Fix:** The query aggregates by (or the underlying metric carries) a
   high/unbounded-cardinality label — check with `count(count by
   (<label>) (<metric>))` before shipping any new query broadly, and treat
-  a result in the thousands+ as a real capacity risk, not just a slow
+  a result in the thousands+ as a real [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) risk, not just a slow
   query to optimize later.
 
 ## Worked example
@@ -323,11 +323,11 @@ to near zero rather than staying steady with errors) is still caught:
 The first two expressions become recording rules
 (`job:http_requests:rate5m`, `job:http_request_errors:ratio5m`) once
 they're queried on more than one dashboard, per
-[prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
+[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 step 5.
 
 ## Cross-references
 
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md) — scrape configuration, recording/alerting rule wiring, and Alertmanager routing that these queries plug into.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — the equivalent query-authoring depth for Loki/LogQL, including LogQL's own metric-query syntax modeled on PromQL.
-- [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md) — using PromQL queries like these as one leg of a live cross-signal investigation, correlated with logs and traces.
+- [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — scrape configuration, recording/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule wiring, and Alertmanager routing that these queries plug into.
+- [logql-query-authoring](../[logql-query-authoring](../../../DevOps_and_Cloud/Observability_and_SecOps/logql-query-authoring/SKILL.md)/SKILL.md) — the equivalent query-authoring depth for Loki/LogQL, including LogQL's own metric-query syntax modeled on PromQL.
+- [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — using PromQL queries like these as one leg of a live cross-signal investigation, correlated with logs and traces.

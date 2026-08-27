@@ -72,7 +72,7 @@ If a file genuinely needs changes from multiple implementers:
 
 When implementers need to coordinate at boundaries:
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/types/auth-contract.ts (owned by team-lead, read-only for implementers)
 export interface AuthResponse {
   token: string;
@@ -170,5 +170,5 @@ Interface contracts drifted: the implementer who owns the API changed a signatur
 
 ## Related Skills
 
-- [team-composition-patterns](../team-composition-patterns/SKILL.md) — Choose the right team size and agent types before decomposing work
-- [team-communication-protocols](../team-communication-protocols/SKILL.md) — Coordinate integration handoffs and plan approvals between implementers
+- [team-composition-patterns](../[team-composition-patterns](../[team-composition-patterns](../../../../../Product_and_Business/team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Choose the right team size and agent types before decomposing work
+- [team-communication-protocols](../[team-communication-protocols](../[team-communication-protocols](../../../../../Product_and_Business/team-communication-protocols/SKILL.md)/SKILL.md)/SKILL.md) — Coordinate integration handoffs and plan approvals between implementers

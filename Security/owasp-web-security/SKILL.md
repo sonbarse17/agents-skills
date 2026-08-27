@@ -34,7 +34,7 @@ XSS is the result of reflecting untrusted data in a web browser without proper c
 
 ## Remediation Workflow
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Vulnerability Discovery] --> B{Context Analysis}

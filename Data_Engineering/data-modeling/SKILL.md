@@ -92,7 +92,7 @@ Event storming: domain experts place sticky notes for domain events, commands, a
 ```
 Primary access pattern?
 ├── Fixed schema, complex joins, ACID required
-│   └── Relational database (PostgreSQL, MySQL)
+│   └── Relational database ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md))
 ├── Highly connected data, variable-depth traversal
 │   └── Graph database (Neo4j, Neptune, Dgraph)
 ├── Both needed
@@ -109,7 +109,7 @@ ACID transactions, mature ecosystem, strong consistency, complex queries via SQL
 Variable-depth traversals (friend-of-friend, supply chain), path-finding (shortest route, influence path), highly connected data queries, schema flexibility. Best for: social networks, recommendation engines, fraud detection (ring analysis), knowledge graphs, network/infrastructure management.
 
 #### Hybrid Examples
-Customer data in PostgreSQL for transactional processing, replicated to Neo4j for recommendation and fraud. Product catalog in PostgreSQL for CMS, with graph for personalized product discovery. Reference data in both with synchronization via CDC.
+Customer data in [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for transactional processing, replicated to Neo4j for recommendation and fraud. Product catalog in [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for CMS, with graph for personalized product discovery. Reference data in both with synchronization via CDC.
 
 ### Step 3: Normalization
 
@@ -142,7 +142,7 @@ products: product_id PK, name, description, current_price
 ```
 Performance requirement measured?
 ├── No → Stay normalized (3NF/BCNF)
-├── Yes — query profiling shows joins are bottleneck
+├── Yes — query [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) shows joins are bottleneck
 │   ├── Read-heavy, few writes → Add denormalized columns
 │   ├── Reporting queries → Add summary/aggregate table
 │   ├── High-traffic API → Add materialized view
@@ -176,13 +176,13 @@ Rules: surrogate keys as default. Natural keys: ISO country codes, tax IDs, SSNs
 #### Primary Key Examples
 
 ```sql
--- UUID v7 (PostgreSQL with pg_uuidv7)
+-- UUID v7 ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) with pg_uuidv7)
 CREATE TABLE orders (
     id UUID DEFAULT uuid_generate_v7() PRIMARY KEY,
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- SERIAL (compact, PostgreSQL)
+-- SERIAL (compact, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
 CREATE TABLE products (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL
@@ -254,7 +254,7 @@ CREATE TABLE bank_transfer_payments (
 ### Step 6: Temporal Tables
 
 #### Strategy Selection
-Valid time: when the fact was true in reality. Transaction time: when the fact was recorded in the database. Bi-temporal: both valid and transaction time. Decision: valid time for business reporting (report sales as of fiscal date), transaction time for audit (show data as it appeared yesterday), bi-temporal for regulated industries needing both.
+Valid time: when the fact was true in reality. Transaction time: when the fact was recorded in the database. Bi-temporal: both valid and transaction time. Decision: valid time for business reporting (report sales as of fiscal date), transaction time for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (show data as it appeared yesterday), bi-temporal for regulated industries needing both.
 
 #### Implementation Patterns
 
@@ -280,7 +280,7 @@ WHERE product_id = $1
 ```
 
 ```sql
--- PostgreSQL system-versioned temporal tables (PG 17+)
+-- [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) system-versioned temporal tables (PG 17+)
 CREATE TABLE orders (
     id UUID PRIMARY KEY,
     status TEXT NOT NULL,
@@ -436,7 +436,7 @@ Will the key value ever change?
 What is the workload?
 ├── OLTP (many small writes, point queries)
 │   ├── 3NF or BCNF by default
-│   ├── Denormalize only when profiling proves necessity
+│   ├── Denormalize only when [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) proves necessity
 │   └── Use views for denormalized access patterns
 ├── OLAP (large reads, aggregations, reporting)
 │   ├── Star schema (dimensional modeling)
@@ -479,7 +479,7 @@ Symptom: 50 indexes on a table, all used in different queries. Consequence: writ
 ## Performance Patterns
 
 ### Read Replicas
-Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag monitoring, tolerate stale reads.
+Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), tolerate stale reads.
 
 ### Partitioning
 Range partitioning by time (orders by month) for natural data lifecycle management. List partitioning by category (region, status). Hash partitioning for even distribution. Benefits: partition pruning for faster queries, easy data archival (detach partition).
@@ -507,13 +507,13 @@ Application-level cache (Redis) for frequently-read, infrequently-updated data. 
 Structural tests: all tables have primary keys, all FKs are indexed, no duplicate indexes, column types match application expectations. Integrity tests: FK constraints are not violated, unique constraints hold, check constraints validate data. Migration tests: migrations run forward and backward, rollback produces original state, no data loss on migration.
 
 ### CI Pipeline for Schema Changes
-Check commit → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
+Check [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
 
 ## Rules
 - 3NF is the default. Denormalize only when performance-measured.
 - Surrogate keys default. Natural keys only for stable identifiers.
 - Prefer soft delete unless data retention law requires hard delete.
-- Audit columns (created_at, updated_at, created_by) on every table.
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) columns (created_at, updated_at, created_by) on every table.
 - Every foreign key must be indexed.
 - Graph properties used in WHERE and traversal must have indexes.
 - Temporal tables use valid_from/valid_to or PERIOD FOR.
@@ -524,16 +524,16 @@ Check commit → lint SQL (sqlfluff) → run on ephemeral DB → verify schema �
 - Document all design decisions and trade-offs in ADRs.
 
 ## References
-  - ../../../Global_References/data-vault-patterns.md — Data Vault Patterns
+  - ../../../Global_References/data-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-patterns.md — Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Patterns
   - ../../../Global_References/dimensional-modeling.md — Dimensional Modeling
   - ../../../Global_References/domain-driven-data-modeling.md — Domain-Driven Data Modeling
   - ../../../Global_References/data-modeling_graph-modeling.md — Graph Modeling
   - ../../../Global_References/modeling-best-practices.md — Data Modeling Best Practices
-  - ../../../Global_References/modeling-change-management.md — Model Change Management
+  - ../../../Global_References/modeling-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md).md — Model Change Management
   - ../../../Global_References/modeling-data-contracts.md — Data Contracts in Modeling
   - ../../../Global_References/relational-modeling.md — Relational Modeling
 ## Handoff
-`data-dimensional-modeling` for star schemas and dimensional models
-`backend-database-patterns` for query optimization and indexing
-`data-nosql-database` for document/column-family modeling
+`[data-dimensional-modeling](../dimensional-modeling/SKILL.md)` for star schemas and dimensional models
+`[backend-database-patterns](../../Software_Engineering_and_Other/Databases/database-patterns/SKILL.md)` for query optimization and indexing
+`[data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql-database/SKILL.md)` for document/column-family modeling
 

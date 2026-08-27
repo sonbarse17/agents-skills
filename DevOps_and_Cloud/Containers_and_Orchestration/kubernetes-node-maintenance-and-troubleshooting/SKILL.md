@@ -17,19 +17,19 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes Node Maintenance and Troubleshooting
+# [Kubernetes](../kubernetes/SKILL.md) Node Maintenance and Troubleshooting
 
 ## Purpose
 
 Taking a node out of service — for an OS patch, a hardware swap, a
 kubelet upgrade, or decommissioning — is routine, but doing it wrong is
-one of the most common self-inflicted causes of a Kubernetes outage: a
+one of the most common self-inflicted causes of a [Kubernetes](../kubernetes/SKILL.md) outage: a
 `drain` evicts every non-DaemonSet pod on the node, and if the workload
 running there doesn't have enough replicas elsewhere (and no
 `PodDisruptionBudget` to make that constraint explicit), the eviction
-itself becomes the incident. Separately, a node that goes `NotReady`
+itself becomes the [incident](../../Observability_and_SecOps/incident/SKILL.md). Separately, a node that goes `NotReady`
 unexpectedly needs its own diagnosis — kubelet/runtime/network/disk
-causes each look similar from `kubectl get nodes` but require different
+causes each look similar from `[kubectl](../kubectl/SKILL.md) get nodes` but require different
 fixes. This skill covers the safe cordon/drain/uncordon sequence with
 `PodDisruptionBudget` awareness, and diagnosing an unexpectedly
 `NotReady` node.
@@ -39,20 +39,20 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 - Planned maintenance on a node (OS patching, hardware replacement,
   kubelet/container-runtime upgrade, decommissioning) that requires
   safely moving its workloads off first.
-- A node shows `NotReady` in `kubectl get nodes` and needs root-cause
+- A node shows `NotReady` in `[kubectl](../kubectl/SKILL.md) get nodes` and needs root-cause
   diagnosis before deciding whether to wait, intervene, or replace it.
-- A `kubectl drain` is hanging or timing out and it's unclear whether
+- A `[kubectl](../kubectl/SKILL.md) drain` is hanging or timing out and it's unclear whether
   that's expected (a `PodDisruptionBudget` correctly blocking it) or a
   different problem.
-- Bringing a node back into service with `kubectl uncordon` after
+- Bringing a node back into service with `[kubectl](../kubectl/SKILL.md) uncordon` after
   maintenance completes.
 - Draining nodes one at a time as part of a `kubeadm upgrade` — see
-  [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)
+  [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md)
   for the upgrade sequence this fits into.
 
 ## Prerequisites & environment
 
-- `kubectl` access with permission to cordon/drain/uncordon nodes and to
+- `[kubectl](../kubectl/SKILL.md)` access with permission to cordon/drain/uncordon nodes and to
   evict pods across the namespaces scheduled on that node (`nodes/drain`
   and `pods/eviction` RBAC verbs, in addition to general node read
   access).
@@ -62,9 +62,9 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
   correct behavior, not a bug to work around.
 - SSH or console access to the node itself for OS-level diagnosis when
   it's `NotReady` (kubelet logs, disk usage, container runtime status)
-  — `kubectl` alone often can't explain *why* a node stopped reporting
+  — `[kubectl](../kubectl/SKILL.md)` alone often can't explain *why* a node stopped reporting
   Ready.
-- Understanding that `kubectl drain` does not evict DaemonSet-managed
+- Understanding that `[kubectl](../kubectl/SKILL.md) drain` does not evict DaemonSet-managed
   pods by default (`--ignore-daemonsets` is required and expected for
   any node running DaemonSets, which is nearly every real cluster) and
   does not delete `emptyDir`-backed pod data by default either
@@ -76,7 +76,7 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 1. **Diagnose a `NotReady` node before doing anything else**, if that's
    why you're here rather than planned maintenance:
    ```bash
-   kubectl describe node <node>
+   [kubectl](../kubectl/SKILL.md) describe node <node>
    ```
    Check the `Conditions` block: `Ready=False`/`Unknown`,
    `MemoryPressure`, `DiskPressure`, `PIDPressure` each point to a
@@ -98,14 +98,14 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
    garbage collection, or blocking new pod starts entirely), or a
    network issue prevents the node reaching the API server (unrelated
    to the CNI's pod-to-pod data path — see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for that separate failure class).
 
 3. **Before draining for planned maintenance, check what's actually
    running there and which PDBs apply**:
    ```bash
-   kubectl get pods -A -o wide --field-selector spec.nodeName=<node>
-   kubectl get pdb -A
+   [kubectl](../kubectl/SKILL.md) get pods -A -o wide --field-selector spec.nodeName=<node>
+   [kubectl](../kubectl/SKILL.md) get pdb -A
    ```
    For any workload on the node with a `PodDisruptionBudget`, compare
    its `minAvailable`/`maxUnavailable` against its current replica
@@ -116,18 +116,18 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 4. **Cordon the node** to stop new pods from being scheduled onto it
    (existing pods are untouched by cordon alone):
    ```bash
-   kubectl cordon <node>
+   [kubectl](../kubectl/SKILL.md) cordon <node>
    ```
 
-5. **Drain the node**, letting `kubectl drain` respect
+5. **Drain the node**, letting `[kubectl](../kubectl/SKILL.md) drain` respect
    PodDisruptionBudgets by default:
    ```bash
-   kubectl drain <node> \
+   [kubectl](../kubectl/SKILL.md) drain <node> \
      --ignore-daemonsets \
      --delete-emptydir-data \
      --timeout=300s
    ```
-   `kubectl drain` cordons the node automatically as part of this
+   `[kubectl](../kubectl/SKILL.md) drain` cordons the node automatically as part of this
    command if not already cordoned — running `cordon` first (step 4) is
    still good practice for visibility, but not strictly required before
    `drain`.
@@ -135,15 +135,15 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 6. **If the drain hangs or times out, diagnose before forcing
    anything**:
    ```bash
-   kubectl get pdb -A -o wide
-   kubectl describe pdb <pdb-name> -n <namespace>
+   [kubectl](../kubectl/SKILL.md) get pdb -A -o wide
+   [kubectl](../kubectl/SKILL.md) describe pdb <pdb-name> -n <namespace>
    ```
    A drain blocked by a PDB is the mechanism working as intended — it
    is protecting the workload's own stated availability requirement.
    The correct response is to address *that* constraint (temporarily
    scale up replicas so eviction no longer violates `minAvailable`,
    coordinate a maintenance window with the owning team, or wait for
-   capacity elsewhere), not to bypass the protection.
+   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) elsewhere), not to bypass the protection.
 
 7. **Perform the actual maintenance** (OS patch, reboot, hardware swap,
    kubelet/runtime upgrade) once the node has no non-DaemonSet pods
@@ -151,7 +151,7 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 
 8. **Uncordon the node** to make it schedulable again:
    ```bash
-   kubectl uncordon <node>
+   [kubectl](../kubectl/SKILL.md) uncordon <node>
    ```
    This only marks the node schedulable for *future* pods — it does not
    move any already-rescheduled workloads back. That's expected
@@ -162,8 +162,8 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 9. **Verify the node and its workloads are healthy** before considering
    the maintenance complete:
    ```bash
-   kubectl get nodes
-   kubectl get pods -A -o wide --field-selector spec.nodeName=<node>
+   [kubectl](../kubectl/SKILL.md) get nodes
+   [kubectl](../kubectl/SKILL.md) get pods -A -o wide --field-selector spec.nodeName=<node>
    ```
    Confirm the node reports `Ready`, and that any workload scaled up
    temporarily to satisfy a PDB during the drain (step 6) is scaled back
@@ -188,15 +188,15 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 - Reserve `--force` only for pods that are genuinely unmanaged (no
   controller) or stuck because their node is already gone/unreachable —
   not as a default response to a slow or blocked drain.
-- Give `kubectl drain` a `--grace-period` (or trust the pod's own
+- Give `[kubectl](../kubectl/SKILL.md) drain` a `--grace-period` (or trust the pod's own
   configured `terminationGracePeriodSeconds`) long enough for the
   workload to actually shut down cleanly — a long-running request or
   connection-draining load balancer needs more than the default grace
   period to avoid cutting off in-flight work.
 - Monitor node `Conditions` (`MemoryPressure`, `DiskPressure`,
-  `Ready`) proactively via node-exporter/kube-state-metrics alerting,
+  `Ready`) proactively via node-exporter/kube-state-metrics [alerting](../../Observability_and_SecOps/alerting/SKILL.md),
   not only when someone happens to notice a node in a bad state during
-  `kubectl get nodes`.
+  `[kubectl](../kubectl/SKILL.md) get nodes`.
 - Treat a node that goes `NotReady` repeatedly (not just once) as a
   signal to investigate the underlying hardware/OS/network rather than
   uncordoning and moving on each time it recovers — a flapping node is a
@@ -204,11 +204,11 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 
 ## Common pitfalls
 
-- **Symptom:** `kubectl drain` hangs indefinitely or times out.
-  **Fix:** Check `kubectl get pdb -A` for a `PodDisruptionBudget`
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) drain` hangs indefinitely or times out.
+  **Fix:** Check `[kubectl](../kubectl/SKILL.md) get pdb -A` for a `PodDisruptionBudget`
   covering pods on that node whose `minAvailable`/`maxUnavailable`
   the eviction would violate. This is the drain correctly refusing to
-  cause an outage — address the underlying capacity constraint
+  cause an outage — address the underlying [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) constraint
   (temporarily scale up, coordinate with the owning team, or wait)
   rather than reaching for `--force --grace-period=0` as the first
   response, which bypasses the protection instead of resolving what it
@@ -221,18 +221,18 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
   against and will happily evict every replica if they're all scheduled
   on (or migrate through) the node being drained. Define a PDB for every
   workload with a real availability requirement ahead of any
-  maintenance window, and check `kubectl get pods -o wide
-  --field-selector spec.nodeName=<node>` plus `kubectl get pdb -A`
+  maintenance window, and check `[kubectl](../kubectl/SKILL.md) get pods -o wide
+  --field-selector spec.nodeName=<node>` plus `[kubectl](../kubectl/SKILL.md) get pdb -A`
   together before draining, not just PDB existence in isolation.
 
 - **Symptom:** Pods stuck `Terminating` are cleared with
-  `kubectl delete pod --force --grace-period=0` to unblock a drain.
+  `[kubectl](../kubectl/SKILL.md) delete pod --force --grace-period=0` to unblock a drain.
   **Fix:**
   > **Warning:** this skips graceful shutdown entirely — no
   pre-stop hook runs, no clean connection drain, no confirmation the
   process actually stopped on the node. For a stateful workload this can
   leave on-disk state inconsistent or a volume attached to a pod that no
-  longer logically exists (check `kubectl get volumeattachments`
+  longer logically exists (check `[kubectl](../kubectl/SKILL.md) get volumeattachments`
   afterward). It "masks" a stuck termination instead of diagnosing why
   the pod won't terminate cleanly (frequently a hung process or a
   container runtime issue on the node itself) — reserve this for pods
@@ -246,12 +246,12 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
   the node reported healthy again, so the control plane started
   evicting its pods as if the node were permanently gone. For workloads
   that shouldn't churn on a brief blip, add an explicit, bounded
-  toleration for `node.kubernetes.io/not-ready`/`node.kubernetes.io/
+  toleration for `node.[kubernetes](../kubernetes/SKILL.md).io/not-ready`/`node.[kubernetes](../kubernetes/SKILL.md).io/
   unreachable` — but don't disable eviction entirely, since that risks
   two copies of a stateful workload's pod running simultaneously if the
   node is truly gone (a split-brain risk, not just an inconvenience).
 
-- **Symptom:** `kubectl uncordon` is run, but expected workloads don't
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) uncordon` is run, but expected workloads don't
   come back to the node.
   **Fix:** This is expected — `uncordon` only makes the node eligible
   for future scheduling decisions, it does not proactively move
@@ -260,7 +260,7 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
   workload, or deleting a pod elsewhere to let the scheduler place a
   new one), not an assumption that uncordon itself triggers it.
 
-- **Symptom:** `kubectl delete node <node>` is run directly to remove a
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) delete node <node>` is run directly to remove a
   problem node, without draining it first.
   **Fix:** This immediately removes the node object from the API
   without evicting or rescheduling its pods first —
@@ -277,10 +277,10 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
 `minAvailable: 2` but only 2 total replicas cluster-wide.
 
 ```bash
-kubectl get pods -n payments -o wide --field-selector spec.nodeName=node-3
+[kubectl](../kubectl/SKILL.md) get pods -n payments -o wide --field-selector spec.nodeName=node-3
 # payments-api-7d9f6-abc12   1/1   Running   node-3
 
-kubectl get pdb -n payments
+[kubectl](../kubectl/SKILL.md) get pdb -n payments
 # NAME               MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS
 # payments-api-pdb    2               N/A               0
 ```
@@ -290,14 +290,14 @@ violate the PDB — evicting this pod would drop `payments-api` below its
 required 2 available replicas.
 
 ```bash
-kubectl scale deployment payments-api -n payments --replicas=3
-kubectl get pdb payments-api-pdb -n payments
+[kubectl](../kubectl/SKILL.md) scale deployment payments-api -n payments --replicas=3
+[kubectl](../kubectl/SKILL.md) get pdb payments-api-pdb -n payments
 # ALLOWED DISRUPTIONS: 1
 ```
 
 ```bash
-kubectl cordon node-3
-kubectl drain node-3 --ignore-daemonsets --delete-emptydir-data --timeout=300s
+[kubectl](../kubectl/SKILL.md) cordon node-3
+[kubectl](../kubectl/SKILL.md) drain node-3 --ignore-daemonsets --delete-emptydir-data --timeout=300s
 # node/node-3 drained
 ```
 
@@ -305,11 +305,11 @@ The drain now succeeds because the temporary third replica gives the
 PDB one disruption to allow. After the kernel patch and reboot:
 
 ```bash
-kubectl uncordon node-3
-kubectl get nodes
+[kubectl](../kubectl/SKILL.md) uncordon node-3
+[kubectl](../kubectl/SKILL.md) get nodes
 # node-3   Ready
 
-kubectl scale deployment payments-api -n payments --replicas=2
+[kubectl](../kubectl/SKILL.md) scale deployment payments-api -n payments --replicas=2
 ```
 
 The service stayed at or above its required 2 available replicas
@@ -319,8 +319,8 @@ PDB.
 
 ## Cross-references
 
-- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md) — the node-by-node drain/upgrade sequence this skill's drain steps fit into during a `kubeadm upgrade`.
-- [pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md) — diagnosing an individual pod's health issue, as distinct from the node-level pressure/readiness issues covered here.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — diagnosing a node-to-node networking cause of `NotReady` that isn't kubelet/runtime/disk related.
-- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md) — deliberately testing node-loss resilience under controlled conditions, rather than discovering a missing PDB during a real maintenance window.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — re-validating a node pool after maintenance that changed node images/kernels at scale.
+- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — the node-by-node drain/upgrade sequence this skill's drain steps fit into during a `kubeadm upgrade`.
+- [pod-crashloop-and-oom-troubleshooting](../[pod-crashloop-and-oom-troubleshooting](../pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md) — diagnosing an individual pod's health issue, as distinct from the node-level pressure/readiness issues covered here.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — diagnosing a node-to-node networking cause of `NotReady` that isn't kubelet/runtime/disk related.
+- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../../Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — deliberately testing node-loss resilience under controlled conditions, rather than discovering a missing PDB during a real maintenance window.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — re-validating a node pool after maintenance that changed node images/kernels at scale.

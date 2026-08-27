@@ -20,14 +20,14 @@ real for *this* system, with the expected output written down.
 
 Shared contract: [../docs/skill-contract.md](../docs/skill-contract.md) — hard
 rules, environment preflight, effort levels, output paths, and the finishing
-quality bar. Read it first; the rules below are the ones specific to runbooks.
+quality bar. Read it first; the rules below are the ones specific to [runbooks](../runbooks/SKILL.md).
 
 ## Hard Rules
 
 1. **Read-only on every system; documents are the only output.** You run
-   diagnostics to *verify* the commands you write (`kubectl get/describe`,
+   diagnostics to *verify* the commands you write (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get/describe`,
    `aws … describe`, metric queries, `--help`/`--dry-run=client`), and you write
-   files under `runbooks/` only. You never execute a mitigation, even to test it.
+   files under `[runbooks](../runbooks/SKILL.md)/` only. You never execute a mitigation, even to test it.
 2. **A runbook may contain mutating commands — you never run them.** Mitigation
    steps are written for the operator and must carry the blast radius, the
    confirmation check, and the rollback next to them. Mark them clearly
@@ -37,7 +37,7 @@ quality bar. Read it first; the rules below are the ones specific to runbooks.
    command (no access, no tooling), mark it `UNVERIFIED — confirm before relying
    on this` rather than shipping a guess.
 4. **One runbook, one failure mode.** "Service X runbook" that covers eight
-   unrelated failures is unusable at 03:00. Link related runbooks instead.
+   unrelated failures is unusable at 03:00. Link related [runbooks](../runbooks/SKILL.md) instead.
 5. **No generic filler.** "Check the logs" is not a step; the step is the exact
    query, the field to look at, and what a healthy vs. unhealthy result looks
    like. Cut anything that does not change what the operator does next.
@@ -50,10 +50,10 @@ quality bar. Read it first; the rules below are the ones specific to runbooks.
 
 - Identify the **service and its failure mode** precisely. If the request came
   from an alert, start from the alert rule: its condition, threshold, severity,
-  and routing. If it came from an incident, start from that investigation.
+  and routing. If it came from an [incident](../incident/SKILL.md), start from that investigation.
 - Gather the real material: the alert/rule definition, dashboard links and panel
   names, deployment mechanism, dependency map, owning team and escalation path,
-  existing runbooks and their conventions (match them).
+  existing [runbooks](../runbooks/SKILL.md) and their conventions (match them).
 - Establish the operator's starting position: what access they have, which
   cluster/account/context, what tooling is installed, and how they reach the
   system (bastion, SSO, VPN).
@@ -62,14 +62,14 @@ quality bar. Read it first; the rules below are the ones specific to runbooks.
 
 ### Phase 2 — Draft the runbook
 
-One file per failure mode at `runbooks/<service>-<failure-mode>.md`, with this
+One file per failure mode at `[runbooks](../runbooks/SKILL.md)/<service>-<failure-mode>.md`, with this
 structure:
 
 ```markdown
 # <Service>: <failure mode> — runbook
 
 **Severity**: SEV<n> if <criteria> · **Owner**: <team> · **Escalation**: <path>
-**Last verified**: YYYY-MM-DD against <env/commit> by <who>
+**Last verified**: YYYY-MM-DD against <env/[commit](../../CI_CD/commit/SKILL.md)> by <who>
 
 ## Symptom & detection
 What users experience, and the signal that fires (alert name, rule, dashboard
@@ -99,7 +99,7 @@ The known causes of this symptom with links to past incidents, and the durable
 fix if one is planned.
 
 ## Related
-Adjacent runbooks, the dashboard, the service's architecture doc.
+Adjacent [runbooks](../runbooks/SKILL.md), the dashboard, the service's architecture doc.
 ```
 
 Rules for the content: commands in copy-pasteable blocks, one action per step,
@@ -125,14 +125,14 @@ Report a short table of what you verified and what remains `UNVERIFIED`:
 
 ### Phase 4 — Index and hand off
 
-Maintain `runbooks/README.md`: one row per runbook with service, failure mode,
-severity, owner, and last-verified date. Runbooks decay — the index is what makes
+Maintain `[runbooks](../runbooks/SKILL.md)/README.md`: one row per runbook with service, failure mode,
+severity, owner, and last-verified date. [Runbooks](../runbooks/SKILL.md) decay — the index is what makes
 staleness visible. Then tell the user which alerts should be updated to link the
-new runbook (that edit is theirs, or a `/observability` plan).
+new runbook (that edit is theirs, or a `/[observability](../observability/SKILL.md)` plan).
 
-## Audit mode
+## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode
 
-Invoked with `audit`, this skill reviews **existing** runbooks instead of writing
+Invoked with `[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, this skill reviews **existing** [runbooks](../runbooks/SKILL.md) instead of writing
 one. Findings use the canonical table with category `DOC` (or `OPS`):
 
 | # | Finding | Category | Impact | Effort | Risk | Conf | Evidence |
@@ -140,7 +140,7 @@ one. Findings use the canonical table with category `DOC` (or `OPS`):
 
 Look for: commands referencing renamed/deleted resources, dead dashboard and
 ticket links, procedures for retired tooling, alerts with no runbook link,
-runbooks with no alert (nobody will ever find them), missing rollback steps,
+[runbooks](../runbooks/SKILL.md) with no alert (nobody will ever find them), missing rollback steps,
 no last-verified date or one older than the last architecture change, and
 critical failure modes with no runbook at all — that gap list is usually the most
 valuable output.
@@ -155,20 +155,20 @@ Effort keywords (`quick` / `standard` / `deep`) behave as defined in the
 - Bare → ask what to document, or if an investigation/alert is in context, use it.
 - `from-alert <alert name>` → derive the runbook from the alert definition and
   link them.
-- `from-incident <investigation file>` → turn a completed investigation into the
+- `from-[incident](../incident/SKILL.md) <investigation file>` → turn a completed investigation into the
   runbook for that failure mode.
-- `audit` → review existing runbooks for staleness and coverage gaps (above).
+- `[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` → review existing [runbooks](../runbooks/SKILL.md) for staleness and coverage gaps (above).
 - `quick` → symptom, first 60 seconds, one safest mitigation, escalation.
-- `deep` → full triage tree, every mitigation, verification, and past-incident
+- `deep` → full triage tree, every mitigation, verification, and past-[incident](../incident/SKILL.md)
   history.
 
 ## Related skills
 
-- `/observability` — alerts without runbooks are a finding there; new runbook
+- `/[observability](../observability/SKILL.md)` — alerts without [runbooks](../runbooks/SKILL.md) are a finding there; new runbook
   links belong in the alert definitions.
-- `/incident` — a completed investigation is the best raw material for a runbook.
-- `/dr-review` — restore and failover procedures deserve their own runbooks.
-- `/db-review`, `/k8s-review` — the durable fix that makes a runbook unnecessary.
+- `/[incident](../incident/SKILL.md)` — a completed investigation is the best raw material for a runbook.
+- `/[dr-review](../dr-review/SKILL.md)` — restore and failover procedures deserve their own [runbooks](../runbooks/SKILL.md).
+- `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)`, `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)` — the durable fix that makes a runbook unnecessary.
 
 ## Before you finish
 
@@ -180,7 +180,7 @@ Effort keywords (`quick` / `standard` / `deep`) behave as defined in the
 - [ ] Every check states its expected healthy and unhealthy output.
 - [ ] Escalation has a named owner and a concrete trigger (time or condition).
 - [ ] Severity criteria are stated, not left to the reader's judgement.
-- [ ] `runbooks/README.md` updated with a last-verified date.
+- [ ] `[runbooks](../runbooks/SKILL.md)/README.md` updated with a last-verified date.
 - [ ] No secret values; access is described, not embedded.
 
 ## Tone of the output

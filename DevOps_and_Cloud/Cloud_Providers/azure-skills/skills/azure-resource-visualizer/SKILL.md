@@ -9,14 +9,14 @@ metadata:
 
 # Azure Resource Visualizer - Architecture Diagram Generator
 
-A user may ask for help understanding how individual resources fit together, or to create a diagram showing their relationships. Your mission is to examine Azure resource groups, understand their structure and relationships, and generate comprehensive Mermaid diagrams that clearly illustrate the architecture.
+A user may ask for help understanding how individual resources fit together, or to create a diagram showing their relationships. Your mission is to examine Azure resource groups, understand their structure and relationships, and generate comprehensive [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) diagrams that clearly illustrate the architecture.
 
 ## Core Responsibilities
 
 1. **Resource Group Discovery**: List available resource groups when not specified
 2. **Deep Resource Analysis**: Examine all resources, their configurations, and interdependencies
 3. **Relationship Mapping**: Identify and document all connections between resources
-4. **Diagram Generation**: Create detailed, accurate Mermaid diagrams
+4. **Diagram Generation**: Create detailed, accurate [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) diagrams
 5. **Documentation Creation**: Produce clear markdown files with embedded diagrams
 
 ## Workflow Process
@@ -55,17 +55,17 @@ Once you have the resource group:
    - **Configuration**: App Settings pointing to Key Vaults, connection strings
    - **Dependencies**: Parent-child relationships, required resources
 
-> **Important**: You must only use placeholder names to represent secret values, such as keys, connection strings, Key Vault secrets, etc. Use meaningful placeholder names to represent each secret in the diagram. Never put secret values in the resource diagram.
+> **Important**: You must only use placeholder names to represent secret values, such as keys, connection strings, Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets, etc. Use meaningful placeholder names to represent each secret in the diagram. Never put secret values in the resource diagram.
 
 ### Step 3: Diagram Construction
 
-Create a **detailed Mermaid diagram** using the `graph TB` (top-to-bottom) or `graph LR` (left-to-right) format.
+Create a **detailed [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) diagram** using the `graph TB` (top-to-bottom) or `graph LR` (left-to-right) format.
 
 See [example-diagram.md](./assets/example-diagram.md) for a complete sample architecture diagram.
 
 **Key Diagram Requirements:**
 
-- **Group by layer or purpose**: Network, Compute, Data, Security, Monitoring
+- **Group by layer or purpose**: Network, Compute, Data, Security, [Monitoring](../../../../Observability_and_SecOps/monitoring/SKILL.md)
 - **Include details**: SKUs, tiers, important settings in node labels (use `<br/>` for line breaks)
 - **Label all connections**: Describe what flows between resources (data, identity, network)
 - **Use meaningful node IDs**: Abbreviations that make sense (APP, FUNC, SQL, KV)
@@ -77,7 +77,7 @@ See [example-diagram.md](./assets/example-diagram.md) for a complete sample arch
 
 **Resource Type Examples:**
 - App Service: Include plan tier (B1, S1, P1v2)
-- Functions: Include runtime (.NET, Python, Node)
+- Functions: Include runtime (.NET, [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node)
 - Databases: Include tier (Basic, Standard, Premium)
 - Storage: Include redundancy (LRS, GRS, ZRS)
 - VNets: Include address space
@@ -90,7 +90,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 1. **Header**: Resource group name, subscription, region
 2. **Summary**: Brief overview of the architecture (2-3 paragraphs)
 3. **Resource Inventory**: Table listing all resources with types and key properties
-4. **Architecture Diagram**: The complete Mermaid diagram
+4. **Architecture Diagram**: The complete [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) diagram
 5. **Relationship Details**: Explanation of key connections and data flows
 6. **Notes**: Any important observations, potential issues, or recommendations
 
@@ -115,7 +115,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 2. **File Creation**:
    - Always create in workspace root or a `docs/` folder if it exists
    - Use clear, descriptive filenames: `[rg-name]-architecture.md`
-   - Ensure Mermaid syntax is valid (test syntax mentally before output)
+   - Ensure [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) syntax is valid (test syntax mentally before output)
 
 3. **Terminal (when needed)**:
    - Use Azure CLI for complex queries not available via MCP
@@ -140,7 +140,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 - ❌ Create incomplete or placeholder diagrams
 - ❌ Omit configuration details that affect architecture
 - ❌ Proceed without confirming resource group selection
-- ❌ Generate invalid Mermaid syntax
+- ❌ Generate invalid [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) syntax
 - ❌ Modify or delete Azure resources (read-only analysis)
 
 ### Edge Cases & Error Handling
@@ -153,7 +153,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 
 ## Output Format Specifications
 
-### Mermaid Diagram Syntax
+### [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) Diagram Syntax
 - Use `graph TB` (top-to-bottom) for vertical layouts
 - Use `graph LR` (left-to-right) for horizontal layouts (better for wide architectures)
 - Subgraph syntax: `subgraph "Descriptive Name"`
@@ -166,7 +166,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 - Use H3 for subsections
 - Use tables for resource inventories
 - Use bullet lists for notes and recommendations
-- Use code blocks with `mermaid` language tag for diagrams
+- Use code blocks with `[mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)` language tag for diagrams
 
 ## Success Criteria
 
@@ -174,10 +174,10 @@ A successful analysis includes:
 - ✅ Valid resource group identified
 - ✅ All resources discovered and analyzed
 - ✅ All significant relationships mapped
-- ✅ Detailed Mermaid diagram with proper grouping
+- ✅ Detailed [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) diagram with proper grouping
 - ✅ Complete markdown file created
 - ✅ Clear, actionable documentation
-- ✅ Valid Mermaid syntax that renders correctly
+- ✅ Valid [Mermaid](../../../../../Product_and_Business/mermaid/SKILL.md) syntax that renders correctly
 - ✅ Professional, architect-level output
 
 Your goal is to provide clarity and insight into Azure architectures, making complex resource relationships easy to understand through excellent visualization.

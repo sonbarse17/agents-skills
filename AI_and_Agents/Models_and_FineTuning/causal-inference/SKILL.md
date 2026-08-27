@@ -37,7 +37,7 @@ Before activating, verify:
 Causal analysis plan with identification strategy, estimation method, robustness checks, and sensitivity analysis.
 
 ### Response Format
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Estimation code
 ```
 ```text
@@ -63,7 +63,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## Workflow
 
 ### Step 1: Causal Graph Specification
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # DAG specification with DOT notation
 dag_spec = """
 digraph CausalModel {
@@ -80,7 +80,7 @@ digraph CausalModel {
 """
 ```
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import networkx as nx
 from causallearn.graph import GeneralGraph
 from causallearn.utils.cit import chisq, fisherz
@@ -100,7 +100,7 @@ def dag_backdoor_criteria(graph, treatment, outcome):
 ```
 
 ### Step 2: Propensity Score Methods
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.linear_model import LogisticRegression
 import numpy as np
 
@@ -134,7 +134,7 @@ def matching_estimator(y, t, X, caliper=0.05):
 ```
 
 ### Step 3: Difference-in-Differences
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import statsmodels.api as sm
 
 def did_estimation(df, outcome, treatment, post, unit_fe, time_fe):
@@ -165,7 +165,7 @@ def event_study(df, outcome, treatment, event_time, unit_fe, time_fe, leads=5, l
 ```
 
 ### Step 4: Regression Discontinuity
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def rdd_estimation(df, outcome, running_var, cutoff, bandwidth=None, order=2):
     """Sharp RDD with local polynomial regression."""
     from sklearn.preprocessing import PolynomialFeatures
@@ -188,7 +188,7 @@ def rdd_estimation(df, outcome, running_var, cutoff, bandwidth=None, order=2):
 ```
 
 ### Step 5: Instrumental Variables
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def iv_2sls(y, t, X, instrument):
     """Two-stage least squares."""
     import statsmodels.api as sm
@@ -211,7 +211,7 @@ def iv_2sls(y, t, X, instrument):
 ```
 
 ### Step 6: Causal ML — Meta-Learners
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.linear_model import LogisticRegression
 
@@ -258,7 +258,7 @@ def x_learner(X, y, t):
 ```
 
 ### Step 7: Causal Forests
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from econml.grf import CausalForest
 
 def causal_forest_ate(X, y, t):
@@ -276,7 +276,7 @@ def heterogeneous_effects(cf, X, feature_names=None):
 ```
 
 ### Step 8: Double/Debiased ML
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from econml.dml import LinearDML
 
 def double_ml(X, y, t, model_y=None, model_t=None):
@@ -347,7 +347,7 @@ method_selection:
 
 ### Sensitivity Analysis
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # E-value: how strong must an unobserved confounder be to explain away the effect?
 # E-value = RR + sqrt(RR × (RR - 1)) for RR > 1
 def e_value(estimate, lower_ci=None, upper_ci=None):
@@ -416,7 +416,7 @@ pitfalls:
 
 ### Causal Discovery
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Causal structure learning (for hypothesis generation, not confirmation)
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.utils.GraphUtils import GraphUtils
@@ -441,7 +441,7 @@ def learn_dag(data, alpha=0.05, independence_test='fisherz'):
 
 ### Power Analysis for Observational Studies
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Power calculation for DiD with panel data
 def power_did(n_units, n_periods, effect_size, rho=0.5, sigma=1, alpha=0.05):
     """
@@ -542,7 +542,7 @@ What type of violation is most plausible?
   - ../../../Global_References/causal-ml.md — Causal Machine Learning Reference
   - ../../../Global_References/quasi-experimental.md — Quasi-Experimental Methods Reference
 ## Handoff
-`data-science-statistical-analysis` for foundational statistical methods
-`data-science-experimentation` for RCT design and A/B testing
-`data-science-analytics-engineering` for causal pipeline data infrastructure
+`[data-science-statistical-analysis](../../../Data_Engineering/statistical-analysis/SKILL.md)` for foundational statistical methods
+`[data-science-experimentation](../experimentation/SKILL.md)` for RCT design and A/B testing
+`[data-science-analytics-engineering](../../../Data_Engineering/analytics-engineering/SKILL.md)` for causal pipeline data infrastructure
 

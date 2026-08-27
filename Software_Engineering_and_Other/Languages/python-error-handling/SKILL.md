@@ -3,9 +3,9 @@ name: python-error-handling
 description: Python error handling patterns including input validation, exception hierarchies, and partial failure handling. Use when implementing validation logic, designing exception strategies, handling batch processing failures, or building robust APIs.
 ---
 
-# Python Error Handling
+# [Python](../python/SKILL.md) Error Handling
 
-Build robust Python applications with proper input validation, meaningful exceptions, and graceful failure handling. Good error handling makes debugging easier and systems more reliable.
+Build robust [Python](../python/SKILL.md) applications with proper input validation, meaningful exceptions, and graceful failure handling. Good error handling makes debugging easier and systems more reliable.
 
 ## When to Use This Skill
 
@@ -36,7 +36,7 @@ Chain exceptions to maintain the full error trail for debugging.
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 def fetch_page(url: str, page_size: int) -> Page:
     if not url:
         raise ValueError("'url' is required")
@@ -51,7 +51,7 @@ def fetch_page(url: str, page_size: int) -> Page:
 
 Validate all inputs at API boundaries before any processing begins.
 
-```python
+```[python](../python/SKILL.md)
 def process_order(
     order_id: str,
     quantity: int,
@@ -79,7 +79,7 @@ def process_order(
 
 Parse strings and external data into typed domain objects at system boundaries.
 
-```python
+```[python](../python/SKILL.md)
 from enum import Enum
 
 class OutputFormat(Enum):
@@ -119,7 +119,7 @@ def export_data(data: list[dict], format_str: str) -> bytes:
 
 Use Pydantic models for structured input validation with automatic error messages.
 
-```python
+```[python](../python/SKILL.md)
 from pydantic import BaseModel, Field, field_validator
 
 class CreateUserInput(BaseModel):
@@ -155,7 +155,7 @@ except ValidationError as e:
 
 ### Pattern 4: Map Errors to Standard Exceptions
 
-Use Python's built-in exception types appropriately, adding context as needed.
+Use [Python](../python/SKILL.md)'s built-in exception types appropriately, adding context as needed.
 
 | Failure Type | Exception | Example |
 |--------------|-----------|---------|
@@ -167,7 +167,7 @@ Use Python's built-in exception types appropriately, adding context as needed.
 | File not found | `FileNotFoundError` | Path doesn't exist |
 | Permission denied | `PermissionError` | Access forbidden |
 
-```python
+```[python](../python/SKILL.md)
 # Good: Specific exception with context
 raise ValueError(f"'page_size' must be 1-100, got {page_size}")
 
@@ -177,7 +177,7 @@ raise Exception("Invalid parameter")
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-error-handling_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../python/SKILL.md)-error-handling_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

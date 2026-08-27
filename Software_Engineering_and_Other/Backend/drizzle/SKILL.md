@@ -21,13 +21,13 @@ Design database schemas, write SQL-like queries, manage migrations, define relat
 ## Agent Protocol
 
 ### Trigger
-User request includes: `drizzle`, `drizzle orm`, `drizzle schema`, `drizzle migrate`, `drizzle query`, `drizzle relation`, `drizzle edge`, `drizzle neon`, `drizzle planetscale`.
+User request includes: `drizzle`, `drizzle orm`, `drizzle schema`, `drizzle migrate`, `drizzle query`, `drizzle relation`, `drizzle edge`, `drizzle neon`, `drizzle [planetscale](../../Databases/planetscale/SKILL.md)`.
 
 ### Input Context
-- Database (PostgreSQL, MySQL, SQLite, Turso)
+- Database ([PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite, Turso)
 - Drizzle version (0.30+)
 - Runtime (Node.js, Bun, Cloudflare Workers, Neon)
-- Deployment (serverless, edge, traditional)
+- Deployment ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), edge, traditional)
 
 ### Output Artifact
 Schema definition, query examples, migration setup, relation config, connection management.
@@ -36,11 +36,11 @@ Schema definition, query examples, migration setup, relation config, connection 
 Produce artifact directly. No preamble, no postamble, no explanations.
 
 ### Completion Criteria
-- Schema defined with drizzle-orm/pg-core or mysql-core
+- Schema defined with drizzle-orm/pg-core or [mysql](../mysql/SKILL.md)-core
 - Relations defined with drizzle-orm relations
 - Migrations generated and applied with drizzle-kit
 - Queries use prepared statements for production
-- Connection configured for target environment (Node, serverless, edge)
+- Connection configured for target environment (Node, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), edge)
 
 ### Max Response Length
 4096 tokens
@@ -56,7 +56,7 @@ Produce artifact directly. No preamble, no postamble, no explanations.
 | Type safety | Full (inferred from schema) | Full (generated types) |
 | SQL control | Direct SQL with types | Prisma Client abstractions |
 | Migrations | Drizzle Kit | Prisma Migrate |
-| Edge support | First-class (Neon, Turso, PlanetScale) | Via adapter |
+| Edge support | First-class (Neon, Turso, [PlanetScale](../../Databases/planetscale/SKILL.md)) | Via adapter |
 | Relations | Relations module (INSERT-friendly) | include/select |
 
 Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto-complete → Prisma.
@@ -65,16 +65,16 @@ Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto
 
 | Database | Driver | Drizzle Package | Best For |
 |----------|--------|----------------|----------|
-| PostgreSQL | `pg` or `@neondatabase/serverless` | `drizzle-orm/pg-core` | Full-featured RDBMS |
-| MySQL | `mysql2` | `drizzle-orm/mysql-core` | PlanetScale, traditional MySQL |
+| [PostgreSQL](../postgresql/SKILL.md) | `pg` or `@neondatabase/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)` | `drizzle-orm/pg-core` | Full-featured RDBMS |
+| [MySQL](../mysql/SKILL.md) | `mysql2` | `drizzle-orm/[mysql](../mysql/SKILL.md)-core` | [PlanetScale](../../Databases/planetscale/SKILL.md), traditional [MySQL](../mysql/SKILL.md) |
 | SQLite | `better-sqlite3` or `@libsql/client` | `drizzle-orm/sqlite-core` | Turso, local, edge |
-| PostgreSQL (serverless) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
+| [PostgreSQL](../postgresql/SKILL.md) ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
 
 ## Workflow
 
 ### Step 1: Schema Definition
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/db/schema/users.ts
 import { pgTable, uuid, varchar, boolean, timestamp, uniqueIndex, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
@@ -112,7 +112,7 @@ export const posts = pgTable('posts', {
 
 ### Step 2: Relations
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/db/schema/relations.ts
 import { relations } from 'drizzle-orm';
 import { users } from './users';
@@ -132,7 +132,7 @@ export const postsRelations = relations(posts, ({ one }) => ({
 
 ### Step 3: Connection and Query
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/db/index.ts
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
@@ -215,7 +215,7 @@ export async function searchUsers(query: string) {
 
 ### Step 4: Prepared Statements
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/db/prepared.ts
 import { db } from './index';
 import { users } from './schema/users';
@@ -250,26 +250,26 @@ npx drizzle-kit check
 # Drizzle Kit config
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // drizzle.config.ts
 import type { Config } from 'drizzle-kit';
 
 export default {
   schema: './src/db/schema/*.ts',
   out: './drizzle',
-  dialect: 'postgresql',
+  dialect: '[postgresql](../postgresql/SKILL.md)',
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
 } satisfies Config;
 ```
 
-### Step 6: Edge/Serverless Connection
+### Step 6: Edge/[Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Connection
 
-```typescript
-// src/db/edge.ts — Neon serverless
+```[typescript](../../Frontend/typescript/SKILL.md)
+// src/db/edge.ts — Neon [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)
 import { drizzle } from 'drizzle-orm/neon-http';
-import { neon } from '@neondatabase/serverless';
+import { neon } from '@neondatabase/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)';
 import * as schema from './schema';
 
 const sql = neon(process.env.DATABASE_URL!);
@@ -287,7 +287,7 @@ export const db = drizzle(client, { schema });
 
 ### Pattern: Batch Insert
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 export async function createUsers(data: { email: string; name: string }[]) {
   return db.insert(users).values(data).returning();
 }
@@ -295,7 +295,7 @@ export async function createUsers(data: { email: string; name: string }[]) {
 
 ### Pattern: Raw SQL with Type Safety
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { sql } from 'drizzle-orm';
 
 export async function getActiveUsersCount() {
@@ -309,7 +309,7 @@ export async function getActiveUsersCount() {
 ## Production Considerations
 
 ### Connection Management
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Node.js (connection pooling)
 const pool = new Pool({ max: 20, idleTimeoutMillis: 30000 });
 
@@ -346,7 +346,7 @@ process.on('SIGTERM', async () => {
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { test, expect, beforeAll, afterAll } from 'vitest';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -380,7 +380,7 @@ test('create and find user', async () => {
 Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for parallelism. Use `drizzle-kit push` to set up test schema.
 
 ## Rules
-- Schema defined in TypeScript — one file per logical domain (users, posts, orders).
+- Schema defined in [TypeScript](../../Frontend/typescript/SKILL.md) — one file per logical domain (users, posts, orders).
 - Relations defined separately in `relations.ts` for each domain.
 - Drizzle Kit for all migrations — never manual SQL schema changes.
 - `db.select({ columns }).from(table).where(condition)` over `select *`.
@@ -391,7 +391,7 @@ Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for pa
 
 ## References
   - ../../../Global_References/drizzle-advanced.md — Advanced Drizzle Patterns
-  - ../../../Global_References/drizzle-edge-deployment.md — Edge and Serverless Deployment
+  - ../../../Global_References/drizzle-edge-deployment.md — Edge and [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Deployment
   - ../../../Global_References/drizzle-relations.md — Relation Patterns
   - ../../../Global_References/migration-patterns.md — Migration Strategies
   - ../../../Global_References/drizzle_query-optimization.md — Query Optimization
@@ -427,7 +427,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -435,7 +435,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -465,7 +465,7 @@ class ConfigBuilder {
 
 ### Pattern: CRUD Repository with Drizzle
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { pgTable, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { eq } from 'drizzle-orm';
 import { db } from './db';
@@ -503,7 +503,7 @@ export class UserRepository {
 
 ### Pattern: Transaction with Relation Queries
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { sql } from 'drizzle-orm';
 
@@ -564,9 +564,9 @@ async function createOrderWithItems(orderData: OrderInput, items: ItemInput[]) {
 - SQL injection: Drizzle parameterizes all queries. Never use `sql` template tag with user input.
 - Input validation: Zod schemas before passing to Drizzle. Validate types and constraints.
 - Connection encryption: `ssl: true` for production. Reject unauthorized certs.
-- Credential management: environment variables or vault. Never in code or config files.
+- Credential management: environment variables or [vault](../../Miscellaneous/vault/SKILL.md). Never in code or config files.
 - Row-level security: enable via `sql` template with tenant context. Enforce per query.
-- Audit logging: trigger-based tracking for sensitive tables. Log all mutations.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging: trigger-based tracking for sensitive tables. Log all mutations.
 - Schema access: read-only user for reports. Separate migration user. Least privilege.
 ## Performance Optimization
 
@@ -579,12 +579,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -593,7 +593,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -601,12 +601,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets

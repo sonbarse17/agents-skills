@@ -16,11 +16,11 @@ metadata:
   maturity: stable
 ---
 
-# Kustomize Overlay Management
+# [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) Overlay Management
 
 ## Purpose
 
-Kustomize solves the "same app, different environment" problem without a
+[Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) solves the "same app, different environment" problem without a
 templating language: a `base` holds the common, plain-YAML manifests, and
 per-environment `overlays` apply structural patches (not string
 substitution) on top. Done well, this eliminates copy-pasted,
@@ -29,7 +29,7 @@ target the wrong resource, generators whose hash suffixes break
 references, bases that aren't actually environment-agnostic — it
 produces the same drift problem it was meant to solve, just spread
 across more files. This skill covers structuring bases/overlays
-correctly and knowing when Kustomize is the right tool versus Helm.
+correctly and knowing when [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) is the right tool versus Helm.
 
 ## When to use
 
@@ -43,27 +43,27 @@ correctly and knowing when Kustomize is the right tool versus Helm.
   content-hash suffix so pods roll on config change.
 - Overriding container image tags per environment
   (`images:` transformer) without touching the base Deployment YAML.
-- Deciding whether a given repo/team should use Kustomize, Helm, or
-  Kustomize-post-processing a Helm chart's rendered output.
-- Debugging `kubectl apply -k` output that doesn't match what was
+- Deciding whether a given repo/team should use [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md), Helm, or
+  [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)-post-processing a Helm chart's rendered output.
+- Debugging `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -k` output that doesn't match what was
   expected from the overlay.
 
 ## Prerequisites & environment
 
-- Kustomize is built into `kubectl` (`kubectl kustomize` / `kubectl apply -k`)
-  since `kubectl` 1.14, but the bundled version often lags the standalone
-  `kustomize` CLI — for current features (e.g. `replacements`,
-  `components`), install the standalone binary (`kustomize` ≥ 5.0) and
-  use `kustomize build | kubectl apply -f -` in CI rather than relying on
-  `kubectl`'s embedded version.
-- `kustomize edit` subcommands (`kustomize edit set image`, `kustomize
+- [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) is built into `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` (`[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)` / `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -k`)
+  since `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` 1.14, but the bundled version often lags the standalone
+  `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)` CLI — for current features (e.g. `replacements`,
+  `components`), install the standalone binary (`[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)` ≥ 5.0) and
+  use `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -` in CI rather than relying on
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`'s embedded version.
+- `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit` subcommands (`[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit set image`, `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)
   edit set replicas`) for scripting overlay changes without hand-editing
   YAML — useful in CI to set an image tag from a build pipeline.
 - A repo layout convention agreed with the team (`base/` +
   `overlays/<env>/` is the most common; `components/` for optional,
-  mixable feature patches introduced in Kustomize v3+).
-- If GitOps-managed (Argo CD, Flux), confirm the controller's supported
-  Kustomize version — Argo CD bundles its own kustomize binary version
+  mixable feature patches introduced in [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) v3+).
+- If [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-managed (Argo CD, Flux), confirm the controller's supported
+  [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) version — Argo CD bundles its own [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) binary version
   per release and can lag behind the latest CLI features.
 
 ## Step-by-step guidance
@@ -93,21 +93,21 @@ correctly and knowing when Kustomize is the right tool versus Helm.
    like) defaults:
    ```yaml
    # base/kustomization.yaml
-   apiVersion: kustomize.config.k8s.io/v1beta1
+   apiVersion: [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md).config.k8s.io/v1beta1
    kind: Kustomization
    resources:
      - deployment.yaml
      - service.yaml
      - configmap.yaml
    commonLabels:
-     app.kubernetes.io/name: payments-api
+     app.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/name: payments-api
    ```
 
 3. **Reference the base from each overlay** and layer patches/generators
    on top:
    ```yaml
    # overlays/prod/kustomization.yaml
-   apiVersion: kustomize.config.k8s.io/v1beta1
+   apiVersion: [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md).config.k8s.io/v1beta1
    kind: Kustomization
    namespace: payments-prod
    resources:
@@ -154,7 +154,7 @@ correctly and knowing when Kustomize is the right tool versus Helm.
        files:
          - config/app.yaml
    ```
-   Kustomize appends a content hash to the generated name
+   [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) appends a content hash to the generated name
    (`payments-api-config-8f7d6c4b2a`) and automatically updates every
    reference to that ConfigMap in the rendered output — do not hardcode
    the generated name elsewhere.
@@ -164,7 +164,7 @@ correctly and knowing when Kustomize is the right tool versus Helm.
    instead of duplicating an entire overlay for one toggle:
    ```yaml
    # components/debug-logging/kustomization.yaml
-   apiVersion: kustomize.config.k8s.io/v1alpha1
+   apiVersion: [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md).config.k8s.io/v1alpha1
    kind: Component
    patches:
      - path: patch-loglevel.yaml
@@ -177,16 +177,16 @@ correctly and knowing when Kustomize is the right tool versus Helm.
 
 7. **Render and diff before applying**:
    ```bash
-   kustomize build overlays/prod > /tmp/rendered-prod.yaml
-   kubectl diff -k overlays/prod
-   kubectl apply -k overlays/prod
+   [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build overlays/prod > /tmp/rendered-prod.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) diff -k overlays/prod
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -k overlays/prod
    ```
-   `kubectl diff` against the live cluster is the single most valuable
+   `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) diff` against the live cluster is the single most valuable
    step before applying to a shared environment — it surfaces drift
-   introduced by manual `kubectl edit`s as well as overlay mistakes.
+   introduced by manual `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) edit`s as well as overlay mistakes.
 
-8. **Decide Kustomize vs. Helm vs. both**:
-   - Pure Kustomize: best when there is no need to distribute the
+8. **Decide [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) vs. Helm vs. both**:
+   - Pure [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md): best when there is no need to distribute the
      manifests to third parties, values are structural (patches) not
      deeply parameterized, and the team wants to avoid a templating
      language.
@@ -194,9 +194,9 @@ correctly and knowing when Kustomize is the right tool versus Helm.
      others `helm install`), when non-YAML-shaped parameterization is
      needed (loops, conditionals across many values), or when a
      version/release model (`helm history`, `helm rollback`) is wanted.
-     See [helm-chart-authoring](../helm-chart-authoring/SKILL.md).
+     See [helm-chart-authoring](../[helm-chart-authoring](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md).
    - Both: run `helm template` to render a vendor chart, then feed the
-     output through Kustomize as a resource to apply organization-
+     output through [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) as a resource to apply organization-
      specific patches the chart's values don't expose:
      ```yaml
      # overlays/prod/kustomization.yaml
@@ -205,22 +205,22 @@ correctly and knowing when Kustomize is the right tool versus Helm.
      patches:
        - path: patch-extra-annotation.yaml
      ```
-     Kustomize's native `helmCharts:` field can also invoke `helm
-     template` inline during `kustomize build`, avoiding a separate
+     [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)'s native `helmCharts:` field can also invoke `helm
+     template` inline during `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build`, avoiding a separate
      render step, at the cost of requiring `helm` on the build machine
-     and `--enable-helm` on older Kustomize versions.
+     and `--enable-helm` on older [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) versions.
 
 ## Best practices
 
 - Keep the base deployable and testable in isolation
-  (`kustomize build base | kubectl apply --dry-run=server -f -`); if it
+  (`[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build base | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f -`); if it
   only works after an overlay patch, it isn't a real base.
 - Name overlays after environments/purposes, not after teams — overlays
   should track deployment targets, and ownership belongs in CODEOWNERS,
   not directory names.
 - Set `namePrefix`/`nameSuffix` or `namespace` at the overlay level, not
   the base, so the base stays reusable across namespaces/clusters.
-- Commit the rendered output of `kustomize build` for at least the prod
+- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the rendered output of `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build` for at least the prod
   overlay in CI as a diffable artifact/PR comment — reviewers approving
   a patch YAML rarely trace through what it produces by eye.
 - Avoid patching the same field from two different patch files in one
@@ -233,24 +233,24 @@ correctly and knowing when Kustomize is the right tool versus Helm.
 
 ## Common pitfalls
 
-- **Symptom:** `kustomize build` succeeds, but the applied Service no
+- **Symptom:** `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build` succeeds, but the applied Service no
   longer selects any Pods after adding a `commonLabels` entry to an
   overlay.
   **Fix:** `commonLabels` rewrites both the resource's labels *and*
-  matching `spec.selector` fields where Kustomize recognizes the
+  matching `spec.selector` fields where [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) recognizes the
   reference (e.g. Deployment `matchLabels`), but hand-written Service
   `selector` blocks written as fixed maps rather than templated may not
-  get the same rewrite in every Kustomize version — inspect the
-  rendered output (`kustomize build`) and confirm selectors match labels
+  get the same rewrite in every [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) version — inspect the
+  rendered output (`[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build`) and confirm selectors match labels
   exactly rather than trusting it silently worked.
 
 - **Symptom:** A ConfigMap/Secret generated via `configMapGenerator`
   still references its content by a name that no longer exists after a
   config change ("configmap not found").
-  **Fix:** Something outside the Kustomize-managed resource tree
+  **Fix:** Something outside the [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)-managed resource tree
   (a manually written manifest, a script, or a Helm chart in a `both`
   setup) is referencing the ConfigMap by its unsuffixed base name
-  instead of going through Kustomize's reference rewriting. Only
+  instead of going through [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)'s reference rewriting. Only
   resources listed in the same `kustomization.yaml` tree get their
   references automatically updated to the hashed name.
 
@@ -263,14 +263,14 @@ correctly and knowing when Kustomize is the right tool versus Helm.
   named array elements (env vars, containers, volumes) instead of a
   positional path wherever the resource kind supports it.
 
-- **Symptom:** `kubectl apply -k` behaves differently in CI than on a
+- **Symptom:** `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -k` behaves differently in CI than on a
   developer's laptop for the same overlay.
-  **Fix:** `kubectl`'s embedded Kustomize version is pinned to that
-  `kubectl` release and commonly lags the standalone `kustomize` CLI by
+  **Fix:** `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`'s embedded [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) version is pinned to that
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` release and commonly lags the standalone `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)` CLI by
   several minor versions, so newer fields (`replacements`, `components`)
   silently no-op or error under the old built-in version. Standardize on
-  a pinned standalone `kustomize` binary version in both CI and local
-  tooling (`kustomize build | kubectl apply -f -`) rather than `kubectl
+  a pinned standalone `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)` binary version in both CI and local
+  tooling (`[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -`) rather than `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
   apply -k`.
 
 ## Worked example
@@ -297,7 +297,7 @@ k8s/
 
 ```yaml
 # overlays/prod/kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: [kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md).config.k8s.io/v1beta1
 kind: Kustomization
 namespace: payments-prod
 resources:
@@ -319,9 +319,9 @@ configMapGenerator:
 ```
 
 ```bash
-kustomize build overlays/prod | kubectl apply --dry-run=server -f -
-kubectl diff -k overlays/prod
-kubectl apply -k overlays/prod
+[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build overlays/prod | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f -
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) diff -k overlays/prod
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -k overlays/prod
 ```
 
 The rendered output shows the base Deployment with `replicas: 6`,
@@ -331,5 +331,5 @@ single duplicated line of the base manifest.
 
 ## Cross-references
 
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — when to package as a distributable Helm chart instead of (or alongside) Kustomize overlays.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — the Ingress resource and annotations patched per-overlay in the worked example above.
+- [helm-chart-authoring](../[helm-chart-authoring](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md) — when to package as a distributable Helm chart instead of (or alongside) [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) overlays.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)/SKILL.md) — the Ingress resource and annotations patched per-overlay in the worked example above.

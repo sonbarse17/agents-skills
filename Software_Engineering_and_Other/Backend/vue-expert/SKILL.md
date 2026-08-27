@@ -36,7 +36,7 @@ Load detailed guidance based on context:
 | Components | `../../../Global_References/vue-expert_components.md` | Props, emits, slots, provide/inject |
 | State Management | `../../../Global_References/vue-expert_state-management.md` | Pinia stores, actions, getters |
 | Nuxt 3 | `../../../Global_References/nuxt.md` | SSR, file-based routing, useFetch, Fastify, hydration |
-| TypeScript | `../../../Global_References/typescript.md` | Typing props, generic components, type safety |
+| [TypeScript](../../Frontend/typescript/SKILL.md) | `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md).md` | Typing props, generic components, type safety |
 | Mobile & Hybrid | `../../../Global_References/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
 | Build Tooling | `../../../Global_References/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
 
@@ -68,7 +68,7 @@ function increment() {
 ### MUST DO
 - Use Composition API (NOT Options API)
 - Use `<script setup>` syntax for components
-- Use type-safe props with TypeScript
+- Use type-safe props with [TypeScript](../../Frontend/typescript/SKILL.md)
 - Use `ref()` for primitives, `reactive()` for objects
 - Use `computed()` for derived state
 - Use proper lifecycle hooks (onMounted, onUnmounted, etc.)
@@ -88,14 +88,14 @@ function increment() {
 ## Output Templates
 
 When implementing Vue features, provide:
-1. Component file with `<script setup>` and TypeScript
+1. Component file with `<script setup>` and [TypeScript](../../Frontend/typescript/SKILL.md)
 2. Composable if reusable logic exists
 3. Pinia store if global state needed
 4. Brief explanation of reactivity decisions
 
 ## Knowledge Reference
 
-Vue 3 Composition API, Pinia, Nuxt 3, Vue Router 4, Vite, VueUse, TypeScript, Vitest, Vue Test Utils, SSR/SSG, reactive programming, performance optimization
+Vue 3 Composition API, Pinia, Nuxt 3, Vue Router 4, Vite, VueUse, [TypeScript](../../Frontend/typescript/SKILL.md), Vitest, Vue Test Utils, SSR/SSG, reactive programming, performance optimization
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/vue-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/vue-expert/)
 

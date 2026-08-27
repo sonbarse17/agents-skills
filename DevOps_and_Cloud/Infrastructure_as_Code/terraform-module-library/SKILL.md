@@ -16,13 +16,13 @@ Create reusable, well-tested Terraform modules for common cloud infrastructure p
 - Build reusable infrastructure components
 - Standardize cloud resource provisioning
 - Implement infrastructure as code best practices
-- Create multi-cloud compatible modules
+- Create [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) compatible modules
 - Establish organizational Terraform standards
 
 ## Module Structure
 
 ```
-terraform-modules/
+[terraform-modules](../terraform-modules/SKILL.md)/
 ├── aws/
 │   ├── vpc/
 │   ├── eks/
@@ -39,7 +39,7 @@ terraform-modules/
 └── oci/
     ├── vcn/
     ├── oke/
-    └── object-storage/
+    └── [object-storage](../../Cloud_Providers/object-storage/SKILL.md)/
 ```
 
 ## Standard Module Pattern
@@ -228,8 +228,8 @@ package test
 
 import (
     "testing"
-    "github.com/gruntwork-io/terratest/modules/terraform"
-    "github.com/stretchr/testify/assert"
+    "[github](../../CI_CD/github/SKILL.md).com/gruntwork-io/terratest/modules/terraform"
+    "[github](../../CI_CD/github/SKILL.md).com/stretchr/testify/assert"
 )
 
 func TestVPCModule(t *testing.T) {
@@ -247,6 +247,6 @@ func TestVPCModule(t *testing.T) {
 
 ## Related Skills
 
-- `multi-cloud-architecture` - For architectural decisions
-- `cost-optimization` - For cost-effective designs
+- `[multi-cloud-architecture](../../Cloud_Providers/multi-[cloud-architecture](../../Cloud_Providers/cloud-architecture/SKILL.md)/SKILL.md)` - For architectural decisions
+- `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` - For cost-effective designs
 

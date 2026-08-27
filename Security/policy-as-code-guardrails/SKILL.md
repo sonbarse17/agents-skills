@@ -30,7 +30,7 @@ and easy to skip under deadline pressure. Policy as Code expresses these
 requirements as machine-readable, version-controlled rules (Rego for Open
 Policy Agent, Kyverno's YAML-based policies, Sentinel for HashiCorp
 products) and enforces them automatically at a control point: a
-Kubernetes admission webhook rejecting a non-compliant pod at creation
+[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission webhook rejecting a non-compliant pod at creation
 time, a CI step failing a plan that would create a public S3 bucket, a
 pre-merge check blocking a Dockerfile that runs as root. This turns
 security requirements from documentation into guardrails that hold even
@@ -42,13 +42,13 @@ in; a policy engine is not a substitute for the underlying controls
 ## When to use
 
 - The user asks to "write an OPA/Rego policy" or "add Kyverno policies"
-  for a Kubernetes cluster.
-- The user wants to block Terraform/CloudFormation/Pulumi plans that
+  for a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster.
+- The user wants to block Terraform/[CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/[Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) plans that
   would create insecure infrastructure (public storage buckets,
   unencrypted volumes, overly permissive security groups/IAM) before
   `apply` runs.
 - The user wants to enforce that container images are signed, scanned,
-  non-root, or from an approved registry, at the Kubernetes admission
+  non-root, or from an approved registry, at the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission
   layer rather than trusting CI alone.
 - A security team wants to "codify" a manual review checklist so it
   becomes an automated, consistent gate instead of a document reviewers
@@ -56,47 +56,47 @@ in; a policy engine is not a substitute for the underlying controls
 - The user is troubleshooting a policy that's too strict (blocking
   legitimate deploys) or too permissive (letting through what it should
   block), and needs help writing/testing Rego or Kyverno rules.
-- The user wants a "dry-run"/audit mode before switching a new policy to
+- The user wants a "dry-run"/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) mode before switching a new policy to
   enforcing, to avoid a surprise outage from a policy rollout.
 
 ## Prerequisites & environment
 
 - **Open Policy Agent (OPA)** + **Rego** — general-purpose policy engine
-  usable for Kubernetes admission (via Gatekeeper), CI/CD gates, API
+  usable for [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission (via Gatekeeper), CI/CD gates, API
   authorization, and more; steeper learning curve (Rego is its own
   declarative language) but the most flexible and widely adopted option.
-- **Gatekeeper** — OPA's Kubernetes-native wrapper, providing
+- **Gatekeeper** — OPA's [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native wrapper, providing
   `ConstraintTemplate`/`Constraint` CRDs so Rego policies integrate with
-  standard Kubernetes admission webhooks and audit results as native
+  standard [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission webhooks and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) results as native
   resources.
-- **Kyverno** — Kubernetes-native alternative to OPA/Gatekeeper using
+- **Kyverno** — [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native alternative to OPA/Gatekeeper using
   plain YAML instead of Rego; lower learning curve for teams already
-  comfortable with Kubernetes manifests, slightly less general-purpose
-  outside the Kubernetes context.
+  comfortable with [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests, slightly less general-purpose
+  outside the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) context.
 - **Conftest** — runs OPA/Rego policies against structured config files
-  (Terraform plan JSON, Kubernetes YAML, Dockerfiles via a parser) outside
+  (Terraform plan JSON, [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) YAML, Dockerfiles via a parser) outside
   a live cluster, useful for CI-time IaC policy checks before anything is
   applied.
-- **HashiCorp Sentinel** — policy-as-code tied specifically to Terraform
+- **HashiCorp Sentinel** — [policy-as-code](../policy-as-code/SKILL.md) tied specifically to Terraform
   Cloud/Enterprise; relevant if already standardized on that platform.
-- A Kubernetes cluster with admission webhook support (standard in any
+- A [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with admission webhook support (standard in any
   reasonably current distribution) if enforcing at the cluster level;
   cluster-admin or equivalent to install Gatekeeper/Kyverno.
-- A staged rollout plan: **every new policy should run in `audit`/`dry-run`
+- A staged rollout plan: **every new policy should run in `[audit](../../AI_and_Agents/Operations/audit/SKILL.md)`/`dry-run`
   mode first**, not `enforce`, to surface what it would have blocked
   against real traffic/manifests before it can cause an outage.
 
 ## Step-by-step guidance
 
-1. **Start with an audit-only policy** to see impact before blocking
-   anything. Kyverno example requiring non-root containers, in audit mode:
+1. **Start with an [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-only policy** to see impact before blocking
+   anything. Kyverno example requiring non-root containers, in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) mode:
    ```yaml
    apiVersion: kyverno.io/v1
    kind: ClusterPolicy
    metadata:
      name: require-run-as-non-root
    spec:
-     validationFailureAction: Audit   # start here, not Enforce
+     validationFailureAction: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)   # start here, not Enforce
      rules:
        - name: check-runAsNonRoot
          match:
@@ -123,14 +123,14 @@ in; a policy engine is not a substitute for the underlying controls
    }
    ```
 
-3. **Review audit results for a full deploy cycle** (at least a week, or
+3. **Review [audit](../../AI_and_Agents/Operations/audit/SKILL.md) results for a full deploy cycle** (at least a week, or
    however long covers your normal deployment cadence) before flipping to
    enforcing — this catches legitimate workloads the policy would have
    broken (e.g. a base image that genuinely needs root for a startup
    step) so you can add a scoped exception rather than breaking
    production on rollout day.
 
-4. **Switch to enforcing once audit is clean**, and add a documented,
+4. **Switch to enforcing once [audit](../../AI_and_Agents/Operations/audit/SKILL.md) is clean**, and add a documented,
    narrowly-scoped exception mechanism for genuine exceptions rather than
    disabling the policy for a whole namespace:
    ```yaml
@@ -201,8 +201,8 @@ in; a policy engine is not a substitute for the underlying controls
 
 ## Best practices
 
-- Always roll out new policies in audit/dry-run mode first, and review
-  actual audit hits before enforcing — this is the single highest-value
+- Always roll out new policies in [audit](../../AI_and_Agents/Operations/audit/SKILL.md)/dry-run mode first, and review
+  actual [audit](../../AI_and_Agents/Operations/audit/SKILL.md) hits before enforcing — this is the single highest-value
   habit for avoiding "the new policy broke prod on a Friday."
 - Keep policies narrowly scoped and composable (one policy per concern:
   non-root, registry allowlist, resource limits) rather than one giant
@@ -210,7 +210,7 @@ in; a policy engine is not a substitute for the underlying controls
   to one rule without disabling everything else.
 - Enforce supply-chain and admission policies as defense-in-depth even
   when the same check exists in CI — CI can be bypassed by direct
-  `kubectl apply`/console access or a misconfigured pipeline, whereas an
+  `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply`/console access or a misconfigured pipeline, whereas an
   admission-time policy applies regardless of how the request arrived.
 - Be explicit about what a passing policy check actually proves: a policy
   requiring `runAsNonRoot: true` proves that field is set — it says
@@ -229,11 +229,11 @@ in; a policy engine is not a substitute for the underlying controls
 
 - **Symptom:** A new Gatekeeper/Kyverno policy is deployed directly in
   `Enforce` mode and immediately blocks a legitimate deployment,
-  triggering an incident.
-  **Fix:** Always deploy new policies in `Audit`/`dry-run` first, review
+  triggering an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  **Fix:** Always deploy new policies in `[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)`/`dry-run` first, review
   what they would have blocked over a representative time window, then
   switch to enforcing with documented exceptions for anything legitimate
-  the audit surfaced.
+  the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) surfaced.
 
 - **Symptom:** A Rego policy compiles and runs without error but never
   actually denies anything, even for input that should clearly violate
@@ -251,8 +251,8 @@ in; a policy engine is not a substitute for the underlying controls
   business risk) — policy as code automates checking for the presence of
   specific, narrowly-defined properties; it is not a substitute for
   broader review or for controls like
-  [sast-integration](../sast-integration/SKILL.md) and
-  [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)
+  [sast-integration](../[sast-integration](../sast-integration/SKILL.md)/SKILL.md) and
+  [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
   that check different things entirely.
 
 - **Symptom:** A policy is bypassed because a workload was applied
@@ -272,11 +272,11 @@ in; a policy engine is not a substitute for the underlying controls
 
 ## Worked example
 
-A platform team codifies three baseline Kubernetes security requirements
-as Kyverno policies, rolling them out audit-first, plus an OPA/Conftest
+A platform team codifies three baseline [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) security requirements
+as Kyverno policies, rolling them out [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first, plus an OPA/Conftest
 check blocking public S3 buckets in Terraform CI.
 
-`policies/require-non-root.yaml` (rolled out in Audit, then Enforce after
+`policies/require-non-root.yaml` (rolled out in [Audit](../../AI_and_Agents/Operations/audit/SKILL.md), then Enforce after
 a clean week):
 ```yaml
 apiVersion: kyverno.io/v1
@@ -348,17 +348,17 @@ Result: a plan that would set a public-read ACL fails CI with `FAIL - main
 - aws_s3_bucket_acl.example must not set a public-read ACL` before
 `apply` ever runs, and a pod without `runAsNonRoot` is rejected by the
 API server at creation time regardless of whether it came from CI or a
-direct `kubectl apply`.
+direct `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply`.
 
 ## Cross-references
 
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — where IaC policy
+- [secure-cicd-gates](../[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — where IaC policy
   checks (Conftest/OPA) fit relative to SAST/SCA gates in the overall
   pipeline.
-- [secrets-management](../secrets-management/SKILL.md) — a common
-  policy-as-code target (e.g. "no plaintext secret fields in manifests")
+- [secrets-management](../[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — a common
+  [policy-as-code](../policy-as-code/SKILL.md) target (e.g. "no plaintext secret fields in manifests")
   that this skill's enforcement mechanisms can codify.
-- [container-image-hardening](../container-image-hardening/SKILL.md) —
+- [container-image-hardening](../[container-image-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
   many of the properties enforced by admission policies (non-root,
   read-only filesystem, no privilege escalation) originate as
   image/container build practices this skill only verifies are present.

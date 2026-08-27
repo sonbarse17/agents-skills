@@ -20,14 +20,14 @@ metadata:
 
 ## Purpose
 
-[kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md)
+[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../DevOps_and_Cloud/Containers_and_Orchestration/kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
 models an ML workflow as a graph of containerized steps; Ray takes a
-fundamentally different approach — it's a Python-native distributed
-computing runtime where a cluster of workers executes ordinary Python
+fundamentally different approach — it's a [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native distributed
+computing runtime where a cluster of workers executes ordinary [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 functions and classes (tasks and actors) as first-class distributed units,
 with Ray Train, Ray Tune, and Ray Serve as ML-specific libraries built on
 that same runtime for distributed training, hyperparameter search, and
-model serving respectively. On Kubernetes, the KubeRay operator manages Ray
+model serving respectively. On [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), the KubeRay operator manages Ray
 as `RayCluster`/`RayJob`/`RayService` custom resources. The operational
 tradeoff this skill exists to navigate: Ray's programming model is far more
 flexible than a static DAG (dynamic task graphs, actors with persistent
@@ -42,7 +42,7 @@ way Kubeflow's compiled IR is.
   Airflow) for a distributed training or hyperparameter-search workload,
   especially one that needs dynamic task graphs or fine-grained control
   over parallelism that doesn't map cleanly to a static DAG.
-- Setting up a `RayCluster` on Kubernetes via the KubeRay operator for
+- Setting up a `RayCluster` on [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) via the KubeRay operator for
   distributed PyTorch/TensorFlow training with Ray Train.
 - Running large-scale hyperparameter search with Ray Tune.
 - Deploying a model with Ray Serve, especially one needing dynamic
@@ -52,14 +52,14 @@ way Kubeflow's compiled IR is.
   spilling to disk, the head node becoming a bottleneck, or a
   client/cluster Ray version mismatch.
 - Deciding how Ray's own autoscaler should interact with the underlying
-  Kubernetes cluster's node autoscaler.
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster's node autoscaler.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster ≥ 1.24 with the KubeRay operator installed
+- A [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster ≥ 1.24 with the KubeRay operator installed
   (`helm install kuberay-operator kuberay/kuberay-operator`), which manages
   `RayCluster`, `RayJob`, and `RayService` CRDs.
-- The `ray` Python package installed in both the client environment
+- The `ray` [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) package installed in both the client environment
   (wherever job submission originates) and baked into the cluster's worker
   images, at the **exact same version** — Ray's wire protocol is not
   guaranteed compatible across even minor version differences, and a
@@ -67,11 +67,11 @@ way Kubeflow's compiled IR is.
   pitfalls).
 - For GPU-backed training/serving: the GPU infrastructure and validated
   resource requests from
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   and
-  [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md) —
+  [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) —
   Ray's own resource model (`num_gpus=`) sits on top of, and must agree
-  with, the Kubernetes-level `nvidia.com/gpu`/MIG resource requests on the
+  with, the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level `nvidia.com/gpu`/MIG resource requests on the
   underlying worker pods.
 - Sufficient object store memory (`--object-store-memory` /
   `object_store_memory` on the head and workers) sized for the working set
@@ -124,12 +124,12 @@ way Kubeflow's compiled IR is.
    ```
    Set `minReplicas`/`maxReplicas` on worker groups so Ray's own autoscaler
    can scale the group between 0 and a ceiling — but see step 7 for how
-   this interacts with the Kubernetes-level node autoscaler.
+   this interacts with the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level node autoscaler.
 
 2. **Distribute training with Ray Train**, which wraps PyTorch/TensorFlow
    distributed training loops so the same script scales from a laptop to a
    multi-node GPU cluster without hand-rolled `torch.distributed` setup:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from ray.train.torch import TorchTrainer
    from ray.train import ScalingConfig, RunConfig, CheckpointConfig
 
@@ -155,13 +155,13 @@ way Kubeflow's compiled IR is.
    `use_gpu=True` plus `resources_per_worker={"GPU": 1}` tells Ray's
    scheduler to place each training worker on a node with an available GPU
    — this is Ray's own resource accounting layered on top of, not a
-   replacement for, the Kubernetes-level GPU resource request on the
+   replacement for, the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level GPU resource request on the
    worker pod spec.
 
 3. **Run hyperparameter search with Ray Tune**, which parallelizes trials
    across the cluster and supports early-stopping schedulers so
    underperforming trials are killed before consuming their full budget:
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from ray import tune
    from ray.tune.schedulers import ASHAScheduler
 
@@ -185,8 +185,8 @@ way Kubeflow's compiled IR is.
 4. **Serve models with Ray Serve**, which supports multiple models with
    independent scaling and request batching from a single Ray cluster —
    useful when serving several models of different sizes/traffic patterns
-   without one Kubernetes Deployment per model:
-   ```python
+   without one [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Deployment per model:
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from ray import serve
 
    @serve.deployment(ray_actor_options={"num_gpus": 0.25}, autoscaling_config={"min_replicas": 1, "max_replicas": 10})
@@ -202,10 +202,10 @@ way Kubeflow's compiled IR is.
    ```
    `num_gpus=0.25` requests a *fractional* GPU allocation from Ray — Ray
    will pack up to 4 such replicas onto one physical GPU with Ray-level
-   accounting, distinct from Kubernetes-level MIG partitioning; this only
+   accounting, distinct from [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level MIG partitioning; this only
    gives soft isolation (like time-slicing), not the hard memory isolation
    MIG provides — see
-   [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
    for that distinction.
 
 5. **Submit and track work as a `RayJob`** for one-shot training runs
@@ -218,7 +218,7 @@ way Kubeflow's compiled IR is.
    metadata:
      name: fraud-training-run-2026-07-28
    spec:
-     entrypoint: python train_fraud_model.py --epochs 20
+     entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) train_fraud_model.py --epochs 20
      shutdownAfterJobFinishes: true
      rayClusterSpec:
        rayVersion: "2.34.0"
@@ -239,16 +239,16 @@ way Kubeflow's compiled IR is.
    holding large intermediate objects (e.g. process data in smaller shards)
    rather than treating spilling as background noise.
 
-7. **Decide how Ray's autoscaler and the Kubernetes node autoscaler
+7. **Decide how Ray's autoscaler and the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) node autoscaler
    interact** before enabling both — Ray's autoscaler requests more worker
    pods (up to `maxReplicas`) based on pending Ray tasks/actors, and the
-   Kubernetes-level node autoscaler (cluster-autoscaler/Karpenter) then has
+   [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level node autoscaler (cluster-autoscaler/Karpenter) then has
    to provision nodes for those pending pods. If both are misconfigured
-   (e.g. Ray's `maxReplicas` far exceeds real node-pool capacity, or the
+   (e.g. Ray's `maxReplicas` far exceeds real node-pool [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), or the
    node autoscaler's scale-up is slower than Ray's scheduler's patience),
    the result is pods stuck `Pending` while Ray's own scheduler reports
    tasks as "waiting for resources" with no clear top-level error. See
-   [karpenter-cluster-autoscaling](../../../observability-and-platform-extras/skills/karpenter-cluster-autoscaling/SKILL.md)
+   [karpenter-cluster-autoscaling](../../../[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
    for tuning the node-level side of this interaction.
 
 ## Best practices
@@ -265,18 +265,18 @@ way Kubeflow's compiled IR is.
 - Use fractional GPU allocation (`num_gpus=0.25` etc.) only for workloads
   that tolerate soft, memory-unisolated sharing (e.g. several low-traffic
   Ray Serve replicas); for training or any workload needing memory
-  isolation, request whole GPUs or align Ray's request with a Kubernetes
+  isolation, request whole GPUs or align Ray's request with a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
   MIG-partitioned worker group instead.
 - Set `shutdownAfterJobFinishes: true` on `RayJob` for one-shot training
   runs so idle Ray clusters don't linger (and keep billing) after the job
-  completes — this mirrors the "don't leave idle GPU capacity running"
+  completes — this mirrors the "don't leave idle GPU [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) running"
   guidance in
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md).
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md).
 - Checkpoint to durable external storage (`RunConfig(storage_path=...)`
   pointing at S3/GCS, not local worker disk) so a worker pod eviction
   during a long Ray Train run doesn't lose progress.
 - Monitor `ray status` / the Ray dashboard's cluster resource view
-  alongside Kubernetes-level pod status — a Ray-level "task pending on
+  alongside [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level pod status — a Ray-level "task pending on
   resources" state looks identical to a healthy busy cluster unless you
   check whether the underlying worker pods actually exist and are Running.
 
@@ -312,14 +312,14 @@ way Kubeflow's compiled IR is.
 
 - **Symptom:** Ray's autoscaler requests worker pods up to
   `maxReplicas`, but they sit `Pending` indefinitely because the
-  Kubernetes node-pool has no room and the cluster autoscaler either isn't
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) node-pool has no room and the cluster autoscaler either isn't
   configured for this node pool or is slower than Ray's scheduling
   patience, and Ray Tune trials appear to "hang" with no clear error.
-  **Fix:** Check `kubectl get pods` for `Pending` Ray worker pods and
-  `kubectl describe` them for scheduling failure reasons independent of
+  **Fix:** Check `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods` for `Pending` Ray worker pods and
+  `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe` them for scheduling failure reasons independent of
   the Ray dashboard, which only shows Ray's view (pending resource
-  request) not the underlying Kubernetes scheduling failure reason; align
-  `maxReplicas` with actual node-pool capacity and verify the node
+  request) not the underlying [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) scheduling failure reason; align
+  `maxReplicas` with actual node-pool [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and verify the node
   autoscaler is enabled for that pool.
 
 - **Symptom:** Ray Serve replicas configured with `num_gpus=0.25` run fine
@@ -328,8 +328,8 @@ way Kubeflow's compiled IR is.
   sharing the same physical GPU.
   **Fix:** Fractional GPU allocation in Ray gives scheduling-level
   accounting only, not memory isolation — this is the same tradeoff as
-  Kubernetes-level GPU time-slicing. For workloads needing hard isolation,
-  request whole GPUs per replica or move to Kubernetes MIG-partitioned
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level GPU time-slicing. For workloads needing hard isolation,
+  request whole GPUs per replica or move to [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) MIG-partitioned
   worker groups instead of Ray-level GPU fractions.
 
 ## Worked example
@@ -346,7 +346,7 @@ kind: RayJob
 metadata:
   name: vision-finetune-2026-07-28
 spec:
-  entrypoint: python finetune_vision_model.py --epochs 15 --checkpoint-uri s3://ml-artifacts/vision-model/run-214/
+  entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) finetune_vision_model.py --epochs 15 --checkpoint-uri s3://ml-artifacts/vision-model/run-214/
   shutdownAfterJobFinishes: true
   ttlSecondsAfterFinished: 600
   rayClusterSpec:
@@ -376,7 +376,7 @@ spec:
 ```
 
 `finetune_vision_model.py` (abbreviated):
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from ray.train.torch import TorchTrainer
 from ray.train import ScalingConfig, RunConfig
 
@@ -392,7 +392,7 @@ result = trainer.fit()
 Once the `RayJob` completes and the cluster shuts down, serve the
 checkpoint with Ray Serve on a separate, long-lived serving `RayCluster`
 using fractional GPUs:
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @serve.deployment(ray_actor_options={"num_gpus": 0.5}, autoscaling_config={"min_replicas": 2, "max_replicas": 6})
 class VisionClassifier:
     def __init__(self):
@@ -410,8 +410,8 @@ of no hard memory isolation between them.
 
 ## Cross-references
 
-- [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md) — the graph-based orchestration alternative to Ray's task/actor model; read both before choosing.
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) — vendor-neutral pipeline design concepts (gates, reproducibility) that still apply when Ray is the execution engine for a training step.
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md) — general serving/autoscaling concepts (canary rollout, latency budgets) that apply to a Ray Serve deployment specifically.
-- [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md) and [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md) — the Kubernetes-level GPU scheduling layer that Ray's own resource requests (`num_gpus`) sit on top of.
-- [karpenter-cluster-autoscaling](../../../observability-and-platform-extras/skills/karpenter-cluster-autoscaling/SKILL.md) — node-level autoscaling that must be tuned in concert with Ray's own cluster autoscaler.
+- [kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../DevOps_and_Cloud/Containers_and_Orchestration/kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the graph-based orchestration alternative to Ray's task/actor model; read both before choosing.
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — vendor-neutral pipeline design concepts (gates, reproducibility) that still apply when Ray is the execution engine for a training step.
+- [model-serving-and-scaling](../[model-serving-and-scaling](../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — general serving/[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) concepts (canary rollout, latency budgets) that apply to a Ray Serve deployment specifically.
+- [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level GPU scheduling layer that Ray's own resource requests (`num_gpus`) sit on top of.
+- [karpenter-cluster-autoscaling](../../../[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) that must be tuned in concert with Ray's own cluster autoscaler.

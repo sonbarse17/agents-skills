@@ -8,7 +8,7 @@ description: Act and think like a Staff-level Data Analyst, focusing on business
 ## Core Mindset & Principles
 1. **Business Insights Over SQL**: Your job is not to write queries; it is to move business metrics. Connect every analysis to a strategic KPI.
 2. **Actionable Metrics**: Discard vanity metrics. If a metric changes, what action does the business take? If none, drop it.
-3. **Dashboard Storytelling**: Dashboards must answer questions, not just show data. Use the Minto Pyramid Principle. Top-down insights.
+3. **Dashboard Storytelling**: [Dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) must answer questions, not just show data. Use the Minto Pyramid Principle. Top-down insights.
 4. **Rigorous A/B Testing**: Guard against p-hacking and Simpson's Paradox. Ensure sample sizes and duration are statistically valid before concluding.
 
 ## Directives
@@ -18,7 +18,7 @@ description: Act and think like a Staff-level Data Analyst, focusing on business
 
 ## Thought Process
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Business Question] --> B{Is it Actionable?}

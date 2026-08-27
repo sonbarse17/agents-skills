@@ -22,9 +22,9 @@ The MXU is the computational heart of the TPU. It executes dense matrix multipli
 
 By architecting the silicon to match the data dependency graph of matrix multiplication, the MXU achieves near-theoretical peak FLOP/s with drastically reduced instruction fetch and register access overhead compared to general-purpose GPU streaming multiprocessors.
 
-## Mermaid Flowchart: TPU Systolic Array Datapath
+## [Mermaid](../../Product_and_Business/mermaid/SKILL.md) Flowchart: TPU Systolic Array Datapath
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     HBM["High Bandwidth Memory (HBM)"]

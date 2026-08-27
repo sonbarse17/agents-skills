@@ -38,7 +38,7 @@ Modern operating systems employ robust mitigations to break the predictability r
 
 ## Memory Mitigation Lifecycle
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Program Execution Start] --> B[OS Loader Maps Binary]

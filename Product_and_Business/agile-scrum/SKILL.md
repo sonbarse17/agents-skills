@@ -10,7 +10,7 @@ description: Staff Management expertise in Agile workflows, Sprint planning, and
 - **Story Points**: Use Fibonacci sequence (1, 2, 3, 5, 8, 13) for complexity sizing.
 
 ## Workflow
-```mermaid
+```[mermaid](../mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Backlog Refinement] --> B[Sprint Planning]

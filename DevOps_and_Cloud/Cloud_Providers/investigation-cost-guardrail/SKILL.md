@@ -41,10 +41,10 @@ Before Layer 1 heuristics, classify the agent's own tools. These are NOT `use_aw
 | `use_aws` | **VARIABLE** | Depends on operation — apply Layers 1–3 | Full heuristic pipeline |
 | `use_azure` | **FREE** | Azure Reader role, no per-call billing | Track count only |
 | `grafana_query_prometheus` | **CAUTION** | Depends on Grafana data source billing model | Track count, warn at 50+ |
-| `use_datadog` | **CAUTION** | Datadog API rate limits (no per-call $ cost, but may throttle) | Track count, warn at 100+ |
+| `use_datadog` | **CAUTION** | [Datadog](../../Observability_and_SecOps/datadog/SKILL.md) API rate limits (no per-call $ cost, but may throttle) | Track count, warn at 100+ |
 | `use_splunk` | **PAID** | Splunk search license (per GB ingested/searched) | Treat like CW Logs StartQuery |
 | `use_pagerduty` | **FREE** | PagerDuty API (rate limited, not per-call billed) | Track count only |
-| `shell` | **CAUTION** | May invoke `aws`, `az`, `kubectl` — untracked by Layers 1–3 | Log commands, warn if aws/az detected |
+| `shell` | **CAUTION** | May invoke `aws`, `az`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` — untracked by Layers 1–3 | Log commands, warn if aws/az detected |
 | `subagent` | **PAID** | Counts toward agent-seconds billing ($0.0083/sec) | Track spawns, enforce total time |
 | `fs_read`, `fs_write`, `fs_tree` | **FREE** | Local file I/O | No guardrail needed |
 | `datetime` | **FREE** | Internal state ops | No guardrail needed |
@@ -294,7 +294,7 @@ When halting or warning, ALWAYS suggest free or cheaper alternatives:
 
 | Pattern | Free/Cheaper Alternative |
 |---|---|
-| Broad time window scan | Narrow to ±30 min around the incident |
+| Broad time window scan | Narrow to ±30 min around the [incident](../../Observability_and_SecOps/incident/SKILL.md) |
 | Multiple resource query | Target specific resource ID |
 | Full scan (DynamoDB, Athena) | Add filter/WHERE/key condition |
 | Analytics query for known string | Use free filter API (FilterLogEvents) — note: LookupEvents may be tool-policy-blocked in some environments |

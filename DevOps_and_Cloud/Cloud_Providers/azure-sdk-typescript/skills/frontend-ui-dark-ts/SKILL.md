@@ -7,9 +7,9 @@ metadata:
   version: "1.0.0"
 ---
 
-# Frontend UI Dark Theme (TypeScript)
+# Frontend UI Dark Theme ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
 
-A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for dashboards, admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
+A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for [dashboards](../../../dashboards/SKILL.md), admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
 
 ## Stack
 
@@ -22,7 +22,7 @@ A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion*
 | `clsx` | ^2.x | Class merging |
 | `tailwindcss` | ^3.x | Styling |
 | `vite` | ^5.x | Build tool |
-| `typescript` | ^5.x | Type safety |
+| `[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)` | ^5.x | Type safety |
 
 ## Quick Start
 

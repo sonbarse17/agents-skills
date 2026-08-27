@@ -15,7 +15,7 @@ Apply practical FinOps controls to reduce AWS spend without sacrificing reliabil
 
 - Monthly AWS bill spikes unexpectedly or exceeds budget thresholds
 - Preparing cost reviews with engineering and finance teams
-- Rightsizing EC2, RDS, EKS, or Lambda workloads after load testing
+- [Rightsizing](../rightsizing/SKILL.md) EC2, RDS, EKS, or Lambda workloads after load testing
 - Choosing between Savings Plans, Reserved Instances, or on-demand pricing
 - Setting up automated budget alerts and anomaly detection
 - Cleaning up unused resources (unattached EBS, idle load balancers, old snapshots)
@@ -35,7 +35,7 @@ Apply practical FinOps controls to reduce AWS spend without sacrificing reliabil
 3. Identify top spend drivers by service, account, and tag.
 4. Rightsize underutilized compute and storage based on CloudWatch metrics.
 5. Apply commitment discounts (Savings Plans or RIs) for stable baseline usage.
-6. Set budgets, anomaly alerts, and build KPI dashboards.
+6. Set budgets, anomaly alerts, and build KPI [dashboards](../dashboards/SKILL.md).
 7. Review monthly and iterate.
 
 ## Cost Explorer CLI Commands
@@ -61,8 +61,8 @@ aws ce get-cost-and-usage \
   --metrics "UnblendedCost" \
   --group-by Type=TAG,Key=team
 
-# Get rightsizing recommendations for EC2
-aws ce get-rightsizing-recommendation \
+# Get [rightsizing](../rightsizing/SKILL.md) recommendations for EC2
+aws ce get-[rightsizing](../rightsizing/SKILL.md)-recommendation \
   --service "AmazonEC2" \
   --configuration '{"RecommendationTarget":"SAME_INSTANCE_FAMILY","BenefitsConsidered":true}'
 
@@ -298,7 +298,7 @@ aws ecs update-service \
 |---|---|---|
 | Cost Explorer returns empty data | CE not enabled or < 24h old | Enable in Billing console, wait 24h |
 | Budget alert not firing | SNS subscription not confirmed | Check email and confirm subscription |
-| Rightsizing shows no recommendations | Not enough usage data | Wait 14 days for sufficient metrics |
+| [Rightsizing](../rightsizing/SKILL.md) shows no recommendations | Not enough usage data | Wait 14 days for sufficient metrics |
 | Savings Plans utilization low | Over-purchased or workload changed | Review and adjust SP coverage |
 | Unattached EBS not showing | Wrong region queried | Loop through all active regions |
 | Billing alarm never triggers | Billing metrics only in us-east-1 | Create alarm in us-east-1 region |
@@ -307,8 +307,8 @@ aws ecs update-service \
 
 ## Related Skills
 
-- [aws-ec2](../aws-ec2/) - EC2 operations, sizing, and Spot instances
-- [aws-s3](../aws-s3/) - S3 storage classes and lifecycle controls
-- [aws-rds](../aws-rds/) - RDS instance sizing and reserved instances
-- [aws-lambda](../aws-lambda/) - Lambda pricing and concurrency tuning
-- [terraform-aws](../terraform-aws/) - Codifying cost guardrails in IaC
+- [aws-ec2](../[aws-ec2](../aws-ec2/SKILL.md)/) - EC2 operations, sizing, and Spot instances
+- [aws-s3](../[aws-s3](../aws-s3/SKILL.md)/) - S3 storage classes and lifecycle controls
+- [aws-rds](../[aws-rds](../aws-rds/SKILL.md)/) - RDS instance sizing and reserved instances
+- [aws-lambda](../[aws-lambda](../aws-lambda/SKILL.md)/) - Lambda pricing and concurrency tuning
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - Codifying cost guardrails in IaC

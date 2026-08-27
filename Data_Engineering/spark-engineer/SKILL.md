@@ -34,14 +34,14 @@ Load detailed guidance based on context:
 | Spark SQL & DataFrames | `../../../Global_References/spark-sql-dataframes.md` | DataFrame API, Spark SQL, schemas, joins, aggregations |
 | RDD Operations | `../../../Global_References/rdd-operations.md` | Transformations, actions, pair RDDs, custom partitioners |
 | Partitioning & Caching | `../../../Global_References/partitioning-caching.md` | Data partitioning, persistence levels, broadcast variables |
-| Performance Tuning | `../../../Global_References/performance-tuning.md` | Configuration, memory tuning, shuffle optimization, skew handling |
+| Performance Tuning | `../../../Global_References/[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md` | Configuration, memory tuning, shuffle optimization, skew handling |
 | Streaming Patterns | `../../../Global_References/streaming-patterns.md` | Structured Streaming, watermarks, stateful operations, sinks |
 
 ## Code Examples
 
 ### Quick-Start Mini-Pipeline (PySpark)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
@@ -74,7 +74,7 @@ result.write.mode("overwrite").parquet("s3://bucket/output/")
 
 ### Broadcast Join (small dimension table < 200 MB)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pyspark.sql.functions import broadcast
 
 # Spark will automatically broadcast dim_table; hint makes intent explicit
@@ -83,7 +83,7 @@ enriched = large_fact_df.join(broadcast(dim_df), on="product_id", how="left")
 
 ### Handling Data Skew with Salting
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import pyspark.sql.functions as F
 
 SALT_BUCKETS = 50
@@ -101,7 +101,7 @@ result = skewed_df.join(other_df, on="salted_key", how="inner") \
 
 ### Correct Caching Pattern
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Cache ONLY when the DataFrame is reused multiple times
 df_cleaned = df.filter(...).withColumn(...).cache()
 df_cleaned.count()  # Materialize immediately; check Spark UI for spill
@@ -141,11 +141,11 @@ When implementing Spark solutions, provide:
 2. Configuration recommendations (executors, memory, shuffle partitions)
 3. Partitioning strategy explanation
 4. Performance analysis (expected shuffle size, memory usage)
-5. Monitoring recommendations (key Spark UI metrics to watch)
+5. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) recommendations (key Spark UI metrics to watch)
 
 ## Knowledge Reference
 
 Spark DataFrame API, Spark SQL, RDD transformations/actions, catalyst optimizer, tungsten execution engine, partitioning strategies, broadcast variables, accumulators, structured streaming, watermarks, checkpointing, Spark UI analysis, memory management, shuffle optimization
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/spark-engineer/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/spark-engineer/)
 

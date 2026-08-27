@@ -18,7 +18,7 @@ tags: [ml, serving, inference, phase-11]
 # Model Serving Agent
 
 ## Purpose
-Design model serving architecture with framework selection, deployment strategy, autoscaling, and inference optimization for production workloads.
+Design model serving architecture with framework selection, deployment strategy, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and inference optimization for production workloads.
 
 ## Architecture/Decision Trees
 
@@ -31,9 +31,9 @@ Model framework and requirements
   │   └── K8s native → KServe (K8s CRD, auto-scaling to zero)
   ├── TensorFlow model
   │   └── TF Serving (native, best performance, SavedModel format)
-  ├── Python ecosystem (sklearn, XGBoost, custom)
+  ├── [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ecosystem (sklearn, XGBoost, custom)
   │   ├── Simple API → BentoML (OpenAPI, framework-agnostic)
-  │   └── Distributed, complex → Ray Serve (Python-native)
+  │   └── Distributed, complex → Ray Serve ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
   ├── Multiple frameworks
   │   ├── K8s → KServe or Seldon Core (multi-framework)
   │   └── MLflow → MLflow Serving (experiment tracking integration)
@@ -55,7 +55,7 @@ Risk tolerance and traffic pattern
       └── A/B Testing (traffic split by user/region, statistical comparison)
 ```
 
-### Autoscaling Strategy
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Strategy
 ```
 Workload pattern
   ├── Predictable traffic → Scheduled scaling (cron-based min/max)
@@ -83,13 +83,13 @@ Latency/throughput requirement
 ## Agent Protocol
 
 ### Trigger
-User request includes: model serving, TorchServe, BentoML, Ray Serve, Seldon Core, KServe, inference, model deployment, A/B testing, autoscaling, canary deploy, model versioning, prediction, inference API.
+User request includes: model serving, TorchServe, BentoML, Ray Serve, Seldon Core, KServe, inference, model deployment, A/B testing, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), canary deploy, model versioning, prediction, inference API.
 
 ### Protocol
 1. Identify model framework and inference requirements.
 2. Select serving framework based on model type, scale, and feature needs.
 3. Design deployment strategy: canary, blue-green, or A/B testing.
-4. Configure autoscaling with metrics and thresholds.
+4. Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with metrics and thresholds.
 5. Define model versioning scheme and rollback procedure.
 6. Optimize inference: batching, quantization, kernel fusion.
 
@@ -108,7 +108,7 @@ Strategy: {canary / blue-green / rolling}
 Replicas: {min} - {max}
 Model Version: {current} | Previous: {previous}
 
-### Autoscaling
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 Metric: {CPU / GPU / RPS / latency}
 Threshold: {value}
 
@@ -121,8 +121,8 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Completion Criteria
 - [ ] Serving framework selected with rationale based on model type.
-- [ ] Deployment strategy defined with traffic split and monitoring.
-- [ ] Autoscaling configured with metrics and thresholds.
+- [ ] Deployment strategy defined with traffic split and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [ ] [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with metrics and thresholds.
 - [ ] Model versioning scheme with rollback procedure.
 - [ ] Inference optimization applied (batching, quantization).
 - [ ] Health checks and readiness probes configured.
@@ -131,12 +131,12 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Step 1: Select Serving Framework
 - **TorchServe**: PyTorch-native, built-in model archive, metrics. Best for PyTorch models.
-- **BentoML**: Framework-agnostic, Python-first, OpenAPI spec. Best for Python ML ecosystem.
-- **Ray Serve**: Distributed, composition of models, Python-native. Best for complex pipelines.
-- **KServe**: Kubernetes-native, serverless, auto-scaling to zero. Best for K8s infra.
+- **BentoML**: Framework-agnostic, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ML ecosystem.
+- **Ray Serve**: Distributed, composition of models, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native. Best for complex pipelines.
+- **KServe**: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
 - **Seldon Core**: Multi-framework, explainability, outlier detection. Best for advanced ML features.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # BentoML service definition
 import bentoml
 import numpy as np
@@ -156,7 +156,7 @@ class PredictionService:
 ```
 
 ### Step 2: Package Model
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # BentoML packaging
 import bentoml
 import xgboost as xgb
@@ -170,7 +170,7 @@ svc = bentoml.Server("prediction_service:latest")
 svc.start()
 ```
 
-### Step 3: Configure Autoscaling
+### Step 3: Configure [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 ```yaml
 # KServe InferenceService
 apiVersion: serving.kserve.io/v1beta1
@@ -209,7 +209,7 @@ spec:
 ```
 
 ### Step 5: Inference Optimization
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Dynamic batching in config
 batch_size=32
 max_batch_delay=100
@@ -232,9 +232,9 @@ torch.onnx.export(
 )
 ```
 
-### Step 6: Health Checks & Monitoring
+### Step 6: Health Checks & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 ```yaml
-# Kubernetes health probes
+# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) health probes
 readinessProbe:
   httpGet:
     path: /v1/models/my-model/ready
@@ -250,7 +250,7 @@ livenessProbe:
 ```
 
 ### Step 7: A/B Testing Setup
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Traffic routing for A/B testing
 import numpy as np
 
@@ -271,23 +271,23 @@ class ABTestRouter:
 ## Anti-Patterns
 
 - **100% cutover without canary**: Always use traffic splitting for new model versions.
-- **Autoscaling on CPU**: CPU is a lagging indicator for inference. Use concurrency or RPS.
+- **[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on CPU**: CPU is a lagging indicator for inference. Use concurrency or RPS.
 - **Not retaining previous model versions**: Keep last 2 versions for rollback.
 - **Batching without latency budget**: Batch beyond user tolerance → timeout errors.
 - **Missing health endpoints**: Every serving endpoint needs /health and /ready.
 - **Not pinning framework versions**: ABI breaks when serving framework upgrades.
 - **100% inference logging**: Log overflow. Sample at <1% rate.
-- **Not monitoring data drift**: Model degrades silently without drift detection.
+- **Not [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data drift**: Model degrades silently without drift detection.
 
 ## Production Considerations
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - p50/p95/p99 inference latency.
 - Error rate (HTTP 4xx/5xx).
 - Request throughput (RPS).
 - GPU utilization and memory.
 - Model version drift detection.
-- Prediction distribution monitoring.
+- Prediction distribution [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 
 ### Scaling
 - Horizontal Pod Autoscaler with custom metrics.
@@ -295,7 +295,7 @@ class ABTestRouter:
 - Batch jobs: reduce to zero replicas when idle.
 
 ### Cost Optimization
-- Serverless (KServe): scale to zero when idle.
+- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (KServe): scale to zero when idle.
 - GPU: use spot instances for batch inference.
 - Cache frequent predictions (response cache).
 - Right-size instances: profile before deploying.
@@ -387,9 +387,9 @@ spec:
               - image: model-c-server
 ```
 
-## Autoscaling Configuration — Production Ready
+## [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration — Production Ready
 
-### KServe with Knative Autoscaling
+### KServe with Knative [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 ```yaml
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
@@ -413,7 +413,7 @@ spec:
             memory: 4Gi
 ```
 
-### Autoscaling Decision Table
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Decision Table
 | Workload Pattern | Metric | Scale Target | Strategy |
 |-----------------|--------|-------------|----------|
 | Real-time API, steady | Concurrency | 5-10 | HPA with concurrency |
@@ -424,7 +424,7 @@ spec:
 
 ### HPA with Custom Metrics
 ```yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: model-hpa
@@ -454,7 +454,7 @@ spec:
 
 ## Response Caching Strategy
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class PredictionCache:
     """LRU cache for frequent prediction requests."""
 
@@ -491,7 +491,7 @@ class PredictionCache:
 ## Model Serving Anti-Patterns
 1. **No traffic splitting**: Every deploy is a full cutover, no gradual rollout
    Fix: Always use canary or blue-green for model changes
-2. **CPU-based autoscaling for models**: CPU is a poor proxy for inference load
+2. **CPU-based [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for models**: CPU is a poor proxy for inference load
    Fix: Scale on concurrency or RPS
 3. **No request batching**: Every prediction is a separate HTTP call
    Fix: Smart batching with max latency budget
@@ -502,7 +502,7 @@ class PredictionCache:
 
 ## Serving Framework Comparison
 
-| Framework | GPU Support | Autoscaling | Batching | Model Versioning | Community |
+| Framework | GPU Support | [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) | Batching | Model Versioning | Community |
 |-----------|-------------|-------------|----------|-----------------|-----------|
 | KServe | Yes | Knative | Smart batch | Multiple strategies | Large |
 | Seldon Core | Yes | Custom HPA | Custom | Graph-based | Medium |
@@ -515,7 +515,7 @@ class PredictionCache:
 ## Rules
 - Serving framework matches model framework.
 - Deployment strategy uses traffic splitting.
-- Autoscaling based on concurrency or RPS, not CPU.
+- [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) based on concurrency or RPS, not CPU.
 - Every model version retains previous 2 for rollback.
 - Batching with max latency budget.
 - Health checks at /health and /ready.
@@ -525,12 +525,12 @@ class PredictionCache:
 - Rollback validated with health checks.
 
 ## References
-  - ../../../Global_References/k8s-serving.md — Kubernetes-Native Serving
+  - ../../../Global_References/k8s-serving.md — [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-Native Serving
   - ../../../Global_References/model-serving-advanced.md — Model Serving Advanced Topics
   - ../../../Global_References/model-serving-fundamentals.md — Model Serving Fundamentals
   - ../../../Global_References/model-versioning.md — Model Versioning & Deployment Strategies
-  - ../../../Global_References/serverless-inference.md — Serverless Model Inference
+  - ../../../Global_References/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-inference.md — [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Model Inference
   - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
-For model building and packaging, hand off to `ml-ml-pipeline`. For monitoring inference metrics, hand off to `devops/monitoring`.
+For model building and packaging, hand off to `ml-[ml-pipeline](../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)`.
 

@@ -20,7 +20,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete Kubernetes Deployment on EKS From Scratch
+# Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on EKS From Scratch
 
 ## Purpose
 
@@ -29,11 +29,11 @@ eight tasks that must happen in a specific order, each with its own
 existing skill in this repository covering the depth. Get the order wrong
 (most commonly: standing up cert-manager's DNS-01 solver before the IAM/
 OIDC federation it needs exists, or declaring a cluster "done" the moment
-`kubectl get nodes` shows `Ready`) and the result is a cluster that looks
+`[kubectl](../kubectl/SKILL.md) get nodes` shows `Ready`) and the result is a cluster that looks
 finished but fails the first time someone actually depends on it — a stuck
 `Certificate`, an Ingress that never gets a usable address, or a CNI
 NetworkPolicy that silently no-ops. This skill is the AWS-specific
-end-to-end runbook: it sequences AWS landing zone/IAM prerequisites, EKS
+end-to-end [runbook](../../Observability_and_SecOps/runbook/SKILL.md): it sequences AWS landing zone/IAM prerequisites, EKS
 provisioning, VPC CNI, ingress, cert-manager, conformance validation, a
 first workload, and a health baseline into one ordered path, cross-
 referencing the tool-specific skill that covers each phase's actual detail
@@ -42,7 +42,7 @@ rather than repeating it here.
 ## When to use
 
 - Deploying a brand-new EKS cluster into an AWS account for the first
-  time, from a landing zone that already exists but has no Kubernetes
+  time, from a landing zone that already exists but has no [Kubernetes](../kubernetes/SKILL.md)
   workload on it yet.
 - Auditing an existing EKS rollout for a skipped or out-of-order phase
   (e.g. cert-manager installed before its IAM role existed, or a cluster
@@ -61,19 +61,19 @@ rather than repeating it here.
   zone — account vended through Account Factory, baseline guardrails
   (SCPs, CloudTrail, Config) already applied. This skill does **not**
   cover vending the account itself; see
-  [aws-landing-zone-setup](../../../cloud/skills/aws-landing-zone-setup/SKILL.md).
+  [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md).
   Provisioning an EKS cluster directly into an ungoverned flat account
   works mechanically but inherits none of the landing zone's guardrails
   retroactively.
 - IAM permissions to create the EKS cluster/node IAM roles, an OIDC
   identity provider, and IRSA-scoped roles — see
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
   for the least-privilege design that should govern every role created in
   Phase 1.
 - A Route 53 public hosted zone already delegated for the domain
   cert-manager will issue certificates for (Phase 4 depends on this
   existing before DNS-01 can succeed).
-- `eksctl` ≥ 0.180, `kubectl`, `helm` ≥ 3.14, and `awscli` v2 authenticated
+- `eksctl` ≥ 0.180, `[kubectl](../kubectl/SKILL.md)`, `helm` ≥ 3.14, and `awscli` v2 authenticated
   against the target account.
 - A non-production AWS account/VPC to rehearse this exact sequence in at
   least once before running it against a production account — several of
@@ -89,7 +89,7 @@ integration decisions.
 
 1. **Phase 1 — AWS landing zone & IAM prerequisites.** Confirm the target
    account sits in the correct OU with guardrails applied (see
-   [aws-landing-zone-setup](../../../cloud/skills/aws-landing-zone-setup/SKILL.md)).
+   [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md)).
    Critically, **decide and pre-plan every IAM role this cluster will need
    via IRSA/Pod Identity now** — not just the cluster/node roles, but the
    cert-manager Route 53 DNS-01 role and the workload's own application
@@ -99,11 +99,11 @@ integration decisions.
    aws iam create-policy --policy-name Route53DNS01Payments \
      --policy-document file://route53-dns01-policy.json
    ```
-   See [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+   See [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
    for scoping this policy to the specific hosted zone ID only.
 
 2. **Phase 2 — Provision the EKS cluster and node group.** Use
-   [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
    for the full `eksctl create cluster`/node group/IRSA setup detail.
    EKS-specific sequencing point: associate the OIDC provider **in this
    phase**, even though the first IRSA role that consumes it (cert-manager,
@@ -125,16 +125,16 @@ integration decisions.
    already running. Confirm it's healthy and sized correctly for the node
    type's max-pods-per-node limit (VPC CNI allocates pod IPs directly from
    VPC ENIs, so pod density per node is capped by instance ENI/IP limits,
-   not an arbitrary Kubernetes default):
+   not an arbitrary [Kubernetes](../kubernetes/SKILL.md) default):
    ```bash
-   kubectl get daemonset aws-node -n kube-system
-   kubectl describe configmap amazon-vpc-cni -n kube-system
+   [kubectl](../kubectl/SKILL.md) get daemonset aws-node -n kube-system
+   [kubectl](../kubectl/SKILL.md) describe configmap amazon-vpc-cni -n kube-system
    ```
    **Alternative:** if `NetworkPolicy` enforcement beyond VPC CNI's native
    (limited, opt-in) policy support is required, or a non-AWS-specific CNI
    is preferred for portability, replace VPC CNI with Calico or Cilium —
    see
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for the tradeoffs; this is a deliberate, planned swap done before any
    workload is scheduled, not a default recommendation for most EKS
    clusters.
@@ -150,7 +150,7 @@ integration decisions.
      needed.
    - **ingress-nginx** behind a `Service` of `type: LoadBalancer`
      (provisions a Network Load Balancer) — see
-     [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+     [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
      for the full install/annotation detail. Preferred for parity with
      non-AWS clusters (AKS/GKE/on-prem) running the same ingress-nginx
      configuration everywhere.
@@ -163,7 +163,7 @@ integration decisions.
 
 5. **Phase 5 — cert-manager with Route 53 DNS-01.** Install cert-manager
    and configure a `ClusterIssuer` per
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md).
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md).
    The EKS-specific integration point: cert-manager's Route 53 API calls
    must authenticate via the IRSA role planned in Phase 1 and the OIDC
    provider associated in Phase 2 — **not** a static AWS access key:
@@ -179,25 +179,25 @@ integration decisions.
      --set serviceAccount.name=cert-manager
    ```
    Validate against Let's Encrypt staging first, exactly as
-   [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)
+   [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
    describes, before cutting over to production.
 
 6. **Phase 6 — Conformance and smoke validation.** Run Sonobuoy quick
    mode, then full `certified-conformance`, then the targeted DNS/storage/
    ingress smoke tests — see
-   [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md).
+   [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md).
    For EKS specifically, also confirm the `gp3`/`ebs-csi` default
    `StorageClass` (via the EBS CSI driver add-on) actually provisions a
    PVC — a common EKS-specific gap is the EBS CSI driver add-on not being
    enabled at cluster creation, which the generic conformance suite
    surfaces as a storage-test failure that traces back to a missing
-   EKS add-on, not a Kubernetes defect.
+   EKS add-on, not a [Kubernetes](../kubernetes/SKILL.md) defect.
 
 7. **Phase 7 — Deploy the first workload via Helm.** Package and install
    per
-   [helm-chart-authoring](../helm-chart-authoring/SKILL.md), using the
+   [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md), using the
    IRSA ServiceAccount pattern from
-   [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
    for any of the workload's own AWS API access (its own IAM role,
    planned back in Phase 1, is distinct from cert-manager's):
    ```bash
@@ -208,14 +208,14 @@ integration decisions.
 8. **Phase 8 — Node/cluster health baseline.** Establish the ongoing
    operational baseline before declaring the cluster handed off: node
    drain/cordon discipline and `NotReady` diagnosis via
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md).
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md).
    **Note what does *not* apply here:** EKS's control plane and etcd are
    fully AWS-managed — the procedures in
-   [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)
+   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
    do not apply to this cluster at all (there is no customer-accessible
    `etcdctl` endpoint); rely on EKS control-plane logging (enabled to the
    landing zone's central log destination) instead of etcd-level
-   snapshotting for control-plane observability.
+   snapshotting for control-plane [observability](../../Observability_and_SecOps/observability/SKILL.md).
 
 ## Best practices
 
@@ -237,7 +237,7 @@ integration decisions.
   cluster, not a mix of remembered CLI invocations — this is what makes
   Phase reproduction for a second cluster (DR, new region) fast and
   correct.
-- Route every phase's audit-relevant logs (EKS control-plane logs,
+- Route every phase's [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-relevant logs (EKS control-plane logs,
   cert-manager events, Ingress access logs) to the landing zone's central
   logging destination from day one, not as an afterthought once the
   cluster is already handling production traffic.
@@ -270,7 +270,7 @@ integration decisions.
   application team relies on turns out to be a silent no-op once real
   traffic patterns exercise it weeks later.
   **Fix:** This is exactly the gap
-  [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+  [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
   exists to catch before handoff, not after. Treat Phase 6 as a required
   gate in the sequence, not an optional step skipped under deadline
   pressure — if VPC CNI was swapped for Calico in Phase 3 specifically
@@ -284,7 +284,7 @@ integration decisions.
   optional add-on. Confirm it was enabled during Phase 2
   (`eksctl create addon --name aws-ebs-csi-driver`) rather than assuming
   every EKS cluster ships a working default `StorageClass` out of the
-  box the way a fresh kubeadm-with-Longhorn or a GKE cluster might.
+  box the way a fresh kubeadm-with-[Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md) or a GKE cluster might.
 
 ## Worked example
 
@@ -307,13 +307,13 @@ eksctl create addon --cluster payments-prod --name aws-ebs-csi-driver
 eksctl utils associate-iam-oidc-provider --cluster payments-prod --approve
 
 # Phase 3 — VPC CNI is already running; confirm health
-kubectl get daemonset aws-node -n kube-system
+[kubectl](../kubectl/SKILL.md) get daemonset aws-node -n kube-system
 
 # Phase 4 — ingress-nginx via Helm, NLB-backed
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
-kubectl get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
+[kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP
 # create Route 53 A/ALIAS record for payments.example.com -> that NLB
 
 # Phase 5 — cert-manager with IRSA-backed Route 53 DNS-01
@@ -324,7 +324,7 @@ eksctl create iamserviceaccount \
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 \
   --set crds.enabled=true --set serviceAccount.create=false --set serviceAccount.name=cert-manager
-kubectl apply -f route53-staging-issuer.yaml   # validate, then swap to prod issuer
+[kubectl](../kubectl/SKILL.md) apply -f route53-staging-issuer.yaml   # validate, then swap to prod issuer
 
 # Phase 6 — validation gate
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
@@ -335,24 +335,24 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
   --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
 
 # Phase 8 — health baseline
-kubectl get nodes
-kubectl get pdb -A
+[kubectl](../kubectl/SKILL.md) get nodes
+[kubectl](../kubectl/SKILL.md) get pdb -A
 ```
 
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming Phases 1–7 wired
 together correctly end to end, and the cluster's node maintenance
-runbook (Phase 8) is in place before the first planned patch window.
+[runbook](../../Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is in place before the first planned patch window.
 
 ## Cross-references
 
-- [aws-landing-zone-setup](../../../cloud/skills/aws-landing-zone-setup/SKILL.md) — the account/OU/guardrail layer this sequence assumes already exists.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege design for every IAM role created across Phases 1, 5, and 7.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — full detail for Phase 2's cluster/node group/IRSA provisioning.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — the Calico/Cilium alternative to VPC CNI referenced in Phase 3.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — full detail for Phase 6's validation gate.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — the ongoing operational baseline established in Phase 8.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — explains why its procedures do not apply to this managed control plane.
+- [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md) — the account/OU/guardrail layer this sequence assumes already exists.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege design for every IAM role created across Phases 1, 5, and 7.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — full detail for Phase 2's cluster/node group/IRSA provisioning.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — the Calico/Cilium alternative to VPC CNI referenced in Phase 3.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 6's validation gate.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for Phase 7's chart packaging and release discipline.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 8.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — explains why its procedures do not apply to this managed control plane.

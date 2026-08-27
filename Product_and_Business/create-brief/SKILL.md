@@ -28,7 +28,7 @@ Exact user phrases: "I want to build", "new app idea", "create a brief", "produc
 
 ### Input Context
 Before activating, verify:
-- master-orchestrator has routed here, OR user has directly asked for a brief.
+- [master-orchestrator](../master-orchestrator/SKILL.md) has routed here, OR user has directly asked for a brief.
 - No existing brief in `docs/` (if one exists, ask: "A brief already exists at {path}. Review or replace?")
 - User has at least one sentence describing their idea.
 
@@ -49,7 +49,7 @@ Does this capture your vision? Reply with changes or 'approved'.
 When approved:
 ```
 Brief saved to docs/brief-{YYYY-MM-DD}.md
-Next skill: create-prd
+Next skill: [create-prd](../create-prd/SKILL.md)
 ```
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions. Compress output.
@@ -384,7 +384,7 @@ User says "approved" but the brief contains ambiguous language that means differ
 | Approach | Purpose | Output | When to Use |
 |----------|---------|--------|-------------|
 | Product Brief (this skill) | Align on scope, problem, users, success criteria | One-page markdown file | Before any design or development work |
-| PRD (create-prd) | Detailed functional requirements | Structured PRD artifact | After brief is approved |
+| PRD ([create-prd](../create-prd/SKILL.md)) | Detailed functional requirements | Structured PRD artifact | After brief is approved |
 | User Stories (create-stories) | Specific acceptance criteria per feature | Story list in docs/ | After PRD, before sprint |
 | Architecture Decision Record | Document technical decisions | ADR in docs/adr/ | During development, not planning |
 | Pitch Deck | Raise funding, sell vision | Presentation slides | External communication, not internal alignment |
@@ -419,10 +419,10 @@ The brief should be drafted in under 30 seconds of thinking time. If it takes lo
 
 ### Adjacent Skills (Planning Chain)
 ```
-create-brief --> create-prd --> create-stories --> create-roadmap
+create-brief --> [create-prd](../create-prd/SKILL.md) --> create-stories --> create-roadmap
      |                                  |
      v                                  v
-  design-systems                    architecture
+  [design-systems](../../Software_Engineering_and_Other/Frontend/design-systems/SKILL.md)                    architecture
   (if needed)                       (if needed)
 ```
 
@@ -452,7 +452,7 @@ create-brief --> create-prd --> create-stories --> create-roadmap
 
 ## Handoff
 Output: `docs/brief-{YYYY-MM-DD}.md`
-Next skill: create-prd
+Next skill: [create-prd](../create-prd/SKILL.md)
 Carry forward: brief content, user's stated problem, target users, MVP features.
 ## Implementation Patterns
 
@@ -506,7 +506,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -520,7 +520,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -536,12 +536,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -550,7 +550,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -558,13 +558,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -573,8 +573,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

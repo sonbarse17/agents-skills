@@ -2,18 +2,18 @@
 name: godot-gdscript
 description: Godot Engine Architecture
 ---
-# Godot Engine internal Architecture
+# [Godot](../godot/SKILL.md) Engine internal Architecture
 
 ## Server Architecture
-Godot completely separates the scene graph (Nodes, Tree) from the low-level processing by delegating hardware interaction and heavy lifting to "Servers". Servers are singletons (e.g., `RenderingServer`, `PhysicsServer3D`, `AudioServer`) that run highly optimized C++ code, often on separate threads. The SceneTree is essentially a high-level frontend that issues commands to these servers. 
+[Godot](../godot/SKILL.md) completely separates the scene graph (Nodes, Tree) from the low-level processing by delegating hardware interaction and heavy lifting to "Servers". Servers are singletons (e.g., `RenderingServer`, `PhysicsServer3D`, `AudioServer`) that run highly optimized C++ code, often on separate threads. The SceneTree is essentially a high-level frontend that issues commands to these servers. 
 
 ## VisualServer (RenderingServer) Internals
 The `RenderingServer` handles all drawing operations. Nodes like `MeshInstance3D` do not render themselves. Instead, they register a resource (e.g., an RID for a mesh) with the `RenderingServer` and update their transform matrices. The Server maintains its own spatial partitioning structure (like a BVH) to perform culling and rendering, allowing thread-safe decoupling from game logic execution.
 
 ## Signal Event Loop
-Signals implement the Observer pattern at the engine core. When `emit_signal()` is called, it iterates over connected callables in the `Object`'s connection map. For deferred signals (using `CONNECT_DEFERRED`), Godot pushes the signal emission payload into a `MessageQueue`. The queue is flushed at the end of the current frame (during `SceneTree::process`), ensuring that state modifications do not corrupt iterative processes like physics callbacks.
+Signals implement the Observer pattern at the engine core. When `emit_signal()` is called, it iterates over connected callables in the `Object`'s connection map. For deferred signals (using `CONNECT_DEFERRED`), [Godot](../godot/SKILL.md) pushes the signal emission payload into a `MessageQueue`. The queue is flushed at the end of the current frame (during `SceneTree::process`), ensuring that state modifications do not corrupt iterative processes like physics callbacks.
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph SceneTreeHighLevelLogic ["High-Level Logic<br><br><br>"]

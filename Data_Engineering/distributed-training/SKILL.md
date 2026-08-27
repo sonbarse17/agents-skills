@@ -13,7 +13,7 @@ Standard Data Parallelism duplicates the entire model state across all GPUs, whi
 - **ZeRO Stage 2**: Partitions Gradients. Each GPU only holds gradients for its parameter partition, reducing memory by 8x.
 - **ZeRO Stage 3**: Partitions Parameters. Model weights are scattered. Forward/backward passes use dynamic collective communications (All-Gather) to fetch required parameters just-in-time for a layer's computation, and immediately discard them, allowing training of trillion-parameter models.
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph CommunicationRingAllReducePhase ["Ring All-Reduce Phase<br><br><br>"]

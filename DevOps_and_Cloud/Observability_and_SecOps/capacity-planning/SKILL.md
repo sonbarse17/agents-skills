@@ -4,13 +4,13 @@ description: Ensures a system has enough headroom before it needs it, by forecas
 license: MIT
 ---
 
-# Capacity Planning
+# [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
 
-Autoscaling handles the minutes-to-hours timescale of load fluctuation. Capacity planning
+[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) handles the minutes-to-hours timescale of load fluctuation. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 handles the weeks-to-months timescale where the thing you're short on isn't compute headroom
 but lead time — a database that needs a resize scheduled during a maintenance window, a quota
 increase that takes two weeks to approve, a new region that takes a quarter to stand up.
-Autoscaling can't add capacity that doesn't exist yet in the account, the budget, or the
+[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) can't add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) that doesn't exist yet in the account, the budget, or the
 vendor relationship.
 
 The recurring failure is planning for the average and getting surprised by the peak. Average
@@ -21,7 +21,7 @@ survives Black Friday, a viral moment, or the batch job that runs once a quarter
 
 ## 1. Forecast from actual growth, not from hope
 
-A capacity forecast built on "we think we'll grow 20% this year" is a guess with a number
+A [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) forecast built on "we think we'll grow 20% this year" is a guess with a number
 attached. A useful forecast starts from real historical growth curves — user count, request
 volume, data size — and projects forward with an explicit method, so the assumption is visible
 and arguable rather than buried.
@@ -49,9 +49,9 @@ a different system.
 | Compute | Request queue depth / scheduling latency |
 | Database | Connection pool exhaustion, lock wait time |
 | Network | Retransmit rate, not just bandwidth used |
-| Storage | IOPS ceiling, not just capacity used |
+| Storage | IOPS ceiling, not just [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) used |
 
-- **Find the knee of the curve empirically** — via `load-testing`, not by assuming a
+- **Find the knee of the curve empirically** — via `[load-testing](../load-testing/SKILL.md)`, not by assuming a
   round-number threshold.
 - **Different resources saturate differently** — a system can be CPU-fine and
   connection-pool-dead at the same load.
@@ -59,7 +59,7 @@ a different system.
 **Done when:** the planned headroom is expressed relative to a measured saturation point, not
 an assumed utilization percentage.
 
-## 3. Account for the lead time to add capacity, not just the amount
+## 3. Account for the lead time to add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), not just the amount
 
 The forecast tells you how much you'll need; lead time tells you when you must start acquiring
 it. A cloud VM might be minutes; a reserved-instance commitment, a database engine upgrade, a
@@ -67,54 +67,54 @@ new peering arrangement, or a vendor quota increase can be weeks. Plan the *trig
 start provisioning, working backward from the need date by the lead time — not the need date
 itself.
 
-- **List lead time per capacity type explicitly** — quota increases, hardware, licenses, and
+- **List lead time per [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) type explicitly** — quota increases, hardware, licenses, and
   new regions all differ wildly.
 - **Trigger the request on a date, not a feeling** — "start the quota increase request 6 weeks
   before projected exhaustion," written down.
 - **Build in slack for the request to be denied or delayed** — vendor lead times are
   estimates, not guarantees.
 
-**Done when:** every capacity type in scope has a stated lead time and a calculated trigger
+**Done when:** every [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) type in scope has a stated lead time and a calculated trigger
 date derived from it.
 
 ## 4. Plan explicitly for known peaks, not just trend
 
 Steady growth forecasting misses events — a product launch, a marketing campaign, a seasonal
-peak, a scheduled batch job that dwarfs normal traffic. These need their own capacity plan,
+peak, a scheduled batch job that dwarfs normal traffic. These need their own [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) plan,
 sized to the peak's expected multiple of baseline, tested ahead of time rather than discovered
 live.
 
 - **Size for the peak multiple, not baseline plus a margin** — a 10x Black Friday spike needs
   10x planning, not "add 20% headroom."
-- **Load-test at the target peak before it arrives** — see `load-testing` — a plan that's
+- **Load-test at the target peak before it arrives** — see `[load-testing](../load-testing/SKILL.md)` — a plan that's
   never been load-tested is a guess.
 - **Have a degrade-gracefully plan for beyond-forecast load** — feature flags to shed
-  non-critical work, queueing instead of failing — see `feature-flags`.
+  non-critical work, queueing instead of failing — see `[feature-flags](../../CI_CD/feature-flags/SKILL.md)`.
 
-**Done when:** every known upcoming peak event has a capacity plan sized to its expected
+**Done when:** every known upcoming peak event has a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) plan sized to its expected
 multiple and validated by a load test.
 
-## 5. Tie capacity to cost, explicitly
+## 5. Tie [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) to cost, explicitly
 
-Headroom costs money sitting idle most of the time. Capacity planning that ignores cost
-produces over-provisioned systems that are safe but wasteful; capacity planning that ignores
+Headroom costs money sitting idle most of the time. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning that ignores cost
+produces over-provisioned systems that are safe but wasteful; [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning that ignores
 safety produces cheap systems that fall over at the peak. Make the tradeoff a stated decision,
 not a default.
 
 - **State the cost of the headroom** you're carrying, in the same conversation as the risk it
   protects against.
-- **Use reserved or committed capacity for predictable baseline**, on-demand or autoscaled for
-  the variable peak — see `cost-optimization` for the broader tradeoff.
-- **Revisit over-provisioned capacity on the same cadence as the forecast** — capacity
+- **Use reserved or committed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) for predictable baseline**, on-demand or autoscaled for
+  the variable peak — see `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for the broader tradeoff.
+- **Revisit over-provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) on the same cadence as the forecast** — [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)
   headroom rots the same way stale forecasts do.
 
-**Done when:** the capacity plan states its cost as a number and names the budget owner who
+**Done when:** the [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) plan states its cost as a number and names the budget owner who
 approved it.
 
 ## Report
 
 State the forecast horizon and method used, the saturation-based headroom target for each key
-resource, and the trigger dates for any capacity that needs lead time. Name explicitly which
+resource, and the trigger dates for any [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) that needs lead time. Name explicitly which
 resources still lack a tested saturation point or a known lead time — an untested assumption
-about when a system falls over is the gap most likely to turn into a real incident, and it's
+about when a system falls over is the gap most likely to turn into a real [incident](../incident/SKILL.md), and it's
 cheaper to admit it now than to discover it at the peak.

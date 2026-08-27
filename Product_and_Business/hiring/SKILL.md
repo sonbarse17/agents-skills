@@ -50,11 +50,11 @@ Situation, Task, Action, Result framework for behavioural questions.
 Evaluate candidates on specific past behaviour, not hypothetical answers.
 
 ```
-Question: Tell me about a time you handled a production incident.
+Question: Tell me about a time you handled a production [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   S: Service degrading under load, customer complaints.
   T: Restore service, identify root cause, prevent recurrence.
-  A: Triaged, rolled back, wrote post-mortem, added monitoring.
-  R: P50 latency reduced, no repeat incident in 6 months.
+  A: Triaged, rolled back, wrote post-mortem, added [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+  R: P50 latency reduced, no repeat [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) in 6 months.
 ```
 
 ### Decision Matrix Architecture
@@ -411,8 +411,8 @@ Candidate: __________  Reference: __________  Relationship: __________
   - ../../../Global_References/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
 
 ## Handoff
-`management/team-rules` for onboarding new hires
-`planning/create-roadmap` for capacity planning
+`management/[team-rules](../team-rules/SKILL.md)` for onboarding new hires
+`planning/create-roadmap` for [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 
 ## Architecture Decision Trees
 
@@ -479,7 +479,7 @@ This offer expires {date}. Please sign and return by {deadline}.
 - **Offer velocity**: Target < 5 business days from final interview to offer. Have offer approval pre-authorized for strong candidates.
 
 ### Legal Compliance
-- **Structured interviews**: Use same questions for all candidates for same role. Document interview process for audit.
+- **Structured interviews**: Use same questions for all candidates for same role. Document interview process for [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 - **EEO compliance**: Track diversity metrics across pipeline. Review for adverse impact on protected groups.
 - **Data retention**: Store candidate data per GDPR/CCPA requirements. Auto-delete after 12 months post-decision.
 

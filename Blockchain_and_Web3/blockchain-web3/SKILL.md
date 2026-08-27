@@ -11,7 +11,7 @@ tags: [blockchain, web3, typescript, dapp, wallet, phase-blockchain]
 # Blockchain Web3
 
 ## Purpose
-Guide web3 frontend and dApp development covering library selection, wallet integration, contract interaction, transaction management, event handling, and account abstraction. Focuses on TypeScript-based frontend patterns.
+Guide web3 frontend and dApp development covering library selection, wallet integration, contract interaction, transaction management, event handling, and account abstraction. Focuses on [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)-based frontend patterns.
 
 ## Agent Protocol
 
@@ -52,8 +52,8 @@ Web3 frontend architecture: library selection, provider setup, wallet connection
 ### Library Selection
 ```
 Web3 frontend stack:
-├── Modern TypeScript dApp?
-│   ├── React + TypeScript → viem + wagmi (default)
+├── Modern [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) dApp?
+│   ├── React + [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) → viem + wagmi (default)
 │   │   ├── viem: lightweight, tree-shakeable, type-safe
 │   │   ├── wagmi: React hooks, auto-refetch, multicall
 │   │   └── ConnectKit/RainbowKit: wallet UI components
@@ -93,7 +93,7 @@ Wallet integration:
 ## Viem + Wagmi Patterns
 
 ### Provider Setup
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createConfig, http } from 'wagmi'
 import { mainnet, polygon, arbitrum } from 'wagmi/chains'
 import { metaMask, walletConnect } from 'wagmi/connectors'
@@ -116,7 +116,7 @@ export const config = createConfig({
 ```
 
 ### Reading Contract State
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useReadContract } from 'wagmi'
 import { abi } from './token-abi'
 import { formatUnits } from 'viem'
@@ -138,7 +138,7 @@ function TokenBalance({ tokenAddress, userAddress }: Props) {
 ```
 
 ### Writing Transactions
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { parseEther } from 'viem'
 
@@ -171,7 +171,7 @@ function TransferForm() {
 ```
 
 ### Sign Typed Data (EIP-712)
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useSignTypedData } from 'wagmi'
 import { domain, types } from './eip712-types'
 
@@ -211,7 +211,7 @@ function SignOrder() {
 ```
 
 ### Multicall Pattern
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useMulticall } from 'wagmi'
 
 // Batch multiple read calls into single RPC request
@@ -232,7 +232,7 @@ function useTokenBalances(tokens: `0x${string}`[], user: `0x${string}`) {
 ```
 
 ### Event Subscription
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useWatchContractEvent } from 'wagmi'
 
 function TransferMonitor() {
@@ -247,12 +247,12 @@ function TransferMonitor() {
       })
     },
   })
-  return <div>Monitoring transfers...</div>
+  return <div>[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) transfers...</div>
 }
 ```
 
 ### Transaction Flow with Error Handling
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useSendTransaction, useWaitForTransactionReceipt } from 'wagmi'
 import { parseEther } from 'viem'
 
@@ -306,7 +306,7 @@ function SendTransaction() {
 ```
 
 ### Viem Client (Non-React)
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet } from 'viem/chains'
 import { privateKeyToAccount } from 'viem/accounts'
@@ -346,7 +346,7 @@ const receipt = await publicClient.waitForTransactionReceipt({ hash })
 ## Account Abstraction (ERC-4337)
 
 ### User Operation Flow
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createSmartAccountClient } from 'permissionless'
 import { signerToSimpleSmartAccount } from 'permissionless/accounts'
 
@@ -377,7 +377,7 @@ async function sendUserOp() {
 ```
 
 ### Session Keys (Ephemeral Signing)
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // ERC-4337 supports session keys for automated transactions
 // 1. Deploy smart account
 // 2. Approve session key with specific permissions
@@ -400,7 +400,7 @@ interface SessionKeyPermission {
 ## Error Handling Patterns
 
 ### Common Web3 Errors
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 type Web3Error = {
   code: number | string
   message: string
@@ -447,9 +447,9 @@ function handleError(error: unknown) {
 ```
 
 ## Rules
-1. Use viem + wagmi as default TypeScript stack (modern, type-safe, lightweight)
+1. Use viem + wagmi as default [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) stack (modern, type-safe, lightweight)
 2. Use ethers.js v6 for projects requiring broader ecosystem compatibility
-3. Use TypeScript exclusively — generate types from ABIs with viem CLI or TypeChain
+3. Use [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) exclusively — generate types from ABIs with viem CLI or TypeChain
 4. Always handle chain IDs for multi-chain dApps — detect and handle network changes
 5. Implement proper error handling: revert reasons, user rejection, network issues, rate limiting
 6. Use EIP-1193 provider interface via EIP-6963 (multi-injected provider discovery)
@@ -460,7 +460,7 @@ function handleError(error: unknown) {
 11. EIP-712 typed data should include chain ID to prevent cross-chain replay
 12. WC v2 is required for mobile dApp compatibility (WC v1 deprecated)
 13. Use batch HTTP transport in viem for automatic request batching
-14. Transaction monitoring should track block confirmations, not just mempool acceptance
+14. Transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) should track block confirmations, not just mempool acceptance
 15. Gas estimation should include 10-20% buffer to prevent out-of-gas errors
 
 ## References
@@ -505,7 +505,7 @@ Web3 Frontend Architecture
 ## Implementation Patterns
 
 ### wagmi + React Query Integration
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // blockchain-web3/hooks/useTokenBalance.ts
 import { useReadContract, useAccount } from 'wagmi';
 import { erc20ABI } from 'wagmi-generate';
@@ -527,7 +527,7 @@ export function useTokenBalance(tokenAddress: `0x${string}`) {
 ```
 
 ### Transaction State Machine
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // blockchain-web3/hooks/useTransaction.ts
 type TxState = 'idle' | 'approving' | 'pending' | 'confirmed' | 'failed';
 
@@ -559,7 +559,7 @@ export function useTransaction() {
 ## Production Considerations
 
 - **RPC redundancy**: Configure multiple RPC endpoints per chain; fallback on rate limit or failure.
-- **Transaction monitoring**: Track tx status via receipt polling; notify user on confirmation/failure.
+- **Transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track tx status via receipt polling; notify user on confirmation/failure.
 - **Gas estimation**: Use `estimateGas` with 20% buffer; handle out-of-gas errors with user notification.
 - **Error handling**: Categorize errors (user rejection, network, gas, contract revert) for user-friendly display.
 - **Wallet disconnection**: Handle account change, chain change, and disconnection events.

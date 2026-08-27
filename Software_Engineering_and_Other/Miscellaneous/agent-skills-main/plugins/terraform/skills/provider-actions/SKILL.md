@@ -80,7 +80,7 @@ func (a *actionType) Schema(ctx context.Context, req action.SchemaRequest, resp 
 1. **Type Mismatches**
    - Model structs use `types.String`/`types.Int64` and schemas use
      `types.StringType` from
-     `github.com/hashicorp/terraform-plugin-framework/types` — don't mix in
+     `[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework/types` — don't mix in
      types from other packages
    - Some large providers layer their own custom type package on top (e.g.
      terraform-provider-aws's internal `fwtypes`); inside such a repo,
@@ -107,8 +107,8 @@ func (a *actionType) Schema(ctx context.Context, req action.SchemaRequest, resp 
 4. **Validator Imports**
    ```go
    // Ensure proper imports
-   "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
-   "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+   "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/int64validator"
+   "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
    ```
 
 5. **Region/Provider Attribute** (multi-region providers, e.g. AWS)
@@ -217,7 +217,7 @@ resp.Diagnostics.AddError(
 For operations that require waiting for completion, poll on a ticker under
 a context deadline, reporting progress as you go. (Alternatively use
 `retry.StateChangeConf` from
-`github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry`, the same waiter
+`[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry`, the same waiter
 primitive resources use.)
 
 ```go
@@ -372,7 +372,7 @@ func TestAccExampleAction_basic(t *testing.T) {
 Actions invoked in tests can leave real resources behind; register sweepers
 (list → filter test-prefixed names → delete) so leaked resources are
 cleanable. Sweepers are not action-specific — use the
-`provider-test-patterns` skill (if available) for the sweep function
+`[provider-test-patterns](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-test-patterns](../provider-test-patterns/SKILL.md)/SKILL.md)` skill (if available) for the sweep function
 pattern, registration, `TestMain`, and dependency ordering.
 
 ### Using `terraform_data` as a No-Op Trigger
@@ -433,13 +433,13 @@ go test -c -o /dev/null ./internal/provider
 TF_ACC=1 go test ./internal/provider -run TestAccExampleAction_ -timeout 60m
 ```
 
-Use the `run-acceptance-tests` skill (if available) for environment variable
+Use the `[run-acceptance-tests](../[run-acceptance-tests](../../../../../../Testing/run-acceptance-tests/SKILL.md)/SKILL.md)` skill (if available) for environment variable
 setup, debugging failing tests, and sweeper runs.
 
 ## Documentation Standards
 
 Generate action documentation with `tfplugindocs` where the provider uses
-it (use the `provider-docs` skill, if available, for that workflow). Each
+it (use the `[provider-docs](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-docs](../provider-docs/SKILL.md)/SKILL.md)` skill, if available, for that workflow). Each
 action documentation page must include:
 
 1. **Front Matter** (hand-written legacy layouts only)
@@ -476,7 +476,7 @@ action documentation page must include:
 ## Changelog Entry Format (provider-specific convention)
 
 Some providers (e.g. terraform-provider-aws) track release notes with
-[go-changelog](https://github.com/hashicorp/go-changelog): one file per PR
+[go-changelog](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/go-changelog): one file per PR
 in a `.changelog/` directory. Check the target repo's CONTRIBUTING guide;
 skip this if the repo doesn't use it.
 
@@ -509,7 +509,7 @@ Before submitting your action implementation:
 
 - [Terraform Plugin Framework Documentation](https://developer.hashicorp.com/terraform/plugin/framework)
 - [Terraform Provider Development](https://developer.hashicorp.com/terraform/plugin)
-- [terraform-plugin-framework GitHub](https://github.com/hashicorp/terraform-plugin-framework)
-- [terraform-plugin-testing](https://github.com/hashicorp/terraform-plugin-testing)
+- [terraform-plugin-framework GitHub](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework)
+- [terraform-plugin-testing](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
 - [Writing a Terraform Action (blog)](https://danielmschmidt.de/posts/2025-09-26-writing-a-terraform-action/)
-- Reference implementations: `terraform-provider-tfe` (`action_query_run.go`, `action_query_run_test.go`), `terraform-provider-vault` (`action_rotate_root.go`)
+- Reference implementations: `terraform-provider-tfe` (`action_query_run.go`, `action_query_run_test.go`), `terraform-provider-[vault](../../../../../vault/SKILL.md)` (`action_rotate_root.go`)

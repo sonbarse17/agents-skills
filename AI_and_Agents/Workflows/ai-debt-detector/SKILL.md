@@ -12,7 +12,7 @@ description: >-
 
 ## Overview
 
-AI agents generate code that passes the happy path but hides debt: missing error handling, orphaned resources, ignored failure modes, hallucinated packages, silent architectural drift. This skill forces a targeted audit for the exact patterns AI agents get wrong.
+AI agents generate code that passes the happy path but hides debt: missing error handling, orphaned resources, ignored failure modes, hallucinated packages, silent architectural drift. This skill forces a targeted [audit](../../Operations/audit/SKILL.md) for the exact patterns AI agents get wrong.
 
 ## When to Use
 
@@ -68,4 +68,4 @@ After code generation, scan for these AI-specific debt patterns:
 
 ## Why This Exists
 
-AI agents systematically optimize for "looks correct" and "passes the happy path." They miss failure modes, orphan resources, and hallucinate dependencies at rates significantly higher than manual code. This skill forces an audit for those specific blind spots.
+AI agents systematically optimize for "looks correct" and "passes the happy path." They miss failure modes, orphan resources, and hallucinate dependencies at rates significantly higher than manual code. This skill forces an [audit](../../Operations/audit/SKILL.md) for those specific blind spots.

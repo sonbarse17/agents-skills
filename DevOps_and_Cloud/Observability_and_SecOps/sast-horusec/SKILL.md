@@ -28,15 +28,15 @@ Horusec is an open-source security analysis tool that performs static code analy
 
 ## Supported Languages
 
-C#, Java, Kotlin, Python, Ruby, Golang, Terraform, JavaScript, TypeScript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, Nginx
+C#, Java, Kotlin, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
 
 ## Quick Start
 
 Run Horusec scan on current project:
 
 ```bash
-# Using Docker (recommended)
-docker run -v /var/run/docker.sock:/var/run/docker.sock \
+# Using [Docker](../../Containers_and_Orchestration/docker/SKILL.md) (recommended)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock \
   -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src -P $(pwd)
 
 # Local installation
@@ -47,7 +47,7 @@ horusec start -p ./path/to/project
 
 ### Workflow 1: Local Security Scan
 
-For developers performing pre-commit security analysis:
+For developers performing pre-[commit](../../CI_CD/commit/SKILL.md) security analysis:
 
 1. Navigate to project directory
 2. Run Horusec scan:
@@ -65,9 +65,9 @@ Progress:
 [ ] 1. Add Horusec to CI/CD pipeline configuration
 [ ] 2. Configure output format (JSON for automated processing)
 [ ] 3. Set severity threshold for build failures
-[ ] 4. Run scan on each commit or pull request
+[ ] 4. Run scan on each [commit](../../CI_CD/commit/SKILL.md) or pull request
 [ ] 5. Parse results and fail build on high-severity findings
-[ ] 6. Generate security reports for audit trail
+[ ] 6. Generate security reports for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
 [ ] 7. Track remediation progress over time
 
 Work through each step systematically. Check off completed items.
@@ -84,7 +84,7 @@ For detecting exposed credentials and secrets:
 3. Rotate compromised credentials immediately
 4. Add detected patterns to `.gitignore` and `.horusec/config.json`
 5. Use git-filter-branch or BFG Repo-Cleaner to remove from history (if needed)
-6. Document incident and update security procedures
+6. Document [incident](../incident/SKILL.md) and update security procedures
 
 ### Workflow 4: False Positive Management
 
@@ -170,9 +170,9 @@ horusec start -p . \
 
 Exit code will be non-zero if vulnerabilities at or above threshold are found.
 
-### Pattern 2: Multi-Project Monorepo Scanning
+### Pattern 2: Multi-Project [Monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) Scanning
 
-Scan multiple projects in monorepo structure:
+Scan multiple projects in [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) structure:
 
 ```bash
 # Scan specific subdirectories
@@ -197,8 +197,8 @@ Add custom security rules:
 ## Security Considerations
 
 - **Sensitive Data Handling**: Horusec scans for exposed secrets. Ensure scan results are stored securely and access is restricted to authorized personnel only
-- **Access Control**: Limit access to Horusec configuration files and scan results. Use read-only mounts in Docker for source code scanning
-- **Audit Logging**: Log all scan executions, findings, and risk acceptance decisions for compliance auditing
+- **Access Control**: Limit access to Horusec configuration files and scan results. Use read-only mounts in [Docker](../../Containers_and_Orchestration/docker/SKILL.md) for source code scanning
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, findings, and risk acceptance decisions for compliance auditing
 - **Compliance**: Integrates with SOC2, PCI-DSS, and GDPR compliance by identifying vulnerabilities and tracking remediation
 - **Safe Defaults**: Configure severity thresholds appropriate for your risk tolerance. Start with MEDIUM or HIGH to reduce noise
 
@@ -206,11 +206,11 @@ Add custom security rules:
 
 ### CI/CD Integration
 
-**GitHub Actions:**
+**[GitHub](../../CI_CD/github/SKILL.md) Actions:**
 ```yaml
 - name: Run Horusec Security Scan
   run: |
-    docker run -v /var/run/docker.sock:/var/run/docker.sock \
+    [docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock \
       -v $(pwd):/src horuszup/horusec-cli:latest \
       horusec start -p /src -o json -O horusec-report.json \
       --return-error-if-found-vulnerability
@@ -227,11 +227,11 @@ horusec-scan:
       horusec: horusec-report.json
 ```
 
-**Jenkins:**
+**[Jenkins](../../CI_CD/jenkins/SKILL.md):**
 ```groovy
 stage('Security Scan') {
   steps {
-    sh 'docker run -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src'
+    sh '[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src'
   }
 }
 ```
@@ -249,11 +249,11 @@ Horusec can integrate with centralized vulnerability management platforms via:
 
 ## Troubleshooting
 
-### Issue: Docker Socket Permission Denied
+### Issue: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Socket Permission Denied
 
-**Solution**: Ensure Docker socket has proper permissions:
+**Solution**: Ensure [Docker](../../Containers_and_Orchestration/docker/SKILL.md) socket has proper permissions:
 ```bash
-sudo chmod 666 /var/run/docker.sock
+sudo chmod 666 /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock
 # Or run with sudo (not recommended for CI/CD)
 ```
 
@@ -278,15 +278,15 @@ sudo chmod 666 /var/run/docker.sock
 
 ### Issue: Missing Vulnerabilities for Specific Language
 
-**Solution**: Verify language is supported and Docker images are available:
+**Solution**: Verify language is supported and [Docker](../../Containers_and_Orchestration/docker/SKILL.md) images are available:
 ```bash
 horusec version --check-for-updates
-docker pull horuszup/horusec-cli:latest
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull horuszup/horusec-cli:latest
 ```
 
 ## Advanced Usage
 
-### Running Without Docker
+### Running Without [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
 
 Install Horusec CLI directly (requires all security tool dependencies):
 
@@ -298,15 +298,15 @@ brew install horusec
 curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash
 
 # Windows
-# Download from GitHub releases
+# Download from [GitHub](../../CI_CD/github/SKILL.md) releases
 ```
 
 Then run:
 ```bash
-horusec start -p . --disable-docker
+horusec start -p . --disable-[docker](../../Containers_and_Orchestration/docker/SKILL.md)
 ```
 
-**Note**: Running without Docker requires manual installation of all security analysis tools (Bandit, Brakeman, GoSec, etc.)
+**Note**: Running without [Docker](../../Containers_and_Orchestration/docker/SKILL.md) requires manual installation of all security analysis tools (Bandit, Brakeman, GoSec, etc.)
 
 ### Severity Filtering
 
@@ -320,14 +320,14 @@ horusec start -p . --severity-threshold="HIGH"
 horusec start -p . --severity-threshold="INFO"
 ```
 
-### Custom Docker Images
+### Custom [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Images
 
 Override default security tool images in configuration:
 
 ```json
 {
   "horusecCliCustomImages": {
-    "python": "my-registry/custom-bandit:latest",
+    "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)": "my-registry/custom-bandit:latest",
     "go": "my-registry/custom-gosec:latest"
   }
 }
@@ -350,7 +350,7 @@ cat horusec-report.json | jq '[.analysisVulnerabilities[].securityTool] | unique
 
 ## References
 
-- [Horusec GitHub Repository](https://github.com/ZupIT/horusec)
+- [Horusec [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/ZupIT/horusec)
 - [Horusec Documentation](https://docs.horusec.io/)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE - Common Weakness Enumeration](https://cwe.mitre.org/)

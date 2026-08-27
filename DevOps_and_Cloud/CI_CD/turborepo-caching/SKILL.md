@@ -13,7 +13,7 @@ Production patterns for Turborepo build optimization.
 - Configuring build pipelines
 - Implementing remote caching
 - Optimizing CI/CD performance
-- Migrating from other monorepo tools
+- Migrating from other [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) tools
 - Debugging cache misses
 
 ## Core Concepts
@@ -123,7 +123,7 @@ TURBO_TEAM=your-team
 ```
 
 ```yaml
-# .github/workflows/ci.yml
+# .[github](../github/SKILL.md)/workflows/ci.yml
 name: CI
 
 on:
@@ -158,7 +158,7 @@ jobs:
 
 ### Template 4: Self-Hosted Remote Cache
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Custom remote cache server (Express)
 import express from "express";
 import { createReadStream, createWriteStream } from "fs";

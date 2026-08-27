@@ -53,8 +53,8 @@ record is just a second static record that never activates.
   request path, not the load balancer's own liveness port.
 - **Know your failover's floor**: even a perfect health check can't fail traffic over faster than
   the TTL lets caches expire the old answer.
-- **Test the failover deliberately** on a schedule, the same way you'd test a disaster-recovery
-  runbook — see `disaster-recovery` for the broader failover practice this feeds into.
+- **Test the failover deliberately** on a schedule, the same way you'd test a [disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)
+  [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — see `[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)` for the broader failover practice this feeds into.
 
 **Done when:** a simulated origin failure causes traffic to shift within one TTL window, verified
 end to end, not just configured.
@@ -75,7 +75,7 @@ actually wrong" using a fresh query against the authoritative server directly.
 Split-horizon (or split-view) DNS answers the same name differently depending on whether the
 query comes from inside or outside the network — internal clients get a private IP, external
 clients get a public one. This is the right tool for exposing one hostname to both, but it is a
-common source of "works on my laptop, not in the datacenter" bugs when the two views drift or a
+common source of "works on my laptop, not in the [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)" bugs when the two views drift or a
 record is added to only one.
 
 - **Keep both views in sync deliberately** — a change made to the external zone and forgotten in
@@ -89,11 +89,11 @@ dual-homed, and the exceptions are documented, not accidental.
 ## 6. Monitor DNS as a first-class production dependency
 
 Domain and DNSSEC certificate expiry, authoritative server health, and unexpected zone changes are
-all classic self-inflicted outages that monitoring catches trivially and nothing else catches at
+all classic self-inflicted outages that [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) catches trivially and nothing else catches at
 all. DNS failures rarely show up in application metrics — the app never even gets a chance to run.
 
 **Done when:** domain expiry, DNSSEC expiry, and unauthorized zone changes all have their own
-alerts, independent of application-level monitoring covered in `observability`.
+alerts, independent of application-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) covered in `[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`.
 
 ## Report
 

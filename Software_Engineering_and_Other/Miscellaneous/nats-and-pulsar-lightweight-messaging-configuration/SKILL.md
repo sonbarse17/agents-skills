@@ -31,8 +31,8 @@ skill covers configuring both deliberately and — just as importantly —
 deciding when they're the *right* choice instead of reaching for Kafka or
 RabbitMQ by default. Topology/cluster design for the two mainstream
 options is covered separately in
-[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md) and
-[rabbitmq-configuration](../rabbitmq-configuration/SKILL.md).
+[kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md) and
+[rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -46,7 +46,7 @@ options is covered separately in
   persistence/replay are needed but a full Kafka deployment is more than
   the workload justifies.
 - Setting up Apache Pulsar topics and subscriptions, particularly when
-  independent scaling of brokers vs. storage, or built-in multi-tenancy,
+  independent scaling of brokers vs. storage, or built-in [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md),
   is a genuine requirement.
 - Reviewing an existing lightweight-messaging deployment for a durability
   or delivery-guarantee gap relative to what the application actually
@@ -98,19 +98,19 @@ options is covered separately in
    - **Pulsar**: the workload needs Kafka-like durability/replay *and*
      either independent scaling of brokers vs. storage (bursty compute
      needs without over-provisioning storage nodes, or vice versa),
-     built-in geo-replication, or built-in multi-tenancy (isolated
+     built-in geo-replication, or built-in [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) (isolated
      tenants/namespaces sharing infrastructure) as a first-class feature
      rather than something bolted on.
    - **Kafka**: high sustained throughput, an ecosystem of existing
      Kafka-native tooling (Kafka Streams, Connect, ksqlDB, schema
      registry — see
-     [kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md)),
+     [kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md)),
      or strict per-key ordering at high partition counts is the deciding
      factor.
    - **RabbitMQ**: complex routing logic (topic/header-based routing,
      priority queues, per-consumer routing patterns) matters more than
      raw throughput — see
-     [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md).
+     [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md).
    Don't default to Kafka "because that's what we already run" if a new
    service's actual requirement is closer to core NATS's fire-and-forget
    model — the operational cost of running (and keeping someone who
@@ -153,7 +153,7 @@ options is covered separately in
 4. **Create a durable consumer with explicit ack policy and redelivery
    bounds**, mirroring the poison-message safeguard covered for RabbitMQ
    in
-   [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md):
+   [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md):
    ```bash
    nats consumer add ORDERS fulfillment-worker \
      --filter "orders.created" \
@@ -169,7 +169,7 @@ options is covered separately in
    indefinitely.
 
 5. **For Pulsar, create a tenant/namespace/topic hierarchy deliberately**,
-   using the multi-tenancy model as an isolation boundary the way vhosts
+   using the [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) model as an isolation boundary the way vhosts
    isolate RabbitMQ applications:
    ```bash
    pulsar-admin tenants create orders-org
@@ -201,7 +201,7 @@ options is covered separately in
 7. **Set explicit retention and TTL/backlog quotas on any persistent
    stream/topic**, the same durability-vs-unbounded-growth tradeoff
    covered for RabbitMQ in
-   [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md):
+   [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md):
    ```bash
    pulsar-admin namespaces set-backlog-quota orders-org/fulfillment \
      --limit 10G --policy producer_exception
@@ -227,12 +227,12 @@ options is covered separately in
 - Set an explicit `--max-deliver`/redelivery bound on every durable
   JetStream consumer and a dead-letter-topic policy on Pulsar
   subscriptions, mirroring the poison-message protection covered in
-  [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md) —
+  [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md) —
   don't assume lighter-weight brokers are exempt from the poison-message
   problem.
 - Use Pulsar's tenant/namespace hierarchy as a real isolation boundary
   between teams/applications, the same way RabbitMQ vhosts are used in
-  [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) — don't
+  [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — don't
   flatten everything into one namespace "to keep it simple."
 - Benchmark against the workload's actual message size/rate before
   committing to a broker choice based on published performance
@@ -271,16 +271,16 @@ options is covered separately in
   **Fix:** Verify the specific connector/client/tooling ecosystem
   maturity for the target language and use case *before* committing,
   rather than assuming Pulsar's core feature set (partitioning,
-  durability, multi-tenancy) implies ecosystem parity with Kafka — if the
+  durability, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)) implies ecosystem parity with Kafka — if the
   team's actual need is that ecosystem, Kafka
-  ([kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md))
+  ([kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md))
   may still be the better fit despite Pulsar's architectural advantages.
 
 - **Symptom:** A NATS JetStream consumer with no `--max-deliver` set
   redelivers a message indefinitely because the consumer's handler always
   throws on that specific payload.
   **Fix:** This is the same poison-message pattern covered for RabbitMQ in
-  [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md) —
+  [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md) —
   set an explicit `--max-deliver` bound and configure a dead-letter
   subject/stream (via `--max-deliver` combined with a subject the consumer
   publishes failed messages to) so a bad message surfaces for
@@ -332,7 +332,7 @@ despite the low message volume, since durability matters even though
 throughput doesn't.
 
 Publisher:
-```python
+```[python](../../Languages/python/SKILL.md)
 nc = await nats.connect("nats://nats-cluster:4222")
 js = nc.jetstream()
 await js.publish("shipments.status.updated", shipment_status_payload)
@@ -345,6 +345,6 @@ rather than looping indefinitely.
 
 ## Cross-references
 
-- [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md) — the heavier-weight alternative this skill's decision framework compares against for high-throughput/ecosystem-dependent workloads.
-- [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) — the heavier-weight alternative for complex routing needs, and the source of the vhost-isolation pattern mirrored here in Pulsar's tenant/namespace model.
-- [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md) — the poison-message/dead-letter diagnostic pattern that applies equally to JetStream's `--max-deliver` and Pulsar's dead-letter policy.
+- [kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md) — the heavier-weight alternative this skill's decision framework compares against for high-throughput/ecosystem-dependent workloads.
+- [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — the heavier-weight alternative for complex routing needs, and the source of the vhost-isolation pattern mirrored here in Pulsar's tenant/namespace model.
+- [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md) — the poison-message/dead-letter diagnostic pattern that applies equally to JetStream's `--max-deliver` and Pulsar's dead-letter policy.

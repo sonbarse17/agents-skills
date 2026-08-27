@@ -26,7 +26,7 @@ once fully rolled out — its lifespan is weeks, not years. An operational flag 
 a risky dependency, a toggle for degrading gracefully under load) is meant to live indefinitely
 as a genuine piece of operational tooling. Treating a release flag like it's permanent is how
 flag debt accumulates; treating an operational kill switch like it needs to be deleted after
-rollout is how you lose a tool you'll need in the next incident.
+rollout is how you lose a tool you'll need in the next [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 - **Release flags:** temporary, tied to one feature's rollout, deleted once at 100% and stable.
 - **Operational/kill-switch flags:** permanent, tied to resilience, kept and tested like any
@@ -61,7 +61,7 @@ old, proven behavior, not the new one.
 
 A flag means two code paths exist in production simultaneously, and it's easy to thoroughly test
 the new path while letting the old path's test coverage quietly rot, or vice versa for an
-operational kill switch nobody exercises until the incident where it's needed. Both states of
+operational kill switch nobody exercises until the [incident](../../Observability_and_SecOps/incident/SKILL.md) where it's needed. Both states of
 every flag need to be exercised by CI and, ideally, by production canary traffic — an untested
 "off" path in a kill switch is a kill switch that might not actually work when you flip it under
 pressure.

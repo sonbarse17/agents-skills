@@ -8,7 +8,7 @@ metadata:
   package: '@azure/web-pubsub, @azure/web-pubsub-client'
 ---
 
-# Azure Web PubSub SDKs for TypeScript
+# Azure Web PubSub SDKs for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Real-time messaging with WebSocket connections and pub/sub patterns.
 
@@ -37,7 +37,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Authentication
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { WebPubSubServiceClient, AzureKeyCredential } from "@azure/web-pubsub";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -70,7 +70,7 @@ const client3 = new WebPubSubServiceClient(
 
 ### Generate Client Access Token
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Basic token
 const token = await client.getClientAccessToken();
 console.log(token.url);  // wss://...?access_token=...
@@ -95,7 +95,7 @@ const permToken = await client.getClientAccessToken({
 
 ### Send Messages
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Broadcast to all connections in hub
 await client.sendToAll({ message: "Hello everyone!" });
 await client.sendToAll("Plain text", { contentType: "text/plain" });
@@ -114,7 +114,7 @@ await client.sendToAll({ message: "Filtered" }, {
 
 ### Group Management
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const group = client.group("chat-room");
 
 // Add user/connection to group
@@ -133,7 +133,7 @@ await group.closeAllConnections({ reason: "Maintenance" });
 
 ### Connection Management
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Check existence
 const userExists = await client.userExists("user123");
 const connExists = await client.connectionExists("connectionId");
@@ -152,7 +152,7 @@ await client.revokePermission("connectionId", "sendToGroup", { targetName: "chat
 
 ### Connect
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { WebPubSubClient } from "@azure/web-pubsub-client";
 
 // Direct URL
@@ -181,7 +181,7 @@ await client.start();
 
 ### Send Messages
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Join group first
 await client.joinGroup("chat-room");
 
@@ -201,7 +201,7 @@ await client.sendEvent("userAction", { action: "typing" }, "json");
 
 ### Event Handlers
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Connection lifecycle
 client.on("connected", (e) => {
   console.log(`Connected: ${e.connectionId}, User: ${e.userId}`);
@@ -232,7 +232,7 @@ client.on("rejoin-group-failed", (e) => {
 
 ## Express Event Handler
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import express from "express";
 import { WebPubSubEventHandler } from "@azure/web-pubsub-express";
 
@@ -285,7 +285,7 @@ app.listen(8080);
 
 ## Key Types
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Server
 import {
   WebPubSubServiceClient,

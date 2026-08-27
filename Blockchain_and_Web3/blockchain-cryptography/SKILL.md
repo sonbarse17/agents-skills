@@ -228,7 +228,7 @@ Decide: Hash Function
 - Use Shamir's trick for multi-scalar multiplication (faster than separate)
 - Validate infinity point as valid (not a failure condition)
 
-### Cryptographic Audit Checklist
+### Cryptographic [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Checklist
 - [ ] Known-Answer Tests (KATs) pass against NIST/BSI/standard test vectors
 - [ ] No secret-dependent branching (constant-time) in any operation using private key data
 - [ ] ECDSA nonces generated deterministically per RFC 6979
@@ -317,7 +317,7 @@ Decide: Hash Function
 - Cold/treasury keys: Rotate annually with GPS-located ceremony recording
 - BLS validator withdrawal keys: Must not rotate without exit + re-deposit (stake linked)
 
-### Monitoring
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - **Signature failure rate**: Spike may indicate network attack or implementation bug
 - **Verification latency**: Degradation may indicate DoS or resource exhaustion
 - **Key registration events**: Monitor for unauthorized key changes
@@ -459,9 +459,9 @@ contract MerkleVerifier {
 }
 ```
 
-### EIP-712 Typed Data Signing (TypeScript + Solidity)
-```typescript
-// Off-chain signing (TypeScript — viem + ethers)
+### EIP-712 Typed Data Signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) + Solidity)
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+// Off-chain signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) — viem + ethers)
 const domain = {
   name: "MyProtocol",
   version: "1",
@@ -543,8 +543,8 @@ fn hash_to_curve(message: &[u8], dst: &[u8]) -> Result<Vec<u8>, String> {
 // Proof of possession DST: "BLS_POP_BLS12381G2_XMD:SHA-256_SSWU_RO_POP_"
 ```
 
-### BIP-32 HD Wallet Derivation (TypeScript)
-```typescript
+### BIP-32 HD Wallet Derivation ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { secp256k1 } from '@noble/curves/secp256k1';
 import { hmac } from '@noble/hashes/hmac';
 import { sha512 } from '@noble/hashes/sha512';
@@ -635,7 +635,7 @@ Key concern: Harvest now, decrypt later attacks
 - ../../../Global_References/zero-knowledge-deep.md — Zero-Knowledge Proofs in Blockchain
 
 ## Handoff
-blockchain-cryptography → blockchain-core (for protocol-level crypto integration)
-blockchain-cryptography → blockchain-security (for cryptographic audit methodology)
-blockchain-cryptography → blockchain-application (for zk-proof integration in contracts)
+blockchain-cryptography → [blockchain-core](../blockchain-core/SKILL.md) (for protocol-level crypto integration)
+blockchain-cryptography → [blockchain-security](../blockchain-security/SKILL.md) (for cryptographic [audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology)
+blockchain-cryptography → [blockchain-application](../blockchain-application/SKILL.md) (for zk-proof integration in contracts)
 

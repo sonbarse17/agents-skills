@@ -76,7 +76,7 @@ How should this route render?
 
 ### Server Load with Auth
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/routes/dashboard/+page.server.ts
 import type { PageServerLoad } from './$types'
 
@@ -95,7 +95,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 
 ### Universal Load with Caching
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/routes/products/+page.ts
 import type { PageLoad } from './$types'
 
@@ -112,7 +112,7 @@ export const load: PageLoad = async ({ fetch, url }) => {
 
 ### Form Action with Validation
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/routes/settings/+page.server.ts
 import type { Actions } from './$types'
 import { fail, redirect } from '@sveltejs/kit'
@@ -137,7 +137,7 @@ export const actions: Actions = {
 
 ### API Endpoint
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/routes/api/orders/+server.ts
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
@@ -181,7 +181,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
 ### Client State with Stores
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/lib/stores/cart.svelte.ts
 import { writable } from 'svelte/store'
 export const cart = writable<CartItem[]>([])
@@ -225,7 +225,7 @@ npm run dev      # dev server with HMR
 ```
 
 ### Environment Variables
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Server-only: process.env.DATABASE_URL
 // Public: import { env } from '$env/dynamic/public' or '$env/static/public'
 // Private: import { env } from '$env/dynamic/private' or '$env/static/private'
@@ -235,7 +235,7 @@ npm run dev      # dev server with HMR
 
 ### Load Function Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { describe, it, expect } from 'vitest'
 import { load } from './+page.server'
 
@@ -248,7 +248,7 @@ it('returns orders for authenticated user', async () => {
 
 ### Form Action Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 it('validates form input', async () => {
   const formData = new FormData()
   formData.set('email', 'invalid')
@@ -259,7 +259,7 @@ it('validates form input', async () => {
 
 ### E2E Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { test, expect } from '@playwright/test'
 test('submits contact form', async ({ page }) => {
   await page.goto('/contact')
@@ -273,7 +273,7 @@ test('submits contact form', async ({ page }) => {
 
 ### Svelte 4 Stores to Svelte 5 Runes
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Svelte 4
 import { writable, derived } from 'svelte/store'
 export const count = writable(0)
@@ -348,14 +348,14 @@ src/routes/
 ```
 
 ### Step 2: Page Load
-```typescript
+```[typescript](../typescript/SKILL.md)
 export const load: PageServerLoad = async ({ locals, url }) => {
   return { orders: await db.order.findMany({ where: { userId: locals.user.id } }) }
 }
 ```
 
 ### Step 3: Form Actions
-```typescript
+```[typescript](../typescript/SKILL.md)
 export const actions: Actions = {
   default: async ({ request }) => {
     const data = await request.formData()
@@ -366,14 +366,14 @@ export const actions: Actions = {
 ```
 
 ### Step 4: API Endpoints
-```typescript
+```[typescript](../typescript/SKILL.md)
 export const GET: RequestHandler = async () => {
   return json(await db.product.findMany())
 }
 ```
 
 ### Step 5: Hooks
-```typescript
+```[typescript](../typescript/SKILL.md)
 export const handle: Handle = async ({ event, resolve }) => {
   event.locals.user = await getUser(event.cookies.get('session'))
   return await resolve(event)
@@ -429,7 +429,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -437,7 +437,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -451,7 +451,7 @@ class ConfigBuilder {
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -459,13 +459,13 @@ class ConfigBuilder {
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

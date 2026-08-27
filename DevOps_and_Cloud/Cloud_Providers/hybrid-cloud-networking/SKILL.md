@@ -14,7 +14,7 @@ Establish secure, reliable network connectivity between on-premises data centers
 ## When to Use
 
 - Connect on-premises to cloud
-- Extend datacenter to cloud
+- Extend [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) to cloud
 - Implement hybrid active-active setups
 - Meet compliance requirements
 - Migrate to cloud gradually
@@ -124,7 +124,7 @@ resource "azurerm_virtual_network_gateway" "vpn" {
 ### Pattern 1: Hub-and-Spoke
 
 ```
-On-Premises Datacenter
+On-Premises [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)
          ↓
     VPN/Direct Connect
          ↓
@@ -145,10 +145,10 @@ On-Premises
         Cross-Region Peering
 ```
 
-### Pattern 3: Multi-Cloud Hybrid
+### Pattern 3: [Multi-Cloud](../multi-cloud/SKILL.md) Hybrid
 
 ```
-On-Premises Datacenter
+On-Premises [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)
     ├─ Direct Connect → AWS
     ├─ ExpressRoute → Azure
     ├─ Interconnect → GCP
@@ -182,10 +182,10 @@ Cloud Router:
 2. **Implement encryption** for VPN tunnels
 3. **Use VPC endpoints** to avoid internet routing
 4. **Configure network ACLs** and security groups
-5. **Enable VPC Flow Logs** for monitoring
+5. **Enable VPC Flow Logs** for [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 6. **Implement DDoS protection**
 7. **Use PrivateLink/Private Endpoints**
-8. **Monitor connections** with CloudWatch/Azure Monitor/Cloud Monitoring/OCI Monitoring
+8. **Monitor connections** with CloudWatch/Azure Monitor/Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/OCI [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 9. **Implement redundancy** (dual tunnels)
 10. **Regular security audits**
 
@@ -214,7 +214,7 @@ resource "aws_vpn_connection" "secondary" {
 - Equal-cost multi-path (ECMP) routing
 - Monitor health of all connections
 
-## Monitoring and Troubleshooting
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Troubleshooting
 
 ### Key Metrics
 
@@ -252,6 +252,6 @@ oci network cpe list
 
 ## Related Skills
 
-- `multi-cloud-architecture` - For architecture decisions
-- `terraform-module-library` - For IaC implementation
+- `[multi-cloud-architecture](../multi-[cloud-architecture](../cloud-architecture/SKILL.md)/SKILL.md)` - For architecture decisions
+- `[terraform-module-library](../../Infrastructure_as_Code/terraform-module-library/SKILL.md)` - For IaC implementation
 

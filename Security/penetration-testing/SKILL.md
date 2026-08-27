@@ -107,5 +107,5 @@ scope:
 
 ## Related Skills
 
-- [dast-scanning](../../scanning/dast-scanning/) - Automated testing
-- [vulnerability-scanning](../../scanning/vulnerability-scanning/) - Vulnerability discovery
+- [dast-scanning](../../scanning/[dast-scanning](../../DevOps_and_Cloud/Observability_and_SecOps/dast-scanning/SKILL.md)/) - Automated testing
+- [vulnerability-scanning](../../scanning/[vulnerability-scanning](../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)/) - Vulnerability discovery

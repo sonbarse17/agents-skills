@@ -20,10 +20,10 @@ metadata:
 
 ## Purpose
 
-[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
+[model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
 covers *designing* a registry promotion scheme where rollback is possible
 in principle; this skill covers *executing* that rollback correctly under
-incident pressure, when a bad deploy is actively hurting users and someone
+[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pressure, when a bad deploy is actively hurting users and someone
 needs to act in minutes, not review a design doc. The single most
 dangerous shortcut at this moment is assuming "the previous version" is
 automatically safe to restore: features evolve underneath a model version's
@@ -31,34 +31,34 @@ shelf life, and a model that served correctly a month ago can be
 fed a feature schema today that has since gained, lost, or renamed columns
 it depends on. A naive rollback can silently trade one bad model for a
 model that errors or produces garbage on a schema it no longer recognizes,
-turning a bad-deploy incident into a longer one. This skill makes the
+turning a bad-deploy [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) into a longer one. This skill makes the
 feature-schema compatibility check a required gate in the rollback
 procedure itself, not an optional nicety.
 
 ## When to use
 
 - A newly deployed/promoted model version is causing elevated errors, bad
-  predictions, or an active incident, and needs to be rolled back
+  predictions, or an active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and needs to be rolled back
   immediately.
-- Executing a rollback runbook step by step during an incident, as opposed
+- Executing a rollback [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) step by step during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), as opposed
   to designing the registry's promotion/rollback scheme in the abstract.
 - Deciding whether it is actually safe to revert to a specific previous
   model version given how the feature pipeline/feature store has changed
   since that version last served production traffic.
 - Validating a candidate rollback target's input schema against the
   current live feature output before flipping traffic back.
-- Confirming, after a rollback, that the incident is genuinely mitigated
+- Confirming, after a rollback, that the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is genuinely mitigated
   and documenting the rollback for the postmortem.
 
 ## Prerequisites & environment
 
 - A model registry where the previous production version was **archived,
   not deleted**, on promotion (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md))
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md))
   so it is retrievable in minutes, not hours.
 - Serving infrastructure capable of a fast traffic cutover — canary/
   blue-green routing already configured per
-  [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md), not a
+  [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md), not a
   from-scratch redeploy.
 - Recorded feature schema/feature-view version metadata for both the
   currently-serving (bad) version and every rollback candidate — if this
@@ -67,22 +67,22 @@ procedure itself, not an optional nicety.
 - Read access to the feature store's current schema (feature names,
   dtypes, categorical value sets) to diff against a candidate's expected
   input contract.
-- Monitoring already wired to confirm whether the rollback resolves the
+- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) already wired to confirm whether the rollback resolves the
   issue (see
-  [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)).
-- An established incident command structure so the rollback decision is
+  [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
+- An established [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) command structure so the rollback decision is
   authorized and communicated, not a unilateral action taken in the dark
   (see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md)).
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
 1. **Confirm the bad deploy is actually the cause.** Correlate the
-   incident's start time precisely against the model's deployment/
+   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s start time precisely against the model's deployment/
    promotion timestamp before committing to a rollback — a coincident but
    unrelated cause (e.g. an infra outage, an upstream feature pipeline
    failure per
-   [feature-pipeline-failure-investigation](../feature-pipeline-failure-investigation/SKILL.md))
+   [feature-pipeline-failure-investigation](../[feature-pipeline-failure-investigation](../../../Data_Engineering/feature-pipeline-failure-investigation/SKILL.md)/SKILL.md))
    would make a rollback ineffective and waste the response window.
 2. **Identify the actual rollback target from the registry**, not just
    "one version back" by assumption. Check version history/annotations —
@@ -93,8 +93,8 @@ procedure itself, not an optional nicety.
    against the feature pipeline's current live output.** Do not skip this
    step under time pressure — it is the check most likely to be skipped,
    and skipping it is exactly what turns a rollback into a second
-   incident.
-   ```python
+   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import json
 
    def schema_diff(old_version_schema: dict, current_feature_output_schema: dict) -> dict:
@@ -126,45 +126,45 @@ procedure itself, not an optional nicety.
 5. **Execute the rollback through the registry's promotion path**, not a
    raw file/container swap — e.g. re-promoting the archived version back
    to `Production` (`mlflow models transition-stage ... --stage Production`
-   or the equivalent SageMaker/Vertex AI action), so the audit trail and
+   or the equivalent SageMaker/Vertex AI action), so the [audit](../../Operations/audit/SKILL.md) trail and
    lineage stay intact.
-6. **Cut traffic back progressively if the incident's severity allows it**
+6. **Cut traffic back progressively if the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s severity allows it**
    — canary the rollback target at a smaller percentage first, per
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md),
+   [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md),
    unless the severity demands an immediate 100% cutover.
-7. **Verify via monitoring that the rollback resolved the issue** — error
+7. **Verify via [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) that the rollback resolved the issue** — error
    rate, latency, and prediction-quality proxies return to the
-   pre-incident baseline — before declaring the incident mitigated.
-8. **Keep the bad version archived, not deleted**, for post-incident
+   pre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) baseline — before declaring the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) mitigated.
+8. **Keep the bad version archived, not deleted**, for post-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    forensic analysis; it is still needed to understand exactly what went
    wrong.
 9. **Log the rollback event** — timestamp, decision-maker, schema-check
-   outcome, and rollback target version — into both the incident record
-   and the model's lineage/registry metadata so the audit trail is
+   outcome, and rollback target version — into both the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record
+   and the model's lineage/registry metadata so the [audit](../../Operations/audit/SKILL.md) trail is
    complete.
 
 ## Best practices
 
 - Treat the feature-schema compatibility check as a mandatory gate in the
   rollback procedure, never an optional step skipped "because it's an
-  emergency" — an incompatible rollback often creates a second incident on
+  emergency" — an incompatible rollback often creates a second [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) on
   top of the first.
 - Always execute rollback through the registry's stage-transition
   mechanism, never a raw file path swap or manual container edit that
-  bypasses the audit trail.
+  bypasses the [audit](../../Operations/audit/SKILL.md) trail.
 - Game-day the rollback procedure periodically (a scheduled drill) rather
-  than trusting it works because it's documented — an untested runbook
+  than trusting it works because it's documented — an untested [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
   frequently has a stale command or a missing permission that only
-  surfaces during a real incident.
+  surfaces during a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Keep at least the last two production versions (N-1, N-2) warm/available
   in the registry with their input schemas recorded, not just the single
   immediately-prior version.
-- Automate the schema-diff script so it runs in seconds under incident
+- Automate the schema-diff script so it runs in seconds under [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
   pressure, rather than requiring someone to manually compare JSON files
   by eye at 3 a.m.
-- Route the rollback decision and its outcome through the incident's
+- Route the rollback decision and its outcome through the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s
   Communications/Scribe roles (see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md))
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
   so it's part of the recorded timeline, not a silent action.
 
 ## Common pitfalls
@@ -198,10 +198,10 @@ procedure itself, not an optional nicety.
   back without checking its own track record.
 
 - **Symptom:** The rollback target is cut over to 100% of traffic
-  instantly, and a second, separate incident starts minutes later because
+  instantly, and a second, separate [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) starts minutes later because
   the rollback target had its own latent issue nobody caught.
   **Fix:** Canary the rollback target at a smaller traffic percentage
-  first whenever incident severity allows the extra minutes, rather than
+  first whenever [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) severity allows the extra minutes, rather than
   treating instant full cutover as always the safest option.
 
 ## Worked example
@@ -233,14 +233,14 @@ legitimate transactions.
    baseline.
 6. Version 14 remains archived (not deleted) for root-cause analysis; the
    rollback, the schema mismatch found, and the shim applied are all
-   logged in the incident record and handed to the postmortem process.
+   logged in the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record and handed to the postmortem process.
 
 ## Cross-references
 
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) — the registry promotion/archival design this rollback procedure executes against.
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md) — canary/blue-green traffic-cutover mechanics used during rollback.
-- [model-drift-alert-triage](../model-drift-alert-triage/SKILL.md) — the triage process that often precedes a decision to roll back.
-- [feature-pipeline-failure-investigation](../feature-pipeline-failure-investigation/SKILL.md) — ruling out a feature pipeline failure as the real cause before rolling back the model itself.
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md) — resolving exactly which feature view version a rollback candidate's schema was recorded against.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md) — the incident command structure this procedure runs inside.
-- [blue-green-canary-deployments](../../../devops/skills/blue-green-canary-deployments/SKILL.md) — general rollback/traffic-shift mechanics this procedure specializes for model deploys.
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registry promotion/archival design this rollback procedure executes against.
+- [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md) — canary/blue-green traffic-cutover mechanics used during rollback.
+- [model-drift-alert-triage](../[model-drift-alert-triage](../model-drift-alert-triage/SKILL.md)/SKILL.md) — the triage process that often precedes a decision to roll back.
+- [feature-pipeline-failure-investigation](../[feature-pipeline-failure-investigation](../../../Data_Engineering/feature-pipeline-failure-investigation/SKILL.md)/SKILL.md) — ruling out a feature pipeline failure as the real cause before rolling back the model itself.
+- [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md) — resolving exactly which feature view version a rollback candidate's schema was recorded against.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) command structure this procedure runs inside.
+- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — general rollback/traffic-shift mechanics this procedure specializes for model deploys.

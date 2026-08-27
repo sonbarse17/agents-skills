@@ -29,12 +29,12 @@ tags: [devops, oracle-cloud, oci, cloud-provider, phase-4]
 # Oracle Cloud Infrastructure (OCI)
 
 ## Purpose
-Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE (Kubernetes), Autonomous Database, and cost governance.
+Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)), Autonomous Database, and cost governance.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "oracle cloud", "oci", "oke", "oracle kubernetes", "autonomous database", "oci compute", "oci networking", "oci iam".
+Exact user phrases: "oracle cloud", "oci", "oke", "oracle [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)", "autonomous database", "oci compute", "oci networking", "oci iam".
 
 ### Input Context
 Before activating, verify:
@@ -225,7 +225,7 @@ resource "oci_identity_policy" "ops_policy" {
   description    = "Policy for DevOps team"
   statements = [
     "Allow group DevOpsTeam to manage all-resources in compartment team-compartment",
-    "Allow group DevOpsTeam to read audit-events in tenancy",
+    "Allow group DevOpsTeam to read [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-events in tenancy",
     "Allow group DevOpsTeam to use tag-namespaces in tenancy"
   ]
 }
@@ -239,7 +239,7 @@ resource "oci_identity_dynamic_group" "compute" {
 }
 ```
 
-### Step 5: OKE (Oracle Kubernetes Engine)
+### Step 5: OKE (Oracle [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Engine)
 ```hcl
 resource "oci_containerengine_cluster" "oke" {
   compartment_id     = var.compartment_ocid
@@ -373,7 +373,7 @@ resource "oci_resourcemanager_stack" "infra" {
   description    = "Base infrastructure deployment"
   config_source {
     config_source_type = "GIT_CONFIG_SOURCE"
-    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.github.id
+    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.[github](../../CI_CD/github/SKILL.md).id
     branch_name = "main"
   }
 }
@@ -389,7 +389,7 @@ resource "oci_resourcemanager_job" "apply" {
 }
 ```
 
-### Step 10: Monitoring and Alerts
+### Step 10: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Alerts
 ```hcl
 resource "oci_monitoring_alarm" "cpu_high" {
   compartment_id     = var.compartment_ocid
@@ -414,9 +414,9 @@ resource "oci_monitoring_alarm" "cpu_high" {
 - Use instance principals for OKE node pools to access object storage without keys.
 - Tag all resources with a cost-tracking tag namespace (Environment, Project, Owner).
 - Set up budgets and alerts before deploying production workloads.
-- Use OCI Vault for secrets, API keys, and database passwords.
+- Use OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for secrets, API keys, and database passwords.
 - Prefer FastConnect over site-to-site VPN for production hybrid connectivity.
-- Enable OKE cluster audit logs and ship to OCI Logging.
+- Enable OKE cluster [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and ship to OCI Logging.
 
 ## Production Considerations
 - OCI regions are organized by realm (commercial, government, China). Choose the right realm.
@@ -451,11 +451,11 @@ resource "oci_monitoring_alarm" "cpu_high" {
   - ../../../Global_References/oracle-cloud-fundamentals.md — Oracle Cloud Fundamentals
 ## Handoff
 - `devops-terraform` for Terraform state and module patterns for OCI.
-- `devops-kubernetes` for workload deployment on OKE clusters.
-- `devops-docker` for containerizing applications for OKE.
-- `devops-hybrid-cloud` for connecting OCI with on-prem or other clouds.
-- `devops-backup-dr` for OCI-based backup and DR strategies.
-- `devops-observability` for OCI logging and monitoring integration.
+- `devops-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on OKE clusters.
+- `devops-[docker](../../Containers_and_Orchestration/docker/SKILL.md)` for containerizing applications for OKE.
+- `devops-[hybrid-cloud](../hybrid-cloud/SKILL.md)` for connecting OCI with on-prem or other clouds.
+- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for OCI-based backup and DR strategies.
+- `devops-[observability](../../Observability_and_SecOps/observability/SKILL.md)` for OCI logging and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) integration.
 
 ## Architecture Decision Trees
 
@@ -466,7 +466,7 @@ resource "oci_monitoring_alarm" "cpu_high" {
 | User management | OCI console, manual | Central IdP (Okta, Azure AD) |
 | MFA | OCI built-in MFA | IdP-managed MFA |
 | Group sync | Manual or API | SCIM provisioning |
-| Audit trail | OCI Audit logs | IdP audit + OCI Audit |
+| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs | IdP [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) + OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Complexity | Lower (in-platform) | Higher (IdP setup + mapping) |
 | Best for | Small teams, isolated OCI | Enterprise with SSO requirement |
 
@@ -578,7 +578,7 @@ list_compartments() {
 
 - Use **compartments** for resource isolation per team/environment with IAM policies at compartment level
 - Enable **OCI Cloud Guard** target on every compartment for threat detection and misconfiguration alerts
-- Configure **Vault (KMS)** for encryption keys — encrypt all block volumes, object storage, and databases
+- Configure **[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (KMS)** for encryption keys — encrypt all block volumes, object storage, and databases
 - Deploy **OKE clusters** with `--pod-cidr` and `--service-cidr` that don't overlap with on-prem or VCN ranges
 - Use **Flex shapes** (VM.Standard.E5.Flex) for most workloads — better price-performance than fixed shapes
 - Set up **budgets** at compartment level with threshold alerts to Slack/email
@@ -601,7 +601,7 @@ list_compartments() {
 - Configure **load balancer** with session persistence and health checks for zero-downtime deployments
 - Use **OCI Object Storage** with standard tier for frequently accessed data, infrequent tier for logs
 - Tune **OKE worker node shapes** by workload: `VM.Standard.E5.Flex` for general, `BM.Optimized3.36` for AI/ML
-- Enable **autoscaling** on OKE node pools with cluster autoscaler and spot instances for batch workloads
+- Enable **[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** on OKE node pools with cluster autoscaler and spot instances for batch workloads
 - Use **OCI Cache (Redis)** for session state and query result caching instead of local instance storage
 
 ## Security Considerations
@@ -611,8 +611,8 @@ list_compartments() {
 - Restrict **object storage bucket access** with pre-authenticated requests (PAR) and least-privilege policies
 - Rotate **OCI API keys** every 90 days and use API key versioning for key rotation without downtime
 - Enable **Cloud Guard** with detector recipes for storage, networking, and IAM misconfigurations
-- Use **Vault (HSM)** for master encryption keys and auto-rotate DEKs every 180 days
-- Audit **IAM policy changes** with OCI Audit logs and stream to OCI Object Storage for retention
+- Use **[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (HSM)** for master encryption keys and auto-rotate DEKs every 180 days
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **IAM policy changes** with OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and stream to OCI Object Storage for retention
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -665,7 +665,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -679,7 +679,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -695,12 +695,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -709,7 +709,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -717,13 +717,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -732,8 +732,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

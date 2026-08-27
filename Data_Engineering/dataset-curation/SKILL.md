@@ -5,7 +5,7 @@ description: Prepare, format, and validate datasets for supervised fine-tuning a
 
 # Dataset Curation
 
-This skill assumes `finetuning-method-selection`
+This skill assumes `[finetuning-method-selection](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 already routed here — the next step is preparing
 data, not choosing a method. What follows: format
 selection by target method, the template/packing
@@ -16,7 +16,7 @@ out Phase 2 before a run starts.
 
 **Input:** raw examples (demonstrations, preference
 judgments, or task prompts) plus a routing decision
-from `finetuning-method-selection`.
+from `[finetuning-method-selection](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`.
 **Output format:** a formatted, packed, validated
 JSONL dataset plus a completed dataset card — the
 Phase 2 artifact `/finetune` checks before launching
@@ -28,9 +28,9 @@ training.
 |---|---|---|
 | SFT, single-turn | Instruct (`instruction`/`response` or `prompt`/`completion`) | ~1,000+ floor |
 | SFT, multi-turn | Conversation / ChatML `messages` list | ~1,000+ floor |
-| DPO / ORPO | Preference pair (`prompt`, `chosen`, `rejected`) | Method-dependent, see `preference-optimization` |
-| KTO | Unpaired (`prompt`, `completion`, `label`) | Method-dependent, see `preference-optimization` |
-| GRPO / RLVR | Prompt-only (`prompt` + verifier metadata) | Method-dependent, see `grpo-rlvr-training` |
+| DPO / ORPO | Preference pair (`prompt`, `chosen`, `rejected`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` |
+| KTO | Unpaired (`prompt`, `completion`, `label`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` |
+| GRPO / RLVR | Prompt-only (`prompt` + verifier metadata) | Method-dependent, see `[grpo-rlvr-training](../../AI_and_Agents/Models_and_FineTuning/grpo-rlvr-training/SKILL.md)` |
 
 - **~1,000+ rows is the recommended floor for SFT**,
   not a target. Below it, a handful of low-quality
@@ -75,7 +75,7 @@ the wrong place relative to each example.
   before training — decode only unmasked positions;
   expect only assistant text:
 
-  ```python
+  ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
   keep = batch["labels"][0] != -100
   print(tokenizer.decode(batch["input_ids"][0][keep]))
   ```
@@ -103,7 +103,7 @@ up to the max length, cutting most of that waste.
   silent (the loss curve looks normal) and only
   surface in eval quality, hours later:
 
-  ```python
+  ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
   for seq in packed_dataset.select(range(10)):
       print(tokenizer.decode(seq["input_ids"]))
   ```
@@ -155,7 +155,7 @@ documentation; it MUST carry these fields:
 
 - **Provenance** — where every row came from (real
   source(s), synthetic method(s), or both),
-  traceable to `trace-to-training-data` output.
+  traceable to `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/trace-to-training-data/SKILL.md)` output.
 - **Counts** — total rows, and rows per split
   (train/eval/held-out) if split.
 - **Synthetic/real ratio** — the measured ratio,
@@ -166,7 +166,7 @@ documentation; it MUST carry these fields:
 - **Template used** — the exact chat template
   string/identifier, kept consistent through
   inference and eval — this is what ties an
-  `eval-harness-first` run back to the checkpoint.
+  `[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/eval-harness-first/SKILL.md)` run back to the checkpoint.
 - **Packing config** — whether packing was used,
   max sequence length, and confirmation the
   5–10-sequence manual inspection above was done.
@@ -195,10 +195,10 @@ Before handing off to `/finetune`, confirm:
   ranking, filter funnel, replay-mix construction,
   and teacher→student distillation pattern.
 
-Related skills: `finetuning-method-selection` routes
-here; `lora-qlora-recipes`, `vision-sft`, and
-`preference-optimization` consume the datasets this
-skill produces; `trace-to-training-data` is the
+Related skills: `[finetuning-method-selection](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` routes
+here; `[lora-qlora-recipes](../../AI_and_Agents/Models_and_FineTuning/lora-qlora-recipes/SKILL.md)`, `[vision-sft](../../AI_and_Agents/Models_and_FineTuning/vision-sft/SKILL.md)`, and
+`[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` consume the datasets this
+skill produces; `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/trace-to-training-data/SKILL.md)` is the
 provenance source for graded-trajectory datasets;
-`eval-harness-first` grades the resulting checkpoint.
+`[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/eval-harness-first/SKILL.md)` grades the resulting checkpoint.
 

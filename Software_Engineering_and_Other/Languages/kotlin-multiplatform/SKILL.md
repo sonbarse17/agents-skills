@@ -38,7 +38,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Completion Criteria
 - commonMain compiles without platform imports
 - expect/actual pairs resolve for all target platforms
-- Compose Multiplatform screens render on Android and iOS
+- Compose Multiplatform screens render on [Android](../../../Mobile/android/SKILL.md) and iOS
 - Ktor client calls succeed on all platforms
 - SQLDelight queries work cross-platform
 
@@ -64,7 +64,7 @@ Need shared UI?
 ```
 API complexity?
 ├── REST + JSON → Ktor Client + kotlinx.serialization
-│   Engine: OkHttp (Android), Darwin (iOS)
+│   Engine: OkHttp ([Android](../../../Mobile/android/SKILL.md)), Darwin (iOS)
 ├── GraphQL → Apollo Kotlin (KMP support)
 └── gRPC → KMP-gRPC (emerging, check compatibility)
 ```
@@ -75,7 +75,7 @@ Data model complexity?
 ├── Relational (SQL, joins) → SQLDelight
 │   Common schema, platform drivers, Flow support
 ├── Key-value (settings, preferences) → multiplatform-settings
-│   Wraps SharedPreferences (Android), NSUserDefaults (iOS)
+│   Wraps SharedPreferences ([Android](../../../Mobile/android/SKILL.md)), NSUserDefaults (iOS)
 ├── NoSQL/Document → Realm Kotlin SDK
 │   KMP-native, reactive, synchronization
 └── Encrypted → SQLCipher (SQLDelight cipher) or platform Keychain/Keystore
@@ -93,11 +93,11 @@ DI framework preference?
 
 ## Workflow
 
-1. **KMP project structure** — Three-tier source set layout: `commonMain` (shared business logic, domain models, repository interfaces, Ktor client, SQLDelight schema, expect declarations), `androidMain` (Android-specific actual implementations, OkHttp engine, Android Sqlite driver, Context-dependent factories), `iosMain` (iOS-specific actual implementations, Darwin engine, NativeSqlite driver, platform factories). Additional source sets for testing: `commonTest`, `androidUnitTest`, `iosTest`. The shared module is consumed by Android apps as an AAR library and by iOS apps as a Kotlin/Native framework.
+1. **KMP project structure** — Three-tier source set layout: `commonMain` (shared business logic, domain models, repository interfaces, Ktor client, SQLDelight schema, expect declarations), `androidMain` ([Android](../../../Mobile/android/SKILL.md)-specific actual implementations, OkHttp engine, [Android](../../../Mobile/android/SKILL.md) Sqlite driver, Context-dependent factories), `iosMain` (iOS-specific actual implementations, Darwin engine, NativeSqlite driver, platform factories). Additional source sets for testing: `commonTest`, `androidUnitTest`, `iosTest`. The shared module is consumed by [Android](../../../Mobile/android/SKILL.md) apps as an AAR library and by iOS apps as a Kotlin/Native framework.
 
-2. **expect/actual pattern** — Declare platform-agnostic interfaces in `commonMain` using `expect` keyword. Provide concrete implementations in platform source sets with `actual`. Three forms: `expect fun` (function), `expect class` (class with actual constructors), `expect object` (singleton), `expect val` (property), `expect typealias` (type alias for platform types). Example: `expect fun generateUuid(): String` with `actual fun generateUuid(): String = UUID.randomUUID().toString()` in Android and `actual fun generateUuid(): String = platform.Foundation.NSUUID().UUIDString()` in iOS. Keep expect declarations in `commonMain/.../platform/` package.
+2. **expect/actual pattern** — Declare platform-agnostic interfaces in `commonMain` using `expect` keyword. Provide concrete implementations in platform source sets with `actual`. Three forms: `expect fun` (function), `expect class` (class with actual constructors), `expect object` (singleton), `expect val` (property), `expect typealias` (type alias for platform types). Example: `expect fun generateUuid(): String` with `actual fun generateUuid(): String = UUID.randomUUID().toString()` in [Android](../../../Mobile/android/SKILL.md) and `actual fun generateUuid(): String = platform.Foundation.NSUUID().UUIDString()` in iOS. Keep expect declarations in `commonMain/.../platform/` package.
 
-3. **Ktor client configuration** — Single `HttpClient` declaration in `commonMain` with engine-agnostic setup. Use `ktor-client-core` for common code, `ktor-client-okhttp` for Android (supports HTTP/2, caching), `ktor-client-darwin` for iOS (uses NSURLSession, automatic cookie storage). Configure serialization with `kotlinx-serialization-json` using `ContentNegotiation` plugin. Add logging with `Logging` plugin. Timeout configuration: `HttpTimeout` plugin with `requestTimeoutMillis`, `connectTimeoutMillis`, `socketTimeoutMillis`.
+3. **Ktor client configuration** — Single `HttpClient` declaration in `commonMain` with engine-agnostic setup. Use `ktor-client-core` for common code, `ktor-client-okhttp` for [Android](../../../Mobile/android/SKILL.md) (supports HTTP/2, caching), `ktor-client-darwin` for iOS (uses NSURLSession, automatic cookie storage). Configure serialization with `kotlinx-serialization-json` using `ContentNegotiation` plugin. Add logging with `Logging` plugin. Timeout configuration: `HttpTimeout` plugin with `requestTimeoutMillis`, `connectTimeoutMillis`, `socketTimeoutMillis`.
 
 ```kotlin
 // commonMain — Ktor client factory
@@ -111,11 +111,11 @@ val httpClient = HttpClient {
 
 4. **kotlinx.serialization** — All data classes in `commonMain` use `@Serializable` annotation. Supports primitives, enums, sealed classes, nullable fields, default values. Custom serializers for non-standard types (Date, BigInteger). `Json` configuration: `ignoreUnknownKeys = true` for forward compatibility, `coerceInputValues = true` for invalid defaults, `encodeDefaults = false` to minimize payload. Use `@SerialName` for property name mapping. Polymorphic serialization for sealed class hierarchies.
 
-5. **Compose Multiplatform UI** — All shared UI in `commonMain` using Jetpack Compose APIs. The `org.jetbrains.compose` plugin compiles Compose code for both platforms. Material3 theming with `MaterialTheme` — customize typography, color scheme, and shapes. Navigation options: Voyager (screen-based, type-safe), Decompose (component-based, lifecycle-aware), or custom state-driven navigation. Platform-specific composables via `expect`/`actual` for views that cannot be shared (maps, WebView, Camera). Performance: `remember` for expensive computations, `derivedStateOf` for computed state, `LaunchedEffect` for side effects.
+5. **Compose Multiplatform UI** — All shared UI in `commonMain` using Jetpack Compose APIs. The `org.jetbrains.compose` plugin compiles Compose code for both platforms. Material3 theming with `MaterialTheme` — [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) typography, color scheme, and shapes. Navigation options: Voyager (screen-based, type-safe), Decompose (component-based, lifecycle-aware), or custom state-driven navigation. Platform-specific composables via `expect`/`actual` for views that cannot be shared (maps, WebView, Camera). Performance: `remember` for expensive computations, `derivedStateOf` for computed state, `LaunchedEffect` for side effects.
 
-6. **Platform-specific UI integration** — When Compose Multiplatform cannot render a native component, use `expect` composable functions. Android: wrap Android Views via `AndroidView` composable factory. iOS: wrap UIKit views via `UIKitView` composable (KMP Compose provides interop). Example: MapView, CameraPreview, WebView, NativeTextInput. Keep platform composables thin — minimal wrapper code, pass data via parameters. Platform UI code lives in `androidMain`/`iosMain` Composable files.
+6. **Platform-specific UI integration** — When Compose Multiplatform cannot render a native component, use `expect` composable functions. [Android](../../../Mobile/android/SKILL.md): wrap [Android](../../../Mobile/android/SKILL.md) Views via `AndroidView` composable factory. iOS: wrap UIKit views via `UIKitView` composable (KMP Compose provides interop). Example: MapView, CameraPreview, WebView, NativeTextInput. Keep platform composables thin — minimal wrapper code, pass data via parameters. Platform UI code lives in `androidMain`/`iosMain` Composable files.
 
-7. **Testing strategy** — `commonTest` for shared business logic: domain models, repository logic, ViewModel state. Use kotlin.test for assertions. Mock dependencies with mock libraries that support KMP (MockK, KMM- Mock). Instrumented tests on Android and iOS use platform source sets. UI testing of Compose screens uses Compose UI Test framework in commonTest. Run iOS tests on simulator via Gradle task or Xcode Test Navigator.
+7. **Testing strategy** — `commonTest` for shared business logic: domain models, repository logic, ViewModel state. Use kotlin.test for assertions. Mock dependencies with mock libraries that support KMP (MockK, KMM- Mock). Instrumented tests on [Android](../../../Mobile/android/SKILL.md) and iOS use platform source sets. UI testing of Compose screens uses Compose UI Test framework in commonTest. Run iOS tests on simulator via Gradle task or Xcode Test Navigator.
 
 ## Platform Compatibility
 
@@ -123,7 +123,7 @@ val httpClient = HttpClient {
 |---------|-----------|-------------|---------|
 | Business logic | Full | Thin override | Thin override |
 | HTTP client | Ktor declaration | OkHttp engine | Darwin engine |
-| Database | SQLDelight schema | Android driver | Native driver |
+| Database | SQLDelight schema | [Android](../../../Mobile/android/SKILL.md) driver | Native driver |
 | UI (Compose) | Full | Full | Full |
 | Platform APIs | expect decl | actual impl | actual impl |
 | Dependency injection | Koin module decl | platform bindings | platform bindings |
@@ -140,7 +140,7 @@ val httpClient = HttpClient {
 
 ## Common Pitfalls
 
-- **No android.* imports in commonMain**: The compiler enforces this, but watch for transitive dependencies that pull Android types.
+- **No [android](../../../Mobile/android/SKILL.md).* imports in commonMain**: The compiler enforces this, but watch for transitive dependencies that pull [Android](../../../Mobile/android/SKILL.md) types.
 - **iOS framework linking**: Ensure `embedAndSignAppleFrameworkForXcode` is in the build phase of your Xcode project.
 - **Serialization class clashes**: Two modules with the same `@Serializable` class cause linker errors. Use explicit `@SerialName` or module-level serializers.
 - **Generic type erasure**: `expect`/`actual` with generics requires `@Suppress("NO_ACTUAL_FOR_EXPECT")` in some cases.
@@ -154,25 +154,25 @@ val httpClient = HttpClient {
 - **No commonTest coverage**: If commonTest is empty, you lose the main advantage of KMP — shared test coverage
 - **Manual memory management on iOS**: Kotlin/Native uses ARC — but watch for cyclic references between Kotlin and Swift objects
 - **Outdated libs.versions.toml**: KMP ecosystem moves fast — update Ktor, Kotlin, Compose versions together
-- **Mixing KMP modules with Android-only dependencies**: Keep KMP modules pure — put Android UI in separate :app module
+- **Mixing KMP modules with [Android](../../../Mobile/android/SKILL.md)-only dependencies**: Keep KMP modules pure — put [Android](../../../Mobile/android/SKILL.md) UI in separate :app module
 
 ## Build & Deployment Patterns
 
 ### CI/CD for KMP Projects
 
-KMP requires building for multiple targets — Android (JVM) and iOS (Kotlin/Native). CI must handle both environments. Recommended CI matrix:
+KMP requires building for multiple targets — [Android](../../../Mobile/android/SKILL.md) (JVM) and iOS (Kotlin/Native). CI must handle both environments. Recommended CI matrix:
 
 ```yaml
-# GitHub Actions example
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
 jobs:
-  android:
+  [android](../../../Mobile/android/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with: { distribution: 'temurin', java-version: '17' }
-      - name: Build Android
+      - name: Build [Android](../../../Mobile/android/SKILL.md)
         run: ./gradlew :shared:assembleAndroidDebug :app:assembleDebug
       - name: Run common tests
         run: ./gradlew :shared:allTests
@@ -243,11 +243,11 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-[android](../../../Mobile/android/SKILL.md) = { module = "app.cash.sqldelight:[android](../../../Mobile/android/SKILL.md)-driver", version.ref = "sqldelight" }
 sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-[android](../../../Mobile/android/SKILL.md) = { module = "io.insert-koin:koin-[android](../../../Mobile/android/SKILL.md)", version.ref = "koin" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 ```
 
@@ -264,14 +264,14 @@ project/
 │   ├── src/androidMain/
 │   ├── src/iosMain/
 │   └── build.gradle.kts
-├── app/                       # Android shell app (only if not using composeApp)
+├── app/                       # [Android](../../../Mobile/android/SKILL.md) shell app (only if not using composeApp)
 │   └── src/main/
 ├── iosApp/                    # iOS Xcode project
 │   └── iosApp.xcodeproj/
 └── build.gradle.kts
 ```
 
-Keep `shared` module pure — no Android UI dependencies. The `composeApp` module depends on `shared` and provides the Compose UI layer. Android app module wraps `composeApp`; iOS app embeds the framework from `composeApp` or `shared`.
+Keep `shared` module pure — no [Android](../../../Mobile/android/SKILL.md) UI dependencies. The `composeApp` module depends on `shared` and provides the Compose UI layer. [Android](../../../Mobile/android/SKILL.md) app module wraps `composeApp`; iOS app embeds the framework from `composeApp` or `shared`.
 
 ## Performance Optimization
 
@@ -308,7 +308,7 @@ AsyncImage(
 ### Ktor Client Optimization
 
 - **Connection pooling**: Configure `HttpClient` with custom engine options. OkHttp: `OkHttp.config { connectionPool(ConnectionPool(5, 30, TimeUnit.SECONDS)) }`. Darwin: `Darwin.config { configureRequest { setAllowsCellularAccess(true) } }`.
-- **Response caching**: Enable OkHttp cache on Android for GET requests. Configure cache directory and max size. Reduces redundant network calls.
+- **Response caching**: Enable OkHttp cache on [Android](../../../Mobile/android/SKILL.md) for GET requests. Configure cache directory and max size. Reduces redundant network calls.
 - **Serialization performance**: Use `kotlinx.serialization` with `Json { ignoreUnknownKeys = true; isLenient = true }` over Gson or Moshi. KMP-native serialization is 2-3x faster than reflection-based alternatives.
 - **WebSocket keep-alive**: For real-time connections, configure `WebSockets { pingInterval = 30_000 }` — sends ping frames every 30s to keep the connection alive and detect disconnects early.
 
@@ -415,7 +415,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation("io.ktor:ktor-client-okhttp:3.0.3")
-            implementation("app.cash.sqldelight:android-driver:2.0.2")
+            implementation("app.cash.sqldelight:[android](../../../Mobile/android/SKILL.md)-driver:2.0.2")
         }
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:3.0.3")
@@ -434,7 +434,7 @@ kotlin {
   - ../../../Global_References/kotlin-multiplatform-fundamentals.md — Kotlin Multiplatform Fundamentals
   - ../../../Global_References/platform-specific.md — Platform-Specific Implementations
 ## Handoff
-Hand off to platform-specific iOS or Android skills when expect/actual implementations need deep platform API knowledge.
+Hand off to platform-specific iOS or [Android](../../../Mobile/android/SKILL.md) skills when expect/actual implementations need deep platform API knowledge.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -487,7 +487,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -501,7 +501,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -517,12 +517,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -531,7 +531,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -539,13 +539,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -554,8 +554,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

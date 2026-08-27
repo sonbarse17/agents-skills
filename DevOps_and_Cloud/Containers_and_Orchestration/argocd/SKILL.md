@@ -9,7 +9,7 @@ metadata:
 
 # Argo CD
 
-Use this skill to manage GitOps deployments with Argo CD declaratively and safely.
+Use this skill to manage [GitOps](../gitops/SKILL.md) deployments with Argo CD declaratively and safely.
 
 ## Quick Start
 
@@ -23,7 +23,7 @@ Use this skill to manage GitOps deployments with Argo CD declaratively and safel
 - `resources/install-and-setup.md` — install argocd CLI, login, env vars, initial setup
 - `resources/command-cookbook.md` — argocd app list/get/create/sync/diff/history/rollback commands
 - `resources/application-management.md` — Application CRD, sync policies, waves, hooks, health status
-- `resources/rbac-and-projects.md` — AppProject CRD, RBAC policies, SSO, multi-tenancy
+- `resources/rbac-and-projects.md` — AppProject CRD, RBAC policies, SSO, [multi-tenancy](../multi-tenancy/SKILL.md)
 
 ## Workflow
 
@@ -44,9 +44,9 @@ argocd app sync my-app --resource apps:Deployment:my-deployment
 
 ```bash
 argocd app create my-app \
-  --repo https://github.com/org/repo \
+  --repo https://[github](../../CI_CD/github/SKILL.md).com/org/repo \
   --path k8s/overlays/production \
-  --dest-server https://kubernetes.default.svc \
+  --dest-server https://[kubernetes](../kubernetes/SKILL.md).default.svc \
   --dest-namespace production \
   --sync-policy automated
 ```
@@ -67,8 +67,8 @@ argocd app rollback my-app 3
 - Never share the `argocd-initial-admin-secret` — rotate the admin password immediately after first login.
 - Use AppProject `sourceRepos` and `destinations` to restrict what repositories and clusters each team can deploy to.
 - Use `argocd app sync --resource <group:kind:name>` to sync specific resources rather than triggering a full sync unnecessarily.
-- Store repository credentials as Kubernetes secrets, not as plain-text in Application manifests.
+- Store repository credentials as [Kubernetes](../kubernetes/SKILL.md) secrets, not as plain-text in Application manifests.
 
 ## Related Skills
 
-kubectl, helm
+[kubectl](../kubectl/SKILL.md), helm

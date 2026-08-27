@@ -50,7 +50,7 @@ metadata:
 
 ## Troubleshooting Guides
 
-Connectivity, SDK, and auth troubleshooting guides are located in the azure-diagnostics skill under `troubleshooting/messaging/`.
+Connectivity, SDK, and auth troubleshooting guides are located in the [azure-diagnostics](../[azure-diagnostics](../azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md) skill under `troubleshooting/messaging/`.
 
 ## References
 

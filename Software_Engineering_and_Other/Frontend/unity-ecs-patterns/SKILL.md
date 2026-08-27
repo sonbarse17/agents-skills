@@ -3,13 +3,13 @@ name: unity-ecs-patterns
 description: Master Unity ECS (Entity Component System) with DOTS, Jobs, and Burst for high-performance game development. Use when building data-oriented games, optimizing performance, or working with large entity counts.
 ---
 
-# Unity ECS Patterns
+# [Unity](../../../Game_Development/unity/SKILL.md) ECS Patterns
 
-Production patterns for Unity's Data-Oriented Technology Stack (DOTS) including Entity Component System, Job System, and Burst Compiler.
+Production patterns for [Unity](../../../Game_Development/unity/SKILL.md)'s Data-Oriented Technology Stack (DOTS) including Entity Component System, Job System, and Burst Compiler.
 
 ## When to Use This Skill
 
-- Building high-performance Unity games
+- Building high-performance [Unity](../../../Game_Development/unity/SKILL.md) games
 - Managing thousands of entities efficiently
 - Implementing data-oriented game systems
 - Optimizing CPU-bound game logic
@@ -41,7 +41,7 @@ Chunk: Memory block for same-archetype entities
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/unity-ecs-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[unity](../../../Game_Development/unity/SKILL.md)-ecs-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

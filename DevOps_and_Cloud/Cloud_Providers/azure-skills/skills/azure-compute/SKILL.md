@@ -15,10 +15,10 @@ Routes Azure VM and Virtual Machine Scale Set (VMSS) requests to the right workf
 
 - User wants to **recommend, compare, or price** a VM or VMSS
 - User wants to **create, provision, or deploy** a VM or VMSS
-- User asks about **Capacity Reservation Groups** (CRG) — reserve, guarantee capacity, pre-provision
+- User asks about **[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Reservation Groups** (CRG) — reserve, guarantee [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), pre-provision
 - User asks about **Essential Machine Management** (EMM) — machine enrollment, monitor
 
-**Disambiguate with `azure-prepare`:** if the user wants to deploy an **application** (Docker service, web app, API, serverless workload), route to `azure-prepare`. `vm-creator` is for **bare VM/VMSS infrastructure** only.
+**Disambiguate with `[azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md)`:** if the user wants to deploy an **application** ([Docker](../../../../Containers_and_Orchestration/docker/SKILL.md) service, web app, API, [serverless](../../../../Containers_and_Orchestration/serverless/SKILL.md) workload), route to `[azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md)`. `vm-creator` is for **bare VM/VMSS infrastructure** only.
 
 ## Routing
 
@@ -26,7 +26,7 @@ Routes Azure VM and Virtual Machine Scale Set (VMSS) requests to the right workf
 
 | Workflow | File | Use when |
 |---|---|---|
-| **VM Recommender** | [vm-recommender.md](workflows/vm-recommender/vm-recommender.md) | User asks which VM/VMSS to choose, whether to use VMSS/autoscaling, wants pricing, or wants to compare options |
+| **VM Recommender** | [vm-recommender.md](workflows/vm-recommender/vm-recommender.md) | User asks which VM/VMSS to choose, whether to use VMSS/[autoscaling](../../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), wants pricing, or wants to compare options |
 | **VM Creator** | [vm-creator.md](workflows/vm-creator/vm-creator.md) | User wants to create, provision, or deploy a bare VM or VMSS (not an app deployment) |
-| **Capacity Reservation** | [capacity-reservation.md](workflows/capacity-reservation/capacity-reservation.md) | User needs to reserve / guarantee VM capacity (CRG create / associate / disassociate) |
+| **[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Reservation** | [capacity-reservation.md](workflows/[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-reservation/[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-reservation.md) | User needs to reserve / guarantee VM [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (CRG create / associate / disassociate) |
 | **Essential Machine Management** | [essential-machine-management.md](workflows/essential-machine-management/essential-machine-management.md) | User asks about EMM / machine enrollment / monitor |

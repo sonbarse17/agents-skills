@@ -21,10 +21,10 @@ Design and implement AR/VR experiences for mobile platforms with platform-aware 
 ## Agent Protocol
 
 ### Trigger
-"AR", "VR", "augmented reality", "virtual reality", "ARKit", "ARCore", "Unity AR", "3D rendering", "SceneView", "AR scene", "AR interaction", "AR performance", "AR placement", "AR anchor", "AR lighting", "AR tracking", "AR model", "AR filter", "AR face tracking", "AR image tracking", "AR plane detection".
+"AR", "VR", "augmented reality", "virtual reality", "ARKit", "ARCore", "[Unity](../../Game_Development/unity/SKILL.md) AR", "3D rendering", "SceneView", "AR scene", "AR interaction", "AR performance", "AR placement", "AR anchor", "AR lighting", "AR tracking", "AR model", "AR filter", "AR face tracking", "AR image tracking", "AR plane detection".
 
 ### Input Context
-- Target platforms (iOS only, Android only, or cross-platform)
+- Target platforms (iOS only, [Android](../android/SKILL.md) only, or cross-platform)
 - AR/VR feature requirements (plane detection, image tracking, face tracking, world mapping)
 - 3D assets available and their formats (USDZ, glTF, FBX, OBJ)
 - Performance targets (target FPS, memory budget, battery impact)
@@ -51,15 +51,15 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 ### AR Framework Decision Tree
 ```
-Is the app cross-platform (iOS + Android)?
-├── Yes → Use ARFoundation (Unity) or SceneView (React Native / Flutter)
-│   ├── Unity project? → ARFoundation with ARCore/ARKit XR Plugins
+Is the app cross-platform (iOS + [Android](../android/SKILL.md))?
+├── Yes → Use ARFoundation ([Unity](../../Game_Development/unity/SKILL.md)) or SceneView (React Native / Flutter)
+│   ├── [Unity](../../Game_Development/unity/SKILL.md) project? → ARFoundation with ARCore/ARKit XR Plugins
 │   └── React Native / Flutter? → SceneView / ar_flutter_plugin
 ├── iOS only → ARKit (native Swift) — best iOS experience
-└── Android only → ARCore (native Kotlin/Java)
+└── [Android](../android/SKILL.md) only → ARCore (native Kotlin/Java)
 
 Does the app need LiDAR features?
-├── Yes → ARKit (LiDAR on iOS), ARCore Depth API (limited Android)
+├── Yes → ARKit (LiDAR on iOS), ARCore Depth API (limited [Android](../android/SKILL.md))
 └── No → Any framework works
 ```
 
@@ -96,7 +96,7 @@ Budle target size?
 ## Workflow
 
 ### Step 1: Platform Selection
-ARKit (iOS 11+): A12 Bionic or later for LiDAR, ARWorldTrackingConfiguration for 6DOF, ARImageTrackingConfiguration for image targets, ARFaceTrackingConfiguration for face AR. ARCore (Android 7+): Google Play Services for AR, supported devices list at developers.google.com/ar/devices, Depth API for occlusion, Augmented Images for image tracking. Cross-platform: use ARFoundation (Unity) or SceneView (React Native / Flutter).
+ARKit (iOS 11+): A12 Bionic or later for LiDAR, ARWorldTrackingConfiguration for 6DOF, ARImageTrackingConfiguration for image targets, ARFaceTrackingConfiguration for face AR. ARCore ([Android](../android/SKILL.md) 7+): Google Play Services for AR, supported devices list at developers.google.com/ar/devices, Depth API for occlusion, Augmented Images for image tracking. Cross-platform: use ARFoundation ([Unity](../../Game_Development/unity/SKILL.md)) or SceneView (React Native / Flutter).
 
 | Capability | ARKit | ARCore |
 |-----------|-------|--------|
@@ -104,10 +104,10 @@ ARKit (iOS 11+): A12 Bionic or later for LiDAR, ARWorldTrackingConfiguration for
 | Image tracking | Concurrent, up to 100 images | Up to 20 images |
 | Face tracking | TrueDepth camera (iPhone X+) | Front camera, less precise |
 | World mapping | Persistent via ARWorldMap | Cloud Anchors |
-| LiDAR support | iPad Pro 2020+, iPhone 12 Pro+ | Select Android devices |
+| LiDAR support | iPad Pro 2020+, iPhone 12 Pro+ | Select [Android](../android/SKILL.md) devices |
 
 ### Step 2: Scene Setup
-Configure ARSession. For world tracking: set `ARWorldTrackingConfiguration` (iOS) or `Config` with `PlaneFindingMode` (Android). Enable auto-focus, ambient light estimation, and environment texturing. Handle session interruptions.
+Configure ARSession. For world tracking: set `ARWorldTrackingConfiguration` (iOS) or `Config` with `PlaneFindingMode` ([Android](../android/SKILL.md)). Enable auto-focus, ambient light estimation, and environment texturing. Handle session interruptions.
 
 ```
 ARSession
@@ -117,16 +117,16 @@ ARSession
 ```
 
 ### Step 3: 3D Model Handling
-Preferred formats: USDZ (iOS native, animation + materials), glTF 2.0 (cross-platform, Draco compression). Model pipeline: source -> optimize (decimate to target poly count) -> compress (Draco for glTF) -> LOD generation (3 levels at 100%, 60%, 30% detail) -> bundle. Texture atlas: combine textures, max 1024x1024 for mobile, ASTC (iOS) or ETC2 (Android).
+Preferred formats: USDZ (iOS native, animation + materials), glTF 2.0 (cross-platform, Draco compression). Model pipeline: source -> optimize (decimate to target poly count) -> compress (Draco for glTF) -> LOD generation (3 levels at 100%, 60%, 30% detail) -> bundle. Texture atlas: combine textures, max 1024x1024 for mobile, ASTC (iOS) or ETC2 ([Android](../android/SKILL.md)).
 
 ### Step 4: Interaction Patterns
 Placement: hit-test against detected planes (raycast), show ghost preview, confirm placement with haptic + animation. Manipulation: one-finger rotate, two-finger scale, long-press drag. Selection: tap to select (visual highlight + bounding box), double-tap for context menu. Feedback: light impact for selection, medium for placement, ripple animation, glow effect.
 
 ### Step 5: Performance Optimization
-GPU instancing for repeated objects. Occlusion culling (LiDAR depth on iOS, Depth API on Android). Limit tracked images to 10 max. Batch ARAnchor operations. LOD switching based on camera distance. Profile with Xcode SceneKit debugger or Android GPU Inspector.
+GPU instancing for repeated objects. Occlusion culling (LiDAR depth on iOS, Depth API on [Android](../android/SKILL.md)). Limit tracked images to 10 max. Batch ARAnchor operations. LOD switching based on camera distance. Profile with Xcode SceneKit debugger or [Android](../android/SKILL.md) GPU Inspector.
 
 ### Step 6: VR Integration
-VR requires dedicated headset (Meta Quest, Apple Vision Pro). Mobile VR is primarily ARKit or Unity VR build. For Vision Pro: RealityKit, SwiftUI with volumetric windows, immersive spaces. AR: 60fps. VR: 72fps minimum (90fps preferred) to prevent motion sickness.
+VR requires dedicated headset (Meta Quest, Apple Vision Pro). Mobile VR is primarily ARKit or [Unity](../../Game_Development/unity/SKILL.md) VR build. For Vision Pro: RealityKit, SwiftUI with volumetric windows, immersive spaces. AR: 60fps. VR: 72fps minimum (90fps preferred) to prevent motion sickness.
 
 ### Step 7: Session Interruption Handling
 AR sessions are interrupted by: incoming call, app backgrounding, tracking loss (poor lighting, featureless surfaces). Implement session interruption handlers: (a) On interruption: pause AR, save state/snapshot. (b) On resume: check tracking state, reload anchors if needed. (c) If tracking state is limited: check tracking reason (excessive motion, insufficient features, initializing), inform user with action prompt (move device to well-lit area with texture). (d) After prolonged interruption: reset session configuration and re-establish anchors.
@@ -137,7 +137,7 @@ ARKit: environment texturing (`automatic` or `manual`). Automatic generates envi
 ## Common Pitfalls
 
 ### Pitfall 1: Not Checking Device Capability
-Running AR features on unsupported devices crashes the app. Always check `ARConfiguration.isSupported` (iOS) or `ArCoreApk.checkAvailability` (Android) before activating AR.
+Running AR features on unsupported devices crashes the app. Always check `ARConfiguration.isSupported` (iOS) or `ArCoreApk.checkAvailability` ([Android](../android/SKILL.md)) before activating AR.
 
 ### Pitfall 2: Hardcoding Tracking Configurations
 Setting a fixed tracking configuration without handling runtime failures. Always monitor session state changes and provide user recovery prompts for limited tracking.
@@ -200,24 +200,24 @@ AR performance on simulators/emulators bears no relation to real-device performa
 
 ## Multi-User AR & Cloud Anchors
 
-For shared AR experiences where multiple users see the same virtual content at the same location: iOS ARKit supports `ARWorldMap` for saving and sharing AR scene state. Host device exports the world map (`ARSession.createWorldMap`) and sends it to other devices via network (WebSocket, custom signaling server). Receiving devices import the world map (`ARSession.run(with: worldMapConfiguration)`) to align their AR coordinate system. Android ARCore provides Cloud Anchons via `CloudAnchorManager`. Host resolves anchors to the cloud (`ArCoreResolveAndAttachAnchor`), share the cloud anchor ID, guests resolve. For cross-platform: use ARCore Cloud Anchors from both platforms via the ARCore SDK. Multi-user features require: (1) real-time anchor state sync via network, (2) conflict resolution for simultaneous moves, (3) late-joining support (new users see existing content), (4) persistent content across sessions. Network sync should use WebRTC or a lightweight WebSocket protocol (not polling). Sync frequency: position updates at 20Hz, anchor events on change.
+For shared AR experiences where multiple users see the same virtual content at the same location: iOS ARKit supports `ARWorldMap` for saving and sharing AR scene state. Host device exports the world map (`ARSession.createWorldMap`) and sends it to other devices via network (WebSocket, custom signaling server). Receiving devices import the world map (`ARSession.run(with: worldMapConfiguration)`) to align their AR coordinate system. [Android](../android/SKILL.md) ARCore provides Cloud Anchons via `CloudAnchorManager`. Host resolves anchors to the cloud (`ArCoreResolveAndAttachAnchor`), share the cloud anchor ID, guests resolve. For cross-platform: use ARCore Cloud Anchors from both platforms via the ARCore SDK. Multi-user features require: (1) real-time anchor state sync via network, (2) conflict resolution for simultaneous moves, (3) late-joining support (new users see existing content), (4) persistent content across sessions. Network sync should use WebRTC or a lightweight WebSocket protocol (not polling). Sync frequency: position updates at 20Hz, anchor events on change.
 
 ## Procedural Content & Dynamic Scene Generation
 
-For AR experiences that need dynamic content without pre-bundled 3D assets, use procedural generation. Generate geometry at runtime using SCNGeometry (iOS SceneKit) or Mesh API (Unity/ARFoundation). Patterns: (a) terrain mesh from depth data — sample LiDAR/Depth API grid, generate vertex buffer, apply surface shader, (b) parametric objects — cylinders, spheres, extrusions with runtime parameter control, (c) text extrusion — convert string to 3D geometry using platform text-to-mesh APIs, (d) particle systems for ambient effects (sparkles, floating particles, smoke). Procedural content reduces bundle size significantly (no 3D assets to ship) at the cost of runtime compute. Use compute shaders (iOS Metal, Android Vulkan) for vertex-heavy generation to avoid GPU stalls.
+For AR experiences that need dynamic content without pre-bundled 3D assets, use procedural generation. Generate geometry at runtime using SCNGeometry (iOS SceneKit) or Mesh API ([Unity](../../Game_Development/unity/SKILL.md)/ARFoundation). Patterns: (a) terrain mesh from depth data — sample LiDAR/Depth API grid, generate vertex buffer, apply surface shader, (b) parametric objects — cylinders, spheres, extrusions with runtime parameter control, (c) text extrusion — convert string to 3D geometry using platform text-to-mesh APIs, (d) particle systems for ambient effects (sparkles, floating particles, smoke). Procedural content reduces bundle size significantly (no 3D assets to ship) at the cost of runtime compute. Use compute shaders (iOS Metal, [Android](../android/SKILL.md) Vulkan) for vertex-heavy generation to avoid GPU stalls.
 
 ### Rendering Pipeline Decision Tree
 ```
 Rendering complexity for AR scene?
-├── Simple (static models, flat lighting) → SceneKit (iOS) / Sceneform (Android)
+├── Simple (static models, flat lighting) → SceneKit (iOS) / Sceneform ([Android](../android/SKILL.md))
 │   Built-in rendering, PBR materials, shadows — good for most product placement
-├── Medium (animated models, environment lighting) → RealityKit (iOS) / ARCore + Filament (Android)
+├── Medium (animated models, environment lighting) → RealityKit (iOS) / ARCore + Filament ([Android](../android/SKILL.md))
 │   RealityKit: entity-component, animations, physics, environment probes
 │   Filament: PBR renderer from Google, used by ARCore internally
 ├── Complex (custom shaders, post-processing, 50k+ polys)
-│   → Metal (iOS) / Vulkan (Android) — full GPU control
+│   → Metal (iOS) / Vulkan ([Android](../android/SKILL.md)) — full GPU control
 │   Significant engineering cost, only for specialized rendering apps
-└── Cross-platform 3D → Unity ARFoundation with Universal Render Pipeline
+└── Cross-platform 3D → [Unity](../../Game_Development/unity/SKILL.md) ARFoundation with Universal Render Pipeline
     Write once, render on both platforms with URP feature sets
 ```
 
@@ -253,7 +253,7 @@ AR interaction type?
 
 ## AR Session Analytics
 
-Track AR session quality metrics to diagnose user experience issues: (1) tracking state duration — time spent in limited/normal tracking, (2) average light estimation values — too dark reduces tracking quality, (3) anchor count over time — anchor leaks degrade performance, (4) session interruption frequency — correlates with app backgrounding and poor conditions, (5) average frame rate — drop below 30fps causes discomfort, (6) depth data availability — LiDAR vs. no LiDAR session path. Log these as analytics events prefixed with `ar_`. Monitor dashboards for: sessions with >50% time in limited tracking, anchor count >100 sustained, fps consistently below 30. Alerts trigger when any metric exceeds 2 standard deviations from baseline.
+Track AR session quality metrics to diagnose user experience issues: (1) tracking state duration — time spent in limited/normal tracking, (2) average light estimation values — too dark reduces tracking quality, (3) anchor count over time — anchor leaks degrade performance, (4) session interruption frequency — correlates with app backgrounding and poor conditions, (5) average frame rate — drop below 30fps causes discomfort, (6) depth data availability — LiDAR vs. no LiDAR session path. Log these as analytics events prefixed with `ar_`. Monitor [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for: sessions with >50% time in limited tracking, anchor count >100 sustained, fps consistently below 30. Alerts trigger when any metric exceeds 2 standard deviations from baseline.
 
 ## Production Considerations
 
@@ -270,7 +270,7 @@ Track AR session quality metrics to diagnose user experience issues: (1) trackin
 
 ### Testing Matrix
 
-| Condition | iOS Checklist | Android Checklist |
+| Condition | iOS Checklist | [Android](../android/SKILL.md) Checklist |
 |-----------|---------------|-------------------|
 | Bright sunlight | Tracking stable, shadows | Same + auto-exposure |
 | Dim interior | Low light prompt shows | Same |
@@ -305,7 +305,7 @@ Model detail vs frame rate:
 
 ### CI/CD Considerations
 
-- Run AR integration tests on real device farm (Firebase Test Lab, AWS Device Farm)
+- Run AR integration tests on real device farm ([Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Test Lab, AWS Device Farm)
 - Validate 3D model bundle sizes in CI — fail if total >50MB
 - Verify performance budget with trace capture on each build
 - Test both LiDAR and non-LiDAR device paths
@@ -391,7 +391,7 @@ class ArActivity : AppCompatActivity() {
 ```
 
 ### AR Model Loading with glTF
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Three.js / React Three Fiber in mobile AR
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
@@ -420,7 +420,7 @@ export async function loadARModel(url: string) {
 
 ### AR Anti-Patterns (Expanded)
 - **Loading all models at session start**: Pre-loading every 3D asset at launch uses unnecessary memory. Load models on demand as user places them, stream LOD levels incrementally.
-- **No session state persistence**: User places furniture in AR, backgrounds app, comes back — everything is gone. Save `ARWorldMap` (iOS) or Cloud Anchors (Android) for session restoration.
+- **No session state persistence**: User places furniture in AR, backgrounds app, comes back — everything is gone. Save `ARWorldMap` (iOS) or Cloud Anchors ([Android](../android/SKILL.md)) for session restoration.
 - **Ignoring `NSPhotoLibraryUsageDescription`**: AR apps that save photos/videos of AR scenes need photo library permission. Missing description = App Store rejection.
 - **Single-threaded model loading**: Loading glTF files on main thread blocks 60fps rendering. Use background thread with progress indicator.
 - **Over-reliance on GPS accuracy**: Outdoor AR with GPS drifts without visual-inertial odometry (VIO). ARKit GeoTracking uses VIO + GPS for ~1m accuracy. Pure GPS is 5-15m.
@@ -456,14 +456,14 @@ App ready for AR release?
 - ../../../Global_References/arkit-implementation.md — ARKit Implementation
 - ../../../Global_References/vr-development.md — Mobile VR Development
 - ../../../Global_References/ar-vr-rendering-performance.md — Rendering optimization for AR/VR on mobile
-- ../../../Global_References/ar-vr-interaction-design.md — Interaction design patterns for AR/VR experiences
+- ../../../Global_References/ar-vr-[interaction-design](../../Product_and_Business/[interaction-design](../../Software_Engineering_and_Other/Frontend/ui-design/skills/interaction-design/SKILL.md)/SKILL.md).md — Interaction design patterns for AR/VR experiences
 - ../../../Global_References/ar-vr-fundamentals.md — AR/VR Fundamentals
 - ../../../Global_References/ar-vr-advanced.md — Advanced AR/VR Patterns
 - ../../../Global_References/ar-vr-testing.md — AR/VR Testing Guide
 
 ## Handoff
 mobile/universal/testing for AR testing strategy (real device, varied lighting, occlusion scenarios)
-mobile/universal/performance for profiling AR-specific performance metrics
+mobile/universal/performance for [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) AR-specific performance metrics
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -516,7 +516,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -530,7 +530,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -546,12 +546,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -560,7 +560,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -568,13 +568,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -583,8 +583,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

@@ -77,26 +77,26 @@ helpers (`_helpers.tpl`) that need their own comments to follow.
   keep control flow visible in the resource file it affects.
 - **If a chart needs to conditionally render 10 different resource combinations**, that's a sign it's
   actually several charts, or that a library chart / subchart split is overdue.
-- **Lint and render before every commit**: `helm lint` and `helm template` catch broken YAML from
+- **Lint and render before every [commit](../../CI_CD/commit/SKILL.md)**: `helm lint` and `helm template` catch broken YAML from
   whitespace/indentation errors that only surface at `helm install` time otherwise.
 
 **Done when:** `helm template` renders valid manifests for every supported values combination, and
 that rendered output is checked in CI rather than only at install time.
 
-## 5. Choose Helm over Kustomize for packaging, not patching
+## 5. Choose Helm over [Kustomize](../kustomize/SKILL.md) for packaging, not patching
 
-Helm and Kustomize solve overlapping but different problems: Helm is a templating and packaging
+Helm and [Kustomize](../kustomize/SKILL.md) solve overlapping but different problems: Helm is a templating and packaging
 system with releases, versioning, and a values contract for consumers who don't read the manifests;
-Kustomize is patch-based overlay composition for teams who prefer editing plain YAML directly and
+[Kustomize](../kustomize/SKILL.md) is patch-based overlay composition for teams who prefer editing plain YAML directly and
 don't need a distributable package. Picking the wrong one shows up as fighting the tool for the
 project's entire lifetime.
 
 - **Choose Helm** when you're distributing to other teams/consumers, need parameterization deeper
   than field patches, or want release/rollback tracking baked in.
-- **Choose Kustomize** when the team wants to read and patch plain manifests without a templating
+- **Choose [Kustomize](../kustomize/SKILL.md)** when the team wants to read and patch plain manifests without a templating
   layer, and environment differences are small structural patches, not deep parameterization.
-- **They compose**: `helm template | kustomize build -` is a legitimate pattern when you need Helm's
-  packaging but Kustomize's patch ergonomics for final environment tweaks.
+- **They compose**: `helm template | [kustomize](../kustomize/SKILL.md) build -` is a legitimate pattern when you need Helm's
+  packaging but [Kustomize](../kustomize/SKILL.md)'s patch ergonomics for final environment tweaks.
 
 **Done when:** the choice is written down with the actual reason, not defaulted to whichever the
 last project used.
@@ -104,6 +104,6 @@ last project used.
 ## Report
 
 State the chart's values contract shape, how environment overrides are layered, whether
-`--atomic --wait` is used and rollback has been tested, and the Helm-vs-Kustomize decision if one was
+`--atomic --wait` is used and rollback has been tested, and the Helm-vs-[Kustomize](../kustomize/SKILL.md) decision if one was
 made. Call out any template logic still hard to predict from values alone, or any values file that's
 still a near-duplicate of another — naming that sprawl is more useful than calling the chart clean.

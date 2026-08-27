@@ -14,24 +14,24 @@ metadata:
   maturity: stable
 ---
 
-# Model Monitoring And Drift Detection
+# Model [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) And Drift Detection
 
 ## Purpose
 
 A deployed model does not fail loudly when the world changes underneath it —
 it fails quietly, by making steadily worse predictions while every
-infrastructure health check stays green. Model monitoring and drift detection
+infrastructure health check stays green. Model [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection
 closes that gap: it tracks the statistical properties of inputs, outputs, and
 (where ground truth eventually arrives) prediction quality over time, and
 raises an alert or triggers retraining before silent degradation turns into a
-business incident. This is operationally distinct from standard application
-monitoring (latency, error rate, uptime) because the failure mode here is a
+business [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). This is operationally distinct from standard application
+[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (latency, error rate, uptime) because the failure mode here is a
 model that is "working" in every infrastructure sense while being wrong.
 
 ## When to use
 
-- The user wants to set up monitoring for a model already in production
-  (dashboards, alerts, SLOs on model quality, not just system health).
+- The user wants to set up [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for a model already in production
+  ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), alerts, SLOs on model quality, not just system health).
 - The user asks to detect data drift (input feature distribution shift),
   concept drift (the relationship between features and label changes), or
   prediction drift (output distribution shift).
@@ -39,7 +39,7 @@ model that is "working" in every infrastructure sense while being wrong.
   with no obvious infrastructure cause.
 - The user wants to define thresholds that trigger a retraining pipeline or
   a page to on-call (tie-in with
-  [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)).
+  [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)).
 - The user needs to choose or implement a statistical drift test (PSI, KL
   divergence, KS test, chi-squared) and set sensible thresholds.
 - The user is designing a feedback-loop system to capture delayed ground
@@ -53,17 +53,17 @@ model that is "working" in every infrastructure sense while being wrong.
   services if done without bias.
 - A reference/baseline distribution to compare against — typically the
   training data distribution or a recent "known good" production window.
-- A metrics/monitoring backend: Evidently AI, WhyLabs, Arize, Fiddler, or a
+- A metrics/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) backend: Evidently AI, WhyLabs, Arize, Fiddler, or a
   homegrown pipeline computing statistics in a scheduled job (Airflow, cron)
   writing to Prometheus/Grafana, or a data warehouse + BI dashboard.
 - Eventually-available ground truth labels if you intend to monitor actual
   model quality (accuracy/AUC/etc.) rather than only distributional proxies
   — note many production systems have delayed or partial labels (e.g. fraud
-  chargebacks arrive weeks later); design monitoring to work with proxy
+  chargebacks arrive weeks later); design [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to work with proxy
   signals in the interim.
 - Access to the model registry and lineage metadata to attribute a drift
   signal to a specific model version and its training data (see
-  [data-and-model-lineage](../data-and-model-lineage/SKILL.md)).
+  [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -82,7 +82,7 @@ model that is "working" in every infrastructure sense while being wrong.
      shift (treat as an actionable alert) — tune per feature's known
      volatility rather than applying one threshold blindly everywhere.
 3. **Compute PSI concretely** for a feature `avg_rating_30d`:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import numpy as np
 
    def population_stability_index(expected, actual, bins=10):
@@ -108,18 +108,18 @@ model that is "working" in every infrastructure sense while being wrong.
    compare against the value at validation time.
 6. **Set alert thresholds with both a statistical bar and a business-impact
    bar** — e.g. alert on PSI > 0.25 *and* require it to persist for more
-   than one monitoring window, to avoid paging on single-day noise from a
+   than one [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window, to avoid paging on single-day noise from a
    holiday or a marketing campaign spike.
-7. **Segment monitoring by relevant slices**, not just aggregate — drift
+7. **Segment [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) by relevant slices**, not just aggregate — drift
    often hides in a subpopulation (e.g. a new geographic market, a new
    device type) while aggregate statistics look stable.
 8. **Wire alerts to action**: a sustained drift alert should either page
    on-call for investigation or automatically kick off a retraining pipeline
    run (see
-   [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md))
+   [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md))
    — decide which per use case's risk tolerance, and never auto-promote a
    retrained model straight to production as the automated response (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
    for the required gated promotion path).
 9. **Log every alert and its resolution** (false alarm / real drift /
    retrained / rolled back) into the lineage record so the team builds a
@@ -137,12 +137,12 @@ model that is "working" in every infrastructure sense while being wrong.
 - Track drift and quality per model version, tied to the model registry
   entry that produced the predictions, so you can tell whether a regression
   correlates with a specific deployment.
-- Build monitoring in from day one of production deployment, not as an
-  afterthought added after an incident — retrofitting requires reconstructing
+- Build [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in from day one of production deployment, not as an
+  afterthought added after an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — retrofitting requires reconstructing
   a reference distribution you may not have preserved.
 - Prefer a small number of well-understood, well-calibrated alerts over many
   noisy ones; alert fatigue causes real drift signals to get ignored.
-- Version and test the monitoring code itself (drift computation logic) —
+- Version and test the [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) code itself (drift computation logic) —
   a bug in a PSI calculation is indistinguishable from real drift until
   someone investigates, wasting on-call time.
 
@@ -153,7 +153,7 @@ model that is "working" in every infrastructure sense while being wrong.
   outcomes.
   **Fix:** Don't rely solely on infrastructure health checks (uptime,
   latency, error rate) as a proxy for model health; instrument explicit
-  distributional and (when available) quality monitoring from initial
+  distributional and (when available) quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) from initial
   deployment, with a frozen training-time reference baseline.
 
 - **Symptom:** A drift alert fires constantly on a highly seasonal feature
@@ -167,9 +167,9 @@ model that is "working" in every infrastructure sense while being wrong.
 - **Symptom:** Aggregate drift metrics look fine, but a specific customer
   segment (e.g. a newly launched region) experiences materially worse model
   performance for weeks before anyone notices.
-  **Fix:** Segment drift and quality monitoring by relevant slices (region,
+  **Fix:** Segment drift and quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) by relevant slices (region,
   device, customer tier, new vs. established users), not only in aggregate;
-  add slice-level dashboards as a standard part of monitoring setup, not an
+  add slice-level [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) as a standard part of [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup, not an
   afterthought.
 
 - **Symptom:** A retraining pipeline auto-triggers on a drift alert and
@@ -179,9 +179,9 @@ model that is "working" in every infrastructure sense while being wrong.
   retrained model learned from bad data too.
   **Fix:** Never let an automated drift-triggered retrain skip the gated
   promotion and human/automated evaluation checks described in
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
   and
-  [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md);
+  [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md);
   treat "retrain" and "promote to production" as distinct, separately gated
   actions.
 
@@ -204,7 +204,7 @@ A subscription-churn model, `churn-predictor-v3`, is deployed to production.
    timestamp semantics after an unrelated platform migration two weeks
    earlier — not a genuine behavioral change in users, but this pipeline
    change is exactly the kind of upstream issue that must be traced via
-   [data-and-model-lineage](../data-and-model-lineage/SKILL.md).
+   [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md).
 5. The upstream pipeline is fixed; the team confirms PSI returns to baseline
    over the next three days and closes the alert as "resolved — upstream
    data bug, not model drift," logging this resolution for future
@@ -214,13 +214,13 @@ A subscription-churn model, `churn-predictor-v3`, is deployed to production.
    arriving on a 30-day delay) — this time judged genuine concept drift from
    a product change, and it triggers the scheduled retraining pipeline
    (see
-   [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)),
+   [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)),
    whose output goes through the normal gated promotion before reaching
    production.
 
 ## Cross-references
 
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md)
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)
-- [feature-store-design](../feature-store-design/SKILL.md)
+- [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md)
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)
+- [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
+- [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md)

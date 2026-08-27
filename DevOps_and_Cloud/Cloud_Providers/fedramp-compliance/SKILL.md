@@ -15,9 +15,9 @@ Implement FedRAMP (Federal Risk and Authorization Management Program) requiremen
 
 - Pursuing FedRAMP authorization for a cloud service offering
 - Implementing NIST 800-53 security controls for federal workloads
-- Establishing continuous monitoring (ConMon) processes
+- Establishing continuous [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (ConMon) processes
 - Managing Plan of Action and Milestones (POA&M) tracking
-- Preparing for a Third-Party Assessment Organization (3PAO) audit
+- Preparing for a Third-Party Assessment Organization (3PAO) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 - Operating a FedRAMP-authorized system and maintaining authorization
 
 ## Impact Levels
@@ -72,12 +72,12 @@ control_families:
     implementation_notes: "Map to IAM policies, RBAC, MFA enforcement"
 
   AU:
-    name: "Audit and Accountability"
+    name: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and Accountability"
     key_controls:
-      AU-2: "Audit Events - define auditable events"
-      AU-3: "Content of Audit Records - ensure records contain required info"
-      AU-6: "Audit Review, Analysis, and Reporting"
-      AU-12: "Audit Generation - generate audit records"
+      AU-2: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Events - define auditable events"
+      AU-3: "Content of [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Records - ensure records contain required info"
+      AU-6: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Review, Analysis, and Reporting"
+      AU-12: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Generation - generate [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) records"
     implementation_notes: "Map to CloudTrail, CloudWatch Logs, SIEM"
 
   AT:
@@ -114,12 +114,12 @@ control_families:
     implementation_notes: "Map to SSO, MFA, certificate-based auth, PIV/CAC"
 
   IR:
-    name: "Incident Response"
+    name: "[Incident](../../Observability_and_SecOps/incident/SKILL.md) Response"
     key_controls:
-      IR-2: "Incident Response Training"
-      IR-4: "Incident Handling - implement incident handling capability"
-      IR-6: "Incident Reporting - report incidents to US-CERT"
-      IR-8: "Incident Response Plan"
+      IR-2: "[Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Training"
+      IR-4: "[Incident](../../Observability_and_SecOps/incident/SKILL.md) Handling - implement [incident](../../Observability_and_SecOps/incident/SKILL.md) handling capability"
+      IR-6: "[Incident](../../Observability_and_SecOps/incident/SKILL.md) Reporting - report incidents to US-CERT"
+      IR-8: "[Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Plan"
     implementation_notes: "US-CERT reporting within 1 hour for federal incidents"
 
   MA:
@@ -141,7 +141,7 @@ control_families:
     key_controls:
       PE-2: "Physical Access Authorizations"
       PE-3: "Physical Access Control"
-      PE-6: "Monitoring Physical Access"
+      PE-6: "[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Physical Access"
     implementation_notes: "Inherit from CSP for IaaS/PaaS, document inheritance"
 
   PL:
@@ -170,7 +170,7 @@ control_families:
     key_controls:
       CA-2: "Security Assessments"
       CA-6: "Security Authorization"
-      CA-7: "Continuous Monitoring"
+      CA-7: "Continuous [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)"
     implementation_notes: "Annual assessment by 3PAO, ConMon program"
 
   SC:
@@ -188,7 +188,7 @@ control_families:
     key_controls:
       SI-2: "Flaw Remediation"
       SI-3: "Malicious Code Protection"
-      SI-4: "Information System Monitoring"
+      SI-4: "Information System [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)"
       SI-5: "Security Alerts, Advisories, and Directives"
     implementation_notes: "Patching SLAs, antimalware, IDS/IPS, SIEM"
 
@@ -231,7 +231,7 @@ ssp_sections:
     - "Network architecture diagrams"
     - "Data flow diagrams"
     - "Interconnection security agreements (ISAs)"
-    - "Incident response plan"
+    - "[Incident](../../Observability_and_SecOps/incident/SKILL.md) response plan"
     - "Contingency plan"
     - "Configuration management plan"
 ```
@@ -294,7 +294,7 @@ poam_aging_thresholds:
   overdue_escalation: "Reported to authorizing official monthly"
 ```
 
-## Continuous Monitoring (ConMon) Procedures
+## Continuous [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (ConMon) Procedures
 
 ```yaml
 continuous_monitoring:
@@ -398,8 +398,8 @@ authorization_checklist:
     - [ ] System Security Plan (SSP)
     - [ ] Security Assessment Report (SAR)
     - [ ] Plan of Action and Milestones (POA&M)
-    - [ ] Continuous Monitoring Plan
-    - [ ] Incident Response Plan
+    - [ ] Continuous [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Plan
+    - [ ] [Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Plan
     - [ ] Contingency Plan
     - [ ] Configuration Management Plan
     - [ ] Control Implementation Summary (CIS)
@@ -421,9 +421,9 @@ authorization_checklist:
 - Use the FedRAMP SSP template exactly as provided to avoid review delays
 - Inherit controls from your IaaS provider (AWS GovCloud, Azure Government) and document the inheritance clearly
 - Implement FIPS 140-2 validated cryptographic modules for all encryption (TLS, at-rest, key management)
-- Automate continuous monitoring deliverables to reduce manual effort and human error
+- Automate continuous [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) deliverables to reduce manual effort and human error
 - Maintain POA&M items within aging thresholds; overdue items risk losing authorization
 - Report significant system changes to the authorizing official before implementation
 - Treat the SSP as a living document and update it with every change to the system boundary
-- Use US-CERT reporting procedures and maintain the 1-hour incident notification requirement
+- Use US-CERT reporting procedures and maintain the 1-hour [incident](../../Observability_and_SecOps/incident/SKILL.md) notification requirement
 - Engage the FedRAMP PMO early and often for guidance on the authorization process

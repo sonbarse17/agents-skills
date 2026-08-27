@@ -10,7 +10,7 @@ metadata:
   package: azure-eventhub
 ---
 
-# Azure Event Hubs SDK for Python
+# Azure Event Hubs SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Big data streaming platform for high-throughput event ingestion.
 
@@ -36,7 +36,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -45,14 +45,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.eventhub import EventHubProducerClient, EventHubConsumerClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 namespace = "<namespace>.servicebus.windows.net"
 eventhub_name = "my-eventhub"
@@ -87,7 +87,7 @@ with EventHubConsumerClient(
 
 ## Send Events
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventhub import EventHubProducerClient, EventData
 from azure.identity import DefaultAzureCredential
 
@@ -114,7 +114,7 @@ with EventHubProducerClient(
 
 ### Send to Specific Partition
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # By partition ID
 event_data_batch = producer.create_batch(partition_id="0")
 
@@ -126,7 +126,7 @@ event_data_batch = producer.create_batch(partition_key="user-123")
 
 ### Simple Receive
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventhub import EventHubConsumerClient
 
 def on_event(partition_context, event):
@@ -148,7 +148,7 @@ with EventHubConsumerClient(
 
 ### With Blob Checkpoint Store (Production)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventhub import EventHubConsumerClient
 from azure.eventhub.extensions.checkpointstoreblob import BlobCheckpointStore
 from azure.identity import DefaultAzureCredential
@@ -176,7 +176,7 @@ with EventHubConsumerClient(
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.eventhub.aio import EventHubProducerClient, EventHubConsumerClient
 from azure.identity.aio import DefaultAzureCredential
 import asyncio
@@ -211,7 +211,7 @@ asyncio.run(send_events())
 
 ## Event Properties
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 event = EventData("My event body")
 
 # Set properties
@@ -228,7 +228,7 @@ print(event.partition_key)
 
 ## Get Event Hub Info
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 with producer:
     info = producer.get_eventhub_properties()
     print(f"Name: {info['name']}")

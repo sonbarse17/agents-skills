@@ -37,10 +37,10 @@ provides efficient automated security testing with minimal false positives.
 
 ```bash
 # Install via Go
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+go install -v [github](../../CI_CD/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
-# Or using Docker
-docker pull projectdiscovery/nuclei:latest
+# Or using [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull projectdiscovery/nuclei:latest
 
 # Update templates (automatically downloads 7000+ community templates)
 nuclei -update-templates
@@ -263,20 +263,20 @@ python3 scripts/nuclei_report_generator.py \
   --include-remediation \
   --map-frameworks owasp,cwe
 
-# Export to SARIF for GitHub Security tab
+# Export to SARIF for [GitHub](../../CI_CD/github/SKILL.md) Security tab
 nuclei -u https://target-app.com \
   -severity critical,high \
-  -sarif-export github-sarif.json
+  -sarif-export [github](../../CI_CD/github/SKILL.md)-sarif.json
 ```
 
 See `assets/report_templates/` for customizable report formats.
 
 ## Automation & CI/CD Integration
 
-### GitHub Actions Integration
+### [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
 
 ```yaml
-# .github/workflows/nuclei-scan.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/nuclei-scan.yml
 name: Nuclei Security Scan
 on: [push, pull_request]
 
@@ -294,16 +294,16 @@ jobs:
           templates: cves,owasp,misconfig
 
       - name: Upload Results
-        uses: github/codeql-action/upload-sarif@v2
+        uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: nuclei.sarif
 ```
 
-### Docker-Based CI/CD Scanning
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)-Based CI/CD Scanning
 
 ```bash
-# Run in CI/CD pipeline with Docker
-docker run --rm \
+# Run in CI/CD pipeline with [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm \
   -v $(pwd):/reports \
   projectdiscovery/nuclei:latest \
   -u $TARGET_URL \
@@ -327,7 +327,7 @@ fi
   --slack-webhook $SLACK_WEBHOOK \
   --output-dir scan-reports/
 
-# Scheduled vulnerability monitoring
+# Scheduled vulnerability [monitoring](../monitoring/SKILL.md)
 ./scripts/nuclei_scheduler.sh \
   --schedule daily \
   --targets targets.txt \
@@ -388,7 +388,7 @@ http:
 - **Sensitive Data**: Scan results may contain sensitive URLs, parameters, and application details - sanitize before sharing
 - **False Positives**: Manually verify all critical and high severity findings before raising security incidents
 - **Access Control**: Restrict access to scan results and templates containing organization-specific vulnerability patterns
-- **Audit Logging**: Log all scan executions, targets, findings severity, and remediation actions for compliance
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, targets, findings severity, and remediation actions for compliance
 - **Legal Compliance**: Adhere to computer fraud and abuse laws; unauthorized scanning may violate laws
 - **Credentials Management**: Never hardcode credentials in templates; use environment variables or secrets management
 - **Scope Validation**: Double-check target lists to avoid scanning third-party or out-of-scope systems
@@ -400,7 +400,7 @@ http:
 - `nuclei_ci.sh` - CI/CD integration wrapper with exit code handling and artifact generation
 - `nuclei_auth_scan.py` - Authenticated scanning with multiple authentication methods (Bearer, API key, Cookie)
 - `nuclei_bulk_scanner.sh` - Parallel scanning of multiple targets with aggregated reporting
-- `nuclei_scheduler.sh` - Scheduled scanning with diff detection and alerting
+- `nuclei_scheduler.sh` - Scheduled scanning with diff detection and [alerting](../alerting/SKILL.md)
 - `parse_nuclei_results.py` - JSON/JSONL parser for generating HTML/CSV reports with severity grouping
 - `nuclei_report_generator.py` - Comprehensive report generator with OWASP/CWE mappings and remediation guidance
 - `template_validator.py` - Custom template validation and testing framework
@@ -414,7 +414,7 @@ http:
 
 ### Assets (`assets/`)
 
-- `github_actions.yml` - GitHub Actions workflow with SARIF export
+- `github_actions.yml` - [GitHub](../../CI_CD/github/SKILL.md) Actions workflow with SARIF export
 - `nuclei_config.yaml` - Comprehensive configuration template
 
 ## Common Patterns
@@ -471,7 +471,7 @@ nuclei -u https://api.target.com -tags api,cve -severity critical,high -o api-cv
 nuclei -u https://api.target.com -t custom-templates/api/ -o api-custom.txt
 ```
 
-### Pattern 4: Continuous Security Monitoring
+### Pattern 4: Continuous Security [Monitoring](../monitoring/SKILL.md)
 
 ```bash
 # Daily scan with diff detection
@@ -479,17 +479,17 @@ nuclei -u https://production-app.com \
   -severity critical,high -tags cve \
   -json -jsonl-export scan-$(date +%Y%m%d).jsonl
 
-# Use bundled scripts for diff analysis and alerting
+# Use bundled scripts for diff analysis and [alerting](../alerting/SKILL.md)
 ```
 
 ## Integration Points
 
-- **CI/CD**: GitHub Actions, GitLab CI, Jenkins, CircleCI, Azure DevOps, Travis CI
-- **Issue Tracking**: Jira, GitHub Issues, ServiceNow, Linear (via SARIF or custom scripts)
+- **CI/CD**: [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md), [CircleCI](../../CI_CD/circleci/SKILL.md), Azure DevOps, Travis CI
+- **Issue Tracking**: Jira, [GitHub](../../CI_CD/github/SKILL.md) Issues, ServiceNow, Linear (via SARIF or custom scripts)
 - **Security Platforms**: Defect Dojo, Splunk, ELK Stack, SIEM platforms (via JSON export)
 - **Notification**: Slack, Microsoft Teams, Discord, PagerDuty, email (via webhook scripts)
-- **SDLC**: Pre-deployment scanning, security regression testing, vulnerability monitoring
-- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions (serverless scanning)
+- **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../monitoring/SKILL.md)
+- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md) scanning)
 - **Reporting**: HTML, JSON, JSONL, SARIF, Markdown, CSV formats
 
 ## Troubleshooting
@@ -505,7 +505,7 @@ Common issues and solutions:
 ## References
 
 - [Nuclei Documentation](https://docs.projectdiscovery.io/tools/nuclei/overview)
-- [Nuclei Templates Repository](https://github.com/projectdiscovery/nuclei-templates)
+- [Nuclei Templates Repository](https://[github](../../CI_CD/github/SKILL.md).com/projectdiscovery/nuclei-templates)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE Database](https://cwe.mitre.org/)
 

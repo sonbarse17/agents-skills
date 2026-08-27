@@ -34,10 +34,10 @@ Before activating, verify:
 - Existing baseline or prior experiments
 
 ### Output Artifact
-ML pipeline with model selection, hyperparameter configuration, cross-validation strategy, and training code as Python.
+ML pipeline with model selection, hyperparameter configuration, cross-validation strategy, and training code as [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
 
 ### Response Format
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Pipeline definition (preprocessing + model)
 # Training and validation code
 # Hyperparameter search configuration
@@ -67,7 +67,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Problem Type and Metric Selection
 Regression: MSE/RMSE, MAE, R-squared, MAPE. Binary classification: AUC-ROC, F1, log loss, precision@k, recall. Multiclass: macro/micro/weighted F1. Ranking: NDCG, MAP.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.metrics import (
     mean_squared_error, mean_absolute_error, r2_score,
     roc_auc_score, f1_score, log_loss,
@@ -95,7 +95,7 @@ classification:
 ### Step 3: Preprocessing Pipeline
 scikit-learn Pipeline chains transforms. ColumnTransformer applies different transforms by column type. Numeric: StandardScaler, MinMaxScaler, RobustScaler, PowerTransformer. Categorical: OneHotEncoder, OrdinalEncoder. Missing: SimpleImputer, KNNImputer.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
@@ -129,7 +129,7 @@ pipeline = Pipeline([
 ### Step 4: Cross-Validation
 K-Fold: default for i.i.d. data. StratifiedKFold: classification with imbalanced classes. GroupKFold: no leakage across groups. TimeSeriesSplit: temporal data. Repeated K-Fold: lower variance estimate.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import (
     KFold, StratifiedKFold, GroupKFold,
     TimeSeriesSplit, RepeatedKFold, cross_validate
@@ -155,7 +155,7 @@ scores = cross_validate(
 ### Step 5: Hyperparameter Tuning
 GridSearchCV: exhaustive (small spaces). RandomizedSearchCV: random sampling (large spaces). Optuna: Bayesian optimization with pruning. HalvingGridSearchCV: successive halving for faster search.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.model_selection import RandomizedSearchCV
 from scipy.stats import randint, uniform
 
@@ -178,7 +178,7 @@ random_search.fit(X_train, y_train)
 ### Step 6: Model Interpretation
 Feature importance (tree-based): gain-based, permutation importance, SHAP values. Partial dependence plots. LIME for local explanations. Use permutation importance as the most reliable global method.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import shap
 import matplotlib.pyplot as plt
 
@@ -205,7 +205,7 @@ shap.summary_plot(shap_values, X_val[:100])
 ### Step 7: Imbalanced Data Handling
 Resampling: SMOTE, RandomUnderSampler, SMOTEENN. Algorithmic: class_weight='balanced', scale_pos_weight (XGBoost). Metric: precision-recall curve, AUC-PR. Threshold tuning.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from imblearn.over_sampling import SMOTE
 from imblearn.combine import SMOTEENN
 from imblearn.pipeline import Pipeline as ImbPipeline
@@ -231,7 +231,7 @@ best_threshold = thresholds[f1_scores.argmax()]
 ### Step 8: Model Serialization
 Joblib for numpy-heavy models. ONNX for cross-platform deployment. Native formats: XGBoost .json/.ubj, LightGBM .txt, CatBoost .cbm. Serialize full pipeline, not just model weights.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import joblib
 # Save full pipeline
 joblib.dump(pipeline, "models/churn_pipeline_v2.pkl")
@@ -247,7 +247,7 @@ predictions = loaded.predict(new_data)
 ### Step 9: Ensemble Methods
 Beyond individual models, use ensemble methods: Voting classifier (soft/hard voting), Stacking (meta-model on base model predictions), and Bagging (bootstrap aggregation).
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.ensemble import VotingClassifier, StackingClassifier
 
 # Soft voting
@@ -268,7 +268,7 @@ stacking = StackingClassifier(estimators=[
 ### Step 10: Feature Engineering
 Feature engineering transforms raw data into informative predictors. Include interaction features, polynomial features, binning, and target encoding for high-cardinality categoricals.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.preprocessing import PolynomialFeatures, KBinsDiscretizer
 from sklearn.feature_selection import SelectFromModel
 
@@ -438,11 +438,11 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
   - ../../../Global_References/interpretable-ml.md — Interpretable Classical ML
   - ../../../Global_References/supervised-learning.md — Supervised Learning Reference
   - ../../../Global_References/unsupervised-pipeline.md — Unsupervised Learning and Pipelines
-  - ../../../Global_References/classical-ml-feature-engineering.md — Feature Engineering Reference
+  - ../../../Global_References/classical-[ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md).md — Feature Engineering Reference
   - ../../../Global_References/classical-ml-model-selection.md — Model Selection Reference
 ## Handoff
-`ml-deep-learning` for deep learning/neural network methods
-`ml-feature-engineering` for feature extraction and selection
+`[ml-deep-learning](../../Architecture/deep-learning/SKILL.md)` for deep learning/neural network methods
+`[ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md)` for feature extraction and selection
 
 ## Architecture Decision Trees
 
@@ -465,7 +465,7 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
 ## Implementation Patterns
 
 ### End-to-End Classification Pipeline
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -495,7 +495,7 @@ print(f'CV F1: {cv_scores.mean():.3f} +/- {cv_scores.std():.3f}')
 `
 
 ### XGBoost with Hyperparameter Tuning
-`python
+`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import xgboost as xgb
 from sklearn.model_selection import RandomizedSearchCV
 
@@ -528,10 +528,10 @@ search.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 ### Model Deployment
 - **Versioning**: Version both model artifacts and preprocessing pipeline. Use MLflow or DVC for model registry.
 - **Feature validation**: Validate input features match training schema. Reject inference requests with missing/out-of-range features.
-- **Prediction monitoring**: Track prediction distribution drift vs training. Alert when serving distribution deviates significantly.
+- **Prediction [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track prediction distribution drift vs training. Alert when serving distribution deviates significantly.
 
 ### Infrastructure
-- **Scaling**: Batch predictions via async workers or streaming. Real-time predictions via REST endpoint with autoscaling.
+- **Scaling**: Batch predictions via async workers or streaming. Real-time predictions via REST endpoint with [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).
 - **Latency**: Set latency budgets (p99 < 100ms for real-time). Pre-compute predictions for slow features.
 - **Fallback**: Serve cached predictions when model is unavailable. Degrade gracefully to simpler baseline model.
 
@@ -567,5 +567,5 @@ search.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 ### Data Security
 - **PII in features**: Scrub PII from training data. Use data masking or tokenization for sensitive features.
 - **Model artifacts**: Encrypt serialized models containing sensitive patterns. Use access control on model registry.
-- **Audit trail**: Log all predictions with request ID and timestamp. Enable post-hoc investigation of model decisions.
+- **[Audit](../../Operations/audit/SKILL.md) trail**: Log all predictions with request ID and timestamp. Enable post-hoc investigation of model decisions.
 

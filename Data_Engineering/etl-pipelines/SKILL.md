@@ -7,7 +7,7 @@ description: Best practices for ETL pipelines using Apache Airflow and dbt.
 
 ## Architecture Overview
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Extract: Source Data] --> B[Load: Data Warehouse Raw]
@@ -28,7 +28,7 @@ flowchart TD
 - **dbt**: Modularize models into `staging`, `intermediate`, and `marts`. Write rigorous tests for uniqueness and not-null constraints.
 
 ## Code Snippet: Airflow DAG calling dbt
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from airflow import DAG
 from airflow.providers.dbt.cloud.operators.dbt import DbtCloudRunJobOperator
 from datetime import datetime

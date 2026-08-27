@@ -13,54 +13,54 @@ compatibility:
 tags: [data, observability, quality, phase-10]
 ---
 
-# Data Observability
+# Data [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 ## Purpose
-Design comprehensive data observability across pipelines: freshness, volume, schema, quality, lineage, and incident management.
+Design comprehensive data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) across pipelines: freshness, volume, schema, quality, lineage, and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "data observability", "data quality monitoring", "data profiling", "data health", "freshness check", "row count anomaly", "schema drift", "data incident", "data lineage", "data monitoring", "observability platform".
+Exact user phrases: "data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)", "data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)", "data health", "freshness check", "row count anomaly", "schema drift", "data [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)", "data lineage", "data [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform".
 
 ### Input Context
 - Data stack (warehouse, lake, pipelines, BI tools)
 - Number of tables/datasets to monitor
-- Existing quality checks and monitoring
+- Existing quality checks and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Team size and on-call rotation
 - SLAs for data freshness and quality
-- Incident management workflow
-- Monitoring budget and tooling preferences
+- [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management workflow
+- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) budget and tooling preferences
 
 ### Output Artifact
-Data observability architecture with monitoring checks, alerting rules, and incident response playbook.
+Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) architecture with [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) checks, [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules, and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response playbook.
 
 ### Response Format
 ```yaml
-# Observability checks per dataset
+# [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) checks per dataset
 # Freshness, volume, schema, quality
 # Alert thresholds
-# Incident response workflow
+# [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response workflow
 ```
 
 ### Completion Criteria
 - [ ] Freshness checks configured for all critical datasets
-- [ ] Volume monitoring with anomaly detection
+- [ ] Volume [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with anomaly detection
 - [ ] Schema drift detection on source and staging tables
 - [ ] Quality checks on key columns (nulls, uniqueness, referential integrity)
 - [ ] Lineage tracking from source to dashboard
-- [ ] Alerting configured with severity levels
-- [ ] Incident response runbook written
+- [ ] [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured with severity levels
+- [ ] [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) written
 
 ## Workflow
 
 ### Step 1: Dataset Inventory
-Catalog all datasets by criticality and ownership. Tier 1: executive dashboards, financial reports, customer-facing data, regulatory data. Tier 2: operational reports, team-level analytics, internal tools. Tier 3: experimental, exploratory, ad-hoc queries.
+Catalog all datasets by criticality and ownership. Tier 1: executive [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), financial reports, customer-facing data, regulatory data. Tier 2: operational reports, team-level analytics, internal tools. Tier 3: experimental, exploratory, ad-hoc queries.
 
 #### Inventory Schema
 For each dataset: name, owner, tier, source system, freshness SLA, location (table/view/API), upstream dependencies, downstream consumers, expected row count range, quality rules.
 
-### Step 2: Freshness Monitoring
+### Step 2: Freshness [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 #### Freshness Checks
 Check data arrival within expected SLA window. Monitor: last_updated timestamp vs expected schedule. For batch: compare DAG completion time to SLA time. For streaming: compare latest event timestamp to current time.
@@ -72,7 +72,7 @@ Check data arrival within expected SLA window. Monitor: last_updated timestamp v
 | Tier 2 | < 1 day | > 1 day | Slack #data-eng |
 | Tier 3 | < 1 week | > 1 week | Email digest |
 
-### Step 3: Volume Monitoring
+### Step 3: Volume [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 #### Row Count Tracking
 Track row counts per partition or table. Compute rolling statistics (7-day, 30-day window). Alert on significant deviations from expected range.
@@ -87,7 +87,7 @@ Static threshold: absolute or percentage change from expected. Statistical: Z-sc
 | Tier 2 | ±20% from rolling avg | ±50% from rolling avg |
 | Tier 3 | ±50% from rolling avg | ±80% from rolling avg |
 
-### Step 4: Schema Monitoring
+### Step 4: Schema [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 #### Drift Detection
 Compare current schema against expected schema (stored as reference in data catalog). Detect: column additions, removals, renames, type changes, null ratio changes, default value changes.
@@ -105,7 +105,7 @@ Schema Check: source_customers
   Status: CRITICAL — type change on customer_id (INT → STRING)
 ```
 
-### Step 5: Quality Monitoring
+### Step 5: Quality [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 #### Quality Check Types
 Completeness: null rate on required columns. Uniqueness: duplicate count on PK columns. Referential integrity: FK values exist in referenced table. Accepted values: categorical columns contain only expected values. Range: numeric columns within expected bounds. Distribution drift: distribution comparison (KS test for numeric, chi-square for categorical).
@@ -166,12 +166,12 @@ dashboard:
       - tier_1_coverage: "> 99%"
 ```
 
-### Step 8: Incident Response
+### Step 8: [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 #### Severity Levels
 Sev1 (Critical): data down, customer-facing impact, financial report wrong. Response: 15min acknowledge, 1hr resolution or escalation. Sev2 (High): data delayed, internal report inaccurate, non-critical dashboard broken. Response: 1hr acknowledge, 4hr resolution. Sev3 (Medium): minor quality issue, cosmetic problem, non-blocking schema change. Response: next business day.
 
-#### Incident Response Playbook
+#### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Playbook
 1. Acknowledge: alert received, owning team notified
 2. Triage: assess severity, impact scope, affected consumers
 3. Mitigate: fix root cause, or rollback to previous version, or use backup data
@@ -183,8 +183,8 @@ Sev1 (Critical): data down, customer-facing impact, financial report wrong. Resp
 
 #### Statistical Process Control (SPC)
 
-```python
-# SPC-based volume monitoring
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# SPC-based volume [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 import numpy as np
 from scipy import stats
 
@@ -234,9 +234,9 @@ prophet_config:
       description: "Sustained volume drop — likely pipeline break"
 ```
 
-#### Column-Level Distribution Monitoring
+#### Column-Level Distribution [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Detect distribution drift on numeric columns
 def detect_distribution_drift(
     current_sample, reference_sample, column_type="numeric"
@@ -285,11 +285,11 @@ on_call:
   handoff_process:
     - review open incidents before handoff
     - document known issues and ongoing investigations
-    - update runbooks for any new incident patterns
-    - confirm handoff in incident management tool
+    - update [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for any new [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) patterns
+    - confirm handoff in [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management tool
 ```
 
-### Step 10: Runbook Templates
+### Step 10: [Runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Templates
 
 #### Common Failure Scenarios
 
@@ -349,7 +349,7 @@ runbook_schema_drift:
 
 ### Step 11: Integration Patterns
 
-#### Observability-as-Code
+#### [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-as-Code
 
 ```yaml
 # dbt-expectations example (Great Expectations + dbt)
@@ -400,18 +400,18 @@ quality_score_formula:
   tier_demotion: "score < 0.80 for 7 consecutive days → previous tier"
 ```
 
-### Step 12: Observability Platform Selection
+### Step 12: [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Platform Selection
 
 #### Platform Comparison
 
 | Feature | Monte Carlo | Soda Cloud | Great Expectations | Elementary |
 |---|---|---|---|---|
-| Freshness monitoring | Automatic | Configurable | Custom | Manual |
+| Freshness [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Automatic | Configurable | Custom | Manual |
 | Volume anomaly | ML-based | Rule-based | Custom | Rule-based |
 | Schema drift | Automatic | Configurable | Manual | Configurable |
-| Quality checks | Built-in | Custom SQL | Python expectations | dbt-based |
+| Quality checks | Built-in | Custom SQL | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) expectations | dbt-based |
 | Lineage | Automatic | Manual | Via dbt | Via dbt |
-| Alerting | Slack, PagerDuty, email | Slack, email | Custom | Slack, email |
+| [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) | Slack, PagerDuty, email | Slack, email | Custom | Slack, email |
 | ML anomaly detection | Yes | No | No | No |
 | Self-hosted | No | Yes (Soda Core) | Yes | Yes |
 | Pricing | Per GB monitored | Per check row | Free (OSS) | Free (OSS) |
@@ -426,19 +426,19 @@ Team size and expertise?
 │   ├── Budget available → Monte Carlo (ML-based, automatic)
 │   └── Budget constrained → Elementary + dbt (OSS, dbt-native)
 └── Deep data testing in CI/CD
-    └── Great Expectations (most flexible, Python-native)
+    └── Great Expectations (most flexible, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
 ```
 
-### Step 13: Cost of Observability
+### Step 13: Cost of [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 #### Cost-Benefit Analysis
 
 ```yaml
-# Cost of NOT having observability
+# Cost of NOT having [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 cost_of_no_observability:
-  - "Bad data reaching dashboards → wrong business decisions"
+  - "Bad data reaching [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) → wrong business decisions"
   - "Engineers manually checking data freshness"
-  - "Delayed incident detection → hours of bad data served"
+  - "Delayed [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) detection → hours of bad data served"
   - "No root cause analysis → repeated incidents"
   
 typical_roi:
@@ -483,19 +483,19 @@ What aspect are we validating?
 - Track lineage for root cause analysis
 - Set alert thresholds based on statistical baselines, not arbitrary values
 - Document ownership for every dataset
-- Review observability coverage quarterly
-- Automate incident response — runbooks for common failures
-- Monitor monitoring — if observability is down, you're blind
+- Review [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) coverage quarterly
+- Automate [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response — [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for common failures
+- Monitor [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — if [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) is down, you're blind
 - Alert on data freshness, not just pipeline completion
-- Track MTTR as a observability effectiveness metric
+- Track MTTR as a [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) effectiveness metric
 - Use SPC or Prophet for anomaly detection — static thresholds miss gradual drift
-- Integrate observability with data catalog for single-pane-of-glass
-- Run column-level distribution monitoring for early schema change detection
+- Integrate [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) with data catalog for single-pane-of-glass
+- Run column-level distribution [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for early schema change detection
 - Define escalation paths before incidents happen
-- Implement observability-as-code for version-controlled check definitions
-- Price observability platforms against cost of bad data, not just subscription cost
+- Implement [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-as-code for version-controlled check definitions
+- Price [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platforms against cost of bad data, not just subscription cost
 
 ## References
   - references/data-quality-management.md — Data Quality Management
-  - references/observability-platform.md — Observability Platform
-  - references/observability-rules.md — Observability Rules Reference
+  - references/[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-platform.md — [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Platform
+  - references/[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-rules.md — [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Rules Reference

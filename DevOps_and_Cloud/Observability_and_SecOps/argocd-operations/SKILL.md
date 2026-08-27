@@ -6,7 +6,7 @@ license: MIT
 
 # Argo CD Operations
 
-Argo CD is the reconciler that makes `gitops` real, but knowing the GitOps model doesn't tell you
+Argo CD is the reconciler that makes `[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)` real, but knowing the [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) model doesn't tell you
 how to structure hundreds of Applications, order their rollout, or figure out why one has been
 "Progressing" for twenty minutes. Most Argo CD pain is operational, not conceptual: a bad sync wave
 ordering, a health check that will never pass, or a manual sync habit that defeats the point of
@@ -15,25 +15,25 @@ having a reconciler at all.
 **Sync status tells you if the repo and cluster match; health status tells you if what's running
 actually works — treat them as two separate questions.**
 
-For stuck-sync states, sync waves, and the `argocd app` command reference, read
-`../../../Global_References/argocd-troubleshooting.md`.
+For stuck-sync states, sync waves, and the `[argocd](../../Containers_and_Orchestration/argocd/SKILL.md) app` command reference, read
+`../../../Global_References/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-troubleshooting.md`.
 
 ## 1. Manage many Applications with app-of-apps or ApplicationSets
 
 Once you have more than a handful of Applications, don't create and wire each one by hand. A root
 "app of apps" Application whose only job is to manage child Application manifests gives you one
-commit to add a new service everywhere it belongs. ApplicationSets go further, generating
+[commit](../../CI_CD/commit/SKILL.md) to add a new service everywhere it belongs. ApplicationSets go further, generating
 Applications from a template plus a generator (a Git directory list, a cluster list, a pull request
 list) — use them when the same shape of Application needs to exist per-cluster or per-environment.
 Reserve hand-written Applications for the genuinely one-off cases.
 
-**Done when:** onboarding a new service to an existing environment pattern is one small commit, not
-a manual `argocd app create`.
+**Done when:** onboarding a new service to an existing environment pattern is one small [commit](../../CI_CD/commit/SKILL.md), not
+a manual `[argocd](../../Containers_and_Orchestration/argocd/SKILL.md) app create`.
 
 ## 2. Order dependencies explicitly with sync waves, don't hope
 
 Argo CD syncs everything in an Application concurrently by default, which breaks when a Deployment
-needs a CRD, ConfigMap, or Secret to exist first. Sync waves (`argocd.argoproj.io/sync-wave`
+needs a CRD, ConfigMap, or Secret to exist first. Sync waves (`[argocd](../../Containers_and_Orchestration/argocd/SKILL.md).argoproj.io/sync-wave`
 annotations) give you explicit, numbered ordering — negative waves for CRDs and namespaces, zero for
 core resources, positive for anything that depends on them. Resource hooks (PreSync, PostSync,
 SyncFail) exist for genuinely imperative steps like a database migration, but every hook is a small
@@ -42,7 +42,7 @@ admission that the desired state isn't fully declarative, so keep them rare and 
 ```yaml
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"   # applied before wave 0 resources
+    [argocd](../../Containers_and_Orchestration/argocd/SKILL.md).argoproj.io/sync-wave: "-1"   # applied before wave 0 resources
 ```
 
 **Done when:** a full sync from empty succeeds in one pass with no manual re-sync required.
@@ -55,7 +55,7 @@ healthy when its replicas are available, a Job when it completed. An Application
 Degraded simultaneously, which is normal right after a bad rollout, not a bug in Argo CD. For custom
 resources (operators, CRDs) with no built-in health check, Argo CD reports them as "Healthy" by
 default whether or not they actually are — write a Lua health check for anything that matters. See
-`operators-and-crds` for what those resources are and `kubernetes-operations` for reading the
+`[operators-and-crds](../../Containers_and_Orchestration/operators-and-crds/SKILL.md)` for what those resources are and `[kubernetes-operations](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)` for reading the
 underlying workload state directly.
 
 **Done when:** you can explain a Degraded-but-Synced Application without treating it as a sync bug.
@@ -63,11 +63,11 @@ underlying workload state directly.
 ## 4. Default to automated sync with prune and self-heal, per environment
 
 Manual sync is a reasonable default for a first rollout to a sensitive environment, but leaving
-Applications on manual sync long-term reintroduces the human-in-the-loop step GitOps exists to
+Applications on manual sync long-term reintroduces the human-in-the-loop step [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) exists to
 remove. Turn on automated sync with `prune: true` (delete resources removed from Git) and
 `selfHeal: true` (revert manual cluster edits) once you trust the pipeline, and stage that trust by
 environment — automated in dev and staging, a deliberate promotion gate for prod via
-`release-management` rather than disabling automation outright.
+`[release-management](../../CI_CD/release-management/SKILL.md)` rather than disabling automation outright.
 
 **Done when:** merging to the tracked branch deploys without anyone touching the Argo CD UI or CLI.
 
@@ -76,9 +76,9 @@ environment — automated in dev and staging, a deliberate promotion gate for pr
 A hung "Progressing" Application is usually one of: a health check waiting on a condition that will
 never be true (wrong readiness probe, missing dependency), a resource stuck in a PreSync hook that
 errored, or a webhook/admission controller silently rejecting part of the manifest. Re-running sync
-without diagnosing just repeats the same failure. Check `argocd app get <name> --show-operation` and
+without diagnosing just repeats the same failure. Check `[argocd](../../Containers_and_Orchestration/argocd/SKILL.md) app get <name> --show-operation` and
 the resource tree for the specific resource that isn't healthy, then look at its own events —
-Argo CD is reporting the Kubernetes-level problem, not causing it. See `kubernetes-operations` for
+Argo CD is reporting the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-level problem, not causing it. See `[kubernetes-operations](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)` for
 digging into pod-level failures once you've located the stuck resource.
 
 **Done when:** the stuck resource and its root cause are identified before any retry is attempted.
@@ -87,9 +87,9 @@ digging into pod-level failures once you've located the stuck resource.
 
 AppProjects restrict which repos, clusters, and namespaces an Application is allowed to target, and
 which resource kinds it can create — use one per team or tenant boundary rather than letting every
-Application use the `default` project with unrestricted scope. This is what turns "anyone can commit
-an Application manifest" from a security risk into a bounded one. See `multi-tenancy` for the
-broader cluster-sharing model and `iam-access-management` for tying projects to real identities.
+Application use the `default` project with unrestricted scope. This is what turns "anyone can [commit](../../CI_CD/commit/SKILL.md)
+an Application manifest" from a security risk into a bounded one. See `[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)` for the
+broader cluster-sharing model and `[iam-access-management](../../Cloud_Providers/iam-access-management/SKILL.md)` for tying projects to real identities.
 
 **Done when:** a compromised or misconfigured Application in one project cannot deploy into another
 team's namespace or cluster.

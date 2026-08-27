@@ -20,24 +20,24 @@ metadata:
 
 ## Purpose
 
-Infrastructure-as-code misconfigurations are a distinct risk category from
+[Infrastructure-as-code](../infrastructure-as-code/SKILL.md) misconfigurations are a distinct risk category from
 both application-level vulnerabilities (SAST/DAST) and vulnerable
 dependencies (SCA): a syntactically valid, perfectly-passing-`terraform
 plan` Terraform module can still define an S3 bucket with public read
 access, a security group open to `0.0.0.0/0` on all ports, an IAM policy
 granting `*:*`, or an unencrypted RDS instance — none of which Terraform
 itself will refuse to apply, and none of which a dependency scanner or a
-code-quality linter is positioned to catch. **Checkov** and **tfsec** are
+[code-quality](../../../Software_Engineering_and_Other/Miscellaneous/skills-main/skills/[code-quality](../../../Software_Engineering_and_Other/Patterns/code-quality/SKILL.md)/SKILL.md) linter is positioned to catch. **Checkov** and **tfsec** are
 purpose-built, static-analysis scanners for exactly this: they parse
-Terraform (and, for Checkov, CloudFormation, Kubernetes manifests, ARM/Bicep,
-Serverless Framework, and Dockerfiles) *before* any resource is provisioned,
+Terraform (and, for Checkov, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifests, ARM/Bicep,
+[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Framework, and Dockerfiles) *before* any resource is provisioned,
 and check it against a large ruleset of cloud-security best practices. This
 is a narrower, IaC-specific scope than Snyk's multi-product platform
 (`snyk iac test` covers similar ground as one of three Snyk scan types
 alongside dependency and container scanning — see
-[snyk-vulnerability-and-license-scanning](../snyk-vulnerability-and-license-scanning/SKILL.md))
+[snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md))
 and a different concern entirely from generic dependency scanning (see
-[software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)):
+[software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)):
 Checkov/tfsec don't care what packages your application depends on, only
 whether the infrastructure you're about to create is configured safely.
 Both tools are free and open-source, which makes them a common choice when
@@ -46,7 +46,7 @@ full per-seat licensing for that purpose alone.
 
 ## When to use
 
-- Adding a pre-`terraform apply` (or pre-CloudFormation-deploy) security
+- Adding a pre-`terraform apply` (or pre-[CloudFormation](../cloudformation/SKILL.md)-deploy) security
   gate that catches misconfigurations — hardcoded secrets in `.tf` files,
   overly permissive IAM, open security groups, unencrypted storage/volumes
   — as a PR check, before any cloud resource is actually created.
@@ -65,13 +65,13 @@ full per-seat licensing for that purpose alone.
 
 ## Prerequisites & environment
 
-- The IaC source tree itself (Terraform `.tf`/`.tfvars`, CloudFormation
-  YAML/JSON templates, Kubernetes manifests, or Helm charts) — neither tool
+- The IaC source tree itself (Terraform `.tf`/`.tfvars`, [CloudFormation](../cloudformation/SKILL.md)
+  YAML/JSON templates, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifests, or Helm charts) — neither tool
   needs a live cloud connection or a deployed environment; both scan source
   statically.
 - **Checkov** (`pip install checkov` or the container image
-  `bridgecrew/checkov`) — Python-based, broadest format coverage
-  (Terraform, CloudFormation, Kubernetes, Helm, ARM/Bicep, Serverless
+  `bridgecrew/checkov`) — [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-based, broadest format coverage
+  (Terraform, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)
   Framework, Dockerfile, and plain YAML/JSON for some checks).
 - **tfsec** (a standalone Go binary, or via `brew install tfsec` /
   container image) — Terraform-only, narrower format scope but often
@@ -84,7 +84,7 @@ full per-seat licensing for that purpose alone.
 - A defined severity threshold and a documented suppression policy (who can
   approve a suppression, with what justification and expiry) agreed before
   wiring a hard PR-blocking gate — the same prerequisite called out in
-  [snyk-vulnerability-and-license-scanning](../snyk-vulnerability-and-license-scanning/SKILL.md)
+  [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md)
   applies here: an unowned gate either blocks everything or is routed
   around entirely.
 - CI runner with no cloud credentials required for the scan step itself
@@ -120,11 +120,11 @@ full per-seat licensing for that purpose alone.
              soft_fail: false
          - name: Upload SARIF to code scanning
            if: always()
-           uses: github/codeql-action/upload-sarif@v3
+           uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
            with:
              sarif_file: checkov-results.sarif
    ```
-   Uploading SARIF surfaces findings directly in GitHub's code-scanning UI
+   Uploading SARIF surfaces findings directly in [GitHub](../../CI_CD/github/SKILL.md)'s code-scanning UI
    as annotations on the PR diff, not just a pass/fail job status.
 
 3. **Add tfsec (or Trivy's merged IaC scanner) as an equivalent, faster
@@ -147,7 +147,7 @@ full per-seat licensing for that purpose alone.
    actual blocking gate long-term — two blocking scanners with no
    severity-reconciliation rule produces the same "which gate do we trust"
    confusion described in
-   [snyk-vulnerability-and-license-scanning](../snyk-vulnerability-and-license-scanning/SKILL.md).
+   [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
 
 4. **Suppress a specific finding with justification and an ID-scoped
    inline comment**, never a directory-wide skip, in Checkov:
@@ -167,7 +167,7 @@ full per-seat licensing for that purpose alone.
      protocol          = "tcp"
      cidr_blocks       = ["0.0.0.0/0"]
      security_group_id = aws_security_group.lb.id
-     #tfsec:ignore:aws-vpc-no-public-ingress-sgr -- ALB health check endpoint, intentionally public on port 80 only
+     #tfsec:ignore:[aws-vpc](../../Cloud_Providers/aws-vpc/SKILL.md)-no-public-ingress-sgr -- ALB health check endpoint, intentionally public on port 80 only
    }
    ```
 
@@ -202,24 +202,24 @@ full per-seat licensing for that purpose alone.
 7. **Run the scan before `terraform plan`/`apply` in the pipeline sequence**
    — this is the entire point of static IaC scanning: catching the
    misconfiguration at PR time, before any resource exists, rather than
-   discovering it via a runtime scan or an incident after the resource is
+   discovering it via a runtime scan or an [incident](../../Observability_and_SecOps/incident/SKILL.md) after the resource is
    already live. Place it as an early, fast-failing stage per the general
    staging guidance in
-   [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md).
+   [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 
 8. **Re-scan on a schedule, not only on `.tf` file changes** — both tools'
    rulesets are updated over time as new best-practice checks are added;
    a module that passed six months ago may fail against a newer ruleset
    version even with no code change, similar in spirit to how a dependency
    scan can newly fail with no code change per
-   [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md).
+   [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Best practices
 
 - Treat a Checkov/tfsec finding the same as any other security finding for
   triage purposes — feed it into the same backlog/severity process as
   SAST/DAST/SCA findings (see
-  [secure-cicd-gates](../secure-cicd-gates/SKILL.md)) rather than running
+  [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)) rather than running
   IaC scanning as an isolated, disconnected process nobody else on the
   security team sees.
 - Require every suppression to carry an explicit reason and a reviewer,
@@ -254,7 +254,7 @@ full per-seat licensing for that purpose alone.
   entirely into a secrets manager or CI masked variable
   (`TF_VAR_db_password` injected at apply time, `sensitive = true` on the
   corresponding variable) per the secrets guidance in
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md);
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md);
   a hardcoded secret finding is a real, urgent risk, not a false positive
   to work around.
 
@@ -284,7 +284,7 @@ full per-seat licensing for that purpose alone.
   as complementary, reconciling differences manually) rather than treating
   disagreement as a bug in either tool; the same reconciliation principle
   applies across any pair of security scanners per
-  [snyk-vulnerability-and-license-scanning](../snyk-vulnerability-and-license-scanning/SKILL.md).
+  [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
 
 - **Symptom:** A previously-passing pipeline starts failing a Checkov/tfsec
   scan after a routine scanner version bump, with no infrastructure change.
@@ -364,8 +364,8 @@ before provisioning.
 
 ## Cross-references
 
-- [snyk-vulnerability-and-license-scanning](../snyk-vulnerability-and-license-scanning/SKILL.md) — Snyk IaC covers similar misconfiguration ground as one of Snyk's three scan types under one commercial platform/license; compare against Checkov/tfsec's free, dedicated, IaC-only scope when per-seat licensing for a broader platform isn't justified by IaC scanning alone.
-- [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md) — a different finding class entirely (known-vulnerable third-party dependencies) from IaC misconfiguration; the two are complementary, not overlapping.
-- [sast-integration](../sast-integration/SKILL.md) — analyzes your own application source code for vulnerability patterns, a different target than the infrastructure definitions Checkov/tfsec scan.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — combining IaC scanning with SAST/DAST/SCA into one coherent pipeline gate and triage workflow rather than a standalone, disconnected process.
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the Terraform authoring workflow (modules, state, plan review) that Checkov/tfsec scan; this skill doesn't repeat Terraform structuring guidance.
+- [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — Snyk IaC covers similar misconfiguration ground as one of Snyk's three scan types under one commercial platform/license; compare against Checkov/tfsec's free, dedicated, IaC-only scope when per-seat licensing for a broader platform isn't justified by IaC scanning alone.
+- [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — a different finding class entirely (known-vulnerable third-party dependencies) from IaC misconfiguration; the two are complementary, not overlapping.
+- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — analyzes your own application source code for vulnerability patterns, a different target than the infrastructure definitions Checkov/tfsec scan.
+- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — combining IaC scanning with SAST/DAST/SCA into one coherent pipeline gate and triage workflow rather than a standalone, disconnected process.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the Terraform authoring workflow (modules, state, plan review) that Checkov/tfsec scan; this skill doesn't repeat Terraform structuring guidance.

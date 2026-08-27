@@ -22,7 +22,7 @@ Conduct a comprehensive operational review of Amazon EKS clusters aligned with t
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, audit, or assess EKS clusters
+- Review, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), or assess EKS clusters
 - Check EKS best practices compliance
 - Evaluate EKS security, cost, reliability, networking, or scalability
 - Perform an EKS operational readiness review
@@ -42,7 +42,7 @@ Query CloudWatch and AWS APIs to discover clusters:
 
 ## Step 2: Collect Cluster Configuration
 
-**Data source priority**: If Kubernetes API access is available (via connected MCP servers such as kubernetes-mcp-server, EKS MCP server, or direct K8s API tools), use it FIRST to get live cluster state. K8s API provides the most accurate, real-time data. Fall back to AWS APIs and CloudWatch only for data not available via K8s API.
+**Data source priority**: If [Kubernetes](../kubernetes/SKILL.md) API access is available (via connected MCP servers such as [kubernetes](../kubernetes/SKILL.md)-mcp-server, EKS MCP server, or direct K8s API tools), use it FIRST to get live cluster state. K8s API provides the most accurate, real-time data. Fall back to AWS APIs and CloudWatch only for data not available via K8s API.
 
 **K8s API tools** (use first when available):
 - `resources_list` / `resources_get` — list/read any K8s resource by apiVersion and kind
@@ -54,18 +54,18 @@ Query CloudWatch and AWS APIs to discover clusters:
 For EACH cluster, gather the following data. **Try K8s API first, then AWS API as fallback**:
 
 ### 2.1 EKS Cluster Config
-**AWS API** (no K8s equivalent): Kubernetes version, platform version, control plane logging, secrets encryption, endpoint access, authentication mode, access entries, Auto Mode, tags
+**AWS API** (no K8s equivalent): [Kubernetes](../kubernetes/SKILL.md) version, platform version, control plane logging, secrets encryption, endpoint access, authentication mode, access entries, Auto Mode, tags
 
 ### 2.2 Node Groups & Compute
 **K8s API first**:
-- `resources_list(apiVersion="v1", kind="Node")` — live node list with labels, capacity, allocatable, conditions
+- `resources_list(apiVersion="v1", kind="Node")` — live node list with labels, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), allocatable, conditions
 - `nodes_top` — actual CPU/memory usage per node
 - `resources_list(apiVersion="karpenter.sh/v1", kind="NodePool")` — Karpenter NodePools
 - `resources_get(apiVersion="karpenter.sh/v1", kind="NodePool", name=<name>)` — full NodePool spec (consolidation, limits, disruption, requirements)
 - `resources_list(apiVersion="karpenter.k8s.aws/v1", kind="EC2NodeClass")` — EC2NodeClasses
 - `resources_get(apiVersion="karpenter.k8s.aws/v1", kind="EC2NodeClass", name=<name>)` — full spec (amiFamily, blockDeviceMappings, metadataOptions, subnets, SGs)
 
-**AWS API fallback**: Managed node groups (instance types, scaling config, AMI type, capacity type, AZ distribution)
+**AWS API fallback**: Managed node groups (instance types, scaling config, AMI type, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) type, AZ distribution)
 
 ### 2.3 Add-ons
 **K8s API first**:
@@ -90,7 +90,7 @@ For EACH cluster, gather the following data. **Try K8s API first, then AWS API a
 - `resources_list(apiVersion="rbac.authorization.k8s.io/v1", kind="ClusterRole")` — roles with wildcard permissions
 - `resources_get(apiVersion="v1", kind="ConfigMap", name="aws-auth", namespace="kube-system")` — aws-auth status
 - `resources_list(apiVersion="v1", kind="ServiceAccount")` — check IRSA annotations (eks.amazonaws.com/role-arn)
-- `resources_list(apiVersion="v1", kind="Namespace")` — check Pod Security Standards labels (pod-security.kubernetes.io/enforce)
+- `resources_list(apiVersion="v1", kind="Namespace")` — check Pod Security Standards labels (pod-security.[kubernetes](../kubernetes/SKILL.md).io/enforce)
 
 **AWS API** (no K8s equivalent): Access entries, Pod Identity associations, IAM role policies, ECR scan config
 
@@ -99,7 +99,7 @@ For EACH cluster, gather the following data. **Try K8s API first, then AWS API a
 - `resources_list(apiVersion="apps/v1", kind="Deployment")` — all deployments
 - `resources_get(apiVersion="apps/v1", kind="Deployment", name=<name>, namespace=<ns>)` — full spec: probes, resources, securityContext, topologySpreadConstraints, terminationGracePeriodSeconds
 - `resources_list(apiVersion="apps/v1", kind="StatefulSet")` — statefulsets
-- `resources_list(apiVersion="autoscaling/v2", kind="HorizontalPodAutoscaler")` — HPAs
+- `resources_list(apiVersion="[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2", kind="HorizontalPodAutoscaler")` — HPAs
 - `resources_list(apiVersion="policy/v1", kind="PodDisruptionBudget")` — PDBs
 - `pods_top` — actual pod resource usage vs requests
 - `pods_list(fieldSelector="status.phase!=Running,status.phase!=Succeeded")` — failing pods
@@ -113,7 +113,7 @@ For EACH cluster, gather the following data. **Try K8s API first, then AWS API a
 - `resources_list(apiVersion="v1", kind="ResourceQuota")` — namespace quotas
 - `resources_list(apiVersion="v1", kind="LimitRange")` — default limits
 
-## Step 3: Collect Observability Data (7-Day Historical)
+## Step 3: Collect [Observability](../../Observability_and_SecOps/observability/SKILL.md) Data (7-Day Historical)
 
 ### 3.1 CloudWatch Metrics (7 days)
 
@@ -142,7 +142,7 @@ Query control plane logs for error patterns:
 - `ERROR` — general errors (count)
 - `429` — API server throttling
 - `OOMKilled` — memory limit issues
-- `FailedScheduling` — capacity/constraint issues
+- `FailedScheduling` — [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/constraint issues
 - `Evicted` — node pressure evictions
 
 ### 3.3 CloudTrail Events (7 days)
@@ -182,7 +182,7 @@ Ref: https://docs.aws.amazon.com/eks/latest/best-practices/security.html
 **Pod Security**: Pod Security Standards enforced, no privileged containers, SecurityContext set
 **Runtime Security**: Non-root containers, read-only root filesystems
 **Network Security**: NetworkPolicies present, VPC endpoints for private access
-**Multi-tenancy**: Namespace isolation, RBAC per namespace, ResourceQuotas
+**[Multi-tenancy](../multi-tenancy/SKILL.md)**: Namespace isolation, RBAC per namespace, ResourceQuotas
 **Detective Controls**: All 5 log types enabled, CloudTrail events, CloudWatch alarms
 **Infrastructure Security**: Private endpoint, IMDSv2 enforced (httpTokens=required), AMI currency
 **Data Encryption**: KMS envelope encryption, EBS encryption
@@ -225,7 +225,7 @@ Cluster services: CoreDNS scaled, metrics-server, addon versions
 Workloads: HPA configured, resource requests set, pod restart count (>50 in 7d → MEDIUM, >200 → HIGH)
 
 **Data Plane Scaling** (Ref: https://docs.aws.amazon.com/eks/latest/best-practices/scale-data-plane.html):
-- Automatic autoscaling configured (Karpenter preferred)
+- Automatic [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured (Karpenter preferred)
 - Instance type diversity (avoid single type)
 - T-series burstable in production → MEDIUM
 - AMI update automation (EKS optimized/Bottlerocket, age check)
@@ -247,8 +247,8 @@ Ref: https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt.html
 Under-utilized (<30% CPU / <40% mem) → cost waste. Over-utilized (>70%) → saturation risk.
 
 **Recommendations**:
-1. Instance right-sizing: per-instance CPU/memory vs capacity
-2. Spot adoption: Karpenter NodePool capacity-type, stateless workloads
+1. Instance right-sizing: per-instance CPU/memory vs [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+2. Spot adoption: Karpenter NodePool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type, stateless workloads
 3. Graviton migration: x86 → arm64 families (~20% savings)
 4. Storage: gp2 → gp3, unused PV cleanup
 5. Karpenter consolidation: WhenEmpty → WhenEmptyOrUnderutilized

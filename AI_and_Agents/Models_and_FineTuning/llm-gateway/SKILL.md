@@ -22,8 +22,8 @@ Use this skill when:
 
 ## Prerequisites
 
-- Docker and Docker Compose
-- A PostgreSQL or SQLite database (for LiteLLM state)
+- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) and [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+- A [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or SQLite database (for LiteLLM state)
 - LLM API keys (OpenAI, Anthropic, etc.) or self-hosted vLLM endpoints
 - Optional: Redis for caching and rate limiting
 
@@ -32,8 +32,8 @@ Use this skill when:
 LiteLLM is the de facto open-source LLM gateway with OpenAI-compatible API.
 
 ```bash
-# Run with Docker
-docker run -d \
+# Run with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name litellm-proxy \
   -p 4000:4000 \
   -e OPENAI_API_KEY=$OPENAI_API_KEY \
@@ -115,11 +115,11 @@ litellm_settings:
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
-  database_url: postgresql://litellm:password@postgres:5432/litellm
+  database_url: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
   store_model_in_db: true
 ```
 
-## Docker Compose: Full Gateway Stack
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose: Full Gateway Stack
 
 ```yaml
 services:
@@ -134,7 +134,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
-      - DATABASE_URL=postgresql://litellm:password@postgres:5432/litellm
+      - DATABASE_URL=[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
     depends_on:
       postgres:
         condition: service_healthy
@@ -149,7 +149,7 @@ services:
       POSTGRES_USER: litellm
       POSTGRES_PASSWORD: password
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U litellm"]
       interval: 5s
@@ -222,7 +222,7 @@ server {
 }
 ```
 
-## Monitoring Gateway Health
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Gateway Health
 
 ```bash
 # Check LiteLLM health
@@ -255,12 +255,12 @@ curl http://localhost:4000/key/list \
 - Use virtual keys per team/app — never expose raw provider API keys.
 - Enable `cache: true` with Redis for repeated or similar queries; can cut costs 30–50%.
 - Set `num_retries: 3` with fallbacks to handle provider outages gracefully.
-- Log all requests to Langfuse or OpenTelemetry for cost attribution and debugging.
+- Log all requests to Langfuse or [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for cost attribution and debugging.
 - Use `least-busy` routing strategy for self-hosted models to avoid GPU saturation.
 
 ## Related Skills
 
-- [vllm-server](../../local-ai/vllm-server/) - Backend inference server
-- [llm-inference-scaling](../../local-ai/llm-inference-scaling/) - Auto-scaling backends
-- [llm-caching](../../../devops/ai/llm-caching/) - Semantic cache patterns
-- [llm-cost-optimization](../../../devops/ai/llm-cost-optimization/) - Cost management
+- [vllm-server](../../local-ai/[vllm-server](../vllm-server/SKILL.md)/) - Backend inference server
+- [llm-inference-scaling](../../local-ai/[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - Auto-scaling backends
+- [llm-caching](../../../devops/ai/[llm-caching](../llm-caching/SKILL.md)/) - Semantic cache patterns
+- [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost management

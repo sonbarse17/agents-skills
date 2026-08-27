@@ -53,10 +53,10 @@ Key Rotation: {every N days / automatic}
 ### Data Masking
 Static Masking: {target datasets, masking rules}
 Dynamic Masking: {role-based, query-time}
-Tokenization: {format-preserving / random / vault-based}
+Tokenization: {format-preserving / random / [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based}
 
 ### Column-Level Security
-Database: {PostgreSQL / BigQuery / Snowflake}
+Database: {[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) / BigQuery / Snowflake}
 Method: {row-level security / column ACL / dynamic masking}
 Roles: [{role: accessible columns}]
 
@@ -88,17 +88,17 @@ Define classification levels: Public (no impact), Internal (minor), Confidential
 - **In use**: Confidential computing (Intel SGX, AMD SEV) for sensitive workloads.
 
 ### Step 3: Key Management
-- **KMS**: Managed service (AWS KMS, GCP Cloud KMS, Azure Key Vault). Automatic key rotation. Access control via IAM.
+- **KMS**: Managed service (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)). Automatic key rotation. Access control via IAM.
 - **HSM**: Hardware security module (AWS CloudHSM, Azure Dedicated HSM). FIPS 140-2 Level 3. For regulatory requirements.
 - **BYOK**: Import your own key to KMS. Control key material. Rotation rotates within KMS.
 
 ### Step 4: Data Masking
 - **Static masking**: Create de-identified copies of production data for dev/test. Permanent transformation.
-- **Dynamic masking**: Mask at query time based on role. No data modification. Use PostgreSQL `col_a > masking_column`.
-- **Tokenization**: Replace sensitive data with tokens. Vault-based (lookup table) or format-preserving (algorithmic).
+- **Dynamic masking**: Mask at query time based on role. No data modification. Use [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) `col_a > masking_column`.
+- **Tokenization**: Replace sensitive data with tokens. [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based (lookup table) or format-preserving (algorithmic).
 
 ### Step 5: Column-Level Security
-PostgreSQL: Row-Level Security (RLS) policies per table. BigQuery: column ACL on authorized views. Snowflake: dynamic data masking with masking policies. Grant access based on data classification and role.
+[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): Row-Level Security (RLS) policies per table. BigQuery: column ACL on authorized views. Snowflake: dynamic data masking with masking policies. Grant access based on data classification and role.
 
 ### Step 6: Anonymization
 - **k-anonymity**: Each record indistinguishable from k-1 others. Generalize or suppress quasi-identifiers.
@@ -135,7 +135,7 @@ classification_levels:
   restricted:
     description: "Data that would cause severe harm if exposed"
     examples: ["Passwords", "Payment card numbers", "Health records", "Trade secrets"]
-    controls: ["All confidential controls plus:", "Field-level encryption", "Strict access logging with alerting", "Quarterly access review", "HSM key management"]
+    controls: ["All confidential controls plus:", "Field-level encryption", "Strict access logging with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)", "Quarterly access review", "HSM key management"]
     access: "Explicitly approved individuals, JIT access"
 ```
 
@@ -168,7 +168,7 @@ automated_classification:
     detective:
       - "Alert on unauthorized access attempts to classified data"
       - "Monitor data egress patterns for anomaly detection"
-      - "Audit all access to restricted data with immutable logs"
+      - "[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all access to restricted data with immutable logs"
 ```
 
 ### Privacy-by-Design Engineering Checklist
@@ -196,7 +196,7 @@ privacy_by_design:
     - "Consent refresh required if purpose changes"
     
   data_protection_impact_assessment_dpia:
-    triggers: ["Processing sensitive data", "Large-scale monitoring", "Systematic profiling", "New technology deployment"]
+    triggers: ["Processing sensitive data", "Large-scale [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "Systematic [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)", "New technology deployment"]
     sections:
       - "System description and purpose"
       - "Data flow mapping"
@@ -229,8 +229,8 @@ de_identification:
       
   pseudonymization:
     tokenization:
-      description: "Replace identifier with token, mapping stored in secure vault"
-      reversibility: "Reversible with vault access"
+      description: "Replace identifier with token, mapping stored in secure [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)"
+      reversibility: "Reversible with [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access"
       format_preserving: "Token looks like original (same format, check digit)"
       use_case: "PCI data, test data generation"
     hashing:
@@ -247,7 +247,7 @@ de_identification:
 
 ## Data Security Implementation Examples
 
-### PostgreSQL Column-Level Encryption
+### [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Column-Level Encryption
 ```sql
 -- Enable pgcrypto extension
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -282,7 +282,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 ```
 
-### PostgreSQL Row-Level Security
+### [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Row-Level Security
 ```sql
 -- Enable RLS on table
 ALTER TABLE customer_records ENABLE ROW LEVEL SECURITY;
@@ -298,8 +298,8 @@ CREATE POLICY admin_access ON customer_records
     USING (current_setting('app.user_role') = 'admin');
 ```
 
-### AWS KMS Envelope Encryption (Python)
-```python
+### AWS KMS Envelope Encryption ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import boto3
 from cryptography.fernet import Fernet
 import base64
@@ -348,7 +348,7 @@ ALTER TABLE users MODIFY COLUMN email SET MASKING POLICY email_mask;
 ```
 
 ### Differential Privacy Example
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import numpy as np
 
 def laplace_mechanism(true_value: float, epsilon: float, sensitivity: float = 1.0) -> float:
@@ -367,7 +367,7 @@ print(f"Private count: {private_count}")  # e.g., 1448.3
 ## Data Security Anti-Patterns
 
 ### Anti-Pattern: Encryption as Silver Bullet
-Encrypting data at rest without controlling access to decryption keys provides false security. If an application has the key and is compromised, the attacker can decrypt all data. Defense in depth: encrypt + access control + audit + anomaly detection.
+Encrypting data at rest without controlling access to decryption keys provides false security. If an application has the key and is compromised, the attacker can decrypt all data. Defense in depth: encrypt + access control + [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + anomaly detection.
 
 ### Anti-Pattern: Ignoring In-Use Encryption
 Encrypting at rest and in transit but processing data in plaintext in memory. Cold boot attacks, memory dumps, and compromised hosts can extract in-memory data. Use confidential computing (SGX, SEV, Nitro Enclaves) for sensitive processing. Minimize data in memory windows.
@@ -378,8 +378,8 @@ Using a single key for all data means compromising one key compromises everythin
 ### Anti-Pattern: Static Masking Without Refresh
 Creating masked copies of production data once but never refreshing them as production data changes. De-identified copies become stale and useless for testing. Refresh masked datasets on a schedule aligned with development cycles.
 
-### Anti-Pattern: Tokenization Without Vault Security
-Token vaults that are less secure than the original data store. Token vault must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive audit logging.
+### Anti-Pattern: Tokenization Without [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Security
+Token vaults that are less secure than the original data store. Token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 
 ### Anti-Pattern: Anonymization Without Re-identification Testing
 Applying k-anonymity or differential privacy without testing against known attack vectors (linkage attacks, homogeneity attacks, differencing attacks). Validate anonymization with the same techniques an adversary would use. Re-test when new data is added.
@@ -413,7 +413,7 @@ Applying k-anonymity or differential privacy without testing against known attac
 - Homomorphic encryption for cross-org computation
 - Data security posture management (DSPM)
 - Real-time data loss prevention (DLP) at scale
-- Self-service data security with policy-as-code
+- Self-service data security with [policy-as-code](../policy-as-code/SKILL.md)
 - Automated breach notification systems
 
 ## Data Security Operations
@@ -437,11 +437,11 @@ Applying k-anonymity or differential privacy without testing against known attac
 - Anonymization re-validation
 - Privacy impact assessment updates
 
-### Incident Response
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 1. Detect: DLP alert, anomalous data access, unauthorized data egress, encryption key compromise
 2. Assess: what data was exposed, classification level, affected users, regulatory implications
 3. Contain: revoke access, rotate keys, isolate affected data stores, block egress paths
-4. Investigate: audit logs, access patterns, data flow analysis
+4. Investigate: [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, access patterns, data flow analysis
 5. Remediate: patch vulnerabilities, update policies, revoke credentials
 6. Notify: regulatory bodies (GDPR 72h), affected users, data protection authority
 7. Post-mortem: root cause analysis, policy updates, detection improvements
@@ -459,7 +459,7 @@ Applying k-anonymity or differential privacy without testing against known attac
 | Breach notification | Art. 33 | §1798.29 | Req 12.10 | §164.404 | — |
 | Retention limits | Art. 5(1)(e) | — | Req 3.1 | §164.316(b)(2)(i) | — |
 | Right to deletion | Art. 17 | §1798.105 | — | — | — |
-| Audit logging | Art. 30 | — | Req 10 | §164.312(b) | CC7.2 |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging | Art. 30 | — | Req 10 | §164.312(b) | CC7.2 |
 
 ## Rules
 - Encryption at rest is mandatory for all data containing PII
@@ -480,7 +480,7 @@ Applying k-anonymity or differential privacy without testing against known attac
   - ../../../Global_References/data-security-fundamentals.md — Data Security Fundamentals
   - ../../../Global_References/encryption-key-mgmt.md — Encryption & Key Management
 ## Handoff
-For infrastructure security controls, hand off to `devops-cloud-cost-optimization`. For data quality and governance, hand off to `data-quality`.
+For infrastructure security controls, hand off to `devops-[cloud-cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cloud-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)`. For data quality and governance, hand off to `data-quality`.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -533,7 +533,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -547,7 +547,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -563,12 +563,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -577,7 +577,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -585,13 +585,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -600,8 +600,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

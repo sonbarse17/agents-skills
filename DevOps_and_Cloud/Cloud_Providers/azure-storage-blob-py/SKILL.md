@@ -10,14 +10,14 @@ metadata:
   package: azure-storage-blob
 ---
 
-# Azure Blob Storage SDK for Python
+# Azure Blob Storage SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure Blob Storage — object storage for unstructured data.
 
 ## Installation
 
 ```bash
-pip install azure-storage-blob azure-identity
+pip install [azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-blob azure-identity
 ```
 
 ## Environment Variables
@@ -33,7 +33,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -42,14 +42,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.blob import BlobServiceClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.blob.core.windows.net"
 
@@ -70,14 +70,14 @@ with BlobServiceClient(account_url, credential=credential) as blob_service_clien
 
 ### Create Container
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 container_client = blob_service_client.get_container_client("mycontainer")
 container_client.create_container()
 ```
 
 ### Upload Blob
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # From file path
 blob_client = blob_service_client.get_blob_client(
     container="mycontainer",
@@ -98,7 +98,7 @@ blob_client.upload_blob(stream, overwrite=True)
 
 ### Download Blob
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 blob_client = blob_service_client.get_blob_client(
     container="mycontainer",
     blob="sample.txt"
@@ -120,7 +120,7 @@ num_bytes = blob_client.download_blob().readinto(stream)
 
 ### List Blobs
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 container_client = blob_service_client.get_container_client("mycontainer")
 
 # List all blobs
@@ -141,7 +141,7 @@ for item in container_client.walk_blobs(delimiter="/"):
 
 ### Delete Blob
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 blob_client.delete_blob()
 
 # Delete with snapshots
@@ -150,7 +150,7 @@ blob_client.delete_blob(delete_snapshots="include")
 
 ## Performance Tuning
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Configure chunk sizes for large uploads/downloads
 with BlobClient(
     account_url=account_url,
@@ -169,9 +169,9 @@ with BlobClient(
 
 ## SAS Tokens (User Delegation)
 
-Generate SAS tokens with a **user delegation key** signed by Microsoft Entra ID — never with an account key. This keeps SAS issuance tied to Entra audit/rotation.
+Generate SAS tokens with a **user delegation key** signed by Microsoft Entra ID — never with an account key. This keeps SAS issuance tied to Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/rotation.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import (
@@ -205,7 +205,7 @@ blob_url = f"{account_url}/mycontainer/sample.txt?{sas_token}"
 
 ## Blob Properties and Metadata
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get properties
 properties = blob_client.get_blob_properties()
 print(f"Size: {properties.size}")
@@ -224,7 +224,7 @@ blob_client.set_http_headers(
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity.aio import DefaultAzureCredential
 from azure.storage.blob.aio import BlobServiceClient
 
@@ -260,6 +260,6 @@ async def download_async():
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-storage-blob-py_capabilities.md](../../../Global_References/azure-storage-blob-py_capabilities.md) | Capability index mapping hero flows and non-hero references. |
-| [../../../Global_References/azure-storage-blob-py_non-hero-scenarios.md](../../../Global_References/azure-storage-blob-py_non-hero-scenarios.md) | Dedicated non-hero examples (metadata/properties and async patterns). |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-blob-py_capabilities.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-blob-py_capabilities.md) | Capability index mapping hero flows and non-hero references. |
+| [../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-blob-py_non-hero-scenarios.md](../../../Global_References/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md)-blob-py_non-hero-scenarios.md) | Dedicated non-hero examples (metadata/properties and async patterns). |
 

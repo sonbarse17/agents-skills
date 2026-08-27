@@ -17,14 +17,14 @@ Build real-time streaming applications using the Azure Event Hubs SDK for Java.
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-eventhubs</artifactId>
+    <artifactId>[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-eventhubs</artifactId>
     <version>5.19.0</version>
 </dependency>
 
 <!-- For checkpoint store (production) -->
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
+    <artifactId>[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-eventhubs-checkpointstore-blob</artifactId>
     <version>1.20.0</version>
 </dependency>
 ```

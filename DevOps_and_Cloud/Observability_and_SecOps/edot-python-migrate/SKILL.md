@@ -8,22 +8,22 @@ metadata:
   version: 0.1.0
 ---
 
-# EDOT Python Migration
+# EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Migration
 
 Read the migration guide before making changes:
 
-- [Migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/migration)
-- [EDOT Python setup](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/setup)
-- [EDOT Python configuration](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/configuration)
+- [Migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/migration)
+- [EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) setup](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/setup)
+- [EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) configuration](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/configuration)
 
 ## Guidelines
 
 1. Remove ALL classic APM references: `elastic-apm` from requirements, `ElasticAPM(app)` / `elasticapm.contrib.*` from
    application code, `app.config['ELASTIC_APM']` blocks, and all `ELASTIC_APM_*` env vars
-1. Install `elastic-opentelemetry` via pip (add to `requirements.txt` or equivalent)
+1. Install `elastic-[opentelemetry](../opentelemetry/SKILL.md)` via pip (add to `requirements.txt` or equivalent)
 1. Run `edot-bootstrap --action=install` during image build to install auto-instrumentation packages for detected
    libraries
-1. Wrap the application entrypoint with `opentelemetry-instrument` — e.g. `opentelemetry-instrument gunicorn app:app`.
+1. Wrap the application entrypoint with `[opentelemetry](../opentelemetry/SKILL.md)-instrument` — e.g. `[opentelemetry](../opentelemetry/SKILL.md)-instrument gunicorn app:app`.
    Without this, no telemetry is collected
 1. Set exactly three required environment variables:
    - `OTEL_SERVICE_NAME` (replaces `ELASTIC_APM_SERVICE_NAME`)
@@ -38,5 +38,5 @@ Read the migration guide before making changes:
 
 ## Examples
 
-See the [EDOT Python migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/migration)
+See the [EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/migration)
 for complete examples.

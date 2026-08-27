@@ -21,7 +21,7 @@ Hopper introduces FP8 (E4M3 and E5M2 formats).
 Transformer Engine seamlessly casts FP16/BF16 to FP8, leveraging hardware-native dot-products while mitigating overflow via delayed scaling.
 
 ## Architecture Flow
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[FP16/BF16 Model] --> B{Quantization Target}

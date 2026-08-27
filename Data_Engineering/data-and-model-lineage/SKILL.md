@@ -28,21 +28,21 @@ the operational question is always "what does this actually depend on, and
 what depends on it." Data and model lineage makes that chain an explicit,
 queryable graph instead of tribal knowledge scattered across Slack threads
 and the memories of whoever built the pipeline. This is what makes root-cause
-analysis, impact analysis before a risky change, and audit/compliance answers
+analysis, impact analysis before a risky change, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md)/compliance answers
 tractable instead of an archaeology project.
 
 ## When to use
 
 - The user wants to set up lineage tracking across a data/ML platform (e.g.
   OpenLineage, Marquez, DataHub, Amundsen, or a cloud-native lineage feature
-  in Databricks Unity Catalog / dbt / a warehouse's built-in lineage).
+  in Databricks [Unity](../../Game_Development/unity/SKILL.md) Catalog / dbt / a warehouse's built-in lineage).
 - The user needs to trace a bad prediction or a drift alert back to the
   specific data snapshot, feature definition, and training run that produced
   the currently-serving model (tie-in with
-  [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)).
+  [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 - The user is planning a change to an upstream table/source and wants impact
   analysis — which features, training pipelines, and models depend on it.
-- The user needs to answer a compliance/audit question: "what data was this
+- The user needs to answer a compliance/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) question: "what data was this
   model trained on," "who has access to the data that feeds this model,"
   "can we prove this model didn't train on data we didn't have rights to."
 - The user wants to wire lineage metadata into feature store or experiment
@@ -53,7 +53,7 @@ tractable instead of an archaeology project.
 - A lineage-capable metadata platform or a plan to construct a minimal
   graph: OpenLineage (an open specification with integrations for Airflow,
   Spark, dbt), Marquez (reference OpenLineage backend), DataHub, Amundsen,
-  or a cloud-native catalog (Unity Catalog, AWS Glue Data Catalog with
+  or a cloud-native catalog ([Unity](../../Game_Development/unity/SKILL.md) Catalog, AWS Glue Data Catalog with
   lineage, Vertex AI Metadata).
 - Instrumented pipelines that emit lineage events at each transformation
   step — this usually means integrating the orchestrator (Airflow, dbt,
@@ -61,9 +61,9 @@ tractable instead of an archaeology project.
   on after the fact.
 - Consistent, stable identifiers for datasets, feature views, experiment
   runs, and model versions across all the systems being linked (see
-  [feature-store-design](../feature-store-design/SKILL.md),
-  [experiment-tracking](../experiment-tracking/SKILL.md), and
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
+  [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md),
+  [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md), and
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)
   for where these identifiers originate).
 - Buy-in to instrument lineage emission at pipeline-build time, since
   retrofitting lineage onto years of undocumented pipelines is a
@@ -117,9 +117,9 @@ tractable instead of an archaeology project.
 4. **Link experiment tracking and model registry records into the same
    graph** rather than treating them as separate systems: an experiment
    run's logged `data_snapshot` and `git_sha` tags (see
-   [experiment-tracking](../experiment-tracking/SKILL.md)) and a registered
+   [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)) and a registered
    model version's lineage tags (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md))
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md))
    should resolve to the same node identifiers used in the lineage graph.
 5. **Support two query directions**: backward ("what produced this model
    version / this prediction") for root-cause analysis, and forward ("what
@@ -130,13 +130,13 @@ tractable instead of an archaeology project.
    pipelines, and production models that depend on the table being changed,
    and notify/coordinate with their owners before the change ships.
 7. **Retain lineage records at least as long as the models/predictions they
-   describe remain relevant to compliance or audit needs** — a lineage
+   describe remain relevant to compliance or [audit](../../AI_and_Agents/Operations/audit/SKILL.md) needs** — a lineage
    record for a model that's still influencing live decisions (even an
    older, archived version still consulted for past-decision audits) should
    not be purged on a generic retention timer without checking active
    relevance.
 8. **Expose lineage queries to the people who need them** (ML engineers
-   during incident response, compliance/legal during audits) via a UI or a
+   during [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, compliance/legal during audits) via a UI or a
    simple query API — a lineage graph that only the platform team knows how
    to query loses most of its operational value.
 
@@ -186,9 +186,9 @@ tractable instead of an archaeology project.
   the change ships.
 
 - **Symptom:** Compliance asks "what data was model X trained on" during an
-  audit, and the honest answer is "we're not entirely sure — the training
+  [audit](../../AI_and_Agents/Operations/audit/SKILL.md), and the honest answer is "we're not entirely sure — the training
   script pointed at 'the latest data' rather than a specific pinned
-  snapshot," which is not an acceptable audit answer.
+  snapshot," which is not an acceptable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) answer.
   **Fix:** Always pin training runs to immutable, specific data snapshot
   identifiers (not "latest") and record them in both experiment tracking and
   the lineage graph, so the exact training data for any model version is
@@ -197,7 +197,7 @@ tractable instead of an archaeology project.
 - **Symptom:** A well-intentioned data-retention cleanup deletes a "stale"
   raw data snapshot that turns out to still be referenced by the lineage
   chain of a model version that is archived but still consulted for
-  historical-decision audits, breaking the ability to answer future audit
+  historical-decision audits, breaking the ability to answer future [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
   questions about decisions that model made.
   **Fix:** Before deleting any data snapshot or pipeline artifact, query the
   lineage graph for active references (including archived-but-still-audited
@@ -212,14 +212,14 @@ currently-deployed `fraud-scorer` model, following a customer data-subject
 access request.
 
 1. The team looks up `fraud-scorer` version 14 in the model registry (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)),
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)),
    which carries a `run_id=run-8841` lineage tag.
 2. Following `run-8841` into the experiment tracker (see
-   [experiment-tracking](../experiment-tracking/SKILL.md)) surfaces the
+   [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)) surfaces the
    logged `data_snapshot=s3://data-lake/fraud/training/run-8841/` and
    `feature_view_version=driver_stats_v3` tags.
 3. Querying the lineage graph backward from `driver_stats_v3` (see
-   [feature-store-design](../feature-store-design/SKILL.md)) resolves to its
+   [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md)) resolves to its
    source table, `cleaned_transactions_table`, and further back to
    `raw_transactions_table`, with the exact ingestion job run that populated
    it on 2026-07-19.
@@ -233,12 +233,12 @@ access request.
    at what's affected.
 5. The full chain — raw table → transformation → feature view → training
    dataset → experiment run → model version — is produced as a lineage
-   report for the audit, generated directly from the graph rather than
+   report for the [audit](../../AI_and_Agents/Operations/audit/SKILL.md), generated directly from the graph rather than
    reconstructed manually.
 
 ## Cross-references
 
-- [feature-store-design](../feature-store-design/SKILL.md)
-- [experiment-tracking](../experiment-tracking/SKILL.md)
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
+- [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md)
+- [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)

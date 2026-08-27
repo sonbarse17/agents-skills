@@ -30,7 +30,7 @@ To run a focused acceptance test named `TestAccFeatureHappyPath`:
    - Check the repository's README, CONTRIBUTING, or `.env.example` for
      documented test setup.
    - The provider's `Configure` method shows how credentials are resolved;
-     use the `provider-configuration` skill (if available) to understand a
+     use the `[provider-configuration](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-configuration](../provider-configuration/SKILL.md)/SKILL.md)` skill (if available) to understand a
      credential provider chain.
 
    Set the variables for the single test invocation
@@ -59,6 +59,6 @@ acceptance test named `TestAccFeatureHappyPath`:
    keep the edit and report an unsuccessful flip.
 
 If a test run is interrupted, real resources may be left behind; run the
-provider's sweepers if it registers them (see the `provider-test-patterns`
+provider's sweepers if it registers them (see the `[provider-test-patterns](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-test-patterns](../provider-test-patterns/SKILL.md)/SKILL.md)`
 skill's sweeper reference, if available). For writing or restructuring
-tests, use the `provider-test-patterns` skill.
+tests, use the `[provider-test-patterns](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-test-patterns](../provider-test-patterns/SKILL.md)/SKILL.md)` skill.

@@ -14,7 +14,7 @@ Secure access to internal services without VPNs using Cloudflare's Zero Trust pl
 ## When to Use
 
 - Replacing VPN access to internal web applications, SSH, or RDP.
-- Enforcing identity-aware access policies on internal tools (dashboards, admin panels).
+- Enforcing identity-aware access policies on internal tools ([dashboards](../dashboards/SKILL.md), admin panels).
 - Exposing on-premises or private-network services securely to remote teams.
 - Filtering DNS traffic to block malware, phishing, and shadow IT.
 - Enforcing device posture checks (managed devices, OS version, disk encryption).
@@ -23,7 +23,7 @@ Secure access to internal services without VPNs using Cloudflare's Zero Trust pl
 
 - Cloudflare account with Zero Trust plan (free tier supports up to 50 users).
 - A domain on Cloudflare (for Access application hostnames).
-- Identity provider configured (Google Workspace, Okta, Azure AD/Entra ID, GitHub).
+- Identity provider configured (Google Workspace, Okta, Azure AD/Entra ID, [GitHub](../../CI_CD/github/SKILL.md)).
 - `cloudflared` CLI installed on the server hosting internal services.
 
 ```bash
@@ -36,8 +36,8 @@ curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
 sudo apt update && sudo apt install -y cloudflared
 
-# Docker
-docker pull cloudflare/cloudflared:latest
+# [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull cloudflare/cloudflared:latest
 ```
 
 ## Cloudflare Tunnel Setup
@@ -105,18 +105,18 @@ sudo cloudflared service install
 sudo systemctl enable cloudflared
 sudo systemctl start cloudflared
 
-# Or run via Docker
-docker run -d --name cloudflared \
+# Or run via [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d --name cloudflared \
   --restart unless-stopped \
   -v /home/deploy/.cloudflared:/etc/cloudflared \
   cloudflare/cloudflared:latest \
   tunnel run internal-apps
 ```
 
-### Docker Compose with Tunnel
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose with Tunnel
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.8"
 services:
   cloudflared:
@@ -200,7 +200,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/a
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
   -H "Authorization: Bearer $CF_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"name": "github-actions-deploy"}'
+  -d '{"name": "[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-deploy"}'
 
 # Response includes Client ID and Client Secret
 # Use in CI with headers:
@@ -339,7 +339,7 @@ cloudflared access ssh --hostname ssh.example.com
 
 ## Related Skills
 
-- [cloudflare-workers](../cloudflare-workers/) - Edge compute behind Access policies
-- [dns-management](../../networking/dns-management/) - DNS routing and record management
-- [reverse-proxy](../../networking/reverse-proxy/) - Alternative gateway patterns
-- [service-mesh](../../networking/service-mesh/) - Internal service-to-service security
+- [cloudflare-workers](../[cloudflare-workers](../cloudflare-workers/SKILL.md)/) - Edge compute behind Access policies
+- [dns-management](../../networking/[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)/) - DNS routing and record management
+- [reverse-proxy](../../networking/[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Alternative gateway patterns
+- [service-mesh](../../networking/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)/) - Internal service-to-service security

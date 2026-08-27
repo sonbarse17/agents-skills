@@ -38,7 +38,7 @@ Ionic project with: Capacitor config, native plugin integrations, custom plugin 
 <project>{framework, capacitor config, structure}</project>
 <plugins>{installed plugins, config, permissions}</plugins>
 <custom-plugin>{swift/kotlin, call pattern}</custom-plugin>
-<build>{sync, xcode, android-studio steps}</build>
+<build>{sync, xcode, [android](../../../Mobile/android/SKILL.md)-studio steps}</build>
 </ionic-capacitor>
 ```
 No preamble. No postamble. No explanations. No filler/hedging/transitions. Compress output — why use many token when few do trick.
@@ -65,7 +65,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
                    │
 ┌──────────────────▼──────────────────────────┐
 │          Capacitor Bridge (WKWebView/        │
-│          Android WebView)                    │
+│          [Android](../../../Mobile/android/SKILL.md) WebView)                    │
 │  • Plugin registry: maps JS calls to native  │
 │  • JSON serialization/deserialization        │
 │  • Error propagation via Promise reject      │
@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 └───────┬─────────────────────┬───────────────┘
         │                     │
 ┌───────▼─────────┐  ┌───────▼───────────────┐
-│   iOS Runtime    │  │   Android Runtime      │
+│   iOS Runtime    │  │   [Android](../../../Mobile/android/SKILL.md) Runtime      │
 │   (Swift/Obj-C)  │  │   (Kotlin/Java)        │
 │   CAPPlugin      │  │   CAPPlugin            │
 └─────────────────┘  └───────────────────────┘
@@ -83,7 +83,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ```
 Team expertise?
 ├── React developers → Ionic React
-│   Pros: hooks, largest ecosystem, TypeScript-first
+│   Pros: hooks, largest ecosystem, [TypeScript](../typescript/SKILL.md)-first
 │   Cons: routing less mature than Angular
 ├── Angular developers → Ionic Angular
 │   Pros: mature routing (lazy loading, guards), full-featured
@@ -114,27 +114,27 @@ Need native device access?
 
 1. **Ionic framework overview** — Ionic is a UI toolkit for building cross-platform mobile apps using web technologies (HTML, CSS, JS). It provides a library of mobile-optimized UI components (`ion-*`), gestures, and animations that mimic native platform conventions. Three framework integrations: Ionic React (hooks, fast iteration, largest ecosystem), Ionic Angular (NgModule + standalone, mature routing, full-featured), Ionic Vue (composition API, lightweight, growing ecosystem). All share `@ionic/core` components and CSS custom properties theming.
 
-2. **Capacitor vs Cordova** — Capacitor is the successor to Cordova with key advantages: modern plugin API (Promise-based instead of callback), native project files committed to repo (full Xcode/Android Studio control), Swift/Kotlin plugin development (instead of Java/Obj-C), HMR support during development, PWA fallback for web, and unified config (`capacitor.config.ts`). Cordova plugins are compatible via `@capacitor/cordova-plugin-compat`. Migration path: `npx cap init` on existing Cordova project, then replace `cordova plugin add` with `npm install @capacitor/plugin-name`.
+2. **Capacitor vs Cordova** — Capacitor is the successor to Cordova with key advantages: modern plugin API (Promise-based instead of callback), native project files committed to repo (full Xcode/[Android](../../../Mobile/android/SKILL.md) Studio control), Swift/Kotlin plugin development (instead of Java/Obj-C), HMR support during development, PWA fallback for web, and unified config (`capacitor.config.ts`). Cordova plugins are compatible via `@capacitor/cordova-plugin-compat`. Migration path: `npx cap init` on existing Cordova project, then replace `cordova plugin add` with `npm install @capacitor/plugin-name`.
 
-3. **Project creation** — `ionic start myApp blank --type=react-ts` creates an Ionic React TypeScript project with Capacitor pre-configured. Key files: `capacitor.config.ts` (app ID, name, server URL for live reload), `ionic.config.json` (project type, integrations), `src/` (web app code), `ios/` (Xcode project after `npx cap add ios`), `android/` (Android Studio project after `npx cap add android`). The web app is the single source of truth — native projects are generated artifacts.
+3. **Project creation** — `ionic start myApp blank --type=react-ts` creates an Ionic React [TypeScript](../typescript/SKILL.md) project with Capacitor pre-configured. Key files: `capacitor.config.ts` (app ID, name, server URL for live reload), `ionic.config.json` (project type, integrations), `src/` (web app code), `ios/` (Xcode project after `npx cap add ios`), `[android](../../../Mobile/android/SKILL.md)/` ([Android](../../../Mobile/android/SKILL.md) Studio project after `npx cap add [android](../../../Mobile/android/SKILL.md)`). The web app is the single source of truth — native projects are generated artifacts.
 
-4. **Live reload development** — `ionic serve` for web-only HMR. For device live reload: `ionic cap run ios -l --external` starts a dev server with your machine's IP, updates `capacitor.config.ts` with `server.url`, then opens Xcode. The device loads web assets from the dev server over the network. Hot Module Replacement preserves component state. For Android: `ionic cap run android -l --external`. Requires device on same network as dev machine. Disable `server.url` for production builds.
+4. **Live reload development** — `ionic serve` for web-only HMR. For device live reload: `ionic cap run ios -l --external` starts a dev server with your machine's IP, updates `capacitor.config.ts` with `server.url`, then opens Xcode. The device loads web assets from the dev server over the network. Hot Module Replacement preserves component state. For [Android](../../../Mobile/android/SKILL.md): `ionic cap run [android](../../../Mobile/android/SKILL.md) -l --external`. Requires device on same network as dev machine. Disable `server.url` for production builds.
 
-5. **Capacitor plugin system** — Plugins are npm packages that expose native APIs to JavaScript. Architecture: TypeScript API definition (`@capacitor/plugin-name`) -> iOS implementation (Swift, `CAPPlugin` subclass) -> Android implementation (Kotlin, `CAPPlugin` subclass) -> optional web fallback. Plugin calls are serialized via JSON through the WebView bridge. `npx cap sync` installs plugin pods (iOS) and copies plugin code (Android). Permissions must be configured in native project files before plugin use.
+5. **Capacitor plugin system** — Plugins are npm packages that expose native APIs to JavaScript. Architecture: [TypeScript](../typescript/SKILL.md) API definition (`@capacitor/plugin-name`) -> iOS implementation (Swift, `CAPPlugin` subclass) -> [Android](../../../Mobile/android/SKILL.md) implementation (Kotlin, `CAPPlugin` subclass) -> optional web fallback. Plugin calls are serialized via JSON through the WebView bridge. `npx cap sync` installs plugin pods (iOS) and copies plugin code ([Android](../../../Mobile/android/SKILL.md)). Permissions must be configured in native project files before plugin use.
 
 6. **PWA conversion** — Capacitor apps are PWAs by default. The same web code works as a standalone PWA when served over HTTPS. Add a `manifest.json` with icons, `service-worker.js` for caching. Capacitor plugins gracefully degrade: check `Capacitor.isPluginAvailable('Camera')` before calling native APIs. PWA mode runs in the browser, not WebView. Use `@capacitor/filesystem` and `@capacitor/storage` as they have web fallbacks.
 
-7. **Build and deploy pipeline** — `ionic build --prod` generates optimized web assets in `www/`. `npx cap copy` copies to native platforms, `npx cap sync` also installs native dependencies. Code signing: iOS via Xcode Automatic signing (requires Apple Developer account), Android via keystore (`keytool -genkey` then `./gradlew bundleRelease`). Distribution: App Store Connect (iOS) via Xcode Organizer or Transporter, Google Play Console (Android) via signed AAB upload. Appflow and EAS Build for cloud CI/CD.
+7. **Build and deploy pipeline** — `ionic build --prod` generates optimized web assets in `www/`. `npx cap copy` copies to native platforms, `npx cap sync` also installs native dependencies. Code signing: iOS via Xcode Automatic signing (requires Apple Developer account), [Android](../../../Mobile/android/SKILL.md) via keystore (`keytool -genkey` then `./gradlew bundleRelease`). Distribution: App Store Connect (iOS) via Xcode Organizer or Transporter, Google Play Console ([Android](../../../Mobile/android/SKILL.md)) via signed AAB upload. Appflow and EAS Build for cloud CI/CD.
 
-8. **Custom plugin development** — When an official plugin does not exist, create a custom plugin. Structure: `npx cap plugin:generate my-plugin` scaffolds the plugin template. The generated plugin has `src/definitions.ts` (TypeScript interface), `src/web.ts` (web fallback), `ios/Plugin/Plugin.swift` (iOS native), `android/src/main/.../Plugin.kt` (Android native). Implement `@objc` annotated methods on iOS and `@PluginMethod` annotated methods on Android. Return data via `call.resolve()` and errors via `call.reject()`. Test the plugin in a sample Ionic app before publishing.
+8. **Custom plugin development** — When an official plugin does not exist, create a custom plugin. Structure: `npx cap plugin:generate my-plugin` scaffolds the plugin template. The generated plugin has `src/definitions.ts` ([TypeScript](../typescript/SKILL.md) interface), `src/web.ts` (web fallback), `ios/Plugin/Plugin.swift` (iOS native), `[android](../../../Mobile/android/SKILL.md)/src/main/.../Plugin.kt` ([Android](../../../Mobile/android/SKILL.md) native). Implement `@objc` annotated methods on iOS and `@PluginMethod` annotated methods on [Android](../../../Mobile/android/SKILL.md). Return data via `call.resolve()` and errors via `call.reject()`. Test the plugin in a sample Ionic app before publishing.
 
-9. **Deep linking and universal links** — Configure deep links to open the app from URLs. iOS: configure `apple-app-site-association` file on your server, add associated domain in Xcode, handle in AppDelegate. Android: configure intent filters in `AndroidManifest.xml` for URL scheme. Capacitor's `App.addListener('appUrlOpen')` catches incoming URLs in the web layer. Map URL paths to navigation routes. Test with `xcrun simctl openurl` for iOS and `adb shell am start` for Android.
+9. **Deep linking and universal links** — Configure deep links to open the app from URLs. iOS: configure `apple-app-site-association` file on your server, add associated domain in Xcode, handle in AppDelegate. [Android](../../../Mobile/android/SKILL.md): configure intent filters in `AndroidManifest.xml` for URL scheme. Capacitor's `App.addListener('appUrlOpen')` catches incoming URLs in the web layer. Map URL paths to navigation routes. Test with `xcrun simctl openurl` for iOS and `adb shell am start` for [Android](../../../Mobile/android/SKILL.md).
 
-10. **Push notifications** — Set up push notifications via `@capacitor/push-notifications`. iOS: configure APNs certificate in Apple Developer Portal, add Push Notifications capability in Xcode. Android: set up Firebase Cloud Messaging, upload server key to Firebase Console. Register for notifications: `PushNotifications.requestPermissions()` then `PushNotifications.register()`. Handle foreground notifications with `PushNotifications.addListener('pushNotificationReceived')`. Handle background tap actions with `PushNotifications.addListener('pushNotificationActionPerformed')`. Test with `curl` to APNs/FCM endpoints or use Pusher/PushCompanion tools.
+10. **Push notifications** — Set up push notifications via `@capacitor/push-notifications`. iOS: configure APNs certificate in Apple Developer Portal, add Push Notifications capability in Xcode. [Android](../../../Mobile/android/SKILL.md): set up [Firebase](../../Databases/firebase/SKILL.md) Cloud Messaging, upload server key to [Firebase](../../Databases/firebase/SKILL.md) Console. Register for notifications: `PushNotifications.requestPermissions()` then `PushNotifications.register()`. Handle foreground notifications with `PushNotifications.addListener('pushNotificationReceived')`. Handle background tap actions with `PushNotifications.addListener('pushNotificationActionPerformed')`. Test with `curl` to APNs/FCM endpoints or use Pusher/PushCompanion tools.
 
 ## Platform Compatibility
 
-| Feature | iOS | Android | Web/PWA |
+| Feature | iOS | [Android](../../../Mobile/android/SKILL.md) | Web/PWA |
 |---------|-----|---------|---------|
 | Core UI components | Full | Full | Full |
 | Native plugins | All | All | Graceful fallback |
@@ -150,12 +150,12 @@ Need native device access?
 ## Best Practices
 
 - Use `ion-` components exclusively — avoid mixing with platform-specific UI
-- Commit `ios/` and `android/` directories to version control
+- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `ios/` and `[android](../../../Mobile/android/SKILL.md)/` directories to version control
 - Test on real devices before each release — simulator misses camera, sensors, push
 - Use `npx cap sync` after every npm dependency change — not just `npx cap copy`
 - Configure all permission strings in Info.plist and AndroidManifest before plugin calls
 - Keep `capacitor.config.ts` environment-aware: different `server.url` for dev/prod
-- Use TypeScript strict mode for plugin call type safety
+- Use [TypeScript](../typescript/SKILL.md) strict mode for plugin call type safety
 - Profile WebView performance: 60fps animations, avoid layout thrashing, lazy-load images
 - Use `ion-content` scroll assistance with keyboard plugin to handle keyboard overlap
 - Set `SplashScreen.backgroundColor` to match app background color to prevent white flash
@@ -173,7 +173,7 @@ Need native device access?
 - **Splash screen flicker**: Configure `backgroundColor` in `capacitor.config.ts` to match splash color — prevents white flash.
 - **Plugin call timeout**: Heavy native operations (image processing) may exceed default timeout. Use `call.resolve()` in async callback.
 - **Navigation state loss**: When the app is backgrounded and killed, WebView state is lost. Persist critical state to storage.
-- **Memory pressure on low-end devices**: WebView on Android devices with 2GB RAM may crash under memory pressure. Monitor with `window.performance.memory`.
+- **Memory pressure on low-end devices**: WebView on [Android](../../../Mobile/android/SKILL.md) devices with 2GB RAM may crash under memory pressure. Monitor with `window.performance.memory`.
 - **SSL certificate issues**: Self-signed certs for dev servers require `server.cleartext: true` — never ship this to production apps.
 - **Icons and splash screen not updating**: Clear build cache between icon/splash updates. Use `npx capacitor-assets generate` for consistent asset generation.
 
@@ -196,9 +196,9 @@ Need native device access?
 - Navigation transitions: Ionic uses GPU-accelerated CSS animations — target 60fps, avoid layout-triggering property animations (top, left, width, height)
 - Image-heavy lists: use `ion-img` with lazy loading (Intersection Observer-based) instead of `<img>` tags
 - Plugin call latency: each JS-to-native plugin call adds 5-15ms round-trip overhead. Batch related native calls into a single plugin method
-- Memory: WebView on Android is a separate process with ~100-200MB default heap. Monitor with `window.performance.memory`
+- Memory: WebView on [Android](../../../Mobile/android/SKILL.md) is a separate process with ~100-200MB default heap. Monitor with `window.performance.memory`
 - Bundle size: Ionic core components ~2MB gzipped — use `@ionic/core` tree-shaking with Vite or webpack
-- Scrolling: `ion-content` uses native scrolling on iOS and synthetic scrolling on Android — virtual scrolling (`ion-virtual-scroll`) for lists over 100 items
+- Scrolling: `ion-content` uses native scrolling on iOS and synthetic scrolling on [Android](../../../Mobile/android/SKILL.md) — virtual scrolling (`ion-virtual-scroll`) for lists over 100 items
 - Startup optimization: lazy-load routes with framework-specific patterns, defer heavy plugin initialization to after first meaningful paint
 
 ## Tooling
@@ -210,17 +210,17 @@ Need native device access?
 | Appflow | CI/CD | Cloud build, live deploy, package |
 | EAS Build (Expo) | CI/CD alternative | Cloud builds for Capacitor apps |
 | capacitor-assets | Asset generation | Auto-generate icons and splash screens |
-| Portals (Ionic) | Micro-frontends | Embed web apps in native apps |
+| Portals (Ionic) | [Micro-frontends](../micro-frontends/SKILL.md) | Embed web apps in native apps |
 | Cordova Plugin Compat | Migration | Run Cordova plugins in Capacitor |
 | Safari Web Inspector | Debugging | iOS WebView JS console, network, elements |
-| Chrome DevTools | Debugging | Android WebView JS console, network, elements |
+| Chrome DevTools | Debugging | [Android](../../../Mobile/android/SKILL.md) WebView JS console, network, elements |
 | xcodebuild / Gradle | Native build | Platform-specific compilation and signing |
 | fastlane | Automation | Certificate management, beta deployment, screenshots |
 | Maestro / Detox | E2E testing | Mobile UI testing for hybrid apps |
 
 ## Configuration Reference
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // capacitor.config.ts
 import { CapacitorConfig } from '@capacitor/cli';
 
@@ -242,23 +242,23 @@ const config: CapacitorConfig = {
     },
   },
   ios: { contentInset: 'always' },
-  android: { allowMixedContent: true },
+  [android](../../../Mobile/android/SKILL.md): { allowMixedContent: true },
 };
 export default config;
 ```
 
 ## Rules
 
-- `ios/` and `android/` directories must be committed to version control — they are the source of truth for native configuration
+- `ios/` and `[android](../../../Mobile/android/SKILL.md)/` directories must be committed to version control — they are the source of truth for native configuration
 - All permission strings must be configured in native project files before plugin usage — silent failures are not acceptable
 - `npx cap sync` must be run after every npm dependency change — not just `npx cap copy`
 - Plugin calls must be guarded with `Capacitor.isPluginAvailable()` when the app also runs as a PWA
-- Custom plugins must implement both iOS (Swift) and Android (Kotlin) native layers plus a web fallback
+- Custom plugins must implement both iOS (Swift) and [Android](../../../Mobile/android/SKILL.md) (Kotlin) native layers plus a web fallback
 - `server.url` in `capacitor.config.ts` must be set for development and removed for production builds
 - Hardcoded URLs, API keys, or secrets must never appear in native project files or the web bundle
 - App icons and splash screens must be regenerated with `npx capacitor-assets generate` — never manually resized
 - Deep linking configuration must be tested on real devices, not just simulators
-- The WebView content must be tested on minimum supported OS versions — WebView updates are OS-dependent on Android
+- The WebView content must be tested on minimum supported OS versions — WebView updates are OS-dependent on [Android](../../../Mobile/android/SKILL.md)
 - Push notification payloads must be handled both in foreground and background states
 - Navigation state must be persisted across app restarts — WebView state is volatile
 - All plugin calls should be wrapped in error handling — native failures must not crash the web layer
@@ -275,21 +275,21 @@ The WebView is the bottleneck in Ionic apps. Optimize for 60fps scrolling and sm
 - **CSS containment**: `contain: layout style paint` on off-screen components prevents the browser from recalculating layout/style/paint for elements outside the viewport. Apply to static sidebars, headers, footers.
 - **`ion-img` over `<img>`**: Ionic's image component uses IntersectionObserver for lazy loading — images outside viewport don't load. Set `--lazy-load-threshold` for pre-load buffer. Fallback: `loading="lazy"` attribute on native `<img>`.
 - **Virtual scrolling**: `ion-virtual-scroll` renders only visible items + buffer. For lists >100 items, always use virtual scrolling. Configure `approxItemHeight` for smoother scroll. Replaced with `ion-list` + `virtual-scroll` in newer Ionic versions; consider `cdk-virtual-scroll-viewport` from Angular CDK for Angular projects.
-- **Reduce DOM node count**: Target <1500 DOM nodes for good performance. Audit with Chrome DevTools Elements panel. Replace nested `<div>` chains with CSS Grid/Flexbox single-layer layouts. Use `ion-item` directly without wrapping in extra `<div>` elements.
-- **WebView pool (Android)**: Android WebView instances consume ~100MB each. If the app opens secondary WebViews (for external links, in-app browsers), reuse the existing WebView instance or use Custom Tabs (Chrome custom tabs) instead.
+- **Reduce DOM node count**: Target <1500 DOM nodes for good performance. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with Chrome DevTools Elements panel. Replace nested `<div>` chains with CSS Grid/Flexbox single-layer layouts. Use `ion-item` directly without wrapping in extra `<div>` elements.
+- **WebView pool ([Android](../../../Mobile/android/SKILL.md))**: [Android](../../../Mobile/android/SKILL.md) WebView instances consume ~100MB each. If the app opens secondary WebViews (for external links, in-app browsers), reuse the existing WebView instance or use Custom Tabs (Chrome custom tabs) instead.
 
 ### JavaScript Bundle Optimization
 
-- **Tree-shaking**: Ionic components tree-shake with Vite by default — but only if you import from specific paths: `import { IonButton } from '@ionic/react'` instead of importing everything. Audit with `vite-plugin-inspect` or `webpack-bundle-analyzer`.
+- **Tree-shaking**: Ionic components tree-shake with Vite by default — but only if you import from specific paths: `import { IonButton } from '@ionic/react'` instead of importing everything. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with `vite-plugin-inspect` or `webpack-bundle-analyzer`.
 - **Lazy load routes**: Framework-specific lazy loading. Angular: `loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)`. React: `React.lazy(() => import('./OrdersPage'))`. Vue: `() => import('./OrdersPage.vue')`.
-- **Capacitor plugin tree-shaking**: Capacitor plugins register at build time; unused plugins don't add JS overhead. However, native SDKs (Android `build.gradle` dependencies, iOS Pods) always add binary size. Remove unused plugins from `package.json` and run `npx cap sync`.
+- **Capacitor plugin tree-shaking**: Capacitor plugins register at build time; unused plugins don't add JS overhead. However, native SDKs ([Android](../../../Mobile/android/SKILL.md) `build.gradle` dependencies, iOS Pods) always add binary size. Remove unused plugins from `package.json` and run `npx cap sync`.
 - **Preload critical chunks**: Use `<link rel="modulepreload">` for the app shell and first-route modules. Reduces waterfall of module loading. Configure in `vite.config.ts` via `optimizeDeps.include`.
 
 ### Native Bridge Optimization
 
 - **Batch native calls**: Each JS → native call costs 5-15ms round-trip. For bulk operations (reading 100 contacts), create a single plugin method that returns an array instead of 100 individual calls.
 - **Capacitor `runOutsideAngular` (Ionic Angular)**: Plugin callbacks outside Angular's zone reduce change detection cycles. Wrap plugin calls:
-  ```typescript
+  ```[typescript](../typescript/SKILL.md)
   import { NgZone } from '@angular/core';
   constructor(private zone: NgZone) {}
   async callPlugin() {
@@ -305,17 +305,17 @@ The WebView is the bottleneck in Ionic apps. Optimize for 60fps scrolling and sm
 
 - **`@capacitor/filesystem` cache directory**: Use `Directory.Cache` for temporary files, `Directory.Data` for persistent app data. Clear cache on app version upgrade. Monitor with `window.performance.memory?.usedJSHeapSize`.
 - **Service worker caching**: For PWA mode, use Workbox or custom service worker with stale-while-revalidate strategy for API responses. Cache-first for static assets. Limit cache to 50MB (PWA storage quota varies by browser).
-- **Image cache**: Use `@capacitor/cache` or native image loading libraries (SDWebImage for iOS, Glide for Android) via custom plugin for production apps. WebView image cache is limited and cleared frequently.
+- **Image cache**: Use `@capacitor/cache` or native image loading libraries (SDWebImage for iOS, Glide for [Android](../../../Mobile/android/SKILL.md)) via custom plugin for production apps. WebView image cache is limited and cleared frequently.
 - **`ion-content` scroll events**: Scroll event listeners fire at 60fps — throttle to 100-200ms for non-critical work (lazy loading, analytics). Use `requestAnimationFrame` for visual updates, `setTimeout` for data operations.
 
 ## Production Build & App Store Deployment
 
-### Android Play Store
+### [Android](../../../Mobile/android/SKILL.md) Play Store
 
-1. **Build signed AAB**: `ionic build --prod && npx cap sync android && cd android && ./gradlew bundleRelease`
-2. **Signing**: Configure `android/app/build.gradle` signing configs:
+1. **Build signed AAB**: `ionic build --prod && npx cap sync [android](../../../Mobile/android/SKILL.md) && cd [android](../../../Mobile/android/SKILL.md) && ./gradlew bundleRelease`
+2. **Signing**: Configure `[android](../../../Mobile/android/SKILL.md)/app/build.gradle` signing configs:
    ```groovy
-   android {
+   [android](../../../Mobile/android/SKILL.md) {
        signingConfigs {
            release {
                storeFile file(System.getenv("KEYSTORE_PATH"))
@@ -357,7 +357,7 @@ end
 ### Environment Configuration
 - **capacitor.config.ts**: Use environment variables for `server.url` (live reload) vs production. Never ship production build with `server.url` set — it weakens security by allowing external content loading.
 - **Environment flags**: Inject build-time variables via Vite or Angular environment files:
-  ```typescript
+  ```[typescript](../typescript/SKILL.md)
   // src/environments/environment.prod.ts
   export const environment = {
     production: true,
@@ -399,7 +399,7 @@ class BackgroundGeolocation: CAPPlugin {
 }
 ```
 
-### Android (Kotlin) — Same Plugin
+### [Android](../../../Mobile/android/SKILL.md) (Kotlin) — Same Plugin
 ```kotlin
 @CapacitorPlugin(name = "BackgroundGeolocation")
 class BackgroundGeolocation : CAPPlugin() {
@@ -440,7 +440,7 @@ class BackgroundGeolocation : CAPPlugin() {
 ```
 
 ### Web Fallback
-```typescript
+```[typescript](../typescript/SKILL.md)
 // src/web.ts
 import { WebPlugin } from '@capacitor/core';
 import type { BackgroundGeolocationPlugin } from './definitions';
@@ -470,8 +470,8 @@ export class BackgroundGeolocationWeb
 ```
 
 ### Plugin Testing
-- **Unit tests**: Test plugin TypeScript API definitions with standard Jest/Vitest — pure interface testing.
-- **Native tests**: Android: JUnit + Mockito for plugin methods. iOS: XCTest with `CAPPluginCall` mock.
+- **Unit tests**: Test plugin [TypeScript](../typescript/SKILL.md) API definitions with standard Jest/Vitest — pure interface testing.
+- **Native tests**: [Android](../../../Mobile/android/SKILL.md): JUnit + Mockito for plugin methods. iOS: XCTest with `CAPPluginCall` mock.
 - **E2E**: Maestro or Detox — test plugin calls from the web layer verify native behavior. Run on real devices for hardware-dependent plugins (camera, geolocation, biometrics).
 
 ## References
@@ -484,7 +484,7 @@ export class BackgroundGeolocationWeb
   - ../../../Global_References/ionic-capacitor-plugins.md — Ionic Capacitor Plugins Reference
   - ../../../Global_References/ionic-capacitor-performance.md — Ionic Capacitor Performance Optimization
 ## Handoff
-Hand off to native iOS/Android skills when custom plugin development needs deep platform API access beyond Capacitor's bridge.
+Hand off to native iOS/[Android](../../../Mobile/android/SKILL.md) skills when custom plugin development needs deep platform API access beyond Capacitor's bridge.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -537,7 +537,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -551,7 +551,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -567,12 +567,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -581,7 +581,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -589,13 +589,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -604,8 +604,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

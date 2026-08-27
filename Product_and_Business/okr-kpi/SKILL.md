@@ -31,7 +31,7 @@ The key insight is that OKRs and KPIs serve different purposes and should not be
 - Company/team mission statement and product vision (1-2 paragraphs)
 - Previous quarter OKR documents with all scores and retrospective learnings
 - Current strategic priorities from leadership with relative importance ranking
-- Team capacity data: current headcount, committed allocation percentage, known leaves in the quarter, historical sprint velocity
+- Team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) data: current headcount, committed allocation percentage, known leaves in the quarter, historical sprint velocity
 - Market or competitive context documents for calibrating goal ambition
 - Organizational chart for planning the cascade across departments, teams, and individuals
 - Key business metrics from the previous quarter: revenue, active users, retention cohorts, NPS, churn
@@ -463,10 +463,10 @@ Not allowed: new Objective mid-quarter, lower target due to effort, remove KR wi
 
 ### Engineering Team
 ```
-Objective: Reduce production incident impact on users
-KR 1: Decrease P0 incident MTTR from 45min to 15min
+Objective: Reduce production [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) impact on users
+KR 1: Decrease P0 [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) MTTR from 45min to 15min
 KR 2: Achieve 99.95% uptime (from 99.8%)
-KR 3: Reduce incident-causing deploys from 3/mo to 0/mo
+KR 3: Reduce [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-causing deploys from 3/mo to 0/mo
 ```
 
 ### Product Team
@@ -479,7 +479,7 @@ KR 3: Achieve NPS > 40 for onboarding flow
 
 ### Marketing Team
 ```
-Objective: Establish category leadership in cloud monitoring
+Objective: Establish category leadership in cloud [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 KR 1: Publish 4 thought leadership pieces in top-tier publications
 KR 2: Increase organic traffic from 10k to 25k/mo
 KR 3: Generate 200 qualified leads from content marketing

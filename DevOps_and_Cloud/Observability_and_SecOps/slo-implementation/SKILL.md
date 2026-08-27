@@ -185,7 +185,7 @@ groups:
           )) / (1 - 0.999)
 ```
 
-### SLO Alerting Rules
+### SLO [Alerting](../alerting/SKILL.md) Rules
 
 ```yaml
 groups:

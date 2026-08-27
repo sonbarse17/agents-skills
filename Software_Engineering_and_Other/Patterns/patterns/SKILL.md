@@ -26,7 +26,7 @@ Select and implement cross-platform mobile architecture patterns including MVVM,
 User request includes: `mobile pattern`, `mobile architecture`, `mvvm`, `mvi`, `clean architecture mobile`, `coordinator`, `navigator pattern`, `mobile project structure`, `mobile folder structure`, `mobile di`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
+- Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
 - Architecture approach (MVVM, MVI, Clean, TCA)
 - DI framework (Hilt, Swinject, GetIt, manual)
 
@@ -63,7 +63,7 @@ App complexity?
 
 ```
 Platform?
-├── Android
+├── [Android](../../../Mobile/android/SKILL.md)
 │   ├── Hilt (standard, Dagger wrapper, @HiltViewModel)
 │   └── Koin (lightweight, Kotlin DSL, no annotation processing)
 ├── iOS
@@ -110,7 +110,7 @@ Configure DI framework with explicit scopes and clear module organization per la
 
 ## Cross-Platform Pattern Mapping
 
-| Pattern | iOS | Android | Flutter | React Native |
+| Pattern | iOS | [Android](../../../Mobile/android/SKILL.md) | Flutter | React Native |
 |---|---|---|---|---|
 | MVVM | ObservableObject + @Published | ViewModel + StateFlow | ChangeNotifier + Riverpod | useState + Zustand |
 | MVI | Combine + enum Intent | MVI + StateFlow + sealed class | BLoC (Event → Bloc → State) | useReducer + dispatch |
@@ -129,7 +129,7 @@ Configure DI framework with explicit scopes and clear module organization per la
 
 ## MVVM Implementation
 
-### Android — Jetpack Compose
+### [Android](../../../Mobile/android/SKILL.md) — Jetpack Compose
 ```kotlin
 // ViewModel
 @HiltViewModel
@@ -261,7 +261,7 @@ class OrderScreen extends ConsumerWidget {
 ```
 
 ### React Native — Zustand
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Store
 import { create } from 'zustand';
 
@@ -314,7 +314,7 @@ function OrderScreen() {
 
 ## MVI Implementation
 
-### Android — MVI with StateFlow
+### [Android](../../../Mobile/android/SKILL.md) — MVI with StateFlow
 ```kotlin
 // Intent (user actions)
 sealed interface OrderIntent {
@@ -427,7 +427,7 @@ project/
 ```
 presentation/ → domain/ ← data/
 Outer layers depend on inner layers. Inner never knows outer.
-Domain has no imports from Android, iOS, or platform SDKs.
+Domain has no imports from [Android](../../../Mobile/android/SKILL.md), iOS, or platform SDKs.
 ```
 
 ### UseCase Pattern
@@ -505,7 +505,7 @@ final class AppCoordinator: Coordinator {
 }
 ```
 
-### Android — Navigation Compose
+### [Android](../../../Mobile/android/SKILL.md) — Navigation Compose
 ```kotlin
 sealed class Route(val route: String) {
   data object OrderList : Route("orders")
@@ -621,7 +621,7 @@ sealed class UiState<out T> {
 ```
 
 ### Optimistic UI Updates
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Zustand — optimistic update with rollback
 const useOrderStore = create<OrderState>((set, get) => ({
   deleteOrder: async (id: string) => {
@@ -667,7 +667,7 @@ enum AsyncResult<T> {
 
 ## Dependency Injection Setup
 
-### Android — Hilt
+### [Android](../../../Mobile/android/SKILL.md) — Hilt
 ```kotlin
 @Module
 @InstallIn(SingletonComponent::class)
@@ -737,7 +737,7 @@ void setupDI() {
 
 ## Testing Patterns
 
-### ViewModel Test (Android)
+### ViewModel Test ([Android](../../../Mobile/android/SKILL.md))
 ```kotlin
 class OrderViewModelTest {
   private val useCase = mockk<GetOrdersUseCase>()
@@ -775,18 +775,18 @@ final class OrderViewModelTests: XCTestCase {
 - Use `distinctUntilChanged` / `skipRepeats` to avoid unnecessary recomposition
 - Debounce search inputs by 300ms before dispatching intents
 - Unsubscribe from observers in `onCleared` / `deinit` / `dispose` to prevent leaks
-- Prefer `StateFlow` over `LiveData` on Android for better lifecycle handling
+- Prefer `StateFlow` over `LiveData` on [Android](../../../Mobile/android/SKILL.md) for better lifecycle handling
 - Use `@Stable` annotations on Compose / `equatable` on Flutter to reduce recomposition
 - Lazy-load feature modules to reduce cold start time
 - Keep UseCases stateless — inject state through parameters
 - Profile recomposition counts in debug builds to detect unnecessary redraws
 
 ## References
-- `references/architecture-patterns.md` — Mobile Architecture Patterns
+- `references/[architecture-patterns](../architecture-patterns/SKILL.md).md` — Mobile Architecture Patterns
 - `../../../Global_References/clean-arch.md` — Clean Architecture for Mobile
 - `../../../Global_References/coordinator.md` — Coordinator / Navigator
 - `../../../Global_References/patterns_design-patterns.md` — Mobile Design Patterns
-- `../../../Global_References/mobile-architecture-patterns.md` — Mobile Architecture Patterns
+- `../../../Global_References/mobile-[architecture-patterns](../architecture-patterns/SKILL.md).md` — Mobile Architecture Patterns
 - `../../../Global_References/mvvm-mvi.md` — MVVM vs MVI
 
 ## Handoff
@@ -795,7 +795,7 @@ After architecture selection, hand off to:
 - `mobile/universal/networking` — Repository + API layer integration
 - `mobile/universal/offline-first` — Offline repository patterns
 - `mobile/universal/performance` — Architecture reactivity performance
-- `mobile/android` — Jetpack Compose, Hilt, Navigation
+- `mobile/[android](../../../Mobile/android/SKILL.md)` — Jetpack Compose, Hilt, Navigation
 - `mobile/ios` — SwiftUI, Combine, Coordinator
 - `mobile/flutter` — Riverpod, GoRouter, BLoC
 - `mobile/react-native` — Zustand, React Navigation

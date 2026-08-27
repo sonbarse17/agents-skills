@@ -3,7 +3,7 @@ name: python-resource-management
 description: Python resource management with context managers, cleanup patterns, and streaming. Use when managing connections, file handles, implementing cleanup logic, or building streaming responses with accumulated state.
 ---
 
-# Python Resource Management
+# [Python](../python/SKILL.md) Resource Management
 
 Manage resources deterministically using context managers. Resources like database connections, file handles, and network sockets should be released reliably, even when exceptions occur.
 
@@ -36,7 +36,7 @@ Return `True` from `__exit__` to suppress exceptions, `False` to propagate them.
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 from contextlib import contextmanager
 
 @contextmanager
@@ -57,7 +57,7 @@ with managed_resource() as r:
 
 Implement the context manager protocol for complex resources.
 
-```python
+```[python](../python/SKILL.md)
 class DatabaseConnection:
     """Database connection with automatic cleanup."""
 
@@ -106,7 +106,7 @@ finally:
 
 For async resources, implement the async protocol.
 
-```python
+```[python](../python/SKILL.md)
 class AsyncDatabasePool:
     """Async database connection pool."""
 
@@ -149,7 +149,7 @@ async with AsyncDatabasePool(dsn) as pool:
 
 Simplify context managers with the decorator for straightforward cases.
 
-```python
+```[python](../python/SKILL.md)
 from contextlib import contextmanager, asynccontextmanager
 import time
 import structlog
@@ -176,7 +176,7 @@ async def database_transaction(conn: AsyncConnection):
     await conn.execute("BEGIN")
     try:
         yield conn
-        await conn.execute("COMMIT")
+        await conn.execute("[COMMIT](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)")
     except Exception:
         await conn.execute("ROLLBACK")
         raise
@@ -191,7 +191,7 @@ async with database_transaction(conn) as tx:
 
 Always clean up resources in `__exit__`, regardless of exceptions.
 
-```python
+```[python](../python/SKILL.md)
 class FileProcessor:
     """Process file with guaranteed cleanup."""
 
@@ -227,7 +227,7 @@ class FileProcessor:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-resource-management_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../python/SKILL.md)-resource-management_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

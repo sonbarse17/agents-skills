@@ -21,7 +21,7 @@ metadata:
 
 ## Purpose
 
-[data-and-model-lineage](../data-and-model-lineage/SKILL.md) covers
+[data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md) covers
 building the lineage *graph* — which node derives from which — for
 root-cause and impact analysis. This skill covers the broader enterprise
 governance layer on top of that graph: a searchable **catalog** (DataHub or
@@ -59,12 +59,12 @@ rather than the graph-construction mechanics themselves.
 
 - **DataHub**: a running GMS (metadata service) backend with Elasticsearch
   (search index), Kafka (metadata change event bus), and a storage backend
-  (MySQL/Postgres or Cassandra) — deployable via the `datahub` CLI's
-  `docker quickstart` for evaluation or the official Helm charts for
+  ([MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/Postgres or Cassandra) — deployable via the `datahub` CLI's
+  `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) quickstart` for evaluation or the official Helm charts for
   production. **Amundsen**: separate metadata, search, and frontend
   services, typically backed by Neo4j or Atlas for the metadata graph and
   Elasticsearch for search.
-- The `acryl-datahub` Python CLI/SDK (for DataHub) or Amundsen's
+- The `acryl-datahub` [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) CLI/SDK (for DataHub) or Amundsen's
   `databuilder` library, for writing and running ingestion recipes.
 - Read access (credentials scoped to metadata only, not data content where
   avoidable) to every source system to be cataloged: data warehouse system
@@ -89,10 +89,10 @@ rather than the graph-construction mechanics themselves.
    dependency. Deploy DataHub for evaluation with:
    ```bash
    pip install acryl-datahub
-   datahub docker quickstart
+   datahub [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) quickstart
    ```
    For production, use the DataHub Helm chart with externally-managed
-   Kafka/Elasticsearch/MySQL rather than the quickstart's bundled
+   Kafka/Elasticsearch/[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) rather than the quickstart's bundled
    containers.
 
 2. **Write ingestion recipes per source system**, defining what metadata
@@ -132,8 +132,8 @@ rather than the graph-construction mechanics themselves.
    `MLFeature`) lets a registered model's catalog entry link directly to
    the feature tables and training run it depends on, tying together with
    the lineage graph from
-   [data-and-model-lineage](../data-and-model-lineage/SKILL.md):
-   ```python
+   [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md):
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from datahub.emitter.rest_emitter import DatahubRestEmitter
    from datahub.metadata.schema_classes import MLModelPropertiesClass, MLModelLineageInfoClass
 
@@ -160,7 +160,7 @@ rather than the graph-construction mechanics themselves.
    ```
    Enforce a minimum-metadata policy (every dataset must have an owner and
    at least one classification tag) as part of the ingestion pipeline or a
-   scheduled audit, rather than treating tagging as optional best-effort
+   scheduled [audit](../../AI_and_Agents/Operations/audit/SKILL.md), rather than treating tagging as optional best-effort
    documentation.
 
 5. **Classify sensitive data explicitly and treat the tag as
@@ -197,7 +197,7 @@ rather than the graph-construction mechanics themselves.
    # Query DataHub for downstream consumers of a dataset before deletion
    datahub get --urn "urn:li:dataset:(urn:li:dataPlatform:s3,ml-artifacts/fraud-scorer/v11,PROD)" --aspect upstreamLineage
    ```
-   ```python
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Mark deprecated with a grace period rather than deleting immediately
    from datahub.metadata.schema_classes import DeprecationClass
    deprecation = DeprecationClass(
@@ -246,7 +246,7 @@ rather than the graph-construction mechanics themselves.
   **Warning:** This is exactly the dangerous action this skill's impact
   analysis step exists to prevent — a deployed model's rollback target
   (see
-  [production-model-rollback-procedure](../production-model-rollback-procedure/SKILL.md))
+  [production-model-rollback-procedure](../[production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md)/SKILL.md))
   or an infrequently-run batch job can both depend on an artifact that
   looks unused by recent-activity metrics alone.
   **Fix:** Always run the catalog's downstream-lineage query (step 7)
@@ -288,7 +288,7 @@ rather than the graph-construction mechanics themselves.
   and nobody can say who to ask about a specific dataset months later.
   **Fix:** Enforce ownership assignment as a required step of the
   ingestion or onboarding process (a CI check against the ingestion recipe
-  or a scheduled audit query for entities with an empty `ownership`
+  or a scheduled [audit](../../AI_and_Agents/Operations/audit/SKILL.md) query for entities with an empty `ownership`
   aspect), rather than treating owner assignment as an optional follow-up
   that competes with other priorities and never happens.
 
@@ -323,26 +323,26 @@ Retiring `fraud-scorer` model version `v11` (superseded by `v14`):
 # 1. Impact analysis first — who/what still depends on v11?
 datahub get --urn "urn:li:mlModel:(urn:li:dataPlatform:mlflow,fraud-scorer-v11,PROD)" --aspect upstreamLineage
 # Result: no active serving deployment references v11, but the
-# production-model-rollback-procedure runbook lists v11 as the last
-# known-good rollback target for v12's incident two months ago.
+# [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md) [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) lists v11 as the last
+# known-good rollback target for v12's [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) two months ago.
 ```
 Given that finding, the artifact is marked deprecated with a grace period
 rather than deleted immediately:
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 deprecation = DeprecationClass(
     deprecated=True,
-    note="Superseded by v14. Retained as rollback reference per incident INC-2026-0512; delete after 2026-10-01 once v14 has one full quarter of stable production history.",
+    note="Superseded by v14. Retained as rollback reference per [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) INC-2026-0512; delete after 2026-10-01 once v14 has one full quarter of stable production history.",
     decommissionTime=1759276800000,
 )
 ```
 This keeps the artifact available for the rollback procedure's
 schema-compatibility check for one more quarter instead of freeing storage
-immediately at the cost of removing a legitimate incident-response option.
+immediately at the cost of removing a legitimate [incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) option.
 
 ## Cross-references
 
-- [data-and-model-lineage](../data-and-model-lineage/SKILL.md) — the lineage-graph construction and root-cause/impact-analysis concepts this skill's catalog layers governance (ownership, classification, deprecation workflow) on top of.
-- [feature-store-design](../feature-store-design/SKILL.md) — feature definitions that should be cataloged as `MLFeatureTable`/`MLFeature` entities alongside the datasets and models covered here.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) — the registry versioning scheme whose entries this skill catalogs and governs.
-- [production-model-rollback-procedure](../production-model-rollback-procedure/SKILL.md) — why an "old" model version may still be a required rollback target, directly relevant to the deprecation/deletion warning above.
-- [security-compliance-mapping-soc2-iso-pci-nist](../../../standards-and-compliance-frameworks/skills/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md) — the compliance frameworks that typically require the ownership/classification/audit trail this catalog layer provides evidence for.
+- [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md) — the lineage-graph construction and root-cause/impact-analysis concepts this skill's catalog layers governance (ownership, classification, deprecation workflow) on top of.
+- [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md) — feature definitions that should be cataloged as `MLFeatureTable`/`MLFeature` entities alongside the datasets and models covered here.
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registry versioning scheme whose entries this skill catalogs and governs.
+- [production-model-rollback-procedure](../[production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md)/SKILL.md) — why an "old" model version may still be a required rollback target, directly relevant to the deprecation/deletion warning above.
+- [security-compliance-mapping-soc2-iso-pci-nist](../../../standards-and-compliance-frameworks/skills/[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — the compliance frameworks that typically require the ownership/classification/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail this catalog layer provides evidence for.

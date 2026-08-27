@@ -19,7 +19,7 @@ Build Azure managed images and Azure Compute Gallery images using Packer's `azur
 packer {
   required_plugins {
     azure = {
-      source  = "github.com/hashicorp/azure"
+      source  = "[github](../../CI_CD/github/SKILL.md).com/hashicorp/azure"
       version = "~> 2.0"
     }
   }
@@ -180,4 +180,4 @@ packer build .
 ## References
 
 - [Azure ARM Builder](https://developer.hashicorp.com/packer/integrations/hashicorp/azure/latest/components/builder/arm)
-- [Azure Compute Gallery](https://learn.microsoft.com/en-us/azure/virtual-machines/azure-compute-gallery)
+- [Azure Compute Gallery](https://learn.microsoft.com/en-us/azure/virtual-machines/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-gallery)

@@ -21,7 +21,7 @@ metadata:
 
 ## Purpose
 
-Every Kubernetes distribution — kubeadm, Cluster API, K3s, OpenShift,
+Every [Kubernetes](../kubernetes/SKILL.md) distribution — kubeadm, Cluster API, K3s, [OpenShift](../openshift/SKILL.md),
 even the managed control planes of EKS/AKS/GKE under the hood — stores
 all cluster state (every object, every Secret, every CRD instance) in
 etcd, a single Raft-consensus key-value store. Nothing else in the
@@ -30,14 +30,14 @@ built-in application-level backup, quorum loss takes the entire API
 server down (not just etcd), and a bad restore silently rolls back
 *everything* in the cluster to the snapshot's point in time, live
 Secrets and CRDs included. This skill covers the operational discipline
-managed-Kubernetes users get for free but self-managed cluster operators
+managed-[Kubernetes](../kubernetes/SKILL.md) users get for free but self-managed cluster operators
 must build themselves: taking and verifying snapshots, restoring
 correctly, and watching the handful of etcd-specific health signals
 (quorum, disk fsync latency, DB size) that predict an outage before it
 happens. It does not cover provisioning the cluster itself — see
-[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)
+[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md)
 — nor application-level backup of workload data, which is
-[velero-backup-and-restore](../../../observability-and-platform-extras/skills/velero-backup-and-restore/SKILL.md)'s
+[velero-backup-and-restore](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md)'s
 job.
 
 ## When to use
@@ -66,7 +66,7 @@ job.
   misparse output). Set `ETCDCTL_API=3` explicitly; v2 API defaults on
   older installs and produces different (incompatible) output/commands.
 - TLS client certificates for etcd's peer/client API (kubeadm places
-  these at `/etc/kubernetes/pki/etcd/{ca,server,peer,healthcheck-client}.{crt,key}`
+  these at `/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/{ca,server,peer,healthcheck-client}.{crt,key}`
   by default) — etcdctl needs `--cacert`, `--cert`, `--key` for any
   authenticated cluster.
 - Root/sudo access on control-plane nodes to read the etcd data
@@ -77,10 +77,10 @@ job.
   **external etcd** (a dedicated etcd cluster the API servers point to)
   — the restore mechanics below differ slightly in which service you
   stop/start.
-- On managed Kubernetes (EKS/AKS/GKE), etcd is entirely provider-managed
+- On managed [Kubernetes](../kubernetes/SKILL.md) (EKS/AKS/GKE), etcd is entirely provider-managed
   and **this skill does not apply** — there is no customer-accessible
   etcdctl endpoint; see
-  [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
   for what is and isn't under your control there.
 
 ## Step-by-step guidance
@@ -89,9 +89,9 @@ job.
    ```bash
    ETCDCTL_API=3 etcdctl snapshot save /backup/etcd-snapshot-$(date +%Y%m%d%H%M%S).db \
      --endpoints=https://127.0.0.1:2379 \
-     --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-     --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
-     --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+     --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt \
+     --cert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.crt \
+     --key=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.key
    ```
    Snapshot against `127.0.0.1` (the local member), not a load-balanced
    endpoint — `snapshot save` streams the entire DB file over that
@@ -121,7 +121,7 @@ job.
    Retain enough history (e.g. hourly for 24h, daily for 30 days) to
    cover both "restore to five minutes ago" and "restore to before a
    slow-burning corruption was introduced last week" — see
-   [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md)
+   [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
    for RPO/retention design that applies here too.
 
 4. **Automate snapshotting with a CronJob or systemd timer** rather than
@@ -139,9 +139,9 @@ job.
          template:
            spec:
              hostNetwork: true
-             nodeSelector: { node-role.kubernetes.io/control-plane: "" }
+             nodeSelector: { node-role.[kubernetes](../kubernetes/SKILL.md).io/control-plane: "" }
              tolerations:
-               - key: node-role.kubernetes.io/control-plane
+               - key: node-role.[kubernetes](../kubernetes/SKILL.md).io/control-plane
                  effect: NoSchedule
              containers:
                - name: etcd-snapshot
@@ -151,15 +151,15 @@ job.
                    - >
                      etcdctl snapshot save /backup/etcd-$(date +%Y%m%d%H%M%S).db
                      --endpoints=https://127.0.0.1:2379
-                     --cacert=/etc/kubernetes/pki/etcd/ca.crt
-                     --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt
-                     --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+                     --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt
+                     --cert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.crt
+                     --key=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.key
                  volumeMounts:
-                   - { name: etcd-certs, mountPath: /etc/kubernetes/pki/etcd, readOnly: true }
+                   - { name: etcd-certs, mountPath: /etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd, readOnly: true }
                    - { name: backup, mountPath: /backup }
              restartPolicy: OnFailure
              volumes:
-               - { name: etcd-certs, hostPath: { path: /etc/kubernetes/pki/etcd } }
+               - { name: etcd-certs, hostPath: { path: /etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd } }
                - { name: backup, hostPath: { path: /backup } }
    ```
    Follow the CronJob with a step (a sidecar container, or a separate
@@ -178,7 +178,7 @@ job.
    # 1. Stop the kubelet and the etcd static pod/container on every control-plane node
    systemctl stop kubelet
    crictl ps -a | grep etcd   # find and stop the etcd container, or move
-   mv /etc/kubernetes/manifests/etcd.yaml /tmp/etcd.yaml.bak
+   mv /etc/[kubernetes](../kubernetes/SKILL.md)/manifests/etcd.yaml /tmp/etcd.yaml.bak
 
    # 2. Restore the snapshot into a fresh data directory (per member, with that member's own name/peer URLs)
    ETCDCTL_API=3 etcdctl snapshot restore /backup/etcd-snapshot-20260728120000.db \
@@ -190,7 +190,7 @@ job.
 
    # 3. Point etcd's manifest at the restored data directory, then bring it back
    sed -i 's#/var/lib/etcd#/var/lib/etcd-restored#' /tmp/etcd.yaml.bak
-   mv /tmp/etcd.yaml.bak /etc/kubernetes/manifests/etcd.yaml
+   mv /tmp/etcd.yaml.bak /etc/[kubernetes](../kubernetes/SKILL.md)/manifests/etcd.yaml
    systemctl start kubelet
    ```
    Every member must restore with the **same snapshot file**, its own
@@ -202,9 +202,9 @@ job.
 6. **Verify the restored cluster before declaring it recovered**:
    ```bash
    ETCDCTL_API=3 etcdctl endpoint health --cluster -w table \
-     --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=... --key=...
-   kubectl get nodes
-   kubectl get pods -A | grep -v Running
+     --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt --cert=... --key=...
+   [kubectl](../kubectl/SKILL.md) get nodes
+   [kubectl](../kubectl/SKILL.md) get pods -A | grep -v Running
    ```
    Confirm all expected members report healthy, the API server is
    reachable again, and workload state (deployments, pods) matches
@@ -225,12 +225,12 @@ job.
    A 3-member cluster already missing one member has **zero** further
    tolerance — losing a second member loses quorum and takes the whole
    API server down, not just etcd; treat "currently at N-1 members" as
-   an active incident, not a background fact.
+   an active [incident](../../Observability_and_SecOps/incident/SKILL.md), not a background fact.
 
-8. **Watch disk fsync/backend-commit latency and DB size as the two
+8. **Watch disk fsync/backend-[commit](../../CI_CD/commit/SKILL.md) latency and DB size as the two
    leading indicators of etcd degradation**, via the `etcd` metrics
    endpoint scraped by
-   [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md):
+   [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md):
    ```promql
    histogram_quantile(0.99, rate(etcd_disk_wal_fsync_duration_seconds_bucket[5m]))
    histogram_quantile(0.99, rate(etcd_disk_backend_commit_duration_seconds_bucket[5m]))
@@ -246,7 +246,7 @@ job.
 ## Best practices
 
 - Provision etcd on **local NVMe/SSD**, never network-attached or
-  shared storage — etcd's Raft commit path requires every write to be
+  shared storage — etcd's Raft [commit](../../CI_CD/commit/SKILL.md) path requires every write to be
   fsync'd to disk before acknowledging, and network storage latency
   variance directly becomes API server latency variance cluster-wide.
 - Run etcd with an odd member count (3 or 5) for real fault tolerance;
@@ -261,7 +261,7 @@ job.
   Job/Pod creation, verbose CRDs) can approach the default 2GiB quota
   surprisingly fast.
 - Practice a full restore in a non-production environment on a real
-  schedule (quarterly, or after any etcd/Kubernetes version bump) —
+  schedule (quarterly, or after any etcd/[Kubernetes](../kubernetes/SKILL.md) version bump) —
   a restore procedure that's never been executed outside a document is
   unverified, not ready.
 - Alert on quorum headroom (members healthy vs. members expected), not
@@ -332,9 +332,9 @@ fully recover from a snapshot if quorum had been lost.
 1. Confirm current quorum before touching anything:
    ```bash
    ETCDCTL_API3=3 etcdctl member list -w table --endpoints=https://127.0.0.1:2379 \
-     --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-     --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
-     --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+     --cacert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/ca.crt \
+     --cert=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.crt \
+     --key=/etc/[kubernetes](../kubernetes/SKILL.md)/pki/etcd/healthcheck-client.key
    ```
    Two members healthy, one unreachable — quorum intact but at zero
    further tolerance, so this is treated as urgent, not routine.
@@ -363,13 +363,13 @@ fully recover from a snapshot if quorum had been lost.
    The restore completes and `snapshot status` reports a non-zero key
    count matching expectations — confirming the backup chain (snapshot
    → upload → restore) genuinely works, discovered during a drill
-   rather than during a real quorum-loss incident.
+   rather than during a real quorum-loss [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Cross-references
 
-- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md) — where the etcd topology (stacked vs. external) is decided at cluster bring-up time.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — broader control-plane node maintenance this skill's disk/quorum checks feed into before disruptive operations.
-- [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md) — RPO/RTO and retention design principles that apply to etcd snapshot scheduling too.
-- [velero-backup-and-restore](../../../observability-and-platform-extras/skills/velero-backup-and-restore/SKILL.md) — application/workload-level backup (PVs, namespaced objects); complementary to, not a substitute for, etcd's cluster-wide state backup.
-- [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md) — scraping and alerting on the etcd fsync-latency and DB-size metrics referenced above.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — why this skill's procedures don't apply to managed control planes, where etcd is fully provider-operated.
+- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — where the etcd topology (stacked vs. external) is decided at cluster bring-up time.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — broader control-plane node maintenance this skill's disk/quorum checks feed into before disruptive operations.
+- [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — RPO/RTO and retention design principles that apply to etcd snapshot scheduling too.
+- [velero-backup-and-restore](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — application/workload-level backup (PVs, namespaced objects); complementary to, not a substitute for, etcd's cluster-wide state backup.
+- [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — scraping and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) on the etcd fsync-latency and DB-size metrics referenced above.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — why this skill's procedures don't apply to managed control planes, where etcd is fully provider-operated.

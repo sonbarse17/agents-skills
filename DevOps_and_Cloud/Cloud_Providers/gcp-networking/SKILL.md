@@ -134,10 +134,10 @@ gcloud compute forwarding-rules create web-https \
 gcloud compute backend-services create internal-backend \
   --protocol=TCP --region=us-central1 \
   --health-checks=web-hc --health-checks-region=us-central1 \
-  --load-balancing-scheme=INTERNAL
+  --[load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)-scheme=INTERNAL
 
 gcloud compute forwarding-rules create internal-lb \
-  --region=us-central1 --load-balancing-scheme=INTERNAL \
+  --region=us-central1 --[load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)-scheme=INTERNAL \
   --network=prod-vpc --subnet=us-subnet \
   --backend-service=internal-backend --ports=8080
 ```
@@ -271,7 +271,7 @@ gcloud network-management connectivity-tests create test-web-to-db \
 
 ## Related Skills
 
-- **gcp-compute** - Compute Engine instances that use VPC networks and firewall rules
-- **gcp-gke** - GKE clusters deployed in VPC subnets with secondary ranges
-- **gcp-cloud-sql** - Private IP database connectivity through VPC peering
-- **terraform-gcp** - Provision networking resources with Infrastructure as Code
+- **[gcp-compute](../gcp-compute/SKILL.md)** - Compute Engine instances that use VPC networks and firewall rules
+- **[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)** - GKE clusters deployed in VPC subnets with secondary ranges
+- **[gcp-cloud-sql](../gcp-cloud-sql/SKILL.md)** - Private IP database connectivity through VPC peering
+- **[terraform-gcp](../../Infrastructure_as_Code/terraform-gcp/SKILL.md)** - Provision networking resources with Infrastructure as Code

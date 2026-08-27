@@ -247,4 +247,4 @@ For Entra ID auth, assign one of these roles to the identity:
 | ------------- | ------------------------------------------------------------------------------------ |
 | API Reference | https://docs.rs/crate/azure_storage_blob/latest                                      |
 | crates.io     | https://crates.io/crates/azure_storage_blob                                          |
-| Source Code   | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/storage/azure_storage_blob |
+| Source Code   | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/storage/azure_storage_blob |

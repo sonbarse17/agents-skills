@@ -62,7 +62,7 @@ variable "environment" {
 
 A module source pointing at a Git branch or an unpinned registry version means every consumer
 gets whatever the module author pushed today, including bugs, silently, on their next `init`.
-That's the same class of risk as an unpinned base image — see `immutable-infrastructure` for the
+That's the same class of risk as an unpinned base image — see `[immutable-infrastructure](../immutable-infrastructure/SKILL.md)` for the
 image-side version of this problem.
 
 - **Pin to an exact version or Git tag**, never a floating branch reference.
@@ -104,7 +104,7 @@ environment-specific behavior comes in through variables set by the caller.
 A module without a test is only validated by whoever calls it first, in whatever environment
 they happen to be applying to — often production. Use `terraform test`, Terratest, or a
 plan-only CI check against a fixed set of example inputs before publishing a change. See
-`infrastructure-testing` for the broader discipline this belongs to.
+`[infrastructure-testing](../infrastructure-testing/SKILL.md)` for the broader discipline this belongs to.
 
 **Done when:** every published module has at least one automated test that applies it with
 representative inputs and asserts on the resulting plan or real resources.

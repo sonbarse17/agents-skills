@@ -42,7 +42,7 @@ Exact user phrases: "storage", "SAN", "NAS", "NVMe", "Ceph", "MinIO", "CSI", "Pe
 
 ### Input Context
 - Workload: block (database / VM), file (NFS / SMB), or object (S3 / blob).
-- Scale: number of nodes, total capacity, IOPS target.
+- Scale: number of nodes, total [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), IOPS target.
 - Connectivity: ethernet (iSCSI/NVMe-oF TCP), InfiniBand, or Fibre Channel.
 - Budget: pure flash, hybrid, or HDD.
 - Filesystem: XFS, ext4, ZFS, Btrfs, or CephFS.
@@ -65,14 +65,14 @@ No preamble. No postamble. No explanations.
 - [ ] RAID or erasure coding scheme defined.
 - [ ] Redundancy model with failure domain mapping.
 - [ ] Performance target with benchmark results from `fio`.
-- [ ] CSI driver configured for Kubernetes with StorageClass.
-- [ ] Monitoring: capacity, performance, wear, errors.
+- [ ] CSI driver configured for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) with StorageClass.
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md): [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), performance, wear, errors.
 
 ### Max Response Length
 400 lines.
 
 ## Quick Start
-Identify workload type (DB = block NVMe-oF, app = NFS, backup = object S3) → size capacity+IOPS → select media+RAID → configure SAN/NAS or SDS (Ceph/MinIO) → provision in K8s with CSI driver → benchmark with `fio` → set up monitoring.
+Identify workload type (DB = block NVMe-oF, app = NFS, backup = object S3) → size [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)+IOPS → select media+RAID → configure SAN/NAS or SDS (Ceph/MinIO) → provision in K8s with CSI driver → benchmark with `fio` → set up [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 
 ## Decision Tree: Storage Protocol
 | Protocol | Latency | Throughput | Use Case |
@@ -130,7 +130,7 @@ RAID levels:
   RAID0:     Striping, no redundancy — ephemeral scratch only
   RAID1:     Mirroring — boot drives, small DB logs (50% overhead)
   RAID5:     Striping + 1 parity — archive, read-heavy; NOT for writes
-  RAID6:     Striping + 2 parity — large capacity, good for HDD
+  RAID6:     Striping + 2 parity — large [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), good for HDD
   RAID10:    Stripe of mirrors — DB, VMs, general purpose (best)
   RAID50:    RAID5 across stripes — vSAN, some legacy storage
   RAID60:    RAID6 across stripes — large archive (2+ parity per stripe)
@@ -160,7 +160,7 @@ ZFS:    Checksumming, snapshots, compression, deduplication
         zfs set recordsize=1M tank/data (for large sequential)
 
 Btrfs:  CoW, subvolumes, send/receive
-        Good for Docker/Moby storage, but not production DBs
+        Good for [Docker](../../Containers_and_Orchestration/docker/SKILL.md)/Moby storage, but not production DBs
 ```
 
 ### Step 4: Ceph Cluster
@@ -191,7 +191,7 @@ Btrfs:  CoW, subvolumes, send/receive
 # ceph osd erasure-code-profile set myprofile k=4 m=2
 ```
 
-### Step 5: CSI Driver for Kubernetes
+### Step 5: CSI Driver for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 ```yaml
 # Ceph CSI RBD StorageClass
 apiVersion: storage.k8s.io/v1
@@ -201,7 +201,7 @@ metadata:
 provisioner: rbd.csi.ceph.com
 parameters:
   clusterID: "12345678-1234-1234-1234-123456789abc"
-  pool: "kubernetes"
+  pool: "[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)"
   imageFeatures: "layering"
   csi.storage.k8s.io/provisioner-secret-name: csi-rbd-secret
   csi.storage.k8s.io/controller-expand-secret-name: csi-rbd-secret
@@ -217,7 +217,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local-nvme
-provisioner: kubernetes.io/no-provisioner
+provisioner: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: v1
@@ -225,7 +225,7 @@ kind: PersistentVolume
 metadata:
   name: local-nvme-pv
 spec:
-  capacity:
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
     storage: 1.5Ti
   volumeMode: Filesystem
   accessModes:
@@ -238,7 +238,7 @@ spec:
     required:
       nodeSelectorTerms:
       - matchExpressions:
-        - key: kubernetes.io/hostname
+        - key: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/hostname
           operator: In
           values:
           - worker-3
@@ -318,16 +318,16 @@ fio --name=dbmix --ioengine=libaio --rw=randrw --rwmixread=70 \
     --bs=8k --direct=1 --numjobs=8 --iodepth=64 --runtime=300 \
     --filename=/dev/nvme0n1 --time_based
 
-# iostat — Live monitoring
+# iostat — Live [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 iostat -x 2 nvme0n1
 # blktrace — I/O tracing for latency breakdown
 blktrace -d /dev/nvme0n1 -o - | blkparse -i -
 ```
 
-### Step 8: Storage Monitoring
+### Step 8: Storage [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 ```yaml
 Key metrics:
-  Capacity:    used / total bytes, % full, growth rate
+  [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):    used / total bytes, % full, growth rate
   IOPS:        read + write IOPS, queue depth
   Throughput:  read + write MB/s, peak vs sustained
   Latency:     average + P99 latency (µs)
@@ -375,10 +375,10 @@ ln -s /sys/kernel/config/nvmet/subsystems/nvme-test-target subsystems/nvme-test-
 ### Step 10: Ceph RBD Performance Tuning
 ```bash
 # RBD configuration optimization
-rbd config pool set kubernetes rbd_qos_bps_limit 1048576000  # 1 GB/s per image
-rbd config pool set kubernetes rbd_qos_iops_limit 100000
-rbd config pool set kubernetes rbd_qos_bps_burst 2097152000
-rbd config pool set kubernetes rbd_qos_iops_burst 200000
+rbd config pool set [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_bps_limit 1048576000  # 1 GB/s per image
+rbd config pool set [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_iops_limit 100000
+rbd config pool set [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_bps_burst 2097152000
+rbd config pool set [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_iops_burst 200000
 
 # RBD cache settings for VM/DB workloads
 rbd config image set <pool>/<image> rbd_cache true
@@ -387,7 +387,7 @@ rbd config image set <pool>/<image> rbd_cache_max_dirty 134217728  # 128 MB
 
 # Pre-allocate RBD images for consistent performance
 rbd create --size 10T --image-format 2 --image-feature layering,striping \
-  --stripe-unit 4096 --stripe-count 16 kubernetes/db-image
+  --stripe-unit 4096 --stripe-count 16 [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/db-image
 
 # krbd (kernel RBD) tuning
 echo 128 > /sys/block/rbd0/queue/nr_requests
@@ -420,7 +420,7 @@ zpool add tank log mirror /dev/nvme6n1 /dev/nvme7n1
 zpool add tank cache /dev/nvme8n1
 ```
 
-### Step 12: S.M.A.R.T Monitoring Configuration
+### Step 12: S.M.A.R.T [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Configuration
 ```yaml
 # node_exporter textfile collector for SMART metrics
 # /etc/node_exporter/smart-wrapper.sh
@@ -460,7 +460,7 @@ alert_rules:
 
 ## Tool Comparison: Software-Defined Storage
 
-| Feature | Ceph | MinIO | GlusterFS | Longhorn |
+| Feature | Ceph | MinIO | GlusterFS | [Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md) |
 |---|---|---|---|---|
 | Type | Unified (block/file/object) | Object only | File only | Block (K8s-native) |
 | Protocol | RBD, CephFS, S3 | S3-compatible | GlusterFS (FUSE/NFS) | iSCSI, NFS |
@@ -492,14 +492,14 @@ alert_rules:
 - MinIO erasure coding: 16 drives → 8 data + 8 parity (tolerates 8 failures).
 - MinIO uses `mc admin prometheus generate` for Prometheus integration.
 - Filesystem atime updates add significant write amplification — use noatime.
-- S.M.A.R.T monitoring for HDD: pre-fail attributes (5 Reallocated Sectors, 187 Reported Uncorrectable).
+- S.M.A.R.T [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for HDD: pre-fail attributes (5 Reallocated Sectors, 187 Reported Uncorrectable).
 - NVMe SSD: watch Temperature, Percentage Used, Available Spare, Media Errors.
 - Storage network: use RoCE (RDMA over Converged Ethernet) with PFC + ECN for lossless fabric.
-- Query Ceph OSD latency per OSD: `ceph osd perf` — fix OSDs with high commit latency.
+- Query Ceph OSD latency per OSD: `ceph osd perf` — fix OSDs with high [commit](../../CI_CD/commit/SKILL.md) latency.
 - Use Stripe Width of 16+ for large sequential writes on Ceph RBD pools.
 - Always benchmark with `fio` on raw block device, not filesystem.
 - Document and label all storage connections and VLAN assignments.
-- Plan for 20% capacity headroom for wear leveling and performance.
+- Plan for 20% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) headroom for wear leveling and performance.
 
 ## Rules
 - Always benchmark with `fio` before declaring storage ready.
@@ -508,7 +508,7 @@ alert_rules:
 - NVMe-oF requires RoCE or FC for latency < 10µs; TCP adds ~50µs.
 - ZFS ARC must be limited to 50% of system RAM unless exclusively ZFS.
 - MinIO on K8s requires StatefulSet + anti-affinity across nodes.
-- Storage expansion: always leave 10-20% headroom in capacity and IOPS.
+- Storage expansion: always leave 10-20% headroom in [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and IOPS.
 - Cluster OSD count: minimum 3 hosts, ideally 3 OSDs per host.
 - Monitor wear level of NVMe devices — replace when endurance reaches 80%.
 - Enable TRIM/discard on all SSD volumes weekly.
@@ -521,7 +521,7 @@ alert_rules:
 - No ECC RAM with ZFS — memory corruption silently damages data.
 - MinIO without erasure coding — single disk failure loses all data on that node.
 - Running `fio` on filesystem instead of raw block device — filesystem overhead skews results.
-- No wear level monitoring — surprise SSD failures at end of life.
+- No wear level [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) — surprise SSD failures at end of life.
 - Mixing HDD and SSD in same RAID group — group-wide performance limited by slowest.
 - Overwriting existing data on same LBAs — use `blkdiscard` / `nvme format` first.
 - Ceph OSDs sharing same physical disk as OS — resource contention and data loss risk.
@@ -533,8 +533,8 @@ alert_rules:
   - ../../../Global_References/storage-infrastructure-advanced.md — Storage Infrastructure Advanced Topics
   - ../../../Global_References/storage-infrastructure-fundamentals.md — Storage Infrastructure Fundamentals
 ## Handoff
-- `devops-backup-dr` for backup strategies tied to storage infrastructure.
-- `devops-datacenter` for physical cabling and power for storage arrays.
-- `devops-kubernetes` for CSI driver deployment and PVC lifecycle.
-- `devops-monitoring` for Prometheus-based storage monitoring.
+- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies tied to storage infrastructure.
+- `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical cabling and power for storage arrays.
+- `devops-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` for CSI driver deployment and PVC lifecycle.
+- `devops-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based storage [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 

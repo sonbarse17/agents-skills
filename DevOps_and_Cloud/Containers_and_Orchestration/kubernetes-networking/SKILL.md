@@ -4,9 +4,9 @@ description: Explains how traffic reaches and moves between pods — Services (C
 license: MIT
 ---
 
-# Kubernetes Networking
+# [Kubernetes](../kubernetes/SKILL.md) Networking
 
-Every networking problem in Kubernetes is a chain: client → DNS → Service → Endpoints → pod IP →
+Every networking problem in [Kubernetes](../kubernetes/SKILL.md) is a chain: client → DNS → Service → Endpoints → pod IP →
 container port. When something doesn't connect, the fix is to walk that chain in order instead of
 guessing at layer seven first. Most "the app is broken" tickets are actually a label selector typo
 two links up the chain.
@@ -17,24 +17,24 @@ yet.**
 
 ## 1. Check endpoints before you check anything else
 
-`kubectl get endpoints <svc>` (or `endpointslices`) tells you immediately whether the Service's
+`[kubectl](../kubectl/SKILL.md) get endpoints <svc>` (or `endpointslices`) tells you immediately whether the Service's
 selector is matching any Ready pods. An empty list is the single most common root cause of
 "connection refused" or 502s inside the cluster, and it's a one-command diagnosis.
 
 ```bash
-kubectl get svc <name> -o yaml | grep -A3 selector
-kubectl get pods --show-labels -l <same-selector>
-kubectl get endpoints <name>
+[kubectl](../kubectl/SKILL.md) get svc <name> -o yaml | grep -A3 selector
+[kubectl](../kubectl/SKILL.md) get pods --show-labels -l <same-selector>
+[kubectl](../kubectl/SKILL.md) get endpoints <name>
 ```
 
 - **Selector typo or label drift**: the Service's `selector` must exactly match pod labels — a
   deploy that changed a label without updating the Service breaks silently.
 - **No Ready pods**: a pod can be Running but not Ready, and not-Ready pods are excluded from
-  endpoints by design — check readiness probes, covered in `kubernetes-operations`.
+  endpoints by design — check readiness probes, covered in `[kubernetes-operations](../[kubernetes](../kubernetes/SKILL.md)-operations/SKILL.md)`.
 - **containerPort mismatch**: the Service's `targetPort` must match what the container actually
   listens on, not just what's documented.
 
-**Done when:** `kubectl get endpoints` shows the expected pod IPs, or you've identified exactly why
+**Done when:** `[kubectl](../kubectl/SKILL.md) get endpoints` shows the expected pod IPs, or you've identified exactly why
 it doesn't.
 
 ## 2. Pick the Service type for the audience, not the convenience
@@ -47,9 +47,9 @@ only one built to multiplex many HTTP services behind one entrypoint.
 
 - **Default to ClusterIP** and put Ingress in front for anything HTTP(S) that needs external access.
 - **LoadBalancer per Service** doesn't scale cost-wise past a handful of services — that's what
-  Ingress controllers and, if you need L4 too, an `api-gateway` are for.
+  Ingress controllers and, if you need L4 too, an `[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)` are for.
 - **headless Services** (`clusterIP: None`) exist for direct pod-to-pod discovery, notably
-  StatefulSets — see `kubernetes-storage`.
+  StatefulSets — see `[kubernetes-storage](../[kubernetes](../kubernetes/SKILL.md)-storage/SKILL.md)`.
 
 **Done when:** you can justify why this specific Service type was chosen over ClusterIP+Ingress.
 
@@ -78,7 +78,7 @@ search-domain amplification making every external lookup try five suffixes first
   the calling pod's own namespace.
 - **`ndots:5` default** means a single-label external hostname triggers multiple failed internal
   lookups before succeeding — a real latency cost for chatty external calls.
-- **Test from inside**, not outside: `kubectl exec` into a pod and run `nslookup`/`getent hosts`
+- **Test from inside**, not outside: `[kubectl](../kubectl/SKILL.md) exec` into a pod and run `nslookup`/`getent hosts`
   against the actual in-cluster resolver.
 
 **Done when:** a DNS failure is traced to CoreDNS health, search-domain config, or the actual record

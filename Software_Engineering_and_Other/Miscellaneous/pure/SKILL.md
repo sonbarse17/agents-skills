@@ -288,7 +288,7 @@ class Pipeline implements RequestHandlerInterface
 // src/Middleware/AuthMiddleware.php
 namespace App\Middleware;
 
-use Firebase\JWT\JWT;
+use [Firebase](../../Databases/firebase/SKILL.md)\JWT\JWT;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

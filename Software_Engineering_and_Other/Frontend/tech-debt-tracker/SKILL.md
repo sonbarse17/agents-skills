@@ -27,7 +27,7 @@ Exact user phrases: "technical debt", "tech debt", "code debt", "debt tracking",
 - Codebase size and age (lines of code, years in production)
 - Current pain points (slow development, frequent bugs, long onboarding)
 - Existing debt indicators (test coverage %, cyclomatic complexity, duplication)
-- Team size and velocity (story points per sprint, team capacity)
+- Team size and velocity (story points per sprint, team [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md))
 - Business constraints (release deadlines, regulatory requirements, SLAs)
 - Tooling available (SonarQube, CodeClimate, Codacy, custom)
 
@@ -40,7 +40,7 @@ Tech debt inventory with prioritized items, remediation estimates, and tracking 
 - [ ] Prioritization rubric defined (impact × frequency × effort)
 - [ ] Debt items entered into tracking system (backlog with labels/tags)
 - [ ] Interest rate estimated (cost of NOT fixing per sprint)
-- [ ] Budget established (% of sprint capacity for debt reduction)
+- [ ] Budget established (% of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for debt reduction)
 - [ ] Reporting/metrics configured (debt ratio, trend over time)
 
 ### Max Response Length
@@ -84,7 +84,7 @@ Interest payments:
   Slower onboarding, blocked dependencies
 
 Bankruptcy:
-  When interest payments exceed capacity
+  When interest payments exceed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   → Complete rewrite required
   → System becomes unchangeable
 ```
@@ -165,7 +165,7 @@ prioritization_matrix:
 | T-004 | Standardize error handling across API | Architecture | 4 | 3 | 4.0 | IN PROGRESS |
 | T-005 | Remove dead code in user module | Code | 2 | 1 | 6.0 | TODO |
 | T-006 | Reduce flaky E2E tests | Test | 5 | 8 | 1.5 | PRIORITIZED |
-| T-007 | Update Docker base image | Infrastructure | 3 | 1 | 9.0 | DONE |
+| T-007 | Update [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) base image | Infrastructure | 3 | 1 | 9.0 | DONE |
 ```
 
 ### Step 4: Track Interest Rate
@@ -201,7 +201,7 @@ interest_types:
 debt_management_process:
 
   budget:
-    rule: "15-20% of sprint capacity for tech debt"
+    rule: "15-20% of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for tech debt"
     rationale: "Based on industry research — less = debt grows, more = features stall"
     tracking: "Labeled as 'tech-debt' in sprint backlog"
 
@@ -295,10 +295,10 @@ labels: ["tech-debt", "needs-triage"]
 | Practice | Rationale |
 |----------|-----------|
 | Track debt alongside features | Same backlog, same prioritization process |
-| Dedicate 15-20% sprint capacity | Prevents debt from growing unsustainably |
+| Dedicate 15-20% sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Prevents debt from growing unsustainably |
 | Quantify interest rate | Stakeholders understand the cost of delay |
 | Fix debt near new code | Scout Rule: leave code cleaner than you found it |
-| Use automated tools | SonarQube, CodeClimate, or custom metric dashboards |
+| Use automated tools | SonarQube, CodeClimate, or custom metric [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
 | Label debt items consistently | Track trends over time |
 | Review debt quarterly | Reassess priorities, close completed items |
 | Celebrate debt reduction | Recognize cleanup work as valuable |
@@ -310,13 +310,13 @@ labels: ["tech-debt", "needs-triage"]
   - references/tech-debt-tracker-metrics.md — Tech Debt Metrics Reference
   - references/tech-debt-tracker-prioritization.md — Tech Debt Prioritization Reference
 ## Handoff
-Hand off to `dev-loop-refactor-guide` for refactoring implementation of debt items. Hand off to `dev-loop-security-auditor` for security-related debt.
+Hand off to `[dev-loop-refactor-guide](../refactor-guide/SKILL.md)` for refactoring implementation of debt items. Hand off to `[dev-loop-security-auditor](../../../DevOps_and_Cloud/Observability_and_SecOps/security-auditor/SKILL.md)` for security-related debt.
 
 ## Implementation Patterns
 
 ### Tech Debt Calculator
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -398,7 +398,7 @@ class DebtTracker:
 
 ### SonarQube Metric Collector
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import Dict, Optional
 import requests
 import json
@@ -463,7 +463,7 @@ What's the nature of the issue?
 └── Infrastructure
     ├── Manual processes → Automate
     ├── Outdated config → Update
-    └── No monitoring → Add observability
+    └── No [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) → Add [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 ```
 
 ### Prioritization Matrix
@@ -478,8 +478,8 @@ Impact × Frequency / Effort
 
 ## Production Considerations
 
-- **Automated debt discovery**: Integrate SonarQube/CodeClimate scans into CI pipeline. Fail builds when debt ratio increases beyond threshold. Publish trend data to dashboards.
-- **Debt budgeting in sprint planning**: Reserve 15-20% of sprint capacity for tech debt before feature work is estimated. Make debt reduction visible in sprint reviews.
+- **Automated debt discovery**: Integrate SonarQube/CodeClimate scans into CI pipeline. Fail builds when debt ratio increases beyond threshold. Publish trend data to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+- **Debt budgeting in sprint planning**: Reserve 15-20% of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for tech debt before feature work is estimated. Make debt reduction visible in sprint reviews.
 - **Quarterly debt reviews**: Conduct a dedicated debt review session every quarter. Re-prioritize based on current development pain points. Archive or close items no longer relevant.
 - **Interest rate communication**: Express debt cost in terms stakeholders understand: "This debt costs us one developer day per sprint" rather than abstract quality metrics.
 
@@ -492,13 +492,13 @@ Impact × Frequency / Effort
 | Tracking everything | Overwhelming backlog | Focus on top 10 highest-impact items |
 | No interest calculation | Can't justify investment | Calculate cost of NOT fixing |
 | Blaming developers | Creates secrecy around debt | Normalize debt as engineering trade-off |
-| No dedicated budget | Debt always deprioritized | Reserve 15-20% sprint capacity |
+| No dedicated budget | Debt always deprioritized | Reserve 15-20% sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Only automated discovery | Misses developer pain points | Combine tools + developer input |
 | Ignoring test debt | Untested code is fragile | Include test coverage in debt metrics |
 
 ## Performance Optimization
 
-- **Automated debt scanning**: Schedule weekly SonarQube scans. Use diff analysis to only re-scan changed files. Report debt ratio trend on team dashboards.
+- **Automated debt scanning**: Schedule weekly SonarQube scans. Use diff analysis to only re-scan changed files. Report debt ratio trend on team [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 - **Debt interest computation**: Run automated interest calculation script at end of each sprint. Calculate total interest minutes across all open items.
 - **Git blame integration**: Link debt items to recent git history. Flag when a debt-laden file is being modified and suggest refactoring.
 - **CI pipeline debt gate**: Add debt ratio check to CI. If PR touches high-debt files and doesn't reduce debt, flag for review.

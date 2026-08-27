@@ -148,7 +148,7 @@ Neo4j: causal clustering, read replicas. Neptune: auto-scaling storage. JanusGra
 
 Neo4j causal clustering: core servers handle writes (RAFT consensus), read replicas handle reads. Minimum 3 core servers for production. Read replicas auto-scale based on query load.
 
-Neptune: serverless or provisioned. Storage auto-scales to 128TB. Use Neptune Streams for change data capture. Enable DFE (Data Format Efficiency) for faster query execution.
+Neptune: [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) or provisioned. Storage auto-scales to 128TB. Use Neptune Streams for change data capture. Enable DFE (Data Format Efficiency) for faster query execution.
 
 JanusGraph: partition graph across Cassandra nodes. Configure `ids.block-size` based on write rate. Use `storage.lock.wait-time` for transaction conflict handling.
 
@@ -190,8 +190,8 @@ neo4j-admin database import full \
 ```
 
 ```cypher
-// APOC periodic batch commit
-CALL apoc.periodic.commit(
+// APOC periodic batch [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+CALL apoc.periodic.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(
   "MATCH (c:Customer) WHERE c.batch_id IS NULL
    WITH c LIMIT 5000
    SET c.batch_id = $batch
@@ -289,7 +289,7 @@ Property placement decision:
 5. **Properties on nodes that belong on relationships**: context like timestamp and quantity belong on the relationship, not the node.
 6. **No schema constraints**: unlabeled nodes and invalid relationships accumulate. Always use constraints.
 7. **Loading entire graph into memory in GDS**: projected graphs must fit in available heap. Use node filtering to reduce size.
-8. **No batch commit on large imports**: importing millions of nodes in a single transaction causes OOM.
+8. **No batch [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on large imports**: importing millions of nodes in a single transaction causes OOM.
 9. **RDF without reasoning support**: SPARQL inference queries are slow without a reasoner engine.
 10. **JanusGraph backend storage mismatch**: Cassandra for write-heavy, BerkeleyDB for single-server, ScyllaDB for high-throughput.
 11. **Neptune query timeout not configured**: long-running Gremlin traversals timeout at 15min default. Set appropriate timeout for analytics queries.
@@ -330,7 +330,7 @@ Property placement decision:
 
 Graph vs relational: graph excels at many-to-many relationships, variable-depth traversals, and path queries. Relational excels at aggregate queries, strict schemas, and ACID-compliant transactions over known relationships. Use graph when the value is in the connections, not just the entities.
 
-Graph vs document (MongoDB): document stores embed related data, limiting traversal to one level. Graph stores normalize relationships, enabling arbitrary-depth traversal. Use graph for highly connected data, document for aggregate-root patterns.
+Graph vs document ([MongoDB](../../Backend/mongodb/SKILL.md)): document stores embed related data, limiting traversal to one level. Graph stores normalize relationships, enabling arbitrary-depth traversal. Use graph for highly connected data, document for aggregate-root patterns.
 
 ## Performance
 
@@ -346,7 +346,7 @@ Graph vs document (MongoDB): document stores embed related data, limiting traver
 - Page cache sizing: allocate enough page cache to hold the hot working set. For 100GB graph with 20GB working set, allocate 24GB page cache.
 - Neptune storage auto-scales but write I/O is limited by instance class. Use larger instances for write-heavy workloads.
 - JanusGraph: each query may hit both storage backend and index backend. Elasticsearch latency dominates query time for indexed lookups. Target <10ms ES response.
-- Bulk import (neo4j-admin): 1M nodes/sec on SSD. LOAD CSV with periodic commit: 10K-50K nodes/sec.
+- Bulk import (neo4j-admin): 1M nodes/sec on SSD. LOAD CSV with periodic [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): 10K-50K nodes/sec.
 
 ## Tooling
 
@@ -397,7 +397,7 @@ Graph vs document (MongoDB): document stores embed related data, limiting traver
   - ../../../Global_References/graph-platforms.md — Graph Database Platforms
   - ../../../Global_References/graph-use-cases.md — Graph Database Use Cases Reference
   - ../../../Global_References/query-patterns.md — Graph Query Patterns Reference
-  - ../../../Global_References/graph-data-modeling.md — Graph Data Modeling Deep Dive
+  - ../../../Global_References/graph-[data-modeling](../../../Data_Engineering/data-modeling/SKILL.md).md — Graph Data Modeling Deep Dive
   - ../../../Global_References/graph-query-performance.md — Query Performance Reference
 ## Architecture Decision Trees
 
@@ -438,7 +438,7 @@ ORDER BY total_amount DESC
 ```
 
 ### Graph Embedding with Node2Vec
-```python
+```[python](../../Languages/python/SKILL.md)
 # graph_database/node2vec_embedding.py
 from node2vec import Node2Vec
 import networkx as nx
@@ -464,7 +464,7 @@ class GraphEmbedding:
 
 - **Indexing strategy**: Create indexes on frequently queried properties and relationship types; monitor write perf.
 - **Backup strategy**: Use Neo4j online backup for incremental + full backups; test restore quarterly.
-- **Query profiling**: Profile Cypher queries with `PROFILE`; monitor full-node scans vs index lookups.
+- **Query [profiling](../../Frontend/profiling/SKILL.md)**: Profile Cypher queries with `PROFILE`; monitor full-node scans vs index lookups.
 - **Memory management**: Allocate 70% of available RAM to Neo4j page cache; monitor swap usage.
 - **Cluster sizing**: Neo4j causal cluster: 3 core nodes + N read replicas based on query concurrency.
 - **Bulk loading**: Use neo4j-admin import for initial loads; batch CREATE statements in 1000-row transactions.
@@ -492,10 +492,10 @@ class GraphEmbedding:
 - **Authentication**: Enforce Neo4j native auth or LDAP/SSO; disable default `neo4j/neo4j` credentials.
 - **Authorization**: Use Neo4j RBAC with roles (admin, architect, analyst, reader); apply to subgraphs.
 - **Encryption**: Enable TLS for all Bolt and HTTPS connections; Neo4j cluster internal encryption.
-- **Audit**: Log all Cypher queries with sensitive actions (CREATE, DELETE, DROP) to SIEM.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all Cypher queries with sensitive actions (CREATE, DELETE, DROP) to SIEM.
 - **Data masking**: Create read-only views that mask sensitive properties (email, SSN) for auditor roles.
 
 ## Handoff
-`data-nosql-database` for non-relational data stores
-`ml-feature-engineering` for graph feature extraction (PageRank, embeddings)
+`[data-nosql-database](../nosql-database/SKILL.md)` for non-relational data stores
+`[ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md)` for graph feature extraction (PageRank, embeddings)
 

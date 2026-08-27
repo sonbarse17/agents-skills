@@ -110,7 +110,7 @@ before a long run, not after hour six.
   mid-run silently, no OOM in its own logs.
 - **CAUSE:** unified memory is
   one global pool; an uncapped
-  or near-capacity process
+  or near-[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) process
   competes with anything else
   and can evict it. A small,
   bounded workload doesn't — a
@@ -123,7 +123,7 @@ before a long run, not after hour six.
   capped.
 - **FIX:** the one-heavy-job
   rule applies to **uncapped or
-  near-capacity** workloads —
+  near-[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** workloads —
   cap or stop unrelated servers
   first. A small, capped
   workload need not
@@ -147,7 +147,7 @@ before a long run, not after hour six.
   the stack moves faster than the docs.
 - **CHECK:** `../../../Global_References/gotcha-checks.md` G8 — the playbook
   repo's recent issues.
-- **FIX:** check `github.com/NVIDIA/dgx-spark-playbooks` issues
+- **FIX:** check `[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` issues
   before trusting a recipe for an expensive run.
 
 ### G9: Container-First, Not Bare Pip
@@ -160,7 +160,7 @@ before a long run, not after hour six.
   target.
 - **CHECK:** `../../../Global_References/gotcha-checks.md`
   G9 — container or bare pip?
-- **FIX:** prefer an NGC container (see `spark-environment-setup`
+- **FIX:** prefer an NGC container (see `[spark-environment-setup](../spark-environment-setup/SKILL.md)`
   for tag guidance) or Unsloth's container. If bare pip is
   unavoidable, follow the NVIDIA install order, including
   `--no-deps` on Unsloth.
@@ -184,12 +184,12 @@ The cheapest checks to run before anything else:
 python3 -c "import torch; print(torch.version.cuda)"  # expect 13.x (G1); NGC builds have no +cu130 tag — that's not a failure
 ```
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch; print(torch.cuda.get_device_capability())  # expect (12, 1) (G7)
 ```
 
 ```bash
-{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE 'docker|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
+{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE '[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
 ```
 
 `assets/preflight.sh` runs G1, G3, G4, G7, G9 and produces one
@@ -197,5 +197,5 @@ output line per gotcha in a fixed format: G-number first, then
 PASS/FAIL/WARN where automatable, SKIP when unavailable, or
 `INFO:` for a raw reading (G3, G4). Full commands:
 `../../../Global_References/gotcha-checks.md`. See also
-`spark-environment-setup` for the environment assumed working.
+`[spark-environment-setup](../spark-environment-setup/SKILL.md)` for the environment assumed working.
 

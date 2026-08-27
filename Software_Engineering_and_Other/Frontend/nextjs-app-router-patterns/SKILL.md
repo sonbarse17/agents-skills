@@ -45,7 +45,7 @@ app/
 
 ## Quick Start
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/layout.tsx
 import { Inter } from 'next/font/google'
 import { Providers } from './providers'

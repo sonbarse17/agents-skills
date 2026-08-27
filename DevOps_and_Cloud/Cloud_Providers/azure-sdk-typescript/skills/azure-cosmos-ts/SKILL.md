@@ -9,7 +9,7 @@ metadata:
   package: '@azure/cosmos'
 ---
 
-# @azure/cosmos (TypeScript/JavaScript)
+# @azure/cosmos ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
 
 Data plane SDK for Azure Cosmos DB NoSQL API operations — CRUD on documents, queries, bulk operations.
 
@@ -41,7 +41,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Microsoft Entra Token Credential (Recommended)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { CosmosClient } from "@azure/cosmos";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -59,7 +59,7 @@ const client = new CosmosClient({
 
 ### Key-Based Authentication
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { CosmosClient } from "@azure/cosmos";
 
 // Option 1: Endpoint + Key
@@ -87,7 +87,7 @@ CosmosClient
 
 ### Database & Container Setup
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { database } = await client.databases.createIfNotExists({
   id: "my-database",
 });
@@ -100,7 +100,7 @@ const { container } = await database.containers.createIfNotExists({
 
 ### Create Document
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface Product {
   id: string;
   partitionKey: string;
@@ -120,7 +120,7 @@ const { resource } = await container.items.create<Product>(item);
 
 ### Read Document
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { resource } = await container
   .item("product-1", "electronics") // id, partitionKey
   .read<Product>();
@@ -132,7 +132,7 @@ if (resource) {
 
 ### Update Document (Replace)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { resource: existing } = await container
   .item("product-1", "electronics")
   .read<Product>();
@@ -147,7 +147,7 @@ if (existing) {
 
 ### Upsert Document
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const item: Product = {
   id: "product-1",
   partitionKey: "electronics",
@@ -160,13 +160,13 @@ const { resource } = await container.items.upsert<Product>(item);
 
 ### Delete Document
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await container.item("product-1", "electronics").delete();
 ```
 
 ### Patch Document (Partial Update)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { PatchOperation } from "@azure/cosmos";
 
 const operations: PatchOperation[] = [
@@ -184,7 +184,7 @@ const { resource } = await container
 
 ### Simple Query
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { resources } = await container.items
   .query<Product>("SELECT * FROM c WHERE c.price < 1000")
   .fetchAll();
@@ -192,7 +192,7 @@ const { resources } = await container.items
 
 ### Parameterized Query (Recommended)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { SqlQuerySpec } from "@azure/cosmos";
 
 const querySpec: SqlQuerySpec = {
@@ -210,7 +210,7 @@ const { resources } = await container.items
 
 ### Query with Pagination
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const queryIterator = container.items.query<Product>(querySpec, {
   maxItemCount: 10, // Items per page
 });
@@ -224,7 +224,7 @@ while (queryIterator.hasMoreResults()) {
 
 ### Cross-Partition Query
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { resources } = await container.items
   .query<Product>(
     "SELECT * FROM c WHERE c.price > 500",
@@ -237,7 +237,7 @@ const { resources } = await container.items
 
 ### Execute Bulk Operations
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { BulkOperationType, OperationInput } from "@azure/cosmos";
 
 const operations: OperationInput[] = [
@@ -290,7 +290,7 @@ response.forEach((result, index) => {
 
 ### Simple Partition Key
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const { container } = await database.containers.createIfNotExists({
   id: "products",
   partitionKey: { paths: ["/category"] },
@@ -299,7 +299,7 @@ const { container } = await database.containers.createIfNotExists({
 
 ### Hierarchical Partition Key (MultiHash)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { PartitionKeyDefinitionVersion, PartitionKeyKind } from "@azure/cosmos";
 
 const { container } = await database.containers.createIfNotExists({
@@ -328,7 +328,7 @@ const { resource: order } = await container
 
 ## Error Handling
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ErrorResponse } from "@azure/cosmos";
 
 try {
@@ -358,7 +358,7 @@ try {
 
 ## Optimistic Concurrency (ETags)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Read with ETag
 const { resource, etag } = await container
   .item("product-1", "electronics")
@@ -380,9 +380,9 @@ if (resource && etag) {
 }
 ```
 
-## TypeScript Types Reference
+## [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   // Client & Resources
   CosmosClient,
@@ -430,7 +430,7 @@ import {
 
 ### Service Layer Pattern
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 export class ProductService {
   private container: Container;
 

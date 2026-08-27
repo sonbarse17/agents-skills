@@ -7,7 +7,7 @@ license: MIT
 # Service Mesh
 
 A service mesh moves cross-cutting network concerns — mTLS, retries, timeouts, traffic splitting,
-request-level observability — out of application code and into a shared sidecar proxy layer. That's
+request-level [observability](../observability/SKILL.md) — out of application code and into a shared sidecar proxy layer. That's
 a genuine architectural win once you have enough services that reimplementing retry logic in five
 languages is more expensive than running a mesh. It is also real infrastructure with its own
 control plane, its own failure modes, and a latency cost on every single request.
@@ -18,10 +18,10 @@ already have, not one you're anticipating.**
 
 ## 1. Justify the mesh against what NetworkPolicy and Ingress already give you
 
-Plain Kubernetes already provides L3/L4 segmentation (NetworkPolicy) and L7 HTTP routing at the edge
+Plain [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) already provides L3/L4 segmentation (NetworkPolicy) and L7 HTTP routing at the edge
 (Ingress). A mesh's value is specifically service-to-service L7: per-request retries, mTLS between
 every pod pair without app changes, and fine-grained traffic splitting for internal calls — if the
-actual need is "block namespace A from reaching namespace B," that's `kubernetes-networking`, not a
+actual need is "block namespace A from reaching namespace B," that's `[kubernetes-networking](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-networking/SKILL.md)`, not a
 mesh-sized solution.
 
 - **Small service counts (a handful of services)** rarely justify the operational overhead — the
@@ -29,9 +29,9 @@ mesh-sized solution.
 - **Real triggers for a mesh**: many services in multiple languages needing consistent
   retry/timeout/circuit-breaking behavior, a compliance requirement for mTLS everywhere, or
   fine-grained internal traffic shifting for progressive delivery.
-- **Write down the specific problem** the mesh is meant to solve before adopting one — "observability"
-  alone is rarely enough justification since most of it is achievable via `distributed-tracing` and
-  `metrics-and-monitoring` without a mesh.
+- **Write down the specific problem** the mesh is meant to solve before adopting one — "[observability](../observability/SKILL.md)"
+  alone is rarely enough justification since most of it is achievable via `[distributed-tracing](../distributed-tracing/SKILL.md)` and
+  `[metrics-and-monitoring](../metrics-and-[monitoring](../monitoring/SKILL.md)/SKILL.md)` without a mesh.
 
 **Done when:** the decision to adopt (or not adopt) a mesh is backed by a named problem it solves
 that the existing stack can't.
@@ -66,7 +66,7 @@ tooling itself (Argo Rollouts, Flagger) may already do this without mesh-wide si
   services all routing the same user to the same version), which single-service tools can't
   coordinate.
 - **The actual canary analysis and promotion decision** — what metric gates promotion, how fast to
-  ramp — is `progressive-delivery`'s concern; the mesh is just the traffic-splitting mechanism.
+  ramp — is `[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)`'s concern; the mesh is just the traffic-splitting mechanism.
 
 **Done when:** you can state why traffic shifting needed mesh-wide coordination rather than a
 single ingress or deployment-tool feature.
@@ -75,7 +75,7 @@ single ingress or deployment-tool feature.
 
 Retries configured both in application code and at the mesh sidecar compound — a 3x app-level retry
 wrapped by a 3x mesh-level retry is 9 attempts, which can turn a struggling downstream service into
-a fully overwhelmed one during an incident. Pick one layer to own retry/timeout policy per call
+a fully overwhelmed one during an [incident](../incident/SKILL.md). Pick one layer to own retry/timeout policy per call
 path and remove it from the other.
 
 ```yaml
@@ -99,7 +99,7 @@ partially rolled back.
 - **Measure p99 latency before and after** injection on a real workload, not a synthetic one —
   sidecar overhead varies by mesh implementation and payload size.
 - **Budget sidecar CPU/memory into every pod's requests** — an uninstrumented sidecar cost is a
-  common cause of nodes running hotter than capacity planning assumed.
+  common cause of nodes running hotter than [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning assumed.
 
 **Done when:** p99 latency and per-pod resource overhead are measured before and after sidecar
 rollout, and both numbers are recorded next to the decision to adopt the mesh.

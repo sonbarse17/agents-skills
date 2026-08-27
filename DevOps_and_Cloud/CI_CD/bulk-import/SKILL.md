@@ -19,7 +19,7 @@ tags: [backend, data, phase-10]
 # Bulk Import Skill
 
 ## Purpose
-Design robust bulk import systems that handle large CSV/Excel files with validation, progress tracking, error recovery, and audit trails.
+Design robust bulk import systems that handle large CSV/Excel files with validation, progress tracking, error recovery, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
 
 ## Architecture Decision Trees
 
@@ -31,11 +31,11 @@ Design robust bulk import systems that handle large CSV/Excel files with validat
 | Performance | Fastest | Moderate (check per row) | Fast (truncate + insert) |
 | Idempotent | No | Yes (by dedup field) | No (destructive) |
 | Risk level | Low | Low | High (data loss) |
-| Audit trail | All inserts | Updates logged | Lost on truncate |
+| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | All inserts | Updates logged | Lost on truncate |
 | Rollback complexity | Simple (transaction) | Moderate | Complex (needs backup) |
 | Use case | New data ingestion | Sync with external system | Full reimport/replace |
 
-Decision: Upsert for production syncs. Insert for immutable audit data. Replace only with pre-import backup.
+Decision: Upsert for production syncs. Insert for immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) data. Replace only with pre-import backup.
 
 ### Parsing Strategy
 
@@ -91,7 +91,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Import template with downloadable sample file ready
 - [ ] Deduplication logic implemented (configurable per field)
 - [ ] Rollback mechanism for partial failures
-- [ ] Import history and audit log stored
+- [ ] Import history and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log stored
 - [ ] Webhook notification on import completion
 - [ ] Rate limiting on import endpoints
 
@@ -102,7 +102,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **File Upload & Validation**: Accept upload with strict type/size checks.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import multer from 'multer';
 import path from 'path';
 
@@ -147,7 +147,7 @@ app.post('/api/imports/upload', upload.single('file'), async (req, res) => {
 
 2. **CSV Parsing with Streaming**: Handle large files without memory overflow.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { parse } from 'csv-parse';
 import { createReadStream } from 'fs';
 
@@ -177,7 +177,7 @@ async function* streamCsvRows(filePath: string, batchSize = 500): AsyncGenerator
 
 3. **Validation Pipeline**: Row-level validation with comprehensive error collection.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 class ImportValidator {
   private validators: Map<string, FieldValidator[]> = new Map();
 
@@ -228,7 +228,7 @@ validator.register('age', { validate: async (field, value) => {
 
 4. **Import Pipeline Lifecycle**: Upload → Validate → Preview → Confirm → Process.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ImportJob {
   id: string;
   userId: string;
@@ -277,7 +277,7 @@ app.post('/api/imports/:id/confirm', async (req, res) => {
 
 5. **Batch Processing with Progress**: Process in batches with transaction support.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import Bull from 'bull';
 
 const importQueue = new Bull('import-processing', {
@@ -361,7 +361,7 @@ async function processBatch(
         await trx('target_table').insert(rows);
         break;
     }
-    await trx.commit();
+    await trx.[commit](../commit/SKILL.md)();
     return { processed: rows.length, failed: 0, errors: [] };
   } catch (error) {
     await trx.rollback();
@@ -373,7 +373,7 @@ async function processBatch(
 
 6. **Import Templates**: Generate downloadable sample files.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 function generateImportTemplate(headers: ImportColumn[]): string {
   const headerRow = headers.map(h => h.label).join(',');
   const sampleRow = headers.map(h => h.example || '').join(',');
@@ -394,7 +394,7 @@ app.get('/api/imports/templates/:type', (req, res) => {
 
 ### Pattern: Column Header Mapping
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ColumnMapping {
   displayName: string;    // From CSV header
   fieldName: string;      // Internal field name
@@ -429,7 +429,7 @@ class HeaderMapper {
 
 ### Pattern: Error Report Generation
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ImportError {
   row: number;
   column: string;
@@ -464,7 +464,7 @@ async function generateErrorReport(errors: ImportError[], format: 'csv' | 'xlsx'
 
 ### Pattern: Import Webhook Notifications
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ImportNotification {
   importId: string;
   status: 'completed' | 'partial' | 'failed';
@@ -511,7 +511,7 @@ async function notifyImportComplete(job: ImportJob): Promise<void> {
 - Memory: streaming parsers for files > 50MB; never load entire file into memory
 - Storage: upload files to S3/Blob storage; process from stream without local temp file
 
-### Monitoring
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Metrics: import duration, rows/second, error rate by type, queue depth, failure rate
 - Alerts: error rate > 5%, queue backlog > 100 jobs, same file re-upload > 3 times
 - Logging: structured logs per import job (importId, userId, status, rowCount, duration)
@@ -545,12 +545,12 @@ async function notifyImportComplete(job: ImportJob): Promise<void> {
   - Mitigation: prefix dangerous-starting values with tab or single quote in CSV output
 - Rate limiting: per-user, per-hour import limits (e.g., 5 imports/hour, 500MB/hour total)
 - PII: mask sensitive fields in preview; enforce field-level access control
-- Audit: log every import action (upload, validate, confirm, cancel) with userId, timestamp, row count
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md): log every import action (upload, validate, confirm, cancel) with userId, timestamp, row count
 - File retention: auto-delete uploaded files after 30 days; allow user-triggered immediate deletion
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { describe, it, expect } from 'vitest';
 import { parse } from 'csv-parse';
 
@@ -615,7 +615,7 @@ describe('Bulk Import', () => {
   - ../../../Global_References/bulk-import-advanced.md — Bulk Import Advanced Topics
   - ../../../Global_References/bulk-import-fundamentals.md — Bulk Import Fundamentals
   - ../../../Global_References/csv-parsing.md — CSV Parsing
-  - ../../../Global_References/import-monitoring.md — Import Monitoring
+  - ../../../Global_References/import-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).md — Import [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/import-workflow.md — Import Workflow
   - ../../../Global_References/rollback-recovery.md — Rollback and Recovery
   - ../../../Global_References/validation-pipeline.md — Validation Pipeline

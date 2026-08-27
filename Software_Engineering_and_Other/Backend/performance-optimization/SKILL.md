@@ -12,7 +12,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 ## When to Use
 
 - Performance requirements exist in the spec (load time budgets, response time SLAs)
-- Users or monitoring report slow behavior
+- Users or [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) report slow behavior
 - Core Web Vitals scores are below thresholds
 - You suspect a change introduced a regression
 - Building features that handle large datasets or high traffic
@@ -34,7 +34,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 2. IDENTIFY → Find the actual bottleneck (not assumed)
 3. FIX      → Address the specific bottleneck
 4. VERIFY   → Measure again; keep or revert
-5. GUARD    → Add monitoring or tests to prevent regression
+5. GUARD    → Add [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or tests to prevent regression
 ```
 
 ### Step 1: Measure
@@ -61,7 +61,7 @@ onCLS(console.log);
 **Backend:**
 ```bash
 # Response time logging
-# Application Performance Monitoring (APM)
+# Application Performance [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (APM)
 # Database query logging with timing
 
 # Simple timing
@@ -115,14 +115,14 @@ Common bottlenecks by category:
 |---------|-------------|---------------|
 | Slow API responses | N+1 queries, missing indexes, unoptimized queries | Check database query log |
 | Memory growth | Leaked references, unbounded caches, large payloads | Heap snapshot analysis |
-| CPU spikes | Synchronous heavy computation, regex backtracking | CPU profiling |
+| CPU spikes | Synchronous heavy computation, regex backtracking | CPU [profiling](../../Frontend/profiling/SKILL.md) |
 | High latency | Missing caching, redundant computation, network hops | Trace requests through the stack |
 
 ### Step 3: Fix Common Anti-Patterns
 
 #### N+1 Queries (Backend)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BAD: N+1 — one query per task for the owner
 const tasks = await db.tasks.findMany();
 for (const task of tasks) {
@@ -137,7 +137,7 @@ const tasks = await db.tasks.findMany({
 
 #### Unbounded Data Fetching
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // BAD: Fetching all records
 const allTasks = await db.tasks.findMany();
 
@@ -242,7 +242,7 @@ function TaskStats({ tasks }: Props) {
 
 #### Large Bundle Size
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Modern bundlers (Vite, webpack 5+) handle named imports with tree-shaking automatically,
 // provided the dependency ships ESM and is marked `sideEffects: false` in package.json.
 // Profile before changing import styles — the real gains come from splitting and lazy loading.
@@ -264,7 +264,7 @@ function App() {
 
 #### Missing Caching (Backend)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Cache frequently-read, rarely-changed data
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 let cachedConfig: AppConfig | null = null;
@@ -303,7 +303,7 @@ Then decide, strictly:
 
 | Result vs. baseline | Action |
 |---|---|
-| Past the threshold, tests green | **Keep.** Commit with the before/after numbers in the message. |
+| Past the threshold, tests green | **Keep.** [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with the before/after numbers in the message. |
 | Within noise (no measurable change) | **Revert.** |
 | Worse | **Revert.** |
 | Improved, but a test went red | **Revert.** A regression wearing a win's clothing. |
@@ -367,12 +367,12 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 
 ## Red Flags
 
-- Optimization without profiling data to justify it
+- Optimization without [profiling](../../Frontend/profiling/SKILL.md) data to justify it
 - N+1 query patterns in data fetching
 - List endpoints without pagination
 - Images without dimensions, lazy loading, or responsive sizes
 - Bundle size growing without review
-- No performance monitoring in production
+- No performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in production
 - `React.memo` and `useMemo` everywhere (overusing is as bad as underusing)
 - Optimizations kept without a re-measurement that justifies them
 - Several optimizations bundled into one measurement, so no single change can be attributed

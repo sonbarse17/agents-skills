@@ -16,7 +16,7 @@ Query historical costs, forecast future spending, optimize to reduce waste.
 | User Intent | Workflow |
 |-------------|----------|
 | Understand current costs | [Cost Query](cost-query/workflow.md) |
-| Reduce costs / find waste | [Cost Optimization](cost-optimization/workflow.md) |
+| Reduce costs / find waste | [Cost Optimization]([cost-optimization](../cost-optimization/SKILL.md)/workflow.md) |
 | Project future costs | [Cost Forecast](cost-forecast/workflow.md) |
 
 ## Quick Reference
@@ -25,7 +25,7 @@ Query historical costs, forecast future spending, optimize to reduce waste.
 |----------|-------|
 | **Query API** | `POST {scope}/providers/Microsoft.CostManagement/query?api-version=2023-11-01` |
 | **Forecast API** | `POST {scope}/providers/Microsoft.CostManagement/forecast?api-version=2023-11-01` |
-| **Required Role** | Cost Management Reader + Monitoring Reader + Reader (on target scope) |
+| **Required Role** | Cost Management Reader + [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Reader + Reader (on target scope) |
 
 ## Scope Patterns
 
@@ -36,11 +36,11 @@ Query historical costs, forecast future spending, optimize to reduce waste.
 
 ## Service-Specific Optimization
 
-- [Redis](cost-optimization/services/redis/azure-cache-for-redis.md)
-- [Storage](cost-optimization/services/storage/azure-storage.md)
+- [Redis]([cost-optimization](../cost-optimization/SKILL.md)/services/redis/azure-cache-for-redis.md)
+- [Storage]([cost-optimization](../cost-optimization/SKILL.md)/services/storage/[azure-storage](../azure-skills/skills/[azure-storage](../azure-storage/SKILL.md)/SKILL.md).md)
 
 ## References
 
 - [MCP Tools, Best Practices, Safety](../../../Global_References/tools-and-best-practices.md)
-- [SDK: Redis .NET](cost-optimization/sdk/azure-resource-manager-redis-dotnet.md)
+- [SDK: Redis .NET]([cost-optimization](../cost-optimization/SKILL.md)/sdk/[azure-resource-manager-redis-dotnet](../[azure-resource-manager-redis-dotnet](../azure-sdk-dotnet/skills/azure-resource-manager-redis-dotnet/SKILL.md)/SKILL.md).md)
 

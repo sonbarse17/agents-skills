@@ -23,7 +23,7 @@ metadata:
 
 ## Purpose
 
-Kubewarden is a Kubernetes admission policy engine, like OPA/Gatekeeper
+Kubewarden is a [Kubernetes](../kubernetes/SKILL.md) admission policy engine, like OPA/Gatekeeper
 and Kyverno, but its policies are compiled **WebAssembly (WASM)
 modules** rather than Rego or pattern-matching YAML — which means a
 policy can be authored in whatever language has a Kubewarden SDK (Rust,
@@ -40,9 +40,9 @@ pre-built ones from the community Kubewarden Policy Hub instead of
 writing one from scratch), the `ClusterAdmissionPolicy`/`AdmissionPolicy`
 CRDs, monitor-mode rollout before enforcing, and — critically — where
 Kubewarden fits relative to
-[opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md)
+[opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
 and
-[kyverno-policy-management](../../../policy-and-governance-tooling/skills/kyverno-policy-management/SKILL.md),
+[kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../kyverno-policy-management/SKILL.md)/SKILL.md),
 which solve the same admission-control problem with different authoring
 and distribution models.
 
@@ -74,7 +74,7 @@ and distribution models.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster (1.23+ recommended) with cluster-admin access to
+- A [Kubernetes](../kubernetes/SKILL.md) cluster (1.23+ recommended) with cluster-admin access to
   install Kubewarden's CRDs, the `kubewarden-controller`, and one or
   more `policy-server` Deployments (the component that actually loads
   and executes WASM policies against admission requests).
@@ -98,7 +98,7 @@ and distribution models.
   eval`/`gator test` for offline policy testing.
 - A rollout plan: **every new or changed `ClusterAdmissionPolicy` should
   be applied with `mode: monitor` first**, not `protect` — identical
-  discipline in spirit to Gatekeeper's `dryrun` and Kyverno's `Audit`,
+  discipline in spirit to Gatekeeper's `dryrun` and Kyverno's `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`,
   and for the same reason.
 - If policy signing is required (recommended for any policy pulled from
   a public registry rather than authored/reviewed in-house): `cosign`
@@ -114,7 +114,7 @@ and distribution models.
    helm install kubewarden-crds kubewarden/kubewarden-crds -n kubewarden --create-namespace
    helm install kubewarden-controller kubewarden/kubewarden-controller -n kubewarden
    helm install kubewarden-defaults kubewarden/kubewarden-defaults -n kubewarden
-   kubectl get pods -n kubewarden   # controller + policy-server Running
+   [kubectl](../kubectl/SKILL.md) get pods -n kubewarden   # controller + policy-server Running
    ```
 
 2. **Reuse a vetted policy from the Kubewarden Policy Hub** rather than
@@ -182,21 +182,21 @@ and distribution models.
    this is a general admission-controller pitfall, not
    Kubewarden-specific:
    ```bash
-   kubectl create --dry-run=server -o json -f pod.yaml > sample-request.json
+   [kubectl](../kubectl/SKILL.md) create --dry-run=server -o json -f pod.yaml > sample-request.json
    kwctl run policy.wasm -r sample-request.json --execution-mode wasi
    ```
 
 5. **Deploy in `monitor` mode and review before switching to
    `protect`**:
    ```bash
-   kubectl apply -f allowed-registries-policy.yaml   # mode: monitor
-   kubectl get clusteradmissionpolicy allowed-registries -o yaml \
+   [kubectl](../kubectl/SKILL.md) apply -f allowed-registries-policy.yaml   # mode: monitor
+   [kubectl](../kubectl/SKILL.md) get clusteradmissionpolicy allowed-registries -o yaml \
      | grep -A5 "status:"
    ```
    Kubewarden's `monitor` mode logs what *would* have been rejected
-   (visible in `policy-server`'s logs / an observability pipeline) but
+   (visible in `policy-server`'s logs / an [observability](../../Observability_and_SecOps/observability/SKILL.md) pipeline) but
    admits every request regardless, exactly like Gatekeeper's `dryrun`
-   and Kyverno's `Audit` — review this output for at least one full
+   and Kyverno's `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` — review this output for at least one full
    deploy cycle before promoting.
 
 6. **Switch to `protect` (Kubewarden's enforce mode) once monitor is
@@ -211,7 +211,7 @@ and distribution models.
          operations: ["CREATE", "UPDATE"]
      namespaceSelector:
        matchExpressions:
-         - key: kubernetes.io/metadata.name
+         - key: [kubernetes](../kubernetes/SKILL.md).io/metadata.name
            operator: NotIn
            values: ["kube-system", "legacy-migration"]  # owner: platform-team, review: 2026-10-15
    ```
@@ -221,7 +221,7 @@ and distribution models.
    > blast-radius risk to Gatekeeper's `deny` or Kyverno's `Enforce`.
    > Confirm the monitor-mode review period covered representative
    > traffic (including infrequent workflows) and that a fast rollback
-   > (`kubectl patch clusteradmissionpolicy <name> --type merge -p
+   > (`[kubectl](../kubectl/SKILL.md) patch clusteradmissionpolicy <name> --type merge -p
    > '{"spec":{"mode":"monitor"}}'`) is understood by on-call before
    > enforcing against production namespaces.
 
@@ -271,11 +271,11 @@ and distribution models.
   genuinely benefits from real language constructs (external libraries,
   complex control flow) that are awkward in either alternative. Choose
   OPA/Gatekeeper
-  ([opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md))
-  when the org needs the same policy engine to also gate non-Kubernetes
+  ([opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
+  when the org needs the same policy engine to also gate non-[Kubernetes](../kubernetes/SKILL.md)
   artifacts (Terraform plans via Conftest) or has already standardized
   on Rego. Choose Kyverno
-  ([kyverno-policy-management](../../../policy-and-governance-tooling/skills/kyverno-policy-management/SKILL.md))
+  ([kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../kyverno-policy-management/SKILL.md)/SKILL.md))
   when the team wants zero new language to learn and needs first-class
   `mutate`/`generate` rules, not just `validate`.
 - Always test a policy offline with `kwctl run` against sample
@@ -283,7 +283,7 @@ and distribution models.
   of field-path/schema bugs that make a Rego or Kyverno policy silently
   never fire.
 - Always roll out via `monitor` → review → `protect`, never straight to
-  `protect`, mirroring the Gatekeeper/Kyverno audit-first discipline
+  `protect`, mirroring the Gatekeeper/Kyverno [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-first discipline
   exactly.
 - Verify policy artifact signatures (`cosign`/`sigstore`) for anything
   pulled from a registry outside direct organizational control — an
@@ -327,7 +327,7 @@ and distribution models.
 - **Symptom:** A `policy-server` outage combined with
   `failurePolicy: Fail` on a broadly-scoped policy blocks every deploy
   cluster-wide, including an unrelated emergency hotfix, during an
-  incident.
+  [incident](../../Observability_and_SecOps/incident/SKILL.md).
   **Fix:** Treat `policy-server` health as a monitored, alertable
   dependency of cluster admission, and keep a documented, fast rollback
   path (patching the policy's `mode` back to `monitor`, or in a genuine
@@ -370,7 +370,7 @@ spec:
       operations: ["CREATE"]
   namespaceSelector:
     matchExpressions:
-      - key: kubernetes.io/metadata.name
+      - key: [kubernetes](../kubernetes/SKILL.md).io/metadata.name
         operator: NotIn
         values: ["kube-system"]
   settings:
@@ -381,45 +381,45 @@ spec:
 Offline test before deploying, against a sample disallowed-image
 request:
 ```bash
-kubectl create --dry-run=server -o json -f pod-using-dockerhub.yaml > sample-request.json
+[kubectl](../kubectl/SKILL.md) create --dry-run=server -o json -f pod-using-dockerhub.yaml > sample-request.json
 kwctl run policy.wasm -r sample-request.json --settings-json \
   '{"registries": ["registry.example.internal/"]}'
 ```
 ```
-{"allowed":false,"status":{"message":"image docker.io/library/nginx:latest is not from an approved registry"}}
+{"allowed":false,"status":{"message":"image [docker](../docker/SKILL.md).io/library/nginx:latest is not from an approved registry"}}
 ```
 
 Deploy in `monitor` mode, review for one week:
 ```bash
-kubectl apply -f require-approved-registry.yaml
-kubectl logs -n kubewarden -l app=kubewarden-policy-server --since=168h \
+[kubectl](../kubectl/SKILL.md) apply -f require-approved-registry.yaml
+[kubectl](../kubectl/SKILL.md) logs -n kubewarden -l app=kubewarden-policy-server --since=168h \
   | jq -c 'select(.policy_id == "require-approved-registry" and .response.allowed == false)'
 ```
 After a clean week showing only expected/known non-compliant test
 traffic (no legitimate workload flagged), the team promotes:
 ```bash
-kubectl patch clusteradmissionpolicy require-approved-registry \
+[kubectl](../kubectl/SKILL.md) patch clusteradmissionpolicy require-approved-registry \
   --type merge -p '{"spec":{"mode":"protect"}}'
 ```
-From then on, `kubectl apply -f pod-using-dockerhub.yaml` is rejected at
+From then on, `[kubectl](../kubectl/SKILL.md) apply -f pod-using-dockerhub.yaml` is rejected at
 admission time, and the pinned digest reference means the policy's
 behavior can't change underneath the team without a deliberate,
 reviewed update to the `module` field.
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   the Rego-based alternative engine; read this to compare authoring
-  model and rollout discipline (both share the audit-before-enforce
+  model and rollout discipline (both share the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   pattern) when deciding between the two for a given team.
-- [kyverno-policy-management](../../../policy-and-governance-tooling/skills/kyverno-policy-management/SKILL.md) —
+- [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../kyverno-policy-management/SKILL.md)/SKILL.md) —
   the YAML-native alternative, notably stronger for `mutate`/`generate`
   use cases Kubewarden doesn't target as directly.
-- [falco-runtime-threat-detection-configuration](../falco-runtime-threat-detection-configuration/SKILL.md) —
+- [falco-runtime-threat-detection-configuration](../[falco-runtime-threat-detection-configuration](../../CI_CD/falco-runtime-threat-detection-configuration/SKILL.md)/SKILL.md) —
   runtime/eBPF detection that complements (not substitutes for)
   admission-time policy enforcement — a resource that passes a
   Kubewarden policy can still misbehave at runtime, which Falco is
   positioned to catch.
-- [falco-configuration-validation](../falco-configuration-validation/SKILL.md) —
-  the same audit-before-enforce validation philosophy applied to Falco
+- [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md) —
+  the same [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce validation philosophy applied to Falco
   rules instead of admission policy.

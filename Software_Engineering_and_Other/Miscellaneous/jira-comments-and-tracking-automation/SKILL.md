@@ -33,11 +33,11 @@ writing comments that hold up months later, choosing comment vs. field
 update for a given piece of state, and building CI/CD-driven comment/
 status automation that adds signal instead of drowning it. It assumes
 the ticket itself is already well-formed — see
-[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)
+[jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
 for writing the ticket and moving it through its workflow. When the
 decision or context is significant enough to outlive the ticket, it
 belongs in Confluence, not buried in a comment thread — see
-[confluence-page-authoring-and-governance](../confluence-page-authoring-and-governance/SKILL.md).
+[confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -88,7 +88,7 @@ belongs in Confluence, not buried in a comment thread — see
    - **Decision** — what was decided or done, stated plainly.
    - **Rationale** — why, including alternatives considered and ruled
      out (this is the part that gets lost if only decided verbally).
-   - **Links** — PR, commit SHA, design doc/Confluence page, related
+   - **Links** — PR, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA, design doc/Confluence page, related
      ticket.
    Write it as if the next reader has zero memory of the conversation
    that led here — because in six months, they will.
@@ -119,7 +119,7 @@ belongs in Confluence, not buried in a comment thread — see
            "content": [
              {
                "type": "text",
-               "text": "Decision: rolling back the EU IdP config change from AUTH-2231 instead of forward-fixing. Root cause was a clock-skew issue between the IdP and auth-service that forward-fixing would take longer to validate than reverting. See PR #482 for the revert and the incident notes at "
+               "text": "Decision: rolling back the EU IdP config change from AUTH-2231 instead of forward-fixing. Root cause was a clock-skew issue between the IdP and auth-service that forward-fixing would take longer to validate than reverting. See PR #482 for the revert and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) notes at "
              },
              {
                "type": "text",
@@ -176,7 +176,7 @@ belongs in Confluence, not buried in a comment thread — see
          {
            "type": "paragraph",
            "content": [
-             { "type": "text", "text": "Deploy status: v2.14.1 deployed to production at 2026-07-28T14:32:00Z. Commit a91fbc2. Pipeline run: " },
+             { "type": "text", "text": "Deploy status: v2.14.1 deployed to production at 2026-07-28T14:32:00Z. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) a91fbc2. Pipeline run: " },
              { "type": "text", "text": "#4821", "marks": [{ "type": "link", "attrs": { "href": "https://ci.example.com/runs/4821" } }] }
            ]
          }
@@ -186,7 +186,7 @@ belongs in Confluence, not buried in a comment thread — see
    ```
 
 7. **Post a genuinely useful deploy notification, not a log dump.**
-   Include: what shipped (version/commit), where (environment), when
+   Include: what shipped (version/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)), where (environment), when
    (timestamp with timezone), and a link back to the pipeline run and
    the diff/PR — not the raw console output of the build. If the ticket
    needs a status change too (e.g. "In Review" → "Done" once deployed to
@@ -195,9 +195,9 @@ belongs in Confluence, not buried in a comment thread — see
 
 8. **Prefer the platform's native automation for common triggers.**
    Jira Automation rules ("when PR merged, transition to Done and
-   comment with the merge commit") or a Jira/Bitbucket/GitHub smart
-   commit integration often cover the common cases without custom REST
-   code, and are easier for a team to audit/maintain than a bespoke
+   comment with the merge [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)") or a Jira/Bitbucket/[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) smart
+   [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) integration often cover the common cases without custom REST
+   code, and are easier for a team to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/maintain than a bespoke
    script. Reach for a custom `POST .../comment` call when the trigger
    or payload shape isn't something the built-in automation supports.
 
@@ -230,11 +230,11 @@ belongs in Confluence, not buried in a comment thread — see
   comment on a closed ticket.
   **Fix:** Promote decisions with lasting consequence into the ticket
   description or a linked Confluence decision record (see
-  [confluence-page-authoring-and-governance](../confluence-page-authoring-and-governance/SKILL.md)),
+  [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md)),
   and treat the comment as the pointer to it, not the sole copy.
 
 - **Symptom:** A CI pipeline posts a new comment for every stage (lint
-  ✅, build ✅, unit tests ✅, integration tests ✅...) on every commit,
+  ✅, build ✅, unit tests ✅, integration tests ✅...) on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md),
   so a ticket accumulates dozens of near-identical automated comments and
   humans stop reading the comment feed entirely — including the one
   comment that actually mattered.
@@ -279,14 +279,14 @@ belongs in Confluence, not buried in a comment thread — see
 ```
 
 Six near-identical lines, no version number, no environment, no link
-back to anything useful — and this repeats for every commit.
+back to anything useful — and this repeats for every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
 
 **After — a single, edited-in-place deploy comment:**
 
 ```
 Deploy status: v2.14.1 deployed to production (eu-west-1) at
 2026-07-28T14:32:00Z.
-Commit: a91fbc2 ("fix: correct clock-skew tolerance in SSO token
+[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): a91fbc2 ("fix: correct clock-skew tolerance in SSO token
 validation", PR #482)
 Pipeline run: #4821 (https://ci.example.com/runs/4821)
 Verification: smoke test suite green post-deploy; EU login error rate
@@ -310,7 +310,7 @@ Authorization: Basic base64(${JIRA_USER_EMAIL}:${JIRA_API_TOKEN})
       {
         "type": "paragraph",
         "content": [
-          { "type": "text", "text": "Deploy status: v2.14.1 deployed to production (eu-west-1) at 2026-07-28T14:32:00Z. Commit a91fbc2 (\"fix: correct clock-skew tolerance in SSO token validation\", PR #482). Pipeline run #4821. Smoke tests green; EU login error rate back to baseline as of 14:40 UTC." }
+          { "type": "text", "text": "Deploy status: v2.14.1 deployed to production (eu-west-1) at 2026-07-28T14:32:00Z. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) a91fbc2 (\"fix: correct clock-skew tolerance in SSO token validation\", PR #482). Pipeline run #4821. Smoke tests green; EU login error rate back to baseline as of 14:40 UTC." }
         ]
       }
     ]
@@ -320,7 +320,7 @@ Authorization: Basic base64(${JIRA_USER_EMAIL}:${JIRA_API_TOKEN})
 
 Followed by the actual status transition (once verified, not before) as
 covered in
-[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md):
+[jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md):
 
 ```json
 { "transition": { "id": "51" } }
@@ -328,9 +328,9 @@ covered in
 
 ## Cross-references
 
-- [jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md) —
+- [jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
   writing the ticket itself, choosing issue type/priority/labels, and
   the status-transition mechanics referenced above.
-- [confluence-page-authoring-and-governance](../confluence-page-authoring-and-governance/SKILL.md) —
+- [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md) —
   where to put a decision or rationale that needs to outlive a single
   ticket's comment thread.

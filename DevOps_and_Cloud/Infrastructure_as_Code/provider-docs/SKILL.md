@@ -29,8 +29,8 @@ metadata:
   - `docs/actions/<name>.md.tmpl` (tfplugindocs generates action docs with Terraform v1.14.0+)
   - `docs/guides/<name>.md.tmpl`
 - Keep templates focused on overview and examples; rely on generated sections for field-by-field details.
-- Keep HCL examples in the `examples/` directory — one example per file, pulled into templates with `tffile` — rather than inlined in templates (see Example File Conventions in `../../../Global_References/hashicorp-provider-docs.md`). Examples must not contain `terraform`, `provider`, or `output` blocks.
-- For action pages, follow the structure in `../../../Global_References/hashicorp-provider-docs.md` (Action Pages section): examples must show both the `action` block and the `action_trigger` lifecycle wiring, and actions get no attribute/output section.
+- Keep HCL examples in the `examples/` directory — one example per file, pulled into templates with `tffile` — rather than inlined in templates (see Example File Conventions in `../../../Global_References/hashicorp-[provider-docs](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-docs/SKILL.md).md`). Examples must not contain `terraform`, `provider`, or `output` blocks.
+- For action pages, follow the structure in `../../../Global_References/hashicorp-[provider-docs](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-docs/SKILL.md).md` (Action Pages section): examples must show both the `action` block and the `action_trigger` lifecycle wiring, and actions get no attribute/output section.
 
 4. Generate documentation with `tfplugindocs`.
 - Prefer repository defaults when configured:
@@ -39,7 +39,7 @@ go generate ./...
 ```
 - Otherwise run the generator directly:
 ```bash
-go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name <provider_name>
+go run [github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name <provider_name>
 ```
 - Re-run generation after every schema or template edit.
 
@@ -68,6 +68,6 @@ go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --pr
 
 ## Load References On Demand
 
-- Read `../../../Global_References/hashicorp-provider-docs.md` for source-backed rules and official links.
+- Read `../../../Global_References/hashicorp-[provider-docs](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-docs/SKILL.md).md` for source-backed rules and official links.
 - Load only the sections needed for the current change to keep context lean.
 

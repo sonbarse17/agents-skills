@@ -80,7 +80,7 @@ Develop baseline and target architectures for each domain. Perform gap analysis.
 Identify implementation projects. Group into work packages. Create implementation roadmap. Estimate costs and benefits. Prioritize projects. Confirm architecture roadmap with stakeholders. Phase E: identify solutions and implementation strategy. Phase F: create detailed migration plan with phases and dependencies.
 
 ### Step 5: Phase G-H -- Implementation Governance and Change Management
-Govern implementation. Conduct architecture compliance reviews. Manage architecture changes. Update architecture repository. Monitor architecture context changes. Operate architecture governance framework. Phase G: architecture contract monitoring. Phase H: architecture change management and continuous improvement.
+Govern implementation. Conduct architecture compliance reviews. Manage architecture changes. Update architecture repository. Monitor architecture context changes. Operate architecture governance framework. Phase G: architecture contract [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Phase H: architecture change management and continuous improvement.
 
 ### Step 6: Requirements Management
 Capture, track, and prioritize requirements throughout ADM. Assess requirements impact on all architecture domains. Maintain requirements traceability. Feed requirements back into phases. Requirements repository linked to architecture artifacts.
@@ -94,7 +94,7 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
    - NO -> Use Zachman for classification and gap analysis. Descriptive rather than prescriptive.
 
 2. Is the organization in a highly regulated industry (finance, healthcare, government)?
-   - YES -> Use TOGAF. Its governance framework and phase gate reviews align with regulatory compliance requirements. Supplement with Zachman rows for audit trail completeness.
+   - YES -> Use TOGAF. Its governance framework and phase gate reviews align with regulatory compliance requirements. Supplement with Zachman rows for [audit](../../Operations/audit/SKILL.md) trail completeness.
    - NO -> Consider lighter framework. If still need structure: tailored TOGAF (remove heavy deliverables, focus on value-adding artifacts). If need holistic classification: Zachman.
 
 3. Are you documenting current architecture or designing future architecture?
@@ -137,8 +137,8 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
    - Business Owner (Row 2): Business model conceptual. Processes, organization, locations. Deliverable: process models, org charts.
    - Architect (Row 3): System model logical. Requirements, data models, application logic. Deliverable: architecture specifications.
    - Engineer (Row 4): Technology model physical. Implementation details, platform specs. Deliverable: design documents.
-   - Technician (Row 5): Detailed specifications. Configuration, deployment, operation. Deliverable: runbooks, configs.
-   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, dashboards.
+   - Technician (Row 5): Detailed specifications. Configuration, deployment, operation. Deliverable: [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), configs.
+   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 2. Which interrogative (column) is the focus?
    - What (Data): Data entities, information architecture. Prioritize for data-intensive initiatives.
@@ -190,7 +190,7 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
 | Architecture Metamodel | Entity-relationship definitions | Standardize representation |
 | Architecture Landscape | Baseline + target views | Current and future state |
 | Reference Library | Standards, patterns, building blocks | Reusable assets |
-| Governance Log | Review decisions, waivers, changes | Audit trail |
+| Governance Log | Review decisions, waivers, changes | [Audit](../../Operations/audit/SKILL.md) trail |
 | Requirements Repository | Stakeholder requirements, traceability | Impact analysis |
 
 ## Governance Framework
@@ -214,7 +214,7 @@ Phase E Gate: Implementation opportunities identified. Work packages defined. So
 
 Phase F Gate: Migration plan approved. Projects prioritized. Business case confirmed. Decision: proceed to Phase G or review priorities.
 
-Phase G Gate: Implementation compliance reviewed. Architecture contracts active. Changes managed. Decision: continue monitoring or remediate.
+Phase G Gate: Implementation compliance reviewed. Architecture contracts active. Changes managed. Decision: continue [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or remediate.
 
 Phase H Gate: Architecture repository updated. Context changes assessed. Next cycle planned. Decision: continue to next ADM iteration or close program.
 
@@ -345,7 +345,7 @@ Zachman: 6x6 matrix ontology for classifying EA artifacts. ArchiMate: visual mod
 ## Case Studies
 
 ### Case Study 1: TOGAF ADM for Financial Services Transformation
-A large bank with 40+ legacy systems needed to modernize their customer onboarding process. Using TOGAF ADM, the EA team started with Phase A (Architecture Vision) to align stakeholders across retail banking, compliance, and IT. Phase B documented the as-is business process requiring 14 system touchpoints and 3-day onboarding time. Phase C mapped data entities (customer, KYC documents, account products) and identified 7 redundant data stores. Phase D designed the target technology architecture with an API gateway, event-driven microservices, and a customer data platform.
+A large bank with 40+ legacy systems needed to modernize their customer onboarding process. Using TOGAF ADM, the EA team started with Phase A (Architecture Vision) to align stakeholders across retail banking, compliance, and IT. Phase B documented the as-is business process requiring 14 system touchpoints and 3-day onboarding time. Phase C mapped data entities (customer, KYC documents, account products) and identified 7 redundant data stores. Phase D designed the target technology architecture with an API gateway, event-driven [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), and a customer data platform.
 
 Gap analysis revealed 23 capability gaps between baseline and target. Phase E grouped these into 4 work packages: customer portal, KYC automation, account opening engine, and integration layer. Phase F created a 3-phase migration plan progressing from quick wins (portal UX) through core transformation (KYC automation) to full platform. Architecture governance through Phase G ensured each work package maintained compliance with the target architecture. Phase H established quarterly architecture reviews.
 
@@ -356,7 +356,7 @@ A healthcare organization needed to understand their complete data landscape for
 
 Row 1 (Executive): Identified 5 key data domains — patient records, billing, clinical research, operational, regulatory reporting. Row 2 (Business Owner): Mapped 34 business entities with their lifecycle and ownership. Row 3 (Architect): Created logical data model with entity relationships, cardinality, and data flows. Row 4 (Engineer): Documented physical database schemas across 12 systems including EHR, billing, and lab systems. Row 5 (Technician): Detailed configuration of database servers, backup policies, and data retention rules. Row 6 (User): Catalogued actual data instances, volumes, and growth rates.
 
-The Zachman analysis revealed: 3 data entities with no clear owner (governance gap), 2 systems storing duplicate patient demographic data (redundancy), and 1 critical data flow with no backup path (resiliency gap). Remediation: assigned data owners, consolidated patient data into master data management system, and added failover for the critical data flow. Passed HIPAA audit with zero findings related to data governance.
+The Zachman analysis revealed: 3 data entities with no clear owner (governance gap), 2 systems storing duplicate patient demographic data (redundancy), and 1 critical data flow with no backup path (resiliency gap). Remediation: assigned data owners, consolidated patient data into master data management system, and added failover for the critical data flow. Passed HIPAA [audit](../../Operations/audit/SKILL.md) with zero findings related to data governance.
 
 ### Case Study 3: Hybrid TOGAF-Zachman for Cloud Migration
 A retail company with 200+ applications planned a 3-year cloud migration. The EA team used TOGAF ADM for the migration method and Zachman for architecture completeness. Phase A (Vision) established the cloud strategy and stakeholder alignment. Phase B-D used Zachman's What/How/Where columns to document the current application portfolio (What applications exist, How they integrate, Where they run). This revealed 35 applications with unknown dependencies and 12 applications running on unsupported OS versions.
@@ -503,12 +503,12 @@ zachman_adm_mapping:
 ## Security Considerations
 
 - Architecture repository access: role-based (viewer, contributor, architect, admin).
-- Phase gate approvals: recorded with digital signature. Non-repudiation for audit.
+- Phase gate approvals: recorded with digital signature. Non-repudiation for [audit](../../Operations/audit/SKILL.md).
 - Security architecture artifacts: classified as internal confidential. Restricted distribution.
 - Third-party architecture sharing: sanitized viewpoints only. No internal network details.
 - Compliance tracking: all phase gates include security architecture review checklist.
 - Repository backup: encrypted. Point-in-time recovery. 90-day retention for daily, 7-year for annual.
-- Architecture decision audit: all ADM phase decisions logged with timestamp, author, rationale.
+- Architecture decision [audit](../../Operations/audit/SKILL.md): all ADM phase decisions logged with timestamp, author, rationale.
 
 ## Handoff
-For implementation projects, hand off to `enterprise-architecture-governance` for review board decisions, or `enterprise-vendor-management` for technology procurement alignment.
+For implementation projects, hand off to `[enterprise-architecture-governance](../../../Software_Engineering_and_Other/Patterns/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../Product_and_Business/vendor-management/SKILL.md)` for technology procurement alignment.

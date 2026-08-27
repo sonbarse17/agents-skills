@@ -24,7 +24,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents
 | Event | Purpose |
 |-------|---------|
 | `OnTokenIssuanceStart` | Add custom claims to tokens during issuance |
-| `OnAttributeCollectionStart` | Customize attribute collection UI before display |
+| `OnAttributeCollectionStart` | [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) attribute collection UI before display |
 | `OnAttributeCollectionSubmit` | Validate/modify attributes after user submission |
 | `OnOtpSend` | Custom OTP delivery (SMS, email, etc.) |
 
@@ -128,9 +128,9 @@ public static class TokenEnrichmentWithExternalData
 public record UserProfile(string EmployeeId, string Department, string[] Roles);
 ```
 
-### 3. Attribute Collection - Customize UI (Start Event)
+### 3. Attribute Collection - [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) UI (Start Event)
 
-Customize the attribute collection page before it's displayed.
+[Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the attribute collection page before it's displayed.
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -440,4 +440,4 @@ public static WebJobsAuthenticationEventResponse Run(
 | Custom Extensions Overview | https://learn.microsoft.com/entra/identity-platform/custom-extension-overview |
 | Token Issuance Events | https://learn.microsoft.com/entra/identity-platform/custom-extension-tokenissuancestart-setup |
 | Attribute Collection Events | https://learn.microsoft.com/entra/identity-platform/custom-extension-attribute-collection |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/entra/Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents |
+| [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/entra/Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents |

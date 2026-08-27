@@ -13,19 +13,19 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 
 ## When to Use This Skill
 
-- Debugging latency across microservices
-- Standardizing observability data model and naming
-- Sending telemetry to Prometheus, Grafana, Datadog, or OTLP backends
-- Building SLO dashboards with trace-to-log correlation
-- Instrumenting Python or Node.js applications with tracing and metrics
+- Debugging latency across [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+- Standardizing [observability](../observability/SKILL.md) data model and naming
+- Sending telemetry to Prometheus, Grafana, [Datadog](../datadog/SKILL.md), or OTLP backends
+- Building SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md) with trace-to-log correlation
+- Instrumenting [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) or Node.js applications with tracing and metrics
 - Setting up auto-instrumentation for existing services without code changes
 
 ## Prerequisites
 
 - Application services running in containers or on VMs
-- Backend for traces (Jaeger, Tempo, Datadog, or any OTLP receiver)
+- Backend for traces (Jaeger, Tempo, [Datadog](../datadog/SKILL.md), or any OTLP receiver)
 - Backend for metrics (Prometheus, Mimir, or OTLP receiver)
-- Kubernetes cluster (for collector deployment) or VM with systemd
+- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster (for collector deployment) or VM with systemd
 - Network access from services to collector, and collector to backends
 
 ## Core Workflow
@@ -34,7 +34,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 2. Add SDK or auto-instrumentation in each service.
 3. Run an OpenTelemetry Collector to receive, transform, and export telemetry.
 4. Validate cardinality and sampling to control cost.
-5. Create golden signals dashboards and alerting from collected data.
+5. Create golden signals [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and [alerting](../alerting/SKILL.md) from collected data.
 
 ## Collector Production Configuration
 
@@ -52,7 +52,7 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: "kubernetes-pods"
+        - job_name: "[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-pods"
           kubernetes_sd_configs:
             - role: pod
           relabel_configs:
@@ -65,7 +65,7 @@ receivers:
               regex: (.+)
               replacement: $$1
 
-  # Host metrics for infrastructure monitoring
+  # Host metrics for infrastructure [monitoring](../monitoring/SKILL.md)
   hostmetrics:
     collection_interval: 30s
     scrapers:
@@ -155,7 +155,7 @@ service:
       exporters: [otlp/logs]
 ```
 
-## Collector Kubernetes Deployment
+## Collector [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment
 
 ```yaml
 # otel-collector-deployment.yaml
@@ -163,7 +163,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: otel-collector
-  namespace: observability
+  namespace: [observability](../observability/SKILL.md)
 spec:
   replicas: 2
   selector:
@@ -212,7 +212,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: otel-collector
-  namespace: observability
+  namespace: [observability](../observability/SKILL.md)
 spec:
   selector:
     app: otel-collector
@@ -228,11 +228,11 @@ spec:
       targetPort: 8888
 ```
 
-## Python SDK Instrumentation
+## [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK Instrumentation
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # tracing_setup.py
-"""Initialize OpenTelemetry tracing and metrics for a Python service."""
+"""Initialize OpenTelemetry tracing and metrics for a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) service."""
 from opentelemetry import trace, metrics
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -342,31 +342,31 @@ sdk.start();
 process.on("SIGTERM", () => sdk.shutdown());
 ```
 
-## Auto-Instrumentation with Kubernetes Operator
+## Auto-Instrumentation with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Operator
 
 ```yaml
 # otel-auto-instrumentation.yaml
 # Install the OTel Operator first:
 #   helm install opentelemetry-operator open-telemetry/opentelemetry-operator \
-#     --namespace observability --create-namespace
+#     --namespace [observability](../observability/SKILL.md) --create-namespace
 
-# Define instrumentation for Python services
+# Define instrumentation for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) services
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
-  name: python-instrumentation
+  name: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-instrumentation
   namespace: default
 spec:
   exporter:
-    endpoint: http://otel-collector.observability:4317
+    endpoint: http://otel-collector.[observability](../observability/SKILL.md):4317
   propagators:
     - tracecontext
     - baggage
   sampler:
     type: parentbased_traceidratio
     argument: "0.25"
-  python:
-    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.44b0
+  [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):
+    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):0.44b0
     env:
       - name: OTEL_PYTHON_LOG_CORRELATION
         value: "true"
@@ -379,7 +379,7 @@ metadata:
   namespace: default
 spec:
   exporter:
-    endpoint: http://otel-collector.observability:4317
+    endpoint: http://otel-collector.[observability](../observability/SKILL.md):4317
   propagators:
     - tracecontext
     - baggage
@@ -393,10 +393,10 @@ spec:
 To instrument a pod, add the annotation:
 
 ```yaml
-# For Python:
+# For [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):
 metadata:
   annotations:
-    instrumentation.opentelemetry.io/inject-python: "true"
+    instrumentation.opentelemetry.io/inject-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md): "true"
 
 # For Node.js:
 metadata:
@@ -469,8 +469,8 @@ processors:
 
 ## Related Skills
 
-- [prometheus-grafana](../prometheus-grafana/) - Dashboarding and alerting
-- [datadog](../datadog/) - Managed observability backend
-- [alerting-oncall](../alerting-oncall/) - On-call routing and escalation
-- [rag-observability-evals](../../ai/rag-observability-evals/) - RAG-specific observability
-- [agent-observability](../../ai/agent-observability/) - AI agent tracing
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Dashboarding and [alerting](../alerting/SKILL.md)
+- [datadog](../[datadog](../datadog/SKILL.md)/) - Managed [observability](../observability/SKILL.md) backend
+- [alerting-oncall](../[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - On-call routing and escalation
+- [rag-[observability](../observability/SKILL.md)-evals](../../ai/[rag-[observability](../observability/SKILL.md)-evals](../../../AI_and_Agents/Infrastructure/rag-[observability](../observability/SKILL.md)-evals/SKILL.md)/) - RAG-specific [observability](../observability/SKILL.md)
+- [agent-observability](../../ai/[agent-observability](../../../AI_and_Agents/Operations/agent-[observability](../observability/SKILL.md)/SKILL.md)/) - AI agent tracing

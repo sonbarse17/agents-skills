@@ -5,7 +5,7 @@ description: Convert evaluation traces and production logs into SFT examples and
 
 # Trace To Training Data
 
-This skill assumes `eval-harness-first`
+This skill assumes `[eval-harness-first](../eval-harness-first/SKILL.md)`
 already graded the traces being
 converted here — goldens, graders,
 and `runs/<run-id>/results.json`
@@ -35,7 +35,7 @@ RLVR verifier):
 ```
 
 **Output format:** rows shaped
-exactly like `dataset-curation`'s
+exactly like `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)`'s
 Format Selection table — SFT
 `messages` rows or DPO
 `prompt`/`chosen`/`rejected`
@@ -52,7 +52,7 @@ and often a reward, before this
 skill ever touches it. Converting
 a graded trace into a training
 row is mechanical — pick a shape
-from `dataset-curation`'s table,
+from `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)`'s table,
 map fields, write JSONL.
 **Curation is the work that
 remains** — which traces clear a
@@ -68,7 +68,7 @@ grader, not a gap this skill
 should paper over. A trace with
 no verdict or reward isn't
 convertible yet — route it back
-to `eval-harness-first` first,
+to `[eval-harness-first](../eval-harness-first/SKILL.md)` first,
 don't hand-label it here to
 unblock conversion.
 
@@ -125,7 +125,7 @@ unblock conversion.
   μ−2σ of the reward distribution
   for that task, never the
   absolute minimum.**
-  `preference-optimization`'s
+  `[preference-optimization](../preference-optimization/SKILL.md)`'s
   Pair Construction section owns
   the full selection formula;
   this skill supplies the graded
@@ -153,7 +153,7 @@ unblock conversion.
   over every SFT and DPO row and redact matches;
   conversion fails closed (the row is dropped, not
   shipped with the raw content) if sensitive fields
-  remain after redaction. Never commit secrets.
+  remain after redaction. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets.
 - **Eval goldens must never leak
   into training data.** Hold
   every `eval/goldens.jsonl` ID
@@ -169,7 +169,7 @@ unblock conversion.
   newly converted rows —
   exact-match or
   embedding-similarity, matching
-  `dataset-curation`'s dedup
+  `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)`'s dedup
   method field, run against
   whatever training data already
   exists before this batch merges
@@ -178,7 +178,7 @@ unblock conversion.
   dataset card.** Every converted
   row must trace back to its
   source `run_id` and `trace_id`
-  — `dataset-curation`'s
+  — `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)`'s
   Provenance field checks for
   exactly this link back to
   `trace-to-training-data`
@@ -187,20 +187,20 @@ unblock conversion.
 
 ## Related Skills
 
-- `eval-harness-first` — produces
+- `[eval-harness-first](../eval-harness-first/SKILL.md)` — produces
   the graded traces this skill
   converts; a trace with no
   verdict or reward isn't
   convertible yet, route it back
   there before conversion.
-- `dataset-curation` — owns the
+- `[dataset-curation](../../../Data_Engineering/dataset-curation/SKILL.md)` — owns the
   target formats and the dataset
   card this skill's provenance
   data feeds; converted rows must
   match its Format Selection
   table field names exactly, not
   an approximation of them.
-- `preference-optimization` —
+- `[preference-optimization](../preference-optimization/SKILL.md)` —
   consumes the DPO pairs this
   skill builds and owns the full
   μ−2σ rejection-selection

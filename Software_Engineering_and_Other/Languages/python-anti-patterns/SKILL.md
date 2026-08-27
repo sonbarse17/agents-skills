@@ -3,25 +3,25 @@ name: python-anti-patterns
 description: Use this skill when reviewing Python code for common anti-patterns to avoid. Use as a checklist when reviewing code, before finalizing implementations, or when debugging issues that might stem from known bad practices.
 ---
 
-# Python Anti-Patterns Checklist
+# [Python](../python/SKILL.md) Anti-Patterns Checklist
 
-A reference checklist of common mistakes and anti-patterns in Python code. Review this before finalizing implementations to catch issues early.
+A reference checklist of common mistakes and anti-patterns in [Python](../python/SKILL.md) code. Review this before finalizing implementations to catch issues early.
 
 ## When to Use This Skill
 
 - Reviewing code before merge
 - Debugging mysterious issues
-- Teaching or learning Python best practices
+- Teaching or learning [Python](../python/SKILL.md) best practices
 - Establishing team coding standards
 - Refactoring legacy code
 
-**Note:** This skill focuses on what to avoid. For guidance on positive patterns and architecture, see the `python-design-patterns` skill.
+**Note:** This skill focuses on what to avoid. For guidance on positive patterns and architecture, see the `[python-design-patterns](../../Patterns/[python](../python/SKILL.md)-[design-patterns](../../Patterns/design-patterns/SKILL.md)/SKILL.md)` skill.
 
 ## Infrastructure Anti-Patterns
 
 ### Scattered Timeout/Retry Logic
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Timeout logic duplicated everywhere
 def fetch_user(user_id):
     try:
@@ -40,7 +40,7 @@ def fetch_orders(user_id):
 
 **Fix:** Centralize in decorators or client wrappers.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD: Centralized retry logic
 @retry(stop=stop_after_attempt(3), wait=wait_exponential())
 def http_get(url: str) -> Response:
@@ -49,7 +49,7 @@ def http_get(url: str) -> Response:
 
 ### Double Retry
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Retrying at multiple layers
 @retry(max_attempts=3)  # Application retry
 def call_service():
@@ -60,7 +60,7 @@ def call_service():
 
 ### Hard-Coded Configuration
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Secrets and config in code
 DB_HOST = "prod-db.example.com"
 API_KEY = "sk-12345"
@@ -71,7 +71,7 @@ def connect():
 
 **Fix:** Use environment variables with typed settings.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 from pydantic_settings import BaseSettings
 
@@ -86,7 +86,7 @@ settings = Settings()
 
 ### Exposed Internal Types
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Leaking ORM model to API
 @app.get("/users/{id}")
 def get_user(id: str) -> UserModel:  # SQLAlchemy model
@@ -95,7 +95,7 @@ def get_user(id: str) -> UserModel:  # SQLAlchemy model
 
 **Fix:** Use DTOs/response models.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 @app.get("/users/{id}")
 def get_user(id: str) -> UserResponse:
@@ -105,7 +105,7 @@ def get_user(id: str) -> UserResponse:
 
 ### Mixed I/O and Business Logic
 
-```python
+```[python](../python/SKILL.md)
 # BAD: SQL embedded in business logic
 def calculate_discount(user_id: str) -> float:
     user = db.query("SELECT * FROM users WHERE id = ?", user_id)
@@ -118,7 +118,7 @@ def calculate_discount(user_id: str) -> float:
 
 **Fix:** Repository pattern. Keep business logic pure.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def calculate_discount(user: User, orders: list[Order]) -> float:
     # Pure business logic, easily testable
@@ -131,7 +131,7 @@ def calculate_discount(user: User, orders: list[Order]) -> float:
 
 ### Bare Exception Handling
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Swallowing all exceptions
 try:
     process()
@@ -141,7 +141,7 @@ except Exception:
 
 **Fix:** Catch specific exceptions. Log or handle appropriately.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 try:
     process()
@@ -155,7 +155,7 @@ except ValueError as e:
 
 ### Ignored Partial Failures
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Stops on first error
 def process_batch(items):
     results = []
@@ -167,7 +167,7 @@ def process_batch(items):
 
 **Fix:** Capture both successes and failures.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def process_batch(items) -> BatchResult:
     succeeded = {}
@@ -182,7 +182,7 @@ def process_batch(items) -> BatchResult:
 
 ### Missing Input Validation
 
-```python
+```[python](../python/SKILL.md)
 # BAD: No validation
 def create_user(data: dict):
     return User(**data)  # Crashes deep in code on bad input
@@ -190,7 +190,7 @@ def create_user(data: dict):
 
 **Fix:** Validate early at API boundaries.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def create_user(data: dict) -> User:
     validated = CreateUserInput.model_validate(data)
@@ -201,7 +201,7 @@ def create_user(data: dict) -> User:
 
 ### Unclosed Resources
 
-```python
+```[python](../python/SKILL.md)
 # BAD: File never closed
 def read_file(path):
     f = open(path)
@@ -210,7 +210,7 @@ def read_file(path):
 
 **Fix:** Use context managers.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def read_file(path):
     with open(path) as f:
@@ -219,7 +219,7 @@ def read_file(path):
 
 ### Blocking in Async
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Blocks the entire event loop
 async def fetch_data():
     time.sleep(1)  # Blocks everything!
@@ -228,7 +228,7 @@ async def fetch_data():
 
 **Fix:** Use async-native libraries.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 async def fetch_data():
     await asyncio.sleep(1)
@@ -240,7 +240,7 @@ async def fetch_data():
 
 ### Missing Type Hints
 
-```python
+```[python](../python/SKILL.md)
 # BAD: No types
 def process(data):
     return data["value"] * 2
@@ -248,7 +248,7 @@ def process(data):
 
 **Fix:** Annotate all public functions.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def process(data: dict[str, int]) -> int:
     return data["value"] * 2
@@ -256,7 +256,7 @@ def process(data: dict[str, int]) -> int:
 
 ### Untyped Collections
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Generic list without type parameter
 def get_users() -> list:
     ...
@@ -264,7 +264,7 @@ def get_users() -> list:
 
 **Fix:** Use type parameters.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def get_users() -> list[User]:
     ...
@@ -274,7 +274,7 @@ def get_users() -> list[User]:
 
 ### Only Testing Happy Paths
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Only tests success case
 def test_create_user():
     user = service.create_user(valid_data)
@@ -283,7 +283,7 @@ def test_create_user():
 
 **Fix:** Test error conditions and edge cases.
 
-```python
+```[python](../python/SKILL.md)
 # GOOD
 def test_create_user_success():
     user = service.create_user(valid_data)
@@ -301,7 +301,7 @@ def test_create_user_duplicate_email():
 
 ### Over-Mocking
 
-```python
+```[python](../python/SKILL.md)
 # BAD: Mocking everything
 def test_user_service():
     mock_repo = Mock()

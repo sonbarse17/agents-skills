@@ -109,7 +109,7 @@ When asked to write a Dockerfile, always apply these best practices by default:
 - **Combine RUN commands** — chain related commands with `&&`; clean up package caches in the same layer.
 - **Always create `.dockerignore`** alongside Dockerfile.
 
-For complete Dockerfile templates (Node.js, Python, Go) and `.dockerignore` patterns, see `resources/images.md`.
+For complete Dockerfile templates (Node.js, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go) and `.dockerignore` patterns, see `resources/images.md`.
 
 ## Docker Compose Authoring
 

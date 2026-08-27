@@ -3,9 +3,9 @@ name: python-code-style
 description: Python code style, linting, formatting, naming conventions, and documentation standards. Use when writing new code, reviewing style, configuring linters, writing docstrings, or establishing project standards.
 ---
 
-# Python Code Style & Documentation
+# [Python](../python/SKILL.md) Code Style & Documentation
 
-Consistent code style and clear documentation make codebases maintainable and collaborative. This skill covers modern Python tooling, naming conventions, and documentation standards.
+Consistent code style and clear documentation make codebases maintainable and collaborative. This skill covers modern [Python](../python/SKILL.md) tooling, naming conventions, and documentation standards.
 
 ## When to Use This Skill
 
@@ -32,7 +32,7 @@ Docstrings should be maintained alongside the code they describe.
 
 ### 4. Type Annotations
 
-Modern Python code should include type hints for all public APIs.
+Modern [Python](../python/SKILL.md) code should include type hints for all public APIs.
 
 ## Quick Start
 
@@ -43,7 +43,7 @@ pip install ruff mypy
 # Configure in pyproject.toml
 [tool.ruff]
 line-length = 120
-target-version = "py312"  # Adjust based on your project's minimum Python version
+target-version = "py312"  # Adjust based on your project's minimum [Python](../python/SKILL.md) version
 
 [tool.mypy]
 strict = true
@@ -51,7 +51,7 @@ strict = true
 
 ## Fundamental Patterns
 
-### Pattern 1: Modern Python Tooling
+### Pattern 1: Modern [Python](../python/SKILL.md) Tooling
 
 Use `ruff` as an all-in-one linter and formatter. It replaces flake8, isort, and black with a single fast tool.
 
@@ -59,7 +59,7 @@ Use `ruff` as an all-in-one linter and formatter. It replaces flake8, isort, and
 # pyproject.toml
 [tool.ruff]
 line-length = 120
-target-version = "py312"  # Adjust based on your project's minimum Python version
+target-version = "py312"  # Adjust based on your project's minimum [Python](../python/SKILL.md) version
 
 [tool.ruff.lint]
 select = [
@@ -119,7 +119,7 @@ Follow PEP 8 with emphasis on clarity over brevity.
 
 **Files and Modules:**
 
-```python
+```[python](../python/SKILL.md)
 # Good: Descriptive snake_case
 user_repository.py
 order_processing.py
@@ -133,7 +133,7 @@ http_cli.py
 
 **Classes and Functions:**
 
-```python
+```[python](../python/SKILL.md)
 # Classes: PascalCase
 class UserRepository:
     pass
@@ -149,7 +149,7 @@ def get_user_by_email(email: str) -> User | None:
 
 **Constants:**
 
-```python
+```[python](../python/SKILL.md)
 # Module-level constants: SCREAMING_SNAKE_CASE
 MAX_RETRY_ATTEMPTS = 3
 DEFAULT_TIMEOUT_SECONDS = 30
@@ -160,7 +160,7 @@ API_BASE_URL = "https://api.example.com"
 
 Group imports in a consistent order: standard library, third-party, local.
 
-```python
+```[python](../python/SKILL.md)
 # Standard library
 import os
 from collections.abc import Callable
@@ -178,7 +178,7 @@ from myproject.services import UserService
 
 Use absolute imports exclusively:
 
-```python
+```[python](../python/SKILL.md)
 # Preferred
 from myproject.utils import retry_decorator
 
@@ -194,7 +194,7 @@ Write docstrings for all public classes, methods, and functions.
 
 **Simple Function:**
 
-```python
+```[python](../python/SKILL.md)
 def get_user(user_id: str) -> User:
     """Retrieve a user by their unique identifier."""
     ...
@@ -202,7 +202,7 @@ def get_user(user_id: str) -> User:
 
 **Complex Function:**
 
-```python
+```[python](../python/SKILL.md)
 def process_batch(
     items: list[Item],
     max_workers: int = 4,
@@ -235,7 +235,7 @@ def process_batch(
 
 **Class Docstring:**
 
-```python
+```[python](../python/SKILL.md)
 class UserService:
     """Service for managing user operations.
 
@@ -266,7 +266,7 @@ class UserService:
 
 Set line length to 120 characters for modern displays while maintaining readability.
 
-```python
+```[python](../python/SKILL.md)
 # Good: Readable line breaks
 def create_user(
     email: str,
@@ -356,5 +356,5 @@ pytest
 6. **Google-style docstrings** - Consistent, readable documentation
 7. **Document public APIs** - Every public function needs a docstring
 8. **Keep docs updated** - Treat documentation as code
-9. **Automate in CI** - Run linters on every commit
-10. **Target Python 3.10+** - For new projects, Python 3.12+ is recommended for modern language features
+9. **Automate in CI** - Run linters on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+10. **Target [Python](../python/SKILL.md) 3.10+** - For new projects, [Python](../python/SKILL.md) 3.12+ is recommended for modern language features

@@ -142,7 +142,7 @@ const { data: stats } = await useAsyncData('dashboard-stats', async () => {
 
 ### Server Route with Validation
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // server/api/products/[id].delete.ts
 import { z } from 'zod'
 
@@ -159,7 +159,7 @@ export default defineEventHandler(async (event) => {
 
 ### Auth Middleware
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // middleware/auth.global.ts
 export default defineNuxtRouteMiddleware(async (to, from) => {
   if (process.server) return // skip on first render
@@ -195,7 +195,7 @@ definePageMeta({ layout: 'admin', middleware: ['auth'] })
 
 ### useState for Shared Reactive State
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // composables/useCounter.ts
 export function useCounter() {
   return useState('counter', () => 0)
@@ -208,7 +208,7 @@ counter.value++
 
 ### Pinia Store
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // stores/auth.store.ts
 import { defineStore } from 'pinia'
 
@@ -226,7 +226,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 ### Cookie State
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 const token = useCookie('token', { maxAge: 60 * 60 * 24 * 7, sameSite: 'lax', secure: true })
 const preferences = useCookie('preferences', { default: () => ({ theme: 'light' }) })
 ```
@@ -248,7 +248,7 @@ useCookie is reactive — changing value updates the cookie and triggers re-rend
 - Tree-shake server utilities from client bundles
 
 ### Caching
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Nuxt 3 hybrid rendering per route
 export default defineNuxtConfig({
   routeRules: {
@@ -264,12 +264,12 @@ export default defineNuxtConfig({
 
 ### Nuxt Config
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@vueuse/nuxt'],
   css: ['~/assets/css/main.css'],
   nitro: {
-    preset: 'vercel', // or 'node-server', 'cloudflare-pages', 'netlify'
+    [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md): 'vercel', // or 'node-server', '[cloudflare-pages](../../../DevOps_and_Cloud/Cloud_Providers/cloudflare-pages/SKILL.md)', 'netlify'
     storage: {
       redis: { driver: 'redis', host: process.env.REDIS_HOST },
     },
@@ -285,7 +285,7 @@ export default defineNuxtConfig({
 
 ### Environment Variables
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Public (available in client + server): NUXT_PUBLIC_API_URL
 // Private (server-only): DATABASE_URL, SECRET_KEY
 // Usage: useRuntimeConfig().public.apiUrl
@@ -302,7 +302,7 @@ npm run preview # preview production
 
 ### Unit Test with Vitest
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { describe, it, expect } from 'vitest'
 
 describe('auth middleware', () => {
@@ -318,7 +318,7 @@ describe('auth middleware', () => {
 
 ### Component Test
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { describe, it, expect } from 'vitest'
 import ProductCard from '~/components/ProductCard.vue'
@@ -336,7 +336,7 @@ describe('ProductCard', () => {
 
 ### E2E Test
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { test, expect } from '@playwright/test'
 
 test('login flow', async ({ page }) => {
@@ -379,7 +379,7 @@ const { data: posts } = await useFetch('/api/posts')
 
 ### mixins in Nuxt 3
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Anti-pattern: mixing logic across concerns
 // Instead: use composables
 export function useAuth() {
@@ -428,7 +428,7 @@ async function logout() { await $fetch('/api/logout') }
 
 ## Compared With
 
-| Aspect | Nuxt 3 | Next.js App | SvelteKit |
+| Aspect | Nuxt 3 | Next.js App | [SvelteKit](../sveltekit/SKILL.md) |
 |--------|--------|-------------|-----------|
 | Data fetching | useFetch | fetch in RSC | load() |
 | Server routes | server/api/ | route.ts | +server.ts |
@@ -473,7 +473,7 @@ const { data: users, refresh } = await useFetch('/api/users', { query: { role: '
 ```
 
 ### Step 3: Server Route
-```typescript
+```[typescript](../typescript/SKILL.md)
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const user = await db.user.create({ data: body })
@@ -491,13 +491,13 @@ export default defineEventHandler(async (event) => {
 | stores/ | No | import { useAuthStore } |
 
 ### Step 5: Middleware + Layouts
-```typescript
+```[typescript](../typescript/SKILL.md)
 defineNuxtRouteMiddleware((to) => { if (!user.value) return navigateTo('/login') })
 definePageMeta({ layout: 'admin', middleware: ['auth'] })
 ```
 
 ### Step 6: Nuxt Layers
-```typescript
+```[typescript](../typescript/SKILL.md)
 export default defineNuxtConfig({
   extends: ['@my-org/ui-layer'],
 })

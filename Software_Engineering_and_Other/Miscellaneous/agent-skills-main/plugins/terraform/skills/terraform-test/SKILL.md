@@ -14,7 +14,7 @@ Terraform's built-in testing framework validates that configuration updates don'
 ## Reference Files
 
 - `../../../../../../../Global_References/MOCK_PROVIDERS.md` — Mock provider syntax, common defaults, when to use mocks (Terraform 1.7.0+ only — skip if the user's version is below 1.7)
-- `../../../../../../../Global_References/CI_CD.md` — GitHub Actions and GitLab CI pipeline examples
+- `../../../../../../../Global_References/CI_CD.md` — [GitHub](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions and GitLab CI pipeline examples
 - `../../../../../../../Global_References/terraform-test_EXAMPLES.md` — Complete example test suite (unit, integration, and mock tests for a VPC module)
 
 Read the relevant reference file when the user asks about mocking, CI/CD integration, or wants a full example.

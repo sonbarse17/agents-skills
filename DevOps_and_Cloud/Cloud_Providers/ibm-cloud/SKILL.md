@@ -31,12 +31,12 @@ tags: [devops, ibm-cloud, cloud-provider, phase-4]
 # IBM Cloud
 
 ## Purpose
-Manage IBM Cloud resources: VPC infrastructure, IKS (Kubernetes), Object Storage, IAM, networking, and automation with Terraform and Schematics.
+Manage IBM Cloud resources: VPC infrastructure, IKS ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)), Object Storage, IAM, networking, and automation with Terraform and Schematics.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "ibm cloud", "iks", "ibm kubernetes", "ibm vpc", "ibm cloud terraform", "ibm schematics", "ibm satellite", "ibm direct link", "ibm cloud object storage", "ibm cloud databases".
+Exact user phrases: "ibm cloud", "iks", "ibm [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)", "ibm vpc", "ibm cloud terraform", "ibm schematics", "ibm satellite", "ibm direct link", "ibm cloud object storage", "ibm cloud databases".
 
 ### Input Context
 - IBM Cloud account and resource group structure.
@@ -57,20 +57,20 @@ Terraform HCL or ibmcloud CLI commands. No preamble.
 - [ ] Object Storage instance with buckets and HMAC keys.
 - [ ] IAM access groups and service IDs with policies.
 - [ ] Direct Link or Transit Gateway configured.
-- [ ] Monitoring with IBM Cloud Monitoring (Sysdig).
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) with IBM Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (Sysdig).
 - [ ] Automation with Schematics workspaces.
 
 ### Max Response Length
 400 lines.
 
 ## Quick Start
-Create VPC with public/private subnets → Deploy IKS cluster with 3 worker nodes → Provision COS bucket with HMAC → Set up IAM access groups → Configure Direct Link for hybrid connectivity → Enable Monitoring and Logging.
+Create VPC with public/private subnets → Deploy IKS cluster with 3 worker nodes → Provision COS bucket with HMAC → Set up IAM access groups → Configure Direct Link for hybrid connectivity → Enable [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Logging.
 
 ## Decision Tree: IBM Cloud Compute Options
 | Option | Use Case | Management |
 |--------|----------|------------|
-| **IKS (IBM Kubernetes Service)** | Containerized workloads | Managed control plane |
-| **Code Engine** | Serverless containers, batch jobs | Fully managed, scale-to-zero |
+| **IKS (IBM [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service)** | Containerized workloads | Managed control plane |
+| **Code Engine** | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) containers, batch jobs | Fully managed, scale-to-zero |
 | **VSI (Virtual Server Instance)** | Traditional apps, legacy | Self-managed OS |
 | **Bare Metal** | High-performance, licensed DBs | Self-managed, dedicated |
 | **Cloud Foundry** | PaaS apps (legacy) | Managed runtime |
@@ -158,7 +158,7 @@ resource "ibm_is_network_acl" "nacl" {
 }
 ```
 
-### Step 3: IKS (IBM Kubernetes Service)
+### Step 3: IKS (IBM [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service)
 ```hcl
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "iks-prod"
@@ -195,7 +195,7 @@ resource "ibm_container_worker_pool" "pool" {
 ```hcl
 resource "ibm_resource_instance" "cos" {
   name              = "cos-prod"
-  service           = "cloud-object-storage"
+  service           = "cloud-[object-storage](../object-storage/SKILL.md)"
   plan              = "standard"
   location          = "global"
   resource_group_id = data.ibm_resource_group.rg.id
@@ -222,7 +222,7 @@ resource "ibm_cos_bucket" "archive" {
   bucket_name           = "app-archive-bucket"
   resource_instance_id  = ibm_resource_instance.cos.id
   region_location       = var.region
-  storage_class         = "vault"
+  storage_class         = "[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)"
 }
 ```
 
@@ -248,7 +248,7 @@ resource "ibm_iam_access_group_policy" "ops_backup" {
   roles           = ["Operator"]
   resource_attributes {
     name     = "serviceName"
-    value    = "cloud-object-storage"
+    value    = "cloud-[object-storage](../object-storage/SKILL.md)"
     operator = "stringEquals"
   }
 }
@@ -265,7 +265,7 @@ resource "ibm_iam_service_policy" "ci_policy" {
   resources {
     resource_type = "bucket"
     resource      = ibm_cos_bucket.bucket.id
-    service       = "cloud-object-storage"
+    service       = "cloud-[object-storage](../object-storage/SKILL.md)"
   }
 }
 ```
@@ -274,7 +274,7 @@ resource "ibm_iam_service_policy" "ci_policy" {
 ```hcl
 resource "ibm_resource_instance" "postgres" {
   name              = "postgres-prod"
-  service           = "databases-for-postgresql"
+  service           = "databases-for-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)"
   plan              = "standard"
   location          = var.region
   resource_group_id = data.ibm_resource_group.rg.id
@@ -339,10 +339,10 @@ resource "ibm_dl_gateway" "dl" {
 }
 ```
 
-### Step 9: IBM Cloud Monitoring and Logging
+### Step 9: IBM Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Logging
 ```hcl
 resource "ibm_resource_instance" "cloud_monitor" {
-  name              = "monitoring-prod"
+  name              = "[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-prod"
   service           = "sysdig-monitor"
   plan              = "graduated-tier"
   location          = var.region
@@ -400,7 +400,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Every IKS cluster must have both public and private service endpoints enabled.
 - COS buckets must have HMAC or IAM-based access — never anonymous.
 - Tag all resources with cost-accounting tags (environment, project, owner).
-- Enable Activity Tracker for audit logging on all production resources.
+- Enable Activity Tracker for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging on all production resources.
 - Prefer reserved instances for steady-state compute to save up to 55%.
 - Use IBM Cloud Shell for ephemeral CLI access without key management.
 - Set budget alerts on all resource groups before deploying production workloads.
@@ -412,8 +412,8 @@ resource "ibm_en_destination" "pagerduty" {
 - COS cross-region buckets replicate to 3 regions — use for DR scenarios.
 - Satellite locations require 3+ hosts for control plane HA.
 - Direct Link supports 1 Gbps, 5 Gbps, and 10 Gbps connections at minimum.
-- IBM Cloud Databases for PostgreSQL supports read replicas across zones.
-- Use Code Engine for batch jobs and serverless workloads to reduce compute costs.
+- IBM Cloud Databases for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) supports read replicas across zones.
+- Use Code Engine for batch jobs and [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) workloads to reduce compute costs.
 - VPC file shares are available via VPC file storage service (NFS).
 - IAM trusted profiles allow assigning service IDs based on conditions.
 - Activity Tracker routing: send to COS bucket for long-term retention.
@@ -422,38 +422,38 @@ resource "ibm_en_destination" "pagerduty" {
 - Using classic infrastructure (non-VPC) for new workloads — VPC is the future.
 - No resource group tagging — cost allocation is opaque.
 - Public service endpoints for databases — increases attack surface.
-- Default COS storage class for everything — use vault/cold vault for archives.
+- Default COS storage class for everything — use [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/cold [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for archives.
 - Manual IAM key rotation — automate with Terraform or CLI scripts.
 - Single-zone IKS cluster — no HA, downtime during zone maintenance.
-- No Activity Tracker — can't audit changes for compliance.
+- No Activity Tracker — can't [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) changes for compliance.
 - Using IBM Cloud Internet Services without CDN caching configuration.
 - VPC peering for multi-VPC connectivity — Transit Gateway scales better.
 - Ignoring IBM Cloud Secrets Manager — plaintext API keys in code.
 
 ## References
-  - references/iks-kubernetes.md — IKS Cluster and Worker Pool Management
+  - references/iks-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md — IKS Cluster and Worker Pool Management
   - references/ibm-vpc-networking.md — VPC, Subnets, ACLs, Security Groups
   - ../../../Global_References/ibm-cloud-advanced.md — IBM Cloud Advanced Topics
   - ../../../Global_References/ibm-cloud-fundamentals.md — IBM Cloud Fundamentals
   - references/ibm-satellite.md — Satellite for Hybrid Deployments
   - references/ibm-cos.md — Cloud Object Storage Configuration
 ## Handoff
-- `devops-kubernetes` for workload deployment on IKS clusters.
+- `devops-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on IKS clusters.
 - `devops-terraform` for Terraform state and module patterns for IBM Cloud.
-- `devops-hybrid-cloud` for connectivity between IBM Cloud and on-prem/other clouds.
-- `devops-backup-dr` for backup strategies using IBM Cloud services.
-- `devops-observability` for monitoring and logging integration with IBM Cloud.
+- `devops-[hybrid-cloud](../hybrid-cloud/SKILL.md)` for connectivity between IBM Cloud and on-prem/other clouds.
+- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using IBM Cloud services.
+- `devops-[observability](../../Observability_and_SecOps/observability/SKILL.md)` for [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and logging integration with IBM Cloud.
 
 ## Architecture Decision Trees
 
-### IBM Cloud IKS vs OpenShift
+### IBM Cloud IKS vs [OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md)
 
-| Decision | IKS (IBM Kubernetes Service) | OpenShift (ROKS) |
+| Decision | IKS (IBM [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service) | [OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md) (ROKS) |
 |---|---|---|
 | Management | IBM-managed control plane | Red Hat managed |
-| Container runtime | containerd | CRI-O (OpenShift) |
-| Networking | IBM Cloud VLAN + Calico | OpenShift SDN (OVN-K8s) |
-| Developer tooling | kubectl, standard K8s | oc, Web Console, Operators |
+| Container runtime | containerd | CRI-O ([OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md)) |
+| Networking | IBM Cloud VLAN + Calico | [OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md) SDN (OVN-K8s) |
+| Developer tooling | [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md), standard K8s | oc, Web Console, Operators |
 | Security | IBM Cloud IAM + RBAC | SCC + built-in cert rotation |
 | Best for | Standard K8s workloads | Enterprise, compliance-heavy |
 
@@ -464,7 +464,7 @@ resource "ibm_en_destination" "pagerduty" {
 | Access | REST API (HTTP/S) | iSCSI volume mount |
 | Throughput | Scales with concurrent requests | Single volume limit |
 | Use case | Backup, archival, data lake | Databases, stateful apps |
-| Capacity | Effectively unlimited | Up to 2 TB per volume |
+| [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Effectively unlimited | Up to 2 TB per volume |
 | Cost | Low, pay-per-GB-stored | Higher, provisioned IOPS |
 
 ## Implementation Patterns
@@ -507,7 +507,7 @@ resource "ibm_container_vpc_cluster" "iks" {
 
 resource "ibm_resource_instance" "cos" {
   name     = "app-backup-cos"
-  service  = "cloud-object-storage"
+  service  = "cloud-[object-storage](../object-storage/SKILL.md)"
   plan     = "standard"
   location = "global"
 }
@@ -561,7 +561,7 @@ list_all_resources() {
 - Optimize **COS multipart uploads** with 100 MB part size for large file transfers
 - Use **CDN (Akamai via CIS)** for static asset delivery with POPs in every region
 - Right-size **IKS worker node flavors** — monitor CPU/memory and adjust worker pool instance types
-- Configure **IBM Cloud Databases for etcd** with autoscaling for K8s control plane durability
+- Configure **IBM Cloud Databases for etcd** with [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for K8s control plane durability
 
 ## Security Considerations
 
@@ -571,7 +571,7 @@ list_all_resources() {
 - Encrypt **COS buckets** with IBM Key Protect and enable Object Lock for immutability
 - Enable **Hyper Protect Crypto Services** for applications requiring HSM-backed keys
 - Deploy **IBM Cloud Internet Services** WAF for all web-facing applications
-- Audit **IAM policy changes** with Activity Tracker alerts for privilege escalation attempts
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **IAM policy changes** with Activity Tracker alerts for privilege escalation attempts
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -624,7 +624,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -638,7 +638,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -654,12 +654,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -668,7 +668,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -676,13 +676,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -691,8 +691,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

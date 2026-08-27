@@ -24,14 +24,14 @@ and [Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_B
 best-practices guides.
 
 This skill uses the **AWS RDS, Aurora, CloudWatch, CloudWatch Logs, EC2, and Cost
-Explorer APIs only** — no Kubernetes (`k8s`) or `eks` MCP tools. All data is
+Explorer APIs only** — no [Kubernetes](../kubernetes/SKILL.md) (`k8s`) or `eks` MCP tools. All data is
 collected through native AWS APIs available to the DevOps Agent's primary cloud
 source role.
 
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, audit, or assess RDS instances or Aurora clusters
+- Review, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), or assess RDS instances or Aurora clusters
 - Check RDS / Aurora best-practices compliance
 - Evaluate database security, cost, reliability, performance, or backups
 - Perform an RDS / Aurora operational readiness review (ORR)
@@ -59,12 +59,12 @@ rds.DescribeDBProxies             # RDS Proxy
 ```
 
 Capture per resource:
-- Engine, engineVersion, dbInstanceClass / serverlessV2 capacity
+- Engine, engineVersion, dbInstanceClass / serverlessV2 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Multi-AZ, AvailabilityZones, subnetGroup, VpcId
 - AllocatedStorage, MaxAllocatedStorage, StorageType, Iops, StorageThroughput, StorageEncrypted, KmsKeyId
 - BackupRetentionPeriod, PreferredBackupWindow, PreferredMaintenanceWindow, AutoMinorVersionUpgrade
 - DeletionProtection, PubliclyAccessible, IAMDatabaseAuthenticationEnabled
-- PerformanceInsightsEnabled, PerformanceInsightsRetentionPeriod, MonitoringInterval (Enhanced Monitoring), MonitoringRoleArn
+- PerformanceInsightsEnabled, PerformanceInsightsRetentionPeriod, MonitoringInterval (Enhanced [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)), MonitoringRoleArn
 - EnabledCloudwatchLogsExports, AssociatedRoles
 - ReadReplicaSourceDBInstanceIdentifier / ReadReplicaDBInstanceIdentifiers
 - Tags (`rds.ListTagsForResource` — param name is `ResourceName` and value is the resource ARN)
@@ -160,7 +160,7 @@ Per database log group, scan with `logs.FilterLogEvents` for:
 | `connection limit exceeded` / `too many connections` | connection saturation |
 | `deadlock` / `lock wait timeout` | contention |
 | `slow query` / `duration: ` (Postgres slow log) | query performance |
-| `aborted connection` (MySQL) | client/network issues |
+| `aborted connection` ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)) | client/network issues |
 | `replication has stopped` / `IO_THREAD` errors | replication health |
 | `checkpoint` warnings / `archiver failed` | I/O / WAL issues |
 | `failed to connect` / `authentication failed` | auth/network |
@@ -203,10 +203,10 @@ Ref: [Security in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserG
 
 - **Network exposure**: `PubliclyAccessible=true` → CRITICAL for production. Security groups with `0.0.0.0/0` ingress on the DB port → CRITICAL.
 - **Encryption at rest**: `StorageEncrypted=false` → HIGH (or CRITICAL for regulated workloads). Customer-managed KMS key preferred over AWS-managed.
-- **Encryption in transit**: parameter `rds.force_ssl=1` (Postgres) / `require_secure_transport=ON` (MySQL/MariaDB) → MEDIUM if not set.
+- **Encryption in transit**: parameter `rds.force_ssl=1` (Postgres) / `require_secure_transport=ON` ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/MariaDB) → MEDIUM if not set.
 - **IAM auth**: `IAMDatabaseAuthenticationEnabled=false` → MEDIUM. Master password in app code instead of Secrets Manager → HIGH.
 - **Secrets Manager rotation**: not enabled → MEDIUM.
-- **Audit logging**: engine audit logs not in `EnabledCloudwatchLogsExports` → MEDIUM (HIGH for PCI/HIPAA scope).
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: engine [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs not in `EnabledCloudwatchLogsExports` → MEDIUM (HIGH for PCI/HIPAA scope).
 - **CMK rotation**: KMS key without automatic rotation → LOW.
 
 ### 9.2 Reliability
@@ -235,8 +235,8 @@ Ref: [DB Instance Performance](https://docs.aws.amazon.com/AmazonRDS/latest/User
 - `BufferCacheHitRatio` (Aurora) < 95% → MEDIUM, < 90% → HIGH.
 - `BinLogDiskUsage` growth without retention bounds → MEDIUM.
 - **Performance Insights** disabled → MEDIUM (free 7-day tier should always be on).
-- **Enhanced Monitoring** disabled or interval > 60s for production → MEDIUM.
-- **Connection pooling**: high connection churn / no RDS Proxy → MEDIUM for serverless / many-client workloads.
+- **Enhanced [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)** disabled or interval > 60s for production → MEDIUM.
+- **Connection pooling**: high connection churn / no RDS Proxy → MEDIUM for [serverless](../serverless/SKILL.md) / many-client workloads.
 
 ### 9.4 Cost Optimization
 Ref: [Cost-Optimized Architectures](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.html#CHAP_BestPractices.Optimization)
@@ -246,7 +246,7 @@ Ref: [Cost-Optimized Architectures](https://docs.aws.amazon.com/AmazonRDS/latest
 - **gp2 → gp3**: any `StorageType=gp2` → MEDIUM (≈20% cheaper, equal/better performance).
 - **Over-provisioned IOPS**: `io1`/`io2` with avg `IOPS used / IOPS provisioned < 50%` → MEDIUM.
 - **Reserved Instance coverage**: production On-Demand without RIs → MEDIUM, with estimated savings.
-- **Storage autoscaling**: `MaxAllocatedStorage` not set → LOW, increases stockout risk.
+- **Storage [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)**: `MaxAllocatedStorage` not set → LOW, increases stockout risk.
 - **Idle databases**: `DatabaseConnections` 7-day max < 5 + `CPUUtilization` 7-day avg < 5% → MEDIUM (candidate to stop / delete).
 - **Manual snapshots**: many > 90 days old → LOW (review retention).
 - **Cost-allocation tags**: missing `Environment`, `Owner`, `CostCenter` → LOW.
@@ -258,9 +258,9 @@ Ref: [Monitoring Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGu
 - **CloudWatch alarms**: missing alarms on `CPUUtilization`, `FreeStorageSpace`, `DatabaseConnections`, `FreeableMemory`, `ReplicaLag` → MEDIUM each.
 - **Event subscriptions**: no `rds.DescribeEventSubscriptions` covering this resource → MEDIUM.
 - **Engine version currency**: minor version not latest available → LOW; major version EOL/within 6 months → HIGH.
-- **Log exports**: engine error / slow / audit logs not exported to CloudWatch → MEDIUM.
+- **Log exports**: engine error / slow / [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs not exported to CloudWatch → MEDIUM.
 - **Maintenance window**: not configured / overlaps business hours → LOW.
-- **Tagging**: missing operational tags (`Environment`, `Owner`, `Runbook`, `OnCall`) → LOW.
+- **Tagging**: missing operational tags (`Environment`, `Owner`, `[Runbook](../../Observability_and_SecOps/runbook/SKILL.md)`, `OnCall`) → LOW.
 - **Drift**: parameters changed in default parameter group (impossible by design — use as a flag for non-default usage check).
 
 ## Step 10: Generate Report
@@ -292,7 +292,7 @@ Engine: <engine> <engineVersion> | Class: <dbInstanceClass / serverlessV2 ACU> |
 | Backup | retention, window, automated, deletion protection |
 | HA / DR | Multi-AZ, replicas, Global DB |
 | Auth | IAM auth, Secrets Manager, master user |
-| Observability | Performance Insights, Enhanced Monitoring, log exports |
+| [Observability](../../Observability_and_SecOps/observability/SKILL.md) | Performance Insights, Enhanced [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), log exports |
 
 ### Findings by Pillar
 For each of Security, Reliability, Performance, Cost, Operational Excellence:
@@ -317,7 +317,7 @@ Current vs latest minor / latest major. Flag EOL.
 ### Cost Summary
 - Latest-month estimated cost for this resource (proportional split, with "estimated" badge)
 - RI coverage status
-- Top 3 cost-optimization opportunities (linked to findings)
+- Top 3 [cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md) opportunities (linked to findings)
 
 ### Priority Matrix
 | # | Finding | Severity | Pillar | Effort | Impact |
@@ -350,21 +350,21 @@ Current vs latest minor / latest major. Flag EOL.
 
 ## Engine-Specific Considerations
 
-- **MySQL / MariaDB** — `innodb_buffer_pool_size`, `max_connections`, slow query log,
+- **[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) / MariaDB** — `innodb_buffer_pool_size`, `max_connections`, slow query log,
   binlog retention, deprecated `query_cache_type` on 8.0+.
-- **PostgreSQL** — `shared_buffers`, `work_mem`, autovacuum, `pg_stat_statements`,
+- **[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)** — `shared_buffers`, `work_mem`, autovacuum, `pg_stat_statements`,
   `log_min_duration_statement`, replication slots.
 - **Oracle** — BYOL tracking, SGA/PGA sizing, AWR, tablespace autoextend.
 - **SQL Server** — tempdb file count (1 per vCPU up to 8), MAXDOP, cost threshold for
   parallelism, Always On AGs vs Multi-AZ.
-- **Aurora** — Serverless v2 ACU floor/ceiling, Global Database for DR, fast clones,
-  Backtrack (MySQL only), cluster cache management.
+- **Aurora** — [Serverless](../serverless/SKILL.md) v2 ACU floor/ceiling, Global Database for DR, fast clones,
+  Backtrack ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) only), cluster cache management.
 
 ## Known API Quirks (recorded so the agent doesn't trip on them)
 
 - `rds.ListTagsForResource` — parameter is `ResourceName`, **value is the resource ARN**.
 - `rds.DescribeEvents` — `Duration` is in **minutes** (20160 = 14 days).
-- `applicationautoscaling.DescribeScalableTargets` — `ServiceNamespace="rds"` covers Aurora replica autoscaling.
+- `applicationautoscaling.DescribeScalableTargets` — `ServiceNamespace="rds"` covers Aurora replica [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).
 - `logs.DescribeLogGroups` prefix differs:
   - Instances: `/aws/rds/instance/<id>/`
   - Aurora clusters: `/aws/rds/cluster/<id>/`
@@ -377,7 +377,7 @@ Current vs latest minor / latest major. Flag EOL.
 ## Data Source Boundaries
 
 This skill explicitly does **not** call:
-- Kubernetes API / `k8s` MCP — RDS is fully managed; no cluster API exists.
+- [Kubernetes](../kubernetes/SKILL.md) API / `k8s` MCP — RDS is fully managed; no cluster API exists.
 - `eks` MCP — outside scope.
 - Dante or any non-AWS scripts — keep the skill self-contained on the AWS DevOps Agent's primary cloud-source IAM role.
 

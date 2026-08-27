@@ -24,14 +24,14 @@ metadata:
 ## Purpose
 
 Standing up an Internal Developer Platform on AWS touches a landing zone,
-a Kubernetes cluster, a Backstage instance, a catalog database, a
+a [Kubernetes](../kubernetes/SKILL.md) cluster, a Backstage instance, a catalog database, a
 scaffolding template, a provisioning API, and a maturity model — each of
 which is already covered in depth elsewhere in this repo. What isn't
 covered elsewhere is the **sequencing**: which phase has to finish and be
 validated before the next one starts, which decisions made in an early
 phase (account structure, IRSA trust policy shape) quietly constrain every
 later phase, and where teams actually get stuck gluing these pieces
-together. This skill is that integration runbook — a phase-by-phase path
+together. This skill is that integration [runbook](../../Observability_and_SecOps/runbook/SKILL.md) — a phase-by-phase path
 from an empty AWS Organization to a Backstage instance developers
 self-service against, with each phase handing off to the deep skill that
 covers its mechanics. It does not restate EKS, Backstage, or Terraform
@@ -59,10 +59,10 @@ from the previous phase.
   existing landing zone.
 - Terraform (or CDK) maturity across the team — every phase below produces
   IaC, not console clicks, so this isn't optional tooling.
-- `kubectl`, `helm` ≥ 3.8 (for OCI registry chart support), and either
+- `[kubectl](../kubectl/SKILL.md)`, `helm` ≥ 3.8 (for OCI registry chart support), and either
   `eksctl` or the Terraform EKS module for cluster provisioning.
 - A Node.js/Yarn toolchain capable of building and customizing a Backstage
-  app (Backstage itself is a Node/TypeScript monorepo, not a pre-built
+  app (Backstage itself is a Node/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), not a pre-built
   image you configure purely via Helm values).
 - A registered domain and Route 53 hosted zone (or delegated subdomain)
   for Backstage's ingress hostname and an ACM certificate.
@@ -85,47 +85,47 @@ accounts before continuing: one for the platform tooling itself (EKS
 cluster, Backstage, RDS) and one as the first "tenant" workload account —
 building the IDP against a single-account model here is the single most
 common rework trigger later. See
-[aws-landing-zone-setup](../../../cloud/skills/aws-landing-zone-setup/SKILL.md).
+[aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md).
 **Do not proceed to Phase 2 until the landing zone's dry-run account
 (step 8 of that skill) has been validated** — an EKS cluster built inside
 an account whose guardrails aren't finalized will need its IAM/network
 config redone when the SCPs change.
 
 **Phase 2 — EKS cluster with IRSA.** Provision the platform-tooling
-account's EKS cluster with a pinned Kubernetes version, node groups sized
+account's EKS cluster with a pinned [Kubernetes](../kubernetes/SKILL.md) version, node groups sized
 for Backstage's backend (steady CPU/memory, not bursty), and IRSA
 (IAM Roles for Service Accounts) configured on the cluster's OIDC provider
 before anything is deployed to it. Record the cluster's OIDC provider ARN
 — Phase 3 and Phase 6 both need it to construct IRSA trust policies. See
-[managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 for cluster provisioning, node group design, and the IRSA trust-policy
 walkthrough specifically.
 
-**Phase 3 — Backstage on EKS, backed by RDS PostgreSQL.** Package
+**Phase 3 — Backstage on EKS, backed by RDS [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).** Package
 Backstage as a Helm chart (Backstage's own scaffolded output is a Node
 app; wrap its container image in a chart rather than hand-writing raw
-manifests) and deploy it against an RDS PostgreSQL instance — Multi-AZ for
+manifests) and deploy it against an RDS [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance — Multi-AZ for
 anything beyond a pilot — as the catalog database, with the Backstage pod
 authenticating to RDS via IAM database authentication through the IRSA
 role from Phase 2 rather than a static password baked into a Secret. Any
 custom backend plugin logic (a custom auth provider, a proxy to an
 internal system) is built per
-[backstage-plugin-development](../backstage-plugin-development/SKILL.md);
+[backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md);
 the chart packaging and values-schema design is per
-[helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md).
+[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md).
 Wire the RDS credential lookup through Secrets Manager (an
 IRSA-scoped `secretsmanager:GetSecretValue` call at pod startup, or the
 Secrets Store CSI driver) rather than committing a connection string.
 
 **Phase 4 — Golden-path template design.** With Backstage's Scaffolder
 running, design the first golden-path template: an opinionated new-service
-default that produces a Dockerfile, a CI pipeline (GitHub Actions or the
+default that produces a Dockerfile, a CI pipeline ([GitHub](../../CI_CD/github/SKILL.md) Actions or the
 CodePipeline/CodeDeploy pattern), catalog registration, and — for AWS
-specifically — a scaffolded IRSA-ready Kubernetes `ServiceAccount`
+specifically — a scaffolded IRSA-ready [Kubernetes](../kubernetes/SKILL.md) `ServiceAccount`
 manifest with the trust-policy annotation pre-filled. Tier the template by
 complexity (a minimal tier and a "batteries-included" tier) rather than
 building one template that tries to fit every service shape. See
-[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md).
+[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 **Phase 5 — Validate the golden path end-to-end.** Before publishing the
 Phase 4 template as the org default, run it through a CI pipeline that
@@ -134,7 +134,7 @@ in the Phase 2 cluster (or a short-lived preview account), smoke-tests it,
 and tears every created resource down on both success and failure — an
 untested template that silently fails on its first real use burns the
 platform team's credibility before Phase 9's rollout even starts. See
-[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md).
+[golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md).
 
 **Phase 6 — Self-service API wired to AWS provisioning.** Build the
 Scaffolder custom actions (or a bespoke internal API) that let a developer
@@ -149,7 +149,7 @@ AWS-specific provisioning call itself — assuming a role via STS to run
 `rds:CreateDBInstance` or `iam:CreateRole` with a trust policy scoped to
 the requesting namespace's service account subject — is the part unique to
 this phase; the gating pattern around it is generic. See
-[platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md).
+[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
 
 **Phase 7 — Scorecards.** Define production-readiness and security-posture
 checks, including AWS-specific ones a generic scorecard wouldn't include:
@@ -157,26 +157,26 @@ does the service's IAM role use IRSA rather than a static access key
 embedded anywhere, is the RDS instance backed by automated backups and
 (for production tier) Multi-AZ, are resources tagged per the Phase 1 tag
 policy. Weight by blast radius, not equally. See
-[service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md).
+[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — Multi-tenancy, if more than one team shares the Phase 2
+**Phase 8 — [Multi-tenancy](../multi-tenancy/SKILL.md), if more than one team shares the Phase 2
 cluster.** Decide namespace-per-team vs. dedicated clusters, bind RBAC and
 IRSA trust policies per namespace (scope the trust policy's
 `sub` condition to the specific namespace/ServiceAccount, not the whole
 OIDC provider), and enforce ResourceQuotas before onboarding the second
 team — retrofitting tenancy boundaries after several teams are already on
 a shared cluster is materially harder than designing it in up front. See
-[multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md).
+[multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md).
 
 **Phase 9 — Rollout, operating model, and measurement.** Sequence the
 rollout starting from a pilot team with real, current pain (not the
 easiest team to please), run the platform team per Team Topologies'
 "thinnest viable platform" discipline, and measure adoption with SPACE/DX
 Core 4 metrics rather than catalog entity counts. See
-[idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md),
-[platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
-[developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md).
+[developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -199,7 +199,7 @@ and
 - Sequence Phase 9's pilot-team rollout to start only after Phase 5 has
   passed for the specific template tier that pilot team will use — putting
   a real team through an unvalidated golden path converts a platform
-  adoption win into a trust-destroying incident.
+  adoption win into a trust-destroying [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Common pitfalls
 
@@ -279,7 +279,7 @@ over one quarter.
    scoped to `secretsmanager:GetSecretValue` on exactly the RDS credential
    secret.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a GitHub Actions CI workflow, and a
+   producing a Dockerfile, a [GitHub](../../CI_CD/github/SKILL.md) Actions CI workflow, and a
    `ServiceAccount` manifest annotated
    `eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/${service-name}-irsa`.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001` from the
@@ -302,14 +302,14 @@ over one quarter.
 
 ## Cross-references
 
-- [aws-landing-zone-setup](../../../cloud/skills/aws-landing-zone-setup/SKILL.md) — Phase 1.
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — Phase 2.
-- [helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md) — Phase 3 chart packaging.
-- [backstage-plugin-development](../backstage-plugin-development/SKILL.md) — Phase 3 custom backend/frontend logic.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — Phase 4.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md) — Phase 6.
-- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md) — Phase 7.
-- [multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md), [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md), [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md) — Phase 9.
-- [complete-idp-deployment-on-kubernetes-from-scratch](../complete-idp-deployment-on-kubernetes-from-scratch/SKILL.md) — the cloud-agnostic equivalent, useful if a future migration away from AWS-specific self-service wiring is on the roadmap.
+- [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2.
+- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
+- [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
+- [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
+- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [complete-idp-deployment-on-[kubernetes](../kubernetes/SKILL.md)-from-scratch](../[complete-idp-deployment-on-[kubernetes](../kubernetes/SKILL.md)-from-scratch](../complete-idp-deployment-on-[kubernetes](../kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the cloud-agnostic equivalent, useful if a future migration away from AWS-specific self-service wiring is on the roadmap.

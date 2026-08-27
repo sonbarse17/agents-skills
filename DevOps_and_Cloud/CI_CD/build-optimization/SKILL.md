@@ -35,7 +35,7 @@ real difference.
 - **Same inputs, same machine class, same output** — verify this before trusting any cache built
   on top.
 
-**Done when:** the same commit, built on two different machines, produces byte-identical (or
+**Done when:** the same [commit](../commit/SKILL.md), built on two different machines, produces byte-identical (or
 content-hash-identical) output.
 
 ## 2. Build incrementally: only rebuild what changed
@@ -58,7 +58,7 @@ not the whole tree.
 ## 3. Layer caches from local to remote, and key them on content
 
 Local caches (a developer's machine) are fast but useless across CI runners or team members;
-remote/shared caches (a build cache server, Bazel remote cache, Docker registry as layer cache)
+remote/shared caches (a build cache server, Bazel remote cache, [Docker](../../Containers_and_Orchestration/docker/SKILL.md) registry as layer cache)
 let a build done once by anyone benefit everyone. Key cache entries on a hash of the actual
 inputs — source content, dependency versions, compiler flags — never on a branch name, timestamp,
 or manually incremented cache version, which are exactly the things that drift out of sync with

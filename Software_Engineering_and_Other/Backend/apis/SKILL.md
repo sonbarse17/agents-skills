@@ -42,7 +42,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Web Accessibility (a11y)**: Ensuring ARIA labels and keyboard navigation support for screen readers.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Browser] --> B{Service Worker}
@@ -96,7 +96,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Service Workers**: Intercepting network requests for offline caching and Progressive Web App (PWA) support.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Browser] --> B{Service Worker}
@@ -152,7 +152,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **WebSockets & SSE**: Utilizing Server-Sent Events for one-way realtime streams.
 
 ### System Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Browser] --> B{Service Worker}

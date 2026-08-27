@@ -16,35 +16,35 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 - Building an internal platform for teams to deploy and manage LLM-powered features
 - Designing CI/CD pipelines that include model evaluation gates
 - Setting up A/B testing infrastructure for model versions
-- Creating Kubernetes-based model serving infrastructure
+- Creating [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-based model serving infrastructure
 - Establishing governance workflows for model promotion
 
 ## Prerequisites
 
-- Kubernetes cluster with GPU node pools (or cloud inference API access)
+- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
 - Container registry (Harbor, ECR, GCR, or ACR)
-- CI/CD system (GitHub Actions, GitLab CI, or Argo Workflows)
-- Observability stack (Prometheus + Grafana + OpenTelemetry)
+- CI/CD system ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
+- [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 - Model registry (MLflow or custom metadata store)
 
 ## Outcomes
 
 - Standardized path from experiment to production
 - Safe model rollout with quality and safety gates
-- Repeatable infra modules for inference, vector DB, and observability
+- Repeatable infra modules for inference, vector DB, and [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - Clear ownership model across platform, app, and security teams
 
 ## Reference Architecture
 
 1. **Control Plane**: model registry, prompt/version catalog, policy checks, eval pipeline.
 2. **Data Plane**: inference gateway, vector database, cache, feature store.
-3. **Ops Plane**: telemetry, alerting, SLO dashboards, cost analytics.
-4. **Security Plane**: IAM boundaries, secret rotation, content filters, audit logs.
+3. **Ops Plane**: telemetry, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), SLO [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), cost analytics.
+4. **Security Plane**: IAM boundaries, secret rotation, content filters, [audit](../../Operations/audit/SKILL.md) logs.
 
 ## Model Promotion Pipeline
 
 ```yaml
-# .github/workflows/model-promotion.yaml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/model-promotion.yaml
 name: Model Promotion Pipeline
 on:
   workflow_dispatch:
@@ -69,21 +69,21 @@ jobs:
 
       - name: Run quality evaluation suite
         run: |
-          python -m evals.run \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.run \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --suite quality \
             --output results/quality.json
 
       - name: Run safety evaluation suite
         run: |
-          python -m evals.run \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.run \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --suite safety \
             --output results/safety.json
 
       - name: Run latency benchmark
         run: |
-          python -m evals.benchmark \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.benchmark \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --concurrent-users 50 \
             --duration 300 \
@@ -91,19 +91,19 @@ jobs:
 
       - name: Gate check - quality
         run: |
-          python -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
             --results results/quality.json \
             --threshold-file thresholds/quality.yaml
 
       - name: Gate check - safety
         run: |
-          python -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
             --results results/safety.json \
             --threshold-file thresholds/safety.yaml
 
       - name: Gate check - latency
         run: |
-          python -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
             --results results/latency.json \
             --threshold-file thresholds/latency.yaml
 
@@ -120,7 +120,7 @@ jobs:
     steps:
       - name: Record approval
         run: |
-          echo "Approved by: ${{ github.actor }}"
+          echo "Approved by: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}"
           echo "Model: ${{ inputs.model_name }}:${{ inputs.model_version }}"
           echo "Target: ${{ inputs.target_env }}"
           echo "Time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -133,13 +133,13 @@ jobs:
 
       - name: Deploy canary
         run: |
-          kubectl set image deployment/${{ inputs.model_name }}-canary \
+          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }}-canary \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
 
       - name: Wait for canary validation (15 min)
         run: |
-          python -m canary.validate \
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m canary.validate \
             --deployment ${{ inputs.model_name }}-canary \
             --namespace ai-${{ inputs.target_env }} \
             --duration 900 \
@@ -148,10 +148,10 @@ jobs:
 
       - name: Promote to full rollout
         run: |
-          kubectl set image deployment/${{ inputs.model_name }} \
+          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }} \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
-          kubectl rollout status deployment/${{ inputs.model_name }} \
+          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/${{ inputs.model_name }} \
             -n ai-${{ inputs.target_env }} --timeout=300s
 ```
 
@@ -237,7 +237,7 @@ spec:
     hash_key: user_id
 ```
 
-## Kubernetes Model Serving Deployment
+## [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Model Serving Deployment
 
 ```yaml
 # model-serving-deployment.yaml
@@ -272,14 +272,14 @@ spec:
     spec:
       topologySpreadConstraints:
         - maxSkew: 1
-          topologyKey: topology.kubernetes.io/zone
+          topologyKey: topology.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/zone
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
               app: llm-inference
       containers:
         - name: model
-          image: registry.internal/vllm-server:0.4.1
+          image: registry.internal/[vllm-server](../vllm-server/SKILL.md):0.4.1
           args:
             - "--model=/models/current"
             - "--tensor-parallel-size=1"
@@ -347,7 +347,7 @@ spec:
       port: 8080
       targetPort: 8080
 ---
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: llm-inference-hpa
@@ -397,7 +397,7 @@ spec:
   - regression evals drop below baseline,
   - safety tests exceed risk threshold,
   - p95 latency exceeds SLO budget.
-- Store deployment evidence for audits (commit SHA, eval report, approver).
+- Store deployment evidence for audits ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA, eval report, approver).
 
 ## Operational SLOs
 
@@ -420,10 +420,10 @@ spec:
 
 | Layer | Tools |
 |-------|-------|
-| Orchestration | Argo Workflows, GitHub Actions, Airflow |
+| Orchestration | Argo Workflows, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Airflow |
 | Model Registry | MLflow, custom metadata DB |
 | Gateway | LiteLLM, Envoy-based API gateway |
-| Observability | OpenTelemetry + Prometheus + Grafana + Langfuse |
+| [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |
 | Policy | OPA/Rego for deployment and runtime checks |
 | Evaluation | RAGAS, custom eval harness, Promptfoo |
 | Serving | vLLM, TGI, Triton Inference Server |
@@ -440,8 +440,8 @@ spec:
 
 ## Related Skills
 
-- [ai-pipeline-orchestration](../ai-pipeline-orchestration/) - Orchestrate ingestion and inference workflows
-- [agent-evals](../agent-evals/) - Build evaluation gates for releases
-- [llm-gateway](../../../infrastructure/networking/llm-gateway/) - Route and control LLM traffic
-- [model-registry-governance](../model-registry-governance/) - Model lifecycle and approval workflows
-- [ai-sre-incident-response](../ai-sre-incident-response/) - AI-specific incident response
+- [ai-pipeline-orchestration](../[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Orchestrate ingestion and inference workflows
+- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build evaluation gates for releases
+- [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Route and control LLM traffic
+- [model-registry-governance](../[model-registry-governance](../model-registry-governance/SKILL.md)/) - Model lifecycle and approval workflows
+- [ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response

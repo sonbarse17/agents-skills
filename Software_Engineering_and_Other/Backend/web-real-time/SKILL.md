@@ -134,7 +134,7 @@ STUN/TURN Server ← → ICE Negotiation ← → STUN/TURN Server
 
 ### Pattern: Signaling with WebSocket (Node.js)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // server/signaling.ts
 import { WebSocketServer, WebSocket } from 'ws';
 
@@ -196,7 +196,7 @@ function broadcastToRoom(roomId: string, msg: SignalingMessage, excludeId?: stri
 
 ### Pattern: Client-Side WebRTC Peer Connection
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // client/webrtc.ts
 export class WebRTCClient {
   private pc: RTCPeerConnection | null = null;
@@ -257,7 +257,7 @@ export class WebRTCClient {
 
 ### Pattern: SFU Selective Forwarding (mediasoup)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // sfu-server.ts
 import * as mediasoup from 'mediasoup';
 import { WebSocketServer } from 'ws';
@@ -312,7 +312,7 @@ async function createSfu() {
 ### Pattern: TURN Server with coturn
 
 ```bash
-# docker-compose.yml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 services:
   coturn:
@@ -332,7 +332,7 @@ services:
       - "49152-65535:49152-65535/udp"
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // TURN credential generation (time-limited)
 import crypto from 'crypto';
 
@@ -355,12 +355,12 @@ function generateTurnCredentials(sharedSecret: string, username: string, ttl = 8
 ### Deployment
 - Separate signaling and media planes — signaling can scale independently from media
 - Place TURN servers near users (edge locations) to minimize relay latency
-- Use Kubernetes headless services for WebSocket signaling with session affinity
+- Use [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) headless services for WebSocket signaling with session affinity
 - Monitor: ICE failures, TURN bandwidth, packet loss, jitter, round-trip time
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Key metrics: ICE connection time, call success rate, media bitrate, packet loss, jitter buffer delay
-- Alerts: elevated ICE failure rate >5%, TURN bandwidth >80% capacity, signaling latency >200ms
+- Alerts: elevated ICE failure rate >5%, TURN bandwidth >80% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), signaling latency >200ms
 - Logging: structured JSON logs for all signaling messages (type, roomId, peerId, duration)
 
 ## Anti-Patterns
@@ -388,7 +388,7 @@ function generateTurnCredentials(sharedSecret: string, username: string, ttl = 8
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { WebSocket } from 'ws';
 
@@ -453,13 +453,13 @@ describe('WebRTC Signaling Server', () => {
 | End-to-end latency (video) | <300ms | >500ms |
 | Packet loss | <1% | >5% |
 | Jitter | <30ms | >80ms |
-| TURN relay bandwidth | <70% capacity | >90% capacity |
+| TURN relay bandwidth | <70% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | >90% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Signaling latency | <100ms | >500ms |
 
 ## Handoff
 - `backend/universal/websocket-patterns` — WebSocket fundamentals and optimizations
-- `backend/universal/data-streaming` — Real-time data streaming patterns
-- `backend/universal/load-testing` — Load testing signaling and media infrastructure
+- `backend/universal/[data-streaming](../../../Data_Engineering/streaming/SKILL.md)` — Real-time data streaming patterns
+- `backend/universal/[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` — Load testing signaling and media infrastructure
 - `security/network` — TURN/STUN firewall and network security
 
 ## Edge Cases
@@ -503,7 +503,7 @@ describe('WebRTC Signaling Server', () => {
 - **DoS prevention**: per-peer inbound bitrate cap (configurable, e.g. 10Mbps). Drop packets exceeding limit. Notify via signaling to reduce quality.
 - **Logging**: never log SDP payloads (may contain local IPs). Log message type, roomId, peerId, timestamps only.
 
-### Burn-Rate Alerting Configuration
+### Burn-Rate [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Configuration
 ```yaml
 alerts:
   ice_failure_rate:

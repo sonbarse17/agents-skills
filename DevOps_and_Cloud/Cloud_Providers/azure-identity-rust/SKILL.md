@@ -60,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = SecretClient::new(
-        "https://<vault-name>.vault.azure.net/",
+        "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -115,7 +115,7 @@ let credential = ClientSecretCredential::new(
 | ----------------------------- | -------------------------------------- |
 | `DeveloperToolsCredential`    | Local development — tries CLI tools    |
 | `ManagedIdentityCredential`   | Azure VMs, App Service, Functions, AKS |
-| `WorkloadIdentityCredential`  | Kubernetes workload identity           |
+| `WorkloadIdentityCredential`  | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workload identity           |
 | `ClientSecretCredential`      | Service principal with secret          |
 | `ClientCertificateCredential` | Service principal with certificate     |
 | `AzureCliCredential`          | Direct Azure CLI auth                  |
@@ -131,7 +131,7 @@ let credential = ClientSecretCredential::new(
 4. **Never hardcode credentials** — use environment variables for service principals
 5. **Clone credentials** — pass `credential.clone()` when constructing multiple clients; credentials are `Arc`-wrapped
 6. **Reuse clients** — clients are thread-safe; create once, share across tasks
-7. **Assign RBAC roles** — ensure the identity has appropriate roles for the target service (e.g., "Key Vault Secrets User" for secret reads)
+7. **Assign RBAC roles** — ensure the identity has appropriate roles for the target service (e.g., "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User" for secret reads)
 8. **Run `cargo clippy -- -D warnings`** when the prompt, eval, or CI expects lint-clean output; Rust trajectory graders can fail on style lints even after compiler errors are fixed
 9. **Future-proof `#[non_exhaustive]` SDK models** — when constructing SDK model/options structs, end the initializer with `..Default::default()` (add `#[allow(clippy::needless_update)]`) and use a `_` wildcard arm when matching SDK enums, so new service-added fields/variants don't break your build
 
@@ -141,4 +141,4 @@ let credential = ClientSecretCredential::new(
 | ------------- | --------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_identity/latest/azure_identity                              |
 | crates.io     | https://crates.io/crates/azure_identity                                           |
-| Source Code   | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/identity/azure_identity |
+| Source Code   | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/identity/azure_identity |

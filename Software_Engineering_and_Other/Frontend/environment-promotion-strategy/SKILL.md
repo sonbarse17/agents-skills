@@ -41,7 +41,7 @@ bottleneck.
 - Deciding whether the *same build artifact* should be promoted unchanged
   across environments, versus rebuilding per environment (it should
   almost always be the former).
-- A production incident traces back to "it wasn't caught in staging" and
+- A production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) traces back to "it wasn't caught in staging" and
   the team needs to close that gap.
 - Coordinating promotion across multiple services that must move through
   environments together (a release train) vs. independently.
@@ -50,8 +50,8 @@ bottleneck.
 
 - A CI/CD pipeline capable of producing one immutable, versioned artifact
   per change (see
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md) and
-  [container-build-and-release](../container-build-and-release/SKILL.md))
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) and
+  [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md))
   — promotion strategy assumes you're moving the *same* build forward,
   not rebuilding per environment (which reintroduces "works in staging,
   different bits in prod" risk).
@@ -65,10 +65,10 @@ bottleneck.
   environment variables, a config service, or per-environment
   `values.yaml`/`.tfvars` overlays, so the same build works unmodified in
   every environment.
-- Platform support for approval gates: GitHub Environments (protection
+- Platform support for approval gates: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environments (protection
   rules with required reviewers), GitLab `environment:` + manual jobs, or
-  the GitOps operator's manual-sync setting (see
-  [gitops-workflow](../gitops-workflow/SKILL.md)).
+  the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator's manual-sync setting (see
+  [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -82,13 +82,13 @@ bottleneck.
      testing or a stakeholder sign-off for higher-risk changes.
    - **Production**: gated on staging soak time, an explicit approval
      (human or automated canary analysis — see
-     [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)),
+     [blue-green-canary-deployments](../[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)),
      and typically a narrower deploy window/change process.
 
 2. **Promote the artifact, not the source.** The same container
    image/package built once should flow through every environment
    unmodified; only configuration changes per environment. Concretely:
-   version bump PRs (in a GitOps config repo) reference the same image
+   version bump PRs (in a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) config repo) reference the same image
    digest/tag across `overlays/staging` and `overlays/prod` — only the
    overlay's environment-specific values differ.
    ```yaml
@@ -121,7 +121,7 @@ bottleneck.
    approval recorded.
 
 4. **Implement the gate mechanically**, don't rely on process memory.
-   GitHub Actions example using environment protection + a required
+   [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example using environment protection + a required
    reviewer, chained after staging deploy:
    ```yaml
    deploy-staging:
@@ -137,10 +137,10 @@ bottleneck.
      steps:
        - run: ./deploy.sh prod ${{ needs.deploy-staging.outputs.version }}
    ```
-   The `production` GitHub Environment is configured (Settings →
+   The `production` [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environment is configured (Settings →
    Environments → production → required reviewers) so the job literally
    cannot proceed without an approval click — the gate is enforced by the
-   platform, not by a runbook step someone might skip.
+   platform, not by a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) step someone might skip.
 
 5. **For multi-service releases, decide train vs. independent promotion
    explicitly.** If services must move together (tightly coupled API
@@ -154,7 +154,7 @@ bottleneck.
 6. **Make promotion status visible.** A dashboard or simple report
    showing, per service, "what version is in each environment right now"
    avoids the common failure mode of nobody being sure whether staging
-   and production have drifted apart. GitOps repos make this
+   and production have drifted apart. [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) repos make this
    straightforward to derive (diff `overlays/staging` vs.
    `overlays/prod` image tags directly).
 
@@ -193,7 +193,7 @@ bottleneck.
 ## Common pitfalls
 
 - **Symptom:** A change passes staging cleanly but breaks in production.
-  **Fix:** Audit for drift between staging and production beyond intended
+  **Fix:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for drift between staging and production beyond intended
   config differences — mismatched downstream service versions, different
   data volume/shape, or a feature flag that's off in staging but on in
   production (or vice versa) are common causes; close the specific gap
@@ -201,11 +201,11 @@ bottleneck.
 
 - **Symptom:** Production and staging are running different versions and
   nobody can say for certain which, without checking manually.
-  **Fix:** Adopt a GitOps config repo (see
-  [gitops-workflow](../gitops-workflow/SKILL.md)) where each environment's
+  **Fix:** Adopt a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) config repo (see
+  [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)) where each environment's
   deployed version is declared in a file, and build a simple report/diff
   across environment overlays rather than relying on tribal knowledge or
-  `kubectl` spelunking.
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` spelunking.
 
 - **Symptom:** Releases queue up because production approval is a
   scarce, slow human bottleneck (one person, infrequently available).
@@ -238,10 +238,10 @@ bottleneck.
 train not required (this service promotes independently).
 
 1. Merge to `main` triggers CI (per
-   [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)): build,
+   [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)): build,
    test, containerize, push `ghcr.io/example/payments-api:1.4.2`.
 2. A pipeline job automatically bumps the `dev` overlay's tag to `1.4.2`
-   and pushes; the GitOps operator deploys it within minutes — no
+   and pushes; the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator deploys it within minutes — no
    approval required.
 3. After dev smoke tests pass (automated), the same job opens a PR
    bumping the `staging` overlay to `1.4.2`. This PR is auto-merged since
@@ -251,21 +251,21 @@ train not required (this service promotes independently).
    regression.
 5. A PR bumping the `prod` overlay to `1.4.2` is opened, referencing the
    staging soak evidence (linked dashboard) in its description. The
-   `production` GitHub Environment requires one reviewer from the
+   `production` [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environment requires one reviewer from the
    on-call rotation; they review the change, confirm the staging
    evidence, and approve.
-6. Merging the PR triggers the GitOps operator (manual-sync mode for
-   prod) to require an explicit `argocd app sync payments-api-prod`,
+6. Merging the PR triggers the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator (manual-sync mode for
+   prod) to require an explicit `[argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) app sync payments-api-prod`,
    executed by the same approver as a deliberate final step — completing
    promotion to production for the exact artifact that was built once in
    step 1 and never rebuilt.
 7. If a regression appears post-promotion, rollback is a revert of the
    `prod` overlay bump PR (per
-   [gitops-workflow](../gitops-workflow/SKILL.md)), demoting production
+   [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)), demoting production
    back to `1.4.1` through the identical mechanism used to promote it.
 
 ## Cross-references
 
-- [gitops-workflow](../gitops-workflow/SKILL.md)
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)
-- [blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)
+- [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
+- [blue-green-canary-deployments](../[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)

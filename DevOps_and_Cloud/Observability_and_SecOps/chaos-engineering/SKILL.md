@@ -9,7 +9,7 @@ license: MIT
 Most systems have never actually experienced the failures their architecture claims to handle.
 The retry logic, the circuit breaker, the multi-AZ failover — these are assumptions that live
 in a design doc until something breaks them for real, usually in production, usually at the
-worst time. Chaos engineering moves that first real test from an incident to a planned
+worst time. Chaos engineering moves that first real test from an [incident](../incident/SKILL.md) to a planned
 experiment, where you control the timing and the blast radius.
 
 The point is not to break things randomly — random breakage is what production does on its
@@ -62,7 +62,7 @@ as normal before injection begins.
 
 ## 3. Bound the blast radius deliberately
 
-An experiment that can take down more than you intended is not an experiment, it's an incident
+An experiment that can take down more than you intended is not an experiment, it's an [incident](../incident/SKILL.md)
 you started on purpose. Scope every chaos run to the smallest slice that still tests the
 hypothesis — one pod, one AZ, a percentage of traffic — and have a kill switch that's faster
 than the damage can spread.
@@ -97,17 +97,17 @@ at limited scope.
 ## 5. Run it as a game day, not a solo script
 
 A chaos experiment run alone by one engineer against a dashboard only tests the system. A game
-day — with the on-call team, the IC, and the actual alerting and paging path all live — tests
+day — with the on-call team, the IC, and the actual [alerting](../alerting/SKILL.md) and paging path all live — tests
 the system *and* the humans and process meant to respond to it. That's usually where the more
-valuable findings are: alerts that don't fire, runbooks that are stale, an on-call engineer
+valuable findings are: alerts that don't fire, [runbooks](../runbooks/SKILL.md) that are stale, an on-call engineer
 who didn't know this dependency existed.
 
-- **Page for real** — trigger the actual alerting path, not a simulated one, to test whether
+- **Page for real** — trigger the actual [alerting](../alerting/SKILL.md) path, not a simulated one, to test whether
   it works.
-- **Have the responder use the real runbook** — see `runbooks` — and note where it was wrong
+- **Have the responder use the real [runbook](../runbook/SKILL.md)** — see `[runbooks](../runbooks/SKILL.md)` — and note where it was wrong
   or missing.
 - **Debrief immediately after**, while the experience is fresh, and file findings the same way
-  as an incident postmortem.
+  as an [incident](../incident/SKILL.md) postmortem.
 
 **Done when:** a game day has exercised the real alert and response path, not just the failure
 injection itself.

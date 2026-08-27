@@ -55,12 +55,12 @@ Brand identity system with mission/values, visual language, voice guidelines, an
 What is the primary brand challenge?
 ├── No existing identity → Build from strategy
 │   → Mission → Values → Personality → Visual Identity → Voice → Guidelines
-├── Existing identity is inconsistent → Audit and unify
-│   → Brand audit → Gap analysis → Unification → Guidelines → Governance
+├── Existing identity is inconsistent → [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) and unify
+│   → Brand [audit](../../AI_and_Agents/Operations/audit/SKILL.md) → Gap analysis → Unification → Guidelines → Governance
 ├── Rebranding or refresh → Evolve with purpose
 │   → Strategic rationale → Audience research → Evolution → Rollout plan
 └── Need application guidelines → Extend and document
-    → Touchpoint audit → Template creation → Usage examples → Exceptions
+    → Touchpoint [audit](../../AI_and_Agents/Operations/audit/SKILL.md) → Template creation → Usage examples → Exceptions
 ```
 
 ### Brand Identity Process
@@ -68,7 +68,7 @@ What is the primary brand challenge?
 Discovery → Strategy → Visual Identity → Voice & Tone → Guidelines → Application → Governance
    │           │            │               │              │             │            │
    ├ Research  ├ Mission    ├ Logo          ├ Voice       ├ Document    ├ Digital    ├ Reviews
-   ├ Audit     ├ Vision     ├ Color         ├ Vocabulary  ├ Rules       ├ Print      ├ Updates
+   ├ [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)     ├ Vision     ├ Color         ├ Vocabulary  ├ Rules       ├ Print      ├ Updates
    ├ Analysis  ├ Values     ├ Typography    ├ Tone map    ├ Examples    ├ Environ.   ├ Training
    └ Goals     ├ Persona    ├ Imagery       └ Do/Don't    └ Templates   └ Motion    └ Enforcement
                └ Position   └ Layout
@@ -210,7 +210,7 @@ Guidelines Document Structure:
 
 ### Step 5: Implement and Govern
 
-Brand Audit (quarterly):
+Brand [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) (quarterly):
 - Collect all brand touchpoints (digital, print, environmental)
 - Score each against brand guidelines (0=violation, 1=partial, 2=full compliance)
 - Identify top 3-5 inconsistencies and create remediation plan
@@ -245,7 +245,7 @@ Digital Brand Enforcement:
 | Version your guidelines | Brand evolves — document what changed and why |
 | Make guidelines accessible | Searchable, web-based, not a locked PDF |
 | Test in context | Brand elements must work in real environments |
-| Audit regularly | Brands drift without systematic governance |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) regularly | Brands drift without systematic governance |
 | Train the organization | Guidelines only work if people understand them |
 | Lead from strategy | Every visual decision connects back to brand strategy |
 | Design for extension | Third parties, partners, and co-branding scenarios |
@@ -295,7 +295,7 @@ overall_score: 5/6 (83%)
 ## Case Studies
 
 ### Case Study 1: Brand Unification After Merger
-Two SaaS companies merged, each with established but conflicting brand identities. Company A was blue, serious, enterprise-focused. Company B was orange, playful, startup-oriented. The merged brand audit showed 78% inconsistency across touchpoints. The solution was not to blend but to create a third identity — a deep purple primary with a new positioning ("Powerful yet approachable") that neither company owned. The visual identity was entirely new, avoiding favoritism. Post-launch employee satisfaction with brand identity rose from 42% to 89%, and customer surveys showed 34% improvement in brand perception clarity.
+Two SaaS companies merged, each with established but conflicting brand identities. Company A was blue, serious, enterprise-focused. Company B was orange, playful, startup-oriented. The merged brand [audit](../../AI_and_Agents/Operations/audit/SKILL.md) showed 78% inconsistency across touchpoints. The solution was not to blend but to create a third identity — a deep purple primary with a new positioning ("Powerful yet approachable") that neither company owned. The visual identity was entirely new, avoiding favoritism. Post-launch employee satisfaction with brand identity rose from 42% to 89%, and customer surveys showed 34% improvement in brand perception clarity.
 
 Method: Strategy-first rebrand with neutral territory visual identity
 Key insight: After mergers, a completely new identity avoids "us vs them" dynamics
@@ -329,7 +329,7 @@ Impact: Brand consistency from <40% to 95% in 6 months
 
 ### Brand Governance Workflow
 ```
-Brand asset created → Review against guidelines → Approve → Distribute via brand library → Quarterly audit → Update guidelines
+Brand asset created → Review against guidelines → Approve → Distribute via brand library → Quarterly [audit](../../AI_and_Agents/Operations/audit/SKILL.md) → Update guidelines
 ```
 
 **Brand asset library**: Centralize all approved assets in a shared platform (Figma, Brandfolder, Frontify, or simple cloud storage). Structure: `assets/logos/` (primary, secondary, icon, favicon), `assets/icons/` (SVG sources in multiple sizes), `assets/photography/` (approved image library), `assets/templates/` (slide decks, letterhead, social media templates). Version each asset with date and change reason.
@@ -352,7 +352,7 @@ Brands evolve — plan for it. Three types of brand changes:
 3. **Full rebrand** (merger/acquisition): New name, logo, identity system. Impact: high. Migration: cutover date with all touchpoints updated simultaneously.
 
 **Migration checklist for brand updates**:
-- [ ] Update design tokens in code (CSS, Android XML, iOS asset catalog)
+- [ ] Update design tokens in code (CSS, [Android](../../Mobile/android/SKILL.md) XML, iOS asset catalog)
 - [ ] Replace all logo files (web, mobile, email, print)
 - [ ] Update favicon and app icon
 - [ ] Refresh marketing materials (website hero, social profiles, ad creatives)
@@ -379,7 +379,7 @@ Brands evolve — plan for it. Three types of brand changes:
 **Multi-platform token delivery**: Maintain brand tokens in a single source (JSON/YAML) → generate platform-specific formats using Style Dictionary:
 - Web: CSS custom properties + Sass variables
 - iOS: Swift constants + asset catalog color set
-- Android: XML color resources + Kotlin constants
+- [Android](../../Mobile/android/SKILL.md): XML color resources + Kotlin constants
 - Figma: Token Studio plugin sync
 
 ## Anti-Patterns
@@ -402,7 +402,7 @@ Brands evolve — plan for it. Three types of brand changes:
 ### Platform Adaptation
 Brand must feel native on each platform while remaining consistent:
 
-| Element | Web | iOS | Android | Print |
+| Element | Web | iOS | [Android](../../Mobile/android/SKILL.md) | Print |
 |---------|-----|-----|---------|-------|
 | Typography | System fonts + web fonts | SF Pro + brand font | Roboto + brand font | Brand fonts only |
 | Icon style | Outline 2px | Fill with rounded corners | Fill with sharp corners | Outline 2px |
@@ -427,17 +427,17 @@ Brand colors must meet WCAG AA minimums:
 | Brand asset kit | ZIP with organized folders | All stakeholders | Logo files (multiple formats), icons, templates |
 | Brand cheat sheet | 1-page PDF | All employees | Logo restrictions, colors, fonts, voice rules (condensed) |
 | Template library | Figma/PPT/Google Slides | Marketing, sales | Presentation, email, social, document templates |
-| Brand audit report | Slide deck/PDF | Leadership | Consistency scores, violations, remediation plan |
+| Brand [audit](../../AI_and_Agents/Operations/audit/SKILL.md) report | Slide deck/PDF | Leadership | Consistency scores, violations, remediation plan |
 
 ## References
   - ../../../Global_References/brand-identity-advanced.md — Brand Identity Advanced Topics
   - ../../../Global_References/brand-identity-fundamentals.md — Brand Identity Fundamentals
   - references/brand-messaging.md — Brand Messaging and Voice Reference
-  - references/brand-touchpoint-audit.md — Brand Touchpoint Audit Reference
+  - references/brand-touchpoint-[audit](../../AI_and_Agents/Operations/audit/SKILL.md).md — Brand Touchpoint [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Reference
   - references/logo-design.md — Logo Design Reference
   - references/visual-identity-guidelines.md — Visual Identity Guidelines Reference
 ## Handoff
-Hand off to `design-visual-design` for visual system implementation. Hand off to `design-design-systems` for token/component implementation. Hand off to `design-ux-research` for audience validation.
+Hand off to `[design-visual-design](../../Software_Engineering_and_Other/Frontend/visual-design/SKILL.md)` for visual system implementation. Hand off to `design-[design-systems](../../Software_Engineering_and_Other/Frontend/design-systems/SKILL.md)` for token/component implementation. Hand off to `[design-ux-research](../ux-research/SKILL.md)` for audience validation.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -487,12 +487,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -501,7 +501,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -509,13 +509,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

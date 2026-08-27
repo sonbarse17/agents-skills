@@ -10,14 +10,14 @@ metadata:
   package: azure-ai-textanalytics
 ---
 
-# Azure AI Text Analytics SDK for Python
+# Azure AI Text Analytics SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure AI Language service NLP capabilities including sentiment, entities, key phrases, and more.
 
 ## Installation
 
 ```bash
-pip install azure-ai-textanalytics
+pip install [azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-textanalytics
 ```
 
 ## Environment Variables
@@ -32,7 +32,7 @@ AZURE_LANGUAGE_KEY=<your-api-key>  # Only required for the legacy API-key auth p
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -41,7 +41,7 @@ AZURE_LANGUAGE_KEY=<your-api-key>  # Only required for the legacy API-key auth p
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -49,7 +49,7 @@ from azure.ai.textanalytics import TextAnalyticsClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with TextAnalyticsClient(
@@ -63,7 +63,7 @@ with TextAnalyticsClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -77,7 +77,7 @@ with TextAnalyticsClient(
 
 ## Sentiment Analysis
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = [
     "I had a wonderful trip to Seattle last week!",
     "The food was terrible and the service was slow."
@@ -103,7 +103,7 @@ for doc in result:
 
 ## Entity Recognition
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = ["Microsoft was founded by Bill Gates and Paul Allen in Albuquerque."]
 
 result = client.recognize_entities(documents)
@@ -119,7 +119,7 @@ for doc in result:
 
 ## PII Detection
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = ["My SSN is 123-45-6789 and my email is john@example.com"]
 
 result = client.recognize_pii_entities(documents)
@@ -133,7 +133,7 @@ for doc in result:
 
 ## Key Phrase Extraction
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = ["Azure AI provides powerful machine learning capabilities for developers."]
 
 result = client.extract_key_phrases(documents)
@@ -145,7 +145,7 @@ for doc in result:
 
 ## Language Detection
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = ["Ce document est en francais.", "This is written in English."]
 
 result = client.detect_language(documents)
@@ -158,7 +158,7 @@ for doc in result:
 
 ## Healthcare Text Analytics
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 documents = ["Patient has diabetes and was prescribed metformin 500mg twice daily."]
 
 poller = client.begin_analyze_healthcare_entities(documents)
@@ -178,7 +178,7 @@ for doc in result:
 
 ## Multiple Analysis (Batch)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.textanalytics import (
     RecognizeEntitiesAction,
     ExtractKeyPhrasesAction,
@@ -209,7 +209,7 @@ for doc_results in results:
 
 ## Async Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.textanalytics.aio import TextAnalyticsClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -257,6 +257,6 @@ async def analyze():
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-ai-textanalytics-py_capabilities.md](../../../Global_References/azure-ai-textanalytics-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-ai-textanalytics-py_non-hero-scenarios.md](../../../Global_References/azure-ai-textanalytics-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-textanalytics-py_capabilities.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-textanalytics-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-textanalytics-py_non-hero-scenarios.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-textanalytics-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

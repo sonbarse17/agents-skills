@@ -142,7 +142,7 @@ and setting min/max instance scaling deliberately rather than by default.
    keeps p99 cold-start-affected latency acceptable, not to "always
    warm" by default.
 
-4. **Set `max-instances` against real downstream capacity, and remember
+4. **Set `max-instances` against real downstream [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and remember
    Gen2's `--concurrency` changes what `max-instances` actually caps.**
    In Gen1, each instance serves exactly one request, so `max-instances`
    directly bounds concurrent requests. In Gen2, each instance can serve
@@ -155,7 +155,7 @@ and setting min/max instance scaling deliberately rather than by default.
    gcloud functions describe checkout-api --gen2 --region=us-central1 \
      --format="value(serviceConfig.maxInstanceCount,serviceConfig.maxInstanceRequestConcurrency)"
    ```
-   Size `max-instances` against the actual capacity of whatever the
+   Size `max-instances` against the actual [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) of whatever the
    function calls (a database connection pool, a rate-limited
    third-party API), not against an arbitrary round number.
 
@@ -189,7 +189,7 @@ and setting min/max instance scaling deliberately rather than by default.
   reflexive fix for cold-start complaints — measure actual cold-start
   impact on the SLO before paying to keep instances warm.
 - Size `max-instances` against the weakest downstream dependency's
-  actual capacity (DB connections, third-party rate limits), factoring
+  actual [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (DB connections, third-party rate limits), factoring
   in Gen2's `concurrency` multiplier, not against Cloud Functions' own
   account-level ceiling.
 - Give every function its own service account scoped to only the APIs
@@ -277,7 +277,7 @@ With `min-instances=2`, at least two instances stay warm through
 traffic lulls, eliminating cold starts on the morning ramp; `max-
 instances=30 × concurrency=20` caps effective concurrent requests at
 600, checked against the order-validation database's connection pooler
-capacity before deploy.
+[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) before deploy.
 
 Gen2 migration for the Cloud Storage-triggered function, moving off
 Gen1's native bucket trigger to an Eventarc-routed one:
@@ -303,6 +303,6 @@ resulting Cloud Run service before cutting the Gen1 trigger over.
 
 ## Cross-references
 
-- [aws-lambda-packaging-and-configuration](../aws-lambda-packaging-and-configuration/SKILL.md) — equivalent packaging, scaling, and cold-start tradeoffs on AWS Lambda.
-- [azure-functions-configuration](../azure-functions-configuration/SKILL.md) — equivalent hosting-plan and trigger/binding configuration on Azure Functions.
-- [knative-serverless-configuration](../knative-serverless-configuration/SKILL.md) — the scale-to-zero/revision model Gen2 Cloud Functions builds on, generalized to any container on Kubernetes via Knative Serving.
+- [aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — equivalent packaging, scaling, and cold-start tradeoffs on AWS Lambda.
+- [azure-functions-configuration](../[azure-functions-configuration](../[azure-functions](../azure-functions/SKILL.md)-configuration/SKILL.md)/SKILL.md) — equivalent hosting-plan and trigger/binding configuration on Azure Functions.
+- [knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../[knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../../Containers_and_Orchestration/knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the scale-to-zero/revision model Gen2 Cloud Functions builds on, generalized to any container on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) via Knative Serving.

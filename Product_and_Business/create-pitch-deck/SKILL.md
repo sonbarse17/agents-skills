@@ -52,7 +52,7 @@ What is the fundraising instrument?
   |-- SAFE --> Focus on: vision, traction, milestone to next round
   |-- PRICED ROUND --> Focus on: valuation rationale, use of funds, dilution
   |-- CONVERTIBLE NOTE --> Focus on: discount rate, valuation cap, maturity date
-  |-- VENTURE DEBT --> Focus on: unit economics, ARR, debt service capacity
+  |-- VENTURE DEBT --> Focus on: unit economics, ARR, debt service [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 ```
 
 ### Slide Priority Decision Tree
@@ -531,10 +531,10 @@ Best,
 ## References
 - **market-analysis** — Refine market data, TAM/SAM/SOM, and competitive positioning
 - **create-roadmap** — Align product roadmap narrative with pitch story
-- **create-prd** — Develop detailed product requirements supporting pitch claims
-- **create-brief** — Write executive briefs for investor follow-up meetings
-- **create-story** — Break down product milestones into development stories
-- **create-tech-spec** — Document technical differentiation claims
+- **[create-prd](../create-prd/SKILL.md)** — Develop detailed product requirements supporting pitch claims
+- **[create-brief](../create-brief/SKILL.md)** — Write executive briefs for investor follow-up meetings
+- **[create-story](../create-story/SKILL.md)** — Break down product milestones into development stories
+- **[create-tech-spec](../create-tech-spec/SKILL.md)** — Document technical differentiation claims
 - **create-adr** — Record architecture decisions supporting competitive moat
 
 ## Handoff

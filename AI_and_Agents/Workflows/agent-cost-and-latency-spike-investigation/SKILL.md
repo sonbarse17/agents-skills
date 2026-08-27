@@ -20,17 +20,17 @@ metadata:
 
 ## Purpose
 
-A sudden cost or latency spike in one agent workflow is an incident, not an
+A sudden cost or latency spike in one agent workflow is an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not an
 optimization project — the goal in the first hours is to scope it,
 identify what changed, and stop the bleeding, not to redesign the pipeline.
-[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)
+[llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
 covers the deliberate, scheduled work of reducing baseline cost/latency
 across an agent (right-sizing models, caching, batching); this skill covers
 the narrower, time-pressured question that comes first: *why did this one
 workflow suddenly get more expensive or slower than it was yesterday*, and
 what's the fastest safe action to take. Confusing the two wastes the
 window where a quick rollback would have worked and instead launches a
-multi-day optimization effort under incident pressure.
+multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pressure.
 
 ## When to use
 
@@ -62,7 +62,7 @@ multi-day optimization effort under incident pressure.
   cost can be distinguished from a spike in cost-per-request.
 - Access to a recent-history transcript sample for the affected workflow
   (see
-  [agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md)
+  [agent-bad-response-triage-and-root-cause-classification](../[agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md)/SKILL.md)
   for full-transcript capture practices) so the investigation isn't
   limited to aggregate numbers alone.
 
@@ -73,7 +73,7 @@ multi-day optimization effort under incident pressure.
    simultaneously, this is more likely a provider-wide event (outage,
    pricing change, regional latency issue) than a workflow-specific
    regression — that's the domain of
-   [llm-gateway-and-multi-provider-routing](../llm-gateway-and-multi-provider-routing/SKILL.md)
+   [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../Models_and_FineTuning/[llm-gateway](../../Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md)
    (check provider status, confirm fallback routing triggered correctly)
    rather than this skill. Confirm the spike is actually isolated to one
    workflow before proceeding with a workflow-specific investigation.
@@ -99,18 +99,18 @@ multi-day optimization effort under incident pressure.
 
 3. **Apply the decision tree once the shape of the change is visible:**
    - **Volume up, per-request metrics flat** → legitimate traffic growth,
-     not a regression; this is a capacity/budget conversation, not an
-     incident.
+     not a regression; this is a [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/budget conversation, not an
+     [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
    - **Volume flat, tokens-per-request up** → likely context bloat
      (uncontrolled history growth, duplicated retrieved chunks) or a
      prompt/tool-description change — see
-     [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md).
+     [prompt-and-context-engineering](../[prompt-and-context-engineering](../prompt-and-[context-engineering](../context-engineering/SKILL.md)/SKILL.md)/SKILL.md).
    - **Volume flat, tool-call count per request up** → likely a stalled or
      looping agent — see
-     [agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md).
+     [agent-tool-call-loop-diagnosis-and-circuit-breaking](../[agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md)/SKILL.md).
    - **Latency up, tokens flat** → likely a provider-side latency change,
      a model/region switch, or a downstream tool/dependency slowdown — see
-     [llm-gateway-and-multi-provider-routing](../llm-gateway-and-multi-provider-routing/SKILL.md).
+     [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../Models_and_FineTuning/[llm-gateway](../../Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md).
    - **Cost up, tokens flat** → likely a pricing change, a model routing
      change (silently routed to a pricier model/tier), or a provider
      billing anomaly — verify against the routing config and provider
@@ -118,9 +118,9 @@ multi-day optimization effort under incident pressure.
    - **RAG-backed workflow, retrieval-stage metrics implicated** → check
      whether a recent re-indexing job changed chunk count/size or
      duplicated content — see
-     [vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)
+     [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md)
      and
-     [vector-database-operations-pinecone-weaviate-milvus](../vector-database-operations-pinecone-weaviate-milvus/SKILL.md)
+     [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
      for query-side cost/latency levers (over-retrieval, `ef_search`
      misconfiguration).
 
@@ -150,10 +150,10 @@ multi-day optimization effort under incident pressure.
 
    > **Warning:** A stopgap fix applied directly to production without a
    > tested rollback path (e.g. hand-editing a live prompt or routing
-   > config with no previous version saved) risks replacing one incident
+   > config with no previous version saved) risks replacing one [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    > with another. Roll back to the last known-good, versioned
    > configuration rather than improvising a new one under pressure — see
-   > [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
+   > [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
    > for why an unvalidated forward-fix is riskier than a clean rollback.
 
 8. **Hand off to the deliberate optimization pass once contained.** Once
@@ -161,8 +161,8 @@ multi-day optimization effort under incident pressure.
    surfaces general inefficiency (not just the regression that caused the
    spike — e.g. "we've never right-sized the model for this step"), that
    becomes a scheduled task for
-   [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md),
-   not something to solve inside this incident.
+   [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md),
+   not something to solve inside this [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 9. **Add a per-workflow cost/latency regression alert** (not just an
    aggregate account-level billing alert) so the next spike in this
@@ -172,11 +172,11 @@ multi-day optimization effort under incident pressure.
 
 ## Best practices
 
-- Segment cost and latency dashboards by workflow/task type from the
+- Segment cost and latency [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) by workflow/task type from the
   start; an aggregate-only dashboard dilutes a severe single-workflow
   spike into an unremarkable overall trend.
 - Prefer a clean rollback to the last known-good configuration over a
-  forward fix improvised during the incident — validate any forward fix
+  forward fix improvised during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — validate any forward fix
   against the eval suite before it replaces the rollback as the permanent
   solution.
 - Always check the four signals (volume, tokens, tool-call count, latency)
@@ -188,9 +188,9 @@ multi-day optimization effort under incident pressure.
   strong evidence but a confirmed transcript is proof.
 - Keep a running timeline of prompt/tool/model/index changes with
   timestamps as a standing artifact, not something reconstructed from
-  memory during each incident.
+  memory during each [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Distinguish "legitimate traffic growth" from "regression" early and
-  explicitly — treating growth as an incident wastes urgency budget, and
+  explicitly — treating growth as an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) wastes urgency budget, and
   treating a regression as growth delays the fix.
 
 ## Common pitfalls
@@ -218,8 +218,8 @@ multi-day optimization effort under incident pressure.
   minor overall uptick, masking a severe spike in one specific low-volume
   but now much more expensive workflow.
   **Fix:** Segment cost and latency metrics by workflow/task type as a
-  standing practice, not only when an incident is already suspected —
-  aggregate-only monitoring structurally cannot catch this class of spike
+  standing practice, not only when an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is already suspected —
+  aggregate-only [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) structurally cannot catch this class of spike
   early.
 
 - **Symptom:** A quick prompt or routing-config edit is pushed directly to
@@ -245,7 +245,7 @@ jumps from roughly $0.04 to $0.31 overnight, with total request volume
 essentially unchanged; the on-call engineer is asked to investigate before
 anyone commits to a redesign.
 
-1. **Scope:** Cost dashboards for two other agents sharing the same model
+1. **Scope:** Cost [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for two other agents sharing the same model
    provider show no change — confirmed isolated to `contract-summarizer`,
    ruling out a provider-wide event.
 2. **Signal table:**
@@ -275,8 +275,8 @@ anyone commits to a redesign.
    the hour.
 7. **Follow-up:** the intent behind the original edit (some users wanted
    more comprehensive summaries for complex contracts) is handed to
-   [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)
-   and [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)
+   [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
+   and [prompt-and-context-engineering](../[prompt-and-context-engineering](../prompt-and-[context-engineering](../context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
    as a deliberate follow-up: an explicit, length-bounded "detailed mode"
    evaluated against the eval suite for both quality and cost before
    shipping, rather than an unbounded prompt change pushed directly to
@@ -286,9 +286,9 @@ anyone commits to a redesign.
 
 ## Cross-references
 
-- [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md) — the deliberate optimization pass this investigation feeds into once the active spike is contained.
-- [agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md) — a common root cause when tool-call count per request is the signal that moved.
-- [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md) — diagnosing and fixing a context-bloat or prompt-change root cause.
-- [llm-gateway-and-multi-provider-routing](../llm-gateway-and-multi-provider-routing/SKILL.md) — when the spike is provider- or routing-correlated rather than workflow-specific.
-- [vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md) — when a re-indexing run correlates with a RAG-backed workflow's spike.
-- [agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md) — the parallel triage process when the symptom is a bad response rather than cost/latency.
+- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the deliberate optimization pass this investigation feeds into once the active spike is contained.
+- [agent-tool-call-loop-diagnosis-and-circuit-breaking](../[agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md)/SKILL.md) — a common root cause when tool-call count per request is the signal that moved.
+- [prompt-and-context-engineering](../[prompt-and-context-engineering](../prompt-and-[context-engineering](../context-engineering/SKILL.md)/SKILL.md)/SKILL.md) — diagnosing and fixing a context-bloat or prompt-change root cause.
+- [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../Models_and_FineTuning/[llm-gateway](../../Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md) — when the spike is provider- or routing-correlated rather than workflow-specific.
+- [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — when a re-indexing run correlates with a RAG-backed workflow's spike.
+- [agent-bad-response-triage-and-root-cause-classification](../[agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md)/SKILL.md) — the parallel triage process when the symptom is a bad response rather than cost/latency.

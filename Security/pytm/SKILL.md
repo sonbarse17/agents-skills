@@ -28,7 +28,7 @@ references:
 
 ## Overview
 
-pytm is a Python library for programmatic threat modeling based on the STRIDE methodology. It enables
+pytm is a [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) library for programmatic threat modeling based on the STRIDE methodology. It enables
 security engineers to define system architecture as code, automatically generate data flow diagrams (DFDs),
 identify security threats across trust boundaries, and produce comprehensive threat reports. This
 approach integrates threat modeling into CI/CD pipelines, enabling shift-left security and continuous
@@ -38,7 +38,7 @@ threat analysis.
 
 Create a basic threat model:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 from pytm import TM, Server, Dataflow, Boundary, Actor
 
@@ -120,10 +120,10 @@ For each identified threat:
 
 Define system architecture programmatically:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor, Lambda
 
-tm = TM("Microservices Architecture")
+tm = TM("[Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) Architecture")
 
 # Cloud boundaries
 internet = Boundary("Internet")
@@ -135,7 +135,7 @@ api_gateway.inBoundary = cloud_vpc
 api_gateway.implementsAuthentication = True
 api_gateway.implementsAuthorization = True
 
-# Microservices
+# [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
 auth_service = Lambda("Auth Service")
 auth_service.inBoundary = cloud_vpc
 
@@ -167,7 +167,7 @@ tm.process()
 Automate threat modeling in continuous integration:
 
 ```yaml
-# .github/workflows/threat-model.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/threat-model.yml
 name: Threat Model Analysis
 on: [push, pull_request]
 
@@ -177,10 +177,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+        uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v4
         with:
-          python-version: '3.10'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -188,7 +188,7 @@ jobs:
           sudo apt-get install -y graphviz
 
       - name: Generate threat model
-        run: python threat_model.py
+        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) threat_model.py
 
       - name: Upload DFD diagram
         uses: actions/upload-artifact@v3
@@ -197,7 +197,7 @@ jobs:
           path: '*.png'
 
       - name: Check for unmitigated threats
-        run: python scripts/check_mitigations.py threat_model.py
+        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_mitigations.py threat_model.py
 ```
 
 ### Workflow 5: Threat Report Generation
@@ -206,7 +206,7 @@ Generate comprehensive threat documentation:
 
 ```bash
 # Run threat model with report generation
-python threat_model.py
+[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) threat_model.py
 
 # Generate markdown report
 ./scripts/generate_report.py --model threat_model.py --output threat_report.md
@@ -238,7 +238,7 @@ Report includes:
 - **Diagram artifacts**: Control distribution of DFDs showing system architecture
 - **Mitigation tracking**: Integrate with secure issue tracking systems
 
-### Audit Logging
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Log the following for security governance:
 - Threat model creation and modification history
@@ -274,7 +274,7 @@ Log the following for security governance:
 ### Assets (`assets/`)
 
 - `templates/web_application.py` - Web application threat model template
-- `templates/microservices.py` - Microservices architecture template
+- `templates/[microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).py` - [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) architecture template
 - `templates/mobile_app.py` - Mobile application threat model template
 - `templates/iot_system.py` - IoT system threat model template
 - `dfd_styles.json` - Custom graphviz styling for professional diagrams
@@ -283,7 +283,7 @@ Log the following for security governance:
 
 ### Pattern 1: Web Application Three-Tier Architecture
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor
 
 tm = TM("Three-Tier Web Application")
@@ -324,17 +324,17 @@ Dataflow(app, db, "SQL/TLS").data = "user data, transactions"
 tm.process()
 ```
 
-### Pattern 2: Cloud Native Microservices
+### Pattern 2: Cloud Native [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pytm import TM, Lambda, Datastore, Dataflow, Boundary, Actor
 
-tm = TM("Cloud Microservices")
+tm = TM("Cloud [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)")
 
 cloud = Boundary("Cloud Provider VPC")
 user = Actor("Mobile App")
 
-# Serverless functions
+# [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions
 api_gateway = Lambda("API Gateway")
 api_gateway.inBoundary = cloud
 api_gateway.implementsAPI = True
@@ -364,7 +364,7 @@ tm.process()
 
 Define organization-specific threats:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pytm import TM, Threat
 
 tm = TM("Custom Threat Model")
@@ -388,7 +388,7 @@ web_server.threats.append(custom_threat)
 
 Focus on cross-boundary threats:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Identify all trust boundary crossings
 for flow in tm.dataflows:
     if flow.source.inBoundary != flow.sink.inBoundary:
@@ -403,7 +403,7 @@ Trust boundary crossings require extra scrutiny:
 - Authentication and authorization mechanisms
 - Encryption in transit
 - Input validation and sanitization
-- Logging and monitoring
+- Logging and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ## Integration Points
 
@@ -418,17 +418,17 @@ Trust boundary crossings require extra scrutiny:
 
 ### Security Tools Ecosystem
 
-- **Issue Tracking**: Export threats as Jira/GitHub issues for mitigation tracking
+- **Issue Tracking**: Export threats as Jira/[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) issues for mitigation tracking
 - **Documentation**: Generate threat models for security documentation
-- **SIEM**: Map threats to detection rules and monitoring alerts
-- **Pentesting**: Provide threat model to pentesters for targeted assessment
+- **SIEM**: Map threats to detection rules and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts
+- **[Pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md)**: Provide threat model to pentesters for targeted assessment
 - **Code Analysis**: Link SAST/DAST findings to threat model threats
 
 ### Cloud and DevOps
 
-- **Infrastructure as Code**: Threat model Terraform/CloudFormation templates
+- **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) templates
 - **Container Security**: Model container orchestration and service mesh
-- **API Design**: Threat model API gateway and microservices communication
+- **API Design**: Threat model API gateway and [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) communication
 - **Secrets Management**: Model key management and secrets distribution
 
 ## Troubleshooting
@@ -458,7 +458,7 @@ brew install graphviz  # macOS
 sudo apt-get install graphviz  # Linux
 
 # Test pytm with simple model
-python -c "from pytm import TM; tm = TM('test'); tm.process()"
+[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "from pytm import TM; tm = TM('test'); tm.process()"
 ```
 
 ### Issue: Too Many False Positive Threats
@@ -488,7 +488,7 @@ python -c "from pytm import TM; tm = TM('test'); tm.process()"
 
 Create organization-specific threat library:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # custom_threats.py
 from pytm import Threat
 
@@ -518,7 +518,7 @@ def add_custom_threats(tm):
 
 Add DREAD scoring to threats:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ScoredThreat(Threat):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -547,15 +547,15 @@ print(f"DREAD Score: {threat.dread_score()}/10")
 
 ### Diagram Customization
 
-Customize DFD output with graphviz attributes:
+[Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Set custom colors for trust boundaries
 internet.color = "red"
 dmz.color = "orange"
 internal.color = "green"
 
-# Customize diagram output
+# [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) diagram output
 tm.graph_options = {
     "rankdir": "LR",  # Left to right layout
     "bgcolor": "white",
@@ -566,7 +566,7 @@ tm.graph_options = {
 
 ## References
 
-- [pytm GitHub Repository](https://github.com/izar/pytm)
+- [pytm [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/izar/pytm)
 - [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
 - [Microsoft STRIDE Methodology](https://www.microsoft.com/en-us/security/blog/2007/09/11/stride-chart/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)

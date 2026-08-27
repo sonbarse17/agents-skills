@@ -17,7 +17,7 @@ Deploy frontend projects with preview builds, edge functions, and global CDN del
 - Full-stack applications using Pages Functions for server-side logic.
 - Projects that need automatic preview deployments per pull request.
 - Teams that want zero-config CDN with custom domain and TLS.
-- Migrating from Vercel, Netlify, or GitHub Pages to Cloudflare's ecosystem.
+- Migrating from Vercel, Netlify, or [GitHub](../../CI_CD/github/SKILL.md) Pages to Cloudflare's ecosystem.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Deploy frontend projects with preview builds, edge functions, and global CDN del
 - A Cloudflare account (free tier works for most projects).
 - Wrangler CLI installed: `npm install -g wrangler`.
 - Authenticated via `wrangler login` or `CLOUDFLARE_API_TOKEN` environment variable.
-- Source code in a Git repository (GitHub or GitLab for dashboard integration).
+- Source code in a Git repository ([GitHub](../../CI_CD/github/SKILL.md) or GitLab for dashboard integration).
 
 ## Project Setup via Wrangler
 
@@ -71,7 +71,7 @@ npx wrangler pages deployment tail --project-name=my-site --environment=producti
 ## Dashboard Git Integration
 
 1. Navigate to **Workers & Pages > Create application > Pages**.
-2. Connect your GitHub or GitLab account.
+2. Connect your [GitHub](../../CI_CD/github/SKILL.md) or GitLab account.
 3. Select the repository and configure:
    - **Production branch**: `main`
    - **Build command**: `npm run build`
@@ -89,7 +89,7 @@ Cloudflare auto-detects frameworks. Override if needed:
 | Next.js    | `npx @cloudflare/next-on-pages` | `.vercel/output/static` |
 | Astro      | `npm run build`      | `dist`           |
 | Hugo       | `hugo`               | `public`         |
-| SvelteKit  | `npm run build`      | `.svelte-kit/cloudflare` |
+| [SvelteKit](../../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md)  | `npm run build`      | `.svelte-kit/cloudflare` |
 
 ## Preview Deployments
 
@@ -97,7 +97,7 @@ Every non-production branch gets a unique preview URL automatically.
 
 ```
 # URL format for preview deployments
-https://<commit-hash>.<project-name>.pages.dev
+https://<[commit](../../CI_CD/commit/SKILL.md)-hash>.<project-name>.pages.dev
 https://<branch-name>.<project-name>.pages.dev
 ```
 
@@ -112,7 +112,7 @@ https://<branch-name>.<project-name>.pages.dev
 
 ### Preview Comment on Pull Requests
 
-Enable the Cloudflare Pages GitHub App to post deployment URLs as PR comments. Configure under **Settings > Builds & deployments > Preview comment**.
+Enable the Cloudflare Pages [GitHub](../../CI_CD/github/SKILL.md) App to post deployment URLs as PR comments. Configure under **Settings > Builds & deployments > Preview comment**.
 
 ## Pages Functions
 
@@ -120,7 +120,7 @@ Pages Functions provide server-side logic deployed alongside your static site. P
 
 ### Basic API Route
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // functions/api/hello.ts
 export const onRequestGet: PagesFunction = async (context) => {
   return new Response(JSON.stringify({ message: "Hello from the edge" }), {
@@ -139,7 +139,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
 ### Middleware
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // functions/_middleware.ts — runs before all routes
 export const onRequest: PagesFunction = async (context) => {
   const authHeader = context.request.headers.get("Authorization");
@@ -152,7 +152,7 @@ export const onRequest: PagesFunction = async (context) => {
 
 ### Functions with Bindings
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // functions/api/data.ts — using KV and D1 bindings
 interface Env {
   MY_KV: KVNamespace;
@@ -254,10 +254,10 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/pr
 
 ## CI/CD Integration
 
-### GitHub Actions
+### [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```yaml
-# .github/workflows/deploy.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/deploy.yml
 name: Deploy to Cloudflare Pages
 on:
   push:
@@ -288,7 +288,7 @@ jobs:
 |---------|-------|-----|
 | Build fails with out-of-memory | Build exceeds 1 GB RAM limit | Reduce dependencies; use `NODE_OPTIONS=--max_old_space_size=768` |
 | Functions return 404 | `functions/` directory not at project root | Move `functions/` to repo root, not inside `src/` |
-| Preview URL shows old content | Browser cache or stale deployment | Hard refresh; check deployment list for latest commit hash |
+| Preview URL shows old content | Browser cache or stale deployment | Hard refresh; check deployment list for latest [commit](../../CI_CD/commit/SKILL.md) hash |
 | Custom domain shows SSL error | DNS not proxied through Cloudflare | Enable orange cloud (proxy) on the CNAME record |
 | `_headers` file ignored | File not in build output directory | Place in `public/` so it copies to `dist/` during build |
 | Bindings undefined in Functions | Missing `wrangler.toml` or dashboard config | Add bindings in `wrangler.toml` and redeploy |
@@ -296,7 +296,7 @@ jobs:
 
 ## Related Skills
 
-- [cloudflare-workers](../cloudflare-workers/) - Edge backend logic and API routes
-- [cloudflare-r2](../cloudflare-r2/) - Object storage for assets and uploads
-- [cloudflare-zero-trust](../cloudflare-zero-trust/) - Protect preview deployments with Access policies
-- [cdn-setup](../../networking/cdn-setup/) - General CDN configuration patterns
+- [cloudflare-workers](../[cloudflare-workers](../cloudflare-workers/SKILL.md)/) - Edge backend logic and API routes
+- [cloudflare-r2](../[cloudflare-r2](../cloudflare-r2/SKILL.md)/) - Object storage for assets and uploads
+- [cloudflare-zero-trust](../[cloudflare-zero-trust](../cloudflare-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/) - Protect preview deployments with Access policies
+- [cdn-setup](../../networking/[cdn-setup](../cdn-setup/SKILL.md)/) - General CDN configuration patterns

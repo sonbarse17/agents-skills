@@ -51,14 +51,14 @@ Most requests describe one capability. If this one does, skip this phase and go 
 | identity | Accounts, sessions, SSO | — |
 | billing | Plans, invoices, payments | identity |
 | notifications | Email and webhook fan-out | identity |
-| reporting | Usage dashboards | billing, notifications |
+| reporting | Usage [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) | billing, notifications |
 
 Build order: identity → billing, notifications → reporting
 ```
 
 - **Stable module ids.** Kebab-case, chosen once, never renamed mid-initiative. Specs, plans, and downstream commands select work by these ids instead of guessing which spec is active.
 - **Dependency direction, no cycles.** Arrows point one way. If two modules each need the other, they are one module.
-- **Interfaces live at the boundary.** The map records that `billing` depends on `identity`; the contract between them belongs in the provider module's spec (see `api-and-interface-design` for designing it).
+- **Interfaces live at the boundary.** The map records that `billing` depends on `identity`; the contract between them belongs in the provider module's spec (see `[api-and-interface-design](../../Backend/api-and-interface-design/SKILL.md)` for designing it).
 
 **The map is gated like every phase.** The human reviews module boundaries, dependency direction, and build order before any module spec is written. Getting the map wrong is expensive; reviewing ten lines is not.
 
@@ -74,7 +74,7 @@ Start with a high-level vision. Ask the human clarifying questions until require
 ASSUMPTIONS I'M MAKING:
 1. This is a web application (not native mobile)
 2. Authentication uses session-based cookies (not JWT)
-3. The database is PostgreSQL (based on existing Prisma schema)
+3. The database is [PostgreSQL](../../Backend/postgresql/SKILL.md) (based on existing Prisma schema)
 4. We're targeting modern browsers only (no IE11)
 → Correct me now or I'll proceed with these.
 ```
@@ -110,7 +110,7 @@ Don't silently fill in ambiguous requirements. The spec's entire purpose is to s
 6. **Boundaries** — Three-tier system:
    - **Always do:** Run tests before commits, follow naming conventions, validate inputs
    - **Ask first:** Database schema changes, adding dependencies, changing CI config
-   - **Never do:** Commit secrets, edit vendor directories, remove failing tests without approval
+   - **Never do:** [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets, edit vendor directories, remove failing tests without approval
 
 **Spec template:**
 
@@ -171,9 +171,9 @@ With the validated spec, generate a technical implementation plan:
 4. Identify what can be built in parallel vs. what must be sequential
 5. Define verification checkpoints between phases
 
-> Follow `planning-and-task-breakdown` for the dependency-graph mapping and vertical-slicing mechanics behind these steps; it is the canonical source. The bullets above are a lightweight summary; if they ever diverge, `planning-and-task-breakdown` takes precedence.
+> Follow `[planning-and-task-breakdown](../planning-and-task-breakdown/SKILL.md)` for the dependency-graph mapping and vertical-slicing mechanics behind these steps; it is the canonical source. The bullets above are a lightweight summary; if they ever diverge, `[planning-and-task-breakdown](../planning-and-task-breakdown/SKILL.md)` takes precedence.
 >
-> **Output convention:** Save the plan to `tasks/plan.md` and record the task list in the task list target defined by `planning-and-task-breakdown` (default `tasks/todo.md`; projects may designate an external tracker instead). Create `tasks/` if it does not exist. Downstream commands (`/build`, etc.) expect these defaults.
+> **Output convention:** Save the plan to `tasks/plan.md` and record the task list in the task list target defined by `[planning-and-task-breakdown](../planning-and-task-breakdown/SKILL.md)` (default `tasks/todo.md`; projects may designate an external tracker instead). Create `tasks/` if it does not exist. Downstream commands (`/build`, etc.) expect these defaults.
 
 The plan should be reviewable: the human should be able to read it and say "yes, that's the right approach" or "no, change X."
 
@@ -187,7 +187,7 @@ Break the plan into discrete, implementable tasks:
 - Tasks are ordered by dependency, not by perceived importance
 - No task should require changing more than ~5 files
 
-> Follow `planning-and-task-breakdown` for the full task-sizing and dependency-ordering mechanics; it is the canonical source. The template below is a lightweight inline form; if they ever diverge, `planning-and-task-breakdown` takes precedence.
+> Follow `[planning-and-task-breakdown](../planning-and-task-breakdown/SKILL.md)` for the full task-sizing and dependency-ordering mechanics; it is the canonical source. The template below is a lightweight inline form; if they ever diverge, `[planning-and-task-breakdown](../planning-and-task-breakdown/SKILL.md)` takes precedence.
 
 **Task template:**
 ```markdown
@@ -199,7 +199,7 @@ Break the plan into discrete, implementable tasks:
 
 ### Phase 4: Implement
 
-Execute tasks one at a time following `skills/incremental-implementation/SKILL.md` (`incremental-implementation`) and `skills/test-driven-development/SKILL.md` (`test-driven-development`). Use `skills/context-engineering/SKILL.md` (`context-engineering`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
+Execute tasks one at a time following `skills/[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)/SKILL.md` (`[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)`) and `skills/[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)/SKILL.md` (`[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)`). Use `skills/[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)/SKILL.md` (`[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
 
 ## Keeping the Spec Alive
 
@@ -207,7 +207,7 @@ The spec is a living document, not a one-time artifact:
 
 - **Update when decisions change** — If you discover the data model needs to change, update the spec first, then implement.
 - **Update when scope changes** — Features added or cut should be reflected in the spec.
-- **Commit the spec** — The spec belongs in version control alongside the code.
+- **[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the spec** — The spec belongs in version control alongside the code.
 - **Reference the spec in PRs** — Link back to the spec section that each PR implements.
 
 ## Common Rationalizations

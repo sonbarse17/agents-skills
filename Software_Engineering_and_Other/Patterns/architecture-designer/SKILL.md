@@ -44,7 +44,7 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Architecture Patterns | `../../../Global_References/architecture-patterns.md` | Choosing monolith vs microservices |
+| Architecture Patterns | `../../../Global_References/[architecture-patterns](../architecture-patterns/SKILL.md).md` | Choosing monolith vs [microservices](../microservices/SKILL.md) |
 | ADR Template | `../../../Global_References/adr-template.md` | Documenting decisions |
 | System Design | `../../../Global_References/system-design.md` | Full system design template |
 | Database Selection | `../../../Global_References/database-selection.md` | Choosing database technology |
@@ -71,19 +71,19 @@ Load detailed guidance based on context:
 
 When designing architecture, provide:
 1. Requirements summary (functional + non-functional)
-2. High-level architecture diagram (Mermaid preferred — see example below)
+2. High-level architecture diagram ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md) preferred — see example below)
 3. Key decisions with trade-offs (ADR format — see example below)
 4. Technology recommendations with rationale
 5. Risks and mitigation strategies
 
-### Architecture Diagram (Mermaid)
+### Architecture Diagram ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md))
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 graph TD
     Client["Client (Web/Mobile)"] --> Gateway["API Gateway"]
     Gateway --> AuthSvc["Auth Service"]
     Gateway --> OrderSvc["Order Service"]
-    OrderSvc --> DB[("Orders DB\n(PostgreSQL)")]
+    OrderSvc --> DB[("Orders DB\n([PostgreSQL](../../Backend/postgresql/SKILL.md))")]
     OrderSvc --> Queue["Message Queue\n(RabbitMQ)"]
     Queue --> NotifySvc["Notification Service"]
 ```
@@ -91,7 +91,7 @@ graph TD
 ### ADR Example
 
 ```markdown
-# ADR-001: Use PostgreSQL for Order Storage
+# ADR-001: Use [PostgreSQL](../../Backend/postgresql/SKILL.md) for Order Storage
 
 ## Status
 Accepted
@@ -101,10 +101,10 @@ The Order Service requires ACID-compliant transactions and complex relational qu
 across orders, line items, and customers.
 
 ## Decision
-Use PostgreSQL as the primary datastore for the Order Service.
+Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as the primary datastore for the Order Service.
 
 ## Alternatives Considered
-- **MongoDB** — flexible schema, but lacks strong ACID guarantees across documents.
+- **[MongoDB](../../Backend/mongodb/SKILL.md)** — flexible schema, but lacks strong ACID guarantees across documents.
 - **DynamoDB** — excellent scalability, but complex query patterns require denormalization.
 
 ## Consequences
@@ -115,5 +115,5 @@ Use PostgreSQL as the primary datastore for the Order Service.
 Consistency and query flexibility are prioritised over unlimited horizontal write scalability.
 ```
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/architecture-designer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/api-architecture/architecture-designer/)
 

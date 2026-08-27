@@ -27,7 +27,7 @@ Exact user phrases: "E2E test", "end-to-end", "Playwright", "Cypress", "Selenium
 Before activating, verify:
 - Application type (SPA, SSR, static site, mobile web)
 - Target browsers (Chromium, Firefox, WebKit)
-- CI platform (GitHub Actions, GitLab CI, Jenkins)
+- CI platform ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md))
 - Existing test framework and coverage
 
 ### Output Artifact
@@ -38,7 +38,7 @@ E2E testing strategy with framework selection, page object patterns, and CI pipe
 # Framework selection with rationale
 # Test structure and page object hierarchy
 ```
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Page object example
 // CI pipeline configuration
 ```
@@ -70,7 +70,7 @@ npm init playwright@latest
 Directory structure: `e2e/` with `pages/` (page objects), `fixtures/` (test data), `specs/` (test files), `utils/` (helpers, custom assertions). Global setup file for auth state (login once, reuse across tests).
 
 ### Step 3: Page Object Model
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 export class LoginPage {
   constructor(private page: Page) {}
   async goto() { await this.page.goto("/login"); }
@@ -93,7 +93,7 @@ Playwright: worker pool (default: CPU cores). Sharding in CI: `npx playwright te
 
 ### Step 6: CI Integration
 ```yaml
-# GitHub Actions example
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
 - name: Run E2E tests
   run: npx playwright test
   env:
@@ -107,7 +107,7 @@ Playwright: worker pool (default: CPU cores). Sharding in CI: `npx playwright te
 ```
 
 ### Step 7: Visual Assertions
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 await expect(page).toHaveScreenshot("homepage.png", {
   maxDiffPixels: 100,
   threshold: 0.2,
@@ -118,7 +118,7 @@ Store baselines in version control. Update baselines intentionally: `npx playwri
 ## E2E Test Examples
 
 ### Playwright — Complete Test Suite
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // e2e/specs/checkout.spec.ts
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
@@ -167,7 +167,7 @@ test.describe("Checkout Flow", () => {
 ```
 
 ### Page Object Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // e2e/pages/CheckoutPage.ts
 import { Page, Locator } from "@playwright/test";
 
@@ -209,7 +209,7 @@ export class CheckoutPage {
 ```
 
 ### API Mocking in E2E Tests
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 test("should handle payment failure gracefully", async ({ page }) => {
   await page.route("**/api/payments", async (route) => {
     await route.fulfill({
@@ -228,7 +228,7 @@ test("should handle payment failure gracefully", async ({ page }) => {
 ```
 
 ### Playwright Global Setup for Auth
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // e2e/global-setup.ts
 import { FullConfig } from "@playwright/test";
 
@@ -248,7 +248,7 @@ async function globalSetup(config: FullConfig) {
 
 ## CI Pipeline Configuration
 
-### GitHub Actions — E2E Tests
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — E2E Tests
 ```yaml
 name: E2E Tests
 on:
@@ -333,7 +333,7 @@ E2E tests that cover too many steps in a single test are hard to debug when they
 
 ## E2E Test Data Strategy
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // e2e/fixtures/seed.ts
 import { APIRequestContext } from "@playwright/test";
 
@@ -363,7 +363,7 @@ export async function cleanupTestData(request: APIRequestContext, userId: string
 
 ## Mobile E2E Testing
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // playwright.config.ts — mobile project
 export default defineConfig({
   projects: [
@@ -413,8 +413,8 @@ export default defineConfig({
   - ../../../Global_References/playwright-guide.md — Playwright Guide
   - ../../../Global_References/test-patterns.md — Test Patterns
 ## Handoff
-`quality-visual-testing` for visual regression setup alongside E2E tests.
-`quality-contract-testing` for API contract verification.
+`[quality-visual-testing](../visual-testing/SKILL.md)` for visual regression setup alongside E2E tests.
+`[quality-contract-testing](../contract-testing/SKILL.md)` for API contract verification.
 Carry forward: test config, page objects, CI pipeline config.
 ## Implementation Patterns
 
@@ -468,7 +468,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -482,7 +482,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -498,12 +498,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -512,7 +512,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -520,13 +520,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -535,9 +535,9 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees
@@ -546,7 +546,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 | Decision Point | Option A | Option B | Decision Criteria |
 |---|---|---|---|
 | Application type | Web SPA → Playwright/Cypress | Mobile → Detox/Appium | Platform, dev team language |
-| Language preference | JavaScript/TypeScript (common) | Python (Playwright + pytest) | Team expertise, existing codebase |
+| Language preference | JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) (common) | [Python](../../Languages/python/SKILL.md) (Playwright + pytest) | Team expertise, existing codebase |
 | CI integration | Cloud service (BrowserStack/Sauce) | Self-hosted (Selenium Grid) | Budget, compliance, scale |
 | Reporting | Built-in (Playwright HTML) | Third-party (Allure/ReportPortal) | Team preference, existing toolchain |
 

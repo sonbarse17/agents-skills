@@ -110,7 +110,7 @@ How should styles be scoped?
 
 ### Basic Component with Properties
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { LitElement, html, css } from 'lit'
 import { property, state } from 'lit/decorators.js'
 
@@ -140,7 +140,7 @@ export class MyCounter extends LitElement {
 
 ### Component with Typed Events
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { LitElement, html } from 'lit'
 import { property } from 'lit/decorators.js'
 
@@ -176,7 +176,7 @@ export class MyDropdown extends LitElement {
 
 ### Renderless Controller Pattern
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { ReactiveController, ReactiveControllerHost } from 'lit'
 
 export class ResizeController implements ReactiveController {
@@ -205,14 +205,14 @@ export class ResizeController implements ReactiveController {
 
 ### Local State with @state
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 @state() private visible = false
 @state() private items: Item[] = []
 ```
 
 ### Derived State via Getter
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 get total() { return this.items.reduce((s, i) => s + i.price, 0) }
 get count() { return this.items.length }
 ```
@@ -235,7 +235,7 @@ Controllers encapsulate stateful behavior (resize observers, intersection observ
 - No JSX runtime needed — templates are standard tagged templates.
 
 ### Optimization Techniques
-- Use `@property({ hasChanged })` to customize change detection.
+- Use `@property({ hasChanged })` to [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) change detection.
 - Use `shouldUpdate()` to skip renders when inputs haven't meaningfully changed.
 - Batch property changes — Lit automatically batches updates via microtask.
 - Use `adoptedStyleSheets` for shared styles across many component instances.
@@ -254,7 +254,7 @@ Controllers encapsulate stateful behavior (resize observers, intersection observ
 
 ### Unit Testing with Web Test Runner
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { fixture, assert } from '@open-wc/testing'
 import './my-element.js'
 
@@ -275,7 +275,7 @@ describe('MyElement', () => {
 
 ### Event Testing
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 it('dispatches custom event on button click', async () => {
   const el = await fixture<MyElement>('<my-element></my-element>')
   const handler = sinon.spy()
@@ -339,13 +339,13 @@ it('dispatches custom event on button click', async () => {
 
 ## Compared With
 
-| Aspect | Lit | Stencil | Vanilla WC |
+| Aspect | Lit | [Stencil](../stencil/SKILL.md) | Vanilla WC |
 |--------|------|---------|------------|
 | Bundle size | ~5KB | ~8KB | 0KB |
 | Rendering | lit-html (template literal) | JSX (compiled) | Manual |
 | Reactivity | @property/@state decorators | @Prop/@State decorators | attributeChangedCallback |
-| SSR | @lit-labs/ssr | @stencil/core (SSR) | Manual |
-| TypeScript | Full support | Required | Optional |
+| SSR | @lit-labs/ssr | @[stencil](../stencil/SKILL.md)/core (SSR) | Manual |
+| [TypeScript](../typescript/SKILL.md) | Full support | Required | Optional |
 
 ## Template Directives Reference
 
@@ -450,7 +450,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -458,7 +458,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -472,7 +472,7 @@ class ConfigBuilder {
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -480,13 +480,13 @@ class ConfigBuilder {
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

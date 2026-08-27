@@ -35,11 +35,11 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.2
-  docker: circleci/docker@2.4
+  [docker](../../Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../Containers_and_Orchestration/docker/SKILL.md)@2.4
 
 executors:
   default:
-    docker:
+    [docker](../../Containers_and_Orchestration/docker/SKILL.md):
       - image: cimg/node:20.10
     working_directory: ~/project
 
@@ -95,12 +95,12 @@ workflows:
 
 ## Executors
 
-### Docker Executor
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Executor
 
 ```yaml
 executors:
   node:
-    docker:
+    [docker](../../Containers_and_Orchestration/docker/SKILL.md):
       - image: cimg/node:20.10
       - image: cimg/postgres:15.0
         environment:
@@ -301,7 +301,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@4.1
-  kubernetes: circleci/kubernetes@1.3
+  [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): circleci/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)@1.3
 
 jobs:
   deploy:
@@ -310,8 +310,8 @@ jobs:
       - aws-cli/setup:
           aws_access_key_id: AWS_ACCESS_KEY_ID
           aws_secret_access_key: AWS_SECRET_ACCESS_KEY
-      - kubernetes/install-kubectl
-      - run: kubectl apply -f k8s/
+      - [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/install-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)
+      - run: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/
 ```
 
 ### Common Orbs
@@ -319,35 +319,35 @@ jobs:
 ```yaml
 orbs:
   node: circleci/node@5.2              # Node.js
-  docker: circleci/docker@2.4          # Docker builds
+  [docker](../../Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../Containers_and_Orchestration/docker/SKILL.md)@2.4          # [Docker](../../Containers_and_Orchestration/docker/SKILL.md) builds
   aws-cli: circleci/aws-cli@4.1        # AWS CLI
   aws-ecr: circleci/aws-ecr@9.0        # ECR push
   aws-ecs: circleci/aws-ecs@4.0        # ECS deploy
   gcp-cli: circleci/gcp-cli@3.1        # GCP CLI
-  kubernetes: circleci/kubernetes@1.3  # K8s deploy
+  [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): circleci/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)@1.3  # K8s deploy
   slack: circleci/slack@4.12           # Notifications
 ```
 
-## Docker Builds
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Builds
 
 ```yaml
 version: 2.1
 
 orbs:
-  docker: circleci/docker@2.4
+  [docker](../../Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../Containers_and_Orchestration/docker/SKILL.md)@2.4
 
 jobs:
   build-and-push:
-    executor: docker/docker
+    executor: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/[docker](../../Containers_and_Orchestration/docker/SKILL.md)
     steps:
       - setup_remote_docker:
           version: 20.10.24
       - checkout
-      - docker/check
-      - docker/build:
+      - [docker](../../Containers_and_Orchestration/docker/SKILL.md)/check
+      - [docker](../../Containers_and_Orchestration/docker/SKILL.md)/build:
           image: myorg/myapp
           tag: $CIRCLE_SHA1
-      - docker/push:
+      - [docker](../../Containers_and_Orchestration/docker/SKILL.md)/push:
           image: myorg/myapp
           tag: $CIRCLE_SHA1
 ```
@@ -405,7 +405,7 @@ jobs:
 ```yaml
 jobs:
   build:
-    docker:
+    [docker](../../Containers_and_Orchestration/docker/SKILL.md):
       - image: cimg/node:20.10
     resource_class: large  # 4 vCPU, 8GB RAM
     steps:
@@ -429,9 +429,9 @@ jobs:
 **Problem**: Cannot find persisted workspace
 **Solution**: Ensure persist_to_workspace job completed, check paths
 
-### Issue: Docker Layer Caching
-**Problem**: Docker builds are slow
-**Solution**: Enable Docker Layer Caching in project settings (paid feature)
+### Issue: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Layer Caching
+**Problem**: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) builds are slow
+**Solution**: Enable [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Layer Caching in project settings (paid feature)
 
 ## Best Practices
 
@@ -445,6 +445,6 @@ jobs:
 
 ## Related Skills
 
-- [github-actions](../github-actions/) - GitHub CI/CD
-- [docker-management](../../containers/docker-management/) - Container builds
-- [aws-ecs-fargate](../../../infrastructure/cloud-aws/aws-ecs-fargate/) - ECS deployments
+- [github-actions](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../github/SKILL.md) CI/CD
+- [docker-management](../../containers/[docker-management](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-management/SKILL.md)/) - Container builds
+- [aws-ecs-fargate](../../../infrastructure/cloud-aws/[aws-ecs-fargate](../../Cloud_Providers/aws-ecs-fargate/SKILL.md)/) - ECS deployments

@@ -21,7 +21,7 @@ description: Adopts the persona of a Staff-level QA Architect. Focuses on Zero m
 
 ## THOUGHT PROCESS
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[New Feature/Code] --> B{Is it Testable?}

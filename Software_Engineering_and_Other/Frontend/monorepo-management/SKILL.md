@@ -3,20 +3,20 @@ name: monorepo-management
 description: Master monorepo management with Turborepo, Nx, and pnpm workspaces to build efficient, scalable multi-package repositories with optimized builds and dependency management. Use when setting up monorepos, optimizing builds, or managing shared dependencies.
 ---
 
-# Monorepo Management
+# [Monorepo](../monorepo/SKILL.md) Management
 
 Build efficient, scalable monorepos that enable code sharing, consistent tooling, and atomic changes across multiple packages and applications.
 
 ## When to Use This Skill
 
-- Setting up new monorepo projects
-- Migrating from multi-repo to monorepo
+- Setting up new [monorepo](../monorepo/SKILL.md) projects
+- Migrating from multi-repo to [monorepo](../monorepo/SKILL.md)
 - Optimizing build and test performance
 - Managing shared dependencies
 - Implementing code sharing strategies
 - Setting up CI/CD for monorepos
 - Versioning and publishing packages
-- Debugging monorepo-specific issues
+- Debugging [monorepo](../monorepo/SKILL.md)-specific issues
 
 ## Core Concepts
 
@@ -38,7 +38,7 @@ Build efficient, scalable monorepos that enable code sharing, consistent tooling
 - Access control
 - Large Git repository
 
-### 2. Monorepo Tools
+### 2. [Monorepo](../monorepo/SKILL.md) Tools
 
 **Package Managers:**
 
@@ -57,9 +57,9 @@ Build efficient, scalable monorepos that enable code sharing, consistent tooling
 ### Initial Setup
 
 ```bash
-# Create new monorepo
-npx create-turbo@latest my-monorepo
-cd my-monorepo
+# Create new [monorepo](../monorepo/SKILL.md)
+npx create-turbo@latest my-[monorepo](../monorepo/SKILL.md)
+cd my-[monorepo](../monorepo/SKILL.md)
 
 # Structure:
 # apps/
@@ -68,7 +68,7 @@ cd my-monorepo
 # packages/
 #   ui/           - Shared UI components
 #   config/       - Shared configurations
-#   tsconfig/     - Shared TypeScript configs
+#   tsconfig/     - Shared [TypeScript](../typescript/SKILL.md) configs
 # turbo.json      - Turborepo configuration
 # package.json    - Root package.json
 ```
@@ -107,7 +107,7 @@ cd my-monorepo
 ```json
 // package.json (root)
 {
-  "name": "my-monorepo",
+  "name": "my-[monorepo](../monorepo/SKILL.md)",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
@@ -121,7 +121,7 @@ cd my-monorepo
   "devDependencies": {
     "turbo": "^1.10.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.0.0"
+    "[typescript](../typescript/SKILL.md)": "^5.0.0"
   },
   "packageManager": "pnpm@8.0.0"
 }
@@ -156,7 +156,7 @@ cd my-monorepo
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
     "tsup": "^7.0.0",
-    "typescript": "^5.0.0"
+    "[typescript](../typescript/SKILL.md)": "^5.0.0"
   },
   "dependencies": {
     "react": "^18.2.0"
@@ -166,12 +166,12 @@ cd my-monorepo
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/monorepo-management_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[monorepo](../monorepo/SKILL.md)-management_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
 1. **Consistent Versioning**: Lock dependency versions across workspace
-2. **Shared Configs**: Centralize ESLint, TypeScript, Prettier configs
+2. **Shared Configs**: Centralize ESLint, [TypeScript](../typescript/SKILL.md), Prettier configs
 3. **Dependency Graph**: Keep it acyclic, avoid circular dependencies
 4. **Cache Effectively**: Configure inputs/outputs correctly
 5. **Type Safety**: Share types between frontend/backend
@@ -206,7 +206,7 @@ pnpm changeset publish
 ```
 
 ```yaml
-# .github/workflows/release.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/release.yml
 - name: Create Release Pull Request or Publish
   uses: changesets/action@v1
   with:

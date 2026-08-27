@@ -9,7 +9,7 @@ metadata:
 
 # Sentry Skill
 
-Inspect Sentry issues and events, summarize production errors, and pull health data via the Sentry API. Read-only access using the bundled Python script.
+Inspect Sentry issues and events, summarize production errors, and pull health data via the Sentry API. Read-only access using the bundled [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) script.
 
 ## When to Use
 

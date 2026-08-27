@@ -36,13 +36,13 @@ at a named node until a human approves, edits, or rejects the pending
 state). This skill covers choosing between plain LangChain composition,
 `AgentExecutor`, and LangGraph, and operating LangGraph's persistence and
 interrupt features correctly. It is a framework-specific complement to
-[agent-architecture-design](../agent-architecture-design/SKILL.md), which
+[agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md), which
 covers the underlying control-flow patterns (ReAct loop, plan-and-execute,
 finite-state/graph) in a vendor-neutral way — LangGraph is one concrete
 runtime that implements the finite-state/graph pattern described there. For
 tool access, LangChain/LangGraph agents can call tools defined directly in
-Python or exposed via an MCP server; see
-[mcp-server-development](../mcp-server-development/SKILL.md) for building
+[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) or exposed via an MCP server; see
+[mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) for building
 the tool-serving side, which this skill treats as an external dependency
 rather than repeating.
 
@@ -67,9 +67,9 @@ rather than repeating.
 
 ## Prerequisites & environment
 
-- Python (LangChain/LangGraph's primary, most mature ecosystem) or
-  JavaScript/TypeScript (`langchain`/`langgraph` npm packages, closely
-  mirroring the Python API but with some feature lag) — pick one and check
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (LangChain/LangGraph's primary, most mature ecosystem) or
+  JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (`langchain`/`langgraph` npm packages, closely
+  mirroring the [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) API but with some feature lag) — pick one and check
   current package versions before starting, since both projects have had
   breaking changes across major versions (notably the LangChain 0.1 → 0.2/0.3
   restructuring that split core, community, and partner packages).
@@ -80,7 +80,7 @@ rather than repeating.
   `MemorySaver` for local development/testing only (state is lost on
   process exit), or a durable checkpointer (SQLite, Postgres, or a
   managed backend) for anything that must survive a restart.
-- Tool definitions the agent will call, either as plain Python functions
+- Tool definitions the agent will call, either as plain [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) functions
   decorated with LangChain's `@tool`, or proxied from an MCP server via an
   MCP-to-LangChain adapter — confirm which integration path your LangChain
   version currently supports before assuming API shape.
@@ -88,13 +88,13 @@ rather than repeating.
   (justifying LangGraph) versus a fixed sequence (better served by a plain
   LCEL chain) — reach for LangGraph only once a chain's limitations are
   concrete, mirroring the "justify the split" discipline in
-  [agent-architecture-design](../agent-architecture-design/SKILL.md).
+  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
 1. **Start with the simplest abstraction that fits the task's shape.** A
    fixed sequence (retrieve → prompt → parse) is a plain LCEL chain:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from langchain_core.prompts import ChatPromptTemplate
    from langchain_core.output_parsers import StrOutputParser
    from langchain_anthropic import ChatAnthropic
@@ -113,7 +113,7 @@ rather than repeating.
 2. **Use `AgentExecutor` only for a single, bounded ReAct-style loop** with
    no need for persistence, human interrupts, or branching beyond
    tool-call/no-tool-call:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from langchain.agents import AgentExecutor, create_tool_calling_agent
    from langchain_core.tools import tool
 
@@ -131,14 +131,14 @@ rather than repeating.
    ```
    `max_iterations`/`max_execution_time` are `AgentExecutor`'s equivalent of
    the hard iteration cap and timeout described in
-   [agent-architecture-design](../agent-architecture-design/SKILL.md) — set
+   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — set
    both explicitly; the defaults are more permissive than most production
    use cases want.
 
 3. **Move to LangGraph once the task needs cycles, branching, persistence,
    or a human checkpoint.** Model the agent as a typed state object and a
    graph of nodes:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from typing import TypedDict, Annotated
    from langgraph.graph import StateGraph, END
    from langgraph.checkpoint.memory import MemorySaver
@@ -172,13 +172,13 @@ rather than repeating.
    app = graph.compile(checkpointer=MemorySaver())
    ```
    This is the finite-state/graph pattern from
-   [agent-architecture-design](../agent-architecture-design/SKILL.md)
+   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
    expressed directly in LangGraph's API — nodes are states, edges (plain
    or conditional) are transitions.
 
 4. **Add a human-in-the-loop interrupt at the highest-leverage node**, not
    everywhere, using `interrupt_before`/`interrupt_after` at compile time:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    app = graph.compile(
        checkpointer=MemorySaver(),
        interrupt_before=["send_reply"],   # pause here every run until resumed
@@ -202,12 +202,12 @@ rather than repeating.
    > not rely on prompt wording alone to prevent an irreversible action —
    > gate it structurally with `interrupt_before`, the same discipline
    > described for any irreversible tool in
-   > [agent-architecture-design](../agent-architecture-design/SKILL.md).
+   > [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 5. **Choose a checkpointer backend deliberately for the deployment target.**
    `MemorySaver` is fine for local development and tests; anything
    long-running or multi-process needs a durable checkpointer:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from langgraph.checkpoint.sqlite import SqliteSaver
    # or, for production multi-instance deployments:
    # from langgraph.checkpoint.postgres import PostgresSaver
@@ -222,25 +222,25 @@ rather than repeating.
    earlier node (e.g. `draft -> review -> draft` on rejection) needs an
    explicit counter in state and a hard cap, or a rejection loop can run
    indefinitely:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def route_after_review(state: TicketState) -> str:
        if state.get("revision_count", 0) >= 3:
            return "escalate"          # fail closed after 3 rejected drafts
        return "draft" if not state["approved"] else END
    ```
 
-7. **Stream intermediate state for observability**, rather than only
+7. **Stream intermediate state for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**, rather than only
    consuming the final result — both `AgentExecutor` and LangGraph support
    streaming (`.stream()`/`.astream()`), which surfaces each tool call and
    state transition as it happens, matching the "instrument every loop
    iteration" guidance in
-   [agent-architecture-design](../agent-architecture-design/SKILL.md).
+   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 8. **Compose multiple LangGraph graphs for multi-agent topologies** rather
    than hand-rolling a supervisor loop, when the task genuinely needs
    multiple specialized roles — a compiled graph can itself be a node in a
    parent graph. Confirm this split is justified per
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) before
+   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) before
    introducing it; LangGraph makes multi-agent easy to wire, not automatically
    the right call.
 
@@ -261,7 +261,7 @@ rather than repeating.
   high-consequence actions (sending a message, executing a payment,
   deleting a resource), mirroring the "human checkpoint at the
   highest-leverage point" guidance in
-  [agent-architecture-design](../agent-architecture-design/SKILL.md) — an
+  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — an
   interrupt on every node defeats the purpose and trains reviewers to
   rubber-stamp.
 - Pin `langchain-core`, `langgraph`, and provider integration package
@@ -291,7 +291,7 @@ rather than repeating.
   hard cap that routes to an escape/escalate node — do not rely on the
   model's own judgment about when to stop looping, per the loop-bounding
   guidance in
-  [agent-architecture-design](../agent-architecture-design/SKILL.md).
+  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 - **Symptom:** Resuming a LangGraph run after an `interrupt_before` pause
   restarts the whole graph from the entry point instead of continuing from
@@ -323,10 +323,10 @@ rather than repeating.
 **Scenario:** An internal support-ticket agent triages a ticket, drafts a
 reply, and requires human approval before sending — the same workflow used
 as the finite-state example in
-[agent-architecture-design](../agent-architecture-design/SKILL.md), built
+[agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md), built
 concretely in LangGraph with durable persistence and a human interrupt.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import TypedDict
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -376,8 +376,8 @@ deployment) still resumes correctly from the same `thread_id`, which a
 
 ## Cross-references
 
-- [agent-architecture-design](../agent-architecture-design/SKILL.md) — the vendor-neutral control-flow patterns (ReAct loop, plan-and-execute, finite-state/graph) that LangGraph implements concretely; read this first for the underlying design principles.
-- [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) — when to compose multiple LangGraph graphs into a supervisor/worker or pipeline topology, and the coordination pitfalls that apply regardless of framework.
-- [mcp-server-development](../mcp-server-development/SKILL.md) — building the tool-serving side an agent calls into; this skill covers wiring those tools into a LangChain/LangGraph agent, not building the MCP server itself.
-- [crewai-and-autogen-multi-agent-frameworks](../crewai-and-autogen-multi-agent-frameworks/SKILL.md) — alternative higher-level multi-agent frameworks with a role-based abstraction, contrasted with LangGraph's lower-level graph model.
-- [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md) — general tool-design principles (single-purpose tools, schema clarity) that apply to `@tool`-decorated functions in LangChain the same as any other agent tool surface.
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the vendor-neutral control-flow patterns (ReAct loop, plan-and-execute, finite-state/graph) that LangGraph implements concretely; read this first for the underlying design principles.
+- [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) — when to compose multiple LangGraph graphs into a supervisor/worker or pipeline topology, and the coordination pitfalls that apply regardless of framework.
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side an agent calls into; this skill covers wiring those tools into a LangChain/LangGraph agent, not building the MCP server itself.
+- [crewai-and-autogen-multi-agent-frameworks](../[crewai-and-autogen-multi-agent-frameworks](../../Workflows/crewai-and-autogen-multi-agent-frameworks/SKILL.md)/SKILL.md) — alternative higher-level multi-agent frameworks with a role-based abstraction, contrasted with LangGraph's lower-level graph model.
+- [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md) — general tool-design principles (single-purpose tools, schema clarity) that apply to `@tool`-decorated functions in LangChain the same as any other agent tool surface.

@@ -8,9 +8,9 @@ metadata:
   package: com.azure:azure-security-keyvault-keys
 ---
 
-# Azure Key Vault Keys (Java)
+# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys (Java)
 
-Manage cryptographic keys and perform cryptographic operations in Azure Key Vault and Managed HSM.
+Manage cryptographic keys and perform cryptographic operations in Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) and Managed HSM.
 
 ## Installation
 
@@ -44,19 +44,19 @@ TokenCredential credential = new DefaultAzureCredentialBuilder()
 
 // Key management client
 KeyClient keyClient = new KeyClientBuilder()
-    .vaultUrl("https://<vault-name>.vault.azure.net")
+    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildClient();
 
 // Async client
 KeyAsyncClient keyAsyncClient = new KeyClientBuilder()
-    .vaultUrl("https://<vault-name>.vault.azure.net")
+    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildAsyncClient();
 
 // Cryptography client (for encrypt/decrypt/sign/verify)
 CryptographyClient cryptoClient = new CryptographyClientBuilder()
-    .keyIdentifier("https://<vault-name>.vault.azure.net/keys/<key-name>/<key-version>")
+    .keyIdentifier("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/<key-name>/<key-version>")
     .credential(credential)
     .buildClient();
 ```
@@ -208,7 +208,7 @@ recoverPoller.waitForCompletion();
 import com.azure.security.keyvault.keys.cryptography.models.*;
 
 CryptographyClient cryptoClient = new CryptographyClientBuilder()
-    .keyIdentifier("https://<vault>.vault.azure.net/keys/<key-name>")
+    .keyIdentifier("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/<key-name>")
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 
@@ -358,7 +358,7 @@ try {
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net  # Required for vault URL
+AZURE_KEYVAULT_URL=https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net  # Required for [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) URL
 AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -372,7 +372,7 @@ AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used 
 
 ## Trigger Phrases
 
-- "Key Vault keys Java", "cryptographic keys Java"
+- "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys Java", "cryptographic keys Java"
 - "encrypt decrypt Java", "sign verify Java"
 - "RSA key", "EC key", "HSM key"
 - "key rotation", "wrap unwrap key"

@@ -71,12 +71,12 @@ No preamble. No postamble. No explanations.
 
 ### Data Transformation Framework Decision Tree
 - Standard SQL transformations, small team: dbt (best DX).
-- Complex multi-language (Python, Scala, SQL): custom framework on Airflow/Dagster.
+- Complex multi-language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Scala, SQL): custom framework on Airflow/Dagster.
 - Heavy data quality requirements: dbt + Great Expectations.
 - Real-time transformations: streaming (Flink, Kafka Streams, Spark Streaming).
 - Legacy SQL exists: wrap incrementally in dbt.
 - Airflow exists in org: Airflow orchestrates, dbt transforms.
-- Large enterprise compliance: dbt Cloud (managed, RBAC, audit).
+- Large enterprise compliance: dbt Cloud (managed, RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)).
 
 ### CI/CD Architecture Options
 
@@ -102,11 +102,11 @@ No preamble. No postamble. No explanations.
 | Tool | Scope | Language | Integration | Coverage Type |
 |---|---|---|---|---|
 | dbt test | dbt models | SQL/YAML | Native in dbt | Schema, uniqueness, relationships |
-| Great Expectations | Any data source | Python | Standalone, Airflow, dbt | Profiling, expectations, validation |
+| Great Expectations | Any data source | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Standalone, Airflow, dbt | [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), expectations, validation |
 | dbt-expectations | dbt models | SQL/YAML | dbt package | GE-style tests in dbt |
 | Soda | Any data source | YAML | CI, Airflow, K8s | Row count, freshness, schema |
-| Deequ | Spark data | Scala/Python | Spark jobs | Column metrics, constraints |
-| data-diff | Any DB | CLI/Python | CI | Cross-DB diff, regression |
+| Deequ | Spark data | Scala/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Spark jobs | Column metrics, constraints |
+| data-diff | Any DB | CLI/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | CI | Cross-DB diff, regression |
 
 ## Core Workflow
 
@@ -130,9 +130,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
       - run: pip install sqlfluff sqlfluff-templater-dbt
       - run: dbt deps
       - run: sqlfluff lint models/ --dialect postgres --processes 4
@@ -141,9 +141,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - name: Download production manifest
@@ -158,9 +158,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery great-expectations
       - run: dbt deps
       - run: dbt build
@@ -328,9 +328,9 @@ jobs:
     environment: staging
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - run: dbt seed --target staging
@@ -349,9 +349,9 @@ jobs:
     concurrency: dbt-prod
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - run: dbt compile --target prod
@@ -414,19 +414,19 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 - Alert on freshness violations via Slack/PagerDuty.
 
 ### Testing Cadence
-- Per commit: dbt compile, SQLFluff lint.
+- Per [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): dbt compile, SQLFluff lint.
 - Per PR: dbt slim CI, dbt test (changed models).
 - Per deploy: dbt test (all models), GE suite, contract validation.
-- Daily: source freshness, data quality monitoring.
+- Daily: source freshness, data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - Weekly: full test suite, test coverage report.
 
-### Incident Response
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 1. Identify failed model from dbt run output.
 2. Determine failure type: compilation, test failure, timeout.
 3. Compilation error: fix SQL, open PR, redeploy.
 4. Test failure: check source data quality, adjust tests.
 5. Timeout: optimize SQL, increase timeout, add indexes.
-6. Rollback: revert Git commit, redeploy previous version.
+6. Rollback: revert Git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), redeploy previous version.
 7. Document root cause and add preventive test.
 
 ## Rules
@@ -451,7 +451,7 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 DataOps: CI/CD for data pipelines, testing, environment promotion, contracts. MLOps: CI/CD for ML models, feature stores, model registry, A/B testing. Overlap in CI/CD tooling but different artifacts (SQL vs models). DataOps is deterministic transformations; MLOps is statistical models.
 
 ### dbt vs SQLFluff vs Great Expectations
-dbt: transformation framework (build, run, test SQL). SQLFluff: SQL linter (style and anti-patterns only). Great Expectations: data quality testing (profiling, expectations, validation). These are complementary -- use all three.
+dbt: transformation framework (build, run, test SQL). SQLFluff: SQL linter (style and anti-patterns only). Great Expectations: data quality testing ([profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), expectations, validation). These are complementary -- use all three.
 
 ### dbt vs Airflow
 dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG of tasks, scheduling). dbt runs inside Airflow DAG. Complementary -- Airflow triggers dbt runs.
@@ -468,10 +468,10 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - Update dbt version and test compatibility.
 - Review model performance and optimize slow queries.
 - Update package dependencies.
-- Audit contract definitions for completeness.
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) contract definitions for completeness.
 
 ### Quarterly Tasks
-- Full test coverage audit.
+- Full test coverage [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 - Data contract review and update.
 - Performance benchmark against baseline.
 - Disaster recovery drill (rollback from backup).
@@ -480,14 +480,14 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - ../../../Global_References/dataops-fundamentals.md -- Dataops Fundamentals
 - ../../../Global_References/dataops-advanced.md -- Dataops Advanced Topics
 - ../../../Global_References/data-cicd.md -- Data CI/CD
-- ../../../Global_References/data-testing.md -- Data Testing
+- ../../../Global_References/[data-testing](../data-testing/SKILL.md).md -- Data Testing
 - ../../../Global_References/data-contracts-ops.md -- Data Contracts Operations
-- ../../../Global_References/data-observability.md -- DataOps Observability
+- ../../../Global_References/data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).md -- DataOps [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - references/dataops-pipeline-orchestration.md -- Pipeline Orchestration
-- references/dataops-data-quality-monitoring.md -- Data Quality Monitoring
+- references/dataops-data-quality-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md -- Data Quality [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ## Handoff
-For data warehouse schema design, hand off to data-warehouse. For data pipeline ETL, hand off to etl-pipeline. For quality monitoring, hand off to data-quality.
+For data warehouse schema design, hand off to data-warehouse. For data pipeline ETL, hand off to etl-pipeline. For quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), hand off to data-quality.
 
 ## Architecture Decision Trees
 
@@ -608,7 +608,7 @@ check_data_quality() {
 
 - Partition **large tables** by date and cluster by frequently filtered columns (customer_id, region)
 - Use **columnar file formats** (Parquet, ORC) with compression (snappy, zstd) instead of CSV/JSON
-- Enable **materialized views** in the warehouse for pre-aggregated dashboards
+- Enable **materialized views** in the warehouse for pre-aggregated [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 - Optimize **Spark shuffle** — set `spark.sql.adaptive.coalescePartitions.enabled = true`
 - Use **incremental loads** instead of full table refreshes for daily batch pipelines
 - Size **Airflow worker concurrency** based on task type (IO-bound vs CPU-bound)
@@ -618,9 +618,9 @@ check_data_quality() {
 
 - Encrypt **data at rest** with KMS-managed keys and **data in transit** with TLS 1.3
 - Implement **column-level access control** for PII fields (SSN, email, phone)
-- Audit **data access** with query log analysis and alert on anomalous data exports
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) **data access** with query log analysis and alert on anomalous data exports
 - Mask **sensitive data** in non-production environments using tokenization or hashing
 - Rotate **service account credentials** for data pipeline tools every 30 days
 - Use **private network endpoints** (VPC peering, PrivateLink) for data transfer
-- Enable **immutable audit logs** for all data mutations with retention of 7+ years
+- Enable **immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs** for all data mutations with retention of 7+ years
 

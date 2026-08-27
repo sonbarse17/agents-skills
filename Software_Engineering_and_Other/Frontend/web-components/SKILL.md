@@ -25,7 +25,7 @@ Exact user phrases: "web component", "custom element", "shadow DOM", "HTML templ
 
 ### Input Context
 Before activating, verify:
-- No Lit, Stencil, or other web component library in dependencies.
+- No Lit, [Stencil](../stencil/SKILL.md), or other web component library in dependencies.
 - Whether the component needs shadow DOM or light DOM.
 - Whether the component participates in a form (ElementInternals).
 - Target browsers (check CustomElementRegistry and ElementInternals support).
@@ -354,7 +354,7 @@ Custom element names MUST contain a hyphen (e.g., `my-button`). Single-word name
 |----------|------------|-------------------|-----|---------------|
 | Vanilla Web Component | 0KB (native) | Yes | Limited (declarative shadow DOM) | Medium |
 | Lit | ~5KB | Yes | Yes | Low |
-| Stencil | ~8KB | Yes | Yes | Medium |
+| [Stencil](../stencil/SKILL.md) | ~8KB | Yes | Yes | Medium |
 | React component | 0KB (runtime) | No (React only) | Yes | Low |
 | Vue SFC | 0KB (runtime) | No (Vue only) | Yes | Low |
 
@@ -401,7 +401,7 @@ Custom element names MUST contain a hyphen (e.g., `my-button`). Single-word name
   - ../../../Global_References/web-components-implementation.md — Web Components Implementation
 ## Handoff
 No artifact produced.
-Next skill: frontend-lit for Lit-based web components. Or frontend-universal-design-system for design token integration.
+Next skill: [frontend-lit](../lit/SKILL.md) for Lit-based web components. Or frontend-universal-design-system for design token integration.
 Carry forward: custom element patterns, shadow DOM conventions, cross-framework wrapper approach.
 ## Implementation Patterns
 
@@ -455,7 +455,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -469,7 +469,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -485,12 +485,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 

@@ -7,7 +7,7 @@ license: MIT
 # Error Budgets
 
 Every organization has an implicit, unstated tradeoff between shipping fast and staying
-reliable — it just usually gets negotiated informally, incident by incident, by whoever's
+reliable — it just usually gets negotiated informally, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) by [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), by whoever's
 loudest in the room. An error budget makes that tradeoff explicit and quantitative: given your
 SLO, you're allowed a specific, calculated amount of unreliability, and you get to decide how
 to spend it — on risky launches, on infrastructure migrations, on just moving fast — instead
@@ -24,7 +24,7 @@ erodes exactly like it would without one.
 The error budget isn't a separate target you set — it's the direct complement of the SLO. A
 99.9% availability SLO over 30 days means 43.2 minutes of allowed downtime in that window,
 full stop. Don't negotiate the budget as its own number; it falls out of whatever SLO was
-already agreed with the business, see `slo-definition`.
+already agreed with the business, see `[slo-definition](../../../DevOps_and_Cloud/Observability_and_SecOps/slo-definition/SKILL.md)`.
 
 ```
 SLO: 99.9% availability over 30 days
@@ -50,11 +50,11 @@ budget is actually gone, which is the whole point of having one instead of just 
 SLO breach.
 
 - **Alert on burn rate, not just on SLO breach** — a fast burn early in the window predicts
-  exhaustion before it happens; see `alerting` and `slo-definition` for the mechanics.
+  exhaustion before it happens; see `[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` and `[slo-definition](../../../DevOps_and_Cloud/Observability_and_SecOps/slo-definition/SKILL.md)` for the mechanics.
 - **Distinguish a fast, short burn from a slow, sustained one** — they call for different
   responses, one urgent, one a longer-term trend to fix.
 - **Make burn rate visible on a dashboard the whole team sees**, not something only surfaced
-  during a postmortem — see `dashboards`.
+  during a postmortem — see `[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)`.
 
 **Done when:** burn rate is monitored continuously and alerts fire before the budget is fully
 exhausted, not only after.
@@ -97,7 +97,7 @@ at least once, not just documented.
 
 ## 5. Review budget trends, not just individual burns
 
-A single fast burn is an incident. A budget that's exhausted every month, or a service that
+A single fast burn is an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). A budget that's exhausted every month, or a service that
 never comes close to spending its budget, are both signals about the SLO itself, not just
 about individual incidents. Review the pattern over multiple windows to catch either failure
 mode.
@@ -106,8 +106,8 @@ mode.
   business actually needs, or too tight for the risk the team should be taking — either way,
   revisit it.
 - **A service that's chronically exhausted** signals a systemic reliability problem that ad
-  hoc incident fixes won't solve — see `root-cause-analysis` for finding the contributing
-  factors across the pattern, not just one incident.
+  hoc [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) fixes won't solve — see `[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)` for finding the contributing
+  factors across the pattern, not just one [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - **Report budget health alongside SLO attainment** in the same recurring review, so the
   tradeoff stays visible to whoever owns the roadmap.
 

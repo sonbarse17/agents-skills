@@ -3,19 +3,19 @@ name: github-actions-templates
 description: Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, automating development workflows, or creating reusable workflow templates.
 ---
 
-# GitHub Actions Templates
+# [GitHub](../github/SKILL.md) Actions Templates
 
-Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.
+Production-ready [GitHub](../github/SKILL.md) Actions workflow patterns for testing, building, and deploying applications.
 
 ## Purpose
 
-Create efficient, secure GitHub Actions workflows for continuous integration and deployment across various tech stacks.
+Create efficient, secure [GitHub](../github/SKILL.md) Actions workflows for continuous integration and deployment across various tech stacks.
 
 ## When to Use
 
 - Automate testing and deployment
-- Build Docker images and push to registries
-- Deploy to Kubernetes clusters
+- Build [Docker](../../Containers_and_Orchestration/docker/SKILL.md) images and push to registries
+- Deploy to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters
 - Run security scans
 - Implement matrix builds for multiple environments
 
@@ -66,7 +66,7 @@ jobs:
 
 **Reference:** See `assets/test-workflow.yml`
 
-### Pattern 2: Build and Push Docker Image
+### Pattern 2: Build and Push [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Image
 
 ```yaml
 name: Build and Push
@@ -78,7 +78,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ [github](../github/SKILL.md).repository }}
 
 jobs:
   build:
@@ -91,15 +91,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Log in to Container Registry
-        uses: docker/login-action@v3
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+          username: ${{ [github](../github/SKILL.md).actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -109,7 +109,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
         with:
           context: .
           push: true
@@ -121,10 +121,10 @@ jobs:
 
 **Reference:** See `assets/deploy-workflow.yml`
 
-### Pattern 3: Deploy to Kubernetes
+### Pattern 3: Deploy to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```yaml
-name: Deploy to Kubernetes
+name: Deploy to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 
 on:
   push:
@@ -148,16 +148,16 @@ jobs:
         run: |
           aws eks update-kubeconfig --name production-cluster --region us-west-2
 
-      - name: Deploy to Kubernetes
+      - name: Deploy to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
         run: |
-          kubectl apply -f k8s/
-          kubectl rollout status deployment/my-app -n production
-          kubectl get services -n production
+          [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/
+          [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-app -n production
+          [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get services -n production
 
       - name: Verify deployment
         run: |
-          kubectl get pods -n production
-          kubectl describe deployment my-app -n production
+          [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n production
+          [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe deployment my-app -n production
 ```
 
 ### Pattern 4: Matrix Build
@@ -174,19 +174,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+        uses: actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ matrix.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run tests
@@ -211,7 +211,7 @@ jobs:
 ## Reusable Workflows
 
 ```yaml
-# .github/workflows/reusable-test.yml
+# .[github](../github/SKILL.md)/workflows/reusable-test.yml
 name: Reusable Test Workflow
 
 on:
@@ -241,7 +241,7 @@ jobs:
 ```yaml
 jobs:
   call-test:
-    uses: ./.github/workflows/reusable-test.yml
+    uses: ./.[github](../github/SKILL.md)/workflows/reusable-test.yml
     with:
       node-version: "20.x"
     secrets:
@@ -274,8 +274,8 @@ jobs:
           format: "sarif"
           output: "trivy-results.sarif"
 
-      - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Upload Trivy results to [GitHub](../github/SKILL.md) Security
+        uses: [github](../github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: "trivy-results.sarif"
 
@@ -311,7 +311,7 @@ jobs:
 
       - name: Notify Slack
         if: success()
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-[github](../github/SKILL.md)-action@v1
         with:
           webhook-url: ${{ secrets.SLACK_WEBHOOK }}
           payload: |
@@ -323,6 +323,6 @@ jobs:
 
 ## Related Skills
 
-- `gitlab-ci-patterns` - For GitLab CI workflows
-- `deployment-pipeline-design` - For pipeline architecture
-- `secrets-management` - For secrets handling
+- `[gitlab-ci-patterns](../[gitlab-ci](../gitlab-ci/SKILL.md)-patterns/SKILL.md)` - For GitLab CI workflows
+- `[deployment-pipeline-design](../deployment-pipeline-design/SKILL.md)` - For pipeline architecture
+- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling

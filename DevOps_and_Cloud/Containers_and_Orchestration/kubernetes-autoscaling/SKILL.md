@@ -18,19 +18,19 @@ compatibility:
 tags: [devops, kubernetes, autoscaling, hpa, vpa, keda, phase-5]
 ---
 
-# Kubernetes Autoscaling
+# [Kubernetes](../kubernetes/SKILL.md) [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 
 ## Purpose
-Design, implement, and optimize Kubernetes autoscaling strategies using HPA, VPA, Keda, and Cluster Autoscaler to achieve cost-efficient, responsive, and reliable workloads.
+Design, implement, and optimize [Kubernetes](../kubernetes/SKILL.md) [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) strategies using HPA, VPA, Keda, and Cluster Autoscaler to achieve cost-efficient, responsive, and reliable workloads.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "HPA", "VPA", "Keda", "Cluster Autoscaler", "autoscaling", "horizontal pod autoscaler", "vertical pod autoscaler", "Keda scaler", "pod scaling", "node scaling", "predictive scaling", "autoscaling strategy".
+Exact user phrases: "HPA", "VPA", "Keda", "Cluster Autoscaler", "[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)", "horizontal pod autoscaler", "vertical pod autoscaler", "Keda scaler", "pod scaling", "node scaling", "predictive scaling", "[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) strategy".
 
 ### Input Context
 Before activating, verify:
-- Kubernetes version and available autoscaling APIs.
+- [Kubernetes](../kubernetes/SKILL.md) version and available [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) APIs.
 - Workload characteristics (stateless, stateful, batch, event-driven).
 - Metric sources (Prometheus, custom metrics API, external metrics API).
 - Node group configuration (instance types, min/max sizes, spot vs. on-demand).
@@ -40,7 +40,7 @@ Before activating, verify:
 Writes to YAML manifests for HPA, VPA, ScaledObject, ScaledJob, and ClusterAutoscaler configuration.
 
 ### Response Format
-YAML manifests with appropriate apiVersion and autoscaling parameters.
+YAML manifests with appropriate apiVersion and [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) parameters.
 
 ### Completion Criteria
 This skill is complete when:
@@ -62,19 +62,19 @@ Deploy metrics-server → Create HPA with CPU target → Add custom metric → C
 - Streaming/Kafka consumer → Keda with Kafka scaler (lag-based)
 - Stateful workload, right-sizing resources → VPA in Auto mode (if restart-tolerant) or Off/Initial (recommend only)
 - Workloads needing both replica count + resource optimization → HPA (replicas) + VPA Off (recommendations)
-- Node capacity insufficient for pending pods → Cluster Autoscaler or Karpenter
+- Node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) insufficient for pending pods → Cluster Autoscaler or Karpenter
 - Predictive/ML-based scaling → Keda with Predictive Scaler or custom external metrics
 
 ## Core Workflow
 
 ### Step 1: Deploy Metrics Server
 ```yaml
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+[kubectl](../kubectl/SKILL.md) apply -f https://[github](../../CI_CD/github/SKILL.md).com/[kubernetes](../kubernetes/SKILL.md)-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
 ### Step 2: HPA Configuration with Behavior
 ```yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-hpa
@@ -119,7 +119,7 @@ spec:
 
 ### Step 3: Custom and External Metrics HPA
 ```yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-custom-metrics
@@ -170,7 +170,7 @@ spec:
 | `Recreate` | Updates on recreate, similar to Auto | When pod restart triggers reallocation |
 
 ```yaml
-apiVersion: autoscaling.k8s.io/v1
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: app-vpa
@@ -197,7 +197,7 @@ spec:
 
 ### Step 5: VPA Recommendations (Read from Status)
 ```bash
-kubectl describe vpa app-vpa
+[kubectl](../kubectl/SKILL.md) describe vpa app-vpa
 # Look for:
 #   Lower Bound: 250m cpu, 256Mi memory
 #   Upper Bound: 1500m cpu, 1.5Gi memory
@@ -295,12 +295,12 @@ spec:
 ### Step 9: Cluster Autoscaler vs Karpenter
 | Feature | Cluster Autoscaler | Karpenter |
 |---------|-------------------|-----------|
-| Scheduling | Node group based, respects ASG | Instance-type aware, any available capacity |
+| Scheduling | Node group based, respects ASG | Instance-type aware, any available [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Consolidation | Scale-down only (empty nodes) | Consolidates (replaces with cheaper) |
 | Node creation | Via ASG, 3-5 min | Direct EC2 API, 60-90s |
 | Instance diversity | Fixed instance types | Any compatible type |
 | Config | Node group min/max per AZ | Provisioner with requirements |
-| Spot handling | Via mixed instances policy | Native via `spot` capacity type |
+| Spot handling | Via mixed instances policy | Native via `spot` [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) type |
 
 ```yaml
 # Cluster Autoscaler config
@@ -329,13 +329,13 @@ spec:
   template:
     spec:
       requirements:
-      - key: kubernetes.io/arch
+      - key: [kubernetes](../kubernetes/SKILL.md).io/arch
         operator: In
         values: ["amd64"]
-      - key: karpenter.sh/capacity-type
+      - key: karpenter.sh/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type
         operator: In
         values: ["spot", "on-demand"]
-      - key: node.kubernetes.io/instance-type
+      - key: node.[kubernetes](../kubernetes/SKILL.md).io/instance-type
         operator: In
         values: ["m5.2xlarge", "m5.4xlarge", "c5.2xlarge"]
       nodeClassRef:
@@ -375,7 +375,7 @@ spec:
 ### Step 12: Predictive Scaling with Keda
 ```yaml
 triggers:
-- type: kubernetes-workload
+- type: [kubernetes](../kubernetes/SKILL.md)-workload
   metadata:
     podSelector: "app=worker"
     value: "10"
@@ -424,11 +424,11 @@ spec:
 
 ## Production Considerations
 - Use HPA behavior block to control scale-up/down rates — avoid thrashing on burst traffic.
-- Monitor HPA status: `kubectl get hpa -w` to watch target utilization.
+- Monitor HPA status: `[kubectl](../kubectl/SKILL.md) get hpa -w` to watch target utilization.
 - Keda ScaledObject creates an HPA internally — inspect it for scaling issues.
 - Set different stabilizationWindowSeconds for scale-up (short) vs scale-down (long).
-- Use `kubectl top pods` to validate metrics-server is returning data.
-- Add cluster-autoscaler.kubernetes.io/safe-to-evict annotation to pods that can be evicted.
+- Use `[kubectl](../kubectl/SKILL.md) top pods` to validate metrics-server is returning data.
+- Add cluster-autoscaler.[kubernetes](../kubernetes/SKILL.md).io/safe-to-evict annotation to pods that can be evicted.
 - For stateful workloads with VPA Auto, ensure PDB allows the disruption budget.
 - Pin VPA minAllowed to prevent overly aggressive down-scaling.
 - Use podAntiAffinity when scaling to spread replicas across nodes.
@@ -460,23 +460,23 @@ spec:
 | Production readiness | GA | GA (beta stable) | GA | GA | GA |
 
 ## Troubleshooting
-- HPA not scaling: check `kubectl describe hpa`, verify metrics-server pod is running, check custom metrics API availability.
+- HPA not scaling: check `[kubectl](../kubectl/SKILL.md) describe hpa`, verify metrics-server pod is running, check custom metrics API availability.
 - VPA not recommending: verify VPA admission webhook is running, check VPA recommender logs.
-- Keda ScaledObject not scaling: `kubectl describe scaledobject`, check Keda operator logs, verify authentication with scaler.
-- Cluster Autoscaler not scaling: `kubectl logs -n kube-system cluster-autoscaler`, check IAM permissions, verify ASG max size.
-- Karpenter not provisioning: `kubectl logs -n karpenter karpenter`, check EC2NodeClass subnet/security group selectors.
+- Keda ScaledObject not scaling: `[kubectl](../kubectl/SKILL.md) describe scaledobject`, check Keda operator logs, verify authentication with scaler.
+- Cluster Autoscaler not scaling: `[kubectl](../kubectl/SKILL.md) logs -n kube-system cluster-autoscaler`, check IAM permissions, verify ASG max size.
+- Karpenter not provisioning: `[kubectl](../kubectl/SKILL.md) logs -n karpenter karpenter`, check EC2NodeClass subnet/security group selectors.
 
 ## References
-  - ../../../Global_References/autoscaling-strategies.md — Combined Autoscaling Strategy
+  - ../../../Global_References/[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-strategies.md — Combined [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Strategy
   - ../../../Global_References/cluster-autoscaler.md — Cluster Autoscaler
   - ../../../Global_References/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
   - ../../../Global_References/keda-scalers.md — Keda Scalers
-  - ../../../Global_References/kubernetes-autoscaling-advanced.md — Kubernetes Autoscaling Advanced Topics
-  - ../../../Global_References/kubernetes-autoscaling-fundamentals.md — Kubernetes Autoscaling Fundamentals
+  - ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-advanced.md — [Kubernetes](../kubernetes/SKILL.md) [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Advanced Topics
+  - ../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-fundamentals.md — [Kubernetes](../kubernetes/SKILL.md) [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Fundamentals
   - ../../../Global_References/vpa-config.md — Vertical Pod Autoscaler (VPA)
 ## Handoff
 After completing this skill:
-- Next skill: **devops-apm-observability** — Observability to monitor and inform autoscaling
+- Next skill: **devops-[apm-observability](../../../AI_and_Agents/Operations/apm-[observability](../../Observability_and_SecOps/observability/SKILL.md)/SKILL.md)** — [Observability](../../Observability_and_SecOps/observability/SKILL.md) to monitor and inform [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 - Pass context: HPA metric names, VPA recommendations, Keda scaler configuration, node group names
 
 ## Architecture Decision Trees
@@ -490,7 +490,7 @@ After completing this skill:
 | Response time | ~30-60s | ~60-180s (restart required) | ~5-15s |
 | Use case | Web apps, stateless | Stateful, batch | Queue-based, event-driven |
 | Coordination | Works with CA | Conflicts with HPA | Works with CA + HPA |
-| Recommendation | Default for most workloads | Long-lived pods with variable needs | Serverless-style, async workloads |
+| Recommendation | Default for most workloads | Long-lived pods with variable needs | [Serverless](../serverless/SKILL.md)-style, async workloads |
 
 ### Cluster Autoscaler vs Karpenter
 
@@ -507,7 +507,7 @@ After completing this skill:
 ### YAML: HPA with Custom Prometheus Metrics
 
 ```yaml
-apiVersion: autoscaling/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-hpa
@@ -591,12 +591,12 @@ simulate_scale_up() {
   local deployment=$1
   local replicas=$2
 
-  kubectl scale deployment "$deployment" --replicas="$replicas"
+  [kubectl](../kubectl/SKILL.md) scale deployment "$deployment" --replicas="$replicas"
 
   # Watch pending pods
   while true; do
-    PENDING=$(kubectl get pods -l app="$deployment" --field-selector status.phase=Pending -o json | jq '.items | length')
-    RUNNING=$(kubectl get pods -l app="$deployment" --field-selector status.phase=Running -o json | jq '.items | length')
+    PENDING=$([kubectl](../kubectl/SKILL.md) get pods -l app="$deployment" --field-selector status.phase=Pending -o json | jq '.items | length')
+    RUNNING=$([kubectl](../kubectl/SKILL.md) get pods -l app="$deployment" --field-selector status.phase=Running -o json | jq '.items | length')
     echo "Pending: $PENDING, Running: $RUNNING"
 
     if [ "$PENDING" -eq 0 ] && [ "$RUNNING" -ge "$replicas" ]; then
@@ -616,7 +616,7 @@ simulate_scale_up() {
 - Set **resource requests = limits** for burstable workloads to avoid VPA conflicts with HPA
 - Enable **cluster-proportional-autoscaler** for DNS and addon components
 - Monitor **HPA readiness** — an unhealthy pod under HPA doesn't count toward metrics
-- Use **predictive autoscaling** (Kubernetes Event-driven Autoscaling with forecasting) for slow-moving metrics
+- Use **predictive [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** ([Kubernetes](../kubernetes/SKILL.md) Event-driven [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with forecasting) for slow-moving metrics
 
 ## Anti-Patterns
 
@@ -635,14 +635,14 @@ simulate_scale_up() {
 - Set **HPA sync period** (`--horizontal-pod-autoscaler-sync-period`) to 10s for faster reaction
 - Use **Cron-based HPA** for predictable load patterns (lunch rush, batch processing windows)
 - Optimize **container start time** — small images, init containers in parallel, no blocking probes
-- Pre-pull **sidecar images** with `kubernetes-image-puller` to speed up scale-up
-- Tune **kubelet `--kube-reserved`** and `--system-reserved` to give autoscaler accurate capacity info
+- Pre-pull **sidecar images** with `[kubernetes](../kubernetes/SKILL.md)-image-puller` to speed up scale-up
+- Tune **kubelet `--kube-reserved`** and `--system-reserved` to give autoscaler accurate [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) info
 
 ## Security Considerations
 
 - Restrict **Cluster Autoscaler** IAM permissions to only modify node groups in the same account
 - Enable **Pod Identity / IRSA** for KEDA scalers so they authenticate to queues without long-lived creds
-- Audit **scaling events** with Kubernetes audit logs — who or what triggered a scale action
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **scaling events** with [Kubernetes](../kubernetes/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs — who or what triggered a scale action
 - Set **PodSecurity admission** on scaled workloads to prevent privileged pods in autoscaled namespaces
 - Use **Secrets Store CSI** for KEDA authentication instead of plaintext K8s secrets
 - Limit **HPA resource metrics** to prevent information leak — don't expose internal metrics to unauthenticated sources
@@ -699,7 +699,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -713,7 +713,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -729,12 +729,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -743,7 +743,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -751,13 +751,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -766,8 +766,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

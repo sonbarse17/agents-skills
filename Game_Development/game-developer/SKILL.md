@@ -21,7 +21,7 @@ metadata:
 2. **Design architecture** — Plan ECS/component systems, optimize for target platforms
 3. **Implement** — Build core mechanics, graphics, physics, AI, networking
 4. **Optimize** — Profile and optimize for 60+ FPS, minimize memory/battery usage
-   - ✅ **Validation checkpoint:** Run Unity Profiler or Unreal Insights; verify frame time ≤16 ms (60 FPS) before proceeding. Identify and resolve CPU/GPU bottlenecks iteratively.
+   - ✅ **Validation checkpoint:** Run [Unity](../unity/SKILL.md) Profiler or [Unreal](../unreal/SKILL.md) Insights; verify frame time ≤16 ms (60 FPS) before proceeding. Identify and resolve CPU/GPU bottlenecks iteratively.
 5. **Test** — Cross-platform testing, performance validation, multiplayer stress tests
    - ✅ **Validation checkpoint:** Confirm stable frame rate under stress load; run multiplayer latency/desync tests before shipping.
 
@@ -31,10 +31,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Unity Development | `../../../Global_References/unity-patterns.md` | Unity C#, MonoBehaviour, Scriptable Objects |
-| Unreal Development | `../../../Global_References/unreal-cpp.md` | Unreal C++, Blueprints, Actor components |
+| [Unity](../unity/SKILL.md) Development | `../../../Global_References/[unity](../unity/SKILL.md)-patterns.md` | [Unity](../unity/SKILL.md) C#, MonoBehaviour, Scriptable Objects |
+| [Unreal](../unreal/SKILL.md) Development | `../../../Global_References/[unreal](../unreal/SKILL.md)-cpp.md` | [Unreal](../unreal/SKILL.md) C++, Blueprints, Actor components |
 | ECS & Patterns | `../../../Global_References/ecs-patterns.md` | Entity Component System, game patterns |
-| Performance | `../../../Global_References/game-developer_performance-optimization.md` | FPS optimization, profiling, memory |
+| Performance | `../../../Global_References/game-developer_performance-optimization.md` | FPS optimization, [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), memory |
 | Networking | `../../../Global_References/multiplayer-networking.md` | Multiplayer, client-server, lag compensation |
 
 ## Constraints
@@ -51,7 +51,7 @@ Load detailed guidance based on context:
 
 ### MUST NOT DO
 - Instantiate/Destroy in tight loops or Update()
-- Skip profiling and performance testing
+- Skip [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and performance testing
 - Use string comparisons for tags (use CompareTag)
 - Allocate memory in Update/FixedUpdate loops
 - Ignore platform-specific constraints (mobile, console)
@@ -68,7 +68,7 @@ When implementing game features, provide:
 
 ## Key Code Patterns
 
-### Object Pooling (Unity C#)
+### Object Pooling ([Unity](../unity/SKILL.md) C#)
 ```csharp
 public class ObjectPool<T> where T : Component
 {
@@ -101,7 +101,7 @@ public class ObjectPool<T> where T : Component
 }
 ```
 
-### Component Caching (Unity C#)
+### Component Caching ([Unity](../unity/SKILL.md) C#)
 ```csharp
 public class PlayerController : MonoBehaviour
 {
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
-### State Machine (Unity C#)
+### State Machine ([Unity](../unity/SKILL.md) C#)
 ```csharp
 public abstract class State
 {
@@ -160,5 +160,5 @@ public class IdleState : State
 }
 ```
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/game-developer/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/specialized/game-developer/)
 

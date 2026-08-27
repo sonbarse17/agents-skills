@@ -9,7 +9,7 @@ Ensuring AI-generated content meets EEAT (Experience, Expertise, Authoritativene
 
 ## Optimization Pipeline
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[AI Draft Generation] --> B[Information Gain & Fact Checking]

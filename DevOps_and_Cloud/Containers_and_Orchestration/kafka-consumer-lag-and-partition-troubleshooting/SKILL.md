@@ -23,9 +23,9 @@ climbing under-replicated-partition count are three of the most common
 Kafka production symptoms, and they often share root causes — a slow
 consumer, an overloaded broker, or a partition/replica imbalance
 introduced at design time (see
-[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)).
+[kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)).
 This skill is the diagnostic playbook for isolating which of those root
-causes is actually responsible in a live incident, rather than guessing
+causes is actually responsible in a live [incident](../../Observability_and_SecOps/incident/SKILL.md), rather than guessing
 at fixes (adding more consumers, restarting brokers) that don't address
 the underlying problem.
 
@@ -57,12 +57,12 @@ the underlying problem.
 - Knowledge of the consumer group's expected steady-state throughput and
   partition count, to distinguish "lag is growing because of a real
   regression" from "lag is growing because traffic legitimately
-  increased beyond current consumer capacity."
+  increased beyond current consumer [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)."
 
 ## Step-by-step guidance
 
 1. **Quantify the lag and its trend before reacting** — a snapshot lag
-   number without a trend can't tell you if it's an active incident or a
+   number without a trend can't tell you if it's an active [incident](../../Observability_and_SecOps/incident/SKILL.md) or a
    transient blip:
    ```bash
    kafka-consumer-groups.sh --bootstrap-server broker-101:9092 \
@@ -136,9 +136,9 @@ the underlying problem.
    instead of `customer_id`) sending disproportionate volume to a few
    partitions. This is a producer/topic-design issue, not something a
    consumer-side fix resolves — remediation belongs back in
-   [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)'s
+   [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)'s
    partition-key guidance, and validating the fix belongs in
-   [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md).
+   [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
 
 6. **For under-replicated partitions, identify which broker is
    under-replicating and why**:
@@ -160,7 +160,7 @@ the underlying problem.
    adding more consumer instances beyond the partition count does
    nothing (they sit idle) — the fix is either increasing partition
    count (with the ordering-guarantee caveics from
-   [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md))
+   [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md))
    or making per-partition processing faster, not blindly scaling the
    consumer deployment.
 
@@ -176,11 +176,11 @@ the underlying problem.
   avoid paging on transient replication catch-up after a routine broker
   restart.
 - Use static group membership (`group.instance.id`) for consumer
-  deployments that restart routinely (rolling deploys, autoscaling) to
+  deployments that restart routinely (rolling deploys, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)) to
   avoid unnecessary full rebalances on every restart.
 - Instrument the consuming application with its own processing-latency
   metrics per stage (deserialize, business logic, downstream call,
-  commit) — broker-side lag metrics tell you *that* something is slow,
+  [commit](../../CI_CD/commit/SKILL.md)) — broker-side lag metrics tell you *that* something is slow,
   application-side metrics tell you *where*.
 - Keep `max.poll.records` and per-record processing time such that a full
   batch reliably finishes well inside `max.poll.interval.ms`, with margin
@@ -196,7 +196,7 @@ the underlying problem.
   completely idle. If the group already has one active consumer per
   partition, the fix is either faster per-partition processing or more
   partitions (with the ordering caveats in
-  [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)),
+  [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)),
   not more consumer replicas.
 
 - **Symptom:** A consumer group rebalances every few minutes indefinitely,
@@ -208,21 +208,21 @@ the underlying problem.
   calls (add explicit logging/metrics around the poll loop if not
   already present) and either genuinely reduce per-batch processing time
   (smaller `max.poll.records`, offload slow work to an async
-  worker acknowledged before commit) or raise `max.poll.interval.ms` to
+  worker acknowledged before [commit](../../CI_CD/commit/SKILL.md)) or raise `max.poll.interval.ms` to
   match a legitimately longer processing time — don't just raise the
   interval blindly without confirming the processing time is actually
   bounded.
 
 - **Symptom:** `UnderReplicatedPartitions` spikes cluster-wide right
   after a routine rolling broker restart (e.g. for a config change or
-  patch), and someone starts an incident response before checking
+  patch), and someone starts an [incident](../../Observability_and_SecOps/incident/SKILL.md) response before checking
   whether it's expected.
   **Fix:** A restarted broker's replicas are legitimately behind until
   they finish catching up; this is expected and should self-resolve
   within the deployment's configured restart interval. Confirm the ISR
   set is converging back to full (`kafka-topics.sh --describe` showing
   `Isr` matching `Replicas` again) before escalating — but do treat it
-  as a real incident if the metric doesn't converge within the expected
+  as a real [incident](../../Observability_and_SecOps/incident/SKILL.md) if the metric doesn't converge within the expected
   catch-up window, since that indicates a broker actually struggling,
   not just catching up.
 
@@ -234,7 +234,7 @@ the underlying problem.
   (`kafka-log-dirs.sh --describe` to compare partition sizes). The real
   fix is a better partition key (higher cardinality, more even
   distribution) chosen at topic/producer design time, which is a
-  [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)
+  [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)
   concern, not something tunable from the consumer side alone.
 
 ## Worked example
@@ -270,17 +270,17 @@ broker problem. Immediate mitigation: temporarily add a
 `consumer.pause()`/backpressure-aware retry on the fulfillment service
 for partition 0 specifically to avoid cascading timeouts downstream
 while a fix is prepared. Actual fix (tracked as a follow-up, not done
-live during the incident given the ordering-guarantee implications):
+live during the [incident](../../Observability_and_SecOps/incident/SKILL.md) given the ordering-guarantee implications):
 re-key the producer on `order_id` instead of `warehouse_region` for even
 distribution across all 12 partitions, following the partition-key
 guidance in
-[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md),
+[kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md),
 and validate the new key distribution in staging via
-[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)
+[kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
 before rolling out to production.
 
 ## Cross-references
 
-- [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md) — partition/replication design decisions that are frequently the root cause of the symptoms diagnosed here.
-- [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-incident lag/rebalance problems.
-- [kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.
+- [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md) — partition/replication design decisions that are frequently the root cause of the symptoms diagnosed here.
+- [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-[incident](../../Observability_and_SecOps/incident/SKILL.md) lag/rebalance problems.
+- [kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.

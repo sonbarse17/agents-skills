@@ -103,7 +103,7 @@ var serviceData = new ApiManagementServiceData(
     location: AzureLocation.EastUS,
     sku: new ApiManagementServiceSkuProperties(
         ApiManagementServiceSkuType.Developer, 
-        capacity: 1),
+        [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): 1),
     publisherEmail: "admin@contoso.com",
     publisherName: "Contoso");
 
@@ -258,13 +258,13 @@ await service.RestoreAsync(WaitUntil.Completed, backupParams);
 
 ## SKU Types
 
-| SKU | Purpose | Capacity |
+| SKU | Purpose | [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 |-----|---------|----------|
 | `Developer` | Development/testing (no SLA) | 1 |
 | `Basic` | Entry-level production | 1-2 |
 | `Standard` | Medium workloads | 1-4 |
 | `Premium` | High availability, multi-region | 1-12 per region |
-| `Consumption` | Serverless, pay-per-call | N/A |
+| `Consumption` | [Serverless](../../../../Containers_and_Orchestration/serverless/SKILL.md), pay-per-call | N/A |
 
 ## Best Practices
 

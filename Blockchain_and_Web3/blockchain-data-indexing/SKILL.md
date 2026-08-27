@@ -47,7 +47,7 @@ Indexing architecture recommendation with configuration, schema design, and prod
 - Event schema designed with all indexed fields for efficient filtering
 - Reorg handling modeled with confirmation depth and unwind logic
 - Query patterns optimized (time-range filters, pagination, aggregations)
-- Monitoring metrics defined (indexing lag, reorgs, error rate)
+- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) metrics defined (indexing lag, reorgs, error rate)
 
 ### Max Response Length
 4000 tokens
@@ -75,7 +75,7 @@ Indexing needs:
 ├── Full control over schema and storage?
 │   ├── YES → ChainIndex or custom indexer
 │   │   ├── ChainIndex → Go-based custom indexer framework
-│   │   └── Custom → Any stack (Rust, Python, Node) + any DB (Postgres, ClickHouse)
+│   │   └── Custom → Any stack (Rust, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node) + any DB (Postgres, ClickHouse)
 │   └── NO → Managed service (The Graph, Goldsky)
 └── Multi-chain aggregation needed?
     ├── YES → Goldsky Mirror or custom (subgraphs per chain + aggregation layer)
@@ -100,7 +100,7 @@ Data volume:
 ├── < 100 events/day → Subgraph or Dune query (free tier)
 ├── 100-10K events/day → Subgraph (hosted), Goldsky Pipeline
 ├── 10K-1M events/day → Goldsky Mirror, self-hosted graph-node
-└── 1M+ events/day → Custom indexer (Rust/Python + ClickHouse)
+└── 1M+ events/day → Custom indexer (Rust/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) + ClickHouse)
 ```
 
 ## Subgraph Architecture (The Graph)
@@ -158,7 +158,7 @@ type Token @entity {
 ```
 
 ### AssemblyScript Mapping Handler
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { PoolCreated } from "../generated/Factory/Factory"
 import { Pool, Token } from "../generated/schema"
 import { fetchTokenMetadata } from "./helpers"
@@ -215,7 +215,7 @@ templates:
       file: ./src/pool-mapping.ts
 ```
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // In mapping.ts — create dynamic data source on PoolCreated
 import { DataSourceContext, dataSource } from "@graphprotocol/graph-ts"
 import { Pool } from "../generated/templates"
@@ -228,7 +228,7 @@ export function handlePoolCreated(event: PoolCreated): void {
 ```
 
 ### Reorg Handling in Subgraphs
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Subgraphs handle reorgs via block-based detection
 // Graph-node tracks chain head and detects reorgs via block hash changes
 // On reorg: unwind entities to the fork block, reapply events
@@ -360,7 +360,7 @@ Components:
 ```
 
 ### Reorg Handling in Custom Indexers
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Custom indexer reorg handling strategy
 class Indexer:
     def __init__(self, confirmations=6):
@@ -422,7 +422,7 @@ class Indexer:
   - ../../../Global_References/goldsky-chainindex.md — Goldsky & ChainIndex Reference
   - ../../../Global_References/indexer-architecture.md — Indexer Architecture Patterns
   - ../../../Global_References/the-graph-subgraph.md — The Graph — Subgraph Reference
-  - references/subgraph-performance-tuning.md — Subgraph Performance Tuning
+  - references/subgraph-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md — Subgraph Performance Tuning
   - references/multi-chain-indexing.md — Multi-Chain Indexing Strategies
   - references/custom-indexer-patterns.md — Custom Indexer Patterns
 
@@ -432,7 +432,7 @@ class Indexer:
 Blockchain Indexing Strategy
 ├── Indexing granularity?
 │   ├── Full chain → The Graph (subgraphs) / QuickNode streaming
-│   ├── Event-specific → Custom indexer (ethers.js + PostgreSQL)
+│   ├── Event-specific → Custom indexer (ethers.js + [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
 │   └── Real-time + historical → Goldsky (subgraph + pipeline)
 ├── Query interface?
 │   ├── GraphQL → The Graph subgraph (standard for dApps)
@@ -480,8 +480,8 @@ dataSources:
       file: ./src/mapping.ts
 ```
 
-### Custom Indexer with PostgreSQL
-```python
+### Custom Indexer with [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # blockchain-data-indexing/custom_indexer.py
 from web3 import Web3
 import asyncpg
@@ -513,7 +513,7 @@ class EventIndexer:
 - **Block range batching**: Batch historical sync in chunks of 5000 blocks; retry failed ranges.
 - **Reorg handling**: Detect reorgs via block parent hash chain; revert indexing to last safe block.
 - **Subgraph versioning**: Version subgraphs (v0.1.0); deploy new version alongside old; migrate queries.
-- **Indexer monitoring**: Track indexed block lag, event processing rate, and database write latency.
+- **Indexer [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track indexed block lag, event processing rate, and database write latency.
 - **Cost optimization**: Index only required events; use startBlock to limit historical scan range.
 - **Retry with backoff**: Exponential backoff on RPC failures; switch to backup RPC on persistent failure.
 
@@ -540,7 +540,7 @@ class EventIndexer:
 - **RPC authentication**: Use API keys with rate limits; rotate keys quarterly; use private RPC endpoints.
 - **Database access**: Separate read/write credentials; read-only for query endpoints.
 - **Input validation**: Validate event data before insert; reject malformed log entries.
-- **Audit trail**: Log all indexing jobs with parameters (range, contract, status) for traceability.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all indexing jobs with parameters (range, contract, status) for traceability.
 - **Backup**: Daily database backups; point-in-time recovery for 7-day window.
 
 ## Phase: blockchain → blockchain-data-indexing

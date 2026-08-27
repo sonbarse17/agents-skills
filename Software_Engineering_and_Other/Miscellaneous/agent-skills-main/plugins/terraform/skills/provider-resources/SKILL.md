@@ -36,7 +36,7 @@ present means it serves both SDKv2 and Framework code; only
 `terraform-plugin-framework` means Framework-only. Be cautious about
 *migrating* existing SDKv2 resources: the Framework distinguishes null from
 zero values, so naive migrations change behavior for existing users (use the
-`provider-framework-migration` skill, if available).
+`[provider-framework-migration](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-framework-migration](../provider-framework-migration/SKILL.md)/SKILL.md)` skill, if available).
 
 **References** (load when needed):
 - `../../../../../../../Global_References/provider-resources_design-principles.md` — what should (and should not) become a
@@ -138,7 +138,7 @@ func (r *widgetResource) Schema(ctx context.Context, req resource.SchemaRequest,
 ```
 
 How the provider's `Configure` produces that client — schema, credential
-resolution, validation — is covered by the `provider-configuration` skill
+resolution, validation — is covered by the `[provider-configuration](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-configuration](../provider-configuration/SKILL.md)/SKILL.md)` skill
 (if available).
 
 **On `id`:** SDKv2 required a magic `id` attribute; the Framework does not.
@@ -384,7 +384,7 @@ func isNotFound(err error) bool {
 
 Many APIs return from Create/Delete before the resource is usable/gone. Use
 `retry.StateChangeConf` (from
-`github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry` — usable from
+`[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry` — usable from
 Framework providers), with a status function built on the finder and
 timeouts in named constants:
 
@@ -454,11 +454,11 @@ resource "examplecloud_widget" "test" {
 }
 ```
 
-Use the `provider-test-patterns` skill (if available) for the full testing
+Use the `[provider-test-patterns](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-test-patterns](../provider-test-patterns/SKILL.md)/SKILL.md)` skill (if available) for the full testing
 treatment: config helper style (`%[1]q` indexed verbs), statecheck/plancheck,
 CompareValue, custom StateCheck implementations for exists/disappears
 helpers, sweepers, and ephemeral resource testing. Use the
-`run-acceptance-tests` skill for executing and debugging test runs.
+`[run-acceptance-tests](../[run-acceptance-tests](../../../../../../Testing/run-acceptance-tests/SKILL.md)/SKILL.md)` skill for executing and debugging test runs.
 
 ## Error Handling
 
@@ -496,7 +496,7 @@ Write attribute `MarkdownDescription`s first — they are the source of
 truth. Then generate Registry documentation with `tfplugindocs`
 (`go generate ./...` where wired up), adding `docs/**/*.md.tmpl` templates
 only for prose and examples the generator cannot derive. Use the
-`provider-docs` skill (if available) for the full documentation workflow and
+`[provider-docs](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-docs](../provider-docs/SKILL.md)/SKILL.md)` skill (if available) for the full documentation workflow and
 Registry publication rules.
 
 ## Pre-Submission Checklist

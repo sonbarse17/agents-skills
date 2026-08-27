@@ -18,7 +18,7 @@ mounts, read `../../../Global_References/dockerfile-patterns.md`.
 
 ## 1. Order layers by how often they change
 
-Docker caches per layer and invalidates every layer after the first change. Put the stable things
+[Docker](../docker/SKILL.md) caches per layer and invalidates every layer after the first change. Put the stable things
 first so a one-line edit does not re-download the internet:
 
 ```dockerfile
@@ -38,7 +38,7 @@ A multi-stage build compiles or installs in one stage and copies only the result
 a clean final stage. Compilers, headers, and package caches have no business shipping to
 production — they add size and give an attacker a toolbox if they land a shell. Name your stages
 (`AS build`, `AS runtime`) so the final `COPY --from=build` is unambiguous. Sizing the runtime
-image itself — which base to start the final stage from — is `image-optimization`'s job; this
+image itself — which base to start the final stage from — is `[image-optimization](../../../Software_Engineering_and_Other/Frontend/image-optimization/SKILL.md)`'s job; this
 step is about the boundary between building and running.
 
 **Done when:** the runtime image contains no compiler, package manager cache, or source outside
@@ -65,22 +65,22 @@ not silently change the base layer.
 A secret written into any layer — even one later deleted in a subsequent `RUN` — is still
 recoverable from the image history. Use build secrets (`RUN --mount=type=secret`) or inject
 credentials at runtime via the orchestrator's secret store, never `ARG`/`ENV` for anything
-sensitive, since both are visible in `docker history` and image inspection. Managing where those
-secrets live long-term is `secrets-management`'s job; this step is only about keeping them out of
+sensitive, since both are visible in `[docker](../docker/SKILL.md) history` and image inspection. Managing where those
+secrets live long-term is `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)`'s job; this step is only about keeping them out of
 the artifact you push.
 
-**Done when:** `docker history` and `docker inspect` on the built image show no credentials, keys,
+**Done when:** `[docker](../docker/SKILL.md) history` and `[docker](../docker/SKILL.md) inspect` on the built image show no credentials, keys,
 or tokens.
 
-## 5. Design for the orchestrator, not just `docker run`
+## 5. Design for the orchestrator, not just `[docker](../docker/SKILL.md) run`
 
 A container that starts fast and exits cleanly is easy to run by hand but painful to operate at
 scale unless it also exposes the signals an orchestrator needs. Handle `SIGTERM` for graceful
 shutdown instead of relying on `SIGKILL` after a timeout. Expose a liveness and readiness
 distinction — a process that is running but not yet able to serve traffic should fail readiness,
 not liveness. Set resource requests informed by real usage, not guesses, so the scheduler can
-place the container sensibly; the scheduling and autoscaling behavior itself belongs to
-`kubernetes-operations` and `autoscaling`.
+place the container sensibly; the scheduling and [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) behavior itself belongs to
+`[kubernetes-operations](../[kubernetes](../kubernetes/SKILL.md)-operations/SKILL.md)` and `[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)`.
 
 - **Trap `SIGTERM`** and finish in-flight work within the orchestrator's grace period.
 - **Expose separate health endpoints** for startup, liveness, and readiness where the runtime
@@ -97,7 +97,7 @@ accidental inclusion via a stray `COPY . .`. A bloated context slows every build
 shipping `.git`, local `.env` files, or test fixtures into a layer. Treat `.dockerignore` as part
 of the Dockerfile, reviewed whenever `COPY` targets change.
 
-**Done when:** `docker build` context transfer size reflects only files the image actually needs.
+**Done when:** `[docker](../docker/SKILL.md) build` context transfer size reflects only files the image actually needs.
 
 ## Report
 

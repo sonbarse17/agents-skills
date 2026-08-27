@@ -30,7 +30,7 @@ provisioned at 2 a.m. by a script nobody remembers writing. The
 provisioning **API/workflow layer** — whether it's a Backstage Scaffolder
 custom action, calls against Humanitec's API, or a bespoke internal REST/
 gRPC API — is where guardrails either get built in from day one or get
-bolted on later as an incident retrospective action item. This skill
+bolted on later as an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective action item. This skill
 covers designing that layer so policy checks, budget/cost limits, and
 approval steps are structural parts of the request's execution path, not
 optional UI decoration a determined developer (or a bug) can route around.
@@ -49,7 +49,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 - A security or FinOps stakeholder asks "how do we know self-service
   requests aren't bypassing review" or "how do we cap the cost blast
   radius of a self-service action."
-- An incident retrospective finds an oversized/insecure resource was
+- An [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective finds an oversized/insecure resource was
   provisioned through the self-service tool with no record of who
   approved it, and the platform needs a structural fix, not a policy memo.
 - Adding a manual-approval or budget-limit step to an existing self-service
@@ -65,7 +65,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 - For Humanitec: an org with the Platform Orchestrator, `humctl`
   authenticated, and an API token (`HUMANITEC_TOKEN`) scoped to the
   Applications/Environments the self-service flow targets — see
-  [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)
+  [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
   for the workload-spec side of this.
 - A policy engine or rule evaluator reachable synchronously from the
   provisioning path — Open Policy Agent (OPA) with a `/v1/data` HTTP
@@ -104,7 +104,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 2. **Write the policy check as a required, server-side gate — never a
    client-side/UI-only validation.** A Backstage Scaffolder custom action
    that calls a policy engine before provisioning:
-   ```typescript
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
    // packages/backend/src/plugins/scaffolder/actions/provisionDatabase.ts
    import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
    import fetch from 'node-fetch';
@@ -202,14 +202,14 @@ optional UI decoration a determined developer (or a bug) can route around.
    }
    ```
    Keeping policy external means a budget or security team can tighten a
-   rule (e.g. add a new denied instance class after a cost incident)
+   rule (e.g. add a new denied instance class after a cost [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md))
    through a reviewed PR to the policy bundle, without needing a platform
    engineer to touch or redeploy the Scaffolder action code.
 
 4. **Wire the approval step to an actual notification channel, and make
    the approval call itself the only thing that resumes provisioning** —
    never a status flag a developer can flip on their own request:
-   ```typescript
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
    // Separate, approver-only endpoint — requires an approver role, checked
    // server-side against the platform's RBAC, not just "logged in".
    app.post('/api/self-service/requests/:id/approve', requireRole('platform-approver'), async (req, res) => {
@@ -254,7 +254,7 @@ optional UI decoration a determined developer (or a bug) can route around.
    an internal API wraps `humctl score deploy`/environment-creation calls,
    checks policy first, and only production-tier Environments require
    approval — see
-   [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md)
+   [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md)
    for the dry-run/policy checks that should run in this same gate before
    a real deploy proceeds.
 
@@ -265,7 +265,7 @@ optional UI decoration a determined developer (or a bug) can route around.
    approval step itself (e.g. auto-escalate an unactioned approval after
    4 business hours) and make routine, low-risk requests (dev-tier, small
    instance classes) genuinely instant per step 3, saving human review
-   capacity for the requests that actually carry risk.
+   [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for the requests that actually carry risk.
 
 8. **Provide one explicit, audited break-glass path for genuine
    emergencies** — never let "this is urgent" become an informal reason
@@ -287,7 +287,7 @@ optional UI decoration a determined developer (or a bug) can route around.
   deploy.
 - Persist request state transitions with who/when for every step
   (requested, policy-checked, approved-by, provisioned) — this is the
-  audit trail a security review or incident retrospective will need, and
+  [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail a security review or [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective will need, and
   retrofitting it after the fact from application logs is far more work
   than building it in from the state-machine design in step 1.
 - Reject self-approval structurally (the approver-role check in step 4),
@@ -417,7 +417,7 @@ spec:
    provisioning API, tags the resulting RDS instance with
    `request_id=req_8f2a` and `approved_by=<approver>`, and updates the
    request row to `completed`.
-5. Six weeks later, a cost audit queries the `self_service_requests`
+5. Six weeks later, a cost [audit](../../AI_and_Agents/Operations/audit/SKILL.md) queries the `self_service_requests`
    table and finds every production database traceable to a specific
    approved request — no orphaned resources with no request record,
    because the provisioning call in step 4 only ever fires from inside
@@ -432,8 +432,8 @@ risk.
 
 ## Cross-references
 
-- [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md) — Port's self-service Action model and its `reportWorkflowStatus` pattern are a SaaS-hosted equivalent of the Backstage/custom-API workflow designed here.
-- [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md) — the workload-spec side of a self-service request when the provisioning target is a Humanitec Application/Environment rather than a standalone resource.
-- [humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md) — the dry-run/policy validation this skill's policy-check step should call before a Humanitec-backed self-service request proceeds to approval.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — the Scaffolder template surrounding the self-service action here is itself a golden path; that skill covers the template's broader defaults and escape hatches beyond the provisioning action alone.
-- [backstage-plugin-development](../backstage-plugin-development/SKILL.md) — general Backstage backend-plugin patterns (`createBackendPlugin`, API clients) that a custom Scaffolder action's supporting backend code often reuses.
+- [no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Port's self-service Action model and its `reportWorkflowStatus` pattern are a SaaS-hosted equivalent of the Backstage/custom-API workflow designed here.
+- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the workload-spec side of a self-service request when the provisioning target is a Humanitec Application/Environment rather than a standalone resource.
+- [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — the dry-run/policy validation this skill's policy-check step should call before a Humanitec-backed self-service request proceeds to approval.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the Scaffolder template surrounding the self-service action here is itself a golden path; that skill covers the template's broader defaults and escape hatches beyond the provisioning action alone.
+- [backstage-plugin-development](../[backstage-plugin-development](../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — general Backstage backend-plugin patterns (`createBackendPlugin`, API clients) that a custom Scaffolder action's supporting backend code often reuses.

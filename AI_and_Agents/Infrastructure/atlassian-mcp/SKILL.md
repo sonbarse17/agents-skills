@@ -67,7 +67,7 @@ project = PROJ AND sprint in openSprints() AND status = Open ORDER BY created DE
 space = "ENG" AND type = page AND lastModified >= "2024-01-01" ORDER BY lastModified DESC
 
 # Search page text for a keyword
-space = "ENG" AND type = page AND text ~ "deployment runbook"
+space = "ENG" AND type = page AND text ~ "deployment [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)"
 ```
 
 ### Minimal MCP Server Configuration
@@ -99,7 +99,7 @@ space = "ENG" AND type = page AND text ~ "deployment runbook"
 - Handle rate limits with exponential backoff
 - Use pagination for large result sets (50-100 items per page)
 - Implement error recovery for network failures
-- Log API calls for debugging and audit trails
+- Log API calls for debugging and [audit](../../Operations/audit/SKILL.md) trails
 - Test with read-only operations first
 - Document required permission scopes
 - Confirm before any write or bulk operation against production data
@@ -123,5 +123,5 @@ When implementing Atlassian MCP features, provide:
 4. Authentication setup instructions
 5. Brief explanation of permission requirements
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/platform/atlassian-mcp/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/platform/atlassian-mcp/)
 

@@ -97,5 +97,5 @@ Then they are redirected to the dashboard within 2 seconds.
 
 Save as: `specs/{feature_name}.spec.md`
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/feature-forge/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/workflow/feature-forge/)
 

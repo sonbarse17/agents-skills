@@ -449,7 +449,7 @@ public class WatermarkTextBox : TextBox
 | DataTemplates for type-based rendering | Automatic view resolution for ViewModel types |
 | Attached behaviors for complex interactions | Reusable, declarative interaction patterns |
 | Prism for modular enterprise apps | Region navigation, modularity, DI integration |
-| WPF Performance Suite for profiling | Identify rendering, layout, binding bottlenecks |
+| WPF Performance Suite for [profiling](../profiling/SKILL.md) | Identify rendering, layout, binding bottlenecks |
 | .NET 6+ for new WPF projects | .NET 6+, not .NET Framework |
 
 ## Architecture Patterns

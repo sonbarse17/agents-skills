@@ -17,39 +17,39 @@ metadata:
   maturity: stable
 ---
 
-# Longhorn Storage Configuration
+# [Longhorn](../longhorn/SKILL.md) Storage Configuration
 
 ## Purpose
 
-Longhorn is a Kubernetes-native distributed block storage system that
+[Longhorn](../longhorn/SKILL.md) is a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native distributed block storage system that
 replicates each volume across multiple nodes at the storage layer
 itself — no external Ceph cluster, no separate storage appliance —
 making it markedly simpler to operate than
-[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)
+[rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md)
 when a workload's only requirement is durable, replicated `ReadWriteOnce`
-block storage. The tradeoff for that simplicity is scope: Longhorn does
+block storage. The tradeoff for that simplicity is scope: [Longhorn](../longhorn/SKILL.md) does
 not provide S3-compatible object storage or a POSIX shared filesystem
 the way Ceph's RGW/CephFS do, and its per-volume replication model
 (each volume's replicas live on distinct nodes, not on a cluster-wide
 placement-group/CRUSH abstraction) is architecturally different from
-Ceph's. This skill covers installing Longhorn, configuring replica
+Ceph's. This skill covers installing [Longhorn](../longhorn/SKILL.md), configuring replica
 count/data locality/scheduling, and setting up snapshot/backup targets;
-choosing between Longhorn and Rook-Ceph in the first place is covered in
+choosing between [Longhorn](../longhorn/SKILL.md) and Rook-Ceph in the first place is covered in
 the Best practices section below and in
-[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)'s
+[rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md)'s
 Purpose section.
 
 ## When to use
 
 - Providing dynamically-provisioned, replicated block storage on a
-  bare-metal or on-prem cluster where object storage and shared
+  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem cluster where object storage and shared
   filesystems aren't required.
-- Choosing between Longhorn and Rook-Ceph for a new cluster's storage
+- Choosing between [Longhorn](../longhorn/SKILL.md) and Rook-Ceph for a new cluster's storage
   layer.
 - Configuring a StorageClass's replica count or data-locality setting to
   balance durability against I/O latency for a specific workload.
 - Setting up scheduled snapshots and off-cluster backups (to S3 or NFS)
-  for Longhorn volumes.
+  for [Longhorn](../longhorn/SKILL.md) volumes.
 - Recovering a volume after the node it was scheduled on fails, or
   rebuilding a degraded replica.
 - Migrating stateful workloads that need only RWO block storage off a
@@ -57,23 +57,23 @@ Purpose section.
 
 ## Prerequisites & environment
 
-- Kubernetes ≥ 1.25 and Longhorn ≥ v1.6 (check Longhorn's own release
-  compatibility matrix — Longhorn moves its supported Kubernetes range
+- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.25 and [Longhorn](../longhorn/SKILL.md) ≥ v1.6 (check [Longhorn](../longhorn/SKILL.md)'s own release
+  compatibility matrix — [Longhorn](../longhorn/SKILL.md) moves its supported [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) range
   forward fairly aggressively).
 - `open-iscsi` (or the distro equivalent) installed and the `iscsid`
-  service running on every node that will host Longhorn volumes —
-  Longhorn's data path depends on iSCSI, and a missing/stopped `iscsid`
+  service running on every node that will host [Longhorn](../longhorn/SKILL.md) volumes —
+  [Longhorn](../longhorn/SKILL.md)'s data path depends on iSCSI, and a missing/stopped `iscsid`
   is the most common install-time blocker.
 - At least 3 nodes with free disk space for meaningful replication (the
   same failure-domain reasoning as etcd/Ceph: 3 replicas need at least
   3 independent nodes to actually protect against a single node
   failure).
-- The Longhorn Helm chart or the official manifest, plus `kubectl`/Helm
-  access with permission to create the `longhorn-system` namespace and
-  its privileged DaemonSets (Longhorn's engine/replica processes need
+- The [Longhorn](../longhorn/SKILL.md) Helm chart or the official manifest, plus `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`/Helm
+  access with permission to create the `[longhorn](../longhorn/SKILL.md)-system` namespace and
+  its privileged DaemonSets ([Longhorn](../longhorn/SKILL.md)'s engine/replica processes need
   host-level block device and iSCSI access).
 - A decided backup target (S3-compatible object storage or NFS) before
-  going to production — Longhorn's built-in replication protects
+  going to production — [Longhorn](../longhorn/SKILL.md)'s built-in replication protects
   against node failure, but not against an accidentally deleted volume
   or a cluster-wide disaster, which only an off-cluster backup target
   covers.
@@ -82,19 +82,19 @@ Purpose section.
 
 1. **Verify prerequisites cluster-wide before installing**:
    ```bash
-   kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/prerequisite/longhorn-iscsi-installation.yaml
-   kubectl -n longhorn-system get pods -l app=longhorn-iscsi-installation
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods -l app=[longhorn](../longhorn/SKILL.md)-iscsi-installation
    ```
    Confirm every node's iSCSI installation pod completes successfully
-   before proceeding — installing Longhorn itself on top of a node
+   before proceeding — installing [Longhorn](../longhorn/SKILL.md) itself on top of a node
    missing `open-iscsi` produces engine pods stuck `CrashLoopBackOff`
    with an unhelpful error.
 
-2. **Install Longhorn** via Helm:
+2. **Install [Longhorn](../longhorn/SKILL.md)** via Helm:
    ```bash
-   helm repo add longhorn https://charts.longhorn.io
-   helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.6.2
-   kubectl -n longhorn-system get pods   # wait for all Running
+   helm repo add [longhorn](../longhorn/SKILL.md) https://charts.[longhorn](../longhorn/SKILL.md).io
+   helm install [longhorn](../longhorn/SKILL.md) [longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md) --namespace [longhorn](../longhorn/SKILL.md)-system --create-namespace --version 1.6.2
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods   # wait for all Running
    ```
 
 3. **Define a StorageClass with an explicit replica count and data
@@ -104,8 +104,8 @@ Purpose section.
    apiVersion: storage.k8s.io/v1
    kind: StorageClass
    metadata:
-     name: longhorn-replicated
-   provisioner: driver.longhorn.io
+     name: [longhorn](../longhorn/SKILL.md)-replicated
+   provisioner: driver.[longhorn](../longhorn/SKILL.md).io
    allowVolumeExpansion: true
    reclaimPolicy: Retain
    parameters:
@@ -123,18 +123,18 @@ Purpose section.
 
 4. **Scope node/disk scheduling explicitly** for heterogeneous
    clusters (e.g. only some nodes have fast local NVMe) via node
-   tags and the Longhorn UI/CRDs, rather than letting every volume
+   tags and the [Longhorn](../longhorn/SKILL.md) UI/CRDs, rather than letting every volume
    schedule onto every node uniformly:
    ```yaml
-   apiVersion: longhorn.io/v1beta2
+   apiVersion: [longhorn](../longhorn/SKILL.md).io/v1beta2
    kind: Node
    metadata:
      name: worker-1
-     namespace: longhorn-system
+     namespace: [longhorn](../longhorn/SKILL.md)-system
    spec:
      disks:
        nvme-disk:
-         path: /var/lib/longhorn-nvme
+         path: /var/lib/[longhorn](../longhorn/SKILL.md)-nvme
          allowScheduling: true
          tags: ["fast"]
    ```
@@ -142,40 +142,40 @@ Purpose section.
    latency-sensitive volumes land only on tagged fast-disk nodes.
 
 5. **Configure a backup target** (S3-compatible or NFS) before any
-   volume is considered production-ready — Longhorn's replication
+   volume is considered production-ready — [Longhorn](../longhorn/SKILL.md)'s replication
    protects against a node failure, not against cluster-wide loss or an
    accidental volume deletion:
    ```yaml
    apiVersion: v1
    kind: Secret
    metadata:
-     name: longhorn-backup-s3-secret
-     namespace: longhorn-system
+     name: [longhorn](../longhorn/SKILL.md)-backup-s3-secret
+     namespace: [longhorn](../longhorn/SKILL.md)-system
    type: Opaque
    stringData:
      AWS_ACCESS_KEY_ID: "${LONGHORN_BACKUP_ACCESS_KEY_ID}"
      AWS_SECRET_ACCESS_KEY: "${LONGHORN_BACKUP_SECRET_ACCESS_KEY}"
    ```
    ```bash
-   kubectl -n longhorn-system patch settings.longhorn.io backup-target \
-     --type=merge -p '{"value":"s3://longhorn-backups-<ACCOUNT_ID>@us-east-1/"}'
-   kubectl -n longhorn-system patch settings.longhorn.io backup-target-credential-secret \
-     --type=merge -p '{"value":"longhorn-backup-s3-secret"}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
+     --type=merge -p '{"value":"s3://[longhorn](../longhorn/SKILL.md)-backups-<ACCOUNT_ID>@us-east-1/"}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
+     --type=merge -p '{"value":"[longhorn](../longhorn/SKILL.md)-backup-s3-secret"}'
    ```
    Never place the access key/secret directly in a StorageClass or
-   ConfigMap — always reference a Kubernetes Secret, and source the
+   ConfigMap — always reference a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret, and source the
    Secret's values from your actual secrets manager rather than
    hardcoding them, per
-   [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md).
+   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
 
 6. **Schedule recurring snapshots and backups** via a `RecurringJob`
    rather than relying on manual, ad hoc backup runs:
    ```yaml
-   apiVersion: longhorn.io/v1beta2
+   apiVersion: [longhorn](../longhorn/SKILL.md).io/v1beta2
    kind: RecurringJob
    metadata:
      name: daily-backup
-     namespace: longhorn-system
+     namespace: [longhorn](../longhorn/SKILL.md)-system
    spec:
      cron: "0 2 * * *"
      task: "backup"
@@ -184,21 +184,21 @@ Purpose section.
      concurrency: 2
    ```
    Attach the `RecurringJob` to volumes via the
-   `recurring-job.longhorn.io/source: enabled` label/group mechanism on
+   `recurring-job.[longhorn](../longhorn/SKILL.md).io/source: enabled` label/group mechanism on
    the PVC, or a StorageClass-level default group, so new volumes are
    covered automatically rather than needing to be manually opted in
    one at a time.
 
 7. **Recover a volume after a node failure** by confirming the volume's
-   remaining healthy replicas and letting Longhorn's manager reschedule
+   remaining healthy replicas and letting [Longhorn](../longhorn/SKILL.md)'s manager reschedule
    the workload/rebuild automatically, verifying rather than assuming:
    ```bash
-   kubectl -n longhorn-system get volumes.longhorn.io <volume-name> -o jsonpath='{.status.robustness}'
-   kubectl -n longhorn-system get replicas.longhorn.io -l longhornvolume=<volume-name>
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io <volume-name> -o jsonpath='{.status.robustness}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
    ```
    `robustness: degraded` (one or more replicas down but the volume
    still serving I/O from remaining healthy replicas) is recoverable
-   automatically once the failed node returns or Longhorn schedules a
+   automatically once the failed node returns or [Longhorn](../longhorn/SKILL.md) schedules a
    replacement replica elsewhere; `robustness: faulted` (no healthy
    replica remains) requires restoring from the most recent backup —
    see step 8.
@@ -213,7 +213,7 @@ Purpose section.
    > restore into a new PVC name rather than overwriting anything that
    > might still hold newer (even if degraded/inaccessible) data.
    ```bash
-   kubectl -n longhorn-system get backups.longhorn.io -l longhornvolume=<volume-name>
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get backups.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
    ```
    ```yaml
    apiVersion: v1
@@ -223,7 +223,7 @@ Purpose section.
      namespace: payments
    spec:
      accessModes: [ReadWriteOnce]
-     storageClassName: longhorn-replicated
+     storageClassName: [longhorn](../longhorn/SKILL.md)-replicated
      resources: { requests: { storage: 20Gi } }
      dataSource:
        name: <volumesnapshot-name>
@@ -233,7 +233,7 @@ Purpose section.
 
 ## Best practices
 
-- Choose Longhorn over Rook-Ceph when the requirement is purely
+- Choose [Longhorn](../longhorn/SKILL.md) over Rook-Ceph when the requirement is purely
   replicated RWO block storage and operational simplicity matters more
   than the broader Ceph feature set (object storage, CephFS, erasure
   coding) — don't default to the heavier system when the lighter one
@@ -243,7 +243,7 @@ Purpose section.
   puts the volume at zero further tolerance, mirroring the etcd/Ceph
   quorum principle.
 - Configure and *test* a backup target before considering any
-  Longhorn-backed volume production-ready — replication alone does not
+  [Longhorn](../longhorn/SKILL.md)-backed volume production-ready — replication alone does not
   protect against cluster-wide disaster, accidental deletion, or
   corruption that replicates to every replica identically.
 - Use `dataLocality: best-effort`, not `disabled`, as the default for
@@ -251,28 +251,28 @@ Purpose section.
   important than read latency for that specific volume.
 - Tag disks/nodes explicitly (`diskSelector`/`nodeSelector`) in any
   cluster with heterogeneous storage hardware, rather than letting
-  Longhorn schedule replicas onto slow disks for a latency-sensitive
+  [Longhorn](../longhorn/SKILL.md) schedule replicas onto slow disks for a latency-sensitive
   workload by chance.
-- Monitor Longhorn's own health via its Prometheus metrics
+- Monitor [Longhorn](../longhorn/SKILL.md)'s own health via its Prometheus metrics
   (`longhorn_volume_robustness`, `longhorn_node_storage_usage_bytes`)
   through
-  [prometheus-and-grafana-monitoring-stack](../../../observability-and-platform-extras/skills/prometheus-and-grafana-monitoring-stack/SKILL.md)
-  rather than only checking the Longhorn UI reactively.
+  [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  rather than only checking the [Longhorn](../longhorn/SKILL.md) UI reactively.
 
 ## Common pitfalls
 
-- **Symptom:** Longhorn engine/replica pods are stuck
+- **Symptom:** [Longhorn](../longhorn/SKILL.md) engine/replica pods are stuck
   `CrashLoopBackOff` immediately after install.
   **Fix:** Almost always a missing or stopped `iscsid` on one or more
   nodes — re-run the iSCSI prerequisite installation
-  (`longhorn-iscsi-installation.yaml`) and confirm
+  (`[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml`) and confirm
   `systemctl status iscsid` is active on every node, not just the ones
   that appeared to install correctly initially.
 
 - **Symptom:** A volume shows `robustness: degraded` for a long time
   after a node recovers from a brief outage, never returning to
   `healthy`.
-  **Fix:** Check `kubectl -n longhorn-system get replicas.longhorn.io`
+  **Fix:** Check `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io`
   for a replica stuck in a rebuilding or error state — a prolonged
   rebuild can be blocked by insufficient free disk space on the target
   node for the replacement replica, or a stale replica timeout setting
@@ -298,10 +298,10 @@ Purpose section.
   reconfiguration) — periodically perform an actual test restore (not
   just checking the "backup completed" status), the same discipline as
   the practice-restore guidance in
-  [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md).
+  [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
 
 - **Symptom:** Someone deletes a PVC to "free up space" during
-  cleanup, and the underlying Longhorn volume (and its replicas) is
+  cleanup, and the underlying [Longhorn](../longhorn/SKILL.md) volume (and its replicas) is
   immediately and irreversibly deleted along with any data not yet
   backed up.
   **Fix:** This is a destructive action — set `reclaimPolicy: Retain`
@@ -313,20 +313,20 @@ Purpose section.
 ## Worked example
 
 **Scenario:** Provide replicated block storage for a Redis cluster on a
-5-node bare-metal cluster, with daily backups to S3, and validate
+5-node [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster, with daily backups to S3, and validate
 recovery after simulating a node failure.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/prerequisite/longhorn-iscsi-installation.yaml
-helm repo add longhorn https://charts.longhorn.io
-helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.6.2
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
+helm repo add [longhorn](../longhorn/SKILL.md) https://charts.[longhorn](../longhorn/SKILL.md).io
+helm install [longhorn](../longhorn/SKILL.md) [longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md) --namespace [longhorn](../longhorn/SKILL.md)-system --create-namespace --version 1.6.2
 ```
 
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
-metadata: { name: longhorn-redis }
-provisioner: driver.longhorn.io
+metadata: { name: [longhorn](../longhorn/SKILL.md)-redis }
+provisioner: driver.[longhorn](../longhorn/SKILL.md).io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
 parameters:
@@ -335,16 +335,16 @@ parameters:
 ```
 
 ```bash
-kubectl -n longhorn-system patch settings.longhorn.io backup-target \
-  --type=merge -p '{"value":"s3://longhorn-backups-example@us-east-1/"}'
-kubectl -n longhorn-system patch settings.longhorn.io backup-target-credential-secret \
-  --type=merge -p '{"value":"longhorn-backup-s3-secret"}'
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
+  --type=merge -p '{"value":"s3://[longhorn](../longhorn/SKILL.md)-backups-example@us-east-1/"}'
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
+  --type=merge -p '{"value":"[longhorn](../longhorn/SKILL.md)-backup-s3-secret"}'
 ```
 
 ```yaml
-apiVersion: longhorn.io/v1beta2
+apiVersion: [longhorn](../longhorn/SKILL.md).io/v1beta2
 kind: RecurringJob
-metadata: { name: redis-daily-backup, namespace: longhorn-system }
+metadata: { name: redis-daily-backup, namespace: [longhorn](../longhorn/SKILL.md)-system }
 spec: { cron: "30 1 * * *", task: "backup", groups: ["redis"], retain: 14 }
 ```
 
@@ -353,10 +353,10 @@ nightly backup covers them automatically. To validate recovery, a
 worker node is cordoned and powered off deliberately in a staging
 cluster:
 ```bash
-kubectl -n longhorn-system get volumes.longhorn.io -l longhornvolume=redis-data-0 -o jsonpath='{.status.robustness}'
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=redis-data-0 -o jsonpath='{.status.robustness}'
 # degraded
 ```
-Within Longhorn's configured replica-rebuild window, a new replica is
+Within [Longhorn](../longhorn/SKILL.md)'s configured replica-rebuild window, a new replica is
 scheduled on a healthy node and `robustness` returns to `healthy`
 automatically — confirming the 3-replica configuration tolerates a
 single node loss without needing to fall back to a backup restore at
@@ -364,9 +364,9 @@ all, which is the intended outcome for this failure class.
 
 ## Cross-references
 
-- [rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md) — the heavier alternative when object storage or CephFS is also required, not just replicated block storage.
-- [rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md) — analogous production-readiness health-check discipline, adapted here to Longhorn's `robustness`/replica model.
-- [etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md) — the same replica-count/quorum reasoning applied to etcd.
-- [cloud-native-storage-strategy](../../../cloud/skills/cloud-native-storage-strategy/SKILL.md) — broader framework for choosing between in-cluster storage systems and cloud-managed storage.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) — how the backup-target credentials referenced above should actually be sourced and rotated.
-- [velero-backup-and-restore](../../../observability-and-platform-extras/skills/velero-backup-and-restore/SKILL.md) — namespace/application-level backup that can complement (not replace) Longhorn's volume-level backup target.
+- [rook-ceph-storage-operations](../[rook-ceph-storage-operations](../rook-ceph-storage-operations/SKILL.md)/SKILL.md) — the heavier alternative when object storage or CephFS is also required, not just replicated block storage.
+- [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — analogous production-readiness health-check discipline, adapted here to [Longhorn](../longhorn/SKILL.md)'s `robustness`/replica model.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — the same replica-count/quorum reasoning applied to etcd.
+- [cloud-native-storage-strategy](../../../cloud/skills/[cloud-native-storage-strategy](../../Cloud_Providers/cloud-native-storage-strategy/SKILL.md)/SKILL.md) — broader framework for choosing between in-cluster storage systems and cloud-managed storage.
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — how the backup-target credentials referenced above should actually be sourced and rotated.
+- [velero-backup-and-restore](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../../Containers_and_Orchestration/velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — namespace/application-level backup that can complement (not replace) [Longhorn](../longhorn/SKILL.md)'s volume-level backup target.

@@ -20,7 +20,7 @@ metadata:
 
 ## Purpose
 
-Argo Workflows is a Kubernetes-native workflow engine where each step of a
+Argo Workflows is a [Kubernetes](../kubernetes/SKILL.md)-native workflow engine where each step of a
 pipeline runs as its own Pod, orchestrated by a `Workflow` CRD rather than
 by an external CI server's job runner. It exists for workloads that are
 naturally graphs of containerized steps with data dependencies between
@@ -43,7 +43,7 @@ step and step output, not a single opaque job log.
   resources, rather than on a CI runner (e.g., a data pipeline reading
   from an in-cluster data lake, an ML training/eval fan-out).
 - Deciding whether a batch/data workload belongs in Argo Workflows versus
-  the org's existing CI system (Jenkins, GitHub Actions, GitLab CI).
+  the org's existing CI system ([Jenkins](../../CI_CD/jenkins/SKILL.md), [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI).
 - Passing structured outputs (files, model artifacts, JSON results)
   between steps rather than just exit codes/logs.
 - Standardizing a repeated pipeline shape (e.g., "build → scan → push")
@@ -62,10 +62,10 @@ step and step output, not a single opaque job log.
 - RBAC: the `ServiceAccount` a `Workflow` runs as needs only the
   permissions its steps require (e.g., permission to read a specific
   Secret, not cluster-admin) — Argo Workflows executes each step as a real
-  Pod under a real ServiceAccount, so ordinary Kubernetes RBAC applies.
+  Pod under a real ServiceAccount, so ordinary [Kubernetes](../kubernetes/SKILL.md) RBAC applies.
 - Clarity on where Argo Workflows sits relative to the org's CI system:
   it is not a replacement for source-triggered build/test pipelines (see
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md)
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
   if one exists in this repo, or the org's existing CI tooling) — it's
   for graph-shaped, in-cluster, often data-heavy workloads.
 
@@ -205,7 +205,7 @@ step and step output, not a single opaque job log.
    ```
 
 5. **Schedule recurring runs with `CronWorkflow`** rather than a plain
-   Kubernetes `CronJob` running a script, when the job is itself a
+   [Kubernetes](../kubernetes/SKILL.md) `CronJob` running a script, when the job is itself a
    multi-step graph:
    ```yaml
    apiVersion: argoproj.io/v1alpha1
@@ -418,6 +418,6 @@ five steps.
 
 ## Cross-references
 
-- [argo-events-and-event-driven-automation](../argo-events-and-event-driven-automation/SKILL.md)
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
-- [container-build-and-release](../../../devops/skills/container-build-and-release/SKILL.md)
+- [argo-events-and-event-driven-automation](../[argo-events-and-event-driven-automation](../argo-events-and-event-driven-automation/SKILL.md)/SKILL.md)
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
+- [container-build-and-release](../../../devops/skills/[container-build-and-release](../container-build-and-release/SKILL.md)/SKILL.md)

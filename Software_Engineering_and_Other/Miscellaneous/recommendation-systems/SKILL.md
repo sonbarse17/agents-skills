@@ -7,7 +7,7 @@ description: Implementation of Collaborative Filtering for recommendation system
 
 ## Architecture Overview
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[User-Item Interactions] --> B[Data Preprocessing]
@@ -24,7 +24,7 @@ graph TD
 - **Evaluation**: Use metrics like NDCG, Precision@K, and Recall@K for ranking quality. Avoid relying solely on RMSE.
 
 ## Code Snippet: Matrix Factorization (Surprise Library)
-```python
+```[python](../../Languages/python/SKILL.md)
 from surprise import Dataset, Reader, SVD
 from surprise.model_selection import cross_validate
 

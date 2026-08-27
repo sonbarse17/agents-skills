@@ -27,8 +27,8 @@ service by hand. Done well, it turns tribal knowledge ("everyone knows
 `checkout-api` doesn't really have an on-call rotation") into a queryable,
 enforceable signal. Done poorly, it becomes a number teams learn to
 optimize directly instead of the underlying practice it was meant to
-proxy — a team adds a stub `runbook.md` with one sentence in it, the
-"has a runbook" check goes green, and the service is exactly as
+proxy — a team adds a stub `[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).md` with one sentence in it, the
+"has a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" check goes green, and the service is exactly as
 operationally fragile as before. This skill covers designing the checks,
 the weighting/tiering scheme that combines them into a score or maturity
 level, and the structural choices that make gaming the score harder than
@@ -42,7 +42,7 @@ equivalent.
   ownership/on-call scorecard from scratch in Cortex, OpsLevel, or
   Backstage.
 - Deciding how to combine several individual checks (has an on-call
-  rotation, has a runbook, passes a vulnerability scan, has an SLO
+  rotation, has a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), passes a vulnerability scan, has an SLO
   defined) into one overall score or maturity tier (Bronze/Silver/Gold or
   similar).
 - A scorecard already exists but most services are stuck at the lowest
@@ -50,10 +50,10 @@ equivalent.
   differentiation — either signals a design problem, not a compliance
   problem.
 - Reviewing a scorecard rubric before or after a security or reliability
-  incident to check whether the check that should have caught the gap
+  [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to check whether the check that should have caught the gap
   actually would have (and if not, why the rubric didn't flag it).
 - Investigating a service that shows a high scorecard score but had a
-  preventable incident — deciding whether a check needs to become
+  preventable [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — deciding whether a check needs to become
   stricter or more evidence-based rather than assuming the tooling is
   broken.
 
@@ -64,12 +64,12 @@ equivalent.
   (`opslevel.yml` + Rubric Checks), or Backstage with the
   `@backstage/plugin-tech-insights-backend` fact-retriever/check model —
   see
-  [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md)
+  [no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md)
   for choosing and standing up one of these.
 - Machine-queryable data sources for each check, not just self-reported
   fields: a PagerDuty/Opsgenie API for on-call schedule depth, a
   vulnerability scanner's (Snyk/Trivy/Dependabot) findings API for
-  security checks, an SLO/observability tool's config for latency/error
+  security checks, an SLO/[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tool's config for latency/error
   budgets, and the catalog's own metadata for ownership.
 - Agreement from the stakeholders who own each category (SRE/platform for
   production-readiness, security for posture, engineering leadership for
@@ -83,7 +83,7 @@ equivalent.
 - Familiarity with the org's existing DX/adoption measurement practice,
   since a scorecard is itself a metric subject to the same vanity-metric
   and gaming risks — see
-  [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md).
+  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -106,18 +106,18 @@ equivalent.
 
 2. **Prefer machine-verifiable checks over self-attestation wherever a
    data source exists.** A checkbox a team ticks themselves ("we have a
-   runbook: yes/no") is the single easiest thing to game; a check that
+   [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): yes/no") is the single easiest thing to game; a check that
    queries an actual system is not:
    ```yaml
    # Cortex Scorecard rule — self-attested (weak)
-   - title: Has a runbook
+   - title: Has a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
      expression: "entity.hasMetadataField('has_runbook')"   # team just sets this true
 
    # Cortex Scorecard rule — machine-verified (strong)
-   - title: Has a runbook
-     expression: "entity.hasDocument('runbook') && entity.documents('runbook').last_updated_days_ago() < 180"
+   - title: Has a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+     expression: "entity.hasDocument('[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)') && entity.documents('[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)').last_updated_days_ago() < 180"
    ```
-   The stronger version checks both that a runbook document actually
+   The stronger version checks both that a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) document actually
    exists in the linked docs system *and* that it was updated recently
    enough to be plausibly still accurate — closing the "stub file from
    two years ago" gap the weaker version leaves open.
@@ -209,8 +209,8 @@ equivalent.
    whose score consistently spikes right before a reporting deadline and
    drifts back down after, is a service worth a manual spot-check, not
    necessarily a genuine improvement. Periodically (e.g. quarterly)
-   manually audit a random sample of high-scoring services against the
-   actual practice a check claims to verify (open the linked runbook and
+   manually [audit](../../AI_and_Agents/Operations/audit/SKILL.md) a random sample of high-scoring services against the
+   actual practice a check claims to verify (open the linked [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) and
    read it, not just confirm the link resolves).
 
 8. **Review and version the rubric itself like code**, with an owner per
@@ -219,7 +219,7 @@ equivalent.
    nobody clears or a rubber-stamp everyone clears trivially. Re-baseline
    entry-level requirements to reality on rollout (see the phased
    rollout pattern in
-   [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md)),
+   [no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md)),
    then raise the bar incrementally on a published cadence.
 
 ## Best practices
@@ -236,7 +236,7 @@ equivalent.
   genuinely dangerous gap can't be numerically offset by unrelated easy
   passes.
 - Treat the scorecard itself as an artifact to measure for gaming signal
-  — track score volatility and spot-audit high scorers — rather than
+  — track score volatility and spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) high scorers — rather than
   trusting a green check forever once it's been achieved once.
 - Make category ownership explicit (security owns the security category's
   rules, SRE owns production-readiness) so rule changes go through the
@@ -248,12 +248,12 @@ equivalent.
   rubric where every service instantly fails — an unattainable bar on
   day one teaches teams to ignore the scorecard entirely, the same
   adoption failure covered in
-  [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md).
+  [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
-- **Symptom:** A team's "has a runbook" check goes green the same day a
-  one-line stub file (`# Runbook\nTODO`) is committed, and the check
+- **Symptom:** A team's "has a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" check goes green the same day a
+  one-line stub file (`# [Runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)\nTODO`) is committed, and the check
   never verifies content or freshness again.
   **Fix:** Replace existence-only checks with the machine-verified
   pattern from step 2 (freshness threshold, minimum content signal like a
@@ -270,7 +270,7 @@ equivalent.
   low-weight passes (README, tags, naming convention) to clear the
   threshold anyway. Add both failed checks to `required_rules` for the
   tier the service was awarded, so a critical gap caps the tier
-  regardless of the weighted total, and audit other "Gold" services for
+  regardless of the weighted total, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) other "Gold" services for
   the same blind spot.
 
 - **Symptom:** Scorecard compliance across the org climbs from 40% to 95%
@@ -278,9 +278,9 @@ equivalent.
   down to 60% the following month.
   **Fix:** This spike-and-decay pattern is a strong gaming signal, not a
   genuine improvement — cross-reference with
-  [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md)'s
+  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)'s
   guidance on treating a metric the team started optimizing directly as
-  compromised; spot-audit a sample of the newly-passing services against
+  compromised; spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) a sample of the newly-passing services against
   the actual underlying practice, and consider tracking score volatility
   itself as a dashboard metric so a future spike is visible in real time
   rather than only in hindsight.
@@ -308,9 +308,9 @@ equivalent.
 
 **Scenario:** A platform team is rolling out a Cortex Production
 Readiness scorecard across 80 services. An earlier, informal spreadsheet-
-based audit found: most services have a README, about a third have any
+based [audit](../../AI_and_Agents/Operations/audit/SKILL.md) found: most services have a README, about a third have any
 kind of SLO defined, on-call rotations exist for high-tier services but
-several are single-person, and two services had a runbook stub with no
+several are single-person, and two services had a [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) stub with no
 real content that nobody had opened in over a year.
 
 **Design decisions applied from this skill:**
@@ -318,16 +318,16 @@ real content that nobody had opened in over a year.
    Security Posture (vuln scanning, no aged criticals), Ownership
    (rotation depth, escalation policy) — each mapped to a named risk from
    step 1.
-2. Runbook check upgraded to the machine-verified version from step 2
+2. [Runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) check upgraded to the machine-verified version from step 2
    (existence + freshness), directly closing the stub-file gap the
-   earlier informal audit found.
+   earlier informal [audit](../../AI_and_Agents/Operations/audit/SKILL.md) found.
 3. Weighting applied per step 3: README weight 1, SLO weight 3, automated
    rollback weight 5, no-aged-criticals weight 5.
 4. Tier gating per step 4 — Gold requires both `automated rollback` and
    `no aged criticals` as `required_rules`, not just a high weighted sum.
 5. On-call check upgraded per step 5 to require ≥2 rotation members and
    an escalation policy, directly targeting the single-person-schedule
-   finding from the informal audit.
+   finding from the informal [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 
 **Rollout:** Bronze entry bar set to "README + any on-call schedule at
 all" (what ~90% of services already clear), avoiding the unattainable-
@@ -338,7 +338,7 @@ target, not a launch-day expectation.
 
 **Quarter-two review:** Score volatility tracking (step 7) flags one
 service whose score jumped from 45 to 92 in the ten days before a
-leadership all-hands. A spot-audit finds its "runbook" doc passed the
+leadership all-hands. A spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) finds its "[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" doc passed the
 freshness check because a script had been auto-touching the file's
 timestamp weekly without changing its content — a gaming pattern the
 freshness check alone didn't catch. The check is tightened to also
@@ -347,7 +347,7 @@ audits, closing that specific loophole for the next cycle.
 
 ## Cross-references
 
-- [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md) — standing up Cortex Scorecards or OpsLevel Rubrics as a product decision, and the phased-rollout/re-baselining pattern referenced in step 8 here.
-- [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md) — the general vanity-metric and Goodhart's-law risk a scorecard score is itself subject to, and the paired activity/outcome measurement discipline that also applies to scorecard compliance percentages.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — sequencing a new or tightened scorecard rollout so it doesn't repeat the mandatory-adoption failure modes covered there.
-- [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md) — assigning category ownership (security, SRE, engineering leadership) for scorecard rules as part of the platform team's broader operating model.
+- [no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — standing up Cortex Scorecards or OpsLevel Rubrics as a product decision, and the phased-rollout/re-baselining pattern referenced in step 8 here.
+- [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — the general vanity-metric and Goodhart's-law risk a scorecard score is itself subject to, and the paired activity/outcome measurement discipline that also applies to scorecard compliance percentages.
+- [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — sequencing a new or tightened scorecard rollout so it doesn't repeat the mandatory-adoption failure modes covered there.
+- [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — assigning category ownership (security, SRE, engineering leadership) for scorecard rules as part of the platform team's broader operating model.

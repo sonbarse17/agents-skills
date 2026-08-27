@@ -13,7 +13,7 @@ In standard zero-shot generation: $P(y|"x)$ where $x$ is the prompt and $y$ is t
 In CoT: $P(y"|x, z_1, z_2, ..., z_n)$ where $z_i$ are reasoning steps.
 By generating $z_i$, the attention mechanism shifts probability mass toward logically consistent completions. The presence of structural reasoning markers (e.g., "Therefore", "First") strongly biases the top-k token logits towards coherent, logically sound outputs, effectively acting as an explicit regularizer on the distribution space.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Prompt["Input Prompt"] -->|"Encode()"| Embeddings

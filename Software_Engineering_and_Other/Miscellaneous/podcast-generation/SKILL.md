@@ -29,7 +29,7 @@ AZURE_OPENAI_AUDIO_DEPLOYMENT=gpt-realtime-mini
 
 ### Backend Audio Generation
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from openai import AsyncOpenAI
 import base64
 

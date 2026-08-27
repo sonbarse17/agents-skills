@@ -9,7 +9,7 @@ license: MIT
 A backup is not a file sitting in object storage — it is a promise that you can get data back
 in a specific amount of time, and that promise is worthless until it has been tested. Most
 organizations discover their backup was broken, incomplete, or too slow to restore at the
-exact moment they can least afford to learn it: during an incident.
+exact moment they can least afford to learn it: during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 The backup job succeeding is the least interesting fact about your backup strategy. The
 interesting fact is whether a restore, run cold by someone who did not write the backup
@@ -38,12 +38,12 @@ tool's default interval.
 ## 2. Test restores on a schedule, not just backups
 
 The backup job exercises one code path; the restore exercises a completely different one, and
-it is the one that matters during an incident. A backup that has never been restored has an
+it is the one that matters during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). A backup that has never been restored has an
 unknown, not a known, recovery time.
 
 - **Run a full restore into an isolated environment on a fixed cadence** — monthly is a
   reasonable default — and measure how long it actually takes, not how long you assumed.
-- **Restore the way you would during a real incident** — from the actual backup artifact, by
+- **Restore the way you would during a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)** — from the actual backup artifact, by
   someone who is not the one who configured the job — to catch documentation gaps early.
 - **Track Recovery Time Objective against the measured restore time**, and treat a restore
   that blows past RTO as a finding to fix, not a one-off.
@@ -58,7 +58,7 @@ the same failure — a compromised credential, a misconfigured deletion policy, 
 attack that encrypts primary and backup alike.
 
 - **Replicate backups to a separate account or region** that a single compromised credential
-  cannot reach, following the same boundary discipline as `disaster-recovery`.
+  cannot reach, following the same boundary discipline as `[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)`.
 - **Use object-lock or write-once storage for at least one retention tier**, so that even an
   attacker with delete permissions cannot remove backups inside the immutability window.
 - **Restrict who can modify the immutable copy's retention settings** as tightly as production
@@ -97,18 +97,18 @@ subpoenaed or breached for no benefit.
 **Done when:** every retention tier has an explicit reason — an RPO, a compliance requirement,
 or a cost tradeoff — rather than "we've just always kept it."
 
-## 6. Document the restore procedure as a runbook
+## 6. Document the restore procedure as a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 
-During an actual incident, the person restoring data is often not the one who built the
-backup pipeline, and they are working under time pressure with people watching. A runbook
+During an actual [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), the person restoring data is often not the one who built the
+backup pipeline, and they are working under time pressure with people watching. A [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 turns institutional knowledge into something anyone on-call can execute.
 
 - **Write the exact steps and commands**, including how to select the right restore point,
   not just a link to the backup tool's general documentation.
-- **State the expected duration** so whoever is running the incident can set expectations with
+- **State the expected duration** so whoever is running the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) can set expectations with
   stakeholders instead of guessing.
 
-**Done when:** a restore runbook exists that a different engineer, not its author, has
+**Done when:** a restore [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists that a different engineer, not its author, has
 successfully followed during a drill.
 
 ## Report

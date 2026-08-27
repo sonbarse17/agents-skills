@@ -42,7 +42,7 @@ Pull Request Opened
 │   ↓ pass         │
 │   E2E (optional) │  Playwright/Cypress
 │   ↓ pass         │
-│   SECURITY AUDIT │  npm audit
+│   SECURITY [AUDIT](../../../AI_and_Agents/Operations/audit/SKILL.md) │  npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 │   ↓ pass         │
 │   BUNDLE SIZE    │  bundlesize check
 └─────────────────┘
@@ -53,12 +53,12 @@ Pull Request Opened
 
 **No gate can be skipped.** If lint fails, fix lint — don't disable the rule. If a test fails, fix the code — don't skip the test.
 
-## GitHub Actions Configuration
+## [GitHub](../github/SKILL.md) Actions Configuration
 
 ### Basic CI Pipeline
 
 ```yaml
-# .github/workflows/ci.yml
+# .[github](../github/SKILL.md)/workflows/ci.yml
 name: CI
 
 on:
@@ -93,8 +93,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Security audit
-        run: npm audit --audit-level=high
+      - name: Security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+        run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
 ```
 
 ### With Database Integration Tests
@@ -127,14 +127,14 @@ jobs:
       - name: Run migrations
         run: npx prisma migrate deploy
         env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+          DATABASE_URL: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
       - name: Integration tests
         run: npm run test:integration
         env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+          DATABASE_URL: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
 ```
 
-> **Note:** Even for CI-only test databases, use GitHub Secrets for credentials rather than hardcoding values. This builds good habits and prevents accidental reuse of test credentials in other contexts.
+> **Note:** Even for CI-only test databases, use [GitHub](../github/SKILL.md) Secrets for credentials rather than hardcoding values. This builds good habits and prevents accidental reuse of test credentials in other contexts.
 
 ### E2E Tests
 
@@ -186,7 +186,7 @@ Agent fixes → pushes → CI runs again
 ```
 Lint failure → Agent runs `npm run lint --fix` and commits
 Type error  → Agent reads the error location and fixes the type
-Test failure → Agent follows debugging-and-error-recovery skill
+Test failure → Agent follows [debugging-and-error-recovery](../../../Software_Engineering_and_Other/Patterns/debugging-and-error-recovery/SKILL.md) skill
 Build error → Agent checks config and dependencies
 ```
 
@@ -200,7 +200,7 @@ Every PR gets a preview deployment for manual testing:
 # Deploy preview on PR (Vercel/Netlify/etc.)
 deploy-preview:
   runs-on: ubuntu-latest
-  if: github.event_name == 'pull_request'
+  if: [github](../github/SKILL.md).event_name == 'pull_request'
   steps:
     - uses: actions/checkout@v4
     - name: Deploy preview
@@ -216,7 +216,7 @@ Feature flags decouple deployment from release. Deploy incomplete or risky featu
 - **Canary new features.** Enable for 1% of users, then 10%, then 100%.
 - **Run A/B tests.** Compare behavior with and without the feature.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Simple feature flag pattern
 if (featureFlags.isEnabled('new-checkout-flow', { userId })) {
   return renderNewCheckout();
@@ -274,8 +274,8 @@ jobs:
 .env.example       → Committed (template for developers)
 .env                → NOT committed (local development)
 .env.test           → Committed (test environment, no real secrets)
-CI secrets          → Stored in GitHub Secrets / vault
-Production secrets  → Stored in deployment platform / vault
+CI secrets          → Stored in [GitHub](../github/SKILL.md) Secrets / [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+Production secrets  → Stored in deployment platform / [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 ```
 
 CI should never have production secrets. Use separate secrets for CI testing.
@@ -285,7 +285,7 @@ CI should never have production secrets. Use separate secrets for CI testing.
 ### Dependabot / Renovate
 
 ```yaml
-# .github/dependabot.yml
+# .[github](../github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   - package-ecosystem: npm
@@ -323,7 +323,7 @@ Slow CI pipeline?
 ├── Optimize the test suite
 │   └── Remove slow tests from the critical path, run them on a schedule instead
 └── Use larger runners
-    └── GitHub-hosted larger runners or self-hosted for CPU-heavy builds
+    └── [GitHub](../github/SKILL.md)-hosted larger runners or self-hosted for CPU-heavy builds
 ```
 
 **Example: caching and parallelism**
@@ -381,7 +381,7 @@ jobs:
 
 After setting up or modifying CI:
 
-- [ ] All quality gates are present (lint, types, tests, build, audit)
+- [ ] All quality gates are present (lint, types, tests, build, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
 - [ ] Pipeline runs on every PR and push to main
 - [ ] Failures block merge (branch protection configured)
 - [ ] CI results feed back into the development loop

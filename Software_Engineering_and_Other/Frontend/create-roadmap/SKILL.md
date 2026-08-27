@@ -16,7 +16,7 @@ license: "MIT"
 # Create Roadmap
 
 ## Purpose
-Build strategic product roadmaps that align stakeholder priorities with team capacity. Combines theme-based quarterly planning with RICE prioritization, timeline visualization, and iterative monthly updates.
+Build strategic product roadmaps that align stakeholder priorities with team [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Combines theme-based quarterly planning with RICE prioritization, timeline visualization, and iterative monthly updates.
 
 A good roadmap communicates direction without falsely promising specific dates. It answers two questions the whole organization cares about: what is the team working on and why does it matter? This skill produces a living document organized by strategic themes, prioritized by data (RICE scores), and sized with a 20% buffer for the inevitable unplanned work. The output is audience-ready for stakeholder presentations and simultaneously actionable for engineering sprint planning. The roadmap is reviewed quarterly and updated monthly — daily changes destroy trust.
 
@@ -58,7 +58,7 @@ Data availability?
   |-- Regulatory/compliance driven --> Priority overrides all scoring (must-do)
 ```
 
-### Capacity Planning Decision Tree
+### [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning Decision Tree
 ```
 Team allocation?
   |-- Dedicated team --> Full-time on roadmap items
@@ -69,8 +69,8 @@ Team allocation?
         Coordinate dependencies across swimlanes with explicit sync points
 
 Has team velocity been measured?
-  |-- YES (3+ sprints of data) --> Use average velocity for capacity
-  |-- NO / new team --> Use estimated capacity: (team size * 0.6 * sprint days)
+  |-- YES (3+ sprints of data) --> Use average velocity for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+  |-- NO / new team --> Use estimated [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): (team size * 0.6 * sprint days)
 ```
 
 ## Agent Protocol
@@ -82,23 +82,23 @@ Has team velocity been measured?
 - Product vision and strategy documents (1-2 pages maximum)
 - Market analysis, competitive intelligence, and customer research findings
 - Stakeholder priority list with each item's rationale and expected business impact
-- Team capacity data: sprint velocity for the last 3-6 sprints, team headcount, known leaves
+- Team [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) data: sprint velocity for the last 3-6 sprints, team headcount, known leaves
 - Technical dependencies and architectural constraints
 - Existing sprint commitments and in-flight work
 - Business OKRs and strategic goals
 
 ### Output Artifact
-Roadmap document with strategic themes, timeline view (Now/Next/Later or Q1-Q4), prioritized features with RICE scores, and explicit capacity allocation.
+Roadmap document with strategic themes, timeline view (Now/Next/Later or Q1-Q4), prioritized features with RICE scores, and explicit [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocation.
 
 ### Response Format
 - Theme overview section: 3-5 themes per quarter, each with name, outcome statement, and success metric
 - Timeline section: Now/Next/Later table or Q1-Q4 table with monthly milestones per theme swimlane
 - Feature list with RICE scores: feature name, Reach, Impact, Confidence, Effort, RICE value, MoSCoW category
-- Capacity allocation: feature work %, tech debt %, unplanned buffer % — summing to 100%
+- [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocation: feature work %, tech debt %, unplanned buffer % — summing to 100%
 - No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
-Roadmap covers 2-4 consecutive quarters. At least 3 strategic themes defined per quarter. Features listed with RICE scores and assigned to a theme and timeframe. Capacity allocation sums to 100%. Format suitable for stakeholder presentation.
+Roadmap covers 2-4 consecutive quarters. At least 3 strategic themes defined per quarter. Features listed with RICE scores and assigned to a theme and timeframe. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocation sums to 100%. Format suitable for stakeholder presentation.
 
 ### Max Response Length
 3000 tokens
@@ -110,7 +110,7 @@ Collect all inputs before placing anything on the timeline:
 - **Product vision**: Where is the product going in the next 12 months? What is the North Star metric?
 - **Market analysis**: What do customers need that competitors do not provide?
 - **Stakeholder wishlist**: Every prioritized request with context — what business problem does each solve and what metric would it move?
-- **Team capacity**: Average sprint velocity over last 3-6 sprints, current headcount, known leaves, historical throughput
+- **Team [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)**: Average sprint velocity over last 3-6 sprints, current headcount, known leaves, historical throughput
 - **Technical constraints**: Infrastructure work, migrations, or upgrades that block feature delivery
 - **Existing commitments**: What is already in flight and must continue?
 - **OKRs**: What strategic goals do the features roll up to?
@@ -147,13 +147,13 @@ Two format options depending on planning horizon certainty.
 - Each theme becomes a swimlane on the timeline
 - Place features under the appropriate theme and time bucket
 - Mark monthly milestones per swimlane
-- Reserve exactly 20% of capacity as an unplanned buffer
+- Reserve exactly 20% of [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) as an unplanned buffer
 
 **Timeline construction rules**:
 - First quarter: detailed, specific, actionable
 - Second quarter: directional, feature-level
 - Third and fourth quarters: theme-level only (rolling wave)
-- No more than one commit per theme per quarter
+- No more than one [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) per theme per quarter
 
 ### Step 4: Prioritize
 Score every feature using RICE before placing it on the timeline.
@@ -172,7 +172,7 @@ Score every feature using RICE before placing it on the timeline.
 **After scoring, apply MoSCoW categories**:
 - **Must have**: Non-negotiable, RICE-independent (regulatory, P0 commitments)
 - **Should have**: High RICE, important for the quarter
-- **Could have**: Medium RICE, nice to include if capacity allows
+- **Could have**: Medium RICE, nice to include if [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allows
 - **Won't have**: Lowest RICE, explicitly out of scope this quarter
 
 ### Step 5: Communicate
@@ -239,8 +239,8 @@ Exact dates on features create false certainty and erode trust when they slip. U
 ### Anti-Pattern 2: No "Won't Have" Section
 Failing to explicitly state what is not being worked on creates the expectation that everything is possible. The "Won't Have" list is essential expectation management.
 
-### Anti-Pattern 3: Ignoring Capacity Planning
-Without capacity data (velocity, headcount, leaves), the roadmap is a wish list, not a plan. A roadmap without capacity allocation has zero credibility with engineering teams.
+### Anti-Pattern 3: Ignoring [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
+Without [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) data (velocity, headcount, leaves), the roadmap is a wish list, not a plan. A roadmap without [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocation has zero credibility with engineering teams.
 
 ### Anti-Pattern 4: Zero Buffer for Unplanned Work
 Every team has bugs, incidents, escalations, and support requests. Budgeting zero for unplanned work ensures the roadmap will slip. Minimum 20% buffer is non-negotiable.
@@ -283,7 +283,7 @@ Features keep getting pushed to the next quarter without explanation. Track defe
 2. {Theme 2}: {outcome} [{effort estimate}]
 3. {Theme 3}: {outcome} [{effort estimate}]
 
-## Capacity
+## [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Feature work: {n}%
 - Tech debt: {n}%
 - Buffer: {n}%
@@ -301,8 +301,8 @@ Features keep getting pushed to the next quarter without explanation. Track defe
 | RICE score correlation | High-RICE features deliver > expected impact | Post-launch measurement |
 | Deferred feature rate | < 20% of features pushed more than 1 quarter | Track across quarters |
 | Stakeholder satisfaction | > 80% feel roadmap reflects their priorities | Quarterly survey |
-| Monthly update compliance | 100% of months have status report | Calendar audit |
-| Buffer utilization | Actual buffer usage 15-25% | Capacity tracking |
+| Monthly update compliance | 100% of months have status report | Calendar [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Buffer utilization | Actual buffer usage 15-25% | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) tracking |
 
 ## Models
 
@@ -315,7 +315,7 @@ Confidence  = Percentage (0-100%) — how confident in Reach and Impact estimate
 Effort      = Engineering person-days — total cost to deliver
 ```
 
-### Capacity Allocation Standard
+### [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Allocation Standard
 ```
 Feature work:    60% — New capabilities, improvements, user-facing changes
 Tech debt:       20% — Refactoring, upgrades, performance, security, reliability
@@ -330,7 +330,7 @@ Job Duration = Estimated effort (same as RICE Effort)
 ```
 
 ### MoSCoW Categories
-| Category | Meaning | RICE Range | Capacity |
+| Category | Meaning | RICE Range | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 |----------|---------|------------|----------|
 | Must have | Non-negotiable | Any | 40% |
 | Should have | High value | Top 30% of remaining | 30% |
@@ -368,7 +368,7 @@ Set update cadence proportional to team size. Oversized teams updating weekly wa
 ### Presentation Tools
 - **Google Slides / PowerPoint**: For stakeholder presentations
 - **Miro / Mural**: Collaborative roadmap workshops
-- **GitHub Projects**: Developer-friendly roadmap in-platform
+- **[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Projects**: Developer-friendly roadmap in-platform
 
 ### Adjacent Frameworks
 - **OKRs**: Align roadmap themes with quarterly objectives
@@ -377,7 +377,7 @@ Set update cadence proportional to team size. Oversized teams updating weekly wa
 
 ## Rules
 - A roadmap communicates direction, not delivery dates — it answers "what and why" not "exactly when."
-- Reserve 20% buffer for unplanned work — bugs, incidents, urgent escalations always consume capacity.
+- Reserve 20% buffer for unplanned work — bugs, incidents, urgent escalations always consume [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - One strategic theme per swimlane — never mix two themes in the same swimlane.
 - Score every feature with RICE before timeline placement — data defeats recency bias.
 - Update monthly, never daily — daily changes destroy stakeholder trust.
@@ -395,8 +395,8 @@ A roadmap is NOT a project schedule. Do not put exact dates on features. Use qua
 ### 2. No "Won't Have" Section
 Failing to explicitly state what is not being worked on creates the expectation that everything is possible. The "Won't Have" list is essential expectation management.
 
-### 3. Ignoring Capacity Planning
-Without capacity data (velocity, headcount, leaves), the roadmap is a wish list, not a plan. A roadmap without capacity allocation has zero credibility with engineering teams.
+### 3. Ignoring [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
+Without [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) data (velocity, headcount, leaves), the roadmap is a wish list, not a plan. A roadmap without [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocation has zero credibility with engineering teams.
 
 ### 4. Zero Buffer for Unplanned Work
 Every team has bugs, incidents, escalations, and support requests. Budgeting zero for unplanned work ensures the roadmap will slip. Minimum 20% buffer is non-negotiable.
@@ -419,10 +419,10 @@ If every theme is "improve performance" or "fix bugs," the product is not evolvi
 | Theme-based | 6-12 months | Strategic themes | Product-led orgs |
 
 ## Related Skills
-- **create-story**: Decompose roadmap features into individual user stories for sprint planning
-- **create-tech-spec**: Write technical specifications for complex or high-risk roadmap features
+- **[create-story](../../../Product_and_Business/create-story/SKILL.md)**: Decompose roadmap features into individual user stories for sprint planning
+- **[create-tech-spec](../../../Product_and_Business/create-tech-spec/SKILL.md)**: Write technical specifications for complex or high-risk roadmap features
 - **market-analysis**: Inform roadmap themes with market data and competitive intelligence
-- **create-prd**: Write detailed product requirement documents for major roadmap initiatives
+- **[create-prd](../../../Product_and_Business/create-prd/SKILL.md)**: Write detailed product requirement documents for major roadmap initiatives
 - **analytics**: Define success metrics for each roadmap theme and track outcomes
 
 ## References
@@ -436,7 +436,7 @@ If every theme is "improve performance" or "fix bugs," the product is not evolvi
 - `../../../Global_References/roadmap-communication-stakeholder.md` — Roadmap Communication & Stakeholder Management
 
 ## Handoff
-create-story, create-tech-spec
+[create-story](../../../Product_and_Business/create-story/SKILL.md), [create-tech-spec](../../../Product_and_Business/create-tech-spec/SKILL.md)
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -489,7 +489,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -503,7 +503,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -519,12 +519,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -533,7 +533,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -541,13 +541,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -556,8 +556,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

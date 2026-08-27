@@ -17,7 +17,7 @@ To call a tool is not merely to execute a function; it is to collapse a wave of 
 
 2. **Defensive Calling (The Principle of Skepticism)**
    The environment is hostile, stochastic, and latent. A tool call must be defensive—assuming latency timeouts, malformed responses, or state changes.
-   *Axiom of Defense*: Validate assumptions prior to actuation. If reading a file, assume it may be locked or absent. Never commit destructive actions without explicit verification of state.
+   *Axiom of Defense*: Validate assumptions prior to actuation. If reading a file, assume it may be locked or absent. Never [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) destructive actions without explicit verification of state.
 
 3. **Error Recovery & Self-Correction (The Resilience Loop)**
    Failure is the default state of complex environments. When a limb fails to grasp an object, the brain does not halt; it recalculates the trajectory. When a tool throws an error, the agent must parse the stack trace, hypothesize the cause, and iterate the call.
@@ -25,7 +25,7 @@ To call a tool is not merely to execute a function; it is to collapse a wave of 
 
 ## II. The Actuation Cycle
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Thought((Cognitive Intent)) -->|Schema Mapping| Validate{Pre-call Validation}

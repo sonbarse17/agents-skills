@@ -14,7 +14,7 @@ Systematic threat identification using the STRIDE methodology.
 - Reviewing security design decisions
 - Creating threat documentation
 - Training teams on threat identification
-- Compliance and audit preparation
+- Compliance and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation
 
 ## Core Concepts
 
@@ -38,7 +38,7 @@ E - Elevation of   → Authorization threats
 | ------------------- | ----------------------------------------- | -------------- |
 | **Spoofing**        | Can attacker pretend to be someone else?  | Authentication |
 | **Tampering**       | Can attacker modify data in transit/rest? | Integrity      |
-| **Repudiation**     | Can attacker deny actions?                | Logging/Audit  |
+| **Repudiation**     | Can attacker deny actions?                | Logging/[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)  |
 | **Info Disclosure** | Can attacker access unauthorized data?    | Encryption     |
 | **DoS**             | Can attacker disrupt availability?        | Rate limiting  |
 | **Elevation**       | Can attacker gain higher privileges?      | Authorization  |

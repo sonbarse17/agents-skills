@@ -8,7 +8,7 @@ metadata:
   package: '@azure-rest/ai-content-safety'
 ---
 
-# Azure AI Content Safety REST SDK for TypeScript
+# Azure AI Content Safety REST SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Analyze text and images for harmful content with customizable blocklists.
 
@@ -32,7 +32,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### API Key
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ContentSafetyClient from "@azure-rest/ai-content-safety";
 import { AzureKeyCredential } from "@azure/core-auth";
 
@@ -44,7 +44,7 @@ const client = ContentSafetyClient(
 
 ### DefaultAzureCredential
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ContentSafetyClient from "@azure-rest/ai-content-safety";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -62,7 +62,7 @@ const client = ContentSafetyClient(
 
 ## Analyze Text
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ContentSafetyClient, { isUnexpected } from "@azure-rest/ai-content-safety";
 
 const result = await client.path("/text:analyze").post({
@@ -86,7 +86,7 @@ for (const analysis of result.body.categoriesAnalysis) {
 
 ### Base64 Content
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { readFileSync } from "node:fs";
 
 const imageBuffer = readFileSync("./image.png");
@@ -109,7 +109,7 @@ for (const analysis of result.body.categoriesAnalysis) {
 
 ### Blob URL
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const result = await client.path("/image:analyze").post({
   body: {
     image: { blobUrl: "https://storage.blob.core.windows.net/container/image.png" }
@@ -121,7 +121,7 @@ const result = await client.path("/image:analyze").post({
 
 ### Create Blocklist
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const result = await client
   .path("/text/blocklists/{blocklistName}", "my-blocklist")
   .patch({
@@ -140,7 +140,7 @@ console.log(`Created: ${result.body.blocklistName}`);
 
 ### Add Items to Blocklist
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const result = await client
   .path("/text/blocklists/{blocklistName}:addOrUpdateBlocklistItems", "my-blocklist")
   .post({
@@ -163,7 +163,7 @@ for (const item of result.body.blocklistItems ?? []) {
 
 ### Analyze with Blocklist
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const result = await client.path("/text:analyze").post({
   body: {
     text: "Text that might contain blocked terms",
@@ -186,7 +186,7 @@ if (result.body.blocklistsMatch) {
 
 ### List Blocklists
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const result = await client.path("/text/blocklists").get();
 
 if (isUnexpected(result)) {
@@ -200,7 +200,7 @@ for (const blocklist of result.body.value ?? []) {
 
 ### Delete Blocklist
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await client.path("/text/blocklists/{blocklistName}", "my-blocklist").delete();
 ```
 
@@ -228,7 +228,7 @@ await client.path("/text/blocklists/{blocklistName}", "my-blocklist").delete();
 
 ## Content Moderation Helper
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ContentSafetyClient, { 
   isUnexpected, 
   TextCategoriesAnalysisOutput 
@@ -290,7 +290,7 @@ async function moderateContent(
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ContentSafetyClient, {
   isUnexpected,
   AnalyzeTextParameters,
@@ -307,5 +307,5 @@ import ContentSafetyClient, {
 1. **Always use isUnexpected()** - Type guard for error handling
 2. **Set appropriate thresholds** - Different categories may need different severity thresholds
 3. **Use blocklists for domain-specific terms** - Supplement AI detection with custom rules
-4. **Log moderation decisions** - Keep audit trail for compliance
+4. **Log moderation decisions** - Keep [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance
 5. **Handle edge cases** - Empty text, very long text, unsupported image formats

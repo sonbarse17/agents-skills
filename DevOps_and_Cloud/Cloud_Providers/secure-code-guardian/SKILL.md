@@ -66,7 +66,7 @@ Load detailed guidance based on context:
 
 ### Password Hashing (bcrypt)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import bcrypt from 'bcrypt';
 
 const SALT_ROUNDS = 12; // minimum 10; 12 balances security and performance
@@ -82,7 +82,7 @@ export async function verifyPassword(plaintext: string, hash: string): Promise<b
 
 ### Parameterized SQL Query (Node.js / pg)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // NEVER: `SELECT * FROM users WHERE email = '${email}'`
 // ALWAYS: use positional parameters
 import { Pool } from 'pg';
@@ -99,7 +99,7 @@ export async function getUserByEmail(email: string) {
 
 ### Input Validation with Zod
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { z } from 'zod';
 
 const LoginSchema = z.object({
@@ -119,7 +119,7 @@ export function validateLoginInput(raw: unknown) {
 
 ### JWT Validation
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET!; // never hardcode
@@ -138,7 +138,7 @@ export function verifyToken(token: string): jwt.JwtPayload {
 
 ### Securing an Endpoint — Full Flow
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
@@ -190,5 +190,5 @@ When implementing security features, provide:
 
 OWASP Top 10, bcrypt/argon2, JWT, OAuth 2.0, OIDC, CSP, CORS, rate limiting, input validation, output encoding, encryption (AES, RSA), TLS, security headers
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/security/secure-code-guardian/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/security/secure-code-guardian/)
 

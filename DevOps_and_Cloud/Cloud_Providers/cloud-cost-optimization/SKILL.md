@@ -26,8 +26,8 @@ Comprehensive description of cloud cost optimization.
 1. Maximize spot instance usage.
 2. Track unit economics meticulously.
 3. Automate scale-down.
-4. Reserve capacity efficiently.
-5. Multi-cloud arbitrage.
+4. Reserve [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) efficiently.
+5. [Multi-cloud](../multi-cloud/SKILL.md) arbitrage.
 
 ## Agent Protocol
 - Triggers: High AWS bill.

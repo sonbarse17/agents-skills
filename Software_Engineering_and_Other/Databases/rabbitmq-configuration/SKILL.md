@@ -26,7 +26,7 @@ quorum/mirroring strategy all produce problems that are hard to retrofit
 once producers and consumers are already built against the topology.
 This skill covers designing that topology and cluster deliberately —
 validating it before production rollout is covered separately in
-[rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md).
+[rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../../Miscellaneous/rabbitmq-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -95,7 +95,7 @@ validating it before production rollout is covered separately in
 3. **Publish messages as persistent for anything that must survive a
    broker restart**, since queue durability and message persistence are
    separate settings:
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    channel.basic_publish(
        exchange="orders.topic",
        routing_key="orders.created.us-east",
@@ -163,7 +163,7 @@ validating it before production rollout is covered separately in
    the whole broker over the watermark and block publishing for every
    other queue on the same node, which is a strong argument for also
    setting per-queue length limits (see
-   [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md)).
+   [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../../Miscellaneous/rabbitmq-configuration-validation/SKILL.md)/SKILL.md)).
 
 ## Best practices
 
@@ -214,11 +214,11 @@ validating it before production rollout is covered separately in
   blocks publishers broker-wide (or per-node), not per-queue, once a
   watermark trips. Set a per-queue `x-max-length` or `x-max-length-bytes`
   limit (with an appropriate overflow behavior — see
-  [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md))
+  [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../../Miscellaneous/rabbitmq-configuration-validation/SKILL.md)/SKILL.md))
   so one queue's backlog can't consume unbounded broker memory/disk in
   the first place, in addition to fixing the underlying consumer issue
   (see
-  [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)).
+  [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../../Miscellaneous/rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md)).
 
 - **Symptom:** Two unrelated teams' applications, sharing a single
   default vhost, start colliding — one team's queue-purge maintenance
@@ -267,7 +267,7 @@ rabbitmqadmin -V orders-service declare binding \
 ```
 
 Publisher (persistent messages, routed by region):
-```python
+```[python](../../Languages/python/SKILL.md)
 channel.basic_publish(
     exchange="orders.topic",
     routing_key="orders.created.us-east",
@@ -285,6 +285,6 @@ credentials even if they were somehow leaked.
 
 ## Cross-references
 
-- [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md) — validating this topology's durability, mirroring/quorum settings before production use.
-- [rabbitmq-queue-and-dead-letter-troubleshooting](../rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md) — diagnosing message pileup and poison-message issues that arise once this topology is running in production.
-- [nats-and-pulsar-lightweight-messaging-configuration](../nats-and-pulsar-lightweight-messaging-configuration/SKILL.md) — a lighter-weight alternative worth considering before committing to a full RabbitMQ cluster for simpler routing needs.
+- [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../../Miscellaneous/rabbitmq-configuration-validation/SKILL.md)/SKILL.md) — validating this topology's durability, mirroring/quorum settings before production use.
+- [rabbitmq-queue-and-dead-letter-troubleshooting](../[rabbitmq-queue-and-dead-letter-troubleshooting](../../Miscellaneous/rabbitmq-queue-and-dead-letter-troubleshooting/SKILL.md)/SKILL.md) — diagnosing message pileup and poison-message issues that arise once this topology is running in production.
+- [nats-and-pulsar-lightweight-messaging-configuration](../[nats-and-pulsar-lightweight-messaging-configuration](../../Miscellaneous/nats-and-pulsar-lightweight-messaging-configuration/SKILL.md)/SKILL.md) — a lighter-weight alternative worth considering before committing to a full RabbitMQ cluster for simpler routing needs.

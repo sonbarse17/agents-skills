@@ -383,15 +383,15 @@ optimization_checklist:
 
 #### Pricing Accuracy Review
 - Daily: Automated price verification between cart service and product catalog. Flag discrepancies.
-- Weekly: Manual audit of discount application for N sampled orders. Verify correct discount logic.
-- Monthly: Tax calculation audit. Verify correct rates applied per jurisdiction. Update rate changes.
-- Quarterly: Full pricing and promotion audit. Validate all active promotions apply correctly.
+- Weekly: Manual [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of discount application for N sampled orders. Verify correct discount logic.
+- Monthly: Tax calculation [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Verify correct rates applied per jurisdiction. Update rate changes.
+- Quarterly: Full pricing and promotion [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Validate all active promotions apply correctly.
 
-#### Order Audit Trail
+#### Order [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Trail
 - Every order state transition logged with timestamp, actor, and reason
 - Cart modifications logged: item adds, quantity changes, price overrides, coupon applications
 - Price recalculations logged: original vs. recalculated values, trigger reason
-- Tax and shipping calculations recorded in order history for audit and dispute resolution
+- Tax and shipping calculations recorded in order history for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and dispute resolution
 
 #### Abandoned Cart Compliance
 - GDPR: Cart data retained for max 30 days after abandonment. User can request cart data deletion.
@@ -424,7 +424,7 @@ Practice 3: Reserve inventory at checkout entry, not cart add. Early reservation
 
 Practice 4: Use event-driven architecture for order processing. Order created event triggers: payment capture, inventory decrement, fulfillment assignment, notification sending. Decoupled services handle each concern.
 
-Practice 5: Log all price changes with before/after values. Audit trail for price discrepancy investigation. Critical for tax audits and chargeback disputes.
+Practice 5: Log all price changes with before/after values. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail for price discrepancy investigation. Critical for tax audits and chargeback disputes.
 
 Practice 6: Pre-calculate shipping and tax estimates. Show estimated total before checkout entry. Avoid surprise costs at final step. Recalculate after address change.
 
@@ -436,7 +436,7 @@ Practice 8: Implement cart expiry and cleanup. Abandoned carts consume storage. 
 
 ### Pattern: Cart Merge on Login (Guest to Registered)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function mergeCartsOnLogin(guestToken: string, userId: string): Promise<Cart> {
   const guestCart = await Cart.findOne({ sessionToken: guestToken, status: 'active' });
   const userCart = await Cart.findOne({ userId, status: 'active' });
@@ -470,7 +470,7 @@ async function mergeCartsOnLogin(guestToken: string, userId: string): Promise<Ca
 
 ### Pattern: Discount Engine with Rule Chain
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface DiscountRule {
   type: 'percentage' | 'fixed' | 'bogo' | 'tiered' | 'bundle';
   priority: number;

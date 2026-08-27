@@ -20,7 +20,7 @@ Administer, optimize, and secure MongoDB NoSQL databases in development and prod
 
 ## Prerequisites
 
-- Linux server (Debian/Ubuntu or RHEL-based) or Docker.
+- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).
 - Root or sudo access for package installation.
 - MongoDB 7.x recommended for production (6.x still supported).
 
@@ -268,10 +268,10 @@ mongorestore --uri="mongodb://admin:secret@localhost:27017" \
 mongorestore --uri="mongodb://admin:secret@localhost:27017" --gzip /backups/gz_2025-01-15/
 ```
 
-## Docker Compose Setup
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Setup
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.9"
 
 services:
@@ -350,13 +350,13 @@ volumes:
 openssl rand -base64 756 > mongo-keyfile
 chmod 400 mongo-keyfile
 
-docker compose up -d
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 
 # Connect
 mongosh "mongodb://admin:secret@127.0.0.1:27017/?replicaSet=rs0&authSource=admin"
 ```
 
-## Monitoring Queries
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
 
 ```javascript
 // Server status summary
@@ -416,5 +416,5 @@ operationProfiling:
 ## Related Skills
 
 - [redis](../redis/) - Caching layer in front of MongoDB
-- [database-backups](../database-backups/) - Automated backup strategies
-- [postgresql](../postgresql/) - Alternative relational database
+- [database-backups](../[database-backups](../../Databases/database-backups/SKILL.md)/) - Automated backup strategies
+- [postgresql](../[postgresql](../postgresql/SKILL.md)/) - Alternative relational database

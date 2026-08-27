@@ -4,7 +4,7 @@ description: Covers instrumenting and collecting numeric time-series data — th
 license: MIT
 ---
 
-# Metrics and Monitoring
+# Metrics and [Monitoring](../monitoring/SKILL.md)
 
 A metric is a compressed, aggregatable summary of something that happened many times — it deliberately throws away per-event detail to stay cheap at scale. That trade only works if you pick the right shape (counter, gauge, histogram) and keep the label set small; get either wrong and you've built either a metric that can't answer the question or a metrics backend that falls over under its own cardinality.
 
@@ -42,7 +42,7 @@ Cardinality is the number of unique label-value combinations a metric can produc
 
 ## 3. Apply RED and USE without re-deriving them each time
 
-For every request-driven service, expose Rate, Errors, and Duration, broken down by the dimensions that matter for debugging (endpoint, status class) and no further. For every finite resource — connection pool, disk, thread pool, downstream dependency — expose Utilization, Saturation, and Errors. These two checklists cover the overwhelming majority of "why is it slow / why is it failing" investigations, and applying them mechanically to every new service is far more reliable than inventing bespoke metrics under incident pressure.
+For every request-driven service, expose Rate, Errors, and Duration, broken down by the dimensions that matter for debugging (endpoint, status class) and no further. For every finite resource — connection pool, disk, thread pool, downstream dependency — expose Utilization, Saturation, and Errors. These two checklists cover the overwhelming majority of "why is it slow / why is it failing" investigations, and applying them mechanically to every new service is far more reliable than inventing bespoke metrics under [incident](../incident/SKILL.md) pressure.
 
 - **Rate** as a counter of requests, divided by time in a query, not sampled as a gauge.
 - **Errors** as a counter partitioned by status class, so error rate is a ratio of two counters, not a raw count.
@@ -68,21 +68,21 @@ The alert here reads the same pre-computed series the dashboard reads, so there'
 
 ## 5. Choose pull vs push by who knows the service is alive
 
-Pull-based collection (the scraper asks the service for its current metrics) is the default for anything long-running: it makes "is this target even reachable" itself a signal, and it puts the collector in control of load. Push-based collection (the service sends metrics to a gateway) is for things that don't live long enough to be scraped — batch jobs, cron jobs, serverless functions — where there's no stable target to poll before the process exits.
+Pull-based collection (the scraper asks the service for its current metrics) is the default for anything long-running: it makes "is this target even reachable" itself a signal, and it puts the collector in control of load. Push-based collection (the service sends metrics to a gateway) is for things that don't live long enough to be scraped — batch jobs, cron jobs, [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) functions — where there's no stable target to poll before the process exits.
 
 - **Pull for anything long-running**, since scrape failure is itself a usable signal that something's wrong.
 - **Push for anything short-lived**, since it will finish and exit before a scraper would ever reach it.
-- **Picking pull for a short-lived job** just means silently missing its last few seconds of metrics; see `scheduled-jobs` for job-shaped workloads specifically.
+- **Picking pull for a short-lived job** just means silently missing its last few seconds of metrics; see `[scheduled-jobs](../../../Software_Engineering_and_Other/Patterns/scheduled-jobs/SKILL.md)` for job-shaped workloads specifically.
 
 **Done when:** every workload's collection method matches its lifecycle, not just the team's default.
 
-## 6. Separate "monitoring is broken" from "the service is broken"
+## 6. Separate "[monitoring](../monitoring/SKILL.md) is broken" from "the service is broken"
 
-A metrics pipeline that silently drops data during the exact outage you needed it for is worse than no metrics — it gives false confidence. Monitor the monitoring: scrape success/failure, ingestion lag, and rule evaluation failures are metrics too.
+A metrics pipeline that silently drops data during the exact outage you needed it for is worse than no metrics — it gives false confidence. Monitor the [monitoring](../monitoring/SKILL.md): scrape success/failure, ingestion lag, and rule evaluation failures are metrics too.
 
 - **Scrape success and target up/down** — a target that's stopped reporting looks identical to "everything's fine" unless you're watching for it directly.
 - **Rule evaluation failures and ingestion lag** — a delayed pipeline delays every downstream alert with it.
-- **Route this meta-monitoring through its own low-noise path**, so a storage backend problem doesn't masquerade as "everything's fine, no alerts fired."
+- **Route this meta-[monitoring](../monitoring/SKILL.md) through its own low-noise path**, so a storage backend problem doesn't masquerade as "everything's fine, no alerts fired."
 
 **Done when:** a failure in the metrics pipeline itself pages someone, distinctly from a service-level alert.
 

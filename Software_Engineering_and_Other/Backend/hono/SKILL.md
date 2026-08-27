@@ -67,16 +67,16 @@ Decision: Edge deployment or ultra-light → Hono. Full ecosystem → Express. P
 |---------|---------|----------|
 | Node.js | `@hono/node-server` | Existing Node ecosystem |
 | Cloudflare Workers | `hono` (native) | Edge compute, D1, KV |
-| Bun | `hono` (native) | Fast startup, TypeScript native |
+| Bun | `hono` (native) | Fast startup, [TypeScript](../../Frontend/typescript/SKILL.md) native |
 | Deno | `hono` (npm/JSR) | Deno Deploy, permissions |
-| Vercel | `@hono/vercel` | Serverless, Next.js BFF |
-| AWS Lambda | `@hono/aws-lambda` | Lambda + API Gateway |
+| Vercel | `@hono/vercel` | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), Next.js BFF |
+| AWS Lambda | `@hono/[aws-lambda](../../../DevOps_and_Cloud/Cloud_Providers/aws-lambda/SKILL.md)` | Lambda + API Gateway |
 
 ## Workflow
 
 ### Step 1: Project Bootstrap
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/index.ts (Node.js)
 import { serve } from '@hono/node-server';
 import { createApp } from './app';
@@ -117,7 +117,7 @@ export function createApp() {
 
 ### Step 2: Module Routes with Zod Validation
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/modules/users/index.ts
 import { Hono } from 'hono';
 import { z } from 'zod';
@@ -165,7 +165,7 @@ export const userModule = new Hono()
 
 ### Step 3: Auth Middleware (JWT)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/middleware/auth.ts
 import { Hono, Context, Next } from 'hono';
 import { getCookie } from 'hono/cookie';
@@ -206,7 +206,7 @@ app.get('/api/v1/admin/users', authMiddleware, async (c) => {
 
 ### Step 4: Error Handler
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/middleware/error-handler.ts
 import { Context, ErrorHandler } from 'hono';
 import { HTTPException } from 'hono/http-exception';
@@ -242,7 +242,7 @@ export const errorHandler: ErrorHandler = (err: Error, c: Context) => {
 
 ### Step 5: RPC Client
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/client.ts (frontend or BFF)
 import { hc } from 'hono/client';
 import type { AppType } from '../server/app';
@@ -271,7 +271,7 @@ export type AppType = typeof app;
 
 ### Step 6: Static File Serving
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { serveStatic } from '@hono/node-server/serve-static';
 
 // Production static file serving
@@ -285,8 +285,8 @@ app.use('/static/*', serveStatic({ root: './public' }));
 
 ### Pattern: Scoped Middleware Group
 
-```typescript
-// Admin routes with auth + audit middleware
+```[typescript](../../Frontend/typescript/SKILL.md)
+// Admin routes with auth + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) middleware
 const admin = new Hono()
   .use('*', authMiddleware)
   .use('*', auditMiddleware)
@@ -305,7 +305,7 @@ app.route('/api/admin', admin);
 
 ### Pattern: Bearer Auth Helper
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { bearerAuth } from 'hono/bearer-auth';
 
 const token = process.env.API_TOKEN!;
@@ -316,7 +316,7 @@ app.use('/api/admin/*', bearerAuth({ token }));
 
 ### Edge Deployment (Cloudflare Workers)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/worker.ts
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -363,7 +363,7 @@ export default app;
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { Hono } from 'hono';
 import { test, describe, expect } from 'vitest';
 
@@ -436,7 +436,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -444,7 +444,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -474,7 +474,7 @@ class ConfigBuilder {
 
 ### Pattern: Hono Middleware Chain
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { Hono, MiddlewareHandler } from 'hono';
 import { getCookie, setCookie } from 'hono/cookie';
 import { cors } from 'hono/cors';
@@ -497,7 +497,7 @@ app.use('*', logger);
 
 ### Pattern: Validation with Zod
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 
@@ -578,12 +578,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -592,7 +592,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -600,12 +600,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets

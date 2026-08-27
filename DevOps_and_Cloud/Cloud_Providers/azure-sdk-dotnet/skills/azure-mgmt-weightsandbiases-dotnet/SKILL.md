@@ -304,9 +304,9 @@ catch (RequestFailedException ex)
 
 ## Integration with W&B SDK
 
-After creating the Azure resource, use the W&B Python SDK for experiment tracking:
+After creating the Azure resource, use the W&B [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK for experiment tracking:
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Install: pip install wandb
 import wandb
 
@@ -337,4 +337,4 @@ run.finish()
 | NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.WeightsAndBiases |
 | W&B Documentation | https://docs.wandb.ai/ |
 | Azure Marketplace | https://azuremarketplace.microsoft.com/marketplace/apps/wandb.wandb-pay-as-you-go |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/weightsandbiases |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/weightsandbiases |

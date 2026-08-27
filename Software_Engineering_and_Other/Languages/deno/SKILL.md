@@ -16,12 +16,12 @@ tags: [backend, deno, phase-10]
 # Deno
 
 ## Purpose
-Build secure-by-default TypeScript applications with Deno runtime — permissions model, module system, standard library, Fresh framework, and deployment.
+Build secure-by-default [TypeScript](../../Frontend/typescript/SKILL.md) applications with Deno runtime — permissions model, module system, standard library, Fresh framework, and deployment.
 
 ## Agent Protocol
 
 ### Trigger
-User request includes: `Deno`, `deno deploy`, `deno fresh`, `deno std`, `deno run`, `deno compile`, `deno test`, `deno fmt`, `deno lint`, `deno task`, `deno.json`, `import_map.json`, `TypeScript runtime`, `Fresh framework`, `deno.land`.
+User request includes: `Deno`, `deno deploy`, `deno fresh`, `deno std`, `deno run`, `deno compile`, `deno test`, `deno fmt`, `deno lint`, `deno task`, `deno.json`, `import_map.json`, `[TypeScript](../../Frontend/typescript/SKILL.md) runtime`, `Fresh framework`, `deno.land`.
 
 ### Input Context
 - Runtime (Deno, Deno Deploy, self-hosted)
@@ -39,7 +39,7 @@ Produce artifact directly. No preamble, no postamble, no explanations. No filler
 - Deno.json config with tasks, lint, fmt, permissions
 - Import map or deno.json imports configured
 - Fresh project structure with routes and islands
-- Deno Deploy or Docker deployment config
+- Deno Deploy or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) deployment config
 
 ### Max Response Length
 4096 tokens
@@ -50,22 +50,22 @@ Produce artifact directly. No preamble, no postamble, no explanations. No filler
 
 | Criterion | Fresh | Oak | Hono | Bare (std/http) |
 |-----------|-------|-----|------|-----------------|
-| SSR + Islands | Yes (Preact) | No | No | No |
+| SSR + Islands | Yes ([Preact](../../Frontend/preact/SKILL.md)) | No | No | No |
 | REST API | Heavy (file-based) | Best | Best | Minimal |
 | Edge deployment | Deno Deploy native | Compatible | Compatible | Compatible |
 | Middleware model | Route-level | Context pipeline | Express-like | Manual |
 | Type safety | Partial | Generic params | Full (TypeBox/Zod) | Manual |
 | npm compat | Via JSR | Via JSR | Built-in | Via JSR |
 
-Decision: `routes/` file-based routing → Fresh. REST API w/ middleware → Oak. TypeScript-first w/ validation → Hono. Minimal/single-purpose → std/http.
+Decision: `routes/` file-based routing → Fresh. REST API w/ middleware → Oak. [TypeScript](../../Frontend/typescript/SKILL.md)-first w/ validation → Hono. Minimal/single-purpose → std/http.
 
 ### Module Import Strategy: deno.land/x vs JSR vs npm
 
 | Source | Pros | Cons | Best For |
 |--------|------|------|----------|
 | deno.land/x | Native Deno, no conversion | Slower resolution, no semver enforcement | Std lib, Oak, Djwt |
-| JSR | Fast resolution, semver, TypeScript native | Smaller registry | Published modules with TS types |
-| npm | Largest ecosystem | CJS/ESM conversion overhead, perf cost | Browser compat packages (React, Preact) |
+| JSR | Fast resolution, semver, [TypeScript](../../Frontend/typescript/SKILL.md) native | Smaller registry | Published modules with TS types |
+| npm | Largest ecosystem | CJS/ESM conversion overhead, perf cost | Browser compat packages (React, [Preact](../../Frontend/preact/SKILL.md)) |
 
 Decision: Std lib → deno.land/x. New TS-first modules → JSR. Only use npm for packages unavailable on JSR/deno.land/x.
 
@@ -126,7 +126,7 @@ Never use `-A` in production. Group permissions in deno.json tasks. Use `--deny-
 
 ### Step 2: Oak REST API Setup
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/main.ts
 import { Application, Router } from 'oak/mod.ts';
 import { oakCors } from 'https://deno.land/x/cors@v1.2.2/mod.ts';
@@ -156,7 +156,7 @@ logger.info(`Server running on http://localhost:${port}`);
 await app.listen({ port });
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/routes/users.ts
 import { Router } from 'oak/mod.ts';
 import { userController } from '../controllers/user.controller.ts';
@@ -172,7 +172,7 @@ router.delete('/:id', userController.remove);
 export { router };
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/middleware/error-handler.ts
 import { Context, isHttpError, Status } from 'oak/mod.ts';
 import { logger } from 'std/log/mod.ts';
@@ -201,7 +201,7 @@ export async function errorHandler(ctx: Context, next: () => Promise<unknown>) {
 
 ### Step 3: Hono REST API Pattern (Alternative)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/main.ts
 import { Hono } from 'hono/mod.ts';
 import { cors } from 'hono/cors.ts';
@@ -277,7 +277,7 @@ my-app/
   dev.ts                        # Dev server entry
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // routes/api/users.ts
 import { Handlers } from '$fresh/server.ts';
 import { db } from '../../db/kv.ts';
@@ -302,10 +302,10 @@ export const handler: Handlers = {
 };
 ```
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // islands/SearchBar.tsx
 import { IS_BROWSER } from '$fresh/runtime.ts';
-import { useState } from 'preact/hooks';
+import { useState } from '[preact](../../Frontend/preact/SKILL.md)/hooks';
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
@@ -335,7 +335,7 @@ export default function SearchBar() {
 
 ### Step 5: Deno KV for State
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // db/kv.ts
 const kv = await Deno.openKv();
 
@@ -362,7 +362,7 @@ export async function listUsers() {
 
 ### Step 6: Testing Patterns
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // tests/app_test.ts
 import { assertEquals, assertExists } from 'std/testing/asserts.ts';
 import { createApp } from '../src/app.ts';
@@ -422,7 +422,7 @@ env:
 
 ### Pattern: Typed State with Oak Context
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface AppState {
   userId: string;
   role: string;
@@ -449,7 +449,7 @@ async function listOrders(ctx: RouterContext<'/', AppState>) {
 
 ### Pattern: Composable Middleware
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/middleware/compose.ts
 type Middleware = (ctx: Context, next: () => Promise<unknown>) => Promise<unknown>;
 
@@ -469,7 +469,7 @@ export function compose(...middleware: Middleware[]): Middleware {
 
 ### Pattern: Structured Logger
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/shared/logger.ts
 import { getLogger, setup } from 'std/log/mod.ts';
 
@@ -496,16 +496,16 @@ export const logger = getLogger();
 ## Production Considerations
 
 ### Permission Hardening
-- Audit permissions with `deno info --json` to list all used URLs and files
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) permissions with `deno info --json` to list all used URLs and files
 - Use `--deny-env=AWS_SECRET_KEY` to block specific dangerous env access
-- In Docker, run as non-root user: `USER deno` after copy
+- In [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), run as non-root user: `USER deno` after copy
 - For Fresh, only require `--allow-net --allow-read --allow-env`
 
 ### Module Pinning and Integrity
 - Pin versions in deno.json imports: use `@v1.2.3` not `@latest`
 - Add integrity checks via `--check=all` in CI
 - Run `deno cache --lock=lock.json --lock-write` to generate lockfile
-- Commit lock.json and verify in CI with `deno cache --lock=lock.json`
+- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock.json and verify in CI with `deno cache --lock=lock.json`
 
 ### Performance Tuning
 - Use `std/http` for max throughput (no framework overhead)
@@ -546,7 +546,7 @@ export const logger = getLogger();
 ## Testing Strategies
 
 ### Unit Tests
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 Deno.test('user validation - rejects short names', () => {
   const result = validateUser({ name: 'A' });
   assertEquals(result.success, false);
@@ -555,7 +555,7 @@ Deno.test('user validation - rejects short names', () => {
 ```
 
 ### Integration Tests with KV
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 Deno.test('CRUD operations against KV', async () => {
   const kv = await Deno.openKv(':memory:');
   try {
@@ -574,10 +574,10 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Always specify minimum permissions with `--allow-*` flags. Never use `-A` in production.
 - Use deno.land/x or JSR imports via deno.json import map. Avoid raw URLs in source files.
 - Standard library (std/) preferred over npm equivalents (std/http, std/log, std/testing).
-- Fresh islands for client-side interactivity. Preact components for server-only rendering.
-- Deno KV for simple state, PostgreSQL driver for complex persistence.
-- deno fmt and deno lint in CI. Check before commit.
-- Compile binaries with `deno compile` for Docker-less deployment.
+- Fresh islands for client-side interactivity. [Preact](../../Frontend/preact/SKILL.md) components for server-only rendering.
+- Deno KV for simple state, [PostgreSQL](../../Backend/postgresql/SKILL.md) driver for complex persistence.
+- deno fmt and deno lint in CI. Check before [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+- Compile binaries with `deno compile` for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-less deployment.
 - All env vars loaded via `std/dotenv` in dev, env vars in production.
 - Generate lockfile: `deno cache --lock=lock.json --lock-write`.
 - Type `AppState` in Application constructor for type-safe context.

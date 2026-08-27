@@ -23,7 +23,7 @@ metadata:
 ## Purpose
 
 Writing and passing consumer/provider contract tests (see
-[pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md))
+[pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md))
 answers "does this provider version satisfy this consumer's contract" in
 isolation — it does not by itself answer the deploy-time question that
 actually matters: "given everything currently deployed in this specific
@@ -57,20 +57,20 @@ verification passed at some point" as sufficient.
 
 - A Pact Broker (or PactFlow) already populated with published consumer
   contracts and provider verification results — see
-  [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)
+  [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md)
   for setting that up; this skill assumes it exists.
 - The Pact CLI (`pact-broker` / `pact` CLI, bundled with most Pact
   language SDKs or installable standalone) available in the CI/CD
   pipeline's deploy stage.
 - A consistent versioning scheme for both consumer and provider
-  deployable artifacts (commit SHA or semantic version) used identically
+  deployable artifacts ([commit](../commit/SKILL.md) SHA or semantic version) used identically
   when publishing contracts, publishing verification results, and
   running `can-i-deploy` — a mismatch in what "version" means at each
   step breaks the whole check.
 - Environment names in the broker that match the pipeline's actual
   environment names (`staging`, `production`) used consistently when
   recording deployments — see
-  [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md).
+  [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -134,7 +134,7 @@ verification passed at some point" as sufficient.
    > if there is a genuine emergency requiring an override, treat it with
    > the same explicit, logged, accountable-approval discipline as any
    > other emergency gate bypass (see
-   > [emergency-hotfix-deployment-procedure](../../../devops/skills/emergency-hotfix-deployment-procedure/SKILL.md)),
+   > [emergency-hotfix-deployment-procedure](../../../devops/skills/[emergency-hotfix-deployment-procedure](../emergency-hotfix-deployment-procedure/SKILL.md)/SKILL.md)),
    > never a silent skip.
    The broker's output names the specific incompatible pact
    (consumer/provider version pair), which should be surfaced directly in
@@ -192,7 +192,7 @@ verification passed at some point" as sufficient.
   **Fix:** Almost always a stale deployment record — the broker thinks
   an old version of the other service is deployed because
   `record-deployment` wasn't called after its last deploy (step 3);
-  audit whether every service's deploy pipeline actually calls
+  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) whether every service's deploy pipeline actually calls
   `record-deployment` on success, not just on the service being checked.
 
 - **Symptom:** A provider team disables Pact verification/`can-i-deploy`
@@ -221,8 +221,8 @@ verification passed at some point" as sufficient.
 
 - **Symptom:** Two services use different version identifiers when
   publishing contracts versus when running `can-i-deploy` (e.g., a
-  semantic version tag in one place and a commit SHA in another).
-  **Fix:** Standardize on one version identifier scheme (commit SHA is
+  semantic version tag in one place and a [commit](../commit/SKILL.md) SHA in another).
+  **Fix:** Standardize on one version identifier scheme ([commit](../commit/SKILL.md) SHA is
   simplest and always unique) and use it consistently across contract
   publish, verification publish, `can-i-deploy`, and
   `record-deployment` calls — a mismatch here makes the broker unable to
@@ -259,17 +259,17 @@ build `f9e8d7`.
    --to-environment production` and gets a failing result, naming the
    specific incompatible contract with `order-service`. The deploy is
    blocked automatically — the breaking change is caught before it ships,
-   not discovered as a production incident.
+   not discovered as a production [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Cross-references
 
-- [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md) —
+- [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md) —
   writing the consumer/provider tests and publishing the contracts and
   verification results that `can-i-deploy` reads.
-- [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md) —
+- [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md) —
   the gated promotion flow `can-i-deploy` plugs into as one more required
   check before a build moves to the next environment.
-- [emergency-hotfix-deployment-procedure](../../../devops/skills/emergency-hotfix-deployment-procedure/SKILL.md) —
+- [emergency-hotfix-deployment-procedure](../../../devops/skills/[emergency-hotfix-deployment-procedure](../emergency-hotfix-deployment-procedure/SKILL.md)/SKILL.md) —
   the only acceptable path for overriding a failed `can-i-deploy` result
   under genuine time pressure, handled explicitly rather than silently
   bypassed.

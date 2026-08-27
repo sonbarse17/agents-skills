@@ -157,7 +157,7 @@ Classify each team into one of four types. Stream-aligned team owns an end-to-en
 
 ### Step 3: Cognitive Load Assessment
 
-Measure each team's cognitive load: intrinsic (inherent domain complexity), extraneous (process overhead, coordination cost), germane (learning and improvement capacity). Target: total cognitive load should not exceed team capacity. If too high, split the value stream or create enabling/platform support. Add germane capacity explicitly — learning time, experimentation, improvement.
+Measure each team's cognitive load: intrinsic (inherent domain complexity), extraneous (process overhead, coordination cost), germane (learning and improvement [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)). Target: total cognitive load should not exceed team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). If too high, split the value stream or create enabling/platform support. Add germane [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) explicitly — learning time, experimentation, improvement.
 
 ### Step 4: Interaction Mode Design
 
@@ -194,8 +194,8 @@ Component teams (teams organized by technical layer) create integration hell. Fe
 | Load Type | Definition | Factors | Target |
 |-----------|------------|---------|--------|
 | Intrinsic | Complexity inherent to domain and tech | Domain complexity, technical complexity | Match team expertise |
-| Extraneous | Process overhead, coordination cost | External dependencies, meetings, deployment complexity | < 30% of team capacity |
-| Germane | Capacity for learning and improvement | Experimentation time, spikes, skill building | Minimum 20% of team capacity |
+| Extraneous | Process overhead, coordination cost | External dependencies, meetings, deployment complexity | < 30% of team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
+| Germane | [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for learning and improvement | Experimentation time, spikes, skill building | Minimum 20% of team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 
 ### Assessment Scale
 | Level | Characteristics | Action |
@@ -211,14 +211,14 @@ Component teams (teams organized by technical layer) create integration hell. Fe
 | Add enabling team | Team lacks skills for current domain | Reduces intrinsic + extraneous |
 | Create platform | Common concerns not standardized | Reduces extraneous load |
 | Simplify interface | High coordination cost between teams | Reduces extraneous load |
-| Increase germane time | No improvement happening | Increases capacity long-term |
+| Increase germane time | No improvement happening | Increases [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) long-term |
 
 ### Conway's Law Common Patterns
 
 | Org Pattern | System Pattern | Good For |
 |-------------|---------------|----------|
 | Single team | Monolith | Startups, simple domains |
-| N stream-aligned teams | N microservices | Large products with clear domain boundaries |
+| N stream-aligned teams | N [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) | Large products with clear domain boundaries |
 | Platform team + stream teams | Platform + services | Shared infrastructure needs |
 | Enabling team + stream teams | Capability building | Skill gaps, new technology adoption |
 
@@ -231,7 +231,7 @@ Teams organized by technical layer (UI, API, DB). Creates integration hell, hand
 Every team interaction is collaboration mode. Creates meeting overload, context switching, and slow decision-making. Fix: push interfaces toward X-as-a-Service. Collaboration should be the exception, not the norm.
 
 ### Pitfall 3: Ignoring Cognitive Load
-Assigning complex domains without assessing team capacity. Fix: assess cognitive load before assigning team type and scope. Split streams if needed.
+Assigning complex domains without assessing team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Fix: assess cognitive load before assigning team type and scope. Split streams if needed.
 
 ### Pitfall 4: Permanent Enabling Teams
 Enabling teams that never disband become bottlenecks and create dependency. Fix: enabling teams always have an exit criterion and a maximum lifespan (3-6 months).
@@ -265,7 +265,7 @@ Adding teams before the product-market fit is validated. Fix: start with stream-
 - Transition must be incremental, not big bang
 - Every team has a clear purpose statement and internal API
 - Use interaction mode decision tree to choose between modes
-- Monitor team cognitive load — extraneous load should never exceed team capacity
+- Monitor team cognitive load — extraneous load should never exceed team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Run squad health checks quarterly
 - Review topology quarterly for needed changes
 
@@ -307,8 +307,8 @@ Adding teams before the product-market fit is validated. Fix: start with stream-
 - External dependencies: {n} teams — {list}
 - Meeting overhead: {n} hours/week
 - Deployment complexity: {low/medium/high} — {evidence}
-### Germane Capacity
-- Learning time: {n} hours/week — {target: > 20% capacity}
+### Germane [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+- Learning time: {n} hours/week — {target: > 20% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)}
 - Experimentation: {n} hours/week
 ### Overall Assessment: {manageable / warning / critical}
 ### Recommended Actions: {list}
@@ -387,14 +387,14 @@ Platform team responsibilities:
 ### Facilitating Mode
 ```
 When: One team helps another build capability in a specific area
-Example: Enabling (SRE) team helps stream-aligned team adopt observability
+Example: Enabling (SRE) team helps stream-aligned team adopt [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 Process:
-  Week 1: Assessment — current state, gaps, skills audit
+  Week 1: Assessment — current state, gaps, skills [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
   Week 2-3: Pairing — SRE pairs with dev team on implementing metrics
   Week 4: Guided — dev team implements independently, SRE reviews
   Week 5: Handoff — dev team owns, SRE available for questions
   Week 6: Graduation — SRE steps away, dev team fully enabled
-Outcome: Stream team can independently maintain observability
+Outcome: Stream team can independently maintain [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 Exit criteria: Team passes capability assessment
 ```
 
@@ -428,7 +428,7 @@ Agenda:
 6. Identify dependencies (30 min) — what interactions remain across teams
 ```
 
-### Interaction Mode Audit
+### Interaction Mode [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 ```
 Quarterly activity:
 1. List all team-to-team interactions
@@ -466,7 +466,7 @@ Quarterly activity:
   - ../../../Global_References/topology-patterns.md — Topology Patterns
 
 ## Handoff
-For OKR alignment with team topology, hand off to management-okr-kpi. For agile process design, hand off to management-agile-scrum-kanban. For hiring to fill team gaps, hand off to management-hiring.
+For OKR alignment with team topology, hand off to [management-okr-kpi](../okr-kpi/SKILL.md). For agile process design, hand off to management-[agile-scrum-kanban](../[agile-scrum](../agile-scrum/SKILL.md)-kanban/SKILL.md). For hiring to fill team gaps, hand off to [management-hiring](../hiring/SKILL.md).
 
 ## Architecture Decision Trees
 
@@ -523,14 +523,14 @@ For OKR alignment with team topology, hand off to management-okr-kpi. For agile 
 
 ### Mode: Collaboration
 - Joint ceremony: Bi-weekly sync
-- Shared artifacts: Architecture decisions, runbooks
+- Shared artifacts: Architecture decisions, [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)
 - Escalation: {escalation path}
 `
 
 ## Production Considerations
 
 ### Team Health
-- **Cognitive load**: Monitor team WIP against capacity. Split team when cognitive load consistently exceeds sustainable pace.
+- **Cognitive load**: Monitor team WIP against [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Split team when cognitive load consistently exceeds sustainable pace.
 - **Team stability**: Limit team membership changes to natural boundaries (sprint end). Avoid mid-sprint re-orgs.
 - **Skill diversity**: Ensure each team has T-shaped members. Pair senior with junior for knowledge transfer.
 
@@ -565,11 +565,11 @@ For OKR alignment with team topology, hand off to management-okr-kpi. For agile 
 
 ### Team Security
 - **Access control**: Implement team-based IAM roles. Follow least-privilege for cross-team access.
-- **Secrets management**: Each team manages its own secrets. No cross-team secret sharing without vault-based access.
+- **Secrets management**: Each team manages its own secrets. No cross-team secret sharing without [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based access.
 - **Security champions**: Designate security champion per team. Champion attends security guild and disseminates practices.
 
 ### Cross-Team Security
 - **API security**: Teams secure their API endpoints independently. Central security team provides tooling and guidelines.
-- **Incident response**: Define team roles in incident response. Each team maintains its own runbook for domain-specific incidents.
+- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: Define team roles in [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response. Each team maintains its own [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for domain-specific incidents.
 - **Secure collaboration**: Use encrypted channels for cross-team security discussions. Limit distribution of vulnerability details to relevant teams.
 

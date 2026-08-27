@@ -3,13 +3,13 @@ name: python-testing-patterns
 description: Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when writing Python tests, setting up test suites, or implementing testing best practices.
 ---
 
-# Python Testing Patterns
+# [Python](../python/SKILL.md) Testing Patterns
 
-Comprehensive guide to implementing robust testing strategies in Python using pytest, fixtures, mocking, parameterization, and test-driven development practices.
+Comprehensive guide to implementing robust testing strategies in [Python](../python/SKILL.md) using pytest, fixtures, mocking, parameterization, and test-driven development practices.
 
 ## When to Use This Skill
 
-- Writing unit tests for Python code
+- Writing unit tests for [Python](../python/SKILL.md) code
 - Setting up test suites and test infrastructure
 - Implementing test-driven development (TDD)
 - Creating integration tests for APIs and services
@@ -49,7 +49,7 @@ Comprehensive guide to implementing robust testing strategies in Python using py
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 # test_example.py
 def add(a, b):
     return a + b
@@ -68,13 +68,13 @@ def test_add_negative():
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/python-testing-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[python](../python/SKILL.md)-testing-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing Best Practices
 
 ### Test Organization
 
-```python
+```[python](../python/SKILL.md)
 # tests/
 #   __init__.py
 #   conftest.py           # Shared fixtures
@@ -92,7 +92,7 @@ Detailed pattern documentation lives in `../../../Global_References/python-testi
 
 A common pattern: `test_<unit>_<scenario>_<expected_outcome>`. Adapt to your team's preferences.
 
-```python
+```[python](../python/SKILL.md)
 # Pattern: test_<unit>_<scenario>_<expected>
 def test_create_user_with_valid_data_returns_user():
     ...
@@ -131,7 +131,7 @@ def test_function():  # Doesn't explain what's tested
 
 Verify that retry logic works correctly using mock side effects.
 
-```python
+```[python](../python/SKILL.md)
 from unittest.mock import Mock
 
 def test_retries_on_transient_error():
@@ -180,7 +180,7 @@ def test_does_not_retry_on_permanent_error():
 
 Use freezegun to control time in tests for predictable time-dependent behavior.
 
-```python
+```[python](../python/SKILL.md)
 from freezegun import freeze_time
 from datetime import datetime, timedelta
 
@@ -215,7 +215,7 @@ def test_with_time_travel():
 
 ### Test Markers
 
-```python
+```[python](../python/SKILL.md)
 # test_markers.py
 import pytest
 
@@ -275,5 +275,5 @@ pytest --cov=myapp --cov-fail-under=80 tests/
 pytest --cov=myapp --cov-report=term-missing tests/
 ```
 
-For advanced patterns (async testing, monkeypatching, property-based testing, database testing, CI/CD integration, and configuration), see [../../../Global_References/python-testing-patterns_advanced-patterns.md](../../../Global_References/python-testing-patterns_advanced-patterns.md)
+For advanced patterns (async testing, monkeypatching, property-based testing, database testing, CI/CD integration, and configuration), see [../../../Global_References/[python](../python/SKILL.md)-testing-patterns_advanced-patterns.md](../../../Global_References/[python](../python/SKILL.md)-testing-patterns_advanced-patterns.md)
 

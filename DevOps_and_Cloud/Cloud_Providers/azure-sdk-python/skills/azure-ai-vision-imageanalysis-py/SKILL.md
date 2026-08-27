@@ -10,14 +10,14 @@ metadata:
   package: azure-ai-vision-imageanalysis
 ---
 
-# Azure AI Vision Image Analysis SDK for Python
+# Azure AI Vision Image Analysis SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure AI Vision 4.0 image analysis including captions, tags, objects, OCR, and more.
 
 ## Installation
 
 ```bash
-pip install azure-ai-vision-imageanalysis
+pip install [azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-vision-imageanalysis
 ```
 
 ## Environment Variables
@@ -32,7 +32,7 @@ VISION_KEY=<your-api-key>  # Only required for the legacy API-key auth path belo
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -41,7 +41,7 @@ VISION_KEY=<your-api-key>  # Only required for the legacy API-key auth path belo
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.vision.imageanalysis import ImageAnalysisClient
@@ -50,7 +50,7 @@ from azure.ai.vision.imageanalysis.models import VisualFeatures
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ImageAnalysisClient(
@@ -67,7 +67,7 @@ with ImageAnalysisClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.vision.imageanalysis import ImageAnalysisClient
@@ -85,7 +85,7 @@ with ImageAnalysisClient(
 
 ## Analyze Image from URL
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.vision.imageanalysis.models import VisualFeatures
 
 image_url = "https://example.com/image.jpg"
@@ -108,7 +108,7 @@ result = client.analyze_from_url(
 
 ## Analyze Image from File
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 with open("image.jpg", "rb") as f:
     image_data = f.read()
 
@@ -120,7 +120,7 @@ result = client.analyze(
 
 ## Image Caption
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.CAPTION],
@@ -134,7 +134,7 @@ if result.caption:
 
 ## Dense Captions (Multiple Regions)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.DENSE_CAPTIONS]
@@ -149,7 +149,7 @@ if result.dense_captions:
 
 ## Tags
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.TAGS]
@@ -162,7 +162,7 @@ if result.tags:
 
 ## Object Detection
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.OBJECTS]
@@ -178,7 +178,7 @@ if result.objects:
 
 ## OCR (Text Extraction)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.READ]
@@ -197,7 +197,7 @@ if result.read:
 
 ## People Detection
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.PEOPLE]
@@ -213,7 +213,7 @@ if result.people:
 
 ## Smart Cropping
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.analyze_from_url(
     image_url=image_url,
     visual_features=[VisualFeatures.SMART_CROPS],
@@ -229,7 +229,7 @@ if result.smart_crops:
 
 ## Async Client
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.vision.imageanalysis.aio import ImageAnalysisClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -260,7 +260,7 @@ async def analyze_image():
 
 ## Error Handling
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.core.exceptions import HttpResponseError
 
 try:
@@ -296,6 +296,6 @@ except HttpResponseError as e:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/azure-ai-vision-imageanalysis-py_capabilities.md](../../../../../Global_References/azure-ai-vision-imageanalysis-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/azure-ai-vision-imageanalysis-py_non-hero-scenarios.md](../../../../../Global_References/azure-ai-vision-imageanalysis-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-vision-imageanalysis-py_capabilities.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-vision-imageanalysis-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-vision-imageanalysis-py_non-hero-scenarios.md](../../../../../Global_References/[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-vision-imageanalysis-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

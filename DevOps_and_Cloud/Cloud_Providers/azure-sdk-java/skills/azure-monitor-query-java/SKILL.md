@@ -17,7 +17,7 @@ metadata:
 > - `azure-monitor-query-logs` — For Log Analytics queries
 > - `azure-monitor-query-metrics` — For metrics queries
 >
-> See migration guides: [Logs Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-logs/migration-guide.md) | [Metrics Migration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-metrics/migration-guide.md)
+> See migration guides: [Logs Migration](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-logs/migration-guide.md) | [Metrics Migration](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query-metrics/migration-guide.md)
 
 Client library for querying Azure Monitor Logs and Metrics.
 
@@ -426,8 +426,8 @@ try {
 | Resource | URL |
 |----------|-----|
 | Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-query |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-query |
+| [GitHub](../../../../CI_CD/github/SKILL.md) | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-query |
 | API Reference | https://learn.microsoft.com/java/api/com.azure.monitor.query |
 | Kusto Query Language | https://learn.microsoft.com/azure/data-explorer/kusto/query/ |
 | Log Analytics Limits | https://learn.microsoft.com/azure/azure-monitor/service-limits#la-query-api |
-| Troubleshooting | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query/TROUBLESHOOTING.md |
+| Troubleshooting | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-query/TROUBLESHOOTING.md |

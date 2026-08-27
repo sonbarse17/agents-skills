@@ -29,18 +29,18 @@ Design, deploy, and manage AWS infrastructure following the Well-Architected Fra
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Architected", "cost optimization", "CloudFormation", "Terraform AWS", "EKS", "ECS", "ELB", "Security Group", "AWS CLI", "boto3", "SSM", "CloudWatch".
+Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Architected", "cost optimization", "[CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)", "Terraform AWS", "EKS", "ECS", "ELB", "Security Group", "AWS CLI", "boto3", "SSM", "CloudWatch".
 
 ### Input Context
 Before activating, verify:
 - AWS region and account structure (single vs multi-account, Organizations).
-- Service primitives needed (compute, storage, database, serverless, container).
-- Authentication method (CLI profile, IAM role, SSO, aws-vault, OIDC).
+- Service primitives needed (compute, storage, database, [serverless](../../Containers_and_Orchestration/serverless/SKILL.md), container).
+- Authentication method (CLI profile, IAM role, SSO, aws-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), OIDC).
 - Compliance/security requirements (HIPAA, SOC2, PCI DSS, FedRAMP).
 - Budget constraints (Pay-As-You-Go vs Reserved vs Savings Plans).
 
 ### Output Artifact
-Writes to Terraform HCL, CloudFormation YAML, AWS CLI commands, IAM policy JSON, and/or CDK TypeScript/Python.
+Writes to Terraform HCL, [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) YAML, AWS CLI commands, IAM policy JSON, and/or CDK [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
 
 ### Response Format
 HCL, YAML, JSON, or CLI commands with no extraneous explanation.
@@ -53,7 +53,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Compute service selected based on workload characteristics.
 - [ ] Cost optimization tags applied to all resources.
 - [ ] High availability and fault tolerance addressed (multi-AZ).
-- [ ] Monitoring and alerting configured (CloudWatch, EventBridge).
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) configured (CloudWatch, EventBridge).
 
 ### Max Response Length
 Direct file write. No response text.
@@ -67,8 +67,8 @@ Direct file write. No response text.
 | Short-lived, event-driven | Lambda | <15min execution, event sources | Per-invocation + duration |
 | Container, orchestrated | ECS on Fargate | No K8s complexity, containers only | Per-task vCPU/memory |
 | Container, full K8s | EKS (managed node groups) | Need K8s ecosystem, multi-service | Per-cluster + node costs |
-| Container, serverless K8s | EKS with Fargate profiles | No node management | Per-pod (Fargate pricing) |
-| Web app, simple deploy | App Runner | From source/GitHub, no infra config | Per-instance + traffic |
+| Container, [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) K8s | EKS with Fargate profiles | No node management | Per-pod (Fargate pricing) |
+| Web app, simple deploy | App Runner | From source/[GitHub](../../CI_CD/github/SKILL.md), no infra config | Per-instance + traffic |
 | Batch, flexible | AWS Batch | Job scheduling, queue-based | Per-job compute |
 
 ### Database: RDS vs Aurora vs DynamoDB vs ElastiCache vs Neptune
@@ -76,11 +76,11 @@ Direct file write. No response text.
 |---|---|---|---|
 | Relational (SQL) | RDS Multi-AZ | Standard OLTP, <16TB | Synchronous standby |
 | Relational (high perf) | Aurora | >16TB, 6-way replication | 6 copies across 3 AZs |
-| Key-Value / Document | DynamoDB | Serverless, auto-scaling, single-digit ms | Auto-replicated 3 AZs |
+| Key-Value / Document | DynamoDB | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), auto-scaling, single-digit ms | Auto-replicated 3 AZs |
 | Cache | ElastiCache (Redis) | Sub-millisecond reads, session store | Multi-AZ with replicas |
 | Graph | Neptune | Social graphs, fraud detection | Multi-AZ |
 | Time series | Timestream | IoT, DevOps metrics | Auto-tiered storage |
-| Ledger | QLDB | Immutable audit trail | Auto-replicated |
+| Ledger | QLDB | Immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Auto-replicated |
 
 ### Storage: S3 vs EBS vs EFS vs FSx
 | Use Case | Recommended | Performance | Max Size |
@@ -369,7 +369,7 @@ resource "aws_s3_bucket_replication_configuration" "assets" {
 }
 ```
 
-### Step 5: CloudWatch Monitoring and Observability
+### Step 5: CloudWatch [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../Observability_and_SecOps/observability/SKILL.md)
 ```hcl
 resource "aws_cloudwatch_log_group" "app" {
   name              = "/ecs/app"
@@ -423,7 +423,7 @@ resource "aws_config_config_rule" "required_tags" {
 }
 
 # Cost allocation tags (created once)
-# aws cloudformation create-stack --stack-name cost-tags --template-body file://cost-tags.yaml
+# aws [cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md) create-stack --stack-name cost-tags --template-body file://cost-tags.yaml
 
 # Resource tagging example
 resource "aws_ecs_service" "app" {
@@ -491,7 +491,7 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 
 ### Multi-Account Strategy
 - Use AWS Organizations with SCPs (Service Control Policies).
-- Separate accounts: Network (shared services), Log Archive, Security (audit), Dev/Test/Prod per workload.
+- Separate accounts: Network (shared services), Log Archive, Security ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md)), Dev/Test/Prod per workload.
 - Use IAM Roles for cross-account access, never IAM users.
 - Deploy CloudTrail organization trail in Log Archive account.
 
@@ -504,22 +504,22 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 | RDS connection refused | Security group not allowing traffic | Add app security group to RDS ingress rule |
 | Lambda timeout | Function duration > configured timeout | Increase timeout; optimize function code |
 | ECS task failing | Task role missing permissions | Check task execution role policies; verify image |
-| CloudFormation rollback | Resource limit or IAM permission | Check CloudTrail for specific error |
+| [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) rollback | Resource limit or IAM permission | Check CloudTrail for specific error |
 
 ## Rules & Constraints
-- Never hardcode AWS credentials — use IAM roles, SSO, or aws-vault.
+- Never hardcode AWS credentials — use IAM roles, SSO, or aws-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
 - Always enable S3 bucket versioning and encryption.
 - Every S3 bucket must have public access blocked unless explicitly required.
 - Use Security Groups over NACLs for instance-level traffic control.
 - Tag all resources with Environment, Project, Owner, and CostCenter.
-- Enable CloudWatch detailed monitoring for production workloads.
+- Enable CloudWatch detailed [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for production workloads.
 - Use PrivateLink or VPC endpoints instead of NAT for AWS service access.
 - Follow the principle of least privilege for all IAM policies.
 - Deploy across minimum 2 Availability Zones.
 - Enable termination protection on production EC2/RDS.
 
 ## Output Format
-Terraform HCL, CloudFormation YAML, AWS CLI commands, or IAM policy JSON.
+Terraform HCL, [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) YAML, AWS CLI commands, or IAM policy JSON.
 
 ## References
   - ../../../Global_References/aws-advanced.md

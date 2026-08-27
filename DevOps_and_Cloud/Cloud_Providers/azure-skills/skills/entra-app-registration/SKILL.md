@@ -47,7 +47,7 @@ Create an app registration in the Azure portal or using Azure CLI.
 **CLI Method:** See [../../../../../Global_References/cli-commands.md](../../../../../Global_References/cli-commands.md)
 **IaC Method:** See [../../../../../Global_References/BICEP-EXAMPLE.bicep](../../../../../Global_References/BICEP-EXAMPLE.bicep)
 
-It's highly recommended to use the IaC to manage Entra app registration if you already use IaC in your project, need a scalable solution for managing lots of app registrations or need fine-grained audit history of the configuration changes. 
+It's highly recommended to use the IaC to manage Entra app registration if you already use IaC in your project, need a scalable solution for managing lots of app registrations or need fine-grained [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) history of the configuration changes. 
 
 ### Step 2: Configure Authentication
 
@@ -78,7 +78,7 @@ For confidential client applications (web apps, services), create a client secre
 - Navigate to "Certificates & secrets"
 - Create new client secret
 - Copy the value immediately (only shown once)
-- Store securely (Key Vault recommended)
+- Store securely (Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) recommended)
 
 **Certificate:** For production environments, use certificates instead of secrets for enhanced security. Upload certificate via "Certificates & secrets" section.
 
@@ -108,10 +108,10 @@ Walk user through their first app registration step-by-step.
 
 ### Pattern 2: Console Application with User Authentication
 
-Create a .NET/Python/Node.js console app that authenticates users.
+Create a .NET/[Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Node.js console app that authenticates users.
 
 **Required Information:**
-- Programming language (C#, Python, JavaScript, etc.)
+- Programming language (C#, [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), JavaScript, etc.)
 - Authentication library (MSAL recommended)
 - Required permissions
 
@@ -149,8 +149,8 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 **Supported Languages:**
 - .NET/C# - `Microsoft.Identity.Client`
-- JavaScript/TypeScript - `@azure/msal-browser`, `@azure/msal-node`
-- Python - `msal`
+- JavaScript/[TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) - `@azure/msal-browser`, `@azure/msal-node`
+- [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) - `msal`
 
 **Examples:** See [../../../../../Global_References/console-app-example.md](../../../../../Global_References/console-app-example.md)
 
@@ -158,7 +158,7 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 | Practice | Recommendation |
 |----------|---------------|
-| **Never hardcode secrets** | Use environment variables, Azure Key Vault, or managed identity |
+| **Never hardcode secrets** | Use environment variables, Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or managed identity |
 | **Rotate secrets regularly** | Set expiration, automate rotation |
 | **Use certificates over secrets** | More secure for production |
 | **Least privilege permissions** | Request only required API permissions |
@@ -170,9 +170,9 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 ## SDK Quick References
 
-- **Azure Identity**: [Python](references/sdk/azure-identity-py.md) | [.NET](references/sdk/azure-identity-dotnet.md) | [TypeScript](references/sdk/azure-identity-ts.md) | [Java](references/sdk/azure-identity-java.md) | [Rust](references/sdk/azure-identity-rust.md)
-- **Key Vault (secrets)**: [Python](references/sdk/azure-keyvault-py.md) | [TypeScript](references/sdk/azure-keyvault-secrets-ts.md)
-- **Auth Events**: [.NET](references/sdk/microsoft-azure-webjobs-extensions-authentication-events-dotnet.md)
+- **Azure Identity**: [Python](references/sdk/[azure-identity-py](../../../[azure-identity-py](../../../azure-sdk-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-identity-py/SKILL.md)/SKILL.md).md) | [.NET](references/sdk/[azure-identity-dotnet](../../../[azure-identity-dotnet](../../../azure-sdk-dotnet/skills/azure-identity-dotnet/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-identity-ts](../../../[azure-identity-ts](../../../azure-sdk-[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/azure-identity-ts/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-identity-java](../../../[azure-identity-java](../../../azure-sdk-java/skills/azure-identity-java/SKILL.md)/SKILL.md).md) | [Rust](references/sdk/[azure-identity-rust](../../../[azure-identity-rust](../../../azure-sdk-rust/skills/azure-identity-rust/SKILL.md)/SKILL.md).md)
+- **Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (secrets)**: [Python](references/sdk/[azure-keyvault-py](../../../[azure-keyvault-py](../../../azure-sdk-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/[azure-keyvault](../../../azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-keyvault-secrets-ts](../../../[azure-keyvault-secrets-ts](../../../azure-sdk-[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/[azure-keyvault](../../../azure-keyvault/SKILL.md)-secrets-ts/SKILL.md)/SKILL.md).md)
+- **Auth Events**: [.NET](references/sdk/[microsoft-azure-webjobs-extensions-authentication-events-dotnet](../../../../../AI_and_Agents/Workflows/[microsoft-azure-webjobs-extensions-authentication-events-dotnet](../../../azure-sdk-dotnet/skills/microsoft-azure-webjobs-extensions-authentication-events-dotnet/SKILL.md)/SKILL.md).md)
 
 ## References
 

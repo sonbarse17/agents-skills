@@ -20,7 +20,7 @@ Develop a stakeholder management strategy that maps influence
 and interest (power/influence grid, salience model), establishes
 clear communication cadences with per-group channels, assigns
 decision accountability via RACI matrix, manages expectations
-through structured reporting (status dashboards, highlight
+through structured reporting (status [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), highlight
 reports, risk logs) and escalation paths, and builds feedback
 loops for continuous improvement.
 
@@ -100,7 +100,7 @@ Stakeholder identified
 │   └── Invite to demos and milestone reviews
 ├── Power ≥ 4 AND Interest < 4 → KEEP SATISFIED
 │   ├── Monthly executive summary, milestone briefings
-│   ├── One-page dashboards with RAG status
+│   ├── One-page [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with RAG status
 │   ├── Surface issues before they escalate
 │   └── Engage at decision points only
 ├── Power < 4 AND Interest ≥ 4 → KEEP INFORMED
@@ -274,7 +274,7 @@ what has been done, what is needed, who decides.
 
 Triggers: missed milestone over 1 week, budget over 10%,
 new risk score over 15, blocker over 3 days,
-security incident, stakeholder complaint escalation.
+security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), stakeholder complaint escalation.
 
 #### Escalation Flow Decision Tree
 ```
@@ -357,7 +357,7 @@ Stakeholder conflict arises
 2. Separate: distinguish positions (what they say) from interests (what they need).
 3. Reframe: restate as shared problem: "How do we achieve X while addressing Y?"
 4. Options: generate 2-3 alternatives with tradeoffs for each.
-5. Commit: document agreement with owner and deadline.
+5. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): document agreement with owner and deadline.
 6. Follow-up: check both parties accepted resolution within 1 week.
 
 #### Negotiation Tactics for Stakeholders

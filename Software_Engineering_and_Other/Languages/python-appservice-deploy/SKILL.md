@@ -7,9 +7,9 @@ metadata:
   version: "1.1.1"
 ---
 
-# Python on Azure App Service — Code Deploy
+# [Python](../python/SKILL.md) on Azure App Service — Code Deploy
 
-Deploys Python (Flask, Django, FastAPI, generic) code to Azure App Service Linux (P0v3, Python 3.14). Creates RG + Plan + Web App if missing. Hand off to `azure-prepare` for VNet, Key Vault, databases, or IaC.
+Deploys [Python](../python/SKILL.md) (Flask, Django, FastAPI, generic) code to Azure App Service Linux (P0v3, [Python](../python/SKILL.md) 3.14). Creates RG + Plan + Web App if missing. Hand off to `[azure-prepare](../../../DevOps_and_Cloud/Cloud_Providers/[azure-prepare](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` for VNet, Key [Vault](../../Miscellaneous/vault/SKILL.md), databases, or IaC.
 
 **MCP tools used**: `mcp_azure_mcp_subscription_list`, `mcp_azure_mcp_group_list`, `mcp_azure_mcp_appservice`, `mcp_azure_mcp_azd` (when `azure.yaml` is present).
 
@@ -18,8 +18,8 @@ Deploys Python (Flask, Django, FastAPI, generic) code to Azure App Service Linux
 1. **Resolve context — smart defaults, minimal prompts.** Only the app name is interactive; RG (`<app>-rg`), Plan (`<app>-plan`), region (current `az` default or `eastus2`), subscription are derived. [create-app.md](../../../Global_References/create-app.md) §1.
 2. **Detect framework** (advisory, never blocks). [detect.md](../../../Global_References/detect.md).
 3. **Choose path** — `azure.yaml` host: appservice → [deploy-azd.md](../../../Global_References/deploy-azd.md); else [deploy-azcli.md](../../../Global_References/deploy-azcli.md).
-4. **Ensure RG → Plan (`P0v3 --is-linux`) → Web App (`--runtime "PYTHON:3.14"`)** exist. On transient ARM errors, follow [transient-retry.md](../../../Global_References/transient-retry.md). [create-app.md](../../../Global_References/create-app.md).
-5. **Set startup** — Flask/Django: none (Oryx auto-detects). FastAPI: always `python -m uvicorn main:app --host 0.0.0.0`. Other: warn. [startup-commands.md](../../../Global_References/startup-commands.md).
+4. **Ensure RG → Plan (`P0v3 --is-linux`) → Web App (`--runtime "[PYTHON](../python/SKILL.md):3.14"`)** exist. On transient ARM errors, follow [transient-retry.md](../../../Global_References/transient-retry.md). [create-app.md](../../../Global_References/create-app.md).
+5. **Set startup** — Flask/Django: none (Oryx auto-detects). FastAPI: always `[python](../python/SKILL.md) -m uvicorn main:app --host 0.0.0.0`. Other: warn. [startup-commands.md](../../../Global_References/startup-commands.md).
 6. **Set `SCM_DO_BUILD_DURING_DEPLOYMENT=true`**.
 7. **Deploy** — `azd deploy` or `az webapp deploy --type zip --track-status false`.
 8. **STOP. Print the post-deploy message** ([post-deploy-message.md](../../../Global_References/post-deploy-message.md)) and end the turn.
@@ -27,7 +27,7 @@ Deploys Python (Flask, Django, FastAPI, generic) code to Azure App Service Linux
 ### Hard rules
 
 - ⛔ **NO POST-DEPLOY VERIFICATION** — after deploy returns, do not run `az webapp log tail`, `curl`, `Invoke-WebRequest`, or any health probe. App Service needs 2–3 min to warm; a quiet log or early 5xx is not failure.
-- ⛔ **SHELL SAFETY** — for `--runtime` always use `"PYTHON:3.14"` (colon). Never `"PYTHON|3.14"` (pipe is a shell operator).
+- ⛔ **SHELL SAFETY** — for `--runtime` always use `"[PYTHON](../python/SKILL.md):3.14"` (colon). Never `"[PYTHON](../python/SKILL.md)|3.14"` (pipe is a shell operator).
 - ⛔ **NEVER `az webapp up`** — deprecated. Use Step 7 commands.
 - ✅ **URL FORMAT** — present endpoints as `https://...` URLs.
 

@@ -26,7 +26,7 @@ The first 5 minutes of a project determine its structural quality for years. A w
 Exact user phrases: "create project structure", "scaffold project", "initialize project", "set up folder structure", "new project from scratch", "create new project", "start new project".
 
 ### Input Context
-- User has specified or you have detected: backend stack, frontend framework, monorepo preference, project name
+- User has specified or you have detected: backend stack, frontend framework, [monorepo](../../Frontend/monorepo/SKILL.md) preference, project name
 - Working directory is the parent of the intended project
 - If user says "scaffold" without specifying stack, ask: "Which backend stack? (nestjs, golang, rust, fastapi, django, spring, none)"
 
@@ -76,15 +76,15 @@ User says "scaffold project":
 ### Template Selection
 ```
 Backend + Frontend combo:
-├── Both specified → Monorepo structure with /packages or /apps
+├── Both specified → [Monorepo](../../Frontend/monorepo/SKILL.md) structure with /packages or /apps
 ├── Backend only → Single backend structure
 ├── Frontend only → Single frontend structure
 └── None → Generic project (flat, minimal)
 
-Monorepo preference:
-├── User specified monorepo → /packages/app (frontend), /packages/api (backend), /packages/shared
+[Monorepo](../../Frontend/monorepo/SKILL.md) preference:
+├── User specified [monorepo](../../Frontend/monorepo/SKILL.md) → /packages/app (frontend), /packages/api (backend), /packages/shared
 ├── User specified polyrepo → Separate directories, separate scaffolds
-└── Not specified → Ask: "Monorepo or separate repos?"
+└── Not specified → Ask: "[Monorepo](../../Frontend/monorepo/SKILL.md) or separate repos?"
 ```
 
 ## Workflow
@@ -102,7 +102,7 @@ Show tree to user. Wait for explicit confirmation ("yes", "looks good", "proceed
 Run commands to create folder structure matching selected template.
 
 ### Step 4: Write AGENTS.md
-Must contain: stack and framework, testing command (inferred from stack), lint command (inferred from stack), build command (inferred from stack), key architectural rules from relevant skill, standard workflow ("run tests before commit", "follow conventional commits"). AGENTS.md must be under 30 lines.
+Must contain: stack and framework, testing command (inferred from stack), lint command (inferred from stack), build command (inferred from stack), key architectural rules from relevant skill, standard workflow ("run tests before [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)", "follow conventional commits"). AGENTS.md must be under 30 lines.
 
 ### Step 5: Write .gitignore
 Stack-appropriate. Include at minimum: node_modules/, target/, build/, dist/, .env, *.log, .DS_Store, coverage/, .idea/, *.iml, .vscode/. Under 20 lines.
@@ -137,7 +137,7 @@ Empty placeholder files with .gitkeep:
 
 **Angular**: `src/app/features/ src/app/shared/ src/app/core/ src/assets/`
 
-### Monorepo Template
+### [Monorepo](../../Frontend/monorepo/SKILL.md) Template
 ```
 packages/
   app/          # Frontend (React, Vue, etc.)
@@ -157,7 +157,7 @@ docs/
 ## Stack
 - Backend: {backend_stack}
 - Frontend: {frontend_stack}
-- Monorepo: {yes/no}
+- [Monorepo](../../Frontend/monorepo/SKILL.md): {yes/no}
 
 ## Commands
 - Test: {inferred_test_command}
@@ -165,14 +165,14 @@ docs/
 - Build: {inferred_build_command}
 
 ## Rules
-- Run tests before every commit
+- Run tests before every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 - Follow conventional commits format
 - {stack-specific rule 1}
 - {stack-specific rule 2}
 - {stack-specific rule 3}
 
 ## Handoff
-- project-init → create-brief (defines what gets built)
+- project-init → [create-brief](../../../Product_and_Business/create-brief/SKILL.md) (defines what gets built)
 ```
 
 ## Rules
@@ -187,14 +187,14 @@ docs/
 ## Production Considerations
 
 ### Repository Structure Best Practices
-- **Monorepo**: Use when sharing types, utils, or configs across packages. Prefer pnpm workspaces, turborepo, or nx for tooling.
+- **[Monorepo](../../Frontend/monorepo/SKILL.md)**: Use when sharing types, utils, or configs across packages. Prefer pnpm workspaces, turborepo, or nx for tooling.
 - **Polyrepo**: Use when teams are independent, deployment is independent, or security boundaries require strict separation.
 - **Naming conventions**: kebab-case for directories and files (language-standard for most ecosystems). PascalCase for components and classes. camelCase for functions and variables.
 - **Depth limitation**: Max 4 levels deep from root. Deeply nested structures create import path confusion and refactoring friction.
 - **docs/ structure**: decisions/ for ADRs, stories/ for user stories/user journeys, specs/ for technical specifications.
 
 ### CI/CD Integration Points
-- Include `.github/workflows/`, `.gitlab-ci.yml`, or `.circleci/config.yml` as placeholder when appropriate
+- Include `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/`, `.[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml`, or `.[circleci](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)/config.yml` as placeholder when appropriate
 - CI should mirror the test → lint → build → security stages defined in AGENTS.md
 - Add `Dockerfile` placeholder for containerized deployments
 
@@ -214,11 +214,11 @@ docs/
 Before creating any files, verify:
 - [ ] Project name is kebab-case and URL-friendly
 - [ ] Target directory doesn't exist or user confirmed overwrite
-- [ ] Required tools are installed (Node 20+, Python 3.12+, etc.)
+- [ ] Required tools are installed (Node 20+, [Python](../../Languages/python/SKILL.md) 3.12+, etc.)
 - [ ] Package manager chosen (npm/pnpm/yarn/bun) and available
 - [ ] Git is initialized (or will be by init command)
 - [ ] License file will be generated (MIT/Apache/GPL — ask user)
-- [ ] CI platform selected (GitHub Actions / CircleCI / GitLab CI)
+- [ ] CI platform selected ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions / [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) / GitLab CI)
 - [ ] Target environment (Node/Deno/Bun, browser targets, mobile OS versions)
 
 ### Stack Decision Tree
@@ -241,8 +241,8 @@ What kind of project?
 │   ├── Flutter: Dart, single codebase
 │   └── Kotlin Multiplatform: Shared business logic
 ├── Library / Package
-│   ├── npm package: TypeScript, tsup/bundling, changesets
-│   └── Python package: uv/pip, pyproject.toml, hatchling
+│   ├── npm package: [TypeScript](../../Frontend/typescript/SKILL.md), tsup/bundling, changesets
+│   └── [Python](../../Languages/python/SKILL.md) package: uv/pip, pyproject.toml, hatchling
 └── Static Site
     ├── Astro: content-focused, island architecture
     └── Eleventy/Hugo: markdown-driven, fast builds
@@ -250,13 +250,13 @@ What kind of project?
 
 ### Modern Stack Templates
 
-**Next.js 15 (App Router + TypeScript):**
+**Next.js 15 (App Router + [TypeScript](../../Frontend/typescript/SKILL.md)):**
 ```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint \
+npx create-next-app@latest my-app --[typescript](../../Frontend/typescript/SKILL.md) --tailwind --eslint \
   --app --src-dir --import-alias "@/*" --use-pnpm
 ```
 
-**Vite + React + TypeScript:**
+**Vite + React + [TypeScript](../../Frontend/typescript/SKILL.md):**
 ```bash
 npm create vite@latest my-app -- --template react-ts
 cd my-app
@@ -264,24 +264,24 @@ npm install @tanstack/react-query zustand react-router-dom
 npm install -D vitest @testing-library/react msw
 ```
 
-**Fastify + TypeScript backend:**
+**Fastify + [TypeScript](../../Frontend/typescript/SKILL.md) backend:**
 ```bash
 mkdir my-api && cd my-api
 pnpm init
 pnpm add fastify @fastify/cors @fastify/env zod pino
-pnpm add -D typescript @types/node tsx
+pnpm add -D [typescript](../../Frontend/typescript/SKILL.md) @types/node tsx
 # Create tsconfig.json, src/server.ts
 ```
 
 **Flutter mobile app:**
 ```bash
 flutter create --org com.mycompany --project-name my_app \
-  --platforms=ios,android,web my_app
+  --platforms=ios,[android](../../../Mobile/android/SKILL.md),web my_app
 cd my_app
 flutter pub add go_router riverpod flutter_secure_storage
 ```
 
-**Python FastAPI backend:**
+**[Python](../../Languages/python/SKILL.md) FastAPI backend:**
 ```bash
 mkdir my-api && cd my-api
 uv init --app
@@ -294,7 +294,7 @@ uv add -d pytest httpx
 ```bash
 mkdir my-lib && cd my-lib
 pnpm init
-pnpm add -D typescript @types/node tsup vitest
+pnpm add -D [typescript](../../Frontend/typescript/SKILL.md) @types/node tsup vitest
 # Create src/index.ts with exports
 # Create tsconfig.json with declaration: true
 ```
@@ -343,16 +343,16 @@ my-api/
 │   ├── integration/
 │   └── fixtures/
 ├── migrations/
-├── docker-compose.yml
+├── [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 ├── Dockerfile
 └── tsconfig.json
 ```
 
 ### CI/CD Template Generation
 
-**GitHub Actions (test + lint):**
+**[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions (test + lint):**
 ```yaml
-# .github/workflows/ci.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ci.yml
 name: CI
 on: [push, pull_request]
 jobs:
@@ -398,14 +398,14 @@ jobs:
 - Use `engines` + `packageManager` in package.json
 - Use `.nvmrc` / `.node-version` for nvm/nodenv
 - Use `.tool-versions` for asdf (works for all languages)
-- Pin exact versions in CI (GitHub Actions: `setup-node@v4` with `node-version-file: .nvmrc`)
+- Pin exact versions in CI ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions: `setup-node@v4` with `node-version-file: .nvmrc`)
 
 ### Configuration File Quick Reference
 
 | Language | Linter | Formatter | Test | Build |
 |----------|--------|-----------|------|-------|
-| TypeScript/JS | `eslint.config.js` | `.prettierrc` | `vitest.config.ts` | `tsconfig.json` |
-| Python | `pyproject.toml` (ruff) | `pyproject.toml` (ruff) | `pyproject.toml` (pytest) | `pyproject.toml` |
+| [TypeScript](../../Frontend/typescript/SKILL.md)/JS | `eslint.config.js` | `.prettierrc` | `vitest.config.ts` | `tsconfig.json` |
+| [Python](../../Languages/python/SKILL.md) | `pyproject.toml` (ruff) | `pyproject.toml` (ruff) | `pyproject.toml` (pytest) | `pyproject.toml` |
 | Go | `.golangci.yml` | `gofumpt` | built-in `go test` | `go.mod` |
 | Rust | `clippy.toml` | `rustfmt.toml` | built-in `cargo test` | `Cargo.toml` |
 | Dart/Flutter | `analysis_options.yaml` | built-in `dart format` | built-in `flutter test` | `pubspec.yaml` |
@@ -428,7 +428,7 @@ check_cmd() {
 check_cmd node "https://nodejs.org/ (v20+)"
 check_cmd pnpm "npm install -g pnpm"
 check_cmd git "https://git-scm.com/"
-check_cmd docker "https://docker.com/products/docker-desktop"
+check_cmd [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) "https://[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/products/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-desktop"
 
 if [ ! -f ".env" ]; then
   if [ -f ".env.example" ]; then
@@ -447,12 +447,12 @@ echo "✓ Environment check complete"
 | Anti-Pattern | Why It Fails | Better Approach |
 |---|---|---|
 | Scaffold then configure | Generates default configs that don't match team practices | Use opinionated templates with pre-configured tools |
-| Ignoring monorepo costs | Hit tooling limits (TypeScript project ref, ESLint scope) | Plan from day 1 if project will grow beyond 10 packages |
-| No `.gitignore` upfront | Committed node_modules, .env, secrets | Generate with project init. Block with pre-commit hook. |
+| Ignoring [monorepo](../../Frontend/monorepo/SKILL.md) costs | Hit tooling limits ([TypeScript](../../Frontend/typescript/SKILL.md) project ref, ESLint scope) | Plan from day 1 if project will grow beyond 10 packages |
+| No `.gitignore` upfront | Committed node_modules, .env, secrets | Generate with project init. Block with pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook. |
 | Hardcoded ports/URLs | Dev/prod conflicts, CI fails locally | Use env vars with defaults in config module |
-| No Docker compose for deps | Devs install Postgres/Redis differently, env drift | docker-compose.yml with all service dependencies |
+| No [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose for deps | Devs install Postgres/Redis differently, env drift | [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml with all service dependencies |
 | Single tsconfig for monolith + lib | Build config and app config differ | Separate tsconfig for app, lib, build, node |
-| Commit generated scaffold files | Boilerplate that will never change | Let init commands run, then prune unused files |
+| [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) generated scaffold files | Boilerplate that will never change | Let init commands run, then prune unused files |
 | Wrong package manager | pnpm users with npm lockfile conflicts | Pin in `packageManager` field, enforce in CI |
 
 ## Architecture Decision Trees
@@ -460,25 +460,25 @@ echo "✓ Environment check complete"
 ```
 Project Initialization Strategy
 ├── Project type?
-│   ├── Web app → Vite + React/Next.js + TypeScript
-│   ├── API service → Fastify/Express + TypeScript + OpenAPI
-│   ├── CLI tool → Commander/oclif + TypeScript
-│   └── Library → tsup + TypeScript + Vitest
-├── Monorepo needed?
+│   ├── Web app → Vite + React/Next.js + [TypeScript](../../Frontend/typescript/SKILL.md)
+│   ├── API service → Fastify/Express + [TypeScript](../../Frontend/typescript/SKILL.md) + OpenAPI
+│   ├── CLI tool → Commander/oclif + [TypeScript](../../Frontend/typescript/SKILL.md)
+│   └── Library → tsup + [TypeScript](../../Frontend/typescript/SKILL.md) + Vitest
+├── [Monorepo](../../Frontend/monorepo/SKILL.md) needed?
 │   ├── Yes → Turborepo / Nx / pnpm workspaces
 │   ├── Single package → Simple single-package setup
-│   └── Microservices → Nx with buildable libraries
+│   └── [Microservices](../../Patterns/microservices/SKILL.md) → Nx with buildable libraries
 ├── Testing strategy?
 │   ├── Unit + E2E → Vitest + Playwright
 │   ├── Unit only → Vitest
 │   └── Type-safe mocks → Node Test Runner + testdouble
 └── Deployment target?
-    ├── Serverless → AWS Lambda / Vercel / Netlify
-    ├── Container → Docker + Docker Compose + K8s manifests
+    ├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda / Vercel / Netlify
+    ├── Container → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) + [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose + K8s manifests
     └── Edge → Cloudflare Workers / Deno Deploy
 ```
 
-**Decision criteria**: Assess team size, deployment target, monorepo complexity, and testing maturity.
+**Decision criteria**: Assess team size, deployment target, [monorepo](../../Frontend/monorepo/SKILL.md) complexity, and testing maturity.
 
 ## Implementation Patterns
 
@@ -503,11 +503,11 @@ case $FRAMEWORK in
     npm create vite@latest . -- --template react-ts
     ;;
   next)
-    npx create-next-app@latest . --typescript --tailwind
+    npx create-next-app@latest . --[typescript](../../Frontend/typescript/SKILL.md) --tailwind
     ;;
   express)
     npm install express cors helmet
-    npm install -D typescript @types/node vitest
+    npm install -D [typescript](../../Frontend/typescript/SKILL.md) @types/node vitest
     ;;
 esac
 
@@ -519,10 +519,10 @@ dist/
 .env
 *.log
 EOF
-git add . && git commit -m "chore: initial scaffold"
+git add . && git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "chore: initial scaffold"
 ```
 
-### TypeScript Config Template
+### [TypeScript](../../Frontend/typescript/SKILL.md) Config Template
 ```json
 {
   "compilerOptions": {
@@ -551,8 +551,8 @@ git add . && git commit -m "chore: initial scaffold"
 
 - **`.gitignore` completeness**: Include `node_modules/`, `dist/`, `.env`, `*.log`, `.next/`, `coverage/`, `tmp/`.
 - **Environment validation**: Include `.env.example` with all required vars documented; use Zod for runtime validation.
-- **CI/CD templates**: Generate `.github/workflows/ci.yml` with lint, typecheck, test, and build stages.
-- **Docker support**: Include multi-stage `Dockerfile` and `docker-compose.yml` for local development.
+- **CI/CD templates**: Generate `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ci.yml` with lint, typecheck, test, and build stages.
+- **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support**: Include multi-stage `Dockerfile` and `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` for local development.
 - **Editor config**: Generate `.vscode/settings.json` with format-on-save and recommended extensions.
 - **License**: Add `LICENSE` file matching project requirements (MIT, Apache 2.0, or proprietary).
 
@@ -561,30 +561,30 @@ git add . && git commit -m "chore: initial scaffold"
 | Anti-Pattern | Consequence | Solution |
 |---|---|---|
 | Hardcoded ports/URLs | Dev/prod conflicts | Use env vars with defaults |
-| No Docker compose for deps | Environment drift across team | Include docker-compose.yml |
+| No [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose for deps | Environment drift across team | Include [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml |
 | Single tsconfig for all | Build config and app config differ | Separate tsconfigs per context |
 | Committing scaffold files | Boilerplate that never changes | Prune unused files after init |
 | Wrong package manager | Lockfile conflicts | Pin in packageManager field |
 
 ## Performance Optimization
 
-- **Minimal dependencies**: Pin exact versions for critical packages; audit `node_modules` size.
+- **Minimal dependencies**: Pin exact versions for critical packages; [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) `node_modules` size.
 - **Tree-shaking**: Configure ESM with `sideEffects: false` in `package.json` for optimal bundle.
 - **Build caching**: Set up Turborepo/Nx caching for faster local and CI builds.
 - **Dev server**: Use Vite (esbuild-based) for sub-second HMR; avoid webpack for new projects.
-- **TypeScript project references**: Use project references for monorepo to enable incremental builds.
+- **[TypeScript](../../Frontend/typescript/SKILL.md) project references**: Use project references for [monorepo](../../Frontend/monorepo/SKILL.md) to enable incremental builds.
 
 ## Security Considerations
 
-- **Dependency auditing**: Run `npm audit` or `pnpm audit` on init; pin dependency versions with lockfile.
-- **Environment isolation**: Generate `.env` with placeholder values; never commit actual secrets.
-- **Docker security**: Use non-root user in Dockerfile; pin base image digests, not tags.
+- **Dependency auditing**: Run `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or `pnpm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` on init; pin dependency versions with lockfile.
+- **Environment isolation**: Generate `.env` with placeholder values; never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) actual secrets.
+- **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) security**: Use non-root user in Dockerfile; pin base image digests, not tags.
 - **Lint rules**: Include ESLint security plugin (`eslint-plugin-security`) for Node.js projects.
-- **Git hooks**: Configure husky + lint-staged for pre-commit checks; prevent secrets from being committed.
+- **Git hooks**: Configure husky + lint-staged for pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) checks; prevent secrets from being committed.
 - **License compliance**: Check dependency licenses (`license-checker`) for compatibility with project license.
 
 ## Handoff
 Output: Scaffolded project at {path}
-Next skill: create-brief - to define what gets built.
+Next skill: [create-brief](../../../Product_and_Business/create-brief/SKILL.md) - to define what gets built.
 Carry forward: project path, stack, framework.
 

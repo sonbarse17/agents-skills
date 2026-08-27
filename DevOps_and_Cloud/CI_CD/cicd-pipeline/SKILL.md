@@ -27,18 +27,18 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 ## Architecture Decision Trees
 
 ### CI/CD Platform Comparison
-| Feature | GitHub Actions | GitLab CI | Jenkins | CircleCI |
+| Feature | [GitHub](../github/SKILL.md) Actions | GitLab CI | [Jenkins](../jenkins/SKILL.md) | [CircleCI](../circleci/SKILL.md) |
 |---|---|---|---|---|
 | Hosted runners | Linux, macOS, Windows | Linux, macOS, Windows | N/A (self-hosted) | Linux, macOS, Windows |
 | Self-hosted runners | Yes | Yes | Native | Yes |
 | Reusable configs | Composite actions + reusable workflows | Include templates + CI components | Shared libraries | Orbs |
-| Container support | Native (service containers) | Native (services) | Docker plugin | Native |
-| Secret management | GitHub Secrets | CI/CD Variables | Credentials plugin | Project env vars |
+| Container support | Native (service containers) | Native (services) | [Docker](../../Containers_and_Orchestration/docker/SKILL.md) plugin | Native |
+| Secret management | [GitHub](../github/SKILL.md) Secrets | CI/CD Variables | Credentials plugin | Project env vars |
 | Parallelism | Matrix strategy | Parallel keyword | Parallel stages | Parallelism × resource class |
 | Cache | actions/cache | cache: keyword | Plugin | Store/cache |
 | Artifacts | Built-in | Built-in | Built-in | Built-in |
 | Pricing | Free: 2000 min/mo | Free: 400 min/mo | Free | Free: 6000 min/mo |
-| Best for | Open source, GitHub-native | Monorepo, GitLab-native | Complex enterprise | Performance-focused |
+| Best for | Open source, [GitHub](../github/SKILL.md)-native | [Monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), GitLab-native | Complex enterprise | Performance-focused |
 
 ### Pipeline Stage Decisions
 | Stage | When to Include | Estimated Time | Fail Fast |
@@ -48,7 +48,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 | Build | Always | 1-30 min | Yes |
 | Integration tests | Code changes affect DB/external | 5-30 min | After build |
 | Security scan | Production branches | 2-15 min | Yes (high vulns) |
-| Docker build | Containerized apps | 2-10 min | Yes |
+| [Docker](../../Containers_and_Orchestration/docker/SKILL.md) build | Containerized apps | 2-10 min | Yes |
 | Deploy staging | PR to main/develop | 1-10 min | No (non-blocking) |
 | E2E tests | Before production deployment | 10-30 min | On staging |
 | Deploy production | Main branch merge | 1-15 min | With approval gate |
@@ -79,17 +79,17 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 |---|---|---|---|
 | SAST (Static Analysis) | SonarQube, Semgrep, CodeQL, Snyk Code | After checkout | 5-15 min |
 | DAST (Dynamic) | OWASP ZAP, Burp Suite | After deploy to staging | 10-30 min |
-| Dependency scan | OWASP DC, Snyk, Trivy, npm audit | After install | 2-5 min |
-| Container scan | Trivy, Clair, Snyk Container, Grype | After docker build | 2-10 min |
+| Dependency scan | OWASP DC, Snyk, Trivy, npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | After install | 2-5 min |
+| Container scan | Trivy, Clair, Snyk Container, Grype | After [docker](../../Containers_and_Orchestration/docker/SKILL.md) build | 2-10 min |
 | IaC scan | Checkov, tfsec, KICS, Terrascan | After infrastructure code | 1-3 min |
-| Secret scan | Gitleaks, TruffleHog, GitGuardian | On every commit | 1-3 min |
+| Secret scan | Gitleaks, TruffleHog, GitGuardian | On every [commit](../commit/SKILL.md) | 1-3 min |
 
 ## Quick Start
 Pipeline stages: lint → test → build → security scan → deploy staging → deploy prod. Cache dependencies with content-hash keys. Use environment secrets. Implement blue-green or canary for prod.
 
 ## Core Workflow
 
-### Step 1: Standard Pipeline — GitHub Actions
+### Step 1: Standard Pipeline — [GitHub](../github/SKILL.md) Actions
 ```yaml
 name: CI/CD Pipeline
 on:
@@ -98,7 +98,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ [github](../github/SKILL.md).repository }}
   NODE_VERSION: "22"
 
 jobs:
@@ -138,7 +138,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
-      - run: npm audit --audit-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
       - uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
@@ -155,19 +155,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/login-action@v3
-        with: { registry: ghcr.io, username: ${{ github.actor }},
+      - uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/setup-buildx-action@v3
+      - uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+        with: { registry: ghcr.io, username: ${{ [github](../github/SKILL.md).actor }},
           password: ${{ secrets.GITHUB_TOKEN }} }
       - id: build
-        uses: docker/build-push-action@v5
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
         with:
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ [github](../github/SKILL.md).sha }}
 
   deploy-staging:
     needs: [build, security]
-    if: github.ref == 'refs/heads/main'
+    if: [github](../github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: staging
     steps:
@@ -176,7 +176,7 @@ jobs:
 
   deploy-production:
     needs: deploy-staging
-    if: github.ref == 'refs/heads/main'
+    if: [github](../github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     concurrency: production-deploy
@@ -189,7 +189,7 @@ jobs:
 
 ### Step 2: GitLab CI Pipeline
 ```yaml
-# .gitlab-ci.yml
+# .[gitlab-ci](../gitlab-ci/SKILL.md).yml
 stages:
   - lint
   - test
@@ -234,12 +234,12 @@ security:
 
 build:
   stage: build
-  image: docker:latest
+  image: [docker](../../Containers_and_Orchestration/docker/SKILL.md):latest
   services:
-    - docker:dind
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md):dind
   script:
-    - docker build -t $DOCKER_IMAGE .
-    - docker push $DOCKER_IMAGE
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t $DOCKER_IMAGE .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) push $DOCKER_IMAGE
 
 .deploy:
   stage: deploy
@@ -266,9 +266,9 @@ deploy-production:
   needs: [deploy-staging]
 ```
 
-### Step 3: Canary Deployment with Kubernetes
+### Step 3: Canary Deployment with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 ```yaml
-# kubernetes/canary-deploy.yaml
+# [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/canary-deploy.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -355,7 +355,7 @@ export DEPLOY_LOCK=true
 
 # 2. Rollback application
 echo "Redeploying previous version..."
-kubectl set image deployment/myapp \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/myapp \
   app=myapp:"$IMAGE_TAG" \
   -n "$ENVIRONMENT"
 
@@ -407,20 +407,20 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 - Scan container images before registry push.
 - Scan IaC templates for misconfigurations.
 - Use OIDC/Workload Identity instead of static credentials.
-- Audit pipeline access and changes regularly.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) pipeline access and changes regularly.
 - Sign build artifacts and images (cosign).
 
 ### Performance
 - Use matrix builds to run tests in parallel.
-- Cache dependencies and Docker layers.
-- Use buildx with cache-from for faster Docker builds.
+- Cache dependencies and [Docker](../../Containers_and_Orchestration/docker/SKILL.md) layers.
+- Use buildx with cache-from for faster [Docker](../../Containers_and_Orchestration/docker/SKILL.md) builds.
 - Run integration tests with service containers.
 - Use deployment environments for targeted rollouts.
 
 ### Governance
 - Require PR approval before pipeline trigger.
 - Enforce branch protection rules.
-- Audit pipeline changes via code review.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) pipeline changes via code review.
 - Use pipeline templates/shared configs across teams.
 - Define deployment freeze windows.
 
@@ -433,19 +433,19 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 - Rollback plan must exist before deployment.
 
 ## References
-  - ../../../Global_References/caching-strategies.md
+  - ../../../Global_References/[caching-strategies](../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md).md
   - ../../../Global_References/cicd-pipeline-advanced.md
   - ../../../Global_References/cicd-pipeline-fundamentals.md
-  - ../../../Global_References/deployment-strategies.md
-  - ../../../Global_References/github-actions-guide.md
+  - ../../../Global_References/[deployment-strategies](../../Containers_and_Orchestration/deployment-strategies/SKILL.md).md
+  - ../../../Global_References/[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-guide.md
   - ../../../Global_References/matrix-strategies.md
   - ../../../Global_References/multi-environment.md
   - ../../../Global_References/pipeline-optimization.md
-  - ../../../Global_References/pipeline-security.md
+  - ../../../Global_References/[pipeline-security](../pipeline-security/SKILL.md).md
   - references/canary-deployment-guide.md
 
 ## Handoff
-Next: **kubernetes-patterns** — K8s deployment for pipeline output.
+Next: **[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-patterns** — K8s deployment for pipeline output.
 
 ## Implementation Patterns
 
@@ -480,8 +480,8 @@ test-job:
 build-job:
   stage: build
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - [docker](../../Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   only:
     - main
     - tags
@@ -489,7 +489,7 @@ build-job:
 deploy-staging:
   stage: deploy
   script:
-    - kubectl set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   environment: staging
   only:
     - main
@@ -514,12 +514,12 @@ promote_to_prod() {
   fi
 
   # Deploy to production
-  kubectl set image deployment/app \
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/app \
     "app=${CI_REGISTRY_IMAGE}:${tag}" \
     --namespace production
 
   # Monitor rollout
-  kubectl rollout status deployment/app \
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/app \
     --namespace production --timeout=5m
 }
 
@@ -543,7 +543,7 @@ promote_to_prod "$@"
 - Ignoring **pipeline failures** on non-critical jobs — fail the pipeline by default, opt-in for soft failures
 - Running **all stages sequentially** when they could run in parallel — increases feedback time
 - Deploying directly to **production without staging** validation — always promote through environments
-- Using **`latest` tag** for Docker images — always pin to semantic version or commit SHA
+- Using **`latest` tag** for [Docker](../../Containers_and_Orchestration/docker/SKILL.md) images — always pin to semantic version or [commit](../commit/SKILL.md) SHA
 - Neglecting **pipeline cleanup** — stale artifacts, caches, and workspaces waste storage
 
 ## Performance Optimization
@@ -552,7 +552,7 @@ promote_to_prod "$@"
 - Enable **parallel job execution** for independent stages (lint, test, security scan)
 - Split **test suites** into shards and run them concurrently to reduce wall-clock time
 - Use **self-hosted runners** with warm caches instead of ephemeral cloud runners
-- Optimize **Docker layer caching** — order RUN commands from least to most frequently changing
+- Optimize **[Docker](../../Containers_and_Orchestration/docker/SKILL.md) layer caching** — order RUN commands from least to most frequently changing
 - Implement **conditional stage skipping** — skip build if only docs changed
 - Use **build matrix** for multi-version testing instead of sequential jobs
 
@@ -562,7 +562,7 @@ promote_to_prod "$@"
 - Enable **SBOM generation** in every pipeline and upload to a central store
 - Sign all pipeline artifacts with **Sigstore/cosign** and verify before deployment
 - Rotate CI/CD tokens and service account credentials every 30 days
-- Scan **infrastructure-as-code** (Terraform, Helm) for misconfigurations using Checkov
+- Scan **[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)** (Terraform, Helm) for misconfigurations using Checkov
 - Restrict **pipeline trigger** permissions to trusted actors only
-- Audit **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
 

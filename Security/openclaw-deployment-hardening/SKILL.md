@@ -46,7 +46,7 @@ Run OpenClaw with restrictive defaults:
 - Constrained CPU/memory limits to reduce abuse impact
 - Seccomp/AppArmor (or equivalent) profile enforced
 
-Kubernetes-oriented expectations:
+[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-oriented expectations:
 
 - `runAsNonRoot: true`
 - `allowPrivilegeEscalation: false`
@@ -76,10 +76,10 @@ Avoid mutable `latest` tags for production OpenClaw services.
 Run a hardening smoke test immediately after rollout:
 
 ```bash
-kubectl get pods -n openclaw
-kubectl auth can-i --as=system:serviceaccount:openclaw:default list secrets -n openclaw
-kubectl get networkpolicy -n openclaw
-kubectl logs deploy/openclaw -n openclaw --tail=200
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n openclaw
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) auth can-i --as=system:serviceaccount:openclaw:default list secrets -n openclaw
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get networkpolicy -n openclaw
+[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs deploy/openclaw -n openclaw --tail=200
 ```
 
 Verify:
@@ -89,7 +89,7 @@ Verify:
 - Ingress auth/rate limits are effective.
 - No plaintext secrets appear in logs.
 
-## Incident-Ready Rollback Pattern
+## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-Ready Rollback Pattern
 
 Maintain a hardened rollback workflow:
 
@@ -101,6 +101,6 @@ Maintain a hardened rollback workflow:
 
 ## Related Skills
 
-- [container-hardening](../container-hardening/) - Container security baseline controls
-- [kubernetes-hardening](../kubernetes-hardening/) - Pod and cluster hardening patterns
-- [sbom-supply-chain](../../scanning/sbom-supply-chain/) - SBOM, signing, and provenance controls
+- [container-hardening](../[container-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/container-hardening/SKILL.md)/) - Container security baseline controls
+- [kubernetes-hardening](../[kubernetes-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-hardening/SKILL.md)/) - Pod and cluster hardening patterns
+- [sbom-supply-chain](../../scanning/[sbom-supply-chain](../sbom-supply-chain/SKILL.md)/) - SBOM, signing, and provenance controls

@@ -20,7 +20,7 @@ metadata:
 5. Use the latest supported runtime for the target service
 6. Destructive actions require `ask_user` — [functions global-rules](references/services/functions/global-rules.md) | [app-service global-rules](references/services/app-service/global-rules.md)
 7. **Report progress to user** — During long-running operations (deployments, image pushes), provide resource-level status updates so the user is never left waiting without feedback — see [workflow-details.md](../../../../../Global_References/workflow-details.md)
-8. **Audit service discovery in app code** — Kubernetes DNS names (e.g., `http://order-service:3001`) do not resolve in Container Apps. During assessment, scan source code for hardcoded hostnames/ports in HTTP clients and flag them for env-var-driven URL injection
+8. **[Audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) service discovery in app code** — [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) DNS names (e.g., `http://order-service:3001`) do not resolve in Container Apps. During assessment, scan source code for hardcoded hostnames/ports in HTTP clients and flag them for env-var-driven URL injection
 
 ## Migration Scenarios
 
@@ -31,7 +31,7 @@ metadata:
 | Heroku | Azure App Service | [heroku-to-app-service.md](references/services/app-service/heroku-to-app-service.md) |
 | Google App Engine | Azure App Service | [app-engine-to-app-service.md](references/services/app-service/app-engine-to-app-service.md) |
 | AWS Fargate (ECS) | Azure Container Apps | [fargate-to-container-apps.md](references/services/container-apps/fargate-to-container-apps.md) ([assessment](references/services/container-apps/fargate-assessment-guide.md), [deployment](references/services/container-apps/fargate-deployment-guide.md)) |
-| Kubernetes (GKE/EKS/Self-hosted) | Azure Container Apps | [k8s-to-container-apps.md](references/services/container-apps/k8s-to-container-apps.md) |
+| [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) (GKE/EKS/Self-hosted) | Azure Container Apps | [k8s-to-container-apps.md](references/services/container-apps/k8s-to-container-apps.md) |
 | GCP Cloud Run | Azure Container Apps | [cloudrun-to-container-apps.md](references/services/container-apps/cloudrun-to-container-apps.md) |
 | Spring Boot (Azure Spring Apps/VMs) | Azure Container Apps | [spring-apps-to-aca.md](references/services/container-apps/spring-apps-to-aca.md) |
 
@@ -47,7 +47,7 @@ All output goes to `<workspace-root-basename>-azure/` at workspace root, where `
 2. **Assess** — Analyze source, map services, generate report using the scenario-specific assessment guide → [functions assessment](references/services/functions/assessment.md) | [app-service assessment](references/services/app-service/assessment.md)
 3. **Migrate** — Convert code/config using the scenario-specific migration guide → [functions code-migration](references/services/functions/code-migration.md) | [app-service code-migration](references/services/app-service/code-migration.md)
 4. **Ask User** — "Migration complete. Test locally or deploy to Azure?"
-5. **Hand off** to azure-prepare for infrastructure, testing, and deployment
+5. **Hand off** to [azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md) for infrastructure, testing, and deployment
 
 Track progress in `migration-status.md` — see [workflow-details.md](../../../../../Global_References/workflow-details.md).
 

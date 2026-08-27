@@ -131,5 +131,5 @@ When implementing JavaScript features, provide:
 3. JSDoc documentation for public APIs
 4. Brief explanation of patterns used
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/javascript-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/javascript-pro/)
 

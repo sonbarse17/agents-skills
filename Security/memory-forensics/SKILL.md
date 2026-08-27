@@ -5,11 +5,11 @@ description: Master memory forensics techniques including memory acquisition, pr
 
 # Memory Forensics
 
-Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for incident response and malware analysis.
+Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response and malware analysis.
 
 ## When to Use This Skill
 
-- Performing memory analysis during incident response or breach investigation
+- Performing memory analysis during [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response or breach investigation
 - Extracting malware artifacts (processes, injected code, network connections) from a RAM capture
 - Acquiring volatile memory from a live Windows/Linux/macOS system before shutdown
 - Using Volatility 3 / Rekall to triage memory dumps
@@ -106,7 +106,7 @@ strings -a pid.<PID>.exe > strings.txt
 vol -f memory.raw windows.yarascan --yara-rules malware.yar
 ```
 
-### Incident Response Workflow
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Workflow
 
 ```bash
 # 1. Timeline of events
@@ -189,7 +189,7 @@ typedef struct _MMVAD {
 
 ### Process Injection Indicators
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Malfind indicators
 # - PAGE_EXECUTE_READWRITE protection (suspicious)
 # - MZ header in non-image VAD region

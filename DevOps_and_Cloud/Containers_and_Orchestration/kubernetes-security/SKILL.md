@@ -4,9 +4,9 @@ description: Hardens the cluster and its workloads — RBAC least-privilege, Pod
 license: MIT
 ---
 
-# Kubernetes Security
+# [Kubernetes](../kubernetes/SKILL.md) Security
 
-Kubernetes ships permissive by default: any pod gets a service-account token mountable for API
+[Kubernetes](../kubernetes/SKILL.md) ships permissive by default: any pod gets a service-account token mountable for API
 access, RBAC starts wide open until you constrain it, and nothing stops a container from running as
 root unless you tell it not to. Security here is subtractive work — removing default permissions the
 platform hands out for convenience, not adding a product on top.
@@ -23,19 +23,19 @@ grant than "edit everything."
 
 - **Prefer Role+RoleBinding over ClusterRole+ClusterRoleBinding** unless the permission genuinely
   spans namespaces — cluster-scoped grants are the ones that turn one compromised namespace into a
-  cluster-wide incident.
-- **Audit with `kubectl auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
+  cluster-wide [incident](../../Observability_and_SecOps/incident/SKILL.md).
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with `[kubectl](../kubectl/SKILL.md) auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
   the ground truth the API server actually enforces.
 - **Service accounts, not user credentials**, should hold workload permissions; humans get scoped
-  roles through your identity provider, see `iam-access-management`.
+  roles through your identity provider, see `[iam-access-management](../../Cloud_Providers/iam-access-management/SKILL.md)`.
 
-**Done when:** `kubectl auth can-i --list` for the workload's service account shows nothing beyond
+**Done when:** `[kubectl](../kubectl/SKILL.md) auth can-i --list` for the workload's service account shows nothing beyond
 what it demonstrably calls.
 
 ## 2. Turn off the automount you didn't ask for
 
 Every pod gets a service-account token mounted by default, whether or not it ever calls the
-Kubernetes API. That token is exactly what an attacker inside a compromised container reaches for
+[Kubernetes](../kubernetes/SKILL.md) API. That token is exactly what an attacker inside a compromised container reaches for
 first — disabling automount removes a capability most workloads never needed.
 
 ```yaml
@@ -43,11 +43,11 @@ spec:
   automountServiceAccountToken: false   # set at pod or ServiceAccount level
 ```
 
-Only workloads that genuinely call the API (controllers, operators — see `operators-and-crds`)
+Only workloads that genuinely call the API (controllers, operators — see `[operators-and-crds](../operators-and-crds/SKILL.md)`)
 should have a token, and it should be bound to a ServiceAccount scoped by rule 1, not `default`.
 
 **Done when:** `automountServiceAccountToken: false` is set for every workload that doesn't call the
-Kubernetes API.
+[Kubernetes](../kubernetes/SKILL.md) API.
 
 ## 3. Enforce Pod Security Standards at admission, not by convention
 
@@ -60,8 +60,8 @@ or an admission controller like Kyverno/OPA Gatekeeper turns "we ask people not 
   and a defined seccomp profile — treat it as the namespace-wide floor, not an aspiration.
 - **Custom policy beyond PSS** (require specific labels, block `:latest` tags, require resource
   limits) is what OPA/Kyverno add — write policies as code and test them like code; broader
-  organizational policy patterns live in `policy-as-code`.
-- **Warn-then-enforce rollout**: label a namespace `audit`/`warn` first, watch violations in logs,
+  organizational policy patterns live in `[policy-as-code](../../../Security/policy-as-code/SKILL.md)`.
+- **Warn-then-enforce rollout**: label a namespace `[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`/`warn` first, watch violations in logs,
   then flip to `enforce` — flipping straight to enforce breaks things you didn't know existed.
 
 **Done when:** every namespace has an enforced Pod Security Standard label, and no exceptions exist
@@ -69,7 +69,7 @@ without an explicit, documented reason.
 
 ## 4. Don't let secrets at rest mean secrets in cleartext
 
-A Kubernetes `Secret` is base64, not encrypted, by default — anyone with `get` on it or etcd access
+A [Kubernetes](../kubernetes/SKILL.md) `Secret` is base64, not encrypted, by default — anyone with `get` on it or etcd access
 reads it in plaintext. Encryption at rest (`EncryptionConfiguration` on the API server, or a KMS
 provider) and keeping actual secret material out of Git are separate problems that both need
 solving.
@@ -78,8 +78,8 @@ solving.
   most self-managed clusters.
 - **RBAC on `secrets` resources** should be as tight as anything in rule 1 — read access to Secrets
   is equivalent to read access to whatever they protect.
-- **For rotation, external stores, and injection patterns** (Vault, cloud KMS, External Secrets
-  Operator), that's the deeper subject of `secrets-management` — this skill only covers the
+- **For rotation, external stores, and injection patterns** ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), cloud KMS, External Secrets
+  Operator), that's the deeper subject of `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` — this skill only covers the
   in-cluster storage posture.
 
 **Done when:** encryption at rest is confirmed enabled and no application secret exists as a
@@ -87,7 +87,7 @@ plaintext file in version control.
 
 ## 5. Verify what you run, not just what you scanned
 
-Scanning an image for CVEs (`image-scanning`) tells you what's inside it; provenance tells you the
+Scanning an image for CVEs (`[image-scanning](../../../Security/image-scanning/SKILL.md)`) tells you what's inside it; provenance tells you the
 image you're running is the one you built, not something swapped in the registry or a compromised
 CI step. Without signature verification at admission, a scanned-clean image and a tampered one are
 indistinguishable to the cluster.
@@ -96,7 +96,7 @@ indistinguishable to the cluster.
   via admission policy — an unsigned or wrongly-signed image should be rejected, not logged.
 - **Pin by digest, not tag**, for anything security-sensitive — tags are mutable pointers.
 - **Supply-chain provenance beyond the cluster boundary** — SBOMs, build attestation — is
-  `supply-chain-security`; this rule is only about what the admission controller checks before
+  `[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)`; this rule is only about what the admission controller checks before
   scheduling.
 
 **Done when:** the admission controller rejects an unsigned or unverified image in a test run.
@@ -105,6 +105,6 @@ indistinguishable to the cluster.
 
 State the RBAC scope granted to each workload identity, whether automount is disabled by default,
 which Pod Security Standard is enforced per namespace, the secrets-at-rest encryption status, and
-whether image signature verification is active. Call out any namespace still in audit/warn mode
+whether image signature verification is active. Call out any namespace still in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/warn mode
 instead of enforce, or any workload still holding broader RBAC than it uses — naming the gap beats
 implying the cluster is fully locked down.

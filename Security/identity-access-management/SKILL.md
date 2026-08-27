@@ -18,15 +18,15 @@ Centralized identity management is not optional once your team exceeds a handful
 Reach for this skill when:
 
 - **First SSO setup** -- You are moving from individual app logins to centralized authentication.
-- **Compliance audit preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and audit logs.
+- **Compliance [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs.
 - **Team growth inflection** -- You are crossing 15-20 employees and manual onboarding/offboarding is becoming error-prone.
 - **Vendor security questionnaires** -- Customers are asking about your identity posture and you need to demonstrate controls.
-- **Incident response** -- You need to revoke access quickly across all systems for a departing or compromised user.
+- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
 
 Signs you are overdue:
 
 - Shared passwords in a spreadsheet or chat channel.
-- No central audit log of who accessed what and when.
+- No central [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log of who accessed what and when.
 - Offboarding takes more than one business day.
 - Developers have standing admin access to production.
 
@@ -100,7 +100,7 @@ gam print samlappinfo "Internal Dashboard"
 ```bash
 # Enable auto-provisioning for supported apps
 # Google Workspace supports automatic user provisioning for apps like:
-# Slack, Zoom, Box, Dropbox, Asana, GitHub Enterprise
+# Slack, Zoom, Box, Dropbox, Asana, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Enterprise
 
 # List provisioned apps
 gam print tokens
@@ -383,14 +383,14 @@ curl -s -H "Authorization: Bearer ${SLACK_SCIM_TOKEN}" \
   "https://api.slack.com/scim/v2/Users?count=5" | jq '.Resources[].userName'
 ```
 
-#### GitHub Organization SSO
+#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Organization SSO
 
 ```bash
-# Configure SAML for GitHub Org (requires GitHub Enterprise Cloud)
-# 1. GitHub Org Settings > Authentication security > Enable SAML
+# Configure SAML for [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Org (requires [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Enterprise Cloud)
+# 1. [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Org Settings > Authentication security > Enable SAML
 # 2. Provide IdP SSO URL, IdP issuer, public certificate from your IdP
 
-# Use GitHub CLI to verify SSO status
+# Use [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) CLI to verify SSO status
 gh api orgs/company/credential-authorizations --paginate \
   | jq '.[] | {login: .login, credential_type: .credential_type, authorized_at: .authorized_credential_note}'
 
@@ -604,8 +604,8 @@ Map every application permission to a group, never to an individual user.
 # Examples:
 #   aws-developer       -> AWS ReadOnly + deploy
 #   aws-admin           -> AWS AdministratorAccess
-#   github-engineer     -> GitHub write access
-#   github-admin        -> GitHub admin access
+#   [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-engineer     -> [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) write access
+#   [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-admin        -> [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) admin access
 #   slack-member        -> Slack standard member
 #   pagerduty-oncall    -> PagerDuty responder role
 
@@ -616,7 +616,7 @@ curl -s -X POST \
   "${OKTA_ORG_URL}/api/v1/groups/rules" \
   -d '{
     "type": "group_rule",
-    "name": "Auto-assign engineers to GitHub",
+    "name": "Auto-assign engineers to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)",
     "conditions": {
       "expression": {
         "value": "user.department == \"Engineering\"",
@@ -636,7 +636,7 @@ curl -s -X POST \
 # The user assumes a role that expires after a set duration
 aws sts assume-role \
   --role-arn "arn:aws:iam::123456789012:role/EmergencyAdmin" \
-  --role-session-name "alice-incident-2026-03-24" \
+  --role-session-name "alice-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-2026-03-24" \
   --duration-seconds 3600 \
   | jq '{AccessKeyId: .Credentials.AccessKeyId, Expiration: .Credentials.Expiration}'
 
@@ -680,12 +680,12 @@ az monitor activity-log alert create \
 
 ---
 
-## 9. Audit & Compliance
+## 9. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) & Compliance
 
-### Login Audit Logs
+### Login [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logs
 
 ```bash
-# Google Workspace: Pull login audit logs
+# Google Workspace: Pull login [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
 gam report login user all start "2026-03-01" end "2026-03-24" \
   fields "actorEmail,ipAddress,loginType,isSecondFactor,isSuspicious"
 
@@ -705,7 +705,7 @@ curl -s -H "Authorization: Bearer ${ACCESS_TOKEN}" \
 ```bash
 # List all users and their group memberships for quarterly access review
 # Google Workspace
-gam print group-members fields email,role > /tmp/access-review-groups.csv
+gam print group-members fields email,role > /tmp/[access-review](../access-review/SKILL.md)-groups.csv
 
 # Okta: Export all users with their app assignments
 curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
@@ -717,7 +717,7 @@ while IFS= read -r user_id; do
   curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
     "${OKTA_ORG_URL}/api/v1/users/${user_id}/appLinks" \
     | jq -r '.[] | [.label, .linkUrl] | @csv'
-done < /tmp/okta-user-ids.txt > /tmp/okta-access-review.csv
+done < /tmp/okta-user-ids.txt > /tmp/okta-[access-review](../access-review/SKILL.md).csv
 
 # Azure AD: List role assignments
 az role assignment list --all --query '[].{principal:principalName, role:roleDefinitionName, scope:scope}' -o table
@@ -802,7 +802,7 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   done
 
 # Step 5: Revoke app-specific tokens
-# GitHub: Remove from org
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md): Remove from org
 gh api -X DELETE "orgs/company/members/${DEPARTING_USER}"
 
 # Slack: Deactivate via SCIM
@@ -826,7 +826,7 @@ aws sso-admin delete-account-assignment \
   --principal-id "$AWS_SSO_USER_ID"
 
 # Step 6: Document and log
-echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | OFFBOARD | ${DEPARTING_USER} | all sessions revoked, account suspended, data transferred to manager@company.com" >> /var/log/offboarding-audit.log
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | OFFBOARD | ${DEPARTING_USER} | all sessions revoked, account suspended, data transferred to manager@company.com" >> /var/log/offboarding-[audit](../../AI_and_Agents/Operations/audit/SKILL.md).log
 ```
 
 ### Post-Offboarding Verification
@@ -845,10 +845,10 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   "${OKTA_ORG_URL}/api/v1/users/${DEPARTING_USER}" \
   | jq -r '.status' | grep -q "DEPROVISIONED" && echo "[OK] Okta deprovisioned" || echo "[FAIL] Okta still active"
 
-# GitHub
-gh api "orgs/company/members/${DEPARTING_USER}" 2>&1 | grep -q "404" && echo "[OK] GitHub removed" || echo "[FAIL] GitHub still member"
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+gh api "orgs/company/members/${DEPARTING_USER}" 2>&1 | grep -q "404" && echo "[OK] [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) removed" || echo "[FAIL] [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) still member"
 
-# Check for any remaining active sessions in audit logs
+# Check for any remaining active sessions in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
 echo "=== Checking for post-offboard activity ==="
 curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   "${OKTA_ORG_URL}/api/v1/logs?filter=actor.alternateId+eq+\"${DEPARTING_USER}\"&since=$(date -u +%Y-%m-%dT%H:%M:%SZ)&limit=10" \
@@ -865,5 +865,5 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
 | Suspend user | `gam update user suspended on` | `POST /lifecycle/deactivate` | `az ad user update --account-enabled false` |
 | Enforce MFA | `gam update org 2sv enforced` | MFA enrollment policy | Conditional access policy |
 | Revoke sessions | `gam user signout` | `DELETE /users/{id}/sessions` | `revokeSignInSessions` |
-| Audit logins | `gam report login` | `GET /api/v1/logs` | `GET /auditLogs/signIns` |
+| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logins | `gam report login` | `GET /api/v1/logs` | `GET /auditLogs/signIns` |
 | SCIM provision | Built-in for supported apps | App integration SCIM tab | Enterprise app provisioning |

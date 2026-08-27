@@ -301,10 +301,10 @@ Listing differentiators that are not actually different. "We have better custome
 
 | Metric | Target | How to Measure |
 |--------|--------|----------------|
-| Data source quality | > 80% sourced from primary or respected secondary sources | Source audit |
+| Data source quality | > 80% sourced from primary or respected secondary sources | Source [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 | TAM reconciliation | Top-down and bottom-up within 2x | Compare both methods |
 | Competitor coverage | Top 5-7 competitors analyzed | Count |
-| SWOT completeness | No empty quadrants | Quadrant audit |
+| SWOT completeness | No empty quadrants | Quadrant [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Analysis freshness | < 6 months old | Date check |
 
 ## Models
@@ -577,10 +577,10 @@ Collecting massive amounts of market data without drawing actionable conclusions
 
 | Metric | Target | How to Measure | Remediation |
 |--------|--------|----------------|-------------|
-| Data source quality | >80% primary or respected secondary | Source audit, citation count | Add 3+ sources per estimate |
+| Data source quality | >80% primary or respected secondary | Source [audit](../../AI_and_Agents/Operations/audit/SKILL.md), citation count | Add 3+ sources per estimate |
 | TAM reconciliation | Top-down and bottom-up within 2x | Compare both methods | Revisit segment % assumptions |
 | Competitor coverage | Top 7 competitors deep-dived | Count per competitor depth | Add missing competitors |
-| SWOT completeness | No empty quadrants, 3+ items each | Quadrant audit | Research gaps |
+| SWOT completeness | No empty quadrants, 3+ items each | Quadrant [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | Research gaps |
 | Analysis freshness | <6 months old | Date check | Schedule refresh |
 | Actions derived | 3+ actionable recommendations | Count in synthesis section | Add "What this means for us" |
 | Feature matrix accuracy | Validated by product use | Spot-check competitor features | Test products, not just website |

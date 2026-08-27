@@ -9,46 +9,46 @@ metadata:
   version: 0.1.0
 ---
 
-# Elasticsearch Audit Logging
+# Elasticsearch [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Enable and configure security audit logging for Elasticsearch via the cluster settings API. Audit logs record security
+Enable and configure security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for Elasticsearch via the cluster settings API. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs record security
 events such as authentication attempts, access grants and denials, role changes, and API key operations — essential for
-compliance and incident investigation.
+compliance and [incident](../incident/SKILL.md) investigation.
 
-For Kibana audit logging (saved object access, login/logout, space operations), see **kibana-audit**. For authentication
-and API key management, see **elasticsearch-authn**. For roles and user management, see **elasticsearch-authz**. For
-diagnosing security errors, see **elasticsearch-security-troubleshooting**.
+For Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging (saved object access, login/logout, space operations), see **[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)**. For authentication
+and API key management, see **[elasticsearch-authn](../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)**. For roles and user management, see **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)**. For
+diagnosing security errors, see **[elasticsearch-security-troubleshooting](../../../Software_Engineering_and_Other/Databases/elasticsearch-security-troubleshooting/SKILL.md)**.
 
 For detailed API endpoints and event types, see [../../../Global_References/elasticsearch-audit_api-reference.md](../../../Global_References/elasticsearch-audit_api-reference.md).
 
-> **Deployment note:** Audit logging configuration differs across deployment types. See
+> **Deployment note:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging configuration differs across deployment types. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
 
 ## Jobs to Be Done
 
-- Enable or disable security audit logging on a cluster
+- Enable or disable security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging on a cluster
 - Select which security events to record (authentication, access, config changes)
-- Create filter policies to reduce audit log noise
-- Query audit logs for failed authentication attempts
+- Create filter policies to reduce [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log noise
+- Query [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for failed authentication attempts
 - Investigate unauthorized access or privilege escalation incidents
-- Set up compliance-focused audit configuration
-- Detect brute-force login patterns from audit data
-- Configure audit output to an index for programmatic querying
+- Set up compliance-focused [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) configuration
+- Detect brute-force login patterns from [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) data
+- Configure [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) output to an index for programmatic querying
 
 ## Prerequisites
 
 | Item                   | Description                                                                |
 | ---------------------- | -------------------------------------------------------------------------- |
 | **Elasticsearch URL**  | Cluster endpoint (e.g. `https://localhost:9200` or a Cloud deployment URL) |
-| **Authentication**     | Valid credentials (see the elasticsearch-authn skill)                      |
+| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md) skill)                      |
 | **Cluster privileges** | `manage` cluster privilege to update cluster settings                      |
-| **License**            | Audit logging requires a gold, platinum, enterprise, or trial license      |
+| **License**            | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging requires a gold, platinum, enterprise, or trial license      |
 
 Prompt the user for any missing values.
 
-## Enable Audit Logging
+## Enable [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Enable audit logging dynamically without a restart:
+Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging dynamically without a restart:
 
 ```bash
 curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
@@ -56,26 +56,26 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.enabled": true
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).enabled": true
     }
   }'
 ```
 
-To disable, set `xpack.security.audit.enabled` to `false`. Verify current state:
+To disable, set `xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).enabled` to `false`. Verify current state:
 
 ```bash
 curl "${ELASTICSEARCH_URL}/_cluster/settings?include_defaults=true&flat_settings=true" \
-  <auth_flags> | jq '.defaults | with_entries(select(.key | startswith("xpack.security.audit")))'
+  <auth_flags> | jq '.defaults | with_entries(select(.key | startswith("xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)")))'
 ```
 
-## Audit Output
+## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Output
 
-Audit events can be written to two outputs. Both can be active simultaneously.
+[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events can be written to two outputs. Both can be active simultaneously.
 
 | Output      | Setting value | Description                                                    |
 | ----------- | ------------- | -------------------------------------------------------------- |
 | **logfile** | `logfile`     | Written to `<ES_HOME>/logs/<cluster>_audit.json`. Default.     |
-| **index**   | `index`       | Written to `.security-audit-*` indices. Queryable via the API. |
+| **index**   | `index`       | Written to `.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*` indices. Queryable via the API. |
 
 ### Configure output via API
 
@@ -85,21 +85,21 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.enabled": true,
-      "xpack.security.audit.outputs": ["index", "logfile"]
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).enabled": true,
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).outputs": ["index", "logfile"]
     }
   }'
 ```
 
-The `index` output is required for programmatic querying of audit events. The `logfile` output is useful for shipping to
+The `index` output is required for programmatic querying of [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events. The `logfile` output is useful for shipping to
 external SIEM tools via Filebeat.
 
-> **Note:** On self-managed clusters, `xpack.security.audit.outputs` may require a static setting in `elasticsearch.yml`
+> **Note:** On self-managed clusters, `xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).outputs` may require a static setting in `elasticsearch.yml`
 > on older versions (pre-8.x). On 8.x+, prefer the cluster settings API.
 
 ## Select Events to Record
 
-Control which event types are included or excluded. By default, all events are recorded when audit is enabled.
+Control which event types are included or excluded. By default, all events are recorded when [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is enabled.
 
 ### Include specific events only
 
@@ -109,7 +109,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.logfile.events.include": [
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.include": [
         "authentication_failed",
         "access_denied",
         "access_granted",
@@ -130,7 +130,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.logfile.events.exclude": [
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.exclude": [
         "access_granted"
       ]
     }
@@ -159,7 +159,7 @@ See [../../../Global_References/elasticsearch-audit_api-reference.md](../../../G
 
 ## Filter Policies
 
-Filter policies let you suppress specific audit events by user, realm, role, or index without disabling the event type
+Filter policies let you suppress specific [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events by user, realm, role, or index without disabling the event type
 globally. Multiple policies can be active — an event is logged only if **no** policy filters it out.
 
 ### Ignore system and internal users
@@ -170,7 +170,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.logfile.events.ignore_filters": {
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.ignore_filters": {
         "system_users": {
           "users": ["_xpack_security", "_xpack", "elastic/fleet-server"],
           "realms": ["_service_account"]
@@ -188,10 +188,10 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.logfile.events.ignore_filters": {
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.ignore_filters": {
         "health_checks": {
-          "users": ["monitoring-user"],
-          "indices": [".monitoring-*"]
+          "users": ["[monitoring](../monitoring/SKILL.md)-user"],
+          "indices": [".[monitoring](../monitoring/SKILL.md)-*"]
         }
       }
     }
@@ -220,19 +220,19 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.logfile.events.ignore_filters.health_checks": null
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.ignore_filters.health_checks": null
     }
   }'
 ```
 
-## Query Audit Events
+## Query [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Events
 
-When the `index` output is enabled, audit events are stored in `.security-audit-*` indices and can be queried.
+When the `index` output is enabled, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events are stored in `.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*` indices and can be queried.
 
 ### Search for failed authentication attempts
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -252,7 +252,7 @@ curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
 ### Search for access denied events on a specific index
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -273,7 +273,7 @@ curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
 ### Search for security configuration changes
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -298,22 +298,22 @@ Use `terms` aggregations on `event.action` (with `size: 0`) to count events by t
 brute-force attempts, aggregate `authentication_failed` events by `source.ip` with `min_doc_count: 5`. See
 [../../../Global_References/elasticsearch-audit_api-reference.md](../../../Global_References/elasticsearch-audit_api-reference.md) for full aggregation query examples.
 
-## Correlate with Kibana Audit Logs
+## Correlate with Kibana [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs
 
-Kibana has its own audit log covering application-layer events that Elasticsearch does not see (saved object CRUD,
+Kibana has its own [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log covering application-layer events that Elasticsearch does not see (saved object CRUD,
 Kibana logins, space operations). When a user performs an action in Kibana, Kibana makes requests to Elasticsearch on
 the user's behalf. Both systems record the same `trace.id` (passed via the `X-Opaque-Id` header), which serves as the
 primary correlation key.
 
-> **Prerequisite:** Kibana audit must be enabled separately in `kibana.yml`. See the **kibana-audit** skill for setup
+> **Prerequisite:** Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) must be enabled separately in `kibana.yml`. See the **[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)** skill for setup
 > instructions, event types, and Kibana-specific filter policies.
 
-### Find ES audit events triggered by a Kibana action
+### Find ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events triggered by a Kibana action
 
-Given a `trace.id` from a Kibana audit event, search the ES audit index to see the underlying Elasticsearch operations:
+Given a `trace.id` from a Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) event, search the ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) index to see the underlying Elasticsearch operations:
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -334,7 +334,7 @@ curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
 When `trace.id` is unavailable (e.g. direct API calls), fall back to user + time-window correlation:
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -354,15 +354,15 @@ Secondary correlation fields: `user.name`, `source.ip`, and `@timestamp`.
 
 ### Unified querying
 
-Ship Kibana audit logs to Elasticsearch via Filebeat (see **kibana-audit** for the Filebeat config) so that both
-`.security-audit-*` (ES) and `kibana-audit-*` (Kibana) indices can be searched together in a single multi-index query
+Ship Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs to Elasticsearch via Filebeat (see **[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)** for the Filebeat config) so that both
+`.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*` (ES) and `[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)-*` (Kibana) indices can be searched together in a single multi-index query
 filtered by `trace.id`.
 
 ## Examples
 
-### Enable audit logging for compliance
+### Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
 
-**Request:** "Enable audit logging and record all failed access and authentication events."
+**Request:** "Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging and record all failed access and authentication events."
 
 ```bash
 curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
@@ -370,8 +370,8 @@ curl -X PUT "${ELASTICSEARCH_URL}/_cluster/settings" \
   -H "Content-Type: application/json" \
   -d '{
     "persistent": {
-      "xpack.security.audit.enabled": true,
-      "xpack.security.audit.logfile.events.include": [
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).enabled": true,
+      "xpack.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).logfile.events.include": [
         "authentication_failed",
         "access_denied",
         "anonymous_access_denied",
@@ -388,10 +388,10 @@ This captures all denial and security change events while excluding high-volume 
 
 ### Investigate a suspected unauthorized access attempt
 
-**Request:** "Someone may have tried to access the `secrets-*` index. Check the audit logs."
+**Request:** "Someone may have tried to access the `secrets-*` index. Check the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs."
 
 ```bash
-curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
+curl -X POST "${ELASTICSEARCH_URL}/.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*/_search" \
   <auth_flags> \
   -H "Content-Type: application/json" \
   -d '{
@@ -411,18 +411,18 @@ curl -X POST "${ELASTICSEARCH_URL}/.security-audit-*/_search" \
 
 Review `user.name`, `source.ip`, and `event.action` in the results to identify the actor and pattern.
 
-### Reduce audit noise on a busy cluster
+### Reduce [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) noise on a busy cluster
 
-**Request:** "Audit logs are too large. Filter out monitoring traffic and successful reads."
+**Request:** "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs are too large. Filter out [monitoring](../monitoring/SKILL.md) traffic and successful reads."
 
-Exclude `access_granted` from event types, then add a filter policy for monitoring users and indices. See
+Exclude `access_granted` from event types, then add a filter policy for [monitoring](../monitoring/SKILL.md) users and indices. See
 [Filter Policies](#filter-policies) for the full syntax.
 
 ## Guidelines
 
 ### Prefer index output for programmatic access
 
-Enable the `index` output to make audit events queryable. The `logfile` output is better for shipping to external SIEM
+Enable the `index` output to make [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events queryable. The `logfile` output is better for shipping to external SIEM
 tools via Filebeat but cannot be queried through the Elasticsearch API.
 
 ### Start restrictive, then widen
@@ -434,15 +434,15 @@ only when needed — they generate high volume.
 
 Suppress specific users or indices with filter policies rather than excluding entire event types.
 
-### Monitor audit index size
+### Monitor [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) index size
 
-Set up an ILM policy to roll over and delete old `.security-audit-*` indices. A 30-90 day retention is typical.
+Set up an ILM policy to roll over and delete old `.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*` indices. A 30-90 day retention is typical.
 
-### Enable Kibana audit for full coverage
+### Enable Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for full coverage
 
-For application-layer events (saved object access, Kibana logins, space operations), enable Kibana audit logging as
-well. See the **kibana-audit** skill for setup. Use `trace.id` to correlate — see
-[Correlate with Kibana Audit Logs](#correlate-with-kibana-audit-logs) above.
+For application-layer events (saved object access, Kibana logins, space operations), enable Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging as
+well. See the **[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)** skill for setup. Use `trace.id` to correlate — see
+[Correlate with Kibana [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs](#correlate-with-[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)-logs) above.
 
 ### Avoid superuser credentials
 
@@ -450,19 +450,19 @@ Use a dedicated admin user or API key with `manage` privileges. Reserve `elastic
 
 ## Deployment Compatibility
 
-| Capability                           | Self-managed | ECH          | Serverless    |
+| Capability                           | Self-managed | ECH          | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)    |
 | ------------------------------------ | ------------ | ------------ | ------------- |
-| ES audit via cluster settings        | Yes          | Yes          | Not available |
+| ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) via cluster settings        | Yes          | Yes          | Not available |
 | ES logfile output                    | Yes          | Via Cloud UI | Not available |
 | ES index output                      | Yes          | Yes          | Not available |
 | Filter policies via cluster settings | Yes          | Yes          | Not available |
-| Query `.security-audit-*`            | Yes          | Yes          | Not available |
+| Query `.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-*`            | Yes          | Yes          | Not available |
 
-**ECH notes:** ES audit is configured via the cluster settings API. Logfile output is accessible through the Cloud
+**ECH notes:** ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is configured via the cluster settings API. Logfile output is accessible through the Cloud
 console deployment logs. Index output works the same as self-managed.
 
-**Serverless notes:**
+**[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) notes:**
 
-- Audit logging is not user-configurable on Serverless. Security events are managed by Elastic as part of the platform.
-- If a user asks about auditing on Serverless, direct them to the Elastic Cloud console or their account team.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging is not user-configurable on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). Security events are managed by Elastic as part of the platform.
+- If a user asks about auditing on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), direct them to the Elastic Cloud console or their account team.
 

@@ -9,6 +9,7 @@ import {
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import Fuse from "fuse.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +30,7 @@ interface Skill {
 class SkillRouterServer {
   private server: Server;
   private skills: Skill[] = [];
+  private fuse: Fuse<Skill> | null = null;
   private categories: Record<string, Record<string, number>> = {};
 
   constructor() {
@@ -83,7 +85,19 @@ class SkillRouterServer {
     
     try {
       walkDir(REPO_ROOT);
-      console.error(`Successfully indexed ${this.skills.length} skills.`);
+      
+      this.fuse = new Fuse(this.skills, {
+        keys: [
+          { name: 'name', weight: 0.5 },
+          { name: 'folder', weight: 0.2 },
+          { name: 'category', weight: 0.2 },
+          { name: 'description', weight: 0.1 }
+        ],
+        includeScore: true,
+        threshold: 0.4
+      });
+      
+      console.error(`Successfully indexed ${this.skills.length} skills with Fuse.js.`);
     } catch (err) {
       console.error("Error building index:", err);
     }
@@ -145,30 +159,6 @@ class SkillRouterServer {
     }
   }
 
-  private tokenize(text: string): string[] {
-    if (!text) return [];
-    text = text.toLowerCase();
-    text = text.replace(/[^\w\s-]/g, ' ');
-    return text.split(/\s+/).filter(w => w.length > 2);
-  }
-
-  private scoreSkill(userTokens: string[], skill: Skill): number {
-    let score = 0;
-    const skillName = skill.name.toLowerCase();
-    const skillFolder = skill.folder.toLowerCase();
-    const descTokens = this.tokenize(skill.description);
-    const catTokens = this.tokenize(skill.category);
-    
-    for (const token of userTokens) {
-      if (token === skillName || token === skillFolder) score += 10.0;
-      else if (skillName.includes(token) || skillFolder.includes(token)) score += 5.0;
-      
-      if (catTokens.includes(token)) score += 2.0;
-      if (descTokens.includes(token)) score += 1.0;
-    }
-    return score;
-  }
-
   private setupToolHandlers() {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: [
@@ -221,26 +211,24 @@ class SkillRouterServer {
         const query = String(request.params.arguments?.query || "");
         const limit = Number(request.params.arguments?.limit || 3);
         
-        const userTokens = this.tokenize(query);
-        if (userTokens.length === 0) {
+        if (!query || query.length < 2) {
           return { content: [{ type: "text", text: "Query too short." }] };
         }
         
-        const scored = this.skills.map(skill => ({
-          score: this.scoreSkill(userTokens, skill),
-          skill
-        })).filter(s => s.score > 0);
+        if (!this.fuse) {
+          return { content: [{ type: "text", text: "Index not ready." }] };
+        }
         
-        scored.sort((a, b) => b.score - a.score);
-        const topResults = scored.slice(0, limit);
+        const results = this.fuse.search(query, { limit });
         
-        if (topResults.length === 0) {
+        if (results.length === 0) {
           return { content: [{ type: "text", text: "No matching skills found." }] };
         }
         
-        const formatted = topResults.map((r, i) => {
-          const s = r.skill;
-          return `Match #${i + 1} (Score: ${r.score})\nName: ${s.name}\nPath: ${s.path}\nCategory: ${s.category} / ${s.subcategory}\nDescription: ${s.description.substring(0, 200)}...`;
+        const formatted = results.map((r, i) => {
+          const s = r.item;
+          const scoreDisplay = r.score !== undefined ? (1 - r.score).toFixed(2) : "N/A";
+          return `Match #${i + 1} (Score: ${scoreDisplay})\nName: ${s.name}\nPath: ${s.path}\nCategory: ${s.category} / ${s.subcategory}\nDescription: ${s.description.substring(0, 200)}...`;
         }).join("\n\n");
         
         return { content: [{ type: "text", text: formatted }] };
@@ -256,7 +244,15 @@ class SkillRouterServer {
           throw new McpError(ErrorCode.InvalidParams, `Skill file not found at: ${absPath}`);
         }
         
-        const content = fs.readFileSync(absPath, "utf-8");
+        let content = fs.readFileSync(absPath, "utf-8");
+        
+        // Phase 1: Silent Guardrail Injection
+        const guardrailsPath = path.join(REPO_ROOT, "Global_References", "core-security-guardrails.md");
+        if (fs.existsSync(guardrailsPath)) {
+          const guardrails = fs.readFileSync(guardrailsPath, "utf-8");
+          content += "\n\n" + guardrails;
+        }
+        
         return { content: [{ type: "text", text: content }] };
       }
 

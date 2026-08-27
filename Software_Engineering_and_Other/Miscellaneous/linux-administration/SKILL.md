@@ -23,7 +23,7 @@ Core Linux system administration skills for managing production servers, develop
 ## Prerequisites
 
 - Root or sudo access on the target system
-- SSH access configured (see `ssh-configuration` skill)
+- SSH access configured (see `[ssh-configuration](../ssh-configuration/SKILL.md)` skill)
 - Familiarity with a terminal text editor (vim, nano)
 - Package manager available (`apt` on Debian/Ubuntu, `dnf` on RHEL 8+/Fedora)
 
@@ -66,10 +66,10 @@ Pin: version 1.24.0-1ubuntu1
 Pin-Priority: 1001
 EOF
 
-# Add an external repository (example: Docker CE)
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-  > /etc/apt/sources.list.d/docker.list
+# Add an external repository (example: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) CE)
+curl -fsSL https://download.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive-keyring.gpg] https://download.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/linux/ubuntu $(lsb_release -cs) stable" \
+  > /etc/apt/sources.list.d/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).list
 apt update
 ```
 
@@ -344,8 +344,8 @@ firewall-cmd --list-all
 
 ## Related Skills
 
-- `ssh-configuration` -- Secure remote access to Linux servers
-- `user-management` -- Create and manage users, groups, and sudo
-- `systemd-services` -- Write and manage systemd unit files
-- `performance-tuning` -- Kernel and application performance optimization
-- `backup-recovery` -- Protect server data with automated backups
+- `[ssh-configuration](../ssh-configuration/SKILL.md)` -- Secure remote access to Linux servers
+- `[user-management](../user-management/SKILL.md)` -- Create and manage users, groups, and sudo
+- `[systemd-services](../systemd-services/SKILL.md)` -- Write and manage systemd unit files
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Kernel and application performance optimization
+- `[backup-recovery](../../../DevOps_and_Cloud/Cloud_Providers/backup-recovery/SKILL.md)` -- Protect server data with automated backups

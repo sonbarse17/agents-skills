@@ -86,9 +86,9 @@ Framework?
   |     |-- ngx-translate (runtime)
   |
   |-- Svelte -->
-  |     |-- svelte-i18n or sveltekit-i18n
+  |     |-- svelte-i18n or [sveltekit](../sveltekit/SKILL.md)-i18n
   |
-  |-- Cross-framework / monorepo -->
+  |-- Cross-framework / [monorepo](../monorepo/SKILL.md) -->
         |-- i18next (framework-agnostic adapter)
 ```
 
@@ -164,7 +164,7 @@ locales/
 Namespaced translation files. Lazy-load namespaces on demand. Each namespace is a flat JSON file with dot-separated keys.
 
 ### 3. Locale Detection & Persistence
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Priority: URL > localStorage > cookie > navigator.language > fallback
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
@@ -180,7 +180,7 @@ i18n.use(LanguageDetector).init({
 ```
 
 ### 4. Translation Usage
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Key-based translation with interpolation
 t('auth.welcome', { name: 'Alice' })
 // → "Welcome, Alice!"
@@ -198,7 +198,7 @@ t('common.status', { context: status })
 ```
 
 ### 5. ICU Message Format (FormatJS)
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { FormattedMessage, useIntl } from 'react-intl'
 
 // Component
@@ -213,7 +213,7 @@ formatMessage({ defaultMessage: 'Hello {name}' }, { name: 'Bob' })
 ```
 
 ### 6. RTL Support
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Detect direction from locale
 const isRTL = ['ar', 'he', 'fa', 'ur'].includes(locale)
 document.documentElement.dir = isRTL ? 'rtl' : 'ltr'
@@ -232,7 +232,7 @@ Prefer CSS logical properties over hardcoded left/right:
 Logical properties automatically flip in RTL mode: `margin-inline-start` → right margin in RTL, `padding-inline-end` → left padding in RTL, `border-inline-start` → right border in RTL, `inset-inline-start` → right positioning in RTL.
 
 ### 7. Date & Number Formatting
-```typescript
+```[typescript](../typescript/SKILL.md)
 // i18next
 new Date().toLocaleDateString(locale, { dateStyle: 'long' })
 new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' }).format(amount)
@@ -246,7 +246,7 @@ import { FormattedDate, FormattedNumber } from 'react-intl'
 ```
 
 ### 8. SSR Locale Detection
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Next.js i18n (simpler approach — use middleware)
 // Or accept-language header parsing
 import acceptLanguage from 'accept-language'
@@ -259,7 +259,7 @@ export function getLocaleFromHeaders(request: Request): string {
 ```
 
 ### 9. Lazy Loading
-```typescript
+```[typescript](../typescript/SKILL.md)
 i18n.use(initReactI18next).init({
   resources: {}, // start empty
   partialBundledLanguages: true,
@@ -273,7 +273,7 @@ async function loadNamespace(locale: string, ns: string) {
 ```
 
 ### 10. Testing with i18n
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { render } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n-test-config' // test-only config
@@ -284,7 +284,7 @@ function renderWithI18n(ui: React.ReactElement) {
 ```
 
 ### 11. Locale-Specific Number Formatting
-```typescript
+```[typescript](../typescript/SKILL.md)
 const formatters = {
   currency: (locale: string, amount: number, currency: string) =>
     new Intl.NumberFormat(locale, { style: 'currency', currency }).format(amount),
@@ -302,7 +302,7 @@ formatters.percent('en-US', 0.25)           // "25%"
 ## Common Pitfalls
 
 ### 1. Hardcoded Strings in Components
-```typescript
+```[typescript](../typescript/SKILL.md)
 // BAD -- hardcoded string, cannot be translated
 <h2>Welcome back, {name}!</h2>
 
@@ -333,7 +333,7 @@ When a translation key is missing in the target locale, the app should fall back
 | Pluralization | Built-in | Built-in | Built-in | Built-in |
 | Lazy loading | Built-in | Manual | Manual | Build-time |
 | SSR support | Yes | Yes | Yes (Nuxt) | Build-time |
-| TypeScript support | Good | Good | Good | Built-in |
+| [TypeScript](../typescript/SKILL.md) support | Good | Good | Good | Built-in |
 | Bundle size | ~10KB | ~5KB | ~6KB | 0KB (compile-time) |
 | Framework agnostic | Yes | React only | Vue only | Angular only |
 
@@ -379,7 +379,7 @@ CSS logical properties have negligible performance cost. Flipping layout on loca
 10. Translation interpolation escapes HTML by default to prevent XSS.
 
 ## References
-  - ../../../Global_References/i18n-build-optimization.md — i18n Build Optimization
+  - ../../../Global_References/i18n-[build-optimization](../../../DevOps_and_Cloud/CI_CD/build-optimization/SKILL.md).md — i18n Build Optimization
   - ../../../Global_References/i18n-implementation.md — i18n Implementation
   - ../../../Global_References/i18n-libraries.md — i18n Libraries
   - ../../../Global_References/i18n-testing.md — i18n Testing
@@ -394,7 +394,7 @@ Carry forward: locale list, RTL requirement, i18n library, lazy loading strategy
 
 ### i18next Configuration
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -511,7 +511,7 @@ What framework and requirements?
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |

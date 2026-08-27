@@ -17,7 +17,7 @@ Build real-time web applications using the Azure Web PubSub SDK for Java.
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-webpubsub</artifactId>
+    <artifactId>[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsub</artifactId>
     <version>1.5.0</version>
 </dependency>
 ```

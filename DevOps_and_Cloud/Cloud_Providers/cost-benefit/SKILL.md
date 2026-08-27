@@ -99,7 +99,7 @@ Set the analysis boundaries: what is included, what is excluded, and the time ho
 Build costs: labor (dev, QA, PM, DevOps), infrastructure (dev/staging/prod), tools and licenses, training, migration, ongoing maintenance (20% of build cost annually). Buy costs: subscription or license fees, implementation services, customization, integration, training, ongoing support fees.
 
 ### Step 3: Quantify Benefits
-Efficiency: hours saved × loaded labor rate. Revenue: new feature impact, conversion improvement, time-to-market reduction. Risk reduction: avoided incident costs, compliance penalty avoidance, SLA breach prevention. Intangible: team capability building, strategic positioning.
+Efficiency: hours saved × loaded labor rate. Revenue: new feature impact, conversion improvement, time-to-market reduction. Risk reduction: avoided [incident](../../Observability_and_SecOps/incident/SKILL.md) costs, compliance penalty avoidance, SLA breach prevention. Intangible: team capability building, strategic positioning.
 
 ### Step 4: Calculate ROI and NPV
 ROI = (Total Benefits - Total Costs) / Total Costs × 100%. NPV = Σ(Benefit_t - Cost_t) / (1 + r)^t over time horizon. Payback period = time to cumulative net benefit > 0. Use discount rate r (default 10%, adjust for risk).
@@ -117,7 +117,7 @@ Proceed: positive NPV, strong ROI, acceptable payback period. Reject: negative N
 |----------|-----------|-------------------|--------------------|
 | Labor | Dev, QA, PM, DevOps, Design | Headcount × loaded rate | +X% escalation |
 | Infrastructure | Cloud (dev/staging/prod), CI/CD | Monthly × 12 | Scales with usage |
-| Tools | IDE licenses, project mgmt, monitoring | Per-seat × team | Per-seat × team |
+| Tools | IDE licenses, project mgmt, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | Per-seat × team | Per-seat × team |
 | Training | Onboarding, certifications | One-time | Reduced yearly |
 | Migration | Data migration, integration | One-time | — |
 | Maintenance | Bug fixes, updates, support | — | 20% of build cost |
@@ -157,8 +157,8 @@ Annual revenue impact: $600,000
 
 ### Risk Reduction
 ```
-Current incident frequency: 12/year
-Average incident cost: $25,000 (downtime + recovery)
+Current [incident](../../Observability_and_SecOps/incident/SKILL.md) frequency: 12/year
+Average [incident](../../Observability_and_SecOps/incident/SKILL.md) cost: $25,000 (downtime + recovery)
 Expected reduction: 75%
 Annual savings: 12 × $25,000 × 75% = $225,000
 Compliance penalty avoidance: $100,000/year
@@ -531,7 +531,7 @@ Showing 5-year projections with dollar precision when year 5 estimates are essen
 | Payback period | < 3 years | Cumulative cash flow | Focus on quicker wins |
 | Sensitivity pass | NPV positive at ±20% | Sensitivity table | Strengthen business case |
 | Build vs buy delta | > 20% advantage | Compare TCO options | Re-evaluate both options |
-| Assumption accuracy | Within 20% of actual 1yr | Post-implementation audit | Improve estimation process |
+| Assumption accuracy | Within 20% of actual 1yr | Post-implementation [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | Improve estimation process |
 | Stakeholder confidence | > 80% agree with recommendation | Survey reviewers | Address concerns in analysis |
 
 ## CBA Quality Checklist

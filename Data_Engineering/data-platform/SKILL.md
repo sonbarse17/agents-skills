@@ -195,7 +195,7 @@ Primary workload?
 ├── Batch ETL, large-scale transformations
 │   └── Apache Spark
 │       ├── Databricks platform → Delta + Photon
-│       ├── Kubernetes → Spark Operator
+│       ├── [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Spark Operator
 │       └── EMR → Spark + Hive Metastore
 ├── Interactive SQL, ad-hoc analytics
 │   ├── Open-source → Trino
@@ -207,7 +207,7 @@ Primary workload?
     └── Spark for feature engineering, dedicated ML framework for training
 ```
 
-#### Spark Deployment Config (Kubernetes)
+#### Spark Deployment Config ([Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
 
 ```yaml
 # spark-operator config
@@ -270,9 +270,9 @@ config:
         iceberg.catalog.type: hive
         iceberg.file-format: PARQUET
         hive.metastore.uri: thrift://hive-metastore:9083
-    postgresql:
-      - connector.name: postgresql
-        connection-url: jdbc:postgresql://prod-db:5432/analytics
+    [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
+      - connector.name: [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+        connection-url: jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://prod-db:5432/analytics
         connection-user: trino
         connection-password: ${TRINO_PG_PASSWORD}
 additionalCatalogs:
@@ -434,21 +434,21 @@ Layer that queries across sources without moving data. Dremio, Starburst (Trino)
 Private networking for all inter-component communication. VPC/subnet isolation: data plane in private subnets, control plane in private with limited egress. S3 VPC Endpoints or Gateway Endpoints for accessing object stores without public internet. K8s network policies for pod-to-pod traffic. TLS termination at ingress.
 
 ### Authentication and Authorization
-Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastore). OAuth2/OIDC for user authentication to query engines and catalogs. RBAC: roles with least-privilege access to data assets. Row-level security: apply in query engine (Trino view security, Spark column masking). Audit all data access via catalog lineage.
+Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastore). OAuth2/OIDC for user authentication to query engines and catalogs. RBAC: roles with least-privilege access to data assets. Row-level security: apply in query engine (Trino view security, Spark column masking). [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all data access via catalog lineage.
 
 ### Data Encryption
-Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key Vault). Bring Your Own Key (BYOK) for compliance.
+Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
 
-## Platform Monitoring
+## Platform [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
-### Infrastructure Monitoring
+### Infrastructure [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 Object store: request rates, error rates (4xx/5xx), latency p99, data transfer. Compute: CPU/memory/disk utilization, query concurrency, queue depth, job duration. Networking: bandwidth, connection counts, TLS handshake failures.
 
-### Data Pipeline Monitoring
+### Data Pipeline [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 Pipeline health: success rate, duration, rows processed. Data quality: row count anomalies, freshness lag, schema changes. Cost tracking: storage costs (per bucket), compute costs (per job/query), data transfer costs.
 
-### Observability Stack
-Metrics: Prometheus + Grafana dashboards. Logs: ELK/Loki + structured logging. Tracing: OpenTelemetry for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
+### [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Stack
+Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
 
 ## Rules
 - Open table formats are mandatory for data lakes — no raw Parquet.
@@ -465,12 +465,12 @@ Metrics: Prometheus + Grafana dashboards. Logs: ELK/Loki + structured logging. T
 - Automate platform provisioning with Infrastructure as Code.
 
 ## References
-  - ../../../Global_References/cross-cloud-setup.md — Cross-Cloud Data Platform Setup
+  - ../../../Global_References/cross-[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
   - ../../../Global_References/data-catalog-virtualization.md — Data Catalog & Virtualization
   - ../../../Global_References/data-platform-advanced.md — Data Platform Advanced Topics
   - ../../../Global_References/data-platform-architecture.md — Data Platform Architecture
   - ../../../Global_References/data-platform-fundamentals.md — Data Platform Fundamentals
-  - ../../../Global_References/k8s-for-data.md — Kubernetes for Data Workloads
+  - ../../../Global_References/k8s-for-data.md — [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) for Data Workloads
   - ../../../Global_References/platform-architecture.md — Data Platform Architecture
   - ../../../Global_References/platform-decision-tree.md — Platform Decision Tree
   - ../../../Global_References/platform-tools-comparison.md — Platform Tools Comparison
@@ -482,7 +482,7 @@ Data Platform Architecture
 │   ├── SaaS → Snowflake / Databricks / BigQuery
 │   ├── Self-managed → Trino + Hive Metastore + Spark
 │   └── Hybrid → Managed storage + self-managed compute
-├── Multi-cloud required?
+├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) required?
 │   ├── Yes → Iceberg + Trino (cloud-agnostic)
 │   └── No → Cloud-native (Redshift, BigQuery, Synapse)
 ├── Streaming workloads?
@@ -498,7 +498,7 @@ Data Platform Architecture
 ## Implementation Patterns
 
 ### Platform Provisioning API
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_platform/provisioning.py
 from pydantic import BaseModel
 from enum import Enum
@@ -543,7 +543,7 @@ stack:
     default_format: iceberg
   tools:
     - dbt (transformations)
-    - superset (dashboards)
+    - superset ([dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
     - datahub (catalog)
   access:
     users: [team-marketing]
@@ -553,9 +553,9 @@ stack:
 ## Production Considerations
 
 - **Cost governance**: Tag all resources with cost center, domain, and environment; alert on cost anomalies.
-- **Multi-tenancy**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
-- **Provisioning automation**: Infrastructure-as-code (Terraform) for all platform components; self-serve via API.
-- **Observability**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing (OpenTelemetry) across platform.
+- **[Multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
+- **Provisioning automation**: [Infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
+- **[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)) across platform.
 - **Backup & DR**: Cross-region replication for catalog metadata; daily backups of Hive Metastore/Nessie.
 - **Version upgrades**: Rolling upgrades for query engines; maintain compatibility matrix for dbt versions.
 
@@ -581,9 +581,9 @@ stack:
 
 - **IAM hierarchy**: Define IAM roles per domain with least privilege; platform-admin role heavily restricted.
 - **Network security**: Deploy platform in private VPC with VPC endpoints for S3, Glue, and other services.
-- **Secrets management**: Centralize secrets in Vault/AWS Secrets Manager; never in config files or env vars.
+- **Secrets management**: Centralize secrets in [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/AWS Secrets Manager; never in config files or env vars.
 - **Data encryption**: SSE-S3 default for all storage; KMS for sensitive datasets with key rotation.
-- **Compliance**: Encrypt audit logs for 7-year retention; support GDPR right-to-deletion workflows.
+- **Compliance**: Encrypt [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for 7-year retention; support GDPR right-to-deletion workflows.
 
 ## Handoff
 For ETL pipeline implementation, hand off to `etl-pipeline`. For data warehouse modeling, hand off to `data-warehouse`. For streaming, hand off to `streaming`.

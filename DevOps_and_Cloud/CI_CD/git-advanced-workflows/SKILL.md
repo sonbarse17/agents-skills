@@ -9,7 +9,7 @@ Master advanced Git techniques to maintain clean history, collaborate effectivel
 
 ## When to Use This Skill
 
-- Cleaning up commit history before merging
+- Cleaning up [commit](../commit/SKILL.md) history before merging
 - Applying specific commits across branches
 - Finding commits that introduced bugs
 - Working on multiple features simultaneously
@@ -26,12 +26,12 @@ Interactive rebase is the Swiss Army knife of Git history editing.
 
 **Common Operations:**
 
-- `pick`: Keep commit as-is
-- `reword`: Change commit message
-- `edit`: Amend commit content
-- `squash`: Combine with previous commit
+- `pick`: Keep [commit](../commit/SKILL.md) as-is
+- `reword`: Change [commit](../commit/SKILL.md) message
+- `edit`: Amend [commit](../commit/SKILL.md) content
+- `squash`: Combine with previous [commit](../commit/SKILL.md)
 - `fixup`: Like squash but discard message
-- `drop`: Remove commit entirely
+- `drop`: Remove [commit](../commit/SKILL.md) entirely
 
 **Basic Usage:**
 
@@ -42,7 +42,7 @@ git rebase -i HEAD~5
 # Rebase all commits on current branch
 git rebase -i $(git merge-base HEAD main)
 
-# Rebase onto specific commit
+# Rebase onto specific [commit](../commit/SKILL.md)
 git rebase -i abc123
 ```
 
@@ -51,7 +51,7 @@ git rebase -i abc123
 Apply specific commits from one branch to another without merging entire branches.
 
 ```bash
-# Cherry-pick single commit
+# Cherry-pick single [commit](../commit/SKILL.md)
 git cherry-pick abc123
 
 # Cherry-pick range of commits (exclusive start)
@@ -60,25 +60,25 @@ git cherry-pick abc123..def456
 # Cherry-pick without committing (stage changes only)
 git cherry-pick -n abc123
 
-# Cherry-pick and edit commit message
+# Cherry-pick and edit [commit](../commit/SKILL.md) message
 git cherry-pick -e abc123
 ```
 
 ### 3. Git Bisect
 
-Binary search through commit history to find the commit that introduced a bug.
+Binary search through [commit](../commit/SKILL.md) history to find the [commit](../commit/SKILL.md) that introduced a bug.
 
 ```bash
 # Start bisect
 git bisect start
 
-# Mark current commit as bad
+# Mark current [commit](../commit/SKILL.md) as bad
 git bisect bad
 
-# Mark known good commit
+# Mark known good [commit](../commit/SKILL.md)
 git bisect good v1.0.0
 
-# Git will checkout middle commit - test it
+# Git will checkout middle [commit](../commit/SKILL.md) - test it
 # Then mark as good or bad
 git bisect good  # or: git bisect bad
 
@@ -129,9 +129,9 @@ git reflog
 # View reflog for specific branch
 git reflog show feature/branch
 
-# Restore deleted commit
+# Restore deleted [commit](../commit/SKILL.md)
 git reflog
-# Find commit hash
+# Find [commit](../commit/SKILL.md) hash
 git checkout abc123
 git branch recovered-branch
 
@@ -148,8 +148,8 @@ Detailed pattern documentation lives in `../../../Global_References/git-advanced
 
 1. **Always Use --force-with-lease**: Safer than --force, prevents overwriting others' work
 2. **Rebase Only Local Commits**: Don't rebase commits that have been pushed and shared
-3. **Descriptive Commit Messages**: Future you will thank present you
-4. **Atomic Commits**: Each commit should be a single logical change
+3. **Descriptive [Commit](../commit/SKILL.md) Messages**: Future you will thank present you
+4. **Atomic Commits**: Each [commit](../commit/SKILL.md) should be a single logical change
 5. **Test Before Force Push**: Ensure history rewrite didn't break anything
 6. **Keep Reflog Aware**: Remember reflog is your safety net for 90 days
 7. **Branch Before Risky Operations**: Create backup branch before complex rebases
@@ -172,7 +172,7 @@ git reset --hard backup-branch
 - **Losing Work in Rebase**: Resolve conflicts carefully, test after rebase
 - **Forgetting Worktree Cleanup**: Orphaned worktrees consume disk space
 - **Not Backing Up Before Experiment**: Always create safety branch
-- **Bisect on Dirty Working Directory**: Commit or stash before bisecting
+- **Bisect on Dirty Working Directory**: [Commit](../commit/SKILL.md) or stash before bisecting
 
 ## Recovery Commands
 
@@ -183,13 +183,13 @@ git merge --abort
 git cherry-pick --abort
 git bisect reset
 
-# Restore file to version from specific commit
+# Restore file to version from specific [commit](../commit/SKILL.md)
 git restore --source=abc123 path/to/file
 
-# Undo last commit but keep changes
+# Undo last [commit](../commit/SKILL.md) but keep changes
 git reset --soft HEAD^
 
-# Undo last commit and discard changes
+# Undo last [commit](../commit/SKILL.md) and discard changes
 git reset --hard HEAD^
 
 # Recover deleted branch (within 90 days)

@@ -15,11 +15,11 @@ metadata:
   maturity: stable
 ---
 
-# MongoDB Configuration Validation
+# [MongoDB](../../Backend/mongodb/SKILL.md) Configuration Validation
 
 ## Purpose
 
-MongoDB's flexibility — reconfiguring a replica set, resharding a
+[MongoDB](../../Backend/mongodb/SKILL.md)'s flexibility — reconfiguring a replica set, resharding a
 collection, adding an index — makes it easy to apply a change that looks
 fine in the shell but has a consequence that only surfaces under
 production load: a replica set reconfiguration that breaks voting quorum
@@ -27,7 +27,7 @@ math, a shard key that seemed reasonable in a sample but has terrible
 real-world cardinality, or a foreground index build that stalls writes
 on a busy primary. This skill is the pre-production validation gate for
 those changes, complementing the operational depth in
-[mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md).
+[mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -39,7 +39,7 @@ those changes, complementing the operational depth in
   collection.
 - Before changing `writeConcern`/`readConcern` defaults, or introducing a
   `readPreference` change to an application that reads from secondaries.
-- As a review gate for infrastructure-as-code that manages MongoDB
+- As a review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) that manages [MongoDB](../../Backend/mongodb/SKILL.md)
   replica set/sharding topology.
 
 ## Prerequisites & environment
@@ -48,7 +48,7 @@ those changes, complementing the operational depth in
   (`rs.conf()`, `rs.status()`, `sh.status()`, `db.collection.stats()`);
   `clusterAdmin`/`dbAdmin` only needed to actually apply validated
   changes.
-- MongoDB 5.0+ assumed for command syntax below; note explicitly where
+- [MongoDB](../../Backend/mongodb/SKILL.md) 5.0+ assumed for command syntax below; note explicitly where
   behavior differs on older supported versions (e.g. `reshardCollection`
   requires 4.4+, `replSetResizeOplog` requires 3.6+).
 - Access to representative production data (or a realistic sample) for
@@ -70,12 +70,12 @@ cfg.members.forEach(m => print(m.host, m.votes, m.priority, m.arbiterOnly))
 ```
 A replica set needs a **majority of voting members** reachable to elect
 a primary and to accept majority-acknowledged writes. Validate:
-- Total voting members should be odd (max 7 voting members is a MongoDB
+- Total voting members should be odd (max 7 voting members is a [MongoDB](../../Backend/mongodb/SKILL.md)
   hard limit) — an even number of voters risks an election tie with no
   majority achievable, stalling failover indefinitely until the tie is
   broken by a member coming back.
 - Adding a single new member with `votes: 1` to an existing set with an
-  even total is a common mistake made "to add capacity" that actually
+  even total is a common mistake made "to add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)" that actually
   degrades quorum math — validate the resulting total, not just that the
   new member itself looks reasonable.
 - An arbiter counts as a voting member but never holds data or can
@@ -123,14 +123,14 @@ db.orders.stats().count          // collection size
 db.currentOp({ "command.createIndexes": { $exists: true } })  // check for an in-progress build
 ```
 Confirm the index build will run in the background/online mode
-appropriate to the MongoDB version in use (default online builds since
+appropriate to the [MongoDB](../../Backend/mongodb/SKILL.md) version in use (default online builds since
 4.2), and — critically — confirm it will be run as a **rolling build**
 (secondaries first, each stepped out of the effective read path via
 `readPreference` before its build starts, then the primary) for a large
 collection on a busy replica set, rather than a single foreground build
 against the primary. Validate the collection's current size and expected
 build duration against a maintenance window if the workload cannot
-tolerate any degraded secondary read capacity during the build.
+tolerate any degraded secondary read [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) during the build.
 
 ### 4. Validate `writeConcern`/`readConcern` changes against the actual durability requirement
 
@@ -140,7 +140,7 @@ db.orders.insertOne({...}, { writeConcern: { w: "majority", wtimeout: 5000 } })
 - `w: 1` (default in some driver configs) acknowledges a write once the
   primary applies it, with no guarantee it's replicated anywhere —
   survivable data loss on primary failure. Validate that any collection
-  storing data where loss is unacceptable (financial, audit) uses
+  storing data where loss is unacceptable (financial, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)) uses
   `w: "majority"` explicitly, not an inherited driver default.
 - Validate `wtimeout` is set to a sane, non-zero value — an unbounded
   wait for majority acknowledgment during a replica set election or
@@ -176,19 +176,19 @@ key validation specifically) before scheduling the production change.
   durability requirements as a finding to flag, not a silent default to
   accept.
 - Bake shard-key and index-build validation into the review process for
-  infrastructure-as-code-managed MongoDB schemas/topology, not just as
+  [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-managed [MongoDB](../../Backend/mongodb/SKILL.md) schemas/topology, not just as
   manual shell-command review.
 
 ## Common pitfalls
 
-- **Symptom:** After adding a new replica set member "for read capacity,"
+- **Symptom:** After adding a new replica set member "for read [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),"
   the set fails to elect a primary during a later single-node outage that
   previously would have been survivable.
   **Fix:** The new member's vote pushed the total voting member count to
   an even number, so a single-node loss can produce a tie with no
   majority achievable. Recompute total voters after every membership
   change and keep the total odd — consider `votes: 0` for a member
-  that's meant to be read-capacity-only, not a failover participant.
+  that's meant to be read-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-only, not a failover participant.
 
 - **Symptom:** A shard key validated against a small staging dataset
   looked evenly distributed, but in production one shard receives a
@@ -227,7 +227,7 @@ key validation specifically) before scheduling the production change.
   started — always validate the target shard key against real
   cardinality/skew data first (step 2 above), and schedule
   `reshardCollection` for a low-traffic maintenance window with
-  monitoring on cluster resource usage throughout, since it competes
+  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on cluster resource usage throughout, since it competes
   for I/O and CPU with live traffic for its full duration.
 
 ## Worked example
@@ -271,6 +271,6 @@ support a new reporting query.
 
 ## Cross-references
 
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — the operational depth (shard key mechanics, replica set election tuning, index build behavior) this skill's validation checks are grounded in.
-- [postgresql-configuration-validation](../postgresql-configuration-validation/SKILL.md) — comparable pre-production configuration validation discipline applied to PostgreSQL, useful as a pattern reference in a polyglot database environment.
-- [redis-configuration-validation](../redis-configuration-validation/SKILL.md) — comparable validation approach for Redis maxmemory/eviction/cluster settings, if the same platform runs both.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — the operational depth (shard key mechanics, replica set election tuning, index build behavior) this skill's validation checks are grounded in.
+- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline applied to [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a pattern reference in a polyglot database environment.
+- [redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md) — comparable validation approach for Redis maxmemory/eviction/cluster settings, if the same platform runs both.

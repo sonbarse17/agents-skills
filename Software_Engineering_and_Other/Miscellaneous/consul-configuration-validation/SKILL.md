@@ -29,7 +29,7 @@ these fail loudly — they fail by having no effect, which is worse,
 because the operator believes the change is live. This skill covers the
 validation commands that catch these gaps before (or immediately after)
 applying, distinct from
-[consul-service-mesh-and-discovery-configuration](../consul-service-mesh-and-discovery-configuration/SKILL.md),
+[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md),
 which covers writing the mesh/discovery configuration in the first
 place.
 
@@ -38,7 +38,7 @@ place.
 - Before applying a new or changed service definition, config entry
   (`service-resolver`/`service-splitter`/`service-router`/
   `service-intentions`), or agent configuration file to a production
-  datacenter.
+  [datacenter](../datacenter/SKILL.md).
 - Confirming an intention actually produces the intended allow/deny
   decision for a specific source/destination pair, rather than trusting
   the HCL reads correctly.
@@ -46,12 +46,12 @@ place.
   appears applied but has no observable effect on traffic.
 - Wiring Consul config validation into CI so a bad service definition or
   intention is caught in review rather than after `consul config write`.
-- Auditing an existing datacenter's intentions for unintended
+- Auditing an existing [datacenter](../datacenter/SKILL.md)'s intentions for unintended
   wildcard-allow rules before a security review.
 
 ## Prerequisites & environment
 
-- The `consul` CLI matching (or compatible with) the target datacenter's
+- The `consul` CLI matching (or compatible with) the target [datacenter](../datacenter/SKILL.md)'s
   server version, with network access to at least one server/agent for
   live checks (`consul intention check`, `consul catalog`).
 - Read access to the Consul HTTP API (a valid ACL token if ACLs are
@@ -60,10 +60,10 @@ place.
   checking.
 - For CI-integrated validation: either a disposable Consul dev-mode
   instance (`consul agent -dev`) to apply candidate config entries
-  against, or a non-production datacenter that mirrors production
+  against, or a non-production [datacenter](../datacenter/SKILL.md) that mirrors production
   topology closely enough that subset/intention checks are meaningful.
-- `consul-k8s`-managed CRDs (on Kubernetes) can additionally be
-  validated with standard `kubectl apply --dry-run=server`, which
+- `consul-k8s`-managed CRDs (on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) can additionally be
+  validated with standard `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server`, which
   catches schema errors but not the semantic gaps (subset mismatches,
   unreachable intentions) that need a live `consul intention check`.
 
@@ -133,7 +133,7 @@ place.
    ```
 
 7. **Wire validation into CI** as a gate before any config entry or
-   intention reaches a production datacenter:
+   intention reaches a production [datacenter](../datacenter/SKILL.md):
    ```bash
    consul validate ./consul-config/
    # then, against a disposable dev-mode instance:
@@ -147,19 +147,19 @@ place.
 
 8. **For `consul-k8s` CRDs, dry-run against the API server first**, then
    confirm the Consul side actually reflects the intended state (CRD
-   acceptance by Kubernetes doesn't guarantee the `consul-k8s` controller
+   acceptance by [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) doesn't guarantee the `consul-k8s` controller
    successfully reconciled it into Consul's catalog):
    ```bash
-   kubectl apply --dry-run=server -f service-intentions.yaml
-   kubectl apply -f service-intentions.yaml
-   kubectl get serviceintentions payments-api -o yaml | \
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f service-intentions.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f service-intentions.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get serviceintentions payments-api -o yaml | \
      grep -A3 status
    ```
 
 ## Best practices
 
 - Always follow `consul config write` with `consul config read` (or the
-  Kubernetes CRD's `status` field) to confirm the entry landed as
+  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CRD's `status` field) to confirm the entry landed as
   intended — successful write acceptance and correct runtime effect are
   different things.
 - Use `consul intention check` as the authoritative answer to "will this
@@ -176,7 +176,7 @@ place.
   Consul instance in CI rather than only validating syntax — semantic
   correctness (does this intention actually allow the right caller)
   can't be confirmed by schema validation alone.
-- Periodically audit `consul intention list` datacenter-wide for
+- Periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) `consul intention list` [datacenter](../datacenter/SKILL.md)-wide for
   wildcard `allow` rules that have outlived their original purpose —
   intention sprawl is as real a risk here as `AuthorizationPolicy`/
   `NetworkPolicy` sprawl in other meshes.
@@ -193,7 +193,7 @@ place.
 - **Symptom:** An intention explicitly allows `checkout-service →
   payments-api`, but `consul intention check` still returns `Denied`.
   **Fix:** A more specific or higher-precedence intention (or the
-  datacenter's default policy) is overriding it — run `consul intention
+  [datacenter](../datacenter/SKILL.md)'s default policy) is overriding it — run `consul intention
   list` for the full picture rather than assuming the one intention you
   wrote is the only one in effect. Consul evaluates intentions by
   specificity, not just file order.
@@ -206,23 +206,23 @@ place.
   all.
 
 - **Symptom:** A `consul-k8s` `ServiceIntentions` CRD applies cleanly per
-  `kubectl apply` with no errors, but the corresponding Consul intention
+  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` with no errors, but the corresponding Consul intention
   never takes effect.
-  **Fix:** CRD acceptance by the Kubernetes API server only confirms
+  **Fix:** CRD acceptance by the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) API server only confirms
   schema validity, not that the `consul-k8s` controller successfully
   reconciled it into Consul — check the CRD's `status` field and the
   `consul-k8s` controller pod's logs, and confirm with `consul intention
-  get` directly against Consul, not just `kubectl get`.
+  get` directly against Consul, not just `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get`.
 
 - **Symptom:** To unblock a failing intention check during
   troubleshooting, someone applies a temporary wildcard
   `Sources: [{Name: "*", Action: "allow"}]` intention "just to confirm
   it's an intentions problem," and it's left in place after the
-  incident.
+  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
   **Fix:** A wildcard allow intention removes mesh authorization
   entirely for that destination service — treat it as a scoped,
   time-boxed diagnostic step only, applied in a non-production
-  datacenter where possible, with an explicit tracked task to revert it
+  [datacenter](../datacenter/SKILL.md) where possible, with an explicit tracked task to revert it
   and re-apply the correct narrow intention once the actual root cause
   (often a resolver/subset mismatch, not an intentions problem at all)
   is found.
@@ -231,7 +231,7 @@ place.
 
 **Scenario:** Validate the canary rollout config entries and intention
 from the worked example in
-[consul-service-mesh-and-discovery-configuration](../consul-service-mesh-and-discovery-configuration/SKILL.md)
+[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md)
 before they reach production.
 
 ```bash
@@ -258,12 +258,12 @@ consul intention check some-other-service payments-api # expect: Denied
 Only once `consul intention check` confirms both the intended allow and
 the intended deny, and `consul catalog service payments-api -tags`
 confirms both subsets have at least one matching instance, is the
-change applied to the real production datacenter with `consul config
+change applied to the real production [datacenter](../datacenter/SKILL.md) with `consul config
 write` against it directly, followed by the same `consul intention
 check` commands re-run against production to confirm parity.
 
 ## Cross-references
 
-- [consul-service-mesh-and-discovery-configuration](../consul-service-mesh-and-discovery-configuration/SKILL.md) — writing the service definitions, config entries, and intentions this skill validates.
-- [linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md) — the equivalent validation discipline for Linkerd proxy injection and traffic policy, useful for comparing pre-production check patterns across mesh choices.
-- [cilium-configuration-validation](../cilium-configuration-validation/SKILL.md) — validating CNI-layer network policy underneath the mesh, relevant when Consul's mesh-level intentions need to be checked against a lower-level `CiliumNetworkPolicy` that could independently block the same traffic.
+- [consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — writing the service definitions, config entries, and intentions this skill validates.
+- [linkerd-configuration-validation](../[linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Linkerd proxy injection and traffic policy, useful for comparing pre-production check patterns across mesh choices.
+- [cilium-configuration-validation](../[cilium-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-configuration-validation/SKILL.md)/SKILL.md) — validating CNI-layer network policy underneath the mesh, relevant when Consul's mesh-level intentions need to be checked against a lower-level `CiliumNetworkPolicy` that could independently block the same traffic.

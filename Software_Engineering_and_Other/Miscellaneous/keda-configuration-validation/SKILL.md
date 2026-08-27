@@ -20,7 +20,7 @@ metadata:
 
 ## Purpose
 
-A KEDA `ScaledObject` that applies cleanly with `kubectl apply` gives no
+A KEDA `ScaledObject` that applies cleanly with `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` gives no
 guarantee it actually scales anything — a `TriggerAuthentication`
 referencing the wrong Secret key, a threshold picked without regard to
 how much load one replica can actually absorb, or a `cooldownPeriod` left
@@ -31,11 +31,11 @@ it. Unlike a broken `Deployment`, a broken `ScaledObject` usually fails
 happened to be at, with no error surfaced anywhere the workload's own
 logs or status would show it. This skill is a pre-production validation
 checklist for KEDA configuration built per
-[keda-event-driven-autoscaling-configuration](../keda-event-driven-autoscaling-configuration/SKILL.md),
+[keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration](../[keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 in the same spirit as
-[kafka-configuration-validation](../../../messaging-and-data-orchestration/skills/kafka-configuration-validation/SKILL.md)
+[kafka-configuration-validation](../../../messaging-and-data-orchestration/skills/[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md)
 and
-[metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)
+[metallb-configuration-validation](../[metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md)
 validate their respective domains' configs before go-live.
 
 ## When to use
@@ -48,20 +48,20 @@ validate their respective domains' configs before go-live.
   scales up (or never scales down) as expected.
 - Auditing an existing cluster's `ScaledObject`/`ScaledJob` resources for
   missing `maxReplicaCount` ceilings, missing authentication, or
-  thresholds that were never validated against real capacity.
+  thresholds that were never validated against real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - As a gate in a CI/CD pipeline that provisions `ScaledObject`/`ScaledJob`
-  resources via Helm, Kustomize, or a GitOps operator.
+  resources via Helm, [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md), or a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator.
 
 ## Prerequisites & environment
 
-- `kubectl` access to the namespace containing the `ScaledObject`/
+- `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to the namespace containing the `ScaledObject`/
   `ScaledJob` and to the `keda` (or wherever the operator is installed)
   namespace, to read operator logs.
 - Read access to the event source itself (Kafka consumer group offsets,
   the cloud queue's actual depth, the Prometheus query run directly)
   independent of what KEDA reports, so KEDA's view can be cross-checked
   rather than trusted alone.
-- A documented capacity baseline for the target workload — how much
+- A documented [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) baseline for the target workload — how much
   backlog one replica can process per unit time — without this, a
   threshold review has nothing concrete to validate against beyond "it's
   a number that isn't zero."
@@ -75,14 +75,14 @@ validate their respective domains' configs before go-live.
 1. **Confirm the `ScaledObject`/`ScaledJob` actually produced a working
    HPA and is in a healthy state**, not just that the CRD applied:
    ```bash
-   kubectl get scaledobject order-consumer-scaledobject -n orders
-   kubectl describe scaledobject order-consumer-scaledobject -n orders
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get scaledobject order-consumer-scaledobject -n orders
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe scaledobject order-consumer-scaledobject -n orders
    ```
    A healthy `ScaledObject` shows `READY: True` and `ACTIVE` reflecting
    current trigger state in its status conditions, and a corresponding
    generated HPA:
    ```bash
-   kubectl get hpa -n orders
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get hpa -n orders
    ```
    If no HPA was generated, or it shows `<unknown>` for its target
    metric, the trigger itself is failing — proceed to step 3 rather than
@@ -91,8 +91,8 @@ validate their respective domains' configs before go-live.
 2. **Validate `TriggerAuthentication` actually resolves**, not just that
    it references a Secret that exists:
    ```bash
-   kubectl get triggerauthentication order-consumer-kafka-auth -n orders -o yaml
-   kubectl get secret kafka-scaler-credentials -n orders -o jsonpath='{.data}' | jq 'keys'
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get triggerauthentication order-consumer-kafka-auth -n orders -o yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get secret kafka-scaler-credentials -n orders -o jsonpath='{.data}' | jq 'keys'
    ```
    Confirm every `key` referenced in `secretTargetRef` actually exists in
    the Secret's data (a key name typo is the single most common cause of
@@ -104,7 +104,7 @@ validate their respective domains' configs before go-live.
 3. **Pull the KEDA operator's own logs for the specific scaler**, since a
    failing trigger produces no error on the workload side at all:
    ```bash
-   kubectl -n keda logs -l app=keda-operator --tail=200 | grep -i "order-consumer\|error"
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n keda logs -l app=keda-operator --tail=200 | grep -i "order-consumer\|error"
    ```
    Look specifically for authentication failures (wrong SASL mechanism,
    expired credentials, IAM role missing a permission), connectivity
@@ -113,7 +113,7 @@ validate their respective domains' configs before go-live.
    operator's pod network), and metadata parsing errors (a threshold or
    URL field with the wrong type/format for that scaler version).
 
-4. **Validate scaling thresholds against actual per-replica capacity**,
+4. **Validate scaling thresholds against actual per-replica [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)**,
    not an arbitrary round number:
    ```bash
    # Cross-check what the trigger reports vs. reality, independent of KEDA
@@ -125,21 +125,21 @@ validate their respective domains' configs before go-live.
    interval" figure (from a load test or historical throughput data),
    not copied from an example. A threshold set too low causes
    over-provisioning (cost) and can also outrun the `maxReplicaCount`
-   ceiling into a downstream dependency's capacity limit; a threshold set
+   ceiling into a downstream dependency's [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) limit; a threshold set
    too high means real backlog growth goes unaddressed for far longer
    than intended.
 
 5. **Validate `minReplicaCount`/`maxReplicaCount` bounds are both
    present and deliberate**:
    ```bash
-   kubectl get scaledobject order-consumer-scaledobject -n orders \
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get scaledobject order-consumer-scaledobject -n orders \
      -o jsonpath='{.spec.minReplicaCount}{" / "}{.spec.maxReplicaCount}{"\n"}'
    ```
    Flag any `ScaledObject`/`ScaledJob` with no explicit
    `maxReplicaCount` (KEDA's default ceiling is high enough to be
    effectively unbounded for most workloads) as a finding — an
    unconstrained ceiling can scale a workload out far enough to exhaust
-   node capacity or overwhelm a downstream dependency during a genuine
+   node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or overwhelm a downstream dependency during a genuine
    backlog spike. Separately, flag `minReplicaCount: 0` on anything
    without an explicitly reviewed and accepted cold-start latency
    budget — this is the single most consequential setting to get wrong,
@@ -149,7 +149,7 @@ validate their respective domains' configs before go-live.
 6. **Validate `cooldownPeriod` and `pollingInterval` against the event
    source's actual volatility**:
    ```bash
-   kubectl get scaledobject order-consumer-scaledobject -n orders \
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get scaledobject order-consumer-scaledobject -n orders \
      -o jsonpath='{.spec.cooldownPeriod}{" / "}{.spec.pollingInterval}{"\n"}'
    ```
    A `cooldownPeriod` far shorter than the natural period of the event
@@ -163,20 +163,20 @@ validate their respective domains' configs before go-live.
    that `restartPolicy: Never` is set** so failed units of work don't
    restart in place indefinitely:
    ```bash
-   kubectl get scaledjob video-transcode-scaledjob -n media -o yaml | \
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get scaledjob video-transcode-scaledjob -n media -o yaml | \
      grep -E "backoffLimit|restartPolicy|successfulJobsHistoryLimit|failedJobsHistoryLimit"
    ```
    Confirm history limits are set to small bounded values — an
    unbounded history of completed/failed `Job` objects degrades
-   `kubectl`/API server performance over time in a namespace with high
+   `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`/API server performance over time in a namespace with high
    job churn.
 
-8. **If configuration is managed via Helm/Kustomize/GitOps, run this
+8. **If configuration is managed via Helm/[Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md)/[GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), run this
    validation against the rendered manifest in CI**, not only against
    whatever happens to already be live in the cluster:
    ```bash
    helm template order-consumer ./charts/order-consumer | \
-     kubectl apply --dry-run=server -f -
+     [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f -
    ```
    A dry-run server-side apply catches schema-level mistakes (wrong
    field name, wrong type) before merge; it does not catch the
@@ -197,13 +197,13 @@ validate their respective domains' configs before go-live.
   ACLs if they weren't provisioned identically.
 - Load-test the target workload to establish its real per-replica
   throughput before setting a threshold, rather than guessing and
-  tuning reactively in production after the first incident.
+  tuning reactively in production after the first [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Re-validate after any change to the event source side (a Kafka
   partition count change, a queue provider migration, a Prometheus
   metric rename) — the `ScaledObject` can remain syntactically valid
   while silently referencing a topic/metric that no longer means what
   it did when the threshold was chosen.
-- Track KEDA operator version alongside the cluster's Kubernetes
+- Track KEDA operator version alongside the cluster's [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
   version in upgrade planning — scaler metadata keys and defaults have
   changed across KEDA major versions, and a validation pass against
   stale documentation can approve a config a newer/older operator
@@ -211,7 +211,7 @@ validate their respective domains' configs before go-live.
 
 ## Common pitfalls
 
-- **Symptom:** A `ScaledObject` shows `READY: True` in `kubectl
+- **Symptom:** A `ScaledObject` shows `READY: True` in `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
   describe`, but the workload never scales despite a confirmed real
   backlog.
   **Fix:** `READY` reflects that the `ScaledObject` spec itself is valid
@@ -239,7 +239,7 @@ validate their respective domains' configs before go-live.
   value that happened to work for a different service.
 
 - **Symptom:** A `ScaledObject` with `minReplicaCount: 0` passes review
-  with no discussion, and months later a latency incident traces back to
+  with no discussion, and months later a latency [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) traces back to
   cold-start delay on the first request after an idle period.
   **Fix:** Treat `minReplicaCount: 0` as a required discussion item in
   every review, not a default to wave through — confirm the workload's
@@ -255,7 +255,7 @@ validate their respective domains' configs before go-live.
   **Fix:** Validation is not a one-time gate — re-run the authentication
   and connectivity checks (steps 2–3) whenever the underlying event
   source changes, and consider an automated periodic check (a CronJob or
-  monitoring rule) that alerts if a `ScaledObject`'s trigger has been in
+  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) rule) that alerts if a `ScaledObject`'s trigger has been in
   a failing state for longer than a defined threshold, rather than
   relying on someone noticing the workload never scales.
 
@@ -320,7 +320,7 @@ spec:
   scaleTargetRef:
     name: invoice-processor
   minReplicaCount: 0   # accepted: async batch work, ~10s cold start measured OK
-  maxReplicaCount: 10  # bounded by invoicing DB connection pool capacity
+  maxReplicaCount: 10  # bounded by invoicing DB connection pool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   cooldownPeriod: 180  # invoices arrive in small bursts; avoids flapping
   triggers:
     - type: aws-sqs-queue
@@ -335,8 +335,8 @@ and merge.
 
 ## Cross-references
 
-- [keda-event-driven-autoscaling-configuration](../keda-event-driven-autoscaling-configuration/SKILL.md) — the `ScaledObject`/`ScaledJob`/`TriggerAuthentication` design this skill validates against a production baseline.
-- [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md) — the same "the CRD's status field looks fine but doesn't confirm the underlying system is actually working" validation pattern, applied to load-balancer networking instead of autoscaling.
-- [testkube-kubernetes-native-test-execution](../testkube-kubernetes-native-test-execution/SKILL.md) — running an in-cluster load test against the scaled workload to derive the real per-replica throughput figure this skill's threshold checks depend on.
-- [kafka-configuration-validation](../../../messaging-and-data-orchestration/skills/kafka-configuration-validation/SKILL.md) — validating the Kafka-side consumer group/lag configuration a Kafka-triggered `ScaledObject` depends on.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) — broader secret-handling practices this skill's `TriggerAuthentication` validation applies specifically to KEDA triggers.
+- [keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration](../[keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/keda-event-driven-[autoscaling](../../Backend/autoscaling/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the `ScaledObject`/`ScaledJob`/`TriggerAuthentication` design this skill validates against a production baseline.
+- [metallb-configuration-validation](../[metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md) — the same "the CRD's status field looks fine but doesn't confirm the underlying system is actually working" validation pattern, applied to load-balancer networking instead of [autoscaling](../../Backend/autoscaling/SKILL.md).
+- [testkube-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-test-execution](../[testkube-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-test-execution](../../../DevOps_and_Cloud/Containers_and_Orchestration/testkube-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-test-execution/SKILL.md)/SKILL.md) — running an in-cluster load test against the scaled workload to derive the real per-replica throughput figure this skill's threshold checks depend on.
+- [kafka-configuration-validation](../../../messaging-and-data-orchestration/skills/[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md) — validating the Kafka-side consumer group/lag configuration a Kafka-triggered `ScaledObject` depends on.
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — broader secret-handling practices this skill's `TriggerAuthentication` validation applies specifically to KEDA triggers.

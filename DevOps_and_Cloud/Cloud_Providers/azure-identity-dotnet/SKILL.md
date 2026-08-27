@@ -77,7 +77,7 @@ builder.Services.AddAzureClients(clientBuilder =>
     clientBuilder.AddBlobServiceClient(
         new Uri("https://myaccount.blob.core.windows.net"));
     clientBuilder.AddSecretClient(
-        new Uri("https://myvault.vault.azure.net"));
+        new Uri("https://myvault.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"));
     
     // Uses DefaultAzureCredential by default
     clientBuilder.UseCredential(new DefaultAzureCredential());
@@ -130,7 +130,7 @@ var credential = new ClientSecretCredential(
     clientSecret: "<client-secret>");
 
 var client = new SecretClient(
-    new Uri("https://myvault.vault.azure.net"),
+    new Uri("https://myvault.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
     credential);
 ```
 
@@ -152,7 +152,7 @@ var credential = new ChainedTokenCredential(
     new AzureCliCredential());
 
 var client = new SecretClient(
-    new Uri("https://myvault.vault.azure.net"),
+    new Uri("https://myvault.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
     credential);
 ```
 
@@ -206,7 +206,7 @@ var credential = new DefaultAzureCredential(
 | **Chains** | `DefaultAzureCredential` | Preconfigured chain for dev-to-prod |
 | | `ChainedTokenCredential` | Custom credential chain |
 | **Azure-Hosted** | `ManagedIdentityCredential` | Azure managed identity |
-| | `WorkloadIdentityCredential` | Kubernetes workload identity |
+| | `WorkloadIdentityCredential` | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workload identity |
 | | `EnvironmentCredential` | Environment variables |
 | **Service Principal** | `ClientSecretCredential` | Client ID + secret |
 | | `ClientCertificateCredential` | Client ID + certificate |
@@ -277,7 +277,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
 var client = new SecretClient(
-    new Uri("https://myvault.vault.azure.net"),
+    new Uri("https://myvault.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
     new DefaultAzureCredential());
 
 try
@@ -308,7 +308,7 @@ Supported Azure services:
 - Azure App Service and Azure Functions
 - Azure Arc
 - Azure Cloud Shell
-- Azure Kubernetes Service (AKS)
+- Azure [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service (AKS)
 - Azure Service Fabric
 - Azure Virtual Machines
 - Azure Virtual Machine Scale Sets
@@ -333,4 +333,4 @@ All credential implementations are thread-safe. A single credential instance can
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.identity |
 | Credential Chains | https://aka.ms/azsdk/net/identity/credential-chains |
 | Best Practices | https://learn.microsoft.com/dotnet/azure/sdk/authentication/best-practices |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/identity/Azure.Identity |
+| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/identity/Azure.Identity |

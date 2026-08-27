@@ -10,7 +10,7 @@ metadata:
   package: azure-messaging-webpubsubservice
 ---
 
-# Azure Web PubSub Service SDK for Python
+# Azure Web PubSub Service SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Real-time messaging with WebSocket connections at scale.
 
@@ -18,10 +18,10 @@ Real-time messaging with WebSocket connections at scale.
 
 ```bash
 # Service SDK (server-side)
-pip install azure-messaging-webpubsubservice
+pip install [azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubservice
 
-# Client SDK (for Python WebSocket clients)
-pip install azure-messaging-webpubsubclient
+# Client SDK (for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) WebSocket clients)
+pip install [azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubclient
 ```
 
 ## Environment Variables
@@ -35,7 +35,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -48,14 +48,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Authentication
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.messaging.webpubsubservice import WebPubSubServiceClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with WebPubSubServiceClient(
@@ -69,7 +69,7 @@ with WebPubSubServiceClient(
 
 ### Generate Client Access Token
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Token for anonymous user
 token = client.get_client_access_token()
 print(f"URL: {token['url']}")
@@ -89,7 +89,7 @@ token = client.get_client_access_token(
 
 ### Send to All Clients
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Send text
 client.send_to_all(message="Hello everyone!", content_type="text/plain")
 
@@ -102,7 +102,7 @@ client.send_to_all(
 
 ### Send to User
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.send_to_user(
     user_id="user123",
     message="Hello user!",
@@ -112,7 +112,7 @@ client.send_to_user(
 
 ### Send to Group
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.send_to_group(
     group="my-group",
     message="Hello group!",
@@ -122,7 +122,7 @@ client.send_to_group(
 
 ### Send to Connection
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.send_to_connection(
     connection_id="abc123",
     message="Hello connection!",
@@ -132,7 +132,7 @@ client.send_to_connection(
 
 ### Group Management
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Add user to group
 client.add_user_to_group(group="my-group", user_id="user123")
 
@@ -148,7 +148,7 @@ client.remove_connection_from_group(group="my-group", connection_id="abc123")
 
 ### Connection Management
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Check if connection exists
 exists = client.connection_exists(connection_id="abc123")
 
@@ -167,7 +167,7 @@ client.close_all_connections(user_id="user123")
 
 ### Grant/Revoke Permissions
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.messaging.webpubsubservice import WebPubSubServiceClient
 
 # Grant permission
@@ -192,9 +192,9 @@ has_permission = client.check_permission(
 )
 ```
 
-## Client SDK (Python WebSocket Client)
+## Client SDK ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) WebSocket Client)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.messaging.webpubsubclient import WebPubSubClient
 
 with WebPubSubClient(credential=token["url"]) as client:
@@ -210,12 +210,12 @@ with WebPubSubClient(credential=token["url"]) as client:
     def on_group_message(e):
         print(f"Group {e.group}: {e.data}")
 
-    client.send_to_group("my-group", "Hello from Python!")
+    client.send_to_group("my-group", "Hello from [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)!")
 ```
 
 ## Async Service Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.messaging.webpubsubservice.aio import WebPubSubServiceClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -260,6 +260,6 @@ async def broadcast():
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-messaging-webpubsubservice-py_capabilities.md](../../../Global_References/azure-messaging-webpubsubservice-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-messaging-webpubsubservice-py_non-hero-scenarios.md](../../../Global_References/azure-messaging-webpubsubservice-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubservice-py_capabilities.md](../../../Global_References/[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubservice-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubservice-py_non-hero-scenarios.md](../../../Global_References/[azure-messaging](../[azure-messaging](../azure-skills/skills/azure-messaging/SKILL.md)/SKILL.md)-webpubsubservice-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

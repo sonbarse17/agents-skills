@@ -113,7 +113,7 @@ copy dbgviewcli.exe C:\Tools\
 | `--boot-disable` | Disable boot-time logging |
 | `--boot-status` | Show boot logging status and exit |
 
-### Remote Monitoring
+### Remote [Monitoring](../monitoring/SKILL.md)
 
 | Parameter | Description |
 |-----------|-------------|
@@ -211,7 +211,7 @@ dbgviewcli --boot-status
 dbgviewcli --boot-disable
 ```
 
-### Remote Monitoring
+### Remote [Monitoring](../monitoring/SKILL.md)
 
 ```bash
 dbgviewcli --connect SERVER01 --no-banner --duration 60
@@ -247,7 +247,7 @@ dbgviewcli --accepteula --no-banner --duration 30
 | Filter | `cli_filter.c` | Wildcard include/exclude matching |
 | Output | `cli_output.c` | Console emit, log files, CSV/XML/text formats |
 | Boot Log | `cli_bootlog.c` | Registry config for boot-time driver loading |
-| Remote | `cli_remote.c` | TCP socket connect/read for remote monitoring |
+| Remote | `cli_remote.c` | TCP socket connect/read for remote [monitoring](../monitoring/SKILL.md) |
 
 ## Key Design Decisions
 
@@ -278,7 +278,7 @@ dbgviewcli --accepteula --no-banner --duration 30
 | Script | `scripts/boot-logging-workflow.ps1` | End-to-end boot logging lifecycle management |
 | Reference | `../../../Global_References/driver-ioctls.md` | Kernel driver IOCTL codes and buffer structures |
 | Reference | `../../../Global_References/output-formats.md` | Text/CSV/XML output format specifications |
-| Reference | `../../../Global_References/remote-protocol.md` | TCP remote monitoring wire protocol |
+| Reference | `../../../Global_References/remote-protocol.md` | TCP remote [monitoring](../monitoring/SKILL.md) wire protocol |
 
 ## Troubleshooting
 

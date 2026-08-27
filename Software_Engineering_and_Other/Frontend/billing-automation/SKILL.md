@@ -55,7 +55,7 @@ Adjusting charges when:
 
 ## Quick Start
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from billing import BillingEngine, Subscription
 
 # Initialize billing engine

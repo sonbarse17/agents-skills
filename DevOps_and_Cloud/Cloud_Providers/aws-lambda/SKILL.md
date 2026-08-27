@@ -9,7 +9,7 @@ metadata:
 
 # AWS Lambda
 
-Build serverless applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
+Build [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
 
 ## When to Use This Skill
 
@@ -24,7 +24,7 @@ Build serverless applications with AWS Lambda, covering function creation, event
 
 - AWS CLI v2 installed and configured
 - IAM permissions: `lambda:*`, `iam:PassRole`, `logs:*`, `apigateway:*`, `s3:*`
-- Python 3.11+, Node.js 20+, or another supported runtime installed locally
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11+, Node.js 20+, or another supported runtime installed locally
 - (Optional) AWS SAM CLI for local development and deployment
 
 ## Create and Deploy a Function
@@ -81,7 +81,7 @@ aws lambda update-alias \
 
 ## Function Code Examples
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # app.py - API Gateway handler with structured logging
 import json
 import logging
@@ -117,7 +117,7 @@ def process_request(body):
     return {"message": "OK", "data": body}
 ```
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # sqs_processor.py - SQS batch processor with partial failure reporting
 import json
 import logging
@@ -152,16 +152,16 @@ def process_message(body):
 ## Lambda Layers
 
 ```bash
-# Build a layer for Python dependencies
-mkdir -p layer/python
-pip install requests boto3-stubs -t layer/python/
+# Build a layer for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
+mkdir -p layer/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+pip install requests boto3-stubs -t layer/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
 cd layer
-zip -r ../my-layer.zip python/
+zip -r ../my-layer.zip [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
 
 # Publish the layer
 aws lambda publish-layer-version \
   --layer-name common-deps \
-  --description "Shared Python dependencies" \
+  --description "Shared [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies" \
   --zip-file fileb://my-layer.zip \
   --compatible-runtimes python3.11 python3.12 \
   --compatible-architectures arm64 x86_64
@@ -289,8 +289,8 @@ Cold start reduction tips:
 ```yaml
 # template.yaml - AWS SAM application
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-Description: My serverless API
+Transform: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-2016-10-31
+Description: My [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) API
 
 Globals:
   Function:
@@ -312,7 +312,7 @@ Parameters:
 
 Resources:
   ApiFunction:
-    Type: AWS::Serverless::Function
+    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-api-handler"
       Handler: app.handler
@@ -335,7 +335,7 @@ Resources:
             TableName: !Ref ItemsTable
 
   QueueProcessor:
-    Type: AWS::Serverless::Function
+    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-queue-processor"
       Handler: sqs_processor.handler
@@ -350,7 +350,7 @@ Resources:
               - ReportBatchItemFailures
 
   DepsLayer:
-    Type: AWS::Serverless::LayerVersion
+    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::LayerVersion
     Properties:
       LayerName: common-deps
       ContentUri: layer/
@@ -405,8 +405,8 @@ sam logs --name ApiFunction --stack-name my-stack --tail
 
 ## Related Skills
 
-- [aws-iam](../aws-iam/) - Execution roles and permissions
-- [terraform-aws](../terraform-aws/) - IaC deployment for Lambda
-- [aws-s3](../aws-s3/) - S3 event triggers
-- [aws-vpc](../aws-vpc/) - VPC configuration for Lambda
-- [aws-cost-optimization](../aws-cost-optimization/) - Optimizing Lambda spend
+- [aws-iam](../[aws-iam](../aws-iam/SKILL.md)/) - Execution roles and permissions
+- [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - IaC deployment for Lambda
+- [aws-s3](../[aws-s3](../aws-s3/SKILL.md)/) - S3 event triggers
+- [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/) - VPC configuration for Lambda
+- [aws-cost-optimization](../[aws-cost-optimization](../aws-[cost-optimization](../cost-optimization/SKILL.md)/SKILL.md)/) - Optimizing Lambda spend

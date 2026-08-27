@@ -9,15 +9,15 @@ metadata:
 
 # New Relic
 
-Monitor applications and infrastructure with New Relic's observability platform.
+Monitor applications and infrastructure with New Relic's [observability](../observability/SKILL.md) platform.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Implementing full-stack observability
+- Implementing full-stack [observability](../observability/SKILL.md)
 - Setting up APM for applications
-- Monitoring infrastructure health
-- Creating custom dashboards and alerts
+- [Monitoring](../monitoring/SKILL.md) infrastructure health
+- Creating custom [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
 - Implementing distributed tracing
 
 ## Prerequisites
@@ -42,10 +42,10 @@ echo "license_key: YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
 sudo systemctl start newrelic-infra
 ```
 
-### Docker
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -58,17 +58,17 @@ services:
     network_mode: "host"
     environment:
       - NRIA_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
-      - NRIA_DISPLAY_NAME=docker-host
+      - NRIA_DISPLAY_NAME=[docker](../../Containers_and_Orchestration/docker/SKILL.md)-host
     volumes:
       - /:/host:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock
 ```
 
-### Kubernetes
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```bash
 # Using Helm
-helm repo add newrelic https://helm-charts.newrelic.com
+helm repo add newrelic https://[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md).newrelic.com
 
 helm install newrelic-bundle newrelic/nri-bundle \
   --namespace newrelic \
@@ -119,9 +119,9 @@ npm install newrelic
 NEW_RELIC_LICENSE_KEY=xxx node -r newrelic app.js
 ```
 
-### Python
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # newrelic.ini
 [newrelic]
 license_key = YOUR_LICENSE_KEY
@@ -140,7 +140,7 @@ pip install newrelic
 newrelic-admin generate-config YOUR_LICENSE_KEY newrelic.ini
 
 # Run application
-NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python app.py
+NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py
 
 # Or with gunicorn
 NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn app:app
@@ -167,7 +167,7 @@ java -javaagent:/path/to/newrelic.jar -jar myapp.jar
 package main
 
 import (
-    "github.com/newrelic/go-agent/v3/newrelic"
+    "[github](../../CI_CD/github/SKILL.md).com/newrelic/go-agent/v3/newrelic"
     "net/http"
 )
 
@@ -196,7 +196,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 ### Custom Events
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import newrelic.agent
 
 # Record custom event
@@ -209,7 +209,7 @@ newrelic.agent.record_custom_event('OrderPlaced', {
 
 ### Custom Metrics
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import newrelic.agent
 
 # Record custom metric
@@ -224,7 +224,7 @@ newrelic.agent.record_custom_metric('Custom/ProcessingTime',
 
 ### Custom Spans
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import newrelic.agent
 
 @newrelic.agent.function_trace(name='process_payment')
@@ -292,7 +292,7 @@ FACET customer_id
 SINCE 1 day ago
 ```
 
-## Dashboards
+## [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
 ### Dashboard JSON
 
@@ -392,9 +392,9 @@ SINCE 1 day ago
 
 ## Logs in Context
 
-### Python Configuration
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Configuration
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # newrelic.ini
 [newrelic]
 application_logging.enabled = true
@@ -438,10 +438,10 @@ log:
 - Use custom attributes for business context
 - Implement logs in context for correlation
 - Set up workloads for service grouping
-- Regular review of unused dashboards and alerts
+- Regular review of unused [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
 
 ## Related Skills
 
-- [datadog](../datadog/) - Alternative monitoring platform
-- [prometheus-grafana](../prometheus-grafana/) - Open source monitoring
-- [alerting-oncall](../alerting-oncall/) - Alert management
+- [datadog](../[datadog](../datadog/SKILL.md)/) - Alternative [monitoring](../monitoring/SKILL.md) platform
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Open source [monitoring](../monitoring/SKILL.md)
+- [alerting-oncall](../[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - Alert management

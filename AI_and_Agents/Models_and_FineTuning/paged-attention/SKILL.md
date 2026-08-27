@@ -5,7 +5,7 @@ description: Master the PagedAttention algorithm and virtual memory management f
 
 # PagedAttention: OS Paging for LLM Inference
 
-In autoregressive LLM inference (e.g., vLLM), the Key-Value (KV) cache consumes immense HBM capacity and grows dynamically. Traditional contiguous memory allocation leads to severe fragmentation (internal, external, and pre-allocation waste), often wasting 60-80% of KV cache memory.
+In autoregressive LLM inference (e.g., vLLM), the Key-Value (KV) cache consumes immense HBM [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and grows dynamically. Traditional contiguous memory allocation leads to severe fragmentation (internal, external, and pre-allocation waste), often wasting 60-80% of KV cache memory.
 
 ## OS-Inspired Virtual Memory
 PagedAttention adopts the operating system concept of virtual memory and paging to manage the KV cache.
@@ -21,7 +21,7 @@ PagedAttention adopts the operating system concept of virtual memory and paging 
 Because logical-to-physical mapping is abstracted, multiple sequences (e.g., beam search, parallel sampling) can safely share physical pages. Copy-on-Write (CoW) is triggered only when a sequence diverges.
 
 ## Architecture Data Flow
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     LogicalSeq[Logical Token Sequence]

@@ -28,7 +28,7 @@ designing the tool interface itself (schemas, granularity, permissions) and
 the dispatch loop around it (validation, confirmation gates, loop
 detection), independent of which vendor's tool-calling API is in use. Note
 that tools can be wired in ad hoc per-agent code, or exposed uniformly via
-an MCP server (see [mcp-server-development](../mcp-server-development/SKILL.md));
+an MCP server (see [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md));
 this skill applies to the tool design and dispatch layer regardless of which
 wiring is used underneath.
 
@@ -58,7 +58,7 @@ wiring is used underneath.
   itself.
 - Clarity on which tools are read-only vs. reversible-write vs.
   irreversible-write, established during
-  [agent-architecture-design](../agent-architecture-design/SKILL.md).
+  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -88,7 +88,7 @@ wiring is used underneath.
    dedicated approval state). Encode this classification in code, not just
    documentation, so the dispatcher can enforce it mechanically.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    TOOL_RISK = {
        "search_tickets": "read_only",
        "update_ticket_status": "reversible",
@@ -113,12 +113,12 @@ wiring is used underneath.
 
 4. **Add loop detection to the dispatch layer**, independent of the
    iteration cap already set in the agent's main loop
-   ([agent-architecture-design](../agent-architecture-design/SKILL.md)):
+   ([agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)):
    track recent (tool name, arguments) pairs and flag/break on exact
    repeats, since a repeated identical call with no new information is
    almost never intentional progress.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    recent_calls = collections.deque(maxlen=3)
    def check_stall(call):
        key = (call.name, json.dumps(call.arguments, sort_keys=True))
@@ -232,7 +232,7 @@ wiring is used underneath.
 
 Risk classification and dispatcher policy:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 TOOL_RISK = {
     "list_instances": "read_only",       # auto-execute
     "stop_instance": "reversible",       # auto-execute, logged
@@ -257,6 +257,6 @@ proceeds on an actual external confirmation event.
 
 ## Cross-references
 
-- [mcp-server-development](../mcp-server-development/SKILL.md)
-- [agent-architecture-design](../agent-architecture-design/SKILL.md)
-- [agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

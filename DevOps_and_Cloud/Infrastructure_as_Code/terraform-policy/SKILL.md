@@ -8,7 +8,7 @@ metadata:
   version: "0.1.0"
 ---
 
-# terraform-policy
+# [terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)
 
 **UTILITY SKILL** — INVOKES: [tfpolicy-author](../../../Global_References/tfpolicy-author.md) | [tfpolicy-test](../../../Global_References/tfpolicy-test.md)
 
@@ -21,8 +21,8 @@ metadata:
 
 ## DO NOT USE FOR:
 
-- Writing `.tftest.hcl` files for Terraform modules — use `terraform-test`
-- General Terraform HCL authoring — use `terraform-style-guide`
+- Writing `.tftest.hcl` files for Terraform modules — use `[terraform-test](../[terraform-test](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-test/SKILL.md)/SKILL.md)`
+- General Terraform HCL authoring — use `[terraform-style-guide](../[terraform-style-guide](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-style-guide/SKILL.md)/SKILL.md)`
 
 ## Routing
 
@@ -42,7 +42,7 @@ metadata:
 - **Wrong skill triggered?** Load the sub-skill directly from the routing table above.
 
 ```bash
-npx skills add hashicorp/agent-skills/terraform/terraform-policy/skills/tfpolicy-author
-npx skills add hashicorp/agent-skills/terraform/terraform-policy/skills/tfpolicy-test
+npx skills add hashicorp/agent-skills/terraform/[terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)/skills/tfpolicy-author
+npx skills add hashicorp/agent-skills/terraform/[terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)/skills/tfpolicy-test
 ```
 

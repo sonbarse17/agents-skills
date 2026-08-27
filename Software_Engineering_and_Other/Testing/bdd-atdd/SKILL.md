@@ -263,7 +263,7 @@ Each role has veto power on ambiguity. If any amigo can't explain what a scenari
 - Context injection: dependency injection for shared state
 - Reports: TRX, HTML, LivingDoc
 
-### Behave (Python)
+### Behave ([Python](../../Languages/python/SKILL.md))
 - Step definition matching: decorators with regex
 - Hooks: before_scenario, after_scenario, before_all
 - Context: `context` object for shared state
@@ -283,7 +283,7 @@ Each role has veto power on ambiguity. If any amigo can't explain what a scenari
 | 1. Beginner | Writing basic Gherkin, no automation | Training on Gherkin syntax | Feature files written for 50%+ stories |
 | 2. Structured | Three amigos regular, automated step defs | Three amigos facilitation training | 80%+ stories with three amigos |
 | 3. Integrated | Scenarios drive development, CI execution | CI pipeline integration skills | 100% feature file coverage in CI |
-| 4. Optimized | Living documentation, metrics-driven | Monitoring and reporting setup | Stakeholders read living docs monthly |
+| 4. Optimized | Living documentation, metrics-driven | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and reporting setup | Stakeholders read living docs monthly |
 
 ### Common Adoption Challenges
 
@@ -293,11 +293,11 @@ Business stakeholders skip three amigos sessions. Scenario: BA says "developers 
 
 **Challenge: Test maintenance burden**
 As product evolves, features and step definitions need updates. Teams abandon BDD when maintenance exceeds creation effort.
-**Solution:** Refactor step definitions regularly. Use shared step libraries. Tag scenarios by frequency tier (@smoke runs on every commit, @regression runs nightly). Budget 20% of sprint for test maintenance.
+**Solution:** Refactor step definitions regularly. Use shared step libraries. Tag scenarios by frequency tier (@smoke runs on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), @regression runs nightly). Budget 20% of sprint for test maintenance.
 
 **Challenge: Slow execution time**
 BDD scenarios that hit real APIs, databases, or UIs become slow. Teams stop running them frequently. They break and stay broken.
-**Solution:** Use test doubles for most scenarios. Reserve end-to-end for critical paths marked @e2e. Run fast scenarios on every commit, slow scenarios nightly. Parallelize execution.
+**Solution:** Use test doubles for most scenarios. Reserve end-to-end for critical paths marked @e2e. Run fast scenarios on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), slow scenarios nightly. Parallelize execution.
 
 ## Living Documentation in Practice
 
@@ -319,7 +319,7 @@ Report should include: feature list with descriptions, scenario count by status 
 ### BDD in CI/CD Pipeline
 
 ```
-Commit → Build → Unit Tests → BDD Tests → Integration Tests → Deploy
+[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → Build → Unit Tests → BDD Tests → Integration Tests → Deploy
                               ↓
                 Feature file execution
                 Generate living documentation
@@ -327,7 +327,7 @@ Commit → Build → Unit Tests → BDD Tests → Integration Tests → Deploy
                 Fail build on P0 scenario failure
 ```
 
-Best practices: run smoke BDD tests on every commit (tagged @smoke), run full BDD suite nightly, notify stakeholders on failure, maintain average execution time <30 seconds per feature, parallelize scenario execution for speed, use tags for selective execution by environment.
+Best practices: run smoke BDD tests on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (tagged @smoke), run full BDD suite nightly, notify stakeholders on failure, maintain average execution time <30 seconds per feature, parallelize scenario execution for speed, use tags for selective execution by environment.
 
 ## BDD Tool Comparison
 
@@ -335,7 +335,7 @@ Best practices: run smoke BDD tests on every commit (tagged @smoke), run full BD
 |------|----------|--------------|----------------|-----------|---------|
 | Cucumber | Ruby/JVM/JS | Cucumber Expr/Regex | Native | HTML, JSON, JUnit | Open source |
 | SpecFlow | .NET | Attributes/Regex | Native | LivingDoc, TRX | Open source |
-| Behave | Python | Decorators/Regex | Native | JSON, JUnit | Open source |
+| Behave | [Python](../../Languages/python/SKILL.md) | Decorators/Regex | Native | JSON, JUnit | Open source |
 | JBehave | Java | Annotations | Native | HTML, XML | Open source |
 | Kiwi | Swift | Closures | XCTest | XCTest | Open source |
 
@@ -386,8 +386,8 @@ Then("the {string} should receive a notification") do |role|
 end
 ```
 
-**Python (Behave):**
-```python
+**[Python](../../Languages/python/SKILL.md) (Behave):**
+```[python](../../Languages/python/SKILL.md)
 @given('the inventory has {count} units of "{product}"')
 def step_given_inventory(context, count, product):
     context.inventory = {product: int(count)}
@@ -484,8 +484,8 @@ Scenario: Invoice generation with complex formatting
 ```
 What programming language is the project using?
   |-- Ruby --> Use Cucumber-Ruby with Cucumber Expressions
-  |-- Python --> Use Behave with regex step definitions
-  |-- JavaScript/TypeScript --> Use Cucumber.js with Cucumber Expressions
+  |-- [Python](../../Languages/python/SKILL.md) --> Use Behave with regex step definitions
+  |-- JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) --> Use Cucumber.js with Cucumber Expressions
   |-- Java --> Use Cucumber-JVM with @Annotations
   |-- C#/.NET --> Use SpecFlow with method attributes
   |-- Go --> Use Godog with function-based steps
@@ -503,7 +503,7 @@ Are step definitions becoming complex to maintain?
 What is the team's primary language?
   |-- Ruby/JVM/JS --> Cucumber (most mature ecosystem)
   |-- .NET --> SpecFlow (native .NET integration)
-  |-- Python --> Behave or pytest-bdd
+  |-- [Python](../../Languages/python/SKILL.md) --> Behave or pytest-bdd
   |-- Java-only --> JBehave (simpler than Cucumber-JVM)
   |-- Go --> Godog
   |-- Mobile (iOS) --> XCTest-Gherkin or Cucumberish
@@ -574,7 +574,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 | Business readability score | >4/5 survey | Stakeholder survey | Rewrite scenarios; reduce technical language |
 | Orphan feature files | 0 in repo | Lint check | Add to CI lint stage; alert on detection |
 | Average steps per scenario | 4-7 steps | Code analysis | Review long scenarios; split where appropriate |
-| Scenario-to-requirement mapping | 100% traceable | Tag audit | Enforce tag conventions; automated traceability check |
+| Scenario-to-requirement mapping | 100% traceable | Tag [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | Enforce tag conventions; automated traceability check |
 
 ## Expanded SBE Process Detail
 
@@ -604,7 +604,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 
 **Phase 3 — Standardize (Weeks 13-24):** Make BDD part of Definition of Ready (scenarios before development) and Definition of Done (scenarios passing in CI). Train all teams. Centralize step library governance. Measure: feature file coverage, scenario pass rate stability, time from scenario writing to automation.
 
-**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team dashboards. Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
+**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
 
 ## Expansion Patterns for Gherkin
 
@@ -646,7 +646,7 @@ Feature: User Authentication
 
 CI execution strategy:
 ```
-On every commit: @smoke (fast, <2 min)
+On every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): @smoke (fast, <2 min)
 On every merge to main: @regression (medium, <15 min)
 Nightly: @e2e (full suite, <30 min)
 On release candidate: all tags (comprehensive)
@@ -663,5 +663,5 @@ On release candidate: all tags (comprehensive)
   - references/step-definition-guide.md — Step Definition Implementation Guide
   - references/bdd-ci-pipeline.md — BDD CI Pipeline Setup
 ## Handoff
-`create-story` for converting discovered stories into backlog items. `create-tech-spec` for implementation details from step definitions. `create-prd` for aligning feature files with product requirements.
+`[create-story](../../../Product_and_Business/create-story/SKILL.md)` for converting discovered stories into backlog items. `[create-tech-spec](../../../Product_and_Business/create-tech-spec/SKILL.md)` for implementation details from step definitions. `[create-prd](../../../Product_and_Business/create-prd/SKILL.md)` for aligning feature files with product requirements.
 

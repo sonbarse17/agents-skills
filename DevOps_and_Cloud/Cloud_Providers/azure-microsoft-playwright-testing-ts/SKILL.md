@@ -8,7 +8,7 @@ metadata:
   package: '@azure/playwright'
 ---
 
-# Azure Playwright Workspaces SDK for TypeScript
+# Azure Playwright Workspaces SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Run Playwright tests at scale with cloud-hosted browsers and integrated Azure portal reporting.
 
@@ -46,7 +46,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 az login
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // playwright.service.config.ts
 import { defineConfig } from "@playwright/test";
 import { createAzurePlaywrightConfig, ServiceOS } from "@azure/playwright";
@@ -70,7 +70,7 @@ export default defineConfig(
 
 ### Custom Credential
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ManagedIdentityCredential } from "@azure/identity";
 import { createAzurePlaywrightConfig } from "@azure/playwright";
 
@@ -86,7 +86,7 @@ export default defineConfig(
 
 ### Service Configuration
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // playwright.service.config.ts
 import { defineConfig } from "@playwright/test";
 import { createAzurePlaywrightConfig, ServiceOS } from "@azure/playwright";
@@ -112,7 +112,7 @@ npx playwright test --config=playwright.service.config.ts --workers=20
 
 ### With Azure Reporter
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { defineConfig } from "@playwright/test";
 import { createAzurePlaywrightConfig, ServiceOS } from "@azure/playwright";
 import { DefaultAzureCredential } from "@azure/identity";
@@ -135,7 +135,7 @@ export default defineConfig(
 
 ### Manual Browser Connection
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import playwright, { test, expect, BrowserType } from "@playwright/test";
 import { getConnectOptions } from "@azure/playwright";
 
@@ -154,7 +154,7 @@ test("manual connection", async ({ browserName }) => {
 
 ## Configuration Options
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 type PlaywrightServiceAdditionalOptions = {
   serviceAuthType?: "ENTRA_ID" | "ACCESS_TOKEN";  // Default: ENTRA_ID
   os?: "linux" | "windows";                        // Default: linux
@@ -167,7 +167,7 @@ type PlaywrightServiceAdditionalOptions = {
 
 ### ServiceOS Enum
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ServiceOS } from "@azure/playwright";
 
 // Available values
@@ -177,7 +177,7 @@ ServiceOS.WINDOWS // "windows"
 
 ### ServiceAuth Enum
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ServiceAuth } from "@azure/playwright";
 
 // Available values
@@ -187,7 +187,7 @@ ServiceAuth.ACCESS_TOKEN  // Use PLAYWRIGHT_SERVICE_ACCESS_TOKEN env var
 
 ## CI/CD Integration
 
-### GitHub Actions
+### [GitHub](../../CI_CD/github/SKILL.md) Actions
 
 ```yaml
 name: playwright-ts
@@ -235,7 +235,7 @@ jobs:
 
 ## Key Types
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   createAzurePlaywrightConfig,
   getConnectOptions,
@@ -265,7 +265,7 @@ import type {
 
 ### Before (Old)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { getServiceConfig, ServiceOS } from "@azure/microsoft-playwright-testing";
 
 export default defineConfig(
@@ -283,7 +283,7 @@ export default defineConfig(
 
 ### After (New)
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createAzurePlaywrightConfig, ServiceOS } from "@azure/playwright";
 import { DefaultAzureCredential } from "@azure/identity";
 

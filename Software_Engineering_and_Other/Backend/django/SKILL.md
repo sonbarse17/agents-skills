@@ -13,7 +13,7 @@ compatibility:
 tags: [backend, python, django, phase-2]
 ---
 
-# Python Django Architecture
+# [Python](../../Languages/python/SKILL.md) Django Architecture
 
 ## Purpose
 Structure Django applications with one app per bounded context, service layer for business logic, thin views, DRF serializers as DTOs, and clean separation of concerns.
@@ -115,7 +115,7 @@ project_root/
 ```
 
 ### Step 2: Service Layer (Business Logic Here)
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/services.py
 from dataclasses import dataclass
 from django.db import transaction
@@ -151,7 +151,7 @@ class OrderService:
 ```
 
 ### Step 3: Repository Layer (Query Abstraction)
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/repositories.py
 from django.db.models import Prefetch
 from apps.orders.models import Order, OrderItem
@@ -179,7 +179,7 @@ class OrderRepository:
 ```
 
 ### Step 4: Thin Models
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/models.py
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -209,7 +209,7 @@ class Order(models.Model):
 ```
 
 ### Step 5: DRF Serializers (DTOs)
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/serializers.py
 from rest_framework import serializers
 from apps.orders.models import Order
@@ -230,7 +230,7 @@ class OrderSerializer(serializers.ModelSerializer):
 ```
 
 ### Step 6: Thin Views
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/views.py
 from rest_framework import viewsets, status
 from rest_framework.response import Response
@@ -269,7 +269,7 @@ class OrderViewSet(viewsets.GenericViewSet):
 ```
 
 ### Step 7: Signals Delegate to Services
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -293,7 +293,7 @@ class OrdersConfig(AppConfig):
 ```
 
 ### Step 8: URL Configuration
-```python
+```[python](../../Languages/python/SKILL.md)
 # config/urls.py
 from django.urls import path, include
 
@@ -316,7 +316,7 @@ urlpatterns = router.urls
 
 ### Pattern: Soft Delete with Custom Manager
 
-```python
+```[python](../../Languages/python/SKILL.md)
 class ActiveManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(deleted_at__isnull=True)
@@ -333,7 +333,7 @@ class Order(models.Model):
 
 ### Pattern: Custom Exception Classes
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # shared/exceptions.py
 class AppException(Exception):
     def __init__(self, message: str, code: str = "ERROR"):
@@ -354,14 +354,14 @@ class ConflictException(AppException):
 
 ### Query Performance
 - Use `select_related()` for FK/O2O relationships (single JOIN)
-- Use `prefetch_related()` for M2M/O2M (separate query, merged in Python)
+- Use `prefetch_related()` for M2M/O2M (separate query, merged in [Python](../../Languages/python/SKILL.md))
 - Use `only()` / `defer()` to limit loaded columns on large models
 - Use `.iterator()` for memory-efficient iteration of large querysets
 - Add `db_index=True` on all FK fields and frequently filtered columns
 - Use `EXPLAIN ANALYZE` via `connection.queries` in DEBUG mode
 
 ### Celery Configuration
-```python
+```[python](../../Languages/python/SKILL.md)
 # config/celery.py
 from celery import Celery
 app = Celery('project')
@@ -391,7 +391,7 @@ app.autodiscover_tasks()
 
 ## Testing Strategies
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # apps/orders/tests/test_services.py
 from django.test import TestCase
 from apps.orders.services import OrderService
@@ -461,7 +461,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -469,7 +469,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -499,7 +499,7 @@ class ConfigBuilder {
 
 ### Pattern: Service Layer with Type Hints
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from dataclasses import dataclass
 from django.db import transaction
 from django.core.exceptions import ValidationError
@@ -529,7 +529,7 @@ class OrderService:
 
 ### Pattern: Select-Related and Prefetch-Related Optimization
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Bad: N+1 queries
 orders = Order.objects.filter(user=request.user)
 for order in orders:
@@ -555,7 +555,7 @@ orders = Order.objects.prefetch_related(
 - Static files: Whitenoise for middleware-serving. CDN for production.
 - Media files: S3/GCS storage backend. Signed URLs for private files.
 - Celery for background tasks. Redis broker. Task routing by priority.
-- Sentry integration for error tracking. Performance monitoring enabled.
+- [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) integration for error tracking. Performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) enabled.
 - Logging: structured JSON logs. Log level INFO. DEBUG only in dev.
 
 ## Anti-Patterns
@@ -592,7 +592,7 @@ orders = Order.objects.prefetch_related(
 - Password validation: AUTH_PASSWORD_VALIDATORS. Argon2 hasher.
 - Rate limiting: `django-ratelimit` on auth and registration endpoints.
 - Content security: `django-csp` for CSP headers. Restrict script sources.
-- Secrets: environment variables. Never commit `.env` files.
+- Secrets: environment variables. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.env` files.
 ## Performance Optimization
 
 ### Caching Strategy
@@ -604,12 +604,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -618,7 +618,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -626,12 +626,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets

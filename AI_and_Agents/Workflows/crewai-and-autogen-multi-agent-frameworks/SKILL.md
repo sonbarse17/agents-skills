@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) describes
+[multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) describes
 the generic topologies (supervisor/worker, pipeline, parallel/aggregation,
 critic/debate) that justify splitting a task across multiple agents. CrewAI
 and AutoGen are two concrete, higher-level frameworks that implement those
@@ -43,7 +43,7 @@ role-based mental model. This skill covers configuring each framework
 correctly and choosing between them (and against LangGraph) for a given
 task — it does not repeat the underlying "should this be multi-agent at
 all" justification, which lives in
-[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+[multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -51,13 +51,13 @@ all" justification, which lives in
   (e.g. "a researcher, a writer, and an editor") and a declarative,
   role-first framework fits better than hand-wiring a graph.
 - Building or reviewing a CrewAI crew's `agents.yaml`/`tasks.yaml` (or
-  equivalent Python config) and choosing `sequential` vs. `hierarchical`
+  equivalent [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) config) and choosing `sequential` vs. `hierarchical`
   process.
 - Building or reviewing an AutoGen `GroupChat` — choosing the speaker-
   selection strategy, configuring a `UserProxyAgent`'s code-execution and
   human-input behavior.
 - Deciding between CrewAI, AutoGen, LangGraph
-  ([langchain-and-langgraph-agent-orchestration](../langchain-and-langgraph-agent-orchestration/SKILL.md)),
+  ([langchain-and-langgraph-agent-orchestration](../[langchain-and-langgraph-agent-orchestration](../../Models_and_FineTuning/langchain-and-langgraph-agent-orchestration/SKILL.md)/SKILL.md)),
   and a hand-rolled orchestrator for a specific multi-agent task.
 - An existing CrewAI crew or AutoGen group chat loops, has agents talking
   past each other, or produces redundant work, and needs debugging.
@@ -67,7 +67,7 @@ all" justification, which lives in
 
 ## Prerequisites & environment
 
-- Python (both frameworks are Python-first; CrewAI has no first-party JS/TS
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (both frameworks are [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first; CrewAI has no first-party JS/TS
   SDK as of current releases — verify before assuming parity).
 - CrewAI: the `crewai` package plus `crewai-tools` for common tool
   integrations; an LLM provider configured per-agent (CrewAI supports
@@ -78,16 +78,16 @@ all" justification, which lives in
   versions; confirm the current package name and API surface before
   starting a new project) plus an LLM config dict per agent.
 - For AutoGen's `UserProxyAgent` with code execution enabled: a sandboxed
-  execution environment (Docker container or restricted subprocess) — never
+  execution environment ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) container or restricted subprocess) — never
   enable `code_execution_config` against an unsandboxed host process for
   agent-generated code you have not reviewed.
 - A concrete task decomposition already justified via
-  [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) —
+  [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) —
   both frameworks make it easy to declare more agents than a task needs,
   and neither framework's ergonomics substitute for that justification step.
 - Tool functions each agent will call, either defined natively in the
   framework's tool format or proxied from an MCP server; see
-  [mcp-server-development](../mcp-server-development/SKILL.md) for building
+  [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) for building
   the MCP side.
 
 ## Step-by-step guidance
@@ -95,7 +95,7 @@ all" justification, which lives in
 1. **In CrewAI, define each agent with a narrow role, goal, and backstory**
    — these three fields are what the underlying LLM call actually
    conditions on, not just documentation:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from crewai import Agent, Task, Crew, Process
 
    researcher = Agent(
@@ -117,13 +117,13 @@ all" justification, which lives in
    concentrated in the process/manager rather than letting every agent
    freely hand off work to any other agent, mirroring the "fixed, testable
    roles over a dynamic pool" guidance in
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+   [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 
 2. **Define tasks with an explicit expected output and, for sequential
    processes, an explicit context dependency** — CrewAI passes prior tasks'
    output into later tasks automatically when wired via `context`, which is
    the framework's version of the structured hand-off contract:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    research_task = Task(
        description="Research recent developments in {topic}",
        expected_output="A bullet list of 3 findings, each with a source URL",
@@ -144,7 +144,7 @@ all" justification, which lives in
    manager) that plans and delegates dynamically — the supervisor/worker
    topology, at the cost of an extra planning LLM call and less
    predictable task ordering:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    crew = Crew(
        agents=[researcher, writer],
        tasks=[research_task, writing_task],
@@ -157,7 +157,7 @@ all" justification, which lives in
 4. **In AutoGen, configure each conversable agent's `system_message` as
    narrowly as a CrewAI role**, and decide up front whether the
    conversation is a direct two-agent exchange or a `GroupChat`:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from autogen import ConversableAgent, GroupChat, GroupChatManager
 
    researcher = ConversableAgent(
@@ -179,7 +179,7 @@ all" justification, which lives in
    than relying on the default, since the default (LLM-based next-speaker
    selection) can pick an unexpected agent, especially with more than a
    handful of participants:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    groupchat = GroupChat(
        agents=[researcher, writer],
        messages=[],
@@ -189,13 +189,13 @@ all" justification, which lives in
    manager = GroupChatManager(groupchat=groupchat, llm_config=researcher.llm_config)
    ```
    `max_round` is AutoGen's equivalent of the hard iteration cap described
-   in [agent-architecture-design](../agent-architecture-design/SKILL.md) —
+   in [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) —
    set it explicitly rather than trusting the conversation to converge on
    its own.
 
 6. **Scope `UserProxyAgent`'s code execution and autonomy explicitly** —
    this is AutoGen's most operationally sensitive default surface:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from autogen import UserProxyAgent
 
    user_proxy = UserProxyAgent(
@@ -214,7 +214,7 @@ all" justification, which lives in
    > sandboxed, disposable environment with no access to real credentials
    > or production systems — treat it the same as any irreversible-action
    > tool per
-   > [agent-architecture-design](../agent-architecture-design/SKILL.md).
+   > [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
 
 7. **Cap delegation depth in CrewAI's hierarchical process and AutoGen's
    nested chats** — both frameworks support an agent's task spawning
@@ -222,14 +222,14 @@ all" justification, which lives in
    (`max_iter` on a CrewAI agent, a bounded `max_round` and no nested
    `GroupChat`-within-`GroupChat` without a depth check in AutoGen) to
    avoid the unbounded recursive-delegation pitfall described in
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+   [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 
 8. **Log the full conversation/task trace**, not just final output — CrewAI
    exposes task outputs and `verbose=True` logging; AutoGen's `GroupChat`
    exposes `groupchat.messages` as the full transcript. Both are what you
    need to debug agents duplicating work or talking past each other, the
    same failure modes described generically in
-   [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+   [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -245,19 +245,19 @@ all" justification, which lives in
 - Keep `allow_delegation=False` on CrewAI worker agents by default; enable
   delegation only on an explicit manager/supervisor role, mirroring the
   fixed-role guidance in
-  [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+  [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 - Never enable AutoGen code execution against a real filesystem, network,
-  or credential set without Docker (or an equivalent) sandbox — this is a
+  or credential set without [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (or an equivalent) sandbox — this is a
   destructive-action risk, not a convenience trade-off to skip under time
   pressure.
 - Use a cheaper/faster model for narrowly-scoped worker roles (a
   researcher summarizing one document) and reserve the strongest available
-  model for planning/manager roles, the same cost-optimization principle as
-  [llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md).
+  model for planning/manager roles, the same [cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md) principle as
+  [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
 - Re-evaluate whether a CrewAI/AutoGen crew could be replaced by a single
   well-scoped agent periodically — both frameworks make it easy to declare
   agents, which is exactly the failure mode
-  [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) warns
+  [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) warns
   against: splitting because it "felt cleaner," not because of measured
   need.
 
@@ -267,7 +267,7 @@ all" justification, which lives in
   produce overlapping output — e.g. both research the same sub-topic — with
   no error, just redundant/contradictory results.
   **Fix:** This is the same task-boundary-overlap pitfall described in
-  [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md).
+  [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
   Tighten each `Task.description`/`ConversableAgent.system_message` to state
   what the role does *not* do, and check for overlapping tool access — two
   agents with the same tool and a vague task boundary will often both use it.
@@ -292,9 +292,9 @@ all" justification, which lives in
   `human_input_mode="NEVER"` executes a destructive shell command (e.g.
   deleting files) generated in response to a misleading or adversarial
   prompt.
-  **Fix:** This is a real incident, not a tooling quirk — code execution
+  **Fix:** This is a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a tooling quirk — code execution
   with no human checkpoint should only ever run inside a disposable,
-  network-isolated sandbox (Docker with no mounted credentials or
+  network-isolated sandbox ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) with no mounted credentials or
   production filesystem access); if that constraint can't be met, set
   `human_input_mode="ALWAYS"` or `"TERMINATE"` so a human reviews commands
   before they run.
@@ -311,11 +311,11 @@ all" justification, which lives in
 
 **Scenario:** Generate a weekly engineering digest summarizing merged PRs
 and open incidents — the same task used as the parallel-aggregation example
-in [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md),
+in [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md),
 built here as a CrewAI sequential crew for a team that wants a declarative,
 low-code implementation rather than hand-wiring a graph.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from crewai import Agent, Task, Crew, Process
 
 pr_agent = Agent(
@@ -327,7 +327,7 @@ pr_agent = Agent(
 )
 
 incident_agent = Agent(
-    role="Incident Reporter",
+    role="[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Reporter",
     goal="Summarize currently open incidents",
     backstory="You report only open incidents with severity and age.",
     tools=[list_open_incidents_tool],
@@ -336,7 +336,7 @@ incident_agent = Agent(
 
 digest_writer = Agent(
     role="Digest Editor",
-    goal="Combine PR and incident summaries into one Markdown digest",
+    goal="Combine PR and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) summaries into one Markdown digest",
     backstory="You never invent content not present in the inputs you're given.",
     allow_delegation=False,
 )
@@ -344,7 +344,7 @@ digest_writer = Agent(
 pr_task = Task(description="List merged PRs from the last 7 days", expected_output="Bullet list with links", agent=pr_agent)
 incident_task = Task(description="List currently open incidents", expected_output="Bullet list with severity and age", agent=incident_agent)
 digest_task = Task(
-    description="Combine the PR and incident summaries into one weekly digest",
+    description="Combine the PR and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) summaries into one weekly digest",
     expected_output="A Markdown document with a PRs section and an Incidents section",
     agent=digest_writer,
     context=[pr_task, incident_task],
@@ -362,13 +362,13 @@ Each agent has exactly one tool and a role description stating what it does
 *not* cover (PRs vs. incidents), so `digest_writer` receives two clearly
 separated, non-overlapping inputs via `context` rather than free-form text —
 the same schema-based hand-off discipline recommended in
-[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md), here
+[multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md), here
 expressed through CrewAI's `context` mechanism instead of a hand-rolled JSON
 contract.
 
 ## Cross-references
 
-- [multi-agent-orchestration](../multi-agent-orchestration/SKILL.md) — the vendor-neutral topologies (supervisor/worker, pipeline, parallel/aggregation, critic/debate) and coordination pitfalls that CrewAI and AutoGen each implement in their own opinionated way.
-- [langchain-and-langgraph-agent-orchestration](../langchain-and-langgraph-agent-orchestration/SKILL.md) — a lower-level, graph-based alternative when a task outgrows CrewAI/AutoGen's role-based abstraction and needs explicit cyclical control flow or durable checkpointing.
-- [agent-architecture-design](../agent-architecture-design/SKILL.md) — the single-agent control-loop fundamentals (iteration caps, tool boundaries, human checkpoints) that still apply inside each individual CrewAI/AutoGen agent.
-- [mcp-server-development](../mcp-server-development/SKILL.md) — building the tool-serving side that CrewAI/AutoGen agents call into, rather than defining every tool as an in-framework Python function.
+- [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral topologies (supervisor/worker, pipeline, parallel/aggregation, critic/debate) and coordination pitfalls that CrewAI and AutoGen each implement in their own opinionated way.
+- [langchain-and-langgraph-agent-orchestration](../[langchain-and-langgraph-agent-orchestration](../../Models_and_FineTuning/langchain-and-langgraph-agent-orchestration/SKILL.md)/SKILL.md) — a lower-level, graph-based alternative when a task outgrows CrewAI/AutoGen's role-based abstraction and needs explicit cyclical control flow or durable checkpointing.
+- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the single-agent control-loop fundamentals (iteration caps, tool boundaries, human checkpoints) that still apply inside each individual CrewAI/AutoGen agent.
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side that CrewAI/AutoGen agents call into, rather than defining every tool as an in-framework [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function.

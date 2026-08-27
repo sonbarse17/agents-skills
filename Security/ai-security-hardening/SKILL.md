@@ -36,7 +36,7 @@ Insecure output           XSS/SQLi from LLM response     Output encoding, parame
 
 ## Prompt Injection Defense
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from typing import Optional
 
@@ -79,7 +79,7 @@ def sanitize_user_input(user_input: str, max_length: int = 4000) -> str:
 
 ## Guardrails with NeMo Guardrails
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # guardrails.yaml
 from nemoguardrails import RailsConfig, LLMRails
 
@@ -113,7 +113,7 @@ rails:
 
 ## Output Filtering & PII Scrubbing
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from presidio_analyzer import AnalyzerEngine
 from presidio_anonymizer import AnonymizerEngine
@@ -149,7 +149,7 @@ def validate_output_safety(output: str) -> bool:
 
 ## API Security for LLM Endpoints
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import jwt
@@ -227,7 +227,7 @@ modelscan scan -p "$MODEL_DIR"
 ## Network Isolation for AI Services
 
 ```yaml
-# Kubernetes NetworkPolicy — isolate LLM API
+# [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) NetworkPolicy — isolate LLM API
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -252,7 +252,7 @@ spec:
   - to:
     - namespaceSelector:
         matchLabels:
-          name: monitoring        # metrics only
+          name: [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)        # metrics only
     ports:
     - protocol: TCP
       port: 9090
@@ -260,13 +260,13 @@ spec:
   # (allow only internal cluster traffic)
 ```
 
-## Audit Logging
+## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import structlog
 from datetime import datetime, timezone
 
-audit_log = structlog.get_logger("ai.audit")
+audit_log = structlog.get_logger("ai.[audit](../../AI_and_Agents/Operations/audit/SKILL.md)")
 
 def log_llm_interaction(
     user_id: str,
@@ -297,7 +297,7 @@ def log_llm_interaction(
 |-------|-------|-----|
 | False positive injection blocks | Overly broad regex | Tune patterns; use ML-based classifier for high-traffic |
 | PII in model outputs | Model trained on PII data | Add Presidio scrubbing to output layer |
-| API key leakage | Keys in logs or responses | Mask keys in logging; use vault for key storage |
+| API key leakage | Keys in logs or responses | Mask keys in logging; use [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for key storage |
 | Model weight tampering | Unverified downloads | Always verify SHA-256; use `modelscan` |
 | Rate limit bypass | Per-IP not per-user | Rate limit on authenticated user ID, not IP |
 
@@ -311,8 +311,8 @@ def log_llm_interaction(
 
 ## Related Skills
 
-- [hashicorp-vault](../../secrets/hashicorp-vault/) - Secrets management for API keys
+- [hashicorp-vault](../../secrets/[hashicorp-vault](../hashicorp-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - Secrets management for API keys
 - [network-security](../../network/) - Network-level controls
-- [linux-hardening](../../hardening/linux-hardening/) - Host hardening
-- [agent-observability](../../../devops/ai/agent-observability/) - AI audit logging
-- [llm-gateway](../../../infrastructure/networking/llm-gateway/) - Centralized access control
+- [linux-hardening](../../hardening/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Host hardening
+- [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - AI [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- [llm-gateway](../../../infrastructure/networking/[llm-gateway](../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md)/) - Centralized access control

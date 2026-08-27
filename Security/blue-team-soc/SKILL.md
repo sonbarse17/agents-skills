@@ -6,10 +6,10 @@ description: Master methodologies for SIEM architecture, incident response, and 
 # Blue Team & SOC Operations Methodology
 
 ## Core Architecture & SIEM Paradigm
-A resilient Security Operations Center (SOC) relies on a robust Security Information and Event Management (SIEM) architecture. The objective is holistic visibility across the enterprise telemetry plane, orchestrating log ingestion, normalization, correlation, and alerting. Data ontology must prioritize high-fidelity indicators over raw volume, enabling real-time detection engineering and proactive defense mechanisms.
+A resilient Security Operations Center (SOC) relies on a robust Security Information and Event Management (SIEM) architecture. The objective is holistic visibility across the enterprise telemetry plane, orchestrating log ingestion, normalization, correlation, and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). Data ontology must prioritize high-fidelity indicators over raw volume, enabling real-time detection engineering and proactive defense mechanisms.
 
-## Incident Response Lifecycle (NIST SP 800-61 / SANS)
-The structural foundation of incident handling dictates a deterministic approach to anomaly resolution.
+## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Lifecycle (NIST SP 800-61 / SANS)
+The structural foundation of [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) handling dictates a deterministic approach to anomaly resolution.
 1. **Preparation**: Establishing baselines, tooling, and communication protocols.
 2. **Identification**: Differentiating malicious activity from benign operational noise via anomaly detection.
 3. **Containment**: Halting the threat propagation while preserving forensic artifacts.
@@ -18,12 +18,12 @@ The structural foundation of incident handling dictates a deterministic approach
 6. **Lessons Learned**: Integrating post-mortem intelligence into detection engineering.
 
 ## Threat Hunting & Hypothesis Generation
-Proactive threat hunting transcends automated alerting. It requires the formulation of intelligence-driven hypotheses—assuming a state of compromise—to query historical telemetry for covert adversary behaviors, typically aligned with MITRE ATT&CK defensive mappings.
+Proactive threat hunting transcends automated [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). It requires the formulation of intelligence-driven hypotheses—assuming a state of compromise—to query historical telemetry for covert adversary behaviors, typically aligned with MITRE ATT&CK defensive mappings.
 
 ## Log Analysis Ontology
 Conceptual log analysis demands parsing unstructured security events into actionable structured data. It involves correlating disparate timestamped entries across disparate systems (e.g., EDR, NDR, IAM) to reconstruct temporal attack vectors.
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Telemetry Sources] --> B[Log Aggregation]
@@ -34,6 +34,6 @@ flowchart TD
     E --> G[Containment Strategy]
     G --> H[Eradication & Forensics]
     H --> I[Recovery Operations]
-    I --> J[Post-Incident Review]
+    I --> J[Post-[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Review]
     J --> C
 ```

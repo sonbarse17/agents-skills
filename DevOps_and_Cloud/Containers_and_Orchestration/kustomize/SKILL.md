@@ -9,12 +9,12 @@ metadata:
 
 # Kustomize
 
-Customize Kubernetes resources declaratively without templating.
+[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) [Kubernetes](../kubernetes/SKILL.md) resources declaratively without templating.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Managing Kubernetes configs across environments
+- Managing [Kubernetes](../kubernetes/SKILL.md) configs across environments
 - Patching existing manifests without modification
 - Creating configuration variants from bases
 - Customizing third-party manifests
@@ -22,9 +22,9 @@ Use this skill when:
 
 ## Prerequisites
 
-- kubectl 1.14+ (includes kustomize)
+- [kubectl](../kubectl/SKILL.md) 1.14+ (includes kustomize)
 - Or standalone kustomize CLI
-- Basic Kubernetes manifest knowledge
+- Basic [Kubernetes](../kubernetes/SKILL.md) manifest knowledge
 
 ## Directory Structure
 
@@ -245,7 +245,7 @@ secretGenerator:
     files:
       - tls.crt
       - tls.key
-    type: kubernetes.io/tls
+    type: [kubernetes](../kubernetes/SKILL.md).io/tls
 ```
 
 ## Image Transformations
@@ -289,8 +289,8 @@ namespace: production
 ```yaml
 # kustomization.yaml
 commonLabels:
-  app.kubernetes.io/name: myapp
-  app.kubernetes.io/environment: production
+  app.[kubernetes](../kubernetes/SKILL.md).io/name: myapp
+  app.[kubernetes](../kubernetes/SKILL.md).io/environment: production
 
 commonAnnotations:
   example.com/owner: team-a
@@ -310,7 +310,7 @@ replicas:
 ## Components
 
 ```yaml
-# components/monitoring/kustomization.yaml
+# components/[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
@@ -334,7 +334,7 @@ patches:
 ```yaml
 # overlays/production/kustomization.yaml
 components:
-  - ../../components/monitoring
+  - ../../components/[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 ```
 
 ## Remote Resources
@@ -343,7 +343,7 @@ components:
 # kustomization.yaml
 resources:
   # Remote Git repository
-  - https://github.com/org/manifests//base?ref=v1.0.0
+  - https://[github](../../CI_CD/github/SKILL.md).com/org/manifests//base?ref=v1.0.0
   
   # Remote URL
   - https://raw.githubusercontent.com/org/repo/main/deployment.yaml
@@ -353,22 +353,22 @@ resources:
 
 ```bash
 # Build and view output
-kubectl kustomize overlays/production
+[kubectl](../kubectl/SKILL.md) kustomize overlays/production
 
 # Apply to cluster
-kubectl apply -k overlays/production
+[kubectl](../kubectl/SKILL.md) apply -k overlays/production
 
 # Delete resources
-kubectl delete -k overlays/production
+[kubectl](../kubectl/SKILL.md) delete -k overlays/production
 
 # View diff
-kubectl diff -k overlays/production
+[kubectl](../kubectl/SKILL.md) diff -k overlays/production
 
 # Build with standalone kustomize
 kustomize build overlays/production
 
 # Build and apply
-kustomize build overlays/production | kubectl apply -f -
+kustomize build overlays/production | [kubectl](../kubectl/SKILL.md) apply -f -
 ```
 
 ## Helm Chart Integration
@@ -377,10 +377,10 @@ kustomize build overlays/production | kubectl apply -f -
 # kustomization.yaml
 helmCharts:
   - name: prometheus
-    repo: https://prometheus-community.github.io/helm-charts
+    repo: https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
     version: 25.0.0
     releaseName: prometheus
-    namespace: monitoring
+    namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
     valuesFile: values.yaml
     includeCRDs: true
 ```
@@ -449,6 +449,6 @@ configurations:
 
 ## Related Skills
 
-- [kubernetes-ops](../kubernetes-ops/) - K8s fundamentals
-- [helm-charts](../helm-charts/) - Helm alternative
-- [argocd-gitops](../argocd-gitops/) - GitOps deployment
+- [kubernetes-ops](../[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s fundamentals
+- [helm-charts](../[helm-charts](../helm-charts/SKILL.md)/) - Helm alternative
+- [argocd-gitops](../[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../gitops/SKILL.md)/SKILL.md)/) - [GitOps](../gitops/SKILL.md) deployment

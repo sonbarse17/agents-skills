@@ -9,13 +9,13 @@ metadata:
   package: "@microsoft/agents-hosting, @microsoft/agents-hosting-express, @microsoft/agents-activity, @microsoft/agents-copilotstudio-client"
 ---
 
-# Microsoft 365 Agents SDK (TypeScript)
+# Microsoft 365 Agents SDK ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
 
 Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the Microsoft 365 Agents SDK with Express hosting, AgentApplication routing, streaming responses, and Copilot Studio client integrations.
 
 ## Before implementation
 
-- Use the microsoft-docs MCP to verify the latest API signatures for AgentApplication, startServer, and CopilotStudioClient.
+- Use the [microsoft-docs](../../../microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, startServer, and CopilotStudioClient.
 - Confirm package versions on npm before wiring up samples or templates.
 
 ## Installation
@@ -45,7 +45,7 @@ COPILOT_BEARER_TOKEN=<copilot-jwt>
 
 ## Core Workflow: Express-hosted AgentApplication
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   AgentApplication,
   TurnContext,
@@ -68,7 +68,7 @@ startServer(agent);
 
 ## Streaming responses with Azure OpenAI
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { azure } from "@ai-sdk/azure";
 import {
   AgentApplication,
@@ -116,7 +116,7 @@ startServer(agent);
 
 ## Invoke activity handling
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { Activity, ActivityTypes } from "@microsoft/agents-activity";
 import {
   AgentApplication,
@@ -139,7 +139,7 @@ agent.onActivity("invoke", async (context: TurnContext) => {
 
 ## Copilot Studio client (Direct to Engine)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { CopilotStudioClient } from "@microsoft/agents-copilotstudio-client";
 
 const settings = {
@@ -161,7 +161,7 @@ console.log(reply);
 
 ## Copilot Studio WebChat integration
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { CopilotStudioWebChat } from "@microsoft/agents-copilotstudio-client";
 
 const directLine = CopilotStudioWebChat.createConnection(client, {
@@ -193,4 +193,4 @@ window.WebChat.renderWebChat(
 | @microsoft/agents-hosting-express      | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-hosting-express?view=agents-sdk-js-latest      |
 | @microsoft/agents-copilotstudio-client | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-copilotstudio-client?view=agents-sdk-js-latest |
 | Integrate with Copilot Studio          | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs                                       |
-| GitHub samples                         | https://github.com/microsoft/Agents/tree/main/samples/nodejs                                                        |
+| [GitHub](../../../../CI_CD/github/SKILL.md) samples                         | https://[github](../../../../CI_CD/github/SKILL.md).com/microsoft/Agents/tree/main/samples/nodejs                                                        |

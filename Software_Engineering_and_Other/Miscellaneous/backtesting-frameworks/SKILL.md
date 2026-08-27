@@ -82,5 +82,5 @@ Detailed sections (starting with `## Implementation Patterns`) live in `../../..
 - **Don't ignore survivorship** - Include delisted
 - **Don't use adjusted data carelessly** - Understand adjustments
 - **Don't optimize on full history** - Reserve test set
-- **Don't ignore capacity** - Market impact matters
+- **Don't ignore [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** - Market impact matters
 

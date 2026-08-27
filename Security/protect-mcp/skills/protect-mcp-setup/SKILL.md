@@ -12,7 +12,7 @@ anyone can verify offline.
 ## Overview
 
 Claude Code runs powerful tools: `Bash`, `Edit`, `Write`, `WebFetch`. By default
-there is no audit trail, no policy enforcement, and no way to prove what was
+there is no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, no policy enforcement, and no way to prove what was
 decided after the fact. `protect-mcp` closes all three gaps:
 
 - **Cedar policies** (AWS's open authorization engine) evaluate every tool call
@@ -153,7 +153,7 @@ Use the plugin's slash commands from within Claude Code:
 
 ```
 /verify-receipt receipts/latest.json
-/audit-chain ./receipts/ --last 20
+/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-chain ./receipts/ --last 20
 ```
 
 ## Receipt Format
@@ -188,7 +188,7 @@ Each receipt is a JSON file with this structure:
 |--------|-------|
 | "Trust me, the agent only read files" | Cryptographically provable: every Read logged and signed |
 | "The log shows it happened" | The receipt proves it happened, and no one can edit it |
-| "You'd have to audit our system" | Anyone can verify every receipt offline |
+| "You'd have to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) our system" | Anyone can verify every receipt offline |
 | "Logs might be different by now" | Ed25519 signatures lock the record at signing time |
 
 ## Standards
@@ -202,6 +202,6 @@ Each receipt is a JSON file with this structure:
 
 - **npm**: [protect-mcp](https://www.npmjs.com/package/protect-mcp)
 - **Verify CLI**: [@veritasacta/verify](https://www.npmjs.com/package/@veritasacta/verify)
-- **Source**: [github.com/ScopeBlind/scopeblind-gateway](https://github.com/ScopeBlind/scopeblind-gateway)
+- **Source**: [github.com/ScopeBlind/scopeblind-gateway](https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/ScopeBlind/scopeblind-gateway)
 - **Protocol**: [veritasacta.com](https://veritasacta.com)
 - **Integrations**: Microsoft Agent Governance Toolkit (PR #667), AWS cedar-policy/cedar-for-agents (PR #64)

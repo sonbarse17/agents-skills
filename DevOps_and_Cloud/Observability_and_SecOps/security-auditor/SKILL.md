@@ -21,7 +21,7 @@ Systematically identify, assess, and remediate security vulnerabilities in appli
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "security audit", "vulnerability scan", "security review", "dependency check", "SAST", "DAST", "penetration test", "CVE", "OWASP", "security assessment", "threat modeling".
+Exact user phrases: "security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "vulnerability scan", "security review", "dependency check", "SAST", "DAST", "penetration test", "CVE", "OWASP", "security assessment", "threat modeling".
 
 ### Input Context
 - Application type (web app, API, mobile, desktop, CLI, library)
@@ -34,7 +34,7 @@ Exact user phrases: "security audit", "vulnerability scan", "security review", "
 - Recent security incidents or CVEs
 
 ### Output Artifact
-Security audit report with identified vulnerabilities by severity, remediation steps, and priority.
+Security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) report with identified vulnerabilities by severity, remediation steps, and priority.
 
 ### Completion Criteria
 - [ ] Dependency vulnerability scan completed
@@ -52,9 +52,9 @@ Security audit report with identified vulnerabilities by severity, remediation s
 
 ## Framework/Methodology
 
-### Security Audit Decision Tree
+### Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Decision Tree
 ```
-What is the audit scope?
+What is the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scope?
 ├── Web application → OWASP Top 10 + dependency scan + SAST
 │   ├── Auth review (session management, MFA, password policies)
 │   ├── Input validation (XSS, SQL injection, CSRF, SSRF)
@@ -89,7 +89,7 @@ A05: Security Misconfiguration
 A06: Vulnerable and Outdated Components
 A07: Identification and Authentication Failures
 A08: Software and Data Integrity Failures
-A09: Security Logging and Monitoring Failures
+A09: Security Logging and [Monitoring](../monitoring/SKILL.md) Failures
 A10: Server-Side Request Forgery (SSRF)
 ```
 
@@ -98,22 +98,22 @@ A10: Server-Side Request Forgery (SSRF)
 ### Step 1: Dependency Vulnerability Scan
 
 ```bash
-# npm audit
-npm audit                    # List vulnerabilities
-npm audit --audit-level=high # Only show high/critical
-npm audit fix                # Auto-fix non-breaking updates
-npm audit fix --force        # Force update (may break API)
+# npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                    # List vulnerabilities
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high # Only show high/critical
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix                # Auto-fix non-breaking updates
+npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix --force        # Force update (may break API)
 
-# Better: npm audit + snyk
+# Better: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) + snyk
 npx snyk test                # Deep dependency analysis
-npx snyk monitor             # Continuous monitoring
+npx snyk monitor             # Continuous [monitoring](../monitoring/SKILL.md)
 
 # pip
-pip-audit                    # Scan Python dependencies
-safety check                 # Alternative Python scanner
+pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                    # Scan [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
+safety check                 # Alternative [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scanner
 
 # cargo (Rust)
-cargo audit                  # Audit Cargo.lock for CVEs
+cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                  # [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Cargo.lock for CVEs
 cargo deny check advisories  # More comprehensive (also license check)
 
 # go
@@ -123,8 +123,8 @@ nancy go.sum                 # Go dependency vulnerability scanner
 # .NET
 dotnet list package --vulnerable  # List vulnerable NuGet packages
 
-# Docker
-docker scout quick <image>   # Docker image vulnerability scan
+# [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) scout quick <image>   # [Docker](../../Containers_and_Orchestration/docker/SKILL.md) image vulnerability scan
 trivy image <image>          # Trivy container scanner
 ```
 
@@ -137,17 +137,17 @@ tools:
     usage: "semgrep --config=auto --config=./.semgrep/ ."
     strengths: "Custom rules, CI-friendly, fast"
   codeql:
-    description: "GitHub's deep code analysis"
-    usage: "codeql database create --language=typescript ./db && codeql analyze ./db --format=sarifv2"
+    description: "[GitHub](../../CI_CD/github/SKILL.md)'s deep code analysis"
+    usage: "codeql database create --language=[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) ./db && codeql analyze ./db --format=sarifv2"
     strengths: "Deep flow analysis, accurate"
   eslint-plugin-security:
     description: "ESLint plugin for Node.js security"
     usage: "npx eslint --plugin security ."
     strengths: "Linter integration, easy setup"
   bandit:
-    description: "Python SAST"
+    description: "[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SAST"
     usage: "bandit -r src/ -f json"
-    strengths: "Python-specific patterns"
+    strengths: "[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-specific patterns"
   gosec:
     description: "Go security checker"
     usage: "gosec ./..."
@@ -187,7 +187,7 @@ jwt_security:
     fix: "Set exp claim, use refresh tokens for long sessions"
   secret:
     check: "JWT secret is not in source code"
-    fix: "Use env vars, vault, or KMS"
+    fix: "Use env vars, [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or KMS"
   validation:
     check: "All claims validated (iss, aud, exp, nbf)"
     fix: "Validate all required claims on every request"
@@ -243,7 +243,7 @@ curl -X POST https://api.example.com/profile \
 ### Step 5: CI/CD Security Integration
 
 ```yaml
-# .github/workflows/security-scan.yml
+# .[github](../../CI_CD/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on:
   pull_request:
@@ -257,7 +257,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
-      - run: npm audit --audit-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
         continue-on-error: true  # Don't block PRs, but flag
 
   sast:
@@ -277,7 +277,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
+          base: ${{ [github](../../CI_CD/github/SKILL.md).event.repository.default_branch }}
           head: HEAD
 ```
 
@@ -310,13 +310,13 @@ priority_matrix:
 
 | Pitfall | Description | Prevention |
 |---------|-------------|------------|
-| Ignoring transitive dependencies | Direct deps are safe, sub-deps are vulnerable | Use `npm audit --recursive`, `pip-audit` |
+| Ignoring transitive dependencies | Direct deps are safe, sub-deps are vulnerable | Use `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --recursive`, `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` |
 | False positives from scanners | Wasting time on non-exploitable findings | Triage findings, suppress with evidence |
 | No reproducible scan | Different results each run | Lock dependency versions, pin scanner version |
 | Only scanning at release | Vulnerabilities introduced between releases | PR-level scanning + weekly full scans |
-| No secrets scanning in CI | Hardcoded credentials committed | Pre-commit hooks + CI secrets scanner |
+| No secrets scanning in CI | Hardcoded credentials committed | Pre-[commit](../../CI_CD/commit/SKILL.md) hooks + CI secrets scanner |
 | Ignoring container images | App is clean, base image is vulnerable | Scan all container layers |
-| Missing dependency lock files | Non-deterministic installs, different vulns | Commit lock files (package-lock.json, Cargo.lock) |
+| Missing dependency lock files | Non-deterministic installs, different vulns | [Commit](../../CI_CD/commit/SKILL.md) lock files (package-lock.json, Cargo.lock) |
 | Over-relying on scanners | Automated tools miss business logic flaws | Manual review for access control, auth |
 
 ## Best Practices
@@ -324,14 +324,14 @@ priority_matrix:
 | Practice | Rationale |
 |----------|-----------|
 | Shift security left | Catch vulnerabilities earlier in development |
-| Automate dependency scanning | Every PR, every commit — not just releases |
+| Automate dependency scanning | Every PR, every [commit](../../CI_CD/commit/SKILL.md) — not just releases |
 | Use lock files | Deterministic installs, auditable dependencies |
 | Segment scanning by severity | Critical = block PR, Low = report only |
 | Pin base image versions | Avoid unexpected OS-level vulnerabilities |
 | Scan container images | App + OS dependencies both matter |
 | Implement WAF rules | Defense in depth for web apps |
 | Regular penetration testing | Automated tools miss business logic flaws |
-| Secrets in environment, not code | KMS, Vault, or secret manager for all secrets |
+| Secrets in environment, not code | KMS, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or secret manager for all secrets |
 | Monitor for new CVEs | Subscribe to security advisories for dependencies |
 
 ## References
@@ -345,7 +345,7 @@ priority_matrix:
 
 ### Dependency Vulnerability Scanner
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import json
 import subprocess
 from typing import Dict, List, Optional
@@ -371,7 +371,7 @@ class DependencyScanner:
     def scan_npm(self, project_path: str = ".") -> List[Vulnerability]:
         try:
             result = subprocess.run(
-                ["npm", "audit", "--json"], capture_output=True, text=True, cwd=project_path
+                ["npm", "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "--json"], capture_output=True, text=True, cwd=project_path
             )
             data = json.loads(result.stdout)
             for advisory_id, advisory in data.get("advisories", {}).items():
@@ -394,7 +394,7 @@ class DependencyScanner:
     def scan_python(self, requirements_file: str = "requirements.txt") -> List[Vulnerability]:
         try:
             result = subprocess.run(
-                ["pip-audit", "--requirement", requirements_file, "--format", "json"],
+                ["pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "--requirement", requirements_file, "--format", "json"],
                 capture_output=True, text=True
             )
             data = json.loads(result.stdout)
@@ -413,7 +413,7 @@ class DependencyScanner:
                     self.vulnerabilities.append(v)
             return self.vulnerabilities
         except (subprocess.CalledProcessError, json.JSONDecodeError, FileNotFoundError):
-            print("pip-audit not available or requirements file not found")
+            print("pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) not available or requirements file not found")
             return []
 
     def filter_critical(self) -> List[Vulnerability]:
@@ -428,7 +428,7 @@ class DependencyScanner:
 
     def generate_report(self) -> str:
         groups = self.group_by_severity()
-        lines = ["## Security Audit Report\n"]
+        lines = ["## Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Report\n"]
         total = sum(len(g) for g in groups.values())
         lines.append(f"**Total Vulnerabilities**: {total}")
         for sev in ["critical", "high", "medium", "low"]:
@@ -453,7 +453,7 @@ class SecretsScanner:
     def __init__(self):
         self.patterns = {
             "AWS Access Key": r"AKIA[0-9A-Z]{16}",
-            "GitHub Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
+            "[GitHub](../../CI_CD/github/SKILL.md) Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
             "Private Key": r"-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----",
             "JWT Token": r"eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+",
             "Generic Secret": r"(secret|password|token|api.?key)\s*[:=]\s*['\"][A-Za-z0-9_!@#$%^&*()=+]{16,}['\"]",
@@ -519,7 +519,7 @@ What do you need to test?
 ├── Source code vulnerabilities (before deploy)
 │   ├── Static analysis (SAST) → Semgrep, CodeQL, SonarQube
 │   ├── Secrets detection → TruffleHog, GitLeaks, detect-secrets
-│   └── Dependency scanning → npm audit, Dependabot, Snyk
+│   └── Dependency scanning → npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), Dependabot, Snyk
 │
 ├── Running application vulnerabilities (after deploy)
 │   ├── Dynamic analysis (DAST) → OWASP ZAP, Burp Suite
@@ -527,7 +527,7 @@ What do you need to test?
 │   └── Fuzzing → AFL, libFuzzer, RESTler
 │
 └── Infrastructure vulnerabilities
-    ├── Container scanning → Trivy, Clair, Docker Scout
+    ├── Container scanning → Trivy, Clair, [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Scout
     ├── IaC scanning → Checkov, tfsec, cfn-nag
     └── Cloud posture → Prowler, ScoutSuite
 ```
@@ -548,9 +548,9 @@ What do you need to test?
 | Relying solely on automated scanners | Miss business logic flaws, auth issues | Automated scan + manual pen testing |
 | No severity-based triage | Everything gets equal urgency | Severity-gated SLA for remediation |
 | Running outdated scanner versions | Misses new vulnerability signatures | Pin scanner version, update weekly |
-| No lock files | Non-deterministic installs, different vulns | Commit all lock files (package-lock, Cargo.lock, go.sum) |
+| No lock files | Non-deterministic installs, different vulns | [Commit](../../CI_CD/commit/SKILL.md) all lock files (package-lock, Cargo.lock, go.sum) |
 | One-size-fits-all security policy | Different services have different risk profiles | Risk-classify services, apply proportional controls |
-| Not monitoring for new CVEs | Vulnerabilities discovered after scan | Subscribe to GHSA, NVD feeds, Dependabot alerts |
+| Not [monitoring](../monitoring/SKILL.md) for new CVEs | Vulnerabilities discovered after scan | Subscribe to GHSA, NVD feeds, Dependabot alerts |
 
 ## Performance Optimization
 
@@ -560,5 +560,5 @@ What do you need to test?
 - **SBOM generation**: Generate a Software Bill of Materials (SPDX or CycloneDX format) after each build. Use SBOM for post-deployment vulnerability correlation without re-scanning.
 
 ## Handoff
-Hand off to `dev-loop-code-review` for secure code review. Hand off to `dev-loop-tech-debt-tracker` for security debt tracking.
+Hand off to `dev-loop-[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../../Software_Engineering_and_Other/Frontend/tech-debt-tracker/SKILL.md)` for security debt tracking.
 

@@ -30,9 +30,9 @@ Loki itself as the aggregation backend: label/cardinality design,
 `limits_config` ingestion controls, the schema/chunk store config that
 determines the index format and storage backend, retention, and
 deployment-mode selection — not the queries run against it (see
-[logql-query-authoring](../logql-query-authoring/SKILL.md)) and not
+[logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)) and not
 pre-deploy config validation (see
-[loki-configuration-validation](../loki-configuration-validation/SKILL.md)),
+[loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md)),
 which is a distinct, narrower concern from standing up Loki in the first
 place.
 
@@ -48,9 +48,9 @@ place.
   `per-stream rate limit exceeded`) or silently dropping expected log
   volume.
 - Scaling Loki from a single-binary/small setup to handle materially
-  higher log volume, and deciding on simple-scalable vs. microservices
+  higher log volume, and deciding on simple-scalable vs. [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
   deployment mode.
-- Migrating or configuring the object-storage backend (S3/GCS/Azure Blob)
+- Migrating or configuring the [object-storage](../../Cloud_Providers/object-storage/SKILL.md) backend (S3/GCS/Azure Blob)
   and the index/chunk schema version that governs it.
 
 ## Prerequisites & environment
@@ -58,7 +58,7 @@ place.
 - Loki 2.9+ assumed (TSDB index format, the current recommended schema,
   became stable/default-recommended from 2.9; earlier `boltdb-shipper`
   schema configs still work but TSDB is preferred for new deployments).
-- A deployment target: Kubernetes (via the `loki` or
+- A deployment target: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (via the `loki` or
   `loki-distributed`/`loki-simple-scalable` Helm charts) or bare
   VMs/containers running the Loki binary directly.
 - An object storage backend for anything beyond a small/test setup —
@@ -67,7 +67,7 @@ place.
   store like MinIO) is expected for production.
 - A log shipper already forwarding logs into Loki's push API (Promtail,
   the Grafana Agent, or Fluent Bit — see
-  [fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)
+  [fluent-bit-log-forwarding-configuration](../[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)/SKILL.md)
   for configuring Fluent Bit specifically as that shipper) so there's
   something to ingest while tuning limits.
 - For multi-tenant setups: `auth_enabled: true` and a clear tenant-ID
@@ -81,10 +81,10 @@ place.
      etc.) run in one process.
    - **Simple scalable (`-target=read` / `-target=write` / `-target=backend`):**
      splits the read and write paths into independently scaled
-     deployments — the right default for most production Kubernetes
+     deployments — the right default for most production [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
      setups once volume grows past what single-binary comfortably
      handles.
-   - **Microservices:** every Loki component (distributor, ingester,
+   - **[Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md):** every Loki component (distributor, ingester,
      querier, query-frontend, compactor, etc.) scaled independently —
      reserve for genuinely large multi-team/high-volume deployments; it's
      meaningfully more operational surface area than most teams need.
@@ -114,10 +114,10 @@ place.
    > cluster-wide, not just for whoever added the label. Fields like
    > these belong in the log line content (extracted at query time via
    > `| json`/`| logfmt` — see
-   > [logql-query-authoring](../logql-query-authoring/SKILL.md)), never
+   > [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)), never
    > as indexed labels. If unsure whether a label is safe, check its
    > cardinality before it ships broadly (see
-   > [loki-configuration-validation](../loki-configuration-validation/SKILL.md)
+   > [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md)
    > for pre-deploy checks).
 
 3. **Configure ingestion limits in `limits_config` to protect the
@@ -237,15 +237,15 @@ place.
   deployment — it has better query performance and is the schema Loki
   development is focused on going forward.
 - Choose simple-scalable mode as the default production target on
-  Kubernetes rather than jumping straight to full microservices mode —
+  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rather than jumping straight to full [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode —
   most teams never need the extra operational surface area
-  microservices mode adds.
+  [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode adds.
 - Monitor `loki_discarded_samples_total` by `reason` as a standing
   dashboard panel/alert, not just when someone reports missing logs —
   silent ingestion drops are otherwise invisible until someone notices
   gaps during an actual investigation.
 - Validate any schema/limits/label change against
-  [loki-configuration-validation](../loki-configuration-validation/SKILL.md)
+  [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md)
   before deploying — a bad schema config or an overly permissive limit
   is much cheaper to catch pre-deploy than to unwind after ingestion has
   already been running against it.
@@ -275,7 +275,7 @@ place.
 - **Symptom:** Loki ingesters intermittently lose recent (not-yet-
   flushed) log data during pod restarts/rolling upgrades.
   **Fix:** The write-ahead log (WAL) wasn't enabled, or its volume isn't
-  actually persistent (e.g. backed by ephemeral storage in Kubernetes
+  actually persistent (e.g. backed by ephemeral storage in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
   instead of a PersistentVolume). Enable `ingester.wal.enabled: true`
   with a real persistent volume backing `wal.dir`, and confirm
   `replication_factor` is set high enough that a single ingester's loss
@@ -286,7 +286,7 @@ place.
   **Fix:** Often an artifact of the older `boltdb-shipper` index store
   under sustained high stream counts, or `max_streams_per_user` being set
   far higher than the label design actually needs. Migrate to TSDB via a
-  new `schema_config` entry (never edit the old one) and re-audit label
+  new `schema_config` entry (never edit the old one) and re-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) label
   cardinality.
 
 - **Symptom:** After adding S3 as the storage backend, existing
@@ -308,9 +308,9 @@ place.
 
 ## Worked example
 
-**Scenario:** Standing up Loki on Kubernetes in simple-scalable mode for
+**Scenario:** Standing up Loki on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) in simple-scalable mode for
 a multi-team platform, backed by S3, with a 30-day default retention and
-a stricter cardinality ceiling after an earlier incident where a team's
+a stricter cardinality ceiling after an earlier [incident](../incident/SKILL.md) where a team's
 new field caused stream-count explosion.
 
 ```yaml
@@ -360,12 +360,12 @@ overrides:
 
 After rollout, `loki_discarded_samples_total{reason="per_stream_rate_
 limit"}` is added as a standing Grafana panel per team namespace so a
-repeat of the earlier cardinality incident surfaces immediately instead
+repeat of the earlier cardinality [incident](../incident/SKILL.md) surfaces immediately instead
 of being discovered days later during a query-performance complaint.
 
 ## Cross-references
 
-- [loki-configuration-validation](../loki-configuration-validation/SKILL.md) — validating this exact config (limits, schema) before deploying, to catch ingestion-rejecting mistakes pre-rollout.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — writing queries against logs ingested here; label design decisions made in this skill directly determine what's cheap versus expensive to query.
-- [fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md) — configuring a shipper to push logs into this Loki instance's ingestion API.
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md) — provisioning the Grafana datasource this Loki instance is queried through, and where `loki_discarded_samples_total` alerting rules would be wired.
+- [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md) — validating this exact config (limits, schema) before deploying, to catch ingestion-rejecting mistakes pre-rollout.
+- [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — writing queries against logs ingested here; label design decisions made in this skill directly determine what's cheap versus expensive to query.
+- [fluent-bit-log-forwarding-configuration](../[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)/SKILL.md) — configuring a shipper to push logs into this Loki instance's ingestion API.
+- [prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — provisioning the Grafana datasource this Loki instance is queried through, and where `loki_discarded_samples_total` [alerting](../alerting/SKILL.md) rules would be wired.

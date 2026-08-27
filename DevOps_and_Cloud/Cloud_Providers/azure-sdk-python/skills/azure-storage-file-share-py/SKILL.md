@@ -9,14 +9,14 @@ metadata:
   version: "1.0.0"
 ---
 
-# Azure Storage File Share SDK for Python
+# Azure Storage File Share SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Manage SMB file shares for cloud-native and lift-and-shift scenarios.
 
 ## Installation
 
 ```bash
-pip install azure-storage-file-share
+pip install [azure-storage](../../../azure-skills/skills/[azure-storage](../../../azure-storage/SKILL.md)/SKILL.md)-file-share
 ```
 
 ## Environment Variables
@@ -30,7 +30,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -39,14 +39,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.fileshare import ShareServiceClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ShareServiceClient(
@@ -61,26 +61,26 @@ with ShareServiceClient(
 
 ### Create Share
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 share = service.create_share("my-share")
 ```
 
 ### List Shares
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 for share in service.list_shares():
     print(f"{share.name}: {share.quota} GB")
 ```
 
 ### Get Share Client
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 share_client = service.get_share_client("my-share")
 ```
 
 ### Delete Share
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 service.delete_share("my-share")
 ```
 
@@ -88,7 +88,7 @@ service.delete_share("my-share")
 
 ### Create Directory
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 share_client = service.get_share_client("my-share")
 share_client.create_directory("my-directory")
 
@@ -98,7 +98,7 @@ share_client.create_directory("my-directory/sub-directory")
 
 ### List Directories and Files
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 directory_client = share_client.get_directory_client("my-directory")
 
 for item in directory_client.list_directories_and_files():
@@ -110,7 +110,7 @@ for item in directory_client.list_directories_and_files():
 
 ### Delete Directory
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 share_client.delete_directory("my-directory")
 ```
 
@@ -118,7 +118,7 @@ share_client.delete_directory("my-directory")
 
 ### Upload File
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client = share_client.get_file_client("my-directory/file.txt")
 
 # From string
@@ -134,7 +134,7 @@ file_client.upload_file(b"Binary content")
 
 ### Download File
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client = share_client.get_file_client("my-directory/file.txt")
 
 # To bytes
@@ -153,7 +153,7 @@ for chunk in download.chunks():
 
 ### Get File Properties
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 properties = file_client.get_file_properties()
 print(f"Size: {properties.size}")
 print(f"Content type: {properties.content_settings.content_type}")
@@ -162,13 +162,13 @@ print(f"Last modified: {properties.last_modified}")
 
 ### Delete File
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client.delete_file()
 ```
 
 ### Copy File
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 source_url = "https://account.file.core.windows.net/share/source.txt"
 dest_client = share_client.get_file_client("destination.txt")
 dest_client.start_copy_from_url(source_url)
@@ -178,14 +178,14 @@ dest_client.start_copy_from_url(source_url)
 
 ### Upload Range
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Upload to specific range
 file_client.upload_range(data=b"content", offset=0, length=7)
 ```
 
 ### Download Range
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Download specific range
 download = file_client.download_file(offset=0, length=100)
 data = download.readall()
@@ -195,14 +195,14 @@ data = download.readall()
 
 ### Create Snapshot
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 snapshot = share_client.create_snapshot()
 print(f"Snapshot: {snapshot['snapshot']}")
 ```
 
 ### Access Snapshot
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 snapshot_client = service.get_share_client(
     "my-share",
     snapshot=snapshot["snapshot"]
@@ -211,7 +211,7 @@ snapshot_client = service.get_share_client(
 
 ## Async Client
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.fileshare.aio import ShareServiceClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -248,6 +248,6 @@ async def upload_file():
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/azure-storage-file-share-py_capabilities.md](../../../../../Global_References/azure-storage-file-share-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/azure-storage-file-share-py_non-hero-scenarios.md](../../../../../Global_References/azure-storage-file-share-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../../Global_References/[azure-storage](../../../azure-skills/skills/[azure-storage](../../../azure-storage/SKILL.md)/SKILL.md)-file-share-py_capabilities.md](../../../../../Global_References/[azure-storage](../../../azure-skills/skills/[azure-storage](../../../azure-storage/SKILL.md)/SKILL.md)-file-share-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/[azure-storage](../../../azure-skills/skills/[azure-storage](../../../azure-storage/SKILL.md)/SKILL.md)-file-share-py_non-hero-scenarios.md](../../../../../Global_References/[azure-storage](../../../azure-skills/skills/[azure-storage](../../../azure-storage/SKILL.md)/SKILL.md)-file-share-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

@@ -16,7 +16,7 @@ planning memory headroom, working an actual
 OOM, and watching thermals across a long job.
 For launch-time failure modes (ABI mismatches,
 flash-attn, playbook breakage), see
-`spark-training-gotchas` — this skill assumes
+`[spark-training-gotchas](../spark-training-gotchas/SKILL.md)` — this skill assumes
 the job starts.
 
 ## Common Issues Quick Reference
@@ -25,7 +25,7 @@ the job starts.
 |---|---|
 | Planning headroom before launch | Budget against `free -g`, not `nvidia-smi` — see UMA Memory Model |
 | Job OOMs on unified memory | Work the OOM Ladder in order: flush, then batch/pack, then method downgrade |
-| Throughput drops mid-run | Check the power/temp log before assuming a config bug — see Thermal Monitoring |
+| Throughput drops mid-run | Check the power/temp log before assuming a config bug — see Thermal [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
 | Trainer + inference server both wanted | Run one at a time — see Concurrent Workloads |
 
 ## When to Use This Skill
@@ -58,7 +58,7 @@ CPU share one 128GB pool. Two consequences:
   `[N/A], [N/A]` outright instead of a number — a
   script grepping for a numeric value there gets
   nothing, not a misleading undercount (see
-  `spark-training-gotchas` gotcha G3).
+  `[spark-training-gotchas](../spark-training-gotchas/SKILL.md)` gotcha G3).
 
 - **Model load is a transient peak, not the
   steady state.** Loading safetensors weights
@@ -105,7 +105,7 @@ Before launch, work through these in order:
 A sanity check of the worksheet formula against
 the ≈40GB anchor:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 params = 70e9
 weights_gb = params * 0.5 / 1e9      # NF4, step 1
 adapter_gb = 0.5                     # step 5, negligible
@@ -136,7 +136,7 @@ than the last — don't skip ahead:
 
    Needs root; a between-run reset, not a
    mid-training step. See
-   `spark-training-gotchas` (gotcha G3) for the
+   `[spark-training-gotchas](../spark-training-gotchas/SKILL.md)` (gotcha G3) for the
    full diagnostic behind this step.
 
 2. **Reduce batch size or packing length.** Only
@@ -160,7 +160,7 @@ Fall back further (smaller model, multi-Spark)
 only after all three steps and the job still
 won't fit.
 
-## Thermal Monitoring
+## Thermal [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 Multi-hour runs push into Spark's sustained
 power ceiling, well under the rated figure —
@@ -191,7 +191,7 @@ explain away:
   run whose per-step time doubles two hours in
   should show that in the log, correlated against
   the thermal sample at that timestamp. Full
-  throttling diagnostics: `spark-training-gotchas`
+  throttling diagnostics: `[spark-training-gotchas](../spark-training-gotchas/SKILL.md)`
   (gotcha G4).
 
 ## Concurrent Workloads
@@ -201,7 +201,7 @@ happens without either process's logs showing
 an OOM:
 
 - The one-heavy-job rule applies to **uncapped or
-  near-capacity** workloads — an uncapped trainer
+  near-[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** workloads — an uncapped trainer
   and inference server (vLLM, Ollama) compete for
   the same pool. A small, capped workload doesn't:
   a <4GB LoRA fine-tune coexists fine alongside
@@ -210,7 +210,7 @@ an OOM:
   presence, before stopping it.
 
 - Inference servers evict trainer pages silently
-  under uncapped/near-capacity contention, and
+  under uncapped/near-[capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) contention, and
   vice versa — neither logs an error, so a slow
   run or lost KV cache is a contention symptom to
   check for. Stop unrelated *uncapped* servers
@@ -222,7 +222,7 @@ Check for GPU-resident processes first:
 ps aux | grep -E 'vllm|ollama|trl|axolotl' | grep -v grep
 ```
 
-This procedure complements `spark-training-gotchas`
+This procedure complements `[spark-training-gotchas](../spark-training-gotchas/SKILL.md)`
 (gotchas G3, G4, G6) — that skill covers launch-time
 failures; this one, the running job.
 

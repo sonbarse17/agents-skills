@@ -100,7 +100,7 @@ npx medusa db:migrate --clean-snapshots
 ## Development Patterns
 
 ### Module Structure
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/modules/my-module/models/post.ts
 import { model } from "@medusajs/framework/utils"
 
@@ -115,7 +115,7 @@ export default Post
 ```
 
 ### API Route Example
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/api/posts/route.ts
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 
@@ -135,7 +135,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 ```
 
 ### Scheduled Job Example
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/jobs/sync-inventory.ts
 import { MedusaContainer } from "@medusajs/framework/types"
 
@@ -154,7 +154,7 @@ export const config = {
 
 ### 1. Project Setup
 - Use MedusaJS CLI for project initialization
-- Follow TypeScript best practices
+- Follow [TypeScript](../../Frontend/typescript/SKILL.md) best practices
 - Implement proper error handling
 - Set up comprehensive testing
 
@@ -205,7 +205,7 @@ export const config = {
 2. Create necessary data models
 3. Implement workflow orchestration
 4. Add event handlers for state changes
-5. Create monitoring and alerting
+5. Create [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 6. Document workflow behavior
 
 ## Troubleshooting
@@ -290,7 +290,7 @@ Scheduled job patterns:
 # Copy template to your project
 cp templates/module-complete.ts src/modules/brand/
 
-# Customize for your needs
+# [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) for your needs
 # - Rename identifiers
 # - Add/remove properties
 # - Implement business logic
@@ -573,7 +573,7 @@ npx create-medusa-app@latest my-store
 
 - Official MedusaJS Documentation
 - Community Discord and Forums
-- GitHub Repository and Examples
+- [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository and Examples
 - Plugin Marketplace
 - Developer Tools and CLI Commands
 

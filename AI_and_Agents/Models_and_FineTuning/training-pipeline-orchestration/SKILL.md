@@ -51,15 +51,15 @@ a fragile script that only the original author can rerun correctly.
   Kubeflow Pipelines ≥ 2.0 (KFP SDK v2, component-based), Argo Workflows
   ≥ 3.4, or a managed equivalent (Vertex AI Pipelines, SageMaker Pipelines).
 - Containerized or environment-pinned execution for each pipeline step so
-  "works on my machine" doesn't leak into the DAG (Docker images or a locked
+  "works on my machine" doesn't leak into the DAG ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images or a locked
   dependency file per step).
 - Access to the data source(s), feature store (see
-  [feature-store-design](../feature-store-design/SKILL.md)), and experiment
-  tracking backend (see [experiment-tracking](../experiment-tracking/SKILL.md)).
-- Compute resources for training steps (GPU/CPU pool, autoscaling cluster, or
+  [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md)), and experiment
+  tracking backend (see [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)).
+- Compute resources for training steps (GPU/CPU pool, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) cluster, or
   managed training jobs) provisioned or requestable by the pipeline.
 - A model registry endpoint to register the pipeline's output (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 - Deterministic seeding support in the training framework (e.g.
   `torch.manual_seed`, `numpy.random.seed`) if bit-for-bit reproducibility is
   a goal — note full determinism is not always achievable with GPU
@@ -93,7 +93,7 @@ a fragile script that only the original author can rerun correctly.
    or environment with a locked dependency set; do not rely on a shared
    mutable environment across steps that could drift between runs.
 3. **Implement the DAG** (Airflow TaskFlow example):
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from airflow.decorators import dag, task
    from datetime import datetime
 
@@ -143,7 +143,7 @@ a fragile script that only the original author can rerun correctly.
 6. **Log every step's inputs/outputs and parameters** to the experiment
    tracker so a given pipeline run's full lineage (data snapshot → features →
    model → metrics) is reconstructable later (see
-   [data-and-model-lineage](../data-and-model-lineage/SKILL.md)).
+   [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md)).
 7. **Make retries idempotent.** A step re-run after a transient failure
    (e.g. a spot instance preemption) should not double-write data or corrupt
    partial outputs — write to a new versioned path/partition per run rather
@@ -151,12 +151,12 @@ a fragile script that only the original author can rerun correctly.
 8. **Trigger retraining on both schedule and drift signal** where
    appropriate: a weekly schedule as a baseline, plus an event-driven trigger
    from a drift alert (see
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md))
+   [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
    for faster response to real distribution shifts.
 9. **Never let a training pipeline auto-promote to production.** The DAG's
    output should land in a "candidate"/"staging" state; the actual
    production promotion is a separate, explicitly gated step (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)).
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)).
 
 ## Best practices
 
@@ -219,14 +219,14 @@ A weekly retraining pipeline for `fraud-scorer`, orchestrated in Airflow:
 
 1. **Trigger:** scheduled weekly, plus an event-driven trigger fired by a
    drift alert from
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
+   [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
    if population stability index on a key feature exceeds 0.25 mid-week.
 2. **validate_data_schema:** checks the latest data snapshot against the
    expected schema (column names, types, null-rate bounds); raises and pages
    on-call if a required column is missing.
 3. **compute_features:** calls the `driver_stats`-style feature view
    materialization from
-   [feature-store-design](../feature-store-design/SKILL.md) to produce a
+   [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) to produce a
    point-in-time-correct training dataset at
    `s3://data-lake/fraud/training/run-8841/`.
 4. **split_train_val_test:** splits by time — train on data through
@@ -238,7 +238,7 @@ A weekly retraining pipeline for `fraud-scorer`, orchestrated in Airflow:
    requires AUC ≥ 0.90 and false-positive rate ≤ 2% — both pass.
 7. **register_candidate:** registers the model to the registry's `Staging`
    stage as version 14 (see
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)),
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)),
    with full lineage tags (data snapshot, feature view version, git SHA, run
    ID).
 8. **notify_for_promotion_review:** posts a summary to the ML team's review
@@ -247,7 +247,7 @@ A weekly retraining pipeline for `fraud-scorer`, orchestrated in Airflow:
 
 ## Cross-references
 
-- [feature-store-design](../feature-store-design/SKILL.md)
-- [experiment-tracking](../experiment-tracking/SKILL.md)
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md)
+- [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md)
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)

@@ -9,13 +9,13 @@ metadata:
   package: azure_security_keyvault_secrets
 ---
 
-# Azure Key Vault Secrets library for Rust
+# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets library for Rust
 
 Secure storage for passwords, API keys, and connection strings.
 
 Use this skill when:
 
-- An app needs to store or retrieve secrets from Azure Key Vault in Rust
+- An app needs to store or retrieve secrets from Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) in Rust
 - You need to set, get, update, or delete secrets
 - You need to list secret properties with pagination
 - You need error handling for missing secrets
@@ -33,7 +33,7 @@ cargo add azure_security_keyvault_secrets azure_identity tokio futures
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/ # Required for all operations
+AZURE_KEYVAULT_URL=https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/ # Required for all operations
 ```
 
 ## Authentication
@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = SecretClient::new(
-        "https://<vault-name>.vault.azure.net/",
+        "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -148,8 +148,8 @@ For Entra ID auth, assign one of these roles:
 
 | Role                        | Access                 |
 | --------------------------- | ---------------------- |
-| `Key Vault Secrets User`    | Read secrets           |
-| `Key Vault Secrets Officer` | Full secret management |
+| `Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User`    | Read secrets           |
+| `Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets Officer` | Full secret management |
 
 ## Best Practices
 
@@ -168,4 +168,4 @@ For Entra ID auth, assign one of these roles:
 | ------------- | -------------------------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_security_keyvault_secrets/latest/azure_security_keyvault_secrets             |
 | crates.io     | https://crates.io/crates/azure_security_keyvault_secrets                                           |
-| Source Code   | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_secrets |
+| Source Code   | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_secrets |

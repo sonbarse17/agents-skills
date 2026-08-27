@@ -68,7 +68,7 @@ Do you need to support third-party extensions?
 ```
 Can plugins be loaded at runtime without restart?
   ├── Yes → Dynamic loading (hot-plug)
-  │   ├── Language supports dynamic loading (JS, Python, Java, .NET, Go plugins)
+  │   ├── Language supports dynamic loading (JS, [Python](../../Languages/python/SKILL.md), Java, .NET, Go plugins)
   │   ├── Plugin discovery via file system scanning or registry
   │   └── Risk: Version conflicts, dependency hell
   └── No → Compile-time loading
@@ -89,7 +89,7 @@ Who writes the plugins?
   │   ├── IPC for communication
   │   └── Risk: Performance overhead
   └── Third-party (untrusted) → Container or sandbox isolation
-      ├── Docker, WASM, or sandboxed environment
+      ├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), WASM, or sandboxed environment
       ├── Resource limits enforced at OS level
       └── Highest security, highest overhead
 ```
@@ -104,7 +104,7 @@ extension-points:
   notification.channel:     Custom notification channel (SMS, push, Slack)
   pipeline.step:            Custom build/deploy pipeline step
   storage.backend:          Custom storage backend (S3, GCS, local)
-  exporter.metric:          Custom metric exporter (Prometheus, Datadog)
+  exporter.metric:          Custom metric exporter (Prometheus, [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md))
   payment.gateway:          Custom payment gateway (Stripe, PayPal, Braintree)
 ```
 
@@ -120,8 +120,8 @@ public interface AuthenticationProvider {
 }
 ```
 
-```typescript
-// TypeScript — NotificationChannel SPI
+```[typescript](../../Frontend/typescript/SKILL.md)
+// [TypeScript](../../Frontend/typescript/SKILL.md) — NotificationChannel SPI
 export interface NotificationChannel {
   readonly name: string;
   readonly type: string;
@@ -308,7 +308,7 @@ class IsolatedPlugin {
 ## Implementation Patterns
 
 ### Plugin Registry Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface PluginManifest {
   name: string;
   version: string;
@@ -347,7 +347,7 @@ class PluginRegistry {
 ```
 
 ### Extension Point Registry
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class ExtensionPoint<T> {
   private implementations: Map<string, T> = new Map();
 
@@ -384,7 +384,7 @@ authProviders.register('ldap', new LDAPProvider());
 ```
 
 ### Plugin Configuration Pattern
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class PluginConfigManager {
   private configs = new Map<string, object>();
 
@@ -427,7 +427,7 @@ Use semantic versioning for the plugin API:
 - **Patch**: Bug fix — no plugin changes needed
 
 ### Resource Limits
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class PluginResourceLimiter {
   private limits = new Map<string, {
     maxMemory: number;
@@ -468,9 +468,9 @@ class PluginResourceLimiter {
 ### Loading Overhead
 | Strategy | Load Time | Memory |
 |----------|-----------|--------|
-| Same process (JS/Python) | 10-100ms per plugin | Module code in memory |
+| Same process (JS/[Python](../../Languages/python/SKILL.md)) | 10-100ms per plugin | Module code in memory |
 | Subprocess (Node fork) | 50-200ms per plugin | ~10-30MB per instance |
-| Container (Docker) | 1-5s per plugin | 50-200MB per container |
+| Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
 
 ### Runtime Overhead
 - Same process: <1μs per plugin call (direct function call)
@@ -498,6 +498,6 @@ class PluginResourceLimiter {
   - ../../../Global_References/plugin-versioning.md — Plugin API Versioning
 ## Handoff
 No artifact produced unless requested.
-Next skill: observability — add plugin lifecycle traces to the telemetry pipeline.
+Next skill: [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.
 Carry forward: extension points, SPI contracts, plugin manifest format.
 

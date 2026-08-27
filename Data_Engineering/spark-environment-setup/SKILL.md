@@ -44,7 +44,7 @@ rather than hard-blocking on `25.11-py3`. NGC's tag is dated, so
 running it directly is fine:
 
 ```bash
-docker run --runtime=nvidia --gpus all -it --rm \
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --runtime=nvidia --gpus all -it --rm \
   nvcr.io/nvidia/pytorch:25.09-py3
 ```
 
@@ -52,7 +52,7 @@ docker run --runtime=nvidia --gpus all -it --rm \
 contrast — resolve and pin its digest before running it for
 anything reproducible; the bare tag is a discovery step only,
 not the default invocation. Full pull-inspect-pin sequence and
-flag rationale/volume mounts for `finetuning/` run dirs:
+flag rationale/volume mounts for `[finetuning](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/` run dirs:
 `../../../Global_References/container-workflow.md`. Treat bare pip as the exception.
 
 The reason for the container-first stance is pinning, not
@@ -91,7 +91,7 @@ component the image already pins. Details on both paths:
 
 One more preflight: official DGX Spark playbooks have shipped
 broken before. Check recent issues on
-`github.com/NVIDIA/dgx-spark-playbooks` (and the other
+`[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` (and the other
 resources in `../../../Global_References/stack-matrix.md`) before trusting a
 recipe verbatim for a long run.
 
@@ -144,7 +144,7 @@ distinction, and the dated known-good version matrix:
 | PyTorch | ✅ official cu130 aarch64 wheels |
 | bitsandbytes | ✅ works out of the box |
 | Triton | ✅ needs the `TRITON_PTXAS_PATH` parameter set |
-| flash-attn | ❌ skip pip build; NGC bundles a working one — see `spark-training-gotchas` G2 |
+| flash-attn | ❌ skip pip build; NGC bundles a working one — see `[spark-training-gotchas](../spark-training-gotchas/SKILL.md)` G2 |
 | xformers | source build only (`TORCH_CUDA_ARCH_LIST=12.1`) |
 | vLLM | nightly wheels only |
 | TransformerEngine / NVFP4 train | container-only |
@@ -158,7 +158,7 @@ and NeMo are fragile on Spark; check upstream issues first.
 Confirm the environment can actually see the GPU before
 running anything expensive:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 print(torch.cuda.is_available(), torch.version.cuda)
 ```
@@ -195,7 +195,7 @@ training starts, set
 ## Next Steps
 
 A verified environment is only the starting point. See also:
-`spark-training-gotchas` for failure preflights before a
-training run, and `spark-memory-thermal-ops` for unified-memory
+`[spark-training-gotchas](../spark-training-gotchas/SKILL.md)` for failure preflights before a
+training run, and `[spark-memory-thermal-ops](../spark-memory-thermal-ops/SKILL.md)` for unified-memory
 OOMs and thermal throttling during long ones.
 

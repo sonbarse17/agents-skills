@@ -10,7 +10,7 @@ GitOps is not "we keep our YAML in Git." It is a specific operational model: a c
 the cluster continuously pulls desired state from a repo and reconciles reality toward it, so the
 repo is not documentation of what was deployed — it is the only correct description of what should
 be deployed, and anything else is drift waiting to be corrected. That shift from push to pull is
-what makes the rest of the practice fall into place: audit trail, rollback, and promotion all
+what makes the rest of the practice fall into place: [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, rollback, and promotion all
 become Git operations instead of pipeline scripts.
 
 **If the cluster state and the repo disagree, the cluster is wrong, not the repo.**
@@ -18,12 +18,12 @@ become Git operations instead of pipeline scripts.
 ## 1. Separate the app repo from the config repo
 
 The repo where application code lives and the repo the reconciler watches should not be the same
-repo, and should almost never be the same commit. CI in the app repo builds an image, pushes it to
-a registry, and then makes a small, automated commit to the config repo bumping an image tag — it
+repo, and should almost never be the same [commit](../../CI_CD/commit/SKILL.md). CI in the app repo builds an image, pushes it to
+a registry, and then makes a small, automated [commit](../../CI_CD/commit/SKILL.md) to the config repo bumping an image tag — it
 never touches the cluster directly. This split matters because it lets you reason about "what is
 deployed" by reading one small, low-churn repo instead of grepping application history, and it lets
 the config repo have its own review rules (e.g. required approval for prod) independent of code
-review norms. See `ci-pipelines` for the build side and `artifact-management` for where the image
+review norms. See `[ci-pipelines](../../CI_CD/ci-pipelines/SKILL.md)` for the build side and `[artifact-management](../../CI_CD/artifact-management/SKILL.md)` for where the image
 actually lives.
 
 **Done when:** deploying a new version never requires a human to run a deploy command by hand.
@@ -33,36 +33,36 @@ actually lives.
 Represent each environment (dev, staging, prod) as its own path or overlay, and promote a change by
 merging or copying it forward — not by re-running a pipeline with a different target flag. A pull
 request from `staging/` into `prod/` is a promotion event with a diff, a reviewer, and a timestamp,
-which is a far stronger artifact than a Jenkins job log claiming the same thing happened. Kustomize
+which is a far stronger artifact than a [Jenkins](../../CI_CD/jenkins/SKILL.md) job log claiming the same thing happened. [Kustomize](../kustomize/SKILL.md)
 overlays or Helm values-per-environment both work; what matters is that the *mechanism* of promotion
-is a Git operation everyone can see. See `environment-management` for how environments are defined
-and `release-management` for gating promotion on approvals or criteria.
+is a Git operation everyone can see. See `[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for how environments are defined
+and `[release-management](../../CI_CD/release-management/SKILL.md)` for gating promotion on approvals or criteria.
 
 **Done when:** you can answer "what's different between staging and prod" with a single git diff.
 
-## 3. Never let anyone or anything run kubectl apply against these clusters
+## 3. Never let anyone or anything run [kubectl](../kubectl/SKILL.md) apply against these clusters
 
 The moment a human or a CI job applies manifests directly, the repo stops being the source of
 truth and starts being a suggestion. Every path to changing cluster state — including emergency
-fixes — must go through a commit, even if that commit is made and merged in under a minute during
-an incident. Lock this down with cluster RBAC that denies write access to everyone except the
+fixes — must go through a [commit](../../CI_CD/commit/SKILL.md), even if that [commit](../../CI_CD/commit/SKILL.md) is made and merged in under a minute during
+an [incident](../../Observability_and_SecOps/incident/SKILL.md). Lock this down with cluster RBAC that denies write access to everyone except the
 reconciler's service account. The discipline pays for itself the first time someone asks "who
-changed this and why" and the answer is a commit message instead of a shrug. For the controller
-enforcing this, see `argocd-operations`; for the RBAC mechanics see `kubernetes-security`.
+changed this and why" and the answer is a [commit](../../CI_CD/commit/SKILL.md) message instead of a shrug. For the controller
+enforcing this, see `[argocd-operations](../../Observability_and_SecOps/[argocd](../argocd/SKILL.md)-operations/SKILL.md)`; for the RBAC mechanics see `[kubernetes-security](../[kubernetes](../kubernetes/SKILL.md)-security/SKILL.md)`.
 
 **Done when:** no human credential in the system can mutate cluster state directly.
 
 ## 4. Make rollback mean "revert," not "remember what we did"
 
-If promotion is a merge, rollback is a revert: `git revert` the bad commit, push, and let the
+If promotion is a merge, rollback is a revert: `git revert` the bad [commit](../../CI_CD/commit/SKILL.md), push, and let the
 reconciler pull the previous known-good state back down. This only works if manifests are fully
 declarative and self-contained — no imperative migration steps hiding outside the diff, no
-"also run this script" in a runbook. Treat any deploy that can't be undone by reverting its commit
+"also run this script" in a [runbook](../../Observability_and_SecOps/runbook/SKILL.md). Treat any deploy that can't be undone by reverting its [commit](../../CI_CD/commit/SKILL.md)
 as a bug in the manifests, not an acceptable exception. This is also why rollback should be tested
-before it's needed, not discovered live during an incident.
+before it's needed, not discovered live during an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ```
-git revert <bad-commit> && git push   # reconciler pulls this within its sync interval
+git revert <bad-[commit](../../CI_CD/commit/SKILL.md)> && git push   # reconciler pulls this within its sync interval
 ```
 
 **Done when:** the last rollback in this repo was a plain revert with no manual cleanup afterward.
@@ -71,21 +71,21 @@ git revert <bad-commit> && git push   # reconciler pulls this within its sync in
 
 Config belongs in Git; secret values do not, even encrypted-at-rest-in-a-private-repo is not good
 enough once you consider history, forks, and CI log leakage. Reference secrets from Git — a
-`SealedSecret`, an `ExternalSecret` pointing at a vault, an SOPS-encrypted file if you truly must
-commit ciphertext — rather than storing plaintext or something trivially reversible. The rule is
-simple: a leaked clone of this repo should leak zero credentials. See `secrets-management` for the
+`SealedSecret`, an `ExternalSecret` pointing at a [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), an SOPS-encrypted file if you truly must
+[commit](../../CI_CD/commit/SKILL.md) ciphertext — rather than storing plaintext or something trivially reversible. The rule is
+simple: a leaked clone of this repo should leak zero credentials. See `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` for the
 storage and rotation mechanics this skill deliberately does not cover.
 
 **Done when:** cloning this repo and reading every file yields no usable credential.
 
 ## 6. Treat drift as a signal, not noise
 
-Drift — cluster state diverging from the repo — will happen: a debugging `kubectl edit`, a
+Drift — cluster state diverging from the repo — will happen: a debugging `[kubectl](../kubectl/SKILL.md) edit`, a
 mutating webhook, an autoscaler writing back replica counts. Configure the reconciler to detect and
 either auto-heal or loudly flag drift rather than silently tolerating it, and exclude only the
 specific fields (like HPA-managed replicas) that are expected to diverge. Undetected drift is how
-"the repo is the source of truth" quietly becomes false over weeks. See `observability` for
-alerting when reconciliation itself falls behind or fails.
+"the repo is the source of truth" quietly becomes false over weeks. See `[observability](../../Observability_and_SecOps/observability/SKILL.md)` for
+[alerting](../../Observability_and_SecOps/alerting/SKILL.md) when reconciliation itself falls behind or fails.
 
 **Done when:** any out-of-band cluster change is either corrected automatically or surfaced as an
 alert within one reconciliation cycle.

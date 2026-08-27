@@ -70,7 +70,7 @@ describe("Security Tests", function () {
 });
 ```
 
-## Audit Preparation
+## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation
 
 ```solidity
 contract WellDocumentedContract {

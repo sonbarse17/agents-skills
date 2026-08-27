@@ -17,9 +17,9 @@ Unified entry point for all Azure OpenAI model deployment workflows. Analyzes us
 
 | Mode | When to Use | Sub-Skill |
 |------|-------------|-----------|
-| **Preset** | Quick deployment, no customization needed | [preset/SKILL.md](preset/SKILL.md) |
-| **Customize** | Full control: version, SKU, capacity, RAI policy | [customize/SKILL.md](customize/SKILL.md) |
-| **Capacity Discovery** | Find where you can deploy with specific capacity | [capacity/SKILL.md](capacity/SKILL.md) |
+| **[Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** | Quick deployment, no customization needed | [preset/SKILL.md]([preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) |
+| **[Customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)** | Full control: version, SKU, [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), RAI policy | [customize/SKILL.md]([customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) |
+| **[Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Discovery** | Find where you can deploy with specific [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | [capacity/SKILL.md]([capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) |
 
 ## Intent Detection
 
@@ -30,53 +30,53 @@ User Prompt
     │
     ├─ Simple deployment (no modifiers)
     │  "deploy gpt-4o", "set up a model"
-    │  └─> PRESET mode
+    │  └─> [PRESET](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md) mode
     │
     ├─ Customization keywords present
     │  "custom settings", "choose version", "select SKU",
-    │  "set capacity to X", "configure content filter",
+    │  "set [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to X", "configure content filter",
     │  "PTU deployment", "with specific quota"
-    │  └─> CUSTOMIZE mode
+    │  └─> [CUSTOMIZE](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) mode
     │
-    ├─ Capacity/availability query
-    │  "find where I can deploy", "check capacity",
-    │  "which region has X capacity", "best region for 10K TPM",
+    ├─ [Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/availability query
+    │  "find where I can deploy", "check [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)",
+    │  "which region has X [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)", "best region for 10K TPM",
     │  "where is this model available"
-    │  └─> CAPACITY DISCOVERY mode
+    │  └─> [CAPACITY](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) DISCOVERY mode
     │
-    └─ Ambiguous (has capacity target + deploy intent)
-       "deploy gpt-4o with 10K capacity to best region"
-       └─> CAPACITY DISCOVERY first → then PRESET or CUSTOMIZE
+    └─ Ambiguous (has [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) target + deploy intent)
+       "deploy gpt-4o with 10K [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to best region"
+       └─> [CAPACITY](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) DISCOVERY first → then [PRESET](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md) or [CUSTOMIZE](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)
 ```
 
 ### Routing Rules
 
 | Signal in Prompt | Route To | Reason |
 |------------------|----------|--------|
-| Just model name, no options | **Preset** | User wants quick deployment |
-| "custom", "configure", "choose", "select" | **Customize** | User wants control |
-| "find", "check", "where", "which region", "available" | **Capacity** | User wants discovery |
-| Specific capacity number + "best region" | **Capacity → Preset** | Discover then deploy quickly |
-| Specific capacity number + "custom" keywords | **Capacity → Customize** | Discover then deploy with options |
-| "PTU", "provisioned throughput" | **Customize** | PTU requires SKU selection |
-| "optimal region", "best region" (no capacity target) | **Preset** | Region optimization is preset's specialty |
+| Just model name, no options | **[Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** | User wants quick deployment |
+| "custom", "configure", "choose", "select" | **[Customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)** | User wants control |
+| "find", "check", "where", "which region", "available" | **[Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)** | User wants discovery |
+| Specific [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) number + "best region" | **[Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) → [Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** | Discover then deploy quickly |
+| Specific [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) number + "custom" keywords | **[Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) → [Customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)** | Discover then deploy with options |
+| "PTU", "provisioned throughput" | **[Customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)** | PTU requires SKU selection |
+| "optimal region", "best region" (no [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) target) | **[Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** | Region optimization is [preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)'s specialty |
 
 ### Multi-Mode Chaining
 
 Some prompts require two modes in sequence:
 
-**Pattern: Capacity → Deploy**
-When a user specifies a capacity requirement AND wants deployment:
-1. Run **Capacity Discovery** to find regions/projects with sufficient quota
+**Pattern: [Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) → Deploy**
+When a user specifies a [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) requirement AND wants deployment:
+1. Run **[Capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Discovery** to find regions/projects with sufficient quota
 2. Present findings to user
-3. Ask: "Would you like to deploy with **quick defaults** or **customize settings**?"
-4. Route to **Preset** or **Customize** based on answer
+3. Ask: "Would you like to deploy with **quick defaults** or **[customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) settings**?"
+4. Route to **[Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** or **[Customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)** based on answer
 
-> 💡 **Tip:** If unsure which mode the user wants, default to **Preset** (quick deployment). Users who want customization will typically use explicit keywords like "custom", "configure", or "with specific settings".
+> 💡 **Tip:** If unsure which mode the user wants, default to **[Preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)** (quick deployment). Users who want customization will typically use explicit keywords like "custom", "configure", or "with specific settings".
 
 ## Project Selection (All Modes)
 
-Before any deployment, resolve which project to deploy to. This applies to **all** modes (preset, customize, and after capacity discovery).
+Before any deployment, resolve which project to deploy to. This applies to **all** modes ([preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md), [customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md), and after [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) discovery).
 
 ### Resolution Order
 
@@ -114,7 +114,7 @@ Projects in <region>:
 
 ## Pre-Deployment Validation (All Modes)
 
-Before presenting any deployment options (SKU, capacity), always validate both of these:
+Before presenting any deployment options (SKU, [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)), always validate both of these:
 
 1. **Model supports the SKU** — query the model catalog to confirm the selected model+version supports the target SKU:
    ```bash
@@ -130,7 +130,7 @@ Before presenting any deployment options (SKU, capacity), always validate both o
 
 > ⚠️ **Warning:** Only present options that pass both checks. Do NOT show hardcoded SKU lists — always query dynamically. SKUs with 0 available quota should be shown as ❌ informational items, not selectable options.
 
-> 💡 **Quota management:** For quota increase requests, usage monitoring, and troubleshooting quota errors, defer to the [quota skill](../../quota/quota.md) instead of duplicating that guidance inline.
+> 💡 **Quota management:** For quota increase requests, usage [monitoring](../../../../../../Observability_and_SecOps/monitoring/SKILL.md), and troubleshooting quota errors, defer to the [quota skill](../../quota/quota.md) instead of duplicating that guidance inline.
 
 ## Prerequisites
 
@@ -141,6 +141,6 @@ All deployment modes require:
 
 ## Sub-Skills
 
-- **[preset/SKILL.md](preset/SKILL.md)** — Quick deployment to optimal region with sensible defaults
-- **[customize/SKILL.md](customize/SKILL.md)** — Interactive guided flow with full configuration control
-- **[capacity/SKILL.md](capacity/SKILL.md)** — Discover available capacity across regions and projects
+- **[preset/SKILL.md]([preset](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Quick deployment to optimal region with sensible defaults
+- **[customize/SKILL.md]([customize](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize]([customize](../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Interactive guided flow with full configuration control
+- **[capacity/SKILL.md]([capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Discover available [capacity](../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]([capacity](../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) across regions and projects

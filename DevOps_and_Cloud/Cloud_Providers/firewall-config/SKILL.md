@@ -19,7 +19,7 @@ Use this skill when:
 - Configuring cloud security groups for AWS, GCP, or Azure resources
 - Migrating from iptables to nftables
 - Auditing existing firewall rules for compliance
-- Responding to a security incident requiring emergency network blocks
+- Responding to a security [incident](../../Observability_and_SecOps/incident/SKILL.md) requiring emergency network blocks
 
 ## Prerequisites
 
@@ -95,7 +95,7 @@ iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
 # Allow app servers to reach database (port 5432)
 iptables -A INPUT -p tcp --dport 5432 -s 10.0.1.0/24 -j ACCEPT
 
-# Allow monitoring (Prometheus node exporter)
+# Allow [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (Prometheus node exporter)
 iptables -A INPUT -p tcp --dport 9100 -s 10.0.200.0/24 -j ACCEPT
 
 # DNS resolution
@@ -105,7 +105,7 @@ iptables -A INPUT -p tcp --sport 53 -j ACCEPT
 # NTP
 iptables -A INPUT -p udp --sport 123 -j ACCEPT
 
-# Block specific IP (incident response)
+# Block specific IP ([incident](../../Observability_and_SecOps/incident/SKILL.md) response)
 iptables -I INPUT 1 -s 203.0.113.50 -j DROP
 ```
 
@@ -189,7 +189,7 @@ table inet filter {
     # HTTP/HTTPS from anywhere
     tcp dport { 80, 443 } accept
 
-    # Prometheus metrics from monitoring subnet
+    # Prometheus metrics from [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) subnet
     tcp dport 9100 ip saddr $MONITOR accept
 
     # Rate limit new connections
@@ -326,7 +326,7 @@ resource "aws_security_group" "db" {
   description = "Security group for database servers"
 
   ingress {
-    description     = "PostgreSQL from app tier"
+    description     = "[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) from app tier"
     from_port       = 5432
     to_port         = 5432
     protocol        = "tcp"
@@ -374,13 +374,13 @@ aws ec2 describe-security-group-rules \
   --filters Name=group-id,Values=sg-0abc123
 ```
 
-## Firewall Rule Audit Script
+## Firewall Rule [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Script
 
 ```bash
 #!/bin/bash
-# firewall-audit.sh - Audit current firewall rules for common issues
+# firewall-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).sh - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) current firewall rules for common issues
 
-echo "=== Firewall Audit Report ==="
+echo "=== Firewall [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Report ==="
 echo "Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "Host: $(hostname)"
 echo ""
@@ -407,11 +407,11 @@ if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:22"; then
 fi
 
 if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:3306"; then
-    echo "CRITICAL: MySQL (port 3306) open to 0.0.0.0/0"
+    echo "CRITICAL: [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) (port 3306) open to 0.0.0.0/0"
 fi
 
 if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:5432"; then
-    echo "CRITICAL: PostgreSQL (port 5432) open to 0.0.0.0/0"
+    echo "CRITICAL: [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (port 5432) open to 0.0.0.0/0"
 fi
 
 # Check default policies
@@ -427,7 +427,7 @@ fi
 |---------|-------|----------|
 | Locked out of SSH | Rule order or default deny applied before allow | Use out-of-band console access; add SSH allow rule first |
 | Rules lost after reboot | Rules not persisted | Install `iptables-persistent` or save to `/etc/nftables.conf` |
-| Docker bypasses iptables | Docker modifies iptables FORWARD chain | Use `DOCKER-USER` chain for custom rules; set `"iptables": false` in daemon.json |
+| [Docker](../../Containers_and_Orchestration/docker/SKILL.md) bypasses iptables | [Docker](../../Containers_and_Orchestration/docker/SKILL.md) modifies iptables FORWARD chain | Use `[DOCKER](../../Containers_and_Orchestration/docker/SKILL.md)-USER` chain for custom rules; set `"iptables": false` in daemon.json |
 | nftables and iptables conflict | Both running simultaneously | Migrate fully to nftables; remove iptables packages |
 | AWS SG rule limit reached | Max 60 inbound rules per SG | Use prefix lists or consolidate CIDR ranges |
 | Legitimate traffic blocked | Rule ordering issue | Place more specific allow rules before general deny rules |
@@ -437,7 +437,7 @@ fi
 - Default deny policy on all chains
 - Minimal rule sets - only open what is required
 - Regular rule audits (monthly minimum)
-- Log denied traffic for security monitoring
+- Log denied traffic for security [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Document all rules with descriptions and ticket references
 - Use connection tracking for stateful inspection
 - Rate limit inbound connections to prevent DDoS
@@ -447,7 +447,7 @@ fi
 
 ## Related Skills
 
-- [linux-hardening](../../hardening/linux-hardening/) - System security
-- [aws-vpc](../../../infrastructure/cloud-aws/aws-vpc/) - AWS networking
-- [zero-trust](../zero-trust/) - Identity-based access patterns
-- [vpn-setup](../vpn-setup/) - Secure tunnel configuration
+- [linux-hardening](../../hardening/[linux-hardening](../../Observability_and_SecOps/linux-hardening/SKILL.md)/) - System security
+- [aws-vpc](../../../infrastructure/cloud-aws/[aws-vpc](../aws-vpc/SKILL.md)/) - AWS networking
+- [zero-trust](../[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Identity-based access patterns
+- [vpn-setup](../[vpn-setup](../vpn-setup/SKILL.md)/) - Secure tunnel configuration

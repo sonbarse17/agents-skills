@@ -186,7 +186,7 @@ function verifyWebhook(payload, headers, secret, toleranceMs = 300000) {
 ```
 
 ### Step 4: Implement Delivery with Retry
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface DeliveryResult {
   success: boolean;
   statusCode?: number;
@@ -258,7 +258,7 @@ async function handleIncomingWebhook(req, res) {
 ```
 
 ### Step 6: Subscription Management
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface WebhookSubscription {
   id: string;
   url: string;
@@ -331,7 +331,7 @@ class SubscriptionManager {
 ## Implementation Patterns
 
 ### Webhook Server (Express)
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import express from 'express';
 
 const app = express();
@@ -360,7 +360,7 @@ app.post('/webhooks/:provider', async (req, res) => {
 ```
 
 ### Dead Letter Queue
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class WebhookDeadLetterQueue {
   async sendToDLQ(subscription: Subscription, event: WebhookEvent, error: string): Promise<void> {
     await this.store.save({
@@ -390,7 +390,7 @@ class WebhookDeadLetterQueue {
 ```
 
 ### Rate Limiting Outgoing Webhooks
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class WebhookRateLimiter {
   private attempts = new Map<string, number[]>();
 
@@ -426,7 +426,7 @@ class WebhookRateLimiter {
 
 After 5 retries: send to DLQ and alert.
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 | Metric | Alert Threshold | Action |
 |--------|----------------|--------|
 | Delivery failure rate | > 5% over 5 min | Investigate subscriber health |
@@ -449,7 +449,7 @@ After 5 retries: send to DLQ and alert.
 4. **Non-atomic secret rotation**: Updating the secret while a webhook is in flight causes verification failures. Support dual secrets during rotation.
 5. **No dead letter queue**: Failed deliveries are lost forever. Always have a DLQ for retry-exhausted webhooks.
 6. **Ignoring idempotency**: Webhook systems deliver at-least-once. Without idempotency handling, duplicates cause data corruption.
-7. **No consumer health monitoring**: A continuously failing consumer should be auto-disabled to prevent resource waste.
+7. **No consumer health [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: A continuously failing consumer should be auto-disabled to prevent resource waste.
 
 ## Security
 
@@ -502,7 +502,7 @@ async function rotateSecret(subscriptionId: string): Promise<void> {
 
 ## References
   - ../../../Global_References/webhook-delivery.md — Webhook Delivery System
-  - ../../../Global_References/webhook-monitoring.md — Webhook Monitoring and Reliability
+  - ../../../Global_References/webhook-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Webhook [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Reliability
   - ../../../Global_References/webhook-rate-limiting.md — Webhook Rate Limiting
   - ../../../Global_References/webhook-scaling.md — Webhook Scaling
   - ../../../Global_References/webhook-security.md — Webhook Security

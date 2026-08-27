@@ -132,13 +132,13 @@ requirements:
     "9.5": "POI devices protected from tampering"
 
   req_10_logging:
-    "10.1": "Audit logging processes defined"
-    "10.2": "Audit logs record required events"
-    "10.3": "Audit logs protected from destruction and modification"
-    "10.4": "Audit logs reviewed for anomalies"
-    "10.5": "Audit log history retained"
+    "10.1": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging processes defined"
+    "10.2": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs record required events"
+    "10.3": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs protected from destruction and modification"
+    "10.4": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs reviewed for anomalies"
+    "10.5": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log history retained"
     "10.6": "Time synchronization mechanisms configured"
-    "10.7": "Audit logs retained for at least 12 months (3 months immediately available)"
+    "10.7": "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs retained for at least 12 months (3 months immediately available)"
 
   req_11_testing:
     "11.1": "Security testing processes defined"
@@ -265,7 +265,7 @@ encryption_requirements:
     description: "Replace PAN with non-reversible token to reduce CDE scope"
     implementation:
       - Use format-preserving tokens (same length/format as PAN)
-      - Token vault in isolated CDE segment
+      - Token [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) in isolated CDE segment
       - Token-to-PAN mapping encrypted and access-controlled
       - De-tokenization requires authenticated API call
       - Log all de-tokenization requests
@@ -294,7 +294,7 @@ apt list --upgradable 2>/dev/null | grep -i security  # Debian/Ubuntu
 # Test both network layer and application layer
 # Segmentation testing: verify CDE is isolated from non-CDE networks
 
-# Req 11.5 - File integrity monitoring
+# Req 11.5 - File integrity [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 # Using AIDE (Advanced Intrusion Detection Environment)
 aide --init  # Initialize baseline
 aide --check  # Compare against baseline
@@ -308,16 +308,16 @@ aide --check  # Compare against baseline
 # </syscheck>
 ```
 
-## Logging and Monitoring (Req 10)
+## Logging and [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (Req 10)
 
 ```yaml
 required_audit_events:
   "10.2.1": "All individual user accesses to cardholder data"
   "10.2.2": "All actions taken by any individual with root or admin privileges"
-  "10.2.3": "Access to all audit trails"
+  "10.2.3": "Access to all [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails"
   "10.2.4": "Invalid logical access attempts"
   "10.2.5": "Changes to identification and authentication credentials"
-  "10.2.6": "Initialization, stopping, or pausing of audit logs"
+  "10.2.6": "Initialization, stopping, or pausing of [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs"
   "10.2.7": "Creation and deletion of system-level objects"
 
 log_entry_requirements:
@@ -383,14 +383,14 @@ pci_dss_checklist:
     - [ ] Shared/group accounts not used (or tightly controlled)
     - [ ] Access reviewed at least every 6 months
 
-  monitoring:
-    - [ ] Audit logs capture all required events (Req 10.2)
+  [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md):
+    - [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs capture all required events (Req 10.2)
     - [ ] Log entries include all required fields (Req 10.3)
     - [ ] Logs protected from modification
     - [ ] Logs retained 12 months (3 months immediately available)
     - [ ] Time synchronization configured (NTP)
-    - [ ] Daily log review process or automated alerting
-    - [ ] File integrity monitoring on critical files
+    - [ ] Daily log review process or automated [alerting](../../Observability_and_SecOps/alerting/SKILL.md)
+    - [ ] File integrity [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) on critical files
 
   testing:
     - [ ] Internal vulnerability scans quarterly
@@ -399,12 +399,12 @@ pci_dss_checklist:
     - [ ] External penetration test annually
     - [ ] Segmentation test annually (or after changes)
     - [ ] Web application assessment annually (or WAF deployed)
-    - [ ] IDS/IPS monitoring all CDE network traffic
+    - [ ] IDS/IPS [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) all CDE network traffic
 
   policies:
     - [ ] Information security policy reviewed annually
     - [ ] Security awareness training for all personnel
-    - [ ] Incident response plan documented and tested
+    - [ ] [Incident](../../Observability_and_SecOps/incident/SKILL.md) response plan documented and tested
     - [ ] Third-party service provider compliance confirmed
     - [ ] Risk assessment performed annually
 ```
@@ -416,7 +416,7 @@ pci_dss_checklist:
 - Never store sensitive authentication data (CVV, track data, PIN) after authorization
 - Implement MFA for all access into the CDE, not just remote access (v4.0 requirement)
 - Automate vulnerability scanning and patch management to maintain continuous compliance
-- Deploy file integrity monitoring on all CDE systems to detect unauthorized changes
+- Deploy file integrity [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) on all CDE systems to detect unauthorized changes
 - Synchronize clocks across all CDE systems using NTP for accurate log correlation
 - Conduct internal and external penetration tests annually and after significant changes
 - Review all firewall and security group rules semi-annually with documented business justification

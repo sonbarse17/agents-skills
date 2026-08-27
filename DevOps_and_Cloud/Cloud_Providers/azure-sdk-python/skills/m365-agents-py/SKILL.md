@@ -9,18 +9,18 @@ metadata:
   package: microsoft-agents-hosting-core, microsoft-agents-hosting-aiohttp, microsoft-agents-activity, microsoft-agents-authentication-msal, microsoft-agents-copilotstudio-client
 ---
 
-# Microsoft 365 Agents SDK (Python)
+# Microsoft 365 Agents SDK ([Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 
 Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the Microsoft Agents SDK with aiohttp hosting, AgentApplication routing, streaming responses, and MSAL-based authentication.
 
 ## Before implementation
 
-- Use the microsoft-docs MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
+- Use the [microsoft-docs](../../../microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
 - Confirm package versions on PyPI for the microsoft-agents-\* packages you plan to use.
 
 ## Important Notice - Import Changes
 
-> **⚠️ Breaking Change**: Recent updates have changed the Python import structure from `microsoft.agents` to `microsoft_agents` (using underscores instead of dots).
+> **⚠️ Breaking Change**: Recent updates have changed the [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) import structure from `microsoft.agents` to `microsoft_agents` (using underscores instead of dots).
 
 ## Installation
 
@@ -30,7 +30,7 @@ pip install microsoft-agents-hosting-aiohttp
 pip install microsoft-agents-activity
 pip install microsoft-agents-authentication-msal
 pip install microsoft-agents-copilotstudio-client
-pip install python-dotenv aiohttp
+pip install [python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-dotenv aiohttp
 ```
 
 ## Environment Variables (.env)
@@ -65,7 +65,7 @@ COPILOTSTUDIOAGENT__AGENTAPPID=<app-id>
 
 ## Core Workflow: aiohttp-hosted AgentApplication
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
 from os import environ
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
 ## AgentApplication Routing
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from microsoft_agents.hosting.core import (
     AgentApplication, TurnState, TurnContext, MessageFactory
@@ -197,7 +197,7 @@ async def on_error(context: TurnContext, error: Exception):
 
 ## Streaming Responses with Azure OpenAI
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from openai import AsyncAzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 from microsoft_agents.activity import SensitivityUsageInfo
@@ -234,7 +234,7 @@ async def on_poem_message(context: TurnContext, _state: TurnState):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a creative assistant."},
-            {"role": "user", "content": "Write a poem about Python."}
+            {"role": "user", "content": "Write a poem about [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)."}
         ],
         stream=True,
     )
@@ -251,7 +251,7 @@ async def on_poem_message(context: TurnContext, _state: TurnState):
 
 ## OAuth / Auto Sign-In
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @AGENT_APP.message("/logout")
 async def logout(context: TurnContext, state: TurnState):
     await AGENT_APP.auth.sign_out(context, "GRAPH")
@@ -278,7 +278,7 @@ async def profile_request(context: TurnContext, state: TurnState):
 
 ## Copilot Studio Client (Direct to Engine)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 from msal import PublicClientApplication
 from microsoft_agents.activity import ActivityTypes, load_configuration_from_env
@@ -358,7 +358,7 @@ asyncio.run(main())
 | Resource                      | URL                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------- |
 | Microsoft 365 Agents SDK      | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/                   |
-| GitHub samples (Python)       | https://github.com/microsoft/Agents-for-python                                |
+| [GitHub](../../../../CI_CD/github/SKILL.md) samples ([Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md))       | https://[github](../../../../CI_CD/github/SKILL.md).com/microsoft/Agents-for-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)                                |
 | PyPI packages                 | https://pypi.org/search/?q=microsoft-agents                                   |
 | Integrate with Copilot Studio | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs |
 

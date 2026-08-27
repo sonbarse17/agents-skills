@@ -26,7 +26,7 @@ Use this skill when:
 - AWS CLI v2 installed and configured
 - IAM policy allowing `secretsmanager:*` actions (or scoped permissions)
 - For rotation: Lambda execution role and VPC access to target services
-- Python 3.9+ with `boto3` for SDK examples
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with `boto3` for SDK examples
 
 ## Secret Creation and Management
 
@@ -107,7 +107,7 @@ aws secretsmanager describe-secret \
 
 ### Lambda Rotation Function
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """rotation_function.py - Custom rotation Lambda for database credentials."""
 
 import boto3
@@ -251,7 +251,7 @@ def finish_secret(client, secret_arn, token):
 ```hcl
 resource "aws_lambda_function" "rotation" {
   filename         = "rotation_function.zip"
-  function_name    = "secrets-rotation-postgresql"
+  function_name    = "secrets-rotation-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)"
   role             = aws_iam_role.rotation.arn
   handler          = "rotation_function.lambda_handler"
   runtime          = "python3.11"
@@ -287,9 +287,9 @@ resource "aws_secretsmanager_secret_rotation" "db" {
 
 ## Application Integration
 
-### Python SDK
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import boto3
 import json
 from functools import lru_cache
@@ -312,7 +312,7 @@ def get_cached_secret(secret_name: str) -> dict:
 # Usage
 creds = get_secret("myapp/production/database")
 connection_string = (
-    f"postgresql://{creds['username']}:{creds['password']}"
+    f"[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
     f"@{creds['host']}:{creds['port']}/{creds['dbname']}"
 )
 ```
@@ -456,7 +456,7 @@ aws secretsmanager put-resource-policy \
 
 ## Related Skills
 
-- [hashicorp-vault](../hashicorp-vault/) - Multi-cloud secrets
-- [aws-iam](../../../infrastructure/cloud-aws/aws-iam/) - IAM policies
-- [azure-keyvault](../azure-keyvault/) - Azure secret management
-- [gcp-secret-manager](../gcp-secret-manager/) - GCP secret management
+- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../multi-cloud/SKILL.md) secrets
+- [aws-iam](../../../infrastructure/cloud-aws/[aws-iam](../aws-iam/SKILL.md)/) - IAM policies
+- [azure-keyvault](../[azure-keyvault](../azure-keyvault/SKILL.md)/) - Azure secret management
+- [gcp-secret-manager](../[gcp-secret-manager](../gcp-secret-manager/SKILL.md)/) - GCP secret management

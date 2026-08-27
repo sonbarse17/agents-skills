@@ -7,15 +7,15 @@ metadata:
   version: "1.0"
 ---
 
-# Audit Logging
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Implement comprehensive audit logging for compliance, security monitoring, and forensic analysis across infrastructure and applications.
+Implement comprehensive [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance, security [monitoring](../monitoring/SKILL.md), and forensic analysis across infrastructure and applications.
 
 ## When to Use
 
 - Setting up centralized logging for compliance frameworks (SOC 2, HIPAA, PCI DSS)
-- Implementing security event monitoring and alerting
-- Building audit trails for regulatory requirements
+- Implementing security event [monitoring](../monitoring/SKILL.md) and [alerting](../alerting/SKILL.md)
+- Building [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails for regulatory requirements
 - Configuring log retention and tamper-proof storage
 - Integrating application logs with SIEM platforms
 
@@ -62,7 +62,7 @@ audit_events:
 ## Rsyslog Configuration for Centralized Logging
 
 ```bash
-# /etc/rsyslog.d/50-audit.conf
+# /etc/rsyslog.d/50-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).conf
 
 # Load imfile module to read application logs
 module(load="imfile")
@@ -75,16 +75,16 @@ input(type="imfile"
   Facility="auth"
 )
 
-# Forward application audit logs
+# Forward application [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
 input(type="imfile"
-  File="/var/log/app/audit.log"
-  Tag="app-audit"
+  File="/var/log/app/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log"
+  Tag="app-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"
   Severity="info"
   Facility="local0"
 )
 
 # Structured JSON template
-template(name="json-audit" type="list") {
+template(name="json-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)" type="list") {
   constant(value="{")
   constant(value="\"@timestamp\":\"")    property(name="timereported" dateFormat="rfc3339")
   constant(value="\",\"host\":\"")       property(name="hostname")
@@ -104,7 +104,7 @@ action(
   StreamDriver="gtls"
   StreamDriverMode="1"
   StreamDriverAuthMode="x509/name"
-  template="json-audit"
+  template="json-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"
   queue.type="LinkedList"
   queue.size="50000"
   queue.filename="fwd_audit"
@@ -130,10 +130,10 @@ ForwardToSyslog=yes
 ```
 
 ```bash
-# Query journald for audit events
-journalctl _TRANSPORT=audit --since "24 hours ago" --output json-pretty
+# Query journald for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events
+journalctl _TRANSPORT=[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --since "24 hours ago" --output json-pretty
 
-# Filter by specific audit types
+# Filter by specific [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) types
 journalctl _AUDIT_TYPE=1112 --since today  # user login events
 journalctl _AUDIT_TYPE=1100 --since today  # user auth events
 
@@ -143,7 +143,7 @@ journalctl --since "7 days ago" --output export > /backup/journal-export.bin
 
 ## Application Logging with Structured JSON
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
 import json
 import hashlib
@@ -151,10 +151,10 @@ from datetime import datetime, timezone
 from functools import wraps
 
 class AuditLogger:
-    def __init__(self, service_name, logger_name="audit"):
+    def __init__(self, service_name, logger_name="[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"):
         self.service = service_name
         self.logger = logging.getLogger(logger_name)
-        handler = logging.FileHandler("/var/log/app/audit.log")
+        handler = logging.FileHandler("/var/log/app/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log")
         handler.setFormatter(logging.Formatter("%(message)s"))
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.INFO)
@@ -207,7 +207,7 @@ class AuditLogger:
 
 
 def audit_trail(audit_logger, resource_name):
-    """Decorator to automatically audit function calls."""
+    """Decorator to automatically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) function calls."""
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -248,29 +248,29 @@ def audit_trail(audit_logger, resource_name):
 
 [INPUT]
     Name          tail
-    Path          /var/log/app/audit.log
+    Path          /var/log/app/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log
     Parser        json
-    Tag           audit.app
+    Tag           [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).app
     Refresh_Interval 5
     Rotate_Wait   30
 
 [INPUT]
     Name          systemd
-    Tag           audit.system
-    Systemd_Filter _TRANSPORT=audit
+    Tag           [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).system
+    Systemd_Filter _TRANSPORT=[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 [FILTER]
     Name          modify
-    Match         audit.*
+    Match         [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*
     Add           cluster ${CLUSTER_NAME}
     Add           node ${NODE_NAME}
 
 [OUTPUT]
     Name          es
-    Match         audit.*
+    Match         [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*
     Host          elasticsearch.internal.example.com
     Port          9200
-    Index         audit-logs
+    Index         [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs
     Type          _doc
     tls           On
     tls.verify    On
@@ -278,9 +278,9 @@ def audit_trail(audit_logger, resource_name):
 
 [OUTPUT]
     Name          s3
-    Match         audit.*
+    Match         [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*
     region        us-east-1
-    bucket        audit-logs-archive
+    bucket        [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
     total_file_size 50M
     upload_timeout  10m
     s3_key_format  /logs/%Y/%m/%d/$TAG/%H_%M_%S.gz
@@ -334,7 +334,7 @@ retention_requirements:
   soc2:
     minimum: 1 year
     recommended: 3 years
-    notes: "Based on audit period and report requirements"
+    notes: "Based on [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) period and report requirements"
 
   hipaa:
     minimum: 6 years
@@ -379,7 +379,7 @@ verify_logs() {
         failures=$((failures + 1))
         curl -s -X POST "$ALERT_WEBHOOK" \
           -H "Content-Type: application/json" \
-          -d "{\"text\":\"ALERT: Audit log tamper detected on $(hostname): $filename\"}"
+          -d "{\"text\":\"ALERT: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log tamper detected on $(hostname): $filename\"}"
       fi
     else
       echo "MISSING: $filename"
@@ -408,11 +408,11 @@ esac
 siem_integration:
   log_sources:
     - [ ] Operating system auth logs (syslog, journald)
-    - [ ] Application audit logs (structured JSON)
-    - [ ] Cloud provider audit trails (CloudTrail, Activity Log, Audit Logs)
+    - [ ] Application [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs (structured JSON)
+    - [ ] Cloud provider [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails (CloudTrail, Activity Log, [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
     - [ ] Database query and access logs
     - [ ] Network flow logs and firewall logs
-    - [ ] Container and orchestrator logs (Kubernetes audit)
+    - [ ] Container and orchestrator logs ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
     - [ ] WAF and CDN access logs
     - [ ] VPN and remote access logs
 
@@ -432,8 +432,8 @@ siem_integration:
     - [ ] Log forwarding gap or interruption
 
   operational:
-    - [ ] Log pipeline health monitoring
-    - [ ] Storage capacity alerting
+    - [ ] Log pipeline health [monitoring](../monitoring/SKILL.md)
+    - [ ] Storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) [alerting](../alerting/SKILL.md)
     - [ ] Retention policy enforcement verified
     - [ ] Backup of log archives confirmed
     - [ ] Access to log systems restricted and audited
@@ -445,9 +445,9 @@ siem_integration:
 - Ship logs to a centralized platform with write-once storage for tamper protection
 - Implement hash chaining or digital signatures for log integrity verification
 - Define and enforce retention policies per compliance framework requirements
-- Set up real-time alerting for high-severity security events
-- Separate audit logs from application debug logs to reduce noise
-- Never log sensitive data (passwords, tokens, PII) in audit entries
+- Set up real-time [alerting](../alerting/SKILL.md) for high-severity security events
+- Separate [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs from application debug logs to reduce noise
+- Never log sensitive data (passwords, tokens, PII) in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) entries
 - Monitor the logging pipeline itself to detect gaps in coverage
 - Regularly test log restoration from archives to verify recoverability
 - Rotate and compress logs to manage storage while meeting retention windows

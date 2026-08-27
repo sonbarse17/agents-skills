@@ -30,6 +30,6 @@ Detailed pattern documentation lives in `../../../Global_References/shellcheck-c
 4. **Address violations** - Don't just disable warnings
 5. **Enable strict mode** - Use `--enable=all` with careful exclusions
 6. **Update regularly** - Keep ShellCheck current for new checks
-7. **Use pre-commit hooks** - Catch issues locally before pushing
+7. **Use pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks** - Catch issues locally before pushing
 8. **Integrate with editors** - Get real-time feedback during development
 

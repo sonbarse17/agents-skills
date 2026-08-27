@@ -22,7 +22,7 @@ metadata:
 
 ## Purpose
 
-A `CiliumNetworkPolicy` that applies cleanly to the Kubernetes API server
+A `CiliumNetworkPolicy` that applies cleanly to the [Kubernetes](../kubernetes/SKILL.md) API server
 tells you nothing about whether it actually matches the pods you intend,
 enforces the L7 rule you wrote, or leaves a gap that silently falls back
 to a broader allow. The failure modes here are quiet: an
@@ -35,7 +35,7 @@ allowed IP. None of these produce an error — they produce a policy that
 intended. This skill covers the commands and checks that catch this
 before (or immediately after) a change reaches production, distinct
 from
-[cilium-ebpf-cni-and-mesh-configuration](../cilium-ebpf-cni-and-mesh-configuration/SKILL.md),
+[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf](../cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md),
 which covers installing Cilium and writing this configuration in the
 first place.
 
@@ -66,14 +66,14 @@ first place.
 - Hubble enabled (`cilium hubble enable`) with `hubble port-forward`
   reachable, since most of the semantic checks here depend on live flow
   data, not just static policy inspection.
-- `kubectl` read access to `CiliumNetworkPolicy`,
+- `[kubectl](../kubectl/SKILL.md)` read access to `CiliumNetworkPolicy`,
   `CiliumClusterwideNetworkPolicy`, and `CiliumIdentity` custom
   resources in the namespaces being validated.
-- Exec access into a Cilium agent pod (`kubectl exec -n kube-system
+- Exec access into a Cilium agent pod (`[kubectl](../kubectl/SKILL.md) exec -n kube-system
   ds/cilium -- cilium ...`) for commands that inspect the agent's live
   policy repository and endpoint state, since some checks reflect the
   agent's actual enforced state rather than what's stored in the
-  Kubernetes API.
+  [Kubernetes](../kubernetes/SKILL.md) API.
 - For CI-integrated validation: a disposable cluster (kind/k3d) with
   Cilium installed, since offline YAML linting alone cannot confirm a
   label selector matches real running pods or that an L7 rule engages
@@ -95,7 +95,7 @@ first place.
 2. **Validate policy file syntax and schema offline** before it reaches
    the cluster, catching YAML/JSON errors and unknown fields early:
    ```bash
-   kubectl apply --dry-run=server -f payments-api-ingress.yaml
+   [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f payments-api-ingress.yaml
    ```
    `--dry-run=server` is required, not `--dry-run=client` — client-side
    dry-run only checks the manifest is well-formed YAML matching the
@@ -105,8 +105,8 @@ first place.
 3. **Confirm the policy's selectors actually match real, running
    endpoints** — this is the single most common silent failure:
    ```bash
-   kubectl get cep -n payments -l app=payments-api
-   kubectl exec -n kube-system ds/cilium -- cilium endpoint list | grep payments
+   [kubectl](../kubectl/SKILL.md) get cep -n payments -l app=payments-api
+   [kubectl](../kubectl/SKILL.md) exec -n kube-system ds/cilium -- cilium endpoint list | grep payments
    ```
    A `CiliumEndpoint` (`cep`) list with zero results for the labels used
    in `endpointSelector`/`fromEndpoints` means the policy is a no-op —
@@ -117,7 +117,7 @@ first place.
 4. **Confirm an L7 rule is actually being enforced by the proxy**, not
    just present in the policy spec:
    ```bash
-   kubectl exec -n kube-system ds/cilium -- cilium policy get
+   [kubectl](../kubectl/SKILL.md) exec -n kube-system ds/cilium -- cilium policy get
    hubble observe --namespace payments --protocol http --verdict DROPPED
    ```
    Send a request that the L7 rule should reject (wrong method or path)
@@ -143,7 +143,7 @@ first place.
    allow rules to a staging namespace and confirm via Hubble that
    everything not explicitly allowed shows `DROPPED`:
    ```bash
-   kubectl apply -f default-deny.yaml -f allow-checkout.yaml -n payments-staging
+   [kubectl](../kubectl/SKILL.md) apply -f default-deny.yaml -f allow-checkout.yaml -n payments-staging
    hubble observe --namespace payments-staging --verdict DROPPED
    hubble observe --namespace payments-staging --verdict FORWARDED
    ```
@@ -158,7 +158,7 @@ first place.
    an `hubble observe` check that doesn't show the expected
    allow/deny split:
    ```bash
-   kubectl apply --dry-run=server -f ./cilium-policies/ || exit 1
+   [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f ./cilium-policies/ || exit 1
    ```
 
 8. **Re-check kube-proxy replacement health after any Cilium upgrade**
@@ -172,11 +172,11 @@ first place.
 
 ## Best practices
 
-- Treat `kubectl apply --dry-run=server` as necessary but not
+- Treat `[kubectl](../kubectl/SKILL.md) apply --dry-run=server` as necessary but not
   sufficient — it only proves the manifest is schema-valid, never that
   the selector matches real pods or the L7 rule engages the proxy.
   Always follow with a live `CiliumEndpoint`/`hubble observe` check.
-- Validate every changed policy's selectors against `kubectl get cep`
+- Validate every changed policy's selectors against `[kubectl](../kubectl/SKILL.md) get cep`
   in the exact namespace and label set being changed, not a
   similarly-named one — a namespace mismatch is the most common reason
   a policy silently matches nothing.
@@ -193,7 +193,7 @@ first place.
   production immediately after applying to confirm parity.
 - Re-run `cilium connectivity test` after any Cilium version upgrade as
   part of validation, not just at initial install — see
-  [cilium-ebpf-cni-and-mesh-configuration](../cilium-ebpf-cni-and-mesh-configuration/SKILL.md)
+  [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf](../cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md)
   for the install-time guidance this complements.
 
 ## Common pitfalls
@@ -202,7 +202,7 @@ first place.
   traffic that should be restricted flows exactly as if the policy
   didn't exist.
   **Fix:** Almost always an `endpointSelector`/`fromEndpoints` label
-  mismatch. Run `kubectl get cep -n <ns> -l <the exact labels used in
+  mismatch. Run `[kubectl](../kubectl/SKILL.md) get cep -n <ns> -l <the exact labels used in
   the policy>` — an empty result means the policy selects nothing, and
   Cilium does not treat an empty selector as "deny by default" for that
   policy; it's simply inert.
@@ -226,7 +226,7 @@ first place.
   actual DNS query/response before assuming the FQDN rule syntax is
   wrong.
 
-- **Symptom:** `kubectl apply --dry-run=server` passes cleanly in CI,
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) apply --dry-run=server` passes cleanly in CI,
   but the same policy breaks real traffic the moment it's applied to
   production.
   **Fix:** Schema-level dry-run cannot know whether the label selector
@@ -235,7 +235,7 @@ first place.
   apply-and-observe step (`hubble observe --verdict DROPPED/FORWARDED`)
   to the CI gate rather than relying on dry-run alone.
 
-- **Symptom:** During an incident, someone applies a broad allow-all
+- **Symptom:** During an [incident](../../Observability_and_SecOps/incident/SKILL.md), someone applies a broad allow-all
   `CiliumNetworkPolicy` (empty `ingress`/`egress` selectors matching
   everything) "to rule out policy as the cause," confirms traffic now
   flows, and it's still in place days later.
@@ -245,13 +245,13 @@ first place.
   in a non-production namespace first, and use `hubble observe --verdict
   DROPPED` to find the actual over-restrictive rule instead of removing
   policy wholesale. Re-apply the original scoped policy (or a corrected
-  version) before closing the incident, not "later."
+  version) before closing the [incident](../../Observability_and_SecOps/incident/SKILL.md), not "later."
 
 ## Worked example
 
 **Scenario:** Validate the `payments-api` default-deny, ingress, and
 egress policies from the worked example in
-[cilium-ebpf-cni-and-mesh-configuration](../cilium-ebpf-cni-and-mesh-configuration/SKILL.md)
+[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf](../cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md)
 before they reach production.
 
 ```bash
@@ -260,11 +260,11 @@ cilium status --verbose
 hubble status
 
 # 2. Schema-level validation
-kubectl apply --dry-run=server -f payments-policies.yaml
+[kubectl](../kubectl/SKILL.md) apply --dry-run=server -f payments-policies.yaml
 
 # 3. Apply to staging and confirm selectors actually match
-kubectl apply -f payments-policies.yaml -n payments-staging
-kubectl get cep -n payments-staging -l app=payments-api
+[kubectl](../kubectl/SKILL.md) apply -f payments-policies.yaml -n payments-staging
+[kubectl](../kubectl/SKILL.md) get cep -n payments-staging -l app=payments-api
 # expect: at least one CiliumEndpoint listed, not zero
 
 # 4. Confirm L7 enforcement: a disallowed method should be dropped
@@ -290,6 +290,6 @@ before the change is considered complete.
 
 ## Cross-references
 
-- [cilium-ebpf-cni-and-mesh-configuration](../cilium-ebpf-cni-and-mesh-configuration/SKILL.md) — writing the CiliumNetworkPolicy and Hubble configuration this skill validates.
-- [linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md) — the equivalent validation discipline for Linkerd injection and traffic/authorization policy, useful when comparing pre-production checks across mesh/CNI choices.
-- [consul-configuration-validation](../consul-configuration-validation/SKILL.md) — validating Consul intentions, relevant when Consul mesh authorization and Cilium's CNI-layer policy both apply to the same traffic and need to agree.
+- [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf](../cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — writing the CiliumNetworkPolicy and Hubble configuration this skill validates.
+- [linkerd-configuration-validation](../[linkerd-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Linkerd injection and traffic/authorization policy, useful when comparing pre-production checks across mesh/CNI choices.
+- [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating Consul intentions, relevant when Consul mesh authorization and Cilium's CNI-layer policy both apply to the same traffic and need to agree.

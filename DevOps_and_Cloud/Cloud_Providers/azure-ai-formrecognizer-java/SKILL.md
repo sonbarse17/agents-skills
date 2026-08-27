@@ -10,13 +10,13 @@ description: |
 # Azure AI Document Intelligence SDK for Java
 
 > **Rebranding:** Azure AI Form Recognizer is now **Azure AI Document Intelligence**.
-> New projects should use `com.azure:azure-ai-documentintelligence`. The legacy `azure-ai-formrecognizer` package targets API version 2023-07-31 only.
-> See [Migration Guide](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/MIGRATION_GUIDE.md).
+> New projects should use `com.azure:[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence`. The legacy `[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer` package targets API version 2023-07-31 only.
+> See [Migration Guide](https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/documentintelligence/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence/MIGRATION_GUIDE.md).
 
 ## Before Implementation
 
-Search `microsoft-docs` MCP for current API patterns:
-- Query: `"azure-ai-documentintelligence Java SDK"`
+Search `[microsoft-docs](../microsoft-docs/SKILL.md)` MCP for current API patterns:
+- Query: `"[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence Java SDK"`
 - Verify: Parameters match installed SDK version (latest GA: 1.0.7)
 
 ## Installation
@@ -24,7 +24,7 @@ Search `microsoft-docs` MCP for current API patterns:
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-ai-documentintelligence</artifactId>
+    <artifactId>[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence</artifactId>
     <version>1.0.0</version>
 </dependency>
 
@@ -137,7 +137,7 @@ DocumentIntelligenceAsyncClient asyncClient = new DocumentIntelligenceClientBuil
 | `prebuilt-healthInsuranceCard.us` | US health insurance cards |
 | `prebuilt-contract` | Contract field extraction |
 
-> **Retired models:** `prebuilt-businessCard` and `prebuilt-document` are retired in API version 2024-11-30. Use the legacy `azure-ai-formrecognizer` package for these.
+> **Retired models:** `prebuilt-businessCard` and `prebuilt-document` are retired in API version 2024-11-30. Use the legacy `[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer` package for these.
 
 ## Core Patterns
 
@@ -333,7 +333,7 @@ try {
 }
 ```
 
-## Migration from azure-ai-formrecognizer
+## Migration from [azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer
 
 | Old (formrecognizer v4.x) | New (documentintelligence v1.x) |
 |---|---|
@@ -357,5 +357,5 @@ try {
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-ai-formrecognizer-java_examples.md](../../../Global_References/azure-ai-formrecognizer-java_examples.md) | Complete code examples for all scenarios |
+| [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer-java_examples.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer-java_examples.md) | Complete code examples for all scenarios |
 

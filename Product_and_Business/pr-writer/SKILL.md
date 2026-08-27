@@ -26,7 +26,7 @@ Exact user phrases: "write PR", "pull request", "PR description", "PR template",
 ### Input Context
 - PR type (feature, bugfix, refactor, chore, docs, hotfix)
 - Code changes (files changed, additions/deletions, key modifications)
-- Issue or ticket reference (GitHub issue, JIRA, Linear)
+- Issue or ticket reference ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) issue, JIRA, Linear)
 - Testing done (unit, integration, manual, E2E)
 - Dependencies or breaking changes
 - Reviewer notes (areas of concern, decisions made)
@@ -76,7 +76,7 @@ feat(api): add user avatar upload endpoint
 fix(auth): handle expired token refresh race condition
 refactor(state): extract state management into dedicated module
 docs(readme): update API documentation links
-chore(deps): upgrade TypeScript to v5.4
+chore(deps): upgrade [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) to v5.4
 ```
 
 ## Workflow
@@ -84,7 +84,7 @@ chore(deps): upgrade TypeScript to v5.4
 ### Step 1: Set Up PR Template
 
 ```markdown
-<!-- .github/PULL_REQUEST_TEMPLATE.md -->
+<!-- .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/PULL_REQUEST_TEMPLATE.md -->
 ## Description
 <!-- Briefly describe what this PR does and why -->
 
@@ -185,7 +185,7 @@ None. This is additive only.
 ```bash
 #!/bin/bash
 # scripts/generate-pr-body.sh
-# Generate PR body from conventional commit + git diff summary
+# Generate PR body from conventional [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) + git diff summary
 
 COMMIT_MSG=$(git log --format="%s" HEAD~1..HEAD)
 COMMIT_BODY=$(git log --format="%b" HEAD~1..HEAD | sed '/^$/d')
@@ -267,7 +267,7 @@ reviewer_etiquette:
 | Self-review before submitting | Catches 50%+ of issues before review |
 | Respond to feedback with changes, not excuses | Address the concern in code |
 | Use Draft PR for early feedback | Get architecture review before implementation detail |
-| Write PR description BEFORE the last commit | Describes intent, not just summary |
+| Write PR description BEFORE the last [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | Describes intent, not just summary |
 
 ## Templates & Tools
 
@@ -292,7 +292,7 @@ Fixes #142 — null pointer when user has no profile
 ### Hotfix PR
 ```markdown
 ## Description
-Hotfix for production incident #INC-2026-05-01:
+Hotfix for production [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) #INC-2026-05-01:
 NullPointerException when calculating user score for inactive accounts.
 
 Root cause: ScoreService.GetUserScore() doesn't check user.IsActive flag.
@@ -301,7 +301,7 @@ Fix: Added active user check before score calculation.
 
 ## Testing
 - [x] Unit test for inactive user score = 0
-- [x] Manual: reproduced incident scenario → verified fix
+- [x] Manual: reproduced [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) scenario → verified fix
 - [x] E2E: full user lifecycle test
 
 ## Deployment
@@ -315,13 +315,13 @@ Hotfix tag: v2.0.1
   - references/pr-writer-templates.md — PR Templates Reference
   - references/pr-writer-workflow.md — PR Workflow Reference
 ## Handoff
-Hand off to `dev-loop-code-review` for PR review. Hand off to `dev-loop-changelog-generator` for release note generation from PR.
+Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for PR review. Hand off to `[dev-loop-changelog-generator](../changelog-generator/SKILL.md)` for release note generation from PR.
 
 ## Implementation Patterns
 
 ### PR Description Generator
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import List, Dict, Optional
 import subprocess
 import re
@@ -382,9 +382,9 @@ class PRDescriptionGenerator:
 
     def _detect_pr_type(self, commits: List[str]) -> str:
         types = {"feat": 0, "fix": 0, "refactor": 0, "docs": 0}
-        for commit in commits:
+        for [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) in commits:
             for t in types:
-                if commit.startswith(t):
+                if [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).startswith(t):
                     types[t] += 1
         return max(types, key=types.get)
 
@@ -392,8 +392,8 @@ class PRDescriptionGenerator:
         lines = []
         if commits:
             lines.append("## Changes")
-            for commit in commits[:5]:
-                lines.append(f"- {commit.split(chr(10))[0][:100]}")
+            for [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) in commits[:5]:
+                lines.append(f"- {[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).split(chr(10))[0][:100]}")
         lines.append("")
         if files:
             lines.append(f"## Files Modified: {len(files)}")
@@ -433,17 +433,17 @@ class PRReviewChecklist:
 
 ```
 What's the PR size and context?
-├── Single commit / clean history
+├── Single [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) / clean history
 │   └── Rebase merge → Preserves individual commits
 │
 ├── Multiple commits, single concern
-│   └── Squash merge → Clean single commit on main
+│   └── Squash merge → Clean single [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on main
 │
 ├── Multiple commits, multiple concerns
 │   └── Split into separate PRs first
 │
 ├── Co-authored by multiple developers
-│   └── Merge commit → Preserves all authors
+│   └── Merge [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → Preserves all authors
 │
 └── Hotfix for production
     └── Fast-track: squash merge with hotfix label
@@ -465,14 +465,14 @@ What's the risk level?
 │   └── 2+ reviewers including senior/principal
 │
 └── Critical (auth, payments, PII, breaking change)
-    ├── Full audit: security review + architecture review
+    ├── Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md): security review + architecture review
     └── Mandatory: 2+ reviewers, load test results, rollback plan
 ```
 
 ## Production Considerations
 
 - **PR size enforcement in CI**: Add a CI check that flags PRs exceeding 400 lines changed. Recommend splitting into smaller PRs with a comment template.
-- **Auto-labeling based on commit types**: Parse Conventional Commits in the PR title to auto-apply labels (feat → feature, fix → bug).
+- **Auto-labeling based on [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) types**: Parse Conventional Commits in the PR title to auto-apply labels (feat → feature, fix → bug).
 - **Changelog generation from PRs**: Use PR labels and titles to auto-generate changelog entries on merge. Reduces release overhead by 80%.
 - **PR template validation**: Validate PR description against template requirements before allowing submission. Reduce incomplete PRs by 50%.
 
@@ -490,14 +490,14 @@ What's the risk level?
 
 ## Performance Optimization
 
-- **Pre-populate PR description from commits**: Extract commit messages, file list, and diff stats automatically. Saves developer 5-10 minutes per PR.
+- **Pre-populate PR description from commits**: Extract [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages, file list, and diff stats automatically. Saves developer 5-10 minutes per PR.
 - **CI-integrated PR size analysis**: Automatically suggest file splits when PR exceeds 400 lines. Flag files with disproportionate change ratio.
-- **Template auto-fill**: Use HEAD commit message to pre-fill PR title and type. Use git diff to list all changed files. Developer only writes description.
+- **Template auto-fill**: Use HEAD [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) message to pre-fill PR title and type. Use git diff to list all changed files. Developer only writes description.
 
 ## Security Considerations
 
 ### Sensitive Data in PRs
-- **Credential scanning**: Scan diffs for API keys, tokens, passwords before PR submission. Use pre-commit hooks with tools like detect-secrets or truffleHog.
+- **Credential scanning**: Scan diffs for API keys, tokens, passwords before PR submission. Use pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks with tools like detect-secrets or truffleHog.
 - **Environment file review**: Flag .env additions, config files with secrets. Require second reviewer for any credential-related changes.
 - **Screenshot sanitization**: Blur sensitive data in UI screenshots. Never include real PII, tokens, or internal URLs in images.
 
@@ -509,5 +509,5 @@ What's the risk level?
 ### CI/CD Security
 - **PR metadata exposure**: Strip sensitive CI variables from PR description and comments. Avoid pasting raw stack traces with internal paths.
 - **External contributor safety**: Use separate CI pipeline with restricted permissions for fork PRs. Mask secrets in public fork runs.
-- **Signed commits**: Enforce commit signing (GPG/SSH) in PR requirements. Automatically label unsigned commits as unverified.
+- **Signed commits**: Enforce [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing (GPG/SSH) in PR requirements. Automatically label unsigned commits as unverified.
 

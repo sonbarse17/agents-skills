@@ -25,7 +25,7 @@ tags: [devops, datacenter, infrastructure, hardware, phase-5]
 # Datacenter Operations
 
 ## Purpose
-Design, operate, and manage physical datacenter infrastructure including tier classification, power/cooling, rack layout, cabling, DCIM, and capacity planning.
+Design, operate, and manage physical datacenter infrastructure including tier classification, power/cooling, rack layout, cabling, DCIM, and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning.
 
 ## Architecture Decision Trees
 
@@ -46,7 +46,7 @@ Design, operate, and manage physical datacenter infrastructure including tier cl
 | 2N+1 | Two paths + redundant | 3 UPS (2N+1) | 3 generators | 2.3x |
 
 ### Cooling Architecture Comparison
-| Type | PUE Impact | Capacity (kW/rack) | Cost | Best For |
+| Type | PUE Impact | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (kW/rack) | Cost | Best For |
 |---|---|---|---|---|
 | Room-based (CRAC) | 1.4-1.8 | <10 | Low | Legacy DCs, low density |
 | Row-based (in-row) | 1.2-1.4 | 10-25 | Medium | Standard deployments |
@@ -140,10 +140,10 @@ Cabling:
   Management: BMC ports → BMC switch (U42)
 ```
 
-### Step 2: Power Capacity Planning
-```python
-# capacity/power_planning.py
-"""Datacenter power capacity planning tool."""
+### Step 2: Power [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
+```[python](../../Languages/python/SKILL.md)
+# [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/power_planning.py
+"""Datacenter power [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning tool."""
 
 RACK_POWER_MAP = {
     "standard_rack": {
@@ -202,7 +202,7 @@ def calculate_power_for_room(num_racks, rack_type="standard_rack", redundancy="N
     }
     total_redundant = total_facility * redundancy_factors[redundancy]
 
-    # UPS capacity
+    # UPS [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
     ups_capacity = total_redundant * 1.2  # 20% headroom
 
     return {
@@ -260,7 +260,7 @@ structured_cabling:
 ```
 
 ### Step 4: DCIM Integration Script
-```python
+```[python](../../Languages/python/SKILL.md)
 # dcim/rack_monitor.py
 """Monitor rack-level power, temperature, and humidity via DCIM API."""
 
@@ -305,7 +305,7 @@ class DCIMClient:
         return alarms
 
     def monitor_all_racks(self, rack_ids, interval_s=60):
-        """Continuous monitoring loop."""
+        """Continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) loop."""
         while True:
             for rack_id in rack_ids:
                 alarms = self.check_environmental_limits(rack_id)
@@ -314,9 +314,9 @@ class DCIMClient:
             time.sleep(interval_s)
 ```
 
-### Step 5: Environmental Monitoring Configuration
+### Step 5: Environmental [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Configuration
 ```yaml
-# monitoring/datacenter-monitoring.yaml
+# [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/datacenter-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).yaml
 sensor_thresholds:
   temperature:
     warning_c: 27    # ASHRAE recommended max inlet temp
@@ -421,14 +421,14 @@ cabling:
   server_to_leaf: "OM4 multimode, LC duplex or CAT6A copper"
   cross_connect: "OS2 singlemode, MPO-12 trunk cables"
 
-monitoring:
-  - "Interface utilization > 70% triggers capacity alert"
+[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+  - "Interface utilization > 70% triggers [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) alert"
   - "Packet drop rate > 0.1% triggers investigation"
   - "sFlow data streamed to analytics pipeline"
 ```
 
 ### Step 9: DCIM Tool Configuration — netbox
-```python
+```[python](../../Languages/python/SKILL.md)
 # dcim/netbox_sync.py
 """Sync server inventory to Netbox DCIM."""
 import pynetbox
@@ -497,7 +497,7 @@ echo "Transferring UPS input to generator..."
 timeout 30 ups-monitor --transfer-to-generator
 
 # Step 4: Monitor for 15 minutes
-echo "Monitoring generator output..."
+echo "[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) generator output..."
 for i in $(seq 1 15); do
   read voltage frequency phase_balance <<< $(generator_metrics)
   echo "Minute $i: ${voltage}V ${frequency}Hz balance:${phase_balance}%"
@@ -558,7 +558,7 @@ echo "=== Test Complete ==="
 - Test generator and UPS monthly under load with full run-down test annually
 - Maintain cable management to preserve airflow and reduce cooling costs
 - Redundant cooling paths: never route both CRAC units through same pipe
-- Power monitoring per PDU phase prevents unbalanced load conditions
+- Power [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) per PDU phase prevents unbalanced load conditions
 - Floor loading: verify slab rating (usually 500-1000 kg/m²) before deploying heavy racks
 - Seismic bracing in earthquake-prone regions on all racks and overhead cable trays
 - FM-200/Novec fire suppression tested per NFPA 75 standards annually
@@ -571,7 +571,7 @@ echo "=== Test Complete ==="
 Blocking hot aisle containment or mixing hot and cold air. Proper containment can reduce cooling costs by 20-40%.
 
 ### Anti-Pattern 2: Over-Subscribing Power Circuits
-Plugging more equipment into a PDU than its rated capacity (e.g., 24A on a 20A circuit). Always leave 20% headroom.
+Plugging more equipment into a PDU than its rated [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (e.g., 24A on a 20A circuit). Always leave 20% headroom.
 
 ### Anti-Pattern 3: Ignoring Rack Weight Limits
 Filling racks with heavy UPS/gpu servers without checking floor load rating. Server racks can weigh > 1000kg fully loaded.
@@ -580,19 +580,19 @@ Filling racks with heavy UPS/gpu servers without checking floor load rating. Ser
 Running cables haphazardly without horizontal/vertical management. Blocks airflow, makes troubleshooting impossible, increases cooling costs.
 
 ### Anti-Pattern 5: No DCIM
-Managing datacenter capacity without DCIM tools. Leads to stranded capacity and inefficiencies.
+Managing datacenter [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) without DCIM tools. Leads to stranded [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and inefficiencies.
 
 ### Anti-Pattern 6: Single Points of Failure in Cooling
 Running both CRAC units on the same electrical circuit or same chiller loop. Route redundant cooling from independent sources.
 
-### Anti-Pattern 7: No Environmental Monitoring
-Only monitoring at room level instead of at rack intake. Rack-level monitoring catches hot spots before they cause failures.
+### Anti-Pattern 7: No Environmental [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+Only [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) at room level instead of at rack intake. Rack-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) catches hot spots before they cause failures.
 
 ## Rules & Constraints
 - Maintain hot aisle / cold aisle configuration at all times.
 - Leave 20% headroom on all power circuits.
 - All cabling must be labeled per TIA-606-B.
-- Environmental monitoring (temp/humidity/power) on every rack.
+- Environmental [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (temp/humidity/power) on every rack.
 - PUE should be < 1.6 for air-cooled DCs.
 - Test generator and UPS monthly under load.
 - Maintain cable management to preserve airflow.
@@ -603,7 +603,7 @@ Only monitoring at room level instead of at rack intake. Rack-level monitoring c
 ## References
   - ../../../Global_References/cabling.md
   - ../../../Global_References/datacenter-advanced.md
-  - ../../../Global_References/datacenter-capacity-planning.md
+  - ../../../Global_References/datacenter-[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md).md
   - ../../../Global_References/datacenter-fundamentals.md
   - ../../../Global_References/datacenter-networking-storage.md
   - ../../../Global_References/dcim.md

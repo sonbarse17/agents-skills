@@ -19,37 +19,37 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes Cluster Provisioning with kubeadm and Cluster API
+# [Kubernetes](../kubernetes/SKILL.md) Cluster Provisioning with kubeadm and Cluster API
 
 ## Purpose
 
 Not every cluster runs on a managed control plane or a single-binary
-lightweight distribution: bare-metal fleets, on-prem data centers, and
+lightweight distribution: [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) fleets, on-prem data centers, and
 teams that need full control over control-plane composition still
 bootstrap clusters directly with **kubeadm** — the upstream, vendor-
 neutral tool for `init`/`join` that every managed and lightweight
 distribution builds on internally. kubeadm bootstraps one cluster at a
 time imperatively; **Cluster API (CAPI)** sits a layer above it,
-turning cluster lifecycle itself into a Kubernetes-native, declarative,
+turning cluster lifecycle itself into a [Kubernetes](../kubernetes/SKILL.md)-native, declarative,
 provider-agnostic resource (a `Cluster` and its `KubeadmControlPlane`/
 `MachineDeployment` objects reconciled continuously, the same
 CRD-plus-controller pattern used elsewhere in the ecosystem) so that
 provisioning, scaling, and upgrading many clusters follows one
-consistent, GitOps-able workflow regardless of the underlying
+consistent, [GitOps](../gitops/SKILL.md)-able workflow regardless of the underlying
 infrastructure provider. This skill covers both: kubeadm for the
 single-cluster imperative bootstrap, and CAPI for managing cluster
-lifecycle declaratively at scale. It is the self-managed/bare-metal
+lifecycle declaratively at scale. It is the self-managed/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
 counterpart to
-[managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md)
+[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 (cloud-managed control planes) and
-[lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md)
+[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md)
 (single-binary, resource-constrained distributions) — choose this skill
-when neither of those fits: full upstream Kubernetes, full control over
+when neither of those fits: full upstream [Kubernetes](../kubernetes/SKILL.md), full control over
 every control-plane component, on infrastructure you operate yourself.
 
 ## When to use
 
-- Bootstrapping a brand-new self-managed or bare-metal cluster with
+- Bootstrapping a brand-new self-managed or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster with
   `kubeadm init`/`kubeadm join` rather than a managed or lightweight
   distribution.
 - Designing an HA control plane (stacked or external etcd, a load
@@ -67,13 +67,13 @@ every control-plane component, on infrastructure you operate yourself.
 
 ## Prerequisites & environment
 
-- Matching minor versions of `kubeadm`, `kubelet`, and `kubectl` on
-  every node (Kubernetes' version-skew policy allows the kubelet to
+- Matching minor versions of `kubeadm`, `kubelet`, and `[kubectl](../kubectl/SKILL.md)` on
+  every node ([Kubernetes](../kubernetes/SKILL.md)' version-skew policy allows the kubelet to
   trail the control plane by up to 3 minor versions in newer releases,
   but keep them aligned during initial bootstrap to avoid surprises).
 - A container runtime already installed and configured with the CRI
   socket kubeadm expects (containerd is the common default) — see
-  [container-runtime-docker-containerd](../container-runtime-docker-containerd/SKILL.md)
+  [container-runtime-[docker](../docker/SKILL.md)-containerd](../[container-runtime-[docker](../docker/SKILL.md)-containerd](../container-runtime-[docker](../docker/SKILL.md)-containerd/SKILL.md)/SKILL.md)
   for runtime selection/configuration; kubeadm does not install a
   runtime for you.
 - Swap disabled, `br_netfilter` and `overlay` kernel modules loaded, and
@@ -87,7 +87,7 @@ every control-plane component, on infrastructure you operate yourself.
   `--control-plane-endpoint` must point at it from the very first node.
 - No CNI plugin installed yet — a fresh `kubeadm init` leaves every node
   `NotReady` until one is applied; see
-  [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+  [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
   for choosing and installing one immediately after `init`.
 - For Cluster API: the `clusterctl` CLI, a **management cluster** (a
   small kind/kubeadm/managed cluster that runs CAPI's controllers — it
@@ -117,7 +117,7 @@ every control-plane component, on infrastructure you operate yourself.
    ```bash
    kubeadm init --config kubeadm-config.yaml --upload-certs
    mkdir -p $HOME/.kube
-   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo cp -i /etc/[kubernetes](../kubernetes/SKILL.md)/admin.conf $HOME/.kube/config
    sudo chown $(id -u):$(id -g) $HOME/.kube/config
    ```
    `--upload-certs` uploads the control-plane certs to a Secret so
@@ -129,10 +129,10 @@ every control-plane component, on infrastructure you operate yourself.
 3. **Install a CNI plugin immediately** — nodes stay `NotReady` until
    this is applied:
    ```bash
-   kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+   [kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
    ```
    See
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for choosing between Calico and Flannel and sizing `podSubnet`
    correctly before this point — changing it after nodes join is
    disruptive.
@@ -143,7 +143,7 @@ every control-plane component, on infrastructure you operate yourself.
    as a static pod on each control-plane node so the VIP fails over
    automatically:
    ```yaml
-   # /etc/kubernetes/manifests/kube-vip.yaml on each control-plane node
+   # /etc/[kubernetes](../kubernetes/SKILL.md)/manifests/kube-vip.yaml on each control-plane node
    apiVersion: v1
    kind: Pod
    metadata: { name: kube-vip, namespace: kube-system }
@@ -189,13 +189,13 @@ every control-plane component, on infrastructure you operate yourself.
    kubeadm upgrade node                 # on every other control-plane/worker node
    ```
    Drain each node before upgrading its kubelet — see
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md)
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md)
    for the cordon/drain/PDB-aware sequence to follow per node.
 
 8. **For managing cluster lifecycle declaratively instead, install
    Cluster API on a management cluster**:
    ```bash
-   clusterctl init --infrastructure <provider>   # e.g. docker, metal3, aws
+   clusterctl init --infrastructure <provider>   # e.g. [docker](../docker/SKILL.md), metal3, aws
    ```
 
 9. **Define the cluster declaratively** with a `Cluster`,
@@ -235,20 +235,20 @@ every control-plane component, on infrastructure you operate yourself.
 10. **Apply and watch reconciliation**:
     ```bash
     clusterctl generate cluster workload-a --infrastructure <provider> \
-      --kubernetes-version v1.30.4 --control-plane-machine-count 3 \
+      --[kubernetes](../kubernetes/SKILL.md)-version v1.30.4 --control-plane-machine-count 3 \
       --worker-machine-count 3 > workload-a.yaml
-    kubectl apply -f workload-a.yaml
+    [kubectl](../kubectl/SKILL.md) apply -f workload-a.yaml
     clusterctl describe cluster workload-a
     ```
     `clusterctl describe cluster` shows the full object tree
     (`Cluster` → `KubeadmControlPlane`/`MachineDeployment` → `Machine`s)
     and each object's `Ready` condition — this is the CAPI equivalent of
-    `kubectl get nodes` during a manual kubeadm bootstrap, and is where
+    `[kubectl](../kubectl/SKILL.md) get nodes` during a manual kubeadm bootstrap, and is where
     a stuck provisioning step actually surfaces.
 
 11. **Validate the cluster before declaring it usable**, whichever
     method provisioned it — see
-    [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md)
+    [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md)
     for running Sonobuoy conformance and smoke tests immediately after
     step 6 (kubeadm) or once CAPI reports the cluster `Ready` (step 10),
     before treating either as production-ready.
@@ -273,7 +273,7 @@ every control-plane component, on infrastructure you operate yourself.
   expire (24h and 2h respectively by default) and regenerating them is
   the correct response, not a workaround.
 - Upgrade one minor version at a time, control plane before nodes,
-  following Kubernetes' documented version-skew policy — skipping
+  following [Kubernetes](../kubernetes/SKILL.md)' documented version-skew policy — skipping
   versions or upgrading nodes ahead of the control plane is unsupported
   and can break in subtle, hard-to-diagnose ways.
 - For Cluster API, keep the management cluster itself small, boring, and
@@ -289,7 +289,7 @@ every control-plane component, on infrastructure you operate yourself.
   **Fix:** Bootstrap tokens expire after 24 hours by default. Generate a
   fresh one from an existing control-plane node
   (`kubeadm token create --print-join-command`) rather than reusing an
-  old token from documentation or a runbook.
+  old token from documentation or a [runbook](../../Observability_and_SecOps/runbook/SKILL.md).
 
 - **Symptom:** Joining a second/third control-plane node fails with
   "certificate key has expired" or a certificate-decryption error.
@@ -303,7 +303,7 @@ every control-plane component, on infrastructure you operate yourself.
   `kubeadm init`/`kubeadm join`, with no obvious error.
   **Fix:** This is expected until a CNI plugin is applied — kubeadm
   deliberately does not install one. Apply Calico or Flannel (see
-  [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md))
+  [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md))
   and confirm its pod CIDR matches `podSubnet` from `kubeadm-config.yaml`
   exactly.
 
@@ -314,7 +314,7 @@ every control-plane component, on infrastructure you operate yourself.
   `kubeadm upgrade plan` first, upgrade exactly one minor version at a
   time, control plane before any node, and drain each node before
   touching its kubelet — see
-  [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md).
+  [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md).
 
 - **Symptom:** A Cluster API `Machine` stays stuck in `Provisioning` and
   never reaches `Running`.
@@ -322,7 +322,7 @@ every control-plane component, on infrastructure you operate yourself.
   surfaces which object in the reconciliation chain is failing (often
   the infrastructure provider's own controller, not CAPI's core
   controllers) — check that controller's logs
-  (`kubectl logs -n <provider-system-namespace> deploy/<provider-controller>`)
+  (`[kubectl](../kubectl/SKILL.md) logs -n <provider-system-namespace> deploy/<provider-controller>`)
   rather than only the top-level `Cluster` status, which just reports
   "not ready" without the specific cause.
 
@@ -334,7 +334,7 @@ every control-plane component, on infrastructure you operate yourself.
   API traffic or holding an etcd quorum vote is destructive and can take
   down the whole control plane if it drops below quorum. Drain the node
   first (see
-  [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md)),
+  [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md)),
   remove it from the etcd member list cleanly, and confirm remaining
   control-plane nodes still hold quorum before resetting it.
 
@@ -356,7 +356,7 @@ networking: { podSubnet: "192.168.0.0/16" }
 ```bash
 # node-1
 kubeadm init --config kubeadm-config.yaml --upload-certs
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+[kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
 kubeadm init phase upload-certs --upload-certs
 kubeadm token create --print-join-command
 ```
@@ -369,8 +369,8 @@ kubeadm join 10.0.0.100:6443 --token <TOKEN> \
 ```
 
 ```bash
-kubectl get nodes         # all 3 control-plane nodes Ready
-kubectl get pods -n kube-system -l k8s-app=kube-vip   # VIP active on one node
+[kubectl](../kubectl/SKILL.md) get nodes         # all 3 control-plane nodes Ready
+[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l k8s-app=kube-vip   # VIP active on one node
 ```
 
 Second environment, provisioned declaratively via CAPI on a management
@@ -379,9 +379,9 @@ cluster instead of manual `kubeadm` calls:
 ```bash
 clusterctl init --infrastructure metal3
 clusterctl generate cluster workload-b --infrastructure metal3 \
-  --kubernetes-version v1.30.4 \
+  --[kubernetes](../kubernetes/SKILL.md)-version v1.30.4 \
   --control-plane-machine-count 3 --worker-machine-count 3 > workload-b.yaml
-kubectl apply -f workload-b.yaml
+[kubectl](../kubectl/SKILL.md) apply -f workload-b.yaml
 clusterctl describe cluster workload-b
 ```
 
@@ -390,14 +390,14 @@ clusterctl describe cluster workload-b
 reaching `Ready: True` in turn — once all three control-plane
 `Machine`s and the `MachineDeployment`'s workers report ready, both
 clusters proceed to conformance/smoke validation (see
-[kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md))
+[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md))
 before either is considered production-ready.
 
 ## Cross-references
 
-- [kubernetes-cluster-post-provision-conformance-validation](../kubernetes-cluster-post-provision-conformance-validation/SKILL.md) — the required validation gate immediately after either provisioning path above completes.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — the managed-control-plane alternative when self-operating kubeadm/etcd isn't the right tradeoff.
-- [lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md) — the single-binary alternative for edge/dev/resource-constrained deployments that don't need full kubeadm/CAPI control.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — choosing and installing the CNI plugin a fresh kubeadm cluster needs before nodes go `Ready`.
-- [container-runtime-docker-containerd](../container-runtime-docker-containerd/SKILL.md) — installing/configuring the container runtime kubeadm requires on every node before `init`/`join`.
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — safely draining nodes during a `kubeadm upgrade` or before a `kubeadm reset`.
+- [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — the required validation gate immediately after either provisioning path above completes.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the managed-control-plane alternative when self-operating kubeadm/etcd isn't the right tradeoff.
+- [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — the single-binary alternative for edge/dev/resource-constrained deployments that don't need full kubeadm/CAPI control.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — choosing and installing the CNI plugin a fresh kubeadm cluster needs before nodes go `Ready`.
+- [container-runtime-[docker](../docker/SKILL.md)-containerd](../[container-runtime-[docker](../docker/SKILL.md)-containerd](../container-runtime-[docker](../docker/SKILL.md)-containerd/SKILL.md)/SKILL.md) — installing/configuring the container runtime kubeadm requires on every node before `init`/`join`.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — safely draining nodes during a `kubeadm upgrade` or before a `kubeadm reset`.

@@ -26,7 +26,7 @@ These structures transcend frameworks. They are the mathematical and sociologica
 ## II. Topological State Flow
 
 ### 1. Hierarchical Topology
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     S((Supervisor)) -->|Decomposes| W1(Worker: Analyze)
@@ -36,7 +36,7 @@ flowchart TD
 ```
 
 ### 2. Pipeline Topology
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     P1[Agent: Ingestion] -->|Raw Context| P2[Agent: Processing]
@@ -44,7 +44,7 @@ flowchart TD
 ```
 
 ### 3. Swarm Topology
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Gen(Generator) -->|Proposes Idea| Crit{Critic}

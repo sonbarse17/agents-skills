@@ -17,7 +17,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Before implementation
 
-- Use the microsoft-docs MCP to verify the latest APIs for AddAgent, AgentApplication, and authentication options.
+- Use the [microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md) MCP to verify the latest APIs for AddAgent, AgentApplication, and authentication options.
 - Confirm package versions in NuGet for the Microsoft.Agents.\* packages you plan to use.
 
 ## Installation
@@ -270,7 +270,7 @@ await foreach (var activity in client.AskQuestionAsync("Hello!", null))
 1. Use AgentApplication subclasses to centralize routing and error handling.
 2. Use MemoryStorage only for development; use persisted storage in production.
 3. Enable TokenValidation in production and require authorization on /api/messages.
-4. Keep auth secrets in configuration providers (Key Vault, managed identity, env vars).
+4. Keep auth secrets in configuration providers (Key [Vault](../vault/SKILL.md), managed identity, env vars).
 5. Reuse HttpClient from IHttpClientFactory and cache MSAL tokens.
 6. Prefer async handlers and pass CancellationToken to SDK calls.
 
@@ -283,4 +283,4 @@ await foreach (var activity in client.AskQuestionAsync("Hello!", null))
 | AgentApplication API       | https://learn.microsoft.com/en-us/dotnet/api/microsoft.agents.builder.app.agentapplication?view=m365-agents-sdk                            |
 | Auth configuration options | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/microsoft-authentication-library-configuration-options                          |
 | Copilot Studio integration | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs                                                              |
-| GitHub samples             | https://github.com/microsoft/agents                                                                                                        |
+| [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) samples             | https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/agents                                                                                                        |

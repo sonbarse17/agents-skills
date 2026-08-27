@@ -3,14 +3,14 @@ name: incident-runbook-templates
 description: Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use this skill when building a service outage runbook for a payment processing system; creating database incident procedures covering connection pool exhaustion, replication lag, and disk space alerts; onboarding new on-call engineers who need step-by-step recovery guides written for a 3 AM brain; or standardizing escalation matrices across multiple engineering teams.
 ---
 
-# Incident Runbook Templates
+# [Incident](../incident/SKILL.md) [Runbook](../runbook/SKILL.md) Templates
 
-Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.
+Production-ready templates for [incident](../incident/SKILL.md) response [runbooks](../runbooks/SKILL.md) covering detection, triage, mitigation, resolution, and communication.
 
 ## When to Use This Skill
 
-- Creating incident response procedures
-- Building service-specific runbooks
+- Creating [incident](../incident/SKILL.md) response procedures
+- Building service-specific [runbooks](../runbooks/SKILL.md)
 - Establishing escalation paths
 - Documenting recovery procedures
 - Responding to active incidents
@@ -18,7 +18,7 @@ Production-ready templates for incident response runbooks covering detection, tr
 
 ## Core Concepts
 
-### 1. Incident Severity Levels
+### 1. [Incident](../incident/SKILL.md) Severity Levels
 
 | Severity | Impact                     | Response Time     | Example                 |
 | -------- | -------------------------- | ----------------- | ----------------------- |
@@ -27,7 +27,7 @@ Production-ready templates for incident response runbooks covering detection, tr
 | **SEV3** | Minor impact               | 2 hours           | Non-critical bug        |
 | **SEV4** | Minimal impact             | Next business day | Cosmetic issue          |
 
-### 2. Runbook Structure
+### 2. [Runbook](../runbook/SKILL.md) Structure
 
 ```
 1. Overview & Impact
@@ -43,46 +43,46 @@ Production-ready templates for incident response runbooks covering detection, tr
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/incident-runbook-templates_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[incident](../incident/SKILL.md)-[runbook](../runbook/SKILL.md)-templates_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
 ### Do's
-- **Keep runbooks updated** - Review after every incident
-- **Test runbooks regularly** - Game days, chaos engineering
+- **Keep [runbooks](../runbooks/SKILL.md) updated** - Review after every [incident](../incident/SKILL.md)
+- **Test [runbooks](../runbooks/SKILL.md) regularly** - Game days, chaos engineering
 - **Include rollback steps** - Always have an escape hatch
 - **Document assumptions** - What must be true for steps to work
-- **Link to dashboards** - Quick access during stress
+- **Link to [dashboards](../../Cloud_Providers/dashboards/SKILL.md)** - Quick access during stress
 
 ### Don'ts
 - **Don't assume knowledge** - Write for 3 AM brain
 - **Don't skip verification** - Confirm each step worked
 - **Don't forget communication** - Keep stakeholders informed
 - **Don't work alone** - Escalate early
-- **Don't skip postmortems** - Learn from every incident
+- **Don't skip postmortems** - Learn from every [incident](../incident/SKILL.md)
 
 ## Troubleshooting
 
-### Runbook steps work in staging but fail during a real incident
+### [Runbook](../runbook/SKILL.md) steps work in staging but fail during a real [incident](../incident/SKILL.md)
 
-Steps often assume preconditions that are true in a healthy environment but not during an outage. For each command in your runbook, add a prerequisite check and a "what to do if this command fails" note:
+Steps often assume preconditions that are true in a healthy environment but not during an outage. For each command in your [runbook](../runbook/SKILL.md), add a prerequisite check and a "what to do if this command fails" note:
 
 ```bash
 # Step: Check pod status
-kubectl get pods -n payments
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n payments
 
-# Prerequisites: kubectl configured, kubeconfig points to correct cluster
+# Prerequisites: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) configured, kubeconfig points to correct cluster
 # If this fails: run `aws eks update-kubeconfig --name prod-cluster --region us-east-1`
 # Expected output: pods in Running state
 ```
 
 ### On-call engineer panics and skips steps out of order
 
-Add a numbered checklist at the top of the runbook that mirrors the section numbers, so responders can track progress under stress without reading the full document:
+Add a numbered checklist at the top of the [runbook](../runbook/SKILL.md) that mirrors the section numbers, so responders can track progress under stress without reading the full document:
 
 ```markdown
 ## Quick Checklist
-- [ ] 1. Declare incident severity and open war room
+- [ ] 1. Declare [incident](../incident/SKILL.md) severity and open war room
 - [ ] 2. Check service health (Section 4.1)
 - [ ] 3. Check recent deployments (Section 4.1)
 - [ ] 4. Roll back if deploy is suspect (Section 4.1)
@@ -90,12 +90,12 @@ Add a numbered checklist at the top of the runbook that mirrors the section numb
 - [ ] 6. Escalate if > 15 min unresolved
 ```
 
-### Runbook is outdated — commands reference old cluster names or endpoints
+### [Runbook](../runbook/SKILL.md) is outdated — commands reference old cluster names or endpoints
 
-Runbooks rot because they're updated manually. Include a "Last Verified" date and owner at the top, and add a CI check that validates all `curl` endpoints and `kubectl` context names are still valid:
+[Runbooks](../runbooks/SKILL.md) rot because they're updated manually. Include a "Last Verified" date and owner at the top, and add a CI check that validates all `curl` endpoints and `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` context names are still valid:
 
 ```markdown
-## Runbook Metadata
+## [Runbook](../runbook/SKILL.md) Metadata
 | Field | Value |
 |---|---|
 | Last verified | 2024-11-15 |
@@ -105,17 +105,17 @@ Runbooks rot because they're updated manually. Include a "Last Verified" date an
 
 ### Stakeholder communication is delayed while engineers are heads-down
 
-Assign a dedicated incident communicator role (separate from the incident commander) whose only job is to post status updates. Add a standing agenda in the communication template:
+Assign a dedicated [incident](../incident/SKILL.md) communicator role (separate from the [incident](../incident/SKILL.md) commander) whose only job is to post status updates. Add a standing agenda in the communication template:
 
 ```
 Update every 15 minutes (even if no new information):
-- Current status (Investigating / Mitigating / Monitoring)
+- Current status (Investigating / Mitigating / [Monitoring](../monitoring/SKILL.md))
 - Impact (what is broken, who is affected, % of traffic)
 - What we are doing right now
 - Next update in: 15 minutes
 ```
 
-### Database runbook commands cause additional downtime when run incorrectly
+### Database [runbook](../runbook/SKILL.md) commands cause additional downtime when run incorrectly
 
 Add explicit warnings before destructive SQL commands and require a dry-run output check before executing:
 
@@ -131,5 +131,5 @@ WHERE state = 'idle' AND query_start < now() - interval '10 minutes';
 
 ## Related Skills
 
-- `postmortem-writing` - After resolving an incident, use postmortem templates to capture root cause and preventive actions
-- `on-call-handoff-patterns` - Structure shift handoffs so the incoming responder has full context on active incidents
+- `[postmortem-writing](../postmortem-writing/SKILL.md)` - After resolving an [incident](../incident/SKILL.md), use postmortem templates to capture root cause and preventive actions
+- `[on-call-handoff-patterns](../../../Software_Engineering_and_Other/Miscellaneous/on-call-handoff-patterns/SKILL.md)` - Structure shift handoffs so the incoming responder has full context on active incidents

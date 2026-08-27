@@ -40,13 +40,13 @@ identity provider, with the gateway only checking, not issuing or storing.
   backends don't re-implement token parsing.
 - **Never let the gateway silently downgrade auth failures to "allow"** on a validation error —
   fail closed, not open.
-- **Full identity and authorization policy design** lives in `iam-access-management`; the gateway
+- **Full identity and authorization policy design** lives in `[iam-access-management](../../../DevOps_and_Cloud/Cloud_Providers/iam-access-management/SKILL.md)`; the gateway
   enforces decisions, it doesn't define them.
 
 **Done when:** every backend behind the gateway can trust that an authenticated request has
 already been verified, without re-checking the token itself.
 
-## 3. Set rate limits and quotas around a real capacity number
+## 3. Set rate limits and quotas around a real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) number
 
 A rate limit that isn't tied to what the backend can actually absorb is either useless (too high to
 ever protect anything) or a self-inflicted outage waiting to happen (too low, throttling
@@ -56,13 +56,13 @@ to either concern.
 
 ```yaml
 rate_limit:
-  per_client: 100/s        # protects backend capacity, short window
+  per_client: 100/s        # protects backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), short window
 quota:
   per_client_monthly: 1_000_000   # business entitlement, long window
 ```
 
 **Done when:** a rate-limit response tells the caller which control they hit and when to retry,
-and the limit itself is tied to a measured backend capacity, not a guessed number.
+and the limit itself is tied to a measured backend [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not a guessed number.
 
 ## 4. Shape requests at the edge only when it saves every backend from doing it
 
@@ -81,23 +81,23 @@ turns the gateway into an undeployable, unversioned dependency every team is afr
 ## 5. Recognize when the gateway becomes the bottleneck or the single point of failure
 
 A gateway that terminates every request for every service is now on the critical path for all of
-them — its capacity, its deploy cadence, and its uptime become the platform's. That's an acceptable
+them — its [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), its deploy cadence, and its uptime become the platform's. That's an acceptable
 tradeoff deliberately made, not a default that should go unexamined as traffic grows.
 
-- **Capacity-test the gateway itself**, not just the backends behind it — see `load-testing`.
+- **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-test the gateway itself**, not just the backends behind it — see `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)`.
 - **Deploy the gateway with the same rigor as any other production service** (canary, rollback,
   redundancy across zones) since an outage here takes down everything behind it.
 - **Consider a service mesh for internal traffic** once east-west volume between services
   outgrows what routing through a single north-south gateway makes sense for — see
-  `service-mesh`.
+  `[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)`.
 
-**Done when:** you can state the gateway's own capacity limit and what happens to all backend
+**Done when:** you can state the gateway's own [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) limit and what happens to all backend
 traffic if it degrades.
 
 ## Report
 
 State what the gateway centralizes (auth, rate limiting, routing), the external API contract
-version, the measured capacity behind current rate limits, and how the gateway itself is deployed
+version, the measured [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) behind current rate limits, and how the gateway itself is deployed
 for redundancy. Name the honest gap — usually a rate limit set by guess rather than measurement, or
 a piece of business logic that crept into the gateway config — rather than presenting the gateway
 as a clean, thin layer when it has accumulated exceptions.

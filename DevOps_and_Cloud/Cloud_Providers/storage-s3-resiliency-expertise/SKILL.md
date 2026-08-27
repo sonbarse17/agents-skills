@@ -35,7 +35,7 @@ reviews based on how many buckets are provided.
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, audit, or assess an S3 bucket's resiliency, security, or data protection
+- Review, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), or assess an S3 bucket's resiliency, security, or data protection
 - Evaluate an S3 bucket's protection/recovery posture or disaster recovery readiness
 - Check any of: versioning, replication, object lock, encryption, block public
   access, bucket policy, ownership controls, server access logging, website hosting
@@ -115,7 +115,7 @@ automatic and silent.**
 2. If region discovery fails (bucket does not exist or the role has no access) →
    abort: "Bucket `<name>` does not exist or the role does not have access."
 3. Evaluate pre-flight: check all `status` fields in the collected data.
-   - If any `AccessDenied` → present permissions audit (see Pre-flight section)
+   - If any `AccessDenied` → present permissions [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (see Pre-flight section)
    - If any `ToolingFailure` → present tooling notice (see Pre-flight section)
    - If no gaps → proceed
 4. Load `../../../Global_References/finding-logic.md`.
@@ -125,7 +125,7 @@ automatic and silent.**
 8. Run the pre-render validation (13 checks).
 9. Deliver the report per the **Final Delivery Contract** below.
 
-### Pre-flight: Permissions audit
+### Pre-flight: Permissions [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 If any check returned `AccessDenied`, present:
 
@@ -212,7 +212,7 @@ After completing the review (single-bucket or fleet):
    or alternate structure. The report renders verbatim; only placeholder values are
    substituted.
 5. This applies regardless of how the request is phrased. "Is my bucket safe?",
-   "audit its security", "data protection review", "disaster recovery / recovery
+   "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) its security", "data protection review", "disaster recovery / recovery
    posture", "security check", and "resiliency review" all yield the **same full
    standard report** defined in `../../../Global_References/report-format.md`. Never produce a
    condensed, reframed, or "focused view" variant tailored to the question wording.

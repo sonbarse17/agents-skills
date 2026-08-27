@@ -336,11 +336,11 @@ cat << 'EOF'
   "acls": [
     {"action": "accept", "src": ["group:engineering"], "dst": ["tag:servers:*"]},
     {"action": "accept", "src": ["group:devops"], "dst": ["*:*"]},
-    {"action": "accept", "src": ["tag:monitoring"], "dst": ["tag:servers:9100"]}
+    {"action": "accept", "src": ["tag:[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)"], "dst": ["tag:servers:9100"]}
   ],
   "tagOwners": {
     "tag:servers": ["group:devops"],
-    "tag:monitoring": ["group:devops"]
+    "tag:[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)": ["group:devops"]
   },
   "groups": {
     "group:engineering": ["alice@example.com", "bob@example.com"],
@@ -416,12 +416,12 @@ aws ec2 describe-vpn-connections \
 - Segment VPN access by role using split tunneling or ACLs
 - Use pre-shared keys with WireGuard for post-quantum resistance
 - Keep VPN software updated to patch security vulnerabilities
-- Log all VPN connection events for audit purposes
+- Log all VPN connection events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes
 - Disable VPN access immediately when employees leave
 - Test failover for site-to-site VPN connections
 
 ## Related Skills
 
-- [zero-trust](../zero-trust/) - Modern access patterns
-- [ssl-tls-management](../ssl-tls-management/) - Certificate management
-- [firewall-config](../firewall-config/) - Network access control
+- [zero-trust](../[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Modern access patterns
+- [ssl-tls-management](../[ssl-tls-management](../../../Software_Engineering_and_Other/Frontend/ssl-tls-management/SKILL.md)/) - Certificate management
+- [firewall-config](../[firewall-config](../firewall-config/SKILL.md)/) - Network access control

@@ -59,7 +59,7 @@ the AWS/Azure/GCP/OCI variants assume.
   one — add real memory pressure on top; budget at least 2 vCPU/4GB free
   beyond what K3s and other workloads already consume before assuming
   self-hosted Backstage fits).
-- `kubectl` and `helm` ≥ 3.8 if the self-hosted-Backstage path is chosen;
+- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` and `helm` ≥ 3.8 if the self-hosted-Backstage path is chosen;
   none of that is needed if the no-code SaaS path is chosen instead.
 - A decision, made explicitly and revisited as the team grows, between
   self-hosting a slimmed Backstage and paying for a hosted no-code catalog
@@ -78,12 +78,12 @@ the AWS/Azure/GCP/OCI variants assume.
 **Phase 1 — Install K3s, sized to the actual hardware.** Decide the
 datastore/HA model up front: a single-server install with the embedded
 SQLite datastore is genuinely fine for dev/edge/small-team use and avoids
-running a separate etcd cluster the team has no capacity to operate; only
+running a separate etcd cluster the team has no [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to operate; only
 move to the embedded-etcd HA model (3 server nodes) if uptime actually
 requires it. Size node resource requests deliberately against real
 hardware, not a cloud default — an edge device or small VM has no
-node-autoscaling safety net. See
-[lightweight-kubernetes-k3s](../../../kubernetes-platform/skills/lightweight-kubernetes-k3s/SKILL.md)
+node-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) safety net. See
+[lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../Containers_and_Orchestration/lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md)
 for the datastore decision, install commands, and air-gapped install path
 if the site has no direct internet access.
 
@@ -98,16 +98,16 @@ already "Backstage." At K3s scale, weigh both honestly:
   minimal scaffolder, skip anything requiring its own backend service).
   Still real infrastructure the team must patch and operate. Chart
   packaging follows
-  [helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md);
+  [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
   any unavoidable custom logic follows
-  [backstage-plugin-development](../backstage-plugin-development/SKILL.md).
+  [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 - **Hosted no-code catalog** (Port, Cortex, or OpsLevel): no infrastructure
   to run at all on the constrained cluster — the catalog lives in the
   vendor's SaaS, and K3s only needs to expose whatever webhook/agent the
   tool requires to discover services. This is very often the right answer
   for a small team, precisely because it removes an entire self-hosted
-  system from a team with no spare operational capacity. See
-  [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md)
+  system from a team with no spare operational [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). See
+  [no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md)
   for evaluating and configuring this path, including its own guidance on
   when *not* to choose it.
 Whichever is chosen, treat it as revisitable — a team of 3 choosing the
@@ -115,12 +115,12 @@ no-code path today should plan to reassess once headcount or catalog
 complexity outgrows it, not treat the choice as permanent.
 
 **Phase 3 — A thin golden-path template.** Author one golden-path
-template, not a tiered set — a small team doesn't have the review capacity
+template, not a tiered set — a small team doesn't have the review [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 several tiers assume. Keep its opinionated defaults genuinely minimal
 (Dockerfile, a single CI workflow, catalog registration) and defer
 anything elaborate until a second template is actually justified by real
 demand. See
-[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md),
+[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md),
 reading its tiering guidance as "here is the option to add tiers later,"
 not a mandate to start with them.
 
@@ -129,7 +129,7 @@ Run the same scaffold-build-deploy-smoke-test-teardown pipeline as the
 larger variants, but target the same constrained K3s cluster's own
 ephemeral namespace rather than a separate cloud environment — there
 usually isn't a separate environment to spare. See
-[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md).
+[golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md).
 
 **Phase 5 — Minimal-governance self-service.** Build the smallest
 self-service surface that removes real toil: often just a Scaffolder
@@ -140,7 +140,7 @@ unless there's a genuine reason for it at this scale (e.g., real budget
 exposure). Still make whatever gate exists an explicit, auditable step
 rather than an informal Slack message, and still keep policy rules
 external and reviewable even if there's only one rule. See
-[platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md),
+[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md),
 applying its state-machine pattern at reduced scope rather than skipping
 it — "minimal governance" is not the same as "no governance."
 
@@ -150,16 +150,16 @@ health endpoint, is registered in the catalog) rather than the full
 production-readiness/security/on-call rubric the cloud variants build —
 a scorecard with more categories than the team has bandwidth to act on
 just becomes another unread dashboard. See
-[service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md).
+[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 **Phase 7 — Operate at the "thinnest viable platform" size, deliberately,
 not by accident.** A K3s-scale platform "team" is often one person
 wearing the platform hat part-time; make that explicit rather than
 pretending it's a dedicated team, and reassess scope as the org grows. See
-[platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md)
+[platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md)
 for the thinnest-viable-platform sizing discipline this phase applies
 literally, and
-[idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md)
+[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md)
 for rolling out even a small platform without it feeling imposed.
 
 ## Best practices
@@ -167,13 +167,13 @@ for rolling out even a small platform without it feeling imposed.
 - Default to the no-code SaaS path (Phase 2) unless there's a concrete
   reason to self-host — the operational cost of a self-hosted Backstage,
   even slimmed down, is easy to underestimate on a team with no spare
-  capacity, and "we already know Backstage" is not by itself a strong
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and "we already know Backstage" is not by itself a strong
   enough reason at this scale.
 - Back up K3s's datastore (SQLite file or embedded etcd snapshot)
   regardless of which HA model was chosen in Phase 1 — a single-server
   install with no backup turns any node failure into a full rebuild. See
   the backup guidance in
-  [lightweight-kubernetes-k3s](../../../kubernetes-platform/skills/lightweight-kubernetes-k3s/SKILL.md).
+  [lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../Containers_and_Orchestration/lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md).
 - Resist adding a second golden-path template tier or a second scorecard
   category just because the enterprise variants have one — add complexity
   only when a real, current need justifies the added review/maintenance
@@ -243,10 +243,10 @@ nodes.
    snapshots the SQLite datastore nightly to a separate on-prem NAS.
 2. **Phase 2:** After weighing both options, the team picks the hosted
    no-code path — OpsLevel — since none of the 3 part-time platform people
-   have capacity to operate a self-hosted Backstage; K3s only runs a small
+   have [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to operate a self-hosted Backstage; K3s only runs a small
    webhook receiver OpsLevel uses for service discovery.
 3. **Phase 3:** One golden-path template is authored: a Dockerfile, a
-   single GitHub Actions workflow, and an OpsLevel registration call —
+   single [GitHub](../github/SKILL.md) Actions workflow, and an OpsLevel registration call —
    no tiers.
 4. **Phase 4:** A validation pipeline scaffolds a test service, builds,
    deploys to an `ephemeral-validation` namespace on the same K3s cluster,
@@ -264,12 +264,12 @@ nodes.
 
 ## Cross-references
 
-- [lightweight-kubernetes-k3s](../../../kubernetes-platform/skills/lightweight-kubernetes-k3s/SKILL.md) — Phase 1.
-- [no-code-idp-service-catalog-tools-port-cortex-opslevel](../no-code-idp-service-catalog-tools-port-cortex-opslevel/SKILL.md) — Phase 2 no-code path.
-- [helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md), [backstage-plugin-development](../backstage-plugin-development/SKILL.md) — Phase 2 self-hosted path.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — Phase 3.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — Phase 4.
-- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md) — Phase 5.
-- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md) — Phase 6.
-- [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md), [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — Phase 7.
-- [complete-idp-deployment-on-prem-from-scratch](../complete-idp-deployment-on-prem-from-scratch/SKILL.md) — the heavier self-hosted variant to graduate to once the team and workload outgrow K3s-scale.
+- [lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s](../../Containers_and_Orchestration/lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — Phase 1.
+- [no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Phase 2 no-code path.
+- [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 2 self-hosted path.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 3.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 4.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 6.
+- [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — Phase 7.
+- [complete-idp-deployment-on-prem-from-scratch](../[complete-idp-deployment-on-prem-from-scratch](../../Cloud_Providers/complete-idp-deployment-on-prem-from-scratch/SKILL.md)/SKILL.md) — the heavier self-hosted variant to graduate to once the team and workload outgrow K3s-scale.

@@ -30,7 +30,7 @@ much of the hyperparameter-search and stakeholder-reporting workflow is
 built in rather than assembled from separate tools. This skill covers W&B's
 specific object model, sweep configuration, and report authoring — not the
 general case for experiment tracking, which is covered in
-[experiment-tracking](../experiment-tracking/SKILL.md) and applies here
+[experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) and applies here
 without needing to be restated.
 
 ## When to use
@@ -57,14 +57,14 @@ without needing to be restated.
   Server** / **Dedicated Cloud** self-hosted deployment — check current
   W&B documentation for which self-hosted tier fits your compliance needs,
   as packaging and licensing for self-hosted options change over time.
-- The `wandb` Python package installed in the training environment.
+- The `wandb` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) package installed in the training environment.
 - An API key, supplied via `wandb login` (interactive) or the
   `WANDB_API_KEY` environment variable in CI/non-interactive environments
   — never hardcoded in source.
 - A W&B **entity** (user or team) and **project** to log runs into,
   agreed on before runs start accumulating so they land in the right
   place.
-- For sweeps: enough compute capacity (local machines, a job queue, or a
+- For sweeps: enough compute [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (local machines, a job queue, or a
   cluster) to run the `wandb agent` processes that actually execute
   trials — the sweep controller coordinates trials, it doesn't provide
   compute itself.
@@ -73,7 +73,7 @@ without needing to be restated.
 
 1. **Initialize a run and log config/metrics** — `config` captures
    hyperparameters once at the start; `log` is called per step/epoch:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import wandb
 
    run = wandb.init(
@@ -98,7 +98,7 @@ without needing to be restated.
 2. **Log artifacts with explicit versioning and lineage**, not just
    ad hoc file uploads — an artifact records what run produced it and
    what it was built from:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    artifact = wandb.Artifact(
        name="fraud-scorer-model",
        type="model",
@@ -114,7 +114,7 @@ without needing to be restated.
    W&B's artifact lineage graph (visible in the UI) links this artifact
    back to the run that created it and forward to any run that later
    consumed it — the same "queryable provenance" goal described in
-   [experiment-tracking](../experiment-tracking/SKILL.md), implemented
+   [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md), implemented
    here as a first-class object rather than a manually-added tag.
 
 3. **Define a sweep configuration** declaring the search method, the
@@ -164,7 +164,7 @@ without needing to be restated.
    > to completion. For anything running on paid/shared compute, treat a
    > sweep launched without a `--count` cap or early termination the same
    > as a production deploy with no rollback plan — a preventable,
-   > foreseeable cost/resource incident, not an edge case.
+   > foreseeable cost/resource [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not an edge case.
 
 5. **Compare sweep results and pick a winner via the sweep's parallel
    coordinates / parameter-importance views** rather than scanning a
@@ -174,7 +174,7 @@ without needing to be restated.
 
 6. **Build a Report to communicate results to stakeholders** who won't
    open the raw run dashboard:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import wandb
    import wandb.apis.reports as wr
 
@@ -206,7 +206,7 @@ without needing to be restated.
      is the less common path and typically has different feature/licensing
      terms than the hosted product. MLflow is open-source and
      self-hosted-first — see
-     [mlflow-experiment-tracking-and-model-registry](../mlflow-experiment-tracking-and-model-registry/SKILL.md)
+     [mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry](../[mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry](../mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry/SKILL.md)/SKILL.md)
      — with Databricks-managed MLflow as its SaaS-equivalent option.
    - **Sweep automation depth:** W&B's sweep controller and multi-agent
      coordination, hyperband early termination, and parameter-importance
@@ -236,8 +236,8 @@ without needing to be restated.
 - Use `wandb.Artifact` for anything a downstream run consumes (a
   dataset snapshot, a trained model) instead of logging it as a plain
   file — the lineage graph is what makes "what produced this" answerable
-  later, matching the audit-trail goal in
-  [experiment-tracking](../experiment-tracking/SKILL.md).
+  later, matching the [audit](../../Operations/audit/SKILL.md)-trail goal in
+  [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md).
 - Group related runs with `group` and `job_type` in `wandb.init()` for
   distributed training (one physical training job spanning multiple
   processes should appear as one logical run in the UI, not N duplicate
@@ -248,7 +248,7 @@ without needing to be restated.
   behavior and the Reports API have changed across major versions.
 - Carry the sweep ID and the winning run's ID forward into the model
   registry/packaging step (see
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md))
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md))
   the same way an MLflow run ID is carried into that tool's registry.
 
 ## Common pitfalls
@@ -260,7 +260,7 @@ without needing to be restated.
   **Fix:** Always launch `wandb agent` with an explicit `--count`, and
   configure `early_terminate: hyperband` in the sweep config so
   underperforming trials are killed early — treat an uncapped sweep on
-  paid compute as a preventable incident, not a "just let it run" default.
+  paid compute as a preventable [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a "just let it run" default.
 
 - **Symptom:** A distributed training job spanning 8 GPU processes shows
   up as 8 separate, confusingly-named runs in the W&B UI instead of one
@@ -325,7 +325,7 @@ XGBoost model, then shares a report with the model-risk stakeholder group.
    latency profile (logged as an artifact-attached benchmark table).
 4. The winning run's model is logged as a versioned artifact
    (`fraud-scorer-model:v22`) and handed to the packaging step described
-   in [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md).
+   in [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md).
 5. A report is built summarizing the sweep, the winning config, and the
    AUC/latency comparison, and shared as a team-visible link with the
    model-risk group — who can review the panels directly without needing
@@ -333,12 +333,12 @@ XGBoost model, then shares a report with the model-risk stakeholder group.
 
 ## Cross-references
 
-- [experiment-tracking](../experiment-tracking/SKILL.md) — the
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — the
   vendor-neutral case for tracking runs, reproducibility, and tagging
   conventions that this skill implements in W&B-specific terms.
-- [mlflow-experiment-tracking-and-model-registry](../mlflow-experiment-tracking-and-model-registry/SKILL.md) —
+- [mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry](../[mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry](../mlflow-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-model-registry/SKILL.md)/SKILL.md) —
   the comparable self-hosted-first tool; see the comparison in
   Step 7 above for how to choose between them.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) —
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md) —
   where a sweep's winning artifact goes after tracking, for teams without
   MLflow's Model Registry in their stack.

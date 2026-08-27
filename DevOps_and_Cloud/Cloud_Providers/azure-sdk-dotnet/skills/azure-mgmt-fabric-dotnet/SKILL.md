@@ -11,7 +11,7 @@ metadata:
 
 # Azure.ResourceManager.Fabric (.NET)
 
-Management plane SDK for provisioning and managing Microsoft Fabric capacity resources via Azure Resource Manager.
+Management plane SDK for provisioning and managing Microsoft Fabric [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) resources via Azure Resource Manager.
 
 > **Management Plane Only**
 > This SDK manages Fabric *capacities* (compute resources). For working with Fabric workspaces, lakehouses, warehouses, and data items, use the Microsoft Fabric REST API or data plane SDKs.
@@ -68,7 +68,7 @@ ArmClient
 
 ## Core Workflows
 
-### 1. Create Fabric Capacity
+### 1. Create Fabric [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ```csharp
 using Azure.ResourceManager.Fabric;
@@ -78,9 +78,9 @@ using Azure.Core;
 // Get resource group
 var resourceGroup = await subscription.GetResourceGroupAsync("my-resource-group");
 
-// Define capacity configuration
+// Define [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) configuration
 var administration = new FabricCapacityAdministration(
-    new[] { "admin@contoso.com" }  // Capacity administrators (UPNs or object IDs)
+    new[] { "admin@contoso.com" }  // [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) administrators (UPNs or object IDs)
 );
 
 var properties = new FabricCapacityProperties(administration);
@@ -95,37 +95,37 @@ var capacityData = new FabricCapacityData(
     Tags = { ["Environment"] = "Production" }
 };
 
-// Create capacity (long-running operation)
+// Create [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (long-running operation)
 var capacityCollection = resourceGroup.Value.GetFabricCapacities();
 var operation = await capacityCollection.CreateOrUpdateAsync(
     WaitUntil.Completed,
-    "my-fabric-capacity",
+    "my-fabric-[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)",
     capacityData);
 
-FabricCapacityResource capacity = operation.Value;
-Console.WriteLine($"Created capacity: {capacity.Data.Name}");
-Console.WriteLine($"State: {capacity.Data.Properties.State}");
+FabricCapacityResource [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = operation.Value;
+Console.WriteLine($"Created [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Data.Name}");
+Console.WriteLine($"State: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Data.Properties.State}");
 ```
 
-### 2. Get Fabric Capacity
+### 2. Get Fabric [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ```csharp
-// Get existing capacity
-var capacity = await resourceGroup.Value
-    .GetFabricCapacityAsync("my-fabric-capacity");
+// Get existing [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+var [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = await resourceGroup.Value
+    .GetFabricCapacityAsync("my-fabric-[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)");
 
-Console.WriteLine($"Name: {capacity.Value.Data.Name}");
-Console.WriteLine($"Location: {capacity.Value.Data.Location}");
-Console.WriteLine($"SKU: {capacity.Value.Data.Sku.Name}");
-Console.WriteLine($"State: {capacity.Value.Data.Properties.State}");
-Console.WriteLine($"Provisioning State: {capacity.Value.Data.Properties.ProvisioningState}");
+Console.WriteLine($"Name: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.Data.Name}");
+Console.WriteLine($"Location: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.Data.Location}");
+Console.WriteLine($"SKU: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.Data.Sku.Name}");
+Console.WriteLine($"State: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.Data.Properties.State}");
+Console.WriteLine($"Provisioning State: {[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.Data.Properties.ProvisioningState}");
 ```
 
-### 3. Update Capacity (Scale SKU or Change Admins)
+### 3. Update [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (Scale SKU or Change Admins)
 
 ```csharp
-var capacity = await resourceGroup.Value
-    .GetFabricCapacityAsync("my-fabric-capacity");
+var [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = await resourceGroup.Value
+    .GetFabricCapacityAsync("my-fabric-[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)");
 
 var patch = new FabricCapacityPatch
 {
@@ -138,30 +138,30 @@ var patch = new FabricCapacityPatch
     }
 };
 
-var updateOperation = await capacity.Value.UpdateAsync(
+var updateOperation = await [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.UpdateAsync(
     WaitUntil.Completed,
     patch);
 
 Console.WriteLine($"Updated SKU: {updateOperation.Value.Data.Sku.Name}");
 ```
 
-### 4. Suspend and Resume Capacity
+### 4. Suspend and Resume [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ```csharp
-// Suspend capacity (stop billing for compute)
-await capacity.Value.SuspendAsync(WaitUntil.Completed);
-Console.WriteLine("Capacity suspended");
+// Suspend [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (stop billing for compute)
+await [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.SuspendAsync(WaitUntil.Completed);
+Console.WriteLine("[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) suspended");
 
-// Resume capacity
-var resumeOperation = await capacity.Value.ResumeAsync(WaitUntil.Completed);
-Console.WriteLine($"Capacity resumed. State: {resumeOperation.Value.Data.Properties.State}");
+// Resume [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+var resumeOperation = await [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.ResumeAsync(WaitUntil.Completed);
+Console.WriteLine($"[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) resumed. State: {resumeOperation.Value.Data.Properties.State}");
 ```
 
-### 5. Delete Capacity
+### 5. Delete [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ```csharp
-await capacity.Value.DeleteAsync(WaitUntil.Completed);
-Console.WriteLine("Capacity deleted");
+await [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.DeleteAsync(WaitUntil.Completed);
+Console.WriteLine("[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) deleted");
 ```
 
 ### 6. List All Capacities
@@ -185,7 +185,7 @@ await foreach (var cap in subscription.GetFabricCapacitiesAsync())
 ```csharp
 var checkContent = new FabricNameAvailabilityContent
 {
-    Name = "my-new-capacity",
+    Name = "my-new-[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)",
     ResourceType = "Microsoft.Fabric/capacities"
 };
 
@@ -217,8 +217,8 @@ await foreach (var skuDetails in subscription.GetSkusFabricCapacitiesAsync())
     }
 }
 
-// List SKUs available for an existing capacity (for scaling)
-await foreach (var skuDetails in capacity.Value.GetSkusForCapacityAsync())
+// List SKUs available for an existing [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (for scaling)
+await foreach (var skuDetails in [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).Value.GetSkusForCapacityAsync())
 {
     Console.WriteLine($"Can scale to: {skuDetails.Sku.Name}");
 }
@@ -226,7 +226,7 @@ await foreach (var skuDetails in capacity.Value.GetSkusForCapacityAsync())
 
 ## SKU Reference
 
-| SKU Name | Capacity Units (CU) | Power BI Equivalent |
+| SKU Name | [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Units (CU) | Power BI Equivalent |
 |----------|---------------------|---------------------|
 | F2 | 2 | - |
 | F4 | 4 | - |
@@ -245,11 +245,11 @@ await foreach (var skuDetails in capacity.Value.GetSkusForCapacityAsync())
 | Type | Purpose |
 |------|---------|
 | `ArmClient` | Entry point for all ARM operations |
-| `FabricCapacityResource` | Represents a Fabric capacity instance |
-| `FabricCapacityCollection` | Collection for capacity CRUD operations |
-| `FabricCapacityData` | Capacity creation/read data model |
-| `FabricCapacityPatch` | Capacity update payload |
-| `FabricCapacityProperties` | Capacity properties (administration, state) |
+| `FabricCapacityResource` | Represents a Fabric [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) instance |
+| `FabricCapacityCollection` | Collection for [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) CRUD operations |
+| `FabricCapacityData` | [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) creation/read data model |
+| `FabricCapacityPatch` | [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) update payload |
+| `FabricCapacityProperties` | [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) properties (administration, state) |
 | `FabricCapacityAdministration` | Admin members configuration |
 | `FabricSku` | SKU configuration (name and tier) |
 | `FabricSkuTier` | Pricing tier (currently only "Fabric") |
@@ -264,12 +264,12 @@ await foreach (var skuDetails in capacity.Value.GetSkusForCapacityAsync())
 - `Succeeded` - Operation completed successfully
 - `Failed` - Operation failed
 - `Canceled` - Operation was canceled
-- `Deleting` - Capacity is being deleted
+- `Deleting` - [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is being deleted
 - `Provisioning` - Initial provisioning in progress
 - `Updating` - Update operation in progress
 
 ### Resource States (`FabricResourceState`)
-- `Active` - Capacity is running and available
+- `Active` - [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) is running and available
 - `Provisioning` - Being provisioned
 - `Failed` - In failed state
 - `Updating` - Being updated
@@ -290,7 +290,7 @@ await foreach (var skuDetails in capacity.Value.GetSkusForCapacityAsync())
 4. **Handle `RequestFailedException`** for ARM API errors
 5. **Use `CreateOrUpdateAsync`** for idempotent operations
 6. **Suspend when not in use** — Fabric capacities bill for compute even when idle
-7. **Check provisioning state** before performing operations on a capacity
+7. **Check provisioning state** before performing operations on a [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 8. **Use appropriate SKU** — Start small (F2/F4) for dev/test, scale up for production
 
 ## Error Handling
@@ -305,7 +305,7 @@ try
 }
 catch (RequestFailedException ex) when (ex.Status == 409)
 {
-    Console.WriteLine("Capacity already exists or conflict");
+    Console.WriteLine("[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) already exists or conflict");
 }
 catch (RequestFailedException ex) when (ex.Status == 400)
 {
@@ -323,12 +323,12 @@ catch (RequestFailedException ex)
 
 ## Common Pitfalls
 
-1. **Capacity names must be globally unique** — Fabric capacity names must be unique across all Azure subscriptions
+1. **[Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) names must be globally unique** — Fabric [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) names must be unique across all Azure subscriptions
 2. **Suspend doesn't delete** — Suspended capacities still exist but don't bill for compute
 3. **SKU changes may require downtime** — Scaling operations can take several minutes
-4. **Admin UPNs must be valid** — Capacity administrators must be valid Azure AD users
+4. **Admin UPNs must be valid** — [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) administrators must be valid Azure AD users
 5. **Location constraints** — Not all SKUs are available in all regions; use `GetSkusFabricCapacitiesAsync` to check
-6. **Long provisioning times** — Capacity creation can take 5-15 minutes
+6. **Long provisioning times** — [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) creation can take 5-15 minutes
 
 ## Related SDKs
 
@@ -342,6 +342,6 @@ catch (RequestFailedException ex)
 ## References
 
 - [Azure.ResourceManager.Fabric NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Fabric)
-- [GitHub Source](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/fabric/Azure.ResourceManager.Fabric)
+- [GitHub Source](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/fabric/Azure.ResourceManager.Fabric)
 - [Microsoft Fabric Documentation](https://learn.microsoft.com/fabric/)
-- [Fabric Capacity Management](https://learn.microsoft.com/fabric/admin/service-admin-portal-capacity-settings)
+- [Fabric [Capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Management](https://learn.microsoft.com/fabric/admin/service-admin-portal-[capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-settings)

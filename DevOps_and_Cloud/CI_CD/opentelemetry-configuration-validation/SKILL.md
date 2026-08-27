@@ -19,17 +19,17 @@ metadata:
   maturity: stable
 ---
 
-# OpenTelemetry Configuration Validation
+# [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Configuration Validation
 
 ## Purpose
 
-An OpenTelemetry Collector config that parses as valid YAML and starts
+An [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Collector config that parses as valid YAML and starts
 without error can still be functionally wrong in ways that only surface as
 a quiet gap in a dashboard weeks later — a processor defined at the top
 level but never referenced inside a specific signal's `service.pipelines`
 block, a `memory_limiter` sized against a different environment's traffic,
 a tail-sampling policy that unintentionally discards the very requests an
-on-call engineer needs during an incident, or a resource attribute typo
+on-call engineer needs during an [incident](../../Observability_and_SecOps/incident/SKILL.md), or a resource attribute typo
 that silently splits one service's telemetry into two differently-named
 services in every downstream backend. None of these produce a Collector
 startup error. This skill covers validating a Collector config **before**
@@ -37,12 +37,12 @@ it's deployed — structural checks, pipeline-wiring verification, sampling-
 rate review, and resource-attribute correctness — as a distinct, narrower
 concern from designing the pipeline in the first place, which is covered
 in
-[opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md)
+[opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)
 and assumed already understood here.
 
 ## When to use
 
-- Before merging or deploying any change to an OpenTelemetry Collector
+- Before merging or deploying any change to an [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Collector
   config (`receivers`, `processors`, `exporters`, or `service.pipelines`
   blocks).
 - Setting up a CI check that validates Collector config changes on every
@@ -58,7 +58,7 @@ and assumed already understood here.
 - Auditing an existing production Collector config for the common,
   silent misconfigurations covered here (an orphaned processor, an
   undersized `memory_limiter`, a resource-attribute mismatch) as a health
-  check, not only after an incident.
+  check, not only after an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 ## Prerequisites & environment
 
@@ -76,7 +76,7 @@ and assumed already understood here.
   behavior against real traffic.
 - Familiarity with what each processor/exporter in the config is meant to
   do — see
-  [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md)
+  [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)
   for what `memory_limiter`, `batch`, `tail_sampling`, and the various
   exporters actually control if unfamiliar; this skill assumes that
   context rather than re-explaining it.
@@ -94,7 +94,7 @@ and assumed already understood here.
    For Helm-deployed Collectors, render the final config first — the raw
    `values.yaml` is not what the Collector process actually receives:
    ```bash
-   helm template otel-collector open-telemetry/opentelemetry-collector \
+   helm template otel-collector open-telemetry/[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-collector \
      -f values-production.yaml --show-only templates/configmap-agent.yaml \
      > rendered-otel-config.yaml
    otelcol-contrib validate --config=rendered-otel-config.yaml
@@ -153,7 +153,7 @@ and assumed already understood here.
    ```
    > **Warning:** a bare probabilistic sampler with no error/latency
    > policy layered above it will, on average, discard 90% of the exact
-   > failing/slow requests an on-call engineer needs during an incident —
+   > failing/slow requests an on-call engineer needs during an [incident](../../Observability_and_SecOps/incident/SKILL.md) —
    > confirm every sampling config guarantees errors and high-latency
    > requests are always kept, with the probabilistic rate applied only
    > to the remaining "boring" baseline traffic. Review this every time a
@@ -191,11 +191,11 @@ and assumed already understood here.
 7. **Wire structural + wiring validation into CI** so a bad config fails
    the PR instead of failing quietly at deploy time:
    ```yaml
-   # GitHub Actions example
+   # [GitHub](../github/SKILL.md) Actions example
    - name: Validate OTel Collector config
      run: |
-       docker run --rm -v "${{ github.workspace }}/otel-collector-config.yaml:/etc/otelcol/config.yaml" \
-         otel/opentelemetry-collector-contrib:0.105.0 validate --config=/etc/otelcol/config.yaml
+       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../github/SKILL.md).workspace }}/otel-collector-config.yaml:/etc/otelcol/config.yaml" \
+         otel/[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-collector-contrib:0.105.0 validate --config=/etc/otelcol/config.yaml
    - name: Check every component is pipeline-wired
      run: ./scripts/check_otel_pipeline_wiring.sh otel-collector-config.yaml
    ```
@@ -222,7 +222,7 @@ and assumed already understood here.
 
 ## Best practices
 
-- Run `validate` (or the Docker equivalent) in CI on every PR touching
+- Run `validate` (or the [Docker](../../Containers_and_Orchestration/docker/SKILL.md) equivalent) in CI on every PR touching
   Collector config — treat a failing structural check the same as a
   failing unit test.
 - Never validate a Helm `values.yaml` directly — always render the
@@ -270,14 +270,14 @@ and assumed already understood here.
   change.
 
 - **Symptom:** A tail-sampling change is deployed to "reduce storage
-  cost," and during the next incident the on-call engineer can't find any
+  cost," and during the next [incident](../../Observability_and_SecOps/incident/SKILL.md) the on-call engineer can't find any
   trace for the specific failing requests they need.
   **Fix:** The sampling policy applied a flat probabilistic rate with no
   error/latency policy layered above it (step 4), so most of the failing
   requests were dropped along with the "boring" baseline traffic that was
   the actual intended target for reduction. Add explicit error-status and
   latency-threshold policies ahead of the probabilistic baseline, and
-  re-review the change with "what would this drop during an incident" as
+  re-review the change with "what would this drop during an [incident](../../Observability_and_SecOps/incident/SKILL.md)" as
   the explicit test, not just the storage-cost delta.
 
 - **Symptom:** A dashboard shows the same logical service split across
@@ -335,7 +335,7 @@ span attributes.
    Confirmed the existing config already has `sample-errors` and
    `sample-slow` policies ahead of the baseline policy, so the change only
    reduces sampling of already-successful, fast requests — not the traces
-   an incident investigation would need. Approved as-is.
+   an [incident](../../Observability_and_SecOps/incident/SKILL.md) investigation would need. Approved as-is.
 
 4. Post-deploy, `otelcol_processor_dropped_spans_total` and
    `otelcol_exporter_send_failed_spans_total` are checked and remain flat,
@@ -344,6 +344,6 @@ span attributes.
 
 ## Cross-references
 
-- [opentelemetry-instrumentation-and-collector-configuration](../opentelemetry-instrumentation-and-collector-configuration/SKILL.md) — designing the receiver/processor/exporter pipeline and instrumentation this skill validates before deployment.
-- [distributed-tracing-with-tempo-and-jaeger](../distributed-tracing-with-tempo-and-jaeger/SKILL.md) — the backend-side sampling strategy and storage this Collector's tail-sampling and exporter configuration feeds into.
-- [loki-configuration-validation](../loki-configuration-validation/SKILL.md) — the equivalent pre-deploy validation discipline applied to the Loki backend this Collector's `loki` exporter feeds.
+- [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md) — designing the receiver/processor/exporter pipeline and instrumentation this skill validates before deployment.
+- [distributed-tracing-with-tempo-and-jaeger](../[distributed-tracing-with-tempo-and-jaeger](../../Observability_and_SecOps/[distributed-tracing](../../Observability_and_SecOps/distributed-tracing/SKILL.md)-with-tempo-and-jaeger/SKILL.md)/SKILL.md) — the backend-side sampling strategy and storage this Collector's tail-sampling and exporter configuration feeds into.
+- [loki-configuration-validation](../[loki-configuration-validation](../../Observability_and_SecOps/loki-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-deploy validation discipline applied to the Loki backend this Collector's `loki` exporter feeds.

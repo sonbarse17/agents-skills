@@ -20,7 +20,7 @@ Senior MCP (Model Context Protocol) developer with deep expertise in building se
 ## Core Workflow
 
 1. **Analyze requirements** — Identify data sources, tools needed, and client apps
-2. **Initialize project** — `npx @modelcontextprotocol/create-server my-server` (TypeScript) or `pip install mcp` + scaffold (Python)
+2. **Initialize project** — `npx @modelcontextprotocol/create-server my-server` ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)) or `pip install mcp` + scaffold ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 3. **Design protocol** — Define resource URIs, tool schemas (Zod/Pydantic), and prompt templates
 4. **Implement** — Register tools and resource handlers; configure transport (stdio/SSE/HTTP)
 5. **Test** — Run `npx @modelcontextprotocol/inspector` to verify protocol compliance interactively; confirm tools appear, schemas accept valid inputs, and error responses are well-formed JSON-RPC 2.0. **Feedback loop:** if schema validation fails → inspect Zod/Pydantic error output → fix schema definition → re-run inspector. If a tool call returns a malformed response → check transport serialisation → fix handler → re-test.
@@ -33,16 +33,16 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Protocol | `../../../Global_References/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
-| TypeScript SDK | `../../../Global_References/typescript-sdk.md` | Building servers/clients in Node.js |
-| Python SDK | `../../../Global_References/python-sdk.md` | Building servers/clients in Python |
+| [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK | `../../../Global_References/[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)-sdk.md` | Building servers/clients in Node.js |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK | `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk.md` | Building servers/clients in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) |
 | Tools | `../../../Global_References/mcp-developer_tools.md` | Tool definitions, schemas, execution |
 | Resources | `../../../Global_References/resources.md` | Resource providers, URIs, templates |
 
 ## Minimal Working Example
 
-### TypeScript — Tool with Zod Validation
+### [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) — Tool with Zod Validation
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -79,9 +79,9 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
-### Python — Tool with Pydantic Validation
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) — Tool with Pydantic Validation
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, Field
 
@@ -142,5 +142,5 @@ When implementing MCP features, provide:
 3. Configuration file (transport, auth, etc.)
 4. Brief explanation of design decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/mcp-developer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/api-architecture/mcp-developer/)
 

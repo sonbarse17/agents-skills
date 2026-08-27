@@ -16,7 +16,7 @@ that was never built.**
 ## 1. Choose the smallest base that still lets you debug
 
 `scratch` and distroless bases produce the smallest, lowest-attack-surface images, but they ship
-without a shell — a production incident that needs `exec`-ing in becomes much harder. A
+without a shell — a production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) that needs `exec`-ing in becomes much harder. A
 distro-based "slim" variant is usually the right default: small enough to matter, still
 debuggable. Reserve `scratch` for statically-linked binaries (Go, Rust) where you genuinely never
 need a shell inside the container, and keep a debug-variant image or an ephemeral debug container
@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 ```
 
-Layer *order* still matters for cache reuse (see `containerization`), but here the goal is layer
+Layer *order* still matters for cache reuse (see `[containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md)`), but here the goal is layer
 *count and content* — fewer, tighter layers pull and unpack faster regardless of cache state.
 
 **Done when:** no layer contains data a later layer only deletes.
@@ -73,7 +73,7 @@ or bloating the image.
 ## 5. Build multi-arch without doubling maintenance
 
 If the fleet runs on both amd64 and arm64 (mixed cloud instance types, Apple Silicon dev
-machines), build a single manifest list with `docker buildx build --platform linux/amd64,linux/arm64`
+machines), build a single manifest list with `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) buildx build --platform linux/amd64,linux/arm64`
 rather than maintaining parallel Dockerfiles. Watch for base images or dependencies that only
 publish one architecture — that gap surfaces as a build failure on one platform, not a warning.
 
@@ -82,7 +82,7 @@ platform-specific Dockerfile.
 
 ## 6. Measure the image, don't estimate it
 
-`docker history` and a layer-inspection tool (dive, or `docker buildx imagetools inspect`) show
+`[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) history` and a layer-inspection tool (dive, or `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) buildx imagetools inspect`) show
 exactly what each layer contributed and let you catch an accidental 200MB layer before it ships.
 Track image size in CI as a number that can regress, the same way you'd track a performance
 benchmark — a size budget that silently creeps up is a slow leak nobody notices until the pull

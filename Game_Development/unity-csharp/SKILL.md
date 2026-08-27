@@ -2,10 +2,10 @@
 name: unity-csharp
 description: Unity DOTS & ECS Mechanics
 ---
-# Unity Data-Oriented Technology Stack (DOTS)
+# [Unity](../unity/SKILL.md) Data-Oriented Technology Stack (DOTS)
 
 ## Entity Component System (ECS)
-Unity's ECS completely overhauls the traditional `MonoBehaviour` object-oriented approach in favor of memory-contiguous data layouts to maximize CPU cache utilization.
+[Unity](../unity/SKILL.md)'s ECS completely overhauls the traditional `MonoBehaviour` object-oriented approach in favor of memory-contiguous data layouts to maximize CPU cache utilization.
 
 ### Archetypes and Chunks
 An `Entity` is merely a 32-bit integer ID. A `Component` is a strict `struct` containing only data (blittable types). When an Entity is assigned a specific combination of Components, this combination defines its `Archetype`. 
@@ -14,7 +14,7 @@ Memory is allocated in `Chunks` (typically 16KB). A Chunk exclusively stores Ent
 ### Systems and the Burst Compiler
 `Systems` provide the logic. They execute queries against Archetypes and iterate over Chunks. Combined with the C# Job System, DOTS allows lock-free multithreading. The `Burst Compiler` translates IL to highly optimized native machine code using LLVM, taking advantage of SIMD (Single Instruction Multiple Data) instructions automatically due to the strict pointer aliasing guarantees provided by the `[ReadOnly]` and `[ReadWrite]` attributes on component data.
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph MemoryLayoutArchetypeChunkLayout ["Archetype Chunk Layout<br><br><br>"]

@@ -16,7 +16,7 @@ tags: [frontend, stencil, phase-2]
 # Stencil
 
 ## Purpose
-Build reusable, framework-agnostic web components using Stencil's TypeScript-first compiler — optimized for design systems, component libraries, and performance-critical UIs.
+Build reusable, framework-agnostic web components using Stencil's [TypeScript](../typescript/SKILL.md)-first compiler — optimized for design systems, component libraries, and performance-critical UIs.
 
 ## Agent Protocol
 
@@ -236,7 +236,7 @@ Use getters or methods. No built-in computed/watch pattern — use @Watch for si
 
 ### Unit Testing (Jest)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { newSpecPage } from '@stencil/core/testing'
 import { MyButton } from './my-button'
 
@@ -267,7 +267,7 @@ describe('my-button', () => {
 
 ### E2E Testing (Playwright)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 test('counter increments on click', async ({ page }) => {
   await page.setContent('<my-counter initial-value="5"></my-counter>')
   const counter = page.locator('my-counter')
@@ -334,7 +334,7 @@ test('counter increments on click', async ({ page }) => {
 | Bundle | ~8KB runtime | ~5KB runtime | 0KB |
 | Lazy loading | Built-in | Manual | Manual |
 | Framework bindings | Auto (React, Vue, Angular) | Manual (@lit/react) | Manual |
-| TypeScript | Required | Optional | Optional |
+| [TypeScript](../typescript/SKILL.md) | Required | Optional | Optional |
 | Shadow DOM | Configurable | Configurable | Manual |
 
 ## Lifecycle Reference
@@ -360,7 +360,7 @@ test('counter increments on click', async ({ page }) => {
 ```
 
 ### Framework Binding Generation
-```typescript
+```[typescript](../typescript/SKILL.md)
 // stencil.config.ts
 import { reactOutputTarget } from '@stencil/react-output-target'
 
@@ -437,7 +437,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -445,7 +445,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -459,7 +459,7 @@ class ConfigBuilder {
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -467,13 +467,13 @@ class ConfigBuilder {
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

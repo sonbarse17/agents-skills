@@ -25,7 +25,7 @@ Exact user phrases: "data contract", "data agreement", "schema contract", "produ
 
 ### Input Context
 - Data producers (source systems, pipelines, data products)
-- Data consumers (analysts, ML models, dashboards, downstream systems)
+- Data consumers (analysts, ML models, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), downstream systems)
 - Current schema management approach
 - Data platform and transformation tools
 - Compliance and governance requirements
@@ -153,13 +153,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate Contract
         run: |
-          python scripts/validate_contract.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate_contract.py \
             --contract contracts/fct_orders.yaml \
             --schema current_schema.json \
             --compatibility backward
       - name: Check Breaking Changes
         run: |
-          python scripts/check_breaking.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_breaking.py \
             --old contracts/fct_orders_v1.yaml \
             --new contracts/fct_orders_v2.yaml
       - name: Validate with dbt
@@ -180,7 +180,7 @@ Beyond schema validation, test contracts with Great Expectations suites. For eac
 
 ### Step 10: Contract Impact Analysis
 
-When a contract changes, compute the impact: which consumers are affected, which dashboards reference the dataset, which downstream pipelines depend on it. Use the catalog's lineage graph to compute impact. Notify all affected parties before the change takes effect.
+When a contract changes, compute the impact: which consumers are affected, which [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) reference the dataset, which downstream pipelines depend on it. Use the catalog's lineage graph to compute impact. Notify all affected parties before the change takes effect.
 
 ## Architecture / Decision Trees
 
@@ -226,7 +226,7 @@ Where to store contracts:
 4. **No automated enforcement**: contract exists as documentation only. Fix: CI/CD gates that block non-compliant changes.
 5. **Multiple contracts per dataset**: conflicting contracts cause confusion. Fix: single contract per dataset with all consumer terms.
 6. **No rollback plan**: breaking change deployed, consumers can't read data. Fix: maintain backward compatibility for at least 14 days.
-7. **Contract defined but not monitored**: SLA breaches happen silently. Fix: automate SLA monitoring with alerting.
+7. **Contract defined but not monitored**: SLA breaches happen silently. Fix: automate SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 8. **dbt contracts not enforced for all models**: only some models have contracts. Fix: require contracts for all production models.
 9. **Contract versioning ignored**: everyone uses latest version, no tracking. Fix: enforce semver and track which version each consumer uses.
 10. **No contract for source data**: contracts only on transformed data. Source systems also need contracts.
@@ -269,7 +269,7 @@ Data contracts vs data quality: quality tools validate data against expectations
 - dbt contract enforcement: adds negligible overhead to dbt run.
 - CI/CD check: 5-30s depending on schema size and number of consumers.
 - Breaking change detection: < 2s per contract (schema diff algorithm).
-- SLA monitoring: continuous, alert within 1 minute of breach detection.
+- SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): continuous, alert within 1 minute of breach detection.
 - Contract storage: Redis or Postgres, < 10ms per read.
 - Impact analysis: lineage traversal adds 2-10s depending on graph size.
 - Scale: contract enforcement pipeline handles 100+ contracts per CI run.
@@ -281,10 +281,10 @@ Data contracts vs data quality: quality tools validate data against expectations
 |---|---|
 | dbt | Contract enforcement for data models |
 | Great Expectations | Data quality expectations matching contract terms |
-| Soda | Data quality monitoring, SLA enforcement |
-| Monte Carlo | Data observability, drift detection |
+| Soda | Data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), SLA enforcement |
+| Monte Carlo | Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), drift detection |
 | Marquez / OpenLineage | Lineage for impact analysis |
-| Custom CI/CD scripts | Contract validation in GitHub/GitLab |
+| Custom CI/CD scripts | Contract validation in [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab |
 | DataHub / OpenMetadata | Contract storage and discovery |
 | Apache Avro / Protobuf | Schema definition for contracts with schema registry integration |
 
@@ -474,14 +474,14 @@ contract_api:
 #### Contract Enforcement Level
 ```
 Dataset criticality?
-├── Tier 1 (executive dashboards, financial, customer-facing)
+├── Tier 1 (executive [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), financial, customer-facing)
 │   ├── dbt contract enforced (build fails on mismatch)
 │   ├── CI/CD schema compatibility check required
-│   └── SLA monitoring with PagerDuty alerts
+│   └── SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with PagerDuty alerts
 ├── Tier 2 (operational reports, team analytics)
 │   ├── dbt contract enforced (build warns on mismatch)
 │   ├── CI/CD schema compatibility check recommended
-│   └── SLA monitoring with email alerts
+│   └── SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with email alerts
 └── Tier 3 (experimental, ad-hoc)
     ├── dbt contract documented but not enforced
     └── No automated contract checks
@@ -529,10 +529,10 @@ Does the change break existing consumers?
   - ../../../Global_References/contract-integration-patterns.md — Contract Integration Patterns
   - ../../../Global_References/contract-lifecycle-management.md — Contract Lifecycle Management
   - ../../../Global_References/contract-migration-strategies.md — Contract Migration Strategies
-  - ../../../Global_References/contract-monitoring-enforcement.md — Contract Monitoring and Enforcement
+  - ../../../Global_References/contract-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-enforcement.md — Contract [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Enforcement
   - ../../../Global_References/schema-evolution-policies.md — Schema Evolution Policies
   - ../../../Global_References/data-contracts-schema-evolution.md — Schema Evolution in Contracts
   - ../../../Global_References/data-contracts-governance.md — Contract Governance Reference
 ## Handoff
-`data-data-quality` for quality dimension enforcement in contracts. `data-data-catalog` for contract metadata. `data-data-observability` for SLA monitoring. `data-schema-registry` for schema registry integration.
+`[data-data-quality](../data-quality/SKILL.md)` for quality dimension enforcement in contracts. `[data-data-catalog](../data-catalog/SKILL.md)` for contract metadata. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-schema-registry](../schema-registry/SKILL.md)` for schema registry integration.
 

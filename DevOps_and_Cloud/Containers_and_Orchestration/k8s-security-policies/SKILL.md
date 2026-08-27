@@ -3,13 +3,13 @@ name: k8s-security-policies
 description: Implement Kubernetes security policies including NetworkPolicy, PodSecurityPolicy, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards.
 ---
 
-# Kubernetes Security Policies
+# [Kubernetes](../kubernetes/SKILL.md) Security Policies
 
-Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in Kubernetes.
+Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in [Kubernetes](../kubernetes/SKILL.md).
 
 ## Purpose
 
-Implement defense-in-depth security for Kubernetes clusters using network policies, pod security standards, and RBAC.
+Implement defense-in-depth security for [Kubernetes](../kubernetes/SKILL.md) clusters using network policies, pod security standards, and RBAC.
 
 ## When to Use This Skill
 
@@ -30,9 +30,9 @@ kind: Namespace
 metadata:
   name: privileged-ns
   labels:
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/audit: privileged
-    pod-security.kubernetes.io/warn: privileged
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/enforce: privileged
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): privileged
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/warn: privileged
 ```
 
 ### 2. Baseline (Minimally restrictive)
@@ -43,9 +43,9 @@ kind: Namespace
 metadata:
   name: baseline-ns
   labels:
-    pod-security.kubernetes.io/enforce: baseline
-    pod-security.kubernetes.io/audit: baseline
-    pod-security.kubernetes.io/warn: baseline
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/enforce: baseline
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): baseline
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/warn: baseline
 ```
 
 ### 3. Restricted (Most restrictive)
@@ -56,9 +56,9 @@ kind: Namespace
 metadata:
   name: restricted-ns
   labels:
-    pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/audit: restricted
-    pod-security.kubernetes.io/warn: restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/enforce: restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/warn: restricted
 ```
 
 ## Network Policies
@@ -300,15 +300,15 @@ spec:
 6. **Use read-only root filesystem**
 7. **Drop all capabilities** unless needed
 8. **Implement resource quotas** and limit ranges
-9. **Enable audit logging** for security events
+9. **Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging** for security events
 10. **Regular security scanning** of images
 
 ## Compliance Frameworks
 
-### CIS Kubernetes Benchmark
+### CIS [Kubernetes](../kubernetes/SKILL.md) Benchmark
 
 - Use RBAC authorization
-- Enable audit logging
+- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Use Pod Security Standards
 - Configure network policies
 - Implement secrets encryption at rest
@@ -318,9 +318,9 @@ spec:
 
 - Implement defense in depth
 - Use network segmentation
-- Configure security monitoring
+- Configure security [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 - Implement access controls
-- Enable logging and monitoring
+- Enable logging and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ## Troubleshooting
 
@@ -328,21 +328,21 @@ spec:
 
 ```bash
 # Check if CNI supports NetworkPolicy
-kubectl get nodes -o wide
-kubectl describe networkpolicy <name>
+[kubectl](../kubectl/SKILL.md) get nodes -o wide
+[kubectl](../kubectl/SKILL.md) describe networkpolicy <name>
 ```
 
 **RBAC permission denied:**
 
 ```bash
 # Check effective permissions
-kubectl auth can-i list pods --as system:serviceaccount:default:my-sa
-kubectl auth can-i '*' '*' --as system:serviceaccount:default:my-sa
+[kubectl](../kubectl/SKILL.md) auth can-i list pods --as system:serviceaccount:default:my-sa
+[kubectl](../kubectl/SKILL.md) auth can-i '*' '*' --as system:serviceaccount:default:my-sa
 ```
 
 
 ## Related Skills
 
-- `k8s-manifest-generator` - For creating secure manifests
-- `gitops-workflow` - For automated policy deployment
+- `[k8s-manifest-generator](../k8s-manifest-generator/SKILL.md)` - For creating secure manifests
+- `[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)` - For automated policy deployment
 

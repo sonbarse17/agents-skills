@@ -39,7 +39,7 @@ designing Apigee API proxies and policies, structuring API products for
 governance and monetization, and versioning/deprecating APIs
 deliberately — not general gateway routing/plugin mechanics, which are
 covered for the open-source case in
-[kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md).
+[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -59,7 +59,7 @@ covered for the open-source case in
   and a review/approval process before a proxy reaches production.
 - Deciding whether a need calls for full API-management governance
   (Apigee) or is better served by a lighter open-source gateway — see
-  [kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md)
+  [kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   for that comparison.
 
 ## Prerequisites & environment
@@ -136,7 +136,7 @@ covered for the open-source case in
    within an allowed monthly quota — the two policies solve different
    problems (burst smoothing vs. total allowance) and are not
    substitutes for each other. See
-   [api-gateway-rate-limiting-and-quota-management](../api-gateway-rate-limiting-and-quota-management/SKILL.md)
+   [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../[api-gateway](../api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md)
    for the deeper strategy distinguishing rate-limiting from quota
    management.
 
@@ -269,7 +269,7 @@ covered for the open-source case in
   **Fix:** Quota alone limits total volume over a long window (e.g.
   10,000/month); it does nothing to prevent a short, sharp burst.
   Add a `SpikeArrest` policy sized to the backend's real per-second
-  capacity, independent of the quota policy — they protect against
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), independent of the quota policy — they protect against
   different failure modes and are both needed.
 
 - **Symptom:** A breaking change is deployed as an in-place update to
@@ -292,7 +292,7 @@ covered for the open-source case in
   comparing expected vs. actual billed amounts for a sample of
   transactions immediately after any rate-plan change ships.
 
-- **Symptom:** During an incident, someone disables the `Verify-API-Key`
+- **Symptom:** During an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), someone disables the `Verify-API-Key`
   or quota policy on a production proxy "to rule out auth/quota as the
   cause of an error spike," confirms traffic flows, and it's still
   disabled days later.
@@ -303,7 +303,7 @@ covered for the open-source case in
   a strictly time-boxed diagnostic step on a non-production
   environment/revision where possible, and restore it (with a tracked
   follow-up if the real cause was something else entirely) before
-  closing the incident.
+  closing the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 ## Worked example
 
@@ -378,6 +378,6 @@ Rollout sequence:
 
 ## Cross-references
 
-- [kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md) — the open-source gateway alternative for teams that need routing/plugins but not full lifecycle governance, monetization, or a developer portal.
-- [api-gateway-rate-limiting-and-quota-management](../api-gateway-rate-limiting-and-quota-management/SKILL.md) — the cross-tool strategy behind the `Quota`/`SpikeArrest` policy distinction used here.
-- [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md) — the service-mesh comparison point for east-west, service-to-service traffic management, distinct from Apigee's north-south, externally-published API governance role.
+- [kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the open-source gateway alternative for teams that need routing/plugins but not full lifecycle governance, monetization, or a developer portal.
+- [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../[api-gateway](../api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — the cross-tool strategy behind the `Quota`/`SpikeArrest` policy distinction used here.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md) comparison point for east-west, service-to-service traffic management, distinct from Apigee's north-south, externally-published API governance role.

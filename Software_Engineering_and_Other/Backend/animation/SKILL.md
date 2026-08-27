@@ -282,7 +282,7 @@ Without `animation-fill-mode: forwards` or WAAPI `fill: "forwards"`, the animate
 
 ## Advanced Gesture Animations
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Framer Motion — complex gesture composition
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
@@ -326,7 +326,7 @@ function Card3D({ children }: { children: React.ReactNode }) {
 | Fluid | 100 | 15 | 1.0 | Page transitions, parallax |
 | Stiff (no bounce) | 400 | 40 | 1.0 | Progress bars, loading indicators |
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 const uiSpring = { type: 'spring', stiffness: 300, damping: 20, mass: 0.5 };
 const gestureSpring = { type: 'spring', stiffness: 500, damping: 30, mass: 1 };
 ```
@@ -422,7 +422,7 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 - Chrome DevTools Performance tab: record animation sequence, check FPS counter, look for red frames
 - `performance.now()` markers around animation callbacks: log durations
 - `requestAnimationFrame` callback timestamps: monitor frame spacing (delta > 20ms indicates jank)
-- Lighthouse: "animations are smooth" audit
+- Lighthouse: "animations are smooth" [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 - Web Vitals: Cumulative Layout Shift (CLS) must stay below 0.1
 
 ## Security Considerations
@@ -485,7 +485,7 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 10. Stagger animated elements with 50-100ms delay between each, never all at once.
 11. Use `transform-origin` correctly for scale/rotate animations -- default is center.
 12. Avoid animating `box-shadow` -- prefer pseudo-element opacity trick for performance.
-13. Test on a mid-range Android device (Moto G4 equivalent) before shipping.
+13. Test on a mid-range [Android](../../../Mobile/android/SKILL.md) device (Moto G4 equivalent) before shipping.
 14. GSAP ScrollTrigger animations must use `scrub: 1` or `toggleActions` for smooth scroll-linked motion.
 15. Never animate elements that are currently being measured by ResizeObserver or IntersectionObserver.
 16. Validate Lottie JSON from untrusted sources before rendering with `lotti-web`.

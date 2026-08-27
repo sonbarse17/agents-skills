@@ -7,14 +7,14 @@ metadata:
   version: "1.0"
 ---
 
-# Kubernetes Hardening
+# [Kubernetes](../kubernetes/SKILL.md) Hardening
 
-Secure Kubernetes clusters and workloads.
+Secure [Kubernetes](../kubernetes/SKILL.md) clusters and workloads.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Hardening Kubernetes clusters
+- Hardening [Kubernetes](../kubernetes/SKILL.md) clusters
 - Implementing Pod Security Standards
 - Configuring network policies
 - Meeting security compliance
@@ -28,9 +28,9 @@ kind: Namespace
 metadata:
   name: production
   labels:
-    pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/audit: restricted
-    pod-security.kubernetes.io/warn: restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/enforce: restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
+    pod-security.[kubernetes](../kubernetes/SKILL.md).io/warn: restricted
 ```
 
 ## Security Context
@@ -118,12 +118,12 @@ roleRef:
 - Enable Pod Security Standards
 - Implement network policies
 - Use RBAC with least privilege
-- Enable audit logging
+- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Secure etcd with encryption
 - Use service mesh for mTLS
 - Regular security scanning
 
 ## Related Skills
 
-- [kubernetes-ops](../../../devops/orchestration/kubernetes-ops/) - K8s operations
-- [container-hardening](../container-hardening/) - Container security
+- [kubernetes-ops](../../../devops/orchestration/[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s operations
+- [container-hardening](../[container-hardening](../container-hardening/SKILL.md)/) - Container security

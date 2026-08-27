@@ -21,7 +21,7 @@ metadata:
 ## Purpose
 
 Istio moves cross-cutting network concerns — mTLS, retries, timeouts,
-traffic splitting, fine-grained observability — out of application code
+traffic splitting, fine-grained [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — out of application code
 and into a sidecar proxy (Envoy) that every service call passes through.
 That power comes with real operational cost: sidecars add latency and
 resource overhead, misconfigured `VirtualService`/`DestinationRule`
@@ -53,21 +53,21 @@ fails safely.
   — reached general availability in 1.24; sidecar mode remains the
   default and more mature option for most production installs as of
   this writing). Confirm your chosen minor version's supported
-  Kubernetes version range in Istio's release notes before installing —
-  Istio typically supports the last 3–4 Kubernetes minor versions.
+  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) version range in Istio's release notes before installing —
+  Istio typically supports the last 3–4 [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) minor versions.
 - `istioctl` matching (or within one minor version of) the control
   plane version being installed.
-- A Kubernetes cluster with a CNI that permits Istio's `istio-init`/CNI
+- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with a CNI that permits Istio's `istio-init`/CNI
   plugin to set up pod-level iptables redirection, or Istio's CNI plugin
   installed in place of the init-container approach (required on
-  clusters, like OpenShift, that restrict privileged init containers).
-- Enough node capacity for sidecar overhead: budget roughly 50–150m CPU
+  clusters, like [OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md), that restrict privileged init containers).
+- Enough node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for sidecar overhead: budget roughly 50–150m CPU
   and 64–128Mi memory per sidecar at idle as a starting point, scaling
   with traffic — validate against your own workloads rather than
   assuming these figures hold at scale.
 - If also running an Ingress controller, decide up front whether Istio's
   ingress gateway replaces it or the two coexist (see
-  [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)).
+  [ingress-nginx-configuration](../[ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -84,19 +84,19 @@ fails safely.
 2. **Verify the install** before enabling injection anywhere:
    ```bash
    istioctl verify-install
-   kubectl get pods -n istio-system
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n istio-system
    ```
 
 3. **Enable sidecar injection per namespace, not cluster-wide**, so
    rollout is deliberate and reversible per team/service:
    ```bash
-   kubectl label namespace payments istio-injection=enabled
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments istio-injection=enabled
    ```
    Existing pods in that namespace need a rollout restart to actually
    pick up the sidecar — labeling alone doesn't inject into already-
    running pods:
    ```bash
-   kubectl rollout restart deployment -n payments
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
    ```
 
 4. **Configure traffic splitting** with a `DestinationRule` (defines
@@ -185,11 +185,11 @@ fails safely.
    > directly) instantly and cluster-wide. Roll out namespace-by-namespace
    > and confirm via traffic metrics first.
 
-7. **Enable observability**: Istio emits Prometheus metrics
+7. **Enable [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: Istio emits Prometheus metrics
    (`istio_requests_total`, `istio_request_duration_milliseconds`) and
    propagates trace headers automatically once the app forwards
    `traceparent`/`x-b3-*` headers on outbound calls it makes. Install
-   the observability addons (Prometheus, Grafana, Kiali, Jaeger/Tempo)
+   the [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) addons (Prometheus, Grafana, Kiali, Jaeger/Tempo)
    or point Istio's telemetry at existing infra via a `Telemetry`
    resource rather than assuming a default sink exists:
    ```yaml
@@ -233,7 +233,7 @@ fails safely.
   about holistically and easy to leave a gap in.
 - If most traffic is north-south through one Ingress and mTLS/circuit-
   breaking isn't needed east-west, weigh whether a full mesh is
-  justified versus [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)
+  justified versus [ingress-nginx-configuration](../[ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)/SKILL.md)
   alone — a mesh installed "because it's best practice" without a
   specific east-west requirement is often not worth its operational
   cost.
@@ -258,7 +258,7 @@ fails safely.
   traffic.
 
 - **Symptom:** After enabling `PeerAuthentication` in `STRICT` mode
-  cluster-wide, a batch Job or an external monitoring probe that talks
+  cluster-wide, a batch Job or an external [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) probe that talks
   directly to pod IPs starts failing entirely.
   **Fix:** Non-sidecar-injected clients cannot participate in mTLS.
   Either inject sidecars into that workload too, exempt the specific
@@ -270,7 +270,7 @@ fails safely.
   pods show no `istio-proxy` container.
   **Fix:** The `istio-injection=enabled` label only affects *new* pod
   admissions via the mutating webhook; existing pods must be recreated
-  (`kubectl rollout restart deployment -n <ns>`) to pick up the sidecar.
+  (`[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n <ns>`) to pick up the sidecar.
 
 - **Symptom:** Upgrading the Istio control plane breaks data-plane
   compatibility for workloads not yet restarted.
@@ -289,8 +289,8 @@ starting at 10% traffic, with a 3s timeout and bounded retries, in the
 `payments` namespace.
 
 ```bash
-kubectl label namespace payments istio-injection=enabled
-kubectl rollout restart deployment -n payments
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments istio-injection=enabled
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
 ```
 
 ```yaml
@@ -333,8 +333,8 @@ spec:
 
 ```bash
 istioctl analyze -n payments
-kubectl apply -f canary.yaml
-watch -n5 'kubectl exec deploy/payments-api-v2 -n payments -c istio-proxy -- pilot-agent request GET stats | grep 5xx'
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f canary.yaml
+watch -n5 '[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec deploy/payments-api-v2 -n payments -c istio-proxy -- pilot-agent request GET stats | grep 5xx'
 ```
 
 Once `v2` shows a healthy error rate at 10% for a soak period, shift to
@@ -344,6 +344,6 @@ once no plaintext callers remain) tightening `PeerAuthentication` to
 
 ## Cross-references
 
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — comparing/coexisting with a dedicated Ingress controller for north-south traffic versus Istio's ingress gateway.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — issuing and rotating the TLS certificates used at the Istio ingress gateway (separate from mesh-internal mTLS, which Istio manages itself via its own CA).
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — how Istio's sidecar traffic interception interacts with the underlying CNI and Kubernetes `NetworkPolicy` enforcement.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)/SKILL.md) — comparing/coexisting with a dedicated Ingress controller for north-south traffic versus Istio's ingress gateway.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md) — issuing and rotating the TLS certificates used at the Istio ingress gateway (separate from mesh-internal mTLS, which Istio manages itself via its own CA).
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../../DevOps_and_Cloud/Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md) — how Istio's sidecar traffic interception interacts with the underlying CNI and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `NetworkPolicy` enforcement.

@@ -14,11 +14,11 @@ metadata:
   maturity: stable
 ---
 
-# MongoDB Operations and Scaling
+# [MongoDB](../../Backend/mongodb/SKILL.md) Operations and Scaling
 
 ## Purpose
 
-MongoDB's replica-set and sharding architecture makes horizontal scaling
+[MongoDB](../../Backend/mongodb/SKILL.md)'s replica-set and sharding architecture makes horizontal scaling
 and automatic failover a built-in capability rather than a bolted-on
 add-on, but that capability only holds up operationally if the shard key
 is chosen well, indexes match real query patterns, and the replica set's
@@ -29,7 +29,7 @@ older versions), which makes it the single highest-leverage decision in
 this skill. This skill covers replica sets, sharding, index tuning, and
 day-2 maintenance; for validating a proposed replica-set or sharding
 config change before it reaches production, see
-[mongodb-configuration-validation](../mongodb-configuration-validation/SKILL.md).
+[mongodb-configuration-validation](../[mongodb-configuration-validation](../[mongodb](../../Backend/mongodb/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -48,7 +48,7 @@ config change before it reaches production, see
 
 ## Prerequisites & environment
 
-- MongoDB 5.0+ assumed for the guidance and syntax below (the
+- [MongoDB](../../Backend/mongodb/SKILL.md) 5.0+ assumed for the guidance and syntax below (the
   aggregation-based `explain()` output shape and `$merge`/sharding
   behavior referenced here matches 5.0+; call out explicitly where
   older-version behavior differs, e.g. pre-4.4 resharding required a
@@ -88,7 +88,7 @@ sh.shardCollection("app.events", { deviceId: "hashed" });
 // Ranged/compound — preserves query targeting if queries commonly filter by tenantId
 sh.shardCollection("app.orders", { tenantId: 1, orderId: 1 });
 ```
-For MongoDB 4.4+, `reshardCollection` allows changing a shard key after
+For [MongoDB](../../Backend/mongodb/SKILL.md) 4.4+, `reshardCollection` allows changing a shard key after
 the fact without a fully manual migration, but it still reshuffles the
 entire collection's data and should be planned as a significant,
 maintenance-window operation, not a quick fix — validate the shard key
@@ -165,9 +165,9 @@ any sort:
 ```js
 db.orders.createIndex({ customerId: 1, status: 1 }, { background: true })
 ```
-`background: true` (or, in modern MongoDB, the default online index
+`background: true` (or, in modern [MongoDB](../../Backend/mongodb/SKILL.md), the default online index
 build behavior) avoids blocking reads/writes for the whole build — always
-prefer it on a live collection, equivalent in intent to PostgreSQL's
+prefer it on a live collection, equivalent in intent to [PostgreSQL](../../Backend/postgresql/SKILL.md)'s
 `CREATE INDEX CONCURRENTLY`.
 
 ### 6. Routine maintenance: compaction and storage reclamation
@@ -183,7 +183,7 @@ db.runCommand({ compact: "orders" })
 ```
 `compact` blocks other operations on that collection for its duration on
 most storage engine versions (check current behavior for your specific
-MongoDB version, since this has improved but is still not fully
+[MongoDB](../../Backend/mongodb/SKILL.md) version, since this has improved but is still not fully
 lock-free) — schedule it in a low-traffic window, and on a replica set
 run it against secondaries one at a time (stepping each out of the read
 path first) rather than the primary, to avoid a foreground availability
@@ -270,7 +270,7 @@ impact.
 
 **Scenario:** An `events` collection (500M+ documents, IoT device
 telemetry) needs to be sharded ahead of an expected 5x traffic increase;
-current writes use MongoDB's default `_id` ObjectId as the effective
+current writes use [MongoDB](../../Backend/mongodb/SKILL.md)'s default `_id` ObjectId as the effective
 insertion order.
 
 1. Analyze query patterns: the dominant query is
@@ -305,6 +305,6 @@ insertion order.
 
 ## Cross-references
 
-- [mongodb-configuration-validation](../mongodb-configuration-validation/SKILL.md) — validates a proposed shard key, replica set member config, or index change against production impact before rollout, complementing the operational guidance here.
-- [redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md) — comparable cluster-topology and resharding concerns (hash slots vs. shard keys) if MongoDB and Redis Cluster are both in the same platform.
-- [database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md) — for schema-adjacent changes in a hybrid stack; MongoDB itself is schemaless but index/shard-key changes should still go through a tracked, reviewed change process similar to migrations there.
+- [mongodb-configuration-validation](../[mongodb-configuration-validation](../[mongodb](../../Backend/mongodb/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates a proposed shard key, replica set member config, or index change against production impact before rollout, complementing the operational guidance here.
+- [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md) — comparable cluster-topology and resharding concerns (hash slots vs. shard keys) if [MongoDB](../../Backend/mongodb/SKILL.md) and Redis Cluster are both in the same platform.
+- [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — for schema-adjacent changes in a hybrid stack; [MongoDB](../../Backend/mongodb/SKILL.md) itself is schemaless but index/shard-key changes should still go through a tracked, reviewed change process similar to migrations there.

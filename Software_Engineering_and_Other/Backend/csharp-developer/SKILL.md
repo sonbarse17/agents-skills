@@ -124,5 +124,5 @@ app.Run();
 
 C# 12, .NET 8, ASP.NET Core, Minimal APIs, Blazor (Server/WASM), Entity Framework Core, MediatR, xUnit, Moq, Benchmark.NET, SignalR, gRPC, Azure SDK, Polly, FluentValidation, Serilog
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/csharp-developer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/csharp-developer/)
 

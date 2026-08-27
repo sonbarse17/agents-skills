@@ -220,7 +220,7 @@ nmap -p 53 --script=dns-nsid,dns-recursion <target-ip>
 nmap -p 80,443 --script=http-methods,http-robots.txt,http-title <target-ip>
 
 # Database enumeration
-nmap -p 3306 --script=mysql-info <target-ip>
+nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-info <target-ip>
 nmap -p 5432 --script=pgsql-brute <target-ip>
 nmap -p 1433 --script=ms-sql-info <target-ip>
 ```
@@ -337,7 +337,7 @@ Convert and process results:
 # Convert XML to HTML report
 xsltproc /usr/share/nmap/nmap.xsl scan_results.xml -o report.html
 
-# Parse XML with Python
+# Parse XML with [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 python3 -c "import xml.etree.ElementTree as ET; tree = ET.parse('scan_results.xml'); root = tree.getroot(); [print(host.find('address').get('addr')) for host in root.findall('host')]"
 
 # Extract open ports from grepable output
@@ -384,10 +384,10 @@ sudo nmap -sI <zombie-host> <target-ip>
 - **Rate Limiting**: Use `--max-rate` to avoid overwhelming targets
 - **Timing**: Schedule scans during approved maintenance windows
 - **Bandwidth**: Consider network impact, especially for large scans
-- **Noise**: Aggressive scans are easily detected by security monitoring
+- **Noise**: Aggressive scans are easily detected by security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - **False Positives**: Validate findings before reporting vulnerabilities
 
-### Audit Logging
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all reconnaissance activities:
 - Scan start and end timestamps
@@ -420,7 +420,7 @@ nmap -Pn -sV -p 21,22,25,53,80,110,143,443,587,993,995,3389,8080,8443 -iL extern
 # Phase 3: Vulnerability detection
 nmap -Pn -sV --script=vuln -p 21,22,25,80,443,3389,8080,8443 -iL external_hosts.txt -oA external_vulns
 
-# Phase 4: SSL/TLS security audit
+# Phase 4: SSL/TLS security [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 nmap -Pn -p 443,8443 --script=ssl-enum-ciphers,ssl-cert -iL external_hosts.txt -oA ssl_audit
 ```
 
@@ -453,7 +453,7 @@ nmap -sV -p 80,443,8080,8443 --script=http-enum,http-headers,http-methods,http-t
 nmap -p 80,443 --script=http-sql-injection,http-csrf,http-vuln-cve2017-5638 -iL web_servers.txt -oA web_vulns
 ```
 
-### Pattern 4: SMB/CIFS Security Audit
+### Pattern 4: SMB/CIFS Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ```bash
 # Enumerate SMB hosts
@@ -475,14 +475,14 @@ nmap -p 445 --script=smb-enum-shares,smb-enum-users -iL smb_hosts.txt -oA smb_sh
 # Scan for common database ports
 nmap -sV -p 1433,1521,3306,5432,5984,6379,9200,27017 <target-network>/24 -oA database_scan
 
-# MySQL enumeration
-nmap -p 3306 --script=mysql-info,mysql-databases,mysql-variables <target-ip>
+# [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) enumeration
+nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-info,[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-databases,[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-variables <target-ip>
 
-# PostgreSQL enumeration
+# [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) enumeration
 nmap -p 5432 --script=pgsql-brute <target-ip>
 
-# MongoDB enumeration
-nmap -p 27017 --script=mongodb-info,mongodb-databases <target-ip>
+# [MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) enumeration
+nmap -p 27017 --script=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-info,[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-databases <target-ip>
 
 # Redis enumeration
 nmap -p 6379 --script=redis-info <target-ip>
@@ -521,7 +521,7 @@ exit 0
 
 - **Metasploit Integration**: Import Nmap XML with `db_import`
 - **Vulnerability Scanners**: Feed Nmap results to Nessus, OpenVAS, Qualys
-- **SIEM Integration**: Parse Nmap output for security monitoring
+- **SIEM Integration**: Parse Nmap output for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - **Asset Management**: Update CMDB with discovered hosts and services
 - **Shodan/Censys**: Validate external exposure findings
 
@@ -615,7 +615,7 @@ Organizations can detect Nmap scanning by:
 
 - **Network IDS**: Signature detection of scan patterns (vertical/horizontal sweeps)
 - **Firewall Logs**: Multiple connection attempts from single source
-- **Port Scan Detection**: Monitoring for SYN packets without completion
+- **Port Scan Detection**: [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for SYN packets without completion
 - **Honeypots**: Triggering alerts when accessing decoy services
 - **Traffic Analysis**: Unusual packet patterns (fragmentation, timing anomalies)
 

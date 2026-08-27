@@ -192,7 +192,7 @@ Data product design patterns:
 | **Schema Registry** | Confluent SR | Platform team |
 | **Data Product API** | Backstage + GraphQL | Platform team |
 | **Infrastructure** | Terraform + Helm | Platform team |
-| **Monitoring** | Monte Carlo, Prometheus | Platform team + domain |
+| **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** | Monte Carlo, Prometheus | Platform team + domain |
 | **Governance** | Global policies + domain policies | Governance council |
 
 Platform provides the infrastructure and APIs. Domains use platform to build and operate their data products. Platform team does NOT own any domain's data.
@@ -202,8 +202,8 @@ Platform capability classification:
 - Compute plane: batch processing, streaming, query engine, notebook
 - Lifecycle plane: orchestration, CI/CD, test environments
 - Discovery plane: catalog, schema registry, data product API
-- Observability plane: monitoring, logging, alerting, cost tracking
-- Governance plane: policy engine, access control, audit logging
+- [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) plane: [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), logging, [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), cost tracking
+- Governance plane: policy engine, access control, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
 
 Define a clear interface contract between each plane and the domains. The platform team evolves these planes independently. Domains consume planes via APIs, not by accessing infrastructure directly.
 
@@ -264,7 +264,7 @@ All data products registered in catalog with: `name`, `domain`, `description`, `
 
 Every data product must have a data contract that specifies schema, SLA, semantics, and ownership. The contract is the agreement between the producer domain and the consumer domain. Contracts are versioned, immutable after publication, and enforced automatically. The data contract is registered in the catalog alongside the data product metadata.
 
-### Step 9: Observability for the Mesh
+### Step 9: [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) for the Mesh
 
 Monitor data product health across all domains: SLA compliance per data product, cross-domain data flow latency, data quality score trends, and catalog search effectiveness. Each domain monitors its own data products. The platform team monitors plane health. The governance council monitors overall mesh health.
 
@@ -310,8 +310,8 @@ Each state transition requires governance approval. DRAFT to PUBLISHED requires 
 7. **Ignoring existing data contracts**: domain data products may duplicate existing centrally-managed datasets. Fix: inventory existing data assets before domain decomposition.
 8. **No consumer feedback loop**: data product owners don't know if consumers are satisfied. Fix: quarterly consumer satisfaction survey, data product usage analytics.
 9. **Centralized data team resisting decomposition**: existing data team loses control. Fix: retrain central team as platform team, emphasize career growth in platform engineering.
-10. **No cost transparency**: domains can't see their platform costs. Fix: implement chargeback/showback with per-domain cost dashboards.
-11. **Data product SLA not monitored**: SLA exists in contract but no monitoring. Fix: automate SLA monitoring with alerting on breach.
+10. **No cost transparency**: domains can't see their platform costs. Fix: implement chargeback/showback with per-domain cost [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+11. **Data product SLA not monitored**: SLA exists in contract but no [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Fix: automate SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on breach.
 12. **Platform not truly self-serve**: domain teams still need tickets to provision infrastructure. Fix: every platform capability must have a self-serve API.
 
 ## Best Practices
@@ -329,7 +329,7 @@ Each state transition requires governance approval. DRAFT to PUBLISHED requires 
 - Deprecation period of at least 30 days for breaking changes.
 - Use data product templates with required metadata to enforce consistency.
 - Catalog must support both technical metadata (schema, lineage) and business metadata (description, owner, SLA).
-- Automate data product provisioning: template → CI/CD → catalog registration → monitoring.
+- Automate data product provisioning: template → CI/CD → catalog registration → [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - Chargeback model: domains pay for their compute and storage. Platform overhead shared proportionally.
 - Document the data mesh journey: publish decision logs, architecture decisions, and lessons learned.
 
@@ -371,14 +371,14 @@ Scalability: data mesh scales with domain count. Each domain operates independen
 | **Confluent SR** | Schema registry, compatibility | Data product schema |
 | **Terraform** | Infrastructure provisioning | Platform capability plane |
 | **Dagster/Airflow** | Orchestration | Pipeline scheduling |
-| **Monte Carlo/Soda** | Observability, quality | Data product SLA monitoring |
+| **Monte Carlo/Soda** | [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), quality | Data product SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
 | **OpenPolicyAgent** | Policy engine | Global governance enforcement |
 | **GraphQL Federation** | Data product API gateway | Cross-domain data access |
 | **dbt** | Data transformation | Within-domain data product implementation |
 | **Trino** | Federated query across domains | Cross-domain analytics |
 | **Delta Sharing** | Cross-org data sharing | External partner access |
 
-The platform tool stack must expose self-serve APIs. Domains should not need to know the underlying tool — they interact through abstractions (data product API, catalog UI, monitoring dashboard).
+The platform tool stack must expose self-serve APIs. Domains should not need to know the underlying tool — they interact through abstractions (data product API, catalog UI, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard).
 
 ## Rules
 - Domains own their data — platform owns infrastructure
@@ -462,7 +462,7 @@ data_product:
 ```
 
 ### Domain Output Port
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_mesh/output_port.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -491,7 +491,7 @@ async def query_data_product(
 - **Inter-domain contracts**: Require versioned data contracts with compatibility checks before domain consumption.
 - **Global catalog**: Maintain mesh-wide catalog for data product discovery; domain teams publish metadata.
 - **Cost attribution**: Charge domain teams for storage/compute via chargeback model (AWS CUR allocation tags).
-- **SLO monitoring**: Monitor data product freshness, availability, and schema compliance centrally.
+- **SLO [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor data product freshness, availability, and schema compliance centrally.
 
 ## Anti-Patterns
 
@@ -516,9 +516,9 @@ async def query_data_product(
 - **Domain isolation**: Network isolate domain storage via VPC per domain; no cross-domain direct access.
 - **Data product auth**: Require OAuth 2.0 tokens for all data product API access; validate domain membership.
 - **PII tagging**: Require PII classification on every data product attribute; strip PII in non-privileged output ports.
-- **Audit**: Log all cross-domain data product queries and schema changes centrally.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all cross-domain data product queries and schema changes centrally.
 - **Compliance by contract**: Encode compliance rules (GDPR retention, CCPA opt-out) in data product contract.
 
 ## Handoff
-`data-data-platform` for platform infrastructure. `data-data-catalog` for discovery. `data-data-contracts` for data product contracts. `data-data-observability` for cross-domain monitoring. `data-data-quality` for quality standards.
+`[data-data-platform](../data-platform/SKILL.md)` for platform infrastructure. `[data-data-catalog](../data-catalog/SKILL.md)` for discovery. `[data-data-contracts](../data-contracts/SKILL.md)` for data product contracts. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for cross-domain [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-quality](../data-quality/SKILL.md)` for quality standards.
 

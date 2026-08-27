@@ -117,7 +117,7 @@ bia_template:
         description: "Failure causes significant degradation but not complete loss"
         examples:
           - Customer support systems
-          - Reporting and dashboards
+          - Reporting and [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
           - Email and notifications
           - Billing and invoicing
 
@@ -195,7 +195,7 @@ communication_plan:
     - Physical facility unavailable
     - Pandemic or workforce availability crisis
     - Major vendor/partner outage
-    - Cybersecurity incident with operational impact
+    - Cybersecurity [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) with operational impact
 
   internal_communication:
     executive_notification:
@@ -204,7 +204,7 @@ communication_plan:
       method: "Phone call (primary), SMS (secondary)"
       message_template: |
         BUSINESS CONTINUITY EVENT ACTIVATED
-        Incident: [Brief description]
+        [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md): [Brief description]
         Impact: [Systems/processes affected]
         Status: [Current state]
         Next update: [Time]
@@ -280,7 +280,7 @@ communication_plan:
 ```yaml
 recovery_procedures:
   immediate_response:
-    step_1: "Incident commander assesses situation and declares BCP activation"
+    step_1: "[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander assesses situation and declares BCP activation"
     step_2: "Notify BCP team and establish command structure"
     step_3: "Activate communication plan"
     step_4: "Assess damage and determine scope of disruption"
@@ -295,7 +295,7 @@ recovery_procedures:
       - Plan return to primary when available
 
     cybersecurity_incident:
-      - Engage incident response team
+      - Engage [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response team
       - Contain the threat (isolate affected systems)
       - Assess data impact and potential breach
       - Activate forensic investigation
@@ -304,7 +304,7 @@ recovery_procedures:
 
     pandemic_workforce_disruption:
       - Activate remote work procedures
-      - Verify VPN and remote access capacity
+      - Verify VPN and remote access [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
       - Redistribute critical functions if staff unavailable
       - Implement shift rotations to maintain coverage
       - Assess vendor ability to maintain service levels
@@ -388,7 +388,7 @@ testing_schedule:
     - "Actual RTO vs. target RTO per system"
     - "Actual RPO vs. target RPO per system"
     - "Number of issues identified"
-    - "Number of runbook corrections needed"
+    - "Number of [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) corrections needed"
 ```
 
 ## BCP Maintenance Checklist

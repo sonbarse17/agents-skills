@@ -22,7 +22,7 @@ To scaffold a new Terraform provider with Plugin Framework:
    prefixed with "terraform-provider-". Perform all subsequent steps in this
    new workspace.
 1. Initialize a new Go module.
-1. Run `go get -u github.com/hashicorp/terraform-plugin-framework@latest`.
+1. Run `go get -u [github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework@latest`.
 1. Write a main.go file that follows [the example](assets/main.go).
 1. Write an `internal/provider/provider.go` file that follows
    [the example](assets/provider.go). Rename the `demo` provider, the
@@ -35,6 +35,6 @@ To scaffold a new Terraform provider with Plugin Framework:
 The scaffold resolves credentials as explicit config with environment
 variable fallback. To grow that into a full credential provider chain
 (shared credentials files, profiles, platform identity, configure-time
-validation), use the `provider-configuration` skill (if available). To add
-the first resource or data source, use the `provider-resources` skill (if
+validation), use the `[provider-configuration](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-configuration](../provider-configuration/SKILL.md)/SKILL.md)` skill (if available). To add
+the first resource or data source, use the `[provider-resources](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/[provider-resources](../provider-resources/SKILL.md)/SKILL.md)` skill (if
 available).

@@ -7,26 +7,26 @@ metadata:
   version: "1.0"
 ---
 
-# Google Kubernetes Engine (GKE)
+# Google [Kubernetes](../kubernetes/SKILL.md) Engine (GKE)
 
-Deploy, operate, and scale managed Kubernetes clusters on Google Cloud Platform.
+Deploy, operate, and scale managed [Kubernetes](../kubernetes/SKILL.md) clusters on Google Cloud Platform.
 
 ## When to Use
 
-- Running containerized microservices at scale with automatic scaling and healing
+- Running containerized [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at scale with automatic scaling and healing
 - Workloads requiring fine-grained orchestration, service mesh, or custom scheduling
-- Teams already invested in Kubernetes tooling (Helm, Argo CD, Flux)
+- Teams already invested in [Kubernetes](../kubernetes/SKILL.md) tooling (Helm, Argo CD, Flux)
 - When Cloud Run's request-based model does not fit (long-running, stateful workloads)
 
 ## Prerequisites
 
-- Google Cloud SDK (`gcloud`) and `kubectl` installed
-- APIs enabled: Kubernetes Engine, Compute Engine
+- Google Cloud SDK (`gcloud`) and `[kubectl](../kubectl/SKILL.md)` installed
+- APIs enabled: [Kubernetes](../kubernetes/SKILL.md) Engine, Compute Engine
 - IAM role `roles/container.admin` for cluster management
 
 ```bash
 gcloud services enable container.googleapis.com compute.googleapis.com
-gcloud components install kubectl
+gcloud components install [kubectl](../kubectl/SKILL.md)
 ```
 
 ## Standard vs Autopilot
@@ -45,13 +45,13 @@ gcloud components install kubectl
 gcloud container clusters create prod-cluster \
   --region=us-central1 --num-nodes=2 \
   --machine-type=e2-standard-4 --disk-size=100 \
-  --enable-autoscaling --min-nodes=1 --max-nodes=5 \
+  --enable-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=1 --max-nodes=5 \
   --enable-autorepair --enable-autoupgrade \
   --release-channel=regular \
   --workload-pool=${PROJECT_ID}.svc.id.goog \
   --enable-ip-alias --enable-network-policy \
   --enable-shielded-nodes \
-  --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM,WORKLOAD \
+  --logging=SYSTEM,WORKLOAD --[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)=SYSTEM,WORKLOAD \
   --labels=env=production,team=platform
 
 gcloud container clusters get-credentials prod-cluster --region=us-central1
@@ -73,7 +73,7 @@ gcloud container clusters create-auto autopilot-prod \
 gcloud container node-pools create highmem-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=n2-highmem-8 --disk-size=200 --disk-type=pd-ssd \
-  --num-nodes=1 --enable-autoscaling --min-nodes=0 --max-nodes=4 \
+  --num-nodes=1 --enable-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
   --node-labels=workload=memory-intensive \
   --node-taints=dedicated=highmem:NoSchedule
 
@@ -82,14 +82,14 @@ gcloud container node-pools create gpu-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=n1-standard-8 \
   --accelerator=type=nvidia-tesla-t4,count=1 \
-  --num-nodes=0 --enable-autoscaling --min-nodes=0 --max-nodes=4 \
+  --num-nodes=0 --enable-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
   --node-taints=nvidia.com/gpu=present:NoSchedule
 
 # Spot pool for batch workloads
 gcloud container node-pools create spot-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=e2-standard-4 --spot \
-  --num-nodes=0 --enable-autoscaling --min-nodes=0 --max-nodes=20 \
+  --num-nodes=0 --enable-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=20 \
   --node-taints=cloud.google.com/gke-spot=true:NoSchedule
 ```
 
@@ -103,13 +103,13 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --role="roles/storage.objectViewer"
 
 # Create KSA and bind to GSA
-kubectl create namespace myapp
-kubectl create serviceaccount app-ksa --namespace=myapp
+[kubectl](../kubectl/SKILL.md) create namespace myapp
+[kubectl](../kubectl/SKILL.md) create serviceaccount app-ksa --namespace=myapp
 gcloud iam service-accounts add-iam-policy-binding \
   app-gsa@${PROJECT_ID}.iam.gserviceaccount.com \
   --role=roles/iam.workloadIdentityUser \
   --member="serviceAccount:${PROJECT_ID}.svc.id.goog[myapp/app-ksa]"
-kubectl annotate serviceaccount app-ksa --namespace=myapp \
+[kubectl](../kubectl/SKILL.md) annotate serviceaccount app-ksa --namespace=myapp \
   iam.gke.io/gcp-service-account=app-gsa@${PROJECT_ID}.iam.gserviceaccount.com
 ```
 
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: app-ksa
       containers:
       - name: web
-        image: us-central1-docker.pkg.dev/PROJECT_ID/repo/web-app:v1.2.0
+        image: us-central1-[docker](../docker/SKILL.md).pkg.dev/PROJECT_ID/repo/web-app:v1.2.0
         ports: [{ containerPort: 8080 }]
         resources:
           requests: { cpu: 250m, memory: 512Mi }
@@ -146,7 +146,7 @@ spec:
           initialDelaySeconds: 15
       topologySpreadConstraints:
       - maxSkew: 1
-        topologyKey: topology.kubernetes.io/zone
+        topologyKey: topology.[kubernetes](../kubernetes/SKILL.md).io/zone
         whenUnsatisfiable: DoNotSchedule
         labelSelector:
           matchLabels: { app: web-app }
@@ -169,9 +169,9 @@ metadata:
   name: web-ingress
   namespace: myapp
   annotations:
-    kubernetes.io/ingress.class: "gce"
+    [kubernetes](../kubernetes/SKILL.md).io/ingress.class: "gce"
     networking.gke.io/managed-certificates: "web-cert"
-    kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
+    [kubernetes](../kubernetes/SKILL.md).io/ingress.global-static-ip-name: "web-static-ip"
 spec:
   rules:
   - host: app.example.com
@@ -233,7 +233,7 @@ resource "google_container_node_pool" "primary" {
   location = "us-central1"
 
   initial_node_count = 2
-  autoscaling { min_node_count = 1; max_node_count = 5 }
+  [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) { min_node_count = 1; max_node_count = 5 }
   management  { auto_repair = true; auto_upgrade = true }
 
   node_config {
@@ -265,10 +265,10 @@ resource "google_compute_subnetwork" "gke" {
 ```bash
 gcloud container clusters list
 gcloud container clusters upgrade prod-cluster --region=us-central1 --master
-kubectl top nodes && kubectl top pods --namespace=myapp
-kubectl scale deployment web-app --replicas=5 --namespace=myapp
-kubectl autoscale deployment web-app --namespace=myapp --min=3 --max=20 --cpu-percent=70
-kubectl logs -f deployment/web-app --namespace=myapp --all-containers
+[kubectl](../kubectl/SKILL.md) top nodes && [kubectl](../kubectl/SKILL.md) top pods --namespace=myapp
+[kubectl](../kubectl/SKILL.md) scale deployment web-app --replicas=5 --namespace=myapp
+[kubectl](../kubectl/SKILL.md) autoscale deployment web-app --namespace=myapp --min=3 --max=20 --cpu-percent=70
+[kubectl](../kubectl/SKILL.md) logs -f deployment/web-app --namespace=myapp --all-containers
 ```
 
 ## Troubleshooting
@@ -278,14 +278,14 @@ kubectl logs -f deployment/web-app --namespace=myapp --all-containers
 | Pods stuck in `Pending` | No nodes with enough resources | Check autoscaler; add larger node pool; verify resource requests |
 | `ImagePullBackOff` | Wrong image path or missing AR access | Verify image URL; grant `roles/artifactregistry.reader` to node SA |
 | Workload Identity wrong account | KSA annotation missing | Re-annotate KSA; restart pods to pick up new token |
-| Nodes `NotReady` | Disk/memory pressure or network issue | Run `kubectl describe node`; check taints and conditions |
+| Nodes `NotReady` | Disk/memory pressure or network issue | Run `[kubectl](../kubectl/SKILL.md) describe node`; check taints and conditions |
 | Ingress returns 502 | Backend pods failing health check | Verify readiness probe; check NEG health in Console |
 | Cluster create quota error | Insufficient regional CPU/IP quota | Request quota increase in IAM & Admin > Quotas |
 | Network policy not working | Not enabled on cluster | Recreate with `--enable-network-policy` or use Dataplane V2 |
 
 ## Related Skills
 
-- **gcp-networking** - VPC, firewall rules, and load balancers for GKE clusters
-- **terraform-gcp** - Provision GKE clusters with Infrastructure as Code
-- **gcp-compute** - When workloads are better suited for VMs than containers
-- **gcp-cloud-sql** - Connecting GKE pods to Cloud SQL via sidecar proxy
+- **[gcp-networking](../../Cloud_Providers/gcp-networking/SKILL.md)** - VPC, firewall rules, and load balancers for GKE clusters
+- **[terraform-gcp](../../Infrastructure_as_Code/terraform-gcp/SKILL.md)** - Provision GKE clusters with Infrastructure as Code
+- **[gcp-compute](../../Cloud_Providers/gcp-compute/SKILL.md)** - When workloads are better suited for VMs than containers
+- **[gcp-cloud-sql](../../Cloud_Providers/gcp-cloud-sql/SKILL.md)** - Connecting GKE pods to Cloud SQL via sidecar proxy

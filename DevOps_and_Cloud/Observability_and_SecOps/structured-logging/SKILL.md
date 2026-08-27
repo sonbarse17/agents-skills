@@ -26,8 +26,8 @@ Exact user phrases: "structured logging", "JSON logging", "log format", "logging
 ### Input Context
 Before activating, verify:
 - Logging framework (Winston/Pino/Serilog/Log4j/logrus/zerolog)
-- Log aggregation system (Elasticsearch/Loki/CloudWatch/Datadog)
-- Compliance requirements (audit log retention, PII handling, access logs)
+- Log aggregation system (Elasticsearch/Loki/CloudWatch/[Datadog](../datadog/SKILL.md))
+- Compliance requirements ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log retention, PII handling, access logs)
 
 ### Output Artifact
 Logging schema and configuration as formatted text.
@@ -37,7 +37,7 @@ Logging schema and configuration as formatted text.
 # Log schema (JSON fields)
 # Log levels and sampling rules
 ```
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Logger configuration
 // Context propagation middleware
 // PII redaction config
@@ -130,7 +130,7 @@ Production: only FATAL (100%), ERROR (100%), WARN (100%), INFO (sampled), DEBUG 
 
 ### Step 3: Logger Configuration by Language
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Pino — Node.js (fastest JSON logger)
 import pino from 'pino';
 
@@ -173,7 +173,7 @@ Log.Information("Order {OrderId} created with amount {Amount}", orderId, 49.99);
 
 ```go
 // Zerolog — Go
-import "github.com/rs/zerolog/log"
+import "[github](../../CI_CD/github/SKILL.md).com/rs/zerolog/log"
 
 zerolog.TimeFieldFormat = time.RFC3339Nano
 zerolog.LevelFieldName = "log.level"
@@ -189,8 +189,8 @@ logger.Info().Str("orderId", orderId).Float64("amount", 49.99).Msg("Order create
 logger.Error().Err(err).Str("orderId", orderId).Msg("Payment failed")
 ```
 
-```python
-# structlog — Python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# structlog — [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import structlog
 
 structlog.configure(
@@ -211,7 +211,7 @@ log.info("order.created", order_id="ord_123", amount=49.99)
 ### Step 4: Context Propagation
 Correlation ID: generated at ingress (API gateway or first service), propagated via HTTP headers (`X-Correlation-ID`, `x-request-id`) through all service calls. Async boundaries: manually pass correlation ID through message headers for queues, streams, and event buses. Every log entry includes the correlation context.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Express middleware
 function loggingMiddleware(req: Request, res: Response, next: NextFunction) {
   const correlationId = req.headers['x-correlation-id'] as string || uuidv4();
@@ -226,7 +226,7 @@ function loggingMiddleware(req: Request, res: Response, next: NextFunction) {
 ```
 
 Async context propagation:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Using AsyncLocalStorage for automatic context propagation
 import { AsyncLocalStorage } from 'async_hooks';
 
@@ -250,9 +250,9 @@ app.use((req, res, next) => {
 ```
 
 ### Step 5: PII Redaction
-Pattern-based redaction at the logger boundary (never in business logic). Redact: passwords, secrets, tokens, API keys, SSN, email addresses, credit card numbers, phone numbers. Masked format: `j***@example.com`, `****-****-****-1234`. Store reversible hash for audit purposes.
+Pattern-based redaction at the logger boundary (never in business logic). Redact: passwords, secrets, tokens, API keys, SSN, email addresses, credit card numbers, phone numbers. Masked format: `j***@example.com`, `****-****-****-1234`. Store reversible hash for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const REDACTION_PATTERNS = [
   { pattern: /\b[\w.-]+@[\w.-]+\.\w+\b/g, replacement: (m: string) => `${m[0]}***@${m.split('@')[1]}` },
   { pattern: /\b(?:\d{4}[-\s]?){3}\d{4}\b/g, replacement: '****-****-****-****' },
@@ -290,7 +290,7 @@ function redact(obj: unknown, depth = 0): unknown {
 
 Adaptive sampling: increase INFO sample rate from 10% to 50% when error rate spikes, decrease when stable. Rate limiting: max 5000 entries/second per service instance, drop oldest exceeding limit.
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Adaptive sampler
 class AdaptiveSampler {
   private errorRate = 0;
@@ -311,7 +311,7 @@ class AdaptiveSampler {
 ```
 
 ### Step 7: Log Output and Shipping
-JSON lines format (LDJSON/NDJSON): one JSON object per line, no pretty printing. Output to stdout only — never write to files in production. Stderr for fatal/crash errors. Log shipping via sidecar (Vector, Fluentd, Logstash) or cloud agent (CloudWatch agent, Datadog agent). Never use file appenders in containers.
+JSON lines format (LDJSON/NDJSON): one JSON object per line, no pretty printing. Output to stdout only — never write to files in production. Stderr for fatal/crash errors. Log shipping via sidecar (Vector, Fluentd, Logstash) or cloud agent (CloudWatch agent, [Datadog](../datadog/SKILL.md) agent). Never use file appenders in containers.
 
 ## Configuration Reference
 
@@ -356,7 +356,7 @@ logging:
 | Scenario | Best Logger | Throughput (100B msg) |
 |----------|-------------|----------------------|
 | Node.js high-throughput | Pino | ~200,000 msg/s |
-| Python sync | structlog + orjson | ~50,000 msg/s |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) sync | structlog + orjson | ~50,000 msg/s |
 | Go | Zerolog | ~500,000 msg/s |
 | Java | Log4j2 async | ~300,000 msg/s |
 | .NET | Serilog | ~150,000 msg/s |
@@ -410,7 +410,7 @@ Performance tips: pre-allocate structured fields (avoid dynamic object creation 
   - ../../../Global_References/logging-architecture.md — Logging Architecture
   - ../../../Global_References/structured-logging-implementation.md — Structured Logging Patterns
 ## Handoff
-`devops-observability` for metrics collection and distributed tracing setup
+`devops-[observability](../observability/SKILL.md)` for metrics collection and distributed tracing setup
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -463,7 +463,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../monitoring/SKILL.md) and [Alerting](../alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -477,7 +477,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -493,12 +493,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -507,7 +507,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -515,13 +515,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -530,8 +530,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

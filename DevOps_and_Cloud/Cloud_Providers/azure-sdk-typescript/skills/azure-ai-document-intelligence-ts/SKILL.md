@@ -8,7 +8,7 @@ metadata:
   package: '@azure-rest/ai-document-intelligence'
 ---
 
-# Azure Document Intelligence REST SDK for TypeScript
+# Azure Document Intelligence REST SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Extract text, tables, and structured data from documents using prebuilt and custom models.
 
@@ -32,7 +32,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### DefaultAzureCredential
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence from "@azure-rest/ai-document-intelligence";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -50,7 +50,7 @@ const client = DocumentIntelligence(
 
 ### API Key
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence from "@azure-rest/ai-document-intelligence";
 
 const client = DocumentIntelligence(
@@ -61,7 +61,7 @@ const client = DocumentIntelligence(
 
 ## Analyze Document (URL)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence, {
   isUnexpected,
   getLongRunningPoller,
@@ -91,7 +91,7 @@ console.log("Tables:", result.analyzeResult?.tables?.length);
 
 ## Analyze Document (Local File)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { readFile } from "node:fs/promises";
 
 const fileBuffer = await readFile("./document.pdf");
@@ -128,7 +128,7 @@ const result = (await poller.pollUntilDone()).body as AnalyzeOperationOutput;
 
 ## Extract Invoice Fields
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const initialResponse = await client
   .path("/documentModels/{modelId}:analyze", "prebuilt-invoice")
   .post({
@@ -153,7 +153,7 @@ if (invoice) {
 
 ## Extract Receipt Fields
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const initialResponse = await client
   .path("/documentModels/{modelId}:analyze", "prebuilt-receipt")
   .post({
@@ -178,7 +178,7 @@ if (receipt) {
 
 ## List Document Models
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence, { isUnexpected, paginate } from "@azure-rest/ai-document-intelligence";
 
 const response = await client.path("/documentModels").get();
@@ -194,7 +194,7 @@ for await (const model of paginate(client, response)) {
 
 ## Build Custom Model
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const initialResponse = await client.path("/documentModels:build").post({
   body: {
     modelId: "my-custom-model",
@@ -218,7 +218,7 @@ console.log("Model built:", result.body);
 
 ## Build Document Classifier
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { DocumentClassifierBuildOperationDetailsOutput } from "@azure-rest/ai-document-intelligence";
 
 const containerSasUrl = process.env.TRAINING_CONTAINER_SAS_URL!;
@@ -249,7 +249,7 @@ console.log("Classifier:", result.result?.classifierId);
 
 ## Classify Document
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const initialResponse = await client
   .path("/documentClassifiers/{classifierId}:analyze", "my-classifier")
   .post({
@@ -269,7 +269,7 @@ console.log("Classification:", result.body.analyzeResult?.documents);
 
 ## Get Service Info
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/info").get();
 
 if (isUnexpected(response)) {
@@ -282,7 +282,7 @@ console.log("Custom model count:", response.body.customDocumentModels.count);
 
 ## Polling Pattern
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence, {
   isUnexpected,
   getLongRunningPoller,
@@ -313,7 +313,7 @@ const result = (await poller.pollUntilDone()).body as AnalyzeOperationOutput;
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentIntelligence, {
   isUnexpected,
   getLongRunningPoller,

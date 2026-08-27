@@ -15,43 +15,43 @@ metadata:
   maturity: stable
 ---
 
-# GitHub Actions Single-Repo Workflows
+# [GitHub](../github/SKILL.md) Actions Single-Repo Workflows
 
 ## Purpose
 
 Most repos' CI needs are served by workflow YAML that lives entirely
-within that repo under `.github/workflows/`, defining its own triggers,
-jobs, and steps. This skill covers the concrete GitHub Actions mechanics
+within that repo under `.[github](../github/SKILL.md)/workflows/`, defining its own triggers,
+jobs, and steps. This skill covers the concrete [GitHub](../github/SKILL.md) Actions mechanics
 for that single-repo case — trigger syntax (`on:`), job/step structure,
 matrix builds, `actions/cache`, and composite actions defined locally in
-`.github/actions/` for within-repo reuse — as distinct from the
+`.[github](../github/SKILL.md)/actions/` for within-repo reuse — as distinct from the
 organization-wide reusable-workflow pattern covered in
-[github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md).
+[github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md).
 Generic pipeline-design concepts (stage ordering, quality gates, caching
 philosophy) are covered vendor-neutrally in
-[ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md);
-this skill focuses on GitHub Actions' actual YAML syntax and runner
+[ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md);
+this skill focuses on [GitHub](../github/SKILL.md) Actions' actual YAML syntax and runner
 behavior.
 
 ## When to use
 
 - A repository needs its first CI workflow, or an existing
-  `.github/workflows/*.yml` file is failing and needs debugging.
+  `.[github](../github/SKILL.md)/workflows/*.yml` file is failing and needs debugging.
 - Adding a matrix build (multiple OS/language versions) or parallel test
   sharding within one workflow.
 - Speeding up a slow workflow via `actions/cache`, `concurrency`
   cancellation, or splitting a monolithic job into parallel jobs with
   `needs:`.
 - Extracting duplicated step sequences within one repo's workflows into a
-  local composite action under `.github/actions/`.
+  local composite action under `.[github](../github/SKILL.md)/actions/`.
 - Deciding whether logic duplicated across *multiple repos* (not just
   within one) should become an org-level reusable workflow instead — see
-  [github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md).
+  [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md).
 
 ## Prerequisites & environment
 
-- GitHub Actions enabled on the repository (Settings → Actions → General).
-- Runner availability: GitHub-hosted runners (`ubuntu-latest`,
+- [GitHub](../github/SKILL.md) Actions enabled on the repository (Settings → Actions → General).
+- Runner availability: [GitHub](../github/SKILL.md)-hosted runners (`ubuntu-latest`,
   `windows-latest`, `macos-latest`) require no setup; self-hosted runners
   need registration and their own OS/tooling patching (Settings → Actions
   → Runners).
@@ -60,13 +60,13 @@ behavior.
 - Secrets already stored in **Settings → Secrets and variables → Actions**
   (repository or environment-scoped) — never hardcoded in the workflow
   YAML.
-- Familiarity with YAML expression syntax (`${{ }}`) and GitHub's built-in
-  contexts (`github.*`, `secrets.*`, `matrix.*`, `needs.*`).
+- Familiarity with YAML expression syntax (`${{ }}`) and [GitHub](../github/SKILL.md)'s built-in
+  contexts (`[github](../github/SKILL.md).*`, `secrets.*`, `matrix.*`, `needs.*`).
 
 ## Step-by-step guidance
 
 1. **Scope triggers precisely.** Use `paths:`/`paths-ignore:` in a
-   monorepo so unrelated changes don't trigger a full pipeline, and add
+   [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) so unrelated changes don't trigger a full pipeline, and add
    `concurrency` so superseded runs on the same ref are cancelled:
    ```yaml
    name: ci
@@ -77,7 +77,7 @@ behavior.
      push:
        branches: [main]
    concurrency:
-     group: ci-${{ github.workflow }}-${{ github.ref }}
+     group: ci-${{ [github](../github/SKILL.md).workflow }}-${{ [github](../github/SKILL.md).ref }}
      cancel-in-progress: true
    ```
 
@@ -113,7 +113,7 @@ behavior.
    ```
    Prefer the language-specific setup action's built-in `cache:` input
    (`actions/setup-node@v4` with `cache: "npm"`,
-   `actions/setup-python@v5` with `cache: "pip"`) over hand-rolled
+   `actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5` with `cache: "pip"`) over hand-rolled
    `actions/cache` where available — it's pre-wired to the right paths and
    keys.
 
@@ -128,11 +128,11 @@ behavior.
    ```
 
 5. **Extract repeated step sequences into a local composite action**
-   under `.github/actions/<name>/action.yml` when the same steps recur
+   under `.[github](../github/SKILL.md)/actions/<name>/action.yml` when the same steps recur
    across jobs *within this repo* — this is the single-repo analog of a
    shared library, scoped to one repo:
    ```yaml
-   # .github/actions/setup-toolchain/action.yml
+   # .[github](../github/SKILL.md)/actions/setup-toolchain/action.yml
    name: "Setup toolchain"
    description: "Checks out code and installs Node + cached deps"
    runs:
@@ -147,7 +147,7 @@ behavior.
    Consumed within the same repo's workflow as:
    ```yaml
    steps:
-     - uses: ./.github/actions/setup-toolchain
+     - uses: ./.[github](../github/SKILL.md)/actions/setup-toolchain
      - run: npm test
    ```
 
@@ -160,10 +160,10 @@ behavior.
      runs-on: ubuntu-latest
      environment: { name: staging }
      steps:
-       - run: ./deploy.sh staging ${{ github.sha }}
+       - run: ./deploy.sh staging ${{ [github](../github/SKILL.md).sha }}
    ```
 
-7. **Pin every third-party action to a full commit SHA or, at minimum, a
+7. **Pin every third-party action to a full [commit](../commit/SKILL.md) SHA or, at minimum, a
    major version tag** (`actions/checkout@v4`, not `@main` or an unpinned
    floating tag) — see the pitfalls below for why this matters more than
    it looks.
@@ -189,10 +189,10 @@ behavior.
   steps — it's easy to accidentally suppress a should-have-failed job by
   overusing `continue-on-error` alongside it.
 - When step logic is copy-pasted three or more times *within this repo*,
-  extract a local composite action (`.github/actions/`); when it's
+  extract a local composite action (`.[github](../github/SKILL.md)/actions/`); when it's
   copy-pasted *across repos*, that's the trigger to build an org-level
   reusable workflow instead — see
-  [github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md).
+  [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md).
 - Treat `pull_request_target` with extreme caution — it runs with access
   to secrets and the base repo's permissions even for a fork's PR; never
   check out and execute a fork's untrusted code under `pull_request_target`
@@ -202,19 +202,19 @@ behavior.
 
 - **Symptom:** A required check named `test` passes even though one
   matrix leg actually failed.
-  **Fix:** With `fail-fast: false`, GitHub still reports the overall job
+  **Fix:** With `fail-fast: false`, [GitHub](../github/SKILL.md) still reports the overall job
   as failed if any matrix leg fails — but if branch protection points at
   an *individual matrix leg's* generated check name instead of the job as
   a whole, adding/removing a matrix entry silently changes which check
   names exist; point required checks at a summary/gate job instead
   (mirroring the `gate-summary` pattern in
-  [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md)).
+  [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)).
 
 - **Symptom:** A workflow that ran safely for months suddenly executes
   unexpected code or exfiltrates a secret after a third-party action
   update.
   **Fix:** This is the risk of tracking `@main`/`@latest` on a third-party
-  action; pin to a full commit SHA (most defensible) or at least a
+  action; pin to a full [commit](../commit/SKILL.md) SHA (most defensible) or at least a
   specific version tag, and review action source before pinning to a new
   major version.
 
@@ -237,36 +237,36 @@ behavior.
 - **Symptom:** Two pushes to the same branch in quick succession both run
   the full pipeline, wasting runner minutes and creating confusing
   out-of-order status updates.
-  **Fix:** Add `concurrency: { group: ci-${{ github.ref }}, cancel-in-progress:
+  **Fix:** Add `concurrency: { group: ci-${{ [github](../github/SKILL.md).ref }}, cancel-in-progress:
   true }` so a newer push cancels the superseded in-flight run.
 
 ## Worked example
 
-**Scenario:** A single Python service repo needs CI across three Python
+**Scenario:** A single [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) service repo needs CI across three [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 versions with sharded tests, dependency caching, and a composite action
 that both the CI and a separate nightly workflow reuse for environment
 setup.
 
-`.github/actions/setup-python-env/action.yml`:
+`.[github](../github/SKILL.md)/actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-env/action.yml`:
 ```yaml
-name: "Setup Python env"
-description: "Checkout + Python + cached pip deps"
+name: "Setup [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) env"
+description: "Checkout + [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) + cached pip deps"
 inputs:
-  python-version:
+  [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version:
     required: true
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
       with:
-        python-version: ${{ inputs.python-version }}
+        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ inputs.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}
         cache: "pip"
     - run: pip install -r requirements.txt -r requirements-dev.txt
       shell: bash
 ```
 
-`.github/workflows/ci.yml`:
+`.[github](../github/SKILL.md)/workflows/ci.yml`:
 ```yaml
 name: ci
 on:
@@ -276,7 +276,7 @@ on:
     branches: [main]
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ [github](../github/SKILL.md).ref }}
   cancel-in-progress: true
 
 permissions:
@@ -288,16 +288,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
+        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ["3.10", "3.11", "3.12"]
         shard: [1, 2]
     steps:
-      - uses: ./.github/actions/setup-python-env
-        with: { python-version: ${{ matrix.python-version }} }
+      - uses: ./.[github](../github/SKILL.md)/actions/setup-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-env
+        with: { [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ matrix.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }} }
       - run: pytest --shard-id=${{ matrix.shard }} --num-shards=2 --junitxml=reports/junit.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: junit-${{ matrix.python-version }}-${{ matrix.shard }}
+          name: junit-${{ matrix.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}-${{ matrix.shard }}
           path: reports/junit.xml
 
   gate:
@@ -315,6 +315,6 @@ entries in `test` never requires updating the required-checks list.
 
 ## Cross-references
 
-- [github-actions-centralized-reusable-workflows](../github-actions-centralized-reusable-workflows/SKILL.md) — promote this pattern to `workflow_call` once it's duplicated across multiple repos.
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) — vendor-neutral stage layout and gating concepts this workflow implements.
-- [secure-cicd-gates](../../../devsecops/skills/secure-cicd-gates/SKILL.md) — designing the `gate` job's blocking rules and adding security scan steps.
+- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — promote this pattern to `workflow_call` once it's duplicated across multiple repos.
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage layout and gating concepts this workflow implements.
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the `gate` job's blocking rules and adding security scan steps.

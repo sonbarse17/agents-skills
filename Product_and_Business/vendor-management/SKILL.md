@@ -9,14 +9,14 @@ metadata:
 
 # Vendor Management
 
-Implement a vendor risk management program covering vendor assessment questionnaires, risk scoring, contract tracking, SLA monitoring, and ongoing oversight for compliance with SOC 2, ISO 27001, and regulatory frameworks.
+Implement a vendor risk management program covering vendor assessment questionnaires, risk scoring, contract tracking, SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and ongoing oversight for compliance with SOC 2, ISO 27001, and regulatory frameworks.
 
 ## When to Use
 
 - Onboarding new vendors that will access company data or systems
 - Conducting annual vendor risk assessments and reassessments
 - Negotiating security requirements in vendor contracts
-- Monitoring vendor SLA compliance and security posture
+- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) vendor SLA compliance and security posture
 - Preparing vendor management evidence for SOC 2 or ISO 27001 audits
 
 ## Vendor Risk Tiering
@@ -40,7 +40,7 @@ vendor_risk_tiers:
       - Data processing agreement (DPA)
       - Business associate agreement (BAA) if PHI
       - Security SLA with breach notification timeline
-      - Right to audit clause
+      - Right to [audit](../../AI_and_Agents/Operations/audit/SKILL.md) clause
       - Cyber insurance requirements
     examples:
       - Cloud infrastructure providers (AWS, Azure, GCP)
@@ -62,11 +62,11 @@ vendor_risk_tiers:
     contract_requirements:
       - Data processing agreement
       - Security requirements appendix
-      - Incident notification clause (72 hours)
+      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) notification clause (72 hours)
     examples:
       - Email/marketing platforms (SendGrid, HubSpot)
-      - Monitoring and logging SaaS (Datadog, Splunk)
-      - CI/CD platforms (GitHub, GitLab)
+      - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging SaaS ([Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), Splunk)
+      - CI/CD platforms ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab)
       - Customer support platforms
 
   medium:
@@ -114,7 +114,7 @@ security_questionnaire:
       - "Do you conduct annual security risk assessments?"
       - "Do you have a security awareness training program?"
       - "What compliance certifications do you hold? (SOC 2, ISO 27001, etc.)"
-      - "When was your last external security audit?"
+      - "When was your last external security [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?"
       - "Do you carry cyber liability insurance? What coverage limits?"
     evidence_requested:
       - Information security policy (or summary)
@@ -142,7 +142,7 @@ security_questionnaire:
       - "In which geographic regions is our data stored?"
       - "Do you use sub-processors? If so, provide a list."
       - "What is your data retention policy?"
-      - "How is our data isolated from other customers? (multi-tenancy model)"
+      - "How is our data isolated from other customers? ([multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) model)"
       - "Can you provide data export in standard formats upon request?"
       - "What is your data destruction process at contract end?"
     evidence_requested:
@@ -164,13 +164,13 @@ security_questionnaire:
 
   section_5_incident_response:
     questions:
-      - "Do you have a documented incident response plan?"
+      - "Do you have a documented [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan?"
       - "What is your breach notification timeline?"
       - "Have you experienced a data breach in the last 3 years?"
-      - "How would you notify us in the event of a security incident?"
-      - "Do you conduct incident response tabletop exercises?"
+      - "How would you notify us in the event of a security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)?"
+      - "Do you conduct [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response tabletop exercises?"
     evidence_requested:
-      - Incident response plan summary
+      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan summary
       - Breach notification procedure
 
   section_6_business_continuity:
@@ -326,11 +326,11 @@ vendor_registry_schema:
   owner: ""   # Internal team/person responsible
 ```
 
-## SLA Monitoring
+## SLA [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """
-Vendor SLA monitoring - Track uptime and response time commitments.
+Vendor SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) - Track uptime and response time commitments.
 """
 import requests
 from datetime import datetime, timezone
@@ -432,12 +432,12 @@ vendor_lifecycle:
 
     step_4_provision:
       - Configure integration with least privilege access
-      - Enable audit logging for vendor access
+      - Enable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging for vendor access
       - Add to vendor registry
       - Schedule first reassessment
 
   ongoing_management:
-    monitoring:
+    [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
       - Track SLA compliance monthly
       - Monitor vendor status pages for incidents
       - Review vendor security advisories
@@ -485,7 +485,7 @@ vendor_management_checklist:
     - [ ] Security assessments current (per tier schedule)
     - [ ] Compliance certifications on file and not expired
     - [ ] DPAs/BAAs signed for all vendors handling personal data
-    - [ ] SLA monitoring active for critical and high-tier vendors
+    - [ ] SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) active for critical and high-tier vendors
     - [ ] Sub-processor lists reviewed and tracked
     - [ ] Vendor security incidents tracked and assessed
 
@@ -495,7 +495,7 @@ vendor_management_checklist:
     - [ ] Assessment findings tracked to remediation
     - [ ] Vendor risk reported to management quarterly
     - [ ] Offboarding includes data destruction verification
-    - [ ] Evidence retained for compliance audit (3+ years)
+    - [ ] Evidence retained for compliance [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (3+ years)
 ```
 
 ## Best Practices
@@ -503,7 +503,7 @@ vendor_management_checklist:
 - Tier vendors by risk before investing assessment effort: not every vendor needs a full security review
 - Use standardized questionnaires (SIG, CAIQ, or consistent custom template) for comparable assessments
 - Review SOC 2 Type II reports thoroughly, including complementary user entity controls
-- Include right-to-audit clauses in contracts for critical vendors even if you do not exercise them frequently
+- Include right-to-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) clauses in contracts for critical vendors even if you do not exercise them frequently
 - Monitor vendor status pages and set up alerts for outages affecting your services
 - Track sub-processor changes: your vendor's vendor is part of your supply chain risk
 - Maintain a vendor registry as a single source of truth for all vendor relationships

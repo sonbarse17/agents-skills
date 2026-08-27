@@ -10,8 +10,8 @@ description: Integration patterns for WebGL and Three.js in web applications.
 - **Renderer:** The engine that draws the scene onto a HTML `<canvas>`.
 - **Optimization:** Frustum culling, instance rendering, and geometry simplification.
 
-## Mermaid Diagram
-```mermaid
+## [Mermaid](../../../Product_and_Business/mermaid/SKILL.md) Diagram
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Three.js App] --> B[Scene]

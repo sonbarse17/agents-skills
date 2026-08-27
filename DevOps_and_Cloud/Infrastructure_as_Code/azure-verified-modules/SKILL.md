@@ -10,8 +10,8 @@ metadata:
 This guide covers the mandatory requirements for Azure Verified Modules certification. These requirements ensure consistency, quality, and maintainability across Azure Terraform modules.
 
 **References:**
-- [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/)
-- [AVM Module Specifications](https://azure.github.io/Azure-Verified-Modules/specs/module-specs/)
+- [Azure Verified Modules](https://azure.[github](../../CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/azure-verified-modules/SKILL.md)/)
+- [AVM Module Specifications](https://azure.[github](../../CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/azure-verified-modules/SKILL.md)/specs/module-specs/)
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ When building Resource or Pattern modules, module owners **MAY** cross-reference
 
 - Modules **MUST** be referenced using HashiCorp Terraform registry reference to a pinned version
   - Example: `source = "Azure/xxx/azurerm"` with `version = "1.2.3"`
-- Modules **MUST NOT** use git references (e.g., `git::https://xxx.yyy/xxx.git` or `github.com/xxx/yyy`)
+- Modules **MUST NOT** use git references (e.g., `git::https://xxx.yyy/xxx.git` or `[github](../../CI_CD/github/SKILL.md).com/xxx/yyy`)
 - Modules **MUST NOT** contain references to non-AVM modules
 
 ---
@@ -478,7 +478,7 @@ For robust testing, `prevent_deletion_if_contains_resources` **SHOULD** be expli
 
 **Severity:** MUST | **Requirement:** TFNFR2
 
-- Documentation **MUST** be automatically generated via [Terraform Docs](https://github.com/terraform-docs/terraform-docs)
+- Documentation **MUST** be automatically generated via [Terraform Docs](https://[github](../../CI_CD/github/SKILL.md).com/terraform-docs/terraform-docs)
 - A `.terraform-docs.yml` file **MUST** be present in the module root
 
 ---
@@ -534,7 +534,7 @@ resource "azurerm_route_table" "this" {
 
 ## Contribution Standards
 
-### GitHub Repository Branch Protection
+### [GitHub](../../CI_CD/github/SKILL.md) Repository Branch Protection
 
 **Severity:** MUST | **Requirement:** TFNFR3
 

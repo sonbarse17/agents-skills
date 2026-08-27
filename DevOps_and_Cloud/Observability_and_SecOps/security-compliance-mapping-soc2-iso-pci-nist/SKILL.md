@@ -32,38 +32,38 @@ that SOC 2, ISO/IEC 27001, PCI-DSS, and the NIST Cybersecurity Framework
 logging, encryption, vulnerability scanning, backup/DR — but cannot answer
 "which framework requirement does this satisfy, and can we prove it operates
 continuously?" when a compliance team, sales prospect's security
-questionnaire, or upcoming audit asks. This skill guides mapping controls
+questionnaire, or upcoming [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) asks. This skill guides mapping controls
 that already exist in the engineering environment to the corresponding
 criteria/controls/requirements/functions in each framework, and — more
 importantly — identifying what **evidence** would demonstrate to an
 independent assessor that the control operates as described, continuously,
 not just that it was configured correctly once.
 
-**This is explicitly not a certification or audit process.** SOC 2 reports
+**This is explicitly not a certification or [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) process.** SOC 2 reports
 are issued by licensed CPA firms following AICPA attestation standards; ISO
 27001 certification is issued by an accredited certification body following
-a stage 1/stage 2 audit; PCI-DSS compliance validation (SAQ or a Report on
+a stage 1/stage 2 [audit](../../../AI_and_Agents/Operations/audit/SKILL.md); PCI-DSS compliance validation (SAQ or a Report on
 Compliance) is completed by the merchant/service provider or a Qualified
 Security Assessor (QSA) depending on level; NIST CSF is a voluntary
 risk-management framework with no certification body at all — organizations
 assess and report their own maturity against it, often for a regulator,
 customer, or internal governance purpose. Mapping your technical controls to
 these frameworks using this skill gets an engineering organization
-audit-ready and gives a compliance/legal team accurate, evidence-backed
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-ready and gives a compliance/legal team accurate, evidence-backed
 input to work with — it does not itself produce a certification, an
-attestation, legal compliance, or a guarantee of passing an audit. Always
+attestation, legal compliance, or a guarantee of passing an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Always
 involve qualified compliance, legal, and (where required) accredited
-audit professionals for the actual certification or attestation process,
+[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) professionals for the actual certification or attestation process,
 and treat control ID numbers here as commonly-cited, illustrative
 references — always verify the exact current numbering against the
 specific framework version your auditor is using.
 
 ## When to use
 
-- A user asks "which SOC 2 criteria does our Vault-based secrets rotation
+- A user asks "which SOC 2 criteria does our [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based secrets rotation
   satisfy" or similar for ISO 27001, PCI-DSS, or NIST CSF.
 - Preparing a controls matrix or evidence package ahead of a SOC 2 Type
-  II audit, an ISO 27001 certification/surveillance audit, a PCI-DSS
+  II [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), an ISO 27001 certification/surveillance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), a PCI-DSS
   assessment, or a NIST CSF maturity self-assessment.
 - Responding to a customer security questionnaire that asks for framework
   alignment (e.g. "are you SOC 2 compliant," "do you meet PCI-DSS
@@ -74,9 +74,9 @@ specific framework version your auditor is using.
   specific configuration/policy/log) satisfies it.
 - Identifying **gaps** — framework requirements with no corresponding
   technical control yet — so they can be prioritized as engineering work
-  before an audit, not discovered during one.
+  before an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), not discovered during one.
 - Building a repeatable, evidence-generating process (e.g. continuous
-  control monitoring) rather than a one-time spreadsheet exercise that
+  control [monitoring](../monitoring/SKILL.md)) rather than a one-time spreadsheet exercise that
   goes stale.
 
 ## Prerequisites & environment
@@ -87,14 +87,14 @@ specific framework version your auditor is using.
   for service providers" — mappings and required evidence differ
   significantly by scope and version.
 - Access to the actual technical control implementations to cite as
-  evidence sources: secrets manager audit logs, IAM policy/role
+  evidence sources: secrets manager [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, IAM policy/role
   definitions and access review records, centralized log
   aggregation/SIEM retention config, encryption configuration
   (KMS/TLS), SAST/DAST/SCA scan history and remediation SLAs, backup and
   DR test records.
 - A named internal or external compliance owner — this skill supports
   that person/team with accurate technical mapping; it does not replace
-  them. For SOC 2, the CPA firm performing the audit; for ISO 27001, the
+  them. For SOC 2, the CPA firm performing the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md); for ISO 27001, the
   accredited certification body; for PCI-DSS above a certain
   transaction/merchant level, a QSA — identify who that is before
   starting, since they set the actual evidence bar.
@@ -118,15 +118,15 @@ specific framework version your auditor is using.
 2. **Inventory the technical controls already implemented**, grounded in
    what actually exists (config, code, running services), not what the
    team intends to build. Pull from:
-   [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md),
-   [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md),
-   [sast-integration](../../../devsecops/skills/sast-integration/SKILL.md),
-   [dast-integration](../../../devsecops/skills/dast-integration/SKILL.md),
-   [supply-chain-security-slsa-sbom](../../../devsecops/skills/supply-chain-security-slsa-sbom/SKILL.md),
-   [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md),
-   [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md),
-   [cis-benchmarks-hardening](../cis-benchmarks-hardening/SKILL.md), and
-   the org's logging/monitoring stack.
+   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md),
+   [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md),
+   [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md),
+   [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md),
+   [supply-chain-security-slsa-sbom](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md),
+   [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md),
+   [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md),
+   [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md), and
+   the org's logging/[monitoring](../monitoring/SKILL.md) stack.
 3. **Map each technical control to one or more framework requirements**,
    citing the specific criteria/control/requirement ID at whatever
    precision you're confident in (see the illustrative table below) —
@@ -134,7 +134,7 @@ specific framework version your auditor is using.
    against current framework text with the compliance owner/auditor"
    rather than asserting it confidently.
 4. **For each mapping, identify the evidence an assessor would need**:
-   not "we have a secrets manager" but "Vault audit log showing automatic
+   not "we have a secrets manager" but "[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log showing automatic
    90-day rotation executed on schedule for the last two quarters,"
    "quarterly access review sign-off records," "SAST scan results with
    remediation timestamps meeting the documented SLA." A control that
@@ -144,25 +144,25 @@ specific framework version your auditor is using.
    control, or a control that exists but has no evidence trail (e.g.
    access reviews happen informally over Slack with no record) — as
    engineering backlog items, prioritized with the compliance owner by
-   audit timeline.
+   [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) timeline.
 6. **Build the controls matrix** as a living artifact: framework
    requirement ID → control description → technical implementation →
    evidence source/location → collection frequency → owner → last
    verified date.
 7. **Set up continuous evidence collection** where possible (automated
-   log export, scheduled access-review reminders, scan result retention)
+   log export, scheduled [access-review](../../../Security/access-review/SKILL.md) reminders, scan result retention)
    rather than manually gathering evidence once a year right before an
-   audit — auditors for SOC 2 Type II and PCI-DSS specifically test
+   [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) — auditors for SOC 2 Type II and PCI-DSS specifically test
    whether a control operated effectively **over a period of time**, not
-   whether it was correctly configured on the day of the audit.
+   whether it was correctly configured on the day of the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 8. **Hand the matrix to the compliance owner / auditor**, framed
    explicitly as engineering's input to their process — not as a
    self-certification. Be ready to walk an assessor through how any
    given control actually works technically.
-9. **Re-validate the matrix on a cadence** (e.g. before each audit cycle,
+9. **Re-validate the matrix on a cadence** (e.g. before each [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) cycle,
    and whenever a mapped control changes — e.g. secrets manager migration,
    new cloud account) since drift between "what the matrix says" and "what
-   is actually running" is one of the most common audit findings.
+   is actually running" is one of the most common [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings.
 
 ## Best practices
 
@@ -177,7 +177,7 @@ specific framework version your auditor is using.
   quarters, with logged confirmations." SOC 2 Type II and PCI-DSS
   specifically test operating effectiveness over a period.
 - Keep the matrix in version control or a GRC tool with change history —
-  a static spreadsheet from eighteen months ago is itself an audit
+  a static spreadsheet from eighteen months ago is itself an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   finding waiting to happen ("this control mapping doesn't reflect our
   current architecture").
 - Loop in the actual compliance owner (and, for PCI-DSS at higher levels,
@@ -185,14 +185,14 @@ specific framework version your auditor is using.
   technically accurate but scope-mismatched mapping wastes engineering
   effort.
 - Reuse one control across multiple frameworks rather than treating each
-  framework as a separate project — a single Vault rotation policy can
+  framework as a separate project — a single [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) rotation policy can
   simultaneously map to SOC 2 CC6.1, ISO 27001 Annex A control on
   cryptographic keys/access management, PCI-DSS requirement 8 (or
   requirement 3 aspects), and NIST CSF `PR.AA`/`PR.DS` — build the matrix
   so that overlap is visible and evidence is collected once, referenced
   many times.
 - Be explicit with stakeholders, every time, that this mapping is
-  audit-**preparation**, not an audit outcome — say so in the deliverable
+  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-**preparation**, not an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) outcome — say so in the deliverable
   itself, not just verbally.
 
 ## Common pitfalls
@@ -202,7 +202,7 @@ specific framework version your auditor is using.
   proof and the team scrambles.
   **Fix:** Every mapped control needs a named evidence source (log
   export, ticket system, dashboard) and a collection frequency recorded
-  *before* the audit — a mapping without evidence is a claim, not a
+  *before* the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) — a mapping without evidence is a claim, not a
   control.
 - **Symptom:** A control is mapped once when it was first implemented,
   but the underlying system has since changed (e.g. migrated from one
@@ -218,7 +218,7 @@ specific framework version your auditor is using.
   body (ISO 27001), a licensed CPA firm (SOC 2), or the appropriate PCI-DSS
   validation process (SAQ self-assessment or QSA-led Report on Compliance,
   depending on level) can produce that determination — this skill
-  produces audit-ready technical mapping and evidence, not the attestation
+  produces [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-ready technical mapping and evidence, not the attestation
   itself.
 - **Symptom:** Engineering maps a control to a framework requirement using
   a control ID they are not actually sure is current, and the auditor
@@ -229,7 +229,7 @@ specific framework version your auditor is using.
   credible than one with confident wrong numbers.
 - **Symptom:** All effort goes into mapping controls that already exist
   and look good (e.g. encryption, SAST), while gaps (e.g. no formal
-  incident response plan, no quarterly access reviews) are left off the
+  [incident](../incident/SKILL.md) response plan, no quarterly access reviews) are left off the
   matrix entirely because there's no existing control to map.
   **Fix:** Build the matrix from the framework's requirement list
   outward, not from the existing-controls list inward — every framework
@@ -244,30 +244,30 @@ numbering against the specific framework version and your auditor):
 
 | Technical control (existing implementation) | SOC 2 Trust Services Criteria | ISO/IEC 27001 Annex A (illustrative) | PCI-DSS (illustrative, v4.0-era) | NIST CSF 2.0 function/category | Evidence source | Frequency |
 |---|---|---|---|---|---|---|
-| Vault-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | Vault audit log export showing rotation events; quarterly rotation report | Quarterly |
-| Least-privilege IAM roles + quarterly access review (see [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)) | CC6.2, CC6.3 (access provisioning/removal) | A.5.15 (access control), A.5.18 (access rights) | Req. 7 (restrict access by need to know) | `PR.AA` | Access review sign-off tickets; IAM policy diff history | Quarterly |
-| Centralized log aggregation with 1-year retention | CC7.2 (monitoring for security events) | A.8.15 (logging) | Req. 10 (log and monitor access) | `DE.AE` (Adverse Event Analysis), `DE.CM` (Continuous Monitoring) | SIEM retention config; sample log query results | Continuous, reviewed monthly |
+| [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log export showing rotation events; quarterly rotation report | Quarterly |
+| Least-privilege IAM roles + quarterly access review (see [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)) | CC6.2, CC6.3 (access provisioning/removal) | A.5.15 (access control), A.5.18 (access rights) | Req. 7 (restrict access by need to know) | `PR.AA` | Access review sign-off tickets; IAM policy diff history | Quarterly |
+| Centralized log aggregation with 1-year retention | CC7.2 ([monitoring](../monitoring/SKILL.md) for security events) | A.8.15 (logging) | Req. 10 (log and monitor access) | `DE.AE` (Adverse Event Analysis), `DE.CM` (Continuous [Monitoring](../monitoring/SKILL.md)) | SIEM retention config; sample log query results | Continuous, reviewed monthly |
 | TLS 1.2+ enforced in transit; KMS-managed encryption at rest | CC6.7 (data transmission/encryption) | A.8.24 (cryptography) | Req. 3 (protect stored account data), Req. 4 (protect data in transit) | `PR.DS` (Data Security) | TLS config scan results; KMS key policy export | Per release / quarterly |
-| SAST + DAST in CI/CD with tracked remediation SLA (see [sast-integration](../../../devsecops/skills/sast-integration/SKILL.md), [dast-integration](../../../devsecops/skills/dast-integration/SKILL.md)) | CC7.1 (vulnerability detection) | A.8.29 (security testing in development) | Req. 6 (develop/maintain secure systems) | `ID.RA` (Risk Assessment), `PR.PS` (Platform Security) | CI pipeline scan history; remediation ticket closure times | Continuous, reviewed monthly |
-| Tested cross-region backup + documented RTO/RPO (see [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md)) | A1.2 (Availability — recovery) | A.5.29/A.5.30 (ICT readiness for business continuity — numbering varies by edition) | Req. 12 (support info security with policies; DR referenced under org policy) | `RC.RP` (Incident Recovery Plan Execution) | DR test report with timestamps and measured RTO/RPO vs target | Semi-annual test |
+| SAST + DAST in CI/CD with tracked remediation SLA (see [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md), [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md)) | CC7.1 (vulnerability detection) | A.8.29 (security testing in development) | Req. 6 (develop/maintain secure systems) | `ID.RA` (Risk Assessment), `PR.PS` (Platform Security) | CI pipeline scan history; remediation ticket closure times | Continuous, reviewed monthly |
+| Tested cross-region backup + documented RTO/RPO (see [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)) | A1.2 (Availability — recovery) | A.5.29/A.5.30 (ICT readiness for business continuity — numbering varies by edition) | Req. 12 (support info security with policies; DR referenced under org policy) | `RC.RP` ([Incident](../incident/SKILL.md) Recovery Plan Execution) | DR test report with timestamps and measured RTO/RPO vs target | Semi-annual test |
 | **Gap (illustrative):** no formal quarterly access-recertification process, only ad hoc | CC6.2 | A.5.18 | Req. 7 | `PR.AA` | None yet | — |
 
 Illustrative summary handed to the compliance owner: "5 of 6 core control
 areas mapped with continuous evidence sources identified; 1 gap opened as
 engineering backlog item `<TICKET_PLACEHOLDER>` (formal quarterly access
-recertification) targeted before the next audit window. This matrix
-reflects engineering's technical control mapping as input to your audit
+recertification) targeted before the next [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) window. This matrix
+reflects engineering's technical control mapping as input to your [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 preparation — final scope, sampling, and attestation determination remain
 with `<AUDIT_FIRM_OR_QSA_PLACEHOLDER>`."
 
 ## Cross-references
 
-- [cis-benchmarks-hardening](../cis-benchmarks-hardening/SKILL.md) — infrastructure/OS hardening scan evidence that commonly supports security-criteria mappings above.
-- [cloud-well-architected-framework-review](../cloud-well-architected-framework-review/SKILL.md) — broader architecture/risk review; its security-pillar findings often become gaps or controls in this matrix.
-- [owasp-top-10-secure-coding-standards](../owasp-top-10-secure-coding-standards/SKILL.md) — application security practices and tooling that support PCI-DSS Requirement 6 and NIST CSF `PR.PS` mappings.
-- [secrets-management](../../../devsecops/skills/secrets-management/SKILL.md) — the control implementation behind most access-control/authentication mappings.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege and access-review controls mapped above.
-- [sast-integration](../../../devsecops/skills/sast-integration/SKILL.md) and [dast-integration](../../../devsecops/skills/dast-integration/SKILL.md) — secure-development-lifecycle evidence for PCI-DSS Req. 6 / NIST CSF `ID.RA`, `PR.PS`.
-- [supply-chain-security-slsa-sbom](../../../devsecops/skills/supply-chain-security-slsa-sbom/SKILL.md) — SBOM/provenance evidence increasingly requested in vendor security questionnaires and NIST supply-chain guidance.
-- [policy-as-code-guardrails](../../../devsecops/skills/policy-as-code-guardrails/SKILL.md) — automated enforcement that strengthens the "operates continuously" evidence story for many mapped controls.
-- [disaster-recovery-and-backup-strategy](../../../cloud/skills/disaster-recovery-and-backup-strategy/SKILL.md) — availability/recovery control evidence for SOC 2 Availability criteria and PCI-DSS/ISO business-continuity references.
+- [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/OS hardening scan evidence that commonly supports security-criteria mappings above.
+- [cloud-well-architected-framework-review](../[cloud-well-architected-framework-review](../../Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — broader architecture/risk review; its security-pillar findings often become gaps or controls in this matrix.
+- [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../../Cloud_Providers/owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application security practices and tooling that support PCI-DSS Requirement 6 and NIST CSF `PR.PS` mappings.
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — the control implementation behind most access-control/authentication mappings.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege and [access-review](../../../Security/access-review/SKILL.md) controls mapped above.
+- [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md) — secure-development-lifecycle evidence for PCI-DSS Req. 6 / NIST CSF `ID.RA`, `PR.PS`.
+- [supply-chain-security-slsa-sbom](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — SBOM/provenance evidence increasingly requested in vendor security questionnaires and NIST supply-chain guidance.
+- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) — automated enforcement that strengthens the "operates continuously" evidence story for many mapped controls.
+- [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — availability/recovery control evidence for SOC 2 Availability criteria and PCI-DSS/ISO [business-continuity](../../../Software_Engineering_and_Other/Frontend/business-continuity/SKILL.md) references.

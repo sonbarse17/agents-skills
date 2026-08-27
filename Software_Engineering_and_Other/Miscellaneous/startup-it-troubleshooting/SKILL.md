@@ -9,7 +9,7 @@ metadata:
 
 # Startup IT Troubleshooting
 
-Runbooks for startups and small teams where engineers double as the IT department.
+[Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for startups and small teams where engineers double as the IT department.
 
 ## When to Use
 
@@ -44,7 +44,7 @@ curl -X POST -H "Authorization: SSWS $T" "https://$OKTA/api/v1/users/$UID/lifecy
 curl -X DELETE -H "Authorization: SSWS $T" "https://$OKTA/api/v1/users/$UID/sessions"
 ```
 
-**MFA recovery flow:** Verify identity via video call, generate backup codes or reset factors, have user re-enroll immediately, confirm old device is deregistered, log the incident.
+**MFA recovery flow:** Verify identity via video call, generate backup codes or reset factors, have user re-enroll immediately, confirm old device is deregistered, log the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 ---
 
@@ -110,8 +110,8 @@ networkQuality -s              # macOS 12+ bufferbloat test
 ```bash
 df -h                                    # volume overview
 du -sh ~/* | sort -rh | head -15         # biggest dirs in home
-docker system df                         # Docker disk usage (common culprit)
-docker system prune -a --volumes         # reclaim Docker space
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system df                         # [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) disk usage (common culprit)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system prune -a --volumes         # reclaim [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) space
 brew cleanup --prune=all                 # macOS Homebrew cleanup
 ```
 
@@ -159,8 +159,8 @@ sudo systemsetup -setremotelogin on       # enable SSH for remote admin
 
 # Homebrew fleet setup — standard Brewfile
 cat > Brewfile <<'EOF'
-brew "git"; brew "node"; brew "python@3.12"; brew "awscli"; brew "jq"; brew "gh"
-cask "google-chrome"; cask "slack"; cask "1password"; cask "visual-studio-code"; cask "docker"; cask "zoom"
+brew "git"; brew "node"; brew "[python](../../Languages/python/SKILL.md)@3.12"; brew "awscli"; brew "jq"; brew "gh"
+cask "google-chrome"; cask "slack"; cask "1password"; cask "visual-studio-code"; cask "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"; cask "zoom"
 EOF
 brew bundle install --file=Brewfile
 brew bundle dump --file=~/Brewfile --force  # export current setup
@@ -270,7 +270,7 @@ curl -X POST "https://slack.com/api/admin.users.invite" \
   -H "Authorization: Bearer xoxp-your-admin-token" \
   -d "email=newhire@company.com&channel_ids=C01GENERAL,C02ENGINEERING&team_id=T01YOURTEAM"
 
-# 4. GitHub
+# 4. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
 gh api orgs/your-company/invitations -f email="newhire@company.com" -f role="direct_member"
 gh api orgs/your-company/teams/engineering/memberships/newhire-username -f role="member" -X PUT
 
@@ -280,7 +280,7 @@ tailscale up --authkey tskey-auth-abc123
 
 ### First-Day Setup Script (macOS)
 
-Give new hires this script. It installs Homebrew, your standard tools from a hosted Brewfile, configures Git, authenticates GitHub CLI, clones core repos, and enables FileVault.
+Give new hires this script. It installs Homebrew, your standard tools from a hosted Brewfile, configures Git, authenticates [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) CLI, clones core repos, and enables FileVault.
 
 ```bash
 #!/bin/bash
@@ -305,7 +305,7 @@ gam user departed@company.com add delegate manager@company.com    # 4. delegate 
 curl -X POST "https://slack.com/api/admin.users.remove" \
   -H "Authorization: Bearer xoxp-your-admin-token" \
   -d "user_id=U01DEPARTED&team_id=T01YOURTEAM"               # 5. remove Slack
-gh api orgs/your-company/members/departed-username -X DELETE   # 6. remove GitHub
+gh api orgs/your-company/members/departed-username -X DELETE   # 6. remove [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
 op user suspend departed@company.com                           # 7. revoke 1Password
 aws iam delete-login-profile --user-name departed              # 8. revoke AWS console
 aws iam list-access-keys --user-name departed                  #    then delete each key
@@ -395,5 +395,5 @@ gam user compromised@company.com show forwarding     # check attacker persistenc
 
 ## Related Skills
 
-- [incident-management](../../../compliance/continuity/incident-management/) -- Structured incident handling
-- [runbook-creation](../../../compliance/continuity/runbook-creation/) -- Documentation standards
+- [incident-management](../../../compliance/continuity/[incident-management](../[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md)/) -- Structured [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) handling
+- [runbook-creation](../../../compliance/continuity/[runbook-creation](../../Frontend/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-creation/SKILL.md)/) -- Documentation standards

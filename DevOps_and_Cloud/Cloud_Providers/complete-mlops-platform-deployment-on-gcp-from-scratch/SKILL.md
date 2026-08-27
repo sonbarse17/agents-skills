@@ -29,12 +29,12 @@ metadata:
 An MLOps platform on GCP is a chain of dependent phases — organization
 guardrails, a compute platform, GPU accelerator quota, experiment
 tracking, pipeline orchestration, a model registry, a serving layer, and
-drift monitoring — each of which assumes the previous phase exists in a
+drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) — each of which assumes the previous phase exists in a
 working state before it can function correctly. Get the sequence wrong and
 the failure surfaces in the wrong place: a Vertex AI custom training job
 authored before GPU accelerator quota is approved queues indefinitely with
 a message easy to mistake for a code bug, or a model deployed to a Vertex
-endpoint before monitoring is configured means a regression is invisible
+endpoint before [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is configured means a regression is invisible
 until someone notices degraded outcomes. Every individual piece is covered
 in depth by an existing skill; this skill is the GCP-specific sequencing
 across all of them, worked through the managed Vertex AI platform end to
@@ -51,7 +51,7 @@ point where the choice actually diverges.
   worked path instead of an abstract comparison.
 - Auditing an existing GCP ML platform for a skipped or out-of-order
   phase (e.g. GPU accelerator quota requested after a training job was
-  already authored, or drift monitoring added only after months of
+  already authored, or drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) added only after months of
   unmonitored endpoint traffic).
 - Rebuilding a reference ML platform (a second product line, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -64,7 +64,7 @@ point where the choice actually diverges.
 - A Google Cloud Organization with a real landing zone already in place,
   or the intent to build one first — this skill does **not** cover folder
   hierarchy/project vending; see
-  [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md).
+  [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md).
   Confirm the target project sits in the correct folder and that its
   Organization Policy constraints (allowed regions, service-account-key
   restrictions) are already enforced and compliant before proceeding.
@@ -100,7 +100,7 @@ integration decisions between phases.
 1. **Phase 1 — GCP landing zone.** Confirm (or stand up) the folder
    hierarchy, Organization Policy constraints, Shared VPC, and aggregated
    log sink per
-   [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md).
+   [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md).
    Specifically confirm `iam.disableServiceAccountKeyCreation` is enforced
    at the Organization node — this platform's every service-to-service
    call (Vertex AI to Cloud Storage, a training job to BigQuery) should
@@ -116,12 +116,12 @@ integration decisions between phases.
      IAM/service-account model — the right default for teams minimizing
      infrastructure ownership.
    - **GKE+Kubeflow (brief alternative)**: provision GKE per
-     [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+     [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
      (Workload Identity Federation for pod-level access to Cloud Storage/
      BigQuery) and run Kubeflow Pipelines per
-     [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md)
+     [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
      on top, with GPU node pools per
-     [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+     [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
      — worth noting that Kubeflow originated as a GKE-native project, so
      this alternative is a particularly natural fit on GCP for teams
      needing MIG partitioning or custom bin-packing that Vertex AI custom
@@ -144,14 +144,14 @@ integration decisions between phases.
    service-enablement time — confirm this succeeds **before** Phase 6
    builds a pipeline around it. (GKE+Kubeflow alternative: provision GPU
    node pools via
-   [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
    instead of a Vertex `CustomJob` worker pool.)
 
 4. **Phase 4 — experiment tracking.** Use Vertex AI Experiments,
    applying the logging discipline from
-   [experiment-tracking](../experiment-tracking/SKILL.md), rather than
+   [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md), rather than
    standing up a separate MLflow server:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from google.cloud import aiplatform
 
    aiplatform.init(project="prj-ml-platform-prod", location="us-central1",
@@ -167,19 +167,19 @@ integration decisions between phases.
 5. **Phase 5 — feature store (if needed).** For use cases needing
    point-in-time-correct, reusable features, use Vertex AI Feature Store
    (or a self-managed Feast deployment against BigQuery/Bigtable) per
-   [feature-store-design](../feature-store-design/SKILL.md). Optional —
+   [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md). Optional —
    skip for a single model with no feature-reuse need.
 
 6. **Phase 6 — training pipeline orchestration.** Author the retraining
    DAG with Vertex AI Pipelines (KFP SDK compiled and submitted to the
    Vertex AI Pipelines backend), applying the vendor-neutral gate/
    reproducibility principles from
-   [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
+   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    and the KFP authoring patterns from
-   [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md)
+   [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
    (Vertex AI Pipelines uses the same KFP SDK, targeting a different
    backend):
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from kfp import dsl, compiler
    from google.cloud import aiplatform
 
@@ -206,7 +206,7 @@ integration decisions between phases.
 7. **Phase 7 — model registry and packaging.** Register the pipeline's
    output model to the Vertex AI Model Registry, applying the promotion-
    gate discipline from
-   [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md):
+   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md):
    ```bash
    gcloud ai models upload --region=us-central1 \
      --display-name=fraud-scorer --version-aliases=default \
@@ -220,24 +220,24 @@ integration decisions between phases.
 8. **Phase 8 — serving and scaling.** Deploy the Phase 7 registered model
    to a Vertex AI endpoint with a traffic split, applying the canary
    rollout discipline from
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md):
+   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md):
    ```bash
-   gcloud ai endpoints deploy-model <ENDPOINT_ID> \
+   gcloud ai endpoints [deploy-model](../../../AI_and_Agents/Infrastructure/[deploy-model](../azure-skills/skills/microsoft-foundry/models/deploy-model/SKILL.md)/SKILL.md) <ENDPOINT_ID> \
      --region=us-central1 --model=<MODEL_ID> \
      --display-name=fraud-scorer-v14 --machine-type=n1-standard-4 \
      --accelerator=type=NVIDIA_TESLA_T4,count=1 \
      --traffic-split=0=5,<EXISTING_DEPLOYED_MODEL_ID>=95
    ```
    Do not shift the traffic split past this initial 5% until Phase 9's
-   monitoring is confirmed collecting data. (GKE+Kubeflow alternative:
+   [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is confirmed collecting data. (GKE+Kubeflow alternative:
    KServe `InferenceService` per
-   [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md).)
+   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
-9. **Phase 9 — monitoring and drift detection.** Enable Vertex AI Model
-   Monitoring on the endpoint (or a self-managed Evidently job reading
+9. **Phase 9 — [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Enable Vertex AI Model
+   [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) on the endpoint (or a self-managed Evidently job reading
    logged prediction requests from BigQuery), applying the reference-
-   baseline and alerting discipline from
-   [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md),
+   baseline and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) discipline from
+   [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
    with the baseline frozen against the training dataset's feature
    distribution from Phase 6, not a post-cutover rolling window.
 
@@ -254,7 +254,7 @@ integration decisions between phases.
   landing zone phase — a perimeter tightened after Phase 4/7 are already
   writing to those buckets breaks the pipeline in a way that looks like
   an IAM problem rather than a network perimeter change.
-- Treat Phase 9 (monitoring) as a blocking prerequisite before any
+- Treat Phase 9 ([monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite before any
   traffic-split ramp-up past the first stage in Phase 8 — consistent with
   every other cloud in this family.
 - Use Vertex AI's built-in Experiments and Model Registry (Phases 4 and 7)
@@ -298,7 +298,7 @@ integration decisions between phases.
   buckets by name, rather than discovering the boundary reactively.
 
 - **Symptom:** A model deployed to a Vertex AI endpoint in Phase 8 can't
-  be traced back to which pipeline run produced it during an incident
+  be traced back to which pipeline run produced it during an [incident](../../Observability_and_SecOps/incident/SKILL.md)
   investigation.
   **Fix:** The endpoint was deployed against a raw GCS artifact path
   instead of the Phase 7 registered model resource — always register
@@ -350,29 +350,29 @@ gcloud ai models upload --region=us-central1 --display-name=ranking-model \
   --container-image-uri=gcr.io/prj-streaming-ml-prod/ranking-serve:2.0
 
 # Phase 8 — endpoint, 5% traffic split
-gcloud ai endpoints deploy-model ENDPOINT_ID --region=us-central1 --model=MODEL_ID \
+gcloud ai endpoints [deploy-model](../../../AI_and_Agents/Infrastructure/[deploy-model](../azure-skills/skills/microsoft-foundry/models/deploy-model/SKILL.md)/SKILL.md) ENDPOINT_ID --region=us-central1 --model=MODEL_ID \
   --display-name=ranking-model-v9 --machine-type=n1-standard-4 \
   --accelerator=type=NVIDIA_TESLA_T4,count=1 --traffic-split=0=5,PREV_MODEL_ID=95
 
-# Phase 9 — Vertex AI Model Monitoring, baseline frozen at v9's first
+# Phase 9 — Vertex AI Model [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), baseline frozen at v9's first
 # production request, confirmed collecting data BEFORE ramping past 5%
 ```
 
-The Phase 9 monitoring job confirms stable drift metrics over 48 hours at
+The Phase 9 [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) job confirms stable drift metrics over 48 hours at
 5% traffic; the team ramps to 100% and keeps the previous model version
 deployed at a minimal instance count for a two-week rollback window,
 mirroring the soak-period discipline in
-[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md).
+[model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [gcp-landing-zone-setup](../../../cloud/skills/gcp-landing-zone-setup/SKILL.md) — Phase 1's folder/policy/Shared VPC foundation.
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — the GKE cluster/Workload Identity Federation setup for the Phase 2 GKE+Kubeflow alternative.
-- [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md) — GPU node pool design for the GKE+Kubeflow alternative to Phase 3.
-- [kubeflow-ml-pipeline-orchestration](../kubeflow-ml-pipeline-orchestration/SKILL.md) — the KFP SDK patterns Phase 6's Vertex AI Pipelines and the GKE+Kubeflow alternative both build on.
-- [experiment-tracking](../experiment-tracking/SKILL.md) — Phase 4's logging discipline, applied to Vertex AI Experiments.
-- [feature-store-design](../feature-store-design/SKILL.md) — Phase 5's optional feature layer.
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) — Phase 7's registry and promotion gates.
-- [model-serving-and-scaling](../model-serving-and-scaling/SKILL.md) — Phase 8's canary/traffic-split rollout.
-- [model-monitoring-and-drift-detection](../model-monitoring-and-drift-detection/SKILL.md) — Phase 9's drift/quality monitoring.
+- [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's folder/policy/Shared VPC foundation.
+- [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the GKE cluster/Workload Identity Federation setup for the Phase 2 GKE+Kubeflow alternative.
+- [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — GPU node pool design for the GKE+Kubeflow alternative to Phase 3.
+- [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP SDK patterns Phase 6's Vertex AI Pipelines and the GKE+Kubeflow alternative both build on.
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Vertex AI Experiments.
+- [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
+- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
+- [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).

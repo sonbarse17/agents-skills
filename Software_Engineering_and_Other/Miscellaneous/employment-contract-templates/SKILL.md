@@ -57,7 +57,7 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 
 ### Don'ts
 
-- **Don't use generic templates** - Customize for your jurisdiction
+- **Don't use generic templates** - [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../customize/SKILL.md)/SKILL.md)/SKILL.md) for your jurisdiction
 - **Don't make promises** - That could create implied contracts
 - **Don't discriminate** - In language or application
 - **Don't forget at-will language** - Where applicable

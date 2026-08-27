@@ -175,7 +175,7 @@ Five-layer blueprint structure: physical evidence, customer actions, frontstage 
 Happiness: CSAT, NPS, satisfaction per stage. Engagement: session frequency, feature adoption, journey progress. Adoption: new user journey completion rate, feature discovery rate. Retention: repeat journey rate, time between journeys. Task Success: journey completion rate, error rate, time-on-task.
 
 ### Jobs-to-be-Done Journey Mapping
-Map journey around the functional, emotional, and social jobs the customer is trying to accomplish. Identify the progress the customer wants to make, not just the steps they take. Structure journey around the job lifecycle: defining, locating, preparing, confirming, executing, monitoring, modifying, maintaining.
+Map journey around the functional, emotional, and social jobs the customer is trying to accomplish. Identify the progress the customer wants to make, not just the steps they take. Structure journey around the job lifecycle: defining, locating, preparing, confirming, executing, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), modifying, maintaining.
 
 ### Lean Service Design Methodology
 Build journey maps and service blueprints iteratively with minimal viable fidelity. Start with assumptions and validate with quick customer research rounds. Use the smallest possible scope to generate actionable insights. Prototype service improvements before full implementation. Measure before and after to confirm improvement.
@@ -248,7 +248,7 @@ Creating a journey map as a one-time exercise and never updating it. Customer be
 
 ### Measurement
 - Track both leading indicators (engagement, support volume, feature adoption) and lagging indicators (churn, LTV, NPS).
-- Design dashboards with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
+- Design [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
 - Set automated alerts for metrics dropping below threshold — intervene before churn accelerates.
 - Re-baseline after each optimization cycle to track improvement trajectory.
 - Document lessons learned from each experiment in a shared repository.
@@ -384,7 +384,7 @@ What is the current journey health score?
         |-- New channels → Expand reach and convenience
 
 What is the primary constraint?
-  |-- Engineering capacity → Prioritize low-effort high-impact changes
+  |-- Engineering [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) → Prioritize low-effort high-impact changes
   |-- Data availability → Run discovery/measurement experiments first
   |-- Org alignment → Start with journey health workshop for alignment
   |-- Budget → Focus on no-cost changes (process, messaging, UX copy)
@@ -535,7 +535,7 @@ Journey owner authority: can block changes that negatively impact journey metric
 | 1 | Initial | No journey maps, ad-hoc optimization | Reactive fixes, no measurement |
 | 2 | Defined | Journey maps exist, basic funnel tracking | Quarterly reviews, pain point lists |
 | 3 | Managed | Service blueprints, segment analysis | Monthly reviews, experimentation |
-| 4 | Optimized | Journey health score, predictive analytics | Weekly monitoring, automated alerts |
+| 4 | Optimized | Journey health score, predictive analytics | Weekly [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), automated alerts |
 | 5 | Leading | AI-driven personalization, real-time optimization | Continuous experimentation, proactive |
 
 ## Expanded Case Studies
@@ -546,7 +546,7 @@ A B2B data analytics platform discovered through journey mapping that their 14-d
 Optimization: restructured the 14-day trial into a guided 7-day program with daily email prompts and milestone celebrations. Simplified setup to 3 steps with template-based data import. Added a "success coordinator" touchpoint on day 3. Results: setup completion increased from 15% to 62%. Trial-to-paid conversion increased from 4% to 14%. The journey health score improved from 0.42 to 0.71.
 
 ### Mobile App Onboarding Friction Reduction
-A consumer mobile app had 55% drop-off during onboarding between download and first core action. Journey analytics segmented by acquisition source and device type. Found that organic users had 25% higher completion than paid users, and Android users had 18% higher drop-off than iOS.
+A consumer mobile app had 55% drop-off during onboarding between download and first core action. Journey analytics segmented by acquisition source and device type. Found that organic users had 25% higher completion than paid users, and [Android](../../Mobile/android/SKILL.md) users had 18% higher drop-off than iOS.
 
 Optimization: reduced onboarding steps from 7 to 3 for all users (permission requests delayed to point of need). Added skip option for tutorial. Personalized first-experience content based on acquisition source. Results: onboarding completion increased from 45% to 78%. D7 retention increased from 22% to 41%. The emotional journey timeline showed satisfaction improved at every step.
 
@@ -566,5 +566,5 @@ Optimization: single customer profile across all channels with real-time sync. I
   - ../../../Global_References/service-blueprint.md — Service Blueprinting
 
 ## Handoff
-For persona insights to inform journey stages, hand off to `product-persona-development`. For analytics event tracking, hand off to `product-analytics`. For user research validation, hand off to `product-user-research`. For experiment execution on journey touchpoints, hand off to `product-ab-testing`. For growth metric tracking across journey stages, hand off to `product-growth-engineering`.
+For persona insights to inform journey stages, hand off to `[product-persona-development](../persona-development/SKILL.md)`. For analytics event tracking, hand off to `[product-analytics](../../Software_Engineering_and_Other/Miscellaneous/analytics/SKILL.md)`. For user research validation, hand off to `[product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md)`. For experiment execution on journey touchpoints, hand off to `[product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)`. For growth metric tracking across journey stages, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`.
 

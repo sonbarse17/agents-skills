@@ -3,9 +3,9 @@ name: python-type-safety
 description: Python type safety with type hints, generics, protocols, and strict type checking. Use when adding type annotations, implementing generic classes, defining structural interfaces, or configuring mypy/pyright.
 ---
 
-# Python Type Safety
+# [Python](../python/SKILL.md) Type Safety
 
-Leverage Python's type system to catch errors at static analysis time. Type annotations serve as enforced documentation that tooling validates automatically.
+Leverage [Python](../python/SKILL.md)'s type system to catch errors at static analysis time. Type annotations serve as enforced documentation that tooling validates automatically.
 
 ## When to Use This Skill
 
@@ -36,7 +36,7 @@ Use guards and conditionals to narrow types within code blocks.
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 def get_user(user_id: str) -> User | None:
     """Return type makes 'might not exist' explicit."""
     ...
@@ -54,7 +54,7 @@ print(user.name)  # Type checker knows user is User here
 
 Every public function, method, and class should have type annotations.
 
-```python
+```[python](../python/SKILL.md)
 def get_user(user_id: str) -> User:
     """Retrieve user by ID."""
     ...
@@ -86,9 +86,9 @@ Use `mypy --strict` or `pyright` in CI to catch type errors early. For existing 
 
 ### Pattern 2: Use Modern Union Syntax
 
-Python 3.10+ provides cleaner union syntax.
+[Python](../python/SKILL.md) 3.10+ provides cleaner union syntax.
 
-```python
+```[python](../python/SKILL.md)
 # Preferred (3.10+)
 def find_user(user_id: str) -> User | None:
     ...
@@ -107,7 +107,7 @@ def find_user(user_id: str) -> Optional[User]:
 
 Use conditionals to narrow types for the type checker.
 
-```python
+```[python](../python/SKILL.md)
 def process_user(user_id: str) -> UserData:
     user = find_user(user_id)
 
@@ -131,7 +131,7 @@ def process_items(items: list[Item | None]) -> list[ProcessedItem]:
 
 Create type-safe reusable containers.
 
-```python
+```[python](../python/SKILL.md)
 from typing import TypeVar, Generic
 
 T = TypeVar("T")
@@ -184,7 +184,7 @@ if result.is_success:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-type-safety_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../python/SKILL.md)-type-safety_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

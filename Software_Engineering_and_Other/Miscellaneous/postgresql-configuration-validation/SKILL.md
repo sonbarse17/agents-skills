@@ -16,25 +16,25 @@ metadata:
   maturity: stable
 ---
 
-# PostgreSQL Configuration Validation
+# [PostgreSQL](../../Backend/postgresql/SKILL.md) Configuration Validation
 
 ## Purpose
 
-A PostgreSQL configuration change that looks correct in isolation can
+A [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration change that looks correct in isolation can
 still be unsafe in context: a `max_connections` bump that overcommits
 available RAM once `work_mem` is multiplied out, a `wal_level` change
 applied with `pg_ctl reload` when it actually requires a full restart, or
 a `synchronous_standby_names` entry pointing at a replica name that no
 longer exists. This skill is the pre-production gate — it validates a
 proposed configuration change against the running instance's actual
-capacity and topology before it's applied, so operational tuning work
+[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and topology before it's applied, so operational tuning work
 (covered in
-[postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md))
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 doesn't produce an outage instead of an improvement.
 
 ## When to use
 
-- Before applying any `postgresql.conf` change (or `ALTER SYSTEM`) to a
+- Before applying any `[postgresql](../../Backend/postgresql/SKILL.md).conf` change (or `ALTER SYSTEM`) to a
   production or shared staging instance, especially `max_connections`,
   `shared_buffers`, `work_mem`, `wal_level`, or anything touching
   replication.
@@ -46,11 +46,11 @@ doesn't produce an outage instead of an improvement.
   `synchronous_standby_names` are mutually consistent.
 - Before changing PgBouncer pool sizes, to confirm the new backend pool
   size (times number of pooler instances/databases) still fits under the
-  database's `max_connections` with headroom for superuser/monitoring
+  database's `max_connections` with headroom for superuser/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   connections.
-- As a PR/change-review gate for infrastructure-as-code that manages
-  PostgreSQL configuration (e.g. a Terraform/Ansible-managed
-  `postgresql.conf` template).
+- As a PR/change-review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) that manages
+  [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration (e.g. a Terraform/[Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-managed
+  `[postgresql](../../Backend/postgresql/SKILL.md).conf` template).
 
 ## Prerequisites & environment
 
@@ -62,8 +62,8 @@ doesn't produce an outage instead of an improvement.
   validation.
 - Knowledge of the host's actual RAM/CPU (from the cloud provider
   console, `free -h`, or infra-as-code) to validate memory-related
-  settings against real capacity, not just internal consistency.
-- The current `pg_hba.conf` and `postgresql.conf` (or the values
+  settings against real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not just internal consistency.
+- The current `pg_hba.conf` and `[postgresql](../../Backend/postgresql/SKILL.md).conf` (or the values
   currently loaded, via `SHOW ALL` / `pg_settings`) to diff against the
   proposed change rather than validating the proposed change in a
   vacuum.
@@ -86,7 +86,7 @@ WHERE name IN ('max_connections', 'shared_buffers', 'wal_level',
 - `context = 'postmaster'` (e.g. `max_connections`, `shared_buffers`,
   `wal_level`, `max_wal_senders`, `max_worker_processes`): requires a
   full server **restart** — a `SELECT pg_reload_conf()` or `pg_ctl
-  reload` will silently accept the new value into `postgresql.conf` but
+  reload` will silently accept the new value into `[postgresql](../../Backend/postgresql/SKILL.md).conf` but
   the running instance keeps the old value until restarted. Flag any
   change to a `postmaster`-context parameter explicitly as
   restart-required in the review, since this is the single most common
@@ -106,12 +106,12 @@ SELECT setting::int AS max_connections FROM pg_settings WHERE name = 'max_connec
 SELECT setting::int AS superuser_reserved FROM pg_settings WHERE name = 'superuser_reserved_connections';
 SELECT count(*) AS current_connections FROM pg_stat_activity;
 ```
-The number that matters for capacity planning is
+The number that matters for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning is
 `max_connections - superuser_reserved_connections`, and it must be
 validated against every connection consumer that talks directly to
 Postgres, not just the app's pool: PgBouncer's backend pool size(s)
 (summed across every database/user pair PgBouncer maintains, since each
-gets its own pool), monitoring agents, replication (`max_wal_senders`
+gets its own pool), [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agents, replication (`max_wal_senders`
 consumes from a separate pool, not `max_connections`, but logical
 replication workers do count against `max_connections`), and any
 direct/admin connections. A `max_connections` value that's technically
@@ -158,7 +158,7 @@ WHERE name IN ('wal_level', 'max_wal_senders', 'max_replication_slots', 'max_wor
 - If proposing `synchronous_standby_names`, confirm the
   `application_name` values listed actually match a real, currently
   connected standby's `application_name` in `pg_stat_replication` — a
-  typo here doesn't error, it just makes every commit on the primary
+  typo here doesn't error, it just makes every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on the primary
   block indefinitely waiting for an ACK from a standby that will never
   send one.
 
@@ -192,7 +192,7 @@ change in a maintenance window.
   versions occasionally reclassify a parameter's context, and the
   instance you're validating against is the ground truth.
 - Validate connection math holistically (app pool + PgBouncer backend
-  pools + monitoring + replication workers) against
+  pools + [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) + replication workers) against
   `max_connections - superuser_reserved_connections`, never validate
   `max_connections` against a single consumer in isolation.
 - Keep a small safety margin (10–20%) below the theoretical memory
@@ -228,7 +228,7 @@ change in a maintenance window.
   temporary durability trade-off, not a permanent fix.
 
 - **Symptom:** A `work_mem` increase that looked safe per-connection
-  causes intermittent out-of-memory kills of the PostgreSQL process
+  causes intermittent out-of-memory kills of the [PostgreSQL](../../Backend/postgresql/SKILL.md) process
   under peak load.
   **Fix:** `work_mem` is multiplied by concurrent sort/hash operations
   across all active connections, not a single global cap — re-validate
@@ -277,7 +277,7 @@ and `shared_buffers` set to 4GB. PgBouncer sits in front with
    Flag `max_connections` as restart-required — schedule a maintenance
    window, don't expect a reload to fix the reported exhaustion.
 2. Validate whether 400 connections is actually needed: PgBouncer's real
-   backend demand is `25 * 3 = 75` connections plus monitoring/admin
+   backend demand is `25 * 3 = 75` connections plus [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/admin
    headroom — nowhere near 400. The actual reported "connection
    exhaustion" is traced to application services bypassing PgBouncer and
    connecting directly for a reporting job. Recommendation: fix the
@@ -297,6 +297,6 @@ and `shared_buffers` set to 4GB. PgBouncer sits in front with
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md) — the operational tuning work (replication, connection pooling, vacuum) whose proposed config changes this skill validates before rollout.
-- [postgresql-high-availability-and-failover](../postgresql-high-availability-and-failover/SKILL.md) — validates the `synchronous_standby_names`/replication-slot configuration this skill checks in the context of a full HA topology and failover testing.
-- [database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md) — complementary pre-production gate for schema/DDL changes, as this skill is for engine-config changes.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication, connection pooling, vacuum) whose proposed config changes this skill validates before rollout.
+- [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — validates the `synchronous_standby_names`/replication-slot configuration this skill checks in the context of a full HA topology and failover testing.
+- [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — complementary pre-production gate for schema/DDL changes, as this skill is for engine-config changes.

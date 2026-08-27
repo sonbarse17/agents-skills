@@ -14,7 +14,7 @@ Automate security operations for scale and efficiency.
 ## Security Pipeline
 
 ```yaml
-# .github/workflows/security.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/security.yml
 name: Security Pipeline
 
 on: [push, pull_request]
@@ -32,7 +32,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         
       - name: Dependency Scan
-        run: npm audit --audit-level=high
+        run: npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
         
       - name: Container Scan
         uses: aquasecurity/trivy-action@master
@@ -46,7 +46,7 @@ jobs:
 
 ## Automated Remediation
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Auto-remediation script
 def remediate_public_s3(bucket_name):
     """Remove public access from S3 bucket."""
@@ -85,7 +85,7 @@ playbook:
 
 ## Compliance as Code
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Checkov custom check
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
 
@@ -112,5 +112,5 @@ class S3Encryption(BaseResourceCheck):
 
 ## Related Skills
 
-- [github-actions](../../../devops/ci-cd/github-actions/) - CI/CD automation
-- [policy-as-code](../../../compliance/governance/policy-as-code/) - Policy enforcement
+- [github-actions](../../../devops/ci-cd/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) - CI/CD automation
+- [policy-as-code](../../../compliance/governance/[policy-as-code](../policy-as-code/SKILL.md)/) - Policy enforcement

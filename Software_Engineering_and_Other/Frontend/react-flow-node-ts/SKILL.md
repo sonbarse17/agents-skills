@@ -9,7 +9,7 @@ metadata:
 
 # React Flow Node
 
-Create React Flow node components following established patterns with proper TypeScript types and store integration.
+Create React Flow node components following established patterns with proper [TypeScript](../typescript/SKILL.md) types and store integration.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ Copy templates from [assets/](assets/) and replace placeholders:
 ## Templates
 
 - [assets/template.tsx](assets/template.tsx) - Node component
-- [assets/types.template.ts](assets/types.template.ts) - TypeScript definitions
+- [assets/types.template.ts](assets/types.template.ts) - [TypeScript](../typescript/SKILL.md) definitions
 
 ## Node Component Pattern
 
@@ -51,7 +51,7 @@ export const MyNode = memo(function MyNode({
 
 ## Type Definition Pattern
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 export interface MyNodeData extends Record<string, unknown> {
   title: string;
   description?: string;

@@ -11,14 +11,14 @@ metadata:
 
 # Kibana Vega
 
-Create and manage Kibana dashboards and Vega visualizations with ES|QL data sources.
+Create and manage Kibana [dashboards](../dashboards/SKILL.md) and Vega visualizations with ES|QL data sources.
 
 ## Overview
 
 Vega is a declarative visualization grammar for creating custom charts in Kibana. Combined with ES|QL queries, it
 enables highly customized visualizations beyond standard Kibana charts.
 
-**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **Serverless Kibana
+**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Kibana
 or version 9.4+ (SNAPSHOT)**. It will not work reliably on older versions or with older Lucene/KQL data source
 definitions.
 
@@ -54,8 +54,8 @@ export KIBANA_PASSWORD="changeme"
 
 #### Option 4: Local Development with start-local
 
-For local development and testing, use [start-local](https://github.com/elastic/start-local) to quickly spin up
-Elasticsearch and Kibana using Docker or Podman:
+For local development and testing, use [start-local](https://[github](../../CI_CD/github/SKILL.md).com/elastic/start-local) to quickly spin up
+Elasticsearch and Kibana using [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../Containers_and_Orchestration/podman/SKILL.md):
 
 ```bash
 curl -fsSL https://elastic.co/start-local | sh
@@ -98,13 +98,13 @@ node scripts/kibana-vega.js visualizations get <vis-id>
 echo '<json-spec>' | node scripts/kibana-vega.js visualizations update <vis-id> -
 
 # Create dashboard
-node scripts/kibana-vega.js dashboards create "My Dashboard"
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) create "My Dashboard"
 
 # Add visualization with grid position
-node scripts/kibana-vega.js dashboards add-panel <dashboard-id> <vis-id> --x 0 --y 0 --w 24 --h 15
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel <dashboard-id> <vis-id> --x 0 --y 0 --w 24 --h 15
 
 # Apply a complete layout from stdin
-echo '<layout-json>' | node scripts/kibana-vega.js dashboards apply-layout <dashboard-id> -
+echo '<layout-json>' | node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) apply-layout <dashboard-id> -
 ```
 
 **Note:** Use `-` as the file argument to read JSON from stdin. This enables direct spec creation without intermediate
@@ -116,7 +116,7 @@ files.
 
 ```json
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "$schema": "https://vega.[github](../../CI_CD/github/SKILL.md).io/schema/vega-lite/v6.json",
   "title": "My Chart",
   "autosize": { "type": "fit", "contains": "padding" },
 
@@ -154,7 +154,7 @@ files.
 
 ```bash
 # Create visualization directly from JSON
-echo '{"$schema":"https://vega.github.io/schema/vega-lite/v6.json",...}' | \
+echo '{"$schema":"https://vega.[github](../../CI_CD/github/SKILL.md).io/schema/vega-lite/v6.json",...}' | \
   node scripts/kibana-vega.js visualizations create "My Chart" -
 
 # Update visualization
@@ -162,14 +162,14 @@ echo '{"$schema":...}' | node scripts/kibana-vega.js visualizations update <id> 
 
 # Apply layout directly
 echo '{"panels":[{"visualization":"<id>","x":0,"y":0,"w":24,"h":10}]}' | \
-  node scripts/kibana-vega.js dashboards apply-layout <dash-id> -
+  node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) apply-layout <dash-id> -
 ```
 
 ## Dashboard Layout Design
 
 ### Grid System
 
-Kibana dashboards use a **48-column grid**:
+Kibana [dashboards](../dashboards/SKILL.md) use a **48-column grid**:
 
 | Width   | Columns | Use Case                         |
 | ------- | ------- | -------------------------------- |
@@ -213,14 +213,14 @@ Kibana dashboards use a **48-column grid**:
 
 ```bash
 # Row 1: Two compact half-width charts (above fold)
-node scripts/kibana-vega.js dashboards add-panel $DASH $VIS1 --x 0 --y 0 --w 24 --h 10
-node scripts/kibana-vega.js dashboards add-panel $DASH $VIS2 --x 24 --y 0 --w 24 --h 10
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel $DASH $VIS1 --x 0 --y 0 --w 24 --h 10
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel $DASH $VIS2 --x 24 --y 0 --w 24 --h 10
 
 # Row 2: Full-width timeline (above fold)
-node scripts/kibana-vega.js dashboards add-panel $DASH $VIS3 --x 0 --y 10 --w 48 --h 12
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel $DASH $VIS3 --x 0 --y 10 --w 48 --h 12
 
 # Row 3: Below fold content
-node scripts/kibana-vega.js dashboards add-panel $DASH $VIS4 --x 0 --y 22 --w 48 --h 12
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel $DASH $VIS4 --x 0 --y 22 --w 48 --h 12
 ```
 
 #### Option 2: Apply layout file
@@ -242,7 +242,7 @@ Create `layout.json`:
 Apply it:
 
 ```bash
-node scripts/kibana-vega.js dashboards apply-layout <dashboard-id> layout.json
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) apply-layout <dashboard-id> layout.json
 ```
 
 ### Design Checklist
@@ -281,13 +281,13 @@ node scripts/kibana-vega.js dashboards apply-layout <dashboard-id> layout.json
 ## CLI Commands
 
 ```bash
-# Dashboards
-node scripts/kibana-vega.js dashboards list [search]
-node scripts/kibana-vega.js dashboards get <id>
-node scripts/kibana-vega.js dashboards create <title>
-node scripts/kibana-vega.js dashboards delete <id>
-node scripts/kibana-vega.js dashboards add-panel <dash-id> <vis-id> [--x N] [--y N] [--w N] [--h N]
-node scripts/kibana-vega.js dashboards apply-layout <dash-id> <file|->
+# [Dashboards](../dashboards/SKILL.md)
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) list [search]
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) get <id>
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) create <title>
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) delete <id>
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) add-panel <dash-id> <vis-id> [--x N] [--y N] [--w N] [--h N]
+node scripts/kibana-vega.js [dashboards](../dashboards/SKILL.md) apply-layout <dash-id> <file|->
 
 # Visualizations (use - for stdin instead of file)
 node scripts/kibana-vega.js visualizations list [vega]

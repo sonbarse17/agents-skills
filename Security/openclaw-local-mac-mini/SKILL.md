@@ -9,20 +9,20 @@ metadata:
 
 # OpenClaw Local + Mac mini Setup
 
-Use this skill when you want to run [OpenClaw](https://github.com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, Docker Compose configuration, Mac mini hardware optimization, networking, monitoring, and production-grade launchd services.
+Use this skill when you want to run [OpenClaw](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose configuration, Mac mini hardware optimization, networking, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and production-grade launchd services.
 
 ## When to Use
 
 - Running OpenClaw as a private, always-on local AI agent
 - Setting up a dedicated Mac mini as a home-lab AI server
-- Deploying OpenClaw with Docker Compose for reproducible environments
+- Deploying OpenClaw with [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose for reproducible environments
 - Optimizing macOS for headless server operation
-- Monitoring a local AI service for uptime and performance
+- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) a local AI service for uptime and performance
 
 ## Prerequisites
 
 - macOS 13 (Ventura) or later on Apple Silicon (M1/M2/M4 Mac mini recommended)
-- Docker Desktop for Mac or OrbStack installed
+- [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Desktop for Mac or OrbStack installed
 - Git, Node.js (v18+), and a package manager (npm or pnpm)
 - API keys for your chosen LLM provider (OpenAI, Anthropic, or local Ollama)
 - At least 16 GB RAM (32 GB recommended for local model serving)
@@ -33,7 +33,7 @@ Use this skill when you want to run [OpenClaw](https://github.com/openclaw/openc
 
 ```bash
 # Clone the repository
-git clone https://github.com/openclaw/openclaw.git
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw.git
 cd openclaw
 
 # Review the upstream README for current prerequisites
@@ -96,9 +96,9 @@ curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 npm test
 ```
 
-## Docker Compose Setup
+## [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Setup
 
-### docker-compose.yml
+### [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 
 ```yaml
 version: "3.8"
@@ -179,31 +179,31 @@ volumes:
   ollama-models:
 ```
 
-### Running with Docker Compose
+### Running with [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
 
 ```bash
 # Build and start all services
-docker compose up -d --build
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d --build
 
 # Check service status
-docker compose ps
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose ps
 
 # View logs
-docker compose logs -f openclaw
-docker compose logs -f --tail=100 ollama
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose logs -f openclaw
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose logs -f --tail=100 ollama
 
 # Pull a model into Ollama (if using local models)
-docker exec openclaw-ollama ollama pull llama3:8b
-docker exec openclaw-ollama ollama list
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec openclaw-ollama ollama pull llama3:8b
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) exec openclaw-ollama ollama list
 
 # Restart a single service
-docker compose restart openclaw
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose restart openclaw
 
 # Stop everything
-docker compose down
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose down
 
 # Stop and remove volumes (full reset)
-docker compose down -v
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose down -v
 ```
 
 ## Mac mini Production Setup
@@ -250,7 +250,7 @@ su - openclaw
 
 # Clone and configure OpenClaw in the user's home
 cd ~
-git clone https://github.com/openclaw/openclaw.git
+git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw.git
 cd openclaw
 cp .env.example .env
 # Edit .env with production values
@@ -364,24 +364,24 @@ tail -f /var/log/openclaw/stdout.log
 tail -f /var/log/openclaw/stderr.log
 ```
 
-### Docker Compose via launchd
+### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose via launchd
 
 ```xml
-<!-- /Library/LaunchDaemons/com.openclaw.docker.plist -->
+<!-- /Library/LaunchDaemons/com.openclaw.[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).plist -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.openclaw.docker</string>
+    <string>com.openclaw.[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)</string>
 
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/docker</string>
+        <string>/usr/local/bin/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)</string>
         <string>compose</string>
         <string>-f</string>
-        <string>/Users/openclaw/openclaw/docker-compose.yml</string>
+        <string>/Users/openclaw/openclaw/[docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml</string>
         <string>up</string>
     </array>
 
@@ -392,10 +392,10 @@ tail -f /var/log/openclaw/stderr.log
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/var/log/openclaw/docker-stdout.log</string>
+    <string>/var/log/openclaw/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/var/log/openclaw/docker-stderr.log</string>
+    <string>/var/log/openclaw/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-stderr.log</string>
 </dict>
 </plist>
 ```
@@ -481,7 +481,7 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setblockall on
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
 ```
 
-## Monitoring
+## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ### Health Check Script
 
@@ -531,21 +531,21 @@ crontab -e
 # */5 * * * * /Users/openclaw/openclaw/healthcheck.sh
 ```
 
-### Resource Monitoring
+### Resource [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # Monitor CPU and memory usage of OpenClaw
-ps aux | grep -E 'node|docker' | grep -v grep
+ps aux | grep -E 'node|[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)' | grep -v grep
 
-# Continuous monitoring with top (non-interactive)
-top -l 1 -s 0 | grep -E 'node|docker'
+# Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with top (non-interactive)
+top -l 1 -s 0 | grep -E 'node|[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)'
 
 # Disk usage check
 df -h /Users/openclaw
 du -sh /Users/openclaw/openclaw/data/
 
-# Docker resource usage
-docker stats --no-stream openclaw openclaw-redis openclaw-ollama
+# [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) resource usage
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) stats --no-stream openclaw openclaw-redis openclaw-ollama
 
 # macOS Activity Monitor from CLI
 sudo powermetrics --samplers cpu_power,gpu_power -n 1
@@ -589,7 +589,7 @@ chmod +x /Users/openclaw/rotate-logs.sh
 - Health check succeeds via Tailscale (`curl -f http://100.64.x.x:3000/api/health`)
 - Secrets are not committed and not world-readable (`ls -la .env`, check `.gitignore`)
 - Access to admin interfaces is restricted to trusted users/devices
-- Docker volumes persist across container restarts (`docker compose down && docker compose up -d`)
+- [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) volumes persist across container restarts (`[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose down && [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d`)
 - Log rotation is active and disk usage stays bounded
 - Automatic restart works after crash (kill the process and verify relaunch)
 
@@ -602,13 +602,13 @@ chmod +x /Users/openclaw/rotate-logs.sh
 | Auth errors | Check `.env` or Keychain secrets | Re-check provider keys, scopes, and endpoint URLs |
 | Random crashes | `log show --predicate 'process == "node"'` | Pin dependency versions, check for OOM in `dmesg` |
 | Port 3000 in use | `lsof -i :3000` | Kill conflicting process or change PORT in `.env` |
-| Docker won't start | `docker info`, `docker compose logs` | Ensure Docker Desktop/OrbStack is running |
-| Ollama model slow | `docker stats openclaw-ollama` | Allocate more RAM to Docker, use quantized model |
+| [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) won't start | `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) info`, `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose logs` | Ensure [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Desktop/OrbStack is running |
+| Ollama model slow | `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) stats openclaw-ollama` | Allocate more RAM to [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), use quantized model |
 | Tailscale unreachable | `tailscale status`, `ping 100.64.x.x` | Re-authenticate with `tailscale up`, check firewall |
-| Disk full | `df -h`, `du -sh ~/openclaw/data/` | Prune Docker images (`docker system prune`), rotate logs |
+| Disk full | `df -h`, `du -sh ~/openclaw/data/` | Prune [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images (`[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system prune`), rotate logs |
 
 ## Related Skills
 
-- [ollama-stack](../ollama-stack/) - Local model serving patterns
-- [mac-mini-llm-lab](../mac-mini-llm-lab/) - Mac mini reliability and security baseline
-- [startup-it-troubleshooting](../../it/startup-it-troubleshooting/) - Small-team operational triage
+- [ollama-stack](../[ollama-stack](../../AI_and_Agents/Models_and_FineTuning/ollama-stack/SKILL.md)/) - Local model serving patterns
+- [mac-mini-llm-lab](../[mac-mini-llm-lab](../../AI_and_Agents/Models_and_FineTuning/mac-mini-llm-lab/SKILL.md)/) - Mac mini reliability and security baseline
+- [startup-it-troubleshooting](../../it/[startup-it-troubleshooting](../../Software_Engineering_and_Other/Miscellaneous/startup-it-troubleshooting/SKILL.md)/) - Small-team operational triage

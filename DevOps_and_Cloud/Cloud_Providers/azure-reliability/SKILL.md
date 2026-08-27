@@ -307,7 +307,7 @@ After the migration completes, the skill patches the storage SKU in IaC and runs
 After changes are applied (CLI) or deployed (IaC), automatically re-run the assessment and show the **same feature-pivoted table** as Phase 3, with each feature row's status updated to reflect the new state. Briefly call out what changed since the previous run.
 
 ```
-🔄 Reliability Re-Assessment — rg-eventhubs-python-jan13 (eastus)
+🔄 Reliability Re-Assessment — rg-eventhubs-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-jan13 (eastus)
 ───────────────────────────────────────────────────────────────────────────────────────
 Reliability Feature              Status      Resources
 ───────────────────────────────────────────────────────────────────────────────────────
@@ -358,7 +358,7 @@ Do you want me to set up multi-region failover now? (yes / no / later)
 | Critical | No zone redundancy AND production workload | Fix immediately |
 | High | LRS storage on zone-redundant compute | Fix within days |
 | Medium | No multi-region (single region but zone-redundant) | Plan for next sprint |
-| Low | Missing health probes or monitoring gaps | Track and fix |
+| Low | Missing health probes or [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) gaps | Track and fix |
 
 ## Error Handling
 
@@ -382,7 +382,7 @@ Do you want me to set up multi-region failover now? (yes / no / later)
 | Recommend improvements | ✅ Yes | — |
 | Enable zone redundancy (CLI commands) | ✅ Yes | — |
 | Patch Bicep/Terraform for reliability | ✅ Yes | — |
-| Generate multi-region IaC | ✅ Yes (additions for the secondary region + Front Door) | `azure-prepare` for full new-app IaC scaffolding |
-| Deploy IaC for reliability changes | ✅ Yes (runs `azd up` / `terraform apply` / `az deployment` itself, after user confirmation) | `azure-deploy` for general/non-reliability deploys |
-| Validate pre-deployment | Reliability checks only | `azure-validate` for full validation |
+| Generate multi-region IaC | ✅ Yes (additions for the secondary region + Front Door) | `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` for full new-app IaC scaffolding |
+| Deploy IaC for reliability changes | ✅ Yes (runs `azd up` / `terraform apply` / `az deployment` itself, after user confirmation) | `[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)` for general/non-reliability deploys |
+| Validate pre-deployment | Reliability checks only | `[azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md)` for full validation |
 

@@ -9,16 +9,16 @@ metadata:
 
 # Datadog
 
-Monitor infrastructure and applications with Datadog's unified observability platform.
+Monitor infrastructure and applications with Datadog's unified [observability](../observability/SKILL.md) platform.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Implementing enterprise-grade monitoring
+- Implementing enterprise-grade [monitoring](../monitoring/SKILL.md)
 - Setting up APM and distributed tracing
-- Creating unified dashboards for infrastructure and apps
-- Configuring intelligent alerting
-- Monitoring cloud infrastructure (AWS, Azure, GCP)
+- Creating unified [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for infrastructure and apps
+- Configuring intelligent [alerting](../alerting/SKILL.md)
+- [Monitoring](../monitoring/SKILL.md) cloud infrastructure (AWS, Azure, GCP)
 
 ## Prerequisites
 
@@ -45,10 +45,10 @@ systemctl start datadog-agent
 systemctl enable datadog-agent
 ```
 
-### Docker
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
@@ -61,7 +61,7 @@ services:
       - DD_APM_ENABLED=true
       - DD_PROCESS_AGENT_ENABLED=true
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:ro
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
     ports:
@@ -69,7 +69,7 @@ services:
       - "8125:8125/udp"  # DogStatsD
 ```
 
-### Kubernetes
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```bash
 # Using Helm
@@ -109,11 +109,11 @@ apm_config:
   enabled: true
   apm_dd_url: https://trace.agent.datadoghq.com
 
-# Process monitoring
+# Process [monitoring](../monitoring/SKILL.md)
 process_config:
   enabled: true
 
-# Container monitoring
+# Container [monitoring](../monitoring/SKILL.md)
 container_collect_all: true
 docker_labels_as_tags:
   app: service
@@ -122,10 +122,10 @@ docker_labels_as_tags:
 
 ## Integration Configuration
 
-### MySQL
+### [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
 
 ```yaml
-# /etc/datadog-agent/conf.d/mysql.d/conf.yaml
+# /etc/datadog-agent/conf.d/[mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md).d/conf.yaml
 init_config:
 
 instances:
@@ -140,7 +140,7 @@ instances:
       extra_status_metrics: true
 ```
 
-### PostgreSQL
+### [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 
 ```yaml
 # /etc/datadog-agent/conf.d/postgres.d/conf.yaml
@@ -178,7 +178,7 @@ logs:
   - type: file
     path: /var/log/myapp/*.log
     service: myapp
-    source: python
+    source: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
     sourcecategory: custom
     tags:
       - env:production
@@ -193,17 +193,17 @@ logs:
         pattern: health_check
 ```
 
-### Docker Logs
+### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Logs
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 services:
   myapp:
     labels:
-      com.datadoghq.ad.logs: '[{"source": "python", "service": "myapp"}]'
+      com.datadoghq.ad.logs: '[{"source": "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "service": "myapp"}]'
 ```
 
-### Kubernetes Logs
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Logs
 
 ```yaml
 # Pod annotation
@@ -213,7 +213,7 @@ metadata:
   annotations:
     ad.datadoghq.com/myapp.logs: |
       [{
-        "source": "python",
+        "source": "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)",
         "service": "myapp",
         "log_processing_rules": [{
           "type": "multi_line",
@@ -225,9 +225,9 @@ metadata:
 
 ## APM Configuration
 
-### Python
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from ddtrace import patch_all, tracer
 
 # Automatic instrumentation
@@ -259,7 +259,7 @@ def process_order(order_id):
 pip install ddtrace
 
 # Run with auto-instrumentation
-ddtrace-run python app.py
+ddtrace-run [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py
 ```
 
 ### Node.js
@@ -313,7 +313,7 @@ func main() {
 
 ### DogStatsD
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datadog import DogStatsd
 
 statsd = DogStatsd(host='localhost', port=8125)
@@ -333,7 +333,7 @@ statsd.distribution('myapp.response_time', duration, tags=['endpoint:/api/orders
 
 ### API Submission
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datadog_api_client import Configuration, ApiClient
 from datadog_api_client.v2.api.metrics_api import MetricsApi
 from datadog_api_client.v2.model.metric_payload import MetricPayload
@@ -357,7 +357,7 @@ with ApiClient(configuration) as api_client:
     api.submit_metrics(body=payload)
 ```
 
-## Dashboards
+## [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 
 ### Dashboard JSON
 
@@ -451,13 +451,13 @@ with ApiClient(configuration) as api_client:
 - Implement proper tag naming conventions
 - Use unified service tagging (service, env, version)
 - Set up service-level monitors
-- Create dashboards per service
+- Create [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per service
 - Implement log correlation with traces
 - Use distributions for latency metrics
 - Configure proper alert escalation
 
 ## Related Skills
 
-- [prometheus-grafana](../prometheus-grafana/) - Open source alternative
-- [alerting-oncall](../alerting-oncall/) - Alert management
-- [aws-vpc](../../../infrastructure/cloud-aws/aws-vpc/) - AWS monitoring
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Open source alternative
+- [alerting-oncall](../[alerting-oncall](../[alerting](../alerting/SKILL.md)-oncall/SKILL.md)/) - Alert management
+- [aws-vpc](../../../infrastructure/cloud-aws/[aws-vpc](../../Cloud_Providers/aws-vpc/SKILL.md)/) - AWS [monitoring](../monitoring/SKILL.md)

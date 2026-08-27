@@ -145,7 +145,7 @@ func ForkChoice(blocks []Block) Block {
 
 ### BFT Consensus (Tendermint)
 ```go
-// Tendermint consensus states: Propose → Pre-vote → Pre-commit → Commit
+// Tendermint consensus states: Propose → Pre-vote → Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
 // 2f+1 validators needed (f = max faulty)
 func ConsensusRound(height int64, round int32, state State) Decision {
     proposer := SelectProposer(height, round, state.Validators)
@@ -154,7 +154,7 @@ func ConsensusRound(height int64, round int32, state State) Decision {
     if len(prevotes) > 2*len(state.Validators)/3 {
         precommits := Broadcast(PrecommitMessage{BlockID: block.ID})
         if len(precommits) > 2*len(state.Validators)/3 {
-            return Commit{Block: block}
+            return [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md){Block: block}
         }
     }
     return Nil // Timeout, next round
@@ -163,7 +163,7 @@ func ConsensusRound(height int64, round int32, state State) Decision {
 
 ### HotStuff (Libra/Diem Successor)
 ```go
-// HotStuff: 3-chain protocol (prepare → pre-commit → commit)
+// HotStuff: 3-chain protocol (prepare → pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md))
 // Leader-based BFT with linear message complexity O(n)
 // Each round has a leader; pipelined for efficiency
 // Used in: Diem, Sui (Narwhal/Tusk), Flow
@@ -178,7 +178,7 @@ type HotStuffState struct {
 ### DAG Consensus (Avalanche)
 - Snow consensus: Repeated subsampling of validators
   - Query k validators (k=20), wait for alpha response (≥15)
-  - If confident, commit; if conflict, switch; else repeat
+  - If confident, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md); if conflict, switch; else repeat
   - Typically converges in 3-5 rounds
 - DAG structure: Multiple blocks referenced, not just linear chain
   - Each block references multiple parents (DAG)
@@ -291,7 +291,7 @@ Protocol level:
 └── Uniform random ordering: Tx order determined by randomness, not fee
 
 Application level:
-├── Commit-reveal: Submit commitment, reveal later
+├── [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal: Submit commitment, reveal later
 ├── Batch auctions (CowSwap): CoW mechanism for order matching
 ├── Slippage protection: minOutputAmount in all swaps
 └── Private mempool (Flashbots): Bypass public mempool
@@ -369,8 +369,8 @@ Application level:
 
 ## Implementation Patterns
 
-### Fork Choice Rule — LMD-GHOST (TypeScript)
-```typescript
+### Fork Choice Rule — LMD-GHOST ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface Block { hash: string; parentHash: string; height: number; weight: number; }
 interface Attestation { validatorIndex: number; blockHash: string; weight: number; }
 
@@ -439,7 +439,7 @@ func (mp *Mempool) Add(tx *Transaction) bool {
   - references/blockchain-fork-choice.md — Fork Choice Rules
   - references/light-client-protocols.md — Light Client Protocols
   - references/transaction-ordering-policies.md — Transaction Ordering Policies
-  - references/mempool-design-patterns.md — Mempool Design Patterns
+  - references/mempool-[design-patterns](../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md — Mempool Design Patterns
 
 ## Architecture Decision Trees
 
@@ -510,7 +510,7 @@ impl DiscoveryService {
 
 ## Production Considerations
 
-- **Validator monitoring**: Monitor validator uptime, missed blocks, and slashing events; alert on downtime.
+- **Validator [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor validator uptime, missed blocks, and slashing events; alert on downtime.
 - **Checkpoint sync**: Use checkpoint sync for fast node bootstrap; validate against trusted checkpoints.
 - **Mempool management**: Set mempool size limits; prioritize transactions by fee using priority queue.
 - **State pruning**: Prune old state trie nodes; use snap sync for initial state download.

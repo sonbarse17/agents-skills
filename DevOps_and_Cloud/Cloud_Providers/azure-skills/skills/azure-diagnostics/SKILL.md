@@ -26,7 +26,7 @@ Activate this skill when user wants to:
 - Respond to prompts like "troubleshoot app service", "app service high CPU", or "app service deployment failure"
 - Troubleshoot Azure Function Apps (invocation failures, timeouts, binding errors)
 - Find the App Insights or Log Analytics workspace linked to a Function App
-- Troubleshoot AKS clusters, nodes, pods, ingress, or Kubernetes networking issues
+- Troubleshoot AKS clusters, nodes, pods, ingress, or [Kubernetes](../../../../Containers_and_Orchestration/kubernetes/SKILL.md) networking issues
 - Troubleshoot Azure VM connectivity issues (RDP/SSH failures, port 3389/22 timeouts, NSG or firewall blocking, credential resets)
 - Troubleshoot Azure Messaging SDK issues (Event Hubs, Service Bus connection failures, AMQP errors, message lock issues)
 

@@ -18,7 +18,7 @@ metadata:
   maturity: stable
 ---
 
-# Complete GitOps/Argo CD Deployment on AKS, From Scratch
+# Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on AKS, From Scratch
 
 ## Purpose
 
@@ -27,7 +27,7 @@ skill: Argo CD install, `Application`, `ApplicationSet`, and sync policy
 mechanics are identical across every cloud and are covered once, in depth,
 in the linked skills. What's genuinely different on Azure is **how Argo
 CD's own components authenticate** — Azure AD Workload Identity (the
-successor to the deprecated AAD Pod Identity) federates a Kubernetes
+successor to the deprecated AAD Pod Identity) federates a [Kubernetes](../kubernetes/SKILL.md)
 ServiceAccount to an Azure AD application via OIDC, using `kubelogin` as
 the exec credential plugin rather than AWS's `aws eks get-token` or GKE's
 `gke-gcloud-auth-plugin`. This skill sequences that federation correctly
@@ -38,15 +38,15 @@ Registry (ACR) without a static registry secret.
 ## When to use
 
 - Starting from a bare, already-provisioned AKS cluster with nothing
-  GitOps-related installed, needing a working Argo CD + first deployed app
+  [GitOps](../gitops/SKILL.md)-related installed, needing a working Argo CD + first deployed app
   + multi-environment rollout by the end of the session.
 - The user explicitly wants Azure AD Workload Identity wired into Argo
   CD's own service accounts (not just application workloads) for cluster
   access or ACR pulls.
 - Standing up a second/third AKS-hosted environment for a service already
-  GitOps-managed in one cluster.
-- Migrating a team off manual `kubectl apply`/`helm upgrade` deploys to AKS
-  onto a full GitOps flow, starting from zero.
+  [GitOps](../gitops/SKILL.md)-managed in one cluster.
+- Migrating a team off manual `[kubectl](../kubectl/SKILL.md) apply`/`helm upgrade` deploys to AKS
+  onto a full [GitOps](../gitops/SKILL.md) flow, starting from zero.
 - Diagnosing why a freshly installed Argo CD on AKS can't pull a private
   ACR image or can't register a second AKS cluster as a destination.
 
@@ -56,19 +56,19 @@ Registry (ACR) without a static registry secret.
   Identity features enabled (`az aks create --enable-oidc-issuer
   --enable-workload-identity`, or `az aks update` on an existing cluster)
   — cluster/node-pool provisioning itself is covered by
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
   and is not repeated here.
-- `helm` ≥ 3.12, `kubectl`, `az` CLI ≥ 2.60, and the **Azure Workload
+- `helm` ≥ 3.12, `[kubectl](../kubectl/SKILL.md)`, `az` CLI ≥ 2.60, and the **Azure Workload
   Identity webhook** already installed on the cluster (bundled by
   `--enable-workload-identity`, but confirm with
-  `kubectl get pods -n kube-system -l azure-workload-identity.io/system=true`).
+  `[kubectl](../kubectl/SKILL.md) get pods -n kube-system -l azure-workload-identity.io/system=true`).
 - The `kubelogin` binary available wherever Argo CD's exec credential runs
-  (baked into the `argocd-application-controller`/`argocd-server` image or
+  (baked into the `[argocd](../argocd/SKILL.md)-application-controller`/`[argocd](../argocd/SKILL.md)-server` image or
   mounted as an init step) — Azure AD-based `kubeconfig`s reference
   `kubelogin` as their exec plugin, unlike a plain bearer token.
 - A Git repository already reachable from the cluster's network path.
 - Least-privilege principles from
-  [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md)
+  [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
   should govern every Azure AD application/federated credential created in
   Phase 2.
 
@@ -90,13 +90,13 @@ provider.
 ### Phase 1 — Install Argo CD via Helm
 
 ```bash
-helm repo add argo https://argoproj.github.io/argo-helm
+helm repo add argo https://argoproj.[github](../../CI_CD/github/SKILL.md).io/argo-helm
 helm repo update
-helm install argocd argo/argo-cd \
-  --namespace argocd --create-namespace \
+helm install [argocd](../argocd/SKILL.md) argo/[argo-cd](../argo-cd/SKILL.md) \
+  --namespace [argocd](../argocd/SKILL.md) --create-namespace \
   --version 7.6.12 \
   --set server.service.type=ClusterIP
-kubectl get pods -n argocd
+[kubectl](../kubectl/SKILL.md) get pods -n [argocd](../argocd/SKILL.md)
 ```
 
 ### Phase 2 — Azure AD Workload Identity integration for Argo CD's own components
@@ -106,30 +106,30 @@ Two distinct needs, both solved with Workload Identity:
 1. **Cross-cluster access.** For Argo CD to manage a second AKS cluster
    (`payments-staging`) as a destination, create a managed identity, a
    federated credential trusting `payments-prod`'s OIDC issuer for the
-   `argocd-application-controller` ServiceAccount, and grant that identity
-   `Azure Kubernetes Service Cluster User Role` plus an AKS **Azure RBAC**
-   binding (`Azure Kubernetes Service RBAC Writer`) scoped to
+   `[argocd](../argocd/SKILL.md)-application-controller` ServiceAccount, and grant that identity
+   `Azure [Kubernetes](../kubernetes/SKILL.md) Service Cluster User Role` plus an AKS **Azure RBAC**
+   binding (`Azure [Kubernetes](../kubernetes/SKILL.md) Service RBAC Writer`) scoped to
    `payments-staging`:
    ```bash
-   az identity create --name argocd-cross-cluster --resource-group payments-rg
+   az identity create --name [argocd](../argocd/SKILL.md)-cross-cluster --resource-group payments-rg
    az identity federated-credential create \
-     --name argocd-cross-cluster-fic --identity-name argocd-cross-cluster \
+     --name [argocd](../argocd/SKILL.md)-cross-cluster-fic --identity-name [argocd](../argocd/SKILL.md)-cross-cluster \
      --resource-group payments-rg \
      --issuer "$(az aks show -n payments-prod -g payments-rg --query oidcIssuerProfile.issuerUrl -o tsv)" \
-     --subject system:serviceaccount:argocd:argocd-application-controller \
+     --subject system:serviceaccount:[argocd](../argocd/SKILL.md):[argocd](../argocd/SKILL.md)-application-controller \
      --audience api://AzureADTokenExchange
 
    az role assignment create \
-     --assignee "$(az identity show -n argocd-cross-cluster -g payments-rg --query principalId -o tsv)" \
-     --role "Azure Kubernetes Service RBAC Writer" \
+     --assignee "$(az identity show -n [argocd](../argocd/SKILL.md)-cross-cluster -g payments-rg --query principalId -o tsv)" \
+     --role "Azure [Kubernetes](../kubernetes/SKILL.md) Service RBAC Writer" \
      --scope "$(az aks show -n payments-staging -g payments-rg --query id -o tsv)"
    ```
    ```yaml
    apiVersion: v1
    kind: ServiceAccount
    metadata:
-     name: argocd-application-controller
-     namespace: argocd
+     name: [argocd](../argocd/SKILL.md)-application-controller
+     namespace: [argocd](../argocd/SKILL.md)
      annotations:
        azure.workload.identity/client-id: <ARGOCD_CROSS_CLUSTER_CLIENT_ID>
      labels:
@@ -151,32 +151,32 @@ Two distinct needs, both solved with Workload Identity:
      }
    ```
    This is the Azure counterpart of the cluster-registration pattern in
-   [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md)
+   [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md)
    — same `Secret`-based registration, but the credential is an Azure AD
    token exchanged via `kubelogin` instead of a static bearer token or
    AWS's `aws eks get-token`.
 
-2. **Private ACR image pulls for `argocd-repo-server`** (Helm OCI charts)
+2. **Private ACR image pulls for `[argocd](../argocd/SKILL.md)-repo-server`** (Helm OCI charts)
    and application workloads, using the same federation mechanics shown in
-   [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md):
+   [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md):
    ```bash
-   az identity create --name argocd-repo-server-acr --resource-group payments-rg
+   az identity create --name [argocd](../argocd/SKILL.md)-repo-server-acr --resource-group payments-rg
    az role assignment create \
-     --assignee "$(az identity show -n argocd-repo-server-acr -g payments-rg --query principalId -o tsv)" \
+     --assignee "$(az identity show -n [argocd](../argocd/SKILL.md)-repo-server-acr -g payments-rg --query principalId -o tsv)" \
      --role AcrPull \
      --scope "$(az acr show -n paymentsregistry --query id -o tsv)"
    az identity federated-credential create \
-     --name argocd-repo-server-fic --identity-name argocd-repo-server-acr \
+     --name [argocd](../argocd/SKILL.md)-repo-server-fic --identity-name [argocd](../argocd/SKILL.md)-repo-server-acr \
      --resource-group payments-rg \
      --issuer "$(az aks show -n payments-prod -g payments-rg --query oidcIssuerProfile.issuerUrl -o tsv)" \
-     --subject system:serviceaccount:argocd:argocd-repo-server
+     --subject system:serviceaccount:[argocd](../argocd/SKILL.md):[argocd](../argocd/SKILL.md)-repo-server
    ```
    ```yaml
    apiVersion: v1
    kind: ServiceAccount
    metadata:
-     name: argocd-repo-server
-     namespace: argocd
+     name: [argocd](../argocd/SKILL.md)-repo-server
+     namespace: [argocd](../argocd/SKILL.md)
      annotations:
        azure.workload.identity/client-id: <ARGOCD_REPO_SERVER_ACR_CLIENT_ID>
      labels:
@@ -186,28 +186,28 @@ Two distinct needs, both solved with Workload Identity:
 ### Phase 3 — Ingress and TLS for the Argo CD API/UI
 
 Same mechanics as any other cluster:
-[ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md)
-in front of `argocd-server`, certificate issued by
-[cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md)
+[ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
+in front of `[argocd](../argocd/SKILL.md)-server`, certificate issued by
+[cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
 via DNS-01 against Azure DNS (its own Workload-Identity-federated
 credential, per that skill's guidance) rather than a self-signed cert.
 
 ### Phase 4 — First `Application`
 
-Follow [argocd-application-configuration](../argocd-application-configuration/SKILL.md)
+Follow [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
 in full for the `Application` spec, sync-wave ordering, and health checks;
 apply and sync manually first:
 ```bash
-kubectl apply -f payments-api-staging-application.yaml
-argocd login argocd.example.com --sso
-argocd app sync payments-api-staging --dry-run
-argocd app sync payments-api-staging
+[kubectl](../kubectl/SKILL.md) apply -f payments-api-staging-application.yaml
+[argocd](../argocd/SKILL.md) login [argocd](../argocd/SKILL.md).example.com --sso
+[argocd](../argocd/SKILL.md) app sync payments-api-staging --dry-run
+[argocd](../argocd/SKILL.md) app sync payments-api-staging
 ```
 
 ### Phase 5 — `ApplicationSet` for multi-environment rollout
 
 Replace the single hand-authored `Application` with an `ApplicationSet`
-per [argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md).
+per [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md).
 If staging and prod are separate AKS clusters, use the Cluster generator
 filtered by label, with each cluster's registration reusing the Workload
 Identity federation from Phase 2.
@@ -217,16 +217,16 @@ Identity federation from Phase 2.
 Manual sync until the pipeline feeding the config repo is trusted, then
 `automated` per environment, plus custom Lua health checks for any
 internal CRDs — both per
-[argocd-application-configuration](../argocd-application-configuration/SKILL.md).
+[argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md).
 
 ### Phase 7 — Verify end-to-end
 
 ```bash
-argocd cluster list
-argocd app list
-kubectl exec -n argocd deploy/argocd-repo-server -- az account show
+[argocd](../argocd/SKILL.md) cluster list
+[argocd](../argocd/SKILL.md) app list
+[kubectl](../kubectl/SKILL.md) exec -n [argocd](../argocd/SKILL.md) deploy/[argocd](../argocd/SKILL.md)-repo-server -- az account show
 ```
-`az account show` from inside `argocd-repo-server` should show the
+`az account show` from inside `[argocd](../argocd/SKILL.md)-repo-server` should show the
 federated managed identity, not an error — confirming the workload
 identity webhook actually injected the federated token rather than the
 pod silently having no Azure identity at all.
@@ -241,14 +241,14 @@ pod silently having no Azure identity at all.
   `system:serviceaccount:<namespace>:<name>` pair — a federated credential
   is not automatically valid for a same-named ServiceAccount in a
   different namespace, mirroring the equivalent pitfall in
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md).
+  [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md).
 - Grant `AcrPull` only on the specific ACR registry (or repository, if
   using ACR's repository-scoped tokens) Argo CD needs — not
   subscription-wide `Contributor`.
-- Never expose `argocd-server` via a public `LoadBalancer` Service —
+- Never expose `[argocd](../argocd/SKILL.md)-server` via a public `LoadBalancer` Service —
   terminate through Ingress + cert-manager as in Phase 3.
 - Default to manual sync until the config repo's CI gates are trusted,
-  matching the EKS/GKE variants of this runbook.
+  matching the EKS/GKE variants of this [runbook](../../Observability_and_SecOps/runbook/SKILL.md).
 
 ## Common pitfalls
 
@@ -277,7 +277,7 @@ pod silently having no Azure identity at all.
   the first sync manually with `--dry-run` (Phase 4) before enabling
   `automated` in a later, deliberate step (Phase 6).
 
-- **Symptom:** `argocd-repo-server` can reach the Git repo but pulling a
+- **Symptom:** `[argocd](../argocd/SKILL.md)-repo-server` can reach the Git repo but pulling a
   Helm OCI chart or the workload's own image from ACR fails with
   `unauthorized`.
   **Fix:** ACR pull auth for the workload's own pods is a separate
@@ -297,36 +297,36 @@ az aks update -n payments-prod -g payments-rg \
   --enable-oidc-issuer --enable-workload-identity
 
 # Phase 1
-helm install argocd argo/argo-cd -n argocd --create-namespace --version 7.6.12
+helm install [argocd](../argocd/SKILL.md) argo/[argo-cd](../argo-cd/SKILL.md) -n [argocd](../argocd/SKILL.md) --create-namespace --version 7.6.12
 
 # Phase 2 — cross-cluster federated credential
-az identity create --name argocd-cross-cluster --resource-group payments-rg
-az identity federated-credential create --name argocd-cross-cluster-fic \
-  --identity-name argocd-cross-cluster --resource-group payments-rg \
+az identity create --name [argocd](../argocd/SKILL.md)-cross-cluster --resource-group payments-rg
+az identity federated-credential create --name [argocd](../argocd/SKILL.md)-cross-cluster-fic \
+  --identity-name [argocd](../argocd/SKILL.md)-cross-cluster --resource-group payments-rg \
   --issuer "$(az aks show -n payments-prod -g payments-rg --query oidcIssuerProfile.issuerUrl -o tsv)" \
-  --subject system:serviceaccount:argocd:argocd-application-controller
+  --subject system:serviceaccount:[argocd](../argocd/SKILL.md):[argocd](../argocd/SKILL.md)-application-controller
 az role assignment create \
-  --assignee "$(az identity show -n argocd-cross-cluster -g payments-rg --query principalId -o tsv)" \
-  --role "Azure Kubernetes Service RBAC Writer" \
+  --assignee "$(az identity show -n [argocd](../argocd/SKILL.md)-cross-cluster -g payments-rg --query principalId -o tsv)" \
+  --role "Azure [Kubernetes](../kubernetes/SKILL.md) Service RBAC Writer" \
   --scope "$(az aks show -n payments-staging -g payments-rg --query id -o tsv)"
 
 # Phase 4 — first Application, manual sync
-kubectl apply -f payments-api-staging-application.yaml
-argocd app sync payments-api-staging --dry-run
-argocd app sync payments-api-staging
+[kubectl](../kubectl/SKILL.md) apply -f payments-api-staging-application.yaml
+[argocd](../argocd/SKILL.md) app sync payments-api-staging --dry-run
+[argocd](../argocd/SKILL.md) app sync payments-api-staging
 ```
 Phase 5 then replaces the single `Application` with a Cluster-generator
 `ApplicationSet` selecting `tier: staging`/`tier: prod` labeled clusters
 (full YAML in
-[argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md)),
+[argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md)),
 and Phase 6 promotes staging's sync policy to `automated` once verified.
 
 ## Cross-references
 
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — AKS cluster/node-pool provisioning and Workload Identity mechanics this skill assumes and builds on.
-- [argocd-application-configuration](../argocd-application-configuration/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
-- [argocd-applicationset-patterns](../argocd-applicationset-patterns/SKILL.md) — generator mechanics used in Phase 5.
-- [gitops-multi-cluster-management](../gitops-multi-cluster-management/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with Workload Identity.
-- [ingress-nginx-configuration](../../../kubernetes-platform/skills/ingress-nginx-configuration/SKILL.md) and [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md) — Phase 3's Ingress/TLS mechanics.
-- [cloud-iam-hardening](../../../cloud/skills/cloud-iam-hardening/SKILL.md) — least-privilege principles governing every Azure AD role assignment created here.
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) — the vendor-neutral GitOps concepts this AKS-specific runbook implements.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — AKS cluster/node-pool provisioning and Workload Identity mechanics this skill assumes and builds on.
+- [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
+- [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — generator mechanics used in Phase 5.
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with Workload Identity.
+- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
+- [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege principles governing every Azure AD role assignment created here.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../gitops/SKILL.md) concepts this AKS-specific [runbook](../../Observability_and_SecOps/runbook/SKILL.md) implements.

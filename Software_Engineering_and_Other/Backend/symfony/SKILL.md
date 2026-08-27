@@ -26,7 +26,7 @@ User request includes: `symfony`, `symfony backend`, `symfony bundle`, `doctrine
 ### Input Context
 - PHP version (8.1+)
 - Symfony version (6.4+, 7.x)
-- Database (Doctrine ORM, Doctrine MongoDB)
+- Database (Doctrine ORM, Doctrine [MongoDB](../mongodb/SKILL.md))
 - Template engine (Twig)
 - Queue (Messenger with Redis, Doctrine, AMQP)
 - API format (REST, GraphQL with API Platform)
@@ -564,7 +564,7 @@ Need message persistence and guaranteed delivery?
 1. **Autowiring enabled for all services** — manual wiring only for third-party bundles.
 2. **Doctrine entities with typed properties and attributes** (not annotations).
 3. **Messenger for async tasks** (emails, notifications, processing).
-4. **EventSubscriber for cross-cutting concerns** (audit, logging).
+4. **EventSubscriber for cross-cutting concerns** ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md), logging).
 5. **Flex recipes manage all package configuration** — avoid manual config.
 6. **PHPUnit with WebTestCase for functional tests**.
 7. **DTO layer between request and entity** — never persist raw request data.
@@ -612,7 +612,7 @@ Need message persistence and guaranteed delivery?
 | **Rate Limiter** | API rate limiting |
 | **Security Bundle** | Auth, ACL, voters |
 | **Monolog** | Logging |
-| **Docker** | Containerization |
+| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | [Containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
 | **PHP-CS-Fixer** | Code style |
 
 ## Rules
@@ -620,7 +620,7 @@ Need message persistence and guaranteed delivery?
 - Autowiring enabled for all services — manual wiring only for third-party bundles.
 - Doctrine entities with typed properties and attributes (not annotations).
 - Messenger for async tasks (emails, notifications, processing).
-- EventSubscriber for cross-cutting concerns (audit, logging).
+- EventSubscriber for cross-cutting concerns ([audit](../../../AI_and_Agents/Operations/audit/SKILL.md), logging).
 - Flex recipes manage all package configuration — avoid manual config.
 - PHPUnit with WebTestCase for functional tests.
 - #[AsController], #[AsRepository], #[AsCommand] attributes for automatic service registration.

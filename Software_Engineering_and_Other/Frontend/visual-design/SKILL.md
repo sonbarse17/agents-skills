@@ -209,7 +209,7 @@ The 8px Grid System:
 Spacing Density:
 - **Comfortable**: Generous whitespace (32-48px between sections) — content-focused, reading
 - **Default**: Balanced (24-32px) — general purpose UI
-- **Compact**: Tighter (8-16px) — data-heavy dashboards, tables, dense tools
+- **Compact**: Tighter (8-16px) — data-heavy [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), tables, dense tools
 
 Proximity Rule: Elements that are functionally related should be visually grouped through spacing. Items within a group use tighter spacing (8-16px); groups of items use more spacing (24-40px). This replaces visible borders in many cases.
 
@@ -353,14 +353,14 @@ Impact: Eye strain reports -40%, evening DAU +25%
 ### Case Study 2: Typography Overhaul Increases Readability Scores
 A news website used 14px body text with 1.4 line-height and 90ch max-width. Readability testing showed 65% comprehension. After increasing to 18px body text, 1.6 line-height, 70ch max-width, and using a more open typeface (system fonts → Inter), comprehension improved to 85%. Time-on-page increased 35% and scroll depth improved by 50%.
 
-Method: Typography audit → scale adjustment → readability testing with 30 participants
+Method: Typography [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) → scale adjustment → readability testing with 30 participants
 Key insight: Readability improvements benefit all users, not just those with visual impairments
 Impact: Comprehension 65% to 85%, time-on-page +35%, scroll depth +50%
 
 ### Case Study 3: Spacing System Reduces Development Time
-An e-commerce team had 47 distinct spacing values across their CSS. Implementing an 8px-grid spacing system with 12 values eliminated all arbitrary spacing decisions. Developer productivity for layout tasks improved by 30%, and the visual consistency score (measured by design audit) increased from 62% to 94% in 3 months.
+An e-commerce team had 47 distinct spacing values across their CSS. Implementing an 8px-grid spacing system with 12 values eliminated all arbitrary spacing decisions. Developer productivity for layout tasks improved by 30%, and the visual consistency score (measured by design [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)) increased from 62% to 94% in 3 months.
 
-Method: Audit all spacing → define 12-value 8px grid → codify in design tokens
+Method: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all spacing → define 12-value 8px grid → codify in design tokens
 Key insight: Constraining choices improves both consistency and velocity
 Impact: Dev velocity +30%, visual consistency 62% to 94%
 
@@ -415,7 +415,7 @@ Component tokens (mapped to semantic)
 ### Color Contrast Calculation
 WCAG contrast ratio = (L1 + 0.05) / (L2 + 0.05), where L1 is relative luminance of lighter color and L2 of darker color. Relative luminance = 0.2126 * R + 0.7152 * G + 0.0722 * B (linearized sRGB values).
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Quick contrast checker
 function getContrastRatio(hex1: string, hex2: string): number {
   const l1 = relativeLuminance(hexToRgb(hex1));
@@ -560,7 +560,7 @@ Dark mode requires independent color tokens, not simple inversion:
 | Anti-Pattern | Symptom | Fix |
 |-------------|---------|-----|
 | **Decorative overload** | Drop shadows, gradients, and borders on every element | Every visual element must serve a function. Remove decoration that doesn't aid communication |
-| **Inconsistent visual language** | Different icons styles (line vs fill), different corner radii, inconsistent shadows | Adopt a design system with enforced visual rules; audit regularly |
+| **Inconsistent visual language** | Different icons styles (line vs fill), different corner radii, inconsistent shadows | Adopt a design system with enforced visual rules; [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) regularly |
 | **80% gray text** | Light gray (#CCC, #999) body text on white background | Minimum 4.5:1 contrast. Use #666 or darker for body text |
 | **No visual hierarchy** | Everything is the same size and weight | Establish 3+ levels of typographic hierarchy; use color, whitespace, and size to create focal points |
 | **Ignoring the fold** | Critical content below viewport without indication | Place primary action and value proposition in the first viewport; use visual cues for scroll |
@@ -593,5 +593,5 @@ Dark mode requires independent color tokens, not simple inversion:
   - references/visual-design-color-system.md — Color System Reference
   - references/visual-design-dark-mode.md — Dark Mode Design Reference
 ## Handoff
-Hand off to `design-design-systems` for token implementation. Hand off to `design-brand-identity` for brand consistency. Hand off to `design-accessibility` for WCAG compliance audit.
+Hand off to `design-[design-systems](../design-systems/SKILL.md)` for token implementation. Hand off to `[design-brand-identity](../../../Product_and_Business/brand-identity/SKILL.md)` for brand consistency. Hand off to `design-accessibility` for WCAG compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 

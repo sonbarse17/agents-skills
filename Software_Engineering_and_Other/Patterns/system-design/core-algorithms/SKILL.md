@@ -12,7 +12,7 @@ Standard modulo hashing (`hash(key) % N`) causes catastrophic remapping when a n
 - **Virtual Nodes (vnodes):** To solve data skew, each physical node is assigned multiple hash points (vnodes) on the ring. The variance in load distribution decreases logarithmically with the number of vnodes.
 
 ## 2. Rate Limiting Algorithms
-- **Token Bucket:** Focuses on burst capacity. A bucket holds up to `B` tokens. Tokens are added at a constant rate `R`. A request consumes `N` tokens. If empty, the request is rejected. It allows bursts up to the bucket capacity while sustaining long-term rate `R`.
+- **Token Bucket:** Focuses on burst [capacity](../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). A bucket holds up to `B` tokens. Tokens are added at a constant rate `R`. A request consumes `N` tokens. If empty, the request is rejected. It allows bursts up to the bucket [capacity](../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) while sustaining long-term rate `R`.
 - **Leaky Bucket:** Focuses on smoothing traffic. Requests enter a queue (bucket) of size `Q`. A background process dequeues and processes them at a constant rate `R`. Burst traffic fills the queue; excess is dropped (traffic shaping).
 
 ## 3. Bloom Filters: Probabilistic Verification
@@ -21,7 +21,7 @@ A Bloom Filter is a space-efficient probabilistic data structure used to test se
 - **Verification:** To check membership, hash the item `k` times. If all `k` bits are 1, it is *probably* in the set. If any bit is 0, it is *definitely not*.
 - **Mathematics:** The probability of a false positive `p` depends on bits `m`, inserted elements `n`, and hash functions `k`. Optimal `k = (m/n) * ln(2)`. Highly utilized in LSM-Trees to skip reading SSTables that do not contain a key.
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Core Algorithms]

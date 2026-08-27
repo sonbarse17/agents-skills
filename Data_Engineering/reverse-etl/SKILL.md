@@ -53,7 +53,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Identity resolution keys defined for each destination
 - [ ] Sync schedule with rate-limit awareness configured
 - [ ] Destination operation mode (upsert/replace/append) specified
-- [ ] Error handling with retry and alerting defined
+- [ ] Error handling with retry and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) defined
 - [ ] Data freshness SLA documented
 
 ### Max Response Length
@@ -199,8 +199,8 @@ sync:
     ignore_deletes: false
 ```
 
-```python
-# Python idempotency check in custom sync pipeline
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) idempotency check in custom sync pipeline
 import hashlib
 from datetime import datetime, timedelta
 
@@ -284,7 +284,7 @@ LIMIT 100000
 | Mode | Behavior | Use Case |
 |---|---|---|
 | `upsert` | Create or update by match key | Customer profiles, CRM contacts |
-| `append` | Always insert new rows | Event data, audit logs |
+| `append` | Always insert new rows | Event data, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs |
 | `replace` | Truncate destination and insert all rows | Small reference tables |
 | `merge` | Match and merge fields (Braze, Amplitude) | User identity resolution |
 | `mirror` | Full reconciliation: insert, update, delete to match source exactly | Product catalogs, inventory |
@@ -432,7 +432,7 @@ Destination type?
 ## References
   - ../../../Global_References/identity-resolution.md — Identity Resolution Reference
   - ../../../Global_References/identity-strategies.md — Identity Strategies for Reverse ETL
-  - ../../../Global_References/reverse-etl-monitoring.md — Reverse ETL Monitoring
+  - ../../../Global_References/reverse-etl-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Reverse ETL [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/reverse-etl-patterns.md — Reverse ETL Patterns
   - ../../../Global_References/sync-config-examples.md — Sync Configuration Examples
   - references/warehouse-activation.md — Warehouse Activation Reference
@@ -489,7 +489,7 @@ sync:
 ```
 
 ### Custom Reverse ETL Pipeline
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # reverse_etl/custom_sync.py
 from datetime import datetime
 import httpx
@@ -520,7 +520,7 @@ class ReverseETLSync:
 
 ## Production Considerations
 
-- **Sync monitoring**: Track sync success rate, row counts, and latency per destination; alert on failures.
+- **Sync [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track sync success rate, row counts, and latency per destination; alert on failures.
 - **Idempotency**: Design all syncs to be idempotent (UPSERT semantics); safe for replay after failure.
 - **Rate limiting**: Respect destination API rate limits; implement exponential backoff with jitter.
 - **Field mapping versioning**: Version field mappings; handle source schema changes gracefully with fallback values.
@@ -547,14 +547,14 @@ class ReverseETLSync:
 
 ## Security Considerations
 
-- **Credentials**: Store destination API keys in Vault or Secrets Manager; rotate keys quarterly.
+- **Credentials**: Store destination API keys in [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or Secrets Manager; rotate keys quarterly.
 - **Data minimization**: Sync only minimum required fields per destination; never sync raw PII unless necessary.
-- **Audit trail**: Log all sync operations including row count, fields synced, and destination.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all sync operations including row count, fields synced, and destination.
 - **Compliance**: Ensure reverse ETL complies with data residency requirements; filter by region.
 - **Rate limit protection**: Implement circuit breaker for destination APIs to avoid being rate-limited or banned.
 
 ## Handoff
-`data-data-warehouse` for warehouse data modeling and transformation needed before sync
-`data-etl-pipeline` for traditional batch ETL (warehouse as target, not source)
+`[data-data-warehouse](../data-warehouse/SKILL.md)` for warehouse data modeling and transformation needed before sync
+`[data-etl-pipeline](../etl-pipeline/SKILL.md)` for traditional batch ETL (warehouse as target, not source)
 `data-quality` for validating warehouse data before operational sync
 

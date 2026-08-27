@@ -16,7 +16,7 @@ tags: [data, governance, lineage, phase-11]
 # Data Lineage
 
 ## Purpose
-Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to dashboards, supporting impact analysis, root cause investigation, and data governance compliance.
+Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), supporting impact analysis, root cause investigation, and data governance compliance.
 
 ## Agent Protocol
 
@@ -29,7 +29,7 @@ Before activating, verify:
 - Transformation tools (dbt, Airflow, Spark, custom SQL)
 - Existing lineage infrastructure (OpenLineage, DataHub, Amundsen, manual)
 - Compliance requirements (GDPR, SOX, BCBS 239)
-- Consumer tools (Looker, Tableau, custom dashboards)
+- Consumer tools (Looker, Tableau, custom [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
 
 ### Output Artifact
 Lineage configuration with OpenLineage integration, Marquez deployment, column-level lineage SQL parser config, and impact analysis report.
@@ -39,7 +39,7 @@ Lineage configuration with OpenLineage integration, Marquez deployment, column-l
 # OpenLineage integration config
 # Marquez deployment
 ```
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Lineage event emission
 # SQL parser setup
 ```
@@ -79,7 +79,7 @@ Each entity has a unique identifier (FQN), type, and metadata. Edges represent d
 ## OpenLineage Integration
 
 ### Airflow Integration
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from openlineage.airflow import DAG
 
 dag = DAG(
@@ -108,7 +108,7 @@ openlineage:
   enabled: true
   url: http://marquez:5000
   namespace: prod_warehouse
-  dataset_namespace: postgresql://warehouse:5432/prod
+  dataset_namespace: [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://warehouse:5432/prod
 
 # dbt_project.yml
 vars:
@@ -128,7 +128,7 @@ spark.openlineage.parentRunId=run-uuid-here
 
 ## Marquez Deployment
 
-### Docker Compose
+### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
 ```yaml
 version: '3.8'
 services:
@@ -165,7 +165,7 @@ services:
 curl http://localhost:5000/api/v1/namespaces/prod_warehouse/datasets
 
 # Get lineage for a dataset
-curl http://localhost:5000/api/v1/lineage?nodeId=postgresql://warehouse:5432/prod.public.orders
+curl http://localhost:5000/api/v1/lineage?nodeId=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://warehouse:5432/prod.public.orders
 
 # List recent runs
 curl http://localhost:5000/api/v1/namespaces/prod_warehouse/jobs
@@ -174,7 +174,7 @@ curl http://localhost:5000/api/v1/namespaces/prod_warehouse/jobs
 ## Column-Level Lineage
 
 ### SQL Parsing with sqllineage
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sqllineage.runner import LineageRunner
 
 sql = """
@@ -236,7 +236,7 @@ for col, src in result.column_mapping.items():
 ## Impact Analysis
 
 ### Downstream Impact Query
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def get_downstream_impact(dataset_fqn: str, depth: int = 3):
     """Recursively find all downstream consumers of a dataset."""
     query = f"""
@@ -318,7 +318,7 @@ spark_openlineage:
 
 #### SQL Parser for Column-Level Lineage
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Column-level lineage extraction
 from sqllineage.runner import LineageRunner
 from sqlparse import parse
@@ -358,7 +358,7 @@ def extract_column_lineage(sql_query, default_schema="public"):
 
 #### Impact Analysis API
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Marquez API: find all downstream dependencies
 import requests
 
@@ -403,7 +403,7 @@ lineage_ui:
     staging: "#2196F3"      # Blue — staging area
     intermediate: "#FF9800" # Orange — transformations
     mart: "#9C27B0"         # Purple — consumption layer
-    dashboard: "#F44336"    # Red — BI dashboards / reports
+    dashboard: "#F44336"    # Red — BI [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) / reports
     failed: "#607D8B"       # Gray — failed dependencies
 ```
 
@@ -439,7 +439,7 @@ rca_workflow:
   step_5_prevent:
     - "Add lineage-based alert: if upstream schema changes, notify"
     - "Add quality check at the transformation output"
-    - "Document the incident in the lineage metadata"
+    - "Document the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) in the lineage metadata"
 ```
 
 ### Decision Tree
@@ -451,7 +451,7 @@ Data processing tool?
 ├── dbt transformations → dbt-openlineage package
 ├── Spark jobs → OpenLineage Spark listener
 ├── Flink streaming → OpenLineage Flink integration
-├── Custom Python scripts → Manual OpenLineage events via Python client
+├── Custom [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts → Manual OpenLineage events via [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) client
 ├── SQL transformations → SQL parser (sqllineage, sqlfluff)
 └── Manual / undocumented → Start with manual annotations, automate gradually
 ```
@@ -471,7 +471,7 @@ Data processing tool?
 - Use column-level lineage for precise impact analysis
 - Store lineage in graph-native storage for efficient traversal
 - Color-code lineage visualization by data lifecycle stage
-- Integrate lineage with incident response for faster root cause analysis
+- Integrate lineage with [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response for faster root cause analysis
 - Re-scrape lineage after schema changes
 
 ## References
@@ -506,7 +506,7 @@ Lineage Collection Strategy
 ## Implementation Patterns
 
 ### OpenLineage Spark Listener
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_lineage/spark_listener.py
 from openlineage.spark import OpenLineageSparkListener
 from openlineage.client import OpenLineageClient
@@ -527,7 +527,7 @@ class LineageReporter:
 ```
 
 ### SQL Parser Lineage
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # data_lineage/sql_lineage.py
 from sqlparse import parse
 from sqllineage.runner import LineageRunner
@@ -585,11 +585,11 @@ class SQLLineageExtractor:
 
 - **Column sensitivity**: Tag sensitive columns in lineage with classification label (PII, PCI); strip from unprivileged views.
 - **Access controls**: Restrict lineage graph query API by role (analysts see table-level, engineers see column-level).
-- **Audit logging**: Log all lineage queries and export operations for data governance compliance.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Log all lineage queries and export operations for data governance compliance.
 - **Encryption at rest**: Encrypt lineage graph storage (AES-256) and Kafka topics at rest.
 - **Input validation**: Validate OpenLineage event schema before ingestion; reject malformed events.
 
 ## Handoff
-`data-data-catalog` for metadata enrichment and dataset discovery
-`data-data-observability` for freshness and quality integration with lineage
+`[data-data-catalog](../data-catalog/SKILL.md)` for metadata enrichment and dataset discovery
+`[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for freshness and quality integration with lineage
 

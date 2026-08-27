@@ -23,7 +23,7 @@ Use this skill when:
 ## Prerequisites
 
 - Git installed
-- Repository hosting (GitHub, GitLab, Bitbucket)
+- Repository hosting ([GitHub](../github/SKILL.md), GitLab, Bitbucket)
 - Basic Git knowledge
 
 ## Branching Strategies
@@ -45,9 +45,9 @@ git checkout main
 git pull origin main
 git checkout -b feature/add-login
 
-# Work and commit frequently
+# Work and [commit](../commit/SKILL.md) frequently
 git add .
-git commit -m "feat: add login form"
+git [commit](../commit/SKILL.md) -m "feat: add login form"
 
 # Keep branch updated
 git fetch origin
@@ -61,7 +61,7 @@ git push origin main
 git branch -d feature/add-login
 ```
 
-### GitHub Flow
+### [GitHub](../github/SKILL.md) Flow
 
 Best for: Continuous delivery, web applications
 
@@ -130,7 +130,7 @@ git flow hotfix start security-fix
 git flow hotfix finish security-fix
 ```
 
-## Commit Conventions
+## [Commit](../commit/SKILL.md) Conventions
 
 ### Conventional Commits
 
@@ -153,18 +153,18 @@ Types:
 
 Examples:
 ```bash
-git commit -m "feat(auth): add OAuth2 login support"
-git commit -m "fix(api): handle null response from payment service"
-git commit -m "docs: update API documentation for v2 endpoints"
-git commit -m "refactor(db): optimize user query performance"
+git [commit](../commit/SKILL.md) -m "feat(auth): add OAuth2 login support"
+git [commit](../commit/SKILL.md) -m "fix(api): handle null response from payment service"
+git [commit](../commit/SKILL.md) -m "docs: update API documentation for v2 endpoints"
+git [commit](../commit/SKILL.md) -m "refactor(db): optimize user query performance"
 
 # Breaking change
-git commit -m "feat(api)!: change response format for user endpoint
+git [commit](../commit/SKILL.md) -m "feat(api)!: change response format for user endpoint
 
 BREAKING CHANGE: The user endpoint now returns an object instead of array"
 ```
 
-### Commit Message Template
+### [Commit](../commit/SKILL.md) Message Template
 
 ```bash
 # Create template file ~/.gitmessage
@@ -180,7 +180,7 @@ BREAKING CHANGE: The user endpoint now returns an object instead of array"
 # Co-authored-by: Name <email>
 
 # Configure Git to use template
-git config --global commit.template ~/.gitmessage
+git config --global [commit](../commit/SKILL.md).template ~/.gitmessage
 ```
 
 ## Pull Request Workflow
@@ -188,7 +188,7 @@ git config --global commit.template ~/.gitmessage
 ### PR Template
 
 ```markdown
-<!-- .github/pull_request_template.md -->
+<!-- .[github](../github/SKILL.md)/pull_request_template.md -->
 ## Description
 Brief description of changes
 
@@ -218,7 +218,7 @@ Closes #
 ### Branch Protection Rules
 
 ```yaml
-# GitHub branch protection
+# [GitHub](../github/SKILL.md) branch protection
 branch_protection:
   branch: main
   required_pull_request_reviews:
@@ -242,7 +242,7 @@ branch_protection:
 ### Code Owners
 
 ```
-# .github/CODEOWNERS
+# .[github](../github/SKILL.md)/CODEOWNERS
 
 # Default owners
 * @team-leads
@@ -268,11 +268,11 @@ Dockerfile @platform-team
 
 ## Git Hooks
 
-### Pre-commit Hook
+### Pre-[commit](../commit/SKILL.md) Hook
 
 ```bash
 #!/bin/sh
-# .git/hooks/pre-commit
+# .git/hooks/pre-[commit](../commit/SKILL.md)
 
 # Run linting
 npm run lint
@@ -302,8 +302,8 @@ fi
 {
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-[commit](../commit/SKILL.md)": "lint-staged",
+      "[commit](../commit/SKILL.md)-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -342,7 +342,7 @@ git tag -a v1.0.0 -m "Release version 1.0.0"
 # Push tag
 git push origin v1.0.0
 
-# Create release from tag (GitHub CLI)
+# Create release from tag ([GitHub](../github/SKILL.md) CLI)
 gh release create v1.0.0 \
   --title "Release 1.0.0" \
   --notes "Release notes here" \
@@ -373,15 +373,15 @@ git push --force-with-lease
 git checkout main
 git merge feature/my-feature
 
-# Squash merge (single commit)
+# Squash merge (single [commit](../commit/SKILL.md))
 git merge --squash feature/my-feature
-git commit -m "feat: add feature X"
+git [commit](../commit/SKILL.md) -m "feat: add feature X"
 ```
 
 ### Cherry Pick
 
 ```bash
-# Apply specific commit to current branch
+# Apply specific [commit](../commit/SKILL.md) to current branch
 git cherry-pick abc123
 
 # Cherry pick range
@@ -398,9 +398,9 @@ git cherry-pick -n abc123
 git rebase -i HEAD~3
 
 # In editor:
-# pick abc123 First commit
-# squash def456 Second commit
-# reword ghi789 Third commit
+# pick abc123 First [commit](../commit/SKILL.md)
+# squash def456 Second [commit](../commit/SKILL.md)
+# reword ghi789 Third [commit](../commit/SKILL.md)
 ```
 
 ## Common Issues
@@ -413,14 +413,14 @@ git rebase -i HEAD~3
 **Problem**: Local branch far behind remote
 **Solution**: `git pull --rebase` or `git fetch && git rebase origin/main`
 
-### Issue: Accidental Commit to Wrong Branch
+### Issue: Accidental [Commit](../commit/SKILL.md) to Wrong Branch
 **Problem**: Committed to main instead of feature
 **Solution**: `git reset HEAD~1`, checkout correct branch, recommit
 
 ## Best Practices
 
 - Keep branches short-lived (< 1 week)
-- Write meaningful commit messages
+- Write meaningful [commit](../commit/SKILL.md) messages
 - Use PR templates consistently
 - Require code reviews
 - Protect main/master branch
@@ -430,6 +430,6 @@ git rebase -i HEAD~3
 
 ## Related Skills
 
-- [semantic-versioning](../semantic-versioning/) - Version management
-- [github-actions](../../ci-cd/github-actions/) - CI/CD automation
-- [feature-flags](../feature-flags/) - Feature management
+- [semantic-versioning](../[semantic-versioning](../../Observability_and_SecOps/semantic-versioning/SKILL.md)/) - Version management
+- [github-actions](../../ci-cd/[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)/) - CI/CD automation
+- [feature-flags](../[feature-flags](../feature-flags/SKILL.md)/) - Feature management

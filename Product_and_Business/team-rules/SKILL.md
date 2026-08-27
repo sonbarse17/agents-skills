@@ -18,12 +18,12 @@ tags: [management, team, phase-8]
 # Team Rules
 
 ## Purpose
-Establish team collaboration protocols covering code review, branch strategy, communication, incident response, decision-making, working agreements, and knowledge sharing processes that scale from small teams to organizations.
+Establish team collaboration protocols covering code review, branch strategy, communication, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, decision-making, working agreements, and knowledge sharing processes that scale from small teams to organizations.
 
 ## Agent Protocol
 
 ### Trigger
-User request includes: `team rules`, `team protocol`, `collaboration`, `code review`, `branch strategy`, `pr template`, `git flow`, `rfc process`, `incident response`, `on-call`, `decision making`, `working agreements`, `team norms`, `async communication`, `meeting cadence`.
+User request includes: `team rules`, `team protocol`, `collaboration`, `code review`, `branch strategy`, `pr template`, `git flow`, `rfc process`, `[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response`, `on-call`, `decision making`, `working agreements`, `team norms`, `async communication`, `meeting cadence`.
 
 ### Input Context
 - Team size and composition (devs, QA, devops, PM)
@@ -38,7 +38,7 @@ A markdown document containing:
 - Branch strategy specification (GitFlow / Trunk-based)
 - Pull request template
 - Communication protocols (sync vs async, meeting cadence)
-- On-call rotation and incident response procedure
+- On-call rotation and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response procedure
 - RFC decision-making process
 - Knowledge sharing guidelines
 - Working agreements and team norms
@@ -52,7 +52,7 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 - All protocols are actionable (numbered steps, checklists)
 - Review criteria include clear Accept/Reject conditions
 - Branch strategy includes naming convention and lifecycle
-- Incident response includes severity levels and timeline
+- [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response includes severity levels and timeline
 - RFC process includes template and approval criteria
 - Working agreements documented and socialized
 
@@ -94,12 +94,12 @@ team cannot or will not follow.
 ## Decision Making
 - Default to autonomy: make decision, document, move on
 - Escalate when: high impact, irreversible, cross-team
-- Disagree and commit: once decided, everyone supports
+- Disagree and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): once decided, everyone supports
 
 ## Quality
 - No broken builds on main — fix or revert within 30 min
 - Tests not optional — every PR includes tests or documented exception
-- Tech debt: 15-20% sprint capacity allocated
+- Tech debt: 15-20% sprint [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) allocated
 ```
 
 #### Decision Making Level Framework
@@ -146,7 +146,7 @@ Every PR must pass all applicable checks before merging:
 [ ] Error paths handled (no empty catch blocks)
 [ ] Input validation present on all public endpoints
 [ ] Tests included for new logic (unit ≥80% coverage for new code)
-[ ] No type errors (TypeScript strict / Pyright / mypy)
+[ ] No type errors ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) strict / Pyright / mypy)
 [ ] No lint violations (ESLint / ruff / dotnet-format)
 [ ] Documentation updated if API/behavior changed
 [ ] No unused imports or dead code
@@ -183,7 +183,7 @@ How many production versions maintained concurrently?
 │   ├── Feature flags for incomplete work
 │   ├── Branches live <2 days
 │   └── Tag releases on main
-├── 2-3 (patch older versions) → GitHub Flow
+├── 2-3 (patch older versions) → [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Flow
 │   ├── Release branches for older versions
 │   ├── Cherry-pick critical fixes
 │   └── Main is always latest
@@ -264,7 +264,7 @@ Closes #ISSUE_NUMBER
 ```
 Pattern            | When to Use                   | Format
 Standup            | Daily coordination            | 15 min, async-first
-Sprint planning    | Start of sprint               | 60-90 min, capacity-first
+Sprint planning    | Start of sprint               | 60-90 min, [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-first
 Sprint review      | End of sprint                 | 30 min, demo working features
 Retrospective      | End of sprint                 | 45-60 min, blameless
 Brainstorm         | Early exploration             | 30 min, no judgment
@@ -281,7 +281,7 @@ Workshop           | Complex problem solving       | 2 hours, hands-on
 | **Slack/Discord** | Quick questions | 1 hour |
 | **Email** | External communication | 24 hours |
 | **RFC doc** | Decisions | 48 hours for feedback |
-| **Incident** | Production issues | Immediate |
+| **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)** | Production issues | Immediate |
 
 #### Async Communication Patterns
 ```
@@ -307,7 +307,7 @@ FYI                | Information only, no action needed    | Summary with link t
 - Acknowledge alerts within 5 minutes
 - Respond to incidents per severity
 - Update status page for user-facing incidents
-- Document post-mortem within 48 hours of incident resolution
+- Document post-mortem within 48 hours of [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolution
 - Handoff documentation includes active incidents, known issues, ongoing investigations
 
 #### On-call Handoff Template
@@ -316,16 +316,16 @@ FYI                | Information only, no action needed    | Summary with link t
 ## Date: {date}
 
 ### Active Incidents
-{Incident ID, status, next action}
+{[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID, status, next action}
 
 ### Known Issues
-{Issue, workaround, monitoring}
+{Issue, workaround, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)}
 
 ### Ongoing Investigations
 {What's being investigated, current hypothesis}
 
 ### Pending Post-mortems
-{Incident ID, due date, owner}
+{[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID, due date, owner}
 
 ### Tips for This Week
 {Environment quirks, upcoming changes, maintenance windows}
@@ -340,21 +340,21 @@ FYI                | Information only, no action needed    | Summary with link t
 | **P2** (Minor) | 1 hour | 48 hours | None |
 | **P3** (Trivial) | Next business day | Next sprint | None |
 
-### Step 7: Define Incident Response
+### Step 7: Define [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 #### Process
 
-1. **Detect** — Alert from monitoring or user report
-2. **Acknowledge** — On-call acknowledges in incident channel
+1. **Detect** — Alert from [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or user report
+2. **Acknowledge** — On-call acknowledges in [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel
 3. **Assess** — Determine severity and impact
 4. **Mitigate** — Rollback, feature flag, or hotfix
 5. **Resolve** — Confirm fix in production
 6. **Post-mortem** — Within 48 hours, blameless analysis
 
-#### Incident Command System
+#### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Command System
 ```
 Role           | Responsibility
-Incident Cmd   | Coordinates response, communicates status
+[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Cmd   | Coordinates response, communicates status
 Communications | Updates stakeholders, status page
 Operations     | Technical mitigation (fix, rollback, feature flag)
 Scribe         | Timeline documentation for post-mortem
@@ -434,8 +434,8 @@ PR review time          | < 4 hours       | Time from open to first review
 PR merge time           | < 24 hours      | Time from open to merge
 Branch lifetime         | < 2 days        | Time from branch creation to merge
 CI green rate           | > 90%           | % of CI runs passing on main
-Incident MTTR           | < 1 hour        | Time from detection to resolution
-Incident count trend    | Decreasing      | Count per sprint/quarter
+[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) MTTR           | < 1 hour        | Time from detection to resolution
+[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) count trend    | Decreasing      | Count per sprint/quarter
 Meeting efficiency      | > 3.5/5         | Survey: "Was this meeting a good use of time?"
 Async response SLA      | > 90%           | % of messages answered within SLA
 Decision turnaround     | < 48 hours      | RFC to decision time
@@ -484,7 +484,7 @@ Too many alerts, most are noise. On-call ignores notifications.
 Real incidents get lost in the noise. Burnout follows.
 Fix: review and tune alert thresholds quarterly. Every alert
 must trigger an actionable response. Silence noisy alerts.
-Use alert fatigue scoring (see alerting skill).
+Use alert fatigue scoring (see [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) skill).
 
 ### Anti-Pattern 5: Documentation Graveyard
 ADRs are written, approved, and never read again. Docs are
@@ -500,11 +500,11 @@ Fix: use decision levels. L1 is individual. L2 is team consensus.
 L3 is tech lead decision with input. L4 is formal process.
 Not every decision needs full consensus.
 
-### Anti-Pattern 7: Blame Culture in Incident Response
+### Anti-Pattern 7: Blame Culture in [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 Post-mortems focus on "who made the mistake" rather than
 "what system failure allowed this." Engineers hide incidents
 to avoid blame.
-Fix: blameless post-mortems. Every incident is a system failure
+Fix: blameless post-mortems. Every [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is a system failure
 opportunity. Celebrate thorough post-mortems. No punishment for
 honest mistakes.
 
@@ -525,18 +525,18 @@ conversations. Meetings have no agenda. Documentation doesn't exist.
 ### Level 2: Defined
 Basic rules documented in single README. Code review checklist
 exists. Branch strategy defined. PR template in place. On-call
-rotation exists with primary/secondary. Basic incident process
+rotation exists with primary/secondary. Basic [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) process
 documented. Meeting cadence defined.
 
 ### Level 3: Managed
 Working agreements documented and followed. Review criteria
-enforced by CI. Branch protection rules active. Incident severity
+enforced by CI. Branch protection rules active. [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) severity
 levels defined with SLAs. Post-mortems conducted for all P0/P1.
 RFC process adopted. Decision levels understood. Metrics tracked.
 
 ### Level 4: Optimized
 Rules reviewed and refined quarterly based on metrics. Automated
-enforcement with CI gates for all criteria. Incident MTTR tracked
+enforcement with CI gates for all criteria. [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) MTTR tracked
 and trending down. Decision turnaround measured. PR review time
 SLAs met consistently. Team health score tracked. On-call fatigue
 monitored. Continuous improvement from retros.
@@ -548,7 +548,7 @@ monitored. Continuous improvement from retros.
 | PR review time | < 4 hours | PR queue depth |
 | Branch lifetime | < 2 days | Open branch count |
 | CI green rate | > 90% | Flaky test count |
-| Incident MTTR | < 1 hour | Acknowledgment time |
+| [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) MTTR | < 1 hour | Acknowledgment time |
 | On-call fatigue | < 1 week in 4 | Rotation frequency |
 | Decision turnaround | < 48 hours | RFC backlog |
 | Meeting efficiency | > 3.5/5 | Meeting count trend |
@@ -569,7 +569,7 @@ monitored. Continuous improvement from retros.
 
 ## References
   - ../../../Global_References/branch-strategy.md — Branch Strategy Reference
-  - ../../../Global_References/code-review-protocol.md — Code Review Protocol Reference
+  - ../../../Global_References/[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)-protocol.md — Code Review Protocol Reference
   - ../../../Global_References/communication-protocol.md — Communication Protocol Reference
   - ../../../Global_References/team-rules_conflict-resolution.md — Conflict Resolution
   - ../../../Global_References/team-rules-advanced.md — Team Rules Advanced Topics

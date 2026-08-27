@@ -10,7 +10,7 @@ metadata:
 # Mobile Device Management (MDM) for Startups & Small Teams
 
 A practical guide to enrolling, securing, and managing company devices across
-macOS, Windows, iOS, and Android — from zero-touch onboarding to remote wipe.
+macOS, Windows, iOS, and [Android](../android/SKILL.md) — from zero-touch onboarding to remote wipe.
 
 ---
 
@@ -29,7 +29,7 @@ MDM becomes essential when any of the following apply:
   increasingly ask for evidence of endpoint management.
 
 If you are still under 10 people and everyone is in-office, a simple checklist
-plus a configuration management tool (Ansible) may suffice — but plan for MDM
+plus a configuration management tool ([Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)) may suffice — but plan for MDM
 early so enrollment is painless when you scale.
 
 ---
@@ -42,7 +42,7 @@ early so enrollment is painless when you scale.
 | **Microsoft Intune** | Windows + M365 shops | Bundled w/ M365 E3/E5 | No | Seamless Azure AD + Autopilot |
 | **Kandji** | macOS-first startups | Per-device/yr | No | Pre-built compliance templates, fast setup |
 | **Mosyle** | Education & SMB Apple | Per-device/yr | No | Apple School/Business Manager integration |
-| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, GitOps-friendly, API-first |
+| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-friendly, API-first |
 | **SimpleMDM** | Small Apple-only teams | Per-device/mo | No | Simple UI, quick onboarding |
 
 ### Decision heuristic
@@ -63,24 +63,24 @@ else:
 ## 3. Fleet (Open Source MDM) — Self-Hosted Deployment
 
 Fleet is the leading open-source MDM. It uses osquery under the hood and
-supports macOS, Windows, Linux, iOS, and Android.
+supports macOS, Windows, Linux, iOS, and [Android](../android/SKILL.md).
 
-### 3.1 Docker Compose deployment
+### 3.1 [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose deployment
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.8"
 
 services:
-  mysql:
-    image: mysql:8.0
+  [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md):
+    image: [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md):8.0
     environment:
       MYSQL_ROOT_PASSWORD: "${FLEET_MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: fleet
       MYSQL_USER: fleet
       MYSQL_PASSWORD: "${FLEET_MYSQL_PASSWORD}"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-data:/var/lib/[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
     ports:
       - "3306:3306"
     healthcheck:
@@ -96,12 +96,12 @@ services:
   fleet:
     image: fleetdm/fleet:v4.47.0
     depends_on:
-      mysql:
+      [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md):
         condition: service_healthy
       redis:
         condition: service_started
     environment:
-      FLEET_MYSQL_ADDRESS: mysql:3306
+      FLEET_MYSQL_ADDRESS: [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md):3306
       FLEET_MYSQL_DATABASE: fleet
       FLEET_MYSQL_USERNAME: fleet
       FLEET_MYSQL_PASSWORD: "${FLEET_MYSQL_PASSWORD}"
@@ -117,7 +117,7 @@ services:
       - "8080:8080"
 
 volumes:
-  mysql-data:
+  [mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-data:
 ```
 
 ### 3.2 Initial setup
@@ -130,11 +130,11 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
   -subj "/CN=fleet.yourcompany.com"
 
 # Start services
-docker compose up -d
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 
 # Create admin account
-docker compose exec fleet fleet prepare db
-docker compose exec fleet fleet setup \
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose exec fleet fleet prepare db
+[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose exec fleet fleet setup \
   --email admin@yourcompany.com \
   --name "IT Admin" \
   --password "${FLEET_ADMIN_PASSWORD}" \
@@ -427,7 +427,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 | Windows | BitLocker | `manage-bde -status C:` |
 | Linux | LUKS | `lsblk -o NAME,FSTYPE,MOUNTPOINT \| grep crypt` |
 | iOS | Native (always-on with passcode) | Managed via MDM profile |
-| Android | Native | `adb shell getprop ro.crypto.state` |
+| [Android](../android/SKILL.md) | Native | `adb shell getprop ro.crypto.state` |
 
 ---
 
@@ -455,9 +455,9 @@ cask "cloudflare-warp"
 # Development
 cask "visual-studio-code"
 cask "iterm2"
-cask "docker"
+cask "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
 brew "node"
-brew "python@3.12"
+brew "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.12"
 
 # Communication
 cask "slack"
@@ -481,13 +481,13 @@ brew bundle --file=/path/to/Brewfile --no-lock
     "Packages": [
       { "PackageIdentifier": "Git.Git" },
       { "PackageIdentifier": "Microsoft.VisualStudioCode" },
-      { "PackageIdentifier": "Docker.DockerDesktop" },
+      { "PackageIdentifier": "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).DockerDesktop" },
       { "PackageIdentifier": "SlackTechnologies.Slack" },
       { "PackageIdentifier": "Zoom.Zoom" },
       { "PackageIdentifier": "Tailscale.Tailscale" },
       { "PackageIdentifier": "AgileBits.1Password" },
       { "PackageIdentifier": "OpenJS.NodeJS.LTS" },
-      { "PackageIdentifier": "Python.Python.3.12" }
+      { "PackageIdentifier": "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).3.12" }
     ],
     "SourceDetails": {
       "Name": "winget",
@@ -610,7 +610,7 @@ Invoke-MgGraphRequest -Method POST `
   -Body $body -ContentType "application/json"
 ```
 
-### 9.3 Lost device runbook
+### 9.3 Lost device [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 
 ```text
 1. Employee reports device lost/stolen via Slack #it-help or PagerDuty.
@@ -692,7 +692,7 @@ Write-Host "=== Starting onboarding $(Get-Date) ==="
 $packages = @(
     "Git.Git",
     "Microsoft.VisualStudioCode",
-    "Docker.DockerDesktop",
+    "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).DockerDesktop",
     "SlackTechnologies.Slack",
     "Tailscale.Tailscale",
     "AgileBits.1Password"
@@ -733,7 +733,7 @@ new_hire_onboarding:
   pre_day_one:
     - Purchase and ship device via CDW/Apple Business Manager
     - Assign device to MDM server in ABM/Autopilot
-    - Create accounts: Google Workspace / M365, Okta SSO, GitHub, Slack
+    - Create accounts: Google Workspace / M365, Okta SSO, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack
     - Generate VPN invite (Tailscale, WireGuard)
     - Prepare welcome documentation link
 

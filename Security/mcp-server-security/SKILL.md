@@ -30,7 +30,7 @@ Apply this skill whenever you are:
   must be auditable.
 
 If your MCP server only runs locally over stdio for a single developer with no network
-exposure, you can relax some transport-layer controls -- but input validation and audit
+exposure, you can relax some transport-layer controls -- but input validation and [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 logging still apply.
 
 ---
@@ -151,7 +151,7 @@ For local stdio-based servers, the attack surface is the process boundary itself
 MCP's Streamable HTTP transport supports OAuth 2.1 for client authentication. Configure
 your server to validate bearer tokens on every request.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/auth.ts - OAuth 2.1 token validation middleware for an MCP server
 import { createServer } from "@modelcontextprotocol/sdk/server/index.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -190,7 +190,7 @@ app.use("/mcp", validateBearerToken);
 
 For simpler deployments, use hashed API keys stored server-side:
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/apikeys.ts
 import { createHash, timingSafeEqual } from "crypto";
 
@@ -269,7 +269,7 @@ dangerous_tools:
 
 ### 5.2 Per-User Tool Access Enforcement
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/toolAuth.ts
 import { readFileSync } from "fs";
 import { parse } from "yaml";
@@ -325,7 +325,7 @@ export function authorizedToolHandler(server: any) {
 
 Define strict schemas for every tool's input. Reject anything that does not conform.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/validation.ts
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
@@ -380,7 +380,7 @@ export function validateToolInput(toolName: string, params: unknown): { valid: b
 Never pass raw agent-supplied strings into queries. Use parameterized queries and
 statement-level restrictions.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/safeSql.ts
 const FORBIDDEN_PATTERNS = [
   /;\s*(DROP|ALTER|TRUNCATE|DELETE|UPDATE|INSERT|CREATE|GRANT|REVOKE)/i,
@@ -419,7 +419,7 @@ export async function handleDatabaseQuery(params: { query: string; parameters?: 
 
 ### 6.3 Filesystem Path Injection Prevention
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/safePath.ts
 import path from "path";
 
@@ -478,8 +478,8 @@ exec unshare --map-root-user --mount --pid --fork -- bash -c '
 Create a dedicated read-only database user for MCP servers:
 
 ```sql
--- PostgreSQL: MCP server database user
-CREATE ROLE mcp_readonly WITH LOGIN PASSWORD 'use-a-vault-generated-secret';
+-- [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): MCP server database user
+CREATE ROLE mcp_readonly WITH LOGIN PASSWORD 'use-a-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-generated-secret';
 
 -- Grant read-only access to specific schemas only
 GRANT USAGE ON SCHEMA public TO mcp_readonly;
@@ -501,7 +501,7 @@ ALTER ROLE mcp_readonly SET work_mem = '64MB';
 
 Prevent MCP tools from reaching internal services (SSRF mitigation):
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/networkPolicy.ts
 import { URL } from "url";
 import net from "net";
@@ -516,7 +516,7 @@ const BLOCKED_CIDRS = [
 ];
 
 const ALLOWED_DOMAINS = [
-  "api.github.com",
+  "api.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com",
   "registry.npmjs.org",
 ];
 
@@ -548,7 +548,7 @@ export function validateOutboundUrl(urlString: string): { allowed: boolean; reas
 
 ### 8.1 Per-Client Rate Limits
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/rateLimit.ts
 
 interface RateBucket {
@@ -594,7 +594,7 @@ export function checkRateLimit(
 
 Limit how many LLM tokens a single session can consume through tool calls:
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/tokenBudget.ts
 
 interface SessionBudget {
@@ -640,13 +640,13 @@ export function consumeTokens(
 
 ---
 
-## 9. Audit Logging
+## 9. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 ### 9.1 Structured Tool Invocation Logging
 
 Log every tool call with full context. Never log raw secrets or credentials.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/auditLog.ts
 import { randomUUID } from "crypto";
 
@@ -692,15 +692,15 @@ export function logToolInvocation(entry: Omit<AuditEntry, "id" | "timestamp">): 
 }
 ```
 
-### 9.2 OpenTelemetry Integration
+### 9.2 [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Integration
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/otelTracing.ts
-import { trace, SpanStatusCode, context, propagation } from "@opentelemetry/api";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
-import { Resource } from "@opentelemetry/resources";
+import { trace, SpanStatusCode, context, propagation } from "@[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/api";
+import { NodeTracerProvider } from "@[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/sdk-trace-node";
+import { OTLPTraceExporter } from "@[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/exporter-trace-otlp-http";
+import { BatchSpanProcessor } from "@[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/sdk-trace-base";
+import { Resource } from "@[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/resources";
 
 const provider = new NodeTracerProvider({
   resource: new Resource({
@@ -748,7 +748,7 @@ export async function traceToolCall<T>(
 
 ## 10. Deployment Hardening
 
-### 10.1 Docker Container Configuration
+### 10.1 [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Container Configuration
 
 ```dockerfile
 # Dockerfile.mcp-server
@@ -786,7 +786,7 @@ EXPOSE 3001
 CMD ["node", "dist/index.js"]
 ```
 
-### 10.2 Kubernetes Network Policy
+### 10.2 [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Network Policy
 
 ```yaml
 # k8s/network-policy.yaml
@@ -865,7 +865,7 @@ spec:
 }
 ```
 
-Apply the seccomp profile in your Kubernetes pod spec:
+Apply the seccomp profile in your [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) pod spec:
 
 ```yaml
 # k8s/deployment.yaml (relevant snippet)
@@ -898,7 +898,7 @@ spec:
 
 ### 11.1 Authorization Boundary Tests
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // tests/toolAuth.test.ts
 import { describe, it, expect } from "vitest";
 import { isToolAllowed } from "../src/toolAuth";
@@ -929,7 +929,7 @@ describe("Tool Authorization", () => {
 
 ### 11.2 Input Validation Fuzz Tests
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // tests/validation.test.ts
 import { describe, it, expect } from "vitest";
 import { validateToolInput } from "../src/validation";
@@ -974,7 +974,7 @@ describe("Input Validation", () => {
 
 ### 11.3 SSRF Prevention Tests
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // tests/networkPolicy.test.ts
 import { describe, it, expect } from "vitest";
 import { validateOutboundUrl } from "../src/networkPolicy";
@@ -996,7 +996,7 @@ describe("Outbound URL Validation", () => {
   }
 
   it("should allow requests to explicitly allowed domains", () => {
-    expect(validateOutboundUrl("https://api.github.com/repos").allowed).toBe(true);
+    expect(validateOutboundUrl("https://api.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/repos").allowed).toBe(true);
     expect(validateOutboundUrl("https://registry.npmjs.org/express").allowed).toBe(true);
   });
 });
@@ -1004,7 +1004,7 @@ describe("Outbound URL Validation", () => {
 
 ### 11.4 Rate Limit Tests
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // tests/rateLimit.test.ts
 import { describe, it, expect } from "vitest";
 import { checkRateLimit } from "../src/rateLimit";
@@ -1047,7 +1047,7 @@ Use this checklist when deploying any MCP server to production:
 [ ] Outbound network requests limited to an allowlist (SSRF mitigation)
 [ ] Per-client rate limits and session token budgets enforced
 [ ] Every tool invocation logged with user, params (redacted), and result
-[ ] OpenTelemetry tracing integrated for observability
+[ ] [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) tracing integrated for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 [ ] Container runs as non-root with read-only filesystem
 [ ] Seccomp profile applied to restrict syscalls
 [ ] Network policies restrict pod-to-pod communication

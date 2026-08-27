@@ -299,7 +299,7 @@ await bot.DeleteAsync(WaitUntil.Completed);
 2. **Use `WaitUntil.Completed`** for synchronous operations
 3. **Handle `RequestFailedException`** for API errors
 4. **Use async methods** (`*Async`) for all operations
-5. **Store MSA App credentials securely** — use Key Vault for secrets
+5. **Store MSA App credentials securely** — use Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for secrets
 6. **Use managed identity** (`BotMsaAppType.UserAssignedMSI`) for production bots
 7. **Enable secure sites** for DirectLine channels in production
 
@@ -339,5 +339,5 @@ catch (RequestFailedException ex)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.BotService |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.botservice |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/botservice/Azure.ResourceManager.BotService |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/botservice/Azure.ResourceManager.BotService |
 | Azure Bot Service Docs | https://learn.microsoft.com/azure/bot-service/ |

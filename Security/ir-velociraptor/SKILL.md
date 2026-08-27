@@ -21,17 +21,17 @@ references:
   - https://docs.velociraptor.app/artifact_references/
 ---
 
-# Velociraptor Incident Response
+# Velociraptor [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 
 ## Overview
 
 Velociraptor is an endpoint visibility and forensics platform for collecting host-based state information using Velociraptor Query Language (VQL). It operates in three core modes: **Collect** (targeted evidence gathering), **Monitor** (continuous event capture), and **Hunt** (proactive threat hunting).
 
 **When to use this skill**:
-- Active incident response requiring endpoint evidence collection
+- Active [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response requiring endpoint evidence collection
 - Threat hunting across enterprise infrastructure
 - Digital forensics investigations and timeline analysis
-- Endpoint monitoring and anomaly detection
+- Endpoint [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and anomaly detection
 - Custom forensic artifact development for specific threats
 
 ## Quick Start
@@ -40,7 +40,7 @@ Velociraptor is an endpoint visibility and forensics platform for collecting hos
 
 ```bash
 # Download Velociraptor binary for your platform
-# https://github.com/Velocidex/velociraptor/releases
+# https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Velocidex/velociraptor/releases
 
 # Run GUI mode for interactive investigation
 velociraptor gui
@@ -65,7 +65,7 @@ velociraptor --config server.config.yaml config client > client.config.yaml
 velociraptor --config client.config.yaml client
 ```
 
-## Core Incident Response Workflows
+## Core [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Workflows
 
 ### Workflow 1: Initial Compromise Investigation
 
@@ -202,7 +202,7 @@ Create custom VQL artifacts for specific investigation needs:
 ```yaml
 name: Custom.Windows.SuspiciousProcess
 description: |
-  Detect processes with suspicious characteristics for incident response.
+  Detect processes with suspicious characteristics for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
 
 parameters:
   - name: ProcessNameRegex
@@ -228,9 +228,9 @@ Save artifacts in YAML format and import via Velociraptor UI or command line.
 
 - **Sensitive Data Handling**: VQL queries can collect credentials, PII, and sensitive files. Implement data minimization - only collect necessary evidence. Use encryption for evidence transport and storage.
 
-- **Access Control**: Velociraptor server access provides significant endpoint control. Implement RBAC, audit all queries, and restrict administrative access. Use client certificates for authentication.
+- **Access Control**: Velociraptor server access provides significant endpoint control. Implement RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) all queries, and restrict administrative access. Use client certificates for authentication.
 
-- **Audit Logging**: All VQL queries, hunts, and collections are logged. Enable audit trail for compliance. Document investigation scope and approvals.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: All VQL queries, hunts, and collections are logged. Enable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance. Document investigation scope and approvals.
 
 - **Compliance**: Ensure evidence collection follows organizational policies and legal requirements. Document chain of custody for forensic investigations. Consider data sovereignty for multi-region deployments.
 
@@ -329,6 +329,6 @@ Save artifacts in YAML format and import via Velociraptor UI or command line.
 - [Velociraptor Documentation](https://docs.velociraptor.app/)
 - [VQL Reference](https://docs.velociraptor.app/vql_reference/)
 - [Artifact Exchange](https://docs.velociraptor.app/exchange/)
-- [GitHub Repository](https://github.com/Velocidex/velociraptor)
+- [GitHub Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Velocidex/velociraptor)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

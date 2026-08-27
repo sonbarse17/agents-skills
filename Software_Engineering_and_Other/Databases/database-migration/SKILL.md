@@ -52,7 +52,7 @@ module.exports = {
 
 ### TypeORM Migrations
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // migrations/1701234567-CreateUsers.ts
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
@@ -274,7 +274,7 @@ module.exports = {
         { transaction },
       );
 
-      await transaction.commit();
+      await transaction.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)();
     } catch (error) {
       await transaction.rollback();
       throw error;

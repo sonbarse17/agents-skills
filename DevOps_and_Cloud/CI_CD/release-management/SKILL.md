@@ -39,10 +39,10 @@ without reading the diff.
 ## 2. Generate changelogs from the source of truth, not from memory
 
 A changelog written by someone trying to remember what happened over the last sprint is
-unreliable and always lags reality. Generate it from commit messages (conventional commits), PR
+unreliable and always lags reality. Generate it from [commit](../commit/SKILL.md) messages (conventional commits), PR
 titles, or linked issues at release-cut time, and have a human edit for clarity rather than write
 from scratch. The goal is a changelog a user can act on — "what do I need to know before
-upgrading" — not a raw commit dump.
+upgrading" — not a raw [commit](../commit/SKILL.md) dump.
 
 ```
 ## v2.4.0
@@ -63,7 +63,7 @@ A release train (fixed schedule — every two weeks, every month) trades speed f
 consumers know when to expect changes, and a feature that misses the cutoff waits for the next
 train instead of shipping half-finished. Continuous release (every merge is potentially a
 release) trades predictability for speed and requires the discipline covered in
-`continuous-delivery` — main is always releasable, incomplete work hides behind flags. Pick
+`[continuous-delivery](../continuous-delivery/SKILL.md)` — main is always releasable, incomplete work hides behind flags. Pick
 trains when you have external consumers who need predictable upgrade windows (mobile apps,
 enterprise software with change-control processes); pick continuous when you control the whole
 deployment surface and speed matters more than predictability.
@@ -95,7 +95,7 @@ why that order is safe.
 
 If cutting a release requires a person to remember seven manual steps (bump version, tag, build,
 sign, push to registry, update changelog, notify), it will be done wrong under time pressure
-exactly when it matters most — right before a deadline or during an incident fix. Automate the
+exactly when it matters most — right before a deadline or during an [incident](../../Observability_and_SecOps/incident/SKILL.md) fix. Automate the
 mechanical parts into a single script or pipeline job; reserve human judgment for the parts that
 actually need it, like deciding *whether* to cut a release and writing the human-readable
 changelog summary.

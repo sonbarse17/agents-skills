@@ -16,23 +16,23 @@ metadata:
   maturity: stable
 ---
 
-# PostgreSQL Operations and Performance Tuning
+# [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Operations and Performance Tuning
 
 ## Purpose
 
-PostgreSQL's default configuration is tuned for compatibility on modest
+[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)'s default configuration is tuned for compatibility on modest
 hardware, not for the throughput and durability a production workload
 needs — left untouched, autovacuum falls behind, connections exhaust
 `max_connections` under a web-scale request fan-out, and query plans
 degrade silently as statistics go stale. This skill covers the recurring
-operational work of keeping a PostgreSQL fleet healthy under load:
+operational work of keeping a [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) fleet healthy under load:
 replication for read scaling and failover readiness, vacuum/bloat
 management, connection pooling, query tuning, and major-version upgrades.
-It assumes a working, already-provisioned PostgreSQL instance; for
+It assumes a working, already-provisioned [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance; for
 designing an HA/failover topology specifically, see
-[postgresql-high-availability-and-failover](../postgresql-high-availability-and-failover/SKILL.md),
+[postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md),
 and for validating configuration changes before they reach production, see
-[postgresql-configuration-validation](../postgresql-configuration-validation/SKILL.md).
+[postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -46,7 +46,7 @@ and for validating configuration changes before they reach production, see
 - Sizing or troubleshooting a PgBouncer pool (connection exhaustion,
   "too many clients already," transaction pooling breaking prepared
   statements or session-level features).
-- Planning a major-version upgrade (e.g. PostgreSQL 14 → 16) and deciding
+- Planning a major-version upgrade (e.g. [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 14 → 16) and deciding
   between `pg_upgrade` (in-place, minimal-downtime with `--link`) and a
   logical-replication-based cutover (near-zero downtime, more moving
   parts).
@@ -55,8 +55,8 @@ and for validating configuration changes before they reach production, see
 
 ## Prerequisites & environment
 
-- PostgreSQL 13+ assumed for the guidance below; logical replication is
-  available from PostgreSQL 10 onward but this skill's examples assume
+- [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 13+ assumed for the guidance below; logical replication is
+  available from [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 10 onward but this skill's examples assume
   13+ behavior (e.g. `pg_stat_progress_vacuum`, improved logical
   replication of large transactions in 13+). Note explicitly where a
   feature requires a specific newer version (e.g. logical replication of
@@ -68,7 +68,7 @@ and for validating configuration changes before they reach production, see
 - `wal_level` must be `replica` (streaming) or `logical` (logical
   replication) — this is a restart-required setting, not reloadable.
 - PgBouncer (or an equivalent pooler, e.g. pgbouncer/pgcat/odyssey)
-  installed on a host between the application and PostgreSQL for
+  installed on a host between the application and [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for
   connection pooling guidance.
 - Access to `pg_stat_statements` (extension must be created and listed in
   `shared_preload_libraries`) for query performance analysis — without it
@@ -81,7 +81,7 @@ and for validating configuration changes before they reach production, see
 
 On the primary, enable WAL shipping and create a replication role:
 ```sql
--- postgresql.conf on primary
+-- [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).conf on primary
 wal_level = replica
 max_wal_senders = 10
 wal_keep_size = '2GB'          -- retain enough WAL for replica catch-up
@@ -96,11 +96,11 @@ host    replication     replicator      <REPLICA_IP>/32       scram-sha-256
 ```
 On the replica, take a base backup and configure it as a standby:
 ```bash
-pg_basebackup -h <PRIMARY_HOST> -U replicator -D /var/lib/postgresql/data \
+pg_basebackup -h <PRIMARY_HOST> -U replicator -D /var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data \
   -Fp -Xs -P -R
 ```
-`-R` writes `postgresql.auto.conf` with `primary_conninfo` and creates
-`standby.signal` automatically (PostgreSQL 12+); on older supported
+`-R` writes `[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).auto.conf` with `primary_conninfo` and creates
+`standby.signal` automatically ([PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 12+); on older supported
 versions you populate `recovery.conf` instead. Verify replication is
 flowing from the primary:
 ```sql
@@ -108,7 +108,7 @@ SELECT client_addr, state, sync_state, replay_lag
 FROM pg_stat_replication;
 ```
 `sync_state` of `async` is the default; set `synchronous_standby_names`
-on the primary if you need synchronous commit guarantees for a specific
+on the primary if you need synchronous [commit](../../CI_CD/commit/SKILL.md) guarantees for a specific
 replica (at the cost of primary write latency if that replica lags or
 disconnects).
 
@@ -190,10 +190,10 @@ reserve_pool_size = 5
 ```
 `default_pool_size` is the number of actual backend connections
 PgBouncer holds open per database/user pair — this, not
-`max_client_conn`, is what determines load on PostgreSQL's own
+`max_client_conn`, is what determines load on [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)'s own
 `max_connections`. A common sizing heuristic: backend pool size should be
 close to `(core_count * 2) + effective_spindle_count` for CPU-bound
-workloads, well under `max_connections`, since PostgreSQL's per-connection
+workloads, well under `max_connections`, since [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)'s per-connection
 memory and context-switch overhead degrades throughput long before
 `max_connections` is actually hit. `pool_mode = transaction` is the right
 default for most web workloads, but it breaks session-level features
@@ -244,10 +244,10 @@ rather than copying them, so it's not simply a data-volume-driven
 duration):
 ```bash
 pg_upgrade \
-  --old-datadir=/var/lib/postgresql/14/data \
-  --new-datadir=/var/lib/postgresql/16/data \
-  --old-bindir=/usr/lib/postgresql/14/bin \
-  --new-bindir=/usr/lib/postgresql/16/bin \
+  --old-datadir=/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/14/data \
+  --new-datadir=/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/16/data \
+  --old-bindir=/usr/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/14/bin \
+  --new-bindir=/usr/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/16/bin \
   --link
 ```
 This requires downtime for the duration of the upgrade run (typically
@@ -286,7 +286,7 @@ downtime window shrinks to a connection-string cutover.
   copy first, specifically checking for deprecated features, changed
   default settings, and extension version compatibility — validate the
   target configuration itself with
-  [postgresql-configuration-validation](../postgresql-configuration-validation/SKILL.md)
+  [postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
   before it reaches production.
 
 ## Common pitfalls
@@ -384,6 +384,6 @@ common query, and a replica used for reporting is falling behind.
 
 ## Cross-references
 
-- [postgresql-high-availability-and-failover](../postgresql-high-availability-and-failover/SKILL.md) — designing the replication topology and failover automation this skill's replication setup feeds into.
-- [postgresql-configuration-validation](../postgresql-configuration-validation/SKILL.md) — validating `postgresql.conf` changes (e.g. `max_connections`, `wal_level`) and connection-limit math before applying any tuning from this skill to production.
-- [database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md) — for the DDL changes (e.g. adding the index above via a tracked migration) that should accompany ad hoc tuning changes rather than being applied by hand.
+- [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — designing the replication topology and failover automation this skill's replication setup feeds into.
+- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validating `[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).conf` changes (e.g. `max_connections`, `wal_level`) and connection-limit math before applying any tuning from this skill to production.
+- [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — for the DDL changes (e.g. adding the index above via a tracked migration) that should accompany ad hoc tuning changes rather than being applied by hand.

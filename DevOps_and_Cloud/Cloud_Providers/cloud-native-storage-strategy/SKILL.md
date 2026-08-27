@@ -52,7 +52,7 @@ regularly.
 - Clarity on the workload's actual access pattern before choosing a
   storage class: how often is data read/written, how quickly must a read
   return (milliseconds vs. minutes-to-hours for archive tiers), and how
-  long must data be retained (see `disaster-recovery-and-backup-strategy`
+  long must data be retained (see `[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)`
   for retention/backup-specific concerns, which overlap but are not
   identical to lifecycle tiering).
 - Cloud CLI/Terraform access appropriate to the storage service:
@@ -64,7 +64,7 @@ regularly.
   not solely per-resource configuration; see the relevant
   `*-landing-zone-setup` skill.
 - A key management strategy decided (cloud-managed keys vs.
-  customer-managed keys in AWS KMS / Azure Key Vault / GCP Cloud KMS) —
+  customer-managed keys in AWS KMS / Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) / GCP Cloud KMS) —
   customer-managed keys add operational overhead (rotation, access
   policy) but are often required for regulated data.
 
@@ -113,7 +113,7 @@ regularly.
      ```
    - **Azure Blob**: set the storage account's public network access and
      "allow blob public access" to disabled, enforce HTTPS-only traffic,
-     and use a customer-managed key in Key Vault if required by
+     and use a customer-managed key in Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) if required by
      compliance scope.
    - **GCP Cloud Storage**: enable uniform bucket-level access (disables
      legacy per-object ACLs), set the bucket's public access prevention
@@ -153,18 +153,18 @@ regularly.
    be conflated with *whether* data should still exist. Any `expiration`
    rule that deletes data must be reviewed against actual compliance/
    backup retention requirements — see
-   `disaster-recovery-and-backup-strategy` for retention policy design.
+   `[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)` for retention policy design.
 
 5. **Enable versioning and object lock / immutability for anything that
    must survive accidental overwrite or deletion** — S3 Versioning +
    Object Lock (compliance or governance mode), Azure Blob immutability
    policies, or GCP Bucket Lock — particularly for backup targets,
-   audit logs, and anything subject to a regulatory retention
+   [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, and anything subject to a regulatory retention
    requirement (WORM).
 
 6. **Monitor cost and access patterns continuously.** Use S3 Storage
    Lens / Azure Storage insights / GCP Storage Insights (or the
-   organization's FinOps tooling — see `cloud-cost-finops-optimization`)
+   organization's FinOps tooling — see `[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)`)
    to catch data that was tiered to archive but is now being retrieved
    frequently (a sign the lifecycle policy needs adjusting the other
    direction) or data sitting in an expensive hot tier that hasn't been
@@ -191,8 +191,8 @@ regularly.
   that isn't worth it for every bucket.
 - **Right-size block storage IOPS/throughput to the workload**, not the
   largest available tier "to be safe" — over-provisioned IOPS is a
-  common, invisible cost leak that FinOps rightsizing (see
-  `cloud-cost-finops-optimization`) should catch.
+  common, invisible cost leak that FinOps [rightsizing](../rightsizing/SKILL.md) (see
+  `[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)`) should catch.
 - **Treat file storage (EFS/Azure Files/Filestore) as the exception, not
   the default**, for new cloud-native workloads — it exists mainly for
   shared-filesystem compatibility with legacy applications; new
@@ -248,8 +248,8 @@ regularly.
   policy references it, and without a recoverable grace period** — soft
   delete or a staged rename-then-delete-later process is much safer than
   irreversible deletion. Cross-check dependencies (see
-  `multi-cloud-networking-patterns` for shared-network implications and
-  `disaster-recovery-and-backup-strategy` for backup-target
+  `[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)` for shared-network implications and
+  `[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)` for backup-target
   implications) before any destructive storage action.
 
 ## Worked example
@@ -261,7 +261,7 @@ storage cost line item.
 
 1. Query S3 Storage Lens / CloudTrail data-event logs to confirm actual
    access pattern: 95%+ of objects older than 30 days have zero GET
-   requests; the remaining 5% (recent incident-investigation lookups)
+   requests; the remaining 5% (recent [incident](../../Observability_and_SecOps/incident/SKILL.md)-investigation lookups)
    are accessed within the first 90 days only.
 2. Design a lifecycle policy: Standard for 0-30 days, Standard-IA for
    30-90 days, Glacier Flexible Retrieval for 90-365 days, expire
@@ -270,12 +270,12 @@ storage cost line item.
    the expiration to align with the actual required retention (not
    shorter than compliance mandates).
 3. Enable S3 Block Public Access at the account level and confirm
-   default SSE-KMS encryption is applied bucket-wide, since the audit
+   default SSE-KMS encryption is applied bucket-wide, since the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
    also flagged that the bucket previously had no explicit encryption
    configuration (relying on account defaults that changed over time).
 4. Roll out the lifecycle policy to a 10% sample of prefixes first,
    monitor for a week to confirm no unexpected retrieval-fee spike from
-   the incident-investigation access pattern colliding with the Glacier
+   the [incident](../../Observability_and_SecOps/incident/SKILL.md)-investigation access pattern colliding with the Glacier
    tier's retrieval latency, then apply to the remaining prefixes.
 5. Result: storage cost for this bucket drops materially (moving the
    bulk of aged data out of Standard tier) while the 90-day
@@ -285,6 +285,6 @@ storage cost line item.
 
 ## Cross-references
 
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
-- [disaster-recovery-and-backup-strategy](../disaster-recovery-and-backup-strategy/SKILL.md)
-- [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
+- [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
+- [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)

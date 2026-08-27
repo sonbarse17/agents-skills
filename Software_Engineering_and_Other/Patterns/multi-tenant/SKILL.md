@@ -31,7 +31,7 @@ Phase 2 - Environment Design: Select isolation model (DB per tenant, schema per 
 
 Phase 3 - Naming and Routing: Implement tenant ID propagation through every layer. Design tenant-aware DNS, API gateway routing, and database connection management.
 
-Phase 4 - Automation: Build tenant provisioning pipeline with IaC. Implement lifecycle automation (provision, onboard, suspend, delete). Create tenant-specific monitoring and alerting.
+Phase 4 - Automation: Build tenant provisioning pipeline with IaC. Implement lifecycle automation (provision, onboard, suspend, delete). Create tenant-specific [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 
 Phase 5 - Operations: Design cross-tenant operations (analytics, backups, migrations) with isolation guarantees. Implement tenant-level rate limiting, caching, and resource quotas.
 
@@ -57,7 +57,7 @@ Tenant Hierarchy Design Patterns:
 
 Single-level: Tenant -> User. Simplest model. Tenant owns users and data directly. Best for B2B SaaS where each customer is a single organization. Tenant ID maps 1:1 to customer account.
 
-Two-level: Organization -> Workspace/Project -> User. Common in collaboration tools (Slack, GitHub). An organization contains multiple workspaces, each with its own data boundary. Tenant ID at workspace level; organization-level operations (billing, global settings) cross workspace boundaries.
+Two-level: Organization -> Workspace/Project -> User. Common in collaboration tools (Slack, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)). An organization contains multiple workspaces, each with its own data boundary. Tenant ID at workspace level; organization-level operations (billing, global settings) cross workspace boundaries.
 
 Three-level: Enterprise -> Division -> Team -> User. For large enterprise deployments with complex org structures. Data isolation at the team level, roll-up reporting at division/enterprise level.
 
@@ -77,7 +77,7 @@ Every request must carry tenant context through all layers:
 
 3. Application Code: Access tenant ID from request context. Use for data access filtering, feature flag evaluation, rate limit enforcement, and cache key scoping.
 
-4. Database: Pass tenant ID via session variables or connection parameters (PostgreSQL SET, MySQL variable). Apply RLS policies or connection routing based on tenant ID.
+4. Database: Pass tenant ID via session variables or connection parameters ([PostgreSQL](../../Backend/postgresql/SKILL.md) SET, [MySQL](../../Backend/mysql/SKILL.md) variable). Apply RLS policies or connection routing based on tenant ID.
 
 5. Cache: Prefix cache keys with tenant ID. Use Redis key-space per tenant when isolation is critical.
 
@@ -136,7 +136,7 @@ Every request must carry tenant context through all layers:
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: multi-tenant, multi-tenancy, SaaS architecture, tenant isolation, tenant onboarding, tenant data, tenant migration, per-tenant config, tenant scaling, tenancy model, tenant routing, data isolation.
+Exact user phrases: multi-tenant, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), SaaS architecture, tenant isolation, tenant onboarding, tenant data, tenant migration, per-tenant config, tenant scaling, tenancy model, tenant routing, data isolation.
 
 ### Input Context
 Before activating, verify:
@@ -164,7 +164,7 @@ Tenant isolation architecture document + lifecycle automation plan + cross-tenan
 ### Cross-Tenant Operations
 {analytics, migrations, backups - how they work across boundaries}
 
-### Operational Runbooks
+### Operational [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)
 {suspend, data export, full delete}
 ```
 
@@ -177,7 +177,7 @@ No preamble. No postamble. No explanations.
 - [ ] Data isolation verified at storage layer
 - [ ] Tenant-aware rate limiting and caching configured
 - [ ] Cross-tenant operations designed
-- [ ] Tenant deletion/suspension runbooks written
+- [ ] Tenant deletion/suspension [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) written
 - [ ] Tenant migration strategy documented
 
 ### Max Response Length
@@ -198,7 +198,7 @@ Decision matrix:
 The isolation model affects everything downstream: provisioning automation, backup strategy, cross-tenant analytics, cost allocation, and migration complexity. Choose carefully -- changing models later is expensive.
 
 ### Step 2: Tenant Lifecycle Automation
-Implement tenant state machine: Prospect -> Provisioned -> Onboarded -> Active -> Suspended -> Deleted. Automate base infrastructure provisioning with IaC. Configure tenant-specific DNS, TLS, and monitoring. Onboard via API or admin UI. Support data export during suspension.
+Implement tenant state machine: Prospect -> Provisioned -> Onboarded -> Active -> Suspended -> Deleted. Automate base infrastructure provisioning with IaC. Configure tenant-specific DNS, TLS, and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Onboard via API or admin UI. Support data export during suspension.
 
 Tenant state machine:
 - Prospect: Interest registered, no resources yet
@@ -217,7 +217,7 @@ Enforcement layers:
 - API Gateway: Validate tenant ID in request, reject misrouted requests
 - Application: Middleware extracts and injects tenant ID into downstream calls
 - ORM/Data Layer: All queries include tenant_id filter (row-level) or use tenant-specific connection (DB/schema level)
-- Database: Row-Level Security policies (PostgreSQL RLS, SQL Server Row-Level Security) as defense-in-depth
+- Database: Row-Level Security policies ([PostgreSQL](../../Backend/postgresql/SKILL.md) RLS, SQL Server Row-Level Security) as defense-in-depth
 - Storage: Per-tenant encryption keys (KMS key per tenant) for maximum isolation
 
 Testing data isolation: security tests should verify that Tenant A cannot access Tenant B data through any API, query, or export. Use penetration testing specifically targeting tenant boundary violations.
@@ -229,10 +229,10 @@ Infrastructure isolation considerations:
 - Cache: Redis key prefix per tenant, or separate Redis instance for large tenants. Cache eviction policies must not evict data across tenant boundaries.
 - Queues: Tenant-tagged messages. Fair queue processing (one noisy tenant should not starve others).
 - Rate Limiting: Per-tenant rate limits, separate from global limits. Burst allowance based on plan tier.
-- Compute: Kubernetes with tenant-affinity scheduling for noisy-neighbor prevention. Resource quotas per namespace.
+- Compute: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with tenant-affinity scheduling for noisy-neighbor prevention. Resource quotas per namespace.
 - Storage: Per-tenant buckets/folders with IAM policies. S3 bucket policy per tenant for direct access.
 
-Tenant-level monitoring: track requests, errors, latency, and resource usage per tenant. Dashboard for customer-facing health. Tenant-level alerting on anomalies.
+Tenant-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): track requests, errors, latency, and resource usage per tenant. Dashboard for customer-facing health. Tenant-level [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on anomalies.
 
 ### Step 5: Cross-Tenant Operations
 Design analytics pipeline that aggregates across tenants without exposing individual data. Implement batched migrations that iterate tenants. Build tenant-aware backup/restore. Handle tenant data export for GDPR right to portability.
@@ -314,7 +314,7 @@ Practice 8: Design tenant onboarding as self-service. Reduce time-to-value. Prov
 
 Practice 9: Plan for tenant data growth. A tenant that starts small may grow to need dedicated infrastructure. Build upgrade paths between isolation models. Make migration between models a first-class capability.
 
-Practice 10: Maintain tenant-level audit logs. All access to tenant data must be logged with tenant ID. Enable tenant-specific audit trail for compliance reporting. Support log export per tenant.
+Practice 10: Maintain tenant-level [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs. All access to tenant data must be logged with tenant ID. Enable tenant-specific [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance reporting. Support log export per tenant.
 
 ## Templates & Tools
 
@@ -333,14 +333,14 @@ Practice 10: Maintain tenant-level audit logs. All access to tenant data must be
 6. Configure DNS: tenant-specific subdomain (tenant.example.com)
 7. Generate TLS certificate (automatic with ACME/LetsEncrypt)
 8. Initialize tenant configuration defaults
-9. Create monitoring alerts for tenant
+9. Create [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts for tenant
 10. Send welcome notification with access instructions
 11. Update tenant state to Provisioned
 
 Estimated time: 3-5 minutes
 ```
 
-### Tenant Deletion Runbook
+### Tenant Deletion [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
 ```
 ## Tenant Deletion (30-Day Grace Period)
 
@@ -404,24 +404,24 @@ Estimated time: 3-5 minutes
 
 ### Tools Reference
 - Terraform for tenant infrastructure provisioning
-- Kubernetes with tenant namespaces for compute isolation
-- AWS KMS / Azure Key Vault for per-tenant encryption key management
-- PostgreSQL Row-Level Security for database isolation
+- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with tenant namespaces for compute isolation
+- AWS KMS / Azure Key [Vault](../../Miscellaneous/vault/SKILL.md) for per-tenant encryption key management
+- [PostgreSQL](../../Backend/postgresql/SKILL.md) Row-Level Security for database isolation
 - Redis with tenant key prefixes for cache isolation
 - Kong / APISIX for API gateway tenant routing
 - OpenPolicyAgent / OPA for tenant access policy enforcement
-- Jaeger / OpenTelemetry for tenant-span tracing
+- Jaeger / [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for tenant-span tracing
 
 ## Case Studies
 
 ### Case Study 1: HIPAA-Compliant Multi-Tenant Healthcare Platform
-A healthcare SaaS platform needed HIPAA compliance while serving 200 hospital customers. Each hospital required strict data isolation (PHI separation). The platform implemented DB-per-tenant for patient data (AES-256 encrypted at rest, per-tenant KMS keys) and shared schema for lookup data (states, ICD codes, drug databases). Tenant provisioning automated end-to-end with 5-minute setup time. Audit logging at tenant granularity. Passed HIPAA audit with zero findings on data isolation controls.
+A healthcare SaaS platform needed HIPAA compliance while serving 200 hospital customers. Each hospital required strict data isolation (PHI separation). The platform implemented DB-per-tenant for patient data (AES-256 encrypted at rest, per-tenant KMS keys) and shared schema for lookup data (states, ICD codes, drug databases). Tenant provisioning automated end-to-end with 5-minute setup time. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging at tenant granularity. Passed HIPAA [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with zero findings on data isolation controls.
 
 ### Case Study 2: B2B SaaS Scaling from 50 to 5000 Tenants
 A B2B SaaS company started with DB-per-tenant for their initial 50 enterprise customers. When expanding to SMB market (target: 5000 tenants), the operational cost of managing 5000 databases was unsustainable. They migrated to a hybrid model: row-level for SMB tenants (4800), DB-per-tenant for enterprise (200). Migration took 4 months. Cost per tenant dropped 70%. Operational complexity reduced to manageable levels.
 
 ### Case Study 3: Multi-Tenant Data Breach Near-Miss
-A SaaS company with row-level tenant isolation discovered during a security audit that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in audit before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. Incident response: treated as security incident, notified affected tenants, accelerated penetration testing schedule.
+A SaaS company with row-level tenant isolation discovered during a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response: treated as security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), notified affected tenants, accelerated penetration testing schedule.
 
 ### Case Study 4: Global Data Residency Implementation
 A SaaS platform expanding into EU and Asia faced data residency requirements (GDPR in EU, data localization in China). They implemented tenant-level region selection during provisioning. EU tenants stored data in Frankfurt, Asian tenants in Singapore, US tenants in Virginia. Data classified by sensitivity: regulated data (PII) stayed in region, anonymized analytics could cross regions. Cross-region data access logged and audited. Compliance validated with annual audits per region.
@@ -436,13 +436,13 @@ A SaaS platform expanding into EU and Asia faced data residency requirements (GD
 - Cache keys always prefixed with tenant ID.
 - Rate limits and resource quotas enforced per tenant.
 - Tenant tenant context validated at every service boundary.
-- Tenant state changes logged with audit trail.
+- Tenant state changes logged with [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - Tenant migration capability designed into architecture from day one.
 - Backup and restore granular per tenant.
 - Tenant data fully deletable (logs, caches, backups all covered).
 - Noisy neighbor detection alerts configured for shared infrastructure.
 - Tenant boundary testing included in security test suite.
-- Tenant-level metrics monitored and alerting configured.
+- Tenant-level metrics monitored and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured.
 - Tenant onboarding supports self-service and sales-assisted flows.
 - Data residency mapped to tenant provisioning region selection.
 - Tenant architecture changes require governance board approval.
@@ -450,7 +450,7 @@ A SaaS platform expanding into EU and Asia faced data residency requirements (GD
 
 ## Implementation Patterns
 
-### Pattern: Row-Level Security with PostgreSQL RLS
+### Pattern: Row-Level Security with [PostgreSQL](../../Backend/postgresql/SKILL.md) RLS
 
 ```sql
 -- Enable RLS on tenant-scoped tables
@@ -464,13 +464,13 @@ CREATE POLICY tenant_isolation_policy ON orders
 -- Application middleware sets tenant context
 -- In Node.js/Express middleware:
 --   await db.query("SELECT set_config('app.tenant_id', $1, true)", [tenantId]);
--- In Python/FastAPI middleware:
+-- In [Python](../../Languages/python/SKILL.md)/FastAPI middleware:
 --   await db.execute("SELECT set_config('app.tenant_id', $1, true)", [tenant_id])
 ```
 
 ### Pattern: Tenant-Aware Cache Isolation
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class TenantCache {
   private redis: Redis;
   private readonly PREFIX = 'tenant';
@@ -504,8 +504,8 @@ class TenantCache {
 - Event-driven: tenant provision request → SQS/SQS queue → worker → callback webhook.
 - Cost allocation: tag all resources with `tenant_id`. Track spend per tenant in billing system.
 
-### Multi-Tenant Monitoring
-- Per-tenant dashboards: request count, error rate, p95 latency, resource usage.
+### Multi-Tenant [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Per-tenant [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md): request count, error rate, p95 latency, resource usage.
 - Noisy neighbor detection: alert when single tenant consumes > 30% of shared resource.
 - Tenant-level SLOs: uptime, latency, error rate per tenant. Alert on breach.
 - Usage metering: record per-tenant API calls, storage, compute. Bill accordingly.
@@ -537,9 +537,9 @@ class TenantCache {
 - Authentication: tenant-scoped JWT. Token includes tenant_id, validated on every request.
 - Authorization: middleware extracts tenant_id from token. Rejects multi-tenant queries without tenant context.
 - Data encryption: per-tenant KMS keys for DB-per-tenant model. Shared key with tenant_id context for row-level.
-- Audit logging: all data access logged with tenant_id. Tenant boundary violations treated as security incident.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all data access logged with tenant_id. Tenant boundary violations treated as security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Network isolation: per-tenant VPC for dedicated DB instances. VPC peering for shared services.
 - Backup isolation: per-tenant backup files. Encrypted with tenant-specific key. Cross-tenant restore blocked.
 - Deletion: soft-delete with 30-day grace. Full purge with validation. Backup purge after deletion confirmed.
 ## Handoff
-For compliance requirements on tenant isolation, hand off to `enterprise-compliance-audit`. For cost allocation per tenant, hand off to `enterprise-cost-governance`.
+For compliance requirements on tenant isolation, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost allocation per tenant, hand off to `[enterprise-cost-governance](../../../DevOps_and_Cloud/Cloud_Providers/cost-governance/SKILL.md)`.

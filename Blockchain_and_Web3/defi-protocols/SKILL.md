@@ -30,13 +30,13 @@ contract SimpleAMM {
 Overcollateralized lending requires robust liquidation mechanisms when Health Factor < 1.
 
 ## Protocol Interactions
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     User[User] -->|Deposit Asset| LendingPool[Lending Pool]
     LendingPool -->|Mint aToken| User
-    User -->|Borrow| Vault[Collateral Vault]
-    Vault -->|Check Price| Oracle[Price Oracle]
+    User -->|Borrow| [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)[Collateral Vault]
+    [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) -->|Check Price| Oracle[Price Oracle]
     Oracle -->|Price Update| Liquidator[Liquidator Bot]
-    Liquidator -->|Liquidate Undercollateralized| Vault
+    Liquidator -->|Liquidate Undercollateralized| [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 ```

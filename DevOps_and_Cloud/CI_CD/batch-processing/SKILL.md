@@ -74,9 +74,9 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | In-memory | No (disk via Tez) | Yes (RDD/DF) | In-memory pipeline | Yes (dataframes) |
 | Latency | Minutes | Seconds-minutes | Sub-second | Seconds |
 | SQL standard | HQL (limited) | ANSI SQL | ANSI SQL | SQL via Dask |
-| UDF support | Java UDF | Python/Scala/Java | Java/Python | Python |
+| UDF support | Java UDF | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Scala/Java | Java/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) |
 | Cost-based | Yes (CBO) | Yes (CBO + AQE) | Yes (cost-based) | No |
-| Best for | Legacy Hive | Complex ETL, ML | Interactive SQL | Python pipelines |
+| Best for | Legacy Hive | Complex ETL, ML | Interactive SQL | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) pipelines |
 
 #### Decision Tree
 
@@ -89,8 +89,8 @@ Query interactivity requirement?
 │   └── Legacy Hive environment → Hive on Tez
 ├── Hours: Massive batch, large shuffles
 │   └── Spark SQL (best resilience, shuffle handling)
-└── Ad-hoc Python analytics
-    └── Dask SQL (Python-native)
+└── Ad-hoc [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) analytics
+    └── Dask SQL ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
 ```
 
 ### Step 2: File Format Selection
@@ -519,6 +519,6 @@ JOIN salted_customers c ON o.customer_id = c.customer_id AND o.salt = c.salt;
 Coming soon.
 
 ## Handoff
-`data-distributed-compute` for Spark/Ray/Dask cluster tuning
-`data-data-catalog` for registering batch tables and lineage
-`data-data-warehouse` for warehouse integration with batch pipelines
+`[data-distributed-compute](../../../Data_Engineering/distributed-compute/SKILL.md)` for Spark/Ray/Dask cluster tuning
+`[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for registering batch tables and lineage
+`[data-data-warehouse](../../../Data_Engineering/data-warehouse/SKILL.md)` for warehouse integration with batch pipelines

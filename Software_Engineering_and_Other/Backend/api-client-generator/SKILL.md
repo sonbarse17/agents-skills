@@ -21,11 +21,11 @@ Generate type-safe, idiomatic API client SDKs from OpenAPI/Swagger specification
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "generate API client", "OpenAPI client", "Swagger codegen", "API SDK generation", "client generator", "auto-generate client", "OpenAPI TypeScript", "openapi-generator", "NSwag", "kiota".
+Exact user phrases: "generate API client", "OpenAPI client", "Swagger codegen", "API SDK generation", "client generator", "auto-generate client", "OpenAPI [TypeScript](../../Frontend/typescript/SKILL.md)", "openapi-generator", "NSwag", "kiota".
 
 ### Input Context
 - API specification format (OpenAPI 3.x, Swagger 2.0, GraphQL, gRPC protobuf)
-- Target language/framework (TypeScript, C#, Python, Java, Go, Rust, Kotlin)
+- Target language/framework ([TypeScript](../../Frontend/typescript/SKILL.md), C#, [Python](../../Languages/python/SKILL.md), Java, Go, Rust, Kotlin)
 - HTTP client library (fetch, axios, HttpClient, httpx, reqwest)
 - Authentication method (Bearer token, API key, OAuth2, mTLS, custom header)
 - Existing API spec location (URL, file path, registry URL)
@@ -58,19 +58,19 @@ Generated API client with typed models, service methods, authentication, error h
 ```
 What is the API format?
 ├── OpenAPI 3.x (REST) → openapi-generator, NSwag, kiota
-│   ├── TypeScript → openapi-generator (typescript-fetch, typescript-axios)
+│   ├── [TypeScript](../../Frontend/typescript/SKILL.md) → openapi-generator ([typescript](../../Frontend/typescript/SKILL.md)-fetch, [typescript](../../Frontend/typescript/SKILL.md)-axios)
 │   ├── C# → NSwag, kiota, openapi-generator (csharp)
-│   ├── Python → openapi-generator (python), kiota
+│   ├── [Python](../../Languages/python/SKILL.md) → openapi-generator ([python](../../Languages/python/SKILL.md)), kiota
 │   ├── Java → openapi-generator (java, spring), kiota
 │   ├── Go → openapi-generator (go), oapi-codegen
 │   └── Rust → openapi-generator (rust), octorust, paperclip
 ├── GraphQL → graphql-codegen
-│   ├── TypeScript → @graphql-codegen/typescript
+│   ├── [TypeScript](../../Frontend/typescript/SKILL.md) → @graphql-codegen/[typescript](../../Frontend/typescript/SKILL.md)
 │   └── Any → graphql-client (Apollo, urql, Relay)
 └── gRPC → protoc + language plugin
     ├── Go → protoc-gen-go-grpc
     ├── C# → Grpc.Tools
-    ├── Python → grpcio-tools
+    ├── [Python](../../Languages/python/SKILL.md) → grpcio-tools
     └── Rust → tonic-build
 ```
 
@@ -84,7 +84,7 @@ Code Generation (openapi-generator CLI, graphql-codegen, protoc)
     ↓
 Generated Artifacts (models, API clients, enums, interceptors)
     ↓
-Integration (install as package, commit generated code, or build step)
+Integration (install as package, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) generated code, or build step)
     ↓
 CI Validation (diff check, spec change triggers regeneration)
 ```
@@ -95,7 +95,7 @@ CI Validation (diff check, spec change triggers regeneration)
 
 ```yaml
 # openapi-generator-config.yaml
-generatorName: typescript-fetch
+generatorName: [typescript](../../Frontend/typescript/SKILL.md)-fetch
 inputSpec: ./api/openapi.yaml
 outputDir: ./src/generated/api
 additionalProperties:
@@ -117,7 +117,7 @@ additionalProperties:
 ```bash
 # OpenAPI Generator CLI
 npx @openapitools/openapi-generator-cli generate \
-  -g typescript-fetch \
+  -g [typescript](../../Frontend/typescript/SKILL.md)-fetch \
   -i ./api/openapi.yaml \
   -o ./src/generated/api \
   -c openapi-generator-config.yaml
@@ -129,7 +129,7 @@ nswag openapi2csclient /input:openapi.yaml \
   /output:ApiClient.cs
 
 # Kiota (Microsoft)
-kiota generate -l typescript \
+kiota generate -l [typescript](../../Frontend/typescript/SKILL.md) \
   -d openapi.yaml \
   -o ./src/generated/api \
   -n @myorg/api-client
@@ -137,7 +137,7 @@ kiota generate -l typescript \
 
 ### Step 3: Wrap Generated Client
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // src/api/client.ts - Typed wrapper around generated client
 import { Configuration, DefaultApi, type ApiResponse } from '../generated/api';
 
@@ -190,7 +190,7 @@ export class ApiClient {
 
 ### Step 4: Authentication Interceptor
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Authentication configuration
 export function createAuthMiddleware(tokenProvider: () => Promise<string | null>): Middleware {
   return {
@@ -223,7 +223,7 @@ export function createApiKeyMiddleware(apiKey: string, headerName = 'X-API-Key')
 
 ### Step 5: Type-Safe Error Handling
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 export class ApiError extends Error {
   constructor(
     public readonly statusCode: number,
@@ -269,7 +269,7 @@ try {
 ### Step 6: CI Regeneration
 
 ```yaml
-# .github/workflows/api-client-update.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/api-client-update.yml
 name: Update API Client
 on:
   schedule:
@@ -289,7 +289,7 @@ jobs:
       - uses: actions/setup-node@v4
       - name: Generate client
         run: |
-          npm run generate-api -- --spec-url ${{ github.event.inputs.spec_url }}
+          npm run generate-api -- --spec-url ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.inputs.spec_url }}
       - name: Check for changes
         id: diff
         run: |
@@ -303,7 +303,7 @@ jobs:
         run: |
           git checkout -b chore/update-api-client
           git add src/generated/
-          git commit -m "chore: update API client from spec"
+          git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "chore: update API client from spec"
           gh pr create --title "chore: update API client" --body "Auto-generated from spec"
 ```
 
@@ -331,9 +331,9 @@ jobs:
 | Separate generated and custom code | Generated code in `src/generated/`, custom wrappers elsewhere |
 | Abstract behind repository/service | Swap implementation without changing consumers |
 | Use typed errors | Discriminated unions or instanceof checks for error types |
-| Generate at build time (not commit) | Always fresh, no stale generated code in repo |
+| Generate at build time (not [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | Always fresh, no stale generated code in repo |
 | Set up CI diff check | PR fails if generated code is out of date |
-| Use consistent naming conventions | camelCase for TypeScript, PascalCase for C# |
+| Use consistent naming conventions | camelCase for [TypeScript](../../Frontend/typescript/SKILL.md), PascalCase for C# |
 | Handle 401/403 globally | Refresh token or redirect to login automatically |
 | Include request/response logging in dev | Debug API issues, but never log tokens |
 | Use interceptors for cross-cutting | Logging, retry, caching, auth — all in middleware |
@@ -342,8 +342,8 @@ jobs:
 
 ### OpenAPI Generator Config by Language
 ```yaml
-# TypeScript (fetch)
-generatorName: typescript-fetch
+# [TypeScript](../../Frontend/typescript/SKILL.md) (fetch)
+generatorName: [typescript](../../Frontend/typescript/SKILL.md)-fetch
 additionalProperties:
   typescriptThreePlus: true
   withInterfaces: true
@@ -355,8 +355,8 @@ additionalProperties:
   useDateTimeOffset: true
   targetFramework: net8.0
 
-# Python
-generatorName: python
+# [Python](../../Languages/python/SKILL.md)
+generatorName: [python](../../Languages/python/SKILL.md)
 additionalProperties:
   packageName: myorg_api_client
   useOneOfDiscriminatorLookup: true
@@ -372,7 +372,7 @@ additionalProperties:
 
 ### OpenAPI Client Generator
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import Dict, List, Optional
 import json
 import subprocess
@@ -383,11 +383,11 @@ class OpenAPIClientGenerator:
         self.spec_path = spec_path
         self.output_dir = output_dir
         self.generators = {
-            "typescript": {
+            "[typescript](../../Frontend/typescript/SKILL.md)": {
                 "npm_package": "@openapitools/openapi-generator-cli",
                 "command": "npx @openapitools/openapi-generator-cli generate",
             },
-            "python": {
+            "[python](../../Languages/python/SKILL.md)": {
                 "pip_package": "openapi-generator-cli",
                 "command": "openapi-generator generate",
             },
@@ -398,8 +398,8 @@ class OpenAPIClientGenerator:
         cmd = [
             "npx", "@openapitools/openapi-generator-cli", "generate",
             "-i", self.spec_path,
-            "-g", "typescript-axios",
-            "-o", f"{self.output_dir}/typescript",
+            "-g", "[typescript](../../Frontend/typescript/SKILL.md)-axios",
+            "-o", f"{self.output_dir}/[typescript](../../Frontend/typescript/SKILL.md)",
             "--additional-properties=supportsES6=true,withInterfaces=true,useSingleRequestParameter=true",
         ]
         if opts.get("npm_name"):
@@ -411,8 +411,8 @@ class OpenAPIClientGenerator:
         cmd = [
             "openapi-generator", "generate",
             "-i", self.spec_path,
-            "-g", "python",
-            "-o", f"{self.output_dir}/python",
+            "-g", "[python](../../Languages/python/SKILL.md)",
+            "-o", f"{self.output_dir}/[python](../../Languages/python/SKILL.md)",
             "--additional-properties=packageName=api_client",
         ]
         if opts.get("package_name"):
@@ -451,14 +451,14 @@ class OpenAPIClientGenerator:
 
 ```
 What language/framework?
-├── TypeScript
-│   ├── axios-based → @openapitools/typescript-axios
-│   ├── fetch-based → @openapitools/typescript-fetch
-│   ├── Angular → @openapitools/typescript-angular
-│   └── Node.js → @openapitools/typescript-node
+├── [TypeScript](../../Frontend/typescript/SKILL.md)
+│   ├── axios-based → @openapitools/[typescript](../../Frontend/typescript/SKILL.md)-axios
+│   ├── fetch-based → @openapitools/[typescript](../../Frontend/typescript/SKILL.md)-fetch
+│   ├── Angular → @openapitools/[typescript](../../Frontend/typescript/SKILL.md)-angular
+│   └── Node.js → @openapitools/[typescript](../../Frontend/typescript/SKILL.md)-node
 │
-├── Python
-│   └── httpx/requests → openapi-generator python
+├── [Python](../../Languages/python/SKILL.md)
+│   └── httpx/requests → openapi-generator [python](../../Languages/python/SKILL.md)
 │
 ├── Go
 │   └── net/http → openapi-generator go
@@ -506,7 +506,7 @@ What language/framework?
 ## Security Considerations
 
 ### Authentication
-- **Credential injection**: Never hardcode API keys. Use environment variables or secret managers (Vault, AWS Secrets Manager).
+- **Credential injection**: Never hardcode API keys. Use environment variables or secret managers ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
 - **Token refresh**: Handle OAuth2 token refresh transparently. Re-authenticate on 401 responses before retrying.
 - **Certificate pinning**: Pin TLS certificates in mobile/high-security clients to prevent MITM.
 
@@ -515,7 +515,7 @@ What language/framework?
 - **Encryption at rest**: Encrypt cached API responses containing PII. Use envelope encryption with per-tenant keys.
 - **Input validation**: Validate all inputs client-side before sending. Prevent injection attacks on string parameters.
 
-### Audit & Compliance
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) & Compliance
 - **Request logging**: Log all API requests with timestamps, endpoints, and status codes. Exclude sensitive payloads.
 - **Rate limit awareness**: Respect Retry-After headers. Implement client-side rate limiting to avoid abuse flags.
 - **Compliance headers**: Add required compliance headers (GDPR consent, data residency) automatically.

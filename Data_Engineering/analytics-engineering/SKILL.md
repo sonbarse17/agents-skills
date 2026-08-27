@@ -30,7 +30,7 @@ Before activating, verify:
 - BI tools (Tableau, Looker, Power BI, Metabase)
 - Existing data model layer (raw, staging, intermediate, marts)
 - dbt version and packages installed (dbt_utils, dbt_expectations)
-- CI/CD setup (GitHub Actions, dbt Cloud CI)
+- CI/CD setup ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, dbt Cloud CI)
 - Testing and documentation practices
 
 ### Output Artifact
@@ -44,8 +44,8 @@ dbt project configuration, model SQL, macro definitions, metric definitions, dat
 ```yaml
 -- dbt project config, schema.yml, metrics definitions
 ```
-```python
--- Python dbt models
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+-- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) dbt models
 -- MetricFlow config
 ```
 
@@ -341,10 +341,10 @@ packages:
 
 ### dbt CI/CD Integration
 
-#### GitHub Actions Pipeline
+#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Pipeline
 
 ```yaml
-# .github/workflows/dbt_ci.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/dbt_ci.yml
 name: dbt CI/CD
 on: [pull_request]
 jobs:
@@ -352,8 +352,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.11" }
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+        with: { [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: "3.11" }
       - name: Install dbt
         run: pip install dbt-{{ target.type }}
       - name: dbt deps
@@ -383,10 +383,10 @@ Data size and update pattern?
     └── Aggregated metrics → Incremental + summary table
 ```
 
-### dbt Python Models
+### dbt [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Models
 
-```python
-# models/marts/python/customer_segments.py
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# models/marts/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/customer_segments.py
 import pandas as pd
 from sklearn.cluster import KMeans
 
@@ -453,11 +453,11 @@ Source data characteristics?
 - Implement CI/CD for dbt — build only modified models on PRs
 - Prefer incremental over table refresh for large datasets
 - Version control dbt packages.yml — pin versions
-- Use Python dbt models for ML logic that can't be expressed in SQL
+- Use [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) dbt models for ML logic that can't be expressed in SQL
 - Generate documentation on every deployment
 
 ## References
-  - ../../../Global_References/data-modeling.md — Data Modeling for Analytics Reference
+  - ../../../Global_References/[data-modeling](../data-modeling/SKILL.md).md — Data Modeling for Analytics Reference
   - ../../../Global_References/data-quality-testing.md — Data Quality Testing
   - ../../../Global_References/data-warehouse-architecture.md — Data Warehouse Architecture
   - ../../../Global_References/dbt-core.md — dbt Core Reference
@@ -469,7 +469,7 @@ Source data characteristics?
 Analytics Engineering Stack
 ├── Transformation tool?
 │   ├── dbt (SQL-first) → dbt Core / dbt Cloud
-│   ├── Python-heavy → SQLMesh / Dataform
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-heavy → SQLMesh / Dataform
 │   └── Multi-language → Dagster + dbt
 ├── Warehouse target?
 │   ├── Snowflake → dbt-snowflake adapter (native features)
@@ -477,13 +477,13 @@ Analytics Engineering Stack
 │   └── DuckDB → dbt-duckdb (local development)
 ├── Data modeling approach?
 │   ├── Kimball → Star schema (facts + dimensions)
-│   └── Data Vault → Hubs, links, satellites
+│   └── Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) → Hubs, links, satellites
 └── CI/CD for data?
-    ├── Yes → dbt CI with GitHub Actions + slim CI
+    ├── Yes → dbt CI with [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions + slim CI
     └── No → Manual dbt run (not recommended)
 ```
 
-**Decision criteria**: Evaluate team SQL vs Python skills, warehouse platform, modeling maturity, and CI requirements.
+**Decision criteria**: Evaluate team SQL vs [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) skills, warehouse platform, modeling maturity, and CI requirements.
 
 ## Implementation Patterns
 
@@ -539,7 +539,7 @@ FROM {{ ref('stg_customers') }}
 |---|---|---|
 | dbt models without tests | Undetected quality issues | Test every model with generic + singular tests |
 | No source freshness checks | Stale data propagated | Configure source freshness for all sources |
-| Manual dbt run in production | Inconsistent state, no audit | CI/CD for all production runs |
+| Manual dbt run in production | Inconsistent state, no [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | CI/CD for all production runs |
 | Single monolithic dbt project | Long run times, tight coupling | Split into domain-specific sub-projects |
 | Ignoring dbt performance | Full refresh on every run | Use incremental models for large tables |
 
@@ -553,14 +553,14 @@ FROM {{ ref('stg_customers') }}
 
 ## Security Considerations
 
-- **Credential management**: Store warehouse credentials in dbt profiles via environment variables; never commit.
+- **Credential management**: Store warehouse credentials in dbt profiles via environment variables; never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
 - **RBAC**: Use dbt Cloud RBAC for project-level access; service tokens for CI/CD.
 - **Data masking**: Implement Snowflake dynamic masking policies for PII in production models.
 - **Schema isolation**: Separate dev/staging/prod schemas; restrict prod write access to CI/CD service account.
-- **Audit**: Log all dbt runs with artifacts; store in cloud storage for compliance review.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all dbt runs with artifacts; store in cloud storage for compliance review.
 
 ## Handoff
-`data-science-statistical-analysis` for analytical statistical methods
-`data-science-experimentation` for experiment metric pipelines
-`data-quality` for data quality testing and monitoring
+`[data-science-statistical-analysis](../statistical-analysis/SKILL.md)` for analytical statistical methods
+`[data-science-experimentation](../../AI_and_Agents/Models_and_FineTuning/experimentation/SKILL.md)` for experiment metric pipelines
+`data-quality` for data quality testing and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 

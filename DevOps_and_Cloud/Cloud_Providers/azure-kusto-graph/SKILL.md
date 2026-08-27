@@ -24,8 +24,8 @@ Use this skill when the user:
 **Not a natural-language-to-KQL converter.** The input should generally be a working KQL query whose results the user wants converted to a graph, plus a natural-language description of the desired graph structure. Basic NL source requests are supported only when they map directly to a known table with obvious columns. For general NL-to-KQL conversion, use a dedicated query-generation skill (available separately).
 
 **Complementary skills:**
-- `azure-kusto-irql` -- composable security query primitives that produce the tabular inputs for graphs
-- `azure-kusto-irql-graph` -- IRQL's `Lift_To_Graph` JSON mapping system for richly-typed, icon-decorated graphs in Kusto Explorer
+- `[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)` -- composable security query primitives that produce the tabular inputs for graphs
+- `[azure-kusto-irql-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)-skills/skills/[azure-kusto-irql-graph](../[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)` -- IRQL's `Lift_To_Graph` JSON mapping system for richly-typed, icon-decorated graphs in Kusto Explorer
 
 ## The Edges-First Approach
 
@@ -242,7 +242,7 @@ graph("SecurityGraph")
 | Data freshness | Always current | Snapshot at creation time |
 | Scale | Limited by query memory | Enterprise-scale |
 | Reuse | Rebuilt every query | Shared across users/queries |
-| Best for | Ad-hoc hunts, prototyping | Production workflows, dashboards |
+| Best for | Ad-hoc hunts, prototyping | Production workflows, [dashboards](../dashboards/SKILL.md) |
 
 ## Security & Threat Hunting Examples
 
@@ -346,20 +346,20 @@ edges
 // <- stop here. Kusto Explorer renders the graph visually.
 ```
 
-To flatten back to a table for dashboards or export, pipe through `graph-match | project` or `graph-to-table`.
+To flatten back to a table for [dashboards](../dashboards/SKILL.md) or export, pipe through `graph-match | project` or `graph-to-table`.
 
 ## Using with IRQL
 
-When working with security data, consider using IRQL selectors (`Get_*`) from the `azure-kusto-irql` skill as the data source. IRQL gives you a unified schema without memorizing raw table names or column mappings. For rich visualization with icons and node folding, the `azure-kusto-irql-graph` skill's `Lift_To_Graph` is the faster path.
+When working with security data, consider using IRQL selectors (`Get_*`) from the `[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)` skill as the data source. IRQL gives you a unified schema without memorizing raw table names or column mappings. For rich visualization with icons and node folding, the `[azure-kusto-irql-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)-skills/skills/[azure-kusto-irql-graph](../[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)` skill's `Lift_To_Graph` is the faster path.
 
 | Approach | Best For |
 |---|---|
 | Raw `make-graph` (this skill) | Full control, persistent models, shortest paths, connected components, custom schemas |
-| `Lift_To_Graph` (`azure-kusto-irql-graph`) | Quick icon-decorated visualization in Kusto Explorer, node folding |
+| `Lift_To_Graph` (`[azure-kusto-irql-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)-skills/skills/[azure-kusto-irql-graph](../[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)`) | Quick icon-decorated visualization in Kusto Explorer, node folding |
 | IRQL `Get_*` -> `make-graph` | IRQL's unified schema as input, then raw graph operators for analysis |
 | IRQL `Get_*` -> `Lift_To_Graph` -> `Graph_Render_View` | Fastest path from question to visual graph |
 
-> **Note:** `Lift_To_Graph`, `Graph_Render_View`, and `Graph_Fold_By_Property` are stored functions, not built-in operators. They are pre-deployed on the kc7001 example cluster but may need deployment on other clusters. See `azure-kusto-irql-graph/references/DEPLOY_IRQL_FUNCTIONS.md` for function definitions and deployment instructions.
+> **Note:** `Lift_To_Graph`, `Graph_Render_View`, and `Graph_Fold_By_Property` are stored functions, not built-in operators. They are pre-deployed on the kc7001 example cluster but may need deployment on other clusters. See `[azure-kusto-irql-graph](../[azure-kusto-graph](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph/SKILL.md)-skills/skills/[azure-kusto-irql-graph](../[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph-skills/skills/[azure-kusto-irql](../[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-irql/SKILL.md)/SKILL.md)-graph/SKILL.md)/SKILL.md)/references/DEPLOY_IRQL_FUNCTIONS.md` for function definitions and deployment instructions.
 
 ### Example: IRQL selectors -> make-graph -> shortest path
 
@@ -409,7 +409,7 @@ edges
 
 ### Example: IRQL + make-graph integration
 
-See [../../../Global_References/azure-kusto-graph_EXAMPLES.md](../../../Global_References/azure-kusto-graph_EXAMPLES.md) for multi-source investigation graphs combining IRQL selectors with `make-graph`, and `Lift_To_Graph` visual graph examples.
+See [../../../Global_References/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph_EXAMPLES.md](../../../Global_References/[azure-kusto](../azure-skills/skills/[azure-kusto](../../Containers_and_Orchestration/azure-kusto/SKILL.md)/SKILL.md)-graph_EXAMPLES.md) for multi-source investigation graphs combining IRQL selectors with `make-graph`, and `Lift_To_Graph` visual graph examples.
 
 ## Practical Usage Scenarios
 

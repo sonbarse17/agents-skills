@@ -12,7 +12,7 @@ The problem is formulated as a tuple $(S, G, E, V, \text{Search})$, where $S$ is
 ### Breadth-First Search (BFS) Implementation
 In ToT BFS, we maintain a frontier of size $b$. At step $k$, we expand each of the $b$ states by generating $k$ new thoughts.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph SearchBFSStateSearch ["BFS State Search<br><br><br>"]

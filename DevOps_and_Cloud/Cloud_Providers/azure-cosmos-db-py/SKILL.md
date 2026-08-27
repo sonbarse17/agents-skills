@@ -33,7 +33,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
 **DefaultAzureCredential (preferred)**:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
@@ -51,7 +51,7 @@ from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with CosmosClient(
@@ -63,7 +63,7 @@ with CosmosClient(
 ```
 
 **Emulator (local development)**:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.cosmos import CosmosClient
 
 with CosmosClient(
@@ -105,7 +105,7 @@ with CosmosClient(
 
 Create a singleton Cosmos client with dual authentication:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # db/cosmos.py
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential
@@ -142,7 +142,7 @@ async def get_container():
 
 Use five-tier model pattern for clean separation:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ProjectBase(BaseModel):           # Shared fields
     name: str = Field(..., min_length=1, max_length=200)
 
@@ -162,7 +162,7 @@ class ProjectInDB(Project):             # Internal with docType
 
 ### 3. Service Layer Pattern
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ProjectService:
     def _use_cosmos(self) -> bool:
         return get_container() is not None
@@ -199,7 +199,7 @@ class ProjectService:
 
 Write tests BEFORE implementation using these patterns:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @pytest.fixture
 def mock_cosmos_container(mocker):
     container = mocker.MagicMock()

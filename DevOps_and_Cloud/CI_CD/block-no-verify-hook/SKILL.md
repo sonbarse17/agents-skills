@@ -5,21 +5,21 @@ description: Configure a PreToolUse hook to prevent AI agents from skipping git 
 
 # Block No-Verify Hook
 
-PreToolUse hook configuration that intercepts and blocks bypass-flag usage before execution, ensuring AI agents cannot skip pre-commit hooks, GPG signing, or other git safety mechanisms.
+PreToolUse hook configuration that intercepts and blocks bypass-flag usage before execution, ensuring AI agents cannot skip pre-[commit](../commit/SKILL.md) hooks, GPG signing, or other git safety mechanisms.
 
 ## Overview
 
-AI coding agents (Claude Code, Codex, etc.) can run shell commands with flags like `--no-verify` that bypass pre-commit hooks. This defeats the purpose of linting, formatting, testing, and security checks configured in pre-commit hooks. The block-no-verify hook adds a PreToolUse guard that rejects any tool call containing bypass flags before execution.
+AI coding agents (Claude Code, Codex, etc.) can run shell commands with flags like `--no-verify` that bypass pre-[commit](../commit/SKILL.md) hooks. This defeats the purpose of linting, formatting, testing, and security checks configured in pre-[commit](../commit/SKILL.md) hooks. The block-no-verify hook adds a PreToolUse guard that rejects any tool call containing bypass flags before execution.
 
 ## Problem
 
-When AI agents commit code, they may use bypass flags to avoid hook failures:
+When AI agents [commit](../commit/SKILL.md) code, they may use bypass flags to avoid hook failures:
 
 ```bash
-# These commands skip pre-commit hooks entirely
-git commit --no-verify -m "quick fix"
+# These commands skip pre-[commit](../commit/SKILL.md) hooks entirely
+git [commit](../commit/SKILL.md) --no-verify -m "quick fix"
 git push --no-verify
-git commit --no-gpg-sign -m "unsigned commit"
+git [commit](../commit/SKILL.md) --no-gpg-sign -m "unsigned [commit](../commit/SKILL.md)"
 git merge --no-verify feature-branch
 ```
 
@@ -46,7 +46,7 @@ Add the following to your project's `.claude/settings.json`:
         "matcher": "Bash",
         "hook": {
           "type": "command",
-          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the commit without bypass flags so that pre-commit hooks execute properly.' >&2; exit 2; fi"
+          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the [commit](../commit/SKILL.md) without bypass flags so that pre-[commit](../commit/SKILL.md) hooks execute properly.' >&2; exit 2; fi"
         }
       }
     ]
@@ -73,8 +73,8 @@ Add the following to your project's `.claude/settings.json`:
 
 | Flag | Purpose | Why Blocked |
 |------|---------|-------------|
-| `--no-verify` | Skips pre-commit and commit-msg hooks | Bypasses linting, formatting, testing, security checks |
-| `--no-gpg-sign` | Skips GPG commit signing | Bypasses commit signing policy |
+| `--no-verify` | Skips pre-[commit](../commit/SKILL.md) and [commit](../commit/SKILL.md)-msg hooks | Bypasses linting, formatting, testing, security checks |
+| `--no-gpg-sign` | Skips GPG [commit](../commit/SKILL.md) signing | Bypasses [commit](../commit/SKILL.md) signing policy |
 
 ## Installation
 
@@ -92,7 +92,7 @@ cat > .claude/settings.json << 'EOF'
         "matcher": "Bash",
         "hook": {
           "type": "command",
-          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the commit without bypass flags so that pre-commit hooks execute properly.' >&2; exit 2; fi"
+          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the [commit](../commit/SKILL.md) without bypass flags so that pre-[commit](../commit/SKILL.md) hooks execute properly.' >&2; exit 2; fi"
         }
       }
     ]
@@ -115,7 +115,7 @@ cat > ~/.claude/settings.json << 'EOF'
         "matcher": "Bash",
         "hook": {
           "type": "command",
-          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the commit without bypass flags so that pre-commit hooks execute properly.' >&2; exit 2; fi"
+          "command": "if printf '%s' \"$TOOL_INPUT\" | grep -qE '(^|&&|;|\\|)\\s*git\\s+.*--(no-verify|no-gpg-sign)'; then echo 'BLOCKED: --no-verify and --no-gpg-sign flags are not allowed. Run the [commit](../commit/SKILL.md) without bypass flags so that pre-[commit](../commit/SKILL.md) hooks execute properly.' >&2; exit 2; fi"
         }
       }
     ]
@@ -130,10 +130,10 @@ Test that the hook blocks bypass flags:
 
 ```bash
 # This should be blocked by the hook:
-git commit --no-verify -m "test"
+git [commit](../commit/SKILL.md) --no-verify -m "test"
 
 # This should succeed normally:
-git commit -m "test"
+git [commit](../commit/SKILL.md) -m "test"
 ```
 
 ## Extending the Hook
@@ -187,7 +187,7 @@ The block-no-verify hook works alongside other PreToolUse hooks:
 
 ## Best Practices
 
-1. **Commit the settings file** -- Add `.claude/settings.json` to version control so all team members benefit from the hook.
+1. **[Commit](../commit/SKILL.md) the settings file** -- Add `.claude/settings.json` to version control so all team members benefit from the hook.
 2. **Document in onboarding** -- Mention the hook in your project's contributing guide so developers understand why bypass flags are blocked.
-3. **Pair with pre-commit hooks** -- The block-no-verify hook ensures pre-commit hooks run; make sure you have meaningful pre-commit hooks configured.
-4. **Test after setup** -- Verify the hook works by intentionally triggering it in a test commit.
+3. **Pair with pre-[commit](../commit/SKILL.md) hooks** -- The block-no-verify hook ensures pre-[commit](../commit/SKILL.md) hooks run; make sure you have meaningful pre-[commit](../commit/SKILL.md) hooks configured.
+4. **Test after setup** -- Verify the hook works by intentionally triggering it in a test [commit](../commit/SKILL.md).

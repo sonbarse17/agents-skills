@@ -171,4 +171,4 @@ For Entra ID auth, assign one of these roles:
 | ------------- | --------------------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_messaging_eventhubs/latest/azure_messaging_eventhubs                    |
 | crates.io     | https://crates.io/crates/azure_messaging_eventhubs                                            |
-| Source Code   | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/eventhubs/azure_messaging_eventhubs |
+| Source Code   | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/eventhubs/azure_messaging_eventhubs |

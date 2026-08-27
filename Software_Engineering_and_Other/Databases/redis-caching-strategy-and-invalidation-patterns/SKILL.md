@@ -33,15 +33,15 @@ write-through, write-behind), how to set TTLs deliberately rather than
 by habit, and how to invalidate correctly under concurrent writes. It
 assumes Redis itself is already operating correctly — for the
 cluster/persistence/memory-management layer underneath, see
-[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md);
+[redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md);
 for validating `maxmemory-policy` and persistence settings against the
 TTL strategy chosen here, see
-[redis-configuration-validation](../redis-configuration-validation/SKILL.md).
+[redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
 - Designing a new caching layer for a service backed by a database
-  (PostgreSQL, MongoDB, etc.) and choosing between cache-aside,
+  ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MongoDB](../../Backend/mongodb/SKILL.md), etc.) and choosing between cache-aside,
   write-through, or write-behind.
 - Deciding TTL strategy for a cache — fixed vs. sliding expiration, and
   whether to jitter TTLs to avoid synchronized mass expiry.
@@ -60,7 +60,7 @@ TTL strategy chosen here, see
 
 - A working Redis deployment (cluster or standalone) already handling
   the infrastructure concerns in
-  [redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)
+  [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md)
   — this skill assumes Redis itself is reachable and correctly
   configured, and focuses on the application-side pattern built on top.
 - A clear identification of the actual source of truth (the database or
@@ -83,7 +83,7 @@ TTL strategy chosen here, see
 
 **Cache-aside (lazy loading)** — the application checks the cache first,
 and on a miss reads from the database and populates the cache:
-```python
+```[python](../../Languages/python/SKILL.md)
 def get_user(user_id):
     cached = redis.get(f"user:{user_id}")
     if cached is not None:
@@ -100,7 +100,7 @@ explicitly (step 3).
 
 **Write-through** — every write goes through the cache, which writes to
 the database synchronously before acknowledging:
-```python
+```[python](../../Languages/python/SKILL.md)
 def update_user(user_id, data):
     db.execute("UPDATE users SET ... WHERE id = %s", user_id, data)
     redis.set(f"user:{user_id}", serialize(data), ex=300)
@@ -126,7 +126,7 @@ A fixed TTL applied identically to many keys populated at the same time
 tight loop) causes them all to expire simultaneously, producing a
 correlated spike in cache misses and backend load exactly 300 seconds
 later. Add jitter:
-```python
+```[python](../../Languages/python/SKILL.md)
 import random
 base_ttl = 300
 jittered_ttl = base_ttl + random.randint(-30, 30)
@@ -148,7 +148,7 @@ refreshed.
 For any data where staleness beyond the write itself is unacceptable
 (not just "eventually consistent within a TTL window is fine"),
 actively invalidate on write rather than waiting for natural expiry:
-```python
+```[python](../../Languages/python/SKILL.md)
 def update_user(user_id, data):
     db.execute("UPDATE users SET ... WHERE id = %s", user_id, data)
     redis.delete(f"user:{user_id}")   # next read repopulates from DB (cache-aside)
@@ -169,7 +169,7 @@ If multiple application regions each read from their own local Redis
 (not a shared cluster), a write in one region must invalidate the
 cached copy in every other region. Use Redis pub/sub for fan-out, but
 design for its at-most-once, fire-and-forget delivery:
-```python
+```[python](../../Languages/python/SKILL.md)
 # Publisher (on write)
 redis.publish("cache-invalidate", json.dumps({"key": f"user:{user_id}"}))
 
@@ -196,7 +196,7 @@ at once, multiplying backend load exactly when it was already handling
 the read traffic via cache. Use a lock (or "recompute lease") so only
 one request rebuilds the value while others either wait briefly or
 serve a stale copy:
-```python
+```[python](../../Languages/python/SKILL.md)
 def get_with_stampede_protection(key, rebuild_fn, ttl=300, lock_ttl=10):
     value = redis.get(key)
     if value is not None:
@@ -237,7 +237,7 @@ at the exact expiry instant.
   stale data can be served.
 - Add stampede protection (a lock/lease or probabilistic early refresh)
   for any key popular enough that its concurrent-miss rebuild load would
-  meaningfully spike backend load — don't wait for an incident to
+  meaningfully spike backend load — don't wait for an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to
   discover a hot key needs this.
 - Make cache keys carry a version or schema-revision component
   (`user:v2:{id}`) when the cached value's shape can change across a
@@ -307,13 +307,13 @@ thousands of keys at once) the database sees a load spike.
    should invalidate promptly on an explicit price change; inventory
    availability at add-to-cart time should have a much shorter TTL since
    overselling is more costly than a cache miss.
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    redis.set(f"price:{sku}", price, ex=90)              # base TTL, jittered below
    redis.set(f"inventory:{sku}", qty, ex=15)             # short TTL, staleness-sensitive
    ```
 2. Add invalidation-on-write to the price-change code path (cache-aside,
    delete-then-repopulate):
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    def apply_price_change(sku, new_price):
        db.execute("UPDATE products SET price = %s WHERE sku = %s", new_price, sku)
        redis.delete(f"price:{sku}")
@@ -322,7 +322,7 @@ thousands of keys at once) the database sees a load spike.
    immediately, independent of the 90-second TTL.
 3. Fix the batch-sync thundering herd by jittering TTLs on the sync job
    and adding stampede protection for the highest-traffic SKUs:
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    jittered_ttl = 90 + random.randint(-15, 15)
    redis.set(f"price:{sku}", price, ex=jittered_ttl)
    ```
@@ -334,6 +334,6 @@ thousands of keys at once) the database sees a load spike.
 
 ## Cross-references
 
-- [redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md) — the persistence/cluster/memory infrastructure this caching strategy runs on top of, including how `maxmemory-policy` interacts with the TTLs set here.
-- [redis-configuration-validation](../redis-configuration-validation/SKILL.md) — validates that the eviction policy and persistence settings actually match the TTL/data-classification assumptions this caching strategy depends on.
-- [postgresql-operations-and-performance-tuning](../postgresql-operations-and-performance-tuning/SKILL.md) — the source-of-truth database performance work that a cache-aside layer here is meant to offload; a cache masking an unaddressed slow-query problem is a common anti-pattern worth checking against.
+- [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md) — the persistence/cluster/memory infrastructure this caching strategy runs on top of, including how `maxmemory-policy` interacts with the TTLs set here.
+- [redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md) — validates that the eviction policy and persistence settings actually match the TTL/data-classification assumptions this caching strategy depends on.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the source-of-truth database performance work that a cache-aside layer here is meant to offload; a cache masking an unaddressed slow-query problem is a common anti-pattern worth checking against.

@@ -199,7 +199,7 @@ into the penalty formula.
 and signal that the author is trying to micromanage every output rather than providing
 principled guidance.
 
-**Fix:** Audit every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
+**Fix:** [Audit](../../Operations/audit/SKILL.md) every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
 where possible. Reserve hard constraints for genuine safety or correctness requirements. Target
 fewer than 10 such directives per 100 lines.
 
@@ -357,9 +357,9 @@ Builds the local corpus index at `~/.plugineval/corpus`. Required before Elo ran
 
 ### Scripting the Composite Formula
 
-Reproduce the composite score offline (pre-commit hook, CI gate):
+Reproduce the composite score offline (pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook, CI gate):
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def composite_score(dimension_scores: dict, anti_pattern_count: int = 0) -> float:
     """Replicate the PluginEval composite formula."""
     WEIGHTS = {
@@ -476,7 +476,7 @@ more composite-score gain per hour than all low-weight dimensions combined.
 
 ### Token Efficiency (weight 0.06)
 
-- Audit MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
+- [Audit](../../Operations/audit/SKILL.md) MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
 - Consolidate near-duplicate bullet points and repeated-structure tables.
 
 ### Robustness (weight 0.05)

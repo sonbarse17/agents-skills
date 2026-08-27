@@ -65,7 +65,7 @@ Detailed pattern documentation lives in `../../../Global_References/error-handli
 7. **Don't Swallow Errors**: Log or re-throw, don't silently ignore
 8. **Type-Safe Errors**: Use typed errors when possible
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Good error handling example
 def process_order(order_id: str) -> Order:
     """Process order with comprehensive error handling."""

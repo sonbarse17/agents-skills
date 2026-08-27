@@ -45,7 +45,7 @@ customization requirements), and the Linear API/SDK for programmatic
 issue management. It assumes the reader is already familiar with
 general ticket-writing hygiene (clear titles, acceptance criteria,
 priority discipline) covered in
-[jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/jira-ticket-best-practices-and-workflow/SKILL.md)
+[jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
 and focuses specifically on what's different about Linear's model.
 
 ## When to use
@@ -56,7 +56,7 @@ and focuses specifically on what's different about Linear's model.
   wanting the tradeoffs made concrete rather than a generic feature
   comparison.
 - Designing a Cycle and Project structure so cycle planning reflects
-  real team capacity rather than becoming a rubber-stamped ritual.
+  real team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) rather than becoming a rubber-stamped ritual.
 - Migrating a team from Jira to Linear (or vice versa) and needing to
   understand what doesn't map 1:1 (Jira's flexible board/workflow
   customization vs. Linear's opinionated defaults, Epics vs. Projects).
@@ -87,16 +87,16 @@ and focuses specifically on what's different about Linear's model.
   token for broader integrations. Store as `${LINEAR_API_KEY}`; never
   hardcode it. The API is **GraphQL-only** — there is no REST
   equivalent — at `https://api.linear.app/graphql`.
-- Official SDKs (`@linear/sdk` for TypeScript/JavaScript, or direct
+- Official SDKs (`@linear/sdk` for [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript, or direct
   GraphQL calls from any language) if building automation — the
-  TypeScript SDK is the most actively maintained and closely tracks API
+  [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK is the most actively maintained and closely tracks API
   changes.
 - Permission scoping: API keys inherit the creating user's permissions;
   for team-wide automation (a bot creating issues on behalf of an
   integration), use a dedicated service-account-style user rather than
   a personal API key tied to one engineer who might leave.
 - If comparing against or migrating from Jira, review
-  [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/jira-ticket-best-practices-and-workflow/SKILL.md)
+  [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
   first — the ticket-quality guidance there (clear titles, acceptance
   criteria, honest status movement) applies equally to Linear issues and
   isn't repeated here.
@@ -139,7 +139,7 @@ and focuses specifically on what's different about Linear's model.
    "everything ends up Highest priority" anti-pattern — it stops being a
    meaningful signal the moment it's not actively worked.
 
-3. **Plan Cycles around real committed capacity, not a wish list.**
+3. **Plan Cycles around real committed [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not a wish list.**
    Linear auto-schedules Cycles on a fixed cadence (commonly 1 or 2
    weeks) once configured at the Team level:
    ```
@@ -208,10 +208,10 @@ and focuses specifically on what's different about Linear's model.
    }
    ```
 
-7. **Use the TypeScript SDK for anything beyond a one-off script**, since
+7. **Use the [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK for anything beyond a one-off script**, since
    it handles pagination, retries, and type safety the raw GraphQL calls
    don't:
-   ```typescript
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
    import { LinearClient } from "@linear/sdk";
 
    const linear = new LinearClient({ apiKey: process.env.LINEAR_API_KEY });
@@ -223,10 +223,10 @@ and focuses specifically on what's different about Linear's model.
    });
    ```
 
-8. **Sync Linear with an external system (Slack, GitHub, an incident
+8. **Sync Linear with an external system (Slack, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    tool) via Linear's native integrations before building a custom
    webhook sync** — Linear ships first-party integrations for the most
-   common cases (GitHub PR status linking issue state automatically,
+   common cases ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PR status linking issue state automatically,
    Slack for notifications), which cover most needs with far less
    maintenance than a bespoke sync layer.
 
@@ -238,21 +238,21 @@ and focuses specifically on what's different about Linear's model.
 - Treat Triage as an actively-managed daily gate, not a parking lot —
   an unprocessed Triage queue defeats its purpose as a signal the same
   way an unbounded Jira backlog does.
-- Commit to Cycles based on real, historically-demonstrated capacity,
+- [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to Cycles based on real, historically-demonstrated [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
   and review completion rate over several cycles rather than reacting
   to any single cycle's carry-over as a one-off.
 - Reserve Projects for genuinely cross-cycle, multi-person initiatives;
   don't wrap every small issue in a Project just because the feature
   exists.
-- Prefer Linear's native integrations (GitHub, Slack, Sentry, etc.)
+- Prefer Linear's native integrations ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), etc.)
   over building custom sync automation — they cover the overwhelming
   majority of real needs with far less ongoing maintenance.
 - When comparing to Jira for a new team, be concrete about the actual
   tradeoff: Linear trades configurability for speed and a strong
   opinionated default; a team with complex cross-functional approval
   workflows, heavy custom fields, or ITSM-adjacent needs (see
-  [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/jira-ticket-best-practices-and-workflow/SKILL.md)
-  and, for full ITSM, [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md))
+  [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
+  and, for full ITSM, [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md))
   is usually still better served by Jira's or ServiceNow's
   configurability, not Linear's speed.
 - Use a dedicated service-account-style user for team-wide API
@@ -282,9 +282,9 @@ and focuses specifically on what's different about Linear's model.
 - **Symptom:** A team's Cycles routinely carry over 30-40% of committed
   issues into the next cycle, and cycle planning has become a rubber
   stamp rather than a real forecasting exercise.
-  **Fix:** The team is committing to a wish list, not real capacity —
+  **Fix:** The team is committing to a wish list, not real [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) —
   review actual historical completion rate over several cycles and
-  commit to that number going forward (step 3), rather than treating
+  [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to that number going forward (step 3), rather than treating
   each cycle's overcommitment as a one-off that "just happened" to be
   busy.
 
@@ -301,7 +301,7 @@ and focuses specifically on what's different about Linear's model.
   external tool (built because "we needed something specific") breaks
   silently after a Linear API schema change, and issues stop updating.
   **Fix:** Check whether Linear's native integration for that tool
-  (GitHub, Slack, Sentry, and others) already covers the actual need
+  ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), and others) already covers the actual need
   before building custom sync automation (step 8) — a first-party
   integration is maintained against Linear's own API changes; a custom
   sync is not, and is an ongoing maintenance liability for a need that
@@ -311,7 +311,7 @@ and focuses specifically on what's different about Linear's model.
 
 **Scenario:** A 6-person product engineering team moving off Jira picks
 Linear specifically to reduce process overhead, and sets up Cycles,
-Triage handling, and a GitHub-driven issue-creation automation for
+Triage handling, and a [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-driven issue-creation automation for
 incoming bug reports.
 
 Team configuration:
@@ -354,25 +354,25 @@ to 14 issues for the upcoming cycle rather than the 20 that were
 originally on the wish list — the cycle closes with 13 of 14 complete,
 a healthy, forecastable result rather than a rubber-stamped overcommit.
 
-GitHub integration (native, not custom) automatically transitions
+[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration (native, not custom) automatically transitions
 `CHK-511` from `In Progress` to `In Review` when a linked PR opens, and
 to `Done` when it merges — no custom webhook sync required.
 
 ## Cross-references
 
-- [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/jira-ticket-best-practices-and-workflow/SKILL.md) —
+- [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
   the general ticket-quality guidance (clear titles, acceptance
   criteria, honest status movement) that applies equally to Linear
   issues; read this for the parts of good issue hygiene this skill
   doesn't repeat, and for the Jira-specific workflow/API mechanics to
   compare against when deciding between the two tools.
-- [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md) —
+- [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md) —
   the ITSM-grade, compliance-auditable alternative for organizations
   whose needs (CAB approval, CMDB-linked routing) exceed what either
   Linear's or Jira's lighter-weight issue-tracking model is designed
   for.
-- [chatops-runbook-automation](../chatops-runbook-automation/SKILL.md) —
+- [chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../[chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) —
   a comparable "keep the automation layer thin, delegate to the
   platform's native capability before building custom" principle,
-  applied to incident-channel bots rather than issue-tracker
+  applied to [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-channel bots rather than issue-tracker
   integrations.

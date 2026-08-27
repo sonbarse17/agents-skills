@@ -26,7 +26,7 @@ User request includes: `Play Framework`, `Play Scala`, `Play controller`, `Play 
 ### Input Context
 - Scala version (2.13, 3)
 - Play version (3.x)
-- Database (PostgreSQL via Slick)
+- Database ([PostgreSQL](../postgresql/SKILL.md) via Slick)
 - JSON library (Play JSON, Circe)
 - Testing (ScalaTest, Specs2)
 
@@ -128,9 +128,9 @@ lazy val root = (project in file("."))
       guice,
       "org.playframework" %% "play-slick" % "6.0.0",
       "org.playframework" %% "play-slick-evolutions" % "6.0.0",
-      "org.postgresql" % "postgresql" % "42.7.0",
+      "org.[postgresql](../postgresql/SKILL.md)" % "[postgresql](../postgresql/SKILL.md)" % "42.7.0",
       "org.mindrot" % "jbcrypt" % "0.4",
-      "com.github.jwt-scala" %% "jwt-play" % "9.4.0",
+      "com.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).jwt-scala" %% "jwt-play" % "9.4.0",
       "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test,
     )
   )
@@ -476,7 +476,7 @@ play.filters.headers.contentSecurityPolicy = "default-src 'self'"
 slick.dbs.default {
   profile = "slick.jdbc.PostgresProfile$"
   db {
-    driver = "org.postgresql.Driver"
+    driver = "org.[postgresql](../postgresql/SKILL.md).Driver"
     url = ${?DATABASE_URL}
     user = ${?DB_USER}
     password = ${?DB_PASS}

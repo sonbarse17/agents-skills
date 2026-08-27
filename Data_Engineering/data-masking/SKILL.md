@@ -42,7 +42,7 @@ Protection: {mask|encrypt|tokenize|anonymize|redact}
 - [ ] All sensitive fields identified and classified.
 - [ ] Protection strategy chosen per classification.
 - [ ] Masking/encryption implemented at the application or database layer.
-- [ ] Audit log of data access recorded.
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log of data access recorded.
 - [ ] Right-to-deletion workflow for GDPR Article 17.
 
 ### Max Response Length
@@ -99,7 +99,7 @@ function maskEmail(email) {
 // j@example.com  -> j******n@example.com
 ```
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def mask_email(email: str) -> str:
     local, domain = email.split('@')
     return f"{local[0]}{'*' * max(len(local) - 2, 0)}{local[-1]}@{domain}"
@@ -180,7 +180,7 @@ function maskPreservingFormat(value) {
 
 ### Conditional Masking
 Mask based on user role or context:
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 function maskByRole(user: User, viewer: Viewer): Partial<User> {
   const result = { ...user };
   if (viewer.role !== 'admin' && viewer.role !== 'support') {
@@ -206,11 +206,11 @@ function maskByRole(user: User, viewer: Viewer): Partial<User> {
 
 ### Key Management
 - Never store encryption keys in the codebase or environment variables
-- Use a KMS (AWS KMS, HashiCorp Vault, Azure Key Vault)
+- Use a KMS (AWS KMS, HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), Azure Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md))
 - Rotate keys on a schedule (90 days recommended)
 - Support key versioning for dual-write during rotation
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 class KeyManager {
   async encrypt(plaintext: string): Promise<string> {
     const currentKey = await this.kms.getCurrentKey();
@@ -239,13 +239,13 @@ class KeyManager {
 |-----------|---------------|-------|
 | AES-256-GCM encrypt | ~50μs per field | Negligible for most apps |
 | AES-256-GCM decrypt | ~50μs per field | Negligible for most apps |
-| Tokenization | ~1-5ms (network calls) | Depends on vault latency |
+| Tokenization | ~1-5ms (network calls) | Depends on [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) latency |
 | Masking | <1μs | No performance concern |
 | KMS key retrieval | ~10-50ms | Cache keys with TTL |
 
 ### Cache Strategy
 Cache encryption keys locally with a TTL to avoid KMS calls on every operation:
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 class CachedKeyManager {
   private keyCache = new Map<string, { key: Buffer; expiresAt: number }>();
 
@@ -268,7 +268,7 @@ Searching encrypted fields requires special handling:
 - **Client-side decryption**: Search on the plaintext before encryption
 - **Blind indexing**: Store a hash of the plaintext alongside the ciphertext
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Blind index for email search
 async function storeEmail(userId: string, email: string): Promise<void> {
   const encrypted = await encryptField(email);
@@ -295,12 +295,12 @@ async function findByEmail(email: string): Promise<User | null> {
 | Public | Product names, prices | None |
 | Internal | Employee emails, team names | Mask on external display |
 | Confidential | Customer names, phone numbers | Encrypt at rest |
-| Restricted | SSN, passport numbers, medical records | Encrypt + mask + audit |
+| Restricted | SSN, passport numbers, medical records | Encrypt + mask + [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Regulated | Credit card numbers, health info | Tokenize + PCI/HIPAA controls |
 
-### Audit Requirements
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Requirements
 Log every access to classified data:
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function readWithAudit(userId: string, fieldName: string): Promise<string> {
   const value = await getEncryptedField(userId, fieldName);
   await auditLog.write({
@@ -333,13 +333,13 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
 - Encryption keys must be stored in a KMS, never in the codebase.
 - Support the right to be forgotten: anonymize, do not cascade delete.
 - Classify data at the schema level with database comments or tags.
-- Audit every read of sensitive data.
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) every read of sensitive data.
 - Encrypt backups and have key escrow for disaster recovery.
 - Test masking/encryption with automated integration tests.
 
 ## References
   - ../../../Global_References/data-classification.md — Data Classification
-  - ../../../Global_References/data-masking-audit.md — Data Masking Audit
+  - ../../../Global_References/data-masking-[audit](../../AI_and_Agents/Operations/audit/SKILL.md).md — Data Masking [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
   - ../../../Global_References/data-masking-advanced.md — Data Masking Advanced Patterns
   - ../../../Global_References/data-masking-compliance.md — Data Masking Compliance
   - ../../../Global_References/data-masking-fundamentals.md — Data Masking Fundamentals
@@ -351,14 +351,14 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
   - ../../../Global_References/pii-detection.md — PII Detection
 ## Handoff
 No artifact produced unless requested.
-Next skill: audit-logging — log all access to sensitive data for compliance.
+Next skill: [audit-logging](../../DevOps_and_Cloud/Observability_and_SecOps/[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md) — log all access to sensitive data for compliance.
 Carry forward: data classification map, encryption strategy, tokenization approach.
 
 ## Implementation Patterns
 
 ### Data Masker Engine
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Dict, Any, List, Optional, Callable
 from enum import Enum
 import re
@@ -453,7 +453,7 @@ class DataMasker:
 
 ### PII Detection Pipeline
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Dict, List, Optional, Set
 import re
 
@@ -548,14 +548,14 @@ What type of sensitive data?
 |---|---|---|
 | Masking before logging only | Data leaked in other channels | Mask at the source (API response, DB query) |
 | Same masking for all roles | Over-redaction for authorized users | Role-based dynamic masking |
-| No tokenization mapping loss | Can't reconstruct for legitimate use | Token vault with access audit |
+| No tokenization mapping loss | Can't reconstruct for legitimate use | Token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with access [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Masking but not encrypting backups | Data exposed at rest | Encrypt backups with KMS-managed keys |
 | Manual field-by-field rules | Human error misses fields | Automated PII detection + rule engine |
 | Storing masking config in code | Config access = data exposure | Store in config service with access control |
 
 ## Performance Optimization
 
-- **Eager masking at query level**: Apply masking in SQL queries (PostgreSQL column-level encryption, views with masking). Avoids fetching and masking in application code.
-- **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token vault lookup latency by 90%.
+- **Eager masking at query level**: Apply masking in SQL queries ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) column-level encryption, views with masking). Avoids fetching and masking in application code.
+- **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lookup latency by 90%.
 - **Async PII detection pipeline**: Run PII detection asynchronously for new data ingestion. Use a work queue for large batch processing. Stream results back for masking rule generation.
 

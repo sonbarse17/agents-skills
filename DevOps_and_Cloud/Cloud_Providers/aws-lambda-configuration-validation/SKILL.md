@@ -26,16 +26,16 @@ resulting configuration is unsafe. A reserved concurrency value that
 starves the rest of the account, a VPC subnet with too few free IPs, a
 plaintext secret in an environment variable, or an execution role widened
 "to make it work" all pass a normal deploy and only surface later as
-throttling, an incident, or a security finding. This skill is the pre-deploy
+throttling, an [incident](../../Observability_and_SecOps/incident/SKILL.md), or a security finding. This skill is the pre-deploy
 gate that catches those problems before they reach production, complementing
-[aws-lambda-packaging-and-configuration](../aws-lambda-packaging-and-configuration/SKILL.md),
+[aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md),
 which covers how to build the configuration in the first place.
 
 ## When to use
 
 - Before promoting a Lambda deploy (via CI/CD, SAM, CDK, Terraform, or
-  CloudFormation) to a production stage.
-- Reviewing an infrastructure-as-code diff that changes a Lambda
+  [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)) to a production stage.
+- Reviewing an [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) diff that changes a Lambda
   function's memory, timeout, concurrency, VPC config, or IAM role.
 - Diagnosing functions across an account suddenly throttling with
   `TooManyRequestsException` after a new function was deployed.
@@ -144,7 +144,7 @@ which covers how to build the configuration in the first place.
   (CloudWatch metric `ConcurrentExecutions` vs. account limit), not just
   at validation time — the shared pool can be consumed gradually as more
   functions are added over time.
-- Prefer removing VPC attachment over widening subnet IP capacity when a
+- Prefer removing VPC attachment over widening subnet IP [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) when a
   function doesn't actually need private-network access — the simplest
   fix to a VPC-related throttling problem is often "don't attach a VPC at
   all."
@@ -168,7 +168,7 @@ which covers how to build the configuration in the first place.
 
 - **Symptom:** Adding VPC configuration to a function causes slow scale-up
   or ENI-related throttling under burst traffic.
-  **Fix:** Verify subnet free-IP capacity across all AZs the function's
+  **Fix:** Verify subnet free-IP [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) across all AZs the function's
   VPC config references, and prefer VPC endpoints over NAT gateway routing
   for AWS service calls to reduce contention — or remove VPC attachment
   entirely if the function doesn't reach private resources.
@@ -224,6 +224,6 @@ projections, not a round number picked without data.
 
 ## Cross-references
 
-- [aws-lambda-packaging-and-configuration](../aws-lambda-packaging-and-configuration/SKILL.md) — how the memory, timeout, VPC, and IAM configuration validated here is built in the first place.
-- [dapr-configuration-validation](../dapr-configuration-validation/SKILL.md) — the same pre-deploy validation discipline applied to Dapr component configs in a polyglot microservices context.
-- [knative-configuration-validation](../knative-configuration-validation/SKILL.md) — the equivalent pre-deploy validation pattern for Knative Service/Revision configuration on Kubernetes.
+- [aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — how the memory, timeout, VPC, and IAM configuration validated here is built in the first place.
+- [dapr-configuration-validation](../[dapr-configuration-validation](../../CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md) — the same pre-deploy validation discipline applied to Dapr component configs in a polyglot [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) context.
+- [knative-configuration-validation](../[knative-configuration-validation](../../Containers_and_Orchestration/knative-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-deploy validation pattern for Knative Service/Revision configuration on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).

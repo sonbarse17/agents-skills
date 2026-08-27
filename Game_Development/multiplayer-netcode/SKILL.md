@@ -38,7 +38,7 @@ void OnServerStateReceived(ServerState state) {
 
 ## Architecture Flow
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Client[Client Input] --> Server[Server Auth]

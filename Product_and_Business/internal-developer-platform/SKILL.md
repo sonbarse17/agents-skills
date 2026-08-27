@@ -6,7 +6,7 @@ license: MIT
 
 # Internal Developer Platform
 
-An IDP is not "Kubernetes with a UI bolted on." It is a product, built by a team, for one customer
+An IDP is not "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with a UI bolted on." It is a product, built by a team, for one customer
 segment: the engineers who have to ship through it every day. Platform teams that forget this build
 infrastructure nobody asked for, then wonder why adoption stalls and shadow processes reappear.
 
@@ -37,7 +37,7 @@ point, not an internal architecture goal.
 Look at how teams actually deploy, configure, and debug today — including the workarounds — before
 designing the "right" way. The paved road that wins is the one that matches how good teams already
 work, just with the toil removed; a paved road invented from scratch in a vacuum competes with real
-habits and usually loses. The curated templates and defaults themselves belong to `golden-paths` —
+habits and usually loses. The curated templates and defaults themselves belong to `[golden-paths](../golden-paths/SKILL.md)` —
 this skill is about the platform that hosts and enforces them, not their contents.
 
 **Done when:** the first paved-road template you ship is modeled on an existing team's working
@@ -51,10 +51,10 @@ running when something breaks at 2 a.m. If a developer can't answer "what actual
 click deploy" in one sentence, the platform has hidden something it shouldn't have.
 
 - **Show the generated manifest**, don't just apply it silently — link to the Terraform plan or
-  Kubernetes YAML the platform produced.
-- **Keep debugging primitives available**: logs, `kubectl`, and direct dashboard access should
+  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) YAML the platform produced.
+- **Keep debugging primitives available**: logs, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, and direct dashboard access should
   never require a platform-team ticket to reach.
-- **Never abstract security boundaries** into invisibility — see `policy-as-code` for keeping
+- **Never abstract security boundaries** into invisibility — see `[policy-as-code](../../Security/policy-as-code/SKILL.md)` for keeping
   guardrails legible instead of magic.
 
 **Done when:** a developer can explain what infrastructure their service actually runs on without
@@ -75,7 +75,7 @@ ticket to the platform team.
 
 A platform used because it's required tells you nothing about whether it's good; a platform used
 because it's genuinely faster tells you everything. Track voluntary usage, time-to-first-deploy for
-a new service, and how often developers route around the platform. See `developer-experience` for
+a new service, and how often developers route around the platform. See `[developer-experience](../developer-experience/SKILL.md)` for
 the fuller measurement toolkit — DORA metrics and beyond — this platform is what those numbers are
 measuring the effect of.
 

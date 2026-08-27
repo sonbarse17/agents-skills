@@ -126,7 +126,7 @@ Read `docs/prd.md` for requirements. Read `docs/decisions/` for architecture con
 
 **Context diagram elements**:
 - External systems (third-party APIs, client applications)
-- Internal services (monolith modules, microservices)
+- Internal services (monolith modules, [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md))
 - Data stores (databases, caches, file storage)
 - Communication protocols (HTTP, gRPC, message queues, WebSocket)
 - Data flow direction (request/response, push/pull)
@@ -222,7 +222,7 @@ DROP TABLE IF EXISTS {entity};
 - Migration DDL provided
 - Rollback DDL provided
 - Data migration strategy for existing records
-- Audit fields included (created_at, updated_at, created_by)
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) fields included (created_at, updated_at, created_by)
 
 ### Step 5: Performance Targets
 | Metric | Target | Measurement | Load Test Scenario |
@@ -230,7 +230,7 @@ DROP TABLE IF EXISTS {entity};
 | P95 latency | <200ms | Distributed tracing | 100 req/s steady |
 | P99 latency | <500ms | Distributed tracing | 100 req/s steady |
 | Throughput | 1000 req/s | Load testing | Peak traffic |
-| Availability | 99.95% | Uptime monitoring | 30d rolling window |
+| Availability | 99.95% | Uptime [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | 30d rolling window |
 
 **Performance target categories**:
 - **Latency**: P50, P95, P99 response times
@@ -295,7 +295,7 @@ Schema changes without migration plans are dangerous. Schema changes without rol
 "Fast" and "responsive" are not performance targets. Every target must be numeric and measurable. Anti-pattern signal: qualitative performance descriptions.
 
 ### Anti-Pattern 5: Ignoring Non-Functional Requirements
-The spec focuses only on functional behavior and ignores security, observability, and operability. Anti-pattern signal: no auth section, no logging section, no monitoring section.
+The spec focuses only on functional behavior and ignores security, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), and operability. Anti-pattern signal: no auth section, no logging section, no [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) section.
 
 ### Anti-Pattern 6: Spec Without Context
 The spec describes the solution without explaining the problem it solves. A new team member should understand WHY this feature exists from reading the context section. Anti-pattern signal: no context section or copy-pasted PRD.
@@ -446,9 +446,9 @@ How many instances are in production?
 
 ## Templates
 
-### Observability Specification Template
+### [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Specification Template
 ```markdown
-## Observability
+## [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 ### Logging
 | Event | Log Level | Fields | PII |
@@ -503,11 +503,11 @@ How many instances are in production?
 - [ ] CSRF protection (state-changing endpoints)
 - [ ] CORS policy configured
 
-### Audit Trail
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trail
 - [ ] All state-changing operations logged
-- [ ] Audit log includes: who, what, when, result
-- [ ] Audit logs are immutable
-- [ ] Audit log retention policy
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log includes: who, what, when, result
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs are immutable
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log retention policy
 ```
 
 ### Integration Contract Template
@@ -516,7 +516,7 @@ How many instances are in production?
 
 ### Authentication
 - Method: {API Key / OAuth2 / Basic Auth / Mutual TLS}
-- Credential storage: {vault / environment variable / secret manager}
+- Credential storage: {[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) / environment variable / secret manager}
 - Rotation policy: {frequency}
 
 ### Endpoints
@@ -553,7 +553,7 @@ How many instances are in production?
 
 ### Pattern 6: Security-Focused Spec
 **When**: Feature handling sensitive data, authentication, authorization, or PII
-**Process**: Cover data classification, encryption requirements, access control model, audit logging, compliance requirements (GDPR, SOC2, HIPAA), penetration testing scope, dependency vulnerability assessment
+**Process**: Cover data classification, encryption requirements, access control model, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging, compliance requirements (GDPR, SOC2, HIPAA), penetration testing scope, dependency vulnerability assessment
 **Output**: Spec with security review sign-off required before implementation
 
 ### Pattern 7: Performance-Critical Spec
@@ -600,7 +600,7 @@ The spec describes one solution as if it's the only option. No mention of altern
 - [ ] Error handling defined for every endpoint
 - [ ] Testing plan covers unit, integration, E2E scope
 - [ ] Security considerations documented
-- [ ] Observability (logging, metrics, tracing) defined
+- [ ] [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (logging, metrics, tracing) defined
 - [ ] Alternatives considered for non-trivial decisions
 - [ ] Spec is implementable as described (no open questions)
 - [ ] Spec size is proportional to feature complexity

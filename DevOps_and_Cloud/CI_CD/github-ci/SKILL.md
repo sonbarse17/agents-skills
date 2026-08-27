@@ -7,9 +7,9 @@ metadata:
   version: "1.0"
 ---
 
-# GitHub CI
+# [GitHub](../github/SKILL.md) CI
 
-Write and maintain GitHub Actions CI workflows with confidence. This skill covers workflow design, runner configuration, testing patterns, and security best practices for continuous integration pipelines on GitHub.
+Write and maintain [GitHub](../github/SKILL.md) Actions CI workflows with confidence. This skill covers workflow design, runner configuration, testing patterns, and security best practices for continuous integration pipelines on [GitHub](../github/SKILL.md).
 
 ---
 
@@ -28,9 +28,9 @@ Load reference files for depth on specific topics:
 
 ## Quick Start
 
-### Basic GitHub Actions Workflow
+### Basic [GitHub](../github/SKILL.md) Actions Workflow
 
-1. **Create workflow file** — Save as `.github/workflows/ci.yml` in repository root
+1. **Create workflow file** — Save as `.[github](../github/SKILL.md)/workflows/ci.yml` in repository root
 2. **Define triggers** — Use `on:` to specify when workflow runs (push, pull_request, schedule)
 3. **Configure job** — Define jobs with name, runner type, and steps
 4. **Add checkout** — Use `actions/checkout@v4` to access repository code
@@ -74,12 +74,12 @@ workflow
 
 ### File Location
 
-All workflows must be in `.github/workflows/` directory with `.yml` or `.yaml` extension. Use kebab-case for filenames: `build-and-test.yml`, `deploy-production.yml`.
+All workflows must be in `.[github](../github/SKILL.md)/workflows/` directory with `.yml` or `.yaml` extension. Use kebab-case for filenames: `build-and-test.yml`, `deploy-production.yml`.
 
 ### Quick Validation
 
 Validate YAML syntax before pushing:
 
 ```bash
-docker run --rm -v "$(pwd):/data" pipelinecomponents/yamllint yamllint /data/.github/workflows/
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd):/data" pipelinecomponents/yamllint yamllint /data/.[github](../github/SKILL.md)/workflows/
 ```

@@ -112,17 +112,17 @@ For capturing and analyzing API traffic at scale:
    ```
 5. Export to HAR format for analysis:
    ```bash
-   # Using Python API
+   # Using [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) API
    python3 -c "from mitmproxy.io import FlowReader; from mitmproxy.tools.dump import DumpMaster;
    import sys; [print(flow.request.url) for flow in FlowReader(open('api-traffic.flow', 'rb')).stream()]"
    ```
 
-### Workflow 4: Python Scripting for API Testing
+### Workflow 4: [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Scripting for API Testing
 
 For automated security testing with custom logic:
 
-1. Create Python addon script (`api-test.py`):
-   ```python
+1. Create [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) addon script (`api-test.py`):
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from mitmproxy import http
 
    class APISecurityTester:
@@ -155,7 +155,7 @@ For testing mobile apps with certificate pinning:
 
 1. Install mitmproxy CA certificate on device
 2. Use certificate unpinning tools or framework modifications:
-   - Android: Frida script for SSL unpinning
+   - [Android](../../../Mobile/android/SKILL.md): Frida script for SSL unpinning
    - iOS: SSL Kill Switch or similar tools
 3. Configure app traffic through mitmproxy
 4. Alternatively, use reverse proxy mode:
@@ -203,7 +203,7 @@ Install mitmproxy CA certificate for HTTPS interception:
 3. Download certificate for your platform
 4. Install in system/browser certificate store
 
-**Android:**
+**[Android](../../../Mobile/android/SKILL.md):**
 1. Push certificate to device: `adb push ~/.mitmproxy/mitmproxy-ca-cert.cer /sdcard/`
 2. Settings → Security → Install from SD card
 3. Select mitmproxy certificate
@@ -220,7 +220,7 @@ Install mitmproxy CA certificate for HTTPS interception:
 
 Test authentication mechanisms and token handling:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # auth-test.py
 from mitmproxy import http
 
@@ -248,7 +248,7 @@ addons = [AuthTester()]
 
 Fuzz API parameters for injection vulnerabilities:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # fuzz-params.py
 from mitmproxy import http
 
@@ -271,7 +271,7 @@ addons = [ParamFuzzer()]
 
 Inspect and test GraphQL APIs:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # graphql-test.py
 from mitmproxy import http
 import json
@@ -323,9 +323,9 @@ mitmdump --set hardump=./traffic.har
 
 ## Security Considerations
 
-- **Sensitive Data Handling**: Captured traffic may contain credentials, tokens, PII. Encrypt and secure stored flows. Never commit flow files to version control
+- **Sensitive Data Handling**: Captured traffic may contain credentials, tokens, PII. Encrypt and secure stored flows. Never [commit](../../CI_CD/commit/SKILL.md) flow files to version control
 - **Access Control**: Restrict access to mitmproxy instance. Use authentication for mitmweb (--web-user/--web-password flags)
-- **Audit Logging**: Log all intercepted traffic and modifications for security auditing and compliance
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all intercepted traffic and modifications for security auditing and compliance
 - **Compliance**: Ensure proper authorization before intercepting production traffic. Comply with GDPR, PCI-DSS for sensitive data
 - **Safe Defaults**: Use isolated testing environments. Avoid intercepting production traffic without explicit authorization
 
@@ -361,7 +361,7 @@ python3 analyze-results.py test-results.flow
 
 ### Mobile App Security Testing
 
-Standard workflow for iOS/Android apps:
+Standard workflow for iOS/[Android](../../../Mobile/android/SKILL.md) apps:
 1. Configure device to use mitmproxy
 2. Install CA certificate
 3. Bypass SSL pinning if needed
@@ -405,7 +405,7 @@ mitmproxy --modify-body '/~s & ~b "error"/success'
 
 Intercept and modify WebSocket traffic:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # websocket-test.py
 from mitmproxy import websocket
 
@@ -447,8 +447,8 @@ mitmproxy  # Regenerates on startup
 
 **Solution**: Use SSL unpinning tools:
 ```bash
-# Android with Frida
-frida -U -l universal-android-ssl-pinning-bypass.js -f com.example.app
+# [Android](../../../Mobile/android/SKILL.md) with Frida
+frida -U -l universal-[android](../../../Mobile/android/SKILL.md)-ssl-pinning-bypass.js -f com.example.app
 
 # Or modify app to disable pinning (development builds)
 ```
@@ -479,6 +479,6 @@ Use mitmproxy to test for OWASP API Security Top 10 vulnerabilities:
 ## References
 
 - [mitmproxy Documentation](https://docs.mitmproxy.org/)
-- [mitmproxy GitHub](https://github.com/mitmproxy/mitmproxy)
+- [mitmproxy GitHub](https://[github](../../CI_CD/github/SKILL.md).com/mitmproxy/mitmproxy)
 - [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
-- [mitmproxy Addon Examples](https://github.com/mitmproxy/mitmproxy/tree/main/examples)
+- [mitmproxy Addon Examples](https://[github](../../CI_CD/github/SKILL.md).com/mitmproxy/mitmproxy/tree/main/examples)

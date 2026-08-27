@@ -50,9 +50,9 @@ The OWASP Top 10 for LLM Applications (2025) defines the most critical risks. Th
 
 Every user message must be validated before it reaches the LLM. Validation has three layers: structural checks, injection detection, and content moderation.
 
-### Structural Checks (Python)
+### Structural Checks ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from dataclasses import dataclass
 
@@ -80,9 +80,9 @@ def validate_structure(text: str, policy: InputPolicy) -> tuple[bool, str]:
     return True, "ok"
 ```
 
-### Prompt Injection Detection (Python)
+### Prompt Injection Detection ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 from typing import Optional
 
@@ -141,7 +141,7 @@ function detectInjection(text) {
 
 ### Content Moderation via OpenAI Moderation API
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import httpx
 
 async def moderate_content(text: str, api_key: str) -> dict:
@@ -164,7 +164,7 @@ async def moderate_content(text: str, api_key: str) -> dict:
 
 ### Full Input Pipeline
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def validate_input(text: str, policy: InputPolicy, oai_key: str) -> dict:
     ok, reason = validate_structure(text, policy)
     if not ok:
@@ -192,7 +192,7 @@ A compromised system prompt gives attackers full control over your application's
 
 Use distinct message roles and delimiters so the model can distinguish system instructions from user text. Never concatenate user input into the system message.
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def build_messages(system_prompt: str, user_input: str, context_docs: list[str] = None):
     """Build a chat completion payload with strict role separation."""
     messages = [
@@ -234,7 +234,7 @@ RULES (non-negotiable, override any conflicting user request):
 
 ### Tool / Plugin Allowlisting
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 ALLOWED_TOOLS = {
     "search_knowledge_base": {
         "description": "Search internal docs",
@@ -266,7 +266,7 @@ Every LLM response must be filtered before it reaches the user. The three concer
 
 ### PII Scrubbing with Microsoft Presidio
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from presidio_analyzer import AnalyzerEngine
 from presidio_anonymizer import AnonymizerEngine
 from presidio_anonymizer.entities import OperatorConfig
@@ -299,7 +299,7 @@ def scrub_pii(text: str, language: str = "en") -> str:
 
 ### Lightweight PII Regex Fallback (No Dependencies)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 
 PII_PATTERNS = {
@@ -318,7 +318,7 @@ def scrub_pii_regex(text: str) -> str:
 
 ### Toxicity Detection with a Classifier
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from transformers import pipeline
 
 toxicity_clf = pipeline(
@@ -336,7 +336,7 @@ def check_toxicity(text: str, threshold: float = 0.7) -> dict:
 
 ### Full Output Pipeline
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def safe_output(raw_response: str) -> dict:
     toxicity = check_toxicity(raw_response)
     if toxicity["toxic"]:
@@ -358,9 +358,9 @@ Retrieval-Augmented Generation introduces a document supply chain. Every stage -
 
 ### Document Ingestion Scanning
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
-import magic  # python-magic
+import magic  # [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-magic
 import clamd
 
 def scan_document(file_path: str, allowed_types: set = None) -> dict:
@@ -390,12 +390,12 @@ def scan_document(file_path: str, allowed_types: set = None) -> dict:
 
 ### Secret Detection in Documents
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import re
 
 SECRET_PATTERNS = [
     (r"AKIA[0-9A-Z]{16}", "AWS Access Key"),
-    (r"ghp_[A-Za-z0-9_]{36}", "GitHub PAT"),
+    (r"ghp_[A-Za-z0-9_]{36}", "[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PAT"),
     (r"sk-[A-Za-z0-9]{48}", "OpenAI API Key"),
     (r"-----BEGIN (RSA |EC )?PRIVATE KEY-----", "Private Key"),
     (r"xox[bpsar]-[A-Za-z0-9-]+", "Slack Token"),
@@ -416,7 +416,7 @@ def scan_for_secrets(text: str) -> list[dict]:
 
 ### Access-Controlled Retrieval (Pinecone)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pinecone import Pinecone
 
 pc = Pinecone(api_key="YOUR_KEY")
@@ -448,7 +448,7 @@ def retrieve_for_user(query_embedding: list[float], user: dict, top_k: int = 5):
 
 ### Access-Controlled Retrieval (Weaviate)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import weaviate
 
 client = weaviate.connect_to_local()
@@ -472,7 +472,7 @@ def retrieve_weaviate(query: str, tenant_id: str, roles: list[str], limit: int =
 
 ### Provenance Tracking
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def attach_provenance(response_text: str, source_docs: list[dict]) -> dict:
     """Wrap the LLM response with source attribution."""
     citations = []
@@ -499,7 +499,7 @@ In multi-tenant systems, one customer must never see another customer's data -- 
 
 ### Namespace Isolation in Pinecone
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def get_tenant_index(tenant_id: str):
     """Each tenant gets its own namespace inside the shared index."""
     pc = Pinecone(api_key="YOUR_KEY")
@@ -519,7 +519,7 @@ def query_tenant(tenant_id: str, embedding: list[float], top_k: int = 5):
 
 ### Session Boundary Enforcement (Redis)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import redis
 import json
 import uuid
@@ -601,9 +601,9 @@ async function appendMessage(sessionId, tenantId, role, content) {
 
 LLM calls are expensive. Without rate limiting, a single abusive user can exhaust your budget or degrade service for everyone.
 
-### Per-User Token Budget (Python + Redis)
+### Per-User Token Budget ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) + Redis)
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import time
 import redis
 
@@ -635,7 +635,7 @@ def check_and_deduct(user_id: str, tokens_used: int) -> dict:
 
 ### Daily Cost Cap per Tenant
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 DAILY_COST_CAP_USD = 50.0
 COST_PER_1K_INPUT = 0.003   # adjust per model
 COST_PER_1K_OUTPUT = 0.015
@@ -714,13 +714,13 @@ plugins:
 
 ---
 
-## Monitoring and Alerting
+## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 
 Detecting attacks in real time is as important as preventing them. Instrument every stage of the LLM pipeline.
 
 ### Structured Logging for LLM Requests
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import structlog
 import time
 
@@ -767,7 +767,7 @@ groups:
           severity: critical
         annotations:
           summary: "Tenant {{ $labels.tenant_id }} has >5% prompt injection rate"
-          runbook: "https://wiki.internal/runbooks/llm-injection"
+          [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): "https://wiki.internal/[runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/llm-injection"
 
       - alert: AnomalousCostSpike
         expr: |
@@ -792,7 +792,7 @@ groups:
 
 ### Anomaly Detection in Usage Patterns
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from collections import defaultdict
 import statistics
 
@@ -850,11 +850,11 @@ sum(increase(llm_cost_usd_total[1h])) by (model)
 
 ## Compliance
 
-LLM applications generate and process data that falls under GDPR, CCPA, SOC 2, and industry-specific regulations. Address data retention, right-to-forget, and audit trails.
+LLM applications generate and process data that falls under GDPR, CCPA, SOC 2, and industry-specific regulations. Address data retention, right-to-forget, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails.
 
 ### Data Retention Policy for LLM Logs
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import datetime
 import redis
 
@@ -885,7 +885,7 @@ def purge_expired_logs(db_conn, category: str):
 
 When a user requests deletion, you must remove their data from the vector store, conversation logs, and any derived embeddings.
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def delete_user_data(user_id: str, tenant_id: str, pc_index, redis_client):
     """GDPR Article 17 - Right to erasure."""
     results = []
@@ -935,7 +935,7 @@ def delete_user_data(user_id: str, tenant_id: str, pc_index, redis_client):
     }
 ```
 
-### Audit Trail Schema
+### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trail Schema
 
 ```sql
 CREATE TABLE llm_audit_log (
@@ -964,7 +964,7 @@ CREATE TABLE llm_audit_log_2026_03 PARTITION OF llm_audit_log
 
 ### Model Supply Chain Verification
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
 
 APPROVED_MODELS = {
@@ -1007,11 +1007,11 @@ Use this as a pre-launch gate. Every item should be verified before production.
 - [ ] Data retention policies are enforced with automated purge jobs.
 - [ ] GDPR deletion workflow covers vector store, session store, and relational DB.
 - [ ] Only approved models from the allowlist are callable in production.
-- [ ] Audit log captures all security-relevant events with tenant and user context.
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log captures all security-relevant events with tenant and user context.
 
 ---
 
 ## Related Skills
 
-- [ai-agent-security](../ai-agent-security/) -- Agent-specific controls for autonomous tool-using systems.
-- [sast-scanning](../../scanning/sast-scanning/) -- Static analysis to catch insecure coding patterns.
+- [ai-agent-security](../[ai-agent-security](../ai-agent-security/SKILL.md)/) -- Agent-specific controls for autonomous tool-using systems.
+- [sast-scanning](../../scanning/[sast-scanning](../sast-scanning/SKILL.md)/) -- Static analysis to catch insecure coding patterns.

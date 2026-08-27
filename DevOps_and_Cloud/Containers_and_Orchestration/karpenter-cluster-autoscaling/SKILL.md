@@ -16,11 +16,11 @@ metadata:
   maturity: stable
 ---
 
-# Karpenter Cluster Autoscaling
+# Karpenter Cluster [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 
 ## Purpose
 
-The Kubernetes Cluster Autoscaler scales fixed-shape node groups
+The [Kubernetes](../kubernetes/SKILL.md) Cluster Autoscaler scales fixed-shape node groups
 (Auto Scaling Groups / VM Scale Sets / node pools) up and down based on
 pending pods and node utilization — it's reliable but coarse: node
 shape is decided ahead of time per node group, and scale-down is
@@ -40,14 +40,14 @@ budgets and pod-level guardrails.
 
 ## When to use
 
-- Replacing or supplementing the Kubernetes Cluster Autoscaler with
+- Replacing or supplementing the [Kubernetes](../kubernetes/SKILL.md) Cluster Autoscaler with
   faster, more cost-efficient node provisioning on AWS (EKS), or the
   equivalent on other clouds where Karpenter providers exist.
 - Writing or tuning a `NodePool`/`EC2NodeClass` (AWS) to constrain
-  which instance types, architectures, capacity types (On-Demand vs.
+  which instance types, architectures, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) types (On-Demand vs.
   Spot), and zones Karpenter is allowed to provision.
 - Reducing node cost through consolidation/bin-packing, or mixing Spot
-  and On-Demand capacity for interruption-tolerant vs. latency-sensitive
+  and On-Demand [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for interruption-tolerant vs. latency-sensitive
   workloads.
 - Debugging pods stuck `Pending` that should have triggered a scale-up,
   or nodes that never scale down despite being underutilized.
@@ -120,7 +120,7 @@ budgets and pod-level guardrails.
            encrypted: true
    ```
 
-3. **Define a `NodePool`** constraining instance types, capacity type,
+3. **Define a `NodePool`** constraining instance types, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) type,
    and consolidation behavior — this is the primary lever for cost and
    blast-radius control:
    ```yaml
@@ -142,10 +142,10 @@ budgets and pod-level guardrails.
            - key: karpenter.k8s.aws/instance-generation
              operator: Gt
              values: ["4"]
-           - key: karpenter.sh/capacity-type
+           - key: karpenter.sh/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type
              operator: In
              values: ["spot", "on-demand"]
-           - key: kubernetes.io/arch
+           - key: [kubernetes](../kubernetes/SKILL.md).io/arch
              operator: In
              values: ["amd64"]
          expireAfter: 720h     # force node replacement at least every 30 days (patching hygiene)
@@ -176,7 +176,7 @@ budgets and pod-level guardrails.
            kind: EC2NodeClass
            name: default
          requirements:
-           - key: karpenter.sh/capacity-type
+           - key: karpenter.sh/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type
              operator: In
              values: ["on-demand"]
          taints:
@@ -207,7 +207,7 @@ budgets and pod-level guardrails.
    ```
 
 6. **Verify consolidation and bin-packing behavior** with
-   `kubectl get nodeclaims` and node utilization dashboards — Karpenter
+   `[kubectl](../kubectl/SKILL.md) get nodeclaims` and node utilization [dashboards](../../Cloud_Providers/dashboards/SKILL.md) — Karpenter
    should be replacing multiple underutilized nodes with fewer,
    better-packed ones over time, not just scaling up on demand and never
    scaling down.
@@ -215,8 +215,8 @@ budgets and pod-level guardrails.
 7. **Debug pods stuck `Pending`** by checking Karpenter controller logs
    and events on the pod itself:
    ```bash
-   kubectl describe pod <pod-name> -n <namespace>
-   kubectl logs -n kube-system deployment/karpenter -f
+   [kubectl](../kubectl/SKILL.md) describe pod <pod-name> -n <namespace>
+   [kubectl](../kubectl/SKILL.md) logs -n kube-system deployment/karpenter -f
    ```
    Common causes: no `NodePool` satisfies the pod's requested
    resources/`nodeSelector`/`affinity` combination, the `NodePool`'s
@@ -234,7 +234,7 @@ budgets and pod-level guardrails.
 
 - **Always set `limits.cpu`/`limits.memory` on every `NodePool`** —
   without it, a misbehaving HPA or a bad deploy can scale a NodePool
-  far beyond intended capacity/cost before anyone notices.
+  far beyond intended [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/cost before anyone notices.
 - **Use `consolidationPolicy: WhenEmptyOrUnderutilized` for stateless,
   interruption-tolerant workloads and `WhenEmpty` (or disable
   consolidation) for stateful/latency-sensitive ones** — aggressive
@@ -246,20 +246,20 @@ budgets and pod-level guardrails.
   stagger evictions.
 - **Prefer several instance families/sizes in `requirements` over
   pinning one exact type** — flexibility across instance types is what
-  lets Karpenter find Spot capacity and bin-pack efficiently; an overly
+  lets Karpenter find Spot [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and bin-pack efficiently; an overly
   narrow `NodePool` behaves like a fixed node group again.
 - **Use `expireAfter` to force periodic node replacement** (e.g. 30
   days) so nodes pick up the latest AMI/patches automatically rather
   than accumulating drift on long-lived nodes.
 - **Separate `NodePool`s by workload class (general-purpose vs.
   stateful/GPU/latency-sensitive)** rather than one NodePool for the
-  whole cluster — it lets consolidation aggressiveness, capacity type,
+  whole cluster — it lets consolidation aggressiveness, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) type,
   and instance requirements differ per workload's actual tolerance.
 - **Run Karpenter alongside Kubecost or the cost dashboard, not
   blind** — Karpenter's Spot/On-Demand mix and consolidation decisions
   are cost levers; measure the actual savings rather than assuming
   defaults are optimal. See
-  [kubecost-cost-visibility](../kubecost-cost-visibility/SKILL.md).
+  [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md).
 - **Never run Karpenter and Cluster Autoscaler against the same node
   groups simultaneously** — pick one per node group/pool, since both
   reacting to the same pending pods causes duplicate or conflicting
@@ -272,7 +272,7 @@ budgets and pod-level guardrails.
   **Fix:** No `NodePool` in the cluster satisfies the pod's
   requirements (resource requests, `nodeSelector`, architecture,
   toleration for a taint), or every eligible `NodePool` has already hit
-  its `limits`. Check `kubectl describe pod` for scheduling events and
+  its `limits`. Check `[kubectl](../kubectl/SKILL.md) describe pod` for scheduling events and
   the Karpenter controller logs for the specific reason no `NodeClaim`
   was created; widen `requirements` or raise `limits` deliberately.
 
@@ -316,7 +316,7 @@ budgets and pod-level guardrails.
 
 ## Worked example
 
-**Scenario:** A cluster runs the Kubernetes Cluster Autoscaler against
+**Scenario:** A cluster runs the [Kubernetes](../kubernetes/SKILL.md) Cluster Autoscaler against
 three fixed EKS managed node groups (small/medium/large instance
 types), and the platform team wants to cut node cost by moving
 interruption-tolerant workloads to Spot and letting Karpenter bin-pack
@@ -329,7 +329,7 @@ StatefulSet.
 2. Create the `default` `EC2NodeClass` (step 2) using subnet/security-
    group discovery tags already present on the cluster's VPC.
 3. Create a `general-purpose` `NodePool` (step 3) allowing `c`/`m`/`r`
-   instance categories, both `spot` and `on-demand` capacity types, with
+   instance categories, both `spot` and `on-demand` [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) types, with
    `consolidationPolicy: WhenEmptyOrUnderutilized` and a `limits.cpu`
    ceiling set to roughly 20% above current peak cluster CPU usage.
 4. Create a `stateful-on-demand` `NodePool` (step 4) for the Kafka
@@ -354,6 +354,6 @@ StatefulSet.
 
 ## Cross-references
 
-- [kubecost-cost-visibility](../kubecost-cost-visibility/SKILL.md)
-- [prometheus-and-grafana-monitoring-stack](../prometheus-and-grafana-monitoring-stack/SKILL.md)
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+- [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)

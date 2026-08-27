@@ -23,13 +23,13 @@ metadata:
 2. **Plan migration** — Design an incremental roadmap with explicit rollback strategies per phase. Reference `../../../Global_References/system-assessment.md` for code analysis templates.
    - *Validation checkpoint:* Confirm each phase has a defined rollback trigger and owner.
 
-3. **Build safety net** — Create characterization tests and monitoring before touching production code. Target 80%+ coverage of existing behavior.
+3. **Build safety net** — Create characterization tests and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) before touching production code. Target 80%+ coverage of existing behavior.
    - *Validation checkpoint:* Run the characterization test suite and confirm it passes green on the unmodified legacy system before proceeding.
 
 4. **Migrate incrementally** — Apply strangler fig pattern with feature flags. Route traffic via a facade; shift load gradually.
    - *Validation checkpoint:* Verify error rates and latency metrics remain within baseline thresholds after each traffic increment (e.g., 5% → 25% → 50% → 100%).
 
-5. **Validate & iterate** — Run full test suite, review monitoring dashboards, and confirm business behavior is preserved before retiring legacy code.
+5. **Validate & iterate** — Run full test suite, review [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), and confirm business behavior is preserved before retiring legacy code.
    - *Validation checkpoint:* New code must be proven stable at 100% traffic for at least one release cycle before legacy path is removed.
 
 ## Reference Guide
@@ -46,8 +46,8 @@ Load detailed guidance based on context:
 
 ## Code Examples
 
-### Strangler Fig Facade (Python)
-```python
+### Strangler Fig Facade ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # facade.py — routes requests to legacy or new service based on a feature flag
 import os
 from legacy_service import LegacyOrderService
@@ -65,7 +65,7 @@ class OrderServiceFacade:
 ```
 
 ### Feature Flag Wrapper
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # feature_flags.py — thin wrapper around an environment or config-based flag store
 import os
 
@@ -81,7 +81,7 @@ else:
 ```
 
 ### Characterization Test Template (pytest)
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # test_characterization_orders.py
 # Captures existing legacy behavior as a golden-master safety net.
 import pytest
@@ -109,7 +109,7 @@ def test_order_status_golden_master(order_id, expected_status):
 - Maintain zero production disruption during all migrations
 - Create comprehensive test coverage before refactoring (target 80%+)
 - Use feature flags for all incremental rollouts
-- Implement monitoring and rollback procedures
+- Implement [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and rollback procedures
 - Document all migration decisions and rationale
 - Preserve existing business logic and behavior
 - Communicate progress and risks transparently
@@ -130,11 +130,11 @@ When implementing modernization, provide:
 2. Migration plan (phases, rollback strategy, metrics)
 3. Implementation code (facades, adapters, new services)
 4. Test coverage (characterization, integration, e2e)
-5. Monitoring setup (metrics, alerts, dashboards)
+5. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup (metrics, alerts, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
 
 ## Knowledge Reference
 
-Strangler fig pattern, branch by abstraction, characterization testing, incremental migration, feature flags, canary deployments, API versioning, database refactoring, microservices extraction, technical debt reduction, zero-downtime deployment
+Strangler fig pattern, branch by abstraction, characterization testing, incremental migration, feature flags, canary deployments, API versioning, database refactoring, [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) extraction, technical debt reduction, zero-downtime deployment
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/legacy-modernizer/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/specialized/legacy-modernizer/)
 

@@ -21,11 +21,11 @@ Design relational database schemas with proper indexing, partitioning, replicati
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "PostgreSQL", "MySQL", "relational database", "partitioning", "replication", "indexing", "vacuum", "connection pooling", "query optimization", "EXPLAIN", "CTE", "window function", "transaction isolation", "migration", "PgBouncer", "MVCC", "WAL", "B-tree", "GiST", "GIN", "BRIN".
+Exact user phrases: "[PostgreSQL](../../Backend/postgresql/SKILL.md)", "[MySQL](../../Backend/mysql/SKILL.md)", "relational database", "partitioning", "replication", "indexing", "vacuum", "connection pooling", "query optimization", "EXPLAIN", "CTE", "window function", "transaction isolation", "migration", "PgBouncer", "MVCC", "WAL", "B-tree", "GiST", "GIN", "BRIN".
 
 ### Input Context
 Before activating, verify:
-- Database platform (PostgreSQL, MySQL, MariaDB, SQLite)
+- Database platform ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), MariaDB, SQLite)
 - Data volume (rows, growth rate, total size in GB/TB)
 - Query workload (OLTP, OLAP, mixed)
 - Current schema and migration tool (Alembic, Sqitch, Flyway, Liquibase)
@@ -123,7 +123,7 @@ CREATE TABLE events_2025_q2 PARTITION OF events
 Streaming replication: primary ships WAL to standbys. Synchronous for zero data loss (2 safe). Asynchronous for performance (slight lag). Cascading replication for geographic distribution. Logical replication: publish/subscribe at table level, cross-version compatible, supports selective replication. Conflict resolution for bidirectional: last-write-wins or custom handler.
 
 ```yaml
-# postgresql.conf streaming replication
+# [postgresql](../../Backend/postgresql/SKILL.md).conf streaming replication
 wal_level: replica
 max_wal_senders: 10
 wal_keep_size: 1024  # MB
@@ -166,7 +166,7 @@ GROUP BY customer_id;
 ```
 
 ### Step 7: Transaction Isolation
-READ COMMITTED: default PostgreSQL, row-level lock only for concurrent writes. REPEATABLE READ: snapshot isolation, no dirty/non-repeatable reads, serialization failures on conflict. SERIALIZABLE: true serial execution, highest overhead, retry on 40001. Snapshot isolation in PostgreSQL prevents read-write conflicts that InnoDB allows. Use explicit locks (SELECT FOR UPDATE) sparingly and always with NOWAIT or SKIP LOCKED.
+READ COMMITTED: default [PostgreSQL](../../Backend/postgresql/SKILL.md), row-level lock only for concurrent writes. REPEATABLE READ: snapshot isolation, no dirty/non-repeatable reads, serialization failures on conflict. SERIALIZABLE: true serial execution, highest overhead, retry on 40001. Snapshot isolation in [PostgreSQL](../../Backend/postgresql/SKILL.md) prevents read-write conflicts that InnoDB allows. Use explicit locks (SELECT FOR UPDATE) sparingly and always with NOWAIT or SKIP LOCKED.
 
 ```sql
 -- SKIP LOCKED for job queues
@@ -176,11 +176,11 @@ WHERE status = 'pending'
 ORDER BY priority DESC
 LIMIT 10
 FOR UPDATE SKIP LOCKED;
-COMMIT;
+[COMMIT](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md);
 ```
 
 ### Step 8: Migration Management
-Tools: Alembic (Python), Flyway (Java), Sqitch (language-agnostic), Liquibase (XML/YAML/JSON). Principles: every migration has forward and rollback script; migrations are idempotent; never modify existing migrations after merge; test migrations against a copy of production data. Zero-downtime migrations require additive schema changes (new columns nullable, backfill, then add NOT NULL). Avoid long-running locks by using `CREATE INDEX CONCURRENTLY` and `ALTER TABLE ... SET NOT NULL` with low lock timeouts.
+Tools: Alembic ([Python](../../Languages/python/SKILL.md)), Flyway (Java), Sqitch (language-agnostic), Liquibase (XML/YAML/JSON). Principles: every migration has forward and rollback script; migrations are idempotent; never modify existing migrations after merge; test migrations against a copy of production data. Zero-downtime migrations require additive schema changes (new columns nullable, backfill, then add NOT NULL). Avoid long-running locks by using `CREATE INDEX CONCURRENTLY` and `ALTER TABLE ... SET NOT NULL` with low lock timeouts.
 
 ```sql
 -- Safe index creation without blocking writes
@@ -188,8 +188,8 @@ CREATE INDEX CONCURRENTLY ix_orders_new
     ON orders (customer_id, created_at DESC);
 ```
 
-### Step 9: Monitoring and Observability
-pg_stat_statements for query performance tracking. pg_stat_activity for active connections and long-running queries. auto_explain for logging slow queries automatically. pg_stat_bgwriter for checkpoint and buffer management. pg_stat_replication for replication lag monitoring. Set up alerting for: replication lag > 10 seconds, long-running queries > 30 seconds, deadlocks, connection pool exhaustion, WAL generation rate spikes.
+### Step 9: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+pg_stat_statements for query performance tracking. pg_stat_activity for active connections and long-running queries. auto_explain for logging slow queries automatically. pg_stat_bgwriter for checkpoint and buffer management. pg_stat_replication for replication lag [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Set up [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) for: replication lag > 10 seconds, long-running queries > 30 seconds, deadlocks, connection pool exhaustion, WAL generation rate spikes.
 
 ```sql
 -- Long running queries
@@ -208,7 +208,7 @@ FROM pg_stat_replication;
 WAL archiving enables PITR to any point in time between the base backup and the last archived WAL. Configure `archive_mode = on` and `archive_command` to copy completed WAL segments to durable storage. Use `pg_basebackup` for physical base backups. Test recovery by restoring to a separate instance and running consistency checks. Retention policy varies: 7-30 days of PITR for most production systems, longer for compliance. Barman, pgBackRest, and WAL-G provide enterprise backup management.
 
 ```sql
--- Enable WAL archiving (postgresql.conf)
+-- Enable WAL archiving ([postgresql](../../Backend/postgresql/SKILL.md).conf)
 archive_mode = on
 archive_command = 'cp %p /backup/wal/%f'
 archive_timeout = 60
@@ -248,7 +248,7 @@ CREATE TABLE order_items (
 ```
 
 ### Step 13: Vacuum and Autovacuum Tuning
-PostgreSQL's MVCC creates dead tuples that vacuum removes. Autovacuum runs automatically but needs tuning for write-heavy tables. Key parameters: `autovacuum_vacuum_scale_factor` (default 0.2, too high for large tables), `autovacuum_vacuum_threshold`, `autovacuum_vacuum_cost_limit`. For large tables (> 10GB), set per-table autovacuum settings. Monitor `n_dead_tup` in `pg_stat_user_tables` — if it grows continuously, autovacuum is not keeping up.
+[PostgreSQL](../../Backend/postgresql/SKILL.md)'s MVCC creates dead tuples that vacuum removes. Autovacuum runs automatically but needs tuning for write-heavy tables. Key parameters: `autovacuum_vacuum_scale_factor` (default 0.2, too high for large tables), `autovacuum_vacuum_threshold`, `autovacuum_vacuum_cost_limit`. For large tables (> 10GB), set per-table autovacuum settings. Monitor `n_dead_tup` in `pg_stat_user_tables` — if it grows continuously, autovacuum is not keeping up.
 
 ```sql
 -- Per-table autovacuum tuning for write-heavy table
@@ -331,7 +331,7 @@ HA requirements:
 
 ## Compared With
 
-| Feature | PostgreSQL | MySQL | CockroachDB | Spanner |
+| Feature | [PostgreSQL](../../Backend/postgresql/SKILL.md) | [MySQL](../../Backend/mysql/SKILL.md) | CockroachDB | Spanner |
 |---|---|---|---|---|
 | ACID | Full | Varies by engine | Serializable | External consistency |
 | Index types | B-tree, GiST, GIN, BRIN, SP-GiST, Hash | B-tree, Hash, Full-text, Spatial | B-tree, GIN, Inverted | Global secondary |
@@ -341,7 +341,7 @@ HA requirements:
 | Clustering | Patroni, repmgr, pg_auto_failover | InnoDB Cluster, Group Replication | Built-in | Built-in |
 | Multi-region | Via logical replication | Via replication | Configurable | Automatic |
 
-PostgreSQL vs MySQL: PG has better SQL compliance, more index types, richer extension ecosystem, and superior MVCC implementation. MySQL has better replication tooling (Group Replication, InnoDB Cluster), more managed cloud options, and simpler configuration for basic use cases. PG is通常 preferred for complex queries, data analytics, and applications needing advanced features (PostGIS, pgvector, full-text search).
+[PostgreSQL](../../Backend/postgresql/SKILL.md) vs [MySQL](../../Backend/mysql/SKILL.md): PG has better SQL compliance, more index types, richer extension ecosystem, and superior MVCC implementation. [MySQL](../../Backend/mysql/SKILL.md) has better replication tooling (Group Replication, InnoDB Cluster), more managed cloud options, and simpler configuration for basic use cases. PG is通常 preferred for complex queries, data analytics, and applications needing advanced features (PostGIS, pgvector, full-text search).
 
 Relational vs NoSQL: relational databases provide ACID transactions, strong consistency, and rich query capabilities. NoSQL databases provide horizontal scalability, flexible schemas, and specialized data models (document, key-value, wide-column). Use relational when data integrity and complex queries are paramount. Use NoSQL when scale, schema flexibility, or specialized access patterns matter more.
 
@@ -396,9 +396,9 @@ Relational vs NoSQL: relational databases provide ACID transactions, strong cons
 ## References
   - ../../../Global_References/cockroachdb-yugabyte.md — CockroachDB and YugabyteDB Operational Guide
   - ../../../Global_References/database-indexing.md — Database Indexing Reference
-  - ../../../Global_References/database-migration-strategies.md — Database Migration Strategies Reference
+  - ../../../Global_References/[database-migration](../database-migration/SKILL.md)-strategies.md — Database Migration Strategies Reference
   - ../../../Global_References/distributed-sql-databases.md — Distributed SQL Databases
-  - ../../../Global_References/postgres-advanced.md — PostgreSQL Advanced Internals
+  - ../../../Global_References/postgres-advanced.md — [PostgreSQL](../../Backend/postgresql/SKILL.md) Advanced Internals
   - ../../../Global_References/query-optimization.md — Query Optimization
   - ../../../Global_References/relational-database-query-optimization.md — Query Optimization Deep Dive
   - ../../../Global_References/relational-database-high-availability.md — High Availability Reference
@@ -407,26 +407,26 @@ Relational vs NoSQL: relational databases provide ACID transactions, strong cons
 ```
 Relational Database Selection
 ├── Transaction volume?
-│   ├── High (10k+ write tps) → PostgreSQL / MySQL with connection pooling
+│   ├── High (10k+ write tps) → [PostgreSQL](../../Backend/postgresql/SKILL.md) / [MySQL](../../Backend/mysql/SKILL.md) with connection pooling
 │   ├── Very high (100k+ tps) → CockroachDB / Yugabyte (distributed SQL)
-│   └── Low (< 1k tps) → SQLite / Single-node PostgreSQL
+│   └── Low (< 1k tps) → SQLite / Single-node [PostgreSQL](../../Backend/postgresql/SKILL.md)
 ├── Consistency requirements?
-│   ├── Strong consistency → PostgreSQL / MySQL (single-primary)
+│   ├── Strong consistency → [PostgreSQL](../../Backend/postgresql/SKILL.md) / [MySQL](../../Backend/mysql/SKILL.md) (single-primary)
 │   ├── Eventual → Distributed SQL (CockroachDB, TiDB)
 │   └── Configurable → Yugabyte (tunable consistency)
 ├── Geo-distributed reads?
 │   ├── Yes → CockroachDB (global distribution, follower reads)
-│   └── No → Single-region PostgreSQL / MySQL
+│   └── No → Single-region [PostgreSQL](../../Backend/postgresql/SKILL.md) / [MySQL](../../Backend/mysql/SKILL.md)
 └── Managed or self-hosted?
     ├── Managed → RDS / Cloud SQL / Aurora
-    └── Self-hosted → PostgreSQL on K8s (CloudNativePG, Patroni)
+    └── Self-hosted → [PostgreSQL](../../Backend/postgresql/SKILL.md) on K8s (CloudNativePG, Patroni)
 ```
 
-**Decision criteria**: Evaluate throughput, consistency, geo-distribution, and operational team capacity.
+**Decision criteria**: Evaluate throughput, consistency, geo-distribution, and operational team [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## Implementation Patterns
 
-### PostgreSQL Partitioning & Indexing
+### [PostgreSQL](../../Backend/postgresql/SKILL.md) Partitioning & Indexing
 ```sql
 -- relational_database/orders_partitioning.sql
 CREATE TABLE orders (
@@ -447,7 +447,7 @@ CREATE INDEX idx_orders_status ON orders (status) WHERE status IN ('pending', 'p
 ```
 
 ### Connection Pooling Pattern
-```python
+```[python](../../Languages/python/SKILL.md)
 # relational_database/connection_pool.py
 from psycopg2 import pool
 from contextlib import contextmanager
@@ -461,7 +461,7 @@ class DatabasePool:
         conn = self.pool.getconn()
         try:
             yield conn
-            conn.commit()
+            conn.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
         except Exception:
             conn.rollback()
             raise
@@ -471,12 +471,12 @@ class DatabasePool:
 
 ## Production Considerations
 
-- **Backup strategy**: Use pgBackRest or WAL-G for PostgreSQL; PITR with 7-day window; test restore monthly.
+- **Backup strategy**: Use pgBackRest or WAL-G for [PostgreSQL](../../Backend/postgresql/SKILL.md); PITR with 7-day window; test restore monthly.
 - **High availability**: Deploy Patroni/Stolon for auto-failover; 3-node cluster with synchronous replication.
 - **Migration management**: Use Sqitch or Flyway for versioned schema migrations; zero-downtime via `CREATE INDEX CONCURRENTLY`.
-- **Query monitoring**: Log slow queries (> 100ms) via `auto_explain`; monitor with pg_stat_statements.
+- **Query [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Log slow queries (> 100ms) via `auto_explain`; monitor with pg_stat_statements.
 - **Vacuum tuning**: Set auto-vacuum thresholds per table; monitor bloat with pgstattuple extension.
-- **Resource limits**: Set PostgreSQL `max_connections = max_worker_processes * 2`; use PgBouncer for connection pooling.
+- **Resource limits**: Set [PostgreSQL](../../Backend/postgresql/SKILL.md) `max_connections = max_worker_processes * 2`; use PgBouncer for connection pooling.
 
 ## Anti-Patterns
 
@@ -498,14 +498,14 @@ class DatabasePool:
 
 ## Security Considerations
 
-- **Authentication**: Use `scram-sha-256` for PostgreSQL password auth; disable `trust` and `md5` in production.
+- **Authentication**: Use `scram-sha-256` for [PostgreSQL](../../Backend/postgresql/SKILL.md) password auth; disable `trust` and `md5` in production.
 - **SSL/TLS**: Enforce SSL for all client connections; set `ssl_min_protocol_version = 'TLSv1.3'`.
 - **Row-level security**: Enable RLS on multi-tenant tables; policy based on `current_setting('app.tenant_id')`.
-- **Audit logging**: Enable `pgaudit` extension; log all DDL and DML on sensitive tables.
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Enable `pgaudit` extension; log all DDL and DML on sensitive tables.
 - **Encryption at rest**: Use TDE or disk-level encryption (LUKS, EBS encryption) for database storage.
-- **Secret rotation**: Rotate DB passwords every 90 days; use Vault for dynamic credentials (short-lived leases).
+- **Secret rotation**: Rotate DB passwords every 90 days; use [Vault](../../Miscellaneous/vault/SKILL.md) for dynamic credentials (short-lived leases).
 
 ## Handoff
-`data-etl-pipeline` for loading data into relational schemas
-`data-data-warehouse` for dimensional modeling from relational sources
+`[data-etl-pipeline](../../../Data_Engineering/etl-pipeline/SKILL.md)` for loading data into relational schemas
+`[data-data-warehouse](../../../Data_Engineering/data-warehouse/SKILL.md)` for dimensional modeling from relational sources
 

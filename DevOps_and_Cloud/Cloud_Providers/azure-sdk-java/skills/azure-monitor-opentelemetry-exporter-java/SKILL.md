@@ -11,20 +11,20 @@ metadata:
   package: com.azure:azure-monitor-opentelemetry-exporter
 ---
 
-# Azure Monitor OpenTelemetry Exporter for Java
+# Azure Monitor [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) Exporter for Java
 
-> **⚠️ DEPRECATION NOTICE**: This package is deprecated. Migrate to `azure-monitor-opentelemetry-autoconfigure`.
+> **⚠️ DEPRECATION NOTICE**: This package is deprecated. Migrate to `azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure`.
 >
-> See [Migration Guide](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/MIGRATION.md) for detailed instructions.
+> See [Migration Guide](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md) for detailed instructions.
 
-Export OpenTelemetry telemetry data to Azure Monitor / Application Insights.
+Export [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) telemetry data to Azure Monitor / Application Insights.
 
 ## Installation (Deprecated)
 
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-monitor-opentelemetry-exporter</artifactId>
+    <artifactId>azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter</artifactId>
     <version>1.0.0-beta.x</version>
 </dependency>
 ```
@@ -34,7 +34,7 @@ Export OpenTelemetry telemetry data to Azure Monitor / Application Insights.
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-monitor-opentelemetry-autoconfigure</artifactId>
+    <artifactId>azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure</artifactId>
     <version>LATEST</version>
 </dependency>
 ```
@@ -50,34 +50,34 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=h
 ### Using Environment Variable
 
 ```java
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdkBuilder;
-import io.opentelemetry.api.OpenTelemetry;
-import com.azure.monitor.opentelemetry.exporter.AzureMonitorExporter;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.autoconfigure.AutoConfiguredOpenTelemetrySdkBuilder;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md);
+import com.azure.monitor.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter.AzureMonitorExporter;
 
 // Connection string from APPLICATIONINSIGHTS_CONNECTION_STRING env var
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.customize(sdkBuilder);
-OpenTelemetry openTelemetry = sdkBuilder.build().getOpenTelemetrySdk();
+AzureMonitorExporter.[customize](../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
+[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) [openTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) = sdkBuilder.build().getOpenTelemetrySdk();
 ```
 
 ### With Explicit Connection String
 
 ```java
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.customize(sdkBuilder, "{connection-string}");
-OpenTelemetry openTelemetry = sdkBuilder.build().getOpenTelemetrySdk();
+AzureMonitorExporter.[customize](../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder, "{connection-string}");
+[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) [openTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) = sdkBuilder.build().getOpenTelemetrySdk();
 ```
 
 ## Creating Spans
 
 ```java
-import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.context.Scope;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.trace.Tracer;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.trace.Span;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).context.Scope;
 
 // Get tracer
-Tracer tracer = openTelemetry.getTracer("com.example.myapp");
+Tracer tracer = [openTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).getTracer("com.example.myapp");
 
 // Create span
 Span span = tracer.spanBuilder("myOperation").startSpan();
@@ -96,8 +96,8 @@ try (Scope scope = span.makeCurrent()) {
 ## Adding Span Attributes
 
 ```java
-import io.opentelemetry.api.common.AttributeKey;
-import io.opentelemetry.api.common.Attributes;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.common.AttributeKey;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.common.Attributes;
 
 Span span = tracer.spanBuilder("processOrder")
     .setAttribute("order.id", "12345")
@@ -118,10 +118,10 @@ try (Scope scope = span.makeCurrent()) {
 ## Custom Span Processor
 
 ```java
-import io.opentelemetry.sdk.trace.SpanProcessor;
-import io.opentelemetry.sdk.trace.ReadWriteSpan;
-import io.opentelemetry.sdk.trace.ReadableSpan;
-import io.opentelemetry.context.Context;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.SpanProcessor;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.ReadWriteSpan;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.ReadableSpan;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).context.Context;
 
 private static final AttributeKey<String> CUSTOM_ATTR = AttributeKey.stringKey("custom.attribute");
 
@@ -150,14 +150,14 @@ SpanProcessor customProcessor = new SpanProcessor() {
 
 // Register processor
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.customize(sdkBuilder);
+AzureMonitorExporter.[customize](../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
 
 sdkBuilder.addTracerProviderCustomizer(
     (sdkTracerProviderBuilder, configProperties) -> 
         sdkTracerProviderBuilder.addSpanProcessor(customProcessor)
 );
 
-OpenTelemetry openTelemetry = sdkBuilder.build().getOpenTelemetrySdk();
+[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) [openTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) = sdkBuilder.build().getOpenTelemetrySdk();
 ```
 
 ## Nested Spans
@@ -198,14 +198,14 @@ try (Scope scope = span.makeCurrent()) {
 }
 ```
 
-## Metrics (via OpenTelemetry)
+## Metrics (via [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md))
 
 ```java
-import io.opentelemetry.api.metrics.Meter;
-import io.opentelemetry.api.metrics.LongCounter;
-import io.opentelemetry.api.metrics.LongHistogram;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.metrics.Meter;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.metrics.LongCounter;
+import io.[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).api.metrics.LongHistogram;
 
-Meter meter = openTelemetry.getMeter("com.example.myapp");
+Meter meter = [openTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).getMeter("com.example.myapp");
 
 // Counter
 LongCounter requestCounter = meter.counterBuilder("http.requests")
@@ -242,10 +242,10 @@ latencyHistogram.record(150, Attributes.of(
 
 ## Migration to Autoconfigure
 
-The `azure-monitor-opentelemetry-autoconfigure` package provides:
+The `azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure` package provides:
 - Automatic instrumentation of common libraries
 - Simplified configuration
-- Better integration with OpenTelemetry SDK
+- Better integration with [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) SDK
 
 ### Migration Steps
 
@@ -254,25 +254,25 @@ The `azure-monitor-opentelemetry-autoconfigure` package provides:
    <!-- Remove -->
    <dependency>
        <groupId>com.azure</groupId>
-       <artifactId>azure-monitor-opentelemetry-exporter</artifactId>
+       <artifactId>azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter</artifactId>
    </dependency>
    
    <!-- Add -->
    <dependency>
        <groupId>com.azure</groupId>
-       <artifactId>azure-monitor-opentelemetry-autoconfigure</artifactId>
+       <artifactId>azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure</artifactId>
    </dependency>
    ```
 
-2. Update initialization code per [Migration Guide](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/MIGRATION.md)
+2. Update initialization code per [Migration Guide](https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md)
 
 ## Best Practices
 
-1. **Use autoconfigure** — Migrate to `azure-monitor-opentelemetry-autoconfigure`
+1. **Use autoconfigure** — Migrate to `azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure`
 2. **Set meaningful span names** — Use descriptive operation names
 3. **Add relevant attributes** — Include contextual data for debugging
 4. **Handle exceptions** — Always record exceptions on spans
-5. **Use semantic conventions** — Follow OpenTelemetry semantic conventions
+5. **Use semantic conventions** — Follow [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) semantic conventions
 6. **End spans in finally** — Ensure spans are always ended
 7. **Use try-with-resources** — Scope management with try-with-resources pattern
 
@@ -280,9 +280,9 @@ The `azure-monitor-opentelemetry-autoconfigure` package provides:
 
 | Resource | URL |
 |----------|-----|
-| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-opentelemetry-exporter |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-opentelemetry-exporter |
-| Migration Guide | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/MIGRATION.md |
-| Autoconfigure Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-opentelemetry-autoconfigure |
-| OpenTelemetry Java | https://opentelemetry.io/docs/languages/java/ |
+| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter |
+| [GitHub](../../../../CI_CD/github/SKILL.md) | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter |
+| Migration Guide | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md |
+| Autoconfigure Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure |
+| [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) Java | https://[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/languages/java/ |
 | Application Insights | https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview |

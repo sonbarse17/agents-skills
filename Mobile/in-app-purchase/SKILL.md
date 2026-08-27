@@ -28,7 +28,7 @@ Implement in-app purchases with correct product configuration, purchase flow, re
 User request includes: `in-app purchase`, `IAP`, `subscription`, `consumable`, `StoreKit`, `Play Billing`, `receipt validation`, `restore purchase`.
 
 ### Input Context
-- Platform (iOS, Android, Flutter, React Native)
+- Platform (iOS, [Android](../android/SKILL.md), Flutter, React Native)
 - Product types (consumable, non-consumable, subscription)
 - Existing billing integration (StoreKit 2, Play Billing 5+, RevenueCat)
 
@@ -69,7 +69,7 @@ What does the user get?
 Does app have own backend server?
 ├── Yes → Server-side receipt validation
 │   ├── iOS: server POST to Apple VerifyReceipt API
-│   └── Android: server call Google Play Developer API with OAuth2
+│   └── [Android](../android/SKILL.md): server call Google Play Developer API with OAuth2
 ├── No backend but cross-platform → RevenueCat (handles server validation)
 └── Prototype only → Client-side StoreKit 2 automatic verification
 ```
@@ -78,8 +78,8 @@ Does app have own backend server?
 ```
 Target platforms?
 ├── iOS only → StoreKit 2 (async/await, automatic receipt verification)
-├── Android only → Play Billing 6+ (with BillingClient.queryProductDetailsAsync)
-├── iOS + Android cross-platform
+├── [Android](../android/SKILL.md) only → Play Billing 6+ (with BillingClient.queryProductDetailsAsync)
+├── iOS + [Android](../android/SKILL.md) cross-platform
 │   ├── Native per platform → StoreKit 2 + Play Billing 6 (maximum control)
 │   └── Unified cross-platform → RevenueCat Purchases SDK
 └── Flutter/React Native
@@ -137,7 +137,7 @@ iOS (App Store Connect):
 - Configure family sharing eligibility for non-consumables
 - Set up subscription offer codes for marketing campaigns
 
-Android (Google Play Console):
+[Android](../android/SKILL.md) (Google Play Console):
 - Create products with the same product IDs used in code
 - Configure managed products (consumables) or subscriptions
 - Set up base plans and offers for subscriptions
@@ -208,7 +208,7 @@ enum PurchaseResult {
 }
 ```
 
-### Step 4: Implement Purchase Flow (Android — Play Billing 6+)
+### Step 4: Implement Purchase Flow ([Android](../android/SKILL.md) — Play Billing 6+)
 
 ```kotlin
 class BillingRepository(private val context: Context) {
@@ -322,7 +322,7 @@ async function verifyAppleReceipt(receiptData) {
   };
 }
 
-// Android — Google Play Developer API
+// [Android](../android/SKILL.md) — Google Play Developer API
 async function verifyGooglePurchase(productId, purchaseToken) {
   const auth = await getGoogleAccessToken(GOOGLE_SERVICE_ACCOUNT);
   const packageName = 'com.example.app';
@@ -532,7 +532,7 @@ func promotionalOffer(for product: Product, discount: Product.SubscriptionOffer)
 ```
 
 ```kotlin
-// Android — Subscription offer
+// [Android](../android/SKILL.md) — Subscription offer
 fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: String) {
   val params = BillingFlowParams.newBuilder()
     .setProductDetailsList(listOf(product))
@@ -553,7 +553,7 @@ fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: S
 - **No OAuth2 refresh for Google API**: Token expires after 1 hour. Implement refresh logic
 
 ### Purchase Flow
-- **Not acknowledging Android purchases**: 3-day window then auto-refund. Call `acknowledgePurchase` immediately
+- **Not acknowledging [Android](../android/SKILL.md) purchases**: 3-day window then auto-refund. Call `acknowledgePurchase` immediately
 - **Finishing iOS transaction before delivery**: User loses content on crash. Call `transaction.finish()` after delivery confirmed
 - **Ignoring pending transactions**: Ask to Buy, family approval. Check entitlements on every app foreground
 - **Blocking UI during purchase**: StoreKit/Play Billing handles UI. Don't add blocking overlays
@@ -567,7 +567,7 @@ fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: S
 - **Single subscription group**: Limits upgrade/downgrade flexibility. Configure proper groups per tier
 - **No billing retry UI**: Users don't know to update payment. Show clear CTA in app
 - **Removing content on expiry**: Apple guidelines require keeping user data for 60 days after expiry
-- **Not handling refund notifications**: Users get refunded but keep access. Implement RTDN (iOS) and real-time developer notifications (Android)
+- **Not handling refund notifications**: Users get refunded but keep access. Implement RTDN (iOS) and real-time developer notifications ([Android](../android/SKILL.md))
 
 ### Store Configuration
 - **Mismatched product IDs**: Code IDs must match App Store Connect / Play Console exactly. Use constants
@@ -597,7 +597,7 @@ fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: S
 | Upgrade/downgrade | Purchase second tier in same group | Prorated credit, pending change |
 | Restore | Uninstall and reinstall | Restore button returns entitlements |
 
-### Android Testing
+### [Android](../android/SKILL.md) Testing
 1. Add test accounts in Play Console (Settings > License Testing)
 2. Use internal testing track for full Play Billing flow
 3. Test with test credit card numbers from Google
@@ -616,7 +616,7 @@ fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: S
 
 ## Rules
 - Consumables delivered immediately server-side to prevent duplicate redemption
-- Auto-renewable subscriptions acknowledged within 3 days (Android) or auto-refund
+- Auto-renewable subscriptions acknowledged within 3 days ([Android](../android/SKILL.md)) or auto-refund
 - Always handle deferred payment (pending transaction) state
 - Never ship with sandbox/test credentials in release builds
 - Always provide restore purchases button in app UI
@@ -646,5 +646,5 @@ After IAP integration, hand off to:
 - `mobile/universal/analytics` — Purchase funnel events, revenue tracking
 - `mobile/universal/storage` — Offline entitlement caching
 - `mobile/ios` — StoreKit 2, App Store Connect product config
-- `mobile/android` — Play Billing, Play Console product config
+- `mobile/[android](../android/SKILL.md)` — Play Billing, Play Console product config
 

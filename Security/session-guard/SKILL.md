@@ -12,7 +12,7 @@ description: >-
 
 ## Overview
 
-Long sessions corrupt silently. Context compaction drops instructions unannounced. Hooks don't fix it (confirmed by multiple developers on GitHub issues #19471, #9796, #64171). This skill prevents both through behavioral self-enforcement: monitor health, anchor critical rules through compaction, split before damage occurs. No packages, no databases - pure behavioral enforcement that works in every harness.
+Long sessions corrupt silently. Context compaction drops instructions unannounced. Hooks don't fix it (confirmed by multiple developers on [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) issues #19471, #9796, #64171). This skill prevents both through behavioral self-enforcement: monitor health, anchor critical rules through compaction, split before damage occurs. No packages, no databases - pure behavioral enforcement that works in every harness.
 
 ## When to Use
 
@@ -82,4 +82,4 @@ Keep critical instructions in FILES (CLAUDE.md, CONTEXT.md), NOT in conversation
 
 ## Why This Matters
 
-Context compaction is the #1 unsolved platform problem in 2026. Hooks don't fix it (confirmed: the agent ignores post-compaction injections because the compaction summary creates narrative momentum). This skill is the lightweight behavioral countermeasure: no infrastructure, no packages - disciplined self-monitoring that works in every harness.
+Context compaction is the #1 unsolved platform problem in 2026. Hooks don't fix it (confirmed: the agent ignores post-compaction injections because the compaction summary creates narrative momentum). This skill is the lightweight behavioral countermeasure: no infrastructure, no packages - disciplined self-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) that works in every harness.

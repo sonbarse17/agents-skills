@@ -25,7 +25,7 @@ specific to CI/CD.
 1. **Read-only.** Read pipeline configs and (read-only) run history/logs via CLI
    (`gh run list/view`, `glab ci`, etc.). Never trigger, re-run, cancel, or edit
    a pipeline, and never rotate/modify CI secrets.
-2. **Every finding needs evidence** — `.github/workflows/ci.yml:line` or a run
+2. **Every finding needs evidence** — `.[github](../github/SKILL.md)/workflows/ci.yml:line` or a run
    log reference. Format: [../docs/finding-format.md](../docs/finding-format.md).
 3. **Never reproduce secret values** — reference secret *names* and where they
    are injected only; recommend scoping and rotation.
@@ -101,10 +101,10 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/docker-review` — the image build the pipeline invokes.
-- `/security-review` — depth on supply chain, OIDC, and secret scoping.
-- `/release-readiness` — whether the flow actually gates production.
-- `/observability` — deploy annotations and post-deploy verification signals.
+- `/[docker-review](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the image build the pipeline invokes.
+- `/[security-review](../../../Security/security-review/SKILL.md)` — depth on supply chain, OIDC, and secret scoping.
+- `/[release-readiness](../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — whether the flow actually gates production.
+- `/[observability](../../Observability_and_SecOps/observability/SKILL.md)` — deploy annotations and post-deploy verification signals.
 
 ## Before you finish
 

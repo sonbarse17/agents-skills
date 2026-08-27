@@ -12,9 +12,9 @@ metadata:
 
 Read the migration guide before making changes:
 
-- [Migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/migration)
-- [EDOT Java setup](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/setup)
-- [EDOT Java configuration](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/configuration)
+- [Migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/migration)
+- [EDOT Java setup](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/setup)
+- [EDOT Java configuration](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/configuration)
 
 ## Guidelines
 
@@ -38,5 +38,5 @@ Read the migration guide before making changes:
 
 ## Examples
 
-See the [EDOT Java migration guide](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/migration) for
+See the [EDOT Java migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../opentelemetry/SKILL.md)/edot-sdks/java/migration) for
 complete examples.

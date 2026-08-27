@@ -28,7 +28,7 @@ direct consequence of these two numbers.
 
 | Target | Drives |
 |---|---|
-| RTO (time to recover) | Standby infra, automation level, runbook complexity |
+| RTO (time to recover) | Standby infra, automation level, [runbook](../runbook/SKILL.md) complexity |
 | RPO (data loss tolerance) | Backup/replication frequency, write durability |
 
 - **Different systems can have different targets** — the payments database and the internal
@@ -67,7 +67,7 @@ that's been quietly encrypting data for two weeks before anyone notices.
 
 - **Active-passive** buys you a known-simple recovery path at the cost of idle standby spend.
 - **Active-active** buys you near-zero RTO at the cost of real complexity in data consistency
-  — see `multi-cloud` and `cloud-networking` for the networking implications.
+  — see `[multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)` and `[cloud-networking](../../Cloud_Providers/cloud-networking/SKILL.md)` for the networking implications.
 - **Immutable, offline, or delayed-deletion backups** are the only real defense against
   credential compromise or accidental mass-deletion — a backup an attacker with your cloud
   credentials can also delete is not a disaster recovery plan against that attacker.
@@ -96,7 +96,7 @@ system's primary owner, and it hit the stated RTO.
 ## 5. Document the recovery plan for the state you'll actually be in
 
 During a real disaster, the wiki might be down too — if the DR plan lives only in the same
-system that just failed, it's inaccessible exactly when needed. Write it like a `runbooks`
+system that just failed, it's inaccessible exactly when needed. Write it like a `[runbooks](../runbooks/SKILL.md)`
 entry: concrete, ordered, and reachable from outside the blast radius.
 
 - **Store the plan somewhere independent of the primary infrastructure** — a different cloud

@@ -20,8 +20,8 @@ metadata:
 # Provider Acceptance Test Patterns
 
 Patterns for writing acceptance tests using
-[terraform-plugin-testing](https://github.com/hashicorp/terraform-plugin-testing)
-with the [Plugin Framework](https://github.com/hashicorp/terraform-plugin-framework).
+[terraform-plugin-testing](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
+with the [Plugin Framework](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework).
 
 Source: [HashiCorp Testing Patterns](https://developer.hashicorp.com/terraform/plugin/testing/testing-patterns)
 
@@ -259,18 +259,18 @@ After a config step, verify import produces identical state. Use
 },
 ```
 
-### Regression (two-commit workflow)
+### Regression (two-[commit](../../../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) workflow)
 
-A proper bug fix uses at least two commits: first commit the regression test
-(which fails, confirming the bug), then commit the fix (test passes). This
+A proper bug fix uses at least two commits: first [commit](../../../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the regression test
+(which fails, confirming the bug), then [commit](../../../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the fix (test passes). This
 lets reviewers independently verify the test reproduces the issue by checking
-out the first commit, then advancing to the fix.
+out the first [commit](../../../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), then advancing to the fix.
 
 Name and document regression tests to identify the issue they fix. Include a
 link to the original bug report when possible.
 
 ```go
-// TestAccExample_regressionGH1234 verifies fix for https://github.com/org/repo/issues/1234
+// TestAccExample_regressionGH1234 verifies fix for https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/repo/issues/1234
 func TestAccExample_regressionGH1234(t *testing.T) {
     rName := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
     resourceName := "example_widget.test"

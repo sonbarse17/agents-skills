@@ -143,8 +143,8 @@ Error response:
 
 ### Step 2: Define Generic Type Definitions
 
-**TypeScript**
-```typescript
+**[TypeScript](../../Frontend/typescript/SKILL.md)**
+```[typescript](../../Frontend/typescript/SKILL.md)
 interface ApiResponse<T> {
   success: boolean;
   data: T | null;
@@ -201,8 +201,8 @@ type ApiResponse[T any] struct {
 }
 ```
 
-**Python**
-```python
+**[Python](../../Languages/python/SKILL.md)**
+```[python](../../Languages/python/SKILL.md)
 from pydantic import BaseModel
 from typing import Generic, TypeVar, Optional
 
@@ -343,7 +343,7 @@ Cursor-based:
 ### Step 7: Implement Global Exception Handler
 
 **Node.js/Express middleware**
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 import { Request, Response, NextFunction } from 'express';
 import { v4 as uuid } from 'uuid';
 
@@ -394,7 +394,7 @@ public class GlobalExceptionHandler : IMiddleware
 ```
 
 **FastAPI exception handler**
-```python
+```[python](../../Languages/python/SKILL.md)
 from fastapi import Request, JSONResponse
 from fastapi.exceptions import RequestValidationError
 
@@ -424,7 +424,7 @@ async def validation_handler(request: Request, exc: RequestValidationError):
 
 ### Step 8: Implement Response Builder Pattern
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class ResponseBuilder<T> {
   private statusCode = 200;
   private headers: Record<string, string> = {};
@@ -648,7 +648,7 @@ Retry-After: 30  (on 429 responses only)
   - ../../../Global_References/api-response-testing.md — API Response Testing
   - ../../../Global_References/api-response-validation.md — API Response Validation
   - ../../../Global_References/client-api-calls.md — Client API Call Patterns
-  - ../../../Global_References/error-handling-patterns.md — Error Handling Patterns Reference
+  - ../../../Global_References/[error-handling-patterns](../error-handling-patterns/SKILL.md).md — Error Handling Patterns Reference
   - ../../../Global_References/response-envelope.md — Response Envelope Reference
   - ../../../Global_References/api-response-fundamentals.md — API Response Fundamentals
   - ../../../Global_References/api-response-advanced.md — API Response Advanced Patterns

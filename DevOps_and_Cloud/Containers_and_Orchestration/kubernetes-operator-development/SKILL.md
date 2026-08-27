@@ -15,14 +15,14 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes Operator Development
+# [Kubernetes](../kubernetes/SKILL.md) Operator Development
 
 ## Purpose
 
 An Operator encodes operational knowledge — how to provision, upgrade,
-back up, and heal an application — as a Kubernetes controller watching a
+back up, and heal an application — as a [Kubernetes](../kubernetes/SKILL.md) controller watching a
 custom resource, so operating that application becomes "apply a YAML
-spec" instead of a runbook. Building one wrong (a reconcile loop that
+spec" instead of a [runbook](../../Observability_and_SecOps/runbook/SKILL.md). Building one wrong (a reconcile loop that
 isn't idempotent, a CRD with no versioning strategy, a controller that
 never terminates finalizers) produces a system that appears to work in
 demos and then deadlocks, leaks resources, or corrupts state under real
@@ -45,7 +45,7 @@ cluster.
 - Testing a controller against `envtest`/`kind` instead of only manual
   cluster testing.
 - Packaging an Operator for distribution via OLM (Operator Lifecycle
-  Manager) on OpenShift or other OLM-enabled clusters.
+  Manager) on [OpenShift](../openshift/SKILL.md) or other OLM-enabled clusters.
 
 ## Prerequisites & environment
 
@@ -56,7 +56,7 @@ cluster.
   `controller-runtime` (the version of `controller-runtime` pulled in
   determines available features like server-side apply support and
   workqueue rate limiting defaults — check `go.mod` after scaffolding).
-- `kubectl` and a disposable cluster (`kind` or `minikube`) for manual
+- `[kubectl](../kubectl/SKILL.md)` and a disposable cluster (`kind` or `minikube`) for manual
   verification; `envtest` (bundled via `setup-envtest`) for running
   reconcile tests against a real API server + etcd without a full
   kubelet/scheduler, in CI.
@@ -64,9 +64,9 @@ cluster.
   permissions (cluster-admin is *not* required to develop against a
   personal dev cluster, but is commonly needed to install CRDs
   cluster-wide the first time).
-- If targeting OpenShift/ROSA distribution, familiarity with OLM
+- If targeting [OpenShift](../openshift/SKILL.md)/ROSA distribution, familiarity with OLM
   bundle format — see
-  [openshift-and-rosa-platform](../openshift-and-rosa-platform/SKILL.md).
+  [openshift-and-rosa-platform](../[openshift-and-rosa-platform](../[openshift](../openshift/SKILL.md)-and-rosa-platform/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -80,7 +80,7 @@ cluster.
 
 2. **Scaffold the project and API**:
    ```bash
-   kubebuilder init --domain example.com --repo github.com/example/cache-operator
+   kubebuilder init --domain example.com --repo [github](../../CI_CD/github/SKILL.md).com/example/cache-operator
    kubebuilder create api --group cache --version v1alpha1 --kind RedisCluster --resource --controller
    ```
 
@@ -162,7 +162,7 @@ cluster.
    silent no-op that leaves drift uncorrected.
 
 5. **Use finalizers for any resource with external side effects** that
-   must be cleaned up before Kubernetes garbage-collects the object
+   must be cleaned up before [Kubernetes](../kubernetes/SKILL.md) garbage-collects the object
    (external cloud resources, DNS records, other clusters' state):
    ```go
    const redisFinalizer = "cache.example.com/cleanup"
@@ -178,15 +178,15 @@ cluster.
    > **Warning:** if a finalizer's cleanup logic can never succeed (a
    > bug, a permanently unreachable external system, or the finalizer
    > string itself was mistyped/orphaned), the custom resource — and
-   > anything Kubernetes-garbage-collection-blocked behind it — becomes
+   > anything [Kubernetes](../kubernetes/SKILL.md)-garbage-collection-blocked behind it — becomes
    > stuck in `Terminating` forever. Recovering requires manually
-   > patching out the finalizer (`kubectl patch ... -p '{"metadata":{"finalizers":[]}}' --type=merge`),
+   > patching out the finalizer (`[kubectl](../kubectl/SKILL.md) patch ... -p '{"metadata":{"finalizers":[]}}' --type=merge`),
    > which skips the cleanup the finalizer existed to guarantee — treat
-   > this as an incident, not a routine unstick command, and confirm the
+   > this as an [incident](../../Observability_and_SecOps/incident/SKILL.md), not a routine unstick command, and confirm the
    > external resource really doesn't need manual cleanup first.
 
 6. **Report status via `status.conditions`**, not just a free-text phase
-   string, so other tooling (dashboards, `kubectl wait --for=condition=`)
+   string, so other tooling ([dashboards](../../Cloud_Providers/dashboards/SKILL.md), `[kubectl](../kubectl/SKILL.md) wait --for=condition=`)
    can consume it reliably:
    ```go
    meta.SetStatusCondition(&rc.Status.Conditions, metav1.Condition{
@@ -220,16 +220,16 @@ cluster.
 8. **Install the CRD and run the controller against a `kind` cluster**
    before shipping:
    ```bash
-   make install   # kubectl apply -f config/crd
+   make install   # [kubectl](../kubectl/SKILL.md) apply -f config/crd
    make run       # runs the controller locally against the cluster's API server
    ```
 
 9. **Package for distribution.** For a plain chart-based install, wrap
    `config/crd` + `config/rbac` + `config/manager` into a Helm chart
-   (see [helm-chart-authoring](../helm-chart-authoring/SKILL.md),
+   (see [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md),
    putting CRDs under the chart's `crds/` directory since Helm never
    upgrades or deletes files there automatically). For OLM-based
-   distribution (OpenShift), use `operator-sdk generate bundle` to
+   distribution ([OpenShift](../openshift/SKILL.md)), use `operator-sdk generate bundle` to
    produce a `ClusterServiceVersion` and bundle image.
 
 ## Best practices
@@ -243,7 +243,7 @@ cluster.
   reconcile of an already-superseded spec doesn't overwrite a newer
   status.
 - Use `SetControllerReference`/owner references on every child resource
-  the controller creates, so Kubernetes garbage-collects children
+  the controller creates, so [Kubernetes](../kubernetes/SKILL.md) garbage-collects children
   automatically when the parent custom resource is deleted (except
   where a finalizer intentionally intercepts deletion first for external
   cleanup).
@@ -269,7 +269,7 @@ cluster.
   `retry.RetryOnConflict`) rather than treating every `Update` as
   guaranteed to succeed against the resource version last read.
 
-- **Symptom:** Deleting the custom resource hangs indefinitely; `kubectl
+- **Symptom:** Deleting the custom resource hangs indefinitely; `[kubectl](../kubectl/SKILL.md)
   get` shows it stuck with a `deletionTimestamp` set but the object
   never disappears.
   **Fix:** A finalizer's cleanup path is erroring out (check controller
@@ -279,15 +279,15 @@ cluster.
   only after confirming external resources don't need the cleanup that
   finalizer guaranteed.
 
-- **Symptom:** Deleting the CRD itself (`kubectl delete crd
+- **Symptom:** Deleting the CRD itself (`[kubectl](../kubectl/SKILL.md) delete crd
   redisclusters.cache.example.com`) cascades to delete every
   `RedisCluster` custom resource across every namespace, and their owned
   StatefulSets/PVCs along with them.
-  **Fix:** This is expected Kubernetes behavior — deleting a CRD deletes
+  **Fix:** This is expected [Kubernetes](../kubernetes/SKILL.md) behavior — deleting a CRD deletes
   all its instances. > **Warning:** never delete a CRD as a
   troubleshooting step on a production cluster; it is equivalent to
   deleting every resource of that kind cluster-wide. Confirm no
-  instances exist (`kubectl get <kind> -A`) or explicitly accept the
+  instances exist (`[kubectl](../kubectl/SKILL.md) get <kind> -A`) or explicitly accept the
   data-loss blast radius before proceeding.
 
 - **Symptom:** Two reconciler replicas (run for HA) both act on the same
@@ -329,8 +329,8 @@ make manifests generate    # regenerate CRD YAML + deepcopy funcs from markers
 kind create cluster --name operator-dev
 make install               # apply CRDs
 make run &                 # run the controller against kind, out-of-cluster
-kubectl apply -f config/samples/cache_v1alpha1_rediscluster.yaml
-kubectl get rediscluster sessions-cache -o jsonpath='{.status.conditions}'
+[kubectl](../kubectl/SKILL.md) apply -f config/samples/cache_v1alpha1_rediscluster.yaml
+[kubectl](../kubectl/SKILL.md) get rediscluster sessions-cache -o jsonpath='{.status.conditions}'
 ```
 
 Expected status after reconciliation stabilizes:
@@ -339,8 +339,8 @@ Expected status after reconciliation stabilizes:
 [{"type":"Ready","status":"True","reason":"AllReplicasAvailable","message":"3/3 replicas ready","observedGeneration":1}]
 ```
 
-`kubectl get statefulset sessions-cache` shows 3/3 ready replicas, and
-`kubectl get statefulset sessions-cache -o jsonpath='{.metadata.ownerReferences}'`
+`[kubectl](../kubectl/SKILL.md) get statefulset sessions-cache` shows 3/3 ready replicas, and
+`[kubectl](../kubectl/SKILL.md) get statefulset sessions-cache -o jsonpath='{.metadata.ownerReferences}'`
 confirms the StatefulSet is owned by the `RedisCluster`, so deleting the
 custom resource (once its finalizer's external-cleanup step succeeds)
 garbage-collects the StatefulSet and its Pods automatically — though not
@@ -349,6 +349,6 @@ deletes a `RedisCluster` expecting full cleanup.
 
 ## Cross-references
 
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — packaging the Operator's CRDs/RBAC/Deployment as an installable chart.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — a widely-deployed real-world example of the CRD + controller + finalizer pattern (Certificate/Issuer resources) to study.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) — cloud-specific RBAC/IAM considerations when the controller needs to call out to a cloud provider API (e.g. IRSA/workload identity for the controller's ServiceAccount).
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — packaging the Operator's CRDs/RBAC/Deployment as an installable chart.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — a widely-deployed real-world example of the CRD + controller + finalizer pattern (Certificate/Issuer resources) to study.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — cloud-specific RBAC/IAM considerations when the controller needs to call out to a cloud provider API (e.g. IRSA/workload identity for the controller's ServiceAccount).

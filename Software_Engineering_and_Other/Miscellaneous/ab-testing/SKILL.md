@@ -110,7 +110,7 @@ Determine MDE based on business impact: what effect size would make implementati
 
 Use two-tailed test by default (tests for both positive and negative effects). One-tailed test only when there is strong prior evidence that the effect can only go in one direction and the opposite direction is not actionable.
 
-Apply sequential testing (group sequential design) for continuous monitoring with pre-specified interim analysis points. Use alpha spending functions to maintain overall error rate. Do not use traditional p-value monitoring without correction.
+Apply sequential testing (group sequential design) for continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with pre-specified interim analysis points. Use alpha spending functions to maintain overall error rate. Do not use traditional p-value [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) without correction.
 
 ### Step 4: AA Test Validation
 Run AA test before any treatment experiment. Split traffic equally between two identical variants (both receive control experience). Verify no statistically significant difference between the two groups.
@@ -160,7 +160,7 @@ Document learnings: hypothesis, design, results, decision, and what was learned 
 ## Framework / Methodologies
 
 ### Frequentist Hypothesis Testing Framework
-Standard approach for A/B testing. Null hypothesis significance testing (NHST) with p-values and confidence intervals. Pros: widely understood, computationally simple, well-established conventions. Cons: p-values are easily misinterpreted, no direct statement about probability of hypotheses being true, problematic with continuous monitoring.
+Standard approach for A/B testing. Null hypothesis significance testing (NHST) with p-values and confidence intervals. Pros: widely understood, computationally simple, well-established conventions. Cons: p-values are easily misinterpreted, no direct statement about probability of hypotheses being true, problematic with continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 
 Key elements: pre-specified α and β, MDE-based sample size calculation, two-tailed tests by default, p-value threshold for significance, confidence intervals for effect size estimates. Report both statistical significance and practical significance.
 
@@ -169,7 +169,7 @@ Alternative approach that estimates the probability distribution of the effect s
 
 Key elements: prior distribution (informative or uninformative), likelihood function (based on observed data), posterior distribution (updated belief), credible intervals (Bayesian analog of confidence intervals), probability of superiority (Pr(treatment > control)), expected loss.
 
-Pros: interpretable results, natural handling of sequential monitoring, incorporates prior information, no p-value misinterpretation. Cons: requires specifying prior (subjective), computationally more intensive, less widely understood in organizations.
+Pros: interpretable results, natural handling of sequential [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), incorporates prior information, no p-value misinterpretation. Cons: requires specifying prior (subjective), computationally more intensive, less widely understood in organizations.
 
 ### Sequential Testing (Group Sequential Design)
 Multiple interim analyses with pre-specified stopping rules that maintain overall error rate. Use alpha spending functions (Pocock, O'Brien-Fleming, Haybittle-Peto) to distribute α across analyses.
@@ -235,7 +235,7 @@ Aggregate results show one direction but segment results show the opposite. Caus
 
 ### Statistical Rigor
 - Pre-register the experiment: hypothesis, metrics, sample size, duration, analysis plan.
-- Use sequential testing with alpha spending for continuous monitoring.
+- Use sequential testing with alpha spending for continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - Check assumptions (normality, equal variance, independence, SRM) before interpreting results.
 - Report confidence intervals alongside p-values for effect size interpretation.
 - Apply corrections for multiple comparisons in segment and secondary metric analysis.
@@ -441,7 +441,7 @@ Fix: invalidated caches on experiment launch, added cache-busting parameters, an
   - ../../../Global_References/ab-testing_statistical-methods.md — Statistical Methods
 
 ## Handoff
-For product analytics event tracking to inform metrics, hand off to `product-analytics`. For user research insights to inform hypotheses, hand off to `product-user-research`. For customer journey touchpoints to test, hand off to `product-customer-journey`. For growth metric experiment design, hand off to `product-growth-engineering`.
+For product analytics event tracking to inform metrics, hand off to `[product-analytics](../analytics/SKILL.md)`. For user research insights to inform hypotheses, hand off to `[product-user-research](../../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md)`. For customer journey touchpoints to test, hand off to `[product-customer-journey](../../../Product_and_Business/customer-journey/SKILL.md)`. For growth metric experiment design, hand off to `[product-growth-engineering](../../../Product_and_Business/growth-engineering/SKILL.md)`.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -494,7 +494,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -508,7 +508,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -524,12 +524,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -538,7 +538,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -546,13 +546,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -561,8 +561,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

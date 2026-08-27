@@ -9,14 +9,14 @@ metadata:
 
 # SOC 2 Compliance
 
-Implement SOC 2 Trust Services Criteria controls, evidence collection, and continuous compliance monitoring for Type I and Type II audits.
+Implement SOC 2 Trust Services Criteria controls, evidence collection, and continuous compliance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for Type I and Type II audits.
 
 ## When to Use
 
-- Preparing for a SOC 2 Type I or Type II audit
+- Preparing for a SOC 2 Type I or Type II [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 - Mapping existing controls to Trust Services Criteria
 - Automating evidence collection for auditor requests
-- Building continuous compliance monitoring into CI/CD
+- Building continuous compliance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) into CI/CD
 - Onboarding new services and ensuring SOC 2 control coverage
 
 ## Trust Services Criteria Detailed Checklist
@@ -44,7 +44,7 @@ security_common_criteria:
       - Security awareness training records
       - Internal security newsletters or updates
       - Customer-facing security documentation
-      - Status page and incident communication records
+      - Status page and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) communication records
 
   CC3_risk_assessment:
     CC3.1: "Entity specifies objectives clearly to identify and assess risks"
@@ -61,8 +61,8 @@ security_common_criteria:
     CC4.1: "Entity selects, develops, and performs ongoing/separate evaluations"
     CC4.2: "Entity evaluates and communicates internal control deficiencies"
     evidence:
-      - Continuous monitoring dashboard screenshots
-      - Internal audit reports
+      - Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard screenshots
+      - Internal [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reports
       - Vulnerability scan results
       - Penetration test reports
 
@@ -98,10 +98,10 @@ security_common_criteria:
     CC7.4: "Respond to identified security incidents"
     CC7.5: "Identify and remediate security incidents"
     evidence:
-      - SIEM alert rules and dashboards
-      - Monitoring configuration (CloudWatch, Datadog, etc.)
-      - Incident response plan
-      - Incident tickets and post-mortems
+      - SIEM alert rules and [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+      - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configuration (CloudWatch, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), etc.)
+      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan
+      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tickets and post-mortems
 
   CC8_change_management:
     CC8.1: "Entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes"
@@ -121,12 +121,12 @@ security_common_criteria:
       - Insurance certificates
 
 availability_criteria:
-  A1.1: "System processing capacity and availability are maintained"
+  A1.1: "System processing [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and availability are maintained"
   A1.2: "Environmental protections and recovery measures"
   A1.3: "Recovery plan procedures to support system availability"
   evidence:
     - Uptime SLA documentation
-    - Capacity monitoring dashboards
+    - [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
     - Disaster recovery plan
     - DR test results
     - Backup verification records
@@ -149,7 +149,7 @@ confidentiality_criteria:
     - Secure disposal records
 
 privacy_criteria:
-  P1-P8: "Privacy notice, choice, collection, use, disclosure, access, quality, monitoring"
+  P1-P8: "Privacy notice, choice, collection, use, disclosure, access, quality, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
   evidence:
     - Privacy policy (published)
     - Consent management records
@@ -171,7 +171,7 @@ control_to_tool_mapping:
       - Azure AD sign-in logs
       - Conditional Access policies
       - PIM role assignments
-    github:
+    [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
       - Organization member list and roles
       - Repository access permissions
       - Branch protection rules
@@ -182,24 +182,24 @@ control_to_tool_mapping:
 
   CC7.2_monitoring:
     tools:
-      - CloudWatch / Azure Monitor / Cloud Monitoring dashboards
-      - Datadog / New Relic / Grafana alert configurations
+      - CloudWatch / Azure Monitor / Cloud [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+      - [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) / New Relic / Grafana alert configurations
       - SIEM (Splunk, Elastic, Sentinel) saved searches
       - PagerDuty / OpsGenie escalation policies
     evidence_format:
       - Dashboard screenshots with date stamps
       - Alert rule configuration exports
-      - Incident response records from ticketing system
+      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response records from ticketing system
 
   CC8.1_change_management:
     tools:
-      - GitHub/GitLab PR merge requirements
-      - CI/CD pipeline configurations (GitHub Actions, Jenkins)
+      - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab PR merge requirements
+      - CI/CD pipeline configurations ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md))
       - Terraform plan outputs
       - Deployment logs
     evidence_format:
       - PR with approvals and CI checks
-      - Deployment audit trail
+      - Deployment [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail
       - Change advisory board meeting notes (if applicable)
 ```
 
@@ -208,7 +208,7 @@ control_to_tool_mapping:
 ```bash
 #!/usr/bin/env bash
 # collect-soc2-evidence.sh - Automated SOC 2 evidence collection
-# Run monthly or before audit requests
+# Run monthly or before [audit](../../AI_and_Agents/Operations/audit/SKILL.md) requests
 
 EVIDENCE_DIR="./soc2-evidence/$(date +%Y-%m)"
 mkdir -p "$EVIDENCE_DIR"
@@ -219,7 +219,7 @@ echo "=== CC6.1 - Logical Access Evidence ==="
 aws iam generate-credential-report
 sleep 10
 aws iam get-credential-report --output text --query Content | \
-  base64 -d > "$EVIDENCE_DIR/aws-iam-credential-report.csv"
+  base64 -d > "$EVIDENCE_DIR/[aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-credential-report.csv"
 
 # AWS IAM Access Analyzer findings
 aws accessanalyzer list-findings \
@@ -234,20 +234,20 @@ aws iam list-users --query 'Users[*].UserName' --output text | \
     echo "$user,$mfa"
   done > "$EVIDENCE_DIR/mfa-status.csv"
 
-# GitHub organization members and roles
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) organization members and roles
 gh api orgs/YOUR_ORG/members --paginate --jq '.[] | [.login, .role_name // "member"] | @csv' \
-  > "$EVIDENCE_DIR/github-org-members.csv"
+  > "$EVIDENCE_DIR/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-org-members.csv"
 
-# GitHub branch protection rules
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) branch protection rules
 for repo in $(gh repo list YOUR_ORG --json name -q '.[].name'); do
   gh api repos/YOUR_ORG/$repo/branches/main/protection \
     > "$EVIDENCE_DIR/branch-protection-$repo.json" 2>/dev/null
 done
 
-echo "=== CC7.2 - Monitoring Evidence ==="
+echo "=== CC7.2 - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Evidence ==="
 
 # CloudTrail status
-aws cloudtrail get-trail-status --name org-audit-trail \
+aws cloudtrail get-trail-status --name org-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
   > "$EVIDENCE_DIR/cloudtrail-status.json"
 
 # Active CloudWatch alarms
@@ -261,11 +261,11 @@ aws guardduty list-findings --detector-id DETECTOR_ID \
 
 echo "=== CC8.1 - Change Management Evidence ==="
 
-# Recent deployments (GitHub Actions)
+# Recent deployments ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions)
 gh run list --repo YOUR_ORG/YOUR_REPO --limit 50 --json conclusion,createdAt,displayTitle,headBranch \
   > "$EVIDENCE_DIR/recent-deployments.json"
 
-# Pull requests merged in audit period
+# Pull requests merged in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) period
 gh pr list --repo YOUR_ORG/YOUR_REPO --state merged --limit 100 \
   --json number,title,author,mergedBy,mergedAt,reviews \
   > "$EVIDENCE_DIR/merged-prs.json"
@@ -286,7 +286,7 @@ tar -czf "$EVIDENCE_DIR.tar.gz" "$EVIDENCE_DIR"
 echo "Archive: $EVIDENCE_DIR.tar.gz"
 ```
 
-## Audit Preparation Timeline
+## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation Timeline
 
 ```yaml
 audit_prep_timeline:
@@ -313,12 +313,12 @@ audit_prep_timeline:
   1_month_before:
     - Prepare evidence request list responses
     - Organize evidence into auditor-friendly structure
-    - Brief key personnel on audit interviews
-    - Verify monitoring dashboards show healthy state
-    - Confirm incident response records are complete
+    - Brief key personnel on [audit](../../AI_and_Agents/Operations/audit/SKILL.md) interviews
+    - Verify [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) show healthy state
+    - Confirm [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response records are complete
 
   during_audit:
-    - Designate audit liaison for request management
+    - Designate [audit](../../AI_and_Agents/Operations/audit/SKILL.md) liaison for request management
     - Provide timely evidence and clarifications
     - Track open auditor questions
     - Escalate issues to control owners promptly
@@ -328,13 +328,13 @@ audit_prep_timeline:
     - Create remediation plan for any exceptions
     - Communicate results to stakeholders
     - Update controls and processes based on findings
-    - Begin next audit period evidence collection
+    - Begin next [audit](../../AI_and_Agents/Operations/audit/SKILL.md) period evidence collection
 ```
 
-## Continuous Compliance Monitoring
+## Continuous Compliance [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```yaml
-# GitHub Actions workflow for continuous SOC 2 checks
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for continuous SOC 2 checks
 name: SOC2 Compliance Checks
 on:
   schedule:
@@ -342,7 +342,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  access-review:
+  [access-review](../access-review/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - name: Check MFA enforcement
@@ -363,7 +363,7 @@ jobs:
 
       - name: Verify CloudTrail is logging
         run: |
-          STATUS=$(aws cloudtrail get-trail-status --name org-audit-trail --query 'IsLogging' --output text)
+          STATUS=$(aws cloudtrail get-trail-status --name org-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-trail --query 'IsLogging' --output text)
           [ "$STATUS" = "True" ] || (echo "::error::CloudTrail logging stopped" && exit 1)
 
       - name: Check GuardDuty is enabled
@@ -377,10 +377,10 @@ jobs:
 - Start with a gap assessment to understand current control maturity before engaging an auditor
 - Automate evidence collection to reduce the burden of auditor requests and ensure consistency
 - Map each control to a specific tool, owner, and evidence artifact for traceability
-- Implement continuous monitoring rather than point-in-time checks for Type II readiness
+- Implement continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) rather than point-in-time checks for Type II readiness
 - Maintain a central evidence repository organized by control criteria
-- Conduct quarterly internal reviews to catch control drift before the audit period
+- Conduct quarterly internal reviews to catch control drift before the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) period
 - Keep policies living documents with version history and annual review dates
 - Train all employees on their role in maintaining SOC 2 controls
-- Use the audit preparation timeline to avoid last-minute scrambling
+- Use the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation timeline to avoid last-minute scrambling
 - Treat each auditor exception as an improvement opportunity rather than a failure

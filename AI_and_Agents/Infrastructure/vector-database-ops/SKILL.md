@@ -27,14 +27,14 @@ Use this skill when:
 | **Qdrant** | High-performance, rich filtering, self-hosted | Self / Cloud | Excellent | Very High |
 | **Weaviate** | Schema-first, hybrid search, multi-modal | Self / Cloud | Good | High |
 | **pgvector** | Already on Postgres, simple use cases | Self | Good | Medium |
-| **Pinecone** | Zero-ops managed, serverless | Managed only | Good | Very High |
+| **Pinecone** | Zero-ops managed, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) | Managed only | Good | Very High |
 | **Chroma** | Local dev, prototyping | Self only | Basic | Low-Medium |
 
 ## Qdrant — Production Deployment
 
 ```bash
-# Docker (single node)
-docker run -d \
+# [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (single node)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -p 6334:6334 \
@@ -42,7 +42,7 @@ docker run -d \
   qdrant/qdrant:latest
 
 # With custom config
-docker run -d \
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -v $(pwd)/qdrant-data:/qdrant/storage \
@@ -75,7 +75,7 @@ telemetry_disabled: true
 
 ## Qdrant Collection Management
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance, VectorParams, HnswConfigDiff,
@@ -125,7 +125,7 @@ print(f"Vectors: {info.vectors_count}, Status: {info.status}")
 
 ## Qdrant Filtered Search
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from qdrant_client.models import Filter, FieldCondition, MatchValue, Range
 
 # Tenant-isolated search (multi-tenant RAG)
@@ -146,7 +146,7 @@ results = client.query_points(
 )
 ```
 
-## pgvector — PostgreSQL Extension
+## pgvector — [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Extension
 
 ```sql
 -- Enable extension
@@ -183,20 +183,20 @@ LIMIT 10;
 ```
 
 ```bash
-# Deploy pgvector via Docker
-docker run -d \
+# Deploy pgvector via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
   --name pgvector \
   -e POSTGRES_PASSWORD=secret \
   -e POSTGRES_DB=vectordb \
   -p 5432:5432 \
-  -v pgvector-data:/var/lib/postgresql/data \
+  -v pgvector-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data \
   pgvector/pgvector:pg16
 ```
 
 ## Weaviate Deployment
 
 ```yaml
-# docker-compose for Weaviate
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) for Weaviate
 services:
   weaviate:
     image: semitechnologies/weaviate:latest
@@ -243,7 +243,7 @@ pg_restore -h localhost -U postgres -d vectordb documents-backup.dump
 
 ## Performance Tuning
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Qdrant — optimize collection after bulk load
 client.update_collection(
     collection_name="documents",
@@ -280,6 +280,6 @@ while True:
 
 ## Related Skills
 
-- [rag-infrastructure](../../local-ai/rag-infrastructure/) - Full RAG pipeline
+- [rag-infrastructure](../../local-ai/[rag-infrastructure](../rag-infrastructure/SKILL.md)/) - Full RAG pipeline
 - [databases](../) - General database management
-- [postgresql](../postgresql/) - pgvector host database ops
+- [postgresql](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/) - pgvector host database ops

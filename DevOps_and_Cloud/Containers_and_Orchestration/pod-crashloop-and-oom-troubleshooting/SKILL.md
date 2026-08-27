@@ -21,7 +21,7 @@ metadata:
 
 ## Purpose
 
-`CrashLoopBackOff` is not itself a root cause — it's Kubernetes'
+`CrashLoopBackOff` is not itself a root cause — it's [Kubernetes](../kubernetes/SKILL.md)'
 description of a symptom (a container keeps exiting, so the kubelet
 keeps restarting it with exponential backoff up to a 5-minute cap). The
 actual cause could be an application bug, a missing dependency, a
@@ -37,11 +37,11 @@ without checking whether the real problem is a leak rather than sizing.
 
 ## When to use
 
-- A pod shows `CrashLoopBackOff` in `kubectl get pods` and the restart
+- A pod shows `CrashLoopBackOff` in `[kubectl](../kubectl/SKILL.md) get pods` and the restart
   count keeps climbing.
 - A pod's `Last State` reason is `OOMKilled`, or its previous container
   exited with code `137`.
-- `kubectl logs <pod>` shows nothing useful right after a restart.
+- `[kubectl](../kubectl/SKILL.md) logs <pod>` shows nothing useful right after a restart.
 - Deciding whether to raise a memory limit, fix a leak, or look at
   something else entirely (a probe, a missing config/secret, a
   dependency not yet ready).
@@ -50,9 +50,9 @@ without checking whether the real problem is a leak rather than sizing.
 
 ## Prerequisites & environment
 
-- `kubectl` access to the pod's namespace with permission to read pod
+- `[kubectl](../kubectl/SKILL.md)` access to the pod's namespace with permission to read pod
   logs, events, and `describe` output.
-- `metrics-server` installed (for `kubectl top pod`) or a Prometheus/
+- `metrics-server` installed (for `[kubectl](../kubectl/SKILL.md) top pod`) or a Prometheus/
   `kube-state-metrics` + `cAdvisor` setup for historical memory usage —
   useful for distinguishing a slow leak from a sudden spike, though not
   strictly required for a first-pass diagnosis.
@@ -68,8 +68,8 @@ without checking whether the real problem is a leak rather than sizing.
 1. **Confirm the restart pattern and exit code** before assuming
    anything:
    ```bash
-   kubectl get pods -n <namespace>
-   kubectl describe pod <pod> -n <namespace>
+   [kubectl](../kubectl/SKILL.md) get pods -n <namespace>
+   [kubectl](../kubectl/SKILL.md) describe pod <pod> -n <namespace>
    ```
    In the `describe` output, check `Last State` → `Reason` and
    `Exit Code`: `OOMKilled` + exit code `137` means the kernel's cgroup
@@ -83,8 +83,8 @@ without checking whether the real problem is a leak rather than sizing.
    right after a restart, the current container's logs are often empty
    or just starting up:
    ```bash
-   kubectl logs <pod> -n <namespace> --previous
-   kubectl logs <pod> -n <namespace> --previous -c <container>   # multi-container pod
+   [kubectl](../kubectl/SKILL.md) logs <pod> -n <namespace> --previous
+   [kubectl](../kubectl/SKILL.md) logs <pod> -n <namespace> --previous -c <container>   # multi-container pod
    ```
    This is the single most-skipped step and the most common reason a
    crash-loop looks "unexplainable" — the explanation is almost always
@@ -94,7 +94,7 @@ without checking whether the real problem is a leak rather than sizing.
 3. **Check events for corroborating detail** the `describe` summary may
    compress:
    ```bash
-   kubectl get events -n <namespace> \
+   [kubectl](../kubectl/SKILL.md) get events -n <namespace> \
      --field-selector involvedObject.name=<pod> \
      --sort-by='.lastTimestamp'
    ```
@@ -107,8 +107,8 @@ without checking whether the real problem is a leak rather than sizing.
    undersized limit or a real leak. Check the configured limit against
    recent usage:
    ```bash
-   kubectl get pod <pod> -n <namespace> -o jsonpath='{.spec.containers[*].resources}'
-   kubectl top pod <pod> -n <namespace> --containers
+   [kubectl](../kubectl/SKILL.md) get pod <pod> -n <namespace> -o jsonpath='{.spec.containers[*].resources}'
+   [kubectl](../kubectl/SKILL.md) top pod <pod> -n <namespace> --containers
    ```
    A single spike to the limit under unusually high load suggests
    sizing; a memory curve that climbs steadily over hours/days
@@ -130,13 +130,13 @@ without checking whether the real problem is a leak rather than sizing.
    still-starting process, which then looks identical to a real crash
    loop from the outside:
    ```bash
-   kubectl get pod <pod> -n <namespace> -o jsonpath='{.spec.containers[*].livenessProbe}'
+   [kubectl](../kubectl/SKILL.md) get pod <pod> -n <namespace> -o jsonpath='{.spec.containers[*].livenessProbe}'
    ```
    If events show repeated `Liveness probe failed` immediately followed
    by container restart, and the application logs (via `--previous`)
    show no actual error at the time of the kill, the probe — not the
    application — is the root cause. See
-   [kubernetes-service-connectivity-troubleshooting](../kubernetes-service-connectivity-troubleshooting/SKILL.md)
+   [kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md)
    for the related readiness-probe failure mode (excluded from Service
    endpoints without a restart, the milder sibling of this issue).
 
@@ -144,21 +144,21 @@ without checking whether the real problem is a leak rather than sizing.
    killer evicting the pod for a reason unrelated to *this* container's
    own limit (overcommitted node, another pod's usage crowding it out):
    ```bash
-   kubectl describe node <node> | grep -A5 Conditions
-   kubectl top node <node>
+   [kubectl](../kubectl/SKILL.md) describe node <node> | grep -A5 Conditions
+   [kubectl](../kubectl/SKILL.md) top node <node>
    ```
    A `MemoryPressure` condition on the node points to node-level
    overcommit, not necessarily this container exceeding its own limit —
    see
-   [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md)
+   [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md)
    for diagnosing node-level resource pressure directly.
 
 8. **Debug interactively without modifying the running workload**, when
    logs alone aren't enough:
    ```bash
-   kubectl debug <pod> -n <namespace> -it --image=busybox:1.36 --target=<container>
+   [kubectl](../kubectl/SKILL.md) debug <pod> -n <namespace> -it --image=busybox:1.36 --target=<container>
    ```
-   Ephemeral containers/`kubectl debug` share the target pod's process
+   Ephemeral containers/`[kubectl](../kubectl/SKILL.md) debug` share the target pod's process
    namespace without requiring a redeploy or altering the crash-looping
    container itself.
 
@@ -174,7 +174,7 @@ without checking whether the real problem is a leak rather than sizing.
 10. **Confirm the fix** by watching the restart count stabilize, not
     just disappear once:
     ```bash
-    kubectl get pod <pod> -n <namespace> -w
+    [kubectl](../kubectl/SKILL.md) get pod <pod> -n <namespace> -w
     ```
     A restart count that stays flat for a full deploy cycle (and ideally
     a full traffic-pattern cycle, e.g. a day's peak-load window) is a
@@ -183,14 +183,14 @@ without checking whether the real problem is a leak rather than sizing.
 
 ## Best practices
 
-- Always run `kubectl logs --previous` before concluding "no useful
+- Always run `[kubectl](../kubectl/SKILL.md) logs --previous` before concluding "no useful
   logs" — the current container's logs are frequently empty
   immediately after a restart while the previous container's final
   output holds the actual error.
 - Set `resources.requests`/`resources.limits` deliberately from real
   observed usage under load, not a copy-pasted default — see
-  [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/capacity-planning-and-load-testing/SKILL.md)
-  for load-testing methodology to establish real sizing rather than
+  [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/[capacity-planning-and-load-testing](../../Observability_and_SecOps/[capacity-planning](../../Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md)
+  for [load-testing](../../Observability_and_SecOps/load-testing/SKILL.md) methodology to establish real sizing rather than
   guessing.
 - Treat repeated `OOMKilled` after a limit increase as a strong leak
   signal, not something to "fix" with a second, larger increase — track
@@ -205,16 +205,16 @@ without checking whether the real problem is a leak rather than sizing.
 - Correlate a suspected OOM with node-level memory pressure, not just
   the container's own limit — a node running hotter than expected can
   produce OOM-adjacent symptoms across multiple pods simultaneously,
-  which is a capacity/bin-packing problem, not a single application's
+  which is a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/bin-packing problem, not a single application's
   bug.
-- When a crash loop appears right after a chaos-engineering experiment
+- When a crash loop appears right after a [chaos-engineering](../../Observability_and_SecOps/chaos-engineering/SKILL.md) experiment
   or game day, cross-check whether it's the intended fault injection
   working as designed rather than a new bug — see
-  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md).
+  [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../../Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
-- **Symptom:** `kubectl logs <pod>` shows nothing useful, or just a
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) logs <pod>` shows nothing useful, or just a
   fresh startup banner with no error.
   **Fix:** Use `--previous` to read the terminated container's own final
   output, not the newly restarted container's just-starting logs — this
@@ -234,7 +234,7 @@ without checking whether the real problem is a leak rather than sizing.
   later after climbing back up to the new, higher limit.
   **Fix:** This pattern is a strong signal of a genuine memory leak, not
   an undersized limit. Repeatedly raising the limit only delays the
-  next OOM and burns more node capacity per pod in the meantime — profile
+  next OOM and burns more node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) per pod in the meantime — profile
   the application (heap dump, language-native memory profiler) and fix
   the leak instead of treating the limit as the dial to turn.
 
@@ -248,13 +248,13 @@ without checking whether the real problem is a leak rather than sizing.
   configuration (or the health endpoint's actual behavior) rather than
   debugging the application for a bug that isn't there.
 
-- **Symptom:** `kubectl delete pod <pod>` is used repeatedly to "fix" a
+- **Symptom:** `[kubectl](../kubectl/SKILL.md) delete pod <pod>` is used repeatedly to "fix" a
   crash-looping pod whenever someone notices it.
   **Fix:** The controller (Deployment/StatefulSet/ReplicaSet) just
   recreates the pod, and it crash-loops again for the same underlying
   reason — this masks the root cause instead of fixing it, and burns
   time on every recurrence. If it's done with
-  `kubectl delete pod --force --grace-period=0` to speed things up,
+  `[kubectl](../kubectl/SKILL.md) delete pod --force --grace-period=0` to speed things up,
   > **Warning:** this skips graceful termination entirely and can leave
   a stateful workload's on-disk or external state inconsistent; use it
   only when a pod is genuinely stuck (e.g. its node is gone), and
@@ -267,7 +267,7 @@ without checking whether the real problem is a leak rather than sizing.
 with a restart count climbing every few minutes.
 
 ```bash
-kubectl describe pod payments-worker-6f9d4b5-2xk9p -n payments
+[kubectl](../kubectl/SKILL.md) describe pod payments-worker-6f9d4b5-2xk9p -n payments
 # Last State:     Terminated
 #   Reason:       OOMKilled
 #   Exit Code:    137
@@ -276,11 +276,11 @@ kubectl describe pod payments-worker-6f9d4b5-2xk9p -n payments
 ```
 
 ```bash
-kubectl get pod payments-worker-6f9d4b5-2xk9p -n payments \
+[kubectl](../kubectl/SKILL.md) get pod payments-worker-6f9d4b5-2xk9p -n payments \
   -o jsonpath='{.spec.containers[0].resources}'
 # {"limits":{"memory":"256Mi"},"requests":{"memory":"128Mi"}}
 
-kubectl top pod payments-worker-6f9d4b5-2xk9p -n payments --containers
+[kubectl](../kubectl/SKILL.md) top pod payments-worker-6f9d4b5-2xk9p -n payments --containers
 # (prior to the last OOM, memory climbed from ~90Mi at startup to 256Mi
 #  over roughly 40 minutes of otherwise-steady request volume)
 ```
@@ -298,13 +298,13 @@ a blind large jump — and a Prometheus alert on
 next leak is caught before it OOMs in production again.
 
 ```bash
-kubectl get pod payments-worker-6f9d4b5-2xk9p -n payments -w
+[kubectl](../kubectl/SKILL.md) get pod payments-worker-6f9d4b5-2xk9p -n payments -w
 # restart count stays flat through a full day's peak-traffic window
 ```
 
 ## Cross-references
 
-- [kubernetes-node-maintenance-and-troubleshooting](../kubernetes-node-maintenance-and-troubleshooting/SKILL.md) — diagnosing node-level `MemoryPressure` when an OOM looks correlated with overall node capacity rather than one container's limit.
-- [kubernetes-service-connectivity-troubleshooting](../kubernetes-service-connectivity-troubleshooting/SKILL.md) — the related readiness-probe failure mode (excluded from Service endpoints without a restart) versus the liveness-probe-triggered restarts covered here.
-- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/capacity-planning-and-load-testing/SKILL.md) — load-testing methodology for setting real, evidence-based memory requests/limits instead of guessing.
-- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/chaos-engineering-and-resilience-testing/SKILL.md) — distinguishing an intentional fault-injection kill from a genuine new crash-loop bug.
+- [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — diagnosing node-level `MemoryPressure` when an OOM looks correlated with overall node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) rather than one container's limit.
+- [kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md) — the related readiness-probe failure mode (excluded from Service endpoints without a restart) versus the liveness-probe-triggered restarts covered here.
+- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/[capacity-planning-and-load-testing](../../Observability_and_SecOps/[capacity-planning](../../Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — [load-testing](../../Observability_and_SecOps/load-testing/SKILL.md) methodology for setting real, evidence-based memory requests/limits instead of guessing.
+- [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../../Software_Engineering_and_Other/Frontend/[chaos-engineering](../../Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — distinguishing an intentional fault-injection kill from a genuine new crash-loop bug.

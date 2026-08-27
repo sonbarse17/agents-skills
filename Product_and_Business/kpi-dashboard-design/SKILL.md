@@ -5,13 +5,13 @@ description: Design effective KPI dashboards with metrics selection, visualizati
 
 # KPI Dashboard Design
 
-Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.
+Comprehensive patterns for designing effective Key Performance Indicator (KPI) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) that drive business decisions.
 
 ## When to Use This Skill
 
-- Designing executive dashboards
+- Designing executive [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 - Selecting meaningful KPIs
-- Building real-time monitoring displays
+- Building real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) displays
 - Creating department-specific metrics views
 - Improving existing dashboard layouts
 - Establishing metric governance
@@ -119,7 +119,7 @@ DATE_TRUNC('month', created_at) AS cohort_month
 
 A live dashboard refreshing every 10 seconds with complex cohort SQL will degrade production query performance. Separate OLAP workloads from OLTP by writing pre-aggregated metrics to a summary table via a scheduled job, and have the dashboard read from that:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Scheduled every 5 minutes via cron/Celery
 def refresh_mrr_summary():
     conn.execute("""
@@ -134,7 +134,7 @@ def refresh_mrr_summary():
 
 Static thresholds set once and never reviewed cause alert fatigue. Use dynamic thresholds based on rolling averages so alerts fire only when the metric deviates significantly from its own baseline:
 
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Alert if current value is > 2 standard deviations from 30-day rolling mean
 def is_anomalous(current: float, history: list[float]) -> bool:
     mean = statistics.mean(history)
@@ -144,5 +144,5 @@ def is_anomalous(current: float, history: list[float]) -> bool:
 
 ## Related Skills
 
-- `data-storytelling` - Turn dashboard findings into narratives that drive executive decisions
+- `[data-storytelling](../../Software_Engineering_and_Other/Frontend/data-storytelling/SKILL.md)` - Turn dashboard findings into narratives that drive executive decisions
 

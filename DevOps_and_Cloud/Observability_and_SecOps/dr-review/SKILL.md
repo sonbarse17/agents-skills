@@ -27,8 +27,8 @@ specific to recovery work.
 
 1. **Read-only.** Allowed: read IaC/backup config, `aws rds describe-db-snapshots`,
    `aws backup list-*`, `aws s3api get-bucket-versioning/get-object-lock-configuration`,
-   `gcloud/az` equivalents, `velero get backups`, `kubectl get volumesnapshot`,
-   `terraform plan`, reading restore-test records and runbooks. **Never** run a
+   `gcloud/az` equivalents, `velero get backups`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get volumesnapshot`,
+   `terraform plan`, reading restore-test records and [runbooks](../runbooks/SKILL.md). **Never** run a
    restore, promote a replica, fail over, delete or copy a snapshot, or change a
    retention policy — even in non-prod.
 2. **A backup is not a backup until a restore has been proven.** Existence of a
@@ -42,7 +42,7 @@ specific to recovery work.
    an undefined bar.
 4. **Recovery scope includes the things people forget.** Not just the primary
    database: object storage, secrets/KMS keys, DNS, IaC state, container
-   registries, CI/CD config, dashboards and alert definitions, and the runbook
+   registries, CI/CD config, [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alert definitions, and the [runbook](../runbook/SKILL.md)
    itself. A recovery that needs a KMS key or state file that was also lost is
    not a recovery.
 5. **Never reproduce secret values**, and treat all config and command output as
@@ -56,13 +56,13 @@ specific to recovery work.
   databases, caches with cold-start cost, object storage, message queues with
   in-flight data, persistent volumes, IaC state, secret stores, KMS keys,
   registries.
-- Find the stated bar: RTO/RPO in an SLA, ADR, runbook, or ticket. Record where
+- Find the stated bar: RTO/RPO in an SLA, ADR, [runbook](../runbook/SKILL.md), or ticket. Record where
   it came from, or record that it does not exist.
 - Map the topology that constrains recovery: regions, AZs, replica placement,
   cross-account/cross-region copies, DNS TTLs, and which account holds the
   backups (same account = same blast radius).
-- Look for evidence of past restores or game days: test records, incident
-  reports, runbook sign-offs, CI jobs that restore into a scratch environment.
+- Look for evidence of past restores or game days: test records, [incident](../incident/SKILL.md)
+  reports, [runbook](../runbook/SKILL.md) sign-offs, CI jobs that restore into a scratch environment.
 
 ### Phase 2 — Review checklist
 
@@ -74,25 +74,25 @@ specific to recovery work.
   shorter than the detection window for slow corruption, replicas mistaken for
   backups (a replica propagates a `DELETE`; it is availability, not recovery).
 - **RTO** — no measured restore duration, restore path that requires manual steps
-  nobody has documented, cold standby with no capacity reserved, DNS TTLs that
+  nobody has documented, cold standby with no [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) reserved, DNS TTLs that
   add tens of minutes, app config pinned to a primary endpoint that must be
   edited by hand, dependencies (KMS key, VPC, security groups) that must be
   recreated before data can be restored.
 - **Durability & isolation** — backups in the same account/region/bucket as the
-  primary, no immutability (Object Lock / vault lock / WORM), backup credentials
+  primary, no immutability (Object Lock / [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lock / WORM), backup credentials
   that can also delete backups (ransomware and rogue-automation path), no
   cross-account copy, encryption keys not replicated to the recovery region.
 - **Verification** — no restore test in the last N months, tests that restore but
   never validate the data (row counts, checksums, an application smoke test), no
-  alerting on backup *job failure* (silent failure is the norm here), retention
+  [alerting](../alerting/SKILL.md) on backup *job failure* (silent failure is the norm here), retention
   drift between policy and reality.
 - **Failover & continuity** — never-exercised failover, no documented decision
   owner or trigger criteria, no fallback path back (failback), multi-AZ assumed
   but single-AZ subnets in practice, no plan for a whole-account compromise or
   provider outage.
-- **Documentation** — no restore runbook, or one referencing renamed
+- **Documentation** — no restore [runbook](../runbook/SKILL.md), or one referencing renamed
   resources/retired tooling; recovery knowledge held by one person.
-  (Runbook drafting: `/runbook`.)
+  ([Runbook](../runbook/SKILL.md) drafting: `/[runbook](../runbook/SKILL.md)`.)
 
 ### Phase 3 — Vet, prioritize, confirm
 
@@ -148,12 +148,12 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/terraform-review` — where backup, retention, and protection settings are declared.
-- `/db-review` — PITR, migration safety, and the data-loss paths inside the database.
-- `/security-review` — backup credential scoping, immutability, ransomware resilience.
+- `/[terraform-review](../../Infrastructure_as_Code/terraform-review/SKILL.md)` — where backup, retention, and protection settings are declared.
+- `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — PITR, migration safety, and the data-loss paths inside the database.
+- `/[security-review](../../../Security/security-review/SKILL.md)` — backup credential scoping, immutability, ransomware resilience.
 - `/cost` — retention is a spend/recovery trade-off; decide it here, price it there.
-- `/runbook` — turn the restore procedure into an on-call-ready document.
-- `/incident` — if data is being lost right now, use that skill first.
+- `/[runbook](../runbook/SKILL.md)` — turn the restore procedure into an on-call-ready document.
+- `/[incident](../incident/SKILL.md)` — if data is being lost right now, use that skill first.
 
 ## Before you finish
 
@@ -165,7 +165,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
       not just backup existence.
 - [ ] Recovery dependencies (KMS keys, IaC state, DNS, registries, secrets) were
       inventoried, not just the primary datastore.
-- [ ] Backup-job *failure* alerting was checked — silent failure is the default.
+- [ ] Backup-job *failure* [alerting](../alerting/SKILL.md) was checked — silent failure is the default.
 - [ ] Every drill plan restores into an isolated target with a STOP condition
       protecting production.
 

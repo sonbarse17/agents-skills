@@ -8,7 +8,7 @@ metadata:
   package: '@azure/ai-projects'
 ---
 
-# Azure AI Projects SDK for TypeScript
+# Azure AI Projects SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 High-level SDK for Azure AI Foundry projects with agents, connections, deployments, and evaluations.
 
@@ -20,7 +20,7 @@ npm install @azure/ai-projects @azure/identity
 
 For tracing:
 ```bash
-npm install @azure/monitor-opentelemetry @opentelemetry/api
+npm install @azure/monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) @[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)/api
 ```
 
 ## Environment Variables
@@ -33,7 +33,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AIProjectClient } from "@azure/ai-projects";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -63,7 +63,7 @@ const client = new AIProjectClient(
 
 ## Getting OpenAI Client
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const openAIClient = await client.getOpenAIClient();
 
 // Use for responses
@@ -82,7 +82,7 @@ const conversation = await openAIClient.conversations.create({
 
 ### Create Agent
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const agent = await client.agents.createVersion("my-agent", {
   kind: "prompt",
   model: "gpt-4o",
@@ -92,7 +92,7 @@ const agent = await client.agents.createVersion("my-agent", {
 
 ### Agent with Tools
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Code Interpreter
 const agent = await client.agents.createVersion("code-agent", {
   kind: "prompt",
@@ -168,7 +168,7 @@ const agent = await client.agents.createVersion("mcp-agent", {
 
 ### Run Agent
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const openAIClient = await client.getOpenAIClient();
 
 // Create conversation
@@ -189,7 +189,7 @@ await client.agents.deleteVersion(agent.name, agent.version);
 
 ## Connections
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // List all connections
 for await (const conn of client.connections.list()) {
   console.log(conn.name, conn.type);
@@ -207,7 +207,7 @@ const defaultAzureOpenAI = await client.connections.getDefault("AzureOpenAI", tr
 
 ## Deployments
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // List all deployments
 for await (const deployment of client.deployments.list()) {
   if (deployment.type === "ModelDeployment") {
@@ -226,7 +226,7 @@ const deployment = await client.deployments.get("gpt-4o");
 
 ## Datasets
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Upload single file
 const dataset = await client.datasets.uploadFile(
   "my-dataset",
@@ -255,7 +255,7 @@ await client.datasets.delete("my-dataset", "1.0");
 
 ## Indexes
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AzureAISearchIndex } from "@azure/ai-projects";
 
 const indexConfig: AzureAISearchIndex = {
@@ -280,7 +280,7 @@ await client.indexes.delete("my-index", "1");
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   AIProjectClient,
   AIProjectClientOptionalParams,

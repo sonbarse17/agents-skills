@@ -16,25 +16,25 @@ Centralize and analyze logs with Elasticsearch, Logstash, and Kibana.
 Use this skill when:
 - Centralizing logs from multiple sources
 - Building log search and analytics platforms
-- Creating log-based dashboards and alerts
+- Creating log-based [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
 - Implementing full-text search for logs
 - Processing and transforming log data
 
 ## Prerequisites
 
-- Docker or server infrastructure
+- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or server infrastructure
 - Sufficient disk space for log storage
 - Network access from log sources
 
-## Docker Deployment
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
 
 ```yaml
-# docker-compose.yml
+# [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: '3.8'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/elasticsearch/elasticsearch:8.11.0
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -45,7 +45,7 @@ services:
       - elasticsearch-data:/usr/share/elasticsearch/data
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:8.11.0
+    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/logstash/logstash:8.11.0
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
       - ./logstash/config:/usr/share/logstash/config
@@ -56,7 +56,7 @@ services:
       - elasticsearch
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.11.0
+    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/kibana/kibana:8.11.0
     ports:
       - "5601:5601"
     environment:
@@ -65,12 +65,12 @@ services:
       - elasticsearch
 
   filebeat:
-    image: docker.elastic.co/beats/filebeat:8.11.0
+    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/beats/filebeat:8.11.0
     user: root
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:ro
+      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:ro
     depends_on:
       - logstash
 
@@ -251,10 +251,10 @@ filter {
 filebeat.inputs:
   - type: container
     paths:
-      - '/var/lib/docker/containers/*/*.log'
+      - '/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers/*/*.log'
     processors:
       - add_docker_metadata:
-          host: "unix:///var/run/docker.sock"
+          host: "unix:///var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock"
 
   - type: log
     enabled: true
@@ -308,7 +308,7 @@ GET logs-*/_search
         { "range": { "@timestamp": { "gte": "now-1h" } } }
       ],
       "filter": [
-        { "term": { "service": "api-gateway" } }
+        { "term": { "service": "[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)" } }
       ]
     }
   }
@@ -361,7 +361,7 @@ GET logs-*/_search
 
 Create saved searches for common queries:
 - `level:ERROR` - All errors
-- `service:api-gateway AND level:ERROR` - API gateway errors
+- `service:[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md) AND level:ERROR` - API gateway errors
 - `response_time:>1000` - Slow requests
 
 ### Visualizations
@@ -381,7 +381,7 @@ Create dashboard with:
 4. Recent errors (Data table)
 5. Log stream (Discover panel)
 
-## Alerting
+## [Alerting](../alerting/SKILL.md)
 
 ### Watcher (X-Pack)
 
@@ -457,6 +457,6 @@ PUT _watcher/watch/error_alert
 
 ## Related Skills
 
-- [loki-logging](../loki-logging/) - Alternative logging stack
-- [prometheus-grafana](../prometheus-grafana/) - Metrics monitoring
-- [audit-logging](../../../compliance/auditing/audit-logging/) - Compliance logging
+- [loki-logging](../[loki-logging](../loki-logging/SKILL.md)/) - Alternative logging stack
+- [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Metrics [monitoring](../monitoring/SKILL.md)
+- [audit-logging](../../../compliance/auditing/[audit-logging](../[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md)/) - Compliance logging

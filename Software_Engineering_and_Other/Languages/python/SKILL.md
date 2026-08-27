@@ -30,7 +30,7 @@ Keywords: `python build`, `pip`, `poetry`, `uv`, `pyproject.toml`, `venv`, `mypy
 - Project type (CLI tool, web API, data pipeline, library)
 - Build system (setuptools, poetry, pdm, uv)
 - Python version requirements
-- Deployment target (serverless, container, VPS)
+- Deployment target ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), container, VPS)
 
 ### Output Artifact
 Build configuration, dependency management setup, project structure, test configuration, and deployment config tailored to project type.
@@ -45,7 +45,7 @@ Project type?
 │   └── Modern → hatchling / flit (fast, standards-compliant)
 ├── Application (web API, CLI tool, service)
 │   ├── Python 3.12+ → uv (fastest, unified, Rust-based)
-│   ├── Large monorepo → PDM (PEP 582, no virtualenv needed)
+│   ├── Large [monorepo](../../Frontend/monorepo/SKILL.md) → PDM (PEP 582, no virtualenv needed)
 │   └── Team standard → Poetry (lock file, dependency resolution, publish)
 └── Data science / ML → conda / mamba (binary packages, CUDA support)
 ```
@@ -53,10 +53,10 @@ Project type?
 ### Virtual Environment Strategy
 ```
 Deployment context?
-├── Containerized (Docker) → single venv in container, no system Python
+├── Containerized ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) → single venv in container, no system Python
 ├── Local development → pyenv + virtualenv / uv venv (isolated per project)
 ├── CI/CD → fresh venv per run (cache pip/uv between runs)
-└── Monorepo → PDM workspace / hatch.env per project
+└── [Monorepo](../../Frontend/monorepo/SKILL.md) → PDM workspace / hatch.env per project
 ```
 
 ### Async Framework Selection
@@ -310,9 +310,9 @@ SQLAlchemy 2.0 introduces native async support with `async_sessionmaker`. Patter
 
 For tasks that outlive the request-response cycle (email sending, image processing, report generation):
 - **FastAPI BackgroundTasks**: simple, runs after response, no persistence, lost on crash. Use for: log cleanup, cache invalidation.
-- **Celery + Redis/RabbitMQ**: persistent task queue, retries, scheduling, monitoring with Flower. Use for: email confirmation, PDF generation, webhook delivery, scheduled jobs.
+- **Celery + Redis/RabbitMQ**: persistent task queue, retries, scheduling, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Flower. Use for: email confirmation, PDF generation, webhook delivery, scheduled jobs.
 
-Celery pattern: define tasks in a `tasks/` module, separate from your API. `@shared_task(bind=True, max_retries=3, default_retry_delay=300)` allows task retry with exponential backoff. Use `self.replace()` for task chaining. Result backend: store task results in Redis for polling status. Periodic tasks: Celery Beat with `schedule` crontab. Task monitoring: `celery -A app.tasks flower --port=5555` shows task status, timing, and failures.
+Celery pattern: define tasks in a `tasks/` module, separate from your API. `@shared_task(bind=True, max_retries=3, default_retry_delay=300)` allows task retry with exponential backoff. Use `self.replace()` for task chaining. Result backend: store task results in Redis for polling status. Periodic tasks: Celery Beat with `schedule` crontab. Task [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): `celery -A app.tasks flower --port=5555` shows task status, timing, and failures.
 
 ## ASGI vs WSGI Deployment
 
@@ -320,11 +320,11 @@ Deploy ASGI apps (FastAPI, Starlette) differently than WSGI apps (Django, Flask)
 - **ASGI**: Uvicorn (single process) → Gunicorn + Uvicorn workers (multi-process) → Nginx/Traefik reverse proxy
 - **WSGI**: Gunicorn (workers) → Nginx — or uWSGI with emperor mode
 
-ASGI config: `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --limit-max-requests 10000 — for production. Docker: use `uvicorn` directly, expose port, set `--proxy-headers` and `--forwarded-allow-ips="*"` when behind nginx. Health check: add a `/health` endpoint returning 200. Graceful shutdown: `uvicorn` handles SIGTERM by waiting for in-flight requests to complete (timeout_graceful_shutdown config).
+ASGI config: `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --limit-max-requests 10000 — for production. [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): use `uvicorn` directly, expose port, set `--proxy-headers` and `--forwarded-allow-ips="*"` when behind nginx. Health check: add a `/health` endpoint returning 200. Graceful shutdown: `uvicorn` handles SIGTERM by waiting for in-flight requests to complete (timeout_graceful_shutdown config).
 
 ## Testing with Pytest Advanced Patterns
 
-Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real PostgreSQL/Redis in Docker, or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
+Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real [PostgreSQL](../../Backend/postgresql/SKILL.md)/Redis in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
 
 ## Code Examples — FastAPI with SQLAlchemy
 ```python
@@ -336,7 +336,7 @@ from contextlib import asynccontextmanager
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    engine = create_async_engine("postgresql+asyncpg://user:pass@localhost/db")
+    engine = create_async_engine("[postgresql](../../Backend/postgresql/SKILL.md)+asyncpg://user:pass@localhost/db")
     app.state.async_session = async_sessionmaker(engine, expire_on_commit=False)
     yield
     # Shutdown
@@ -381,7 +381,7 @@ async def test_create_order(async_client):
 
 ### Dependency Management Comparison
 
-| Tool | Python Req | Lock File | Speed | Virtual Env | Monorepo | Extras |
+| Tool | Python Req | Lock File | Speed | Virtual Env | [Monorepo](../../Frontend/monorepo/SKILL.md) | Extras |
 |------|-----------|-----------|-------|-------------|----------|--------|
 | pip | Any | No (pip freeze) | Slow | venv | No | Built-in |
 | pip-tools | Any | requirements.txt | Medium | venv | No | Compile + sync |
@@ -408,14 +408,14 @@ Recommendation: use `uv` for new projects (2024+), Poetry for established teams,
 ### Deployment Target Decision Tree
 ```
 Deploying a Python web app?
-├── Serverless → AWS Lambda + Mangum (FastAPI adapter)
+├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda + Mangum (FastAPI adapter)
 │   Cold start: 200-500ms (provisioned concurrency: 50ms)
 │   Limits: 10GB RAM, 15min timeout, 50MB zip + 250MB /tmp
 │   Best for: low-traffic APIs, spiky workloads
-├── Containers → Docker + ECS/GKE/Azure Containers
+├── Containers → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) + ECS/GKE/Azure Containers
 │   Use: gunicorn + uvicorn workers for ASGI, nginx sidecar for static
 │   Best for: consistent traffic, long-running connections
-├── VM / VPS → Docker Compose on single host
+├── VM / VPS → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose on single host
 │   nginx reverse proxy, Let's Encrypt SSL
 │   Best for: small teams, cost-effective at moderate scale
 └── PaaS → Railway / Render / Fly.io
@@ -495,7 +495,7 @@ class UserRepository:
         return list(result.scalars().all())
 ```
 
-### Pattern: Background Task with Celery and Monitoring
+### Pattern: Background Task with Celery and [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```python
 from celery import Celery, Task
@@ -532,11 +532,11 @@ def process_order(self, order_id: int):
 - Graceful shutdown: SIGTERM → Uvicorn stops accepting connections → waits for in-flight → exits.
 - Health checks: `/health` endpoint returning `{"status": "ok"}` with DB connectivity check.
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Prometheus metrics with `prometheus_fastapi_instrumentator`. Track: request count, latency, error rate.
 - Structured logging: `python-json-logger` with `extra` for trace_id, user_id, tenant_id.
-- Sentry for error tracking: `sentry_sdk.init()` with `traces_sample_rate=0.1`.
-- Celery monitoring: Flower dashboard. Alert on queue depth > 1000, task failure rate > 5%.
+- [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) for error tracking: `sentry_sdk.init()` with `traces_sample_rate=0.1`.
+- Celery [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Flower dashboard. Alert on queue depth > 1000, task failure rate > 5%.
 
 ## Anti-Patterns
 
@@ -564,7 +564,7 @@ def process_order(self, order_id: int):
 - SQLAlchemy parameterized queries: `session.execute(select(User).where(User.id == user_id))`. Never f-strings.
 - JWT: `python-jose` with RS256. Validate `aud`, `iss`, `exp`, `iat`. Reject `alg: none`.
 - Password hashing: `bcrypt` or `argon2-cffi`. Minimum 12 rounds for bcrypt.
-- Secrets: pydantic-settings with `.env` file. Never commit `.env` to version control.
+- Secrets: pydantic-settings with `.env` file. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.env` to version control.
 - CORS: FastAPI `CORSMiddleware` with explicit `allow_origins`. Never `["*"]` in production.
 - Rate limiting: `slowapi` with in-memory or Redis backend. Apply to auth and write endpoints.
 - Input validation: Pydantic models on all API endpoints. Strip HTML with `markupsafe`.

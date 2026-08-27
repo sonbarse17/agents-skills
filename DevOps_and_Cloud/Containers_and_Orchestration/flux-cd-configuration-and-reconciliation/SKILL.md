@@ -21,9 +21,9 @@ metadata:
 
 ## Purpose
 
-Flux CD implements the same GitOps pull-based reconciliation model
+Flux CD implements the same [GitOps](../gitops/SKILL.md) pull-based reconciliation model
 covered generically in
-[gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) —
+[gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) —
 Git as source of truth, an in-cluster controller converging live state
 toward it — but with its own distinct CRD-based architecture: a
 `GitRepository`/`OCIRepository`/`HelmRepository` source object declares
@@ -34,10 +34,10 @@ enough from Argo CD's single `Application` CRD that the two aren't
 interchangeable one-for-one, and Flux's source/reconciler split is what
 lets one `GitRepository` back multiple independent `Kustomization`s
 reconciling at different paths and intervals. This skill goes deep on
-Flux's specific CRDs and reconciliation behavior; for GitOps concepts
+Flux's specific CRDs and reconciliation behavior; for [GitOps](../gitops/SKILL.md) concepts
 that apply to both Flux and Argo CD (repo topology, secrets handling,
 rollback-by-revert), see
-[gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)
+[gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
 rather than expecting them repeated here.
 
 ## When to use
@@ -54,43 +54,43 @@ rather than expecting them repeated here.
 - Diagnosing a `Kustomization` or `HelmRelease` stuck `False` on
   `Ready`, or one that reconciles successfully but the cluster still
   doesn't match Git.
-- Choosing Flux over Argo CD (or the reverse) for a new GitOps rollout.
+- Choosing Flux over Argo CD (or the reverse) for a new [GitOps](../gitops/SKILL.md) rollout.
 
 ## Prerequisites & environment
 
-- A Kubernetes cluster ≥ 1.26 and the Flux CLI/controllers ≥ v2.3
+- A [Kubernetes](../kubernetes/SKILL.md) cluster ≥ 1.26 and the Flux CLI/controllers ≥ v2.3
   (Flux v1 is end-of-life — do not start a new deployment on it; see
-  [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)'s
+  [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)'s
   Prerequisites for the same warning stated generically).
 - `flux` CLI installed and cluster-admin (or sufficiently scoped)
   access for the initial bootstrap; ongoing operation only needs
   namespace-scoped RBAC matching what each `Kustomization`/`HelmRelease`
   actually manages.
 - A Git repository (or OCI registry, for `OCIRepository` sources) Flux
-  can authenticate to — a deploy key or a token stored as a Kubernetes
+  can authenticate to — a deploy key or a token stored as a [Kubernetes](../kubernetes/SKILL.md)
   `Secret`, never embedded in a CRD spec.
-- Kustomize ≥ 5.0 (bundled into the `kustomize-controller`) or Helm ≥
+- [Kustomize](../kustomize/SKILL.md) ≥ 5.0 (bundled into the `[kustomize](../kustomize/SKILL.md)-controller`) or Helm ≥
   3.x (for `HelmRelease`) knowledge — this skill assumes familiarity
-  with Kustomize overlays as covered in
-  [kustomize-overlay-management](../kustomize-overlay-management/SKILL.md)
+  with [Kustomize](../kustomize/SKILL.md) overlays as covered in
+  [kustomize-overlay-management](../[kustomize-overlay-management](../../../Software_Engineering_and_Other/Frontend/[kustomize](../kustomize/SKILL.md)-overlay-management/SKILL.md)/SKILL.md)
   and Helm chart structure as covered in
-  [helm-chart-authoring](../helm-chart-authoring/SKILL.md).
+  [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md).
 - A secrets strategy decided before rollout (SOPS with age/GPG,
   External Secrets Operator, Sealed Secrets) — Flux integrates
   particularly well with SOPS via native decryption support in
-  `kustomize-controller`, but the underlying rule ("never commit
+  `[kustomize](../kustomize/SKILL.md)-controller`, but the underlying rule ("never [commit](../../CI_CD/commit/SKILL.md)
   plaintext Secrets") is unchanged from
-  [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md).
+  [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
 1. **Bootstrap Flux onto the cluster**, which installs the controllers
    and commits their manifests back into the target repo (so Flux's
-   own installation is itself GitOps-managed):
+   own installation is itself [GitOps](../gitops/SKILL.md)-managed):
    ```bash
-   flux bootstrap github \
+   flux bootstrap [github](../../CI_CD/github/SKILL.md) \
      --owner=example-org \
-     --repository=gitops-config \
+     --repository=[gitops](../gitops/SKILL.md)-config \
      --branch=main \
      --path=clusters/prod \
      --personal=false
@@ -98,7 +98,7 @@ rather than expecting them repeated here.
    This creates a deploy key (or uses a provided token) for repo
    access, and writes Flux's own component manifests plus a root
    `Kustomization` under `clusters/prod/flux-system/` — future Flux
-   upgrades happen by re-running bootstrap, not manual `kubectl apply`.
+   upgrades happen by re-running bootstrap, not manual `[kubectl](../kubectl/SKILL.md) apply`.
 
 2. **Define a `GitRepository` source** pointing at the config repo,
    pinned to a branch or (for stricter environments) a tag:
@@ -106,15 +106,15 @@ rather than expecting them repeated here.
    apiVersion: source.toolkit.fluxcd.io/v1
    kind: GitRepository
    metadata:
-     name: gitops-config
+     name: [gitops](../gitops/SKILL.md)-config
      namespace: flux-system
    spec:
      interval: 1m
-     url: https://github.com/example-org/gitops-config
+     url: https://[github](../../CI_CD/github/SKILL.md).com/example-org/[gitops](../gitops/SKILL.md)-config
      ref:
        branch: main
      secretRef:
-       name: gitops-config-auth
+       name: [gitops](../gitops/SKILL.md)-config-auth
    ```
    `interval` controls how often Flux polls the source for new
    commits — shorter intervals mean faster propagation but more load
@@ -124,7 +124,7 @@ rather than expecting them repeated here.
 3. **Define a `Kustomization` reconciling a specific path** from that
    source into the cluster:
    ```yaml
-   apiVersion: kustomize.toolkit.fluxcd.io/v1
+   apiVersion: [kustomize](../kustomize/SKILL.md).toolkit.fluxcd.io/v1
    kind: Kustomization
    metadata:
      name: payments-api-prod
@@ -133,7 +133,7 @@ rather than expecting them repeated here.
      interval: 5m
      sourceRef:
        kind: GitRepository
-       name: gitops-config
+       name: [gitops](../gitops/SKILL.md)-config
      path: "./apps/payments-api/overlays/prod"
      prune: true
      wait: true
@@ -147,7 +147,7 @@ rather than expecting them repeated here.
    `prune: true` deletes cluster resources whose manifest was removed
    from the path — powerful and, as in Argo CD, worth enabling
    deliberately rather than by default without thinking about it (see
-   [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)
+   [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
    Best practices for the same caution). `wait: true` plus
    `healthChecks` makes the `Kustomization` block on the Deployment
    actually becoming healthy, not just on the apply succeeding.
@@ -157,7 +157,7 @@ rather than expecting them repeated here.
    out — critical when one Kustomization installs CRDs/namespaces
    another depends on:
    ```yaml
-   apiVersion: kustomize.toolkit.fluxcd.io/v1
+   apiVersion: [kustomize](../kustomize/SKILL.md).toolkit.fluxcd.io/v1
    kind: Kustomization
    metadata:
      name: payments-api-prod
@@ -217,29 +217,29 @@ rather than expecting them repeated here.
    in a CI pipeline doesn't have by default.
 
 6. **Wire CI to update the config repo, not the cluster** — the same
-   core GitOps inversion as
-   [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md)
+   core [GitOps](../gitops/SKILL.md) inversion as
+   [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)
    describes generically: application CI bumps an image tag or chart
-   version in the `gitops-config` repo; `source-controller` and
-   `kustomize-controller`/`helm-controller` perform the actual cluster
+   version in the `[gitops](../gitops/SKILL.md)-config` repo; `source-controller` and
+   `[kustomize](../kustomize/SKILL.md)-controller`/`helm-controller` perform the actual cluster
    apply, never the CI pipeline directly.
 
 7. **Force an immediate reconciliation** when waiting for the next
    poll interval isn't acceptable (e.g. right after merging an urgent
    fix):
    ```bash
-   flux reconcile source git gitops-config
+   flux reconcile source git [gitops](../gitops/SKILL.md)-config
    flux reconcile kustomization payments-api-prod --with-source
    ```
    `--with-source` reconciles the `GitRepository` first, then the
    `Kustomization`, in one command — otherwise the `Kustomization`
    might reconcile against a source that hasn't picked up the latest
-   commit yet.
+   [commit](../../CI_CD/commit/SKILL.md) yet.
 
 8. **Roll back by reverting Git**, exactly as in the vendor-neutral
    workflow, then confirm via Flux's own status rather than assuming:
    ```bash
-   git revert <bad-commit-sha> && git push
+   git revert <bad-[commit](../../CI_CD/commit/SKILL.md)-sha> && git push
    flux reconcile kustomization payments-api-prod --with-source
    flux get kustomizations payments-api-prod
    ```
@@ -255,7 +255,7 @@ rather than expecting them repeated here.
 - Use `dependsOn` for any real ordering requirement (CRDs before
   instances, namespaces before workloads) instead of tuning intervals
   to "usually" land in the right order — interval-based ordering is
-  a race condition waiting to surface during an incident.
+  a race condition waiting to surface during an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 - Set `wait: true` with `healthChecks` on `Kustomization`s whose
   success genuinely depends on the workload becoming healthy, not just
   on the API server accepting the manifest — an apply that "succeeds"
@@ -267,11 +267,11 @@ rather than expecting them repeated here.
   consistently across every `HelmRelease`, and doesn't require the CI
   pipeline to hold cluster-apply credentials.
 - Use SOPS-encrypted Secrets committed directly to the config repo
-  (Flux's `kustomize-controller` supports native decryption via a
+  (Flux's `[kustomize](../kustomize/SKILL.md)-controller` supports native decryption via a
   configured age/GPG key) as a lower-friction alternative to Sealed
   Secrets when the team is already comfortable with SOPS — either is
   acceptable per the secrets guidance in
-  [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md);
+  [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md);
   don't invent a third, ad hoc mechanism.
 - Structure one `Kustomization` per logically-independent unit of
   change (per app per environment, generally), not one giant
@@ -286,9 +286,9 @@ rather than expecting them repeated here.
   **Fix:** Check `spec.path` against the source's actual directory
   structure at the pinned `ref` — a path that exists on a different
   branch than the one `GitRepository.spec.ref.branch` points to, or a
-  typo in the path, fails at the kustomize-build step before any apply
+  typo in the path, fails at the [kustomize](../kustomize/SKILL.md)-build step before any apply
   is attempted. `flux get kustomizations payments-api-prod` and
-  `kubectl describe kustomization payments-api-prod -n flux-system`
+  `[kubectl](../kubectl/SKILL.md) describe kustomization payments-api-prod -n flux-system`
   surface the specific build error, not just a generic failure.
 
 - **Symptom:** A `Kustomization` shows `Ready: True` and the reconcile
@@ -325,14 +325,14 @@ rather than expecting them repeated here.
 
 - **Symptom:** `prune: true` on a `Kustomization` unexpectedly deletes a
   resource that was still needed, because it was removed from the
-  Kustomize path during a refactor rather than an intentional removal.
+  [Kustomize](../kustomize/SKILL.md) path during a refactor rather than an intentional removal.
   **Fix:** This is the destructive side of `prune: true` working
   exactly as configured, not a bug — treat any restructuring of a
   pruning-enabled Kustomization's path (moving a resource to a
   different overlay, renaming a base) as a change requiring the same
   care as an intentional deletion, and consider `flux diff kustomization`
   (or a CI-based dry-run per
-  [flux-cd-configuration-validation](../flux-cd-configuration-validation/SKILL.md))
+  [flux-cd-configuration-validation](../[flux-cd-configuration-validation](../flux-cd-configuration-validation/SKILL.md)/SKILL.md))
   before merging a refactor that touches a pruning-enabled path.
 
 ## Worked example
@@ -342,26 +342,26 @@ app's manifests depend on a CRD installed by a separate infra
 Kustomization, and a Redis `HelmRelease` the app also depends on.
 
 ```bash
-flux bootstrap github --owner=example-org --repository=gitops-config --branch=main --path=clusters/prod
+flux bootstrap [github](../../CI_CD/github/SKILL.md) --owner=example-org --repository=[gitops](../gitops/SKILL.md)-config --branch=main --path=clusters/prod
 ```
 
 ```yaml
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
-metadata: { name: gitops-config, namespace: flux-system }
+metadata: { name: [gitops](../gitops/SKILL.md)-config, namespace: flux-system }
 spec:
   interval: 1m
-  url: https://github.com/example-org/gitops-config
+  url: https://[github](../../CI_CD/github/SKILL.md).com/example-org/[gitops](../gitops/SKILL.md)-config
   ref: { branch: main }
 ```
 
 ```yaml
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: [kustomize](../kustomize/SKILL.md).toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata: { name: infra-crds-prod, namespace: flux-system }
 spec:
   interval: 10m
-  sourceRef: { kind: GitRepository, name: gitops-config }
+  sourceRef: { kind: GitRepository, name: [gitops](../gitops/SKILL.md)-config }
   path: "./infra/crds/prod"
   prune: true
   wait: true
@@ -382,12 +382,12 @@ spec:
 ```
 
 ```yaml
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: [kustomize](../kustomize/SKILL.md).toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata: { name: payments-api-prod, namespace: flux-system }
 spec:
   interval: 5m
-  sourceRef: { kind: GitRepository, name: gitops-config }
+  sourceRef: { kind: GitRepository, name: [gitops](../gitops/SKILL.md)-config }
   path: "./apps/payments-api/overlays/prod"
   prune: true
   wait: true
@@ -405,12 +405,12 @@ race. After merging a version bump, `flux reconcile kustomization
 payments-api-prod --with-source` confirms the new version rolls out
 immediately, and `flux get kustomizations` shows all three resources
 `Ready: True` with their last-applied revision matching the latest
-commit SHA.
+[commit](../../CI_CD/commit/SKILL.md) SHA.
 
 ## Cross-references
 
-- [gitops-workflow](../../../devops/skills/gitops-workflow/SKILL.md) — vendor-neutral GitOps concepts (repo topology, secrets strategy, rollback-by-revert) this skill implements in Flux-specific terms; read that first if new to GitOps generally.
-- [flux-cd-configuration-validation](../flux-cd-configuration-validation/SKILL.md) — dry-run/diff validation of Kustomizations and HelmReleases before they reconcile against a live cluster.
-- [kustomize-overlay-management](../kustomize-overlay-management/SKILL.md) — designing the overlay structure Flux's `Kustomization` `path` points at.
-- [helm-chart-authoring](../helm-chart-authoring/SKILL.md) — authoring the charts a `HelmRelease` deploys.
-- [argocd-application-configuration](../../../gitops-argo-ecosystem/skills/argocd-application-configuration/SKILL.md) — the equivalent CRD-level configuration on the other major GitOps operator, for comparison when choosing between the two.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — vendor-neutral [GitOps](../gitops/SKILL.md) concepts (repo topology, secrets strategy, rollback-by-revert) this skill implements in Flux-specific terms; read that first if new to [GitOps](../gitops/SKILL.md) generally.
+- [flux-cd-configuration-validation](../[flux-cd-configuration-validation](../flux-cd-configuration-validation/SKILL.md)/SKILL.md) — dry-run/diff validation of Kustomizations and HelmReleases before they reconcile against a live cluster.
+- [kustomize-overlay-management](../[kustomize-overlay-management](../../../Software_Engineering_and_Other/Frontend/[kustomize](../kustomize/SKILL.md)-overlay-management/SKILL.md)/SKILL.md) — designing the overlay structure Flux's `Kustomization` `path` points at.
+- [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — authoring the charts a `HelmRelease` deploys.
+- [argocd-application-configuration](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — the equivalent CRD-level configuration on the other major [GitOps](../gitops/SKILL.md) operator, for comparison when choosing between the two.

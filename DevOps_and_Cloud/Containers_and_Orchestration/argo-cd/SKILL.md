@@ -24,21 +24,21 @@ tags: [devops, gitops, argocd, kubernetes, phase-5]
 # Argo CD
 
 ## Purpose
-Implement GitOps workflows using Argo CD for Kubernetes deployments with sync strategies, application sets, multi-cluster management, and security best practices.
+Implement [GitOps](../gitops/SKILL.md) workflows using Argo CD for [Kubernetes](../kubernetes/SKILL.md) deployments with sync strategies, application sets, multi-cluster management, and security best practices.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "ArgoCD", "Argo CD", "GitOps", "ApplicationSet", "Sync Policy", "Sync Wave", "argocd CLI", "Declarative GitOps", "Progressive Delivery", "Rollback".
+Exact user phrases: "[ArgoCD](../argocd/SKILL.md)", "Argo CD", "[GitOps](../gitops/SKILL.md)", "ApplicationSet", "Sync Policy", "Sync Wave", "[argocd](../argocd/SKILL.md) CLI", "Declarative [GitOps](../gitops/SKILL.md)", "Progressive Delivery", "Rollback".
 
 ### Input Context
 Before activating, verify:
 - Argo CD version (2.4+ for ApplicationSets, 2.8+ for complex features).
 - Number of clusters (single vs multi-cluster management).
-- Git provider (GitHub, GitLab, Bitbucket — affects webhook config).
+- Git provider ([GitHub](../../CI_CD/github/SKILL.md), GitLab, Bitbucket — affects webhook config).
 - Authentication method (local admin, SSO with OIDC, Dex).
 - Environment structure (dev/staging/prod per cluster or namespace).
-- Monitoring tools (Prometheus operator for Argo CD metrics).
+- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) tools (Prometheus operator for Argo CD metrics).
 
 ### Output Artifact
 Writes to Argo CD Application YAML, ApplicationSet YAML, Argo CD project config, RBAC config, and notification templates.
@@ -67,7 +67,7 @@ Direct file write. No response text.
 | Single Application | One service, one environment | Low |
 | ApplicationSet (list generator) | Same app across multiple clusters | Medium |
 | ApplicationSet (git generator) | One app per directory in repo | Medium |
-| ApplicationSet (SCM generator) | One app per GitHub repo in org | High |
+| ApplicationSet (SCM generator) | One app per [GitHub](../../CI_CD/github/SKILL.md) repo in org | High |
 | Multi-source Application | App config + overlay config separately | Medium |
 | App of Apps pattern | Deploying multiple related applications | High |
 
@@ -86,7 +86,7 @@ Direct file write. No response text.
 | List | Simple list of clusters/values | Dev, staging, prod clusters |
 | Git | One directory per environment | apps/prod/*, apps/staging/* |
 | Cluster | All registered clusters | Deploy to every cluster |
-| SCM (GitHub) | All repos in an org | One Application per microservice |
+| SCM ([GitHub](../../CI_CD/github/SKILL.md)) | All repos in an org | One Application per microservice |
 | Pull Request | Preview environments per PR | Ephemeral review apps |
 | Matrix | Combining multiple generators | Cluster × Environment |
 
@@ -96,7 +96,7 @@ Direct file write. No response text.
 | Local admin | Simple, no dependencies | No MFA, shared credentials |
 | OIDC (Google, Okta, Azure AD) | SSO, MFA, group sync | OIDC provider required |
 | Dex | Multi-provider, LDAP | Additional component to manage |
-| GitHub OAuth | Simple for small teams | Only GitHub users |
+| [GitHub](../../CI_CD/github/SKILL.md) OAuth | Simple for small teams | Only [GitHub](../../CI_CD/github/SKILL.md) users |
 
 ## Quick Start
 Install Argo CD → Register target cluster → Define Application YAML → Sync → Configure RBAC → Set up webhook → Add notifications.
@@ -105,20 +105,20 @@ Install Argo CD → Register target cluster → Define Application YAML → Sync
 
 ### Step 1: Argo CD Installation
 ```yaml
-# install/argocd-install.yaml
+# install/[argocd](../argocd/SKILL.md)-install.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: argocd
+  name: [argocd](../argocd/SKILL.md)
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-cm
-  namespace: argocd
+  name: [argocd](../argocd/SKILL.md)-cm
+  namespace: [argocd](../argocd/SKILL.md)
 data:
   # SSO configuration (OIDC example)
-  url: https://argocd.example.com
+  url: https://[argocd](../argocd/SKILL.md).example.com
   oidc.config: |
     name: Okta
     issuer: https://dev-123456.okta.com
@@ -128,9 +128,9 @@ data:
     requestedIDTokenClaims: {"groups": {"essential": true}}
   # Repository configuration
   repositories: |
-    - url: https://github.com/myorg/gitops-config
+    - url: https://[github](../../CI_CD/github/SKILL.md).com/myorg/[gitops](../gitops/SKILL.md)-config
       passwordSecret:
-        name: github-token
+        name: [github](../../CI_CD/github/SKILL.md)-token
         key: token
   # Resource customization
   resource.customizations: |
@@ -143,8 +143,8 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
+  name: [argocd](../argocd/SKILL.md)-rbac-cm
+  namespace: [argocd](../argocd/SKILL.md)
 data:
   policy.default: role:readonly
   policy.csv: |
@@ -159,9 +159,9 @@ data:
     g, myorg/dev-team, role:dev
 
 # Install with:
-# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-# kubectl apply -n argocd -f argocd-cm.yaml
-# kubectl apply -n argocd -f argocd-rbac-cm.yaml
+# [kubectl](../kubectl/SKILL.md) apply -n [argocd](../argocd/SKILL.md) -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# [kubectl](../kubectl/SKILL.md) apply -n [argocd](../argocd/SKILL.md) -f [argocd](../argocd/SKILL.md)-cm.yaml
+# [kubectl](../kubectl/SKILL.md) apply -n [argocd](../argocd/SKILL.md) -f [argocd](../argocd/SKILL.md)-rbac-cm.yaml
 ```
 
 ### Step 2: Basic Application Definition
@@ -171,25 +171,25 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: payment-service
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
   finalizers:
-    - resources-finalizer.argocd.argoproj.io  # Cascade delete
+    - resources-finalizer.[argocd](../argocd/SKILL.md).argoproj.io  # Cascade delete
 spec:
   project: default
   source:
-    repoURL: https://github.com/myorg/payment-service.git
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/myorg/payment-service.git
     targetRevision: main
-    path: kubernetes/overlays/production
+    path: [kubernetes](../kubernetes/SKILL.md)/overlays/production
     helm:
       valueFiles:
         - values-prod.yaml
       parameters:
         - name: replicaCount
           value: "3"
-    kustomize:
+    [kustomize](../kustomize/SKILL.md):
       namePrefix: prod-
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: payment-system
   syncPolicy:
     automated:
@@ -213,15 +213,15 @@ spec:
       kind: Deployment
       jsonPointers:
         - /spec/replicas  # Ignore replica count drift from HPA
-    - group: autoscaling
+    - group: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
       kind: HorizontalPodAutoscaler
       jsonPointers:
         - /spec/metrics  # HPA may have different metrics
   info:
     - name: Slack Channel
       value: "#team-payments"
-    - name: Runbook
-      value: "https://runbook.example.com/payment-service"
+    - name: [Runbook](../../Observability_and_SecOps/runbook/SKILL.md)
+      value: "https://[runbook](../../Observability_and_SecOps/runbook/SKILL.md).example.com/payment-service"
 ```
 
 ### Step 3: ApplicationSet with Git Generator
@@ -231,12 +231,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-apps
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   generators:
     # Git generator — one Application per directory in apps/
     - git:
-        repoURL: https://github.com/myorg/gitops-config.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/myorg/[gitops](../gitops/SKILL.md)-config.git
         revision: HEAD
         directories:
           - path: apps/production/*
@@ -249,11 +249,11 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/myorg/{{path.basename}}.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/myorg/{{path.basename}}.git
         targetRevision: main
-        path: kubernetes/overlays/{{path[1]}}
+        path: [kubernetes](../kubernetes/SKILL.md)/overlays/{{path[1]}}
       destination:
-        server: https://kubernetes.default.svc
+        server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
         namespace: '{{path.basename}}'
       syncPolicy:
         automated:
@@ -270,7 +270,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: multi-cluster-apps
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   generators:
     - matrix:
@@ -297,9 +297,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/myorg/{{app}}.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/myorg/{{app}}.git
         targetRevision: main
-        path: kubernetes/overlays/{{metadata.labels.environment}}
+        path: [kubernetes](../kubernetes/SKILL.md)/overlays/{{metadata.labels.environment}}
       destination:
         server: '{{server}}'
         namespace: '{{app}}'
@@ -317,7 +317,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-10"
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-10"
 ...
 ---
 # Wave -5: Namespace and RBAC
@@ -325,7 +325,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-5"
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-5"
 ...
 ---
 # Wave 0: ConfigMaps and Secrets (app config)
@@ -333,7 +333,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "0"
 ...
 ---
 # Wave 1: Database migration Job
@@ -341,8 +341,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/hook: Sync  # Run on every sync
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "1"
+    [argocd](../argocd/SKILL.md).argoproj.io/hook: Sync  # Run on every sync
 spec:
   template:
     spec:
@@ -362,7 +362,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "2"
 spec:
   replicas: 3
 ...
@@ -372,7 +372,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "3"
 ...
 ```
 
@@ -452,12 +452,12 @@ spec:
 
 ### Step 7: Notifications
 ```yaml
-# argocd-notifications-cm.yaml
+# [argocd](../argocd/SKILL.md)-notifications-cm.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-notifications-cm
-  namespace: argocd
+  name: [argocd](../argocd/SKILL.md)-notifications-cm
+  namespace: [argocd](../argocd/SKILL.md)
 data:
   context: |
     region: us-east-1
@@ -496,7 +496,7 @@ data:
 
   service.slack: |
     token: $slack-token
-    username: ArgoCD Bot
+    username: [ArgoCD](../argocd/SKILL.md) Bot
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
 ```
 
@@ -504,21 +504,21 @@ data:
 ```bash
 # Add a remote cluster to Argo CD
 # On the remote cluster:
-SERVICE_ACCOUNT_NAME=argocd-manager
+SERVICE_ACCOUNT_NAME=[argocd](../argocd/SKILL.md)-manager
 NAMESPACE=kube-system
 
-kubectl create sa $SERVICE_ACCOUNT_NAME -n $NAMESPACE
-kubectl create clusterrolebinding $SERVICE_ACCOUNT_NAME \
+[kubectl](../kubectl/SKILL.md) create sa $SERVICE_ACCOUNT_NAME -n $NAMESPACE
+[kubectl](../kubectl/SKILL.md) create clusterrolebinding $SERVICE_ACCOUNT_NAME \
   --clusterrole=cluster-admin \
   --serviceaccount=$NAMESPACE:$SERVICE_ACCOUNT_NAME
 
 # Get the secret token
-SECRET=$(kubectl get sa $SERVICE_ACCOUNT_NAME -n $NAMESPACE -o jsonpath='{.secrets[0].name}')
-TOKEN=$(kubectl get secret $SECRET -n $NAMESPACE -o jsonpath='{.data.token}' | base64 -d)
-APISERVER=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
+SECRET=$([kubectl](../kubectl/SKILL.md) get sa $SERVICE_ACCOUNT_NAME -n $NAMESPACE -o jsonpath='{.secrets[0].name}')
+TOKEN=$([kubectl](../kubectl/SKILL.md) get secret $SECRET -n $NAMESPACE -o jsonpath='{.data.token}' | base64 -d)
+APISERVER=$([kubectl](../kubectl/SKILL.md) config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 
 # On Argo CD control node:
-argocd cluster add <context-name> \
+[argocd](../argocd/SKILL.md) cluster add <context-name> \
   --name=production-us-east-1 \
   --label=environment=production \
   --label=region=us-east-1
@@ -529,16 +529,16 @@ argocd cluster add <context-name> \
 | Feature | Argo CD | Flux v2 |
 |---|---|---|
 | Architecture | Controller + CLI + API | Controller-only |
-| UI | Built-in Web UI | No native UI (use Weave GitOps) |
-| ApplicationSets | Built-in (powerful generators) | Not built-in (use Kustomize) |
+| UI | Built-in Web UI | No native UI (use Weave [GitOps](../gitops/SKILL.md)) |
+| ApplicationSets | Built-in (powerful generators) | Not built-in (use [Kustomize](../kustomize/SKILL.md)) |
 | Sync mechanism | Git → desired state → apply | Git → reconcile loop |
-| Health assessment | Built-in LUA scripts | Kubernetes status |
+| Health assessment | Built-in LUA scripts | [Kubernetes](../kubernetes/SKILL.md) status |
 | SSO/SAML | OIDC, Dex, SAML | OIDC via CLI |
 | Multi-cluster | Via cluster registration | Via Kustomization targeting |
 | Argo Rollouts | Native integration | Separate Flagger |
 | Notifications | Built-in | Via Flux notification controllers |
 | Learning curve | Medium | Medium-High |
-| RBAC | Fine-grained policy | Kubernetes RBAC |
+| RBAC | Fine-grained policy | [Kubernetes](../kubernetes/SKILL.md) RBAC |
 
 ## Anti-Patterns
 
@@ -546,7 +546,7 @@ argocd cluster add <context-name> \
 Enabling `automated.prune: true` without PR review process. Prune can delete resources in bulk. Always review sync diff before production.
 
 ### Anti-Pattern 2: Direct Cluster Edits
-Engineers editing resources directly with kubectl in namespaces managed by Argo CD. Argo CD treats this as drift and will self-heal (or fail if self-heal is off).
+Engineers editing resources directly with [kubectl](../kubectl/SKILL.md) in namespaces managed by Argo CD. Argo CD treats this as drift and will self-heal (or fail if self-heal is off).
 
 ### Anti-Pattern 3: Single Monolithic Repository
 Putting all environments and apps in one repo without structure. Use separate repos per service or well-organized directories with ApplicationSet.
@@ -566,14 +566,14 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 - Enable SSO with OIDC and MFA — never use shared admin password.
 - Restrict cluster access: only Argo CD control plane needs `cluster-admin`.
 - Use webhook secrets to validate git provider requests.
-- Disable `argocd admin` initial password; rotate immediately.
-- Enable audit logging for all Argo CD operations.
+- Disable `[argocd](../argocd/SKILL.md) admin` initial password; rotate immediately.
+- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all Argo CD operations.
 - Use network policies to restrict Argo CD component communication.
 
 ### High Availability
-- Deploy Argo CD with multiple replicas (argocd-server, argocd-repo-server).
-- Use Redis HA for argocd-server session storage.
-- Configure argocd-repo-server parallelism for large repos.
+- Deploy Argo CD with multiple replicas ([argocd](../argocd/SKILL.md)-server, [argocd](../argocd/SKILL.md)-repo-server).
+- Use Redis HA for [argocd](../argocd/SKILL.md)-server session storage.
+- Configure [argocd](../argocd/SKILL.md)-repo-server parallelism for large repos.
 - Monitor Argo CD itself (metrics on port 8083/metrics).
 
 ### Disaster Recovery
@@ -592,25 +592,25 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 
 | Issue | Likely Cause | Solution |
 |---|---|---|
-| OutOfSync (drift) | Manual kubectl edit | Revert manual changes; enable self-heal |
+| OutOfSync (drift) | Manual [kubectl](../kubectl/SKILL.md) edit | Revert manual changes; enable self-heal |
 | Sync stuck | CRD not installed | Verify CRDs; install missing ones |
 | Connection refused | Cluster API not accessible | Check cluster endpoint; network policies |
 | Application not found | Namespace mismatch | Verify destination namespace exists |
 | Health unknown | CRD health check missing | Add resource.customizations LUA |
 | Webhook not triggering | Secret mismatch | Verify webhook secret between Argo CD and Git |
-| Repo cloning failed | Git credentials wrong | Update repository credentials in argocd-cm |
+| Repo cloning failed | Git credentials wrong | Update repository credentials in [argocd](../argocd/SKILL.md)-cm |
 
 ## Rules & Constraints
 - All Application manifests must be in Git — never create via CLI for production.
 - Every Application must have `syncPolicy.automated.prune: true` only after review.
 - Use ApplicationSets for multi-environment or multi-cluster deployments.
-- Every sync must be testable with `argocd app diff` before applying.
-- Never edit Argo CD managed resources directly with kubectl.
+- Every sync must be testable with `[argocd](../argocd/SKILL.md) app diff` before applying.
+- Never edit Argo CD managed resources directly with [kubectl](../kubectl/SKILL.md).
 - Enable self-healing only when automated sync is enabled.
 - Configure webhook triggers for faster sync — don't rely on polling.
 - Pin targetRevision to specific branches or tags, never `HEAD` for production.
 - Define Projects to isolate teams and clusters.
-- Log all sync failures to external monitoring.
+- Log all sync failures to external [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 
 ## Output Format
 Argo CD Application/ApplicationSet YAML, Project YAML, RBAC config, notification templates.
@@ -620,13 +620,13 @@ Argo CD Application/ApplicationSet YAML, Project YAML, RBAC config, notification
   - ../../../Global_References/argo-cd-application-sets.md
   - ../../../Global_References/argo-cd-fundamentals.md
   - ../../../Global_References/argo-cd-sync-strategies.md
-  - ../../../Global_References/argocd-operations.md
+  - ../../../Global_References/[argocd-operations](../../Observability_and_SecOps/[argocd](../argocd/SKILL.md)-operations/SKILL.md).md
   - ../../../Global_References/argo-cd_argocd-patterns.md
-  - ../../../Global_References/argocd-setup.md
-  - references/argocd-rollouts-guide.md
+  - ../../../Global_References/[argocd](../argocd/SKILL.md)-setup.md
+  - references/[argocd](../argocd/SKILL.md)-rollouts-guide.md
 
 ## Handoff
 After completing this skill:
-- Next skill: **gitops** — GitOps principles, Flux comparison
+- Next skill: **[gitops](../gitops/SKILL.md)** — [GitOps](../gitops/SKILL.md) principles, Flux comparison
 - Pass context: cluster list, Application names, sync strategy, notification config
 

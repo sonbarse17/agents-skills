@@ -28,7 +28,7 @@ Keywords: `go build`, `go mod`, `goroutine`, `channel`, `interface go`, `error h
 ### Input Context
 - Project type (CLI tool, web API, microservice, library)
 - Go version
-- Module organization (monorepo vs multi-module)
+- Module organization ([monorepo](../monorepo/SKILL.md) vs multi-module)
 - Deployment target
 
 ## Decision Trees
@@ -39,7 +39,7 @@ What kind of project?
 ├── CLI tool → Single main.go + internal packages, cmd/ layout
 ├── Web API / microservice → cmd/ (entrypoints) + internal/ (private) + pkg/ (shared)
 ├── Library → Exported API surface minimal, no internal, flat or by feature
-├── Monorepo → go.work file, multiple modules, shared tooling
+├── [Monorepo](../monorepo/SKILL.md) → go.work file, multiple modules, shared tooling
 └── gRPC service → protobuf codegen in separate package, buf tool
 ```
 
@@ -68,27 +68,27 @@ Error strategy?
 
 ### Module Initialization
 ```bash
-go mod init github.com/org/myproject
+go mod init [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/myproject
 go mod tidy                # Clean dependencies
 go mod verify              # Verify checksums
-go mod download            # Pre-download for Docker
-go work init ./cmd ./pkg   # Monorepo workspace
+go mod download            # Pre-download for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+go work init ./cmd ./pkg   # [Monorepo](../monorepo/SKILL.md) workspace
 ```
 
 ### go.mod Conventions
 ```
-module github.com/org/myproject
+module [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/myproject
 
 go 1.22
 
 require (
-    github.com/gin-gonic/gin v1.9.1
+    [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/gin-gonic/gin v1.9.1
     go.uber.org/zap v1.27.0
     golang.org/x/sync v0.7.0
 )
 
 // replace directive for local development
-replace github.com/org/internal => ../internal
+replace [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/internal => ../internal
 ```
 
 ### Build Commands
@@ -208,8 +208,8 @@ if errors.Is(err, ErrNotFound) {
 ```go
 import (
     "testing"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
+    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stretchr/testify/assert"
+    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stretchr/testify/require"
 )
 
 func TestHandler(t *testing.T) {
@@ -276,7 +276,7 @@ go tool cover -html=coverage.out  # HTML report
 # Race detection
 go test -race ./...               # Always in CI
 
-# Profiling
+# [Profiling](../profiling/SKILL.md)
 pprof for CPU/memory
 trace for goroutine scheduling
 ```
@@ -295,7 +295,7 @@ trace for goroutine scheduling
 
 ## Performance Patterns
 - Use `sync.Pool` for frequently allocated temporary objects
-- Pre-allocate slices with `make([]T, 0, capacity)` to avoid reallocation
+- Pre-allocate slices with `make([]T, 0, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md))` to avoid reallocation
 - `encoding/json` vs `jsoniter` — stdlib is fast enough for most uses
 - Profile before optimizing: `pprof` CPU, `trace` for scheduling, `pprof` heap for memory
 - Use `strings.Builder` over `bytes.Buffer` for string concatenation
@@ -322,35 +322,35 @@ Use `slog` (Go 1.21+ standard library) or `zap` for structured logging with leve
 ## Production Decision Trees
 
 ```
-Observability needs?
+[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) needs?
 ├── Simple logging → slog (stdlib, no external deps)
 ├── Metrics + logging → slog + prometheus client (otel/otel)
-├── Full observability (traces, metrics, logs) → OpenTelemetry Go SDK
+├── Full [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (traces, metrics, logs) → [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Go SDK
 │   Exporter: OTLP to collector → Tempo (traces), Mimir (metrics), Loki (logs)
-└── Error tracking only → Sentry Go SDK
+└── Error tracking only → [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) Go SDK
 ```
 
 ```
 Deployment target?
-├── Docker compose / bare metal → Binary on host + systemd
+├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose / bare metal → Binary on host + systemd
 │   Build: CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/server
-├── Kubernetes → Distroless Docker image
+├── [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Distroless [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
 │   Health: /healthz and /readyz endpoints
 │   Graceful shutdown with signal handling
-├── Serverless → AWS Lambda (aws-lambda-go) / Cloud Functions
+├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda ([aws-lambda](../../../DevOps_and_Cloud/Cloud_Providers/aws-lambda/SKILL.md)-go) / Cloud Functions
 │   Stateless handlers, no long-running goroutines
 └── Edge → WASM target or tinygo for WebAssembly
 ```
 
 ```
-Module organization for monorepo?
+Module organization for [monorepo](../monorepo/SKILL.md)?
 ├── Single module → Simple, works for <100k LOC
 ├── Multi-module with go.work → Shared libraries, separate binaries
 │   go.work: use for local development only (not committed to CI)
 ├── Multi-module without go.work → Each module independent
 │   CI builds each module separately
 └── Replace directives → For local development only
-    Never commit replace directives to main branch
+    Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) replace directives to main branch
 ```
 
 ## Code Examples — HTTP Server with Middleware
@@ -593,11 +593,11 @@ func Logger(next http.Handler) http.Handler {
 - Worker pools: close input channel → `sync.WaitGroup.Wait()` → close output channel.
 - Database connections: `sql.DB.Close()` blocks until pool drained. Call in shutdown defer.
 
-### Observability
+### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - pprof endpoints: only on internal port (not exposed publicly). Restricted to admin network.
 - slog structured logging with `slog.HandlerOptions{Level: slog.LevelInfo}` in prod, `LevelDebug` in dev.
 - Metrics: Prometheus `promhttp.Handler()` at `/metrics`. Histogram for request duration, counter for errors.
-- Tracing: OpenTelemetry Go SDK with OTLP exporter. Propagate trace context via HTTP headers.
+- Tracing: [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Go SDK with OTLP exporter. Propagate trace context via HTTP headers.
 
 ## Anti-Patterns
 
@@ -615,7 +615,7 @@ func Logger(next http.Handler) http.Handler {
 - `sync.Pool` for temporary structs in high-throughput handlers. Reduces GC pressure by 30-50%.
 - Pre-allocate slices: `make([]T, 0, expectedCap)` avoids multiple reallocations.
 - String concatenation: `strings.Builder` for many concatenations. Single `+` for 2-3 strings.
-- `encoding/json` vs `jsoniter`: stdlib is fine for most. Use `jsoniter` only under profiling evidence.
+- `encoding/json` vs `jsoniter`: stdlib is fine for most. Use `jsoniter` only under [profiling](../profiling/SKILL.md) evidence.
 - `runtime.GOMAXPROCS(N)` set to CPU quota in containerized environments (prevents over-subscription).
 - Memory pooling with `sync.Pool` for buffer reuse in HTTP response parsing.
 - Goroutine pool with errgroup for fan-out operations. Cap at `runtime.NumCPU() * 2`.

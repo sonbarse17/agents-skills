@@ -23,14 +23,14 @@ aligned with AWS Well-Architected principles.
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, audit, or assess DMS configurations
+- Review, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), or assess DMS configurations
 - Check DMS best practices compliance
 - Troubleshoot DMS task failures, latency, or connectivity issues
 - Evaluate DMS cost optimization opportunities
 - Plan or execute a database migration cutover
 - Assess DMS version deprecations and upgrade paths
 - Run a pre-migration assessment
-- Evaluate DMS Serverless vs provisioned suitability
+- Evaluate DMS [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) vs provisioned suitability
 - Investigate data validation mismatches
 - Review DMS homogeneous data migration options
 
@@ -81,8 +81,8 @@ Per-table state, row counts, validation state, error rows, DDL counts.
 aws dms describe-table-statistics --replication-task-arn <task-arn> --profile <profile> --region <region>
 ```
 
-### 2.5 DMS Serverless (if applicable)
-Replication configs, serverless replications, DCU utilization.
+### 2.5 DMS [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (if applicable)
+Replication configs, [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) replications, DCU utilization.
 
 ```bash
 aws dms describe-replication-configs --profile <profile> --region <region>
@@ -99,7 +99,7 @@ aws health describe-events --filter '{"services":["DMS"],"eventTypeCategories":[
 
 > **Note:** AWS Health API is a global service and must be called with `--region us-east-1` regardless of where DMS resources are deployed.
 
-## Step 3: Collect Observability Data (7-Day Historical)
+## Step 3: Collect [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Data (7-Day Historical)
 
 ### 3.1 CloudWatch Metrics (7 days)
 
@@ -123,7 +123,7 @@ aws health describe-events --filter '{"services":["DMS"],"eventTypeCategories":[
 - FullLoadThroughputBandwidthTarget (Average)
 - FullLoadThroughputRowsTarget (Average)
 
-**DMS Serverless** (namespace: AWS/DMS, if applicable):
+**DMS [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)** (namespace: AWS/DMS, if applicable):
 - ServerlessTotalCapacityUnits (Average, Maximum)
 
 ### 3.2 CloudWatch Logs (7 days)
@@ -196,7 +196,7 @@ Reference: `../../../Global_References/dms-version-reference.md` for version lif
 - Multi-AZ justified (production/critical only)
 - Debug logging disabled in production
 - Same-engine migrations using homogeneous/native tools where applicable
-- DMS Serverless evaluated for variable workloads
+- DMS [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) evaluated for variable workloads
 
 ## Step 5: Troubleshooting (When Applicable)
 
@@ -223,7 +223,7 @@ Route by error category:
 Follow the appropriate diagnostic path using AWS CLI commands to gather evidence.
 
 ### Phase 3: Log Analysis
-Query CloudWatch Logs with engine-specific filter patterns (Oracle/PostgreSQL/MySQL/SQL Server).
+Query CloudWatch Logs with engine-specific filter patterns (Oracle/[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/SQL Server).
 
 ## Step 6: Migration Cutover Guidance (When Applicable)
 
@@ -321,7 +321,7 @@ All findings sorted by severity.
 - Long-term (LOW — 90 days)
 
 ### Appendix
-Refer to the AWS DMS documentation for detailed guidance on best practices, monitoring, troubleshooting, release notes, serverless, and data validation.
+Refer to the AWS DMS documentation for detailed guidance on best practices, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), troubleshooting, release notes, [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), and data validation.
 
 ## Severity Definitions
 

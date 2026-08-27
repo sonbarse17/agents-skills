@@ -9,7 +9,7 @@ metadata:
 
 # Zustand Store
 
-Create Zustand stores following established patterns with proper TypeScript types and middleware.
+Create Zustand stores following established patterns with proper [TypeScript](../typescript/SKILL.md) types and middleware.
 
 ## Quick Start
 
@@ -19,7 +19,7 @@ Copy the template from [assets/template.ts](assets/template.ts) and replace plac
 
 ## Always Use subscribeWithSelector
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
@@ -32,7 +32,7 @@ export const useMyStore = create<MyStore>()(
 
 ## Separate State and Actions
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 export interface MyState {
   items: Item[];
   isLoading: boolean;
@@ -48,7 +48,7 @@ export type MyStore = MyState & MyActions;
 
 ## Use Individual Selectors
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Good - only re-renders when `items` changes
 const items = useMyStore((state) => state.items);
 
@@ -58,7 +58,7 @@ const { items, isLoading } = useMyStore();
 
 ## Subscribe Outside React
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 useMyStore.subscribe(
   (state) => state.selectedId,
   (selectedId) => console.log('Selected:', selectedId)

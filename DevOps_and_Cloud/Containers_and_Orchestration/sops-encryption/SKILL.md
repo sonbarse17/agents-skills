@@ -15,8 +15,8 @@ Encrypt secrets in configuration files while keeping structure visible.
 
 Use this skill when:
 - Encrypting secrets in Git
-- Implementing GitOps with secrets
-- Managing Kubernetes secrets as code
+- Implementing [GitOps](../gitops/SKILL.md) with secrets
+- Managing [Kubernetes](../kubernetes/SKILL.md) secrets as code
 - Encrypting configuration files
 
 ## Prerequisites
@@ -31,7 +31,7 @@ Use this skill when:
 brew install sops
 
 # Linux
-wget https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
+wget https://[github](../../CI_CD/github/SKILL.md).com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
 chmod +x sops-v3.8.0.linux.amd64
 mv sops-v3.8.0.linux.amd64 /usr/local/bin/sops
 ```
@@ -65,7 +65,7 @@ creation_rules:
     pgp: fingerprint
 ```
 
-## Kubernetes Integration
+## [Kubernetes](../kubernetes/SKILL.md) Integration
 
 ```yaml
 # encrypted secret
@@ -82,8 +82,8 @@ sops:
 ```
 
 ```bash
-# With ArgoCD
-# Install ksops plugin for ArgoCD to decrypt secrets
+# With [ArgoCD](../argocd/SKILL.md)
+# Install ksops plugin for [ArgoCD](../argocd/SKILL.md) to decrypt secrets
 ```
 
 ## Best Practices
@@ -91,10 +91,10 @@ sops:
 - Store .sops.yaml in repository
 - Use different keys per environment
 - Rotate encryption keys regularly
-- Never commit unencrypted secrets
+- Never [commit](../../CI_CD/commit/SKILL.md) unencrypted secrets
 - Use key aliases for readability
 
 ## Related Skills
 
-- [hashicorp-vault](../hashicorp-vault/) - Centralized secrets
-- [argocd-gitops](../../../devops/orchestration/argocd-gitops/) - GitOps integration
+- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - Centralized secrets
+- [argocd-gitops](../../../devops/orchestration/[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../gitops/SKILL.md)/SKILL.md)/) - [GitOps](../gitops/SKILL.md) integration

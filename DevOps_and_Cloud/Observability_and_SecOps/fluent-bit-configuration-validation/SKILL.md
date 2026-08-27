@@ -32,7 +32,7 @@ deployed broadly: a dry-run against sample input, testing parser
 expressions against real sample log lines, and confirming `Match`
 patterns actually route to the intended output — as a pre-deploy gate
 on top of the pipeline design covered in
-[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md),
+[fluent-bit-log-forwarding-configuration](../[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)/SKILL.md),
 which this skill assumes is already designed and does not repeat.
 
 ## When to use
@@ -50,7 +50,7 @@ which this skill assumes is already designed and does not repeat.
   change.
 - Auditing an existing production Fluent Bit config for `Match`
   patterns that are broader (or narrower) than intended, as a
-  proactive health check rather than only after an incident.
+  proactive health check rather than only after an [incident](../incident/SKILL.md).
 
 ## Prerequisites & environment
 
@@ -68,7 +68,7 @@ which this skill assumes is already designed and does not repeat.
   actually extracts anything useful.
 - Familiarity with the pipeline's intended design (INPUT tags, filter
   order, OUTPUT routing) from
-  [fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md) —
+  [fluent-bit-log-forwarding-configuration](../[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)/SKILL.md) —
   this skill validates that an implementation matches that design, it
   does not re-derive the design itself.
 
@@ -124,8 +124,8 @@ which this skill assumes is already designed and does not repeat.
    fluent-bit -c rendered-fluent-bit.yaml -o stdout -m '*' 2>&1 | grep -E '^\[.*\]'
    ```
    Confirm specifically: does `kube.payments.*` catch every payments
-   pod's tag after the `kubernetes` filter's `kube_tag_prefix`
-   rewrites it? Does `kube.security-audit.*` **not** also catch
+   pod's tag after the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter's `kube_tag_prefix`
+   rewrites it? Does `kube.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*` **not** also catch
    payments logs (an overly broad pattern silently duplicating output
    across destinations)? Verify both directions — under-matching
    (logs that should route somewhere don't) and over-matching (logs
@@ -133,13 +133,13 @@ which this skill assumes is already designed and does not repeat.
 
 5. **Verify filter ordering produces the field set each downstream
    stage actually expects** — a `parser`/`modify`/`grep` filter placed
-   before the `kubernetes` enrichment filter won't have Kubernetes
+   before the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` enrichment filter won't have [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
    metadata available yet to filter or route on, and a filter placed
    after a redaction step can't act on a field that was already
    removed:
    ```bash
    fluent-bit -c rendered-fluent-bit.yaml -o stdout -m '*' | \
-     jq 'select(.kubernetes == null)'   # should be empty after the kubernetes filter runs
+     jq 'select(.[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) == null)'   # should be empty after the [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) filter runs
    ```
 
 6. **Confirm redaction filters actually remove the intended fields**
@@ -161,20 +161,20 @@ which this skill assumes is already designed and does not repeat.
    weight connectivity check rather than routing real production volume
    at an unverified destination:
    ```bash
-   curl -sf -o /dev/null -w '%{http_code}' http://loki-gateway.monitoring.svc:3100/ready
+   curl -sf -o /dev/null -w '%{http_code}' http://loki-gateway.[monitoring](../monitoring/SKILL.md).svc:3100/ready
    ```
 
 8. **Wire steps 1-4 into CI** so a `Match`/parser mistake fails the PR
    instead of the deploy:
    ```yaml
-   # GitHub Actions example
+   # [GitHub](../../CI_CD/github/SKILL.md) Actions example
    - name: Render Fluent Bit config
      run: helm template fluent-bit fluent/fluent-bit -f values-production.yaml --show-only templates/fluent-bit-configmap.yaml > rendered.yaml
    - name: Dry-run against fixture logs
      run: |
-       docker run --rm -i \
-         -v "${{ github.workspace }}/rendered.yaml:/fluent-bit/etc/fluent-bit.yaml" \
-         -v "${{ github.workspace }}/fixtures:/fixtures" \
+       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -i \
+         -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/rendered.yaml:/fluent-bit/etc/fluent-bit.yaml" \
+         -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/fixtures:/fixtures" \
          fluent/fluent-bit:3.1.9 \
          -c /fluent-bit/etc/fluent-bit.yaml -o stdout -m '*' < fixtures/sample-lines.log
    - name: Assert no leaked secret fields
@@ -190,7 +190,7 @@ which this skill assumes is already designed and does not repeat.
    validated dry-run** — static validation reduces but does not
    eliminate risk from something the fixture set didn't cover:
    ```bash
-   kubectl logs -n monitoring -l app=fluent-bit --tail=200 | grep -i error
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n [monitoring](../monitoring/SKILL.md) -l app=fluent-bit --tail=200 | grep -i error
    ```
    A spike in Fluent Bit's own internal error/retry metrics
    immediately after a config rollout is the final real-world
@@ -279,14 +279,14 @@ renamed `payments-batch` service's logs.
    ```
 2. Dry-run against a fixture file containing sample lines from both
    `payments-api` and the newly renamed `payments-batch`, plus a
-   `security-audit` line that must **not** be caught by the changed
+   `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` line that must **not** be caught by the changed
    pattern:
    ```bash
    fluent-bit -c rendered.yaml -o stdout -m '*' < fixtures/sample-lines.log
    ```
 3. Output confirms `payments-api` and `payments-batch` lines both now
    route to the `loki` output as intended — the pattern change works
-   as designed. But it also shows a `security-audit-payments-reconciliation`
+   as designed. But it also shows a `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation`
    service's logs (an unrelated service with "payments" in its name)
    now unexpectedly routing to the same Loki output — over-matching
    caught before merge.
@@ -298,16 +298,16 @@ renamed `payments-batch` service's logs.
    group optional and re-tested until all five samples parse correctly.
 5. The `Match` pattern is corrected to `kube.*payments-api*` OR an
    explicit second entry for `kube.*payments-batch*`, re-validated with
-   the dry-run to confirm `security-audit-payments-reconciliation` is
+   the dry-run to confirm `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation` is
    now correctly excluded.
-6. CI is updated to include the `security-audit-payments-reconciliation`
+6. CI is updated to include the `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation`
    sample line in the fixture set permanently, so this specific
    over-matching regression is caught automatically on any future
    `Match` pattern change.
 
 ## Cross-references
 
-- [fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md) — the pipeline design (INPUT/FILTER/OUTPUT structure, buffering, redaction) this skill validates before rollout without repeating.
-- [loki-configuration-validation](../loki-configuration-validation/SKILL.md) — the equivalent pre-deploy validation discipline applied to the Loki side of the same pipeline this Fluent Bit config feeds.
-- [logql-query-authoring](../logql-query-authoring/SKILL.md) — querying logs once they land, useful for confirming a validated pipeline's fields actually arrive queryable at the destination.
-- [incident-investigation-using-metrics-logs-traces](../incident-investigation-using-metrics-logs-traces/SKILL.md) — using logs shipped by a validated pipeline as one leg of a live cross-signal investigation.
+- [fluent-bit-log-forwarding-configuration](../[fluent-bit-log-forwarding-configuration](../fluent-bit-log-forwarding-configuration/SKILL.md)/SKILL.md) — the pipeline design (INPUT/FILTER/OUTPUT structure, buffering, redaction) this skill validates before rollout without repeating.
+- [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-deploy validation discipline applied to the Loki side of the same pipeline this Fluent Bit config feeds.
+- [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — querying logs once they land, useful for confirming a validated pipeline's fields actually arrive queryable at the destination.
+- [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — using logs shipped by a validated pipeline as one leg of a live cross-signal investigation.

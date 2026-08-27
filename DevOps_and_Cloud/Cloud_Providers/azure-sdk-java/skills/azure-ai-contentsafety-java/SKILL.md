@@ -17,7 +17,7 @@ Build content moderation applications using the Azure AI Content Safety SDK for 
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-ai-contentsafety</artifactId>
+    <artifactId>[azure-ai](../../../[azure-ai](../../../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-contentsafety</artifactId>
     <version>1.1.0-beta.1</version>
 </dependency>
 ```

@@ -13,7 +13,7 @@ metadata:
   related-skills: devops-engineer, cloud-architect, sre-engineer, terraform-engineer, security-reviewer, chaos-engineer
 ---
 
-# Kubernetes Specialist
+# [Kubernetes](../kubernetes/SKILL.md) Specialist
 
 ## When to Use This Skill
 
@@ -31,7 +31,7 @@ metadata:
 2. **Design architecture** — Choose workload types, networking patterns, storage solutions
 3. **Implement manifests** — Create declarative YAML with proper resource limits, health checks
 4. **Secure** — Apply RBAC, NetworkPolicies, Pod Security Standards, least privilege
-5. **Validate** — Run `kubectl rollout status`, `kubectl get pods -w`, and `kubectl describe pod <name>` to confirm health; roll back with `kubectl rollout undo` if needed
+5. **Validate** — Run `[kubectl](../kubectl/SKILL.md) rollout status`, `[kubectl](../kubectl/SKILL.md) get pods -w`, and `[kubectl](../kubectl/SKILL.md) describe pod <name>` to confirm health; roll back with `[kubectl](../kubectl/SKILL.md) rollout undo` if needed
 
 ## Reference Guide
 
@@ -40,21 +40,21 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Workloads | `../../../Global_References/workloads.md` | Deployments, StatefulSets, DaemonSets, Jobs, CronJobs |
-| Networking | `../../../Global_References/kubernetes-specialist_networking.md` | Services, Ingress, NetworkPolicies, DNS |
-| Configuration | `../../../Global_References/kubernetes-specialist_configuration.md` | ConfigMaps, Secrets, environment variables |
+| Networking | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_networking.md` | Services, Ingress, NetworkPolicies, DNS |
+| Configuration | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_configuration.md` | ConfigMaps, Secrets, environment variables |
 | Storage | `../../../Global_References/storage.md` | PV, PVC, StorageClasses, CSI drivers |
-| Helm Charts | `../../../Global_References/helm-charts.md` | Chart structure, values, templates, hooks, testing, repositories |
-| Troubleshooting | `../../../Global_References/kubernetes-specialist_troubleshooting.md` | kubectl debug, logs, events, common issues |
+| Helm Charts | `../../../Global_References/[helm-charts](../helm-charts/SKILL.md).md` | Chart structure, values, templates, hooks, testing, repositories |
+| Troubleshooting | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_troubleshooting.md` | [kubectl](../kubectl/SKILL.md) debug, logs, events, common issues |
 | Custom Operators | `../../../Global_References/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
-| Service Mesh | `../../../Global_References/service-mesh.md` | Istio, Linkerd, traffic management, mTLS, canary |
-| GitOps | `../../../Global_References/gitops.md` | ArgoCD, Flux, progressive delivery, sealed secrets |
-| Cost Optimization | `../../../Global_References/kubernetes-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
+| Service Mesh | `../../../Global_References/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md).md` | Istio, Linkerd, traffic management, mTLS, canary |
+| [GitOps](../gitops/SKILL.md) | `../../../Global_References/[gitops](../gitops/SKILL.md).md` | [ArgoCD](../argocd/SKILL.md), Flux, progressive delivery, sealed secrets |
+| Cost Optimization | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
 | Multi-Cluster | `../../../Global_References/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
 
 ## Constraints
 
 ### MUST DO
-- Use declarative YAML manifests (avoid imperative kubectl commands)
+- Use declarative YAML manifests (avoid imperative [kubectl](../kubectl/SKILL.md) commands)
 - Set resource requests and limits on all containers
 - Include liveness and readiness probes
 - Use secrets for sensitive data (never hardcode credentials)
@@ -211,34 +211,34 @@ After deploying, verify health and security posture:
 
 ```bash
 # Watch rollout complete
-kubectl rollout status deployment/my-app -n my-namespace
+[kubectl](../kubectl/SKILL.md) rollout status deployment/my-app -n my-namespace
 
 # Stream pod events to catch crash loops or image pull errors
-kubectl get pods -n my-namespace -w
+[kubectl](../kubectl/SKILL.md) get pods -n my-namespace -w
 
 # Inspect a specific pod for failures
-kubectl describe pod <pod-name> -n my-namespace
+[kubectl](../kubectl/SKILL.md) describe pod <pod-name> -n my-namespace
 
 # Check container logs
-kubectl logs <pod-name> -n my-namespace --previous   # use --previous for crashed containers
+[kubectl](../kubectl/SKILL.md) logs <pod-name> -n my-namespace --previous   # use --previous for crashed containers
 
 # Verify resource usage vs. limits
-kubectl top pods -n my-namespace
+[kubectl](../kubectl/SKILL.md) top pods -n my-namespace
 
-# Audit RBAC permissions for a service account
-kubectl auth can-i --list --as=system:serviceaccount:my-namespace:my-app-sa
+# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) RBAC permissions for a service account
+[kubectl](../kubectl/SKILL.md) auth can-i --list --as=system:serviceaccount:my-namespace:my-app-sa
 
 # Roll back a failed deployment
-kubectl rollout undo deployment/my-app -n my-namespace
+[kubectl](../kubectl/SKILL.md) rollout undo deployment/my-app -n my-namespace
 ```
 
 ## Output Templates
 
-When implementing Kubernetes resources, provide:
+When implementing [Kubernetes](../kubernetes/SKILL.md) resources, provide:
 1. Complete YAML manifests with proper structure
 2. RBAC configuration if needed (ServiceAccount, Role, RoleBinding)
 3. NetworkPolicy for network isolation
 4. Brief explanation of design decisions and security considerations
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/kubernetes-specialist/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/[kubernetes](../kubernetes/SKILL.md)-specialist/)
 

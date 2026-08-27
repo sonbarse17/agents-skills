@@ -10,7 +10,7 @@ metadata:
   package: azure-keyvault-secrets, azure-keyvault-keys, azure-keyvault-certificates
 ---
 
-# Azure Key Vault SDK for Python
+# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Secure storage and management for secrets, cryptographic keys, and certificates.
 
@@ -18,22 +18,22 @@ Secure storage and management for secrets, cryptographic keys, and certificates.
 
 ```bash
 # Secrets
-pip install azure-keyvault-secrets azure-identity
+pip install [azure-keyvault](../azure-keyvault/SKILL.md)-secrets azure-identity
 
 # Keys (cryptographic operations)
-pip install azure-keyvault-keys azure-identity
+pip install [azure-keyvault](../azure-keyvault/SKILL.md)-keys azure-identity
 
 # Certificates
-pip install azure-keyvault-certificates azure-identity
+pip install [azure-keyvault](../azure-keyvault/SKILL.md)-certificates azure-identity
 
 # All
-pip install azure-keyvault-secrets azure-keyvault-keys azure-keyvault-certificates azure-identity
+pip install [azure-keyvault](../azure-keyvault/SKILL.md)-secrets [azure-keyvault](../azure-keyvault/SKILL.md)-keys [azure-keyvault](../azure-keyvault/SKILL.md)-certificates azure-identity
 ```
 
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/  # Required for all auth methods
+AZURE_KEYVAULT_URL=https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/  # Required for all auth methods
 AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -41,7 +41,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -54,16 +54,16 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### SecretClient Setup
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.keyvault.secrets import SecretClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
-vault_url = "https://<vault-name>.vault.azure.net/"
+vault_url = "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
 
 with SecretClient(vault_url=vault_url, credential=credential) as client:
     # All secret operations go inside this block (see examples below)
@@ -72,7 +72,7 @@ with SecretClient(vault_url=vault_url, credential=credential) as client:
 
 ### Secret Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Set secret
 secret = client.set_secret("database-password", "super-secret-value")
 print(f"Created: {secret.name}, version: {secret.properties.version}")
@@ -107,12 +107,12 @@ client.begin_recover_deleted_secret("database-password").result()
 
 ### KeyClient Setup
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.keys import KeyClient
 
 credential = DefaultAzureCredential()
-vault_url = "https://<vault-name>.vault.azure.net/"
+vault_url = "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
 
 with KeyClient(vault_url=vault_url, credential=credential) as client:
     # All key operations go inside this block (see examples below)
@@ -121,7 +121,7 @@ with KeyClient(vault_url=vault_url, credential=credential) as client:
 
 ### Key Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.keyvault.keys import KeyType
 
 # Create RSA key
@@ -145,18 +145,18 @@ deleted_key = poller.result()
 
 ### Cryptographic Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.keyvault.keys.crypto import CryptographyClient, EncryptionAlgorithm
 
 # Get crypto client for a specific key
 # crypto_client = CryptographyClient(key, credential=credential)
 # Or from key ID
 with CryptographyClient(
-    "https://<vault>.vault.azure.net/keys/<key-name>/<version>",
+    "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/<key-name>/<version>",
     credential=credential
 ) as crypto_client:
     # Encrypt
-    plaintext = b"Hello, Key Vault!"
+    plaintext = b"Hello, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)!"
     result = crypto_client.encrypt(EncryptionAlgorithm.rsa_oaep, plaintext)
     ciphertext = result.ciphertext
 
@@ -181,12 +181,12 @@ with CryptographyClient(
 
 ### CertificateClient Setup
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.certificates import CertificateClient, CertificatePolicy
 
 credential = DefaultAzureCredential()
-vault_url = "https://<vault-name>.vault.azure.net/"
+vault_url = "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
 
 with CertificateClient(vault_url=vault_url, credential=credential) as client:
     # All certificate operations go inside this block (see examples below)
@@ -195,7 +195,7 @@ with CertificateClient(vault_url=vault_url, credential=credential) as client:
 
 ### Certificate Operations
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create self-signed certificate
 policy = CertificatePolicy.get_default()
 poller = client.begin_create_certificate("my-cert", policy=policy)
@@ -224,14 +224,14 @@ deleted = poller.result()
 
 | Client | Package | Purpose |
 |--------|---------|---------|
-| `SecretClient` | `azure-keyvault-secrets` | Store/retrieve secrets |
-| `KeyClient` | `azure-keyvault-keys` | Manage cryptographic keys |
-| `CryptographyClient` | `azure-keyvault-keys` | Encrypt/decrypt/sign/verify |
-| `CertificateClient` | `azure-keyvault-certificates` | Manage certificates |
+| `SecretClient` | `[azure-keyvault](../azure-keyvault/SKILL.md)-secrets` | Store/retrieve secrets |
+| `KeyClient` | `[azure-keyvault](../azure-keyvault/SKILL.md)-keys` | Manage cryptographic keys |
+| `CryptographyClient` | `[azure-keyvault](../azure-keyvault/SKILL.md)-keys` | Encrypt/decrypt/sign/verify |
+| `CertificateClient` | `[azure-keyvault](../azure-keyvault/SKILL.md)-certificates` | Manage certificates |
 
 ## Async Clients
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity.aio import DefaultAzureCredential
 from azure.keyvault.secrets.aio import SecretClient
 
@@ -247,7 +247,7 @@ asyncio.run(get_secret())
 
 ## Error Handling
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.core.exceptions import ResourceNotFoundError, HttpResponseError
 
 try:
@@ -269,7 +269,7 @@ except HttpResponseError as e:
 5. **Enable soft-delete** for recovery (enabled by default)
 6. **Use RBAC** over access policies for fine-grained control
 7. **Rotate secrets** regularly using versioning
-8. **Use Key Vault references** in App Service/Functions config
+8. **Use Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references** in App Service/Functions config
 9. **Cache secrets** appropriately to reduce API calls
 10. **Use async clients** for high-throughput scenarios
 
@@ -277,6 +277,6 @@ except HttpResponseError as e:
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-keyvault-py_capabilities.md](../../../Global_References/azure-keyvault-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-keyvault-py_non-hero-scenarios.md](../../../Global_References/azure-keyvault-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-py_capabilities.md](../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-py_non-hero-scenarios.md](../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

@@ -10,7 +10,7 @@ license: MIT
 different topology, different config format, a manually patched box nobody touched since it was
 built. Staging's entire job is to be a trustworthy predictor of what will happen in prod. Every
 divergence between them is a bug in that predictor, whether or not anyone notices it before the
-next incident.
+next [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 The only differences that should exist between environments are the ones you'd defend out loud:
 scale, non-critical data, cost. Everything else — topology, versions, how config is structured —
@@ -27,7 +27,7 @@ pressure and never backports it. One codebase, one set of modules, environment-s
 `.tfvars` or equivalent values files is the only structure that makes divergence visible in a
 diff instead of invisible until it breaks something.
 
-See `terraform-modules` for the module-interface side of this and `infrastructure-as-code` for
+See `[terraform-modules](../../Infrastructure_as_Code/terraform-modules/SKILL.md)` for the module-interface side of this and `[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)` for
 the state-isolation side — each environment still needs its own state file even though it shares
 code.
 
@@ -74,9 +74,9 @@ and defended, with no undocumented divergence left over.
 
 Running every non-prod environment at full production scale is expensive and rarely necessary —
 but shrinking it so far that it stops catching real bugs (single-instance when prod is clustered,
-no autoscaling when prod scales) makes staging a false signal that's worse than no staging at
+no [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) when prod scales) makes staging a false signal that's worse than no staging at
 all. The goal is the cheapest version that still exercises the architecture prod actually runs.
-See `cost-optimization` for the broader spend-control discipline this borrows from.
+See `[cost-optimization](../cost-optimization/SKILL.md)` for the broader spend-control discipline this borrows from.
 
 - **Scale down instance count and size**, not the topology itself — a single node standing in for
   a cluster hides every clustering bug.
@@ -91,7 +91,7 @@ that staging caught before it reached production.
 Manually re-running `terraform apply` against prod with hand-edited variables is how "it worked in
 staging" and "what actually got applied to prod" quietly diverge. Promotion should be the exact
 same artifact and the exact same apply mechanism moving forward through environments, with only
-the values file changing — tie this to `continuous-delivery` for the pipeline mechanics.
+the values file changing — tie this to `[continuous-delivery](../../CI_CD/continuous-delivery/SKILL.md)` for the pipeline mechanics.
 
 **Done when:** the artifact or plan applied to prod is provably the same one that was validated in
 staging, not a re-generated or hand-edited copy.

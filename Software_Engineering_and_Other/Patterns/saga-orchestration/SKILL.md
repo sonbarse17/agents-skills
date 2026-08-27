@@ -5,7 +5,7 @@ description: Implement saga patterns for distributed transactions and cross-aggr
 
 # Saga Orchestration
 
-Patterns for managing distributed transactions and long-running business processes without two-phase commit.
+Patterns for managing distributed transactions and long-running business processes without two-phase [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
 
 ## Inputs and Outputs
 
@@ -21,7 +21,7 @@ Patterns for managing distributed transactions and long-running business process
 - Orchestrator or choreography implementation for your chosen pattern
 - Compensation logic for each participant service (idempotent, always-succeeds)
 - Step timeout configuration with per-step deadlines
-- Monitoring setup: state machine metrics, stuck saga detection, DLQ recovery
+- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup: state machine metrics, stuck saga detection, DLQ recovery
 
 ---
 
@@ -32,7 +32,7 @@ Patterns for managing distributed transactions and long-running business process
 - Managing long-running business workflows (minutes to hours)
 - Handling failures in distributed systems where atomicity is required
 - Building order fulfillment, approval, or booking processes
-- Replacing fragile two-phase commit with async compensation
+- Replacing fragile two-phase [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with async compensation
 
 ---
 
@@ -71,7 +71,7 @@ Moved to `../../../Global_References/saga-orchestration_details.md`.
 
 A saga enters compensation but never reaches FAILED. This means a compensation handler is throwing an unhandled exception and never publishing `SagaCompensationCompleted`. Add dead-letter queue (DLQ) handling to compensation consumers and ensure every compensation action publishes a result event even when the underlying operation was already rolled back.
 
-```python
+```[python](../../Languages/python/SKILL.md)
 async def handle_release_reservation(self, command: Dict):
     try:
         await self.release_reservation(command["original_result"]["reservation_id"])
@@ -112,7 +112,7 @@ The `references/` directory contains production-grade implementations not needed
 
 ## Related Skills
 
-- `cqrs-implementation` — Pair sagas with CQRS for read-model updates after each step completes
-- `event-store-design` — Store saga events in an event store for full audit trail and replay capability
-- `workflow-orchestration-patterns` — Higher-level workflow engines (Temporal, Conductor) that build on saga concepts
+- `[cqrs-implementation](../cqrs-implementation/SKILL.md)` — Pair sagas with CQRS for read-model updates after each step completes
+- `[event-store-design](../../../DevOps_and_Cloud/Observability_and_SecOps/event-store-design/SKILL.md)` — Store saga events in an event store for full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail and replay capability
+- `[workflow-orchestration-patterns](../workflow-orchestration-patterns/SKILL.md)` — Higher-level workflow engines (Temporal, Conductor) that build on saga concepts
 

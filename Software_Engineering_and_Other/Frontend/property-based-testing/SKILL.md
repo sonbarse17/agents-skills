@@ -44,7 +44,7 @@ Structured property test suite with:
 - Properties defined for all identified invariants
 - Generators produce valid domain inputs with < 10% rejection rate
 - Shrinking produces minimal counterexamples
-- CI integration with adaptive run depth (fast on commit, thorough nightly)
+- CI integration with adaptive run depth (fast on [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), thorough nightly)
 - Failing seeds captured and counterexamples added as regression tests
 
 ## Workflow
@@ -55,7 +55,7 @@ Structured property test suite with:
 4. **Run and shrink**: Execute with default run count (100). Verify shrinking produces actionable minimal counterexamples
 5. **Analyze failures**: Inspect shrunk inputs. Add counterexamples as regression tests. Store seeds for reproduction
 6. **Optimize generators**: Profile generation and shrinking performance. Replace filters with constrained generation. Reduce rejection rate
-7. **Integrate CI**: Configure CI with adaptive depth. Fast run (100 runs) on every commit. Thorough run (1000+ runs) nightly. Store seeds in build artifacts
+7. **Integrate CI**: Configure CI with adaptive depth. Fast run (100 runs) on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md). Thorough run (1000+ runs) nightly. Store seeds in build artifacts
 8. **Add stateful models**: For stateful systems, implement command-based models with preconditions, postconditions, and invariants
 9. **Track metrics**: Monitor property coverage, shrinking efficiency, counterexample discovery rate, and generator rejection rate
 10. **Maintain property suite**: Review properties during refactoring. Remove obsolete properties. Add new properties for modified code
@@ -66,10 +66,10 @@ Structured property test suite with:
 
 ```
 Inputs: language, team expertise, existing tooling
-├── TypeScript/JavaScript → fast-check
+├── [TypeScript](../typescript/SKILL.md)/JavaScript → fast-check
 │   ├── Stateful testing needed? → Use fc.Command + fc.modelRun
 │   └── Async code? → Use fc.asyncProperty
-├── Python → Hypothesis
+├── [Python](../../Languages/python/SKILL.md) → Hypothesis
 │   ├── Stateful testing needed? → RuleBasedStateMachine
 │   └── Pandas/NumPy? → pandas strategies
 ├── Java/Kotlin → jqwik
@@ -142,8 +142,8 @@ Can you express a relation between input and output?
 
 ## Property-Based Testing Examples
 
-### TypeScript/fast-check — Round-Trip Property
-```typescript
+### [TypeScript](../typescript/SKILL.md)/fast-check — Round-Trip Property
+```[typescript](../typescript/SKILL.md)
 import * as fc from "fast-check";
 
 // Property: encode/decode is a round-trip
@@ -158,8 +158,8 @@ test("URL encoding and decoding round-trips correctly", () => {
 });
 ```
 
-### TypeScript/fast-check — Invariant Property
-```typescript
+### [TypeScript](../typescript/SKILL.md)/fast-check — Invariant Property
+```[typescript](../typescript/SKILL.md)
 // Property: sort always returns elements in non-decreasing order
 test("sort returns a sorted array", () => {
   fc.assert(
@@ -174,8 +174,8 @@ test("sort returns a sorted array", () => {
 });
 ```
 
-### TypeScript/fast-check — Idempotence Property
-```typescript
+### [TypeScript](../typescript/SKILL.md)/fast-check — Idempotence Property
+```[typescript](../typescript/SKILL.md)
 // Property: removing duplicates is idempotent
 test("uniq is idempotent", () => {
   fc.assert(
@@ -188,8 +188,8 @@ test("uniq is idempotent", () => {
 });
 ```
 
-### Python/Hypothesis — Invariant Property
-```python
+### [Python](../../Languages/python/SKILL.md)/Hypothesis — Invariant Property
+```[python](../../Languages/python/SKILL.md)
 from hypothesis import given, strategies as st
 from src.pricing import calculate_discount, PriceBreak
 
@@ -225,8 +225,8 @@ def test_discount_percent_never_exceeds_100(quantity, breaks):
     assert discount <= 100
 ```
 
-### Python/Hypothesis — Custom Strategy
-```python
+### [Python](../../Languages/python/SKILL.md)/Hypothesis — Custom Strategy
+```[python](../../Languages/python/SKILL.md)
 # Custom strategy for valid email addresses
 email_strategy = st.emails()
 
@@ -250,8 +250,8 @@ def test_user_creation(user):
     assert result["role"] in ["admin", "user", "viewer"]
 ```
 
-### TypeScript/fast-check — Stateful Testing
-```typescript
+### [TypeScript](../typescript/SKILL.md)/fast-check — Stateful Testing
+```[typescript](../typescript/SKILL.md)
 import * as fc from "fast-check";
 
 class CounterModel {
@@ -285,7 +285,7 @@ test("counter behaves correctly under random commands", async () => {
 ## CI Integration for Property-Based Tests
 
 ```yaml
-# .github/workflows/pbt.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/pbt.yml
 name: Property-Based Tests
 on:
   pull_request:
@@ -295,7 +295,7 @@ on:
 
 jobs:
   fast:
-    if: github.event_name == 'pull_request'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -311,7 +311,7 @@ jobs:
           path: seeds/*.txt
 
   thorough:
-    if: github.event_name == 'schedule'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -384,7 +384,7 @@ Stateful property tests that share mutable state between command sequences produ
 13. Input size bounds must be set on all collection generators (maxLength, maxDepth)
 14. Performance properties must include baseline thresholds and alert on regression
 15. Resources (database connections, file handles) must be cleaned up after each property test
-16. CI must have separate fast (every commit) and thorough (nightly) property test stages
+16. CI must have separate fast (every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) and thorough (nightly) property test stages
 17. Failing seeds must be committed alongside counterexample regression tests
 18. Generator complexity must be documented — understand what shapes your generators produce
 
@@ -401,10 +401,10 @@ Stateful property tests that share mutable state between command sequences produ
 
 ## Handoff
 After property-based testing, hand off to:
-- `quality-unit-testing` — for example-based tests that complement properties
-- `quality-integration-testing` — for verifying properties at system boundaries
-- `quality-regression-testing` — for adding discovered counterexamples to regression suites
-- `quality-load-testing` — for performance property validation under load
+- `[quality-unit-testing](../../Testing/unit-testing/SKILL.md)` — for example-based tests that complement properties
+- `[quality-integration-testing](../../Testing/integration-testing/SKILL.md)` — for verifying properties at system boundaries
+- `[quality-regression-testing](../../Testing/regression-testing/SKILL.md)` — for adding discovered counterexamples to regression suites
+- `quality-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` — for performance property validation under load
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -457,7 +457,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -471,7 +471,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -487,12 +487,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -501,7 +501,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -509,13 +509,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -524,9 +524,9 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

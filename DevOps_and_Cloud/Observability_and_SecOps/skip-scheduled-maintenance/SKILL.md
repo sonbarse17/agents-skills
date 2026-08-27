@@ -14,7 +14,7 @@ metadata:
 
 Skip all incidents that meet BOTH of the following criteria:
 
-1. The incident arrived between **2025-03-15 02:00 UTC** and **2025-03-15 06:00 UTC**
+1. The [incident](../incident/SKILL.md) arrived between **2025-03-15 02:00 UTC** and **2025-03-15 06:00 UTC**
 2. Severity is MEDIUM or LOW
 
 Do NOT skip HIGH or CRITICAL severity incidents, even during the maintenance window.

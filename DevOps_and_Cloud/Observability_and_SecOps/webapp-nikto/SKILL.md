@@ -98,7 +98,7 @@ nikto -h example.com -p 8443 -ssl
 
 ### 3. Advanced Scanning Options
 
-Customize scan behavior:
+[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) scan behavior:
 
 ```bash
 # Specify tuning options
@@ -232,7 +232,7 @@ nikto -h http://example.com -cookies "session=abc123"
 - **Proxy Usage**: Route through authorized proxy if required
 - **User-Agent**: Consider using custom User-Agent for tracking
 
-### Audit Logging
+### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Document all Nikto scanning activities:
 - Target hosts and ports scanned
@@ -420,7 +420,7 @@ Protect web servers against Nikto scanning:
 - Apply security patches regularly
 - Follow CIS benchmarks for web server hardening
 
-**Detection and Monitoring**:
+**Detection and [Monitoring](../monitoring/SKILL.md)**:
 - Monitor for rapid sequential requests
 - Alert on multiple 404 errors from single source
 - Detect common vulnerability probes
@@ -436,7 +436,7 @@ Common Nikto detection signatures:
 ## References
 
 - [Nikto Official Documentation](https://cirt.net/Nikto2)
-- [Nikto GitHub Repository](https://github.com/sullo/nikto)
+- [Nikto [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/sullo/nikto)
 - [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 - [NIST SP 800-115: Technical Security Testing](https://csrc.nist.gov/publications/detail/sp/800-115/final)
-- [CIS Web Server Benchmarks](https://www.cisecurity.org/cis-benchmarks/)
+- [CIS Web Server Benchmarks](https://www.cisecurity.org/[cis-benchmarks](../cis-benchmarks/SKILL.md)/)

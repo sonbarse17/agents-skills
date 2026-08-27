@@ -15,7 +15,7 @@ metadata:
 
 # FastAPI Expert
 
-Deep expertise in async Python, Pydantic V2, and production-grade API development with FastAPI.
+Deep expertise in async [Python](../../Languages/python/SKILL.md), Pydantic V2, and production-grade API development with FastAPI.
 
 ## When to Use This Skill
 
@@ -40,7 +40,7 @@ Deep expertise in async Python, Pydantic V2, and production-grade API developmen
 
 Schema + endpoint + dependency injection in one cohesive unit:
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # schemas.py
 from pydantic import BaseModel, EmailStr, field_validator, model_config
 
@@ -66,7 +66,7 @@ class UserResponse(BaseModel):
     name: str | None = None
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # routers/users.py
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -88,7 +88,7 @@ async def create_user(payload: UserCreate, db: DbDep) -> UserResponse:
     return await crud.create_user(db, payload)
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # crud.py
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -103,14 +103,14 @@ async def get_user_by_email(db: AsyncSession, email: str) -> User | None:
 async def create_user(db: AsyncSession, payload: UserCreate) -> User:
     user = User(email=payload.email, hashed_password=hash_password(payload.password), name=payload.name)
     db.add(user)
-    await db.commit()
+    await db.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
     await db.refresh(user)
     return user
 ```
 
 ## JWT Authentication Snippet
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # security.py
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
@@ -184,5 +184,5 @@ When implementing FastAPI features, provide:
 
 FastAPI, Pydantic V2, async SQLAlchemy, Alembic migrations, JWT/OAuth2, pytest-asyncio, httpx, BackgroundTasks, WebSockets, dependency injection, OpenAPI/Swagger
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/backend/fastapi-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/fastapi-expert/)
 

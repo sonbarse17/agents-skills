@@ -19,7 +19,7 @@ tags: [devops, cloud, gcp, phase-7]
 # devops-gcp
 
 ## Purpose
-Provision and operate Google Cloud infrastructure using GKE, Cloud Run, Cloud Functions, Terraform, and GCP-native networking with cost optimization, IAM security, and observability.
+Provision and operate Google Cloud infrastructure using GKE, Cloud Run, Cloud Functions, Terraform, and GCP-native networking with cost optimization, IAM security, and [observability](../../Observability_and_SecOps/observability/SKILL.md).
 
 ## Agent Protocol
 
@@ -30,7 +30,7 @@ Any user message referencing GCP services, GKE, Cloud Run, Cloud Functions, gclo
 GCP service required, region/zone, organization/folder/project hierarchy, compliance requirements, and budget constraints.
 
 ### Output Artifact
-Terraform/Deployment Manager configs, gcloud CLI commands, GKE cluster config, Cloud Run service definitions, networking architecture, IAM policies, monitoring setup.
+Terraform/Deployment Manager configs, gcloud CLI commands, GKE cluster config, Cloud Run service definitions, networking architecture, IAM policies, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) setup.
 
 ### Response Format
 Terraform/gcloud CLI commands with explanations. YAML configs for GKE and Cloud Run.
@@ -38,7 +38,7 @@ Terraform/gcloud CLI commands with explanations. YAML configs for GKE and Cloud 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
-GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipeline passing, monitoring configured, IAM least-privilege enforced, cost budgets active.
+GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipeline passing, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) configured, IAM least-privilege enforced, cost budgets active.
 
 ## Architecture / Decision Trees
 
@@ -50,12 +50,12 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 | Stateful / complex | GKE (Standard) | Custom node pools, GPUs, StatefulSets |
 | Simple event-driven | Cloud Functions (2nd gen) | Eventarc, Pub/Sub, Storage triggers |
 | Batch / background | Cloud Run Jobs | Containerized batch, retries, timeout |
-| Data warehouse | BigQuery | Serverless, slot commitments, BI Engine |
+| Data warehouse | BigQuery | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), slot commitments, BI Engine |
 | ML training | GKE with GPUs | Custom hardware, distributed training |
 | Web hosting | Cloud Storage + LB | Static sites, CDN, global LB |
 
 ### GKE Cluster Mode Decision Tree
-- Small team, no node management: Autopilot (serverless, PSA enforced, pay-per-pod).
+- Small team, no node management: Autopilot ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md), PSA enforced, pay-per-pod).
 - Full control, custom hardware: Standard with node pools, taints, GPUs.
 - Multi-region HA: Regional cluster in 3 zones.
 - Cost-sensitive: Preemptible/Spot node pools for batch.
@@ -72,7 +72,7 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 
 | Requirement | Service | Best For |
 |---|---|---|
-| Relational, managed | Cloud SQL | MySQL, PostgreSQL, SQL Server |
+| Relational, managed | Cloud SQL | [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), SQL Server |
 | NoSQL, high throughput | Firestore / Bigtable | Real-time, IoT, large-scale |
 | Data warehouse | BigQuery | Analytics, reporting, ML |
 | In-memory, cache | Memorystore | Redis, Memcached |
@@ -103,7 +103,7 @@ resource "google_project_service" "apis" {
     "cloudrun.googleapis.com",
     "sqladmin.googleapis.com",
     "storage.googleapis.com",
-    "monitoring.googleapis.com",
+    "[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).googleapis.com",
     "logging.googleapis.com",
     "cloudbuild.googleapis.com",
   ])
@@ -202,7 +202,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  # Monitoring
+  # [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
   monitoring_config {
     enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
     managed_prometheus {
@@ -226,7 +226,7 @@ resource "google_container_node_pool" "primary_nodes" {
   project  = google_project.production.project_id
 
   initial_node_count = 3
-  autoscaling {
+  [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) {
     min_node_count = 1
     max_node_count = 5
   }
@@ -270,7 +270,7 @@ resource "google_cloud_run_v2_service" "api" {
     revision = "api-v1"
 
     containers {
-      image = "us-central1-docker.pkg.dev/${google_project.production.project_id}/app-repo/api:latest"
+      image = "us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/${google_project.production.project_id}/app-repo/api:latest"
 
       resources {
         limits = {
@@ -398,27 +398,27 @@ resource "google_sql_database_instance" "postgres" {
 ### Step 6: Cloud Build CI/CD
 ```yaml
 steps:
-  - name: "gcr.io/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/[docker](../../Containers_and_Orchestration/docker/SKILL.md)"
     args:
       - build
       - -t
-      - "us-central1-docker.pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+      - "us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
       - .
-  - name: "gcr.io/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/[docker](../../Containers_and_Orchestration/docker/SKILL.md)"
     args:
       - push
-      - "us-central1-docker.pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+      - "us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
   - name: "gcr.io/google.com/cloudsdktool/google-cloud-cli:stable"
     entrypoint: gcloud
     args:
       - run
       - deploy
       - api-service
-      - --image=us-central1-docker.pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA
+      - --image=us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA
       - --region=us-central1
       - --platform=managed
 images:
-  - "us-central1-docker.pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+  - "us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
 ```
 
 ### Step 7: IAM and Security
@@ -470,7 +470,7 @@ data "google_iam_policy" "restricted" {
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Service Account Keys in Pods
-Storing GCP service account keys as Kubernetes secrets creates credential management burden and rotation complexity. Use Workload Identity: annotate K8s SA with IAM SA email -- no keys needed.
+Storing GCP service account keys as [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) secrets creates credential management burden and rotation complexity. Use Workload Identity: annotate K8s SA with IAM SA email -- no keys needed.
 
 ### Anti-Pattern 2: Public IP on GKE Nodes
 Assigning public IPs to GKE node pools exposes attack surface. Use Cloud NAT for egress, private nodes for workloads. All node-to-node traffic stays within VPC.
@@ -499,21 +499,21 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Binary Authorization for container deployment attestation.
 - Secret Manager for secrets -- never in ConfigMaps or env vars.
 - IAM Conditions for time-bound, IP-restricted access.
-- Cloud Audit Logs enabled for all services.
+- Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs enabled for all services.
 
 ### Cost Optimization
 - Preemptible/Spot for stateless batch and worker workloads.
-- Committed Use Discounts for stable baseline capacity.
+- Committed Use Discounts for stable baseline [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - Cloud Run scale-to-zero for non-critical services.
 - BigQuery slot commitments for predictable analytics costs.
 - Label all resources for cost allocation.
 
-### Observability
-- Managed Prometheus for GKE monitoring.
+### [Observability](../../Observability_and_SecOps/observability/SKILL.md)
+- Managed Prometheus for GKE [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 - Cloud Logging with log-based metrics.
 - Cloud Trace for distributed tracing.
-- Cloud Profiler for continuous performance profiling.
-- Uptime checks for external endpoint monitoring.
+- Cloud Profiler for continuous performance [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md).
+- Uptime checks for external endpoint [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 - Error Reporting for automatic exception grouping.
 
 ## Rules
@@ -524,27 +524,27 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Cloud Build + Cloud Deploy for CI/CD with Skaffold.
 - Artifact Registry over Container Registry (new standard).
 - Resource labels for cost allocation and organization.
-- Cloud Audit Logs enabled for all services.
+- Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs enabled for all services.
 - IAM least privilege -- custom roles over predefined.
 - Budget alerts before any production deployment.
 - Shared VPC over peering for multi-project networking.
 - Preemptible/Spot for stateless batch workloads.
 - Cloud NAT for private cluster egress.
-- Managed Prometheus for GKE monitoring.
+- Managed Prometheus for GKE [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 - VPC-native clusters for pod IP addressability.
 - Regional clusters over zonal for workload HA.
 - Secret Manager for secrets.
 
 ## References
 - ../../../Global_References/gcp-advanced.md -- Gcp Advanced Topics
-- ../../../Global_References/gcp-compute.md -- GCP Compute
+- ../../../Global_References/[gcp-compute](../gcp-compute/SKILL.md).md -- GCP Compute
 - ../../../Global_References/gcp-data-ai.md -- GCP Data and AI
 - ../../../Global_References/gcp-devops.md -- Google Cloud DevOps
 - ../../../Global_References/gcp-fundamentals.md -- Gcp Fundamentals
-- ../../../Global_References/gcp-gke.md -- GCP GKE
+- ../../../Global_References/[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md).md -- GCP GKE
 - ../../../Global_References/gcp-infrastructure.md -- Google Cloud Infrastructure
-- ../../../Global_References/gcp-serverless.md -- GCP Serverless
+- ../../../Global_References/gcp-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md).md -- GCP [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)
 
 ## Handoff
-Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for multi-cloud IaC. Hand off to kubernetes-patterns for workload manifests on GKE.
+Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for [multi-cloud](../multi-cloud/SKILL.md) IaC. Hand off to [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-patterns for workload manifests on GKE.
 

@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-An Airflow DAG file is Python that runs on every scheduler heartbeat (to
+An Airflow DAG file is [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) that runs on every scheduler heartbeat (to
 parse the DAG structure) in addition to running each task at execution
 time — a slow, broken, or non-idempotent DAG file causes problems long
 before any task actually fails, by slowing down or breaking DAG parsing
@@ -28,7 +28,7 @@ correct, idempotent, and fast to parse, and validating them with
 `airflow dags test` and lint-style checks before they reach a production
 scheduler — diagnosing a DAG that's already stuck or a scheduler that's
 already unhealthy in production is covered separately in
-[airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md).
+[airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -49,7 +49,7 @@ already unhealthy in production is covered separately in
   Airflow 1.x, and some syntax here — e.g. `@task` decorators — isn't
   available before 2.0).
 - A local or CI-accessible Airflow environment (even a minimal
-  `airflow standalone` or the `astro` / `docker compose` based local
+  `airflow standalone` or the `astro` / `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose` based local
   dev setups most distributions provide) to actually run `airflow dags
   test`, not just visually review the DAG file.
 - Access to whatever the DAG's tasks actually depend on in a test/staging
@@ -66,7 +66,7 @@ already unhealthy in production is covered separately in
 1. **Keep all top-level DAG-file code cheap and side-effect-free** —
    anything at module level runs on every scheduler parse cycle, not just
    when the DAG actually executes:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from airflow.decorators import dag, task
    from datetime import datetime, timedelta
 
@@ -99,7 +99,7 @@ already unhealthy in production is covered separately in
 2. **Express task dependencies explicitly and readably**, using either
    the `>>`/`<<` bitshift operators or TaskFlow's automatic dependency
    inference from function calls passing data between tasks:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    @task
    def extract():
        ...
@@ -117,19 +117,19 @@ already unhealthy in production is covered separately in
    For non-TaskFlow (classic operator) DAGs, prefer explicit `>>` chains
    over relying on definition order, which is easy to misread once a DAG
    has more than a handful of tasks:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    extract_task >> transform_task >> load_task
    transform_task >> [validate_task, notify_task]
    ```
 
 3. **Choose the operator that matches what the task actually does**, not
-   the most familiar one. A `PythonOperator`/`@task` for arbitrary Python
+   the most familiar one. A `PythonOperator`/`@task` for arbitrary [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    logic; a provider-specific operator (`BigQueryInsertJobOperator`,
    `S3ToRedshiftOperator`, `KubernetesPodOperator`, etc.) when one exists
    for the target system, since it typically handles retries,
-   connections, and templating more correctly than a hand-rolled Python
+   connections, and templating more correctly than a hand-rolled [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    call to the same API:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 
    run_query = BigQueryInsertJobOperator(
@@ -139,14 +139,14 @@ already unhealthy in production is covered separately in
    ```
    A `KubernetesPodOperator`/`DockerOperator` is often the right choice
    when a task's actual logic lives in another language/runtime or needs
-   isolation from the scheduler's own Python environment, rather than
+   isolation from the scheduler's own [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment, rather than
    forcing everything through a `PythonOperator` shelling out to a
    subprocess.
 
 4. **Use a sensor (or the deferrable/async equivalent) to wait on an
    external condition, with an explicit timeout and reasonable poke
    interval** — never poll in a tight loop inside a `PythonOperator`:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
 
    wait_for_upstream_file = S3KeySensor(
@@ -162,7 +162,7 @@ already unhealthy in production is covered separately in
    task goes back to `up_for_reschedule` instead of holding a worker slot
    the entire wait) — use this for anything that might wait more than a
    few minutes; `mode="poke"` holds a worker slot for the whole wait,
-   which at scale can exhaust worker capacity with sensors doing nothing
+   which at scale can exhaust worker [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with sensors doing nothing
    but waiting. Always set an explicit `timeout` so a sensor that never
    sees its condition fails visibly instead of waiting forever.
 
@@ -170,7 +170,7 @@ already unhealthy in production is covered separately in
    date without corrupting state** — since retries, backfills, and manual
    re-runs all mean a task may execute more than once for the same
    `data_interval`:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    @task
    def load_daily_rollup(ds=None):
        # idempotent: overwrite/replace the partition for this date rather
@@ -190,7 +190,7 @@ already unhealthy in production is covered separately in
 
 6. **Set `start_date`, `schedule`, and `catchup` deliberately, understanding
    their interaction before deploying**:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    @dag(
        schedule="@daily",
        start_date=datetime(2024, 1, 1),
@@ -221,11 +221,11 @@ already unhealthy in production is covered separately in
    `catchup` settings.
 
 8. **Add a DAG-linting CI step** that checks for the structural issues
-   most likely to cause scheduler-health problems, not just Python
+   most likely to cause scheduler-health problems, not just [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    syntax errors:
    ```bash
    # confirm the file parses without raising, and check parse time
-   time python -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); \
+   time [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); \
      assert not db.import_errors, db.import_errors"
    ```
    A DAG file taking more than a second or two to parse is worth
@@ -271,7 +271,7 @@ already unhealthy in production is covered separately in
   backfill is needed, run it deliberately and separately via `airflow
   dags backfill` with an explicit date range (see the destructive-action
   warning on backfill in
-  [airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md)),
+  [airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md)),
   not by accident on first deploy.
 
 - **Symptom:** A task retried after a transient failure produces duplicate
@@ -307,7 +307,7 @@ already unhealthy in production is covered separately in
 upstream export file to land in object storage, then computes and loads a
 daily rollup table, idempotently, once per day.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from datetime import datetime, timedelta
 from airflow.decorators import dag, task
 from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
@@ -365,6 +365,6 @@ before the DAG is approved for the shared production scheduler.
 
 ## Cross-references
 
-- [airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md) — diagnosing a stuck/failed run or scheduler-health issue once this DAG is running in production, including the destructive-action risks of `airflow dags backfill`.
-- [dagster-and-prefect-pipeline-authoring](../dagster-and-prefect-pipeline-authoring/SKILL.md) — an asset-based alternative worth considering for new pipelines before committing to Airflow's task-based model.
-- [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md) — a comparable pre-production validation gate (config/topology checked before go-live) for the messaging side of a pipeline this DAG might consume from or publish to.
+- [airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md) — diagnosing a stuck/failed run or scheduler-health issue once this DAG is running in production, including the destructive-action risks of `airflow dags backfill`.
+- [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md) — an asset-based alternative worth considering for new pipelines before committing to Airflow's task-based model.
+- [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — a comparable pre-production validation gate (config/topology checked before go-live) for the messaging side of a pipeline this DAG might consume from or publish to.

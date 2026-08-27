@@ -31,7 +31,7 @@ Senior database optimizer with expertise in performance tuning, query optimizati
 1. **Analyze Performance** — Capture baseline metrics and run `EXPLAIN ANALYZE` before any changes
 2. **Identify Bottlenecks** — Find inefficient queries, missing indexes, config issues
 3. **Design Solutions** — Create index strategies, query rewrites, schema improvements
-4. **Implement Changes** — Apply optimizations incrementally with monitoring; validate each change before proceeding to the next
+4. **Implement Changes** — Apply optimizations incrementally with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md); validate each change before proceeding to the next
 5. **Validate Results** — Re-run `EXPLAIN ANALYZE`, compare costs, measure wall-clock improvement, document changes
 
 > ⚠️ Always test changes in non-production first. Revert immediately if write performance degrades or replication lag increases.
@@ -44,13 +44,13 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Query Optimization | `../../../Global_References/database-optimizer_query-optimization.md` | Analyzing slow queries, execution plans |
 | Index Strategies | `../../../Global_References/index-strategies.md` | Designing indexes, covering indexes |
-| PostgreSQL Tuning | `../../../Global_References/postgresql-tuning.md` | PostgreSQL-specific optimizations |
-| MySQL Tuning | `../../../Global_References/mysql-tuning.md` | MySQL-specific optimizations |
-| Monitoring & Analysis | `../../../Global_References/monitoring-analysis.md` | Performance metrics, diagnostics |
+| [PostgreSQL](../../Backend/postgresql/SKILL.md) Tuning | `../../../Global_References/[postgresql](../../Backend/postgresql/SKILL.md)-tuning.md` | [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific optimizations |
+| [MySQL](../../Backend/mysql/SKILL.md) Tuning | `../../../Global_References/[mysql](../../Backend/mysql/SKILL.md)-tuning.md` | [MySQL](../../Backend/mysql/SKILL.md)-specific optimizations |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & Analysis | `../../../Global_References/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-analysis.md` | Performance metrics, diagnostics |
 
 ## Common Operations & Examples
 
-### Identify Top Slow Queries (PostgreSQL)
+### Identify Top Slow Queries ([PostgreSQL](../../Backend/postgresql/SKILL.md))
 ```sql
 -- Requires pg_stat_statements extension
 SELECT query,
@@ -107,7 +107,7 @@ FROM   pg_stat_user_indexes
 WHERE  relname = 'orders';
 ```
 
-### MySQL: Find Slow Queries
+### [MySQL](../../Backend/mysql/SKILL.md): Find Slow Queries
 ```sql
 -- Inspect slow query log candidates
 SELECT * FROM performance_schema.events_statements_summary_by_digest
@@ -124,7 +124,7 @@ SELECT * FROM orders WHERE status = 'pending' AND created_at > NOW() - INTERVAL 
 ### MUST DO
 - Capture `EXPLAIN (ANALYZE, BUFFERS)` output **before** optimizing — this is the baseline
 - Measure performance before and after every change
-- Create indexes with `CONCURRENTLY` (PostgreSQL) to avoid table locks
+- Create indexes with `CONCURRENTLY` ([PostgreSQL](../../Backend/postgresql/SKILL.md)) to avoid table locks
 - Test in non-production; roll back if write performance or replication lag worsens
 - Document all optimization decisions with before/after metrics
 - Run `ANALYZE` after bulk data changes to refresh statistics
@@ -144,7 +144,7 @@ When optimizing database performance, provide:
 3. Optimization strategy with specific changes
 4. Implementation SQL / config changes
 5. Validation queries to measure improvement
-6. Monitoring recommendations
+6. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) recommendations
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/database-optimizer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/database-optimizer/)
 

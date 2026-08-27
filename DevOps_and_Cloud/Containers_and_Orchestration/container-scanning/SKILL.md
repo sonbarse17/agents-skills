@@ -22,7 +22,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- Container runtime (Docker, Podman)
+- Container runtime ([Docker](../docker/SKILL.md), [Podman](../podman/SKILL.md))
 - Container images to scan
 - Scanning tool installation
 
@@ -34,7 +34,7 @@ Use this skill when:
 | Grype | OSS | Fast | Accurate, SBOM |
 | Clair | OSS | Medium | Registry integration |
 | Snyk Container | Commercial | Fast | Fix suggestions |
-| Docker Scout | Commercial | Fast | GitHub integration |
+| [Docker](../docker/SKILL.md) Scout | Commercial | Fast | [GitHub](../../CI_CD/github/SKILL.md) integration |
 
 ## Trivy
 
@@ -47,8 +47,8 @@ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst
 # macOS
 brew install trivy
 
-# Docker
-docker pull aquasec/trivy
+# [Docker](../docker/SKILL.md)
+[docker](../docker/SKILL.md) pull aquasec/trivy
 ```
 
 ### Image Scanning
@@ -82,7 +82,7 @@ trivy fs /path/to/project
 # Scan Dockerfile
 trivy config Dockerfile
 
-# Scan Kubernetes manifests
+# Scan [Kubernetes](../kubernetes/SKILL.md) manifests
 trivy config k8s/
 ```
 
@@ -111,7 +111,7 @@ scan:
 ### CI Integration
 
 ```yaml
-# GitHub Actions
+# [GitHub](../../CI_CD/github/SKILL.md) Actions
 name: Container Security
 
 on:
@@ -126,19 +126,19 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build -t myapp:${{ github.sha }} .
+        run: [docker](../docker/SKILL.md) build -t myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }} .
 
       - name: Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'myapp:${{ github.sha }}'
+          image-ref: 'myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
 
       - name: Upload results
-        uses: github/codeql-action/upload-sarif@v3
+        uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: 'trivy-results.sarif'
 ```
@@ -189,29 +189,29 @@ ignore:
     expires: "2024-12-31"
 ```
 
-## Docker Scout
+## [Docker](../docker/SKILL.md) Scout
 
 ### Usage
 
 ```bash
-# Enable Docker Scout
-docker scout quickview myapp:latest
+# Enable [Docker](../docker/SKILL.md) Scout
+[docker](../docker/SKILL.md) scout quickview myapp:latest
 
 # Full CVE report
-docker scout cves myapp:latest
+[docker](../docker/SKILL.md) scout cves myapp:latest
 
 # Compare images
-docker scout compare myapp:v1 myapp:v2
+[docker](../docker/SKILL.md) scout compare myapp:v1 myapp:v2
 
 # Recommendations
-docker scout recommendations myapp:latest
+[docker](../docker/SKILL.md) scout recommendations myapp:latest
 ```
 
 ### CI Integration
 
 ```yaml
-- name: Docker Scout
-  uses: docker/scout-action@v1
+- name: [Docker](../docker/SKILL.md) Scout
+  uses: [docker](../docker/SKILL.md)/scout-action@v1
   with:
     command: cves
     image: ${{ env.IMAGE_NAME }}
@@ -225,9 +225,9 @@ docker scout recommendations myapp:latest
 
 ```bash
 # Enable scan on push
-aws ecr put-image-scanning-configuration \
+aws ecr put-[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration \
   --repository-name myapp \
-  --image-scanning-configuration scanOnPush=true
+  --[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true
 
 # Get scan findings
 aws ecr describe-image-scan-findings \
@@ -260,11 +260,11 @@ az acr repository show \
 # Enable vulnerability scanning
 gcloud artifacts repositories update myrepo \
   --location=us-central1 \
-  --enable-vulnerability-scanning
+  --enable-[vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md)
 
 # View vulnerabilities
-gcloud artifacts docker images describe \
-  us-central1-docker.pkg.dev/project/myrepo/myapp:latest \
+gcloud artifacts [docker](../docker/SKILL.md) images describe \
+  us-central1-[docker](../docker/SKILL.md).pkg.dev/project/myrepo/myapp:latest \
   --show-package-vulnerability
 ```
 
@@ -356,7 +356,7 @@ policies:
     allowed_bases:
       - alpine:3.18
       - ubuntu:22.04
-      - python:3.11-slim
+      - [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.11-slim
 ```
 
 ## Common Issues
@@ -386,6 +386,6 @@ policies:
 
 ## Related Skills
 
-- [docker-management](../../../devops/containers/docker-management/) - Container basics
-- [container-hardening](../../hardening/container-hardening/) - Security hardening
-- [kubernetes-hardening](../../hardening/kubernetes-hardening/) - K8s security
+- [docker-management](../../../devops/containers/[docker-management](../[docker](../docker/SKILL.md)-management/SKILL.md)/) - Container basics
+- [container-hardening](../../hardening/[container-hardening](../container-hardening/SKILL.md)/) - Security hardening
+- [kubernetes-hardening](../../hardening/[kubernetes-hardening](../[kubernetes](../kubernetes/SKILL.md)-hardening/SKILL.md)/) - K8s security

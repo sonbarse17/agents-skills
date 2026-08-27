@@ -293,7 +293,7 @@ Console.WriteLine(result.Content[0].Text);
 
 | Tool | Class | Purpose |
 |------|-------|---------|
-| Code Interpreter | `CodeInterpreterToolDefinition` | Execute Python code |
+| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code |
 | File Search | `FileSearchToolDefinition` | Search uploaded files |
 | Function Calling | `FunctionToolDefinition` | Call custom functions |
 | Bing Grounding | `BingGroundingToolDefinition` | Web search via Bing |
@@ -356,5 +356,5 @@ catch (RequestFailedException ex)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.AI.Projects |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.ai.projects |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects |
-| Samples | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects/samples |
+| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects |
+| Samples | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects/samples |

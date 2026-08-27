@@ -30,16 +30,16 @@ production — the fix (renew it) is trivial, but the failure mode (a
 service silently stops accepting connections at exactly midnight on
 expiry, with no gradual degradation to warn anyone) is brutal, and it
 recurs constantly because certificate expiry is invisible until it
-happens. [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md)
-solves this well *inside* a single Kubernetes cluster via a
+happens. [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
+solves this well *inside* a single [Kubernetes](../kubernetes/SKILL.md) cluster via a
 reconciliation loop, but most enterprises have a fleet that isn't just
-Kubernetes: VMs, on-prem load balancers, network appliances, multiple
+[Kubernetes](../kubernetes/SKILL.md): VMs, on-prem load balancers, network appliances, multiple
 clusters across clouds, and internal services trusting an enterprise CA
 (Microsoft AD CS, a cloud-managed private CA, or a hand-rolled internal
 root) rather than a public ACME CA. This skill covers that broader
 scope — integrating with an enterprise/internal CA as the trust root,
 automating rotation across a heterogeneous fleet where no single
-Kubernetes controller has visibility, building expiry monitoring that
+[Kubernetes](../kubernetes/SKILL.md) controller has visibility, building expiry [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) that
 covers every certificate regardless of where it lives, and designing a
 CA hierarchy (root/intermediate/issuing tiers) that scales across many
 teams and services without becoming an unmanageable sprawl of
@@ -49,29 +49,29 @@ independently-issued, independently-tracked certificates.
 
 - Standing up or reviewing an enterprise CA hierarchy (root, one or more
   intermediate/issuing CAs) that will back internal TLS/mTLS across many
-  services, not just one Kubernetes cluster.
+  services, not just one [Kubernetes](../kubernetes/SKILL.md) cluster.
 - Integrating a fleet's certificate issuance with an enterprise CA —
   Microsoft Active Directory Certificate Services (AD CS), a cloud
   provider's private CA service (AWS Private CA, Google CA Service,
-  Azure Key Vault-integrated CA), or HashiCorp Vault's PKI engine used
+  Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-integrated CA), or HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine used
   as the org-wide issuing point (see
-  [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md)
+  [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
   for operating that engine itself).
 - Automating certificate rotation across a mixed fleet — VMs, on-prem
-  appliances, multiple Kubernetes clusters, load balancers — where no
+  appliances, multiple [Kubernetes](../kubernetes/SKILL.md) clusters, load balancers — where no
   single cluster-scoped controller has visibility into every
   certificate.
-- Building or improving fleet-wide certificate expiry monitoring and
-  alerting, so an expiring cert is caught weeks ahead rather than
+- Building or improving fleet-wide certificate expiry [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and
+  [alerting](../../Observability_and_SecOps/alerting/SKILL.md), so an expiring cert is caught weeks ahead rather than
   discovered as an outage.
 - Investigating a recurring pattern of expiry-related outages and
-  wanting a systemic fix (inventory, automation, alerting) rather than
+  wanting a systemic fix (inventory, automation, [alerting](../../Observability_and_SecOps/alerting/SKILL.md)) rather than
   repeatedly firefighting the next individual expiry.
 - Migrating certificate issuance off manual/ad hoc processes (a shared
   spreadsheet of expiry dates, a person who "just remembers") onto an
   automated, auditable pipeline.
 - Deciding the right split between cert-manager (for in-cluster
-  Kubernetes workloads) and enterprise-CA-integrated automation (for
+  [Kubernetes](../kubernetes/SKILL.md) workloads) and enterprise-CA-integrated automation (for
   everything else) in an org with both.
 
 ## Prerequisites & environment
@@ -88,23 +88,23 @@ independently-issued, independently-tracked certificates.
   AD CS's Certificate Enrollment Web Services / `certreq` for Windows-
   centric fleets, a cloud private CA's API/IAM permissions (AWS Private
   CA's `IssueCertificate` action, GCP CA Service's issuer pool), or
-  Vault's PKI engine API if Vault is the org's chosen internal CA.
+  [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine API if [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is the org's chosen internal CA.
 - An inventory mechanism — even a lightweight one — covering every
   certificate in scope: hostname/SAN, issuing CA, expiry date, and an
   owning team, before automating anything. Automation applied to an
   incomplete inventory just automates the certificates someone
   remembered to list.
 - A distribution/rotation mechanism appropriate to each fleet segment:
-  a configuration management tool (Ansible/Puppet/Chef) pushing renewed
-  certs to VMs and appliances, `cert-manager` for in-cluster Kubernetes
+  a configuration management tool ([Ansible](../../Infrastructure_as_Code/ansible/SKILL.md)/Puppet/Chef) pushing renewed
+  certs to VMs and appliances, `cert-manager` for in-cluster [Kubernetes](../kubernetes/SKILL.md)
   workloads, and a scripted ACME/CA-API client for anything else (load
   balancers, network appliances without native ACME support).
-- Monitoring/alerting infrastructure (Prometheus + a blackbox/certificate
-  exporter, a dedicated certificate-monitoring SaaS, or a scheduled
+- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../Observability_and_SecOps/alerting/SKILL.md) infrastructure (Prometheus + a blackbox/certificate
+  exporter, a dedicated certificate-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) SaaS, or a scheduled
   script) capable of checking expiry across every certificate in the
   inventory, not just the ones already covered by an in-cluster
   controller.
-- Change-management awareness for anything issued from a shared
+- [Change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md) awareness for anything issued from a shared
   enterprise CA — a compromised or misissued intermediate affects every
   certificate it has ever signed, so intermediate-level changes (new
   intermediate, revocation, key rotation) need broader review than a
@@ -122,8 +122,8 @@ independently-issued, independently-tracked certificates.
      └── Production Issuing CA (online, signs leaf certs for prod services)
      └── Internal/Dev Issuing CA (online, signs leaf certs for non-prod)
    ```
-   If the org already runs Vault's PKI engine for internal issuance, its
-   intermediate ([vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md))
+   If the org already runs [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine for internal issuance, its
+   intermediate ([vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md))
    can itself be the "Production Issuing CA" node — this skill is about
    scaling rotation and inventory *across* however many issuing points
    like that the org has, not replacing them.
@@ -169,19 +169,19 @@ independently-issued, independently-tracked certificates.
 
 4. **Automate rotation per fleet segment, matched to that segment's
    deployment mechanism** — there is no single tool that reaches VMs,
-   appliances, and multiple Kubernetes clusters uniformly:
-   - **Kubernetes workloads:** `cert-manager` per cluster remains the
+   appliances, and multiple [Kubernetes](../kubernetes/SKILL.md) clusters uniformly:
+   - **[Kubernetes](../kubernetes/SKILL.md) workloads:** `cert-manager` per cluster remains the
      right tool — see
-     [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md) —
+     [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) —
      configured with an `Issuer`/`ClusterIssuer` pointed at the
-     enterprise CA (Vault PKI backend, or a cert-manager
+     enterprise CA ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI backend, or a cert-manager
      `venafi-issuer`/ACME-fronted enterprise CA integration where
      available) rather than a public ACME CA.
-   - **VMs/on-prem servers:** a configuration management run (Ansible
+   - **VMs/on-prem servers:** a configuration management run ([Ansible](../../Infrastructure_as_Code/ansible/SKILL.md)
      example) that requests renewal ahead of `renewBefore`-equivalent
      margin and redeploys the cert + reloads the consuming service:
      ```yaml
-     # ansible playbook task (illustrative)
+     # [ansible](../../Infrastructure_as_Code/ansible/SKILL.md) playbook task (illustrative)
      - name: renew certificate if within 30 days of expiry
        when: cert_days_remaining | int < 30
        block:
@@ -201,20 +201,20 @@ independently-issued, independently-tracked certificates.
 
 5. **Set `renewBefore`-equivalent margins deliberately per fleet
    segment**, accounting for the segment's actual deployment lead time
-   — a VM fleet needing a change-management-approved deployment window
-   needs a longer lead time than an automated Kubernetes reconcile loop:
+   — a VM fleet needing a [change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-approved deployment window
+   needs a longer lead time than an automated [Kubernetes](../kubernetes/SKILL.md) reconcile loop:
    ```
-   Kubernetes (cert-manager, automated reconcile): renew 15-30 days before expiry
+   [Kubernetes](../kubernetes/SKILL.md) (cert-manager, automated reconcile): renew 15-30 days before expiry
    VM fleet (config-management run, may need a change window): renew 45-60 days before expiry
    Network appliances (manual-adjacent, longer lead time): renew 60-90 days before expiry
    ```
 
 6. **Alert on expiry as a first-class, fleet-wide signal**, independent
    of whether automation is expected to have already renewed it —
-   automation failing silently is exactly the case alerting exists to
+   automation failing silently is exactly the case [alerting](../../Observability_and_SecOps/alerting/SKILL.md) exists to
    catch:
    ```yaml
-   # Prometheus alerting rule using a blackbox/certificate exporter
+   # Prometheus [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule using a blackbox/certificate exporter
    - alert: CertificateExpiringSoon
      expr: probe_ssl_earliest_cert_expiry - time() < 30 * 86400
      for: 1h
@@ -230,7 +230,7 @@ independently-issued, independently-tracked certificates.
    ```
    Route the critical-tier alert into the paging tool's escalation
    policy (see
-   [pagerduty-and-opsgenie-oncall-configuration](../../../incident-tooling-and-itsm/skills/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)),
+   [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md)),
    not just a dashboard — an expiry alert nobody's paged for is no
    better than no alert.
 
@@ -250,8 +250,8 @@ independently-issued, independently-tracked certificates.
    > **Warning:** rotating or revoking an intermediate CA before every
    > downstream trust store has the new chain is a fleet-wide outage
    > risk, not a routine change — treat it with the same rehearsal
-   > discipline as a Vault seal migration (see
-   > [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md)),
+   > discipline as a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) seal migration (see
+   > [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)),
    > including a non-production rehearsal and a documented rollback
    > plan, before touching a production root/intermediate.
 
@@ -275,20 +275,20 @@ independently-issued, independently-tracked certificates.
   the ones inventory is missing, and those are exactly the ones that
   cause surprise outages.
 - Match rotation automation to each fleet segment's actual deployment
-  mechanism and lead time (Kubernetes reconcile loop vs. a
+  mechanism and lead time ([Kubernetes](../kubernetes/SKILL.md) reconcile loop vs. a
   change-managed VM deployment window) rather than assuming one
   `renewBefore` value fits every environment.
 - Alert on expiry independently of whether automation "should" have
   already handled it — a silent automation failure is precisely the
-  scenario expiry alerting exists to catch, and it should page, not just
+  scenario expiry [alerting](../../Observability_and_SecOps/alerting/SKILL.md) exists to catch, and it should page, not just
   log.
 - Treat intermediate/root CA rotation as a rehearsed, fleet-wide event
   with a distribution-before-issuance ordering, never a routine change
   applied directly to production.
-- Prefer a single enterprise CA integration point (Vault PKI, AD CS, or
+- Prefer a single enterprise CA integration point ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI, AD CS, or
   a cloud private CA) that every fleet segment issues from, over
   multiple independently-managed CAs per team — consolidated issuance
-  is what makes a single fleet-wide inventory and monitoring approach
+  is what makes a single fleet-wide inventory and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) approach
   actually complete.
 - Cross-reference active-scan-based inventory against the CA's own
   issuance log — either source alone can miss certificates the other
@@ -300,10 +300,10 @@ independently-issued, independently-tracked certificates.
 - **Symptom:** A production outage occurs at exactly midnight with no
   warning, traced to a certificate that expired — and it turns out
   nobody had that host in the monitored inventory at all.
-  **Fix:** This is an inventory gap, not a monitoring-tool failure —
+  **Fix:** This is an inventory gap, not a [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-tool failure —
   build inventory from both active scanning and the issuing CA's own
   records (step 3), and treat "certificate not in inventory" the same
-  as any other unmanaged-asset finding, since automation and alerting
+  as any other unmanaged-asset finding, since automation and [alerting](../../Observability_and_SecOps/alerting/SKILL.md)
   built on an incomplete inventory only ever protects what's already
   known.
 
@@ -327,7 +327,7 @@ independently-issued, independently-tracked certificates.
   new file exists on disk.
 
 - **Symptom:** Different teams have each stood up their own small
-  internal CA over time (a self-signed root here, a Vault PKI mount
+  internal CA over time (a self-signed root here, a [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI mount
   there), and there's no single place to answer "what's our total
   certificate expiry exposure this month."
   **Fix:** Consolidate onto a single enterprise CA integration point
@@ -347,71 +347,71 @@ independently-issued, independently-tracked certificates.
 
 ## Worked example
 
-**Scenario:** An enterprise runs three fleet segments — 40 Kubernetes
+**Scenario:** An enterprise runs three fleet segments — 40 [Kubernetes](../kubernetes/SKILL.md)
 clusters across two clouds, ~300 VMs running internal services, and a
 dozen on-prem load balancers — all needing certificates trusted under
-one enterprise root, with fleet-wide expiry monitoring after a recent
+one enterprise root, with fleet-wide expiry [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) after a recent
 outage caused by an unmanaged VM's certificate expiring unnoticed.
 
-1. CA hierarchy consolidated onto Vault's PKI engine as the single
+1. CA hierarchy consolidated onto [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine as the single
    Production Issuing CA, itself signed by an offline enterprise root
    (see
-   [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md)
+   [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
    for that setup).
 
-2. Kubernetes clusters: each cluster's cert-manager `ClusterIssuer` is
-   pointed at Vault's PKI engine instead of a public ACME CA:
+2. [Kubernetes](../kubernetes/SKILL.md) clusters: each cluster's cert-manager `ClusterIssuer` is
+   pointed at [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine instead of a public ACME CA:
    ```yaml
    apiVersion: cert-manager.io/v1
    kind: ClusterIssuer
-   metadata: { name: vault-enterprise-ca }
+   metadata: { name: [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-enterprise-ca }
    spec:
-     vault:
-       server: "https://vault.example.internal:8200"
+     [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md):
+       server: "https://[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.internal:8200"
        path: "pki_int/sign/production-services"
        auth:
-         kubernetes:
+         [kubernetes](../kubernetes/SKILL.md):
            role: "cert-manager"
-           mountPath: "/v1/auth/kubernetes"
+           mountPath: "/v1/auth/[kubernetes](../kubernetes/SKILL.md)"
    ```
 
-3. VM fleet: an Ansible playbook run nightly checks each host's
+3. VM fleet: an [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) playbook run nightly checks each host's
    certificate expiry against a 45-day threshold, requests renewal from
-   Vault's PKI `issue` endpoint, deploys the renewed cert, and reloads
+   [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI `issue` endpoint, deploys the renewed cert, and reloads
    the consuming service — logging every action to the central
    inventory system.
 
 4. Fleet-wide inventory reconciles active scan results (step 3 of the
-   guidance) against Vault's PKI issuance log nightly, flagging any
+   guidance) against [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI issuance log nightly, flagging any
    certificate present in one source but not the other for manual
    investigation — this is exactly how the previously-unmanaged VM
    (root cause of the earlier outage) gets caught this time, three
    weeks before its next certificate would have expired.
 
-5. Prometheus alerting (step 6) fires a `warning` at 30 days and a
+5. Prometheus [alerting](../../Observability_and_SecOps/alerting/SKILL.md) (step 6) fires a `warning` at 30 days and a
    `critical`, paging alert at 7 days for any certificate across all
    three fleet segments, routed through the existing on-call escalation
    policy.
 
-Result: a single enterprise CA (Vault-backed), one consolidated
+Result: a single enterprise CA ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-backed), one consolidated
 inventory covering all three fleet segments regardless of deployment
-mechanism, and expiry alerting that pages on-call well before any
+mechanism, and expiry [alerting](../../Observability_and_SecOps/alerting/SKILL.md) that pages on-call well before any
 outage — rather than three independently-tracked, partially-automated
 certificate populations.
 
 ## Cross-references
 
-- [cert-manager-tls-automation](../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md) —
-  the Kubernetes-native reconciliation piece this skill's fleet-wide
+- [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) —
+  the [Kubernetes](../kubernetes/SKILL.md)-native reconciliation piece this skill's fleet-wide
   scope wraps around; use cert-manager as-is for in-cluster workloads
   and point its `Issuer`/`ClusterIssuer` at the enterprise CA described
   here.
-- [vault-operations-and-pki-engine-configuration](../vault-operations-and-pki-engine-configuration/SKILL.md) —
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   operating the PKI engine that can serve as the enterprise CA's
   issuing point referenced throughout this skill.
-- [enterprise-sso-and-idp-federation-configuration](../enterprise-sso-and-idp-federation-configuration/SKILL.md) —
+- [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain expiry problem (IdP/SP signing certificates)
   in a different federation context.
-- [pagerduty-and-opsgenie-oncall-configuration](../../../incident-tooling-and-itsm/skills/pagerduty-and-opsgenie-oncall-configuration/SKILL.md) —
+- [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) —
   where fleet-wide expiry alerts should route so a critical-tier warning
   actually pages a human, not just logs to a dashboard.

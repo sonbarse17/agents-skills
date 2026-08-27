@@ -25,7 +25,7 @@ Master design system architecture to create consistent, maintainable, and scalab
 - Semantic tokens (contextual meaning: text-primary, surface-elevated)
 - Component tokens (specific usage: button-bg, card-border)
 - Token naming conventions and organization
-- Multi-platform token generation (CSS, iOS, Android)
+- Multi-platform token generation (CSS, iOS, [Android](../../../Mobile/android/SKILL.md))
 
 ### 2. Theming Infrastructure
 
@@ -54,7 +54,7 @@ Master design system architecture to create consistent, maintainable, and scalab
 
 ## Quick Start
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Design tokens with CSS custom properties
 const tokens = {
   colors: {

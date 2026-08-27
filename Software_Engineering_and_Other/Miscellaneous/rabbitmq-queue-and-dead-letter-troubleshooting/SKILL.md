@@ -28,8 +28,8 @@ successfully process, or a dead-letter policy that exists but routes
 nowhere useful. This skill is the diagnostic playbook for isolating which
 of those is actually happening and fixing it safely, building on the
 topology and validation decisions covered in
-[rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) and
-[rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md)
+[rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) and
+[rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md)
 rather than re-deriving them.
 
 ## When to use
@@ -56,8 +56,8 @@ rather than re-deriving them.
   skill's steps.
 - Knowledge of the intended dead-letter topology (which exchange/queue a
   rejected message should land in) — established in
-  [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) and checked
-  in [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md).
+  [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) and checked
+  in [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md).
 - Access to consumer application logs/metrics, since a queue-level view
   alone can show *that* messages aren't draining but not *why* the
   consumer can't process them.
@@ -86,7 +86,7 @@ rather than re-deriving them.
 
 2. **Check consumer prefetch (`basic_qos`) and acknowledgment mode** before
    assuming the consumer code itself is slow:
-   ```python
+   ```[python](../../Languages/python/SKILL.md)
    channel.basic_qos(prefetch_count=20)  # cap in-flight unacked messages per consumer
    channel.basic_consume(queue="orders.fulfillment", on_message_callback=handle, auto_ack=False)
    ```
@@ -111,7 +111,7 @@ rather than re-deriving them.
    never successfully processes is the signature of a poison message: the
    consumer nacks/requeues it (or crashes after partial processing) on
    every attempt, and without a delivery-count limit it cycles forever,
-   consuming consumer capacity and blocking every message queued behind it
+   consuming consumer [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and blocking every message queued behind it
    if the consumer processes in strict order.
 
 4. **Cap redelivery attempts with `x-delivery-limit` (quorum queues) so a
@@ -153,7 +153,7 @@ rather than re-deriving them.
    application-level rejection (a real processing bug or bad data),
    TTL expiry (consumers falling behind badly enough that messages age
    out), or `maxlen` overflow (queue length limit hit, from
-   [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md)) —
+   [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md)) —
    each has a different fix, and treating all DLQ growth as "just replay
    it" without understanding the reason risks replaying the same poison
    message back into the same failure loop.
@@ -214,7 +214,7 @@ rather than re-deriving them.
   the same exception every time.
   **Fix:** This is a poison message with no delivery-count limit in place.
   Set `x-delivery-limit` (quorum queues) so it dead-letters after a bounded
-  number of attempts instead of consuming consumer capacity forever, and
+  number of attempts instead of consuming consumer [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) forever, and
   separately fix (or at minimum log-and-skip) whatever consumer bug or bad
   data causes the exception, since dead-lettering the message doesn't fix
   the underlying data or code issue.
@@ -247,12 +247,12 @@ rather than re-deriving them.
   fixed before replay. Inspect a sample of the DLQ's `x-death` reason and
   message body first, confirm the fix addresses that specific cause, and
   replay a small batch before replaying the rest — a full-DLQ blind replay
-  is effectively re-running the same incident.
+  is effectively re-running the same [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 ## Worked example
 
 **Scenario:** The `orders.fulfillment.us-east` quorum queue (from
-[rabbitmq-configuration](../rabbitmq-configuration/SKILL.md)'s worked
+[rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)'s worked
 example) pages on-call for "queue depth growing," and its dead-letter
 queue `orders.fulfillment.dead` is also non-empty, which is unusual.
 
@@ -292,7 +292,7 @@ or length-limit overflow — this is a poison-message pattern, not a
 throughput problem.
 
 Root cause: the same schema-evolution discipline described in
-[kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md)
+[kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md)
 was never applied here — this producer's payload isn't
 schema-validated before publish, and the consumer assumes a field is
 always present that isn't. Immediate mitigation: patch
@@ -300,7 +300,7 @@ the consumer to treat the missing field as optional (matching how the
 Kafka-side schema guidance would have caught this at registration time),
 deploy, then verify no new `rejected` dead-letters accumulate. Because a
 `delivery-limit` of 5 was already set on this queue's policy
-(per [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md)),
+(per [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md)),
 the poison messages stopped looping after their fourth/fifth attempt
 instead of blocking the queue indefinitely — after the consumer fix ships,
 the 82 dead-lettered messages are replayed in batches of 10, confirming
@@ -309,7 +309,7 @@ requeueing all 82 at once.
 
 ## Cross-references
 
-- [rabbitmq-configuration](../rabbitmq-configuration/SKILL.md) — the exchange/queue/dead-letter topology this skill diagnoses problems within.
-- [rabbitmq-configuration-validation](../rabbitmq-configuration-validation/SKILL.md) — the pre-production checks (length limits, dead-letter chain wiring) that prevent many of the pileups diagnosed here.
-- [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md) — the equivalent diagnostic playbook for Kafka consumer-side pileup, useful when a system uses both brokers.
-- [nats-and-pulsar-lightweight-messaging-configuration](../nats-and-pulsar-lightweight-messaging-configuration/SKILL.md) — comparable redelivery/dead-letter concepts (JetStream max-deliver, Pulsar DLQ policy) if part of the estate is on a lighter-weight broker instead.
+- [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — the exchange/queue/dead-letter topology this skill diagnoses problems within.
+- [rabbitmq-configuration-validation](../[rabbitmq-configuration-validation](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)-validation/SKILL.md)/SKILL.md) — the pre-production checks (length limits, dead-letter chain wiring) that prevent many of the pileups diagnosed here.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — the equivalent diagnostic playbook for Kafka consumer-side pileup, useful when a system uses both brokers.
+- [nats-and-pulsar-lightweight-messaging-configuration](../[nats-and-pulsar-lightweight-messaging-configuration](../nats-and-pulsar-lightweight-messaging-configuration/SKILL.md)/SKILL.md) — comparable redelivery/dead-letter concepts (JetStream max-deliver, Pulsar DLQ policy) if part of the estate is on a lighter-weight broker instead.

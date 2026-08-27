@@ -27,7 +27,7 @@ metadata:
 ## Purpose
 
 An OCI-hosted Internal Developer Platform touches a compartment/Identity
-Domain hierarchy, an OKE (Oracle Kubernetes Engine) cluster, a Backstage
+Domain hierarchy, an OKE (Oracle [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Engine) cluster, a Backstage
 instance, a managed Postgres catalog database, a scaffolding template, a
 provisioning API, and a scorecard model. Most of these phases are covered
 in depth elsewhere in this repo — but this repo does not currently carry a
@@ -59,9 +59,9 @@ everything else defers to the skill it links to.
   CIS OCI Landing Zone.
 - Terraform maturity — every phase below is expressed as IaC via the CIS
   OCI Landing Zone Terraform reference, not manual OCI Console clicks.
-- `kubectl`, `helm` ≥ 3.8, and the OCI CLI (`oci ce cluster ...`) for
+- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, and the OCI CLI (`oci ce cluster ...`) for
   cluster provisioning and kubeconfig retrieval.
-- A Node.js/Yarn toolchain to build and customize the Backstage app.
+- A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A registered domain and OCI DNS zone (or delegated subdomain) for
   Backstage's ingress hostname and a managed certificate.
 - A decision, before Phase 2, on whether platform tooling lives in a
@@ -70,7 +70,7 @@ everything else defers to the skill it links to.
 - A named approver for the Phase 6 self-service gate, in place before that
   phase goes live.
 - **A known gap to plan around:** this repo's
-  [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)
+  [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
   skill covers EKS/AKS/GKE only, not OKE. Phase 2 below gives the OKE
   equivalent directly; use the EKS/AKS/GKE skill only for its
   cloud-agnostic node-pool-sizing and workload-identity *concepts*, not
@@ -83,7 +83,7 @@ everything else defers to the skill it links to.
 configure Identity Domains and IAM policies scoped to compartments, deploy
 the CIS OCI Landing Zone Terraform reference, and enable Cloud Guard and
 Security Zones tenancy-wide before provisioning anything else, per
-[oci-landing-zone-setup](../../../cloud/skills/oci-landing-zone-setup/SKILL.md).
+[oci-landing-zone-setup](../../../cloud/skills/[oci-landing-zone-setup](../oci-landing-zone-setup/SKILL.md)/SKILL.md).
 **Validate with that skill's canary-compartment step before continuing** —
 a Security Zone that later denies a resource shape (e.g., a public load
 balancer) already in use by Phase 2's cluster forces avoidable rework.
@@ -91,9 +91,9 @@ balancer) already in use by Phase 2's cluster forces avoidable rework.
 **Phase 2 — OKE cluster with Dynamic-Group-based workload identity.**
 Because this repo has no dedicated OKE skill, provision the cluster
 directly: create the OKE cluster in the `platform` compartment with a
-pinned Kubernetes version and a managed node pool sized for Backstage's
+pinned [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) version and a managed node pool sized for Backstage's
 steady backend load (OKE also offers virtual node pools for
-serverless-style scaling, worth considering for bursty CI workloads
+[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-style scaling, worth considering for bursty CI workloads
 scaffolded later, but the platform-tooling node pool itself should be
 sized for predictable steady load). Configure workload identity using
 OCI's **Dynamic Groups** and **Resource Principals** — the OCI analog to
@@ -108,22 +108,22 @@ secret-family in compartment platform where target.secret.name=
 convenience). Record the Dynamic Group's OCID — Phase 3 and Phase 6 both
 reference it. For general node-pool-sizing and workload-identity-as-a-
 *concept* framing (not OCI syntax), the shape of
-[managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md)'s
+[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)'s
 node-group and workload-identity guidance still applies by analogy.
 
-**Phase 3 — Backstage on OKE, backed by OCI Database with PostgreSQL.**
+**Phase 3 — Backstage on OKE, backed by OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
 Package Backstage as a Helm chart and deploy it against an OCI Database
-with PostgreSQL instance (multi-AZ within the region beyond a pilot) as
+with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance (multi-AZ within the region beyond a pilot) as
 the catalog database, with the Backstage backend pod's node covered by
 the Phase 2 Dynamic Group so it can call
-`secrets-retrieval` on OCI Vault for the DB credential via a Resource
+`secrets-retrieval` on OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for the DB credential via a Resource
 Principal — never an embedded connection string. Chart packaging follows
-[helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
-[backstage-plugin-development](../backstage-plugin-development/SKILL.md).
+[backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
-template producing a Dockerfile, a CI workflow (GitHub Actions or OCI
+template producing a Dockerfile, a CI workflow ([GitHub](../../CI_CD/github/SKILL.md) Actions or OCI
 DevOps), catalog registration, and — OCI-specific — documentation of which
 Dynamic Group matching rule a newly scaffolded service needs to be
 included under (since OCI's model grants identity by Dynamic Group
@@ -131,28 +131,28 @@ membership rather than a per-ServiceAccount annotation, a golden-path
 template here should scaffold the IAM policy statement request as a
 reviewable artifact, not assume it self-provisions). Tier by complexity.
 See
-[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md).
+[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 **Phase 5 — Validate the golden path end-to-end.** Run the Phase 4
 template through a pipeline that scaffolds a real instance, builds,
 deploys to an ephemeral OKE namespace, smoke-tests, and tears everything
 down on both success and failure, before publishing it as the org
 default. See
-[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md).
+[golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md).
 
 **Phase 6 — Self-service API wired to OCI provisioning.** Build the
 Scaffolder custom actions that let a developer request an OCI Database
-with PostgreSQL instance or a new Dynamic-Group-scoped IAM policy
+with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance or a new Dynamic-Group-scoped IAM policy
 statement through the catalog. Model the request as an explicit state
 machine, gate production-tier database shapes and any IAM policy broader
 than a single named secret/compartment behind human approval, and keep
 policy/budget rules external. The OCI-specific provisioning call —
-creating the database instance via the Database with PostgreSQL API using
+creating the database instance via the Database with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) API using
 a Resource Principal scoped to the requesting team's compartment, and
 drafting (never auto-applying without review) the corresponding IAM
 policy statement scoping a Dynamic Group to that exact resource — is
 unique to this phase; the approval-gate pattern is generic. See
-[platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md).
+[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
 
 **Phase 7 — Scorecards.** Define checks including OCI-specific ones: is
 the service's identity Dynamic-Group/Resource-Principal-based rather than
@@ -160,25 +160,25 @@ a long-lived API signing key embedded anywhere, does the database instance
 have automated backups enabled, does Cloud Guard report no open findings
 for the service's compartment, is the compartment tagged per the Phase 1
 tagging policy. See
-[service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md).
+[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — Multi-tenancy.** If more than one team shares the Phase 2
+**Phase 8 — [Multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
 cluster, decide namespace-per-team vs. compartment-per-team (OCI's
 compartment model, from Phase 1, makes compartment-per-team relatively
 cheap and gives cleaner IAM policy boundaries than namespace RBAC alone),
 scope each team's Dynamic Group matching rule and IAM policy to its
 namespace/compartment, and enforce ResourceQuotas before onboarding a
 second team. See
-[multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md).
+[multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md).
 
 **Phase 9 — Rollout, operating model, and measurement.** Sequence
 adoption starting from a pilot team with genuine current pain, run the
 platform team per the "thinnest viable platform" discipline, and measure
 with SPACE/DX Core 4 metrics. See
-[idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md),
-[platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
-[developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md).
+[developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -261,11 +261,11 @@ one quarter.
    '<PLATFORM_COMPARTMENT_OCID>'}`, and an IAM policy granting it
    `use secret-family` scoped to the specific catalog-DB secret only.
 3. **Phase 3:** Backstage is packaged as `charts/backstage-meridian`,
-   deployed against an OCI Database with PostgreSQL instance
+   deployed against an OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance
    `meridian-backstage-catalog` (multi-AZ), with the backend pod reading
-   its DB credential from OCI Vault via the Phase 2 Resource Principal.
+   its DB credential from OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) via the Phase 2 Resource Principal.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a GitHub Actions workflow, and a documented IAM
+   producing a Dockerfile, a [GitHub](../../CI_CD/github/SKILL.md) Actions workflow, and a documented IAM
    policy-statement request template for the service's own Dynamic Group
    membership.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001`, builds,
@@ -274,7 +274,7 @@ one quarter.
 6. **Phase 6:** A Scaffolder action `custom:oci:provisionPostgresDb`
    checks an OPA policy (auto-approve the smallest shape/dev, require
    approval otherwise), and on approval provisions via the Database with
-   PostgreSQL API using a Resource Principal scoped to the requesting
+   [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) API using a Resource Principal scoped to the requesting
    team's compartment.
 7. **Phase 7:** A scorecard adds a "Dynamic Group identity, not API key"
    check, weighted highly under Security.
@@ -286,14 +286,14 @@ one quarter.
 
 ## Cross-references
 
-- [oci-landing-zone-setup](../../../cloud/skills/oci-landing-zone-setup/SKILL.md) — Phase 1.
-- [managed-kubernetes-eks-aks-gke](../../../kubernetes-platform/skills/managed-kubernetes-eks-aks-gke/SKILL.md) — Phase 2 conceptual analog only (this repo has no dedicated OKE skill).
-- [helm-chart-authoring](../../../kubernetes-platform/skills/helm-chart-authoring/SKILL.md) — Phase 3 chart packaging.
-- [backstage-plugin-development](../backstage-plugin-development/SKILL.md) — Phase 3 custom backend/frontend logic.
-- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md) — Phase 4.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md) — Phase 6.
-- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md) — Phase 7.
-- [multi-tenancy-and-team-workspace-design-for-idp](../multi-tenancy-and-team-workspace-design-for-idp/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md), [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md), [developer-experience-measurement-and-platform-adoption](../developer-experience-measurement-and-platform-adoption/SKILL.md) — Phase 9.
-- [complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md) — the same shape on AWS, a useful comparison for the identity-model differences (IRSA vs. Dynamic Groups) called out above.
+- [oci-landing-zone-setup](../../../cloud/skills/[oci-landing-zone-setup](../oci-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1.
+- [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2 conceptual analog only (this repo has no dedicated OKE skill).
+- [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
+- [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
+- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
+- [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
+- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../../Containers_and_Orchestration/complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, a useful comparison for the identity-model differences (IRSA vs. Dynamic Groups) called out above.

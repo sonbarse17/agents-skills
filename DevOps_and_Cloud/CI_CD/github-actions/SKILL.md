@@ -7,14 +7,14 @@ metadata:
   version: "1.0"
 ---
 
-# GitHub Actions
+# [GitHub](../github/SKILL.md) Actions
 
-Automate software workflows directly in your GitHub repository with GitHub Actions.
+Automate software workflows directly in your [GitHub](../github/SKILL.md) repository with [GitHub](../github/SKILL.md) Actions.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Setting up CI/CD pipelines for GitHub repositories
+- Setting up CI/CD pipelines for [GitHub](../github/SKILL.md) repositories
 - Automating build, test, and deployment workflows
 - Creating reusable workflow components
 - Configuring self-hosted runners
@@ -23,13 +23,13 @@ Use this skill when:
 
 ## Prerequisites
 
-- GitHub repository with write access
+- [GitHub](../github/SKILL.md) repository with write access
 - Understanding of YAML syntax
-- For self-hosted runners: server with Docker (optional)
+- For self-hosted runners: server with [Docker](../../Containers_and_Orchestration/docker/SKILL.md) (optional)
 
 ## Workflow File Structure
 
-Workflows are defined in `.github/workflows/` directory:
+Workflows are defined in `.[github](../github/SKILL.md)/workflows/` directory:
 
 ```yaml
 name: CI Pipeline
@@ -203,23 +203,23 @@ steps:
     path: dist/
 ```
 
-## Docker Builds
+## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Builds
 
 ```yaml
 jobs:
-  docker:
+  [docker](../../Containers_and_Orchestration/docker/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Login to [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Hub
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: [docker](../../Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
         with:
           context: .
           push: true
@@ -231,7 +231,7 @@ jobs:
 ### Define Reusable Workflow
 
 ```yaml
-# .github/workflows/reusable-deploy.yml
+# .[github](../github/SKILL.md)/workflows/reusable-deploy.yml
 name: Reusable Deploy
 
 on:
@@ -257,7 +257,7 @@ jobs:
 ```yaml
 jobs:
   deploy-staging:
-    uses: ./.github/workflows/reusable-deploy.yml
+    uses: ./.[github](../github/SKILL.md)/workflows/reusable-deploy.yml
     with:
       environment: staging
     secrets:
@@ -271,11 +271,11 @@ jobs:
 ```bash
 # Download runner
 mkdir actions-runner && cd actions-runner
-curl -o actions-runner-linux-x64.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+curl -o actions-runner-linux-x64.tar.gz -L https://[github](../github/SKILL.md).com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
 tar xzf actions-runner-linux-x64.tar.gz
 
 # Configure
-./config.sh --url https://github.com/OWNER/REPO --token TOKEN
+./config.sh --url https://[github](../github/SKILL.md).com/OWNER/REPO --token TOKEN
 
 # Run
 ./run.sh
@@ -304,7 +304,7 @@ Set repository secrets:
 ```yaml
 - name: Debug
   run: |
-    echo "GitHub context: ${{ toJson(github) }}"
+    echo "[GitHub](../github/SKILL.md) context: ${{ toJson([github](../github/SKILL.md)) }}"
     echo "Job context: ${{ toJson(job) }}"
 ```
 
@@ -339,6 +339,6 @@ permissions:
 
 ## Related Skills
 
-- [gitlab-ci](../gitlab-ci/) - GitLab CI/CD alternative
-- [docker-management](../../containers/docker-management/) - Container builds
-- [semantic-versioning](../../release/semantic-versioning/) - Automated releases
+- [gitlab-ci](../[gitlab-ci](../gitlab-ci/SKILL.md)/) - GitLab CI/CD alternative
+- [docker-management](../../containers/[docker-management](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-management/SKILL.md)/) - Container builds
+- [semantic-versioning](../../release/[semantic-versioning](../../Observability_and_SecOps/semantic-versioning/SKILL.md)/) - Automated releases

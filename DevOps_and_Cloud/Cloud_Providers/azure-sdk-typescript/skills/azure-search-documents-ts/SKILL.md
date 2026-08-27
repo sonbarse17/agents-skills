@@ -8,7 +8,7 @@ metadata:
   package: '@azure/search-documents'
 ---
 
-# Azure AI Search SDK for TypeScript
+# Azure AI Search SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Build search applications with vector, hybrid, and semantic search capabilities.
 
@@ -29,7 +29,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { SearchClient, SearchIndexClient } from "@azure/search-documents";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -52,7 +52,7 @@ const indexClient = new SearchIndexClient(endpoint, credential);
 
 ### Create Index with Vector Field
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { SearchIndex, SearchField, VectorSearch } from "@azure/search-documents";
 
 const index: SearchIndex = {
@@ -85,7 +85,7 @@ await indexClient.createOrUpdateIndex(index);
 
 ### Index Documents
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const documents = [
   { id: "1", title: "Widget", description: "A useful widget", category: "Tools", embedding: [...] },
   { id: "2", title: "Gadget", description: "A cool gadget", category: "Electronics", embedding: [...] },
@@ -97,7 +97,7 @@ console.log(`Indexed ${result.results.length} documents`);
 
 ### Full-Text Search
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const results = await searchClient.search("widget", {
   select: ["id", "title", "description"],
   filter: "category eq 'Tools'",
@@ -112,7 +112,7 @@ for await (const result of results.results) {
 
 ### Vector Search
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const queryVector = await getEmbedding("useful tool"); // Your embedding function
 
 const results = await searchClient.search("*", {
@@ -136,7 +136,7 @@ for await (const result of results.results) {
 
 ### Hybrid Search (Text + Vector)
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const queryVector = await getEmbedding("useful tool");
 
 const results = await searchClient.search("tool", {
@@ -157,7 +157,7 @@ const results = await searchClient.search("tool", {
 
 ### Semantic Search
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Index must have semantic configuration
 const index: SearchIndex = {
   name: "products",
@@ -195,7 +195,7 @@ for await (const result of results.results) {
 
 ## Filtering and Facets
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Filter syntax
 const results = await searchClient.search("*", {
   filter: "category eq 'Electronics' and price lt 100",
@@ -213,7 +213,7 @@ for (const [facetName, facetResults] of Object.entries(results.facets || {})) {
 
 ## Autocomplete and Suggestions
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Create suggester in index
 const index: SearchIndex = {
   name: "products",
@@ -238,7 +238,7 @@ const suggestions = await searchClient.suggest("wid", "sg", {
 
 ## Batch Operations
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Batch upload, merge, delete
 const batch = [
   { upload: { id: "1", title: "New Item" } },
@@ -251,7 +251,7 @@ const result = await searchClient.indexDocuments({ actions: batch });
 
 ## Key Types
 
-```typescript
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   SearchClient,
   SearchIndexClient,

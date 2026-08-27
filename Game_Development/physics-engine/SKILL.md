@@ -15,7 +15,7 @@ Once forces are accumulated and collisions resolved, the engine must integrate e
 - **Semi-implicit Euler (Symplectic Euler)**: Resolves velocity before position. Preserves volume in phase space and is unconditionally stable for harmonic oscillators, making it the standard for real-time physics.
 - **Verlet / RK4**: Used for cloth simulation or high-precision requirements, offering better energy conservation at the cost of higher CPU cycles.
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph PipelinePhysicsStep ["Physics Step<br><br><br>"]

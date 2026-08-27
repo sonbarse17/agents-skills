@@ -9,11 +9,11 @@ metadata:
 
 # Cloudflare Workers
 
-Deploy JavaScript and TypeScript functions to Cloudflare's global edge network with sub-millisecond cold starts.
+Deploy JavaScript and [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) functions to Cloudflare's global edge network with sub-millisecond cold starts.
 
 ## When to Use
 
-- Building lightweight APIs and microservices at the edge.
+- Building lightweight APIs and [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at the edge.
 - Adding middleware (auth, rate limiting, header injection) in front of origin servers.
 - Running cron jobs on a schedule without maintaining infrastructure.
 - Processing webhooks, image transformations, or A/B testing logic.
@@ -108,7 +108,7 @@ ENVIRONMENT = "staging"
 
 ### Basic API Router
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/index.ts
 export interface Env {
   ENVIRONMENT: string;
@@ -155,7 +155,7 @@ async function logToAnalytics(data: unknown): Promise<void> {
 
 ### Middleware: Rate Limiting with KV
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/rate-limiter.ts
 interface Env {
   RATE_LIMIT_KV: KVNamespace;
@@ -204,7 +204,7 @@ id = "abc123def456"
 preview_id = "preview789"
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // KV operations in a Worker
 interface Env {
   MY_KV: KVNamespace;
@@ -235,8 +235,8 @@ export default {
 # KV CLI operations
 npx wrangler kv namespace create MY_KV
 npx wrangler kv namespace list
-npx wrangler kv key put --namespace-id=abc123 "config:feature-flags" '{"darkMode":true}'
-npx wrangler kv key get --namespace-id=abc123 "config:feature-flags"
+npx wrangler kv key put --namespace-id=abc123 "config:[feature-flags](../../CI_CD/feature-flags/SKILL.md)" '{"darkMode":true}'
+npx wrangler kv key get --namespace-id=abc123 "config:[feature-flags](../../CI_CD/feature-flags/SKILL.md)"
 npx wrangler kv key list --namespace-id=abc123 --prefix="config:"
 ```
 
@@ -250,7 +250,7 @@ database_name = "my-app"
 database_id = "xxxx-yyyy-zzzz"
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // D1 SQL queries in a Worker
 interface Env {
   DB: D1Database;
@@ -302,7 +302,7 @@ crons = [
 ]
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/index.ts — scheduled handler
 export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
@@ -336,7 +336,7 @@ tag = "v1"
 new_classes = ["Counter"]
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/counter.ts — Durable Object class
 export class Counter {
   state: DurableObjectState;
@@ -394,6 +394,6 @@ routes = [
 
 ## Related Skills
 
-- [cloudflare-pages](../cloudflare-pages/) - Frontend deployments with Pages Functions
-- [cloudflare-r2](../cloudflare-r2/) - Object storage at the edge
-- [cloudflare-zero-trust](../cloudflare-zero-trust/) - Protect Worker endpoints with Access
+- [cloudflare-pages](../[cloudflare-pages](../cloudflare-pages/SKILL.md)/) - Frontend deployments with Pages Functions
+- [cloudflare-r2](../[cloudflare-r2](../cloudflare-r2/SKILL.md)/) - Object storage at the edge
+- [cloudflare-zero-trust](../[cloudflare-zero-trust](../cloudflare-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/) - Protect Worker endpoints with Access

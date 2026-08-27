@@ -19,7 +19,7 @@ constraints before you match its convenience.**
 
 A function instance can be frozen, killed, or never reused between invocations. Anything written
 to local disk or held in memory across calls is not guaranteed to survive to the next one. This
-is the same principle as `cloud-architecture`'s statelessness default, except here the platform
+is the same principle as `[cloud-architecture](../../Cloud_Providers/cloud-architecture/SKILL.md)`'s statelessness default, except here the platform
 enforces it for you instead of asking nicely — so design the function so a cold, stateless restart
 on every single call would still be correct.
 
@@ -53,7 +53,7 @@ first try. A function that isn't safe to run twice on the same event will eventu
 ## 4. Respect concurrency limits as a real ceiling, not a config detail
 
 Every platform caps concurrent executions per function or per account, and that cap can throttle
-requests during a traffic spike exactly when you need capacity most. A downstream dependency (a
+requests during a traffic spike exactly when you need [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) most. A downstream dependency (a
 database connection pool, a rate-limited third-party API) can also be overwhelmed by serverless's
 ability to scale out instantly — the function scales faster than what it calls.
 
@@ -67,7 +67,7 @@ steady-state (you're paying per-request for traffic a fixed server would handle 
 long-running (most platforms cap execution duration), or requires persistent connections or
 specialized hardware. Forcing a bad fit into serverless usually shows up as cost per request that
 quietly exceeds a always-on server, or as timeout errors that get "fixed" by ever-larger memory
-allocations. Naming the mismatch early beats discovering it in a bill or an incident.
+allocations. Naming the mismatch early beats discovering it in a bill or an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 **Done when:** a workload proposed for serverless has been checked against duration, steadiness,
 and connection-persistence requirements, not just "it's an event handler."
@@ -77,7 +77,7 @@ and connection-persistence requirements, not just "it's an event handler."
 Serverless pricing is per-request-and-duration, which is cheap at low and bursty volume and can
 become more expensive than a small always-on instance at sustained high volume. Do this comparison
 with real or projected traffic numbers before committing, and revisit it if traffic patterns
-shift from bursty to steady. See `cost-optimization` for the ongoing tracking once it's live.
+shift from bursty to steady. See `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for the ongoing tracking once it's live.
 
 **Done when:** the cost-per-invocation at expected peak traffic has been compared to a
 comparable always-on alternative.

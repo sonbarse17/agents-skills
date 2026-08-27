@@ -10,7 +10,7 @@ description: Best practices for dataset preparation and PEFT/LoRA fine-tuning.
 - Clean and deduplicate to prevent overfitting.
 
 ## Fine-Tuning Pipeline
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Raw Data] --> B[Formatting & Tokenization]
@@ -21,7 +21,7 @@ flowchart TD
 ```
 
 ## LoRA Configuration Snippet
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import torch
 from transformers import AutoModelForCausalLM
 from peft import LoraConfig, get_peft_model

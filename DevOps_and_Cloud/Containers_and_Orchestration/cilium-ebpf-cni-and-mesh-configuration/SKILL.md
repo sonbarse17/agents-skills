@@ -24,9 +24,9 @@ Cilium sits at a different layer than the other meshes in this domain:
 it's first a **CNI plugin** — the thing actually wiring up pod
 networking — built on eBPF programs attached to the kernel's networking
 hooks instead of iptables rules, which is what lets it also replace
-kube-proxy's `Service` load-balancing and implement L3/L4/L7 network
+kube-proxy's `Service` [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) and implement L3/L4/L7 network
 policy without per-pod sidecar proxies for most of that functionality.
-Its newer service-mesh capability builds on the same eBPF datapath (plus
+Its newer [service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md) capability builds on the same eBPF datapath (plus
 Envoy for L7 cases that need it) rather than injecting a sidecar into
 every pod, which is the core trade-off to understand versus
 sidecar-based meshes: less per-pod overhead and simpler operations for
@@ -34,9 +34,9 @@ policy and L4 routing, at the cost of a feature set that's less mature
 for complex L7 traffic management than Istio or a sidecar-based mesh.
 This skill covers installing Cilium, enabling kube-proxy replacement,
 writing `CiliumNetworkPolicy`, and using its mesh capability where
-warranted. Validating policy and observability configuration before
+warranted. Validating policy and [observability](../../Observability_and_SecOps/observability/SKILL.md) configuration before
 production is a separate, deeper topic — see
-[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md).
+[cilium-configuration-validation](../[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -50,7 +50,7 @@ production is a separate, deeper topic — see
 - Evaluating Cilium's sidecar-less mesh capability as an alternative to
   a sidecar-based mesh (Istio, Linkerd, Consul Connect) when the primary
   driver is reducing per-pod proxy overhead.
-- Setting up Hubble for flow-level network observability.
+- Setting up Hubble for flow-level network [observability](../../Observability_and_SecOps/observability/SKILL.md).
 - Debugging connectivity that broke after installing or upgrading
   Cilium, or after enabling kube-proxy replacement specifically.
 
@@ -61,7 +61,7 @@ production is a separate, deeper topic — see
   release rather than assuming any kernel works; kube-proxy replacement
   and some L7 features have stricter minimum kernel requirements than
   basic connectivity.
-- The `cilium` CLI (separate from `kubectl`) for install, status, and
+- The `cilium` CLI (separate from `[kubectl](../kubectl/SKILL.md)`) for install, status, and
   connectivity testing: `cilium install`, `cilium status`, `cilium
   connectivity test`.
 - A cluster with no CNI already installed (Cilium is typically the CNI,
@@ -109,7 +109,7 @@ production is a separate, deeper topic — see
 
 4. **Write `CiliumNetworkPolicy` starting from default-deny per
    namespace**, then add explicit allows, mirroring standard
-   Kubernetes `NetworkPolicy` semantics but with L7-aware matching:
+   [Kubernetes](../kubernetes/SKILL.md) `NetworkPolicy` semantics but with L7-aware matching:
    ```yaml
    apiVersion: cilium.io/v2
    kind: CiliumNetworkPolicy
@@ -157,7 +157,7 @@ production is a separate, deeper topic — see
            - ports: [{ port: "443", protocol: TCP }]
        - toEndpoints:
            - matchLabels:
-               k8s:io.kubernetes.pod.namespace: kube-system
+               k8s:io.[kubernetes](../kubernetes/SKILL.md).pod.namespace: kube-system
                k8s-app: kube-dns
          toPorts:
            - ports: [{ port: "53", protocol: UDP }]
@@ -166,7 +166,7 @@ production is a separate, deeper topic — see
    `toFQDNs` resolves and pins allowed egress to a DNS name rather than a
    brittle static IP/CIDR.
 
-6. **Enable Hubble for flow-level observability** before relying on
+6. **Enable Hubble for flow-level [observability](../../Observability_and_SecOps/observability/SKILL.md)** before relying on
    network policy in production — you want visibility into what's being
    allowed/dropped before tightening further:
    ```bash
@@ -182,14 +182,14 @@ production is a separate, deeper topic — see
    deep L7 traffic shaping (complex retries, fault injection, rich
    traffic mirroring) across many protocols, compare against a
    sidecar-based mesh's more mature feature set (see
-   [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md)
+   [service-mesh-istio](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
    for the ambient-mode comparison point, and
-   [linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md)
+   [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
    for a lighter sidecar-based alternative) before committing.
 
 8. **Validate before production rollout**, not just at initial install —
    see
-   [cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)
+   [cilium-configuration-validation](../[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)/SKILL.md)
    for the specific commands.
 
 ## Best practices
@@ -200,7 +200,7 @@ production is a separate, deeper topic — see
   effects that a quick `cilium status` glance won't catch.
 - Default-deny per namespace with `CiliumNetworkPolicy`, then add
   explicit allows scoped by label selector, mirroring the same
-  discipline used for standard Kubernetes `NetworkPolicy` — Cilium's L7
+  discipline used for standard [Kubernetes](../kubernetes/SKILL.md) `NetworkPolicy` — Cilium's L7
   awareness doesn't change the underlying default-deny-first principle.
 - Prefer `toFQDNs` over static IP/CIDR egress rules for any external
   dependency whose IPs aren't fixed (which is most SaaS/cloud APIs) —
@@ -254,10 +254,10 @@ production is a separate, deeper topic — see
   have occasionally shifted default behavior; don't assume an upgrade is
   purely additive.
 
-- **Symptom:** To resolve a connectivity failure during an incident,
+- **Symptom:** To resolve a connectivity failure during an [incident](../../Observability_and_SecOps/incident/SKILL.md),
   someone applies a permissive `CiliumNetworkPolicy` allowing all
   ingress/egress for the affected workload "to rule out policy as the
-  cause," and it's left in place after the incident closes.
+  cause," and it's left in place after the [incident](../../Observability_and_SecOps/incident/SKILL.md) closes.
   **Fix:** This silently removes network policy protection for that
   workload going forward. Treat a broad allow-all policy change as a
   time-boxed diagnostic step only, confirm the actual root cause via
@@ -322,7 +322,7 @@ spec:
       toPorts: [{ ports: [{ port: "443", protocol: TCP }] }]
     - toEndpoints:
         - matchLabels:
-            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s:io.[kubernetes](../kubernetes/SKILL.md).pod.namespace: kube-system
             k8s-app: kube-dns
       toPorts:
         - ports: [{ port: "53", protocol: UDP }]
@@ -330,7 +330,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f payments-policies.yaml
+[kubectl](../kubectl/SKILL.md) apply -f payments-policies.yaml
 hubble observe --namespace payments --verdict DROPPED
 ```
 
@@ -339,12 +339,12 @@ POST /charges` and `payments-api → api.stripe.com:443` flows are
 forwarded, with everything else in the namespace showing a `DROPPED`
 verdict — giving concrete evidence the default-deny policy is enforcing
 as intended before it's considered production-ready.
-[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)
+[cilium-configuration-validation](../[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)/SKILL.md)
 covers the fuller pre-production validation pass.
 
 ## Cross-references
 
-- [cilium-configuration-validation](../cilium-configuration-validation/SKILL.md) — validating network policy and Hubble observability configuration before this reaches production.
-- [consul-service-mesh-and-discovery-configuration](../consul-service-mesh-and-discovery-configuration/SKILL.md) — an alternative for estates that need mesh reach beyond Kubernetes (VMs, multi-cloud), which Cilium's CNI-layer approach doesn't address.
-- [linkerd-service-mesh-configuration](../linkerd-service-mesh-configuration/SKILL.md) — a sidecar-based mesh alternative with a more mature L7 traffic-management feature set, worth comparing when Cilium's mesh capability doesn't cover a specific need.
-- [service-mesh-istio](../../../kubernetes-platform/skills/service-mesh-istio/SKILL.md) — the comparison point for sidecar-based mesh traffic management and Istio's own ambient (sidecar-less) mode, relevant when weighing Cilium's mesh capability against Istio's.
+- [cilium-configuration-validation](../[cilium-configuration-validation](../cilium-configuration-validation/SKILL.md)/SKILL.md) — validating network policy and Hubble [observability](../../Observability_and_SecOps/observability/SKILL.md) configuration before this reaches production.
+- [consul-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../Cloud_Providers/consul-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — an alternative for estates that need mesh reach beyond [Kubernetes](../kubernetes/SKILL.md) (VMs, [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)), which Cilium's CNI-layer approach doesn't address.
+- [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a sidecar-based mesh alternative with a more mature L7 traffic-management feature set, worth comparing when Cilium's mesh capability doesn't cover a specific need.
+- [service-mesh-istio](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the comparison point for sidecar-based mesh traffic management and Istio's own ambient (sidecar-less) mode, relevant when weighing Cilium's mesh capability against Istio's.

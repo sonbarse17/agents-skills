@@ -25,7 +25,7 @@ Select and design NoSQL databases by access patterns, data shape, consistency re
 ```
 What is the primary access pattern?
 ├── Complex queries with flexible filters, aggregations
-│   └── Document store (MongoDB, Couchbase)
+│   └── Document store ([MongoDB](../../Backend/mongodb/SKILL.md), Couchbase)
 ├── Simple lookups by primary key, high throughput
 │   ├── Key-value reads < 1KB → Redis (in-memory)
 │   └── Larger payloads, durable → DynamoDB
@@ -35,19 +35,19 @@ What is the primary access pattern?
 │   └── Graph (Neo4j, Amazon Neptune)
 
 What consistency model is required?
-├── Strong consistency required → MongoDB (primary reads, majority write)
+├── Strong consistency required → [MongoDB](../../Backend/mongodb/SKILL.md) (primary reads, majority write)
 ├── Tunable consistency → Cassandra (ONE/QUORUM/ALL per query)
 ├── Eventually consistent acceptable → DynamoDB (default eventual reads)
 └── Strict serializable → Spanner, CosmosDB (Bounded Staleness)
 
 What is the write volume?
-├── < 10K writes/sec → MongoDB, DynamoDB, any
+├── < 10K writes/sec → [MongoDB](../../Backend/mongodb/SKILL.md), DynamoDB, any
 ├── 10K-100K writes/sec → Cassandra, Scylla, DynamoDB (on-demand)
 ├── 100K-1M writes/sec → Scylla, Cassandra (tuned), Bigtable
 └── > 1M writes/sec → Scylla, Bigtable, custom partitioning
 
 What is the data size per entity?
-├── Small documents (< 16MB) → MongoDB (16MB doc limit)
+├── Small documents (< 16MB) → [MongoDB](../../Backend/mongodb/SKILL.md) (16MB doc limit)
 ├── Large blobs → Store in S3/GCS, reference in NoSQL
 └── Variable size → DynamoDB (400KB item limit)
 ```
@@ -61,7 +61,7 @@ What is the query pattern?
 ├── Query by time range within a partition
 │   └── Partition: user/region, Sort/cluster: timestamp
 ├── Global queries across all partitions
-│   └── GSI (DynamoDB), secondary index (MongoDB)
+│   └── GSI (DynamoDB), secondary index ([MongoDB](../../Backend/mongodb/SKILL.md))
 ├── Need time-series + evenly distributed writes
 │   └── Compound partition key with time bucket + hashed shard key
 └── Need geographic data locality
@@ -77,7 +77,7 @@ Avoid:
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "MongoDB", "Cassandra", "DynamoDB", "Couchbase", "CosmosDB", "NoSQL", "document database", "wide-column", "key-value", "consistency model", "CAP theorem", "sharding", "denormalization", "single-table design", "GSI", "LSI", "aggregation pipeline", "CQL".
+Exact user phrases: "[MongoDB](../../Backend/mongodb/SKILL.md)", "Cassandra", "DynamoDB", "Couchbase", "CosmosDB", "NoSQL", "document database", "wide-column", "key-value", "consistency model", "CAP theorem", "sharding", "denormalization", "single-table design", "GSI", "LSI", "aggregation pipeline", "CQL".
 
 ### Input Context
 Before activating, verify:
@@ -93,7 +93,7 @@ NoSQL data model with access patterns, sharding strategy, consistency configurat
 
 ### Response Format
 ```javascript
-// MongoDB schema + indexes + aggregation
+// [MongoDB](../../Backend/mongodb/SKILL.md) schema + indexes + aggregation
 ```
 ```cql
 // Cassandra table DDL + compaction
@@ -112,7 +112,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] NoSQL type selected based on access patterns and data shape
 - [ ] Data model designed around known queries (query-first approach)
 - [ ] Sharding/partition key chosen to avoid hot spots
-- [ ] Secondary indexes designed (GSI, LSI, MongoDB secondary)
+- [ ] Secondary indexes designed (GSI, LSI, [MongoDB](../../Backend/mongodb/SKILL.md) secondary)
 - [ ] Consistency model configured per operation
 - [ ] Denormalization applied for read performance
 - [ ] Write path optimized (compaction, write isolation)
@@ -123,7 +123,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## Workflow
 
 ### Step 1: NoSQL Type Selection
-Document (MongoDB, Couchbase): nested data, flexible schema, complex queries. Wide-column (Cassandra, Scylla): high-volume writes, time-series, predictable queries by partition key. Key-value (Redis, DynamoDB): simple lookups, caching, session store. Graph (Neo4j): relationships are first-class. Decision matrix: write volume, query complexity, consistency needs, schema flexibility.
+Document ([MongoDB](../../Backend/mongodb/SKILL.md), Couchbase): nested data, flexible schema, complex queries. Wide-column (Cassandra, Scylla): high-volume writes, time-series, predictable queries by partition key. Key-value (Redis, DynamoDB): simple lookups, caching, session store. Graph (Neo4j): relationships are first-class. Decision matrix: write volume, query complexity, consistency needs, schema flexibility.
 
 | Pattern | Read Latency | Write Throughput | Query Flexibility | Consistency |
 |---------|-------------|-----------------|-------------------|-------------|
@@ -133,7 +133,7 @@ Document (MongoDB, Couchbase): nested data, flexible schema, complex queries. Wi
 | Graph | Medium | Low | Very High (traversals) | Often strict |
 
 ### Step 2: Data Modeling (Query-First)
-Map all access patterns before designing schemas. For every query define: partition key, sort/clustering key, filter conditions, projected attributes, consistency requirement. DynamoDB: single-table design with entity type attribute and hierarchical keys. MongoDB: embed for contained sub-items, reference for shared entities. Cassandra: one table per query pattern.
+Map all access patterns before designing schemas. For every query define: partition key, sort/clustering key, filter conditions, projected attributes, consistency requirement. DynamoDB: single-table design with entity type attribute and hierarchical keys. [MongoDB](../../Backend/mongodb/SKILL.md): embed for contained sub-items, reference for shared entities. Cassandra: one table per query pattern.
 
 ```json
 // DynamoDB single-table: order + customer in one table
@@ -151,13 +151,13 @@ Map all access patterns before designing schemas. For every query define: partit
 ```
 
 ### Step 3: Sharding and Partitioning
-MongoDB: shard key with high cardinality, low frequency, non-monotonic (hashed shard key for time-series). Cassandra: partition key distribution determines data placement; use compound partition keys for even distribution. DynamoDB: partition key hashed internally; use adaptive capacity for hot partitions. Avoid: monotonically increasing keys (all writes to one shard), low-cardinality keys (jumbo partitions).
+[MongoDB](../../Backend/mongodb/SKILL.md): shard key with high cardinality, low frequency, non-monotonic (hashed shard key for time-series). Cassandra: partition key distribution determines data placement; use compound partition keys for even distribution. DynamoDB: partition key hashed internally; use adaptive [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for hot partitions. Avoid: monotonically increasing keys (all writes to one shard), low-cardinality keys (jumbo partitions).
 
 ```javascript
-// MongoDB shard key: hashed for even distribution
+// [MongoDB](../../Backend/mongodb/SKILL.md) shard key: hashed for even distribution
 sh.shardCollection("shop.orders", { "order_id": "hashed" })
 
-// MongoDB shard key: ranged for geographic queries
+// [MongoDB](../../Backend/mongodb/SKILL.md) shard key: ranged for geographic queries
 sh.shardCollection("analytics.events", { "region": 1, "timestamp": -1 })
 ```
 
@@ -174,7 +174,7 @@ CREATE TABLE orders_by_customer (
 ```
 
 ### Step 4: Secondary Indexes
-MongoDB: single-field, compound, multikey (arrays), text, geospatial, hashed. Use partial indexes to reduce index size. DynamoDB GSI: alternative partition key, eventually consistent by default, projected attributes control cost. LSI: same partition key, different sort key, strongly consistent, 5 per table. Cassandra secondary indexes: local (per node) for low-cardinality columns; SASI (deprecated) for full-text. Prefer materialized views over indexes in Cassandra.
+[MongoDB](../../Backend/mongodb/SKILL.md): single-field, compound, multikey (arrays), text, geospatial, hashed. Use partial indexes to reduce index size. DynamoDB GSI: alternative partition key, eventually consistent by default, projected attributes control cost. LSI: same partition key, different sort key, strongly consistent, 5 per table. Cassandra secondary indexes: local (per node) for low-cardinality columns; SASI (deprecated) for full-text. Prefer materialized views over indexes in Cassandra.
 
 ```json
 {
@@ -195,10 +195,10 @@ MongoDB: single-field, compound, multikey (arrays), text, geospatial, hashed. Us
 ```
 
 ### Step 5: Consistency and CAP
-CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). MongoDB: primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for dashboards.
+CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). [MongoDB](../../Backend/mongodb/SKILL.md): primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 ```yaml
-# MongoDB write concern
+# [MongoDB](../../Backend/mongodb/SKILL.md) write concern
 writeConcern:
   w: majority
   j: true
@@ -213,7 +213,7 @@ SELECT * FROM orders WHERE customer_id = '123'
 Computed fields: store aggregates (order count, total spent) to avoid joins. Complex attributes: embed line items in orders, comments in posts. Cross-entity data: duplicate customer name in each order for fast listing. Pre-joined data: create materialized join tables. Path enumeration: store full category path. Pre-joined data eliminates read-time joins at the cost of write-time complexity.
 
 ```javascript
-// MongoDB embedded items
+// [MongoDB](../../Backend/mongodb/SKILL.md) embedded items
 {
   "_id": "order:123",
   "customer": { "id": "cust:456", "name": "Acme", "email": "acme@co" },
@@ -225,7 +225,7 @@ Computed fields: store aggregates (order count, total spent) to avoid joins. Com
 ```
 
 ### Step 7: Aggregation and Analytics
-MongoDB aggregation pipeline stages: $match (filter early), $project (shape documents), $group (group by key), $sort (order results), $limit/$skip (pagination), $unwind (deconstruct arrays), $lookup (join across collections), $bucket (histogram), $facet (multi-faceted aggregation). Performance: use indexes for $match and $sort stages; $lookup requires index on foreign collection; avoid $unwind on large arrays; use allowDiskUse for memory-intensive pipelines. Use $merge to output aggregation results to a new collection.
+[MongoDB](../../Backend/mongodb/SKILL.md) aggregation pipeline stages: $match (filter early), $project (shape documents), $group (group by key), $sort (order results), $limit/$skip (pagination), $unwind (deconstruct arrays), $lookup (join across collections), $bucket (histogram), $facet (multi-faceted aggregation). Performance: use indexes for $match and $sort stages; $lookup requires index on foreign collection; avoid $unwind on large arrays; use allowDiskUse for memory-intensive pipelines. Use $merge to output aggregation results to a new collection.
 
 ```javascript
 // Order analytics with facet
@@ -249,7 +249,7 @@ db.orders.aggregate([
 ```
 
 ### Step 8: Backup and Restoration Strategies
-MongoDB: mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, commit log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
+[MongoDB](../../Backend/mongodb/SKILL.md): mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
 
 ```yaml
 # Cassandra backup configuration
@@ -261,7 +261,7 @@ commitlog_archiving:
 ```
 
 ### Step 9: Security and Access Control
-MongoDB: SCRAM-SHA-256 authentication, x.509 certificate auth, LDAP/Kerberos integration, field-level encryption, audit logging. Cassandra: role-based access control with CQL GRANT/REVOKE, mTLS for inter-node encryption, system_auth keyspace replication across all datacenters. DynamoDB: IAM policies for table-level access, VPC endpoints for network isolation, KMS encryption at rest, DAX encryption in transit.
+[MongoDB](../../Backend/mongodb/SKILL.md): SCRAM-SHA-256 authentication, x.509 certificate auth, LDAP/Kerberos integration, field-level encryption, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging. Cassandra: role-based access control with CQL GRANT/REVOKE, mTLS for inter-node encryption, system_auth keyspace replication across all datacenters. DynamoDB: IAM policies for table-level access, VPC endpoints for network isolation, KMS encryption at rest, DAX encryption in transit.
 
 ```cql
 -- Cassandra RBAC
@@ -273,7 +273,7 @@ GRANT MODIFY ON TABLE shop.orders TO app_user;
 ## Rules (updated)
 
 ### Write Path Optimization
-MongoDB: bulk writes, ordered=false for best-effort, journaled writes. Cassandra: compaction strategy determines write amplification (STCS for write-heavy, LCS for read-heavy, TWCS for time-series). DynamoDB: provisioned capacity with auto-scaling, burst capacity for spikes. Write isolation: avoid read-before-write patterns (conditional updates in DynamoDB, upserts in Cassandra).
+[MongoDB](../../Backend/mongodb/SKILL.md): bulk writes, ordered=false for best-effort, journaled writes. Cassandra: compaction strategy determines write amplification (STCS for write-heavy, LCS for read-heavy, TWCS for time-series). DynamoDB: provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with auto-scaling, burst [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for spikes. Write isolation: avoid read-before-write patterns (conditional updates in DynamoDB, upserts in Cassandra).
 
 ```cql
 // Cassandra compaction: TimeWindowCompactionStrategy for time-series
@@ -294,24 +294,24 @@ CREATE TABLE sensor_readings (
 ## Common Pitfalls
 
 ### Pitfall 1: Relational Thinking in NoSQL
-Designing normalized schemas with foreign keys and expecting joins. NoSQL requires denormalization and embedding. MongoDB supports $lookup but it's slow. DynamoDB has no joins. Cassandra has no joins.
+Designing normalized schemas with foreign keys and expecting joins. NoSQL requires denormalization and embedding. [MongoDB](../../Backend/mongodb/SKILL.md) supports $lookup but it's slow. DynamoDB has no joins. Cassandra has no joins.
 
 ### Pitfall 2: Poor Shard Key Selection
 Using monotonically increasing keys (timestamps, auto-increment IDs) as shard keys. All writes go to the last shard, creating a hot spot. Use hashed shard keys for time-series data.
 
 ### Pitfall 3: Overusing Secondary Indexes
-Secondary indexes in wide-column stores (Cassandra SASI, MongoDB slow queries) are often slower than full scans. Prefer query-by-design (one table per access pattern in Cassandra, GSIs in DynamoDB).
+Secondary indexes in wide-column stores (Cassandra SASI, [MongoDB](../../Backend/mongodb/SKILL.md) slow queries) are often slower than full scans. Prefer query-by-design (one table per access pattern in Cassandra, GSIs in DynamoDB).
 
 ### Pitfall 4: Ignoring Item Size Limits
-MongoDB has a 16MB document limit. DynamoDB has a 400KB item limit. Exceeding these causes write failures. Plan for large items (gridFS for MongoDB, S3 references for DynamoDB).
+[MongoDB](../../Backend/mongodb/SKILL.md) has a 16MB document limit. DynamoDB has a 400KB item limit. Exceeding these causes write failures. Plan for large items (gridFS for [MongoDB](../../Backend/mongodb/SKILL.md), S3 references for DynamoDB).
 
 ### Pitfall 5: Cross-Partition Queries in Cassandra
 Cassandra WHERE clauses can only filter on partition key + clustering columns. Any non-key filter requires ALLOW FILTERING (full scan). Design tables per query pattern.
 
-### Pitfall 6: No Capacity Planning for DynamoDB
-Using on-demand capacity for predictable workloads costs significantly more. Provisioned capacity with auto-scaling reduces costs 50-70%.
+### Pitfall 6: No [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning for DynamoDB
+Using on-demand [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for predictable workloads costs significantly more. Provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with auto-scaling reduces costs 50-70%.
 
-### Pitfall 7: MongoDB Without Indexes
+### Pitfall 7: [MongoDB](../../Backend/mongodb/SKILL.md) Without Indexes
 Queries without indexes cause collection scans, blocking reads on large collections. Always index query fields. Use explain() to verify index usage.
 
 ### Pitfall 8: Over-normalization in DynamoDB
@@ -328,39 +328,39 @@ Using different consistency levels for read and write without understanding the 
 - Design data model around access patterns, not data shape. Query-first design.
 - Use single-table design in DynamoDB. Entity type attribute, composite PK/SK.
 - One table per query pattern in Cassandra. Each table optimized for one access path.
-- Embed related data in MongoDB when accessed together. Reference when shared.
+- Embed related data in [MongoDB](../../Backend/mongodb/SKILL.md) when accessed together. Reference when shared.
 - Choose shard key with high cardinality and even distribution. Hash time-series keys.
 - Prefer Global Secondary Indexes over Local Secondary Indexes in DynamoDB.
 - Use compound partition keys in Cassandra for even distribution.
-- Set write concern to majority for durability in MongoDB.
+- Set write concern to majority for durability in [MongoDB](../../Backend/mongodb/SKILL.md).
 - Use TimeWindowCompactionStrategy for time-series data in Cassandra.
-- Enable auto-scaling for DynamoDB provisioned capacity. Monitor consumption.
-- Create indexes for all query patterns in MongoDB. Use explain() to verify.
+- Enable auto-scaling for DynamoDB provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Monitor consumption.
+- Create indexes for all query patterns in [MongoDB](../../Backend/mongodb/SKILL.md). Use explain() to verify.
 - Use bulk writes for high-volume inserts. ordered:false for best-effort.
 - Test with production-scale data volumes, not synthetic small datasets.
-- Monitor hot partitions with CloudWatch / MongoDB Atlas metrics.
+- Monitor hot partitions with CloudWatch / [MongoDB](../../Backend/mongodb/SKILL.md) Atlas metrics.
 - Enable point-in-time recovery for DynamoDB (last 35 days).
 - Use on-demand backup for schema changes, PITR for operational recovery.
 
 ## Compared With
 
-### MongoDB vs DynamoDB
-MongoDB offers richer queries (aggregation pipeline, text search, geospatial) with flexible schema. DynamoDB offers single-digit-millisecond latency at any scale with auto-scaling. Choose MongoDB for complex querying. Choose DynamoDB for predictable key-value access with auto-scaling.
+### [MongoDB](../../Backend/mongodb/SKILL.md) vs DynamoDB
+[MongoDB](../../Backend/mongodb/SKILL.md) offers richer queries (aggregation pipeline, text search, geospatial) with flexible schema. DynamoDB offers single-digit-millisecond latency at any scale with auto-scaling. Choose [MongoDB](../../Backend/mongodb/SKILL.md) for complex querying. Choose DynamoDB for predictable key-value access with auto-scaling.
 
-### Cassandra vs MongoDB
-Cassandra writes are faster and scale linearly with nodes. MongoDB reads are more flexible (any field, any filter). Cassandra has no joins, no aggregations, no secondary indexes (in practice). MongoDB has full query support. Choose Cassandra for write-heavy, no-compromise scalability. Choose MongoDB for developer productivity.
+### Cassandra vs [MongoDB](../../Backend/mongodb/SKILL.md)
+Cassandra writes are faster and scale linearly with nodes. [MongoDB](../../Backend/mongodb/SKILL.md) reads are more flexible (any field, any filter). Cassandra has no joins, no aggregations, no secondary indexes (in practice). [MongoDB](../../Backend/mongodb/SKILL.md) has full query support. Choose Cassandra for write-heavy, no-compromise scalability. Choose [MongoDB](../../Backend/mongodb/SKILL.md) for developer productivity.
 
 ### DynamoDB vs Cassandra
-DynamoDB is fully managed with auto-scaling, no ops overhead. Cassandra requires operational expertise (compaction, repairs, gossip management). DynamoDB has 400KB item limit, 1MB query limit, and no joins. Cassandra has 2GB cell limit but no practical query size limit. Choose DynamoDB for managed simplicity. Choose Cassandra for multi-region, multi-datacenter control.
+DynamoDB is fully managed with auto-scaling, no ops overhead. Cassandra requires operational expertise (compaction, repairs, gossip management). DynamoDB has 400KB item limit, 1MB query limit, and no joins. Cassandra has 2GB cell limit but no practical query size limit. Choose DynamoDB for managed simplicity. Choose Cassandra for multi-region, multi-[datacenter](../../Miscellaneous/datacenter/SKILL.md) control.
 
 ### Document vs Wide-Column vs Key-Value
 Document stores: flexible schema, rich queries, medium scale. Wide-column: rigid schema by partition key, massive scale, time-series. Key-value: simplest model, fastest lookups, caching. Choose document for general purpose. Choose wide-column for write-heavy time-series. Choose key-value for caching and session management.
 
 ## Performance Considerations
 
-- MongoDB: WiredTiger cache 50% of RAM minus 1GB. Indexes fit in RAM for best performance.
-- MongoDB: Aggregation pipeline $match and $sort use indexes. $lookup requires index on foreign field.
-- MongoDB: Batch inserts: 10K-100K documents per batch. ordered:false for best throughput.
+- [MongoDB](../../Backend/mongodb/SKILL.md): WiredTiger cache 50% of RAM minus 1GB. Indexes fit in RAM for best performance.
+- [MongoDB](../../Backend/mongodb/SKILL.md): Aggregation pipeline $match and $sort use indexes. $lookup requires index on foreign field.
+- [MongoDB](../../Backend/mongodb/SKILL.md): Batch inserts: 10K-100K documents per batch. ordered:false for best throughput.
 - DynamoDB: One strongly consistent read consumes 1 RCU (4KB). One eventually consistent read consumes 0.5 RCU.
 - DynamoDB: One write consumes 1 WCU (1KB). Items > 1KB cost proportionally more.
 - DynamoDB: Query returns max 1MB. Pagination required for larger results. Use LastEvaluatedKey.
@@ -368,7 +368,7 @@ Document stores: flexible schema, rich queries, medium scale. Wide-column: rigid
 - Cassandra: Write throughput scales linearly with node count. 10K writes/sec per node typical.
 - Cassandra: Read repair chance: default 10%. Increase for read-heavy, decrease for write-heavy.
 - Cassandra: Hinted handoff stores writes for downed nodes up to 3 hours by default.
-- Latency targets: DynamoDB single-digit ms, Cassandra 1-5ms per node, MongoDB 1-10ms indexed.
+- Latency targets: DynamoDB single-digit ms, Cassandra 1-5ms per node, [MongoDB](../../Backend/mongodb/SKILL.md) 1-10ms indexed.
 - Throughput: DynamoDB on-demand 4K write/sec/partition, read 8K/sec/partition. Cassandra 10K/sec/node.
 
 ### NoSQL Use Case Decision Tree
@@ -382,9 +382,9 @@ Data access pattern?
 │       └── Redis (in-memory, TTL-based expiry)
 ├── Document-oriented, flexible schema
 │   ├── Rich queries, aggregations, indexes
-│   │   └── MongoDB (flexible schema, secondary indexes)
+│   │   └── [MongoDB](../../Backend/mongodb/SKILL.md) (flexible schema, secondary indexes)
 │   └── Embedded sub-documents, hierarchical data
-│       └── MongoDB (embedding avoids joins)
+│       └── [MongoDB](../../Backend/mongodb/SKILL.md) (embedding avoids joins)
 ├── Wide-column, time-series, massive write throughput
 │   ├── Time-series event data
 │   │   └── Cassandra (partition by time bucket, cluster by entity)
@@ -403,7 +403,7 @@ Data access pattern?
 
 #### DynamoDB Single-Table Design
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Single-table design for e-commerce
 # PK: entity type + ID, SK: relationship/sort key
 items = {
@@ -430,7 +430,7 @@ items = {
 # GSI on status for all orders by status
 ```
 
-#### MongoDB Embedding vs Referencing Decision
+#### [MongoDB](../../Backend/mongodb/SKILL.md) Embedding vs Referencing Decision
 
 ```
 How is the data accessed?
@@ -483,10 +483,10 @@ cassandra_modeling:
 ## Rules: model around known access patterns, never data shape
 - Single-table design in DynamoDB for all related entities
 - One table per query pattern in Cassandra
-- Embed in MongoDB when sub-documents are accessed together
+- Embed in [MongoDB](../../Backend/mongodb/SKILL.md) when sub-documents are accessed together
 - Shard key must have high cardinality and even distribution
 - Hashed shard keys for time-series to prevent hot spots
-- Use eventual consistency for read-heavy dashboards
+- Use eventual consistency for read-heavy [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 - Strong consistency for critical financial data
 - Denormalize to avoid reads spanning partitions
 - No cross-partition queries in Cassandra
@@ -496,13 +496,13 @@ cassandra_modeling:
 ## References
   - ../../../Global_References/document-db.md — Document Database Reference
   - ../../../Global_References/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
-  - ../../../Global_References/mongodb-cassandra.md — MongoDB and Cassandra Reference
+  - ../../../Global_References/[mongodb](../../Backend/mongodb/SKILL.md)-cassandra.md — [MongoDB](../../Backend/mongodb/SKILL.md) and Cassandra Reference
   - ../../../Global_References/nosql-cap-theorem.md — NoSQL CAP Theorem
-  - ../../../Global_References/nosql-performance-tuning.md — NoSQL Performance Tuning
+  - ../../../Global_References/nosql-[performance-tuning](../../Frontend/performance-tuning/SKILL.md).md — NoSQL Performance Tuning
   - ../../../Global_References/wide-column.md — Wide-Column Database Reference
-  - ../../../Global_References/nosql-data-modeling.md — Data modeling patterns for NoSQL databases
+  - ../../../Global_References/nosql-[data-modeling](../../../Data_Engineering/data-modeling/SKILL.md).md — Data modeling patterns for NoSQL databases
   - ../../../Global_References/nosql-query-optimization.md — Query optimization and indexing strategies
 ## Handoff
-`data-graph-database` for relationship-heavy queries
-`data-search-engine` for full-text search over NoSQL data
+`[data-graph-database](../graph-database/SKILL.md)` for relationship-heavy queries
+`[data-search-engine](../search-engine/SKILL.md)` for full-text search over NoSQL data
 

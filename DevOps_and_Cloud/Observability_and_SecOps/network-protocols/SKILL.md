@@ -15,7 +15,7 @@ Congestion control modulates the Congestion Window (`cwnd`) to avoid network col
 - **Loss-based (Cubic):** Uses a cubic function of time since the last congestion event to dictate `cwnd` growth. It aggressively probes for bandwidth, resulting in a convex growth profile that scales well in high-BDP (Bandwidth-Delay Product) networks. Relies on packet loss as the primary congestion signal.
 - **Delay-based (BBR - Bottleneck Bandwidth and Round-trip propagation time):** Models the network path. It continuously measures the maximum delivery rate (Bottleneck Bandwidth) and minimum RTT. BBR controls sending rate to match the estimated BDP, minimizing queue buildup (bufferbloat) and operating near the optimal Kleinrock point, rather than reacting solely to loss.
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     subgraph TCPStateTCPStateMachine ["TCP State Machine<br><br><br>"]

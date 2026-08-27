@@ -9,7 +9,7 @@ metadata:
 
 # AI Inference Service Mesh
 
-Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference microservices.
+Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).
 
 ## Why Mesh for AI
 
@@ -29,8 +29,8 @@ istioctl install --set profile=default \
   --set meshConfig.defaultConfig.holdApplicationUntilProxyStarts=true
 
 # Label inference namespace for sidecar injection
-kubectl create namespace ai-inference
-kubectl label namespace ai-inference istio-injection=enabled
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create namespace ai-inference
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace ai-inference istio-injection=enabled
 
 # Verify installation
 istioctl verify-install
@@ -86,7 +86,7 @@ spec:
   - from:
     - source:
         principals:
-        - "cluster.local/ns/ai-inference/sa/api-gateway"
+        - "cluster.local/ns/ai-inference/sa/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)"
         - "cluster.local/ns/ai-inference/sa/orchestrator"
     to:
     - operation:
@@ -366,7 +366,7 @@ spec:
       baseEjectionTime: 30s
 ```
 
-## Observability
+## [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
 ```yaml
 # Telemetry resource for custom metrics on inference services
@@ -400,7 +400,7 @@ spec:
 
 ```bash
 # Port-forward Kiali
-kubectl port-forward svc/kiali -n istio-system 20001:20001 &
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) port-forward svc/kiali -n istio-system 20001:20001 &
 
 # Verify mesh health via API
 curl -s http://localhost:20001/kiali/api/namespaces/ai-inference/health | jq .
@@ -424,6 +424,6 @@ istioctl proxy-config cluster deploy/model-server -n ai-inference
 
 ## Related Skills
 
-- [service-mesh](../service-mesh/) - Foundational mesh concepts
-- [llm-gateway](../llm-gateway/) - North-south API gateway controls
-- [opentelemetry](../../../devops/observability/opentelemetry/) - End-to-end tracing and metrics
+- [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Foundational mesh concepts
+- [llm-gateway](../[llm-gateway](../../Models_and_FineTuning/llm-gateway/SKILL.md)/) - North-south API gateway controls
+- [opentelemetry](../../../devops/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/) - End-to-end tracing and metrics

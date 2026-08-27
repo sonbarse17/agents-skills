@@ -6,7 +6,7 @@ license: MIT
 
 # Progressive Delivery
 
-Progressive delivery takes strategies covered in `deployment-strategies` — canary, blue-green — and
+Progressive delivery takes strategies covered in `[deployment-strategies](../../Containers_and_Orchestration/deployment-strategies/SKILL.md)` — canary, blue-green — and
 makes the promotion decision automatic and metric-driven instead of manual or time-based. A canary
 that "runs for ten minutes then goes to 100%" is not progressive delivery, it's a timer with extra
 steps: if the ten minutes happened not to expose the regression, you ship it anyway. The controller
@@ -23,10 +23,10 @@ catches crashes, not the more common failure: a change that's technically 200-OK
 expensive per request, or silently returning wrong data to a subset of users. Combine at least an
 error-rate metric with a latency percentile (p95 or p99, not average — averages hide tail
 regressions), and add a business metric when one exists and is fast enough to compute (checkout
-success rate, not daily revenue). See `slo-definition` for choosing thresholds that reflect what
-users actually notice, and `metrics-and-monitoring` for where these queries come from.
+success rate, not daily revenue). See `[slo-definition](../../Observability_and_SecOps/slo-definition/SKILL.md)` for choosing thresholds that reflect what
+users actually notice, and `[metrics-and-monitoring](../../Observability_and_SecOps/metrics-and-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/SKILL.md)` for where these queries come from.
 
-**Done when:** the analysis would have failed on the last real incident this service had.
+**Done when:** the analysis would have failed on the last real [incident](../../Observability_and_SecOps/incident/SKILL.md) this service had.
 
 ## 2. Define the AnalysisTemplate as the actual go/no-go contract
 
@@ -68,9 +68,9 @@ and the pause at each step is longer than one full metric-collection interval.
 On analysis failure the controller should scale the canary to zero and route all traffic back to
 stable without waiting for a human to notice a Slack alert — that's the entire point of doing this
 automatically. Verify this by actually failing a canary in a non-prod environment and watching
-traffic shift back, not by reading the config and assuming it works. Pair this with `alerting` so a
+traffic shift back, not by reading the config and assuming it works. Pair this with `[alerting](../../Observability_and_SecOps/alerting/SKILL.md)` so a
 triggered rollback is loudly announced even though no one had to perform it, and with
-`incident-response` for what happens next if the rollback itself doesn't fully resolve the problem.
+`[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for what happens next if the rollback itself doesn't fully resolve the problem.
 
 **Done when:** a deliberately broken canary in a test environment rolls back automatically with zero
 manual intervention, and someone is notified that it happened.
@@ -78,9 +78,9 @@ manual intervention, and someone is notified that it happened.
 ## 5. Don't let the canary and the reconciler fight each other
 
 A Rollout resource under Argo CD is still declarative, but the controller mutates replica counts and
-traffic weights as it steps through analysis — the exact kind of drift `argocd-operations` normally
+traffic weights as it steps through analysis — the exact kind of drift `[argocd-operations](../../Observability_and_SecOps/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-operations/SKILL.md)` normally
 flags. Exclude the fields the Rollouts/Flagger controller owns (via `ignoreDifferences` or the
-resource's own CRD status conventions) so the GitOps reconciler doesn't fight the rollout by trying
+resource's own CRD status conventions) so the [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) reconciler doesn't fight the rollout by trying
 to sync it back to the committed replica count mid-canary.
 
 **Done when:** a canary can run to completion without Argo CD reporting OutOfSync on the fields the

@@ -118,7 +118,7 @@ Summary:
 - Make multiple changes simultaneously when debugging
 - Hardcode sensitive data in prompts or examples
 - Assume prompts transfer perfectly between models
-- Neglect monitoring for prompt degradation in production
+- Neglect [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for prompt degradation in production
 
 ## Output Templates
 
@@ -133,5 +133,5 @@ When delivering prompt work, provide:
 
 Reference files cover major prompting techniques (zero-shot, few-shot, CoT, ReAct, tree-of-thoughts), structured output patterns (JSON mode, function calling), context management (attention budgets, degradation mitigation, optimization), and model-specific guidance for GPT-4, Claude, and Gemini families. Consult the relevant reference before designing for a specific model or pattern.
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/data-ml/prompt-engineer/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/prompt-engineer/)
 

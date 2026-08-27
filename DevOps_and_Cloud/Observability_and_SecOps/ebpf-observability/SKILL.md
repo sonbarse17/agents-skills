@@ -7,20 +7,20 @@ metadata:
   version: "1.0"
 ---
 
-# eBPF Observability
+# eBPF [Observability](../observability/SKILL.md)
 
-eBPF (extended Berkeley Packet Filter) allows you to run sandboxed programs in the Linux kernel without modifying kernel source code or loading kernel modules. This skill covers using eBPF for deep observability, network monitoring, and security enforcement across cloud-native infrastructure.
+eBPF (extended Berkeley Packet Filter) allows you to run sandboxed programs in the Linux kernel without modifying kernel source code or loading kernel modules. This skill covers using eBPF for deep [observability](../observability/SKILL.md), network [monitoring](../monitoring/SKILL.md), and security enforcement across cloud-native infrastructure.
 
 ---
 
 ## 1. When to Use
 
-Use eBPF-based observability when you need:
+Use eBPF-based [observability](../observability/SKILL.md) when you need:
 
 - **Deep performance debugging** -- trace kernel-level latency, syscall overhead, and scheduling delays that application-level metrics cannot reveal.
-- **Network observability without sidecars** -- capture L3/L4/L7 flows, DNS queries, and TCP state transitions directly from the kernel, eliminating the CPU and memory overhead of sidecar proxies.
-- **Security monitoring at the kernel boundary** -- detect container escapes, unexpected process execution, sensitive file access, and anomalous syscall patterns in real time.
-- **Continuous profiling in production** -- generate CPU flame graphs and memory allocation profiles with negligible overhead (typically under 1% CPU).
+- **Network [observability](../observability/SKILL.md) without sidecars** -- capture L3/L4/L7 flows, DNS queries, and TCP state transitions directly from the kernel, eliminating the CPU and memory overhead of sidecar proxies.
+- **Security [monitoring](../monitoring/SKILL.md) at the kernel boundary** -- detect container escapes, unexpected process execution, sensitive file access, and anomalous syscall patterns in real time.
+- **Continuous [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) in production** -- generate CPU flame graphs and memory allocation profiles with negligible overhead (typically under 1% CPU).
 - **Service mesh replacement or augmentation** -- Cilium can replace kube-proxy and provide identity-aware network policies enforced at the kernel level.
 
 Avoid eBPF when your kernel version is below 4.19, when you are running on managed platforms that restrict BPF capabilities, or when your debugging needs are fully met by application-level tracing.
@@ -79,9 +79,9 @@ sudo bpftrace -e 'BEGIN { printf("eBPF is working\n"); exit(); }'
 
 ## 3. Cilium Setup
 
-Cilium replaces kube-proxy with eBPF-based networking, providing identity-aware security and deep network observability via Hubble.
+Cilium replaces kube-proxy with eBPF-based networking, providing identity-aware security and deep network [observability](../observability/SKILL.md) via Hubble.
 
-### Install Cilium on Kubernetes
+### Install Cilium on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 
 ```bash
 # Add the Cilium Helm repo
@@ -109,18 +109,18 @@ cilium status --wait
 ```bash
 # Cilium CLI
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
-curl -L --remote-name "https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz"
+curl -L --remote-name "https://[github](../../CI_CD/github/SKILL.md).com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz"
 sudo tar xzvf cilium-linux-amd64.tar.gz -C /usr/local/bin
 rm cilium-linux-amd64.tar.gz
 
 # Hubble CLI
 HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
-curl -L --remote-name "https://github.com/cilium/hubble/releases/download/${HUBBLE_VERSION}/hubble-linux-amd64.tar.gz"
+curl -L --remote-name "https://[github](../../CI_CD/github/SKILL.md).com/cilium/hubble/releases/download/${HUBBLE_VERSION}/hubble-linux-amd64.tar.gz"
 sudo tar xzvf hubble-linux-amd64.tar.gz -C /usr/local/bin
 rm hubble-linux-amd64.tar.gz
 ```
 
-### Hubble Network Observability
+### Hubble Network [Observability](../observability/SKILL.md)
 
 ```bash
 # Port-forward the Hubble Relay
@@ -149,7 +149,7 @@ hubble observe --output json --last 1000 > flows.json
 
 ```bash
 # Port-forward the Hubble UI
-kubectl port-forward -n kube-system svc/hubble-ui 12000:80
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) port-forward -n kube-system svc/hubble-ui 12000:80
 
 # Access at http://localhost:12000 -- provides a real-time service dependency map
 ```
@@ -172,12 +172,12 @@ helm install tetragon cilium/tetragon \
   --set tetragon.exportFilename=/var/run/cilium/tetragon/tetragon.log
 
 # Install the tetra CLI
-curl -LO "https://github.com/cilium/tetragon/releases/latest/download/tetra-linux-amd64.tar.gz"
+curl -LO "https://[github](../../CI_CD/github/SKILL.md).com/cilium/tetragon/releases/latest/download/tetra-linux-amd64.tar.gz"
 sudo tar xzvf tetra-linux-amd64.tar.gz -C /usr/local/bin
 rm tetra-linux-amd64.tar.gz
 ```
 
-### Process Execution Monitoring
+### Process Execution [Monitoring](../monitoring/SKILL.md)
 
 ```yaml
 # process-monitor.yaml -- TracingPolicy to monitor all process executions
@@ -196,10 +196,10 @@ spec:
 
 ```bash
 # Watch all process executions cluster-wide
-kubectl exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact --process-exec
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact --process-exec
 
 # Filter to a specific namespace
-kubectl exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
   --namespace production
 ```
 
@@ -225,16 +225,16 @@ spec:
               values:
                 - "/etc/shadow"
                 - "/etc/passwd"
-                - "/etc/kubernetes/pki"
-                - "/var/run/secrets/kubernetes.io"
+                - "/etc/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/pki"
+                - "/var/run/secrets/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io"
                 - "/root/.ssh"
 ```
 
 ```bash
-kubectl apply -f file-access-policy.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f file-access-policy.yaml
 
 # Observe file access events
-kubectl exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
   | grep "sensitive-file-access"
 ```
 
@@ -269,7 +269,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f restrict-egress.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f restrict-egress.yaml
 ```
 
 ### Privileged Escalation Detection
@@ -307,7 +307,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f detect-privilege-escalation.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f detect-privilege-escalation.yaml
 ```
 
 ---
@@ -408,14 +408,14 @@ Hubble automatically exposes Prometheus metrics when configured in the Cilium He
 
 ```bash
 # Check that Hubble metrics are being served
-kubectl exec -n kube-system ds/cilium -- curl -s http://localhost:9965/metrics | head -50
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/cilium -- curl -s http://localhost:9965/metrics | head -50
 ```
 
 Create a ServiceMonitor for Prometheus Operator:
 
 ```yaml
 # hubble-servicemonitor.yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: [monitoring](../monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: hubble-metrics
@@ -436,9 +436,9 @@ spec:
 
 ```bash
 # Deploy cloudflare/ebpf_exporter for custom kernel metrics
-helm repo add ebpf-exporter https://cloudflare.github.io/ebpf_exporter
+helm repo add ebpf-exporter https://cloudflare.[github](../../CI_CD/github/SKILL.md).io/ebpf_exporter
 helm install ebpf-exporter ebpf-exporter/ebpf-exporter \
-  --namespace monitoring \
+  --namespace [monitoring](../monitoring/SKILL.md) \
   --set config.programs[0].name=oom_kills \
   --set config.programs[0].metrics.counters[0].name=oom_kill_total \
   --set config.programs[0].metrics.counters[0].help="Total number of OOM kills"
@@ -477,7 +477,7 @@ programs:
 
 ### Grafana Dashboard
 
-Import these community dashboards for eBPF metrics:
+Import these community [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for eBPF metrics:
 
 ```bash
 # Hubble dashboard -- Grafana dashboard ID 16611
@@ -485,12 +485,12 @@ Import these community dashboards for eBPF metrics:
 # Cilium Operator dashboard -- Grafana dashboard ID 16613
 
 # Or create a ConfigMap for automatic provisioning
-kubectl create configmap grafana-cilium-dashboard \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) create configmap grafana-cilium-dashboard \
   --from-file=cilium-dashboard.json \
-  --namespace monitoring \
+  --namespace [monitoring](../monitoring/SKILL.md) \
   -o yaml --dry-run=client | \
-  kubectl label --local -f - grafana_dashboard=1 -o yaml | \
-  kubectl apply -f -
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) label --local -f - grafana_dashboard=1 -o yaml | \
+  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
 ```
 
 Key Prometheus queries for eBPF-sourced metrics:
@@ -514,7 +514,7 @@ histogram_quantile(0.99, sum(rate(run_queue_latency_seconds_bucket[5m])) by (le)
 
 ---
 
-## 7. Network Observability
+## 7. Network [Observability](../observability/SKILL.md)
 
 ### L3/L4 Flow Logging
 
@@ -559,7 +559,7 @@ hubble observe --type l7 --http-status "500+" --follow
 hubble observe --type l7 --http-method GET --http-path "/api/v1/.*" --follow
 ```
 
-### DNS Monitoring
+### DNS [Monitoring](../monitoring/SKILL.md)
 
 ```bash
 # All DNS queries and responses
@@ -594,7 +594,7 @@ hubble observe --output json --since 24h | \
 
 ---
 
-## 8. Security Monitoring
+## 8. Security [Monitoring](../monitoring/SKILL.md)
 
 ### Detect Container Escapes
 
@@ -644,7 +644,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f container-escape-detection.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f container-escape-detection.yaml
 ```
 
 ### Unexpected Syscall Detection
@@ -687,7 +687,7 @@ spec:
             - action: Sigkill
 ```
 
-### File Integrity Monitoring
+### File Integrity [Monitoring](../monitoring/SKILL.md)
 
 ```yaml
 # file-integrity-monitor.yaml
@@ -727,10 +727,10 @@ spec:
 ```
 
 ```bash
-kubectl apply -f file-integrity-monitor.yaml
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f file-integrity-monitor.yaml
 
 # Stream events to your SIEM
-kubectl logs -n kube-system ds/tetragon -c export-stdout -f | \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c export-stdout -f | \
   jq 'select(.process_kprobe.policy_name == "file-integrity-monitor")' | \
   tee /dev/stderr | \
   curl -X POST -H "Content-Type: application/json" -d @- https://siem.internal/api/events
@@ -738,15 +738,15 @@ kubectl logs -n kube-system ds/tetragon -c export-stdout -f | \
 
 ---
 
-## 9. Performance Profiling
+## 9. Performance [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
 
-### Continuous Profiling with Parca
+### Continuous [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) with Parca
 
 Parca uses eBPF to collect CPU profiles continuously with minimal overhead.
 
 ```bash
 # Install Parca Agent via Helm
-helm repo add parca https://parca-dev.github.io/helm-charts
+helm repo add parca https://parca-dev.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install parca-agent parca/parca-agent \
@@ -759,11 +759,11 @@ helm install parca-agent parca/parca-agent \
   --set config.debuginfo.upload.enabled=true
 ```
 
-### Continuous Profiling with Pyroscope
+### Continuous [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) with Pyroscope
 
 ```bash
-# Install Grafana Pyroscope with eBPF profiling
-helm repo add grafana https://grafana.github.io/helm-charts
+# Install Grafana Pyroscope with eBPF [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
+helm repo add grafana https://grafana.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install pyroscope grafana/pyroscope \
@@ -785,7 +785,7 @@ sudo perf record -F 99 -a -g -- sleep 30
 sudo perf script > perf.stacks
 
 # Convert to flame graph (using Brendan Gregg's tools)
-git clone https://github.com/brendangregg/FlameGraph.git
+git clone https://[github](../../CI_CD/github/SKILL.md).com/brendangregg/FlameGraph.git
 ./FlameGraph/stackcollapse-perf.pl perf.stacks | \
   ./FlameGraph/flamegraph.pl > flamegraph.svg
 ```
@@ -851,8 +851,8 @@ sudo bpftrace -d -e 'your_program_here' 2>&1 | tail -50
 cat /boot/config-$(uname -r) | grep CONFIG_DEBUG_INFO_BTF
 
 # If not, install BTF data from btfhub
-# https://github.com/aquasecurity/btfhub
-wget "https://github.com/aquasecurity/btfhub-archive/raw/main/ubuntu/22.04/x86_64/$(uname -r).btf.tar.xz"
+# https://[github](../../CI_CD/github/SKILL.md).com/aquasecurity/btfhub
+wget "https://[github](../../CI_CD/github/SKILL.md).com/aquasecurity/btfhub-archive/raw/main/ubuntu/22.04/x86_64/$(uname -r).btf.tar.xz"
 tar xvf "$(uname -r).btf.tar.xz"
 ```
 
@@ -874,10 +874,10 @@ capsh --decode=$(cat /proc/self/status | grep CapEff | awk '{print $2}')
 
 ```bash
 # Check Cilium agent logs
-kubectl logs -n kube-system -l k8s-app=cilium --tail=100
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system -l k8s-app=cilium --tail=100
 
 # Verify BPF filesystem
-kubectl exec -n kube-system ds/cilium -- mount | grep bpf
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/cilium -- mount | grep bpf
 
 # Check for conflicting CNIs
 ls /etc/cni/net.d/
@@ -890,13 +890,13 @@ cilium connectivity test
 
 ```bash
 # Verify TracingPolicy is loaded
-kubectl get tracingpolicies
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get tracingpolicies
 
 # Check Tetragon agent logs for verifier errors
-kubectl logs -n kube-system ds/tetragon -c tetragon --tail=200 | grep -i error
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c tetragon --tail=200 | grep -i error
 
 # Verify the kprobe is attached
-kubectl exec -n kube-system ds/tetragon -c tetragon -- \
+[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- \
   cat /sys/kernel/debug/kprobes/list | grep your_function
 ```
 

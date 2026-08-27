@@ -19,7 +19,7 @@ tags: [devops, finops, cost, phase-7]
 # devops-finops
 
 ## Purpose
-Implement FinOps practices for cloud cost visibility, allocation, optimization, and governance -- covering compute, storage, Kubernetes, and organizational maturity from crawl to run.
+Implement FinOps practices for cloud cost visibility, allocation, optimization, and governance -- covering compute, storage, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), and organizational maturity from crawl to run.
 
 ## Agent Protocol
 
@@ -30,7 +30,7 @@ Any user message referencing cloud cost, FinOps, cost optimization, reserved ins
 Cloud provider(s), current monthly spend, team structure, tagging conventions, optimization goals, compliance requirements.
 
 ### Output Artifact
-Tagging strategy, budget alerts, right-sizing recommendations, RI/SP purchase plans, cost dashboards, chargeback/showback reports, K8s cost optimization config.
+Tagging strategy, budget alerts, right-sizing recommendations, RI/SP purchase plans, cost [dashboards](../dashboards/SKILL.md), chargeback/showback reports, K8s cost optimization config.
 
 ### Response Format
 Tabular data, tagging schemas, policy definitions. CLI/API examples for cost tools.
@@ -38,7 +38,7 @@ Tabular data, tagging schemas, policy definitions. CLI/API examples for cost too
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
-Tagging enforced, budgets active, right-sizing recommendations implemented, cost visibility dashboards deployed, chargeback process documented, K8s cost visibility enabled.
+Tagging enforced, budgets active, right-sizing recommendations implemented, cost visibility [dashboards](../dashboards/SKILL.md) deployed, chargeback process documented, K8s cost visibility enabled.
 
 ## Architecture / Decision Trees
 
@@ -72,11 +72,11 @@ Tagging enforced, budgets active, right-sizing recommendations implemented, cost
 | Resource Type | Optimization Potential | Effort | Priority |
 |---|---|---|---|
 | Compute (EC2, GCE, VM) | 30-60% savings | Medium | High |
-| Kubernetes (idle, over-provisioned) | 40-60% savings | High | High |
+| [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (idle, over-provisioned) | 40-60% savings | High | High |
 | Storage (lifecycle, unattached) | 20-40% savings | Low | Medium |
 | Data transfer (egress, cross-region) | 30-50% savings | Medium | High |
 | Database (right-sizing, RI) | 25-50% savings | Medium | High |
-| Serverless (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
+| [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
 
 ## Core Workflow
 
@@ -220,7 +220,7 @@ spec:
 ```
 
 ### Step 7: Automated Remediation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Lambda function to stop untagged instances
 def lambda_handler(event, context):
     ec2 = boto3.client('ec2')
@@ -277,7 +277,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 Jumping to automated optimization without establishing tagging, visibility, and allocation leads to chaos. Follow crawl-walk-run maturity. Do not automate before you can measure.
 
 ### Anti-Pattern 2: RI/SP Overcommitment
-Buying RIs for unstable workloads or before right-sizing wastes money. Always right-size for 14 days first. Only commit to RIs for stable baseline under 60% utilization.
+Buying RIs for unstable workloads or before right-sizing wastes money. Always right-size for 14 days first. Only [commit](../../CI_CD/commit/SKILL.md) to RIs for stable baseline under 60% utilization.
 
 ### Anti-Pattern 3: Chargeback Without Culture
 Implementing finance-grade chargeback without team buy-in creates friction. Start with showback (visibility only). Transition to chargeback when teams understand their costs.
@@ -292,12 +292,12 @@ Unattached volumes, idle load balancers, and orphaned snapshots accumulate silen
 Teams optimize compute and storage but ignore egress. A data-heavy app can spend more on data transfer than compute. Use CDN for egress. Keep data in-region. Monitor NAT Gateway charges.
 
 ### Anti-Pattern 7: Neglecting SaaS Costs
-FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data transfer to third parties add up. Include SaaS costs in visibility dashboards. Review subscription utilization quarterly.
+FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data transfer to third parties add up. Include SaaS costs in visibility [dashboards](../dashboards/SKILL.md). Review subscription utilization quarterly.
 
 ## Production Considerations
 
 ### Cost Visibility
-- Dashboards per team, per service, per environment.
+- [Dashboards](../dashboards/SKILL.md) per team, per service, per environment.
 - Daily cost notifications to team leads.
 - Weekly cost review with actionable insights.
 - Monthly executive summary with trends.
@@ -317,7 +317,7 @@ FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data trans
 - Allocation of savings to consuming teams.
 - Regular right-sizing before any RI purchase.
 
-### Kubernetes Cost Optimization
+### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Cost Optimization
 - Kubecost for namespace-level allocation.
 - Karpenter for dynamic node provisioning.
 - VPA recommendations for resource right-sizing.
@@ -329,7 +329,7 @@ FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data trans
 ## Rules
 - Every resource has mandatory cost allocation tags.
 - Budget alerts configured before any resource deployment.
-- Right-size before buying reserved capacity.
+- Right-size before buying reserved [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 - Spot instances for non-critical, fault-tolerant workloads.
 - Delete unused resources weekly.
 - Unit economics tracked and trended monthly.
@@ -371,7 +371,7 @@ Traditional chargeback is annual, static, and opaque. FinOps chargeback is conti
 4. RI/SP report: coverage, utilization, expiring.
 5. Right-sizing report: recommendations and savings.
 6. Storage optimization: lifecycle savings, orphaned cleanup.
-7. Kubernetes: namespace spend, idle cluster, Kubecost recs.
+7. [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): namespace spend, idle cluster, Kubecost recs.
 8. Unit economics: cost per user/request/transaction.
 9. Governance review: tagging compliance, budget compliance.
 
@@ -394,7 +394,7 @@ Detection: monthly RI report shows coverage dropped from 65% to 45%. Investigati
 - ../../../Global_References/finops-practices.md -- FinOps Practices
 - ../../../Global_References/finops_cost-optimization.md -- Cost Optimization
 - references/finops-maturity-model.md -- FinOps Maturity Model
-- references/finops-cost-optimization-levers.md -- Cost Optimization Levers
+- references/finops-[cost-optimization](../cost-optimization/SKILL.md)-levers.md -- Cost Optimization Levers
 
 ## Handoff
 Hand off to finops for cost visibility and optimization. Hand off to cloud-specific skills (aws/azure/gcp) for resource provisioning at optimized price.
@@ -485,7 +485,7 @@ check_tag_compliance() {
 - Implement **automated right-sizing** recommendations using AWS Compute Optimizer / Azure Advisor
 - Use **commitment-based discounts** (RIs, Savings Plans) for baseline compute; spot/on-demand for burst
 - Track **unit economics** (cost per transaction, per user, per GB stored) for business-aligned reporting
-- Publish **cost dashboards** in Grafana/Looker with daily granularity and team breakdowns
+- Publish **cost [dashboards](../dashboards/SKILL.md)** in Grafana/Looker with daily granularity and team breakdowns
 
 ## Anti-Patterns
 
@@ -512,7 +512,7 @@ check_tag_compliance() {
 - Control **IAM permissions** for cost data — restrict `ce:*`, `budgets:*`, `pricing:*` to FinOps team
 - Enable **AWS Organizations SCP** to prevent teams from launching expensive instance types
 - Set **billing alarms** with SNS notifications to Slack/PagerDuty on threshold breaches
-- Audit **resource creation** with CloudTrail and cross-reference with budget tag requirements
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **resource creation** with CloudTrail and cross-reference with budget tag requirements
 - Use **IAM roles** for programmatic cost API access instead of long-lived access keys
 - Restrict **permissions** to modify budgets and alerts to a small admin group
 - Monitor **cost anomaly** with AWS Cost Anomaly Detection or third-party FinOps platforms

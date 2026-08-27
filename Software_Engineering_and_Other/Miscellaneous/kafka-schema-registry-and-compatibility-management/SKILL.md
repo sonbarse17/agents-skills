@@ -31,7 +31,7 @@ false sense of safety (a compatibility check that technically passes but
 still breaks downstream logic). This skill covers choosing the right mode
 and evolving schemas safely within it — the topic/partition-level
 configuration this schema sits on top of is covered in
-[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md).
+[kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -150,7 +150,7 @@ configuration this schema sits on top of is covered in
    A response of `{"is_compatible": false}` should fail the build, the
    same way a failing unit test would — this check belongs in the same
    CI gate that
-   [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)
+   [kafka-configuration-validation](../[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md)
    uses for topic config, run against every schema-affecting change.
 
 6. **For Protobuf specifically, never reuse or renumber a field number**
@@ -306,6 +306,6 @@ reviewed the same way.
 
 ## Cross-references
 
-- [kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md) — the topic-level design this schema layer sits on top of.
-- [kafka-configuration-validation](../kafka-configuration-validation/SKILL.md) — the broader pre-production validation gate this schema-compatibility check should run alongside.
-- [kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md) — a consumer stalled on repeated deserialization errors after an incompatible schema change can present similarly to lag caused by a slow consumer, but needs this skill's fix instead.
+- [kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md) — the topic-level design this schema layer sits on top of.
+- [kafka-configuration-validation](../[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md) — the broader pre-production validation gate this schema-compatibility check should run alongside.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — a consumer stalled on repeated deserialization errors after an incompatible schema change can present similarly to lag caused by a slow consumer, but needs this skill's fix instead.

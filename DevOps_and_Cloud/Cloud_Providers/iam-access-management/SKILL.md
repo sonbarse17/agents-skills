@@ -7,7 +7,7 @@ license: MIT
 # IAM & Access Management
 
 Access accumulates and almost never gets removed on its own. Someone needs prod database access
-for one incident and keeps it for two years; a service gets an admin role because scoping it
+for one [incident](../../Observability_and_SecOps/incident/SKILL.md) and keeps it for two years; a service gets an admin role because scoping it
 down "later" was never a priority. Every one of those grants is a standing liability whether or
 not it's ever misused, because it's one more credential an attacker can compromise and one more
 thing an auditor has to explain.
@@ -36,9 +36,9 @@ currently holds them.
 
 A static access key is valid until someone remembers to rotate or revoke it — which in practice
 means indefinitely. Short-lived, dynamically issued credentials (STS tokens, workload identity
-federation, Vault dynamic secrets) expire on their own, so a leaked credential has a small,
+federation, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) dynamic secrets) expire on their own, so a leaked credential has a small,
 bounded blast radius instead of an unbounded one. This is the same rotation principle as
-`secrets-management`, applied to identity and access rather than application secrets.
+`[secrets-management](../secrets-management/SKILL.md)`, applied to identity and access rather than application secrets.
 
 **Done when:** human and service access to production defaults to credentials that expire in
 hours, not credentials that never expire.
@@ -54,7 +54,7 @@ an org chart.
 **Done when:** a scheduled review process has run at least once and produced revocations, not
 just a report nobody acted on.
 
-## 4. Give break-glass access an audit trail, not a standing door
+## 4. Give break-glass access an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, not a standing door
 
 Emergency access to production needs to exist, but it should be an event, not a permanent open
 door. A break-glass path should require explicit invocation, log who used it and when, expire

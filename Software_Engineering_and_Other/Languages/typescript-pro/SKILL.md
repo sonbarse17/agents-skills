@@ -13,7 +13,7 @@ metadata:
   related-skills: fullstack-guardian, api-designer
 ---
 
-# TypeScript Pro
+# [TypeScript](../../Frontend/typescript/SKILL.md) Pro
 
 ## Core Workflow
 
@@ -32,13 +32,13 @@ Load detailed guidance based on context:
 | Advanced Types | `../../../Global_References/advanced-types.md` | Generics, conditional types, mapped types, template literals |
 | Type Guards | `../../../Global_References/type-guards.md` | Type narrowing, discriminated unions, assertion functions |
 | Utility Types | `../../../Global_References/utility-types.md` | Partial, Pick, Omit, Record, custom utilities |
-| Configuration | `../../../Global_References/typescript-pro_configuration.md` | tsconfig options, strict mode, project references |
-| Patterns | `../../../Global_References/typescript-pro_patterns.md` | Builder pattern, factory pattern, type-safe APIs |
+| Configuration | `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-pro_configuration.md` | tsconfig options, strict mode, project references |
+| Patterns | `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-pro_patterns.md` | Builder pattern, factory pattern, type-safe APIs |
 
 ## Code Examples
 
 ### Branded Types
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Branded type for domain modeling
 type Brand<T, B extends string> = T & { readonly __brand: B };
 type UserId  = Brand<string, "UserId">;
@@ -52,7 +52,7 @@ function getOrder(userId: UserId, orderId: OrderId) { /* ... */ }
 ```
 
 ### Discriminated Unions & Type Guards
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 type LoadingState = { status: "loading" };
 type SuccessState = { status: "success"; data: string[] };
 type ErrorState   = { status: "error";   error: Error };
@@ -78,7 +78,7 @@ function renderState(state: RequestState): string {
 ```
 
 ### Custom Utility Types
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Deep readonly — immutable nested objects
 type DeepReadonly<T> = {
   readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
@@ -134,7 +134,7 @@ type RequireExactlyOne<T, Keys extends keyof T = keyof T> =
 
 ## Output Templates
 
-When implementing TypeScript features, provide:
+When implementing [TypeScript](../../Frontend/typescript/SKILL.md) features, provide:
 1. Type definitions (interfaces, types, generics)
 2. Implementation with type guards
 3. tsconfig configuration if needed
@@ -142,7 +142,7 @@ When implementing TypeScript features, provide:
 
 ## Knowledge Reference
 
-TypeScript 5.0+, generics, conditional types, mapped types, template literal types, discriminated unions, type guards, branded types, tRPC, project references, incremental compilation, declaration files, const assertions, satisfies operator
+[TypeScript](../../Frontend/typescript/SKILL.md) 5.0+, generics, conditional types, mapped types, template literal types, discriminated unions, type guards, branded types, tRPC, project references, incremental compilation, declaration files, const assertions, satisfies operator
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/typescript-pro/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/[typescript](../../Frontend/typescript/SKILL.md)-pro/)
 

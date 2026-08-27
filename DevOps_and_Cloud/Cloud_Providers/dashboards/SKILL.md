@@ -6,7 +6,7 @@ license: MIT
 
 # Dashboards
 
-A dashboard exists to answer a specific question fast, under pressure, for a specific person. Most dashboards fail that job not because the data is wrong but because they were built to show everything available rather than to answer anything in particular — thirty panels of "might be useful," none of which the on-call engineer can parse in the first ninety seconds of an incident.
+A dashboard exists to answer a specific question fast, under pressure, for a specific person. Most dashboards fail that job not because the data is wrong but because they were built to show everything available rather than to answer anything in particular — thirty panels of "might be useful," none of which the on-call engineer can parse in the first ninety seconds of an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 That's a design failure, not a data failure — every one of those thirty panels might be technically correct and still add up to a dashboard nobody can act on under pressure.
 
@@ -23,7 +23,7 @@ If you can't say which question a dashboard answers and for whom, it will be bui
 The narrower question is almost always the more useful dashboard, because it maps directly onto a decision someone actually needs to make. Every dashboard should be buildable to a one-sentence brief:
 
 - **Who opens this** — on-call engineer, service owner, leadership reviewing a trend.
-- **Under what circumstance** — mid-incident, weekly review, capacity planning.
+- **Under what circumstance** — mid-[incident](../../Observability_and_SecOps/incident/SKILL.md), weekly review, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning.
 - **What decision they make from it** — mitigate now, file a follow-up, adjust a forecast.
 
 A dashboard with no stated audience or trigger condition is the one that rots first.
@@ -32,7 +32,7 @@ A dashboard with no stated audience or trigger condition is the one that rots fi
 
 ## 2. Give every panel exactly one question, and title it as that question
 
-A panel with five overlapping lines and two Y-axes is answering "everything at once," which means it's actually answering nothing at a glance. Split it: one panel for request rate, one for error rate, one for latency percentiles — each independently readable in the two seconds someone spends looking at it during an incident.
+A panel with five overlapping lines and two Y-axes is answering "everything at once," which means it's actually answering nothing at a glance. Split it: one panel for request rate, one for error rate, one for latency percentiles — each independently readable in the two seconds someone spends looking at it during an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 - **One line of reasoning per panel** — if explaining a panel takes more than one sentence, it's actually two panels.
 - **Title panels as the question they answer** — "Error rate by endpoint," not "Errors" — so scanning titles alone tells you what's on the page.
@@ -52,9 +52,9 @@ For a request-driven service, the fastest-loading, top-most row should be Rate/E
 
 ## 4. Match time range and granularity to the decision, not the data retention
 
-A dashboard meant for spotting an active incident should default to a short, high-resolution window — last hour, one-minute resolution — so a spike is visible as a spike, not smoothed into a flat line.
+A dashboard meant for spotting an active [incident](../../Observability_and_SecOps/incident/SKILL.md) should default to a short, high-resolution window — last hour, one-minute resolution — so a spike is visible as a spike, not smoothed into a flat line.
 
-A dashboard meant for capacity or trend review should default to weeks or months at coarser resolution, because a one-hour view of a slow trend just looks like noise. Shipping every dashboard with the same default 24-hour window regardless of its purpose is a common, easy-to-fix mismatch between the tool and the question it's meant to answer.
+A dashboard meant for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or trend review should default to weeks or months at coarser resolution, because a one-hour view of a slow trend just looks like noise. Shipping every dashboard with the same default 24-hour window regardless of its purpose is a common, easy-to-fix mismatch between the tool and the question it's meant to answer.
 
 **Done when:** each dashboard's default time range matches the kind of decision it's built to support.
 
@@ -72,7 +72,7 @@ Dashboards accumulate the same way alerts do — someone adds a panel during an 
 
 An alert says something is wrong; a dashboard should be one click away explaining what and how badly, without the paged engineer having to build a query from scratch under pressure.
 
-Every page-tier alert (see `alerting`) should link the specific dashboard, or the specific panel, that shows the condition it fired on — not a link to a generic team dashboard the engineer then has to search through.
+Every page-tier alert (see `[alerting](../../Observability_and_SecOps/alerting/SKILL.md)`) should link the specific dashboard, or the specific panel, that shows the condition it fired on — not a link to a generic team dashboard the engineer then has to search through.
 
 **Done when:** every page-tier alert links directly to the dashboard view that shows the condition it alerted on.
 

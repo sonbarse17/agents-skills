@@ -23,7 +23,7 @@ A platform team without a measurement system defaults to measuring what's
 easiest to count — catalog entity count, portal logins, number of
 templates published — none of which tell you whether developers are
 actually more productive, or even whether they're using the platform
-voluntarily versus because they were told to. Real developer-experience
+voluntarily versus because they were told to. Real [developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)
 (DX) measurement combines **perception** (how developers actually feel
 about their workflow, which only a survey can capture) with **telemetry**
 (what actually happened — deploy frequency, lead time, self-service
@@ -39,7 +39,7 @@ actually working.
 
 ## When to use
 
-- Standing up developer-experience measurement for a platform team that
+- Standing up [developer-experience](../../../Product_and_Business/developer-experience/SKILL.md) measurement for a platform team that
   currently has no metrics, or only has raw usage counts (logins, page
   views, catalog entities) with no outcome signal behind them.
 - A leadership request to "prove the platform team's impact" or justify
@@ -60,7 +60,7 @@ actually working.
   where attribution suppresses honest negative feedback.
 - Telemetry sources already emitting events the platform can query:
   CI/CD pipeline logs (deploy frequency, lead time), the software catalog's
-  own audit log (template usage, self-service action invocations), and
+  own [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log (template usage, self-service action invocations), and
   version-control provider APIs (time from repo creation to first merged
   PR, as a proxy for time-to-first-contribution).
 - A place to route both signals together — a BI tool or a simple
@@ -89,7 +89,7 @@ actually working.
    - **Satisfaction** (SPACE): a survey question on overall developer
      satisfaction with the internal platform/tooling.
    - **Speed** (DX Core 4) / **Efficiency & flow** (SPACE): median lead
-     time from commit to production deploy.
+     time from [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to production deploy.
    - **Activity** (SPACE): self-service action/template usage counts —
      but paired with an outcome metric (see step 3), never reported
      alone.
@@ -242,7 +242,7 @@ actually working.
   **Fix:** This is a sign the metric itself became the target rather than
   a genuine proxy for developer value — likely because golden-path usage
   became mandatory (see
-  [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md)
+  [idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy](../idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md)
   for the adoption failure modes this produces) rather than earned.
   Re-anchor the metric set on the paired outcome metrics from step 3/4,
   and investigate the satisfaction free-text responses for what the
@@ -297,6 +297,6 @@ system that would have caught this instead of hiding it.
 
 ## Cross-references
 
-- [idp-adoption-rollout-and-change-management-strategy](../idp-adoption-rollout-and-change-management-strategy/SKILL.md) — using this skill's measurement system to sequence and validate a rollout, rather than mandating adoption and inferring success from compliance percentages alone.
-- [platform-engineering-team-topology-and-operating-model](../platform-engineering-team-topology-and-operating-model/SKILL.md) — treating the platform as an internal product means its team needs exactly this kind of customer-facing measurement system, not just uptime/ticket metrics.
-- [golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md) — telemetry from validated golden-path scaffolds is the source data behind the paired activity/outcome metrics described in step 3 here.
+- [idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy](../idp-adoption-rollout-and-[change-management](../change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — using this skill's measurement system to sequence and validate a rollout, rather than mandating adoption and inferring success from compliance percentages alone.
+- [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — treating the platform as an internal product means its team needs exactly this kind of customer-facing measurement system, not just uptime/ticket metrics.
+- [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — telemetry from validated golden-path scaffolds is the source data behind the paired activity/outcome metrics described in step 3 here.

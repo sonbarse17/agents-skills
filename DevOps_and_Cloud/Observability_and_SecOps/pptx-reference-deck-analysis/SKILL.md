@@ -9,7 +9,7 @@ Inspect a reference deck as design evidence. This skill never copies, clones, or
 
 ## Contract
 
-Implement required extraction on demand with a small task-local `python-pptx` script. Capture only the information required for the new deck:
+Implement required extraction on demand with a small task-local `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-pptx` script. Capture only the information required for the new deck:
 
 - compact prompt context: slide count and size, text summaries, shape counts, styles, brand signals, template use, and layout rhythm;
 - full extraction: `summary`, slides, and read-only `layout_tree` evidence;

@@ -24,8 +24,8 @@ caller ends up needing its own separate health check on top, which most callers 
 
 - **Prefer discovery that's health-aware by construction** (e.g., a mesh or orchestrator that
   removes not-ready instances from the result set) over a static list plus a hope.
-- **In Kubernetes, this is exactly the Service/Endpoints readiness relationship** — see
-  `kubernetes-networking` for that mechanism specifically.
+- **In [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), this is exactly the Service/Endpoints readiness relationship** — see
+  `[kubernetes-networking](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-networking/SKILL.md)` for that mechanism specifically.
 
 **Done when:** a caller resolving a dependency only ever gets instances that are actually ready to
 serve.
@@ -79,23 +79,23 @@ requests instead of unbounded memory growth.
 
 mTLS gives both sides cryptographic proof of identity at the connection level, independent of
 whatever the application-layer payload claims. This matters most for internal traffic that's often
-assumed trusted by default — the zero-trust position is that network location proves nothing, and
+assumed trusted by default — the [zero-trust](../../../Security/zero-trust/SKILL.md) position is that network location proves nothing, and
 every hop should verify identity explicitly rather than relying on being inside a perimeter. See
-`zero-trust` for the broader posture this is one implementation of.
+`[zero-trust](../../../Security/zero-trust/SKILL.md)` for the broader posture this is one implementation of.
 
 **Done when:** service-to-service traffic is authenticated by certificate, not by network location
 alone, and certificate rotation is automated rather than a manual chore someone forgets.
 
 ## 5. Treat hybrid and cross-cloud links as the least reliable path in the system
 
-A link between a datacenter and a cloud VPC, or between two cloud providers, has different latency,
+A link between a [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) and a cloud VPC, or between two cloud providers, has different latency,
 failure modes, and cost characteristics than intra-cloud traffic — and it's usually the path with
-the least observability, since it crosses an administrative boundary. Apply every pattern above
+the least [observability](../observability/SKILL.md), since it crosses an administrative boundary. Apply every pattern above
 more conservatively here: tighter timeouts are wrong (the link is slower), but stronger circuit
-breaking and explicit monitoring of the link itself are right.
+breaking and explicit [monitoring](../monitoring/SKILL.md) of the link itself are right.
 
 **Done when:** the cross-boundary link has its own dedicated health signal, separate from the
-health of either side's internal services — see `multi-cloud` for the broader architecture this
+health of either side's internal services — see `[multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)` for the broader architecture this
 feeds into.
 
 ## Report

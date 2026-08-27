@@ -9,18 +9,18 @@ metadata:
   version: 0.1.2
 ---
 
-# Kibana Dashboards and Visualizations
+# Kibana [Dashboards](../dashboards/SKILL.md) and Visualizations
 
 ## Overview
 
-The Kibana dashboards and visualizations APIs provide a declarative, Git-friendly format for defining dashboards and
+The Kibana [dashboards](../dashboards/SKILL.md) and visualizations APIs provide a declarative, Git-friendly format for defining [dashboards](../dashboards/SKILL.md) and
 visualizations. Definitions are minimal, diffable, and suitable for version control and LLM-assisted generation.
 
 **Key Benefits:**
 
 - Minimal payloads (no implementation details or derivable properties)
 - Easy to diff in Git
-- Consistent patterns for GitOps workflows
+- Consistent patterns for [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) workflows
 - Designed for LLM one-shot generation
 - Robust validation via OpenAPI spec
 
@@ -29,16 +29,16 @@ visualizations. Definitions are minimal, diffable, and suitable for version cont
 ## Important Caveats
 
 > **ES|QL Visualizations:** ES|QL-based visualizations cannot be created via `/api/visualizations`. They must be created
-> as inline panels within dashboards using the Dashboard API.
+> as inline panels within [dashboards](../dashboards/SKILL.md) using the Dashboard API.
 >
-> **Inline vs Saved Object References:** When embedding visualization panels in dashboards, prefer inline definitions
+> **Inline vs Saved Object References:** When embedding visualization panels in [dashboards](../dashboards/SKILL.md), prefer inline definitions
 > over `ref_id` references. Inline definitions are more reliable and self-contained.
 
 ## Quick Start
 
 ### Environment Configuration
 
-Kibana connection is configured via environment variables. Run `node scripts/kibana-dashboards.js test` to verify the
+Kibana connection is configured via environment variables. Run `node scripts/kibana-[dashboards](../dashboards/SKILL.md).js test` to verify the
 connection. If the test fails, suggest these setup options to the user, then stop. Do not try to explore further until a
 successful connection test.
 
@@ -66,7 +66,7 @@ export KIBANA_PASSWORD="changeme"
 
 #### Option 4: Local Development with start-local
 
-Use [start-local](https://github.com/elastic/start-local) to spin up Elasticsearch/Kibana locally, then source the
+Use [start-local](https://[github](../../CI_CD/github/SKILL.md).com/elastic/start-local) to spin up Elasticsearch/Kibana locally, then source the
 generated `.env`:
 
 ```bash
@@ -77,7 +77,7 @@ export KIBANA_USERNAME="elastic"
 export KIBANA_PASSWORD="$ES_LOCAL_PASSWORD"
 ```
 
-Then run `node scripts/kibana-dashboards.js test` to verify the connection.
+Then run `node scripts/kibana-[dashboards](../dashboards/SKILL.md).js test` to verify the connection.
 
 #### Optional: Skip TLS verification (development only)
 
@@ -89,25 +89,25 @@ export KIBANA_INSECURE="true"
 
 ```bash
 # Test connection and API availability
-node scripts/kibana-dashboards.js test
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js test
 
 # Dashboard operations
-node scripts/kibana-dashboards.js dashboard get <id>
-echo '<json>' | node scripts/kibana-dashboards.js dashboard create -
-echo '<json>' | node scripts/kibana-dashboards.js dashboard update <id> -
-node scripts/kibana-dashboards.js dashboard delete <id>
-echo '<json>' | node scripts/kibana-dashboards.js dashboard upsert <id> -
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js dashboard get <id>
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js dashboard create -
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js dashboard update <id> -
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js dashboard delete <id>
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js dashboard upsert <id> -
 
 # Visualization operations (standalone saved objects)
-node scripts/kibana-dashboards.js vis list
-node scripts/kibana-dashboards.js vis get <id>
-echo '<json>' | node scripts/kibana-dashboards.js vis create -
-echo '<json>' | node scripts/kibana-dashboards.js vis update <id> -
-node scripts/kibana-dashboards.js vis delete <id>
-echo '<json>' | node scripts/kibana-dashboards.js vis upsert <id> -
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis list
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis get <id>
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis create -
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis update <id> -
+node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis delete <id>
+echo '<json>' | node scripts/kibana-[dashboards](../dashboards/SKILL.md).js vis upsert <id> -
 ```
 
-## Dashboards API
+## [Dashboards](../dashboards/SKILL.md) API
 
 ### Dashboard Definition Structure
 
@@ -130,7 +130,7 @@ envelope alongside `id`, `meta`, and `spaces`.
 
 ### Dashboard with Inline Visualization Panels (Recommended)
 
-Use inline definitions (properties directly in `config`) for self-contained, portable dashboards:
+Use inline definitions (properties directly in `config`) for self-contained, portable [dashboards](../dashboards/SKILL.md):
 
 ```json
 {
@@ -177,7 +177,7 @@ Use inline definitions (properties directly in `config`) for self-contained, por
 
 ### Dashboard Grid System
 
-Dashboards use a **48-column, infinite-row grid**. On 16:9 screens, approximately **20-24 rows** are visible without
+[Dashboards](../dashboards/SKILL.md) use a **48-column, infinite-row grid**. On 16:9 screens, approximately **20-24 rows** are visible without
 scrolling. Design for density—place primary KPIs and key trends above the fold.
 
 | Width   | Columns | Height   | Rows  | Use Case                 |
@@ -279,7 +279,7 @@ Use `esql` with a query string. Reference the output columns using `{ column: 'c
 > With data view, you specify the aggregation operation and Kibana performs it.
 >
 > **Important:** ES|QL visualizations cannot be created via `/api/visualizations`. They must be created as inline panels
-> in dashboards via the Dashboard API.
+> in [dashboards](../dashboards/SKILL.md) via the Dashboard API.
 
 #### Index Dataset
 
@@ -390,7 +390,7 @@ See `assets/` for ready-to-use definitions: `demo-dashboard.json`, `dashboard-wi
 
 ## Guidelines
 
-1. **Design for density** — Operational dashboards must show 8-12 panels above the fold (within the first 24 rows). Use
+1. **Design for density** — Operational [dashboards](../dashboards/SKILL.md) must show 8-12 panels above the fold (within the first 24 rows). Use
    compact panel heights: metrics MUST be `h=4` to `h=6`, and charts MUST be `h=8` to `h=12`.
 2. **Never use Markdown for titles/headers** — Do NOT add `markdown` panels to act as dashboard titles or section
    dividers. This wastes critical vertical space. Use descriptive panel titles on the charts themselves.
@@ -401,8 +401,8 @@ See `assets/` for ready-to-use definitions: `demo-dashboard.json`, `dashboard-wi
    `axis.y.title.visible: false`.
 
 5. **Choose the right dataset type** — Use `data_view_reference` for simple aggregations, `esql` for complex queries
-6. **Inline definitions** — Prefer inline properties in `config` over `config.ref_id` for portable dashboards
-7. **Test connection first** — Run `node scripts/kibana-dashboards.js test` before creating resources
+6. **Inline definitions** — Prefer inline properties in `config` over `config.ref_id` for portable [dashboards](../dashboards/SKILL.md)
+7. **Test connection first** — Run `node scripts/kibana-[dashboards](../dashboards/SKILL.md).js test` before creating resources
 8. **Get existing examples** — Use `vis get <id>` to see the exact schema for different chart types (the CLI subcommand
    is `vis`)
 9. **Avoid redundant metric labels** — For ES|QL metrics, avoid using both a panel title and an inner metric label, as

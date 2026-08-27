@@ -35,7 +35,7 @@ gcloud services enable compute.googleapis.com
 
 | Family | Example | vCPUs | Memory | Use Case |
 |--------|---------|-------|--------|----------|
-| E2 | e2-micro | 0.25 | 1 GB | Dev/test, microservices |
+| E2 | e2-micro | 0.25 | 1 GB | Dev/test, [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) |
 | E2 | e2-medium | 1 | 4 GB | Light web servers |
 | N2 | n2-standard-4 | 4 | 16 GB | General-purpose production |
 | N2 | n2-highmem-8 | 8 | 64 GB | In-memory caches, databases |
@@ -68,7 +68,7 @@ gcloud compute instances create web-server \
   --metadata=enable-oslogin=TRUE \
   --shielded-secure-boot \
   --shielded-vtpm \
-  --shielded-integrity-monitoring
+  --shielded-integrity-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 # Instance with a startup script and service account
 gcloud compute instances create app-server \
@@ -124,8 +124,8 @@ gcloud compute instance-groups managed create web-mig \
   --region=us-central1 \
   --health-check=http-health-check --initial-delay=120
 
-# Configure autoscaling
-gcloud compute instance-groups managed set-autoscaling web-mig \
+# Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+gcloud compute instance-groups managed set-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) web-mig \
   --region=us-central1 \
   --min-num-replicas=2 --max-num-replicas=10 \
   --target-cpu-utilization=0.65 --cool-down-period=90
@@ -297,7 +297,7 @@ gcloud compute instances get-serial-port-output web-server --zone=us-central1-a
 
 ## Related Skills
 
-- **gcp-networking** - VPC, firewall rules, and load balancers for Compute Engine
-- **terraform-gcp** - Provision Compute Engine resources with Infrastructure as Code
-- **gcp-gke** - When workloads are better suited for containers than VMs
-- **gcp-cloud-sql** - Managed databases that Compute Engine applications connect to
+- **[gcp-networking](../gcp-networking/SKILL.md)** - VPC, firewall rules, and load balancers for Compute Engine
+- **[terraform-gcp](../../Infrastructure_as_Code/terraform-gcp/SKILL.md)** - Provision Compute Engine resources with Infrastructure as Code
+- **[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)** - When workloads are better suited for containers than VMs
+- **[gcp-cloud-sql](../gcp-cloud-sql/SKILL.md)** - Managed databases that Compute Engine applications connect to

@@ -124,7 +124,7 @@ POST /v2/users        -> create v2 shape
 Implementation approaches:
 
 **Pattern A: Separate Router per Version**
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Express.js
 const v1Router = express.Router();
 v1Router.get('/users', v1UsersController.list);
@@ -138,7 +138,7 @@ app.use('/v1', v1Router);
 app.use('/v2', v2Router);
 ```
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # FastAPI
 from fastapi import APIRouter, FastAPI
 
@@ -156,7 +156,7 @@ app.include_router(v2)
 ```
 
 **Pattern B: Translation Layer** — shared core with version adapters:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Internal canonical model
 interface InternalOrder {
   id: string;
@@ -224,7 +224,7 @@ src/
 
 ### Step 3: Header Versioning
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Express header version middleware
 function headerVersion(versionMap: Record<string, express.Router>) {
   return (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -254,7 +254,7 @@ Warning: 299 - "This API version is deprecated. Migrate to the latest version."
 ```
 
 Implementation:
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 function deprecationMiddleware(sunsetDate: string, migrationUrl: string) {
   return (req: Request, res: Response, next: NextFunction) => {
     res.setHeader('Deprecation', 'true');
@@ -315,7 +315,7 @@ Content-Type: application/json
 
 ### Step 7: Multi-Version Router (Advanced)
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 class VersionRouter {
   private versions = new Map<string, Router>();
 
@@ -349,7 +349,7 @@ app.use('/api', versionRouter.getRouter());
 
 ## Production Considerations
 
-### Version Adoption Monitoring
+### Version Adoption [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Track active consumers per version via API analytics
 - Alert when version usage drops below migration targets
 - Weekly adoption reports to stakeholders
@@ -386,7 +386,7 @@ SELECT id, data->>'customer_id' AS customer_id,
 FROM orders_canonical;
 ```
 
-### Kubernetes Version Routing
+### [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Version Routing
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -447,7 +447,7 @@ Versioning every single endpoint independently. Version at API level, not endpoi
 - Versioning information leakage: don't expose that a newer version exists if client is on old version
 - Ensure old versions still enforce current auth requirements
 - Security patches apply to all supported versions, not just latest
-- Audit log which version was used for every request
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log which version was used for every request
 - Old versions should not bypass rate limiting or WAF rules
 
 ## Performance Considerations
@@ -492,7 +492,7 @@ Versioning every single endpoint independently. Version at API level, not endpoi
 - Additive changes within a version are always backward compatible
 - Deprecation period: 12 months minimum for public, 6 for B2B, 3 for internal
 - After sunset, return 410 Gone with migration instructions
-- Log the version used in every request for observability
+- Log the version used in every request for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - Use consumer-driven contracts to detect breaking changes before production
 
 ## References

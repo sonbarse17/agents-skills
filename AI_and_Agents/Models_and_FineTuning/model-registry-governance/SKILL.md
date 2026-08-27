@@ -40,9 +40,9 @@ Create a trustworthy system of record for model artifacts, prompts, adapters, an
 # Install MLflow with required backends
 pip install mlflow[extras] psycopg2-binary boto3
 
-# Start MLflow tracking server with PostgreSQL backend and S3 artifact store
+# Start MLflow tracking server with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) backend and S3 artifact store
 mlflow server \
-  --backend-store-uri postgresql://mlflow:password@db:5432/mlflow \
+  --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:password@db:5432/mlflow \
   --default-artifact-root s3://mlflow-artifacts/models \
   --host 0.0.0.0 \
   --port 5000 \
@@ -50,13 +50,13 @@ mlflow server \
 ```
 
 ```yaml
-# docker-compose.yaml for MLflow
+# [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yaml for MLflow
 services:
   mlflow:
     image: ghcr.io/mlflow/mlflow:2.12.0
     command: >
       mlflow server
-      --backend-store-uri postgresql://mlflow:${DB_PASSWORD}@db:5432/mlflow
+      --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:${DB_PASSWORD}@db:5432/mlflow
       --default-artifact-root s3://mlflow-artifacts/models
       --host 0.0.0.0
       --port 5000
@@ -76,7 +76,7 @@ services:
       POSTGRES_USER: mlflow
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
 
 volumes:
   pgdata:
@@ -84,7 +84,7 @@ volumes:
 
 ## Required Metadata Schema
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # model_metadata_schema.py
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -148,7 +148,7 @@ class ModelMetadata(BaseModel):
 
 ## Model Registration Script
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # register_model.py
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -224,7 +224,7 @@ def register_model(
 
 ## Promotion Script
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # promote_model.py
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -307,11 +307,11 @@ if __name__ == "__main__":
 | `candidate` | Passed baseline tests | Staging | Staging |
 | `approved` | Authorized for production | All environments | Yes |
 | `deprecated` | Replacement announced | Existing only | Blocked |
-| `retired` | Archived for audit | None | None |
+| `retired` | Archived for [audit](../../Operations/audit/SKILL.md) | None | None |
 
 ## Lifecycle Automation
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # lifecycle_policy.py
 from mlflow.tracking import MlflowClient
 from datetime import datetime, timedelta
@@ -399,7 +399,7 @@ deny[msg] {
 }
 ```
 
-## Audit Readiness
+## [Audit](../../Operations/audit/SKILL.md) Readiness
 
 Maintain immutable records of:
 
@@ -414,14 +414,14 @@ Maintain immutable records of:
 |-------|-----------|------------|
 | Model registration fails | Check MLflow server connectivity and artifact store permissions | Verify S3/GCS credentials and bucket policy |
 | Promotion blocked by policy | Review OPA deny messages in CI output | Fix metadata gaps or request policy exception |
-| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in Kubernetes |
+| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) |
 | Duplicate model versions | Race condition in CI pipeline | Add locking via registry API or database |
 | Missing eval evidence | Eval pipeline skipped or failed | Re-run eval suite and re-register |
 
 ## Related Skills
 
-- [sbom-supply-chain](../../../security/scanning/sbom-supply-chain/) - Provenance and signing
-- [policy-as-code](../../../compliance/governance/policy-as-code/) - Enforce governance with policy engines
-- [llm-fine-tuning](../../../infrastructure/local-ai/llm-fine-tuning/) - Version adapters and training outputs
-- [llmops-platform-engineering](../llmops-platform-engineering/) - Platform CI/CD and promotion workflows
-- [ai-sre-incident-response](../ai-sre-incident-response/) - Incident response for model issues
+- [sbom-supply-chain](../../../security/scanning/[sbom-supply-chain](../../../Security/sbom-supply-chain/SKILL.md)/) - Provenance and signing
+- [policy-as-code](../../../compliance/governance/[policy-as-code](../../../Security/policy-as-code/SKILL.md)/) - Enforce governance with policy engines
+- [llm-fine-tuning](../../../infrastructure/local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - Version adapters and training outputs
+- [llmops-platform-engineering](../[llmops-platform-engineering](../llmops-[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)/SKILL.md)/) - Platform CI/CD and promotion workflows
+- [ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response for model issues

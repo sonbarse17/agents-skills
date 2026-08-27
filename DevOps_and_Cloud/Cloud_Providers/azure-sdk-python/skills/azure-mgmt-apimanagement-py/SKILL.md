@@ -10,7 +10,7 @@ metadata:
   package: azure-mgmt-apimanagement
 ---
 
-# Azure API Management SDK for Python
+# Azure API Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Manage Azure API Management services, APIs, products, and policies.
 
@@ -32,7 +32,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra audit and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -41,7 +41,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.apimanagement import ApiManagementClient
 import os
@@ -56,7 +56,7 @@ with ApiManagementClient(
 
 ## Create APIM Service
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import (
     ApiManagementServiceResource,
     ApiManagementServiceSkuProperties,
@@ -72,7 +72,7 @@ service = client.api_management_service.begin_create_or_update(
         publisher_name="My Organization",
         sku=ApiManagementServiceSkuProperties(
             name=SkuType.DEVELOPER,
-            capacity=1
+            [capacity](../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)=1
         )
     )
 ).result()
@@ -82,7 +82,7 @@ print(f"Created APIM: {service.name}")
 
 ## Import API from OpenAPI
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import (
     ApiCreateOrUpdateParameter,
     ContentFormat,
@@ -107,7 +107,7 @@ print(f"Imported API: {api.display_name}")
 
 ## Import API from URL
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 api = client.api.begin_create_or_update(
     resource_group_name="my-resource-group",
     service_name="my-apim",
@@ -124,7 +124,7 @@ api = client.api.begin_create_or_update(
 
 ## List APIs
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 apis = client.api.list_by_service(
     resource_group_name="my-resource-group",
     service_name="my-apim"
@@ -136,7 +136,7 @@ for api in apis:
 
 ## Create Product
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import ProductContract
 
 product = client.product.create_or_update(
@@ -157,7 +157,7 @@ print(f"Created product: {product.display_name}")
 
 ## Add API to Product
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.product_api.create_or_update(
     resource_group_name="my-resource-group",
     service_name="my-apim",
@@ -168,7 +168,7 @@ client.product_api.create_or_update(
 
 ## Create Subscription
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import SubscriptionCreateParameters
 
 subscription = client.subscription.create_or_update(
@@ -187,7 +187,7 @@ print(f"Subscription key: {subscription.primary_key}")
 
 ## Set API Policy
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import PolicyContract
 
 policy_xml = """
@@ -220,7 +220,7 @@ client.api_policy.create_or_update(
 
 ## Create Named Value (Secret)
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import NamedValueCreateContract
 
 named_value = client.named_value.begin_create_or_update(
@@ -237,7 +237,7 @@ named_value = client.named_value.begin_create_or_update(
 
 ## Create Backend
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import BackendContract
 
 backend = client.backend.create_or_update(
@@ -254,7 +254,7 @@ backend = client.backend.create_or_update(
 
 ## Create User
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.apimanagement.models import UserCreateParameters
 
 user = client.user.create_or_update(
@@ -293,7 +293,7 @@ user = client.user.create_or_update(
 3. **Use named values** for secrets and configuration
 4. **Apply policies** at appropriate scopes (global, product, API, operation)
 5. **Use products** to bundle APIs and manage access
-6. **Enable Application Insights** for monitoring
+6. **Enable Application Insights** for [monitoring](../../../../Observability_and_SecOps/monitoring/SKILL.md)
 7. **Use backends** to abstract backend services
 8. **Version your APIs** using APIM's versioning features
 

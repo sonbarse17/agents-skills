@@ -48,7 +48,7 @@ If the available evidence conflicts, surface the conflict rather than silently i
 Store ADRs in `docs/decisions/` with sequential numbering (unless the project already uses another location — see above):
 
 ```markdown
-# ADR-001: Use PostgreSQL for primary database
+# ADR-001: Use [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for primary database
 
 ## Status
 Accepted | Superseded by ADR-XXX | Deprecated
@@ -61,14 +61,14 @@ We need a primary database for the task management application. Key requirements
 - Relational data model (users, tasks, teams with relationships)
 - ACID transactions for task state changes
 - Support for full-text search on task content
-- Managed hosting available (for small team, limited ops capacity)
+- Managed hosting available (for small team, limited ops [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md))
 
 ## Decision
-Use PostgreSQL with Prisma ORM.
+Use [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) with Prisma ORM.
 
 ## Alternatives Considered
 
-### MongoDB
+### [MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)
 - Pros: Flexible schema, easy to start with
 - Cons: Our data is inherently relational; would need to manage relationships manually
 - Rejected: Relational data in a document store leads to complex joins or data duplication
@@ -78,16 +78,16 @@ Use PostgreSQL with Prisma ORM.
 - Cons: Limited concurrent write support, no managed hosting for production
 - Rejected: Not suitable for multi-user web application in production
 
-### MySQL
+### [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
 - Pros: Mature, widely supported
-- Cons: PostgreSQL has better JSON support, full-text search, and ecosystem tooling
-- Rejected: PostgreSQL is the better fit for our feature requirements
+- Cons: [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) has better JSON support, full-text search, and ecosystem tooling
+- Rejected: [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) is the better fit for our feature requirements
 
 ## Consequences
 - Prisma provides type-safe database access and migration management
-- We can use PostgreSQL's full-text search instead of adding Elasticsearch
-- Team needs PostgreSQL knowledge (standard skill, low risk)
-- Hosting on managed service (Supabase, Neon, or RDS)
+- We can use [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)'s full-text search instead of adding Elasticsearch
+- Team needs [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) knowledge (standard skill, low risk)
+- Hosting on managed service ([Supabase](../../Software_Engineering_and_Other/Backend/supabase/SKILL.md), Neon, or RDS)
 ```
 
 ### ADR Lifecycle
@@ -105,7 +105,7 @@ PROPOSED → ACCEPTED → (SUPERSEDED or DEPRECATED)
 
 Comment the *why*, not the *what*:
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // BAD: Restates the code
 // Increment counter by 1
 counter += 1;
@@ -121,7 +121,7 @@ if (now - windowStart > WINDOW_SIZE_MS) {
 
 ### When NOT to Comment
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Don't comment self-explanatory code
 function calculateTotal(items: CartItem[]): number {
   return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -136,7 +136,7 @@ function calculateTotal(items: CartItem[]): number {
 
 ### Document Known Gotchas
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 /**
  * IMPORTANT: This function must be called before the first render.
  * If called after hydration, it causes a flash of unstyled content
@@ -153,9 +153,9 @@ export function initializeTheme(theme: Theme): void {
 
 For public APIs (REST, GraphQL, library interfaces):
 
-### Inline with Types (Preferred for TypeScript)
+### Inline with Types (Preferred for [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 /**
  * Creates a new task.
  *

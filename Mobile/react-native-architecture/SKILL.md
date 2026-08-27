@@ -33,7 +33,7 @@ src/
 ├── services/              # API and native services
 ├── stores/                # State management
 ├── utils/                 # Utilities
-└── types/                 # TypeScript types
+└── types/                 # [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types
 ```
 
 ### 2. Expo vs Bare React Native
@@ -50,7 +50,7 @@ src/
 
 ```bash
 # Create new Expo project
-npx create-expo-app@latest my-app -t expo-template-blank-typescript
+npx create-expo-app@latest my-app -t expo-template-blank-[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 # Install essential dependencies
 npx expo install expo-router expo-status-bar react-native-safe-area-context
@@ -58,7 +58,7 @@ npx expo install @react-native-async-storage/async-storage
 npx expo install expo-secure-store expo-haptics
 ```
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // app/_layout.tsx
 import { Stack } from 'expo-router'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -97,7 +97,7 @@ Detailed pattern documentation lives in `../../../Global_References/react-native
 
 - **Don't inline styles** - Use StyleSheet.create for performance
 - **Don't fetch in render** - Use useEffect or React Query
-- **Don't ignore platform differences** - Test on both iOS and Android
+- **Don't ignore platform differences** - Test on both iOS and [Android](../android/SKILL.md)
 - **Don't store secrets in code** - Use environment variables
 - **Don't skip error boundaries** - Mobile crashes are unforgiving
 

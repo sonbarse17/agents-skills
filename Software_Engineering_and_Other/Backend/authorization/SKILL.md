@@ -39,7 +39,7 @@ How many resource types need access control?
         ├── Yes → ReBAC (Zanzibar-style relationship tuples)
         └── No → ABAC (attribute-based policies for maximal flexibility)
 
-Regulatory requirements (SoD, audit)?
+Regulatory requirements (SoD, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))?
 ├── Yes → Constrained RBAC with SoD enforcement
 └── No → Standard RBAC or ABAC
 
@@ -175,7 +175,7 @@ Permission types:
 | Data | `read own records only` | Query filter + row-level security |
 | Field | `view salary column` | GraphQL field resolver |
 | Environmental | `approve during business hours` | Policy condition |
-| Administrative | `deactivate user` | Admin guard + audit |
+| Administrative | `deactivate user` | Admin guard + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
 
 ### Step 4: Implement RBAC Core
 ```javascript
@@ -342,7 +342,7 @@ async function elevateRole(userId, targetRole, reason, durationMinutes) {
     approvedBy: approval.approvedBy,
     auditId: crypto.randomUUID()
   });
-  // Log audit event
+  // Log [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) event
   await logSecurityEvent('role_elevation', {
     userId, targetRole, reason, durationMinutes, approvedBy: approval.approvedBy
   });
@@ -406,7 +406,7 @@ async function breakGlassAccess(userId, resourceId, reason) {
 | Super Admin | Unrestricted, cross-system | Platform-wide emergency, initial setup |
 | Org Admin | Full within one org unit | Subsidiary administration |
 | System Admin | Infrastructure only | DevOps, deployments |
-| Audit Admin | Read-only + audit log | Compliance, investigations |
+| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Admin | Read-only + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log | Compliance, investigations |
 | Support Admin | User management + read | Customer support |
 | Billing Admin | Finance + subscriptions | Billing operations |
 | Delegated Admin | Scoped subset of admin | Department leads managing their team |
@@ -415,10 +415,10 @@ async function breakGlassAccess(userId, resourceId, reason) {
 
 | Engine | Language | Model | Deployment | Best For |
 |--------|----------|-------|------------|----------|
-| **Casbin** | Go, Node.js, Python, Java, .NET, Rust | PERM metamodel | In-app library | RBAC/ABAC/ACL in any language |
+| **Casbin** | Go, Node.js, [Python](../../Languages/python/SKILL.md), Java, .NET, Rust | PERM metamodel | In-app library | RBAC/ABAC/ACL in any language |
 | **OPA/Rego** | Rego | Declarative policies | Sidecar/bundle | Cloud-native, K8s, multi-service |
-| **Cerbos** | YAML | Resource policies | Sidecar/Docker | Fine-grained, user-friendly |
-| **Permit.io** | Python, Node.js, Go, REST | RBAC/ABAC/ReBAC | SaaS/self-hosted | Rapid deployment, GUI policy editor |
+| **Cerbos** | YAML | Resource policies | Sidecar/[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) | Fine-grained, user-friendly |
+| **Permit.io** | [Python](../../Languages/python/SKILL.md), Node.js, Go, REST | RBAC/ABAC/ReBAC | SaaS/self-hosted | Rapid deployment, GUI policy editor |
 | **AuthZed/SpiceDB** | Zanzibar | Relationship tuples | gRPC API | ReBAC at scale |
 
 **Casbin example (Node.js):**
@@ -465,7 +465,7 @@ user_has_role(user_id, role) {
 user_role(user_id) := data.roles[user_id]
 ```
 
-### Step 9: Test & Audit Authorization
+### Step 9: Test & [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Authorization
 
 **Permission matrix testing:**
 ```javascript
@@ -496,7 +496,7 @@ test('authorization matrix', () => {
 - Out-of-scope org → deny.
 - Rollback after elevation expires → previous perms restored.
 
-**Audit requirements:**
+**[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) requirements:**
 - Log every authorization decision (allowed or denied) with: timestamp, user, action, resource, decision, reason.
 - Log every role change, permission grant/revoke, elevation, delegation.
 - Weekly reports on denied access attempts (potential attacks).
@@ -510,14 +510,14 @@ test('authorization matrix', () => {
 ## Anti-Patterns
 
 1. **Role explosion**: Creating hundreds of roles for every unique permission combination. Fix → Use attributes for exceptions, keep roles to < 20.
-2. **Super admin everywhere**: Every admin is super admin. Fix → Follow least privilege: scoped admin roles (org-admin, audit-admin, support-admin).
+2. **Super admin everywhere**: Every admin is super admin. Fix → Follow least privilege: scoped admin roles (org-admin, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-admin, support-admin).
 3. **Client-side authorization only**: Hiding UI buttons but not enforcing server-side. Fix → API gateway or middleware enforces every decision.
 4. **Permission check in domain logic**: Auth logic mixed with business logic. Fix → Authorization is infrastructure, enforced before domain.
 5. **Hardcoded user IDs in policies**: `if (user.id === 'admin-user')`. Fix → Never reference specific users — use roles and attributes.
 6. **No default deny**: Everything is allowed unless explicitly denied. Fix → Reverse: deny by default, explicitly allow.
 7. **Caching decisions indefinitely**: Cached allow/deny results become stale. Fix → Cache with TTL tied to token expiry or policy change events.
 8. **Ignoring delegation chain depth**: Delegated permissions cascade infinitely. Fix → Limit depth to 1 (direct delegation only) or max 3 hops.
-9. **Break-glass without notification**: Emergency access with no audit trail. Fix → Always log, notify, and auto-expire.
+9. **Break-glass without notification**: Emergency access with no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail. Fix → Always log, notify, and auto-expire.
 10. **Elevation never expires**: JIT roles that last forever. Fix → Always set TTL on elevation. Cron job to clean up expired.
 11. **Overly complex policies**: ABAC conditions that no one can understand or debug. Fix → Simpler RBAC + minimal ABAC. Document every condition.
 12. **Permissive wildcards**: `*.*` grants access to everything. Fix → Be explicit. Use wildcards only for true admin roles.
@@ -533,7 +533,7 @@ test('authorization matrix', () => {
 
 ### Privilege Escalation Vectors
 - **Horizontal**: User A reads User B's data. Mitigation → scope-based checks on every data access.
-- **Vertical**: User upgrades own role. Mitigation → role changes require audit trail + approval.
+- **Vertical**: User upgrades own role. Mitigation → role changes require [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail + approval.
 - **Delegation abuse**: Delegate permissions to gain more than you have. Mitigation → delegation inherits delegator's scope, never exceeds.
 
 ### Timing Attacks on Authorization
@@ -565,7 +565,7 @@ test('authorization matrix', () => {
 
 ### Data-Level Authorization
 ```sql
--- Row-Level Security (RLS) in PostgreSQL
+-- Row-Level Security (RLS) in [PostgreSQL](../postgresql/SKILL.md)
 CREATE POLICY tenant_isolation ON orders
   USING (tenant_id = current_setting('app.current_tenant_id'));
 
@@ -604,7 +604,7 @@ function authorizeMiddleware(action, resourceType) {
 ```
 
 **FastAPI dependency injection:**
-```python
+```[python](../../Languages/python/SKILL.md)
 from fastapi import Depends, HTTPException
 
 async def require_permission(action: str, resource: str):
@@ -676,7 +676,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 - Default deny: if no policy explicitly allows, access is denied.
 - Authorize at the right layer — data-level enforcement (RLS, query filter) is mandatory, UI hiding is optional UX.
 - Never trust client-side permissions. Always enforce server-side.
-- Role assignments and permission grants must have an audit trail with who approved them.
+- Role assignments and permission grants must have an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail with who approved them.
 - Temporary elevation must expire automatically. Never leave JIT roles permanent.
 - Break-glass access must notify security immediately and expire within 30 minutes.
 - Delegated permissions must not exceed the delegator's own permissions.
@@ -686,7 +686,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 - Default allow lists for known-safe operations (public endpoints, health checks). All else default deny.
 
 ## References
-  - ../../../Global_References/authorization-audit.md — Authorization Audit
+  - ../../../Global_References/authorization-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).md — Authorization [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   - ../../../Global_References/authorization-delegation.md — Authorization Delegation
   - ../../../Global_References/authorization-fundamentals.md — Authorization Fundamentals
   - ../../../Global_References/authorization-advanced.md — Authorization Advanced
@@ -703,7 +703,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 ## Handoff
 No artifact produced unless requested.
 Next skill: authentication (frontend) — implement login UI, route guards, token storage for the auth system.
-Next skill: multi-tenancy — combine authorization with tenant isolation for SaaS apps.
+Next skill: [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) — combine authorization with tenant isolation for SaaS apps.
 Next skill: api-security — apply authorization to API endpoints with rate limiting and WAF.
 Carry forward: authorization model, role tree, permission matrix, policy engine choice.
 

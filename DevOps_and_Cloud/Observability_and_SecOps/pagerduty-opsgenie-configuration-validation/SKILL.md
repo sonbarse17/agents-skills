@@ -33,9 +33,9 @@ escalation policies and schedules — for coverage gaps, single points of
 failure, and structurally broken repeat/timeout settings — as a
 recurring check, not a one-time read-through. It assumes the
 configuration already exists (see
-[pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)
+[pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md)
 for how to build it); this skill is strictly about proving it's correct
-before an incident is the first time anyone finds out otherwise.
+before an [incident](../incident/SKILL.md) is the first time anyone finds out otherwise.
 
 ## When to use
 
@@ -47,9 +47,9 @@ before an incident is the first time anyone finds out otherwise.
   silently degrade over time as end dates lapse or people leave without
   being removed from every layer they were on.
 - Periodically (e.g. monthly, alongside the on-call load review in
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md))
-  as a standing audit, not only reactively.
-- Investigating "why didn't anyone get paged" after an incident, to
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+  as a standing [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), not only reactively.
+- Investigating "why didn't anyone get paged" after an [incident](../incident/SKILL.md), to
   determine whether the escalation policy itself had a structural gap
   versus a one-off human/tooling failure.
 - Before a major reorg, team split, or on-call tool migration
@@ -62,16 +62,16 @@ before an incident is the first time anyone finds out otherwise.
   their resolved on-call membership — validation needs the *resolved*
   membership (who a schedule actually points to right now and for the
   next N weeks), not just the policy's static JSON.
-- Python 3.9+ if using the reference script in `scripts/` — no
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ if using the reference script in `scripts/` — no
   third-party dependencies required for the coverage-logic check itself
   (add `requests` only if wiring it directly to the live API rather than
   exported JSON).
 - A place to run this on a schedule (CI cron job, a scheduled Lambda/
-  Cloud Function, or a cron on an ops host) so it's a recurring audit,
+  Cloud Function, or a cron on an ops host) so it's a recurring [audit](../../../AI_and_Agents/Operations/audit/SKILL.md),
   not a manual one-off.
 - Familiarity with the escalation policy/schedule structures being
   validated — see
-  [pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)
+  [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md)
   for the shape of the JSON/Terraform this skill checks.
 
 ## Step-by-step guidance
@@ -101,7 +101,7 @@ before an incident is the first time anyone finds out otherwise.
 4. **Check `num_loops`/repeat behavior is non-zero** for any policy
    backing a service that can page overnight or on weekends — a policy
    with no repeat silently gives up after running through its rungs once
-   if nobody acknowledges, leaving the incident open and unescalated
+   if nobody acknowledges, leaving the [incident](../incident/SKILL.md) open and unescalated
    with no further notification.
 
 5. **Check schedule layers for date-range gaps.** Query the resolved
@@ -120,7 +120,7 @@ before an incident is the first time anyone finds out otherwise.
 
 7. **Run the reference script** (`scripts/check_escalation_coverage.py`)
    against exported policy JSON as a concrete starting point for either
-   a CI gate or a scheduled audit job:
+   a CI gate or a scheduled [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) job:
    ```bash
    python3 scripts/check_escalation_coverage.py payments-escalation.json
    ```
@@ -132,9 +132,9 @@ before an incident is the first time anyone finds out otherwise.
    post failures to the team's ops channel or open a ticket, don't let a
    validation job run silently and log to a file nobody reads. This is a
    natural place to route findings into
-   [chatops-runbook-automation](../chatops-runbook-automation/SKILL.md)'s
-   incident-channel bot as a scheduled notification, or into
-   [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)
+   [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md)'s
+   [incident](../incident/SKILL.md)-channel bot as a scheduled notification, or into
+   [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)
    as a tracked problem-record if the org runs ITSM change control over
    on-call configuration.
 
@@ -163,7 +163,7 @@ before an incident is the first time anyone finds out otherwise.
 ## Common pitfalls
 
 - **Symptom:** An escalation policy has three rungs configured, and it
-  looks properly redundant in the console — but during a real incident,
+  looks properly redundant in the console — but during a real [incident](../incident/SKILL.md),
   all three rungs paged the same one person because two of the three
   targets were schedules that both currently resolve to them.
   **Fix:** Validate resolved membership, not rung count — flatten every
@@ -177,21 +177,21 @@ before an incident is the first time anyone finds out otherwise.
   notices until a page during that week goes unanswered.
   **Fix:** Proactively query resolved on-call coverage 4-6 weeks forward
   on a recurring basis (step 5) and alert on any day with zero on-call
-  users, rather than discovering the gap only when an incident falls
+  users, rather than discovering the gap only when an [incident](../incident/SKILL.md) falls
   into it.
 
 - **Symptom:** An engineer's PTO override was added to cover one week,
   but was never removed — months later, pages meant for the original
   rotation member are still silently routed to the PTO-covering
   colleague, who has long since stopped expecting them.
-  **Fix:** Audit overrides for ones past their intended end date on the
+  **Fix:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) overrides for ones past their intended end date on the
   same cadence as the rest of the validation, and require overrides to
   always be created with an explicit end time rather than open-ended.
 
 - **Symptom:** `num_loops` on a production escalation policy is left at
   its default (no repeat); an unacknowledged Sev1 page runs through all
   rungs once, reaches the final rung's target, and then simply stops
-  with the incident still unacknowledged and no further notification.
+  with the [incident](../incident/SKILL.md) still unacknowledged and no further notification.
   **Fix:** Explicitly set `num_loops >= 1` (or Opsgenie's equivalent
   repeat setting) for any policy backing a service capable of paging
   outside business hours, and include this as a checked condition (step
@@ -199,7 +199,7 @@ before an incident is the first time anyone finds out otherwise.
 
 ## Worked example
 
-**Scenario:** A monthly audit job validates all escalation policies for
+**Scenario:** A monthly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) job validates all escalation policies for
 the `payments` and `checkout` teams before the on-call load review.
 
 Exported policy for `checkout-team-escalation` (resolved schedule
@@ -253,7 +253,7 @@ confirm it now passes, and add this check as a required CI step whenever
 
 ## Cross-references
 
-- [pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md) — how the escalation policies and schedules validated here are actually built and configured.
-- [servicenow-itsm-configuration-validation](../servicenow-itsm-configuration-validation/SKILL.md) — the same "validate before it blocks or misroutes a real incident" discipline applied to ServiceNow workflow/approval configuration.
-- [chatops-runbook-automation](../chatops-runbook-automation/SKILL.md) — a natural destination for this validation's findings (a scheduled bot post to the ops channel) and for the audit job itself to be triggered from.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/incident-response-and-on-call-management/SKILL.md) — the on-call load review and escalation-timeout SLAs this validation should be run alongside.
+- [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) — how the escalation policies and schedules validated here are actually built and configured.
+- [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md) — the same "validate before it blocks or misroutes a real [incident](../incident/SKILL.md)" discipline applied to ServiceNow workflow/approval configuration.
+- [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — a natural destination for this validation's findings (a scheduled bot post to the ops channel) and for the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) job itself to be triggered from.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the on-call load review and escalation-timeout SLAs this validation should be run alongside.

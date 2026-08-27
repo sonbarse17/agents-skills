@@ -10,14 +10,14 @@ metadata:
   package: azure-monitor-opentelemetry-exporter
 ---
 
-# Azure Monitor OpenTelemetry Exporter for Python
+# Azure Monitor [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Exporter for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-Low-level exporter for sending OpenTelemetry traces, metrics, and logs to Application Insights.
+Low-level exporter for sending [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) traces, metrics, and logs to Application Insights.
 
 ## Installation
 
 ```bash
-pip install azure-monitor-opentelemetry-exporter
+pip install azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter
 ```
 
 ## Environment Variables
@@ -42,18 +42,18 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 | Scenario | Use |
 |----------|-----|
-| Quick setup, auto-instrumentation | `azure-monitor-opentelemetry` (distro) |
-| Custom OpenTelemetry pipeline | `azure-monitor-opentelemetry-exporter` (this) |
-| Fine-grained control over telemetry | `azure-monitor-opentelemetry-exporter` (this) |
+| Quick setup, auto-instrumentation | `azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)` (distro) |
+| Custom [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) pipeline | `azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter` (this) |
+| Fine-grained control over telemetry | `azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter` (this) |
 
 ## Trace Exporter
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorTraceExporter
 
 # Reads APPLICATIONINSIGHTS_CONNECTION_STRING from env to identify the resource;
 # DefaultAzureCredential authenticates ingestion via Microsoft Entra ID.
@@ -75,12 +75,12 @@ with tracer.start_as_current_span("my-span"):
 
 ## Metric Exporter
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) import metrics
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.metrics import MeterProvider
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.metrics.export import PeriodicExportingMetricReader
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorMetricExporter
 
 # Reads APPLICATIONINSIGHTS_CONNECTION_STRING from env; AAD-authenticated ingestion via DefaultAzureCredential.
 exporter = AzureMonitorMetricExporter(
@@ -99,13 +99,13 @@ counter.add(1, {"route": "/api/users"})
 
 ## Log Exporter
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import logging
 from azure.identity import DefaultAzureCredential
-from opentelemetry._logs import set_logger_provider
-from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorLogExporter
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)._logs import set_logger_provider
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk._logs import LoggerProvider, LoggingHandler
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk._logs.export import BatchLogRecordProcessor
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorLogExporter
 
 # Reads APPLICATIONINSIGHTS_CONNECTION_STRING from env; AAD-authenticated ingestion via DefaultAzureCredential.
 exporter = AzureMonitorLogExporter(
@@ -117,7 +117,7 @@ logger_provider = LoggerProvider()
 logger_provider.add_log_record_processor(BatchLogRecordProcessor(exporter))
 set_logger_provider(logger_provider)
 
-# Add handler to Python logging
+# Add handler to [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) logging
 handler = LoggingHandler(level=logging.INFO, logger_provider=logger_provider)
 logging.getLogger().addHandler(handler)
 
@@ -130,9 +130,9 @@ logger.info("This will be sent to Application Insights")
 
 Exporters read `APPLICATIONINSIGHTS_CONNECTION_STRING` automatically:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorTraceExporter
 
 # Connection string from environment; AAD-authenticated ingestion via DefaultAzureCredential.
 exporter = AzureMonitorTraceExporter(
@@ -142,14 +142,14 @@ exporter = AzureMonitorTraceExporter(
 
 ## Azure AD Authentication
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorTraceExporter
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python#credential-classes
+# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 exporter = AzureMonitorTraceExporter(
@@ -161,10 +161,10 @@ exporter = AzureMonitorTraceExporter(
 
 Use `ApplicationInsightsSampler` for consistent sampling:
 
-```python
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.sampling import ParentBasedTraceIdRatio
-from azure.monitor.opentelemetry.exporter import ApplicationInsightsSampler
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.sampling import ParentBasedTraceIdRatio
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import ApplicationInsightsSampler
 
 # Sample 10% of traces
 sampler = ApplicationInsightsSampler(sampling_ratio=0.1)
@@ -176,9 +176,9 @@ trace.set_tracer_provider(TracerProvider(sampler=sampler))
 
 Configure offline storage for retry:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorTraceExporter
 
 exporter = AzureMonitorTraceExporter(
     credential=DefaultAzureCredential(),
@@ -189,7 +189,7 @@ exporter = AzureMonitorTraceExporter(
 
 ## Disable Offline Storage
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 exporter = AzureMonitorTraceExporter(
     credential=DefaultAzureCredential(),
     disable_offline_storage=True  # No retry on failure
@@ -198,9 +198,9 @@ exporter = AzureMonitorTraceExporter(
 
 ## Sovereign Clouds
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import AzureAuthorityHosts, DefaultAzureCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from azure.monitor.[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).exporter import AzureMonitorTraceExporter
 
 # Azure Government
 credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
@@ -236,12 +236,12 @@ exporter = AzureMonitorTraceExporter(
 5. **Enable offline storage** for reliability in production
 6. **Use Microsoft Entra authentication** instead of instrumentation keys
 7. **Set export intervals** appropriate for your workload
-8. **Use the distro** (`azure-monitor-opentelemetry`) unless you need custom pipelines
+8. **Use the distro** (`azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)`) unless you need custom pipelines
 
 ## Reference Files
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-monitor-opentelemetry-exporter-py_capabilities.md](../../../Global_References/azure-monitor-opentelemetry-exporter-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-monitor-opentelemetry-exporter-py_non-hero-scenarios.md](../../../Global_References/azure-monitor-opentelemetry-exporter-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py_capabilities.md](../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py_non-hero-scenarios.md](../../../Global_References/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

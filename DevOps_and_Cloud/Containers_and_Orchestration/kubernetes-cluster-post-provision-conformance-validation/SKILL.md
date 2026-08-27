@@ -18,12 +18,12 @@ metadata:
   maturity: stable
 ---
 
-# Kubernetes Cluster Post-Provision Conformance Validation
+# [Kubernetes](../kubernetes/SKILL.md) Cluster Post-Provision Conformance Validation
 
 ## Purpose
 
-A cluster reporting `kubectl get nodes` all `Ready` is not the same
-claim as "this cluster behaves like Kubernetes is supposed to." Whether
+A cluster reporting `[kubectl](../kubectl/SKILL.md) get nodes` all `Ready` is not the same
+claim as "this cluster behaves like [Kubernetes](../kubernetes/SKILL.md) is supposed to." Whether
 a cluster was bootstrapped with kubeadm/Cluster API, provisioned as a
 managed EKS/AKS/GKE cluster, or stood up as K3s, subtle
 misconfiguration — a CNI that doesn't fully implement the Service/DNS
@@ -32,26 +32,26 @@ NetworkPolicy engine that accepts but doesn't enforce — can pass every
 surface-level check and still fail real workloads days later. **Sonobuoy**
 running the official **CNCF conformance test suite** is the standard,
 vendor-neutral way to validate a cluster actually implements the
-Kubernetes API and core behaviors correctly, and a small set of targeted
+[Kubernetes](../kubernetes/SKILL.md) API and core behaviors correctly, and a small set of targeted
 smoke tests closes gaps conformance doesn't cover (storage
 provisioning, ingress paths, cross-node connectivity under your
 specific CNI/network topology). This skill covers running both as a
 required gate between "cluster provisioned" and "cluster declared
 production-ready" — not the provisioning itself, covered in
-[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md),
-[managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md),
+[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md),
+[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md),
 and
-[lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md).
+[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md).
 
 ## When to use
 
 - Immediately after any cluster is provisioned — kubeadm/CAPI, managed
   (EKS/AKS/GKE), or K3s — and before it is handed to teams to deploy
   production workloads onto.
-- Re-validating a cluster after a Kubernetes version upgrade, a CNI
+- Re-validating a cluster after a [Kubernetes](../kubernetes/SKILL.md) version upgrade, a CNI
   swap or migration, or a node pool/instance-type change that could
   affect scheduling or networking behavior.
-- Formally certifying that a custom or vendor Kubernetes distribution
+- Formally certifying that a custom or vendor [Kubernetes](../kubernetes/SKILL.md) distribution
   meets CNCF's conformance requirements.
 - Building a "cluster factory" pipeline where every newly provisioned
   cluster must pass an automated gate before being registered as
@@ -61,19 +61,19 @@ and
 
 ## Prerequisites & environment
 
-- Cluster-admin `kubectl` access to the target cluster (Sonobuoy creates
+- Cluster-admin `[kubectl](../kubectl/SKILL.md)` access to the target cluster (Sonobuoy creates
   a dedicated namespace, RBAC, and many test pods/resources across the
   cluster — it needs broad permissions, not a scoped service account).
-- The `sonobuoy` CLI, version-matched to the target Kubernetes version's
+- The `sonobuoy` CLI, version-matched to the target [Kubernetes](../kubernetes/SKILL.md) version's
   supported range (check Sonobuoy's own compatibility matrix — running
-  a conformance image built for a much newer/older Kubernetes minor
+  a conformance image built for a much newer/older [Kubernetes](../kubernetes/SKILL.md) minor
   version against your cluster produces false failures unrelated to the
   cluster itself).
-- Real spare capacity on the cluster: the full conformance suite
+- Real spare [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) on the cluster: the full conformance suite
   schedules many e2e test pods across multiple namespaces and expects
   to actually run workloads, not just query the API — running it
   against a cluster already packed to its scheduling limit produces
-  `Pending`-pod failures that reflect capacity, not conformance.
+  `Pending`-pod failures that reflect [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not conformance.
 - Outbound access (or an air-gapped image mirror) to pull the Sonobuoy
   worker and conformance test images — these are not the workload
   images your applications use, and a network-restricted cluster needs
@@ -137,14 +137,14 @@ and
    Service DNS resolution and cross-node pod connectivity, both
    dependent on the cluster's specific CNI and CoreDNS configuration:
    ```bash
-   kubectl create namespace smoke-test
-   kubectl run dns-check -n smoke-test --image=busybox:1.36 --restart=Never --rm -it -- \
-     nslookup kubernetes.default.svc.cluster.local
+   [kubectl](../kubectl/SKILL.md) create namespace smoke-test
+   [kubectl](../kubectl/SKILL.md) run dns-check -n smoke-test --image=busybox:1.36 --restart=Never --rm -it -- \
+     nslookup [kubernetes](../kubernetes/SKILL.md).default.svc.cluster.local
    ```
    See
-   [kubernetes-service-connectivity-troubleshooting](../kubernetes-service-connectivity-troubleshooting/SKILL.md)
+   [kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md)
    for the full diagnostic sequence if this fails, and
-   [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)
+   [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for cross-node connectivity checks specific to the installed CNI.
 
 8. **Smoke test storage provisioning** if the cluster is expected to
@@ -158,13 +158,13 @@ and
      resources: { requests: { storage: 1Gi } }
    ```
    ```bash
-   kubectl apply -f smoke-pvc.yaml
-   kubectl get pvc smoke-pvc -n smoke-test -w   # expect Bound, not stuck Pending
+   [kubectl](../kubectl/SKILL.md) apply -f smoke-pvc.yaml
+   [kubectl](../kubectl/SKILL.md) get pvc smoke-pvc -n smoke-test -w   # expect Bound, not stuck Pending
    ```
 
 9. **Smoke test the ingress path** end-to-end if an Ingress controller
    is part of the platform baseline (see
-   [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md)):
+   [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)):
    deploy a trivial echo service, expose it via Ingress, and `curl` it
    from outside the cluster rather than only confirming the Ingress
    object was accepted by the API server.
@@ -176,7 +176,7 @@ and
     treat the checklist itself as the gate, not an informal "looks
     fine":
     ```bash
-    kubectl delete namespace smoke-test
+    [kubectl](../kubectl/SKILL.md) delete namespace smoke-test
     ```
 
 ## Best practices
@@ -185,7 +185,7 @@ and
   costs minutes, not hours, and catches the same category of gross
   misconfiguration far cheaper.
 - Run the full conformance suite in a maintenance window or against a
-  cluster with no production traffic yet — it consumes real capacity
+  cluster with no production traffic yet — it consumes real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   across many namespaces and is not designed to run invisibly alongside
   live workloads.
 - Automate this as a required stage in whatever pipeline provisions
@@ -193,16 +193,16 @@ and
   someone remembers to run — an optional gate reliably gets skipped
   under deadline pressure.
 - Store conformance/smoke-test results as pipeline artifacts tied to the
-  cluster's identity and provisioning commit, so "is this cluster
+  cluster's identity and provisioning [commit](../../CI_CD/commit/SKILL.md), so "is this cluster
   validated, and against what config" is answerable later without
   re-running the suite.
 - Re-run the full validation after any change that could plausibly
-  affect conformance or networking behavior — a Kubernetes minor
+  affect conformance or networking behavior — a [Kubernetes](../kubernetes/SKILL.md) minor
   version upgrade, a CNI swap, a container runtime change, or a new node
   pool with a different instance type/kernel — not only at initial
   cluster creation.
 - Version-match the Sonobuoy CLI and conformance image to the target
-  Kubernetes version explicitly; don't assume "latest" is always
+  [Kubernetes](../kubernetes/SKILL.md) version explicitly; don't assume "latest" is always
   compatible, especially for clusters intentionally running an older
   supported minor version.
 
@@ -210,8 +210,8 @@ and
 
 - **Symptom:** `sonobuoy run` appears to hang indefinitely at "running."
   **Fix:** Check the Sonobuoy namespace's pod status directly
-  (`kubectl get pods -n sonobuoy`) rather than only watching
-  `sonobuoy status` — a common cause is insufficient cluster capacity
+  (`[kubectl](../kubectl/SKILL.md) get pods -n sonobuoy`) rather than only watching
+  `sonobuoy status` — a common cause is insufficient cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   (test pods stuck `Pending`) or no outbound access to pull the
   conformance test images, neither of which is a conformance failure of
   the cluster itself.
@@ -227,9 +227,9 @@ and
 
 - **Symptom:** Test pods for the full `certified-conformance` run stay
   `Pending` across most namespaces.
-  **Fix:** The cluster doesn't have enough spare scheduling capacity for
-  the suite's real resource requests — this is a capacity problem, not
-  a cluster-behavior conformance problem. Add capacity or run
+  **Fix:** The cluster doesn't have enough spare scheduling [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for
+  the suite's real resource requests — this is a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) problem, not
+  a cluster-behavior conformance problem. Add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or run
   conformance before onboarding production workloads onto the cluster,
   not after it's already packed.
 
@@ -239,21 +239,21 @@ and
   surfaces days later once real traffic patterns exercise it.
   **Fix:** Treat this validation as a required gate before handoff, not
   an optional nice-to-have — the whole point is catching exactly this
-  class of issue before it becomes a production incident instead of a
+  class of issue before it becomes a production [incident](../../Observability_and_SecOps/incident/SKILL.md) instead of a
   pre-launch checklist item.
 
 - **Symptom:** Conformance passes cleanly, but a specific application
   still fails to reach another Service by DNS name once deployed.
-  **Fix:** Conformance validates the Kubernetes API/behavior contract in
+  **Fix:** Conformance validates the [Kubernetes](../kubernetes/SKILL.md) API/behavior contract in
   general, not your specific CNI's cross-node data path or a
   NetworkPolicy interaction with DNS egress — run the targeted smoke
   tests (step 7) in addition, and if DNS specifically fails, see
-  [kubernetes-service-connectivity-troubleshooting](../kubernetes-service-connectivity-troubleshooting/SKILL.md).
+  [kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md).
 
 ## Worked example
 
 **Scenario:** A 3-node HA kubeadm cluster (see
-[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md))
+[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md))
 was just bootstrapped with Calico. Validate it before handing it to
 application teams.
 
@@ -276,20 +276,20 @@ sonobuoy delete --all --wait
 ```
 
 ```bash
-kubectl create namespace smoke-test
-kubectl run dns-check -n smoke-test --image=busybox:1.36 --restart=Never --rm -it -- \
-  nslookup kubernetes.default.svc.cluster.local
+[kubectl](../kubectl/SKILL.md) create namespace smoke-test
+[kubectl](../kubectl/SKILL.md) run dns-check -n smoke-test --image=busybox:1.36 --restart=Never --rm -it -- \
+  nslookup [kubernetes](../kubernetes/SKILL.md).default.svc.cluster.local
 # Server:    10.96.0.10
 # Address:   10.96.0.10:53
-# Name:      kubernetes.default.svc.cluster.local
+# Name:      [kubernetes](../kubernetes/SKILL.md).default.svc.cluster.local
 # Address:   10.96.0.1
 
-kubectl apply -f smoke-pvc.yaml
-kubectl get pvc smoke-pvc -n smoke-test
-# NAME        STATUS   VOLUME    CAPACITY   ACCESS MODES
+[kubectl](../kubectl/SKILL.md) apply -f smoke-pvc.yaml
+[kubectl](../kubectl/SKILL.md) get pvc smoke-pvc -n smoke-test
+# NAME        STATUS   VOLUME    [CAPACITY](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)   ACCESS MODES
 # smoke-pvc   Bound    pvc-...   1Gi        RWO
 
-kubectl delete namespace smoke-test
+[kubectl](../kubectl/SKILL.md) delete namespace smoke-test
 ```
 
 With conformance clean, DNS resolving correctly, and PVC provisioning
@@ -299,8 +299,8 @@ available for application teams to deploy onto.
 
 ## Cross-references
 
-- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md) — the self-managed provisioning path this validation gate most commonly follows.
-- [managed-kubernetes-eks-aks-gke](../managed-kubernetes-eks-aks-gke/SKILL.md) and [lightweight-kubernetes-k3s](../lightweight-kubernetes-k3s/SKILL.md) — the managed and lightweight provisioning paths that also warrant this validation before handoff.
-- [cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md) — diagnosing cross-node connectivity or NetworkPolicy-enforcement smoke-test failures at the CNI layer.
-- [kubernetes-service-connectivity-troubleshooting](../kubernetes-service-connectivity-troubleshooting/SKILL.md) — the deeper diagnostic path if a DNS or Service smoke test fails.
-- [ingress-nginx-configuration](../ingress-nginx-configuration/SKILL.md) — installing the Ingress controller exercised by the ingress-path smoke test.
+- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — the self-managed provisioning path this validation gate most commonly follows.
+- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) and [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — the managed and lightweight provisioning paths that also warrant this validation before handoff.
+- [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — diagnosing cross-node connectivity or NetworkPolicy-enforcement smoke-test failures at the CNI layer.
+- [kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md) — the deeper diagnostic path if a DNS or Service smoke test fails.
+- [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — installing the Ingress controller exercised by the ingress-path smoke test.

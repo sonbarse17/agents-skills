@@ -31,9 +31,9 @@ Azure DevOps Wikis use a markdown dialect that differs from GFM and VitePress in
 
 | Issue | VitePress/GFM | ADO Wiki | Fix |
 |-------|--------------|----------|-----|
-| Mermaid code fences | ` ```mermaid ` ... ` ``` ` | `::: mermaid` ... `:::` | Convert opening/closing fences |
+| [Mermaid](../mermaid/SKILL.md) code fences | ` ```[mermaid](../mermaid/SKILL.md) ` ... ` ``` ` | `::: [mermaid](../mermaid/SKILL.md)` ... `:::` | Convert opening/closing fences |
 | `flowchart` keyword | `flowchart TD` | `graph TD` | Replace `flowchart` with `graph` (preserve direction) |
-| `<br>` in Mermaid labels | `Node[Label<br>Text]` | Not supported | Strip `<br>` variants (replace with space) |
+| `<br>` in [Mermaid](../mermaid/SKILL.md) labels | `Node[Label<br>Text]` | Not supported | Strip `<br>` variants (replace with space) |
 | Long arrows `---->` | `A ---->B` | Not supported | Replace with `-->` |
 | YAML front matter | `---` ... `---` at file start | Rendered as visible raw text | Strip entirely |
 | Parent-relative source links | `[text](../../src/file.cs)` | Broken (wiki is separate) | Convert to plain text |
@@ -43,9 +43,9 @@ Azure DevOps Wikis use a markdown dialect that differs from GFM and VitePress in
 
 | Issue | Notes |
 |-------|-------|
-| Mermaid `style` directives | ADO's Mermaid version may ignore inline styling. Leave as-is (cosmetic). |
-| Mermaid thick arrows `==>` | May work. Leave as-is. |
-| Mermaid dotted arrows `-.->` | May work. Leave as-is. |
+| [Mermaid](../mermaid/SKILL.md) `style` directives | ADO's [Mermaid](../mermaid/SKILL.md) version may ignore inline styling. Leave as-is (cosmetic). |
+| [Mermaid](../mermaid/SKILL.md) thick arrows `==>` | May work. Leave as-is. |
+| [Mermaid](../mermaid/SKILL.md) dotted arrows `-.->` | May work. Leave as-is. |
 | Subgraph linking | Links to/from subgraphs not supported, but nodes inside subgraphs work fine. |
 
 ### NOT AN ISSUE (Compatible As-Is)
@@ -58,7 +58,7 @@ Azure DevOps Wikis use a markdown dialect that differs from GFM and VitePress in
 - ✅ Lists (ordered, unordered, nested), headings 1-6
 - ✅ Images with relative paths
 
-## ADO Wiki Mermaid Supported Diagram Types
+## ADO Wiki [Mermaid](../mermaid/SKILL.md) Supported Diagram Types
 
 As of 2025:
 - ✅ `sequenceDiagram`, `gantt`, `graph` (NOT `flowchart`), `classDiagram`
@@ -87,11 +87,11 @@ function stripFrontMatter(content) {
 }
 ```
 
-#### 2. Convert Mermaid Blocks
+#### 2. Convert [Mermaid](../mermaid/SKILL.md) Blocks
 
-Process line-by-line, tracking mermaid block state. Apply fixes ONLY inside mermaid blocks:
+Process line-by-line, tracking [mermaid](../mermaid/SKILL.md) block state. Apply fixes ONLY inside [mermaid](../mermaid/SKILL.md) blocks:
 
-- Opening: ` ```mermaid ` → `::: mermaid`
+- Opening: ` ```[mermaid](../mermaid/SKILL.md) ` → `::: [mermaid](../mermaid/SKILL.md)`
 - Closing: ` ``` ` → `:::`
 - `flowchart` → `graph` (preserve direction: TD, LR, TB, RL, BT)
 - Strip `<br>`, `<br/>`, `<br />` (replace with space)
@@ -106,8 +106,8 @@ function convertMermaidBlocks(content) {
   for (const line of lines) {
     const trimmed = line.trimEnd();
 
-    if (!inMermaid && /^```mermaid\s*$/.test(trimmed)) {
-      result.push('::: mermaid');
+    if (!inMermaid && /^```[mermaid](../mermaid/SKILL.md)\s*$/.test(trimmed)) {
+      result.push('::: [mermaid](../mermaid/SKILL.md)');
       inMermaid = true;
       continue;
     }
@@ -165,7 +165,7 @@ function convertContainerDirectives(content) {
 ```javascript
 async function main() {
   const files = await collectMarkdownFiles(ROOT);
-  const stats = { frontMatter: 0, mermaid: 0, sourceLinks: 0, containers: 0 };
+  const stats = { frontMatter: 0, [mermaid](../mermaid/SKILL.md): 0, sourceLinks: 0, containers: 0 };
 
   for (const filePath of files) {
     let content = await readFile(filePath, 'utf-8');
@@ -200,7 +200,7 @@ The script should skip: `node_modules`, `.vitepress`, `.git`, `dist`, `build`, `
 
 After the script runs, verify:
 1. File count in `dist/ado-wiki/` matches source (minus skipped dirs)
-2. Zero ` ```mermaid ` fences remaining — all converted to `::: mermaid`
+2. Zero ` ```[mermaid](../mermaid/SKILL.md) ` fences remaining — all converted to `::: [mermaid](../mermaid/SKILL.md)`
 3. Zero `flowchart` keywords remaining — all converted to `graph`
 4. No YAML front matter in output files
 5. Parent-relative links converted to plain text
@@ -234,10 +234,10 @@ Generate `.order` files in each directory to control sidebar ordering:
 The converted ADO wiki must maintain the same quality standards:
 
 - **Linked citations** (`[file:line](URL)`) are standard markdown — preserve them as-is
-- **`<!-- Sources: ... -->` comment blocks** after Mermaid diagrams — preserve (HTML comments work in ADO)
+- **`<!-- Sources: ... -->` comment blocks** after [Mermaid](../mermaid/SKILL.md) diagrams — preserve (HTML comments work in ADO)
 - **Tables with "Source" columns** — preserve as-is (standard markdown tables)
-- **Mermaid diagrams** — convert fences only; diagram content, types, and structure are preserved
-- All Mermaid diagram types supported by ADO (graph, sequenceDiagram, classDiagram, stateDiagram, erDiagram, etc.) pass through unchanged
+- **[Mermaid](../mermaid/SKILL.md) diagrams** — convert fences only; diagram content, types, and structure are preserved
+- All [Mermaid](../mermaid/SKILL.md) diagram types supported by ADO (graph, sequenceDiagram, classDiagram, stateDiagram, erDiagram, etc.) pass through unchanged
 
 ## Important Notes
 

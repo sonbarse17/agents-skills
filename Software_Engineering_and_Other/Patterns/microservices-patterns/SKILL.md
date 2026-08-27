@@ -3,13 +3,13 @@ name: microservices-patterns
 description: Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices.
 ---
 
-# Microservices Patterns
+# [Microservices](../microservices/SKILL.md) Patterns
 
-Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.
+Master [microservices](../microservices/SKILL.md) architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.
 
 ## When to Use This Skill
 
-- Decomposing monoliths into microservices
+- Decomposing monoliths into [microservices](../microservices/SKILL.md)
 - Designing service boundaries and contracts
 - Implementing inter-service communication
 - Managing distributed data and transactions
@@ -36,7 +36,7 @@ Master microservices architecture patterns including service boundaries, inter-s
 **Strangler Fig Pattern**
 
 - Gradually extract from monolith
-- New functionality as microservices
+- New functionality as [microservices](../microservices/SKILL.md)
 - Proxy routes to old/new systems
 
 ### 2. Communication Patterns
@@ -86,6 +86,6 @@ Master microservices architecture patterns including service boundaries, inter-s
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/microservices-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[microservices](../microservices/SKILL.md)-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 

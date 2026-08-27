@@ -5,11 +5,11 @@ description: Train reasoning and verifiable-task behavior with GRPO and reinforc
 
 # GRPO & RLVR Training
 
-This skill assumes `finetuning-method-selection`
+This skill assumes `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 already routed here because the target behavior
 has a verifiable pass/fail signal — not
-demonstrations (`lora-qlora-recipes`) or
-preference pairs (`preference-optimization`).
+demonstrations (`[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`) or
+preference pairs (`[preference-optimization](../preference-optimization/SKILL.md)`).
 What follows is when RL is the right tool, the
 reference recipe, the mandatory reward-inspection
 gate, and how to pick a GRPO variant when the
@@ -22,7 +22,7 @@ schema checker, or grader) for the target task.
 kwarg values in `../../../Global_References/grpo-memory.md` and
 the reward functions in
 `../../../Global_References/reward-functions.md`, not free-form
-advice — that `llm-finetuning-training-engineer`
+advice — that `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer`
 consumes directly.
 
 ## When RL Applies
@@ -34,7 +34,7 @@ matches an expected schema, a math answer matches
 a ground truth. If grading the output requires
 human judgment or a subjective rubric, that's an
 eval-harness and judge-calibration problem first
-— see `eval-harness-first` — not a reason to skip
+— see `[eval-harness-first](../eval-harness-first/SKILL.md)` — not a reason to skip
 straight to RL.
 
 Before opening a GRPO run, confirm the model can
@@ -47,7 +47,7 @@ install a capability from zero.
   temperature across many samples:** the gap is
   format or task understanding, not policy
   refinement. Route back to SFT first
-  (`lora-qlora-recipes`) and only return to this
+  (`[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`) and only return to this
   skill once the base success rate is nonzero.
 - **The model succeeds sometimes,
   inconsistently:** this is the GRPO sweet spot —
@@ -56,14 +56,14 @@ install a capability from zero.
 The standing rule for the whole plugin: **DPO for
 taste, GRPO for reasoning.** If the signal is a
 preference between two acceptable outputs, that's
-`preference-optimization`, not this skill.
+`[preference-optimization](../preference-optimization/SKILL.md)`, not this skill.
 
 ## The Recipe
 
 The reference recipe is TRL's `GRPOTrainer` with
 vLLM-backed generation:
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from trl import GRPOConfig, GRPOTrainer
 
 grpo_args = GRPOConfig(
@@ -182,7 +182,7 @@ above.
 ## References
 
 - `../../../Global_References/reward-functions.md` — complete
-  Python reward functions (exact-match
+  [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) reward functions (exact-match
   correctness, schema validation, unit-test
   execution, a length-penalty wrapper, and a
   rubric-as-reward judge pattern) to inspect under
@@ -193,11 +193,11 @@ above.
   RL chunking, and the DGX Spark bandwidth caveat
   for decode-heavy rollouts.
 
-Related skills: `finetuning-method-selection`
+Related skills: `[finetuning-method-selection](../[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)`
 routes here once a verifiable pass/fail signal
-exists; `preference-optimization` is the sibling
+exists; `[preference-optimization](../preference-optimization/SKILL.md)` is the sibling
 skill for preference pairs rather than verifiable
-rewards; `eval-harness-first` covers judge
+rewards; `[eval-harness-first](../eval-harness-first/SKILL.md)` covers judge
 calibration for any reward that isn't purely
 code-checkable. On DGX Spark, defer to the
 `dgx-spark-ops` plugin's skills, when installed,

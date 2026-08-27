@@ -329,7 +329,7 @@ User: Ask sales-helper what the top revenue products are
 User: Create a tool that shows billing complaints by category for the last N days
 ```
 
-1. Consult the `elasticsearch-esql` skill for ES|QL syntax
+1. Consult the `[elasticsearch-esql](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-esql/SKILL.md)` skill for ES|QL syntax
 2. Create tool:
 
    ```bash
@@ -366,7 +366,7 @@ Read these for detailed guidance:
 - `../../../Global_References/use-cases.md` — Full playbooks for Customer Feedback Analysis, Marketing Campaign Analysis, and Contract
   Analysis agents
 
-For ES|QL syntax, functions, operators, and parameter rules, use the `elasticsearch-esql` skill. For workflow YAML
+For ES|QL syntax, functions, operators, and parameter rules, use the `[elasticsearch-esql](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-esql/SKILL.md)` skill. For workflow YAML
 structure, trigger types, step types, and agent-workflow patterns, use the `security-workflows` skill.
 
 ## Guidelines

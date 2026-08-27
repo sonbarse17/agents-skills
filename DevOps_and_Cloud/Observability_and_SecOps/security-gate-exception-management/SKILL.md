@@ -65,11 +65,11 @@ revisits.
 
 - An underlying gate or control already in place to grant exceptions
   against — SAST/SCA suppression syntax
-  ([sast-integration](../sast-integration/SKILL.md),
-  [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)),
+  ([sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md),
+  [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)),
   an admission-policy exclusion mechanism
-  ([opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md),
-  [kyverno-policy-management](../../../policy-and-governance-tooling/skills/kyverno-policy-management/SKILL.md)),
+  ([opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md),
+  [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../../Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)),
   or a compliance-framework control tracked in a GRC tool.
   This skill governs the process wrapped around those mechanisms, not
   the suppression syntax itself.
@@ -167,7 +167,7 @@ revisits.
    # Example: a scheduled CI job that fails if any exception's expiry has passed
    python3 scripts/check_exception_expiry.py --registry exceptions/ --fail-on-expired
    ```
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # scripts/check_exception_expiry.py (illustrative, not production code)
    import sys, yaml, datetime, pathlib
 
@@ -194,7 +194,7 @@ revisits.
    and count renewed more than once (a repeatedly-renewed exception is a
    signal the underlying issue needs a real fix, not more waivers). Feed
    this into
-   [security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md).
+   [security-posture-metrics-and-trend-analysis](../[security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md)/SKILL.md).
 
 8. **Distinguish a scoped exception from disabling the gate**, explicitly,
    every time someone proposes the latter as a shortcut:
@@ -282,7 +282,7 @@ revisits.
   process itself is too slow to use in a genuine emergency, that's a
   signal to fix the process's turnaround time (an expedited path for
   genuinely urgent requests, mirroring
-  [critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md)),
+  [critical-vulnerability-emergency-response](../[critical-vulnerability-emergency-response](../../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md)),
   not to bypass it by disabling the whole gate.
 
 - **Symptom:** An automated expiry check exists but nobody acts on its
@@ -291,7 +291,7 @@ revisits.
   **Fix:** Wire the expiry check's output into an actual accountable
   workflow (auto-created ticket assigned to the exception's owner, a
   required agenda item in the recurring triage meeting from
-  [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md)) —
+  [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md)) —
   a report nobody is required to act on is equivalent to no check at
   all.
 
@@ -347,19 +347,19 @@ of renewing it.
 
 ## Cross-references
 
-- [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md) —
+- [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md) —
   the ongoing triage process that routes findings into the "accepted
   risk" lane this skill's formal exception workflow governs.
-- [critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md) —
+- [critical-vulnerability-emergency-response](../[critical-vulnerability-emergency-response](../../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md) —
   when a finding genuinely cannot be remediated during an emergency
   response, the resulting temporary exception should still be recorded
   through this process rather than left informal.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — the gate design
+- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — the gate design
   (severity-to-action table, blocking vs. warning) that exceptions are
   granted against.
-- [security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md) —
+- [security-posture-metrics-and-trend-analysis](../[security-posture-metrics-and-trend-analysis](../security-posture-metrics-and-trend-analysis/SKILL.md)/SKILL.md) —
   tracking exception-list size, age, and renewal frequency as an ongoing
   posture metric.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   `excludedNamespaces` and Constraint-scoping mechanics that an
   admission-policy exception is implemented through.

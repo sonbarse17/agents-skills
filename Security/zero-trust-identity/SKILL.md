@@ -20,7 +20,7 @@ OIDC is an identity layer built on top of the OAuth 2.0 protocol. The Authorizat
 
 JWTs (JSON Web Tokens) encapsulate claims in a compact, URL-safe format. Validation of the signature is paramount to prevent token forgery.
 
-*   **HS256 (HMAC with SHA-256)**: Symmetric signing. The Identity Provider (IdP) and the Resource Server (RS) share the same secret key. **Risk**: If the RS is compromised, the shared secret is exposed, allowing the attacker to forge JWTs. Suitable only for internal, tightly-coupled microservices.
+*   **HS256 (HMAC with SHA-256)**: Symmetric signing. The Identity Provider (IdP) and the Resource Server (RS) share the same secret key. **Risk**: If the RS is compromised, the shared secret is exposed, allowing the attacker to forge JWTs. Suitable only for internal, tightly-coupled [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).
 *   **RS256 (RSA Signature with SHA-256)**: Asymmetric signing. The IdP signs the JWT with its private key. The RS validates the signature using the IdP's public key (retrieved via JWKS - JSON Web Key Set). **Benefit**: The RS only holds the public key; compromise does not lead to token forgery capabilities.
 
 ### Validation Steps:
@@ -40,7 +40,7 @@ SAML relies on XML and SOAP/HTTP POST bindings. It is heavily utilized in legacy
 
 ## Architecture Mapping
 
-```mermaid
+```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     User([User Agent]) -->|1. Request Access| RP[Relying Party / Client]

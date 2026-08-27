@@ -139,7 +139,7 @@ Does the code touch a critical path (auth, payments, data layer)?
 
 ### Framework/Language-Specific Considerations
 
-| Aspect | Static Typed (TS, Rust, Java) | Dynamic (Python, JS, Ruby) |
+| Aspect | Static Typed (TS, Rust, Java) | Dynamic ([Python](../../Languages/python/SKILL.md), JS, Ruby) |
 |--------|-----------------------------|---------------------------|
 | Type errors | Caught at compile time | Runtime risk. MUST review type contracts |
 | Null safety | Compiler-enforced (strict mode) | Manual checks required. SHOULD validate all external inputs |
@@ -384,7 +384,7 @@ Writing long code snippets in review comments instead of pointing to the problem
 | Code Review (this skill) | All 6 dimensions: correctness, architecture, clarity, performance, security, tests | Structured [MUST]/[SHOULD]/[CONSIDER] | General purpose, pre-merge |
 | Security Review | Vulnerability assessment | CWE classification, exploitability scoring | Security-critical code, compliance audits |
 | Architecture Review | System design, layer boundaries, coupling | ADR, architecture diagram | Major features, new modules, system design |
-| Performance Review | Runtime profiling, bundle analysis, query optimization | Flame graph, bundle report | Performance-critical features, regression investigation |
+| Performance Review | Runtime [profiling](../../Frontend/profiling/SKILL.md), bundle analysis, query optimization | Flame graph, bundle report | Performance-critical features, regression investigation |
 | Pair Programming | Real-time feedback, shared ownership | Continuous conversation | Complex features, knowledge transfer |
 | Automated Linting | Style, formatting, simple correctness | Linter output, CI integration | Every PR (supplementary, not replacement) |
 | Formal Verification | Mathematical proof of correctness | Proof artifacts | Safety-critical systems (medical, aerospace) |
@@ -435,7 +435,7 @@ When a PR exceeds 400 lines:
 ### CI Integration
 
 ```yaml
-# GitHub Actions: Automated review gate
+# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions: Automated review gate
 name: code-review-gate
 on: [pull_request]
 jobs:
@@ -457,18 +457,18 @@ jobs:
 
 ### Review Tools
 
-- **Reviewdog**: Automates review comment posting for linters and custom checks.
+- **[Reviewdog](../reviewdog/SKILL.md)**: Automates review comment posting for linters and custom checks.
 - **SonarQube / SonarCloud**: Static analysis with technical debt calculation.
 - **CodeClimate**: Maintainability and test coverage metrics.
 - **Snyk / Dependabot**: Dependency vulnerability scanning.
 - **ESLint + plugins**: Language-specific linting for JS/TS.
 - **Prettier**: Automatic formatting to eliminate style reviews.
-- **Husky + lint-staged**: Pre-commit hooks for pre-review quality.
+- **Husky + lint-staged**: Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks for pre-review quality.
 
 ### Review Workflow Configuration
 
 ```json
-// .github/CODEOWNERS
+// .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/CODEOWNERS
 # Default reviewer
 * @team/engineering
 
@@ -532,10 +532,10 @@ docs/** @team/tech-writers
 - `../../../Global_References/code-review-fundamentals.md` -- Code Review Fundamentals
 - `../../../Global_References/code-review_review-checklist.md` -- Code Review Checklist
 - `../../../Global_References/review-workflow.md` -- Code Review Workflow
-- `../../../Global_References/security-review-checklist.md` -- Security Review Checklist
-- `../../../Global_References/security-review-guide.md` -- Security Review Guide
+- `../../../Global_References/[security-review](../../../Security/security-review/SKILL.md)-checklist.md` -- Security Review Checklist
+- `../../../Global_References/[security-review](../../../Security/security-review/SKILL.md)-guide.md` -- Security Review Guide
 - `../../../Global_References/code-review-checklist.md` -- Comprehensive Code Review Checklist
-- `../../../Global_References/code-review-workflow-automation.md` -- Code Review Workflow and Automation
+- `../../../Global_References/code-review-[workflow-automation](../../Patterns/workflow-automation/SKILL.md).md` -- Code Review Workflow and Automation
 
 ## Handoff
 

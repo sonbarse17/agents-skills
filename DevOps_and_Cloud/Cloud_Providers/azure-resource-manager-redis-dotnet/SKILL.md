@@ -248,13 +248,13 @@ await cache.Value.ForceRebootAsync(rebootContent);
 
 ## SKU Reference
 
-| SKU | Family | Capacity | Features |
+| SKU | Family | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Features |
 |-----|--------|----------|----------|
 | Basic | C | 0-6 | Single node, no SLA, dev/test only |
 | Standard | C | 0-6 | Two nodes (primary/replica), SLA |
 | Premium | P | 1-5 | Clustering, geo-replication, VNet, persistence |
 
-**Capacity Sizes (Family C - Basic/Standard)**:
+**[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Sizes (Family C - Basic/Standard)**:
 - C0: 250 MB
 - C1: 1 GB
 - C2: 2.5 GB
@@ -263,7 +263,7 @@ await cache.Value.ForceRebootAsync(rebootContent);
 - C5: 26 GB
 - C6: 53 GB
 
-**Capacity Sizes (Family P - Premium)**:
+**[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Sizes (Family P - Premium)**:
 - P1: 6 GB per shard
 - P2: 13 GB per shard
 - P3: 26 GB per shard
@@ -284,7 +284,7 @@ await cache.Value.ForceRebootAsync(rebootContent);
 | `RedisCacheAccessPolicyResource` | RBAC access policy |
 | `RedisCreateOrUpdateContent` | Cache creation payload |
 | `RedisPatch` | Cache update payload |
-| `RedisSku` | SKU configuration (name, family, capacity) |
+| `RedisSku` | SKU configuration (name, family, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)) |
 | `RedisAccessKeys` | Primary and secondary access keys |
 | `RedisRegenerateKeyContent` | Key regeneration request |
 

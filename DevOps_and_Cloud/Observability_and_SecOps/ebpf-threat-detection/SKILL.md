@@ -5,7 +5,7 @@ description: eBPF Threat Detection, Tetragon, Falco, and Kernel Syscall Intercep
 
 # eBPF-Based Threat Detection and Kernel Instrumentation
 
-Extended Berkeley Packet Filter (eBPF) revolutionized Linux observability and security by allowing sandboxed programs to run within the kernel space without requiring kernel module compilation or system reboots. This is critical for low-overhead, high-fidelity threat detection.
+Extended Berkeley Packet Filter (eBPF) revolutionized Linux [observability](../observability/SKILL.md) and security by allowing sandboxed programs to run within the kernel space without requiring kernel module compilation or system reboots. This is critical for low-overhead, high-fidelity threat detection.
 
 ## eBPF Architecture
 
@@ -19,7 +19,7 @@ eBPF programs are event-driven. They attach to specific kernel hooks (kprobes, t
 
 ## Intercepting Malicious Syscalls
 
-Syscalls are the interface between user-space and kernel-space. Monitoring them is fundamental to detecting malicious behavior (e.g., `execve` for process execution, `ptrace` for memory injection, `bpf` for illicit eBPF loading).
+Syscalls are the interface between user-space and kernel-space. [Monitoring](../monitoring/SKILL.md) them is fundamental to detecting malicious behavior (e.g., `execve` for process execution, `ptrace` for memory injection, `bpf` for illicit eBPF loading).
 
 *   **kprobes/kretprobes**: Allow dynamic instrumentation of kernel function entry (`kprobe`) and exit (`kretprobe`). Useful for inspecting arguments passed to syscall handlers (e.g., `sys_execve`).
 *   **Tracepoints**: Static, defined hooks placed by kernel developers in the source code. They are more stable across kernel versions than kprobes.
@@ -28,20 +28,20 @@ Syscalls are the interface between user-space and kernel-space. Monitoring them 
 ## Falco: Behavioral Threat Detection
 
 Falco acts as an intrusion detection system for cloud-native environments.
-*   **Mechanism**: Originally relied on a kernel module or eBPF probe to capture system calls. It streams these events (contextualized with container/Kubernetes metadata) to a user-space rules engine.
+*   **Mechanism**: Originally relied on a kernel module or eBPF probe to capture system calls. It streams these events (contextualized with container/[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata) to a user-space rules engine.
 *   **Rules**: Uses a domain-specific language (YAML) to define anomalous behavior (e.g., "A shell was spawned inside a container").
-*   **Limitation**: Historically focused on detection (alerting) rather than enforcement (blocking), though integrations exist for response. It captures events asynchronously, meaning a malicious action might complete before the alert is processed.
+*   **Limitation**: Historically focused on detection ([alerting](../alerting/SKILL.md)) rather than enforcement (blocking), though integrations exist for response. It captures events asynchronously, meaning a malicious action might complete before the alert is processed.
 
 ## Tetragon: Transparent Kernel Enforcement
 
-Tetragon (by Isovalent/Cilium) leverages advanced eBPF capabilities for both deep observability and inline enforcement.
+Tetragon (by Isovalent/Cilium) leverages advanced eBPF capabilities for both deep [observability](../observability/SKILL.md) and inline enforcement.
 *   **Mechanism**: Uses eBPF programs deeply integrated into kernel subsystems. It correlates network, process, and file access events.
 *   **Synchronous Enforcement**: Tetragon can use eBPF to synchronously block actions. If a policy dictates that a binary should not execute, the eBPF program attached to the relevant kernel hook can return a failure *before* the execution proceeds.
 *   **In-Kernel Filtering**: Unlike older tools that send massive amounts of raw syscall data to user-space for filtering, Tetragon performs complex filtering directly in the kernel via eBPF, drastically reducing overhead.
 
 ## Architecture Mapping
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     UserSpace[User Space Application] -->|"1. Executes Syscall (e.g., execve)"| KernelSyscall[Kernel Syscall Interface]
@@ -51,7 +51,7 @@ flowchart TD
         eBPFHook -->|3. Executes| eBPFProg[eBPF Program]
         eBPFProg -->|4. Evaluates Policy| PolicyEval{Policy Match?}
         PolicyEval -->|5a. Block: Return Error| LSMEnforce[Syscall Denied - ENOPERM]
-        PolicyEval -->|5b. Allow & Audit| eBPFMap[(eBPF Ring Buffer / Map)]
+        PolicyEval -->|5b. Allow & [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)| eBPFMap[(eBPF Ring Buffer / Map)]
     end
     
     LSMEnforce -.-> UserSpace

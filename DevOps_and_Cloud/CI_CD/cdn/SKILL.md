@@ -71,7 +71,7 @@ Without a shield, every edge location that misses the cache goes straight to the
 independently — a cold cache after a purge or a new region rollout can multiply origin load by the
 number of edge locations. An origin shield (a single designated caching layer between edges and
 origin) collapses those redundant misses into one request per unique resource, and is the
-difference between a cache miss being routine and being an incident.
+difference between a cache miss being routine and being an [incident](../../Observability_and_SecOps/incident/SKILL.md).
 
 **Done when:** a simultaneous cold-cache event across edge locations produces roughly one origin
 request per resource, not one per edge location.

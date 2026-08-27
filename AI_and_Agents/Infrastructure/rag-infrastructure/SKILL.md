@@ -22,11 +22,11 @@ Use this skill when:
 
 ## Prerequisites
 
-- Python 3.10+ with `pip`
+- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `pip`
 - A vector database (Qdrant, Weaviate, Pinecone, or pgvector)
 - An embedding model (OpenAI, Cohere, or local via `sentence-transformers`)
 - An LLM endpoint (OpenAI API or self-hosted vLLM)
-- Docker for local vector DB deployment
+- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) for local vector DB deployment
 
 ## Architecture Overview
 
@@ -38,7 +38,7 @@ User Query → Embedder → Vector Store (search) → Reranker → LLM → Answe
 
 ## Embedding Pipeline
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
@@ -74,7 +74,7 @@ def ingest_documents(docs: list[dict]):
 
 ## Chunking Strategies
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def chunk_text(text: str, chunk_size: int = 512, overlap: int = 50) -> list[str]:
@@ -95,7 +95,7 @@ md_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers)
 
 ## Hybrid Search (Dense + Sparse)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from qdrant_client.models import SparseVector, SparseVectorParams, NamedSparseVector
 from fastembed import SparseTextEmbedding
 
@@ -128,7 +128,7 @@ def hybrid_search(query: str, top_k: int = 10) -> list[dict]:
 
 ## Reranking
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import cohere
 
 co = cohere.Client("your-api-key")
@@ -156,7 +156,7 @@ def local_rerank(query: str, candidates: list[str], top_n: int = 5) -> list[str]
 
 ## RAG Query Pipeline
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from openai import OpenAI
 
 llm = OpenAI(base_url="http://localhost:8000/v1", api_key="your-key")
@@ -186,7 +186,7 @@ def rag_query(user_question: str) -> str:
     return response.choices[0].message.content
 ```
 
-## Docker Compose: Full RAG Stack
+## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose: Full RAG Stack
 
 ```yaml
 services:
@@ -247,7 +247,7 @@ volumes:
 
 ## Related Skills
 
-- [vector-database-ops](../../databases/vector-database-ops/) - Qdrant/Weaviate management
-- [vllm-server](../vllm-server/) - Self-hosted LLM endpoint
-- [ollama-stack](../ollama-stack/) - Local LLM for development
-- [ai-pipeline-orchestration](../../../devops/ai/ai-pipeline-orchestration/) - Ingestion pipelines
+- [vector-database-ops](../../databases/[vector-database-ops](../vector-database-ops/SKILL.md)/) - Qdrant/Weaviate management
+- [vllm-server](../[vllm-server](../../Models_and_FineTuning/vllm-server/SKILL.md)/) - Self-hosted LLM endpoint
+- [ollama-stack](../[ollama-stack](../../Models_and_FineTuning/ollama-stack/SKILL.md)/) - Local LLM for development
+- [ai-pipeline-orchestration](../../../devops/ai/[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Ingestion pipelines

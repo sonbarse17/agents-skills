@@ -12,16 +12,16 @@ evaluated automatically against every plan or admission request prevents the vio
 landing at all, regardless of who wrote the change or whether they read the wiki.
 
 The shift this skill is about is from *auditing* infrastructure after the fact to *rejecting*
-bad infrastructure before it's ever applied. An audit finding is a cleanup task; a policy failure
+bad infrastructure before it's ever applied. An [audit](../../AI_and_Agents/Operations/audit/SKILL.md) finding is a cleanup task; a policy failure
 is a change that never happened.
 
-**A policy that only runs in a nightly audit report is a compliance artifact. A policy that
+**A policy that only runs in a nightly [audit](../../AI_and_Agents/Operations/audit/SKILL.md) report is a compliance artifact. A policy that
 blocks the pipeline is a guardrail. Prefer the guardrail.**
 
 ## 1. Put the check where the change is still reversible
 
 The cheapest place to reject a bad change is before it's ever applied — evaluate policy against
-the Terraform plan output or the Kubernetes admission request, not against resources that already
+the Terraform plan output or the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission request, not against resources that already
 exist. By the time a nightly scan finds a public bucket, it's been public for up to a day.
 
 ```rego
@@ -41,7 +41,7 @@ deny[msg] {
 **Done when:** a plan or manifest violating a written policy cannot be applied through the normal
 pipeline path, full stop.
 
-## 2. Start every new policy in audit mode
+## 2. Start every new policy in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) mode
 
 A brand-new policy enforced immediately as a hard block will, with near certainty, break some
 legitimate change nobody anticipated when writing the rule — and the first thing anyone learns
@@ -55,8 +55,8 @@ against real traffic for a stretch, then flip it to enforcing.
 - **Only promote to enforcing once the false-positive rate is near zero**, or the org will start
   routing around policy instead of respecting it.
 
-**Done when:** every enforcing policy spent a defined audit-only period first, with its
-audit-period findings reviewed and resolved.
+**Done when:** every enforcing policy spent a defined [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-only period first, with its
+[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-period findings reviewed and resolved.
 
 ## 3. Write policies against realistic inputs, not the happiest path
 
@@ -79,7 +79,7 @@ case it correctly allows.
 A policy file that checks tagging, encryption, and instance sizing together is hard to debug when
 it fails, and impossible to promote to enforcing incrementally — one false positive on tagging
 blocks legitimate encryption enforcement too. Keep policies narrow and composable, the same
-argument made for modules in `terraform-modules`.
+argument made for modules in `[terraform-modules](../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md)`.
 
 - **One rule per policy**, named for the specific thing it denies — `deny-public-s3-acl`, not
   `s3-policy`.
@@ -101,7 +101,7 @@ policy, and every current exception has an owner and an expiry.
 
 ## Report
 
-State which policies are enforcing versus still in audit mode, and what each one actually
-prevents. Name the honest gap — usually a policy still in audit-only mode past its promotion
+State which policies are enforcing versus still in [audit](../../AI_and_Agents/Operations/audit/SKILL.md) mode, and what each one actually
+prevents. Name the honest gap — usually a policy still in [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-only mode past its promotion
 date, an exception with no expiry, or a rule with no failing-case test — rather than presenting
 policy coverage as complete.

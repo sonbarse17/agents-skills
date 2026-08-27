@@ -54,7 +54,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Cross-source join strategy documented with cost model
 - [ ] Performance tuning parameters set (memory, concurrency, threads)
 - [ ] Security configured (TLS, auth, RBAC)
-- [ ] Monitoring dashboard for query performance
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard for query performance
 - [ ] Resource groups and query queues configured
 
 ### Max Response Length
@@ -79,7 +79,7 @@ Primary requirement?
 │   └── Trino (vanilla)
 ├── Enterprise security, caching, managed service
 │   ├── On-prem / self-managed → Starburst Enterprise
-│   └── Serverless multi-cloud → Starburst Galaxy
+│   └── [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) → Starburst Galaxy
 ├── BI optimization, acceleration, self-service
 │   └── Dremio (Reflections, VDS, lineage)
 ├── Hadoop-native, older ecosystem
@@ -140,9 +140,9 @@ hive.config.resources=/etc/hadoop/core-site.xml
 hive.allow-drop-table=false
 hive.parallel-partitioned-bucketed-writes=true
 
-# etc/catalog/postgres.properties (PostgreSQL)
-connector.name=postgresql
-connection-url=jdbc:postgresql://postgres-prod:5432/analytics
+# etc/catalog/postgres.properties ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
+connector.name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+connection-url=jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://postgres-prod:5432/analytics
 connection-user=${POSTGRES_USER}
 connection-password=${POSTGRES_PASSWORD}
 
@@ -152,10 +152,10 @@ kafka.nodes=kafka-broker:9092,kafka-broker:9093
 kafka.table-names=orders,events
 kafka.hide-internal-columns=false
 
-# etc/catalog/mongodb.properties (MongoDB)
-connector.name=mongodb
-mongodb.connection-url=mongodb://${MONGO_USER}:${MONGO_PASS}@mongo-prod:27017
-mongodb.read-preference=primaryPreferred
+# etc/catalog/[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).properties ([MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md))
+connector.name=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)
+[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).connection-url=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)://${MONGO_USER}:${MONGO_PASS}@mongo-prod:27017
+[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).read-preference=primaryPreferred
 
 # etc/catalog/elasticsearch.properties
 connector.name=elasticsearch
@@ -168,7 +168,7 @@ elasticsearch.query-timeout=30s
 ```
 
 #### Connector Security Best Practices
-Credentials stored in secrets manager (Vault, AWS Secrets Manager, Kubernetes secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
+Credentials stored in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
 
 ### Step 4: Query Pushdown
 
@@ -176,12 +176,12 @@ Credentials stored in secrets manager (Vault, AWS Secrets Manager, Kubernetes se
 
 | Source | Pushdown | Capabilities |
 |---|---|---|
-| **PostgreSQL** | Full SQL pushdown (filter, agg, join, sort, limit) | Predicate, aggregation, limit |
+| **[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)** | Full SQL pushdown (filter, agg, join, sort, limit) | Predicate, aggregation, limit |
 | **Hive/Iceberg** | Partial pushdown (partition pruning, filter) | Partition filter, row filter |
-| **MongoDB** | Partial (filter, project) | Predicate pushdown only |
+| **[MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)** | Partial (filter, project) | Predicate pushdown only |
 | **Kafka** | N/A (stream data) | Topic + partition filter only |
 | **Elasticsearch** | Full (query DSL → filter/agg) | Predicate, aggregation |
-| **MySQL** | Full SQL pushdown | Predicate, aggregation, limit |
+| **[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)** | Full SQL pushdown | Predicate, aggregation, limit |
 | **SQL Server** | Full SQL pushdown | Predicate, aggregation, limit, top N |
 | **BigQuery** | Full SQL pushdown | Predicate, aggregation, limit |
 | **Snowflake** | Full SQL pushdown | Predicate, aggregation, limit |
@@ -197,13 +197,13 @@ pushdown_project_enabled=true
 pushdown_topn_enabled=true
 
 # Per-connector pushdown overrides
-connector.name=postgresql
+connector.name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 pushdown_filter_enabled=true
 pushdown_aggregation_enabled=true
 
-connector.name=mongodb
+connector.name=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)
 pushdown_filter_enabled=true
-pushdown_aggregation_enabled=false  # MongoDB aggregation pushdown limited
+pushdown_aggregation_enabled=false  # [MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) aggregation pushdown limited
 ```
 
 ### Step 5: Cross-Source Join Strategy
@@ -212,7 +212,7 @@ pushdown_aggregation_enabled=false  # MongoDB aggregation pushdown limited
 Broadcast join: small table (< 1GB) sent to all workers for in-memory hash join. Use when: one side is small (dimension table), join key has low cardinality. Partitioned join: both sides partitioned by join key across workers. Use when: both sides are large (fact-to-fact join). Colocated join: both tables stored on same worker (same connector). Use when: tables are in same source system.
 
 ```sql
--- Cross-source join: orders (Postgres) + customers (Hive) + payments (MongoDB)
+-- Cross-source join: orders (Postgres) + customers (Hive) + payments ([MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md))
 SELECT
     o.order_id,
     o.total_amount,
@@ -220,7 +220,7 @@ SELECT
     p.payment_status
 FROM postgres.analytics.orders o
 JOIN hive.dimensions.customers c ON o.customer_id = c.customer_id
-LEFT JOIN mongodb.payments.transactions p ON o.order_id = p.order_id
+LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).payments.transactions p ON o.order_id = p.order_id
 WHERE o.created_at >= DATE '2026-05-01';
 ```
 
@@ -359,7 +359,7 @@ access-control.config-file=etc/rules.json
 }
 ```
 
-### Step 8: Monitoring
+### Step 8: [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 #### Query Performance Metrics
 
@@ -383,7 +383,7 @@ event-listener.type=jmx
 | Query p99 latency | < 10s | 10-30s | > 30s |
 | Queries per second | > 10/node | 5-10/node | < 5/node |
 | Cache hit ratio | > 80% | 50-80% | < 50% |
-| Active connections | < 50% capacity | 50-80% | > 80% |
+| Active connections | < 50% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | 50-80% | > 80% |
 | Failed query rate | < 0.5% | 0.5-2% | > 2% |
 | Worker CPU | < 70% | 70-90% | > 90% |
 | Data scanned per query | < 1GB | 1-10GB | > 10GB |
@@ -407,7 +407,7 @@ JOIN "s3"."lake"."orders" o ON c.customer_id = o.customer_id;
 ```
 
 #### Starburst Enterprise Features
-Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers serverless multi-cloud managed service. Use Starburst for regulated enterprises needing enterprise security or multi-cloud analytics with caching.
+Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) analytics with caching.
 
 #### Alluxio — Data Virtualization Layer
 Alluxio is a virtual distributed file system that unifies data access across disparate storage. Acts as caching and metadata layer between compute engines and storage backends. Caches hot data on local SSDs/memory for 10-100x faster data access on repeated queries. Supports any storage (S3, ADLS, GCS, HDFS, NFS) and any compute (Spark, Trino, MapReduce, Flink). Namespace service provides a single mounted namespace across storage systems.
@@ -432,7 +432,7 @@ alluxio.worker.tieredstore.level0.dirs.quota=500GB
 SELECT customer_id, SUM(amount)
 FROM postgres.analytics.orders;  -- Scans all rows
 
--- Good: push aggregation to PostgreSQL (if enabled)
+-- Good: push aggregation to [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (if enabled)
 -- Trino translates to: SELECT customer_id, SUM(amount) FROM orders GROUP BY customer_id
 ```
 
@@ -467,7 +467,7 @@ WHERE o.total_amount > 1000;
 - Cross-source joins use broadcast for small tables, partitioned for large
 - Dynamic filtering enabled to reduce scanned data in multi-table queries
 - Connector credentials stored in secrets manager, never in config files
-- Query history logged for audit and performance analysis
+- Query history logged for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and performance analysis
 - Resource groups enforce query concurrency limits per team
 - No full table scans on OLTP sources without explicit query rules
 - Each connector configured with timeouts and retry limits
@@ -519,9 +519,9 @@ SELECT
     c.name AS customer_name,
     r.review_score
 FROM iceberg.datalake.orders o
-JOIN postgresql.ecommerce.customers c
+JOIN [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).ecommerce.customers c
     ON o.customer_id = c.id
-LEFT JOIN mongodb.reviews.reviews r
+LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).reviews.reviews r
     ON o.order_id = r.order_id
 WHERE o.order_date >= DATE '2024-01-01'
   AND o.status = 'shipped'
@@ -551,8 +551,8 @@ virtual_dataset:
 - **Connection pooling**: Configure Trino data source connection pools; set `maxConnections` per connector.
 - **Query routing**: Route queries to source-optimized clusters (Trino resource groups per data source).
 - **Result caching**: Enable Trino result cache (TTL 5 min) for repeated queries; flush on data refresh.
-- **Monitoring**: Track per-source query latency, bytes scanned, and error rates in Grafana.
-- **Capacity planning**: Size coordinator + workers based on concurrent query load (16GB RAM per worker minimum).
+- **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track per-source query latency, bytes scanned, and error rates in Grafana.
+- **[Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning**: Size coordinator + workers based on concurrent query load (16GB RAM per worker minimum).
 
 ## Anti-Patterns
 
@@ -560,7 +560,7 @@ virtual_dataset:
 |---|---|---|
 | No predicate pushdown | Full table scan over network | Verify `EXPLAIN` shows source filters |
 | Too many live connections to sources | Source DB connection exhaustion | Use optimized connection pools |
-| No caching for BI dashboards | Repeated expensive queries | Cache at virtualization layer |
+| No caching for BI [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
 | Ignoring connector version compatibility | Query failures after upgrade | Test connector upgrades in staging |
 | Querying across cloud regions | High egress costs, slow | Co-locate engine with data sources |
 
@@ -574,12 +574,12 @@ virtual_dataset:
 
 ## Security Considerations
 
-- **Credential management**: Store data source credentials in Trino password vault or Vault; never in catalog configs.
+- **Credential management**: Store data source credentials in Trino password [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md); never in catalog configs.
 - **Row-level security**: Implement Trino view-based RLS by appending `WHERE user_region = current_user_region()`.
 - **Network isolation**: Deploy Trino in same VPC as data sources; use VPC peering for cross-account sources.
-- **Audit**: Log all queries with source, user, and bytes scanned for cost and compliance tracking.
+- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all queries with source, user, and bytes scanned for cost and compliance tracking.
 - **TLS**: Enable TLS for all Trino client and interservice connections; mutual TLS for connector auth.
 
 ## Handoff
-`data-data-platform` for Trino cluster deployment on K8s. `data-data-catalog` for registering engine as data source. `data-data-observability` for query performance monitoring. `data-data-security` for RBAC and TLS setup.
+`[data-data-platform](../data-platform/SKILL.md)` for Trino cluster deployment on K8s. `[data-data-catalog](../data-catalog/SKILL.md)` for registering engine as data source. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for query performance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `data-data-security` for RBAC and TLS setup.
 

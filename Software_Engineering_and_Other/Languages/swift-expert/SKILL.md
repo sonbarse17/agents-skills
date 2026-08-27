@@ -162,5 +162,5 @@ When implementing Swift features, provide:
 4. Tests demonstrating usage
 5. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/language/swift-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/swift-expert/)
 

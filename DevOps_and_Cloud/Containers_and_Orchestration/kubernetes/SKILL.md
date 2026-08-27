@@ -29,7 +29,7 @@ Design, deploy, secure, and operate production-grade Kubernetes clusters coverin
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Kubernetes", "K8s", "kubeadm", "cluster", "kubectl", "etcd", "kubelet", "kube-proxy", "CNI", "Container Network Interface", "CSI", "Container Storage Interface", "RBAC", "PodSecurity", "PodSecurityPolicy", "PSA", "taint", "toleration", "node affinity", "topology spread", "cluster upgrade", "kubeadm upgrade", "cluster backup", "etcd backup", "Velero", "node pool", "karpenter", "cluster autoscaler", "control plane", "kube-apiserver", "kube-scheduler", "kube-controller-manager", "coredns", "network policy".
+Exact user phrases: "Kubernetes", "K8s", "kubeadm", "cluster", "[kubectl](../kubectl/SKILL.md)", "etcd", "kubelet", "kube-proxy", "CNI", "Container Network Interface", "CSI", "Container Storage Interface", "RBAC", "PodSecurity", "PodSecurityPolicy", "PSA", "taint", "toleration", "node affinity", "topology spread", "cluster upgrade", "kubeadm upgrade", "cluster backup", "etcd backup", "Velero", "node pool", "karpenter", "cluster autoscaler", "control plane", "kube-apiserver", "kube-scheduler", "kube-controller-manager", "coredns", "network policy".
 
 ### Input Context
 - Cluster deployment method (kubeadm, kops, managed service, Talos)
@@ -38,10 +38,10 @@ Exact user phrases: "Kubernetes", "K8s", "kubeadm", "cluster", "kubectl", "etcd"
 - Number of nodes + instance types
 - Workload types (stateless, stateful, batch, GPU)
 - Compliance requirements (PCI, HIPAA, SOC2, FedRAMP)
-- Existing tooling (Helm, ArgoCD, Prometheus, cert-manager)
+- Existing tooling (Helm, [ArgoCD](../argocd/SKILL.md), Prometheus, cert-manager)
 
 ### Output Artifact
-Cluster architecture document with control plane design, network topology, security model, upgrade plan, backup/DR strategy, and operational runbooks.
+Cluster architecture document with control plane design, network topology, security model, upgrade plan, backup/DR strategy, and operational [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md).
 
 ### Response Format
 YAML manifests, shell commands, and architecture decisions with no extraneous explanation. No preamble. No postamble. No filler.
@@ -53,8 +53,8 @@ YAML manifests, shell commands, and architecture decisions with no extraneous ex
 - [ ] Storage classes defined with CSI driver selection
 - [ ] Upgrade strategy documented (version skew, node pool strategy)
 - [ ] Backup/DR strategy defined (etcd backup, Velero, restore test)
-- [ ] Monitoring and logging infrastructure specified
-- [ ] Cluster autoscaling configured (Cluster Autoscaler or Karpenter)
+- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and logging infrastructure specified
+- [ ] Cluster [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured (Cluster Autoscaler or Karpenter)
 
 ## Architecture / Decision Trees
 
@@ -64,9 +64,9 @@ YAML manifests, shell commands, and architecture decisions with no extraneous ex
 |--------|------|------|----------|
 | **kubeadm** | Standard tooling, stackable control plane | Manual upgrades, no auto-scaling | Self-managed, on-prem, air-gapped |
 | **kops** | AWS-native, state management via S3 | AWS-only, complex | AWS self-managed |
-| **Talos** | Immutable OS, API-driven, low attack surface | Smaller community, newer project | Security-conscious, GitOps-native |
+| **Talos** | Immutable OS, API-driven, low attack surface | Smaller community, newer project | Security-conscious, [GitOps](../gitops/SKILL.md)-native |
 | **EKS / AKS / GKE** | Managed control plane, auto upgrades | Vendor lock-in, less control | Teams without K8s ops expertise |
-| **OpenShift** | Enterprise features, built-in registry | Resource-heavy, licensing cost | Regulated enterprises |
+| **[OpenShift](../openshift/SKILL.md)** | Enterprise features, built-in registry | Resource-heavy, licensing cost | Regulated enterprises |
 
 ### etcd Topology Decision Tree
 ```
@@ -88,14 +88,14 @@ NetworkPolicy required?
   NO → Flannel (simplest overlay) or Weave (encrypted by default)
 
 eBPF capabilities needed?
-  YES → Cilium (L7 policies, Hubble observability, service mesh)
+  YES → Cilium (L7 policies, Hubble [observability](../../Observability_and_SecOps/observability/SKILL.md), service mesh)
   NO → Calico (mature, wireguard encryption, BGP)
 
 Performance critical?
   YES → Cilium (eBPF, direct routing, XDP acceleration)
   NO → Flannel (VXLAN overlay, simple)
 
-Multi-cluster / multi-cloud?
+Multi-cluster / [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)?
   YES → Cilium ClusterMesh or Submariner
   NO → Calico (single-cluster is fine)
 ```
@@ -144,9 +144,9 @@ controlPlaneEndpoint: "10.0.0.100:6443"
 apiServer:
   extraArgs:
     authorization-mode: "Node,RBAC"
-    audit-log-path: "/var/log/kubernetes/audit.log"
-    audit-log-maxage: "30"
-    audit-log-maxbackup: "10"
+    [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-path: "/var/log/kubernetes/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log"
+    [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-maxage: "30"
+    [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-maxbackup: "10"
     feature-gates: "PodSecurity=true"
 etcd:
   local:
@@ -239,7 +239,7 @@ rules:
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingresses", "networkpolicies"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-  - apiGroups: ["autoscaling"]
+  - apiGroups: ["[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)"]
     resources: ["horizontalpodautoscalers"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
   - apiGroups: ["rbac.authorization.k8s.io"]
@@ -262,7 +262,7 @@ metadata:
   name: production
   labels:
     pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
     pod-security.kubernetes.io/warn: restricted
 ---
 # Exemption for system-critical namespaces
@@ -272,7 +272,7 @@ metadata:
   name: kube-system
   labels:
     pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md): privileged
     pod-security.kubernetes.io/warn: privileged
 ```
 
@@ -366,25 +366,25 @@ spec:
 
 ```bash
 # Pre-upgrade checks
-kubectl get nodes -o wide
-kubectl version --short
-kubectl get pods -A | grep -v Running | grep -v Completed
+[kubectl](../kubectl/SKILL.md) get nodes -o wide
+[kubectl](../kubectl/SKILL.md) version --short
+[kubectl](../kubectl/SKILL.md) get pods -A | grep -v Running | grep -v Completed
 
 # Upgrade control plane (one node at a time)
 apt-get update && apt-get install -y kubeadm=1.31.0-1.1
 kubeadm upgrade plan
 kubeadm upgrade apply v1.31.0
-kubectl drain control-plane-1 --ignore-daemonsets
-apt-get install -y kubelet=1.31.0-1.1 kubectl=1.31.0-1.1
+[kubectl](../kubectl/SKILL.md) drain control-plane-1 --ignore-daemonsets
+apt-get install -y kubelet=1.31.0-1.1 [kubectl](../kubectl/SKILL.md)=1.31.0-1.1
 systemctl daemon-reload && systemctl restart kubelet
-kubectl uncordon control-plane-1
+[kubectl](../kubectl/SKILL.md) uncordon control-plane-1
 
 # Upgrade worker nodes
-kubectl drain worker-pool-1 --ignore-daemonsets --delete-emptydir-data
-apt-get install -y kubeadm=1.31.0-1.1 kubelet=1.31.0-1.1 kubectl=1.31.0-1.1
+[kubectl](../kubectl/SKILL.md) drain worker-pool-1 --ignore-daemonsets --delete-emptydir-data
+apt-get install -y kubeadm=1.31.0-1.1 kubelet=1.31.0-1.1 [kubectl](../kubectl/SKILL.md)=1.31.0-1.1
 kubeadm upgrade node
 systemctl daemon-reload && systemctl restart kubelet
-kubectl uncordon worker-pool-1
+[kubectl](../kubectl/SKILL.md) uncordon worker-pool-1
 ```
 
 ### Step 7: Backup and Disaster Recovery
@@ -461,7 +461,7 @@ spec:
       - default
 ```
 
-### Step 8: Cluster Autoscaling
+### Step 8: Cluster [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 
 ```yaml
 # Cluster Autoscaler (AWS)
@@ -482,7 +482,7 @@ spec:
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: registry.k8s.io/autoscaling/cluster-autoscaler:v1.30.0
+        - image: registry.k8s.io/[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/cluster-autoscaler:v1.30.0
           name: cluster-autoscaler
           command:
             - ./cluster-autoscaler
@@ -513,7 +513,7 @@ spec:
         - key: kubernetes.io/arch
           operator: In
           values: ["amd64"]
-        - key: karpenter.sh/capacity-type
+        - key: karpenter.sh/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-type
           operator: In
           values: ["on-demand", "spot"]
         - key: karpenter.k8s.aws/instance-category
@@ -566,17 +566,17 @@ Delete:   remove from cluster
 Replace:  automated via Cluster Autoscaler / Karpenter
 
 Procedure:
-  1. kubectl cordon <node>
-  2. kubectl drain <node> --ignore-daemonsets --delete-emptydir-data
+  1. [kubectl](../kubectl/SKILL.md) cordon <node>
+  2. [kubectl](../kubectl/SKILL.md) drain <node> --ignore-daemonsets --delete-emptydir-data
   3. Perform maintenance
-  4. kubectl uncordon <node> (or delete and let autoscaler replace)
+  4. [kubectl](../kubectl/SKILL.md) uncordon <node> (or delete and let autoscaler replace)
 ```
 
 ## Security Hardening Checklist
 
 - [ ] Control plane endpoint restricted to admin CIDR
 - [ ] etcd encrypted at rest + TLS for peer/client communication
-- [ ] Audit logging enabled with retention policy
+- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled with retention policy
 - [ ] Pod Security Standards enforced (restricted baseline)
 - [ ] Network Policies default-deny for all namespaces
 - [ ] ServiceAccount token automount disabled for most workloads
@@ -656,18 +656,18 @@ spec:
 
 | Tool | Purpose | Install |
 |------|---------|---------|
-| kubectl | Primary CLI | Package manager or binary |
+| [kubectl](../kubectl/SKILL.md) | Primary CLI | Package manager or binary |
 | k9s | Terminal UI for cluster management | `brew install k9s` |
 | kubectx/kubens | Switch context/namespace | `brew install kubectx` |
 | kube-ps1 | Kubernetes prompt in shell | `brew install kube-ps1` |
 | popeye | Cluster health scan | `brew install popeye` |
-| kube-bench | CIS benchmark scanner | `kubectl apply -f job.yaml` |
+| kube-bench | CIS benchmark scanner | `[kubectl](../kubectl/SKILL.md) apply -f job.yaml` |
 | kube-hunter | Security penetration testing | `pip install kube-hunter` |
 | sonobuoy | Conformance testing | `curl -L -o sonobuoy ...` |
-| kubectl-neat | Clean K8s manifests | `kubectl krew install neat` |
-| kubectl-tree | Resource hierarchy | `kubectl krew install tree` |
-| kubectl-snapshot | Resource snapshots | `kubectl krew install snapshot` |
-| starboard | Vulnerability scanner | `kubectl krew install starboard` |
+| [kubectl](../kubectl/SKILL.md)-neat | Clean K8s manifests | `[kubectl](../kubectl/SKILL.md) krew install neat` |
+| [kubectl](../kubectl/SKILL.md)-tree | Resource hierarchy | `[kubectl](../kubectl/SKILL.md) krew install tree` |
+| [kubectl](../kubectl/SKILL.md)-snapshot | Resource snapshots | `[kubectl](../kubectl/SKILL.md) krew install snapshot` |
+| starboard | Vulnerability scanner | `[kubectl](../kubectl/SKILL.md) krew install starboard` |
 
 ## Compared With
 
@@ -677,7 +677,7 @@ spec:
 | Upgrade effort | Manual, version by version | Automated via cloud console | `talosctl upgrade` |
 | Security baseline | Your config | Provider defaults + CIS | Immutable OS, minimal |
 | etcd management | Manual backup/restore | Provider managed | Automatic snapshots |
-| Add-on management | Manual (Helm/kubectl) | Sometimes managed | Declarative config |
+| Add-on management | Manual (Helm/[kubectl](../kubectl/SKILL.md)) | Sometimes managed | Declarative config |
 | Control plane cost | Server costs only | ~$0.10-0.30/hr per cluster | Server costs only |
 | Learning curve | High | Medium | Medium-High |
 
@@ -686,12 +686,12 @@ spec:
 - ../../../Global_References/namespace-management.md — Namespace Strategy and Resource Quotas
 - ../../../Global_References/pod-lifecycle.md — Pod Lifecycle, Init Containers, and Ephemeral Containers
 - references/kubernetes-api-resources.md — API Resource Guide
-- references/kubernetes-security.md — Kubernetes Security Hardening
+- references/[kubernetes-security](../kubernetes-security/SKILL.md).md — Kubernetes Security Hardening
 - references/kubernetes-upgrades.md — Cluster Upgrade Procedures
-- references/kubernetes-backup-dr.md — etcd Backup and Disaster Recovery
-- references/kubernetes-monitoring.md — Cluster Monitoring and Alerting
+- references/kubernetes-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md).md — etcd Backup and Disaster Recovery
+- references/kubernetes-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).md — Cluster [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
 - references/kubernetes-troubleshooting.md — Cluster Troubleshooting Guide
 
 ## Handoff
-Cross-reference with `kubernetes-patterns` for application manifests. Use `helm-patterns` for chart design. Use `cilium-ebpf` for advanced networking. Use `service-mesh` for Istio/Linkerd. Use `monitoring` for Prometheus/Grafana. Use `backup-dr` for Velero. Hand off to `incident-response` for cluster incidents.
+Cross-reference with `kubernetes-patterns` for application manifests. Use `[helm-patterns](../helm-patterns/SKILL.md)` for chart design. Use `[cilium-ebpf](../cilium-ebpf/SKILL.md)` for advanced networking. Use `[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)` for Istio/Linkerd. Use `[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus/Grafana. Use `[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for Velero. Hand off to `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for cluster incidents.
 

@@ -440,7 +440,7 @@ Pipeline Coverage = Total Pipeline Value / Quota
 
 - Mixpanel, Amplitude (product analytics)
 - ChartMogul, Baremetrics (SaaS metrics)
-- Looker, Tableau (BI dashboards)
+- Looker, Tableau (BI [dashboards](../../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
 
 ### Reporting Cadence
 
@@ -541,7 +541,7 @@ To implement startup metrics framework:
 
 1. **Identify business model** - SaaS, marketplace, consumer, B2B
 2. **Choose 5-7 core metrics** - Based on stage and model
-3. **Establish tracking** - Set up analytics and dashboards
+3. **Establish tracking** - Set up analytics and [dashboards](../../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 4. **Calculate unit economics** - CAC, LTV, payback
 5. **Set targets** - Use benchmarks for goals
 6. **Review regularly** - Weekly for core metrics

@@ -27,14 +27,14 @@ references:
 
 Reviewdog is an automated code review tool that integrates security scanning and linting results
 into pull request review comments. It acts as a universal adapter between various security tools
-(SAST scanners, linters, formatters) and code hosting platforms (GitHub, GitLab, Bitbucket),
+(SAST scanners, linters, formatters) and code hosting platforms ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab, Bitbucket),
 enabling seamless security feedback during code review.
 
 **Key Capabilities:**
 - Aggregates findings from multiple security and quality tools
 - Posts inline review comments on specific code lines
 - Supports 40+ linters and security scanners out-of-the-box
-- Integrates with GitHub Actions, GitLab CI, CircleCI, and other CI platforms
+- Integrates with [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), and other CI platforms
 - Filters findings to show only new issues in diff (fail-on-diff mode)
 - Supports custom rulesets and security policies
 
@@ -44,16 +44,16 @@ enabling seamless security feedback during code review.
 
 ```bash
 # Install reviewdog
-go install github.com/reviewdog/reviewdog/cmd/reviewdog@latest
+go install [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/reviewdog/reviewdog/cmd/reviewdog@latest
 
 # Run a security scanner and pipe to reviewdog
-bandit -r . -f json | reviewdog -f=bandit -reporter=github-pr-review
+bandit -r . -f json | reviewdog -f=bandit -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 
 # Or use with Semgrep
 semgrep --config=auto --json | reviewdog -f=semgrep -reporter=local
 ```
 
-### GitHub Actions integration:
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions integration:
 
 ```yaml
 - name: Run reviewdog
@@ -62,7 +62,7 @@ semgrep --config=auto --json | reviewdog -f=semgrep -reporter=local
   env:
     REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run: |
-    bandit -r . -f json | reviewdog -f=bandit -reporter=github-pr-review
+    bandit -r . -f json | reviewdog -f=bandit -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 ```
 
 ## Core Workflow
@@ -73,13 +73,13 @@ Install reviewdog in your CI environment or locally:
 
 ```bash
 # Via Go
-go install github.com/reviewdog/reviewdog/cmd/reviewdog@latest
+go install [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/reviewdog/reviewdog/cmd/reviewdog@latest
 
 # Via Homebrew (macOS/Linux)
 brew install reviewdog
 
-# Via Docker
-docker pull reviewdog/reviewdog:latest
+# Via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull reviewdog/reviewdog:latest
 ```
 
 ### Step 2: Configure Security Tools
@@ -97,7 +97,7 @@ Set up the security scanners you want to integrate. Reviewdog supports multiple 
 
 Add reviewdog to your CI pipeline to automatically post security findings as review comments:
 
-**GitHub Actions Example:**
+**[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Example:**
 ```yaml
 name: Security Review
 on: [pull_request]
@@ -119,7 +119,7 @@ jobs:
           bandit -r . -f json | \
             reviewdog -f=bandit \
                      -name="Bandit SAST" \
-                     -reporter=github-pr-review \
+                     -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review \
                      -filter-mode=added \
                      -fail-on-error
 ```
@@ -140,7 +140,7 @@ security_review:
 
 ### Step 4: Configure Review Behavior
 
-Customize reviewdog's behavior using flags:
+[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../customize/SKILL.md)/SKILL.md)/SKILL.md) reviewdog's behavior using flags:
 
 ```bash
 # Filter to show only issues in changed lines
@@ -167,8 +167,8 @@ Reviewdog posts findings as inline comments on the pull request:
 
 ## Security Considerations
 
-- **API Token Security**: Store GitHub/GitLab tokens in secrets management (GitHub Secrets, GitLab CI/CD variables)
-  - Never commit tokens to version control
+- **API Token Security**: Store [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab tokens in secrets management ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Secrets, GitLab CI/CD variables)
+  - Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) tokens to version control
   - Use minimum required permissions (read/write on pull requests)
   - Rotate tokens regularly
 
@@ -177,13 +177,13 @@ Reviewdog posts findings as inline comments on the pull request:
   - Use CODEOWNERS to require security team approval for reviewdog config changes
   - Restrict who can modify `.reviewdog.yml` configuration
 
-- **Audit Logging**:
-  - Log all security findings to SIEM or security monitoring platform
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**:
+  - Log all security findings to SIEM or security [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) platform
   - Track when findings are introduced and resolved
   - Monitor for bypassed security checks
 
 - **Compliance**:
-  - Maintains audit trail of security reviews (SOC2, ISO27001)
+  - Maintains [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail of security reviews (SOC2, ISO27001)
   - Enforces security policy compliance in code review
   - Supports compliance reporting through CI/CD artifacts
 
@@ -207,10 +207,10 @@ Reviewdog posts findings as inline comments on the pull request:
 
 ### Assets (`assets/`)
 
-- `github_actions_template.yml` - GitHub Actions workflow for multi-tool security scanning
+- `github_actions_template.yml` - [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for multi-tool security scanning
 - `gitlab_ci_template.yml` - GitLab CI configuration for reviewdog integration
 - `.reviewdog.yml` - Sample reviewdog configuration file
-- `pre_commit_config.yaml` - Pre-commit hook integration
+- `pre_commit_config.yaml` - Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook integration
 
 ## Common Patterns
 
@@ -222,14 +222,14 @@ Run multiple security tools and aggregate results in a single review:
 #!/bin/bash
 # Run comprehensive security scan
 
-# Python security
-bandit -r . -f json | reviewdog -f=bandit -name="Python SAST" -reporter=github-pr-review &
+# [Python](../../Languages/python/SKILL.md) security
+bandit -r . -f json | reviewdog -f=bandit -name="[Python](../../Languages/python/SKILL.md) SAST" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review &
 
 # Secrets detection
-gitleaks detect --report-format json | reviewdog -f=gitleaks -name="Secret Scan" -reporter=github-pr-review &
+gitleaks detect --report-format json | reviewdog -f=gitleaks -name="Secret Scan" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review &
 
 # IaC security
-checkov -d . -o json | reviewdog -f=checkov -name="IaC Security" -reporter=github-pr-review &
+checkov -d . -o json | reviewdog -f=checkov -name="IaC Security" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review &
 
 wait
 ```
@@ -241,13 +241,13 @@ Block PRs based on severity thresholds:
 ```yaml
 - name: Critical findings - Block PR
   run: |
-    semgrep --config=p/security-audit --severity=ERROR --json | \
-      reviewdog -f=semgrep -level=error -fail-on-error -reporter=github-pr-review
+    semgrep --config=p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --severity=ERROR --json | \
+      reviewdog -f=semgrep -level=error -fail-on-error -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 
 - name: Medium findings - Comment only
   run: |
-    semgrep --config=p/security-audit --severity=WARNING --json | \
-      reviewdog -f=semgrep -level=warning -reporter=github-pr-review
+    semgrep --config=p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --severity=WARNING --json | \
+      reviewdog -f=semgrep -level=warning -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 ```
 
 ### Pattern 3: Differential Security Scanning
@@ -269,20 +269,20 @@ Integrate custom security policies using grep or custom parsers:
 ```bash
 # Check for prohibited patterns
 grep -nH -R "eval(" . --include="*.py" | \
-  reviewdog -f=grep -name="Dangerous Functions" -reporter=github-pr-review
+  reviewdog -f=grep -name="Dangerous Functions" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 
 # Custom JSON parser
 ./custom_security_scanner.py --json | \
-  reviewdog -f=rdjson -name="Custom Policy" -reporter=github-pr-review
+  reviewdog -f=rdjson -name="Custom Policy" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 ```
 
 ## Integration Points
 
 - **CI/CD Platforms**:
-  - GitHub Actions (native action available)
+  - [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions (native action available)
   - GitLab CI/CD
-  - CircleCI
-  - Jenkins
+  - [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)
+  - [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)
   - Azure Pipelines
   - Bitbucket Pipelines
 
@@ -293,13 +293,13 @@ grep -nH -R "eval(" . --include="*.py" | \
   - **Containers**: Hadolint, Trivy, Dockle
 
 - **Code Hosting**:
-  - GitHub (PR comments, check runs, annotations)
+  - [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) (PR comments, check runs, annotations)
   - GitLab (MR discussions)
   - Bitbucket (inline comments)
   - Gerrit (review comments)
 
 - **SDLC Integration**:
-  - **Pre-commit hooks**: Fast local feedback before push
+  - **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks**: Fast local feedback before push
   - **PR/MR review**: Automated security review on code changes
   - **Trunk protection**: Block merges with security findings
   - **Security dashboard**: Aggregate findings for visibility
@@ -309,7 +309,7 @@ grep -nH -R "eval(" . --include="*.py" | \
 ### Issue: Reviewdog not posting comments
 
 **Solution**:
-- Verify GitHub token has correct permissions (`repo` scope for private repos, `public_repo` for public)
+- Verify [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) token has correct permissions (`repo` scope for private repos, `public_repo` for public)
 - Check CI environment has `REVIEWDOG_GITHUB_API_TOKEN` or `GITHUB_TOKEN` set
 - Ensure repository settings allow PR comments from workflows
 - Verify reviewdog is running in PR context (not on push to main)
@@ -347,7 +347,7 @@ runner:
   bandit:
     cmd: bandit -r . -f json
     format: bandit
-    name: Python Security
+    name: [Python](../../Languages/python/SKILL.md) Security
     level: warning
 
   semgrep:
@@ -370,17 +370,17 @@ Map findings to OWASP Top 10 and CWE:
 ```bash
 # Semgrep with OWASP ruleset
 semgrep --config "p/owasp-top-ten" --json | \
-  reviewdog -f=semgrep -name="OWASP Top 10" -reporter=github-pr-review
+  reviewdog -f=semgrep -name="OWASP Top 10" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 
 # Include CWE references in comments
-reviewdog -f=semgrep -name="CWE Analysis" -reporter=github-pr-review
+reviewdog -f=semgrep -name="CWE Analysis" -reporter=[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-pr-review
 ```
 
 ## References
 
-- [Reviewdog Documentation](https://github.com/reviewdog/reviewdog)
-- [Supported Tools and Formats](https://reviewdog.github.io/supported-tools)
-- [GitHub Actions Integration](https://github.com/reviewdog/action-setup)
+- [Reviewdog Documentation](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/reviewdog/reviewdog)
+- [Supported Tools and Formats](https://reviewdog.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/supported-tools)
+- [GitHub Actions Integration](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/reviewdog/action-setup)
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
 - [CWE Top 25](https://cwe.mitre.org/top25/)
 

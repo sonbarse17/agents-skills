@@ -173,7 +173,7 @@ policy setup.
   services.
 - Use **Azure Policy `deployIfNotExists` and `modify` effects** to
   auto-remediate common gaps (tags, diagnostic settings) instead of
-  relying on `audit` effects that only report non-compliance.
+  relying on `[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` effects that only report non-compliance.
 - Model environment separation (`Prod`/`NonProd`) as **Management Groups
   or a consistent tag + policy condition**, decided once, not mixed
   across subscriptions.
@@ -185,7 +185,7 @@ policy setup.
   subscription at vend time, not retroactively.
 - Keep policy assignments **idempotent and Git-versioned**; policy drift
   detection (`az policy state list`) should run in CI, not be discovered
-  during an audit.
+  during an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 ## Common pitfalls
 
@@ -248,6 +248,6 @@ proper landing zone before launching an online ordering platform.
 
 ## Cross-references
 
-- [cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)
-- [multi-cloud-networking-patterns](../multi-cloud-networking-patterns/SKILL.md)
-- [cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)
+- [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
+- [multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../[multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns](../multi-[cloud-networking](../cloud-networking/SKILL.md)-patterns/SKILL.md)/SKILL.md)
+- [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)

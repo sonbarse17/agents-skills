@@ -50,7 +50,7 @@ Language-agnostic, integrates with build tools via plugins. Plugins: `cyclonedx-
 Generate SBOM after successful build, before artifact push. Store alongside the artifact in the registry. Propagate through environments for deployment-time policy checks.
 
 ```yaml
-# GitHub Actions example
+# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
 jobs:
   build:
     steps:
@@ -66,7 +66,7 @@ Policy gates: block promotion from dev→staging if CRITICAL vulns, block stagin
 ### Data Sources
 - OSV.dev: primary source. Fastest update cycle (usually within hours of CVE publication). Google-maintained. API: `https://api.osv.dev/v1/query`. Supports all major ecosystems.
 - NVD: comprehensive, slower updates (days to weeks). NIST-maintained. API: `https://services.nvd.nist.gov/rest/json/cves/2.0`. References CWE classifications and CVSS 3.1 scores.
-- GHSA: GitHub Advisory Database. Best GitHub integration. Access via GitHub API. Often includes proof-of-concept references.
+- GHSA: [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database. Best [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration. Access via [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) API. Often includes proof-of-concept references.
 - Snyk: commercial vulnerability feed with proprietary research. Faster coverage for zero-days. Requires license.
 
 ### Severity Gating
@@ -75,7 +75,7 @@ Policy gates: block promotion from dev→staging if CRITICAL vulns, block stagin
 | CRITICAL | 9.0–10.0 | Block build. Patch SLA: 48 hours |
 | HIGH | 7.0–8.9 | Block promotion to prod. Patch SLA: 7 days |
 | MEDIUM | 4.0–6.9 | Warn. Review at next triage |
-| LOW | 0.1–3.9 | Allow. Log for quarterly audit |
+| LOW | 0.1–3.9 | Allow. Log for quarterly [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 
 ### Correlation Process
 1. Parse SBOM to extract package name, version, ecosystem.
@@ -114,7 +114,7 @@ cosign attest --predicate bom.json --type cyclonedx $IMAGE
 cosign verify-attestation --type cyclonedx $IMAGE
 ```
 
-Stores attestation in OCI registry as an attached artifact. Uses keyless signing (OIDC identity from GitHub/GitLab) or key-pair signing. No key distributed management overhead with keyless mode.
+Stores attestation in OCI registry as an attached artifact. Uses keyless signing (OIDC identity from [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab) or key-pair signing. No key distributed management overhead with keyless mode.
 
 ### In-Toto
 Attestation framework for multi-step build pipelines. Each step produces a signed link (command, materials, products). Final layout verification ensures every step was performed by the right actor with the right inputs/outputs. Use with Sigstore for the signing layer.
@@ -134,7 +134,7 @@ step:
 
 Store SBOM alongside the artifact it describes. Distribution options:
 - OCI registry: store as an OCI artifact attached to the image. Discoverable with `cosign download attestation`. Preferred for container-based deployments.
-- Dependency Track: open-source SBOM analysis platform. Accepts SBOM upload via API. Continuous monitoring against vulnerability databases. Notifications on new CVEs affecting deployed components.
+- Dependency Track: open-source SBOM analysis platform. Accepts SBOM upload via API. Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) against vulnerability databases. Notifications on new CVEs affecting deployed components.
 - Harbor: container registry with built-in SBOM storage. Provides vulnerability reports linked to SBOM. Retention policy can automatically clean old SBOMs.
 - Artifactory: universal package manager with SBOM support. Tag SBOM to build artifacts.
 
@@ -151,7 +151,7 @@ Before activating, verify:
 - CI/CD platform and build pipeline integration points
 - Existing dependency management (Dependabot, Renovate, Snyk)
 - Compliance requirements (license policies, export controls, attestation)
-- Artifact registry (Docker Hub, ECR, GAR, Artifactory)
+- Artifact registry ([Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub, ECR, GAR, Artifactory)
 
 ### Output Artifact
 SBOM pipeline configuration as YAML and policy files.
@@ -189,7 +189,7 @@ CycloneDX default — de facto standard, rich dependency tree, broad tooling, OW
 Syft for container images and filesystems — fastest, broadest ecosystem support. CycloneDX CLI for build-time generation with resolved dependency graph. Trivy when unified SBOM + vulnerability scanning is preferred.
 
 ### Step 3: Vulnerability Correlation
-Source: OSV.dev primary (fastest updates), NVD comprehensive (slower, CVSS 3.1), GHSA (GitHub ecosystem). Correlate by package name + version range. Apply severity gates per environment.
+Source: OSV.dev primary (fastest updates), NVD comprehensive (slower, CVSS 3.1), GHSA ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) ecosystem). Correlate by package name + version range. Apply severity gates per environment.
 
 ### Step 4: License Compliance
 Every dependency checked against allowlist. Block copyleft and unknown licenses. Flag weak-copyleft for legal review. Store policy in version-controlled `.license-policy.yml`. Enforce at PR time.
@@ -198,16 +198,16 @@ Every dependency checked against allowlist. Block copyleft and unknown licenses.
 Sign SBOM with Sigstore Cosign. Keyless mode preferred. Verify attestation signature and predicate content before deployment. In-toto layout for multi-step build chains.
 
 ### Step 6: CI Pipeline Integration
-Generate SBOM after build, before image push. Store in artifact registry. Verify attestation in deployment pipeline. Gate deployment on vulnerability policy. Monthly full dependency audit with SBOM diff report.
+Generate SBOM after build, before image push. Store in artifact registry. Verify attestation in deployment pipeline. Gate deployment on vulnerability policy. Monthly full dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md) with SBOM diff report.
 
-### Step 7: Distribution & Monitoring
-Push SBOM to Dependency Track or Harbor for continuous monitoring. Configure alerts for new vulnerabilities on deployed components. Weekly re-scan of all active SBOMs. Retention: current + last 3 releases.
+### Step 7: Distribution & [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+Push SBOM to Dependency Track or Harbor for continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Configure alerts for new vulnerabilities on deployed components. Weekly re-scan of all active SBOMs. Retention: current + last 3 releases.
 
 ## SBOM Generation Examples
 
 ### Syft — Container Image SBOM
 ```bash
-# Generate CycloneDX JSON SBOM for Docker image
+# Generate CycloneDX JSON SBOM for [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
 syft packages registry.example.com/app:v1.2.3 \
   -o cyclonedx-json > bom.cdx.json
 
@@ -238,8 +238,8 @@ trivy image --format cyclonedx \
   registry.example.com/app:v1.2.3
 ```
 
-### Python — SBOM Validation Script
-```python
+### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) — SBOM Validation Script
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 """Validate SBOM before deployment."""
 import json
@@ -263,7 +263,7 @@ if __name__ == "__main__":
     sys.exit(0 if validate_sbom(sys.argv[1]) else 1)
 ```
 
-### GitHub Actions — Full SBOM Pipeline
+### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Full SBOM Pipeline
 ```yaml
 name: SBOM Pipeline
 on:
@@ -297,10 +297,10 @@ jobs:
           cosign attest --predicate bom.cdx.json \
             --type cyclonedx \
             --keyless \
-            registry.example.com/app:${{ github.sha }}
+            registry.example.com/app:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
 ```
 
-## SBOM Policy-as-Code
+## SBOM [Policy-as-Code](../policy-as-code/SKILL.md)
 
 ### OPA/Rego — SBOM Policy
 ```rego
@@ -328,7 +328,7 @@ license_violations[component] {
 
 ### Policy Enforcement in CI
 ```yaml
-# .github/workflows/sbom-policy.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/sbom-policy.yml
 jobs:
   policy:
     runs-on: ubuntu-latest
@@ -377,15 +377,15 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 ### Level 3: Advanced
 - SBOM signed with Sigstore (keyless attestation)
 - Vulnerability correlation with reachability analysis
-- Policy-as-code for deployment gates (OPA)
-- Continuous monitoring with Dependency Track
+- [Policy-as-code](../policy-as-code/SKILL.md) for deployment gates (OPA)
+- Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Dependency Track
 - Automated PR creation for vulnerable dependencies
 - SBOM diff tracking for drift detection
 
 ### Level 4: Optimized
 - Supply chain levels for software artifacts (SLSA L3+)
 - In-toto attestation framework for build chain integrity
-- Real-time vulnerability alerting with EPSS scoring
+- Real-time vulnerability [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) with EPSS scoring
 - Automated license compliance with legal workflow
 - SBOM composition analysis (SBOM-of-SBOMs)
 - Cross-org SBOM sharing and verification
@@ -398,7 +398,7 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 - Check attestation signatures for all new artifacts
 
 ### Weekly Operations
-- Full dependency audit with SBOM diff
+- Full dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md) with SBOM diff
 - Update vulnerability databases
 - Review license policy violations
 - Triage new CVEs affecting deployed components
@@ -410,7 +410,7 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 - Vendor SBOM verification (third-party software)
 - Penetration test of build pipeline integrity
 
-### Incident Response
+### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
 1. Detect: new CVE affecting deployed component, supply chain compromise notification, SBOM attestation verification failure
 2. Assess: affected components, version range, exploitability (EPSS), reachability from application code
 3. Contain: pin to safe version, patch/update, block vulnerable version in policy
@@ -431,7 +431,7 @@ Generating an SBOM but never scanning it for vulnerabilities defeats the purpose
 SBOM that only includes direct dependencies misses the majority of the attack surface. Transitive dependencies account for 70-90% of vulnerabilities in modern applications. Include full dependency tree in the SBOM.
 
 ### Anti-Pattern: One-Time SBOM
-Generating SBOM once at release and never refreshing it. New vulnerabilities are discovered daily. Deployed components must be continuously monitored against updated vulnerability databases. Weekly re-scan with automated alerting.
+Generating SBOM once at release and never refreshing it. New vulnerabilities are discovered daily. Deployed components must be continuously monitored against updated vulnerability databases. Weekly re-scan with automated [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 
 ### Anti-Pattern: No Attestation
 SBOM without cryptographic attestation can be modified or replaced by an attacker. Anyone could claim an artifact has a clean SBOM. Sign the SBOM with Sigstore/Cosign and verify before deployment.
@@ -448,7 +448,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 | Speed | Fast (1-3s) | Medium (5-15s) | Fast (1-5s) | Slow (scan) |
 | Vulnerability scan | Via Grype | Built-in | No | Built-in |
 | License detection | Via Syft metadata | Yes | Yes | Yes |
-| CI integration | GitHub Action, CLI | GitHub Action, CLI | Maven/Gradle/npm | Native CI |
+| CI integration | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action, CLI | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action, CLI | Maven/Gradle/npm | Native CI |
 | Attestation | Via Cosign | Via Cosign | No | No |
 | Cost | Free (Apache 2.0) | Free (Apache 2.0) | Free | Commercial |
 | Best for | Primary SBOM tool | Unified scanning | Build-time accuracy | Enterprise compliance |
@@ -466,7 +466,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 - Correlate vulnerabilities by reachability when possible
 
 ## References
-  - ../../../Global_References/dependency-management.md — Dependency Management
+  - ../../../Global_References/[dependency-management](../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md).md — Dependency Management
   - ../../../Global_References/sbom-advanced.md — Sbom Advanced Topics
   - ../../../Global_References/sbom-attestation.md — SBOM Attestation
   - ../../../Global_References/sbom-formats.md — SBOM Formats
@@ -475,7 +475,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
   - ../../../Global_References/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
   - ../../../Global_References/supply-chain-attacks.md — Supply Chain Attack Patterns
 ## Handoff
-`security-container-security` for image scanning integration
+`[security-container-security](../../DevOps_and_Cloud/Containers_and_Orchestration/container-security/SKILL.md)` for image scanning integration
 `devops-ci-cd` for pipeline configuration and artifact storage
 ## Implementation Patterns
 
@@ -529,7 +529,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### Monitoring and Alerting
+### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -543,7 +543,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of profiling | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -559,12 +559,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### Profiling Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing (OpenTelemetry)
+5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -573,7 +573,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: Audit logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -581,13 +581,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH commit signing
+- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager (Vault, AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access audit: Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -596,8 +596,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for audit and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for observability from day one, not as an afterthought.
+- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

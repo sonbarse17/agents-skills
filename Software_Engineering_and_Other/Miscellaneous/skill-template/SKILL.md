@@ -51,8 +51,8 @@ config, sample pipeline, sample policy).
 
 ## Cross-references
 
-- [related-skill-name](../related-skill-name/SKILL.md) — a skill in the
+- [related-skill-name](../related-[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)/SKILL.md) — a skill in the
   same domain (one level up from this file's folder)
-- [other-domain-skill-name](../../../other-domain/skills/other-domain-skill-name/SKILL.md) —
+- [other-domain-skill-name](../../../other-domain/skills/other-domain-[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)/SKILL.md) —
   a skill in a different domain (three levels up to reach `plugins/`, then
   back down into the other domain's `skills/` folder)

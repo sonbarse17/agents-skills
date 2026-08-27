@@ -25,7 +25,7 @@ Security analyst specializing in code review, vulnerability identification, pene
 - Secrets scanning and credential detection
 - Penetration testing and reconnaissance
 - Infrastructure and cloud security audits
-- DevSecOps pipelines and compliance automation
+- [DevSecOps](../../../Security/devsecops/SKILL.md) pipelines and compliance automation
 
 ## Core Workflow
 
@@ -34,7 +34,7 @@ Security analyst specializing in code review, vulnerability identification, pene
    - `semgrep --config=auto .`
    - `bandit -r ./src`
    - `gitleaks detect --source=.`
-   - `npm audit --audit-level=moderate`
+   - `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=moderate`
    - `trivy fs .`
 3. **Review** — Manual review of auth, input handling, and crypto. Tools miss context — manual review is mandatory.
 4. **Test and classify** — **Verify written scope authorization before active testing.** Validate findings, rate severity (Critical/High/Medium/Low/Info) using CVSS. Confirm exploitability with proof-of-concept only; do not exceed it.
@@ -49,8 +49,8 @@ Load detailed guidance based on context:
 | SAST Tools | `../../../Global_References/security-reviewer_sast-tools.md` | Running automated scans |
 | Vulnerability Patterns | `../../../Global_References/vulnerability-patterns.md` | SQL injection, XSS, manual review |
 | Secret Scanning | `../../../Global_References/secret-scanning.md` | Gitleaks, finding hardcoded secrets |
-| Penetration Testing | `../../../Global_References/penetration-testing.md` | Active testing, reconnaissance, exploitation |
-| Infrastructure Security | `../../../Global_References/infrastructure-security.md` | DevSecOps, cloud security, compliance |
+| Penetration Testing | `../../../Global_References/[penetration-testing](../../../Security/penetration-testing/SKILL.md).md` | Active testing, reconnaissance, exploitation |
+| Infrastructure Security | `../../../Global_References/infrastructure-security.md` | [DevSecOps](../../../Security/devsecops/SKILL.md), cloud security, compliance |
 | Report Template | `../../../Global_References/security-reviewer_report-template.md` | Writing security report |
 
 ## Constraints
@@ -100,7 +100,7 @@ References: CWE-89, OWASP A03:2021
 
 ## Knowledge Reference
 
-OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm audit, gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp Vault, AWS Security Hub, CIS benchmarks, SOC2, ISO27001
+OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Security Hub, CIS benchmarks, SOC2, ISO27001
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/security/security-reviewer/)
+[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/security/security-reviewer/)
 

@@ -9,7 +9,7 @@ Distributed systems demand rigorous data consistency models and scalable communi
 
 ## 1. The SAGA Pattern: Distributed Transactions
 
-In microservices, traditional ACID transactions (2PC/Two-Phase Commit) are antipatterns due to synchronous blocking and lock contention. SAGA mitigates this by decomposing a distributed transaction into a sequence of local ACID transactions.
+In [microservices](../../microservices/SKILL.md), traditional ACID transactions (2PC/Two-Phase [Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) are antipatterns due to synchronous blocking and lock contention. SAGA mitigates this by decomposing a distributed transaction into a sequence of local ACID transactions.
 
 If a local transaction fails, the SAGA executes **compensating transactions** to rollback the preceding steps, achieving eventual consistency.
 
@@ -18,7 +18,7 @@ If a local transaction fails, the SAGA executes **compensating transactions** to
   - *Pros:* Highly decoupled, no single point of failure.
   - *Cons:* Emergent complexity; difficult to trace the lifecycle of a complex transaction.
 - **Orchestration (Command-Driven):** A centralized orchestrator (e.g., an AWS Step Function or Camunda engine) manages the transaction lifecycle. It issues commands to participant services and handles failure logic.
-  - *Pros:* Centralized observability, straightforward compensation logic.
+  - *Pros:* Centralized [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), straightforward compensation logic.
   - *Cons:* The orchestrator can become a god-object and a bottleneck.
 
 ## 2. CQRS: Command Query Responsibility Segregation
@@ -33,13 +33,13 @@ CQRS separates the data modification (Command) and data retrieval (Query) pipeli
 
 Instead of storing the current state of an entity, Event Sourcing stores a purely append-only log of immutable domain events. The current state is derived by replaying the event stream (Left Fold).
 
-- **Immutability:** Data is never updated or deleted. This guarantees an unimpeachable audit trail.
+- **Immutability:** Data is never updated or deleted. This guarantees an unimpeachable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
 - **Snapshots:** To avoid replaying millions of events for an entity, snapshots of the current state are periodically materialized.
 - **Synergy with CQRS:** Event Sourcing naturally pairs with CQRS. The event store acts as the Command model, and event handlers build the Query model projections.
 
 ## 4. Architectural Diagram
 
-```mermaid
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Client[Client Application] --> API[API Gateway]

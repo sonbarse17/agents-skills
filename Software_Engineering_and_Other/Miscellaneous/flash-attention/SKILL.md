@@ -22,7 +22,7 @@ $m^{(x)} = \max(m^{(x-1)}, \max(x))$
 $l^{(x)} = l^{(x-1)} e^{m^{(x-1)} - m^{(x)}} + \sum e^{x - m^{(x)}}$
 
 ## Data Flow
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     HBM_QKV["HBM: Q, K, V Matrices"]

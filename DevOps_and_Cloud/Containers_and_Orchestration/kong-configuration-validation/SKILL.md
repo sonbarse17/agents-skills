@@ -32,7 +32,7 @@ loudly — the sync succeeds, the plugin exists, and the gap is only
 visible once real traffic hits it (or doesn't). This skill covers the
 validation commands that catch these before (or immediately after)
 applying, distinct from
-[kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md),
+[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers writing the Service/Route/Plugin configuration in the
 first place.
 
@@ -63,12 +63,12 @@ first place.
   checking — confirming a plugin's real, effective configuration
   requires reading it back from the running gateway, not just the
   source file.
-- On Kubernetes: `kubectl` access to `KongPlugin`, `KongClusterPlugin`,
+- On [Kubernetes](../kubernetes/SKILL.md): `[kubectl](../kubectl/SKILL.md)` access to `KongPlugin`, `KongClusterPlugin`,
   `KongIngress`, and `KongConsumer` CRDs, plus the Kong Ingress
   Controller's own logs/status for confirming a CRD was actually
-  reconciled (CRD acceptance by the Kubernetes API server doesn't
+  reconciled (CRD acceptance by the [Kubernetes](../kubernetes/SKILL.md) API server doesn't
   guarantee KIC successfully applied it to Kong).
-- For CI-integrated validation: a disposable Kong instance (Docker,
+- For CI-integrated validation: a disposable Kong instance ([Docker](../docker/SKILL.md),
   DB-less mode is fastest to spin up) that `deck sync --dry-run` or a
   real `deck sync` can target without risk to production.
 
@@ -119,7 +119,7 @@ first place.
    Any result showing `local` on a multi-node deployment is a real
    finding, not a stylistic choice — flag it before this reaches
    production. See
-   [api-gateway-rate-limiting-and-quota-management](../api-gateway-rate-limiting-and-quota-management/SKILL.md)
+   [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md)
    for why this matters at the strategy level.
 
 5. **Test auth and rate-limiting plugins against real requests in
@@ -137,13 +137,13 @@ first place.
    # expect a mix of 200s followed by 429s once the configured limit is exceeded
    ```
 
-6. **For Kubernetes CRDs, confirm KIC actually reconciled the change**,
-   not just that `kubectl apply` succeeded:
+6. **For [Kubernetes](../kubernetes/SKILL.md) CRDs, confirm KIC actually reconciled the change**,
+   not just that `[kubectl](../kubectl/SKILL.md) apply` succeeded:
    ```bash
-   kubectl apply --dry-run=server -f kongplugin-rate-limit.yaml
-   kubectl apply -f kongplugin-rate-limit.yaml
-   kubectl get kongplugin rate-limit-payments -o yaml | grep -A5 status
-   kubectl logs -n kong deploy/kong-ingress-controller --tail=100 | grep -i payments
+   [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f kongplugin-rate-limit.yaml
+   [kubectl](../kubectl/SKILL.md) apply -f kongplugin-rate-limit.yaml
+   [kubectl](../kubectl/SKILL.md) get kongplugin rate-limit-payments -o yaml | grep -A5 status
+   [kubectl](../kubectl/SKILL.md) logs -n kong deploy/kong-ingress-controller --tail=100 | grep -i payments
    ```
    A `KongPlugin` CRD with no corresponding entry in Kong's Admin API
    (`GET /plugins`) means KIC failed to reconcile it — check the
@@ -161,7 +161,7 @@ first place.
    grep -q "^- " diff.txt && { echo "unexpected deletions in diff"; cat diff.txt; exit 1; }
    ```
 
-8. **Audit Admin API exposure as part of validation**, not just
+8. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Admin API exposure as part of validation**, not just
    plugin/route correctness — an unauthenticated Admin API reachable
    outside a trusted network is a standing risk regardless of how
    correct the Route/Plugin config itself is:
@@ -184,14 +184,14 @@ first place.
   not an optional detail — `local` on a multi-node Kong deployment is a
   functional bug, not a valid alternative configuration, unless the
   deployment is genuinely single-node.
-- For Kubernetes, always check KIC's own reconciliation status/logs
-  after applying a CRD — CRD acceptance by the Kubernetes API server is
+- For [Kubernetes](../kubernetes/SKILL.md), always check KIC's own reconciliation status/logs
+  after applying a CRD — CRD acceptance by the [Kubernetes](../kubernetes/SKILL.md) API server is
   necessary but not sufficient evidence the plugin is live in Kong.
 - Test auth and rate-limiting plugins against real HTTP requests in
   staging (expect 401 without credentials, 429 past the limit) before
   trusting a config read-back alone — a plugin can be present and
   correctly attached while still using the wrong header name or scope.
-- Periodically audit Admin API network exposure independent of any
+- Periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Admin API network exposure independent of any
   specific config change — it's a standing risk that doesn't show up in
   a `kong.yml`/CRD diff at all.
 
@@ -216,9 +216,9 @@ first place.
   multiplied by node count. Switch to `redis`/`cluster` and confirm via
   the same query that the change took effect.
 
-- **Symptom:** A `KongPlugin` CRD applies with no `kubectl` errors, but
+- **Symptom:** A `KongPlugin` CRD applies with no `[kubectl](../kubectl/SKILL.md)` errors, but
   the plugin never shows up when querying Kong's Admin API directly.
-  **Fix:** CRD acceptance by the Kubernetes API server only confirms
+  **Fix:** CRD acceptance by the [Kubernetes](../kubernetes/SKILL.md) API server only confirms
   schema validity — it does not confirm the Kong Ingress Controller
   successfully reconciled it into Kong. Check the CRD's `status` field
   and the KIC pod's logs for a reconciliation error, most commonly a
@@ -235,7 +235,7 @@ first place.
   client uses; confirm with a real `curl` test in staging rather than
   assuming attachment correctness implies behavioral correctness.
 
-- **Symptom:** To unblock testing during an incident, someone
+- **Symptom:** To unblock testing during an [incident](../../Observability_and_SecOps/incident/SKILL.md), someone
   temporarily removes the `key-auth`/rate-limiting plugin from a
   production Route via a direct Admin API call, confirms traffic now
   flows, and it's still missing hours later.
@@ -245,14 +245,14 @@ first place.
   would silently restore it, but until then the Route has neither auth
   nor rate-limiting. Treat any direct Admin API change as strictly
   temporary and tracked, and re-run `deck diff`/`deck sync` from the
-  reviewed source immediately once the incident's real cause is found.
+  reviewed source immediately once the [incident](../../Observability_and_SecOps/incident/SKILL.md)'s real cause is found.
 
 ## Worked example
 
 **Scenario:** Validate the `payments-api` `kong.yml` (Service, Route,
 `key-auth`, and Redis-backed `rate-limiting` plugin) from the worked
 example in
-[kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md)
+[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
 before syncing it to production.
 
 ```bash
@@ -285,6 +285,6 @@ confirm parity before the change is considered complete.
 
 ## Cross-references
 
-- [kong-api-gateway-configuration](../kong-api-gateway-configuration/SKILL.md) — writing the Service/Route/Plugin configuration this skill validates.
-- [api-gateway-rate-limiting-and-quota-management](../api-gateway-rate-limiting-and-quota-management/SKILL.md) — why the `policy` field on a rate-limiting plugin matters, checked for correctness in step 4 above.
-- [consul-configuration-validation](../consul-configuration-validation/SKILL.md) — the equivalent validation discipline (dry-run, then confirm real effect) applied to Consul's config entries and intentions, useful for comparing pre-production check patterns across tools.
+- [kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Service/Route/Plugin configuration this skill validates.
+- [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — why the `policy` field on a rate-limiting plugin matters, checked for correctness in step 4 above.
+- [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline (dry-run, then confirm real effect) applied to Consul's config entries and intentions, useful for comparing pre-production check patterns across tools.

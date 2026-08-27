@@ -35,7 +35,7 @@ Exact user phrases: "BI", "dashboard", "Metabase", "Superset",
 Before activating, verify:
 - Team size and technical skill level
 - Data warehouse platform
-- Number of dashboards and refresh frequency
+- Number of [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and refresh frequency
 - Authentication provider (SSO, SAML, OIDC)
 - Embedding requirements (customer-facing vs internal)
 - Budget range (open-source vs enterprise SaaS)
@@ -64,7 +64,7 @@ Compress output — why use many token when few do trick.
 - [ ] Permission model with row-level security configured
 - [ ] Performance optimization for dashboard load times
 - [ ] Data source configuration and caching policy defined
-- [ ] Dashboard scheduling and alerting configured
+- [ ] Dashboard scheduling and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured
 
 ### Max Response Length
 250 lines of configuration and design.
@@ -86,7 +86,7 @@ Best for over 100 users needing governance.
 
 Tableau: proprietary, desktop authoring.
 Rich visual analytics with VizQL.
-Best for design-heavy dashboards.
+Best for design-heavy [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 PowerBI: Microsoft ecosystem, Excel integration.
 Tight Teams and SharePoint integration.
@@ -127,7 +127,7 @@ Naming: business-friendly snake_case.
 `total_revenue`, `active_users_weekly`, `customer_lifetime_value`.
 
 Documentation: name, description, formula, owner, freshness SLA.
-No raw SQL in dashboards — always use semantic layer.
+No raw SQL in [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) — always use semantic layer.
 
 ### Step 3a: LookML Examples
 
@@ -284,9 +284,9 @@ Restrict CORS, implement CSP for iframe sources.
 
 ### Step 6: Permissions Model
 Roles: admin (manage users and settings),
-developer (create and edit dashboards),
+developer (create and edit [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)),
 viewer (view only, no export),
-restricted (specific dashboards only).
+restricted (specific [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) only).
 
 Row-level security:
 Data source filter: WHERE region = current_user_region().
@@ -299,8 +299,8 @@ Looker: access grants with user attributes.
 Auth: SSO via SAML or OIDC.
 SCIM for user provisioning and deprovisioning.
 
-Audit: dashboard views, query executions, data exports.
-Monthly access review, quarterly permission audit.
+[Audit](../../Operations/audit/SKILL.md): dashboard views, query executions, data exports.
+Monthly access review, quarterly permission [audit](../../Operations/audit/SKILL.md).
 
 ### Step 7: Caching and Performance
 Materialized views for all dashboard source tables.
@@ -329,7 +329,7 @@ bi_tool_comparison:
   tableau:
     strengths: ["Best visualization library", "Strong calculated fields", "Large community"]
     weaknesses: ["Expensive per-user licensing", "Limited self-service data prep", "Tableau Server admin overhead"]
-    best_for: "Enterprise dashboards, visual analytics, complex charting"
+    best_for: "Enterprise [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), visual analytics, complex charting"
     licensing: "Creator/Explorer/Viewer tiers, $15-70/user/month"
   
   looker:
@@ -367,16 +367,16 @@ performance_optimization:
     - "Pre-aggregate at warehouse level (daily/hourly rollups)"
     - "Set query timeout: 60s max per query"
     - "Use BI caching: dashboard cache (1hr), query cache (1hr)"
-    - "Implement cache warming: pre-load dashboards before business hours"
+    - "Implement cache warming: pre-load [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) before business hours"
   
   query_optimization:
-    - "Avoid cross-joins, unaggregated detail tables in dashboards"
+    - "Avoid cross-joins, unaggregated detail tables in [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)"
     - "Use incremental refresh for large datasets"
     - "Push filters to warehouse (WHERE clause, not in-memory)"
     - "Limit dashboard tiles: max 10-15 charts per dashboard"
     - "Use summary tables for trend lines over full detail"
   
-  monitoring:
+  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
     - "Dashboard load time: target < 5s, alert > 10s"
     - "Query duration: target < 2s, alert > 10s"
     - "Cache hit rate: target > 80%"
@@ -399,15 +399,15 @@ security_model:
     - "Dashboard-level permissions by team/role"
     - "Embed tokens: 1 hour max TTL, scoped to specific content"
   
-  audit:
+  [audit](../../Operations/audit/SKILL.md):
     - "Log all dashboard views, query executions, data exports"
-    - "Monthly access review, quarterly permission audit"
+    - "Monthly access review, quarterly permission [audit](../../Operations/audit/SKILL.md)"
     - "Alert on: first-time export, bulk export, off-hours access"
   
   data_governance:
-    - "No raw SQL in dashboards — use semantic layer"
-    - "Certified dashboards only for executive consumption"
-    - "Deprecated dashboards removed within 30 days"
+    - "No raw SQL in [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) — use semantic layer"
+    - "Certified [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) only for executive consumption"
+    - "Deprecated [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) removed within 30 days"
     - "Export controls: CSV only, no full-dataset Excel exports"
 ```
 
@@ -424,17 +424,17 @@ Team and requirements?
 
 Key question: centralized vs decentralized?
 ├── Centralized (one semantic layer, governed metrics) → Looker (LookML)
-├── Decentralized (teams build own dashboards) → Power BI or Tableau
-└── Hybrid (central models, team dashboards) → Any with semantic layer
+├── Decentralized (teams build own [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)) → Power BI or Tableau
+└── Hybrid (central models, team [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)) → Any with semantic layer
 ```
 
 ## Rules
-- One semantic layer, many dashboards
+- One semantic layer, many [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 - Dashboard load under 5 seconds with caching
 - Row-level security enforced at data source, not application
 - Every dashboard has a purpose, owner, and refresh schedule
-- No raw SQL in dashboards — use semantic layer
-- Executive dashboards show trends, not raw numbers
+- No raw SQL in [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) — use semantic layer
+- Executive [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) show trends, not raw numbers
 - Cache aggressively — stale better than slow
 - Export controls prevent data leakage
 - Embed tokens short-lived (1 hour max)
@@ -458,8 +458,8 @@ Key question: centralized vs decentralized?
 BI Tool Selection
 ├── Self-service analytics?
 │   ├── Yes → Looker (LookML semantic layer)
-│   └── No → Power BI / Tableau (managed dashboards)
-├── Real-time dashboards (< 5s latency)?
+│   └── No → Power BI / Tableau (managed [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
+├── Real-time [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) (< 5s latency)?
 │   ├── Yes → Superset + Druid / Pinot
 │   └── No → Traditional OLAP (Snowflake, Redshift)
 └── Embedded analytics for customers?
@@ -472,7 +472,7 @@ BI Tool Selection
 ## Implementation Patterns
 
 ### Semantic Layer Pattern
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # bi_tools/semantic_layer.py
 from pydantic import BaseModel
 from typing import Optional
@@ -530,7 +530,7 @@ dashboard:
 | Anti-Pattern | Consequence | Solution |
 |---|---|---|
 | Hard-coded filters per user | Maintenance nightmare | RLS in semantic layer |
-| Dashboard per business question | Exploding dashboard count | Parameterized dashboards |
+| Dashboard per business question | Exploding dashboard count | Parameterized [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
 | Direct DB queries from BI tool | Security risk, no governance | Always use semantic layer |
 | One BI tool for all use cases | Poor fit for embedded vs internal | Tiered BI strategy |
 
@@ -546,12 +546,12 @@ dashboard:
 
 - **Authentication**: Enforce SSO (SAML/OIDC) for all BI access; disable local auth.
 - **Authorization**: Implement RLS at the semantic layer filtering by user role/region.
-- **Data masking**: Mask PII columns (email, SSN) in shared dashboards.
-- **Audit logging**: Log all query executions, dashboard views, and exports to SIEM.
+- **Data masking**: Mask PII columns (email, SSN) in shared [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+- **[Audit](../../Operations/audit/SKILL.md) logging**: Log all query executions, dashboard views, and exports to SIEM.
 - **Network security**: Deploy BI tools in private subnets with reverse proxy (Nginx/Caddy) and WAF.
-- **Token management**: Rotate embed tokens hourly; never expose API keys in dashboards.
+- **Token management**: Rotate embed tokens hourly; never expose API keys in [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
 
 ## Handoff
-`data-data-warehouse` for optimizing warehouse for BI queries
-`data-data-quality` for validating dashboard data accuracy
+`[data-data-warehouse](../../../Data_Engineering/data-warehouse/SKILL.md)` for optimizing warehouse for BI queries
+`[data-data-quality](../../../Data_Engineering/data-quality/SKILL.md)` for validating dashboard data accuracy
 

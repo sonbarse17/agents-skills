@@ -34,7 +34,7 @@ Use this skill when:
 
 ## Track Costs First
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Use LiteLLM's cost tracking (automatic per-model pricing)
 import litellm
 
@@ -58,7 +58,7 @@ litellm.success_callback = [log_cost]
 
 ## Model Right-Sizing
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Route by task complexity — don't use GPT-4o for everything
 def get_model_for_task(task_type: str) -> str:
     routing = {
@@ -81,7 +81,7 @@ def get_model_for_task(task_type: str) -> str:
 
 ## Prompt Caching (Provider-Side)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Anthropic — cache long system prompts (saves 90% on cached tokens)
 import anthropic
 
@@ -112,7 +112,7 @@ print(f"Cache read tokens: {response.usage.cache_read_input_tokens}")
 
 ## Batching with OpenAI Batch API (50% Discount)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import json
 from openai import OpenAI
 
@@ -150,7 +150,7 @@ print(f"Batch ID: {batch.id}")  # poll status with client.batches.retrieve(batch
 
 ## Semantic Caching
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
 import json
 import redis
@@ -198,7 +198,7 @@ def cached_llm_call(prompt: str, llm_fn) -> str:
 
 ## Prompt Compression
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # LLMLingua — compress long prompts by 3–20× with minimal quality loss
 from llmlingua import PromptCompressor
 
@@ -219,7 +219,7 @@ print(f"Savings: {compressed['saving']}")
 
 ## Self-Hosting Break-Even Calculator
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def break_even_analysis(
     monthly_api_spend_usd: float,
     gpu_cost_per_hour_usd: float = 2.50,   # e.g., A10G on AWS
@@ -246,7 +246,7 @@ print(break_even_analysis(5000))
 
 ## Cost Dashboard (Grafana)
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Emit cost metrics to Prometheus
 from prometheus_client import Counter, Histogram
 
@@ -274,13 +274,13 @@ def track_call(model, team, task_type, response):
 
 - Use `gpt-4o-mini` or `claude-haiku` for 80% of tasks — they're 10–30× cheaper.
 - Enable prompt caching for system prompts >1,024 tokens (Anthropic) or >1,024 tokens (OpenAI).
-- Audit your top 5 prompts by token count — compress or cache them.
+- [Audit](../../Operations/audit/SKILL.md) your top 5 prompts by token count — compress or cache them.
 - Set hard budget limits with LiteLLM virtual keys before costs spiral.
 - Self-host 7B–8B models when monthly API spend exceeds $2k/month.
 
 ## Related Skills
 
-- [llm-gateway](../../../infrastructure/networking/llm-gateway/) - Centralized cost control
-- [llm-caching](../llm-caching/) - Semantic caching patterns
-- [vllm-server](../../../infrastructure/local-ai/vllm-server/) - Self-hosted inference
-- [agent-observability](../agent-observability/) - Token and cost telemetry
+- [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Centralized cost control
+- [llm-caching](../[llm-caching](../llm-caching/SKILL.md)/) - Semantic caching patterns
+- [vllm-server](../../../infrastructure/local-ai/[vllm-server](../vllm-server/SKILL.md)/) - Self-hosted inference
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Token and cost telemetry

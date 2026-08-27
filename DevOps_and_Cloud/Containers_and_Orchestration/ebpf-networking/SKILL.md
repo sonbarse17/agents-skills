@@ -20,7 +20,7 @@ Cilium heavily utilizes eBPF and XDP to implement high-performance container net
 
 ## Architecture Map
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     NIC[Network Interface Card] -->|Driver RX| XDP[XDP eBPF Hook]

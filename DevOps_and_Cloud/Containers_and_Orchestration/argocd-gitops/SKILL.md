@@ -7,14 +7,14 @@ metadata:
   version: "1.0"
 ---
 
-# ArgoCD GitOps
+# [ArgoCD](../argocd/SKILL.md) [GitOps](../gitops/SKILL.md)
 
-Implement declarative continuous delivery for Kubernetes with ArgoCD.
+Implement declarative continuous delivery for [Kubernetes](../kubernetes/SKILL.md) with [ArgoCD](../argocd/SKILL.md).
 
 ## When to Use This Skill
 
 Use this skill when:
-- Implementing GitOps workflows for Kubernetes
+- Implementing [GitOps](../gitops/SKILL.md) workflows for [Kubernetes](../kubernetes/SKILL.md)
 - Automating deployments from Git repositories
 - Managing multiple environments declaratively
 - Implementing progressive delivery strategies
@@ -22,29 +22,29 @@ Use this skill when:
 
 ## Prerequisites
 
-- Kubernetes cluster with ArgoCD installed
-- kubectl configured
+- [Kubernetes](../kubernetes/SKILL.md) cluster with [ArgoCD](../argocd/SKILL.md) installed
+- [kubectl](../kubectl/SKILL.md) configured
 - Git repository for manifests
-- ArgoCD CLI (optional)
+- [ArgoCD](../argocd/SKILL.md) CLI (optional)
 
 ## Installation
 
 ```bash
 # Create namespace
-kubectl create namespace argocd
+[kubectl](../kubectl/SKILL.md) create namespace [argocd](../argocd/SKILL.md)
 
-# Install ArgoCD
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# Install [ArgoCD](../argocd/SKILL.md)
+[kubectl](../kubectl/SKILL.md) apply -n [argocd](../argocd/SKILL.md) -f https://raw.githubusercontent.com/argoproj/[argo-cd](../argo-cd/SKILL.md)/stable/manifests/install.yaml
 
 # Get admin password
-kubectl -n argocd get secret argocd-initial-admin-secret \
+[kubectl](../kubectl/SKILL.md) -n [argocd](../argocd/SKILL.md) get secret [argocd](../argocd/SKILL.md)-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d
 
 # Port forward to access UI
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+[kubectl](../kubectl/SKILL.md) port-forward svc/[argocd](../argocd/SKILL.md)-server -n [argocd](../argocd/SKILL.md) 8080:443
 
 # Login with CLI
-argocd login localhost:8080
+[argocd](../argocd/SKILL.md) login localhost:8080
 ```
 
 ## Application Definition
@@ -56,15 +56,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   project: default
   source:
-    repoURL: https://github.com/org/myapp-manifests.git
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
     targetRevision: main
     path: environments/production
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: myapp
   syncPolicy:
     automated:
@@ -81,11 +81,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp-helm
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   project: default
   source:
-    repoURL: https://github.com/org/myapp-chart.git
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-chart.git
     targetRevision: main
     path: charts/myapp
     helm:
@@ -98,7 +98,7 @@ spec:
         - name: image.tag
           value: "2.0.0"
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: myapp
   syncPolicy:
     automated:
@@ -106,25 +106,25 @@ spec:
       selfHeal: true
 ```
 
-### Kustomize Application
+### [Kustomize](../kustomize/SKILL.md) Application
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-kustomize
-  namespace: argocd
+  name: myapp-[kustomize](../kustomize/SKILL.md)
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   project: default
   source:
-    repoURL: https://github.com/org/myapp-manifests.git
+    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
     targetRevision: main
     path: overlays/production
-    kustomize:
+    [kustomize](../kustomize/SKILL.md):
       images:
         - myapp=myregistry/myapp:2.0.0
   destination:
-    server: https://kubernetes.default.svc
+    server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: myapp
 ```
 
@@ -135,14 +135,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: myproject
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   description: My Project
   sourceRepos:
-    - https://github.com/org/*
+    - https://[github](../../CI_CD/github/SKILL.md).com/org/*
   destinations:
     - namespace: myapp-*
-      server: https://kubernetes.default.svc
+      server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
   clusterResourceWhitelist:
     - group: ''
       kind: Namespace
@@ -168,11 +168,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: myapp-environments
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   generators:
     - git:
-        repoURL: https://github.com/org/myapp-manifests.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
         revision: main
         directories:
           - path: environments/*
@@ -182,11 +182,11 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/org/myapp-manifests.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
         targetRevision: main
         path: '{{path}}'
       destination:
-        server: https://kubernetes.default.svc
+        server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
         namespace: 'myapp-{{path.basename}}'
       syncPolicy:
         automated:
@@ -201,7 +201,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: myapp-clusters
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   generators:
     - list:
@@ -216,7 +216,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/org/myapp-manifests.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
         targetRevision: main
         path: 'environments/{{cluster}}'
       destination:
@@ -231,13 +231,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: myapp-matrix
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
 spec:
   generators:
     - matrix:
         generators:
           - git:
-              repoURL: https://github.com/org/myapp-manifests.git
+              repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
               revision: main
               directories:
                 - path: apps/*
@@ -251,11 +251,11 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/org/myapp-manifests.git
+        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-manifests.git
         targetRevision: main
         path: '{{path}}/overlays/{{env}}'
       destination:
-        server: https://kubernetes.default.svc
+        server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
         namespace: '{{path.basename}}-{{env}}'
 ```
 
@@ -284,20 +284,20 @@ syncPolicy:
 ### Sync Waves
 
 ```yaml
-# In Kubernetes manifests
+# In [Kubernetes](../kubernetes/SKILL.md) manifests
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: myconfig
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"  # Sync first
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-1"  # Sync first
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
   annotations:
-    argocd.argoproj.io/sync-wave: "0"   # Sync second
+    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "0"   # Sync second
 ```
 
 ### Sync Hooks
@@ -308,8 +308,8 @@ kind: Job
 metadata:
   name: migration
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    [argocd](../argocd/SKILL.md).argoproj.io/hook: PreSync
+    [argocd](../argocd/SKILL.md).argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
@@ -324,31 +324,31 @@ spec:
 
 ```bash
 # List applications
-argocd app list
+[argocd](../argocd/SKILL.md) app list
 
 # Get application details
-argocd app get myapp
+[argocd](../argocd/SKILL.md) app get myapp
 
 # Sync application
-argocd app sync myapp
+[argocd](../argocd/SKILL.md) app sync myapp
 
 # Force sync (ignore differences)
-argocd app sync myapp --force
+[argocd](../argocd/SKILL.md) app sync myapp --force
 
 # View diff
-argocd app diff myapp
+[argocd](../argocd/SKILL.md) app diff myapp
 
 # Rollback
-argocd app rollback myapp
+[argocd](../argocd/SKILL.md) app rollback myapp
 
 # Delete application
-argocd app delete myapp
+[argocd](../argocd/SKILL.md) app delete myapp
 
 # View logs
-argocd app logs myapp
+[argocd](../argocd/SKILL.md) app logs myapp
 
 # Hard refresh (clear cache)
-argocd app get myapp --hard-refresh
+[argocd](../argocd/SKILL.md) app get myapp --hard-refresh
 ```
 
 ## Repository Configuration
@@ -358,11 +358,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: private-repo
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
   labels:
-    argocd.argoproj.io/secret-type: repository
+    [argocd](../argocd/SKILL.md).argoproj.io/secret-type: repository
 stringData:
-  url: https://github.com/org/private-repo.git
+  url: https://[github](../../CI_CD/github/SKILL.md).com/org/private-repo.git
   username: git
   password: ghp_xxxx
 ---
@@ -371,11 +371,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: private-repo-ssh
-  namespace: argocd
+  namespace: [argocd](../argocd/SKILL.md)
   labels:
-    argocd.argoproj.io/secret-type: repository
+    [argocd](../argocd/SKILL.md).argoproj.io/secret-type: repository
 stringData:
-  url: git@github.com:org/private-repo.git
+  url: git@[github](../../CI_CD/github/SKILL.md).com:org/private-repo.git
   sshPrivateKey: |
     -----BEGIN OPENSSH PRIVATE KEY-----
     ...
@@ -388,8 +388,8 @@ stringData:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-notifications-cm
-  namespace: argocd
+  name: [argocd](../argocd/SKILL.md)-notifications-cm
+  namespace: [argocd](../argocd/SKILL.md)
 data:
   service.slack: |
     token: $slack-token
@@ -416,7 +416,7 @@ spec:
 ```
 
 ### Issue: Repository Not Accessible
-**Problem**: ArgoCD cannot clone repository
+**Problem**: [ArgoCD](../argocd/SKILL.md) cannot clone repository
 **Solution**: Check repository secret, verify URL and credentials
 
 ### Issue: Application Stuck OutOfSync
@@ -440,6 +440,6 @@ spec:
 
 ## Related Skills
 
-- [kubernetes-ops](../kubernetes-ops/) - K8s fundamentals
-- [helm-charts](../helm-charts/) - Helm deployments
-- [kustomize](../kustomize/) - Kustomize overlays
+- [kubernetes-ops](../[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s fundamentals
+- [helm-charts](../[helm-charts](../helm-charts/SKILL.md)/) - Helm deployments
+- [kustomize](../[kustomize](../kustomize/SKILL.md)/) - [Kustomize](../kustomize/SKILL.md) overlays

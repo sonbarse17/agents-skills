@@ -20,15 +20,15 @@ metadata:
 
 # Support Case Review
 
-Use this skill when investigating an incident and you need to review AWS Support
-cases — either the current case associated with the incident or historical cases
+Use this skill when investigating an [incident](../../Observability_and_SecOps/incident/SKILL.md) and you need to review AWS Support
+cases — either the current case associated with the [incident](../../Observability_and_SecOps/incident/SKILL.md) or historical cases
 that may contain relevant context, similar symptoms, or proven remediation steps.
 
 ## When to Use This Skill
 
-- An active incident shares symptoms with previously resolved issues.
+- An active [incident](../../Observability_and_SecOps/incident/SKILL.md) shares symptoms with previously resolved issues.
 - You need to check if a similar support case was filed in the past 24 months.
-- You want to correlate the current incident with known AWS service events.
+- You want to correlate the current [incident](../../Observability_and_SecOps/incident/SKILL.md) with known AWS service events.
 - You need to retrieve communications and resolution details from a prior case.
 - You want to identify recurring patterns across multiple support cases.
 
@@ -43,13 +43,13 @@ that may contain relevant context, similar symptoms, or proven remediation steps
 
 ---
 
-## Step 1: Identify the Current Incident Context
+## Step 1: Identify the Current [Incident](../../Observability_and_SecOps/incident/SKILL.md) Context
 
-Before searching support cases, gather key details from the current incident:
+Before searching support cases, gather key details from the current [incident](../../Observability_and_SecOps/incident/SKILL.md):
 
 1. **Affected AWS services** (e.g., EC2, RDS, Lambda, ELB).
 2. **Error messages or error codes** observed in logs or alarms.
-3. **Timeframe** of the incident (start time, duration).
+3. **Timeframe** of the [incident](../../Observability_and_SecOps/incident/SKILL.md) (start time, duration).
 4. **Affected resources** (instance IDs, ARNs, endpoint names).
 5. **Symptoms** (latency spikes, 5xx errors, connection timeouts, throttling).
 
@@ -84,11 +84,11 @@ aws support describe-cases \
 
 | Strategy | How to Apply |
 |----------|-------------|
-| By time window | Use `--after-time` and `--before-time` to scope cases to the relevant period (e.g., past 30 days, or around a previous incident date), because recent cases are more likely to reflect current infrastructure state. |
+| By time window | Use `--after-time` and `--before-time` to scope cases to the relevant period (e.g., past 30 days, or around a previous [incident](../../Observability_and_SecOps/incident/SKILL.md) date), because recent cases are more likely to reflect current infrastructure state. |
 | By service | Review the `serviceCode` field in returned cases to match the affected service (e.g., `amazon-elastic-compute-cloud`, `amazon-rds`), because the same service often exhibits recurring failure patterns. |
 | By severity | Check the `severityCode` field — focus on `urgent` and `critical` cases for major incidents, because higher-severity cases tend to have more detailed root cause analysis from AWS Support. |
-| By status | Use `--include-resolved-cases` to include closed cases, because resolved cases contain the root cause and remediation steps that are most valuable for correlating with the current incident. |
-| By subject keywords | Scan the `subject` field of returned cases for keywords matching the current incident symptoms, because similar symptoms often share underlying causes. |
+| By status | Use `--include-resolved-cases` to include closed cases, because resolved cases contain the root cause and remediation steps that are most valuable for correlating with the current [incident](../../Observability_and_SecOps/incident/SKILL.md). |
+| By subject keywords | Scan the `subject` field of returned cases for keywords matching the current [incident](../../Observability_and_SecOps/incident/SKILL.md) symptoms, because similar symptoms often share underlying causes. |
 
 ---
 
@@ -125,7 +125,7 @@ When reviewing communications, look for:
 
 ---
 
-## Step 4: Correlate Findings with Current Incident
+## Step 4: Correlate Findings with Current [Incident](../../Observability_and_SecOps/incident/SKILL.md)
 
 After reviewing relevant cases, correlate the findings:
 
@@ -140,7 +140,7 @@ After reviewing relevant cases, correlate the findings:
 
 ### Relevance scoring
 
-Rate each historical case on relevance to the current incident:
+Rate each historical case on relevance to the current [incident](../../Observability_and_SecOps/incident/SKILL.md):
 
 | Score | Criteria |
 |-------|----------|
@@ -162,7 +162,7 @@ Provide a structured summary including:
 4. **Past resolutions** — What remediation steps were applied and whether they
    were permanent fixes or temporary workarounds.
 5. **Recommendations** — Based on historical patterns, suggest investigation
-   paths or remediation steps for the current incident.
+   paths or remediation steps for the current [incident](../../Observability_and_SecOps/incident/SKILL.md).
 6. **Recurring pattern alert** — If the same issue has occurred multiple times,
    flag it as a recurring problem requiring a permanent fix or architectural
    change.
@@ -172,7 +172,7 @@ Provide a structured summary including:
 ## Decision Tree: Case Search Strategy
 
 ```
-Is there a known case ID associated with the current incident?
+Is there a known case ID associated with the current [incident](../../Observability_and_SecOps/incident/SKILL.md)?
 ├── YES → Retrieve that specific case and its communications (Step 2, filter by case ID)
 └── NO → Continue below
 
@@ -197,6 +197,6 @@ Were relevant historical cases found?
 - **Check resolved cases**: The most valuable information often comes from
   resolved cases where root cause and fix are documented.
 - **Note case severity patterns**: If past cases for the same issue were filed
-  at `critical` severity, the current incident may warrant similar urgency.
+  at `critical` severity, the current [incident](../../Observability_and_SecOps/incident/SKILL.md) may warrant similar urgency.
 - **Cross-reference with deployments**: If a past case was caused by a
-  deployment, check if a similar deployment occurred before the current incident.
+  deployment, check if a similar deployment occurred before the current [incident](../../Observability_and_SecOps/incident/SKILL.md).

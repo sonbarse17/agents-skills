@@ -16,7 +16,7 @@ tags: [backend, caching, phase-2, universal]
 # Backend Caching
 
 ## Purpose
-Design consistent, production-grade caching layers. Every cache must follow the same conventions for strategy selection, data flow, invalidation, stampede prevention, TTL management, and monitoring.
+Design consistent, production-grade caching layers. Every cache must follow the same conventions for strategy selection, data flow, invalidation, stampede prevention, TTL management, and [monitoring](../monitoring/SKILL.md).
 
 ## Agent Protocol
 
@@ -52,7 +52,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Stale data tolerance documented
 - [ ] Invalidation strategy defined (TTL and/or event-driven)
 - [ ] Cache stampede prevention in place for high-traffic keys
-- [ ] Monitoring plan (hit ratio, latency, memory) defined
+- [ ] [Monitoring](../monitoring/SKILL.md) plan (hit ratio, latency, memory) defined
 
 ## Architecture Decision Trees
 
@@ -143,7 +143,7 @@ Write:
   2. Delete cache entry for that key
 ```
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 class CacheAside<T> {
   constructor(
     private cache: CacheStore,
@@ -211,7 +211,7 @@ Key design rules:
 - Max key length: Redis recommends < 1KB
 - Use consistent key generation function
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 function cacheKey(namespace: string, entity: string, id: string, subfield?: string): string {
   const parts = [namespace, entity, id];
   if (subfield) parts.push(subfield);
@@ -233,7 +233,7 @@ function cacheKey(namespace: string, entity: string, id: string, subfield?: stri
 | Computed/aggregated data | 1-60 minutes | Expensive to compute, low change frequency |
 
 TTL randomization: add ±10% jitter to prevent mass expiry stampede:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 function ttlWithJitter(baseTtl: number, jitterPercent = 10): number {
   const jitter = baseTtl * (jitterPercent / 100) * (Math.random() * 2 - 1);
   return Math.round(baseTtl + jitter);
@@ -243,7 +243,7 @@ function ttlWithJitter(baseTtl: number, jitterPercent = 10): number {
 ### Step 5: Cache Stampede Prevention
 
 **Option A — Mutex locking**:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function getWithMutex<T>(key: string, fetchFn: () => Promise<T>, ttl: number): Promise<T> {
   const cached = await cache.get(key);
   if (cached) return JSON.parse(cached);
@@ -268,7 +268,7 @@ async function getWithMutex<T>(key: string, fetchFn: () => Promise<T>, ttl: numb
 ```
 
 **Option B — Probabilistic early expiration (XFetch)**:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 function shouldRecompute(ttl: number, age: number, beta = 4): boolean {
   const remaining = ttl - age;
   const probability = Math.exp(-beta * (remaining / ttl));
@@ -290,7 +290,7 @@ async function getWithEarlyExpiry<T>(key: string, fetchFn: () => Promise<T>, ttl
 ```
 
 **Option C — Stale-while-revalidate**:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function getStaleWhileRevalidate<T>(key: string, fetchFn: () => Promise<T>, ttl: number, swrTtl: number): Promise<T> {
   const entry = await cache.getWithMetadata(key);
   if (!entry) {
@@ -316,7 +316,7 @@ async function getStaleWhileRevalidate<T>(key: string, fetchFn: () => Promise<T>
 ```
 
 **Option D — Background refresh**:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 class BackgroundRefresher {
   private timers = new Map<string, NodeJS.Timeout>();
 
@@ -357,7 +357,7 @@ Invalidation order (critical for correctness):
 ```
 
 Event-driven invalidation pattern:
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface CacheInvalidationEvent {
   key: string;
   pattern?: string;       // Pattern for batch invalidation: "user:abc123:*"
@@ -402,7 +402,7 @@ async function onInvalidationEvent(event: CacheInvalidationEvent): Promise<void>
 Rule of thumb: provision 2-3x the expected data size for Redis overhead.
 
 ### Connection Pooling
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Redis connection pool
 import { Redis } from 'ioredis';
 
@@ -431,7 +431,7 @@ const cluster = new Redis.Cluster([
 - Consider using RedisJSON module for partial key updates
 - Avoid storing large objects (>1MB) in cache — store reference instead
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Compressed caching
 async function getCompressed<T>(key: string, fetchFn: () => Promise<T>, ttl: number): Promise<T> {
   const raw = await cache.get(key);
@@ -559,7 +559,7 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 - Monitor memory fragmentation: `INFO MEMORY`
 - Redis 7.4+ has better memory efficiency with new serialization
 
-### Monitoring Key Metrics
+### [Monitoring](../monitoring/SKILL.md) Key Metrics
 | Metric | Warning | Critical | Action |
 |--------|---------|----------|--------|
 | Hit ratio | <90% | <80% | Review caching strategy |
@@ -584,7 +584,7 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 
 ## References
   - ../../../Global_References/cache-invalidation.md — Cache Invalidation
-  - ../../../Global_References/cache-monitoring.md — Cache Monitoring
+  - ../../../Global_References/cache-[monitoring](../monitoring/SKILL.md).md — Cache [Monitoring](../monitoring/SKILL.md)
   - ../../../Global_References/cache-strategies.md — Cache Strategies
   - ../../../Global_References/cache-testing.md — Cache Testing
   - ../../../Global_References/cdn-caching.md — CDN Caching

@@ -24,7 +24,7 @@ A decision is **non-trivial** when at least one of these is true:
 Apply the skill when:
 
 - About to make an architectural decision under uncertainty
-- About to commit non-trivial code
+- About to [commit](../../CI_CD/commit/SKILL.md) non-trivial code
 - About to claim a non-obvious fact ("this is safe", "this scales", "this matches the spec")
 - Working in code you don't fully understand
 
@@ -107,7 +107,7 @@ CONTRACT: <paste contract>
 
 In Claude Code, the role-based reviewers in `agents/` start with isolated context by design and are usable here — see `agents/` for the roster and per-domain match.
 
-**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `code-reviewer` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
+**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `[code-reviewer](../../../Software_Engineering_and_Other/Miscellaneous/code-reviewer/SKILL.md)` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
 
 #### Cross-model escalation
 
@@ -195,7 +195,7 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 | Rationalization | Reality |
 |---|---|
 | "I'm confident, skip the doubt step" | Confidence correlates poorly with correctness on novel problems. Moments of certainty are exactly when blind spots hide. |
-| "Spawning a reviewer is expensive" | Debugging a wrong commit in production is more expensive. The check is bounded; the bug isn't. |
+| "Spawning a reviewer is expensive" | Debugging a wrong [commit](../../CI_CD/commit/SKILL.md) in production is more expensive. The check is bounded; the bug isn't. |
 | "The reviewer will just nitpick" | Only if unscoped. Constrain the prompt to "issues that would make this fail under the contract." |
 | "I'll do doubt at the end with `/review`" | `/review` is a final gate. Doubt-driven catches wrong directions early when course-correction is cheap. By PR time it's too late. |
 | "If I doubt every step I'll never ship" | The skill applies to non-trivial decisions, not every keystroke. Re-read "When NOT to Use." |
@@ -222,10 +222,10 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 
 ## Interaction with Other Skills
 
-- **`code-review-and-quality` / `/review`**: complementary. `/review` is post-hoc PR verdict; doubt-driven is in-flight per-decision. Use both.
-- **`source-driven-development`**: SDD verifies *facts about frameworks* against official docs. Doubt-driven verifies *your reasoning about the artifact*. SDD checks the API exists; doubt-driven checks you used it correctly under the contract.
-- **`test-driven-development`**: TDD's RED step is doubt made concrete — a failing test is a disproof attempt. When TDD applies, that failing test *is* the doubt step for behavioral claims.
-- **`debugging-and-error-recovery`**: when the reviewer surfaces a real failure mode, drop into the debugging skill to localize and fix.
+- **`[code-review-and-quality](../../../Software_Engineering_and_Other/Patterns/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)-and-quality/SKILL.md)` / `/review`**: complementary. `/review` is post-hoc PR verdict; doubt-driven is in-flight per-decision. Use both.
+- **`[source-driven-development](../../../Software_Engineering_and_Other/Frontend/source-driven-development/SKILL.md)`**: SDD verifies *facts about frameworks* against official docs. Doubt-driven verifies *your reasoning about the artifact*. SDD checks the API exists; doubt-driven checks you used it correctly under the contract.
+- **`[test-driven-development](../test-driven-development/SKILL.md)`**: TDD's RED step is doubt made concrete — a failing test is a disproof attempt. When TDD applies, that failing test *is* the doubt step for behavioral claims.
+- **`[debugging-and-error-recovery](../../../Software_Engineering_and_Other/Patterns/debugging-and-error-recovery/SKILL.md)`**: when the reviewer surfaces a real failure mode, drop into the debugging skill to localize and fix.
 - **Repo orchestration rules** (`../../references/orchestration-patterns.md`): this skill orchestrates from the main session. A persona calling another persona is anti-pattern B — see Loading Constraints above.
 
 ## Verification

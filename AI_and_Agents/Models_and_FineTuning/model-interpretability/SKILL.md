@@ -18,7 +18,7 @@ tags: [ml, interpretability, explainability, phase-11]
 # ML Model Interpretability
 
 ## Quick Start
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import shap
 model = load_model()
 explainer = shap.TreeExplainer(model)
@@ -68,7 +68,7 @@ Who is the explanation for?
   └── Regulator / Compliance
       ├── Global + local explanations documented
       ├── Methodology, validation results, feature engineering
-      └── Audit trail with prediction + explanation logged
+      └── [Audit](../../Operations/audit/SKILL.md) trail with prediction + explanation logged
 ```
 
 ## Agent Protocol
@@ -118,7 +118,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ### Step 1: Global Interpretability
 Permutation importance: shuffle each feature, measure performance drop. Model-agnostic, unbiased. Tree feature importance: built-in but biased toward high-cardinality features. SHAP global: mean absolute SHAP values across all samples. Partial dependence: marginal effect of feature.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from sklearn.inspection import permutation_importance
 import pandas as pd
 import numpy as np
@@ -164,7 +164,7 @@ def global_shap_analysis(model, X, sample_size=1000):
 ### Step 2: Local Interpretability
 SHAP values: Shapley values from cooperative game theory. Locally accurate, consistent, unique. TreeSHAP for trees (exact, fast). KernelSHAP for any model (slower). LIME: fit sparse local surrogate. Faster but less stable.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def local_shap_explanation(model, X_instance, X_background, feature_names):
     """Explain a single prediction with SHAP."""
     explainer = shap.TreeExplainer(model)
@@ -203,7 +203,7 @@ def lime_explanation(model, X_instance, feature_names, n_features=5):
 ```
 
 ### Step 3: Model-Specific Methods
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Linear model coefficients
 def linear_model_explanation(model, feature_names):
     coef_df = pd.DataFrame({
@@ -235,7 +235,7 @@ def grad_cam(model, image, layer_name, class_idx=None):
 ### Step 4: Visualization Selection
 Summary plot (beeswarm): best for global overview. Waterfall: single prediction explanation. Force plot: interactive, good for presentations. Dependence plot: main effect + interaction. Bar plot: simplest global view.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import matplotlib.pyplot as plt
 
 def visualize_explanations(shap_values, X, feature_names):
@@ -263,7 +263,7 @@ def visualize_explanations(shap_values, X, feature_names):
 ```
 
 ### Step 5: Explanation Validation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 def validate_explanation(model, X, explanation_fn, top_k=5):
     """Validate explanation by removing top-k features."""
     base_pred = model.predict_proba(X.mean().to_frame().T)[0][1]
@@ -296,7 +296,7 @@ def validate_explanation(model, X, explanation_fn, top_k=5):
 
 ## Production Considerations
 
-### Monitoring
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Track top-5 feature importance stability over time.
 - Monitor SHAP value distribution per feature.
 - Check explanation consistency for similar inputs.
@@ -308,12 +308,12 @@ def validate_explanation(model, X, explanation_fn, top_k=5):
 - Cache SHAP values for frequent patterns.
 - Version the background dataset for SHAP computation.
 - Document explanation methods for model governance.
-- Log explanations alongside predictions for audit trail.
+- Log explanations alongside predictions for [audit](../../Operations/audit/SKILL.md) trail.
 
 ## SHAP Usage Patterns — Step by Step
 
 ### Pattern 1: Global Feature Importance with TreeSHAP
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import shap
 import xgboost as xgb
 import matplotlib.pyplot as plt
@@ -337,7 +337,7 @@ feature_ranking = pd.DataFrame({
 ```
 
 ### Pattern 2: Individual Prediction Explanation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Waterfall plot for one prediction
 row = X_test.iloc[0]
 shap.waterfall_plot(
@@ -360,7 +360,7 @@ shap.force_plot(
 ```
 
 ### Pattern 3: Dependence Plot with Interaction Detection
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Single feature dependence
 shap.dependence_plot("age", shap_values, X_test, alpha=0.5)
 
@@ -377,7 +377,7 @@ shap.dependence_plot(
 ```
 
 ### Pattern 4: Feature Interaction Detection
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # SHAP interaction values (only available for TreeExplainer)
 shap_interaction = explainer.shap_interaction_values(X_test)
 
@@ -395,7 +395,7 @@ sns.heatmap(interaction_matrix, xticklabels=X_test.columns,
 ## LIME Usage Patterns
 
 ### Pattern 1: Tabular Data Explanation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import lime
 import lime.lime_tabular
 
@@ -421,7 +421,7 @@ exp.as_list()  # list of (feature, weight) tuples
 ```
 
 ### Pattern 2: Text Explanation
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from lime.lime_text import LimeTextExplainer
 
 explainer = lime.lime_text.LimeTextExplainer(
@@ -444,7 +444,7 @@ exp.show_in_notebook(text=text)
 ```
 
 ### LIME Stability Check
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # LIME is unstable — run multiple times to verify
 def stable_lime_explanation(instance, num_runs=5):
     results = []
@@ -565,5 +565,5 @@ PartialDependenceDisplay.from_estimator(
   - ../../../Global_References/model-interpretability-fundamentals.md — Model Interpretability Fundamentals
   - ../../../Global_References/shap-lime-pdp.md — Model Interpretability Methods
 ## Handoff
-Hand off findings to ml-model-evaluation if interpretability reveals data quality issues. For feature engineering improvements, hand off to ml-feature-engineering.
+Hand off findings to [ml-model-evaluation](../model-evaluation/SKILL.md) if interpretability reveals data quality issues. For feature engineering improvements, hand off to [ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md).
 

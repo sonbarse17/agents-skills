@@ -3,15 +3,15 @@ name: python-resilience
 description: Python resilience patterns including automatic retries, exponential backoff, timeouts, and fault-tolerant decorators. Use when adding retry logic, implementing timeouts, building fault-tolerant services, or handling transient failures.
 ---
 
-# Python Resilience Patterns
+# [Python](../python/SKILL.md) Resilience Patterns
 
-Build fault-tolerant Python applications that gracefully handle transient failures, network issues, and service outages. Resilience patterns keep systems running when dependencies are unreliable.
+Build fault-tolerant [Python](../python/SKILL.md) applications that gracefully handle transient failures, network issues, and service outages. Resilience patterns keep systems running when dependencies are unreliable.
 
 ## When to Use This Skill
 
 - Adding retry logic to external service calls
 - Implementing timeouts for network operations
-- Building fault-tolerant microservices
+- Building fault-tolerant [microservices](../../Patterns/microservices/SKILL.md)
 - Handling rate limiting and backpressure
 - Creating infrastructure decorators
 - Designing circuit breakers
@@ -36,7 +36,7 @@ Cap both attempt count and total duration to prevent infinite retry loops.
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 from tenacity import retry, stop_after_attempt, wait_exponential_jitter
 
 @retry(
@@ -53,7 +53,7 @@ def call_external_service(request: dict) -> dict:
 
 Use the `tenacity` library for production-grade retry logic. For simpler cases, consider built-in retry functionality or a lightweight custom implementation.
 
-```python
+```[python](../python/SKILL.md)
 from tenacity import (
     retry,
     stop_after_attempt,
@@ -84,7 +84,7 @@ Whitelist specific transient exceptions. Never retry:
 - `AuthenticationError` - Invalid credentials won't become valid
 - HTTP 4xx errors (except 429) - Client errors are permanent
 
-```python
+```[python](../python/SKILL.md)
 from tenacity import retry, retry_if_exception_type
 import httpx
 
@@ -110,7 +110,7 @@ def resilient_api_call(endpoint: str) -> dict:
 
 Retry specific HTTP status codes that indicate transient issues.
 
-```python
+```[python](../python/SKILL.md)
 from tenacity import retry, retry_if_result, stop_after_attempt
 import httpx
 
@@ -134,7 +134,7 @@ def http_request(method: str, url: str, **kwargs) -> httpx.Response:
 
 Handle both network exceptions and HTTP status codes.
 
-```python
+```[python](../python/SKILL.md)
 from tenacity import (
     retry,
     retry_if_exception_type,
@@ -179,7 +179,7 @@ def robust_http_call(
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/python-resilience_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../python/SKILL.md)-resilience_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

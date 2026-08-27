@@ -32,7 +32,7 @@ Good queries are specific:
 "Azure Functions"
 
 # ✅ Specific
-"Azure Functions Python v2 programming model"
+"Azure Functions [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) v2 programming model"
 "Cosmos DB partition key design best practices"
 "Container Apps scaling rules KEDA"
 ```

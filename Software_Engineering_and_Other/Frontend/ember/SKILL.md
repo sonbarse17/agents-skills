@@ -103,7 +103,7 @@ Where is the data needed?
 
 ### Route with Model Hook
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/routes/posts.ts
 import Route from '@ember/routing/route'
 import { service } from '@ember/service'
@@ -120,7 +120,7 @@ export default class PostsRoute extends Route {
 
 ### Glimmer Component with Tracked
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/components/post-card.ts
 import Component from '@glimmer/component'
 import { tracked } from '@glimmer/tracking'
@@ -174,7 +174,7 @@ export default class PostCard extends Component<Args> {
 
 ### Service with Ember Data
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/services/post-store.ts
 import Service from '@ember/service'
 import { service } from '@ember/service'
@@ -204,7 +204,7 @@ export default class PostStoreService extends Service {
 
 ### Custom Modifier
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/modifiers/click-outside.ts
 import Modifier from 'ember-modifier'
 
@@ -237,7 +237,7 @@ export default class ClickOutsideModifier extends Modifier<Args> {
 
 ### Ember Data Store
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // Fetching
 const posts = await this.store.findAll('post')
 const post = await this.store.findRecord('post', id)
@@ -259,7 +259,7 @@ await post.destroyRecord()
 
 Services are singletons injected with `@service`. Use `@tracked` for reactive properties:
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 @service declare auth: AuthService
 @service declare cart: CartService
 
@@ -268,7 +268,7 @@ Services are singletons injected with `@service`. Use `@tracked` for reactive pr
 
 ### URL State via Query Params
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // app/controllers/posts.ts
 import Controller from '@ember/controller'
 import { tracked } from '@glimmer/tracking'
@@ -303,7 +303,7 @@ export default class PostsController extends Controller {
 ## Build & Bundle Considerations
 
 - Ember CLI uses Broccoli.js as the build pipeline.
-- Addons add to bundle size — audit `package.json` periodically.
+- Addons add to bundle size — [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) `package.json` periodically.
 - Use `ember-auto-import` for npm package imports.
 - `ember-cli-code-coverage` for tracking unused code.
 - Lazy load engines with `ember-engines` for large feature areas.
@@ -313,7 +313,7 @@ export default class PostsController extends Controller {
 
 ### Component Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tests/integration/components/post-card-test.ts
 import { module, test } from 'qunit'
 import { setupRenderingTest } from 'ember-qunit'
@@ -336,7 +336,7 @@ module('Integration | Component | post-card', function (hooks) {
 
 ### Route Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 module('Acceptance | posts', function (hooks) {
   setupApplicationTest(hooks)
 
@@ -410,7 +410,7 @@ module('Acceptance | posts', function (hooks) {
 | State mgmt | Ember Data + Services | Zustand/Redux | Pinia/Vuex |
 | Templating | Handlebars (.hbs) | JSX/TSX | .vue SFC |
 | Routing | Built-in, config | React Router | Vue Router |
-| TypeScript | First-class since v4 | Optional | Via vue-tsc |
+| [TypeScript](../typescript/SKILL.md) | First-class since v4 | Optional | Via vue-tsc |
 | Learning curve | Steep | Moderate | Moderate |
 
 ## Ecosystem & Tooling
@@ -484,7 +484,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and monitoring integrated
+- [ ] Error tracking and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -492,7 +492,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### Monitoring and Alerting
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |
@@ -532,5 +532,5 @@ Is the route data-driven (model-dependent)?
 - **Safe strings**: Use `{{someProperty}}` for auto-escaped output. For trusted HTML, use `{{{htmlContent}}}` only after sanitization via `ember-cli-htmlbars` or DOMPurify. Never triple-stash user content.
 - **CSRF protection**: Ember Data automatically reads CSRF token from meta tag. Ensure backend sets `<meta name="csrf-token" content="...">`. For non-ember-data requests, read the meta tag and include in headers.
 - **Content Security Policy**: Configure CSP in `config/content-security-policy.js`. Ember's `ember-cli-build` can inject meta CSP tags. Set `script-src 'self'` and use nonces for inline scripts in production.
-- **Dependency auditing**: Run `ember-cli-deprecation-workflow` to track deprecations. Use `npm audit` or `yarn audit` in CI. Pin major dependency versions. Avoid deprecated Ember addons without active maintenance.
+- **Dependency auditing**: Run `ember-cli-deprecation-workflow` to track deprecations. Use `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or `yarn [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` in CI. Pin major dependency versions. Avoid deprecated Ember addons without active maintenance.
 

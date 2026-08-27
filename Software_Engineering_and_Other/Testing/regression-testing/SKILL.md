@@ -112,7 +112,7 @@ Layer 4 (Extended): 2-8 hours, run pre-release
 3. Prioritize tests by risk score: business criticality + failure probability + change proximity
 4. Quarantine flaky tests immediately and fix within one sprint
 5. Add regression tests for every production bug fix (prevent re-introduction)
-6. Regularly audit the regression suite: remove dead tests, consolidate duplicates
+6. Regularly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) the regression suite: remove dead tests, consolidate duplicates
 7. Use time budgets with priority ordering for constrained execution windows
 8. Track regression metrics: pass rate, execution time, flakiness, risk coverage
 9. Automate regression selection and execution in CI pipeline
@@ -137,7 +137,7 @@ Layer 4 (Extended): 2-8 hours, run pre-release
 - Risk scoring: lightweight (file-level analysis) vs heavy (ML-based scoring for 10000+ tests)
 - Parallel execution: N-cores speedup, but consider shared resource contention
 - Flaky test re-runs: add 2x execution time for flaky detection. Reduce by quarantining flaky tests
-- Time budget: allocate based on pipeline criticality. Commit stage: < 5 min. Merge stage: < 30 min
+- Time budget: allocate based on pipeline criticality. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) stage: < 5 min. Merge stage: < 30 min
 
 ## Regression Test Selection Examples
 
@@ -195,7 +195,7 @@ risk_scoring:
 
 ## CI Integration for Regression Testing
 
-### GitHub Actions — Tiered Regression Pipeline
+### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Tiered Regression Pipeline
 ```yaml
 name: Regression Tests
 on:
@@ -233,7 +233,7 @@ jobs:
           CI: true
 
   full-regression:
-    if: github.event_name == 'schedule'
+    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -246,7 +246,7 @@ jobs:
 ## Regression Testing Anti-Patterns
 
 ### Anti-Pattern: Running Everything Every Time
-Running the complete regression suite on every commit wastes CI resources and slows feedback. Once a suite exceeds 100 tests, implement test selection. Start with dependency-graph-based selection, add risk scoring as historical data accumulates.
+Running the complete regression suite on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) wastes CI resources and slows feedback. Once a suite exceeds 100 tests, implement test selection. Start with dependency-graph-based selection, add risk scoring as historical data accumulates.
 
 ### Anti-Pattern: No Flaky Test Quarantine
 Failing to quarantine flaky tests erodes trust in the entire test suite. Developers start ignoring failures, including real regressions. Quarantine flaky tests within 24 hours. Fix within one sprint or delete the test.
@@ -255,7 +255,7 @@ Failing to quarantine flaky tests erodes trust in the entire test suite. Develop
 Running regression tests manually is slow, error-prone, and doesn't scale. Every regression test must be automated. Manual testing has its place (exploratory, UAT) but regression is repetitive by definition.
 
 ### Anti-Pattern: Letting Suite Bloat
-Regression suites grow without bound as new features are added without removing obsolete tests. A 10,000-test suite that's never pruned has significant dead weight. Audit quarterly: remove tests for removed features, consolidate overlapping tests, retire flaky tests.
+Regression suites grow without bound as new features are added without removing obsolete tests. A 10,000-test suite that's never pruned has significant dead weight. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) quarterly: remove tests for removed features, consolidate overlapping tests, retire flaky tests.
 
 ### Anti-Pattern: No Time Budget Management
 Without time budgets, regression suites grow unbounded. Each sprint adds tests but never removes them. Set a total suite time budget. When the budget is exceeded, prioritize: run highest risk tests first, defer low-risk tests to nightly.
@@ -348,7 +348,7 @@ test_data_principles:
 ## Regression Testing Anti-Patterns (Additional)
 
 ### Anti-Pattern: No Post-Release Validation
-Running regression tests only before release and not monitoring production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
+Running regression tests only before release and not [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
 
 ### Anti-Pattern: Skipping Security Regression
 Security regression tests are skipped to save time in the deployment pipeline. Security vulnerabilities re-emerge when changes inadvertently reintroduce previously fixed issues. Security regression tests must run on every deployment regardless of change scope.
@@ -358,7 +358,7 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 
 ## Rules
 1. Every change must have at least a smoke test pass before regression is considered
-2. Do NOT run full regression on every commit — select based on risk assessment and time budget
+2. Do NOT run full regression on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) — select based on risk assessment and time budget
 3. Flaky tests must be quarantined within 24 hours of detection — no false signals in main suite
 4. Regression suite must complete within the available deployment window. Use prioritization if constrained
 5. Test selection decisions must be documented with risk rationale — especially excluded tests
@@ -392,16 +392,16 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 
 ## Handoff
 After regression testing, hand off to:
-- `quality-smoke-testing` — for BVT smoke suite updates on new critical paths
-- `quality-acceptance-testing` — if acceptance criteria gaps were uncovered
-- `quality-e2e-testing` — for end-to-end coverage of newly identified risk areas
-- `quality-integration-testing` — for deeper investigation of regression failures
+- `[quality-smoke-testing](../smoke-testing/SKILL.md)` — for BVT smoke suite updates on new critical paths
+- `[quality-acceptance-testing](../../Miscellaneous/acceptance-testing/SKILL.md)` — if acceptance criteria gaps were uncovered
+- `[quality-e2e-testing](../e2e-testing/SKILL.md)` — for end-to-end coverage of newly identified risk areas
+- `[quality-integration-testing](../integration-testing/SKILL.md)` — for deeper investigation of regression failures
 
 ## Implementation Patterns
 
 ### Regression Test Suite Runner
 
-```python
+```[python](../../Languages/python/SKILL.md)
 from typing import List, Dict, Optional, Callable
 from dataclasses import dataclass
 from datetime import datetime

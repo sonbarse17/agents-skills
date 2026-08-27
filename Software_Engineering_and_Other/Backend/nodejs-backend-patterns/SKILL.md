@@ -10,7 +10,7 @@ Comprehensive guidance for building scalable, maintainable, and production-ready
 ## When to Use This Skill
 
 - Building REST APIs or GraphQL servers
-- Creating microservices with Node.js
+- Creating [microservices](../../Patterns/microservices/SKILL.md) with Node.js
 - Implementing authentication and authorization
 - Designing scalable backend architectures
 - Setting up middleware and error handling
@@ -24,7 +24,7 @@ Detailed pattern documentation lives in `../../../Global_References/nodejs-backe
 
 ## Best Practices
 
-1. **Use TypeScript**: Type safety prevents runtime errors
+1. **Use [TypeScript](../../Frontend/typescript/SKILL.md)**: Type safety prevents runtime errors
 2. **Implement proper error handling**: Use custom error classes
 3. **Validate input**: Use libraries like Zod or Joi
 4. **Use environment variables**: Never hardcode secrets
@@ -36,11 +36,11 @@ Detailed pattern documentation lives in `../../../Global_References/nodejs-backe
 10. **Write tests**: Unit, integration, and E2E tests
 11. **Handle graceful shutdown**: Clean up resources
 12. **Use connection pooling**: For databases
-13. **Implement health checks**: For monitoring
+13. **Implement health checks**: For [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 14. **Use compression**: Reduce response size
 15. **Monitor performance**: Use APM tools
 
 ## Testing Patterns
 
-See `javascript-testing-patterns` skill for comprehensive testing guidance.
+See `[javascript-testing-patterns](../../Languages/javascript-testing-patterns/SKILL.md)` skill for comprehensive testing guidance.
 

@@ -82,7 +82,7 @@ Don't deprecate without a working alternative. The replacement must:
 **Status:** Deprecated as of 2025-03-01
 **Replacement:** NewService (see migration guide below)
 **Removal date:** Advisory — no hard deadline yet
-**Reason:** OldService requires manual scaling and lacks observability.
+**Reason:** OldService requires manual scaling and lacks [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).
             NewService handles both automatically.
 
 ### Migration Guide
@@ -135,7 +135,7 @@ Phase 5: Remove old system
 
 Create an adapter that translates calls from the old interface to the new implementation. Consumers keep using the old interface while you migrate the backend.
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 // Adapter: old interface, new implementation
 class LegacyTaskService implements OldTaskAPI {
   constructor(private newService: NewTaskService) {}
@@ -152,7 +152,7 @@ class LegacyTaskService implements OldTaskAPI {
 
 Use feature flags to switch consumers from old to new system one at a time:
 
-```typescript
+```[typescript](../../Frontend/typescript/SKILL.md)
 function getTaskService(userId: string): TaskService {
   if (featureFlags.isEnabled('new-task-service', { userId })) {
     return new NewTaskService();
@@ -180,7 +180,7 @@ the old one            the app                  a later, separate deploy
 4. **Switch reads.** Point the app at `full_name`, keep writing both. Deploy and bake.
 5. **Contract.** Stop writing `name`, then — in a *separate, later* deploy — drop the column.
 
-Each step is independently deployable and reversible: if step 4 misbehaves, roll the code back and `full_name` is still being populated. Treat each phase as a thin vertical slice — see the `incremental-implementation` skill.
+Each step is independently deployable and reversible: if step 4 misbehaves, roll the code back and `full_name` is still being populated. Treat each phase as a thin vertical slice — see the `[incremental-implementation](../incremental-implementation/SKILL.md)` skill.
 
 **Rules:**
 - **Additive first, destructive last and alone.** Adds (new nullable column, new table, new index) are safe in any deploy; drops and renames get their own deploy *after* no code references the old shape.

@@ -3,9 +3,9 @@ name: async-python-patterns
 description: Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications. Use when building async APIs, concurrent systems, or I/O-bound applications requiring non-blocking operations.
 ---
 
-# Async Python Patterns
+# Async [Python](../python/SKILL.md) Patterns
 
-Comprehensive guidance for implementing asynchronous Python applications using asyncio, concurrent programming patterns, and async/await for building high-performance, non-blocking systems.
+Comprehensive guidance for implementing asynchronous [Python](../python/SKILL.md) applications using asyncio, concurrent programming patterns, and async/await for building high-performance, non-blocking systems.
 
 ## When to Use This Skill
 
@@ -14,7 +14,7 @@ Comprehensive guidance for implementing asynchronous Python applications using a
 - Creating web scrapers with concurrent requests
 - Developing real-time applications (WebSocket servers, chat systems)
 - Processing multiple independent tasks simultaneously
-- Building microservices with async communication
+- Building [microservices](../../Patterns/microservices/SKILL.md) with async communication
 - Optimizing I/O-bound workloads
 - Implementing async background tasks and queues
 
@@ -51,7 +51,7 @@ Functions defined with `async def` that can be paused and resumed.
 
 **Syntax:**
 
-```python
+```[python](../python/SKILL.md)
 async def my_coroutine():
     result = await some_async_operation()
     return result
@@ -75,7 +75,7 @@ Objects that support `async for` for iterating over async data sources.
 
 ## Quick Start
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 
 async def main():
@@ -83,7 +83,7 @@ async def main():
     await asyncio.sleep(1)
     print("World")
 
-# Python 3.7+
+# [Python](../python/SKILL.md) 3.7+
 asyncio.run(main())
 ```
 
@@ -91,7 +91,7 @@ asyncio.run(main())
 
 ### Pattern 1: Basic Async/Await
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 
 async def fetch_data(url: str) -> dict:
@@ -108,7 +108,7 @@ asyncio.run(main())
 
 ### Pattern 2: Concurrent Execution with gather()
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 from typing import List
 
@@ -133,7 +133,7 @@ asyncio.run(main())
 
 ### Pattern 3: Task Creation and Management
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 
 async def background_task(name: str, delay: int):
@@ -163,7 +163,7 @@ asyncio.run(main())
 
 ### Pattern 4: Error Handling in Async Code
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 from typing import List, Optional
 
@@ -199,7 +199,7 @@ asyncio.run(process_items([1, 2, 3, 4, 5, 6]))
 
 ### Pattern 5: Timeout Handling
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 
 async def slow_operation(delay: int) -> str:
@@ -220,13 +220,13 @@ asyncio.run(with_timeout())
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/async-python-patterns_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/async-[python](../python/SKILL.md)-patterns_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Common Pitfalls
 
 ### 1. Forgetting await
 
-```python
+```[python](../python/SKILL.md)
 # Wrong - returns coroutine object, doesn't execute
 result = async_function()
 
@@ -236,7 +236,7 @@ result = await async_function()
 
 ### 2. Blocking the Event Loop
 
-```python
+```[python](../python/SKILL.md)
 # Wrong - blocks event loop
 import time
 async def bad():
@@ -249,7 +249,7 @@ async def good():
 
 ### 3. Not Handling Cancellation
 
-```python
+```[python](../python/SKILL.md)
 async def cancelable_task():
     """Task that handles cancellation."""
     try:
@@ -264,7 +264,7 @@ async def cancelable_task():
 
 ### 4. Mixing Sync and Async Code
 
-```python
+```[python](../python/SKILL.md)
 # Wrong - can't call async from sync directly
 def sync_function():
     result = await async_function()  # SyntaxError!
@@ -276,7 +276,7 @@ def sync_function():
 
 ## Testing Async Code
 
-```python
+```[python](../python/SKILL.md)
 import asyncio
 import pytest
 

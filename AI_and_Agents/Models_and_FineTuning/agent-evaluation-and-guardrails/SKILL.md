@@ -48,7 +48,7 @@ them as complementary, not interchangeable.
 ## Prerequisites & environment
 
 - A representative set of real or realistic inputs (support tickets, code
-  diffs, user queries) — ideally sourced from actual usage or incident
+  diffs, user queries) — ideally sourced from actual usage or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
   reports, not only hand-written happy-path cases.
 - A way to run the agent non-interactively against a batch of inputs
   (a script that calls your agent's entrypoint in a loop is sufficient to
@@ -101,7 +101,7 @@ them as complementary, not interchangeable.
    pass/fail (or score) per case and an aggregate summary, so a prompt or
    model change can be compared before/after in one command.
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def run_eval_suite(cases, agent_fn):
        results = []
        for case in cases:
@@ -124,15 +124,15 @@ them as complementary, not interchangeable.
    - Output schema/format validation before returning to the caller.
    - A lightweight classifier or pattern check for suspected prompt
      injection in retrieved/tool content before it's added to context (see
-     [rag-pipeline-design](../rag-pipeline-design/SKILL.md) and
-     [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)).
+     [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md) and
+     [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md)).
    - A policy check on tool calls independent of the model's own judgment
      (the risk-classification dispatcher described in
-     [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)).
+     [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md)).
    - A final-output check for disallowed content categories relevant to
      your domain (PII leakage, unapproved claims, off-brand tone).
 
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    def guardrail_check(output, context):
        if not is_valid_json_schema(output, EXPECTED_SCHEMA):
            return GuardrailResult(block=True, reason="schema_violation")
@@ -150,7 +150,7 @@ them as complementary, not interchangeable.
    before shipping, and require a human review of any category-level
    regression, not just the aggregate score.
 
-8. **Periodically audit LLM-as-judge grading against human judgment** on a
+8. **Periodically [audit](../../Operations/audit/SKILL.md) LLM-as-judge grading against human judgment** on a
    sample, since judge models have their own biases (e.g. favoring longer
    or more confident-sounding answers) that can silently skew what "passing"
    means.
@@ -201,18 +201,18 @@ them as complementary, not interchangeable.
   check on retrieved and tool content before it enters context, and an
   output check before the response is returned — independent of prompt
   wording alone (see
-  [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md) and
-  [rag-pipeline-design](../rag-pipeline-design/SKILL.md)).
+  [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md) and
+  [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)).
 
 - **Symptom:** The eval suite consistently reports high pass rates, but the
   suite itself is mostly easy happy-path cases and hasn't been updated
   since the agent launched.
-  **Fix:** Require every production incident or user-reported failure to
+  **Fix:** Require every production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or user-reported failure to
   result in a new eval case before the fix is considered complete — the
   eval set should grow with real-world experience, not stay static.
 
 - **Symptom:** Guardrail checks add enough latency that they get disabled
-  under load or "temporarily" bypassed during an incident, and stay
+  under load or "temporarily" bypassed during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and stay
   bypassed.
   **Fix:** Design guardrails to be cheap (structural/regex/small-model
   checks before falling back to a full LLM call) and treat any bypass as a
@@ -222,7 +222,7 @@ them as complementary, not interchangeable.
 ## Worked example
 
 **Task:** evaluating a prompt change to the ticket-triage agent from
-[agent-architecture-design](../agent-architecture-design/SKILL.md) before
+[agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) before
 shipping it.
 
 Eval suite: 60 cases — 40 real historical tickets with known correct
@@ -252,6 +252,6 @@ regression class is caught automatically on every future change.
 
 ## Cross-references
 
-- [agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)
-- [rag-pipeline-design](../rag-pipeline-design/SKILL.md)
-- [prompt-and-context-engineering](../prompt-and-context-engineering/SKILL.md)
+- [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md)
+- [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)
+- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)

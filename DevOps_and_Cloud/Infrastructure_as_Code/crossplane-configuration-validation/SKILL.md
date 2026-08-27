@@ -32,10 +32,10 @@ and a Claim that requested `tier: large` can quietly provision a
 naturally look. Because a `Composition` sits between a namespaced
 `Claim` (what an application team wrote) and real cloud infrastructure
 (what actually gets provisioned, and billed, and depended on), this gap
-is higher-stakes than a typical Kubernetes manifest typo. This skill
+is higher-stakes than a typical [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifest typo. This skill
 covers the validation tooling — schema validation, render/dry-run, and
 patch-path checking — that should run before a
-[crossplane-kubernetes-native-provisioning](../crossplane-kubernetes-native-provisioning/SKILL.md)-built
+[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../Containers_and_Orchestration/crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md)-built
 Composition or XRD reaches a live cluster.
 
 ## When to use
@@ -64,10 +64,10 @@ Composition or XRD reaches a live cluster.
   Crossplane version, since render/validate behavior has evolved across
   releases.
 - The `Composition`/XRD/Claim already defined per
-  [crossplane-kubernetes-native-provisioning](../crossplane-kubernetes-native-provisioning/SKILL.md)
+  [crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../Containers_and_Orchestration/crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md)
   — this skill validates changes to those definitions, not how to
   author them from scratch.
-- For live-cluster cross-checks: `kubectl` read access to inspect
+- For live-cluster cross-checks: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` read access to inspect
   `Composite`/managed resources' actual reconciled state, to compare
   against what local rendering predicted.
 - Local copies (or CI-checked-out copies) of the provider package's CRD
@@ -109,8 +109,8 @@ Composition or XRD reaches a live cluster.
    provider resource's CRD — a mismatch on either side is exactly the
    silent-failure case this skill exists to catch:
    ```bash
-   kubectl explain xdatabaseinstance.spec.parameters --recursive
-   kubectl explain instance.rds.aws.upbound.io.spec.forProvider --recursive
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) explain xdatabaseinstance.spec.parameters --recursive
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) explain instance.rds.aws.upbound.io.spec.forProvider --recursive
    ```
    Cross-check each patch's `fromFieldPath` string against the first
    command's output and each `toFieldPath` against the second — a path
@@ -123,7 +123,7 @@ Composition or XRD reaches a live cluster.
    (a Claim with an invalid enum value, a missing required parameter)
    without actually creating anything:
    ```bash
-   kubectl apply --dry-run=server -f databaseclaim.yaml
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f databaseclaim.yaml
    ```
    A rejection here is the "loud" failure mode (an admission-time
    schema violation) — genuinely easier to debug than the "quiet"
@@ -165,7 +165,7 @@ Composition or XRD reaches a live cluster.
    confirming the offline validation and the real cluster agree, not
    just trusting the offline check in isolation:
    ```bash
-   kubectl get instance.rds.aws.upbound.io -o jsonpath='{.items[0].spec.forProvider}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get instance.rds.aws.upbound.io -o jsonpath='{.items[0].spec.forProvider}'
    ```
    Compare directly against the equivalent `crossplane render` output
    for the same Claim's parameters — a mismatch here means either the
@@ -178,8 +178,8 @@ Composition or XRD reaches a live cluster.
    Composition has been updated but existing Claims are pinned to a
    prior revision, so what's validated matches what's actually live:
    ```bash
-   kubectl get compositions.apiextensions.crossplane.io xdatabaseinstances.aws -o jsonpath='{.status.currentRevision}'
-   kubectl get databaseclaim payments-db -n payments -o jsonpath='{.spec.compositionRevisionRef.name}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get compositions.apiextensions.crossplane.io xdatabaseinstances.aws -o jsonpath='{.status.currentRevision}'
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get databaseclaim payments-db -n payments -o jsonpath='{.spec.compositionRevisionRef.name}'
    ```
    If these differ, the live Claim is still running against an older
    revision — validate against *that* revision's manifest, not only
@@ -201,16 +201,16 @@ Composition or XRD reaches a live cluster.
   — a Composition refactor that changes rendered output unexpectedly
   is exactly the kind of regression a diff-based check catches cheaply
   and a human review easily misses.
-- Cross-check `fromFieldPath`/`toFieldPath` against `kubectl explain`
+- Cross-check `fromFieldPath`/`toFieldPath` against `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) explain`
   output for both the XRD and the target provider CRD as a standard
-  part of Composition code review, not just as an incident-response
+  part of Composition code review, not just as an [incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
   step after something goes wrong.
 - Track `CompositionRevision` pinning explicitly when validating —
   render against the revision a Claim is actually pinned to, not
   reflexively the newest Composition in the repo.
 - Treat a Composition/XRD change with the same review rigor as a
   Terraform module change in
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
   — both define the shape of real, billed cloud infrastructure other
   teams depend on without seeing the underlying implementation.
 
@@ -234,7 +234,7 @@ Composition or XRD reaches a live cluster.
   necessarily every admission-time constraint the live API server
   enforces (webhooks, additional CRD-level validation from the
   provider). Add a server-side dry run of the actual Claim
-  (`kubectl apply --dry-run=server`) against a real cluster as a
+  (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server`) against a real cluster as a
   second, complementary check rather than trusting offline validation
   alone.
 
@@ -275,7 +275,7 @@ Composition or XRD reaches a live cluster.
 
 **Scenario:** A platform team adds a new `xlarge` tier to the
 `DatabaseClaim` XRD from
-[crossplane-kubernetes-native-provisioning](../crossplane-kubernetes-native-provisioning/SKILL.md)'s
+[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../Containers_and_Orchestration/crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md)'s
 worked example, and wants to validate the change end-to-end before
 merging.
 
@@ -327,7 +327,7 @@ merging.
 4. Dry-run a representative Claim requesting the new tier against a
    real (non-prod) cluster before merging:
    ```bash
-   kubectl apply --dry-run=server -f databaseclaim-xlarge-test.yaml
+   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f databaseclaim-xlarge-test.yaml
    ```
    Passes cleanly — the schema and admission chain both accept it, and
    the render output confirms it maps to the intended instance class.
@@ -336,8 +336,8 @@ merging.
 
 ## Cross-references
 
-- [crossplane-kubernetes-native-provisioning](../crossplane-kubernetes-native-provisioning/SKILL.md) — the Composition/XRD/Claim model and provisioning workflow this skill validates before it reaches a live cluster.
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the `terraform plan`-review discipline this skill's render/dry-run workflow mirrors for a Kubernetes-native provisioning model.
-- [flux-cd-configuration-validation](../flux-cd-configuration-validation/SKILL.md) — an analogous dry-run/diff validation workflow, applied to Flux Kustomizations/HelmReleases instead of Crossplane Compositions.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/opa-gatekeeper-policy-authoring/SKILL.md) — enforcing organization-wide constraints (e.g. disallowed instance types) on Claims/Composites as an admission-time policy layer complementary to this skill's schema/render validation.
-- [argocd-sync-failure-and-drift-investigation](../../../gitops-argo-ecosystem/skills/argocd-sync-failure-and-drift-investigation/SKILL.md) — the equivalent investigative discipline for distinguishing "applied without error" from "actually correct," applied there to Argo CD Applications.
+- [crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../[crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../Containers_and_Orchestration/crossplane-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — the Composition/XRD/Claim model and provisioning workflow this skill validates before it reaches a live cluster.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the `terraform plan`-review discipline this skill's render/dry-run workflow mirrors for a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native provisioning model.
+- [flux-cd-configuration-validation](../[flux-cd-configuration-validation](../../Containers_and_Orchestration/flux-cd-configuration-validation/SKILL.md)/SKILL.md) — an analogous dry-run/diff validation workflow, applied to Flux Kustomizations/HelmReleases instead of Crossplane Compositions.
+- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — enforcing organization-wide constraints (e.g. disallowed instance types) on Claims/Composites as an admission-time policy layer complementary to this skill's schema/render validation.
+- [argocd-sync-failure-and-drift-investigation](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-sync-failure-and-drift-investigation](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-sync-failure-and-drift-investigation/SKILL.md)/SKILL.md) — the equivalent investigative discipline for distinguishing "applied without error" from "actually correct," applied there to Argo CD Applications.

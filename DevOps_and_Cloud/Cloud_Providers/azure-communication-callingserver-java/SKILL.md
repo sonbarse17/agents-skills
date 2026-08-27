@@ -80,7 +80,7 @@ client.stopRecording(recordingId);
 
 **Do not use this SDK for new projects.** 
 
-See the `azure-communication-callautomation-java` skill for:
+See the `[azure-communication-callautomation-java](../[azure-communication-callautomation-java](../azure-sdk-java/skills/azure-communication-callautomation-java/SKILL.md)/SKILL.md)` skill for:
 - Making outbound calls
 - Answering incoming calls
 - Call recording

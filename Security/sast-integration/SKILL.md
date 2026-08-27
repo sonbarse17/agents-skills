@@ -28,7 +28,7 @@ SAST into CI/CD shifts security feedback left — a developer sees a finding
 in a pull request diff within minutes instead of a pentester or auditor
 finding it months later in production. Done well, SAST becomes a fast,
 automated first-pass filter; done badly (noisy rules, no triage workflow,
-scanning the whole repo on every commit) it becomes an ignored gate that
+scanning the whole repo on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) it becomes an ignored gate that
 teams route around. This skill covers choosing a SAST tool, wiring it into
 CI/CD with sane defaults, tuning rules to keep signal-to-noise usable, and
 building a triage/suppression workflow that survives contact with a real
@@ -52,23 +52,23 @@ codebase.
 
 ## Prerequisites & environment
 
-- A CI/CD system capable of running a container or CLI step (GitHub
-  Actions, GitLab CI, Jenkins, Azure Pipelines, CircleCI — examples below
-  use GitHub Actions and GitLab CI).
+- A CI/CD system capable of running a container or CLI step ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+  Actions, GitLab CI, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), Azure Pipelines, [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) — examples below
+  use [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions and GitLab CI).
 - Tool choice depends on stack and licensing constraints:
   - **Semgrep** (OSS core + optional Semgrep AppSec Platform/paid rules) —
     fast, multi-language, easy to run locally and in CI, good for custom
     rules. CLI: `semgrep --config auto` or pinned rulesets. Version
-    `semgrep >= 1.45` for stable `--baseline-commit` diff-aware scanning.
-  - **CodeQL** — GitHub's engine, strongest for deep dataflow/taint
+    `semgrep >= 1.45` for stable `--baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)` diff-aware scanning.
+  - **CodeQL** — [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s engine, strongest for deep dataflow/taint
     analysis on compiled and interpreted languages; requires a build step
     for compiled languages (Java, C/C++, C#, Go) or "autobuild"; free for
-    public repos, requires GitHub Advanced Security license for private
-    repos on GitHub Enterprise.
+    public repos, requires [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advanced Security license for private
+    repos on [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Enterprise.
   - **SonarQube/SonarCloud** — broad multi-language coverage plus code
     quality metrics; self-hosted SonarQube needs a running server and a
     scanner CLI or Maven/Gradle/`.NET` plugin.
-  - Language-native security linters (Bandit for Python, gosec for Go,
+  - Language-native security linters (Bandit for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), gosec for Go,
     `eslint-plugin-security`/`eslint-plugin-no-unsanitized` for
     JS/TS, `brakeman` for Rails) are lighter-weight and worth running in
     addition to a general-purpose tool for language-specific idioms.
@@ -83,7 +83,7 @@ codebase.
 1. **Pick the tool(s)** based on language mix and license constraints. For
    a typical polyglot service, a good default is Semgrep (fast, cheap,
    easy custom rules) plus one language-native linter for the primary
-   language. Add CodeQL if the org already has GitHub Advanced Security
+   language. Add CodeQL if the org already has [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advanced Security
    or needs deep taint-tracking for compiled languages.
 
 2. **Run locally first** to see real signal before wiring into CI:
@@ -94,7 +94,7 @@ codebase.
 
 3. **Add a CI step scoped to the pull request diff**, not the whole repo,
    for day-to-day gating (full-repo baseline scans run separately, e.g.
-   nightly). Example, GitHub Actions:
+   nightly). Example, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions:
    ```yaml
    name: sast
    on:
@@ -113,14 +113,14 @@ codebase.
              semgrep ci \
                --config p/owasp-top-ten \
                --config p/secrets \
-               --baseline-commit "${{ github.event.pull_request.base.sha }}"
+               --baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) "${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.base.sha }}"
            env:
              SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
    ```
    Equivalent GitLab CI (SAST is built in as a template):
    ```yaml
    include:
-     - template: Security/SAST.gitlab-ci.yml
+     - template: Security/SAST.[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml
    variables:
      SAST_EXCLUDED_PATHS: "vendor, node_modules, test/fixtures"
    ```
@@ -133,8 +133,8 @@ codebase.
 
 5. **Add an inline suppression mechanism with mandatory justification**,
    not silent ignores. Semgrep example:
-   ```python
-   # nosemgrep: python.lang.security.audit.subprocess-shell-true
+   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   # nosemgrep: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).lang.security.[audit](../../AI_and_Agents/Operations/audit/SKILL.md).subprocess-shell-true
    # Justification: `cmd` is built from a fixed allowlist, see ALLOWED_CMDS above.
    subprocess.run(cmd, shell=True)
    ```
@@ -143,12 +143,12 @@ codebase.
    accumulate silently.
 
 6. **Wire results into the PR** as inline review comments (most tools
-   support SARIF upload to GitHub code scanning, or native PR comments)
+   support SARIF upload to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) code scanning, or native PR comments)
    so developers see findings where they're already looking, not in a
    separate dashboard they have to remember to check.
 
 7. **Track a baseline and trend**, not just pass/fail. Export SARIF or
-   JSON to a central store (or the GitHub Security tab / SonarQube
+   JSON to a central store (or the [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Security tab / SonarQube
    dashboard) so the team can see whether the finding count is trending
    down over time, and periodically schedule a full-repo scan to catch
    drift.
@@ -156,7 +156,7 @@ codebase.
 ## Best practices
 
 - Scope blocking gates to **new/changed code** (diff-aware or
-  baseline-commit scanning); apply a separate, non-blocking full scan on
+  baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) scanning); apply a separate, non-blocking full scan on
   a schedule to slowly work down pre-existing debt. A gate that blocks on
   the entire existing codebase on day one gets disabled within a week.
 - Curate rulesets instead of running every default rule. A default "kitchen
@@ -169,14 +169,14 @@ codebase.
   best signal-to-noise ratio of all.
 - Treat SAST as one layer, not the whole program: it cannot see runtime
   configuration issues, business-logic flaws, or vulnerable third-party
-  code — pair it with [dast-integration](../dast-integration/SKILL.md)
+  code — pair it with [dast-integration](../[dast-integration](../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md)
   for runtime behavior and
-  [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)
+  [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
   for dependency vulnerabilities.
 - Version-pin the scanner image/action (e.g. `semgrep/semgrep:1.78.0`, not
   `:latest`) so rule updates don't silently change what fails a build
   overnight.
-- Give developers a fast local pre-commit or pre-push hook running the
+- Give developers a fast local pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) or pre-push hook running the
   same ruleset as CI, so failures surface before a PR round-trip, not
   after.
 - Track false-positive rate as a first-class metric; a SAST program that
@@ -222,10 +222,10 @@ codebase.
 
 ## Worked example
 
-A Python/Flask service adds Semgrep as a blocking PR gate, with a
+A [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Flask service adds Semgrep as a blocking PR gate, with a
 one-time full-repo baseline scan run separately.
 
-`.github/workflows/sast.yml`:
+`.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/sast.yml`:
 ```yaml
 name: sast
 on:
@@ -246,14 +246,14 @@ jobs:
         run: |
           semgrep ci \
             --config p/owasp-top-ten \
-            --config p/python \
+            --config p/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
             --config p/secrets \
-            --baseline-commit "${{ github.event.pull_request.base.sha }}" \
+            --baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) "${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.base.sha }}" \
             --sarif --output semgrep.sarif
         continue-on-error: true
 
       - name: Upload SARIF to code scanning
-        uses: github/codeql-action/upload-sarif@v3
+        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: semgrep.sarif
 
@@ -276,7 +276,7 @@ jobs:
 Sample finding surfaced on a PR (SARIF excerpt, trimmed):
 ```json
 {
-  "ruleId": "python.flask.security.injection.sql-injection.flask-sqli",
+  "ruleId": "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).flask.security.injection.sql-injection.flask-sqli",
   "level": "error",
   "message": { "text": "User-controlled data flows into a raw SQL query." },
   "locations": [{ "physicalLocation": { "artifactLocation": { "uri": "app/views/search.py" }, "region": { "startLine": 42 } } }]
@@ -284,17 +284,17 @@ Sample finding surfaced on a PR (SARIF excerpt, trimmed):
 ```
 Remediation: parameterize the query (`cursor.execute("... WHERE id = %s", (user_id,))`)
 instead of string-formatting user input into SQL, then re-run
-`semgrep ci --baseline-commit <base-sha>` locally to confirm the finding
+`semgrep ci --baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) <base-sha>` locally to confirm the finding
 clears before pushing.
 
 ## Cross-references
 
-- [dast-integration](../dast-integration/SKILL.md) — runtime testing that
+- [dast-integration](../[dast-integration](../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md) — runtime testing that
   catches issues SAST cannot see (auth/session flaws, server
   misconfiguration, issues only observable when the app is running).
-- [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md) —
+- [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) —
   covers vulnerable third-party dependencies, which SAST rules generally
   do not analyze.
-- [secure-cicd-gates](../secure-cicd-gates/SKILL.md) — how to combine SAST
+- [secure-cicd-gates](../[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine SAST
   with other scan types into a coherent, non-redundant set of pipeline
   gates.

@@ -34,13 +34,13 @@ metadata:
 
 | Scenario | Use Instead |
 |----------|-------------|
-| Run `azd up` or execute an existing deployment | `azure-deploy` |
-| Optimize existing Azure spend | `azure-cost` |
-| Generate Bicep/Terraform for a known architecture | `azure-prepare` |
-| Validate infrastructure or run preflight checks | `azure-validate` |
-| Troubleshoot a running Azure deployment | `azure-diagnostics` |
-| Deploy to or manage AKS/Kubernetes directly | `azure-kubernetes` |
-| Look up or list existing Azure resources | `azure-resource-lookup` |
+| Run `azd up` or execute an existing deployment | `[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)` |
+| Optimize existing Azure spend | `[azure-cost](../[azure-cost](../azure-skills/skills/azure-cost/SKILL.md)/SKILL.md)` |
+| Generate Bicep/Terraform for a known architecture | `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` |
+| Validate infrastructure or run preflight checks | `[azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md)` |
+| Troubleshoot a running Azure deployment | `[azure-diagnostics](../[azure-diagnostics](../azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md)` |
+| Deploy to or manage AKS/[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) directly | `[azure-kubernetes](../azure-skills/skills/[azure-kubernetes](../../Containers_and_Orchestration/azure-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` |
+| Look up or list existing Azure resources | `[azure-resource-lookup](../[azure-resource-lookup](../azure-skills/skills/azure-resource-lookup/SKILL.md)/SKILL.md)` |
 
 ## Pipeline Rules
 
@@ -48,7 +48,7 @@ metadata:
 
 ## Workflow
 
-> ⛔ **Deploy recovery:** After deploy gate approval OR before any `az deployment`/`az webapp deploy`/`az acr build` — if you haven't read `deploy/SKILL.md`, read `.copilot-azure/sessions/{id}/deploy-checklist.md` first, then `deploy/SKILL.md`. ⛔ NEVER invoke `{"skill": "azure-deploy"}` — that is a DIFFERENT skill for a DIFFERENT workflow.
+> ⛔ **Deploy recovery:** After deploy gate approval OR before any `az deployment`/`az webapp deploy`/`az acr build` — if you haven't read `deploy/SKILL.md`, read `.copilot-azure/sessions/{id}/deploy-checklist.md` first, then `deploy/SKILL.md`. ⛔ NEVER invoke `{"skill": "[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)"}` — that is a DIFFERENT skill for a DIFFERENT workflow.
 
 > ⛔ **Post-scaffold transition (MANDATORY):** Immediately after `scaffold-manifest.json` is written, YOUR NEXT ACTION MUST be Step 8 (Deploy Approval Gate) — NOT a summary report, NOT a "here are the generated files" message, NOT a completion signal. Confirm `context.json` has `completedPhases: [...,"scaffold"]` + `currentPhase: "deploy"` (update it yourself if the scaffold subagent didn't). Re-read [approval-gates.md § Deploy Gate](../../../Global_References/approval-gates.md) if evicted from context (scaffold reference loading is heavy), then present the exact prompt: **"🚀 Ready to deploy? (Yes / Run manually / Edit plan / Cancel)"**. This gate is the LAST content in your response — wait for the user's reply.
 
@@ -56,12 +56,12 @@ metadata:
 |---|------|--------|-----------|
 | 1 | **Session check + Azure login** | Create/resume session, verify Azure CLI auth, resolve subscription + user identity | ⛔ **You MUST read [session-protocol.md](../../../Global_References/session-protocol.md)** |
 | 2 | **Scope triage** | Check azd markers, triage question. Empty workspace or code-only (no infra) → Step 3 directly. | ⛔ Read [intent-gathering.md](../../../Global_References/intent-gathering.md) § Scope Triage |
-| 3 | **Prereq scan** | ⛔ Skip if `completedPhases` includes `"prereq"`. Otherwise: invoke `{"skill": "azure-app-onboard-prereq"}`. Write `prereq-output.json`, update `context.json`. **Halt if:** `overallHealth: "blocked"` OR `routeToSkill` set. | |
+| 3 | **Prereq scan** | ⛔ Skip if `completedPhases` includes `"prereq"`. Otherwise: invoke `{"skill": "[azure-app-onboard-prereq](../azure-skills/skills/[azure-app-onboard-prereq](../../Containers_and_Orchestration/[azure-app-onboard](../azure-skills/skills/azure-app-onboard/SKILL.md)-prereq/SKILL.md)/SKILL.md)"}`. Write `prereq-output.json`, update `context.json`. **Halt if:** `overallHealth: "blocked"` OR `routeToSkill` set. | |
 | 4 | **Gather intent** | Present prereq results, confirm stack + Azure services, ask remaining questions. | ⛔ Read [intent-gathering.md](../../../Global_References/intent-gathering.md) § After Prereq Returns |
 | 5 | **Plan architecture** | Write `prepare-plan.json`. | ⛔ **You MUST read [prepare/SKILL.md](prepare/SKILL.md)** |
 | 6 | **Scaffold approval gate** | Display plan for user approval BEFORE generating any files. | ⛔ Read [approval-gates.md](../../../Global_References/approval-gates.md) § Scaffold Gate |
 | 7 | **Scaffold** | Generate IaC, self-review. Write `scaffold-manifest.json`. Update `context.json`. | ⛔ **You MUST read [scaffold/SKILL.md](scaffold/SKILL.md)** |
-| 8 | **Deploy approval gate** | Display validation summary. ⛔ After approval: FIRST read deploy-checklist.md → deploy/SKILL.md. NEVER `{"skill": "azure-deploy"}`. | ⛔ Read [approval-gates.md](../../../Global_References/approval-gates.md) § Deploy Gate |
+| 8 | **Deploy approval gate** | Display validation summary. ⛔ After approval: FIRST read deploy-checklist.md → deploy/SKILL.md. NEVER `{"skill": "[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)"}`. | ⛔ Read [approval-gates.md](../../../Global_References/approval-gates.md) § Deploy Gate |
 | 9 | **Deploy** | Execute IaC, health-check. Write `deploy-result.json`. | ⛔ **You MUST read [deploy/SKILL.md](deploy/SKILL.md)** |
 | 10 | **Handoff** | Surface deployment identity, cleanup commands, next steps. | ⛔ **You MUST read [`handoff-protocol.md`](../../../Global_References/handoff-protocol.md)** |
 

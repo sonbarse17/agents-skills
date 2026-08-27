@@ -32,7 +32,7 @@ in its own CI, that it actually satisfies every consumer's published
 expectations. This skill covers writing the consumer and provider tests
 and standing up the broker that connects them — using those contracts to
 gate deploys is covered separately in
-[pact-configuration-validation](../pact-configuration-validation/SKILL.md).
+[pact-configuration-validation](../[pact-configuration-validation](../../../DevOps_and_Cloud/CI_CD/pact-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -52,16 +52,16 @@ gate deploys is covered separately in
 ## Prerequisites & environment
 
 - A Pact client library for the consumer's language (`pact-js`,
-  `pact-python`, `pact-jvm`, etc.) added to the consumer's test
+  `pact-[python](../../Languages/python/SKILL.md)`, `pact-jvm`, etc.) added to the consumer's test
   dependencies, and a corresponding library on the provider side for
   verification.
-- A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "docker
-  image, backed by PostgreSQL) or the hosted PactFlow service — reachable
+- A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+  image, backed by [PostgreSQL](../../Backend/postgresql/SKILL.md)) or the hosted PactFlow service — reachable
   from both the consumer's and provider's CI pipelines.
 - CI pipelines for both the consumer and provider repos capable of
   publishing pact files and running provider verification as a distinct
   step — see
-  [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md)
+  [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
   for where this step fits in an overall pipeline.
 - Agreement between consumer and provider teams on ownership: who
   maintains the broker, who is notified when a contract changes, and what
@@ -105,7 +105,7 @@ gate deploys is covered separately in
 
 2. **Publish the generated pact file to the broker** as part of the
    consumer's CI pipeline, tagged with a version identifier that ties it
-   back to a real deployable artifact (commit SHA or build number, not a
+   back to a real deployable artifact ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA or build number, not a
    loose "latest"):
    ```bash
    pact-broker publish ./pacts \
@@ -149,14 +149,14 @@ gate deploys is covered separately in
    (`publishVerificationResult: true` above) so the broker has a
    complete, queryable picture of which provider version satisfies which
    consumer contract version — this is the data
-   [pact-configuration-validation](../pact-configuration-validation/SKILL.md)'s
+   [pact-configuration-validation](../[pact-configuration-validation](../../../DevOps_and_Cloud/CI_CD/pact-configuration-validation/SKILL.md)/SKILL.md)'s
    `can-i-deploy` check reads from.
 
 5. **Stand up the broker itself** if self-hosting rather than using
    PactFlow, backed by a real database (not the broker's default SQLite,
    which isn't intended for team/production use):
    ```yaml
-   # docker-compose.yml excerpt
+   # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml excerpt
    services:
      pact-broker:
        image: pactfoundation/pact-broker:latest
@@ -182,7 +182,7 @@ gate deploys is covered separately in
 ## Best practices
 
 - Version pact files by the consumer's real deployable artifact version
-  (commit SHA/build number), never a floating "latest," so the broker's
+  ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA/build number), never a floating "latest," so the broker's
   compatibility matrix is trustworthy.
 - Keep provider states (`stateHandlers`) realistic and isolated — each
   state should set up exactly the data needed for that interaction and
@@ -221,11 +221,11 @@ gate deploys is covered separately in
 - **Symptom:** The broker accumulates hundreds of pact versions from
   feature branches, and it's unclear which one reflects what's actually
   running in production.
-  **Fix:** Publish with both a version (commit SHA) and a branch tag, and
+  **Fix:** Publish with both a version ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA) and a branch tag, and
   use the broker's "deployed"/"released" version-recording API
   (`pact-broker record-deployment`) to mark which specific version is
   actually live in each environment — this is exactly what
-  [pact-configuration-validation](../pact-configuration-validation/SKILL.md)'s
+  [pact-configuration-validation](../[pact-configuration-validation](../../../DevOps_and_Cloud/CI_CD/pact-configuration-validation/SKILL.md)/SKILL.md)'s
   `can-i-deploy` check relies on to give a meaningful answer.
 
 - **Symptom:** A team stands up Pact for a genuinely complex, multi-hop
@@ -240,7 +240,7 @@ gate deploys is covered separately in
 ## Worked example
 
 **Scenario:** `order-service` (consumer) depends on `inventory-service`
-(provider) for stock lookups; a recent production incident happened
+(provider) for stock lookups; a recent production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) happened
 because inventory-service changed a field name without order-service
 noticing until deploy.
 
@@ -248,14 +248,14 @@ noticing until deploy.
    pact file describing the `GET /inventory/:sku` interaction with a
    `stock` field matched as `integer(42)` (any integer, not exactly 42).
 2. On merge to `main`, `order-service`'s pipeline publishes the pact to
-   the team's self-hosted broker, tagged with the merge commit SHA and
+   the team's self-hosted broker, tagged with the merge [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA and
    branch `main`.
 3. The broker's webhook fires a build in `inventory-service`'s CI,
    running the provider verification test from step 3 against the newly
    published contract, seeding test data via the `stateHandlers` map.
 4. Verification passes and is published back to the broker
    (`publishVerificationResult: true`), giving the broker a record: "this
-   `inventory-service` commit satisfies this `order-service` contract
+   `inventory-service` [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) satisfies this `order-service` contract
    version."
 5. Weeks later, an engineer on `inventory-service` renames the `stock`
    field to `quantity` in a draft PR. The next provider verification run
@@ -266,12 +266,12 @@ noticing until deploy.
 
 ## Cross-references
 
-- [pact-configuration-validation](../pact-configuration-validation/SKILL.md) —
+- [pact-configuration-validation](../[pact-configuration-validation](../../../DevOps_and_Cloud/CI_CD/pact-configuration-validation/SKILL.md)/SKILL.md) —
   using the broker's compatibility data set up here to gate deploys with
   `can-i-deploy`, rather than only running verification informationally.
-- [ci-cd-pipeline-design](../../../devops/skills/ci-cd-pipeline-design/SKILL.md) —
+- [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) —
   where the publish/verify steps fit as pipeline stages/gates for both
   the consumer and provider repos.
-- [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md) —
+- [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md) —
   recording which contract version is deployed to which environment,
   which the broker's deployment-tracking API depends on.

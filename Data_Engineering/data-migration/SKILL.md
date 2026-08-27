@@ -35,7 +35,7 @@ nothing depends on it anymore.
   observation period, remove the old column, table, or field.
 
 Each phase ships as its own deploy, sequenced with normal rollout controls — see
-`deployment-strategies` for how to stage and gate a rollout, since migration phases are just
+`[deployment-strategies](../../DevOps_and_Cloud/Containers_and_Orchestration/deployment-strategies/SKILL.md)` for how to stage and gate a rollout, since migration phases are just
 deploys with an extra constraint: the previous phase must already be stable in production.
 
 **Done when:** the migration is written as three separate, independently deployable changes,
@@ -84,7 +84,7 @@ the new one that got the attention during development.
   new produce equivalent results for the same input.
 - **Use a feature flag to control which path serves live traffic**, so verification can happen
   gradually against real traffic percentages rather than an all-or-nothing switch — see
-  `feature-flags` for the mechanics of that rollout.
+  `[feature-flags](../../DevOps_and_Cloud/CI_CD/feature-flags/SKILL.md)` for the mechanics of that rollout.
 - **Confirm the new path under real production load**, not just synthetic tests, before the
   contract phase removes the option to fall back.
 

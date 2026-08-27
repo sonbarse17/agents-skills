@@ -24,7 +24,7 @@ Use this skill when:
 
 - OpenShift cluster access
 - oc CLI installed
-- Basic Kubernetes knowledge
+- Basic [Kubernetes](../kubernetes/SKILL.md) knowledge
 
 ## CLI Basics
 
@@ -70,8 +70,8 @@ oc delete project myapp
 # Deploy from container image
 oc new-app --image=nginx:latest --name=webserver
 
-# Deploy from Docker Hub
-oc new-app docker.io/library/nginx:latest
+# Deploy from [Docker](../docker/SKILL.md) Hub
+oc new-app [docker](../docker/SKILL.md).io/library/nginx:latest
 
 # Deploy with environment variables
 oc new-app myimage:latest \
@@ -83,13 +83,13 @@ oc new-app myimage:latest \
 
 ```bash
 # Deploy from Git repository
-oc new-app https://github.com/org/myapp.git
+oc new-app https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
 
 # Specify builder image
-oc new-app nodejs:18~https://github.com/org/nodejs-app.git
+oc new-app nodejs:18~https://[github](../../CI_CD/github/SKILL.md).com/org/nodejs-app.git
 
 # With context directory
-oc new-app https://github.com/org/monorepo.git \
+oc new-app https://[github](../../CI_CD/github/SKILL.md).com/org/[monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md).git \
   --context-dir=backend \
   --name=backend-api
 ```
@@ -101,7 +101,7 @@ oc new-app https://github.com/org/monorepo.git \
 oc get templates -n openshift
 
 # Deploy from template
-oc new-app postgresql-persistent \
+oc new-app [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-persistent \
   -p POSTGRESQL_USER=user \
   -p POSTGRESQL_PASSWORD=secret \
   -p POSTGRESQL_DATABASE=mydb
@@ -173,10 +173,10 @@ spec:
   source:
     type: Git
     git:
-      uri: https://github.com/org/myapp.git
+      uri: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
       ref: main
   strategy:
-    type: Docker
+    type: [Docker](../docker/SKILL.md)
     dockerStrategy:
       dockerfilePath: Dockerfile
   output:
@@ -185,8 +185,8 @@ spec:
       name: myapp:latest
   triggers:
     - type: ConfigChange
-    - type: GitHub
-      github:
+    - type: [GitHub](../../CI_CD/github/SKILL.md)
+      [github](../../CI_CD/github/SKILL.md):
         secret: webhook-secret
 ```
 
@@ -201,7 +201,7 @@ spec:
   source:
     type: Git
     git:
-      uri: https://github.com/org/myapp.git
+      uri: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
   strategy:
     type: Source
     sourceStrategy:
@@ -262,7 +262,7 @@ oc create imagestream myapp
 
 # Import image
 oc import-image myapp:latest \
-  --from=docker.io/library/nginx:latest \
+  --from=[docker](../docker/SKILL.md).io/library/nginx:latest \
   --confirm
 
 # Tag image
@@ -399,7 +399,7 @@ EOF
 oc get csv -n openshift-operators
 ```
 
-## Monitoring
+## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
 
 ```bash
 # View pod logs
@@ -435,10 +435,10 @@ oc debug pod/myapp-1-xyz
 **Solution**: Create image pull secret, link to service account
 
 ```bash
-oc create secret docker-registry regcred \
-  --docker-server=registry.example.com \
-  --docker-username=user \
-  --docker-password=pass
+oc create secret [docker](../docker/SKILL.md)-registry regcred \
+  --[docker](../docker/SKILL.md)-server=registry.example.com \
+  --[docker](../docker/SKILL.md)-username=user \
+  --[docker](../docker/SKILL.md)-password=pass
 
 oc secrets link default regcred --for=pull
 ```
@@ -456,6 +456,6 @@ oc secrets link default regcred --for=pull
 
 ## Related Skills
 
-- [kubernetes-ops](../kubernetes-ops/) - K8s fundamentals
-- [helm-charts](../helm-charts/) - Helm deployments
-- [container-registries](../../containers/container-registries/) - Image management
+- [kubernetes-ops](../[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s fundamentals
+- [helm-charts](../[helm-charts](../helm-charts/SKILL.md)/) - Helm deployments
+- [container-registries](../../containers/[container-registries](../../Cloud_Providers/container-registries/SKILL.md)/) - Image management

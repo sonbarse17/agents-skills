@@ -25,7 +25,7 @@ it to decide whether an upgrade is safe. When versioning is inconsistent
 are stale/hand-written-after-the-fact, that promise breaks — consumers
 either upgrade blindly into a breaking change or avoid upgrading at all
 out of distrust. This skill covers deriving version numbers and changelogs
-automatically and consistently from commit history, so every release
+automatically and consistently from [commit](../../CI_CD/commit/SKILL.md) history, so every release
 carries an accurate, machine-verifiable account of what changed and how
 risky the upgrade is.
 
@@ -33,40 +33,40 @@ risky the upgrade is.
 
 - Establishing a versioning scheme for a new library, service, or API
   (SemVer vs. CalVer, and why).
-- Automating changelog generation from commit messages instead of
+- Automating changelog generation from [commit](../../CI_CD/commit/SKILL.md) messages instead of
   hand-writing release notes after the fact (or not at all).
 - Setting up automatic release tagging/publishing triggered by merges to
   the main branch.
 - A consumer asks "what changed between v1.3.0 and v1.4.0" and there's no
-  reliable answer beyond reading the full commit log.
-- Enforcing Conventional Commits (or another structured commit format) so
+  reliable answer beyond reading the full [commit](../../CI_CD/commit/SKILL.md) log.
+- Enforcing Conventional Commits (or another structured [commit](../../CI_CD/commit/SKILL.md) format) so
   automation has something reliable to parse.
-- Coordinating version bumps across a monorepo with multiple
+- Coordinating version bumps across a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with multiple
   independently-versioned packages.
 
 ## Prerequisites & environment
 
-- A commit message convention the team will actually follow —
+- A [commit](../../CI_CD/commit/SKILL.md) message convention the team will actually follow —
   Conventional Commits (`feat:`, `fix:`, `feat!:`/`BREAKING CHANGE:`,
   `chore:`, etc.) is the most common because tooling (semantic-release,
   release-please, commitlint) is built around it, but any structured
   format works if it distinguishes breaking/feature/fix changes.
 - Node.js ≥ 18 if using `semantic-release` (npm package, but works for
   any language's release artifact, not just JS); or `release-please` (Go
-  binary/GitHub Action, language-agnostic) as an alternative with a
+  binary/[GitHub](../../CI_CD/github/SKILL.md) Action, language-agnostic) as an alternative with a
   slightly different model (it opens a standing "Release PR" that
   accumulates changes, rather than releasing on every merge).
 - Git tag push permission for the CI identity, and, if publishing to a
   package registry as part of the release, registry publish credentials
   scoped to the release job only (see
-  [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md)).
+  [artifact-and-dependency-management](../[artifact-and-dependency-management](../../../Software_Engineering_and_Other/Frontend/artifact-and-[dependency-management](../../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)).
 - A decision on SemVer vs. CalVer before automating: SemVer
   (`MAJOR.MINOR.PATCH`) suits libraries/APIs where consumers reason about
   compatibility; CalVer (`YYYY.MM.PATCH` or similar) suits products/
   services released on a cadence where "compatibility" is less the point
   than "when was this built."
-- `commitlint` (or equivalent) wired into CI/pre-commit if you want
-  malformed commit messages caught before they break automated version
+- `commitlint` (or equivalent) wired into CI/pre-[commit](../../CI_CD/commit/SKILL.md) if you want
+  malformed [commit](../../CI_CD/commit/SKILL.md) messages caught before they break automated version
   inference, rather than discovered at release time.
 
 ## Step-by-step guidance
@@ -81,7 +81,7 @@ risky the upgrade is.
    BREAKING CHANGE: /v1/users is removed; use /v2/users instead.
    ```
    `feat` → minor bump, `fix` → patch bump, `!`/`BREAKING CHANGE:` footer
-   → major bump. Enforce format with `commitlint` in a commit-msg hook or
+   → major bump. Enforce format with `commitlint` in a [commit](../../CI_CD/commit/SKILL.md)-msg hook or
    CI check so bad commits are caught at PR time, not discovered when a
    release computes the wrong version.
 
@@ -91,11 +91,11 @@ risky the upgrade is.
    {
      "branches": ["main"],
      "plugins": [
-       "@semantic-release/commit-analyzer",
+       "@semantic-release/[commit](../../CI_CD/commit/SKILL.md)-analyzer",
        "@semantic-release/release-notes-generator",
        "@semantic-release/changelog",
        ["@semantic-release/npm", { "npmPublish": true }],
-       "@semantic-release/github",
+       "@semantic-release/[github](../../CI_CD/github/SKILL.md)",
        ["@semantic-release/git", {
          "assets": ["CHANGELOG.md", "package.json"],
          "message": "chore(release): ${nextRelease.version} [skip ci]"
@@ -107,7 +107,7 @@ risky the upgrade is.
    ```yaml
    release:
      needs: [verify]
-     if: github.ref == 'refs/heads/main'
+     if: [github](../../CI_CD/github/SKILL.md).ref == 'refs/heads/main'
      runs-on: ubuntu-latest
      permissions: { contents: write, issues: write, pull-requests: write }
      steps:
@@ -120,7 +120,7 @@ risky the upgrade is.
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
    ```
-   `fetch-depth: 0` is required — semantic-release needs full commit
+   `fetch-depth: 0` is required — semantic-release needs full [commit](../../CI_CD/commit/SKILL.md)
    history to compute the next version, not a shallow clone.
 
 3. **Or configure release-please** for a "standing release PR" model,
@@ -137,18 +137,18 @@ risky the upgrade is.
    actually cuts the tag/release. This suits teams wanting a deliberate
    "yes, ship this batch" moment rather than releasing on every merge.
 
-4. **For a monorepo with multiple independently-versioned packages**, use
+4. **For a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with multiple independently-versioned packages**, use
    a tool that understands package boundaries — `semantic-release` with
-   `semantic-release-monorepo` extensions, `release-please`'s manifest
+   `semantic-release-[monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)` extensions, `release-please`'s manifest
    mode, or Changesets (common in JS monorepos: contributors add a small
    `.changeset/*.md` describing the change and bump type per affected
    package, and a bot batches them into per-package releases).
 
 5. **Publish the changelog and artifact together, atomically.** The
-   release job should tag Git, generate/commit `CHANGELOG.md`, publish
+   release job should tag Git, generate/[commit](../../CI_CD/commit/SKILL.md) `CHANGELOG.md`, publish
    the package/image (pinned to that exact version — see
-   [container-build-and-release](../container-build-and-release/SKILL.md)),
-   and create the GitHub/GitLab release entry as one coordinated job —
+   [container-build-and-release](../[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)),
+   and create the [GitHub](../../CI_CD/github/SKILL.md)/GitLab release entry as one coordinated job —
    not as separate manual steps that can drift out of sync (e.g., a tag
    exists but the changelog wasn't updated, or vice versa).
 
@@ -163,10 +163,10 @@ risky the upgrade is.
 - Never hand-edit a version number that automation also manages — pick
   one source of truth (the tool) or you get drift between what's tagged
   in Git and what's declared in the manifest (`package.json`, `pyproject.toml`).
-- Treat the commit message, not the PR title alone, as the thing
+- Treat the [commit](../../CI_CD/commit/SKILL.md) message, not the PR title alone, as the thing
   automation parses (unless your tool is explicitly configured to use
   squash-merge PR titles) — decide which and be consistent, since a team
-  that writes good PR titles but sloppy commit messages (or vice versa)
+  that writes good PR titles but sloppy [commit](../../CI_CD/commit/SKILL.md) messages (or vice versa)
   will get inconsistent changelogs depending on which one the tool reads.
 - Reserve manual/human-chosen version numbers for pre-1.0 or experimental
   packages where SemVer's compatibility promise doesn't yet apply
@@ -177,7 +177,7 @@ risky the upgrade is.
   diffable across releases.
 - Gate a release job behind the same passing test suite used for regular
   CI (per
-  [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)) — release
+  [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)) — release
   automation should never bypass quality gates just because it's a
   separate job.
 - For CalVer schemes, still record a monotonically increasing patch/build
@@ -190,38 +190,38 @@ risky the upgrade is.
 - **Symptom:** semantic-release computes a version bump that doesn't
   match what the team expected (e.g., a release that should have been
   major only bumps minor).
-  **Fix:** Check the actual commit messages since the last release for
+  **Fix:** Check the actual [commit](../../CI_CD/commit/SKILL.md) messages since the last release for
   the `!`/`BREAKING CHANGE:` marker — a breaking change described only in
   prose without the structured marker will not be detected as breaking by
-  the commit-analyzer plugin, regardless of how the PR description reads.
+  the [commit](../../CI_CD/commit/SKILL.md)-analyzer plugin, regardless of how the PR description reads.
 
 - **Symptom:** The changelog and the published package version disagree
   (changelog says 1.5.0, but the published package is still 1.4.2).
   **Fix:** The release steps ran out of order or partially failed — make
-  tagging, changelog commit, and publish part of one atomic job/plugin
+  tagging, changelog [commit](../../CI_CD/commit/SKILL.md), and publish part of one atomic job/plugin
   chain (as semantic-release's plugin pipeline does) rather than separate
   jobs that can fail independently and leave things half-updated.
 
-- **Symptom:** A squash-merged PR's commit message on `main` is just the
-  PR title, losing the granular Conventional Commit messages from
+- **Symptom:** A squash-merged PR's [commit](../../CI_CD/commit/SKILL.md) message on `main` is just the
+  PR title, losing the granular Conventional [Commit](../../CI_CD/commit/SKILL.md) messages from
   individual commits within the PR.
   **Fix:** Decide deliberately whether squash-merge is compatible with
   your setup — if squashing, enforce that the *PR title itself* follows
   Conventional Commits format (many teams add a `commitlint`/PR-title-lint
-  check specifically for this), since that becomes the only commit
+  check specifically for this), since that becomes the only [commit](../../CI_CD/commit/SKILL.md)
   message automation ever sees.
 
 - **Symptom:** `semantic-release` runs but produces no release at all,
   with no clear error.
   **Fix:** Confirm the checkout step used `fetch-depth: 0` (full history)
-  — a shallow clone frequently causes the commit-analyzer to see no
+  — a shallow clone frequently causes the [commit](../../CI_CD/commit/SKILL.md)-analyzer to see no
   releasable commits since it can't walk back to the last tag.
 
 - **Symptom:** Consumers of a library keep getting broken by "minor"
   version bumps.
-  **Fix:** Audit recent releases for commits marked `feat` that actually
+  **Fix:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) recent releases for commits marked `feat` that actually
   removed or changed existing behavior without a `!`/`BREAKING CHANGE:`
-  marker — this is a commit-discipline problem, not a tooling problem;
+  marker — this is a [commit](../../CI_CD/commit/SKILL.md)-discipline problem, not a tooling problem;
   retrain contributors (and consider a PR template reminder) on when a
   change is actually breaking under SemVer.
 
@@ -261,12 +261,12 @@ Resulting `CHANGELOG.md` excerpt:
 ```
 Each release is tagged in Git (`v2.0.0`, etc.), the container image is
 built and pushed with the matching immutable tag (see
-[container-build-and-release](../container-build-and-release/SKILL.md)),
+[container-build-and-release](../[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)),
 and consumers evaluating the upgrade from `1.5.0` to `2.0.0` can see
 immediately, from the changelog alone, that a breaking API removal is
-involved — without reading a single raw commit.
+involved — without reading a single raw [commit](../../CI_CD/commit/SKILL.md).
 
 ## Cross-references
 
-- [ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)
-- [container-build-and-release](../container-build-and-release/SKILL.md)
+- [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
+- [container-build-and-release](../[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)

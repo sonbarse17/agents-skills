@@ -5,7 +5,7 @@ description: Master on-call shift handoffs with context transfer, escalation pro
 
 # On-Call Handoff Patterns
 
-Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable incident response across shifts.
+Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response across shifts.
 
 ## When to Use This Skill
 
@@ -40,7 +40,7 @@ Outgoing:
 Incoming:
 ├── 15 min: Review handoff document
 ├── 15 min: Sync call with outgoing
-└── 5 min: Verify alerting setup
+└── 5 min: Verify [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) setup
 ```
 
 ## Templates and detailed worked examples
@@ -55,17 +55,17 @@ Use the outgoing checklist as a gate: do not mark handoff complete until every s
 **A 30-minute sync call is not possible due to timezone gaps.**
 Fall back to the async quick handoff template (Template 2). Supplement with a short Loom or voice memo walking through the watch list. Ensure the incoming engineer has a direct contact method if they have follow-up questions.
 
-**The incoming engineer inherits a mid-incident and is immediately overwhelmed.**
-Use the incident handoff template (Template 3) specifically. The outgoing engineer should remain available on Slack for 15 minutes after handoff, even if off-call, to answer clarifying questions.
+**The incoming engineer inherits a mid-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and is immediately overwhelmed.**
+Use the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) handoff template (Template 3) specifically. The outgoing engineer should remain available on Slack for 15 minutes after handoff, even if off-call, to answer clarifying questions.
 
 **On-call handoff documents are inconsistently formatted across teams.**
 Adopt the shift handoff template organization-wide and store completed handoffs in a shared location (wiki, Notion, Confluence). Link each handoff from the on-call schedule entry in PagerDuty.
 
-**Incoming engineer cannot verify their alerting is working before the outgoing engineer logs off.**
+**Incoming engineer cannot verify their [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) is working before the outgoing engineer logs off.**
 Add a standard step: outgoing engineer fires a test alert and confirms incoming engineer receives it in PagerDuty and Slack before ending the overlap window.
 
 ## Related Skills
 
-- [incident-classification](../../skills/incident-classification/SKILL.md) — Classify and prioritize incidents that need to be included in the handoff document
+- [incident-classification](../../skills/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-classification/SKILL.md) — Classify and prioritize incidents that need to be included in the handoff document
 - [postmortem-facilitation](../../skills/postmortem-facilitation/SKILL.md) — Turn resolved incidents from the shift into structured postmortems
 

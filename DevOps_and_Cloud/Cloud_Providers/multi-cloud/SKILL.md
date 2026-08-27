@@ -7,7 +7,7 @@ license: MIT
 # Multi-Cloud
 
 Multi-cloud is usually sold as risk reduction and delivered as a tax: a second provider means a
-second set of IAM models, networking primitives, billing dashboards, and on-call runbooks to
+second set of IAM models, networking primitives, billing [dashboards](../dashboards/SKILL.md), and on-call [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md) to
 maintain, permanently, whether or not you ever use the failover it was meant to provide. The
 question is never whether multi-cloud is possible — it always is — but whether the ongoing
 operational cost buys something the business actually needs.
@@ -20,7 +20,7 @@ with a stated reason, not something you discover you're already doing.**
 
 The legitimate reasons are narrow: a regulatory requirement to avoid a single vendor, genuine
 negotiating leverage at large spend, a specific managed service only one provider offers, or
-disaster-recovery requirements that mandate provider diversity. "Just in case we need to switch"
+[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md) requirements that mandate provider diversity. "Just in case we need to switch"
 is not on that list — it's a hedge against a risk that's rarely priced against the daily cost of
 carrying it.
 
@@ -32,9 +32,9 @@ someone asking "why not just use one?"
 Building only on the intersection of features every provider supports means giving up each
 provider's best managed offerings — a managed database with strong consistency guarantees, a
 purpose-built queue — in favor of something you self-run so it's portable. That trade is
-sometimes right and often isn't; know which one you're making. A portability layer like Kubernetes
+sometimes right and often isn't; know which one you're making. A portability layer like [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
 gets you portable compute, not portable everything — data services, IAM, and networking still
-differ underneath. See `kubernetes-operations` for running that layer, and `cloud-architecture`
+differ underneath. See `[kubernetes-operations](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)` for running that layer, and `[cloud-architecture](../cloud-architecture/SKILL.md)`
 for the managed-vs-self-run tradeoff this decision is really an instance of.
 
 **Done when:** the design's portability boundary — what's portable and what isn't — is explicit,
@@ -44,13 +44,13 @@ not assumed.
 
 Every additional provider means another IAM model to secure correctly, another network model to
 reason about, another set of quotas and outage patterns to learn, and another on-call rotation
-that needs to know all of it. This cost shows up as engineer-hours and incident response quality,
+that needs to know all of it. This cost shows up as engineer-hours and [incident](../../Observability_and_SecOps/incident/SKILL.md) response quality,
 not as a line item — which is exactly why it's the cost teams underestimate before committing.
 
 **Done when:** the ongoing staffing cost of the second provider is stated as a number in the same
 document as the migration cost, and that document names the budget owner who signed off.
 
-## 4. Audit for accidental multi-cloud regularly
+## 4. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for accidental multi-cloud regularly
 
 Multi-cloud creeps in through acquisitions, a team standing up a proof-of-concept that never got
 decommissioned, or a SaaS vendor's infrastructure counting as a dependency. Each of these carries
@@ -59,7 +59,7 @@ decision. Periodically inventory what's actually running where, including vendor
 dependencies.
 
 **Done when:** every provider workloads or critical dependencies run on is a known, current
-entry in an inventory — not a surprise found during an audit.
+entry in an inventory — not a surprise found during an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 ## 5. Keep provider-specific abstractions thin and swappable, not universal
 
@@ -67,7 +67,7 @@ If portability across providers is a genuine requirement, build the abstraction 
 where you actually need to swap — an interface around a queue, not a homegrown cloud-agnostic
 platform that reimplements every provider's primitives. A thin, honest abstraction is
 maintainable; a universal one becomes its own product with its own bug backlog. Manage the
-underlying infrastructure per-provider with `infrastructure-as-code` and `terraform-modules`
+underlying infrastructure per-provider with `[infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md)` and `[terraform-modules](../../Infrastructure_as_Code/terraform-modules/SKILL.md)`
 rather than inventing a meta-layer above them.
 
 **Done when:** any cross-provider abstraction is scoped to the specific component that needs to
@@ -86,5 +86,5 @@ never been drilled is the most common way the "reason" from step 1 turns out to 
 
 State the written reason for running on more than one provider, what is and isn't portable across
 them, and the estimated ongoing operational cost. Name any workload or dependency running on a
-second provider without a clear reason — that's the accidental multi-cloud the audit should have
+second provider without a clear reason — that's the accidental multi-cloud the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) should have
 caught, and it is more expensive than it looks.

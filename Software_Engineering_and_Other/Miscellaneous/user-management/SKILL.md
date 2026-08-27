@@ -49,7 +49,7 @@ useradd -r -s /usr/sbin/nologin -d /opt/myapp -c "MyApp Service Account" myapp
 useradd -m -s /bin/bash -e 2025-12-31 -c "Contractor - Bob Lee" blee
 
 # Create user and add to multiple supplementary groups at creation time
-useradd -m -s /bin/bash -G docker,developers,ssh-users -c "Dev User" devuser
+useradd -m -s /bin/bash -G [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),developers,ssh-users -c "Dev User" devuser
 ```
 
 ### Modifying Users
@@ -57,7 +57,7 @@ useradd -m -s /bin/bash -G docker,developers,ssh-users -c "Dev User" devuser
 ```bash
 # Add a user to a supplementary group (preserving existing groups with -a)
 usermod -aG sudo jsmith
-usermod -aG docker,developers jsmith
+usermod -aG [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),developers jsmith
 
 # Change the user's login shell
 usermod -s /bin/zsh jsmith
@@ -153,14 +153,14 @@ visudo -f /etc/sudoers.d/developers
 # Allow a deploy user full sudo with no password
 deploy ALL=(ALL) NOPASSWD: ALL
 
-# Allow ops team to run docker commands only
-%ops ALL=(ALL) NOPASSWD: /usr/bin/docker, /usr/bin/docker-compose
+# Allow ops team to run [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) commands only
+%ops ALL=(ALL) NOPASSWD: /usr/bin/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), /usr/bin/[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)
 
 # Allow a user to run commands as a specific service account
 jsmith ALL=(myapp) NOPASSWD: /opt/myapp/bin/*
 
 # Restrict to specific hosts (useful with centralized sudoers)
-jsmith dbservers=(root) /usr/bin/systemctl restart postgresql
+jsmith dbservers=(root) /usr/bin/systemctl restart [postgresql](../../Backend/postgresql/SKILL.md)
 
 # Log all sudo commands to a dedicated file
 Defaults log_output
@@ -304,7 +304,7 @@ echo '%linux\ admins ALL=(ALL) ALL' > /etc/sudoers.d/ad-admins
 #!/bin/bash
 # bulk-create-users.sh
 # CSV format: username,fullname,groups,shell
-# Example: jsmith,Jane Smith,developers;docker,/bin/bash
+# Example: jsmith,Jane Smith,developers;[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),/bin/bash
 
 CSV_FILE="${1:?Usage: $0 <users.csv>}"
 
@@ -330,7 +330,7 @@ while IFS=',' read -r username fullname groups shell; do
 done < "$CSV_FILE"
 ```
 
-### Quick Access Audit Commands
+### Quick Access [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Commands
 
 ```bash
 # List non-system users (UID >= 1000)
@@ -361,7 +361,7 @@ awk -F: '($2 == "" || $2 == "!") { print $1 }' /etc/shadow 2>/dev/null
 
 ## Related Skills
 
-- `linux-administration` -- General Linux server management
-- `ssh-configuration` -- SSH key-based authentication for managed users
-- `systemd-services` -- Service accounts and systemd user instances
-- `performance-tuning` -- Resource limits per user via cgroups and ulimits
+- `[linux-administration](../linux-administration/SKILL.md)` -- General Linux server management
+- `[ssh-configuration](../ssh-configuration/SKILL.md)` -- SSH key-based authentication for managed users
+- `[systemd-services](../systemd-services/SKILL.md)` -- Service accounts and systemd user instances
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Resource limits per user via cgroups and ulimits

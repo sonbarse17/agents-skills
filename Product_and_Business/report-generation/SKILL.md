@@ -33,7 +33,7 @@ Generate complex reports in multiple formats (PDF, Excel, CSV) from large datase
 | Streaming support | No (full render) | Partial (worksheet) | Yes (row-by-row) | Yes |
 | Interactive features | No | Formulas, filters | No | Links, JS |
 | Accessibility | Poor (screen reader limited) | Moderate | Excellent | Excellent |
-| Best for | Invoices, contracts, compliance | Financials, data analysis | Data export, ETL | Dashboards, email |
+| Best for | Invoices, contracts, compliance | Financials, data analysis | Data export, ETL | [Dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), email |
 
 Decision: PDF for presentation/output. CSV for data export. Excel for analysis. HTML for screen display.
 
@@ -101,7 +101,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Format Selection & Setup**: Choose libraries per format — Puppeteer for PDF, ExcelJS for XLSX, native streams for CSV.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Puppeteer PDF generation
 import puppeteer from 'puppeteer';
 
@@ -183,7 +183,7 @@ async function generatePdf(html: string): Promise<Buffer> {
 
 3. **Excel Export with ExcelJS**: Handle multi-sheet workbooks, formatting, formulas.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ExcelJS from 'exceljs';
 
 async function generateExcel(data: ReportData[]): Promise<Buffer> {
@@ -223,7 +223,7 @@ async function generateExcel(data: ReportData[]): Promise<Buffer> {
 
 4. **Large CSV Export with Streaming**: Process datasets >100K rows without memory overflow.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { createObjectCsvStringifier } from 'csv-writers';
 import { Transform } from 'stream';
 
@@ -276,7 +276,7 @@ app.get('/reports/csv', async (req, res) => {
 
 5. **Async Report Queue**: Use Bull or Sidekiq for reports exceeding processing thresholds.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import Bull from 'bull';
 
 const reportQueue = new Bull('report-generation', {
@@ -330,7 +330,7 @@ reportQueue.process(async (job) => {
 
 6. **Report Scheduling**: Support one-time and recurring schedules with cron expressions.
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ReportSchedule {
   id: string;
   reportType: string;
@@ -369,7 +369,7 @@ async function evaluateSchedules(): Promise<void> {
 
 ### Pattern: Puppeteer Pool for PDF Generation
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { createPool, Pool } from 'generic-pool';
 
@@ -404,7 +404,7 @@ async function generatePdfFromUrl(url: string, options: PdfOptions = {}): Promis
 
 ### Pattern: Report Status API
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // report-api.ts
 interface ReportJob {
   id: string;
@@ -450,7 +450,7 @@ app.get('/api/reports/:id/download', async (req, res) => {
 
 ### Pattern: Chunked Excel with Multiple Sheets
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import ExcelJS from 'exceljs';
 import { Transform } from 'stream';
 
@@ -490,7 +490,7 @@ async function generateMultiSheetExcel(dataBySheet: Record<string, any[]>, summa
 
 ### Pattern: Report Template Versioning
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 interface ReportTemplate {
   id: string;
   name: string;
@@ -558,7 +558,7 @@ class ReportTemplateManager {
 | Storing files in DB | DB bloat; slow backups | Object storage with metadata pointer |
 | Hardcoded page size | A4 and Letter differ; layout breaks | Dynamic page size based on locale/request |
 | Not setting PDF timeout | Infinite hang on slow page load | Always set 30s timeout on page.goto and page.pdf |
-| Serverless for PDF | Cold start + 15min limit + heavy Chromium | Use long-running worker or dedicated service |
+| [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) for PDF | Cold start + 15min limit + heavy Chromium | Use long-running worker or dedicated service |
 | No progress tracking | Users don't know if report is stuck | Update status via queue → DB → poll endpoint |
 
 ## Security Considerations
@@ -574,7 +574,7 @@ class ReportTemplateManager {
 
 ## Testing Strategies
 
-```typescript
+```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { describe, it, expect } from 'vitest';
 import puppeteer from 'puppeteer';
 import ExcelJS from 'exceljs';

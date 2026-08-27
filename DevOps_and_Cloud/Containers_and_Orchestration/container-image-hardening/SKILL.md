@@ -46,7 +46,7 @@ there to scan and what's exploitable if a vulnerability is found.
   admission-policy rejection, or manual review.
 - The user is deciding between a distroless, Alpine, minimal, or
   full-distribution base image for a given language/runtime.
-- The user wants to set Kubernetes `securityContext` fields (`runAsNonRoot`,
+- The user wants to set [Kubernetes](../kubernetes/SKILL.md) `securityContext` fields (`runAsNonRoot`,
   `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false`, dropped
   `capabilities`) consistently across workloads.
 - The user is troubleshooting a hardened image that fails at runtime
@@ -55,8 +55,8 @@ there to scan and what's exploitable if a vulnerability is found.
 
 ## Prerequisites & environment
 
-- Docker or another OCI-compatible builder (Buildah, Podman, BuildKit)
-  supporting multi-stage builds (standard in Docker since `18.09`+, and
+- [Docker](../docker/SKILL.md) or another OCI-compatible builder (Buildah, [Podman](../podman/SKILL.md), BuildKit)
+  supporting multi-stage builds (standard in [Docker](../docker/SKILL.md) since `18.09`+, and
   in essentially all current tooling).
 - Familiarity with the target application's actual runtime dependencies
   — hardening requires knowing what the app truly needs at runtime versus
@@ -72,17 +72,17 @@ there to scan and what's exploitable if a vulnerability is found.
     fully static binaries e.g. Go with CGO disabled).
   - **Alpine** — small (musl libc, `apk` package manager), widely used,
     but musl's subtle differences from glibc occasionally break
-    compiled dependencies (e.g. some Python/Node native modules); still
+    compiled dependencies (e.g. some [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Node native modules); still
     ships a shell and package manager unless explicitly stripped.
-  - **`-slim` variants** (e.g. `python:3.12-slim`, `node:20-slim`) — a
+  - **`-slim` variants** (e.g. `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim`, `node:20-slim`) — a
     reasonable middle ground: much smaller than the full image, glibc-based
     (fewer compatibility surprises than Alpine), still has a shell.
-  - Full-distribution images (`ubuntu`, `debian`, default `python:3.12`)
+  - Full-distribution images (`ubuntu`, `debian`, default `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`)
     — largest attack surface and image size; rarely justified for a
     final runtime image, sometimes needed as a build stage.
-- Kubernetes cluster (if hardening deploy-time `securityContext`) with
+- [Kubernetes](../kubernetes/SKILL.md) cluster (if hardening deploy-time `securityContext`) with
   admission-policy enforcement optional but recommended — see
-  [policy-as-code-guardrails](../policy-as-code-guardrails/SKILL.md) to
+  [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) to
   make these properties mandatory rather than best-effort.
 
 ## Step-by-step guidance
@@ -91,7 +91,7 @@ there to scan and what's exploitable if a vulnerability is found.
    `dev` package variants, source code not needed at runtime) never
    reaches the final image:
    ```dockerfile
-   # syntax=docker/dockerfile:1
+   # syntax=[docker](../docker/SKILL.md)/dockerfile:1
    FROM golang:1.22 AS builder
    WORKDIR /src
    COPY go.mod go.sum ./
@@ -109,7 +109,7 @@ there to scan and what's exploitable if a vulnerability is found.
    consider "the same" across rebuilds — tags are mutable and can be
    repointed by the upstream maintainer:
    ```dockerfile
-   FROM python:3.12-slim@sha256:<digest> AS base
+   FROM [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim@sha256:<digest> AS base
    ```
    Balance this against staying current on security patches: pinning by
    digest requires an explicit, deliberate bump process (e.g. a
@@ -127,7 +127,7 @@ there to scan and what's exploitable if a vulnerability is found.
 4. **Set a read-only root filesystem** at deploy time, with an explicit
    writable volume only where genuinely needed (temp files, cache):
    ```yaml
-   # Kubernetes pod securityContext
+   # [Kubernetes](../kubernetes/SKILL.md) pod securityContext
    securityContext:
      runAsNonRoot: true
      readOnlyRootFilesystem: true
@@ -153,7 +153,7 @@ there to scan and what's exploitable if a vulnerability is found.
 
 6. **Remove build-time secrets and unnecessary files** from the final
    image — use BuildKit secret mounts for anything credential-like during
-   build (see [secrets-management](../secrets-management/SKILL.md)), and
+   build (see [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)), and
    a `.dockerignore` to keep `.git`, local env files, and test fixtures
    out of the build context entirely:
    ```
@@ -170,14 +170,14 @@ there to scan and what's exploitable if a vulnerability is found.
    ```bash
    trivy image --severity CRITICAL,HIGH myorg/myapp:1.4.2
    ```
-   See [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)
+   See [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
    for the full scanning workflow.
 
 8. **Verify hardening holds at runtime**, not just at build time — a
-   Dockerfile with `USER app` can still be overridden by a Kubernetes pod
+   Dockerfile with `USER app` can still be overridden by a [Kubernetes](../kubernetes/SKILL.md) pod
    spec with `runAsUser: 0`; enforce the deploy-time properties via an
    admission policy (see
-   [policy-as-code-guardrails](../policy-as-code-guardrails/SKILL.md))
+   [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md))
    so the Dockerfile's intent can't be silently undone at deploy time.
 
 ## Best practices
@@ -201,30 +201,30 @@ there to scan and what's exploitable if a vulnerability is found.
   digest-update rules) — an unpinned `:latest` drifts unpredictably, but
   a digest pinned once and never revisited silently accumulates
   unpatched base-image CVEs, which is not obviously better.
-- Enforce hardening properties at the Kubernetes admission layer in
+- Enforce hardening properties at the [Kubernetes](../kubernetes/SKILL.md) admission layer in
   addition to the Dockerfile — a well-hardened image can still be run
   insecurely (`runAsUser: 0`, capabilities added back, writable root
   filesystem) by pod spec alone, and only cluster-side enforcement
   guarantees the properties actually hold at runtime.
 - Keep a debug story for distroless/no-shell images before you need it in
-  an incident — e.g. a separate debug image variant with a shell built
-  from the same application layer, or `kubectl debug` with an ephemeral
+  an [incident](../../Observability_and_SecOps/incident/SKILL.md) — e.g. a separate debug image variant with a shell built
+  from the same application layer, or `[kubectl](../kubectl/SKILL.md) debug` with an ephemeral
   container attached to the running pod — rather than discovering during
-  an incident that you can't `exec` in at all.
+  an [incident](../../Observability_and_SecOps/incident/SKILL.md) that you can't `exec` in at all.
 
 ## Common pitfalls
 
 - **Symptom:** Switching to a distroless base image breaks the ability to
-  `kubectl exec -it` into the container to debug an issue.
+  `[kubectl](../kubectl/SKILL.md) exec -it` into the container to debug an issue.
   **Fix:** This is expected — distroless images have no shell by design.
-  Use `kubectl debug <pod> -it --image=busybox --target=<container>` to
+  Use `[kubectl](../kubectl/SKILL.md) debug <pod> -it --image=busybox --target=<container>` to
   attach an ephemeral debug container with a shell to the running pod's
   namespaces instead of relying on exec-into-the-app-container, or
   maintain a separate `-debug` image tag with a shell for troubleshooting
   builds specifically.
 
-- **Symptom:** An Alpine-based image works in local Docker Desktop testing
-  but a compiled Python/Node native dependency fails or behaves
+- **Symptom:** An Alpine-based image works in local [Docker](../docker/SKILL.md) Desktop testing
+  but a compiled [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Node native dependency fails or behaves
   differently in the CI/production Alpine build.
   **Fix:** This is usually musl libc vs. glibc incompatibility in a
   native extension; either switch that stage to a glibc-based `-slim`
@@ -241,14 +241,14 @@ there to scan and what's exploitable if a vulnerability is found.
   reverting the read-only setting entirely.
 
 - **Symptom:** A Dockerfile sets `USER app` but the running pod in
-  Kubernetes still shows the process running as root (UID 0).
+  [Kubernetes](../kubernetes/SKILL.md) still shows the process running as root (UID 0).
   **Fix:** Something in the deploy path (`runAsUser: 0` in the pod spec,
   or a Helm chart default) is overriding the image's default user;
-  Kubernetes pod spec takes precedence over the Dockerfile `USER`
+  [Kubernetes](../kubernetes/SKILL.md) pod spec takes precedence over the Dockerfile `USER`
   instruction. Set and enforce `runAsNonRoot: true` in the pod
   `securityContext` and consider an admission policy to prevent this
   override cluster-wide (see
-  [policy-as-code-guardrails](../policy-as-code-guardrails/SKILL.md)).
+  [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)).
 
 - **Symptom:** Image size and vulnerability count barely improve after
   switching base images, and the SCA scan still shows the same dozens of
@@ -264,7 +264,7 @@ there to scan and what's exploitable if a vulnerability is found.
 
 A Go HTTP service is rewritten from a single-stage, root, full-Debian
 Dockerfile to a hardened multi-stage, distroless, non-root build, with
-matching Kubernetes `securityContext`.
+matching [Kubernetes](../kubernetes/SKILL.md) `securityContext`.
 
 Before:
 ```dockerfile
@@ -279,7 +279,7 @@ default Debian base with a shell and package manager.)
 
 After:
 ```dockerfile
-# syntax=docker/dockerfile:1
+# syntax=[docker](../docker/SKILL.md)/dockerfile:1
 FROM golang:1.22 AS builder
 WORKDIR /src
 COPY go.mod go.sum ./
@@ -292,7 +292,7 @@ COPY --from=builder /out/server /server
 USER nonroot:nonroot
 ENTRYPOINT ["/server"]
 ```
-Corresponding Kubernetes pod hardening:
+Corresponding [Kubernetes](../kubernetes/SKILL.md) pod hardening:
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -327,13 +327,13 @@ to keep that guarantee from being quietly overridden.
 
 ## Cross-references
 
-- [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md) —
+- [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) —
   scanning the resulting image for known vulnerabilities in whatever
   base-image packages and dependencies remain.
-- [supply-chain-security-slsa-sbom](../supply-chain-security-slsa-sbom/SKILL.md) —
+- [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
   generating an SBOM and signing the hardened image so its provenance
   can be verified downstream.
-- [policy-as-code-guardrails](../policy-as-code-guardrails/SKILL.md) —
+- [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   enforcing non-root/read-only/dropped-capabilities requirements at
-  Kubernetes admission time so a hardened Dockerfile's properties can't
+  [Kubernetes](../kubernetes/SKILL.md) admission time so a hardened Dockerfile's properties can't
   be silently overridden by a pod spec.

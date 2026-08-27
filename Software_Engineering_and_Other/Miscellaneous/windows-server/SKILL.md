@@ -295,8 +295,8 @@ Unregister-ScheduledTask -TaskName "DailyMaintenance" -Confirm:$false
 
 ## Related Skills
 
-- `linux-administration` -- Cross-platform comparison and hybrid management
-- `ssh-configuration` -- SSH access for Windows OpenSSH Server
-- `user-management` -- Parallel concepts for Linux user/group management
-- `systemd-services` -- Linux equivalent of Windows Services and Task Scheduler
-- `performance-tuning` -- Performance monitoring and optimization patterns
+- `[linux-administration](../linux-administration/SKILL.md)` -- Cross-platform comparison and hybrid management
+- `[ssh-configuration](../ssh-configuration/SKILL.md)` -- SSH access for Windows OpenSSH Server
+- `[user-management](../user-management/SKILL.md)` -- Parallel concepts for Linux user/group management
+- `[systemd-services](../systemd-services/SKILL.md)` -- Linux equivalent of Windows Services and Task Scheduler
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and optimization patterns

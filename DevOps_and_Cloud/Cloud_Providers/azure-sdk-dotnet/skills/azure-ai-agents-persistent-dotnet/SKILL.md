@@ -280,7 +280,7 @@ await client.Files.DeleteFileAsync(file.Id);
 
 | Tool | Class | Purpose |
 |------|-------|---------|
-| Code Interpreter | `CodeInterpreterToolDefinition` | Execute Python code, generate visualizations |
+| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code, generate visualizations |
 | File Search | `FileSearchToolDefinition` | Search uploaded files via vector stores |
 | Function Calling | `FunctionToolDefinition` | Call custom functions |
 | Bing Grounding | `BingGroundingToolDefinition` | Web search via Bing |
@@ -357,5 +357,5 @@ catch (RequestFailedException ex)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.AI.Agents.Persistent |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.ai.agents.persistent |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Agents.Persistent |
-| Samples | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Agents.Persistent/samples |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Agents.Persistent |
+| Samples | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Agents.Persistent/samples |

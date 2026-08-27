@@ -12,7 +12,7 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 
 ## When to Use This Skill
 
-- Designing new backend services or microservices from scratch
+- Designing new backend services or [microservices](../microservices/SKILL.md) from scratch
 - Refactoring monolithic applications where business logic is entangled with ORM models or HTTP concerns
 - Establishing bounded contexts before splitting a system into services
 - Debugging dependency cycles where infrastructure code bleeds into the domain layer
@@ -43,12 +43,12 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 
 - **Domain Core**: Business logic lives here, framework-free
 - **Ports**: Abstract interfaces that define how the core interacts with the outside world (driving and driven)
-- **Adapters**: Concrete implementations of ports (PostgreSQL adapter, Stripe adapter, REST adapter)
+- **Adapters**: Concrete implementations of ports ([PostgreSQL](../../Backend/postgresql/SKILL.md) adapter, Stripe adapter, REST adapter)
 
 **Benefits:**
 
-- Swap implementations without touching the core (e.g., replace PostgreSQL with DynamoDB)
-- Use in-memory adapters in tests — no Docker required
+- Swap implementations without touching the core (e.g., replace [PostgreSQL](../../Backend/postgresql/SKILL.md) with DynamoDB)
+- Use in-memory adapters in tests — no [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) required
 - Technology decisions deferred to the edges
 
 ### 3. Domain-Driven Design (DDD)
@@ -73,9 +73,9 @@ Detailed pattern documentation lives in `../../../Global_References/details.md`.
 
 ## Testing — In-Memory Adapters
 
-The hallmark of correctly applied Clean Architecture is that every use case can be exercised in a plain unit test with no real database, no Docker, and no network:
+The hallmark of correctly applied Clean Architecture is that every use case can be exercised in a plain unit test with no real database, no [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), and no network:
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # tests/unit/test_create_user.py
 import asyncio
 from typing import Dict, Optional
@@ -144,7 +144,7 @@ When the controller grows beyond HTTP parsing and response formatting, extract t
 
 ### Value objects raising errors too late
 
-Validate invariants in `__post_init__` (Python) or the constructor so an invalid `Email` or `Money` cannot be constructed at all. This surfaces bad data at the boundary, not deep inside business logic.
+Validate invariants in `__post_init__` ([Python](../../Languages/python/SKILL.md)) or the constructor so an invalid `Email` or `Money` cannot be constructed at all. This surfaces bad data at the boundary, not deep inside business logic.
 
 ### Context bleed across bounded contexts
 
@@ -158,8 +158,8 @@ For detailed DDD bounded context mapping, full multi-service project trees, Anti
 
 ## Related Skills
 
-- `microservices-patterns` — Apply these architecture patterns when decomposing a monolith into services
-- `cqrs-implementation` — Use Clean Architecture as the structural foundation for CQRS command/query separation
-- `saga-orchestration` — Sagas require well-defined aggregate boundaries, which DDD tactical patterns provide
-- `event-store-design` — Domain events produced by aggregates feed directly into an event store
+- `[microservices-patterns](../[microservices](../microservices/SKILL.md)-patterns/SKILL.md)` — Apply these architecture patterns when decomposing a monolith into services
+- `[cqrs-implementation](../cqrs-implementation/SKILL.md)` — Use Clean Architecture as the structural foundation for CQRS command/query separation
+- `[saga-orchestration](../saga-orchestration/SKILL.md)` — Sagas require well-defined aggregate boundaries, which DDD tactical patterns provide
+- `[event-store-design](../../../DevOps_and_Cloud/Observability_and_SecOps/event-store-design/SKILL.md)` — Domain events produced by aggregates feed directly into an event store
 

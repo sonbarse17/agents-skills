@@ -27,7 +27,7 @@ Guide for TypeScript build tools, tsconfig configuration, module resolution, adv
 Keywords: `typescript build`, `tsconfig`, `module resolution`, `tsc`, `esbuild`, `generics typescript`, `conditional types`, `type narrowing`, `vitest`, `jest typescript`.
 
 ### Input Context
-- Project type (library, app, monorepo)
+- Project type (library, app, [monorepo](../monorepo/SKILL.md))
 - Module system (ESM, CJS, both)
 - Bundler (tsc, esbuild, webpack, tsup, rollup)
 - Runtime (Node.js, Deno, Bun, browser)
@@ -50,7 +50,7 @@ What are you building?
 ├── Library → tsup (esbuild-based, ESM+CJS dual output, DTS generation)
 ├── Node.js app → tsx (dev) + tsc (build) OR Bun for all-in-one
 ├── Browser app → Vite (esbuild dev, rollup prod) with TypeScript plugin
-├── Monorepo → Turborepo + tsup per package + tsc --noEmit for type-check
+├── [Monorepo](../monorepo/SKILL.md) → Turborepo + tsup per package + tsc --noEmit for type-check
 └── Quick script → tsx (execute TS directly, no build step)
 ```
 
@@ -60,7 +60,7 @@ Codebase maturity?
 ├── New project → strict: true + noUncheckedIndexedAccess + exactOptionalPropertyTypes
 ├── Migrating JS → strict: true first, incremental strictness per file
 ├── Library → strict + declaration + declarationMap
-├── Monorepo → project references + composite: true + incremental
+├── [Monorepo](../monorepo/SKILL.md) → project references + composite: true + incremental
 └── Maximum safety → strict + noUncheckedIndexedAccess + exactOptionalPropertyTypes + noPropertyAccessFromIndexSignature
 ```
 
@@ -329,9 +329,9 @@ function parseOrder(data: unknown): Order {
 
 Key patterns: (a) parse at system boundaries (API, file read, storage), (b) infer types from schemas (don't duplicate), (c) use `.safeParse()` for error handling, (d) transform with `.transform()`, (e) compose schemas with `.merge()`, `.pick()`, `.omit()`. This eliminates the `any` from external data sources.
 
-## TypeScript Monorepo Management
+## TypeScript [Monorepo](../monorepo/SKILL.md) Management
 
-Monorepo with multiple TypeScript packages needs careful config:
+[Monorepo](../monorepo/SKILL.md) with multiple TypeScript packages needs careful config:
 - **Turborepo**: task orchestration, caching, parallel execution. Pipeline: `build`, `test`, `lint` per package. Remote caching with Vercel.
 - **pnpm workspaces**: fast, disk-efficient, strict dependency isolation. Config in `pnpm-workspace.yaml`.
 - **Project references (tsc)**: each package has a `tsconfig.json` with `composite: true` and `references`. Build with `tsc --build` for incremental compilation.
@@ -479,7 +479,7 @@ app.post('/api/orders', zValidator('json', OrderSchema), async (c) => {
 });
 ```
 
-Use for: serverless APIs, edge functions, middleware chains, WebSocket servers. Hono middleware: auth, CORS, rate limiting, JWT validation — all available as npm packages.
+Use for: [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) APIs, edge functions, middleware chains, WebSocket servers. Hono middleware: auth, CORS, rate limiting, JWT validation — all available as npm packages.
 
 ## Code Examples — Generic Repository Pattern
 ```typescript

@@ -30,7 +30,7 @@ their own near-duplicate `main.tf`. It does this by layering
 parameterize a shared Terraform module per environment, then generates
 the actual Terraform backend/provider blocks at run time. The
 operational risk this introduces is exactly the one Terraform's own
-[infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md)
+[infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 skill covers for state and plan review — plus a Terragrunt-specific one:
 `run-all` commands operate across a whole dependency graph of modules at
 once, so a `run-all apply` fanning out unreviewed across every
@@ -123,7 +123,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://github.com/example-org/tf-modules.git//vpc?ref=v3.2.0"
+     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
    }
 
    inputs = {
@@ -139,7 +139,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://github.com/example-org/tf-modules.git//vpc?ref=v3.2.0"
+     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
    }
 
    inputs = {
@@ -173,7 +173,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://github.com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
+     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
    }
 
    inputs = {
@@ -193,7 +193,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    ```
    Read the plan exactly as you would a plain `terraform plan` — this is
    the same review discipline as
-   [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md),
+   [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md),
    just invoked through the Terragrunt wrapper.
 
 5. **Validate a multi-module change with `run-all plan` before any
@@ -249,7 +249,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
   touching shared module code or root config, and require a human to
   read the per-environment plan diffs before merge — mirroring the CI
   plan-review gate from
-  [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md).
+  [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md).
 - Scope `run-all` commands to the narrowest directory that actually needs
   it (`cd live/staging/app-tier` rather than `cd live` from the repo
   root) to keep blast radius intentional.
@@ -262,7 +262,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
 - **Symptom:** `terragrunt plan` in one environment unexpectedly reflects
   a change someone else is still testing in a different environment.
   **Fix:** The module source `ref=` is likely unpinned (pointing at a
-  branch, not a tag/commit) — pin every environment's module source to an
+  branch, not a tag/[commit](../../CI_CD/commit/SKILL.md)) — pin every environment's module source to an
   explicit version and bump it deliberately per environment as changes
   are promoted.
 
@@ -326,7 +326,7 @@ dependency "vpc" {
 }
 
 terraform {
-  source = "git::https://github.com/example-org/tf-modules.git//app-tier?ref=v1.7.0"
+  source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.7.0"
 }
 
 inputs = {
@@ -340,7 +340,7 @@ Change: bump the ref and add the new required input introduced by
 `v1.8.0`:
 ```hcl
 terraform {
-  source = "git::https://github.com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
+  source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
 }
 
 inputs = {
@@ -356,7 +356,7 @@ Dry-run validation, staging first:
 cd live/staging/app-tier
 terragrunt plan
 # Plan: 1 to add, 1 to change, 0 to destroy
-# (new autoscaling group resource, launch template updated in place)
+# (new [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group resource, launch template updated in place)
 ```
 
 Repeated identically in `dev`, then reviewed in a PR, then applied to
@@ -369,6 +369,6 @@ root-config change that legitimately affects every module at once.
 
 ## Cross-references
 
-- [infrastructure-as-code-terraform](../../../devops/skills/infrastructure-as-code-terraform/SKILL.md) — the underlying Terraform plan-review, state-locking, and module-design guidance Terragrunt wraps rather than replaces.
-- [infrastructure-post-deployment-validation-and-smoke-testing](../infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md) — verifying a `terragrunt apply` actually produced working infrastructure, beyond a clean plan/apply exit code.
-- [environment-promotion-strategy](../../../devops/skills/environment-promotion-strategy/SKILL.md) — the dev/staging/prod promotion sequence this skill's worked example follows when bumping a module version.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the underlying Terraform plan-review, state-locking, and module-design guidance Terragrunt wraps rather than replaces.
+- [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) — verifying a `terragrunt apply` actually produced working infrastructure, beyond a clean plan/apply exit code.
+- [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md) — the dev/staging/prod promotion sequence this skill's worked example follows when bumping a module version.

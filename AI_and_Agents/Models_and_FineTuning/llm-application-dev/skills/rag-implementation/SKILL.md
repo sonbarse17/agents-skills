@@ -25,12 +25,12 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 
 **Options:**
 
-- **Pinecone**: Managed, scalable, serverless
+- **Pinecone**: Managed, scalable, [serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)
 - **Weaviate**: Open-source, hybrid search, GraphQL
 - **Milvus**: High performance, on-premise
 - **Chroma**: Lightweight, easy to use, local development
 - **Qdrant**: Fast, filtered search, Rust-based
-- **pgvector**: PostgreSQL extension, SQL integration
+- **pgvector**: [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) extension, SQL integration
 
 ### 2. Embeddings
 
@@ -69,7 +69,7 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 
 ## Quick Start with LangGraph
 
-```python
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from langgraph.graph import StateGraph, START, END
 from langchain_anthropic import ChatAnthropic
 from langchain_voyageai import VoyageAIEmbeddings

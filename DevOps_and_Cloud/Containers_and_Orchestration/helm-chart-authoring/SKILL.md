@@ -20,7 +20,7 @@ metadata:
 
 ## Purpose
 
-Helm is the de facto packaging format for distributing Kubernetes
+Helm is the de facto packaging format for distributing [Kubernetes](../kubernetes/SKILL.md)
 applications: it turns a directory of YAML into a versioned, parameterized,
 installable/upgradeable unit. A poorly authored chart — untyped values,
 no schema validation, string-templated YAML that breaks on edge-case
@@ -51,16 +51,16 @@ to hand to another team or publish publicly.
 - Helm ≥ 3.14 (OCI registry support has been stable since 3.8; `helm
   dependency update` for OCI-based subchart deps needs ≥ 3.7). Helm 3 has
   no Tiller — all rendering happens client-side against the cluster's
-  Kubernetes API for capability lookups (`Capabilities.APIVersions`).
-- `kubectl` context pointed at a real or kind/minikube cluster for
+  [Kubernetes](../kubernetes/SKILL.md) API for capability lookups (`Capabilities.APIVersions`).
+- `[kubectl](../kubectl/SKILL.md)` context pointed at a real or kind/minikube cluster for
   `--dry-run=server` validation (server-side validation catches CRD
   schema mismatches that client-side `helm template` cannot).
-- `helm plugin install https://github.com/helm-unittest/helm-unittest`
+- `helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest`
   for unit-testing templates without a live cluster.
-- `chart-testing` (`ct`) ≥ 3.10 if the chart lives in a monorepo of
+- `chart-testing` (`ct`) ≥ 3.10 if the chart lives in a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) of
   charts and needs lint/install testing across a version bump.
 - Access to a target registry: OCI-compliant (GHCR, ECR, ACR, Artifact
-  Registry, Harbor ≥ 2.0) or a classic HTTP chart repo (GitHub Pages +
+  Registry, Harbor ≥ 2.0) or a classic HTTP chart repo ([GitHub](../../CI_CD/github/SKILL.md) Pages +
   `index.yaml`, ChartMuseum).
 
 ## Step-by-step guidance
@@ -124,10 +124,10 @@ to hand to another team or publish publicly.
    recommended labels:
    ```yaml
    {{- define "payments-api.labels" -}}
-   app.kubernetes.io/name: {{ include "payments-api.name" . }}
-   app.kubernetes.io/instance: {{ .Release.Name }}
-   app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-   app.kubernetes.io/managed-by: {{ .Release.Service }}
+   app.[kubernetes](../kubernetes/SKILL.md).io/name: {{ include "payments-api.name" . }}
+   app.[kubernetes](../kubernetes/SKILL.md).io/instance: {{ .Release.Name }}
+   app.[kubernetes](../kubernetes/SKILL.md).io/version: {{ .Chart.AppVersion | quote }}
+   app.[kubernetes](../kubernetes/SKILL.md).io/managed-by: {{ .Release.Service }}
    helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" }}
    {{- end -}}
    ```
@@ -144,10 +144,10 @@ to hand to another team or publish publicly.
    {{- end }}
    ```
 
-6. **Validate before every commit**:
+6. **Validate before every [commit](../../CI_CD/commit/SKILL.md)**:
    ```bash
    helm lint ./payments-api
-   helm template payments-api ./payments-api -f values-prod.yaml | kubectl apply --dry-run=server -f -
+   helm template payments-api ./payments-api -f values-prod.yaml | [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f -
    ```
    Server-side dry-run catches things client-side `helm template` cannot
    — invalid CRD fields, admission webhook rejections, immutable field
@@ -218,11 +218,11 @@ to hand to another team or publish publicly.
   better, upstream in the values contract.
 - Never template a Secret's *value* directly from a plaintext value in
   `values.yaml` committed to git; reference an existing Secret name/key
-  or integrate with [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)
+  or integrate with [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md)
   / an external secrets operator instead, and document the expectation
   in the chart's README.
 - Pin subchart dependency versions in `Chart.yaml` (`dependencies:` with
-  an exact or range-constrained `version`) and commit `Chart.lock` — an
+  an exact or range-constrained `version`) and [commit](../../CI_CD/commit/SKILL.md) `Chart.lock` — an
   unpinned dependency can silently pull a breaking subchart update.
 - Use `--atomic` on `helm upgrade`/`install` in CI/CD so a failed release
   automatically rolls back instead of leaving the release half-applied:
@@ -237,7 +237,7 @@ to hand to another team or publish publicly.
   every consuming environment.
 - When the chart manages CRDs, put them under `crds/` (Helm-managed CRD
   install/no-uninstall semantics) rather than `templates/`, and read
-  [kubernetes-operator-development](../kubernetes-operator-development/SKILL.md)
+  [kubernetes-operator-development](../[kubernetes-operator-development](../[kubernetes](../kubernetes/SKILL.md)-operator-development/SKILL.md)/SKILL.md)
   for CRD versioning/compatibility implications before doing so.
 
 ## Common pitfalls
@@ -256,7 +256,7 @@ to hand to another team or publish publicly.
   `helm install` fails against the real cluster with a validation error.
   **Fix:** `helm template` only renders client-side and does not know
   live CRD schemas, admission webhooks, or API server feature gates.
-  Always validate with `helm template ... | kubectl apply --dry-run=server -f -`
+  Always validate with `helm template ... | [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f -`
   (or `helm install --dry-run=server`) before treating a chart as
   release-ready.
 
@@ -270,7 +270,7 @@ to hand to another team or publish publicly.
 - **Symptom:** A subchart's default values silently override the parent
   chart's intended configuration after a `helm dependency update`.
   **Fix:** Pin subchart versions exactly (or with a narrow range) in
-  `Chart.yaml`, commit `Chart.lock`, and re-run `ct install`/unit tests
+  `Chart.yaml`, [commit](../../CI_CD/commit/SKILL.md) `Chart.lock`, and re-run `ct install`/unit tests
   on every dependency bump rather than treating `dependency update` as a
   no-op maintenance task.
 
@@ -314,13 +314,13 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "payments-api.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.[kubernetes](../kubernetes/SKILL.md).io/name: {{ include "payments-api.name" . }}
+      app.[kubernetes](../kubernetes/SKILL.md).io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "payments-api.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.[kubernetes](../kubernetes/SKILL.md).io/name: {{ include "payments-api.name" . }}
+        app.[kubernetes](../kubernetes/SKILL.md).io/instance: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ include "payments-api.serviceAccountName" . }}
       containers:
@@ -331,7 +331,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
 ```
 
-CI pipeline stage (GitHub Actions):
+CI pipeline stage ([GitHub](../../CI_CD/github/SKILL.md) Actions):
 
 ```yaml
 jobs:
@@ -341,18 +341,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: azure/setup-helm@v4
         with: { version: "3.15.3" }
-      - run: helm plugin install https://github.com/helm-unittest/helm-unittest || true
+      - run: helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest || true
       - run: helm lint ./payments-api
       - run: helm unittest ./payments-api
       - run: helm dependency update ./payments-api
       - run: |
           helm template payments-api ./payments-api -f payments-api/ci/values-test.yaml \
-            | kubectl apply --dry-run=server -f -
+            | [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f -
       - name: Package and push (on tag)
-        if: startsWith(github.ref, 'refs/tags/chart-')
+        if: startsWith([github](../../CI_CD/github/SKILL.md).ref, 'refs/tags/chart-')
         run: |
           helm package ./payments-api
-          echo "${{ secrets.REGISTRY_PASSWORD }}" | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | helm registry login ghcr.io -u ${{ [github](../../CI_CD/github/SKILL.md).actor }} --password-stdin
           helm push payments-api-*.tgz oci://ghcr.io/example/charts
 ```
 
@@ -363,6 +363,6 @@ attempted against a live namespace.
 
 ## Cross-references
 
-- [kustomize-overlay-management](../kustomize-overlay-management/SKILL.md) — when to patch a chart's rendered output with Kustomize instead of adding more values, or combine both.
-- [kubernetes-operator-development](../kubernetes-operator-development/SKILL.md) — packaging an Operator and its CRDs as a chart, and CRD lifecycle caveats.
-- [cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md) — installing cert-manager itself via its official Helm chart and templating Certificate/Issuer resources from a values contract.
+- [kustomize-overlay-management](../[kustomize-overlay-management](../../../Software_Engineering_and_Other/Frontend/[kustomize](../kustomize/SKILL.md)-overlay-management/SKILL.md)/SKILL.md) — when to patch a chart's rendered output with [Kustomize](../kustomize/SKILL.md) instead of adding more values, or combine both.
+- [kubernetes-operator-development](../[kubernetes-operator-development](../[kubernetes](../kubernetes/SKILL.md)-operator-development/SKILL.md)/SKILL.md) — packaging an Operator and its CRDs as a chart, and CRD lifecycle caveats.
+- [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — installing cert-manager itself via its official Helm chart and templating Certificate/Issuer resources from a values contract.

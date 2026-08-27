@@ -20,36 +20,36 @@ metadata:
 
 ## Purpose
 
-[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
+[training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
 covers the vendor-neutral concepts of DAG-based ML pipelines — stages,
 gates, reproducibility — that apply regardless of which orchestrator runs
 them. This skill is tool-specific: it covers Kubeflow Pipelines (KFP), a
-Kubernetes-native orchestrator where every pipeline component is a
+[Kubernetes](../kubernetes/SKILL.md)-native orchestrator where every pipeline component is a
 containerized step, pipelines compile to an Argo-Workflows-compatible
 intermediate representation, and the platform bundles pipeline execution
 with Katib (hyperparameter tuning), KServe (serving), and multi-tenant
-Profiles on top of raw Kubernetes. Kubeflow's specific value is that a
-pipeline step *is* a Kubernetes pod with normal resource requests, node
+Profiles on top of raw [Kubernetes](../kubernetes/SKILL.md). Kubeflow's specific value is that a
+pipeline step *is* a [Kubernetes](../kubernetes/SKILL.md) pod with normal resource requests, node
 affinity, and GPU scheduling — which makes it the natural orchestrator
-choice for teams already running Kubernetes-native ML infrastructure (see
-[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md))
+choice for teams already running [Kubernetes](../kubernetes/SKILL.md)-native ML infrastructure (see
+[gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md))
 who want pipeline steps to schedule using the exact same primitives as any
 other workload, rather than delegating to an external managed pipeline
 service.
 
 ## When to use
 
-- The user wants to author a pipeline using the KFP SDK (`kfp` Python
+- The user wants to author a pipeline using the KFP SDK (`kfp` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
   package, v2 `@dsl.component`/`@dsl.pipeline` decorators) rather than a
   general DAG description.
 - The user is deciding whether Kubeflow Pipelines specifically (vs. Argo
   Workflows directly, Airflow, or a managed alternative like Vertex AI
-  Pipelines) is the right fit for a Kubernetes-native ML platform.
+  Pipelines) is the right fit for a [Kubernetes](../kubernetes/SKILL.md)-native ML platform.
 - The user needs to integrate Katib for hyperparameter tuning as a pipeline
   step or a wrapping experiment.
 - A Kubeflow pipeline run is stuck, failed on a specific component, or
   behaving unexpectedly due to caching reusing a stale result.
-- The user is setting up multi-tenancy (Kubeflow Profiles/namespaces) so
+- The user is setting up [multi-tenancy](../multi-tenancy/SKILL.md) (Kubeflow Profiles/namespaces) so
   multiple teams share one Kubeflow installation without stepping on each
   other's pipelines, quotas, or RBAC.
 - The user needs pipeline steps to request specific GPU/MIG resources or
@@ -57,40 +57,40 @@ service.
 
 ## Prerequisites & environment
 
-- A Kubeflow installation on Kubernetes ≥ 1.24 (full Kubeflow distribution,
+- A Kubeflow installation on [Kubernetes](../kubernetes/SKILL.md) ≥ 1.24 (full Kubeflow distribution,
   or the standalone `kfp` pipelines backend which uses Argo Workflows as
   its execution engine under the hood — see
-  [argo-workflows-pipeline-design](../../../gitops-argo-ecosystem/skills/argo-workflows-pipeline-design/SKILL.md)
+  [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md)
   for the underlying execution model).
-- The `kfp` Python SDK installed locally (`pip install kfp`), version
+- The `kfp` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK installed locally (`pip install kfp`), version
   matched to the installed backend — **KFP v2 SDK pipelines will not
   compile or run correctly against a v1-only backend**, and this is a
   common source of confusing compile-time or runtime errors (see Common
   pitfalls).
 - A container registry the Kubeflow cluster can pull component images from,
-  and Docker/Buildkit to build those images.
-- `kubectl` access to the Kubeflow namespace(s) for debugging runs directly
+  and [Docker](../docker/SKILL.md)/Buildkit to build those images.
+- `[kubectl](../kubectl/SKILL.md)` access to the Kubeflow namespace(s) for debugging runs directly
   via the underlying Argo Workflow objects when the KFP UI doesn't show
   enough detail.
 - For hyperparameter tuning: Katib installed as part of the Kubeflow
   distribution (or standalone).
 - For GPU-backed components: the GPU infrastructure and validated resource
   requests from
-  [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)
+  [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   and
-  [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md).
+  [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
-1. **Define components as isolated, containerized Python functions** using
+1. **Define components as isolated, containerized [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) functions** using
    the KFP v2 SDK — each `@dsl.component` compiles to its own container
    image build (or reuses a specified `base_image`), so keep components
    small and single-purpose rather than one monolithic function:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from kfp import dsl
    from kfp.dsl import Input, Output, Dataset, Model, Metrics
 
-   @dsl.component(base_image="python:3.11-slim", packages_to_install=["pandas==2.2.0", "scikit-learn==1.4.0"])
+   @dsl.component(base_image="[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.11-slim", packages_to_install=["pandas==2.2.0", "scikit-learn==1.4.0"])
    def preprocess(raw_data: Input[Dataset], processed: Output[Dataset]):
        import pandas as pd
        df = pd.read_csv(raw_data.path)
@@ -109,7 +109,7 @@ service.
 2. **Compose components into a pipeline with `@dsl.pipeline`**, wiring
    outputs to inputs explicitly — KFP infers the execution DAG from these
    data dependencies, not from an explicit ordering list:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    @dsl.pipeline(name="fraud-model-training", description="Preprocess, train, evaluate, conditionally register")
    def training_pipeline(raw_data_uri: str, min_accuracy: float = 0.85):
        ingest_task = ingest(source_uri=raw_data_uri)
@@ -122,20 +122,20 @@ service.
    ```
    `dsl.If` (KFP v2's conditional control flow) implements the "gate before
    registration" pattern from
-   [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)
+   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    in KFP-specific syntax.
 
 3. **Compile the pipeline to its IR YAML** and inspect it before running —
    this is the artifact that actually gets submitted, and compile-time
    errors here are cheaper to catch than runtime failures:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    from kfp import compiler
    compiler.Compiler().compile(training_pipeline, package_path="training_pipeline.yaml")
    ```
 
 4. **Submit runs via the KFP client**, organizing related runs under a
    named Experiment so comparisons and recurring schedules stay grouped:
-   ```python
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    import kfp
    client = kfp.Client(host="https://kubeflow.internal/pipeline")
    experiment = client.create_experiment(name="fraud-model-retraining")
@@ -151,8 +151,8 @@ service.
 
 5. **Request GPU resources on individual components** using KFP's resource
    methods, matching the resource key conventions validated in
-   [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md):
-   ```python
+   [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md):
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    @dsl.pipeline(name="gpu-training-pipeline")
    def pipeline(raw_data_uri: str):
        train_task = train(processed=..., epochs=15)
@@ -200,10 +200,10 @@ service.
                containers:
                  - name: trainer
                    image: registry.internal/kfp-train:2.4.0
-                   command: ["python", "train.py", "--lr=${trialParameters.learningRate}", "--batch-size=${trialParameters.batchSize}"]
+                   command: ["[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "train.py", "--lr=${trialParameters.learningRate}", "--batch-size=${trialParameters.batchSize}"]
    ```
 
-7. **Set up multi-tenancy with Kubeflow Profiles** so teams get isolated
+7. **Set up [multi-tenancy](../multi-tenancy/SKILL.md) with Kubeflow Profiles** so teams get isolated
    namespaces, quotas, and RBAC without separate cluster installs:
    ```yaml
    apiVersion: kubeflow.org/v1
@@ -238,7 +238,7 @@ service.
   parameters — this is what gives KFP's built-in lineage tracking (visible
   in the UI and queryable via the ML Metadata store) anything meaningful
   to show, complementing
-  [data-and-model-lineage](../data-and-model-lineage/SKILL.md).
+  [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md).
 - Be deliberate about caching: KFP caches a component's output based on
   its inputs and image digest by default, which is usually desirable
   (skip re-running an unchanged preprocessing step) but dangerous for
@@ -249,12 +249,12 @@ service.
   `set_accelerator_type` plus explicit `nodeSelector`/toleration overrides
   where the KFP SDK's helper methods don't cover a custom taint scheme,
   and validate the compiled resource keys per
-  [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md)
+  [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md)
   before submitting a long training pipeline.
 - Register the resulting model from a gated (`dsl.If`) conditional step
   tied to an evaluation metric threshold, consistent with the promotion
   gates covered in
-  [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md),
+  [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md),
   rather than always registering regardless of evaluation outcome.
 
 ## Common pitfalls
@@ -283,9 +283,9 @@ service.
   contain the expected `nvidia.com/gpu` resource key, and the pipeline step
   silently runs on CPU with no scheduling error.
   **Fix:** This is the same silent-fallback risk covered in
-  [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md) —
+  [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) —
   inspect the compiled `training_pipeline.yaml` directly for the resource
-  block rather than trusting that calling `set_accelerator_type` in Python
+  block rather than trusting that calling `set_accelerator_type` in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
   guarantees it made it through compilation; SDK method names and behavior
   have changed across KFP v1→v2, and a stale example copied from
   documentation for the wrong SDK version can silently no-op.
@@ -297,14 +297,14 @@ service.
   run.
   **Fix:** Set up Kubeflow Profiles per team with `resourceQuotaSpec` limits
   from the start rather than retrofitting isolation after a quota conflict
-  incident — namespace-level RBAC and quota is the intended multi-tenancy
+  [incident](../../Observability_and_SecOps/incident/SKILL.md) — namespace-level RBAC and quota is the intended [multi-tenancy](../multi-tenancy/SKILL.md)
   mechanism, not an afterthought.
 
 - **Symptom:** A pipeline run shows "Failed" in the KFP UI with a generic
   error, and the UI's log view for the failed step is empty or truncated.
   **Fix:** Since KFP compiles to Argo Workflows underneath, inspect the
-  underlying `Workflow` object directly with `kubectl get workflow -n
-  <profile-namespace>` and `kubectl logs` on the specific failed pod — the
+  underlying `Workflow` object directly with `[kubectl](../kubectl/SKILL.md) get workflow -n
+  <profile-namespace>` and `[kubectl](../kubectl/SKILL.md) logs` on the specific failed pod — the
   KFP UI's log proxy occasionally fails to surface logs for pods that were
   OOM-killed or evicted before finishing, while the raw pod logs and events
   usually show the real cause.
@@ -315,7 +315,7 @@ service.
 ad hoc script to Kubeflow Pipelines, with a GPU training step and an
 accuracy gate before registration.
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from kfp import dsl, compiler
 from kfp.dsl import Input, Output, Dataset, Model, Metrics
 
@@ -357,7 +357,7 @@ compiler.Compiler().compile(fraud_retraining_pipeline, package_path="fraud_retra
 ```
 
 Submit as a weekly recurring run:
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import kfp
 client = kfp.Client(host="https://kubeflow.internal/pipeline")
 client.create_recurring_run(
@@ -376,9 +376,9 @@ silently promote a worse model.
 
 ## Cross-references
 
-- [training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md) — the vendor-neutral DAG/gate/reproducibility concepts this skill implements in KFP-specific terms; read that first if choosing between orchestrators.
-- [ray-distributed-ml-orchestration](../ray-distributed-ml-orchestration/SKILL.md) — an alternative, Python-native distributed orchestration paradigm to consider instead of or alongside Kubeflow Pipelines.
-- [gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md) and [gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md) — the GPU scheduling infrastructure and validation checklist that KFP component-level accelerator requests must be checked against.
-- [experiment-tracking](../experiment-tracking/SKILL.md) — pairing KFP's built-in run/metrics tracking with a dedicated experiment tracker for richer comparison across runs.
-- [model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md) — the registration step's target scheme for the conditional `register` component.
-- [argo-workflows-pipeline-design](../../../gitops-argo-ecosystem/skills/argo-workflows-pipeline-design/SKILL.md) — the underlying workflow engine KFP compiles to, useful when debugging a run at the raw `Workflow` object level.
+- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral DAG/gate/reproducibility concepts this skill implements in KFP-specific terms; read that first if choosing between orchestrators.
+- [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — an alternative, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native distributed orchestration paradigm to consider instead of or alongside Kubeflow Pipelines.
+- [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the GPU scheduling infrastructure and validation checklist that KFP component-level accelerator requests must be checked against.
+- [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — pairing KFP's built-in run/metrics tracking with a dedicated experiment tracker for richer comparison across runs.
+- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registration step's target scheme for the conditional `register` component.
+- [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md) — the underlying workflow engine KFP compiles to, useful when debugging a run at the raw `Workflow` object level.

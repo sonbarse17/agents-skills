@@ -28,7 +28,7 @@ User mentions localization, i18n, l10n, internationalization, translations, RTL 
 
 ### Input Context
 - Target languages and locales
-- Platform(s) (iOS, Android, or both)
+- Platform(s) (iOS, [Android](../android/SKILL.md), or both)
 - Pluralization requirements (zero, one, two, few, many, other)
 - RTL language support (Arabic, Hebrew, Persian, Urdu)
 - OTA/localization update strategy
@@ -155,7 +155,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 </plist>
 ```
 
-2. **Android String Resources**: strings.xml with plurals and quantity strings.
+2. **[Android](../android/SKILL.md) String Resources**: strings.xml with plurals and quantity strings.
 
 ```xml
 <!-- res/values/strings.xml -->
@@ -255,7 +255,7 @@ struct LocaleFormatter {
 ```
 
 ```kotlin
-// Android locale formatting
+// [Android](../android/SKILL.md) locale formatting
 object LocaleFormatter {
   fun formatCurrency(amount: BigDecimal, locale: Locale = Locale.getDefault()): String {
     val formatter = NumberFormat.getCurrencyInstance(locale)
@@ -333,7 +333,7 @@ class LocalizationManager: ObservableObject {
 ```
 
 ```kotlin
-// Android locale management
+// [Android](../android/SKILL.md) locale management
 class LocaleManager(private val context: Context) {
   private val prefs = context.getSharedPreferences("locale_prefs", Context.MODE_PRIVATE)
 
@@ -403,34 +403,34 @@ HStack {
 ```
 
 ```xml
-<!-- Android RTL — use start/end instead of left/right -->
+<!-- [Android](../android/SKILL.md) RTL — use start/end instead of left/right -->
 <LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:paddingStart="16dp"
-  android:paddingEnd="16dp"
-  android:layout_marginStart="8dp"
-  android:layout_marginEnd="8dp"
-  android:gravity="start">
+  xmlns:[android](../android/SKILL.md)="http://schemas.[android](../android/SKILL.md).com/apk/res/[android](../android/SKILL.md)"
+  [android](../android/SKILL.md):layout_width="match_parent"
+  [android](../android/SKILL.md):layout_height="wrap_content"
+  [android](../android/SKILL.md):paddingStart="16dp"
+  [android](../android/SKILL.md):paddingEnd="16dp"
+  [android](../android/SKILL.md):layout_marginStart="8dp"
+  [android](../android/SKILL.md):layout_marginEnd="8dp"
+  [android](../android/SKILL.md):gravity="start">
 
   <ImageView
-    android:layout_width="24dp"
-    android:layout_height="24dp"
-    android:layout_marginEnd="8dp"
-    android:src="@drawable/ic_back"
-    android:autoMirrored="true"/>
+    [android](../android/SKILL.md):layout_width="24dp"
+    [android](../android/SKILL.md):layout_height="24dp"
+    [android](../android/SKILL.md):layout_marginEnd="8dp"
+    [android](../android/SKILL.md):src="@drawable/ic_back"
+    [android](../android/SKILL.md):autoMirrored="true"/>
 
   <TextView
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:textAlignment="viewStart"/>
+    [android](../android/SKILL.md):layout_width="0dp"
+    [android](../android/SKILL.md):layout_height="wrap_content"
+    [android](../android/SKILL.md):layout_weight="1"
+    [android](../android/SKILL.md):textAlignment="viewStart"/>
 </LinearLayout>
 
 <!-- Manifest -->
 <application
-  android:supportsRtl="true"
+  [android](../android/SKILL.md):supportsRtl="true"
   ...>
 ```
 
@@ -463,7 +463,7 @@ func pseudoLocalize(_ string: String) -> String {
 7. **CI Validation**: Automated checks for missing translations and placeholder mismatches.
 
 ```yaml
-# .github/workflows/localization-check.yml
+# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/localization-check.yml
 name: Localization Check
 on: [pull_request]
 
@@ -482,11 +482,11 @@ jobs:
             fi
           done
 
-      - name: Check Android missing translations
+      - name: Check [Android](../android/SKILL.md) missing translations
         run: |
           for lang in es fr de ja zh ar he; do
-            dir="android/src/main/res/values-$lang"
-            if [ "$lang" = "en" ]; then dir="android/src/main/res/values"; fi
+            dir="[android](../android/SKILL.md)/src/main/res/values-$lang"
+            if [ "$lang" = "en" ]; then dir="[android](../android/SKILL.md)/src/main/res/values"; fi
             if [ ! -f "$dir/strings.xml" ]; then
               echo "Missing: $dir/strings.xml"
               exit 1
@@ -495,15 +495,15 @@ jobs:
 
       - name: Validate iOS placeholder consistency
         run: |
-          python scripts/check_placeholders.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_placeholders.py \
             --base ios/en.lproj/Localizable.strings \
             --translations ios/*.lproj/Localizable.strings
 
-      - name: Validate Android placeholder consistency
+      - name: Validate [Android](../android/SKILL.md) placeholder consistency
         run: |
-          python scripts/check_android_placeholders.py \
-            --base android/src/main/res/values/strings.xml \
-            --translations android/src/main/res/values-*/strings.xml
+          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_android_placeholders.py \
+            --base [android](../android/SKILL.md)/src/main/res/values/strings.xml \
+            --translations [android](../android/SKILL.md)/src/main/res/values-*/strings.xml
 
       - name: Run pseudo-localization snapshot tests
         run: |
@@ -516,7 +516,7 @@ jobs:
 ## Rules
 
 1. Never hardcode user-facing strings in code — always use resource files.
-2. Always use NSLocalizedString (iOS) or @string/ (Android) for all strings.
+2. Always use NSLocalizedString (iOS) or @string/ ([Android](../android/SKILL.md)) for all strings.
 3. Never assume English-like plural rules — always use CLDR plural categories (zero, one, two, few, many, other).
 4. Always use start/end instead of left/right for layout attributes (RTL support).
 5. Never concatenate translated strings — use format specifiers and placeholders.
@@ -537,14 +537,14 @@ jobs:
 20. Always validate all languages when adding new translatable strings.
 
 ## References
-  - ../../../Global_References/android-localization.md — Android Localization
+  - ../../../Global_References/[android](../android/SKILL.md)-localization.md — [Android](../android/SKILL.md) Localization
   - ../../../Global_References/ios-localization.md — iOS Localization
   - ../../../Global_References/l10n-workflow.md — Localization Workflow
   - ../../../Global_References/mobile-localization-advanced.md — Mobile Localization Advanced Topics
   - ../../../Global_References/mobile-localization-fundamentals.md — Mobile Localization Fundamentals
   - ../../../Global_References/mobile-localization_rtl-support.md — Right-to-Left (RTL) Support
 ## Handoff
-- `mobile/mobile-widgets` — Widget localization and RTL support
+- `mobile/[mobile-widgets](../mobile-widgets/SKILL.md)` — Widget localization and RTL support
 - `backend/transactional-email` — Email template localization patterns
 - `backend/sms-messaging` — Localized SMS/WhatsApp message templates
 - `frontend/web-localization` — Shared locale strategy for web + mobile consistency

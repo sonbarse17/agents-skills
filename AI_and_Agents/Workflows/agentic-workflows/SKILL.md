@@ -10,7 +10,7 @@ description: Guidelines for building multi-agent systems and RAG pipelines.
 - **Context Management**: Use RAG to fetch only highly relevant context to reduce token bloat.
 
 ## Multi-Agent Architecture
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[User Request] --> B{Planner Agent}
@@ -24,7 +24,7 @@ flowchart TD
 ```
 
 ## RAG Implementation Snippet
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI

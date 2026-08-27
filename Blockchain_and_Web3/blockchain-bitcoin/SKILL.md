@@ -167,7 +167,7 @@ Transaction acceptance:
 ```
 
 ### Raw Transaction Construction
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import hashlib
 import struct
 
@@ -201,7 +201,7 @@ def create_legacy_tx(utxos, outputs, private_keys, locktime=0):
 ## Mining & PoW Mechanics
 
 ### Difficulty Adjustment Algorithm
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Bitcoin difficulty: adjusts every 2016 blocks (~2 weeks)
 # Target = previous_target * actual_time_span / expected_time_span (20160 min)
 # Clamped to [1/4, 4] of previous difficulty
@@ -228,7 +228,7 @@ def calculate_difficulty(previous_target, actual_timespan_seconds):
 ```
 
 ### Stratum Mining Protocol
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Stratum V1: centralized mining pool protocol
 # Pool sends job assignments, miners submit shares
 class StratumMiner:
@@ -481,7 +481,7 @@ Types:
 - [ ] Enable txindex=1 for historical transaction lookup (archive node)
 - [ ] Configure rpcallowip for secure RPC access
 - [ ] Set maxconnections for bandwidth management
-- [ ] Enable zmqpubrawtx and zmqpubrawblock for real-time monitoring
+- [ ] Enable zmqpubrawtx and zmqpubrawblock for real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - [ ] Run on Ubuntu 22.04 LTS or Debian 12 for stability
 - [ ] Use SSD (NVMe) for blockchain data directory
 - [ ] Minimum 8GB RAM for full node, 16GB+ for mining node
@@ -496,7 +496,7 @@ Types:
 - Solo mining: only viable with >1% of total hashrate
 
 ### Fee Estimation
-```python
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Bitcoin fee estimation strategies
 def estimate_fee(target_blocks, mempool_entries):
     """
@@ -535,7 +535,7 @@ def estimate_fee(target_blocks, mempool_entries):
 12. MAST tree depth must be balanced for optimal Taproot script path spend
 13. PSBT (BIP-174) supports multi-party signing without sharing private keys
 14. Anchor outputs are essential for Lightning force-close fee bumping
-15. AssumeUTXO enables zero-trust initial sync for new nodes
+15. AssumeUTXO enables [zero-trust](../../Security/zero-trust/SKILL.md) initial sync for new nodes
 16. Standard transactions must use the standardness checks, not just consensus rules
 17. CPFP and RBF are the two transaction replacement strategies — implement both
 18. Coin selection in wallets should prefer UTXO consolidation to prevent dust buildup

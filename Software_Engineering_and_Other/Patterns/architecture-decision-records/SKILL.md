@@ -49,7 +49,7 @@ Proposed → Accepted → Deprecated → Superseded
 ### Template 1: Standard ADR (MADR Format)
 
 ```markdown
-# ADR-0001: Use PostgreSQL as Primary Database
+# ADR-0001: Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database
 
 ## Status
 
@@ -66,7 +66,7 @@ will handle:
 - Full-text search for products
 - Geospatial queries for store locator
 
-The team has experience with MySQL, PostgreSQL, and MongoDB. We need ACID
+The team has experience with [MySQL](../../Backend/mysql/SKILL.md), [PostgreSQL](../../Backend/postgresql/SKILL.md), and [MongoDB](../../Backend/mongodb/SKILL.md). We need ACID
 compliance for financial transactions.
 
 ## Decision Drivers
@@ -79,19 +79,19 @@ compliance for financial transactions.
 
 ## Considered Options
 
-### Option 1: PostgreSQL
+### Option 1: [PostgreSQL](../../Backend/postgresql/SKILL.md)
 
 - **Pros**: ACID compliant, excellent JSON support (JSONB), built-in full-text
   search, PostGIS for geospatial, team has experience
-- **Cons**: Slightly more complex replication setup than MySQL
+- **Cons**: Slightly more complex replication setup than [MySQL](../../Backend/mysql/SKILL.md)
 
-### Option 2: MySQL
+### Option 2: [MySQL](../../Backend/mysql/SKILL.md)
 
 - **Pros**: Very familiar to team, simple replication, large community
 - **Cons**: Weaker JSON support, no built-in full-text search (need
   Elasticsearch), no geospatial without extensions
 
-### Option 3: MongoDB
+### Option 3: [MongoDB](../../Backend/mongodb/SKILL.md)
 
 - **Pros**: Flexible schema, native JSON, horizontal scaling
 - **Cons**: No ACID for multi-document transactions (at decision time),
@@ -99,11 +99,11 @@ compliance for financial transactions.
 
 ## Decision
 
-We will use **PostgreSQL 15** as our primary database.
+We will use **[PostgreSQL](../../Backend/postgresql/SKILL.md) 15** as our primary database.
 
 ## Rationale
 
-PostgreSQL provides the best balance of:
+[PostgreSQL](../../Backend/postgresql/SKILL.md) provides the best balance of:
 
 1. **ACID compliance** essential for e-commerce transactions
 2. **Built-in capabilities** (full-text search, JSONB, PostGIS) reduce
@@ -125,9 +125,9 @@ additional services (no separate Elasticsearch needed).
 
 ### Negative
 
-- Need to learn PostgreSQL-specific features (JSONB, full-text search syntax)
+- Need to learn [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific features (JSONB, full-text search syntax)
 - Vertical scaling limits may require read replicas sooner
-- Some team members need PostgreSQL-specific training
+- Some team members need [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific training
 
 ### Risks
 
@@ -148,15 +148,15 @@ additional services (no separate Elasticsearch needed).
 
 ## References
 
-- [PostgreSQL JSON Documentation](https://www.postgresql.org/docs/current/datatype-json.html)
-- [PostgreSQL Full Text Search](https://www.postgresql.org/docs/current/textsearch.html)
+- [PostgreSQL JSON Documentation](https://www.[postgresql](../../Backend/postgresql/SKILL.md).org/docs/current/datatype-json.html)
+- [PostgreSQL Full Text Search](https://www.[postgresql](../../Backend/postgresql/SKILL.md).org/docs/current/textsearch.html)
 - Internal: Performance benchmarks in `/docs/benchmarks/database-comparison.md`
 ```
 
 ### Template 2: Lightweight ADR
 
 ```markdown
-# ADR-0012: Adopt TypeScript for Frontend Development
+# ADR-0012: Adopt [TypeScript](../../Frontend/typescript/SKILL.md) for Frontend Development
 
 **Status**: Accepted
 **Date**: 2024-01-15
@@ -170,7 +170,7 @@ runtime-only checking.
 
 ## Decision
 
-Adopt TypeScript for all new frontend code. Migrate existing code incrementally.
+Adopt [TypeScript](../../Frontend/typescript/SKILL.md) for all new frontend code. Migrate existing code incrementally.
 
 ## Consequences
 
@@ -179,7 +179,7 @@ code.
 
 **Bad**: Learning curve for team, initial slowdown, build complexity increase.
 
-**Mitigations**: TypeScript training sessions, allow gradual adoption with
+**Mitigations**: [TypeScript](../../Frontend/typescript/SKILL.md) training sessions, allow gradual adoption with
 `allowJs: true`.
 ```
 
@@ -188,7 +188,7 @@ code.
 ```markdown
 # ADR-0015: API Gateway Selection
 
-In the context of **building a microservices architecture**,
+In the context of **building a [microservices](../microservices/SKILL.md) architecture**,
 facing **the need for centralized API management, authentication, and rate limiting**,
 we decided for **Kong Gateway**
 and against **AWS API Gateway and custom Nginx solution**,
@@ -199,7 +199,7 @@ accepting that **we need to manage Kong infrastructure ourselves**.
 ### Template 4: ADR for Deprecation
 
 ```markdown
-# ADR-0020: Deprecate MongoDB in Favor of PostgreSQL
+# ADR-0020: Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Backend/postgresql/SKILL.md)
 
 ## Status
 
@@ -207,24 +207,24 @@ Accepted (Supersedes ADR-0003)
 
 ## Context
 
-ADR-0003 (2021) chose MongoDB for user profile storage due to schema flexibility
+ADR-0003 (2021) chose [MongoDB](../../Backend/mongodb/SKILL.md) for user profile storage due to schema flexibility
 needs. Since then:
 
-- MongoDB's multi-document transactions remain problematic for our use case
+- [MongoDB](../../Backend/mongodb/SKILL.md)'s multi-document transactions remain problematic for our use case
 - Our schema has stabilized and rarely changes
-- We now have PostgreSQL expertise from other services
+- We now have [PostgreSQL](../../Backend/postgresql/SKILL.md) expertise from other services
 - Maintaining two databases increases operational burden
 
 ## Decision
 
-Deprecate MongoDB and migrate user profiles to PostgreSQL.
+Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) and migrate user profiles to [PostgreSQL](../../Backend/postgresql/SKILL.md).
 
 ## Migration Plan
 
-1. **Phase 1** (Week 1-2): Create PostgreSQL schema, dual-write enabled
+1. **Phase 1** (Week 1-2): Create [PostgreSQL](../../Backend/postgresql/SKILL.md) schema, dual-write enabled
 2. **Phase 2** (Week 3-4): Backfill historical data, validate consistency
-3. **Phase 3** (Week 5): Switch reads to PostgreSQL, monitor
-4. **Phase 4** (Week 6): Remove MongoDB writes, decommission
+3. **Phase 3** (Week 5): Switch reads to [PostgreSQL](../../Backend/postgresql/SKILL.md), monitor
+4. **Phase 4** (Week 6): Remove [MongoDB](../../Backend/mongodb/SKILL.md) writes, decommission
 
 ## Consequences
 
@@ -232,7 +232,7 @@ Deprecate MongoDB and migrate user profiles to PostgreSQL.
 
 - Single database technology reduces operational complexity
 - ACID transactions for user data
-- Team can focus PostgreSQL expertise
+- Team can focus [PostgreSQL](../../Backend/postgresql/SKILL.md) expertise
 
 ### Negative
 
@@ -263,9 +263,9 @@ improve auditability, enable temporal queries, and support business analytics.
 
 Current challenges:
 
-1. Audit requirements need complete order history
+1. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) requirements need complete order history
 2. "What was the order state at time X?" queries are impossible
-3. Analytics team needs event stream for real-time dashboards
+3. Analytics team needs event stream for real-time [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
 4. Order state reconstruction for customer support is manual
 
 ## Detailed Design
@@ -284,7 +284,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 ### Projections
 
 - **CurrentOrderState**: Materialized view for queries
-- **OrderHistory**: Complete timeline for audit
+- **OrderHistory**: Complete timeline for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
 - **DailyOrderMetrics**: Analytics aggregation
 
 ### Technology
@@ -301,7 +301,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 
 ## Alternatives
 
-1. **Audit tables**: Simpler but doesn't enable temporal queries
+1. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tables**: Simpler but doesn't enable temporal queries
 2. **CDC from existing DB**: Complex, doesn't change data model
 3. **Hybrid**: Event source only for order state changes
 
@@ -316,7 +316,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 1. Prototype with single order type (2 weeks)
 2. Team training on event sourcing (1 week)
 3. Full implementation and migration (4 weeks)
-4. Monitoring and optimization (ongoing)
+4. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and optimization (ongoing)
 
 ## References
 
@@ -333,10 +333,10 @@ docs/
 ├── adr/
 │   ├── README.md           # Index and guidelines
 │   ├── template.md         # Team's ADR template
-│   ├── 0001-use-postgresql.md
+│   ├── 0001-use-[postgresql](../../Backend/postgresql/SKILL.md).md
 │   ├── 0002-caching-strategy.md
-│   ├── 0003-mongodb-user-profiles.md  # [DEPRECATED]
-│   └── 0020-deprecate-mongodb.md      # Supersedes 0003
+│   ├── 0003-[mongodb](../../Backend/mongodb/SKILL.md)-user-profiles.md  # [DEPRECATED]
+│   └── 0020-deprecate-[mongodb](../../Backend/mongodb/SKILL.md).md      # Supersedes 0003
 ```
 
 ### ADR Index (README.md)
@@ -350,10 +350,10 @@ This directory contains Architecture Decision Records (ADRs) for [Project Name].
 
 | ADR                                   | Title                              | Status     | Date       |
 | ------------------------------------- | ---------------------------------- | ---------- | ---------- |
-| [0001](0001-use-postgresql.md)        | Use PostgreSQL as Primary Database | Accepted   | 2024-01-10 |
+| [0001](0001-use-[postgresql](../../Backend/postgresql/SKILL.md).md)        | Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database | Accepted   | 2024-01-10 |
 | [0002](0002-caching-strategy.md)      | Caching Strategy with Redis        | Accepted   | 2024-01-12 |
-| [0003](0003-mongodb-user-profiles.md) | MongoDB for User Profiles          | Deprecated | 2023-06-15 |
-| [0020](0020-deprecate-mongodb.md)     | Deprecate MongoDB                  | Accepted   | 2024-01-15 |
+| [0003](0003-[mongodb](../../Backend/mongodb/SKILL.md)-user-profiles.md) | [MongoDB](../../Backend/mongodb/SKILL.md) for User Profiles          | Deprecated | 2023-06-15 |
+| [0020](0020-deprecate-[mongodb](../../Backend/mongodb/SKILL.md).md)     | Deprecate [MongoDB](../../Backend/mongodb/SKILL.md)                  | Accepted   | 2024-01-15 |
 
 ## Creating a New ADR
 
@@ -381,10 +381,10 @@ brew install adr-tools
 adr init docs/adr
 
 # Create new ADR
-adr new "Use PostgreSQL as Primary Database"
+adr new "Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database"
 
 # Supersede an ADR
-adr new -s 3 "Deprecate MongoDB in Favor of PostgreSQL"
+adr new -s 3 "Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Backend/postgresql/SKILL.md)"
 
 # Generate table of contents
 adr generate toc > docs/adr/README.md

@@ -11,7 +11,7 @@ metadata:
 
 # Azure.Security.KeyVault.Keys (.NET)
 
-Client library for managing cryptographic keys in Azure Key Vault and Managed HSM.
+Client library for managing cryptographic keys in Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) and Managed HSM.
 
 ## Installation
 
@@ -25,8 +25,8 @@ dotnet add package Azure.Identity
 ## Environment Variables
 
 ```bash
-KEY_VAULT_NAME=<your-key-vault-name>  # Required: Key Vault name
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net  # Optional: full Key Vault URL
+KEY_VAULT_NAME=<your-key-[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>  # Required: Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) name
+AZURE_KEYVAULT_URL=https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net  # Optional: full Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) URL
 AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -60,7 +60,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Keys;
 
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
-var kvUri = $"https://{keyVaultName}.vault.azure.net";
+var kvUri = $"https://{keyVaultName}.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net";
 
 // Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 var credential = new DefaultAzureCredential(
@@ -201,7 +201,7 @@ CryptographyClient cryptoClient = client.GetCryptographyClient(
 
 // Or create directly with key ID
 CryptographyClient cryptoClient = new CryptographyClient(
-    new Uri("https://myvault.vault.azure.net/keys/my-rsa-key/version"),
+    new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/my-rsa-key/version"),
     new DefaultAzureCredential());
 ```
 
@@ -278,7 +278,7 @@ var resolver = new KeyResolver(new DefaultAzureCredential());
 
 // Resolve key by ID to get CryptographyClient
 CryptographyClient cryptoClient = await resolver.ResolveAsync(
-    new Uri("https://myvault.vault.azure.net/keys/my-key/version"));
+    new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/my-key/version"));
 
 // Use for encryption
 EncryptResult result = await cryptoClient.EncryptAsync(
@@ -386,7 +386,7 @@ catch (RequestFailedException ex) when (ex.Status == 403)
 }
 catch (RequestFailedException ex)
 {
-    Console.WriteLine($"Key Vault error: {ex.Status} - {ex.Message}");
+    Console.WriteLine($"Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) error: {ex.Status} - {ex.Message}");
 }
 ```
 
@@ -394,9 +394,9 @@ catch (RequestFailedException ex)
 
 | Role | Permissions |
 |------|-------------|
-| Key Vault Crypto Officer | Full key management |
-| Key Vault Crypto User | Use keys for crypto operations |
-| Key Vault Reader | Read key metadata |
+| Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto Officer | Full key management |
+| Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto User | Use keys for crypto operations |
+| Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Reader | Read key metadata |
 
 ## Related SDKs
 
@@ -413,5 +413,5 @@ catch (RequestFailedException ex)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.Security.KeyVault.Keys |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.security.keyvault.keys |
-| Quickstart | https://learn.microsoft.com/azure/key-vault/keys/quick-create-net |
-| GitHub Source | https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/keyvault/Azure.Security.KeyVault.Keys |
+| Quickstart | https://learn.microsoft.com/azure/key-[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/keys/quick-create-net |
+| [GitHub](../../../../CI_CD/github/SKILL.md) Source | https://[github](../../../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/keyvault/Azure.Security.KeyVault.Keys |

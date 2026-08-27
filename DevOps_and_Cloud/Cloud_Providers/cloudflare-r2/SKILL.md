@@ -16,7 +16,7 @@ S3-compatible object storage with zero egress fees, built on Cloudflare's global
 - Storing user uploads, media files, backups, or static assets.
 - Replacing AWS S3 to eliminate egress costs for read-heavy workloads.
 - Serving files at the edge via Workers or public bucket access.
-- Building multi-cloud storage that avoids vendor lock-in (S3 API compatible).
+- Building [multi-cloud](../multi-cloud/SKILL.md) storage that avoids vendor lock-in (S3 API compatible).
 - Storing ML model artifacts, training data, or inference results.
 
 ## Prerequisites
@@ -113,9 +113,9 @@ aws s3 rm s3://app-assets/tmp/ --recursive \
   --profile=r2
 ```
 
-### Python boto3 Client
+### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) boto3 Client
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import boto3
 
 s3 = boto3.client(
@@ -166,7 +166,7 @@ bucket_name = "user-uploads"
 
 ### Worker with R2 Operations
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // src/index.ts
 interface Env {
   ASSETS: R2Bucket;
@@ -223,7 +223,7 @@ export default {
 
 ### Presigned URL Generation in a Worker
 
-```typescript
+```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Generate time-limited signed URLs using Workers
 import { AwsClient } from "aws4fetch";
 
@@ -332,6 +332,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/r2/bucket
 
 ## Related Skills
 
-- [cloudflare-workers](../cloudflare-workers/) - Signed URL generation and edge file serving
-- [cloudflare-pages](../cloudflare-pages/) - Pages Functions with R2 bindings
-- [cdn-setup](../../networking/cdn-setup/) - CDN configuration for asset delivery
+- [cloudflare-workers](../[cloudflare-workers](../cloudflare-workers/SKILL.md)/) - Signed URL generation and edge file serving
+- [cloudflare-pages](../[cloudflare-pages](../cloudflare-pages/SKILL.md)/) - Pages Functions with R2 bindings
+- [cdn-setup](../../networking/[cdn-setup](../cdn-setup/SKILL.md)/) - CDN configuration for asset delivery

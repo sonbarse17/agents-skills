@@ -15,7 +15,7 @@ Create and manage OAuth2-capable identities for AI agents using Microsoft Graph 
 
 ## Before You Start
 
-Search `microsoft-docs` MCP for the latest Agent ID documentation:
+Search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for the latest Agent ID documentation:
 - Query: "Microsoft Entra agent identity setup"
 - Verify: API parameters match current preview behavior
 
@@ -38,7 +38,7 @@ Agent Identity Blueprint (application)        ← one per agent type/project
 Install-Module Microsoft.Graph.Beta.Applications -Scope CurrentUser -Force
 ```
 
-### Python (for programmatic provisioning)
+### [Python](../../Languages/python/SKILL.md) (for programmatic provisioning)
 
 ```bash
 pip install azure-identity requests
@@ -78,9 +78,9 @@ $currentUser = (Get-MgContext).Account
 $userId = (Get-MgUser -UserId $currentUser).Id
 ```
 
-### Python (application permissions)
+### [Python](../../Languages/python/SKILL.md) (application permissions)
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import os
 import requests
 from azure.identity import ClientSecretCredential
@@ -106,7 +106,7 @@ headers = {
 
 Sponsors are required and **must be User objects** — ServicePrincipals and Groups are rejected.
 
-```python
+```[python](../../Languages/python/SKILL.md)
 import subprocess
 
 # Get sponsor user ID (client_credentials has no user context, so use az CLI)
@@ -137,7 +137,7 @@ blueprint_obj_id = blueprint["id"]
 > service principal. Without this, Agent Identity creation fails with:
 > `400: The Agent Blueprint Principal for the Agent Blueprint does not exist.`
 
-```python
+```[python](../../Languages/python/SKILL.md)
 sp_body = {
     "@odata.type": "Microsoft.Graph.AgentIdentityBlueprintPrincipal",
     "appId": app_id,
@@ -152,7 +152,7 @@ but crashed before creating the SP).
 
 ### Step 3: Create Agent Identities
 
-```python
+```[python](../../Languages/python/SKILL.md)
 agent_body = {
     "@odata.type": "Microsoft.Graph.AgentIdentity",
     "displayName": "my-agent-instance-1",
@@ -205,7 +205,7 @@ az ad app permission admin-consent --id <client-id>
 
 ## Cleanup
 
-```python
+```[python](../../Languages/python/SKILL.md)
 # Delete Agent Identity
 requests.delete(f"{GRAPH}/servicePrincipals/{agent['id']}", headers=headers)
 
@@ -238,7 +238,7 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 |------|----------|
 | [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
 | [../../../Global_References/known-limitations.md](../../../Global_References/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
-| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, Docker/K8s deployment, security |
+| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/K8s deployment, security |
 
 ### External Links
 

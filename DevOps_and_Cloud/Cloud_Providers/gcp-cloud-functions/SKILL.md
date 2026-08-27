@@ -9,7 +9,7 @@ metadata:
 
 # GCP Cloud Functions
 
-Build and deploy event-driven serverless applications with Google Cloud Functions (Gen1 and Gen2).
+Build and deploy event-driven [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) applications with Google Cloud Functions (Gen1 and Gen2).
 
 ## When to Use
 
@@ -17,7 +17,7 @@ Build and deploy event-driven serverless applications with Google Cloud Function
 - Reacting to events from Pub/Sub, Cloud Storage, Firestore, or Eventarc
 - Running scheduled tasks (cron) without maintaining a server
 - Building data-processing pipelines triggered by file uploads
-- Prototyping microservices before committing to Cloud Run or GKE
+- Prototyping [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) before committing to Cloud Run or GKE
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ gcloud services enable cloudfunctions.googleapis.com cloudbuild.googleapis.com \
 ## Deploy an HTTP Function (Gen2)
 
 ```bash
-# Python HTTP function
+# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) HTTP function
 gcloud functions deploy hello-http \
   --gen2 --region=us-central1 --runtime=python312 \
   --trigger-http --allow-unauthenticated \
@@ -101,9 +101,9 @@ gcloud scheduler jobs create http daily-cleanup-job \
   --location=us-central1
 ```
 
-## Python Function Examples
+## [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Function Examples
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # main.py
 import functions_framework
 import base64, json
@@ -262,7 +262,7 @@ resource "google_cloudfunctions2_function" "processor" {
 
 ## Related Skills
 
-- **gcp-networking** - VPC connectors for accessing private resources from functions
-- **gcp-cloud-sql** - Connecting Cloud Functions to managed databases
-- **terraform-gcp** - Deploy Cloud Functions with Infrastructure as Code
-- **gcp-gke** - When workloads outgrow serverless and need Kubernetes
+- **[gcp-networking](../gcp-networking/SKILL.md)** - VPC connectors for accessing private resources from functions
+- **[gcp-cloud-sql](../gcp-cloud-sql/SKILL.md)** - Connecting Cloud Functions to managed databases
+- **[terraform-gcp](../../Infrastructure_as_Code/terraform-gcp/SKILL.md)** - Deploy Cloud Functions with Infrastructure as Code
+- **[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)** - When workloads outgrow [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) and need [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)

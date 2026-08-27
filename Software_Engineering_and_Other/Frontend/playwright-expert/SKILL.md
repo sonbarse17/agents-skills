@@ -58,7 +58,7 @@ Load detailed guidance based on context:
 
 ### Selector: Role-based (correct) vs CSS class (brittle)
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // ✅ Role-based selector — resilient to styling changes
 await page.getByRole('button', { name: 'Submit' }).click();
 await page.getByLabel('Email address').fill('user@example.com');
@@ -70,7 +70,7 @@ await page.locator('.email-input').fill('user@example.com');
 
 ### Page Object Model + Test File
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // pages/LoginPage.ts
 import { type Page, type Locator } from '@playwright/test';
 
@@ -101,7 +101,7 @@ export class LoginPage {
 }
 ```
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // tests/login.spec.ts
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
@@ -129,7 +129,7 @@ test.describe('Login', () => {
 
 ### Debugging Workflow for Flaky Tests
 
-```typescript
+```[typescript](../typescript/SKILL.md)
 // 1. Run failing test with trace enabled
 // playwright.config.ts
 use: {
@@ -168,5 +168,5 @@ When implementing Playwright tests, provide:
 
 Playwright, Page Object Model, auto-waiting, locators, fixtures, API mocking, trace viewer, visual comparisons, parallel execution, CI/CD integration
 
-[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/playwright-expert/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/quality/playwright-expert/)
 

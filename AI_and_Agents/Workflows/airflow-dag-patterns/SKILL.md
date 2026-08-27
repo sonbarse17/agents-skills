@@ -29,7 +29,7 @@ Production-ready patterns for Apache Airflow including DAG design, operators, se
 
 ### 2. Task Dependencies
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Linear
 task1 >> task2 >> task3
 
@@ -46,11 +46,11 @@ task1 >> task3 >> task4
 
 ## Quick Start
 
-```python
+```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # dags/example_dag.py
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) import PythonOperator
 from airflow.operators.empty import EmptyOperator
 
 default_args = {

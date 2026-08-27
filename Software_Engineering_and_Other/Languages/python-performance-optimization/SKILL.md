@@ -3,13 +3,13 @@ name: python-performance-optimization
 description: Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.
 ---
 
-# Python Performance Optimization
+# [Python](../python/SKILL.md) Performance Optimization
 
-Comprehensive guide to profiling, analyzing, and optimizing Python code for better performance, including CPU profiling, memory optimization, and implementation best practices.
+Comprehensive guide to [profiling](../../Frontend/profiling/SKILL.md), analyzing, and optimizing [Python](../python/SKILL.md) code for better performance, including CPU [profiling](../../Frontend/profiling/SKILL.md), memory optimization, and implementation best practices.
 
 ## When to Use This Skill
 
-- Identifying performance bottlenecks in Python applications
+- Identifying performance bottlenecks in [Python](../python/SKILL.md) applications
 - Reducing application latency and response times
 - Optimizing CPU-intensive operations
 - Reducing memory consumption and memory leaks
@@ -17,15 +17,15 @@ Comprehensive guide to profiling, analyzing, and optimizing Python code for bett
 - Optimizing I/O operations
 - Speeding up data processing pipelines
 - Implementing high-performance algorithms
-- Profiling production applications
+- [Profiling](../../Frontend/profiling/SKILL.md) production applications
 
 ## Core Concepts
 
-### 1. Profiling Types
+### 1. [Profiling](../../Frontend/profiling/SKILL.md) Types
 
-- **CPU Profiling**: Identify time-consuming functions
-- **Memory Profiling**: Track memory allocation and leaks
-- **Line Profiling**: Profile at line-by-line granularity
+- **CPU [Profiling](../../Frontend/profiling/SKILL.md)**: Identify time-consuming functions
+- **Memory [Profiling](../../Frontend/profiling/SKILL.md)**: Track memory allocation and leaks
+- **Line [Profiling](../../Frontend/profiling/SKILL.md)**: Profile at line-by-line granularity
 - **Call Graph**: Visualize function call relationships
 
 ### 2. Performance Metrics
@@ -47,7 +47,7 @@ Comprehensive guide to profiling, analyzing, and optimizing Python code for bett
 
 ### Basic Timing
 
-```python
+```[python](../python/SKILL.md)
 import time
 
 def measure_time():
@@ -73,7 +73,7 @@ print(f"Average time: {execution_time/100:.6f} seconds")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/python-performance-optimization_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[python](../python/SKILL.md)-performance-optimization_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 
@@ -90,7 +90,7 @@ Detailed pattern documentation lives in `../../../Global_References/python-perfo
 
 ## Common Pitfalls
 
-- Optimizing without profiling
+- Optimizing without [profiling](../../Frontend/profiling/SKILL.md)
 - Using global variables unnecessarily
 - Not using appropriate data structures
 - Creating unnecessary copies of data

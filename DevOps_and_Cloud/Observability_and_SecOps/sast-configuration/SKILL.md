@@ -22,8 +22,8 @@ This skill provides comprehensive guidance for setting up and configuring SAST t
 ### 1. Semgrep Configuration
 
 - Custom rule creation with pattern matching
-- Language-specific security rules (Python, JavaScript, Go, Java, etc.)
-- CI/CD integration (GitHub Actions, GitLab CI, Jenkins)
+- Language-specific security rules ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), JavaScript, Go, Java, etc.)
+- CI/CD integration ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md))
 - False positive tuning and rule optimization
 - Organizational policy enforcement
 
@@ -37,7 +37,7 @@ This skill provides comprehensive guidance for setting up and configuring SAST t
 
 ### 3. CodeQL Analysis
 
-- GitHub Advanced Security integration
+- [GitHub](../../CI_CD/github/SKILL.md) Advanced Security integration
 - Custom query development
 - Vulnerability variant analysis
 - Security research workflows
@@ -59,12 +59,12 @@ This skill provides comprehensive guidance for setting up and configuring SAST t
 pip install semgrep
 semgrep --config=auto --error
 
-# SonarQube with Docker
-docker run -d --name sonarqube -p 9000:9000 sonarqube:10.8-community
+# SonarQube with [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d --name sonarqube -p 9000:9000 sonarqube:10.8-community
 
 # CodeQL CLI setup
-gh extension install github/gh-codeql
-codeql database create mydb --language=python
+gh extension install [github](../../CI_CD/github/SKILL.md)/gh-codeql
+codeql database create mydb --language=[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 ```
 
 ## Integration Patterns
@@ -72,20 +72,20 @@ codeql database create mydb --language=python
 ### CI/CD Pipeline Integration
 
 ```yaml
-# GitHub Actions example
+# [GitHub](../../CI_CD/github/SKILL.md) Actions example
 - name: Run Semgrep
   uses: returntocorp/semgrep-action@v1
   with:
     config: >-
-      p/security-audit
+      p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
       p/owasp-top-ten
 ```
 
-### Pre-commit Hook
+### Pre-[commit](../../CI_CD/commit/SKILL.md) Hook
 
 ```bash
-# .pre-commit-config.yaml
-- repo: https://github.com/returntocorp/semgrep
+# .pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml
+- repo: https://[github](../../CI_CD/github/SKILL.md).com/returntocorp/semgrep
   rev: v1.45.0
   hooks:
     - id: semgrep
@@ -124,7 +124,7 @@ codeql database create mydb --language=python
 ### New Project Setup
 
 ```bash
-./scripts/run-sast.sh --setup --language python --tools semgrep,sonarqube
+./scripts/run-sast.sh --setup --language [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) --tools semgrep,sonarqube
 ```
 
 ### Custom Rule Development
@@ -172,7 +172,7 @@ semgrep --config p/pci-dss --json -o pci-scan-results.json
 
 - [OWASP Top 10 Checklist](../owasp-top10-checklist/SKILL.md)
 - [Container Security](../container-security/SKILL.md)
-- [Dependency Scanning](../dependency-scanning/SKILL.md)
+- [Dependency Scanning](../[dependency-scanning](../../../Security/dependency-scanning/SKILL.md)/SKILL.md)
 
 ## Tool Comparison
 
@@ -180,7 +180,7 @@ semgrep --config p/pci-dss --json -o pci-scan-results.json
 | --------- | ------------------------ | ---------------- | --------------- | ------------- |
 | Semgrep   | Custom rules, fast scans | 30+ languages    | Free/Enterprise | Excellent     |
 | SonarQube | Code quality + security  | 25+ languages    | Free/Commercial | Good          |
-| CodeQL    | Deep analysis, research  | 10+ languages    | Free (OSS)      | GitHub native |
+| CodeQL    | Deep analysis, research  | 10+ languages    | Free (OSS)      | [GitHub](../../CI_CD/github/SKILL.md) native |
 
 ## Next Steps
 

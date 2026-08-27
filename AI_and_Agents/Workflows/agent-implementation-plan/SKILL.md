@@ -9,7 +9,7 @@ description: Forces the agent to research and write a structured implementation 
 
 ## 1. THE PLANNING WORKFLOW
 
-```mermaid
+```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Task Received] --> B[Codebase Research]
@@ -29,7 +29,7 @@ Your `implementation_plan.md` MUST adhere strictly to this template:
 State the exact objective. 1-2 sentences maximum. No fluff.
 
 ### II. OPEN QUESTIONS
-Expose all ambiguities and missing context immediately using GitHub Alerts:
+Expose all ambiguities and missing context immediately using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Alerts:
 > [!WARNING]
 > [Question or missing context here]
 

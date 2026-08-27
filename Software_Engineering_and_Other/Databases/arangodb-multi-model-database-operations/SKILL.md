@@ -28,7 +28,7 @@ same database, queried through a single language — **AQL** (ArangoQL) —
 rather than requiring separate document, graph, and key-value systems
 stitched together at the application layer. This is a materially
 different trade-off than a graph-only engine like
-[neo4j-graph-database-operations](../neo4j-graph-database-operations/SKILL.md):
+[neo4j-graph-database-operations](../[neo4j-graph-database-operations](../neo4j-graph-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md):
 ArangoDB is the right choice when a workload genuinely needs both
 general document storage and graph traversal against the same data
 without operating two databases, at the cost of graph traversal
@@ -155,11 +155,11 @@ db._create("orders", { numberOfShards: 6, shardKeys: ["customerId"] });
 `shardKeys` determines which DB-server shard holds a given document —
 choosing a shard key with poor cardinality (too few distinct values) or
 one that's monotonically increasing for the dominant write pattern
-creates the same class of hot-shard problem covered for MongoDB's shard
+creates the same class of hot-shard problem covered for [MongoDB](../../Backend/mongodb/SKILL.md)'s shard
 key selection in
-[mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md)
+[mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md)
 and Cassandra's partition key design in
-[cassandra-wide-column-database-operations](../cassandra-wide-column-database-operations/SKILL.md).
+[cassandra-wide-column-database-operations](../[cassandra-wide-column-database-operations](../cassandra-wide-column-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md).
 For a graph whose vertex and edge collections are sharded independently,
 non-matching shard keys between them force cross-shard traversal hops
 (a network round-trip per hop instead of a local shard lookup) — the
@@ -204,10 +204,10 @@ curl -u <USER>:<PASSWORD> http://<COORDINATOR_HOST>:8529/_admin/cluster/health
   connectivity is provably sparse — the same discipline as bounding
   variable-length patterns in Cypher.
 - Design sharding keys around the dominant access pattern and expected
-  cardinality up front — like MongoDB and Cassandra key design
+  cardinality up front — like [MongoDB](../../Backend/mongodb/SKILL.md) and Cassandra key design
   elsewhere in this repo, this is far more disruptive to change after
   data has accumulated across shards than to get right initially.
-- Use `EXPLAIN`/query profiling on graph traversals specifically, since
+- Use `EXPLAIN`/query [profiling](../../Frontend/profiling/SKILL.md) on graph traversals specifically, since
   a traversal that looks reasonable can hide unpushed filters that
   force exploring far more of the graph than the final result needs.
 - Run an odd number of agency nodes (3 or 5) for the same Raft-quorum
@@ -239,7 +239,7 @@ curl -u <USER>:<PASSWORD> http://<COORDINATOR_HOST>:8529/_admin/cluster/health
   than its peers, and the imbalance worsens as data grows.
   **Fix:** The collection's `shardKeys` has poor cardinality or is
   monotonically increasing for the dominant write pattern — the same
-  hot-shard failure mode as a poorly chosen MongoDB shard key or
+  hot-shard failure mode as a poorly chosen [MongoDB](../../Backend/mongodb/SKILL.md) shard key or
   Cassandra partition key. Redesign the shard key around a
   higher-cardinality, non-monotonic attribute; this requires recreating
   the collection with new shard settings and reloading data, so
@@ -276,14 +276,14 @@ curl -u <USER>:<PASSWORD> http://<COORDINATOR_HOST>:8529/_admin/cluster/health
   > first (`arangodump`), and restrict `_drop*` operations via
   > ArangoDB's database-level access control to a narrow admin role
   > rather than general application credentials — see
-  > [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md)
+  > [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
   > for restore-testing discipline that should back this up.
 
 ## Worked example
 
 **Scenario:** A retail platform wants to add a "customers who bought
 this also bought" recommendation feature and a general product catalog,
-currently split across a document-only MongoDB deployment for the
+currently split across a document-only [MongoDB](../../Backend/mongodb/SKILL.md) deployment for the
 catalog and an ad hoc application-side join for "also bought" logic
 that's become slow and hard to maintain. The team evaluates ArangoDB as
 a single multi-model replacement.
@@ -318,7 +318,7 @@ a single multi-model replacement.
    consistently (aligning them to minimize cross-shard traversal hops),
    validated against expected customer-ID cardinality (millions of
    distinct customers, good distribution) before migration.
-5. Migrate catalog data from MongoDB via `arangoimport`, run both
+5. Migrate catalog data from [MongoDB](../../Backend/mongodb/SKILL.md) via `arangoimport`, run both
    systems in parallel during a validation window, and cut the
    recommendation feature over to the new AQL traversal once query
    latency and result correctness are confirmed against the old ad hoc
@@ -326,7 +326,7 @@ a single multi-model replacement.
 
 ## Cross-references
 
-- [neo4j-graph-database-operations](../neo4j-graph-database-operations/SKILL.md) — a graph-only architecture, useful as a direct contrast when a workload is overwhelmingly graph-traversal-heavy and doesn't need ArangoDB's document/key-value multi-model flexibility.
-- [mongodb-operations-and-scaling](../mongodb-operations-and-scaling/SKILL.md) — comparable document-collection sharding-key design trade-offs, relevant when comparing ArangoDB's document model against MongoDB's.
-- [cassandra-wide-column-database-operations](../cassandra-wide-column-database-operations/SKILL.md) — comparable partition/shard-key hot-spotting failure mode, useful as a conceptual parallel to ArangoDB's `shardKeys` design.
-- [database-backup-and-restore-strategies](../database-backup-and-restore-strategies/SKILL.md) — `arangodump`/`arangorestore` tooling and restore-testing discipline for ArangoDB backups.
+- [neo4j-graph-database-operations](../[neo4j-graph-database-operations](../neo4j-graph-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a graph-only architecture, useful as a direct contrast when a workload is overwhelmingly graph-traversal-heavy and doesn't need ArangoDB's document/key-value multi-model flexibility.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable document-collection sharding-key design trade-offs, relevant when comparing ArangoDB's document model against [MongoDB](../../Backend/mongodb/SKILL.md)'s.
+- [cassandra-wide-column-database-operations](../[cassandra-wide-column-database-operations](../cassandra-wide-column-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — comparable partition/shard-key hot-spotting failure mode, useful as a conceptual parallel to ArangoDB's `shardKeys` design.
+- [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — `arangodump`/`arangorestore` tooling and restore-testing discipline for ArangoDB backups.
