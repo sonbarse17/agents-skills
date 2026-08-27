@@ -1,10 +1,21 @@
 ---
 name: dr-review
-description: Review backup, restore, and disaster-recovery readiness as a senior SRE — whether backups exist, are recoverable, meet the stated RTO/RPO, survive deletion or ransomware, and whether failover has actually been tested — then produce an evidence-based findings table and self-contained remediation plans. Strictly read-only — never triggers a restore, failover, snapshot deletion, or any change. Use when asked about backups, restore testing, RTO/RPO, data-loss risk, multi-region or multi-AZ failover, business continuity, or "what happens if this database/region/account is lost".
+description: Review backup, restore, and disaster-recovery readiness as a senior
+  SRE — whether backups exist, are recoverable, meet the stated RTO/RPO, survive
+  deletion or ransomware, and whether failover has actually been tested — then
+  produce an evidence-based findings table and self-contained remediation plans.
+  Strictly read-only — never triggers a restore, failover, snapshot deletion, or
+  any change. Use when asked about backups, restore testing, RTO/RPO, data-loss
+  risk, multi-region or multi-AZ failover, business continuity, or "what happens
+  if this database/region/account is lost".
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.0.0"
+  version: 1.0.0
+tags:
+  - observability_and_secops
+  - dr-review
+depends_on: []
 ---
 
 # Disaster Recovery Review

@@ -1,19 +1,22 @@
 ---
 name: secrets-management
 description: >
-  Guides eliminating hardcoded secrets from code and CI/CD, setting up a
-  secrets manager (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault,
-  SOPS+age/KMS for GitOps), rotating credentials, and adding
-  secret-scanning to catch leaks. Use when the user asks to "remove
-  hardcoded secrets", "set up Vault/Secrets Manager integration", "scan
-  for leaked API keys", "rotate a compromised credential", "encrypt
-  secrets for GitOps with SOPS", or "inject secrets into a Kubernetes
-  pod/CI pipeline securely".
+  Guides eliminating hardcoded secrets from code and CI/CD, setting up a secrets
+  manager (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, SOPS+age/KMS
+  for GitOps), rotating credentials, and adding secret-scanning to catch leaks.
+  Use when the user asks to "remove hardcoded secrets", "set up Vault/Secrets
+  Manager integration", "scan for leaked API keys", "rotate a compromised
+  credential", "encrypt secrets for GitOps with SOPS", or "inject secrets into a
+  Kubernetes pod/CI pipeline securely".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - cloud_providers
+  - secrets-management
+depends_on: []
 ---
 
 # Secrets Management

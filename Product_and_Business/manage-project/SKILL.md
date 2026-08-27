@@ -1,18 +1,24 @@
 ---
 name: cloud-manage-project
 description: >
-  Manages existing Elastic Cloud Serverless projects: list, get, update, delete, reset
-  credentials, resume, and load saved credentials. Connects to existing projects by
-  resolving endpoints and acquiring scoped Elasticsearch API keys. Use when performing
-  day-2 operations on serverless projects, connecting to an existing project, loading
-  or resetting project credentials, or looking up project details.
+  Manages existing Elastic Cloud Serverless projects: list, get, update, delete,
+  reset credentials, resume, and load saved credentials. Connects to existing
+  projects by resolving endpoints and acquiring scoped Elasticsearch API keys.
+  Use when performing day-2 operations on serverless projects, connecting to an
+  existing project, loading or resetting project credentials, or looking up
+  project details.
 compatibility: >
-  Requires Python 3.8+, network access to the Elastic Cloud API (api.elastic-cloud.com)
-  for API commands; load-credentials works locally without network access. Environment
-  variables: EC_API_KEY (required for API commands, set by cloud-setup).
+  Requires Python 3.8+, network access to the Elastic Cloud API
+  (api.elastic-cloud.com) for API commands; load-credentials works locally
+  without network access. Environment variables: EC_API_KEY (required for API
+  commands, set by cloud-setup).
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - product_and_business
+  - manage-project
+depends_on: []
 ---
 
 # Manage [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project

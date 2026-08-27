@@ -1,18 +1,23 @@
 ---
 name: mobile-deployment
 description: >
-  Use this skill when the user asks about mobile app deployment, App Store,
-  Play Store, TestFlight, Fastlane, code signing, mobile CI/CD, app release,
-  or beta testing.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about mobile app deployment, App Store, Play
+  Store, TestFlight, Fastlane, code signing, mobile CI/CD, app release, or beta
+  testing.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, deployment, phase-4, universal]
+tags:
+  - mobile
+  - deployment
+  - phase-4
+  - universal
+depends_on: []
 ---
 
 # Mobile Deployment

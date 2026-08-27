@@ -1,16 +1,28 @@
 ---
 name: backend-websocket-patterns
 description: >
-  Use this skill when the user says 'WebSocket', 'real-time', 'socket.io', 'WS connection', 'reconnection', 'WS rooms', 'broadcast', 'WS scaling', 'WS clustering', 'pub/sub over WS', 'SSE', 'Server-Sent Events', 'long polling', 'WS handshake', or when designing real-time communication. This skill enforces consistent WebSocket patterns: connection lifecycle, room management, reconnection strategies, message framing, and horizontal scaling. Applies to any backend stack. Do NOT use for: REST API design, gRPC streaming, message queue design, or frontend rendering.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'WebSocket', 'real-time', 'socket.io', 'WS
+  connection', 'reconnection', 'WS rooms', 'broadcast', 'WS scaling', 'WS
+  clustering', 'pub/sub over WS', 'SSE', 'Server-Sent Events', 'long polling',
+  'WS handshake', or when designing real-time communication. This skill enforces
+  consistent WebSocket patterns: connection lifecycle, room management,
+  reconnection strategies, message framing, and horizontal scaling. Applies to
+  any backend stack. Do NOT use for: REST API design, gRPC streaming, message
+  queue design, or frontend rendering.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, websocket, phase-2, universal]
+tags:
+  - backend
+  - websocket
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend WebSocket Patterns

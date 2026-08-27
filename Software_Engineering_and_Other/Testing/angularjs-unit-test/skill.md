@@ -1,6 +1,10 @@
 ---
 name: angularjs-unit-testing
 description: Use this skill for AngularJS unit testing, maintenance, and migration tasks
+tags:
+  - testing
+  - angularjs-unit-test
+depends_on: []
 ---
 
 # AngularJS Unit Testing Skill

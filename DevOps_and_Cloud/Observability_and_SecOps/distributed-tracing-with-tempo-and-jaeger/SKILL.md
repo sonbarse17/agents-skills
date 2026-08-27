@@ -1,23 +1,26 @@
 ---
 name: distributed-tracing-with-tempo-and-jaeger
 description: >
-  Guides configuring Grafana Tempo or Jaeger as the distributed tracing
-  backend — trace storage backend selection and retention, sampling
-  strategy at the backend/collector level (head-based vs. tail-based),
-  and trace-to-metrics/trace-to-logs correlation so a trace ID can pivot
-  directly into a log line or a metrics exemplar. Use when the user asks
-  to "set up Tempo," "configure Jaeger storage," "set trace retention,"
-  "configure trace-to-logs correlation in Grafana," "design a sampling
-  strategy for traces," or "query traces with TraceQL." This is the
-  tracing *backend/storage* layer — instrumenting applications and
-  configuring the OpenTelemetry Collector that feeds this backend is
-  covered separately in
+  Guides configuring Grafana Tempo or Jaeger as the distributed tracing backend
+  — trace storage backend selection and retention, sampling strategy at the
+  backend/collector level (head-based vs. tail-based), and
+  trace-to-metrics/trace-to-logs correlation so a trace ID can pivot directly
+  into a log line or a metrics exemplar. Use when the user asks to "set up
+  Tempo," "configure Jaeger storage," "set trace retention," "configure
+  trace-to-logs correlation in Grafana," "design a sampling strategy for
+  traces," or "query traces with TraceQL." This is the tracing *backend/storage*
+  layer — instrumenting applications and configuring the OpenTelemetry Collector
+  that feeds this backend is covered separately in
   opentelemetry-instrumentation-and-collector-configuration.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - distributed-tracing-with-tempo-and-jaeger
+depends_on: []
 ---
 
 # Distributed Tracing with Tempo and Jaeger

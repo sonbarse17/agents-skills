@@ -1,11 +1,17 @@
 ---
 name: azure-ai-document-intelligence-ts
-description: Extract text, tables, and structured data from documents using Azure Document Intelligence (@azure-rest/ai-document-intelligence). Use when processing invoices, receipts, IDs, forms, or building custom document models.
+description: Extract text, tables, and structured data from documents using
+  Azure Document Intelligence (@azure-rest/ai-document-intelligence). Use when
+  processing invoices, receipts, IDs, forms, or building custom document models.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
-  package: '@azure-rest/ai-document-intelligence'
+  version: 1.0.0
+  package: "@azure-rest/ai-document-intelligence"
+tags:
+  - cloud_providers
+  - azure-ai-document-intelligence-ts
+depends_on: []
 ---
 
 # Azure Document Intelligence REST SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

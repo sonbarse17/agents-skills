@@ -1,6 +1,12 @@
 ---
 name: web3-testing
-description: Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, setting up blockchain test suites, or validating DeFi protocols.
+description: Test smart contracts comprehensively using Hardhat and Foundry with
+  unit tests, integration tests, and mainnet forking. Use when testing Solidity
+  contracts, setting up blockchain test suites, or validating DeFi protocols.
+tags:
+  - blockchain_and_web3
+  - web3-testing
+depends_on: []
 ---
 
 # Web3 Smart Contract Testing

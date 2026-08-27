@@ -9,10 +9,14 @@ description: >
   (MLflow, Vertex AI Model Registry, SageMaker Model Registry, Hugging Face
   Hub), or design a rollback strategy for a deployed model.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - model-packaging-and-versioning
+depends_on: []
 ---
 
 # Model Packaging And Versioning

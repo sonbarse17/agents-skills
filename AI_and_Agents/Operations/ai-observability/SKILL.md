@@ -1,3 +1,12 @@
+---
+name: ai-observability
+description: Comprehensive guidelines and best practices for ai-observability.
+  Use this skill when working with related components.
+tags:
+  - operations
+  - ai-observability
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

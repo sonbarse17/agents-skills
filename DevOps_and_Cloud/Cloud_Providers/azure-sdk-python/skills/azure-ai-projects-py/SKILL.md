@@ -1,11 +1,20 @@
 ---
 name: azure-ai-projects-py
-description: Build AI applications using the Azure AI Projects Python SDK (azure-ai-projects). Use when working with Foundry project clients, creating versioned agents with PromptAgentDefinition, running evaluations, managing connections/deployments/datasets/indexes, or using OpenAI-compatible clients. This is the high-level Foundry SDK - for low-level agent operations, use azure-ai-agents-python skill.
+description: Build AI applications using the Azure AI Projects Python SDK
+  (azure-ai-projects). Use when working with Foundry project clients, creating
+  versioned agents with PromptAgentDefinition, running evaluations, managing
+  connections/deployments/datasets/indexes, or using OpenAI-compatible clients.
+  This is the high-level Foundry SDK - for low-level agent operations, use
+  azure-ai-agents-python skill.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: azure-ai-projects
+tags:
+  - skills
+  - azure-ai-projects-py
+depends_on: []
 ---
 
 # Azure AI Projects [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK (Foundry SDK)

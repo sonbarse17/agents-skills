@@ -2,18 +2,22 @@
 name: model-drift-alert-triage
 description: >
   Guides the fast, time-boxed triage of a drift-monitoring alert that has
-  already fired: deciding whether it is genuine data/concept drift, a
-  monitoring code bug, a stale/broken upstream feature pipeline, or normal
-  seasonality — before deciding whether to retrain, roll back, silence, or
-  escalate. Use when the user says a drift alert "just fired", asks "is this
-  real drift or a false positive", needs a triage runbook for an on-call
-  PSI/KS/KL threshold breach, or is deciding what to do in the first 15-30
-  minutes after being paged for a model-quality alert.
+  already fired: deciding whether it is genuine data/concept drift, a monitoring
+  code bug, a stale/broken upstream feature pipeline, or normal seasonality —
+  before deciding whether to retrain, roll back, silence, or escalate. Use when
+  the user says a drift alert "just fired", asks "is this real drift or a false
+  positive", needs a triage runbook for an on-call PSI/KS/KL threshold breach,
+  or is deciding what to do in the first 15-30 minutes after being paged for a
+  model-quality alert.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - model-drift-alert-triage
+depends_on: []
 ---
 
 # Model Drift Alert Triage

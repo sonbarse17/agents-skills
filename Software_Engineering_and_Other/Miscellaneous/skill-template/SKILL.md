@@ -4,10 +4,14 @@ description: >
   One to three sentences describing exactly what this skill does and the
   concrete situations in which an agent should activate it.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
-  domain: devops  # replace with the actual plugin folder name you're adding to — see spec/authoring-guide.md for the full valid list
+  domain: devops
   maturity: draft
+tags:
+  - miscellaneous
+  - skill-template
+depends_on: []
 ---
 
 # Skill Name In Title Case

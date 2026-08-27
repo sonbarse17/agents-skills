@@ -1,16 +1,23 @@
 ---
 name: design-motion-design
 description: >
-  Use when the user asks about motion design, animation, micro-interactions, Lottie, animation principles, UI animation, transition design, or motion guidelines. Do NOT use for: frontend animation implementation (frontend-animation), or visual design (design-visual-design).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about motion design, animation, micro-interactions,
+  Lottie, animation principles, UI animation, transition design, or motion
+  guidelines. Do NOT use for: frontend animation implementation
+  (frontend-animation), or visual design (design-visual-design).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [design, motion-design, phase-3]
+tags:
+  - design
+  - motion-design
+  - phase-3
+depends_on: []
 ---
 
 # Motion Design

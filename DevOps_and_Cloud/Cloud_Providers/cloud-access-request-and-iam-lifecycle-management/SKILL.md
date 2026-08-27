@@ -1,20 +1,23 @@
 ---
 name: cloud-access-request-and-iam-lifecycle-management
 description: >
-  Handles the everyday operational request to grant, time-box, and later
-  revoke a scoped IAM permission for a contractor, new hire, or a
-  temporary need (e.g. "give the new contractor read-only S3 access for
-  30 days," "grant break-fix access to prod for this incident," "revoke
-  Priya's access, she left the team," "why does this access request keep
-  getting rejected") — including expiry enforcement and the audit trail
-  a security review will ask for. Use for a single access grant/revoke
-  transaction, not for designing the underlying IAM policy/role structure
-  (see cloud-iam-hardening for that).
+  Handles the everyday operational request to grant, time-box, and later revoke
+  a scoped IAM permission for a contractor, new hire, or a temporary need (e.g.
+  "give the new contractor read-only S3 access for 30 days," "grant break-fix
+  access to prod for this incident," "revoke Priya's access, she left the team,"
+  "why does this access request keep getting rejected") — including expiry
+  enforcement and the audit trail a security review will ask for. Use for a
+  single access grant/revoke transaction, not for designing the underlying IAM
+  policy/role structure (see cloud-iam-hardening for that).
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-access-request-and-iam-lifecycle-management
+depends_on: []
 ---
 
 # Cloud Access Request and IAM Lifecycle Management

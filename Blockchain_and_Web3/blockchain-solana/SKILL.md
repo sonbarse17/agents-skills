@@ -1,11 +1,24 @@
 ---
 name: blockchain-solana
 description: >
-  Use this skill when asked about Solana blockchain, Solana architecture, Proof of History, Solana programming, Anchor framework, Solana runtime, Solana CLI tools, Solana DeFi, Jupiter, Raydium, Metaplex, SPL tokens, and the Solana ecosystem. Covers Solana protocol architecture (PoH, Tower BFT, Turbine, Gulf Stream, SeaLevel, Cloudbreak), smart contract development with Anchor/Rust, SPL token standards, Solana CLI and SDKs, and ecosystem protocols. Do NOT use for: EVM chains (use blockchain-ethereum), general Rust smart contracts (use blockchain-application), or other L1 blockchains.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, solana, rust, anchor, phase-blockchain]
+  Use this skill when asked about Solana blockchain, Solana architecture, Proof
+  of History, Solana programming, Anchor framework, Solana runtime, Solana CLI
+  tools, Solana DeFi, Jupiter, Raydium, Metaplex, SPL tokens, and the Solana
+  ecosystem. Covers Solana protocol architecture (PoH, Tower BFT, Turbine, Gulf
+  Stream, SeaLevel, Cloudbreak), smart contract development with Anchor/Rust,
+  SPL token standards, Solana CLI and SDKs, and ecosystem protocols. Do NOT use
+  for: EVM chains (use blockchain-ethereum), general Rust smart contracts (use
+  blockchain-application), or other L1 blockchains.
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - solana
+  - rust
+  - anchor
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Solana

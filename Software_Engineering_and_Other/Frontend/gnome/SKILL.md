@@ -1,16 +1,24 @@
 ---
 name: desktop-gnome
 description: >
-  Use when the user asks about GNOME desktop development, GNOME Shell extensions, GTK under GNOME, GNOME Builder, or GNOME platform libraries (GLib, GIO, GSettings, GNOME Settings). Do NOT use for: GTK itself (desktop-gtk), or KDE (desktop-kde).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about GNOME desktop development, GNOME Shell
+  extensions, GTK under GNOME, GNOME Builder, or GNOME platform libraries (GLib,
+  GIO, GSettings, GNOME Settings). Do NOT use for: GTK itself (desktop-gtk), or
+  KDE (desktop-kde).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, gnome, linux, gtk]
+tags:
+  - desktop
+  - gnome
+  - linux
+  - gtk
+depends_on: []
 ---
 
 # GNOME

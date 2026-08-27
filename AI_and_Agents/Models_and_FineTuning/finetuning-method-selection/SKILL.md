@@ -1,6 +1,14 @@
 ---
 name: finetuning-method-selection
-description: Decide whether to fine-tune at all, and route to the right method (SFT, DPO/ORPO/KTO, GRPO/RLVR, continued pretraining) and base model. Use when starting any fine-tuning effort, when unsure whether RAG or prompting would suffice, or when choosing between preference-optimization and reinforcement methods.
+description: Decide whether to fine-tune at all, and route to the right method
+  (SFT, DPO/ORPO/KTO, GRPO/RLVR, continued pretraining) and base model. Use when
+  starting any fine-tuning effort, when unsure whether RAG or prompting would
+  suffice, or when choosing between preference-optimization and reinforcement
+  methods.
+tags:
+  - models_and_finetuning
+  - finetuning-method-selection
+depends_on: []
 ---
 
 # Fine-Tuning Method Selection

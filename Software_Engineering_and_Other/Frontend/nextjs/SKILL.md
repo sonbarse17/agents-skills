@@ -1,16 +1,29 @@
 ---
 name: react-nextjs
 description: >
-  Use this skill when the user says 'Next.js', 'App Router', 'Server Component', 'Client Component', 'Next.js structure', 'SSR Next.js', 'SSG Next.js', 'Next.js data fetching', 'use server', 'use client', or when building a Next.js application with App Router. This skill enforces: default to Server Components, add 'use client' only when necessary (event listeners, browser APIs, hooks), data fetching in Server Components with async/await, route/layout conventions (loading.tsx, error.tsx, not-found.tsx), and metadata API for SEO. Requires Next.js 14+ (next.config). Do NOT use for: CRA, Vite, Remix, or other React frameworks.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Next.js', 'App Router', 'Server Component',
+  'Client Component', 'Next.js structure', 'SSR Next.js', 'SSG Next.js',
+  'Next.js data fetching', 'use server', 'use client', or when building a
+  Next.js application with App Router. This skill enforces: default to Server
+  Components, add 'use client' only when necessary (event listeners, browser
+  APIs, hooks), data fetching in Server Components with async/await,
+  route/layout conventions (loading.tsx, error.tsx, not-found.tsx), and metadata
+  API for SEO. Requires Next.js 14+ (next.config). Do NOT use for: CRA, Vite,
+  Remix, or other React frameworks.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, react, nextjs, phase-3]
+tags:
+  - frontend
+  - react
+  - nextjs
+  - phase-3
+depends_on: []
 ---
 
 # Next.js

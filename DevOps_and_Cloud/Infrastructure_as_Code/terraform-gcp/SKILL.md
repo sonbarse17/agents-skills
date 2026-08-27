@@ -1,10 +1,15 @@
 ---
 name: terraform-gcp
-description: Provision GCP infrastructure with Terraform. Configure providers and deploy Google Cloud resources. Use when implementing IaC for GCP.
+description: Provision GCP infrastructure with Terraform. Configure providers
+  and deploy Google Cloud resources. Use when implementing IaC for GCP.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - terraform-gcp
+depends_on: []
 ---
 
 # Terraform GCP

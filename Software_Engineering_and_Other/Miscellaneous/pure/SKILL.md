@@ -1,16 +1,25 @@
 ---
 name: php-pure
 description: >
-  Use this skill when building PHP applications without a framework — PSR standards, routing, middleware, database access, error handling, and security. This skill enforces: PSR-4 autoloading, PSR-7 request/response, PSR-15 middleware, PSR-11 container, PSR-3 logging. Requires PHP 8.1+. Do NOT use for: Laravel, Symfony, WordPress, or framework-specific PHP development.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building PHP applications without a framework — PSR
+  standards, routing, middleware, database access, error handling, and security.
+  This skill enforces: PSR-4 autoloading, PSR-7 request/response, PSR-15
+  middleware, PSR-11 container, PSR-3 logging. Requires PHP 8.1+. Do NOT use
+  for: Laravel, Symfony, WordPress, or framework-specific PHP development.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, php, pure, phase-4]
+tags:
+  - backend
+  - php
+  - pure
+  - phase-4
+depends_on: []
 ---
 
 # PHP (Pure/Standard)

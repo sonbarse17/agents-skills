@@ -1,10 +1,16 @@
 ---
 name: prompt-injection-defense
-description: Defend AI systems against prompt injection and indirect prompt attacks using input controls, tool permissions, output validation, and isolation boundaries.
+description: Defend AI systems against prompt injection and indirect prompt
+  attacks using input controls, tool permissions, output validation, and
+  isolation boundaries.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - prompt-injection-defense
+depends_on: []
 ---
 
 # Prompt Injection Defense

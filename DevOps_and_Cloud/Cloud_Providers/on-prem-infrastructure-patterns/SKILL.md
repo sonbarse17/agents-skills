@@ -2,20 +2,23 @@
 name: on-prem-infrastructure-patterns
 description: >
   Guides designing and operating on-premises, private-cloud, and hybrid
-  infrastructure — VMware vSphere as the virtualization baseline,
-  automated bare-metal provisioning (PXE/MAAS/Redfish), inventory-as-code
-  (IPAM/DCIM), and hybrid connectivity back to public cloud (VPN, dedicated
-  interconnect equivalents of Direct Connect/ExpressRoute/FastConnect).
-  Use when a user asks to "design a private cloud", "provision bare-metal
-  servers", "set up a vSphere cluster", "connect our data center to AWS/
-  Azure/GCP/OCI", "decide whether to migrate to the cloud or stay
-  on-prem", "plan hybrid connectivity", or "build a data center network
-  for a new site".
+  infrastructure — VMware vSphere as the virtualization baseline, automated
+  bare-metal provisioning (PXE/MAAS/Redfish), inventory-as-code (IPAM/DCIM), and
+  hybrid connectivity back to public cloud (VPN, dedicated interconnect
+  equivalents of Direct Connect/ExpressRoute/FastConnect). Use when a user asks
+  to "design a private cloud", "provision bare-metal servers", "set up a vSphere
+  cluster", "connect our data center to AWS/ Azure/GCP/OCI", "decide whether to
+  migrate to the cloud or stay on-prem", "plan hybrid connectivity", or "build a
+  data center network for a new site".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - on-prem-infrastructure-patterns
+depends_on: []
 ---
 
 # On-Prem Infrastructure Patterns

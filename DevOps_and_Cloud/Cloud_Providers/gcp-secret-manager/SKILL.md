@@ -1,10 +1,16 @@
 ---
 name: gcp-secret-manager
-description: Secure secrets in Google Cloud Secret Manager. Configure IAM policies, integrate with GKE, and manage secret versions. Use when managing secrets in GCP environments.
+description: Secure secrets in Google Cloud Secret Manager. Configure IAM
+  policies, integrate with GKE, and manage secret versions. Use when managing
+  secrets in GCP environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-secret-manager
+depends_on: []
 ---
 
 # GCP Secret Manager

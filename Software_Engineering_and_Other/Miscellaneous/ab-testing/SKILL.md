@@ -1,18 +1,24 @@
 ---
 name: product-ab-testing
 description: >
-  Use this skill when designing and analyzing A/B tests: hypothesis formation, experiment design, statistical analysis, and decision framework.
-  This skill enforces: hypothesis structure, sample size calculation, statistical significance, AA test validation.
-  Do NOT use for: multivariate testing, bandit algorithms, personalization engines, survey analysis.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing and analyzing A/B tests: hypothesis formation,
+  experiment design, statistical analysis, and decision framework. This skill
+  enforces: hypothesis structure, sample size calculation, statistical
+  significance, AA test validation. Do NOT use for: multivariate testing, bandit
+  algorithms, personalization engines, survey analysis.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [product, ab-testing, phase-8]
+tags:
+  - product
+  - ab-testing
+  - phase-8
+depends_on: []
 ---
 
 # A/B Testing Agent

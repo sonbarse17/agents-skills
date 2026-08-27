@@ -1,15 +1,16 @@
 ---
 name: sandbox-execution
 description: >
-  Comprehensive skill for designing, implementing, and operating durable execution
-  environments with microVM isolation, snapshotting, forking, and secure agent
-  runtime sandboxes. Covers the sandbox-as-a-tool pattern, Temporal/durable
-  execution frameworks, gVisor/Kata Containers/Firecracker isolation, workspace
-  management, state persistence across sessions, filesystem sandboxing, network
-  isolation, and resource quota enforcement for production agent systems.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Comprehensive skill for designing, implementing, and operating durable
+  execution environments with microVM isolation, snapshotting, forking, and
+  secure agent runtime sandboxes. Covers the sandbox-as-a-tool pattern,
+  Temporal/durable execution frameworks, gVisor/Kata Containers/Firecracker
+  isolation, workspace management, state persistence across sessions, filesystem
+  sandboxing, network isolation, and resource quota enforcement for production
+  agent systems.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
@@ -26,6 +27,7 @@ tags:
   - security
   - containers
   - resource-management
+depends_on: []
 ---
 
 # Sandbox Execution

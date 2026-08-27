@@ -2,21 +2,24 @@
 name: security-posture-metrics-and-trend-analysis
 description: >
   Guides tracking security finding and posture trends over time — mean
-  time-to-remediate (MTTR) by severity, backlog age distribution,
-  false-positive rate, exception-list growth, and gate pass/override
-  rate — to answer "is our security posture actually improving" with
-  data instead of a point-in-time finding count. Use when the user asks
-  to "build a security metrics dashboard", "track mean-time-to-remediate
-  by severity", "show finding backlog trends over time", "report our
-  security posture to leadership/an auditor", or "measure whether our
-  DevSecOps program is working". Distinct from the day-to-day triage
-  workflow in security-finding-backlog-triage, which this skill
-  measures the output of.
+  time-to-remediate (MTTR) by severity, backlog age distribution, false-positive
+  rate, exception-list growth, and gate pass/override rate — to answer "is our
+  security posture actually improving" with data instead of a point-in-time
+  finding count. Use when the user asks to "build a security metrics dashboard",
+  "track mean-time-to-remediate by severity", "show finding backlog trends over
+  time", "report our security posture to leadership/an auditor", or "measure
+  whether our DevSecOps program is working". Distinct from the day-to-day triage
+  workflow in security-finding-backlog-triage, which this skill measures the
+  output of.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - observability_and_secops
+  - security-posture-metrics-and-trend-analysis
+depends_on: []
 ---
 
 # Security Posture Metrics and Trend Analysis

@@ -1,16 +1,23 @@
 ---
 name: design-visual-design
 description: >
-  Use when the user asks about visual design, color theory, typography, layout, visual hierarchy, spacing, proportion, or UI aesthetics. Do NOT use for: design systems (design-design-systems), UX research (design-ux-research), or prototyping (design-prototyping).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about visual design, color theory, typography, layout,
+  visual hierarchy, spacing, proportion, or UI aesthetics. Do NOT use for:
+  design systems (design-design-systems), UX research (design-ux-research), or
+  prototyping (design-prototyping).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [design, visual-design, phase-3]
+tags:
+  - design
+  - visual-design
+  - phase-3
+depends_on: []
 ---
 
 # Visual Design

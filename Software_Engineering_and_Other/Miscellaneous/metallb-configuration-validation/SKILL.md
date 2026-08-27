@@ -1,20 +1,23 @@
 ---
 name: metallb-configuration-validation
 description: >
-  Validates a MetalLB installation's actual IP pool allocation and BGP
-  peering health before relying on it in production — confirming pool
-  exhaustion isn't imminent, address assignment matches expectation,
-  BGPPeer sessions reach `Established` (not just `Active`/`Connect`),
-  and end-to-end external reachability of allocated Service IPs. Use
-  when a user asks to "validate my MetalLB setup," "why is a
-  LoadBalancer Service unreachable even though it has an IP," "check if
-  MetalLB BGP peering is actually working," or "confirm MetalLB IP pool
-  capacity before production."
+  Validates a MetalLB installation's actual IP pool allocation and BGP peering
+  health before relying on it in production — confirming pool exhaustion isn't
+  imminent, address assignment matches expectation, BGPPeer sessions reach
+  `Established` (not just `Active`/`Connect`), and end-to-end external
+  reachability of allocated Service IPs. Use when a user asks to "validate my
+  MetalLB setup," "why is a LoadBalancer Service unreachable even though it has
+  an IP," "check if MetalLB BGP peering is actually working," or "confirm
+  MetalLB IP pool capacity before production."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - metallb-configuration-validation
+depends_on: []
 ---
 
 # MetalLB Configuration Validation

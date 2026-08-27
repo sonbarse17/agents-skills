@@ -2,20 +2,23 @@
 name: software-composition-analysis-sca
 description: >
   Guides scanning third-party and transitive dependencies for known
-  vulnerabilities and license issues using tools such as Grype, Trivy,
-  OWASP Dependency-Check, npm audit/pip-audit, or GitHub
-  Dependabot/Snyk, and building a remediation workflow around the
-  results. Use when the user asks to "scan dependencies for
-  vulnerabilities", "add SCA to the pipeline", "check for known CVEs in
-  our packages", "set up Dependabot/Renovate", "fix a vulnerable
+  vulnerabilities and license issues using tools such as Grype, Trivy, OWASP
+  Dependency-Check, npm audit/pip-audit, or GitHub Dependabot/Snyk, and building
+  a remediation workflow around the results. Use when the user asks to "scan
+  dependencies for vulnerabilities", "add SCA to the pipeline", "check for known
+  CVEs in our packages", "set up Dependabot/Renovate", "fix a vulnerable
   transitive dependency", or "generate a vulnerability report for our
   open-source components". Distinct from SAST (own source code) and DAST
   (runtime behavior).
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - frontend
+  - software-composition-analysis-sca
+depends_on: []
 ---
 
 # Software Composition Analysis (SCA)

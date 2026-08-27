@@ -1,3 +1,12 @@
+---
+name: scaffold
+description: Comprehensive guidelines and best practices for scaffold. Use this
+  skill when working with related components.
+tags:
+  - azure-app-onboard
+  - scaffold
+depends_on: []
+---
 # Azure App Onboard Scaffold — IaC Generation + Self-Review
 
 Generate deployment-ready infrastructure code from an architecture plan, verify it with adversarial self-review, and bridge to validation — all without deploying.

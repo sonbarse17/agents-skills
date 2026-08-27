@@ -1,19 +1,23 @@
 ---
 name: golden-path-template-validation-and-testing
 description: >
-  Tests that a golden-path scaffolding template actually produces a
-  working, deployable service — a CI pipeline that scaffolds a real
-  instance, builds it, deploys it to an ephemeral environment, and runs a
-  smoke test — before the template is published broadly or promoted to
-  the default. Use when a user asks to "test a golden-path template before
-  publishing it," "add CI for our Backstage scaffolder templates," "canary
-  a new template version," "prove a template actually works end-to-end,"
-  or "catch a broken golden path before teams start scaffolding from it."
+  Tests that a golden-path scaffolding template actually produces a working,
+  deployable service — a CI pipeline that scaffolds a real instance, builds it,
+  deploys it to an ephemeral environment, and runs a smoke test — before the
+  template is published broadly or promoted to the default. Use when a user asks
+  to "test a golden-path template before publishing it," "add CI for our
+  Backstage scaffolder templates," "canary a new template version," "prove a
+  template actually works end-to-end," or "catch a broken golden path before
+  teams start scaffolding from it."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - ci_cd
+  - golden-path-template-validation-and-testing
+depends_on: []
 ---
 
 # Golden Path Template Validation and Testing

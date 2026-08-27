@@ -1,16 +1,26 @@
 ---
 name: frontend-form-handling
 description: >
-  Use this skill when the user says 'form handling', 'form validation', 'React Hook Form', 'Formik', 'form state', 'form submission', 'field validation', 'form error', 'controlled input', 'uncontrolled input', 'form schema', 'Zod validation', 'form dirty', 'field array'. Implement client-side forms with validation, complex fields, and UX patterns. Do NOT use for: backend validation or API design.
+  Use this skill when the user says 'form handling', 'form validation', 'React
+  Hook Form', 'Formik', 'form state', 'form submission', 'field validation',
+  'form error', 'controlled input', 'uncontrolled input', 'form schema', 'Zod
+  validation', 'form dirty', 'field array'. Implement client-side forms with
+  validation, complex fields, and UX patterns. Do NOT use for: backend
+  validation or API design.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, forms, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - frontend
+  - forms
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Frontend Form Handling

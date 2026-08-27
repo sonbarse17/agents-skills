@@ -1,6 +1,13 @@
 ---
 name: hads
-description: Use when writing technical documentation that needs to be readable by both humans and AI models, converting existing docs to HADS format, validating a HADS document, or optimizing documentation for token-efficient AI consumption.
+description: Use when writing technical documentation that needs to be readable
+  by both humans and AI models, converting existing docs to HADS format,
+  validating a HADS document, or optimizing documentation for token-efficient AI
+  consumption.
+tags:
+  - miscellaneous
+  - hads
+depends_on: []
 ---
 
 # HADS Claude Skill

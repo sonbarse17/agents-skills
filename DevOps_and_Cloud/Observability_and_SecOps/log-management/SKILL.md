@@ -1,7 +1,18 @@
 ---
 name: log-management
-description: Covers structured logging at scale — emitting JSON not prose, choosing sensible levels, sampling high-volume paths, setting retention against real cost, correlating log lines with trace IDs, and keeping secrets out of logs entirely. Use this whenever the user is adding logging to a service, debugging why logs are unsearchable or too expensive to keep, designing log levels or a sampling strategy, or asking how to connect a log line back to its request. For the trace those IDs point into use `distributed-tracing`, and for the paging layer use `alerting`.
+description: Covers structured logging at scale — emitting JSON not prose,
+  choosing sensible levels, sampling high-volume paths, setting retention
+  against real cost, correlating log lines with trace IDs, and keeping secrets
+  out of logs entirely. Use this whenever the user is adding logging to a
+  service, debugging why logs are unsearchable or too expensive to keep,
+  designing log levels or a sampling strategy, or asking how to connect a log
+  line back to its request. For the trace those IDs point into use
+  `distributed-tracing`, and for the paging layer use `alerting`.
 license: MIT
+tags:
+  - observability_and_secops
+  - log-management
+depends_on: []
 ---
 
 # Log Management

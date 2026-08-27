@@ -1,20 +1,23 @@
 ---
 name: redis-caching-strategy-and-invalidation-patterns
 description: >
-  Covers application-facing caching design on top of Redis: cache-aside
-  vs. write-through vs. write-behind, TTL strategy (fixed, sliding,
-  jittered), cache invalidation patterns (explicit delete, versioned
-  keys, pub/sub fan-out) and their specific failure modes (stale reads,
-  thundering herd, cache stampede). Distinct from cluster/persistence
-  operations. Use when the user asks to "design a caching strategy for
-  this service," "should I use cache-aside or write-through," "how do I
-  invalidate a Redis cache on update," "why are we seeing stale data
-  from Redis," or "prevent a thundering herd on cache expiry."
+  Covers application-facing caching design on top of Redis: cache-aside vs.
+  write-through vs. write-behind, TTL strategy (fixed, sliding, jittered), cache
+  invalidation patterns (explicit delete, versioned keys, pub/sub fan-out) and
+  their specific failure modes (stale reads, thundering herd, cache stampede).
+  Distinct from cluster/persistence operations. Use when the user asks to
+  "design a caching strategy for this service," "should I use cache-aside or
+  write-through," "how do I invalidate a Redis cache on update," "why are we
+  seeing stale data from Redis," or "prevent a thundering herd on cache expiry."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - redis-caching-strategy-and-invalidation-patterns
+depends_on: []
 ---
 
 # Redis Caching Strategy and Invalidation Patterns

@@ -1,16 +1,31 @@
 ---
 name: management-hiring
 description: >
-  Use this skill when the user says 'hiring', 'interviewing', 'technical interview', 'coding interview', 'system design interview', 'interview rubric', 'candidate assessment', 'interview debrief', 'offer decision', 'interview process', 'phone screen', 'onsite interview', 'behavioral interview', 'HackerRank', 'CodeSignal', 'interview pipeline', 'candidate evaluation', 'interview scoring', 'anti-bias hiring'. This skill enforces: structured interview rubrics with scoring criteria per skill dimension, multi-format technical assessment (coding, system design, debugging), behavioral evaluation aligned to company values using STAR method, consistent debrief process with calibration, data-driven offer decisions using decision matrix, anti-bias practices, and positive candidate experience. Do NOT use for: performance reviews, career development, or team structuring.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'hiring', 'interviewing', 'technical
+  interview', 'coding interview', 'system design interview', 'interview rubric',
+  'candidate assessment', 'interview debrief', 'offer decision', 'interview
+  process', 'phone screen', 'onsite interview', 'behavioral interview',
+  'HackerRank', 'CodeSignal', 'interview pipeline', 'candidate evaluation',
+  'interview scoring', 'anti-bias hiring'. This skill enforces: structured
+  interview rubrics with scoring criteria per skill dimension, multi-format
+  technical assessment (coding, system design, debugging), behavioral evaluation
+  aligned to company values using STAR method, consistent debrief process with
+  calibration, data-driven offer decisions using decision matrix, anti-bias
+  practices, and positive candidate experience. Do NOT use for: performance
+  reviews, career development, or team structuring.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsuf: true
-tags: [management, hiring, phase-10]
+tags:
+  - management
+  - hiring
+  - phase-10
+depends_on: []
 ---
 
 # Hiring and Interviewing

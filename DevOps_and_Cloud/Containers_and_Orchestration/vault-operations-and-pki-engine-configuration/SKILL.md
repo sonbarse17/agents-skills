@@ -1,23 +1,26 @@
 ---
 name: vault-operations-and-pki-engine-configuration
 description: >
-  Guides operating a HashiCorp Vault cluster itself — initialization,
-  unsealing (Shamir key shares or auto-unseal via cloud KMS/HSM),
-  configuring the PKI secrets engine for internal certificate issuance
-  (root/intermediate CA hierarchy, roles, short-lived leaf certs), and
-  HA/DR cluster topology (Raft integrated storage, performance/DR
-  replication). Use when the user asks to "unseal Vault", "set up
-  auto-unseal", "configure Vault's PKI engine to issue internal certs",
-  "stand up a Vault HA cluster", "design Vault DR replication", or
-  "rotate a Vault root/intermediate CA". Distinct from consuming Vault
-  as a secrets backend (see secrets-management and
-  sealed-secrets-and-external-secrets-operator) — this skill is about
-  operating Vault itself as infrastructure.
+  Guides operating a HashiCorp Vault cluster itself — initialization, unsealing
+  (Shamir key shares or auto-unseal via cloud KMS/HSM), configuring the PKI
+  secrets engine for internal certificate issuance (root/intermediate CA
+  hierarchy, roles, short-lived leaf certs), and HA/DR cluster topology (Raft
+  integrated storage, performance/DR replication). Use when the user asks to
+  "unseal Vault", "set up auto-unseal", "configure Vault's PKI engine to issue
+  internal certs", "stand up a Vault HA cluster", "design Vault DR replication",
+  or "rotate a Vault root/intermediate CA". Distinct from consuming Vault as a
+  secrets backend (see secrets-management and
+  sealed-secrets-and-external-secrets-operator) — this skill is about operating
+  Vault itself as infrastructure.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - vault-operations-and-pki-engine-configuration
+depends_on: []
 ---
 
 # [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Operations and PKI Engine Configuration

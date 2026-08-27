@@ -6,18 +6,22 @@ description: >
   complexity', 'lint rules', 'technical debt', 'quality metrics', 'quality
   dashboard', 'SonarQube', 'ESLint', 'quality checklist', or needs quality
   control. Covers: quality gates, static analysis enforcement, coding standards,
-  peer review process, quality metrics, and technical debt management.
-  Do NOT use for: test planning (use qa), performance optimization, or code
-  review (use code-review).
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  peer review process, quality metrics, and technical debt management. Do NOT
+  use for: test planning (use qa), performance optimization, or code review (use
+  code-review).
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, qc, quality]
+tags:
+  - management
+  - qc
+  - quality
+depends_on: []
 ---
 
 # Quality Control

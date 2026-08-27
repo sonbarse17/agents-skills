@@ -1,17 +1,20 @@
 ---
 name: astryx
-description: >-
-  Generate Astryx design system components, themes, and layouts for React 19
-  applications. Use when building UIs with @astryxdesign/core, creating or
-  extending themes with defineTheme, styling components with StyleX or
-  Tailwind, scaffolding pages from templates, migrating from shadcn or Radix,
-  or working with the Astryx CLI and MCP server. Also use when converting
-  plain descriptions into Astryx component code or validating existing Astryx
-  code against system conventions.
+description: Generate Astryx design system components, themes, and layouts for
+  React 19 applications. Use when building UIs with @astryxdesign/core, creating
+  or extending themes with defineTheme, styling components with StyleX or
+  Tailwind, scaffolding pages from templates, migrating from shadcn or Radix, or
+  working with the Astryx CLI and MCP server. Also use when converting plain
+  descriptions into Astryx component code or validating existing Astryx code
+  against system conventions.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - frontend
+  - astryx
+depends_on: []
 ---
 
 # Astryx

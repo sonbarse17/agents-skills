@@ -1,10 +1,17 @@
 ---
 name: github-actions
-description: Build, test, and deploy applications using GitHub Actions workflows. Create CI/CD pipelines, configure runners, manage secrets, and automate software delivery. Use when working with GitHub repositories, automating builds, running tests, or deploying applications.
+description: Build, test, and deploy applications using GitHub Actions
+  workflows. Create CI/CD pipelines, configure runners, manage secrets, and
+  automate software delivery. Use when working with GitHub repositories,
+  automating builds, running tests, or deploying applications.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - github-actions
+depends_on: []
 ---
 
 # [GitHub](../github/SKILL.md) Actions

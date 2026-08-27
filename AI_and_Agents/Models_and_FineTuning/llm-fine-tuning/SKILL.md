@@ -1,10 +1,16 @@
 ---
 name: llm-fine-tuning
-description: Set up infrastructure for fine-tuning LLMs with QLoRA, LoRA, and full fine-tuning using Hugging Face TRL, Axolotl, and distributed training with DeepSpeed or FSDP. Covers dataset prep, training runs, and model export.
+description: Set up infrastructure for fine-tuning LLMs with QLoRA, LoRA, and
+  full fine-tuning using Hugging Face TRL, Axolotl, and distributed training
+  with DeepSpeed or FSDP. Covers dataset prep, training runs, and model export.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llm-fine-tuning
+depends_on: []
 ---
 
 # LLM Fine-Tuning Infrastructure

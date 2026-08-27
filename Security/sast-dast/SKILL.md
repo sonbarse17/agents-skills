@@ -1,16 +1,25 @@
 ---
 name: security-sast-dast
 description: >
-  Use this skill when asked about SAST, DAST, static analysis, dynamic analysis, code scanning, SonarQube, Semgrep, Checkmarx, Fortify, OWASP ZAP, or Burp Suite. This skill enforces: SAST tool integration with custom rule writing, DAST scanning with authenticated sessions, false positive triage workflow, and CI pipeline gate configuration. Do NOT use for: dependency scanning (SBOM), container image scanning, or runtime security monitoring.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about SAST, DAST, static analysis, dynamic analysis,
+  code scanning, SonarQube, Semgrep, Checkmarx, Fortify, OWASP ZAP, or Burp
+  Suite. This skill enforces: SAST tool integration with custom rule writing,
+  DAST scanning with authenticated sessions, false positive triage workflow, and
+  CI pipeline gate configuration. Do NOT use for: dependency scanning (SBOM),
+  container image scanning, or runtime security monitoring.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, testing, phase-10]
+tags:
+  - security
+  - testing
+  - phase-10
+depends_on: []
 ---
 
 # Security SAST/DAST

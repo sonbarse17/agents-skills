@@ -1,10 +1,16 @@
 ---
 name: blog-manager
-description: Guides an autonomous blog manager agent to propose topics, draft articles, and skip topics with structured JSON output for a Leaflet.pub publication.
+description: Guides an autonomous blog manager agent to propose topics, draft
+  articles, and skip topics with structured JSON output for a Leaflet.pub
+  publication.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - product_and_business
+  - blog-manager
+depends_on: []
 ---
 
 # Blog Manager Skill

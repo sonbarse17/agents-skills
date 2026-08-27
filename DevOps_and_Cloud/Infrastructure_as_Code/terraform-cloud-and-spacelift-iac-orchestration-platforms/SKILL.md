@@ -2,18 +2,22 @@
 name: terraform-cloud-and-spacelift-iac-orchestration-platforms
 description: >
   Configures Terraform Cloud/HCP Terraform and Spacelift as state-management-
-  as-a-service and run-orchestration platforms layered on top of raw
-  Terraform — remote state with locking, VCS-driven runs, policy-as-code
-  gates (Sentinel/OPA), and scheduled drift detection. Use when a user asks
-  to "set up Terraform Cloud workspaces," "configure Spacelift stacks," "add
-  a policy-as-code gate to Terraform runs," "set up VCS-driven Terraform
-  runs," "schedule drift detection," or is deciding between Terraform
-  Cloud, Spacelift, and a CLI-only/self-managed Terraform workflow.
+  as-a-service and run-orchestration platforms layered on top of raw Terraform —
+  remote state with locking, VCS-driven runs, policy-as-code gates
+  (Sentinel/OPA), and scheduled drift detection. Use when a user asks to "set up
+  Terraform Cloud workspaces," "configure Spacelift stacks," "add a
+  policy-as-code gate to Terraform runs," "set up VCS-driven Terraform runs,"
+  "schedule drift detection," or is deciding between Terraform Cloud, Spacelift,
+  and a CLI-only/self-managed Terraform workflow.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - terraform-cloud-and-spacelift-iac-orchestration-platforms
+depends_on: []
 ---
 
 # Terraform Cloud and Spacelift: IaC Orchestration Platforms

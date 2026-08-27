@@ -1,20 +1,24 @@
 ---
 name: complete-cicd-pipeline-deployment-for-serverless-from-scratch
 description: >
-  Builds a complete CI/CD pipeline for a serverless (AWS Lambda-style)
-  function from an empty repo — source checkout, zip/layer packaging (not
-  a container image), SCA/SAST security gates, package upload, and a
-  SAM/Serverless-Framework/CDK-style deploy step with alias-based canary
-  traffic shifting, distinct from Kubernetes rollout mechanics. Use when
-  the user asks to "build a full CI/CD pipeline for a Lambda function from
-  scratch," "set up serverless CI/CD with canary traffic shifting," "wire
-  SAM/Serverless Framework deploys into a pipeline," or "go from an empty
-  repo to a function deployed with an alias-based canary."
+  Builds a complete CI/CD pipeline for a serverless (AWS Lambda-style) function
+  from an empty repo — source checkout, zip/layer packaging (not a container
+  image), SCA/SAST security gates, package upload, and a
+  SAM/Serverless-Framework/CDK-style deploy step with alias-based canary traffic
+  shifting, distinct from Kubernetes rollout mechanics. Use when the user asks
+  to "build a full CI/CD pipeline for a Lambda function from scratch," "set up
+  serverless CI/CD with canary traffic shifting," "wire SAM/Serverless Framework
+  deploys into a pipeline," or "go from an empty repo to a function deployed
+  with an alias-based canary."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-cicd-pipeline-deployment-for-serverless-from-scratch
+depends_on: []
 ---
 
 # Complete CI/CD Pipeline Deployment for [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), From Scratch

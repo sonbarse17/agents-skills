@@ -1,7 +1,18 @@
 ---
 name: rightsizing
-description: Matches compute, memory, and storage allocation to real measured usage instead of the guess made at launch time, sizing from percentiles rather than averages, and preferring autoscaling over a fixed size wherever demand varies. Use this whenever the user asks whether an instance or fleet is oversized, wants to cut provisioned capacity, is picking an instance type, or is choosing between fixed capacity and autoscaling. For turning savings into a prioritized plan use `cost-optimization`, and for the commitment discounts that should follow a sized fleet use `cloud-budgeting`.
+description: Matches compute, memory, and storage allocation to real measured
+  usage instead of the guess made at launch time, sizing from percentiles rather
+  than averages, and preferring autoscaling over a fixed size wherever demand
+  varies. Use this whenever the user asks whether an instance or fleet is
+  oversized, wants to cut provisioned capacity, is picking an instance type, or
+  is choosing between fixed capacity and autoscaling. For turning savings into a
+  prioritized plan use `cost-optimization`, and for the commitment discounts
+  that should follow a sized fleet use `cloud-budgeting`.
 license: MIT
+tags:
+  - cloud_providers
+  - rightsizing
+depends_on: []
 ---
 
 # Rightsizing

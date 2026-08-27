@@ -1,6 +1,13 @@
 ---
 name: protect-mcp-setup
-description: Configure Cedar policy enforcement and Ed25519 signed receipts for Claude Code tool calls. Use when setting up projects that need cryptographic audit trails, policy-gated tool execution, or compliance-ready evidence of agent actions.
+description: Configure Cedar policy enforcement and Ed25519 signed receipts for
+  Claude Code tool calls. Use when setting up projects that need cryptographic
+  audit trails, policy-gated tool execution, or compliance-ready evidence of
+  agent actions.
+tags:
+  - security
+  - protect-mcp-setup
+depends_on: []
 ---
 
 # protect-mcp — Policy Enforcement + Signed Receipts

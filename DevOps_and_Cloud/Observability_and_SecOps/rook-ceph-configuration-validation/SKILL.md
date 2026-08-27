@@ -1,19 +1,22 @@
 ---
 name: rook-ceph-configuration-validation
 description: >
-  Validates a Rook-managed Ceph cluster's actual health before relying on
-  it for production persistent storage — reading `ceph status`/`ceph
-  health detail`, checking OSD placement against intended failure
-  domains, placement group (PG) state, and CephCluster/CephBlockPool
-  CRD status conditions. Use when a user asks to "check if my Ceph
-  cluster is healthy," "validate Rook-Ceph before going to production,"
-  "why is my CephCluster stuck HEALTH_WARN," "check OSD placement/CRUSH
-  map," or "diagnose stuck/degraded placement groups."
+  Validates a Rook-managed Ceph cluster's actual health before relying on it for
+  production persistent storage — reading `ceph status`/`ceph health detail`,
+  checking OSD placement against intended failure domains, placement group (PG)
+  state, and CephCluster/CephBlockPool CRD status conditions. Use when a user
+  asks to "check if my Ceph cluster is healthy," "validate Rook-Ceph before
+  going to production," "why is my CephCluster stuck HEALTH_WARN," "check OSD
+  placement/CRUSH map," or "diagnose stuck/degraded placement groups."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - observability_and_secops
+  - rook-ceph-configuration-validation
+depends_on: []
 ---
 
 # Rook-Ceph Configuration Validation

@@ -1,16 +1,27 @@
 ---
 name: create-tech-spec
 description: >
-  Use this skill when the user says 'tech spec', 'technical specification', 'implementation plan', 'how should we implement', 'design document', or when PRD and ADRs exist and a feature needs detailed specification before implementation. This skill produces a specification with system context, API contracts, data models, error handling, performance targets, and testing plan. Do NOT use for: high-level product decisions, user stories, or architecture decisions. Those come from PRD and ADRs.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'tech spec', 'technical specification',
+  'implementation plan', 'how should we implement', 'design document', or when
+  PRD and ADRs exist and a feature needs detailed specification before
+  implementation. This skill produces a specification with system context, API
+  contracts, data models, error handling, performance targets, and testing plan.
+  Do NOT use for: high-level product decisions, user stories, or architecture
+  decisions. Those come from PRD and ADRs.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, phase-1, technical, specification]
+tags:
+  - planning
+  - phase-1
+  - technical
+  - specification
+depends_on: []
 ---
 
 # Create Tech Spec

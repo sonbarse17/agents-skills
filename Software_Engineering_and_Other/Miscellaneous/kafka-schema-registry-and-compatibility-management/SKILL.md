@@ -2,17 +2,21 @@
 name: kafka-schema-registry-and-compatibility-management
 description: >
   Manages Avro/Protobuf/JSON Schema in a schema registry for Kafka topics,
-  including compatibility mode selection (backward/forward/full) and
-  schema evolution that doesn't break existing consumers. Use when the
-  user asks to "register a Kafka schema," "change compatibility mode,"
-  "evolve an Avro schema without breaking consumers," "add a field to a
-  Kafka message schema," or troubleshoots a schema-registry rejection or a
-  consumer deserialization failure after a schema change.
+  including compatibility mode selection (backward/forward/full) and schema
+  evolution that doesn't break existing consumers. Use when the user asks to
+  "register a Kafka schema," "change compatibility mode," "evolve an Avro schema
+  without breaking consumers," "add a field to a Kafka message schema," or
+  troubleshoots a schema-registry rejection or a consumer deserialization
+  failure after a schema change.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - kafka-schema-registry-and-compatibility-management
+depends_on: []
 ---
 
 # Kafka Schema Registry and Compatibility Management

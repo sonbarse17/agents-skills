@@ -2,20 +2,23 @@
 name: jira-comments-and-tracking-automation
 description: >
   Guides writing Jira comments that actually help the next reader (context,
-  decision rationale, links to PRs/commits/deploys), deciding when to
-  comment versus when to update a ticket field, and automating
-  status/comment updates from CI/CD (e.g. posting a deploy notification
-  comment on release) without producing comment spam — including the
-  Jira REST API shape for posting comments programmatically
-  (`POST /rest/api/3/issue/{issueIdOrKey}/comment`). Use when the user
-  asks to "add a Jira comment", "post a deploy notification to the
-  ticket", "document a decision on this issue", "automate ticket updates
+  decision rationale, links to PRs/commits/deploys), deciding when to comment
+  versus when to update a ticket field, and automating status/comment updates
+  from CI/CD (e.g. posting a deploy notification comment on release) without
+  producing comment spam — including the Jira REST API shape for posting
+  comments programmatically (`POST /rest/api/3/issue/{issueIdOrKey}/comment`).
+  Use when the user asks to "add a Jira comment", "post a deploy notification to
+  the ticket", "document a decision on this issue", "automate ticket updates
   from the pipeline", or "why is this ticket full of noise".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: enterprise-collaboration
   maturity: stable
+tags:
+  - miscellaneous
+  - jira-comments-and-tracking-automation
+depends_on: []
 ---
 
 # Jira Comments and Tracking Automation

@@ -1,10 +1,16 @@
 ---
 name: cloudformation
-description: Deploy AWS resources with CloudFormation templates. Create stacks, use nested stacks, and implement drift detection. Use when deploying AWS-native IaC.
+description: Deploy AWS resources with CloudFormation templates. Create stacks,
+  use nested stacks, and implement drift detection. Use when deploying
+  AWS-native IaC.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - cloudformation
+depends_on: []
 ---
 
 # CloudFormation

@@ -1,10 +1,17 @@
 ---
 name: github
-description: GitHub operations via `gh` CLI for issues, PRs, CI runs, code review, and API queries. Use when checking PR status or CI, creating or commenting on issues, listing or filtering PRs and issues, or viewing run logs.
+description: GitHub operations via `gh` CLI for issues, PRs, CI runs, code
+  review, and API queries. Use when checking PR status or CI, creating or
+  commenting on issues, listing or filtering PRs and issues, or viewing run
+  logs.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - ci_cd
+  - github
+depends_on: []
 ---
 
 # GitHub Skill

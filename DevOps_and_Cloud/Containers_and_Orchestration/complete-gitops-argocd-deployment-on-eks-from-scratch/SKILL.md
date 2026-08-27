@@ -1,21 +1,24 @@
 ---
 name: complete-gitops-argocd-deployment-on-eks-from-scratch
 description: >
-  Walks through a complete, end-to-end Argo CD GitOps deployment on an
-  existing AWS EKS cluster — Helm install, IRSA-based AWS IAM integration
-  for Argo CD's own components (cluster access via EKS access entries,
-  private ECR pull auth), the first Application, an ApplicationSet for
-  multi-environment rollout, and sync/health policy — sequenced as one
-  coherent runbook rather than the individual mechanics each step depends
-  on. Use when the user asks to "set up Argo CD on EKS from scratch,"
-  "deploy GitOps end-to-end on AWS," "wire IRSA into Argo CD," "stand up
-  GitOps for a new EKS cluster," or "go from a bare EKS cluster to a
-  working multi-env GitOps pipeline."
+  Walks through a complete, end-to-end Argo CD GitOps deployment on an existing
+  AWS EKS cluster — Helm install, IRSA-based AWS IAM integration for Argo CD's
+  own components (cluster access via EKS access entries, private ECR pull auth),
+  the first Application, an ApplicationSet for multi-environment rollout, and
+  sync/health policy — sequenced as one coherent runbook rather than the
+  individual mechanics each step depends on. Use when the user asks to "set up
+  Argo CD on EKS from scratch," "deploy GitOps end-to-end on AWS," "wire IRSA
+  into Argo CD," "stand up GitOps for a new EKS cluster," or "go from a bare EKS
+  cluster to a working multi-env GitOps pipeline."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-gitops-argocd-deployment-on-eks-from-scratch
+depends_on: []
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on EKS, From Scratch

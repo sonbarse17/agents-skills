@@ -1,10 +1,16 @@
 ---
 name: opentelemetry
-description: Instrument applications and infrastructure with OpenTelemetry for unified traces, metrics, and logs. Use when implementing distributed tracing, service-level troubleshooting, or vendor-neutral observability.
+description: Instrument applications and infrastructure with OpenTelemetry for
+  unified traces, metrics, and logs. Use when implementing distributed tracing,
+  service-level troubleshooting, or vendor-neutral observability.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - opentelemetry
+depends_on: []
 ---
 
 # OpenTelemetry

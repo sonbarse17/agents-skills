@@ -1,20 +1,24 @@
 ---
 name: platform-self-service-api-and-workflow-design
 description: >
-  Designs the self-service provisioning layer of an internal developer
-  platform — Backstage Scaffolder custom actions, Humanitec's API, or a
-  bespoke internal API — with policy checks, budget limits, and approval
-  steps wired directly into the provisioning flow so "self-service" doesn't
-  mean "no oversight." Use when a user asks to "design a self-service API
-  for infrastructure requests," "add a Backstage Scaffolder action that
-  provisions a database," "add an approval gate to a self-service workflow,"
-  "stop developers from provisioning oversized/production resources without
-  review," or "wire policy/budget checks into a platform API."
+  Designs the self-service provisioning layer of an internal developer platform
+  — Backstage Scaffolder custom actions, Humanitec's API, or a bespoke internal
+  API — with policy checks, budget limits, and approval steps wired directly
+  into the provisioning flow so "self-service" doesn't mean "no oversight." Use
+  when a user asks to "design a self-service API for infrastructure requests,"
+  "add a Backstage Scaffolder action that provisions a database," "add an
+  approval gate to a self-service workflow," "stop developers from provisioning
+  oversized/production resources without review," or "wire policy/budget checks
+  into a platform API."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - product_and_business
+  - platform-self-service-api-and-workflow-design
+depends_on: []
 ---
 
 # Platform Self-Service API and Workflow Design

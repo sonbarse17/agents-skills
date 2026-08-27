@@ -2,17 +2,22 @@
 name: microfrontend
 description: >
   Use this skill when the user asks about microfrontend, Module Federation, Web
-  Components, iframe integration, shared dependencies, or cross-app communication
-  between frontend applications.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Components, iframe integration, shared dependencies, or cross-app
+  communication between frontend applications.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, microfrontend, phase-3, universal]
+tags:
+  - frontend
+  - microfrontend
+  - phase-3
+  - universal
+depends_on: []
 ---
 
 # Microfrontend Architecture

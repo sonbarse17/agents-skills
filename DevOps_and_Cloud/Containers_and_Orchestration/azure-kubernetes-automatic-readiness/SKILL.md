@@ -3,8 +3,18 @@ name: azure-kubernetes-automatic-readiness
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.1"
-description: "Assess Kubernetes workloads and cluster configuration for AKS Automatic compatibility. Identifies incompatibilities, generates fixes, and guides migration from AKS Standard to AKS Automatic. WHEN: migrate to AKS Automatic, check AKS Automatic readiness, validate manifests for Automatic, assess cluster for Automatic compatibility, fix deployment for Automatic compatibility, identify AKS Automatic migration blockers, is my cluster ready for AKS Automatic."
+  version: 1.0.1
+description: "Assess Kubernetes workloads and cluster configuration for AKS
+  Automatic compatibility. Identifies incompatibilities, generates fixes, and
+  guides migration from AKS Standard to AKS Automatic. WHEN: migrate to AKS
+  Automatic, check AKS Automatic readiness, validate manifests for Automatic,
+  assess cluster for Automatic compatibility, fix deployment for Automatic
+  compatibility, identify AKS Automatic migration blockers, is my cluster ready
+  for AKS Automatic."
+tags:
+  - containers_and_orchestration
+  - azure-kubernetes-automatic-readiness
+depends_on: []
 ---
 
 # AKS Automatic Readiness Assessment

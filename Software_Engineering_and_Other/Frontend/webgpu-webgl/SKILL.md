@@ -1,3 +1,12 @@
+---
+name: webgpu-webgl
+description: Comprehensive guidelines and best practices for webgpu-webgl. Use
+  this skill when working with related components.
+tags:
+  - frontend
+  - webgpu-webgl
+depends_on: []
+---
 # WebGPU & WebGL: Rendering Pipelines and GPU Memory Optimization
 
 ## Rendering Pipeline and Shader Mechanics

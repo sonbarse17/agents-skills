@@ -1,24 +1,35 @@
 ---
 name: abac-access-control
 description: >
-  Use this skill when the user says 'ABAC', 'attribute-based access control', 'fine-grained
-  permissions', 'policy-based access control', 'OPA', 'Rego', 'XACML', 'attribute policies',
-  'context-aware authorization', 'dynamic permissions', 'risk-based access', 'environment-aware
-  auth', 'conditional access', or when role-based permissions are insufficient and you need
-  fine-grained control based on user attributes, resource properties, and environmental context.
-  This skill covers: ABAC model (subject/resource/action/environment attributes), policy structure
-  and combining algorithms, OPA/Rego implementation, hybrid RBAC-ABAC patterns, ABAC in
-  applications, policy testing and simulation. Do NOT use for: basic role-based authorization,
-  authentication flows, infrastructure policy (Kyverno/Gatekeeper), or Kubernetes admission control.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'ABAC', 'attribute-based access control',
+  'fine-grained permissions', 'policy-based access control', 'OPA', 'Rego',
+  'XACML', 'attribute policies', 'context-aware authorization', 'dynamic
+  permissions', 'risk-based access', 'environment-aware auth', 'conditional
+  access', or when role-based permissions are insufficient and you need
+  fine-grained control based on user attributes, resource properties, and
+  environmental context. This skill covers: ABAC model
+  (subject/resource/action/environment attributes), policy structure and
+  combining algorithms, OPA/Rego implementation, hybrid RBAC-ABAC patterns, ABAC
+  in applications, policy testing and simulation. Do NOT use for: basic
+  role-based authorization, authentication flows, infrastructure policy
+  (Kyverno/Gatekeeper), or Kubernetes admission control.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, abac, access-control, authorization, policy-engine, fine-grained, phase-7]
+tags:
+  - security
+  - abac
+  - access-control
+  - authorization
+  - policy-engine
+  - fine-grained
+  - phase-7
+depends_on: []
 ---
 
 # Attribute-Based Access Control (ABAC)

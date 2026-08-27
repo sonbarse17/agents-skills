@@ -1,10 +1,15 @@
 ---
 name: vendor-management
-description: Implement vendor risk management programs. Assess third-party security and maintain vendor inventory. Use when managing supplier security.
+description: Implement vendor risk management programs. Assess third-party
+  security and maintain vendor inventory. Use when managing supplier security.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - product_and_business
+  - vendor-management
+depends_on: []
 ---
 
 # Vendor Management

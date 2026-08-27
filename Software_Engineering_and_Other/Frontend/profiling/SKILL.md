@@ -1,7 +1,19 @@
 ---
 name: profiling
-description: Finds where time, memory, and IO actually go inside a running system, using CPU and memory profilers, flame graphs, and the right choice between sampling and instrumentation, so optimization targets the real hot path instead of intuition. Use this whenever the user asks what's slow inside a specific process, wants to read or generate a flame graph, suspects a memory leak, or is about to optimize code without evidence of where the time goes. For deciding what to change once the hot path is known use `performance-tuning`, and for generating load to profile under use `load-testing`.
+description: Finds where time, memory, and IO actually go inside a running
+  system, using CPU and memory profilers, flame graphs, and the right choice
+  between sampling and instrumentation, so optimization targets the real hot
+  path instead of intuition. Use this whenever the user asks what's slow inside
+  a specific process, wants to read or generate a flame graph, suspects a memory
+  leak, or is about to optimize code without evidence of where the time goes.
+  For deciding what to change once the hot path is known use
+  `performance-tuning`, and for generating load to profile under use
+  `load-testing`.
 license: MIT
+tags:
+  - frontend
+  - profiling
+depends_on: []
 ---
 
 # Profiling

@@ -1,16 +1,28 @@
 ---
 name: data-schema-registry
 description: >
-  Use this skill when asked about Schema Registry, Avro, Protobuf, schema evolution, compatibility, Confluent Schema Registry, Apicurio, serialization, deserialization, or schema validation. This skill enforces: Schema Registry architecture and deployment, Avro/Protobuf/JSON Schema definition, compatibility modes (BACKWARD, FORWARD, FULL, NONE), schema evolution best practices, SerDe (serialization/deserialization) patterns, and CI/CD integration for schema governance. Do NOT use for: data contract enforcement, data catalog management, or database schema design.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about Schema Registry, Avro, Protobuf, schema
+  evolution, compatibility, Confluent Schema Registry, Apicurio, serialization,
+  deserialization, or schema validation. This skill enforces: Schema Registry
+  architecture and deployment, Avro/Protobuf/JSON Schema definition,
+  compatibility modes (BACKWARD, FORWARD, FULL, NONE), schema evolution best
+  practices, SerDe (serialization/deserialization) patterns, and CI/CD
+  integration for schema governance. Do NOT use for: data contract enforcement,
+  data catalog management, or database schema design.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, schema, streaming, phase-11]
+tags:
+  - data
+  - schema
+  - streaming
+  - phase-11
+depends_on: []
 ---
 
 # Data Schema Registry

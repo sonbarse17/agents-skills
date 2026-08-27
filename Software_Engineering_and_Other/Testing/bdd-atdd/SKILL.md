@@ -1,16 +1,30 @@
 ---
 name: planning-bdd-atdd
 description: >
-  Use this skill when the user asks about BDD, ATDD, behavior-driven development, acceptance test-driven development, Gherkin, Cucumber, SpecFlow, specification by example, executable specifications, living documentation, three amigos, example mapping, or acceptance criteria refinement. Covers: Gherkin syntax and deep features (Scenario Outline, Data Tables, Doc Strings), Specification by Example methodology, BDD tools (Cucumber, SpecFlow, Behave, JBehave), ATDD workflow with three amigos and example mapping. Do NOT use for: unit testing (unit-testing), integration testing (integration-testing), or manual test planning.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about BDD, ATDD, behavior-driven
+  development, acceptance test-driven development, Gherkin, Cucumber, SpecFlow,
+  specification by example, executable specifications, living documentation,
+  three amigos, example mapping, or acceptance criteria refinement. Covers:
+  Gherkin syntax and deep features (Scenario Outline, Data Tables, Doc Strings),
+  Specification by Example methodology, BDD tools (Cucumber, SpecFlow, Behave,
+  JBehave), ATDD workflow with three amigos and example mapping. Do NOT use for:
+  unit testing (unit-testing), integration testing (integration-testing), or
+  manual test planning.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, bdd, atdd, testing, phase-10]
+tags:
+  - planning
+  - bdd
+  - atdd
+  - testing
+  - phase-10
+depends_on: []
 ---
 
 # BDD and ATDD

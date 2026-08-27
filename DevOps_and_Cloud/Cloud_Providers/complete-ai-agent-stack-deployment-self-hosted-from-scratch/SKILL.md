@@ -1,25 +1,28 @@
 ---
 name: complete-ai-agent-stack-deployment-self-hosted-from-scratch
 description: >
-  Sequences a complete, end-to-end, fully self-hosted AI agent stack
-  deployment from scratch — GPU procurement/sizing for open-weight model
-  serving, self-hosted LLM serving (vLLM/TGI), agent control-flow
-  architecture, a self-hosted vector database for RAG, self-hosted MCP
-  servers for tool access, and an evaluation/guardrails harness — with no
-  managed LLM API or managed vector database anywhere in the stack. An
-  integration/orchestration skill that sequences existing tool-specific
-  skills in the right order and flags handoff points, explicit about the
-  added GPU-procurement and operational burden versus a cloud-managed
-  agent stack. Use when a user asks to "build a self-hosted AI agent stack
-  with open-weight models," "run our agent on our own GPUs with no managed
-  LLM API," "stand up a self-hosted vector database and MCP servers for an
-  agent platform," or "give me the end-to-end sequence for a fully
+  Sequences a complete, end-to-end, fully self-hosted AI agent stack deployment
+  from scratch — GPU procurement/sizing for open-weight model serving,
+  self-hosted LLM serving (vLLM/TGI), agent control-flow architecture, a
+  self-hosted vector database for RAG, self-hosted MCP servers for tool access,
+  and an evaluation/guardrails harness — with no managed LLM API or managed
+  vector database anywhere in the stack. An integration/orchestration skill that
+  sequences existing tool-specific skills in the right order and flags handoff
+  points, explicit about the added GPU-procurement and operational burden versus
+  a cloud-managed agent stack. Use when a user asks to "build a self-hosted AI
+  agent stack with open-weight models," "run our agent on our own GPUs with no
+  managed LLM API," "stand up a self-hosted vector database and MCP servers for
+  an agent platform," or "give me the end-to-end sequence for a fully
   self-hosted agent deployment from GPU procurement to production."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-ai-agent-stack-deployment-self-hosted-from-scratch
+depends_on: []
 ---
 
 # Complete AI Agent Stack Deployment (Self-Hosted) From Scratch

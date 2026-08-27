@@ -1,22 +1,25 @@
 ---
 name: owasp-zap-dast-configuration
 description: >
-  Guides deep, tool-specific configuration of OWASP ZAP (Zed Attack
-  Proxy) for automated dynamic scanning — baseline vs. full active scan
-  selection, the ZAP Automation Framework YAML plan, authenticated
-  scanning via authentication scripts/contexts, and API-driven scans
-  seeded from an OpenAPI spec. Use when the user asks to "configure a ZAP
-  automation framework plan", "write a ZAP context file for
-  authenticated scanning", "tune ZAP alert thresholds", "run zap-baseline
-  vs zap-full-scan", "script ZAP login for a scan", or "seed a ZAP scan
-  from an OpenAPI/Swagger spec". ZAP-specific depth on scan types,
+  Guides deep, tool-specific configuration of OWASP ZAP (Zed Attack Proxy) for
+  automated dynamic scanning — baseline vs. full active scan selection, the ZAP
+  Automation Framework YAML plan, authenticated scanning via authentication
+  scripts/contexts, and API-driven scans seeded from an OpenAPI spec. Use when
+  the user asks to "configure a ZAP automation framework plan", "write a ZAP
+  context file for authenticated scanning", "tune ZAP alert thresholds", "run
+  zap-baseline vs zap-full-scan", "script ZAP login for a scan", or "seed a ZAP
+  scan from an OpenAPI/Swagger spec". ZAP-specific depth on scan types,
   automation YAML, and auth scripting; for the general DAST concept and
   tool-agnostic workflow see dast-integration in the devsecops domain.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - frontend
+  - owasp-zap-dast-configuration
+depends_on: []
 ---
 
 # OWASP ZAP DAST Configuration

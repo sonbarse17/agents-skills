@@ -1,18 +1,24 @@
 ---
 name: product-pricing-strategy
 description: >
-  Use this skill when defining pricing strategy: value metrics, pricing models, packaging tiers, and pricing page experimentation.
-  This skill enforces: value metric identification, pricing model selection, packaging design, willingness-to-pay research.
-  Do NOT use for: discounting strategy, enterprise sales negotiation, contract management, revenue recognition.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when defining pricing strategy: value metrics, pricing models,
+  packaging tiers, and pricing page experimentation. This skill enforces: value
+  metric identification, pricing model selection, packaging design,
+  willingness-to-pay research. Do NOT use for: discounting strategy, enterprise
+  sales negotiation, contract management, revenue recognition.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [product, pricing, phase-8]
+tags:
+  - product
+  - pricing
+  - phase-8
+depends_on: []
 ---
 
 # Pricing Strategy Agent

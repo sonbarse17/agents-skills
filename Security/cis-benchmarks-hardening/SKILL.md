@@ -2,22 +2,25 @@
 name: cis-benchmarks-hardening
 description: >
   Guides applying CIS Benchmarks (Kubernetes, Docker/containers, Linux
-  distributions, and cloud provider foundations benchmarks for AWS/Azure/
-  GCP) using automated scanners such as kube-bench, Docker Bench for
-  Security, and CIS-CAT, interpreting PASS/FAIL/WARN findings against the
-  actual benchmark text, and running a documented exception/waiver process
-  for findings that legitimately do not apply to a given environment. Use
-  when a user asks to "run a CIS benchmark scan", "harden this cluster/host
-  to CIS standards", "interpret kube-bench output", "fix Docker Bench
-  findings", "why did we fail CIS control 5.2.x", or "document an exception
-  for a benchmark check we can't remediate". A scan pass is a hardening
-  signal, not a certification — it does not itself prove compliance to an
-  auditor.
+  distributions, and cloud provider foundations benchmarks for AWS/Azure/ GCP)
+  using automated scanners such as kube-bench, Docker Bench for Security, and
+  CIS-CAT, interpreting PASS/FAIL/WARN findings against the actual benchmark
+  text, and running a documented exception/waiver process for findings that
+  legitimately do not apply to a given environment. Use when a user asks to "run
+  a CIS benchmark scan", "harden this cluster/host to CIS standards", "interpret
+  kube-bench output", "fix Docker Bench findings", "why did we fail CIS control
+  5.2.x", or "document an exception for a benchmark check we can't remediate". A
+  scan pass is a hardening signal, not a certification — it does not itself
+  prove compliance to an auditor.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: standards-and-compliance-frameworks
   maturity: stable
+tags:
+  - security
+  - cis-benchmarks-hardening
+depends_on: []
 ---
 
 # CIS Benchmarks Hardening

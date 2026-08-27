@@ -1,20 +1,23 @@
 ---
 name: kubernetes-node-maintenance-and-troubleshooting
 description: >
-  Guides safely taking a Kubernetes node out of service for
-  maintenance — `kubectl cordon`/`kubectl drain` with
-  PodDisruptionBudget awareness so eviction doesn't cause an outage —
-  and diagnosing a node stuck `NotReady` (kubelet, container runtime,
-  network, and disk-pressure causes) before `kubectl uncordon`. Use when
-  a user asks to "drain a node for maintenance," "why is my node
-  NotReady," "safely patch/reboot a Kubernetes node," "a node drain is
-  stuck/hanging," "uncordon a node," or "PodDisruptionBudget is blocking
-  my drain."
+  Guides safely taking a Kubernetes node out of service for maintenance —
+  `kubectl cordon`/`kubectl drain` with PodDisruptionBudget awareness so
+  eviction doesn't cause an outage — and diagnosing a node stuck `NotReady`
+  (kubelet, container runtime, network, and disk-pressure causes) before
+  `kubectl uncordon`. Use when a user asks to "drain a node for maintenance,"
+  "why is my node NotReady," "safely patch/reboot a Kubernetes node," "a node
+  drain is stuck/hanging," "uncordon a node," or "PodDisruptionBudget is
+  blocking my drain."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-node-maintenance-and-troubleshooting
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Node Maintenance and Troubleshooting

@@ -1,8 +1,13 @@
 ---
 name: azure-image-builder
-description: Build Azure managed images and Azure Compute Gallery images with Packer. Use when creating custom images for Azure VMs.
+description: Build Azure managed images and Azure Compute Gallery images with
+  Packer. Use when creating custom images for Azure VMs.
 metadata:
   lifecycle-status: active
+tags:
+  - skills
+  - azure-image-builder
+depends_on: []
 ---
 
 # Azure Image Builder

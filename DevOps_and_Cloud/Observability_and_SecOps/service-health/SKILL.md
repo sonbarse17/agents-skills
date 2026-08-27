@@ -1,12 +1,16 @@
 ---
 name: observability-service-health
 description: >
-  Assess APM service health using SLOs, alerts, ML, throughput, latency, error rate,
-  and dependencies. Use when checking service status, performance, or when the user
-  asks about service health.
+  Assess APM service health using SLOs, alerts, ML, throughput, latency, error
+  rate, and dependencies. Use when checking service status, performance, or when
+  the user asks about service health.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - service-health
+depends_on: []
 ---
 
 # APM Service Health

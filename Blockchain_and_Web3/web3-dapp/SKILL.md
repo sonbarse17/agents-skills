@@ -1,6 +1,11 @@
 ---
 name: web3-dapp-playbook
-description: Playbook for building full-stack Web3 applications (Next.js, Solidity, Kubernetes).
+description: Playbook for building full-stack Web3 applications (Next.js,
+  Solidity, Kubernetes).
+tags:
+  - blockchain_and_web3
+  - web3-dapp
+depends_on: []
 ---
 
 # Web3 DApp Playbook

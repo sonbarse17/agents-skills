@@ -1,21 +1,24 @@
 ---
 name: jira-ticket-best-practices-and-workflow
 description: >
-  Guides writing well-formed Jira issues (clear title, reproduction steps
-  or acceptance criteria, correct issue type/priority/labels/components),
-  disciplined status-workflow movement (To Do → In Progress → In Review →
-  Done, avoiding stale or prematurely closed tickets), and linking related
-  issues/epics — plus the underlying Jira REST API shape
-  (`POST /rest/api/3/issue`, transitions, issue links) for doing this
-  programmatically. Use when the user asks to "write a Jira ticket",
-  "file a bug report", "create a user story", "update ticket status",
-  "move a ticket to In Progress/Done", "link this to the epic", or
-  "review whether this ticket is ready to work on".
+  Guides writing well-formed Jira issues (clear title, reproduction steps or
+  acceptance criteria, correct issue type/priority/labels/components),
+  disciplined status-workflow movement (To Do → In Progress → In Review → Done,
+  avoiding stale or prematurely closed tickets), and linking related
+  issues/epics — plus the underlying Jira REST API shape (`POST
+  /rest/api/3/issue`, transitions, issue links) for doing this programmatically.
+  Use when the user asks to "write a Jira ticket", "file a bug report", "create
+  a user story", "update ticket status", "move a ticket to In Progress/Done",
+  "link this to the epic", or "review whether this ticket is ready to work on".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: enterprise-collaboration
   maturity: stable
+tags:
+  - product_and_business
+  - jira-ticket-best-practices-and-workflow
+depends_on: []
 ---
 
 # Jira Ticket Best Practices and Workflow

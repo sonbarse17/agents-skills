@@ -1,10 +1,15 @@
 ---
 name: object-storage
-description: Configure object storage with S3, GCS, and MinIO. Implement lifecycle policies and access controls. Use when managing object storage.
+description: Configure object storage with S3, GCS, and MinIO. Implement
+  lifecycle policies and access controls. Use when managing object storage.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - object-storage
+depends_on: []
 ---
 
 # Object Storage

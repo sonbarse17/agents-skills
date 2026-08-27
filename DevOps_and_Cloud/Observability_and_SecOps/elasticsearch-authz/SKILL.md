@@ -1,15 +1,20 @@
 ---
 name: elasticsearch-authz
 description: >
-  Manage Elasticsearch RBAC: native users, roles, role mappings, document- and field-level
-  security. Use when creating users or roles, assigning privileges, or mapping external
-  realms like LDAP/SAML.
+  Manage Elasticsearch RBAC: native users, roles, role mappings, document- and
+  field-level security. Use when creating users or roles, assigning privileges,
+  or mapping external realms like LDAP/SAML.
 compatibility: >
-  Requires network access to Elasticsearch. Kibana endpoint needed for Kibana role
-  API. Serverless role assignment requires the cloud-access-management skill.
+  Requires network access to Elasticsearch. Kibana endpoint needed for Kibana
+  role API. Serverless role assignment requires the cloud-access-management
+  skill.
 metadata:
   author: elastic
   version: 0.1.1
+tags:
+  - observability_and_secops
+  - elasticsearch-authz
+depends_on: []
 ---
 
 # Elasticsearch Authorization

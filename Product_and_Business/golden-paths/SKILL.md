@@ -1,7 +1,18 @@
 ---
 name: golden-paths
-description: Curates the one opinionated, secure-and-observable-by-default way to build a service so the easy option and the right option are the same option. Use this whenever the user creates a service template, standardizes how new services get built, decides what ships enabled by default (logging, tracing, auth), or debates letting every team choose its own stack. For where templates are registered and discovered use `service-catalog`; for how they're provisioned end to end use `self-service-infrastructure`; for the platform surface they live on use `internal-developer-platform`.
+description: Curates the one opinionated, secure-and-observable-by-default way
+  to build a service so the easy option and the right option are the same
+  option. Use this whenever the user creates a service template, standardizes
+  how new services get built, decides what ships enabled by default (logging,
+  tracing, auth), or debates letting every team choose its own stack. For where
+  templates are registered and discovered use `service-catalog`; for how they're
+  provisioned end to end use `self-service-infrastructure`; for the platform
+  surface they live on use `internal-developer-platform`.
 license: MIT
+tags:
+  - product_and_business
+  - golden-paths
+depends_on: []
 ---
 
 # Golden Paths

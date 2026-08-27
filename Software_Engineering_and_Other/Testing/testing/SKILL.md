@@ -4,15 +4,20 @@ description: >
   Use this skill when the user asks about mobile testing strategies, unit tests,
   widget tests, component tests, integration tests, E2E, golden/snapshot tests,
   mocking, or CI test integration.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, testing, phase-4, universal]
+tags:
+  - mobile
+  - testing
+  - phase-4
+  - universal
+depends_on: []
 ---
 
 # Mobile Testing

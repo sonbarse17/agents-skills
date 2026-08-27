@@ -4,15 +4,20 @@ description: >
   Use this skill when the user asks about mobile security, secure storage,
   certificate pinning, SSL pinning, biometric authentication, data encryption,
   ProGuard, obfuscation, or OWASP Mobile Top 10.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, security, phase-4, universal]
+tags:
+  - mobile
+  - security
+  - phase-4
+  - universal
+depends_on: []
 ---
 
 # Mobile Security

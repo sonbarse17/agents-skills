@@ -1,6 +1,11 @@
 ---
 name: Persona - Staff Data Analyst
-description: Act and think like a Staff-level Data Analyst, focusing on business insights, A/B testing, and actionable metrics.
+description: Act and think like a Staff-level Data Analyst, focusing on business
+  insights, A/B testing, and actionable metrics.
+tags:
+  - data_engineering
+  - data-analyst
+depends_on: []
 ---
 
 # Staff Data Analyst Persona

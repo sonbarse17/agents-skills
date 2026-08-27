@@ -3,14 +3,13 @@ name: devops-azure
 description: >
   Trigger: "Azure", "Microsoft Azure", "Azure DevOps", "Azure Kubernetes",
   "AKS", "Azure Functions", "Azure App Service", "Azure Storage", "Azure SQL",
-  "ARM template", "Bicep", "Azure CLI", "Azure pipeline", "Azure AD",
-  "Managed Identity", "Azure Policy", "Azure Monitor", "Log Analytics",
-  "Key Vault", "Azure Front Door", "Azure Firewall", "Private Link".
-  Covers: compute (AKS, App Service, Functions, VMs), storage (Blob, Disk, Files),
-  database (Azure SQL, Cosmos DB), networking (VNet, VPN, ExpressRoute),
-  IaC (Bicep, ARM), security (Azure AD, Key Vault, Policy), monitoring,
-  cost management, landing zone design (CAF).
-  Exclusion: Not for AWS or GCP — use those specific skills.
+  "ARM template", "Bicep", "Azure CLI", "Azure pipeline", "Azure AD", "Managed
+  Identity", "Azure Policy", "Azure Monitor", "Log Analytics", "Key Vault",
+  "Azure Front Door", "Azure Firewall", "Private Link". Covers: compute (AKS,
+  App Service, Functions, VMs), storage (Blob, Disk, Files), database (Azure
+  SQL, Cosmos DB), networking (VNet, VPN, ExpressRoute), IaC (Bicep, ARM),
+  security (Azure AD, Key Vault, Policy), monitoring, cost management, landing
+  zone design (CAF). Exclusion: Not for AWS or GCP — use those specific skills.
 version: 2.0.0
 author: j4flmao
 license: MIT
@@ -19,7 +18,12 @@ compatibility:
   core: true
   editor: true
   api: true
-tags: [devops, cloud, azure, phase-7]
+tags:
+  - devops
+  - cloud
+  - azure
+  - phase-7
+depends_on: []
 ---
 
 # Azure

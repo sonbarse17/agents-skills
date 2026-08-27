@@ -2,18 +2,22 @@
 name: dast-integration
 description: >
   Guides adding Dynamic Application Security Testing (DAST) — automated
-  black-box scanning of a running web application or API — using tools
-  such as OWASP ZAP or Nuclei, in CI/CD or on a scheduled cadence against
-  a staging environment. Use when the user asks to "add DAST scanning",
-  "run a ZAP baseline scan against staging", "automate OWASP scanning in
-  the pipeline", "test the running app for injection/auth/config
-  vulnerabilities", or "scan our API for security issues before release".
-  Complements, but does not replace, SAST or SCA static analysis.
+  black-box scanning of a running web application or API — using tools such as
+  OWASP ZAP or Nuclei, in CI/CD or on a scheduled cadence against a staging
+  environment. Use when the user asks to "add DAST scanning", "run a ZAP
+  baseline scan against staging", "automate OWASP scanning in the pipeline",
+  "test the running app for injection/auth/config vulnerabilities", or "scan our
+  API for security issues before release". Complements, but does not replace,
+  SAST or SCA static analysis.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - observability_and_secops
+  - dast-integration
+depends_on: []
 ---
 
 # DAST Integration

@@ -1,7 +1,18 @@
 ---
 name: scalability-design
-description: Designs systems to handle the next order of magnitude of load by removing state, shared contention, and single bottlenecks, and by choosing deliberately between horizontal and vertical scaling for each component. Use this whenever the user is designing a new service for growth, asks whether an architecture will handle 10x traffic, is deciding between scaling out and scaling up, or hits a wall where adding more instances stops helping. For proving the design holds under real traffic use `load-testing`, and for provisioning the headroom over time use `capacity-planning`.
+description: Designs systems to handle the next order of magnitude of load by
+  removing state, shared contention, and single bottlenecks, and by choosing
+  deliberately between horizontal and vertical scaling for each component. Use
+  this whenever the user is designing a new service for growth, asks whether an
+  architecture will handle 10x traffic, is deciding between scaling out and
+  scaling up, or hits a wall where adding more instances stops helping. For
+  proving the design holds under real traffic use `load-testing`, and for
+  provisioning the headroom over time use `capacity-planning`.
 license: MIT
+tags:
+  - patterns
+  - scalability-design
+depends_on: []
 ---
 
 # Scalability Design

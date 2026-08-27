@@ -1,16 +1,27 @@
 ---
 name: data-data-catalog
 description: >
-  Use this skill when asked about data catalog, DataHub, Amundsen, Apache Atlas, OpenMetadata, metadata management, data discovery, business glossary, data lineage, data ownership, or column-level lineage. This skill enforces: metadata ingestion pipelines, column-level lineage tracking, business glossary management, data discovery with search, catalog API usage, data ownership and stewardship models, and usage analytics. Do NOT use for: data quality testing, pipeline orchestration, or data storage design.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data catalog, DataHub, Amundsen, Apache Atlas,
+  OpenMetadata, metadata management, data discovery, business glossary, data
+  lineage, data ownership, or column-level lineage. This skill enforces:
+  metadata ingestion pipelines, column-level lineage tracking, business glossary
+  management, data discovery with search, catalog API usage, data ownership and
+  stewardship models, and usage analytics. Do NOT use for: data quality testing,
+  pipeline orchestration, or data storage design.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, catalog, metadata, phase-11]
+tags:
+  - data
+  - catalog
+  - metadata
+  - phase-11
+depends_on: []
 ---
 
 # Data Data Catalog

@@ -1,6 +1,11 @@
 ---
 name: react-native-expertise
-description: Expert knowledge in React Native, focusing on FlatList optimization and OTA Updates.
+description: Expert knowledge in React Native, focusing on FlatList optimization
+  and OTA Updates.
+tags:
+  - frontend
+  - react-native
+depends_on: []
 ---
 # React Native Expertise
 

@@ -1,24 +1,27 @@
 ---
 name: complete-kubernetes-deployment-with-k3s-from-scratch
 description: >
-  Sequences a complete K3s deployment from bare hosts (edge, on-prem VM,
-  or dev/CI) to a production-ready lightweight cluster serving a first
-  workload — topology/datastore choice, bundled Flannel CNI (with the
-  Calico alternative noted), built-in Traefik vs. ingress-nginx, K3s's
-  ServiceLB vs. MetalLB, cert-manager sized to actual reachability,
-  footprint-scaled conformance validation, and a first Helm/HelmChart-CRD
-  workload. An integration skill sequencing existing tool-specific skills
-  in the correct order and flagging their handoff points — it does not
-  restate their internals. Use when a user asks to "deploy K3s from
-  scratch," "stand up a lightweight Kubernetes cluster end to end," "set
-  up K3s for an edge site/dev environment/CI runner," "build a production
-  K3s cluster on bare metal," or "give me the full sequence to go from
-  nothing to a working K3s cluster."
+  Sequences a complete K3s deployment from bare hosts (edge, on-prem VM, or
+  dev/CI) to a production-ready lightweight cluster serving a first workload —
+  topology/datastore choice, bundled Flannel CNI (with the Calico alternative
+  noted), built-in Traefik vs. ingress-nginx, K3s's ServiceLB vs. MetalLB,
+  cert-manager sized to actual reachability, footprint-scaled conformance
+  validation, and a first Helm/HelmChart-CRD workload. An integration skill
+  sequencing existing tool-specific skills in the correct order and flagging
+  their handoff points — it does not restate their internals. Use when a user
+  asks to "deploy K3s from scratch," "stand up a lightweight Kubernetes cluster
+  end to end," "set up K3s for an edge site/dev environment/CI runner," "build a
+  production K3s cluster on bare metal," or "give me the full sequence to go
+  from nothing to a working K3s cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-kubernetes-deployment-with-k3s-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment with K3s From Scratch

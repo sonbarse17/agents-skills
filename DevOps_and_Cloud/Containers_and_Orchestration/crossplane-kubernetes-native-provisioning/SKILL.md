@@ -1,21 +1,24 @@
 ---
 name: crossplane-kubernetes-native-provisioning
 description: >
-  Provisions cloud infrastructure through Crossplane's Kubernetes-native
-  control plane model — Providers, `Composition`/`CompositeResourceDefinition`
-  (XRD), and namespaced Claims — as an alternative to Terraform for teams
-  that want infrastructure requests to look like any other Kubernetes API
-  object, reconciled continuously rather than applied on demand. Use when
-  a user asks to "set up Crossplane," "define a Composition/XRD," "let
-  application teams self-service provision infra via a Claim," "compare
-  Crossplane to Terraform," "build a platform API for infrastructure on
-  Kubernetes," or "continuously reconcile cloud resources instead of
-  running apply on a schedule."
+  Provisions cloud infrastructure through Crossplane's Kubernetes-native control
+  plane model — Providers, `Composition`/`CompositeResourceDefinition` (XRD),
+  and namespaced Claims — as an alternative to Terraform for teams that want
+  infrastructure requests to look like any other Kubernetes API object,
+  reconciled continuously rather than applied on demand. Use when a user asks to
+  "set up Crossplane," "define a Composition/XRD," "let application teams
+  self-service provision infra via a Claim," "compare Crossplane to Terraform,"
+  "build a platform API for infrastructure on Kubernetes," or "continuously
+  reconcile cloud resources instead of running apply on a schedule."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - crossplane-kubernetes-native-provisioning
+depends_on: []
 ---
 
 # Crossplane: [Kubernetes](../kubernetes/SKILL.md)-Native Infrastructure Provisioning

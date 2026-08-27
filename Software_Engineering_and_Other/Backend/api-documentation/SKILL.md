@@ -4,20 +4,25 @@ description: >
   Use this skill when the user says 'API documentation', 'OpenAPI', 'Swagger',
   'API spec', 'REST API docs', 'API reference', 'API design', 'API contract',
   'API versioning', 'API portal', 'developer portal', 'API documentation tool',
-  'docs as code', 'API changelog', 'API playground'.
-  Covers: OpenAPI 3.x specification design, documentation generation, API portals,
-  docs-as-code workflows, change management, versioning strategy, interactive docs
-  (Swagger UI, Redoc, Stoplight), linting (Spectral), testing (Dredd/Schemathesis).
-  Do NOT use for: general code documentation, architecture docs, or non-API docs.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'docs as code', 'API changelog', 'API playground'. Covers: OpenAPI 3.x
+  specification design, documentation generation, API portals, docs-as-code
+  workflows, change management, versioning strategy, interactive docs (Swagger
+  UI, Redoc, Stoplight), linting (Spectral), testing (Dredd/Schemathesis). Do
+  NOT use for: general code documentation, architecture docs, or non-API docs.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, api-documentation, developer-experience, phase-5]
+tags:
+  - devops
+  - api-documentation
+  - developer-experience
+  - phase-5
+depends_on: []
 ---
 
 # API Documentation

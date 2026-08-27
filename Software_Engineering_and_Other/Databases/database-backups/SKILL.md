@@ -1,10 +1,16 @@
 ---
 name: database-backups
-description: Implement database backup strategies. Configure automated backups, retention, and recovery testing. Use when designing backup and recovery procedures.
+description: Implement database backup strategies. Configure automated backups,
+  retention, and recovery testing. Use when designing backup and recovery
+  procedures.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - databases
+  - database-backups
+depends_on: []
 ---
 
 # Database Backups

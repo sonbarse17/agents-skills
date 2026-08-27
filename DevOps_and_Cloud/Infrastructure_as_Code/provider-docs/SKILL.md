@@ -1,8 +1,17 @@
 ---
 name: provider-docs
-description: Create, update, and review Terraform provider documentation for Terraform Registry using HashiCorp-recommended patterns, tfplugindocs templates, and schema descriptions. Use when adding or changing provider configuration, resources, data sources, ephemeral resources, list resources, functions, actions, or guides; when validating generated docs; and when troubleshooting missing or incorrect Registry documentation.
+description: Create, update, and review Terraform provider documentation for
+  Terraform Registry using HashiCorp-recommended patterns, tfplugindocs
+  templates, and schema descriptions. Use when adding or changing provider
+  configuration, resources, data sources, ephemeral resources, list resources,
+  functions, actions, or guides; when validating generated docs; and when
+  troubleshooting missing or incorrect Registry documentation.
 metadata:
   lifecycle-status: active
+tags:
+  - infrastructure_as_code
+  - provider-docs
+depends_on: []
 ---
 
 # Terraform Provider Docs

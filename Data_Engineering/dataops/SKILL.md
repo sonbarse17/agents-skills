@@ -3,18 +3,23 @@ name: devops-dataops
 description: >
   Use this skill when implementing DataOps: CI/CD for data pipelines, dbt CI/CD,
   SQLFluff, Great Expectations, data pipeline versioning, data testing in CI,
-  data environment management, data contract CI, data lineage in CI/CD.
-  Do NOT use for: data warehouse schema design (use data-warehouse),
-  ETL pipeline design (use etl-pipeline), general CI/CD (use cicd-pipeline).
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  data environment management, data contract CI, data lineage in CI/CD. Do NOT
+  use for: data warehouse schema design (use data-warehouse), ETL pipeline
+  design (use etl-pipeline), general CI/CD (use cicd-pipeline).
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, dataops, data, phase-11]
+tags:
+  - devops
+  - dataops
+  - data
+  - phase-11
+depends_on: []
 ---
 
 # DataOps Agent

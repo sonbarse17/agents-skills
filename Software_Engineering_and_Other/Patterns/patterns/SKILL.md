@@ -4,15 +4,20 @@ description: >
   Use this skill when the user asks about mobile architecture patterns, MVVM,
   MVI, Clean Architecture, Coordinator, Navigator, Repository pattern, UseCase,
   or dependency injection in mobile apps.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, patterns, phase-4, universal]
+tags:
+  - mobile
+  - patterns
+  - phase-4
+  - universal
+depends_on: []
 ---
 
 # Mobile Architecture Patterns

@@ -4,17 +4,21 @@ description: >
   Use this skill when the user says 'in-app purchase', 'IAP', 'subscription',
   'consumable', 'StoreKit', 'Play Billing', 'receipt validation', 'restore
   purchase'. This skill enforces proper purchase flow patterns: product
-  configuration, purchase flow, receipt validation, subscription management,
-  and restore handling. Applies to iOS, Android, Flutter, and React Native.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  configuration, purchase flow, receipt validation, subscription management, and
+  restore handling. Applies to iOS, Android, Flutter, and React Native.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, in-app-purchase, universal]
+tags:
+  - mobile
+  - in-app-purchase
+  - universal
+depends_on: []
 ---
 
 # Mobile In-App Purchase

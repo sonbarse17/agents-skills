@@ -1,19 +1,22 @@
 ---
 name: knative-configuration-validation
 description: >
-  Validates Knative Service/Revision configuration and autoscaling
-  annotations before deploy — catching missing resource limits,
-  contradictory min/max scale settings, unsafe traffic splits, and
-  timeout misconfigurations that a normal `kubectl apply` won't reject.
-  Use when the user asks to "validate a Knative Service before deploy,"
-  "check Knative autoscaling annotations," "review a canary traffic
-  split," "add a pre-deploy gate for Knative config," or "why did my
-  Knative Service apply succeed but behave wrong."
+  Validates Knative Service/Revision configuration and autoscaling annotations
+  before deploy — catching missing resource limits, contradictory min/max scale
+  settings, unsafe traffic splits, and timeout misconfigurations that a normal
+  `kubectl apply` won't reject. Use when the user asks to "validate a Knative
+  Service before deploy," "check Knative autoscaling annotations," "review a
+  canary traffic split," "add a pre-deploy gate for Knative config," or "why did
+  my Knative Service apply succeed but behave wrong."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - knative-configuration-validation
+depends_on: []
 ---
 
 # Knative Configuration Validation

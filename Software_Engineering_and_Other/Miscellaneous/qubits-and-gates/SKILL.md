@@ -1,6 +1,11 @@
 ---
 name: Qubits & Gates
-description: Fundamental operations of quantum computing, including the Bloch Sphere, Hadamard gate, Pauli-X/Y/Z, and CNOT gate.
+description: Fundamental operations of quantum computing, including the Bloch
+  Sphere, Hadamard gate, Pauli-X/Y/Z, and CNOT gate.
+tags:
+  - miscellaneous
+  - qubits-and-gates
+depends_on: []
 ---
 
 # Qubit Architecture and Unitary Operations

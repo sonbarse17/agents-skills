@@ -1,7 +1,18 @@
 ---
 name: database-operations
-description: Covers the operational discipline of running databases in production — connection pooling and exhaustion, online schema changes, replication topology and read scaling, failover and promotion, and the runbook habits that keep an outage from becoming data loss. Use this whenever the user is sizing a connection pool, adding an index to a live table, setting up read replicas, debugging replication lag, or planning a failover drill. For the step-by-step mechanics of a specific schema or data change use `data-migration`, and for restore testing use `backup-and-restore`.
+description: Covers the operational discipline of running databases in
+  production — connection pooling and exhaustion, online schema changes,
+  replication topology and read scaling, failover and promotion, and the runbook
+  habits that keep an outage from becoming data loss. Use this whenever the user
+  is sizing a connection pool, adding an index to a live table, setting up read
+  replicas, debugging replication lag, or planning a failover drill. For the
+  step-by-step mechanics of a specific schema or data change use
+  `data-migration`, and for restore testing use `backup-and-restore`.
 license: MIT
+tags:
+  - databases
+  - database-operations
+depends_on: []
 ---
 
 # Database Operations

@@ -1,10 +1,20 @@
 ---
 name: pipeline-review
-description: Review CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins, CircleCI, Azure Pipelines, etc.) as a senior release engineer, then produce a prioritized, evidence-based findings table and self-contained remediation plans covering reliability, speed, security, and correctness. Strictly read-only — never triggers, cancels, or edits pipelines. Use when asked to review CI/CD configuration for flakiness, slow builds, insecure secrets handling, missing gates, or supply-chain risk.
+description: Review CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins,
+  CircleCI, Azure Pipelines, etc.) as a senior release engineer, then produce a
+  prioritized, evidence-based findings table and self-contained remediation
+  plans covering reliability, speed, security, and correctness. Strictly
+  read-only — never triggers, cancels, or edits pipelines. Use when asked to
+  review CI/CD configuration for flakiness, slow builds, insecure secrets
+  handling, missing gates, or supply-chain risk.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - ci_cd
+  - pipeline-review
+depends_on: []
 ---
 
 # Pipeline Review

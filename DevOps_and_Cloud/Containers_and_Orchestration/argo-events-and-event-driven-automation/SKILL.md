@@ -1,19 +1,23 @@
 ---
 name: argo-events-and-event-driven-automation
 description: >
-  Configures Argo Events `EventSource`, `Sensor`, and `EventBus` CRDs to
-  trigger Argo Workflows, Kubernetes resource changes, or other actions
-  from external events — webhooks, message queues (Kafka/NATS/SQS/
-  RabbitMQ), and cron schedules. Use when the user asks to "trigger an
-  Argo Workflow from a webhook," "wire up an EventSource for S3/Kafka/
-  GitHub events," "fan events out to multiple triggers with a Sensor,"
-  "debug a Sensor that isn't firing," or "build event-driven automation on
-  Kubernetes without a separate message broker to operate."
+  Configures Argo Events `EventSource`, `Sensor`, and `EventBus` CRDs to trigger
+  Argo Workflows, Kubernetes resource changes, or other actions from external
+  events — webhooks, message queues (Kafka/NATS/SQS/ RabbitMQ), and cron
+  schedules. Use when the user asks to "trigger an Argo Workflow from a
+  webhook," "wire up an EventSource for S3/Kafka/ GitHub events," "fan events
+  out to multiple triggers with a Sensor," "debug a Sensor that isn't firing,"
+  or "build event-driven automation on Kubernetes without a separate message
+  broker to operate."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argo-events-and-event-driven-automation
+depends_on: []
 ---
 
 # Argo Events and Event-Driven Automation

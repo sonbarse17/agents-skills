@@ -1,16 +1,29 @@
 ---
 name: data-science-experimentation
 description: >
-  Use this skill when designing experiments, A/B tests, multi-armed bandits, randomized controlled trials, statistical hypothesis tests, sample size calculations, experiment design, power analysis, or causal inference for product changes. This skill enforces: rigorous experiment design with pre-registered hypotheses, proper sample size calculations, statistical significance testing, multiple comparison corrections, guardrail metrics, and result interpretation. Do NOT use for: observational causal inference (see causal-inference skill), general statistical analysis (see statistical-analysis), or ML model evaluation.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing experiments, A/B tests, multi-armed bandits,
+  randomized controlled trials, statistical hypothesis tests, sample size
+  calculations, experiment design, power analysis, or causal inference for
+  product changes. This skill enforces: rigorous experiment design with
+  pre-registered hypotheses, proper sample size calculations, statistical
+  significance testing, multiple comparison corrections, guardrail metrics, and
+  result interpretation. Do NOT use for: observational causal inference (see
+  causal-inference skill), general statistical analysis (see
+  statistical-analysis), or ML model evaluation.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data-science, experimentation, stats, phase-7]
+tags:
+  - data-science
+  - experimentation
+  - stats
+  - phase-7
+depends_on: []
 ---
 
 # Experimentation

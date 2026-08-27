@@ -1,10 +1,15 @@
 ---
 name: llm-app-security
-description: Secure LLM-powered applications with input validation, output controls, tenant isolation, and abuse prevention.
+description: Secure LLM-powered applications with input validation, output
+  controls, tenant isolation, and abuse prevention.
 license: MIT
 metadata:
   author: devops-skills
   version: "2.0"
+tags:
+  - security
+  - llm-app-security
+depends_on: []
 ---
 
 # LLM Application Security

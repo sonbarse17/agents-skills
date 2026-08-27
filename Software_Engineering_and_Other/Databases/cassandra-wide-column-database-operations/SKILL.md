@@ -1,19 +1,22 @@
 ---
 name: cassandra-wide-column-database-operations
 description: >
-  Covers Apache Cassandra ring topology and token/partition design,
-  tunable consistency levels (ONE, QUORUM, ALL, LOCAL_QUORUM),
-  compaction strategy selection (SizeTiered, Leveled, TimeWindow), and
-  tombstone/GC-grace management. Use when the user asks to "design a
-  Cassandra partition key," "choose a Cassandra consistency level,"
-  "why is this Cassandra query slow," "pick a compaction strategy,"
-  "Cassandra tombstone warnings in logs," or "add/remove a node from a
-  Cassandra ring."
+  Covers Apache Cassandra ring topology and token/partition design, tunable
+  consistency levels (ONE, QUORUM, ALL, LOCAL_QUORUM), compaction strategy
+  selection (SizeTiered, Leveled, TimeWindow), and tombstone/GC-grace
+  management. Use when the user asks to "design a Cassandra partition key,"
+  "choose a Cassandra consistency level," "why is this Cassandra query slow,"
+  "pick a compaction strategy," "Cassandra tombstone warnings in logs," or
+  "add/remove a node from a Cassandra ring."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - cassandra-wide-column-database-operations
+depends_on: []
 ---
 
 # Cassandra Wide-Column Database Operations

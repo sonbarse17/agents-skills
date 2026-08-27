@@ -1,10 +1,16 @@
 ---
 name: argocd
-description: Deploy Kubernetes apps declaratively with Argo CD applications and projects. Use when tasks mention argocd, Argo CD, argocd app sync, Application CRD, AppProject, or GitOps with Argo CD.
+description: Deploy Kubernetes apps declaratively with Argo CD applications and
+  projects. Use when tasks mention argocd, Argo CD, argocd app sync, Application
+  CRD, AppProject, or GitOps with Argo CD.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - argocd
+depends_on: []
 ---
 
 # Argo CD

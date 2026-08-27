@@ -1,7 +1,18 @@
 ---
 name: deployment-strategies
-description: Chooses and implements the deployment technique — blue-green, canary, rolling, or shadow — that buys the most information before you're fully committed, plus the rollback plan that makes each one safe. Use this whenever the user asks how to deploy with zero downtime, wants a canary or blue-green setup, is worried about a risky rollout, or is planning a DB migration alongside a code deploy. For deciding whether to release deployed code at all use `feature-flags`; for a Kubernetes-native rollout use `progressive-delivery`.
+description: Chooses and implements the deployment technique — blue-green,
+  canary, rolling, or shadow — that buys the most information before you're
+  fully committed, plus the rollback plan that makes each one safe. Use this
+  whenever the user asks how to deploy with zero downtime, wants a canary or
+  blue-green setup, is worried about a risky rollout, or is planning a DB
+  migration alongside a code deploy. For deciding whether to release deployed
+  code at all use `feature-flags`; for a Kubernetes-native rollout use
+  `progressive-delivery`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - deployment-strategies
+depends_on: []
 ---
 
 # Deployment Strategies

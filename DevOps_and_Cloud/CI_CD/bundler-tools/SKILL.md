@@ -1,16 +1,26 @@
 ---
 name: frontend-bundler-tools
 description: >
-  Use this skill when the user says 'bundler', 'Vite', 'Webpack', 'Turbopack', 'build tool', 'bundle config', 'build optimization', 'tree shaking', 'code splitting', 'lazy loading', 'chunk splitting', 'asset bundling', 'build performance', 'bundler migration'. Configure and optimize frontend build tooling. Do NOT use for: framework-specific builds or deployment pipelines.
+  Use this skill when the user says 'bundler', 'Vite', 'Webpack', 'Turbopack',
+  'build tool', 'bundle config', 'build optimization', 'tree shaking', 'code
+  splitting', 'lazy loading', 'chunk splitting', 'asset bundling', 'build
+  performance', 'bundler migration'. Configure and optimize frontend build
+  tooling. Do NOT use for: framework-specific builds or deployment pipelines.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, bundler, build, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - frontend
+  - bundler
+  - build
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Frontend Bundler Tools

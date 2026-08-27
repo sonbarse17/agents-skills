@@ -1,3 +1,12 @@
+---
+name: edge-ai
+description: Comprehensive guidelines and best practices for edge-ai. Use this
+  skill when working with related components.
+tags:
+  - models_and_finetuning
+  - edge-ai
+depends_on: []
+---
 # Edge AI: TensorRT and ONNX
 
 Deploying deep learning models on edge devices with limited compute requires rigorous optimization. NVIDIA TensorRT performs graph optimizations, layer fusion (e.g., merging convolution, bias, and ReLU layers), and precision calibration (quantizing FP32 weights to FP16 or INT8 without significant accuracy loss). 

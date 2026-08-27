@@ -1,16 +1,24 @@
 ---
 name: frontend-tailwind-css
 description: >
-  Use this skill when the user says 'tailwind', 'utility css', 'design tokens', 'responsive tailwind', 'tailwind config', 'custom theme'. This skill enforces utility-first CSS principles, design token extraction, responsive breakpoint patterns, and Tailwind config best practices. Applies to any frontend stack.
-version: "1.2.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'tailwind', 'utility css', 'design tokens',
+  'responsive tailwind', 'tailwind config', 'custom theme'. This skill enforces
+  utility-first CSS principles, design token extraction, responsive breakpoint
+  patterns, and Tailwind config best practices. Applies to any frontend stack.
+version: 1.2.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsure: true
-tags: [frontend, tailwind-css, phase-3, universal]
+tags:
+  - frontend
+  - tailwind-css
+  - phase-3
+  - universal
+depends_on: []
 ---
 
 # Frontend Tailwind CSS

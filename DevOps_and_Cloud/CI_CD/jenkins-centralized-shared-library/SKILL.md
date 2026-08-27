@@ -1,18 +1,21 @@
 ---
 name: jenkins-centralized-shared-library
 description: >
-  Designs and maintains an organization-wide Jenkins Shared Library
-  (vars/ and src/ layout) so many repos consume a thin Jenkinsfile that
-  calls one shared pipeline function, instead of duplicating pipeline
-  logic per repo. Use when the user asks to "set up a Jenkins shared
-  library," "centralize our Jenkinsfiles," "add a global pipeline
-  function," "version the shared library," or "reduce duplicated Jenkins
-  pipeline logic across repos."
+  Designs and maintains an organization-wide Jenkins Shared Library (vars/ and
+  src/ layout) so many repos consume a thin Jenkinsfile that calls one shared
+  pipeline function, instead of duplicating pipeline logic per repo. Use when
+  the user asks to "set up a Jenkins shared library," "centralize our
+  Jenkinsfiles," "add a global pipeline function," "version the shared library,"
+  or "reduce duplicated Jenkins pipeline logic across repos."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - jenkins-centralized-shared-library
+depends_on: []
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Centralized Shared Library

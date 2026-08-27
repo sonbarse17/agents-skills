@@ -3,18 +3,22 @@ name: gpu-accelerator-infrastructure-for-ml-training
 description: >
   Guides standing up GPU accelerator infrastructure on Kubernetes for ML
   training and serving workloads — installing the NVIDIA GPU Operator,
-  partitioning GPUs with Multi-Instance GPU (MIG), designing GPU node pools,
-  and scheduling/bin-packing training and serving pods onto that capacity
-  without fragmentation or idle spend. Use when the user asks to "add GPU
-  nodes to a cluster", "install the NVIDIA GPU Operator", "set up MIG
-  partitioning", "carve up an A100/H100 into smaller GPU slices", design a
-  GPU node pool or bin-packing/scheduling strategy for training and serving
-  workloads sharing the same cluster, or reduce idle GPU spend.
+  partitioning GPUs with Multi-Instance GPU (MIG), designing GPU node pools, and
+  scheduling/bin-packing training and serving pods onto that capacity without
+  fragmentation or idle spend. Use when the user asks to "add GPU nodes to a
+  cluster", "install the NVIDIA GPU Operator", "set up MIG partitioning", "carve
+  up an A100/H100 into smaller GPU slices", design a GPU node pool or
+  bin-packing/scheduling strategy for training and serving workloads sharing the
+  same cluster, or reduce idle GPU spend.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - cloud_providers
+  - gpu-accelerator-infrastructure-for-ml-training
+depends_on: []
 ---
 
 # GPU Accelerator Infrastructure For ML Training

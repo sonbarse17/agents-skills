@@ -1,23 +1,26 @@
 ---
 name: complete-idp-deployment-on-kubernetes-from-scratch
 description: >
-  Sequences a complete, cloud-agnostic Internal Developer Platform
-  deployment on any CNCF-conformant Kubernetes cluster: cluster
-  conformance validation → cluster add-ons (ingress, TLS, in-cluster
-  storage) → Helm-deployed Backstage backed by an in-cluster PostgreSQL
-  instance → golden-path scaffolding template → self-service scaffolder
-  actions calling generic Kubernetes/Crossplane APIs, deliberately not
-  tied to one cloud's IAM or managed-database provisioning APIs →
-  scorecards. Use when a user asks to "deploy an IDP on Kubernetes without
-  tying it to one cloud," "build a portable/cloud-agnostic internal
-  developer platform," "stand up Backstage on any conformant cluster,"
-  "design self-service provisioning that doesn't assume AWS/Azure/GCP,"
-  or "sequence a vendor-neutral platform rollout on Kubernetes."
+  Sequences a complete, cloud-agnostic Internal Developer Platform deployment on
+  any CNCF-conformant Kubernetes cluster: cluster conformance validation →
+  cluster add-ons (ingress, TLS, in-cluster storage) → Helm-deployed Backstage
+  backed by an in-cluster PostgreSQL instance → golden-path scaffolding template
+  → self-service scaffolder actions calling generic Kubernetes/Crossplane APIs,
+  deliberately not tied to one cloud's IAM or managed-database provisioning APIs
+  → scorecards. Use when a user asks to "deploy an IDP on Kubernetes without
+  tying it to one cloud," "build a portable/cloud-agnostic internal developer
+  platform," "stand up Backstage on any conformant cluster," "design
+  self-service provisioning that doesn't assume AWS/Azure/GCP," or "sequence a
+  vendor-neutral platform rollout on Kubernetes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-idp-deployment-on-kubernetes-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on [Kubernetes](../kubernetes/SKILL.md) from Scratch

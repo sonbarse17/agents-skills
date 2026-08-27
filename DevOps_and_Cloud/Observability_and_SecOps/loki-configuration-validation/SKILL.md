@@ -1,21 +1,24 @@
 ---
 name: loki-configuration-validation
 description: >
-  Validates Loki configuration before deploying — checking
-  `limits_config` values, `schema_config`/storage settings, and label
-  cardinality assumptions with dry-run tooling (`loki -config.file
-  -verify-config`, `promtool`-style structural checks, and a
-  cardinality audit against a running instance) so a bad config doesn't
-  reject or silently drop production log ingestion. Use when the user
-  asks to "validate my Loki config before deploying," "will this Loki
-  limits_config reject my logs," "check this Loki schema_config for
-  mistakes," "test a Loki config change in CI," or "why is Loki
-  rejecting ingestion after this config change."
+  Validates Loki configuration before deploying — checking `limits_config`
+  values, `schema_config`/storage settings, and label cardinality assumptions
+  with dry-run tooling (`loki -config.file -verify-config`, `promtool`-style
+  structural checks, and a cardinality audit against a running instance) so a
+  bad config doesn't reject or silently drop production log ingestion. Use when
+  the user asks to "validate my Loki config before deploying," "will this Loki
+  limits_config reject my logs," "check this Loki schema_config for mistakes,"
+  "test a Loki config change in CI," or "why is Loki rejecting ingestion after
+  this config change."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - loki-configuration-validation
+depends_on: []
 ---
 
 # Loki Configuration Validation

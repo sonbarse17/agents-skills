@@ -1,19 +1,22 @@
 ---
 name: argocd-applicationset-patterns
 description: >
-  Designs Argo CD `ApplicationSet` resources that template many
-  `Application` objects from a single source using generators — List,
-  Cluster, Git directory/file, and Matrix (combined generators). Use when
-  the user asks to "generate an Application per cluster/environment/
-  directory," "avoid copy-pasting Argo CD Applications," "roll out a
-  service to a fleet of clusters," "combine a cluster generator with a Git
-  generator," or "debug an ApplicationSet producing unexpected or missing
-  Applications."
+  Designs Argo CD `ApplicationSet` resources that template many `Application`
+  objects from a single source using generators — List, Cluster, Git
+  directory/file, and Matrix (combined generators). Use when the user asks to
+  "generate an Application per cluster/environment/ directory," "avoid
+  copy-pasting Argo CD Applications," "roll out a service to a fleet of
+  clusters," "combine a cluster generator with a Git generator," or "debug an
+  ApplicationSet producing unexpected or missing Applications."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argocd-applicationset-patterns
+depends_on: []
 ---
 
 # Argo CD ApplicationSet Patterns

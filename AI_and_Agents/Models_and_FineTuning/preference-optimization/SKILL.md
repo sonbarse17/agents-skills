@@ -1,6 +1,13 @@
 ---
 name: preference-optimization
-description: Align a fine-tuned model with preference data using DPO, ORPO, KTO, or SimPO. Use when preference pairs or thumbs-up/down feedback exist, when choosing between preference-optimization methods, or when a DPO run needs hyperparameters or debugging.
+description: Align a fine-tuned model with preference data using DPO, ORPO, KTO,
+  or SimPO. Use when preference pairs or thumbs-up/down feedback exist, when
+  choosing between preference-optimization methods, or when a DPO run needs
+  hyperparameters or debugging.
+tags:
+  - models_and_finetuning
+  - preference-optimization
+depends_on: []
 ---
 
 # Preference Optimization

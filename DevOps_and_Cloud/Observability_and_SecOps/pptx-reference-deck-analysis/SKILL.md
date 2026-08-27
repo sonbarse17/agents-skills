@@ -1,6 +1,12 @@
 ---
 name: pptx-reference-deck-analysis
-description: "Use when analyzing a reference PPTX for read-only structure, theme, typography, layout rhythm, diagnostics, derived template catalogs, or safe OOXML package inspection."
+description: Use when analyzing a reference PPTX for read-only structure, theme,
+  typography, layout rhythm, diagnostics, derived template catalogs, or safe
+  OOXML package inspection.
+tags:
+  - observability_and_secops
+  - pptx-reference-deck-analysis
+depends_on: []
 ---
 
 # PPTX Reference Deck Analysis

@@ -1,22 +1,32 @@
 ---
 name: devops-network-infrastructure
 description: >
-  Use this skill when designing or operating production network infrastructure: BGP, anycast, ECMP,
-  leaf-spine fabric, EVPN/VXLAN, MPLS, SD-WAN, VRRP/HSRP/CARP, jumbo frames, QoS, multi-WAN, NAT,
-  IPv6 dual-stack, transit-vs-peering, internet exchanges (IX). Applies to colo, on-prem DC, hybrid
-  cloud, and edge POPs. This skill enforces: redundant uplinks, BGP best-practice (origin AS, prefix
-  filtering, MED/LOCAL_PREF policy), leaf-spine non-blocking, MTU consistency, and verifiable failover.
-  Do NOT use for: cloud-native VPC/Transit Gateway (see devops-aws / devops-gcp / devops-azure),
-  service mesh (see devops-service-mesh), or app-level load balancing (see enterprise-high-availability).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing or operating production network infrastructure:
+  BGP, anycast, ECMP, leaf-spine fabric, EVPN/VXLAN, MPLS, SD-WAN,
+  VRRP/HSRP/CARP, jumbo frames, QoS, multi-WAN, NAT, IPv6 dual-stack,
+  transit-vs-peering, internet exchanges (IX). Applies to colo, on-prem DC,
+  hybrid cloud, and edge POPs. This skill enforces: redundant uplinks, BGP
+  best-practice (origin AS, prefix filtering, MED/LOCAL_PREF policy), leaf-spine
+  non-blocking, MTU consistency, and verifiable failover. Do NOT use for:
+  cloud-native VPC/Transit Gateway (see devops-aws / devops-gcp / devops-azure),
+  service mesh (see devops-service-mesh), or app-level load balancing (see
+  enterprise-high-availability).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, network, bgp, anycast, leaf-spine, phase-2]
+tags:
+  - devops
+  - network
+  - bgp
+  - anycast
+  - leaf-spine
+  - phase-2
+depends_on: []
 ---
 
 # DevOps Network Infrastructure

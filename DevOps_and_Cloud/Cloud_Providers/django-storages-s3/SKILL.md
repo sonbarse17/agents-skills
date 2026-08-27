@@ -1,16 +1,27 @@
 ---
 name: django-storages-s3
-description: "Use when configuring Django to store static and media files on AWS S3 with django-storages. Invoke when working with the STORAGES setting, S3 buckets, presigned URLs, CloudFront, or boto3-backed file storage in settings.py. Configures the Django 4.2+ STORAGES dict, public/private custom backends, presigned GET/POST URLs, IAM policies, and S3 mocking for tests. Trigger terms: django-storages, S3, boto3, S3Boto3Storage, STORAGES, presigned URL, CloudFront, media files, collectstatic, AWS_STORAGE_BUCKET_NAME."
+description: "Use when configuring Django to store static and media files on AWS
+  S3 with django-storages. Invoke when working with the STORAGES setting, S3
+  buckets, presigned URLs, CloudFront, or boto3-backed file storage in
+  settings.py. Configures the Django 4.2+ STORAGES dict, public/private custom
+  backends, presigned GET/POST URLs, IAM policies, and S3 mocking for tests.
+  Trigger terms: django-storages, S3, boto3, S3Boto3Storage, STORAGES, presigned
+  URL, CloudFront, media files, collectstatic, AWS_STORAGE_BUCKET_NAME."
 license: MIT
 metadata:
   author: https://github.com/awais786
-  version: "1.0.0"
+  version: 1.0.0
   domain: backend
-  triggers: django-storages, S3, boto3, S3Boto3Storage, STORAGES, presigned URL, CloudFront, media files, collectstatic
+  triggers: django-storages, S3, boto3, S3Boto3Storage, STORAGES, presigned URL,
+    CloudFront, media files, collectstatic
   role: specialist
   scope: implementation
   output-format: code
   related-skills: django-expert
+tags:
+  - cloud_providers
+  - django-storages-s3
+depends_on: []
 ---
 
 # Django Storages S3

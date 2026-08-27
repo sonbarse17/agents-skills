@@ -1,16 +1,29 @@
 ---
 name: backend-idempotency
 description: >
-  Use this skill when the user says 'idempotency', 'idempotent', 'idempotency key', 'exactly-once', 'retry safety', 'deduplication', 'duplicate detection', 'idempotent endpoint', 'safe retry'. This skill implements idempotency keys and exactly-once semantics so retries never result in duplicate side effects. Applies to any backend stack. Do NOT use for: read-only endpoints (they are naturally idempotent), optimistic concurrency, or database-level unique constraints alone.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'idempotency', 'idempotent', 'idempotency
+  key', 'exactly-once', 'retry safety', 'deduplication', 'duplicate detection',
+  'idempotent endpoint', 'safe retry'. This skill implements idempotency keys
+  and exactly-once semantics so retries never result in duplicate side effects.
+  Applies to any backend stack. Do NOT use for: read-only endpoints (they are
+  naturally idempotent), optimistic concurrency, or database-level unique
+  constraints alone.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, idempotency, exactly-once, retry-safety, deduplication]
+tags:
+  - backend
+  - universal
+  - idempotency
+  - exactly-once
+  - retry-safety
+  - deduplication
+depends_on: []
 ---
 
 # Backend Idempotency

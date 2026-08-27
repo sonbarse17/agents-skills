@@ -1,19 +1,22 @@
 ---
 name: provider-ephemeral-resources
-description: >-
-  Implement Terraform provider ephemeral resources with the Plugin
+description: "Implement Terraform provider ephemeral resources with the Plugin
   Framework: the Open/Renew/Close lifecycle, ephemeral schema design,
-  registration via EphemeralResources, renewal for expiring credentials,
-  and how ephemeral values flow into write-only attributes and provider
-  configuration. Use when adding an ephemeral resource, exposing
-  secrets/tokens/certificates that must never persist in state or plan,
-  deciding between an ephemeral resource and a data source, or wiring
-  short-lived credentials from one provider into another.
+  registration via EphemeralResources, renewal for expiring credentials, and how
+  ephemeral values flow into write-only attributes and provider configuration.
+  Use when adding an ephemeral resource, exposing secrets/tokens/certificates
+  that must never persist in state or plan, deciding between an ephemeral
+  resource and a data source, or wiring short-lived credentials from one
+  provider into another."
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - skills
+  - provider-ephemeral-resources
+depends_on: []
 ---
 
 # Terraform Provider Ephemeral Resources

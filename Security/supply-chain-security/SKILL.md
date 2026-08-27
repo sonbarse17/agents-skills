@@ -1,7 +1,18 @@
 ---
 name: supply-chain-security
-description: Establishes trust in what you build and ship — SBOMs, build provenance, dependency pinning and verification, artifact signing, and signature verification before deploy. Use this whenever the user is asking what's inside their build, wants to pin or verify a dependency, is setting up artifact signing or SLSA provenance, is deciding whether to trust a third-party package, or is hardening a release pipeline against tampering. For patching what a scan finds use `vulnerability-management`; for the CI system producing these builds use `pipeline-security`.
+description: Establishes trust in what you build and ship — SBOMs, build
+  provenance, dependency pinning and verification, artifact signing, and
+  signature verification before deploy. Use this whenever the user is asking
+  what's inside their build, wants to pin or verify a dependency, is setting up
+  artifact signing or SLSA provenance, is deciding whether to trust a
+  third-party package, or is hardening a release pipeline against tampering. For
+  patching what a scan finds use `vulnerability-management`; for the CI system
+  producing these builds use `pipeline-security`.
 license: MIT
+tags:
+  - security
+  - supply-chain-security
+depends_on: []
 ---
 
 # Supply Chain Security

@@ -1,18 +1,21 @@
 ---
 name: mongodb-configuration-validation
 description: >
-  Validates proposed MongoDB replica set configuration, sharding setup,
-  and index changes before production rollout — checking voting-member
-  quorum math, shard key cardinality against real data, and index build
-  impact. Use when the user asks to "review this MongoDB replica set
-  config," "validate a shard key before we commit to it," "check this
-  index change is safe to run in production," or "will this MongoDB
-  config change cause an election issue."
+  Validates proposed MongoDB replica set configuration, sharding setup, and
+  index changes before production rollout — checking voting-member quorum math,
+  shard key cardinality against real data, and index build impact. Use when the
+  user asks to "review this MongoDB replica set config," "validate a shard key
+  before we commit to it," "check this index change is safe to run in
+  production," or "will this MongoDB config change cause an election issue."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - mongodb-configuration-validation
+depends_on: []
 ---
 
 # [MongoDB](../../Backend/mongodb/SKILL.md) Configuration Validation

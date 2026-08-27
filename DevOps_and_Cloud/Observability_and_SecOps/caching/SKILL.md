@@ -1,16 +1,28 @@
 ---
 name: backend-caching
 description: >
-  Use this skill when the user says 'cache', 'Redis', 'Memcached', 'CDN', 'cache-aside', 'read-through', 'write-through', 'write-behind', 'cache invalidation', 'TTL', 'cache stampede', 'thundering herd', 'cache warming', 'LRU', 'LFU', 'cache hit ratio', 'cache strategy', or when designing a caching layer. This skill enforces consistent caching strategies: layer selection, read/write patterns, invalidation, stampede prevention, and monitoring. Applies to any backend stack. Do NOT use for: message queue design, database schema design, or frontend state caching.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'cache', 'Redis', 'Memcached', 'CDN',
+  'cache-aside', 'read-through', 'write-through', 'write-behind', 'cache
+  invalidation', 'TTL', 'cache stampede', 'thundering herd', 'cache warming',
+  'LRU', 'LFU', 'cache hit ratio', 'cache strategy', or when designing a caching
+  layer. This skill enforces consistent caching strategies: layer selection,
+  read/write patterns, invalidation, stampede prevention, and monitoring.
+  Applies to any backend stack. Do NOT use for: message queue design, database
+  schema design, or frontend state caching.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, caching, phase-2, universal]
+tags:
+  - backend
+  - caching
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend Caching

@@ -1,22 +1,25 @@
 ---
 name: opentelemetry-configuration-validation
 description: >
-  Validates an OpenTelemetry Collector pipeline configuration before
-  deploying it — confirming every receiver/processor/exporter is actually
-  wired into `service.pipelines` (not just declared and silently
-  inert), tuning sampling rates deliberately instead of by copied
-  default, checking resource-attribute correctness, and catching
-  processor ordering/sizing mistakes that silently drop spans, metrics,
-  or logs with no alert. Use when the user asks to "validate this OTel
-  Collector config before deploying," "will this Collector pipeline drop
-  spans," "check my OpenTelemetry sampling rate," "why is the Collector
-  silently dropping telemetry," "review this Collector config for
+  Validates an OpenTelemetry Collector pipeline configuration before deploying
+  it — confirming every receiver/processor/exporter is actually wired into
+  `service.pipelines` (not just declared and silently inert), tuning sampling
+  rates deliberately instead of by copied default, checking resource-attribute
+  correctness, and catching processor ordering/sizing mistakes that silently
+  drop spans, metrics, or logs with no alert. Use when the user asks to
+  "validate this OTel Collector config before deploying," "will this Collector
+  pipeline drop spans," "check my OpenTelemetry sampling rate," "why is the
+  Collector silently dropping telemetry," "review this Collector config for
   mistakes," or "set up CI validation for OTel Collector config changes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - ci_cd
+  - opentelemetry-configuration-validation
+depends_on: []
 ---
 
 # [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Configuration Validation

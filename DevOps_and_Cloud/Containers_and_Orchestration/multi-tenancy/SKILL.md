@@ -1,7 +1,17 @@
 ---
 name: multi-tenancy
-description: Covers safely sharing a Kubernetes cluster across teams or customers — namespace isolation, ResourceQuota and LimitRange, NetworkPolicy tenant boundaries, per-tenant RBAC, noisy-neighbor control, and soft versus hard multi-tenancy. Use this whenever the user is onboarding a team onto a shared cluster, setting quotas per namespace, or debugging one tenant starving another's resources. For RBAC verbs and admission hardening use `kubernetes-security`; for isolation mechanics use `kubernetes-networking`.
+description: Covers safely sharing a Kubernetes cluster across teams or
+  customers — namespace isolation, ResourceQuota and LimitRange, NetworkPolicy
+  tenant boundaries, per-tenant RBAC, noisy-neighbor control, and soft versus
+  hard multi-tenancy. Use this whenever the user is onboarding a team onto a
+  shared cluster, setting quotas per namespace, or debugging one tenant starving
+  another's resources. For RBAC verbs and admission hardening use
+  `kubernetes-security`; for isolation mechanics use `kubernetes-networking`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - multi-tenancy
+depends_on: []
 ---
 
 # Multi-Tenancy

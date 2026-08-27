@@ -1,19 +1,23 @@
 ---
 name: sast-integration
 description: >
-  Guides adding, tuning, and triaging Static Application Security Testing
-  (SAST) in a codebase or CI/CD pipeline using tools such as Semgrep,
-  CodeQL, SonarQube, or Bandit/gosec/ESLint-security-plugin per language.
-  Use when the user asks to "add SAST scanning to a pipeline", "scan this
-  repo for insecure code patterns", "set up static analysis security
-  gates", "reduce SAST false positives", or "block merges on high-severity
-  static findings". Not a substitute for DAST (runtime behavior) or SCA
-  (third-party dependency vulnerabilities) — those are separate skills.
+  Guides adding, tuning, and triaging Static Application Security Testing (SAST)
+  in a codebase or CI/CD pipeline using tools such as Semgrep, CodeQL,
+  SonarQube, or Bandit/gosec/ESLint-security-plugin per language. Use when the
+  user asks to "add SAST scanning to a pipeline", "scan this repo for insecure
+  code patterns", "set up static analysis security gates", "reduce SAST false
+  positives", or "block merges on high-severity static findings". Not a
+  substitute for DAST (runtime behavior) or SCA (third-party dependency
+  vulnerabilities) — those are separate skills.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - security
+  - sast-integration
+depends_on: []
 ---
 
 # SAST Integration

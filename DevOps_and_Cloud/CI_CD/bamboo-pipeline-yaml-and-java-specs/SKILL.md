@@ -1,18 +1,22 @@
 ---
 name: bamboo-pipeline-yaml-and-java-specs
 description: >
-  Authors Atlassian Bamboo pipeline definitions using either Bamboo Specs
-  (Java DSL, compiled and run to create/update a plan) or Bamboo's YAML
-  specs format, covering plan/job/stage structure and how a Specs
-  definition links to and updates a live Bamboo plan. Use when the user
-  asks to "write a Bamboo Specs plan," "convert our Bamboo plan to code,"
-  "add a stage/job to a Bamboo build," "use Bamboo YAML specs," or
-  "troubleshoot a Bamboo Specs plan not updating the linked plan."
+  Authors Atlassian Bamboo pipeline definitions using either Bamboo Specs (Java
+  DSL, compiled and run to create/update a plan) or Bamboo's YAML specs format,
+  covering plan/job/stage structure and how a Specs definition links to and
+  updates a live Bamboo plan. Use when the user asks to "write a Bamboo Specs
+  plan," "convert our Bamboo plan to code," "add a stage/job to a Bamboo build,"
+  "use Bamboo YAML specs," or "troubleshoot a Bamboo Specs plan not updating the
+  linked plan."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - bamboo-pipeline-yaml-and-java-specs
+depends_on: []
 ---
 
 # Bamboo Pipeline YAML and Java Specs

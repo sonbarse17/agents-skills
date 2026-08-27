@@ -1,21 +1,24 @@
 ---
 name: pact-configuration-validation
 description: >
-  Gates deploys on actual contract compatibility using Pact's
-  can-i-deploy check and deployment-tracking API — verifying a specific
-  consumer or provider version is safe to deploy to a specific
-  environment given every other currently-deployed party's contract
-  state, wiring can-i-deploy into CI/CD as a real deploy gate, and
-  recording deployments so the check stays accurate over time. Use when
-  the user asks to "check if it's safe to deploy given our Pact
-  contracts," "add a can-i-deploy gate to the pipeline," "validate
-  contract compatibility before releasing," or "our contract tests pass
-  but we're still not sure it's safe to deploy."
+  Gates deploys on actual contract compatibility using Pact's can-i-deploy check
+  and deployment-tracking API — verifying a specific consumer or provider
+  version is safe to deploy to a specific environment given every other
+  currently-deployed party's contract state, wiring can-i-deploy into CI/CD as a
+  real deploy gate, and recording deployments so the check stays accurate over
+  time. Use when the user asks to "check if it's safe to deploy given our Pact
+  contracts," "add a can-i-deploy gate to the pipeline," "validate contract
+  compatibility before releasing," or "our contract tests pass but we're still
+  not sure it's safe to deploy."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - pact-configuration-validation
+depends_on: []
 ---
 
 # Pact Configuration Validation

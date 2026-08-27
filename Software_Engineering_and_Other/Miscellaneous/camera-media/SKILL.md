@@ -1,16 +1,26 @@
 ---
 name: mobile-camera-media
 description: >
-  Use this skill when the user says 'camera', 'photo', 'video', 'image picker', 'gallery', 'photo library', 'camera capture', 'media picker', 'QR code scanner', 'barcode scanner', 'video recording', 'media upload'. Implement camera capture, media picking, image processing, and QR scanning on iOS and Android. Do NOT use for: audio recording or file storage patterns.
+  Use this skill when the user says 'camera', 'photo', 'video', 'image picker',
+  'gallery', 'photo library', 'camera capture', 'media picker', 'QR code
+  scanner', 'barcode scanner', 'video recording', 'media upload'. Implement
+  camera capture, media picking, image processing, and QR scanning on iOS and
+  Android. Do NOT use for: audio recording or file storage patterns.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, camera, media, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - camera
+  - media
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Camera & Media

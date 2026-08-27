@@ -1,7 +1,18 @@
 ---
 name: multi-cloud
-description: Covers running across cloud providers on purpose — portability vs managed services, the real operational cost of a second provider, avoiding accidental multi-cloud, and where the abstraction is worth it. Use this whenever the user is considering a second provider, evaluating a portability layer like Kubernetes across clouds, discovering their stack already spans providers without a plan, or asking whether to abstract away managed services. For the shape within one provider use `cloud-architecture`; for moving a workload use `cloud-migration`.
+description: Covers running across cloud providers on purpose — portability vs
+  managed services, the real operational cost of a second provider, avoiding
+  accidental multi-cloud, and where the abstraction is worth it. Use this
+  whenever the user is considering a second provider, evaluating a portability
+  layer like Kubernetes across clouds, discovering their stack already spans
+  providers without a plan, or asking whether to abstract away managed services.
+  For the shape within one provider use `cloud-architecture`; for moving a
+  workload use `cloud-migration`.
 license: MIT
+tags:
+  - cloud_providers
+  - multi-cloud
+depends_on: []
 ---
 
 # Multi-Cloud

@@ -1,22 +1,24 @@
 ---
 name: api-gateway-rate-limiting-and-quota-management
 description: >
-  Designs rate-limiting and quota strategy that applies across gateway
-  tools — token bucket vs. sliding/fixed window algorithm choice,
-  per-client vs. global vs. tiered limit scoping, burst allowance
-  design, and distributed counter consistency — as the vendor-neutral
-  layer underneath tool-specific plugins like Kong's `rate-limiting` or
-  Apigee's `Quota`/`SpikeArrest`. Use when a user asks to "design a
-  rate-limiting strategy," "choose between token bucket and sliding
-  window," "set per-client vs. global API limits," "size a burst
-  allowance," "why is my distributed rate limit inconsistent across
-  nodes," or "protect a backend from one noisy client without punishing
-  everyone else."
+  Designs rate-limiting and quota strategy that applies across gateway tools —
+  token bucket vs. sliding/fixed window algorithm choice, per-client vs. global
+  vs. tiered limit scoping, burst allowance design, and distributed counter
+  consistency — as the vendor-neutral layer underneath tool-specific plugins
+  like Kong's `rate-limiting` or Apigee's `Quota`/`SpikeArrest`. Use when a user
+  asks to "design a rate-limiting strategy," "choose between token bucket and
+  sliding window," "set per-client vs. global API limits," "size a burst
+  allowance," "why is my distributed rate limit inconsistent across nodes," or
+  "protect a backend from one noisy client without punishing everyone else."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - backend
+  - api-gateway-rate-limiting-and-quota-management
+depends_on: []
 ---
 
 # API Gateway Rate-Limiting and Quota Management

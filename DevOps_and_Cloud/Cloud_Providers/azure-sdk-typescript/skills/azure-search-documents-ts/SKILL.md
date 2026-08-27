@@ -1,11 +1,18 @@
 ---
 name: azure-search-documents-ts
-description: Build search applications using Azure AI Search SDK for JavaScript (@azure/search-documents). Use when creating/managing indexes, implementing vector/hybrid search, semantic ranking, or building agentic retrieval with knowledge bases.
+description: Build search applications using Azure AI Search SDK for JavaScript
+  (@azure/search-documents). Use when creating/managing indexes, implementing
+  vector/hybrid search, semantic ranking, or building agentic retrieval with
+  knowledge bases.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
-  package: '@azure/search-documents'
+  version: 1.0.0
+  package: "@azure/search-documents"
+tags:
+  - skills
+  - azure-search-documents-ts
+depends_on: []
 ---
 
 # Azure AI Search SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

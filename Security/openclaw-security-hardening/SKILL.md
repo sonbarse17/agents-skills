@@ -1,10 +1,17 @@
 ---
 name: openclaw-security-hardening
-description: Harden OpenClaw self-hosted environments with baseline host controls, auth tightening, secret handling, network segmentation, and safe update/rollback workflows. Use when deploying OpenClaw in home labs, startups, or production-like local AI infrastructure.
+description: Harden OpenClaw self-hosted environments with baseline host
+  controls, auth tightening, secret handling, network segmentation, and safe
+  update/rollback workflows. Use when deploying OpenClaw in home labs, startups,
+  or production-like local AI infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - openclaw-security-hardening
+depends_on: []
 ---
 
 # OpenClaw Security Hardening

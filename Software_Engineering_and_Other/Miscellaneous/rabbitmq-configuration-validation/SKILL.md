@@ -1,17 +1,20 @@
 ---
 name: rabbitmq-configuration-validation
 description: >
-  Validates RabbitMQ queue durability, mirroring/quorum configuration,
-  and resource limits before production use. Use when the user asks to
-  "review a RabbitMQ queue config before deploying," "check queue
-  durability settings," "validate quorum/mirroring config," "audit
-  RabbitMQ for production readiness," or as a pre-go-live gate for a new
-  RabbitMQ topology.
+  Validates RabbitMQ queue durability, mirroring/quorum configuration, and
+  resource limits before production use. Use when the user asks to "review a
+  RabbitMQ queue config before deploying," "check queue durability settings,"
+  "validate quorum/mirroring config," "audit RabbitMQ for production readiness,"
+  or as a pre-go-live gate for a new RabbitMQ topology.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - rabbitmq-configuration-validation
+depends_on: []
 ---
 
 # RabbitMQ Configuration Validation

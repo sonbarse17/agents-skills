@@ -1,16 +1,27 @@
 ---
 name: legacy-modernizer
-description: Designs incremental migration strategies, identifies service boundaries, produces dependency maps and migration roadmaps, and generates API facade designs for aging codebases. Use when modernizing legacy systems, implementing strangler fig pattern or branch by abstraction, decomposing monoliths, upgrading frameworks or languages, or reducing technical debt without disrupting business operations.
+description: Designs incremental migration strategies, identifies service
+  boundaries, produces dependency maps and migration roadmaps, and generates API
+  facade designs for aging codebases. Use when modernizing legacy systems,
+  implementing strangler fig pattern or branch by abstraction, decomposing
+  monoliths, upgrading frameworks or languages, or reducing technical debt
+  without disrupting business operations.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: 1.1.0
   domain: specialized
-  triggers: legacy modernization, strangler fig, incremental migration, technical debt, legacy refactoring, system migration, legacy system, modernize codebase
+  triggers: legacy modernization, strangler fig, incremental migration, technical
+    debt, legacy refactoring, system migration, legacy system, modernize
+    codebase
   role: specialist
   scope: architecture
   output-format: code+analysis
   related-skills: test-master, devops-engineer
+tags:
+  - product_and_business
+  - legacy-modernizer
+depends_on: []
 ---
 
 # Legacy Modernizer

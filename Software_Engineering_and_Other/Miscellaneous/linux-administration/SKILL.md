@@ -1,10 +1,15 @@
 ---
 name: linux-administration
-description: System administration for Linux servers. Manage packages, services, and system configuration. Use when administering Linux systems.
+description: System administration for Linux servers. Manage packages, services,
+  and system configuration. Use when administering Linux systems.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - linux-administration
+depends_on: []
 ---
 
 # Linux Administration

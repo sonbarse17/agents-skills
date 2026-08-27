@@ -1,7 +1,18 @@
 ---
 name: dashboards
-description: Covers building dashboards people actually open during an incident instead of ignoring — one question per panel, RED/USE-based layout, designing for a specific audience and decision, and avoiding the wall-of-graphs nobody reads. Use this whenever the user is building a new dashboard, asking why an existing one never gets used, deciding what panels a service needs, or reducing a sprawling dashboard down to something useful. For the metrics that fill the panels use `metrics-and-monitoring`, and for the paging layer that should point at these dashboards use `alerting`.
+description: Covers building dashboards people actually open during an incident
+  instead of ignoring — one question per panel, RED/USE-based layout, designing
+  for a specific audience and decision, and avoiding the wall-of-graphs nobody
+  reads. Use this whenever the user is building a new dashboard, asking why an
+  existing one never gets used, deciding what panels a service needs, or
+  reducing a sprawling dashboard down to something useful. For the metrics that
+  fill the panels use `metrics-and-monitoring`, and for the paging layer that
+  should point at these dashboards use `alerting`.
 license: MIT
+tags:
+  - cloud_providers
+  - dashboards
+depends_on: []
 ---
 
 # Dashboards

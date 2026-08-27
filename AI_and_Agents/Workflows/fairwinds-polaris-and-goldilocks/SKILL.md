@@ -1,20 +1,23 @@
 ---
 name: fairwinds-polaris-and-goldilocks
 description: >
-  Guides using Fairwinds Polaris to validate and score Kubernetes
-  workload configuration (resource requests/limits, security context,
-  health checks, image tags) and Fairwinds Goldilocks (VPA-backed) to
-  generate right-sizing recommendations. Use when the user asks to
-  "score our workloads against Kubernetes best practices", "check our
-  manifests for missing resource limits or health checks", "find
-  over/under-provisioned pods", "set up Goldilocks recommendations",
-  "add a lightweight config linter before we write custom OPA/Kyverno
-  policies", or "why is Polaris flagging this deployment".
+  Guides using Fairwinds Polaris to validate and score Kubernetes workload
+  configuration (resource requests/limits, security context, health checks,
+  image tags) and Fairwinds Goldilocks (VPA-backed) to generate right-sizing
+  recommendations. Use when the user asks to "score our workloads against
+  Kubernetes best practices", "check our manifests for missing resource limits
+  or health checks", "find over/under-provisioned pods", "set up Goldilocks
+  recommendations", "add a lightweight config linter before we write custom
+  OPA/Kyverno policies", or "why is Polaris flagging this deployment".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: policy-and-governance-tooling
   maturity: stable
+tags:
+  - workflows
+  - fairwinds-polaris-and-goldilocks
+depends_on: []
 ---
 
 # Fairwinds Polaris and Goldilocks

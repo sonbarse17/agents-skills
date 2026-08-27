@@ -1,19 +1,22 @@
 ---
 name: pact-contract-testing-configuration
 description: >
-  Sets up consumer-driven contract testing with Pact — writing consumer
-  contract tests that generate a pact file, standing up and configuring a
-  Pact Broker (or PactFlow) to publish and share contracts, and writing
-  provider verification tests against the broker's published pacts. Use
-  when the user asks to "set up Pact contract testing," "write a consumer
-  pact test," "configure a Pact Broker," "verify a provider against
-  published contracts," or "add contract testing between these two
-  services."
+  Sets up consumer-driven contract testing with Pact — writing consumer contract
+  tests that generate a pact file, standing up and configuring a Pact Broker (or
+  PactFlow) to publish and share contracts, and writing provider verification
+  tests against the broker's published pacts. Use when the user asks to "set up
+  Pact contract testing," "write a consumer pact test," "configure a Pact
+  Broker," "verify a provider against published contracts," or "add contract
+  testing between these two services."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - miscellaneous
+  - pact-contract-testing-configuration
+depends_on: []
 ---
 
 # Pact Contract Testing Configuration

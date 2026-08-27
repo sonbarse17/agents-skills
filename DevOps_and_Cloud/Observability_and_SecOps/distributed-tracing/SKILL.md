@@ -1,7 +1,18 @@
 ---
 name: distributed-tracing
-description: Covers following a single request across service boundaries — context propagation, span and attribute design, sampling that keeps the traces worth keeping, and using traces to find where latency actually accumulates. Use this whenever the user debugs a slow request touching multiple services, instruments a service with OpenTelemetry or similar, asks why a trace has gaps, or decides what to sample when full tracing is too expensive. For metrics that flag a latency problem use `metrics-and-monitoring`, for one service's hot path use `profiling`.
+description: Covers following a single request across service boundaries —
+  context propagation, span and attribute design, sampling that keeps the traces
+  worth keeping, and using traces to find where latency actually accumulates.
+  Use this whenever the user debugs a slow request touching multiple services,
+  instruments a service with OpenTelemetry or similar, asks why a trace has
+  gaps, or decides what to sample when full tracing is too expensive. For
+  metrics that flag a latency problem use `metrics-and-monitoring`, for one
+  service's hot path use `profiling`.
 license: MIT
+tags:
+  - observability_and_secops
+  - distributed-tracing
+depends_on: []
 ---
 
 # Distributed Tracing

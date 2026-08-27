@@ -1,22 +1,25 @@
 ---
 name: gremlin-chaos-engineering-configuration
 description: >
-  Configures Gremlin-specific chaos engineering attacks — installing the
-  Gremlin agent/sidecar, defining resource, state, and network attacks via
-  the Gremlin API/CLI or Terraform provider, scoping blast radius with
-  targets and halt conditions, and running Gremlin Scenarios for
-  multi-step failure sequences. Use when the user asks to "configure a
-  Gremlin attack," "set up the Gremlin agent in Kubernetes/EC2," "write a
-  Gremlin Scenario," "scope a Gremlin blast radius/halt condition," or
-  "use Gremlin to test our failover." For the general chaos-engineering
-  principles (steady-state hypothesis, game days, tool-agnostic blast
-  radius scoping) this configures against, use the SRE
+  Configures Gremlin-specific chaos engineering attacks — installing the Gremlin
+  agent/sidecar, defining resource, state, and network attacks via the Gremlin
+  API/CLI or Terraform provider, scoping blast radius with targets and halt
+  conditions, and running Gremlin Scenarios for multi-step failure sequences.
+  Use when the user asks to "configure a Gremlin attack," "set up the Gremlin
+  agent in Kubernetes/EC2," "write a Gremlin Scenario," "scope a Gremlin blast
+  radius/halt condition," or "use Gremlin to test our failover." For the general
+  chaos-engineering principles (steady-state hypothesis, game days,
+  tool-agnostic blast radius scoping) this configures against, use the SRE
   chaos-engineering-and-resilience-testing skill instead.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - observability_and_secops
+  - gremlin-chaos-engineering-configuration
+depends_on: []
 ---
 
 # Gremlin Chaos Engineering Configuration

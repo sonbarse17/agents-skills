@@ -1,16 +1,26 @@
 ---
 name: master-orchestrator
 description: >
-  Use this skill when the user says 'start', 'help me build', 'initialize', 'I want to build X', 'where do I start', 'what should I do next', 'what skill should I use', or any open-ended project initiation. This is the single entry point for the entire skill suite. It inspects the project filesystem for existing artifacts and routes to the correct next skill. Do NOT use for: direct implementation, bug reports, code review requests, or deployment questions. Those route to their respective skills directly.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'start', 'help me build', 'initialize', 'I
+  want to build X', 'where do I start', 'what should I do next', 'what skill
+  should I use', or any open-ended project initiation. This is the single entry
+  point for the entire skill suite. It inspects the project filesystem for
+  existing artifacts and routes to the correct next skill. Do NOT use for:
+  direct implementation, bug reports, code review requests, or deployment
+  questions. Those route to their respective skills directly.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [orchestration, phase-0, entry-point]
+tags:
+  - orchestration
+  - phase-0
+  - entry-point
+depends_on: []
 ---
 
 # Master Orchestrator

@@ -1,6 +1,11 @@
 ---
 name: pptx-visual-assets
-description: "Use when selecting and placing approved supporting icons, images, SVGs, diagrams, or infographics in an editable PPTX deck."
+description: Use when selecting and placing approved supporting icons, images,
+  SVGs, diagrams, or infographics in an editable PPTX deck.
+tags:
+  - skills
+  - pptx-visual-assets
+depends_on: []
 ---
 
 # PPTX Visual Assets

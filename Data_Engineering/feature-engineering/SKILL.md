@@ -1,16 +1,31 @@
 ---
 name: ml-feature-engineering
 description: >
-  Use this skill when asked about feature engineering, featuretools, tsfresh, feature selection, feature extraction, encoding, scaling, one-hot encoding, target encoding, feature interaction, datetime features, text features, or feature importance. This skill enforces: categorical encoding strategies (one-hot, label, target, ordinal), numerical scaling methods (standard, min-max, robust), datetime feature extraction (year, month, day, dayofweek, cyclical encoding), text feature extraction (TF-IDF, count vectorizer, word embeddings), feature interaction generation, feature selection techniques (filter, wrapper, embedded), and automated feature engineering with Featuretools deep feature synthesis and tsfresh for time-series. Do NOT use for: model training, deep learning architecture, or experiment tracking.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about feature engineering, featuretools, tsfresh,
+  feature selection, feature extraction, encoding, scaling, one-hot encoding,
+  target encoding, feature interaction, datetime features, text features, or
+  feature importance. This skill enforces: categorical encoding strategies
+  (one-hot, label, target, ordinal), numerical scaling methods (standard,
+  min-max, robust), datetime feature extraction (year, month, day, dayofweek,
+  cyclical encoding), text feature extraction (TF-IDF, count vectorizer, word
+  embeddings), feature interaction generation, feature selection techniques
+  (filter, wrapper, embedded), and automated feature engineering with
+  Featuretools deep feature synthesis and tsfresh for time-series. Do NOT use
+  for: model training, deep learning architecture, or experiment tracking.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, features, engineering, phase-11]
+tags:
+  - ml
+  - features
+  - engineering
+  - phase-11
+depends_on: []
 ---
 
 # ML Feature Engineering

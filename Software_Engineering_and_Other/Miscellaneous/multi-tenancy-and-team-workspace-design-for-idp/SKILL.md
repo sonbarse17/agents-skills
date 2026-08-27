@@ -1,19 +1,22 @@
 ---
 name: multi-tenancy-and-team-workspace-design-for-idp
 description: >
-  Designs tenant/workspace isolation within a shared internal developer
-  platform — namespace-per-team patterns, RBAC boundaries, quota
-  enforcement, and shared-vs-dedicated infrastructure tradeoffs. Use when
-  a user asks to "isolate teams on a shared platform," "design namespace-
-  per-team multi-tenancy," "set RBAC boundaries between teams in the
-  IDP," "decide shared vs. dedicated clusters per tenant," "stop one
-  team's workload from affecting another's," or "scope catalog/self-
-  service permissions per team."
+  Designs tenant/workspace isolation within a shared internal developer platform
+  — namespace-per-team patterns, RBAC boundaries, quota enforcement, and
+  shared-vs-dedicated infrastructure tradeoffs. Use when a user asks to "isolate
+  teams on a shared platform," "design namespace- per-team multi-tenancy," "set
+  RBAC boundaries between teams in the IDP," "decide shared vs. dedicated
+  clusters per tenant," "stop one team's workload from affecting another's," or
+  "scope catalog/self- service permissions per team."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - multi-tenancy-and-team-workspace-design-for-idp
+depends_on: []
 ---
 
 # [Multi-Tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) and Team Workspace Design for IDP

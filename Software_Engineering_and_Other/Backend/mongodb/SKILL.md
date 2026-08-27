@@ -1,10 +1,15 @@
 ---
 name: mongodb
-description: Administer MongoDB databases. Configure replica sets, sharding, and backups. Use when managing MongoDB deployments.
+description: Administer MongoDB databases. Configure replica sets, sharding, and
+  backups. Use when managing MongoDB deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - backend
+  - mongodb
+depends_on: []
 ---
 
 # MongoDB

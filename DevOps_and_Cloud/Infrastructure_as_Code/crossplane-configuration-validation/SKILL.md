@@ -1,21 +1,24 @@
 ---
 name: crossplane-configuration-validation
 description: >
-  Validates Crossplane `Composition`s, `CompositeResourceDefinition`s
-  (XRDs), and `Claim`s before applying them — schema validation with
-  `crossplane beta validate`/`crossplane render`, catching field-path
-  patch typos, and dry-running a Claim against an XRD's schema to catch
-  mismatches before they reach a live cluster and provision (or fail to
-  provision) real cloud infrastructure. Use when a user asks to
-  "validate a Crossplane Composition before applying," "why did my
-  Composition patch silently not apply," "check an XRD schema against a
-  Claim," "dry-run Crossplane render output," or "add a CI check for
-  Crossplane manifest changes."
+  Validates Crossplane `Composition`s, `CompositeResourceDefinition`s (XRDs),
+  and `Claim`s before applying them — schema validation with `crossplane beta
+  validate`/`crossplane render`, catching field-path patch typos, and
+  dry-running a Claim against an XRD's schema to catch mismatches before they
+  reach a live cluster and provision (or fail to provision) real cloud
+  infrastructure. Use when a user asks to "validate a Crossplane Composition
+  before applying," "why did my Composition patch silently not apply," "check an
+  XRD schema against a Claim," "dry-run Crossplane render output," or "add a CI
+  check for Crossplane manifest changes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - crossplane-configuration-validation
+depends_on: []
 ---
 
 # Crossplane Configuration Validation

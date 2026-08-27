@@ -1,16 +1,29 @@
 ---
 name: data-search-engine
 description: >
-  Use this skill when asked about Elasticsearch, OpenSearch, Solr, search engine, full-text search, inverted index, indexing, search analytics, aggregation, cluster management, or shard routing. This skill enforces: Elasticsearch architecture (node types, shards, replicas), indexing strategy (mapping, analysis, tokenization), search queries (full-text, term, bool, fuzzy), aggregations (metric, bucket, pipeline), cluster management (node roles, shard allocation, ILM), OpenSearch differences, and performance tuning. Do NOT use for: relational database queries, graph traversals, or key-value lookups.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about Elasticsearch, OpenSearch, Solr, search
+  engine, full-text search, inverted index, indexing, search analytics,
+  aggregation, cluster management, or shard routing. This skill enforces:
+  Elasticsearch architecture (node types, shards, replicas), indexing strategy
+  (mapping, analysis, tokenization), search queries (full-text, term, bool,
+  fuzzy), aggregations (metric, bucket, pipeline), cluster management (node
+  roles, shard allocation, ILM), OpenSearch differences, and performance tuning.
+  Do NOT use for: relational database queries, graph traversals, or key-value
+  lookups.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, search, engine, phase-11]
+tags:
+  - data
+  - search
+  - engine
+  - phase-11
+depends_on: []
 ---
 
 # Data Search Engine

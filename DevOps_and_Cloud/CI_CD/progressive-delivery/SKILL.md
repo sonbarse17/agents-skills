@@ -1,7 +1,19 @@
 ---
 name: progressive-delivery
-description: Automates canary and blue-green rollouts so promotion and rollback are driven by live metrics, not a timer or a human watching a dashboard, using controllers like Argo Rollouts or Flagger. Use this whenever the user wants automatic rollback on error-rate or latency regression, is defining an AnalysisTemplate or metric provider, asks about canary weight steps, or wants a rollout gated on real signals, not "wait ten minutes and ship." For the strategies automated use `deployment-strategies`; for the reconciler underneath use `argocd-operations`; for metrics queried use `metrics-and-monitoring`.
+description: Automates canary and blue-green rollouts so promotion and rollback
+  are driven by live metrics, not a timer or a human watching a dashboard, using
+  controllers like Argo Rollouts or Flagger. Use this whenever the user wants
+  automatic rollback on error-rate or latency regression, is defining an
+  AnalysisTemplate or metric provider, asks about canary weight steps, or wants
+  a rollout gated on real signals, not "wait ten minutes and ship." For the
+  strategies automated use `deployment-strategies`; for the reconciler
+  underneath use `argocd-operations`; for metrics queried use
+  `metrics-and-monitoring`.
 license: MIT
+tags:
+  - ci_cd
+  - progressive-delivery
+depends_on: []
 ---
 
 # Progressive Delivery

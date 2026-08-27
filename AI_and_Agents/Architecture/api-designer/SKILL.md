@@ -1,16 +1,24 @@
 ---
 name: api-designer
-description: Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+description: Use when designing REST or GraphQL APIs, creating OpenAPI
+  specifications, or planning API architecture. Invoke for resource modeling,
+  versioning strategies, pagination patterns, error handling standards.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: 1.1.0
   domain: api-architecture
-  triggers: API design, REST API, OpenAPI, API specification, API architecture, resource modeling, API versioning, GraphQL schema, API documentation
+  triggers: API design, REST API, OpenAPI, API specification, API architecture,
+    resource modeling, API versioning, GraphQL schema, API documentation
   role: architect
   scope: design
   output-format: specification
-  related-skills: graphql-architect, fastapi-expert, nestjs-expert, spring-boot-engineer, security-reviewer
+  related-skills: graphql-architect, fastapi-expert, nestjs-expert,
+    spring-boot-engineer, security-reviewer
+tags:
+  - architecture
+  - api-designer
+depends_on: []
 ---
 
 # API Designer

@@ -2,23 +2,28 @@
 name: alibaba-cloud
 description: >
   Use this skill when the user says 'Alibaba Cloud', 'Aliyun', 'ECS', 'ACK',
-  'OSS', 'SLB', 'RDS', 'ApsaraDB', 'Alibaba Cloud Kubernetes', 'Container Service',
-  'VPC', 'Security Group', 'Resource Access Management', 'RAM',
-  'Terraform Alibaba Cloud', 'terraform alicloud'.
-  Covers: compute (ECS, ECI), container orchestration (ACK, ASK),
-  networking (VPC, SLB, PrivateLink), storage (OSS, NAS, block storage),
-  database (RDS, PolarDB, Redis), security (RAM, KMS, WAF),
-  serverless (FC, SAE), and cost optimization.
-  Do NOT use for: AWS, GCP, Azure, or other cloud providers.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'OSS', 'SLB', 'RDS', 'ApsaraDB', 'Alibaba Cloud Kubernetes', 'Container
+  Service', 'VPC', 'Security Group', 'Resource Access Management', 'RAM',
+  'Terraform Alibaba Cloud', 'terraform alicloud'. Covers: compute (ECS, ECI),
+  container orchestration (ACK, ASK), networking (VPC, SLB, PrivateLink),
+  storage (OSS, NAS, block storage), database (RDS, PolarDB, Redis), security
+  (RAM, KMS, WAF), serverless (FC, SAE), and cost optimization. Do NOT use for:
+  AWS, GCP, Azure, or other cloud providers.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, alibaba-cloud, cloud, infrastructure, phase-5]
+tags:
+  - devops
+  - alibaba-cloud
+  - cloud
+  - infrastructure
+  - phase-5
+depends_on: []
 ---
 
 # Alibaba Cloud (Aliyun)

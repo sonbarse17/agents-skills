@@ -1,7 +1,18 @@
 ---
 name: zero-trust
-description: Replaces network location with verified identity as the basis for access, removing implicit trust inside the perimeter via microsegmentation and continuous verification. Use this whenever the user assumes "inside the VPC" means trusted, wants access controls that follow identity rather than IP address, is planning a migration off perimeter-based security, or is limiting lateral movement after a compromised workload. For firewalls and segmentation use `network-security`; for the role model behind access decisions use `iam-access-management`.
+description: Replaces network location with verified identity as the basis for
+  access, removing implicit trust inside the perimeter via microsegmentation and
+  continuous verification. Use this whenever the user assumes "inside the VPC"
+  means trusted, wants access controls that follow identity rather than IP
+  address, is planning a migration off perimeter-based security, or is limiting
+  lateral movement after a compromised workload. For firewalls and segmentation
+  use `network-security`; for the role model behind access decisions use
+  `iam-access-management`.
 license: MIT
+tags:
+  - security
+  - zero-trust
+depends_on: []
 ---
 
 # Zero Trust

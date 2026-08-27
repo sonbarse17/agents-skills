@@ -2,16 +2,20 @@
 name: aws-codepipeline-and-codedeploy
 description: >
   Designs AWS CodePipeline stage/action structure and integrates it with
-  CodeDeploy deployment groups and appspec.yml for EC2/on-prem, ECS, or
-  Lambda deploys. Use when the user asks to "set up CodePipeline," "add a
-  CodeDeploy deployment group," "write an appspec.yml," "wire CodePipeline
-  to CodeDeploy," "troubleshoot a stuck/failed CodePipeline action," or
-  "add a manual approval action before an AWS deploy."
+  CodeDeploy deployment groups and appspec.yml for EC2/on-prem, ECS, or Lambda
+  deploys. Use when the user asks to "set up CodePipeline," "add a CodeDeploy
+  deployment group," "write an appspec.yml," "wire CodePipeline to CodeDeploy,"
+  "troubleshoot a stuck/failed CodePipeline action," or "add a manual approval
+  action before an AWS deploy."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - aws-codepipeline-and-codedeploy
+depends_on: []
 ---
 
 # AWS CodePipeline and CodeDeploy

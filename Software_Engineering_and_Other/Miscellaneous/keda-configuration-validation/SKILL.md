@@ -1,19 +1,23 @@
 ---
 name: keda-configuration-validation
 description: >
-  Validates a KEDA `ScaledObject`/`ScaledJob` configuration before
-  production — confirming `TriggerAuthentication` actually resolves and
-  authenticates, scaling thresholds match real workload capacity, and
-  `cooldownPeriod`/`minReplicaCount` won't cause flapping or cold-start
-  latency spikes. Use when the user asks to "review a KEDA ScaledObject
-  before deploying," "validate TriggerAuthentication," "check if KEDA
-  scaling thresholds are safe," "why does my ScaledObject never scale,"
-  or "audit KEDA configs for production readiness."
+  Validates a KEDA `ScaledObject`/`ScaledJob` configuration before production —
+  confirming `TriggerAuthentication` actually resolves and authenticates,
+  scaling thresholds match real workload capacity, and
+  `cooldownPeriod`/`minReplicaCount` won't cause flapping or cold-start latency
+  spikes. Use when the user asks to "review a KEDA ScaledObject before
+  deploying," "validate TriggerAuthentication," "check if KEDA scaling
+  thresholds are safe," "why does my ScaledObject never scale," or "audit KEDA
+  configs for production readiness."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - keda-configuration-validation
+depends_on: []
 ---
 
 # KEDA Configuration Validation

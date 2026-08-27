@@ -1,6 +1,10 @@
 ---
 name: headless-ecommerce
 description: Shopify Storefront API and Hydrogen best practices.
+tags:
+  - backend
+  - headless
+depends_on: []
 ---
 
 # Headless E-commerce (Shopify Hydrogen)

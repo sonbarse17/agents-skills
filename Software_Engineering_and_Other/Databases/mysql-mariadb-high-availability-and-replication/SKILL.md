@@ -1,19 +1,22 @@
 ---
 name: mysql-mariadb-high-availability-and-replication
 description: >
-  Covers multi-master synchronous clustering for MySQL/MariaDB: Galera
-  Cluster (MariaDB Galera / Percona XtraDB Cluster), MySQL Group
-  Replication and InnoDB Cluster, quorum and split-brain prevention, and
-  choosing between multi-master clustering and simple primary-replica
-  topologies. Use when the user asks to "set up Galera Cluster," "why
-  did my Galera node go non-primary," "configure MySQL Group
-  Replication/InnoDB Cluster," "prevent MySQL split-brain," or "should we
-  use Galera or plain replication."
+  Covers multi-master synchronous clustering for MySQL/MariaDB: Galera Cluster
+  (MariaDB Galera / Percona XtraDB Cluster), MySQL Group Replication and InnoDB
+  Cluster, quorum and split-brain prevention, and choosing between multi-master
+  clustering and simple primary-replica topologies. Use when the user asks to
+  "set up Galera Cluster," "why did my Galera node go non-primary," "configure
+  MySQL Group Replication/InnoDB Cluster," "prevent MySQL split-brain," or
+  "should we use Galera or plain replication."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - mysql-mariadb-high-availability-and-replication
+depends_on: []
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB High Availability and Replication

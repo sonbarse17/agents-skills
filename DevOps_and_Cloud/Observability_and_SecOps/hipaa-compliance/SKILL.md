@@ -1,10 +1,15 @@
 ---
 name: hipaa-compliance
-description: Implement HIPAA security and privacy rules. Configure PHI protections and BAA requirements. Use when handling healthcare data.
+description: Implement HIPAA security and privacy rules. Configure PHI
+  protections and BAA requirements. Use when handling healthcare data.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - hipaa-compliance
+depends_on: []
 ---
 
 # HIPAA Compliance

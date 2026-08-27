@@ -1,6 +1,10 @@
 ---
 name: ETL Pipelines
 description: Best practices for ETL pipelines using Apache Airflow and dbt.
+tags:
+  - data_engineering
+  - etl-pipelines
+depends_on: []
 ---
 
 # ETL Pipelines (Airflow & dbt)

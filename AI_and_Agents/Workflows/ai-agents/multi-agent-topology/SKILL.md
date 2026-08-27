@@ -1,6 +1,11 @@
 ---
 name: multi-agent-topology
-description: First principles of AI societal structures and multi-agent interaction paradigms.
+description: First principles of AI societal structures and multi-agent
+  interaction paradigms.
+tags:
+  - ai-agents
+  - multi-agent-topology
+depends_on: []
 ---
 
 # Multi-Agent Topology: The Societal Structures of AI

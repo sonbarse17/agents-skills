@@ -1,10 +1,16 @@
 ---
 name: aws-iam
-description: Manage IAM users, roles, and policies. Implement least-privilege access and security best practices. Use when configuring AWS identity and access management.
+description: Manage IAM users, roles, and policies. Implement least-privilege
+  access and security best practices. Use when configuring AWS identity and
+  access management.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-iam
+depends_on: []
 ---
 
 # AWS IAM

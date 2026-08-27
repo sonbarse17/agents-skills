@@ -2,18 +2,21 @@
 name: consul-configuration-validation
 description: >
   Validates Consul service definitions, config entries, and intentions
-  (mesh-level authorization) before applying them to a production
-  datacenter — syntax-checking agent config, dry-running catalog
-  changes, and confirming intentions produce the intended allow/deny
-  decisions. Use when a user asks to "validate a Consul service
-  definition," "check my Consul config before applying," "test an
-  intention before it goes live," "why did my Consul config entry not
-  take effect," or "lint Consul HCL/JSON in CI."
+  (mesh-level authorization) before applying them to a production datacenter —
+  syntax-checking agent config, dry-running catalog changes, and confirming
+  intentions produce the intended allow/deny decisions. Use when a user asks to
+  "validate a Consul service definition," "check my Consul config before
+  applying," "test an intention before it goes live," "why did my Consul config
+  entry not take effect," or "lint Consul HCL/JSON in CI."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - miscellaneous
+  - consul-configuration-validation
+depends_on: []
 ---
 
 # Consul Configuration Validation

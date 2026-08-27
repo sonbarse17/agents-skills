@@ -1,28 +1,45 @@
 ---
 name: vuln-defectdojo
 description: >
-  Vulnerability management and findings aggregation using DefectDojo. Centralizes
-  security findings from all SecOpsAgentKit scanners (Semgrep, Bandit, ZAP, Trivy,
-  Grype, Gitleaks, Nuclei, Checkov, Horusec) into a unified platform with automatic
-  deduplication, SLA tracking, risk-based prioritization, and compliance reporting.
-  Use when: (1) Aggregating findings from multiple scanners across products and
-  pipelines, (2) Tracking remediation status and SLA compliance against policy
-  thresholds, (3) Deduplicating overlapping findings across security tools,
-  (4) Generating vulnerability reports for compliance audits (SOC2, PCI-DSS, GDPR),
-  (5) Managing security debt and vulnerability backlog across teams and applications.
+  Vulnerability management and findings aggregation using DefectDojo.
+  Centralizes security findings from all SecOpsAgentKit scanners (Semgrep,
+  Bandit, ZAP, Trivy, Grype, Gitleaks, Nuclei, Checkov, Horusec) into a unified
+  platform with automatic deduplication, SLA tracking, risk-based
+  prioritization, and compliance reporting. Use when: (1) Aggregating findings
+  from multiple scanners across products and pipelines, (2) Tracking remediation
+  status and SLA compliance against policy thresholds, (3) Deduplicating
+  overlapping findings across security tools, (4) Generating vulnerability
+  reports for compliance audits (SOC2, PCI-DSS, GDPR), (5) Managing security
+  debt and vulnerability backlog across teams and applications.
 version: 0.1.0
 maintainer: SirAppSec
 category: devsecops
-tags: [vulnerability-management, defectdojo, findings-aggregation, deduplication, sla-tracking, risk-management, compliance-reporting]
-frameworks: [OWASP, CWE, NIST, SOC2, PCI-DSS, GDPR]
+tags:
+  - vulnerability-management
+  - defectdojo
+  - findings-aggregation
+  - deduplication
+  - sla-tracking
+  - risk-management
+  - compliance-reporting
+frameworks:
+  - OWASP
+  - CWE
+  - NIST
+  - SOC2
+  - PCI-DSS
+  - GDPR
 dependencies:
   python: ">=3.9"
-  packages: [requests]
-  tools: [docker]
+  packages:
+    - requests
+  tools:
+    - docker
 references:
   - https://defectdojo.github.io/django-DefectDojo/
   - https://github.com/DefectDojo/django-DefectDojo
   - https://owasp.org/www-project-defectdojo/
+depends_on: []
 ---
 
 # Vulnerability Management with DefectDojo

@@ -1,7 +1,18 @@
 ---
 name: serverless
-description: Covers functions and managed compute where the platform enforces statelessness and bills per request — cold starts, event-driven design, concurrency limits, and when serverless does not fit. Use this whenever the user is writing a Lambda/Cloud Function/Azure Function, designing an event-driven pipeline, debugging cold-start latency, hitting concurrency throttling, or asking whether to move a workload to serverless. For managed-vs-self-run tradeoffs use `cloud-architecture`; for containers use `kubernetes-operations`; for scheduled batch use `scheduled-jobs`.
+description: Covers functions and managed compute where the platform enforces
+  statelessness and bills per request — cold starts, event-driven design,
+  concurrency limits, and when serverless does not fit. Use this whenever the
+  user is writing a Lambda/Cloud Function/Azure Function, designing an
+  event-driven pipeline, debugging cold-start latency, hitting concurrency
+  throttling, or asking whether to move a workload to serverless. For
+  managed-vs-self-run tradeoffs use `cloud-architecture`; for containers use
+  `kubernetes-operations`; for scheduled batch use `scheduled-jobs`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - serverless
+depends_on: []
 ---
 
 # Serverless

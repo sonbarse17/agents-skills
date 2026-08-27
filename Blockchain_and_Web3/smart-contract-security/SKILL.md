@@ -1,6 +1,10 @@
 ---
 name: Smart Contract Security
 description: Automated auditing, reentrancy guards, and flashloan attack prevention.
+tags:
+  - blockchain_and_web3
+  - smart-contract-security
+depends_on: []
 ---
 
 # Smart Contract Security

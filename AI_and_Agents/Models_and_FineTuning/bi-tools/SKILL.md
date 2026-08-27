@@ -1,16 +1,28 @@
 ---
 name: data-bi-tools
 description: >
-  Use this skill when asked about BI, dashboard, Metabase, Superset, Looker, Tableau, PowerBI, reporting, data visualization, business intelligence, KPI dashboards, semantic layer, embedded analytics, or LookML. This skill enforces: tool selection based on team size and use case, semantic layer design with business-friendly metrics, dashboard layout patterns (KPI, trend, comparison, funnel), embedded analytics via SDK/iFrame, data source configuration, caching strategy, permissions model with row-level security, and scheduling. Do NOT use for: data warehouse schema design, ETL pipeline configuration, or ad-hoc SQL queries.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about BI, dashboard, Metabase, Superset, Looker,
+  Tableau, PowerBI, reporting, data visualization, business intelligence, KPI
+  dashboards, semantic layer, embedded analytics, or LookML. This skill
+  enforces: tool selection based on team size and use case, semantic layer
+  design with business-friendly metrics, dashboard layout patterns (KPI, trend,
+  comparison, funnel), embedded analytics via SDK/iFrame, data source
+  configuration, caching strategy, permissions model with row-level security,
+  and scheduling. Do NOT use for: data warehouse schema design, ETL pipeline
+  configuration, or ad-hoc SQL queries.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, analytics, phase-10]
+tags:
+  - data
+  - analytics
+  - phase-10
+depends_on: []
 ---
 
 # Data BI Tools

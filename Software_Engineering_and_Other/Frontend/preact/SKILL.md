@@ -1,16 +1,26 @@
 ---
 name: preact
 description: >
-  Use this skill when the user says 'Preact', 'Preact setup', 'Preact signals', 'Preact hooks', 'Preact vs React', 'Preact project', 'Preact SSR', or when creating a Preact application. This skill enforces: Preact as React drop-in, signals for state management, compat layer usage, tiny bundle patterns, hooks compliance. Requires package.json with preact dependency. Do NOT use for: React-specific patterns (createContext, ReactDOM), Vue/Angular/Svelte, or non-Preact projects.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Preact', 'Preact setup', 'Preact signals',
+  'Preact hooks', 'Preact vs React', 'Preact project', 'Preact SSR', or when
+  creating a Preact application. This skill enforces: Preact as React drop-in,
+  signals for state management, compat layer usage, tiny bundle patterns, hooks
+  compliance. Requires package.json with preact dependency. Do NOT use for:
+  React-specific patterns (createContext, ReactDOM), Vue/Angular/Svelte, or
+  non-Preact projects.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, preact, phase-1]
+tags:
+  - frontend
+  - preact
+  - phase-1
+depends_on: []
 ---
 
 # Preact

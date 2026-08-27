@@ -1,25 +1,29 @@
 ---
 name: complete-mlops-platform-deployment-on-gcp-from-scratch
 description: >
-  Sequences a complete, end-to-end MLOps platform deployment on GCP from a
-  bare Google Cloud Organization to a production-ready platform serving a
-  first retrained model — GCP landing zone, the Vertex-AI-vs-GKE+Kubeflow
-  platform decision (Vertex AI is the worked path), GPU quota and
-  accelerator-backed custom training, Vertex AI Experiments tracking, a
-  Vertex AI Pipelines retraining DAG, Model Registry with gated promotion,
-  endpoints with traffic-split canary rollout, and Vertex AI Model
-  Monitoring for drift. An integration/orchestration skill that sequences
-  existing tool-specific skills in the right order and flags handoff
-  points — it does not restate their internals. Use when a user asks to
-  "stand up an MLOps platform on GCP from scratch," "build the full ML
-  training-to-serving pipeline on Vertex AI/GKE," "give me the end-to-end
-  sequence from GCP org to a retrained, monitored production model," or
-  "decide between Vertex AI and GKE+Kubeflow for our ML platform."
+  Sequences a complete, end-to-end MLOps platform deployment on GCP from a bare
+  Google Cloud Organization to a production-ready platform serving a first
+  retrained model — GCP landing zone, the Vertex-AI-vs-GKE+Kubeflow platform
+  decision (Vertex AI is the worked path), GPU quota and accelerator-backed
+  custom training, Vertex AI Experiments tracking, a Vertex AI Pipelines
+  retraining DAG, Model Registry with gated promotion, endpoints with
+  traffic-split canary rollout, and Vertex AI Model Monitoring for drift. An
+  integration/orchestration skill that sequences existing tool-specific skills
+  in the right order and flags handoff points — it does not restate their
+  internals. Use when a user asks to "stand up an MLOps platform on GCP from
+  scratch," "build the full ML training-to-serving pipeline on Vertex AI/GKE,"
+  "give me the end-to-end sequence from GCP org to a retrained, monitored
+  production model," or "decide between Vertex AI and GKE+Kubeflow for our ML
+  platform."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-mlops-platform-deployment-on-gcp-from-scratch
+depends_on: []
 ---
 
 # Complete MLOps Platform Deployment On GCP From Scratch

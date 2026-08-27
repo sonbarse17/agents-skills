@@ -1,18 +1,22 @@
 ---
 name: kubernetes-operator-development
 description: >
-  Guides building Kubernetes Operators with Kubebuilder or the Operator
-  SDK — CustomResourceDefinition (CRD) API design, controller
-  scaffolding, the reconciliation loop pattern, status/conditions
-  reporting, finalizers for cleanup, and testing with envtest. Use when
-  a user asks to "build a Kubernetes Operator," "design a CRD," "write a
-  reconcile loop," "add a finalizer to my controller," "test a
-  controller with envtest," or "package an Operator for OLM."
+  Guides building Kubernetes Operators with Kubebuilder or the Operator SDK —
+  CustomResourceDefinition (CRD) API design, controller scaffolding, the
+  reconciliation loop pattern, status/conditions reporting, finalizers for
+  cleanup, and testing with envtest. Use when a user asks to "build a Kubernetes
+  Operator," "design a CRD," "write a reconcile loop," "add a finalizer to my
+  controller," "test a controller with envtest," or "package an Operator for
+  OLM."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-operator-development
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operator Development

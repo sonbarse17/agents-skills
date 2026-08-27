@@ -1,6 +1,10 @@
 ---
 name: stripe-payments
 description: Stripe subscription lifecycle and webhook handling.
+tags:
+  - product_and_business
+  - payments
+depends_on: []
 ---
 
 # Stripe Payments & Subscriptions

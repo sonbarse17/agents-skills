@@ -1,19 +1,22 @@
 ---
 name: checkov-and-tfsec-iac-security-scanning
 description: >
-  Configures Checkov and tfsec to scan Terraform/CloudFormation/Kubernetes
-  IaC source for misconfigurations — hardcoded secrets, overly permissive
-  IAM policies, unencrypted storage, open security groups — before
-  `terraform apply` or `aws cloudformation deploy` ever runs. Use when a
-  user asks to "scan my Terraform for security issues," "add Checkov/tfsec
-  to CI," "find overly permissive IAM in my IaC," "write a Checkov
-  suppression," "compare Checkov and tfsec," or "catch misconfigured cloud
-  resources before they're provisioned."
+  Configures Checkov and tfsec to scan Terraform/CloudFormation/Kubernetes IaC
+  source for misconfigurations — hardcoded secrets, overly permissive IAM
+  policies, unencrypted storage, open security groups — before `terraform apply`
+  or `aws cloudformation deploy` ever runs. Use when a user asks to "scan my
+  Terraform for security issues," "add Checkov/tfsec to CI," "find overly
+  permissive IAM in my IaC," "write a Checkov suppression," "compare Checkov and
+  tfsec," or "catch misconfigured cloud resources before they're provisioned."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - checkov-and-tfsec-iac-security-scanning
+depends_on: []
 ---
 
 # Checkov and tfsec IaC Security Scanning

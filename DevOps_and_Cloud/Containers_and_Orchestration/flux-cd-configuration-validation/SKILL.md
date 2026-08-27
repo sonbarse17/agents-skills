@@ -1,21 +1,24 @@
 ---
 name: flux-cd-configuration-validation
 description: >
-  Validates Flux CD `Kustomization`s and `HelmRelease`s with build/diff/
-  dry-run tooling (`flux diff kustomization`, `kustomize build`,
-  `helm template`) before they reconcile against a live cluster, and
-  interprets `flux get`/status conditions to distinguish a genuinely
-  healthy reconciliation from one that merely applied without error.
-  Use when a user asks to "dry-run a Flux Kustomization before merging,"
-  "validate a HelmRelease's values before it deploys," "check what a
-  Flux change will actually do before it reconciles," "why is my
-  Kustomization Ready but the cluster looks wrong," or "add a CI gate
+  Validates Flux CD `Kustomization`s and `HelmRelease`s with build/diff/ dry-run
+  tooling (`flux diff kustomization`, `kustomize build`, `helm template`) before
+  they reconcile against a live cluster, and interprets `flux get`/status
+  conditions to distinguish a genuinely healthy reconciliation from one that
+  merely applied without error. Use when a user asks to "dry-run a Flux
+  Kustomization before merging," "validate a HelmRelease's values before it
+  deploys," "check what a Flux change will actually do before it reconciles,"
+  "why is my Kustomization Ready but the cluster looks wrong," or "add a CI gate
   for Flux manifest changes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - flux-cd-configuration-validation
+depends_on: []
 ---
 
 # Flux CD Configuration Validation

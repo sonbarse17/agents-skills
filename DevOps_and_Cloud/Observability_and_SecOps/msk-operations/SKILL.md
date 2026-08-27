@@ -8,17 +8,21 @@ description: Amazon MSK Provisioned operations, troubleshooting, and health
   TrafficShaping), consumer lag, storage/EBS issues, rolling restarts, Kafka
   version upgrades, SECURITY_PATCHING, BROKER_UPDATE, CloudWatch alarm design,
   Kafka client (producer/consumer) tuning, under-replicated partitions,
-  unexpected broker reboots, and full MSK operational reviews / health checks
-  / best-practices audits. Do NOT use for MSK Connect, MSK Serverless, or MSK
+  unexpected broker reboots, and full MSK operational reviews / health checks /
+  best-practices audits. Do NOT use for MSK Connect, MSK Serverless, or MSK
   Replicator. Do NOT use for authoring CloudFormation, CDK, or Terraform
   templates. Do NOT use for other AWS services (RDS, Aurora, S3, DynamoDB,
   Kinesis, Lambda, EC2) unless MSK is explicitly named.
 metadata:
   author: kjjanaki
-  version: "1.0.2"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Evaluation"
-  aws-devops-agent-skills.aws-services: "Amazon MSK"
-  aws-devops-agent-skills.technical-domains: "Analytics"
+  version: 1.0.2
+  aws-devops-agent-skills.agent-types: Chat tasks, Evaluation
+  aws-devops-agent-skills.aws-services: Amazon MSK
+  aws-devops-agent-skills.technical-domains: Analytics
+tags:
+  - observability_and_secops
+  - msk-operations
+depends_on: []
 ---
 
 # Amazon MSK Operations

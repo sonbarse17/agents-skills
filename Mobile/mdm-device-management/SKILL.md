@@ -1,10 +1,17 @@
 ---
 name: mdm-device-management
-description: Manage and secure company devices with MDM solutions — enroll macOS, Windows, iOS, and Android devices, enforce security policies, and automate software deployment. Use when setting up device management for a growing team.
+description: Manage and secure company devices with MDM solutions — enroll
+  macOS, Windows, iOS, and Android devices, enforce security policies, and
+  automate software deployment. Use when setting up device management for a
+  growing team.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - mobile
+  - mdm-device-management
+depends_on: []
 ---
 
 # Mobile Device Management (MDM) for Startups & Small Teams

@@ -1,19 +1,22 @@
 ---
 name: dapr-distributed-runtime-configuration
 description: >
-  Configures Dapr's sidecar building blocks — state management, pub/sub,
-  and service invocation — for polyglot microservices, including
-  component YAML, sidecar annotations, and resiliency policies. Use
-  when the user asks to "add a Dapr state store component," "set up
-  Dapr pub/sub between services," "call another service via Dapr
-  service invocation," "configure a Dapr sidecar for a Kubernetes
-  deployment," or "add retry/circuit-breaker resiliency to a Dapr
+  Configures Dapr's sidecar building blocks — state management, pub/sub, and
+  service invocation — for polyglot microservices, including component YAML,
+  sidecar annotations, and resiliency policies. Use when the user asks to "add a
+  Dapr state store component," "set up Dapr pub/sub between services," "call
+  another service via Dapr service invocation," "configure a Dapr sidecar for a
+  Kubernetes deployment," or "add retry/circuit-breaker resiliency to a Dapr
   building block."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - frontend
+  - dapr-distributed-runtime-configuration
+depends_on: []
 ---
 
 # Dapr Distributed Runtime Configuration

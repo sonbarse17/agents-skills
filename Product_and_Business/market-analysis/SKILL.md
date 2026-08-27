@@ -1,16 +1,25 @@
 ---
 name: planning-market-analysis
 description: >
-  Use this skill when the user says 'market analysis', 'competitive analysis', 'market research', 'TAM SAM SOM', 'market sizing', 'competitor research', 'market landscape', 'industry analysis'. Produce market sizing, competitor analysis, SWOT, and differentiation strategy. Do NOT use for: financial projections or business plan writing.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'market analysis', 'competitive analysis',
+  'market research', 'TAM SAM SOM', 'market sizing', 'competitor research',
+  'market landscape', 'industry analysis'. Produce market sizing, competitor
+  analysis, SWOT, and differentiation strategy. Do NOT use for: financial
+  projections or business plan writing.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, market, analysis, phase-7]
+tags:
+  - planning
+  - market
+  - analysis
+  - phase-7
+depends_on: []
 ---
 
 # Market Analysis

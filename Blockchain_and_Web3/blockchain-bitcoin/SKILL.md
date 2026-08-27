@@ -1,11 +1,28 @@
 ---
 name: blockchain-bitcoin
 description: >
-  Use this skill when asked about Bitcoin internals, Bitcoin Core, Bitcoin Script, Taproot, mining, Proof of Work, Lightning Network, BIP standards, Ordinals, BRC-20, Runes, Bitcoin L2s (Stacks, RSK, Babylon), and Bitcoin protocol development. Languages: C++, Rust, Python, Clarity. Covers Bitcoin Core C++ implementation (validation, mempool, wallet, P2P), Bitcoin Script opcodes and programming (P2PKH, P2SH, P2WSH, Taproot MAST), token protocols (Ordinals inscriptions, BRC-20, Runes), PoW mining mechanics (SHA-256d, difficulty adjustment, ASICs, Stratum), L2 scaling (Lightning Network, Stacks Clarity, RSK EVM, Babylon staking), and BIP standards (BIP-32/39/44/84/86/174/340/341/342). Do NOT use for: Ethereum protocol (use blockchain-ethereum), smart contract development (use blockchain-application), or general blockchain patterns (use blockchain-patterns).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, bitcoin, pow, mining, phase-blockchain]
+  Use this skill when asked about Bitcoin internals, Bitcoin Core, Bitcoin
+  Script, Taproot, mining, Proof of Work, Lightning Network, BIP standards,
+  Ordinals, BRC-20, Runes, Bitcoin L2s (Stacks, RSK, Babylon), and Bitcoin
+  protocol development. Languages: C++, Rust, Python, Clarity. Covers Bitcoin
+  Core C++ implementation (validation, mempool, wallet, P2P), Bitcoin Script
+  opcodes and programming (P2PKH, P2SH, P2WSH, Taproot MAST), token protocols
+  (Ordinals inscriptions, BRC-20, Runes), PoW mining mechanics (SHA-256d,
+  difficulty adjustment, ASICs, Stratum), L2 scaling (Lightning Network, Stacks
+  Clarity, RSK EVM, Babylon staking), and BIP standards
+  (BIP-32/39/44/84/86/174/340/341/342). Do NOT use for: Ethereum protocol (use
+  blockchain-ethereum), smart contract development (use blockchain-application),
+  or general blockchain patterns (use blockchain-patterns).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - bitcoin
+  - pow
+  - mining
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Bitcoin

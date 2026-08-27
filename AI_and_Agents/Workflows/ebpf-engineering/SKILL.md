@@ -1,6 +1,10 @@
 ---
 name: eBPF Engineering
 description: Deep dive into eBPF JIT compilation and verifier constraints.
+tags:
+  - workflows
+  - ebpf-engineering
+depends_on: []
 ---
 # eBPF Engineering Mechanics
 

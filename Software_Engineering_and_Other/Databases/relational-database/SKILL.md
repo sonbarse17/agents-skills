@@ -1,16 +1,29 @@
 ---
 name: data-relational-database
 description: >
-  Use this skill when asked about PostgreSQL, MySQL, relational database, partitioning, replication, indexing, vacuum, connection pooling, query optimization, EXPLAIN, CTE, window functions, or transaction isolation. This skill enforces: PostgreSQL architecture understanding (MVCC, WAL, vacuum), indexing strategies (B-tree, GiST, GIN, BRIN), partitioning (range, list, hash), replication (streaming, logical), connection pooling (PgBouncer), query optimization (EXPLAIN ANALYZE, CTE, window functions), transaction isolation levels, and migration tools. Do NOT use for: NoSQL database design, graph database modeling, or search engine configuration.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about PostgreSQL, MySQL, relational database,
+  partitioning, replication, indexing, vacuum, connection pooling, query
+  optimization, EXPLAIN, CTE, window functions, or transaction isolation. This
+  skill enforces: PostgreSQL architecture understanding (MVCC, WAL, vacuum),
+  indexing strategies (B-tree, GiST, GIN, BRIN), partitioning (range, list,
+  hash), replication (streaming, logical), connection pooling (PgBouncer), query
+  optimization (EXPLAIN ANALYZE, CTE, window functions), transaction isolation
+  levels, and migration tools. Do NOT use for: NoSQL database design, graph
+  database modeling, or search engine configuration.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, database, relational, phase-11]
+tags:
+  - data
+  - database
+  - relational
+  - phase-11
+depends_on: []
 ---
 
 # Data Relational Database

@@ -1,6 +1,10 @@
 ---
 name: ebpf-threat-detection
 description: eBPF Threat Detection, Tetragon, Falco, and Kernel Syscall Interception
+tags:
+  - observability_and_secops
+  - ebpf-threat-detection
+depends_on: []
 ---
 
 # eBPF-Based Threat Detection and Kernel Instrumentation

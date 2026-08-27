@@ -1,12 +1,16 @@
 ---
 name: kibana-alerting-rules
 description: >
-  Create and manage Kibana alerting rules via REST API or Terraform. Use when creating,
-  updating, or managing rule lifecycle (enable, disable, mute, snooze) or rules-as-code
-  workflows.
+  Create and manage Kibana alerting rules via REST API or Terraform. Use when
+  creating, updating, or managing rule lifecycle (enable, disable, mute, snooze)
+  or rules-as-code workflows.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - infrastructure_as_code
+  - kibana-alerting-rules
+depends_on: []
 ---
 
 # Kibana [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Rules

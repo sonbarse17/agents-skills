@@ -1,19 +1,22 @@
 ---
 name: hashicorp-nomad-scheduling-and-configuration
 description: >
-  Configures HashiCorp Nomad job specifications, scheduler types, and
-  cluster topology as a lighter-weight alternative to Kubernetes for
-  scheduling containers, binaries, and batch/system workloads. Use when
-  the user asks to "write a Nomad job spec," "choose service vs. batch
-  vs. system scheduler in Nomad," "compare Nomad to Kubernetes for our
-  use case," "set up Nomad server/client topology," "add a Nomad
-  update/canary deployment strategy," or "run non-containerized
-  workloads under a scheduler."
+  Configures HashiCorp Nomad job specifications, scheduler types, and cluster
+  topology as a lighter-weight alternative to Kubernetes for scheduling
+  containers, binaries, and batch/system workloads. Use when the user asks to
+  "write a Nomad job spec," "choose service vs. batch vs. system scheduler in
+  Nomad," "compare Nomad to Kubernetes for our use case," "set up Nomad
+  server/client topology," "add a Nomad update/canary deployment strategy," or
+  "run non-containerized workloads under a scheduler."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - hashicorp-nomad-scheduling-and-configuration
+depends_on: []
 ---
 
 # HashiCorp [Nomad](../nomad/SKILL.md) Scheduling and Configuration

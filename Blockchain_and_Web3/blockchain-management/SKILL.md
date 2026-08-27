@@ -1,16 +1,36 @@
 ---
 name: blockchain-management
 description: >
-  Use this skill when asked about blockchain project management, DAO governance, multi-sig operations, treasury management, tokenomics design, and web3 project methodology. Languages: Solidity, TypeScript, Python. Covers DAO governance frameworks (Compound Governor, Aave, Snapshot, Tally), multi-sig wallet operations (Gnosis Safe, Timelock, proposal lifecycle), treasury management (vesting, streaming, diversification, yield), tokenomics design (supply schedule, inflation, staking rewards, emission curve), and web3-specific project methodology (audit-first, progressive decentralization, community governance). For standard management practices (agile, scrum, kanban, risk management, stakeholder management, OKR/KPI), reference shared skills from skills/management/. Do NOT use for: standard project management (use skills/management/pm), team operations (use skills/management/agile-scrum-kanban), cost analysis (use skills/management/cost-benefit), or technical blockchain development (use other blockchain-* skills).
-version: "1.2.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about blockchain project management, DAO governance,
+  multi-sig operations, treasury management, tokenomics design, and web3 project
+  methodology. Languages: Solidity, TypeScript, Python. Covers DAO governance
+  frameworks (Compound Governor, Aave, Snapshot, Tally), multi-sig wallet
+  operations (Gnosis Safe, Timelock, proposal lifecycle), treasury management
+  (vesting, streaming, diversification, yield), tokenomics design (supply
+  schedule, inflation, staking rewards, emission curve), and web3-specific
+  project methodology (audit-first, progressive decentralization, community
+  governance). For standard management practices (agile, scrum, kanban, risk
+  management, stakeholder management, OKR/KPI), reference shared skills from
+  skills/management/. Do NOT use for: standard project management (use
+  skills/management/pm), team operations (use
+  skills/management/agile-scrum-kanban), cost analysis (use
+  skills/management/cost-benefit), or technical blockchain development (use
+  other blockchain-* skills).
+version: 1.2.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [blockchain, management, governance, dao, phase-blockchain]
+tags:
+  - blockchain
+  - management
+  - governance
+  - dao
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Management

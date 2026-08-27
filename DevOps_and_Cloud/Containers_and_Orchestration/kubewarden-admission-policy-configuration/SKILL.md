@@ -1,22 +1,25 @@
 ---
 name: kubewarden-admission-policy-configuration
 description: >
-  Guides configuring Kubewarden as a WASM-based Kubernetes admission
-  policy engine — installing the policy-server and controller, writing
-  or reusing WebAssembly policies from the Kubewarden Policy Hub,
-  ClusterAdmissionPolicy/AdmissionPolicy resources, monitor-mode
-  rollout before enforce, and multi-language policy authoring (Rego,
-  Rust, Go via the SDKs) as an alternative to OPA/Gatekeeper or Kyverno.
-  Use when the user asks to "set up Kubewarden," "write a WASM admission
-  policy," "why use Kubewarden instead of OPA/Kyverno," "reuse a policy
-  from the Kubewarden Policy Hub," "run an admission policy in
-  monitor mode before enforcing it," or "author a Kubernetes admission
-  policy without writing Rego."
+  Guides configuring Kubewarden as a WASM-based Kubernetes admission policy
+  engine — installing the policy-server and controller, writing or reusing
+  WebAssembly policies from the Kubewarden Policy Hub,
+  ClusterAdmissionPolicy/AdmissionPolicy resources, monitor-mode rollout before
+  enforce, and multi-language policy authoring (Rego, Rust, Go via the SDKs) as
+  an alternative to OPA/Gatekeeper or Kyverno. Use when the user asks to "set up
+  Kubewarden," "write a WASM admission policy," "why use Kubewarden instead of
+  OPA/Kyverno," "reuse a policy from the Kubewarden Policy Hub," "run an
+  admission policy in monitor mode before enforcing it," or "author a Kubernetes
+  admission policy without writing Rego."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubewarden-admission-policy-configuration
+depends_on: []
 ---
 
 # Kubewarden Admission Policy Configuration

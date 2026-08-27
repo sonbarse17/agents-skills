@@ -1,20 +1,23 @@
 ---
 name: opa-gatekeeper-policy-authoring
 description: >
-  Guides authoring Rego ConstraintTemplates and Constraints for OPA
-  Gatekeeper on Kubernetes — admission webhook enforcement, parameterized
-  policies, dry-run/audit mode before switching to deny, and debugging
-  Rego that under- or over-matches. Use when the user asks to "write a
-  Gatekeeper ConstraintTemplate", "write a Rego policy for Kubernetes
-  admission", "block pods that violate our security baseline with OPA",
-  "add a Constraint with parameters", "why isn't my Gatekeeper policy
-  denying anything", or "should we use OPA/Gatekeeper or Kyverno for
-  cluster policy".
+  Guides authoring Rego ConstraintTemplates and Constraints for OPA Gatekeeper
+  on Kubernetes — admission webhook enforcement, parameterized policies,
+  dry-run/audit mode before switching to deny, and debugging Rego that under- or
+  over-matches. Use when the user asks to "write a Gatekeeper
+  ConstraintTemplate", "write a Rego policy for Kubernetes admission", "block
+  pods that violate our security baseline with OPA", "add a Constraint with
+  parameters", "why isn't my Gatekeeper policy denying anything", or "should we
+  use OPA/Gatekeeper or Kyverno for cluster policy".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: policy-and-governance-tooling
   maturity: stable
+tags:
+  - security
+  - opa-gatekeeper-policy-authoring
+depends_on: []
 ---
 
 # OPA Gatekeeper Policy Authoring

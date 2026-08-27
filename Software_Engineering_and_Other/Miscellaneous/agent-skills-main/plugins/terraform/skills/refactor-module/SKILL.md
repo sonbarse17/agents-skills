@@ -1,10 +1,16 @@
 ---
 name: refactor-module
-description: Transform monolithic Terraform configurations into reusable, maintainable modules following HashiCorp's module design principles and community best practices.
+description: Transform monolithic Terraform configurations into reusable,
+  maintainable modules following HashiCorp's module design principles and
+  community best practices.
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - skills
+  - refactor-module
+depends_on: []
 ---
 
 # Skill: Refactor Module

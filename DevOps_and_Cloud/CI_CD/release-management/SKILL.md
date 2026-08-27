@@ -1,7 +1,17 @@
 ---
 name: release-management
-description: Coordinates what ships and when — semantic versioning, changelogs, release trains vs continuous release, and cutting a multi-service release safely. Use this whenever the user asks how to version a package, write release notes, cut a release, coordinate a release across services, or choose between shipping continuously versus on a schedule. For actually deploying a version use `continuous-delivery`; for how its bits are stored use `artifact-management`.
+description: Coordinates what ships and when — semantic versioning, changelogs,
+  release trains vs continuous release, and cutting a multi-service release
+  safely. Use this whenever the user asks how to version a package, write
+  release notes, cut a release, coordinate a release across services, or choose
+  between shipping continuously versus on a schedule. For actually deploying a
+  version use `continuous-delivery`; for how its bits are stored use
+  `artifact-management`.
 license: MIT
+tags:
+  - ci_cd
+  - release-management
+depends_on: []
 ---
 
 # Release Management

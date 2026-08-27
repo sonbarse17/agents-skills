@@ -1,10 +1,17 @@
 ---
 name: blue-green-deploy
-description: Configure zero-downtime deployment strategies including blue-green, canary, and rolling deployments. Implement traffic shifting, health checks, and rollback procedures. Use when implementing production deployment strategies or zero-downtime releases.
+description: Configure zero-downtime deployment strategies including blue-green,
+  canary, and rolling deployments. Implement traffic shifting, health checks,
+  and rollback procedures. Use when implementing production deployment
+  strategies or zero-downtime releases.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - blue-green-deploy
+depends_on: []
 ---
 
 # Blue-Green & Deployment Strategies

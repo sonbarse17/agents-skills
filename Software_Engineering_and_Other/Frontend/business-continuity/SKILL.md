@@ -1,10 +1,16 @@
 ---
 name: business-continuity
-description: Develop business continuity plans and impact analysis. Implement BCP testing and communication procedures. Use when building organizational resilience.
+description: Develop business continuity plans and impact analysis. Implement
+  BCP testing and communication procedures. Use when building organizational
+  resilience.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - frontend
+  - business-continuity
+depends_on: []
 ---
 
 # Business Continuity Planning

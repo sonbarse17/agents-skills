@@ -1,16 +1,29 @@
 ---
 name: frontend-authentication
 description: >
-  Use this skill when the user says 'auth', 'authentication', 'login', 'signup', 'JWT', 'OAuth', 'OAuth2', 'OpenID Connect', 'route guard', 'protected route', 'auth middleware', 'token storage', 'refresh token', 'session management', 'access token', 'logout', 'SSO', 'magic link', 'passwordless', 'MFA', '2FA'. This skill enforces secure token storage, proper route guard patterns, OAuth flow handling (PKCE, Implicit, Auth Code), refresh token rotation, and session persistence. Works with any frontend framework (React, Vue, Angular, Svelte) and any auth provider (Auth0, Clerk, Supabase, Firebase, Cognito, custom). Do NOT use for: backend auth logic, API token validation, or database-level auth.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'auth', 'authentication', 'login', 'signup',
+  'JWT', 'OAuth', 'OAuth2', 'OpenID Connect', 'route guard', 'protected route',
+  'auth middleware', 'token storage', 'refresh token', 'session management',
+  'access token', 'logout', 'SSO', 'magic link', 'passwordless', 'MFA', '2FA'.
+  This skill enforces secure token storage, proper route guard patterns, OAuth
+  flow handling (PKCE, Implicit, Auth Code), refresh token rotation, and session
+  persistence. Works with any frontend framework (React, Vue, Angular, Svelte)
+  and any auth provider (Auth0, Clerk, Supabase, Firebase, Cognito, custom). Do
+  NOT use for: backend auth logic, API token validation, or database-level auth.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, authentication, security, universal]
+tags:
+  - frontend
+  - authentication
+  - security
+  - universal
+depends_on: []
 ---
 
 # Frontend Authentication

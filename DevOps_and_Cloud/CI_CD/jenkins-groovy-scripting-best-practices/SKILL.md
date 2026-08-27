@@ -2,18 +2,21 @@
 name: jenkins-groovy-scripting-best-practices
 description: >
   Covers writing safe, testable Groovy inside Jenkins pipelines and shared
-  libraries — the script security sandbox and approval workflow, unit
-  testing with JenkinsPipelineUnit, CPS (Continuation-Passing Style)
-  quirks, and common Groovy pitfalls specific to the pipeline execution
-  context. Use when the user hits "script not permitted to use" sandbox
-  errors, asks to "test Jenkins pipeline Groovy code," "approve a Jenkins
-  script signature," or "fix a Groovy serialization/CPS error" in a
-  Jenkinsfile or shared library.
+  libraries — the script security sandbox and approval workflow, unit testing
+  with JenkinsPipelineUnit, CPS (Continuation-Passing Style) quirks, and common
+  Groovy pitfalls specific to the pipeline execution context. Use when the user
+  hits "script not permitted to use" sandbox errors, asks to "test Jenkins
+  pipeline Groovy code," "approve a Jenkins script signature," or "fix a Groovy
+  serialization/CPS error" in a Jenkinsfile or shared library.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - jenkins-groovy-scripting-best-practices
+depends_on: []
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Groovy Scripting Best Practices

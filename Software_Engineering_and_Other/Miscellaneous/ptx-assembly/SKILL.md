@@ -1,6 +1,12 @@
 ---
 name: PTX Assembly
-description: Master the NVIDIA virtual instruction set (PTX), focusing on register allocation, barrier synchronization (`bar.sync`), and explicit memory space pointers.
+description: Master the NVIDIA virtual instruction set (PTX), focusing on
+  register allocation, barrier synchronization (`bar.sync`), and explicit memory
+  space pointers.
+tags:
+  - miscellaneous
+  - ptx-assembly
+depends_on: []
 ---
 
 # PTX Assembly and Execution Model

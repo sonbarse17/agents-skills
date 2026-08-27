@@ -1,3 +1,12 @@
+---
+name: aws-serverless
+description: Comprehensive guidelines and best practices for aws-serverless. Use
+  this skill when working with related components.
+tags:
+  - cloud_providers
+  - aws-serverless
+depends_on: []
+---
 # AWS Serverless: Deep Dive into Lambda and Firecracker
 
 AWS Lambda abstracts infrastructure, but under the hood, it relies heavily on Firecracker microVMs. Firecracker uses the KVM (Kernel-based Virtual Machine) to provision and manage secure, lightweight microVMs. A microVM has a minimal device model, stripping away unnecessary hardware emulation to achieve boot times of <125ms and a memory footprint of <5MB per VM. 

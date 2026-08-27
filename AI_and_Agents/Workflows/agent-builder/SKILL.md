@@ -1,14 +1,19 @@
 ---
 name: kibana-agent-builder
 description: >
-  Create and manage Agent Builder agents and custom tools in Kibana. Use when asked
-  to create, update, delete, test, or inspect agents or tools in Agent Builder.
+  Create and manage Agent Builder agents and custom tools in Kibana. Use when
+  asked to create, update, delete, test, or inspect agents or tools in Agent
+  Builder.
 metadata:
   author: elastic
   version: 0.2.0
 disable-model-invocation: true
 allowed-tools: Bash(node *), Read, Glob, Grep
-argument-hint: '[agent-name]'
+argument-hint: "[agent-name]"
+tags:
+  - workflows
+  - agent-builder
+depends_on: []
 ---
 
 # Manage Agent Builder Agents and Tools in Kibana

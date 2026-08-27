@@ -1,18 +1,23 @@
 ---
 name: rds-operation-review
-description: Comprehensive Amazon RDS and Aurora operational review aligned with the
-  AWS Well-Architected Framework and RDS/Aurora best practices. Use this skill when
-  a user asks to review, audit, or assess RDS instances or Aurora clusters for best
-  practices compliance, security posture, reliability, performance, cost optimization,
-  backups, encryption, or operational readiness. Triggers on requests like "RDS
-  review", "Aurora best practices audit", "database operational assessment", "review
-  my RDS instance", "RDS health check", or "ORR for RDS".
+description: Comprehensive Amazon RDS and Aurora operational review aligned with
+  the AWS Well-Architected Framework and RDS/Aurora best practices. Use this
+  skill when a user asks to review, audit, or assess RDS instances or Aurora
+  clusters for best practices compliance, security posture, reliability,
+  performance, cost optimization, backups, encryption, or operational readiness.
+  Triggers on requests like "RDS review", "Aurora best practices audit",
+  "database operational assessment", "review my RDS instance", "RDS health
+  check", or "ORR for RDS".
 metadata:
   author: yakiratz-aws
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Evaluation"
-  aws-devops-agent-skills.aws-services: "Amazon RDS"
-  aws-devops-agent-skills.technical-domains: "Databases"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Evaluation
+  aws-devops-agent-skills.aws-services: Amazon RDS
+  aws-devops-agent-skills.technical-domains: Databases
+tags:
+  - containers_and_orchestration
+  - rds-operation-review
+depends_on: []
 ---
 
 # RDS / Aurora Operational Review

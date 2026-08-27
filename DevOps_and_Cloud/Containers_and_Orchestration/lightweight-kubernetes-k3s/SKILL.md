@@ -2,17 +2,21 @@
 name: lightweight-kubernetes-k3s
 description: >
   Guides deploying K3s for edge, on-prem, and development Kubernetes —
-  single-binary install, choosing the embedded SQLite/etcd datastore vs.
-  an external database for HA, and sizing tradeoffs for resource-
-  constrained nodes. Use when a user asks to "set up a lightweight
-  Kubernetes cluster," "install K3s on a Raspberry Pi/edge device,"
-  "run Kubernetes on a small VM for dev," "make K3s highly available,"
-  or "decide between K3s and a full Kubernetes distribution."
+  single-binary install, choosing the embedded SQLite/etcd datastore vs. an
+  external database for HA, and sizing tradeoffs for resource- constrained
+  nodes. Use when a user asks to "set up a lightweight Kubernetes cluster,"
+  "install K3s on a Raspberry Pi/edge device," "run Kubernetes on a small VM for
+  dev," "make K3s highly available," or "decide between K3s and a full
+  Kubernetes distribution."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - lightweight-kubernetes-k3s
+depends_on: []
 ---
 
 # Lightweight [Kubernetes](../kubernetes/SKILL.md) (K3s)

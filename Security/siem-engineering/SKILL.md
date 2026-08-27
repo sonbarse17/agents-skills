@@ -1,17 +1,23 @@
 ---
 name: siem-engineering
 description: >
-  Design SIEM architecture, onboard log sources, create correlation rules, manage use cases, and tune detection.
-  Use when the user asks about SIEM, Splunk, Wazuh, Elastic Security, Microsoft Sentinel, log source, correlation rule, or SIEM use case.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Design SIEM architecture, onboard log sources, create correlation rules,
+  manage use cases, and tune detection. Use when the user asks about SIEM,
+  Splunk, Wazuh, Elastic Security, Microsoft Sentinel, log source, correlation
+  rule, or SIEM use case.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, siem, phase-8]
+tags:
+  - security
+  - siem
+  - phase-8
+depends_on: []
 ---
 
 # SIEM Engineering

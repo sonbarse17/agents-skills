@@ -1,11 +1,24 @@
 ---
 name: blockchain-testing
 description: >
-  Use this skill when asked about testing smart contracts, Foundry tests, Hardhat tests, fuzz testing, invariant testing, property-based testing, formal verification, audit preparation, integration testing for dApps, and blockchain testing patterns. Covers Foundry cheatcodes, Echidna fuzzing, Certora verification, Hardhat network forking, mainnet simulation, gas benchmarking, and security audit workflows. Do NOT use for: general web3 frontend testing (use blockchain-web3), smart contract development (use blockchain-application), or core protocol testing (use blockchain-core).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, testing, security, audit, phase-blockchain]
+  Use this skill when asked about testing smart contracts, Foundry tests,
+  Hardhat tests, fuzz testing, invariant testing, property-based testing, formal
+  verification, audit preparation, integration testing for dApps, and blockchain
+  testing patterns. Covers Foundry cheatcodes, Echidna fuzzing, Certora
+  verification, Hardhat network forking, mainnet simulation, gas benchmarking,
+  and security audit workflows. Do NOT use for: general web3 frontend testing
+  (use blockchain-web3), smart contract development (use
+  blockchain-application), or core protocol testing (use blockchain-core).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - testing
+  - security
+  - audit
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Testing

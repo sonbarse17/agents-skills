@@ -3,17 +3,21 @@ name: backend-transactional-email
 description: >
   Enforce transactional email patterns including SMTP/SES/SendGrid/Resend setup,
   MJML responsive template design, deliverability (SPF/DKIM/DMARC), webhook
-  handling, rate limiting, and GDPR-compliant email operations. NOT for marketing
-  campaigns, newsletters, or bulk unsolicited email.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  handling, rate limiting, and GDPR-compliant email operations. NOT for
+  marketing campaigns, newsletters, or bulk unsolicited email.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, email, phase-10]
+tags:
+  - backend
+  - email
+  - phase-10
+depends_on: []
 ---
 
 # Transactional Email Skill

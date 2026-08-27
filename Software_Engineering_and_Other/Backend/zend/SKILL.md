@@ -4,22 +4,27 @@ description: >
   Use this skill when the user says 'Zend', 'Laminas', 'Zend Framework',
   'Laminas MVC', 'laminas-servicemanager', 'laminas-db', 'laminas-form',
   'laminas-inputfilter', 'laminas-router', 'laminas-view', 'laminas-module',
-  'Mezzio', 'laminas-stratigility', 'API Platform', 'Doctrine ORM',
-  'Zend Framework 3', 'ZF3', 'Zend Expressive'.
-  Covers: Laminas MVC project structure, Module system, ServiceManager DI,
-  routing, controllers, database (laminas-db + Doctrine), forms, validation,
-  views, Mezzio middleware, API development, security, testing.
-  Do NOT use this for: Laravel (use php-laravel), plain PHP (use php-pure),
-  or Symfony-specific questions.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  'Mezzio', 'laminas-stratigility', 'API Platform', 'Doctrine ORM', 'Zend
+  Framework 3', 'ZF3', 'Zend Expressive'. Covers: Laminas MVC project structure,
+  Module system, ServiceManager DI, routing, controllers, database (laminas-db +
+  Doctrine), forms, validation, views, Mezzio middleware, API development,
+  security, testing. Do NOT use this for: Laravel (use php-laravel), plain PHP
+  (use php-pure), or Symfony-specific questions.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, php, zend, laminas, phase-7]
+tags:
+  - backend
+  - php
+  - zend
+  - laminas
+  - phase-7
+depends_on: []
 ---
 
 # Zend / Laminas

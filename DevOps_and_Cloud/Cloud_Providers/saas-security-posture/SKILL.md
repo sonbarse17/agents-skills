@@ -1,10 +1,17 @@
 ---
 name: saas-security-posture
-description: Audit and harden your SaaS tool stack — enforce SSO, review OAuth grants, manage shadow IT, and secure admin accounts across Slack, GitHub, Google Workspace, and AWS. Use when tightening security across company SaaS tools.
+description: Audit and harden your SaaS tool stack — enforce SSO, review OAuth
+  grants, manage shadow IT, and secure admin accounts across Slack, GitHub,
+  Google Workspace, and AWS. Use when tightening security across company SaaS
+  tools.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - saas-security-posture
+depends_on: []
 ---
 
 # SaaS Security Posture Management for Startups

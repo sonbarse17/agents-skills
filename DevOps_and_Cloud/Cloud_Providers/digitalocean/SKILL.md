@@ -5,17 +5,23 @@ description: >
   'App Platform', 'Spaces', 'Managed Database', 'Floating IP', 'Cloud Firewall',
   'doctl', 'Terraform DigitalOcean', 'VPC', 'Load Balancer', 'DNS', 'Container
   Registry', 'Functions'. Covers: core DO services, Droplets, networking,
-  managed databases, Kubernetes, App Platform, infrastructure tooling.
-  Do NOT use this for: AWS, Azure, GCP, or other cloud providers.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  managed databases, Kubernetes, App Platform, infrastructure tooling. Do NOT
+  use this for: AWS, Azure, GCP, or other cloud providers.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, cloud, digitalocean, infrastructure, phase-5]
+tags:
+  - devops
+  - cloud
+  - digitalocean
+  - infrastructure
+  - phase-5
+depends_on: []
 ---
 
 # DigitalOcean

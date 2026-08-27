@@ -1,6 +1,12 @@
 ---
 name: Fundamental Truth - Information Theory & Manifold Hypothesis
-description: Deep mathematical meta-skill elucidating the theoretic underpinnings of high-dimensional data compression, Shannon Entropy, KL Divergence, and the continuous Manifold Hypothesis.
+description: Deep mathematical meta-skill elucidating the theoretic
+  underpinnings of high-dimensional data compression, Shannon Entropy, KL
+  Divergence, and the continuous Manifold Hypothesis.
+tags:
+  - data_engineering
+  - information-theory
+depends_on: []
 ---
 
 # Information Theory & Manifold Hypothesis: The Fabric of Latent Intelligence

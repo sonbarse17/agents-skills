@@ -1,6 +1,10 @@
 ---
 name: Next.js Server Components
 description: Best practices for SSR, Streaming, and hydration optimization in Next.js.
+tags:
+  - frontend
+  - nextjs-server-components
+depends_on: []
 ---
 
 # Next.js Server Components

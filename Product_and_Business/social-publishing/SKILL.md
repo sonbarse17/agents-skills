@@ -1,15 +1,20 @@
 ---
 name: social-publishing
 description: >
-  Schedule and publish social media posts across 13 platforms (X, LinkedIn, Instagram,
-  Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit, WordPress, Pinterest) via
-  the SocialClaw API. Use when the user wants to publish, schedule, or manage social
-  media content programmatically. Requires SOCIALCLAW_API_KEY.
+  Schedule and publish social media posts across 13 platforms (X, LinkedIn,
+  Instagram, Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit,
+  WordPress, Pinterest) via the SocialClaw API. Use when the user wants to
+  publish, schedule, or manage social media content programmatically. Requires
+  SOCIALCLAW_API_KEY.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: 1.0.0
   source: https://github.com/ndesv21/socialclaw
   homepage: https://getsocialclaw.com
+tags:
+  - product_and_business
+  - social-publishing
+depends_on: []
 ---
 
 # Social Publishing

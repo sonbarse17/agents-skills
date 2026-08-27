@@ -1,7 +1,17 @@
 ---
 name: artifact-management
-description: Versions, stores, and promotes build outputs — registries, immutability, build-once-promote-many, retention and garbage collection, and provenance metadata. Use this whenever the user sets up an artifact or container registry, asks how to promote a build between environments without rebuilding, needs a retention or cleanup policy, or wants to trace where an artifact came from. For an image's contents and size use `image-optimization`; for vulnerability scanning use `image-scanning`.
+description: Versions, stores, and promotes build outputs — registries,
+  immutability, build-once-promote-many, retention and garbage collection, and
+  provenance metadata. Use this whenever the user sets up an artifact or
+  container registry, asks how to promote a build between environments without
+  rebuilding, needs a retention or cleanup policy, or wants to trace where an
+  artifact came from. For an image's contents and size use `image-optimization`;
+  for vulnerability scanning use `image-scanning`.
 license: MIT
+tags:
+  - ci_cd
+  - artifact-management
+depends_on: []
 ---
 
 # Artifact Management

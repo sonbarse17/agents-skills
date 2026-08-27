@@ -1,17 +1,21 @@
 ---
 name: agent-architecture-design
 description: >
-  Guides designing the control loop, state/memory model, and tool boundaries
-  for an LLM-driven agent. Use when a user asks to "design an agent
-  architecture," choose between a ReAct loop / plan-and-execute / finite-state
-  agent, decide on single-agent vs multi-agent decomposition, define how an
-  agent should manage state and memory across turns, or review whether an
-  existing agent's control flow is safe to run unattended.
+  Guides designing the control loop, state/memory model, and tool boundaries for
+  an LLM-driven agent. Use when a user asks to "design an agent architecture,"
+  choose between a ReAct loop / plan-and-execute / finite-state agent, decide on
+  single-agent vs multi-agent decomposition, define how an agent should manage
+  state and memory across turns, or review whether an existing agent's control
+  flow is safe to run unattended.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - architecture
+  - agent-architecture-design
+depends_on: []
 ---
 
 # Agent Architecture Design

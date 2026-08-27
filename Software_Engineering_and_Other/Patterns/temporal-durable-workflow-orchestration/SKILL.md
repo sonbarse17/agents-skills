@@ -1,22 +1,25 @@
 ---
 name: temporal-durable-workflow-orchestration
 description: >
-  Guides authoring Temporal workflows and activities using the durable
-  execution model — deterministic workflow code that automatically
-  replays from event history after a crash, activities that retry
-  independently with their own backoff policy, and signals/queries for
-  interacting with a long-running workflow from the outside. Use when the
-  user asks to "write a Temporal workflow," "model a saga/multi-step
-  business process with Temporal," "add a signal to a running workflow,"
-  "design activity retry policies," or is choosing Temporal over
-  Airflow/Dagster for a long-running, stateful *application* workflow
-  (e.g. an order fulfillment saga) rather than a scheduled batch data
-  pipeline.
+  Guides authoring Temporal workflows and activities using the durable execution
+  model — deterministic workflow code that automatically replays from event
+  history after a crash, activities that retry independently with their own
+  backoff policy, and signals/queries for interacting with a long-running
+  workflow from the outside. Use when the user asks to "write a Temporal
+  workflow," "model a saga/multi-step business process with Temporal," "add a
+  signal to a running workflow," "design activity retry policies," or is
+  choosing Temporal over Airflow/Dagster for a long-running, stateful
+  *application* workflow (e.g. an order fulfillment saga) rather than a
+  scheduled batch data pipeline.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - patterns
+  - temporal-durable-workflow-orchestration
+depends_on: []
 ---
 
 # Temporal Durable Workflow Orchestration

@@ -1,10 +1,16 @@
 ---
 name: firebase-app-platform
-description: Build and operate apps on Firebase using Auth, Firestore, Cloud Functions, and Hosting. Use when building mobile/web backends with managed services, real-time data sync, or serverless APIs.
+description: Build and operate apps on Firebase using Auth, Firestore, Cloud
+  Functions, and Hosting. Use when building mobile/web backends with managed
+  services, real-time data sync, or serverless APIs.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - firebase-app-platform
+depends_on: []
 ---
 
 # [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) App Platform

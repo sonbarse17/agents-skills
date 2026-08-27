@@ -1,33 +1,38 @@
 ---
 name: storage-infrastructure
 description: >
-  Use this skill when the user says 'storage', 'SAN', 'NAS', 'NVMe',
-  'NVMe-oF', 'iSCSI', 'FC', 'Fibre Channel', 'Ceph', 'glusterfs',
-  'minio', 'LUN', 'volume', 'ZFS', 'ZoL', 'RAID', 'JBOD', 'HDD',
-  'SSD', 'NAND', 'flash', '3D XPoint', 'Optane', 'SATA', 'SAS',
-  'NVMe', 'M.2', 'U.2', 'E1.S', 'E3.S', 'EBOF', 'JBOF',
-  'storage-class', 'PersistentVolume', 'PVC', 'CSI', 'storage
-  policy', 'software-defined storage', 'SDS', 'distributed
-  storage', 'object storage', 'block storage', 'file storage',
-  'backup', 'snapshot', 'clone', 'deduplication', 'compression',
-  'thin provisioning', 'overprovisioning', 'TRIM', 'discard',
-  'wear leveling', 'write amplification', 'read cache',
-  'write cache', 'battery-backed write cache', 'BBWC', 'NVDIMM',
-  'storage tiering', 'tiered storage', 'hot tier', 'cold tier',
-  'archive tier', 'storage performance', 'IOPS', 'throughput',
-  'latency', 'iostat', 'fio', 'blktrace', 'seekwatcher'.
-  Covers: Storage architecture, protocols, RAID levels, NVMe,
-  software-defined storage with Ceph, CSI drivers for K8s,
-  backup strategies, storage performance benchmarking.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'storage', 'SAN', 'NAS', 'NVMe', 'NVMe-oF',
+  'iSCSI', 'FC', 'Fibre Channel', 'Ceph', 'glusterfs', 'minio', 'LUN', 'volume',
+  'ZFS', 'ZoL', 'RAID', 'JBOD', 'HDD', 'SSD', 'NAND', 'flash', '3D XPoint',
+  'Optane', 'SATA', 'SAS', 'NVMe', 'M.2', 'U.2', 'E1.S', 'E3.S', 'EBOF', 'JBOF',
+  'storage-class', 'PersistentVolume', 'PVC', 'CSI', 'storage policy',
+  'software-defined storage', 'SDS', 'distributed storage', 'object storage',
+  'block storage', 'file storage', 'backup', 'snapshot', 'clone',
+  'deduplication', 'compression', 'thin provisioning', 'overprovisioning',
+  'TRIM', 'discard', 'wear leveling', 'write amplification', 'read cache',
+  'write cache', 'battery-backed write cache', 'BBWC', 'NVDIMM', 'storage
+  tiering', 'tiered storage', 'hot tier', 'cold tier', 'archive tier', 'storage
+  performance', 'IOPS', 'throughput', 'latency', 'iostat', 'fio', 'blktrace',
+  'seekwatcher'. Covers: Storage architecture, protocols, RAID levels, NVMe,
+  software-defined storage with Ceph, CSI drivers for K8s, backup strategies,
+  storage performance benchmarking.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, storage, ceph, nvme, san, nas, phase-3]
+tags:
+  - devops
+  - storage
+  - ceph
+  - nvme
+  - san
+  - nas
+  - phase-3
+depends_on: []
 ---
 
 # Storage Infrastructure

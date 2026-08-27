@@ -1,7 +1,18 @@
 ---
 name: policy-as-code
-description: Covers enforcing infrastructure and cluster rules automatically, before a bad change ever reaches production — OPA, Sentinel, and Kyverno policies evaluated against the plan or admission request, and testing those policies like real code. Use this whenever the user is writing a Rego or Sentinel policy, adding an admission controller, wiring a policy check into a pipeline, or deciding whether a rule should be enforced or just audited. For the Terraform plan those policies gate use `infrastructure-as-code`, for Kubernetes-specific admission enforcement use `kubernetes-security`.
+description: Covers enforcing infrastructure and cluster rules automatically,
+  before a bad change ever reaches production — OPA, Sentinel, and Kyverno
+  policies evaluated against the plan or admission request, and testing those
+  policies like real code. Use this whenever the user is writing a Rego or
+  Sentinel policy, adding an admission controller, wiring a policy check into a
+  pipeline, or deciding whether a rule should be enforced or just audited. For
+  the Terraform plan those policies gate use `infrastructure-as-code`, for
+  Kubernetes-specific admission enforcement use `kubernetes-security`.
 license: MIT
+tags:
+  - security
+  - policy-as-code
+depends_on: []
 ---
 
 # Policy as Code

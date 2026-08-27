@@ -1,16 +1,25 @@
 ---
 name: dev-loop-security-auditor
 description: >
-  Use when the user asks about security auditing, vulnerability scanning, security review, dependency vulnerabilities, SAST, DAST, penetration testing, or security best practices. Do NOT use for: code review (dev-loop-code-review), or performance profiling (dev-loop-performance-profiler).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about security auditing, vulnerability scanning,
+  security review, dependency vulnerabilities, SAST, DAST, penetration testing,
+  or security best practices. Do NOT use for: code review
+  (dev-loop-code-review), or performance profiling
+  (dev-loop-performance-profiler).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, security, auditing, vulnerabilities]
+tags:
+  - dev-loop
+  - security
+  - auditing
+  - vulnerabilities
+depends_on: []
 ---
 
 # Security Auditor

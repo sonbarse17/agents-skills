@@ -2,15 +2,19 @@
 name: container-build-and-release
 description: >
   Builds, tags, scans, and publishes container images with reproducible,
-  minimal, multi-stage Dockerfiles and a defensible tagging/release scheme.
-  Use when the user asks to "write a Dockerfile," "reduce image size,"
-  "set up multi-arch builds," "tag and push a container image," "add image
-  scanning to the pipeline," or "publish a release image to a registry."
+  minimal, multi-stage Dockerfiles and a defensible tagging/release scheme. Use
+  when the user asks to "write a Dockerfile," "reduce image size," "set up
+  multi-arch builds," "tag and push a container image," "add image scanning to
+  the pipeline," or "publish a release image to a registry."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - container-build-and-release
+depends_on: []
 ---
 
 # Container Build and Release

@@ -1,6 +1,12 @@
 ---
 name: hybrid-search-implementation
-description: Combine vector and keyword search for improved retrieval. Use when implementing RAG systems, building search engines, or when neither approach alone provides sufficient recall.
+description: Combine vector and keyword search for improved retrieval. Use when
+  implementing RAG systems, building search engines, or when neither approach
+  alone provides sufficient recall.
+tags:
+  - infrastructure
+  - hybrid-search-implementation
+depends_on: []
 ---
 
 # Hybrid Search Implementation

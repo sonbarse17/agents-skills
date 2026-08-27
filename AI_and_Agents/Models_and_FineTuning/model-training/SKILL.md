@@ -1,3 +1,12 @@
+---
+name: model-training
+description: Comprehensive guidelines and best practices for model-training. Use
+  this skill when working with related components.
+tags:
+  - models_and_finetuning
+  - model-training
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

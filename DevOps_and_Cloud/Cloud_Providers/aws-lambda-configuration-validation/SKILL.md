@@ -4,16 +4,19 @@ description: >
   Validates an AWS Lambda function's configuration — reserved/provisioned
   concurrency budget, VPC networking config, environment variables, IAM
   execution role scope, and failure handling — before it deploys, catching
-  problems that only otherwise surface as production throttling or an
-  incident. Use when the user asks to "validate a Lambda function before
-  deploy," "check Lambda reserved concurrency," "review a Lambda IAM role,"
-  "why is my Lambda throttling," or "add a pre-deploy check for Lambda
-  config."
+  problems that only otherwise surface as production throttling or an incident.
+  Use when the user asks to "validate a Lambda function before deploy," "check
+  Lambda reserved concurrency," "review a Lambda IAM role," "why is my Lambda
+  throttling," or "add a pre-deploy check for Lambda config."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - cloud_providers
+  - aws-lambda-configuration-validation
+depends_on: []
 ---
 
 # AWS Lambda Configuration Validation

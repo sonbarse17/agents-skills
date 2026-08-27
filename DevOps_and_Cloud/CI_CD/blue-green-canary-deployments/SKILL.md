@@ -1,17 +1,21 @@
 ---
 name: blue-green-canary-deployments
 description: >
-  Designs and executes progressive delivery strategies — blue-green
-  cutover, canary rollout, and traffic-shifted releases — with automated
-  health checks and rollback triggers, typically on Kubernetes. Use when
-  the user asks to "reduce deployment risk," "set up canary/blue-green
-  deployments," "do a zero-downtime release," "gradually shift traffic to
-  a new version," or "automatically roll back a bad deploy."
+  Designs and executes progressive delivery strategies — blue-green cutover,
+  canary rollout, and traffic-shifted releases — with automated health checks
+  and rollback triggers, typically on Kubernetes. Use when the user asks to
+  "reduce deployment risk," "set up canary/blue-green deployments," "do a
+  zero-downtime release," "gradually shift traffic to a new version," or
+  "automatically roll back a bad deploy."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - ci_cd
+  - blue-green-canary-deployments
+depends_on: []
 ---
 
 # Blue-Green and Canary Deployments

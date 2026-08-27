@@ -1,3 +1,12 @@
+---
+name: embeddings
+description: Comprehensive guidelines and best practices for embeddings. Use
+  this skill when working with related components.
+tags:
+  - miscellaneous
+  - embeddings
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

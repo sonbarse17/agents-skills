@@ -1,19 +1,23 @@
 ---
 name: emergency-hotfix-deployment-procedure
 description: >
-  Defines the out-of-cadence process for shipping a production hotfix
-  outside the normal release train — which checks are genuinely safe to
-  bypass versus never, the minimum required verification before an
-  emergency deploy, required sign-off, and the rollback plan that must
-  exist before the hotfix goes out. Use when the user asks to "ship an
-  emergency hotfix," "deploy outside the normal release process," "bypass
-  the release train for a critical fix," "what's the minimum we can skip
-  for a production emergency," or "we need to patch prod right now."
+  Defines the out-of-cadence process for shipping a production hotfix outside
+  the normal release train — which checks are genuinely safe to bypass versus
+  never, the minimum required verification before an emergency deploy, required
+  sign-off, and the rollback plan that must exist before the hotfix goes out.
+  Use when the user asks to "ship an emergency hotfix," "deploy outside the
+  normal release process," "bypass the release train for a critical fix,"
+  "what's the minimum we can skip for a production emergency," or "we need to
+  patch prod right now."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - ci_cd
+  - emergency-hotfix-deployment-procedure
+depends_on: []
 ---
 
 # Emergency Hotfix Deployment Procedure

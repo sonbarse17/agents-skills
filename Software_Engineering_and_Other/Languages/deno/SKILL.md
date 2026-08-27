@@ -1,16 +1,24 @@
 ---
 name: deno
 description: >
-  Use this skill when building with Deno — TypeScript runtime, Deno Deploy, Fresh framework, Deno std library. This skill enforces: permission-based security, URL import system, std lib usage over npm, Fresh island architecture. Do NOT use for: Node.js projects, Bun projects, browser-only TypeScript.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building with Deno — TypeScript runtime, Deno Deploy,
+  Fresh framework, Deno std library. This skill enforces: permission-based
+  security, URL import system, std lib usage over npm, Fresh island
+  architecture. Do NOT use for: Node.js projects, Bun projects, browser-only
+  TypeScript.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, deno, phase-10]
+tags:
+  - backend
+  - deno
+  - phase-10
+depends_on: []
 ---
 
 # Deno

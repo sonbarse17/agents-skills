@@ -1,20 +1,23 @@
 ---
 name: longhorn-storage-configuration
 description: >
-  Deploys and configures Longhorn as cloud-native distributed block
-  storage for Kubernetes — StorageClass replica count, data locality,
-  volume snapshot/backup targets, and node/disk scheduling — as a
-  simpler alternative to Rook-Ceph when only replicated block storage
-  (no object store, no shared filesystem) is needed. Use when a user
-  asks to "install Longhorn," "set up replicated block storage on
-  Kubernetes," "configure Longhorn volume snapshots/backups," "choose
-  between Longhorn and Rook-Ceph," or "recover a Longhorn volume after a
-  node failure."
+  Deploys and configures Longhorn as cloud-native distributed block storage for
+  Kubernetes — StorageClass replica count, data locality, volume snapshot/backup
+  targets, and node/disk scheduling — as a simpler alternative to Rook-Ceph when
+  only replicated block storage (no object store, no shared filesystem) is
+  needed. Use when a user asks to "install Longhorn," "set up replicated block
+  storage on Kubernetes," "configure Longhorn volume snapshots/backups," "choose
+  between Longhorn and Rook-Ceph," or "recover a Longhorn volume after a node
+  failure."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - observability_and_secops
+  - longhorn-storage-configuration
+depends_on: []
 ---
 
 # [Longhorn](../longhorn/SKILL.md) Storage Configuration

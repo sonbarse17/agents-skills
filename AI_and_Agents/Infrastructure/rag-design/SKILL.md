@@ -1,6 +1,11 @@
 ---
 name: RAG Design
-description: Advanced design of Retrieval-Augmented Generation, focusing on multi-hop retrieval and query rewriting.
+description: Advanced design of Retrieval-Augmented Generation, focusing on
+  multi-hop retrieval and query rewriting.
+tags:
+  - infrastructure
+  - rag-design
+depends_on: []
 ---
 # RAG Design Mechanics
 

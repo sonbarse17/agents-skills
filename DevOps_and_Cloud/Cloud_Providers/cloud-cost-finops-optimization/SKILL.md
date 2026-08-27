@@ -3,17 +3,21 @@ name: cloud-cost-finops-optimization
 description: >
   Guides establishing cloud cost visibility and reducing spend across AWS,
   Azure, and GCP through tagging/labeling discipline, rightsizing,
-  commitment-based discounts (Reserved Instances, Savings Plans,
-  Committed Use Discounts), and FinOps showback/chargeback practices. Use
-  when a user asks to "reduce our cloud bill", "set up cost allocation
-  tags", "find idle/oversized resources", "decide between Reserved
-  Instances and Savings Plans", "implement FinOps", "explain why cloud
-  spend went up", or "build a cost dashboard per team".
+  commitment-based discounts (Reserved Instances, Savings Plans, Committed Use
+  Discounts), and FinOps showback/chargeback practices. Use when a user asks to
+  "reduce our cloud bill", "set up cost allocation tags", "find idle/oversized
+  resources", "decide between Reserved Instances and Savings Plans", "implement
+  FinOps", "explain why cloud spend went up", or "build a cost dashboard per
+  team".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-cost-finops-optimization
+depends_on: []
 ---
 
 # Cloud Cost & FinOps Optimization

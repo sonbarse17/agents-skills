@@ -1,10 +1,16 @@
 ---
 name: terraform-aws
-description: Provision AWS infrastructure with Terraform. Create modules, manage state, and implement IaC best practices. Use when deploying AWS resources declaratively.
+description: Provision AWS infrastructure with Terraform. Create modules, manage
+  state, and implement IaC best practices. Use when deploying AWS resources
+  declaratively.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - terraform-aws
+depends_on: []
 ---
 
 # Terraform AWS

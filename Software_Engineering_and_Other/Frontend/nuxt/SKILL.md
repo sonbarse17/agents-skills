@@ -1,16 +1,28 @@
 ---
 name: vue-nuxt
 description: >
-  Use this skill when the user says 'Nuxt', 'Nuxt 3', 'Nuxt structure', 'Nuxt composables', 'Nuxt server routes', 'useFetch', 'useAsyncData', 'Nuxt layers', 'Nuxt architecture', or when building a Nuxt 3 application. This skill enforces: directory-based routing in pages/, useFetch for data fetching (preferred over useAsyncData), server routes in server/api/, auto-import from components/ and composables/, layouts with definePageMeta, and Nuxt layers for shared code across projects. Requires Nuxt 3 (nuxt.config.ts). Do NOT use for: plain Vue 3, Vite-only Vue, or React/Next.js.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Nuxt', 'Nuxt 3', 'Nuxt structure', 'Nuxt
+  composables', 'Nuxt server routes', 'useFetch', 'useAsyncData', 'Nuxt layers',
+  'Nuxt architecture', or when building a Nuxt 3 application. This skill
+  enforces: directory-based routing in pages/, useFetch for data fetching
+  (preferred over useAsyncData), server routes in server/api/, auto-import from
+  components/ and composables/, layouts with definePageMeta, and Nuxt layers for
+  shared code across projects. Requires Nuxt 3 (nuxt.config.ts). Do NOT use for:
+  plain Vue 3, Vite-only Vue, or React/Next.js.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, vue, nuxt, phase-3]
+tags:
+  - frontend
+  - vue
+  - nuxt
+  - phase-3
+depends_on: []
 ---
 
 # Nuxt

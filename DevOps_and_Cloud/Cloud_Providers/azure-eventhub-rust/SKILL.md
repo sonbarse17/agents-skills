@@ -1,12 +1,19 @@
 ---
 name: azure-eventhub-rust
-description: |
-  Azure Event Hubs library for Rust. Send and receive events for streaming data ingestion and batch processing.
-  Triggers: "event hubs rust", "ProducerClient rust", "ConsumerClient rust", "send event rust", "streaming rust", "eventhub rust".
+description: >
+  Azure Event Hubs library for Rust. Send and receive events for streaming data
+  ingestion and batch processing.
+
+  Triggers: "event hubs rust", "ProducerClient rust", "ConsumerClient rust",
+  "send event rust", "streaming rust", "eventhub rust".
 license: MIT
 metadata:
   author: Microsoft
   package: azure_messaging_eventhubs
+tags:
+  - cloud_providers
+  - azure-eventhub-rust
+depends_on: []
 ---
 
 # Azure Event Hubs library for Rust

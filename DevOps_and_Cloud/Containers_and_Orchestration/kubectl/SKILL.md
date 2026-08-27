@@ -1,10 +1,16 @@
 ---
 name: kubectl
-description: Manage Kubernetes resources, contexts, and workloads with kubectl. Use when tasks mention kubectl, Kubernetes resources, kubeconfig, kubectl apply, kubectl get pods, Kubernetes contexts, or KUBECONFIG.
+description: Manage Kubernetes resources, contexts, and workloads with kubectl.
+  Use when tasks mention kubectl, Kubernetes resources, kubeconfig, kubectl
+  apply, kubectl get pods, Kubernetes contexts, or KUBECONFIG.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - kubectl
+depends_on: []
 ---
 
 # kubectl

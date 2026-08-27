@@ -1,16 +1,25 @@
 ---
 name: frontend-data-fetching
 description: >
-  Use this skill when the user says 'data fetching', 'TanStack Query', 'SWR', 'React Query', 'server state', 'API client', 'data fetching pattern', 'cache invalidation', 'optimistic update', 'pagination data', 'infinite scroll', 'stale-while-revalidate'. Design data fetching layer for frontend apps. Do NOT use for: backend API design or database queries.
+  Use this skill when the user says 'data fetching', 'TanStack Query', 'SWR',
+  'React Query', 'server state', 'API client', 'data fetching pattern', 'cache
+  invalidation', 'optimistic update', 'pagination data', 'infinite scroll',
+  'stale-while-revalidate'. Design data fetching layer for frontend apps. Do NOT
+  use for: backend API design or database queries.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, data-fetching, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - frontend
+  - data-fetching
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Frontend Data Fetching

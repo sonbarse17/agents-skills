@@ -1,12 +1,16 @@
 ---
 name: kibana-audit
 description: >
-  Enable and configure Kibana audit logging for saved object access, logins, and space
-  operations. Use when setting up Kibana audit, filtering events, or correlating Kibana
-  and ES audit logs.
+  Enable and configure Kibana audit logging for saved object access, logins, and
+  space operations. Use when setting up Kibana audit, filtering events, or
+  correlating Kibana and ES audit logs.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - kibana-audit
+depends_on: []
 ---
 
 # Kibana [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

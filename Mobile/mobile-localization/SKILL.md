@@ -1,19 +1,23 @@
 ---
 name: mobile-localization
 description: >
-  Enforce mobile localization patterns for iOS (.strings, .xcstrings) and Android
-  (strings.xml), including plural rules (CLDR), RTL layout support, OTA updates,
-  translation management, locale detection, date/number formatting, and CI
-  integration. NOT for web localization or server-side i18n.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Enforce mobile localization patterns for iOS (.strings, .xcstrings) and
+  Android (strings.xml), including plural rules (CLDR), RTL layout support, OTA
+  updates, translation management, locale detection, date/number formatting, and
+  CI integration. NOT for web localization or server-side i18n.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, localization, phase-10]
+tags:
+  - mobile
+  - localization
+  - phase-10
+depends_on: []
 ---
 
 # Mobile Localization Skill

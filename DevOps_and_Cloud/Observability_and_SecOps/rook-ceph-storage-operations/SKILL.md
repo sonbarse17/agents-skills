@@ -1,20 +1,23 @@
 ---
 name: rook-ceph-storage-operations
 description: >
-  Deploys and operates Rook as the Kubernetes operator managing a Ceph
-  storage cluster in-cluster — the `CephCluster` CRD, OSD device
-  discovery/placement, and exposing block (RBD), shared filesystem
-  (CephFS), and object (RGW/S3-compatible) storage as Kubernetes
-  StorageClasses. Use when a user asks to "install Rook-Ceph," "set up a
-  CephCluster on Kubernetes," "create a Ceph block/object/filesystem
-  StorageClass," "add OSD devices to a Rook cluster," or "provide
-  persistent storage for stateful workloads without a cloud provider's
+  Deploys and operates Rook as the Kubernetes operator managing a Ceph storage
+  cluster in-cluster — the `CephCluster` CRD, OSD device discovery/placement,
+  and exposing block (RBD), shared filesystem (CephFS), and object
+  (RGW/S3-compatible) storage as Kubernetes StorageClasses. Use when a user asks
+  to "install Rook-Ceph," "set up a CephCluster on Kubernetes," "create a Ceph
+  block/object/filesystem StorageClass," "add OSD devices to a Rook cluster," or
+  "provide persistent storage for stateful workloads without a cloud provider's
   managed disk service."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - observability_and_secops
+  - rook-ceph-storage-operations
+depends_on: []
 ---
 
 # Rook-Ceph Storage Operations

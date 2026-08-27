@@ -1,21 +1,24 @@
 ---
 name: incident-response-and-on-call-management
 description: >
-  Guides designing incident response structure and on-call operations —
-  Incident Command System roles (Incident Commander, Communications
-  Lead, Operations/Tech Lead, Scribe), severity/priority levels and the
-  paging behavior each implies, on-call rotation design (primary/
-  secondary escalation, follow-the-sun handoffs), and on-call health
-  (alert fatigue, fair page load distribution). Use when a user asks to
-  "set up an incident command process", "define severity levels and who
-  gets paged", "design an on-call rotation/escalation policy", "reduce
-  alert fatigue for on-call", or "our on-call rotation is burning people
+  Guides designing incident response structure and on-call operations — Incident
+  Command System roles (Incident Commander, Communications Lead, Operations/Tech
+  Lead, Scribe), severity/priority levels and the paging behavior each implies,
+  on-call rotation design (primary/ secondary escalation, follow-the-sun
+  handoffs), and on-call health (alert fatigue, fair page load distribution).
+  Use when a user asks to "set up an incident command process", "define severity
+  levels and who gets paged", "design an on-call rotation/escalation policy",
+  "reduce alert fatigue for on-call", or "our on-call rotation is burning people
   out."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - frontend
+  - incident-response-and-on-call-management
+depends_on: []
 ---
 
 # [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response and On-Call Management

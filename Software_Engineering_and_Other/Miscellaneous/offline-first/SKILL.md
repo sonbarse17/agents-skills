@@ -12,10 +12,15 @@ compatibility:
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, offline, phase-7, universal]
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - offline
+  - phase-7
+  - universal
+version: 1.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Offline First

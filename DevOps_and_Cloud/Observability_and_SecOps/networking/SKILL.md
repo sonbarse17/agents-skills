@@ -2,17 +2,22 @@
 name: mobile-networking
 description: >
   Use this skill when the user asks about mobile networking, REST client,
-  GraphQL, offline-first, API caching, retry, pagination, background sync,
-  or API interceptors.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  GraphQL, offline-first, API caching, retry, pagination, background sync, or
+  API interceptors.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, networking, phase-4, universal]
+tags:
+  - mobile
+  - networking
+  - phase-4
+  - universal
+depends_on: []
 ---
 
 # Mobile Networking

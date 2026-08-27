@@ -1,10 +1,18 @@
 ---
 name: sentry
-description: Inspect Sentry issues or events, summarize recent production errors, or pull basic Sentry health data via the Sentry API. Perform read-only queries with the bundled script. Requires SENTRY_AUTH_TOKEN. Use when investigating production errors, checking Sentry issues, or reviewing error trends.
+description: Inspect Sentry issues or events, summarize recent production
+  errors, or pull basic Sentry health data via the Sentry API. Perform read-only
+  queries with the bundled script. Requires SENTRY_AUTH_TOKEN. Use when
+  investigating production errors, checking Sentry issues, or reviewing error
+  trends.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - observability_and_secops
+  - sentry
+depends_on: []
 ---
 
 # Sentry Skill

@@ -1,25 +1,30 @@
 ---
 name: datacenter
 description: >
-  Use this skill when the user says 'datacenter', 'data center', 'DC',
-  'rack', 'power', 'cooling', 'PDU', 'UPS', 'Tier classification',
-  'N+1 redundancy', '2N redundancy', 'cabling', 'fiber', 'copper',
-  'hot aisle', 'cold aisle', 'rack density', 'kW per rack',
-  'DCIM', 'data center operations', 'colocation'.
+  Use this skill when the user says 'datacenter', 'data center', 'DC', 'rack',
+  'power', 'cooling', 'PDU', 'UPS', 'Tier classification', 'N+1 redundancy', '2N
+  redundancy', 'cabling', 'fiber', 'copper', 'hot aisle', 'cold aisle', 'rack
+  density', 'kW per rack', 'DCIM', 'data center operations', 'colocation'.
   Covers: datacenter tier classification (Tier I-IV), power and cooling design,
-  rack layout, cabling standards, DCIM tools, capacity planning,
-  redundancy models, environmental monitoring, colocation selection.
-  Do NOT use for: cloud infrastructure (use cloud-specific skills),
-  server provisioning (use bare-metal skill).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  rack layout, cabling standards, DCIM tools, capacity planning, redundancy
+  models, environmental monitoring, colocation selection. Do NOT use for: cloud
+  infrastructure (use cloud-specific skills), server provisioning (use
+  bare-metal skill).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, datacenter, infrastructure, hardware, phase-5]
+tags:
+  - devops
+  - datacenter
+  - infrastructure
+  - hardware
+  - phase-5
+depends_on: []
 ---
 
 # Datacenter Operations

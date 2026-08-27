@@ -1,6 +1,11 @@
 ---
 name: supabase-developer
-description: Expert Supabase development with PostgreSQL, authentication, Row Level Security, Storage, Edge Functions, and Realtime subscriptions
+description: Expert Supabase development with PostgreSQL, authentication, Row
+  Level Security, Storage, Edge Functions, and Realtime subscriptions
+tags:
+  - backend
+  - supabase-developer
+depends_on: []
 ---
 
 # Supabase Developer Skill

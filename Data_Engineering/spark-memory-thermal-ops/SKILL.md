@@ -1,6 +1,13 @@
 ---
 name: spark-memory-thermal-ops
-description: Manage unified memory and thermals during long-running ML jobs on NVIDIA DGX Spark. Use when planning memory headroom for a training run on GB10, when a job OOMs on unified memory, or when monitoring temperature and power during multi-hour training.
+description: Manage unified memory and thermals during long-running ML jobs on
+  NVIDIA DGX Spark. Use when planning memory headroom for a training run on
+  GB10, when a job OOMs on unified memory, or when monitoring temperature and
+  power during multi-hour training.
+tags:
+  - data_engineering
+  - spark-memory-thermal-ops
+depends_on: []
 ---
 
 # Spark Memory & Thermal Ops

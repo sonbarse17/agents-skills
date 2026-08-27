@@ -1,14 +1,19 @@
 ---
 name: observability-k8s-investigation
 description: >
-  Investigate Kubernetes workload, node, and control-plane issues using OTel telemetry
-  (EDOT). Use when diagnosing pod failures (CrashLoopBackOff, OOMKilled, Error), node
-  pressure, resource exhaustion, image pull failures, admission rejections, autoscaling
-  anomalies, or correlating K8s state with application signals. OTel ingest path only
-  — the legacy ECS Kubernetes integration shape is out of scope.
+  Investigate Kubernetes workload, node, and control-plane issues using OTel
+  telemetry (EDOT). Use when diagnosing pod failures (CrashLoopBackOff,
+  OOMKilled, Error), node pressure, resource exhaustion, image pull failures,
+  admission rejections, autoscaling anomalies, or correlating K8s state with
+  application signals. OTel ingest path only — the legacy ECS Kubernetes
+  integration shape is out of scope.
 metadata:
   author: elastic
   version: 0.2.0
+tags:
+  - observability_and_secops
+  - k8s-investigation
+depends_on: []
 ---
 
 # [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Investigation

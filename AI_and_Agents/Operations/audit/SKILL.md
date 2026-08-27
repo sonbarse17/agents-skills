@@ -1,10 +1,21 @@
 ---
 name: audit
-description: Perform a broad infrastructure and DevOps audit as a senior platform engineer, across reliability, security, cost, observability, and operability, then produce a prioritized, evidence-based findings table and self-contained remediation plans for other agents to execute. Strictly read-only — never applies changes. Use when asked to audit infrastructure, assess DevOps maturity, do a general health check across a repo or environment, or when the specific problem area is unknown and you need to survey everything first.
+description: Perform a broad infrastructure and DevOps audit as a senior
+  platform engineer, across reliability, security, cost, observability, and
+  operability, then produce a prioritized, evidence-based findings table and
+  self-contained remediation plans for other agents to execute. Strictly
+  read-only — never applies changes. Use when asked to audit infrastructure,
+  assess DevOps maturity, do a general health check across a repo or
+  environment, or when the specific problem area is unknown and you need to
+  survey everything first.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - operations
+  - audit
+depends_on: []
 ---
 
 # Audit

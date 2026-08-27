@@ -4,16 +4,20 @@ description: >
   Sequences the rollout and change management of a new internal developer
   platform so teams actually adopt it voluntarily, addressing the
   well-documented failure mode of building a catalog, golden path, or
-  self-service tool nobody asked for and nobody uses. Use when a user asks
-  to "roll out our new IDP," "get teams to adopt the platform," "avoid
-  building something nobody uses," "pick a pilot team for a new platform
-  capability," "handle a team resisting the golden path," or "sunset the
-  old way of doing things without breaking trust."
+  self-service tool nobody asked for and nobody uses. Use when a user asks to
+  "roll out our new IDP," "get teams to adopt the platform," "avoid building
+  something nobody uses," "pick a pilot team for a new platform capability,"
+  "handle a team resisting the golden path," or "sunset the old way of doing
+  things without breaking trust."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - idp-adoption-rollout-and-change-management-strategy
+depends_on: []
 ---
 
 # IDP Adoption Rollout and Change Management Strategy

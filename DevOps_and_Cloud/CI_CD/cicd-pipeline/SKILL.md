@@ -2,21 +2,26 @@
 name: cicd-pipeline
 description: >
   Use this skill when the user says 'CI/CD', 'GitHub Actions', 'GitLab CI',
-  'pipeline', 'deployment pipeline', 'automated testing pipeline', 'workflow yaml',
-  'build pipeline', 'deploy workflow', 'continuous integration', 'continuous delivery'.
-  Covers: pipeline stages (lint → test → build → security scan → deploy), caching,
-  parallel execution, deployment strategies (blue/green, canary, rolling),
-  security scanning, secret management, rollback.
+  'pipeline', 'deployment pipeline', 'automated testing pipeline', 'workflow
+  yaml', 'build pipeline', 'deploy workflow', 'continuous integration',
+  'continuous delivery'. Covers: pipeline stages (lint → test → build → security
+  scan → deploy), caching, parallel execution, deployment strategies
+  (blue/green, canary, rolling), security scanning, secret management, rollback.
   Do NOT use for: Dockerfile optimization, Kubernetes, local dev setup.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, cicd, pipeline, phase-5]
+tags:
+  - devops
+  - cicd
+  - pipeline
+  - phase-5
+depends_on: []
 ---
 
 # CI/CD Pipeline

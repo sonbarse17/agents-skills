@@ -1,18 +1,21 @@
 ---
 name: python-automation-scripting-for-ops
 description: >
-  Builds Python-based ops automation and cloud SDK tooling (boto3 and
-  similar), including argument parsing, structured logging, packaging a
-  script as an installable/reusable CLI, and unit testing with mocked
-  cloud calls. Use when the user asks to "write a Python script to
-  automate X," "use boto3 to do Y," "turn this script into a proper CLI,"
-  "add logging/argument parsing to this script," or "test this
-  automation script without hitting real AWS/cloud APIs."
+  Builds Python-based ops automation and cloud SDK tooling (boto3 and similar),
+  including argument parsing, structured logging, packaging a script as an
+  installable/reusable CLI, and unit testing with mocked cloud calls. Use when
+  the user asks to "write a Python script to automate X," "use boto3 to do Y,"
+  "turn this script into a proper CLI," "add logging/argument parsing to this
+  script," or "test this automation script without hitting real AWS/cloud APIs."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - python-automation-scripting-for-ops
+depends_on: []
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Automation Scripting for Ops

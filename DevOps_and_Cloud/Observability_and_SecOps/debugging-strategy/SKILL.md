@@ -1,16 +1,23 @@
 ---
 name: dev-loop-debugging-strategy
 description: >
-  Use when the user asks about debugging strategies, debugging methodologies, log analysis, debugging tools, root cause analysis, or systematic debugging approaches. Do NOT use for: performance profiling (dev-loop-performance-profiler), or code review (dev-loop-code-review).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about debugging strategies, debugging methodologies,
+  log analysis, debugging tools, root cause analysis, or systematic debugging
+  approaches. Do NOT use for: performance profiling
+  (dev-loop-performance-profiler), or code review (dev-loop-code-review).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, debugging, root-cause-analysis]
+tags:
+  - dev-loop
+  - debugging
+  - root-cause-analysis
+depends_on: []
 ---
 
 # Debugging Strategy

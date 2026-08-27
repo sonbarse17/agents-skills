@@ -1,10 +1,15 @@
 ---
 name: azure-sql
-description: Provision Azure SQL Database and Cosmos DB. Configure security, backups, and replication. Use when deploying managed databases on Azure.
+description: Provision Azure SQL Database and Cosmos DB. Configure security,
+  backups, and replication. Use when deploying managed databases on Azure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-sql
+depends_on: []
 ---
 
 # Azure SQL

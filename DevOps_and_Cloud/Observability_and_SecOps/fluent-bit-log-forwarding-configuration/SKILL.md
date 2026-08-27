@@ -1,20 +1,23 @@
 ---
 name: fluent-bit-log-forwarding-configuration
 description: >
-  Configures Fluent Bit as a lightweight log forwarder — INPUT sources
-  (`tail`, `systemd`, Kubernetes container logs), FILTER stages
-  (`kubernetes` metadata enrichment, `parser`, `grep`, `modify`,
-  `nest`/`lift`), and OUTPUT routing to Loki, Elasticsearch/OpenSearch,
-  or S3, including multiple outputs via tags/`Match` and backpressure/
-  buffering settings. Use when the user asks to "set up Fluent Bit,"
-  "forward Kubernetes pod logs to Loki/Elasticsearch/S3," "write a
-  Fluent Bit parser for my log format," "route different logs to
+  Configures Fluent Bit as a lightweight log forwarder — INPUT sources (`tail`,
+  `systemd`, Kubernetes container logs), FILTER stages (`kubernetes` metadata
+  enrichment, `parser`, `grep`, `modify`, `nest`/`lift`), and OUTPUT routing to
+  Loki, Elasticsearch/OpenSearch, or S3, including multiple outputs via
+  tags/`Match` and backpressure/ buffering settings. Use when the user asks to
+  "set up Fluent Bit," "forward Kubernetes pod logs to Loki/Elasticsearch/S3,"
+  "write a Fluent Bit parser for my log format," "route different logs to
   different outputs," or "Fluent Bit is dropping logs / backing up."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - fluent-bit-log-forwarding-configuration
+depends_on: []
 ---
 
 # Fluent Bit Log Forwarding Configuration

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { z } from "zod";
 import { fileURLToPath } from "url";
+import { parse } from "yaml";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,22 +33,14 @@ function lintFile(absolutePath: string) {
 
     const frontmatter = yamlMatch[1];
     
-    const nameMatch = frontmatter.match(/^name:\s*(.+)$/m);
-    const descMatch = frontmatter.match(/^description:\s*(?:>|\|)?\s*(.+?)(?=\n[a-z]+:|$)/ms);
-    const tagsMatch = frontmatter.match(/^tags:\s*\[(.*?)\]/m);
-    const dependsMatch = frontmatter.match(/^depends_on:\s*\[(.*?)\]/m);
-    
-    let name = nameMatch ? nameMatch[1].trim().replace(/^["']|["']$/g, '') : undefined;
-    let description = descMatch ? descMatch[1].trim().replace(/^["']|["']$/g, '').replace(/\r?\n\s+/g, ' ') : undefined;
-    let tags = tagsMatch ? tagsMatch[1].split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean) : undefined;
-    let depends_on = dependsMatch ? dependsMatch[1].split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean) : undefined;
-
-    const data = {
-      name,
-      description,
-      ...(tags && { tags }),
-      ...(depends_on && { depends_on })
-    };
+    let data: any;
+    try {
+      data = parse(frontmatter);
+    } catch (e) {
+      console.error(`[Error] ${absolutePath}: YAML parsing error.`);
+      errorCount++;
+      return;
+    }
 
     const parsed = FrontmatterSchema.safeParse(data);
     if (!parsed.success) {

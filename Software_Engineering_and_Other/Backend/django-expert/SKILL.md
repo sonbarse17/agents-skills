@@ -1,16 +1,27 @@
 ---
 name: django-expert
-description: "Use when building Django web applications or REST APIs with Django REST Framework. Invoke when working with settings.py, models.py, manage.py, or any Django project file. Creates Django models with proper indexes, optimizes ORM queries using select_related/prefetch_related, builds DRF serializers and viewsets, and configures JWT authentication. Trigger terms: Django, DRF, Django REST Framework, Django ORM, Django model, serializer, viewset, Python web."
+description: "Use when building Django web applications or REST APIs with Django
+  REST Framework. Invoke when working with settings.py, models.py, manage.py, or
+  any Django project file. Creates Django models with proper indexes, optimizes
+  ORM queries using select_related/prefetch_related, builds DRF serializers and
+  viewsets, and configures JWT authentication. Trigger terms: Django, DRF,
+  Django REST Framework, Django ORM, Django model, serializer, viewset, Python
+  web."
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: 1.1.0
   domain: backend
-  triggers: Django, DRF, Django REST Framework, Django ORM, Django model, serializer, viewset, Python web
+  triggers: Django, DRF, Django REST Framework, Django ORM, Django model,
+    serializer, viewset, Python web
   role: specialist
   scope: implementation
   output-format: code
   related-skills: fullstack-guardian, fastapi-expert, test-master, django-storages-s3
+tags:
+  - backend
+  - django-expert
+depends_on: []
 ---
 
 # Django Expert

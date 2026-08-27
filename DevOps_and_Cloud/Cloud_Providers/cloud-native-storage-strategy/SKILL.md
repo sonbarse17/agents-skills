@@ -1,19 +1,23 @@
 ---
 name: cloud-native-storage-strategy
 description: >
-  Guides choosing and configuring cloud storage services — object storage
-  (S3, Azure Blob, GCS), block storage, file storage, and lifecycle/
-  tiering policies — with encryption, access control, and cost-tiering
-  best practices across AWS, Azure, and GCP. Use when a user asks to
-  "design a storage architecture", "choose between object/block/file
-  storage", "set up storage lifecycle/tiering policies", "encrypt data at
-  rest", "prevent a storage bucket from being public", "reduce storage
-  costs", or "pick a storage class for infrequently accessed data".
+  Guides choosing and configuring cloud storage services — object storage (S3,
+  Azure Blob, GCS), block storage, file storage, and lifecycle/ tiering policies
+  — with encryption, access control, and cost-tiering best practices across AWS,
+  Azure, and GCP. Use when a user asks to "design a storage architecture",
+  "choose between object/block/file storage", "set up storage lifecycle/tiering
+  policies", "encrypt data at rest", "prevent a storage bucket from being
+  public", "reduce storage costs", or "pick a storage class for infrequently
+  accessed data".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-native-storage-strategy
+depends_on: []
 ---
 
 # Cloud-Native Storage Strategy

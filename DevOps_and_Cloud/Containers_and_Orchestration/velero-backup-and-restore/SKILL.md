@@ -2,19 +2,22 @@
 name: velero-backup-and-restore
 description: >
   Guides using Velero to back up and restore Kubernetes cluster state and
-  persistent volumes — Backup/Restore/Schedule custom resources, volume
-  snapshot integration via CSI snapshots or the restic/kopia file-system
-  backup path, and cross-cluster or cross-account migration. Use when a
-  user asks to "back up a Kubernetes namespace/cluster", "restore a
-  namespace after accidental deletion", "schedule recurring cluster
-  backups", "migrate workloads to a new cluster or AWS account", "back up
-  persistent volumes with Velero", or "recover from a botched
-  deployment/upgrade."
+  persistent volumes — Backup/Restore/Schedule custom resources, volume snapshot
+  integration via CSI snapshots or the restic/kopia file-system backup path, and
+  cross-cluster or cross-account migration. Use when a user asks to "back up a
+  Kubernetes namespace/cluster", "restore a namespace after accidental
+  deletion", "schedule recurring cluster backups", "migrate workloads to a new
+  cluster or AWS account", "back up persistent volumes with Velero", or "recover
+  from a botched deployment/upgrade."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - velero-backup-and-restore
+depends_on: []
 ---
 
 # Velero Backup and Restore

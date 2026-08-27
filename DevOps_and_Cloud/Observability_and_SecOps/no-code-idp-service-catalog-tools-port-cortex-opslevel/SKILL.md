@@ -1,18 +1,22 @@
 ---
 name: no-code-idp-service-catalog-tools-port-cortex-opslevel
 description: >
-  Evaluates and configures no-code/low-code internal developer portal
-  platforms — Port, Cortex, and OpsLevel — as alternatives to hand-rolling
-  a Backstage instance. Use when the user asks "should we buy or build our
-  internal developer portal," "Port vs Cortex vs OpsLevel," "no-code
-  service catalog alternative to Backstage," "evaluate a catalog/scorecard
-  SaaS tool," or wants to model a service catalog, self-service action, or
-  maturity scorecard in one of these three products.
+  Evaluates and configures no-code/low-code internal developer portal platforms
+  — Port, Cortex, and OpsLevel — as alternatives to hand-rolling a Backstage
+  instance. Use when the user asks "should we buy or build our internal
+  developer portal," "Port vs Cortex vs OpsLevel," "no-code service catalog
+  alternative to Backstage," "evaluate a catalog/scorecard SaaS tool," or wants
+  to model a service catalog, self-service action, or maturity scorecard in one
+  of these three products.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - observability_and_secops
+  - no-code-idp-service-catalog-tools-port-cortex-opslevel
+depends_on: []
 ---
 
 # No-Code IDP Service Catalog Tools: Port, Cortex, OpsLevel

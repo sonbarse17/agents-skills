@@ -1,22 +1,25 @@
 ---
 name: cloud-resource-post-provisioning-validation-and-drift-detection
 description: >
-  Verifies what actually got provisioned in AWS/Azure/GCP matches
-  declared intent, via terraform plan drift checks, AWS Config
-  conformance packs, and Azure Policy compliance scans, plus tag/policy
-  compliance checks against a resource baseline. Use when a user asks to
-  "check for drift," "verify this deployment matches the Terraform
-  state," "run a compliance scan on this account," "why does the console
-  show something Terraform doesn't know about," "audit whether tags are
-  being enforced," or "confirm what actually got provisioned after that
-  change." Complements aws-codepipeline-and-codedeploy/deploy-time
-  validation by checking provisioned infrastructure after the fact, on a
-  recurring basis, not just at deploy time.
+  Verifies what actually got provisioned in AWS/Azure/GCP matches declared
+  intent, via terraform plan drift checks, AWS Config conformance packs, and
+  Azure Policy compliance scans, plus tag/policy compliance checks against a
+  resource baseline. Use when a user asks to "check for drift," "verify this
+  deployment matches the Terraform state," "run a compliance scan on this
+  account," "why does the console show something Terraform doesn't know about,"
+  "audit whether tags are being enforced," or "confirm what actually got
+  provisioned after that change." Complements
+  aws-codepipeline-and-codedeploy/deploy-time validation by checking provisioned
+  infrastructure after the fact, on a recurring basis, not just at deploy time.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - observability_and_secops
+  - cloud-resource-post-provisioning-validation-and-drift-detection
+depends_on: []
 ---
 
 # Cloud Resource Post-Provisioning Validation and Drift Detection

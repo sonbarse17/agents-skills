@@ -1,20 +1,23 @@
 ---
 name: kubernetes-service-connectivity-troubleshooting
 description: >
-  Guides diagnosing a Kubernetes Service with no Endpoints or traffic
-  that isn't reaching backend pods — label selector mismatches between
-  a Service and its pods, readiness probe failures silently excluding
-  otherwise-healthy pods from Endpoints, and DNS resolution failures
-  (CoreDNS health, NetworkPolicy blocking port 53, headless Service/
-  StatefulSet DNS). Use when a user asks "why does my Service have no
-  endpoints," "connection refused hitting a ClusterIP," "my pod can't
-  resolve another service by DNS name," "traffic isn't reaching my
-  pods," or "my Service selector isn't matching any pods."
+  Guides diagnosing a Kubernetes Service with no Endpoints or traffic that isn't
+  reaching backend pods — label selector mismatches between a Service and its
+  pods, readiness probe failures silently excluding otherwise-healthy pods from
+  Endpoints, and DNS resolution failures (CoreDNS health, NetworkPolicy blocking
+  port 53, headless Service/ StatefulSet DNS). Use when a user asks "why does my
+  Service have no endpoints," "connection refused hitting a ClusterIP," "my pod
+  can't resolve another service by DNS name," "traffic isn't reaching my pods,"
+  or "my Service selector isn't matching any pods."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-service-connectivity-troubleshooting
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Service Connectivity Troubleshooting

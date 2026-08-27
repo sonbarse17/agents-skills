@@ -1,3 +1,12 @@
+---
+name: map-location
+description: Comprehensive guidelines and best practices for map-location. Use
+  this skill when working with related components.
+tags:
+  - backend
+  - map-location
+depends_on: []
+---
 # Map and Location Skill
 
 ## Overview

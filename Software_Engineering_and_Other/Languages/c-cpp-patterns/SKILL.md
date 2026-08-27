@@ -1,3 +1,12 @@
+---
+name: c-cpp-patterns
+description: Comprehensive guidelines and best practices for c-cpp-patterns. Use
+  this skill when working with related components.
+tags:
+  - languages
+  - c-cpp-patterns
+depends_on: []
+---
 # C/C++ Embedded Patterns: Memory and RAII
 
 In embedded C/C++, precise memory layout control is critical. Memory alignment ensures that variables reside at addresses that are multiples of their size, preventing unaligned access faults on architectures like ARM Cortex-M. The compiler introduces padding bytes in structs to satisfy these constraints.

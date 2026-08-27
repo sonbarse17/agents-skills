@@ -1,17 +1,22 @@
 ---
 name: soc-operations
 description: >
-  Manage SOC operations, tiered analyst workflows, shift handovers, and security incident escalation.
-  Use when the user asks about SOC, security operations center, SOC analyst, SOC tier, security monitoring, or SOC metrics.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Manage SOC operations, tiered analyst workflows, shift handovers, and security
+  incident escalation. Use when the user asks about SOC, security operations
+  center, SOC analyst, SOC tier, security monitoring, or SOC metrics.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, soc, phase-8]
+tags:
+  - security
+  - soc
+  - phase-8
+depends_on: []
 ---
 
 # SOC Operations

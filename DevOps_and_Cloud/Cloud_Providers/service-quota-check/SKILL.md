@@ -1,16 +1,21 @@
 ---
 name: service-quota-check
-description: Use this skill during any incident investigation, capacity planning, or
-  operational troubleshooting when the issue may be caused by hitting AWS service limits.
-  Activate when you observe throttling errors (ThrottlingException, TooManyRequestsException,
-  LimitExceededException), resource creation failures, capacity-related alarms, or when
-  a recommendation involves provisioning new AWS resources.
+description: Use this skill during any incident investigation, capacity
+  planning, or operational troubleshooting when the issue may be caused by
+  hitting AWS service limits. Activate when you observe throttling errors
+  (ThrottlingException, TooManyRequestsException, LimitExceededException),
+  resource creation failures, capacity-related alarms, or when a recommendation
+  involves provisioning new AWS resources.
 metadata:
   author: yuriypr
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Incident RCA"
-  aws-devops-agent-skills.aws-services: "AWS Service Quotas, Amazon CloudWatch"
-  aws-devops-agent-skills.technical-domains: "Operations, Capacity Planning"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Incident RCA
+  aws-devops-agent-skills.aws-services: AWS Service Quotas, Amazon CloudWatch
+  aws-devops-agent-skills.technical-domains: Operations, Capacity Planning
+tags:
+  - cloud_providers
+  - service-quota-check
+depends_on: []
 ---
 
 # Service Quota Check

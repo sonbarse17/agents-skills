@@ -1,12 +1,16 @@
 ---
 name: observability-llm-obs
 description: >
-  Monitor LLMs and agentic apps: performance, token/cost, response quality, and workflow
-  orchestration. Use when the user asks about LLM monitoring, GenAI observability,
-  or AI cost/quality.
+  Monitor LLMs and agentic apps: performance, token/cost, response quality, and
+  workflow orchestration. Use when the user asks about LLM monitoring, GenAI
+  observability, or AI cost/quality.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - models_and_finetuning
+  - llm-obs
+depends_on: []
 ---
 
 # LLM and Agentic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

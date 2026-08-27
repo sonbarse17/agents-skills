@@ -1,19 +1,23 @@
 ---
 name: makefile-authoring-and-validation
 description: >
-  Authors Makefiles as a build/automation entry point for ops tasks —
-  `.PHONY` target conventions, dependency graphs between targets,
-  variable/default handling, and self-documenting `help` targets — and
-  validates them with `make -n` (dry-run) and `checkmake`/shellcheck-style
-  linting before they're relied on in CI or by other engineers. Use when
-  the user asks to "write a Makefile for this project," "add a build/lint/
-  test target to the Makefile," "why does `make` rebuild everything every
-  time," "make targets phony," or "lint/validate this Makefile."
+  Authors Makefiles as a build/automation entry point for ops tasks — `.PHONY`
+  target conventions, dependency graphs between targets, variable/default
+  handling, and self-documenting `help` targets — and validates them with `make
+  -n` (dry-run) and `checkmake`/shellcheck-style linting before they're relied
+  on in CI or by other engineers. Use when the user asks to "write a Makefile
+  for this project," "add a build/lint/ test target to the Makefile," "why does
+  `make` rebuild everything every time," "make targets phony," or "lint/validate
+  this Makefile."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - frontend
+  - makefile-authoring-and-validation
+depends_on: []
 ---
 
 # Makefile Authoring and Validation

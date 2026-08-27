@@ -5,15 +5,20 @@ description: >
   module resolution, type system, advanced types, generics, testing, or
   production deployment. Focus on tooling, type system, and ecosystem — not
   syntax basics.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [typescript, language, build, type-system]
+tags:
+  - typescript
+  - language
+  - build
+  - type-system
+depends_on: []
 ---
 
 # TypeScript

@@ -1,21 +1,24 @@
 ---
 name: kubernetes-cluster-post-provision-conformance-validation
 description: >
-  Guides validating a freshly provisioned Kubernetes cluster before
-  declaring it production-ready — running CNCF conformance tests via
-  Sonobuoy (quick mode first, then `certified-conformance`), and
-  layering targeted smoke tests (Service DNS resolution, cross-node pod
-  connectivity, PVC provisioning) that conformance alone doesn't cover.
-  Use when a user asks to "run conformance tests on a new cluster,"
-  "validate a cluster with Sonobuoy," "is this cluster production
-  ready," "smoke test a cluster after standing it up," "certify a
-  cluster as CNCF conformant," or "re-validate a cluster after a CNI/
-  Kubernetes upgrade."
+  Guides validating a freshly provisioned Kubernetes cluster before declaring it
+  production-ready — running CNCF conformance tests via Sonobuoy (quick mode
+  first, then `certified-conformance`), and layering targeted smoke tests
+  (Service DNS resolution, cross-node pod connectivity, PVC provisioning) that
+  conformance alone doesn't cover. Use when a user asks to "run conformance
+  tests on a new cluster," "validate a cluster with Sonobuoy," "is this cluster
+  production ready," "smoke test a cluster after standing it up," "certify a
+  cluster as CNCF conformant," or "re-validate a cluster after a CNI/ Kubernetes
+  upgrade."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-cluster-post-provision-conformance-validation
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Cluster Post-Provision Conformance Validation

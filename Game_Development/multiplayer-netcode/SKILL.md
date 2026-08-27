@@ -1,6 +1,10 @@
 ---
 name: Multiplayer Netcode
 description: Implementing state sync and client prediction for multiplayer games.
+tags:
+  - game_development
+  - multiplayer-netcode
+depends_on: []
 ---
 
 # Multiplayer Netcode

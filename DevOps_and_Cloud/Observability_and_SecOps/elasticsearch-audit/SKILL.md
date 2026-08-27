@@ -1,12 +1,16 @@
 ---
 name: elasticsearch-audit
 description: >
-  Enable, configure, and query Elasticsearch security audit logs. Use when the task
-  involves audit logging setup, event filtering, or investigating security incidents
-  like failed logins.
+  Enable, configure, and query Elasticsearch security audit logs. Use when the
+  task involves audit logging setup, event filtering, or investigating security
+  incidents like failed logins.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - elasticsearch-audit
+depends_on: []
 ---
 
 # Elasticsearch [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

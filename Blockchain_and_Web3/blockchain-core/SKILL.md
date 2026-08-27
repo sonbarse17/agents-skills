@@ -1,11 +1,28 @@
 ---
 name: blockchain-core
 description: >
-  Use this skill when asked about blockchain fundamentals, consensus mechanisms, PoW, PoS, gas, staking, blockchain data structures, DAG consensus, Avalanche, MEV, PBS, economic security, blockchain node implementation. Languages: C++, Go. Covers core protocol engineering including consensus algorithms (Nakamoto, PBFT, HotStuff, Snowman, DAG-BFT), MEV taxonomy and supply chain (PBS, ePBS, MEV-Boost, FOCIL), cryptographic primitives (hashing, ECDSA, BLS, Merkle proofs), state machine design (UTXO, account model), mempool and transaction pool, P2P networking, and blockchain storage engines. Do NOT use for: smart contract development (use blockchain-application), web3 frontend integration (use blockchain-web3), or general cryptography outside blockchain context.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, core, consensus, cryptography, protocol, state-machine, phase-blockchain]
+  Use this skill when asked about blockchain fundamentals, consensus mechanisms,
+  PoW, PoS, gas, staking, blockchain data structures, DAG consensus, Avalanche,
+  MEV, PBS, economic security, blockchain node implementation. Languages: C++,
+  Go. Covers core protocol engineering including consensus algorithms (Nakamoto,
+  PBFT, HotStuff, Snowman, DAG-BFT), MEV taxonomy and supply chain (PBS, ePBS,
+  MEV-Boost, FOCIL), cryptographic primitives (hashing, ECDSA, BLS, Merkle
+  proofs), state machine design (UTXO, account model), mempool and transaction
+  pool, P2P networking, and blockchain storage engines. Do NOT use for: smart
+  contract development (use blockchain-application), web3 frontend integration
+  (use blockchain-web3), or general cryptography outside blockchain context.
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - core
+  - consensus
+  - cryptography
+  - protocol
+  - state-machine
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Core

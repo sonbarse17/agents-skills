@@ -1,10 +1,17 @@
 ---
 name: ai-agent-security
-description: Secure AI agents against prompt injection, tool abuse, and data exfiltration with defense-in-depth controls. Use when building, deploying, or hardening agentic AI systems that invoke tools, access data, or interact with production infrastructure.
+description: Secure AI agents against prompt injection, tool abuse, and data
+  exfiltration with defense-in-depth controls. Use when building, deploying, or
+  hardening agentic AI systems that invoke tools, access data, or interact with
+  production infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "2.0"
+tags:
+  - security
+  - ai-agent-security
+depends_on: []
 ---
 
 # AI Agent Security

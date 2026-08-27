@@ -1,10 +1,16 @@
 ---
 name: gcp-cloud-functions
-description: Deploy serverless functions on Google Cloud Functions. Configure triggers and manage deployments. Use when implementing serverless workloads on GCP.
+description: Deploy serverless functions on Google Cloud Functions. Configure
+  triggers and manage deployments. Use when implementing serverless workloads on
+  GCP.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-cloud-functions
+depends_on: []
 ---
 
 # GCP Cloud Functions

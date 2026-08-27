@@ -1,7 +1,18 @@
 ---
 name: infrastructure-testing
-description: Covers testing infrastructure and config before it ships — validate-and-plan checks, policy enforcement, unit and integration tests for IaC modules, ephemeral test environments, and a testing pyramid sized for infrastructure. Use this whenever the user adds tests for Terraform or Kubernetes manifests, asks why a plan applied cleanly but broke production, wants a policy check to block a risky change, or is deciding what needs a full environment versus a fast local check. For the policy rules use `policy-as-code`, and for module structure use `terraform-modules`.
+description: Covers testing infrastructure and config before it ships —
+  validate-and-plan checks, policy enforcement, unit and integration tests for
+  IaC modules, ephemeral test environments, and a testing pyramid sized for
+  infrastructure. Use this whenever the user adds tests for Terraform or
+  Kubernetes manifests, asks why a plan applied cleanly but broke production,
+  wants a policy check to block a risky change, or is deciding what needs a full
+  environment versus a fast local check. For the policy rules use
+  `policy-as-code`, and for module structure use `terraform-modules`.
 license: MIT
+tags:
+  - infrastructure_as_code
+  - infrastructure-testing
+depends_on: []
 ---
 
 # Infrastructure Testing

@@ -1,16 +1,29 @@
 ---
 name: frontend-state-management
 description: >
-  Use this skill when the user says 'state management', 'global state', 'Redux', 'Zustand', 'Pinia', 'NgRx', 'React Context', 'state architecture', 'where to put state', 'server state vs client state', or when deciding how to manage application state. This skill enforces: server state goes in server state libraries (TanStack Query, SWR, Apollo), local state goes in useState/ref/signals, shared state goes in lightweight stores (Zustand, Pinia, Signal Store), and complex state goes in XState or Redux Toolkit. Works with React, Vue, Angular. Do NOT use for: database design, backend caching, or API design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'state management', 'global state', 'Redux',
+  'Zustand', 'Pinia', 'NgRx', 'React Context', 'state architecture', 'where to
+  put state', 'server state vs client state', or when deciding how to manage
+  application state. This skill enforces: server state goes in server state
+  libraries (TanStack Query, SWR, Apollo), local state goes in
+  useState/ref/signals, shared state goes in lightweight stores (Zustand, Pinia,
+  Signal Store), and complex state goes in XState or Redux Toolkit. Works with
+  React, Vue, Angular. Do NOT use for: database design, backend caching, or API
+  design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, state, phase-3, universal]
+tags:
+  - frontend
+  - state
+  - phase-3
+  - universal
+depends_on: []
 ---
 
 # Frontend State Management

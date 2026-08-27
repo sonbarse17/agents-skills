@@ -2,18 +2,22 @@
 name: argo-workflows-pipeline-design
 description: >
   Designs Argo Workflows pipelines using the `Workflow`/`WorkflowTemplate`/
-  `CronWorkflow` CRDs — choosing DAG vs. steps templates, passing artifacts
-  and parameters between steps, and structuring Kubernetes-native batch/ML
-  pipelines distinct from a CI system. Use when the user asks to "write an
-  Argo Workflow," "build a DAG pipeline on Kubernetes," "pass an artifact
-  between workflow steps," "reuse a WorkflowTemplate across pipelines,"
-  "schedule a recurring Argo CronWorkflow," or "decide whether a batch job
-  belongs in Argo Workflows vs. a CI pipeline."
+  `CronWorkflow` CRDs — choosing DAG vs. steps templates, passing artifacts and
+  parameters between steps, and structuring Kubernetes-native batch/ML pipelines
+  distinct from a CI system. Use when the user asks to "write an Argo Workflow,"
+  "build a DAG pipeline on Kubernetes," "pass an artifact between workflow
+  steps," "reuse a WorkflowTemplate across pipelines," "schedule a recurring
+  Argo CronWorkflow," or "decide whether a batch job belongs in Argo Workflows
+  vs. a CI pipeline."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argo-workflows-pipeline-design
+depends_on: []
 ---
 
 # Argo Workflows Pipeline Design

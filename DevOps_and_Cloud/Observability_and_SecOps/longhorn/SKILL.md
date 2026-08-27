@@ -1,16 +1,26 @@
 ---
 name: longhorn
 description: >
-  Use this skill when deploying and managing Longhorn distributed storage on Kubernetes -- installation, volume management, backup, disaster recovery, performance tuning, monitoring. This skill enforces: minimum 3 nodes for production, replica count 3 for all production volumes, S3-compatible backup target, monitoring alerts for volume degraded and disk space. Do NOT use for: non-Kubernetes storage solutions, other CSI drivers, cloud-managed storage (EBS, GCE PD).
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when deploying and managing Longhorn distributed storage on
+  Kubernetes -- installation, volume management, backup, disaster recovery,
+  performance tuning, monitoring. This skill enforces: minimum 3 nodes for
+  production, replica count 3 for all production volumes, S3-compatible backup
+  target, monitoring alerts for volume degraded and disk space. Do NOT use for:
+  non-Kubernetes storage solutions, other CSI drivers, cloud-managed storage
+  (EBS, GCE PD).
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, longhorn, phase-5]
+tags:
+  - devops
+  - longhorn
+  - phase-5
+depends_on: []
 ---
 
 # Longhorn Storage

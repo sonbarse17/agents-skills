@@ -1,16 +1,29 @@
 ---
 name: data-lineage
 description: >
-  Use this skill when asked about data lineage, OpenLineage, Marquez, DataHub, column-level lineage, impact analysis, data provenance, data dependency tracking, or lineage graph models. This skill enforces: OpenLineage integration for standardized lineage collection, Marquez or DataHub deployment for lineage storage and querying, column-level lineage with SQL parsing, impact analysis for downstream dependency detection, and lineage graph visualization. Do NOT use for: data pipeline orchestration (use data-etl-pipeline), data quality validation (use data-data-quality), or data catalog search (use data-catalog).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data lineage, OpenLineage, Marquez, DataHub,
+  column-level lineage, impact analysis, data provenance, data dependency
+  tracking, or lineage graph models. This skill enforces: OpenLineage
+  integration for standardized lineage collection, Marquez or DataHub deployment
+  for lineage storage and querying, column-level lineage with SQL parsing,
+  impact analysis for downstream dependency detection, and lineage graph
+  visualization. Do NOT use for: data pipeline orchestration (use
+  data-etl-pipeline), data quality validation (use data-data-quality), or data
+  catalog search (use data-catalog).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsuf: true
-tags: [data, governance, lineage, phase-11]
+tags:
+  - data
+  - governance
+  - lineage
+  - phase-11
+depends_on: []
 ---
 
 # Data Lineage

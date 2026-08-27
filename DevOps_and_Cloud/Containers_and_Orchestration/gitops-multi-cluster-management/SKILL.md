@@ -2,18 +2,21 @@
 name: gitops-multi-cluster-management
 description: >
   Designs hub-and-spoke GitOps topology for managing a fleet of Kubernetes
-  clusters from one Argo CD control plane — cluster registration, RBAC
-  scoping per spoke cluster, and using the ApplicationSet cluster
-  generator to roll out workloads fleet-wide. Use when the user asks to
-  "manage multiple clusters with one Argo CD," "register a new cluster
-  for GitOps," "design a hub-and-spoke Argo CD topology," "roll a change
-  out to every cluster in the fleet," or "scope per-cluster RBAC so one
-  compromised spoke can't affect the rest."
+  clusters from one Argo CD control plane — cluster registration, RBAC scoping
+  per spoke cluster, and using the ApplicationSet cluster generator to roll out
+  workloads fleet-wide. Use when the user asks to "manage multiple clusters with
+  one Argo CD," "register a new cluster for GitOps," "design a hub-and-spoke
+  Argo CD topology," "roll a change out to every cluster in the fleet," or
+  "scope per-cluster RBAC so one compromised spoke can't affect the rest."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - gitops-multi-cluster-management
+depends_on: []
 ---
 
 # [GitOps](../gitops/SKILL.md) Multi-Cluster Management

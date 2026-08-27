@@ -1,18 +1,21 @@
 ---
 name: knative-eventing-configuration
 description: >
-  Configures Knative Eventing — Brokers, Triggers, and event Sources —
-  the CloudEvents-based publish/subscribe layer distinct from Knative
-  Serving's request-driven model. Use when the user asks to "set up a
-  Knative Broker," "add a Knative Trigger with a CloudEvents filter,"
-  "wire an event Source to a Broker," "route events between Knative
-  services asynchronously," or "why isn't my Knative Trigger delivering
-  events."
+  Configures Knative Eventing — Brokers, Triggers, and event Sources — the
+  CloudEvents-based publish/subscribe layer distinct from Knative Serving's
+  request-driven model. Use when the user asks to "set up a Knative Broker,"
+  "add a Knative Trigger with a CloudEvents filter," "wire an event Source to a
+  Broker," "route events between Knative services asynchronously," or "why isn't
+  my Knative Trigger delivering events."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - cloud_providers
+  - knative-eventing-configuration
+depends_on: []
 ---
 
 # Knative Eventing Configuration

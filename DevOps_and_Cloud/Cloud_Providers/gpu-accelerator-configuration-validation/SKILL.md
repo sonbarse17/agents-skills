@@ -1,19 +1,23 @@
 ---
 name: gpu-accelerator-configuration-validation
 description: >
-  Guides pre-flight validation of GPU scheduling configuration — device
-  plugin health, resource requests/limits, tolerations/nodeSelector, MIG
-  profile availability, and driver/CUDA compatibility — before a training or
-  serving job silently falls back to CPU or fails deep into a run. Use when
-  the user asks to "validate GPU config before submitting a training job",
-  "check why a job isn't using the GPU", "make sure a pod actually gets a
-  GPU", write a pre-submit GPU validation check/admission policy, or debug a
-  job that ran on CPU when it should have used a GPU.
+  Guides pre-flight validation of GPU scheduling configuration — device plugin
+  health, resource requests/limits, tolerations/nodeSelector, MIG profile
+  availability, and driver/CUDA compatibility — before a training or serving job
+  silently falls back to CPU or fails deep into a run. Use when the user asks to
+  "validate GPU config before submitting a training job", "check why a job isn't
+  using the GPU", "make sure a pod actually gets a GPU", write a pre-submit GPU
+  validation check/admission policy, or debug a job that ran on CPU when it
+  should have used a GPU.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - cloud_providers
+  - gpu-accelerator-configuration-validation
+depends_on: []
 ---
 
 # GPU Accelerator Configuration Validation

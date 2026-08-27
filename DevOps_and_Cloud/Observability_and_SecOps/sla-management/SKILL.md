@@ -1,18 +1,23 @@
 ---
 name: enterprise-sla-management
 description: >
-  Use this skill when defining SLAs, SLOs, error budgets, and service reliability targets.
-  This skill enforces: SLO definition, error budget calculation, burn rate alerts, multi-tier SLA structures.
-  Do NOT use for: incident response, on-call scheduling, postmortem writing.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when defining SLAs, SLOs, error budgets, and service
+  reliability targets. This skill enforces: SLO definition, error budget
+  calculation, burn rate alerts, multi-tier SLA structures. Do NOT use for:
+  incident response, on-call scheduling, postmortem writing.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, sla, phase-8]
+tags:
+  - enterprise
+  - sla
+  - phase-8
+depends_on: []
 ---
 
 # SLA Management Agent

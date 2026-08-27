@@ -3,21 +3,28 @@ name: cdn-edge
 description: >
   Use this skill when the user says 'CDN', 'edge', 'content delivery',
   'CloudFront', 'Cloud CDN', 'Azure CDN', 'Akamai', 'Fastly', 'Cloudflare',
-  'edge computing', 'edge functions', 'WAF', 'DDoS protection',
-  'cache invalidation', 'signed URL', 'origin shield'.
-  Covers: CDN architecture, caching strategies, edge computing (CloudFront Functions,
-  Lambda@Edge, Cloudflare Workers, Fastly Compute@Edge), WAF rules, DDoS mitigation,
-  CDN provider comparison, origin configuration, SSL/TLS, signed URLs/cookies.
-  Do NOT use for: general DNS, Kubernetes ingress.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'edge computing', 'edge functions', 'WAF', 'DDoS protection', 'cache
+  invalidation', 'signed URL', 'origin shield'. Covers: CDN architecture,
+  caching strategies, edge computing (CloudFront Functions, Lambda@Edge,
+  Cloudflare Workers, Fastly Compute@Edge), WAF rules, DDoS mitigation, CDN
+  provider comparison, origin configuration, SSL/TLS, signed URLs/cookies. Do
+  NOT use for: general DNS, Kubernetes ingress.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, cdn, edge, performance, security, phase-5]
+tags:
+  - devops
+  - cdn
+  - edge
+  - performance
+  - security
+  - phase-5
+depends_on: []
 ---
 
 # CDN and Edge Computing

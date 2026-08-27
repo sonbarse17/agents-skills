@@ -1,16 +1,29 @@
 ---
 name: frontend-web-components
 description: >
-  Use this skill when the user says 'web component', 'custom element', 'shadow DOM', 'HTML template', 'CustomElementsRegistry', 'ElementInternals', 'form-associated element', 'cross-framework component', 'vanilla web component'. This skill enforces: custom element lifecycle methods, shadow DOM for style encapsulation, <slot> and <template> patterns, ElementInternals for form participation, and attribute/property reflection for cross-framework compatibility. Requires no specific framework — works in any web project. Do NOT use for: Lit-specific components, framework-specific components (React/Vue/Angular), or projects that should use a library-based approach.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'web component', 'custom element', 'shadow
+  DOM', 'HTML template', 'CustomElementsRegistry', 'ElementInternals',
+  'form-associated element', 'cross-framework component', 'vanilla web
+  component'. This skill enforces: custom element lifecycle methods, shadow DOM
+  for style encapsulation, <slot> and <template> patterns, ElementInternals for
+  form participation, and attribute/property reflection for cross-framework
+  compatibility. Requires no specific framework — works in any web project. Do
+  NOT use for: Lit-specific components, framework-specific components
+  (React/Vue/Angular), or projects that should use a library-based approach.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, universal, web-components, phase-10]
+tags:
+  - frontend
+  - universal
+  - web-components
+  - phase-10
+depends_on: []
 ---
 
 # Web Components

@@ -1,3 +1,12 @@
+---
+name: ai-evals
+description: Comprehensive guidelines and best practices for ai-evals. Use this
+  skill when working with related components.
+tags:
+  - operations
+  - ai-evals
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

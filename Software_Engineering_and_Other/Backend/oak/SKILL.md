@@ -1,16 +1,24 @@
 ---
 name: oak-backend
 description: >
-  Use this skill when building Oak backend applications — Deno native HTTP framework, middleware context, composable middleware. This skill enforces: middleware composition, proper context usage, Deno permissions, type-safe routing. Do NOT use for: Node.js Express projects, Hono on Deno, traditional Node.js backends.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Oak backend applications — Deno native HTTP
+  framework, middleware context, composable middleware. This skill enforces:
+  middleware composition, proper context usage, Deno permissions, type-safe
+  routing. Do NOT use for: Node.js Express projects, Hono on Deno, traditional
+  Node.js backends.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, deno, phase-4]
+tags:
+  - backend
+  - deno
+  - phase-4
+depends_on: []
 ---
 
 # Oak Backend

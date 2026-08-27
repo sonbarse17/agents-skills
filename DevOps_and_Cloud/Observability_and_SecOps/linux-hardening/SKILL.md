@@ -1,10 +1,17 @@
 ---
 name: linux-hardening
-description: Apply CIS benchmarks and secure Linux servers. Configure SSH, manage users, implement firewall rules, and enable security features. Use when hardening Linux systems for production or meeting security compliance requirements.
+description: Apply CIS benchmarks and secure Linux servers. Configure SSH,
+  manage users, implement firewall rules, and enable security features. Use when
+  hardening Linux systems for production or meeting security compliance
+  requirements.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - linux-hardening
+depends_on: []
 ---
 
 # Linux Hardening

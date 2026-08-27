@@ -1,16 +1,26 @@
 ---
 name: scala-play
 description: >
-  Use this skill when building Scala Play Framework applications — MVC architecture, Slick database access, JSON handling with Play JSON, async actions, and testing. This skill enforces: thin controllers, service layer, Slick for database, Play JSON (reads/writes) for serialization, Future-based async actions. Requires Scala 2.13+ or 3 and Play Framework 3.x. Do NOT use for: Akka HTTP, http4s, ZIO, or non-Play Scala backends.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Scala Play Framework applications — MVC
+  architecture, Slick database access, JSON handling with Play JSON, async
+  actions, and testing. This skill enforces: thin controllers, service layer,
+  Slick for database, Play JSON (reads/writes) for serialization, Future-based
+  async actions. Requires Scala 2.13+ or 3 and Play Framework 3.x. Do NOT use
+  for: Akka HTTP, http4s, ZIO, or non-Play Scala backends.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, scala, play, phase-7]
+tags:
+  - backend
+  - scala
+  - play
+  - phase-7
+depends_on: []
 ---
 
 # Scala Play Framework

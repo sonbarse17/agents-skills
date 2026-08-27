@@ -2,16 +2,20 @@
 name: prompt-and-context-engineering
 description: >
   Guides structuring system prompts, managing context window budget, and
-  organizing what an LLM agent sees at each turn. Use when a user asks to
-  "write a system prompt," "reduce token usage," "fix inconsistent agent
-  behavior," "the model ignores my instructions," "organize context for a
-  long-running agent," or is deciding what belongs in a system prompt vs. a
-  tool description vs. retrieved content vs. conversation history.
+  organizing what an LLM agent sees at each turn. Use when a user asks to "write
+  a system prompt," "reduce token usage," "fix inconsistent agent behavior,"
+  "the model ignores my instructions," "organize context for a long-running
+  agent," or is deciding what belongs in a system prompt vs. a tool description
+  vs. retrieved content vs. conversation history.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - prompt-and-context-engineering
+depends_on: []
 ---
 
 # Prompt and Context Engineering

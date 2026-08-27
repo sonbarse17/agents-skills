@@ -1,11 +1,30 @@
 ---
 name: blockchain-security
 description: >
-  Use this skill when asked about blockchain security, smart contract auditing, DeFi threat modeling, blockchain incident response, bug bounty programs, economic security, formal verification of smart contracts, and blockchain-specific security analysis. Languages: Solidity, Python, Rust, Haskell. Covers threat modeling for DeFi protocols (STRIDE for blockchain), audit methodology (scope, manual review, tooling, report), incident response (emergency pause, fork coordination, compensation), bug bounty programs (Immunefi, Code4rena), economic security (game theory, incentive analysis, MEV), and formal verification (Certora CVL, Halmos, Scribble). References shared skills from skills/security/ (threat-intelligence, secrets-management, siem-engineering) and skills/quality/ (property-based-testing) where core concepts overlap. Do NOT use for: general smart contract testing (use blockchain-testing), standard application security (use skills/security/ skills), or core cryptography (use blockchain-cryptography).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, security, audit, formal-verification, phase-blockchain]
+  Use this skill when asked about blockchain security, smart contract auditing,
+  DeFi threat modeling, blockchain incident response, bug bounty programs,
+  economic security, formal verification of smart contracts, and
+  blockchain-specific security analysis. Languages: Solidity, Python, Rust,
+  Haskell. Covers threat modeling for DeFi protocols (STRIDE for blockchain),
+  audit methodology (scope, manual review, tooling, report), incident response
+  (emergency pause, fork coordination, compensation), bug bounty programs
+  (Immunefi, Code4rena), economic security (game theory, incentive analysis,
+  MEV), and formal verification (Certora CVL, Halmos, Scribble). References
+  shared skills from skills/security/ (threat-intelligence, secrets-management,
+  siem-engineering) and skills/quality/ (property-based-testing) where core
+  concepts overlap. Do NOT use for: general smart contract testing (use
+  blockchain-testing), standard application security (use skills/security/
+  skills), or core cryptography (use blockchain-cryptography).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - security
+  - audit
+  - formal-verification
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Security

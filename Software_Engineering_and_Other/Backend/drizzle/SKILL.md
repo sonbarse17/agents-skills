@@ -1,16 +1,26 @@
 ---
 name: nodejs-drizzle
 description: >
-  Use this skill when working with Drizzle ORM — schema definition, SQL-like queries, migrations, relations, and edge deployment. This skill enforces: schema-first design, explicit SQL patterns, drizzle-kit for migrations, relational query builder, and connection management. Requires drizzle-orm and drizzle-kit. Do NOT use for: Prisma, TypeORM, Mongoose, or non-Drizzle ORM frameworks.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when working with Drizzle ORM — schema definition, SQL-like
+  queries, migrations, relations, and edge deployment. This skill enforces:
+  schema-first design, explicit SQL patterns, drizzle-kit for migrations,
+  relational query builder, and connection management. Requires drizzle-orm and
+  drizzle-kit. Do NOT use for: Prisma, TypeORM, Mongoose, or non-Drizzle ORM
+  frameworks.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, nodejs, drizzle, phase-10]
+tags:
+  - backend
+  - nodejs
+  - drizzle
+  - phase-10
+depends_on: []
 ---
 
 # Drizzle ORM

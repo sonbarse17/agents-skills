@@ -1,3 +1,12 @@
+---
+name: k8s-operators
+description: Comprehensive guidelines and best practices for k8s-operators. Use
+  this skill when working with related components.
+tags:
+  - containers_and_orchestration
+  - k8s-operators
+depends_on: []
+---
 # Kubernetes Operators and CRDs
 
 Kubernetes Operators encode human operational knowledge into software. They build upon Custom Resource Definitions (CRDs), which extend the Kubernetes API.

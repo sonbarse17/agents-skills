@@ -1,20 +1,23 @@
 ---
 name: devops-delivery-metrics-and-dora-analysis
 description: >
-  Measures and interprets the DORA four keys — deployment frequency, lead
-  time for changes, mean time to restore (MTTR), and change failure rate —
-  including how to compute each one correctly, common measurement
-  pitfalls (vanity metrics, gaming the numbers, misclassifying a
-  rollback), and how to use the results to drive process improvement
-  rather than individual blame. Use when the user asks to "set up DORA
-  metrics," "measure our deployment frequency/lead time," "what's our
-  change failure rate," "are we an elite/high/medium/low performer," or
-  "use delivery metrics to improve, not to blame the team."
+  Measures and interprets the DORA four keys — deployment frequency, lead time
+  for changes, mean time to restore (MTTR), and change failure rate — including
+  how to compute each one correctly, common measurement pitfalls (vanity
+  metrics, gaming the numbers, misclassifying a rollback), and how to use the
+  results to drive process improvement rather than individual blame. Use when
+  the user asks to "set up DORA metrics," "measure our deployment frequency/lead
+  time," "what's our change failure rate," "are we an elite/high/medium/low
+  performer," or "use delivery metrics to improve, not to blame the team."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - observability_and_secops
+  - devops-delivery-metrics-and-dora-analysis
+depends_on: []
 ---
 
 # DevOps Delivery Metrics and DORA Analysis

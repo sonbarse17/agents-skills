@@ -1,17 +1,21 @@
 ---
 name: experiment-tracking
 description: >
-  Guides setting up experiment tracking for ML training runs — logging
-  params, metrics, artifacts, and code/data versions so results are
-  comparable and reproducible. Use when the user asks to "track experiments",
-  set up MLflow/Weights & Biases/Neptune/DVC, compare training runs, reproduce
-  a past experiment, organize hyperparameter sweeps, or figure out why a
-  training run can't be reproduced.
+  Guides setting up experiment tracking for ML training runs — logging params,
+  metrics, artifacts, and code/data versions so results are comparable and
+  reproducible. Use when the user asks to "track experiments", set up
+  MLflow/Weights & Biases/Neptune/DVC, compare training runs, reproduce a past
+  experiment, organize hyperparameter sweeps, or figure out why a training run
+  can't be reproduced.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - experiment-tracking
+depends_on: []
 ---
 
 # Experiment Tracking

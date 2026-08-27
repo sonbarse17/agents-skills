@@ -1,16 +1,26 @@
 ---
 name: microservices
 description: >
-  Use this skill when designing microservices architecture — decomposition, communication, data, discovery, observability, deployment. This skill enforces: bounded context decomposition, database-per-service ownership, saga patterns for distributed transactions, strangler fig migration. Do NOT use for: monolith application design, frontend architecture, single-service API design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing microservices architecture — decomposition,
+  communication, data, discovery, observability, deployment. This skill
+  enforces: bounded context decomposition, database-per-service ownership, saga
+  patterns for distributed transactions, strangler fig migration. Do NOT use
+  for: monolith application design, frontend architecture, single-service API
+  design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, microservices, phase-2, universal]
+tags:
+  - backend
+  - microservices
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Microservices Architecture

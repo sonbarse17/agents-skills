@@ -1,6 +1,11 @@
 ---
 name: FlashAttention Fundamentals
-description: Understand FlashAttention algorithm, addressing memory-bound bottlenecks via tiling and recomputation to optimize SRAM/HBM data transfers.
+description: Understand FlashAttention algorithm, addressing memory-bound
+  bottlenecks via tiling and recomputation to optimize SRAM/HBM data transfers.
+tags:
+  - miscellaneous
+  - flash-attention
+depends_on: []
 ---
 
 # FlashAttention: Hardware-Aware Exact Attention

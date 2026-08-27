@@ -1,18 +1,27 @@
 ---
 name: devops-mlops
 description: >
-  Use this skill when implementing MLOps: ML CI/CD pipelines, model deployment pipelines, model registry CI/CD, canary deploy ML, A/B testing ML, model monitoring, model drift, model rollback, feature store CI/CD.
-  This skill enforces: CI/CD for model pipeline, registry promotion, canary/blue-green deployment, drift monitoring, rollback strategy.
-  Do NOT use for: model training (use ml-training), feature engineering (use feature-engineering), data pipeline CI/CD (use devops-dataops).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing MLOps: ML CI/CD pipelines, model deployment
+  pipelines, model registry CI/CD, canary deploy ML, A/B testing ML, model
+  monitoring, model drift, model rollback, feature store CI/CD. This skill
+  enforces: CI/CD for model pipeline, registry promotion, canary/blue-green
+  deployment, drift monitoring, rollback strategy. Do NOT use for: model
+  training (use ml-training), feature engineering (use feature-engineering),
+  data pipeline CI/CD (use devops-dataops).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, mlops, ml, phase-11]
+tags:
+  - devops
+  - mlops
+  - ml
+  - phase-11
+depends_on: []
 ---
 
 # MLOps Agent

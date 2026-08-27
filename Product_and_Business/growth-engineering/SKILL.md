@@ -1,18 +1,24 @@
 ---
 name: product-growth-engineering
 description: >
-  Use this skill when designing growth engineering initiatives: viral loops, activation optimization, referral mechanics, and conversion experiments.
-  This skill enforces: growth loop design, activation optimization, viral mechanics, conversion optimization.
-  Do NOT use for: paid acquisition, SEO strategy, content marketing, sales funnel optimization.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing growth engineering initiatives: viral loops,
+  activation optimization, referral mechanics, and conversion experiments. This
+  skill enforces: growth loop design, activation optimization, viral mechanics,
+  conversion optimization. Do NOT use for: paid acquisition, SEO strategy,
+  content marketing, sales funnel optimization.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [product, growth, phase-8]
+tags:
+  - product
+  - growth
+  - phase-8
+depends_on: []
 ---
 
 # Growth Engineering Agent

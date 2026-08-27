@@ -1,16 +1,29 @@
 ---
 name: mobile-ar-vr
 description: >
-  Use this skill when the user says 'AR', 'VR', 'augmented reality', 'virtual reality', 'ARKit', 'ARCore', 'Unity AR', '3D rendering', 'SceneView', 'AR scene', 'AR interaction', 'AR performance'. This skill enforces: platform-specific AR configuration (ARKit vs ARCore), scene setup with anchor management, optimal 3D model handling with LODs and compression, interaction patterns for gesture and placement, performance budgets (<60fps, <200MB), and VR integration considerations. Do NOT use for: general mobile UI/UX design, game engine tutorials unrelated to AR/VR, or 3D modeling software usage instructions.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'AR', 'VR', 'augmented reality', 'virtual
+  reality', 'ARKit', 'ARCore', 'Unity AR', '3D rendering', 'SceneView', 'AR
+  scene', 'AR interaction', 'AR performance'. This skill enforces:
+  platform-specific AR configuration (ARKit vs ARCore), scene setup with anchor
+  management, optimal 3D model handling with LODs and compression, interaction
+  patterns for gesture and placement, performance budgets (<60fps, <200MB), and
+  VR integration considerations. Do NOT use for: general mobile UI/UX design,
+  game engine tutorials unrelated to AR/VR, or 3D modeling software usage
+  instructions.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, universal, ar-vr, phase-10]
+tags:
+  - mobile
+  - universal
+  - ar-vr
+  - phase-10
+depends_on: []
 ---
 
 # Mobile AR/VR Development

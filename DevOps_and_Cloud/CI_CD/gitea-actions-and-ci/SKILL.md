@@ -1,18 +1,21 @@
 ---
 name: gitea-actions-and-ci
 description: >
-  Configures Gitea Actions — Gitea's GitHub Actions-compatible CI/CD
-  runner — including self-hosted act_runner setup/registration and the
-  specific differences from GitHub Actions (supported contexts, missing
-  features, runner labels). Use when the user asks to "set up CI on
-  Gitea," "configure Gitea Actions," "register an act_runner," "port a
-  GitHub Actions workflow to Gitea," or "troubleshoot a Gitea Actions job
-  that isn't picked up by any runner."
+  Configures Gitea Actions — Gitea's GitHub Actions-compatible CI/CD runner —
+  including self-hosted act_runner setup/registration and the specific
+  differences from GitHub Actions (supported contexts, missing features, runner
+  labels). Use when the user asks to "set up CI on Gitea," "configure Gitea
+  Actions," "register an act_runner," "port a GitHub Actions workflow to Gitea,"
+  or "troubleshoot a Gitea Actions job that isn't picked up by any runner."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - gitea-actions-and-ci
+depends_on: []
 ---
 
 # Gitea Actions and CI

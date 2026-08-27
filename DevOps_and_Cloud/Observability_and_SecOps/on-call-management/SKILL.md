@@ -1,7 +1,18 @@
 ---
 name: on-call-management
-description: Designs a sustainable on-call system — fair rotations, clear escalation paths, clean handoffs, and a humane alert load — and treats on-call health itself as a reliability metric rather than an unmeasured cost absorbed by whoever holds the pager. Use this whenever the user is setting up or fixing an on-call rotation, mentions alert fatigue or burnout, is designing escalation policies, or asks how pages should route. For handling a page once it fires use `incident-response`; for reducing pages by fixing their cause use `alerting` and `toil-reduction`.
+description: Designs a sustainable on-call system — fair rotations, clear
+  escalation paths, clean handoffs, and a humane alert load — and treats on-call
+  health itself as a reliability metric rather than an unmeasured cost absorbed
+  by whoever holds the pager. Use this whenever the user is setting up or fixing
+  an on-call rotation, mentions alert fatigue or burnout, is designing
+  escalation policies, or asks how pages should route. For handling a page once
+  it fires use `incident-response`; for reducing pages by fixing their cause use
+  `alerting` and `toil-reduction`.
 license: MIT
+tags:
+  - observability_and_secops
+  - on-call-management
+depends_on: []
 ---
 
 # On-Call Management

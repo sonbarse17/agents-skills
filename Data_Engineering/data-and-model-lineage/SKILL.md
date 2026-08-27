@@ -2,17 +2,21 @@
 name: data-and-model-lineage
 description: >
   Guides tracking end-to-end lineage from raw data sources through feature
-  computation, training runs, and model versions, to enable root-cause
-  tracing, impact analysis, and compliance/audit answers. Use when the user
-  asks to "trace where a feature/model came from", set up data/model lineage
-  tracking, do impact analysis before changing an upstream table, answer an
+  computation, training runs, and model versions, to enable root-cause tracing,
+  impact analysis, and compliance/audit answers. Use when the user asks to
+  "trace where a feature/model came from", set up data/model lineage tracking,
+  do impact analysis before changing an upstream table, answer an
   audit/compliance question about a model's training data, or debug a bad
   prediction back to its source.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - data-and-model-lineage
+depends_on: []
 ---
 
 # Data And Model Lineage

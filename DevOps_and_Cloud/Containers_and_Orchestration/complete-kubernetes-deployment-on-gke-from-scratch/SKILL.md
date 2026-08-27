@@ -1,24 +1,27 @@
 ---
 name: complete-kubernetes-deployment-on-gke-from-scratch
 description: >
-  Sequences a complete, end-to-end GKE deployment from a bare GCP project to
-  a production-ready cluster serving a first workload — GCP landing zone
-  prerequisites, GKE cluster and node pool provisioning, VPC-native/
-  Dataplane V2 CNI (with the Calico alternative noted), ingress (GKE
-  Ingress/Gateway API vs. ingress-nginx), cert-manager with Cloud DNS,
-  conformance validation, a Helm-deployed workload, and a node/cluster
-  health baseline. This is an integration/orchestration skill that
-  sequences several existing tool-specific skills in the correct order and
-  flags the handoff points between them — it does not restate their
-  internals. Use when a user asks to "deploy a Kubernetes cluster on GKE
-  from scratch," "set up a new GKE environment end to end," "build a
-  production GKE cluster from a fresh GCP project," or "give me the full
-  sequence to go from nothing to a working GKE cluster."
+  Sequences a complete, end-to-end GKE deployment from a bare GCP project to a
+  production-ready cluster serving a first workload — GCP landing zone
+  prerequisites, GKE cluster and node pool provisioning, VPC-native/ Dataplane
+  V2 CNI (with the Calico alternative noted), ingress (GKE Ingress/Gateway API
+  vs. ingress-nginx), cert-manager with Cloud DNS, conformance validation, a
+  Helm-deployed workload, and a node/cluster health baseline. This is an
+  integration/orchestration skill that sequences several existing tool-specific
+  skills in the correct order and flags the handoff points between them — it
+  does not restate their internals. Use when a user asks to "deploy a Kubernetes
+  cluster on GKE from scratch," "set up a new GKE environment end to end,"
+  "build a production GKE cluster from a fresh GCP project," or "give me the
+  full sequence to go from nothing to a working GKE cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-kubernetes-deployment-on-gke-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on GKE From Scratch

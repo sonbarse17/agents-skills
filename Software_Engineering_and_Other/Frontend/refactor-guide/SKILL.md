@@ -1,16 +1,23 @@
 ---
 name: dev-loop-refactor-guide
 description: >
-  Use when the user asks about code refactoring, refactoring strategies, code smells, improving code structure, extracting functions/classes, or legacy code modernization. Do NOT use for: debugging (dev-loop-debugging-strategy), or performance optimization (dev-loop-performance-profiler).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about code refactoring, refactoring strategies, code
+  smells, improving code structure, extracting functions/classes, or legacy code
+  modernization. Do NOT use for: debugging (dev-loop-debugging-strategy), or
+  performance optimization (dev-loop-performance-profiler).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, refactoring, code-quality]
+tags:
+  - dev-loop
+  - refactoring
+  - code-quality
+depends_on: []
 ---
 
 # Refactoring Guide

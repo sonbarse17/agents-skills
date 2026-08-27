@@ -1,10 +1,22 @@
 ---
 name: db-review
-description: Review database operations and schema-change safety as a senior database reliability engineer — migrations, locking and blocking risk, connection pooling, indexing, replication, PITR, and production data-access paths — then produce an evidence-based findings table and self-contained remediation plans. Strictly read-only — never runs a migration, DDL, DML, kill, failover, or any statement that changes data or schema. Use when asked to review a database migration for safety, assess whether a schema change can be deployed with zero downtime, diagnose connection-pool exhaustion or slow queries from config, or review database reliability and operational posture.
+description: Review database operations and schema-change safety as a senior
+  database reliability engineer — migrations, locking and blocking risk,
+  connection pooling, indexing, replication, PITR, and production data-access
+  paths — then produce an evidence-based findings table and self-contained
+  remediation plans. Strictly read-only — never runs a migration, DDL, DML,
+  kill, failover, or any statement that changes data or schema. Use when asked
+  to review a database migration for safety, assess whether a schema change can
+  be deployed with zero downtime, diagnose connection-pool exhaustion or slow
+  queries from config, or review database reliability and operational posture.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.0.0"
+  version: 1.0.0
+tags:
+  - operations
+  - db-review
+depends_on: []
 ---
 
 # Database Review

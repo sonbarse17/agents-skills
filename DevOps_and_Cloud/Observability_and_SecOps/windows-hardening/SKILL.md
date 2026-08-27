@@ -1,10 +1,16 @@
 ---
 name: windows-hardening
-description: Harden Windows servers per security baselines and CIS benchmarks. Configure Group Policy, Windows Defender, and security features. Use when securing Windows Server environments.
+description: Harden Windows servers per security baselines and CIS benchmarks.
+  Configure Group Policy, Windows Defender, and security features. Use when
+  securing Windows Server environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - windows-hardening
+depends_on: []
 ---
 
 # Windows Hardening

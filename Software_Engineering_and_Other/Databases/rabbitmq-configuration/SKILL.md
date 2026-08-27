@@ -1,16 +1,20 @@
 ---
 name: rabbitmq-configuration
 description: >
-  Designs RabbitMQ exchange/queue/binding topology, virtual host
-  separation, and clustering for high availability. Use when the user
-  asks to "design a RabbitMQ exchange," "set up queue bindings," "create a
-  virtual host," "cluster RabbitMQ nodes," "choose exchange type," or set
-  up a new RabbitMQ deployment from scratch.
+  Designs RabbitMQ exchange/queue/binding topology, virtual host separation, and
+  clustering for high availability. Use when the user asks to "design a RabbitMQ
+  exchange," "set up queue bindings," "create a virtual host," "cluster RabbitMQ
+  nodes," "choose exchange type," or set up a new RabbitMQ deployment from
+  scratch.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - databases
+  - rabbitmq-configuration
+depends_on: []
 ---
 
 # RabbitMQ Configuration

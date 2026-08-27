@@ -1,6 +1,10 @@
 ---
 name: Tauri Desktop Development
 description: Best practices for building desktop apps with Tauri and secure Native IPC.
+tags:
+  - frontend
+  - tauri
+depends_on: []
 ---
 
 # Tauri Desktop Development

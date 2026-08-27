@@ -1,12 +1,19 @@
 ---
 name: azure-keyvault-keys-rust
-description: |
-  Azure Key Vault Keys library for Rust. Create, manage, and use cryptographic keys including RSA, EC, and HSM-protected keys.
-  Triggers: "keyvault keys rust", "KeyClient rust", "create key rust", "encrypt rust", "wrap key rust", "sign rust".
+description: >
+  Azure Key Vault Keys library for Rust. Create, manage, and use cryptographic
+  keys including RSA, EC, and HSM-protected keys.
+
+  Triggers: "keyvault keys rust", "KeyClient rust", "create key rust", "encrypt
+  rust", "wrap key rust", "sign rust".
 license: MIT
 metadata:
   author: Microsoft
   package: azure_security_keyvault_keys
+tags:
+  - skills
+  - azure-keyvault-keys-rust
+depends_on: []
 ---
 
 # Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys library for Rust

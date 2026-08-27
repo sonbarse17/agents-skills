@@ -5,16 +5,19 @@ description: >
   and, for stateful multi-step agents, LangGraph's graph-based orchestration
   (nodes, edges, cycles, checkpointed persistence, human-in-the-loop
   interrupts). Use when a user asks to "build this with LangChain," "use
-  LangGraph for a stateful agent," "add persistence/checkpointing to a
-  LangChain agent," "add a human approval step in a LangGraph graph," "my
-  LangChain agent loses state between turns," or is deciding between
-  LangChain's `AgentExecutor`, a LangGraph graph, and a hand-rolled control
-  loop.
+  LangGraph for a stateful agent," "add persistence/checkpointing to a LangChain
+  agent," "add a human approval step in a LangGraph graph," "my LangChain agent
+  loses state between turns," or is deciding between LangChain's
+  `AgentExecutor`, a LangGraph graph, and a hand-rolled control loop.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - langchain-and-langgraph-agent-orchestration
+depends_on: []
 ---
 
 # LangChain and LangGraph Agent Orchestration

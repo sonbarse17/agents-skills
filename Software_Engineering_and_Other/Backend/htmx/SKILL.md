@@ -1,16 +1,27 @@
 ---
 name: htmx
 description: >
-  Use this skill when the user says 'htmx', 'htmx setup', 'htmx ajax', 'htmx hx-get', 'htmx hx-post', 'htmx HATEOAS', 'htmx hypermedia', 'htmx server-driven', or when building hypermedia-driven applications with htmx. This skill enforces: server-driven AJAX via HTML attributes, HATEOAS principles, minimal JavaScript, partial page replacements, hypermedia as the engine of application state. Requires htmx in the project (CDN or npm). Do NOT use for: SPA frameworks (React, Vue, Alpine), JSON API clients, or full page reload patterns.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'htmx', 'htmx setup', 'htmx ajax', 'htmx
+  hx-get', 'htmx hx-post', 'htmx HATEOAS', 'htmx hypermedia', 'htmx
+  server-driven', or when building hypermedia-driven applications with htmx.
+  This skill enforces: server-driven AJAX via HTML attributes, HATEOAS
+  principles, minimal JavaScript, partial page replacements, hypermedia as the
+  engine of application state. Requires htmx in the project (CDN or npm). Do NOT
+  use for: SPA frameworks (React, Vue, Alpine), JSON API clients, or full page
+  reload patterns.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, htmx, phase-1]
+tags:
+  - frontend
+  - htmx
+  - phase-1
+depends_on: []
 ---
 
 # htmx

@@ -1,16 +1,30 @@
 ---
 name: ml-classical-ml
 description: >
-  Use this skill when asked about scikit-learn, XGBoost, LightGBM, CatBoost, regression, classification, clustering, ensemble, random forest, gradient boosting, SVM, PCA, feature importance, or cross-validation. This skill enforces: supervised learning pipelines (regression and classification metrics), ensemble methods (bagging, boosting, stacking), gradient boosting hyperparameter tuning (XGBoost, LightGBM, CatBoost), unsupervised learning (clustering dimensionality reduction), scikit-learn Pipeline and ColumnTransformer, cross-validation strategies, and imbalanced data handling. Do NOT use for: deep neural networks, reinforcement learning, or transformer models.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about scikit-learn, XGBoost, LightGBM, CatBoost,
+  regression, classification, clustering, ensemble, random forest, gradient
+  boosting, SVM, PCA, feature importance, or cross-validation. This skill
+  enforces: supervised learning pipelines (regression and classification
+  metrics), ensemble methods (bagging, boosting, stacking), gradient boosting
+  hyperparameter tuning (XGBoost, LightGBM, CatBoost), unsupervised learning
+  (clustering dimensionality reduction), scikit-learn Pipeline and
+  ColumnTransformer, cross-validation strategies, and imbalanced data handling.
+  Do NOT use for: deep neural networks, reinforcement learning, or transformer
+  models.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, classical, machine-learning, phase-11]
+tags:
+  - ml
+  - classical
+  - machine-learning
+  - phase-11
+depends_on: []
 ---
 
 # ML Classical ML

@@ -1,10 +1,19 @@
 ---
 name: k8s-review
-description: Review Kubernetes manifests, Helm charts, Kustomize overlays, and live workloads as a senior Kubernetes engineer, then produce a prioritized, evidence-based findings table and self-contained remediation plans. Strictly read-only — never applies, scales, deletes, or patches anything. Use when asked to review Kubernetes YAML, Helm charts, or cluster workloads for reliability, security, resource management, or best-practice compliance.
+description: Review Kubernetes manifests, Helm charts, Kustomize overlays, and
+  live workloads as a senior Kubernetes engineer, then produce a prioritized,
+  evidence-based findings table and self-contained remediation plans. Strictly
+  read-only — never applies, scales, deletes, or patches anything. Use when
+  asked to review Kubernetes YAML, Helm charts, or cluster workloads for
+  reliability, security, resource management, or best-practice compliance.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - containers_and_orchestration
+  - k8s-review
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Review

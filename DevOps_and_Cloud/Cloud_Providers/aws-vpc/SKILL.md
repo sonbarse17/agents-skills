@@ -1,10 +1,15 @@
 ---
 name: aws-vpc
-description: Design and implement VPCs and networking. Configure subnets, route tables, and security groups. Use when setting up AWS network infrastructure.
+description: Design and implement VPCs and networking. Configure subnets, route
+  tables, and security groups. Use when setting up AWS network infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-vpc
+depends_on: []
 ---
 
 # AWS VPC

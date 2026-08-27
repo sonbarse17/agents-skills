@@ -1,3 +1,12 @@
+---
+name: iot-protocols
+description: Comprehensive guidelines and best practices for iot-protocols. Use
+  this skill when working with related components.
+tags:
+  - miscellaneous
+  - iot-protocols
+depends_on: []
+---
 # IoT Protocols: MQTT and CoAP
 
 MQTT is a lightweight publish-subscribe protocol running over TCP/IP. It defines three Quality of Service (QoS) levels: QoS 0 (at most once), QoS 1 (at least once, requiring a PUBACK), and QoS 2 (exactly once, using a four-step handshake). 

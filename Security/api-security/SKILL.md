@@ -1,16 +1,27 @@
 ---
 name: security-api-security
 description: >
-  Use this skill when asked about API security, OWASP API Top 10, rate limiting, API authentication, JWT security, OAuth2, API key management, API gateway, WAF, API abuse, request signing, or API threat modeling. This skill enforces: OWASP API Top 10 threat modeling, authentication/authorization patterns (JWT, OAuth2, API keys), rate limiting with tiered policies (token bucket, sliding window, per-user/per-endpoint), input validation and WAF rules, request signing, and audit logging. Do NOT use for: web application security (XSS, CSRF), network security (TLS, mTLS), or container security.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about API security, OWASP API Top 10, rate limiting,
+  API authentication, JWT security, OAuth2, API key management, API gateway,
+  WAF, API abuse, request signing, or API threat modeling. This skill enforces:
+  OWASP API Top 10 threat modeling, authentication/authorization patterns (JWT,
+  OAuth2, API keys), rate limiting with tiered policies (token bucket, sliding
+  window, per-user/per-endpoint), input validation and WAF rules, request
+  signing, and audit logging. Do NOT use for: web application security (XSS,
+  CSRF), network security (TLS, mTLS), or container security.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, backend, phase-10]
+tags:
+  - security
+  - backend
+  - phase-10
+depends_on: []
 ---
 
 # Security API Security

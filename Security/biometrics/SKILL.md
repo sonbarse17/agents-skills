@@ -1,16 +1,26 @@
 ---
 name: mobile-biometrics
 description: >
-  Use this skill when the user says 'biometrics', 'Face ID', 'Touch ID', 'fingerprint', 'fingerprint auth', 'biometric auth', 'face unlock', 'local authentication', 'biometric prompt', 'device credential'. Implement biometric authentication with secure storage on iOS and Android. Do NOT use for: server-side authentication or password-based auth.
+  Use this skill when the user says 'biometrics', 'Face ID', 'Touch ID',
+  'fingerprint', 'fingerprint auth', 'biometric auth', 'face unlock', 'local
+  authentication', 'biometric prompt', 'device credential'. Implement biometric
+  authentication with secure storage on iOS and Android. Do NOT use for:
+  server-side authentication or password-based auth.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, biometrics, auth, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - biometrics
+  - auth
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Biometrics

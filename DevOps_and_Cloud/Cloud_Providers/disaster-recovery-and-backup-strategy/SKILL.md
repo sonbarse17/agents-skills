@@ -1,19 +1,23 @@
 ---
 name: disaster-recovery-and-backup-strategy
 description: >
-  Guides designing backup and disaster-recovery strategy for cloud
-  workloads — RTO/RPO-driven DR pattern selection (backup-restore, pilot
-  light, warm standby, multi-site active-active), cross-region/cross-
-  account backup replication, and DR runbook testing across AWS, Azure,
-  and GCP. Use when a user asks to "design a disaster recovery plan",
-  "set an RTO/RPO target", "back up a database/storage account/bucket
-  cross-region", "test a DR failover", "protect against a region outage",
-  or "recover from accidental deletion or ransomware."
+  Guides designing backup and disaster-recovery strategy for cloud workloads —
+  RTO/RPO-driven DR pattern selection (backup-restore, pilot light, warm
+  standby, multi-site active-active), cross-region/cross- account backup
+  replication, and DR runbook testing across AWS, Azure, and GCP. Use when a
+  user asks to "design a disaster recovery plan", "set an RTO/RPO target", "back
+  up a database/storage account/bucket cross-region", "test a DR failover",
+  "protect against a region outage", or "recover from accidental deletion or
+  ransomware."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - disaster-recovery-and-backup-strategy
+depends_on: []
 ---
 
 # Disaster Recovery and Backup Strategy

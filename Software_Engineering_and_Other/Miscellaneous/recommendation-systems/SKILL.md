@@ -1,6 +1,10 @@
 ---
 name: Recommendation Systems
 description: Implementation of Collaborative Filtering for recommendation systems.
+tags:
+  - miscellaneous
+  - recommendation-systems
+depends_on: []
 ---
 
 # Recommendation Systems (Collaborative Filtering)

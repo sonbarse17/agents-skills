@@ -9,10 +9,14 @@ description: >
   retraining jobs, add pipeline gates before model registration, or make a
   training run reproducible.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - training-pipeline-orchestration
+depends_on: []
 ---
 
 # Training Pipeline Orchestration

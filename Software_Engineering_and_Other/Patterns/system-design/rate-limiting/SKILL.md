@@ -1,6 +1,10 @@
 ---
 name: Rate Limiting
 description: Implementation of Token Bucket and Leaky Bucket algorithms for load balancing.
+tags:
+  - system-design
+  - rate-limiting
+depends_on: []
 ---
 
 # Rate Limiting

@@ -2,18 +2,22 @@
 name: ansible-playbook-and-role-design
 description: >
   Designs and safely runs Ansible playbooks, roles, and inventories for
-  configuration management, including idempotent task design, Ansible Vault
-  for secrets, and choosing config-management (Ansible) versus provisioning
+  configuration management, including idempotent task design, Ansible Vault for
+  secrets, and choosing config-management (Ansible) versus provisioning
   (Terraform/CloudFormation) for a given change. Use when the user asks to
-  "write an Ansible playbook/role for X," "structure an Ansible inventory
-  across environments," "make this task idempotent," "encrypt secrets with
-  Ansible Vault," "dry-run a playbook before production," or "should this be
-  Ansible or Terraform."
+  "write an Ansible playbook/role for X," "structure an Ansible inventory across
+  environments," "make this task idempotent," "encrypt secrets with Ansible
+  Vault," "dry-run a playbook before production," or "should this be Ansible or
+  Terraform."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - ansible-playbook-and-role-design
+depends_on: []
 ---
 
 # [Ansible](../ansible/SKILL.md) Playbook and Role Design

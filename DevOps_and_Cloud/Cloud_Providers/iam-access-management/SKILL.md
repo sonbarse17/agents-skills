@@ -1,7 +1,18 @@
 ---
 name: iam-access-management
-description: Grants least-privilege access to systems and cloud resources through roles rather than individual permissions, short-lived credentials, and regular review, so standing access doesn't accumulate unnoticed. Use this whenever the user is granting cloud or system access, designing IAM roles or policies, setting up break-glass procedures, reviewing who has access to what, or asking why a person or service still has a permission nobody remembers granting. For where the credentials themselves live use `secrets-management`; for enforcing identity-based access on the network itself use `zero-trust`.
+description: Grants least-privilege access to systems and cloud resources
+  through roles rather than individual permissions, short-lived credentials, and
+  regular review, so standing access doesn't accumulate unnoticed. Use this
+  whenever the user is granting cloud or system access, designing IAM roles or
+  policies, setting up break-glass procedures, reviewing who has access to what,
+  or asking why a person or service still has a permission nobody remembers
+  granting. For where the credentials themselves live use `secrets-management`;
+  for enforcing identity-based access on the network itself use `zero-trust`.
 license: MIT
+tags:
+  - cloud_providers
+  - iam-access-management
+depends_on: []
 ---
 
 # IAM & Access Management

@@ -1,6 +1,11 @@
 ---
 name: PagedAttention KV Cache Management
-description: Master the PagedAttention algorithm and virtual memory management for KV Cache, eliminating fragmentation to maximize LLM throughput.
+description: Master the PagedAttention algorithm and virtual memory management
+  for KV Cache, eliminating fragmentation to maximize LLM throughput.
+tags:
+  - models_and_finetuning
+  - paged-attention
+depends_on: []
 ---
 
 # PagedAttention: OS Paging for LLM Inference

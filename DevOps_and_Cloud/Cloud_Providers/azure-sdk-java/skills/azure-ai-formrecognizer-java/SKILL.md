@@ -1,10 +1,21 @@
 ---
 name: azure-ai-formrecognizer-java
-description: |
-  Azure AI Document Intelligence SDK for Java (com.azure:azure-ai-documentintelligence).
-  Use for extracting text, tables, key-value pairs from documents, receipts, invoices, IDs, or building custom document models.
-  Triggers: "document intelligence java", "form recognizer java", "extract text from PDF java", "OCR document java",
-  "analyze invoice receipt java", "custom document model java", "document classification java".
+description: >
+  Azure AI Document Intelligence SDK for Java
+  (com.azure:azure-ai-documentintelligence).
+
+  Use for extracting text, tables, key-value pairs from documents, receipts,
+  invoices, IDs, or building custom document models.
+
+  Triggers: "document intelligence java", "form recognizer java", "extract text
+  from PDF java", "OCR document java",
+
+  "analyze invoice receipt java", "custom document model java", "document
+  classification java".
+tags:
+  - skills
+  - azure-ai-formrecognizer-java
+depends_on: []
 ---
 
 # Azure AI Document Intelligence SDK for Java

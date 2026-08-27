@@ -1,18 +1,24 @@
 ---
 name: enterprise-identity-provider
 description: >
-  Use this skill when implementing identity provider solutions: SSO, federation, directory sync, and access governance.
-  This skill enforces: IdP selection, SSO configuration, directory synchronization, MFA enforcement.
-  Do NOT use for: application-level auth, password policies, TLS configuration, network security.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing identity provider solutions: SSO, federation,
+  directory sync, and access governance. This skill enforces: IdP selection, SSO
+  configuration, directory synchronization, MFA enforcement. Do NOT use for:
+  application-level auth, password policies, TLS configuration, network
+  security.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, identity, phase-8]
+tags:
+  - enterprise
+  - identity
+  - phase-8
+depends_on: []
 ---
 
 # Identity Provider Agent

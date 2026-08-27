@@ -1,7 +1,12 @@
 ---
 name: blockchain-data-indexing
 description: >
-  Blockchain indexing covering The Graph subgraphs, Dune Analytics, Goldsky pipelines, ChainIndex custom indexers, and ETL event-warehousing patterns for blockchain data. Covers event-driven indexing, reorg handling, data source templates, and multi-chain data aggregation. Do NOT use for: web3 frontend data fetching (use blockchain-web3), smart contract development (use blockchain-application), or general ETL (out of scope).
+  Blockchain indexing covering The Graph subgraphs, Dune Analytics, Goldsky
+  pipelines, ChainIndex custom indexers, and ETL event-warehousing patterns for
+  blockchain data. Covers event-driven indexing, reorg handling, data source
+  templates, and multi-chain data aggregation. Do NOT use for: web3 frontend
+  data fetching (use blockchain-web3), smart contract development (use
+  blockchain-application), or general ETL (out of scope).
 version: 2.0.0
 author: j4flmao
 license: MIT
@@ -12,6 +17,7 @@ tags:
   - subgraph
   - dune
   - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Data Indexing

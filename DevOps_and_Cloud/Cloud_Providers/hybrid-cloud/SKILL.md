@@ -1,28 +1,33 @@
 ---
 name: hybrid-cloud
 description: >
-  Use this skill when the user says 'hybrid cloud', 'hybrid-cloud',
-  'cloud burst', 'on-prem to cloud', 'cloud repatriation', 'hybrid
-  connectivity', 'express route', 'direct connect', 'VPN', 'transit
-  gateway', 'cloud interconnect', 'multi-cloud', 'cross-cloud',
-  'data gravity', 'cloud migration', 'hybrid workload', 'hybrid
-  networking', 'hybrid storage', 'hybrid compute', 'hybrid identity',
-  'cloud agnostic'.
-  Covers: Designing hybrid architectures, connectivity patterns,
-  hybrid identity, hybrid compute orchestration, data synchronization,
-  disaster recovery across environments, repatriation planning, vendor
-  comparison.
-  Do NOT use this for: single-cloud architectures, pure on-prem
-  environments, or basic VPN setup without hybrid context.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'hybrid cloud', 'hybrid-cloud', 'cloud
+  burst', 'on-prem to cloud', 'cloud repatriation', 'hybrid connectivity',
+  'express route', 'direct connect', 'VPN', 'transit gateway', 'cloud
+  interconnect', 'multi-cloud', 'cross-cloud', 'data gravity', 'cloud
+  migration', 'hybrid workload', 'hybrid networking', 'hybrid storage', 'hybrid
+  compute', 'hybrid identity', 'cloud agnostic'. Covers: Designing hybrid
+  architectures, connectivity patterns, hybrid identity, hybrid compute
+  orchestration, data synchronization, disaster recovery across environments,
+  repatriation planning, vendor comparison. Do NOT use this for: single-cloud
+  architectures, pure on-prem environments, or basic VPN setup without hybrid
+  context.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, hybrid-cloud, multi-cloud, cloud-architecture, hcp, phase-4]
+tags:
+  - devops
+  - hybrid-cloud
+  - multi-cloud
+  - cloud-architecture
+  - hcp
+  - phase-4
+depends_on: []
 ---
 
 # Hybrid Cloud

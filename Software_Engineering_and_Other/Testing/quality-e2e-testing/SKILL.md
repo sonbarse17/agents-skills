@@ -1,11 +1,11 @@
 ---
 name: quality-e2e-testing
 description: >
-  End-to-end testing skill using Playwright.
-  Includes advanced mocking, network manipulation, and chaos engineering.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  End-to-end testing skill using Playwright. Includes advanced mocking, network
+  manipulation, and chaos engineering.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
@@ -16,6 +16,7 @@ tags:
   - testing
   - playwright
   - e2e
+depends_on: []
 ---
 
 # Quality E2E Testing

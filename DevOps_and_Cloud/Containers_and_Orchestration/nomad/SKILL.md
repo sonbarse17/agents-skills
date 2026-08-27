@@ -1,30 +1,33 @@
 ---
 name: nomad
 description: >
-  Use this skill when the user says 'nomad', 'hashicorp nomad',
-  'nomad job', 'nomad cluster', 'nomad server', 'nomad client',
-  'nomad namespace', 'nomad ACL', 'nomad autoscaler', 'nomad
-  pack', 'nomad consul', 'nomad vault', 'nomad CSI', 'nomad
-  batch job', 'nomad system job', 'nomad service job',
-  'nomad periodic job', 'nomad parameterized job',
-  'nomad scaling', 'nomad canary', 'nomad update',
-  'nomad drain', 'nomad eval', 'nomad allocation',
-  'nomad volume', 'nomad host volume', 'nomad secrets',
-  'nomad template', 'nomad artifact', 'nomad dispatch',
-  'CNI', 'nomad networking', 'nomad service discovery',
-  'nomad connect', 'nomad consul connect', 'nomad envoy'.
-  Covers: HashiCorp Nomad job scheduling, cluster operations,
-  ACLs, secrets integration, CSI volumes, autoscaling, canary
-  deployments, networking with Consul Connect.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'nomad', 'hashicorp nomad', 'nomad job',
+  'nomad cluster', 'nomad server', 'nomad client', 'nomad namespace', 'nomad
+  ACL', 'nomad autoscaler', 'nomad pack', 'nomad consul', 'nomad vault', 'nomad
+  CSI', 'nomad batch job', 'nomad system job', 'nomad service job', 'nomad
+  periodic job', 'nomad parameterized job', 'nomad scaling', 'nomad canary',
+  'nomad update', 'nomad drain', 'nomad eval', 'nomad allocation', 'nomad
+  volume', 'nomad host volume', 'nomad secrets', 'nomad template', 'nomad
+  artifact', 'nomad dispatch', 'CNI', 'nomad networking', 'nomad service
+  discovery', 'nomad connect', 'nomad consul connect', 'nomad envoy'. Covers:
+  HashiCorp Nomad job scheduling, cluster operations, ACLs, secrets integration,
+  CSI volumes, autoscaling, canary deployments, networking with Consul Connect.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, nomad, hashicorp, orchestrator, scheduler, phase-4]
+tags:
+  - devops
+  - nomad
+  - hashicorp
+  - orchestrator
+  - scheduler
+  - phase-4
+depends_on: []
 ---
 
 # Nomad

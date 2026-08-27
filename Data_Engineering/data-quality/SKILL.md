@@ -1,16 +1,28 @@
 ---
 name: data-data-quality
 description: >
-  Use this skill when asked about data quality, data validation, data profiling, Great Expectations, dbt tests, data observability, Soda, Monte Carlo, data contracts, schema validation, or data SLAs. This skill enforces: data quality dimensions (completeness, accuracy, timeliness, consistency, uniqueness, integrity), automated validation with Great Expectations (expectations suites, data docs, checkpoints) and dbt tests (singular, generic, freshness), data observability with Soda/Monte Carlo monitoring, data SLAs with escalation, and data contract enforcement between producers and consumers. Do NOT use for: ETL pipeline design, data warehouse schema design, or BI dashboard configuration.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data quality, data validation, data profiling,
+  Great Expectations, dbt tests, data observability, Soda, Monte Carlo, data
+  contracts, schema validation, or data SLAs. This skill enforces: data quality
+  dimensions (completeness, accuracy, timeliness, consistency, uniqueness,
+  integrity), automated validation with Great Expectations (expectations suites,
+  data docs, checkpoints) and dbt tests (singular, generic, freshness), data
+  observability with Soda/Monte Carlo monitoring, data SLAs with escalation, and
+  data contract enforcement between producers and consumers. Do NOT use for: ETL
+  pipeline design, data warehouse schema design, or BI dashboard configuration.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, quality, phase-10]
+tags:
+  - data
+  - quality
+  - phase-10
+depends_on: []
 ---
 
 # Data Data Quality

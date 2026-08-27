@@ -1,17 +1,22 @@
 ---
 name: eks-operation-review
-description: Comprehensive Amazon EKS operational review aligned with the AWS EKS
-  Best Practices Guide. Use this skill when a user asks to review, audit, or assess
-  EKS clusters for best practices compliance, operational readiness, security posture,
-  cost optimization, reliability, networking, scalability, or upgrade readiness.
-  Triggers on requests like "EKS review", "EKS best practices audit", "EKS operational
-  assessment", "review my EKS cluster", or "EKS health check".
+description: Comprehensive Amazon EKS operational review aligned with the AWS
+  EKS Best Practices Guide. Use this skill when a user asks to review, audit, or
+  assess EKS clusters for best practices compliance, operational readiness,
+  security posture, cost optimization, reliability, networking, scalability, or
+  upgrade readiness. Triggers on requests like "EKS review", "EKS best practices
+  audit", "EKS operational assessment", "review my EKS cluster", or "EKS health
+  check".
 metadata:
   author: yakiratz-aws
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Evaluation"
-  aws-devops-agent-skills.aws-services: "Amazon EKS"
-  aws-devops-agent-skills.technical-domains: "Containers"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Evaluation
+  aws-devops-agent-skills.aws-services: Amazon EKS
+  aws-devops-agent-skills.technical-domains: Containers
+tags:
+  - containers_and_orchestration
+  - eks-operation-review
+depends_on: []
 ---
 
 # EKS Operational Review

@@ -1,7 +1,18 @@
 ---
 name: slo-definition
-description: Covers turning "the service should be reliable" into a falsifiable number — SLIs that reflect real user experience, SLO targets meaningfully below 100%, the error budget those targets imply, and the policy that gates release velocity when it's spent. Use this whenever the user defines a service's reliability target, argues how reliable something "should" be, picks the metric an SLO is based on, or decides what happens when a budget runs out. For paging math on the budget use `alerting`, for day-to-day tracking use `error-budgets`.
+description: Covers turning "the service should be reliable" into a falsifiable
+  number — SLIs that reflect real user experience, SLO targets meaningfully
+  below 100%, the error budget those targets imply, and the policy that gates
+  release velocity when it's spent. Use this whenever the user defines a
+  service's reliability target, argues how reliable something "should" be, picks
+  the metric an SLO is based on, or decides what happens when a budget runs out.
+  For paging math on the budget use `alerting`, for day-to-day tracking use
+  `error-budgets`.
 license: MIT
+tags:
+  - observability_and_secops
+  - slo-definition
+depends_on: []
 ---
 
 # SLO Definition

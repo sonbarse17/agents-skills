@@ -1,11 +1,18 @@
 ---
 name: terraform-search-import
-description: Discover existing cloud resources using Terraform Search queries and bulk import them into Terraform management. Use when bringing unmanaged infrastructure under Terraform control, auditing cloud resources, or migrating to IaC.
+description: Discover existing cloud resources using Terraform Search queries
+  and bulk import them into Terraform management. Use when bringing unmanaged
+  infrastructure under Terraform control, auditing cloud resources, or migrating
+  to IaC.
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.1.0"
+  version: 0.1.0
   compatibility: Requires Terraform 1.14 or newer and providers with list resource support
+tags:
+  - infrastructure_as_code
+  - terraform-search-import
+depends_on: []
 ---
 
 # Terraform Search and Bulk Import

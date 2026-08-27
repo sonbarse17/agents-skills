@@ -1,10 +1,17 @@
 ---
 name: sre-dashboards
-description: Design and operationalize SRE dashboards that surface reliability, latency, error, saturation, and capacity signals across services. Use when building observability views for SLOs, incident response, and executive reliability reporting.
+description: Design and operationalize SRE dashboards that surface reliability,
+  latency, error, saturation, and capacity signals across services. Use when
+  building observability views for SLOs, incident response, and executive
+  reliability reporting.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - sre-dashboards
+depends_on: []
 ---
 
 # SRE [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)

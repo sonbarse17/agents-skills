@@ -1,16 +1,28 @@
 ---
 name: frontend-internationalization
 description: >
-  Use this skill when the user says 'i18n', 'internationalization', 'localization', 'locale switching', 'RTL', 'right-to-left', 'i18next', 'react-intl', 'vue-i18n', 'translation', 'language selector', 'formatjs', 'ICU message format', 'pluralization', 'LTR', 'bidirectional text'. This skill enforces proper i18n library selection, locale switching patterns, RTL/LTR layout support, ICU message syntax, and translation file management. Works with any frontend framework (React, Vue, Angular, Svelte). Do NOT use for: backend i18n, database collation, or content translation workflows.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'i18n', 'internationalization',
+  'localization', 'locale switching', 'RTL', 'right-to-left', 'i18next',
+  'react-intl', 'vue-i18n', 'translation', 'language selector', 'formatjs', 'ICU
+  message format', 'pluralization', 'LTR', 'bidirectional text'. This skill
+  enforces proper i18n library selection, locale switching patterns, RTL/LTR
+  layout support, ICU message syntax, and translation file management. Works
+  with any frontend framework (React, Vue, Angular, Svelte). Do NOT use for:
+  backend i18n, database collation, or content translation workflows.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, i18n, internationalization, universal]
+tags:
+  - frontend
+  - i18n
+  - internationalization
+  - universal
+depends_on: []
 ---
 
 # Frontend Internationalization (i18n)

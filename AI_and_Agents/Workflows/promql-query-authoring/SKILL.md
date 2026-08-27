@@ -2,20 +2,23 @@
 name: promql-query-authoring
 description: >
   Writes and debugs PromQL queries against Prometheus (or any
-  Prometheus-remote-read-compatible store) — `rate()`/`irate()` on
-  counters, aggregation operators (`sum`/`avg`/`topk` with `by`/
-  `without`), latency queries via `histogram_quantile`, error-rate
-  ratios, saturation queries, and vector-matching pitfalls
-  (`on`/`ignoring`/`group_left`). Use when the user asks to "write a
-  PromQL query for X," "get p99 latency from a histogram," "compute an
-  error rate/ratio in PromQL," "why does my PromQL query return no
-  data/one line instead of per-label," or "this query is slow / has too
-  many series."
+  Prometheus-remote-read-compatible store) — `rate()`/`irate()` on counters,
+  aggregation operators (`sum`/`avg`/`topk` with `by`/ `without`), latency
+  queries via `histogram_quantile`, error-rate ratios, saturation queries, and
+  vector-matching pitfalls (`on`/`ignoring`/`group_left`). Use when the user
+  asks to "write a PromQL query for X," "get p99 latency from a histogram,"
+  "compute an error rate/ratio in PromQL," "why does my PromQL query return no
+  data/one line instead of per-label," or "this query is slow / has too many
+  series."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - workflows
+  - promql-query-authoring
+depends_on: []
 ---
 
 # PromQL Query Authoring

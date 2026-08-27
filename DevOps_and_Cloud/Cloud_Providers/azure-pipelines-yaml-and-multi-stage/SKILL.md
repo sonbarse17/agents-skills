@@ -1,18 +1,21 @@
 ---
 name: azure-pipelines-yaml-and-multi-stage
 description: >
-  Designs Azure Pipelines YAML (azure-pipelines.yml), multi-stage
-  pipelines with environments/approvals, templates for reuse across
-  repos, and self-hosted vs. Microsoft-hosted agent pools. Use when the
-  user asks to "set up Azure Pipelines," "write an azure-pipelines.yml,"
-  "add a multi-stage pipeline with approvals," "create a reusable
-  pipeline template," "configure a self-hosted agent pool," or
-  "troubleshoot a stuck/failed Azure DevOps pipeline run."
+  Designs Azure Pipelines YAML (azure-pipelines.yml), multi-stage pipelines with
+  environments/approvals, templates for reuse across repos, and self-hosted vs.
+  Microsoft-hosted agent pools. Use when the user asks to "set up Azure
+  Pipelines," "write an azure-pipelines.yml," "add a multi-stage pipeline with
+  approvals," "create a reusable pipeline template," "configure a self-hosted
+  agent pool," or "troubleshoot a stuck/failed Azure DevOps pipeline run."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - azure-pipelines-yaml-and-multi-stage
+depends_on: []
 ---
 
 # Azure Pipelines YAML and Multi-Stage Design

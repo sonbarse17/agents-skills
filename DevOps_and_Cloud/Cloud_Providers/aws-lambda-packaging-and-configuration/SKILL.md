@@ -3,15 +3,19 @@ name: aws-lambda-packaging-and-configuration
 description: >
   Packages an AWS Lambda function as a zip deployment package or container
   image, tunes memory/timeout/ephemeral storage, mitigates cold starts, and
-  scopes the function's IAM execution role to least privilege. Use when the
-  user asks to "package a Lambda function," "build a container image for
-  Lambda," "reduce Lambda cold start latency," "tune Lambda memory or
-  timeout," "add a Lambda layer," or "scope down a Lambda execution role."
+  scopes the function's IAM execution role to least privilege. Use when the user
+  asks to "package a Lambda function," "build a container image for Lambda,"
+  "reduce Lambda cold start latency," "tune Lambda memory or timeout," "add a
+  Lambda layer," or "scope down a Lambda execution role."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - cloud_providers
+  - aws-lambda-packaging-and-configuration
+depends_on: []
 ---
 
 # AWS Lambda Packaging and Configuration

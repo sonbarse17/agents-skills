@@ -1,27 +1,47 @@
 ---
 name: sca-blackduck
 description: >
-  Software Composition Analysis (SCA) using Synopsys Black Duck for identifying open source
-  vulnerabilities, license compliance risks, and supply chain security threats with CVE,
-  CWE, and OWASP framework mapping. Use when: (1) Scanning dependencies for known
-  vulnerabilities and security risks, (2) Analyzing open source license compliance and
-  legal risks, (3) Identifying outdated or unmaintained dependencies, (4) Integrating
-  SCA into CI/CD pipelines for continuous dependency monitoring, (5) Providing remediation
-  guidance for vulnerable dependencies with CVE and CWE mappings, (6) Assessing supply
-  chain security risks and third-party component threats.
+  Software Composition Analysis (SCA) using Synopsys Black Duck for identifying
+  open source vulnerabilities, license compliance risks, and supply chain
+  security threats with CVE, CWE, and OWASP framework mapping. Use when: (1)
+  Scanning dependencies for known vulnerabilities and security risks, (2)
+  Analyzing open source license compliance and legal risks, (3) Identifying
+  outdated or unmaintained dependencies, (4) Integrating SCA into CI/CD
+  pipelines for continuous dependency monitoring, (5) Providing remediation
+  guidance for vulnerable dependencies with CVE and CWE mappings, (6) Assessing
+  supply chain security risks and third-party component threats.
 version: 0.1.0
 maintainer: SirAppSec
 category: appsec
-tags: [sca, blackduck, dependency-scanning, vulnerability-management, license-compliance, supply-chain, cve, owasp]
-frameworks: [OWASP, CWE, NIST, SOC2, PCI-DSS]
+tags:
+  - sca
+  - blackduck
+  - dependency-scanning
+  - vulnerability-management
+  - license-compliance
+  - supply-chain
+  - cve
+  - owasp
+frameworks:
+  - OWASP
+  - CWE
+  - NIST
+  - SOC2
+  - PCI-DSS
 dependencies:
-  tools: [docker, git, detect]
-  access: [blackduck-url, api-token]
+  tools:
+    - docker
+    - git
+    - detect
+  access:
+    - blackduck-url
+    - api-token
 references:
   - https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Welcome.html
   - https://owasp.org/www-project-dependency-check/
   - https://nvd.nist.gov/
   - https://www.cisa.gov/sbom
+depends_on: []
 ---
 
 # Software Composition Analysis with Black Duck

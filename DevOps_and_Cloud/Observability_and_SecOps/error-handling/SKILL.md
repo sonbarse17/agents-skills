@@ -1,16 +1,30 @@
 ---
 name: frontend-error-handling
 description: >
-  Use this skill when the user says 'error handling', 'error boundary', 'error recovery', 'graceful degradation', 'fallback UI', 'error reporting', 'error logging', 'crash recovery', 'error fallback', 'retry pattern', 'error state', 'error boundary React', 'Vue error handler', 'Angular error handler', 'error boundary Svelte'. This skill enforces error boundary implementation at key UI levels, graceful degradation patterns, error reporting to monitoring services, and user-facing recovery options. Works with any frontend framework (React, Vue, Angular, Svelte). Do NOT use for: API error handling patterns (use data-fetching skill), form validation errors (use form-handling skill), or backend error handling.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'error handling', 'error boundary', 'error
+  recovery', 'graceful degradation', 'fallback UI', 'error reporting', 'error
+  logging', 'crash recovery', 'error fallback', 'retry pattern', 'error state',
+  'error boundary React', 'Vue error handler', 'Angular error handler', 'error
+  boundary Svelte'. This skill enforces error boundary implementation at key UI
+  levels, graceful degradation patterns, error reporting to monitoring services,
+  and user-facing recovery options. Works with any frontend framework (React,
+  Vue, Angular, Svelte). Do NOT use for: API error handling patterns (use
+  data-fetching skill), form validation errors (use form-handling skill), or
+  backend error handling.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, error-handling, resilience, universal]
+tags:
+  - frontend
+  - error-handling
+  - resilience
+  - universal
+depends_on: []
 ---
 
 # Frontend Error Handling

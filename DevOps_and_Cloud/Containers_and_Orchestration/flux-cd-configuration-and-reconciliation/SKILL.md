@@ -1,20 +1,22 @@
 ---
 name: flux-cd-configuration-and-reconciliation
 description: >
-  Configures Flux CD's GitOps toolkit CRDs — `GitRepository` /
-  `OCIRepository` sources, `Kustomization` and `HelmRelease` reconcilers,
-  and the reconciliation loop's interval/dependency/health-check
-  behavior — as the other major CNCF GitOps operator alongside Argo CD.
-  Use when a user asks to "set up Flux CD," "configure a Flux
-  GitRepository/Kustomization," "deploy a Helm chart via Flux
-  HelmRelease," "set Flux reconciliation dependencies between
-  Kustomizations," "debug why Flux isn't reconciling," or "choose Flux
-  vs. Argo CD."
+  Configures Flux CD's GitOps toolkit CRDs — `GitRepository` / `OCIRepository`
+  sources, `Kustomization` and `HelmRelease` reconcilers, and the reconciliation
+  loop's interval/dependency/health-check behavior — as the other major CNCF
+  GitOps operator alongside Argo CD. Use when a user asks to "set up Flux CD,"
+  "configure a Flux GitRepository/Kustomization," "deploy a Helm chart via Flux
+  HelmRelease," "set Flux reconciliation dependencies between Kustomizations,"
+  "debug why Flux isn't reconciling," or "choose Flux vs. Argo CD."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - flux-cd-configuration-and-reconciliation
+depends_on: []
 ---
 
 # Flux CD Configuration and Reconciliation

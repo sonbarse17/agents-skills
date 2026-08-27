@@ -1,6 +1,10 @@
 ---
 name: Programmatic SEO
 description: Automated generation of high-quality landing pages at scale.
+tags:
+  - miscellaneous
+  - programmatic-seo
+depends_on: []
 ---
 
 # Programmatic SEO

@@ -1,3 +1,12 @@
+---
+name: eslint
+description: Comprehensive guidelines and best practices for eslint. Use this
+  skill when working with related components.
+tags:
+  - miscellaneous
+  - eslint
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

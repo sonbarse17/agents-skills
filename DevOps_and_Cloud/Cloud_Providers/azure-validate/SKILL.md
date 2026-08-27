@@ -1,10 +1,22 @@
 ---
 name: azure-validate
-description: "Pre-deployment validation for Azure readiness. Run deep checks on configuration, infrastructure (Bicep or Terraform), RBAC role assignments, managed identity permissions, and prerequisites before deploying. WHEN: validate my app, check deployment readiness, run preflight checks, verify configuration, check if ready to deploy, validate azure.yaml, validate Bicep, test before deploying, troubleshoot deployment errors, validate Azure Functions, validate function app, validate serverless deployment, verify RBAC roles, check role assignments, review managed identity permissions, what-if analysis, validate Container Apps deployment."
+description: "Pre-deployment validation for Azure readiness. Run deep checks on
+  configuration, infrastructure (Bicep or Terraform), RBAC role assignments,
+  managed identity permissions, and prerequisites before deploying. WHEN:
+  validate my app, check deployment readiness, run preflight checks, verify
+  configuration, check if ready to deploy, validate azure.yaml, validate Bicep,
+  test before deploying, troubleshoot deployment errors, validate Azure
+  Functions, validate function app, validate serverless deployment, verify RBAC
+  roles, check role assignments, review managed identity permissions, what-if
+  analysis, validate Container Apps deployment."
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.2.2"
+  version: 1.2.2
+tags:
+  - cloud_providers
+  - azure-validate
+depends_on: []
 ---
 
 # Azure Validate

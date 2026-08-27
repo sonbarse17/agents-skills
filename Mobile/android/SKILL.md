@@ -4,15 +4,19 @@ description: >
   Use this skill when the user asks about Android development, Kotlin, Jetpack
   Compose, Android architecture, MVVM, Clean Architecture, Room, Hilt, Retrofit,
   or Android testing.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, android, phase-4]
+tags:
+  - mobile
+  - android
+  - phase-4
+depends_on: []
 ---
 
 # Android Native

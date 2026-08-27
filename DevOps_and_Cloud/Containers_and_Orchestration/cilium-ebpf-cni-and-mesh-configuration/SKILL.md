@@ -1,19 +1,22 @@
 ---
 name: cilium-ebpf-cni-and-mesh-configuration
 description: >
-  Configures Cilium as an eBPF-based Kubernetes CNI — kube-proxy
-  replacement, CiliumNetworkPolicy for L3/L4/L7 network policy, and
-  Cilium's ambient-style service mesh capability built on the same
-  eBPF datapath rather than per-pod sidecars. Use when a user asks to
-  "install Cilium," "replace kube-proxy with Cilium," "write a
-  CiliumNetworkPolicy," "compare Cilium's sidecar-less mesh to Istio
-  ambient or Linkerd," "reduce per-pod proxy overhead with eBPF," or
+  Configures Cilium as an eBPF-based Kubernetes CNI — kube-proxy replacement,
+  CiliumNetworkPolicy for L3/L4/L7 network policy, and Cilium's ambient-style
+  service mesh capability built on the same eBPF datapath rather than per-pod
+  sidecars. Use when a user asks to "install Cilium," "replace kube-proxy with
+  Cilium," "write a CiliumNetworkPolicy," "compare Cilium's sidecar-less mesh to
+  Istio ambient or Linkerd," "reduce per-pod proxy overhead with eBPF," or
   "troubleshoot Cilium connectivity after install."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - cilium-ebpf-cni-and-mesh-configuration
+depends_on: []
 ---
 
 # Cilium eBPF CNI and Mesh Configuration

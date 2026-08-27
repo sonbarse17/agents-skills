@@ -1,12 +1,21 @@
 ---
 name: azure-ai-agents-persistent-dotnet
-description: |
-  Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools. Use for agent CRUD, conversation threads, streaming responses, function calling, file search, and code interpreter. Triggers: "PersistentAgentsClient", "persistent agents", "agent threads", "agent runs", "streaming agents", "function calling agents .NET".
+description: >
+  Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and
+  managing AI agents with threads, messages, runs, and tools. Use for agent
+  CRUD, conversation threads, streaming responses, function calling, file
+  search, and code interpreter. Triggers: "PersistentAgentsClient", "persistent
+  agents", "agent threads", "agent runs", "streaming agents", "function calling
+  agents .NET".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: Azure.AI.Agents.Persistent
+tags:
+  - skills
+  - azure-ai-agents-persistent-dotnet
+depends_on: []
 ---
 
 # Azure.AI.Agents.Persistent (.NET)

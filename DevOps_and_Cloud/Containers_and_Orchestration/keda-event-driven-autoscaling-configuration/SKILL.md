@@ -3,18 +3,22 @@ name: keda-event-driven-autoscaling-configuration
 description: >
   Configures KEDA (Kubernetes Event-Driven Autoscaling) `ScaledObject` and
   `ScaledJob` custom resources to scale pods based on external event-source
-  metrics — Kafka consumer lag, SQS/Azure Queue depth, a Prometheus query,
-  or a cron schedule — rather than only CPU/memory like the built-in HPA.
-  Use when the user asks to "scale a deployment on Kafka lag," "autoscale
-  on SQS queue depth," "write a KEDA ScaledObject," "scale to zero when
-  idle," "add a cron-based scaling schedule," or "scale pods on a custom
-  Prometheus metric." Distinct from Karpenter (which scales cluster
-  nodes) and the stock HorizontalPodAutoscaler (CPU/memory only).
+  metrics — Kafka consumer lag, SQS/Azure Queue depth, a Prometheus query, or a
+  cron schedule — rather than only CPU/memory like the built-in HPA. Use when
+  the user asks to "scale a deployment on Kafka lag," "autoscale on SQS queue
+  depth," "write a KEDA ScaledObject," "scale to zero when idle," "add a
+  cron-based scaling schedule," or "scale pods on a custom Prometheus metric."
+  Distinct from Karpenter (which scales cluster nodes) and the stock
+  HorizontalPodAutoscaler (CPU/memory only).
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - keda-event-driven-autoscaling-configuration
+depends_on: []
 ---
 
 # KEDA Event-Driven [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration

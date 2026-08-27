@@ -1,16 +1,28 @@
 ---
 name: data-dimensional-modeling
 description: >
-  Use this skill when designing dimensional data models — Kimball star schemas, Data Vault 2.0, slowly changing dimensions, fact table design, or bus matrix development. This skill enforces: Kimball 4-step methodology (business process, grain, dimensions, facts), star schema design with conformed dimensions, SCD Type 0-6 selection, fact table granularity and additive/non-additive measures, and Data Vault 2.0 hub/link/satellite modeling. Do NOT use for: OLTP normalization, NoSQL data modeling, or data lake table format design.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing dimensional data models — Kimball star schemas,
+  Data Vault 2.0, slowly changing dimensions, fact table design, or bus matrix
+  development. This skill enforces: Kimball 4-step methodology (business
+  process, grain, dimensions, facts), star schema design with conformed
+  dimensions, SCD Type 0-6 selection, fact table granularity and
+  additive/non-additive measures, and Data Vault 2.0 hub/link/satellite
+  modeling. Do NOT use for: OLTP normalization, NoSQL data modeling, or data
+  lake table format design.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, modeling, warehouse, phase-7]
+tags:
+  - data
+  - modeling
+  - warehouse
+  - phase-7
+depends_on: []
 ---
 
 # Dimensional Modeling

@@ -1,6 +1,13 @@
 ---
 name: quantized-export
-description: Export a promoted fine-tuned model in the right deployment format — merged safetensors, LoRA-only, GGUF with imatrix, or FP8. Use after a checkpoint passes promotion, when choosing a quantization format for a target device, or when an exported model fails its smoke test.
+description: Export a promoted fine-tuned model in the right deployment format —
+  merged safetensors, LoRA-only, GGUF with imatrix, or FP8. Use after a
+  checkpoint passes promotion, when choosing a quantization format for a target
+  device, or when an exported model fails its smoke test.
+tags:
+  - models_and_finetuning
+  - quantized-export
+depends_on: []
 ---
 
 # Quantized Export

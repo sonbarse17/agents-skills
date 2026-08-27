@@ -1,21 +1,24 @@
 ---
 name: infrastructure-post-deployment-validation-and-smoke-testing
 description: >
-  Verifies that a Terraform apply, CloudFormation deploy, or Ansible
-  playbook run actually produced working infrastructure — resource
-  existence and configuration checks, connectivity/health smoke tests, and
-  automated post-apply assertions — rather than treating a clean "apply
-  succeeded" exit code as proof the system works. Use when the user asks
-  to "verify this deployment actually worked," "write a smoke test after
-  terraform apply/cloudformation deploy," "check the resource is actually
-  reachable/configured correctly post-deploy," "add post-deployment
-  validation to the pipeline," or "our apply succeeded but the service is
-  down."
+  Verifies that a Terraform apply, CloudFormation deploy, or Ansible playbook
+  run actually produced working infrastructure — resource existence and
+  configuration checks, connectivity/health smoke tests, and automated
+  post-apply assertions — rather than treating a clean "apply succeeded" exit
+  code as proof the system works. Use when the user asks to "verify this
+  deployment actually worked," "write a smoke test after terraform
+  apply/cloudformation deploy," "check the resource is actually
+  reachable/configured correctly post-deploy," "add post-deployment validation
+  to the pipeline," or "our apply succeeded but the service is down."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - infrastructure-post-deployment-validation-and-smoke-testing
+depends_on: []
 ---
 
 # Infrastructure Post-Deployment Validation and Smoke Testing

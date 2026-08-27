@@ -1,10 +1,16 @@
 ---
 name: ai-pipeline-orchestration
-description: Orchestrate AI/ML pipelines for data ingestion, model training, batch inference, and RAG indexing using Prefect, Airflow, or Dagster. Build reliable, observable, and retriable workflows for production AI systems.
+description: Orchestrate AI/ML pipelines for data ingestion, model training,
+  batch inference, and RAG indexing using Prefect, Airflow, or Dagster. Build
+  reliable, observable, and retriable workflows for production AI systems.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - workflows
+  - ai-pipeline-orchestration
+depends_on: []
 ---
 
 # AI Pipeline Orchestration

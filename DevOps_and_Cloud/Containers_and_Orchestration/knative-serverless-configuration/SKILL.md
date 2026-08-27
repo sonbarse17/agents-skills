@@ -2,17 +2,20 @@
 name: knative-serverless-configuration
 description: >
   Configures Knative Serving on Kubernetes — Service/Revision resources,
-  scale-to-zero and concurrency-based autoscaling, and traffic splitting
-  across revisions for canary/blue-green rollouts. Use when the user
-  asks to "deploy a Knative Service," "scale a Knative revision to
-  zero," "split traffic between Knative revisions," "canary a Knative
-  deploy," "why won't my Knative pod scale down," or "run serverless
-  workloads on our own Kubernetes cluster."
+  scale-to-zero and concurrency-based autoscaling, and traffic splitting across
+  revisions for canary/blue-green rollouts. Use when the user asks to "deploy a
+  Knative Service," "scale a Knative revision to zero," "split traffic between
+  Knative revisions," "canary a Knative deploy," "why won't my Knative pod scale
+  down," or "run serverless workloads on our own Kubernetes cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - knative-serverless-configuration
+depends_on: []
 ---
 
 # Knative [Serverless](../serverless/SKILL.md) Configuration

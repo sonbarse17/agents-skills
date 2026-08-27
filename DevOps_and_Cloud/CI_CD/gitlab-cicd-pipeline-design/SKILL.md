@@ -1,17 +1,21 @@
 ---
 name: gitlab-cicd-pipeline-design
 description: >
-  Authors and troubleshoots .gitlab-ci.yml pipelines — stages, the
-  modern rules: syntax (and legacy only/except), includes for shared
-  templates, and GitLab-specific runner/executor configuration. Use when
-  the user asks to "write a .gitlab-ci.yml," "fix a GitLab pipeline rule
-  that isn't triggering," "add a shared CI template with include," "set up
-  a GitLab runner," or "convert only/except rules to the rules: syntax."
+  Authors and troubleshoots .gitlab-ci.yml pipelines — stages, the modern rules:
+  syntax (and legacy only/except), includes for shared templates, and
+  GitLab-specific runner/executor configuration. Use when the user asks to
+  "write a .gitlab-ci.yml," "fix a GitLab pipeline rule that isn't triggering,"
+  "add a shared CI template with include," "set up a GitLab runner," or "convert
+  only/except rules to the rules: syntax."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - gitlab-cicd-pipeline-design
+depends_on: []
 ---
 
 # GitLab CI/CD Pipeline Design

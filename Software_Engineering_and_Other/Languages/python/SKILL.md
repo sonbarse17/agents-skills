@@ -5,15 +5,20 @@ description: >
   dependency management, virtual environments, type annotations, async/await,
   testing, or production deployment. Focus on tooling and ecosystem — not
   language syntax.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [python, language, build, packaging]
+tags:
+  - python
+  - language
+  - build
+  - packaging
+depends_on: []
 ---
 
 # Python

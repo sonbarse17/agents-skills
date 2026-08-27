@@ -1,16 +1,26 @@
 ---
 name: ruby-rails
 description: >
-  Use this skill when building Ruby on Rails applications — MVC, ActiveRecord, service objects, API mode, background jobs, and testing. This skill enforces: thin controllers, service objects for business logic, ActiveRecord query best practices, Rails API mode conventions, and RSpec testing patterns. Requires Rails 7+ and Ruby 3.1+. Do NOT use for: Sinatra, Rack apps, Hanami, or non-Rails Ruby projects.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Ruby on Rails applications — MVC, ActiveRecord,
+  service objects, API mode, background jobs, and testing. This skill enforces:
+  thin controllers, service objects for business logic, ActiveRecord query best
+  practices, Rails API mode conventions, and RSpec testing patterns. Requires
+  Rails 7+ and Ruby 3.1+. Do NOT use for: Sinatra, Rack apps, Hanami, or
+  non-Rails Ruby projects.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, ruby, rails, phase-4]
+tags:
+  - backend
+  - ruby
+  - rails
+  - phase-4
+depends_on: []
 ---
 
 # Ruby on Rails

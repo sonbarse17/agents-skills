@@ -1,12 +1,16 @@
 ---
 name: kibana-streams
 description: >
-  List, inspect, enable, disable, and resync Kibana Streams via the REST API. Use
-  when the user needs stream details, ingest/query settings, queries, significant
-  events, or attachments.
+  List, inspect, enable, disable, and resync Kibana Streams via the REST API.
+  Use when the user needs stream details, ingest/query settings, queries,
+  significant events, or attachments.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - patterns
+  - streams
+depends_on: []
 ---
 
 # Kibana Streams

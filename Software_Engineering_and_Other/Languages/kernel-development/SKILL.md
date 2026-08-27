@@ -1,6 +1,10 @@
 ---
 name: Kernel Development
 description: Academic reference on PCB, Page Tables, and Interrupt Handlers.
+tags:
+  - languages
+  - kernel-development
+depends_on: []
 ---
 # Kernel Development Mechanics
 

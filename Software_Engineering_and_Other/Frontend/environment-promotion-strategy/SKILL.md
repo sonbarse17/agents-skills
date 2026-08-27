@@ -1,18 +1,22 @@
 ---
 name: environment-promotion-strategy
 description: >
-  Designs how a build/release is promoted through environments (dev,
-  staging/QA, production, and optionally per-region or per-tenant tiers)
-  with consistent gates, approvals, and configuration-per-environment
-  handling. Use when the user asks to "design a promotion pipeline
-  between environments," "add an approval gate before production," "keep
-  dev/staging/prod config in sync without duplicating it," or "decide
-  what has to pass before something reaches production."
+  Designs how a build/release is promoted through environments (dev, staging/QA,
+  production, and optionally per-region or per-tenant tiers) with consistent
+  gates, approvals, and configuration-per-environment handling. Use when the
+  user asks to "design a promotion pipeline between environments," "add an
+  approval gate before production," "keep dev/staging/prod config in sync
+  without duplicating it," or "decide what has to pass before something reaches
+  production."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - frontend
+  - environment-promotion-strategy
+depends_on: []
 ---
 
 # Environment Promotion Strategy

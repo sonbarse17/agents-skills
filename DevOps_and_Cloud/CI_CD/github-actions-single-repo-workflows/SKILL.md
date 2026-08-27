@@ -2,17 +2,21 @@
 name: github-actions-single-repo-workflows
 description: >
   Authors and troubleshoots GitHub Actions workflow YAML that lives in and
-  serves a single repository — triggers, jobs/steps, matrix builds, caching
-  with actions/cache, and composite actions defined within the same repo
-  under .github/actions/. Use when the user asks to "write a GitHub Actions
-  workflow," "add a matrix build," "fix a failing GitHub Actions job," "add
-  a composite action to this repo," or "speed up this repo's GitHub Actions
-  CI" for one repository's own pipeline.
+  serves a single repository — triggers, jobs/steps, matrix builds, caching with
+  actions/cache, and composite actions defined within the same repo under
+  .github/actions/. Use when the user asks to "write a GitHub Actions workflow,"
+  "add a matrix build," "fix a failing GitHub Actions job," "add a composite
+  action to this repo," or "speed up this repo's GitHub Actions CI" for one
+  repository's own pipeline.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - github-actions-single-repo-workflows
+depends_on: []
 ---
 
 # [GitHub](../github/SKILL.md) Actions Single-Repo Workflows

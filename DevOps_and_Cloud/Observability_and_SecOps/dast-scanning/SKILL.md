@@ -1,10 +1,17 @@
 ---
 name: dast-scanning
-description: Perform dynamic application security testing with OWASP ZAP, Burp Suite, and Nikto. Test running applications for security vulnerabilities through automated and manual testing. Use when testing web applications, APIs, or performing penetration testing.
+description: Perform dynamic application security testing with OWASP ZAP, Burp
+  Suite, and Nikto. Test running applications for security vulnerabilities
+  through automated and manual testing. Use when testing web applications, APIs,
+  or performing penetration testing.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - dast-scanning
+depends_on: []
 ---
 
 # DAST Scanning

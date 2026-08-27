@@ -1,23 +1,26 @@
 ---
 name: security-finding-backlog-triage
 description: >
-  Guides ongoing triage and prioritization of the accumulated SAST/DAST/
-  SCA finding queue — scoring severity against real exploitability and a
-  tool's known false-positive rate, and routing findings to a fix-now,
-  scheduled, or won't-fix lane instead of a single undifferentiated
-  backlog. Use when the user asks to "triage our security finding
-  backlog", "why do we have 4,000 open Snyk/Semgrep findings and no plan
-  to fix them", "prioritize which vulnerabilities to fix first", "set up
-  a severity/exploitability scoring model", or "reduce our security
-  finding backlog without ignoring real risk". Distinct from designing
-  the pipeline gates that produce findings in the first place (see
-  secure-cicd-gates) and from the single-CVE fire-drill response covered
-  in critical-vulnerability-emergency-response.
+  Guides ongoing triage and prioritization of the accumulated SAST/DAST/ SCA
+  finding queue — scoring severity against real exploitability and a tool's
+  known false-positive rate, and routing findings to a fix-now, scheduled, or
+  won't-fix lane instead of a single undifferentiated backlog. Use when the user
+  asks to "triage our security finding backlog", "why do we have 4,000 open
+  Snyk/Semgrep findings and no plan to fix them", "prioritize which
+  vulnerabilities to fix first", "set up a severity/exploitability scoring
+  model", or "reduce our security finding backlog without ignoring real risk".
+  Distinct from designing the pipeline gates that produce findings in the first
+  place (see secure-cicd-gates) and from the single-CVE fire-drill response
+  covered in critical-vulnerability-emergency-response.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - security
+  - security-finding-backlog-triage
+depends_on: []
 ---
 
 # Security Finding Backlog Triage

@@ -1,18 +1,21 @@
 ---
 name: llmops-fine-tuning-and-deployment
 description: >
-  Guides deciding whether fine-tuning is the right approach for an LLM use
-  case (versus prompt engineering or RAG), and if so, executing it safely —
-  covering LoRA/QLoRA/full fine-tuning configs, dataset curation, evaluation,
-  and deployment. Use when the user asks whether to "fine-tune a model",
-  "should I use RAG or fine-tuning", set up LoRA/QLoRA/PEFT training,
-  fine-tune an open-weight or hosted LLM, or deploy a fine-tuned model
-  safely.
+  Guides deciding whether fine-tuning is the right approach for an LLM use case
+  (versus prompt engineering or RAG), and if so, executing it safely — covering
+  LoRA/QLoRA/full fine-tuning configs, dataset curation, evaluation, and
+  deployment. Use when the user asks whether to "fine-tune a model", "should I
+  use RAG or fine-tuning", set up LoRA/QLoRA/PEFT training, fine-tune an
+  open-weight or hosted LLM, or deploy a fine-tuned model safely.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - llmops-fine-tuning-and-deployment
+depends_on: []
 ---
 
 # LLMOps: Fine-Tuning And Deployment

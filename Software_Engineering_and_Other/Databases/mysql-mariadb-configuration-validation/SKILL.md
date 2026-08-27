@@ -1,19 +1,22 @@
 ---
 name: mysql-mariadb-configuration-validation
 description: >
-  Validates proposed my.cnf changes, replication topology, and connection
-  limits before they are applied to a production MySQL/MariaDB instance —
-  catching dynamic-vs-static variables applied with the wrong scope,
-  GTID-mode mismatches across a replication topology, and connection/
-  thread-pool overcommit against ProxySQL pools. Use when the user asks
-  to "review this my.cnf change," "validate max_connections before we
-  apply it," "check this MySQL replication config is safe," or "will
-  this MySQL config change require a restart."
+  Validates proposed my.cnf changes, replication topology, and connection limits
+  before they are applied to a production MySQL/MariaDB instance — catching
+  dynamic-vs-static variables applied with the wrong scope, GTID-mode mismatches
+  across a replication topology, and connection/ thread-pool overcommit against
+  ProxySQL pools. Use when the user asks to "review this my.cnf change,"
+  "validate max_connections before we apply it," "check this MySQL replication
+  config is safe," or "will this MySQL config change require a restart."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - mysql-mariadb-configuration-validation
+depends_on: []
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Configuration Validation

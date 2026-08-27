@@ -1,19 +1,22 @@
 ---
 name: github-actions-centralized-reusable-workflows
 description: >
-  Designs organization-level reusable GitHub Actions workflows
-  (workflow_call) and shared composite actions hosted in a dedicated repo,
-  so many repos call one standardized pipeline definition instead of
-  duplicating workflow YAML. Use when the user asks to "centralize our
-  GitHub Actions workflows," "create a reusable workflow with
-  workflow_call," "enforce a standard CI pipeline across all repos,"
-  "version a shared composite action," or "reduce duplicated workflow YAML
-  across the organization."
+  Designs organization-level reusable GitHub Actions workflows (workflow_call)
+  and shared composite actions hosted in a dedicated repo, so many repos call
+  one standardized pipeline definition instead of duplicating workflow YAML. Use
+  when the user asks to "centralize our GitHub Actions workflows," "create a
+  reusable workflow with workflow_call," "enforce a standard CI pipeline across
+  all repos," "version a shared composite action," or "reduce duplicated
+  workflow YAML across the organization."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - github-actions-centralized-reusable-workflows
+depends_on: []
 ---
 
 # [GitHub](../github/SKILL.md) Actions Centralized Reusable Workflows

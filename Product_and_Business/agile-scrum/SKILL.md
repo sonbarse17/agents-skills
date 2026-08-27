@@ -1,6 +1,11 @@
 ---
 name: agile-scrum
-description: Staff Management expertise in Agile workflows, Sprint planning, and Story Points.
+description: Staff Management expertise in Agile workflows, Sprint planning, and
+  Story Points.
+tags:
+  - product_and_business
+  - agile-scrum
+depends_on: []
 ---
 
 # Agile Scrum Management

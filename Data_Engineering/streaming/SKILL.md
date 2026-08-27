@@ -1,16 +1,26 @@
 ---
 name: data-streaming
 description: >
-  Use this skill when asked about streaming, Kafka, Flink, Kinesis, stream processing, event stream, real-time, CDC, change data capture, message queue, or stream architecture. This skill enforces: Kafka topic design with partitioning strategy, Flink/ksqlDB stream processing with exactly-once semantics, Schema Registry with Avro/Protobuf, CDC integration with Debezium, and reliability guarantees. Do NOT use for: batch ETL pipelines, API design, or standard message queues (RabbitMQ task queues).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about streaming, Kafka, Flink, Kinesis, stream
+  processing, event stream, real-time, CDC, change data capture, message queue,
+  or stream architecture. This skill enforces: Kafka topic design with
+  partitioning strategy, Flink/ksqlDB stream processing with exactly-once
+  semantics, Schema Registry with Avro/Protobuf, CDC integration with Debezium,
+  and reliability guarantees. Do NOT use for: batch ETL pipelines, API design,
+  or standard message queues (RabbitMQ task queues).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, streaming, phase-10]
+tags:
+  - data
+  - streaming
+  - phase-10
+depends_on: []
 ---
 
 # Data Streaming

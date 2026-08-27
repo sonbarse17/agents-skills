@@ -1,19 +1,25 @@
 ---
 name: skill-name
 description: >
-  [REQUIRED] Comprehensive description of what this skill does and when to use it.
-  Include: (1) Primary functionality, (2) Specific use cases, (3) Security operations context.
-  Must include specific "Use when:" clause for skill discovery.
-  Example: "SAST vulnerability analysis and remediation guidance using Semgrep and industry
-  security standards. Use when: (1) Analyzing static code for security vulnerabilities,
-  (2) Prioritizing security findings by severity, (3) Providing secure coding remediation,
-  (4) Integrating security checks into CI/CD pipelines."
-  Maximum 1024 characters.
+  [REQUIRED] Comprehensive description of what this skill does and when to use
+  it. Include: (1) Primary functionality, (2) Specific use cases, (3) Security
+  operations context. Must include specific "Use when:" clause for skill
+  discovery. Example: "SAST vulnerability analysis and remediation guidance
+  using Semgrep and industry security standards. Use when: (1) Analyzing static
+  code for security vulnerabilities, (2) Prioritizing security findings by
+  severity, (3) Providing secure coding remediation, (4) Integrating security
+  checks into CI/CD pipelines." Maximum 1024 characters.
 version: 0.1.0
 maintainer: your-github-username
-category: [appsec|devsecops|secsdlc|threatmodel|compliance|incident-response]
-tags: [relevant, security, tags]
-frameworks: [OWASP|CWE|MITRE-ATT&CK|NIST|SOC2]
+category:
+  - appsec|devsecops|secsdlc|threatmodel|compliance|incident-response
+tags:
+  - relevant
+  - security
+  - tags
+frameworks:
+  - OWASP|CWE|MITRE-ATT&CK|NIST|SOC2
+depends_on: []
 ---
 
 <!--

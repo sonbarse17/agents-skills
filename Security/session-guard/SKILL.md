@@ -1,11 +1,14 @@
 ---
 name: session-guard
-description: >-
-  Use when working on complex multi-step tasks, when a session is getting long
-  (40+ tool calls), when the agent starts ignoring rules it followed earlier,
-  when conventions drift, when output quality seems to degrade, or after any
-  context compaction event. Prevents long-session corruption AND context
-  compaction amnesia through behavioral self-enforcement.
+description: Use when working on complex multi-step tasks, when a session is
+  getting long (40+ tool calls), when the agent starts ignoring rules it
+  followed earlier, when conventions drift, when output quality seems to
+  degrade, or after any context compaction event. Prevents long-session
+  corruption AND context compaction amnesia through behavioral self-enforcement.
+tags:
+  - security
+  - session-guard
+depends_on: []
 ---
 
 # Session Guard

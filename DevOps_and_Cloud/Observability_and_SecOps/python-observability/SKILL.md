@@ -1,6 +1,12 @@
 ---
 name: python-observability
-description: Python observability patterns including structured logging, metrics, and distributed tracing. Use when adding logging, implementing metrics collection, setting up tracing, or debugging production systems.
+description: Python observability patterns including structured logging,
+  metrics, and distributed tracing. Use when adding logging, implementing
+  metrics collection, setting up tracing, or debugging production systems.
+tags:
+  - observability_and_secops
+  - python-observability
+depends_on: []
 ---
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) [Observability](../observability/SKILL.md)

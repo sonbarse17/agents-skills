@@ -1,17 +1,22 @@
 ---
 name: elasticsearch-authn
 description: >
-  Authenticate to Elasticsearch using native, file-based, LDAP/AD, SAML, OIDC, Kerberos,
-  JWT, or certificate realms. Use when connecting with credentials, choosing a realm,
-  or managing API keys. Assumes the target realms are already configured.
+  Authenticate to Elasticsearch using native, file-based, LDAP/AD, SAML, OIDC,
+  Kerberos, JWT, or certificate realms. Use when connecting with credentials,
+  choosing a realm, or managing API keys. Assumes the target realms are already
+  configured.
 compatibility: >
-  Requires curl or an HTTP client and network access to the target Elasticsearch cluster
-  endpoint. Environment variables: ELASTICSEARCH_URL (required), plus one of ELASTICSEARCH_API_KEY,
-  ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD, or realm-specific credentials depending
-  on the authentication method.
+  Requires curl or an HTTP client and network access to the target Elasticsearch
+  cluster endpoint. Environment variables: ELASTICSEARCH_URL (required), plus
+  one of ELASTICSEARCH_API_KEY, ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD,
+  or realm-specific credentials depending on the authentication method.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - databases
+  - elasticsearch-authn
+depends_on: []
 ---
 
 # Elasticsearch Authentication

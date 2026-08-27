@@ -1,19 +1,22 @@
 ---
 name: elasticsearch-opensearch-cluster-operations
 description: >
-  Covers Elasticsearch/OpenSearch shard and index lifecycle management
-  (ILM/ISM: hot-warm-cold-delete tiers, rollover), cluster health triage
-  (yellow/red status root-causing), and reindexing (mapping changes,
-  zero-downtime cutover via aliases). Use when the user asks to "why is
-  my Elasticsearch/OpenSearch cluster yellow/red," "set up an ILM/ISM
-  policy," "reindex without downtime," "shards are unassigned," "design a
-  hot-warm architecture," or "cluster health is degraded, what's the root
-  cause."
+  Covers Elasticsearch/OpenSearch shard and index lifecycle management (ILM/ISM:
+  hot-warm-cold-delete tiers, rollover), cluster health triage (yellow/red
+  status root-causing), and reindexing (mapping changes, zero-downtime cutover
+  via aliases). Use when the user asks to "why is my Elasticsearch/OpenSearch
+  cluster yellow/red," "set up an ILM/ISM policy," "reindex without downtime,"
+  "shards are unassigned," "design a hot-warm architecture," or "cluster health
+  is degraded, what's the root cause."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - elasticsearch-opensearch-cluster-operations
+depends_on: []
 ---
 
 # Elasticsearch/OpenSearch Cluster Operations

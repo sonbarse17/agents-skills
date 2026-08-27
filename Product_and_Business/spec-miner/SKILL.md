@@ -1,17 +1,29 @@
 ---
 name: spec-miner
-description: "Reverse-engineering specialist that extracts specifications from existing codebases. Use when working with legacy or undocumented systems, inherited projects, or old codebases with no documentation. Invoke to map code dependencies, generate API documentation from source, identify undocumented business logic, figure out what code does, or create architecture documentation from implementation. Trigger phrases: reverse engineer, old codebase, no docs, no documentation, figure out how this works, inherited project, legacy analysis, code archaeology, undocumented features."
+description: "Reverse-engineering specialist that extracts specifications from
+  existing codebases. Use when working with legacy or undocumented systems,
+  inherited projects, or old codebases with no documentation. Invoke to map code
+  dependencies, generate API documentation from source, identify undocumented
+  business logic, figure out what code does, or create architecture
+  documentation from implementation. Trigger phrases: reverse engineer, old
+  codebase, no docs, no documentation, figure out how this works, inherited
+  project, legacy analysis, code archaeology, undocumented features."
 license: MIT
 allowed-tools: Read, Grep, Glob, Bash
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: 1.1.0
   domain: workflow
-  triggers: reverse engineer, legacy code, code analysis, undocumented, understand codebase, existing system
+  triggers: reverse engineer, legacy code, code analysis, undocumented, understand
+    codebase, existing system
   role: specialist
   scope: review
   output-format: document
   related-skills: feature-forge, fullstack-guardian, architecture-designer
+tags:
+  - product_and_business
+  - spec-miner
+depends_on: []
 ---
 
 # Spec Miner

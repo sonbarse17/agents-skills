@@ -1,10 +1,16 @@
 ---
 name: sbom-supply-chain
-description: Generate, sign, and verify SBOMs and provenance attestations to secure the software supply chain. Use when implementing SLSA controls, artifact trust policies, or compliance evidence for releases.
+description: Generate, sign, and verify SBOMs and provenance attestations to
+  secure the software supply chain. Use when implementing SLSA controls,
+  artifact trust policies, or compliance evidence for releases.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - sbom-supply-chain
+depends_on: []
 ---
 
 # SBOM & Supply Chain Security

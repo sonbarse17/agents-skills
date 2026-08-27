@@ -1,18 +1,22 @@
 ---
 name: postgresql-high-availability-and-failover
 description: >
-  Designs PostgreSQL high-availability topologies with Patroni-managed
-  automatic failover or manual streaming-replication failover, covers
-  split-brain prevention (fencing, watchdog, consensus store quorum), and
-  how to safely test failover without turning a drill into an outage. Use
-  when the user asks to "set up PostgreSQL HA," "configure Patroni,"
-  "design PostgreSQL automatic failover," "prevent split-brain in
-  Postgres," or "test a Postgres failover safely."
+  Designs PostgreSQL high-availability topologies with Patroni-managed automatic
+  failover or manual streaming-replication failover, covers split-brain
+  prevention (fencing, watchdog, consensus store quorum), and how to safely test
+  failover without turning a drill into an outage. Use when the user asks to
+  "set up PostgreSQL HA," "configure Patroni," "design PostgreSQL automatic
+  failover," "prevent split-brain in Postgres," or "test a Postgres failover
+  safely."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - workflows
+  - postgresql-high-availability-and-failover
+depends_on: []
 ---
 
 # [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) High Availability and Failover

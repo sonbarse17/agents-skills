@@ -1,17 +1,21 @@
 ---
 name: airflow-scheduler-and-dag-troubleshooting
 description: >
-  Diagnoses a stuck or failed Airflow DAG run, scheduler-health problems
-  (slow parsing, stuck queued tasks), and plans safe task-retry/backfill
-  strategy. Use when the user reports "Airflow DAG is stuck," "task stuck
-  in queued state," "scheduler seems unhealthy," "DAG run failed and I
-  need to retry it," "should I backfill this DAG," or asks to
-  troubleshoot a live Airflow production incident.
+  Diagnoses a stuck or failed Airflow DAG run, scheduler-health problems (slow
+  parsing, stuck queued tasks), and plans safe task-retry/backfill strategy. Use
+  when the user reports "Airflow DAG is stuck," "task stuck in queued state,"
+  "scheduler seems unhealthy," "DAG run failed and I need to retry it," "should
+  I backfill this DAG," or asks to troubleshoot a live Airflow production
+  incident.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - workflows
+  - airflow-scheduler-and-dag-troubleshooting
+depends_on: []
 ---
 
 # Airflow Scheduler and DAG Troubleshooting

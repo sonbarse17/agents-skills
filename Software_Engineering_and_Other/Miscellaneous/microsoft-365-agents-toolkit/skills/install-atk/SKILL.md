@@ -2,9 +2,14 @@
 name: install-atk
 description: >
   Install or update the M365 Agents Toolkit (ATK) CLI and VS Code extension.
-  Triggers: "install atk", "update atk", "install agents toolkit", "update agents toolkit",
-  "install the toolkit", "setup atk", "get atk", "install atk cli", "install atk extension",
-  "install atk vsix", "update the vs code extension", "install latest atk", "upgrade atk"
+  Triggers: "install atk", "update atk", "install agents toolkit", "update
+  agents toolkit", "install the toolkit", "setup atk", "get atk", "install atk
+  cli", "install atk extension", "install atk vsix", "update the vs code
+  extension", "install latest atk", "upgrade atk"
+tags:
+  - skills
+  - install-atk
+depends_on: []
 ---
 
 # Install ATK

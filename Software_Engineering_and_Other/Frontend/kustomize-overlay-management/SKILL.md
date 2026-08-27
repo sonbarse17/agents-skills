@@ -2,18 +2,21 @@
 name: kustomize-overlay-management
 description: >
   Guides structuring Kustomize bases and environment overlays, writing
-  strategic-merge and JSON6902 patches, using generators (ConfigMap/Secret
-  with hash suffixes, image/replica transformers), and deciding when to
-  use Kustomize vs. Helm vs. both together. Use when a user asks to
-  "set up a Kustomize base and overlays," "patch a Deployment for
-  staging vs. prod," "avoid duplicating YAML across environments,"
-  "generate a ConfigMap with kustomize," or "should I use Helm or
-  Kustomize."
+  strategic-merge and JSON6902 patches, using generators (ConfigMap/Secret with
+  hash suffixes, image/replica transformers), and deciding when to use Kustomize
+  vs. Helm vs. both together. Use when a user asks to "set up a Kustomize base
+  and overlays," "patch a Deployment for staging vs. prod," "avoid duplicating
+  YAML across environments," "generate a ConfigMap with kustomize," or "should I
+  use Helm or Kustomize."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - frontend
+  - kustomize-overlay-management
+depends_on: []
 ---
 
 # [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) Overlay Management

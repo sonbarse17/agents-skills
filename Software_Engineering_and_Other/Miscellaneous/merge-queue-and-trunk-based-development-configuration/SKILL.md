@@ -2,18 +2,21 @@
 name: merge-queue-and-trunk-based-development-configuration
 description: >
   Configures automated merge serialization — GitHub merge queue or a
-  Mergify-style bot — and the trunk-based development discipline (short-
-  lived branches, small PRs, feature flags over long-lived branches) it
-  depends on, including how to avoid merge-train pileup. Use when a user
-  asks to "set up a merge queue," "configure Mergify," "adopt trunk-based
-  development," "our merge queue keeps stalling/piling up," "batch PRs
-  before merging to main," or "avoid re-running CI on every rebase before
-  merge."
+  Mergify-style bot — and the trunk-based development discipline (short- lived
+  branches, small PRs, feature flags over long-lived branches) it depends on,
+  including how to avoid merge-train pileup. Use when a user asks to "set up a
+  merge queue," "configure Mergify," "adopt trunk-based development," "our merge
+  queue keeps stalling/piling up," "batch PRs before merging to main," or "avoid
+  re-running CI on every rebase before merge."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - miscellaneous
+  - merge-queue-and-trunk-based-development-configuration
+depends_on: []
 ---
 
 # Merge Queue and Trunk-Based Development Configuration

@@ -1,10 +1,16 @@
 ---
 name: cis-benchmarks
-description: Audit and remediate CIS benchmark violations. Use automated tools to assess compliance and implement hardening recommendations. Use when meeting compliance requirements or implementing security baselines.
+description: Audit and remediate CIS benchmark violations. Use automated tools
+  to assess compliance and implement hardening recommendations. Use when meeting
+  compliance requirements or implementing security baselines.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - cis-benchmarks
+depends_on: []
 ---
 
 # CIS Benchmarks

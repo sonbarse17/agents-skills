@@ -1,22 +1,25 @@
 ---
 name: chatops-runbook-automation
 description: >
-  Guides building ChatOps incident-channel bots (Slack/Microsoft Teams)
-  and automated runbook execution (StackStorm/Rundeck-style) — slash
-  commands that run a diagnostic or remediation action from inside the
-  incident channel, permission-scoped and confirmation-gated destructive
-  actions, audit logging of every executed action, and balancing
-  automation speed against the risk of an accidental or unauthorized
-  destructive action. Use when the user asks to "build a Slack bot for
-  incident response," "automate a runbook so on-call can run it from
-  chat," "wire a restart/rollback command into our incident channel,"
-  "add a confirmation step before a destructive ChatOps action," or
+  Guides building ChatOps incident-channel bots (Slack/Microsoft Teams) and
+  automated runbook execution (StackStorm/Rundeck-style) — slash commands that
+  run a diagnostic or remediation action from inside the incident channel,
+  permission-scoped and confirmation-gated destructive actions, audit logging of
+  every executed action, and balancing automation speed against the risk of an
+  accidental or unauthorized destructive action. Use when the user asks to
+  "build a Slack bot for incident response," "automate a runbook so on-call can
+  run it from chat," "wire a restart/rollback command into our incident
+  channel," "add a confirmation step before a destructive ChatOps action," or
   "audit what runbook actions were executed during an incident."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - frontend
+  - chatops-runbook-automation
+depends_on: []
 ---
 
 # ChatOps [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Automation

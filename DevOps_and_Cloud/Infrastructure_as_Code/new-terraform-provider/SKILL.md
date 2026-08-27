@@ -1,16 +1,19 @@
 ---
 name: new-terraform-provider
-description: >-
-  Use this when scaffolding a new Terraform provider with the Plugin
-  Framework: workspace layout, go module setup, provider server main.go,
-  and a provider.go with schema and Configure. Also use when a user wants
-  to start building a provider for a new API or asks how to begin a
-  terraform-provider-* project.
+description: "Use this when scaffolding a new Terraform provider with the Plugin
+  Framework: workspace layout, go module setup, provider server main.go, and a
+  provider.go with schema and Configure. Also use when a user wants to start
+  building a provider for a new API or asks how to begin a terraform-provider-*
+  project."
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - infrastructure_as_code
+  - new-terraform-provider
+depends_on: []
 ---
 
 To scaffold a new Terraform provider with Plugin Framework:

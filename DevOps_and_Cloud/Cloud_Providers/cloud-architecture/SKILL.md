@@ -1,7 +1,19 @@
 ---
 name: cloud-architecture
-description: Designs systems for the cloud's actual shape — regions and availability zones, managed vs self-run tradeoffs, statelessness, failure-domain isolation, and the cost and lock-in consequences of each choice. Use this whenever the user is choosing a region topology, deciding between a managed service and self-hosting, sketching a new system's compute and data layout, or asking why an architecture is expensive or fragile. For the virtual network layer use `cloud-networking`; for moving an existing workload use `cloud-migration`; for scoring an existing system use `well-architected-review`.
+description: Designs systems for the cloud's actual shape — regions and
+  availability zones, managed vs self-run tradeoffs, statelessness,
+  failure-domain isolation, and the cost and lock-in consequences of each
+  choice. Use this whenever the user is choosing a region topology, deciding
+  between a managed service and self-hosting, sketching a new system's compute
+  and data layout, or asking why an architecture is expensive or fragile. For
+  the virtual network layer use `cloud-networking`; for moving an existing
+  workload use `cloud-migration`; for scoring an existing system use
+  `well-architected-review`.
 license: MIT
+tags:
+  - cloud_providers
+  - cloud-architecture
+depends_on: []
 ---
 
 # Cloud Architecture

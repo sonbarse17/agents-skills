@@ -1,6 +1,10 @@
 ---
 name: physics-engine
 description: Physics Engine Mechanics
+tags:
+  - game_development
+  - physics-engine
+depends_on: []
 ---
 # Physics Engine Internals
 

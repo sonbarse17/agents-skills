@@ -1,6 +1,13 @@
 ---
 name: spark-environment-setup
-description: Set up a working ML training/inference environment on NVIDIA DGX Spark (GB10, aarch64, CUDA 13). Use when installing PyTorch/Unsloth/TRL/vLLM on DGX Spark, hitting libcudart or wheel-ABI errors on aarch64, or choosing between NGC containers and bare pip installs.
+description: Set up a working ML training/inference environment on NVIDIA DGX
+  Spark (GB10, aarch64, CUDA 13). Use when installing PyTorch/Unsloth/TRL/vLLM
+  on DGX Spark, hitting libcudart or wheel-ABI errors on aarch64, or choosing
+  between NGC containers and bare pip installs.
+tags:
+  - data_engineering
+  - spark-environment-setup
+depends_on: []
 ---
 
 # Spark Environment Setup

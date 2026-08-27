@@ -1,6 +1,12 @@
 ---
 name: block-no-verify-hook
-description: Configure a PreToolUse hook to prevent AI agents from skipping git pre-commit hooks with --no-verify and other bypass flags. Use when setting up Claude Code projects that enforce commit quality gates.
+description: Configure a PreToolUse hook to prevent AI agents from skipping git
+  pre-commit hooks with --no-verify and other bypass flags. Use when setting up
+  Claude Code projects that enforce commit quality gates.
+tags:
+  - ci_cd
+  - block-no-verify-hook
+depends_on: []
 ---
 
 # Block No-Verify Hook

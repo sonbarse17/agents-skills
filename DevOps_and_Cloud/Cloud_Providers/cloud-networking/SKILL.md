@@ -1,7 +1,18 @@
 ---
 name: cloud-networking
-description: Covers the virtual network layer of a cloud deployment — VPCs, subnets, route tables, peering and transit, private endpoints, egress control, and hybrid or on-prem connectivity. Use this whenever the user is designing a VPC/VNet layout, planning subnet CIDR ranges, connecting two networks or a cloud to a data center, locking down egress, or debugging traffic that can't cross a network boundary. For DNS and load balancing use `dns-management`/`load-balancing`; for perimeter posture use `network-security`.
+description: Covers the virtual network layer of a cloud deployment — VPCs,
+  subnets, route tables, peering and transit, private endpoints, egress control,
+  and hybrid or on-prem connectivity. Use this whenever the user is designing a
+  VPC/VNet layout, planning subnet CIDR ranges, connecting two networks or a
+  cloud to a data center, locking down egress, or debugging traffic that can't
+  cross a network boundary. For DNS and load balancing use
+  `dns-management`/`load-balancing`; for perimeter posture use
+  `network-security`.
 license: MIT
+tags:
+  - cloud_providers
+  - cloud-networking
+depends_on: []
 ---
 
 # Cloud Networking

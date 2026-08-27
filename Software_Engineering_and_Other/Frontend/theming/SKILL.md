@@ -1,16 +1,26 @@
 ---
 name: frontend-theming
 description: >
-  Use this skill when the user says 'theming', 'dark mode', 'light mode', 'theme switching', 'CSS variables', 'custom properties', 'theme provider', 'theme context', 'color scheme', 'prefers-color-scheme', 'theme toggle', 'design tokens'. Implement theme systems with CSS variables, dark mode, design tokens, and per-framework patterns. Do NOT use for: CSS-in-JS library selection or UI component design.
+  Use this skill when the user says 'theming', 'dark mode', 'light mode', 'theme
+  switching', 'CSS variables', 'custom properties', 'theme provider', 'theme
+  context', 'color scheme', 'prefers-color-scheme', 'theme toggle', 'design
+  tokens'. Implement theme systems with CSS variables, dark mode, design tokens,
+  and per-framework patterns. Do NOT use for: CSS-in-JS library selection or UI
+  component design.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, theming, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - frontend
+  - theming
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Frontend Theming

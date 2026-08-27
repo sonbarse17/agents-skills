@@ -1,6 +1,11 @@
 ---
 name: SASS Machine Code
-description: Deep dive into NVIDIA binary machine code (SASS), analyzing clock cycles, pipeline stalls, warp scheduling, and the FFMA instruction pipeline.
+description: Deep dive into NVIDIA binary machine code (SASS), analyzing clock
+  cycles, pipeline stalls, warp scheduling, and the FFMA instruction pipeline.
+tags:
+  - miscellaneous
+  - sass-machine-code
+depends_on: []
 ---
 
 # SASS Machine Code and SM Microarchitecture

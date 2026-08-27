@@ -2,19 +2,22 @@
 name: toil-reduction-and-operational-automation
 description: >
   Guides identifying and reducing operational toil — manual, repetitive,
-  automatable work with no enduring value — by measuring a team's toil
-  budget against Google SRE's under-50%-of-time guideline, prioritizing
-  what to automate first with a frequency/impact/effort framework, and
-  climbing a runbook-to-automation maturity ladder deliberately rather
-  than jumping straight to full autonomy. Use when a user asks to
-  "reduce operational toil", "figure out what to automate first", "our
-  on-call spends all their time on manual repetitive tasks", or "turn
-  this runbook into automation."
+  automatable work with no enduring value — by measuring a team's toil budget
+  against Google SRE's under-50%-of-time guideline, prioritizing what to
+  automate first with a frequency/impact/effort framework, and climbing a
+  runbook-to-automation maturity ladder deliberately rather than jumping
+  straight to full autonomy. Use when a user asks to "reduce operational toil",
+  "figure out what to automate first", "our on-call spends all their time on
+  manual repetitive tasks", or "turn this runbook into automation."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - frontend
+  - toil-reduction-and-operational-automation
+depends_on: []
 ---
 
 # Toil Reduction and Operational Automation

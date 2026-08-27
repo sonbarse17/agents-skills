@@ -1,18 +1,29 @@
 ---
 name: ml-nlp
 description: >
-  Use this skill when building NLP pipelines, applying spaCy for tokenization/NER/POS, using HuggingFace Transformers for text classification/sentiment/summarization/QA, or fine-tuning transformer models.
-  This skill enforces: NLP pipeline design (tokenization, normalization, POS, NER, parsing), framework selection (spaCy vs HuggingFace vs NLTK), model selection by task, fine-tuning strategy (full vs PEFT/LoRA), inference optimization.
-  Do NOT use for: audio/speech processing, computer vision with text (use ml-computer-vision), traditional ML on text features (use ml-classical-ml), or prompt engineering (use ai-prompt-engineering).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building NLP pipelines, applying spaCy for
+  tokenization/NER/POS, using HuggingFace Transformers for text
+  classification/sentiment/summarization/QA, or fine-tuning transformer models.
+  This skill enforces: NLP pipeline design (tokenization, normalization, POS,
+  NER, parsing), framework selection (spaCy vs HuggingFace vs NLTK), model
+  selection by task, fine-tuning strategy (full vs PEFT/LoRA), inference
+  optimization. Do NOT use for: audio/speech processing, computer vision with
+  text (use ml-computer-vision), traditional ML on text features (use
+  ml-classical-ml), or prompt engineering (use ai-prompt-engineering).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, nlp, text, phase-11]
+tags:
+  - ml
+  - nlp
+  - text
+  - phase-11
+depends_on: []
 ---
 
 # ML NLP

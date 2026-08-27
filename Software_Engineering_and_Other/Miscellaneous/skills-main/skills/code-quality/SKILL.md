@@ -1,6 +1,13 @@
 ---
 name: code-quality
-description: Use when writing, reviewing, or refactoring code in any programming language for maintainability, local reasoning, low integration complexity, narrow module APIs, honest domain models, low invalid-state cardinality, explicit dependencies, and manageable cyclomatic complexity.
+description: Use when writing, reviewing, or refactoring code in any programming
+  language for maintainability, local reasoning, low integration complexity,
+  narrow module APIs, honest domain models, low invalid-state cardinality,
+  explicit dependencies, and manageable cyclomatic complexity.
+tags:
+  - skills
+  - code-quality
+depends_on: []
 ---
 
 # Code Quality

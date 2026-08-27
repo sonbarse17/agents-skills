@@ -2,18 +2,21 @@
 name: fluent-bit-configuration-validation
 description: >
   Validates Fluent Bit pipeline configuration syntax and tests the
-  INPUT/FILTER/OUTPUT pipeline against sample log lines before a
-  production rollout — dry-run checks, parser testing, and route/Match
-  verification. Use when a user asks to "validate this Fluent Bit
-  config before deploying," "test my Fluent Bit parser against sample
-  logs," "will this Fluent Bit change break log routing," "check this
-  Fluent Bit config in CI," or reports logs silently missing/misrouted
-  after a Fluent Bit config change.
+  INPUT/FILTER/OUTPUT pipeline against sample log lines before a production
+  rollout — dry-run checks, parser testing, and route/Match verification. Use
+  when a user asks to "validate this Fluent Bit config before deploying," "test
+  my Fluent Bit parser against sample logs," "will this Fluent Bit change break
+  log routing," "check this Fluent Bit config in CI," or reports logs silently
+  missing/misrouted after a Fluent Bit config change.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - fluent-bit-configuration-validation
+depends_on: []
 ---
 
 # Fluent Bit Configuration Validation

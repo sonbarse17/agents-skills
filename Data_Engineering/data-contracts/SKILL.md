@@ -1,16 +1,28 @@
 ---
 name: data-data-contracts
 description: >
-  Use this skill when asked about data contract, data agreement, schema contract, producer/consumer contract, schema evolution, compatibility, data SLA, dbt contracts, or data product contract. This skill enforces: data contract definition with schema, semantics, SLA, and ownership, contract enforcement in CI/CD, schema compatibility checks (backward/forward/full), contract versioning, dbt contract configuration, and automated contract testing. Do NOT use for: data quality testing, data catalog management, or general API contract design.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data contract, data agreement, schema
+  contract, producer/consumer contract, schema evolution, compatibility, data
+  SLA, dbt contracts, or data product contract. This skill enforces: data
+  contract definition with schema, semantics, SLA, and ownership, contract
+  enforcement in CI/CD, schema compatibility checks (backward/forward/full),
+  contract versioning, dbt contract configuration, and automated contract
+  testing. Do NOT use for: data quality testing, data catalog management, or
+  general API contract design.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, contracts, governance, phase-11]
+tags:
+  - data
+  - contracts
+  - governance
+  - phase-11
+depends_on: []
 ---
 
 # Data Data Contracts

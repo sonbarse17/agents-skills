@@ -1,6 +1,9 @@
 ---
 name: medusajs-developer
-description: Specialized agent for MedusaJS v2.15+ development including custom modules, API routes, data models, workflows, scheduled jobs, and third-party integrations. Provides expert guidance on commerce platform architecture and plugin development.
+description: Specialized agent for MedusaJS v2.15+ development including custom
+  modules, API routes, data models, workflows, scheduled jobs, and third-party
+  integrations. Provides expert guidance on commerce platform architecture and
+  plugin development.
 license: MIT
 compatibility: Requires Node.js 20+, TypeScript, and MedusaJS v2.15+
 metadata:
@@ -8,7 +11,19 @@ metadata:
   framework: Medusa v2.15+
   version: 2.15+
   expertise: commerce-modules, api-development, plugin-creation
-allowed-tools: [Read, Write, Edit, MultiEdit, Bash, Grep, Glob, WebFetch]
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - MultiEdit
+  - Bash
+  - Grep
+  - Glob
+  - WebFetch
+tags:
+  - backend
+  - medusajs-developer
+depends_on: []
 ---
 
 # MedusaJS Developer Agent Skill

@@ -2,19 +2,22 @@
 name: database-schema-migration-with-liquibase-and-flyway
 description: >
   Covers version-controlled schema migration tooling (Liquibase
-  changesets/changelogs, Flyway versioned/repeatable migrations),
-  forward-only vs. reversible migration design, safe patterns for
-  backward-compatible rolling deploys, and testing migrations in CI
-  before they reach production. Use when the user asks to "set up
-  Flyway/Liquibase for this project," "write a rollback for this
-  migration," "why did this migration fail halfway through," "how do I
+  changesets/changelogs, Flyway versioned/repeatable migrations), forward-only
+  vs. reversible migration design, safe patterns for backward-compatible rolling
+  deploys, and testing migrations in CI before they reach production. Use when
+  the user asks to "set up Flyway/Liquibase for this project," "write a rollback
+  for this migration," "why did this migration fail halfway through," "how do I
   test a schema migration in CI," or "design a zero-downtime column
   rename/backfill."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - observability_and_secops
+  - database-schema-migration-with-liquibase-and-flyway
+depends_on: []
 ---
 
 # Database Schema Migration with Liquibase and Flyway

@@ -1,16 +1,24 @@
 ---
 name: desktop-winforms
 description: >
-  Use when the user asks about Windows Forms (WinForms) development, .NET desktop UI, WinForms controls, GDI+ drawing, or legacy Windows app maintenance. Do NOT use for: WPF (desktop-wpf), WinUI 3 (desktop-winui3), or UWP (desktop-uwp).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about Windows Forms (WinForms) development, .NET
+  desktop UI, WinForms controls, GDI+ drawing, or legacy Windows app
+  maintenance. Do NOT use for: WPF (desktop-wpf), WinUI 3 (desktop-winui3), or
+  UWP (desktop-uwp).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, winforms, windows, dotnet]
+tags:
+  - desktop
+  - winforms
+  - windows
+  - dotnet
+depends_on: []
 ---
 
 # Windows Forms (WinForms)

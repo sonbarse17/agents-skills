@@ -1,18 +1,27 @@
 ---
 name: ml-model-serving
 description: >
-  Use this skill when deploying models for inference: TorchServe, BentoML, Ray Serve, KServe, Seldon Core, model deployment, A/B testing, autoscaling, canary deployment, model versioning, inference optimization.
-  This skill enforces: framework selection based on model type, deployment strategy documentation, autoscaling configuration, model versioning scheme, rollback procedure, inference optimization.
-  Do NOT use for: model training, feature store serving, pipeline orchestration, prompt engineering.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when deploying models for inference: TorchServe, BentoML, Ray
+  Serve, KServe, Seldon Core, model deployment, A/B testing, autoscaling, canary
+  deployment, model versioning, inference optimization. This skill enforces:
+  framework selection based on model type, deployment strategy documentation,
+  autoscaling configuration, model versioning scheme, rollback procedure,
+  inference optimization. Do NOT use for: model training, feature store serving,
+  pipeline orchestration, prompt engineering.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, serving, inference, phase-11]
+tags:
+  - ml
+  - serving
+  - inference
+  - phase-11
+depends_on: []
 ---
 
 # Model Serving Agent

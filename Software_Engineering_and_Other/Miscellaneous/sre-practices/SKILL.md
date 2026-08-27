@@ -6,20 +6,27 @@ description: >
   postmortems, production readiness, reliability dashboards, service level
   objectives, burn rate alerts, multi-window multi-burn-rate SLOs, or
   reliability maturity. This skill enforces: SLI/SLO definitions per service,
-  error budget tracking with burn rate alerts, toil measurement and
-  automation, blameless postmortems with action tracking, and production
-  readiness reviews.
+  error budget tracking with burn rate alerts, toil measurement and automation,
+  blameless postmortems with action tracking, and production readiness reviews.
   Do NOT use for: general monitoring (monitoring), incident response tools
   (incident-response), or chaos engineering (chaos-engineering).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, sre, sli, slo, error-budget, reliability, phase-3]
+tags:
+  - devops
+  - sre
+  - sli
+  - slo
+  - error-budget
+  - reliability
+  - phase-3
+depends_on: []
 ---
 
 # SRE Practices

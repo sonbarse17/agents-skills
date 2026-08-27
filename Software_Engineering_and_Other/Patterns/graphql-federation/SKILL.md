@@ -1,17 +1,24 @@
 ---
 name: api-graphql-federation
 description: >
-  Use when the user asks about GraphQL Federation, Apollo Federation, federated schema, subgraphs, supergraph, schema composition, @key/@requires/@external directives, or distributed GraphQL architecture. Do NOT use for: basic GraphQL schema design (backend-graphql-patterns), or single-service GraphQL APIs.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about GraphQL Federation, Apollo Federation, federated
+  schema, subgraphs, supergraph, schema composition, @key/@requires/@external
+  directives, or distributed GraphQL architecture. Do NOT use for: basic GraphQL
+  schema design (backend-graphql-patterns), or single-service GraphQL APIs.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [api, graphql-federation, phase-3]
+tags:
+  - api
+  - graphql-federation
+  - phase-3
+depends_on: []
 ---
 
 # GraphQL Federation

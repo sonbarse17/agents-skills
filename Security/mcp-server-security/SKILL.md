@@ -1,10 +1,16 @@
 ---
 name: mcp-server-security
-description: Secure Model Context Protocol (MCP) servers with transport encryption, tool authorization, input validation, and audit logging for safe AI agent integrations.
+description: Secure Model Context Protocol (MCP) servers with transport
+  encryption, tool authorization, input validation, and audit logging for safe
+  AI agent integrations.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - mcp-server-security
+depends_on: []
 ---
 
 # MCP Server Security

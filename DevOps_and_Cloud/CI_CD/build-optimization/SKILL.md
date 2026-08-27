@@ -1,7 +1,17 @@
 ---
 name: build-optimization
-description: Makes builds fast and reproducible through incremental and hermetic builds, remote or shared caching, dependency caching, and parallelism, without trading correctness for speed. Use this whenever the user complains builds are slow, asks about build caching or cache keys, wants to cut cold-build time, is setting up a remote build cache, or is debugging a build that's fast but wrong. For caching inside a CI workflow use `ci-pipelines`; for shrinking the resulting image use `image-optimization`.
+description: Makes builds fast and reproducible through incremental and hermetic
+  builds, remote or shared caching, dependency caching, and parallelism, without
+  trading correctness for speed. Use this whenever the user complains builds are
+  slow, asks about build caching or cache keys, wants to cut cold-build time, is
+  setting up a remote build cache, or is debugging a build that's fast but
+  wrong. For caching inside a CI workflow use `ci-pipelines`; for shrinking the
+  resulting image use `image-optimization`.
 license: MIT
+tags:
+  - ci_cd
+  - build-optimization
+depends_on: []
 ---
 
 # Build Optimization

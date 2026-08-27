@@ -1,7 +1,17 @@
 ---
 name: kubernetes-storage
-description: Covers persistent data in the cluster — PersistentVolumes/Claims, StorageClasses and dynamic provisioning, access modes, StatefulSets, volume lifecycle, and reclaim policy so data survives rescheduling. Use this whenever the user is provisioning a PVC, choosing a StorageClass or access mode, running a stateful workload, or debugging a Pending PVC or stuck volume attach. For the database engine's own concerns use `database-operations`; for backup mechanics use `backup-and-restore`.
+description: Covers persistent data in the cluster — PersistentVolumes/Claims,
+  StorageClasses and dynamic provisioning, access modes, StatefulSets, volume
+  lifecycle, and reclaim policy so data survives rescheduling. Use this whenever
+  the user is provisioning a PVC, choosing a StorageClass or access mode,
+  running a stateful workload, or debugging a Pending PVC or stuck volume
+  attach. For the database engine's own concerns use `database-operations`; for
+  backup mechanics use `backup-and-restore`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - kubernetes-storage
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Storage

@@ -1,16 +1,28 @@
 ---
 name: backend-openapi-documentation
 description: >
-  Use this skill when the user says 'OpenAPI', 'Swagger', 'API documentation', 'spec-first', 'API spec', 'openapi.yaml', 'swagger.json', 'codegen', 'openapi-generator', 'API contract first'. This skill enforces spec-first API documentation with OpenAPI 3.x, code generation, and versioned specs. Applies to any backend stack. Do NOT use for: proto/gRPC specs, GraphQL schemas, or internal-only endpoints.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'OpenAPI', 'Swagger', 'API documentation',
+  'spec-first', 'API spec', 'openapi.yaml', 'swagger.json', 'codegen',
+  'openapi-generator', 'API contract first'. This skill enforces spec-first API
+  documentation with OpenAPI 3.x, code generation, and versioned specs. Applies
+  to any backend stack. Do NOT use for: proto/gRPC specs, GraphQL schemas, or
+  internal-only endpoints.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, openapi, swagger, documentation, api-spec]
+tags:
+  - backend
+  - universal
+  - openapi
+  - swagger
+  - documentation
+  - api-spec
+depends_on: []
 ---
 
 # Backend OpenAPI Documentation

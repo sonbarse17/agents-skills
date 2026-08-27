@@ -1,23 +1,26 @@
 ---
 name: complete-idp-deployment-on-k3s-from-scratch
 description: >
-  Sequences a lightweight Internal Developer Platform deployment on K3s
-  for edge, on-prem, and development contexts where a full Backstage
-  footprint isn't justified: K3s install → a resource-right-sized IDP
-  choice (slimmed single-replica Backstage vs. a hosted no-code catalog
-  tool) → a thin golden-path template → minimal-governance self-service →
-  lightweight scorecards, all explicitly scoped to small teams and
-  constrained hardware rather than restating the full cloud/enterprise
-  build. Use when a user asks to "set up a lightweight internal developer
-  platform," "run Backstage or a service catalog on K3s," "build a
-  dev-team-sized IDP without enterprise overhead," "stand up a platform
-  for an edge or small on-prem deployment," or "decide whether a full
-  Backstage is overkill for our team size."
+  Sequences a lightweight Internal Developer Platform deployment on K3s for
+  edge, on-prem, and development contexts where a full Backstage footprint isn't
+  justified: K3s install → a resource-right-sized IDP choice (slimmed
+  single-replica Backstage vs. a hosted no-code catalog tool) → a thin
+  golden-path template → minimal-governance self-service → lightweight
+  scorecards, all explicitly scoped to small teams and constrained hardware
+  rather than restating the full cloud/enterprise build. Use when a user asks to
+  "set up a lightweight internal developer platform," "run Backstage or a
+  service catalog on K3s," "build a dev-team-sized IDP without enterprise
+  overhead," "stand up a platform for an edge or small on-prem deployment," or
+  "decide whether a full Backstage is overkill for our team size."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - ci_cd
+  - complete-idp-deployment-on-k3s-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on K3s from Scratch

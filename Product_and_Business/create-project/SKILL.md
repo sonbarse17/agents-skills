@@ -1,16 +1,22 @@
 ---
 name: cloud-create-project
 description: >
-  Creates Elastic Cloud Serverless projects (Elasticsearch, Observability, or Security)
-  via the REST API, saves credentials to file, and bootstraps a scoped Elasticsearch
-  API key. Use when creating a new serverless project, provisioning a search or observability
-  environment, or spinning up a new Elastic Cloud project.
+  Creates Elastic Cloud Serverless projects (Elasticsearch, Observability, or
+  Security) via the REST API, saves credentials to file, and bootstraps a scoped
+  Elasticsearch API key. Use when creating a new serverless project,
+  provisioning a search or observability environment, or spinning up a new
+  Elastic Cloud project.
 compatibility: >
-  Requires Python 3.8+, network access to the Elastic Cloud API (api.elastic-cloud.com).
-  Environment variables: EC_API_KEY (required, set by cloud-setup).
+  Requires Python 3.8+, network access to the Elastic Cloud API
+  (api.elastic-cloud.com). Environment variables: EC_API_KEY (required, set by
+  cloud-setup).
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - product_and_business
+  - create-project
+depends_on: []
 ---
 
 # Create [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project

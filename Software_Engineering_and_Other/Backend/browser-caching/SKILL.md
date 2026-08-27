@@ -1,16 +1,28 @@
 ---
 name: frontend-browser-caching
 description: >
-  Use this skill when the user says 'browser caching', 'cache headers', 'service worker', 'SW', 'stale-while-revalidate', 'SWR', 'cache strategy', 'Cache-Control', 'ETag', 'cache busting', 'offline caching', or when optimizing frontend load performance. This skill enforces: Cache-Control headers with appropriate max-age, service worker caching with stale-while-revalidate pattern, cache-busted asset URLs, and offline fallback. Works with any frontend framework. Do NOT use for: backend response caching, CDN configuration, database query caching.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'browser caching', 'cache headers', 'service
+  worker', 'SW', 'stale-while-revalidate', 'SWR', 'cache strategy',
+  'Cache-Control', 'ETag', 'cache busting', 'offline caching', or when
+  optimizing frontend load performance. This skill enforces: Cache-Control
+  headers with appropriate max-age, service worker caching with
+  stale-while-revalidate pattern, cache-busted asset URLs, and offline fallback.
+  Works with any frontend framework. Do NOT use for: backend response caching,
+  CDN configuration, database query caching.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, caching, performance, universal]
+tags:
+  - frontend
+  - caching
+  - performance
+  - universal
+depends_on: []
 ---
 
 # Browser Caching

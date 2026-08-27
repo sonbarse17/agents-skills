@@ -1,6 +1,15 @@
 ---
 name: typescript-code-quality
-description: Use when writing or refactoring TypeScript for maintainability, honest types, low-cardinality domain models, explicit error handling, and strong module boundaries. Emphasize local reasoning, explicit dependencies, effects at the edges, discriminated unions over avoidable optional properties, pragmatic functional patterns over stateful object-oriented design, and stable module APIs.
+description: Use when writing or refactoring TypeScript for maintainability,
+  honest types, low-cardinality domain models, explicit error handling, and
+  strong module boundaries. Emphasize local reasoning, explicit dependencies,
+  effects at the edges, discriminated unions over avoidable optional properties,
+  pragmatic functional patterns over stateful object-oriented design, and stable
+  module APIs.
+tags:
+  - skills
+  - typescript-code-quality
+depends_on: []
 ---
 
 # [TypeScript](../../../../Frontend/typescript/SKILL.md) Code Quality

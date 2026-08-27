@@ -1,6 +1,12 @@
 ---
 name: embedding-strategies
-description: Select and optimize embedding models for semantic search and RAG applications. Use when choosing embedding models, implementing chunking strategies, or optimizing embedding quality for specific domains.
+description: Select and optimize embedding models for semantic search and RAG
+  applications. Use when choosing embedding models, implementing chunking
+  strategies, or optimizing embedding quality for specific domains.
+tags:
+  - skills
+  - embedding-strategies
+depends_on: []
 ---
 
 # Embedding Strategies

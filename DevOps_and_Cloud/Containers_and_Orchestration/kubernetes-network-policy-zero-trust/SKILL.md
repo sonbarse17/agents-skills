@@ -1,19 +1,22 @@
 ---
 name: kubernetes-network-policy-zero-trust
 description: >
-  Guides implementing zero-trust network segmentation in Kubernetes using
-  native NetworkPolicy resources and, where a Calico CNI is in use,
-  Calico-specific GlobalNetworkPolicy for cluster-wide default-deny and
-  tiered policy. Use when a user asks to "write a NetworkPolicy", "set up
-  default-deny networking in Kubernetes", "restrict pod-to-pod traffic",
-  "implement zero-trust segmentation in a cluster", "allow a namespace to
-  reach only specific services", or "debug why a NetworkPolicy is
-  blocking traffic it shouldn't."
+  Guides implementing zero-trust network segmentation in Kubernetes using native
+  NetworkPolicy resources and, where a Calico CNI is in use, Calico-specific
+  GlobalNetworkPolicy for cluster-wide default-deny and tiered policy. Use when
+  a user asks to "write a NetworkPolicy", "set up default-deny networking in
+  Kubernetes", "restrict pod-to-pod traffic", "implement zero-trust segmentation
+  in a cluster", "allow a namespace to reach only specific services", or "debug
+  why a NetworkPolicy is blocking traffic it shouldn't."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-network-policy-zero-trust
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) NetworkPolicy Zero Trust

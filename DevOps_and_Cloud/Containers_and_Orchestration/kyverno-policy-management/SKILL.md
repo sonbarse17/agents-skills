@@ -1,19 +1,23 @@
 ---
 name: kyverno-policy-management
 description: >
-  Guides writing Kyverno ClusterPolicy/Policy resources using its
-  YAML-native validate/mutate/generate rule syntax — a Rego-free
-  alternative to OPA/Gatekeeper for Kubernetes admission control — plus
-  audit-vs-enforce rollout and PolicyReport-based reporting. Use when the
-  user asks to "write a Kyverno policy", "mutate resources on admission
-  to inject a sidecar or default", "auto-generate a NetworkPolicy or
-  ResourceQuota per namespace", "should we use Kyverno or OPA/Gatekeeper",
-  or "why is my Kyverno validate rule not blocking/passing as expected".
+  Guides writing Kyverno ClusterPolicy/Policy resources using its YAML-native
+  validate/mutate/generate rule syntax — a Rego-free alternative to
+  OPA/Gatekeeper for Kubernetes admission control — plus audit-vs-enforce
+  rollout and PolicyReport-based reporting. Use when the user asks to "write a
+  Kyverno policy", "mutate resources on admission to inject a sidecar or
+  default", "auto-generate a NetworkPolicy or ResourceQuota per namespace",
+  "should we use Kyverno or OPA/Gatekeeper", or "why is my Kyverno validate rule
+  not blocking/passing as expected".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: policy-and-governance-tooling
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kyverno-policy-management
+depends_on: []
 ---
 
 # Kyverno Policy Management

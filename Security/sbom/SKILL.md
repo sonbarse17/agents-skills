@@ -2,20 +2,24 @@
 name: security-sbom
 description: >
   Use this skill when asked about SBOM, software bill of materials, dependency
-  graph, SPDX, CycloneDX, supply chain security, component inventory, or dependency
-  analysis. This skill enforces: SBOM generation in CycloneDX/SPDX formats,
-  dependency vulnerability correlation with severity gating, license compliance
-  checks, and attestation signing. Do NOT use for: static code analysis (SAST),
-  container image scanning, or secret detection.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  graph, SPDX, CycloneDX, supply chain security, component inventory, or
+  dependency analysis. This skill enforces: SBOM generation in CycloneDX/SPDX
+  formats, dependency vulnerability correlation with severity gating, license
+  compliance checks, and attestation signing. Do NOT use for: static code
+  analysis (SAST), container image scanning, or secret detection.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, supply-chain, phase-10]
+tags:
+  - security
+  - supply-chain
+  - phase-10
+depends_on: []
 ---
 
 # Security SBOM

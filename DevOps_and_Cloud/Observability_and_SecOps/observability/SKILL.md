@@ -1,10 +1,20 @@
 ---
 name: observability
-description: Review monitoring, metrics, logging, tracing, dashboards, and alerting as a senior SRE, then produce a prioritized, evidence-based findings table and self-contained remediation plans that close observability gaps and reduce alert noise. Strictly read-only — never edits dashboards, alert rules, or config. Use when asked to review observability posture, assess whether incidents would be detected, evaluate SLOs/alerts, or fix noisy or missing monitoring.
+description: Review monitoring, metrics, logging, tracing, dashboards, and
+  alerting as a senior SRE, then produce a prioritized, evidence-based findings
+  table and self-contained remediation plans that close observability gaps and
+  reduce alert noise. Strictly read-only — never edits dashboards, alert rules,
+  or config. Use when asked to review observability posture, assess whether
+  incidents would be detected, evaluate SLOs/alerts, or fix noisy or missing
+  monitoring.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - observability_and_secops
+  - observability
+depends_on: []
 ---
 
 # Observability Review

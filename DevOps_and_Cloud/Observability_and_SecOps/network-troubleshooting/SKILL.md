@@ -1,7 +1,18 @@
 ---
 name: network-troubleshooting
-description: Covers diagnosing connectivity failures methodically, layer by layer, with the right tool per symptom — dig/nslookup for DNS, curl/openssl for TLS and HTTP, traceroute/mtr for routing, tcpdump for packet capture, and ss/netstat for local socket state. Use this whenever the user reports a connection timing out, refused, or intermittently failing, cannot tell whether DNS, routing, a firewall, or the application is at fault, or needs to prove exactly where a request is failing. For fixing DNS records once diagnosed use `dns-management`, and for policy fixes once isolated use `network-security`.
+description: Covers diagnosing connectivity failures methodically, layer by
+  layer, with the right tool per symptom — dig/nslookup for DNS, curl/openssl
+  for TLS and HTTP, traceroute/mtr for routing, tcpdump for packet capture, and
+  ss/netstat for local socket state. Use this whenever the user reports a
+  connection timing out, refused, or intermittently failing, cannot tell whether
+  DNS, routing, a firewall, or the application is at fault, or needs to prove
+  exactly where a request is failing. For fixing DNS records once diagnosed use
+  `dns-management`, and for policy fixes once isolated use `network-security`.
 license: MIT
+tags:
+  - observability_and_secops
+  - network-troubleshooting
+depends_on: []
 ---
 
 # Network Troubleshooting

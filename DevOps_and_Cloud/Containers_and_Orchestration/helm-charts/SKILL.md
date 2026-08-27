@@ -1,7 +1,17 @@
 ---
 name: helm-charts
-description: Covers packaging and templating Kubernetes manifests with Helm — chart structure, values design and environment overrides, releases and revisions, upgrade/rollback semantics, avoiding template sprawl, and choosing Helm versus Kustomize. Use this whenever the user is writing a Helm chart, designing a values.yaml hierarchy, debugging a failed `helm upgrade`, or deciding between Helm and Kustomize. For rollout mechanics on the cluster use `kubernetes-operations`; for GitOps delivery of charts use `gitops`.
+description: Covers packaging and templating Kubernetes manifests with Helm —
+  chart structure, values design and environment overrides, releases and
+  revisions, upgrade/rollback semantics, avoiding template sprawl, and choosing
+  Helm versus Kustomize. Use this whenever the user is writing a Helm chart,
+  designing a values.yaml hierarchy, debugging a failed `helm upgrade`, or
+  deciding between Helm and Kustomize. For rollout mechanics on the cluster use
+  `kubernetes-operations`; for GitOps delivery of charts use `gitops`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - helm-charts
+depends_on: []
 ---
 
 # Helm Charts

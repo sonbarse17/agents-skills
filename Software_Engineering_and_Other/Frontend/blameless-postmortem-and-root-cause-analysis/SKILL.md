@@ -1,20 +1,23 @@
 ---
 name: blameless-postmortem-and-root-cause-analysis
 description: >
-  Guides running a blameless postmortem after an incident — using a
-  consistent template (timeline, impact, root cause, contributing
-  factors, action items), facilitating without assigning individual
-  blame, applying 5-whys/contributing-factor analysis without
-  oversimplifying to one root cause, and tracking action items through
-  to completion. Use when a user asks to "write a postmortem", "run a
-  root-cause analysis", "do a 5-whys on this incident", "make sure this
-  incident doesn't get blamed on one person", or "our postmortem action
-  items never actually get done."
+  Guides running a blameless postmortem after an incident — using a consistent
+  template (timeline, impact, root cause, contributing factors, action items),
+  facilitating without assigning individual blame, applying
+  5-whys/contributing-factor analysis without oversimplifying to one root cause,
+  and tracking action items through to completion. Use when a user asks to
+  "write a postmortem", "run a root-cause analysis", "do a 5-whys on this
+  incident", "make sure this incident doesn't get blamed on one person", or "our
+  postmortem action items never actually get done."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - frontend
+  - blameless-postmortem-and-root-cause-analysis
+depends_on: []
 ---
 
 # Blameless Postmortem and Root Cause Analysis

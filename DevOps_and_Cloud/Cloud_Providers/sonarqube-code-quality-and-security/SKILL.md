@@ -1,23 +1,25 @@
 ---
 name: sonarqube-code-quality-and-security
 description: >
-  Guides deep, tool-specific configuration of SonarQube/SonarCloud for
-  combined code quality and security analysis — quality gate design,
-  pull request decoration, technical debt ratio and maintainability
-  rating, security hotspot triage, and sonar-project.properties/scanner
-  CI wiring. Use when the user asks to "set up a SonarQube quality
-  gate", "configure sonar-project.properties", "fix a failing quality
-  gate", "review SonarQube security hotspots", "reduce technical debt
-  ratio", "decorate pull requests with SonarQube findings", or "compare
-  SonarQube new-code vs overall-code conditions". SonarQube-specific
-  depth on quality gates and debt metrics; for the general SAST concept
-  and tool-agnostic workflow see sast-integration in the devsecops
-  domain.
+  Guides deep, tool-specific configuration of SonarQube/SonarCloud for combined
+  code quality and security analysis — quality gate design, pull request
+  decoration, technical debt ratio and maintainability rating, security hotspot
+  triage, and sonar-project.properties/scanner CI wiring. Use when the user asks
+  to "set up a SonarQube quality gate", "configure sonar-project.properties",
+  "fix a failing quality gate", "review SonarQube security hotspots", "reduce
+  technical debt ratio", "decorate pull requests with SonarQube findings", or
+  "compare SonarQube new-code vs overall-code conditions". SonarQube-specific
+  depth on quality gates and debt metrics; for the general SAST concept and
+  tool-agnostic workflow see sast-integration in the devsecops domain.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - sonarqube-code-quality-and-security
+depends_on: []
 ---
 
 # SonarQube Code Quality and Security

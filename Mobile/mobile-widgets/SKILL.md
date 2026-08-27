@@ -1,19 +1,23 @@
 ---
 name: mobile-widgets
 description: >
-  Enforce mobile widget development patterns for iOS WidgetKit (widgets, Live Activities)
-  and Android App Widgets (widgets, complications). Covers timeline management, widget
-  families, configuration, deep linking, refresh strategies, and testing. NOT for in-app
-  UI components or full-screen experiences.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Enforce mobile widget development patterns for iOS WidgetKit (widgets, Live
+  Activities) and Android App Widgets (widgets, complications). Covers timeline
+  management, widget families, configuration, deep linking, refresh strategies,
+  and testing. NOT for in-app UI components or full-screen experiences.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, widgets, phase-10]
+tags:
+  - mobile
+  - widgets
+  - phase-10
+depends_on: []
 ---
 
 # Mobile Widgets Skill

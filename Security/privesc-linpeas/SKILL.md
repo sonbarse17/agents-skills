@@ -1,28 +1,43 @@
 ---
 name: privesc-linpeas
 description: >
-  Linux privilege escalation enumeration and attack surface analysis using LinPEAS
-  (Linux Privilege Escalation Awesome Script). Automates post-exploitation discovery
-  of escalation vectors, misconfigurations, and credential exposure on Linux targets.
-  Use when: (1) Enumerating privilege escalation vectors after initial access on a
-  Linux system, (2) Identifying SUID/SGID binaries, sudo misconfigurations, and
-  capability abuses, (3) Hunting for credentials in config files, history, and logs,
-  (4) Detecting container breakout opportunities and writable service files, (5)
-  Mapping kernel exploits and CVE exposure for a target system, (6) Conducting
-  authorized CTF, red team, or penetration test post-exploitation phases.
+  Linux privilege escalation enumeration and attack surface analysis using
+  LinPEAS (Linux Privilege Escalation Awesome Script). Automates
+  post-exploitation discovery of escalation vectors, misconfigurations, and
+  credential exposure on Linux targets. Use when: (1) Enumerating privilege
+  escalation vectors after initial access on a Linux system, (2) Identifying
+  SUID/SGID binaries, sudo misconfigurations, and capability abuses, (3) Hunting
+  for credentials in config files, history, and logs, (4) Detecting container
+  breakout opportunities and writable service files, (5) Mapping kernel exploits
+  and CVE exposure for a target system, (6) Conducting authorized CTF, red team,
+  or penetration test post-exploitation phases.
 version: 0.1.0
 maintainer: SirAppSec
 category: offsec
-tags: [privesc, linpeas, post-exploitation, linux, enumeration, red-team, privilege-escalation]
-frameworks: [MITRE-ATT&CK, PTES]
+tags:
+  - privesc
+  - linpeas
+  - post-exploitation
+  - linux
+  - enumeration
+  - red-team
+  - privilege-escalation
+frameworks:
+  - MITRE-ATT&CK
+  - PTES
 dependencies:
-  tools: [curl, bash, python3]
-  optional: [wget]
+  tools:
+    - curl
+    - bash
+    - python3
+  optional:
+    - wget
 references:
   - https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
   - https://book.hacktricks.xyz/linux-hardening/privilege-escalation
   - https://attack.mitre.org/tactics/TA0004/
   - https://attack.mitre.org/tactics/TA0007/
+depends_on: []
 ---
 
 # LinPEAS Linux Privilege Escalation

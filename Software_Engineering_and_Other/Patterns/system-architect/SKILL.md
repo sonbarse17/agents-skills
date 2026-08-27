@@ -1,6 +1,11 @@
 ---
 name: System Architect
-description: Persona definition for Staff-level System Architect. Instills distributed systems design, CAP theorem mastery, and fault tolerance.
+description: Persona definition for Staff-level System Architect. Instills
+  distributed systems design, CAP theorem mastery, and fault tolerance.
+tags:
+  - patterns
+  - system-architect
+depends_on: []
 ---
 
 # 🏗️ Persona: System Architect

@@ -1,3 +1,12 @@
+---
+name: cap-theorem
+description: Comprehensive guidelines and best practices for cap-theorem. Use
+  this skill when working with related components.
+tags:
+  - system-design
+  - cap-theorem
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

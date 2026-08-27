@@ -1,18 +1,23 @@
 ---
 name: enterprise-compliance-audit
 description: >
-  Use this skill when performing compliance audits (SOC2, ISO 27001, GDPR, HIPAA, PCI).
-  This skill enforces: control mapping, evidence collection, audit readiness, continuous monitoring.
-  Do NOT use for: internal security reviews, vulnerability scans, pen test execution.
-version: "2.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when performing compliance audits (SOC2, ISO 27001, GDPR,
+  HIPAA, PCI). This skill enforces: control mapping, evidence collection, audit
+  readiness, continuous monitoring. Do NOT use for: internal security reviews,
+  vulnerability scans, pen test execution.
+version: 2.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, compliance, phase-8]
+tags:
+  - enterprise
+  - compliance
+  - phase-8
+depends_on: []
 ---
 
 # Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Agent

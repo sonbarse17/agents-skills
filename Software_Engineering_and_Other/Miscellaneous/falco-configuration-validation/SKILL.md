@@ -1,22 +1,26 @@
 ---
 name: falco-configuration-validation
 description: >
-  Validates Falco runtime detection rules for false-positive rate and
-  actual firing correctness before trusting them in a channel that pages
-  a human — running new/changed rules in log-only mode against real
-  traffic, measuring alert volume and content, and confirming a rule
-  fires on a deliberate positive-control trigger before promoting it to
-  a higher-severity, paging-routed configuration. Use when the user asks
-  to "validate this Falco rule before enabling it," "why is Falco so
-  noisy," "test our Falco rules don't false-positive on real traffic,"
-  "review this rule set before it pages on-call," or "make sure Falco
-  rules aren't about to be enabled in enforce/blocking mode without an
-  audit period." Pairs with falco-runtime-threat-detection-configuration.
+  Validates Falco runtime detection rules for false-positive rate and actual
+  firing correctness before trusting them in a channel that pages a human —
+  running new/changed rules in log-only mode against real traffic, measuring
+  alert volume and content, and confirming a rule fires on a deliberate
+  positive-control trigger before promoting it to a higher-severity,
+  paging-routed configuration. Use when the user asks to "validate this Falco
+  rule before enabling it," "why is Falco so noisy," "test our Falco rules don't
+  false-positive on real traffic," "review this rule set before it pages
+  on-call," or "make sure Falco rules aren't about to be enabled in
+  enforce/blocking mode without an audit period." Pairs with
+  falco-runtime-threat-detection-configuration.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - miscellaneous
+  - falco-configuration-validation
+depends_on: []
 ---
 
 # Falco Configuration Validation

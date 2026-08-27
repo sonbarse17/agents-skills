@@ -3,17 +3,21 @@ name: kubeflow-ml-pipeline-orchestration
 description: >
   Guides authoring, compiling, and operating ML pipelines specifically with
   Kubeflow Pipelines (KFP) — the Kubernetes-native pipeline SDK, its
-  container-per-component execution model, caching, Katib hyperparameter
-  tuning integration, and multi-tenant Profiles/namespaces. Use when the
-  user asks to "write a Kubeflow pipeline", "use the KFP SDK", "compile a
-  pipeline to Kubeflow", set up Katib for hyperparameter tuning, debug a
-  Kubeflow pipeline run stuck or failing on a specific component, or choose
-  Kubeflow Pipelines specifically over another orchestrator.
+  container-per-component execution model, caching, Katib hyperparameter tuning
+  integration, and multi-tenant Profiles/namespaces. Use when the user asks to
+  "write a Kubeflow pipeline", "use the KFP SDK", "compile a pipeline to
+  Kubeflow", set up Katib for hyperparameter tuning, debug a Kubeflow pipeline
+  run stuck or failing on a specific component, or choose Kubeflow Pipelines
+  specifically over another orchestrator.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubeflow-ml-pipeline-orchestration
+depends_on: []
 ---
 
 # Kubeflow ML Pipeline Orchestration

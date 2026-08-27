@@ -1,10 +1,16 @@
 ---
 name: azure-aks
-description: Deploy and manage Azure Kubernetes Service clusters. Configure node pools, networking, and integrations. Use when running Kubernetes workloads on Azure.
+description: Deploy and manage Azure Kubernetes Service clusters. Configure node
+  pools, networking, and integrations. Use when running Kubernetes workloads on
+  Azure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - azure-aks
+depends_on: []
 ---
 
 # Azure [Kubernetes](../kubernetes/SKILL.md) Service

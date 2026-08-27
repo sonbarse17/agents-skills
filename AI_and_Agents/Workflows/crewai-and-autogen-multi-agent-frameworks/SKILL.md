@@ -2,17 +2,21 @@
 name: crewai-and-autogen-multi-agent-frameworks
 description: >
   Guides building multi-agent systems with role-based frameworks — CrewAI's
-  crew/task/process model and Microsoft AutoGen's conversable-agent model —
-  as opinionated implementations of multi-agent orchestration patterns. Use
-  when a user asks to "build this with CrewAI," "set up a crew of agents,"
-  "use AutoGen for multi-agent," "define agent roles and tasks in CrewAI,"
-  "configure a GroupChat in AutoGen," or is deciding between CrewAI, AutoGen,
-  and a hand-rolled or LangGraph-based multi-agent implementation.
+  crew/task/process model and Microsoft AutoGen's conversable-agent model — as
+  opinionated implementations of multi-agent orchestration patterns. Use when a
+  user asks to "build this with CrewAI," "set up a crew of agents," "use AutoGen
+  for multi-agent," "define agent roles and tasks in CrewAI," "configure a
+  GroupChat in AutoGen," or is deciding between CrewAI, AutoGen, and a
+  hand-rolled or LangGraph-based multi-agent implementation.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - crewai-and-autogen-multi-agent-frameworks
+depends_on: []
 ---
 
 # CrewAI and AutoGen Multi-Agent Frameworks

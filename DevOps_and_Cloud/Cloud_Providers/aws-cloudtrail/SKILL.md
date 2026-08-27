@@ -1,10 +1,15 @@
 ---
 name: aws-cloudtrail
-description: Configure AWS CloudTrail for audit logging. Set up organization trails and event analysis. Use when auditing AWS activity.
+description: Configure AWS CloudTrail for audit logging. Set up organization
+  trails and event analysis. Use when auditing AWS activity.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-cloudtrail
+depends_on: []
 ---
 
 # AWS CloudTrail

@@ -1,20 +1,23 @@
 ---
 name: capacity-planning-and-load-testing
 description: >
-  Guides demand forecasting and load/stress/soak testing methodology
-  (using tools such as k6, Locust, or JMeter) to find a system's real
-  bottleneck — CPU, memory, a connection pool, or a downstream
-  dependency — before production traffic finds it, and to set
-  autoscaling/capacity triggers from actual test evidence rather than
-  guesses. Use when a user asks to "capacity plan for an upcoming
-  launch/event", "write a load test", "find out what breaks first under
-  load", "our load tests pass but production still falls over", or "set
-  our autoscaling thresholds correctly."
+  Guides demand forecasting and load/stress/soak testing methodology (using
+  tools such as k6, Locust, or JMeter) to find a system's real bottleneck — CPU,
+  memory, a connection pool, or a downstream dependency — before production
+  traffic finds it, and to set autoscaling/capacity triggers from actual test
+  evidence rather than guesses. Use when a user asks to "capacity plan for an
+  upcoming launch/event", "write a load test", "find out what breaks first under
+  load", "our load tests pass but production still falls over", or "set our
+  autoscaling thresholds correctly."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - observability_and_secops
+  - capacity-planning-and-load-testing
+depends_on: []
 ---
 
 # [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning and Load Testing

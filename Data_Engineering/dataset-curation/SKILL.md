@@ -1,6 +1,13 @@
 ---
 name: dataset-curation
-description: Prepare, format, and validate datasets for supervised fine-tuning and preference training. Use when converting raw data into training format, applying chat templates, configuring sequence packing, generating synthetic training data, or writing a dataset card before a run.
+description: Prepare, format, and validate datasets for supervised fine-tuning
+  and preference training. Use when converting raw data into training format,
+  applying chat templates, configuring sequence packing, generating synthetic
+  training data, or writing a dataset card before a run.
+tags:
+  - data_engineering
+  - dataset-curation
+depends_on: []
 ---
 
 # Dataset Curation

@@ -1,6 +1,13 @@
 ---
 name: sast-configuration
-description: Configure Static Application Security Testing (SAST) tools for automated vulnerability detection in application code. Use when setting up security scanning, implementing DevSecOps practices, or automating code vulnerability detection.
+description: Configure Static Application Security Testing (SAST) tools for
+  automated vulnerability detection in application code. Use when setting up
+  security scanning, implementing DevSecOps practices, or automating code
+  vulnerability detection.
+tags:
+  - observability_and_secops
+  - sast-configuration
+depends_on: []
 ---
 
 # SAST Configuration

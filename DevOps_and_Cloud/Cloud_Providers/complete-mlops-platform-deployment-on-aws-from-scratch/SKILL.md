@@ -1,25 +1,28 @@
 ---
 name: complete-mlops-platform-deployment-on-aws-from-scratch
 description: >
-  Sequences a complete, end-to-end MLOps platform deployment on AWS from a
-  bare AWS Organization to a production-ready platform serving a first
-  retrained model — AWS landing zone, the SageMaker-vs-EKS+Kubeflow
-  platform decision (EKS+Kubeflow is the worked path here), GPU node pools
-  via the NVIDIA GPU Operator, MLflow experiment tracking on S3, a Kubeflow
-  Pipelines retraining DAG, model registry/packaging with gated promotion,
-  KServe canary/shadow serving, and drift monitoring. This is an
-  integration/orchestration skill that sequences several existing
-  tool-specific skills in the correct order and flags the handoff points
-  between them — it does not restate their internals. Use when a user asks
-  to "stand up an MLOps platform on AWS from scratch," "build the full ML
-  training-to-serving pipeline on EKS/SageMaker," "give me the end-to-end
-  sequence from AWS account to a retrained, monitored production model," or
-  "decide between SageMaker and EKS+Kubeflow for our ML platform."
+  Sequences a complete, end-to-end MLOps platform deployment on AWS from a bare
+  AWS Organization to a production-ready platform serving a first retrained
+  model — AWS landing zone, the SageMaker-vs-EKS+Kubeflow platform decision
+  (EKS+Kubeflow is the worked path here), GPU node pools via the NVIDIA GPU
+  Operator, MLflow experiment tracking on S3, a Kubeflow Pipelines retraining
+  DAG, model registry/packaging with gated promotion, KServe canary/shadow
+  serving, and drift monitoring. This is an integration/orchestration skill that
+  sequences several existing tool-specific skills in the correct order and flags
+  the handoff points between them — it does not restate their internals. Use
+  when a user asks to "stand up an MLOps platform on AWS from scratch," "build
+  the full ML training-to-serving pipeline on EKS/SageMaker," "give me the
+  end-to-end sequence from AWS account to a retrained, monitored production
+  model," or "decide between SageMaker and EKS+Kubeflow for our ML platform."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-mlops-platform-deployment-on-aws-from-scratch
+depends_on: []
 ---
 
 # Complete MLOps Platform Deployment On AWS From Scratch

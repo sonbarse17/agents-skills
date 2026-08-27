@@ -1,6 +1,11 @@
 ---
 name: write-implementation-plan
-description: Forces the agent to research and write a structured implementation plan before writing any code.
+description: Forces the agent to research and write a structured implementation
+  plan before writing any code.
+tags:
+  - workflows
+  - agent-implementation-plan
+depends_on: []
 ---
 
 # ⚠️ MANDATORY DIRECTIVE: PLAN BEFORE EXECUTION

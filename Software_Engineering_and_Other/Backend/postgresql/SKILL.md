@@ -1,10 +1,15 @@
 ---
 name: postgresql
-description: Administer PostgreSQL databases. Configure replication, backups, and performance tuning. Use when managing PostgreSQL deployments.
+description: Administer PostgreSQL databases. Configure replication, backups,
+  and performance tuning. Use when managing PostgreSQL deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - backend
+  - postgresql
+depends_on: []
 ---
 
 # PostgreSQL

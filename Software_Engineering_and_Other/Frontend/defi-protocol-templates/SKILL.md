@@ -1,6 +1,12 @@
 ---
 name: defi-protocol-templates
-description: Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and flash loans. Use when building decentralized finance applications or smart contract protocols.
+description: Implement DeFi protocols with production-ready templates for
+  staking, AMMs, governance, and flash loans. Use when building decentralized
+  finance applications or smart contract protocols.
+tags:
+  - frontend
+  - defi-protocol-templates
+depends_on: []
 ---
 
 # DeFi Protocol Templates

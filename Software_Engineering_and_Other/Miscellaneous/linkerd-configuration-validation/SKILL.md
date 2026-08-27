@@ -1,20 +1,22 @@
 ---
 name: linkerd-configuration-validation
 description: >
-  Validates a Linkerd installation, proxy injection, and traffic/
-  authorization policy before a production rollout — running the
-  built-in health checks, confirming which connections are actually
-  mTLS-secured, and dry-running policy changes against real traffic
-  patterns. Use when a user asks to "check if Linkerd is healthy,"
-  "verify a pod actually got the sidecar injected," "test a
-  TrafficSplit/ServiceProfile/AuthorizationPolicy before applying it,"
-  "why isn't traffic using mTLS," or "validate Linkerd config in CI
-  before merging."
+  Validates a Linkerd installation, proxy injection, and traffic/ authorization
+  policy before a production rollout — running the built-in health checks,
+  confirming which connections are actually mTLS-secured, and dry-running policy
+  changes against real traffic patterns. Use when a user asks to "check if
+  Linkerd is healthy," "verify a pod actually got the sidecar injected," "test a
+  TrafficSplit/ServiceProfile/AuthorizationPolicy before applying it," "why
+  isn't traffic using mTLS," or "validate Linkerd config in CI before merging."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - miscellaneous
+  - linkerd-configuration-validation
+depends_on: []
 ---
 
 # Linkerd Configuration Validation

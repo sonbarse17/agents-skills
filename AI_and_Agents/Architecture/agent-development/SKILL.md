@@ -1,10 +1,17 @@
 ---
 name: agent-development
-description: Design and build AI agents with persistent memory, tool use, and multi-turn conversation. Covers architecture selection, memory design, model selection, tool configuration, and implementation patterns across agent frameworks. Use when creating, debugging, or improving AI agents.
+description: Design and build AI agents with persistent memory, tool use, and
+  multi-turn conversation. Covers architecture selection, memory design, model
+  selection, tool configuration, and implementation patterns across agent
+  frameworks. Use when creating, debugging, or improving AI agents.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - architecture
+  - agent-development
+depends_on: []
 ---
 
 # Agent Development

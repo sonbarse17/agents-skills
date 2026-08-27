@@ -1,19 +1,22 @@
 ---
 name: logql-query-authoring
 description: >
-  Writes and debugs LogQL queries against Grafana Loki — label matchers
-  and stream selectors, line filters (`|=`, `!=`, `|~`, `!~`), parser
-  expressions (`| json`, `| logfmt`, `| pattern`, `| regexp`), label
-  filters after parsing, and metric queries derived from logs
-  (`rate()`, `count_over_time()`, `sum by (...)`). Use when the user
-  asks to "write a LogQL query," "filter logs by X in Loki/Grafana,"
-  "count errors per service from logs," "extract a field from JSON log
-  lines in Loki," or "my LogQL query times out / scans too much data."
+  Writes and debugs LogQL queries against Grafana Loki — label matchers and
+  stream selectors, line filters (`|=`, `!=`, `|~`, `!~`), parser expressions
+  (`| json`, `| logfmt`, `| pattern`, `| regexp`), label filters after parsing,
+  and metric queries derived from logs (`rate()`, `count_over_time()`, `sum by
+  (...)`). Use when the user asks to "write a LogQL query," "filter logs by X in
+  Loki/Grafana," "count errors per service from logs," "extract a field from
+  JSON log lines in Loki," or "my LogQL query times out / scans too much data."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - logql-query-authoring
+depends_on: []
 ---
 
 # LogQL Query Authoring

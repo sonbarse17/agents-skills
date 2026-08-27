@@ -1,16 +1,24 @@
 ---
 name: quality-unit-testing
 description: >
-  Use when the user asks about unit testing, test doubles, mocking, stubbing, test-driven development (TDD), FIRST principles, code coverage, test structure (AAA), or unit test patterns. Do NOT use for: integration testing (quality-integration-testing), E2E testing (quality-e2e-testing), or frontend testing (frontend-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about unit testing, test doubles, mocking, stubbing,
+  test-driven development (TDD), FIRST principles, code coverage, test structure
+  (AAA), or unit test patterns. Do NOT use for: integration testing
+  (quality-integration-testing), E2E testing (quality-e2e-testing), or frontend
+  testing (frontend-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, unit-testing, phase-3]
+tags:
+  - quality
+  - unit-testing
+  - phase-3
+depends_on: []
 ---
 
 # Unit Testing

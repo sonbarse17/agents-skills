@@ -1,6 +1,10 @@
 ---
 name: Chain of Thought
 description: Academic breakdown of latent reasoning and token probability manipulation.
+tags:
+  - workflows
+  - chain-of-thought
+depends_on: []
 ---
 # Chain of Thought (CoT) Prompting Mechanics
 

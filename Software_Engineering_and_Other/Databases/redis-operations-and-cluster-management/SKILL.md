@@ -1,19 +1,22 @@
 ---
 name: redis-operations-and-cluster-management
 description: >
-  Covers Redis persistence (RDB snapshots, AOF with rewrite), Redis
-  Cluster topology (hash slots, resharding, replica failover), Sentinel-
-  based HA for non-clustered deployments, and memory management
-  (maxmemory, eviction policy interaction with persistence and
-  replication). Use when the user asks to "set up Redis Cluster," "why
-  did my Redis replica fail over," "configure RDB vs AOF persistence,"
-  "reshard Redis hash slots," "Redis is evicting keys unexpectedly," or
-  "size Redis memory for production."
+  Covers Redis persistence (RDB snapshots, AOF with rewrite), Redis Cluster
+  topology (hash slots, resharding, replica failover), Sentinel- based HA for
+  non-clustered deployments, and memory management (maxmemory, eviction policy
+  interaction with persistence and replication). Use when the user asks to "set
+  up Redis Cluster," "why did my Redis replica fail over," "configure RDB vs AOF
+  persistence," "reshard Redis hash slots," "Redis is evicting keys
+  unexpectedly," or "size Redis memory for production."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - redis-operations-and-cluster-management
+depends_on: []
 ---
 
 # Redis Operations and Cluster Management

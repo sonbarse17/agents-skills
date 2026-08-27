@@ -1,13 +1,20 @@
 ---
 name: azure-containerregistry-py
-description: |
-  Azure Container Registry SDK for Python. Use for managing container images, artifacts, and repositories.
-  Triggers: "azure-containerregistry", "ContainerRegistryClient", "container images", "docker registry", "ACR".
+description: >
+  Azure Container Registry SDK for Python. Use for managing container images,
+  artifacts, and repositories.
+
+  Triggers: "azure-containerregistry", "ContainerRegistryClient", "container
+  images", "docker registry", "ACR".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: azure-containerregistry
+tags:
+  - skills
+  - azure-containerregistry-py
+depends_on: []
 ---
 
 # Azure Container Registry SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

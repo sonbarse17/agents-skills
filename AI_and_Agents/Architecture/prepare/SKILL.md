@@ -1,3 +1,12 @@
+---
+name: prepare
+description: Comprehensive guidelines and best practices for prepare. Use this
+  skill when working with related components.
+tags:
+  - architecture
+  - prepare
+depends_on: []
+---
 # Prepare — Architecture Planning & Cost Estimation
 
 ## Quick Reference

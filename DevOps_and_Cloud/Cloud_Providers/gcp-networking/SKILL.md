@@ -1,10 +1,15 @@
 ---
 name: gcp-networking
-description: Configure VPCs, firewall rules, and Cloud NAT. Implement shared VPC and private service connect. Use when designing GCP network infrastructure.
+description: Configure VPCs, firewall rules, and Cloud NAT. Implement shared VPC
+  and private service connect. Use when designing GCP network infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-networking
+depends_on: []
 ---
 
 # GCP Networking

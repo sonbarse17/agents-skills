@@ -1,6 +1,13 @@
 ---
 name: checkpoint-promotion
-description: Gate fine-tuned checkpoints with drift budgets, paired comparison, and forgetting checks before promotion. Use after a training run produces a checkpoint, when deciding whether a tuned model ships, or when a promoted model needs re-gating against updated goldens.
+description: Gate fine-tuned checkpoints with drift budgets, paired comparison,
+  and forgetting checks before promotion. Use after a training run produces a
+  checkpoint, when deciding whether a tuned model ships, or when a promoted
+  model needs re-gating against updated goldens.
+tags:
+  - models_and_finetuning
+  - checkpoint-promotion
+depends_on: []
 ---
 
 # Checkpoint Promotion

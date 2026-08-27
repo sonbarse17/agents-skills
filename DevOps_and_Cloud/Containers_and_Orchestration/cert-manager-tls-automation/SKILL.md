@@ -1,19 +1,22 @@
 ---
 name: cert-manager-tls-automation
 description: >
-  Guides installing and configuring cert-manager for automated TLS
-  certificate issuance and renewal — Issuers vs. ClusterIssuers, ACME/
-  Let's Encrypt HTTP-01 and DNS-01 challenges, private-CA issuance, and
-  integration with Ingress-nginx and Istio gateways. Use when a user
-  asks to "automate TLS certificates on Kubernetes," "set up
-  cert-manager with Let's Encrypt," "fix a stuck Certificate that
-  won't become Ready," "use DNS-01 for a wildcard cert," "rotate mTLS
-  certs automatically," or "issue certs from an internal CA."
+  Guides installing and configuring cert-manager for automated TLS certificate
+  issuance and renewal — Issuers vs. ClusterIssuers, ACME/ Let's Encrypt HTTP-01
+  and DNS-01 challenges, private-CA issuance, and integration with Ingress-nginx
+  and Istio gateways. Use when a user asks to "automate TLS certificates on
+  Kubernetes," "set up cert-manager with Let's Encrypt," "fix a stuck
+  Certificate that won't become Ready," "use DNS-01 for a wildcard cert,"
+  "rotate mTLS certs automatically," or "issue certs from an internal CA."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - cert-manager-tls-automation
+depends_on: []
 ---
 
 # cert-manager TLS Automation

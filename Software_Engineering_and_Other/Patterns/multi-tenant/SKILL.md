@@ -2,17 +2,22 @@
 name: enterprise-multi-tenant
 description: >
   Use this skill when designing or managing multi-tenant SaaS architectures.
-  This skill enforces: tenant isolation, lifecycle management, data boundary enforcement.
-  Do NOT use for: single-tenant deployments, B2C monoliths, infrastructure provisioning.
-version: "3.0.0"
-author: "j4flmao"
-license: "MIT"
+  This skill enforces: tenant isolation, lifecycle management, data boundary
+  enforcement. Do NOT use for: single-tenant deployments, B2C monoliths,
+  infrastructure provisioning.
+version: 3.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, multi-tenant, phase-8]
+tags:
+  - enterprise
+  - multi-tenant
+  - phase-8
+depends_on: []
 ---
 
 # Multi-Tenant Architecture Agent

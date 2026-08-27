@@ -1,6 +1,10 @@
 ---
 name: GraphQL Optimization
 description: Techniques to solve the N+1 problem using Dataloader.
+tags:
+  - miscellaneous
+  - graphql-optimization
+depends_on: []
 ---
 
 # GraphQL Optimization: Solving N+1

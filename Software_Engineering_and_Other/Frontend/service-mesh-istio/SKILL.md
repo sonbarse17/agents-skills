@@ -1,19 +1,22 @@
 ---
 name: service-mesh-istio
 description: >
-  Guides installing and operating Istio service mesh — choosing an
-  install profile, configuring traffic management with VirtualService
-  and DestinationRule, enforcing mutual TLS (mTLS), and wiring up
-  mesh observability (metrics, distributed tracing, access logs). Use
-  when a user asks to "install Istio," "set up canary/traffic-split
-  routing," "enforce mTLS between services," "debug a 503 from the
-  Istio sidecar," "add retries/timeouts/circuit breaking," or "reduce
-  Istio's resource overhead."
+  Guides installing and operating Istio service mesh — choosing an install
+  profile, configuring traffic management with VirtualService and
+  DestinationRule, enforcing mutual TLS (mTLS), and wiring up mesh observability
+  (metrics, distributed tracing, access logs). Use when a user asks to "install
+  Istio," "set up canary/traffic-split routing," "enforce mTLS between
+  services," "debug a 503 from the Istio sidecar," "add retries/timeouts/circuit
+  breaking," or "reduce Istio's resource overhead."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - frontend
+  - service-mesh-istio
+depends_on: []
 ---
 
 # Service Mesh (Istio)

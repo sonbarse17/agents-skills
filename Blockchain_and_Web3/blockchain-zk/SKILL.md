@@ -1,11 +1,24 @@
 ---
 name: blockchain-zk
 description: >
-  Zero-knowledge proofs, zk-rollup, zkEVM, Circom, Noir, Halo2, proof systems, Groth16, PLONK, STARK, recursive proofs, circuit optimization, zkSync, StarkNet, Scroll, Polygon zkEVM, and ZK application patterns. Covers proof system selection, circuit programming, prover infrastructure, and ZK rollup architecture. Do NOT use for: general cryptography (use blockchain-cryptography), smart contract development (use blockchain-application), or L1 consensus (use blockchain-core).
+  Zero-knowledge proofs, zk-rollup, zkEVM, Circom, Noir, Halo2, proof systems,
+  Groth16, PLONK, STARK, recursive proofs, circuit optimization, zkSync,
+  StarkNet, Scroll, Polygon zkEVM, and ZK application patterns. Covers proof
+  system selection, circuit programming, prover infrastructure, and ZK rollup
+  architecture. Do NOT use for: general cryptography (use
+  blockchain-cryptography), smart contract development (use
+  blockchain-application), or L1 consensus (use blockchain-core).
 version: 2.0.0
 author: j4flmao
 license: MIT
-tags: [blockchain, zero-knowledge, zk, rollup, proof, phase-blockchain]
+tags:
+  - blockchain
+  - zero-knowledge
+  - zk
+  - rollup
+  - proof
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain ZK

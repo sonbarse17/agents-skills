@@ -1,6 +1,11 @@
 ---
-name: "AI Agent Core Architectures"
-description: "Fundamental principles of AI Agent cognitive loops, contrasting ReAct and Plan-and-Solve paradigms."
+name: AI Agent Core Architectures
+description: Fundamental principles of AI Agent cognitive loops, contrasting
+  ReAct and Plan-and-Solve paradigms.
+tags:
+  - architecture
+  - core-architectures
+depends_on: []
 ---
 
 # Core Architectures: The Autonomous Cognitive Loop

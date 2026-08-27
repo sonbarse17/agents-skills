@@ -1,7 +1,19 @@
 ---
 name: service-connectivity
-description: Covers making service-to-service connections reliable and secure — service discovery, mutual TLS, timeouts and retries with circuit breakers, backpressure under load, and secure links across hybrid or multi-cloud boundaries. Use this whenever the user is setting retry or timeout policy, adding mTLS between services, debugging cascading failures from a slow dependency, connecting services across VPCs or clouds, or seeing an upstream overwhelmed by a retry storm. For the north-south API front door use `api-gateway`, and for a mesh implementing these patterns declaratively use `service-mesh`.
+description: Covers making service-to-service connections reliable and secure —
+  service discovery, mutual TLS, timeouts and retries with circuit breakers,
+  backpressure under load, and secure links across hybrid or multi-cloud
+  boundaries. Use this whenever the user is setting retry or timeout policy,
+  adding mTLS between services, debugging cascading failures from a slow
+  dependency, connecting services across VPCs or clouds, or seeing an upstream
+  overwhelmed by a retry storm. For the north-south API front door use
+  `api-gateway`, and for a mesh implementing these patterns declaratively use
+  `service-mesh`.
 license: MIT
+tags:
+  - observability_and_secops
+  - service-connectivity
+depends_on: []
 ---
 
 # Service Connectivity

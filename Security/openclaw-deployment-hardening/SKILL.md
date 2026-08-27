@@ -1,10 +1,17 @@
 ---
 name: openclaw-deployment-hardening
-description: Secure OpenClaw deployments with preflight hardening checks, CI/CD guardrails, container runtime restrictions, and post-deploy verification. Use when shipping OpenClaw with Docker, Kubernetes, or automated release pipelines.
+description: Secure OpenClaw deployments with preflight hardening checks, CI/CD
+  guardrails, container runtime restrictions, and post-deploy verification. Use
+  when shipping OpenClaw with Docker, Kubernetes, or automated release
+  pipelines.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - openclaw-deployment-hardening
+depends_on: []
 ---
 
 # OpenClaw Deployment Hardening

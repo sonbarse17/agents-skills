@@ -1,24 +1,36 @@
 ---
 name: enterprise-high-availability
 description: >
-  Use this skill when architecting end-to-end high-availability systems combining database replicas,
-  load balancers, slave/standby nodes, application version sync across nodes, data sync during rolling
-  migrations, and availability tiering from 95% (two nines) up to 99.99% (four nines) or 99.999% (five nines).
-  This skill enforces: availability budget math, replica topology selection, L4/L7 load balancer health-check
-  contracts, zero-downtime app version rollout (blue-green, canary, rolling), backward/forward compatible
-  schema migrations (expand-contract), data backfill + dual-write sync, quorum + split-brain prevention,
-  RPO/RTO targeting per tier, and runbook-driven failover. Do NOT use for: pure SLA contract negotiation
-  (see enterprise-sla-management), CDC streaming pipelines (see data-cdc-patterns), or basic Kubernetes
-  rollout configs (see devops-kubernetes-patterns).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when architecting end-to-end high-availability systems
+  combining database replicas, load balancers, slave/standby nodes, application
+  version sync across nodes, data sync during rolling migrations, and
+  availability tiering from 95% (two nines) up to 99.99% (four nines) or 99.999%
+  (five nines). This skill enforces: availability budget math, replica topology
+  selection, L4/L7 load balancer health-check contracts, zero-downtime app
+  version rollout (blue-green, canary, rolling), backward/forward compatible
+  schema migrations (expand-contract), data backfill + dual-write sync, quorum +
+  split-brain prevention, RPO/RTO targeting per tier, and runbook-driven
+  failover. Do NOT use for: pure SLA contract negotiation (see
+  enterprise-sla-management), CDC streaming pipelines (see data-cdc-patterns),
+  or basic Kubernetes rollout configs (see devops-kubernetes-patterns).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, high-availability, replica, load-balancer, migration, version-sync, ha, phase-8]
+tags:
+  - enterprise
+  - high-availability
+  - replica
+  - load-balancer
+  - migration
+  - version-sync
+  - ha
+  - phase-8
+depends_on: []
 ---
 
 # Enterprise High Availability

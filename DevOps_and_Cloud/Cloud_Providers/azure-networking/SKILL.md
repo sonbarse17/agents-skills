@@ -1,10 +1,16 @@
 ---
 name: azure-networking
-description: Configure Azure VNets, NSGs, and Azure Firewall. Implement hub-spoke topology and private endpoints. Use when designing Azure network infrastructure.
+description: Configure Azure VNets, NSGs, and Azure Firewall. Implement
+  hub-spoke topology and private endpoints. Use when designing Azure network
+  infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-networking
+depends_on: []
 ---
 
 # Azure Networking

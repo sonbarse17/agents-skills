@@ -1,6 +1,13 @@
 ---
 name: vision-sft
-description: Fine-tune vision-language models (VLMs) with supervised learning on image+text data. Use when adapting a VLM to a visual domain or task, configuring frozen-vision-tower LoRA, or debugging a VLM fine-tune that trains without learning.
+description: Fine-tune vision-language models (VLMs) with supervised learning on
+  image+text data. Use when adapting a VLM to a visual domain or task,
+  configuring frozen-vision-tower LoRA, or debugging a VLM fine-tune that trains
+  without learning.
+tags:
+  - models_and_finetuning
+  - vision-sft
+depends_on: []
 ---
 
 # Vision-Language SFT

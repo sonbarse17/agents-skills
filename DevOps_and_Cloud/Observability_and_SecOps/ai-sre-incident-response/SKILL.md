@@ -1,10 +1,15 @@
 ---
 name: ai-sre-incident-response
-description: Build AI-focused SRE incident response practices for LLM outages, degraded quality, runaway cost events, and safety regressions.
+description: Build AI-focused SRE incident response practices for LLM outages,
+  degraded quality, runaway cost events, and safety regressions.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - ai-sre-incident-response
+depends_on: []
 ---
 
 # AI SRE [Incident](../incident/SKILL.md) Response

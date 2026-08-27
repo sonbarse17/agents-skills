@@ -1,20 +1,23 @@
 ---
 name: liquibase-advanced-changelog-management-and-rollback-strategies
 description: >
-  Deep-dive Liquibase changelog management beyond basic changesets:
-  contexts and labels for environment-specific targeting, custom
-  rollback definitions for changes Liquibase can't auto-generate, and
-  changelog organization/best practices for large, long-lived projects
-  with many contributors. Use when the user asks to "target this
-  changeset to staging only," "write a custom Liquibase rollback,"
-  "organize our Liquibase changelog as it grows," "why did this
-  Liquibase context filter not apply," or "structure changesets for a
-  large team."
+  Deep-dive Liquibase changelog management beyond basic changesets: contexts and
+  labels for environment-specific targeting, custom rollback definitions for
+  changes Liquibase can't auto-generate, and changelog organization/best
+  practices for large, long-lived projects with many contributors. Use when the
+  user asks to "target this changeset to staging only," "write a custom
+  Liquibase rollback," "organize our Liquibase changelog as it grows," "why did
+  this Liquibase context filter not apply," or "structure changesets for a large
+  team."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - observability_and_secops
+  - liquibase-advanced-changelog-management-and-rollback-strategies
+depends_on: []
 ---
 
 # Liquibase Advanced Changelog Management and Rollback Strategies

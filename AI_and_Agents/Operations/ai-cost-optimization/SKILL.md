@@ -1,3 +1,12 @@
+---
+name: ai-cost-optimization
+description: Comprehensive guidelines and best practices for
+  ai-cost-optimization. Use this skill when working with related components.
+tags:
+  - operations
+  - ai-cost-optimization
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

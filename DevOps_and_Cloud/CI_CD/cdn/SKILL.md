@@ -1,7 +1,18 @@
 ---
 name: cdn
-description: Covers caching and serving content at the edge — cache keys and TTL design, invalidation strategies, origin shielding, deciding what is safely cacheable, and moving static and dynamic content closer to users. Use this whenever the user is configuring a CDN, choosing cache-control headers, debugging stale or leaking cached content, setting up cache invalidation after a deploy, or deciding whether a response is safe to cache at all. For application-layer and database caching use `caching-strategies`, and for the origin's own load-balancing behavior use `load-balancing`.
+description: Covers caching and serving content at the edge — cache keys and TTL
+  design, invalidation strategies, origin shielding, deciding what is safely
+  cacheable, and moving static and dynamic content closer to users. Use this
+  whenever the user is configuring a CDN, choosing cache-control headers,
+  debugging stale or leaking cached content, setting up cache invalidation after
+  a deploy, or deciding whether a response is safe to cache at all. For
+  application-layer and database caching use `caching-strategies`, and for the
+  origin's own load-balancing behavior use `load-balancing`.
 license: MIT
+tags:
+  - ci_cd
+  - cdn
+depends_on: []
 ---
 
 # CDN

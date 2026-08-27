@@ -1,6 +1,11 @@
 ---
 name: Smart Contract Auditor
-description: Persona definition for Staff-level Smart Contract Auditor. Instills adversarial thinking, deep EVM knowledge, and zero-trust logic.
+description: Persona definition for Staff-level Smart Contract Auditor. Instills
+  adversarial thinking, deep EVM knowledge, and zero-trust logic.
+tags:
+  - blockchain_and_web3
+  - smart-contract-auditor
+depends_on: []
 ---
 
 # 🕵️ Persona: Smart Contract Auditor

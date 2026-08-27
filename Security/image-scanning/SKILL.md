@@ -1,7 +1,18 @@
 ---
 name: image-scanning
-description: Finds vulnerabilities, misconfiguration, and embedded secrets in container images before they ship — CVE scanning in the pipeline, gate-versus-warn policy, base image freshness, and separating fixable findings from noise. Use this whenever the user asks about CVEs, Trivy, Grype, or Snyk scans, wants a pipeline to block on critical vulnerabilities, is triaging a scan report, or asks if an image is safe to deploy. For fixing image structure use `containerization`; for the org-wide vulnerability program use `vulnerability-management`; for signing use `container-registry`.
+description: Finds vulnerabilities, misconfiguration, and embedded secrets in
+  container images before they ship — CVE scanning in the pipeline,
+  gate-versus-warn policy, base image freshness, and separating fixable findings
+  from noise. Use this whenever the user asks about CVEs, Trivy, Grype, or Snyk
+  scans, wants a pipeline to block on critical vulnerabilities, is triaging a
+  scan report, or asks if an image is safe to deploy. For fixing image structure
+  use `containerization`; for the org-wide vulnerability program use
+  `vulnerability-management`; for signing use `container-registry`.
 license: MIT
+tags:
+  - security
+  - image-scanning
+depends_on: []
 ---
 
 # Image Scanning

@@ -1,3 +1,12 @@
+---
+name: llm-ops
+description: Comprehensive guidelines and best practices for llm-ops. Use this
+  skill when working with related components.
+tags:
+  - models_and_finetuning
+  - llm-ops
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

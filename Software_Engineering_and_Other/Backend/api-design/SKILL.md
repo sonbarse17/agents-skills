@@ -1,16 +1,28 @@
 ---
 name: backend-api-design
 description: >
-  Use this skill when the user says 'API design', 'REST API', 'GraphQL schema', 'endpoint design', 'API conventions', 'URL structure', 'HTTP methods', 'response format', 'API versioning', 'pagination', or when designing new API endpoints. This skill enforces consistent REST or GraphQL conventions: plural nouns, kebab-case URLs, consistent response envelopes, versioned endpoints, paginated lists, and structured error responses. Applies to any backend stack. Do NOT use for: database schema design, frontend data fetching, or authentication implementation.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'API design', 'REST API', 'GraphQL schema',
+  'endpoint design', 'API conventions', 'URL structure', 'HTTP methods',
+  'response format', 'API versioning', 'pagination', or when designing new API
+  endpoints. This skill enforces consistent REST or GraphQL conventions: plural
+  nouns, kebab-case URLs, consistent response envelopes, versioned endpoints,
+  paginated lists, and structured error responses. Applies to any backend stack.
+  Do NOT use for: database schema design, frontend data fetching, or
+  authentication implementation.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, api, phase-2, universal]
+tags:
+  - backend
+  - api
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend API Design

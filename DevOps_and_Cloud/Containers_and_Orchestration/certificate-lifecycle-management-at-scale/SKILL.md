@@ -2,23 +2,26 @@
 name: certificate-lifecycle-management-at-scale
 description: >
   Guides managing TLS/mTLS certificate lifecycle across many services and
-  environments beyond a single Kubernetes cluster — enterprise CA
-  integration (ACME private CA, Microsoft AD CS, cloud-managed private
-  CAs), cross-service rotation automation, expiry monitoring/alerting,
-  and CA hierarchy/trust-chain management for a mixed fleet of VMs,
-  on-prem servers, and multiple clusters. Use when the user asks to
-  "automate cert rotation across our whole fleet," "integrate with our
-  enterprise CA," "why do we keep having certificate expiry outages,"
-  "design a CA hierarchy for the org," "track every certificate's expiry
-  date across environments," or "cert-manager only covers our Kubernetes
+  environments beyond a single Kubernetes cluster — enterprise CA integration
+  (ACME private CA, Microsoft AD CS, cloud-managed private CAs), cross-service
+  rotation automation, expiry monitoring/alerting, and CA hierarchy/trust-chain
+  management for a mixed fleet of VMs, on-prem servers, and multiple clusters.
+  Use when the user asks to "automate cert rotation across our whole fleet,"
+  "integrate with our enterprise CA," "why do we keep having certificate expiry
+  outages," "design a CA hierarchy for the org," "track every certificate's
+  expiry date across environments," or "cert-manager only covers our Kubernetes
   clusters, what about everything else." Distinct from cert-manager's
   Kubernetes-native scope — see
   `../../../kubernetes-platform/skills/cert-manager-tls-automation/SKILL.md`.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - certificate-lifecycle-management-at-scale
+depends_on: []
 ---
 
 # Certificate Lifecycle Management at Scale

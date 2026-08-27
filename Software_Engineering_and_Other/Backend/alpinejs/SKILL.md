@@ -1,16 +1,26 @@
 ---
 name: alpinejs
 description: >
-  Use this skill when the user says 'Alpine.js', 'Alpine setup', 'Alpine component', 'Alpine x-data', 'Alpine x-init', 'Alpine reactive', 'Alpine project', or when building with Alpine.js. This skill enforces: HTML attribute-driven reactivity, Alpine directives (x-data, x-bind, x-on, x-show, x-for), store pattern for shared state, minimal JavaScript. Requires Alpine.js in the project (CDN or npm). Do NOT use for: Vue/React/Svelte component patterns, heavy JS frameworks, or non-Alpine projects.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Alpine.js', 'Alpine setup', 'Alpine
+  component', 'Alpine x-data', 'Alpine x-init', 'Alpine reactive', 'Alpine
+  project', or when building with Alpine.js. This skill enforces: HTML
+  attribute-driven reactivity, Alpine directives (x-data, x-bind, x-on, x-show,
+  x-for), store pattern for shared state, minimal JavaScript. Requires Alpine.js
+  in the project (CDN or npm). Do NOT use for: Vue/React/Svelte component
+  patterns, heavy JS frameworks, or non-Alpine projects.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, alpinejs, phase-1]
+tags:
+  - frontend
+  - alpinejs
+  - phase-1
+depends_on: []
 ---
 
 # Alpine.js

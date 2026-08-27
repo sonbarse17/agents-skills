@@ -1,16 +1,24 @@
 ---
 name: flask-backend
 description: >
-  Use this skill when building Flask backend applications — lightweight, extensions, blueprints, Jinja2 templates, SQLAlchemy ORM. This skill enforces: blueprint-based modularization, proper application factory pattern, extension initialization, request context management. Do NOT use for: Django projects, FastAPI applications, Tornado async servers.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Flask backend applications — lightweight,
+  extensions, blueprints, Jinja2 templates, SQLAlchemy ORM. This skill enforces:
+  blueprint-based modularization, proper application factory pattern, extension
+  initialization, request context management. Do NOT use for: Django projects,
+  FastAPI applications, Tornado async servers.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, python, phase-4]
+tags:
+  - backend
+  - python
+  - phase-4
+depends_on: []
 ---
 
 # Flask Backend

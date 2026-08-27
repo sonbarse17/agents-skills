@@ -1,3 +1,12 @@
+---
+name: event-sourcing
+description: Comprehensive guidelines and best practices for event-sourcing. Use
+  this skill when working with related components.
+tags:
+  - system-design
+  - event-sourcing
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

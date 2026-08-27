@@ -1,16 +1,28 @@
 ---
 name: design-patterns
 description: >
-  Use this skill when selecting or reviewing any design pattern — GoF creational/structural/behavioral, enterprise, integration, concurrency, architectural, or anti-pattern avoidance. This skill enforces: pattern selection decision framework, trade-off analysis, anti-pattern rejection, explicit elimination criteria for rejected candidates, and pattern composition rules. Do NOT use for: framework-specific patterns (e.g. Angular DI), language-specific idioms (e.g. Rust ownership), infrastructure patterns (e.g. Kubernetes operators).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when selecting or reviewing any design pattern — GoF
+  creational/structural/behavioral, enterprise, integration, concurrency,
+  architectural, or anti-pattern avoidance. This skill enforces: pattern
+  selection decision framework, trade-off analysis, anti-pattern rejection,
+  explicit elimination criteria for rejected candidates, and pattern composition
+  rules. Do NOT use for: framework-specific patterns (e.g. Angular DI),
+  language-specific idioms (e.g. Rust ownership), infrastructure patterns (e.g.
+  Kubernetes operators).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, design-patterns, phase-2, universal]
+tags:
+  - backend
+  - design-patterns
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Design Patterns

@@ -1,16 +1,23 @@
 ---
 name: desktop-appkit
 description: >
-  Use when the user asks about macOS app development with AppKit, Cocoa, Objective-C, Swift AppKit, macOS UI framework, or native Mac application architecture. Do NOT use for: SwiftUI (desktop-swiftui), or cross-platform desktop (desktop-electron, desktop-tauri).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about macOS app development with AppKit, Cocoa,
+  Objective-C, Swift AppKit, macOS UI framework, or native Mac application
+  architecture. Do NOT use for: SwiftUI (desktop-swiftui), or cross-platform
+  desktop (desktop-electron, desktop-tauri).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, appkit, macos]
+tags:
+  - desktop
+  - appkit
+  - macos
+depends_on: []
 ---
 
 # AppKit

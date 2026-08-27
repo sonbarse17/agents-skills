@@ -1,17 +1,25 @@
 ---
 name: aspirational-roadmapping
 description: >
-  Use when the user asks about strategic roadmapping, technology roadmapping, product roadmap creation, prioritization frameworks (RICE, WSJF, MoSCoW), OKR alignment, stakeholder alignment, timeline planning, or roadmap communication. Do NOT use for: project management task tracking, sprint planning, or technical architecture design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about strategic roadmapping, technology roadmapping,
+  product roadmap creation, prioritization frameworks (RICE, WSJF, MoSCoW), OKR
+  alignment, stakeholder alignment, timeline planning, or roadmap communication.
+  Do NOT use for: project management task tracking, sprint planning, or
+  technical architecture design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [aspirational, roadmapping, phase-3]
+tags:
+  - aspirational
+  - roadmapping
+  - phase-3
+depends_on: []
 ---
 
 # Strategic Roadmapping

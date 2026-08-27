@@ -1,10 +1,16 @@
 ---
 name: aws-s3
-description: Configure S3 buckets, policies, and lifecycle rules. Implement versioning, replication, and security. Use when managing object storage on AWS.
+description: Configure S3 buckets, policies, and lifecycle rules. Implement
+  versioning, replication, and security. Use when managing object storage on
+  AWS.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-s3
+depends_on: []
 ---
 
 # AWS S3

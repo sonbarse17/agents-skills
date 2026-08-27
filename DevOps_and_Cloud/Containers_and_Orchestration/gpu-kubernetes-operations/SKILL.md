@@ -1,10 +1,16 @@
 ---
 name: gpu-kubernetes-operations
-description: Operate GPU-backed Kubernetes clusters for AI inference and training with scheduling, autoscaling, node health, MIG partitioning, and cost controls.
+description: Operate GPU-backed Kubernetes clusters for AI inference and
+  training with scheduling, autoscaling, node health, MIG partitioning, and cost
+  controls.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - gpu-kubernetes-operations
+depends_on: []
 ---
 
 # GPU [Kubernetes](../kubernetes/SKILL.md) Operations

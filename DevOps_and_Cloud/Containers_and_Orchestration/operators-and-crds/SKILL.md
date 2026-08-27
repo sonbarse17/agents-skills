@@ -1,7 +1,18 @@
 ---
 name: operators-and-crds
-description: Covers extending Kubernetes with CustomResourceDefinitions and controllers — the reconciliation pattern, a CRD as an API contract, why controllers must be level-triggered not edge-triggered, and when to build an operator versus buy one versus not bother. Use this whenever the user is designing a CRD's schema, writing a controller's reconcile loop, or evaluating an off-the-shelf operator. For the RBAC an operator's service account needs use `kubernetes-security`; for storage an operator manages use `kubernetes-storage`.
+description: Covers extending Kubernetes with CustomResourceDefinitions and
+  controllers — the reconciliation pattern, a CRD as an API contract, why
+  controllers must be level-triggered not edge-triggered, and when to build an
+  operator versus buy one versus not bother. Use this whenever the user is
+  designing a CRD's schema, writing a controller's reconcile loop, or evaluating
+  an off-the-shelf operator. For the RBAC an operator's service account needs
+  use `kubernetes-security`; for storage an operator manages use
+  `kubernetes-storage`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - operators-and-crds
+depends_on: []
 ---
 
 # Operators and CRDs

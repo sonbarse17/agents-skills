@@ -1,16 +1,26 @@
 ---
 name: data-distributed-storage
 description: >
-  Use this skill when designing distributed storage for HDFS, S3, ADLS, GCS, MinIO, NFS, or any distributed file system for data workloads. This skill enforces: storage backend selection, data durability and replication, file format selection, partitioning and compression, lifecycle policies, storage tiering, and cost optimization. Do NOT use for: database storage engines, local filesystem tuning, or content delivery networks.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing distributed storage for HDFS, S3, ADLS, GCS,
+  MinIO, NFS, or any distributed file system for data workloads. This skill
+  enforces: storage backend selection, data durability and replication, file
+  format selection, partitioning and compression, lifecycle policies, storage
+  tiering, and cost optimization. Do NOT use for: database storage engines,
+  local filesystem tuning, or content delivery networks.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, storage, distributed, phase-11]
+tags:
+  - data
+  - storage
+  - distributed
+  - phase-11
+depends_on: []
 ---
 
 # Distributed Storage

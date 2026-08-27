@@ -1,16 +1,28 @@
 ---
 name: data-data-observability
 description: >
-  Use this skill when designing data observability: data quality monitoring, data lineage, data profiling, anomaly detection, data health dashboards, freshness checks, row count tracking, schema drift detection, and data incident management. This skill enforces: monitoring all data pipeline stages, automated quality checks, column-level lineage, freshness SLAs, anomaly detection on row counts and distributions, and incident response playbooks. Do NOT use for: infrastructure monitoring (CPU/memory), application performance monitoring, or user analytics.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing data observability: data quality monitoring,
+  data lineage, data profiling, anomaly detection, data health dashboards,
+  freshness checks, row count tracking, schema drift detection, and data
+  incident management. This skill enforces: monitoring all data pipeline stages,
+  automated quality checks, column-level lineage, freshness SLAs, anomaly
+  detection on row counts and distributions, and incident response playbooks. Do
+  NOT use for: infrastructure monitoring (CPU/memory), application performance
+  monitoring, or user analytics.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, observability, quality, phase-10]
+tags:
+  - data
+  - observability
+  - quality
+  - phase-10
+depends_on: []
 ---
 
 # Data [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

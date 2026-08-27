@@ -1,16 +1,28 @@
 ---
 name: data-reverse-etl
 description: >
-  Use this skill when asked about reverse ETL, Census, Hightouch, Grouparoo, operational analytics, syncing data from warehouse to SaaS, warehosue-to-SaaS, operational data activation, data warehouse as source, sync configs, idempotent syncs, audience export, or data activation. This skill enforces: warehouse-first sync architecture with idempotent writes, incremental and full-refresh sync modes, API rate-limit aware scheduling, and destination-specific deduplication strategies. Do NOT use for: traditional ETL (warehouse as target), streaming CDC, or data ingestion pipelines.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about reverse ETL, Census, Hightouch, Grouparoo,
+  operational analytics, syncing data from warehouse to SaaS, warehosue-to-SaaS,
+  operational data activation, data warehouse as source, sync configs,
+  idempotent syncs, audience export, or data activation. This skill enforces:
+  warehouse-first sync architecture with idempotent writes, incremental and
+  full-refresh sync modes, API rate-limit aware scheduling, and
+  destination-specific deduplication strategies. Do NOT use for: traditional ETL
+  (warehouse as target), streaming CDC, or data ingestion pipelines.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, reverse-etl, operational-analytics, phase-11]
+tags:
+  - data
+  - reverse-etl
+  - operational-analytics
+  - phase-11
+depends_on: []
 ---
 
 # Reverse ETL

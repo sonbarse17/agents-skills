@@ -1,25 +1,28 @@
 ---
 name: security-compliance-mapping-soc2-iso-pci-nist
 description: >
-  Guides mapping technical controls an engineering team has already
-  implemented — secrets management, IAM/least-privilege, logging and audit
-  trails, encryption at rest/in transit, SAST/DAST/SCA scanning, backup and
-  DR — to SOC 2 Trust Services Criteria, ISO/IEC 27001 Annex A controls,
-  PCI-DSS requirements, and NIST Cybersecurity Framework (CSF) functions,
-  and identifying the evidence needed to make each mapping audit-ready. Use
-  when a user asks to "map our controls to SOC 2", "prepare evidence for an
-  ISO 27001 audit", "which PCI-DSS requirement does our secrets rotation
-  satisfy", "align our security posture to NIST CSF", "get audit-ready", or
-  "build a controls matrix for our compliance team." This is a technical
-  control-mapping and audit-readiness guide, not a certification process,
-  legal opinion, or substitute for a qualified auditor/QSA/assessor —
-  frameworks are certified or attested by accredited third parties, not by
-  running this skill.
+  Guides mapping technical controls an engineering team has already implemented
+  — secrets management, IAM/least-privilege, logging and audit trails,
+  encryption at rest/in transit, SAST/DAST/SCA scanning, backup and DR — to SOC
+  2 Trust Services Criteria, ISO/IEC 27001 Annex A controls, PCI-DSS
+  requirements, and NIST Cybersecurity Framework (CSF) functions, and
+  identifying the evidence needed to make each mapping audit-ready. Use when a
+  user asks to "map our controls to SOC 2", "prepare evidence for an ISO 27001
+  audit", "which PCI-DSS requirement does our secrets rotation satisfy", "align
+  our security posture to NIST CSF", "get audit-ready", or "build a controls
+  matrix for our compliance team." This is a technical control-mapping and
+  audit-readiness guide, not a certification process, legal opinion, or
+  substitute for a qualified auditor/QSA/assessor — frameworks are certified or
+  attested by accredited third parties, not by running this skill.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: standards-and-compliance-frameworks
   maturity: stable
+tags:
+  - observability_and_secops
+  - security-compliance-mapping-soc2-iso-pci-nist
+depends_on: []
 ---
 
 # Security Compliance Mapping: SOC 2 / ISO 27001 / PCI-DSS / NIST CSF

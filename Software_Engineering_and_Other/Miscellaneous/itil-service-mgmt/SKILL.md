@@ -1,18 +1,23 @@
 ---
 name: enterprise-itil-service-mgmt
 description: >
-  Use this skill when applying ITIL 4 framework for IT service management.
-  This skill enforces: service lifecycle governance, incident management, change and release management, service level management.
-  Do NOT use for: project management, software development methodology, infrastructure operations scheduling.
-version: "2.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when applying ITIL 4 framework for IT service management. This
+  skill enforces: service lifecycle governance, incident management, change and
+  release management, service level management. Do NOT use for: project
+  management, software development methodology, infrastructure operations
+  scheduling.
+version: 2.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, phase-9]
+tags:
+  - enterprise
+  - phase-9
+depends_on: []
 ---
 
 # ITIL Service Management Agent

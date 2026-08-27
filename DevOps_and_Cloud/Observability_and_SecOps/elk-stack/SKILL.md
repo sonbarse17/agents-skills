@@ -1,10 +1,17 @@
 ---
 name: elk-stack
-description: Deploy and manage the ELK Stack (Elasticsearch, Logstash, Kibana) for log aggregation and analysis. Configure log pipelines, create visualizations, and implement log-based monitoring. Use when centralizing logs, implementing search functionality, or building log analytics platforms.
+description: Deploy and manage the ELK Stack (Elasticsearch, Logstash, Kibana)
+  for log aggregation and analysis. Configure log pipelines, create
+  visualizations, and implement log-based monitoring. Use when centralizing
+  logs, implementing search functionality, or building log analytics platforms.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - elk-stack
+depends_on: []
 ---
 
 # ELK Stack

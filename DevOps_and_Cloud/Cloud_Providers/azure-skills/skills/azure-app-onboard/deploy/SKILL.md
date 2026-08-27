@@ -1,3 +1,12 @@
+---
+name: deploy
+description: Comprehensive guidelines and best practices for deploy. Use this
+  skill when working with related components.
+tags:
+  - azure-app-onboard
+  - deploy
+depends_on: []
+---
 # Deploy — IaC Execution & Health Verification
 
 ## Quick Reference

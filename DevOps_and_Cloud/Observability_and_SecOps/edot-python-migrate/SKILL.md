@@ -1,11 +1,16 @@
 ---
 name: observability-edot-python-migrate
 description: >
-  Migrate a Python application from the classic Elastic APM Python agent to the EDOT
-  Python agent. Use when switching from elastic-apm to elastic-opentelemetry.
+  Migrate a Python application from the classic Elastic APM Python agent to the
+  EDOT Python agent. Use when switching from elastic-apm to
+  elastic-opentelemetry.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - edot-python-migrate
+depends_on: []
 ---
 
 # EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Migration

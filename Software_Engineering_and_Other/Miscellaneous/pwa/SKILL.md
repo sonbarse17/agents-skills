@@ -1,3 +1,12 @@
+---
+name: pwa
+description: Comprehensive guidelines and best practices for pwa. Use this skill
+  when working with related components.
+tags:
+  - miscellaneous
+  - pwa
+depends_on: []
+---
 # Progressive Web App Skill
 
 ## Overview

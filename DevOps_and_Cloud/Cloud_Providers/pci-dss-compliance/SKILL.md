@@ -1,10 +1,16 @@
 ---
 name: pci-dss-compliance
-description: Implement PCI DSS requirements for payment card data. Configure cardholder data environment and security controls. Use when processing payment cards.
+description: Implement PCI DSS requirements for payment card data. Configure
+  cardholder data environment and security controls. Use when processing payment
+  cards.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - pci-dss-compliance
+depends_on: []
 ---
 
 # PCI DSS Compliance

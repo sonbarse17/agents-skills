@@ -1,7 +1,18 @@
 ---
 name: environment-management
-description: Covers keeping dev, staging, and prod as the same system at different sizes rather than forked copies that drift apart — parity via values not branches, ephemeral preview environments per pull request, and keeping non-prod cheap without making it useless as a signal. Use this whenever the user provisions a new environment, sets up preview environments for pull requests, debugs a bug that only happens in prod, or decides what should differ between environments. For one module with per-environment values use `terraform-modules`, for gating risky promotions use `policy-as-code`.
+description: Covers keeping dev, staging, and prod as the same system at
+  different sizes rather than forked copies that drift apart — parity via values
+  not branches, ephemeral preview environments per pull request, and keeping
+  non-prod cheap without making it useless as a signal. Use this whenever the
+  user provisions a new environment, sets up preview environments for pull
+  requests, debugs a bug that only happens in prod, or decides what should
+  differ between environments. For one module with per-environment values use
+  `terraform-modules`, for gating risky promotions use `policy-as-code`.
 license: MIT
+tags:
+  - cloud_providers
+  - environment-management
+depends_on: []
 ---
 
 # Environment Management

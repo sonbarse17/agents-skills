@@ -1,10 +1,16 @@
 ---
 name: security-automation
-description: Automate security workflows and remediation. Build security pipelines, automate compliance checks, and implement SOAR capabilities. Use when scaling security operations or implementing DevSecOps.
+description: Automate security workflows and remediation. Build security
+  pipelines, automate compliance checks, and implement SOAR capabilities. Use
+  when scaling security operations or implementing DevSecOps.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - security-automation
+depends_on: []
 ---
 
 # Security Automation

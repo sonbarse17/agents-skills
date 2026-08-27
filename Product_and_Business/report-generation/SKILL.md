@@ -1,18 +1,23 @@
 ---
 name: backend-report-generation
 description: >
-  Enforce report generation patterns including PDF generation (Puppeteer, wkhtmltopdf),
-  Excel/CSV export, async generation with queues, report scheduling, large dataset handling,
-  template rendering, and report API design. NOT for real-time dashboards or live charting.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Enforce report generation patterns including PDF generation (Puppeteer,
+  wkhtmltopdf), Excel/CSV export, async generation with queues, report
+  scheduling, large dataset handling, template rendering, and report API design.
+  NOT for real-time dashboards or live charting.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, reporting, phase-10]
+tags:
+  - backend
+  - reporting
+  - phase-10
+depends_on: []
 ---
 
 # Report Generation Skill

@@ -1,10 +1,17 @@
 ---
 name: dependency-scanning
-description: Scan package dependencies for known vulnerabilities using Snyk, Dependabot, and OWASP Dependency-Check. Identify and remediate vulnerable libraries in your software supply chain. Use when managing third-party dependencies or implementing software composition analysis.
+description: Scan package dependencies for known vulnerabilities using Snyk,
+  Dependabot, and OWASP Dependency-Check. Identify and remediate vulnerable
+  libraries in your software supply chain. Use when managing third-party
+  dependencies or implementing software composition analysis.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - dependency-scanning
+depends_on: []
 ---
 
 # Dependency Scanning

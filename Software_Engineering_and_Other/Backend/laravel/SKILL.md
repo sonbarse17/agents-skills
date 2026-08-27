@@ -1,16 +1,26 @@
 ---
 name: php-laravel
 description: >
-  Use this skill when building Laravel applications — MVC structure, Eloquent ORM, service layer, validation, queues, and testing. This skill enforces: thin controllers, service layer for business logic, Eloquent best practices with eager loading, form request validation, and queue job structure. Requires Laravel 10+ or 11+. Do NOT use for: Symfony, WordPress, non-Laravel PHP frameworks.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Laravel applications — MVC structure, Eloquent
+  ORM, service layer, validation, queues, and testing. This skill enforces: thin
+  controllers, service layer for business logic, Eloquent best practices with
+  eager loading, form request validation, and queue job structure. Requires
+  Laravel 10+ or 11+. Do NOT use for: Symfony, WordPress, non-Laravel PHP
+  frameworks.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, php, laravel, phase-4]
+tags:
+  - backend
+  - php
+  - laravel
+  - phase-4
+depends_on: []
 ---
 
 # Laravel

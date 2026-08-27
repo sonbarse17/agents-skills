@@ -1,18 +1,23 @@
 ---
 name: backend-sms-messaging
 description: >
-  Enforce SMS and messaging patterns including Twilio/AWS SNS/Vonage integration,
-  WhatsApp Business API, 2FA OTP delivery, TCPA compliance, message templates,
-  rate limiting, and delivery analytics. NOT for push notifications or in-app messaging.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Enforce SMS and messaging patterns including Twilio/AWS SNS/Vonage
+  integration, WhatsApp Business API, 2FA OTP delivery, TCPA compliance, message
+  templates, rate limiting, and delivery analytics. NOT for push notifications
+  or in-app messaging.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, messaging, phase-10]
+tags:
+  - backend
+  - messaging
+  - phase-10
+depends_on: []
 ---
 
 # SMS Messaging Skill

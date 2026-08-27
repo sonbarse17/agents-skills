@@ -1,10 +1,19 @@
 ---
 name: azure-kusto-irql
-description: "Compose IRQL (Incident Response Query Language) queries for Kusto cybersecurity investigations. Translates natural language hunting questions into composable IRQL pipelines using Get_*, Extract_*, and Enrich_* functions. WHEN: IRQL query, security hunt, threat hunting KQL, incident response query, compose hunting pipeline, failed logins, phishing investigation, lateral movement, process execution, file creation events."
+description: "Compose IRQL (Incident Response Query Language) queries for Kusto
+  cybersecurity investigations. Translates natural language hunting questions
+  into composable IRQL pipelines using Get_*, Extract_*, and Enrich_* functions.
+  WHEN: IRQL query, security hunt, threat hunting KQL, incident response query,
+  compose hunting pipeline, failed logins, phishing investigation, lateral
+  movement, process execution, file creation events."
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.2.1"
+  version: 1.2.1
+tags:
+  - skills
+  - azure-kusto-irql
+depends_on: []
 ---
 
 # IRQL -- [Incident](../../../../Observability_and_SecOps/incident/SKILL.md) Response Query Language

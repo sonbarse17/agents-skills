@@ -1,7 +1,18 @@
 ---
 name: security-scanning
-description: Places SAST, DAST, and dependency scanning at the right stage of the pipeline, tuned to gate or merely inform depending on confidence, without turning every merge into a wall of unreviewed findings. Use this whenever the user is adding a security scanner to CI, choosing between SAST and DAST, deciding whether a scan should block a merge, tuning scanner noise, or complaining that a pipeline is full of findings nobody triages. For deciding what to do with the findings once they exist use `vulnerability-management`; for the pipeline infrastructure running these scans use `pipeline-security`.
+description: Places SAST, DAST, and dependency scanning at the right stage of
+  the pipeline, tuned to gate or merely inform depending on confidence, without
+  turning every merge into a wall of unreviewed findings. Use this whenever the
+  user is adding a security scanner to CI, choosing between SAST and DAST,
+  deciding whether a scan should block a merge, tuning scanner noise, or
+  complaining that a pipeline is full of findings nobody triages. For deciding
+  what to do with the findings once they exist use `vulnerability-management`;
+  for the pipeline infrastructure running these scans use `pipeline-security`.
 license: MIT
+tags:
+  - security
+  - security-scanning
+depends_on: []
 ---
 
 # Security Scanning

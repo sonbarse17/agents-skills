@@ -1,10 +1,16 @@
 ---
 name: aws-cost-optimization
-description: Reduce AWS spend with rightsizing, autoscaling, commitment planning, and storage lifecycle policies. Use when running FinOps reviews, lowering cloud bills, or improving cost-per-request metrics.
+description: Reduce AWS spend with rightsizing, autoscaling, commitment
+  planning, and storage lifecycle policies. Use when running FinOps reviews,
+  lowering cloud bills, or improving cost-per-request metrics.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-cost-optimization
+depends_on: []
 ---
 
 # AWS Cost Optimization

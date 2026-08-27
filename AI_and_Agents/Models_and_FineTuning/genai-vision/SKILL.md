@@ -1,6 +1,11 @@
 ---
 name: genai-vision
-description: Integrating Stable Diffusion for vision generation and Whisper for audio/multimodal tasks.
+description: Integrating Stable Diffusion for vision generation and Whisper for
+  audio/multimodal tasks.
+tags:
+  - models_and_finetuning
+  - genai-vision
+depends_on: []
 ---
 
 # GenAI Vision & Multimodal

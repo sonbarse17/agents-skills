@@ -1,6 +1,11 @@
 ---
 name: rdma_rocev2_hardware_datapath
-description: Hardware meta-skill analyzing RDMA & RoCEv2 datapath for zero-copy GPU-to-GPU interconnects over converged ethernet fabrics.
+description: Hardware meta-skill analyzing RDMA & RoCEv2 datapath for zero-copy
+  GPU-to-GPU interconnects over converged ethernet fabrics.
+tags:
+  - miscellaneous
+  - rdma-roce
+depends_on: []
 ---
 
 # RDMA & RoCEv2: Zero-Copy Silicon Datapaths

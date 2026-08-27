@@ -1,6 +1,13 @@
 ---
 name: test-driven-development
-description: Drives development with tests. Use when implementing any logic, fixing any bug, or changing any behavior. Use when you need to prove that code works, when a bug report arrives, or when you're about to modify existing functionality.
+description: Drives development with tests. Use when implementing any logic,
+  fixing any bug, or changing any behavior. Use when you need to prove that code
+  works, when a bug report arrives, or when you're about to modify existing
+  functionality.
+tags:
+  - observability_and_secops
+  - test-driven-development
+depends_on: []
 ---
 
 # Test-Driven Development

@@ -1,16 +1,27 @@
 ---
 name: ember
 description: >
-  Use this skill when the user says 'Ember.js', 'Ember app', 'Ember setup', 'Ember CLI', 'Ember Data', 'Ember Octane', 'Ember component', 'Ember route', 'Ember service', or when building ambitious web applications with Ember.js. This skill enforces: convention over configuration, Ember CLI for code generation, Ember Data for state management, Octane patterns (glimmer components, tracked properties, native classes). Requires package.json with ember-source or ember-cli. Do NOT use for: React/Vue/Angular projects, vanilla JS, or non-Ember projects.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Ember.js', 'Ember app', 'Ember setup',
+  'Ember CLI', 'Ember Data', 'Ember Octane', 'Ember component', 'Ember route',
+  'Ember service', or when building ambitious web applications with Ember.js.
+  This skill enforces: convention over configuration, Ember CLI for code
+  generation, Ember Data for state management, Octane patterns (glimmer
+  components, tracked properties, native classes). Requires package.json with
+  ember-source or ember-cli. Do NOT use for: React/Vue/Angular projects, vanilla
+  JS, or non-Ember projects.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, ember, phase-2]
+tags:
+  - frontend
+  - ember
+  - phase-2
+depends_on: []
 ---
 
 # Ember.js

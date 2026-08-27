@@ -5,15 +5,18 @@ description: >
   vacuum/autovacuum tuning and bloat remediation, connection pooling with
   PgBouncer, query performance tuning (EXPLAIN ANALYZE, indexing, planner
   statistics), and major-version upgrade strategy (pg_upgrade vs. logical
-  replication cutover). Use when the user asks to "tune PostgreSQL
-  performance," "set up PostgreSQL replication," "fix table bloat," "size a
-  PgBouncer pool," "why is this query slow," or "upgrade PostgreSQL to a new
-  major version."
+  replication cutover). Use when the user asks to "tune PostgreSQL performance,"
+  "set up PostgreSQL replication," "fix table bloat," "size a PgBouncer pool,"
+  "why is this query slow," or "upgrade PostgreSQL to a new major version."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - observability_and_secops
+  - postgresql-operations-and-performance-tuning
+depends_on: []
 ---
 
 # [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Operations and Performance Tuning

@@ -1,23 +1,26 @@
 ---
 name: operational-runbook-execution-and-escalation
 description: >
-  Guides junior/entry-level engineering work: executing pre-approved
-  runbooks and established deployment procedures exactly as documented,
-  first-response alert triage (acknowledge, assess severity, apply the
-  documented fix or escalate), and knowing the explicit criteria for when
-  to stop and hand off rather than improvise a fix beyond the runbook's
-  scope. Covers building judgment over time by logging deviations from
-  the runbook for review rather than silently freelancing a workaround.
-  Use when a junior/entry-level engineer (or an agent acting as one) is
-  first-responder on an alert, is asked to "follow the runbook for X,"
-  needs to decide "should I escalate this or keep trying," is running a
-  documented deployment/rollback procedure, or is writing up a runbook
-  deviation after an on-call shift.
+  Guides junior/entry-level engineering work: executing pre-approved runbooks
+  and established deployment procedures exactly as documented, first-response
+  alert triage (acknowledge, assess severity, apply the documented fix or
+  escalate), and knowing the explicit criteria for when to stop and hand off
+  rather than improvise a fix beyond the runbook's scope. Covers building
+  judgment over time by logging deviations from the runbook for review rather
+  than silently freelancing a workaround. Use when a junior/entry-level engineer
+  (or an agent acting as one) is first-responder on an alert, is asked to
+  "follow the runbook for X," needs to decide "should I escalate this or keep
+  trying," is running a documented deployment/rollback procedure, or is writing
+  up a runbook deviation after an on-call shift.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: role-based-engineering-practices
   maturity: stable
+tags:
+  - ci_cd
+  - operational-runbook-execution-and-escalation
+depends_on: []
 ---
 
 # Operational [Runbook](../../Observability_and_SecOps/runbook/SKILL.md) Execution and Escalation

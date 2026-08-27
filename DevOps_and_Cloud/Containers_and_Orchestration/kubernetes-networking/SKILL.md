@@ -1,7 +1,17 @@
 ---
 name: kubernetes-networking
-description: Explains how traffic reaches and moves between pods — Services (ClusterIP/NodePort/LoadBalancer), Ingress and controllers, cluster DNS, NetworkPolicy default-deny, and debugging selector mismatches or empty endpoints. Use this whenever the user asks why a Service has no endpoints, why a request 502s inside the cluster, how to expose an app externally, or how to write a NetworkPolicy. For readiness-driven endpoint removal use `kubernetes-operations`; for mTLS at L7 use `service-mesh`.
+description: Explains how traffic reaches and moves between pods — Services
+  (ClusterIP/NodePort/LoadBalancer), Ingress and controllers, cluster DNS,
+  NetworkPolicy default-deny, and debugging selector mismatches or empty
+  endpoints. Use this whenever the user asks why a Service has no endpoints, why
+  a request 502s inside the cluster, how to expose an app externally, or how to
+  write a NetworkPolicy. For readiness-driven endpoint removal use
+  `kubernetes-operations`; for mTLS at L7 use `service-mesh`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - kubernetes-networking
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Networking

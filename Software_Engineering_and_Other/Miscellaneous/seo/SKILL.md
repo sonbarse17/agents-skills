@@ -1,3 +1,12 @@
+---
+name: seo
+description: Comprehensive guidelines and best practices for seo. Use this skill
+  when working with related components.
+tags:
+  - miscellaneous
+  - seo
+depends_on: []
+---
 # SEO Skill
 
 ## Overview

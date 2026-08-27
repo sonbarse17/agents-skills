@@ -1,7 +1,19 @@
 ---
 name: data-migration
-description: Covers changing schema or data shape without downtime using expand-then-contract — adding new structures alongside old, backfilling historical data in batches, dual-writing during the transition, verifying both old and new code paths, and keeping every step independently reversible. Use this whenever the user renames a column, changes a data type, moves data between tables, backfills a new field, or asks how to migrate without a maintenance window. For deploy sequencing of each phase use `deployment-strategies`, and for day-to-day database operations use `database-operations`.
+description: Covers changing schema or data shape without downtime using
+  expand-then-contract — adding new structures alongside old, backfilling
+  historical data in batches, dual-writing during the transition, verifying both
+  old and new code paths, and keeping every step independently reversible. Use
+  this whenever the user renames a column, changes a data type, moves data
+  between tables, backfills a new field, or asks how to migrate without a
+  maintenance window. For deploy sequencing of each phase use
+  `deployment-strategies`, and for day-to-day database operations use
+  `database-operations`.
 license: MIT
+tags:
+  - data_engineering
+  - data-migration
+depends_on: []
 ---
 
 # Data Migration

@@ -1,17 +1,20 @@
 ---
 name: agent-tool-use-patterns
 description: >
-  Guides designing safe, reliable tool/function-calling interfaces and loops
-  for LLM agents. Use when a user asks to "design tool schemas," fix an
-  agent that hallucinates tool calls or arguments, prevent infinite tool-call
-  loops, decide how much autonomy to give an agent's tool use, handle
-  untrusted tool output safely, or add confirmation gates before destructive
-  tool actions.
+  Guides designing safe, reliable tool/function-calling interfaces and loops for
+  LLM agents. Use when a user asks to "design tool schemas," fix an agent that
+  hallucinates tool calls or arguments, prevent infinite tool-call loops, decide
+  how much autonomy to give an agent's tool use, handle untrusted tool output
+  safely, or add confirmation gates before destructive tool actions.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - agent-tool-use-patterns
+depends_on: []
 ---
 
 # Agent Tool Use Patterns

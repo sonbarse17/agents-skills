@@ -4,16 +4,20 @@ description: >
   Configures JFrog Artifactory's local/remote/virtual repository types,
   multi-region replication, retention/cleanup policies, and Xray
   security-scanning integration, with an honest compare/contrast against
-  Sonatype Nexus. Use when a user asks to "set up Artifactory," "configure
-  an Artifactory remote/virtual repository," "set up multi-region
-  replication in Artifactory," "add Xray scanning to Artifactory," "clean up
-  old artifacts in Artifactory," or is comparing Artifactory against Nexus
-  for a private registry.
+  Sonatype Nexus. Use when a user asks to "set up Artifactory," "configure an
+  Artifactory remote/virtual repository," "set up multi-region replication in
+  Artifactory," "add Xray scanning to Artifactory," "clean up old artifacts in
+  Artifactory," or is comparing Artifactory against Nexus for a private
+  registry.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - miscellaneous
+  - jfrog-artifactory-configuration
+depends_on: []
 ---
 
 # JFrog Artifactory Configuration

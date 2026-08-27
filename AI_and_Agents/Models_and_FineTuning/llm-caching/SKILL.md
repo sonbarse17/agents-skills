@@ -1,10 +1,17 @@
 ---
 name: llm-caching
-description: Implement multi-layer LLM caching with exact match, semantic similarity, and provider-side prompt caching. Reduce API costs by 30–70%, cut latency, and improve throughput using Redis, GPTCache, and provider caching APIs.
+description: Implement multi-layer LLM caching with exact match, semantic
+  similarity, and provider-side prompt caching. Reduce API costs by 30–70%, cut
+  latency, and improve throughput using Redis, GPTCache, and provider caching
+  APIs.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llm-caching
+depends_on: []
 ---
 
 # LLM Caching

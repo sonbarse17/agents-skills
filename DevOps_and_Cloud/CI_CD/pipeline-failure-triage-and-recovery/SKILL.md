@@ -4,16 +4,20 @@ description: >
   Diagnoses and recovers a failed or flaky CI run — distinguishing a real
   regression from a flaky/environmental failure, choosing the right re-run
   strategy (single job vs. full pipeline vs. targeted re-run), clearing
-  cache/dependency corruption, and quarantining a confirmed-flaky test
-  without silently hiding real failures. Use when the user asks "why did
-  this pipeline/build fail," "is this test actually flaky or a real bug,"
-  "should I just re-run CI," "the pipeline fails intermittently on the same
-  commit," "clear the CI cache," or "quarantine this flaky test."
+  cache/dependency corruption, and quarantining a confirmed-flaky test without
+  silently hiding real failures. Use when the user asks "why did this
+  pipeline/build fail," "is this test actually flaky or a real bug," "should I
+  just re-run CI," "the pipeline fails intermittently on the same commit,"
+  "clear the CI cache," or "quarantine this flaky test."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - ci_cd
+  - pipeline-failure-triage-and-recovery
+depends_on: []
 ---
 
 # Pipeline Failure Triage and Recovery

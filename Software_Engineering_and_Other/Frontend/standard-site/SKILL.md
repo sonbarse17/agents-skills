@@ -1,18 +1,21 @@
 ---
 name: standard-site
-description: >-
-  Convert data into Standard.site AT Protocol lexicon records and validate them
-  against official schemas. Use when creating or verifying
+description: Convert data into Standard.site AT Protocol lexicon records and
+  validate them against official schemas. Use when creating or verifying
   site.standard.publication, site.standard.document,
   site.standard.graph.subscription, site.standard.graph.recommend, or
   site.standard.theme.basic records — even if the user doesn't name
-  Standard.site directly. Also use when working with AT Protocol blog or
-  article publishing workflows, or when mapping content to standard.site
-  format from other sources.
+  Standard.site directly. Also use when working with AT Protocol blog or article
+  publishing workflows, or when mapping content to standard.site format from
+  other sources.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - frontend
+  - standard-site
+depends_on: []
 ---
 
 # Standard.site

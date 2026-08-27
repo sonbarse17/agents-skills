@@ -4,19 +4,23 @@ description: >
   Use this skill when the user says 'test strategy', 'test plan', 'test case',
   'test scenario', 'equivalence partitioning', 'boundary value analysis',
   'defect report', 'test metrics', 'regression testing', 'smoke test',
-  'automation strategy', 'test coverage', or needs quality assurance.
-  Covers: test strategy, test case design, defect management, test metrics,
-  automation strategy, and regression testing. Do NOT use for: code quality
-  standards (use qc), performance testing (use performance-profiler).
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  'automation strategy', 'test coverage', or needs quality assurance. Covers:
+  test strategy, test case design, defect management, test metrics, automation
+  strategy, and regression testing. Do NOT use for: code quality standards (use
+  qc), performance testing (use performance-profiler).
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, qa, testing]
+tags:
+  - management
+  - qa
+  - testing
+depends_on: []
 ---
 
 # Quality Assurance

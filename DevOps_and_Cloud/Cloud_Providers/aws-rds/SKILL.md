@@ -1,10 +1,15 @@
 ---
 name: aws-rds
-description: Provision and manage RDS databases. Configure backups, replication, and security. Use when deploying managed relational databases on AWS.
+description: Provision and manage RDS databases. Configure backups, replication,
+  and security. Use when deploying managed relational databases on AWS.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-rds
+depends_on: []
 ---
 
 # AWS RDS

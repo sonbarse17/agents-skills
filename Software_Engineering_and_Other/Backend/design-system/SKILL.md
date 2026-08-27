@@ -1,16 +1,28 @@
 ---
 name: frontend-design-system
 description: >
-  Use this skill when the user says 'design system', 'design tokens', 'component library', 'theme', 'colors', 'typography system', 'spacing system', 'component API design', 'variant system', or when creating or extending a frontend design system. This skill enforces: three-tier token hierarchy (primitive, semantic, component), CSS custom properties as the token layer, CVA for component variants, component API with max 10 props, and dark mode via semantic token swap. Works with React, Vue, Angular. Do NOT use for: backend API design, database schema, or individual component implementation.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'design system', 'design tokens', 'component
+  library', 'theme', 'colors', 'typography system', 'spacing system', 'component
+  API design', 'variant system', or when creating or extending a frontend design
+  system. This skill enforces: three-tier token hierarchy (primitive, semantic,
+  component), CSS custom properties as the token layer, CVA for component
+  variants, component API with max 10 props, and dark mode via semantic token
+  swap. Works with React, Vue, Angular. Do NOT use for: backend API design,
+  database schema, or individual component implementation.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, design-system, phase-3, universal]
+tags:
+  - frontend
+  - design-system
+  - phase-3
+  - universal
+depends_on: []
 ---
 
 # Frontend Design System

@@ -1,10 +1,16 @@
 ---
 name: vercel-deployments
-description: Deploy frontend and full-stack apps on Vercel with previews, edge functions, environment promotion, and production guardrails. Use when shipping Next.js, SvelteKit, or static sites with zero-config CI/CD.
+description: Deploy frontend and full-stack apps on Vercel with previews, edge
+  functions, environment promotion, and production guardrails. Use when shipping
+  Next.js, SvelteKit, or static sites with zero-config CI/CD.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - vercel-deployments
+depends_on: []
 ---
 
 # Vercel Deployments

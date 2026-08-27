@@ -1,16 +1,24 @@
 ---
 name: frontend-storybook
 description: >
-  Use this skill when the user says 'storybook', 'component documentation', 'visual testing', 'storybook addon', 'CSF', 'component story'. This skill enforces CSF (Component Story Format) 3.x standards, accessible stories, interaction testing, and addon integration. Applies to any frontend stack.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'storybook', 'component documentation',
+  'visual testing', 'storybook addon', 'CSF', 'component story'. This skill
+  enforces CSF (Component Story Format) 3.x standards, accessible stories,
+  interaction testing, and addon integration. Applies to any frontend stack.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, storybook, phase-3, universal]
+tags:
+  - frontend
+  - storybook
+  - phase-3
+  - universal
+depends_on: []
 ---
 
 # Frontend Storybook

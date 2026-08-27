@@ -1,12 +1,19 @@
 ---
 name: azure-storage-blob-rust
-description: |
-  Azure Blob Storage library for Rust. Upload, download, and manage blobs and containers.
-  Triggers: "blob storage rust", "BlobClient rust", "upload blob rust", "download blob rust", "storage container rust", "BlobServiceClient rust".
+description: >
+  Azure Blob Storage library for Rust. Upload, download, and manage blobs and
+  containers.
+
+  Triggers: "blob storage rust", "BlobClient rust", "upload blob rust",
+  "download blob rust", "storage container rust", "BlobServiceClient rust".
 license: MIT
 metadata:
   author: Microsoft
   package: azure_storage_blob
+tags:
+  - cloud_providers
+  - azure-storage-blob-rust
+depends_on: []
 ---
 
 # Azure Blob Storage library for Rust

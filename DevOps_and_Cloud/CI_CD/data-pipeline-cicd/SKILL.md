@@ -1,16 +1,31 @@
 ---
 name: data-pipeline-cicd
 description: >
-  Use this skill when asked about data pipeline CI/CD, dbt Cloud CI/CD, SQLFluff, SQL linting, Atlantis for SQL, data pipeline testing, environment promotion, schema change management, dbt test, data quality in CI, dataops, or database change management. This skill enforces: dbt Cloud CI/CD with environment promotion gates, SQL linting with SQLFluff in CI, schema change management with migration scripts, data pipeline testing (dbt test, data diff), and Atlantis-style SQL review workflows. Do NOT use for: application CI/CD, infrastructure CI/CD, standard Terraform Atlantis, or API pipeline testing.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data pipeline CI/CD, dbt Cloud CI/CD,
+  SQLFluff, SQL linting, Atlantis for SQL, data pipeline testing, environment
+  promotion, schema change management, dbt test, data quality in CI, dataops, or
+  database change management. This skill enforces: dbt Cloud CI/CD with
+  environment promotion gates, SQL linting with SQLFluff in CI, schema change
+  management with migration scripts, data pipeline testing (dbt test, data
+  diff), and Atlantis-style SQL review workflows. Do NOT use for: application
+  CI/CD, infrastructure CI/CD, standard Terraform Atlantis, or API pipeline
+  testing.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, cicd, dataops, dbt, sqlfluff, phase-11]
+tags:
+  - data
+  - cicd
+  - dataops
+  - dbt
+  - sqlfluff
+  - phase-11
+depends_on: []
 ---
 
 # Data Pipeline CI/CD

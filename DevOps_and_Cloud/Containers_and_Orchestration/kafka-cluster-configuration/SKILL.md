@@ -1,16 +1,20 @@
 ---
 name: kafka-cluster-configuration
 description: >
-  Designs Apache Kafka broker configuration, topic/partition layout,
-  replication factor, and cluster metadata mode (ZooKeeper vs. KRaft). Use
-  when the user asks to "size a Kafka cluster," "set replication factor,"
-  "design topic partitions," "configure Kafka brokers," "migrate from
-  ZooKeeper to KRaft," or "set up a new Kafka cluster" from scratch.
+  Designs Apache Kafka broker configuration, topic/partition layout, replication
+  factor, and cluster metadata mode (ZooKeeper vs. KRaft). Use when the user
+  asks to "size a Kafka cluster," "set replication factor," "design topic
+  partitions," "configure Kafka brokers," "migrate from ZooKeeper to KRaft," or
+  "set up a new Kafka cluster" from scratch.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kafka-cluster-configuration
+depends_on: []
 ---
 
 # Kafka Cluster Configuration

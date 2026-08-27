@@ -1,18 +1,29 @@
 ---
 name: ml-model-interpretability
 description: >
-  Use this skill when explaining model predictions, computing feature importance, generating SHAP/LIME explanations, creating dependence plots, or building trust in ML model decisions.
-  This skill enforces: global + local explanation coverage, SHAP value computation, permutation importance baseline, visualization choice (waterfall/force/dependence/summary), model-specific methods, feature interaction detection.
-  Do NOT use for: model evaluation metrics (use ml-model-evaluation), hyperparameter tuning (use ml-hyperparameter-tuning), causal inference, or privacy-preserving explanations.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when explaining model predictions, computing feature
+  importance, generating SHAP/LIME explanations, creating dependence plots, or
+  building trust in ML model decisions. This skill enforces: global + local
+  explanation coverage, SHAP value computation, permutation importance baseline,
+  visualization choice (waterfall/force/dependence/summary), model-specific
+  methods, feature interaction detection. Do NOT use for: model evaluation
+  metrics (use ml-model-evaluation), hyperparameter tuning (use
+  ml-hyperparameter-tuning), causal inference, or privacy-preserving
+  explanations.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, interpretability, explainability, phase-11]
+tags:
+  - ml
+  - interpretability
+  - explainability
+  - phase-11
+depends_on: []
 ---
 
 # ML Model Interpretability

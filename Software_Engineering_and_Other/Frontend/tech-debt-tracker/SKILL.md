@@ -1,16 +1,23 @@
 ---
 name: dev-loop-tech-debt-tracker
 description: >
-  Use when the user asks about technical debt tracking, tech debt management, code quality metrics, debt prioritization, or establishing a tech debt reduction process. Do NOT use for: refactoring implementation (dev-loop-refactor-guide), or code review (dev-loop-code-review).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about technical debt tracking, tech debt management,
+  code quality metrics, debt prioritization, or establishing a tech debt
+  reduction process. Do NOT use for: refactoring implementation
+  (dev-loop-refactor-guide), or code review (dev-loop-code-review).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, tech-debt, code-quality]
+tags:
+  - dev-loop
+  - tech-debt
+  - code-quality
+depends_on: []
 ---
 
 # Technical Debt Tracker

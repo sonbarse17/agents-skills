@@ -1,27 +1,31 @@
 ---
 name: helm-patterns
 description: >
-  Use this skill when the user says 'helm', 'helm chart', 'helm
-  template', 'helm install', 'helm upgrade', 'helm rollback',
-  'helmfile', 'helm secrets', 'helm values', 'helm dependency',
-  'helm repository', 'helm plugin', 'helm unittest', 'helm
-  lint', 'helm package', 'helm registry', 'oci helm', 'helm
-  hooks', 'helm tests', 'helm subchart', 'helm global values',
-  'helm library chart', 'helm umbrella chart', 'helm postrender',
-  'helm diff', 'helmfile', 'helm values schema', 'helm crd',
-  'chart museum', 'chart repo', 'helmfile environment'.
-  Covers: Helm chart development, templating, dependency
-  management, testing, CI/CD integration, security, advanced
-  patterns, and operational best practices.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'helm', 'helm chart', 'helm template', 'helm
+  install', 'helm upgrade', 'helm rollback', 'helmfile', 'helm secrets', 'helm
+  values', 'helm dependency', 'helm repository', 'helm plugin', 'helm unittest',
+  'helm lint', 'helm package', 'helm registry', 'oci helm', 'helm hooks', 'helm
+  tests', 'helm subchart', 'helm global values', 'helm library chart', 'helm
+  umbrella chart', 'helm postrender', 'helm diff', 'helmfile', 'helm values
+  schema', 'helm crd', 'chart museum', 'chart repo', 'helmfile environment'.
+  Covers: Helm chart development, templating, dependency management, testing,
+  CI/CD integration, security, advanced patterns, and operational best
+  practices.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, helm, kubernetes, charts, phase-5]
+tags:
+  - devops
+  - helm
+  - kubernetes
+  - charts
+  - phase-5
+depends_on: []
 ---
 
 # Helm Patterns

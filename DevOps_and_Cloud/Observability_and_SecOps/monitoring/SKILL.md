@@ -1,16 +1,25 @@
 ---
 name: monitoring
 description: >
-  Use this skill when configuring observability and monitoring stack — Prometheus, Grafana, Loki, ELK Stack. This skill enforces: Prometheus scrape configs with relabeling, Grafana dashboard folder hierarchy, Loki log label strategy, Alertmanager routing by severity, SLO tracking with error budgets. Do NOT use for: application-level instrumentation, CI/CD pipeline monitoring, infrastructure provisioning.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when configuring observability and monitoring stack —
+  Prometheus, Grafana, Loki, ELK Stack. This skill enforces: Prometheus scrape
+  configs with relabeling, Grafana dashboard folder hierarchy, Loki log label
+  strategy, Alertmanager routing by severity, SLO tracking with error budgets.
+  Do NOT use for: application-level instrumentation, CI/CD pipeline monitoring,
+  infrastructure provisioning.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, monitoring, phase-5]
+tags:
+  - devops
+  - monitoring
+  - phase-5
+depends_on: []
 ---
 
 # Monitoring Stack

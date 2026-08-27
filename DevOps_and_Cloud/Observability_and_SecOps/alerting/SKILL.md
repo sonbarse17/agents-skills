@@ -1,7 +1,19 @@
 ---
 name: alerting
-description: Covers designing alerts that page a human only when a human needs to act — symptom-based alerting over cause-based, multi-window burn-rate alerts on error budgets, severity tiers that route between page/ticket/dashboard, requiring every page to link a runbook, and tuning out alert fatigue. Use this whenever the user is writing a new alert rule, asking why on-call is paged too often or missing real incidents, choosing an alert threshold, or designing severity routing. For the SLO the burn-rate math comes from use `slo-definition`, and for what a runbook should contain use `runbooks`.
+description: Covers designing alerts that page a human only when a human needs
+  to act — symptom-based alerting over cause-based, multi-window burn-rate
+  alerts on error budgets, severity tiers that route between
+  page/ticket/dashboard, requiring every page to link a runbook, and tuning out
+  alert fatigue. Use this whenever the user is writing a new alert rule, asking
+  why on-call is paged too often or missing real incidents, choosing an alert
+  threshold, or designing severity routing. For the SLO the burn-rate math comes
+  from use `slo-definition`, and for what a runbook should contain use
+  `runbooks`.
 license: MIT
+tags:
+  - observability_and_secops
+  - alerting
+depends_on: []
 ---
 
 # Alerting

@@ -2,17 +2,20 @@
 name: humanitec-score-workload-specification
 description: >
   Authors platform-agnostic workload specifications using the Score open
-  standard (score.dev) and wires them into Humanitec's Platform Orchestrator
-  for environment-specific resource binding. Use when the user asks to
-  "write a score.yaml," "define a Score workload," "set up Humanitec
-  resource definitions," "make deployments platform-agnostic with Score,"
-  or "deploy the same workload spec to dev/staging/prod without changing
-  the app config."
+  standard (score.dev) and wires them into Humanitec's Platform Orchestrator for
+  environment-specific resource binding. Use when the user asks to "write a
+  score.yaml," "define a Score workload," "set up Humanitec resource
+  definitions," "make deployments platform-agnostic with Score," or "deploy the
+  same workload spec to dev/staging/prod without changing the app config."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - humanitec-score-workload-specification
+depends_on: []
 ---
 
 # Humanitec Score Workload Specification

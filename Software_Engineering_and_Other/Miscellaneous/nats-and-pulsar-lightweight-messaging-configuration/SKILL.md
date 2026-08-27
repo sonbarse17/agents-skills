@@ -1,18 +1,21 @@
 ---
 name: nats-and-pulsar-lightweight-messaging-configuration
 description: >
-  Configures NATS core pub/sub and JetStream persistence, and Apache
-  Pulsar topics/subscriptions, as lighter-weight alternatives to Kafka or
-  RabbitMQ, and gives a decision framework for when each fits better. Use
-  when the user asks to "set up NATS," "configure JetStream streams and
-  consumers," "set up Pulsar topics," "choose between NATS, Kafka, and
-  RabbitMQ," "do we need Kafka for this," or is evaluating a lighter-weight
-  messaging system for a new service.
+  Configures NATS core pub/sub and JetStream persistence, and Apache Pulsar
+  topics/subscriptions, as lighter-weight alternatives to Kafka or RabbitMQ, and
+  gives a decision framework for when each fits better. Use when the user asks
+  to "set up NATS," "configure JetStream streams and consumers," "set up Pulsar
+  topics," "choose between NATS, Kafka, and RabbitMQ," "do we need Kafka for
+  this," or is evaluating a lighter-weight messaging system for a new service.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - nats-and-pulsar-lightweight-messaging-configuration
+depends_on: []
 ---
 
 # NATS and Pulsar Lightweight Messaging Configuration

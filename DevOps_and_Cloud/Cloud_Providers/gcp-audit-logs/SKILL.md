@@ -1,10 +1,15 @@
 ---
 name: gcp-audit-logs
-description: Configure GCP Cloud Audit Logs for compliance. Set up log routing and BigQuery analysis. Use when auditing GCP activity.
+description: Configure GCP Cloud Audit Logs for compliance. Set up log routing
+  and BigQuery analysis. Use when auditing GCP activity.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-audit-logs
+depends_on: []
 ---
 
 # GCP [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs

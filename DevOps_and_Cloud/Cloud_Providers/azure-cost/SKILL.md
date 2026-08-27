@@ -1,10 +1,19 @@
 ---
 name: azure-cost
-description: "Azure cost management: query costs, forecast spending, optimize to reduce waste. WHEN: \"Azure costs\", \"Azure bill\", \"cost breakdown\", \"how much am I spending\", \"forecast spending\", \"optimize costs\", \"reduce spending\", \"orphaned resources\", \"rightsize VMs\", \"cost spike\", \"reduce storage costs\", \"AKS cost\". DO NOT USE FOR: deploying resources, provisioning, diagnostics, or security audits."
+description: 'Azure cost management: query costs, forecast spending, optimize to
+  reduce waste. WHEN: "Azure costs", "Azure bill", "cost breakdown", "how much
+  am I spending", "forecast spending", "optimize costs", "reduce spending",
+  "orphaned resources", "rightsize VMs", "cost spike", "reduce storage costs",
+  "AKS cost". DO NOT USE FOR: deploying resources, provisioning, diagnostics, or
+  security audits.'
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.3.1"
+  version: 1.3.1
+tags:
+  - cloud_providers
+  - azure-cost
+depends_on: []
 ---
 
 # Azure Cost Management Skill

@@ -1,7 +1,18 @@
 ---
 name: kubernetes-operations
-description: Covers running workloads through Kubernetes's control loop — requests/limits, liveness/readiness/startup probes, reading describe/events to debug CrashLoopBackOff, OOMKilled, Pending, or empty endpoints, safe rollouts and undo, and guardrails like PodDisruptionBudgets. Use this whenever the user is debugging a pod that won't start or keeps restarting, tuning probes or resource limits, or planning a rollout or rollback. For Service/Ingress traffic issues use `kubernetes-networking`; for scaling policy use `autoscaling`.
+description: Covers running workloads through Kubernetes's control loop —
+  requests/limits, liveness/readiness/startup probes, reading describe/events to
+  debug CrashLoopBackOff, OOMKilled, Pending, or empty endpoints, safe rollouts
+  and undo, and guardrails like PodDisruptionBudgets. Use this whenever the user
+  is debugging a pod that won't start or keeps restarting, tuning probes or
+  resource limits, or planning a rollout or rollback. For Service/Ingress
+  traffic issues use `kubernetes-networking`; for scaling policy use
+  `autoscaling`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - kubernetes-operations
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operations

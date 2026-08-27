@@ -1,17 +1,22 @@
 ---
 name: edr-xdr
 description: >
-  Manage endpoint detection and response, EDR/XDR platforms, detection rules, and incident investigation.
-  Use when the user asks about EDR, XDR, endpoint detection, CrowdStrike, Defender, SentinelOne, or detection rule.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Manage endpoint detection and response, EDR/XDR platforms, detection rules,
+  and incident investigation. Use when the user asks about EDR, XDR, endpoint
+  detection, CrowdStrike, Defender, SentinelOne, or detection rule.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, edr, phase-8]
+tags:
+  - security
+  - edr
+  - phase-8
+depends_on: []
 ---
 
 # EDR/XDR

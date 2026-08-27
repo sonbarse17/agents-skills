@@ -1,20 +1,24 @@
 ---
 name: complete-cicd-pipeline-deployment-for-kubernetes-from-scratch
 description: >
-  Builds a complete CI/CD pipeline for a Kubernetes-targeted service from
-  an empty repo — source checkout, container image build, SCA/SAST
-  security gates, registry push, and a deploy step that ends at a GitOps
-  handoff (committing a new image tag to a manifests repo) rather than a
-  direct kubectl apply or helm upgrade against the cluster. Use when the
-  user asks to "build a full CI/CD pipeline for Kubernetes from scratch,"
-  "set up CI/CD that ends in a GitOps commit, not a cluster deploy," "wire
-  a container build pipeline into Argo CD/Flux," or "go from an empty repo
-  to a Kubernetes service deployed via GitOps end-to-end."
+  Builds a complete CI/CD pipeline for a Kubernetes-targeted service from an
+  empty repo — source checkout, container image build, SCA/SAST security gates,
+  registry push, and a deploy step that ends at a GitOps handoff (committing a
+  new image tag to a manifests repo) rather than a direct kubectl apply or helm
+  upgrade against the cluster. Use when the user asks to "build a full CI/CD
+  pipeline for Kubernetes from scratch," "set up CI/CD that ends in a GitOps
+  commit, not a cluster deploy," "wire a container build pipeline into Argo
+  CD/Flux," or "go from an empty repo to a Kubernetes service deployed via
+  GitOps end-to-end."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-cicd-pipeline-deployment-for-kubernetes-from-scratch
+depends_on: []
 ---
 
 # Complete CI/CD Pipeline Deployment for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), From Scratch

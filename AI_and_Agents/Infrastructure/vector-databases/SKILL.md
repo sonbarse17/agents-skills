@@ -1,3 +1,12 @@
+---
+name: vector-databases
+description: Comprehensive guidelines and best practices for vector-databases.
+  Use this skill when working with related components.
+tags:
+  - infrastructure
+  - vector-databases
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

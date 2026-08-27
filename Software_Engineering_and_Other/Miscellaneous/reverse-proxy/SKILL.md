@@ -1,10 +1,15 @@
 ---
 name: reverse-proxy
-description: Configure nginx and Traefik as reverse proxies. Implement SSL termination and routing. Use when setting up application gateways.
+description: Configure nginx and Traefik as reverse proxies. Implement SSL
+  termination and routing. Use when setting up application gateways.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - reverse-proxy
+depends_on: []
 ---
 
 # Reverse Proxy

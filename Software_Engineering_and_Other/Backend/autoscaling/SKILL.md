@@ -1,7 +1,17 @@
 ---
 name: autoscaling
-description: Covers scaling Kubernetes workloads and nodes to demand — HPA on the right metric, VPA, cluster autoscaler, custom/external metrics, avoiding thrash with stabilization windows, and requests as the foundation underneath it all. Use this whenever the user is configuring an HPA, deciding between HPA and VPA, debugging autoscaling that flaps, or sizing a cluster autoscaler. For the requests/limits autoscaling depends on use `kubernetes-operations`; for cost tradeoffs use `cost-optimization`.
+description: Covers scaling Kubernetes workloads and nodes to demand — HPA on
+  the right metric, VPA, cluster autoscaler, custom/external metrics, avoiding
+  thrash with stabilization windows, and requests as the foundation underneath
+  it all. Use this whenever the user is configuring an HPA, deciding between HPA
+  and VPA, debugging autoscaling that flaps, or sizing a cluster autoscaler. For
+  the requests/limits autoscaling depends on use `kubernetes-operations`; for
+  cost tradeoffs use `cost-optimization`.
 license: MIT
+tags:
+  - backend
+  - autoscaling
+depends_on: []
 ---
 
 # Autoscaling

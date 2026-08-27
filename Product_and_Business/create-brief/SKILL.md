@@ -1,16 +1,27 @@
 ---
 name: create-brief
 description: >
-  Use this skill when the user says 'I want to build', 'new app idea', 'create a brief', 'product brief', 'help me define what I am building', or when no existing brief or PRD exists in the docs/ folder. This skill translates a vague idea into a structured Product Brief. It asks 5 targeted questions one at a time, then produces a brief artifact. Do NOT use for: technical specifications, architecture decisions, or user stories. Those come after the brief.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'I want to build', 'new app idea', 'create a
+  brief', 'product brief', 'help me define what I am building', or when no
+  existing brief or PRD exists in the docs/ folder. This skill translates a
+  vague idea into a structured Product Brief. It asks 5 targeted questions one
+  at a time, then produces a brief artifact. Do NOT use for: technical
+  specifications, architecture decisions, or user stories. Those come after the
+  brief.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, phase-1, documentation, product-brief]
+tags:
+  - planning
+  - phase-1
+  - documentation
+  - product-brief
+depends_on: []
 ---
 
 # Create Brief

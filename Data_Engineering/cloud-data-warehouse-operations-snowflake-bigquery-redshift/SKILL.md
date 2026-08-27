@@ -2,19 +2,22 @@
 name: cloud-data-warehouse-operations-snowflake-bigquery-redshift
 description: >
   Comparative operations guide for the three dominant managed cloud data
-  warehouses: Snowflake virtual warehouse sizing and multi-cluster
-  scaling, BigQuery slot allocation and on-demand vs. capacity pricing,
-  and Redshift cluster/RA3 node sizing and workload management (WLM) —
-  plus cost-control and query-performance practices common to all three.
-  Use when the user asks to "size a Snowflake warehouse," "control
-  BigQuery query costs," "tune Redshift WLM queues," "why is this
-  warehouse query slow," "reduce our data warehouse bill," or "choose
-  between Snowflake, BigQuery, and Redshift."
+  warehouses: Snowflake virtual warehouse sizing and multi-cluster scaling,
+  BigQuery slot allocation and on-demand vs. capacity pricing, and Redshift
+  cluster/RA3 node sizing and workload management (WLM) — plus cost-control and
+  query-performance practices common to all three. Use when the user asks to
+  "size a Snowflake warehouse," "control BigQuery query costs," "tune Redshift
+  WLM queues," "why is this warehouse query slow," "reduce our data warehouse
+  bill," or "choose between Snowflake, BigQuery, and Redshift."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - data_engineering
+  - cloud-data-warehouse-operations-snowflake-bigquery-redshift
+depends_on: []
 ---
 
 # Cloud Data Warehouse Operations: Snowflake, BigQuery, and Redshift

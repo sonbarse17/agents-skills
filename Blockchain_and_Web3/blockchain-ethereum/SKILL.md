@@ -1,11 +1,28 @@
 ---
 name: blockchain-ethereum
 description: >
-  Use this skill when asked about Ethereum internals, EVM deep dive, Ethereum consensus layer, execution clients, staking, EIPs, layer-2 scaling, account abstraction, PBS/MEV-Boost, EVM opcodes, and Ethereum protocol development. Languages: Go, Rust, C#, C++, Solidity. Covers EVM architecture (opcodes, gas metering, memory/storage model, EOF), execution clients (geth, reth, Nethermind, Erigon), consensus layer (Casper FFG, LMD-GHOST, beacon chain, attestation), staking and validators (32 ETH, withdrawal credentials, MEV-Boost, DVT, ePBS), account abstraction (ERC-4337, EntryPoint, paymasters, UserOp mempool), critical EIPs (1559, 4844, 4337, 3529, 2718), and L2 scaling (Optimism, Arbitrum, ZKsync, StarkNet, validium, data availability). Do NOT use for: Bitcoin protocol (use blockchain-bitcoin), non-EVM blockchains (use blockchain-core), or smart contract development (use blockchain-application).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, ethereum, evm, consensus, phase-blockchain]
+  Use this skill when asked about Ethereum internals, EVM deep dive, Ethereum
+  consensus layer, execution clients, staking, EIPs, layer-2 scaling, account
+  abstraction, PBS/MEV-Boost, EVM opcodes, and Ethereum protocol development.
+  Languages: Go, Rust, C#, C++, Solidity. Covers EVM architecture (opcodes, gas
+  metering, memory/storage model, EOF), execution clients (geth, reth,
+  Nethermind, Erigon), consensus layer (Casper FFG, LMD-GHOST, beacon chain,
+  attestation), staking and validators (32 ETH, withdrawal credentials,
+  MEV-Boost, DVT, ePBS), account abstraction (ERC-4337, EntryPoint, paymasters,
+  UserOp mempool), critical EIPs (1559, 4844, 4337, 3529, 2718), and L2 scaling
+  (Optimism, Arbitrum, ZKsync, StarkNet, validium, data availability). Do NOT
+  use for: Bitcoin protocol (use blockchain-bitcoin), non-EVM blockchains (use
+  blockchain-core), or smart contract development (use blockchain-application).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - ethereum
+  - evm
+  - consensus
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Ethereum

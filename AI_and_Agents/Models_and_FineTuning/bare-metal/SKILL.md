@@ -2,24 +2,29 @@
 name: bare-metal
 description: >
   Use this skill when the user says 'bare metal', 'physical server',
-  'provisioning', 'PXE boot', 'IPMI', 'BMC', 'iDRAC', 'iLO', 'RMM',
-  'server lifecycle', 'burn-in testing', 'firmware update', 'RAID',
-  'BIOS configuration', 'server automation', 'MAAS', 'Metal3',
-  'Rack deployment', 'data center hardware', 'server imaging'.
-  Covers: server provisioning (PXE, iPXE, MAAS), firmware lifecycle,
-  IPMI/BMC management, RAID configuration, burn-in testing,
-  server automation, hardware asset management, BIOS tuning.
-  Do NOT use for: cloud infrastructure (use cloud-specific skills),
-  Kubernetes on bare metal (use kubernetes-patterns).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'provisioning', 'PXE boot', 'IPMI', 'BMC', 'iDRAC', 'iLO', 'RMM', 'server
+  lifecycle', 'burn-in testing', 'firmware update', 'RAID', 'BIOS
+  configuration', 'server automation', 'MAAS', 'Metal3', 'Rack deployment',
+  'data center hardware', 'server imaging'. Covers: server provisioning (PXE,
+  iPXE, MAAS), firmware lifecycle, IPMI/BMC management, RAID configuration,
+  burn-in testing, server automation, hardware asset management, BIOS tuning. Do
+  NOT use for: cloud infrastructure (use cloud-specific skills), Kubernetes on
+  bare metal (use kubernetes-patterns).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, bare-metal, provisioning, hardware, phase-5]
+tags:
+  - devops
+  - bare-metal
+  - provisioning
+  - hardware
+  - phase-5
+depends_on: []
 ---
 
 # Bare Metal Infrastructure

@@ -1,21 +1,29 @@
 ---
 name: devops-kubernetes-autoscaling
 description: >
-  Kubernetes autoscaling strategies and configurations.
-  Covers: Horizontal Pod Autoscaler (HPA) with CPU/memory, custom, and external metrics,
-  Vertical Pod Autoscaler (VPA) update modes and recommender, Keda with 50+ scalers,
-  Cluster Autoscaler node group optimization, combined HPA+VPA+CA strategies,
-  predictive scaling, and cost optimization.
-  Do NOT use for: Non-Kubernetes autoscaling (AWS ASG, Azure VMSS, etc.).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Kubernetes autoscaling strategies and configurations. Covers: Horizontal Pod
+  Autoscaler (HPA) with CPU/memory, custom, and external metrics, Vertical Pod
+  Autoscaler (VPA) update modes and recommender, Keda with 50+ scalers, Cluster
+  Autoscaler node group optimization, combined HPA+VPA+CA strategies, predictive
+  scaling, and cost optimization. Do NOT use for: Non-Kubernetes autoscaling
+  (AWS ASG, Azure VMSS, etc.).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, kubernetes, autoscaling, hpa, vpa, keda, phase-5]
+tags:
+  - devops
+  - kubernetes
+  - autoscaling
+  - hpa
+  - vpa
+  - keda
+  - phase-5
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)

@@ -1,10 +1,17 @@
 ---
 name: model-serving-kubernetes
-description: Deploy ML models on Kubernetes with KServe (formerly KFServing) and NVIDIA Triton Inference Server. Includes canary deployments, autoscaling, model versioning, A/B testing, and GPU resource management for production model serving.
+description: Deploy ML models on Kubernetes with KServe (formerly KFServing) and
+  NVIDIA Triton Inference Server. Includes canary deployments, autoscaling,
+  model versioning, A/B testing, and GPU resource management for production
+  model serving.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - model-serving-kubernetes
+depends_on: []
 ---
 
 # Model Serving on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)

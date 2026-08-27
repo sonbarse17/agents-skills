@@ -1,16 +1,25 @@
 ---
 name: quality-visual-testing
 description: >
-  Use this skill when setting up visual testing, visual regression, screenshot diff, Percy, Chromatic, Applitools, or snapshot testing. This skill enforces: tool setup (Percy or Chromatic), baseline management, diff threshold configuration, cross-browser visual testing, and CI integration. Do NOT use for: E2E functional assertions, performance benchmarking, or accessibility audits.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when setting up visual testing, visual regression, screenshot
+  diff, Percy, Chromatic, Applitools, or snapshot testing. This skill enforces:
+  tool setup (Percy or Chromatic), baseline management, diff threshold
+  configuration, cross-browser visual testing, and CI integration. Do NOT use
+  for: E2E functional assertions, performance benchmarking, or accessibility
+  audits.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, testing, phase-10]
+tags:
+  - quality
+  - testing
+  - phase-10
+depends_on: []
 ---
 
 # Quality Visual Testing

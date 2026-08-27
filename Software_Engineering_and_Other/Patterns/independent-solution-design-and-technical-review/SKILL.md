@@ -1,22 +1,25 @@
 ---
 name: independent-solution-design-and-technical-review
 description: >
-  Guides senior-level engineering work: designing a system component or
-  feature independently within established architectural constraints,
-  conducting thorough code/design reviews that check correctness, edge
-  cases, failure modes, and test coverage rather than just style, leading
-  root-cause analysis on complex/ambiguous incidents that have no
-  existing runbook, and mentoring more junior engineers through pairing
-  and review feedback. Use when a senior engineer (or an agent acting as
-  one) is asked to "design this component," "review this PR/design doc,"
-  "figure out why this keeps happening" for an incident with no runbook,
-  or is giving feedback aimed at building a junior colleague's judgment
-  rather than just approving/rejecting a change.
+  Guides senior-level engineering work: designing a system component or feature
+  independently within established architectural constraints, conducting
+  thorough code/design reviews that check correctness, edge cases, failure
+  modes, and test coverage rather than just style, leading root-cause analysis
+  on complex/ambiguous incidents that have no existing runbook, and mentoring
+  more junior engineers through pairing and review feedback. Use when a senior
+  engineer (or an agent acting as one) is asked to "design this component,"
+  "review this PR/design doc," "figure out why this keeps happening" for an
+  incident with no runbook, or is giving feedback aimed at building a junior
+  colleague's judgment rather than just approving/rejecting a change.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: role-based-engineering-practices
   maturity: stable
+tags:
+  - patterns
+  - independent-solution-design-and-technical-review
+depends_on: []
 ---
 
 # Independent Solution Design and Technical Review

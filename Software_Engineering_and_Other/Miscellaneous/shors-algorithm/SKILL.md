@@ -1,6 +1,10 @@
 ---
-name: "Shor's Algorithm"
-description: "Quantum period finding, Quantum Fourier Transform (QFT), and RSA vulnerability."
+name: Shor's Algorithm
+description: Quantum period finding, Quantum Fourier Transform (QFT), and RSA vulnerability.
+tags:
+  - miscellaneous
+  - shors-algorithm
+depends_on: []
 ---
 
 # Shor's Algorithm

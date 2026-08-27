@@ -1,16 +1,25 @@
 ---
 name: mobile-deep-linking
 description: >
-  Use this skill when the user says 'deep linking', 'universal link', 'app link', 'URL scheme', 'deferred deep link', 'routing deep link', 'link handler', 'deep navigation'. Implement deep linking across iOS and Android using universal links, custom URL schemes, and deferred deep linking. Do NOT use for: web URL routing or push notification handling.
+  Use this skill when the user says 'deep linking', 'universal link', 'app
+  link', 'URL scheme', 'deferred deep link', 'routing deep link', 'link
+  handler', 'deep navigation'. Implement deep linking across iOS and Android
+  using universal links, custom URL schemes, and deferred deep linking. Do NOT
+  use for: web URL routing or push notification handling.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, deep-linking, phase-7, universal]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - deep-linking
+  - phase-7
+  - universal
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Deep Linking

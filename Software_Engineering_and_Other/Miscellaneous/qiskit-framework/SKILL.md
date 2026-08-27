@@ -1,6 +1,11 @@
 ---
-name: "Qiskit Framework"
-description: "Conceptual quantum circuit construction, qubit initialization, gate application, and measurement in Python."
+name: Qiskit Framework
+description: Conceptual quantum circuit construction, qubit initialization, gate
+  application, and measurement in Python.
+tags:
+  - miscellaneous
+  - qiskit-framework
+depends_on: []
 ---
 
 # Qiskit Framework

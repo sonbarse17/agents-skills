@@ -1,6 +1,10 @@
 ---
 name: Kubernetes Mastery
 description: Advanced K8s Operators and Helm Charts development.
+tags:
+  - containers_and_orchestration
+  - kubernetes-mastery
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Mastery

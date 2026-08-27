@@ -1,16 +1,31 @@
 ---
 name: data-science-causal-inference
 description: >
-  Use this skill when asked about causal inference, causal effect estimation, potential outcomes, Rubin causal model, DAGs, Pearl do-calculus, counterfactual reasoning, structural causal models, difference-in-differences, regression discontinuity, instrumental variables, propensity score matching, synthetic control, uplift modeling, heterogeneous treatment effects, CATE estimation, meta-learners, causal forests, double ML, or causal machine learning. This skill enforces: causal frameworks (potential outcomes, DAGs, do-calculus, counterfactuals, structural causal models), quasi-experimental methods (DiD, RDD, IV, PSM, synthetic control), and causal ML (uplift modeling, CATE, meta-learners, causal forests, double ML). Do NOT use for: A/B testing (use experimentation skill), general statistical analysis (use statistical-analysis skill), or predictive ML modeling.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about causal inference, causal effect estimation,
+  potential outcomes, Rubin causal model, DAGs, Pearl do-calculus,
+  counterfactual reasoning, structural causal models, difference-in-differences,
+  regression discontinuity, instrumental variables, propensity score matching,
+  synthetic control, uplift modeling, heterogeneous treatment effects, CATE
+  estimation, meta-learners, causal forests, double ML, or causal machine
+  learning. This skill enforces: causal frameworks (potential outcomes, DAGs,
+  do-calculus, counterfactuals, structural causal models), quasi-experimental
+  methods (DiD, RDD, IV, PSM, synthetic control), and causal ML (uplift
+  modeling, CATE, meta-learners, causal forests, double ML). Do NOT use for: A/B
+  testing (use experimentation skill), general statistical analysis (use
+  statistical-analysis skill), or predictive ML modeling.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data-science, causal-inference, phase-7]
+tags:
+  - data-science
+  - causal-inference
+  - phase-7
+depends_on: []
 ---
 
 # Causal Inference

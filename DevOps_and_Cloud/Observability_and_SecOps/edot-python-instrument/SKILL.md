@@ -1,12 +1,16 @@
 ---
 name: observability-edot-python-instrument
 description: >
-  Instrument a Python application with the Elastic Distribution of OpenTelemetry (EDOT)
-  Python agent for automatic tracing, metrics, and logs. Use when adding observability
-  to a Python service that has no existing APM agent.
+  Instrument a Python application with the Elastic Distribution of OpenTelemetry
+  (EDOT) Python agent for automatic tracing, metrics, and logs. Use when adding
+  observability to a Python service that has no existing APM agent.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - edot-python-instrument
+depends_on: []
 ---
 
 # EDOT [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Instrumentation

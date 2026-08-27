@@ -4,15 +4,21 @@ description: >
   Use this skill when the user asks about Go build tools, module management,
   goroutines, channels, interfaces, error handling, testing, or production
   deployment. Focus on tooling, concurrency, and ecosystem — not syntax.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [go, golang, language, build, concurrency]
+tags:
+  - go
+  - golang
+  - language
+  - build
+  - concurrency
+depends_on: []
 ---
 
 # Go

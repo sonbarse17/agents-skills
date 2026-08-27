@@ -3,21 +3,26 @@ name: vault
 description: >
   Use this skill when the user says 'Vault', 'HashiCorp Vault', 'secrets
   management', 'dynamic secrets', 'transit engine', 'Vault policy', 'Vault auth
-  method', 'Vault agent', 'Vault injector', 'Vault API', 'kv-v2', 'PKI
-  secrets engine', 'database secrets engine', 'Vault role', 'Vault token'.
-  Covers: Vault setup, secrets engines, policies, auth methods, dynamic secrets,
-  transit encryption, Vault Agent, Vault+Kubernetes integration.
-  Do NOT use this for: AWS Secrets Manager, Azure Key Vault, or non-HashiCorp
-  secret stores.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  method', 'Vault agent', 'Vault injector', 'Vault API', 'kv-v2', 'PKI secrets
+  engine', 'database secrets engine', 'Vault role', 'Vault token'. Covers: Vault
+  setup, secrets engines, policies, auth methods, dynamic secrets, transit
+  encryption, Vault Agent, Vault+Kubernetes integration. Do NOT use this for:
+  AWS Secrets Manager, Azure Key Vault, or non-HashiCorp secret stores.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, vault, secrets, security, phase-5]
+tags:
+  - devops
+  - vault
+  - secrets
+  - security
+  - phase-5
+depends_on: []
 ---
 
 # Vault

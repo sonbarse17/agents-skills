@@ -1,10 +1,16 @@
 ---
 name: container-hardening
-description: Secure Docker images and container runtime configurations. Implement non-root users, read-only filesystems, and security contexts. Use when building secure container images or hardening container deployments.
+description: Secure Docker images and container runtime configurations.
+  Implement non-root users, read-only filesystems, and security contexts. Use
+  when building secure container images or hardening container deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - container-hardening
+depends_on: []
 ---
 
 # Container Hardening

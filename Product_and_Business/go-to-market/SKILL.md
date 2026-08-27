@@ -1,18 +1,24 @@
 ---
 name: product-go-to-market
 description: >
-  Use this skill when planning product launches: GTM strategy, launch tiers, channel selection, messaging, and beta programs.
-  This skill enforces: ICP definition, launch tier classification, channel strategy, messaging and positioning.
-  Do NOT use for: paid advertising execution, sales enablement, event planning, PR campaigns.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when planning product launches: GTM strategy, launch tiers,
+  channel selection, messaging, and beta programs. This skill enforces: ICP
+  definition, launch tier classification, channel strategy, messaging and
+  positioning. Do NOT use for: paid advertising execution, sales enablement,
+  event planning, PR campaigns.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [product, gtm, phase-8]
+tags:
+  - product
+  - gtm
+  - phase-8
+depends_on: []
 ---
 
 # Go-to-Market Agent

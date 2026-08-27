@@ -1,10 +1,18 @@
 ---
 name: docker
-description: Build, run, debug, and manage Docker containers, images, compose files, networking, volumes, registries, Buildx/Bake, Scout/SBOM, Swarm, and Docker AI tooling. Use when the user mentions docker, containers, containerizing, Dockerfile, compose, image registry, volumes, or any docker subcommand.
+description: Build, run, debug, and manage Docker containers, images, compose
+  files, networking, volumes, registries, Buildx/Bake, Scout/SBOM, Swarm, and
+  Docker AI tooling. Use when the user mentions docker, containers,
+  containerizing, Dockerfile, compose, image registry, volumes, or any docker
+  subcommand.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - docker
+depends_on: []
 ---
 
 # Docker

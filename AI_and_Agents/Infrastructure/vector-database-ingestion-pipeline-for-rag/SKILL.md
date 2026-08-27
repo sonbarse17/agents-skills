@@ -1,20 +1,23 @@
 ---
 name: vector-database-ingestion-pipeline-for-rag
 description: >
-  Builds and operates the ingestion pipeline that feeds a vector
-  database for RAG — document chunking as a pipeline stage, batch
-  embedding jobs, idempotent/resumable upserts, and re-indexing
-  triggered by source-document updates. Use when a user asks to "build
-  a pipeline to embed and load documents into our vector DB," "re-index
-  when source documents change," "batch-embed a large corpus,"
-  "the vector DB is missing/duplicating documents after a load job," or
-  "our re-indexing job failed partway through and we're not sure what
+  Builds and operates the ingestion pipeline that feeds a vector database for
+  RAG — document chunking as a pipeline stage, batch embedding jobs,
+  idempotent/resumable upserts, and re-indexing triggered by source-document
+  updates. Use when a user asks to "build a pipeline to embed and load documents
+  into our vector DB," "re-index when source documents change," "batch-embed a
+  large corpus," "the vector DB is missing/duplicating documents after a load
+  job," or "our re-indexing job failed partway through and we're not sure what
   landed."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - infrastructure
+  - vector-database-ingestion-pipeline-for-rag
+depends_on: []
 ---
 
 # Vector Database Ingestion Pipeline for RAG

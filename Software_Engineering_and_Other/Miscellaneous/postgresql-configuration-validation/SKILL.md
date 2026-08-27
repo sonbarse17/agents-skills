@@ -1,19 +1,23 @@
 ---
 name: postgresql-configuration-validation
 description: >
-  Validates proposed postgresql.conf changes, replication configuration,
-  and connection-limit math before they are applied to a production
-  PostgreSQL instance — catching restart-required settings applied as
-  reload-only, connection-count overcommit against PgBouncer pools, and
-  unsafe replication parameter combinations. Use when the user asks to
-  "review this postgresql.conf change," "validate max_connections before
-  we apply it," "check this replication config is safe," or "will this
-  Postgres config change require a restart."
+  Validates proposed postgresql.conf changes, replication configuration, and
+  connection-limit math before they are applied to a production PostgreSQL
+  instance — catching restart-required settings applied as reload-only,
+  connection-count overcommit against PgBouncer pools, and unsafe replication
+  parameter combinations. Use when the user asks to "review this postgresql.conf
+  change," "validate max_connections before we apply it," "check this
+  replication config is safe," or "will this Postgres config change require a
+  restart."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - miscellaneous
+  - postgresql-configuration-validation
+depends_on: []
 ---
 
 # [PostgreSQL](../../Backend/postgresql/SKILL.md) Configuration Validation

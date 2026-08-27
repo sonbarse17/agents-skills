@@ -1,7 +1,19 @@
 ---
 name: cost-optimization
-description: Cuts cloud spend without cutting reliability by finding the few levers that move most of the bill — idle and orphaned resources, over-committed on-demand spend that qualifies for reserved or savings-plan discounts, and oversized fleets — and going after them in dollar order. Use this whenever the user asks how to reduce their cloud bill, reacts to a cost spike or a finance escalation, wants to find waste, or is deciding between on-demand, reserved, and spot pricing. For matching resource size to real usage use `rightsizing`, and for knowing who owns each dollar use `resource-tagging`.
+description: Cuts cloud spend without cutting reliability by finding the few
+  levers that move most of the bill — idle and orphaned resources,
+  over-committed on-demand spend that qualifies for reserved or savings-plan
+  discounts, and oversized fleets — and going after them in dollar order. Use
+  this whenever the user asks how to reduce their cloud bill, reacts to a cost
+  spike or a finance escalation, wants to find waste, or is deciding between
+  on-demand, reserved, and spot pricing. For matching resource size to real
+  usage use `rightsizing`, and for knowing who owns each dollar use
+  `resource-tagging`.
 license: MIT
+tags:
+  - cloud_providers
+  - cost-optimization
+depends_on: []
 ---
 
 # Cost Optimization

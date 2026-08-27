@@ -1,18 +1,28 @@
 ---
 name: ml-time-series
 description: >
-  Use this skill when forecasting time series data, modeling trend/seasonality, applying ARIMA/SARIMA/Prophet/LSTM/TFT, or performing temporal cross-validation.
-  This skill enforces: decomposition analysis (trend/seasonality/residual), stationarity testing, model selection by data characteristics, temporal cross-validation, forecast evaluation with MASE/sMAPE.
-  Do NOT use for: generic regression on non-temporal data, anomaly detection in time series (use ml-anomaly-detection), causal inference with time series, or real-time streaming (use data-streaming skill).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when forecasting time series data, modeling trend/seasonality,
+  applying ARIMA/SARIMA/Prophet/LSTM/TFT, or performing temporal
+  cross-validation. This skill enforces: decomposition analysis
+  (trend/seasonality/residual), stationarity testing, model selection by data
+  characteristics, temporal cross-validation, forecast evaluation with
+  MASE/sMAPE. Do NOT use for: generic regression on non-temporal data, anomaly
+  detection in time series (use ml-anomaly-detection), causal inference with
+  time series, or real-time streaming (use data-streaming skill).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, time-series, forecasting, phase-11]
+tags:
+  - ml
+  - time-series
+  - forecasting
+  - phase-11
+depends_on: []
 ---
 
 # ML Time Series Forecasting

@@ -3,17 +3,21 @@ name: database-backup-and-restore-strategies
 description: >
   Cross-database backup tooling and restore-testing discipline:
   pg_dump/pg_basebackup for PostgreSQL, mysqldump/Percona XtraBackup for
-  MySQL/MariaDB, and mongodump/mongorestore for MongoDB — logical vs.
-  physical backup trade-offs, point-in-time recovery, and why an
-  untested restore is not a real backup. Use when the user asks to
-  "set up database backups," "restore from a pg_basebackup," "why did
-  our mysqldump restore fail," "test our backup/restore process," "set
-  up point-in-time recovery," or "design a backup retention policy."
+  MySQL/MariaDB, and mongodump/mongorestore for MongoDB — logical vs. physical
+  backup trade-offs, point-in-time recovery, and why an untested restore is not
+  a real backup. Use when the user asks to "set up database backups," "restore
+  from a pg_basebackup," "why did our mysqldump restore fail," "test our
+  backup/restore process," "set up point-in-time recovery," or "design a backup
+  retention policy."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - database-backup-and-restore-strategies
+depends_on: []
 ---
 
 # Database Backup and Restore Strategies

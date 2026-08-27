@@ -1,7 +1,18 @@
 ---
 name: gitops
-description: Establishes Git as the single source of truth for deployed state, with a pull-based controller reconciling the cluster to match a repo instead of humans or pipelines pushing changes via kubectl or helm. Use this whenever the user designs a deployment repo layout, asks how environments should be promoted, debates config repo vs app repo, wants rollback to mean "revert a commit," or decides what belongs in Git versus a secret store. For the controller itself use `argocd-operations`; for canary mechanics use `progressive-delivery`; for building images use `ci-pipelines`.
+description: Establishes Git as the single source of truth for deployed state,
+  with a pull-based controller reconciling the cluster to match a repo instead
+  of humans or pipelines pushing changes via kubectl or helm. Use this whenever
+  the user designs a deployment repo layout, asks how environments should be
+  promoted, debates config repo vs app repo, wants rollback to mean "revert a
+  commit," or decides what belongs in Git versus a secret store. For the
+  controller itself use `argocd-operations`; for canary mechanics use
+  `progressive-delivery`; for building images use `ci-pipelines`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - gitops
+depends_on: []
 ---
 
 # GitOps

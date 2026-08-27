@@ -1,10 +1,23 @@
 ---
 name: azure-kusto-irql-graph
-description: "Apply IRQL graph functions to KQL or IRQL query results for Kusto Explorer visualization. Generates Lift_To_Graph mappings and composes Graph_Render_View, Graph_Fold_By_Property, Extract_Node_*, Enrich_Node_*, and Enrich_Graph_* calls. Accepts a supplied query or limited basic natural-language source request; it is not a general natural-language-to-KQL/IRQL skill. WHEN: Lift_To_Graph, Graph_Render_View, Graph_Fold_By_Property, IRQL graph enrichment, graph mapping for existing query results, icon-decorated graph, fold graph nodes. Use azure-kusto-graph for native make-graph analysis, graph-match, shortest paths, components, or persistent graphs."
+description: "Apply IRQL graph functions to KQL or IRQL query results for Kusto
+  Explorer visualization. Generates Lift_To_Graph mappings and composes
+  Graph_Render_View, Graph_Fold_By_Property, Extract_Node_*, Enrich_Node_*, and
+  Enrich_Graph_* calls. Accepts a supplied query or limited basic
+  natural-language source request; it is not a general
+  natural-language-to-KQL/IRQL skill. WHEN: Lift_To_Graph, Graph_Render_View,
+  Graph_Fold_By_Property, IRQL graph enrichment, graph mapping for existing
+  query results, icon-decorated graph, fold graph nodes. Use azure-kusto-graph
+  for native make-graph analysis, graph-match, shortest paths, components, or
+  persistent graphs."
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.2.1"
+  version: 1.2.1
+tags:
+  - cloud_providers
+  - azure-kusto-irql-graph
+depends_on: []
 ---
 
 # IRQL Graph Functions -- Query Results to Visualization

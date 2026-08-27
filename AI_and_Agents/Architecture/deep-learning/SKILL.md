@@ -1,16 +1,29 @@
 ---
 name: ml-deep-learning
 description: >
-  Use this skill when asked about PyTorch, TensorFlow, Keras, neural network, CNN, RNN, LSTM, transformer, GAN, autoencoder, training loop, backpropagation, gradient descent, CUDA, distributed training, or mixed precision. This skill enforces: PyTorch training loop with nn.Module and DataLoader, TensorFlow Keras Sequential/Functional APIs, CNN architectures (ResNet, EfficientNet), RNN/LSTM/GRU for sequences, transformer implementations (self-attention, positional encoding), distributed training (DDP, FSDP), mixed precision (AMP), and CUDA optimization. Do NOT use for: classical ML models, feature engineering, or MLOps pipeline configuration.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about PyTorch, TensorFlow, Keras, neural network,
+  CNN, RNN, LSTM, transformer, GAN, autoencoder, training loop, backpropagation,
+  gradient descent, CUDA, distributed training, or mixed precision. This skill
+  enforces: PyTorch training loop with nn.Module and DataLoader, TensorFlow
+  Keras Sequential/Functional APIs, CNN architectures (ResNet, EfficientNet),
+  RNN/LSTM/GRU for sequences, transformer implementations (self-attention,
+  positional encoding), distributed training (DDP, FSDP), mixed precision (AMP),
+  and CUDA optimization. Do NOT use for: classical ML models, feature
+  engineering, or MLOps pipeline configuration.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, deep-learning, neural, phase-11]
+tags:
+  - ml
+  - deep-learning
+  - neural
+  - phase-11
+depends_on: []
 ---
 
 # ML Deep Learning

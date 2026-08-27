@@ -1,10 +1,17 @@
 ---
 name: kubernetes-ops
-description: Deploy, scale, and manage Kubernetes workloads. Create deployments, services, and configurations, manage cluster resources, troubleshoot pods, and implement production-ready Kubernetes patterns. Use when working with Kubernetes clusters, K8s deployments, or container orchestration.
+description: Deploy, scale, and manage Kubernetes workloads. Create deployments,
+  services, and configurations, manage cluster resources, troubleshoot pods, and
+  implement production-ready Kubernetes patterns. Use when working with
+  Kubernetes clusters, K8s deployments, or container orchestration.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - kubernetes-ops
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operations

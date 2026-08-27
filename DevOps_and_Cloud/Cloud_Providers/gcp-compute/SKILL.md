@@ -1,10 +1,16 @@
 ---
 name: gcp-compute
-description: Manage Compute Engine instances and instance templates. Configure managed instance groups and preemptible VMs. Use when deploying compute resources on GCP.
+description: Manage Compute Engine instances and instance templates. Configure
+  managed instance groups and preemptible VMs. Use when deploying compute
+  resources on GCP.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-compute
+depends_on: []
 ---
 
 # GCP Compute Engine

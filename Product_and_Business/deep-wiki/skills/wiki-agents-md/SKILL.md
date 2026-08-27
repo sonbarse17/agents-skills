@@ -1,10 +1,16 @@
 ---
 name: wiki-agents-md
-description: Generates AGENTS.md files for repository folders — coding agent context files with build commands, testing instructions, code style, project structure, and boundaries. Only generates where AGENTS.md is missing.
+description: Generates AGENTS.md files for repository folders — coding agent
+  context files with build commands, testing instructions, code style, project
+  structure, and boundaries. Only generates where AGENTS.md is missing.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
+tags:
+  - skills
+  - wiki-agents-md
+depends_on: []
 ---
 
 # AGENTS.md Generator

@@ -1,16 +1,30 @@
 ---
 name: data-data-api
 description: >
-  Use this skill when asked about data API, Hasura, PostgREST, WunderGraph, GraphQL for data, REST API for data, instant API, database API, real-time API, data authorization, or data gateway. This skill enforces: Hasura GraphQL engine for auto-generated APIs from databases, PostgREST for REST APIs from PostgreSQL, WunderGraph for API gateway patterns for data, authorization models (RBAC, session, JWT), real-time subscriptions, and performance optimization with caching and connection pooling. Do NOT use for: custom REST/GraphQL API development with frameworks like Express or FastAPI, frontend-only API consumption, or general API gateway design unrelated to data.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data API, Hasura, PostgREST, WunderGraph,
+  GraphQL for data, REST API for data, instant API, database API, real-time API,
+  data authorization, or data gateway. This skill enforces: Hasura GraphQL
+  engine for auto-generated APIs from databases, PostgREST for REST APIs from
+  PostgreSQL, WunderGraph for API gateway patterns for data, authorization
+  models (RBAC, session, JWT), real-time subscriptions, and performance
+  optimization with caching and connection pooling. Do NOT use for: custom
+  REST/GraphQL API development with frameworks like Express or FastAPI,
+  frontend-only API consumption, or general API gateway design unrelated to
+  data.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, api, access, phase-11]
+tags:
+  - data
+  - api
+  - access
+  - phase-11
+depends_on: []
 ---
 
 # Data Data API

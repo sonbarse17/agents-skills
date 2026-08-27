@@ -1,10 +1,16 @@
 ---
 name: penetration-testing
-description: Perform basic penetration testing and security assessments. Use reconnaissance, vulnerability discovery, and exploitation techniques. Use when validating security controls or assessing system security.
+description: Perform basic penetration testing and security assessments. Use
+  reconnaissance, vulnerability discovery, and exploitation techniques. Use when
+  validating security controls or assessing system security.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - penetration-testing
+depends_on: []
 ---
 
 # Penetration Testing

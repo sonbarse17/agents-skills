@@ -2,19 +2,23 @@
 name: agent-bad-response-triage-and-root-cause-classification
 description: >
   Guides triaging a single reported bad, wrong, or harmful agent response:
-  reproducing it deterministically and classifying the root cause into one
-  of five buckets — prompt issue, tool failure, retrieval issue, model
-  behavior change, or genuine edge case — so the fix targets the actual
-  cause instead of the symptom. Use when a user asks to "investigate this
-  bad agent response," "why did the agent say/do that," "triage this
-  reported hallucination/harmful output," "figure out if this is a prompt
-  bug or a model regression," or files an incident about a single
-  problematic agent interaction that needs root-causing before a fix ships.
+  reproducing it deterministically and classifying the root cause into one of
+  five buckets — prompt issue, tool failure, retrieval issue, model behavior
+  change, or genuine edge case — so the fix targets the actual cause instead of
+  the symptom. Use when a user asks to "investigate this bad agent response,"
+  "why did the agent say/do that," "triage this reported hallucination/harmful
+  output," "figure out if this is a prompt bug or a model regression," or files
+  an incident about a single problematic agent interaction that needs
+  root-causing before a fix ships.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - agent-bad-response-triage-and-root-cause-classification
+depends_on: []
 ---
 
 # Agent Bad Response Triage and Root Cause Classification

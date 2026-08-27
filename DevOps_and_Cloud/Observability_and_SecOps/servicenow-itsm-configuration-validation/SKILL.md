@@ -2,21 +2,24 @@
 name: servicenow-itsm-configuration-validation
 description: >
   Validates ServiceNow Incident/Change/Problem workflow, approval, and
-  assignment-routing configuration before it blocks or misroutes a real
-  incident — checking CMDB CI-to-team mappings for gaps, Emergency
-  Change approval routing for actual reachability, sync-flow idempotency,
-  and workflow transition logic for dead ends. Use when the user asks to
-  "validate our ServiceNow change workflow before we depend on it,"
-  "check our CMDB assignment routing for gaps," "test the emergency
-  change approval path actually works," "why do incidents keep landing
-  in the wrong assignment group," or "audit our ServiceNow flows before
-  a real incident is the first time we find a bug." Pairs with the
-  existing servicenow-itsm-integration skill.
+  assignment-routing configuration before it blocks or misroutes a real incident
+  — checking CMDB CI-to-team mappings for gaps, Emergency Change approval
+  routing for actual reachability, sync-flow idempotency, and workflow
+  transition logic for dead ends. Use when the user asks to "validate our
+  ServiceNow change workflow before we depend on it," "check our CMDB assignment
+  routing for gaps," "test the emergency change approval path actually works,"
+  "why do incidents keep landing in the wrong assignment group," or "audit our
+  ServiceNow flows before a real incident is the first time we find a bug."
+  Pairs with the existing servicenow-itsm-integration skill.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - observability_and_secops
+  - servicenow-itsm-configuration-validation
+depends_on: []
 ---
 
 # ServiceNow ITSM Configuration Validation

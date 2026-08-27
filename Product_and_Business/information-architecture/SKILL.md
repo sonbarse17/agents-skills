@@ -1,16 +1,23 @@
 ---
 name: design-information-architecture
 description: >
-  Use when the user asks about information architecture, sitemaps, user flows, content hierarchy, navigation design, content organization, labeling, or taxonomy. Do NOT use for: UX research (design-ux-research), visual design (design-visual-design), or prototyping (design-prototyping).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about information architecture, sitemaps, user flows,
+  content hierarchy, navigation design, content organization, labeling, or
+  taxonomy. Do NOT use for: UX research (design-ux-research), visual design
+  (design-visual-design), or prototyping (design-prototyping).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [design, information-architecture, phase-3]
+tags:
+  - design
+  - information-architecture
+  - phase-3
+depends_on: []
 ---
 
 # Information Architecture

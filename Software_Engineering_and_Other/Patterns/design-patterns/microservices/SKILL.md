@@ -1,6 +1,11 @@
 ---
 name: microservice-design-patterns
-description: Hardcore microservice patterns including SAGA, CQRS, and Event Sourcing mechanics.
+description: Hardcore microservice patterns including SAGA, CQRS, and Event
+  Sourcing mechanics.
+tags:
+  - design-patterns
+  - microservices
+depends_on: []
 ---
 
 # Advanced Microservice Architecture Patterns

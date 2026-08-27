@@ -1,6 +1,11 @@
 ---
 name: blue-team-soc-operations
-description: Master methodologies for SIEM architecture, incident response, and threat hunting.
+description: Master methodologies for SIEM architecture, incident response, and
+  threat hunting.
+tags:
+  - security
+  - blue-team-soc
+depends_on: []
 ---
 
 # Blue Team & SOC Operations Methodology

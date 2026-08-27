@@ -1,7 +1,18 @@
 ---
 name: self-service-infrastructure
-description: Lets developers provision databases, queues, and environments themselves through guardrailed templates instead of filing a ticket and waiting on a platform team. Use this whenever the user designs a self-service provisioning flow, decides what needs manual approval versus auto-approval, replaces ticket-based infrastructure requests, or worries self-service will let someone provision something dangerous or expensive. For the IaC modules provisioned use `terraform-modules`; for the guardrail logic use `policy-as-code`; for the templates surfaced to developers use `golden-paths`.
+description: Lets developers provision databases, queues, and environments
+  themselves through guardrailed templates instead of filing a ticket and
+  waiting on a platform team. Use this whenever the user designs a self-service
+  provisioning flow, decides what needs manual approval versus auto-approval,
+  replaces ticket-based infrastructure requests, or worries self-service will
+  let someone provision something dangerous or expensive. For the IaC modules
+  provisioned use `terraform-modules`; for the guardrail logic use
+  `policy-as-code`; for the templates surfaced to developers use `golden-paths`.
 license: MIT
+tags:
+  - cloud_providers
+  - self-service-infrastructure
+depends_on: []
 ---
 
 # Self-Service Infrastructure

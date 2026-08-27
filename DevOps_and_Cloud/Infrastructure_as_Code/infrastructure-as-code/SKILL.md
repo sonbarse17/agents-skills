@@ -1,7 +1,19 @@
 ---
 name: infrastructure-as-code
-description: Treats infrastructure changes as version-controlled, reviewable configuration instead of manual clicks or SSH sessions — Terraform state, plan review, environment parity, and guardrails against irreversible changes. Use this whenever the user is writing or reviewing Terraform, CloudFormation, or Pulumi code, applying infrastructure changes, managing remote state, or asking why an environment drifted from what's declared. For module design use `terraform-modules`, for blocking bad changes before apply use `policy-as-code`, for dev/staging/prod differences use `environment-management`.
+description: Treats infrastructure changes as version-controlled, reviewable
+  configuration instead of manual clicks or SSH sessions — Terraform state, plan
+  review, environment parity, and guardrails against irreversible changes. Use
+  this whenever the user is writing or reviewing Terraform, CloudFormation, or
+  Pulumi code, applying infrastructure changes, managing remote state, or asking
+  why an environment drifted from what's declared. For module design use
+  `terraform-modules`, for blocking bad changes before apply use
+  `policy-as-code`, for dev/staging/prod differences use
+  `environment-management`.
 license: MIT
+tags:
+  - infrastructure_as_code
+  - infrastructure-as-code
+depends_on: []
 ---
 
 # Infrastructure as Code

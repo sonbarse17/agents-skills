@@ -1,6 +1,11 @@
 ---
 name: triton-kernels
-description: Authoritative guide to writing custom OpenAI Triton kernels for GPU inference optimization, focusing on block-level programming and auto-tuning.
+description: Authoritative guide to writing custom OpenAI Triton kernels for GPU
+  inference optimization, focusing on block-level programming and auto-tuning.
+tags:
+  - models_and_finetuning
+  - triton-kernels
+depends_on: []
 ---
 
 # Triton Kernel Optimization Mastery

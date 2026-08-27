@@ -1,10 +1,15 @@
 ---
 name: gcp-gke
-description: Deploy and manage Google Kubernetes Engine clusters. Configure node pools, networking, and workload identity. Use when running Kubernetes on GCP.
+description: Deploy and manage Google Kubernetes Engine clusters. Configure node
+  pools, networking, and workload identity. Use when running Kubernetes on GCP.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - gcp-gke
+depends_on: []
 ---
 
 # Google [Kubernetes](../kubernetes/SKILL.md) Engine (GKE)

@@ -2,24 +2,27 @@
 name: complete-mlops-platform-deployment-self-hosted-k8s-from-scratch
 description: >
   Sequences a complete, end-to-end, self-hosted and cloud-agnostic MLOps
-  platform on any Kubernetes cluster — no managed ML service from any
-  vendor — from a bare cluster to production: GPU node pools via the
-  NVIDIA GPU Operator, a Kubeflow-vs-Ray orchestration choice, self-hosted
-  MLflow-style tracking and registry on self-operated object storage and
-  Postgres, on-cluster serving, and self-hosted drift monitoring. An
-  integration/orchestration skill sequencing existing tool-specific skills
-  in the right order, explicit about the added operational burden of
-  self-hosting every layer versus a managed-cloud MLOps platform. Use when
-  a user asks to "build a self-hosted MLOps platform on Kubernetes," "stand
-  up MLflow and Kubeflow ourselves with no managed cloud ML service,"
-  "design a vendor-agnostic ML platform we can run on any cluster," or
-  "give me the full sequence for a fully self-managed ML platform from
-  bare cluster to production."
+  platform on any Kubernetes cluster — no managed ML service from any vendor —
+  from a bare cluster to production: GPU node pools via the NVIDIA GPU Operator,
+  a Kubeflow-vs-Ray orchestration choice, self-hosted MLflow-style tracking and
+  registry on self-operated object storage and Postgres, on-cluster serving, and
+  self-hosted drift monitoring. An integration/orchestration skill sequencing
+  existing tool-specific skills in the right order, explicit about the added
+  operational burden of self-hosting every layer versus a managed-cloud MLOps
+  platform. Use when a user asks to "build a self-hosted MLOps platform on
+  Kubernetes," "stand up MLflow and Kubeflow ourselves with no managed cloud ML
+  service," "design a vendor-agnostic ML platform we can run on any cluster," or
+  "give me the full sequence for a fully self-managed ML platform from bare
+  cluster to production."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-mlops-platform-deployment-self-hosted-k8s-from-scratch
+depends_on: []
 ---
 
 # Complete MLOps Platform Deployment Self-Hosted On [Kubernetes](../kubernetes/SKILL.md) (K8s) From Scratch

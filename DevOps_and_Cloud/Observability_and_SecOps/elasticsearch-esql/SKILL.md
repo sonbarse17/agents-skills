@@ -1,12 +1,16 @@
 ---
 name: elasticsearch-esql
 description: >
-  Execute ES|QL (Elasticsearch Query Language) queries, use when the user wants to
-  query Elasticsearch data, analyze logs, aggregate metrics, explore data, or create
-  charts and dashboards from ES|QL results.
+  Execute ES|QL (Elasticsearch Query Language) queries, use when the user wants
+  to query Elasticsearch data, analyze logs, aggregate metrics, explore data, or
+  create charts and dashboards from ES|QL results.
 metadata:
   author: elastic
   version: 0.3.0
+tags:
+  - observability_and_secops
+  - elasticsearch-esql
+depends_on: []
 ---
 
 # Elasticsearch ES|QL

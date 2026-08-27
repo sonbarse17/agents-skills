@@ -1,12 +1,21 @@
 ---
 name: azure-postgres-ts
-description: |
-  Connect to Azure Database for PostgreSQL Flexible Server from Node.js/TypeScript using the pg (node-postgres) package. Use for PostgreSQL queries, connection pooling, transactions, and Microsoft Entra ID (passwordless) authentication. Triggers: "PostgreSQL", "postgres", "pg client", "node-postgres", "Azure PostgreSQL connection", "PostgreSQL TypeScript", "pg Pool", "passwordless postgres".
+description: >
+  Connect to Azure Database for PostgreSQL Flexible Server from
+  Node.js/TypeScript using the pg (node-postgres) package. Use for PostgreSQL
+  queries, connection pooling, transactions, and Microsoft Entra ID
+  (passwordless) authentication. Triggers: "PostgreSQL", "postgres", "pg
+  client", "node-postgres", "Azure PostgreSQL connection", "PostgreSQL
+  TypeScript", "pg Pool", "passwordless postgres".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: pg
+tags:
+  - skills
+  - azure-postgres-ts
+depends_on: []
 ---
 
 # Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (node-postgres)

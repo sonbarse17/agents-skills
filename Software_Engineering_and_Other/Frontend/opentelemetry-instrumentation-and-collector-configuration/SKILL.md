@@ -1,22 +1,25 @@
 ---
 name: opentelemetry-instrumentation-and-collector-configuration
 description: >
-  Guides instrumenting applications with the OpenTelemetry SDK (auto vs.
-  manual instrumentation, resource attributes, context propagation) and
-  configuring the OpenTelemetry Collector's receiver/processor/exporter
-  pipeline architecture — the vendor-neutral instrumentation and routing
-  layer that feeds telemetry into Prometheus, Loki, Tempo/Jaeger, or any
-  other backend without coupling application code to a specific vendor
-  SDK. Use when the user asks to "instrument this service with
-  OpenTelemetry," "add OTel auto-instrumentation," "configure the
-  OpenTelemetry Collector," "set up a receiver/processor/exporter
+  Guides instrumenting applications with the OpenTelemetry SDK (auto vs. manual
+  instrumentation, resource attributes, context propagation) and configuring the
+  OpenTelemetry Collector's receiver/processor/exporter pipeline architecture —
+  the vendor-neutral instrumentation and routing layer that feeds telemetry into
+  Prometheus, Loki, Tempo/Jaeger, or any other backend without coupling
+  application code to a specific vendor SDK. Use when the user asks to
+  "instrument this service with OpenTelemetry," "add OTel auto-instrumentation,"
+  "configure the OpenTelemetry Collector," "set up a receiver/processor/exporter
   pipeline," "route traces/metrics/logs to multiple backends from one
   Collector," or "why is the Collector not receiving spans/metrics/logs."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - frontend
+  - opentelemetry-instrumentation-and-collector-configuration
+depends_on: []
 ---
 
 # [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Instrumentation and Collector Configuration

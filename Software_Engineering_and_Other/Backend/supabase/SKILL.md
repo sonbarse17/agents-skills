@@ -1,18 +1,28 @@
 ---
 name: supabase
 description: >
-  Use this skill when working with Supabase platform — PostgreSQL schema, Row Level Security, Realtime subscriptions, Auth, Storage, Edge Functions, pgvector.
-  This skill enforces: RLS policies on every table, proper PostgreSQL schema design, real-time channel organization, storage bucket policies, edge function cold start handling.
-  Do NOT use for: Firebase, AWS Amplify, Appwrite, general PostgreSQL architecture (use database-patterns), non-PostgreSQL backends.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when working with Supabase platform — PostgreSQL schema, Row
+  Level Security, Realtime subscriptions, Auth, Storage, Edge Functions,
+  pgvector. This skill enforces: RLS policies on every table, proper PostgreSQL
+  schema design, real-time channel organization, storage bucket policies, edge
+  function cold start handling. Do NOT use for: Firebase, AWS Amplify, Appwrite,
+  general PostgreSQL architecture (use database-patterns), non-PostgreSQL
+  backends.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, supabase, baas, phase-4]
+tags:
+  - backend
+  - universal
+  - supabase
+  - baas
+  - phase-4
+depends_on: []
 ---
 
 # Supabase

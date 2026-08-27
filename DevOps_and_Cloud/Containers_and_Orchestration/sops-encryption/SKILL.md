@@ -1,10 +1,16 @@
 ---
 name: sops-encryption
-description: Encrypt files and configs with Mozilla SOPS. Integrate with AWS KMS, GCP KMS, or PGP for key management. Use when encrypting configuration files, Kubernetes secrets, or implementing GitOps with encrypted secrets.
+description: Encrypt files and configs with Mozilla SOPS. Integrate with AWS
+  KMS, GCP KMS, or PGP for key management. Use when encrypting configuration
+  files, Kubernetes secrets, or implementing GitOps with encrypted secrets.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - sops-encryption
+depends_on: []
 ---
 
 # SOPS Encryption

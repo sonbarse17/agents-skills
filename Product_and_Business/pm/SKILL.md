@@ -8,15 +8,19 @@ description: >
   estimation techniques, risk management, stakeholder communication, and status
   reporting. Do NOT use for: writing technical specs, coding, testing, or
   requirements analysis (use ba).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, pm, process]
+tags:
+  - management
+  - pm
+  - process
+depends_on: []
 ---
 
 # Project Management

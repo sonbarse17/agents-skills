@@ -1,16 +1,24 @@
 ---
 name: quality-integration-testing
 description: >
-  Use when the user asks about integration testing, component testing, API testing, database testing, test containers, wiremock, contract testing, or service-level testing. Do NOT use for: unit testing (quality-unit-testing), E2E testing (quality-e2e-testing), or contract testing (quality-contract-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about integration testing, component testing, API
+  testing, database testing, test containers, wiremock, contract testing, or
+  service-level testing. Do NOT use for: unit testing (quality-unit-testing),
+  E2E testing (quality-e2e-testing), or contract testing
+  (quality-contract-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, integration-testing, phase-3]
+tags:
+  - quality
+  - integration-testing
+  - phase-3
+depends_on: []
 ---
 
 # Integration Testing

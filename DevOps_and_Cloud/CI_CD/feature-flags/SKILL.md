@@ -1,7 +1,18 @@
 ---
 name: feature-flags
-description: Decouples deploying code from releasing it to users through runtime feature flags — flag types, targeting rules, and the flag-debt cleanup discipline that keeps the flag system from becoming its own liability. Use this whenever the user wants to gate a feature behind a flag, is asking about kill switches, needs to roll out a change gradually to a subset of users, or has accumulated stale flags nobody remembers the purpose of. For strategies that use flags as part of a rollout mechanism use `deployment-strategies`; for the broader deploy-vs-release distinction use `continuous-delivery`.
+description: Decouples deploying code from releasing it to users through runtime
+  feature flags — flag types, targeting rules, and the flag-debt cleanup
+  discipline that keeps the flag system from becoming its own liability. Use
+  this whenever the user wants to gate a feature behind a flag, is asking about
+  kill switches, needs to roll out a change gradually to a subset of users, or
+  has accumulated stale flags nobody remembers the purpose of. For strategies
+  that use flags as part of a rollout mechanism use `deployment-strategies`; for
+  the broader deploy-vs-release distinction use `continuous-delivery`.
 license: MIT
+tags:
+  - ci_cd
+  - feature-flags
+depends_on: []
 ---
 
 # Feature Flags

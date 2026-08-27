@@ -1,26 +1,48 @@
 ---
 name: ot-security-assessment
 description: >
-  Operational Technology (OT) security assessment using a two-stage methodology: (1) Identification/Discovery
-  of OT devices and protocols, and (2) Vulnerability Assessment using online sources and Metasploit. Use when:
-  (1) Conducting authorized OT/ICS security assessments, (2) Identifying and enumerating OT protocols
-  (Modbus, S7, IEC 104, DNP3, BACnet, EtherNet/IP), (3) Discovering industrial control devices and PLCs,
-  (4) Assessing OT protocol vulnerabilities and security weaknesses, (5) Performing compliance scanning
-  aligned with IEC 62443 standards, (6) Validating network segmentation and access controls in OT environments.
+  Operational Technology (OT) security assessment using a two-stage methodology:
+  (1) Identification/Discovery of OT devices and protocols, and (2)
+  Vulnerability Assessment using online sources and Metasploit. Use when: (1)
+  Conducting authorized OT/ICS security assessments, (2) Identifying and
+  enumerating OT protocols (Modbus, S7, IEC 104, DNP3, BACnet, EtherNet/IP), (3)
+  Discovering industrial control devices and PLCs, (4) Assessing OT protocol
+  vulnerabilities and security weaknesses, (5) Performing compliance scanning
+  aligned with IEC 62443 standards, (6) Validating network segmentation and
+  access controls in OT environments.
 version: 0.1.0
 maintainer: https://github.com/i8void/
 category: offsec
-tags: [ot, ics, scada, modbus, siemens, industrial-security, vulnerability-assessment, reconnaissance]
-frameworks: [MITRE-ATT&CK, IEC-62443, PTES]
+tags:
+  - ot
+  - ics
+  - scada
+  - modbus
+  - siemens
+  - industrial-security
+  - vulnerability-assessment
+  - reconnaissance
+frameworks:
+  - MITRE-ATT&CK
+  - IEC-62443
+  - PTES
 dependencies:
-  packages: [nmap, metasploit-framework, python3]
-  tools: [modbus-cli, plcscan, python-snap7, pymodbus]
+  packages:
+    - nmap
+    - metasploit-framework
+    - python3
+  tools:
+    - modbus-cli
+    - plcscan
+    - python-snap7
+    - pymodbus
 references:
   - https://nmap.org/book/
   - https://docs.rapid7.com/metasploit/msf-overview/
   - https://www.cisa.gov/news-events/cybersecurity-advisories
   - https://attack.mitre.org/techniques/T1046/
   - https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards
+depends_on: []
 ---
 
 # OT Security Assessment

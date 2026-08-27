@@ -1,3 +1,12 @@
+---
+name: gcp-bigquery
+description: Comprehensive guidelines and best practices for gcp-bigquery. Use
+  this skill when working with related components.
+tags:
+  - cloud_providers
+  - gcp-bigquery
+depends_on: []
+---
 # GCP BigQuery: Dremel and Capacitor
 
 BigQuery separates compute and storage. The execution engine, Dremel, uses a multi-level execution tree. A root server receives the query, rewrites it, and distributes it to intermediate servers, which then distribute it to leaf nodes (workers) that scan the data.

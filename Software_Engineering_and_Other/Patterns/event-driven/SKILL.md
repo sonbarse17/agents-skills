@@ -1,16 +1,29 @@
 ---
 name: backend-event-driven
 description: >
-  Use this skill when the user says 'event-driven', 'message queue', 'Kafka', 'RabbitMQ', 'pub/sub', 'domain event', 'event sourcing', 'CQRS', 'async messaging', 'event bus', or when designing asynchronous communication between services. This skill enforces: domain vs integration event distinction, event naming (past tense), schema versioning, consumer idempotency, dead letter queues, saga patterns, and event sourcing basics. Applies to Kafka, RabbitMQ, NATS, Redis Pub/Sub, SQS/SNS. Do NOT use for: REST API design, database optimization, or synchronous communication patterns.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'event-driven', 'message queue', 'Kafka',
+  'RabbitMQ', 'pub/sub', 'domain event', 'event sourcing', 'CQRS', 'async
+  messaging', 'event bus', or when designing asynchronous communication between
+  services. This skill enforces: domain vs integration event distinction, event
+  naming (past tense), schema versioning, consumer idempotency, dead letter
+  queues, saga patterns, and event sourcing basics. Applies to Kafka, RabbitMQ,
+  NATS, Redis Pub/Sub, SQS/SNS. Do NOT use for: REST API design, database
+  optimization, or synchronous communication patterns.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, architecture, events, phase-2, universal]
+tags:
+  - backend
+  - architecture
+  - events
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend Event-Driven

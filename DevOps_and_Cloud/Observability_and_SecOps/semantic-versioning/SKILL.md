@@ -1,10 +1,17 @@
 ---
 name: semantic-versioning
-description: Automate versioning and changelog generation using semantic versioning principles. Configure release automation, version bumping, and changelog tools. Use when implementing version management or automating release processes.
+description: Automate versioning and changelog generation using semantic
+  versioning principles. Configure release automation, version bumping, and
+  changelog tools. Use when implementing version management or automating
+  release processes.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - semantic-versioning
+depends_on: []
 ---
 
 # Semantic Versioning

@@ -1,7 +1,19 @@
 ---
 name: metrics-and-monitoring
-description: Covers instrumenting and collecting numeric time-series data — the Prometheus data model, choosing between counters, gauges, and histograms, controlling cardinality before it controls your bill, applying RED and USE systematically, and writing recording rules. Use this whenever the user is adding metrics to code, choosing a metric type, debugging a cardinality explosion or a slow metrics query, or deciding between pull and push collection. For turning metrics into paging rules use `alerting`, for visualizing them use `dashboards`, and for the broader signal strategy use `observability`.
+description: Covers instrumenting and collecting numeric time-series data — the
+  Prometheus data model, choosing between counters, gauges, and histograms,
+  controlling cardinality before it controls your bill, applying RED and USE
+  systematically, and writing recording rules. Use this whenever the user is
+  adding metrics to code, choosing a metric type, debugging a cardinality
+  explosion or a slow metrics query, or deciding between pull and push
+  collection. For turning metrics into paging rules use `alerting`, for
+  visualizing them use `dashboards`, and for the broader signal strategy use
+  `observability`.
 license: MIT
+tags:
+  - observability_and_secops
+  - metrics-and-monitoring
+depends_on: []
 ---
 
 # Metrics and [Monitoring](../monitoring/SKILL.md)

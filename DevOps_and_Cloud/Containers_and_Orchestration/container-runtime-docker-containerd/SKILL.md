@@ -1,20 +1,23 @@
 ---
 name: container-runtime-docker-containerd
 description: >
-  Guides choosing and configuring the container RUNTIME engine — Docker
-  Engine vs. containerd vs. CRI-O — including rootless mode, runtime
-  (runc/crun/gVisor/Kata) configuration, and migration considerations
-  for clusters moving off dockershim. This is about the runtime that
-  executes containers, not building/tagging images. Use when a user
-  asks to "choose a container runtime for Kubernetes nodes," "configure
-  containerd," "run containers rootless," "migrate off Docker/dockershim,"
-  "add a sandboxed/gVisor runtime class," or "debug a CRI-level
-  container start failure."
+  Guides choosing and configuring the container RUNTIME engine — Docker Engine
+  vs. containerd vs. CRI-O — including rootless mode, runtime
+  (runc/crun/gVisor/Kata) configuration, and migration considerations for
+  clusters moving off dockershim. This is about the runtime that executes
+  containers, not building/tagging images. Use when a user asks to "choose a
+  container runtime for Kubernetes nodes," "configure containerd," "run
+  containers rootless," "migrate off Docker/dockershim," "add a sandboxed/gVisor
+  runtime class," or "debug a CRI-level container start failure."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - container-runtime-docker-containerd
+depends_on: []
 ---
 
 # Container Runtime: [Docker](../docker/SKILL.md) Engine, containerd, CRI-O

@@ -1,6 +1,10 @@
 ---
 name: rtos
 description: RTOS Internals
+tags:
+  - miscellaneous
+  - rtos
+depends_on: []
 ---
 # Real-Time Operating Systems (RTOS) Mechanics
 

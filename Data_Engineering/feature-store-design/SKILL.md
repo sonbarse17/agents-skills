@@ -1,17 +1,21 @@
 ---
 name: feature-store-design
 description: >
-  Guides designing and operating a feature store (offline + online layers)
-  for ML, covering feature definitions, point-in-time-correct training data
+  Guides designing and operating a feature store (offline + online layers) for
+  ML, covering feature definitions, point-in-time-correct training data
   generation, entity keys, and low-latency online serving. Use when the user
   asks to "design a feature store", "avoid feature leakage", set up
   Feast/Tecton/Databricks Feature Store/Vertex AI Feature Store, backfill
   features, or ensure training/serving parity for feature values.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - feature-store-design
+depends_on: []
 ---
 
 # Feature Store Design

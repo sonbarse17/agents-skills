@@ -1,11 +1,17 @@
 ---
 name: terraform-policy
-description: "Write, test, or convert Terraform Policy files (.policy.hcl, .policytest.hcl, Sentinel→tfpolicy). Triggers: policy.hcl, policytest, convert sentinel, tfpolicy, write a policy."
+description: "Write, test, or convert Terraform Policy files (.policy.hcl,
+  .policytest.hcl, Sentinel→tfpolicy). Triggers: policy.hcl, policytest, convert
+  sentinel, tfpolicy, write a policy."
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.1.0"
+  version: 0.1.0
+tags:
+  - infrastructure_as_code
+  - terraform-policy
+depends_on: []
 ---
 
 # [terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)

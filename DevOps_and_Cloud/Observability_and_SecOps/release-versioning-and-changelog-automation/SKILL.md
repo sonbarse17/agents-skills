@@ -2,17 +2,20 @@
 name: release-versioning-and-changelog-automation
 description: >
   Establishes a version numbering scheme (SemVer or CalVer) and automates
-  changelog generation and release tagging from commit history, typically
-  via Conventional Commits and tools like semantic-release or
-  release-please. Use when the user asks to "set up semantic versioning,"
-  "auto-generate a changelog," "automate release tagging," "decide on a
-  versioning scheme," "cut a release," or "figure out what changed between
-  two versions."
+  changelog generation and release tagging from commit history, typically via
+  Conventional Commits and tools like semantic-release or release-please. Use
+  when the user asks to "set up semantic versioning," "auto-generate a
+  changelog," "automate release tagging," "decide on a versioning scheme," "cut
+  a release," or "figure out what changed between two versions."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - observability_and_secops
+  - release-versioning-and-changelog-automation
+depends_on: []
 ---
 
 # Release Versioning and Changelog Automation

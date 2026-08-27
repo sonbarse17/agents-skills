@@ -1,13 +1,20 @@
 ---
 name: azure-monitor-ingestion-py
-description: |
-  Azure Monitor Ingestion SDK for Python. Use for sending custom logs to Log Analytics workspace via Logs Ingestion API.
-  Triggers: "azure-monitor-ingestion", "LogsIngestionClient", "custom logs", "DCR", "data collection rule", "Log Analytics".
+description: >
+  Azure Monitor Ingestion SDK for Python. Use for sending custom logs to Log
+  Analytics workspace via Logs Ingestion API.
+
+  Triggers: "azure-monitor-ingestion", "LogsIngestionClient", "custom logs",
+  "DCR", "data collection rule", "Log Analytics".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: azure-monitor-ingestion
+tags:
+  - cloud_providers
+  - azure-monitor-ingestion-py
+depends_on: []
 ---
 
 # Azure Monitor Ingestion SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)

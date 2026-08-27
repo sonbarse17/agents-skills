@@ -1,6 +1,15 @@
 ---
 name: copilot-sdk
-description: Build applications powered by GitHub Copilot using the Copilot SDK. Use when creating programmatic integrations with Copilot across Node.js/TypeScript, Python, Go, or .NET. Covers session management, custom tools, streaming, hooks, MCP servers, BYOK providers, session persistence, custom agents, skills, and deployment patterns. Requires GitHub Copilot CLI installed and a GitHub Copilot subscription (unless using BYOK).
+description: Build applications powered by GitHub Copilot using the Copilot SDK.
+  Use when creating programmatic integrations with Copilot across
+  Node.js/TypeScript, Python, Go, or .NET. Covers session management, custom
+  tools, streaming, hooks, MCP servers, BYOK providers, session persistence,
+  custom agents, skills, and deployment patterns. Requires GitHub Copilot CLI
+  installed and a GitHub Copilot subscription (unless using BYOK).
+tags:
+  - cloud_providers
+  - copilot-sdk
+depends_on: []
 ---
 
 # [GitHub](../../CI_CD/github/SKILL.md) Copilot SDK

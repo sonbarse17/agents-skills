@@ -1,9 +1,14 @@
 ---
 name: deep-research
-description: Research a topic thoroughly using codebase exploration. Use when the user wants deep investigation of a feature, bug, or pattern.
+description: Research a topic thoroughly using codebase exploration. Use when
+  the user wants deep investigation of a feature, bug, or pattern.
 context: fork
 agent: Explore
 allowed-tools: Read Grep Glob
+tags:
+  - miscellaneous
+  - deep-research
+depends_on: []
 ---
 
 ## Task

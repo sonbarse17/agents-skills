@@ -1,21 +1,25 @@
 ---
 name: cloud-cost-anomaly-investigation
 description: >
-  Walks through investigating an unexpected cost spike on this month's
-  cloud bill right now — querying AWS Cost Explorer/CUR, Azure Cost
-  Management, or GCP BigQuery billing export to isolate the specific
-  resource, tag, and team responsible before it becomes a formal FinOps
-  review. Use when a user asks "why did our AWS/Azure/GCP bill jump this
-  week/month," "what's driving this cost anomaly alert," "find what
-  resource caused this spike," or "who do I ask about this spend before
-  the finance review." Distinct from cloud-cost-finops-optimization,
-  which covers the ongoing tagging/rightsizing/commitment program this
-  investigation is a single incident inside of.
+  Walks through investigating an unexpected cost spike on this month's cloud
+  bill right now — querying AWS Cost Explorer/CUR, Azure Cost Management, or GCP
+  BigQuery billing export to isolate the specific resource, tag, and team
+  responsible before it becomes a formal FinOps review. Use when a user asks
+  "why did our AWS/Azure/GCP bill jump this week/month," "what's driving this
+  cost anomaly alert," "find what resource caused this spike," or "who do I ask
+  about this spend before the finance review." Distinct from
+  cloud-cost-finops-optimization, which covers the ongoing
+  tagging/rightsizing/commitment program this investigation is a single incident
+  inside of.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-cost-anomaly-investigation
+depends_on: []
 ---
 
 # Cloud Cost Anomaly Investigation

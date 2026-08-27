@@ -1,22 +1,25 @@
 ---
 name: linear-issue-tracking-best-practices
 description: >
-  Guides Linear's cycle-based workflow model — Issues, Projects, and
-  time-boxed Cycles instead of Jira's sprint/board configuration,
-  Linear's opinionated status workflow (Triage → Backlog → Todo → In
-  Progress → In Review → Done/Cancelled), its keyboard-driven/low-
-  friction issue creation philosophy, and the Linear API/SDK for
-  programmatic issue management. Use when the user asks to "set up
-  Linear for our team," "should we use Linear or Jira," "create a Linear
-  issue via the API," "design our Linear cycle/project structure," "why
-  did our Jira migration to Linear feel different," or "reduce process
-  overhead in our issue tracker." Cross-references the Jira-focused
-  ticket-workflow skill for teams comparing or migrating between tools.
+  Guides Linear's cycle-based workflow model — Issues, Projects, and time-boxed
+  Cycles instead of Jira's sprint/board configuration, Linear's opinionated
+  status workflow (Triage → Backlog → Todo → In Progress → In Review →
+  Done/Cancelled), its keyboard-driven/low- friction issue creation philosophy,
+  and the Linear API/SDK for programmatic issue management. Use when the user
+  asks to "set up Linear for our team," "should we use Linear or Jira," "create
+  a Linear issue via the API," "design our Linear cycle/project structure," "why
+  did our Jira migration to Linear feel different," or "reduce process overhead
+  in our issue tracker." Cross-references the Jira-focused ticket-workflow skill
+  for teams comparing or migrating between tools.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - product_and_business
+  - linear-issue-tracking-best-practices
+depends_on: []
 ---
 
 # Linear Issue Tracking Best Practices

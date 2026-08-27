@@ -1,11 +1,25 @@
 ---
 name: blockchain-defi
 description: >
-  Use this skill when asked about decentralized finance, DeFi protocols, AMM mechanics, lending and borrowing protocols, perpetual futures, yield farming, liquidity mining, liquid staking, restaking, yield optimization, DeFi security, MEV, and protocol composability. Covers AMM design (Uniswap, Curve, Balancer), lending protocols (Aave, Compound, Morpho), derivatives (dYdX, GMX, Synthetix), liquid staking (Lido, Rocket Pool, EigenLayer restaking), and yield strategies (Yearn, Convex). Do NOT use for: general smart contract development (use blockchain-application), blockchain core protocol (use blockchain-core), or web3 UI integration (use blockchain-web3).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, defi, finance, protocol, phase-blockchain]
+  Use this skill when asked about decentralized finance, DeFi protocols, AMM
+  mechanics, lending and borrowing protocols, perpetual futures, yield farming,
+  liquidity mining, liquid staking, restaking, yield optimization, DeFi
+  security, MEV, and protocol composability. Covers AMM design (Uniswap, Curve,
+  Balancer), lending protocols (Aave, Compound, Morpho), derivatives (dYdX, GMX,
+  Synthetix), liquid staking (Lido, Rocket Pool, EigenLayer restaking), and
+  yield strategies (Yearn, Convex). Do NOT use for: general smart contract
+  development (use blockchain-application), blockchain core protocol (use
+  blockchain-core), or web3 UI integration (use blockchain-web3).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - defi
+  - finance
+  - protocol
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain DeFi

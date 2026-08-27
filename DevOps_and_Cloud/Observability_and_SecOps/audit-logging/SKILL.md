@@ -1,10 +1,16 @@
 ---
 name: audit-logging
-description: Implement centralized audit logging and SIEM integration. Configure log retention and security monitoring. Use when implementing audit trail requirements.
+description: Implement centralized audit logging and SIEM integration. Configure
+  log retention and security monitoring. Use when implementing audit trail
+  requirements.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - audit-logging
+depends_on: []
 ---
 
 # [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging

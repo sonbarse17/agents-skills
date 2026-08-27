@@ -1,10 +1,15 @@
 ---
 name: ai-red-teaming
-description: Run structured AI red team exercises for jailbreak resistance, data exfiltration risk, harmful output controls, and agent tool abuse resilience.
+description: Run structured AI red team exercises for jailbreak resistance, data
+  exfiltration risk, harmful output controls, and agent tool abuse resilience.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - ai-red-teaming
+depends_on: []
 ---
 
 # AI Red Teaming

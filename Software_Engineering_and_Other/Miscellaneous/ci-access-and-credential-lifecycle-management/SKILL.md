@@ -1,19 +1,23 @@
 ---
 name: ci-access-and-credential-lifecycle-management
 description: >
-  Manages the lifecycle of one-off/temporary repo and environment access
-  grants and CI service-account credentials — granting time-boxed access
-  for a specific task, revoking it reliably when the task ends, and
-  rotating CI service-account tokens/keys before they expire or become
-  stale. Use when the user asks to "give a contractor temporary repo
-  access," "grant one-off access to the production environment," "rotate
-  our CI service account token/API key," "find and revoke stale CI
-  credentials," or "our CI token is about to expire, what do we do."
+  Manages the lifecycle of one-off/temporary repo and environment access grants
+  and CI service-account credentials — granting time-boxed access for a specific
+  task, revoking it reliably when the task ends, and rotating CI service-account
+  tokens/keys before they expire or become stale. Use when the user asks to
+  "give a contractor temporary repo access," "grant one-off access to the
+  production environment," "rotate our CI service account token/API key," "find
+  and revoke stale CI credentials," or "our CI token is about to expire, what do
+  we do."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - miscellaneous
+  - ci-access-and-credential-lifecycle-management
+depends_on: []
 ---
 
 # CI Access and Credential Lifecycle Management

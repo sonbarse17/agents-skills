@@ -1,6 +1,11 @@
 ---
 name: reverse-engineering
-description: Low-level binary analysis, decompilation theory, memory corruption mechanics, and OS defensive mitigations.
+description: Low-level binary analysis, decompilation theory, memory corruption
+  mechanics, and OS defensive mitigations.
+tags:
+  - security
+  - reverse-engineering
+depends_on: []
 ---
 
 # Reverse Engineering & Low-Level Binary Analysis

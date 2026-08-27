@@ -1,7 +1,18 @@
 ---
 name: backup-and-restore
-description: Defines the discipline of building backups you can actually restore under pressure — RPO-driven frequency, restores rehearsed on a schedule, offsite immutable copies, encryption, and treating a backup that has never been restored as equivalent to no backup at all. Use this whenever the user sets up a backup job, chooses a retention policy, argues about RPO or RTO, asks whether current backups are enough, or plans for ransomware or accidental deletion. For the wider recovery plan use `disaster-recovery`, and for stateful platform durability use `stateful-workloads`.
+description: Defines the discipline of building backups you can actually restore
+  under pressure — RPO-driven frequency, restores rehearsed on a schedule,
+  offsite immutable copies, encryption, and treating a backup that has never
+  been restored as equivalent to no backup at all. Use this whenever the user
+  sets up a backup job, chooses a retention policy, argues about RPO or RTO,
+  asks whether current backups are enough, or plans for ransomware or accidental
+  deletion. For the wider recovery plan use `disaster-recovery`, and for
+  stateful platform durability use `stateful-workloads`.
 license: MIT
+tags:
+  - frontend
+  - backup-and-restore
+depends_on: []
 ---
 
 # Backup and Restore

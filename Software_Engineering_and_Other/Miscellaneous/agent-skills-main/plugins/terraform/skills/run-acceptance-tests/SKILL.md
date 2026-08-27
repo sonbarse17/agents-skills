@@ -1,11 +1,18 @@
 ---
 name: run-acceptance-tests
-description: Guide for running acceptance tests for a Terraform provider. Use this when asked to run an acceptance test or to run a test with the prefix `TestAcc`, when a test fails with missing environment variables, or when diagnosing a failing or suspiciously passing acceptance test.
+description: Guide for running acceptance tests for a Terraform provider. Use
+  this when asked to run an acceptance test or to run a test with the prefix
+  `TestAcc`, when a test fails with missing environment variables, or when
+  diagnosing a failing or suspiciously passing acceptance test.
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - skills
+  - run-acceptance-tests
+depends_on: []
 ---
 
 An acceptance test is a Go test function with the prefix `TestAcc`.

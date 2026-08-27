@@ -1,16 +1,28 @@
 ---
 name: backend-distributed-locking
 description: >
-  Use this skill when the user says 'distributed lock', 'Redis lock', 'Redlock', 'ZooKeeper lock', 'advisory lock', 'PostgreSQL lock', 'pg_advisory_lock', 'lease', 'distributed mutex', 'lock timeouts', 'fencing token'. This skill implements distributed locking using Redis Redlock, ZooKeeper, PostgreSQL advisory locks, or lease-based mechanisms. Applies to any backend stack. Do NOT use for: single-process mutexes, database transaction serialization, or optimistic concurrency.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'distributed lock', 'Redis lock', 'Redlock',
+  'ZooKeeper lock', 'advisory lock', 'PostgreSQL lock', 'pg_advisory_lock',
+  'lease', 'distributed mutex', 'lock timeouts', 'fencing token'. This skill
+  implements distributed locking using Redis Redlock, ZooKeeper, PostgreSQL
+  advisory locks, or lease-based mechanisms. Applies to any backend stack. Do
+  NOT use for: single-process mutexes, database transaction serialization, or
+  optimistic concurrency.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, distributed-locking, concurrency, coordination]
+tags:
+  - backend
+  - universal
+  - distributed-locking
+  - concurrency
+  - coordination
+depends_on: []
 ---
 
 # Backend Distributed Locking

@@ -1,3 +1,12 @@
+---
+name: commands
+description: Comprehensive guidelines and best practices for commands. Use this
+  skill when working with related components.
+tags:
+  - frontend
+  - commands
+depends_on: []
+---
 # /skill — Load a skill by name
 
 Activate a skill from the suite. Reads the skill's SKILL.md and applies its rules.

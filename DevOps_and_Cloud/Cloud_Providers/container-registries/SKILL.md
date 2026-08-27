@@ -1,10 +1,17 @@
 ---
 name: container-registries
-description: Manage container registries including ECR, ACR, GCR, and Docker Hub. Push and pull images, configure authentication, set up repository policies, and implement image lifecycle management. Use when working with container image storage and distribution.
+description: Manage container registries including ECR, ACR, GCR, and Docker
+  Hub. Push and pull images, configure authentication, set up repository
+  policies, and implement image lifecycle management. Use when working with
+  container image storage and distribution.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - container-registries
+depends_on: []
 ---
 
 # Container Registries

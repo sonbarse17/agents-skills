@@ -1,16 +1,23 @@
 ---
 name: the-fool
-description: Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil's advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+description: Use when challenging ideas, plans, decisions, or proposals using
+  structured critical reasoning. Invoke to play devil's advocate, run a
+  pre-mortem, red team, or audit evidence and assumptions.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.0.0"
+  version: 1.0.0
   domain: workflow
-  triggers: play the fool, devil's advocate, challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, test my assumptions
+  triggers: play the fool, devil's advocate, challenge this, stress test, poke
+    holes, what could go wrong, red team, pre-mortem, test my assumptions
   role: expert
   scope: review
   output-format: report
   related-skills: architecture-designer, code-reviewer, feature-forge
+tags:
+  - patterns
+  - the-fool
+depends_on: []
 ---
 
 # The Fool

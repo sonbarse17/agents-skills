@@ -1,10 +1,16 @@
 ---
 name: fedramp-compliance
-description: Implement FedRAMP requirements for federal cloud services. Configure NIST 800-53 controls and continuous monitoring. Use when providing cloud services to US federal agencies.
+description: Implement FedRAMP requirements for federal cloud services.
+  Configure NIST 800-53 controls and continuous monitoring. Use when providing
+  cloud services to US federal agencies.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - fedramp-compliance
+depends_on: []
 ---
 
 # FedRAMP Compliance

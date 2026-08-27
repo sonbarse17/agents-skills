@@ -1,10 +1,16 @@
 ---
 name: rag-observability-evals
-description: Monitor and evaluate RAG systems with retrieval quality metrics, groundedness checks, hallucination detection, and continuous regression testing.
+description: Monitor and evaluate RAG systems with retrieval quality metrics,
+  groundedness checks, hallucination detection, and continuous regression
+  testing.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure
+  - rag-observability-evals
+depends_on: []
 ---
 
 # RAG [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and Evaluations

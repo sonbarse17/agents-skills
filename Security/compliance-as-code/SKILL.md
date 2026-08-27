@@ -1,7 +1,18 @@
 ---
 name: compliance-as-code
-description: Turns compliance controls into executable, version-controlled checks with automated evidence collection, so audits become a query instead of a fire drill. Use this whenever the user is preparing for SOC 2, ISO 27001, or PCI audits, mapping controls to infrastructure, detecting drift from a compliance baseline, manually screenshotting settings for an auditor, or proving a control is enforced rather than just documented. For enforcing rules at deploy time use `policy-as-code`; for who has access to audited systems use `iam-access-management`.
+description: Turns compliance controls into executable, version-controlled
+  checks with automated evidence collection, so audits become a query instead of
+  a fire drill. Use this whenever the user is preparing for SOC 2, ISO 27001, or
+  PCI audits, mapping controls to infrastructure, detecting drift from a
+  compliance baseline, manually screenshotting settings for an auditor, or
+  proving a control is enforced rather than just documented. For enforcing rules
+  at deploy time use `policy-as-code`; for who has access to audited systems use
+  `iam-access-management`.
 license: MIT
+tags:
+  - security
+  - compliance-as-code
+depends_on: []
 ---
 
 # Compliance as Code

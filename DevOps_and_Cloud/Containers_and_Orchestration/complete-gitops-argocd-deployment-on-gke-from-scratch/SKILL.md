@@ -1,21 +1,24 @@
 ---
 name: complete-gitops-argocd-deployment-on-gke-from-scratch
 description: >
-  Walks through a complete, end-to-end Argo CD GitOps deployment on an
-  existing Google GKE cluster — Helm install, Workload Identity Federation
-  integration for Argo CD's own components (federated cluster access,
-  private Artifact Registry pull auth), the first Application, an
-  ApplicationSet for multi-environment rollout, and sync/health policy —
-  sequenced as one coherent runbook. Use when the user asks to "set up
-  Argo CD on GKE from scratch," "deploy GitOps end-to-end on GCP," "wire
-  Workload Identity Federation into Argo CD," "stand up GitOps for a new
-  GKE cluster," or "go from a bare GKE cluster to a working multi-env
-  GitOps pipeline."
+  Walks through a complete, end-to-end Argo CD GitOps deployment on an existing
+  Google GKE cluster — Helm install, Workload Identity Federation integration
+  for Argo CD's own components (federated cluster access, private Artifact
+  Registry pull auth), the first Application, an ApplicationSet for
+  multi-environment rollout, and sync/health policy — sequenced as one coherent
+  runbook. Use when the user asks to "set up Argo CD on GKE from scratch,"
+  "deploy GitOps end-to-end on GCP," "wire Workload Identity Federation into
+  Argo CD," "stand up GitOps for a new GKE cluster," or "go from a bare GKE
+  cluster to a working multi-env GitOps pipeline."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-gitops-argocd-deployment-on-gke-from-scratch
+depends_on: []
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment on GKE, From Scratch

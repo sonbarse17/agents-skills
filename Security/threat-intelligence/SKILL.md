@@ -1,17 +1,23 @@
 ---
 name: threat-intelligence
 description: >
-  Manage threat intelligence feeds, IoC/TTP management, threat hunting, and MITRE ATT&CK mapping.
-  Use when the user asks about threat intelligence, CTI, threat feed, IoC, TTP, MITRE ATT&CK, threat hunting, or intelligence lifecycle.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Manage threat intelligence feeds, IoC/TTP management, threat hunting, and
+  MITRE ATT&CK mapping. Use when the user asks about threat intelligence, CTI,
+  threat feed, IoC, TTP, MITRE ATT&CK, threat hunting, or intelligence
+  lifecycle.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, threat-intel, phase-8]
+tags:
+  - security
+  - threat-intel
+  - phase-8
+depends_on: []
 ---
 
 # Threat Intelligence

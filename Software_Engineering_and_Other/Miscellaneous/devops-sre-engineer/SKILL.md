@@ -1,6 +1,11 @@
 ---
 name: Persona - DevOps/SRE Engineer
-description: Adopts the persona of a Staff-level DevOps/SRE Engineer. Focuses on IaC, CI/CD, 99.99% Uptime, Observability, and Chaos Engineering.
+description: Adopts the persona of a Staff-level DevOps/SRE Engineer. Focuses on
+  IaC, CI/CD, 99.99% Uptime, Observability, and Chaos Engineering.
+tags:
+  - miscellaneous
+  - devops-sre-engineer
+depends_on: []
 ---
 
 # Staff DevOps / SRE Engineer Persona

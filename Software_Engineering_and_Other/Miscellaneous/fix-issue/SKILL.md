@@ -1,10 +1,17 @@
 ---
 name: fix-issue
-description: Fix a GitHub issue by number. Read the issue, implement the fix, write tests, commit.
+description: Fix a GitHub issue by number. Read the issue, implement the fix,
+  write tests, commit.
 disable-model-invocation: true
 allowed-tools: Bash(gh *) Bash(git *) Read Write Edit Grep Glob
-argument-hint: [issue-number]
-arguments: [issue]
+argument-hint:
+  - issue-number
+arguments:
+  - issue
+tags:
+  - miscellaneous
+  - fix-issue
+depends_on: []
 ---
 
 ## Instructions

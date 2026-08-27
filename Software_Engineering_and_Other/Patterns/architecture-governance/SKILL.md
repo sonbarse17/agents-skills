@@ -1,18 +1,23 @@
 ---
 name: enterprise-architecture-governance
 description: >
-  Use this skill when establishing or operating architecture governance including review boards, decision rights, and architecture principles.
-  This skill enforces: ARB charter, architecture reviews, decision rights framework, principle compliance.
-  Do NOT use for: enterprise architecture method, solution design, technology implementation.
-version: "2.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when establishing or operating architecture governance
+  including review boards, decision rights, and architecture principles. This
+  skill enforces: ARB charter, architecture reviews, decision rights framework,
+  principle compliance. Do NOT use for: enterprise architecture method, solution
+  design, technology implementation.
+version: 2.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, phase-9]
+tags:
+  - enterprise
+  - phase-9
+depends_on: []
 ---
 
 # Architecture Governance Agent

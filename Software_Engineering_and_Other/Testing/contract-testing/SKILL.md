@@ -1,16 +1,25 @@
 ---
 name: quality-contract-testing
 description: >
-  Use this skill when setting up contract testing, Pact, consumer-driven contracts, provider contract verification, API compatibility, or integration testing between services. This skill enforces: consumer-driven contracts with Pact, provider-side verification, contract publishing to a broker, versioning strategy, CI pipeline integration, and breaking change detection. Do NOT use for: API end-to-end tests, schema validation only, or single-service testing.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when setting up contract testing, Pact, consumer-driven
+  contracts, provider contract verification, API compatibility, or integration
+  testing between services. This skill enforces: consumer-driven contracts with
+  Pact, provider-side verification, contract publishing to a broker, versioning
+  strategy, CI pipeline integration, and breaking change detection. Do NOT use
+  for: API end-to-end tests, schema validation only, or single-service testing.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, backend, phase-10]
+tags:
+  - quality
+  - backend
+  - phase-10
+depends_on: []
 ---
 
 # Quality Contract Testing

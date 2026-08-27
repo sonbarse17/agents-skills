@@ -1,19 +1,22 @@
 ---
 name: openshift-and-rosa-platform
 description: >
-  Guides working with OpenShift-specific Kubernetes concepts — Routes,
-  Security Context Constraints (SCCs), Projects, and Operator Lifecycle
-  Manager (OLM) — plus Red Hat OpenShift Service on AWS (ROSA)
-  provisioning and the AWS/Red Hat shared responsibility split. Use
-  when a user asks to "expose a service with an OpenShift Route,"
-  "fix a pod blocked by SCC," "install an operator via OLM," "create
-  an OpenShift Project," "provision a ROSA cluster," or "understand
-  what Red Hat vs. our team manages in ROSA."
+  Guides working with OpenShift-specific Kubernetes concepts — Routes, Security
+  Context Constraints (SCCs), Projects, and Operator Lifecycle Manager (OLM) —
+  plus Red Hat OpenShift Service on AWS (ROSA) provisioning and the AWS/Red Hat
+  shared responsibility split. Use when a user asks to "expose a service with an
+  OpenShift Route," "fix a pod blocked by SCC," "install an operator via OLM,"
+  "create an OpenShift Project," "provision a ROSA cluster," or "understand what
+  Red Hat vs. our team manages in ROSA."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - openshift-and-rosa-platform
+depends_on: []
 ---
 
 # [OpenShift](../openshift/SKILL.md) and ROSA Platform

@@ -1,23 +1,27 @@
 ---
 name: complete-kubernetes-deployment-on-eks-from-scratch
 description: >
-  Sequences a complete, end-to-end EKS deployment from a bare AWS account to
-  a production-ready cluster serving a first workload — landing zone/IAM
+  Sequences a complete, end-to-end EKS deployment from a bare AWS account to a
+  production-ready cluster serving a first workload — landing zone/IAM
   prerequisites, EKS cluster and node group provisioning, VPC CNI (with the
   Calico/Cilium alternative noted), ingress (ALB vs. ingress-nginx), cert-
   manager with Route 53 DNS-01, conformance validation, a Helm-deployed
   workload, and a node/cluster health baseline. This is an integration/
-  orchestration skill that sequences several existing tool-specific skills
-  in the correct order and flags the handoff points between them — it does
-  not restate their internals. Use when a user asks to "deploy a Kubernetes
-  cluster on EKS from scratch," "stand up a new EKS environment end to
-  end," "build a production EKS cluster from a fresh AWS account," or
-  "give me the full sequence to go from nothing to a working EKS cluster."
+  orchestration skill that sequences several existing tool-specific skills in
+  the correct order and flags the handoff points between them — it does not
+  restate their internals. Use when a user asks to "deploy a Kubernetes cluster
+  on EKS from scratch," "stand up a new EKS environment end to end," "build a
+  production EKS cluster from a fresh AWS account," or "give me the full
+  sequence to go from nothing to a working EKS cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-kubernetes-deployment-on-eks-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on EKS From Scratch

@@ -1,16 +1,29 @@
 ---
 name: backend-plugin-architecture
 description: >
-  Use this skill when the user says 'plugin system', 'plugin architecture', 'extension point', 'SPI', 'service provider interface', 'hot-plug', 'modular design', 'plugin loader', 'extensible', 'plugin API', 'custom extension', 'plug-in', 'dynamic loading'. This skill designs plugin/extension architecture with SPI, hot-plugging, and modular loading. Applies to any backend stack. Do NOT use for: dependency injection frameworks, micro-frontends, or NPM packages.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'plugin system', 'plugin architecture',
+  'extension point', 'SPI', 'service provider interface', 'hot-plug', 'modular
+  design', 'plugin loader', 'extensible', 'plugin API', 'custom extension',
+  'plug-in', 'dynamic loading'. This skill designs plugin/extension architecture
+  with SPI, hot-plugging, and modular loading. Applies to any backend stack. Do
+  NOT use for: dependency injection frameworks, micro-frontends, or NPM
+  packages.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, plugin-architecture, extensibility, modular, spi]
+tags:
+  - backend
+  - universal
+  - plugin-architecture
+  - extensibility
+  - modular
+  - spi
+depends_on: []
 ---
 
 # Backend Plugin Architecture

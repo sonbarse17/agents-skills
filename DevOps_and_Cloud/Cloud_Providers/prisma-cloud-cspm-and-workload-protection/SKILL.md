@@ -1,23 +1,26 @@
 ---
 name: prisma-cloud-cspm-and-workload-protection
 description: >
-  Guides deep, tool-specific use of Palo Alto Networks Prisma Cloud for
-  Cloud Security Posture Management (CSPM) across AWS/Azure/GCP accounts,
-  IaC scanning (Terraform/CloudFormation) via Prisma's checkov-based
-  engine, and agent-based workload protection (Defender agents) for
-  hosts, containers, and serverless functions. Use when the user asks to
-  "set up Prisma Cloud CSPM", "write a Prisma Cloud custom policy",
-  "scan Terraform with Prisma/checkov", "deploy Prisma Cloud Defender
-  agents", "triage a Prisma Cloud alert", "connect an AWS/Azure/GCP
-  account to Prisma Cloud", or "compare CSPM posture findings against
-  runtime protection". Prisma-Cloud-specific depth on RQL policies,
-  IaC scan API, and Defender deployment; cross-references cloud IAM
-  hardening for the underlying identity concepts CSPM findings surface.
+  Guides deep, tool-specific use of Palo Alto Networks Prisma Cloud for Cloud
+  Security Posture Management (CSPM) across AWS/Azure/GCP accounts, IaC scanning
+  (Terraform/CloudFormation) via Prisma's checkov-based engine, and agent-based
+  workload protection (Defender agents) for hosts, containers, and serverless
+  functions. Use when the user asks to "set up Prisma Cloud CSPM", "write a
+  Prisma Cloud custom policy", "scan Terraform with Prisma/checkov", "deploy
+  Prisma Cloud Defender agents", "triage a Prisma Cloud alert", "connect an
+  AWS/Azure/GCP account to Prisma Cloud", or "compare CSPM posture findings
+  against runtime protection". Prisma-Cloud-specific depth on RQL policies, IaC
+  scan API, and Defender deployment; cross-references cloud IAM hardening for
+  the underlying identity concepts CSPM findings surface.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - prisma-cloud-cspm-and-workload-protection
+depends_on: []
 ---
 
 # Prisma Cloud CSPM and Workload Protection

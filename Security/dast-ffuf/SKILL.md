@@ -1,22 +1,35 @@
 ---
 name: dast-ffuf
 description: >
-  Fast web fuzzer for DAST testing with directory enumeration, parameter fuzzing, and virtual host
-  discovery. Written in Go for high-performance HTTP fuzzing with extensive filtering capabilities.
-  Supports multiple fuzzing modes (clusterbomb, pitchfork, sniper) and recursive scanning. Use when:
-  (1) Discovering hidden directories, files, and endpoints on web applications, (2) Fuzzing GET and
-  POST parameters to identify injection vulnerabilities, (3) Enumerating virtual hosts and subdomains,
-  (4) Testing authentication endpoints with credential fuzzing, (5) Finding backup files and sensitive
-  data exposures, (6) Performing comprehensive web application reconnaissance.
+  Fast web fuzzer for DAST testing with directory enumeration, parameter
+  fuzzing, and virtual host discovery. Written in Go for high-performance HTTP
+  fuzzing with extensive filtering capabilities. Supports multiple fuzzing modes
+  (clusterbomb, pitchfork, sniper) and recursive scanning. Use when: (1)
+  Discovering hidden directories, files, and endpoints on web applications, (2)
+  Fuzzing GET and POST parameters to identify injection vulnerabilities, (3)
+  Enumerating virtual hosts and subdomains, (4) Testing authentication endpoints
+  with credential fuzzing, (5) Finding backup files and sensitive data
+  exposures, (6) Performing comprehensive web application reconnaissance.
 version: 0.1.0
 maintainer: SirAppSec
 category: appsec
-tags: [dast, fuzzing, web-fuzzer, directory-enumeration, parameter-fuzzing, vhost-discovery, ffuf, reconnaissance]
-frameworks: [OWASP]
+tags:
+  - dast
+  - fuzzing
+  - web-fuzzer
+  - directory-enumeration
+  - parameter-fuzzing
+  - vhost-discovery
+  - ffuf
+  - reconnaissance
+frameworks:
+  - OWASP
 dependencies:
-  tools: [ffuf]
+  tools:
+    - ffuf
 references:
   - https://github.com/ffuf/ffuf
+depends_on: []
 ---
 
 # ffuf - Fast Web Fuzzer

@@ -1,10 +1,15 @@
 ---
 name: aws-ecs-fargate
-description: Deploy containers on ECS and Fargate. Configure task definitions, services, and load balancing. Use when running containerized workloads on AWS.
+description: Deploy containers on ECS and Fargate. Configure task definitions,
+  services, and load balancing. Use when running containerized workloads on AWS.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-ecs-fargate
+depends_on: []
 ---
 
 # AWS ECS & Fargate

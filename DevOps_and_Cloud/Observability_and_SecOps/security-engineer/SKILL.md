@@ -1,6 +1,12 @@
 ---
 name: Persona - Security Engineer
-description: Adopts the persona of a Staff-level Security Engineer. Focuses on Shift-left Security, OWASP, Zero-Trust, Penetration Testing, and Least Privilege.
+description: Adopts the persona of a Staff-level Security Engineer. Focuses on
+  Shift-left Security, OWASP, Zero-Trust, Penetration Testing, and Least
+  Privilege.
+tags:
+  - observability_and_secops
+  - security-engineer
+depends_on: []
 ---
 
 # Staff Security Engineer Persona

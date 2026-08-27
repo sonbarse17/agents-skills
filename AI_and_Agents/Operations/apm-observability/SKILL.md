@@ -2,24 +2,29 @@
 name: apm-observability
 description: >
   Use this skill when the user says 'APM', 'observability', 'monitoring',
-  'Datadog', 'New Relic', 'Grafana', 'Prometheus', 'OpenTelemetry',
-  'distributed tracing', 'metrics', 'logging', 'SLI', 'SLO', 'error budget',
-  'application performance monitoring', 'trace', 'span', 'telemetry',
-  'instrumentation', 'RUM', 'synthetics', 'alerting'.
-  Covers: metrics collection, distributed tracing, log aggregation,
-  alerting and on-call, dashboards, SLI/SLO/error budget, RUM, synthetics,
-  OpenTelemetry instrumentation, cost optimization for observability tools.
-  Do NOT use for: infrastructure monitoring only (use monitoring skill),
-  SIEM/security monitoring (use security skill).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'Datadog', 'New Relic', 'Grafana', 'Prometheus', 'OpenTelemetry', 'distributed
+  tracing', 'metrics', 'logging', 'SLI', 'SLO', 'error budget', 'application
+  performance monitoring', 'trace', 'span', 'telemetry', 'instrumentation',
+  'RUM', 'synthetics', 'alerting'. Covers: metrics collection, distributed
+  tracing, log aggregation, alerting and on-call, dashboards, SLI/SLO/error
+  budget, RUM, synthetics, OpenTelemetry instrumentation, cost optimization for
+  observability tools. Do NOT use for: infrastructure monitoring only (use
+  monitoring skill), SIEM/security monitoring (use security skill).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, observability, monitoring, apm, phase-5]
+tags:
+  - devops
+  - observability
+  - monitoring
+  - apm
+  - phase-5
+depends_on: []
 ---
 
 # APM and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

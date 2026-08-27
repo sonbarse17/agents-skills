@@ -1,10 +1,16 @@
 ---
 name: helm
-description: Package and deploy Kubernetes applications with Helm charts and releases. Use when tasks mention helm, Helm charts, helm install, helm upgrade, Helm repositories, values.yaml, or Helm releases.
+description: Package and deploy Kubernetes applications with Helm charts and
+  releases. Use when tasks mention helm, Helm charts, helm install, helm
+  upgrade, Helm repositories, values.yaml, or Helm releases.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - helm
+depends_on: []
 ---
 
 # helm

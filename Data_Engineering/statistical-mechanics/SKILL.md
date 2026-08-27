@@ -1,6 +1,12 @@
 ---
 name: Fundamental Truth - Statistical Mechanics & Diffusion
-description: The thermodynamic and statistical mechanical basis of generative intelligence. Langevin dynamics, SDEs, and the physics of the forward/reverse noise processes.
+description: The thermodynamic and statistical mechanical basis of generative
+  intelligence. Langevin dynamics, SDEs, and the physics of the forward/reverse
+  noise processes.
+tags:
+  - data_engineering
+  - statistical-mechanics
+depends_on: []
 ---
 
 # Statistical Mechanics & Diffusion: Thermodynamics of Generative Synthesis

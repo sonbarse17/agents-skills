@@ -1,11 +1,17 @@
 ---
 name: azure-communication-callingserver-java
-description: Azure Communication Services CallingServer (legacy) Java SDK. Note - This SDK is deprecated. Use azure-communication-callautomation instead for new projects. Only use this skill when maintaining legacy code.
+description: Azure Communication Services CallingServer (legacy) Java SDK. Note
+  - This SDK is deprecated. Use azure-communication-callautomation instead for
+  new projects. Only use this skill when maintaining legacy code.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: com.azure:azure-communication-callingserver
+tags:
+  - cloud_providers
+  - azure-communication-callingserver-java
+depends_on: []
 ---
 
 # Azure Communication CallingServer (Java) - DEPRECATED

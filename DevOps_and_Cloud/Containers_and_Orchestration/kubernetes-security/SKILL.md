@@ -1,7 +1,18 @@
 ---
 name: kubernetes-security
-description: Hardens the cluster and its workloads — RBAC least-privilege, Pod Security Standards, admission control with OPA/Kyverno, securityContext, secrets at rest, image provenance, and disabling default service-account automount. Use this whenever the user asks about RBAC roles, hardening pod security, writing an admission policy, or reducing what a compromised pod can do. For network isolation use `kubernetes-networking` and `multi-tenancy`; for image contents use `image-scanning`; for secret backends use `secrets-management`.
+description: Hardens the cluster and its workloads — RBAC least-privilege, Pod
+  Security Standards, admission control with OPA/Kyverno, securityContext,
+  secrets at rest, image provenance, and disabling default service-account
+  automount. Use this whenever the user asks about RBAC roles, hardening pod
+  security, writing an admission policy, or reducing what a compromised pod can
+  do. For network isolation use `kubernetes-networking` and `multi-tenancy`; for
+  image contents use `image-scanning`; for secret backends use
+  `secrets-management`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - kubernetes-security
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Security

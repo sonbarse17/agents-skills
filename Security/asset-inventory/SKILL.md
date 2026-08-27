@@ -1,10 +1,15 @@
 ---
 name: asset-inventory
-description: Maintain IT asset inventory and configuration management database. Track hardware, software, and cloud resources. Use when managing IT assets.
+description: Maintain IT asset inventory and configuration management database.
+  Track hardware, software, and cloud resources. Use when managing IT assets.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - asset-inventory
+depends_on: []
 ---
 
 # Asset Inventory

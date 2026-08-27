@@ -1,6 +1,15 @@
 ---
 name: recsys-pipeline-architect
-description: Design composable recommendation, ranking, and feed pipelines using the six-stage Source→Hydrator→Filter→Scorer→Selector→SideEffect framework popularized by xAI's open-sourced X For You algorithm. Use when building any system that picks "the top K items for a (user, context)" — content feeds, search ranking, RAG rerankers, task prioritizers, notification triage, ad selection.
+description: Design composable recommendation, ranking, and feed pipelines using
+  the six-stage Source→Hydrator→Filter→Scorer→Selector→SideEffect framework
+  popularized by xAI's open-sourced X For You algorithm. Use when building any
+  system that picks "the top K items for a (user, context)" — content feeds,
+  search ranking, RAG rerankers, task prioritizers, notification triage, ad
+  selection.
+tags:
+  - operations
+  - recsys-pipeline-architect
+depends_on: []
 ---
 
 # Recsys Pipeline Architect

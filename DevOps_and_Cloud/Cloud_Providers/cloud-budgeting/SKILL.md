@@ -1,7 +1,19 @@
 ---
 name: cloud-budgeting
-description: Forecasts cloud spend from trend and known upcoming changes, sets budgets and alerts that fire before an overrun becomes a surprise invoice, catches anomalies early, and turns raw spend into unit economics and showback/chargeback that leadership can act on. Use this whenever the user asks for a spend forecast, wants a budget alert or anomaly detector, is building a showback or chargeback report, or asks what a feature or customer costs to run. For cutting the spend a budget flags as too high use `cost-optimization`, and for the tags budgets are sliced by use `resource-tagging`.
+description: Forecasts cloud spend from trend and known upcoming changes, sets
+  budgets and alerts that fire before an overrun becomes a surprise invoice,
+  catches anomalies early, and turns raw spend into unit economics and
+  showback/chargeback that leadership can act on. Use this whenever the user
+  asks for a spend forecast, wants a budget alert or anomaly detector, is
+  building a showback or chargeback report, or asks what a feature or customer
+  costs to run. For cutting the spend a budget flags as too high use
+  `cost-optimization`, and for the tags budgets are sliced by use
+  `resource-tagging`.
 license: MIT
+tags:
+  - cloud_providers
+  - cloud-budgeting
+depends_on: []
 ---
 
 # Cloud Budgeting

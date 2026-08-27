@@ -1,11 +1,10 @@
 ---
 name: cloud-cost-optimization
-description: >
-  Deeply enhances cloud cost optimization
-  Spot Instance lifecycle management
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+description: |
+  Deeply enhances cloud cost optimization Spot Instance lifecycle management
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
@@ -15,6 +14,7 @@ compatibility:
 tags:
   - cloud
   - aws
+depends_on: []
 ---
 
 # Cloud Cost Optimization

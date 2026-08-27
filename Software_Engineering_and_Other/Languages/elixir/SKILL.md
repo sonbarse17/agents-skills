@@ -1,18 +1,24 @@
 ---
 name: elixir
 description: >
-  Use this skill when the user asks about Elixir build tools, Mix, OTP,
-  Phoenix, Ecto, supervision trees, concurrency, testing, or production
-  deployment. Focus on BEAM/Erlang VM, tooling, and ecosystem — not syntax.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about Elixir build tools, Mix, OTP, Phoenix,
+  Ecto, supervision trees, concurrency, testing, or production deployment. Focus
+  on BEAM/Erlang VM, tooling, and ecosystem — not syntax.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [elixir, language, build, beam, phoenix]
+tags:
+  - elixir
+  - language
+  - build
+  - beam
+  - phoenix
+depends_on: []
 ---
 
 # Elixir

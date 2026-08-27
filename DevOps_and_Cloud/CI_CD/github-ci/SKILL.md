@@ -1,10 +1,17 @@
 ---
 name: github-ci
-description: Write and maintain GitHub Actions CI workflows, including workflow YAML structure, triggers, runners, matrix builds, caching, testing patterns, and secrets management. Use when working with .github/workflows, GitHub Actions, CI pipelines, workflow dispatch, or action configuration.
+description: Write and maintain GitHub Actions CI workflows, including workflow
+  YAML structure, triggers, runners, matrix builds, caching, testing patterns,
+  and secrets management. Use when working with .github/workflows, GitHub
+  Actions, CI pipelines, workflow dispatch, or action configuration.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - ci_cd
+  - github-ci
+depends_on: []
 ---
 
 # [GitHub](../github/SKILL.md) CI

@@ -1,10 +1,15 @@
 ---
 name: block-storage
-description: Manage block storage volumes and LVM. Configure cloud block storage and local disks. Use when managing disk storage.
+description: Manage block storage volumes and LVM. Configure cloud block storage
+  and local disks. Use when managing disk storage.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - block-storage
+depends_on: []
 ---
 
 # Block Storage

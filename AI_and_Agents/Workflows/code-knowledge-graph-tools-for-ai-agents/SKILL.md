@@ -2,18 +2,22 @@
 name: code-knowledge-graph-tools-for-ai-agents
 description: >
   Compares GitNexus, Graphify, and CodeGraph — tools that precompute a
-  structural knowledge graph of a codebase and expose it to AI coding agents
-  via MCP, replacing repeated grep/file-read exploration with direct
-  impact-radius, call-chain, and dependency queries. Use when a user asks to
-  "give my coding agent a code graph," "reduce how many tool calls/tokens my
-  agent burns exploring the repo," "set up GitNexus/Graphify/CodeGraph,"
-  "find an MCP tool for codebase structure," or is choosing between these
-  three tools based on license, language coverage, or query model.
+  structural knowledge graph of a codebase and expose it to AI coding agents via
+  MCP, replacing repeated grep/file-read exploration with direct impact-radius,
+  call-chain, and dependency queries. Use when a user asks to "give my coding
+  agent a code graph," "reduce how many tool calls/tokens my agent burns
+  exploring the repo," "set up GitNexus/Graphify/CodeGraph," "find an MCP tool
+  for codebase structure," or is choosing between these three tools based on
+  license, language coverage, or query model.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - code-knowledge-graph-tools-for-ai-agents
+depends_on: []
 ---
 
 # Code Knowledge Graph Tools for AI Agents

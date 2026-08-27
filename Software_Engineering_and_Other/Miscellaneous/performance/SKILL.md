@@ -1,6 +1,10 @@
 ---
 name: Web Performance
 description: Optimization strategies for Core Web Vitals (LCP, FID/INP, CLS).
+tags:
+  - miscellaneous
+  - performance
+depends_on: []
 ---
 
 # Web Performance

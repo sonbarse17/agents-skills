@@ -1,6 +1,12 @@
 ---
 name: python-packaging
-description: Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.
+description: Create distributable Python packages with proper project structure,
+  setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python
+  libraries, creating CLI tools, or distributing Python code.
+tags:
+  - languages
+  - python-packaging
+depends_on: []
 ---
 
 # [Python](../python/SKILL.md) Packaging

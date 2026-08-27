@@ -1,22 +1,26 @@
 ---
 name: kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api
 description: >
-  Guides bootstrapping self-managed/bare-metal Kubernetes clusters with
-  kubeadm — `kubeadm init`/`kubeadm join`, stacked vs. external etcd,
-  control-plane HA behind a load balancer/VIP — and managing cluster
-  lifecycle declaratively and provider-agnostically with Cluster API
-  (CAPI): `Cluster`, `KubeadmControlPlane`, and `MachineDeployment`
-  objects reconciled by `clusterctl`-installed controllers. Use when a
-  user asks to "bootstrap a Kubernetes cluster with kubeadm," "set up an
-  HA control plane with kubeadm," "join a node to a kubeadm cluster,"
-  "upgrade a kubeadm cluster," "manage clusters declaratively with
-  Cluster API," "write a CAPI Cluster/KubeadmControlPlane manifest," or
-  "provision bare-metal Kubernetes without a managed control plane."
+  Guides bootstrapping self-managed/bare-metal Kubernetes clusters with kubeadm
+  — `kubeadm init`/`kubeadm join`, stacked vs. external etcd, control-plane HA
+  behind a load balancer/VIP — and managing cluster lifecycle declaratively and
+  provider-agnostically with Cluster API (CAPI): `Cluster`,
+  `KubeadmControlPlane`, and `MachineDeployment` objects reconciled by
+  `clusterctl`-installed controllers. Use when a user asks to "bootstrap a
+  Kubernetes cluster with kubeadm," "set up an HA control plane with kubeadm,"
+  "join a node to a kubeadm cluster," "upgrade a kubeadm cluster," "manage
+  clusters declaratively with Cluster API," "write a CAPI
+  Cluster/KubeadmControlPlane manifest," or "provision bare-metal Kubernetes
+  without a managed control plane."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Cluster Provisioning with kubeadm and Cluster API

@@ -1,16 +1,24 @@
 ---
 name: dev-loop-pr-writer
 description: >
-  Use when the user asks about writing pull requests, PR descriptions, PR templates, effective code reviews, or pull request best practices. Do NOT use for: code review content (dev-loop-code-review), or git workflow branching (dev-loop-git-workflow).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about writing pull requests, PR descriptions, PR
+  templates, effective code reviews, or pull request best practices. Do NOT use
+  for: code review content (dev-loop-code-review), or git workflow branching
+  (dev-loop-git-workflow).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, pr-writer, pull-request, code-review]
+tags:
+  - dev-loop
+  - pr-writer
+  - pull-request
+  - code-review
+depends_on: []
 ---
 
 # PR Writer

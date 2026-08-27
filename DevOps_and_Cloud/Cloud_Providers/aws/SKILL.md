@@ -2,23 +2,28 @@
 name: aws
 description: >
   Use this skill when the user says 'AWS', 'EC2', 'S3', 'RDS', 'Lambda', 'VPC',
-  'IAM', 'Well-Architected', 'cost optimization', 'CloudFormation',
-  'Terraform AWS', 'EKS', 'ECS', 'ELB', 'Route53', 'CloudFront', 'WAF',
-  'Auto Scaling', 'Security Group', 'NACL', 'AWS CLI', 'AWS SDK',
-  'boto3', 'aws-vault', 'SSM', 'Secrets Manager', 'KMS', 'CloudWatch'.
-  Covers: compute selection (EC2 vs Lambda vs ECS vs EKS), IAM policies,
-  networking patterns, Well-Architected Framework, cost optimization,
-  security best practices, multi-account strategy.
+  'IAM', 'Well-Architected', 'cost optimization', 'CloudFormation', 'Terraform
+  AWS', 'EKS', 'ECS', 'ELB', 'Route53', 'CloudFront', 'WAF', 'Auto Scaling',
+  'Security Group', 'NACL', 'AWS CLI', 'AWS SDK', 'boto3', 'aws-vault', 'SSM',
+  'Secrets Manager', 'KMS', 'CloudWatch'. Covers: compute selection (EC2 vs
+  Lambda vs ECS vs EKS), IAM policies, networking patterns, Well-Architected
+  Framework, cost optimization, security best practices, multi-account strategy.
   Do NOT use for: GCP, Azure, Alibaba Cloud.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, aws, cloud, infrastructure, phase-5]
+tags:
+  - devops
+  - aws
+  - cloud
+  - infrastructure
+  - phase-5
+depends_on: []
 ---
 
 # AWS

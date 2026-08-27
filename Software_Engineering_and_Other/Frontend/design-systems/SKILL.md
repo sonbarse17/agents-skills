@@ -1,6 +1,10 @@
 ---
 name: design-systems
 description: Expertise in UI Component consistency and Figma to Code workflows.
+tags:
+  - frontend
+  - design-systems
+depends_on: []
 ---
 
 # Design Systems

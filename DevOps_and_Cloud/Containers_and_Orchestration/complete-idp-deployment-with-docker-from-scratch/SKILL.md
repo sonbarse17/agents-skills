@@ -2,25 +2,28 @@
 name: complete-idp-deployment-with-docker-from-scratch
 description: >
   Sequences a small-scale, Docker Compose-based developer platform starting
-  point for teams not running Kubernetes at all: a Compose-based service
-  catalog (self-hosted Backstage or a hosted no-code tool) → Compose-based
-  golden-path templates → Dapr sidecars in self-hosted/standalone mode for
-  cross-service building blocks (state, pub/sub, service invocation) →
-  a deliberately minimal self-service and scorecard layer. Framed
-  honestly throughout as a starting point, not a full Internal Developer
-  Platform — the skill states explicitly what's missing (multi-tenancy
-  isolation, autoscaling, automated provisioning, self-healing) compared
-  to the Kubernetes-based variants and when to graduate to one of them.
-  Use when a user asks to "build a lightweight developer platform without
-  Kubernetes," "set up a service catalog with Docker Compose," "add Dapr
-  building blocks to a Compose-based stack," "avoid a full IDP until we
-  actually need one," or "know what we're giving up by not using
-  Kubernetes yet."
+  point for teams not running Kubernetes at all: a Compose-based service catalog
+  (self-hosted Backstage or a hosted no-code tool) → Compose-based golden-path
+  templates → Dapr sidecars in self-hosted/standalone mode for cross-service
+  building blocks (state, pub/sub, service invocation) → a deliberately minimal
+  self-service and scorecard layer. Framed honestly throughout as a starting
+  point, not a full Internal Developer Platform — the skill states explicitly
+  what's missing (multi-tenancy isolation, autoscaling, automated provisioning,
+  self-healing) compared to the Kubernetes-based variants and when to graduate
+  to one of them. Use when a user asks to "build a lightweight developer
+  platform without Kubernetes," "set up a service catalog with Docker Compose,"
+  "add Dapr building blocks to a Compose-based stack," "avoid a full IDP until
+  we actually need one," or "know what we're giving up by not using Kubernetes
+  yet."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-idp-deployment-with-docker-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment with [Docker](../docker/SKILL.md) from Scratch

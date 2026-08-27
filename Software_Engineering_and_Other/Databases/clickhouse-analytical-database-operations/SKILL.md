@@ -1,20 +1,23 @@
 ---
 name: clickhouse-analytical-database-operations
 description: >
-  Covers operating ClickHouse, the leading open-source OLAP columnar
-  database: MergeTree engine family selection (MergeTree,
-  ReplacingMergeTree, AggregatingMergeTree, SummingMergeTree), sharding
-  and replication topology via ReplicatedMergeTree and Distributed
-  tables, and materialized views for streaming aggregation. Use when the
-  user asks to "set up a ClickHouse cluster," "pick a MergeTree engine,"
-  "why are my ClickHouse queries slow," "shard and replicate ClickHouse
-  tables," "deduplicate rows in ClickHouse," or "build a ClickHouse
-  materialized view for rollups."
+  Covers operating ClickHouse, the leading open-source OLAP columnar database:
+  MergeTree engine family selection (MergeTree, ReplacingMergeTree,
+  AggregatingMergeTree, SummingMergeTree), sharding and replication topology via
+  ReplicatedMergeTree and Distributed tables, and materialized views for
+  streaming aggregation. Use when the user asks to "set up a ClickHouse
+  cluster," "pick a MergeTree engine," "why are my ClickHouse queries slow,"
+  "shard and replicate ClickHouse tables," "deduplicate rows in ClickHouse," or
+  "build a ClickHouse materialized view for rollups."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - clickhouse-analytical-database-operations
+depends_on: []
 ---
 
 # ClickHouse Analytical Database Operations

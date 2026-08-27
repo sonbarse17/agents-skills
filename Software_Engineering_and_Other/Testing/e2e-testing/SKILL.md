@@ -1,16 +1,24 @@
 ---
 name: quality-e2e-testing
 description: >
-  Use this skill when setting up E2E testing, end-to-end tests, Playwright, Cypress, browser tests, user flow tests, or integration tests. This skill enforces: framework selection (Playwright preferred), page object model, test isolation, parallel execution, CI integration, and visual assertions. Do NOT use for: unit testing, API-only tests, or performance/load testing.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when setting up E2E testing, end-to-end tests, Playwright,
+  Cypress, browser tests, user flow tests, or integration tests. This skill
+  enforces: framework selection (Playwright preferred), page object model, test
+  isolation, parallel execution, CI integration, and visual assertions. Do NOT
+  use for: unit testing, API-only tests, or performance/load testing.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, testing, phase-10]
+tags:
+  - quality
+  - testing
+  - phase-10
+depends_on: []
 ---
 
 # Quality E2E Testing

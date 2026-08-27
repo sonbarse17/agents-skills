@@ -1,10 +1,15 @@
 ---
 name: ssh-configuration
-description: Configure SSH servers and clients securely. Manage keys, tunnels, and config files. Use when setting up secure remote access.
+description: Configure SSH servers and clients securely. Manage keys, tunnels,
+  and config files. Use when setting up secure remote access.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - ssh-configuration
+depends_on: []
 ---
 
 # SSH Configuration

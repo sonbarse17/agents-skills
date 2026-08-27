@@ -1,20 +1,23 @@
 ---
 name: kong-configuration-validation
 description: >
-  Validates Kong's declarative configuration (`kong.yml`) and
-  Kubernetes CRDs (`KongPlugin`, `KongIngress`, `KongConsumer`) before
-  they reach production — schema-checking with `deck validate`,
-  diffing against the live gateway state with `deck diff`, and
-  confirming a route/plugin actually behaves as intended rather than
-  just parsing. Use when a user asks to "validate kong.yml before
-  deploying," "check what a deck sync will actually change," "why
-  isn't my Kong plugin taking effect," "lint Kong config in CI," or
-  "test a rate-limiting or auth plugin before it goes live."
+  Validates Kong's declarative configuration (`kong.yml`) and Kubernetes CRDs
+  (`KongPlugin`, `KongIngress`, `KongConsumer`) before they reach production —
+  schema-checking with `deck validate`, diffing against the live gateway state
+  with `deck diff`, and confirming a route/plugin actually behaves as intended
+  rather than just parsing. Use when a user asks to "validate kong.yml before
+  deploying," "check what a deck sync will actually change," "why isn't my Kong
+  plugin taking effect," "lint Kong config in CI," or "test a rate-limiting or
+  auth plugin before it goes live."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kong-configuration-validation
+depends_on: []
 ---
 
 # Kong Configuration Validation

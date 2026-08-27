@@ -1,18 +1,24 @@
 ---
 name: management-team-topology
 description: >
-  Use this skill when designing team structures: team topology, Conway's Law, cognitive load, stream-aligned teams, enabling teams, platform teams.
-  This skill enforces: team type classification, cognitive load assessment, interaction mode selection, org design patterns.
-  Do NOT use for: individual performance management, hiring process, sprint planning, agile coaching.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing team structures: team topology, Conway's Law,
+  cognitive load, stream-aligned teams, enabling teams, platform teams. This
+  skill enforces: team type classification, cognitive load assessment,
+  interaction mode selection, org design patterns. Do NOT use for: individual
+  performance management, hiring process, sprint planning, agile coaching.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, team-topology, phase-10]
+tags:
+  - management
+  - team-topology
+  - phase-10
+depends_on: []
 ---
 
 # Team Topology Agent

@@ -1,10 +1,17 @@
 ---
 name: container-scanning
-description: Scan container images for vulnerabilities using Trivy, Grype, and cloud-native tools. Identify security issues in base images, packages, and configurations. Use when implementing container security, building secure images, or meeting compliance requirements.
+description: Scan container images for vulnerabilities using Trivy, Grype, and
+  cloud-native tools. Identify security issues in base images, packages, and
+  configurations. Use when implementing container security, building secure
+  images, or meeting compliance requirements.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - container-scanning
+depends_on: []
 ---
 
 # Container Scanning

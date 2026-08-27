@@ -1,10 +1,16 @@
 ---
 name: gpu-server-management
-description: Set up and manage NVIDIA GPU servers for AI workloads — driver installation, CUDA toolkit, container toolkit, MIG partitioning, GPU health monitoring, and multi-GPU configuration for LLM inference and training.
+description: Set up and manage NVIDIA GPU servers for AI workloads — driver
+  installation, CUDA toolkit, container toolkit, MIG partitioning, GPU health
+  monitoring, and multi-GPU configuration for LLM inference and training.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - gpu-server-management
+depends_on: []
 ---
 
 # GPU Server Management

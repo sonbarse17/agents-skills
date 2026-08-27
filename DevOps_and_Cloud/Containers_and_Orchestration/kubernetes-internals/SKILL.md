@@ -1,6 +1,11 @@
 ---
 name: kubernetes-internals
-description: The Kubernetes Control Plane under the hood, etcd consensus (Raft), kube-apiserver event loops, kubelet operation, and CNI fundamentals.
+description: The Kubernetes Control Plane under the hood, etcd consensus (Raft),
+  kube-apiserver event loops, kubelet operation, and CNI fundamentals.
+tags:
+  - containers_and_orchestration
+  - kubernetes-internals
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Control Plane Internals

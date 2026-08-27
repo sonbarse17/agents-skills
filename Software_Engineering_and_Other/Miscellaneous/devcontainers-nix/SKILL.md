@@ -1,10 +1,17 @@
 ---
 name: devcontainers-nix
-description: Create reproducible development environments with Dev Containers, Nix flakes, and Devbox for consistent toolchains across teams. Use when onboarding developers, standardizing build environments, or eliminating "works on my machine" problems.
+description: Create reproducible development environments with Dev Containers,
+  Nix flakes, and Devbox for consistent toolchains across teams. Use when
+  onboarding developers, standardizing build environments, or eliminating "works
+  on my machine" problems.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - devcontainers-nix
+depends_on: []
 ---
 
 # Dev Containers & Nix Environments

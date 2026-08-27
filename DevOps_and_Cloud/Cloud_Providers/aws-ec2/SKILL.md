@@ -1,10 +1,16 @@
 ---
 name: aws-ec2
-description: Manage EC2 instances, AMIs, and auto-scaling groups. Configure security groups, key pairs, and instance types. Use when deploying compute resources on AWS.
+description: Manage EC2 instances, AMIs, and auto-scaling groups. Configure
+  security groups, key pairs, and instance types. Use when deploying compute
+  resources on AWS.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-ec2
+depends_on: []
 ---
 
 # AWS EC2

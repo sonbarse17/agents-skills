@@ -1,6 +1,10 @@
 ---
 name: SLI/SLO Management
 description: Error budget policies and mathematical modeling of SLIs.
+tags:
+  - observability_and_secops
+  - sli-slo-management
+depends_on: []
 ---
 # SLI/SLO Management: Under the Hood
 

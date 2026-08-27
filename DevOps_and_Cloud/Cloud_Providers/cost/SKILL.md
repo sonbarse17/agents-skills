@@ -1,10 +1,20 @@
 ---
 name: cost
-description: Identify cloud cost optimization opportunities as a senior FinOps/cloud engineer across compute, storage, networking, and managed services, then produce a prioritized, evidence-based findings table and self-contained remediation plans that cut waste without hurting reliability. Strictly read-only — never resizes, deletes, or modifies resources. Use when asked to reduce cloud spend, find waste, right-size infrastructure, or review cost efficiency of IaC or a live account.
+description: Identify cloud cost optimization opportunities as a senior
+  FinOps/cloud engineer across compute, storage, networking, and managed
+  services, then produce a prioritized, evidence-based findings table and
+  self-contained remediation plans that cut waste without hurting reliability.
+  Strictly read-only — never resizes, deletes, or modifies resources. Use when
+  asked to reduce cloud spend, find waste, right-size infrastructure, or review
+  cost efficiency of IaC or a live account.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - cloud_providers
+  - cost
+depends_on: []
 ---
 
 # Cost Review

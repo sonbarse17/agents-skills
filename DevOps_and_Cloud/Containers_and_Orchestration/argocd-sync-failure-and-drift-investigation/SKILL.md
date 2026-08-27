@@ -2,20 +2,23 @@
 name: argocd-sync-failure-and-drift-investigation
 description: >
   Troubleshoots Argo CD `Application`s that are stuck or failing —
-  `OutOfSync`/`Progressing`/`Degraded` states, `PreSync`/`Sync`/`PostSync`
-  hook Jobs that fail or hang, resource-level diffs that are hard to read,
-  and distinguishing drift caused by an out-of-band `kubectl edit`/`kubectl
-  patch` from genuine configuration drift between Git and the live
-  cluster. Use when the user asks to "debug why an Argo CD app is
-  OutOfSync," "figure out what's actually different between Git and the
-  cluster," "a sync hook is failing/stuck," "someone kubectl edited a
-  resource Argo CD manages," or "an Application says Synced but the
-  cluster doesn't match Git."
+  `OutOfSync`/`Progressing`/`Degraded` states, `PreSync`/`Sync`/`PostSync` hook
+  Jobs that fail or hang, resource-level diffs that are hard to read, and
+  distinguishing drift caused by an out-of-band `kubectl edit`/`kubectl patch`
+  from genuine configuration drift between Git and the live cluster. Use when
+  the user asks to "debug why an Argo CD app is OutOfSync," "figure out what's
+  actually different between Git and the cluster," "a sync hook is
+  failing/stuck," "someone kubectl edited a resource Argo CD manages," or "an
+  Application says Synced but the cluster doesn't match Git."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argocd-sync-failure-and-drift-investigation
+depends_on: []
 ---
 
 # Argo CD Sync Failure and Drift Investigation

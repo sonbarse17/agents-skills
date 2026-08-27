@@ -1,18 +1,29 @@
 ---
 name: data-data-platform
 description: >
-  Use this skill when designing end-to-end data platforms: data lake architecture, data lakehouse architecture, distributed storage (S3, ADLS, GCS), distributed compute (Spark, Trino, Presto), data catalog (Datahub, Amundsen, Marquez), data mesh, data versioning (LakeFS, DVC), data virtualization (Dremio, Starburst).
-  This skill enforces: platform architecture selection, storage/compute separation, catalog implementation, data mesh boundaries, version control for data.
-  Do NOT use for: individual ETL pipelines (use etl-pipeline), streaming infrastructure (use streaming), BI tools (use bi-tools), data warehouse modeling (use data-warehouse).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing end-to-end data platforms: data lake
+  architecture, data lakehouse architecture, distributed storage (S3, ADLS,
+  GCS), distributed compute (Spark, Trino, Presto), data catalog (Datahub,
+  Amundsen, Marquez), data mesh, data versioning (LakeFS, DVC), data
+  virtualization (Dremio, Starburst). This skill enforces: platform architecture
+  selection, storage/compute separation, catalog implementation, data mesh
+  boundaries, version control for data. Do NOT use for: individual ETL pipelines
+  (use etl-pipeline), streaming infrastructure (use streaming), BI tools (use
+  bi-tools), data warehouse modeling (use data-warehouse).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, platform, architecture, phase-11]
+tags:
+  - data
+  - platform
+  - architecture
+  - phase-11
+depends_on: []
 ---
 
 # Data Platform Agent

@@ -1,6 +1,10 @@
 ---
 name: high-scale-ecommerce
 description: Playbook for building a High-Scale E-Commerce platform.
+tags:
+  - frontend
+  - high-scale-ecommerce
+depends_on: []
 ---
 
 # High-Scale E-Commerce Playbook

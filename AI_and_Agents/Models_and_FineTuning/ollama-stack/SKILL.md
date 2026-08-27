@@ -1,10 +1,16 @@
 ---
 name: ollama-stack
-description: Run local LLM workloads with Ollama, Open WebUI, and GPU-aware tuning for private development environments. Use when setting up private inference, local AI dev environments, or air-gapped LLM deployments.
+description: Run local LLM workloads with Ollama, Open WebUI, and GPU-aware
+  tuning for private development environments. Use when setting up private
+  inference, local AI dev environments, or air-gapped LLM deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - ollama-stack
+depends_on: []
 ---
 
 # Ollama Stack

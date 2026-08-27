@@ -1,3 +1,12 @@
+---
+name: vite
+description: Comprehensive guidelines and best practices for vite. Use this
+  skill when working with related components.
+tags:
+  - miscellaneous
+  - vite
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

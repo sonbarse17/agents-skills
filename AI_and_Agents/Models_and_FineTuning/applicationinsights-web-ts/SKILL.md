@@ -1,11 +1,22 @@
 ---
 name: applicationinsights-web-ts
-description: Instrument browser/web apps with the Application Insights JavaScript SDK (@microsoft/applicationinsights-web). Use for Real User Monitoring (RUM) — page views, clicks, AJAX/fetch dependencies, exceptions, custom events, and browser-side GenAI agent traces correlated to backend OpenTelemetry traces. Covers SDK Loader Script and npm setup, framework extensions (React, React Native, Angular), Click Analytics, telemetry initializers, and OTel GenAI semantic conventions for agent/tool/model spans emitted from the browser.
+description: Instrument browser/web apps with the Application Insights
+  JavaScript SDK (@microsoft/applicationinsights-web). Use for Real User
+  Monitoring (RUM) — page views, clicks, AJAX/fetch dependencies, exceptions,
+  custom events, and browser-side GenAI agent traces correlated to backend
+  OpenTelemetry traces. Covers SDK Loader Script and npm setup, framework
+  extensions (React, React Native, Angular), Click Analytics, telemetry
+  initializers, and OTel GenAI semantic conventions for agent/tool/model spans
+  emitted from the browser.
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: "@microsoft/applicationinsights-web"
+tags:
+  - models_and_finetuning
+  - applicationinsights-web-ts
+depends_on: []
 ---
 
 # Application Insights JavaScript SDK (Web) for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)

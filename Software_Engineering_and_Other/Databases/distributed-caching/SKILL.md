@@ -1,3 +1,12 @@
+---
+name: distributed-caching
+description: Comprehensive guidelines and best practices for
+  distributed-caching. Use this skill when working with related components.
+tags:
+  - databases
+  - distributed-caching
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

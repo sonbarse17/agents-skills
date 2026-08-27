@@ -1,16 +1,25 @@
 ---
 name: nodejs-express-skill
 description: >
-  Use this skill when building Express.js apps — app setup, middleware chain, routing, error handling, validation. This skill enforces: proper middleware ordering, global error handler, Zod/Joi validation, module-based routing, environment config. Do NOT use for: database schema design, frontend, DevOps, non-Express Node backends (Fastify/Hono).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Express.js apps — app setup, middleware chain,
+  routing, error handling, validation. This skill enforces: proper middleware
+  ordering, global error handler, Zod/Joi validation, module-based routing,
+  environment config. Do NOT use for: database schema design, frontend, DevOps,
+  non-Express Node backends (Fastify/Hono).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, nodejs, express, phase-10]
+tags:
+  - backend
+  - nodejs
+  - express
+  - phase-10
+depends_on: []
 ---
 
 # Node.js Express

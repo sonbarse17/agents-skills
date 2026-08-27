@@ -1,10 +1,17 @@
 ---
 name: git-workflow
-description: Implement Git branching strategies, PR workflows, and release management patterns. Configure GitFlow, trunk-based development, or GitHub Flow for team collaboration. Use when establishing version control workflows or improving development team collaboration.
+description: Implement Git branching strategies, PR workflows, and release
+  management patterns. Configure GitFlow, trunk-based development, or GitHub
+  Flow for team collaboration. Use when establishing version control workflows
+  or improving development team collaboration.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - git-workflow
+depends_on: []
 ---
 
 # Git Workflow

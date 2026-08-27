@@ -1,10 +1,16 @@
 ---
 name: vllm-server
-description: Deploy and manage vLLM for high-throughput LLM inference. Configure continuous batching, tensor parallelism, quantization, and OpenAI-compatible API endpoints for production LLM serving.
+description: Deploy and manage vLLM for high-throughput LLM inference. Configure
+  continuous batching, tensor parallelism, quantization, and OpenAI-compatible
+  API endpoints for production LLM serving.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - vllm-server
+depends_on: []
 ---
 
 # vLLM Server Management

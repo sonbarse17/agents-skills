@@ -1,6 +1,13 @@
 ---
 name: grpo-rlvr-training
-description: Train reasoning and verifiable-task behavior with GRPO and reinforcement learning from verifiable rewards (RLVR). Use when task success is algorithmically checkable (math, code, tool calls, structured output), when designing GRPO reward functions, or when a GRPO run diverges or reward-hacks.
+description: Train reasoning and verifiable-task behavior with GRPO and
+  reinforcement learning from verifiable rewards (RLVR). Use when task success
+  is algorithmically checkable (math, code, tool calls, structured output), when
+  designing GRPO reward functions, or when a GRPO run diverges or reward-hacks.
+tags:
+  - models_and_finetuning
+  - grpo-rlvr-training
+depends_on: []
 ---
 
 # GRPO & RLVR Training

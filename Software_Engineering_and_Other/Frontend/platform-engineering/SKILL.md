@@ -1,10 +1,16 @@
 ---
 name: platform-engineering
-description: Build internal developer platforms (IDPs) with self-service infrastructure, golden paths, and developer portals using Backstage, Crossplane, and score.
+description: Build internal developer platforms (IDPs) with self-service
+  infrastructure, golden paths, and developer portals using Backstage,
+  Crossplane, and score.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - frontend
+  - platform-engineering
+depends_on: []
 ---
 
 # Platform Engineering

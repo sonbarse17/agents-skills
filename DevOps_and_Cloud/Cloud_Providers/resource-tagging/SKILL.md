@@ -1,7 +1,18 @@
 ---
 name: resource-tagging
-description: Builds a tag taxonomy for cost, ownership, and automation, enforces it at provision time so it never depends on discipline after the fact, and uses it to drive cost allocation, showback, and the hunt for untagged waste. Use this whenever the user is designing tag keys or naming conventions, asking who owns a resource or why a bill can't be attributed to a team, setting up cost allocation, or finding resources that escaped a tagging policy. For turning tags into dollar decisions use `cost-optimization`, and for the budgets tags feed into use `cloud-budgeting`.
+description: Builds a tag taxonomy for cost, ownership, and automation, enforces
+  it at provision time so it never depends on discipline after the fact, and
+  uses it to drive cost allocation, showback, and the hunt for untagged waste.
+  Use this whenever the user is designing tag keys or naming conventions, asking
+  who owns a resource or why a bill can't be attributed to a team, setting up
+  cost allocation, or finding resources that escaped a tagging policy. For
+  turning tags into dollar decisions use `cost-optimization`, and for the
+  budgets tags feed into use `cloud-budgeting`.
 license: MIT
+tags:
+  - cloud_providers
+  - resource-tagging
+depends_on: []
 ---
 
 # Resource Tagging

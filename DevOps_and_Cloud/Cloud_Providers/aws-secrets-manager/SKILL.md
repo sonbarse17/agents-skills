@@ -1,10 +1,17 @@
 ---
 name: aws-secrets-manager
-description: Store and rotate secrets in AWS Secrets Manager. Configure automatic rotation, access policies, and application integration. Use when managing secrets in AWS environments or requiring automatic credential rotation.
+description: Store and rotate secrets in AWS Secrets Manager. Configure
+  automatic rotation, access policies, and application integration. Use when
+  managing secrets in AWS environments or requiring automatic credential
+  rotation.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-secrets-manager
+depends_on: []
 ---
 
 # AWS Secrets Manager

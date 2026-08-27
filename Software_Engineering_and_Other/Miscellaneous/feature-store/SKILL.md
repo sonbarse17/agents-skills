@@ -1,18 +1,27 @@
 ---
 name: ml-feature-store
 description: >
-  Use this skill when designing feature stores: Feast, Tecton, online features, offline features, point-in-time join, feature serving, feature registry, feature transformation, feature validation.
-  This skill enforces: feature repository structure, point-in-time correctness, online/offline serving separation, feature validation with freshness checks, feature registry with documentation.
-  Do NOT use for: model training pipeline, embedding storage, vector database configuration.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing feature stores: Feast, Tecton, online features,
+  offline features, point-in-time join, feature serving, feature registry,
+  feature transformation, feature validation. This skill enforces: feature
+  repository structure, point-in-time correctness, online/offline serving
+  separation, feature validation with freshness checks, feature registry with
+  documentation. Do NOT use for: model training pipeline, embedding storage,
+  vector database configuration.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, features, mlops, phase-11]
+tags:
+  - ml
+  - features
+  - mlops
+  - phase-11
+depends_on: []
 ---
 
 # Feature Store Agent

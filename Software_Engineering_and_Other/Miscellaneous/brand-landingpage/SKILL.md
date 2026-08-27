@@ -8,6 +8,10 @@ description: >
   established visual direction. Skip when they have a design mockup, need a
   dashboard or app UI, are working at component level, building a multi-page
   app, or restyling with known design tokens — use frontend-design instead.
+tags:
+  - miscellaneous
+  - brand-landingpage
+depends_on: []
 ---
 
 # Brand Landing Page Designer

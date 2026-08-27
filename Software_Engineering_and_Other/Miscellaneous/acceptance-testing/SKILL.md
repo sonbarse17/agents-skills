@@ -1,16 +1,24 @@
 ---
 name: quality-acceptance-testing
 description: >
-  Use when the user asks about user acceptance testing (UAT), alpha/beta testing, business scenario testing, acceptance criteria, Gherkin, specification by example, or sign-off processes. Do NOT use for: unit testing (quality-unit-testing), integration testing (quality-integration-testing), or regression testing (quality-regression-testing).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about user acceptance testing (UAT), alpha/beta
+  testing, business scenario testing, acceptance criteria, Gherkin,
+  specification by example, or sign-off processes. Do NOT use for: unit testing
+  (quality-unit-testing), integration testing (quality-integration-testing), or
+  regression testing (quality-regression-testing).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, acceptance-testing, phase-6]
+tags:
+  - quality
+  - acceptance-testing
+  - phase-6
+depends_on: []
 ---
 
 # Acceptance Testing

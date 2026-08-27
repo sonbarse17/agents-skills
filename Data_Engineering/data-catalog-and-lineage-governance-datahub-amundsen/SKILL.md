@@ -1,20 +1,23 @@
 ---
 name: data-catalog-and-lineage-governance-datahub-amundsen
 description: >
-  Guides deploying and operating enterprise data catalog and governance
-  tooling — DataHub or Amundsen — for discovering, tagging, classifying,
-  and owning datasets, features, and models across an organization,
-  including deprecation workflows that must check downstream consumers
-  before deletion. Use when the user asks to "set up a data catalog", "make
-  datasets/models searchable and discoverable", "tag PII/sensitive data",
-  assign data ownership, install or configure DataHub or Amundsen, write an
-  ingestion recipe, or safely deprecate/delete an old dataset or model
-  artifact without breaking a consumer.
+  Guides deploying and operating enterprise data catalog and governance tooling
+  — DataHub or Amundsen — for discovering, tagging, classifying, and owning
+  datasets, features, and models across an organization, including deprecation
+  workflows that must check downstream consumers before deletion. Use when the
+  user asks to "set up a data catalog", "make datasets/models searchable and
+  discoverable", "tag PII/sensitive data", assign data ownership, install or
+  configure DataHub or Amundsen, write an ingestion recipe, or safely
+  deprecate/delete an old dataset or model artifact without breaking a consumer.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - data-catalog-and-lineage-governance-datahub-amundsen
+depends_on: []
 ---
 
 # Data Catalog And Lineage Governance (DataHub / Amundsen)

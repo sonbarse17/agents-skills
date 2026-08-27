@@ -1,10 +1,17 @@
 ---
 name: gitlab-ci
-description: Configure GitLab CI/CD pipelines and runners for automated building, testing, and deployment. Create .gitlab-ci.yml configurations, manage runners, and implement DevOps workflows. Use when working with GitLab repositories or self-hosted GitLab instances.
+description: Configure GitLab CI/CD pipelines and runners for automated
+  building, testing, and deployment. Create .gitlab-ci.yml configurations,
+  manage runners, and implement DevOps workflows. Use when working with GitLab
+  repositories or self-hosted GitLab instances.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - gitlab-ci
+depends_on: []
 ---
 
 # GitLab CI/CD

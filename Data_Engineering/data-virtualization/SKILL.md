@@ -1,16 +1,28 @@
 ---
 name: data-data-virtualization
 description: >
-  Use this skill when asked about data virtualization, Trino, Presto, Starburst, Dremio, query federation, federated query, cross-source join, pushdown, connector, or data lake query engine. This skill enforces: Trino/Presto architecture (coordinator/worker), connector patterns for query federation, query pushdown optimization, cross-source join strategies, Starburst enterprise features, Dremio reflections for acceleration, and performance tuning. Do NOT use for: ETL pipeline development, data warehouse schema design, or OLTP database query optimization.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data virtualization, Trino, Presto, Starburst,
+  Dremio, query federation, federated query, cross-source join, pushdown,
+  connector, or data lake query engine. This skill enforces: Trino/Presto
+  architecture (coordinator/worker), connector patterns for query federation,
+  query pushdown optimization, cross-source join strategies, Starburst
+  enterprise features, Dremio reflections for acceleration, and performance
+  tuning. Do NOT use for: ETL pipeline development, data warehouse schema
+  design, or OLTP database query optimization.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, virtualization, query, phase-11]
+tags:
+  - data
+  - virtualization
+  - query
+  - phase-11
+depends_on: []
 ---
 
 # Data Data Virtualization

@@ -1,3 +1,12 @@
+---
+name: langchain-patterns
+description: Comprehensive guidelines and best practices for langchain-patterns.
+  Use this skill when working with related components.
+tags:
+  - workflows
+  - langchain-patterns
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

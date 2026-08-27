@@ -1,18 +1,21 @@
 ---
 name: azure-functions-configuration
 description: >
-  Configures Azure Functions hosting plans (Consumption, Premium,
-  Dedicated/App Service), triggers and bindings, and host.json/
-  application settings, with explicit cold-start tradeoffs between plans.
-  Use when the user asks to "choose an Azure Functions hosting plan," "set
-  up a Function App trigger or binding," "reduce Azure Functions cold
-  start," "configure Premium plan pre-warmed instances," or "write
-  host.json for a Function App."
+  Configures Azure Functions hosting plans (Consumption, Premium, Dedicated/App
+  Service), triggers and bindings, and host.json/ application settings, with
+  explicit cold-start tradeoffs between plans. Use when the user asks to "choose
+  an Azure Functions hosting plan," "set up a Function App trigger or binding,"
+  "reduce Azure Functions cold start," "configure Premium plan pre-warmed
+  instances," or "write host.json for a Function App."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - cloud_providers
+  - azure-functions-configuration
+depends_on: []
 ---
 
 # Azure Functions Configuration

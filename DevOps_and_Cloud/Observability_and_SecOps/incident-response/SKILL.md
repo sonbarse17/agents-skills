@@ -1,7 +1,19 @@
 ---
 name: incident-response
-description: Runs a live incident from first alert to resolution — assigning clear roles, mitigating before diagnosing, setting severity, and communicating in a structured cadence so a system under stress does not also become a communication failure. Use this whenever the user says production is down, an alert just fired, customers are affected, they need an incident commander, or they ask how to run or structure an active incident. For the after-the-fact writeup use `root-cause-analysis`, for the step-by-step fix procedures use `runbooks`, and for the on-call rotation that catches the page use `on-call-management`.
+description: Runs a live incident from first alert to resolution — assigning
+  clear roles, mitigating before diagnosing, setting severity, and communicating
+  in a structured cadence so a system under stress does not also become a
+  communication failure. Use this whenever the user says production is down, an
+  alert just fired, customers are affected, they need an incident commander, or
+  they ask how to run or structure an active incident. For the after-the-fact
+  writeup use `root-cause-analysis`, for the step-by-step fix procedures use
+  `runbooks`, and for the on-call rotation that catches the page use
+  `on-call-management`.
 license: MIT
+tags:
+  - observability_and_secops
+  - incident-response
+depends_on: []
 ---
 
 # [Incident](../incident/SKILL.md) Response

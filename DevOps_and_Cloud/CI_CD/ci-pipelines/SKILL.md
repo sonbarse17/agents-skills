@@ -1,7 +1,18 @@
 ---
 name: ci-pipelines
-description: Designs continuous integration pipelines that give a fast, honest merge signal — stage ordering, reproducibility, safe caching, and required checks that actually gate merges. Use this whenever the user is writing or debugging a CI workflow (GitHub Actions, GitLab CI, Jenkins), complaining that CI is slow or flaky, adding a required status check, or asking how to structure test stages. For what happens after merge use `continuous-delivery`; for making the underlying build itself faster use `build-optimization`; for securing the pipeline's runners and permissions use `pipeline-security`.
+description: Designs continuous integration pipelines that give a fast, honest
+  merge signal — stage ordering, reproducibility, safe caching, and required
+  checks that actually gate merges. Use this whenever the user is writing or
+  debugging a CI workflow (GitHub Actions, GitLab CI, Jenkins), complaining that
+  CI is slow or flaky, adding a required status check, or asking how to
+  structure test stages. For what happens after merge use `continuous-delivery`;
+  for making the underlying build itself faster use `build-optimization`; for
+  securing the pipeline's runners and permissions use `pipeline-security`.
 license: MIT
+tags:
+  - ci_cd
+  - ci-pipelines
+depends_on: []
 ---
 
 # CI Pipelines

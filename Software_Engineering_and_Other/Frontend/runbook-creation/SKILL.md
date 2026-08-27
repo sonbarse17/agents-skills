@@ -1,10 +1,16 @@
 ---
 name: runbook-creation
-description: Create operational runbooks and standard operating procedures. Document troubleshooting guides and recovery procedures. Use when documenting operational knowledge.
+description: Create operational runbooks and standard operating procedures.
+  Document troubleshooting guides and recovery procedures. Use when documenting
+  operational knowledge.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - frontend
+  - runbook-creation
+depends_on: []
 ---
 
 # [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Creation

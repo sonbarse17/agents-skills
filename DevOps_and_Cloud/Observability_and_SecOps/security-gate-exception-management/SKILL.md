@@ -1,22 +1,25 @@
 ---
 name: security-gate-exception-management
 description: >
-  Guides granting a scoped, time-boxed exception to a specific security
-  gate (a suppressed SAST/SCA finding, a bypassed admission policy, a
-  waived compliance control) with a mandatory owner, justification, and
-  expiry date, and reviewing/renewing or closing exceptions before a
-  waiver list grows into an unbounded shadow policy. Use when the user
-  asks to "grant an exception to a security gate", "waive this finding
-  for now", "how do we approve a temporary policy exception", "our
-  exception list has hundreds of entries and half are expired", or
-  "design an exception approval workflow". Distinct from disabling a
-  gate entirely, which this skill explicitly treats as a separate,
-  much riskier action requiring its own scrutiny.
+  Guides granting a scoped, time-boxed exception to a specific security gate (a
+  suppressed SAST/SCA finding, a bypassed admission policy, a waived compliance
+  control) with a mandatory owner, justification, and expiry date, and
+  reviewing/renewing or closing exceptions before a waiver list grows into an
+  unbounded shadow policy. Use when the user asks to "grant an exception to a
+  security gate", "waive this finding for now", "how do we approve a temporary
+  policy exception", "our exception list has hundreds of entries and half are
+  expired", or "design an exception approval workflow". Distinct from disabling
+  a gate entirely, which this skill explicitly treats as a separate, much
+  riskier action requiring its own scrutiny.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - observability_and_secops
+  - security-gate-exception-management
+depends_on: []
 ---
 
 # Security Gate Exception Management

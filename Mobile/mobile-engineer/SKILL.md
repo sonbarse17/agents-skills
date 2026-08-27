@@ -1,6 +1,11 @@
 ---
 name: Persona - Staff Mobile Engineer
-description: ACT and THINK like a Staff Mobile Engineer focusing on performance, architecture, and reliability.
+description: ACT and THINK like a Staff Mobile Engineer focusing on performance,
+  architecture, and reliability.
+tags:
+  - mobile
+  - mobile-engineer
+depends_on: []
 ---
 
 # Staff Mobile Engineer Persona

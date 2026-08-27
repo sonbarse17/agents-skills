@@ -1,18 +1,21 @@
 ---
 name: cni-networking-calico-flannel
 description: >
-  Guides choosing and installing a Kubernetes CNI plugin — Calico vs.
-  Flannel — including NetworkPolicy enforcement capability differences,
-  BGP vs. VXLAN/overlay data paths, and IP address management (IPAM)
-  tradeoffs. Use when a user asks to "choose a CNI plugin for
-  Kubernetes," "enable NetworkPolicy enforcement," "set up Calico with
-  BGP peering," "install Flannel," "debug pod-to-pod connectivity
-  across nodes," or "migrate from Flannel to Calico."
+  Guides choosing and installing a Kubernetes CNI plugin — Calico vs. Flannel —
+  including NetworkPolicy enforcement capability differences, BGP vs.
+  VXLAN/overlay data paths, and IP address management (IPAM) tradeoffs. Use when
+  a user asks to "choose a CNI plugin for Kubernetes," "enable NetworkPolicy
+  enforcement," "set up Calico with BGP peering," "install Flannel," "debug
+  pod-to-pod connectivity across nodes," or "migrate from Flannel to Calico."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - cni-networking-calico-flannel
+depends_on: []
 ---
 
 # CNI Networking: Calico vs. Flannel

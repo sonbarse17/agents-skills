@@ -1,16 +1,24 @@
 ---
 name: quality-smoke-testing
 description: >
-  Use when the user asks about smoke testing, build verification testing (BVT), deployment health checks, canary testing, sanity testing, or CI/CD pipeline health checks. Do NOT use for: full regression testing (quality-regression-testing), acceptance testing (quality-acceptance-testing), or end-to-end testing (quality-e2e-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about smoke testing, build verification testing (BVT),
+  deployment health checks, canary testing, sanity testing, or CI/CD pipeline
+  health checks. Do NOT use for: full regression testing
+  (quality-regression-testing), acceptance testing (quality-acceptance-testing),
+  or end-to-end testing (quality-e2e-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, smoke-testing, phase-6]
+tags:
+  - quality
+  - smoke-testing
+  - phase-6
+depends_on: []
 ---
 
 # Smoke Testing

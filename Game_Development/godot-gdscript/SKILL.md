@@ -1,6 +1,10 @@
 ---
 name: godot-gdscript
 description: Godot Engine Architecture
+tags:
+  - game_development
+  - godot-gdscript
+depends_on: []
 ---
 # [Godot](../godot/SKILL.md) Engine internal Architecture
 

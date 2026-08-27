@@ -3,16 +3,20 @@ name: sonatype-nexus-repository-configuration
 description: >
   Configures Sonatype Nexus Repository Manager's hosted, proxy, and group
   repository types, cleanup/retention policies, blob store sizing, and
-  per-format setup for npm, Maven, and Docker registries. Use when a user
-  asks to "set up Nexus," "configure a Nexus proxy repository," "create a
-  Nexus group repository," "clean up old artifacts in Nexus," "size a Nexus
-  blob store," "configure the Docker registry in Nexus," or is comparing
-  Nexus against Artifactory for a private registry.
+  per-format setup for npm, Maven, and Docker registries. Use when a user asks
+  to "set up Nexus," "configure a Nexus proxy repository," "create a Nexus group
+  repository," "clean up old artifacts in Nexus," "size a Nexus blob store,"
+  "configure the Docker registry in Nexus," or is comparing Nexus against
+  Artifactory for a private registry.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - miscellaneous
+  - sonatype-nexus-repository-configuration
+depends_on: []
 ---
 
 # Sonatype Nexus Repository Configuration

@@ -1,10 +1,16 @@
 ---
 name: ai-coding-agent-guardrails
-description: Secure AI coding agents (Claude Code, Cursor, Codex, Copilot) with permission boundaries, secret protection, code review gates, and safe sandbox configurations for team environments.
+description: Secure AI coding agents (Claude Code, Cursor, Codex, Copilot) with
+  permission boundaries, secret protection, code review gates, and safe sandbox
+  configurations for team environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - ai-coding-agent-guardrails
+depends_on: []
 ---
 
 # AI Coding Agent Guardrails

@@ -5,20 +5,25 @@ description: >
   operator pattern, Kubebuilder, Operator SDK, custom resource definitions
   (CRD), reconciliation loops, or extending Kubernetes with custom resources.
   Covers: Kubebuilder project structure, controller-runtime patterns,
-  finalizers, status subresource, webhooks, multi-version CRDs, operator
-  testing with envtest, operator deployment with OLM, and operator design
-  patterns.
-  Do NOT use for: basic Kubernetes usage (kubernetes-patterns), Helm charts
+  finalizers, status subresource, webhooks, multi-version CRDs, operator testing
+  with envtest, operator deployment with OLM, and operator design patterns. Do
+  NOT use for: basic Kubernetes usage (kubernetes-patterns), Helm charts
   (helm-patterns), or general Kubernetes management.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, kubernetes-operators, kubebuilder, controller-runtime, phase-3]
+tags:
+  - devops
+  - kubernetes-operators
+  - kubebuilder
+  - controller-runtime
+  - phase-3
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Operators

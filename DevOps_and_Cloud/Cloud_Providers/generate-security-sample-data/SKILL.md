@@ -1,16 +1,21 @@
 ---
 name: security-generate-security-sample-data
 description: >
-  Generate sample security events, attack scenarios, and synthetic alerts for Elastic
-  Security. Use when demoing, populating dashboards, testing detection rules, or setting
-  up a POC.
+  Generate sample security events, attack scenarios, and synthetic alerts for
+  Elastic Security. Use when demoing, populating dashboards, testing detection
+  rules, or setting up a POC.
 compatibility: >
-  Requires Node.js 22+, network access to Kibana and Elasticsearch. Environment variables:
-  KIBANA_URL plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD; ELASTICSEARCH_URL
-  or ELASTICSEARCH_CLOUD_ID plus ELASTICSEARCH_API_KEY or ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
+  Requires Node.js 22+, network access to Kibana and Elasticsearch. Environment
+  variables: KIBANA_URL plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD;
+  ELASTICSEARCH_URL or ELASTICSEARCH_CLOUD_ID plus ELASTICSEARCH_API_KEY or
+  ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - cloud_providers
+  - generate-security-sample-data
+depends_on: []
 ---
 
 # Generate Security Sample Data

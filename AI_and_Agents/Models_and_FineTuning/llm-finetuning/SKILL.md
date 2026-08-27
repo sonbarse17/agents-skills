@@ -1,6 +1,10 @@
 ---
 name: llm-finetuning
 description: Best practices for dataset preparation and PEFT/LoRA fine-tuning.
+tags:
+  - models_and_finetuning
+  - llm-finetuning
+depends_on: []
 ---
 
 # LLM Fine-Tuning (PEFT/LoRA)

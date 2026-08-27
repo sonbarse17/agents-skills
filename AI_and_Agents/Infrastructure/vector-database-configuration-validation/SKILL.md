@@ -1,20 +1,23 @@
 ---
 name: vector-database-configuration-validation
 description: >
-  Validates a vector index's schema/dimension/distance-metric config and
-  its actual recall/query-performance behavior before a production
-  cutover — catching a mismatch that returns wrong-but-plausible results
-  or degraded recall instead of an error. Use when a user asks to
-  "validate my vector index config before we go live," "will this
-  embedding dimension/metric mismatch break retrieval," "test recall
-  before cutting over to the new index," "check this Pinecone/Weaviate/
-  Milvus schema for mistakes," or reports retrieval quality that
-  silently dropped after a re-index or embedding-model change.
+  Validates a vector index's schema/dimension/distance-metric config and its
+  actual recall/query-performance behavior before a production cutover —
+  catching a mismatch that returns wrong-but-plausible results or degraded
+  recall instead of an error. Use when a user asks to "validate my vector index
+  config before we go live," "will this embedding dimension/metric mismatch
+  break retrieval," "test recall before cutting over to the new index," "check
+  this Pinecone/Weaviate/ Milvus schema for mistakes," or reports retrieval
+  quality that silently dropped after a re-index or embedding-model change.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - infrastructure
+  - vector-database-configuration-validation
+depends_on: []
 ---
 
 # Vector Database Configuration Validation

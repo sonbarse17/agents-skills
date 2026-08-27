@@ -1,3 +1,12 @@
+---
+name: model-quantization
+description: Comprehensive guidelines and best practices for model-quantization.
+  Use this skill when working with related components.
+tags:
+  - models_and_finetuning
+  - model-quantization
+depends_on: []
+---
 # Model Quantization Mechanics: Precision Reduction and Weight Formatting
 
 ## 1. Mathematical Mechanics of Quantization (FP16 to INT4)

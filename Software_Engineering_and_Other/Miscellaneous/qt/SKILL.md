@@ -1,16 +1,22 @@
 ---
 name: desktop-qt
 description: >
-  Use when the user asks about cross-platform Qt application development with QtWidgets, QtQuick/QML, Qt Creator, signals and slots, or Qt deployment. Do NOT use for: KDE-specific (desktop-kde), or non-Qt desktop frameworks.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about cross-platform Qt application development with
+  QtWidgets, QtQuick/QML, Qt Creator, signals and slots, or Qt deployment. Do
+  NOT use for: KDE-specific (desktop-kde), or non-Qt desktop frameworks.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, qt, cross-platform]
+tags:
+  - desktop
+  - qt
+  - cross-platform
+depends_on: []
 ---
 
 # Qt

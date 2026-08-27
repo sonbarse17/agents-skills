@@ -1,10 +1,19 @@
 ---
 name: docker-review
-description: Review Dockerfiles, container images, and Compose files as a senior container engineer, then produce a prioritized, evidence-based findings table and self-contained remediation plans covering image size, build speed, security, and correctness. Strictly read-only — inspects and scans only, never builds-and-pushes or edits. Use when asked to review Dockerfiles, container build setups, image layering, or container security and best practices.
+description: Review Dockerfiles, container images, and Compose files as a senior
+  container engineer, then produce a prioritized, evidence-based findings table
+  and self-contained remediation plans covering image size, build speed,
+  security, and correctness. Strictly read-only — inspects and scans only, never
+  builds-and-pushes or edits. Use when asked to review Dockerfiles, container
+  build setups, image layering, or container security and best practices.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - containers_and_orchestration
+  - docker-review
+depends_on: []
 ---
 
 # [Docker](../docker/SKILL.md) Review

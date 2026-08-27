@@ -1,6 +1,12 @@
 ---
 name: pptx-quality-gates
-description: "Use when validating or repairing an editable PPTX deck for geometry, accessibility, native editability, source lineage, and OOXML package integrity."
+description: Use when validating or repairing an editable PPTX deck for
+  geometry, accessibility, native editability, source lineage, and OOXML package
+  integrity.
+tags:
+  - skills
+  - pptx-quality-gates
+depends_on: []
 ---
 
 # PPTX Quality Gates

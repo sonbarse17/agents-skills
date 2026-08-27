@@ -1,10 +1,15 @@
 ---
 name: systemd-services
-description: Create and manage systemd services and timers. Configure service dependencies and resource limits. Use when managing system services.
+description: Create and manage systemd services and timers. Configure service
+  dependencies and resource limits. Use when managing system services.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - systemd-services
+depends_on: []
 ---
 
 # Systemd Services

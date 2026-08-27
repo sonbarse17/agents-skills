@@ -1,11 +1,26 @@
 ---
 name: blockchain-web3
 description: >
-  Use this skill when asked about web3 frontend development, ethers.js, viem, wagmi, web3.js, wallet integration (MetaMask, Phantom, WalletConnect), dApp architecture, RPC providers (Alchemy, Infura), and TypeScript blockchain SDKs. Language: TypeScript. Covers reading blockchain state, sending transactions, wallet connection flows, contract interaction patterns, event subscription, gas estimation, multicall patterns, and account abstraction (ERC-4337). Do NOT use for: smart contract development (use blockchain-application), core protocol (use blockchain-core), or blockchain testing (use blockchain-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, web3, typescript, dapp, wallet, phase-blockchain]
+  Use this skill when asked about web3 frontend development, ethers.js, viem,
+  wagmi, web3.js, wallet integration (MetaMask, Phantom, WalletConnect), dApp
+  architecture, RPC providers (Alchemy, Infura), and TypeScript blockchain SDKs.
+  Language: TypeScript. Covers reading blockchain state, sending transactions,
+  wallet connection flows, contract interaction patterns, event subscription,
+  gas estimation, multicall patterns, and account abstraction (ERC-4337). Do NOT
+  use for: smart contract development (use blockchain-application), core
+  protocol (use blockchain-core), or blockchain testing (use
+  blockchain-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - web3
+  - typescript
+  - dapp
+  - wallet
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Web3

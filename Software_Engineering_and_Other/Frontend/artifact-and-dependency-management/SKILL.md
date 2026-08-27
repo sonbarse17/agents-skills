@@ -3,16 +3,19 @@ name: artifact-and-dependency-management
 description: >
   Manages build artifacts and third-party dependencies through a private
   registry/proxy with lockfiles, version pinning, retention policies, and
-  automated update workflows. Use when the user asks to "set up an
-  artifact repository," "configure a package registry proxy/mirror,"
-  "pin/lock dependency versions," "clean up old artifacts," "handle a
-  dependency update / Dependabot-Renovate PR," or "avoid a left-pad-style
-  supply-chain incident."
+  automated update workflows. Use when the user asks to "set up an artifact
+  repository," "configure a package registry proxy/mirror," "pin/lock dependency
+  versions," "clean up old artifacts," "handle a dependency update /
+  Dependabot-Renovate PR," or "avoid a left-pad-style supply-chain incident."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - frontend
+  - artifact-and-dependency-management
+depends_on: []
 ---
 
 # Artifact and Dependency Management

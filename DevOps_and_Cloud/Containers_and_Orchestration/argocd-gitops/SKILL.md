@@ -1,10 +1,17 @@
 ---
 name: argocd-gitops
-description: Implement GitOps with ArgoCD for declarative Kubernetes deployments. Configure applications, manage sync policies, implement progressive delivery, and automate deployments from Git repositories. Use when implementing GitOps workflows or continuous deployment to Kubernetes.
+description: Implement GitOps with ArgoCD for declarative Kubernetes
+  deployments. Configure applications, manage sync policies, implement
+  progressive delivery, and automate deployments from Git repositories. Use when
+  implementing GitOps workflows or continuous deployment to Kubernetes.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - argocd-gitops
+depends_on: []
 ---
 
 # [ArgoCD](../argocd/SKILL.md) [GitOps](../gitops/SKILL.md)

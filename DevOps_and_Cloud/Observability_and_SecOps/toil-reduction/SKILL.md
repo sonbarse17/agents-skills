@@ -1,7 +1,18 @@
 ---
 name: toil-reduction
-description: Covers finding and eliminating operational toil — measuring it honestly instead of by gut feel, automating the manual and repetitive, protecting a real automation budget against feature pressure, and telling toil apart from valuable work that just looks repetitive. Use this whenever the user asks what to automate next, complains on-call is all manual tickets, wants to justify time spent on tooling over features, or is deciding whether a recurring task is worth eliminating. For the automation that replaces toil once found use `workflow-automation` or `scripting-automation`.
+description: Covers finding and eliminating operational toil — measuring it
+  honestly instead of by gut feel, automating the manual and repetitive,
+  protecting a real automation budget against feature pressure, and telling toil
+  apart from valuable work that just looks repetitive. Use this whenever the
+  user asks what to automate next, complains on-call is all manual tickets,
+  wants to justify time spent on tooling over features, or is deciding whether a
+  recurring task is worth eliminating. For the automation that replaces toil
+  once found use `workflow-automation` or `scripting-automation`.
 license: MIT
+tags:
+  - observability_and_secops
+  - toil-reduction
+depends_on: []
 ---
 
 # Toil Reduction

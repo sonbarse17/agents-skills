@@ -1,18 +1,22 @@
 ---
 name: team-rules
 description: >
-  Use this skill when the user asks about team rules, collaboration, code review,
-  branch strategy, PR templates, git flow, RFC process, incident response, on-call,
-  or decision making.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about team rules, collaboration, code
+  review, branch strategy, PR templates, git flow, RFC process, incident
+  response, on-call, or decision making.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, team, phase-8]
+tags:
+  - management
+  - team
+  - phase-8
+depends_on: []
 ---
 
 # Team Rules

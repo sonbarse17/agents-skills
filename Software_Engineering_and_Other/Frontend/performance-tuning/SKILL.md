@@ -1,7 +1,18 @@
 ---
 name: performance-tuning
-description: Guides systematic performance work — measuring before changing, finding the actual bottleneck with the USE method (Utilization, Saturation, Errors), optimizing the real hot path, and verifying the fix moved the number that matters. Use this whenever the user asks why something is slow, wants to make a service faster, or is about to tune JVM flags or database indexes without data. For finding the hot path itself use `profiling`, for generating load to test under use `load-testing`, and for designs where the bottleneck moves out use `scalability-design`.
+description: Guides systematic performance work — measuring before changing,
+  finding the actual bottleneck with the USE method (Utilization, Saturation,
+  Errors), optimizing the real hot path, and verifying the fix moved the number
+  that matters. Use this whenever the user asks why something is slow, wants to
+  make a service faster, or is about to tune JVM flags or database indexes
+  without data. For finding the hot path itself use `profiling`, for generating
+  load to test under use `load-testing`, and for designs where the bottleneck
+  moves out use `scalability-design`.
 license: MIT
+tags:
+  - frontend
+  - performance-tuning
+depends_on: []
 ---
 
 # Performance Tuning

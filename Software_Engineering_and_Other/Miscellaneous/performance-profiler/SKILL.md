@@ -1,16 +1,24 @@
 ---
 name: dev-loop-performance-profiler
 description: >
-  Use when the user asks about performance profiling, application performance, profiling tools, performance optimization, bottleneck analysis, or performance testing. Do NOT use for: debugging bugs (dev-loop-debugging-strategy), or code review (dev-loop-code-review).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about performance profiling, application performance,
+  profiling tools, performance optimization, bottleneck analysis, or performance
+  testing. Do NOT use for: debugging bugs (dev-loop-debugging-strategy), or code
+  review (dev-loop-code-review).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, performance, profiling, optimization]
+tags:
+  - dev-loop
+  - performance
+  - profiling
+  - optimization
+depends_on: []
 ---
 
 # Performance Profiler

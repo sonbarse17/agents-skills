@@ -1,10 +1,16 @@
 ---
 name: gdpr-compliance
-description: Implement GDPR data protection requirements. Configure consent management, data subject rights, and privacy by design. Use when processing EU personal data.
+description: Implement GDPR data protection requirements. Configure consent
+  management, data subject rights, and privacy by design. Use when processing EU
+  personal data.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - frontend
+  - gdpr-compliance
+depends_on: []
 ---
 
 # GDPR Compliance

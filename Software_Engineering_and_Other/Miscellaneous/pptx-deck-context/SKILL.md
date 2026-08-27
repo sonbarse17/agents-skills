@@ -1,6 +1,11 @@
 ---
 name: pptx-deck-context
-description: "Use when preparing the narrative, sources, and design context for a new editable PPTX deck."
+description: Use when preparing the narrative, sources, and design context for a
+  new editable PPTX deck.
+tags:
+  - miscellaneous
+  - pptx-deck-context
+depends_on: []
 ---
 
 # PPTX Deck Context

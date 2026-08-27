@@ -1,23 +1,26 @@
 ---
 name: falco-runtime-threat-detection-configuration
 description: >
-  Guides authoring and deploying Falco runtime threat detection rules —
-  the eBPF/kernel-module-based syscall event stream, Falco's rule syntax
-  (condition/output/priority), writing custom rules for a specific
-  workload's known-good behavior, tuning noisy default rules, and
-  wiring alerts to Falcosidekick outputs. Use when the user asks to
-  "write a Falco rule to detect X," "why is Falco alerting on normal
-  behavior," "detect a shell spawned inside a container at runtime,"
-  "set up Falco with eBPF instead of the kernel module," "send Falco
-  alerts to Slack/PagerDuty," or "what's the difference between Falco
-  and admission-control policy engines like OPA/Kyverno." Pairs with
-  falco-configuration-validation for pre-enforcement false-positive
+  Guides authoring and deploying Falco runtime threat detection rules — the
+  eBPF/kernel-module-based syscall event stream, Falco's rule syntax
+  (condition/output/priority), writing custom rules for a specific workload's
+  known-good behavior, tuning noisy default rules, and wiring alerts to
+  Falcosidekick outputs. Use when the user asks to "write a Falco rule to detect
+  X," "why is Falco alerting on normal behavior," "detect a shell spawned inside
+  a container at runtime," "set up Falco with eBPF instead of the kernel
+  module," "send Falco alerts to Slack/PagerDuty," or "what's the difference
+  between Falco and admission-control policy engines like OPA/Kyverno." Pairs
+  with falco-configuration-validation for pre-enforcement false-positive
   testing.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - falco-runtime-threat-detection-configuration
+depends_on: []
 ---
 
 # Falco Runtime Threat Detection Configuration

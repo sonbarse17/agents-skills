@@ -1,12 +1,16 @@
 ---
 name: kibana-vega
 description: >
-  Create Vega and Vega-Lite visualizations with ES|QL data sources in Kibana. Use
-  when building custom charts, dashboards, or programmatic panel layouts beyond standard
-  Lens charts.
+  Create Vega and Vega-Lite visualizations with ES|QL data sources in Kibana.
+  Use when building custom charts, dashboards, or programmatic panel layouts
+  beyond standard Lens charts.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - cloud_providers
+  - kibana-vega
+depends_on: []
 ---
 
 # Kibana Vega

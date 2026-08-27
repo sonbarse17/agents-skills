@@ -1,19 +1,22 @@
 ---
 name: provider-resources
-description: >-
-  Implement Terraform Provider resources and data sources using the Plugin
-  Framework: CRUD operations, schema design, plan modifiers and validators,
-  not-found handling, waiters for eventually consistent APIs, import support,
-  resource design principles, and required acceptance test coverage. Use when
-  adding or changing a resource or data source, deciding whether an API
-  concept should be a resource, wiring a resource to the provider's
-  configured client, handling drift or resource-not-found, or reviewing a
-  resource implementation before submission.
+description: "Implement Terraform Provider resources and data sources using the
+  Plugin Framework: CRUD operations, schema design, plan modifiers and
+  validators, not-found handling, waiters for eventually consistent APIs, import
+  support, resource design principles, and required acceptance test coverage.
+  Use when adding or changing a resource or data source, deciding whether an API
+  concept should be a resource, wiring a resource to the provider's configured
+  client, handling drift or resource-not-found, or reviewing a resource
+  implementation before submission."
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - skills
+  - provider-resources
+depends_on: []
 ---
 
 # Terraform Provider Resources Implementation Guide

@@ -1,18 +1,25 @@
 ---
 name: enterprise-data-governance
 description: >
-  Use this skill when implementing data governance frameworks: classification, cataloging, lineage, quality, and retention.
-  This skill enforces: data classification, schema registry, lineage tracking, quality monitoring.
-  Do NOT use for: database administration, ETL implementation, data pipeline engineering.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing data governance frameworks: classification,
+  cataloging, lineage, quality, and retention. This skill enforces: data
+  classification, schema registry, lineage tracking, quality monitoring. Do NOT
+  use for: database administration, ETL implementation, data pipeline
+  engineering.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, data, governance, phase-8]
+tags:
+  - enterprise
+  - data
+  - governance
+  - phase-8
+depends_on: []
 ---
 
 # Data Governance Agent

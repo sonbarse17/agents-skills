@@ -1,16 +1,26 @@
 ---
 name: backend-structured-logging
 description: >
-  Use this skill when implementing logging frameworks, log formats, or distributed tracing correlation. This skill enforces: JSON lines format, strict log schema with correlation IDs, PII redaction, log level discipline, and stdout-only output. Applies to any backend stack with Winston/Pino/Serilog/Log4j/logrus/zerolog. Do NOT use for: metrics collection, audit trail systems, or application performance monitoring.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing logging frameworks, log formats, or
+  distributed tracing correlation. This skill enforces: JSON lines format,
+  strict log schema with correlation IDs, PII redaction, log level discipline,
+  and stdout-only output. Applies to any backend stack with
+  Winston/Pino/Serilog/Log4j/logrus/zerolog. Do NOT use for: metrics collection,
+  audit trail systems, or application performance monitoring.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, logging, phase-6, universal]
+tags:
+  - backend
+  - logging
+  - phase-6
+  - universal
+depends_on: []
 ---
 
 # Backend Structured Logging

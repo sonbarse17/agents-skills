@@ -1,6 +1,14 @@
 ---
 name: before-you-build
-description: Pre-build product and feature risk review for founders, product managers, and AI-assisted builders. Use this skill when the user is about to build a landing page, MVP, SaaS product, internal tool, agent workflow, or major feature and needs to check demand, positioning, monetization, retention, trust, distribution, and adoption risk before implementation starts.
+description: Pre-build product and feature risk review for founders, product
+  managers, and AI-assisted builders. Use this skill when the user is about to
+  build a landing page, MVP, SaaS product, internal tool, agent workflow, or
+  major feature and needs to check demand, positioning, monetization, retention,
+  trust, distribution, and adoption risk before implementation starts.
+tags:
+  - patterns
+  - before-you-build
+depends_on: []
 ---
 
 # Before You Build

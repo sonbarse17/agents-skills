@@ -1,7 +1,15 @@
 ---
 name: team-composition-analysis
-description: Design optimal team structures, hiring plans, compensation strategies, and equity allocation for early-stage startups from pre-seed through Series A. Use this skill when planning headcount, determining which roles to hire next, setting compensation or equity ranges, designing org structure, or building a hiring budget aligned to funding milestones.
+description: Design optimal team structures, hiring plans, compensation
+  strategies, and equity allocation for early-stage startups from pre-seed
+  through Series A. Use this skill when planning headcount, determining which
+  roles to hire next, setting compensation or equity ranges, designing org
+  structure, or building a hiring budget aligned to funding milestones.
 version: 1.0.0
+tags:
+  - frontend
+  - team-composition-analysis
+depends_on: []
 ---
 
 # Team Composition Analysis

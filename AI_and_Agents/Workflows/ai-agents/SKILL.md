@@ -1,3 +1,12 @@
+---
+name: ai-agents
+description: Comprehensive guidelines and best practices for ai-agents. Use this
+  skill when working with related components.
+tags:
+  - workflows
+  - ai-agents
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

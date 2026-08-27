@@ -1,7 +1,18 @@
 ---
 name: stateful-workloads
-description: Covers running stateful systems — databases, queues, search indexes — on Kubernetes, including StatefulSets and stable identity, durable storage, backup and failover built into the platform rather than bolted on, and the tradeoff between self-managing a stateful service and paying for a managed one. Use this whenever the user deploys a database or queue on Kubernetes, picks a StorageClass, debugs a pod that lost data on restart, or debates self-hosting versus managed. For volume mechanics use `kubernetes-storage`, and for restore discipline use `backup-and-restore`.
+description: Covers running stateful systems — databases, queues, search indexes
+  — on Kubernetes, including StatefulSets and stable identity, durable storage,
+  backup and failover built into the platform rather than bolted on, and the
+  tradeoff between self-managing a stateful service and paying for a managed
+  one. Use this whenever the user deploys a database or queue on Kubernetes,
+  picks a StorageClass, debugs a pod that lost data on restart, or debates
+  self-hosting versus managed. For volume mechanics use `kubernetes-storage`,
+  and for restore discipline use `backup-and-restore`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - stateful-workloads
+depends_on: []
 ---
 
 # Stateful Workloads

@@ -1,11 +1,11 @@
 ---
 name: rbac
 description: >
-  Role-Based Access Control and OIDC integration skill
-  for advanced harness engineering.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Role-Based Access Control and OIDC integration skill for advanced harness
+  engineering.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
@@ -16,6 +16,7 @@ tags:
   - rbac
   - oidc
   - security
+depends_on: []
 ---
 
 # RBAC and OIDC Integration

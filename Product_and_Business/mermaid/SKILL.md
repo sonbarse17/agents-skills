@@ -1,17 +1,20 @@
 ---
 name: mermaid
-description: >-
-  Generate and validate Mermaid.js diagrams from text descriptions. Use when
-  creating flowcharts, sequence diagrams, Gantt charts, class diagrams, state
-  diagrams, ER diagrams, git graphs, user journeys, quadrant charts, XY
+description: Generate and validate Mermaid.js diagrams from text descriptions.
+  Use when creating flowcharts, sequence diagrams, Gantt charts, class diagrams,
+  state diagrams, ER diagrams, git graphs, user journeys, quadrant charts, XY
   charts, pie charts, architecture diagrams, block diagrams, requirement
   diagrams, treemaps, mindmaps, timelines, or Sankey diagrams. Also use when
-  converting structured descriptions into visual diagrams or validating
-  existing Mermaid syntax.
+  converting structured descriptions into visual diagrams or validating existing
+  Mermaid syntax.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - product_and_business
+  - mermaid
+depends_on: []
 ---
 
 # Mermaid.js

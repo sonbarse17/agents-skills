@@ -1,20 +1,24 @@
 ---
 name: complete-devsecops-pipeline-for-kubernetes-from-scratch
 description: >
-  Builds the complete security-gate sequence for a Kubernetes-targeted
-  DevSecOps pipeline from scratch — SAST, SCA, container image scanning,
-  a policy-as-code (OPA/Kyverno) admission gate placed before the GitOps
-  handoff, and a secrets model where plaintext credentials never touch the
-  pipeline because an External Secrets Operator pulls them cluster-side
-  instead. Use when the user asks to "build a DevSecOps pipeline for
-  Kubernetes from scratch," "add a policy gate before our GitOps commit,"
-  "make sure secrets never touch CI for our K8s deploys," or "sequence
-  SAST/SCA/image-scan/policy gates for a container pipeline end-to-end."
+  Builds the complete security-gate sequence for a Kubernetes-targeted DevSecOps
+  pipeline from scratch — SAST, SCA, container image scanning, a policy-as-code
+  (OPA/Kyverno) admission gate placed before the GitOps handoff, and a secrets
+  model where plaintext credentials never touch the pipeline because an External
+  Secrets Operator pulls them cluster-side instead. Use when the user asks to
+  "build a DevSecOps pipeline for Kubernetes from scratch," "add a policy gate
+  before our GitOps commit," "make sure secrets never touch CI for our K8s
+  deploys," or "sequence SAST/SCA/image-scan/policy gates for a container
+  pipeline end-to-end."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-devsecops-pipeline-for-kubernetes-from-scratch
+depends_on: []
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), From Scratch

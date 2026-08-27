@@ -1,25 +1,43 @@
 ---
 name: dast-nuclei
 description: >
-  Fast, template-based vulnerability scanning using ProjectDiscovery's Nuclei with extensive community
-  templates covering CVEs, OWASP Top 10, misconfigurations, and security issues across web applications,
-  APIs, and infrastructure. Use when: (1) Performing rapid vulnerability scanning with automated CVE
-  detection, (2) Testing for known vulnerabilities and security misconfigurations in web apps and APIs,
-  (3) Running template-based security checks in CI/CD pipelines with customizable severity thresholds,
-  (4) Creating custom security templates for organization-specific vulnerability patterns, (5) Scanning
-  multiple targets efficiently with concurrent execution and rate limiting controls.
+  Fast, template-based vulnerability scanning using ProjectDiscovery's Nuclei
+  with extensive community templates covering CVEs, OWASP Top 10,
+  misconfigurations, and security issues across web applications, APIs, and
+  infrastructure. Use when: (1) Performing rapid vulnerability scanning with
+  automated CVE detection, (2) Testing for known vulnerabilities and security
+  misconfigurations in web apps and APIs, (3) Running template-based security
+  checks in CI/CD pipelines with customizable severity thresholds, (4) Creating
+  custom security templates for organization-specific vulnerability patterns,
+  (5) Scanning multiple targets efficiently with concurrent execution and rate
+  limiting controls.
 version: 0.1.0
 maintainer: SirAppSec
 category: appsec
-tags: [dast, nuclei, vulnerability-scanning, cve, owasp, api-testing, automation, templates]
-frameworks: [OWASP, CWE, CVE]
+tags:
+  - dast
+  - nuclei
+  - vulnerability-scanning
+  - cve
+  - owasp
+  - api-testing
+  - automation
+  - templates
+frameworks:
+  - OWASP
+  - CWE
+  - CVE
 dependencies:
-  tools: [nuclei]
-  optional: [docker, git]
+  tools:
+    - nuclei
+  optional:
+    - docker
+    - git
 references:
   - https://docs.projectdiscovery.io/tools/nuclei/overview
   - https://github.com/projectdiscovery/nuclei
   - https://github.com/projectdiscovery/nuclei-templates
+depends_on: []
 ---
 
 # DAST with Nuclei

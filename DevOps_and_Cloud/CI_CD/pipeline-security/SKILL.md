@@ -1,7 +1,18 @@
 ---
 name: pipeline-security
-description: Secures the CI/CD pipeline itself as an attack surface — least-privilege runners, protecting secrets, preventing poisoned-pipeline execution, pinning third-party actions by SHA, and preferring OIDC over long-lived keys. Use this whenever the user configures CI runner permissions, stores secrets for a pipeline, reviews a workflow file for security issues, or sets up cloud credentials for a deploy job. For scanning produced artifacts use `image-scanning`; for the wider software supply chain use `supply-chain-security`.
+description: Secures the CI/CD pipeline itself as an attack surface —
+  least-privilege runners, protecting secrets, preventing poisoned-pipeline
+  execution, pinning third-party actions by SHA, and preferring OIDC over
+  long-lived keys. Use this whenever the user configures CI runner permissions,
+  stores secrets for a pipeline, reviews a workflow file for security issues, or
+  sets up cloud credentials for a deploy job. For scanning produced artifacts
+  use `image-scanning`; for the wider software supply chain use
+  `supply-chain-security`.
 license: MIT
+tags:
+  - ci_cd
+  - pipeline-security
+depends_on: []
 ---
 
 # Pipeline Security

@@ -1,10 +1,16 @@
 ---
 name: azure-vms
-description: Manage Azure Virtual Machines and scale sets. Configure availability sets and managed disks. Use when deploying compute resources on Azure.
+description: Manage Azure Virtual Machines and scale sets. Configure
+  availability sets and managed disks. Use when deploying compute resources on
+  Azure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-vms
+depends_on: []
 ---
 
 # Azure Virtual Machines

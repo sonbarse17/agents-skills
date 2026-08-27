@@ -1,28 +1,30 @@
 ---
 name: hetzner-cloud
 description: >
-  Use this skill when the user says 'hetzner', 'hetzner cloud',
-  'hcloud', 'hetzner dedicated', 'hetzner robot', 'hetzner
-  auction', 'hetzner server', 'hetzner kubernetes', 'hcloud
-  terraform', 'hcloud packer', 'hcloud cli', 'CX', 'CCX',
-  'CAX', 'Hetzner Storage Box', 'Hetzner vSwitch', 'Hetzner
-  Firewall', 'Hetzner Load Balancer', 'Hetzner Floating IP',
-  'Hetzner Placement Group', 'Hetzner ISO'.
-  Covers: Hetzner Cloud resources (servers, networks, firewalls,
-  load balancers, volumes), Hetzner Dedicated (Robot servers),
-  Hetzner Storage Boxes, Kubernetes on Hetzner, cost
-  optimization.
-  Do NOT use for: other cloud providers (AWS, Azure, GCP,
-  Oracle, IBM).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'hetzner', 'hetzner cloud', 'hcloud',
+  'hetzner dedicated', 'hetzner robot', 'hetzner auction', 'hetzner server',
+  'hetzner kubernetes', 'hcloud terraform', 'hcloud packer', 'hcloud cli', 'CX',
+  'CCX', 'CAX', 'Hetzner Storage Box', 'Hetzner vSwitch', 'Hetzner Firewall',
+  'Hetzner Load Balancer', 'Hetzner Floating IP', 'Hetzner Placement Group',
+  'Hetzner ISO'. Covers: Hetzner Cloud resources (servers, networks, firewalls,
+  load balancers, volumes), Hetzner Dedicated (Robot servers), Hetzner Storage
+  Boxes, Kubernetes on Hetzner, cost optimization. Do NOT use for: other cloud
+  providers (AWS, Azure, GCP, Oracle, IBM).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, hetzner, cloud-provider, cost-optimization, phase-4]
+tags:
+  - devops
+  - hetzner
+  - cloud-provider
+  - cost-optimization
+  - phase-4
+depends_on: []
 ---
 
 # Hetzner Cloud & Dedicated

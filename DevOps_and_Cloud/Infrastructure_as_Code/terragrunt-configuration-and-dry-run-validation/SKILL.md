@@ -3,18 +3,22 @@ name: terragrunt-configuration-and-dry-run-validation
 description: >
   Structures Terragrunt configuration (terragrunt.hcl) as a DRY layer over
   Terraform modules across multiple environments/accounts/regions, using
-  `include`, `generate`, and dependency blocks to avoid duplicated backend
-  and provider boilerplate, and validates changes with a plan/dry-run
-  workflow (`terragrunt plan`, `run-all plan`) before any apply touches a
-  shared environment. Use when the user asks to "set up Terragrunt across
-  environments," "avoid duplicating Terraform backend config," "run
-  terragrunt plan across all our modules," "structure a Terragrunt
-  live-config repo," or "dry-run a Terragrunt change before it hits prod."
+  `include`, `generate`, and dependency blocks to avoid duplicated backend and
+  provider boilerplate, and validates changes with a plan/dry-run workflow
+  (`terragrunt plan`, `run-all plan`) before any apply touches a shared
+  environment. Use when the user asks to "set up Terragrunt across
+  environments," "avoid duplicating Terraform backend config," "run terragrunt
+  plan across all our modules," "structure a Terragrunt live-config repo," or
+  "dry-run a Terragrunt change before it hits prod."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - terragrunt-configuration-and-dry-run-validation
+depends_on: []
 ---
 
 # Terragrunt Configuration and Dry-Run Validation

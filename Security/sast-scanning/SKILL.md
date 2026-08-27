@@ -1,10 +1,17 @@
 ---
 name: sast-scanning
-description: Perform static application security testing with tools like Semgrep, CodeQL, and SonarQube. Identify security vulnerabilities in source code before deployment. Use when implementing secure SDLC, code review automation, or security gates in CI/CD pipelines.
+description: Perform static application security testing with tools like
+  Semgrep, CodeQL, and SonarQube. Identify security vulnerabilities in source
+  code before deployment. Use when implementing secure SDLC, code review
+  automation, or security gates in CI/CD pipelines.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - sast-scanning
+depends_on: []
 ---
 
 # SAST Scanning

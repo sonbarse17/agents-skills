@@ -1,31 +1,33 @@
 ---
 name: ibm-cloud
 description: >
-  Use this skill when the user says 'ibm cloud', 'ibm cloud
-  infrastructure', 'ibm cloud services', 'ibm cloud pak',
-  'ibm cloud foundry', 'ibm cloud kubernetes', 'iks', 'ibm
-  cloud satellite', 'ibm cloud schematics', 'ibm cloud terraform',
-  'ibm cloud iam', 'ibm cloud vpc', 'ibm cloud vsi', 'ibm cloud
-  load balancer', 'ibm cloud dns', 'ibm cloud direct link',
-  'ibm cloud cos', 'ibm cloud object storage', 'ibm cloud
-  databases', 'ibm cloud data engines', 'ibm cloud event
-  streams', 'ibm cloud api gateway', 'ibm cloud functions',
-  'ibm cloud code engine', 'ibm cloud monitoring', 'ibm cloud
-  logging', 'ibm cloud activity tracker', 'ibm cloud security
-  groups', 'ibm cloud acl', 'ibm cloud transit gateway',
-  'watson', 'ibm cloud pak for data', 'ibm cloud pak for
-  applications', 'ibm cloud pak for integration'.
-  Covers: IBM Cloud VPC, IKS (Kubernetes), Object Storage, VSI,
-  IAM, networking, terraform provider, Satellite, Schematics.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'ibm cloud', 'ibm cloud infrastructure',
+  'ibm cloud services', 'ibm cloud pak', 'ibm cloud foundry', 'ibm cloud
+  kubernetes', 'iks', 'ibm cloud satellite', 'ibm cloud schematics', 'ibm cloud
+  terraform', 'ibm cloud iam', 'ibm cloud vpc', 'ibm cloud vsi', 'ibm cloud load
+  balancer', 'ibm cloud dns', 'ibm cloud direct link', 'ibm cloud cos', 'ibm
+  cloud object storage', 'ibm cloud databases', 'ibm cloud data engines', 'ibm
+  cloud event streams', 'ibm cloud api gateway', 'ibm cloud functions', 'ibm
+  cloud code engine', 'ibm cloud monitoring', 'ibm cloud logging', 'ibm cloud
+  activity tracker', 'ibm cloud security groups', 'ibm cloud acl', 'ibm cloud
+  transit gateway', 'watson', 'ibm cloud pak for data', 'ibm cloud pak for
+  applications', 'ibm cloud pak for integration'. Covers: IBM Cloud VPC, IKS
+  (Kubernetes), Object Storage, VSI, IAM, networking, terraform provider,
+  Satellite, Schematics.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, ibm-cloud, cloud-provider, phase-4]
+tags:
+  - devops
+  - ibm-cloud
+  - cloud-provider
+  - phase-4
+depends_on: []
 ---
 
 # IBM Cloud

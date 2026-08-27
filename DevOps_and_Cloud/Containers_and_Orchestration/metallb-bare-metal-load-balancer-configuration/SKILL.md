@@ -1,19 +1,22 @@
 ---
 name: metallb-bare-metal-load-balancer-configuration
 description: >
-  Configures MetalLB to provide working `Service` type `LoadBalancer`
-  support on bare-metal/on-prem Kubernetes clusters that have no cloud
-  provider to allocate real load balancers — IP address pools,
-  Layer2 (ARP/NDP failover) mode, and BGP mode with peer configuration.
-  Use when a user asks to "set up MetalLB," "get LoadBalancer Services
-  working on bare metal," "configure a MetalLB IP address pool,"
-  "choose Layer2 vs BGP mode for MetalLB," or "configure BGP peering for
-  MetalLB."
+  Configures MetalLB to provide working `Service` type `LoadBalancer` support on
+  bare-metal/on-prem Kubernetes clusters that have no cloud provider to allocate
+  real load balancers — IP address pools, Layer2 (ARP/NDP failover) mode, and
+  BGP mode with peer configuration. Use when a user asks to "set up MetalLB,"
+  "get LoadBalancer Services working on bare metal," "configure a MetalLB IP
+  address pool," "choose Layer2 vs BGP mode for MetalLB," or "configure BGP
+  peering for MetalLB."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - metallb-bare-metal-load-balancer-configuration
+depends_on: []
 ---
 
 # MetalLB [Bare-Metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) Load Balancer Configuration

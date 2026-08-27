@@ -2,17 +2,20 @@
 name: jenkins-declarative-pipeline-per-repo
 description: >
   Authors and troubleshoots a per-repo Jenkinsfile using Jenkins Declarative
-  Pipeline syntax — agent, stages, steps, post, environment, and when blocks
-  — for a single repository's own build/test/deploy flow. Use when the user
-  asks to "write a Jenkinsfile," "add a declarative pipeline to this repo,"
-  "fix a failing Jenkins stage," "add a post-build notification to Jenkins,"
-  or "set up per-repo CI in Jenkins" without a shared organization-wide
-  library.
+  Pipeline syntax — agent, stages, steps, post, environment, and when blocks —
+  for a single repository's own build/test/deploy flow. Use when the user asks
+  to "write a Jenkinsfile," "add a declarative pipeline to this repo," "fix a
+  failing Jenkins stage," "add a post-build notification to Jenkins," or "set up
+  per-repo CI in Jenkins" without a shared organization-wide library.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - jenkins-declarative-pipeline-per-repo
+depends_on: []
 ---
 
 # [Jenkins](../jenkins/SKILL.md) Declarative Pipeline Per Repo

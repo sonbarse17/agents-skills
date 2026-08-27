@@ -1,7 +1,18 @@
 ---
 name: scripting-automation
-description: Covers writing operational scripts that survive contact with production — idempotency, real error handling and exit codes, structured logging, a dry-run mode, and recognizing when a script has outgrown scripting. Use this whenever the user is writing a bash or Python script that touches production, asks why a script failed silently or left things half-changed, wants a `--dry-run` flag added, or is deciding whether a script should become a proper tool or service. For chaining scripts into a multi-step process use `workflow-automation`, and for running one on a schedule use `scheduled-jobs`.
+description: Covers writing operational scripts that survive contact with
+  production — idempotency, real error handling and exit codes, structured
+  logging, a dry-run mode, and recognizing when a script has outgrown scripting.
+  Use this whenever the user is writing a bash or Python script that touches
+  production, asks why a script failed silently or left things half-changed,
+  wants a `--dry-run` flag added, or is deciding whether a script should become
+  a proper tool or service. For chaining scripts into a multi-step process use
+  `workflow-automation`, and for running one on a schedule use `scheduled-jobs`.
 license: MIT
+tags:
+  - languages
+  - scripting-automation
+depends_on: []
 ---
 
 # Scripting Automation

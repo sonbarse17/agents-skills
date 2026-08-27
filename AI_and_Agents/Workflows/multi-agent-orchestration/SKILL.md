@@ -1,17 +1,21 @@
 ---
 name: multi-agent-orchestration
 description: >
-  Guides deciding when and how to split a task across multiple cooperating
-  LLM agents (supervisor/worker, pipeline, or debate patterns) instead of one
-  agent with many tools. Use when a user asks to "design a multi-agent
-  system," "should this be one agent or several," "orchestrate sub-agents,"
-  fix agents that duplicate work or talk past each other, or is deciding how
-  a supervisor agent should delegate to and validate specialist agents.
+  Guides deciding when and how to split a task across multiple cooperating LLM
+  agents (supervisor/worker, pipeline, or debate patterns) instead of one agent
+  with many tools. Use when a user asks to "design a multi-agent system,"
+  "should this be one agent or several," "orchestrate sub-agents," fix agents
+  that duplicate work or talk past each other, or is deciding how a supervisor
+  agent should delegate to and validate specialist agents.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - multi-agent-orchestration
+depends_on: []
 ---
 
 # Multi-Agent Orchestration

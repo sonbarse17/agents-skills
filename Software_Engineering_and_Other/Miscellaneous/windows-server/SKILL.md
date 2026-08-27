@@ -1,10 +1,15 @@
 ---
 name: windows-server
-description: Administer Windows Server systems. Manage IIS, Active Directory, and PowerShell automation. Use when administering Windows infrastructure.
+description: Administer Windows Server systems. Manage IIS, Active Directory,
+  and PowerShell automation. Use when administering Windows infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - windows-server
+depends_on: []
 ---
 
 # Windows Server Administration

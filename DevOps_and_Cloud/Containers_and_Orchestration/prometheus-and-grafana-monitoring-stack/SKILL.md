@@ -1,19 +1,23 @@
 ---
 name: prometheus-and-grafana-monitoring-stack
 description: >
-  Guides standing up and operating the Prometheus + Grafana monitoring
-  stack in Kubernetes and hybrid environments — scrape configuration and
-  service discovery, writing PromQL for dashboards and alerts, defining
-  Alertmanager routing/silencing, and provisioning Grafana datasources
-  and dashboards as code. Use when a user asks to "scrape a new
-  service", "write a PromQL query", "add an alerting rule", "configure
-  Alertmanager routing/silences", "provision a Grafana dashboard", "debug
-  a target showing as down", or "reduce alert noise/duplicate pages."
+  Guides standing up and operating the Prometheus + Grafana monitoring stack in
+  Kubernetes and hybrid environments — scrape configuration and service
+  discovery, writing PromQL for dashboards and alerts, defining Alertmanager
+  routing/silencing, and provisioning Grafana datasources and dashboards as
+  code. Use when a user asks to "scrape a new service", "write a PromQL query",
+  "add an alerting rule", "configure Alertmanager routing/silences", "provision
+  a Grafana dashboard", "debug a target showing as down", or "reduce alert
+  noise/duplicate pages."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - prometheus-and-grafana-monitoring-stack
+depends_on: []
 ---
 
 # Prometheus and Grafana [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Stack

@@ -1,7 +1,18 @@
 ---
 name: well-architected-review
-description: Runs a structured audit against the standard pillars — reliability, security, cost, performance, operational excellence, sustainability — producing prioritized, actionable findings, not a checklist tick. Use this whenever the user asks for an architecture review, a well-architected assessment, a pre-launch readiness check, "is this built right," or wants pillar tradeoffs reconciled into a decision. For fixing one pillar in depth use `cost-optimization` or `disaster-recovery` directly — this is the cross-cutting audit that finds where to point them.
+description: Runs a structured audit against the standard pillars — reliability,
+  security, cost, performance, operational excellence, sustainability —
+  producing prioritized, actionable findings, not a checklist tick. Use this
+  whenever the user asks for an architecture review, a well-architected
+  assessment, a pre-launch readiness check, "is this built right," or wants
+  pillar tradeoffs reconciled into a decision. For fixing one pillar in depth
+  use `cost-optimization` or `disaster-recovery` directly — this is the
+  cross-cutting audit that finds where to point them.
 license: MIT
+tags:
+  - architecture
+  - well-architected-review
+depends_on: []
 ---
 
 # Well-Architected Review

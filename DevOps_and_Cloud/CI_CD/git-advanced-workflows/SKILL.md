@@ -1,6 +1,13 @@
 ---
 name: git-advanced-workflows
-description: Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.
+description: Master advanced Git workflows including rebasing, cherry-picking,
+  bisect, worktrees, and reflog to maintain clean history and recover from any
+  situation. Use when managing complex Git histories, collaborating on feature
+  branches, or troubleshooting repository issues.
+tags:
+  - ci_cd
+  - git-advanced-workflows
+depends_on: []
 ---
 
 # Git Advanced Workflows

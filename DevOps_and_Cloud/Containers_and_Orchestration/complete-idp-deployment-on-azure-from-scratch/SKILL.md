@@ -1,23 +1,26 @@
 ---
 name: complete-idp-deployment-on-azure-from-scratch
 description: >
-  Sequences a complete, from-scratch Internal Developer Platform deployment
-  on Azure: landing zone → AKS cluster → Helm-deployed Backstage backed by
-  Azure Database for PostgreSQL Flexible Server → golden-path scaffolding
-  template → self-service API wired to Azure provisioning (Azure AD
-  Workload Identity federated credentials, Flexible Server instances) →
-  scorecards. This is the integration runbook that orders the individual
-  Azure/AKS/Backstage skills correctly and flags the handoffs between
-  them. Use when a user asks to "deploy an IDP on Azure from scratch,"
-  "stand up Backstage on AKS end-to-end," "build our internal developer
-  platform on Azure," "wire self-service database/identity provisioning
-  into Backstage on AKS," or "sequence an Azure platform rollout from
-  subscription vending to golden-path templates."
+  Sequences a complete, from-scratch Internal Developer Platform deployment on
+  Azure: landing zone → AKS cluster → Helm-deployed Backstage backed by Azure
+  Database for PostgreSQL Flexible Server → golden-path scaffolding template →
+  self-service API wired to Azure provisioning (Azure AD Workload Identity
+  federated credentials, Flexible Server instances) → scorecards. This is the
+  integration runbook that orders the individual Azure/AKS/Backstage skills
+  correctly and flags the handoffs between them. Use when a user asks to "deploy
+  an IDP on Azure from scratch," "stand up Backstage on AKS end-to-end," "build
+  our internal developer platform on Azure," "wire self-service
+  database/identity provisioning into Backstage on AKS," or "sequence an Azure
+  platform rollout from subscription vending to golden-path templates."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-idp-deployment-on-azure-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on Azure from Scratch

@@ -1,6 +1,11 @@
 ---
 name: Persona - Product Manager
-description: ACT and THINK like a highly effective Product Manager focusing on business value, OKRs, and prioritization.
+description: ACT and THINK like a highly effective Product Manager focusing on
+  business value, OKRs, and prioritization.
+tags:
+  - product_and_business
+  - product-manager
+depends_on: []
 ---
 
 # Product Manager Persona

@@ -1,15 +1,19 @@
 ---
 name: security-case-management
 description: >
-  Create, search, update, and manage SOC cases via the Kibana Cases API. Use when
-  tracking incidents, linking alerts to cases, adding investigation notes, or managing
-  triage output.
+  Create, search, update, and manage SOC cases via the Kibana Cases API. Use
+  when tracking incidents, linking alerts to cases, adding investigation notes,
+  or managing triage output.
 compatibility: >
-  Requires Node.js 22+, network access to Kibana. Environment variables: KIBANA_URL,
-  plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD.
+  Requires Node.js 22+, network access to Kibana. Environment variables:
+  KIBANA_URL, plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - case-management
+depends_on: []
 ---
 
 # Case Management

@@ -1,16 +1,29 @@
 ---
 name: backend-transactional-outbox
 description: >
-  Use this skill when the user says 'outbox', 'transactional outbox', 'outbox pattern', 'reliable event publishing', 'dual write', 'CDC outbox', 'message relay', 'publish events reliably', 'exactly-once publish', 'debezium outbox'. This skill enforces: event publication in the same DB transaction as business data, separate message relay process, at-least-once delivery guarantee, deduplication in consumers, idempotent consumption. Applies to any backend stack. Do NOT use for: in-process events, fire-and-forget messaging, or already-reliable message broker setups.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'outbox', 'transactional outbox', 'outbox
+  pattern', 'reliable event publishing', 'dual write', 'CDC outbox', 'message
+  relay', 'publish events reliably', 'exactly-once publish', 'debezium outbox'.
+  This skill enforces: event publication in the same DB transaction as business
+  data, separate message relay process, at-least-once delivery guarantee,
+  deduplication in consumers, idempotent consumption. Applies to any backend
+  stack. Do NOT use for: in-process events, fire-and-forget messaging, or
+  already-reliable message broker setups.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, outbox, messaging, reliability]
+tags:
+  - backend
+  - universal
+  - outbox
+  - messaging
+  - reliability
+depends_on: []
 ---
 
 # Backend Transactional Outbox

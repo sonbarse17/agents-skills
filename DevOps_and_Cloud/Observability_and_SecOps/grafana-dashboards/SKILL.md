@@ -1,6 +1,13 @@
 ---
 name: grafana-dashboards
-description: Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.
+description: Create and manage production Grafana dashboards for real-time
+  visualization of system and application metrics. Use when building monitoring
+  dashboards, visualizing metrics, or creating operational observability
+  interfaces.
+tags:
+  - observability_and_secops
+  - grafana-dashboards
+depends_on: []
 ---
 
 # Grafana [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)

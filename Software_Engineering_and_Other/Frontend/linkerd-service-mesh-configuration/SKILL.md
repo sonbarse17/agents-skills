@@ -1,20 +1,23 @@
 ---
 name: linkerd-service-mesh-configuration
 description: >
-  Guides installing and operating Linkerd as a simpler, mTLS-first
-  alternative to Istio — choosing extensions deliberately, enabling
-  automatic mutual TLS with zero-config identity, injecting the proxy
-  per namespace/workload, and splitting traffic between service
-  versions. Use when a user asks to "install Linkerd," "why choose
-  Linkerd over Istio," "enable mTLS in Linkerd" (it's on by default —
-  explain when it isn't), "set up a canary/traffic split in Linkerd,"
-  "inject the Linkerd proxy," or "reduce service mesh overhead versus
+  Guides installing and operating Linkerd as a simpler, mTLS-first alternative
+  to Istio — choosing extensions deliberately, enabling automatic mutual TLS
+  with zero-config identity, injecting the proxy per namespace/workload, and
+  splitting traffic between service versions. Use when a user asks to "install
+  Linkerd," "why choose Linkerd over Istio," "enable mTLS in Linkerd" (it's on
+  by default — explain when it isn't), "set up a canary/traffic split in
+  Linkerd," "inject the Linkerd proxy," or "reduce service mesh overhead versus
   Istio."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - frontend
+  - linkerd-service-mesh-configuration
+depends_on: []
 ---
 
 # Linkerd Service Mesh Configuration

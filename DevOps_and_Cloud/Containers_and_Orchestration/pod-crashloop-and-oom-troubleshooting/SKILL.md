@@ -1,20 +1,23 @@
 ---
 name: pod-crashloop-and-oom-troubleshooting
 description: >
-  Guides diagnosing `CrashLoopBackOff` pods (using `kubectl logs
-  --previous`, `kubectl describe pod`, and exit-code interpretation to
-  find the real root cause) and `OOMKilled` terminations specifically
-  (distinguishing an undersized memory limit from a genuine application
-  memory leak using events, `kubectl top`, and limits vs. observed
-  usage). Use when a user asks "why is my pod CrashLoopBackOff," "what
-  does OOMKilled mean," "my pod keeps restarting," "exit code 137," "my
-  pod's logs are empty after a restart," or "should I just raise the
-  memory limit to stop the crashes."
+  Guides diagnosing `CrashLoopBackOff` pods (using `kubectl logs --previous`,
+  `kubectl describe pod`, and exit-code interpretation to find the real root
+  cause) and `OOMKilled` terminations specifically (distinguishing an undersized
+  memory limit from a genuine application memory leak using events, `kubectl
+  top`, and limits vs. observed usage). Use when a user asks "why is my pod
+  CrashLoopBackOff," "what does OOMKilled mean," "my pod keeps restarting,"
+  "exit code 137," "my pod's logs are empty after a restart," or "should I just
+  raise the memory limit to stop the crashes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - pod-crashloop-and-oom-troubleshooting
+depends_on: []
 ---
 
 # Pod CrashLoopBackOff and OOMKilled Troubleshooting

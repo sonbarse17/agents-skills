@@ -1,16 +1,25 @@
 ---
 name: websocket-engineer
-description: Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+description: Use when building real-time communication systems with WebSockets
+  or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with
+  Redis, presence tracking, room management.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: 1.1.0
   domain: api-architecture
-  triggers: WebSocket, Socket.IO, real-time communication, bidirectional messaging, pub/sub, server push, live updates, chat systems, presence tracking
+  triggers: WebSocket, Socket.IO, real-time communication, bidirectional
+    messaging, pub/sub, server push, live updates, chat systems, presence
+    tracking
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fastapi-expert, nestjs-expert, devops-engineer, monitoring-expert, security-reviewer
+  related-skills: fastapi-expert, nestjs-expert, devops-engineer,
+    monitoring-expert, security-reviewer
+tags:
+  - frontend
+  - websocket-engineer
+depends_on: []
 ---
 
 # WebSocket Engineer

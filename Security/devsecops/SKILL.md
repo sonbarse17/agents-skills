@@ -1,6 +1,11 @@
 ---
 name: devsecops
-description: Apply DevSecOps practices, focusing on automated SAST/DAST scanning within CI/CD pipelines.
+description: Apply DevSecOps practices, focusing on automated SAST/DAST scanning
+  within CI/CD pipelines.
+tags:
+  - security
+  - devsecops
+depends_on: []
 ---
 # DevSecOps: Automated Security Scanning
 

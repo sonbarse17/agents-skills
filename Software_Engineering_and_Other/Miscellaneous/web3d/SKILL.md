@@ -1,6 +1,10 @@
 ---
 name: Web3D & WebGL
 description: Integration patterns for WebGL and Three.js in web applications.
+tags:
+  - miscellaneous
+  - web3d
+depends_on: []
 ---
 
 # Web3D & WebGL

@@ -1,16 +1,23 @@
 ---
 name: backend-web-real-time
 description: >
-  Use when the user asks about WebRTC, real-time video/audio, media streaming, SFU/MCU, signaling server, TURN/STUN, live streaming, WebSocket for media, or real-time communication infrastructure. Do NOT use for: basic WebSocket patterns (websocket-patterns), or general real-time updates (data-streaming).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about WebRTC, real-time video/audio, media streaming,
+  SFU/MCU, signaling server, TURN/STUN, live streaming, WebSocket for media, or
+  real-time communication infrastructure. Do NOT use for: basic WebSocket
+  patterns (websocket-patterns), or general real-time updates (data-streaming).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, web-real-time, phase-3]
+tags:
+  - backend
+  - web-real-time
+  - phase-3
+depends_on: []
 ---
 
 # Web Real-Time Communication

@@ -1,18 +1,27 @@
 ---
 name: devops-kubernetes-for-data
 description: >
-  Use this skill when running data workloads on Kubernetes: Spark on K8s, Airflow on K8s, Kafka on K8s, Strimzi, Spark Operator, Volcano, GPU scheduling, node pools, Karpenter, CSI storage for data workloads.
-  This skill enforces: resource management for Spark executors, GPU scheduling config, node pool design, storage class selection, operator configuration.
-  Do NOT use for: general Kubernetes (use kubernetes-patterns), data pipeline design (use etl-pipeline), Kafka topic design (use streaming).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when running data workloads on Kubernetes: Spark on K8s,
+  Airflow on K8s, Kafka on K8s, Strimzi, Spark Operator, Volcano, GPU
+  scheduling, node pools, Karpenter, CSI storage for data workloads. This skill
+  enforces: resource management for Spark executors, GPU scheduling config, node
+  pool design, storage class selection, operator configuration. Do NOT use for:
+  general Kubernetes (use kubernetes-patterns), data pipeline design (use
+  etl-pipeline), Kafka topic design (use streaming).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, kubernetes, data, phase-11]
+tags:
+  - devops
+  - kubernetes
+  - data
+  - phase-11
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) for Data Agent

@@ -1,20 +1,23 @@
 ---
 name: managed-kubernetes-eks-aks-gke
 description: >
-  Guides provisioning and configuring managed Kubernetes clusters on
-  AWS EKS, Azure AKS, and Google GKE — cluster creation, node
-  group/pool design, and per-cloud workload identity (IRSA on EKS,
-  Azure AD Workload Identity on AKS, Workload Identity Federation on
-  GKE) so pods get least-privilege cloud API access without long-lived
-  keys. Use when a user asks to "create an EKS/AKS/GKE cluster,"
-  "set up node groups/node pools," "let a pod assume an IAM role
-  without a static key," "configure IRSA," "compare managed Kubernetes
-  across clouds," or "size and autoscale cluster nodes."
+  Guides provisioning and configuring managed Kubernetes clusters on AWS EKS,
+  Azure AKS, and Google GKE — cluster creation, node group/pool design, and
+  per-cloud workload identity (IRSA on EKS, Azure AD Workload Identity on AKS,
+  Workload Identity Federation on GKE) so pods get least-privilege cloud API
+  access without long-lived keys. Use when a user asks to "create an EKS/AKS/GKE
+  cluster," "set up node groups/node pools," "let a pod assume an IAM role
+  without a static key," "configure IRSA," "compare managed Kubernetes across
+  clouds," or "size and autoscale cluster nodes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - managed-kubernetes-eks-aks-gke
+depends_on: []
 ---
 
 # Managed [Kubernetes](../kubernetes/SKILL.md): EKS, AKS, GKE

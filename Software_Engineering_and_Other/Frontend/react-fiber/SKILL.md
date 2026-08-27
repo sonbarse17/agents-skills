@@ -1,6 +1,11 @@
 ---
 name: react-fiber-architecture
-description: Deep dive into React Fiber Architecture, reconciliation algorithm, work loops, rendering phases, and concurrent mode mechanics.
+description: Deep dive into React Fiber Architecture, reconciliation algorithm,
+  work loops, rendering phases, and concurrent mode mechanics.
+tags:
+  - frontend
+  - react-fiber
+depends_on: []
 ---
 
 # React Fiber Architecture: Core Mechanics & Reconciliation

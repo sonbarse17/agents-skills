@@ -1,16 +1,27 @@
 ---
 name: backend-webhooks
 description: >
-  Use this skill when the user says 'webhook', 'webhook receiver', 'webhook delivery', 'signature verification', 'HMAC', 'event delivery', 'outgoing webhook', 'incoming webhook', 'retry webhook', 'webhook endpoint'. This skill implements receiving, verifying, retrying, and delivering webhooks securely. Applies to any backend stack. Do NOT use for: server-sent events (SSE), WebSockets, or long-polling fallbacks.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'webhook', 'webhook receiver', 'webhook
+  delivery', 'signature verification', 'HMAC', 'event delivery', 'outgoing
+  webhook', 'incoming webhook', 'retry webhook', 'webhook endpoint'. This skill
+  implements receiving, verifying, retrying, and delivering webhooks securely.
+  Applies to any backend stack. Do NOT use for: server-sent events (SSE),
+  WebSockets, or long-polling fallbacks.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, webhooks, events, integration]
+tags:
+  - backend
+  - universal
+  - webhooks
+  - events
+  - integration
+depends_on: []
 ---
 
 # Backend Webhooks

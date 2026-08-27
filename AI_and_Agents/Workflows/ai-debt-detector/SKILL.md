@@ -1,11 +1,14 @@
 ---
 name: ai-debt-detector
-description: >-
-  Use after generating code, after accepting AI suggestions, or when reviewing
-  AI-written modules. Also use when code works but feels brittle, when error
-  handling seems thin, when orphaned resources or missing cleanup are suspected,
-  or when the agent claims done but hidden debt may exist. Catches the specific
-  failure patterns AI agents produce that humans would not.
+description: Use after generating code, after accepting AI suggestions, or when
+  reviewing AI-written modules. Also use when code works but feels brittle, when
+  error handling seems thin, when orphaned resources or missing cleanup are
+  suspected, or when the agent claims done but hidden debt may exist. Catches
+  the specific failure patterns AI agents produce that humans would not.
+tags:
+  - workflows
+  - ai-debt-detector
+depends_on: []
 ---
 
 # AI Debt Detector

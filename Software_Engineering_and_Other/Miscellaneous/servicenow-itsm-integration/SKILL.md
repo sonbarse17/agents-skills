@@ -3,20 +3,23 @@ name: servicenow-itsm-integration
 description: >
   Integrates ServiceNow Incident, Change, and Problem management with
   engineering paging/incident tools (PagerDuty, Opsgenie) for ITIL-heavy
-  enterprises that need an auditable, compliance-grade record alongside
-  fast real-time paging — Table API incident sync, Change Request
-  approval workflow (including emergency changes during an active
-  incident), Problem record linkage, and CMDB-based assignment routing.
-  Use when the user asks to "sync PagerDuty incidents into ServiceNow,"
-  "set up a ServiceNow change request for a production deploy," "link an
-  incident to a problem record," "route a ServiceNow incident to the
-  right assignment group," or "our ServiceNow and PagerDuty incidents
-  are out of sync."
+  enterprises that need an auditable, compliance-grade record alongside fast
+  real-time paging — Table API incident sync, Change Request approval workflow
+  (including emergency changes during an active incident), Problem record
+  linkage, and CMDB-based assignment routing. Use when the user asks to "sync
+  PagerDuty incidents into ServiceNow," "set up a ServiceNow change request for
+  a production deploy," "link an incident to a problem record," "route a
+  ServiceNow incident to the right assignment group," or "our ServiceNow and
+  PagerDuty incidents are out of sync."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - miscellaneous
+  - servicenow-itsm-integration
+depends_on: []
 ---
 
 # ServiceNow ITSM Integration

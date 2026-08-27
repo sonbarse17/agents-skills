@@ -1,10 +1,16 @@
 ---
 name: gcp-cloud-sql
-description: Provision Cloud SQL and Spanner databases. Configure high availability, backups, and security. Use when deploying managed databases on GCP.
+description: Provision Cloud SQL and Spanner databases. Configure high
+  availability, backups, and security. Use when deploying managed databases on
+  GCP.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - gcp-cloud-sql
+depends_on: []
 ---
 
 # GCP Cloud SQL

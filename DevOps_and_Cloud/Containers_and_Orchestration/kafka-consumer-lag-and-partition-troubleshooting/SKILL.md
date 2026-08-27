@@ -1,17 +1,20 @@
 ---
 name: kafka-consumer-lag-and-partition-troubleshooting
 description: >
-  Diagnoses growing Kafka consumer lag, rebalance storms, and
-  under-replicated partitions in a running cluster. Use when the user
-  reports "consumer lag keeps growing," "consumer group stuck
-  rebalancing," "under-replicated partitions," "Kafka consumers keep
-  dropping out of the group," or asks to troubleshoot a Kafka production
-  incident involving lag or partition health.
+  Diagnoses growing Kafka consumer lag, rebalance storms, and under-replicated
+  partitions in a running cluster. Use when the user reports "consumer lag keeps
+  growing," "consumer group stuck rebalancing," "under-replicated partitions,"
+  "Kafka consumers keep dropping out of the group," or asks to troubleshoot a
+  Kafka production incident involving lag or partition health.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - kafka-consumer-lag-and-partition-troubleshooting
+depends_on: []
 ---
 
 # Kafka Consumer Lag and Partition Troubleshooting

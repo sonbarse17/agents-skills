@@ -1,10 +1,15 @@
 ---
 name: backup-recovery
-description: Implement backup and recovery strategies. Configure rsync, Restic, and cloud backups. Use when designing data protection solutions.
+description: Implement backup and recovery strategies. Configure rsync, Restic,
+  and cloud backups. Use when designing data protection solutions.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - backup-recovery
+depends_on: []
 ---
 
 # Backup and Recovery

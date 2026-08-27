@@ -1,23 +1,28 @@
 ---
 name: aws-health-events
-description: ALWAYS use this skill in the beginning of any incident investigation, root cause
-  analysis, or operational troubleshooting. This skill retrieves and analyzes
-  AWS Health events (service issues, scheduled changes, and account notifications)
-  to identify AWS-side events that may explain or correlate with observed
-  operational issues. Activate this skill when investigating an issue and you
-  observe service degradation, elevated error rates, latency spikes, connection
-  failures, throttling, capacity issues, deployment-related failures, alarms, or
-  any operational event or issue. This skill searches AWS Health events by
-  service, time window, region, and status to surface active or recent service
-  disruptions, scheduled maintenance, and account-specific notifications that
-  inform the current investigation. Also activate when a user requests a health
-  event summary or report for their account over a specified time period.
+description: ALWAYS use this skill in the beginning of any incident
+  investigation, root cause analysis, or operational troubleshooting. This skill
+  retrieves and analyzes AWS Health events (service issues, scheduled changes,
+  and account notifications) to identify AWS-side events that may explain or
+  correlate with observed operational issues. Activate this skill when
+  investigating an issue and you observe service degradation, elevated error
+  rates, latency spikes, connection failures, throttling, capacity issues,
+  deployment-related failures, alarms, or any operational event or issue. This
+  skill searches AWS Health events by service, time window, region, and status
+  to surface active or recent service disruptions, scheduled maintenance, and
+  account-specific notifications that inform the current investigation. Also
+  activate when a user requests a health event summary or report for their
+  account over a specified time period.
 metadata:
   author: udid-aws
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Incident RCA"
-  aws-devops-agent-skills.aws-services: "AWS Health"
-  aws-devops-agent-skills.technical-domains: "Operations"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Incident RCA
+  aws-devops-agent-skills.aws-services: AWS Health
+  aws-devops-agent-skills.technical-domains: Operations
+tags:
+  - cloud_providers
+  - aws-health-events
+depends_on: []
 ---
 
 # AWS Health Event Review

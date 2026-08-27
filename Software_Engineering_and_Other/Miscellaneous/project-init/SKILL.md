@@ -1,16 +1,25 @@
 ---
 name: project-init
 description: >
-  Use this skill when the user says 'create project structure', 'scaffold project', 'initialize project', 'set up folder structure', 'new project from scratch', or when a new project needs folders and config files created. This skill scaffolds the full project tree based on detected or stated stack and creates AGENTS.md with project-specific rules. Do NOT use for: adding files to an existing project, planning features, or installing dependencies.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'create project structure', 'scaffold
+  project', 'initialize project', 'set up folder structure', 'new project from
+  scratch', or when a new project needs folders and config files created. This
+  skill scaffolds the full project tree based on detected or stated stack and
+  creates AGENTS.md with project-specific rules. Do NOT use for: adding files to
+  an existing project, planning features, or installing dependencies.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [orchestration, phase-0, scaffolding]
+tags:
+  - orchestration
+  - phase-0
+  - scaffolding
+depends_on: []
 ---
 
 # Project Init

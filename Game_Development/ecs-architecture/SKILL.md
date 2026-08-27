@@ -1,6 +1,10 @@
 ---
 name: ECS Architecture
 description: Entity Component System architecture patterns for game engines.
+tags:
+  - game_development
+  - ecs-architecture
+depends_on: []
 ---
 
 # ECS Architecture (Entity Component System)

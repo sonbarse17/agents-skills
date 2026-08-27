@@ -1,16 +1,24 @@
 ---
 name: desktop-gtk
 description: >
-  Use when the user asks about GTK (GTK3, GTK4) application development, GtkWidget, GtkBuilder UI files, CSS styling for GTK, or cross-platform GTK development. Do NOT use for: GNOME-specific patterns (desktop-gnome), or KDE/Qt (desktop-kde, desktop-qt).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about GTK (GTK3, GTK4) application development,
+  GtkWidget, GtkBuilder UI files, CSS styling for GTK, or cross-platform GTK
+  development. Do NOT use for: GNOME-specific patterns (desktop-gnome), or
+  KDE/Qt (desktop-kde, desktop-qt).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, gtk, linux, cross-platform]
+tags:
+  - desktop
+  - gtk
+  - linux
+  - cross-platform
+depends_on: []
 ---
 
 # GTK

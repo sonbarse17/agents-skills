@@ -1,25 +1,28 @@
 ---
 name: cloud-well-architected-framework-review
 description: >
-  Guides running a Well-Architected-style review of an existing cloud
-  workload against the standard pillars used across AWS, Azure, and GCP's
-  respective frameworks — operational excellence, security, reliability,
-  performance efficiency, cost optimization, and (where the provider
-  includes it) sustainability — scoring each pillar, identifying
-  cross-pillar trade-offs, and producing a prioritized remediation backlog.
-  Use when a user asks to "run a Well-Architected review", "do an AWS
-  Well-Architected Framework (WAF) assessment", "review this workload
-  against Azure Well-Architected / GCP Architecture Framework", "find our
-  biggest architectural risks", "why does our cost optimization score keep
-  getting deprioritized", or "build a remediation backlog from an
-  architecture review". Framed generically since AWS, Azure, and GCP each
-  publish their own version of this framework with different tooling and
-  pillar names.
+  Guides running a Well-Architected-style review of an existing cloud workload
+  against the standard pillars used across AWS, Azure, and GCP's respective
+  frameworks — operational excellence, security, reliability, performance
+  efficiency, cost optimization, and (where the provider includes it)
+  sustainability — scoring each pillar, identifying cross-pillar trade-offs, and
+  producing a prioritized remediation backlog. Use when a user asks to "run a
+  Well-Architected review", "do an AWS Well-Architected Framework (WAF)
+  assessment", "review this workload against Azure Well-Architected / GCP
+  Architecture Framework", "find our biggest architectural risks", "why does our
+  cost optimization score keep getting deprioritized", or "build a remediation
+  backlog from an architecture review". Framed generically since AWS, Azure, and
+  GCP each publish their own version of this framework with different tooling
+  and pillar names.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: standards-and-compliance-frameworks
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-well-architected-framework-review
+depends_on: []
 ---
 
 # Cloud Well-Architected Framework Review

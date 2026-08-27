@@ -1,18 +1,21 @@
 ---
 name: airflow-dag-authoring-and-validation
 description: >
-  Authors Apache Airflow DAGs — task dependencies, operator choice,
-  sensors, idempotency — and validates them with `airflow dags test`,
-  import-time checks, and DAG linting before they reach a production
-  scheduler. Use when the user asks to "write an Airflow DAG," "add a
-  task dependency," "use a sensor to wait for a file/table," "validate a
-  DAG before deploying it," "lint an Airflow DAG," or reviews a DAG file
-  for correctness before merge.
+  Authors Apache Airflow DAGs — task dependencies, operator choice, sensors,
+  idempotency — and validates them with `airflow dags test`, import-time checks,
+  and DAG linting before they reach a production scheduler. Use when the user
+  asks to "write an Airflow DAG," "add a task dependency," "use a sensor to wait
+  for a file/table," "validate a DAG before deploying it," "lint an Airflow
+  DAG," or reviews a DAG file for correctness before merge.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - workflows
+  - airflow-dag-authoring-and-validation
+depends_on: []
 ---
 
 # Airflow DAG Authoring and Validation

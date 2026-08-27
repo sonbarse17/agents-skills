@@ -1,17 +1,21 @@
 ---
 name: model-serving-and-scaling
 description: >
-  Guides deploying ML/LLM models for online inference with autoscaling,
-  latency budgets, batching, canary/shadow rollout, and cost control. Use
-  when the user asks to "serve a model", "deploy a model for inference",
-  set up autoscaling for a model endpoint, reduce inference latency or cost,
-  do a canary/shadow rollout of a new model version, or choose between
-  batch/online/streaming serving.
+  Guides deploying ML/LLM models for online inference with autoscaling, latency
+  budgets, batching, canary/shadow rollout, and cost control. Use when the user
+  asks to "serve a model", "deploy a model for inference", set up autoscaling
+  for a model endpoint, reduce inference latency or cost, do a canary/shadow
+  rollout of a new model version, or choose between batch/online/streaming
+  serving.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - model-serving-and-scaling
+depends_on: []
 ---
 
 # Model Serving And Scaling

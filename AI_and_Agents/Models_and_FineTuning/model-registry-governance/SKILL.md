@@ -1,10 +1,15 @@
 ---
 name: model-registry-governance
-description: Establish model registry standards, governance controls, metadata schemas, approvals, and lifecycle policies for enterprise AI deployments.
+description: Establish model registry standards, governance controls, metadata
+  schemas, approvals, and lifecycle policies for enterprise AI deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - model-registry-governance
+depends_on: []
 ---
 
 # Model Registry Governance

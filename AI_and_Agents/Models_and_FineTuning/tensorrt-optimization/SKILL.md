@@ -1,6 +1,12 @@
 ---
 name: tensorrt-optimization
-description: Authoritative guide to inference optimization using TensorRT, focusing on quantization, layer fusion, and memory bandwidth optimization for LLMs.
+description: Authoritative guide to inference optimization using TensorRT,
+  focusing on quantization, layer fusion, and memory bandwidth optimization for
+  LLMs.
+tags:
+  - models_and_finetuning
+  - tensorrt-optimization
+depends_on: []
 ---
 
 # TensorRT Inference Architecture

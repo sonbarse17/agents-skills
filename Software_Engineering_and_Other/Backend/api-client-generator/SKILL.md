@@ -1,16 +1,23 @@
 ---
 name: dev-loop-api-client-generator
 description: >
-  Use when the user asks about generating API clients, OpenAPI/Swagger code generation, REST API client SDKs, or automating API client creation. Do NOT use for: writing API servers, or manual HTTP request code.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about generating API clients, OpenAPI/Swagger code
+  generation, REST API client SDKs, or automating API client creation. Do NOT
+  use for: writing API servers, or manual HTTP request code.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, api-client, code-generation, openapi]
+tags:
+  - dev-loop
+  - api-client
+  - code-generation
+  - openapi
+depends_on: []
 ---
 
 # API Client Generator

@@ -1,21 +1,24 @@
 ---
 name: incident-investigation-using-metrics-logs-traces
 description: >
-  Guides correlating Prometheus metrics, log queries, and distributed
-  traces together during a live incident investigation — using each
-  signal's strengths to narrow from "something is wrong" to a specific
-  root cause faster than any single signal alone. Use when a user asks
-  to "investigate this incident using our metrics and logs," "find the
-  root cause across dashboards, logs, and traces," "correlate this
-  latency spike with logs and a trace," "pivot from an alert to the
-  actual failing request," or is actively triaging a live production
-  issue and needs a systematic cross-signal approach rather than
+  Guides correlating Prometheus metrics, log queries, and distributed traces
+  together during a live incident investigation — using each signal's strengths
+  to narrow from "something is wrong" to a specific root cause faster than any
+  single signal alone. Use when a user asks to "investigate this incident using
+  our metrics and logs," "find the root cause across dashboards, logs, and
+  traces," "correlate this latency spike with logs and a trace," "pivot from an
+  alert to the actual failing request," or is actively triaging a live
+  production issue and needs a systematic cross-signal approach rather than
   guessing which dashboard to check next.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - incident-investigation-using-metrics-logs-traces
+depends_on: []
 ---
 
 # [Incident](../incident/SKILL.md) Investigation Using Metrics, Logs, and Traces

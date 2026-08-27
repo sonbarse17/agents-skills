@@ -1,6 +1,10 @@
 ---
 name: eBPF Networking and Cilium Architecture
 description: Comprehensive analysis of Cilium architecture and Kernel Space XDP hooks.
+tags:
+  - containers_and_orchestration
+  - ebpf-networking
+depends_on: []
 ---
 
 # Cilium & eBPF Networking: Kernel Space Packet Processing

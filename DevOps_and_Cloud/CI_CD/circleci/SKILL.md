@@ -1,10 +1,17 @@
 ---
 name: circleci
-description: Configure CircleCI workflows and orbs for continuous integration and deployment. Create config.yml pipelines, use orbs for reusable configurations, and optimize build performance. Use when working with CircleCI for CI/CD automation.
+description: Configure CircleCI workflows and orbs for continuous integration
+  and deployment. Create config.yml pipelines, use orbs for reusable
+  configurations, and optimize build performance. Use when working with CircleCI
+  for CI/CD automation.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - circleci
+depends_on: []
 ---
 
 # CircleCI

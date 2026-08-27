@@ -1,19 +1,22 @@
 ---
 name: temporal-configuration-validation
 description: >
-  Validates Temporal worker task queue configuration, activity
-  timeout/retry policy settings, and namespace configuration (retention,
-  visibility archival) before a workflow goes to production. Use when the
-  user asks to "review this Temporal worker config before deploy," "check
-  our activity timeout/retry settings," "validate a Temporal namespace
-  before go-live," "why are workflows stuck with no worker picking them
-  up," or is preparing a Temporal-based service for a production
-  readiness review.
+  Validates Temporal worker task queue configuration, activity timeout/retry
+  policy settings, and namespace configuration (retention, visibility archival)
+  before a workflow goes to production. Use when the user asks to "review this
+  Temporal worker config before deploy," "check our activity timeout/retry
+  settings," "validate a Temporal namespace before go-live," "why are workflows
+  stuck with no worker picking them up," or is preparing a Temporal-based
+  service for a production readiness review.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - temporal-configuration-validation
+depends_on: []
 ---
 
 # Temporal Configuration Validation

@@ -1,16 +1,26 @@
 ---
 name: mobile-kotlin-multiplatform
 description: >
-  Use this skill when the user says 'Kotlin Multiplatform', 'KMP', 'Compose Multiplatform', 'shared Kotlin', 'KMP module', 'expect/actual', 'commonMain', 'KMP project', 'multiplatform library'. Build cross-platform mobile apps with Kotlin Multiplatform sharing business logic, Compose Multiplatform UI, and platform-specific integrations. Do NOT use for: Android-only or iOS-only app development.
+  Use this skill when the user says 'Kotlin Multiplatform', 'KMP', 'Compose
+  Multiplatform', 'shared Kotlin', 'KMP module', 'expect/actual', 'commonMain',
+  'KMP project', 'multiplatform library'. Build cross-platform mobile apps with
+  Kotlin Multiplatform sharing business logic, Compose Multiplatform UI, and
+  platform-specific integrations. Do NOT use for: Android-only or iOS-only app
+  development.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, kmp, kotlin, phase-7]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - kmp
+  - kotlin
+  - phase-7
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Kotlin Multiplatform

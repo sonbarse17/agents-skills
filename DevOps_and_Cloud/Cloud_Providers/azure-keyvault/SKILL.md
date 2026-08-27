@@ -1,10 +1,16 @@
 ---
 name: azure-keyvault
-description: Manage secrets and certificates in Azure Key Vault. Configure access policies, integrate with Azure services, and implement secure secret management. Use when managing secrets in Azure environments.
+description: Manage secrets and certificates in Azure Key Vault. Configure
+  access policies, integrate with Azure services, and implement secure secret
+  management. Use when managing secrets in Azure environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-keyvault
+depends_on: []
 ---
 
 # Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)

@@ -1,19 +1,22 @@
 ---
 name: google-cloud-functions-configuration
 description: >
-  Configures Google Cloud Functions Gen1 vs. Gen2 (Cloud Run-backed)
-  runtime differences, HTTP/event/CloudEvent triggers, and min/max
-  instance scaling settings, including concurrency and cold-start
-  tradeoffs unique to each generation. Use when the user asks to
-  "choose Cloud Functions Gen1 or Gen2," "set min instances on a Cloud
-  Function," "configure a Pub/Sub or Eventarc trigger," "reduce Cloud
-  Functions cold start," "migrate a function from Gen1 to Gen2," or
-  "why is my Cloud Function scaling past max instances."
+  Configures Google Cloud Functions Gen1 vs. Gen2 (Cloud Run-backed) runtime
+  differences, HTTP/event/CloudEvent triggers, and min/max instance scaling
+  settings, including concurrency and cold-start tradeoffs unique to each
+  generation. Use when the user asks to "choose Cloud Functions Gen1 or Gen2,"
+  "set min instances on a Cloud Function," "configure a Pub/Sub or Eventarc
+  trigger," "reduce Cloud Functions cold start," "migrate a function from Gen1
+  to Gen2," or "why is my Cloud Function scaling past max instances."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - cloud_providers
+  - google-cloud-functions-configuration
+depends_on: []
 ---
 
 # Google Cloud Functions Configuration

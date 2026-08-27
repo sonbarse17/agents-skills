@@ -1,6 +1,11 @@
 ---
 name: ai-saas-playbook
-description: Authoritative playbook for building a full-stack AI SaaS platform integrating LangChain, Kafka, and Stripe.
+description: Authoritative playbook for building a full-stack AI SaaS platform
+  integrating LangChain, Kafka, and Stripe.
+tags:
+  - workflows
+  - ai-saas
+depends_on: []
 ---
 
 # AI SaaS Master Playbook

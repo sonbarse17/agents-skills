@@ -1,18 +1,22 @@
 ---
 name: rabbitmq-queue-and-dead-letter-troubleshooting
 description: >
-  Diagnoses RabbitMQ message pileup, growing queue depth, and dead-letter
-  queues filling up unexpectedly, including poison-message patterns that
-  make a consumer redeliver-then-fail in a loop. Use when the user reports
-  "RabbitMQ queue depth keeps growing," "consumers aren't draining a
-  queue," "dead-letter queue is filling up," "a message keeps getting
-  redelivered and never acked," "poison message stuck reprocessing," or
-  asks to troubleshoot a live RabbitMQ backlog/DLQ incident.
+  Diagnoses RabbitMQ message pileup, growing queue depth, and dead-letter queues
+  filling up unexpectedly, including poison-message patterns that make a
+  consumer redeliver-then-fail in a loop. Use when the user reports "RabbitMQ
+  queue depth keeps growing," "consumers aren't draining a queue," "dead-letter
+  queue is filling up," "a message keeps getting redelivered and never acked,"
+  "poison message stuck reprocessing," or asks to troubleshoot a live RabbitMQ
+  backlog/DLQ incident.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - rabbitmq-queue-and-dead-letter-troubleshooting
+depends_on: []
 ---
 
 # RabbitMQ Queue and Dead-Letter Troubleshooting

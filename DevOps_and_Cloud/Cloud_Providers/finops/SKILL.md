@@ -13,7 +13,12 @@ compatibility:
   core: true
   editor: true
   api: true
-tags: [devops, finops, cost, phase-7]
+tags:
+  - devops
+  - finops
+  - cost
+  - phase-7
+depends_on: []
 ---
 
 # devops-finops

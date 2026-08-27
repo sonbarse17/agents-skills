@@ -1,6 +1,10 @@
 ---
 name: Observability and Scaling
 description: Prometheus TSDB compaction and OpenTelemetry trace context propagation.
+tags:
+  - observability_and_secops
+  - observability-scaling
+depends_on: []
 ---
 # [Observability](../observability/SKILL.md) & Scaling: Core Mechanics
 

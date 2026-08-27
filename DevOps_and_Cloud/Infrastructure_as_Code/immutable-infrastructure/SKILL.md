@@ -1,7 +1,18 @@
 ---
 name: immutable-infrastructure
-description: Covers replacing servers wholesale instead of patching them in place — baking golden images, treating instances as disposable cattle rather than nursed pets, rebuilding to make any change, and the rollback simplicity that buys. Use this whenever the user is deciding whether to SSH into a running instance to fix it, building an AMI or container image as a deployment unit, debugging config drift on a long-lived server, or arguing for or against in-place patching. For hosts that must stay mutable use `configuration-management`, for image build mechanics use `containerization`.
+description: Covers replacing servers wholesale instead of patching them in
+  place — baking golden images, treating instances as disposable cattle rather
+  than nursed pets, rebuilding to make any change, and the rollback simplicity
+  that buys. Use this whenever the user is deciding whether to SSH into a
+  running instance to fix it, building an AMI or container image as a deployment
+  unit, debugging config drift on a long-lived server, or arguing for or against
+  in-place patching. For hosts that must stay mutable use
+  `configuration-management`, for image build mechanics use `containerization`.
 license: MIT
+tags:
+  - infrastructure_as_code
+  - immutable-infrastructure
+depends_on: []
 ---
 
 # Immutable Infrastructure

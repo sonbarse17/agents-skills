@@ -1,10 +1,15 @@
 ---
 name: cdn-setup
-description: Configure CDNs for content delivery. Set up CloudFront, Cloudflare, and Fastly. Use when optimizing global content delivery.
+description: Configure CDNs for content delivery. Set up CloudFront, Cloudflare,
+  and Fastly. Use when optimizing global content delivery.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - cdn-setup
+depends_on: []
 ---
 
 # CDN Setup

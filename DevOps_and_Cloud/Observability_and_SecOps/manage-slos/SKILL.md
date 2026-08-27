@@ -1,11 +1,15 @@
 ---
 name: observability-manage-slos
 description: >
-  Create and manage SLOs in Elastic Observability using the Kibana API. Use when defining
-  SLIs, setting error budgets, or managing SLO lifecycle.
+  Create and manage SLOs in Elastic Observability using the Kibana API. Use when
+  defining SLIs, setting error budgets, or managing SLO lifecycle.
 metadata:
   author: elastic
   version: 0.2.0
+tags:
+  - observability_and_secops
+  - manage-slos
+depends_on: []
 ---
 
 # Service-Level Objectives (SLOs)

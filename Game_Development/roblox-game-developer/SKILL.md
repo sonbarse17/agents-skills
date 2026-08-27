@@ -1,6 +1,10 @@
 ---
 name: roblox-game-development
 description: Use this skill for any Roblox related tasks
+tags:
+  - game_development
+  - roblox-game-developer
+depends_on: []
 ---
 
 # Roblox Game Development Skill

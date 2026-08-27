@@ -1,6 +1,11 @@
 ---
 name: tpu_systolic_arrays
-description: Hardware meta-skill detailing Google's TPU architecture, specifically the Matrix Multiplication Unit (MXU) and Systolic Arrays.
+description: Hardware meta-skill detailing Google's TPU architecture,
+  specifically the Matrix Multiplication Unit (MXU) and Systolic Arrays.
+tags:
+  - game_development
+  - tpu-systolic-arrays
+depends_on: []
 ---
 
 # TPU Systolic Arrays: Algorithmic Silicon Design

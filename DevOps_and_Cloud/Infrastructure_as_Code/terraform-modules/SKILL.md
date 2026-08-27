@@ -1,7 +1,18 @@
 ---
 name: terraform-modules
-description: Covers designing Terraform modules that are reusable and composable rather than copy-pasted or over-engineered — clean input/output interfaces, version pinning, and knowing when abstraction earns its complexity. Use this whenever the user is writing a new module, designing variables and outputs, deciding whether to nest modules, pinning a module source to a version, or debating whether shared logic should become a module yet. For state and plan discipline see `infrastructure-as-code`, for blocking bad module usage before apply use `policy-as-code`.
+description: Covers designing Terraform modules that are reusable and composable
+  rather than copy-pasted or over-engineered — clean input/output interfaces,
+  version pinning, and knowing when abstraction earns its complexity. Use this
+  whenever the user is writing a new module, designing variables and outputs,
+  deciding whether to nest modules, pinning a module source to a version, or
+  debating whether shared logic should become a module yet. For state and plan
+  discipline see `infrastructure-as-code`, for blocking bad module usage before
+  apply use `policy-as-code`.
 license: MIT
+tags:
+  - infrastructure_as_code
+  - terraform-modules
+depends_on: []
 ---
 
 # Terraform Modules

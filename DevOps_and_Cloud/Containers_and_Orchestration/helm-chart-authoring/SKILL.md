@@ -1,19 +1,22 @@
 ---
 name: helm-chart-authoring
 description: >
-  Guides creating, templating, testing, versioning, and publishing Helm
-  charts for Kubernetes applications — chart scaffolding, values schema
-  design, template helpers, helm unittest/chart-testing (ct), semantic
-  versioning of charts vs. app versions, and publishing to an OCI or
-  classic chart repository. Use when a user asks to "write a Helm chart,"
-  "template a Kubernetes deployment with Helm," "add helm unit tests,"
-  "version and release a chart," "fix a failing helm lint/template," or
-  "publish a chart to a registry."
+  Guides creating, templating, testing, versioning, and publishing Helm charts
+  for Kubernetes applications — chart scaffolding, values schema design,
+  template helpers, helm unittest/chart-testing (ct), semantic versioning of
+  charts vs. app versions, and publishing to an OCI or classic chart repository.
+  Use when a user asks to "write a Helm chart," "template a Kubernetes
+  deployment with Helm," "add helm unit tests," "version and release a chart,"
+  "fix a failing helm lint/template," or "publish a chart to a registry."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - helm-chart-authoring
+depends_on: []
 ---
 
 # Helm Chart Authoring

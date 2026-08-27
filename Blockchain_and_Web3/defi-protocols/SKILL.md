@@ -1,6 +1,10 @@
 ---
 name: DeFi Protocols
 description: AMM math (x*y=k) and Lending pool architectures.
+tags:
+  - blockchain_and_web3
+  - defi-protocols
+depends_on: []
 ---
 
 # DeFi Protocols

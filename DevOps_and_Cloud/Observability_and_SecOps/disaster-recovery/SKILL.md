@@ -1,7 +1,18 @@
 ---
 name: disaster-recovery
-description: Prepares a system to survive a total, catastrophic failure — a lost region, a corrupted database, a deleted cloud account — through defined RTO/RPO targets, backups that have actually been restored, and tested failover, not a backup cron job someone set up once. Use this whenever the user asks about disaster recovery, region failover, RTO or RPO, "what if we lost the whole database," or is designing for a failure bigger than a single pod. For live coordination once disaster strikes use `incident-response`; for backup/restore mechanics use `backup-and-restore`.
+description: Prepares a system to survive a total, catastrophic failure — a lost
+  region, a corrupted database, a deleted cloud account — through defined
+  RTO/RPO targets, backups that have actually been restored, and tested
+  failover, not a backup cron job someone set up once. Use this whenever the
+  user asks about disaster recovery, region failover, RTO or RPO, "what if we
+  lost the whole database," or is designing for a failure bigger than a single
+  pod. For live coordination once disaster strikes use `incident-response`; for
+  backup/restore mechanics use `backup-and-restore`.
 license: MIT
+tags:
+  - observability_and_secops
+  - disaster-recovery
+depends_on: []
 ---
 
 # Disaster Recovery

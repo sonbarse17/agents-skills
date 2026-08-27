@@ -1,23 +1,34 @@
 ---
 name: backend-authorization
 description: >
-  Use this skill when the user says 'authorization', 'access control', 'RBAC', 'ABAC', 'ReBAC',
-  'permissions', 'role', 'policy', 'Casbin', 'Cerbos', 'permission delegation', 'temporary access',
-  'break glass', 'super admin', 'JIT elevation', 'role hierarchy', or when designing or implementing
-  authorization for any backend application. This skill covers: authorization model selection (RBAC/ABAC/ReBAC),
-  permission architecture design, role hierarchy and inheritance, admin/master admin patterns,
-  temporary JIT elevation, permission delegation, fine-grained ABAC policies, policy engine integration
-  (Casbin, OPA, Cerbos, Permit.io), and authorization testing. Do NOT use for: authentication flows,
-  JWT implementation, OAuth2/OIDC configuration, session management, or frontend route guards.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'authorization', 'access control', 'RBAC',
+  'ABAC', 'ReBAC', 'permissions', 'role', 'policy', 'Casbin', 'Cerbos',
+  'permission delegation', 'temporary access', 'break glass', 'super admin',
+  'JIT elevation', 'role hierarchy', or when designing or implementing
+  authorization for any backend application. This skill covers: authorization
+  model selection (RBAC/ABAC/ReBAC), permission architecture design, role
+  hierarchy and inheritance, admin/master admin patterns, temporary JIT
+  elevation, permission delegation, fine-grained ABAC policies, policy engine
+  integration (Casbin, OPA, Cerbos, Permit.io), and authorization testing. Do
+  NOT use for: authentication flows, JWT implementation, OAuth2/OIDC
+  configuration, session management, or frontend route guards.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, authorization, access-control, rbac, abac, phase-5]
+tags:
+  - backend
+  - universal
+  - authorization
+  - access-control
+  - rbac
+  - abac
+  - phase-5
+depends_on: []
 ---
 
 # Backend Authorization

@@ -1,7 +1,18 @@
 ---
 name: service-catalog
-description: Builds and maintains a catalog of every service, its owner, and its scaffolding template so "who owns this" and "how do I start a new one" always have one authoritative answer. Use this whenever the user sets up Backstage or a similar catalog, asks who owns a service during an incident, scaffolds a new service, audits for orphaned systems, or wires ownership metadata into paging and access control. For the templates it scaffolds from use `golden-paths`; for the platform it runs on use `internal-developer-platform`; for wiring ownership into paging use `on-call-management`.
+description: Builds and maintains a catalog of every service, its owner, and its
+  scaffolding template so "who owns this" and "how do I start a new one" always
+  have one authoritative answer. Use this whenever the user sets up Backstage or
+  a similar catalog, asks who owns a service during an incident, scaffolds a new
+  service, audits for orphaned systems, or wires ownership metadata into paging
+  and access control. For the templates it scaffolds from use `golden-paths`;
+  for the platform it runs on use `internal-developer-platform`; for wiring
+  ownership into paging use `on-call-management`.
 license: MIT
+tags:
+  - observability_and_secops
+  - service-catalog
+depends_on: []
 ---
 
 # Service Catalog

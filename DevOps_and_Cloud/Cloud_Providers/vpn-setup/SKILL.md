@@ -1,10 +1,16 @@
 ---
 name: vpn-setup
-description: Configure WireGuard, OpenVPN, and cloud VPNs. Implement secure remote access and site-to-site connectivity. Use when setting up secure network tunnels.
+description: Configure WireGuard, OpenVPN, and cloud VPNs. Implement secure
+  remote access and site-to-site connectivity. Use when setting up secure
+  network tunnels.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - vpn-setup
+depends_on: []
 ---
 
 # VPN Setup

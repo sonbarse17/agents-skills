@@ -1,6 +1,11 @@
 ---
 name: extreme-quantization-mastery
-description: "Advanced sub-8-bit quantization methodologies, including AWQ, GPTQ, and FP8 utilization on Hopper architectures."
+description: Advanced sub-8-bit quantization methodologies, including AWQ, GPTQ,
+  and FP8 utilization on Hopper architectures.
+tags:
+  - architecture
+  - extreme-quantization
+depends_on: []
 ---
 
 # Hardware Acceleration: Extreme Quantization

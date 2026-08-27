@@ -1,6 +1,13 @@
 ---
 name: lora-qlora-recipes
-description: Configure LoRA and QLoRA supervised fine-tuning with current best-practice hyperparameters. Use when writing or reviewing a LoRA/QLoRA training configuration, choosing rank/alpha/target modules, or deciding between LoRA, QLoRA, and full fine-tuning.
+description: Configure LoRA and QLoRA supervised fine-tuning with current
+  best-practice hyperparameters. Use when writing or reviewing a LoRA/QLoRA
+  training configuration, choosing rank/alpha/target modules, or deciding
+  between LoRA, QLoRA, and full fine-tuning.
+tags:
+  - models_and_finetuning
+  - lora-qlora-recipes
+depends_on: []
 ---
 
 # LoRA & QLoRA Recipes

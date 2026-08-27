@@ -1,10 +1,17 @@
 ---
 name: hashicorp-vault
-description: Manage secrets and PKI with HashiCorp Vault. Configure secret engines, authentication methods, and policies. Use when implementing centralized secrets management, dynamic credentials, or certificate management.
+description: Manage secrets and PKI with HashiCorp Vault. Configure secret
+  engines, authentication methods, and policies. Use when implementing
+  centralized secrets management, dynamic credentials, or certificate
+  management.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - hashicorp-vault
+depends_on: []
 ---
 
 # HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)

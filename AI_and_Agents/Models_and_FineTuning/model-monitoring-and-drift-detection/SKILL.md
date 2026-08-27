@@ -1,17 +1,21 @@
 ---
 name: model-monitoring-and-drift-detection
 description: >
-  Guides setting up production model monitoring for data drift, concept
-  drift, prediction drift, and model quality decay, with concrete statistical
-  tests, thresholds, and alerting/retraining triggers. Use when the user asks
-  to "monitor a model in production", "detect data drift", "detect concept
-  drift", set up dashboards/alerts for model quality, investigate a silent
-  model performance regression, or decide when a model needs retraining.
+  Guides setting up production model monitoring for data drift, concept drift,
+  prediction drift, and model quality decay, with concrete statistical tests,
+  thresholds, and alerting/retraining triggers. Use when the user asks to
+  "monitor a model in production", "detect data drift", "detect concept drift",
+  set up dashboards/alerts for model quality, investigate a silent model
+  performance regression, or decide when a model needs retraining.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - model-monitoring-and-drift-detection
+depends_on: []
 ---
 
 # Model [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) And Drift Detection

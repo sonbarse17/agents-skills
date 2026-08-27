@@ -1,6 +1,12 @@
 ---
 name: python-resource-management
-description: Python resource management with context managers, cleanup patterns, and streaming. Use when managing connections, file handles, implementing cleanup logic, or building streaming responses with accumulated state.
+description: Python resource management with context managers, cleanup patterns,
+  and streaming. Use when managing connections, file handles, implementing
+  cleanup logic, or building streaming responses with accumulated state.
+tags:
+  - languages
+  - python-resource-management
+depends_on: []
 ---
 
 # [Python](../python/SKILL.md) Resource Management

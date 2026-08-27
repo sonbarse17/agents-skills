@@ -1,19 +1,23 @@
 ---
 name: backend-bulk-import
 description: >
-  Enforce bulk data import patterns including CSV/Excel parsing, file upload handling,
-  validation pipeline, progress tracking, batch processing, error reporting, rollback
-  on failure, deduplication, and background processing. NOT for real-time data ingestion
-  or streaming pipelines.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Enforce bulk data import patterns including CSV/Excel parsing, file upload
+  handling, validation pipeline, progress tracking, batch processing, error
+  reporting, rollback on failure, deduplication, and background processing. NOT
+  for real-time data ingestion or streaming pipelines.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, data, phase-10]
+tags:
+  - backend
+  - data
+  - phase-10
+depends_on: []
 ---
 
 # Bulk Import Skill

@@ -1,10 +1,15 @@
 ---
 name: change-management
-description: Implement change management processes. Configure CAB reviews, change windows, and rollback procedures. Use when managing production changes.
+description: Implement change management processes. Configure CAB reviews,
+  change windows, and rollback procedures. Use when managing production changes.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - change-management
+depends_on: []
 ---
 
 # Change Management

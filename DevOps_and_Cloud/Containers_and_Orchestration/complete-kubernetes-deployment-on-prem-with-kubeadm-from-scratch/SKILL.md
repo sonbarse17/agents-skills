@@ -1,26 +1,29 @@
 ---
 name: complete-kubernetes-deployment-on-prem-with-kubeadm-from-scratch
 description: >
-  Sequences a complete, end-to-end self-managed on-prem Kubernetes
-  deployment from bare-metal hosts to a production-ready HA cluster
-  serving a first workload — physical/network prerequisites, kubeadm
-  init/join HA control plane with kube-vip, CNI (Calico/Flannel), MetalLB
-  for LoadBalancer Services (bare metal has no cloud load balancer),
-  ingress-nginx, cert-manager with a self-hosted internal CA or ACME,
-  conformance validation, etcd backup setup, and a Helm-deployed first
-  workload. This is an integration/orchestration skill that sequences
-  several existing tool-specific skills in the correct order and flags
-  the handoff points between them — it does not restate their internals.
-  Use when a user asks to "deploy Kubernetes on-prem from scratch,"
-  "build a bare-metal Kubernetes cluster end to end with kubeadm," "set
-  up a self-managed HA cluster on our own hardware," "get LoadBalancer
-  Services working on bare metal," or "give me the full sequence to go
-  from bare servers to a working self-managed Kubernetes cluster."
+  Sequences a complete, end-to-end self-managed on-prem Kubernetes deployment
+  from bare-metal hosts to a production-ready HA cluster serving a first
+  workload — physical/network prerequisites, kubeadm init/join HA control plane
+  with kube-vip, CNI (Calico/Flannel), MetalLB for LoadBalancer Services (bare
+  metal has no cloud load balancer), ingress-nginx, cert-manager with a
+  self-hosted internal CA or ACME, conformance validation, etcd backup setup,
+  and a Helm-deployed first workload. This is an integration/orchestration skill
+  that sequences several existing tool-specific skills in the correct order and
+  flags the handoff points between them — it does not restate their internals.
+  Use when a user asks to "deploy Kubernetes on-prem from scratch," "build a
+  bare-metal Kubernetes cluster end to end with kubeadm," "set up a self-managed
+  HA cluster on our own hardware," "get LoadBalancer Services working on bare
+  metal," or "give me the full sequence to go from bare servers to a working
+  self-managed Kubernetes cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-kubernetes-deployment-on-prem-with-kubeadm-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment On-Prem With kubeadm From Scratch

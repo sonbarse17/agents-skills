@@ -1,6 +1,12 @@
 ---
 name: turborepo-caching
-description: Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.
+description: Configure Turborepo for efficient monorepo builds with local and
+  remote caching. Use when setting up Turborepo, optimizing build pipelines, or
+  implementing distributed caching.
+tags:
+  - ci_cd
+  - turborepo-caching
+depends_on: []
 ---
 
 # Turborepo Caching

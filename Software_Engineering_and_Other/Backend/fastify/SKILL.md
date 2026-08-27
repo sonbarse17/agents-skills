@@ -1,16 +1,24 @@
 ---
 name: nodejs-fastify
 description: >
-  Use this skill when building Fastify applications — schema validation, plugin system, hooks, serialization. This skill enforces: JSON Schema validation, plugin encapsulation, schema serializers, Fastify lifecycle hooks. Do NOT use for: Express.js apps, database schema, frontend, or non-Fastify Node backends.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Fastify applications — schema validation, plugin
+  system, hooks, serialization. This skill enforces: JSON Schema validation,
+  plugin encapsulation, schema serializers, Fastify lifecycle hooks. Do NOT use
+  for: Express.js apps, database schema, frontend, or non-Fastify Node backends.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, nodejs, fastify, phase-10]
+tags:
+  - backend
+  - nodejs
+  - fastify
+  - phase-10
+depends_on: []
 ---
 
 # Node.js Fastify

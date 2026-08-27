@@ -1,10 +1,16 @@
 ---
 name: ansible
-description: Automate configuration management and application deployment with Ansible. Use when tasks mention ansible-playbook, inventory files, Ansible roles, ad-hoc commands, ansible-galaxy, or agentless SSH automation.
+description: Automate configuration management and application deployment with
+  Ansible. Use when tasks mention ansible-playbook, inventory files, Ansible
+  roles, ad-hoc commands, ansible-galaxy, or agentless SSH automation.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - ansible
+depends_on: []
 ---
 
 # Ansible

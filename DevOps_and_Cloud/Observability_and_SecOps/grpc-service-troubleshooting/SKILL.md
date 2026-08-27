@@ -1,20 +1,23 @@
 ---
 name: grpc-service-troubleshooting
 description: >
-  Diagnoses gRPC-specific failure modes — DEADLINE_EXCEEDED, connection
-  and keepalive/GOAWAY issues, HTTP/2 multiplexing problems behind
-  L4/L7 load balancers, and protobuf/proto-compatibility breakage
-  across client/server versions — distinct from generic HTTP ingress
-  troubleshooting. Use when a user asks to "why is my gRPC call
-  hanging or returning DEADLINE_EXCEEDED," "gRPC keepalive pings
-  disconnecting my clients," "gRPC load balancing isn't spreading
-  traffic across pods," "a proto field changed and now some clients
+  Diagnoses gRPC-specific failure modes — DEADLINE_EXCEEDED, connection and
+  keepalive/GOAWAY issues, HTTP/2 multiplexing problems behind L4/L7 load
+  balancers, and protobuf/proto-compatibility breakage across client/server
+  versions — distinct from generic HTTP ingress troubleshooting. Use when a user
+  asks to "why is my gRPC call hanging or returning DEADLINE_EXCEEDED," "gRPC
+  keepalive pings disconnecting my clients," "gRPC load balancing isn't
+  spreading traffic across pods," "a proto field changed and now some clients
   fail," or "gRPC streaming call drops after N minutes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - observability_and_secops
+  - grpc-service-troubleshooting
+depends_on: []
 ---
 
 # gRPC Service Troubleshooting

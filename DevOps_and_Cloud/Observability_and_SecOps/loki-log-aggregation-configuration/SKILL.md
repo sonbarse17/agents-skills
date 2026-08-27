@@ -1,19 +1,22 @@
 ---
 name: loki-log-aggregation-configuration
 description: >
-  Configures Grafana Loki as a log aggregation backend — ingestion
-  limits, label/cardinality design, retention periods, index/chunk
-  schema config, and object-storage backends (S3/GCS/Azure Blob or
-  filesystem for small setups), plus single-binary vs. simple-scalable
-  vs. microservices deployment modes. Use when the user asks to "stand
-  up Loki," "set Loki log retention," "configure Loki's storage
-  backend," "design labels for Loki ingestion," "scale Loki for higher
-  log volume," or "Loki is rejecting/dropping logs at ingestion."
+  Configures Grafana Loki as a log aggregation backend — ingestion limits,
+  label/cardinality design, retention periods, index/chunk schema config, and
+  object-storage backends (S3/GCS/Azure Blob or filesystem for small setups),
+  plus single-binary vs. simple-scalable vs. microservices deployment modes. Use
+  when the user asks to "stand up Loki," "set Loki log retention," "configure
+  Loki's storage backend," "design labels for Loki ingestion," "scale Loki for
+  higher log volume," or "Loki is rejecting/dropping logs at ingestion."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - loki-log-aggregation-configuration
+depends_on: []
 ---
 
 # Loki Log Aggregation Configuration

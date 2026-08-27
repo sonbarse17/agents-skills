@@ -1,7 +1,18 @@
 ---
 name: load-balancing
-description: Covers distributing traffic across healthy backends — L4 versus L7 balancing, algorithms, health checks that detect real failure, connection draining during deploys, and the real latency and capacity cost of sticky sessions. Use this whenever the user is choosing a load balancer type, configuring health checks, picking round-robin versus least-connections, debugging uneven traffic distribution, or deciding whether sessions need to be sticky. For routing and auth at the application layer use `api-gateway`, and for balancing across pods inside a cluster use `kubernetes-networking`.
+description: Covers distributing traffic across healthy backends — L4 versus L7
+  balancing, algorithms, health checks that detect real failure, connection
+  draining during deploys, and the real latency and capacity cost of sticky
+  sessions. Use this whenever the user is choosing a load balancer type,
+  configuring health checks, picking round-robin versus least-connections,
+  debugging uneven traffic distribution, or deciding whether sessions need to be
+  sticky. For routing and auth at the application layer use `api-gateway`, and
+  for balancing across pods inside a cluster use `kubernetes-networking`.
 license: MIT
+tags:
+  - backend
+  - load-balancing
+depends_on: []
 ---
 
 # Load Balancing

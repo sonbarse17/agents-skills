@@ -1,16 +1,29 @@
 ---
 name: data-testing
 description: >
-  Use this skill when asked about data testing, dbt unit testing, data-diff, datafold, Soda, Great Expectations, data regression testing, data quality testing, data contract testing, or data validation automation. This skill enforces: dbt unit testing with dbt-unit-testing package, regression detection with data-diff and datafold, data quality validation with Soda and Great Expectations, data contract enforcement, and CI/CD integration for automated data testing. Do NOT use for: pipeline monitoring (use data-observability), schema design (use data-warehouse), or generic software testing (use testing skill).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data testing, dbt unit testing, data-diff,
+  datafold, Soda, Great Expectations, data regression testing, data quality
+  testing, data contract testing, or data validation automation. This skill
+  enforces: dbt unit testing with dbt-unit-testing package, regression detection
+  with data-diff and datafold, data quality validation with Soda and Great
+  Expectations, data contract enforcement, and CI/CD integration for automated
+  data testing. Do NOT use for: pipeline monitoring (use data-observability),
+  schema design (use data-warehouse), or generic software testing (use testing
+  skill).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsuf: true
-tags: [data, testing, quality, phase-11]
+tags:
+  - data
+  - testing
+  - quality
+  - phase-11
+depends_on: []
 ---
 
 # Data Testing

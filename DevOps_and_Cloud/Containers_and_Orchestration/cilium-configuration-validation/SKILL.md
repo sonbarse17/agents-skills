@@ -1,21 +1,24 @@
 ---
 name: cilium-configuration-validation
 description: >
-  Validates CiliumNetworkPolicy, CiliumClusterwideNetworkPolicy, and
-  Hubble observability configuration before a production rollout —
-  syntax-checking policy files offline, confirming which endpoints and
-  identities a policy actually selects, and using Hubble flow data to
-  prove a policy enforces what it's meant to instead of trusting the
-  YAML. Use when a user asks to "validate a CiliumNetworkPolicy before
-  applying it," "check if this policy will actually match my pods,"
-  "confirm kube-proxy replacement is healthy before a rollout," "test
-  an egress FQDN policy before merging," or "why is Hubble showing
-  drops I didn't expect."
+  Validates CiliumNetworkPolicy, CiliumClusterwideNetworkPolicy, and Hubble
+  observability configuration before a production rollout — syntax-checking
+  policy files offline, confirming which endpoints and identities a policy
+  actually selects, and using Hubble flow data to prove a policy enforces what
+  it's meant to instead of trusting the YAML. Use when a user asks to "validate
+  a CiliumNetworkPolicy before applying it," "check if this policy will actually
+  match my pods," "confirm kube-proxy replacement is healthy before a rollout,"
+  "test an egress FQDN policy before merging," or "why is Hubble showing drops I
+  didn't expect."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - cilium-configuration-validation
+depends_on: []
 ---
 
 # Cilium Configuration Validation

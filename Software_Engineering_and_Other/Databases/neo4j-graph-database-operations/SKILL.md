@@ -1,18 +1,21 @@
 ---
 name: neo4j-graph-database-operations
 description: >
-  Covers operating Neo4j: Cypher query fundamentals for operational
-  diagnosis, causal clustering for HA and read scaling, and index/
-  constraint management (property indexes, full-text indexes, uniqueness
-  constraints). Use when the user asks to "write a Cypher query for
-  this graph traversal," "set up a Neo4j causal cluster," "why is this
-  Cypher query slow," "add an index/constraint in Neo4j," or "size a
-  Neo4j cluster for read scaling."
+  Covers operating Neo4j: Cypher query fundamentals for operational diagnosis,
+  causal clustering for HA and read scaling, and index/ constraint management
+  (property indexes, full-text indexes, uniqueness constraints). Use when the
+  user asks to "write a Cypher query for this graph traversal," "set up a Neo4j
+  causal cluster," "why is this Cypher query slow," "add an index/constraint in
+  Neo4j," or "size a Neo4j cluster for read scaling."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - neo4j-graph-database-operations
+depends_on: []
 ---
 
 # Neo4j Graph Database Operations

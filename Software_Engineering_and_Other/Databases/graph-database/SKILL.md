@@ -1,16 +1,28 @@
 ---
 name: data-graph-database
 description: >
-  Use this skill when asked about Neo4j, Amazon Neptune, JanusGraph, graph database, graph model, Cypher, Gremlin, RDF, SPARQL, graph traversal, property graph, or knowledge graph. This skill enforces: graph data modeling (property graph, RDF), Neo4j/Cypher query patterns, Amazon Neptune/Gremlin traversal, JanusGraph architecture with backend storage, graph traversal optimization, knowledge graph design for connected domains, and performance tuning (indexing, caching, query planning). Do NOT use for: document storage, wide-column time-series, or full-text search.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about Neo4j, Amazon Neptune, JanusGraph, graph
+  database, graph model, Cypher, Gremlin, RDF, SPARQL, graph traversal, property
+  graph, or knowledge graph. This skill enforces: graph data modeling (property
+  graph, RDF), Neo4j/Cypher query patterns, Amazon Neptune/Gremlin traversal,
+  JanusGraph architecture with backend storage, graph traversal optimization,
+  knowledge graph design for connected domains, and performance tuning
+  (indexing, caching, query planning). Do NOT use for: document storage,
+  wide-column time-series, or full-text search.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, database, graph, phase-11]
+tags:
+  - data
+  - database
+  - graph
+  - phase-11
+depends_on: []
 ---
 
 # Data Graph Database

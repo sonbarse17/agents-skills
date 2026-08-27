@@ -1,16 +1,23 @@
 ---
 name: desktop-electron
 description: >
-  Use when the user asks about Electron app development, Chromium-based desktop apps, main/renderer process architecture, IPC communication, or packaging Electron apps. Do NOT use for: Tauri (desktop-tauri), or web app frontend (non-desktop skills).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about Electron app development, Chromium-based desktop
+  apps, main/renderer process architecture, IPC communication, or packaging
+  Electron apps. Do NOT use for: Tauri (desktop-tauri), or web app frontend
+  (non-desktop skills).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, electron, cross-platform]
+tags:
+  - desktop
+  - electron
+  - cross-platform
+depends_on: []
 ---
 
 # Electron

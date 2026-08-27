@@ -1,10 +1,17 @@
 ---
 name: docker-compose
-description: Define and run multi-container Docker applications using Docker Compose. Create compose files, manage service dependencies, configure networks and volumes, and orchestrate local development environments. Use when setting up multi-service applications or development environments.
+description: Define and run multi-container Docker applications using Docker
+  Compose. Create compose files, manage service dependencies, configure networks
+  and volumes, and orchestrate local development environments. Use when setting
+  up multi-service applications or development environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - docker-compose
+depends_on: []
 ---
 
 # [Docker](../docker/SKILL.md) Compose

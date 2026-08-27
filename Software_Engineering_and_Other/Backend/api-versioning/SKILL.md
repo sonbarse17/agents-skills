@@ -1,16 +1,28 @@
 ---
 name: backend-api-versioning
 description: >
-  Use this skill when the user says 'API versioning', 'version strategy', 'URI versioning', 'header versioning', 'content negotiation', 'accept header', 'breaking change', 'API migration', 'deprecate endpoint', 'sunset endpoint'. This skill manages API version transitions using URI, header, or content-negotiation strategies. Applies to any backend stack. Do NOT use for: database schema versioning, client SDK versioning, or infrastructure versioning.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'API versioning', 'version strategy', 'URI
+  versioning', 'header versioning', 'content negotiation', 'accept header',
+  'breaking change', 'API migration', 'deprecate endpoint', 'sunset endpoint'.
+  This skill manages API version transitions using URI, header, or
+  content-negotiation strategies. Applies to any backend stack. Do NOT use for:
+  database schema versioning, client SDK versioning, or infrastructure
+  versioning.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, api-versioning, deprecation, breaking-changes]
+tags:
+  - backend
+  - universal
+  - api-versioning
+  - deprecation
+  - breaking-changes
+depends_on: []
 ---
 
 # Backend API Versioning

@@ -1,21 +1,25 @@
 ---
 name: complete-devsecops-pipeline-for-vm-based-workloads-from-scratch
 description: >
-  Builds the complete security-gate sequence for a VM-based DevSecOps
-  pipeline from scratch — SAST, SCA, golden-image scanning and CIS
-  benchmark hardening baked into the machine image itself, config-
-  management-applied secrets via Ansible Vault (never plaintext), and an
-  ongoing patch/drift-detection gate that runs independently of any single
-  deploy, distinct from the per-deploy scanning in the Kubernetes and
-  serverless variants. Use when the user asks to "build a DevSecOps
-  pipeline for EC2/VM workloads from scratch," "harden a golden AMI to CIS
-  benchmarks in the pipeline," "apply secrets with Ansible Vault instead
-  of plaintext," or "add ongoing patch/drift detection for a VM fleet."
+  Builds the complete security-gate sequence for a VM-based DevSecOps pipeline
+  from scratch — SAST, SCA, golden-image scanning and CIS benchmark hardening
+  baked into the machine image itself, config- management-applied secrets via
+  Ansible Vault (never plaintext), and an ongoing patch/drift-detection gate
+  that runs independently of any single deploy, distinct from the per-deploy
+  scanning in the Kubernetes and serverless variants. Use when the user asks to
+  "build a DevSecOps pipeline for EC2/VM workloads from scratch," "harden a
+  golden AMI to CIS benchmarks in the pipeline," "apply secrets with Ansible
+  Vault instead of plaintext," or "add ongoing patch/drift detection for a VM
+  fleet."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - ci_cd
+  - complete-devsecops-pipeline-for-vm-based-workloads-from-scratch
+depends_on: []
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for VM-Based Workloads, From Scratch

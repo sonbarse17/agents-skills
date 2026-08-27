@@ -1,6 +1,10 @@
 ---
 name: cuda-programming
 description: CUDA Under The Hood
+tags:
+  - game_development
+  - cuda-programming
+depends_on: []
 ---
 # CUDA GPU Architecture Mechanics
 

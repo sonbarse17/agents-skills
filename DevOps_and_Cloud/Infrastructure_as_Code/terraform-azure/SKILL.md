@@ -1,10 +1,15 @@
 ---
 name: terraform-azure
-description: Provision Azure infrastructure with Terraform. Configure providers, manage state, and deploy resources. Use when implementing IaC for Azure.
+description: Provision Azure infrastructure with Terraform. Configure providers,
+  manage state, and deploy resources. Use when implementing IaC for Azure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - terraform-azure
+depends_on: []
 ---
 
 # Terraform Azure

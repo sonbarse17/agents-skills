@@ -1,16 +1,31 @@
 ---
 name: blockchain-cryptography
 description: >
-  Use this skill when asked about cryptographic primitives in blockchain, elliptic curve cryptography, hash functions, Merkle trees, digital signatures, zero-knowledge proofs, key derivation, BIP standards, and blockchain-specific crypto implementations. Languages: C++, Rust, Go, Python. Covers secp256k1, BN254, BLS12-381, Ed25519, SHA-256, Keccak-256, BLAKE2, Poseidon, Merkle trees (binary, Patricia, sparse, Verkle), ECDSA, Schnorr, BLS, threshold signatures (FROST, GG20), zk-SNARKs/STARKs/Bulletproofs, HD wallets (BIP-32/39/44), PSBT (BIP-174), and signature aggregation. Do NOT use for: general blockchain protocols (use blockchain-core), smart contract development (use blockchain-application), or standard web security cryptography outside blockchain.
-version: "1.2.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about cryptographic primitives in blockchain,
+  elliptic curve cryptography, hash functions, Merkle trees, digital signatures,
+  zero-knowledge proofs, key derivation, BIP standards, and blockchain-specific
+  crypto implementations. Languages: C++, Rust, Go, Python. Covers secp256k1,
+  BN254, BLS12-381, Ed25519, SHA-256, Keccak-256, BLAKE2, Poseidon, Merkle trees
+  (binary, Patricia, sparse, Verkle), ECDSA, Schnorr, BLS, threshold signatures
+  (FROST, GG20), zk-SNARKs/STARKs/Bulletproofs, HD wallets (BIP-32/39/44), PSBT
+  (BIP-174), and signature aggregation. Do NOT use for: general blockchain
+  protocols (use blockchain-core), smart contract development (use
+  blockchain-application), or standard web security cryptography outside
+  blockchain.
+version: 1.2.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [blockchain, cryptography, security, phase-blockchain]
+tags:
+  - blockchain
+  - cryptography
+  - security
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Cryptography

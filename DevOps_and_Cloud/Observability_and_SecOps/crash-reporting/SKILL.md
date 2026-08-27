@@ -1,16 +1,24 @@
 ---
 name: mobile-crash-reporting
 description: >
-  Use this skill when the user says 'crash report', 'crashlytics', 'sentry', 'symbolication', 'dsym', 'breadcrumb', 'non-fatal', 'user context', 'error tracking'. This skill enforces proper crash reporting patterns: SDK setup, symbolication, breadcrumbs, non-fatal error capture, user context, and release health monitoring. Applies to iOS, Android, Flutter, and React Native.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'crash report', 'crashlytics', 'sentry',
+  'symbolication', 'dsym', 'breadcrumb', 'non-fatal', 'user context', 'error
+  tracking'. This skill enforces proper crash reporting patterns: SDK setup,
+  symbolication, breadcrumbs, non-fatal error capture, user context, and release
+  health monitoring. Applies to iOS, Android, Flutter, and React Native.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, crash-reporting, universal]
+tags:
+  - mobile
+  - crash-reporting
+  - universal
+depends_on: []
 ---
 
 # Mobile Crash Reporting

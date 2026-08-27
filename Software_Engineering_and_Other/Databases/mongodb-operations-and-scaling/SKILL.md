@@ -1,17 +1,21 @@
 ---
 name: mongodb-operations-and-scaling
 description: >
-  Covers MongoDB replica set operations, sharding design (shard key
-  selection, chunk balancing), index tuning, and routine operational
-  maintenance (compaction, oplog sizing, election tuning). Use when the
-  user asks to "set up MongoDB sharding," "pick a shard key," "why is
-  this MongoDB query slow," "resize the oplog," "add a replica set
-  member," or "MongoDB is rebalancing chunks unevenly."
+  Covers MongoDB replica set operations, sharding design (shard key selection,
+  chunk balancing), index tuning, and routine operational maintenance
+  (compaction, oplog sizing, election tuning). Use when the user asks to "set up
+  MongoDB sharding," "pick a shard key," "why is this MongoDB query slow,"
+  "resize the oplog," "add a replica set member," or "MongoDB is rebalancing
+  chunks unevenly."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - mongodb-operations-and-scaling
+depends_on: []
 ---
 
 # [MongoDB](../../Backend/mongodb/SKILL.md) Operations and Scaling

@@ -1,10 +1,17 @@
 ---
 name: openshift
-description: Manage Red Hat OpenShift clusters and deployments. Configure projects, routes, builds, and deploy applications using OpenShift-specific features. Use when working with OpenShift Container Platform or OKD for enterprise Kubernetes.
+description: Manage Red Hat OpenShift clusters and deployments. Configure
+  projects, routes, builds, and deploy applications using OpenShift-specific
+  features. Use when working with OpenShift Container Platform or OKD for
+  enterprise Kubernetes.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - openshift
+depends_on: []
 ---
 
 # OpenShift

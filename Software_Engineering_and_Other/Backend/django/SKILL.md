@@ -1,16 +1,28 @@
 ---
 name: python-django-architecture
 description: >
-  Use this skill when the user says 'Django structure', 'Django architecture', 'Django apps', 'Django clean arch', 'Django ORM', 'Django REST framework', 'DRF', or when building a Django application. This skill enforces: one Django app per bounded context, service layer pattern separating business logic from models, thin views that delegate to services, DRF serializers as DTOs, and signals that trigger services (no business logic in signals). Requires Django in dependencies. Do NOT use for: FastAPI projects, Flask, or non-Django Python backend.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Django structure', 'Django architecture',
+  'Django apps', 'Django clean arch', 'Django ORM', 'Django REST framework',
+  'DRF', or when building a Django application. This skill enforces: one Django
+  app per bounded context, service layer pattern separating business logic from
+  models, thin views that delegate to services, DRF serializers as DTOs, and
+  signals that trigger services (no business logic in signals). Requires Django
+  in dependencies. Do NOT use for: FastAPI projects, Flask, or non-Django Python
+  backend.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, python, django, phase-2]
+tags:
+  - backend
+  - python
+  - django
+  - phase-2
+depends_on: []
 ---
 
 # [Python](../../Languages/python/SKILL.md) Django Architecture

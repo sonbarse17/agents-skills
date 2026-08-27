@@ -1,16 +1,25 @@
 ---
 name: core-context-compressor
 description: >
-  Use this skill when the user says 'compress context', 'context summary', 'token save', 'compression', 'condense', 'summarize conversation', 'context budget', 'reduce tokens', 'context window'. Produces a structured compressed summary of current session context. Do NOT use for: general note-taking or file writing.
+  Use this skill when the user says 'compress context', 'context summary',
+  'token save', 'compression', 'condense', 'summarize conversation', 'context
+  budget', 'reduce tokens', 'context window'. Produces a structured compressed
+  summary of current session context. Do NOT use for: general note-taking or
+  file writing.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [core, context, compression, phase-7]
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - core
+  - context
+  - compression
+  - phase-7
+version: 1.1.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Core Context Compressor

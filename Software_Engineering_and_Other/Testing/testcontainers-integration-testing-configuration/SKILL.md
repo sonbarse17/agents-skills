@@ -2,20 +2,23 @@
 name: testcontainers-integration-testing-configuration
 description: >
   Guides configuring Testcontainers to spin up real dependency containers
-  (Postgres, Kafka, Redis, and similar) for integration tests instead of
-  mocks or hand-maintained shared test environments — container
-  lifecycle management (per-test vs. shared/singleton containers),
-  wait strategies, and CI runner resource/Docker-in-Docker
-  considerations. Use when the user asks to "write an integration test
-  against a real Postgres/Kafka/Redis container," "replace this mock
-  with Testcontainers," "speed up a slow Testcontainers test suite," "run
-  Testcontainers in CI," or "why does my Testcontainers test hang/fail
-  only in the CI runner."
+  (Postgres, Kafka, Redis, and similar) for integration tests instead of mocks
+  or hand-maintained shared test environments — container lifecycle management
+  (per-test vs. shared/singleton containers), wait strategies, and CI runner
+  resource/Docker-in-Docker considerations. Use when the user asks to "write an
+  integration test against a real Postgres/Kafka/Redis container," "replace this
+  mock with Testcontainers," "speed up a slow Testcontainers test suite," "run
+  Testcontainers in CI," or "why does my Testcontainers test hang/fail only in
+  the CI runner."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - testing
+  - testcontainers-integration-testing-configuration
+depends_on: []
 ---
 
 # Testcontainers Integration Testing Configuration

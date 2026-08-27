@@ -1,10 +1,15 @@
 ---
 name: cloudflare-zero-trust
-description: Protect internal apps with Cloudflare Access, device posture, and Zero Trust policies.
+description: Protect internal apps with Cloudflare Access, device posture, and
+  Zero Trust policies.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - cloudflare-zero-trust
+depends_on: []
 ---
 
 # Cloudflare Zero Trust

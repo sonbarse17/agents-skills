@@ -2,17 +2,20 @@
 name: timescaledb-time-series-operations-and-configuration
 description: >
   Covers TimescaleDB as a PostgreSQL extension for time-series workloads:
-  hypertable creation and chunk-interval sizing, continuous aggregates
-  for pre-computed rollups, and retention/compression policies. Use when
-  the user asks to "set up a TimescaleDB hypertable," "size chunk
-  intervals," "create a continuous aggregate," "compress old
-  time-series data," "set a data retention policy in TimescaleDB," or
-  "why is my hypertable query slow."
+  hypertable creation and chunk-interval sizing, continuous aggregates for
+  pre-computed rollups, and retention/compression policies. Use when the user
+  asks to "set up a TimescaleDB hypertable," "size chunk intervals," "create a
+  continuous aggregate," "compress old time-series data," "set a data retention
+  policy in TimescaleDB," or "why is my hypertable query slow."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - timescaledb-time-series-operations-and-configuration
+depends_on: []
 ---
 
 # TimescaleDB Time-Series Operations and Configuration

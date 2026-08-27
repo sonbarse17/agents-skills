@@ -1,18 +1,28 @@
 ---
 name: ml-computer-vision
 description: >
-  Use this skill when building computer vision systems for image classification, object detection, segmentation, or image preprocessing/augmentation.
-  This skill enforces: task selection (classification/detection/segmentation), model choice by task and budget, image preprocessing pipeline, augmentation strategy, training config with metrics (mAP, IoU), inference optimization.
-  Do NOT use for: video streaming analytics, OCR (use separate OCR skill), medical imaging (requires domain-specific skill), NLP with image captions (use ml-nlp).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building computer vision systems for image classification,
+  object detection, segmentation, or image preprocessing/augmentation. This
+  skill enforces: task selection (classification/detection/segmentation), model
+  choice by task and budget, image preprocessing pipeline, augmentation
+  strategy, training config with metrics (mAP, IoU), inference optimization. Do
+  NOT use for: video streaming analytics, OCR (use separate OCR skill), medical
+  imaging (requires domain-specific skill), NLP with image captions (use
+  ml-nlp).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, computer-vision, image, phase-11]
+tags:
+  - ml
+  - computer-vision
+  - image
+  - phase-11
+depends_on: []
 ---
 
 # ML Computer Vision

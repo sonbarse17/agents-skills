@@ -1,7 +1,18 @@
 ---
 name: team-communication-protocols
-description: Structured messaging protocols for agent team communication including message type selection, plan approval, shutdown procedures, and anti-patterns to avoid. Use this skill when establishing communication norms for a newly spawned team, when deciding whether to send a direct message or a broadcast, when a team-lead needs to review and approve an implementer's plan before work begins, when orchestrating a graceful team shutdown after all tasks are complete, or when debugging why teammates are not coordinating correctly at integration points.
+description: Structured messaging protocols for agent team communication
+  including message type selection, plan approval, shutdown procedures, and
+  anti-patterns to avoid. Use this skill when establishing communication norms
+  for a newly spawned team, when deciding whether to send a direct message or a
+  broadcast, when a team-lead needs to review and approve an implementer's plan
+  before work begins, when orchestrating a graceful team shutdown after all
+  tasks are complete, or when debugging why teammates are not coordinating
+  correctly at integration points.
 version: 1.0.2
+tags:
+  - product_and_business
+  - team-communication-protocols
+depends_on: []
 ---
 
 # Team Communication Protocols

@@ -1,16 +1,31 @@
 ---
 name: data-cost-optimization
 description: >
-  Use this skill when asked about data cost optimization, Snowflake cost management, BigQuery slot management, S3 storage tiering, warehouse cost optimization, FinOps for data, cloud data cost reduction, or query cost analysis. This skill enforces: Snowflake credit usage analysis with query optimization, BigQuery slot commitment planning and reservation management, S3 lifecycle policies for storage tiering, warehouse auto-scaling and clustering configuration, and FinOps practices for data platform cost allocation. Do NOT use for: general cloud FinOps (use dedicated FinOps skill), data pipeline design (use data-etl-pipeline), or infrastructure cost estimation (use infra-costing skill).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data cost optimization, Snowflake cost
+  management, BigQuery slot management, S3 storage tiering, warehouse cost
+  optimization, FinOps for data, cloud data cost reduction, or query cost
+  analysis. This skill enforces: Snowflake credit usage analysis with query
+  optimization, BigQuery slot commitment planning and reservation management, S3
+  lifecycle policies for storage tiering, warehouse auto-scaling and clustering
+  configuration, and FinOps practices for data platform cost allocation. Do NOT
+  use for: general cloud FinOps (use dedicated FinOps skill), data pipeline
+  design (use data-etl-pipeline), or infrastructure cost estimation (use
+  infra-costing skill).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsuf: true
-tags: [data, cost, finops, optimization, phase-11]
+tags:
+  - data
+  - cost
+  - finops
+  - optimization
+  - phase-11
+depends_on: []
 ---
 
 # Data Cost Optimization

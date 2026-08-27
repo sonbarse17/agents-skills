@@ -1,7 +1,19 @@
 ---
 name: error-budgets
-description: Turns an SLO into a spendable number that makes the velocity-versus-reliability tradeoff explicit — deriving the budget from the SLO, tracking how fast it's consumed, and enforcing freeze policies when it runs out, instead of arguing about "is it reliable enough" from gut feeling. Use this whenever the user mentions error budgets, asks whether they can ship given recent reliability, or wants a release-freeze policy tied to reliability. For defining the SLO the budget derives from use `slo-definition`; for the live incident burning the budget use `incident-response`.
+description: Turns an SLO into a spendable number that makes the
+  velocity-versus-reliability tradeoff explicit — deriving the budget from the
+  SLO, tracking how fast it's consumed, and enforcing freeze policies when it
+  runs out, instead of arguing about "is it reliable enough" from gut feeling.
+  Use this whenever the user mentions error budgets, asks whether they can ship
+  given recent reliability, or wants a release-freeze policy tied to
+  reliability. For defining the SLO the budget derives from use
+  `slo-definition`; for the live incident burning the budget use
+  `incident-response`.
 license: MIT
+tags:
+  - frontend
+  - error-budgets
+depends_on: []
 ---
 
 # Error Budgets

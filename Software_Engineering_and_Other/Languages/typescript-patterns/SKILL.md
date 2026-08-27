@@ -1,16 +1,30 @@
 ---
 name: frontend-typescript-patterns
 description: >
-  Use this skill when the user says 'TypeScript patterns', 'generic components', 'type-safe API', 'discriminated unions', 'type guards', 'type narrowing', 'TS patterns', 'type-safe React', or when writing TypeScript for frontend applications. This skill enforces: generic component patterns with proper constraint bounds, type-safe API client wrappers with response typing, discriminated unions for UI state management, and user-defined type guards. Works with React, Vue, Angular, or any TS-based frontend. Do NOT use for: backend type setup, Node.js runtime types, or basic TypeScript syntax questions.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'TypeScript patterns', 'generic components',
+  'type-safe API', 'discriminated unions', 'type guards', 'type narrowing', 'TS
+  patterns', 'type-safe React', or when writing TypeScript for frontend
+  applications. This skill enforces: generic component patterns with proper
+  constraint bounds, type-safe API client wrappers with response typing,
+  discriminated unions for UI state management, and user-defined type guards.
+  Works with React, Vue, Angular, or any TS-based frontend. Do NOT use for:
+  backend type setup, Node.js runtime types, or basic TypeScript syntax
+  questions.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, typescript, patterns, types, universal]
+tags:
+  - frontend
+  - typescript
+  - patterns
+  - types
+  - universal
+depends_on: []
 ---
 
 # [TypeScript](../../Frontend/typescript/SKILL.md) Patterns for Frontend

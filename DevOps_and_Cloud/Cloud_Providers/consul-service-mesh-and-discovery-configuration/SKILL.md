@@ -1,22 +1,24 @@
 ---
 name: consul-service-mesh-and-discovery-configuration
 description: >
-  Configures HashiCorp Consul as a combined service mesh and service
-  discovery layer, especially across multi-cloud or hybrid (VM +
-  Kubernetes, multi-datacenter) environments where a Kubernetes-only
-  mesh doesn't reach. Covers Consul Connect sidecar injection,
-  intentions, config entries (service-splitter, service-resolver,
-  service-router), and cluster peering / WAN federation for
-  cross-datacenter service discovery. Use when a user asks to "set up
-  Consul service mesh," "federate Consul across datacenters," "register
-  a VM service with Consul alongside Kubernetes services," "configure
-  Consul Connect sidecars," or "do service discovery across cloud
-  providers."
+  Configures HashiCorp Consul as a combined service mesh and service discovery
+  layer, especially across multi-cloud or hybrid (VM + Kubernetes,
+  multi-datacenter) environments where a Kubernetes-only mesh doesn't reach.
+  Covers Consul Connect sidecar injection, intentions, config entries
+  (service-splitter, service-resolver, service-router), and cluster peering /
+  WAN federation for cross-datacenter service discovery. Use when a user asks to
+  "set up Consul service mesh," "federate Consul across datacenters," "register
+  a VM service with Consul alongside Kubernetes services," "configure Consul
+  Connect sidecars," or "do service discovery across cloud providers."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - cloud_providers
+  - consul-service-mesh-and-discovery-configuration
+depends_on: []
 ---
 
 # Consul Service Mesh and Discovery Configuration

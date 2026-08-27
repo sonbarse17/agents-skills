@@ -1,6 +1,10 @@
 ---
 name: distributed-training
 description: Distributed Training Optimization
+tags:
+  - data_engineering
+  - distributed-training
+depends_on: []
 ---
 # Distributed Deep Learning Mechanics
 

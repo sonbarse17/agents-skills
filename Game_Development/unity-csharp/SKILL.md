@@ -1,6 +1,10 @@
 ---
 name: unity-csharp
 description: Unity DOTS & ECS Mechanics
+tags:
+  - game_development
+  - unity-csharp
+depends_on: []
 ---
 # [Unity](../unity/SKILL.md) Data-Oriented Technology Stack (DOTS)
 

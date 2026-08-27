@@ -1,6 +1,12 @@
 ---
 name: python-configuration
-description: Python configuration management via environment variables and typed settings. Use when externalizing config, setting up pydantic-settings, managing secrets, or implementing environment-specific behavior.
+description: Python configuration management via environment variables and typed
+  settings. Use when externalizing config, setting up pydantic-settings,
+  managing secrets, or implementing environment-specific behavior.
+tags:
+  - languages
+  - python-configuration
+depends_on: []
 ---
 
 # [Python](../python/SKILL.md) Configuration Management

@@ -2,17 +2,21 @@
 name: vector-database-operations-pinecone-weaviate-milvus
 description: >
   Guides day-to-day operation of vector databases — index configuration,
-  sharding/replication for scale and availability, and upsert/query
-  performance tuning — with concrete equivalents across Pinecone, Weaviate,
-  and Milvus. Use when a user asks to "configure a vector index," "scale
-  our vector DB for more vectors/QPS," "tune HNSW parameters," "set up
-  sharding or replication for Pinecone/Weaviate/Milvus," "our vector
-  queries got slow," or "upserts are timing out/backing up."
+  sharding/replication for scale and availability, and upsert/query performance
+  tuning — with concrete equivalents across Pinecone, Weaviate, and Milvus. Use
+  when a user asks to "configure a vector index," "scale our vector DB for more
+  vectors/QPS," "tune HNSW parameters," "set up sharding or replication for
+  Pinecone/Weaviate/Milvus," "our vector queries got slow," or "upserts are
+  timing out/backing up."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - infrastructure
+  - vector-database-operations-pinecone-weaviate-milvus
+depends_on: []
 ---
 
 # Vector Database Operations (Pinecone, Weaviate, Milvus)

@@ -1,10 +1,17 @@
 ---
 name: pulumi
-description: Manage cloud infrastructure with Pulumi using general-purpose programming languages. Use when tasks mention pulumi commands, Pulumi stacks, infrastructure as code in TypeScript/Python/Go/C#, or deploying with pulumi up.
+description: Manage cloud infrastructure with Pulumi using general-purpose
+  programming languages. Use when tasks mention pulumi commands, Pulumi stacks,
+  infrastructure as code in TypeScript/Python/Go/C#, or deploying with pulumi
+  up.
 license: MIT
 metadata:
   author: greedychipmunk
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - pulumi
+depends_on: []
 ---
 
 # Pulumi

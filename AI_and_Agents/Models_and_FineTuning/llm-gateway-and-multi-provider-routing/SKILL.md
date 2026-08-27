@@ -1,20 +1,24 @@
 ---
 name: llm-gateway-and-multi-provider-routing
 description: >
-  Configures an LLM gateway/proxy (LiteLLM, Portkey, OpenRouter-style)
-  that sits between agent code and one or more model providers to unify
-  routing, automatic fallback on a provider outage or rate-limit, and
-  cost/rate-limit tracking across providers behind one API surface. Use
-  when a user asks to "set up an LLM gateway/proxy," "route between
-  OpenAI/Anthropic/Azure/Bedrock," "add a fallback model when a provider
-  is down," "track spend/rate limits across multiple LLM providers in one
-  place," "load-balance across API keys or regions," or reports a
-  provider outage/rate-limit that should have failed over but didn't.
+  Configures an LLM gateway/proxy (LiteLLM, Portkey, OpenRouter-style) that sits
+  between agent code and one or more model providers to unify routing, automatic
+  fallback on a provider outage or rate-limit, and cost/rate-limit tracking
+  across providers behind one API surface. Use when a user asks to "set up an
+  LLM gateway/proxy," "route between OpenAI/Anthropic/Azure/Bedrock," "add a
+  fallback model when a provider is down," "track spend/rate limits across
+  multiple LLM providers in one place," "load-balance across API keys or
+  regions," or reports a provider outage/rate-limit that should have failed over
+  but didn't.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - llm-gateway-and-multi-provider-routing
+depends_on: []
 ---
 
 # LLM Gateway and Multi-Provider Routing

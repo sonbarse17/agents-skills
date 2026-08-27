@@ -1,6 +1,11 @@
 ---
 name: AI Content Optimization
-description: Strategies to maintain high quality and avoid search engine penalties when using AI generation.
+description: Strategies to maintain high quality and avoid search engine
+  penalties when using AI generation.
+tags:
+  - workflows
+  - ai-content-optimization
+depends_on: []
 ---
 
 # AI Content Optimization

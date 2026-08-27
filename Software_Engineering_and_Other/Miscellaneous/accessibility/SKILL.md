@@ -1,3 +1,12 @@
+---
+name: accessibility
+description: Comprehensive guidelines and best practices for accessibility. Use
+  this skill when working with related components.
+tags:
+  - miscellaneous
+  - accessibility
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

@@ -1,10 +1,17 @@
 ---
 name: prometheus-grafana
-description: Set up metrics collection and visualization with Prometheus and Grafana. Configure scrape targets, create PromQL queries, build dashboards, and implement alerting. Use when implementing monitoring, metrics collection, or visualization for applications and infrastructure.
+description: Set up metrics collection and visualization with Prometheus and
+  Grafana. Configure scrape targets, create PromQL queries, build dashboards,
+  and implement alerting. Use when implementing monitoring, metrics collection,
+  or visualization for applications and infrastructure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - prometheus-grafana
+depends_on: []
 ---
 
 # Prometheus & Grafana

@@ -1,26 +1,31 @@
 ---
 name: backup-dr
 description: >
-  Use this skill when the user says 'backup', 'disaster recovery', 'DR',
-  'RPO', 'RTO', 'backup strategy', '3-2-1 rule', 'business continuity',
-  'disaster recovery plan', 'failover', 'failback', 'replication',
-  'snapshot', 'backup automation', 'backup validation', 'offsite backup',
-  'immutable backup', 'ransomware protection'.
-  Covers: backup strategies (3-2-1 rule), disaster recovery planning,
-  RPO/RTO definition, backup automation, replication, failover testing,
-  cloud DR (pilot light, warm standby, multi-region), backup validation,
-  compliance (SOC 2, HIPAA, PCI), ransomware recovery.
-  Do NOT use for: database-specific replication (use database-migration),
-  storage architecture design (use storage-infrastructure).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'backup', 'disaster recovery', 'DR', 'RPO',
+  'RTO', 'backup strategy', '3-2-1 rule', 'business continuity', 'disaster
+  recovery plan', 'failover', 'failback', 'replication', 'snapshot', 'backup
+  automation', 'backup validation', 'offsite backup', 'immutable backup',
+  'ransomware protection'. Covers: backup strategies (3-2-1 rule), disaster
+  recovery planning, RPO/RTO definition, backup automation, replication,
+  failover testing, cloud DR (pilot light, warm standby, multi-region), backup
+  validation, compliance (SOC 2, HIPAA, PCI), ransomware recovery. Do NOT use
+  for: database-specific replication (use database-migration), storage
+  architecture design (use storage-infrastructure).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, backup, disaster-recovery, business-continuity, phase-5]
+tags:
+  - devops
+  - backup
+  - disaster-recovery
+  - business-continuity
+  - phase-5
+depends_on: []
 ---
 
 # Backup and Disaster Recovery

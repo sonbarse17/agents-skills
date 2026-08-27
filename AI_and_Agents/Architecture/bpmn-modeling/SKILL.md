@@ -1,16 +1,30 @@
 ---
 name: planning-bpmn-modeling
 description: >
-  Use this skill when the user asks about BPMN, business process modeling, BPMN 2.0, process diagrams, process discovery, AS-IS TO-BE analysis, process automation, Camunda, DMN decision tables, workflow automation, process optimization, process simulation, or process design patterns. Covers: BPMN 2.0 elements and notation, AS-IS and TO-BE modeling techniques, process discovery and levels (L1-L5), common process patterns (gateways, subprocesses, error handling), BPMN to automation mapping with Camunda/Flowable/Temporal. Do NOT use for: data flow diagrams, system architecture, or organizational chart design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about BPMN, business process modeling, BPMN
+  2.0, process diagrams, process discovery, AS-IS TO-BE analysis, process
+  automation, Camunda, DMN decision tables, workflow automation, process
+  optimization, process simulation, or process design patterns. Covers: BPMN 2.0
+  elements and notation, AS-IS and TO-BE modeling techniques, process discovery
+  and levels (L1-L5), common process patterns (gateways, subprocesses, error
+  handling), BPMN to automation mapping with Camunda/Flowable/Temporal. Do NOT
+  use for: data flow diagrams, system architecture, or organizational chart
+  design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, bpmn, process-modeling, automation, phase-10]
+tags:
+  - planning
+  - bpmn
+  - process-modeling
+  - automation
+  - phase-10
+depends_on: []
 ---
 
 # BPMN Modeling

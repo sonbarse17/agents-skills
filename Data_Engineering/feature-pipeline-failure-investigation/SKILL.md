@@ -3,17 +3,20 @@ name: feature-pipeline-failure-investigation
 description: >
   Guides diagnosing and mitigating an overnight/scheduled feature pipeline
   failure that is causing predictions to run on stale or missing features,
-  focused on fast triage and interim mitigation before the full root-cause
-  fix lands. Use when the user says a "feature pipeline failed overnight",
+  focused on fast triage and interim mitigation before the full root-cause fix
+  lands. Use when the user says a "feature pipeline failed overnight",
   "predictions are running on stale features", a scheduled feature
-  materialization job is failing or partially failed, or asks how to
-  mitigate degraded predictions right now while the real fix is still in
-  progress.
+  materialization job is failing or partially failed, or asks how to mitigate
+  degraded predictions right now while the real fix is still in progress.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - feature-pipeline-failure-investigation
+depends_on: []
 ---
 
 # Feature Pipeline Failure Investigation

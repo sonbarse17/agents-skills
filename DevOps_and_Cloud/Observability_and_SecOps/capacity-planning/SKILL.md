@@ -1,7 +1,18 @@
 ---
 name: capacity-planning
-description: Ensures a system has enough headroom before it needs it, by forecasting growth, modeling load against real saturation signals, and accounting for the lead time it takes to actually add capacity. Use this whenever the user asks whether current infrastructure can handle projected growth, is planning for a known traffic spike or seasonal peak, sees resource utilization trending upward, or asks "when will we run out of X." For reacting to load automatically in real time use `autoscaling`, and for right-sizing what's already provisioned use `rightsizing`.
+description: Ensures a system has enough headroom before it needs it, by
+  forecasting growth, modeling load against real saturation signals, and
+  accounting for the lead time it takes to actually add capacity. Use this
+  whenever the user asks whether current infrastructure can handle projected
+  growth, is planning for a known traffic spike or seasonal peak, sees resource
+  utilization trending upward, or asks "when will we run out of X." For reacting
+  to load automatically in real time use `autoscaling`, and for right-sizing
+  what's already provisioned use `rightsizing`.
 license: MIT
+tags:
+  - observability_and_secops
+  - capacity-planning
+depends_on: []
 ---
 
 # [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning

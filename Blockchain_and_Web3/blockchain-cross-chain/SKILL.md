@@ -1,11 +1,23 @@
 ---
 name: blockchain-cross-chain
 description: >
-  Cross-chain protocols, IBC, LayerZero, Wormhole, Axelar, CCIP, bridges, atomic composability, shared sequencer, cross-chain message passing. Covers trust models (light clients, external validators, ZK proofs), bridge security, token representation (canonical, wrapped, native), relayer economics, and cross-chain application design. Do NOT use for: single-chain application development (use blockchain-application), general blockchain patterns (use blockchain-patterns), or core protocol design (use blockchain-core).
+  Cross-chain protocols, IBC, LayerZero, Wormhole, Axelar, CCIP, bridges, atomic
+  composability, shared sequencer, cross-chain message passing. Covers trust
+  models (light clients, external validators, ZK proofs), bridge security, token
+  representation (canonical, wrapped, native), relayer economics, and
+  cross-chain application design. Do NOT use for: single-chain application
+  development (use blockchain-application), general blockchain patterns (use
+  blockchain-patterns), or core protocol design (use blockchain-core).
 version: 2.0.0
 author: j4flmao
 license: MIT
-tags: [blockchain, cross-chain, bridge, interoperability, phase-blockchain]
+tags:
+  - blockchain
+  - cross-chain
+  - bridge
+  - interoperability
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Cross-Chain

@@ -1,6 +1,10 @@
 ---
 name: modern-cryptography
 description: Modern Cryptography, ECC, ECDHE, and Post-Quantum Algorithms
+tags:
+  - security
+  - modern-cryptography
+depends_on: []
 ---
 
 # Modern Cryptography: ECC, Key Exchange, and Post-Quantum Security

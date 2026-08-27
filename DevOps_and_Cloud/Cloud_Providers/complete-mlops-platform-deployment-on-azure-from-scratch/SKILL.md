@@ -1,25 +1,28 @@
 ---
 name: complete-mlops-platform-deployment-on-azure-from-scratch
 description: >
-  Sequences a complete, end-to-end MLOps platform deployment on Azure from
-  a bare tenant to a production-ready platform serving a first retrained
-  model — Azure landing zone, the Azure-ML-vs-AKS+Kubeflow platform
-  decision (Azure ML is the worked path), GPU compute clusters/quota,
-  MLflow-compatible experiment tracking, an Azure ML pipeline retraining
-  DAG, Model Registry with gated promotion, managed online endpoints with
-  traffic-split canary rollout, and data-drift monitoring. An integration/
-  orchestration skill that sequences existing tool-specific skills in the
-  right order and flags handoff points — it does not restate their
-  internals. Use when a user asks to "stand up an MLOps platform on Azure
-  from scratch," "build the full ML training-to-serving pipeline on Azure
-  ML/AKS," "give me the end-to-end sequence from Azure tenant to a
-  retrained, monitored production model," or "decide between Azure ML and
+  Sequences a complete, end-to-end MLOps platform deployment on Azure from a
+  bare tenant to a production-ready platform serving a first retrained model —
+  Azure landing zone, the Azure-ML-vs-AKS+Kubeflow platform decision (Azure ML
+  is the worked path), GPU compute clusters/quota, MLflow-compatible experiment
+  tracking, an Azure ML pipeline retraining DAG, Model Registry with gated
+  promotion, managed online endpoints with traffic-split canary rollout, and
+  data-drift monitoring. An integration/ orchestration skill that sequences
+  existing tool-specific skills in the right order and flags handoff points — it
+  does not restate their internals. Use when a user asks to "stand up an MLOps
+  platform on Azure from scratch," "build the full ML training-to-serving
+  pipeline on Azure ML/AKS," "give me the end-to-end sequence from Azure tenant
+  to a retrained, monitored production model," or "decide between Azure ML and
   AKS+Kubeflow for our ML platform."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-mlops-platform-deployment-on-azure-from-scratch
+depends_on: []
 ---
 
 # Complete MLOps Platform Deployment On Azure From Scratch

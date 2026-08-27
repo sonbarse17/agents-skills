@@ -1,19 +1,23 @@
 ---
 name: backstage-plugin-development
 description: >
-  Guides authoring a custom Backstage plugin — scaffolding a frontend or
-  backend plugin package with `yarn new`, wiring a frontend API client via
+  Guides authoring a custom Backstage plugin — scaffolding a frontend or backend
+  plugin package with `yarn new`, wiring a frontend API client via
   `createApiRef`, building a backend plugin on the new backend system
-  (`createBackendPlugin`), and registering either into the app's routes or
-  an entity page tab. Use when a user asks to "write a custom Backstage
-  plugin," "add a backend plugin to Backstage," "build a Backstage frontend
-  component that talks to a new API," or "create a Backstage plugin that
-  surfaces X" — this goes beyond catalog/TechDocs/template configuration.
+  (`createBackendPlugin`), and registering either into the app's routes or an
+  entity page tab. Use when a user asks to "write a custom Backstage plugin,"
+  "add a backend plugin to Backstage," "build a Backstage frontend component
+  that talks to a new API," or "create a Backstage plugin that surfaces X" —
+  this goes beyond catalog/TechDocs/template configuration.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - backend
+  - backstage-plugin-development
+depends_on: []
 ---
 
 # Backstage Plugin Development

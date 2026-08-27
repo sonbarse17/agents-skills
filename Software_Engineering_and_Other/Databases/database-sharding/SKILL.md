@@ -1,6 +1,11 @@
 ---
 name: Database Sharding and Scaling
-description: Best practices for sharding algorithms (Consistent Hashing) and scaling SQL databases.
+description: Best practices for sharding algorithms (Consistent Hashing) and
+  scaling SQL databases.
+tags:
+  - databases
+  - database-sharding
+depends_on: []
 ---
 
 # Database Sharding

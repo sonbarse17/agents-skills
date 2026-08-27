@@ -1,16 +1,24 @@
 ---
 name: planning-create-pitch-deck
 description: >
-  Use this skill when the user says 'create pitch deck', 'pitch deck', 'investor pitch', 'startup pitch', 'fundraising deck', 'product pitch', 'presentation deck'. Generate a structured investor pitch deck slide-by-slide with storytelling arc and key content. Do NOT use for: business plan writing or financial modeling.
+  Use this skill when the user says 'create pitch deck', 'pitch deck', 'investor
+  pitch', 'startup pitch', 'fundraising deck', 'product pitch', 'presentation
+  deck'. Generate a structured investor pitch deck slide-by-slide with
+  storytelling arc and key content. Do NOT use for: business plan writing or
+  financial modeling.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, pitch, phase-7]
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - planning
+  - pitch
+  - phase-7
+version: 1.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Create Pitch Deck

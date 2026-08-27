@@ -1,12 +1,22 @@
 ---
 name: m365-agents-ts
-description: |
-  Microsoft 365 Agents SDK for TypeScript/Node.js. Build multichannel agents for Teams/M365/Copilot Studio with AgentApplication routing, Express hosting, streaming responses, and Copilot Studio client integration. Triggers: "Microsoft 365 Agents SDK", "@microsoft/agents-hosting", "AgentApplication", "startServer", "streamingResponse", "Copilot Studio client", "@microsoft/agents-copilotstudio-client".
+description: >
+  Microsoft 365 Agents SDK for TypeScript/Node.js. Build multichannel agents for
+  Teams/M365/Copilot Studio with AgentApplication routing, Express hosting,
+  streaming responses, and Copilot Studio client integration. Triggers:
+  "Microsoft 365 Agents SDK", "@microsoft/agents-hosting", "AgentApplication",
+  "startServer", "streamingResponse", "Copilot Studio client",
+  "@microsoft/agents-copilotstudio-client".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
-  package: "@microsoft/agents-hosting, @microsoft/agents-hosting-express, @microsoft/agents-activity, @microsoft/agents-copilotstudio-client"
+  version: 1.0.0
+  package: "@microsoft/agents-hosting, @microsoft/agents-hosting-express,
+    @microsoft/agents-activity, @microsoft/agents-copilotstudio-client"
+tags:
+  - miscellaneous
+  - m365-agents-ts
+depends_on: []
 ---
 
 # Microsoft 365 Agents SDK ([TypeScript](../../Frontend/typescript/SKILL.md))

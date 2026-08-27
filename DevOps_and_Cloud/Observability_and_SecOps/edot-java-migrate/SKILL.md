@@ -1,11 +1,16 @@
 ---
 name: observability-edot-java-migrate
 description: >
-  Migrate a Java application from the classic Elastic APM Java agent to the EDOT Java
-  agent. Use when switching from elastic-apm-agent.jar to elastic-otel-javaagent.jar.
+  Migrate a Java application from the classic Elastic APM Java agent to the EDOT
+  Java agent. Use when switching from elastic-apm-agent.jar to
+  elastic-otel-javaagent.jar.
 metadata:
   author: elastic
   version: 0.1.1
+tags:
+  - observability_and_secops
+  - edot-java-migrate
+depends_on: []
 ---
 
 # EDOT Java Migration

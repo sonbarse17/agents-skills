@@ -1,16 +1,24 @@
 ---
 name: ecommerce-payment-processing
 description: >
-  Use when the user asks about payment processing, payment gateway integration, Stripe, PayPal, subscription billing, PCI DSS compliance, payment orchestration, or recurring payments. Do NOT use for: general e-commerce checkout flow (ecommerce-checkout-cart), or in-app purchases (mobile-in-app-purchase).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about payment processing, payment gateway integration,
+  Stripe, PayPal, subscription billing, PCI DSS compliance, payment
+  orchestration, or recurring payments. Do NOT use for: general e-commerce
+  checkout flow (ecommerce-checkout-cart), or in-app purchases
+  (mobile-in-app-purchase).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ecommerce, payment-processing, phase-3]
+tags:
+  - ecommerce
+  - payment-processing
+  - phase-3
+depends_on: []
 ---
 
 # Payment Processing

@@ -5,21 +5,27 @@ description: >
   ApplicationSets, sync waves, sync phases, progressive delivery with GitOps,
   cluster bootstrapping, or GitOps at scale. Covers: ApplicationSet generators
   (cluster, git, matrix, SCM provider, pull request), sync wave orchestration,
-  phased rollouts, image updater, multi-cluster management with ArgoCD,
-  cluster bootstrapping with Crossplane/Cluster API, secrets management in
-  GitOps (SealedSecrets, External Secrets, SOPS), and GitOps at enterprise
-  scale with RBAC, projects, and audit.
-  Do NOT use for: basic GitOps introduction (gitops), basic ArgoCD setup
-  (argo-cd), or Flux setup.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  phased rollouts, image updater, multi-cluster management with ArgoCD, cluster
+  bootstrapping with Crossplane/Cluster API, secrets management in GitOps
+  (SealedSecrets, External Secrets, SOPS), and GitOps at enterprise scale with
+  RBAC, projects, and audit. Do NOT use for: basic GitOps introduction (gitops),
+  basic ArgoCD setup (argo-cd), or Flux setup.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, gitops-advanced, argocd, applicationset, multi-cluster, phase-3]
+tags:
+  - devops
+  - gitops-advanced
+  - argocd
+  - applicationset
+  - multi-cluster
+  - phase-3
+depends_on: []
 ---
 
 # [GitOps](../gitops/SKILL.md) Advanced

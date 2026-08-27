@@ -1,10 +1,16 @@
 ---
 name: jenkins
-description: Create and manage Jenkins CI/CD pipelines, configure agents, manage plugins, and automate builds. Use when working with Jenkins servers, creating Jenkinsfiles, or setting up build automation for enterprise environments.
+description: Create and manage Jenkins CI/CD pipelines, configure agents, manage
+  plugins, and automate builds. Use when working with Jenkins servers, creating
+  Jenkinsfiles, or setting up build automation for enterprise environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - ci_cd
+  - jenkins
+depends_on: []
 ---
 
 # Jenkins

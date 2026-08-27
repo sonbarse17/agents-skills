@@ -1,23 +1,26 @@
 ---
 name: system-design-technology-selection-and-decision-records
 description: >
-  Guides architect-level engineering work: system-wide architecture
-  design spanning multiple teams/services, technology evaluation and
-  selection using a real framework (requirements, tradeoffs,
-  proof-of-concept criteria, total cost of ownership — not "pick the
-  popular one"), writing and maintaining Architecture Decision Records
-  (ADRs) that capture context and reasoning for future readers, and
-  balancing architectural ideals against organizational and team-maturity
-  constraints. Use when an architect (or an agent acting as one) is asked
-  to "design the architecture for X across these teams," "evaluate/select
-  a technology (database, messaging system, framework)," "write an ADR
-  for this decision," or "decide the right architecture given our team's
+  Guides architect-level engineering work: system-wide architecture design
+  spanning multiple teams/services, technology evaluation and selection using a
+  real framework (requirements, tradeoffs, proof-of-concept criteria, total cost
+  of ownership — not "pick the popular one"), writing and maintaining
+  Architecture Decision Records (ADRs) that capture context and reasoning for
+  future readers, and balancing architectural ideals against organizational and
+  team-maturity constraints. Use when an architect (or an agent acting as one)
+  is asked to "design the architecture for X across these teams,"
+  "evaluate/select a technology (database, messaging system, framework)," "write
+  an ADR for this decision," or "decide the right architecture given our team's
   actual constraints, not the textbook-ideal one."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: role-based-engineering-practices
   maturity: stable
+tags:
+  - architecture
+  - system-design-technology-selection-and-decision-records
+depends_on: []
 ---
 
 # System Design, Technology Selection, and Decision Records

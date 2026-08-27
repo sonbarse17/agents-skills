@@ -1,10 +1,17 @@
 ---
 name: llm-gateway
-description: Deploy an API gateway for LLM traffic with load balancing, rate limiting, key management, semantic caching, fallback routing, and cost tracking. Covers LiteLLM Proxy, OpenRouter-compatible setup, and custom Nginx/Traefik patterns.
+description: Deploy an API gateway for LLM traffic with load balancing, rate
+  limiting, key management, semantic caching, fallback routing, and cost
+  tracking. Covers LiteLLM Proxy, OpenRouter-compatible setup, and custom
+  Nginx/Traefik patterns.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llm-gateway
+depends_on: []
 ---
 
 # LLM Gateway

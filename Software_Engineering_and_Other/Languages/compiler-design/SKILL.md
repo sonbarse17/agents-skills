@@ -1,6 +1,11 @@
 ---
 name: Compiler Design
-description: Advanced mechanics of compiler design including LLVM IR passes, Lexical/Syntax analysis, and AST generation.
+description: Advanced mechanics of compiler design including LLVM IR passes,
+  Lexical/Syntax analysis, and AST generation.
+tags:
+  - languages
+  - compiler-design
+depends_on: []
 ---
 # Compiler Design Mechanics
 

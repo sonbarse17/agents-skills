@@ -1,3 +1,12 @@
+---
+name: git
+description: Comprehensive guidelines and best practices for git. Use this skill
+  when working with related components.
+tags:
+  - miscellaneous
+  - git
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

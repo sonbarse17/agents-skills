@@ -1,16 +1,29 @@
 ---
 name: kubernetes-specialist
-description: Use when deploying or managing Kubernetes workloads. Invoke to create deployment manifests, configure pod security policies, set up service accounts, define network isolation rules, debug pod crashes, analyze resource limits, inspect container logs, or right-size workloads. Use for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization, GitOps pipelines, and multi-cluster management.
+description: Use when deploying or managing Kubernetes workloads. Invoke to
+  create deployment manifests, configure pod security policies, set up service
+  accounts, define network isolation rules, debug pod crashes, analyze resource
+  limits, inspect container logs, or right-size workloads. Use for Helm charts,
+  RBAC policies, NetworkPolicies, storage configuration, performance
+  optimization, GitOps pipelines, and multi-cluster management.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.1"
+  version: 1.1.1
   domain: infrastructure
-  triggers: Kubernetes, K8s, kubectl, Helm, container orchestration, pod deployment, RBAC, NetworkPolicy, Ingress, StatefulSet, Operator, CRD, CustomResourceDefinition, ArgoCD, Flux, GitOps, Istio, Linkerd, service mesh, multi-cluster, cost optimization, VPA, spot instances
+  triggers: Kubernetes, K8s, kubectl, Helm, container orchestration, pod
+    deployment, RBAC, NetworkPolicy, Ingress, StatefulSet, Operator, CRD,
+    CustomResourceDefinition, ArgoCD, Flux, GitOps, Istio, Linkerd, service
+    mesh, multi-cluster, cost optimization, VPA, spot instances
   role: specialist
   scope: infrastructure
   output-format: manifests
-  related-skills: devops-engineer, cloud-architect, sre-engineer, terraform-engineer, security-reviewer, chaos-engineer
+  related-skills: devops-engineer, cloud-architect, sre-engineer,
+    terraform-engineer, security-reviewer, chaos-engineer
+tags:
+  - containers_and_orchestration
+  - kubernetes-specialist
+depends_on: []
 ---
 
 # [Kubernetes](../kubernetes/SKILL.md) Specialist

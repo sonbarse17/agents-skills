@@ -1,7 +1,19 @@
 ---
 name: api-gateway
-description: Covers the managed front-door pattern for APIs — request routing, centralized auth, rate limiting and quotas, request/response shaping, and recognizing when a gateway helps versus becomes a bottleneck or single point of failure. Use this whenever the user is designing an API entry point, adding rate limits or quotas, centralizing auth for several backend services, transforming a request between an external and internal contract, or debugging a gateway timeout. For east-west traffic between internal services use `service-connectivity`, and for token issuance details use `iam-access-management`.
+description: Covers the managed front-door pattern for APIs — request routing,
+  centralized auth, rate limiting and quotas, request/response shaping, and
+  recognizing when a gateway helps versus becomes a bottleneck or single point
+  of failure. Use this whenever the user is designing an API entry point, adding
+  rate limits or quotas, centralizing auth for several backend services,
+  transforming a request between an external and internal contract, or debugging
+  a gateway timeout. For east-west traffic between internal services use
+  `service-connectivity`, and for token issuance details use
+  `iam-access-management`.
 license: MIT
+tags:
+  - backend
+  - api-gateway
+depends_on: []
 ---
 
 # API Gateway

@@ -1,17 +1,21 @@
 ---
 name: kafka-configuration-validation
 description: >
-  Validates Kafka topic configuration (retention, cleanup policy,
-  replication, min.insync.replicas) and consumer group settings before a
-  production rollout. Use when the user asks to "review a Kafka topic
-  config before deploying," "validate retention/compaction settings,"
-  "check consumer group config for a new service," or "audit Kafka topics
-  for production readiness" prior to go-live.
+  Validates Kafka topic configuration (retention, cleanup policy, replication,
+  min.insync.replicas) and consumer group settings before a production rollout.
+  Use when the user asks to "review a Kafka topic config before deploying,"
+  "validate retention/compaction settings," "check consumer group config for a
+  new service," or "audit Kafka topics for production readiness" prior to
+  go-live.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - miscellaneous
+  - kafka-configuration-validation
+depends_on: []
 ---
 
 # Kafka Configuration Validation

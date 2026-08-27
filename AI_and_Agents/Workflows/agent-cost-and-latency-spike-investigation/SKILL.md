@@ -1,19 +1,22 @@
 ---
 name: agent-cost-and-latency-spike-investigation
 description: >
-  Guides rapidly triaging a sudden cost or latency spike affecting one
-  specific agent workflow — scoping it, correlating it against recent
-  changes, and applying a fast, safe stopgap — before launching a full
-  optimization pass. Use when a user asks "why did our LLM bill jump
-  overnight," "this one workflow got slow/expensive all of a sudden,"
-  "investigate a cost/latency spike," or reports an alert/invoice surprise
-  for a single agent or task type, as distinct from a deliberate,
-  scheduled effort to reduce baseline cost or latency.
+  Guides rapidly triaging a sudden cost or latency spike affecting one specific
+  agent workflow — scoping it, correlating it against recent changes, and
+  applying a fast, safe stopgap — before launching a full optimization pass. Use
+  when a user asks "why did our LLM bill jump overnight," "this one workflow got
+  slow/expensive all of a sudden," "investigate a cost/latency spike," or
+  reports an alert/invoice surprise for a single agent or task type, as distinct
+  from a deliberate, scheduled effort to reduce baseline cost or latency.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - agent-cost-and-latency-spike-investigation
+depends_on: []
 ---
 
 # Agent Cost and Latency Spike Investigation

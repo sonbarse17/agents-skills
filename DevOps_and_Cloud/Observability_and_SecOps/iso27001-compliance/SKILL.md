@@ -1,10 +1,16 @@
 ---
 name: iso27001-compliance
-description: Implement ISO 27001 Information Security Management System. Configure ISMS controls and risk management. Use when implementing enterprise security frameworks.
+description: Implement ISO 27001 Information Security Management System.
+  Configure ISMS controls and risk management. Use when implementing enterprise
+  security frameworks.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - iso27001-compliance
+depends_on: []
 ---
 
 # ISO 27001 Compliance

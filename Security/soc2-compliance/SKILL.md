@@ -1,10 +1,16 @@
 ---
 name: soc2-compliance
-description: Implement SOC 2 Trust Services Criteria. Configure security, availability, and processing integrity controls. Use when achieving SOC 2 certification.
+description: Implement SOC 2 Trust Services Criteria. Configure security,
+  availability, and processing integrity controls. Use when achieving SOC 2
+  certification.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - soc2-compliance
+depends_on: []
 ---
 
 # SOC 2 Compliance

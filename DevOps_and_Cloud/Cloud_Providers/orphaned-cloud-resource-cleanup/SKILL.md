@@ -1,22 +1,25 @@
 ---
 name: orphaned-cloud-resource-cleanup
 description: >
-  Finds and safely removes orphaned cloud resources that accumulate
-  silent cost — unattached EBS volumes/managed disks, unassociated
-  Elastic IPs/Azure Public IPs, orphaned load balancers/target groups,
-  and stale manual snapshots — with an explicit non-use confirmation
-  procedure before any deletion. Use when a user asks to "find unused EBS
-  volumes," "clean up unattached disks," "release unused Elastic IPs,"
-  "find orphaned load balancers," or "reduce waste from leftover
-  resources nobody is using." Covers AWS and Azure (and the GCP
+  Finds and safely removes orphaned cloud resources that accumulate silent cost
+  — unattached EBS volumes/managed disks, unassociated Elastic IPs/Azure Public
+  IPs, orphaned load balancers/target groups, and stale manual snapshots — with
+  an explicit non-use confirmation procedure before any deletion. Use when a
+  user asks to "find unused EBS volumes," "clean up unattached disks," "release
+  unused Elastic IPs," "find orphaned load balancers," or "reduce waste from
+  leftover resources nobody is using." Covers AWS and Azure (and the GCP
   equivalents) hands-on deletion workflow, distinct from
   cloud-cost-finops-optimization's broader tagging/rightsizing/commitment
   program and cloud-cost-anomaly-investigation's spike triage.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - orphaned-cloud-resource-cleanup
+depends_on: []
 ---
 
 # Orphaned Cloud Resource Cleanup

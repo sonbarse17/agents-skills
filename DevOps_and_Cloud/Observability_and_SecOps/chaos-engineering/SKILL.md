@@ -1,7 +1,18 @@
 ---
 name: chaos-engineering
-description: Deliberately injects controlled failure into a system to find weaknesses before they find you in production, using a stated hypothesis, a bounded blast radius, and a defined steady-state metric to verify against. Use this whenever the user wants to run a game day, test resilience by killing pods or nodes, ask "what happens if this dependency goes down," or validate that a failover or circuit breaker actually works. For the drill that validates region/backup failover use `disaster-recovery`; for injecting load rather than failure use `load-testing`.
+description: Deliberately injects controlled failure into a system to find
+  weaknesses before they find you in production, using a stated hypothesis, a
+  bounded blast radius, and a defined steady-state metric to verify against. Use
+  this whenever the user wants to run a game day, test resilience by killing
+  pods or nodes, ask "what happens if this dependency goes down," or validate
+  that a failover or circuit breaker actually works. For the drill that
+  validates region/backup failover use `disaster-recovery`; for injecting load
+  rather than failure use `load-testing`.
 license: MIT
+tags:
+  - observability_and_secops
+  - chaos-engineering
+depends_on: []
 ---
 
 # Chaos Engineering

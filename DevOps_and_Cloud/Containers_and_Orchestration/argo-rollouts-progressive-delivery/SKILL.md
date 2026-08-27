@@ -1,20 +1,23 @@
 ---
 name: argo-rollouts-progressive-delivery
 description: >
-  Configures the Argo Rollouts `Rollout` CRD as a drop-in replacement for
-  a Kubernetes `Deployment`, covering canary and blue-green strategy
-  mechanics, traffic management integration (service mesh/ingress
-  controllers), and `AnalysisTemplate`/`AnalysisRun` for automated
-  metric-based promotion and rollback. Use when the user asks to
-  "convert a Deployment to an Argo Rollout," "configure canary steps with
-  setWeight/pause," "wire up an AnalysisTemplate against Prometheus/
-  Datadog," "fix a Rollout stuck mid-canary," or "automate rollback on
-  bad metrics with Argo Rollouts."
+  Configures the Argo Rollouts `Rollout` CRD as a drop-in replacement for a
+  Kubernetes `Deployment`, covering canary and blue-green strategy mechanics,
+  traffic management integration (service mesh/ingress controllers), and
+  `AnalysisTemplate`/`AnalysisRun` for automated metric-based promotion and
+  rollback. Use when the user asks to "convert a Deployment to an Argo Rollout,"
+  "configure canary steps with setWeight/pause," "wire up an AnalysisTemplate
+  against Prometheus/ Datadog," "fix a Rollout stuck mid-canary," or "automate
+  rollback on bad metrics with Argo Rollouts."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argo-rollouts-progressive-delivery
+depends_on: []
 ---
 
 # Argo Rollouts Progressive Delivery

@@ -1,21 +1,24 @@
 ---
 name: policy-as-code-guardrails
 description: >
-  Guides writing and enforcing security/compliance policies as code using
-  Open Policy Agent (OPA)/Rego, Kyverno, or Conftest, applied to
-  Kubernetes admission control, CI/CD pipeline gates, and Infrastructure
-  as Code (Terraform/CloudFormation) review. Use when the user asks to
-  "write an OPA policy", "block insecure Terraform/Kubernetes configs",
-  "add admission control guardrails", "enforce that all images must be
-  signed/non-root/from an approved registry", or "codify our security
-  baseline as automated policy instead of a manual checklist". Explains
-  what enforcement actually guarantees versus what still needs separate
-  controls.
+  Guides writing and enforcing security/compliance policies as code using Open
+  Policy Agent (OPA)/Rego, Kyverno, or Conftest, applied to Kubernetes admission
+  control, CI/CD pipeline gates, and Infrastructure as Code
+  (Terraform/CloudFormation) review. Use when the user asks to "write an OPA
+  policy", "block insecure Terraform/Kubernetes configs", "add admission control
+  guardrails", "enforce that all images must be signed/non-root/from an approved
+  registry", or "codify our security baseline as automated policy instead of a
+  manual checklist". Explains what enforcement actually guarantees versus what
+  still needs separate controls.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - security
+  - policy-as-code-guardrails
+depends_on: []
 ---
 
 # Policy as Code & Guardrails

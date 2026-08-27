@@ -1,10 +1,17 @@
 ---
 name: podman
-description: Manage containers using Podman, the daemonless container engine. Run rootless containers, create pods, manage images, and use Docker-compatible commands. Use when working with Podman or requiring rootless container operations.
+description: Manage containers using Podman, the daemonless container engine.
+  Run rootless containers, create pods, manage images, and use Docker-compatible
+  commands. Use when working with Podman or requiring rootless container
+  operations.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - podman
+depends_on: []
 ---
 
 # Podman

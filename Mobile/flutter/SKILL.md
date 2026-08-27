@@ -1,6 +1,11 @@
 ---
 name: flutter-expertise
-description: Expert knowledge in Flutter, focusing on State Management and Render Tree optimization.
+description: Expert knowledge in Flutter, focusing on State Management and
+  Render Tree optimization.
+tags:
+  - mobile
+  - flutter
+depends_on: []
 ---
 # Flutter Expertise
 

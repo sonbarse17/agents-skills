@@ -1,6 +1,11 @@
 ---
 name: core-algorithms-system-design
-description: Mathematical and architectural analysis of Consistent Hashing, Rate Limiting, and Bloom Filters.
+description: Mathematical and architectural analysis of Consistent Hashing, Rate
+  Limiting, and Bloom Filters.
+tags:
+  - miscellaneous
+  - core-algorithms
+depends_on: []
 ---
 
 # System Design Core Algorithms

@@ -1,7 +1,19 @@
 ---
 name: runbooks
-description: Writes and maintains the procedural documents that let a tired, half-awake engineer resolve a known failure at 3am without needing the original author or deep system knowledge. Use this whenever the user is documenting an operational procedure, writing a "what to do when X fires" doc, building an alert-to-action mapping, or complaining that on-call has to reverse-engineer fixes each time an alert repeats. For the live coordination during an active incident use `incident-response`, and for the improvised procedures that emerge in one-off outages use `root-cause-analysis` to turn them into a permanent runbook.
+description: Writes and maintains the procedural documents that let a tired,
+  half-awake engineer resolve a known failure at 3am without needing the
+  original author or deep system knowledge. Use this whenever the user is
+  documenting an operational procedure, writing a "what to do when X fires" doc,
+  building an alert-to-action mapping, or complaining that on-call has to
+  reverse-engineer fixes each time an alert repeats. For the live coordination
+  during an active incident use `incident-response`, and for the improvised
+  procedures that emerge in one-off outages use `root-cause-analysis` to turn
+  them into a permanent runbook.
 license: MIT
+tags:
+  - observability_and_secops
+  - runbooks
+depends_on: []
 ---
 
 # Runbooks

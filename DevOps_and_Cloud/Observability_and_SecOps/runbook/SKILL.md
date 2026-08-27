@@ -1,10 +1,22 @@
 ---
 name: runbook
-description: Write or audit operational runbooks as a senior SRE — one document per failure mode, with detection signal, triage decision tree, verified read-only diagnostics, mitigation with rollback, escalation path, and verification — grounded in the real repo, alerts, and dashboards rather than generic advice. Strictly read-only on systems — it drafts documents under runbooks/ and never executes a mitigation itself. Use when asked to write a runbook or on-call playbook, document a failure mode or recovery procedure, close a "no runbook for this alert" gap, or review existing runbooks for staleness and accuracy.
+description: Write or audit operational runbooks as a senior SRE — one document
+  per failure mode, with detection signal, triage decision tree, verified
+  read-only diagnostics, mitigation with rollback, escalation path, and
+  verification — grounded in the real repo, alerts, and dashboards rather than
+  generic advice. Strictly read-only on systems — it drafts documents under
+  runbooks/ and never executes a mitigation itself. Use when asked to write a
+  runbook or on-call playbook, document a failure mode or recovery procedure,
+  close a "no runbook for this alert" gap, or review existing runbooks for
+  staleness and accuracy.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.0.0"
+  version: 1.0.0
+tags:
+  - observability_and_secops
+  - runbook
+depends_on: []
 ---
 
 # Runbook

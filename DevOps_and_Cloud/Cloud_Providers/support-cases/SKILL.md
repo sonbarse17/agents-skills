@@ -1,21 +1,26 @@
 ---
 name: support-cases
-description: ALWAYS use this skill in the beginning of any incident investigation, root cause
-  analysis, or operational troubleshooting. This skill retrieves and analyzes
-  AWS Support cases (open and resolved) to find historical incidents with
-  similar symptoms, error patterns, or affected services. Activate this skill
-  when investigating an issue and you observe service degradation, elevated
-  error rates, latency spikes, connection failures, throttling, capacity issues,
-  deployment-related failures, alarms, or any operational event or issue. This
-  skill searches past support cases by service, time window, severity, and error
-  keywords to surface prior root causes, proven remediations, and recurring
-  patterns that inform the current investigation.
+description: ALWAYS use this skill in the beginning of any incident
+  investigation, root cause analysis, or operational troubleshooting. This skill
+  retrieves and analyzes AWS Support cases (open and resolved) to find
+  historical incidents with similar symptoms, error patterns, or affected
+  services. Activate this skill when investigating an issue and you observe
+  service degradation, elevated error rates, latency spikes, connection
+  failures, throttling, capacity issues, deployment-related failures, alarms, or
+  any operational event or issue. This skill searches past support cases by
+  service, time window, severity, and error keywords to surface prior root
+  causes, proven remediations, and recurring patterns that inform the current
+  investigation.
 metadata:
   author: udid-aws
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Incident RCA"
-  aws-devops-agent-skills.aws-services: "AWS Support"
-  aws-devops-agent-skills.technical-domains: "Operations"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Incident RCA
+  aws-devops-agent-skills.aws-services: AWS Support
+  aws-devops-agent-skills.technical-domains: Operations
+tags:
+  - cloud_providers
+  - support-cases
+depends_on: []
 ---
 
 # Support Case Review

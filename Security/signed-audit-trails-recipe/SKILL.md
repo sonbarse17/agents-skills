@@ -1,6 +1,14 @@
 ---
 name: signed-audit-trails-recipe
-description: Step-by-step cookbook for setting up cryptographically signed audit trails on Claude Code tool calls. Use when explaining, evaluating, or demonstrating the pattern before committing to the protect-mcp runtime hooks. Covers Cedar policy, Ed25519 receipts, offline verification, tamper detection, CI/CD integration, and SLSA composition.
+description: Step-by-step cookbook for setting up cryptographically signed audit
+  trails on Claude Code tool calls. Use when explaining, evaluating, or
+  demonstrating the pattern before committing to the protect-mcp runtime hooks.
+  Covers Cedar policy, Ed25519 receipts, offline verification, tamper detection,
+  CI/CD integration, and SLSA composition.
+tags:
+  - security
+  - signed-audit-trails-recipe
+depends_on: []
 ---
 
 # Signed [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trails for Claude Code Tool Calls

@@ -1,19 +1,22 @@
 ---
 name: ray-distributed-ml-orchestration
 description: >
-  Guides using Ray (Ray Core, Ray Train, Ray Tune, Ray Serve) via the
-  KubeRay operator as a Python-native distributed computing framework for
-  ML training, hyperparameter search, and serving — as an alternative
-  orchestration paradigm to graph-based tools like Kubeflow Pipelines. Use
-  when the user asks to "set up a RayCluster", "distribute training with
-  Ray", "use Ray Train/Tune/Serve", debug a Ray actor/task or object store
-  spilling issue, choose Ray over Kubeflow for distributed workloads, or
-  scale a Ray cluster on Kubernetes.
+  Guides using Ray (Ray Core, Ray Train, Ray Tune, Ray Serve) via the KubeRay
+  operator as a Python-native distributed computing framework for ML training,
+  hyperparameter search, and serving — as an alternative orchestration paradigm
+  to graph-based tools like Kubeflow Pipelines. Use when the user asks to "set
+  up a RayCluster", "distribute training with Ray", "use Ray Train/Tune/Serve",
+  debug a Ray actor/task or object store spilling issue, choose Ray over
+  Kubeflow for distributed workloads, or scale a Ray cluster on Kubernetes.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - data_engineering
+  - ray-distributed-ml-orchestration
+depends_on: []
 ---
 
 # Ray Distributed ML Orchestration

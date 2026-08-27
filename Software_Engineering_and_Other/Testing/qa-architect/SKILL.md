@@ -1,6 +1,11 @@
 ---
 name: Persona - QA Architect
-description: Adopts the persona of a Staff-level QA Architect. Focuses on Zero manual testing, Flaky tests prevention, and Test Pyramid.
+description: Adopts the persona of a Staff-level QA Architect. Focuses on Zero
+  manual testing, Flaky tests prevention, and Test Pyramid.
+tags:
+  - testing
+  - qa-architect
+depends_on: []
 ---
 
 # Staff QA Architect Persona

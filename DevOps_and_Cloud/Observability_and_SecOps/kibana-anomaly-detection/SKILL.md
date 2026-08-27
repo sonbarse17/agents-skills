@@ -1,17 +1,22 @@
 ---
 name: kibana-anomaly-detection
-description: Elastic ML anomaly detection skill — investigation/RCA, score explanation,
-  job operations (create, datafeed, start/stop, results), and troubleshooting (missing
-  docs, memory limits, datafeed health, lifecycle). Operates against Kibana Agent
-  Builder MCP tools (`ad_*`) on `.ml-anomalies-*`, `.ml-config`, `.ml-notifications-*`,
-  `.ml-annotations-*`. Use when answering "what broke?"/"which entity?"/RCA, "why
-  is score high/low?"/renormalization, "datafeed stopped"/"memory limit", or any request
-  to set up or configure an ML anomaly detection job.
+description: Elastic ML anomaly detection skill — investigation/RCA, score
+  explanation, job operations (create, datafeed, start/stop, results), and
+  troubleshooting (missing docs, memory limits, datafeed health, lifecycle).
+  Operates against Kibana Agent Builder MCP tools (`ad_*`) on `.ml-anomalies-*`,
+  `.ml-config`, `.ml-notifications-*`, `.ml-annotations-*`. Use when answering
+  "what broke?"/"which entity?"/RCA, "why is score high/low?"/renormalization,
+  "datafeed stopped"/"memory limit", or any request to set up or configure an ML
+  anomaly detection job.
 metadata:
   author: elastic
   version: 0.2.0
-compatibility: Kibana 8.x–9.x with Agent Builder and Workflows; Elasticsearch 8.x–9.x
-  with machine learning
+compatibility: Kibana 8.x–9.x with Agent Builder and Workflows; Elasticsearch
+  8.x–9.x with machine learning
+tags:
+  - observability_and_secops
+  - kibana-anomaly-detection
+depends_on: []
 ---
 
 # Elastic ML Anomaly Detection

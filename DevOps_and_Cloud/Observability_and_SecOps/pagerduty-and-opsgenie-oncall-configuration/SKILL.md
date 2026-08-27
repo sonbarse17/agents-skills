@@ -3,18 +3,21 @@ name: pagerduty-and-opsgenie-oncall-configuration
 description: >
   Configures on-call schedules, escalation policies, and alert routing/
   deduplication rules in PagerDuty and Opsgenie — the tool-specific API/
-  Terraform configuration that implements an on-call rotation, not the
-  generic on-call process design. Use when the user asks to "set up a
-  PagerDuty schedule," "configure an Opsgenie escalation policy," "route
-  alerts to the right team in PagerDuty," "add alert deduplication so we
-  stop getting paged 50 times for one outage," "add a secondary on-call
-  layer," or "configure a maintenance window/override in PagerDuty or
-  Opsgenie."
+  Terraform configuration that implements an on-call rotation, not the generic
+  on-call process design. Use when the user asks to "set up a PagerDuty
+  schedule," "configure an Opsgenie escalation policy," "route alerts to the
+  right team in PagerDuty," "add alert deduplication so we stop getting paged 50
+  times for one outage," "add a secondary on-call layer," or "configure a
+  maintenance window/override in PagerDuty or Opsgenie."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - observability_and_secops
+  - pagerduty-and-opsgenie-oncall-configuration
+depends_on: []
 ---
 
 # PagerDuty and Opsgenie On-Call Configuration

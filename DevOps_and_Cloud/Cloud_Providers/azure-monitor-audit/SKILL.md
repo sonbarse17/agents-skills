@@ -1,10 +1,15 @@
 ---
 name: azure-monitor-audit
-description: Configure Azure Monitor and Activity Log for auditing. Set up diagnostic settings and log analytics. Use when auditing Azure activity.
+description: Configure Azure Monitor and Activity Log for auditing. Set up
+  diagnostic settings and log analytics. Use when auditing Azure activity.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-monitor-audit
+depends_on: []
 ---
 
 # Azure Monitor [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)

@@ -1,16 +1,28 @@
 ---
 name: data-data-versioning
 description: >
-  Use this skill when asked about data versioning, DVC, LakeFS, data lineage, Git-like for data, data reproducibility, data branching, data diff, data snapshot, or experiment reproducibility. This skill enforces: DVC patterns for ML pipelines and data version control, LakeFS for Git-like semantics on data lakes, branching and merging data, data diff and rollback, experiment reproducibility with metrics tracking, and data lineage from source to model. Do NOT use for: code versioning with Git, database schema migrations, or application artifact versioning.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about data versioning, DVC, LakeFS, data lineage,
+  Git-like for data, data reproducibility, data branching, data diff, data
+  snapshot, or experiment reproducibility. This skill enforces: DVC patterns for
+  ML pipelines and data version control, LakeFS for Git-like semantics on data
+  lakes, branching and merging data, data diff and rollback, experiment
+  reproducibility with metrics tracking, and data lineage from source to model.
+  Do NOT use for: code versioning with Git, database schema migrations, or
+  application artifact versioning.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, versioning, reproducibility, phase-11]
+tags:
+  - data
+  - versioning
+  - reproducibility
+  - phase-11
+depends_on: []
 ---
 
 # Data Data Versioning

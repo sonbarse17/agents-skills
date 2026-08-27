@@ -1,10 +1,17 @@
 ---
 name: alerting-oncall
-description: Set up alerting rules, configure on-call rotations, and manage incident response workflows. Integrate with PagerDuty, Opsgenie, or Grafana OnCall for alert routing and escalation. Use when implementing alerting strategies and on-call management for production systems.
+description: Set up alerting rules, configure on-call rotations, and manage
+  incident response workflows. Integrate with PagerDuty, Opsgenie, or Grafana
+  OnCall for alert routing and escalation. Use when implementing alerting
+  strategies and on-call management for production systems.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - alerting-oncall
+depends_on: []
 ---
 
 # [Alerting](../alerting/SKILL.md) & On-Call

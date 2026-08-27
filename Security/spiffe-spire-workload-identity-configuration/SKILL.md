@@ -1,24 +1,28 @@
 ---
 name: spiffe-spire-workload-identity-configuration
 description: >
-  Guides configuring SPIRE Server and Agent to issue cryptographic
-  workload identities (SPIFFE IDs, X.509-SVIDs, JWT-SVIDs) for zero-trust
-  service-to-service authentication — trust domain design, node and
-  workload attestation (registration entries with selectors), SVID
-  rotation, and federation between trust domains. Use when the user asks
-  to "set up SPIFFE/SPIRE," "issue a workload identity to a service,"
-  "configure SPIRE node/workload attestation," "design a SPIFFE ID
-  namespace," "federate two SPIRE trust domains," or "implement true
-  zero-trust mTLS between services without shared secrets." Distinct from
-  enterprise-sso-and-idp-federation-configuration (human/workforce
-  identity) and from vault-operations-and-pki-engine-configuration
-  (general-purpose secrets/PKI issuance) — this skill is specifically
-  about automated, attested cryptographic identity for *workloads*.
+  Guides configuring SPIRE Server and Agent to issue cryptographic workload
+  identities (SPIFFE IDs, X.509-SVIDs, JWT-SVIDs) for zero-trust
+  service-to-service authentication — trust domain design, node and workload
+  attestation (registration entries with selectors), SVID rotation, and
+  federation between trust domains. Use when the user asks to "set up
+  SPIFFE/SPIRE," "issue a workload identity to a service," "configure SPIRE
+  node/workload attestation," "design a SPIFFE ID namespace," "federate two
+  SPIRE trust domains," or "implement true zero-trust mTLS between services
+  without shared secrets." Distinct from
+  enterprise-sso-and-idp-federation-configuration (human/workforce identity) and
+  from vault-operations-and-pki-engine-configuration (general-purpose
+  secrets/PKI issuance) — this skill is specifically about automated, attested
+  cryptographic identity for *workloads*.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - security
+  - spiffe-spire-workload-identity-configuration
+depends_on: []
 ---
 
 # SPIFFE/SPIRE Workload Identity Configuration

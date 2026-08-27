@@ -2,22 +2,26 @@
 name: owasp-top-10-secure-coding-standards
 description: >
   Guides understanding the OWASP Top 10 web application security risk
-  categories, applying secure coding practices that prevent each category,
-  and mapping which categories automated SAST/DAST tooling can and cannot
-  reliably detect. Use when a user asks to "explain the OWASP Top 10",
-  "review this code against OWASP standards", "why didn't our scanner
-  catch this vulnerability", "add secure coding guidelines for [injection /
-  broken access control / etc.]", "map OWASP categories to our SAST/DAST
-  tool rules", or "figure out what our scanning stack is missing". Distinct
-  from the sast-integration and dast-integration skills, which cover tool
-  setup and pipeline mechanics — this skill focuses on the security
-  categories themselves and their coverage boundaries, including
-  business-logic flaws no automated scanner reliably finds.
+  categories, applying secure coding practices that prevent each category, and
+  mapping which categories automated SAST/DAST tooling can and cannot reliably
+  detect. Use when a user asks to "explain the OWASP Top 10", "review this code
+  against OWASP standards", "why didn't our scanner catch this vulnerability",
+  "add secure coding guidelines for [injection / broken access control / etc.]",
+  "map OWASP categories to our SAST/DAST tool rules", or "figure out what our
+  scanning stack is missing". Distinct from the sast-integration and
+  dast-integration skills, which cover tool setup and pipeline mechanics — this
+  skill focuses on the security categories themselves and their coverage
+  boundaries, including business-logic flaws no automated scanner reliably
+  finds.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: standards-and-compliance-frameworks
   maturity: stable
+tags:
+  - cloud_providers
+  - owasp-top-10-secure-coding-standards
+depends_on: []
 ---
 
 # OWASP Top 10 Secure Coding Standards

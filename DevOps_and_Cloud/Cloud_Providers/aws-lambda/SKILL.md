@@ -1,10 +1,16 @@
 ---
 name: aws-lambda
-description: Build and deploy serverless functions on AWS Lambda. Configure triggers, manage permissions, and optimize performance. Use when implementing serverless applications.
+description: Build and deploy serverless functions on AWS Lambda. Configure
+  triggers, manage permissions, and optimize performance. Use when implementing
+  serverless applications.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - aws-lambda
+depends_on: []
 ---
 
 # AWS Lambda

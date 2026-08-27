@@ -1,6 +1,10 @@
 ---
 name: zero-trust-identity
 description: Advanced Zero Trust Identity, OIDC/SAML Mechanics, and JWT Validation
+tags:
+  - security
+  - zero-trust-identity
+depends_on: []
 ---
 
 # Zero Trust Identity Architecture and Authentication Flows

@@ -2,18 +2,22 @@
 name: service-scorecards-and-maturity-model-design
 description: >
   Designs service scorecards and maturity models — production-readiness,
-  security posture, and ownership/on-call coverage checks — as implemented
-  in Cortex Scorecards, OpsLevel Rubrics, or Backstage tech-insights, and
-  how to weight/tier multiple checks into a single score without teams
-  gaming it. Use when a user asks to "design a production-readiness
-  scorecard," "set up a Cortex Scorecard or OpsLevel Rubric," "weight
-  scorecard checks," "define maturity levels/tiers for services," or "stop
-  teams from gaming their scorecard score."
+  security posture, and ownership/on-call coverage checks — as implemented in
+  Cortex Scorecards, OpsLevel Rubrics, or Backstage tech-insights, and how to
+  weight/tier multiple checks into a single score without teams gaming it. Use
+  when a user asks to "design a production-readiness scorecard," "set up a
+  Cortex Scorecard or OpsLevel Rubric," "weight scorecard checks," "define
+  maturity levels/tiers for services," or "stop teams from gaming their
+  scorecard score."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - product_and_business
+  - service-scorecards-and-maturity-model-design
+depends_on: []
 ---
 
 # Service Scorecards and Maturity Model Design

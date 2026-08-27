@@ -1,10 +1,16 @@
 ---
 name: threat-modeling
-description: Conduct threat modeling using STRIDE methodology. Identify threats, assess risks, and design security controls. Use when designing secure systems or assessing application security.
+description: Conduct threat modeling using STRIDE methodology. Identify threats,
+  assess risks, and design security controls. Use when designing secure systems
+  or assessing application security.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - threat-modeling
+depends_on: []
 ---
 
 # Threat Modeling

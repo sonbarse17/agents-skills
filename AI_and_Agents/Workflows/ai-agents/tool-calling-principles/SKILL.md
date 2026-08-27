@@ -1,6 +1,11 @@
 ---
 name: tool-calling-principles
-description: First principles of tool/environment grounding, structured outputs, and error recovery for AI agents.
+description: First principles of tool/environment grounding, structured outputs,
+  and error recovery for AI agents.
+tags:
+  - ai-agents
+  - tool-calling-principles
+depends_on: []
 ---
 
 # Tool/Environment Grounding: The Ontology of Action

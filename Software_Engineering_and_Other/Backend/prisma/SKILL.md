@@ -1,16 +1,25 @@
 ---
 name: nodejs-prisma
 description: >
-  Use this skill when working with Prisma ORM — schema modeling, migrations, queries, relations, middleware, and deployment. This skill enforces: data model normalization, relation conventions, Prisma Client best practices, migration safety, and performance optimization. Requires @prisma/client. Do NOT use for: Mongoose, TypeORM, Drizzle ORM, or non-relational databases.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when working with Prisma ORM — schema modeling, migrations,
+  queries, relations, middleware, and deployment. This skill enforces: data
+  model normalization, relation conventions, Prisma Client best practices,
+  migration safety, and performance optimization. Requires @prisma/client. Do
+  NOT use for: Mongoose, TypeORM, Drizzle ORM, or non-relational databases.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, nodejs, prisma, phase-10]
+tags:
+  - backend
+  - nodejs
+  - prisma
+  - phase-10
+depends_on: []
 ---
 
 # Prisma ORM

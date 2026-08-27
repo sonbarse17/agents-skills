@@ -1,6 +1,11 @@
 ---
 name: product-analytics
-description: Expertise in product analytics tools (Mixpanel/Amplitude) and User Retention metrics.
+description: Expertise in product analytics tools (Mixpanel/Amplitude) and User
+  Retention metrics.
+tags:
+  - miscellaneous
+  - analytics
+depends_on: []
 ---
 
 # Product Analytics

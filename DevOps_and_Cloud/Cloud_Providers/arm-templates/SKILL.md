@@ -1,10 +1,15 @@
 ---
 name: arm-templates
-description: Deploy Azure resources with ARM templates and Bicep. Create modular deployments and manage dependencies. Use when deploying Azure-native IaC.
+description: Deploy Azure resources with ARM templates and Bicep. Create modular
+  deployments and manage dependencies. Use when deploying Azure-native IaC.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - arm-templates
+depends_on: []
 ---
 
 # ARM Templates & Bicep

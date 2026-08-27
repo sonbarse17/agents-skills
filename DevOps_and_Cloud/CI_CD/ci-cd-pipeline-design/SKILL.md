@@ -2,16 +2,20 @@
 name: ci-cd-pipeline-design
 description: >
   Designs and troubleshoots CI/CD pipelines (GitHub Actions, GitLab CI, or
-  equivalent) including stage layout, caching, parallelization, quality
-  gates, and secrets handling. Use when the user asks to "set up a CI/CD
-  pipeline," "add a build/test/deploy workflow," "fix a failing pipeline
-  stage," "speed up CI," "add branch protection / required checks," or
-  "design a deployment pipeline" for an application or infrastructure repo.
+  equivalent) including stage layout, caching, parallelization, quality gates,
+  and secrets handling. Use when the user asks to "set up a CI/CD pipeline,"
+  "add a build/test/deploy workflow," "fix a failing pipeline stage," "speed up
+  CI," "add branch protection / required checks," or "design a deployment
+  pipeline" for an application or infrastructure repo.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - ci_cd
+  - ci-cd-pipeline-design
+depends_on: []
 ---
 
 # CI/CD Pipeline Design

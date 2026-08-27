@@ -1,18 +1,27 @@
 ---
 name: ml-hyperparameter-tuning
 description: >
-  Use this skill when performing hyperparameter tuning, optimizing model performance via search strategies, or configuring tuning frameworks (Optuna, Ray Tune, Hyperopt).
-  This skill enforces: search space definition, strategy selection (grid/random/Bayesian), framework configuration, pruning/early stopping, distributed execution, multi-objective optimization.
-  Do NOT use for: model architecture search (NAS), feature selection, threshold tuning for classification, experiment tracking (use ml-experiment-tracking).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when performing hyperparameter tuning, optimizing model
+  performance via search strategies, or configuring tuning frameworks (Optuna,
+  Ray Tune, Hyperopt). This skill enforces: search space definition, strategy
+  selection (grid/random/Bayesian), framework configuration, pruning/early
+  stopping, distributed execution, multi-objective optimization. Do NOT use for:
+  model architecture search (NAS), feature selection, threshold tuning for
+  classification, experiment tracking (use ml-experiment-tracking).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, hyperparameter, optimization, phase-11]
+tags:
+  - ml
+  - hyperparameter
+  - optimization
+  - phase-11
+depends_on: []
 ---
 
 # ML Hyperparameter Tuning

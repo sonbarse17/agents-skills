@@ -1,10 +1,15 @@
 ---
 name: cloudflare-workers
-description: Build and deploy edge functions with Cloudflare Workers and Wrangler. Use for APIs, cron jobs, and edge middleware.
+description: Build and deploy edge functions with Cloudflare Workers and
+  Wrangler. Use for APIs, cron jobs, and edge middleware.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - cloudflare-workers
+depends_on: []
 ---
 
 # Cloudflare Workers

@@ -1,10 +1,17 @@
 ---
 name: docker-management
-description: Build, optimize, and troubleshoot Docker containers and images. Create efficient Dockerfiles, manage container lifecycle, configure networking and volumes, and debug container issues. Use when working with Docker, containerization, or container troubleshooting.
+description: Build, optimize, and troubleshoot Docker containers and images.
+  Create efficient Dockerfiles, manage container lifecycle, configure networking
+  and volumes, and debug container issues. Use when working with Docker,
+  containerization, or container troubleshooting.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - docker-management
+depends_on: []
 ---
 
 # [Docker](../docker/SKILL.md) Management

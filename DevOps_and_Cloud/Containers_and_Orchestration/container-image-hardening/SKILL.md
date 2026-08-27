@@ -1,19 +1,23 @@
 ---
 name: container-image-hardening
 description: >
-  Guides building minimal, non-root, hardened container images —
-  multi-stage builds, distroless/minimal base images, non-root users,
-  read-only root filesystems, dropped Linux capabilities, and pinned/
-  digest-referenced base images. Use when the user asks to "harden this
-  Dockerfile", "reduce container image attack surface/size", "make our
-  container run as non-root", "switch to a distroless base image",
-  "fix a container security scan finding about running as root or having
-  a shell", or "set Kubernetes securityContext restrictions for a pod".
+  Guides building minimal, non-root, hardened container images — multi-stage
+  builds, distroless/minimal base images, non-root users, read-only root
+  filesystems, dropped Linux capabilities, and pinned/ digest-referenced base
+  images. Use when the user asks to "harden this Dockerfile", "reduce container
+  image attack surface/size", "make our container run as non-root", "switch to a
+  distroless base image", "fix a container security scan finding about running
+  as root or having a shell", or "set Kubernetes securityContext restrictions
+  for a pod".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - container-image-hardening
+depends_on: []
 ---
 
 # Container Image Hardening

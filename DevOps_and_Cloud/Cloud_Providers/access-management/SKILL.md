@@ -1,17 +1,22 @@
 ---
 name: cloud-access-management
 description: >
-  Manage Elastic Cloud organization access: invite users, assign roles to Serverless
-  projects, and create or revoke Cloud API keys. Use when granting, modifying, or
-  auditing user access.
+  Manage Elastic Cloud organization access: invite users, assign roles to
+  Serverless projects, and create or revoke Cloud API keys. Use when granting,
+  modifying, or auditing user access.
 compatibility: >
-  Requires Python 3.8+, network access to the Elastic Cloud API (api.elastic-cloud.com)
-  and optionally to a Serverless Elasticsearch endpoint for custom role operations.
-  Environment variables: EC_API_KEY (required, set by cloud-setup), ELASTICSEARCH_URL
-  and ELASTICSEARCH_API_KEY (required only for custom roles).
+  Requires Python 3.8+, network access to the Elastic Cloud API
+  (api.elastic-cloud.com) and optionally to a Serverless Elasticsearch endpoint
+  for custom role operations. Environment variables: EC_API_KEY (required, set
+  by cloud-setup), ELASTICSEARCH_URL and ELASTICSEARCH_API_KEY (required only
+  for custom roles).
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - cloud_providers
+  - access-management
+depends_on: []
 ---
 
 # Cloud Access Management

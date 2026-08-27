@@ -1,18 +1,24 @@
 ---
 name: enterprise-legacy-migration
 description: >
-  Use this skill when planning or executing legacy system migrations using strangler fig, parallel run, or big bang strategies.
-  This skill enforces: anti-corruption layers, dual-write verification, rollback capability.
-  Do NOT use for: greenfield development, infrastructure-only migration, database schema changes without strategy.
-version: "2.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when planning or executing legacy system migrations using
+  strangler fig, parallel run, or big bang strategies. This skill enforces:
+  anti-corruption layers, dual-write verification, rollback capability. Do NOT
+  use for: greenfield development, infrastructure-only migration, database
+  schema changes without strategy.
+version: 2.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, migration, phase-8]
+tags:
+  - enterprise
+  - migration
+  - phase-8
+depends_on: []
 ---
 
 # Legacy Migration Agent

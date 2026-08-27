@@ -1,10 +1,16 @@
 ---
 name: llmops-platform-engineering
-description: Build production LLMOps platforms with CI/CD, model promotion workflows, evaluation gates, rollback, and governance across cloud and self-hosted inference.
+description: Build production LLMOps platforms with CI/CD, model promotion
+  workflows, evaluation gates, rollback, and governance across cloud and
+  self-hosted inference.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llmops-platform-engineering
+depends_on: []
 ---
 
 # LLMOps Platform Engineering

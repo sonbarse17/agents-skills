@@ -1,7 +1,18 @@
 ---
 name: developer-experience
-description: Cuts the friction between having an idea and seeing it running — fast local feedback loops, painless environment setup, and DORA-plus metrics that reveal where time actually goes. Use this whenever the user complains local dev is slow or fragile, asks how to measure developer productivity, wants to reduce time-to-first-commit for new hires, or is deciding what toil to automate next. For the platform hosting these workflows use `internal-developer-platform`; for templates removing setup friction use `golden-paths`; for automating identified toil use `toil-reduction`.
+description: Cuts the friction between having an idea and seeing it running —
+  fast local feedback loops, painless environment setup, and DORA-plus metrics
+  that reveal where time actually goes. Use this whenever the user complains
+  local dev is slow or fragile, asks how to measure developer productivity,
+  wants to reduce time-to-first-commit for new hires, or is deciding what toil
+  to automate next. For the platform hosting these workflows use
+  `internal-developer-platform`; for templates removing setup friction use
+  `golden-paths`; for automating identified toil use `toil-reduction`.
 license: MIT
+tags:
+  - product_and_business
+  - developer-experience
+depends_on: []
 ---
 
 # Developer Experience

@@ -1,16 +1,28 @@
 ---
 name: data-science-statistical-analysis
 description: >
-  Use this skill when performing statistical analysis, hypothesis testing, regression analysis, time series forecasting, Bayesian inference, descriptive statistics, data exploration, or any general statistical modeling. This skill enforces: proper data exploration before modeling, assumption checking, effect size reporting, confidence intervals alongside p-values, robust methods when assumptions violated, and reproducible analysis workflows. Do NOT use for: A/B testing (see experimentation skill), causal inference (see causal-inference skill), or ML model building.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when performing statistical analysis, hypothesis testing,
+  regression analysis, time series forecasting, Bayesian inference, descriptive
+  statistics, data exploration, or any general statistical modeling. This skill
+  enforces: proper data exploration before modeling, assumption checking, effect
+  size reporting, confidence intervals alongside p-values, robust methods when
+  assumptions violated, and reproducible analysis workflows. Do NOT use for: A/B
+  testing (see experimentation skill), causal inference (see causal-inference
+  skill), or ML model building.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data-science, statistics, analysis, phase-7]
+tags:
+  - data-science
+  - statistics
+  - analysis
+  - phase-7
+depends_on: []
 ---
 
 # Statistical Analysis

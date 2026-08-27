@@ -2,18 +2,21 @@
 name: backstage-developer-portal
 description: >
   Guides building an internal developer portal with Backstage — authoring
-  catalog-info.yaml to register services in the software catalog, setting
-  up TechDocs for docs-as-code, writing Software Templates to scaffold
-  new services, and understanding the plugin architecture. Use when a
-  user asks to "register a service in Backstage", "write a catalog-
-  info.yaml", "set up TechDocs", "create a Backstage software template
-  for scaffolding new repos", "add a Backstage plugin", or "build an
-  internal developer portal."
+  catalog-info.yaml to register services in the software catalog, setting up
+  TechDocs for docs-as-code, writing Software Templates to scaffold new
+  services, and understanding the plugin architecture. Use when a user asks to
+  "register a service in Backstage", "write a catalog- info.yaml", "set up
+  TechDocs", "create a Backstage software template for scaffolding new repos",
+  "add a Backstage plugin", or "build an internal developer portal."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - observability_and_secops
+  - backstage-developer-portal
+depends_on: []
 ---
 
 # Backstage Developer Portal

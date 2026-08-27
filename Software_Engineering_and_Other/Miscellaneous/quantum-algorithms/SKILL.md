@@ -1,6 +1,11 @@
 ---
 name: Quantum Algorithms
-description: Academic reference for Shor's algorithm period finding and Grover's diffusion operator.
+description: Academic reference for Shor's algorithm period finding and Grover's
+  diffusion operator.
+tags:
+  - miscellaneous
+  - quantum-algorithms
+depends_on: []
 ---
 # Quantum Algorithms: Core Mechanics
 

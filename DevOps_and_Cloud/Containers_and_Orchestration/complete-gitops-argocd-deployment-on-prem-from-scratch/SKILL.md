@@ -3,21 +3,24 @@ name: complete-gitops-argocd-deployment-on-prem-from-scratch
 description: >
   Walks through a complete, end-to-end Argo CD GitOps deployment on a
   self-managed on-prem or bare-metal Kubernetes cluster with no cloud IAM
-  shortcut available — Helm install, ServiceAccount/RBAC-scoped cluster
-  access (optionally backed by Vault-issued short-lived credentials
-  instead of IRSA/Workload Identity), private registry authentication
-  (Harbor/Nexus), MetalLB + Ingress + private-CA TLS instead of a cloud
-  load balancer, the first Application, an ApplicationSet for
-  multi-environment rollout, and sync/health policy. Use when the user
-  asks to "set up Argo CD on-prem from scratch," "deploy GitOps end-to-end
-  without a cloud provider," "give Argo CD cluster access without cloud
-  IAM," "wire Vault-issued credentials into Argo CD," or "go from a bare
-  self-managed cluster to a working multi-env GitOps pipeline."
+  shortcut available — Helm install, ServiceAccount/RBAC-scoped cluster access
+  (optionally backed by Vault-issued short-lived credentials instead of
+  IRSA/Workload Identity), private registry authentication (Harbor/Nexus),
+  MetalLB + Ingress + private-CA TLS instead of a cloud load balancer, the first
+  Application, an ApplicationSet for multi-environment rollout, and sync/health
+  policy. Use when the user asks to "set up Argo CD on-prem from scratch,"
+  "deploy GitOps end-to-end without a cloud provider," "give Argo CD cluster
+  access without cloud IAM," "wire Vault-issued credentials into Argo CD," or
+  "go from a bare self-managed cluster to a working multi-env GitOps pipeline."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-gitops-argocd-deployment-on-prem-from-scratch
+depends_on: []
 ---
 
 # Complete [GitOps](../gitops/SKILL.md)/Argo CD Deployment On-Prem, From Scratch

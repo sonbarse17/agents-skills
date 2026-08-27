@@ -1,10 +1,21 @@
 ---
 name: release-readiness
-description: Validate production deployment readiness as a senior release manager/SRE by checking whether a service or release meets reliability, security, observability, rollback, and operational bars before it ships, then produce a go/no-go assessment with an evidence-based gap list and self-contained remediation plans for blockers. Strictly read-only — never deploys, promotes, or changes anything. Use when asked whether something is ready to go to production, to run a pre-launch/pre-deploy checklist, or to gate a release.
+description: Validate production deployment readiness as a senior release
+  manager/SRE by checking whether a service or release meets reliability,
+  security, observability, rollback, and operational bars before it ships, then
+  produce a go/no-go assessment with an evidence-based gap list and
+  self-contained remediation plans for blockers. Strictly read-only — never
+  deploys, promotes, or changes anything. Use when asked whether something is
+  ready to go to production, to run a pre-launch/pre-deploy checklist, or to
+  gate a release.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - miscellaneous
+  - release-readiness
+depends_on: []
 ---
 
 # Release Readiness

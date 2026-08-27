@@ -1,16 +1,21 @@
 ---
 name: security-detection-rule-management
 description: >
-  Create, tune, and manage Elastic Security detection rules (SIEM and Endpoint). Use
-  for false positives, exceptions, new coverage, noisy rules, or rule management via
-  Kibana API.
+  Create, tune, and manage Elastic Security detection rules (SIEM and Endpoint).
+  Use for false positives, exceptions, new coverage, noisy rules, or rule
+  management via Kibana API.
 compatibility: >
-  Requires Node.js 22+, network access to Kibana and Elasticsearch. Environment variables:
-  KIBANA_URL plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD; ELASTICSEARCH_URL
-  or ELASTICSEARCH_CLOUD_ID plus ELASTICSEARCH_API_KEY or ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
+  Requires Node.js 22+, network access to Kibana and Elasticsearch. Environment
+  variables: KIBANA_URL plus KIBANA_API_KEY or KIBANA_USERNAME/KIBANA_PASSWORD;
+  ELASTICSEARCH_URL or ELASTICSEARCH_CLOUD_ID plus ELASTICSEARCH_API_KEY or
+  ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - detection-rule-management
+depends_on: []
 ---
 
 # Detection Rule Management

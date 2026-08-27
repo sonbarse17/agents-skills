@@ -3,16 +3,19 @@ name: developer-experience-measurement-and-platform-adoption
 description: >
   Measures developer experience and platform adoption using established
   frameworks (SPACE, DX Core 4) combining survey-based and telemetry-based
-  methods, and distinguishes real signal from vanity metrics. Use when a
-  user asks to "measure developer experience," "track platform adoption,"
-  "set up a DX survey," "pick platform engineering metrics," "prove the
-  platform team's impact," or "avoid vanity metrics like catalog entity
-  count or login counts."
+  methods, and distinguishes real signal from vanity metrics. Use when a user
+  asks to "measure developer experience," "track platform adoption," "set up a
+  DX survey," "pick platform engineering metrics," "prove the platform team's
+  impact," or "avoid vanity metrics like catalog entity count or login counts."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - miscellaneous
+  - developer-experience-measurement-and-platform-adoption
+depends_on: []
 ---
 
 # Developer Experience Measurement and Platform Adoption

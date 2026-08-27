@@ -1,18 +1,28 @@
 ---
 name: firebase
 description: >
-  Use this skill when working with Firebase platform — Firestore, Authentication, Cloud Storage, Cloud Functions, Hosting, Security Rules, Firebase Admin SDK, Firebase Extensions.
-  This skill enforces: proper security rules, Firestore data modeling (no nesting >3), auth provider configuration, function cold start mitigation, cost-aware query design.
-  Do NOT use for: Supabase, AWS Amplify, custom backend, general PostgreSQL/NoSQL database design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when working with Firebase platform — Firestore,
+  Authentication, Cloud Storage, Cloud Functions, Hosting, Security Rules,
+  Firebase Admin SDK, Firebase Extensions. This skill enforces: proper security
+  rules, Firestore data modeling (no nesting >3), auth provider configuration,
+  function cold start mitigation, cost-aware query design. Do NOT use for:
+  Supabase, AWS Amplify, custom backend, general PostgreSQL/NoSQL database
+  design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, firebase, baas, phase-4]
+tags:
+  - backend
+  - universal
+  - firebase
+  - baas
+  - phase-4
+depends_on: []
 ---
 
 # Firebase

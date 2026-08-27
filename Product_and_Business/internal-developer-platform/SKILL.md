@@ -1,7 +1,18 @@
 ---
 name: internal-developer-platform
-description: Designs an internal developer platform (IDP) as a product for one customer — engineers — with paved roads, self-service workflows, and abstractions that speed people up without hiding the levers they need during an incident. Use this whenever the user is scoping a platform team's roadmap, deciding what to abstract versus expose, evaluating Backstage or a platform orchestrator, or arguing how much Kubernetes/Terraform detail developers should see. For what the platform hosts use `service-catalog`; for its templates use `golden-paths`; for measuring it use `developer-experience`.
+description: Designs an internal developer platform (IDP) as a product for one
+  customer — engineers — with paved roads, self-service workflows, and
+  abstractions that speed people up without hiding the levers they need during
+  an incident. Use this whenever the user is scoping a platform team's roadmap,
+  deciding what to abstract versus expose, evaluating Backstage or a platform
+  orchestrator, or arguing how much Kubernetes/Terraform detail developers
+  should see. For what the platform hosts use `service-catalog`; for its
+  templates use `golden-paths`; for measuring it use `developer-experience`.
 license: MIT
+tags:
+  - product_and_business
+  - internal-developer-platform
+depends_on: []
 ---
 
 # Internal Developer Platform

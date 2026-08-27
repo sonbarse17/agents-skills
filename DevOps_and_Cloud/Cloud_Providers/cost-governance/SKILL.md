@@ -1,18 +1,24 @@
 ---
 name: enterprise-cost-governance
 description: >
-  Use this skill when implementing cloud cost governance: cost allocation, budgets, chargeback, anomaly detection, and optimization.
-  This skill enforces: tagging strategy, budget alerts, cost anomaly detection, showback/chargeback.
-  Do NOT use for: FinOps tool selection, procurement, vendor negotiation, invoice reconciliation.
-version: "2.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing cloud cost governance: cost allocation,
+  budgets, chargeback, anomaly detection, and optimization. This skill enforces:
+  tagging strategy, budget alerts, cost anomaly detection, showback/chargeback.
+  Do NOT use for: FinOps tool selection, procurement, vendor negotiation,
+  invoice reconciliation.
+version: 2.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, cost, phase-8]
+tags:
+  - enterprise
+  - cost
+  - phase-8
+depends_on: []
 ---
 
 # Cost Governance Agent

@@ -1,16 +1,24 @@
 ---
 name: dev-loop-changelog-generator
 description: >
-  Use when the user asks about generating changelogs, release notes, conventional commits to changelogs, automated release notes, or CHANGELOG.md management. Do NOT use for: git commit messages (dev-loop-git-workflow), or code review (dev-loop-code-review).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about generating changelogs, release notes,
+  conventional commits to changelogs, automated release notes, or CHANGELOG.md
+  management. Do NOT use for: git commit messages (dev-loop-git-workflow), or
+  code review (dev-loop-code-review).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [dev-loop, changelog, release-notes, conventional-commits]
+tags:
+  - dev-loop
+  - changelog
+  - release-notes
+  - conventional-commits
+depends_on: []
 ---
 
 # Changelog Generator

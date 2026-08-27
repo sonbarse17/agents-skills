@@ -1,10 +1,17 @@
 ---
 name: datadog
-description: Implement Datadog monitoring and APM for infrastructure and applications. Configure agents, create dashboards, set up alerts, and implement distributed tracing. Use when implementing enterprise monitoring, APM, or unified observability platforms.
+description: Implement Datadog monitoring and APM for infrastructure and
+  applications. Configure agents, create dashboards, set up alerts, and
+  implement distributed tracing. Use when implementing enterprise monitoring,
+  APM, or unified observability platforms.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - datadog
+depends_on: []
 ---
 
 # Datadog

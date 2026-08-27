@@ -1,12 +1,16 @@
 ---
 name: cloud-setup
 description: >
-  Configures Elastic Cloud authentication and environment defaults. Use when setting
-  up EC_API_KEY, configuring Cloud API access, or when another cloud skill requires
-  credentials.
+  Configures Elastic Cloud authentication and environment defaults. Use when
+  setting up EC_API_KEY, configuring Cloud API access, or when another cloud
+  skill requires credentials.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - cloud_providers
+  - setup
+depends_on: []
 ---
 
 # Cloud Environment Setup

@@ -1,7 +1,18 @@
 ---
 name: cloud-migration
-description: Guides moving workloads to or between clouds using the 6 Rs, a phased cutover with a real rollback path, data sync, and avoiding a lift-and-shift that just relocates old problems. Use this whenever the user is planning a cloud migration, choosing between rehost/replatform/refactor, designing a cutover plan, migrating a database to a new provider, or asking why a "simple" migration is stalling. For the target shape use `cloud-architecture`; for sync mechanics use `data-migration`; for running providers long-term use `multi-cloud`.
+description: Guides moving workloads to or between clouds using the 6 Rs, a
+  phased cutover with a real rollback path, data sync, and avoiding a
+  lift-and-shift that just relocates old problems. Use this whenever the user is
+  planning a cloud migration, choosing between rehost/replatform/refactor,
+  designing a cutover plan, migrating a database to a new provider, or asking
+  why a "simple" migration is stalling. For the target shape use
+  `cloud-architecture`; for sync mechanics use `data-migration`; for running
+  providers long-term use `multi-cloud`.
 license: MIT
+tags:
+  - cloud_providers
+  - cloud-migration
+depends_on: []
 ---
 
 # Cloud Migration

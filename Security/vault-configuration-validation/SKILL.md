@@ -1,21 +1,24 @@
 ---
 name: vault-configuration-validation
 description: >
-  Guides validating HashiCorp Vault policies (HCL/Rego-less ACL
-  policies), auth method configuration, and seal/storage configuration
-  before rollout — catching an overly broad policy, a misconfigured
-  auth-method role binding, or an unsafe seal migration before it
-  reaches a production cluster. Use when the user asks to "validate this
-  Vault policy before applying it", "review our Vault auth method
-  configuration for least privilege", "check this seal migration plan is
-  safe", "lint Vault HCL policies in CI", or "audit Vault policies for
-  overly broad access". Distinct from vault-operations-and-pki-engine-
-  configuration, which covers running the cluster itself.
+  Guides validating HashiCorp Vault policies (HCL/Rego-less ACL policies), auth
+  method configuration, and seal/storage configuration before rollout — catching
+  an overly broad policy, a misconfigured auth-method role binding, or an unsafe
+  seal migration before it reaches a production cluster. Use when the user asks
+  to "validate this Vault policy before applying it", "review our Vault auth
+  method configuration for least privilege", "check this seal migration plan is
+  safe", "lint Vault HCL policies in CI", or "audit Vault policies for overly
+  broad access". Distinct from vault-operations-and-pki-engine- configuration,
+  which covers running the cluster itself.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - security
+  - vault-configuration-validation
+depends_on: []
 ---
 
 # [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Configuration Validation

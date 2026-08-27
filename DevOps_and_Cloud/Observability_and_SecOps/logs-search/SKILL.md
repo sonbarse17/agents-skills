@@ -1,12 +1,16 @@
 ---
 name: observability-logs-search
 description: >
-  Search and filter Observability logs using ES|QL. Use when investigating log spikes,
-  errors, or anomalies; getting volume and trends; or drilling into services or containers
-  during incidents.
+  Search and filter Observability logs using ES|QL. Use when investigating log
+  spikes, errors, or anomalies; getting volume and trends; or drilling into
+  services or containers during incidents.
 metadata:
   author: elastic
   version: 0.2.0
+tags:
+  - observability_and_secops
+  - logs-search
+depends_on: []
 ---
 
 # Logs Search

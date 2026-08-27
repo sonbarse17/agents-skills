@@ -4,20 +4,27 @@ description: >
   Use this skill when the user says 'Dependabot', 'Renovate', 'dependencies',
   'lock file', 'vulnerability scanning', 'update strategy', 'Renovate config',
   'dependabot.yml', 'dependency bump', 'automated updates', 'version pinning',
-  'patch management', 'supply chain security', 'npm audit', 'SBOM'.
-  Covers: Dependabot configuration, Renovate configuration, lock file management,
-  vulnerability scanning, update strategy, dependency policy.
-  Do NOT use this for: monorepo workspace configuration, package.json structure,
-  or dependency graph visualization (use monorepo skill).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  'patch management', 'supply chain security', 'npm audit', 'SBOM'. Covers:
+  Dependabot configuration, Renovate configuration, lock file management,
+  vulnerability scanning, update strategy, dependency policy. Do NOT use this
+  for: monorepo workspace configuration, package.json structure, or dependency
+  graph visualization (use monorepo skill).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, dependencies, dependabot, renovate, security, phase-5]
+tags:
+  - devops
+  - dependencies
+  - dependabot
+  - renovate
+  - security
+  - phase-5
+depends_on: []
 ---
 
 # Dependency Management

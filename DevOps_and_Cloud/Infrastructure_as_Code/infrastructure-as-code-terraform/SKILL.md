@@ -2,16 +2,20 @@
 name: infrastructure-as-code-terraform
 description: >
   Authors, structures, and safely applies Terraform infrastructure-as-code,
-  including module design, remote state, workspaces, plan review, and
-  importing existing resources. Use when the user asks to "write Terraform
-  for X," "structure a Terraform repo/modules," "manage remote state,"
-  "import existing infrastructure into Terraform," "review a Terraform
-  plan," or "safely apply/destroy infrastructure changes."
+  including module design, remote state, workspaces, plan review, and importing
+  existing resources. Use when the user asks to "write Terraform for X,"
+  "structure a Terraform repo/modules," "manage remote state," "import existing
+  infrastructure into Terraform," "review a Terraform plan," or "safely
+  apply/destroy infrastructure changes."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - infrastructure-as-code-terraform
+depends_on: []
 ---
 
 # Infrastructure as Code (Terraform)

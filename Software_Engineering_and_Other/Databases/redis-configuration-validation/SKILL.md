@@ -2,19 +2,22 @@
 name: redis-configuration-validation
 description: >
   Validates proposed Redis maxmemory/eviction-policy settings, persistence
-  configuration (RDB/AOF), and Redis Cluster topology before they are
-  relied on in production — checking eviction policy against actual data
-  classification, replica placement against failure domains, and
-  quorum/majority math for Sentinel and Cluster failover. Use when the
-  user asks to "review this Redis config before we deploy it," "validate
-  maxmemory-policy before we go live," "is this Redis Cluster topology
-  actually safe," "check this Sentinel quorum setting," or "will this
-  Redis config change cause eviction we don't expect."
+  configuration (RDB/AOF), and Redis Cluster topology before they are relied on
+  in production — checking eviction policy against actual data classification,
+  replica placement against failure domains, and quorum/majority math for
+  Sentinel and Cluster failover. Use when the user asks to "review this Redis
+  config before we deploy it," "validate maxmemory-policy before we go live,"
+  "is this Redis Cluster topology actually safe," "check this Sentinel quorum
+  setting," or "will this Redis config change cause eviction we don't expect."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - redis-configuration-validation
+depends_on: []
 ---
 
 # Redis Configuration Validation

@@ -1,12 +1,23 @@
 ---
 name: azure-resource-manager-playwright-dotnet
-description: |
-  Azure Resource Manager SDK for Microsoft Playwright Testing in .NET. Use for MANAGEMENT PLANE operations: creating/managing Playwright Testing workspaces, checking name availability, and managing workspace quotas via Azure Resource Manager. NOT for running Playwright tests - use Azure.Developer.MicrosoftPlaywrightTesting.NUnit for that. Triggers: "Playwright workspace", "create Playwright Testing workspace", "manage Playwright resources", "ARM Playwright", "PlaywrightWorkspaceResource", "provision Playwright Testing".
+description: >
+  Azure Resource Manager SDK for Microsoft Playwright Testing in .NET. Use for
+  MANAGEMENT PLANE operations: creating/managing Playwright Testing workspaces,
+  checking name availability, and managing workspace quotas via Azure Resource
+  Manager. NOT for running Playwright tests - use
+  Azure.Developer.MicrosoftPlaywrightTesting.NUnit for that. Triggers:
+  "Playwright workspace", "create Playwright Testing workspace", "manage
+  Playwright resources", "ARM Playwright", "PlaywrightWorkspaceResource",
+  "provision Playwright Testing".
 license: MIT
 metadata:
   author: Microsoft
-  version: "1.0.0"
+  version: 1.0.0
   package: Azure.ResourceManager.Playwright
+tags:
+  - cloud_providers
+  - azure-resource-manager-playwright-dotnet
+depends_on: []
 ---
 
 # Azure.ResourceManager.Playwright (.NET)

@@ -1,10 +1,15 @@
 ---
 name: user-management
-description: Manage users, groups, and permissions on Linux systems. Configure sudo and access controls. Use when managing system access.
+description: Manage users, groups, and permissions on Linux systems. Configure
+  sudo and access controls. Use when managing system access.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - user-management
+depends_on: []
 ---
 
 # User Management

@@ -1,18 +1,22 @@
 ---
 name: ingress-nginx-configuration
 description: >
-  Guides installing and configuring the NGINX Ingress Controller —
-  install methods, per-Ingress annotations, TLS termination, rate
-  limiting, path-based/host-based routing, and troubleshooting. Use
-  when a user asks to "install nginx ingress controller," "route
-  traffic to a Kubernetes service by path or host," "terminate TLS at
-  the ingress," "rate limit an endpoint," "fix a 502/504 from
-  ingress-nginx," or "configure a canary/header-based ingress split."
+  Guides installing and configuring the NGINX Ingress Controller — install
+  methods, per-Ingress annotations, TLS termination, rate limiting,
+  path-based/host-based routing, and troubleshooting. Use when a user asks to
+  "install nginx ingress controller," "route traffic to a Kubernetes service by
+  path or host," "terminate TLS at the ingress," "rate limit an endpoint," "fix
+  a 502/504 from ingress-nginx," or "configure a canary/header-based ingress
+  split."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - frontend
+  - ingress-nginx-configuration
+depends_on: []
 ---
 
 # NGINX Ingress Controller Configuration

@@ -1,16 +1,23 @@
 ---
 name: quality-property-based-testing
 description: >
-  Use when the user asks about property-based testing, fuzzing, generative testing, QuickCheck, fast-check, invariant testing, or random testing. Do NOT use for: example-based unit testing (quality-unit-testing), or integration testing (quality-integration-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about property-based testing, fuzzing, generative
+  testing, QuickCheck, fast-check, invariant testing, or random testing. Do NOT
+  use for: example-based unit testing (quality-unit-testing), or integration
+  testing (quality-integration-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, property-based-testing, phase-3]
+tags:
+  - quality
+  - property-based-testing
+  - phase-3
+depends_on: []
 ---
 
 # Property-Based Testing

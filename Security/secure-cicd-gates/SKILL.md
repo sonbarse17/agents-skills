@@ -1,20 +1,22 @@
 ---
 name: secure-cicd-gates
 description: >
-  Guides designing a coherent set of security gates across a CI/CD
-  pipeline — combining SAST, SCA, secret-scanning, DAST, container
-  scanning, and policy checks into ordered stages with clear
-  block-vs-warn thresholds, instead of ad hoc, redundant, or
-  contradictory individual checks. Use when the user asks to "design our
-  pipeline security gates", "decide what should block a merge vs. just
-  warn", "reduce pipeline security-check noise/duplication", "add a
-  release gate before production deploy", or "build a DevSecOps pipeline
-  from scratch".
+  Guides designing a coherent set of security gates across a CI/CD pipeline —
+  combining SAST, SCA, secret-scanning, DAST, container scanning, and policy
+  checks into ordered stages with clear block-vs-warn thresholds, instead of ad
+  hoc, redundant, or contradictory individual checks. Use when the user asks to
+  "design our pipeline security gates", "decide what should block a merge vs.
+  just warn", "reduce pipeline security-check noise/duplication", "add a release
+  gate before production deploy", or "build a DevSecOps pipeline from scratch".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - security
+  - secure-cicd-gates
+depends_on: []
 ---
 
 # Secure CI/CD Gates

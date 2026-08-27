@@ -1,18 +1,22 @@
 ---
 name: aws-landing-zone-setup
 description: >
-  Guides designing and implementing a multi-account AWS landing zone using
-  AWS Organizations, Control Tower, and Account Factory — including the
-  account/OU hierarchy, Service Control Policies, centralized logging, and
-  baseline guardrails. Use when a user asks to "set up a new AWS account
-  structure", "design an AWS landing zone", "implement AWS Control Tower",
-  "create OUs and SCPs", "bootstrap a multi-account AWS environment", or
-  "onboard a new AWS account into our organization".
+  Guides designing and implementing a multi-account AWS landing zone using AWS
+  Organizations, Control Tower, and Account Factory — including the account/OU
+  hierarchy, Service Control Policies, centralized logging, and baseline
+  guardrails. Use when a user asks to "set up a new AWS account structure",
+  "design an AWS landing zone", "implement AWS Control Tower", "create OUs and
+  SCPs", "bootstrap a multi-account AWS environment", or "onboard a new AWS
+  account into our organization".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - aws-landing-zone-setup
+depends_on: []
 ---
 
 # AWS Landing Zone Setup

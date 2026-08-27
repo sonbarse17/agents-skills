@@ -4,14 +4,18 @@ description: >
   Guides building evaluation harnesses, regression test suites, and runtime
   guardrails for LLM agents. Use when a user asks to "evaluate this agent,"
   "write test cases for a prompt change," "set up an eval harness," "add
-  guardrails to prevent unsafe output," "detect prompt injection at
-  runtime," or needs to know whether a prompt/model/tool change made an
-  agent better or worse before shipping it.
+  guardrails to prevent unsafe output," "detect prompt injection at runtime," or
+  needs to know whether a prompt/model/tool change made an agent better or worse
+  before shipping it.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - agent-evaluation-and-guardrails
+depends_on: []
 ---
 
 # Agent Evaluation and Guardrails

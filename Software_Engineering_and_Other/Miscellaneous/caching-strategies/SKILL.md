@@ -1,7 +1,18 @@
 ---
 name: caching-strategies
-description: Covers caching correctly — deciding what is worth caching, choosing between cache-aside, write-through, and write-behind, setting TTLs from real staleness tolerance, invalidating on write instead of hoping a TTL catches it, and preventing thundering-herd stampedes on expiry. Use this whenever the user adds a cache layer, picks a TTL, debugs stale reads, sees a load spike on the database right after a cache miss, or asks whether something should be cached at all. For the database load a cache protects use `database-operations`, and for proving a cache is actually paying off use `load-testing`.
+description: Covers caching correctly — deciding what is worth caching, choosing
+  between cache-aside, write-through, and write-behind, setting TTLs from real
+  staleness tolerance, invalidating on write instead of hoping a TTL catches it,
+  and preventing thundering-herd stampedes on expiry. Use this whenever the user
+  adds a cache layer, picks a TTL, debugs stale reads, sees a load spike on the
+  database right after a cache miss, or asks whether something should be cached
+  at all. For the database load a cache protects use `database-operations`, and
+  for proving a cache is actually paying off use `load-testing`.
 license: MIT
+tags:
+  - miscellaneous
+  - caching-strategies
+depends_on: []
 ---
 
 # Caching Strategies

@@ -1,16 +1,27 @@
 ---
 name: create-story
 description: >
-  Use this skill when the user says 'create story', 'next story', 'implement STORY-XXX', 'pick up next ticket', 'what should I build next', 'story from PRD', or when the planning phase is done and implementation needs to start. This skill selects the next unimplemented story from the PRD backlog and produces a single, detailed implementation story file with acceptance criteria and technical notes. Do NOT use for: creating epics, writing briefs, technical specs, or recording ADRs.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'create story', 'next story', 'implement
+  STORY-XXX', 'pick up next ticket', 'what should I build next', 'story from
+  PRD', or when the planning phase is done and implementation needs to start.
+  This skill selects the next unimplemented story from the PRD backlog and
+  produces a single, detailed implementation story file with acceptance criteria
+  and technical notes. Do NOT use for: creating epics, writing briefs, technical
+  specs, or recording ADRs.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, phase-1, agile, stories]
+tags:
+  - planning
+  - phase-1
+  - agile
+  - stories
+depends_on: []
 ---
 
 # Create Story

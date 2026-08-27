@@ -1,6 +1,11 @@
 ---
 name: Quantum Entanglement
-description: Advanced theoretical frameworks of quantum entanglement, Bell States, and Quantum Teleportation protocols.
+description: Advanced theoretical frameworks of quantum entanglement, Bell
+  States, and Quantum Teleportation protocols.
+tags:
+  - miscellaneous
+  - quantum-entanglement
+depends_on: []
 ---
 
 # Entanglement Protocols and Non-Locality

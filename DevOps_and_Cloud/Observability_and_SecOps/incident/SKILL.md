@@ -1,10 +1,21 @@
 ---
 name: incident
-description: Investigate a production incident as a senior SRE and produce a hypothesis-driven, evidence-logged investigation document plus recommended (never auto-applied) mitigations and durable follow-up plans. Strictly read-only — runs diagnostic and read-only commands only, never restarts, scales, rolls back, or changes anything itself. Use when asked to investigate an outage, degradation, error spike, latency regression, failed deploy, or any "why is production broken" question, or to run a blameless post-incident analysis.
+description: Investigate a production incident as a senior SRE and produce a
+  hypothesis-driven, evidence-logged investigation document plus recommended
+  (never auto-applied) mitigations and durable follow-up plans. Strictly
+  read-only — runs diagnostic and read-only commands only, never restarts,
+  scales, rolls back, or changes anything itself. Use when asked to investigate
+  an outage, degradation, error spike, latency regression, failed deploy, or any
+  "why is production broken" question, or to run a blameless post-incident
+  analysis.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - observability_and_secops
+  - incident
+depends_on: []
 ---
 
 # Incident

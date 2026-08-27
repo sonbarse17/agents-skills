@@ -1,16 +1,32 @@
 ---
 name: frontend-rendering-strategies
 description: >
-  Use this skill when the user says 'rendering strategy', 'CSR', 'SSR', 'SSG', 'ISR', 'RSC', 'React Server Components', 'server-side rendering', 'static site generation', 'incremental static regeneration', 'hydration', 'client-side rendering', 'partial hydration', 'progressive hydration', 'streaming SSR', 'edge rendering', 'SSR vs SSG vs ISR', 'rendering decision'. This skill helps choose the right rendering strategy per route/page based on data freshness, SEO, user interactivity, and performance requirements. Works with Next.js, Astro, Nuxt, Remix, Gatsby, and similar frameworks. Do NOT use for: backend rendering patterns, CDN caching, or build tool configuration.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'rendering strategy', 'CSR', 'SSR', 'SSG',
+  'ISR', 'RSC', 'React Server Components', 'server-side rendering', 'static site
+  generation', 'incremental static regeneration', 'hydration', 'client-side
+  rendering', 'partial hydration', 'progressive hydration', 'streaming SSR',
+  'edge rendering', 'SSR vs SSG vs ISR', 'rendering decision'. This skill helps
+  choose the right rendering strategy per route/page based on data freshness,
+  SEO, user interactivity, and performance requirements. Works with Next.js,
+  Astro, Nuxt, Remix, Gatsby, and similar frameworks. Do NOT use for: backend
+  rendering patterns, CDN caching, or build tool configuration.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, rendering, ssr, ssg, isr, rsc, universal]
+tags:
+  - frontend
+  - rendering
+  - ssr
+  - ssg
+  - isr
+  - rsc
+  - universal
+depends_on: []
 ---
 
 # Frontend Rendering Strategies

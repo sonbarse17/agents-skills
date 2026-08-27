@@ -1,10 +1,16 @@
 ---
 name: incident-management
-description: Implement incident management processes and escalation procedures. Configure on-call schedules and post-incident reviews. Use when managing production incidents.
+description: Implement incident management processes and escalation procedures.
+  Configure on-call schedules and post-incident reviews. Use when managing
+  production incidents.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - miscellaneous
+  - incident-management
+depends_on: []
 ---
 
 # [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management

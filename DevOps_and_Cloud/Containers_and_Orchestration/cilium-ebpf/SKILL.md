@@ -1,24 +1,31 @@
 ---
 name: cilium-ebpf
 description: >
-  Use this skill when the user says 'Cilium', 'eBPF', 'BPF', 'Hubble',
-  'service mesh', 'network policy', 'cluster mesh', 'eBPF observability',
-  'kube-proxy replacement', 'CiliumNetworkPolicy', 'CiliumClusterWideNetworkPolicy',
-  'CiliumEndpoint', 'Hubble UI', 'Tetragon', 'Cilium CNI'.
-  Covers: Cilium CNI installation, eBPF-based networking, network policies,
-  Hubble observability, cluster mesh (multi-cluster), service mesh (L7 policies),
-  kube-proxy replacement, bandwidth management, encryption (Wireguard/IPsec).
-  Do NOT use for: generic Kubernetes networking (use kubernetes-patterns),
-  traditional CNI plugins (Calico, Flannel).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Cilium', 'eBPF', 'BPF', 'Hubble', 'service
+  mesh', 'network policy', 'cluster mesh', 'eBPF observability', 'kube-proxy
+  replacement', 'CiliumNetworkPolicy', 'CiliumClusterWideNetworkPolicy',
+  'CiliumEndpoint', 'Hubble UI', 'Tetragon', 'Cilium CNI'. Covers: Cilium CNI
+  installation, eBPF-based networking, network policies, Hubble observability,
+  cluster mesh (multi-cluster), service mesh (L7 policies), kube-proxy
+  replacement, bandwidth management, encryption (Wireguard/IPsec). Do NOT use
+  for: generic Kubernetes networking (use kubernetes-patterns), traditional CNI
+  plugins (Calico, Flannel).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, cilium, ebpf, kubernetes, networking, phase-5]
+tags:
+  - devops
+  - cilium
+  - ebpf
+  - kubernetes
+  - networking
+  - phase-5
+depends_on: []
 ---
 
 # Cilium and eBPF

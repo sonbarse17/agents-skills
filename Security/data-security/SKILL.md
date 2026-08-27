@@ -1,18 +1,28 @@
 ---
 name: security-data-security
 description: >
-  Use this skill when implementing data security: encryption at rest/transit, key management (KMS, HSM), data masking (static, dynamic), column-level security, data privacy (GDPR, CCPA), data classification, data anonymization, tokenization.
-  This skill enforces: encryption strategy selection, key management architecture, masking rules, column-level access controls, anonymization technique, compliance controls.
-  Do NOT use for: network security (firewalls, VPCs), identity and access management (IAM), application security scanning.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when implementing data security: encryption at rest/transit,
+  key management (KMS, HSM), data masking (static, dynamic), column-level
+  security, data privacy (GDPR, CCPA), data classification, data anonymization,
+  tokenization. This skill enforces: encryption strategy selection, key
+  management architecture, masking rules, column-level access controls,
+  anonymization technique, compliance controls. Do NOT use for: network security
+  (firewalls, VPCs), identity and access management (IAM), application security
+  scanning.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, data, privacy, phase-11]
+tags:
+  - security
+  - data
+  - privacy
+  - phase-11
+depends_on: []
 ---
 
 # Data Security Agent

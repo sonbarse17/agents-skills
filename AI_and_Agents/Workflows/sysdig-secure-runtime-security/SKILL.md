@@ -1,22 +1,25 @@
 ---
 name: sysdig-secure-runtime-security
 description: >
-  Guides deep, tool-specific use of Sysdig Secure for runtime threat
-  detection built on Falco rules under the hood, container/host image
-  scanning, compliance checks (CIS Benchmarks), and the incident
-  response workflow from a runtime alert through forensic capture. Use
-  when the user asks to "write a Falco/Sysdig runtime rule", "investigate
-  a Sysdig Secure runtime alert", "scan images with Sysdig", "run a CIS
-  Benchmark compliance check with Sysdig", "tune noisy Falco rules in
-  Sysdig", or "set up drift/anomaly detection for containers". Sysdig
-  and Falco-rule-syntax specific depth; cross-references container image
-  hardening for reducing what runtime detection has to catch in the
-  first place.
+  Guides deep, tool-specific use of Sysdig Secure for runtime threat detection
+  built on Falco rules under the hood, container/host image scanning, compliance
+  checks (CIS Benchmarks), and the incident response workflow from a runtime
+  alert through forensic capture. Use when the user asks to "write a
+  Falco/Sysdig runtime rule", "investigate a Sysdig Secure runtime alert", "scan
+  images with Sysdig", "run a CIS Benchmark compliance check with Sysdig", "tune
+  noisy Falco rules in Sysdig", or "set up drift/anomaly detection for
+  containers". Sysdig and Falco-rule-syntax specific depth; cross-references
+  container image hardening for reducing what runtime detection has to catch in
+  the first place.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - workflows
+  - sysdig-secure-runtime-security
+depends_on: []
 ---
 
 # Sysdig Secure Runtime Security

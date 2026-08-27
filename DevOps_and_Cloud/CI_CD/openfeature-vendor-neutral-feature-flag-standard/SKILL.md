@@ -1,21 +1,24 @@
 ---
 name: openfeature-vendor-neutral-feature-flag-standard
 description: >
-  Guides adopting the OpenFeature specification and SDKs as a
-  vendor-neutral abstraction layer over feature flag providers
-  (LaunchDarkly, Unleash, Flagsmith, a config file, or a homegrown
-  service) — provider architecture, evaluation context design, hooks for
-  cross-cutting logging/metrics, and swapping or multi-provider testing
-  without touching application call sites. Use when the user asks to
-  "use OpenFeature instead of a vendor SDK directly," "avoid vendor
-  lock-in for feature flags," "abstract our flag evaluation behind a
-  standard interface," "swap our flag provider without rewriting call
-  sites," or "add an OpenFeature hook for flag evaluation logging."
+  Guides adopting the OpenFeature specification and SDKs as a vendor-neutral
+  abstraction layer over feature flag providers (LaunchDarkly, Unleash,
+  Flagsmith, a config file, or a homegrown service) — provider architecture,
+  evaluation context design, hooks for cross-cutting logging/metrics, and
+  swapping or multi-provider testing without touching application call sites.
+  Use when the user asks to "use OpenFeature instead of a vendor SDK directly,"
+  "avoid vendor lock-in for feature flags," "abstract our flag evaluation behind
+  a standard interface," "swap our flag provider without rewriting call sites,"
+  or "add an OpenFeature hook for flag evaluation logging."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - openfeature-vendor-neutral-feature-flag-standard
+depends_on: []
 ---
 
 # OpenFeature: Vendor-Neutral Feature Flag Standard

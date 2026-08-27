@@ -1,7 +1,19 @@
 ---
 name: argocd-operations
-description: Covers running Argo CD day to day — structuring app-of-apps, choosing sync policies and waves, reading health versus sync status correctly, and unsticking a degraded or hung Application. Use this whenever the user mentions Argo CD, an Application stuck "Progressing" or "OutOfSync," app-of-apps or ApplicationSets, sync waves and hooks, or asks why a deploy shows synced but the workload is unhealthy. For the underlying model this tool implements use `gitops`; for automated canary analysis on top of it use `progressive-delivery`; for the workloads it manages use `kubernetes-operations`.
+description: Covers running Argo CD day to day — structuring app-of-apps,
+  choosing sync policies and waves, reading health versus sync status correctly,
+  and unsticking a degraded or hung Application. Use this whenever the user
+  mentions Argo CD, an Application stuck "Progressing" or "OutOfSync,"
+  app-of-apps or ApplicationSets, sync waves and hooks, or asks why a deploy
+  shows synced but the workload is unhealthy. For the underlying model this tool
+  implements use `gitops`; for automated canary analysis on top of it use
+  `progressive-delivery`; for the workloads it manages use
+  `kubernetes-operations`.
 license: MIT
+tags:
+  - observability_and_secops
+  - argocd-operations
+depends_on: []
 ---
 
 # Argo CD Operations

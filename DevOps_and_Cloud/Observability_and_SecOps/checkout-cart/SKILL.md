@@ -1,16 +1,24 @@
 ---
 name: ecommerce-checkout-cart
 description: >
-  Use when the user asks about shopping cart, checkout flow, cart management, order management, discount/coupon system, tax calculation, shipping logic, or e-commerce backend patterns. Do NOT use for: payment processing (ecommerce-payment-processing), or general backend API design (backend-api-design).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about shopping cart, checkout flow, cart management,
+  order management, discount/coupon system, tax calculation, shipping logic, or
+  e-commerce backend patterns. Do NOT use for: payment processing
+  (ecommerce-payment-processing), or general backend API design
+  (backend-api-design).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ecommerce, checkout-cart, phase-3]
+tags:
+  - ecommerce
+  - checkout-cart
+  - phase-3
+depends_on: []
 ---
 
 # Checkout & Cart

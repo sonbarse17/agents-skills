@@ -2,18 +2,21 @@
 name: weights-and-biases-experiment-tracking
 description: >
   Sets up and operates Weights & Biases (W&B) specifically — the run/sweep/
-  artifact object model, hyperparameter sweep configuration and agents,
-  report generation for stakeholder communication, and how W&B compares to
-  MLflow (SaaS-first vs. self-hostable, sweep automation depth) to help a
-  team choose between them. Use when the user asks to "set up W&B/wandb,"
-  "configure a hyperparameter sweep," "run a wandb agent," "log a W&B
-  artifact," "build a W&B report for stakeholders," or "should we use W&B or
-  MLflow."
+  artifact object model, hyperparameter sweep configuration and agents, report
+  generation for stakeholder communication, and how W&B compares to MLflow
+  (SaaS-first vs. self-hostable, sweep automation depth) to help a team choose
+  between them. Use when the user asks to "set up W&B/wandb," "configure a
+  hyperparameter sweep," "run a wandb agent," "log a W&B artifact," "build a W&B
+  report for stakeholders," or "should we use W&B or MLflow."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - weights-and-biases-experiment-tracking
+depends_on: []
 ---
 
 # Weights & Biases Experiment Tracking

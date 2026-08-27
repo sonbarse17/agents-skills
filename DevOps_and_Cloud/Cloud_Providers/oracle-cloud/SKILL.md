@@ -1,29 +1,32 @@
 ---
 name: oracle-cloud
 description: >
-  Use this skill when the user says 'oracle cloud', 'oci', 'oracle
-  cloud infrastructure', 'oracle database cloud', 'oci compute',
-  'oci networking', 'oci storage', 'oci identity', 'oci iam',
-  'oracle autonomous database', 'oci load balancer', 'oci dns',
-  'oci functions', 'oci container engine', 'oke', 'oracle
-  kubernetes', 'oci terraform', 'oci resource manager', 'oracle
-  cloud regions', 'oci fastconnect', 'oci vcn', 'oci security
-  list', 'oci nsg', 'oci bastion', 'oci vault', 'oci waf',
-  'oci email delivery', 'oci object storage', 'oci block volume',
-  'oci file storage', 'oci budget', 'oci cost analysis',
-  'oci announcements', 'oci support'.
-  Covers: Oracle Cloud Infrastructure (OCI) resources, networking,
-  compute, storage, IAM, OKE (Kubernetes), Autonomous Database,
-  and governance.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'oracle cloud', 'oci', 'oracle cloud
+  infrastructure', 'oracle database cloud', 'oci compute', 'oci networking',
+  'oci storage', 'oci identity', 'oci iam', 'oracle autonomous database', 'oci
+  load balancer', 'oci dns', 'oci functions', 'oci container engine', 'oke',
+  'oracle kubernetes', 'oci terraform', 'oci resource manager', 'oracle cloud
+  regions', 'oci fastconnect', 'oci vcn', 'oci security list', 'oci nsg', 'oci
+  bastion', 'oci vault', 'oci waf', 'oci email delivery', 'oci object storage',
+  'oci block volume', 'oci file storage', 'oci budget', 'oci cost analysis',
+  'oci announcements', 'oci support'. Covers: Oracle Cloud Infrastructure (OCI)
+  resources, networking, compute, storage, IAM, OKE (Kubernetes), Autonomous
+  Database, and governance.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, oracle-cloud, oci, cloud-provider, phase-4]
+tags:
+  - devops
+  - oracle-cloud
+  - oci
+  - cloud-provider
+  - phase-4
+depends_on: []
 ---
 
 # Oracle Cloud Infrastructure (OCI)

@@ -1,20 +1,24 @@
 ---
 name: feature-flag-configuration-launchdarkly-and-unleash
 description: >
-  Designs and operates feature flag configuration with LaunchDarkly or
-  Unleash, covering flag lifecycle (create, target, roll out, retire),
-  kill-switch patterns for fast incident mitigation without a redeploy,
+  Designs and operates feature flag configuration with LaunchDarkly or Unleash,
+  covering flag lifecycle (create, target, roll out, retire), kill-switch
+  patterns for fast incident mitigation without a redeploy,
   targeting/segmentation rules, and cleaning up stale flag debt before it
-  accumulates into unreadable conditional logic. Use when the user asks to
-  "add a feature flag for X," "set up a kill switch for this feature,"
-  "configure LaunchDarkly/Unleash targeting rules," "roll out a flag
-  gradually by percentage," "clean up old feature flags," or "should we use
-  LaunchDarkly or self-host Unleash."
+  accumulates into unreadable conditional logic. Use when the user asks to "add
+  a feature flag for X," "set up a kill switch for this feature," "configure
+  LaunchDarkly/Unleash targeting rules," "roll out a flag gradually by
+  percentage," "clean up old feature flags," or "should we use LaunchDarkly or
+  self-host Unleash."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - miscellaneous
+  - feature-flag-configuration-launchdarkly-and-unleash
+depends_on: []
 ---
 
 # Feature Flag Configuration (LaunchDarkly and Unleash)

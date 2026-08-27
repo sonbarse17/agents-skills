@@ -1,21 +1,23 @@
 ---
 name: provider-framework-migration
-description: >-
-  Migrate Terraform provider resources and data sources from Plugin SDKv2 to
-  the Plugin Framework: muxing both plugins in one provider
+description: "Migrate Terraform provider resources and data sources from Plugin
+  SDKv2 to the Plugin Framework: muxing both plugins in one provider
   (terraform-plugin-mux, tf5to6server), per-resource migration workflow,
-  SDKv2-to-Framework schema mapping (ForceNew, ValidateFunc,
-  DiffSuppressFunc, Default, Timeouts, blocks), null-vs-zero-value
-  behavioral traps, and state-compatibility verification. Use when
-  converting or translating SDKv2 resources to the Framework, setting up a
-  muxed provider server, deciding whether a resource should be migrated at
-  all, or debugging plan diffs and state errors that appeared after a
-  migration.
+  SDKv2-to-Framework schema mapping (ForceNew, ValidateFunc, DiffSuppressFunc,
+  Default, Timeouts, blocks), null-vs-zero-value behavioral traps, and
+  state-compatibility verification. Use when converting or translating SDKv2
+  resources to the Framework, setting up a muxed provider server, deciding
+  whether a resource should be migrated at all, or debugging plan diffs and
+  state errors that appeared after a migration."
 license: MPL-2.0
 metadata:
   lifecycle-status: active
   copyright: Copyright IBM Corp. 2026
-  version: "0.0.1"
+  version: 0.0.1
+tags:
+  - infrastructure_as_code
+  - provider-framework-migration
+depends_on: []
 ---
 
 # Migrating from Plugin SDKv2 to the Plugin Framework

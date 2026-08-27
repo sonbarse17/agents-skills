@@ -1,12 +1,16 @@
 ---
 name: observability-edot-dotnet-instrument
 description: >
-  Instrument a .NET application with the Elastic Distribution of OpenTelemetry (EDOT)
-  .NET SDK for automatic tracing, metrics, and logs. Use when adding observability
-  to a .NET service that has no existing APM agent.
+  Instrument a .NET application with the Elastic Distribution of OpenTelemetry
+  (EDOT) .NET SDK for automatic tracing, metrics, and logs. Use when adding
+  observability to a .NET service that has no existing APM agent.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - edot-dotnet-instrument
+depends_on: []
 ---
 
 # EDOT .NET Instrumentation

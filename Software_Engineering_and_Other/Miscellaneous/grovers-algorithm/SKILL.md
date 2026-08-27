@@ -1,6 +1,10 @@
 ---
-name: "Grover's Algorithm"
-description: "Amplitude amplification and unstructured database search in O(sqrt(N)) time."
+name: Grover's Algorithm
+description: Amplitude amplification and unstructured database search in O(sqrt(N)) time.
+tags:
+  - miscellaneous
+  - grovers-algorithm
+depends_on: []
 ---
 
 # Grover's Algorithm

@@ -1,7 +1,18 @@
 ---
 name: continuous-delivery
-description: Builds the deployment pipeline that takes an artifact from a merged commit to production automatically and safely — promotion gates between environments, deploy-on-merge, and keeping main always releasable. Use this whenever the user is designing a deployment pipeline, asking how to ship changes faster, setting up dev/staging/prod promotion, or asking the difference between continuous delivery and deployment. For the merge signal that feeds this use `ci-pipelines`; for a single deploy's mechanics use `deployment-strategies`.
+description: Builds the deployment pipeline that takes an artifact from a merged
+  commit to production automatically and safely — promotion gates between
+  environments, deploy-on-merge, and keeping main always releasable. Use this
+  whenever the user is designing a deployment pipeline, asking how to ship
+  changes faster, setting up dev/staging/prod promotion, or asking the
+  difference between continuous delivery and deployment. For the merge signal
+  that feeds this use `ci-pipelines`; for a single deploy's mechanics use
+  `deployment-strategies`.
 license: MIT
+tags:
+  - ci_cd
+  - continuous-delivery
+depends_on: []
 ---
 
 # Continuous Delivery

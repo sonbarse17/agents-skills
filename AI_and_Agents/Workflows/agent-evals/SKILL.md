@@ -1,10 +1,16 @@
 ---
 name: agent-evals
-description: Build automated evaluation suites for AI agents using golden datasets, rubrics, and regression gates. Use when shipping agent features, validating prompt changes, or gating deployments on quality.
+description: Build automated evaluation suites for AI agents using golden
+  datasets, rubrics, and regression gates. Use when shipping agent features,
+  validating prompt changes, or gating deployments on quality.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - workflows
+  - agent-evals
+depends_on: []
 ---
 
 # Agent Evals

@@ -1,10 +1,15 @@
 ---
 name: model-supply-chain-security
-description: Secure the AI model supply chain with artifact signing, provenance attestation, SBOM workflows, dependency controls, and trusted model promotion.
+description: Secure the AI model supply chain with artifact signing, provenance
+  attestation, SBOM workflows, dependency controls, and trusted model promotion.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - model-supply-chain-security
+depends_on: []
 ---
 
 # Model Supply Chain Security

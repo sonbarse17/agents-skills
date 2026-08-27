@@ -2,23 +2,29 @@
 name: monorepo
 description: >
   Use this skill when the user says 'monorepo', 'Nx', 'Turborepo', 'NX', 'nx
-  build', 'nx affected', 'workspace', 'dependency graph', 'build
-  orchestration', 'remote caching', 'task orchestration', 'shared
-  configuration', 'lerna', 'pnpm workspace', 'yarn workspace', 'npm workspace',
-  'project graph', 'module boundary', 'computation caching'.
-  Covers: Nx workspaces, Turborepo pipelines, dependency graph management, build
-  orchestration, caching, task distribution, module boundary enforcement.
-  Do NOT use this for: single-package projects, non-JS/TS monorepos without
-  build tooling, or Git submodule strategies.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  build', 'nx affected', 'workspace', 'dependency graph', 'build orchestration',
+  'remote caching', 'task orchestration', 'shared configuration', 'lerna', 'pnpm
+  workspace', 'yarn workspace', 'npm workspace', 'project graph', 'module
+  boundary', 'computation caching'. Covers: Nx workspaces, Turborepo pipelines,
+  dependency graph management, build orchestration, caching, task distribution,
+  module boundary enforcement. Do NOT use this for: single-package projects,
+  non-JS/TS monorepos without build tooling, or Git submodule strategies.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, monorepo, nx, turborepo, build-tools, phase-5]
+tags:
+  - devops
+  - monorepo
+  - nx
+  - turborepo
+  - build-tools
+  - phase-5
+depends_on: []
 ---
 
 # Monorepo

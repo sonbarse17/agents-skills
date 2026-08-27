@@ -1,7 +1,18 @@
 ---
 name: scheduled-jobs
-description: Covers cron and scheduled work done right — idempotency, preventing overlapping runs, monitoring for missed and failed runs, alerting on silence, and getting time zones and DST transitions correct. Use this whenever the user is writing a cron job or Kubernetes CronJob, asks why a scheduled job ran twice or didn't run at all, is debugging a job that fired wrong after a DST change, or wants to know if a nightly job silently stopped. For the logic inside the job use `scripting-automation`, and for event-driven work instead of time-driven use `workflow-automation`.
+description: Covers cron and scheduled work done right — idempotency, preventing
+  overlapping runs, monitoring for missed and failed runs, alerting on silence,
+  and getting time zones and DST transitions correct. Use this whenever the user
+  is writing a cron job or Kubernetes CronJob, asks why a scheduled job ran
+  twice or didn't run at all, is debugging a job that fired wrong after a DST
+  change, or wants to know if a nightly job silently stopped. For the logic
+  inside the job use `scripting-automation`, and for event-driven work instead
+  of time-driven use `workflow-automation`.
 license: MIT
+tags:
+  - patterns
+  - scheduled-jobs
+depends_on: []
 ---
 
 # Scheduled Jobs

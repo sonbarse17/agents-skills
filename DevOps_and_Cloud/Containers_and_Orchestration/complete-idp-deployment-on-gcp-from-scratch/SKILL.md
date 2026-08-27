@@ -1,23 +1,26 @@
 ---
 name: complete-idp-deployment-on-gcp-from-scratch
 description: >
-  Sequences a complete, from-scratch Internal Developer Platform deployment
-  on GCP: landing zone → GKE cluster → Helm-deployed Backstage backed by
-  Cloud SQL for PostgreSQL → golden-path scaffolding template →
-  self-service API wired to GCP provisioning (Workload Identity Federation
-  bindings, Cloud SQL instances) → scorecards. This is the integration
-  runbook that orders the individual GCP/GKE/Backstage skills correctly
-  and flags the handoffs between them. Use when a user asks to "deploy an
-  IDP on GCP from scratch," "stand up Backstage on GKE end-to-end,"
-  "build our internal developer platform on Google Cloud," "wire
-  self-service database/identity provisioning into Backstage on GKE," or
+  Sequences a complete, from-scratch Internal Developer Platform deployment on
+  GCP: landing zone → GKE cluster → Helm-deployed Backstage backed by Cloud SQL
+  for PostgreSQL → golden-path scaffolding template → self-service API wired to
+  GCP provisioning (Workload Identity Federation bindings, Cloud SQL instances)
+  → scorecards. This is the integration runbook that orders the individual
+  GCP/GKE/Backstage skills correctly and flags the handoffs between them. Use
+  when a user asks to "deploy an IDP on GCP from scratch," "stand up Backstage
+  on GKE end-to-end," "build our internal developer platform on Google Cloud,"
+  "wire self-service database/identity provisioning into Backstage on GKE," or
   "sequence a GCP platform rollout from project vending to golden-path
   templates."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-idp-deployment-on-gcp-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on GCP from Scratch

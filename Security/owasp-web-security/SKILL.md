@@ -1,6 +1,11 @@
 ---
 name: owasp-web-security
-description: Theoretical mechanics of critical web vulnerabilities, static analysis, and secure architecture remediation.
+description: Theoretical mechanics of critical web vulnerabilities, static
+  analysis, and secure architecture remediation.
+tags:
+  - security
+  - owasp-web-security
+depends_on: []
 ---
 
 # OWASP Web Security & Vulnerability Mechanics

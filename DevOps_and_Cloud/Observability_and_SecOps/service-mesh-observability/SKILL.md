@@ -1,6 +1,13 @@
 ---
 name: service-mesh-observability
-description: Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debugging latency issues, or implementing SLOs for service communication.
+description: Implement comprehensive observability for service meshes including
+  distributed tracing, metrics, and visualization. Use when setting up mesh
+  monitoring, debugging latency issues, or implementing SLOs for service
+  communication.
+tags:
+  - observability_and_secops
+  - service-mesh-observability
+depends_on: []
 ---
 
 # Service Mesh [Observability](../observability/SKILL.md)

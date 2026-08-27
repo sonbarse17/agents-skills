@@ -1,20 +1,24 @@
 ---
 name: confluence-page-authoring-and-governance
 description: >
-  Guides authoring well-structured Confluence pages (clear heading
-  hierarchy, table of contents, templates for runbooks/design docs/
-  postmortems), organizing them within a space, keeping version/page
-  history discipline, and labeling/linking for discoverability — plus the
-  underlying Confluence REST API shape (`POST /wiki/rest/api/content`)
-  for creating/updating pages programmatically. Use when the user asks
-  to "create a Confluence page", "update a Confluence page", "document a
-  runbook in Confluence", "write a design doc", "write a postmortem",
-  "organize this space", or "why can't anyone find this page".
+  Guides authoring well-structured Confluence pages (clear heading hierarchy,
+  table of contents, templates for runbooks/design docs/ postmortems),
+  organizing them within a space, keeping version/page history discipline, and
+  labeling/linking for discoverability — plus the underlying Confluence REST API
+  shape (`POST /wiki/rest/api/content`) for creating/updating pages
+  programmatically. Use when the user asks to "create a Confluence page",
+  "update a Confluence page", "document a runbook in Confluence", "write a
+  design doc", "write a postmortem", "organize this space", or "why can't anyone
+  find this page".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: enterprise-collaboration
   maturity: stable
+tags:
+  - frontend
+  - confluence-page-authoring-and-governance
+depends_on: []
 ---
 
 # Confluence Page Authoring and Governance

@@ -1,7 +1,15 @@
 ---
 name: market-sizing-analysis
-description: Calculate TAM/SAM/SOM for market opportunities using top-down, bottom-up, and value theory methodologies. Use this skill when sizing markets, estimating addressable revenue, validating market opportunity for a new venture, or building investor-ready market analysis for a startup pitch or business plan.
+description: Calculate TAM/SAM/SOM for market opportunities using top-down,
+  bottom-up, and value theory methodologies. Use this skill when sizing markets,
+  estimating addressable revenue, validating market opportunity for a new
+  venture, or building investor-ready market analysis for a startup pitch or
+  business plan.
 version: 1.0.0
+tags:
+  - skills
+  - market-sizing-analysis
+depends_on: []
 ---
 
 # Market Sizing Analysis

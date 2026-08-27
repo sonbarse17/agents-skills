@@ -1,6 +1,10 @@
 ---
 name: cocos2d-patterns
 description: Cocos2d Architectural Patterns
+tags:
+  - game_development
+  - cocos2d-patterns
+depends_on: []
 ---
 # [Cocos2d](../cocos2d/SKILL.md)-x Architectural Patterns
 

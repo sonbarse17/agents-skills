@@ -1,19 +1,22 @@
 ---
 name: karpenter-cluster-autoscaling
 description: >
-  Guides configuring Karpenter for Kubernetes node autoscaling —
-  NodePool and EC2NodeClass (or equivalent) provisioning, consolidation
-  and bin-packing behavior, Spot/On-Demand mixing, and how Karpenter
-  compares to and can replace the Kubernetes Cluster Autoscaler. Use when
-  a user asks to "set up Karpenter", "write a NodePool spec", "reduce
-  node cost via consolidation/bin-packing", "mix Spot and On-Demand
-  nodes", "choose between Karpenter and Cluster Autoscaler", or "debug
-  why pods are stuck Pending / a node won't scale down."
+  Guides configuring Karpenter for Kubernetes node autoscaling — NodePool and
+  EC2NodeClass (or equivalent) provisioning, consolidation and bin-packing
+  behavior, Spot/On-Demand mixing, and how Karpenter compares to and can replace
+  the Kubernetes Cluster Autoscaler. Use when a user asks to "set up Karpenter",
+  "write a NodePool spec", "reduce node cost via consolidation/bin-packing",
+  "mix Spot and On-Demand nodes", "choose between Karpenter and Cluster
+  Autoscaler", or "debug why pods are stuck Pending / a node won't scale down."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - karpenter-cluster-autoscaling
+depends_on: []
 ---
 
 # Karpenter Cluster [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)

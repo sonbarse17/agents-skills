@@ -1,11 +1,16 @@
 ---
 name: observability-edot-dotnet-migrate
 description: >
-  Migrate a .NET application from the classic Elastic APM .NET agent to the EDOT .NET
-  SDK. Use when switching from Elastic.Apm.* packages to Elastic.OpenTelemetry.
+  Migrate a .NET application from the classic Elastic APM .NET agent to the EDOT
+  .NET SDK. Use when switching from Elastic.Apm.* packages to
+  Elastic.OpenTelemetry.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - edot-dotnet-migrate
+depends_on: []
 ---
 
 # EDOT .NET Migration

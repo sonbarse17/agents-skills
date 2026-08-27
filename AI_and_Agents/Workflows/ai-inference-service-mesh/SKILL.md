@@ -1,10 +1,15 @@
 ---
 name: ai-inference-service-mesh
-description: Use service mesh patterns for AI inference traffic management, mTLS, canary releases, policy enforcement, and cross-cluster resilience.
+description: Use service mesh patterns for AI inference traffic management,
+  mTLS, canary releases, policy enforcement, and cross-cluster resilience.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - workflows
+  - ai-inference-service-mesh
+depends_on: []
 ---
 
 # AI Inference Service Mesh

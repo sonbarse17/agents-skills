@@ -1,16 +1,31 @@
 ---
 name: blockchain-patterns
 description: >
-  Use this skill when asked about blockchain design patterns, token standards, upgradeable contracts, oracle patterns, layer 2 scaling patterns, cross-chain communication patterns, and common blockchain architecture patterns. Covers ERC standards (20, 721, 1155, 4626, 4337), proxy patterns (UUPS, transparent, beacon), bridge patterns, state channel patterns, sidechain patterns, and MEV-aware design. Do NOT use for: specific language implementation (use blockchain-application), core protocol design (use blockchain-core), or web3 integration (use blockchain-web3).
-version: "1.2.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about blockchain design patterns, token standards,
+  upgradeable contracts, oracle patterns, layer 2 scaling patterns, cross-chain
+  communication patterns, and common blockchain architecture patterns. Covers
+  ERC standards (20, 721, 1155, 4626, 4337), proxy patterns (UUPS, transparent,
+  beacon), bridge patterns, state channel patterns, sidechain patterns, and
+  MEV-aware design. Do NOT use for: specific language implementation (use
+  blockchain-application), core protocol design (use blockchain-core), or web3
+  integration (use blockchain-web3).
+version: 1.2.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [blockchain, patterns, architecture, design, tokens, standards, phase-blockchain]
+tags:
+  - blockchain
+  - patterns
+  - architecture
+  - design
+  - tokens
+  - standards
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Patterns

@@ -1,6 +1,10 @@
 ---
 name: Event Driven Architecture
 description: Best practices for Kafka/RabbitMQ message brokering and event sourcing.
+tags:
+  - patterns
+  - event-driven-architecture
+depends_on: []
 ---
 
 # Event Driven Architecture

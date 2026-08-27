@@ -1,10 +1,16 @@
 ---
 name: opentofu-migration
-description: Migrate from Terraform to OpenTofu with state compatibility, provider registry setup, and CI/CD pipeline updates. Use when adopting the open-source Terraform fork or evaluating license-free IaC.
+description: Migrate from Terraform to OpenTofu with state compatibility,
+  provider registry setup, and CI/CD pipeline updates. Use when adopting the
+  open-source Terraform fork or evaluating license-free IaC.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure_as_code
+  - opentofu-migration
+depends_on: []
 ---
 
 # OpenTofu Migration

@@ -2,19 +2,23 @@
 name: elasticsearch-opensearch-configuration-validation
 description: >
   Validates proposed Elasticsearch/OpenSearch index mapping, shard count/
-  replica allocation, and ILM/ISM policy settings before production
-  indexing begins — checking primary shard count against expected data
-  volume and node count, mapping field types against real query
-  patterns, and replica/allocation-awareness settings against actual
-  failure domains. Use when the user asks to "review this index mapping
-  before we start indexing," "validate shard count for this index,"
-  "check this ILM policy is safe before we apply it," or "will this
-  Elasticsearch/OpenSearch config change require a reindex."
+  replica allocation, and ILM/ISM policy settings before production indexing
+  begins — checking primary shard count against expected data volume and node
+  count, mapping field types against real query patterns, and
+  replica/allocation-awareness settings against actual failure domains. Use when
+  the user asks to "review this index mapping before we start indexing,"
+  "validate shard count for this index," "check this ILM policy is safe before
+  we apply it," or "will this Elasticsearch/OpenSearch config change require a
+  reindex."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - elasticsearch-opensearch-configuration-validation
+depends_on: []
 ---
 
 # Elasticsearch/OpenSearch Configuration Validation

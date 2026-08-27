@@ -1,16 +1,28 @@
 ---
 name: backend-grpc-patterns
 description: >
-  Use this skill when the user says 'gRPC', 'protobuf', 'protocol buffers', 'streaming RPC', 'unary call', 'server streaming', 'client streaming', 'bidirectional streaming', 'gRPC interceptor', 'gRPC error handling', 'protobuf schema', 'service definition', 'RPC design', or when designing gRPC APIs. This skill enforces consistent protobuf schema conventions, streaming patterns, interceptor chains, and structured error handling for gRPC services. Applies to any backend stack using gRPC. Do NOT use for: REST API design, GraphQL schema, message queue design, or frontend data fetching.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'gRPC', 'protobuf', 'protocol buffers',
+  'streaming RPC', 'unary call', 'server streaming', 'client streaming',
+  'bidirectional streaming', 'gRPC interceptor', 'gRPC error handling',
+  'protobuf schema', 'service definition', 'RPC design', or when designing gRPC
+  APIs. This skill enforces consistent protobuf schema conventions, streaming
+  patterns, interceptor chains, and structured error handling for gRPC services.
+  Applies to any backend stack using gRPC. Do NOT use for: REST API design,
+  GraphQL schema, message queue design, or frontend data fetching.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, grpc, phase-2, universal]
+tags:
+  - backend
+  - grpc
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend gRPC Patterns

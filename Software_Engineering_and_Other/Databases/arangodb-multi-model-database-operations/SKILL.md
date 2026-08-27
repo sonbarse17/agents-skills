@@ -1,20 +1,23 @@
 ---
 name: arangodb-multi-model-database-operations
 description: >
-  Covers operating ArangoDB, a multi-model database combining document,
-  graph, and key-value collections in a single engine with a unified
-  query language (AQL): collection type selection, graph traversal via
-  AQL, and cluster configuration (coordinators, DB-servers, agency).
-  Use when the user asks to "write an AQL query," "should I use a
-  document or edge collection in ArangoDB," "set up an ArangoDB
-  cluster," "why is this AQL graph traversal slow," or "choose between
-  ArangoDB and a single-purpose database for a mixed graph/document
-  workload."
+  Covers operating ArangoDB, a multi-model database combining document, graph,
+  and key-value collections in a single engine with a unified query language
+  (AQL): collection type selection, graph traversal via AQL, and cluster
+  configuration (coordinators, DB-servers, agency). Use when the user asks to
+  "write an AQL query," "should I use a document or edge collection in
+  ArangoDB," "set up an ArangoDB cluster," "why is this AQL graph traversal
+  slow," or "choose between ArangoDB and a single-purpose database for a mixed
+  graph/document workload."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - arangodb-multi-model-database-operations
+depends_on: []
 ---
 
 # ArangoDB Multi-Model Database Operations

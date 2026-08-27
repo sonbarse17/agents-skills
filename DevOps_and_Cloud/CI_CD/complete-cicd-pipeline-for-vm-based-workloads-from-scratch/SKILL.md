@@ -1,22 +1,24 @@
 ---
 name: complete-cicd-pipeline-for-vm-based-workloads-from-scratch
 description: >
-  Builds a complete CI/CD pipeline for a VM-based workload from an empty
-  repo — source checkout, build, immutable machine-image baking
-  (Packer-style AMI, not a container image or a zip), SCA/SAST security
-  gates, and a deploy step that's either a blue-green instance-group swap
-  or a config-management push (Ansible) to existing long-lived VMs,
-  distinct from both container and serverless deploy mechanics. Use when
-  the user asks to "build a full CI/CD pipeline for EC2/VM workloads from
-  scratch," "bake an AMI in CI and roll it out blue-green," "push
-  Ansible-managed config to existing VMs from a pipeline," or "go from an
-  empty repo to a VM fleet deployed with a golden image and Auto Scaling
-  Group swap."
+  Builds a complete CI/CD pipeline for a VM-based workload from an empty repo —
+  source checkout, build, immutable machine-image baking (Packer-style AMI, not
+  a container image or a zip), SCA/SAST security gates, and a deploy step that's
+  either a blue-green instance-group swap or a config-management push (Ansible)
+  to existing long-lived VMs, distinct from both container and serverless deploy
+  mechanics. Use when the user asks to "build a full CI/CD pipeline for EC2/VM
+  workloads from scratch," "bake an AMI in CI and roll it out blue-green," "push
+  Ansible-managed config to existing VMs from a pipeline," or "go from an empty
+  repo to a VM fleet deployed with a golden image and Auto Scaling Group swap."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cicd-tooling
   maturity: stable
+tags:
+  - ci_cd
+  - complete-cicd-pipeline-for-vm-based-workloads-from-scratch
+depends_on: []
 ---
 
 # Complete CI/CD Pipeline Deployment for VM-Based Workloads, From Scratch

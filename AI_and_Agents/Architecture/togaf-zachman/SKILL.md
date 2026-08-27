@@ -1,18 +1,23 @@
 ---
 name: enterprise-togaf-zachman
 description: >
-  Use this skill when applying TOGAF ADM or Zachman Framework for enterprise architecture.
-  This skill enforces: ADM phase governance, Zachman cell analysis, architecture content production, stakeholder viewpoint alignment.
-  Do NOT use for: solution architecture, implementation coding, infrastructure provisioning.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when applying TOGAF ADM or Zachman Framework for enterprise
+  architecture. This skill enforces: ADM phase governance, Zachman cell
+  analysis, architecture content production, stakeholder viewpoint alignment. Do
+  NOT use for: solution architecture, implementation coding, infrastructure
+  provisioning.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, phase-9]
+tags:
+  - enterprise
+  - phase-9
+depends_on: []
 ---
 
 # TOGAF and Zachman Framework Agent

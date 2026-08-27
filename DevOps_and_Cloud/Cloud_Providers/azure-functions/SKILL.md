@@ -1,10 +1,16 @@
 ---
 name: azure-functions
-description: Build serverless applications on Azure Functions. Configure triggers, bindings, and deployment. Use when implementing serverless workloads on Azure.
+description: Build serverless applications on Azure Functions. Configure
+  triggers, bindings, and deployment. Use when implementing serverless workloads
+  on Azure.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-functions
+depends_on: []
 ---
 
 # Azure Functions

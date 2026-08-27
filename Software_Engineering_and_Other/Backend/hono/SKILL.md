@@ -1,16 +1,25 @@
 ---
 name: nodejs-hono
 description: >
-  Use this skill when building Hono applications — lightweight web framework, edge-ready, Zod validation, RPC client. This skill enforces: Hono app factory pattern, Zod validation middleware, RPC type-safe client, middleware composition, edge deployment readiness. Do NOT use for: Express.js apps, NestJS projects, or non-Hono frameworks.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Hono applications — lightweight web framework,
+  edge-ready, Zod validation, RPC client. This skill enforces: Hono app factory
+  pattern, Zod validation middleware, RPC type-safe client, middleware
+  composition, edge deployment readiness. Do NOT use for: Express.js apps,
+  NestJS projects, or non-Hono frameworks.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, nodejs, hono, phase-10]
+tags:
+  - backend
+  - nodejs
+  - hono
+  - phase-10
+depends_on: []
 ---
 
 # Node.js Hono

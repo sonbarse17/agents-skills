@@ -1,6 +1,13 @@
 ---
 name: spark-training-gotchas
-description: Preflight and diagnose the ten known failure modes for ML training on NVIDIA DGX Spark. Use when a training run on DGX Spark fails to start, OOMs below the 128GB limit, slows down mid-run, or before any multi-hour training job on GB10.
+description: Preflight and diagnose the ten known failure modes for ML training
+  on NVIDIA DGX Spark. Use when a training run on DGX Spark fails to start, OOMs
+  below the 128GB limit, slows down mid-run, or before any multi-hour training
+  job on GB10.
+tags:
+  - data_engineering
+  - spark-training-gotchas
+depends_on: []
 ---
 
 # Spark Training Gotchas

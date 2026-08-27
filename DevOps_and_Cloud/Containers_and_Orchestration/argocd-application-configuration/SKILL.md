@@ -1,19 +1,22 @@
 ---
 name: argocd-application-configuration
 description: >
-  Configures Argo CD `Application` custom resources — sync policies
-  (automated vs. manual, prune, self-heal), sync waves and hooks for
-  ordered/multi-phase rollouts, and health checks for custom resource
-  types. Use when the user asks to "write an Argo CD Application manifest,"
-  "enable auto-sync / self-heal / prune," "order resources with sync
-  waves," "add a PreSync/PostSync hook," "fix an Application stuck
-  OutOfSync or Progressing," or "define a custom health check for a CRD
-  Argo CD doesn't understand natively."
+  Configures Argo CD `Application` custom resources — sync policies (automated
+  vs. manual, prune, self-heal), sync waves and hooks for ordered/multi-phase
+  rollouts, and health checks for custom resource types. Use when the user asks
+  to "write an Argo CD Application manifest," "enable auto-sync / self-heal /
+  prune," "order resources with sync waves," "add a PreSync/PostSync hook," "fix
+  an Application stuck OutOfSync or Progressing," or "define a custom health
+  check for a CRD Argo CD doesn't understand natively."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: gitops-argo-ecosystem
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - argocd-application-configuration
+depends_on: []
 ---
 
 # Argo CD Application Configuration

@@ -4,16 +4,20 @@ description: >
   Validates Score workload specifications and Humanitec Resource Definitions
   before they reach a real deploy — schema validation, `--dry-run` resolution
   against a target Environment, policy checks on resource types/classes, and
-  Resource Graph diffing for infrastructure-affecting changes. Use when a
-  user asks to "validate a score.yaml before deploying," "check a Resource
-  Definition change won't break production," "add a CI gate for Score specs,"
-  "dry-run a Humanitec deploy," or "catch a missing Resource Definition
-  before a developer's deploy fails."
+  Resource Graph diffing for infrastructure-affecting changes. Use when a user
+  asks to "validate a score.yaml before deploying," "check a Resource Definition
+  change won't break production," "add a CI gate for Score specs," "dry-run a
+  Humanitec deploy," or "catch a missing Resource Definition before a
+  developer's deploy fails."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - ci_cd
+  - humanitec-score-configuration-validation
+depends_on: []
 ---
 
 # Humanitec Score Configuration Validation

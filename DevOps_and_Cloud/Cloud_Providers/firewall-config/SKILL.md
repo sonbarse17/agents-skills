@@ -1,10 +1,16 @@
 ---
 name: firewall-config
-description: Configure iptables, nftables, and cloud firewalls. Implement network segmentation and traffic filtering. Use when securing network perimeters or implementing security zones.
+description: Configure iptables, nftables, and cloud firewalls. Implement
+  network segmentation and traffic filtering. Use when securing network
+  perimeters or implementing security zones.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - firewall-config
+depends_on: []
 ---
 
 # Firewall Configuration

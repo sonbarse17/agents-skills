@@ -1,23 +1,25 @@
 ---
 name: technical-roadmap-ownership-and-cross-team-coordination
 description: >
-  Guides lead-level engineering work: owning a technical roadmap for a
-  team and sequencing technical debt against feature work and platform
-  investment, resolving cross-team technical dependencies and conflicts
-  (two teams needing the same shared resource or API changed in
-  incompatible ways), driving adoption of a technical standard across
-  multiple teams without unilateral authority to mandate it, and giving
-  technical estimation/planning input into broader project planning. Use
-  when a tech lead (or an agent acting as one) is asked to "build/
-  prioritize our technical roadmap," "resolve a conflict between two
-  teams over a shared API/resource," "get other teams to adopt this
-  standard," or "give an estimate/plan input" for cross-team project
-  planning.
+  Guides lead-level engineering work: owning a technical roadmap for a team and
+  sequencing technical debt against feature work and platform investment,
+  resolving cross-team technical dependencies and conflicts (two teams needing
+  the same shared resource or API changed in incompatible ways), driving
+  adoption of a technical standard across multiple teams without unilateral
+  authority to mandate it, and giving technical estimation/planning input into
+  broader project planning. Use when a tech lead (or an agent acting as one) is
+  asked to "build/ prioritize our technical roadmap," "resolve a conflict
+  between two teams over a shared API/resource," "get other teams to adopt this
+  standard," or "give an estimate/plan input" for cross-team project planning.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: role-based-engineering-practices
   maturity: stable
+tags:
+  - product_and_business
+  - technical-roadmap-ownership-and-cross-team-coordination
+depends_on: []
 ---
 
 # Technical Roadmap Ownership and Cross-Team Coordination

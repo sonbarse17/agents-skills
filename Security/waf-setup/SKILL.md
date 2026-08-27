@@ -1,10 +1,16 @@
 ---
 name: waf-setup
-description: Deploy and tune Web Application Firewalls. Configure rules for OWASP Top 10 protection. Use when protecting web applications from common attacks.
+description: Deploy and tune Web Application Firewalls. Configure rules for
+  OWASP Top 10 protection. Use when protecting web applications from common
+  attacks.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - waf-setup
+depends_on: []
 ---
 
 # WAF Setup

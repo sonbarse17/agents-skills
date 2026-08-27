@@ -1,10 +1,16 @@
 ---
 name: llm-cost-optimization
-description: Reduce LLM API and infrastructure costs through model selection, prompt caching, batching, caching, quantization, and self-hosting strategies. Track spend by team and model, set budgets, and implement cost-aware routing.
+description: Reduce LLM API and infrastructure costs through model selection,
+  prompt caching, batching, caching, quantization, and self-hosting strategies.
+  Track spend by team and model, set budgets, and implement cost-aware routing.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llm-cost-optimization
+depends_on: []
 ---
 
 # LLM Cost Optimization

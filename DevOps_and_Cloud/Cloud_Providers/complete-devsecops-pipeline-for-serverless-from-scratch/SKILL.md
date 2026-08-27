@@ -1,22 +1,25 @@
 ---
 name: complete-devsecops-pipeline-for-serverless-from-scratch
 description: >
-  Builds the complete security-gate sequence for a serverless (Lambda-
-  style) DevSecOps pipeline from scratch — SAST, SCA against a much larger
-  bundled transitive-dependency surface, package/artifact signing, and
-  least-privilege execution-role scoping as the primary release gate
-  (rather than a Kubernetes-style admission policy), with runtime secrets
-  fetched from a managed secrets service instead of baked into the
-  deployment package. Use when the user asks to "build a DevSecOps
-  pipeline for a Lambda function from scratch," "gate a serverless release
-  on execution-role scope instead of admission policy," "sign a Lambda
-  deployment package," or "make sure a Lambda function's secrets aren't
-  baked into its zip."
+  Builds the complete security-gate sequence for a serverless (Lambda- style)
+  DevSecOps pipeline from scratch — SAST, SCA against a much larger bundled
+  transitive-dependency surface, package/artifact signing, and least-privilege
+  execution-role scoping as the primary release gate (rather than a
+  Kubernetes-style admission policy), with runtime secrets fetched from a
+  managed secrets service instead of baked into the deployment package. Use when
+  the user asks to "build a DevSecOps pipeline for a Lambda function from
+  scratch," "gate a serverless release on execution-role scope instead of
+  admission policy," "sign a Lambda deployment package," or "make sure a Lambda
+  function's secrets aren't baked into its zip."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-devsecops-pipeline-for-serverless-from-scratch
+depends_on: []
 ---
 
 # Complete [DevSecOps](../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), From Scratch

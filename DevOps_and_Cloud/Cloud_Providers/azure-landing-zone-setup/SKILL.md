@@ -2,17 +2,21 @@
 name: azure-landing-zone-setup
 description: >
   Guides designing and implementing an Azure landing zone using Management
-  Groups, subscription democratization, Azure Policy, and the Cloud
-  Adoption Framework (CAF) Landing Zone Accelerator pattern. Use when a
-  user asks to "design an Azure landing zone", "set up Management Groups
-  and subscriptions", "implement Azure Policy guardrails", "onboard a new
-  Azure subscription", "structure our Azure tenant", or "migrate to the
-  CAF enterprise-scale landing zone".
+  Groups, subscription democratization, Azure Policy, and the Cloud Adoption
+  Framework (CAF) Landing Zone Accelerator pattern. Use when a user asks to
+  "design an Azure landing zone", "set up Management Groups and subscriptions",
+  "implement Azure Policy guardrails", "onboard a new Azure subscription",
+  "structure our Azure tenant", or "migrate to the CAF enterprise-scale landing
+  zone".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - azure-landing-zone-setup
+depends_on: []
 ---
 
 # Azure Landing Zone Setup

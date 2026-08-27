@@ -3,16 +3,20 @@ name: mysql-mariadb-operations-and-performance-tuning
 description: >
   Covers day-2 MySQL/MariaDB operations: async, semi-sync, and GTID-based
   replication, InnoDB buffer pool sizing and I/O tuning, index and query
-  optimization with EXPLAIN, and MariaDB-specific storage engine choices
-  (InnoDB vs. Aria vs. ColumnStore/MyRocks). Use when the user asks to
-  "tune MySQL performance," "set up MySQL replication," "why is this
-  MySQL query slow," "size the InnoDB buffer pool," "switch a MariaDB
-  table's storage engine," or "fix MySQL replication lag."
+  optimization with EXPLAIN, and MariaDB-specific storage engine choices (InnoDB
+  vs. Aria vs. ColumnStore/MyRocks). Use when the user asks to "tune MySQL
+  performance," "set up MySQL replication," "why is this MySQL query slow,"
+  "size the InnoDB buffer pool," "switch a MariaDB table's storage engine," or
+  "fix MySQL replication lag."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - mysql-mariadb-operations-and-performance-tuning
+depends_on: []
 ---
 
 # [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Operations and Performance Tuning

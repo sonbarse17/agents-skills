@@ -1,3 +1,12 @@
+---
+name: internals
+description: Comprehensive guidelines and best practices for internals. Use this
+  skill when working with related components.
+tags:
+  - backend
+  - internals
+depends_on: []
+---
 # Next.js Internals: RSC, Client Boundaries, and Streaming SSR
 
 ## React Server Components (RSC) and App Router Mechanics

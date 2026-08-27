@@ -1,7 +1,18 @@
 ---
 name: configuration-management
-description: Covers Ansible, Chef, and Puppet for managing mutable systems declaratively — idempotent tasks, convergence toward desired state instead of one-off scripts, inventory organization, and roles. Use this whenever the user is writing a playbook, cookbook, or manifest, debugging why a run isn't converging, organizing hosts into an inventory, or deciding whether a fleet should be config-managed or replaced wholesale. For replacing servers instead of mutating them use `immutable-infrastructure`, for provisioning the underlying resources use `infrastructure-as-code`.
+description: Covers Ansible, Chef, and Puppet for managing mutable systems
+  declaratively — idempotent tasks, convergence toward desired state instead of
+  one-off scripts, inventory organization, and roles. Use this whenever the user
+  is writing a playbook, cookbook, or manifest, debugging why a run isn't
+  converging, organizing hosts into an inventory, or deciding whether a fleet
+  should be config-managed or replaced wholesale. For replacing servers instead
+  of mutating them use `immutable-infrastructure`, for provisioning the
+  underlying resources use `infrastructure-as-code`.
 license: MIT
+tags:
+  - cloud_providers
+  - configuration-management
+depends_on: []
 ---
 
 # Configuration Management

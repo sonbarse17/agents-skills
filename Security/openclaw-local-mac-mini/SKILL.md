@@ -1,10 +1,15 @@
 ---
 name: openclaw-local-mac-mini
-description: Set up OpenClaw locally and run it reliably on a Mac mini for private, always-on local agent workflows.
+description: Set up OpenClaw locally and run it reliably on a Mac mini for
+  private, always-on local agent workflows.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - openclaw-local-mac-mini
+depends_on: []
 ---
 
 # OpenClaw Local + Mac mini Setup

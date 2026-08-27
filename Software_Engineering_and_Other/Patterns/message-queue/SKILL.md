@@ -1,16 +1,29 @@
 ---
 name: backend-message-queue
 description: >
-  Use this skill when the user says 'message queue', 'Kafka', 'RabbitMQ', 'SQS', 'pub-sub', 'event bus', 'consumer group', 'topic', 'queue', 'at-least-once', 'exactly-once', 'idempotent consumer', 'event sourcing', 'dead letter queue', 'DLQ', 'message broker', 'producer', 'consumer', 'event-driven', 'async processing', or when designing asynchronous messaging. This skill enforces consistent messaging patterns: broker selection, topic/queue topology, message schema, consumer groups, retry, DLQ, and idempotency. Applies to any backend stack. Do NOT use for: gRPC streaming, WebSocket real-time, REST API design, or database CDC.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'message queue', 'Kafka', 'RabbitMQ', 'SQS',
+  'pub-sub', 'event bus', 'consumer group', 'topic', 'queue', 'at-least-once',
+  'exactly-once', 'idempotent consumer', 'event sourcing', 'dead letter queue',
+  'DLQ', 'message broker', 'producer', 'consumer', 'event-driven', 'async
+  processing', or when designing asynchronous messaging. This skill enforces
+  consistent messaging patterns: broker selection, topic/queue topology, message
+  schema, consumer groups, retry, DLQ, and idempotency. Applies to any backend
+  stack. Do NOT use for: gRPC streaming, WebSocket real-time, REST API design,
+  or database CDC.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, messaging, phase-2, universal]
+tags:
+  - backend
+  - messaging
+  - phase-2
+  - universal
+depends_on: []
 ---
 
 # Backend Message Queue

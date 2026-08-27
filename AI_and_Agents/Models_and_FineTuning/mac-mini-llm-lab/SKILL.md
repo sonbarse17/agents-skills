@@ -1,10 +1,16 @@
 ---
 name: mac-mini-llm-lab
-description: Configure a Mac mini as a reliable local LLM server with remote access, observability, and power-safe operation. Use when building an always-on private AI inference server on Apple Silicon.
+description: Configure a Mac mini as a reliable local LLM server with remote
+  access, observability, and power-safe operation. Use when building an
+  always-on private AI inference server on Apple Silicon.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - mac-mini-llm-lab
+depends_on: []
 ---
 
 # Mac mini LLM Lab

@@ -4,21 +4,26 @@ description: >
   Use this skill when the user says 'ArgoCD', 'Argo CD', 'GitOps',
   'ApplicationSet', 'Sync Policy', 'Sync Wave', 'Application Controller',
   'argocd CLI', 'Declarative GitOps', 'Progressive Delivery', 'Rollback',
-  'Multi-cluster ArgoCD', 'ArgoCD RBAC', 'ArgoCD SSO', 'ArgoCD Project'.
-  Covers: application deployment, sync strategies, application sets,
-  multi-cluster management, RBAC, SSO integration, monitoring, rollback,
-  disaster recovery, CLI usage, declarative setup.
-  Do NOT use for: Flux (use gitops skill), generic GitOps concepts,
-  Kubernetes cluster setup, CI/CD pipeline design.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  'Multi-cluster ArgoCD', 'ArgoCD RBAC', 'ArgoCD SSO', 'ArgoCD Project'. Covers:
+  application deployment, sync strategies, application sets, multi-cluster
+  management, RBAC, SSO integration, monitoring, rollback, disaster recovery,
+  CLI usage, declarative setup. Do NOT use for: Flux (use gitops skill), generic
+  GitOps concepts, Kubernetes cluster setup, CI/CD pipeline design.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, gitops, argocd, kubernetes, phase-5]
+tags:
+  - devops
+  - gitops
+  - argocd
+  - kubernetes
+  - phase-5
+depends_on: []
 ---
 
 # Argo CD

@@ -1,6 +1,13 @@
 ---
 name: helm-chart-scaffolding
-description: Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, packaging Kubernetes applications, or implementing templated deployments.
+description: Design, organize, and manage Helm charts for templating and
+  packaging Kubernetes applications with reusable configurations. Use when
+  creating Helm charts, packaging Kubernetes applications, or implementing
+  templated deployments.
+tags:
+  - containers_and_orchestration
+  - helm-chart-scaffolding
+depends_on: []
 ---
 
 # Helm Chart Scaffolding

@@ -1,12 +1,16 @@
 ---
 name: kibana-connectors
 description: >
-  Create and manage Kibana connectors for Slack, PagerDuty, Jira, webhooks, and more
-  via REST API or Terraform. Use when configuring third-party integrations or managing
-  connectors as code.
+  Create and manage Kibana connectors for Slack, PagerDuty, Jira, webhooks, and
+  more via REST API or Terraform. Use when configuring third-party integrations
+  or managing connectors as code.
 metadata:
   author: elastic
   version: 0.1.1
+tags:
+  - infrastructure_as_code
+  - kibana-connectors
+depends_on: []
 ---
 
 # Kibana Connectors

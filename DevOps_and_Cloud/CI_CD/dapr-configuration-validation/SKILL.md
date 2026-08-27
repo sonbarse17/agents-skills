@@ -1,19 +1,22 @@
 ---
 name: dapr-configuration-validation
 description: >
-  Validates Dapr component configurations — state store, pub/sub, and
-  binding components — before deploy, catching missing scopes, inline
-  secrets, unbounded retries, and resiliency gaps that `kubectl apply`
-  won't reject. Use when the user asks to "validate a Dapr component
-  before deploy," "check Dapr component scoping," "review a Dapr
-  pub/sub config for secrets," "add a pre-deploy gate for Dapr
-  components," or "why did my Dapr component apply but not work as
+  Validates Dapr component configurations — state store, pub/sub, and binding
+  components — before deploy, catching missing scopes, inline secrets, unbounded
+  retries, and resiliency gaps that `kubectl apply` won't reject. Use when the
+  user asks to "validate a Dapr component before deploy," "check Dapr component
+  scoping," "review a Dapr pub/sub config for secrets," "add a pre-deploy gate
+  for Dapr components," or "why did my Dapr component apply but not work as
   expected."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: serverless-and-alternative-compute
   maturity: stable
+tags:
+  - ci_cd
+  - dapr-configuration-validation
+depends_on: []
 ---
 
 # Dapr Configuration Validation

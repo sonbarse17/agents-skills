@@ -1,10 +1,17 @@
 ---
 name: ai-security-hardening
-description: Harden AI/LLM deployments against prompt injection, data exfiltration, model theft, and supply chain attacks. Covers input validation, output filtering, access control, model API security, and compliance controls for production AI systems.
+description: Harden AI/LLM deployments against prompt injection, data
+  exfiltration, model theft, and supply chain attacks. Covers input validation,
+  output filtering, access control, model API security, and compliance controls
+  for production AI systems.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - ai-security-hardening
+depends_on: []
 ---
 
 # AI Security Hardening

@@ -2,19 +2,22 @@
 name: supply-chain-security-slsa-sbom
 description: >
   Guides generating Software Bills of Materials (SBOM) with Syft/CycloneDX,
-  signing artifacts and generating provenance attestations with
-  Sigstore/cosign, and mapping practices to SLSA build-integrity levels.
-  Use when the user asks to "generate an SBOM", "sign our container
-  images", "add SLSA provenance to the build", "verify artifact
-  signatures before deploy", "meet a customer's SBOM requirement", or
-  "harden our build pipeline against tampering/supply-chain attacks".
-  Explains precisely what each control does and does not guarantee —
-  avoid overclaiming compliance coverage.
+  signing artifacts and generating provenance attestations with Sigstore/cosign,
+  and mapping practices to SLSA build-integrity levels. Use when the user asks
+  to "generate an SBOM", "sign our container images", "add SLSA provenance to
+  the build", "verify artifact signatures before deploy", "meet a customer's
+  SBOM requirement", or "harden our build pipeline against
+  tampering/supply-chain attacks". Explains precisely what each control does and
+  does not guarantee — avoid overclaiming compliance coverage.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devsecops
   maturity: stable
+tags:
+  - security
+  - supply-chain-security-slsa-sbom
+depends_on: []
 ---
 
 # Supply Chain Security: SLSA & SBOM

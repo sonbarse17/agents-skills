@@ -1,16 +1,25 @@
 ---
 name: quarkus-backend
 description: >
-  Use this skill when building Quarkus backend applications — supersonic Java, Dev UI, GraalVM native, reactive messaging, Panache ORM. This skill enforces: compile-time metadata processing, live reload, continuous testing, container-first design. Do NOT use for: Spring Boot projects, Micronaut applications, standard Jakarta EE.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building Quarkus backend applications — supersonic Java,
+  Dev UI, GraalVM native, reactive messaging, Panache ORM. This skill enforces:
+  compile-time metadata processing, live reload, continuous testing,
+  container-first design. Do NOT use for: Spring Boot projects, Micronaut
+  applications, standard Jakarta EE.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, java, jvm, phase-4]
+tags:
+  - backend
+  - java
+  - jvm
+  - phase-4
+depends_on: []
 ---
 
 # Quarkus Backend

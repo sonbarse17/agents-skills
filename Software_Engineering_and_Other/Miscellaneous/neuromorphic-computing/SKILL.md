@@ -1,6 +1,12 @@
 ---
 name: Neuromorphic Computing Fundamentals
-description: Master the physical hardware limits beyond classical silicon with Spiking Neural Networks (SNNs), Memristors, and asynchronous event-driven computing.
+description: Master the physical hardware limits beyond classical silicon with
+  Spiking Neural Networks (SNNs), Memristors, and asynchronous event-driven
+  computing.
+tags:
+  - miscellaneous
+  - neuromorphic-computing
+depends_on: []
 ---
 
 # Neuromorphic Computing: The Asynchronous Frontier

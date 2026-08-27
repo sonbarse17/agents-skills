@@ -1,16 +1,23 @@
 ---
 name: design-brand-identity
 description: >
-  Use when the user asks about brand identity, brand guidelines, visual identity, brand strategy, logo usage, brand voice, or brand consistency. Do NOT use for: visual design (design-visual-design), design systems (design-design-systems), or UX research (design-ux-research).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about brand identity, brand guidelines, visual
+  identity, brand strategy, logo usage, brand voice, or brand consistency. Do
+  NOT use for: visual design (design-visual-design), design systems
+  (design-design-systems), or UX research (design-ux-research).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [design, brand-identity, phase-3]
+tags:
+  - design
+  - brand-identity
+  - phase-3
+depends_on: []
 ---
 
 # Brand Identity

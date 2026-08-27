@@ -1,10 +1,17 @@
 ---
 name: vector-database-ops
-description: Deploy, manage, and optimize vector databases for AI applications. Covers Qdrant, Weaviate, pgvector, and Pinecone — collection management, indexing strategies, backup, and performance tuning for production RAG and semantic search workloads.
+description: Deploy, manage, and optimize vector databases for AI applications.
+  Covers Qdrant, Weaviate, pgvector, and Pinecone — collection management,
+  indexing strategies, backup, and performance tuning for production RAG and
+  semantic search workloads.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure
+  - vector-database-ops
+depends_on: []
 ---
 
 # Vector Database Operations

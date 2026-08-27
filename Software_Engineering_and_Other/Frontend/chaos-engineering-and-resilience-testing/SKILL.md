@@ -2,19 +2,23 @@
 name: chaos-engineering-and-resilience-testing
 description: >
   Guides running chaos engineering experiments — defining a measurable
-  steady-state hypothesis, controlling blast radius, and using
-  fault-injection tools (Chaos Mesh, LitmusChaos, AWS Fault Injection
-  Simulator) to proactively validate a system's resilience assumptions —
-  plus running structured "game days" and graduating experiments from
-  staging to controlled production runs. Use when a user asks to "run a
-  chaos engineering experiment", "test what happens if we kill a pod/
-  lose an AZ", "run a game day", "validate our failover actually works",
-  or "find resilience gaps before a real incident does."
+  steady-state hypothesis, controlling blast radius, and using fault-injection
+  tools (Chaos Mesh, LitmusChaos, AWS Fault Injection Simulator) to proactively
+  validate a system's resilience assumptions — plus running structured "game
+  days" and graduating experiments from staging to controlled production runs.
+  Use when a user asks to "run a chaos engineering experiment", "test what
+  happens if we kill a pod/ lose an AZ", "run a game day", "validate our
+  failover actually works", or "find resilience gaps before a real incident
+  does."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - frontend
+  - chaos-engineering-and-resilience-testing
+depends_on: []
 ---
 
 # Chaos Engineering and Resilience Testing

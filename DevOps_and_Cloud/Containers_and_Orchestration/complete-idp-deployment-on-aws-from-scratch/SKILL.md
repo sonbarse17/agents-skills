@@ -1,22 +1,25 @@
 ---
 name: complete-idp-deployment-on-aws-from-scratch
 description: >
-  Sequences a complete, from-scratch Internal Developer Platform deployment
-  on AWS: landing zone → EKS cluster → Helm-deployed Backstage backed by
-  RDS PostgreSQL → golden-path scaffolding template → self-service API
-  wired to AWS provisioning (IRSA roles, RDS instances) → scorecards. This
-  is the integration runbook that orders the individual AWS/EKS/Backstage
-  skills correctly and flags the handoffs between them. Use when a user
-  asks to "deploy an IDP on AWS from scratch," "stand up Backstage on EKS
-  end-to-end," "build our internal developer platform on AWS," "wire
-  self-service database/IAM provisioning into Backstage on AWS," or
-  "sequence an AWS platform rollout from account creation to golden-path
-  templates."
+  Sequences a complete, from-scratch Internal Developer Platform deployment on
+  AWS: landing zone → EKS cluster → Helm-deployed Backstage backed by RDS
+  PostgreSQL → golden-path scaffolding template → self-service API wired to AWS
+  provisioning (IRSA roles, RDS instances) → scorecards. This is the integration
+  runbook that orders the individual AWS/EKS/Backstage skills correctly and
+  flags the handoffs between them. Use when a user asks to "deploy an IDP on AWS
+  from scratch," "stand up Backstage on EKS end-to-end," "build our internal
+  developer platform on AWS," "wire self-service database/IAM provisioning into
+  Backstage on AWS," or "sequence an AWS platform rollout from account creation
+  to golden-path templates."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-idp-deployment-on-aws-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on AWS from Scratch

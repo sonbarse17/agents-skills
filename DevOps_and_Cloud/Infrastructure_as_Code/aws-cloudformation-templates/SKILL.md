@@ -2,18 +2,22 @@
 name: aws-cloudformation-templates
 description: >
   Authors and safely operates AWS CloudFormation templates (YAML/JSON),
-  including stacks, change sets, nested and cross-stack references,
-  StackSets for multi-account/multi-region deployment, and drift detection.
-  Use when the user asks to "write a CloudFormation template for X,"
-  "structure nested CloudFormation stacks," "deploy the same stack across
-  AWS accounts/regions," "review a CloudFormation change set before
-  applying," "detect/reconcile drift on a stack," or "migrate/compare
-  CloudFormation with Terraform" for an AWS-native IaC choice.
+  including stacks, change sets, nested and cross-stack references, StackSets
+  for multi-account/multi-region deployment, and drift detection. Use when the
+  user asks to "write a CloudFormation template for X," "structure nested
+  CloudFormation stacks," "deploy the same stack across AWS accounts/regions,"
+  "review a CloudFormation change set before applying," "detect/reconcile drift
+  on a stack," or "migrate/compare CloudFormation with Terraform" for an
+  AWS-native IaC choice.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - infrastructure_as_code
+  - aws-cloudformation-templates
+depends_on: []
 ---
 
 # AWS [CloudFormation](../cloudformation/SKILL.md) Templates

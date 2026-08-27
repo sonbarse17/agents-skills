@@ -3,16 +3,20 @@ name: rag-pipeline-design
 description: >
   Guides designing retrieval-augmented generation (RAG) pipelines: document
   chunking, embedding, indexing, retrieval, and grounding LLM output in
-  retrieved content. Use when a user asks to "build a RAG pipeline," "the
-  agent hallucinates facts it should know from our docs," "improve retrieval
+  retrieved content. Use when a user asks to "build a RAG pipeline," "the agent
+  hallucinates facts it should know from our docs," "improve retrieval
   relevance," "chunk documents for embedding," or needs to ground an agent's
   answers in a private/internal knowledge base rather than a chatbot with an
   open-book connection to arbitrary web content.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - rag-pipeline-design
+depends_on: []
 ---
 
 # RAG Pipeline Design

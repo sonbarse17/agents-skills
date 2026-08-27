@@ -1,16 +1,28 @@
 ---
 name: stencil
 description: >
-  Use this skill when the user says 'Stencil', 'Stencil.js', 'Stencil component', 'Stencil web component', 'Stencil setup', 'Stencil compiler', 'Stencil design system', 'web component compiler', or when building reusable web components with Stencil. This skill enforces: Stencil decorators (@Component, @Prop, @State, @Event), JSX-based component compilation, lazy-loading for performance, framework-agnostic output. Requires Stencil CLI (@stencil/core). Do NOT use for: non-web-component projects, React/Vue components that don't need framework-agnostic output, or vanilla custom elements.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'Stencil', 'Stencil.js', 'Stencil
+  component', 'Stencil web component', 'Stencil setup', 'Stencil compiler',
+  'Stencil design system', 'web component compiler', or when building reusable
+  web components with Stencil. This skill enforces: Stencil decorators
+  (@Component, @Prop, @State, @Event), JSX-based component compilation,
+  lazy-loading for performance, framework-agnostic output. Requires Stencil CLI
+  (@stencil/core). Do NOT use for: non-web-component projects, React/Vue
+  components that don't need framework-agnostic output, or vanilla custom
+  elements.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, stencil, phase-2]
+tags:
+  - frontend
+  - stencil
+  - phase-2
+depends_on: []
 ---
 
 # Stencil

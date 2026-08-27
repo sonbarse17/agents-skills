@@ -1,7 +1,18 @@
 ---
 name: root-cause-analysis
-description: Turns an incident into a blameless postmortem that actually changes something — a factual timeline, multiple contributing factors instead of one scapegoat cause, and action items with real owners and dates that get tracked to completion. Use this whenever the user is writing a postmortem, doing a retro after an outage, asking "why did this really happen," or an incident has been mitigated and needs a writeup. For running the incident itself use `incident-response`, and for turning findings into a tested procedure use `runbooks`.
+description: Turns an incident into a blameless postmortem that actually changes
+  something — a factual timeline, multiple contributing factors instead of one
+  scapegoat cause, and action items with real owners and dates that get tracked
+  to completion. Use this whenever the user is writing a postmortem, doing a
+  retro after an outage, asking "why did this really happen," or an incident has
+  been mitigated and needs a writeup. For running the incident itself use
+  `incident-response`, and for turning findings into a tested procedure use
+  `runbooks`.
 license: MIT
+tags:
+  - observability_and_secops
+  - root-cause-analysis
+depends_on: []
 ---
 
 # Root Cause Analysis

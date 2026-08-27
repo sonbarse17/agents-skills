@@ -1,17 +1,21 @@
 ---
 name: llm-cost-and-latency-optimization
 description: >
-  Guides reducing token cost and response latency of LLM-based agents
-  without degrading quality. Use when a user asks to "reduce our LLM API
-  bill," "make the agent respond faster," "our token usage is too high,"
-  "should we use a smaller/cheaper model here," decide where to apply
-  prompt caching, streaming, or batching, or needs to size a cost/latency
-  budget before scaling an agent to more users.
+  Guides reducing token cost and response latency of LLM-based agents without
+  degrading quality. Use when a user asks to "reduce our LLM API bill," "make
+  the agent respond faster," "our token usage is too high," "should we use a
+  smaller/cheaper model here," decide where to apply prompt caching, streaming,
+  or batching, or needs to size a cost/latency budget before scaling an agent to
+  more users.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - models_and_finetuning
+  - llm-cost-and-latency-optimization
+depends_on: []
 ---
 
 # LLM Cost and Latency Optimization

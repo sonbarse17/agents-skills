@@ -1,10 +1,15 @@
 ---
 name: agent-observability
-description: Instrument AI agents with tracing, token metrics, latency, and cost visibility. Use for reliability and debugging.
+description: Instrument AI agents with tracing, token metrics, latency, and cost
+  visibility. Use for reliability and debugging.
 license: MIT
 metadata:
   author: devops-skills
   version: "2.0"
+tags:
+  - operations
+  - agent-observability
+depends_on: []
 ---
 
 # Agent [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)

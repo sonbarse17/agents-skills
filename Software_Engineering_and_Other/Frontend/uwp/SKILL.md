@@ -1,16 +1,22 @@
 ---
 name: desktop-uwp
 description: >
-  Use when the user asks about Universal Windows Platform (UWP) development, WinRT APIs, XAML UWP, Windows Store apps, or UWP lifecycle. Do NOT use for: WinUI 3 (desktop-winui3), WPF (desktop-wpf), or WinForms (desktop-winforms).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about Universal Windows Platform (UWP) development,
+  WinRT APIs, XAML UWP, Windows Store apps, or UWP lifecycle. Do NOT use for:
+  WinUI 3 (desktop-winui3), WPF (desktop-wpf), or WinForms (desktop-winforms).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, uwp, windows]
+tags:
+  - desktop
+  - uwp
+  - windows
+depends_on: []
 ---
 
 # UWP

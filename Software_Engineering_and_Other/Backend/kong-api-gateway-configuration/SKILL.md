@@ -1,20 +1,23 @@
 ---
 name: kong-api-gateway-configuration
 description: >
-  Configures Kong Gateway's core objects — Services, Routes, and
-  Plugins — including rate-limiting, authentication (key-auth, JWT,
-  OAuth2), and request/response transformation, in both declarative
-  (`kong.yml`) and imperative (Admin API) modes, on Kubernetes (via the
-  Kong Ingress Controller) or standalone. Use when a user asks to "add
-  a Kong Route/Service," "attach a rate-limiting or auth plugin to a
-  Kong route," "write a KongPlugin/KongIngress CRD," "set up Kong as an
-  API gateway," "configure Kong declaratively with kong.yml," or
-  "troubleshoot a 502 from Kong to an upstream."
+  Configures Kong Gateway's core objects — Services, Routes, and Plugins —
+  including rate-limiting, authentication (key-auth, JWT, OAuth2), and
+  request/response transformation, in both declarative (`kong.yml`) and
+  imperative (Admin API) modes, on Kubernetes (via the Kong Ingress Controller)
+  or standalone. Use when a user asks to "add a Kong Route/Service," "attach a
+  rate-limiting or auth plugin to a Kong route," "write a KongPlugin/KongIngress
+  CRD," "set up Kong as an API gateway," "configure Kong declaratively with
+  kong.yml," or "troubleshoot a 502 from Kong to an upstream."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - backend
+  - kong-api-gateway-configuration
+depends_on: []
 ---
 
 # Kong API Gateway Configuration

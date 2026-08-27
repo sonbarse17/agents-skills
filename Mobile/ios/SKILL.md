@@ -1,17 +1,22 @@
 ---
 name: ios
 description: >
-  Use this skill when the user asks about iOS development, Swift, SwiftUI, UIKit,
-  iOS architecture, MVVM, Coordinator, Core Data, SwiftData, or iOS testing.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user asks about iOS development, Swift, SwiftUI,
+  UIKit, iOS architecture, MVVM, Coordinator, Core Data, SwiftData, or iOS
+  testing.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, ios, phase-4]
+tags:
+  - mobile
+  - ios
+  - phase-4
+depends_on: []
 ---
 
 # iOS Native

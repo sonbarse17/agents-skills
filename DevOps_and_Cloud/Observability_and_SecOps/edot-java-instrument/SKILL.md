@@ -1,12 +1,16 @@
 ---
 name: observability-edot-java-instrument
 description: >
-  Instrument a Java application with the Elastic Distribution of OpenTelemetry (EDOT)
-  Java agent for automatic tracing, metrics, and logs. Use when adding observability
-  to a Java service that has no existing APM agent.
+  Instrument a Java application with the Elastic Distribution of OpenTelemetry
+  (EDOT) Java agent for automatic tracing, metrics, and logs. Use when adding
+  observability to a Java service that has no existing APM agent.
 metadata:
   author: elastic
   version: 0.1.1
+tags:
+  - observability_and_secops
+  - edot-java-instrument
+depends_on: []
 ---
 
 # EDOT Java Instrumentation

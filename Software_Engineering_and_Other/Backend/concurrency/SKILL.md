@@ -1,6 +1,11 @@
 ---
 name: backend-concurrency-mechanics
-description: Deep dive into the mechanics of Threading, Goroutines, Event Loops, Race Conditions, and Memory Barriers.
+description: Deep dive into the mechanics of Threading, Goroutines, Event Loops,
+  Race Conditions, and Memory Barriers.
+tags:
+  - backend
+  - concurrency
+depends_on: []
 ---
 
 # Concurrency Mechanics: Deep Architecture & Under-the-Hood Operations

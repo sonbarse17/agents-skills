@@ -1,10 +1,16 @@
 ---
 name: llm-inference-scaling
-description: Auto-scale LLM inference clusters on Kubernetes using KEDA, custom GPU metrics, and horizontal pod autoscaling. Handle traffic spikes, implement queue-based scaling, and optimize cost with spot instances for AI workloads.
+description: Auto-scale LLM inference clusters on Kubernetes using KEDA, custom
+  GPU metrics, and horizontal pod autoscaling. Handle traffic spikes, implement
+  queue-based scaling, and optimize cost with spot instances for AI workloads.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - llm-inference-scaling
+depends_on: []
 ---
 
 # LLM Inference Scaling

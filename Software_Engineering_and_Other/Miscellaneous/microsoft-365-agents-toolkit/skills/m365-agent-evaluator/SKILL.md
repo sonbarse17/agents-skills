@@ -1,7 +1,16 @@
 ---
 name: m365-agent-evaluator
 description: >
-  Use this skill when a user wants to create, run, or analyze evaluation suites for Microsoft 365 Copilot declarative agents with the public @microsoft/m365-copilot-eval CLI. Trigger on intents such as "evaluate my agent", "test my agent", "run my evals", "create eval prompts", "add multi-turn tests", "tune evaluator thresholds", "why is my agent failing", or "set up eval environment variables".
+  Use this skill when a user wants to create, run, or analyze evaluation suites
+  for Microsoft 365 Copilot declarative agents with the public
+  @microsoft/m365-copilot-eval CLI. Trigger on intents such as "evaluate my
+  agent", "test my agent", "run my evals", "create eval prompts", "add
+  multi-turn tests", "tune evaluator thresholds", "why is my agent failing", or
+  "set up eval environment variables".
+tags:
+  - skills
+  - m365-agent-evaluator
+depends_on: []
 ---
 
 # M365 Agent Evaluator

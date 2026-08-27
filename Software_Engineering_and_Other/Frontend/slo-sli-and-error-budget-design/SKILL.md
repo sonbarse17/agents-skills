@@ -2,19 +2,23 @@
 name: slo-sli-and-error-budget-design
 description: >
   Guides choosing good Service Level Indicators (request-based ratios vs.
-  window-based aggregates), setting realistic Service Level Objectives
-  backed by data instead of arbitrary "five nines" targets, writing an
-  error-budget policy that defines what happens when the budget is spent
-  (freezing non-essential launches), and designing multi-window,
-  multi-burn-rate alerting so budget exhaustion pages on-call before users
-  notice. Use when a user asks to "define an SLO/SLI for a service", "set
-  an error budget", "decide what happens when we blow our error budget",
-  "write a burn-rate alert", or "stop every minor blip from paging us."
+  window-based aggregates), setting realistic Service Level Objectives backed by
+  data instead of arbitrary "five nines" targets, writing an error-budget policy
+  that defines what happens when the budget is spent (freezing non-essential
+  launches), and designing multi-window, multi-burn-rate alerting so budget
+  exhaustion pages on-call before users notice. Use when a user asks to "define
+  an SLO/SLI for a service", "set an error budget", "decide what happens when we
+  blow our error budget", "write a burn-rate alert", or "stop every minor blip
+  from paging us."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: site-reliability-engineering
   maturity: stable
+tags:
+  - frontend
+  - slo-sli-and-error-budget-design
+depends_on: []
 ---
 
 # SLO/SLI and Error Budget Design

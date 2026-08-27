@@ -1,16 +1,22 @@
 ---
 name: desktop-swiftui
 description: >
-  Use when the user asks about SwiftUI for macOS, SwiftUI desktop patterns, AppKit bridging, SwiftUI app lifecycle, or SwiftUI multiplatform apps. Do NOT use for: AppKit-only (desktop-appkit), or iOS SwiftUI (mobile skill).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about SwiftUI for macOS, SwiftUI desktop patterns,
+  AppKit bridging, SwiftUI app lifecycle, or SwiftUI multiplatform apps. Do NOT
+  use for: AppKit-only (desktop-appkit), or iOS SwiftUI (mobile skill).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [desktop, swiftui, macos]
+tags:
+  - desktop
+  - swiftui
+  - macos
+depends_on: []
 ---
 
 # SwiftUI

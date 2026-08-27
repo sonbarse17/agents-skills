@@ -1,15 +1,20 @@
 ---
 name: security-alert-triage
 description: >
-  Triage Elastic Security alerts — gather context, classify threats, create cases,
-  and acknowledge. Use when triaging alerts, performing SOC analysis, or investigating
-  detections.
+  Triage Elastic Security alerts — gather context, classify threats, create
+  cases, and acknowledge. Use when triaging alerts, performing SOC analysis, or
+  investigating detections.
 compatibility: >
-  Requires Node.js 22+, network access to Elasticsearch. Environment variables: ELASTICSEARCH_URL
-  or ELASTICSEARCH_CLOUD_ID, plus ELASTICSEARCH_API_KEY or ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
+  Requires Node.js 22+, network access to Elasticsearch. Environment variables:
+  ELASTICSEARCH_URL or ELASTICSEARCH_CLOUD_ID, plus ELASTICSEARCH_API_KEY or
+  ELASTICSEARCH_USERNAME/ELASTICSEARCH_PASSWORD.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - observability_and_secops
+  - alert-triage
+depends_on: []
 ---
 
 # Alert Triage

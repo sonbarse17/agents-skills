@@ -1,19 +1,23 @@
 ---
 name: platform-engineering-team-topology-and-operating-model
 description: >
-  Structures a platform engineering team using Team Topologies concepts —
-  the platform team as a fundamental team type serving stream-aligned
-  teams via X-as-a-Service interactions, run as an internal product with
-  the "thinnest viable platform" as a sizing discipline. Use when a user
-  asks to "structure our platform team," "decide what belongs on the
-  platform vs application teams," "apply Team Topologies to platform
-  engineering," "size the platform team," "stop the platform team from
-  becoming a ticket queue," or "run the platform like a product."
+  Structures a platform engineering team using Team Topologies concepts — the
+  platform team as a fundamental team type serving stream-aligned teams via
+  X-as-a-Service interactions, run as an internal product with the "thinnest
+  viable platform" as a sizing discipline. Use when a user asks to "structure
+  our platform team," "decide what belongs on the platform vs application
+  teams," "apply Team Topologies to platform engineering," "size the platform
+  team," "stop the platform team from becoming a ticket queue," or "run the
+  platform like a product."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - product_and_business
+  - platform-engineering-team-topology-and-operating-model
+depends_on: []
 ---
 
 # Platform Engineering Team Topology and Operating Model

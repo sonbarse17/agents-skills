@@ -1,12 +1,17 @@
 ---
 name: elasticsearch-file-ingest
 description: >
-  Ingest and transform data files (CSV/JSON/Parquet/Arrow IPC) into Elasticsearch
-  with stream processing and custom transforms. Use when loading files or batch importing
-  data — not for reindexing, general ingest pipeline design, or bulk API patterns.
+  Ingest and transform data files (CSV/JSON/Parquet/Arrow IPC) into
+  Elasticsearch with stream processing and custom transforms. Use when loading
+  files or batch importing data — not for reindexing, general ingest pipeline
+  design, or bulk API patterns.
 metadata:
   author: elastic
   version: 0.2.0
+tags:
+  - databases
+  - elasticsearch-file-ingest
+depends_on: []
 ---
 
 # Elasticsearch File Ingest

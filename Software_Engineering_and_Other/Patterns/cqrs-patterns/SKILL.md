@@ -1,16 +1,30 @@
 ---
 name: backend-cqrs-patterns
 description: >
-  Use this skill when the user says 'CQRS', 'command query segregation', 'separate read write model', 'command model', 'query model', 'read model', 'write model', 'materialized view', 'command handler', 'query handler'. This skill enforces: strict command/query separation, write model optimized for consistency, read model optimized for performance, eventual consistency between models, command validation before execution. Applies to any backend stack. Do NOT use for: simple CRUD applications, event sourcing (use event-sourcing skill), or microservices decomposition (use microservices skill).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'CQRS', 'command query segregation',
+  'separate read write model', 'command model', 'query model', 'read model',
+  'write model', 'materialized view', 'command handler', 'query handler'. This
+  skill enforces: strict command/query separation, write model optimized for
+  consistency, read model optimized for performance, eventual consistency
+  between models, command validation before execution. Applies to any backend
+  stack. Do NOT use for: simple CRUD applications, event sourcing (use
+  event-sourcing skill), or microservices decomposition (use microservices
+  skill).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, universal, cqrs, patterns, architecture]
+tags:
+  - backend
+  - universal
+  - cqrs
+  - patterns
+  - architecture
+depends_on: []
 ---
 
 # Backend CQRS Patterns

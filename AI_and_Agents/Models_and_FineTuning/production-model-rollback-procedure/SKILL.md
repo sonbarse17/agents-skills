@@ -1,19 +1,23 @@
 ---
 name: production-model-rollback-procedure
 description: >
-  Guides the incident-time procedure for rolling back a production model to
-  a previous version after a bad deploy, with feature-schema compatibility
-  verification against the rollback target as a required, non-skippable
-  step. Use when the user says a new model deploy is "causing errors" or
-  "bad predictions" and needs to roll back now, asks "how do I roll back a
-  model version", needs to confirm an older model version still matches the
-  current feature pipeline's schema before reverting to it, or is writing a
-  tested rollback runbook for an on-call rotation.
+  Guides the incident-time procedure for rolling back a production model to a
+  previous version after a bad deploy, with feature-schema compatibility
+  verification against the rollback target as a required, non-skippable step.
+  Use when the user says a new model deploy is "causing errors" or "bad
+  predictions" and needs to roll back now, asks "how do I roll back a model
+  version", needs to confirm an older model version still matches the current
+  feature pipeline's schema before reverting to it, or is writing a tested
+  rollback runbook for an on-call rotation.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - production-model-rollback-procedure
+depends_on: []
 ---
 
 # Production Model Rollback Procedure

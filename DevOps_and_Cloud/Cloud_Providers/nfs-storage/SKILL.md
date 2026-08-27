@@ -1,10 +1,15 @@
 ---
 name: nfs-storage
-description: Configure NFS servers and clients. Implement network file sharing for Linux systems. Use when setting up shared storage.
+description: Configure NFS servers and clients. Implement network file sharing
+  for Linux systems. Use when setting up shared storage.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - nfs-storage
+depends_on: []
 ---
 
 # NFS Storage

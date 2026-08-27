@@ -1,3 +1,12 @@
+---
+name: rag-architecture
+description: Comprehensive guidelines and best practices for rag-architecture.
+  Use this skill when working with related components.
+tags:
+  - architecture
+  - rag-architecture
+depends_on: []
+---
 # Advanced RAG Architecture: Algorithmic Foundations and Compilational Paradigms
 
 ## 1. Vector Database Indexing Mechanics

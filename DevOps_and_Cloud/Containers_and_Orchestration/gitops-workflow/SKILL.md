@@ -1,17 +1,20 @@
 ---
 name: gitops-workflow
 description: >
-  Designs and operates GitOps-based deployment workflows where Git is the
-  single source of truth for desired state, reconciled into a cluster by
-  an operator such as Argo CD or Flux. Use when the user asks to "set up
-  GitOps," "use Argo CD / Flux," "manage Kubernetes deploys via Git,"
-  "structure a GitOps repo," "sync/reconcile drift," or "roll back a
-  deployment by reverting Git."
+  Designs and operates GitOps-based deployment workflows where Git is the single
+  source of truth for desired state, reconciled into a cluster by an operator
+  such as Argo CD or Flux. Use when the user asks to "set up GitOps," "use Argo
+  CD / Flux," "manage Kubernetes deploys via Git," "structure a GitOps repo,"
+  "sync/reconcile drift," or "roll back a deployment by reverting Git."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: devops
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - gitops-workflow
+depends_on: []
 ---
 
 # [GitOps](../gitops/SKILL.md) Workflow

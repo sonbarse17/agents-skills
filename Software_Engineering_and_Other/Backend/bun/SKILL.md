@@ -1,16 +1,24 @@
 ---
 name: bun
 description: >
-  Use this skill when building with Bun runtime — Bun APIs, testing, package management, shell scripting, hot reload, SQLite, file I/O. This skill enforces: built-in APIs over npm equivalents, Bun test runner, bun install speed optimization, Bun.shell for scripts. Do NOT use for: Node.js-specific APIs (process.nextTick), Deno-specific features, browser JavaScript.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building with Bun runtime — Bun APIs, testing, package
+  management, shell scripting, hot reload, SQLite, file I/O. This skill
+  enforces: built-in APIs over npm equivalents, Bun test runner, bun install
+  speed optimization, Bun.shell for scripts. Do NOT use for: Node.js-specific
+  APIs (process.nextTick), Deno-specific features, browser JavaScript.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [backend, bun, phase-10]
+tags:
+  - backend
+  - bun
+  - phase-10
+depends_on: []
 ---
 
 # Bun

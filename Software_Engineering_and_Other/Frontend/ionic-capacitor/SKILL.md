@@ -1,16 +1,25 @@
 ---
 name: mobile-ionic-capacitor
 description: >
-  Use this skill when the user says 'Ionic', 'Capacitor', 'Ionic app', 'hybrid mobile', 'web-to-mobile', 'Capacitor plugin', 'Ionic framework', 'Ionic React', 'Ionic Angular', 'Ionic Vue'. Build hybrid mobile apps using Ionic UI components and Capacitor native bridge with web-to-native access. Do NOT use for: native mobile development (KMP/MAUI) or pure web apps.
+  Use this skill when the user says 'Ionic', 'Capacitor', 'Ionic app', 'hybrid
+  mobile', 'web-to-mobile', 'Capacitor plugin', 'Ionic framework', 'Ionic
+  React', 'Ionic Angular', 'Ionic Vue'. Build hybrid mobile apps using Ionic UI
+  components and Capacitor native bridge with web-to-native access. Do NOT use
+  for: native mobile development (KMP/MAUI) or pure web apps.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [mobile, ionic, capacitor, phase-7]
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - mobile
+  - ionic
+  - capacitor
+  - phase-7
+version: 2.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Mobile Ionic & Capacitor

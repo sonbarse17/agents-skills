@@ -1,10 +1,17 @@
 ---
 name: rag-infrastructure
-description: Build and operate Retrieval-Augmented Generation (RAG) infrastructure with vector stores, embedding pipelines, and hybrid search. Covers ingestion, chunking strategies, reranking, and production deployment patterns.
+description: Build and operate Retrieval-Augmented Generation (RAG)
+  infrastructure with vector stores, embedding pipelines, and hybrid search.
+  Covers ingestion, chunking strategies, reranking, and production deployment
+  patterns.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - infrastructure
+  - rag-infrastructure
+depends_on: []
 ---
 
 # RAG Infrastructure

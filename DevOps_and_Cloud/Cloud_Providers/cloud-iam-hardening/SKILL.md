@@ -1,19 +1,22 @@
 ---
 name: cloud-iam-hardening
 description: >
-  Guides hardening identity and access management across AWS, Azure, and
-  GCP — least-privilege policy design, eliminating long-lived credentials
-  in favor of federation (OIDC/Workload Identity), break-glass access, and
-  periodic access review. Use when a user asks to "reduce IAM
-  permissions", "remove unused IAM roles", "set up federated/keyless
-  access for CI/CD", "harden our cloud identity posture", "review who has
-  admin access", "implement least privilege", or "get rid of long-lived
-  access keys".
+  Guides hardening identity and access management across AWS, Azure, and GCP —
+  least-privilege policy design, eliminating long-lived credentials in favor of
+  federation (OIDC/Workload Identity), break-glass access, and periodic access
+  review. Use when a user asks to "reduce IAM permissions", "remove unused IAM
+  roles", "set up federated/keyless access for CI/CD", "harden our cloud
+  identity posture", "review who has admin access", "implement least privilege",
+  or "get rid of long-lived access keys".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - cloud-iam-hardening
+depends_on: []
 ---
 
 # Cloud IAM Hardening

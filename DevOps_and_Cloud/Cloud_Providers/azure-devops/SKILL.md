@@ -1,10 +1,17 @@
 ---
 name: azure-devops
-description: Set up Azure Pipelines for CI/CD, configure build and release pipelines, manage Azure DevOps projects, and integrate with Azure services. Use when working with Azure DevOps Services or Server for enterprise DevOps workflows.
+description: Set up Azure Pipelines for CI/CD, configure build and release
+  pipelines, manage Azure DevOps projects, and integrate with Azure services.
+  Use when working with Azure DevOps Services or Server for enterprise DevOps
+  workflows.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - azure-devops
+depends_on: []
 ---
 
 # Azure DevOps Pipelines

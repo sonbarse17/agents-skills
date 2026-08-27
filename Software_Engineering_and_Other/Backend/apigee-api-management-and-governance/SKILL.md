@@ -1,21 +1,24 @@
 ---
 name: apigee-api-management-and-governance
 description: >
-  Governs the full API lifecycle in Google Apigee (or comparable
-  enterprise API-management platforms) — API proxy design, policy
-  attachment (OAuth2/API key verification, quota, spike arrest,
-  transformation), developer portal publishing, product-based
-  monetization, and semantic versioning/deprecation of published APIs
-  at organizational scale. Use when a user asks to "design an Apigee
-  API proxy," "set up an API product for monetization," "version an
-  API without breaking existing consumers," "add a spike arrest or
-  quota policy in Apigee," "publish an API to a developer portal," or
-  "govern API lifecycle across many teams."
+  Governs the full API lifecycle in Google Apigee (or comparable enterprise
+  API-management platforms) — API proxy design, policy attachment (OAuth2/API
+  key verification, quota, spike arrest, transformation), developer portal
+  publishing, product-based monetization, and semantic versioning/deprecation of
+  published APIs at organizational scale. Use when a user asks to "design an
+  Apigee API proxy," "set up an API product for monetization," "version an API
+  without breaking existing consumers," "add a spike arrest or quota policy in
+  Apigee," "publish an API to a developer portal," or "govern API lifecycle
+  across many teams."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: service-mesh-and-api-gateway
   maturity: stable
+tags:
+  - backend
+  - apigee-api-management-and-governance
+depends_on: []
 ---
 
 # Apigee API Management and Governance

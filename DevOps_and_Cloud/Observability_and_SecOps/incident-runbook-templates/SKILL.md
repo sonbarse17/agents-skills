@@ -1,6 +1,16 @@
 ---
 name: incident-runbook-templates
-description: Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use this skill when building a service outage runbook for a payment processing system; creating database incident procedures covering connection pool exhaustion, replication lag, and disk space alerts; onboarding new on-call engineers who need step-by-step recovery guides written for a 3 AM brain; or standardizing escalation matrices across multiple engineering teams.
+description: Create structured incident response runbooks with step-by-step
+  procedures, escalation paths, and recovery actions. Use this skill when
+  building a service outage runbook for a payment processing system; creating
+  database incident procedures covering connection pool exhaustion, replication
+  lag, and disk space alerts; onboarding new on-call engineers who need
+  step-by-step recovery guides written for a 3 AM brain; or standardizing
+  escalation matrices across multiple engineering teams.
+tags:
+  - observability_and_secops
+  - incident-runbook-templates
+depends_on: []
 ---
 
 # [Incident](../incident/SKILL.md) [Runbook](../runbook/SKILL.md) Templates

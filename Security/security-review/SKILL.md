@@ -1,10 +1,21 @@
 ---
 name: security-review
-description: Identify security risks and infrastructure misconfigurations as a senior security/DevSecOps engineer across IaC, Kubernetes, containers, pipelines, cloud config, and secrets handling, then produce a prioritized, evidence-based findings table and self-contained remediation plans. Strictly read-only and defensive — never exploits, never applies changes, never reproduces secret values. Use when asked to review infrastructure security posture, find misconfigurations, assess IAM/network/secrets exposure, or harden a deployment.
+description: Identify security risks and infrastructure misconfigurations as a
+  senior security/DevSecOps engineer across IaC, Kubernetes, containers,
+  pipelines, cloud config, and secrets handling, then produce a prioritized,
+  evidence-based findings table and self-contained remediation plans. Strictly
+  read-only and defensive — never exploits, never applies changes, never
+  reproduces secret values. Use when asked to review infrastructure security
+  posture, find misconfigurations, assess IAM/network/secrets exposure, or
+  harden a deployment.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - security
+  - security-review
+depends_on: []
 ---
 
 # Security Review

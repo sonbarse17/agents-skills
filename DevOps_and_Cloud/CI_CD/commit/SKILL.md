@@ -1,9 +1,15 @@
 ---
 name: commit
-description: Stage and commit changes with conventional commit format. Use when the user says /commit or asks to commit.
+description: Stage and commit changes with conventional commit format. Use when
+  the user says /commit or asks to commit.
 disable-model-invocation: true
-allowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *) Bash(git log *) Bash(git diff *)
+allowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *) Bash(git
+  log *) Bash(git diff *)
 shell: powershell
+tags:
+  - ci_cd
+  - commit
+depends_on: []
 ---
 
 ## Instructions

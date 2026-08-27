@@ -1,24 +1,29 @@
 ---
 name: kubernetes
 description: >
-  Use this skill for Kubernetes cluster administration, architecture, operations,
-  and production best practices. Covers: cluster architecture (control plane,
-  etcd, worker nodes), networking (CNI, Service, Ingress, NetworkPolicies),
-  storage (CSI, PVC, StorageClasses), security (RBAC, PodSecurity, secrets),
-  scheduling (taints/tolerations, node affinity, topology spread), upgrades,
-  backup/DR, and cluster autoscaling.
-  Do NOT use for: application-level Kubernetes patterns (kubernetes-patterns),
-  Helm chart design (helm-patterns), service mesh (service-mesh), or
-  cloud-specific managed Kubernetes (aws/gcp/azure).
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill for Kubernetes cluster administration, architecture,
+  operations, and production best practices. Covers: cluster architecture
+  (control plane, etcd, worker nodes), networking (CNI, Service, Ingress,
+  NetworkPolicies), storage (CSI, PVC, StorageClasses), security (RBAC,
+  PodSecurity, secrets), scheduling (taints/tolerations, node affinity, topology
+  spread), upgrades, backup/DR, and cluster autoscaling. Do NOT use for:
+  application-level Kubernetes patterns (kubernetes-patterns), Helm chart design
+  (helm-patterns), service mesh (service-mesh), or cloud-specific managed
+  Kubernetes (aws/gcp/azure).
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, kubernetes, cluster-admin, phase-5]
+tags:
+  - devops
+  - kubernetes
+  - cluster-admin
+  - phase-5
+depends_on: []
 ---
 
 # Kubernetes Cluster Administration

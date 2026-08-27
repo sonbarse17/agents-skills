@@ -1,7 +1,17 @@
 ---
 name: service-mesh
-description: Covers when and how to adopt a service mesh — mTLS between services, traffic shifting, retries/timeouts enforced at the mesh layer, near-free observability, and the real latency and complexity cost of running one. Use this whenever the user asks whether they need a service mesh, is configuring mTLS or traffic-splitting rules, or is debugging sidecar-added latency. For basic Service/Ingress routing use `kubernetes-networking`; for canary rollout mechanics use `progressive-delivery`.
+description: Covers when and how to adopt a service mesh — mTLS between
+  services, traffic shifting, retries/timeouts enforced at the mesh layer,
+  near-free observability, and the real latency and complexity cost of running
+  one. Use this whenever the user asks whether they need a service mesh, is
+  configuring mTLS or traffic-splitting rules, or is debugging sidecar-added
+  latency. For basic Service/Ingress routing use `kubernetes-networking`; for
+  canary rollout mechanics use `progressive-delivery`.
 license: MIT
+tags:
+  - observability_and_secops
+  - service-mesh
+depends_on: []
 ---
 
 # Service Mesh

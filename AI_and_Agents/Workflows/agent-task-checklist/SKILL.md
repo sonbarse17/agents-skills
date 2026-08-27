@@ -1,6 +1,11 @@
 ---
 name: Agent Task Checklist Management
-description: "Rules for breaking down complex projects into granular checklists in task.md, using specific notation, and updating frequently for transparency."
+description: Rules for breaking down complex projects into granular checklists
+  in task.md, using specific notation, and updating frequently for transparency.
+tags:
+  - workflows
+  - agent-task-checklist
+depends_on: []
 ---
 
 # Agent Task Checklist Management

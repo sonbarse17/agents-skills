@@ -1,18 +1,22 @@
 ---
 name: shell-scripting-best-practices
 description: >
-  Writes robust, portable Bash/POSIX shell scripts for ops automation,
-  covering strict-mode error handling (set -euo pipefail), correct
-  quoting, trap-based cleanup, portability between bash and POSIX sh, and
-  testing scripts with shellcheck and bats. Use when the user asks to
-  "write a bash script to X," "make this shell script safer/more robust,"
-  "this script fails silently / half-runs," "make this script POSIX
-  portable," or "add tests/lint for a shell script."
+  Writes robust, portable Bash/POSIX shell scripts for ops automation, covering
+  strict-mode error handling (set -euo pipefail), correct quoting, trap-based
+  cleanup, portability between bash and POSIX sh, and testing scripts with
+  shellcheck and bats. Use when the user asks to "write a bash script to X,"
+  "make this shell script safer/more robust," "this script fails silently /
+  half-runs," "make this script POSIX portable," or "add tests/lint for a shell
+  script."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - languages
+  - shell-scripting-best-practices
+depends_on: []
 ---
 
 # Shell Scripting Best Practices

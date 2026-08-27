@@ -1,10 +1,16 @@
 ---
 name: supply-chain-attack-response
-description: Detect, respond to, and prevent software supply chain attacks on package registries, container images, and CI/CD pipelines with lockfile auditing, provenance verification, and emergency response playbooks.
+description: Detect, respond to, and prevent software supply chain attacks on
+  package registries, container images, and CI/CD pipelines with lockfile
+  auditing, provenance verification, and emergency response playbooks.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - supply-chain-attack-response
+depends_on: []
 ---
 
 # Supply Chain Attack Response

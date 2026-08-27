@@ -1,3 +1,12 @@
+---
+name: sprint-retro
+description: Comprehensive guidelines and best practices for sprint-retro. Use
+  this skill when working with related components.
+tags:
+  - product_and_business
+  - sprint-retro
+depends_on: []
+---
 # Sprint Retrospective Skill
 
 ## Overview

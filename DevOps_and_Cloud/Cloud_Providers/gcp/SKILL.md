@@ -13,7 +13,12 @@ compatibility:
   core: true
   editor: true
   api: true
-tags: [devops, cloud, gcp, phase-7]
+tags:
+  - devops
+  - cloud
+  - gcp
+  - phase-7
+depends_on: []
 ---
 
 # devops-gcp

@@ -1,26 +1,42 @@
 ---
 name: api-spectral
 description: >
-  API specification linting and security validation using Stoplight's Spectral with support for
-  OpenAPI, AsyncAPI, and Arazzo specifications. Validates API definitions against security best
-  practices, OWASP API Security Top 10, and custom organizational standards. Use when: (1) Validating
-  OpenAPI/AsyncAPI specifications for security issues and design flaws, (2) Enforcing API design
-  standards and governance policies across API portfolios, (3) Creating custom security rules for
-  API specifications in CI/CD pipelines, (4) Detecting authentication, authorization, and data
-  exposure issues in API definitions, (5) Ensuring API specifications comply with organizational
-  security standards and regulatory requirements.
+  API specification linting and security validation using Stoplight's Spectral
+  with support for OpenAPI, AsyncAPI, and Arazzo specifications. Validates API
+  definitions against security best practices, OWASP API Security Top 10, and
+  custom organizational standards. Use when: (1) Validating OpenAPI/AsyncAPI
+  specifications for security issues and design flaws, (2) Enforcing API design
+  standards and governance policies across API portfolios, (3) Creating custom
+  security rules for API specifications in CI/CD pipelines, (4) Detecting
+  authentication, authorization, and data exposure issues in API definitions,
+  (5) Ensuring API specifications comply with organizational security standards
+  and regulatory requirements.
 version: 0.1.0
 maintainer: SirAppSec
 category: appsec
-tags: [api-security, openapi, asyncapi, linting, spectral, api-governance, owasp-api, specification-validation]
-frameworks: [OWASP]
+tags:
+  - api-security
+  - openapi
+  - asyncapi
+  - linting
+  - spectral
+  - api-governance
+  - owasp-api
+  - specification-validation
+frameworks:
+  - OWASP
 dependencies:
-  tools: [node, npm]
-  optional: [docker, git]
+  tools:
+    - node
+    - npm
+  optional:
+    - docker
+    - git
 references:
   - https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
   - https://github.com/stoplightio/spectral
   - https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+depends_on: []
 ---
 
 # API Security with Spectral

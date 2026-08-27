@@ -1,10 +1,17 @@
 ---
 name: kustomize
-description: Customize Kubernetes manifests without templating using Kustomize. Create base configurations with environment overlays, manage configuration variants, and patch resources declaratively. Use when managing Kubernetes configurations across multiple environments without Helm.
+description: Customize Kubernetes manifests without templating using Kustomize.
+  Create base configurations with environment overlays, manage configuration
+  variants, and patch resources declaratively. Use when managing Kubernetes
+  configurations across multiple environments without Helm.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - containers_and_orchestration
+  - kustomize
+depends_on: []
 ---
 
 # Kustomize

@@ -1,7 +1,18 @@
 ---
 name: load-testing
-description: Tests a system under realistic traffic shapes to find its breaking point before users do — modeling real request mixes and ramp patterns, measuring latency percentiles and error rate together, and exercising the whole system instead of one endpoint in isolation. Use this whenever the user wants to know how much traffic a system can handle, is preparing for a launch or seasonal peak, or is about to ship a change that affects throughput. For diagnosing why an endpoint is slow use `profiling`, and for sizing headroom from results use `capacity-planning`.
+description: Tests a system under realistic traffic shapes to find its breaking
+  point before users do — modeling real request mixes and ramp patterns,
+  measuring latency percentiles and error rate together, and exercising the
+  whole system instead of one endpoint in isolation. Use this whenever the user
+  wants to know how much traffic a system can handle, is preparing for a launch
+  or seasonal peak, or is about to ship a change that affects throughput. For
+  diagnosing why an endpoint is slow use `profiling`, and for sizing headroom
+  from results use `capacity-planning`.
 license: MIT
+tags:
+  - observability_and_secops
+  - load-testing
+depends_on: []
 ---
 
 # Load Testing

@@ -1,18 +1,24 @@
 ---
 name: enterprise-integration-patterns
 description: >
-  Use this skill when designing enterprise system integrations with message routing, protocol transformation, and error handling.
-  This skill enforces: anti-corruption layers, SLA-defined integrations, dead letter queue monitoring.
-  Do NOT use for: in-process function calls, simple REST API clients, database replication tools.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when designing enterprise system integrations with message
+  routing, protocol transformation, and error handling. This skill enforces:
+  anti-corruption layers, SLA-defined integrations, dead letter queue
+  monitoring. Do NOT use for: in-process function calls, simple REST API
+  clients, database replication tools.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [enterprise, integration, phase-8]
+tags:
+  - enterprise
+  - integration
+  - phase-8
+depends_on: []
 ---
 
 # Integration Patterns Agent

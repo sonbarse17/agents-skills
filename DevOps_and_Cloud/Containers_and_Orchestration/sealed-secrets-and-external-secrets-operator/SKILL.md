@@ -1,22 +1,26 @@
 ---
 name: sealed-secrets-and-external-secrets-operator
 description: >
-  Guides deep, Kubernetes-native implementation of two GitOps-friendly
-  secrets patterns — Bitnami Sealed Secrets (controller install,
-  kubeseal CLI encryption workflow, the SealedSecret CRD) and External
-  Secrets Operator (SecretStore/ClusterSecretStore/ExternalSecret CRDs
-  syncing from Vault, AWS Secrets Manager, or Azure Key Vault into native
-  Kubernetes Secrets). Use when the user asks to "encrypt a Kubernetes
-  secret for git with kubeseal", "install the Sealed Secrets controller",
-  "write a SealedSecret manifest", "set up External Secrets Operator",
-  "configure a ClusterSecretStore for Vault/AWS/Azure", "sync an
-  ExternalSecret from AWS Secrets Manager into a K8s Secret", or "choose
-  between Sealed Secrets and External Secrets Operator for GitOps".
+  Guides deep, Kubernetes-native implementation of two GitOps-friendly secrets
+  patterns — Bitnami Sealed Secrets (controller install, kubeseal CLI encryption
+  workflow, the SealedSecret CRD) and External Secrets Operator
+  (SecretStore/ClusterSecretStore/ExternalSecret CRDs syncing from Vault, AWS
+  Secrets Manager, or Azure Key Vault into native Kubernetes Secrets). Use when
+  the user asks to "encrypt a Kubernetes secret for git with kubeseal", "install
+  the Sealed Secrets controller", "write a SealedSecret manifest", "set up
+  External Secrets Operator", "configure a ClusterSecretStore for
+  Vault/AWS/Azure", "sync an ExternalSecret from AWS Secrets Manager into a K8s
+  Secret", or "choose between Sealed Secrets and External Secrets Operator for
+  GitOps".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - sealed-secrets-and-external-secrets-operator
+depends_on: []
 ---
 
 # Sealed Secrets and External Secrets Operator

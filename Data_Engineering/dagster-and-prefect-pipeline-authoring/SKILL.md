@@ -1,18 +1,21 @@
 ---
 name: dagster-and-prefect-pipeline-authoring
 description: >
-  Authors data pipelines with Dagster's asset-based model or Prefect's
-  Pythonic flow/task model as modern alternatives to Airflow, and gives a
-  decision framework for when each fits better than task-based DAG
-  orchestration. Use when the user asks to "write a Dagster asset,"
-  "define a Prefect flow," "should we use Dagster instead of Airflow,"
-  "asset-based vs. task-based orchestration," or is evaluating a
-  data-orchestration tool for a new pipeline.
+  Authors data pipelines with Dagster's asset-based model or Prefect's Pythonic
+  flow/task model as modern alternatives to Airflow, and gives a decision
+  framework for when each fits better than task-based DAG orchestration. Use
+  when the user asks to "write a Dagster asset," "define a Prefect flow,"
+  "should we use Dagster instead of Airflow," "asset-based vs. task-based
+  orchestration," or is evaluating a data-orchestration tool for a new pipeline.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: messaging-and-data-orchestration
   maturity: stable
+tags:
+  - data_engineering
+  - dagster-and-prefect-pipeline-authoring
+depends_on: []
 ---
 
 # Dagster and Prefect Pipeline Authoring

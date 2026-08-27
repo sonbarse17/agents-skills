@@ -1,10 +1,16 @@
 ---
 name: access-review
-description: Conduct periodic access reviews and certifications. Implement access governance and recertification workflows. Use when managing access compliance.
+description: Conduct periodic access reviews and certifications. Implement
+  access governance and recertification workflows. Use when managing access
+  compliance.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - access-review
+depends_on: []
 ---
 
 # Access Review

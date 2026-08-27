@@ -1,7 +1,18 @@
 ---
 name: image-optimization
-description: Shrinks container image size and build time — base image choice, layer minimization, dependency pruning, .dockerignore, multi-arch builds, and measuring what actually ends up in the image. Use this whenever the user complains an image is too large, a build or CI pipeline is slow, asks about distroless or scratch images, wants multi-architecture support, or wants to know what is actually inside a shipped image. For image structure and non-root users use `containerization`; for build-cache design in CI use `build-optimization`.
+description: Shrinks container image size and build time — base image choice,
+  layer minimization, dependency pruning, .dockerignore, multi-arch builds, and
+  measuring what actually ends up in the image. Use this whenever the user
+  complains an image is too large, a build or CI pipeline is slow, asks about
+  distroless or scratch images, wants multi-architecture support, or wants to
+  know what is actually inside a shipped image. For image structure and non-root
+  users use `containerization`; for build-cache design in CI use
+  `build-optimization`.
 license: MIT
+tags:
+  - frontend
+  - image-optimization
+depends_on: []
 ---
 
 # Image Optimization

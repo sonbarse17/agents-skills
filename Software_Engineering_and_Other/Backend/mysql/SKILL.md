@@ -1,10 +1,15 @@
 ---
 name: mysql
-description: Administer MySQL/MariaDB databases. Configure replication and optimize performance. Use when managing MySQL deployments.
+description: Administer MySQL/MariaDB databases. Configure replication and
+  optimize performance. Use when managing MySQL deployments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - backend
+  - mysql
+depends_on: []
 ---
 
 # MySQL / MariaDB

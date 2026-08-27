@@ -2,18 +2,21 @@
 name: agent-tool-call-loop-diagnosis-and-circuit-breaking
 description: >
   Guides diagnosing an active or recurring runaway agent tool-call loop and
-  stopping it safely with a bounded retry policy and a hard ceiling —
-  distinct from raising the iteration limit. Use when a user asks to
-  "figure out why the agent is stuck calling the same tool," "safely kill
-  a runaway agent session," "the agent keeps retrying the same failing
-  action," "someone just raised the retry limit and it's still looping,"
-  or needs to design a circuit breaker so a stalled agent fails closed
-  instead of burning cost/quota indefinitely.
+  stopping it safely with a bounded retry policy and a hard ceiling — distinct
+  from raising the iteration limit. Use when a user asks to "figure out why the
+  agent is stuck calling the same tool," "safely kill a runaway agent session,"
+  "the agent keeps retrying the same failing action," "someone just raised the
+  retry limit and it's still looping," or needs to design a circuit breaker so a
+  stalled agent fails closed instead of burning cost/quota indefinitely.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - workflows
+  - agent-tool-call-loop-diagnosis-and-circuit-breaking
+depends_on: []
 ---
 
 # Agent Tool Call Loop Diagnosis and Circuit Breaking

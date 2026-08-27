@@ -1,6 +1,10 @@
 ---
 name: Tree of Thoughts (ToT)
 description: Breadth-first search over LLM states and state evaluation reference.
+tags:
+  - models_and_finetuning
+  - tree-of-thoughts
+depends_on: []
 ---
 # Tree of Thoughts (ToT) Mechanics
 

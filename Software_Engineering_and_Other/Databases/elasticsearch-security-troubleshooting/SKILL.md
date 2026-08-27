@@ -1,12 +1,16 @@
 ---
 name: elasticsearch-security-troubleshooting
 description: >
-  Diagnose and resolve Elasticsearch security errors: 401/403 failures, TLS problems,
-  expired API keys, role mapping mismatches, and Kibana login issues. Use when the
-  user reports a security error.
+  Diagnose and resolve Elasticsearch security errors: 401/403 failures, TLS
+  problems, expired API keys, role mapping mismatches, and Kibana login issues.
+  Use when the user reports a security error.
 metadata:
   author: elastic
   version: 0.1.0
+tags:
+  - databases
+  - elasticsearch-security-troubleshooting
+depends_on: []
 ---
 
 # Elasticsearch Security Troubleshooting

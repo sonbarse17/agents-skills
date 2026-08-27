@@ -7,15 +7,18 @@ description: >
   MLproject definitions for reproducible runs, framework autologging, and
   self-hosted vs. Databricks-managed deployment tradeoffs. Use when the user
   asks to "stand up an MLflow tracking server," "configure MLflow's backend
-  store," "promote a model version to Production in MLflow," "write an
-  MLproject file," "enable MLflow autologging for scikit-learn/PyTorch/
-  XGBoost," or "decide between self-hosted MLflow and Databricks-managed
-  MLflow."
+  store," "promote a model version to Production in MLflow," "write an MLproject
+  file," "enable MLflow autologging for scikit-learn/PyTorch/ XGBoost," or
+  "decide between self-hosted MLflow and Databricks-managed MLflow."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: mlops
   maturity: stable
+tags:
+  - models_and_finetuning
+  - mlflow-experiment-tracking-and-model-registry
+depends_on: []
 ---
 
 # MLflow Experiment Tracking and Model Registry

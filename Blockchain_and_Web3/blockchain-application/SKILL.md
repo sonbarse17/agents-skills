@@ -1,11 +1,31 @@
 ---
 name: blockchain-application
 description: >
-  Use this skill when asked about smart contract development, Solidity, Vyper, Rust smart contracts (Solana, NEAR, Polkadot), Haskell/Plutus (Cardano), Cairo/StarkNet, dApp backend development, Truffle, Hardhat, Foundry, Anchor, and blockchain application patterns. Languages: Solidity, Vyper, Rust, Haskell, Cairo, Move. Covers EVM-based development (Ethereum, Polygon, Arbitrum, Optimism), SVM-based development (Solana), eUTxO-based development (Cardano), StarkNet/STARK-based development (Cairo), smart contract security, gas optimization, upgradeable contracts, and cross-contract communication. Do NOT use for: blockchain core protocol (use blockchain-core), web3 frontend (use blockchain-web3), or testing (use blockchain-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
-tags: [blockchain, smart-contracts, solidity, vyper, rust, haskell, cairo, move, application, phase-blockchain]
+  Use this skill when asked about smart contract development, Solidity, Vyper,
+  Rust smart contracts (Solana, NEAR, Polkadot), Haskell/Plutus (Cardano),
+  Cairo/StarkNet, dApp backend development, Truffle, Hardhat, Foundry, Anchor,
+  and blockchain application patterns. Languages: Solidity, Vyper, Rust,
+  Haskell, Cairo, Move. Covers EVM-based development (Ethereum, Polygon,
+  Arbitrum, Optimism), SVM-based development (Solana), eUTxO-based development
+  (Cardano), StarkNet/STARK-based development (Cairo), smart contract security,
+  gas optimization, upgradeable contracts, and cross-contract communication. Do
+  NOT use for: blockchain core protocol (use blockchain-core), web3 frontend
+  (use blockchain-web3), or testing (use blockchain-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
+tags:
+  - blockchain
+  - smart-contracts
+  - solidity
+  - vyper
+  - rust
+  - haskell
+  - cairo
+  - move
+  - application
+  - phase-blockchain
+depends_on: []
 ---
 
 # Blockchain Application

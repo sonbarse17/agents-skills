@@ -2,20 +2,25 @@
 name: ba
 description: >
   Use this skill when the user says 'business analysis', 'requirements', 'user
-  story', 'acceptance criteria', 'Gherkin', 'INVEST', 'process flow', 'use case',
-  'stakeholder analysis', 'BRD', 'functional requirements', 'specification', or
-  needs requirements analysis. Covers: requirements elicitation, user story
-  writing, acceptance criteria (Gherkin), process modeling, and stakeholder
-  analysis. Do NOT use for: project management, coding, or testing.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  story', 'acceptance criteria', 'Gherkin', 'INVEST', 'process flow', 'use
+  case', 'stakeholder analysis', 'BRD', 'functional requirements',
+  'specification', or needs requirements analysis. Covers: requirements
+  elicitation, user story writing, acceptance criteria (Gherkin), process
+  modeling, and stakeholder analysis. Do NOT use for: project management,
+  coding, or testing.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, ba, requirements]
+tags:
+  - management
+  - ba
+  - requirements
+depends_on: []
 ---
 
 # Business Analysis

@@ -2,16 +2,20 @@
 name: mcp-server-development
 description: >
   Guides building and hardening an MCP (Model Context Protocol) server that
-  exposes tools, resources, or prompts to AI coding agents. Use when a user
-  asks to "build an MCP server," "expose this API as MCP tools," "write an
-  MCP manifest/tool schema," connect Claude Code/Cursor/Gemini CLI/Copilot to
-  a custom data source or internal API, or review an MCP server for security
+  exposes tools, resources, or prompts to AI coding agents. Use when a user asks
+  to "build an MCP server," "expose this API as MCP tools," "write an MCP
+  manifest/tool schema," connect Claude Code/Cursor/Gemini CLI/Copilot to a
+  custom data source or internal API, or review an MCP server for security
   issues before granting it to an agent.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - infrastructure
+  - mcp-server-development
+depends_on: []
 ---
 
 # MCP Server Development

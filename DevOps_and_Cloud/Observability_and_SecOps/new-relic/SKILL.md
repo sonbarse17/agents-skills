@@ -1,10 +1,17 @@
 ---
 name: new-relic
-description: Configure New Relic observability platform for infrastructure and application monitoring. Set up APM agents, create dashboards, configure alerts, and implement distributed tracing. Use when implementing full-stack observability with New Relic One.
+description: Configure New Relic observability platform for infrastructure and
+  application monitoring. Set up APM agents, create dashboards, configure
+  alerts, and implement distributed tracing. Use when implementing full-stack
+  observability with New Relic One.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - new-relic
+depends_on: []
 ---
 
 # New Relic

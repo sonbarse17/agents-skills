@@ -1,19 +1,23 @@
 ---
 name: kubecost-cost-visibility
 description: >
-  Guides deploying Kubecost inside Kubernetes clusters to allocate cloud
-  spend down to namespace, workload, and label, build showback/chargeback
-  reports for platform stakeholders, and feed cost signals into cluster
-  autoscaling and rightsizing decisions. Use when a user asks to "show
-  cost per namespace/team/label in Kubernetes", "set up Kubecost", "build
-  a Kubernetes showback or chargeback report", "find which workload is
-  driving the cloud bill", "size resource requests based on cost", or
-  "connect Kubernetes cost data to autoscaler decisions."
+  Guides deploying Kubecost inside Kubernetes clusters to allocate cloud spend
+  down to namespace, workload, and label, build showback/chargeback reports for
+  platform stakeholders, and feed cost signals into cluster autoscaling and
+  rightsizing decisions. Use when a user asks to "show cost per
+  namespace/team/label in Kubernetes", "set up Kubecost", "build a Kubernetes
+  showback or chargeback report", "find which workload is driving the cloud
+  bill", "size resource requests based on cost", or "connect Kubernetes cost
+  data to autoscaler decisions."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: observability-and-platform-extras
   maturity: stable
+tags:
+  - cloud_providers
+  - kubecost-cost-visibility
+depends_on: []
 ---
 
 # Kubecost Cost Visibility

@@ -1,16 +1,24 @@
 ---
 name: management-risk-management
 description: >
-  Use this skill when the user says 'risk management', 'risk register', 'risk assessment', 'risk mitigation', 'project risk', 'technical risk', 'risk matrix', 'risk analysis', 'probability impact', 'risk log'. Identify, assess, and plan responses for project and technical risks. Do NOT use for: security vulnerability scanning or compliance audits.
+  Use this skill when the user says 'risk management', 'risk register', 'risk
+  assessment', 'risk mitigation', 'project risk', 'technical risk', 'risk
+  matrix', 'risk analysis', 'probability impact', 'risk log'. Identify, assess,
+  and plan responses for project and technical risks. Do NOT use for: security
+  vulnerability scanning or compliance audits.
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [management, risk, phase-7]
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+tags:
+  - management
+  - risk
+  - phase-7
+version: 1.0.0
+author: j4flmao
+license: MIT
+depends_on: []
 ---
 
 # Management Risk Management

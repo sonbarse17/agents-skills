@@ -2,18 +2,21 @@
 name: multi-cloud-networking-patterns
 description: >
   Guides designing hub-and-spoke or transit network topologies, IP address
-  management, and secure interconnects (VPN, direct/express connections,
-  private endpoints, and cross-cloud peering) across AWS, Azure, and GCP.
-  Use when a user asks to "design a hub-and-spoke network", "connect two
-  VPCs/VNets", "set up a site-to-site VPN or direct connect", "plan IP
-  address space across accounts", "connect AWS to Azure/GCP", "avoid
-  overlapping CIDR blocks", or "expose a service privately without a
-  public IP".
+  management, and secure interconnects (VPN, direct/express connections, private
+  endpoints, and cross-cloud peering) across AWS, Azure, and GCP. Use when a
+  user asks to "design a hub-and-spoke network", "connect two VPCs/VNets", "set
+  up a site-to-site VPN or direct connect", "plan IP address space across
+  accounts", "connect AWS to Azure/GCP", "avoid overlapping CIDR blocks", or
+  "expose a service privately without a public IP".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - multi-cloud-networking-patterns
+depends_on: []
 ---
 
 # [Multi-Cloud](../multi-cloud/SKILL.md) Networking Patterns

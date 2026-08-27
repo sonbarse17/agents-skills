@@ -1,6 +1,10 @@
 ---
 name: Quantum Error Correction
 description: Surface codes, syndrome measurement, and topological qubits mechanics.
+tags:
+  - miscellaneous
+  - quantum-error-correction
+depends_on: []
 ---
 # Quantum Error Correction (QEC)
 

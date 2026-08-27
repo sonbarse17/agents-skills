@@ -1,21 +1,24 @@
 ---
 name: pagerduty-opsgenie-configuration-validation
 description: >
-  Validates PagerDuty and Opsgenie escalation policy and schedule
-  configuration for coverage gaps and single points of failure before an
-  incident exposes them — checking that every rung resolves to a
-  genuinely independent human, that schedules have no unstaffed windows,
-  and that num_loops/repeat settings actually repeat. Use when the user
-  asks to "audit our escalation policies," "check if our on-call
-  schedule has gaps," "make sure this policy isn't a single point of
-  failure," "test our PagerDuty/Opsgenie configuration before relying on
-  it," or after any roster/schedule change to confirm coverage still
+  Validates PagerDuty and Opsgenie escalation policy and schedule configuration
+  for coverage gaps and single points of failure before an incident exposes them
+  — checking that every rung resolves to a genuinely independent human, that
+  schedules have no unstaffed windows, and that num_loops/repeat settings
+  actually repeat. Use when the user asks to "audit our escalation policies,"
+  "check if our on-call schedule has gaps," "make sure this policy isn't a
+  single point of failure," "test our PagerDuty/Opsgenie configuration before
+  relying on it," or after any roster/schedule change to confirm coverage still
   holds.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: incident-tooling-and-itsm
   maturity: stable
+tags:
+  - observability_and_secops
+  - pagerduty-opsgenie-configuration-validation
+depends_on: []
 ---
 
 # PagerDuty/Opsgenie Configuration Validation

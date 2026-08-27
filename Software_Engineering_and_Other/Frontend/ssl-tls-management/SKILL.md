@@ -1,10 +1,16 @@
 ---
 name: ssl-tls-management
-description: Manage SSL/TLS certificates with Let's Encrypt and internal PKI. Configure secure HTTPS, certificate renewal, and cipher suites. Use when implementing secure communications.
+description: Manage SSL/TLS certificates with Let's Encrypt and internal PKI.
+  Configure secure HTTPS, certificate renewal, and cipher suites. Use when
+  implementing secure communications.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - frontend
+  - ssl-tls-management
+depends_on: []
 ---
 
 # SSL/TLS Management

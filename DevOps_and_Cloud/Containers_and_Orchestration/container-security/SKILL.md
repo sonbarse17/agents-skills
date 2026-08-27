@@ -1,16 +1,28 @@
 ---
 name: security-container-security
 description: >
-  Use this skill when asked about container security, image scanning, Trivy, Grype, Clair, Snyk, Dockerfile security, admission control, Kyverno, OPA, runtime security, Falco, Tracee, CVE management, container signing, Cosign, SBOM, or distroless images. This skill enforces: image scanning in CI with severity gates, Dockerfile hardening with multi-stage builds and distroless bases, Kubernetes admission control policies, runtime security monitoring with Falco, image signing with Cosign, and SBOM generation. Do NOT use for: host OS security, network security policies, or Kubernetes RBAC design.
-version: "1.1.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about container security, image scanning, Trivy,
+  Grype, Clair, Snyk, Dockerfile security, admission control, Kyverno, OPA,
+  runtime security, Falco, Tracee, CVE management, container signing, Cosign,
+  SBOM, or distroless images. This skill enforces: image scanning in CI with
+  severity gates, Dockerfile hardening with multi-stage builds and distroless
+  bases, Kubernetes admission control policies, runtime security monitoring with
+  Falco, image signing with Cosign, and SBOM generation. Do NOT use for: host OS
+  security, network security policies, or Kubernetes RBAC design.
+version: 1.1.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [security, devops, containers, phase-10]
+tags:
+  - security
+  - devops
+  - containers
+  - phase-10
+depends_on: []
 ---
 
 # Security Container Security

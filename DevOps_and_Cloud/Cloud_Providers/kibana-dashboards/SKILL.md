@@ -1,12 +1,16 @@
 ---
 name: kibana-dashboards
 description: >
-  Create and manage Kibana Dashboards and visualizations. Use when you need to define
-  dashboards and visualizations declaratively, version control them, or automate their
-  deployment.
+  Create and manage Kibana Dashboards and visualizations. Use when you need to
+  define dashboards and visualizations declaratively, version control them, or
+  automate their deployment.
 metadata:
   author: elastic
   version: 0.1.2
+tags:
+  - cloud_providers
+  - kibana-dashboards
+depends_on: []
 ---
 
 # Kibana [Dashboards](../dashboards/SKILL.md) and Visualizations

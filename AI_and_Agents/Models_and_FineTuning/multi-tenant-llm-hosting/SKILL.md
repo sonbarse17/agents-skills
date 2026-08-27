@@ -1,10 +1,16 @@
 ---
 name: multi-tenant-llm-hosting
-description: Design secure, multi-tenant LLM hosting platforms with tenant isolation, quotas, billing attribution, noisy-neighbor protection, and per-tenant policy controls.
+description: Design secure, multi-tenant LLM hosting platforms with tenant
+  isolation, quotas, billing attribution, noisy-neighbor protection, and
+  per-tenant policy controls.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - models_and_finetuning
+  - multi-tenant-llm-hosting
+depends_on: []
 ---
 
 # Multi-Tenant LLM Hosting

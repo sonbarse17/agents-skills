@@ -1,10 +1,15 @@
 ---
 name: planetscale
-description: Operate MySQL-compatible databases on PlanetScale with branching workflows, safe migrations, and production rollouts.
+description: Operate MySQL-compatible databases on PlanetScale with branching
+  workflows, safe migrations, and production rollouts.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - databases
+  - planetscale
+depends_on: []
 ---
 
 # PlanetScale

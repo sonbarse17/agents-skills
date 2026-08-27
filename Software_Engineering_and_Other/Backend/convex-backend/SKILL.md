@@ -1,10 +1,16 @@
 ---
 name: convex-backend
-description: Build reactive backends with Convex functions, schema validation, auth integration, and deployment workflows. Use when building real-time apps with type-safe server functions and automatic caching.
+description: Build reactive backends with Convex functions, schema validation,
+  auth integration, and deployment workflows. Use when building real-time apps
+  with type-safe server functions and automatic caching.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - backend
+  - convex-backend
+depends_on: []
 ---
 
 # Convex Backend

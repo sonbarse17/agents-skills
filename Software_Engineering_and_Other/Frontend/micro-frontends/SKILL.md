@@ -1,6 +1,10 @@
 ---
 name: Micro-Frontends
 description: Implementing Module Federation for scaling frontend teams.
+tags:
+  - frontend
+  - micro-frontends
+depends_on: []
 ---
 
 # Micro-Frontends

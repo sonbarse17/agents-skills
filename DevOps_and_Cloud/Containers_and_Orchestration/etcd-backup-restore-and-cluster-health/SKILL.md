@@ -2,19 +2,22 @@
 name: etcd-backup-restore-and-cluster-health
 description: >
   Guides taking and verifying etcd snapshots (`etcdctl snapshot save`),
-  restoring a Kubernetes cluster's control-plane state from a snapshot,
-  and monitoring etcd cluster health — quorum, member status, disk fsync/
-  backend commit latency, and DB size — on self-managed clusters
-  (kubeadm, Cluster API, K3s with its default embedded etcd, on-prem). Use
-  when a user asks to "back up etcd," "take an etcd snapshot," "restore
-  etcd from a snapshot," "check etcd cluster health/quorum," "size disks
-  for etcd," "diagnose slow etcd/high fsync latency," or "recover a
-  Kubernetes cluster after losing the control plane."
+  restoring a Kubernetes cluster's control-plane state from a snapshot, and
+  monitoring etcd cluster health — quorum, member status, disk fsync/ backend
+  commit latency, and DB size — on self-managed clusters (kubeadm, Cluster API,
+  K3s with its default embedded etcd, on-prem). Use when a user asks to "back up
+  etcd," "take an etcd snapshot," "restore etcd from a snapshot," "check etcd
+  cluster health/quorum," "size disks for etcd," "diagnose slow etcd/high fsync
+  latency," or "recover a Kubernetes cluster after losing the control plane."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - etcd-backup-restore-and-cluster-health
+depends_on: []
 ---
 
 # etcd Backup, Restore, and Cluster Health

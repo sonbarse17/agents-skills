@@ -1,22 +1,26 @@
 ---
 name: enterprise-sso-and-idp-federation-configuration
 description: >
-  Guides configuring enterprise workforce single sign-on — SAML 2.0 and
-  OIDC federation between an identity provider (Okta, Azure AD/Entra ID,
-  Keycloak) and downstream applications, including metadata exchange,
-  attribute/claim mapping, group-to-role provisioning (SCIM), and
-  multi-IdP federation trust. Use when the user asks to "set up SAML SSO
-  with Okta," "configure Azure AD/Entra ID as our OIDC provider," "stand
-  up Keycloak as an internal IdP," "map IdP groups to application roles,"
-  "debug a SAML assertion that won't validate," or "federate a second
-  IdP for an acquired company's users." Distinct from cloud-iam-hardening
-  (workload/service IAM in a cloud provider) — this skill is about
-  federating *human workforce* identity into applications for SSO.
+  Guides configuring enterprise workforce single sign-on — SAML 2.0 and OIDC
+  federation between an identity provider (Okta, Azure AD/Entra ID, Keycloak)
+  and downstream applications, including metadata exchange, attribute/claim
+  mapping, group-to-role provisioning (SCIM), and multi-IdP federation trust.
+  Use when the user asks to "set up SAML SSO with Okta," "configure Azure
+  AD/Entra ID as our OIDC provider," "stand up Keycloak as an internal IdP,"
+  "map IdP groups to application roles," "debug a SAML assertion that won't
+  validate," or "federate a second IdP for an acquired company's users."
+  Distinct from cloud-iam-hardening (workload/service IAM in a cloud provider) —
+  this skill is about federating *human workforce* identity into applications
+  for SSO.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - cloud_providers
+  - enterprise-sso-and-idp-federation-configuration
+depends_on: []
 ---
 
 # Enterprise SSO and IdP Federation Configuration

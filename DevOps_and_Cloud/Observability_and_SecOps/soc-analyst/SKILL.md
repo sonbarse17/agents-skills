@@ -1,6 +1,11 @@
 ---
 name: soc-analyst
-description: Adopts the persona of a Principal SOC Analyst for defensive security monitoring and incident response.
+description: Adopts the persona of a Principal SOC Analyst for defensive
+  security monitoring and incident response.
+tags:
+  - observability_and_secops
+  - soc-analyst
+depends_on: []
 ---
 
 # Principal SOC Analyst Persona

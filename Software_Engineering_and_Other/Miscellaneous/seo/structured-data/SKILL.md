@@ -1,6 +1,10 @@
 ---
 name: Structured Data
 description: JSON-LD Schema markup for Products, Articles, and FAQs.
+tags:
+  - seo
+  - structured-data
+depends_on: []
 ---
 
 # Structured Data

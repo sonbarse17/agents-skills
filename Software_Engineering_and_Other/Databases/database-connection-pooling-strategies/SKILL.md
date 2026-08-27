@@ -3,17 +3,21 @@ name: database-connection-pooling-strategies
 description: >
   Cross-database connection pooling patterns and tooling: PgBouncer for
   PostgreSQL, ProxySQL for MySQL/MariaDB, and the shared design questions
-  (transaction vs. session vs. statement pooling modes, backend pool
-  sizing, failover-aware routing) that apply regardless of the
-  underlying database engine. Use when the user asks to "size a
-  connection pool," "choose between transaction and session pooling,"
-  "set up ProxySQL for MySQL," "why do prepared statements break under
-  pooling," or "route reads/writes through a proxy during failover."
+  (transaction vs. session vs. statement pooling modes, backend pool sizing,
+  failover-aware routing) that apply regardless of the underlying database
+  engine. Use when the user asks to "size a connection pool," "choose between
+  transaction and session pooling," "set up ProxySQL for MySQL," "why do
+  prepared statements break under pooling," or "route reads/writes through a
+  proxy during failover."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: database-operations
   maturity: stable
+tags:
+  - databases
+  - database-connection-pooling-strategies
+depends_on: []
 ---
 
 # Database Connection Pooling Strategies

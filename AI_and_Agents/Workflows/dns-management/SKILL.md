@@ -1,7 +1,19 @@
 ---
 name: dns-management
-description: Covers DNS as production infrastructure that can take down everything downstream — record types, TTL tradeoffs, propagation and caching, health-checked failover, and split-horizon setups for internal versus external views. Use this whenever the user is planning a DNS cutover, choosing a TTL, debugging why a domain won't resolve after a change, setting up failover records, or separating internal and external resolution of the same zone. For diagnosing an active resolution failure step by step use `network-troubleshooting`, and for distributing traffic once DNS resolves use `load-balancing`.
+description: Covers DNS as production infrastructure that can take down
+  everything downstream — record types, TTL tradeoffs, propagation and caching,
+  health-checked failover, and split-horizon setups for internal versus external
+  views. Use this whenever the user is planning a DNS cutover, choosing a TTL,
+  debugging why a domain won't resolve after a change, setting up failover
+  records, or separating internal and external resolution of the same zone. For
+  diagnosing an active resolution failure step by step use
+  `network-troubleshooting`, and for distributing traffic once DNS resolves use
+  `load-balancing`.
 license: MIT
+tags:
+  - workflows
+  - dns-management
+depends_on: []
 ---
 
 # DNS Management

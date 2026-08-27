@@ -1,7 +1,18 @@
 ---
 name: workflow-automation
-description: Covers automating multi-step operational workflows — event-driven triggers, orchestrating steps across systems, making every step idempotent and safely retryable, and keeping a human in the loop where judgment or blast radius demands it. Use this whenever the user wires up automation that reacts to an event, chains several operational steps together, decides whether an action can run unattended, or asks why a retried workflow left things in a bad state. For time-triggered work use `scheduled-jobs`, and for the scripts implementing individual steps use `scripting-automation`.
+description: Covers automating multi-step operational workflows — event-driven
+  triggers, orchestrating steps across systems, making every step idempotent and
+  safely retryable, and keeping a human in the loop where judgment or blast
+  radius demands it. Use this whenever the user wires up automation that reacts
+  to an event, chains several operational steps together, decides whether an
+  action can run unattended, or asks why a retried workflow left things in a bad
+  state. For time-triggered work use `scheduled-jobs`, and for the scripts
+  implementing individual steps use `scripting-automation`.
 license: MIT
+tags:
+  - patterns
+  - workflow-automation
+depends_on: []
 ---
 
 # Workflow Automation

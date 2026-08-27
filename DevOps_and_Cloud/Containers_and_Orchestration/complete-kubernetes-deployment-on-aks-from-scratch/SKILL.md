@@ -1,24 +1,27 @@
 ---
 name: complete-kubernetes-deployment-on-aks-from-scratch
 description: >
-  Sequences a complete, end-to-end AKS deployment from a bare Azure
-  subscription to a production-ready cluster serving a first workload —
-  Azure landing zone prerequisites, AKS cluster and node pool provisioning,
-  Azure CNI (with the Calico/Cilium alternative noted), ingress (Application
-  Gateway Ingress Controller vs. ingress-nginx), cert-manager with Azure
-  DNS, conformance validation, a Helm-deployed workload, and a node/cluster
-  health baseline. This is an integration/orchestration skill that sequences
-  several existing tool-specific skills in the correct order and flags the
-  handoff points between them — it does not restate their internals. Use
-  when a user asks to "deploy a Kubernetes cluster on AKS from scratch,"
-  "set up a new AKS environment end to end," "build a production AKS
-  cluster from a fresh Azure subscription," or "give me the full sequence
-  to go from nothing to a working AKS cluster."
+  Sequences a complete, end-to-end AKS deployment from a bare Azure subscription
+  to a production-ready cluster serving a first workload — Azure landing zone
+  prerequisites, AKS cluster and node pool provisioning, Azure CNI (with the
+  Calico/Cilium alternative noted), ingress (Application Gateway Ingress
+  Controller vs. ingress-nginx), cert-manager with Azure DNS, conformance
+  validation, a Helm-deployed workload, and a node/cluster health baseline. This
+  is an integration/orchestration skill that sequences several existing
+  tool-specific skills in the correct order and flags the handoff points between
+  them — it does not restate their internals. Use when a user asks to "deploy a
+  Kubernetes cluster on AKS from scratch," "set up a new AKS environment end to
+  end," "build a production AKS cluster from a fresh Azure subscription," or
+  "give me the full sequence to go from nothing to a working AKS cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - complete-kubernetes-deployment-on-aks-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../kubernetes/SKILL.md) Deployment on AKS From Scratch

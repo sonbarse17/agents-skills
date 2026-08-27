@@ -3,20 +3,25 @@ name: docker-patterns
 description: >
   Use this skill when the user says 'Dockerfile', 'Docker', 'Docker Compose',
   'containerize', 'container', 'docker build', 'multi-stage build',
-  'docker-compose.yml', or when containerizing an application. Covers: multi-stage
-  builds, non-root users, .dockerignore, layer caching, health checks, Docker
-  Compose for development, and production vs development separation. Works with
-  any language/stack. Do NOT use this for: Kubernetes (use kubernetes-patterns),
-  CI/CD pipeline design, or infrastructure provisioning.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  'docker-compose.yml', or when containerizing an application. Covers:
+  multi-stage builds, non-root users, .dockerignore, layer caching, health
+  checks, Docker Compose for development, and production vs development
+  separation. Works with any language/stack. Do NOT use this for: Kubernetes
+  (use kubernetes-patterns), CI/CD pipeline design, or infrastructure
+  provisioning.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [devops, docker, phase-5]
+tags:
+  - devops
+  - docker
+  - phase-5
+depends_on: []
 ---
 
 # [Docker](../docker/SKILL.md) Patterns

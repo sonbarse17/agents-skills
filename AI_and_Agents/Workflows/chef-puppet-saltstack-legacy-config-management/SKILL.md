@@ -2,20 +2,23 @@
 name: chef-puppet-saltstack-legacy-config-management
 description: >
   Provides a comparative overview of Chef, Puppet, and SaltStack for teams
-  maintaining existing legacy configuration-management estates alongside
-  or instead of Ansible — agent-based pull architecture, DSL/resource
-  models (Chef recipes/cookbooks, Puppet manifests/catalogs, Salt
-  states/pillars), and a candid assessment of where each still earns its
-  keep in a modern enterprise versus where it's inertia. Use when the user
-  asks to "maintain this existing Chef/Puppet/Salt estate," "write a Chef
-  recipe/Puppet manifest/Salt state," "should we migrate off Puppet to
-  Ansible," "why is our Puppet run applying a change we didn't expect," or
-  "compare Chef vs. Puppet vs. SaltStack."
+  maintaining existing legacy configuration-management estates alongside or
+  instead of Ansible — agent-based pull architecture, DSL/resource models (Chef
+  recipes/cookbooks, Puppet manifests/catalogs, Salt states/pillars), and a
+  candid assessment of where each still earns its keep in a modern enterprise
+  versus where it's inertia. Use when the user asks to "maintain this existing
+  Chef/Puppet/Salt estate," "write a Chef recipe/Puppet manifest/Salt state,"
+  "should we migrate off Puppet to Ansible," "why is our Puppet run applying a
+  change we didn't expect," or "compare Chef vs. Puppet vs. SaltStack."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: iac-and-automation-tooling
   maturity: stable
+tags:
+  - workflows
+  - chef-puppet-saltstack-legacy-config-management
+depends_on: []
 ---
 
 # Chef, Puppet, and SaltStack Configuration Management for Legacy Enterprise

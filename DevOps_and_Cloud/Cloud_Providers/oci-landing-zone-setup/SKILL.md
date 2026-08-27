@@ -1,20 +1,23 @@
 ---
 name: oci-landing-zone-setup
 description: >
-  Guides designing and implementing an Oracle Cloud Infrastructure (OCI)
-  landing zone using the Compartment hierarchy, Identity Domains and IAM
-  policies, Cloud Guard/Security Zones, and the CIS OCI Landing Zone
-  reference architecture — including tenancy/region structure and hybrid
-  connectivity via FastConnect. Use when a user asks to "design an OCI
-  landing zone", "set up OCI compartments", "structure our OCI tenancy",
-  "implement the CIS OCI Landing Zone", "write OCI IAM policies", "onboard
-  a new OCI compartment or workload", or "compare OCI's account model to
-  AWS/Azure/GCP".
+  Guides designing and implementing an Oracle Cloud Infrastructure (OCI) landing
+  zone using the Compartment hierarchy, Identity Domains and IAM policies, Cloud
+  Guard/Security Zones, and the CIS OCI Landing Zone reference architecture —
+  including tenancy/region structure and hybrid connectivity via FastConnect.
+  Use when a user asks to "design an OCI landing zone", "set up OCI
+  compartments", "structure our OCI tenancy", "implement the CIS OCI Landing
+  Zone", "write OCI IAM policies", "onboard a new OCI compartment or workload",
+  or "compare OCI's account model to AWS/Azure/GCP".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - oci-landing-zone-setup
+depends_on: []
 ---
 
 # OCI Landing Zone Setup

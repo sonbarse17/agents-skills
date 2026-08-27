@@ -1,6 +1,10 @@
 ---
 name: checkout-optimization
 description: Strategies for 1-click checkout, performance, and reducing cart abandonment.
+tags:
+  - product_and_business
+  - checkout-optimization
+depends_on: []
 ---
 
 # Checkout Optimization

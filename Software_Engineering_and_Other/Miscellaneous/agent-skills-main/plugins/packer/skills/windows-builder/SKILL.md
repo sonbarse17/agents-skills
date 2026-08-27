@@ -1,8 +1,14 @@
 ---
 name: windows-builder
-description: Build Windows images with Packer using WinRM communicator and PowerShell provisioners. Use when creating Windows AMIs, Azure images, or VMware templates.
+description: Build Windows images with Packer using WinRM communicator and
+  PowerShell provisioners. Use when creating Windows AMIs, Azure images, or
+  VMware templates.
 metadata:
   lifecycle-status: active
+tags:
+  - skills
+  - windows-builder
+depends_on: []
 ---
 
 # Windows Builder

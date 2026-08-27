@@ -1,6 +1,13 @@
 ---
 name: eval-harness-first
-description: Build the evaluation harness that gates every fine-tuning run — golden sets, per-failure-mode graders, judge calibration, and base-model baselines. Use when starting a fine-tuning effort, when converting traces into an eval set, or when calibrating a judge against human labels.
+description: Build the evaluation harness that gates every fine-tuning run —
+  golden sets, per-failure-mode graders, judge calibration, and base-model
+  baselines. Use when starting a fine-tuning effort, when converting traces into
+  an eval set, or when calibrating a judge against human labels.
+tags:
+  - models_and_finetuning
+  - eval-harness-first
+depends_on: []
 ---
 
 # Eval Harness First

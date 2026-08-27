@@ -1,6 +1,10 @@
 ---
 name: database-internals-mechanics
 description: Comprehensive analysis of B-Trees, LSM-Trees, WAL, and Transaction Isolation.
+tags:
+  - databases
+  - database-internals
+depends_on: []
 ---
 
 # Database Internals: Storage Engines and Concurrency Control

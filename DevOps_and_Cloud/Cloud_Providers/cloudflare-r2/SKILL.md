@@ -1,10 +1,15 @@
 ---
 name: cloudflare-r2
-description: Manage Cloudflare R2 buckets, lifecycle, and signed URLs. Use for low-egress object storage and media delivery.
+description: Manage Cloudflare R2 buckets, lifecycle, and signed URLs. Use for
+  low-egress object storage and media delivery.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - cloudflare-r2
+depends_on: []
 ---
 
 # Cloudflare R2

@@ -1,6 +1,14 @@
 ---
 name: file-conversion
-description: Convert files between formats — PDF to Word, HEIC to JPG, MP4 to MP3, CSV to JSON, EPUB to MOBI, and 999 total routes across images, video, audio, documents, data, fonts, ebooks, and archives. Free via changethisfile.com, no API key or signup. Use when the user needs a file converted to a different format.
+description: Convert files between formats — PDF to Word, HEIC to JPG, MP4 to
+  MP3, CSV to JSON, EPUB to MOBI, and 999 total routes across images, video,
+  audio, documents, data, fonts, ebooks, and archives. Free via
+  changethisfile.com, no API key or signup. Use when the user needs a file
+  converted to a different format.
+tags:
+  - backend
+  - file-conversion
+depends_on: []
 ---
 
 # File Conversion (ChangeThisFile)

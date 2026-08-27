@@ -1,17 +1,22 @@
 ---
 name: database-migration-service-expertise
-description: AWS Database Migration Service (DMS) operational review and troubleshooting
-  skill. Conducts best practices validation, health assessments, performance diagnostics,
-  cost optimization reviews, and migration cutover guidance. Triggers on requests like
-  "DMS review", "DMS health check", "DMS troubleshooting", "migration assessment",
-  "DMS best practices audit", "DMS cost optimization", "replication instance review",
-  "CDC latency issue", or "DMS task failure".
+description: AWS Database Migration Service (DMS) operational review and
+  troubleshooting skill. Conducts best practices validation, health assessments,
+  performance diagnostics, cost optimization reviews, and migration cutover
+  guidance. Triggers on requests like "DMS review", "DMS health check", "DMS
+  troubleshooting", "migration assessment", "DMS best practices audit", "DMS
+  cost optimization", "replication instance review", "CDC latency issue", or
+  "DMS task failure".
 metadata:
   author: tabhiman
-  version: "1.0.0"
-  aws-devops-agent-skills.agent-types: "Chat tasks, Evaluation"
-  aws-devops-agent-skills.aws-services: "AWS Database Migration Service"
-  aws-devops-agent-skills.technical-domains: "Database"
+  version: 1.0.0
+  aws-devops-agent-skills.agent-types: Chat tasks, Evaluation
+  aws-devops-agent-skills.aws-services: AWS Database Migration Service
+  aws-devops-agent-skills.technical-domains: Database
+tags:
+  - data_engineering
+  - database-migration-service-expertise
+depends_on: []
 ---
 
 # AWS DMS Operational Review & Troubleshooting

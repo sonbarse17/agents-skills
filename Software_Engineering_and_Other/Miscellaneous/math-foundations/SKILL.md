@@ -1,16 +1,27 @@
 ---
 name: ml-math-foundations
 description: >
-  Use this skill when you need to understand, derive, or debug the mathematical foundations behind ML/DL algorithms — linear algebra, calculus, probability, information theory, optimization, loss functions, and deep learning math. This skill enforces: correct notation, rigorous derivations, and mapping from math concepts to ML implementations. Do NOT use for: implementing ML algorithms with libraries (use ml/classical-ml or ml/deep-learning), data preprocessing (use data/), or general statistics (use data/data-quality).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when you need to understand, derive, or debug the mathematical
+  foundations behind ML/DL algorithms — linear algebra, calculus, probability,
+  information theory, optimization, loss functions, and deep learning math. This
+  skill enforces: correct notation, rigorous derivations, and mapping from math
+  concepts to ML implementations. Do NOT use for: implementing ML algorithms
+  with libraries (use ml/classical-ml or ml/deep-learning), data preprocessing
+  (use data/), or general statistics (use data/data-quality).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [ml, math, foundations, phase-11]
+tags:
+  - ml
+  - math
+  - foundations
+  - phase-11
+depends_on: []
 ---
 
 # ML/DL Mathematical Foundations

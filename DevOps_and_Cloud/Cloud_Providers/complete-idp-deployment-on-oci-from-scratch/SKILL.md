@@ -1,25 +1,28 @@
 ---
 name: complete-idp-deployment-on-oci-from-scratch
 description: >
-  Sequences a complete, from-scratch Internal Developer Platform deployment
-  on Oracle Cloud Infrastructure: compartment/Identity-Domain landing zone
-  → OKE cluster → Helm-deployed Backstage backed by OCI Database with
-  PostgreSQL → golden-path scaffolding template → self-service API wired
-  to OCI provisioning (Dynamic Group/Resource Principal identity, Database
-  with PostgreSQL instances) → scorecards. This is the integration runbook
-  that orders the individual OCI/Backstage skills correctly and flags the
-  handoffs between them, including the OKE cluster-provisioning gap this
-  repo doesn't yet cover with a dedicated skill. Use when a user asks to
-  "deploy an IDP on OCI from scratch," "stand up Backstage on OKE
-  end-to-end," "build our internal developer platform on Oracle Cloud,"
-  "wire self-service database/identity provisioning into Backstage on
-  OKE," or "sequence an OCI platform rollout from compartment design to
-  golden-path templates."
+  Sequences a complete, from-scratch Internal Developer Platform deployment on
+  Oracle Cloud Infrastructure: compartment/Identity-Domain landing zone → OKE
+  cluster → Helm-deployed Backstage backed by OCI Database with PostgreSQL →
+  golden-path scaffolding template → self-service API wired to OCI provisioning
+  (Dynamic Group/Resource Principal identity, Database with PostgreSQL
+  instances) → scorecards. This is the integration runbook that orders the
+  individual OCI/Backstage skills correctly and flags the handoffs between them,
+  including the OKE cluster-provisioning gap this repo doesn't yet cover with a
+  dedicated skill. Use when a user asks to "deploy an IDP on OCI from scratch,"
+  "stand up Backstage on OKE end-to-end," "build our internal developer platform
+  on Oracle Cloud," "wire self-service database/identity provisioning into
+  Backstage on OKE," or "sequence an OCI platform rollout from compartment
+  design to golden-path templates."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-idp-deployment-on-oci-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on OCI from Scratch

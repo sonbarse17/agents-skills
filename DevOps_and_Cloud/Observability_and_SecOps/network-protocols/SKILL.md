@@ -1,6 +1,10 @@
 ---
 name: Network Protocols
 description: Deep architecture of TCP state machines and modern congestion control.
+tags:
+  - observability_and_secops
+  - network-protocols
+depends_on: []
 ---
 # Network Protocols Mechanics
 

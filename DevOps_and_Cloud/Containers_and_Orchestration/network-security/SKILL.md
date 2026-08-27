@@ -1,7 +1,18 @@
 ---
 name: network-security
-description: Protects traffic and boundaries through segmentation, default-deny rules, egress control, and TLS everywhere, minimizing what's actually reachable on the network. Use this whenever the user is configuring security groups or firewalls, designing network segmentation, asking why a service can reach something it shouldn't, setting up egress filtering, or enabling TLS between internal services. For identity-based access that replaces network location as the trust boundary use `zero-trust`; for Kubernetes-specific network policy and mesh use `kubernetes-networking`.
+description: Protects traffic and boundaries through segmentation, default-deny
+  rules, egress control, and TLS everywhere, minimizing what's actually
+  reachable on the network. Use this whenever the user is configuring security
+  groups or firewalls, designing network segmentation, asking why a service can
+  reach something it shouldn't, setting up egress filtering, or enabling TLS
+  between internal services. For identity-based access that replaces network
+  location as the trust boundary use `zero-trust`; for Kubernetes-specific
+  network policy and mesh use `kubernetes-networking`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - network-security
+depends_on: []
 ---
 
 # Network Security

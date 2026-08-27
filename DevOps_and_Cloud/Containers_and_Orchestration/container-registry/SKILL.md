@@ -1,7 +1,17 @@
 ---
 name: container-registry
-description: Stores and distributes container images safely — tagging strategy, immutability, retention and garbage collection, access control, signing, and replication or pull-through caching. Use this whenever the user asks about registry setup, mutable versus immutable tags, cleaning up old images, who can push or pull, image signing or verification, or images being slow to pull across regions. For scanning image contents use `image-scanning`; for reducing what gets pushed use `image-optimization`.
+description: Stores and distributes container images safely — tagging strategy,
+  immutability, retention and garbage collection, access control, signing, and
+  replication or pull-through caching. Use this whenever the user asks about
+  registry setup, mutable versus immutable tags, cleaning up old images, who can
+  push or pull, image signing or verification, or images being slow to pull
+  across regions. For scanning image contents use `image-scanning`; for reducing
+  what gets pushed use `image-optimization`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - container-registry
+depends_on: []
 ---
 
 # Container Registry

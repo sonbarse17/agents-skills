@@ -4,15 +4,19 @@ description: >
   Guides designing and implementing a GCP landing zone using the Resource
   Manager folder hierarchy, Organization Policy constraints, VPC Service
   Controls, and project vending aligned to Google's enterprise foundation
-  blueprint. Use when a user asks to "design a GCP folder structure", "set
-  up a GCP landing zone", "implement Organization Policy guardrails",
-  "onboard a new GCP project", "structure our Google Cloud organization",
-  or "apply the Google Cloud enterprise foundations blueprint".
+  blueprint. Use when a user asks to "design a GCP folder structure", "set up a
+  GCP landing zone", "implement Organization Policy guardrails", "onboard a new
+  GCP project", "structure our Google Cloud organization", or "apply the Google
+  Cloud enterprise foundations blueprint".
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: cloud
   maturity: stable
+tags:
+  - cloud_providers
+  - gcp-landing-zone-setup
+depends_on: []
 ---
 
 # GCP Landing Zone Setup

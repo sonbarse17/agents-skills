@@ -1,8 +1,14 @@
 ---
 name: terraform-style-guide
-description: Generate Terraform HCL code following HashiCorp's official style conventions and best practices. Use when writing, reviewing, or generating Terraform configurations.
+description: Generate Terraform HCL code following HashiCorp's official style
+  conventions and best practices. Use when writing, reviewing, or generating
+  Terraform configurations.
 metadata:
   lifecycle-status: active
+tags:
+  - skills
+  - terraform-style-guide
+depends_on: []
 ---
 
 # Terraform Style Guide

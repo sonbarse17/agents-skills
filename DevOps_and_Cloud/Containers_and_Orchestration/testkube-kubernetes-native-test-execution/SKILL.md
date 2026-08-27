@@ -1,22 +1,25 @@
 ---
 name: testkube-kubernetes-native-test-execution
 description: >
-  Runs test suites (Postman/Newman, k6, Cypress, Playwright, JMeter, and
-  other supported executors) as Kubernetes-native `Test`/`TestSuite`
-  (or `TestWorkflow`) custom resources via Testkube, executing tests
-  inside the cluster against in-cluster services and wiring results back
-  into CI. Use when the user asks to "run k6 load tests in Kubernetes,"
-  "define a Testkube Test CRD," "run Postman collections against an
-  in-cluster service," "chain multiple test types into a TestSuite," or
-  "wire Testkube into a CI pipeline." Distinct from running the same
-  test tools directly inside a CI runner (GitHub Actions/Jenkins/GitLab
-  CI), which cannot reach in-cluster-only services without extra network
-  plumbing.
+  Runs test suites (Postman/Newman, k6, Cypress, Playwright, JMeter, and other
+  supported executors) as Kubernetes-native `Test`/`TestSuite` (or
+  `TestWorkflow`) custom resources via Testkube, executing tests inside the
+  cluster against in-cluster services and wiring results back into CI. Use when
+  the user asks to "run k6 load tests in Kubernetes," "define a Testkube Test
+  CRD," "run Postman collections against an in-cluster service," "chain multiple
+  test types into a TestSuite," or "wire Testkube into a CI pipeline." Distinct
+  from running the same test tools directly inside a CI runner (GitHub
+  Actions/Jenkins/GitLab CI), which cannot reach in-cluster-only services
+  without extra network plumbing.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - containers_and_orchestration
+  - testkube-kubernetes-native-test-execution
+depends_on: []
 ---
 
 # Testkube [Kubernetes](../kubernetes/SKILL.md)-Native Test Execution

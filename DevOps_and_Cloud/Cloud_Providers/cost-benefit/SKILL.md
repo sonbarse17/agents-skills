@@ -1,16 +1,28 @@
 ---
 name: planning-cost-benefit
 description: >
-  Use this skill when the user says 'cost-benefit analysis', 'ROI', 'TCO', 'cost estimation', 'benefit estimation', 'business case', 'investment analysis', 'build vs buy', 'net present value', 'payback period', 'sensitivity analysis'. This skill enforces: comprehensive cost estimation covering build vs buy, TCO components (labor, infrastructure, maintenance, training, migration), benefit quantification across efficiency gains, revenue impact, and risk reduction, ROI and NPV calculation with discount rates, sensitivity analysis for key variables, and structured business case presentation. Do NOT use for: market analysis, pricing strategy, or financial accounting.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when the user says 'cost-benefit analysis', 'ROI', 'TCO', 'cost
+  estimation', 'benefit estimation', 'business case', 'investment analysis',
+  'build vs buy', 'net present value', 'payback period', 'sensitivity analysis'.
+  This skill enforces: comprehensive cost estimation covering build vs buy, TCO
+  components (labor, infrastructure, maintenance, training, migration), benefit
+  quantification across efficiency gains, revenue impact, and risk reduction,
+  ROI and NPV calculation with discount rates, sensitivity analysis for key
+  variables, and structured business case presentation. Do NOT use for: market
+  analysis, pricing strategy, or financial accounting.
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [planning, analysis, phase-10]
+tags:
+  - planning
+  - analysis
+  - phase-10
+depends_on: []
 ---
 
 # Cost-Benefit Analysis

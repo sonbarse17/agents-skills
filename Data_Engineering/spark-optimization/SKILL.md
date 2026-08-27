@@ -1,6 +1,12 @@
 ---
 name: spark-optimization
-description: Optimize Apache Spark jobs with partitioning, caching, shuffle optimization, and memory tuning. Use when improving Spark performance, debugging slow jobs, or scaling data processing pipelines.
+description: Optimize Apache Spark jobs with partitioning, caching, shuffle
+  optimization, and memory tuning. Use when improving Spark performance,
+  debugging slow jobs, or scaling data processing pipelines.
+tags:
+  - data_engineering
+  - spark-optimization
+depends_on: []
 ---
 
 # Apache Spark Optimization

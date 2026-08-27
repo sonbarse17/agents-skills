@@ -1,3 +1,12 @@
+---
+name: apis
+description: Comprehensive guidelines and best practices for apis. Use this
+  skill when working with related components.
+tags:
+  - backend
+  - apis
+depends_on: []
+---
 # Skill
 
 ## 1. Advanced Strategy and Execution

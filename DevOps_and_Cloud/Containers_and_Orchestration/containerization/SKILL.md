@@ -1,7 +1,17 @@
 ---
 name: containerization
-description: Packages an application into a container image that is small, reproducible, and safe to run — Dockerfiles, layer caching, multi-stage builds, non-root users, and runtime configuration. Use this whenever the user is writing a Dockerfile, mentions Docker or OCI images, image size or build times, or is preparing an application to run on Kubernetes. For orchestrating those images use `kubernetes-operations`; for scanning them use `image-scanning`.
+description: Packages an application into a container image that is small,
+  reproducible, and safe to run — Dockerfiles, layer caching, multi-stage
+  builds, non-root users, and runtime configuration. Use this whenever the user
+  is writing a Dockerfile, mentions Docker or OCI images, image size or build
+  times, or is preparing an application to run on Kubernetes. For orchestrating
+  those images use `kubernetes-operations`; for scanning them use
+  `image-scanning`.
 license: MIT
+tags:
+  - containers_and_orchestration
+  - containerization
+depends_on: []
 ---
 
 # Containerization

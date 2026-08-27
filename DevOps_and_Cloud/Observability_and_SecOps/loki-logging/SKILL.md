@@ -1,10 +1,17 @@
 ---
 name: loki-logging
-description: Configure Grafana Loki for log aggregation and analysis. Set up Promtail for log collection, write LogQL queries, and integrate with Grafana for visualization. Use when implementing lightweight log aggregation, especially in Kubernetes environments.
+description: Configure Grafana Loki for log aggregation and analysis. Set up
+  Promtail for log collection, write LogQL queries, and integrate with Grafana
+  for visualization. Use when implementing lightweight log aggregation,
+  especially in Kubernetes environments.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - observability_and_secops
+  - loki-logging
+depends_on: []
 ---
 
 # Grafana Loki

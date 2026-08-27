@@ -1,18 +1,24 @@
 ---
 name: product-user-research
 description: >
-  Use this skill when conducting user research: interviews, usability testing, persona creation, and insight synthesis.
-  This skill enforces: research question definition, participant recruitment, interview protocols, usability testing methodology.
-  Do NOT use for: quantitative surveys, A/B testing, market sizing, competitive analysis.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when conducting user research: interviews, usability testing,
+  persona creation, and insight synthesis. This skill enforces: research
+  question definition, participant recruitment, interview protocols, usability
+  testing methodology. Do NOT use for: quantitative surveys, A/B testing, market
+  sizing, competitive analysis.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [product, user-research, phase-8]
+tags:
+  - product
+  - user-research
+  - phase-8
+depends_on: []
 ---
 
 # User Research Agent

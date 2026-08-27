@@ -1,16 +1,29 @@
 ---
 name: data-nosql-database
 description: >
-  Use this skill when asked about MongoDB, Cassandra, DynamoDB, Couchbase, CosmosDB, NoSQL, document database, wide-column, key-value, consistency model, CAP theorem, sharding, or denormalization. This skill enforces: NoSQL type selection (document, key-value, wide-column, graph), MongoDB aggregation pipeline and indexing, Cassandra data modeling with partition/clustering keys, DynamoDB single-table design with GSI/LSI, CAP theorem trade-offs, consistency models (eventual, strong, quorum), and denormalization patterns. Do NOT use for: relational schema design, graph database traversal, or full-text search configuration.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when asked about MongoDB, Cassandra, DynamoDB, Couchbase,
+  CosmosDB, NoSQL, document database, wide-column, key-value, consistency model,
+  CAP theorem, sharding, or denormalization. This skill enforces: NoSQL type
+  selection (document, key-value, wide-column, graph), MongoDB aggregation
+  pipeline and indexing, Cassandra data modeling with partition/clustering keys,
+  DynamoDB single-table design with GSI/LSI, CAP theorem trade-offs, consistency
+  models (eventual, strong, quorum), and denormalization patterns. Do NOT use
+  for: relational schema design, graph database traversal, or full-text search
+  configuration.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [data, database, nosql, phase-11]
+tags:
+  - data
+  - database
+  - nosql
+  - phase-11
+depends_on: []
 ---
 
 # Data NoSQL Database

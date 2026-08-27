@@ -1,10 +1,15 @@
 ---
 name: cloudflare-pages
-description: Deploy static sites and full-stack apps on Cloudflare Pages with previews, functions, and custom domains.
+description: Deploy static sites and full-stack apps on Cloudflare Pages with
+  previews, functions, and custom domains.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - cloud_providers
+  - cloudflare-pages
+depends_on: []
 ---
 
 # Cloudflare Pages

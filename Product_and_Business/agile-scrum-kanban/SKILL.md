@@ -1,11 +1,10 @@
 ---
 name: agile-scrum-kanban
-description: >
-  Deep integration of Agile methodologies,
-  Scrum frameworks, and Kanban boards.
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+description: |
+  Deep integration of Agile methodologies, Scrum frameworks, and Kanban boards.
+version: 2.0.0
+author: j4flmao
+license: MIT
 type: skill
 compatibility:
   claude-code: true
@@ -16,6 +15,7 @@ tags:
   - agile
   - scrum
   - kanban
+depends_on: []
 ---
 # Agile Scrum Kanban Skill
 

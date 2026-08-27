@@ -5,14 +5,18 @@ description: >
   defaults (CI pipeline, Dockerfile, observability instrumentation, catalog
   registration, security baseline) with deliberate, documented escape hatches
   for legitimate edge cases. Use when a user asks to "design a golden path
-  template," "create a new-service scaffolding template," "standardize how
-  teams start new services," "tier our service templates," or "balance
-  platform opinionation with team autonomy."
+  template," "create a new-service scaffolding template," "standardize how teams
+  start new services," "tier our service templates," or "balance platform
+  opinionation with team autonomy."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - product_and_business
+  - golden-path-template-design-for-developer-platforms
+depends_on: []
 ---
 
 # Golden Path Template Design for Developer Platforms

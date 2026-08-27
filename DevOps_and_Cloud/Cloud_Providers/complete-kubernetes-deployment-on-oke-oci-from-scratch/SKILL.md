@@ -1,26 +1,29 @@
 ---
 name: complete-kubernetes-deployment-on-oke-oci-from-scratch
 description: >
-  Sequences a complete, end-to-end OKE (Oracle Container Engine for
-  Kubernetes) deployment from a bare OCI tenancy to a production-ready
-  cluster serving a first workload — OCI landing zone prerequisites
-  (Compartments, Dynamic Groups), OKE Enhanced cluster and node pool
-  provisioning, VCN-Native pod networking (with the Calico NetworkPolicy
-  add-on noted), ingress (Native Ingress Controller vs. ingress-nginx),
-  cert-manager with OCI DNS via a community webhook solver, conformance
-  validation, a Helm-deployed workload, and a node/cluster health
-  baseline. This is an integration/orchestration skill sequencing several
-  existing tool-specific skills in the correct order and flagging the
-  handoff points between them — it does not restate their internals. Use
-  when a user asks to "deploy a Kubernetes cluster on OKE from scratch,"
-  "set up OKE on OCI end to end," "build a production OKE cluster from a
-  fresh OCI tenancy," or "give me the full sequence to go from nothing to
-  a working OKE cluster."
+  Sequences a complete, end-to-end OKE (Oracle Container Engine for Kubernetes)
+  deployment from a bare OCI tenancy to a production-ready cluster serving a
+  first workload — OCI landing zone prerequisites (Compartments, Dynamic
+  Groups), OKE Enhanced cluster and node pool provisioning, VCN-Native pod
+  networking (with the Calico NetworkPolicy add-on noted), ingress (Native
+  Ingress Controller vs. ingress-nginx), cert-manager with OCI DNS via a
+  community webhook solver, conformance validation, a Helm-deployed workload,
+  and a node/cluster health baseline. This is an integration/orchestration skill
+  sequencing several existing tool-specific skills in the correct order and
+  flagging the handoff points between them — it does not restate their
+  internals. Use when a user asks to "deploy a Kubernetes cluster on OKE from
+  scratch," "set up OKE on OCI end to end," "build a production OKE cluster from
+  a fresh OCI tenancy," or "give me the full sequence to go from nothing to a
+  working OKE cluster."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: kubernetes-platform
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-kubernetes-deployment-on-oke-oci-from-scratch
+depends_on: []
 ---
 
 # Complete [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment on OKE (OCI) From Scratch

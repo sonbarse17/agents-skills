@@ -1,10 +1,19 @@
 ---
 name: terraform-review
-description: Review Terraform (or OpenTofu) code and infrastructure design as a senior cloud/IaC engineer, then produce a prioritized, evidence-based findings table and self-contained remediation plans. Strictly read-only — runs plan/validate only, never apply, destroy, or state changes. Use when asked to review Terraform modules, root configurations, state management, or IaC design for correctness, security, cost, and maintainability.
+description: Review Terraform (or OpenTofu) code and infrastructure design as a
+  senior cloud/IaC engineer, then produce a prioritized, evidence-based findings
+  table and self-contained remediation plans. Strictly read-only — runs
+  plan/validate only, never apply, destroy, or state changes. Use when asked to
+  review Terraform modules, root configurations, state management, or IaC design
+  for correctness, security, cost, and maintainability.
 license: MIT
 metadata:
   author: devops-skills contributors
-  version: "1.1.0"
+  version: 1.1.0
+tags:
+  - infrastructure_as_code
+  - terraform-review
+depends_on: []
 ---
 
 # Terraform Review

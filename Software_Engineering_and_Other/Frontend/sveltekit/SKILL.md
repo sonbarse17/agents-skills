@@ -1,16 +1,26 @@
 ---
 name: sveltekit
 description: >
-  Use this skill when building SvelteKit applications — routing, load functions, form actions, API endpoints, server-side rendering, stores, deployment. This skill enforces: file-based routing conventions, server load functions for data fetching, form actions with validation and redirects, separated API endpoints in routes/api. Do NOT use for: non-Svelte frontend frameworks, backend-only APIs, static site generation without SvelteKit.
-version: "1.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use this skill when building SvelteKit applications — routing, load functions,
+  form actions, API endpoints, server-side rendering, stores, deployment. This
+  skill enforces: file-based routing conventions, server load functions for data
+  fetching, form actions with validation and redirects, separated API endpoints
+  in routes/api. Do NOT use for: non-Svelte frontend frameworks, backend-only
+  APIs, static site generation without SvelteKit.
+version: 1.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [frontend, svelte, sveltekit, phase-3]
+tags:
+  - frontend
+  - svelte
+  - sveltekit
+  - phase-3
+depends_on: []
 ---
 
 # SvelteKit

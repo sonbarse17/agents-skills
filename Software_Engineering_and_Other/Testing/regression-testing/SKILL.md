@@ -1,16 +1,24 @@
 ---
 name: quality-regression-testing
 description: >
-  Use when the user asks about regression testing, test selection, regression suite design, automation maintenance, flaky tests, or regression metrics. Do NOT use for: smoke/BVT testing (quality-smoke-testing), acceptance testing (quality-acceptance-testing), or exploratory testing (quality-exploratory-testing).
-version: "2.0.0"
-author: "j4flmao"
-license: "MIT"
+  Use when the user asks about regression testing, test selection, regression
+  suite design, automation maintenance, flaky tests, or regression metrics. Do
+  NOT use for: smoke/BVT testing (quality-smoke-testing), acceptance testing
+  (quality-acceptance-testing), or exploratory testing
+  (quality-exploratory-testing).
+version: 2.0.0
+author: j4flmao
+license: MIT
 compatibility:
   claude-code: true
   cursor: true
   codex: true
   windsurf: true
-tags: [quality, regression-testing, phase-6]
+tags:
+  - quality
+  - regression-testing
+  - phase-6
+depends_on: []
 ---
 
 # Regression Testing

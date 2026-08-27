@@ -1,10 +1,16 @@
 ---
 name: identity-access-management
-description: Set up and manage SSO, SCIM provisioning, and MFA for startup teams using Google Workspace, Okta, or Azure AD. Use when centralizing authentication, onboarding SSO, or meeting compliance requirements.
+description: Set up and manage SSO, SCIM provisioning, and MFA for startup teams
+  using Google Workspace, Okta, or Azure AD. Use when centralizing
+  authentication, onboarding SSO, or meeting compliance requirements.
 license: MIT
 metadata:
   author: devops-skills
   version: "1.0"
+tags:
+  - security
+  - identity-access-management
+depends_on: []
 ---
 
 # Identity & Access Management for Startups

@@ -1,24 +1,27 @@
 ---
 name: fortify-static-analysis
 description: >
-  Guides deep, tool-specific use of OpenText (formerly Micro Focus)
-  Fortify Static Code Analyzer (SCA) and Fortify Audit Workbench for
-  enterprise, on-premises static analysis — the translate/scan build
-  workflow, Fortify Security Rulepacks, audit workbench triage (Not an
-  Issue / Reliability / Suspicious), and how Fortify's on-prem,
-  build-integrated model differs operationally from cloud-native SAST.
-  Use when the user asks to "run a Fortify scan", "configure sourceanalyzer
-  for a build", "triage findings in Fortify Audit Workbench", "integrate
-  Fortify with Jenkins/Azure DevOps", "reduce Fortify SCA false positives",
-  or "compare Fortify against SonarQube/Semgrep for enterprise
-  compliance". Fortify-specific depth on the translate/scan model and
-  enterprise workflow; for the general SAST concept see sast-integration
-  in the devsecops domain.
+  Guides deep, tool-specific use of OpenText (formerly Micro Focus) Fortify
+  Static Code Analyzer (SCA) and Fortify Audit Workbench for enterprise,
+  on-premises static analysis — the translate/scan build workflow, Fortify
+  Security Rulepacks, audit workbench triage (Not an Issue / Reliability /
+  Suspicious), and how Fortify's on-prem, build-integrated model differs
+  operationally from cloud-native SAST. Use when the user asks to "run a Fortify
+  scan", "configure sourceanalyzer for a build", "triage findings in Fortify
+  Audit Workbench", "integrate Fortify with Jenkins/Azure DevOps", "reduce
+  Fortify SCA false positives", or "compare Fortify against SonarQube/Semgrep
+  for enterprise compliance". Fortify-specific depth on the translate/scan model
+  and enterprise workflow; for the general SAST concept see sast-integration in
+  the devsecops domain.
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: security-scanning-tooling
   maturity: stable
+tags:
+  - frontend
+  - fortify-static-analysis
+depends_on: []
 ---
 
 # Fortify Static Analysis

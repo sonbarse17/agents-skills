@@ -1,25 +1,29 @@
 ---
 name: complete-ai-agent-stack-deployment-cloud-managed-from-scratch
 description: >
-  Sequences a complete, end-to-end AI agent stack deployment built on
-  managed cloud services from scratch — a cloud landing zone, agent
-  control-flow architecture, an LLM gateway routing across managed
-  provider APIs (vendor-neutral: Anthropic/OpenAI/Azure OpenAI/Bedrock/
-  Vertex AI), a managed vector database for RAG, MCP servers for tool
-  access, an evaluation-and-guardrails harness, and cost/latency
-  monitoring. This is an integration/orchestration skill that sequences
-  several existing tool-specific skills in the correct order and flags the
-  handoff points between them — it does not restate their internals. Use
-  when a user asks to "build a production AI agent stack using managed LLM
-  APIs from scratch," "stand up an agent platform with a managed vector
-  database and MCP tools," "give me the end-to-end sequence for a
-  cloud-managed agent deployment," or "design the full pipeline from cloud
-  account to a production agent with evals and cost monitoring."
+  Sequences a complete, end-to-end AI agent stack deployment built on managed
+  cloud services from scratch — a cloud landing zone, agent control-flow
+  architecture, an LLM gateway routing across managed provider APIs
+  (vendor-neutral: Anthropic/OpenAI/Azure OpenAI/Bedrock/ Vertex AI), a managed
+  vector database for RAG, MCP servers for tool access, an
+  evaluation-and-guardrails harness, and cost/latency monitoring. This is an
+  integration/orchestration skill that sequences several existing tool-specific
+  skills in the correct order and flags the handoff points between them — it
+  does not restate their internals. Use when a user asks to "build a production
+  AI agent stack using managed LLM APIs from scratch," "stand up an agent
+  platform with a managed vector database and MCP tools," "give me the
+  end-to-end sequence for a cloud-managed agent deployment," or "design the full
+  pipeline from cloud account to a production agent with evals and cost
+  monitoring."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: ai-agent
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-ai-agent-stack-deployment-cloud-managed-from-scratch
+depends_on: []
 ---
 
 # Complete AI Agent Stack Deployment (Cloud-Managed) From Scratch

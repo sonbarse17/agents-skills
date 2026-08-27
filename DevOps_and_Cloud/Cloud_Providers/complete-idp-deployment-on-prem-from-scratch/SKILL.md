@@ -1,24 +1,28 @@
 ---
 name: complete-idp-deployment-on-prem-from-scratch
 description: >
-  Sequences a complete, from-scratch Internal Developer Platform deployment
-  for self-hosted, potentially air-gapped on-prem environments: bare-metal/
-  vSphere infrastructure → a kubeadm/Cluster API cluster with self-managed
-  etcd → a private container registry and mirrored images → Helm-deployed
-  Backstage backed by in-cluster PostgreSQL on self-hosted block storage →
-  a golden-path template built for internal-only tooling → internal-only
-  self-service (LDAP/AD-backed, no cloud IAM) → multi-tenancy and team
-  workspace design as a first-class concern, not an afterthought →
-  scorecards. Use when a user asks to "deploy an IDP entirely on-prem,"
-  "build a self-hosted internal developer platform with no cloud
-  dependency," "stand up Backstage in an air-gapped environment," "design
-  an on-prem platform with strong team isolation," or "sequence an
-  on-prem platform rollout from bare metal to golden-path templates."
+  Sequences a complete, from-scratch Internal Developer Platform deployment for
+  self-hosted, potentially air-gapped on-prem environments: bare-metal/ vSphere
+  infrastructure → a kubeadm/Cluster API cluster with self-managed etcd → a
+  private container registry and mirrored images → Helm-deployed Backstage
+  backed by in-cluster PostgreSQL on self-hosted block storage → a golden-path
+  template built for internal-only tooling → internal-only self-service
+  (LDAP/AD-backed, no cloud IAM) → multi-tenancy and team workspace design as a
+  first-class concern, not an afterthought → scorecards. Use when a user asks to
+  "deploy an IDP entirely on-prem," "build a self-hosted internal developer
+  platform with no cloud dependency," "stand up Backstage in an air-gapped
+  environment," "design an on-prem platform with strong team isolation," or
+  "sequence an on-prem platform rollout from bare metal to golden-path
+  templates."
 license: Apache-2.0
-compatibility: "Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI"
+compatibility: Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini CLI
 metadata:
   domain: internal-developer-platform
   maturity: stable
+tags:
+  - cloud_providers
+  - complete-idp-deployment-on-prem-from-scratch
+depends_on: []
 ---
 
 # Complete IDP Deployment on Prem from Scratch

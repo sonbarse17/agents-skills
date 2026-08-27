@@ -1,10 +1,15 @@
 ---
 name: startup-it-troubleshooting
-description: Practical IT troubleshooting playbooks for small teams without dedicated IT staff.
+description: Practical IT troubleshooting playbooks for small teams without
+  dedicated IT staff.
 license: MIT
 metadata:
   author: devops-skills
   version: "2.0"
+tags:
+  - miscellaneous
+  - startup-it-troubleshooting
+depends_on: []
 ---
 
 # Startup IT Troubleshooting

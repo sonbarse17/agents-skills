@@ -1,6 +1,11 @@
 ---
 name: agent-walkthrough-report
-description: Instructions for creating stunning walkthrough reports using advanced Markdown features.
+description: Instructions for creating stunning walkthrough reports using
+  advanced Markdown features.
+tags:
+  - workflows
+  - agent-walkthrough-report
+depends_on: []
 ---
 
 # Agent Walkthrough Report Generation

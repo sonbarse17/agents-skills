@@ -1,6 +1,11 @@
 ---
-name: "AI Agent Memory Paradigms"
-description: "Theoretical foundations of Working, Semantic, and Episodic memory systems for autonomous agents."
+name: AI Agent Memory Paradigms
+description: Theoretical foundations of Working, Semantic, and Episodic memory
+  systems for autonomous agents.
+tags:
+  - architecture
+  - memory-systems
+depends_on: []
 ---
 
 # Memory Paradigms: The Architecture of Continuity
