@@ -8,25 +8,19 @@ This repository serves as a centralized "brain" or runbook collection, enabling 
 
 ## 📂 Repository Structure
 
-The skills are organized into a domain-based taxonomy of **12 top-level categories**, each broken into tool- or topic-specific subfolders. Every subfolder ends in a `common/` (or `other/`) bucket for content that doesn't belong to any single tool.
+The skills are organized into a domain-based taxonomy of **8 top-level categories**, each broken into tool- or topic-specific subfolders. Every subfolder ends in a `common/` (or `other/`) bucket for content that doesn't belong to any single tool.
 
-### ☁️ `cloud/` (337 skills)
-Cloud-provider skills, organized by provider then service category (compute, storage, networking, security, database, ai, devops...).
-* **azure/**, **aws/**, **gcp/** — the three major providers, each split by service category.
-* **oracle/**, **alibaba/**, **digitalocean/**, **ibm/**, **cloudflare/** — smaller providers, flat.
-* **common/** — multi-cloud and provider-agnostic content (FinOps, migration, architecture).
+### ☁️ `DevOps_and_Cloud/` (762 skills)
+All cloud, CI/CD, container-orchestration, IaC, and observability skills, nested under one parent.
 
-### 🔁 `ci-cd/` (64 skills)
-CI/CD platforms: **github-actions/**, **gitlab-ci/**, **jenkins/**, **circleci/**, **bamboo/**, **gitea/**, plus **common/** for cross-platform pipeline design, deployment strategy, and git workflow.
-
-### 🐳 `containers-orchestration/` (170 skills)
-Docker, Kubernetes and the managed/GitOps ecosystem around them: **docker/**, **docker-compose/**, **kubernetes/**, **helm/**, **kustomize/**, **eks/**, **aks/**, **gke/**, **ecs/**, **openshift/**, **podman/**, **nomad/**, **argocd/**, **fluxcd/**, **azure-container-apps/**, plus **common/** (service mesh, chaos engineering, platform engineering).
-
-### 🏗️ `infrastructure-as-code/` (58 skills)
-**terraform/**, **opentofu/**, **pulumi/**, **cloudformation/**, **bicep/**, **crossplane/**, **ansible/**, **packer/**, plus **common/** (policy-as-code, drift detection, IaC security).
-
-### 📈 `observability-monitoring-logging/` (133 skills)
-**prometheus/**, **grafana/**, **opentelemetry/**, **elasticsearch/**, **fluent-bit/**, **loki/**, **jaeger/**, **datadog/**, **new-relic/**, **sentry/**, **azure-monitor/**, **cloudwatch/**, **gcp-operations/**, plus **common/** (SLI/SLO, incident response, root-cause analysis, dashboard design).
+* **cloud/** (337 skills) — cloud-provider skills, organized by provider then service category (compute, storage, networking, security, database, ai, devops...).
+  * **azure/**, **aws/**, **gcp/** — the three major providers, each split by service category.
+  * **oracle/**, **alibaba/**, **digitalocean/**, **ibm/**, **cloudflare/** — smaller providers, flat.
+  * **common/** — multi-cloud and provider-agnostic content (FinOps, migration, architecture).
+* **ci-cd/** (64 skills) — CI/CD platforms: **github-actions/**, **gitlab-ci/**, **jenkins/**, **circleci/**, **bamboo/**, **gitea/**, plus **common/** for cross-platform pipeline design, deployment strategy, and git workflow.
+* **containers-orchestration/** (170 skills) — Docker, Kubernetes and the managed/GitOps ecosystem around them: **docker/**, **docker-compose/**, **kubernetes/**, **helm/**, **kustomize/**, **eks/**, **aks/**, **gke/**, **ecs/**, **openshift/**, **podman/**, **nomad/**, **argocd/**, **fluxcd/**, **azure-container-apps/**, plus **common/** (service mesh, chaos engineering, platform engineering).
+* **infrastructure-as-code/** (58 skills) — **terraform/**, **opentofu/**, **pulumi/**, **cloudformation/**, **bicep/**, **crossplane/**, **ansible/**, **packer/**, plus **common/** (policy-as-code, drift detection, IaC security).
+* **observability-monitoring-logging/** (133 skills) — **prometheus/**, **grafana/**, **opentelemetry/**, **elasticsearch/**, **fluent-bit/**, **loki/**, **jaeger/**, **datadog/**, **new-relic/**, **sentry/**, **azure-monitor/**, **cloudwatch/**, **gcp-operations/**, plus **common/** (SLI/SLO, incident response, root-cause analysis, dashboard design).
 
 ### 🤖 `AI_and_Agents/` (166 skills)
 Building, running, and evaluating AI/LLM systems.
@@ -57,9 +51,6 @@ General software development skills, frameworks, and patterns.
 
 ### 📊 `Data_Engineering/` (61 skills)
 ETL pipelines, data platforms, warehousing, data quality, streaming, and analytics engineering.
-
-### ⛓️ `Blockchain_and_Web3/` (26 skills)
-Blockchain, DeFi, Web3, Ethereum, Solana, and ZK-proof skills.
 
 ### 📚 `Global_References/`
 Flat reference assets (docs, examples, configs) that skills link to for supporting material — grouped into subfolders matching the category of the skills that actually use them.
